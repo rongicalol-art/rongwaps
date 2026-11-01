@@ -1,0 +1,70 @@
+name: Release PR
+
+# Keeps one "Release" PR from main (staging) into production (live site) up to
+# date, listing what learners will get and any migrations to run first.
+# Merging it is the release. A fix merged straight into production gets a
+# back-merge PR into main so the two never drift.
+on:
+  push:
+    branches: [main, production]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: release-pr
+  cancel-in-progress: true
+
+jobs:
+  release-pr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Open or update the release PR
+        if: github.ref_name == 'main'
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin production
+          if [ "$(git rev-list --count origin/production..origin/main)" = 0 ]; then echo "Nothing to release."; exit 0; fi
+          prs=$(git log --first-parent --format='%s' origin/production..origin/main | sed -nE 's/^Merge pull request #([0-9]+).*/#\1/p; s/.*\(#([0-9]+)\)$/#\1/p' | sort -u -t'#' -k2 -n)
+          migrations=$(git diff --name-only --diff-filter=A origin/production origin/main -- supabase/migrations | sed 's/^/- `/; s/$/`/')
+          {
+            echo "Merging this releases **staging** ($(git rev-parse --short origin/main)) to **ronsmandarin.com**."
+            echo
+            echo "**Before merging:** try it on staging (link in the Deploy run for this commit)."
+            if [ -n "$migrations" ]; then
+              echo
+              echo "**Database changes — run first:** Actions → *Migrate production* (ref \`main\`, type \`production\`). The release refuses to deploy until they are applied."
+              echo "$migrations"
+            fi
+            echo
+            echo "**Included:**"
+            for pr in $prs; do
+              echo "- $(gh pr view "${pr#\#}" --json title,number --jq '"#\(.number) \(.title)"' 2>/dev/null || echo "$pr")"
+            done
+            echo
+            echo "After merge, Deploy checks the live site and rolls back automatically if a check fails. Undo later: Actions → *Roll back*."
+          } > "$RUNNER_TEMP/body.md"
+          title="Release: $(git rev-list --count --first-parent origin/production..origin/main) change(s) to ronsmandarin.com"
+          existing=$(gh pr list --base production --head main --state open --json number --jq '.[0].number // ""')
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --title "$title" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh pr create --base production --head main --title "$title" --body-file "$RUNNER_TEMP/body.md"
+          fi
+
+      - name: Back-merge a production hotfix into main
+        if: github.ref_name == 'production'
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          if [ "$(git rev-list --count --no-merges origin/main..origin/production)" = 0 ]; then exit 0; fi
+          existing=$(gh pr list --base main --head production --state open --json number --jq '.[0].number // ""')
+          [ -n "$existing" ] || gh pr create --base main --head production --title "Back-merge production fixes into main" \
+            --body "Production has commits main lacks (a hotfix). Merge this so the next release keeps them."

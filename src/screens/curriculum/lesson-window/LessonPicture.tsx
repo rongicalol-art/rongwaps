@@ -1,4 +1,4 @@
-import { useRef, type PointerEvent } from 'react';
+import { useState, useRef, type PointerEvent } from 'react';
 import { useReducedMotion } from 'motion/react';
 import { cn } from '../../../utils/cn';
 
@@ -19,6 +19,8 @@ export function LessonPicture({ src, isIcon = false, onSwipe, className }: Lesso
   const startX = useRef<number | null>(null);
   const frame = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  // A picture that was not ready in time fades in instead of drawing top to bottom.
+  const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
   // The picture leans a few px toward a mouse pointer (the frame crops the 5% it grows by). Touch and icons stay still.
   const lean = !isIcon && !reduceMotion;
   const leanTo = (x: number, y: number) => {
@@ -58,7 +60,13 @@ export function LessonPicture({ src, isIcon = false, onSwipe, className }: Lesso
           draggable={false}
           loading="eager"
           fetchPriority="high"
-          className={isIcon ? 'h-full w-full object-contain p-10' : cn('h-full w-full object-cover object-center', lean && 'transition-transform duration-[1100ms] ease-out [transform:scale(1.05)_translate(var(--lean-x,0px),var(--lean-y,0px))]')}
+          ref={(image) => { if (image?.complete && image.naturalWidth > 0) setLoadedSrc(src); }}
+          onLoad={() => setLoadedSrc(src)}
+          className={cn(
+            'transition-opacity duration-200 motion-reduce:transition-none',
+            loadedSrc === src ? 'opacity-100' : 'opacity-0',
+            isIcon ? 'h-full w-full object-contain p-10' : cn('h-full w-full object-cover object-center', lean && 'transition-[opacity,transform] duration-[200ms,1100ms] ease-out [transform:scale(1.05)_translate(var(--lean-x,0px),var(--lean-y,0px))]'),
+          )}
         />
       )}
     </div>

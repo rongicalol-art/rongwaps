@@ -193,13 +193,14 @@ test('lesson preparation fills the card cache before revealing study and prepare
   assert.deepEqual(primed, [cards[0].audio]);
 });
 
-test('failed recordings reject preparation and a later retry can complete', async (t) => {
+test('a recording that fails to download never blocks studying', async (t) => {
   t.mock.method(globalThis, 'fetch', async () => Response.json({}));
-  const cards: Flashcard[] = [{ id: 'fixture-retry', front: 'fixture-retry', back: '', bookId: 0, lessonId: 0 }];
-  let fail = true;
-  t.mock.method(audioService, 'preload', async (...[, , progress]: Parameters<typeof audioService.preload>) => { progress?.({ ready: 0, total: 1, failed: fail ? 1 : 0 }); });
+  const cards: Flashcard[] = [{ id: 'fixture-retry', front: 'fixture-retry', back: '', bookId: 0, lessonId: 0, audio: 'fixture-retry.mp3' }];
+  let calls = 0;
+  t.mock.method(audioService, 'preload', async (...[, , progress]: Parameters<typeof audioService.preload>) => { calls += 1; progress?.({ ready: 0, total: 1, failed: 1 }); });
   t.mock.method(audioService, 'prepareRecording', async () => {});
-  await assert.rejects(preparePracticeData(cards, new AbortController().signal), /Recording download failed/);
-  fail = false;
-  await preparePracticeData(cards, new AbortController().signal);
+  const controller = new AbortController();
+  await preparePracticeData(cards, controller.signal);
+  assert.equal(calls, 1, 'preparation finished without waiting for the recording');
+  controller.abort(); // closing practice cancels the background retries
 });

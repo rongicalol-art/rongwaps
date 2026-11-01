@@ -31,11 +31,17 @@ export function createEmptySessionProgress(): SessionProgress {
   };
 }
 
+export interface ReviewOptions {
+  /** A miss in a lesson test: a learned word is rescheduled even when it isn't due yet (it comes back sooner). */
+  lapse?: boolean;
+}
+
 export function applyCardReview(
   state: ReviewProgressState,
   cardId: string,
   quality: Quality,
   context?: ReviewContext,
+  options?: ReviewOptions,
 ): ReviewProgressUpdate & { reviewEvents?: ReviewEvent[]; pendingReviewEvents?: ReviewEvent[] } {
   const now = Date.now();
   const history = state.reviewEvents ?? [];
@@ -48,8 +54,10 @@ export function applyCardReview(
   const shouldRepairLearnedCards = isSuccessfulReview && !alreadyInLearnedCards;
 
   // Immediate follow-up quizzes/replays are observations, not another spaced
-  // success. Only due cards (or genuinely new cards) advance the scheduler.
-  const scheduled = !context?.practiceOnly && (!existingReview || existingReview.nextReviewDate <= now);
+  // success. Only due cards (or genuinely new cards) advance the scheduler, plus a
+  // lesson-test lapse: a learned word missed in a test comes back sooner.
+  const lapse = options?.lapse === true && !isSuccessfulReview && Boolean(existingReview);
+  const scheduled = !context?.practiceOnly && (!existingReview || existingReview.nextReviewDate <= now || lapse);
   const after = scheduled ? calculateNextReview(existingReview, cardId, quality, now) : existingReview;
   const event: ReviewEvent | null = context ? {
     ...context, durationMs: Math.max(0, Math.min(300_000, context.durationMs)),

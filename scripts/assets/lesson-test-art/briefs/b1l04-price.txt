@@ -1,0 +1,7 @@
+SUBJECT: a 3-panel picture strip for a reading question ("which picture matches the sentence?").
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: the same white cup of hot coffee on a saucer, on the same warm wooden café counter, same teal wall. In front of the cup stands a small white price card. The ONLY difference is the price written on the card, in large, clean, bold Arabic numerals with a dollar sign:
+- Panel 1 (left): the card reads exactly "$120"
+- Panel 2 (middle): the card reads exactly "$210"
+- Panel 3 (right): the card reads exactly "$1,200"
+These price cards are the only writing allowed. Make the numerals big and perfectly legible. No other text, no people.

@@ -6,12 +6,14 @@ interface SelectionDockProps {
   accentBgClassName: string;
   edgeHex: string;
   disabled?: boolean;
+  /** Start shows its loading state while the lesson window gets ready. */
+  loading?: boolean;
   onStart: () => void;
   onCancel: () => void;
 }
 
 /** Bottom bar while lessons are being picked. One lesson: just Start (tap it again to drop it). Several: Cancel and Start with the count. */
-export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onStart, onCancel }: SelectionDockProps) {
+export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, loading = false, onStart, onCancel }: SelectionDockProps) {
   const reduceMotion = useReducedMotion();
   return (
     <AnimatePresence>
@@ -39,6 +41,8 @@ export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onS
               size="lg"
               fullWidth
               disabled={disabled}
+              loading={loading}
+              loadingLabel="Start"
               onClick={onStart}
               edgeColor={edgeHex}
               aria-label={`Start with ${count} selected ${count === 1 ? 'lesson' : 'lessons'}`}

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
 import { GrammarReadingAids } from './GrammarReadingAids';
 import type { CharacterFont } from '../../../store/useAppStore';
+import type { GrammarExplanationView } from './GrammarStudyPage';
 import { GlobalPresenceButton } from '../../../features/social';
 
 interface GrammarLessonHeaderProps {
@@ -22,8 +23,9 @@ interface GrammarLessonHeaderProps {
   bookPageLabel?: string | null;
   onOpenBookPage?: () => void;
   bookPageButtonRef?: RefObject<HTMLButtonElement | null>;
-  chineseExplanation?: boolean;
-  onToggleChineseExplanation?: () => void;
+  explanationView?: GrammarExplanationView;
+  explanationViews?: GrammarExplanationView[];
+  onExplanationViewChange?: (view: GrammarExplanationView) => void;
 }
 
 export function GrammarLessonHeader({
@@ -40,8 +42,9 @@ export function GrammarLessonHeader({
   bookPageLabel = null,
   onOpenBookPage,
   bookPageButtonRef,
-  chineseExplanation,
-  onToggleChineseExplanation,
+  explanationView,
+  explanationViews,
+  onExplanationViewChange,
 }: GrammarLessonHeaderProps) {
   const [isAidsOpen, setIsAidsOpen] = useState(false);
   const aidsRef = useRef<HTMLDivElement>(null);
@@ -105,8 +108,9 @@ export function GrammarLessonHeader({
                       showTranslation={showTranslation}
                       onTogglePinyin={onTogglePinyin}
                       onToggleTranslation={onToggleTranslation}
-                      chineseExplanation={chineseExplanation}
-                      onToggleChineseExplanation={onToggleChineseExplanation}
+                      explanationView={explanationView}
+                      explanationViews={explanationViews}
+                      onExplanationViewChange={onExplanationViewChange}
                     />
                   </motion.div>
                 )}

@@ -1,1218 +1,1318 @@
 {
- "B1L15-G01": {
-  "bookPage": 348,
-  "title": "Look at the pictures and answer the questions with the pattern “……跟……(不)一樣 (Vs)”.",
-  "allowWords": [],
-  "items": [
-   {
-    "id": "l15g1-p1",
-    "source": "p.348 #1",
-    "kind": "order-build",
-    "tiles": [
-     {
-      "traditional": "妹妹",
-      "pinyin": "mèimei"
-     },
-     {
-      "traditional": "的興趣",
-      "pinyin": "de xìngqù",
-      "simplified": "的兴趣"
-     },
-     {
-      "traditional": "跟",
-      "pinyin": "gēn"
-     },
-     {
-      "traditional": "弟弟的",
-      "pinyin": "dìdi de"
-     },
-     {
-      "traditional": "不一樣",
-      "pinyin": "bù yíyàng",
-      "simplified": "不一样"
-     },
-     {
-      "traditional": "一樣",
-      "pinyin": "yíyàng"
-     }
-    ],
-    "accepted": [
-     {
-      "order": [
-       "妹妹",
-       "的興趣",
-       "跟",
-       "弟弟的",
-       "不一樣"
-      ],
-      "sentence": {
-       "traditional": "妹妹的興趣跟弟弟的不一樣。",
-       "simplified": "妹妹的兴趣跟弟弟的不一样。",
-       "pinyin": "Mèimei de xìngqù gēn dìdi de bù yíyàng.",
-       "english": "Younger sister’s interests are different from younger brother’s."
-      }
-     },
-     {
-      "order": [
-       "跟",
-       "弟弟的",
-       "不一樣"
-      ],
-      "sentence": {
-       "traditional": "跟弟弟的不一樣。",
-       "simplified": "跟弟弟的不一樣。",
-       "pinyin": "Gēn dìdi de bù yíyàng.",
-       "english": "Different from younger brother’s."
-      }
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "一樣"
-      ],
-      "note": "The two faces show different interests; use 不一樣."
-     },
-     {
-      "before": [
-       "弟弟的",
-       "跟"
-      ],
-      "note": "Put 跟 before the second person."
-     }
-    ],
-    "fallbackRepair": "A 跟 B 不一樣.",
-    "prompt": "Answer with the comparison pattern.",
-    "successNote": "The pictures show different interests, so 不一樣.",
-    "scene": {
-     "type": "picture",
-     "page": 348,
-     "box": [
-      0.185,
-      0.363,
-      0.285,
-      0.097
-     ],
-     "alt": "Two girls lying on the floor drawing; the left smiles with a music-note bubble, the right looks bored with a scribble bubble."
-    },
-    "sub": "A：妹妹的興趣跟弟弟的（興趣）一樣嗎？"
-   },
-   {
-    "id": "l15g1-p2",
-    "source": "p.348 #2",
-    "kind": "order-build",
-    "tiles": [
-     {
-      "traditional": "她今天的",
-      "pinyin": "tā jīntiān de",
-      "simplified": "她今天的"
-     },
-     {
-      "traditional": "心情",
-      "pinyin": "xīnqíng"
-     },
-     {
-      "traditional": "跟",
-      "pinyin": "gēn"
-     },
-     {
-      "traditional": "昨天",
-      "pinyin": "zuótiān"
-     },
-     {
-      "traditional": "一樣好",
-      "pinyin": "yíyàng hǎo"
-     },
-     {
-      "traditional": "不一樣",
-      "pinyin": "bù yíyàng",
-      "simplified": "不一样"
-     }
-    ],
-    "accepted": [
-     {
-      "order": [
-       "她今天的",
-       "心情",
-       "跟",
-       "昨天",
-       "一樣好"
-      ],
-      "sentence": {
-       "traditional": "她今天的心情跟昨天一樣好。",
-       "simplified": "她今天的心情跟昨天一样好。",
-       "pinyin": "Tā jīntiān de xīnqíng gēn zuótiān yíyàng hǎo.",
-       "english": "Her mood today is as good as yesterday."
-      }
-     },
-     {
-      "order": [
-       "跟",
-       "昨天",
-       "一樣好"
-      ],
-      "sentence": {
-       "traditional": "跟昨天一樣好。",
-       "simplified": "跟昨天一樣好。",
-       "pinyin": "Gēn zuótiān yíyàng hǎo.",
-       "english": "As good as yesterday."
-      }
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "不一樣"
-      ],
-      "note": "Both portraits look happy, so use 一樣好."
-     },
-     {
-      "before": [
-       "昨天",
-       "跟"
-      ],
-      "note": "Put 跟 before 昨天."
-     }
-    ],
-    "fallbackRepair": "Mood: A 跟 B 一樣好.",
-    "prompt": "Answer with the comparison pattern.",
-    "scene": {
-     "type": "picture",
-     "page": 348,
-     "box": [
-      0.175,
-      0.535,
-      0.26,
-      0.123
-     ],
-     "alt": "Two portraits of a smiling girl labelled 昨天 and 今天."
-    },
-    "sub": "A：她今天的心情怎麼樣？"
-   },
-   {
-    "id": "l15g1-p3",
-    "source": "p.348 #3",
-    "kind": "order-build",
-    "tiles": [
-     {
-      "traditional": "姐姐",
-      "pinyin": "jiějie"
-     },
-     {
-      "traditional": "跑得",
-      "pinyin": "pǎo de"
-     },
-     {
-      "traditional": "跟",
-      "pinyin": "gēn"
-     },
-     {
-      "traditional": "妹妹",
-      "pinyin": "mèimei"
-     },
-     {
-      "traditional": "一樣快",
-      "pinyin": "yíyàng kuài"
-     },
-     {
-      "traditional": "不一樣",
-      "pinyin": "bù yíyàng",
-      "simplified": "不一样"
-     }
-    ],
-    "accepted": [
-     {
-      "order": [
-       "姐姐",
-       "跑得",
-       "跟",
-       "妹妹",
-       "一樣快"
-      ],
-      "sentence": {
-       "traditional": "姐姐跑得跟妹妹一樣快。",
-       "simplified": "姐姐跑得跟妹妹一样快。",
-       "pinyin": "Jiějie pǎo de gēn mèimei yíyàng kuài.",
-       "english": "Older sister runs as fast as younger sister."
-      }
-     },
-     {
-      "order": [
-       "跟",
-       "妹妹",
-       "一樣快"
-      ],
-      "sentence": {
-       "traditional": "跟妹妹一樣快。",
-       "simplified": "跟妹妹一樣快。",
-       "pinyin": "Gēn mèimei yíyàng kuài.",
-       "english": "As fast as younger sister."
-      }
-     },
-     {
-      "order": [
-       "姐姐",
-       "跟",
-       "妹妹",
-       "跑得",
-       "一樣快"
-      ],
-      "sentence": {
-       "traditional": "姐姐跟妹妹跑得一樣快。",
-       "simplified": "姐姐跟妹妹跑得一樣快。",
-       "pinyin": "Jiějie gēn mèimei pǎo de yíyàng kuài.",
-       "english": "Older sister runs as fast as younger sister."
-      }
-     },
-     {
-      "order": [
-       "妹妹",
-       "跑得",
-       "跟",
-       "姐姐",
-       "一樣快"
-      ],
-      "sentence": {
-       "traditional": "妹妹跑得跟姐姐一樣快。",
-       "simplified": "妹妹跑得跟姐姐一樣快。",
-       "pinyin": "Mèimei pǎo de gēn jiějie yíyàng kuài.",
-       "english": "Older sister runs as fast as younger sister."
-      }
-     },
-     {
-      "order": [
-       "妹妹",
-       "跟",
-       "姐姐",
-       "跑得",
-       "一樣快"
-      ],
-      "sentence": {
-       "traditional": "妹妹跟姐姐跑得一樣快。",
-       "simplified": "妹妹跟姐姐跑得一樣快。",
-       "pinyin": "Mèimei gēn jiějie pǎo de yíyàng kuài.",
-       "english": "Older sister runs as fast as younger sister."
-      }
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "不一樣"
-      ],
-      "note": "They run side by side, so use 一樣快."
-     },
-     {
-      "before": [
-       "妹妹",
-       "跟"
-      ],
-      "note": "Put 跟 before 妹妹."
-     }
-    ],
-    "fallbackRepair": "Action: A 跑得跟 B 一樣快.",
-    "prompt": "Neither sister is faster. Answer with the comparison pattern.",
-    "scene": {
-     "type": "picture",
-     "page": 348,
-     "box": [
-      0.146,
-      0.727,
-      0.35,
-      0.132
-     ],
-     "alt": "An older girl and a younger girl running, with motion lines."
-    },
-    "sub": "A：姐姐跑得快，還是妹妹跑得快？"
-   },
-   {
-    "id": "l15g1-own-spot",
-    "source": "own",
-    "kind": "spot-fix",
-    "prompt": "Fix the sentence: the younger brother is not as smart as the older brother.",
-    "sub": "Keep the comparison but change it to “not the same”.",
-    "chunks": [
-     {
-      "traditional": "弟弟"
-     },
-     {
-      "traditional": "跟"
-     },
-     {
-      "traditional": "哥哥"
-     },
-     {
-      "traditional": "一樣",
-      "tail": ""
-     },
-     {
-      "traditional": "聰明",
-      "tail": "。"
-     }
-    ],
-    "wrong": 3,
-    "tiles": [
-     {
-      "traditional": "不一樣",
-      "pinyin": "bù yíyàng",
-      "simplified": "不一样"
-     },
-     {
-      "traditional": "很",
-      "pinyin": "hěn"
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "很"
-      ],
-      "note": "很 does not make the comparison negative; use 不一樣."
-     }
-    ],
-    "takeOutNote": "Do not remove 一樣; make it negative with 不.",
-    "hint": "Which word means “not the same”?",
-    "result": {
-     "traditional": "弟弟跟哥哥不一樣聰明。",
-     "simplified": "弟弟跟哥哥不一样聪明。",
-     "pinyin": "Dìdi gēn gēge bù yíyàng cōngmíng.",
-     "english": "The younger brother is not as smart as the older brother."
-    },
-    "successNote": "不一樣 before the describing word means “not equally”.",
-    "fix": "不一樣"
-   },
-   {
-    "id": "l15g1-own-meaning",
-    "source": "own",
-    "kind": "same-meaning",
-    "prompt": "Same meaning?",
-    "sentences": [
-     {
-      "traditional": "弟弟跟哥哥一樣聰明。",
-      "simplified": "弟弟跟哥哥一样聪明。",
-      "pinyin": "Dìdi gēn gēge yíyàng cōngmíng.",
-      "english": "The younger brother is as smart as the older brother."
-     },
-     {
-      "traditional": "哥哥跟弟弟一樣聰明。",
-      "simplified": "哥哥跟弟弟一样聪明。",
-      "pinyin": "Gēge gēn dìdi yíyàng cōngmíng.",
-      "english": "The older brother is as smart as the younger brother."
-     }
-    ],
-    "same": true,
-    "note": "Both say the brothers are equally smart. Swapping the people keeps the meaning of 跟…一樣."
-   }
-  ]
- },
- "B1L15-G03": {
-  "bookPage": 349,
-  "title": "Use the pattern “一……，就……” to rewrite the sentences.",
-  "allowWords": [],
-  "items": [
-   {
-    "id": "l15g3-p1",
-    "source": "p.349 #1",
-    "kind": "slot-build",
-    "lines": [
-     {
-      "segments": [
-       {
-        "type": "slot",
-        "id": "g0",
-        "answers": []
-       },
-       {
-        "type": "text",
-        "traditional": "你"
-       },
-       {
-        "type": "slot",
-        "id": "g1",
-        "answers": [
-         "一"
+  "B1L15-G01": {
+    "bookPage": 348,
+    "title": "Look at the pictures and answer the questions with the pattern “……跟……(不)一樣 (Vs)”.",
+    "items": [
+      {
+        "id": "l15g1-1",
+        "source": "p.348 #1",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 348,
+          "box": [
+            0.185,
+            0.363,
+            0.285,
+            0.097
+          ],
+          "alt": "A younger sister happily drawing beside her younger brother, who looks bored."
+        },
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "妹妹的興趣跟弟弟的（興趣）一樣嗎？",
+                "simplified": "妹妹的兴趣跟弟弟的（兴趣）一样吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "妹妹的興趣",
+                "simplified": "妹妹的兴趣"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "跟"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "弟弟的"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "不一樣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          },
+          {
+            "traditional": "弟弟的",
+            "pinyin": "dìdi de"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "不一樣",
+            "simplified": "不一样",
+            "pinyin": "bù yíyàng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一樣"
+            ],
+            "mark": [
+              "一樣"
+            ],
+            "note": "Look at the picture: she loves drawing and he is bored, so their interests are not the same: 不一樣."
+          },
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "沒 can’t say “different”: 一樣 is negated with 不, as 不一樣."
+          },
+          {
+            "placed": [
+              "比"
+            ],
+            "mark": [
+              "比"
+            ],
+            "note": "比 says one is more than the other; to say same or different, use 跟…(不)一樣."
+          }
+        ],
+        "fallbackRepair": "跟 + the second person’s 的, then 不一樣 at the end: 跟弟弟的不一樣.",
+        "result": {
+          "traditional": "妹妹的興趣跟弟弟的不一樣。",
+          "simplified": "妹妹的兴趣跟弟弟的不一样。",
+          "pinyin": "Mèimei de xìngqù gēn dìdi de bù yíyàng.",
+          "english": "The younger sister’s interests are different from the younger brother’s."
+        }
+      },
+      {
+        "id": "l15g1-2",
+        "source": "p.348 #2",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 348,
+          "box": [
+            0.175,
+            0.535,
+            0.26,
+            0.123
+          ],
+          "alt": "The same girl smiling in two portraits labelled 昨天 and 今天."
+        },
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她今天的心情怎麼樣？",
+                "simplified": "她今天的心情怎么样？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她今天的心情"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "跟"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "昨天"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "一樣"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "昨天",
+            "pinyin": "zuótiān"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          },
+          {
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "She smiles the same yesterday and today, so no 不: 跟昨天一樣好."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "一樣 takes the Vs directly, with no 很: 一樣好."
+          }
+        ],
+        "fallbackRepair": "Compare with 跟 + 昨天, then 一樣 + the Vs: 跟昨天一樣好.",
+        "result": {
+          "traditional": "她今天的心情跟昨天一樣好。",
+          "simplified": "她今天的心情跟昨天一样好。",
+          "pinyin": "Tā jīntiān de xīnqíng gēn zuótiān yíyàng hǎo.",
+          "english": "She’s in as good a mood today as she was yesterday."
+        }
+      },
+      {
+        "id": "l15g1-3",
+        "source": "p.348 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 348,
+          "box": [
+            0.146,
+            0.727,
+            0.35,
+            0.132
+          ],
+          "alt": "Two sisters running side by side at the same speed."
+        },
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "姐姐跑得快，還是妹妹跑得快？",
+                "simplified": "姐姐跑得快，还是妹妹跑得快？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "姐姐跑得"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "跟"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "妹妹"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "一樣"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "快"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "妹妹",
+            "pinyin": "mèimei"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng"
+          },
+          {
+            "traditional": "快",
+            "pinyin": "kuài"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "比"
+            ],
+            "mark": [
+              "比"
+            ],
+            "note": "比 picks a winner, but the sisters run side by side at the same speed: 跟妹妹一樣快."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "一樣 takes the Vs directly, with no 很: 一樣快."
+          }
+        ],
+        "fallbackRepair": "After 跑得: 跟 + 妹妹, then 一樣 + 快.",
+        "result": {
+          "traditional": "姐姐跑得跟妹妹一樣快。",
+          "simplified": "姐姐跑得跟妹妹一样快。",
+          "pinyin": "Jiějie pǎo de gēn mèimei yíyàng kuài.",
+          "english": "The older sister runs as fast as the younger sister."
+        }
+      },
+      {
+        "id": "l15g1-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你的美國朋友中文怎麼樣？",
+                "simplified": "你的美国朋友中文怎么样？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他說中文",
+                "simplified": "他说中文"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "說得",
+                  "跟"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "跟",
+                  "台灣人"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "台灣人",
+                  "說得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "一樣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "好。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng"
+          },
+          {
+            "traditional": "台灣人",
+            "simplified": "台湾人",
+            "pinyin": "Táiwān rén"
+          },
+          {
+            "traditional": "說得",
+            "simplified": "说得",
+            "pinyin": "shuō de"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "得"
+            ],
+            "mark": [
+              "得"
+            ],
+            "note": "得 can’t follow the object 中文; say the verb again: 說中文說得…."
+          },
+          {
+            "placed": [
+              "比"
+            ],
+            "mark": [
+              "比"
+            ],
+            "note": "比 never goes with 一樣; to say “as well as”, use 跟…一樣好."
+          }
+        ],
+        "fallbackRepair": "With an object, repeat the verb: 說中文說得跟台灣人一樣好 (or 跟台灣人說得一樣好).",
+        "result": {
+          "traditional": "他說中文說得跟台灣人一樣好。",
+          "simplified": "他说中文说得跟台湾人一样好。",
+          "pinyin": "Tā shuō Zhōngwén shuō de gēn Táiwān rén yíyàng hǎo.",
+          "english": "He speaks Chinese as well as a Taiwanese person does."
+        },
+        "alternatives": [
+          {
+            "traditional": "他說中文跟台灣人說得一樣好。",
+            "simplified": "他说中文跟台湾人说得一样好。",
+            "pinyin": "Tā shuō Zhōngwén gēn Táiwān rén shuō de yíyàng hǎo.",
+            "english": "He speaks Chinese as well as a Taiwanese person does."
+          }
         ]
-       },
-       {
-        "type": "text",
-        "traditional": "到家，"
-       },
-       {
-        "type": "slot",
-        "id": "g2",
-        "answers": [
-         "就"
-        ]
-       },
-       {
-        "type": "text",
-        "traditional": "給我打電話"
-       },
-       {
-        "type": "slot",
-        "id": "g3",
-        "answers": []
-       },
-       {
-        "type": "text",
-        "traditional": "。"
-       }
-      ],
-      "me": true
-     }
-    ],
-    "tiles": [
-     {
-      "traditional": "一",
-      "pinyin": "yī"
-     },
-     {
-      "traditional": "就",
-      "pinyin": "jiù"
-     },
-     {
-      "traditional": "以後",
-      "simplified": "以后",
-      "pinyin": "yǐhòu"
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "以後"
-      ],
-      "mark": [
-       "以後"
-      ],
-      "note": "以後 says “after”; 一…就… expresses the immediate sequence requested here."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 到家."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 給我打電話."
-     },
-     {
-      "slot": {
-       "id": "g1",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 給我打電話."
-     },
-     {
-      "slot": {
-       "id": "g2",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 到家."
-     },
-     {
-      "slot": {
-       "id": "g3",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 到家."
-     },
-     {
-      "slot": {
-       "id": "g3",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 給我打電話."
-     }
-    ],
-    "fallbackRepair": "Put 一 before the trigger 到家. Put 就 before the result 給我打電話.",
-    "result": {
-     "traditional": "你一到家，就給我打電話。",
-     "simplified": "你一到家，就给我打电话。",
-     "pinyin": "Nǐ yí dào jiā, jiù gěi wǒ dǎ diànhuà.",
-     "english": "Call me as soon as you get home."
-    },
-    "prompt": "Rewrite with 一……，就……。",
-    "gaps": true,
-    "sub": "你到家以後，馬上給我打電話。"
-   },
-   {
-    "id": "l15g3-p2",
-    "source": "p.349 #2",
-    "kind": "slot-build",
-    "lines": [
-     {
-      "segments": [
-       {
-        "type": "slot",
-        "id": "g0",
-        "answers": []
-       },
-       {
-        "type": "text",
-        "traditional": "他"
-       },
-       {
-        "type": "slot",
-        "id": "g1",
-        "answers": [
-         "一"
-        ]
-       },
-       {
-        "type": "text",
-        "traditional": "說話，大家"
-       },
-       {
-        "type": "slot",
-        "id": "g2",
-        "answers": [
-         "就"
-        ]
-       },
-       {
-        "type": "text",
-        "traditional": "知道他不是台灣人"
-       },
-       {
-        "type": "slot",
-        "id": "g3",
-        "answers": []
-       },
-       {
-        "type": "text",
-        "traditional": "。"
-       }
-      ],
-      "me": true
-     }
-    ],
-    "tiles": [
-     {
-      "traditional": "一",
-      "pinyin": "yī"
-     },
-     {
-      "traditional": "就",
-      "pinyin": "jiù"
-     },
-     {
-      "traditional": "以後",
-      "simplified": "以后",
-      "pinyin": "yǐhòu"
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "以後"
-      ],
-      "mark": [
-       "以後"
-      ],
-      "note": "以後 says “after”; 一…就… expresses the immediate result requested here."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 說話."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 知道."
-     },
-     {
-      "slot": {
-       "id": "g1",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 知道."
-     },
-     {
-      "slot": {
-       "id": "g2",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 說話."
-     },
-     {
-      "slot": {
-       "id": "g3",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 說話."
-     },
-     {
-      "slot": {
-       "id": "g3",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 知道."
-     }
-    ],
-    "fallbackRepair": "Put 一 before the trigger 說話. Put 就 before the result 知道.",
-    "result": {
-     "traditional": "他一說話，大家就知道他不是台灣人。",
-     "simplified": "他一说话，大家就知道他不是台湾人。",
-     "pinyin": "Tā yì shuōhuà, dàjiā jiù zhīdào tā bú shì Táiwān rén.",
-     "english": "As soon as he speaks, everyone knows he is not Taiwanese."
-    },
-    "prompt": "Rewrite with 一……，就……。",
-    "gaps": true,
-    "sub": "他說話的時候，大家馬上知道他不是台灣人。"
-   },
-   {
-    "id": "l15g3-p3",
-    "source": "p.349 #3",
-    "kind": "slot-build",
-    "lines": [
-     {
-      "segments": [
-       {
-        "type": "slot",
-        "id": "g0",
-        "answers": []
-       },
-       {
-        "type": "text",
-        "traditional": "這件事我"
-       },
-       {
-        "type": "slot",
-        "id": "g1",
-        "answers": [
-         "一"
-        ]
-       },
-       {
-        "type": "text",
-        "traditional": "決定，"
-       },
-       {
-        "type": "slot",
-        "id": "g2",
-        "answers": [
-         "就"
-        ]
-       },
-       {
-        "type": "text",
-        "traditional": "開始做了"
-       },
-       {
-        "type": "slot",
-        "id": "g3",
-        "answers": []
-       },
-       {
-        "type": "text",
-        "traditional": "。"
-       }
-      ],
-      "me": true
-     }
-    ],
-    "tiles": [
-     {
-      "traditional": "一",
-      "pinyin": "yī"
-     },
-     {
-      "traditional": "就",
-      "pinyin": "jiù"
-     },
-     {
-      "traditional": "以後",
-      "simplified": "以后",
-      "pinyin": "yǐhòu"
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "以後"
-      ],
-      "mark": [
-       "以後"
-      ],
-      "note": "以後 says “after”; 一…就… expresses the immediate sequence requested here."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 決定."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 開始做."
-     },
-     {
-      "slot": {
-       "id": "g1",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 開始做."
-     },
-     {
-      "slot": {
-       "id": "g2",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 決定."
-     },
-     {
-      "slot": {
-       "id": "g3",
-       "tile": "一"
-      },
-      "note": "Put 一 before the trigger 決定."
-     },
-     {
-      "slot": {
-       "id": "g3",
-       "tile": "就"
-      },
-      "note": "Put 就 before the result 開始做."
-     }
-    ],
-    "fallbackRepair": "Put 一 before the trigger 決定. Put 就 before the result 開始做.",
-    "result": {
-     "traditional": "這件事我一決定，就開始做了。",
-     "simplified": "这件事我一决定，就开始做了。",
-     "pinyin": "Zhè jiàn shì wǒ yí juédìng, jiù kāishǐ zuò le.",
-     "english": "As soon as I decided this, I started doing it."
-    },
-    "prompt": "Rewrite with 一……，就……。",
-    "gaps": true,
-    "sub": "這件事我決定了以後，馬上開始做了。"
-   },
-   {
-    "id": "l15g3-own-spot",
-    "source": "own",
-    "kind": "spot-fix",
-    "prompt": "Fix the sentence: as soon as I read, I feel sleepy.",
-    "sub": "The result needs its 就.",
-    "chunks": [
-     {
-      "traditional": "我"
-     },
-     {
-      "traditional": "一"
-     },
-     {
-      "traditional": "看書",
-      "simplified": "看书"
-     },
-     {
-      "traditional": "，"
-     },
-     {
-      "traditional": "想"
-     },
-     {
-      "traditional": "睡覺",
-      "simplified": "睡觉",
-      "tail": "。"
-     }
-    ],
-    "wrong": 4,
-    "fix": "就想",
-    "tiles": [
-     {
-      "traditional": "就想",
-      "pinyin": "jiù xiǎng"
-     },
-     {
-      "traditional": "也",
-      "pinyin": "yě"
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "也"
-      ],
-      "note": "也 says “also”, not the immediate result."
-     }
-    ],
-    "takeOutNote": "Do not remove 想; add 就 before it: 就想.",
-    "hint": "Which word marks the immediate result?",
-    "result": {
-     "traditional": "我一看書，就想睡覺。",
-     "simplified": "我一看书，就想睡觉。",
-     "pinyin": "Wǒ yí kànshū, jiù xiǎng shuìjiào.",
-     "english": "As soon as I read, I feel sleepy."
-    },
-    "successNote": "就 marks the result right after 一 + action."
-   }
-  ]
- },
- "B1L15-G02": {
-  "bookPage": 354,
-  "title": "Fill in the blanks using “V 著+O”.",
-  "allowWords": [
-   "電視",
-   "音樂",
-   "咖啡"
-  ],
-  "items": [
-   {
-    "id": "l15g2-p1",
-    "source": "p.354 #1",
-    "kind": "order-build",
-    "tiles": [
-     {
-      "traditional": "中明",
-      "pinyin": "Zhōngmíng"
-     },
-     {
-      "traditional": "看",
-      "pinyin": "kàn"
-     },
-     {
-      "traditional": "著",
-      "pinyin": "zhe"
-     },
-     {
-      "traditional": "電視",
-      "pinyin": "diànshì",
-      "simplified": "电视"
-     },
-     {
-      "traditional": "了",
-      "pinyin": "le"
-     }
-    ],
-    "accepted": [
-     {
-      "order": [
-       "中明",
-       "看",
-       "著",
-       "電視"
-      ],
-      "sentence": {
-       "traditional": "中明看著電視。",
-       "simplified": "中明看着电视。",
-       "pinyin": "Zhōngmíng kàn zhe diànshì.",
-       "english": "Zhongming is watching TV."
       }
-     },
-     {
-      "order": [
-       "看",
-       "著",
-       "電視"
-      ],
-      "sentence": {
-       "traditional": "看著電視。",
-       "simplified": "看着电视。",
-       "pinyin": "Kàn zhe diànshì.",
-       "english": "Watching TV."
-      }
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "了"
-      ],
-      "note": "了 would mark a completed action; the TV is still on, so use 著."
-     },
-     {
-      "before": [
-       "電視",
-       "著"
-      ],
-      "note": "Put 著 right after the verb 看."
-     }
-    ],
-    "fallbackRepair": "Ongoing state: V + 著 + O.",
-    "prompt": "Complete the sentence from the picture.",
-    "scene": {
-     "type": "picture",
-     "page": 354,
-     "box": [
-      0.136,
-      0.316,
-      0.238,
-      0.146
-     ],
-     "alt": "A boy in an armchair watching TV while two people arrive at the open door."
-    },
-    "sub": "中明____，不知道我們已經來了。"
-   },
-   {
-    "id": "l15g2-p2",
-    "source": "p.354 #2",
-    "kind": "order-build",
-    "tiles": [
-     {
-      "traditional": "國安",
-      "pinyin": "Guó’ān",
-      "simplified": "国安"
-     },
-     {
-      "traditional": "常常",
-      "pinyin": "chángcháng"
-     },
-     {
-      "traditional": "騎",
-      "pinyin": "qí",
-      "simplified": "骑"
-     },
-     {
-      "traditional": "著",
-      "pinyin": "zhe"
-     },
-     {
-      "traditional": "腳踏車",
-      "pinyin": "jiǎotàchē",
-      "simplified": "脚踏车"
-     },
-     {
-      "traditional": "了",
-      "pinyin": "le"
-     }
-    ],
-    "accepted": [
-     {
-      "order": [
-       "國安",
-       "常常",
-       "騎",
-       "著",
-       "腳踏車"
-      ],
-      "sentence": {
-       "traditional": "國安常常騎著腳踏車。",
-       "simplified": "国安常常骑着脚踏车。",
-       "pinyin": "Guó’ān chángcháng qí zhe jiǎotàchē.",
-       "english": "Guoan often rides a bicycle."
-      }
-     },
-     {
-      "order": [
-       "騎",
-       "著",
-       "腳踏車"
-      ],
-      "sentence": {
-       "traditional": "騎著腳踏車。",
-       "simplified": "骑着脚踏车。",
-       "pinyin": "Qí zhe jiǎotàchē.",
-       "english": "Riding a bicycle."
-      }
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "了"
-      ],
-      "note": "了 marks a completed action; the habit is ongoing, so use 著."
-     },
-     {
-      "before": [
-       "腳踏車",
-       "著"
-      ],
-      "note": "Put 著 right after the verb 騎."
-     }
-    ],
-    "fallbackRepair": "Ongoing state: V + 著 + O.",
-    "prompt": "Complete the sentence from the picture.",
-    "scene": {
-     "type": "picture",
-     "page": 354,
-     "box": [
-      0.38,
-      0.316,
-      0.253,
-      0.166
-     ],
-     "alt": "A helmeted cyclist riding fast along a road."
-    },
-    "sub": "國安常常____，到很多地方去玩。"
-   },
-   {
-    "id": "l15g2-p3",
-    "source": "p.354 #3",
-    "kind": "order-build",
-    "tiles": [
-     {
-      "traditional": "宜文",
-      "pinyin": "Yíwén"
-     },
-     {
-      "traditional": "聽著音樂",
-      "pinyin": "tīng zhe yīnyuè",
-      "simplified": "听着音乐"
-     },
-     {
-      "traditional": "喝著咖啡",
-      "pinyin": "hē zhe kāfēi",
-      "simplified": "喝着咖啡"
-     },
-     {
-      "traditional": "了",
-      "pinyin": "le"
-     }
-    ],
-    "accepted": [
-     {
-      "order": [
-       "宜文",
-       "聽著音樂",
-       "喝著咖啡"
-      ],
-      "sentence": {
-       "traditional": "宜文聽著音樂，喝著咖啡。",
-       "simplified": "宜文听着音乐，喝着咖啡。",
-       "pinyin": "Yíwén tīng zhe yīnyuè, hē zhe kāfēi.",
-       "english": "Yiwen is listening to music and drinking coffee."
-      }
-     },
-     {
-      "order": [
-       "聽著音樂",
-       "喝著咖啡"
-      ],
-      "sentence": {
-       "traditional": "聽著音樂，喝著咖啡。",
-       "simplified": "听着音乐，喝着咖啡。",
-       "pinyin": "Tīng zhe yīnyuè, hē zhe kāfēi.",
-       "english": "Listening to music and drinking coffee."
-      }
-     },
-     {
-      "order": [
-       "宜文",
-       "喝著咖啡",
-       "聽著音樂"
-      ],
-      "sentence": {
-       "traditional": "宜文喝著咖啡聽著音樂。",
-       "simplified": "宜文喝着咖啡听着音乐。",
-       "pinyin": "Yíwén hē zhe kāfēi tīng zhe yīnyuè.",
-       "english": "Yiwen is listening to music and drinking coffee."
-      }
-     },
-     {
-      "order": [
-       "喝著咖啡",
-       "聽著音樂"
-      ],
-      "sentence": {
-       "traditional": "喝著咖啡聽著音樂。",
-       "simplified": "喝着咖啡听着音乐。",
-       "pinyin": "Hē zhe kāfēi tīng zhe yīnyuè.",
-       "english": "Yiwen is listening to music and drinking coffee."
-      }
-     }
-    ],
-    "repairs": [
-     {
-      "placed": [
-       "了"
-      ],
-      "note": "Both actions are continuing, so use 著, not 了."
-     }
-    ],
-    "fallbackRepair": "Two ongoing states: V著 + O，V著 + O.",
-    "prompt": "Complete the sentence from the picture.",
-    "scene": {
-     "type": "picture",
-     "page": 354,
-     "box": [
-      0.632,
-      0.316,
-      0.256,
-      0.168
-     ],
-     "alt": "A girl with headphones on a sofa with a drink; a side table and books are nearby."
-    },
-    "sub": "宜文____，____，覺得很舒服，還不想寫功課。"
-   },
-   {
-    "id": "l15g2-own-sort",
-    "source": "own",
-    "kind": "sort-groups",
-    "prompt": "Is the sentence describing a continuing state or a completed action?",
-    "groups": [
-     {
-      "label": "Continuing state",
-      "pattern": {
-       "traditional": "V 著",
-       "simplified": "V 著"
-      }
-     },
-     {
-      "label": "Completed action",
-      "pattern": {
-       "traditional": "V 了",
-       "simplified": "V 了"
-      }
-     }
-    ],
-    "cards": [
-     {
-      "sentence": {
-       "traditional": "她看著窗戶外面。",
-       "simplified": "她看着窗户外面。",
-       "pinyin": "Tā kàn zhe chuānghu wàimiàn.",
-       "english": "She is looking outside the window."
+    ]
+  },
+  "B1L15-G03": {
+    "bookPage": 349,
+    "title": "Use the pattern “一……，就……” to rewrite the sentences.",
+    "items": [
+      {
+        "id": "l15g3-1",
+        "source": "p.349 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你到家以後，馬上給我打電話。",
+                "simplified": "你到家以后，马上给我打电话。"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "你"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "一"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "到家，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "就"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "給我打電話。",
+                "simplified": "给我打电话。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "一",
+            "pinyin": "yī"
+          },
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "我"
+            ],
+            "mark": [
+              "我"
+            ],
+            "note": "給我打電話 means “call me”: 你 gets home and 你 calls, so no 我 here."
+          },
+          {
+            "placed": [
+              "也"
+            ],
+            "mark": [
+              "也"
+            ],
+            "note": "一 pairs with 就, not 也: 一…，就…."
+          }
+        ],
+        "fallbackRepair": "Subject first, then 一 + the first action; 就 opens the second part: 你一到家，就….",
+        "result": {
+          "traditional": "你一到家，就給我打電話。",
+          "simplified": "你一到家，就给我打电话。",
+          "pinyin": "Nǐ yí dào jiā, jiù gěi wǒ dǎ diànhuà.",
+          "english": "Call me as soon as you get home."
+        }
       },
-      "group": 0,
-      "note": "著 marks the continuing state of looking."
-     },
-     {
-      "sentence": {
-       "traditional": "他拿著燈籠。",
-       "simplified": "他拿着灯笼。",
-       "pinyin": "Tā ná zhe dēnglóng.",
-       "english": "He is holding a lantern."
+      {
+        "id": "l15g3-2",
+        "source": "p.349 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他說話的時候，大家馬上知道他不是台灣人。",
+                "simplified": "他说话的时候，大家马上知道他不是台湾人。"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "他"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "一"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "說話，",
+                "simplified": "说话，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "大家"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "就"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "知道他不是台灣人。",
+                "simplified": "知道他不是台湾人。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "大家",
+            "pinyin": "dàjiā"
+          },
+          {
+            "traditional": "一",
+            "pinyin": "yī"
+          },
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          },
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "我"
+            ],
+            "mark": [
+              "我"
+            ],
+            "note": "Keep the people of the original: 他 is the one talking and 大家 are the ones who know."
+          },
+          {
+            "placed": [
+              "也"
+            ],
+            "mark": [
+              "也"
+            ],
+            "note": "一 pairs with 就, not 也: 一…，就…."
+          }
+        ],
+        "fallbackRepair": "Each person comes first in their part: 他一說話，大家就知道….",
+        "result": {
+          "traditional": "他一說話，大家就知道他不是台灣人。",
+          "simplified": "他一说话，大家就知道他不是台湾人。",
+          "pinyin": "Tā yì shuōhuà, dàjiā jiù zhīdào tā bú shì Táiwān rén.",
+          "english": "As soon as he speaks, everyone knows he isn’t Taiwanese."
+        }
       },
-      "group": 0,
-      "note": "著 marks the continuing state of holding."
-     },
-     {
-      "sentence": {
-       "traditional": "我看了那本書。",
-       "simplified": "我看了那本书。",
-       "pinyin": "Wǒ kàn le nà běn shū.",
-       "english": "I read that book."
+      {
+        "id": "l15g3-3",
+        "source": "p.349 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這件事我決定了以後，馬上開始做了。",
+                "simplified": "这件事我决定了以后，马上开始做了。"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這件事我",
+                "simplified": "这件事我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "決定"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "就"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "開始做了。",
+                "simplified": "开始做了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "以後",
+            "simplified": "以后",
+            "pinyin": "yǐhòu"
+          },
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "決定",
+            "simplified": "决定",
+            "pinyin": "juédìng"
+          },
+          {
+            "traditional": "一",
+            "pinyin": "yī"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "note": "一 + the verb replaces 以後: 一決定 already means “as soon as I decided”."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "No 了 in the first part: 一決定; the 了 stays at the end, in 做了."
+          }
+        ],
+        "fallbackRepair": "一 goes right before the first verb, and 就 opens the second part: 我一決定，就開始做了.",
+        "result": {
+          "traditional": "這件事我一決定，就開始做了。",
+          "simplified": "这件事我一决定，就开始做了。",
+          "pinyin": "Zhè jiàn shì wǒ yì juédìng, jiù kāishǐ zuò le.",
+          "english": "As soon as I decided on this, I started doing it."
+        }
+      }
+    ]
+  },
+  "B1L15-G02": {
+    "bookPage": 354,
+    "title": "Fill in the blanks using “V 著+O”.",
+    "items": [
+      {
+        "id": "l15g2-1",
+        "source": "p.354 #1",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 354,
+          "box": [
+            0.136,
+            0.316,
+            0.238,
+            0.146
+          ],
+          "alt": "A boy in an armchair watching TV while two people come in through the open door."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "中明"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "著"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "電視"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，不知道我們已經來了。",
+                "simplified": "，不知道我们已经来了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "著",
+            "simplified": "着",
+            "pinyin": "zhe"
+          },
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          },
+          {
+            "traditional": "電視",
+            "simplified": "电视",
+            "pinyin": "diànshì"
+          },
+          {
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "He is still watching as we walk in: an action that keeps going takes 著, not 了."
+          },
+          {
+            "placed": [
+              "過"
+            ],
+            "mark": [
+              "過"
+            ],
+            "note": "過 says he has done it before; he is watching right now: 看著."
+          },
+          {
+            "placed": [
+              "聽"
+            ],
+            "mark": [
+              "聽"
+            ],
+            "note": "TV is watched, with 看: 看著電視."
+          }
+        ],
+        "fallbackRepair": "著 goes right after the verb, before the object: 看著電視.",
+        "result": {
+          "traditional": "中明看著電視，不知道我們已經來了。",
+          "simplified": "中明看着电视，不知道我们已经来了。",
+          "pinyin": "Zhōngmíng kàn zhe diànshì, bù zhīdào wǒmen yǐjīng lái le.",
+          "english": "Zhongming is watching TV and doesn’t know we’ve already arrived."
+        }
       },
-      "group": 1,
-      "note": "了 marks the completed action of reading."
-     },
-     {
-      "sentence": {
-       "traditional": "他吃了兩個蘋果。",
-       "simplified": "他吃了两个苹果。",
-       "pinyin": "Tā chī le liǎng ge píngguǒ.",
-       "english": "He ate two apples."
+      {
+        "id": "l15g2-2",
+        "source": "p.354 #2",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 354,
+          "box": [
+            0.38,
+            0.316,
+            0.253,
+            0.166
+          ],
+          "alt": "A man in a helmet riding a bike fast along a curving road."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "國安常常",
+                "simplified": "国安常常"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "騎"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "著"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "腳踏車"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，到很多地方去玩。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
+          },
+          {
+            "traditional": "腳踏車",
+            "simplified": "脚踏车",
+            "pinyin": "jiǎotàchē"
+          },
+          {
+            "traditional": "開",
+            "simplified": "开",
+            "pinyin": "kāi"
+          },
+          {
+            "traditional": "著",
+            "simplified": "着",
+            "pinyin": "zhe"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "騎",
+            "simplified": "骑",
+            "pinyin": "qí"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "He rides off on his bike to go places: the riding keeps going, so 著, not 了."
+          },
+          {
+            "placed": [
+              "過"
+            ],
+            "mark": [
+              "過"
+            ],
+            "note": "過 says “has done it before”, which doesn’t fit 常常; here the riding keeps going: 騎著."
+          },
+          {
+            "placed": [
+              "開"
+            ],
+            "mark": [
+              "開"
+            ],
+            "note": "開 is for a car; a bike is ridden: 騎腳踏車."
+          }
+        ],
+        "fallbackRepair": "著 goes right after the verb, before the object: 騎著腳踏車.",
+        "result": {
+          "traditional": "國安常常騎著腳踏車，到很多地方去玩。",
+          "simplified": "国安常常骑着脚踏车，到很多地方去玩。",
+          "pinyin": "Guó’ān chángcháng qí zhe jiǎotàchē, dào hěn duō dìfang qù wán.",
+          "english": "Guoan often rides his bike to lots of places to have fun."
+        }
       },
-      "group": 1,
-      "note": "了 marks the completed action of eating."
-     }
-    ],
-    "successNote": "著 keeps a state going; 了 marks a completed action."
-   }
-  ]
- }
+      {
+        "id": "l15g2-3",
+        "source": "p.354 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 354,
+          "box": [
+            0.632,
+            0.316,
+            0.256,
+            0.168
+          ],
+          "alt": "A girl with headphones relaxing on a sofa with a mug; books lie nearby."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "宜文"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "聽"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "著"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "音樂，",
+                "simplified": "音乐，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "喝"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "著"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "咖啡，覺得很舒服，還不想寫功課。",
+                "simplified": "咖啡，觉得很舒服，还不想写功课。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
+          },
+          {
+            "traditional": "著",
+            "simplified": "着",
+            "pinyin": "zhe"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          },
+          {
+            "traditional": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "著",
+            "simplified": "着",
+            "pinyin": "zhe"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "的 links a describer to a noun; an action that keeps going takes 著 right after the verb."
+          },
+          {
+            "placed": [
+              "吃"
+            ],
+            "mark": [
+              "吃"
+            ],
+            "note": "Coffee is drunk, 喝, and music is listened to, 聽."
+          }
+        ],
+        "fallbackRepair": "Each verb takes its own 著: 聽著音樂，喝著咖啡.",
+        "result": {
+          "traditional": "宜文聽著音樂，喝著咖啡，覺得很舒服，還不想寫功課。",
+          "simplified": "宜文听着音乐，喝着咖啡，觉得很舒服，还不想写功课。",
+          "pinyin": "Yíwén tīng zhe yīnyuè, hē zhe kāfēi, juéde hěn shūfu, hái bù xiǎng xiě gōngkè.",
+          "english": "Yiwen is listening to music and drinking coffee; she feels very comfortable and doesn’t want to do her homework yet."
+        }
+      },
+      {
+        "id": "l15g2-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我可以走了嗎？",
+                "simplified": "我可以走了吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不可以，你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "坐"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "著"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我有事情跟你說。",
+                "simplified": "，我有事情跟你说。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "坐",
+            "pinyin": "zuò"
+          },
+          {
+            "traditional": "走",
+            "pinyin": "zǒu"
+          },
+          {
+            "traditional": "著",
+            "simplified": "着",
+            "pinyin": "zhe"
+          },
+          {
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "走"
+            ],
+            "mark": [
+              "走"
+            ],
+            "note": "B says 不可以: A must stay, not leave."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "To ask someone to keep doing something, use 著: 坐著 means “stay seated”."
+          },
+          {
+            "placed": [
+              "過"
+            ],
+            "mark": [
+              "過"
+            ],
+            "note": "過 says “has done it before”; to ask someone to keep doing something, use 著."
+          }
+        ],
+        "fallbackRepair": "著 goes right after the verb: 坐著.",
+        "result": {
+          "traditional": "不可以，你坐著，我有事情跟你說。",
+          "simplified": "不可以，你坐着，我有事情跟你说。",
+          "pinyin": "Bù kěyǐ, nǐ zuò zhe, wǒ yǒu shìqing gēn nǐ shuō.",
+          "english": "No, stay seated. I have something to tell you."
+        }
+      }
+    ]
+  }
 }

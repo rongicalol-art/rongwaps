@@ -91,6 +91,7 @@ export function useCloudSyncFetch({
       if (epoch?.wiped) {
         setSrsDataAndLearnedCards(epoch.srsData, epoch.learnedCards);
         useAppStore.getState().resetGrammarProgress();
+        useAppStore.getState().resetLessonTests();
         // Nothing local is known to be on the server any more.
         setSyncCheckpoint({ userId: currentUser.id, cursor: null, srs: {} });
         // An incremental pull omits rows older than the cursor, which the wipe

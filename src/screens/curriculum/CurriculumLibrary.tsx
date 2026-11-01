@@ -19,6 +19,9 @@ import { StarterLesson } from './StarterLesson';
 import { CurriculumSkeleton } from './components/CurriculumSkeleton';
 import { useCourseDashboard } from './hooks/useCourseDashboard';
 import { LessonWindow, type LessonWindowTarget } from './lesson-window/LessonWindow';
+import { prepareLessonWindow } from './lesson-window/prepareLessonWindow';
+import { useReadyAction } from '../../hooks/useReadyAction';
+import { preparePracticeLaunch } from '../activities';
 import { GlobalPresenceButton, LessonFaces, lessonKey } from '../../features/social';
 import { lessonThumbnail } from '../../data/lessonThumbnails';
 
@@ -99,10 +102,15 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   }, [activeBookId, availablePartsByLesson, error, hasActiveActivity, isLoading, setSelectedLessonParts]);
 
   const setLastOpenedLesson = useAppStore((state) => state.setLastOpenedLesson);
+  // Start opens the lesson window once it can draw complete (Start shows loading meanwhile).
+  const { pendingKey: isOpeningLesson, run: openWhenReady } = useReadyAction();
   const handleOpenLesson = useCallback((lessonId: number) => {
-    setLessonWindow({ lessonId, partIds: null });
-    setLastOpenedLesson(activeBookId, lessonId);
-  }, [activeBookId, setLastOpenedLesson]);
+    const lesson = progress.lessons.find((item) => item.id === lessonId);
+    void openWhenReady(() => (lesson ? prepareLessonWindow(activeBookId, lesson) : Promise.resolve()), () => {
+      setLessonWindow({ lessonId, partIds: null });
+      setLastOpenedLesson(activeBookId, lessonId);
+    });
+  }, [activeBookId, openWhenReady, progress.lessons, setLastOpenedLesson]);
   const handleCloseLesson = useCallback(() => setLessonWindow(null), []);
   const currentLesson = useMemo(
     () => progress.lessons.find((lesson) => lesson.state === 'current'),
@@ -142,7 +150,8 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         }
       }
       anchorLessonIdRef.current = lessonId;
-      if (selection.selectedIds.includes(lessonId)) {
+      // Already picking several: a tap adds or removes. A single pick is replaced by the tapped lesson.
+      if (selection.isMultiSelecting || selection.selectedIds.includes(lessonId)) {
         selection.toggle(lessonId);
       } else {
         selection.enter(lessonId);
@@ -159,15 +168,26 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     [selection],
   );
 
+  // Picking one lesson is intent to open it: get its window ready while the learner reaches for Start.
+  const pickedLesson = selection.selectedIds.length === 1
+    ? progress.lessons.find((lesson) => lesson.id === selection.selectedIds[0]) ?? null
+    : null;
+  useEffect(() => {
+    if (pickedLesson) void prepareLessonWindow(activeBookId, pickedLesson).catch(() => {});
+  }, [activeBookId, pickedLesson]);
+
   const handleStartSelection = useCallback(() => {
     const ids = selection.selectedIds;
     if (ids.length === 1) {
       handleOpenLesson(ids[0]);
       return;
     }
-    // Several lessons: the saved selection is already the deck scope.
-    onStartPathPractice?.();
-  }, [handleOpenLesson, onStartPathPractice, selection.selectedIds]);
+    // Several lessons: the saved selection is already the deck scope. Practice opens at once
+    // and shows its own loader; getting the deck ready starts on the same press.
+    if (!onStartPathPractice) return;
+    void preparePracticeLaunch({ activeBookId, selectedLessons, activity: 'flashcards' }).catch(() => {});
+    onStartPathPractice();
+  }, [activeBookId, handleOpenLesson, onStartPathPractice, selectedLessons, selection.selectedIds]);
   const handlePartChange = useCallback((partIds: number[]) => {
     setLessonWindow((current) => (current ? { ...current, partIds } : current));
   }, []);
@@ -282,6 +302,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         accentBgClassName={activeBook.accentBg}
         edgeHex={activeBook.edgeHex}
         disabled={isLoading}
+        loading={isOpeningLesson !== null}
         onStart={handleStartSelection}
         onCancel={selection.exit}
       />

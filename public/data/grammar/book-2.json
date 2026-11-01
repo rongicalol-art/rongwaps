@@ -482,7 +482,13 @@
           },
           "explanationEnglish": "Put 一下 after a verb to say the action lasts only a short time or is done a little. If the object is named, it can follow 一下, as in 介紹一下你自己.",
           "questions": [],
-          "sourceExplanationEnglish": "This grammar indicates the action of the verb lasts for a short time or the amount of action is quite small."
+          "sourceExplanationEnglish": "This grammar indicates the action of the verb lasts for a short time or the amount of action is quite small.",
+          "summary": [
+            "Put 一下 after a verb to say the action is short or small.",
+            "It is often used for requests, asking for help politely, or making an action sound relaxed.",
+            "An object can come after 一下: 看一下菜單.",
+            "一下 is about a short, light action, while 一次 counts how many times."
+          ]
         },
         {
           "bookId": 2,
@@ -779,7 +785,12 @@
           },
           "explanationEnglish": "Put 最好 before a verb phrase to give advice about what action would be best. For negative advice, use 最好不要 before the action.",
           "questions": [],
-          "sourceExplanationEnglish": "This expression, often followed by a verb phrase, is used to give advice about what someone should do."
+          "sourceExplanationEnglish": "This expression, often followed by a verb phrase, is used to give advice about what someone should do.",
+          "summary": [
+            "Put 最好 before a verb to give advice about what someone should do, like 最好休息.",
+            "For advice not to do something, use 最好不要.",
+            "Here 最好 gives advice and doesn't mean the best one. A noun can't follow it."
+          ]
         },
         {
           "bookId": 2,
@@ -1060,7 +1071,13 @@
           },
           "explanationEnglish": "Use 不但 before the first fact or action and 也 before the second to say that both apply. With one shared topic, put 不但 after that topic. When the two parts describe different aspects of one topic, put 也 before the second aspect, as in 風景美，交通也很方便.",
           "questions": [],
-          "sourceExplanationEnglish": "The “不但……，也……” pattern connects two phrases or clauses and indicates the two situations exist at the same time. If “不但” and “也” have the same topic, “不但” should come after the topic, connect with a phrase, and “也” connects with another phrase. If related to different aspects, “也” should come after the second aspect."
+          "sourceExplanationEnglish": "The “不但……，也……” pattern connects two phrases or clauses and indicates the two situations exist at the same time. If “不但” and “也” have the same topic, “不但” should come after the topic, connect with a phrase, and “也” connects with another phrase. If related to different aspects, “也” should come after the second aspect.",
+          "summary": [
+            "不但……也…… says two things are both true.",
+            "If both parts share one subject, put 不但 after the subject, not before it.",
+            "Put 也 right before the second point.",
+            "If the parts describe different sides of one topic, put 也 before the second side: 風景美，交通也很方便."
+          ]
         },
         {
           "bookId": 2,
@@ -1333,7 +1350,13 @@
           },
           "explanationEnglish": "Put 完 directly after a verb to show that the action is finished. It can be followed by 了 (V完了); 還沒V完 says the action is not finished yet. Here 完 is a result complement, not the standalone word 完 meaning “to be finished.”",
           "questions": [],
-          "sourceExplanationEnglish": "The expression indicates that an action is finished. The “完”, serving as a verb complement, means “done” or “finished”."
+          "sourceExplanationEnglish": "The expression indicates that an action is finished. The “完”, serving as a verb complement, means “done” or “finished”.",
+          "summary": [
+            "Put 完 right after a verb to show the action is finished.",
+            "Say V完了 for done and 還沒V完 for not finished yet.",
+            "完 says the action is all done. 了 only shows something is complete or has changed.",
+            "Put 了 at the end, after 完: 吃完飯了, not 吃了完飯."
+          ]
         }
       ]
     },
@@ -1681,7 +1704,13 @@
           },
           "explanationEnglish": "Put 在 after the verb and before the location to say where a person or thing is, or where an action places it: Verb + 在 + Location. The book commonly uses 住, 坐, 站, 放, and 寫 before 在.",
           "questions": [],
-          "sourceExplanationEnglish": "The structure of the pattern is “V在+Location”. The verbs often placed before “在” include “住 (live)”, “坐 (sit)” and “站 (stand)”."
+          "sourceExplanationEnglish": "The structure of the pattern is “V在+Location”. The verbs often placed before “在” include “住 (live)”, “坐 (sit)” and “站 (stand)”.",
+          "summary": [
+            "Put 在 after the verb and before the place to say where a person or thing ends up.",
+            "Common verbs here are 住, 坐 and 站. 放 is used too.",
+            "Pick a verb that fits: 住在 is for living, while things use 放在 or 寫在.",
+            "In this pattern 在 comes after the verb. You can't say 在坐."
+          ]
         },
         {
           "bookId": 2,
@@ -2042,7 +2071,12 @@
           },
           "explanationEnglish": "Put 給 after the verb and before the recipient to show who receives the action: Verb + 給 + Person. Common examples include 送給, 賣給, 拿給, and 寄給.",
           "questions": [],
-          "sourceExplanationEnglish": "“給” functions as a preposition that comes after a verb, shows the direction, and marks the recipient of an action."
+          "sourceExplanationEnglish": "“給” functions as a preposition that comes after a verb, shows the direction, and marks the recipient of an action.",
+          "summary": [
+            "Put 給 after a verb and before the receiver to show who gets the thing.",
+            "Common ones are 送給, 賣給, 寄給, 拿給, 帶給 and 寫給.",
+            "給 must come right after a verb, and the receiver comes after 給: 寄給媽媽."
+          ]
         },
         {
           "bookId": 2,
@@ -2323,7 +2357,13 @@
           },
           "explanationEnglish": "Put 一邊 before each of two actions to show that they happen at the same time. One person can do both actions, or two people can each do one. When a single person does both, 一 may be omitted from both sides (邊……邊……).",
           "questions": [],
-          "sourceExplanationEnglish": "The “（一）邊……（，）（一）邊……” pattern implies that the two actions coming after each “一邊” happen at the same time or at the same place. This pattern is mostly used in modifying concrete action verbs and it can be used in sentences with only one subject or in complex sentences with two subjects, eg. “他一邊唱，我一邊跳。”. If “一” is omitted, there should be only one subject in the sentence, eg. “他邊唱邊跳。”."
+          "sourceExplanationEnglish": "The “（一）邊……（，）（一）邊……” pattern implies that the two actions coming after each “一邊” happen at the same time or at the same place. This pattern is mostly used in modifying concrete action verbs and it can be used in sentences with only one subject or in complex sentences with two subjects, eg. “他一邊唱，我一邊跳。”. If “一” is omitted, there should be only one subject in the sentence, eg. “他邊唱邊跳。”.",
+          "summary": [
+            "Use 一邊 before each of two actions to say they happen at the same time, not one after the other.",
+            "It usually goes with specific action verbs.",
+            "One person can do both actions, or two people can each do one.",
+            "With one person, you can leave out 一 on both sides. With two people, keep 一."
+          ]
         },
         {
           "bookId": 2,
@@ -2596,7 +2636,13 @@
           },
           "explanationEnglish": "Use 雖然 before a fact the speaker accepts, then 可是 before the outcome that is unexpected despite that fact. The second clause gives the contrast.",
           "questions": [],
-          "sourceExplanationEnglish": "This pattern implies that the speaker agrees to the information coming after “雖然” but the information coming after “可是” is unexpected."
+          "sourceExplanationEnglish": "This pattern implies that the speaker agrees to the information coming after “雖然” but the information coming after “可是” is unexpected.",
+          "summary": [
+            "雖然 admits a fact, then 可是 gives something unexpected or opposite.",
+            "Both the 雖然 part and the 可是 part must appear, and 可是 carries the contrast.",
+            "Don't use 所以 here, because 可是 shows contrast while 所以 shows a result.",
+            "Use 可是 or 但是 for the second part. 也 only adds and doesn't show contrast."
+          ]
         },
         {
           "bookId": 2,
@@ -2869,7 +2915,12 @@
           },
           "explanationEnglish": "Put sentence-final 呢 after a statement to add the speaker’s emphasis or personal tone, often making it sound gentle or polite. This use is different from 呢 in a question such as asking where someone is.",
           "questions": [],
-          "sourceExplanationEnglish": "This particle “呢”, often placed at the end of a sentence, is used to emphasize that the foregoing action or fact is based on the speaker’s personal opinion. It shows a tone of politeness. The “呢” used here is different from that used in an interrogative sentence."
+          "sourceExplanationEnglish": "This particle “呢”, often placed at the end of a sentence, is used to emphasize that the foregoing action or fact is based on the speaker’s personal opinion. It shows a tone of politeness. The “呢” used here is different from that used in an interrogative sentence.",
+          "summary": [
+            "Put 呢 at the end of a statement to stress an action or fact in a polite, relaxed tone.",
+            "This is not the 呢 of a question. For yes or no questions use 嗎.",
+            "吧 means a guess or suggestion. 呢 stresses a fact and sounds more sure."
+          ]
         }
       ]
     },
@@ -3437,7 +3488,13 @@
           },
           "explanationEnglish": "Use 把 before a specific object when the sentence focuses on what is done to it. Put the action after the object, often with a result such as 了. If the sentence is negative, put 不, 沒, or 別 before 把. The verb should describe an action that acts on the object.",
           "questions": [],
-          "sourceExplanationEnglish": "The “把 construction”, also known as “disposal construction”, refers to how the Object is disposed of by the Subject through certain actions and cause certain result. Because this pattern often consists of a variety of complicated elements, the lesson begins with the most basic structure. The verbs used here must be outward and transitive, such as “看 (to see)”, “吃 (to eat)”, “賣 (to sell)”, and “寫 (to write)”. In negative sentences, negation words “不”, “沒” or “別” should be placed before “把”."
+          "sourceExplanationEnglish": "The “把 construction”, also known as “disposal construction”, refers to how the Object is disposed of by the Subject through certain actions and cause certain result. Because this pattern often consists of a variety of complicated elements, the lesson begins with the most basic structure. The verbs used here must be outward and transitive, such as “看 (to see)”, “吃 (to eat)”, “賣 (to sell)”, and “寫 (to write)”. In negative sentences, negation words “不”, “沒” or “別” should be placed before “把”.",
+          "summary": [
+            "把 puts the thing you act on before the verb and says what was done to it.",
+            "The verb must act on the object, like 看, 吃, 賣 or 寫.",
+            "The verb needs a result after it, such as 了 or 完. Plain 吃 isn't enough.",
+            "Put 不, 沒 or 別 before 把."
+          ]
         },
         {
           "bookId": 2,
@@ -3974,7 +4031,12 @@
           },
           "explanationEnglish": "Use 把 + object + verb + 完 to say that an action on that object has been completed. 完 follows the verb as a result complement, rather than acting as a verb by itself. This pattern describes finishing the action on the object.",
           "questions": [],
-          "sourceExplanationEnglish": "This grammar denotes that the action of the verb is over. The “完” after the verb, used as the V complement, means to end or to finish. Pay attention to the usage of “完”. This lesson uses the complement structure to describe the end of the action instead of using the word “完” alone. For example, the meaning of “我完了。（I'm finished.）” is completely different from the V完 pattern."
+          "sourceExplanationEnglish": "This grammar denotes that the action of the verb is over. The “完” after the verb, used as the V complement, means to end or to finish. Pay attention to the usage of “完”. This lesson uses the complement structure to describe the end of the action instead of using the word “完” alone. For example, the meaning of “我完了。（I'm finished.）” is completely different from the V完 pattern.",
+          "summary": [
+            "Use 完 in a 把 sentence to say an action on the object is finished: 把家事做完.",
+            "完 goes right after the verb.",
+            "我完了 is different: it means all hope is gone, while 做完 means the action ended."
+          ]
         },
         {
           "bookId": 2,
@@ -4415,7 +4477,12 @@
           },
           "explanationEnglish": "Use 把 + object + V一V for a short, simple action on that object. This reduplication makes a request or instruction sound gentler. The verb in V一V must be one syllable.",
           "questions": [],
-          "sourceExplanationEnglish": "The “V－V” pattern softens the tone and makes an action simple and clear. When used together with “把 construction”, it gives requests or orders in a gentler tone. However, the verb used in this pattern has to be monosyllabic."
+          "sourceExplanationEnglish": "The “V－V” pattern softens the tone and makes an action simple and clear. When used together with “把 construction”, it gives requests or orders in a gentler tone. However, the verb used in this pattern has to be monosyllabic.",
+          "summary": [
+            "Use V一V in a 把 sentence for a quick, light action on the object.",
+            "It makes a request or instruction sound more polite and relaxed.",
+            "Only use one-syllable verbs, like 洗一洗 or 掃一掃."
+          ]
         },
         {
           "bookId": 2,
@@ -4800,7 +4867,12 @@
           },
           "explanationEnglish": "Use 把 + object + verb + 給 + recipient to say that the object is acted on and passed, sent, or directed to someone. 給 comes after the verb and before the recipient; verbs in the book include 拿, 送, 賣, and 寄.",
           "questions": [],
-          "sourceExplanationEnglish": "“給” is a preposition that indicates the direction of action and marks the recipient of the Direct Object. It can collocate with verbs “拿 (to take)”, “送 (to give)”, “賣 (to sell)”, “寄 (to send)”, “踢 (to kick)”, etc. It can also be used in 把 construction, such as “我把你做的蛋糕送給朋友了。”."
+          "sourceExplanationEnglish": "“給” is a preposition that indicates the direction of action and marks the recipient of the Direct Object. It can collocate with verbs “拿 (to take)”, “送 (to give)”, “賣 (to sell)”, “寄 (to send)”, “踢 (to kick)”, etc. It can also be used in 把 construction, such as “我把你做的蛋糕送給朋友了。”.",
+          "summary": [
+            "Put 給 after the verb in a 把 sentence to say who receives the object.",
+            "Say the thing first, then the verb with 給, then the receiver: 把舊車賣給你.",
+            "Don't put 給 before the verb. Common verbs are 送, 賣, 拿 and 寄."
+          ]
         },
         {
           "bookId": 2,
@@ -5129,7 +5201,12 @@
           },
           "explanationEnglish": "Put 多 before a state word to ask about its degree: 多 + adjective/state word. 有 may appear before 多, but is often left out. For example, (有)多遠 asks how far something is.",
           "questions": [],
-          "sourceExplanationEnglish": "This pattern contains “Question Word 多+Vs (as predicate)” to inquire the degree achieved. In this pattern, “有” is frequently omitted."
+          "sourceExplanationEnglish": "This pattern contains “Question Word 多+Vs (as predicate)” to inquire the degree achieved. In this pattern, “有” is frequently omitted.",
+          "summary": [
+            "Put 多 before 大, 長, 高 or 遠 to ask how big, long, tall or far something is.",
+            "多 goes before the word: say 多高, not 高多.",
+            "有 can come before 多 but is often left out: 有多遠 or 多遠."
+          ]
         },
         {
           "bookId": 2,
@@ -5594,7 +5671,13 @@
           },
           "explanationEnglish": "Put a length of time before 沒 or 不 and the verb to say that an action has not happened, or has not been done, for that period. 沒 often pairs with 了 at the end to describe a state that continues up to now; 不 can describe a repeated or habitual absence of the action.",
           "questions": [],
-          "sourceExplanationEnglish": "This pattern, always including a negation word “不” or “沒,” indicates the time duration of a certain situation in which an action has yet to happen."
+          "sourceExplanationEnglish": "This pattern, always including a negation word “不” or “沒,” indicates the time duration of a certain situation in which an action has yet to happen.",
+          "summary": [
+            "Put a length of time before 沒 or 不 to say how long an action hasn't happened: 兩天沒睡覺.",
+            "了 often comes at the end. With 沒, it shows the state still continues up to now.",
+            "不 can describe a repeated or habitual absence of the action.",
+            "多久沒 asks how long since the last time, not how many times."
+          ]
         },
         {
           "bookId": 2,
@@ -6139,7 +6222,12 @@
           },
           "explanationEnglish": "In a statement, a question word such as 什麼, 誰, or 哪裡 can pair with 都 or 也 to include every possibility. In a negative statement, the same pattern excludes every possibility and means “none” or “not at all.”",
           "questions": [],
-          "sourceExplanationEnglish": "In Chinese, question words may co-occur with “都” or “也” in declarative sentences to indicate entirety. That is, in affirmative sentences, this pattern indicates total inclusion, while in negative ones, it indicates total exclusion."
+          "sourceExplanationEnglish": "In Chinese, question words may co-occur with “都” or “也” in declarative sentences to indicate entirety. That is, in affirmative sentences, this pattern indicates total inclusion, while in negative ones, it indicates total exclusion.",
+          "summary": [
+            "Put 都 or 也 after a question word to mean everything, everyone or everywhere.",
+            "In a positive sentence it includes all. In a negative sentence it means none.",
+            "The question word comes first, then 都 or 也: 誰也不認識."
+          ]
         },
         {
           "bookId": 2,
@@ -6740,7 +6828,12 @@
           },
           "explanationEnglish": "Use 又 for a recurring action or situation, including one now intended or expected to happen again. It often pairs with 了 or 沒 and can come before a modal verb such as 要. 再 emphasizes an intended repeat action and is common in requests; it can follow a modal verb, as in the printed example 請再說一次.",
           "questions": [],
-          "sourceExplanationEnglish": "“又” means the repetition of the same action or the reappearance of similar situation. “再” and “又” both mean repetition. However, “再” emphasizes the intention to repeat certain actions, so it can be used in imperative sentences and placed after modal verbs, e.g., “請再說一次” (Please say it again.) and “我想再喝一杯”. (I'd like to have another drink.) “又” is used after certain actions or showing the intention of performing the action. “又” mostly collocates with “了” or “沒” and is placed before the modal verbs. e.g., “我又說了一次” (I said that again.) and “我又想喝了” (I wanted to drink again.)"
+          "sourceExplanationEnglish": "“又” means the repetition of the same action or the reappearance of similar situation. “再” and “又” both mean repetition. However, “再” emphasizes the intention to repeat certain actions, so it can be used in imperative sentences and placed after modal verbs, e.g., “請再說一次” (Please say it again.) and “我想再喝一杯”. (I'd like to have another drink.) “又” is used after certain actions or showing the intention of performing the action. “又” mostly collocates with “了” or “沒” and is placed before the modal verbs. e.g., “我又說了一次” (I said that again.) and “我又想喝了” (I wanted to drink again.)",
+          "summary": [
+            "又 says the same action or a similar situation happens again.",
+            "又 goes before the verb and often pairs with 了 or 沒.",
+            "再 is for wanting or planning to do it again, usually after a word like can or want."
+          ]
         },
         {
           "bookId": 2,
@@ -7181,7 +7274,11 @@
           },
           "explanationEnglish": "Put 才 after the time expression and before the action to show that it happens later than expected. The speaker treats the time as late or delayed.",
           "questions": [],
-          "sourceExplanationEnglish": "“才” implies that an action happened or will happen later than expected."
+          "sourceExplanationEnglish": "“才” implies that an action happened or will happen later than expected.",
+          "summary": [
+            "Put 才 before the verb to say something happens later than expected, which the speaker sees as late.",
+            "The time comes first, then 才, then the verb: 十一點才起來."
+          ]
         }
       ]
     },
@@ -7850,7 +7947,12 @@
           },
           "explanationEnglish": "Use 把 + object + verb + 在/到 + place to say where the action leaves the object. 在 marks its resulting location; 到 marks the place it reaches. The location follows the verb and complement.",
           "questions": [],
-          "sourceExplanationEnglish": "This pattern is the combination of “S（+Neg）+把+N+V+Complement” (see the first grammar after the dialogue in this lesson) and “V在” (see the first grammar after the text in Lesson One) and “V到”. It indicates the location or place of the Object after the action is over."
+          "sourceExplanationEnglish": "This pattern is the combination of “S（+Neg）+把+N+V+Complement” (see the first grammar after the dialogue in this lesson) and “V在” (see the first grammar after the text in Lesson One) and “V到”. It indicates the location or place of the Object after the action is over.",
+          "summary": [
+            "Put 在 or 到 and the place after the verb in a 把 sentence, not before it: 丟在浴室裡.",
+            "在 marks where the object stays after the action. 到 marks the place it reaches.",
+            "An address stays on the envelope, so use 寫在. Use 寄到 for sending something to a place."
+          ]
         },
         {
           "bookId": 2,
@@ -8299,7 +8401,12 @@
           },
           "explanationEnglish": "Use 才 in the result clause to show that the result happens only when the earlier condition is met. Put the condition first and 才 before the resulting action or state. The first clause may include 得, 要, 為了, or 因為.",
           "questions": [],
-          "sourceExplanationEnglish": "In this pattern, the adverb “才” in the second clause is used to show consequences when the conditions and causes in the first clause are fulfilled. Thus, “得 (have to)”, “要 (need to)”, “為了 (in order to)”, and “因為 (because)” are often used in the first clause of this pattern."
+          "sourceExplanationEnglish": "In this pattern, the adverb “才” in the second clause is used to show consequences when the conditions and causes in the first clause are fulfilled. Thus, “得 (have to)”, “要 (need to)”, “為了 (in order to)”, and “因為 (because)” are often used in the first clause of this pattern.",
+          "summary": [
+            "才 goes in the second part and says the result happens only after the earlier condition or reason is true.",
+            "Put 才 right before the result: 才不會覺得冷.",
+            "The first part often has 得, 要, 為了 or 因為."
+          ]
         }
       ]
     },
@@ -9241,7 +9348,13 @@
           },
           "explanationEnglish": "A direction word combines with 來 or 去 to show movement toward or away from the speaker: Direction + 來/去, as in 上來 or 出去. 來 points toward the speaker; 去 points away.",
           "questions": [],
-          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去."
+          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去.",
+          "summary": [
+            "來 means toward the speaker, and 去 means away from the speaker.",
+            "A direction word plus 來 or 去 gives the direction of the move, like 上來 or 下去.",
+            "Choose by where the speaker is. Speaking from upstairs, say 請上來.",
+            "起來 is a fixed phrase meaning up. There is no 起去."
+          ]
         },
         {
           "bookId": 2,
@@ -9803,7 +9916,13 @@
           },
           "explanationEnglish": "Put a motion verb before a direction compound to describe how something moves toward or away from the speaker: Motion verb + Direction + 來/去. The book uses motion verbs such as 走, 跑, 帶, 放, 拿, 搬, and 站.",
           "questions": [],
-          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去."
+          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去.",
+          "summary": [
+            "Put a motion verb first, then a direction word and 來 or 去, to say which way something moves.",
+            "Motion verbs here include 走, 跑, 帶, 放, 拿, 搬 and 站.",
+            "Say the action first, then the direction: 走出來, not 出來走.",
+            "Things moving away from the speaker take 去, like 帶回去."
+          ]
         },
         {
           "bookId": 2,
@@ -10356,7 +10475,11 @@
           },
           "explanationEnglish": "After the motion verb and direction, add the destination before 來 or 去: Motion verb + Direction + Place + 來/去. This tells both the path and where the movement ends.",
           "questions": [],
-          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去."
+          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去.",
+          "summary": [
+            "To say where something ends up, add the place after the direction word and before 來 or 去.",
+            "The order is motion verb, direction word, place, then 來 or 去: 帶回日本去, not 帶回去日本."
+          ]
         },
         {
           "bookId": 2,
@@ -10829,7 +10952,13 @@
           },
           "explanationEnglish": "Use 把 before the object when a subject moves it along a direction and to a place: Subject + 把 + Object + Motion verb + Direction + (Place) + 來/去. The direction and destination describe where the object is moved.",
           "questions": [],
-          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去."
+          "sourceExplanationEnglish": "A directional compound describes the direction of the action. The structures include: (1) directional verb + 來/去, (2) motion verb + directional verb + 來/去, (3) motion verb + directional verb + location + 來/去, (4) combined with 把 construction to indicate the Subject moves the Object to another location: S + 把 + O + motion verb + directional verb + (location) + 來/去.",
+          "summary": [
+            "After 把 put the thing being moved, then the motion verb, the direction word and 來 or 去.",
+            "You can add a place before 來 or 去: 把衣服拿上樓去.",
+            "Don't stop at the motion verb. Add a direction word after it.",
+            "Put 了 last, after 來 or 去, to show it is done."
+          ]
         },
         {
           "bookId": 2,
@@ -11322,7 +11451,12 @@
           },
           "explanationEnglish": "Repeat a two-syllable verb as XYXY to describe doing the action briefly or casually. This pattern sounds light and suggests the action will not take long. Do not add 一下 or 一點 after the reduplicated verb.",
           "questions": [],
-          "sourceExplanationEnglish": "The reduplication of disyllabic verb, with the structure XYXY, creates a casual tone and implies the Subject is going to do something and the action is not going to take long. Note that this pattern cannot be used along with “一下 (in a while)” and “一點 (a little bit)”. e.g., “討論討論一下” is considered to be a wrong usage."
+          "sourceExplanationEnglish": "The reduplication of disyllabic verb, with the structure XYXY, creates a casual tone and implies the Subject is going to do something and the action is not going to take long. Note that this pattern cannot be used along with “一下 (in a while)” and “一點 (a little bit)”. e.g., “討論討論一下” is considered to be a wrong usage.",
+          "summary": [
+            "Repeat a two-syllable verb as XYXY to say you do the action briefly and casually.",
+            "Don't add 一下 or 一點 to it. XYXY already means a short time.",
+            "Don't put 一 in the middle: say 打掃打掃, not 打掃一打掃."
+          ]
         },
         {
           "bookId": 2,
@@ -11931,7 +12065,13 @@
           },
           "explanationEnglish": "Use a verb + 起來 before a comment to describe the impression you get when seeing, hearing, tasting, or otherwise experiencing something. The comment follows 起來; common verbs include 看, 聽, 吃, 喝, 穿, and 用.",
           "questions": [],
-          "sourceExplanationEnglish": "The pattern is used to make comments on someone or something. The verb placed before “起來” is often a monosyllabic sensory verb or action verb, such as “看 (look)”, “聽 (sound)”, 吃 (taste), “喝 (drink)”, “穿 (wear)”, etc. “起來” is followed by comments; thus, the structure is “V 起來 (+Adv) +Vs”."
+          "sourceExplanationEnglish": "The pattern is used to make comments on someone or something. The verb placed before “起來” is often a monosyllabic sensory verb or action verb, such as “看 (look)”, “聽 (sound)”, 吃 (taste), “喝 (drink)”, “穿 (wear)”, etc. “起來” is followed by comments; thus, the structure is “V 起來 (+Adv) +Vs”.",
+          "summary": [
+            "Verb plus 起來 gives your feeling or opinion about a person or thing.",
+            "The verb is often one syllable, such as 看, 聽, 吃, 喝 or 穿.",
+            "Put the comment last, after 起來: 看起來不錯.",
+            "For how clothes look on you, use 穿起來."
+          ]
         },
         {
           "bookId": 2,
@@ -12420,7 +12560,12 @@
           },
           "explanationEnglish": "Put 替 before the person who benefits from an action, then say what is done for them: 替 + Person + Verb phrase. It describes acting on someone’s behalf, especially when that person cannot do it themselves.",
           "questions": [],
-          "sourceExplanationEnglish": "“替” is used in the situation when a person cannot do something for some reason and finds someone else to do it for him."
+          "sourceExplanationEnglish": "“替” is used in the situation when a person cannot do something for some reason and finds someone else to do it for him.",
+          "summary": [
+            "替 means doing something in place of someone who can't do it themselves.",
+            "Put 替 and the person before the verb: 替我裝網路.",
+            "Always say what is done. You can't stop after 替他."
+          ]
         }
       ]
     },
@@ -13109,7 +13254,13 @@
           },
           "explanationEnglish": "Use 除了 before one situation and 還 before an additional, often more important, situation. The first part can be a noun, verb, state word, or phrase. If the second part has a different subject, put that subject before 還.",
           "questions": [],
-          "sourceExplanationEnglish": "The pattern indicates there are different situations coming after “除了” and “還”, with the latter one being even more important than the former. “除了” can be followed by nouns, verbs, intransitive state verbs (Vs) or phrases. If the Subjects of the two clauses are different, the second Subject should be placed before “還”, as in example 2."
+          "sourceExplanationEnglish": "The pattern indicates there are different situations coming after “除了” and “還”, with the latter one being even more important than the former. “除了” can be followed by nouns, verbs, intransitive state verbs (Vs) or phrases. If the Subjects of the two clauses are different, the second Subject should be placed before “還”, as in example 2.",
+          "summary": [
+            "Say one thing first, then add another, more important thing.",
+            "After 除了 you can use a noun, a verb, or a short sentence.",
+            "Put 還 before the second verb or adjective.",
+            "If the two parts have different subjects, the second subject goes before 還."
+          ]
         },
         {
           "bookId": 2,
@@ -13590,7 +13741,12 @@
           },
           "explanationEnglish": "Use 把 + object + verb + 得 + degree word + adjective to describe the result or state caused by the action. The object follows 把; 得 follows the verb and introduces the comment on the result.",
           "questions": [],
-          "sourceExplanationEnglish": "In this pattern, “把” is followed by the Object that receives the action of a verb, while “V得” is followed by the outcome after the action."
+          "sourceExplanationEnglish": "In this pattern, “把” is followed by the Object that receives the action of a verb, while “V得” is followed by the outcome after the action.",
+          "summary": [
+            "Use 把 and an action verb plus 得 to say how far or how well the action turned out.",
+            "The thing being handled goes right after 把.",
+            "Put 得 right after the verb, then the degree or result: 把足球踢得很遠."
+          ]
         }
       ]
     },
@@ -14440,7 +14596,12 @@
           },
           "explanationEnglish": "When the thing or place being discussed is close at hand or exactly where expected, put 就 before 在 or 是 to emphasize and affirm it: Thing + 就 + 在/是 + Place or Person.",
           "questions": [],
-          "sourceExplanationEnglish": "In conversation, if something mentioned is within reach, “就” can be used to show emphasis and affirmation."
+          "sourceExplanationEnglish": "In conversation, if something mentioned is within reach, “就” can be used to show emphasis and affirmation.",
+          "summary": [
+            "Use 就 before 在 or 是 to say it is right here, or exactly this one.",
+            "Don't use 才 for this. 才 means late, slow, or only that much.",
+            "When someone asks who is there or if you are home, answer 我就是, not 我就在."
+          ]
         },
         {
           "bookId": 2,
@@ -15222,7 +15383,13 @@
           ],
           "explanationEnglish": "到 after a verb marks a successfully reached result. V到了 and 沒V到 say whether the action did or did not achieve that result. V得到 and V不到 describe whether the result is possible or within someone’s ability.",
           "questions": [],
-          "sourceExplanationEnglish": "Resultative Complements are used to express the result of an action or a behavior. The structure is “Verb + RC.” The resultative complement “到” indicates that the outcome of a verb is successfully achieved. Besides, the pattern “V得到/V不到” indicates the potential or capability of achieving something or not, while the patterns “V到了” and “沒V到” indicate whether the outcome of a verb was achieved or not at last. The verbs often used in this pattern include “看 (see)”, “聽 (hear)”, “拿 (take)”, “走 (walk)”, “買 (buy)”, “找 (find)”, “租 (rent)”, “做 (do)” and “想 (think)”."
+          "sourceExplanationEnglish": "Resultative Complements are used to express the result of an action or a behavior. The structure is “Verb + RC.” The resultative complement “到” indicates that the outcome of a verb is successfully achieved. Besides, the pattern “V得到/V不到” indicates the potential or capability of achieving something or not, while the patterns “V到了” and “沒V到” indicate whether the outcome of a verb was achieved or not at last. The verbs often used in this pattern include “看 (see)”, “聽 (hear)”, “拿 (take)”, “走 (walk)”, “買 (buy)”, “找 (find)”, “租 (rent)”, “做 (do)” and “想 (think)”.",
+          "summary": [
+            "到 after a verb means the action reached its result.",
+            "V到了 and 沒V到 say whether the action worked in the end.",
+            "V得到 and V不到 say whether you have the ability or the chance to do it.",
+            "Put 不 between the verb and 到: 找不到, not 不到找."
+          ]
         },
         {
           "bookId": 2,
@@ -15671,7 +15838,13 @@
           },
           "explanationEnglish": "懂 after a verb means that the subject understands the result of listening, looking, or watching. V懂了 and 沒V懂 report whether understanding was achieved. V得懂 and V不懂 describe whether the material can be understood.",
           "questions": [],
-          "sourceExplanationEnglish": "When serving as a resultative complement, “懂” indicates that the subject understands something. Thus, “懂” often comes after verbs such as “聽 (listen)” and “看 (look, watch, see)”. Besides, the “V得懂/V不懂” pattern indicates whether the subject has the ability to understand something, while the “V懂了” and “沒V懂” patterns indicate whether the subject understood something or not after a certain action."
+          "sourceExplanationEnglish": "When serving as a resultative complement, “懂” indicates that the subject understands something. Thus, “懂” often comes after verbs such as “聽 (listen)” and “看 (look, watch, see)”. Besides, the “V得懂/V不懂” pattern indicates whether the subject has the ability to understand something, while the “V懂了” and “沒V懂” patterns indicate whether the subject understood something or not after a certain action.",
+          "summary": [
+            "懂 after a verb means you understood, often after 聽 or 看.",
+            "V懂了 and 沒V懂 say whether you understood in the end. 沒看懂 means you looked but didn't understand.",
+            "V得懂 and V不懂 say whether you are able to understand. 看不懂 is for something too hard for you.",
+            "Put 懂 after the verb: 聽懂, not 懂聽."
+          ]
         }
       ]
     },
@@ -16394,7 +16567,11 @@
           ],
           "explanationEnglish": "Put 得不得了 or 極了 after a state word to say that the degree is extremely high. Do not put 很 or 非常 before the state word in the same pattern; the ending already expresses the strong degree.",
           "questions": [],
-          "sourceExplanationEnglish": "The “Vs得不得了” pattern implies a very great degree. The complement “得＋不得了” should come after Vs to add intensity. When this pattern is used, degree adverbs such as “很” and “非常” should not be placed before Vs at the same time.\n\nThe “Vs極了” pattern also implies a very great degree. The complement “極了” should come after Vs to add intensity. When this pattern is used, adverbs of degree such as “很” and “非常” should not be placed before Vs at the same time."
+          "sourceExplanationEnglish": "The “Vs得不得了” pattern implies a very great degree. The complement “得＋不得了” should come after Vs to add intensity. When this pattern is used, degree adverbs such as “很” and “非常” should not be placed before Vs at the same time.\n\nThe “Vs極了” pattern also implies a very great degree. The complement “極了” should come after Vs to add intensity. When this pattern is used, adverbs of degree such as “很” and “非常” should not be placed before Vs at the same time.",
+          "summary": [
+            "Put 得不得了 or 極了 after a state word to say the degree is very high.",
+            "Don't put 很 or 非常 before the word. You can't say 很累得不得了."
+          ]
         },
         {
           "bookId": 2,
@@ -16859,7 +17036,12 @@
           },
           "explanationEnglish": "Use 越來越 before a changing state or action to show that its degree or amount keeps increasing or decreasing over time. It can describe a state directly, or modify a verb phrase or an action with an object.",
           "questions": [],
-          "sourceExplanationEnglish": "The “越來越……” pattern is used to express the level of changes or the amount increasing or decreasing with time. It also includes “S+越來越+Vs / Vst+O / Vaux+V+O.”"
+          "sourceExplanationEnglish": "The “越來越……” pattern is used to express the level of changes or the amount increasing or decreasing with time. It also includes “S+越來越+Vs / Vst+O / Vaux+V+O.”",
+          "summary": [
+            "越來越 says a degree or amount keeps getting bigger or smaller over time.",
+            "Put it after the subject and before the verb or adjective: 朋友越來越少了.",
+            "Don't add 很 after it."
+          ]
         },
         {
           "bookId": 2,
@@ -17397,7 +17579,12 @@
           },
           "explanationEnglish": "Put 得起 or 不起 after certain verbs to say that someone can or cannot afford to do something. The book lists verbs such as 吃, 喝, 買, 住, 付, 租, 穿, and 用. Do not use this meaning with V起了 or 沒V起.",
           "questions": [],
-          "sourceExplanationEnglish": "The verb complement “起” implies one’s ability to afford something. Thus, only a few verbs, such as “吃 (eat)”, “喝 (drink)”, “念 (study)”, “買 (buy)”, “住 (live)”, “付 (pay)”, “租 (rent)”, “穿 (wear)” and “用 (use)”, can be used along with “起”. The common patterns include “V得起” and “V不起”, but patterns like “V起了” or “沒V起” are not acceptable in Chinese."
+          "sourceExplanationEnglish": "The verb complement “起” implies one’s ability to afford something. Thus, only a few verbs, such as “吃 (eat)”, “喝 (drink)”, “念 (study)”, “買 (buy)”, “住 (live)”, “付 (pay)”, “租 (rent)”, “穿 (wear)” and “用 (use)”, can be used along with “起”. The common patterns include “V得起” and “V不起”, but patterns like “V起了” or “沒V起” are not acceptable in Chinese.",
+          "summary": [
+            "V得起 and V不起 say whether you can afford something.",
+            "It is used with only a few verbs, such as 吃, 喝, 買, 住 and 租.",
+            "You can't say V起了 or 沒V起. Say 買不起, not 沒買起."
+          ]
         },
         {
           "bookId": 2,
@@ -17859,7 +18046,13 @@
           },
           "explanationEnglish": "飽 after a verb says that someone is full or has had enough; it commonly follows 吃 or 睡. V飽了 and 沒V飽 report the actual result, while V得飽 and V不飽 ask or say whether enough is possible.",
           "questions": [],
-          "sourceExplanationEnglish": "The resultative complement “飽” implies that the subject feels fully satisfied or has enough. Thus, “飽” often comes after “吃 (eat)” and “睡 (sleep)”. The “V得飽/V不飽” pattern indicates whether something is potentially enough to satisfy the subject, while the “V飽了” and “沒V飽” patterns indicate whether the subject feels fully satisfied at last or not."
+          "sourceExplanationEnglish": "The resultative complement “飽” implies that the subject feels fully satisfied or has enough. Thus, “飽” often comes after “吃 (eat)” and “睡 (sleep)”. The “V得飽/V不飽” pattern indicates whether something is potentially enough to satisfy the subject, while the “V飽了” and “沒V飽” patterns indicate whether the subject feels fully satisfied at last or not.",
+          "summary": [
+            "飽 after a verb means you have had enough, as in 吃飽 and 睡飽.",
+            "V飽了 and 沒V飽 say whether you got enough in the end.",
+            "V得飽 and V不飽 say whether you are able to get enough.",
+            "Put 飽 right after the verb: 睡飽了, not 睡了飽."
+          ]
         },
         {
           "bookId": 2,
@@ -18284,7 +18477,12 @@
           },
           "explanationEnglish": "Use Subject + 對 + Noun or Verb phrase + 有/沒有興趣 to say whether someone is interested in a topic or activity. The thing they are interested in follows 對; 有 or 沒有興趣 completes the statement. A degree word can appear before 有/沒有 to say how much interest someone has.",
           "questions": [],
-          "sourceExplanationEnglish": "“興趣” is used when the subject is passionate about doing something or does something very often."
+          "sourceExplanationEnglish": "“興趣” is used when the subject is passionate about doing something or does something very often.",
+          "summary": [
+            "Use 對 and the thing, then 有興趣, to say you are interested in someone or something.",
+            "Always use 對 for the thing, not 在.",
+            "Put 興趣 after 有 or 沒有. A degree word can go before 有: 很有興趣."
+          ]
         }
       ]
     },
@@ -19342,7 +19540,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern is one type of passive sentences. “N₁” is the Patient of the verb, while “N₂”, which sometimes would be omitted, is the Agent. Another common pattern is “N₁ 被 (N₂) V C”, where C is the complement denoting the result of the verb or how an action is accomplished. The negation word “沒” must be placed before “被”."
+          "sourceExplanationEnglish": "This pattern is one type of passive sentences. “N₁” is the Patient of the verb, while “N₂”, which sometimes would be omitted, is the Agent. Another common pattern is “N₁ 被 (N₂) V C”, where C is the complement denoting the result of the verb or how an action is accomplished. The negation word “沒” must be placed before “被”.",
+          "summary": [
+            "被 makes a sentence where the subject gets the action. After the verb, say the result.",
+            "The doer can go after 被, or be left out.",
+            "Put 沒 before 被, not before the verb.",
+            "Don't swap 被 and 把. With 把 the subject does the action. With 被 it receives the action."
+          ]
         },
         {
           "bookId": 2,
@@ -19921,7 +20125,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "If there are two subjects (S₁, S₂), S₂ should be placed in front of “就”, “S₁+ V著V著，(S₂)+就……了”."
+          "sourceExplanationEnglish": "If there are two subjects (S₁, S₂), S₂ should be placed in front of “就”, “S₁+ V著V著，(S₂)+就……了”.",
+          "summary": [
+            "V著V著 says that while one action goes on, something else happens.",
+            "The second part often has 就 and ends with 了.",
+            "If the second part has its own subject, put it before 就, not after.",
+            "It is not V一V: 聊一聊 just means to chat a little."
+          ]
         },
         {
           "bookId": 2,
@@ -20668,7 +20878,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates an easy solution to a problem. If the condition coming after “只要” is fulfilled, the problem can be solved."
+          "sourceExplanationEnglish": "This pattern indicates an easy solution to a problem. If the condition coming after “只要” is fulfilled, the problem can be solved.",
+          "summary": [
+            "只要 gives a condition that is enough, and 就 gives the result.",
+            "Use 就 for the result, not 才. 才 means the condition is hard or the result comes late.",
+            "It is not the same as 要是, which only gives an if-situation."
+          ]
         },
         {
           "bookId": 2,
@@ -21400,7 +21615,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "The frequency adverb “sometimes” in this pattern indicates the frequency of two actions. (It can be same action with different objects.)"
+          "sourceExplanationEnglish": "The frequency adverb “sometimes” in this pattern indicates the frequency of two actions. (It can be same action with different objects.)",
+          "summary": [
+            "有時候 goes before two actions or situations to say how often each one happens.",
+            "Put 有時候 before the verb, and use it twice.",
+            "The two parts can be different actions, or one action with different things."
+          ]
         }
       ]
     },
@@ -21921,7 +22141,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "The pattern “Vs 起來/V 起 (O) 來” indicates an action or a status begins and lasts. Sometimes, it would be placed at the end of a sentence to show results. If “V 起 (O) 來” is placed in the former part of a sentence, the latter part is used to modify the former one. If an object exists, it should be placed between “起” and “來”, e.g., “下起雨來”, “說起話來”, etc."
+          "sourceExplanationEnglish": "The pattern “Vs 起來/V 起 (O) 來” indicates an action or a status begins and lasts. Sometimes, it would be placed at the end of a sentence to show results. If “V 起 (O) 來” is placed in the former part of a sentence, the latter part is used to modify the former one. If an object exists, it should be placed between “起” and “來”, e.g., “下起雨來”, “說起話來”, etc.",
+          "summary": [
+            "起來 after a verb or state word says the action or state starts and keeps going.",
+            "At the end of a sentence, it can also show a result.",
+            "With an object, put the object between 起 and 來: 下起雨來.",
+            "To say something starts to get lively, use 起來, not 極了. 極了 means the highest degree."
+          ]
         },
         {
           "bookId": 2,
@@ -22556,7 +22782,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates the situation described after “還好” is appreciated, without it, a negative result after “要不然” could happen."
+          "sourceExplanationEnglish": "This pattern indicates the situation described after “還好” is appreciated, without it, a negative result after “要不然” could happen.",
+          "summary": [
+            "還好 says something good happened. 要不然 says what bad thing could have happened otherwise.",
+            "Put the good situation after 還好 and the bad result after 要不然.",
+            "Don't use 但是 here. It only shows contrast, not relief."
+          ]
         },
         {
           "bookId": 2,
@@ -23055,7 +23286,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates the frequency of an action. “就” can be added to emphasize that the action occurs more frequently."
+          "sourceExplanationEnglish": "This pattern indicates the frequency of an action. “就” can be added to emphasize that the action occurs more frequently.",
+          "summary": [
+            "Say how often something happens: 每, a time unit, the action, then the number of times.",
+            "Put the number of times after the verb: 考一次, not before it.",
+            "Put 每 before the amount: 每三天.",
+            "Add 就 to show it happens even more often."
+          ]
         },
         {
           "bookId": 2,
@@ -23654,7 +23891,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates two things or situations having something similar. If further explanation of the similarity is needed, it should come after “一樣”. A and B in this pattern can be NPs, VPs or clauses."
+          "sourceExplanationEnglish": "This pattern indicates two things or situations having something similar. If further explanation of the similarity is needed, it should come after “一樣”. A and B in this pattern can be NPs, VPs or clauses.",
+          "summary": [
+            "A像B一樣 says A is like B.",
+            "Put the way they are alike after 一樣: 像蘋果一樣紅. Don't put 一樣 after the adjective.",
+            "A and B can be nouns, verbs, or whole sentences, not only adjectives.",
+            "比 compares higher or lower. 像……一樣 shows things are alike."
+          ]
         }
       ]
     },
@@ -24292,7 +24535,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "「好」is placed after the verb and acts as a verb complement. When used together with a verb, 「好」serves as a verb complement denoting the action is finished with an ideal result."
+          "sourceExplanationEnglish": "「好」is placed after the verb and acts as a verb complement. When used together with a verb, 「好」serves as a verb complement denoting the action is finished with an ideal result.",
+          "summary": [
+            "好 after a verb means the action is done and the result is as it should be.",
+            "V好了 means finished and ready. 沒V好 means not finished yet.",
+            "V得好 and V不好 say whether you do it well or badly.",
+            "To say the result is bad, put 不 right before 好: 學不好. 不學好 means something different."
+          ]
         },
         {
           "bookId": 2,
@@ -25074,7 +25323,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "「錯」is placed after the verb, serving as the verb complement. V錯 indicates that the subject did something wrong. The result of the action is a mistake."
+          "sourceExplanationEnglish": "「錯」is placed after the verb, serving as the verb complement. V錯 indicates that the subject did something wrong. The result of the action is a mistake.",
+          "summary": [
+            "錯 after a verb means you did the action, but the result was wrong.",
+            "V錯了 says you did it wrong. 沒V錯 says you didn't do it wrong.",
+            "Put 錯 after the verb, not before it: 聽錯了, not 錯聽了.",
+            "Don't add 了 after 沒V錯."
+          ]
         },
         {
           "bookId": 2,
@@ -25468,7 +25723,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "When used together with a verb, 「會」serves as a resultative complement. The verbs used in this pattern include 「學（learn）」 and 「教（teach）」, which indicate someone acquires certain techniques through learning or teaching."
+          "sourceExplanationEnglish": "When used together with a verb, 「會」serves as a resultative complement. The verbs used in this pattern include 「學（learn）」 and 「教（teach）」, which indicate someone acquires certain techniques through learning or teaching.",
+          "summary": [
+            "會 after a verb means you gained a skill by learning or being taught.",
+            "It is often used with 學 and 教: 學會 means learn how, and 教會 means teach someone how.",
+            "學會了 means you already learned it. 學得會 means you are able to learn it.",
+            "Put 不 before 會, as in 教不會. The 不 is about the result, not about 教."
+          ]
         },
         {
           "bookId": 2,
@@ -25984,7 +26245,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "The two question words, which show a tone of randomness, represent the same thing and indicate there is no special requirement or limitation as long as the requirement going before 「就」 is fulfilled. If the question word is 「誰（who）」, the second 「誰」 can be placed before 「就」, e.g., 「這個巧克力，誰想吃誰就吃。」 The question words include: 誰（who）, 什麼時候（when）, 哪裡／哪兒（where）, 什麼（what）, 幾＋M（＋N）（how many）, 哪＋M（＋N）（which）, 怎麼（how）, etc."
+          "sourceExplanationEnglish": "The two question words, which show a tone of randomness, represent the same thing and indicate there is no special requirement or limitation as long as the requirement going before 「就」 is fulfilled. If the question word is 「誰（who）」, the second 「誰」 can be placed before 「就」, e.g., 「這個巧克力，誰想吃誰就吃。」 The question words include: 誰（who）, 什麼時候（when）, 哪裡／哪兒（where）, 什麼（what）, 幾＋M（＋N）（how many）, 哪＋M（＋N）（which）, 怎麼（how）, etc.",
+          "summary": [
+            "Use the same question word twice to say the choice has no limit: whatever, whoever, wherever.",
+            "The first part sets the condition. The second part, with 就, gives the matching choice.",
+            "Both question words must be the same: 想買什麼就買什麼.",
+            "With 誰, the second 誰 can also come before 就."
+          ]
         },
         {
           "bookId": 2,
@@ -26373,7 +26640,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates the speaker believes the situation after 「會」 is quite likely to happen. 「的」 in this pattern is added to show affirmation with a more softened tone."
+          "sourceExplanationEnglish": "This pattern indicates the speaker believes the situation after 「會」 is quite likely to happen. 「的」 in this pattern is added to show affirmation with a more softened tone.",
+          "summary": [
+            "會 shows the speaker believes something will very likely happen.",
+            "Put 的 at the end to sound surer and gentler.",
+            "A double no like 不會不同意 means 會同意."
+          ]
         },
         {
           "bookId": 2,
@@ -26722,7 +26994,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates when something happens, someone will perform an action. Negation words 「不」 and 「沒」 should be placed before 「等」."
+          "sourceExplanationEnglish": "This pattern indicates when something happens, someone will perform an action. Negation words 「不」 and 「沒」 should be placed before 「等」.",
+          "summary": [
+            "等 says the second thing happens only after the first thing has happened.",
+            "Put 就 after the second subject and before the action.",
+            "Put 不 or 沒 before 等, not before 就. 沒等 means not waiting for it."
+          ]
         }
       ]
     },
@@ -27190,7 +27467,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates the number is fewer than the speaker's expectation, different from the usage of 「才」 in Lesson Two. Both 「才」 and 「只」 imply a small number. However, 「才」 emphasizes the small number is the speaker's subjective opinion. Also, 「才」 can be followed directly with number words; 「只」 is placed before the verb and cannot be followed with number words, e.g., 「＊這件衣服只一百塊錢。」"
+          "sourceExplanationEnglish": "This pattern indicates the number is fewer than the speaker's expectation, different from the usage of 「才」 in Lesson Two. Both 「才」 and 「只」 imply a small number. However, 「才」 emphasizes the small number is the speaker's subjective opinion. Also, 「才」 can be followed directly with number words; 「只」 is placed before the verb and cannot be followed with number words, e.g., 「＊這件衣服只一百塊錢。」",
+          "summary": [
+            "才 before a number says the amount is less than the speaker expected.",
+            "只 can also mean a small amount, but it goes before a verb, not directly before a number. 才 can.",
+            "才 shows it is the speaker's own opinion that the amount is small."
+          ]
         },
         {
           "bookId": 2,
@@ -27514,7 +27796,11 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "In the pattern 「A 讓 B + Vs」, A is the cause that makes B have certain feelings."
+          "sourceExplanationEnglish": "In the pattern 「A 讓 B + Vs」, A is the cause that makes B have certain feelings.",
+          "summary": [
+            "讓 says A is the reason B feels or becomes a certain way.",
+            "Put the person who feels right after 讓, then the feeling: 讓我很開心. The cause comes first."
+          ]
         }
       ]
     },
@@ -27980,7 +28266,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "In addition to the situation after “不但”, the speaker lays more stress on the situation after “還”. In this pattern, the first subject should be consistent with the second one."
+          "sourceExplanationEnglish": "In addition to the situation after “不但”, the speaker lays more stress on the situation after “還”. In this pattern, the first subject should be consistent with the second one.",
+          "summary": [
+            "不但 gives one fact, and 還 adds another that is stronger.",
+            "Both parts have the same subject, and the second one can be left out.",
+            "Add the second fact with 還 or 也, not 但是.",
+            "If the subjects are different, leave out 不但 and use 也 in the second part."
+          ]
         },
         {
           "bookId": 2,
@@ -28278,7 +28570,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "The pattern “一 M 都/也不（沒）” indicates “there is not any...” or “don't want any...”, and shows a strange and unexpected situation with a bit of exaggeration."
+          "sourceExplanationEnglish": "The pattern “一 M 都/也不（沒）” indicates “there is not any...” or “don't want any...”, and shows a strange and unexpected situation with a bit of exaggeration.",
+          "summary": [
+            "一 plus a measure word, then 都 or 也 plus 不 or 沒, means not even one or not at all.",
+            "It often sounds exaggerated or surprising.",
+            "Don't leave out the measure word after 一.",
+            "Use 不, not 沒, before 願意: 一個字都不願意寫."
+          ]
         },
         {
           "bookId": 2,
@@ -28649,7 +28947,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "（1）This “讓” functions as a verb. There are different usages of 讓, such as “to make” and “to let”, ie: “有的 KTV 還有好玩的樂器，讓客人唱得更開心。（to make）（L6）” and the dialogue in this lesson, “讓美心請客吧。”（to let）. The “讓 (to let)” is more polite than “叫” or “要”, ie: “老師叫你去辦公室找他” is an order while “老師讓你去辦公室找他” is a polite expression.\n\n（2）“讓” also indicates to permit and to allow somebody to do something, ie: “父母讓我一個人在學校附近租房子。” and “我不舒服，老闆讓我回家休息。”"
+          "sourceExplanationEnglish": "（1）This “讓” functions as a verb. There are different usages of 讓, such as “to make” and “to let”, ie: “有的 KTV 還有好玩的樂器，讓客人唱得更開心。（to make）（L6）” and the dialogue in this lesson, “讓美心請客吧。”（to let）. The “讓 (to let)” is more polite than “叫” or “要”, ie: “老師叫你去辦公室找他” is an order while “老師讓你去辦公室找他” is a polite expression.\n\n（2）“讓” also indicates to permit and to allow somebody to do something, ie: “父母讓我一個人在學校附近租房子。” and “我不舒服，老闆讓我回家休息。”",
+          "summary": [
+            "讓 plus a person plus a verb means let or allow someone to do something.",
+            "It is a polite way to ask someone to act. It sounds softer than 叫 or 要 and is not an order.",
+            "Put the person right after 讓. Put 了 at the end or after the verb, not after 讓.",
+            "This is 讓 for letting or asking, not 讓 for making someone feel something."
+          ]
         },
         {
           "bookId": 2,
@@ -28936,7 +29240,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "In Chinese, intransitive state verbs, such as “美”, “漂亮”, “年輕”, etc., do not have to come after “是”. However, “是” can be added when the speaker wants to confirm or emphasize the degree of Vs."
+          "sourceExplanationEnglish": "In Chinese, intransitive state verbs, such as “美”, “漂亮”, “年輕”, etc., do not have to come after “是”. However, “是” can be added when the speaker wants to confirm or emphasize the degree of Vs.",
+          "summary": [
+            "Add 是 before an adjective like 美 or 漂亮 to confirm it or stress how much.",
+            "A degree word can go between 是 and the adjective.",
+            "Put 是 after the subject. Don't add it every time: normally say 很漂亮."
+          ]
         },
         {
           "bookId": 2,
@@ -29166,7 +29475,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "The “光” here serves as a verb complement denoting “running out” or “nothing left”, and sometimes it suggests a sense of regret and disappointment. It often collocates with “把”, ie: “把錢用光了” and “弟弟把糖吃光了”; however, “我把功課寫光了” is unacceptable."
+          "sourceExplanationEnglish": "The “光” here serves as a verb complement denoting “running out” or “nothing left”, and sometimes it suggests a sense of regret and disappointment. It often collocates with “把”, ie: “把錢用光了” and “弟弟把糖吃光了”; however, “我把功課寫光了” is unacceptable.",
+          "summary": [
+            "光 after a verb means something is used up or eaten up, with none left.",
+            "It often goes with 把 and 了, and can sound unhappy or regretful.",
+            "Put 光 after the verb: 吃光了, not 光吃了.",
+            "Don't use it for homework. Say 寫完, not 寫光."
+          ]
         },
         {
           "bookId": 2,
@@ -29380,7 +29695,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "The expression “一點兒都/也不” shows strong negation, often followed by verbs or state verbs to emphasize the subject is not in a certain status at all."
+          "sourceExplanationEnglish": "The expression “一點兒都/也不” shows strong negation, often followed by verbs or state verbs to emphasize the subject is not in a certain status at all.",
+          "summary": [
+            "一點兒 plus 都 or 也 plus 不 or 沒 means not at all.",
+            "Put 一點兒 before 都, not after: 一點兒都不甜.",
+            "有一點兒 means a little. 一點兒都 with a no word means not at all."
+          ]
         }
       ]
     },
@@ -29650,7 +29970,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "This pattern indicates when the situation after “剛” happens, another situation or action occurs right away. It emphasizes the close connection between two situations or actions. If the two clauses has different subjects, the subject of the latter clause should be placed before “就”."
+          "sourceExplanationEnglish": "This pattern indicates when the situation after “剛” happens, another situation or action occurs right away. It emphasizes the close connection between two situations or actions. If the two clauses has different subjects, the subject of the latter clause should be placed before “就”.",
+          "summary": [
+            "剛 gives the first thing, and 就 gives the second thing that happens right after.",
+            "If the second part has a different subject, put it before 就.",
+            "Don't add 了 right after the first action. Go straight to 就."
+          ]
         },
         {
           "bookId": 2,
@@ -29865,7 +30190,13 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "sourceExplanationEnglish": "The expression “趁著” means taking advantage of a certain chance or time to do something beneficial to oneself. “趁” can be followed by nouns, verb phrases, and intransitive state verbs, etc."
+          "sourceExplanationEnglish": "The expression “趁著” means taking advantage of a certain chance or time to do something beneficial to oneself. “趁” can be followed by nouns, verb phrases, and intransitive state verbs, etc.",
+          "summary": [
+            "趁 means using a chance, a time, or good weather to do something that helps you.",
+            "After it you can use a noun, a verb phrase, or a state word. 著 is optional.",
+            "趁 uses a chance. 因為 gives a reason.",
+            "Don't say 趁了. Say 趁著 or 趁."
+          ]
         }
       ]
     },
@@ -30499,7 +30830,12 @@
               }
             ]
           },
-          "sourceExplanationEnglish": "“滿” is followed by a number. This pattern means reaching a certain amount or number."
+          "sourceExplanationEnglish": "“滿” is followed by a number. This pattern means reaching a certain amount or number.",
+          "summary": [
+            "滿 before a number and measure word means that amount is reached.",
+            "The next part says what applies once it is reached: 滿十杯就可以替客人送過去.",
+            "沒滿十八歲 means not yet eighteen."
+          ]
         },
         {
           "id": "B2L08-G02-P188",
@@ -31494,7 +31830,13 @@
               }
             ]
           },
-          "sourceExplanationEnglish": "The pattern “連……都/也……” is used to emphasize a situation that is more special, abnormal, exaggerated, or with higher degree.\n\n（二）連 + 一 + M (+N) 都/也 + Neg + V……　　not even one..."
+          "sourceExplanationEnglish": "The pattern “連……都/也……” is used to emphasize a situation that is more special, abnormal, exaggerated, or with higher degree.\n\n（二）連 + 一 + M (+N) 都/也 + Neg + V……　　not even one...",
+          "summary": [
+            "連 brings up the most surprising or extreme example. 都 or 也 says it is true even for that.",
+            "Put 連 and the example before 都 or 也: 連睡覺的時間都沒有.",
+            "For not even one, put 一 and a measure word after 連, then 都 or 也 and 不 or 沒.",
+            "都 here doesn't mean all of them."
+          ]
         },
         {
           "id": "B2L08-G03-P189",
@@ -32031,7 +32373,12 @@
               }
             ]
           },
-          "sourceExplanationEnglish": "The pattern “像……這樣/那樣……的+N” shows the features of the example coming after “像”."
+          "sourceExplanationEnglish": "The pattern “像……這樣/那樣……的+N” shows the features of the example coming after “像”.",
+          "summary": [
+            "像 brings up an example, and 這樣 or 那樣 points back to what the example is like.",
+            "Add 的 and a noun to name the kind of person, thing, or place that has those features.",
+            "Put the example before the kind: 像洗碗筷這樣的家事."
+          ]
         },
         {
           "id": "B2L08-G04-P190",
@@ -32665,7 +33012,12 @@
               }
             ]
           },
-          "sourceExplanationEnglish": "“只好” is used in the situation where the subject has no alternative but to do something."
+          "sourceExplanationEnglish": "“只好” is used in the situation where the subject has no alternative but to do something.",
+          "summary": [
+            "只好 says you have no other choice, so you do the only thing left.",
+            "Say the reason or problem first. Put the action after 只好.",
+            "只好 shows a choice forced by limits. 可以 only shows ability or permission."
+          ]
         },
         {
           "id": "B2L08-G05-P191",
@@ -33198,7 +33550,12 @@
               }
             ]
           },
-          "sourceExplanationEnglish": "“為了” is followed by the purpose of an action or a behavior."
+          "sourceExplanationEnglish": "“為了” is followed by the purpose of an action or a behavior.",
+          "summary": [
+            "為了 says the purpose of an action.",
+            "After it, use a noun phrase or an action. The main action comes after the purpose.",
+            "For a cause, use 因為. 為了 gives the goal, not the reason."
+          ]
         }
       ],
       "id": "B2L08-P01-D01",
@@ -34049,7 +34406,12 @@
               }
             ]
           },
-          "sourceExplanationEnglish": "The verb complement “上” has three meanings: (A) add something to another thing, e.g., “穿上” and “加上”. (B) to reach, e.g., “趕上” and “追上” (zhuīshàng, to catch up). (C) a certain status occurs, e.g., “愛上” and “看上”."
+          "sourceExplanationEnglish": "The verb complement “上” has three meanings: (A) add something to another thing, e.g., “穿上” and “加上”. (B) to reach, e.g., “趕上” and “追上” (zhuīshàng, to catch up). (C) a certain status occurs, e.g., “愛上” and “看上”.",
+          "summary": [
+            "上 after a verb can mean putting something on, reaching a goal, or entering a new state.",
+            "The verb and the sentence show which meaning it is, as with 穿上 for putting on.",
+            "Forms: V上了 means done, 沒V上 not done, V得上 can, and V不上 can't."
+          ]
         },
         {
           "id": "B2L08-G07-P198",
@@ -34658,7 +35020,12 @@
               }
             ]
           },
-          "sourceExplanationEnglish": "The pattern “因為……的關係” is used when the speaker would like to state a brief cause rather than going into details. Thus, in this pattern, “因為” is followed only by nouns or phrases."
+          "sourceExplanationEnglish": "The pattern “因為……的關係” is used when the speaker would like to state a brief cause rather than going into details. Thus, in this pattern, “因為” is followed only by nouns or phrases.",
+          "summary": [
+            "因為……的關係 gives a short reason. Use a noun or short phrase, not a full sentence, in the middle.",
+            "The reason can come before or after the result.",
+            "Don't swap in 為了. 因為 gives the cause, and 為了 gives the purpose."
+          ]
         }
       ],
       "id": "B2L08-P02-D02",
@@ -35221,7 +35588,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "A sentence ending in 嗎 with 不 or 沒 before the verb can be a challenge, not a real question.",
+            "The speaker is not asking for information. They treat the fact as already known, so it can sound impolite."
+          ]
         },
         {
           "id": "B2L09-G02-P209",
@@ -35539,7 +35910,12 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "Put 快 before a verb to tell someone to hurry up.",
+            "Put 慢 before a verb to ask someone to slow down.",
+            "You can add 一 before 點兒 or leave it out."
+          ]
         },
         {
           "id": "B2L09-G03-P209",
@@ -36462,6 +36838,11 @@
                 "b2l09-g04-p209-ex9"
               ]
             }
+          ],
+          "summary": [
+            "到 after a verb marks where the action ends: a place, a time, or the end of a range or amount.",
+            "For a place, you can add 來 or 去 after it.",
+            "For a time, the action goes on until that time."
           ]
         },
         {
@@ -37087,7 +37468,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "A question word in a negative sentence gives a soft answer that doesn't say much.",
+            "It can mean not very, not much, didn't go anywhere, or didn't go with anyone."
+          ]
         },
         {
           "id": "B2L09-G05-P212",
@@ -37386,7 +37771,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "怎麼這麼 plus a state word shows surprise or disbelief about a situation.",
+            "The speaker is not always waiting for an answer."
+          ]
         },
         {
           "id": "B2L09-G06-P212",
@@ -37591,7 +37980,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "V得下 and V不下 say whether there is enough room, or enough ability, to fit or finish something.",
+            "In this meaning, 下 is used only in these two forms."
+          ]
         }
       ],
       "dialogue": {
@@ -38648,6 +39041,12 @@
                 "b2l09-g01-p218-ex12"
               ]
             }
+          ],
+          "summary": [
+            "Some state words can be doubled to show a high degree: AA for one syllable, AABB for two.",
+            "Use 的 when the doubled word describes the subject or a noun after it. Use 地 when it describes a verb.",
+            "Doubling already means a high degree, so don't add 很 or 非常.",
+            "Not every state word can be doubled."
           ]
         }
       ],
@@ -39193,7 +39592,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "不但 and 而且 join two short sentences, and the second one says something even stronger.",
+            "If both sentences have the same subject, put it before 不但, and you can leave it out of the second sentence.",
+            "If the subjects are different, put one after 不但 and the other after 而且."
+          ]
         },
         {
           "id": "B2L10-G02-P232",
@@ -39526,7 +39930,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "死了 after a state word exaggerates it, and is stronger than 得不得了 and 極了.",
+            "It usually has a negative meaning.",
+            "A few state words can show happy feelings, such as 高興死了."
+          ]
         },
         {
           "id": "B2L10-G03-P232",
@@ -39931,7 +40340,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "越 ... 越 ... says that as the first action grows or shrinks in degree or number, the situation changes with it.",
+            "With one subject, put 越 before both verbs.",
+            "With two subjects, the second subject's state changes as the first subject does something more."
+          ]
         },
         {
           "id": "B2L10-G04-P233",
@@ -40312,7 +40726,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "到底 pushes for an answer and shows the speaker is eager to know.",
+            "Use it in choice questions like 要不要 or 去不去, or with a question word, but not with 嗎.",
+            "It can go before or after the subject, but if the subject is a question word, 到底 goes before it."
+          ]
         }
       ],
       "dialogue": {
@@ -44068,7 +44487,11 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "對 NP 來說 gives someone's opinion or attitude about a specific event.",
+            "Put the person between 對 and 來說, then give the comment."
+          ]
         },
         {
           "id": "B2L10-G02-P240",
@@ -44420,7 +44843,12 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "的話 means if, like 如果 and 要是, but it goes at the end of the first part.",
+            "如果 and 要是 go at the start. They can be used with 的話, and either one can be left out.",
+            "要是 can sound stronger, even threatening, and 的話 is less formal."
+          ]
         },
         {
           "id": "B2L10-G03-P241",
@@ -44761,7 +45189,11 @@
           "exerciseTitle": "",
           "exercisePreview": "",
           "exerciseInstruction": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "Says the subject, often a thing, helps, influences, or benefits someone or something.",
+            "Put 對 and the person or thing first, then 有 or 沒 plus 幫助, 影響 or 好處."
+          ]
         }
       ],
       "dialogue": {
@@ -45060,7 +45492,12 @@
           "exerciseTitle": "Describe the pictures",
           "exercisePreview": "Use 了 and 著 to say what is in each picture.",
           "exerciseInstruction": "請用「PW+V 了+N / PW+V 著+N」說說這張圖片有什麼。",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "Place word + verb + 了 or 著 + noun says that something exists in a place.",
+            "Posture verbs tell how a person or animal is in that place, such as 坐 and 站.",
+            "Other verbs tell how things are put there, such as 放 and 掛."
+          ]
         },
         {
           "id": "B2L11-G02-P252",
@@ -45290,7 +45727,12 @@
           "exerciseTitle": "Answer the questions",
           "exercisePreview": "Say whether you are interested in each activity and why.",
           "exerciseInstruction": "你對下面這些事感興趣嗎？為什麼？請用「對……感興趣」或「對……不感興趣」回答。",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "對 ... 感興趣 says the subject is interested in something and wants to know it better.",
+            "Put what you are interested in between 對 and 感興趣. It can be a noun or a verb phrase.",
+            "Put 不 before 感興趣 to say not interested."
+          ]
         },
         {
           "id": "B2L11-G03-P252",
@@ -45612,7 +46054,12 @@
           "exerciseTitle": "Complete the conversations",
           "exercisePreview": "Use V 出來 to answer each prompt.",
           "exerciseInstruction": "Complete each conversation using V 出來.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "After a verb of the senses like 看 or 聽, 出來 means you can make something out by that sense.",
+            "After 想 or an action verb, it means something comes from nothing, so 想出來 means to come up with an idea.",
+            "Put 得 or 不 between the verb and 出來 to say you can or can't."
+          ]
         },
         {
           "id": "B2L11-G04-P253",
@@ -45853,7 +46300,11 @@
           "exerciseTitle": "Complete the conversations",
           "exercisePreview": "Use 嘛 to pause on the topic before adding your comment.",
           "exerciseInstruction": "Use 嘛 to pause on each topic before continuing.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "嘛 marks the topic and gives a pause while the speaker thinks about what to say next about it.",
+            "Put 嘛 right after the topic, then add the comment."
+          ]
         },
         {
           "id": "B2L11-G05-P254",
@@ -46012,7 +46463,12 @@
           "exerciseTitle": "Rewrite the sentences",
           "exercisePreview": "Rewrite each sentence with 同 + 一 + M (+ N).",
           "exerciseInstruction": "改寫句子。Rewrite the sentences with 同+一+M (+N).",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "同 + 一 + a measure word says that different people or things share the same situation.",
+            "The shared thing can be the same object, time, location and so on.",
+            "A noun can follow the measure word, but it is not required."
+          ]
         }
       ],
       "dialogue": {
@@ -46451,7 +46907,11 @@
           "exerciseTitle": "Complete the conversations",
           "exercisePreview": "List examples using 等.",
           "exerciseInstruction": "（三題對話，使用「等」列舉事物。）",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "After a list of examples, 等 can sum them up with a number for the total or a word for the category.",
+            "Put 等 at the end of a list to show there are many more of the same kind."
+          ]
         },
         {
           "id": "B2L11-G07-P260",
@@ -46638,7 +47098,11 @@
           "exerciseTitle": "Rewrite the sentences",
           "exercisePreview": "Rewrite each sentence with 從……中.",
           "exerciseInstruction": "改寫句子。Rewrite the sentences with 從……中.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "從 ... 中 says someone learns about a situation, deals with something, or gets benefits from something.",
+            "In this pattern, 中 means inside, not middle."
+          ]
         }
       ],
       "dialogue": {
@@ -47248,7 +47712,12 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "除了 means except for. It names what is left out, and 都 comes in the second part.",
+            "After 除了 you can use a noun, a verb, or a state verb with no object.",
+            "The subject can go before 除了 or before 都."
+          ]
         },
         {
           "id": "B2L12-G02-P272",
@@ -47558,7 +48027,11 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "像 or 不像 compares the first thing with the second. 不像 says the first is not as much as the second.",
+            "After 那麼 or 這麼 comes a state verb that shows degree."
+          ]
         },
         {
           "id": "B2L12-G03-P273",
@@ -47870,7 +48343,12 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "This pattern says something starts from a certain time or action. 起 means begin.",
+            "從 often goes before a time word or verb phrase, and it can be left out.",
+            "就 often starts the second part. The subject can go at the start or in the second part."
+          ]
         },
         {
           "id": "B2L12-G04-P273",
@@ -48139,7 +48617,11 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "向 can show the direction of an action. Before a person, it shows who the action is aimed at.",
+            "Compared with 跟, 向 sounds more formal, polite and respectful."
+          ]
         },
         {
           "id": "B2L12-G05-P274",
@@ -48489,7 +48971,12 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "難怪 says a result is no surprise, now that you know the reason.",
+            "The known fact usually comes first, then 難怪 and the result.",
+            "A verb phrase often follows 難怪, and it can also start a reply in conversation."
+          ]
         },
         {
           "id": "B2L12-G06-P275",
@@ -48736,7 +49223,12 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "V得了 says you can do the action or reach the result. The negative is V不了.",
+            "It often goes with a verb of one syllable.",
+            "It is about being able to do it. V了 is different, because it says the action is done."
+          ]
         }
       ]
     },
@@ -49099,7 +49591,11 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "個 after a verb makes the action sound short, relaxed or easy.",
+            "Words made of a verb and its object often use this form, such as 喝個茶."
+          ]
         },
         {
           "id": "B2L12-G08-P283",
@@ -49475,7 +49971,11 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "來 stands in for an action that is already clear from the context, often a specific one.",
+            "自己來 is a polite way to say you don't want to trouble someone else."
+          ]
         }
       ]
     },
@@ -49961,7 +50461,12 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "不管 ... 都 says that in every possible condition, the result stays the same.",
+            "After 不管 come the possible conditions, and after 都 comes the situation that does not change.",
+            "What follows 不管 is a question: a question word, A-not-A, a choice, or two opposite one-syllable words."
+          ]
         },
         {
           "id": "B2L13-G02-P294",
@@ -50571,7 +51076,12 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "不如 offers a better suggestion than the original action.",
+            "Before 不如, the speaker can comment on the original action to explain why.",
+            "After the suggestion, you can add a further explanation."
+          ]
         },
         {
           "id": "B2L13-G03-P294",
@@ -51072,7 +51582,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "了一點兒 after a state word says something is not as good as expected, but not by much.",
+            "It usually shows small weaknesses or a mild complaint, like 貴了一點兒."
+          ]
         }
       ],
       "dialogue": {
@@ -51661,7 +52175,12 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "比 means than. The thing you compare with goes after it: 我比你高.",
+            "比較 means more. The subject goes before it and the state verb goes after it.",
+            "比起來 gives a remark about one thing compared with another, often as 跟 B 比起來."
+          ]
         },
         {
           "id": "B2L13-G05-P302",
@@ -52122,7 +52641,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "差一點兒 says something almost happened.",
+            "It is followed by a verb or verb phrase, and it is usually about something the speaker did not want."
+          ]
         },
         {
           "id": "B2L13-G06-P303",
@@ -52577,7 +53100,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "白 plus a verb, often a one-syllable one, says an action was done but did not have the effect it should have.",
+            "With verbs like 吃, 喝 and 住, it means not willing to pay money or make effort."
+          ]
         }
       ],
       "dialogue": {
@@ -53118,7 +53645,11 @@
           "exerciseTitle": "Practice",
           "exercisePreview": "Use 想起來 to complete the four prompts.",
           "exerciseInstruction": "Complete the sentences with a suitable 想起來 form.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "想起來 is used when someone suddenly remembers something almost forgotten, or remembers it with great effort.",
+            "想得起來 and 想不起來 say whether someone can remember something almost forgotten or from long ago."
+          ]
         },
         {
           "id": "B2L14-G02-P317",
@@ -53479,7 +54010,11 @@
           "exerciseTitle": "Practice",
           "exercisePreview": "Complete the dialogues with 從來＋沒／不.",
           "exerciseInstruction": "Complete the dialogues.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "從來 plus 沒 or 不 says someone has never done something, or never does it.",
+            "Put 從來 and 沒 or 不 before the verb."
+          ]
         },
         {
           "id": "B2L14-G03-P317",
@@ -53683,7 +54218,11 @@
           "exerciseTitle": "Practice",
           "exercisePreview": "Complete the dialogues with 等等.",
           "exerciseInstruction": "Complete the dialogues with 等等.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "等等 at the end of a list shows there are more items of the same kind that are not listed.",
+            "It works like 等. Normally, don't put 等等 after proper nouns."
+          ]
         }
       ],
       "dialogue": {
@@ -54160,7 +54699,11 @@
           "exerciseTitle": "Practice",
           "exercisePreview": "Complete the dialogues with 當……，就…….",
           "exerciseInstruction": "Answer each question with 當……，就…….",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "當 ... 就 says that when one situation happens, another follows right away.",
+            "當 is often used with 的時候."
+          ]
         },
         {
           "id": "B2L14-G05-P325",
@@ -54507,6 +55050,11 @@
                 "b2l14-g05-ex5"
               ]
             }
+          ],
+          "summary": [
+            "讓 can work like 被, to say what was done to the subject. The doer after 讓 can't be left out.",
+            "As a verb, 讓 can mean to cause something to happen, or to make someone feel or do something.",
+            "It can also mean to allow someone to do something. Asking someone to do something with 讓 sounds more polite and soft."
           ]
         },
         {
@@ -54762,7 +55310,11 @@
           "exerciseTitle": "Practice",
           "exercisePreview": "Complete each response with 無所謂.",
           "exerciseInstruction": "Complete the dialogues.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "無所謂 shows the speaker is indifferent to something or does not care about it.",
+            "Put it after the thing, or use it alone."
+          ]
         },
         {
           "id": "B2L14-G07-P328",
@@ -55023,7 +55575,12 @@
           "exerciseTitle": "Practice",
           "exercisePreview": "Complete the conversations with V走.",
           "exerciseInstruction": "Complete the conversations with V走.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "走 after an action verb means something leaves or disappears.",
+            "The verb is an action verb, such as 搬, 拿 or 帶.",
+            "Put 得 or 不 between the verb and 走 to say you can or can't."
+          ]
         },
         {
           "id": "B2L14-G08-P329",
@@ -55200,7 +55757,11 @@
           "exerciseTitle": "Practice",
           "exercisePreview": "Complete the dialogues with 要不是.",
           "exerciseInstruction": "Complete the dialogues with 要不是.",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "要不是 is followed by a fact that did happen. Without that fact, something else would have happened.",
+            "The second situation did not really happen."
+          ]
         }
       ],
       "dialogue": {
@@ -55991,7 +56552,12 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "可 adds emphasis to the verb or state verb after it.",
+            "It is used to deny someone's opinion, stress a fact, or show that an expected result finally happened.",
+            "It can also mean be sure to, or remind someone to do something."
+          ]
         },
         {
           "id": "B2L15-G02-P342",
@@ -56329,7 +56895,12 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "A measure word for actions counts how many times an action happens.",
+            "Examples of these measure words are 拳, 眼, 口, 次 and 遍.",
+            "Put 一 and the measure word after the verb."
+          ]
         },
         {
           "id": "B2L15-G03-P343",
@@ -56570,7 +57141,12 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "下來 after a verb can show an action moving downward.",
+            "It can also mean writing something down or buying something, such as 記下來.",
+            "It can also mean stopping a movement and staying."
+          ]
         },
         {
           "id": "B2L15-G04-P343",
@@ -56842,7 +57418,11 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "說 V 就 V says you do something right away, without much hesitation or thought.",
+            "It can also show that something happens easily or often."
+          ]
         }
       ]
     },
@@ -57429,7 +58009,11 @@
           "exerciseInstruction": "",
           "exerciseTitle": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "誰知道 says something happened unexpectedly.",
+            "Here it is a question that doesn't need an answer. Put the surprising result after it."
+          ]
         }
       ]
     },
@@ -57932,7 +58516,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "得很 shows a high degree. It is more common in conversation, to stress a situation.",
+            "It is close in meaning to 死了 and 得不得了, but is often used to show disapproval of someone's opinion."
+          ]
         },
         {
           "id": "B2L16-G02-P362",
@@ -58400,7 +58988,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "得看 or 要看 says what someone will do depends on the situation after 看.",
+            "After 看 you can have a phrase or noun, such as a question word, A-not-A, or two opposite one-syllable words."
+          ]
         },
         {
           "id": "B2L16-G03-P363",
@@ -58768,7 +59360,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "像 ... 什麼的 gives examples to explain further, and shows that the list is long.",
+            "Speakers often give only 2 to 3 items because of limited space or time."
+          ]
         },
         {
           "id": "B2L16-G04-P364",
@@ -59059,7 +59655,12 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "V 來 V 去 shows an action repeated many times in a short time.",
+            "It is used when someone is waiting or walking around.",
+            "The two verbs are often the same."
+          ]
         }
       ],
       "dialogue": {
@@ -59584,7 +60185,11 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "A 比得上 B means A can compare with B, or is even better.",
+            "A 比不上 B says A can't compare with B."
+          ]
         },
         {
           "id": "B2L16-G06-P371",
@@ -60068,7 +60673,10 @@
           "exerciseTitle": "",
           "exerciseInstruction": "",
           "exercisePreview": "",
-          "questions": []
+          "questions": [],
+          "summary": [
+            "只有 gives a condition that must be met. The result after 才 happens only if it is met."
+          ]
         }
       ],
       "dialogue": {

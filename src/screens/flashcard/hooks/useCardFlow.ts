@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import type { PracticeFlowStatus } from '../../../types/models';
 import { audioService } from '../../../services/audioService';
+import { recordedOnly } from '../../../services/audio/recordingFile';
 import { playFlowSentence } from '../../../services/audio/sentenceAudio';
 import { fetchPackedFlashcardExtras } from '../../../services/contentPacks';
 import { useAppStore } from '../../../store/useAppStore';
@@ -94,7 +95,7 @@ export function useCardFlow({
       if (isCancelled()) return;
 
       await Promise.race([
-        audioService.playCard(currentCard, pronunciationRate),
+        audioService.playCard(currentCard, pronunciationRate, recordedOnly(currentCard)),
         wait(2800),
       ]);
       if (isCancelled()) return;

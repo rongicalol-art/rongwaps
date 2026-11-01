@@ -1,13 +1,13 @@
 ---
 name: rongwaps-ui-director
-description: Direct and review UI work for the Ron's Mandarin Chinese-learning web app. Use for screen design, redesigns, component styling, animation/motion, icon or illustration choices, responsive polish, visual audits, and any request to make Ron's Mandarin feel more premium, playful, calm, cohesive, or intentional.
+description: Direct and review UI work for the Ron's Mandarin Chinese-learning web app. Use for screen design, redesigns, component styling, animation/motion, icon or illustration choices, responsive polish, visual audits, and any request to make Ron's Mandarin feel more premium, playful, cohesive, or intentional.
 ---
 
 # Ron's Mandarin UI Director
 
 Full owner brief (taste, learning rules, how to work): `.claude/OWNER_PREFERENCES.md`. Read it first.
 
-Goal: a calm, tactile, Duolingo-polished Chinese learning product that feels authored as one system, not a pile of individually cute screens. The owner judges by eye from screenshots; the bar is "looks premium and intentional on a real screen", not "matches the spec".
+Goal: a playful, illustrated, tactile, Duolingo-polished Chinese learning product in the app's own warm palette, authored as one system, not a pile of individually cute screens. Design in the voice the app already has (its illustrations, buttons and colours); never reinterpret it as minimal, monochrome or "calm". The owner judges by eye from screenshots; the bar is "looks premium and intentional on a real screen", not "matches the spec".
 
 ## How the owner works (read first)
 
@@ -22,7 +22,7 @@ Goal: a calm, tactile, Duolingo-polished Chinese learning product that feels aut
 
 ## Taste (repeated corrections — treat as law)
 
-**Calm over clever.** Fewest zones that do the job. When a screen feels empty, fix composition/alignment first; never fill space with descriptions, "what you'll learn" lists, word-chip previews, stats lines, or extra labels. Rejected repeatedly: status pills ("Review · 1 of 2"), "Missed"/"Done" tags, counts next to buttons, breadcrumbs like "Lesson 1 · Part 1 vocabulary", floating helper text. **No bordered box inside a bordered container** (a tile inside a card inside a bar reads as "messy"): inside a container use plain text hierarchy.
+**Clean over cluttered.** Fewest zones that do the job. When a screen feels empty, fix composition/alignment first; never fill space with descriptions, "what you'll learn" lists, word-chip previews, stats lines, or extra labels. Rejected repeatedly: status pills ("Review · 1 of 2"), "Missed"/"Done" tags, counts next to buttons, breadcrumbs like "Lesson 1 · Part 1 vocabulary", floating helper text. **No bordered box inside a bordered container** (a tile inside a card inside a bar reads as "messy"): inside a container use plain text hierarchy.
 
 **Tactile, not flat.** Anything selectable must look like a real button: border + pressable bottom edge, selected = book-accent border + soft fill. Plain/ghost rows read as "not a button". Tactile back/close buttons use the universal style. But depth only where it means "press me"; no shadows on docks/windows ("dont add shadows"), no blur (CPU).
 
@@ -36,7 +36,7 @@ Goal: a calm, tactile, Duolingo-polished Chinese learning product that feels aut
 
 **Type.** Nunito heavy for titles; Chinese text uses `font-chinese` (or `font-chinese font-semibold text-ui-muted-strong` for subtitles) so the learner's chosen font (Kai or Huninn) applies everywhere; never hardcode fonts to sans. Consistent text styles across blocks: a block's title style must match its siblings ("text styles are inconsistent" is a recurring complaint). Short copy; no uppercase sentences.
 
-**Images.** Native ratio, uncropped (reading art is 16:9), no text overlays on pictures.
+**Images.** The app's illustrations (warm, colourful flat art) are the picture style; anything drawn for an exercise matches them. Pictures keep their colours in dark mode (never inverted or tinted). Native ratio, uncropped (reading art is 16:9), no text overlays on pictures.
 
 **Layout.** Desktop keeps the side nav; windows open beside it, never a full-bleed takeover or centred pop-up for primary screens. Mobile hierarchy is designed, not stacked desktop. Side panels over square modals. Bottom docks share one standard (padding, position, size) app-wide. No inactive/disabled buttons: if a mode has no content, remove it.
 
@@ -48,7 +48,7 @@ Goal: a calm, tactile, Duolingo-polished Chinese learning product that feels aut
 - Smooth and premium: no stutter, no layout shift on open, no element that jumps, fades in after moving, or "strolls" sideways at the end. Settle with a gentle ease-out; a touch of overshoot only for success/discovery.
 - Choreograph in beats: main element first, then the rest staggered (40–60ms). Start quickly (no dead time before the first move) but don't rush the move itself.
 - Exits must make sense: never drop cards downward or fade them in odd places; things leave by going where they belong (under the top card, into the deck, back to their slot).
-- Stacks: "intentional messy" is fine only when calm; default to clean, straight, aligned. Back cards softer (lighter fill, same border family), pile peeks *beneath* the top card, never above it.
+- Stacks: "intentional messy" is fine only when tidy; default to clean, straight, aligned. Back cards softer (lighter fill, same border family), pile peeks *beneath* the top card, never above it.
 - Windows open per type (sheet from bottom, panel from side), unified and token-driven, not ad-hoc.
 - Whole objects move: a tile bounces as a whole (frame and all), presses go down into the element's own bottom edge, remaining items reflow to close gaps (shared layout), nothing stalls halfway.
 - Celebrations lead with the mascot and headline; numbers count only after their tile has landed; a tap skips the entrance.
@@ -57,8 +57,8 @@ Goal: a calm, tactile, Duolingo-polished Chinese learning product that feels aut
 
 ## References (what to borrow, what not)
 
-- **Duolingo**: chunky 3D buttons (solid darker bottom edge that compresses on press, ~180ms), rounded friendly shapes, one bold primary action per screen, celebratory end-of-lesson moment with mascot/lottie, progress bar as the only header chrome. Borrow the polish and feedback clarity; *don't* borrow saturated owl-green everywhere, loud copy, or white-on-white flatness — our canvas is warm off-white and calmer.
-- **Du Chinese**: reading-first calm, tap-a-word for pinyin/meaning/audio without leaving the text, generous Chinese type. Model for reading and breakdown screens.
+- **Duolingo**: chunky 3D buttons (solid darker bottom edge that compresses on press, ~180ms), rounded friendly shapes, one bold primary action per screen, celebratory end-of-lesson moment with mascot/lottie, progress bar as the only header chrome. Borrow the polish and feedback clarity; *don't* borrow saturated owl-green everywhere, loud copy, or white-on-white flatness — our canvas is warm off-white.
+- **Du Chinese**: reading-first, tap-a-word for pinyin/meaning/audio without leaving the text, generous Chinese type. Model for reading and breakdown screens.
 - **HelloChinese**: game-like lesson path, tone colour practice, handwriting canvas. Model for tone colours per syllable and stroke practice (canvas always live, not a static glyph).
 - **Pleco / Skritter**: depth of dictionary data, stroke order inline in the card. Borrow the information, never the density or chrome.
 - Dribbble flashcard shots the owner shares: large card, minimal chrome, one clear pair of answer buttons.
@@ -67,7 +67,7 @@ Goal: a calm, tactile, Duolingo-polished Chinese learning product that feels aut
 
 0. Plan first for design work (see AGENTS.md); propose something better than the literal ask.
 1. One sentence: the screen's primary user job. One primary action, ≤2 secondary.
-2. Look at the live screen before redesigning. Never by answering on the owner's real deck (it writes SRS and syncs): use the DEV debug window, Ctrl+Shift+0 → UI Previews, or ask.
+2. Look at the live screen before redesigning: the DEV debug window (Ctrl+Shift+0 → UI Previews) is quickest; the owner's real account is allowed when the flow needs real data.
 3. Prototype (artifact) → pick → build. Reuse widgets/tokens (`.claude/rules/ui.md`, `docs/WIDGETS.md`, [visual-system.md](references/visual-system.md)).
 4. Verify yourself at 390x844 and 1440x900: compare to the prototype, check states (hover, pressed, empty, loading, long words), motion frame-by-frame where possible, reduced motion.
 

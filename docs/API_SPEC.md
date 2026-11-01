@@ -33,7 +33,7 @@ Protected lesson-content requests require a valid Supabase user and `has_beta_ac
 
 `GET /api/games/config` returns the configured public game-server origin (`GAMES_SERVER_URL`) or `null`. It is not cached and contains no credentials.
 
-The games Worker verifies Supabase access tokens itself (JWKS), so the app server has no other game endpoint. The Worker provides authenticated `POST /rooms/:code/leave` in addition to room creation/join and socket tickets. See [DEPLOY.md → Study together](DEPLOY.md#study-together-presence-lesson-chat-quiz-races) for the Lobby, race rooms, limits and verification.
+The games Worker verifies Supabase access tokens itself (JWKS), so the app server has no other game endpoint. The Worker provides authenticated `POST /rooms/:code/leave` in addition to room creation/join and socket tickets. See [RELEASING.md → Study together](RELEASING.md#study-together-presence-globallessonparty-chat-quiz-races) for the Lobby, race rooms, limits and verification.
 
 ## 🚦 Rate limits
 
@@ -53,7 +53,7 @@ headers.
 
 - **Method**: `GET`
 - **Path**: `/healthz`
-- **Response**: `200 OK` with `{ "ok": true }`.
+- **Response**: `200 OK`, `Cache-Control: no-store`, with `{ "ok": true, "commit": "<deployed git SHA or null>", "env": "production" | "staging" | "development" }`. Release checks wait for `commit` to match the release.
 
 ### Protected lesson content
 
@@ -65,7 +65,7 @@ The client reuses course recordings for dictionary/custom cards only when the ex
 
 Recording playback checks the existing persistent audio cache before streaming a cache miss directly from the CDN. Card sessions preload the next two cards during idle time. Mixed quizzes decode the current and next question, including eligible character clips. Party rounds also download up to five questions ahead, stopping further lookahead after 2 MiB of compressed recordings. Players report readiness after the initial buffer is downloaded and the first question is prepared. Retained recording object URLs are capped at 48 entries and 8 MiB; the existing persistent recording cache retains its 150 MiB limit. CacheStorage and IndexedDB availability, browser eviction, and CDN CORS determine offline availability.
 
-Vocabulary packs reference verified, hash-named copies under `vocabulary-trimmed/v1/` where leading silence was safely reduced. These copies retain 80–160 ms before detected sound and preserve decoded speech without MP3 re-encoding; `content/audio/vocabulary_trim.json` records source hashes and measured cut points. Already-short clips keep their original reference. Character sounds, supplements, and reader timing are unchanged; explicit legacy URLs still identify the preserved originals. Pipeline commands are in [DEPLOY.md](DEPLOY.md#vocabulary-leading-silence-pipeline).
+Vocabulary packs reference verified, hash-named copies under `vocabulary-trimmed/v1/` where leading silence was safely reduced. These copies retain 80–160 ms before detected sound and preserve decoded speech without MP3 re-encoding; `content/audio/vocabulary_trim.json` records source hashes and measured cut points. Already-short clips keep their original reference. Character sounds, supplements, and reader timing are unchanged; explicit legacy URLs still identify the preserved originals. Pipeline commands are in [RELEASING.md](RELEASING.md#vocabulary-leading-silence-pipeline).
 
 ## 🔧 Configuration
 
@@ -73,7 +73,7 @@ Vocabulary packs reference verified, hash-named copies under `vocabulary-trimmed
 | --- | --- |
 | `PORT` | Listen port (default `3000`). |
 | `NODE_ENV` | `production` serves `dist/`; anything else mounts the Vite dev middleware. |
-| `SENTRY_DSN` | Optional server-side error reporting; disabled when unset. |
+| `SENTRY_DSN` | Optional server-side error reporting DSN. When unset the server uses the browser's public `VITE_SENTRY_DSN` (same project); reporting is off only when both are unset, outside production, or on staging (`APP_ENV=staging`). |
 
 Supabase credentials are read by the server-owned client in `server/supabase.ts`; the server never
 imports browser application code.
@@ -104,7 +104,7 @@ flowchart TD
 
 ### Remaining deployment and content considerations
 
-- Production audio should use an R2 custom domain, not the rate-limited development endpoint. Enable edge caching and verify CORS separately for every production/preview origin. See [DEPLOY.md](DEPLOY.md) and [Cloudflare public bucket guidance](https://developers.cloudflare.com/r2/buckets/public-buckets/).
+- Production audio should use an R2 custom domain, not the rate-limited development endpoint. Enable edge caching and verify CORS separately for every production/preview origin. See [RELEASING.md](RELEASING.md#production-audio-delivery) and [Cloudflare public bucket guidance](https://developers.cloudflare.com/r2/buckets/public-buckets/).
 - Browser speech voice quality and pronunciation depend on the voices available on each device and browser.
 - Book 1 reader tracks are hosted; Books 2–4 readers currently use speech synthesis. All four books have vocabulary recording references. Polyphonic readings, tone sandhi and context-only character sounds deliberately limit isolated-tile audio; silence for an unsafe tile is preferable to teaching the wrong reading.
 - Rate limits are per process, so multiple replicas multiply the limit. Current limits bound each process; a shared store is needed before treating them as fleet-wide limits.

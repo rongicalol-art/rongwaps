@@ -1,0 +1,53 @@
+name: Roll back
+
+# Owner-run undo button (Actions → Roll back → Run workflow). Restores the
+# previous Render build in about a minute; the database is untouched, so this
+# is safe whenever the release's migrations were backward compatible (CI
+# enforces that). Data recovery is a different procedure: docs/RELEASING.md.
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Which site'
+        type: choice
+        options: [production, staging]
+        default: production
+      deploy:
+        description: 'Render deploy id to restore, or "previous"'
+        required: true
+        default: previous
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
+      SERVICE: ${{ inputs.target == 'production' && vars.PRODUCTION_SERVICE_ID || vars.STAGING_SERVICE_ID }}
+      SITE: ${{ inputs.target == 'production' && 'https://ronsmandarin.com' || vars.STAGING_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Roll back
+        id: rollback
+        run: node scripts/release/render.ts rollback "$SERVICE" "${{ inputs.deploy }}"
+      - name: Check the site
+        run: |
+          if [ "${{ inputs.target }}" = production ]; then
+            node scripts/release/smoke.ts "$SITE" --env production --commit "${{ steps.rollback.outputs.commit }}" --supabase-ref ylpzxpqyfaayavkvhikw --forbid-ref zpljyjcbqkrelpdzvmqz
+          else
+            node scripts/release/smoke.ts "$SITE" --env staging --commit "${{ steps.rollback.outputs.commit }}" --supabase-ref zpljyjcbqkrelpdzvmqz --forbid-ref ylpzxpqyfaayavkvhikw
+          fi
+      - name: Record it
+        if: inputs.target == 'production'
+        run: |
+          gh issue create --title "Production rolled back to ${{ steps.rollback.outputs.commit }}" --body "Manual rollback by @$GITHUB_ACTOR. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+          The \`production\` branch still has the newer commits: fix forward with a PR, then release again."

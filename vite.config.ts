@@ -179,12 +179,18 @@ const pwaPlugin = VitePWA({
   },
 });
 
+// Sentry release = the deployed commit (Render sets RENDER_GIT_COMMIT at build).
+process.env.VITE_APP_RELEASE ||= process.env.RENDER_GIT_COMMIT ?? '';
+
 export default defineConfig(() => {
   return {
     plugins: [studyPacksPlugin(), chineseFontStylesPlugin(), react(), tailwindcss(), decompositionRuntimeDevPackPlugin(), shellPrecachePlugin, pwaPlugin],
     build: {
       outDir: 'dist',
       emptyOutDir: true,
+      // Maps only when they will be uploaded to Sentry; scripts/build/uploadSourceMaps.ts
+      // deletes them from dist afterwards, so source code is never served.
+      sourcemap: process.env.SENTRY_AUTH_TOKEN ? 'hidden' : false,
       // scripts/build/prerender.ts maps source asset paths to their hashed files with it.
       manifest: true,
       rollupOptions: {

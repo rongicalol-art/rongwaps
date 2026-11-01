@@ -1,32 +1,151 @@
 name: CI
 
+# `verify` is the gate: Render deploys staging (main) and the live site
+# (production) only after every check on that commit passes.
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, production]
+  schedule:
+    - cron: '0 19 * * *' # 03:00 Taiwan: nightly journeys on main
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      BASE_REF: ${{ github.event_name == 'pull_request' && github.base_ref || '' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Fetch the base branch for change checks
+        if: github.event_name == 'pull_request'
+        run: git fetch --no-tags --depth=1 origin "$BASE_REF"
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - name: Secret scan (changed lines)
+        run: |
+          curl -sSfL -o /tmp/gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  /tmp/gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+          base=$([ -n "$BASE_REF" ] && echo "origin/$BASE_REF" || echo "HEAD~1")
+          # Added lines only: removed lines are already gone.
+          { git diff --unified=0 "$base" HEAD | grep -E '^\+[^+]' || true; } | /tmp/gitleaks stdin --no-banner --redact --exit-code 1
+      - name: Migration safety
+        run: npx tsx scripts/release/checkMigrations.ts "$([ -n "$BASE_REF" ] && echo "origin/$BASE_REF" || echo "HEAD~1")"
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run games:check
       - run: npx --no-install wrangler deploy --dry-run --config games/wrangler.staging.jsonc
       - run: npm run games:test
       - run: npm test
+      - run: npm run content:validate
       - run: npm run jev:lint
       - run: npm run build
         env:
           # Placeholders so the client bundle builds; never real keys.
           VITE_SUPABASE_URL: https://placeholder.supabase.co
           VITE_SUPABASE_ANON_KEY: placeholder-anon-key
+      - name: Size budgets
+        run: npm run perf:check
+
+  # Learner journeys in real browsers against a throwaway local Supabase stack.
+  # Always on the way to production (deploy.yml waits for this workflow), nightly
+  # on main, and on PRs that touch saving, sign-in, the server or the database.
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Decide whether journeys are needed
+        id: changed
+        run: |
+          run=false
+          case "$GITHUB_EVENT_NAME" in
+            schedule|workflow_dispatch) run=true ;;
+            push) [ "$GITHUB_REF_NAME" = production ] && run=true ;;
+            pull_request)
+              git fetch --no-tags --depth=1 origin "$GITHUB_BASE_REF"
+              if [ "$GITHUB_BASE_REF" = production ] || ! git diff --quiet "origin/$GITHUB_BASE_REF" HEAD -- \
+                  src/services src/store src/hooks src/utils/sync src/screens/auth server supabase \
+                  tests/e2e playwright.config.ts package-lock.json; then run=true; fi ;;
+          esac
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        if: steps.changed.outputs.run == 'true'
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - if: steps.changed.outputs.run == 'true'
+        run: npm ci
+      - uses: supabase/setup-cli@v3
+        if: steps.changed.outputs.run == 'true'
+        with:
+          version: 2.106.0
+      - name: Local Supabase with every migration
+        if: steps.changed.outputs.run == 'true'
+        run: supabase start -x studio,imgproxy,realtime,edge-runtime,logflare,vector,supavisor,mailpit,postgres-meta
+      - name: Build against it
+        if: steps.changed.outputs.run == 'true'
+        run: |
+          eval "$(supabase status -o env | grep -E '^(API_URL|ANON_KEY)=')"
+          VITE_SUPABASE_URL="$API_URL" VITE_SUPABASE_ANON_KEY="$ANON_KEY" npm run build
+      - name: Browsers
+        if: steps.changed.outputs.run == 'true'
+        run: npx playwright install --with-deps chromium webkit
+      - name: Journeys
+        if: steps.changed.outputs.run == 'true'
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure() && steps.changed.outputs.run == 'true'
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+  # A migration that would break restores must fail its PR, not the night it matters.
+  backup-selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Only when migrations or backup tooling change
+        id: changed
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = pull_request ]; then
+            git fetch --no-tags --depth=1 origin "$GITHUB_BASE_REF"
+            base="origin/$GITHUB_BASE_REF"
+          else
+            base=HEAD~1
+          fi
+          if git diff --quiet "$base" HEAD -- supabase/ scripts/release/backup/ .github/workflows/backup.yml; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: supabase/setup-cli@v3
+        if: steps.changed.outputs.run == 'true'
+        with:
+          version: 2.106.0
+      - name: Local Supabase with every migration
+        if: steps.changed.outputs.run == 'true'
+        run: supabase start -x studio,imgproxy,realtime,edge-runtime,logflare,vector,supavisor,mailpit,postgres-meta
+      - name: Dump and restore synthetic learners
+        if: steps.changed.outputs.run == 'true'
+        run: scripts/release/backup/selftest.sh supabase_db_rongwaps

@@ -15,7 +15,7 @@
 
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
-| ActionButton | `ActionButton.tsx` | Text action: `primary` `secondary` `quiet` `danger` `success` `warning`; `sm`/`md`/`lg`, `radius` (`control` default, `feature` for 24px media tiles), `fullWidth`, `loading`, `edgeColor`. One dominant action per surface. Labels default to ALL CAPS (`font-black uppercase tracking-wider`, set by the widget); call sites may opt out with `normal-case tracking-normal` for compact icon+word buttons (e.g. the quiz's Slow button). `secondary` and `quiet` labels take the book accent (`brand-primary-deep`), `quiet` has no box or depth. |
+| ActionButton | `ActionButton.tsx` | Text action: `primary` `secondary` `quiet` `danger` `success` `warning`; `sm`/`md`/`lg`, `radius` (`control` default, `feature` for 24px media tiles), `fullWidth`, `loading`, `edgeColor`. A button that opens a window with its own loader (practice, grammar, reader) opens it at once, so only one loader shows. A button that opens a screen without one (lesson window, grammar exercise) pairs `loading` with `useReadyAction` (`src/hooks/`): the screen opens once ready, loading shows after 150 ms, and after 4 s it opens anyway. One dominant action per surface. Labels default to ALL CAPS (`font-black uppercase tracking-wider`, set by the widget); call sites may opt out with `normal-case tracking-normal` for compact icon+word buttons (e.g. the quiz's Slow button). `secondary` and `quiet` labels take the book accent (`brand-primary-deep`), `quiet` has no box or depth. |
 | IconActionButton | `IconActionButton.tsx` | Icon utility button; `icon` and `label` required (label = accessible name + tooltip). |
 | KeyChip | `KeyChip.tsx` | Keyboard hint hanging after a button label (`Space`, `1`); place inside a `relative` label span; shown only on precise pointers, never touch; `visible={false}` removes it. |
 | EdgeNavButtons | `EdgeNavButtons.tsx` | Invisible left/right tap zones for card/writing screens; `half` or `edge` mode. |
@@ -35,7 +35,7 @@
 | CloudPuff | `CloudPuff.tsx` | Decorative cloud silhouette (`aria-hidden` container). |
 | VideoBackground | `VideoBackground.tsx` | Static decorative artwork via `posterSrc`; no continuous video decoding. Optional scrim and children. |
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
-| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`); `challenge` (lightning) for quiz races. |
+| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`); `challenge` (lightning) for quiz races. `preloadPlayfulNavIcons()` loads the files ahead (at idle after boot, and before the lesson window opens). |
 | UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
 | Avatar / AvatarStack | `AvatarStack.tsx` | Initials on a profile avatar colour (`avatarStyle`), optional live dot; `AvatarStack` overlaps up to `max` faces then "+N" and renders nothing when empty. Study together faces (Books tiles, lesson window, practice header, rooms). |
 | ProfileCover | `ProfileCover.tsx` | `coverStyle(preset, image?)` paints a profile cover (uploaded photo, else the preset colour); `ProfileCoverGlyphs` draws the faint character pattern, sized by `className`. Own profile and classmate visits. |
@@ -70,7 +70,7 @@
 | EmptyState | `EmptyState.tsx` | Icon badge + headline + copy + optional action; `compact` for drawers. |
 | CircularProgress | `CircularProgress.tsx` | SVG ring; clamped `value`. |
 | CustomProgressBar | `CustomProgressBar.tsx` | Rounded bar; `progress`, `accentClassName`. |
-| LoadingScreen | `LoadingScreen.tsx` | Shared loader: `fullScreen`, `inline`, `tone` (`canvas`/`practice`) match the surface being prepared. Windows use `useOpenPhase` (150ms hold; ready content appears immediately). Shows a light CSS indicator first; the branded player loads only after 200ms on capable devices. Low-core, low-memory and reduced-motion devices keep the light indicator. |
+| LoadingScreen | `LoadingScreen.tsx` | Shared loader: `fullScreen`, `inline`, `tone` (`canvas`/`practice`) match the surface being prepared. Windows use `useOpenPhase` (150ms hold; ready content appears immediately). Shows large audio bars (the `ActionButton` loading look) in CSS on every device. |
 | LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. Until loaded it is an empty box of its final size (no spinner); JSON + lottie-react are cached at module level (`preloadLottie`/`preloadAnimation`). Pauses outside the viewport or in a hidden tab, respects reduced motion, and renders authored frames without subframe interpolation. Course art plays once when selected; loading indicators may loop. |
 | Skeleton | `Skeleton.tsx` | Generic placeholder. |
 

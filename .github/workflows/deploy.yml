@@ -1,0 +1,143 @@
+name: Deploy
+
+# Runs after CI passes on a push:
+#   main       → staging (staging migrations applied first, then checked)
+#   production → live site (only if its migrations are already applied;
+#                checked after deploy, rolled back automatically on failure)
+# Render auto-deploy stays off; this workflow is the only deployer.
+# See docs/RELEASING.md.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main, production]
+
+permissions:
+  contents: write # release tags and notes
+  issues: write # rollback notices
+
+concurrency:
+  group: deploy-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+env:
+  SHA: ${{ github.event.workflow_run.head_sha }}
+  RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+  PRODUCTION_REF: ylpzxpqyfaayavkvhikw
+  STAGING_REF: zpljyjcbqkrelpdzvmqz
+
+jobs:
+  staging:
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SHA }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: supabase/setup-cli@v3
+        with:
+          version: 2.106.0
+      - name: Apply new migrations to staging (synthetic data only)
+        env:
+          STAGING_DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+        run: |
+          if [ -z "$STAGING_DATABASE_URL" ]; then echo "::warning::STAGING_DATABASE_URL not set; staging migrations skipped"; exit 0; fi
+          case "$STAGING_DATABASE_URL" in *"$PRODUCTION_REF"*) echo "::error::STAGING_DATABASE_URL points at production"; exit 1;; esac
+          supabase db push --db-url "$STAGING_DATABASE_URL" --yes
+      - name: Deploy the staging Study together server
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.R2_ACCOUNT_ID }}
+        run: |
+          npm ci --ignore-scripts
+          npx --no-install wrangler deploy --config games/wrangler.staging.jsonc --message "staging ${SHA:0:8}"
+      - name: Deploy staging
+        run: node scripts/release/render.ts deploy "${{ vars.STAGING_SERVICE_ID }}" "$SHA"
+      - name: Check staging
+        run: node scripts/release/smoke.ts "${{ vars.STAGING_URL }}" --env staging --commit "$SHA" --supabase-ref "$STAGING_REF" --forbid-ref "$PRODUCTION_REF"
+
+  production:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'production'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      SERVICE: ${{ vars.PRODUCTION_SERVICE_ID }}
+      SITE: https://ronsmandarin.com
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SHA }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Every migration in this release is already applied
+        env:
+          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+        run: |
+          applied=$(psql "$DATABASE_URL" --no-psqlrc -At -c 'select version from supabase_migrations.schema_migrations')
+          missing=""
+          for file in supabase/migrations/*.sql; do
+            version=$(basename "$file" | cut -d_ -f1)
+            grep -qx "$version" <<< "$applied" || missing="$missing $(basename "$file")"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Run the Migrate workflow (production) before releasing. Not applied:$missing"
+            exit 1
+          fi
+
+      # The Study together server ships with the app it serves (it was once left
+      # 10 changes behind). It goes first: the new app expects it; it keeps
+      # serving the previous app version too.
+      - name: Deploy the Study together server
+        id: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.R2_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::CLOUDFLARE_API_TOKEN is not set"; exit 1; fi
+          npm ci --ignore-scripts
+          npx --no-install wrangler deploy --config games/wrangler.jsonc --message "release ${SHA:0:8}"
+
+      - name: Deploy
+        id: deploy
+        run: node scripts/release/render.ts deploy "$SERVICE" "$SHA"
+
+      - name: Check the live site
+        id: smoke
+        run: node scripts/release/smoke.ts "$SITE" --env production --commit "$SHA" --supabase-ref "$PRODUCTION_REF" --forbid-ref "$STAGING_REF"
+
+      - name: Roll back to the previous release
+        # A failed build or start never replaces the live release, so only a
+        # failed check of a new live release needs undoing.
+        if: failure() && steps.smoke.outcome == 'failure' && steps.deploy.outputs.previous_deploy != '' && steps.deploy.outputs.previous_deploy != steps.deploy.outputs.deploy
+        run: |
+          node scripts/release/render.ts rollback "$SERVICE" "${{ steps.deploy.outputs.previous_deploy }}"
+          node scripts/release/smoke.ts "$SITE" --env production --supabase-ref "$PRODUCTION_REF" --forbid-ref "$STAGING_REF"
+          gh issue create --title "Release ${SHA:0:8} was rolled back" --body "The live-site check failed after deploying \`$SHA\`, so the previous release (\`${{ steps.deploy.outputs.previous_deploy }}\`) was restored automatically.
+
+          Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+          Next: fix on a branch, PR into main, check staging, then release again. See docs/RELEASING.md → Undo a release."
+
+      - name: Tag the release
+        if: success()
+        run: |
+          tag="release-$(date -u +%Y.%m.%d-%H%M)"
+          previous=$(gh release list --limit 1 --json tagName --jq '.[0].tagName // ""')
+          gh release create "$tag" --target "$SHA" --title "$tag" --generate-notes ${previous:+--notes-start-tag "$previous"}
+          echo "### Released \`$tag\` (${SHA:0:8}) to $SITE" >> "$GITHUB_STEP_SUMMARY"

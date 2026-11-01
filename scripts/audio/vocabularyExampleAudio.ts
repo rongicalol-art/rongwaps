@@ -30,7 +30,7 @@ export function loadVocabularyExampleAudio(): Map<string, SentenceAudio> {
     throw new Error('Invalid content/audio/vocabulary_example_audio.json manifest.');
   }
 
-  // The book's own recording first; Book 3 L1–5 examples without a book clip fall back to our studio recording.
+  // The book's own recording first; Book 1 and Book 3 L1–5 examples without a book clip fall back to our studio recording.
   const studioFile = resolve(process.cwd(), 'content/audio/grammar_studio_audio.json');
   const studio = existsSync(studioFile) ? JSON.parse(readFileSync(studioFile, 'utf8')) as Record<string, { file: string }> : {};
   const han = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
@@ -58,7 +58,7 @@ export function loadVocabularyExampleAudio(): Map<string, SentenceAudio> {
     const key = vocabularyExampleKey(entry.sourceCardId, entry.traditional);
     if (!key) continue;
     if (!entry.audio?.file) {
-      const clip = entry.bookId === 3 && entry.lessonId <= 5 ? studio[han(entry.traditional)] : undefined;
+      const clip = entry.bookId === 1 || (entry.bookId === 3 && entry.lessonId <= 5) ? studio[han(entry.traditional)] : undefined;
       // A studio clip never replaces a book clip already found for the same sentence.
       if (clip && !audio.has(key)) {
         audio.set(key, { voice: 'studio', file: clip.file });

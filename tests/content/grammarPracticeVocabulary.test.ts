@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readJson } from '../acceptance_helpers';
 import type { InteractiveGrammarPage, InteractiveGrammarPart } from '../../src/types/models';
+import { NUMERAL_CHARACTERS, traditionalStrings as chineseStrings, untaughtCharacters, vocabForms as forms, vocabOrder as orderOf } from '../../src/utils/lesson/lessonScope';
 
 /**
  * Book exercises may only use words taught up to their lesson part: Book 1 vocabulary
@@ -19,30 +20,6 @@ const earlierVocab = [...vocab, ...readJson<{ items: VocabItem[] }>('public/data
 const b3Grammar = readJson<{ items: InteractiveGrammarPart[] }>('public/data/grammar/book-3.json').items;
 const parts = [...grammar, ...b3Grammar.filter((part) => B3_REDONE.has(part.lessonId))];
 
-/** Book order of a vocabulary id (B1L01-2-06 → lesson 1, part 2). */
-const orderOf = (id: string) => { const m = /^B[13]L(\d+)-(\d+)/.exec(id); return m ? Number(m[1]) * 10 + Number(m[2]) : Infinity; };
-/** "（一）點（兒）" → 點, 一點, 點兒, 一點兒; "臺灣/台灣" → both. */
-function forms(entry: string): string[] {
-  return entry.split(/[/／]/).flatMap((form) => {
-    const optional = [...form.matchAll(/（([^）]*)）/g)].map((match) => match[0]);
-    let variants = [form];
-    for (const part of optional) variants = variants.flatMap((variant) => [variant.replace(part, ''), variant.replace(part, part.slice(1, -1))]);
-    return variants.map((variant) => variant.trim()).filter(Boolean);
-  });
-}
-/** Every `traditional` string inside a JSON value. */
-function chineseStrings(value: unknown, out: string[] = []): string[] {
-  if (Array.isArray(value)) value.forEach((entry) => chineseStrings(entry, out));
-  else if (value && typeof value === 'object') {
-    for (const [key, entry] of Object.entries(value)) {
-      if (key === 'traditional' && typeof entry === 'string') out.push(entry);
-      else chineseStrings(entry, out);
-    }
-  }
-  return out;
-}
-const HAN = /\p{Script=Han}/u;
-
 /** Book 3 includes the preceding books, earlier examples, printed allowances and numerals. */
 function taughtB3(page: InteractiveGrammarPage): Set<string> {
   const through = page.lessonId * 10 + page.partId;
@@ -53,7 +30,7 @@ function taughtB3(page: InteractiveGrammarPage): Set<string> {
       .flatMap((part) => part.grammarPages).flatMap((other) => other.examples)
       .flatMap((example) => example.text.words ?? []).map((word) => word.traditional),
     ...(page.practice?.allowWords ?? []),
-    ...'〇一二三四五六七八九十百千萬兩',
+    ...NUMERAL_CHARACTERS,
   ]);
 }
 
@@ -71,14 +48,8 @@ test('Grammar practice uses only taught words', () => {
         ...(page.practice.allowWords ?? []),
       ]);
       for (const text of chineseStrings(page.practice)) {
-        const chars = [...text];
-        for (let index = 0; index < chars.length;) {
-          if (!HAN.test(chars[index])) { index += 1; continue; }
-          const length = [6, 5, 4, 3, 2, 1].find((size) => taught.has(chars.slice(index, index + size).join('')));
-          if (!length) {
-            problems.push(`${page.id}: "${chars[index]}" in "${text}" is not taught by Lesson ${page.lessonId} Part ${page.partId}`);
-            index += 1;
-          } else index += length;
+        for (const char of untaughtCharacters(text, taught)) {
+          problems.push(`${page.id}: "${char}" in "${text}" is not taught by Lesson ${page.lessonId} Part ${page.partId}`);
         }
       }
     }

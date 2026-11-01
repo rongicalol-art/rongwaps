@@ -10,6 +10,8 @@ export function initializeErrorReporting() {
     Sentry.init({
       dsn,
       environment: 'production',
+      release: import.meta.env.VITE_APP_RELEASE || undefined,
+      initialScope: { tags: { runtime: 'browser' } },
       tracesSampleRate: 0,
       beforeBreadcrumb: () => null,
       beforeSend(event) {

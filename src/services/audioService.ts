@@ -29,6 +29,7 @@ import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
 import { ShortAudioClips } from './audio/shortAudioClips';
 import { reportAudioFailure } from './errorReporting';
+import { isRecordingFile } from './audio/recordingFile';
 import { playbackWaiting } from './audio/playbackWaiting';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
@@ -218,8 +219,7 @@ export class AudioService {
     return this.globalAudio?.currentTime ?? 0;
   }
   public isAudioFileName(filename?: string): boolean {
-    if (!filename) return false;
-    return /\.(mp3|wav|ogg|m4a)(?:$|[?#])|^https?:\/\//i.test(filename);
+    return isRecordingFile(filename);
   }
   public play(
     audioFileName?: string,

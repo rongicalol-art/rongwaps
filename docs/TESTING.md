@@ -14,6 +14,18 @@ Runner: Node native test runner (`node:test` + `node:assert/strict`) via `tsx`. 
 
 Without `ACCEPTANCE_STRICT=true`, acceptance tests for unfinished criteria skip with a message; `npm test` always enforces them.
 
+## Browser journeys (Playwright)
+
+`tests/e2e/*.spec.ts` drive the production build in Chrome (desktop) and Safari's engine (phone) against a throwaway local Supabase stack: every migration, the real school gate and RLS, fake learners only (`tests/e2e/support/stack.ts` refuses any non-local URL). Covered: school sign-in and outsider refusal, account isolation through the public API, vocabulary reviews saving through an offline gap and appearing on a second device, grammar completion syncing. Recordings are served from a silent local clip.
+
+```sh
+supabase start
+VITE_SUPABASE_URL=http://127.0.0.1:54321 VITE_SUPABASE_ANON_KEY=<from supabase status> npm run build
+npm run test:e2e
+```
+
+CI runs them on every push to `production` (Deploy waits for them), nightly on `main`, and on PRs touching saving, sign-in, the server or the database. A scratch stack works too: `E2E_SUPABASE_WORKDIR=<dir> E2E_SUPABASE_PROJECT=<project_id>`.
+
 ## Layout
 
 ```
@@ -141,7 +153,7 @@ and [Noul guidance](https://docs.typesafe.ai/primitives/noul).
 
 # Performance regression checks
 
-After a production build, `npm run perf:check` enforces 250 kB main JavaScript, 850 kB initial JavaScript, 270 kB critical CSS (raised from 260 kB in Oct 2026 for dark mode and per-book tones) and 1.3 MB service-worker precache limits. Both quiz and dictionary worker bundles must exist; unopened workers and the animation engine must stay out of the precache. Duplicate precache URLs fail the gate. Review the change rather than raising budgets to hide regressions.
+After a production build, `npm run perf:check` enforces 250 kB main JavaScript, 850 kB initial JavaScript, 275 kB critical CSS (260 → 270 kB in Oct 2026 for dark mode and per-book tones; 275 kB in Nov 2026 for the Book 1 exercise pages) and 1.3 MB service-worker precache limits. Both quiz and dictionary worker bundles must exist; unopened workers and the animation engine must stay out of the precache. Duplicate precache URLs fail the gate. Review the change rather than raising budgets to hide regressions.
 
 The build and dev preflight generate `public/data/flashcard-extras` through `npm run flashcard-extras:export`. These derivative packs preserve the existing whole-course example ranking and normalized memory hooks. Source content stays authoritative. The parity test compares every course card in both scripts and every word hook with live lookup results, checks source versions, and rejects large shards. Do not hand-edit generated packs. Regenerate after vocabulary, course example or memory-hook exports.
 
@@ -158,7 +170,7 @@ The proposed runtime gate is p95 rAF gap ≤1.5 display intervals with zero gaps
 
 Short recordings at normal speed use prepared Web Audio buffers; repeated taps replace the current source without reloading a media element. Preparation decodes one local blob at a time, retaining at most 16 clips and 8 MiB of PCM. Files above 256 KiB or 12 seconds, seeks, and other playback speeds keep native media playback to preserve streaming and Mandarin pitch. Idle Web Audio output suspends after 15 seconds. Check rapid flips and word-building tiles, cancellation during decode/resume, background recovery, offline clips, and slower pronunciation on a physical iPhone; desktop Chrome/WebKit fixtures are smoke checks only.
 
-Unit regressions cover linear quiz eligibility, deterministic worker plans, cancellation, transferred dictionary index data, audio cache limits and pinned image lifetimes. Use DEV UI Previews at 390×844 and 1440×900; never grade a real deck for verification.
+Unit regressions cover linear quiz eligibility, deterministic worker plans, cancellation, transferred dictionary index data, audio cache limits and pinned image lifetimes. Use DEV UI Previews at 390×844 and 1440×900; the owner's account is allowed when a flow needs real progress.
 
 The 2026-10-22 five-run local benchmark on 1,000 authored cards reduced median round planning from 901.43 ms to 173.72 ms, while preserving the same plans. Type availability fell from 121.79 ms to 0.22 ms. Those are local execution times, not device-wide CPU/power measurements. Browser responsiveness and prepared-audio timings are measured separately with isolated service fixtures.
 

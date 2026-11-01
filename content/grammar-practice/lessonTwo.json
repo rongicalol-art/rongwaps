@@ -2,37 +2,91 @@
   "B1L02-G01-P54": {
     "bookPage": 55,
     "title": "Answer the following questions.",
+    "allowWords": [
+      "二",
+      "三",
+      "四",
+      "五",
+      "六",
+      "九"
+    ],
     "items": [
       {
-        "id": "l2g01-1",
+        "id": "l2g1-1",
         "source": "p.55 #1",
-        "prompt": "Answer the question.",
-        "quiet": true,
+        "kind": "slot-build",
         "scene": {
           "type": "moment",
           "moment": {
             "time": "10:15"
           }
         },
-        "kind": "order-build",
-        "sub": "現在幾點（幾分）？",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在幾點（幾分）？",
+                "simplified": "现在几点（几分）？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在",
+                "simplified": "现在"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "十"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "點"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "十五"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "分"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "十",
             "pinyin": "shí"
           },
           {
-            "traditional": "十五",
-            "pinyin": "shíwǔ"
-          },
-          {
-            "traditional": "月",
-            "pinyin": "yuè"
-          },
-          {
-            "traditional": "現在",
-            "simplified": "现在",
-            "pinyin": "xiànzài"
+            "traditional": "三",
+            "pinyin": "sān"
           },
           {
             "traditional": "點",
@@ -40,59 +94,8 @@
             "pinyin": "diǎn"
           },
           {
-            "traditional": "分",
-            "pinyin": "fēn"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "現在",
-              "十",
-              "點",
-              "十五",
-              "分"
-            ],
-            "sentence": {
-              "traditional": "現在十點十五分。",
-              "simplified": "现在十点十五分。",
-              "pinyin": "Xiànzài shí diǎn shíwǔ fēn.",
-              "english": "It is 10:15 now."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "月"
-            ],
-            "mark": [
-              "月"
-            ],
-            "note": "月 marks a month; the clock needs 點 and 分."
-          }
-        ],
-        "fallbackRepair": "Put the hour before 點, then the minutes before 分."
-      },
-      {
-        "id": "l2g01-2",
-        "source": "p.55 #2",
-        "prompt": "Answer the question.",
-        "quiet": true,
-        "scene": {
-          "type": "month",
-          "year": 2019,
-          "month": 5,
-          "highlight": [
-            6
-          ]
-        },
-        "kind": "order-build",
-        "sub": "今天星期幾？",
-        "tiles": [
-          {
-            "traditional": "星期",
-            "pinyin": "xīngqí"
+            "traditional": "十五",
+            "pinyin": "shíwǔ"
           },
           {
             "traditional": "號",
@@ -100,29 +103,20 @@
             "pinyin": "hào"
           },
           {
-            "traditional": "今天",
-            "pinyin": "jīntiān"
-          },
-          {
-            "traditional": "一",
-            "pinyin": "yī"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "今天",
-              "星期",
-              "一"
-            ],
-            "sentence": {
-              "traditional": "今天星期一。",
-              "pinyin": "Jīntiān xīngqí yī.",
-              "english": "Today is Monday."
-            }
+            "traditional": "分",
+            "pinyin": "fēn"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "三"
+            ],
+            "mark": [
+              "三"
+            ],
+            "note": "The long hand on 3 means 15 minutes, 十五分; the short hand gives the hour."
+          },
           {
             "placed": [
               "號"
@@ -130,16 +124,149 @@
             "mark": [
               "號"
             ],
-            "note": "號 marks a date; Monday is 星期一."
+            "note": "號 is for dates; a clock time takes 點 and 分."
           }
         ],
-        "fallbackRepair": "Put 星期 before the weekday number."
+        "fallbackRepair": "The hour (short hand) goes before 點, the minutes (long hand) before 分: 十點十五分.",
+        "result": {
+          "traditional": "現在十點十五分。",
+          "simplified": "现在十点十五分。",
+          "pinyin": "Xiànzài shí diǎn shíwǔ fēn.",
+          "english": "It’s 10:15 now."
+        }
       },
       {
-        "id": "l2g01-3",
+        "id": "l2g1-2",
+        "source": "p.55 #2",
+        "kind": "slot-build",
+        "scene": {
+          "type": "month",
+          "year": 2019,
+          "month": 5,
+          "highlight": [
+            16
+          ]
+        },
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天星期幾？",
+                "simplified": "今天星期几？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "星期"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "四"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "十六",
+            "pinyin": "shíliù"
+          },
+          {
+            "traditional": "星期",
+            "pinyin": "xīngqí"
+          },
+          {
+            "traditional": "五",
+            "pinyin": "wǔ"
+          },
+          {
+            "traditional": "號",
+            "simplified": "号",
+            "pinyin": "hào"
+          },
+          {
+            "traditional": "四",
+            "pinyin": "sì"
+          },
+          {
+            "traditional": "幾",
+            "simplified": "几",
+            "pinyin": "jǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十六"
+            ],
+            "mark": [
+              "十六"
+            ],
+            "note": "十六 is the date; 星期幾 asks the weekday, so read the column the 16th sits in."
+          },
+          {
+            "placed": [
+              "號"
+            ],
+            "mark": [
+              "號"
+            ],
+            "note": "號 is for the date; a weekday is 星期 plus a number."
+          },
+          {
+            "placed": [
+              "五"
+            ],
+            "mark": [
+              "五"
+            ],
+            "note": "The 16th sits under 四, not 五: it is 星期四."
+          },
+          {
+            "placed": [
+              "幾"
+            ],
+            "mark": [
+              "幾"
+            ],
+            "note": "幾 asks the question; the answer puts the number in its place."
+          }
+        ],
+        "fallbackRepair": "星期 comes first, then the number: 星期四, never 四星期.",
+        "result": {
+          "traditional": "今天星期四。",
+          "pinyin": "Jīntiān xīngqí sì.",
+          "english": "Today is Thursday."
+        }
+      },
+      {
+        "id": "l2g1-3",
         "source": "p.55 #3",
-        "prompt": "Answer the question.",
-        "quiet": true,
+        "kind": "slot-build",
         "scene": {
           "type": "month",
           "year": 2019,
@@ -148,16 +275,71 @@
             7
           ]
         },
-        "kind": "order-build",
-        "sub": "今天幾月幾號？",
-        "tiles": [
+        "lines": [
           {
-            "traditional": "十二",
-            "pinyin": "shí'èr"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天幾月幾號？",
+                "simplified": "今天几月几号？"
+              }
+            ]
           },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "十二"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "月"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "七"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "號"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
           {
             "traditional": "七",
             "pinyin": "qī"
+          },
+          {
+            "traditional": "月",
+            "pinyin": "yuè"
           },
           {
             "traditional": "點",
@@ -165,12 +347,13 @@
             "pinyin": "diǎn"
           },
           {
-            "traditional": "今天",
-            "pinyin": "jīntiān"
+            "traditional": "十二",
+            "pinyin": "shí'èr"
           },
           {
-            "traditional": "月",
-            "pinyin": "yuè"
+            "traditional": "幾",
+            "simplified": "几",
+            "pinyin": "jǐ"
           },
           {
             "traditional": "號",
@@ -178,23 +361,6 @@
             "pinyin": "hào"
           }
         ],
-        "accepted": [
-          {
-            "order": [
-              "今天",
-              "十二",
-              "月",
-              "七",
-              "號"
-            ],
-            "sentence": {
-              "traditional": "今天十二月七號。",
-              "simplified": "今天十二月七号。",
-              "pinyin": "Jīntiān shí'èr yuè qī hào.",
-              "english": "Today is December 7."
-            }
-          }
-        ],
         "repairs": [
           {
             "placed": [
@@ -203,64 +369,236 @@
             "mark": [
               "點"
             ],
-            "note": "點 marks an hour; a date needs 月 and 號."
+            "note": "點 is for clock times; the day of the month takes 號."
+          },
+          {
+            "placed": [
+              "幾"
+            ],
+            "mark": [
+              "幾"
+            ],
+            "note": "幾 asks the question; answer with the numbers on the calendar."
           }
         ],
-        "fallbackRepair": "Put the month before 月 and the day before 號."
+        "fallbackRepair": "Month first, then the day: 十二月七號 is December 7; 七月十二號 would be July 12.",
+        "result": {
+          "traditional": "今天十二月七號。",
+          "simplified": "今天十二月七号。",
+          "pinyin": "Jīntiān shí'èr yuè qī hào.",
+          "english": "Today is December 7."
+        }
       },
       {
-        "id": "l2g01-4",
+        "id": "l2g1-4",
         "source": "own",
-        "prompt": "Ask which day of the week it is.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "幾"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "號"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天十六號。",
+                "simplified": "今天十六号。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "星期",
             "pinyin": "xīngqí"
           },
           {
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
+            "traditional": "號",
+            "simplified": "号",
+            "pinyin": "hào"
           },
           {
-            "traditional": "今天",
-            "pinyin": "jīntiān"
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
           },
           {
             "traditional": "幾",
             "simplified": "几",
             "pinyin": "jǐ"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "今天",
-              "星期",
-              "幾"
-            ],
-            "sentence": {
-              "traditional": "今天星期幾？",
-              "simplified": "今天星期几？",
-              "pinyin": "Jīntiān xīngqí jǐ?",
-              "english": "What day of the week is it today?"
-            }
+            "traditional": "月",
+            "pinyin": "yuè"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "嗎"
+              "什麼"
             ],
             "mark": [
-              "嗎"
+              "什麼"
             ],
-            "note": "幾 already asks which day; do not add 嗎."
+            "note": "Ask for a number with 幾, not 什麼: 幾號."
+          },
+          {
+            "placed": [
+              "星期"
+            ],
+            "mark": [
+              "星期"
+            ],
+            "note": "B answers with a date, 十六號, so ask 幾號; 星期幾 asks the weekday."
+          },
+          {
+            "placed": [
+              "月"
+            ],
+            "mark": [
+              "月"
+            ],
+            "note": "B gives only the day, 十六號, so ask 幾號, not 幾月."
           }
         ],
-        "fallbackRepair": "Put 幾 after 星期 to ask the day of the week."
+        "fallbackRepair": "幾 stands where the number goes, before 號: 今天幾號？",
+        "result": {
+          "traditional": "今天幾號？",
+          "simplified": "今天几号？",
+          "pinyin": "Jīntiān jǐ hào?",
+          "english": "What’s the date today?"
+        }
+      },
+      {
+        "id": "l2g1-5",
+        "source": "own",
+        "kind": "slot-build",
+        "scene": {
+          "type": "month",
+          "year": 2019,
+          "month": 5,
+          "highlight": [
+            19
+          ]
+        },
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天星期幾？",
+                "simplified": "今天星期几？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "星期天"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "星期七",
+            "pinyin": "xīngqíqī"
+          },
+          {
+            "traditional": "星期一",
+            "pinyin": "xīngqíyī"
+          },
+          {
+            "traditional": "星期天",
+            "pinyin": "xīngqítiān"
+          },
+          {
+            "traditional": "星期六",
+            "pinyin": "xīngqíliù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "星期七"
+            ],
+            "mark": [
+              "星期七"
+            ],
+            "note": "There is no 星期七: Sunday is 星期天."
+          },
+          {
+            "placed": [
+              "星期一"
+            ],
+            "mark": [
+              "星期一"
+            ],
+            "note": "The 19th sits under 日, Sunday; 星期一 is Monday, the next column."
+          },
+          {
+            "placed": [
+              "星期六"
+            ],
+            "mark": [
+              "星期六"
+            ],
+            "note": "星期六 is Saturday, the last column; the 19th sits under 日, Sunday."
+          }
+        ],
+        "fallbackRepair": "Sunday is 星期天.",
+        "result": {
+          "traditional": "今天星期天。",
+          "pinyin": "Jīntiān xīngqítiān.",
+          "english": "Today is Sunday."
+        }
       }
     ]
   },
@@ -269,31 +607,76 @@
     "title": "Answer the following questions.",
     "items": [
       {
-        "id": "l2g02-1",
+        "id": "l2g2-1",
         "source": "p.55 #1",
-        "prompt": "Answer the question.",
-        "quiet": true,
+        "kind": "slot-build",
         "scene": {
           "type": "moment",
           "moment": {
-            "time": "10:00"
+            "time": "10:00",
+            "label": {
+              "traditional": "下課",
+              "simplified": "下课",
+              "pinyin": "xiàkè",
+              "english": "class ends"
+            }
           }
         },
-        "kind": "order-build",
-        "sub": "你今天幾點下課？",
-        "tiles": [
+        "lines": [
           {
-            "traditional": "今天",
-            "pinyin": "jīntiān"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你今天幾點下課？",
+                "simplified": "你今天几点下课？"
+              }
+            ]
           },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "今天"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "十點"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "下課"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
           {
             "traditional": "下課",
             "simplified": "下课",
-            "pinyin": "xià kè"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
+            "pinyin": "xiàkè"
           },
           {
             "traditional": "十點",
@@ -301,120 +684,144 @@
             "pinyin": "shí diǎn"
           },
           {
-            "traditional": "幾點",
-            "simplified": "几点",
-            "pinyin": "jǐ diǎn"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "今天",
-              "十點",
-              "下課"
-            ],
-            "sentence": {
-              "traditional": "我今天十點下課。",
-              "simplified": "我今天十点下课。",
-              "pinyin": "Wǒ jīntiān shí diǎn xiàkè.",
-              "english": "I finish class at ten today."
-            }
+            "traditional": "十分",
+            "pinyin": "shí fēn"
           },
           {
-            "order": [
-              "今天",
-              "我",
-              "十點",
-              "下課"
-            ],
-            "sentence": {
-              "traditional": "今天我十點下課。",
-              "simplified": "今天我十点下课。",
-              "pinyin": "Jīntiān wǒ shí diǎn xià kè.",
-              "english": "I finish class at ten today."
-            }
+            "traditional": "今天",
+            "pinyin": "jīntiān"
+          },
+          {
+            "traditional": "上課",
+            "simplified": "上课",
+            "pinyin": "shàngkè"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "幾點"
+              "上課"
             ],
             "mark": [
-              "幾點"
+              "上課"
             ],
-            "note": "幾點 asks the time; answer with the time shown."
-          }
-        ],
-        "fallbackRepair": "Put 今天 and 十點 before 下課."
-      },
-      {
-        "id": "l2g02-2",
-        "source": "p.55 #2",
-        "prompt": "Monday is your day off.",
-        "kind": "order-build",
-        "sub": "你星期幾不去學校？",
-        "tiles": [
-          {
-            "traditional": "星期一",
-            "pinyin": "xīngqí yī"
+            "note": "A asks when class ends, 下課; 上課 is when it starts."
           },
           {
-            "traditional": "去",
-            "pinyin": "qù"
+            "placed": [
+              "十分"
+            ],
+            "mark": [
+              "十分"
+            ],
+            "note": "十分 is ten minutes; the short hand on 10 with the long hand on 12 is 十點."
+          }
+        ],
+        "fallbackRepair": "Time words go before the verb, the bigger one first: 我今天十點下課.",
+        "result": {
+          "traditional": "我今天十點下課。",
+          "simplified": "我今天十点下课。",
+          "pinyin": "Wǒ jīntiān shí diǎn xiàkè.",
+          "english": "I finish class at ten today."
+        }
+      },
+      {
+        "id": "l2g2-2",
+        "source": "p.55 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你星期幾不去學校？",
+                "simplified": "你星期几不去学校？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我",
+                  "星期天"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "星期天",
+                  "我"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "學校。",
+                "simplified": "学校。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "星期天",
+            "pinyin": "xīngqítiān"
           },
           {
             "traditional": "是",
             "pinyin": "shì"
           },
           {
+            "traditional": "去",
+            "pinyin": "qù"
+          },
+          {
             "traditional": "我",
             "pinyin": "wǒ"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
-            "traditional": "學校",
-            "simplified": "学校",
-            "pinyin": "xuéxiào"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "星期一",
-              "不",
-              "去",
-              "學校"
-            ],
-            "sentence": {
-              "traditional": "我星期一不去學校。",
-              "simplified": "我星期一不去学校。",
-              "pinyin": "Wǒ xīngqí yī bú qù xuéxiào.",
-              "english": "I do not go to school on Monday."
-            }
-          },
-          {
-            "order": [
-              "星期一",
-              "我",
-              "不",
-              "去",
-              "學校"
-            ],
-            "sentence": {
-              "traditional": "星期一我不去學校。",
-              "simplified": "星期一我不去学校。",
-              "pinyin": "Xīngqí yī wǒ bù qù xuéxiào.",
-              "english": "I do not go to school on Monday."
-            }
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "For something you usually don’t do, negate the verb with 不: 不去. 沒 goes with 有."
+          },
           {
             "placed": [
               "是"
@@ -422,44 +829,108 @@
             "mark": [
               "是"
             ],
-            "note": "To say you do not go, put 不 before the action; 是 does not negate it."
+            "note": "是 does not negate a verb; put 不 before 去."
           }
         ],
-        "fallbackRepair": "Put 星期一 before 不去學校."
+        "fallbackRepair": "The time word comes before 不去: 我星期天不去學校.",
+        "result": {
+          "traditional": "我星期天不去學校。",
+          "simplified": "我星期天不去学校。",
+          "pinyin": "Wǒ xīngqítiān bú qù xuéxiào.",
+          "english": "I don’t go to school on Sundays."
+        },
+        "alternatives": [
+          {
+            "traditional": "星期天我不去學校。",
+            "simplified": "星期天我不去学校。",
+            "pinyin": "Xīngqítiān wǒ bú qù xuéxiào.",
+            "english": "On Sundays, I don’t go to school."
+          }
+        ]
       },
       {
-        "id": "l2g02-3",
+        "id": "l2g2-3",
         "source": "p.55 #3",
-        "prompt": "Answer the question.",
-        "quiet": true,
+        "kind": "slot-build",
         "scene": {
           "type": "moment",
           "moment": {
             "date": {
-              "month": 12,
-              "day": 7
+              "month": 7,
+              "day": 10
+            },
+            "label": {
+              "traditional": "日本",
+              "pinyin": "Rìběn",
+              "english": "Japan"
             }
           }
         },
-        "kind": "order-build",
-        "sub": "你幾月幾號去日本？",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你幾月幾號去日本？",
+                "simplified": "你几月几号去日本？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "七月"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "十號"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "日本"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "十二月",
-            "pinyin": "shí’èr yuè"
+            "traditional": "十月",
+            "pinyin": "shí yuè"
           },
           {
             "traditional": "去",
             "pinyin": "qù"
-          },
-          {
-            "traditional": "幾號",
-            "pinyin": "jǐ hào",
-            "simplified": "几号"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
           },
           {
             "traditional": "七號",
@@ -469,228 +940,244 @@
           {
             "traditional": "日本",
             "pinyin": "Rìběn"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "十二月",
-              "七號",
-              "去",
-              "日本"
-            ],
-            "sentence": {
-              "traditional": "我十二月七號去日本。",
-              "simplified": "我十二月七号去日本。",
-              "pinyin": "Wǒ shí'èr yuè qī hào qù Rìběn.",
-              "english": "I am going to Japan on December 7."
-            }
           },
           {
-            "order": [
-              "十二月",
-              "七號",
-              "我",
-              "去",
-              "日本"
-            ],
-            "sentence": {
-              "traditional": "十二月七號我去日本。",
-              "simplified": "十二月七号我去日本。",
-              "pinyin": "Shí’èr yuè qī hào wǒ qù Rìběn.",
-              "english": "I am going to Japan on December 7."
-            }
+            "traditional": "七月",
+            "pinyin": "qī yuè"
+          },
+          {
+            "traditional": "十號",
+            "simplified": "十号",
+            "pinyin": "shí hào"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "幾號"
+              "十月"
             ],
             "mark": [
-              "幾號"
+              "十月"
             ],
-            "note": "幾號 asks the date; answer with the date shown."
+            "note": "The calendar says 7月, July: 七月. The 10 is the day: 十號."
+          },
+          {
+            "placed": [
+              "七號"
+            ],
+            "mark": [
+              "七號"
+            ],
+            "note": "The day on the calendar is 10: 十號."
           }
         ],
-        "fallbackRepair": "Put 十二月七號 before 去日本."
+        "fallbackRepair": "The date goes before the verb, month first: 我七月十號去日本.",
+        "result": {
+          "traditional": "我七月十號去日本。",
+          "simplified": "我七月十号去日本。",
+          "pinyin": "Wǒ qī yuè shí hào qù Rìběn.",
+          "english": "I’m going to Japan on July 10."
+        }
       },
       {
-        "id": "l2g02-4",
+        "id": "l2g2-4",
         "source": "own",
-        "prompt": "At noon, you stay at school. Answer the question.",
-        "kind": "order-build",
-        "sub": "你中午回家嗎？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "幾點"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "圖書館"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我下午一點去。",
+                "simplified": "我下午一点去。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "中午",
-            "simplified": "中午",
-            "pinyin": "zhōngwǔ"
+            "traditional": "幾號",
+            "simplified": "几号",
+            "pinyin": "jǐ hào"
           },
           {
-            "traditional": "回",
-            "pinyin": "huí"
+            "traditional": "去",
+            "pinyin": "qù"
           },
           {
-            "traditional": "是",
-            "pinyin": "shì"
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn"
           },
           {
-            "traditional": "我",
-            "pinyin": "wǒ"
+            "traditional": "星期幾",
+            "simplified": "星期几",
+            "pinyin": "xīngqí jǐ"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
-            "traditional": "家",
-            "pinyin": "jiā"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "中午",
-              "不",
-              "回",
-              "家"
-            ],
-            "sentence": {
-              "traditional": "我中午不回家。",
-              "pinyin": "Wǒ zhōngwǔ bù huí jiā.",
-              "english": "I do not go home at noon."
-            }
-          },
-          {
-            "order": [
-              "中午",
-              "我",
-              "不",
-              "回",
-              "家"
-            ],
-            "sentence": {
-              "traditional": "中午我不回家。",
-              "pinyin": "Zhōngwǔ wǒ bù huí jiā.",
-              "english": "I do not go home at noon."
-            }
+            "traditional": "幾點",
+            "simplified": "几点",
+            "pinyin": "jǐ diǎn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "是"
+              "幾號"
             ],
             "mark": [
-              "是"
+              "幾號"
             ],
-            "note": "To say you do not go, put 不 before the action; 是 does not negate it."
+            "note": "B answers with a clock time, so ask 幾點, not 幾號."
+          },
+          {
+            "placed": [
+              "星期幾"
+            ],
+            "mark": [
+              "星期幾"
+            ],
+            "note": "B answers with a clock time, so ask 幾點, not 星期幾."
           }
         ],
-        "fallbackRepair": "Put 中午 before 不回家."
-      },
-      {
-        "id": "l2g02-own-story",
-        "source": "own",
-        "kind": "story-order",
-        "prompt": "Put your Monday in order.",
-        "steps": [
-          {
-            "traditional": "我中午十二點下課。",
-            "simplified": "我中午十二点下课。",
-            "pinyin": "Wǒ zhōngwǔ shí’èr diǎn xiàkè.",
-            "english": "I finish class at noon.",
-            "note": "中午 is noon: class ends after the morning, before the afternoon."
-          },
-          {
-            "traditional": "我早上七點去學校。",
-            "simplified": "我早上七点去学校。",
-            "pinyin": "Wǒ zǎoshang qī diǎn qù xuéxiào.",
-            "english": "I go to school at 7 in the morning.",
-            "note": "早上七點 is the earliest time, so the day starts here."
-          },
-          {
-            "traditional": "我下午一點回家。",
-            "simplified": "我下午一点回家。",
-            "pinyin": "Wǒ xiàwǔ yī diǎn huí jiā.",
-            "english": "I go home at 1 in the afternoon.",
-            "note": "下午 is the latest part of the day, so going home comes last."
-          },
-          {
-            "traditional": "我九點三十分上課。",
-            "simplified": "我九点三十分上课。",
-            "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
-            "english": "I start class at 9:30.",
-            "note": "九點三十分 is half past nine, after you have arrived at school."
-          }
-        ],
-        "answer": [
-          1,
-          3,
-          0,
-          2
-        ],
-        "successNote": "The time words give the order: 早上 → 中午 → 下午."
+        "fallbackRepair": "The question word sits where the time goes, before the verb: 你幾點去圖書館？",
+        "result": {
+          "traditional": "你幾點去圖書館？",
+          "simplified": "你几点去图书馆？",
+          "pinyin": "Nǐ jǐ diǎn qù túshūguǎn?",
+          "english": "What time are you going to the library?"
+        }
       }
-    ],
-    "allowWords": [
-      "日本"
     ]
   },
   "B1L02-G03-P56": {
     "bookPage": 56,
     "title": "Answer the 有/沒有 questions.",
+    "allowWords": [
+      "手機"
+    ],
     "items": [
       {
-        "id": "l2g03-1",
+        "id": "l2g3-1",
         "source": "p.56 #1",
-        "prompt": "All your friends are Taiwanese.",
-        "kind": "order-build",
-        "sub": "你有美國朋友嗎？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你有美國朋友嗎？",
+                "simplified": "你有美国朋友吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "沒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "美國朋友，我有日本朋友。",
+                "simplified": "美国朋友，我有日本朋友。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "沒有",
-            "simplified": "没有",
-            "pinyin": "méiyǒu"
-          },
-          {
-            "traditional": "朋友",
-            "pinyin": "péngyǒu"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "美國",
-            "simplified": "美国",
-            "pinyin": "Měiguó"
+            "traditional": "有",
+            "pinyin": "yǒu"
           },
           {
             "traditional": "不",
             "pinyin": "bù"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "我",
-              "沒有",
-              "美國",
-              "朋友"
-            ],
-            "sentence": {
-              "traditional": "我沒有美國朋友。",
-              "simplified": "我没有美国朋友。",
-              "pinyin": "Wǒ méi yǒu Měiguó péngyǒu.",
-              "english": "I do not have any American friends."
-            }
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
           }
         ],
         "repairs": [
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "是"
+            },
+            "mark": [
+              "是"
+            ],
+            "note": "是 says who someone is; having friends takes 有, and its negative is 沒有."
+          },
           {
             "placed": [
               "不"
@@ -698,15 +1185,39 @@
             "mark": [
               "不"
             ],
-            "note": "有 is negated with 沒有, not 不有."
+            "note": "有 is never negated with 不; its negative is 沒有."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "有 needs no 是 in front; its negative is 沒有."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes before adjectives, never before 有; its negative is 沒有."
           }
         ],
-        "fallbackRepair": "Put 沒有 before the thing you do not have."
+        "fallbackRepair": "沒 comes before 有: 我沒有美國朋友.",
+        "result": {
+          "traditional": "我沒有美國朋友，我有日本朋友。",
+          "simplified": "我没有美国朋友，我有日本朋友。",
+          "pinyin": "Wǒ méi yǒu Měiguó péngyǒu, wǒ yǒu Rìběn péngyǒu.",
+          "english": "I don’t have any American friends; I have Japanese friends."
+        }
       },
       {
-        "id": "l2g03-2",
+        "id": "l2g3-2",
         "source": "p.56 #2",
-        "prompt": "The phone in the picture is yours.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 56,
@@ -716,104 +1227,81 @@
             0.061,
             0.082
           ],
-          "alt": "An outline of a cell phone with 10:21 on its screen."
+          "alt": "A cell phone with 10:21 on its screen."
         },
-        "glossary": [
+        "lines": [
           {
-            "traditional": "手機",
-            "simplified": "手机",
-            "pinyin": "shǒujī",
-            "english": "cell phone"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你有手機嗎？",
+                "simplified": "你有手机吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "手機。",
+                "simplified": "手机。"
+              }
+            ]
           }
         ],
-        "kind": "order-build",
-        "sub": "你有手機嗎？ 手機 shǒujī · cell phone",
         "tiles": [
-          {
-            "traditional": "有",
-            "pinyin": "yǒu"
-          },
-          {
-            "traditional": "是",
-            "pinyin": "shì"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "手機",
-            "simplified": "手机",
-            "pinyin": "shǒujī"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "有",
-              "手機"
-            ],
-            "sentence": {
-              "traditional": "我有手機。",
-              "simplified": "我有手机。",
-              "pinyin": "Wǒ yǒu shǒujī.",
-              "english": "I have a cell phone."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "是"
-            ],
-            "mark": [
-              "是"
-            ],
-            "note": "To say what you have, use 有 rather than 是."
-          }
-        ],
-        "fallbackRepair": "Put the owner first, then 有 and the thing owned."
-      },
-      {
-        "id": "l2g03-3",
-        "source": "p.56 #3",
-        "prompt": "The person asking you is the one with water. Answer.",
-        "kind": "order-build",
-        "sub": "誰有水？",
-        "tiles": [
-          {
-            "traditional": "有",
-            "pinyin": "yǒu"
-          },
-          {
-            "traditional": "是",
-            "pinyin": "shì"
-          },
           {
             "traditional": "你",
             "pinyin": "nǐ"
           },
           {
-            "traditional": "水",
-            "pinyin": "shuǐ"
-          }
-        ],
-        "accepted": [
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
           {
-            "order": [
-              "你",
-              "有",
-              "水"
-            ],
-            "sentence": {
-              "traditional": "你有水。",
-              "pinyin": "Nǐ yǒu shuǐ.",
-              "english": "You have water."
-            }
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "你"
+            ],
+            "mark": [
+              "你"
+            ],
+            "note": "B is talking about B’s own phone: start with 我."
+          },
           {
             "placed": [
               "是"
@@ -821,107 +1309,143 @@
             "mark": [
               "是"
             ],
-            "note": "Having water uses 有; 是 identifies a person or thing."
+            "note": "To say what you own, use 有, not 是."
+          },
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "Look at the picture: B has a phone, so 有."
           }
         ],
-        "fallbackRepair": "The person you are talking to has the water: 你有水。"
+        "fallbackRepair": "Owner first, then 有: 我有手機.",
+        "result": {
+          "traditional": "我有手機。",
+          "simplified": "我有手机。",
+          "pinyin": "Wǒ yǒu shǒujī.",
+          "english": "I have a cell phone."
+        }
       },
       {
-        "id": "l2g03-own-listen",
-        "source": "own",
-        "kind": "listen-build",
-        "prompt": "Tap what you hear.",
-        "clip": {
-          "reading": "B1L02-R01",
-          "line": 1,
-          "file": "B1-02-1-1.mp3",
-          "start": 6.04,
-          "end": 8.25
-        },
+        "id": "l2g3-3",
+        "source": "p.56 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "誰有水？",
+                "simplified": "谁有水？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "他"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "水，我沒有。",
+                "simplified": "水，我没有。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "課",
-            "simplified": "课",
-            "pinyin": "kè"
+            "traditional": "我",
+            "pinyin": "wǒ"
           },
           {
             "traditional": "有",
             "pinyin": "yǒu"
           },
           {
-            "traditional": "早上",
-            "pinyin": "zǎoshàng"
+            "traditional": "誰",
+            "simplified": "谁",
+            "pinyin": "shéi"
           },
           {
-            "traditional": "我",
-            "pinyin": "wǒ"
+            "traditional": "他",
+            "pinyin": "tā"
           },
           {
-            "traditional": "下午",
-            "pinyin": "xiàwǔ"
-          },
-          {
-            "traditional": "沒有",
-            "simplified": "没有",
-            "pinyin": "méiyǒu"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "早上",
-              "沒有",
-              "課"
-            ],
-            "sentence": {
-              "traditional": "我早上沒有課。",
-              "simplified": "我早上没有课。",
-              "pinyin": "Wǒ zǎoshàng méiyǒu kè.",
-              "english": "I don’t have class in the morning."
-            }
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "下午"
+              "我"
             ],
-            "title": "That is not what you heard",
-            "note": "The speaker said 早上 (morning), not 下午 (afternoon)."
+            "mark": [
+              "我"
+            ],
+            "note": "B says 我沒有, so B has none; someone else has it: 他."
           },
           {
             "placed": [
-              "有"
+              "誰"
             ],
-            "title": "That is not what you heard",
-            "note": "Listen for 沒: 沒有 means “don’t have”, and 有 alone means “have”."
+            "mark": [
+              "誰"
+            ],
+            "note": "誰 asks the question; the answer names the person: 他."
           },
           {
-            "before": [
-              "課",
-              "沒有"
+            "placed": [
+              "沒"
             ],
-            "note": "課 is the thing they don’t have, so it comes after 沒有."
-          },
-          {
-            "notFirst": "我",
-            "note": "The speaker starts with who has no class."
+            "mark": [
+              "沒"
+            ],
+            "note": "A asks who has water, so name the one who has it: 他有水."
           }
         ],
-        "fallbackRepair": "Listen again: who, when, then what they don’t have."
+        "fallbackRepair": "The person first, then 有: 他有水.",
+        "result": {
+          "traditional": "他有水，我沒有。",
+          "simplified": "他有水，我没有。",
+          "pinyin": "Tā yǒu shuǐ, wǒ méi yǒu.",
+          "english": "He has water; I don’t."
+        }
       }
-    ],
-    "allowWords": [
-      "手機"
     ]
   },
   "B1L02-G04-P60": {
     "bookPage": 60,
     "title": "Complete the following sentences.",
+    "allowWords": [
+      "二",
+      "四"
+    ],
     "items": [
       {
-        "id": "l2g04-1",
+        "id": "l2g4-1",
         "source": "p.60 #1",
         "kind": "slot-build",
         "lines": [
@@ -934,84 +1458,76 @@
               },
               {
                 "type": "slot",
-                "id": "gap-0",
+                "id": "s1",
                 "answers": [
                   "的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "生日"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "是"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "二月二十四號。",
-                "simplified": "二月二十四号。"
-              },
-              {
-                "type": "slot",
-                "id": "gap-3",
-                "answers": []
+                "traditional": "生日是二月二十四號。",
+                "simplified": "生日是二月二十四号。"
               }
             ]
           }
         ],
         "tiles": [
           {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
             "traditional": "的",
             "pinyin": "de"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "有",
+            "pinyin": "yǒu"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-1",
-              "tile": "的"
-            },
-            "note": "的 joins Mom to her birthday, so it goes right after 媽媽, not after 生日."
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "The birthday belongs to Mom: join owner and thing with 的. The sentence already has its 是."
           },
           {
-            "slot": {
-              "id": "gap-2",
-              "tile": "的"
-            },
-            "note": "的 never comes right after 是; it joins 媽媽 and 生日."
+            "placed": [
+              "有"
+            ],
+            "mark": [
+              "有"
+            ],
+            "note": "The sentence already has its verb 是; join 媽媽 and 生日 with 的."
           },
           {
-            "slot": {
-              "id": "gap-3",
-              "tile": "的"
-            },
-            "note": "的 joins the owner to the thing owned, here 媽媽 and 生日."
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes before an adjective; join 媽媽 and 生日 with 的."
           }
         ],
-        "fallbackRepair": "Think about which two words 的 joins.",
+        "fallbackRepair": "Join the owner and the thing with 的: 媽媽的生日.",
         "result": {
           "traditional": "媽媽的生日是二月二十四號。",
           "simplified": "妈妈的生日是二月二十四号。",
           "pinyin": "Māma de shēngrì shì èr yuè èrshísì hào.",
           "english": "Mom’s birthday is February 24."
-        },
-        "gaps": true,
-        "prompt": "Complete the sentence.",
-        "quiet": true
+        }
       },
       {
-        "id": "l2g04-2",
+        "id": "l2g4-2",
         "source": "p.60 #2",
         "kind": "slot-build",
         "lines": [
@@ -1019,137 +1535,241 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你"
+                "traditional": "你喜歡台灣",
+                "simplified": "你喜欢台湾"
               },
               {
                 "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "喜歡",
-                "simplified": "喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "台灣",
-                "simplified": "台湾"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
+                "id": "s1",
                 "answers": [
                   "的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "水果"
-              },
-              {
-                "type": "slot",
-                "id": "gap-3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "嗎？",
-                "simplified": "吗？"
+                "traditional": "水果嗎？",
+                "simplified": "水果吗？"
               }
             ]
           }
         ],
         "tiles": [
           {
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
             "traditional": "的",
             "pinyin": "de"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "的"
-            },
-            "note": "你的 would mean \"your\", and the sentence would need a thing after it; 的 joins 台灣 and 水果."
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "台灣 and 水果 are two nouns: join them with 的, Taiwan’s fruit."
           },
           {
-            "slot": {
-              "id": "gap-1",
-              "tile": "的"
-            },
-            "note": "喜歡的 would make 喜歡 describe the fruit; 的 joins 台灣 and 水果."
+            "placed": [
+              "有"
+            ],
+            "mark": [
+              "有"
+            ],
+            "note": "The verb here is 喜歡; join 台灣 and 水果 with 的."
           },
           {
-            "slot": {
-              "id": "gap-3",
-              "tile": "的"
-            },
-            "note": "的 goes between 台灣 and 水果, not after 水果."
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes before an adjective; join 台灣 and 水果 with 的."
           }
         ],
-        "fallbackRepair": "Think about which two words 的 joins.",
+        "fallbackRepair": "Join 台灣 and 水果 with 的.",
         "result": {
           "traditional": "你喜歡台灣的水果嗎？",
           "simplified": "你喜欢台湾的水果吗？",
           "pinyin": "Nǐ xǐhuān Táiwān de shuǐguǒ ma?",
           "english": "Do you like Taiwanese fruit?"
-        },
-        "gaps": true,
-        "prompt": "Complete the sentence.",
-        "quiet": true
+        }
       },
       {
-        "id": "l2g04-3",
+        "id": "l2g4-3",
         "source": "p.60 #3",
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
-                "traditional": "我"
+                "traditional": "你的孩子明天去日本嗎？",
+                "simplified": "你的孩子明天去日本吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不，"
               },
               {
                 "type": "slot",
-                "id": "gap-0",
+                "id": "s1",
+                "answers": [
+                  "我"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "孩子"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "明天去美國。",
+                "simplified": "明天去美国。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "孩子",
+            "pinyin": "háizi"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "朋友",
+            "pinyin": "péngyǒu"
+          },
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "你"
+            ],
+            "mark": [
+              "你"
+            ],
+            "note": "A says 你的孩子 to B; B talks about that same child as 我的孩子."
+          },
+          {
+            "placed": [
+              "他"
+            ],
+            "mark": [
+              "他"
+            ],
+            "note": "A asked about B’s own child, so B says 我的孩子."
+          },
+          {
+            "placed": [
+              "朋友"
+            ],
+            "mark": [
+              "朋友"
+            ],
+            "note": "A asked about B’s child, not a friend: 孩子."
+          }
+        ],
+        "fallbackRepair": "Owner, 的, then the thing: 我的孩子.",
+        "result": {
+          "traditional": "不，我的孩子明天去美國。",
+          "simplified": "不，我的孩子明天去美国。",
+          "pinyin": "Bù, wǒ de háizi míngtiān qù Měiguó.",
+          "english": "No, my child is going to America tomorrow."
+        }
+      },
+      {
+        "id": "l2g4-4",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "老師有孩子嗎？",
+                "simplified": "老师有孩子吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "有，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "他"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
                 "answers": [
                   "的"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "孩子"
-              },
-              {
                 "type": "slot",
-                "id": "gap-1",
-                "answers": []
+                "id": "s3",
+                "answers": [
+                  "孩子"
+                ]
               },
               {
                 "type": "text",
-                "traditional": "明天"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "去美國。",
-                "simplified": "去美国。"
-              },
-              {
-                "type": "slot",
-                "id": "gap-3",
-                "answers": []
+                "traditional": "很可愛。",
+                "simplified": "很可爱。"
               }
             ]
           }
@@ -1158,46 +1778,52 @@
           {
             "traditional": "的",
             "pinyin": "de"
+          },
+          {
+            "traditional": "孩子",
+            "pinyin": "háizi"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-1",
-              "tile": "的"
-            },
-            "note": "的 joins 我 to the child, so it goes before 孩子, not after it."
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "Join the owner and the thing with 的, not 是."
           },
           {
-            "slot": {
-              "id": "gap-2",
-              "tile": "的"
-            },
-            "note": "的 joins 我 and 孩子; 明天的 would not name the owner."
-          },
-          {
-            "slot": {
-              "id": "gap-3",
-              "tile": "的"
-            },
-            "note": "的 joins 我 and 孩子, not the end of the sentence."
+            "placed": [
+              "你"
+            ],
+            "mark": [
+              "你"
+            ],
+            "note": "A asked about the teacher’s child: 他的孩子."
           }
         ],
-        "fallbackRepair": "Think about which two words 的 joins.",
+        "fallbackRepair": "Owner first, then 的, then the thing: 他的孩子, never 孩子的他.",
         "result": {
-          "traditional": "我的孩子明天去美國。",
-          "simplified": "我的孩子明天去美国。",
-          "pinyin": "Wǒ de háizi míngtiān qù Měiguó.",
-          "english": "My child is going to the United States tomorrow."
-        },
-        "prompt": "Complete the sentence.",
-        "quiet": true,
-        "gaps": true
+          "traditional": "有，他的孩子很可愛。",
+          "simplified": "有，他的孩子很可爱。",
+          "pinyin": "Yǒu, tā de háizi hěn kě'ài.",
+          "english": "Yes, his child is very cute."
+        }
       }
-    ],
-    "allowWords": [
-      "二",
-      "四"
     ]
   },
   "B1L02-G05-P61": {
@@ -1205,16 +1831,61 @@
     "title": "Answer the following questions.",
     "items": [
       {
-        "id": "l2g05-1",
+        "id": "l2g5-1",
         "source": "p.61 #1",
-        "prompt": "You don’t want any fruit.",
-        "kind": "order-build",
-        "sub": "你要吃水果嗎？",
-        "tiles": [
+        "kind": "slot-build",
+        "lines": [
           {
-            "traditional": "不",
-            "pinyin": "bù"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要吃水果嗎？",
+                "simplified": "你要吃水果吗？"
+              }
+            ]
           },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "要"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "吃"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "水果，我不愛吃。",
+                "simplified": "水果，我不爱吃。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
           {
             "traditional": "吃",
             "pinyin": "chī"
@@ -1225,32 +1896,16 @@
             "pinyin": "méi"
           },
           {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
             "traditional": "要",
             "pinyin": "yào"
           },
           {
-            "traditional": "水果",
-            "pinyin": "shuǐguǒ"
-          }
-        ],
-        "accepted": [
+            "traditional": "喝",
+            "pinyin": "hē"
+          },
           {
-            "order": [
-              "我",
-              "不",
-              "要",
-              "吃",
-              "水果"
-            ],
-            "sentence": {
-              "traditional": "我不要吃水果。",
-              "pinyin": "Wǒ bú yào chī shuǐguǒ.",
-              "english": "I do not want to eat fruit."
-            }
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
@@ -1261,35 +1916,91 @@
             "mark": [
               "沒"
             ],
-            "note": "For not wanting something, put 不 before 要."
+            "note": "要 is negated with 不, not 沒: 不要."
+          },
+          {
+            "placed": [
+              "喝"
+            ],
+            "mark": [
+              "喝"
+            ],
+            "note": "Fruit is eaten, not drunk: 吃水果."
           }
         ],
-        "fallbackRepair": "Put 不 before 要 and the action 吃水果 after 要."
+        "fallbackRepair": "不 goes before 要, and 要 before the verb: 不要吃.",
+        "result": {
+          "traditional": "我不要吃水果，我不愛吃。",
+          "simplified": "我不要吃水果，我不爱吃。",
+          "pinyin": "Wǒ bú yào chī shuǐguǒ, wǒ bú ài chī.",
+          "english": "I don’t want any fruit; I don’t love it."
+        }
       },
       {
-        "id": "l2g05-2",
+        "id": "l2g5-2",
         "source": "p.61 #2",
-        "prompt": "You don’t like coming to school.",
-        "kind": "order-build",
-        "sub": "你喜歡來學校嗎？",
-        "tiles": [
+        "kind": "slot-build",
+        "lines": [
           {
-            "traditional": "不",
-            "pinyin": "bù"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡來學校嗎？",
+                "simplified": "你喜欢来学校吗？"
+              }
+            ]
           },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "喜歡，我",
+                "simplified": "喜欢，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "學校。",
+                "simplified": "学校。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
           {
             "traditional": "來",
             "simplified": "来",
             "pinyin": "lái"
           },
           {
-            "traditional": "沒",
-            "simplified": "没",
-            "pinyin": "méi"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
             "traditional": "喜歡",
@@ -1297,26 +2008,13 @@
             "pinyin": "xǐhuān"
           },
           {
-            "traditional": "學校",
-            "simplified": "学校",
-            "pinyin": "xuéxiào"
-          }
-        ],
-        "accepted": [
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
           {
-            "order": [
-              "我",
-              "不",
-              "喜歡",
-              "來",
-              "學校"
-            ],
-            "sentence": {
-              "traditional": "我不喜歡來學校。",
-              "simplified": "我不喜欢来学校。",
-              "pinyin": "Wǒ bù xǐhuān lái xuéxiào.",
-              "english": "I do not like coming to school."
-            }
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
@@ -1327,114 +2025,85 @@
             "mark": [
               "沒"
             ],
-            "note": "For not liking an activity, put 不 before 喜歡."
+            "note": "喜歡 is negated with 不, never 沒, and B answers 喜歡: 很喜歡."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "B answers 喜歡, so B does like coming: 很喜歡, not 不喜歡."
           }
         ],
-        "fallbackRepair": "Put 不 before 喜歡 and 來學校 after it."
+        "fallbackRepair": "很 goes before 喜歡, and 喜歡 before the verb 來: 很喜歡來學校.",
+        "result": {
+          "traditional": "喜歡，我很喜歡來學校。",
+          "simplified": "喜欢，我很喜欢来学校。",
+          "pinyin": "Xǐhuān, wǒ hěn xǐhuān lái xuéxiào.",
+          "english": "Yes, I really like coming to school."
+        }
       },
       {
-        "id": "l2g05-3",
+        "id": "l2g5-3",
         "source": "p.61 #3",
-        "prompt": "You love milk tea.",
-        "kind": "order-build",
-        "sub": "你愛喝什麼？",
-        "tiles": [
-          {
-            "traditional": "愛",
-            "simplified": "爱",
-            "pinyin": "ài"
-          },
-          {
-            "traditional": "奶茶",
-            "pinyin": "nǎichá"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "喝",
-            "pinyin": "hē"
-          },
-          {
-            "traditional": "吃",
-            "pinyin": "chī"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "愛",
-              "喝",
-              "奶茶"
-            ],
-            "sentence": {
-              "traditional": "我愛喝奶茶。",
-              "simplified": "我爱喝奶茶。",
-              "pinyin": "Wǒ ài hē nǎichá.",
-              "english": "I love drinking milk tea."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "吃"
-            ],
-            "mark": [
-              "吃"
-            ],
-            "note": "Milk tea is drunk, so the action after 愛 is 喝."
-          }
-        ],
-        "fallbackRepair": "Put 喝奶茶 after 愛 to say what you love doing."
-      },
-      {
-        "id": "l2g05-4",
-        "source": "own",
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
-                "traditional": "我愛吃水果，",
-                "simplified": "我爱吃水果，"
+                "traditional": "你愛喝什麼？",
+                "simplified": "你爱喝什么？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
               },
               {
                 "type": "slot",
-                "id": "negative",
-                "answers": [
-                  "不"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "feeling",
+                "id": "s1",
                 "answers": [
                   "愛"
                 ]
               },
               {
                 "type": "slot",
-                "id": "action",
+                "id": "s2",
                 "answers": [
                   "喝"
                 ]
               },
               {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "奶茶"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "珍珠奶茶。"
+                "traditional": "，不愛喝茶。",
+                "simplified": "，不爱喝茶。"
               }
             ]
           }
         ],
         "tiles": [
           {
-            "traditional": "愛",
-            "simplified": "爱",
-            "pinyin": "ài"
+            "traditional": "茶",
+            "pinyin": "chá"
           },
           {
             "traditional": "喝",
@@ -1445,123 +2114,178 @@
             "pinyin": "bù"
           },
           {
-            "traditional": "沒",
-            "pinyin": "méi",
-            "simplified": "没"
+            "traditional": "奶茶",
+            "pinyin": "nǎichá"
+          },
+          {
+            "traditional": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "negative",
-              "tile": "愛"
-            },
-            "mark": [
-              "愛"
+            "placed": [
+              "不"
             ],
-            "note": "Put 不 before 愛 to negate the feeling."
-          },
-          {
-            "slot": {
-              "id": "negative",
-              "tile": "喝"
-            },
-            "mark": [
-              "喝"
-            ],
-            "note": "Put 不 before 愛, with 喝 after 愛."
-          },
-          {
-            "slot": {
-              "id": "negative",
-              "tile": "沒"
-            },
-            "mark": [
-              "沒"
-            ],
-            "note": "This is a preference, so negate 愛 with 不."
-          },
-          {
-            "slot": {
-              "id": "feeling",
-              "tile": "喝"
-            },
-            "mark": [
-              "喝"
-            ],
-            "note": "The feeling 愛 comes before the action 喝."
-          },
-          {
-            "slot": {
-              "id": "feeling",
-              "tile": "不"
-            },
             "mark": [
               "不"
             ],
-            "note": "Put 愛 in this slot, after 不 and before 喝."
+            "note": "A asks what you love to drink: answer with 愛喝."
           },
           {
-            "slot": {
-              "id": "feeling",
-              "tile": "沒"
-            },
-            "mark": [
-              "沒"
+            "placed": [
+              "茶"
             ],
-            "note": "Put 愛 after 不 to express dislike of drinking bubble milk tea."
+            "mark": [
+              "茶"
+            ],
+            "note": "B doesn’t love tea (不愛喝茶), so B loves something else: 奶茶."
           },
           {
-            "slot": {
-              "id": "action",
-              "tile": "愛"
-            },
-            "mark": [
-              "愛"
+            "placed": [
+              "吃"
             ],
-            "note": "Put the action 喝 after 不愛 and before 珍珠奶茶."
-          },
-          {
-            "slot": {
-              "id": "action",
-              "tile": "不"
-            },
             "mark": [
-              "不"
+              "吃"
             ],
-            "note": "Put 喝 here and keep 不 before 愛."
-          },
-          {
-            "slot": {
-              "id": "action",
-              "tile": "沒"
-            },
-            "mark": [
-              "沒"
-            ],
-            "note": "Put 喝 after 不愛 to name the action you dislike."
+            "note": "Milk tea is drunk, not eaten: 喝."
           }
         ],
-        "fallbackRepair": "Say 不愛喝: negative word, feeling, then action.",
+        "fallbackRepair": "愛 goes before the verb: 我愛喝奶茶.",
         "result": {
-          "traditional": "我愛吃水果，不愛喝珍珠奶茶。",
-          "simplified": "我爱吃水果，不爱喝珍珠奶茶。",
-          "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē zhēnzhū nǎichá.",
-          "english": "I love eating fruit, but I do not love drinking bubble milk tea."
-        },
-        "prompt": "You love eating fruit but dislike drinking bubble milk tea.",
-        "quiet": true
+          "traditional": "我愛喝奶茶，不愛喝茶。",
+          "simplified": "我爱喝奶茶，不爱喝茶。",
+          "pinyin": "Wǒ ài hē nǎichá, bú ài hē chá.",
+          "english": "I love milk tea, but not tea."
+        }
+      },
+      {
+        "id": "l2g5-4",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "要"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "喝"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "茶嗎？",
+                "simplified": "茶吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "好，謝謝。",
+                "simplified": "好，谢谢。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
+          },
+          {
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài"
+          },
+          {
+            "traditional": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "吃",
+            "pinyin": "chī"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "喜歡"
+            ],
+            "mark": [
+              "喜歡"
+            ],
+            "note": "B says 好，謝謝, taking an offer, so A offered with 要, not 喜歡."
+          },
+          {
+            "placed": [
+              "愛"
+            ],
+            "mark": [
+              "愛"
+            ],
+            "note": "B says 好，謝謝, taking an offer, so A offered with 要, not 愛."
+          },
+          {
+            "placed": [
+              "吃"
+            ],
+            "mark": [
+              "吃"
+            ],
+            "note": "Tea is drunk, not eaten: 喝."
+          }
+        ],
+        "fallbackRepair": "要 goes before the verb: 你要喝茶嗎？",
+        "result": {
+          "traditional": "你要喝茶嗎？",
+          "simplified": "你要喝茶吗？",
+          "pinyin": "Nǐ yào hē chá ma?",
+          "english": "Would you like some tea?"
+        }
       }
     ]
   },
   "B1L02-G06-P62": {
     "bookPage": 62,
     "title": "Complete the following questions.",
+    "allowWords": [
+      "熱"
+    ],
     "items": [
       {
-        "id": "l2g06-1",
+        "id": "l2g6-1",
         "source": "p.62 #1",
-        "prompt": "Complete the question.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 62,
@@ -1571,61 +2295,86 @@
             0.153,
             0.115
           ],
-          "alt": "A person wipes sweat beneath a bright sun."
+          "alt": "A man wipes off sweat under a blazing sun."
         },
-        "glossary": [
+        "lines": [
           {
-            "traditional": "熱",
-            "simplified": "热",
-            "pinyin": "rè",
-            "english": "hot"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "台灣",
+                "simplified": "台湾"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "熱"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "熱"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "台灣很熱。",
+                "simplified": "台湾很热。"
+              }
+            ]
           }
         ],
-        "kind": "order-build",
-        "sub": "B replies afterward: 台灣很熱。",
         "tiles": [
-          {
-            "traditional": "熱",
-            "simplified": "热",
-            "pinyin": "rè"
-          },
-          {
-            "traditional": "熱",
-            "simplified": "热",
-            "pinyin": "rè"
-          },
           {
             "traditional": "好",
             "pinyin": "hǎo"
           },
           {
-            "traditional": "台灣",
-            "simplified": "台湾",
-            "pinyin": "Táiwān"
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè"
           },
           {
             "traditional": "不",
             "pinyin": "bù"
           },
           {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè"
+          },
+          {
             "traditional": "好",
             "pinyin": "hǎo"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "台灣",
-              "熱",
-              "不",
-              "熱"
-            ],
-            "sentence": {
-              "traditional": "台灣熱不熱？",
-              "simplified": "台湾热不热？",
-              "pinyin": "Táiwān rè bú rè?",
-              "english": "Is Taiwan hot?"
-            }
           }
         ],
         "repairs": [
@@ -1636,22 +2385,84 @@
             "mark": [
               "好"
             ],
-            "note": "The task asks whether Taiwan is hot; 好不好 would ask whether it is good."
+            "note": "B answers 很熱, so A asked about the heat: 熱不熱."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "A positive-negative question never takes 嗎."
           }
         ],
-        "fallbackRepair": "Put 不 between the two copies of 熱."
+        "fallbackRepair": "Say the word, then 不, then the word again: 熱不熱.",
+        "result": {
+          "traditional": "台灣熱不熱？",
+          "simplified": "台湾热不热？",
+          "pinyin": "Táiwān rè bú rè?",
+          "english": "Is Taiwan hot?"
+        }
       },
       {
-        "id": "l2g06-2",
+        "id": "l2g6-2",
         "source": "p.62 #2",
-        "prompt": "Complete the question.",
-        "kind": "order-build",
-        "sub": "B replies afterward: 我很喜歡吃。",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "吃水果？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我很喜歡吃。",
+                "simplified": "我很喜欢吃。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "喜歡",
-            "simplified": "喜欢",
-            "pinyin": "xǐhuān"
+            "traditional": "要",
+            "pinyin": "yào"
           },
           {
             "traditional": "喜歡",
@@ -1664,36 +2475,29 @@
             "pinyin": "ma"
           },
           {
-            "traditional": "你",
-            "pinyin": "nǐ"
-          },
-          {
             "traditional": "不",
             "pinyin": "bù"
           },
           {
-            "traditional": "吃水果",
-            "pinyin": "chī shuǐguǒ"
-          }
-        ],
-        "accepted": [
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
+          },
           {
-            "order": [
-              "你",
-              "喜歡",
-              "不",
-              "喜歡",
-              "吃水果"
-            ],
-            "sentence": {
-              "traditional": "你喜歡不喜歡吃水果？",
-              "simplified": "你喜欢不喜欢吃水果？",
-              "pinyin": "Nǐ xǐhuān bù xǐhuān chī shuǐguǒ?",
-              "english": "Do you like eating fruit?"
-            }
+            "traditional": "要",
+            "pinyin": "yào"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "要"
+            ],
+            "mark": [
+              "要"
+            ],
+            "note": "B answers 很喜歡吃, so ask with 喜歡: 喜歡不喜歡."
+          },
           {
             "placed": [
               "嗎"
@@ -1701,95 +2505,190 @@
             "mark": [
               "嗎"
             ],
-            "note": "For the repeated-verb question requested here, put 不 between the verbs and leave out 嗎."
+            "note": "A positive-negative question never takes 嗎."
           }
         ],
-        "fallbackRepair": "Put 不 between the two copies of 喜歡."
+        "fallbackRepair": "喜歡, then 不, then 喜歡 again, before the action: 喜歡不喜歡吃水果.",
+        "result": {
+          "traditional": "你喜歡不喜歡吃水果？",
+          "simplified": "你喜欢不喜欢吃水果？",
+          "pinyin": "Nǐ xǐhuān bù xǐhuān chī shuǐguǒ?",
+          "english": "Do you like eating fruit?"
+        }
       },
       {
-        "id": "l2g06-3",
+        "id": "l2g6-3",
         "source": "p.62 #3",
-        "prompt": "Complete the question.",
-        "kind": "order-build",
-        "sub": "B replies afterward: 我不要去他家。",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "要"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "要"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他家？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不要去他家。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "要",
-            "pinyin": "yào"
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
           },
           {
             "traditional": "要",
             "pinyin": "yào"
-          },
-          {
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
-          },
-          {
-            "traditional": "你",
-            "pinyin": "nǐ"
           },
           {
             "traditional": "不",
             "pinyin": "bù"
           },
           {
-            "traditional": "去他家",
-            "pinyin": "qù tā jiā"
-          }
-        ],
-        "accepted": [
+            "traditional": "要",
+            "pinyin": "yào"
+          },
           {
-            "order": [
-              "你",
-              "要",
-              "不",
-              "要",
-              "去他家"
-            ],
-            "sentence": {
-              "traditional": "你要不要去他家？",
-              "pinyin": "Nǐ yào bú yào qù tā jiā?",
-              "english": "Do you want to go to his home?"
-            }
+            "traditional": "去",
+            "pinyin": "qù"
+          },
+          {
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "嗎"
+              "喜歡"
             ],
             "mark": [
-              "嗎"
+              "喜歡"
             ],
-            "note": "For the repeated-verb question requested here, put 不 between the verbs and leave out 嗎."
+            "note": "B answers 不要去, so ask with 要: 要不要."
           }
         ],
-        "fallbackRepair": "Put 不 between the two copies of 要."
+        "fallbackRepair": "Put 不 between the two 要, then the action: 要不要去他家.",
+        "result": {
+          "traditional": "你要不要去他家？",
+          "pinyin": "Nǐ yào bú yào qù tā jiā?",
+          "english": "Do you want to go to his place?"
+        }
       },
       {
-        "id": "l2g06-4",
+        "id": "l2g6-4",
         "source": "own",
-        "prompt": "Ask whether he has Taiwanese friends.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "沒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "台灣朋友？",
+                "simplified": "台湾朋友？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他有台灣朋友。",
+                "simplified": "他有台湾朋友。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "有",
-            "pinyin": "yǒu"
-          },
-          {
-            "traditional": "有",
-            "pinyin": "yǒu"
-          },
           {
             "traditional": "不",
             "pinyin": "bù"
           },
           {
-            "traditional": "他",
-            "pinyin": "tā"
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
           },
           {
             "traditional": "沒",
@@ -1797,26 +2696,13 @@
             "pinyin": "méi"
           },
           {
-            "traditional": "台灣朋友",
-            "simplified": "台湾朋友",
-            "pinyin": "Táiwān péngyǒu"
-          }
-        ],
-        "accepted": [
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
           {
-            "order": [
-              "他",
-              "有",
-              "沒",
-              "有",
-              "台灣朋友"
-            ],
-            "sentence": {
-              "traditional": "他有沒有台灣朋友？",
-              "simplified": "他有没有台湾朋友？",
-              "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
-              "english": "Does he have any Taiwanese friends?"
-            }
+            "traditional": "有",
+            "pinyin": "yǒu"
           }
         ],
         "repairs": [
@@ -1827,14 +2713,35 @@
             "mark": [
               "不"
             ],
-            "note": "The negative of 有 is 沒有, so the question uses 有沒有 rather than 有不有."
+            "note": "有 is negated with 沒, so the question is 有沒有, never 有不有."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "A positive-negative question never takes 嗎."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "B answers with 有, so ask with 有: 有沒有."
           }
         ],
-        "fallbackRepair": "Put 沒 between the two copies of 有."
+        "fallbackRepair": "有, then 沒, then 有 again: 他有沒有台灣朋友？",
+        "result": {
+          "traditional": "他有沒有台灣朋友？",
+          "simplified": "他有没有台湾朋友？",
+          "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
+          "english": "Does he have any Taiwanese friends?"
+        }
       }
-    ],
-    "allowWords": [
-      "熱"
     ]
   }
 }

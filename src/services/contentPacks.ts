@@ -5,6 +5,7 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
+import type { LessonTestPack } from '../types/lessonTest';
 import { createPackLoader, type PackLoader } from './packLoader';
 import { fetchContent, fetchStaticJson } from './staticContentService';
 import {
@@ -310,6 +311,18 @@ export async function fetchGrammarPack(bookId: number): Promise<InteractiveGramm
     return await loadPack<InteractiveGrammarPart[]>('grammar', bookId);
   } catch (error) {
     debugLogger.warn('Cache', `Static grammar pack unavailable for book ${bookId}.`, error);
+    return null;
+  }
+}
+
+/** A book's lesson tests (null when the book has none yet or the pack can't load). */
+export async function fetchLessonTestPack(bookId: number): Promise<LessonTestPack | null> {
+  try {
+    const manifest = await getPackManifest('lesson-tests');
+    if (!manifest.books?.some((book) => book.bookId === bookId)) return null;
+    return await loadPack<LessonTestPack>('lesson-tests', bookId);
+  } catch (error) {
+    debugLogger.warn('Cache', `Lesson test pack unavailable for book ${bookId}.`, error);
     return null;
   }
 }

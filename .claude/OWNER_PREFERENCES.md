@@ -7,12 +7,13 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 ## 1. The product
 
 - A Chinese-learning PWA built on the textbook *Modern Chinese* (Books 1–4): vocabulary flashcards with spaced repetition, a mixed vocab quiz, grammar lessons, readings with audio, character breakdowns and memory hooks.
-- Target feel: **a calm, tactile, Duolingo-polished study companion.** Premium means deliberate hierarchy, quiet chrome, smooth motion, and every screen feeling authored as one system.
+- Target feel: **playful, illustrated and polished, like Duolingo, in the app's own warm palette.** Bright friendly illustrations, chunky tactile buttons, smooth motion, and every screen authored as one system. Premium means clear hierarchy and finish, not plainness.
+- Match what the app already has. When in doubt, look at the existing screens and illustrations and design in that voice; don't invent a new style (no "minimal", "ink", "monochrome" or "calm" reinterpretations).
 - Learning comes before decoration. Every feature has to help the learner remember the **meaning** of a word, its sound, and its characters.
 
 ## 2. Visual taste
 
-**Calm, clean, few elements.**
+**Clean, few elements.**
 - Use the fewest zones that do the job. When a screen feels empty, fix the composition (size, alignment, centring) before adding anything.
 - Rejected again and again: description lines, "what you'll learn" lists, stats lines, breadcrumbs, status pills ("Review · 1 of 2", "Missed", "Done"), counts next to buttons, floating helper text.
 - **No bordered box inside a bordered container.** A tile inside a card inside a bar reads as "messy". Inside a container, use plain text with hierarchy (size, weight, ink colour).
@@ -40,7 +41,10 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 - Nunito heavy for titles. The Chinese study font for characters. PingFang semibold for Chinese subtitles.
 - Sibling blocks share exactly the same text styles. Short copy, no uppercase sentences.
 
-**Images.** Native ratio, never cropped, no text over pictures.
+**Pictures.**
+- The app's illustrations are the picture style: warm, colourful flat art (sunny rooms, wooden desks, plants, coral, navy and gold). Anything drawn for an exercise (clocks, calendars, objects) matches that style, not a style of its own.
+- Pictures keep their own colours in dark mode: never inverted, tinted or re-coloured.
+- Native ratio, never cropped, no text laid over a picture (text that belongs to the drawn object, like a calendar's month, is fine).
 
 **Layout.**
 - Desktop keeps the side nav. Windows open beside it, never as a full-bleed takeover.
@@ -84,9 +88,11 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 
 **Process**
 - **Small tweak or bug:** a one-line intent, then just do it.
-- **Design or motion work:** a short plan, then a **clickable HTML prototype** (real tokens, phone 390 and desktop 1440, 2–3 named directions, one recommended), then wait for a pick or "go", then build. Iterate on the same prototype link.
-- **Ask first:** new dependencies, new abstractions, moving or deleting files, multi-file refactors, schema or pack or data changes.
-- **Work inline:** no subagents unless asked. The owner disliked a Codex session that silently restyled the quiz, so never restyle beyond the request.
+- **New screens or big design changes:** a short plan, then a **clickable HTML prototype** (real tokens, phone 390 and desktop 1440, 2–3 named directions, one recommended), then wait for a pick or "go", then build. Iterate on the same prototype link.
+- **Design inside the existing look** (polish, pictures, spacing, a new state of an existing screen): the owner trusts you to design it in the app's voice. Build it in the app and show real screenshots instead of a separate mock; a mock's fonts and spacing differ from the app.
+- **Who decides:** the owner owns the product vision; the AI owns technical decisions (tools, structure, tests, infrastructure) and says why in a line. Ask first only for product decisions (what learners see, do or learn; content and pack changes) and before anything that could affect real learners or their data, deletes something, changes hosting or provider settings, or costs money.
+- **Build it yourself:** helpers (subagents) only for read-only research and reviews. The owner disliked a Codex session that silently restyled the quiz, so never restyle beyond the request.
+- **Shipping:** work on a branch, open a PR into `main` (staging); the owner merges, then releases with the Release PR (`docs/RELEASING.md`).
 
 **Verifying**
 - Look at the result yourself at 390×844 and 1440×900 before saying "done". Use the DEV debug window: Ctrl+Shift+0 → **UI Previews**.
@@ -94,6 +100,7 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 - Report honestly what you checked and what you didn't.
 
 **Answering**
+- The owner works at night, often from a phone. Updates: what you did, what's left, what they must decide.
 - Terse. Lead with the result. No diff recap, no tool narration, no filler.
 - Plain words. Few headers. Bullets only for parallel items.
 - Questions: only when the answer changes what you'd do, with the recommended option first.
@@ -101,6 +108,6 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 ## 6. Design references
 
 - **Duolingo:** chunky 3D buttons, one bold primary action, a mascot celebration at the end of a lesson, the progress bar as the only header chrome. Borrow the polish, not the saturated green or loud copy.
-- **Du Chinese:** calm reading, tap a word for pinyin, meaning and audio.
+- **Du Chinese:** reading-first, tap a word for pinyin, meaning and audio.
 - **HelloChinese:** tone practice, handwriting canvas.
 - **Pleco / Skritter:** depth of data. Borrow the information, never the density.

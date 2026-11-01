@@ -17,12 +17,17 @@ const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 // The production bundle is built with NODE_ENV defined to "production".
 const isProd = process.env.NODE_ENV === "production";
-const errorMonitoringEnabled = isProd && Boolean(process.env.SENTRY_DSN);
+// One Sentry project serves both sides; the browser DSN is public by design.
+// Staging never reports (it has no DSN, and APP_ENV guards against copying one).
+const sentryDsn = process.env.SENTRY_DSN || process.env.VITE_SENTRY_DSN;
+const errorMonitoringEnabled = isProd && Boolean(sentryDsn) && process.env.APP_ENV !== "staging";
 
 if (errorMonitoringEnabled) {
   Sentry.init({
-    dsn: process.env.SENTRY_DSN,
+    dsn: sentryDsn,
     environment: "production",
+    release: process.env.RENDER_GIT_COMMIT,
+    initialScope: { tags: { runtime: "server" } },
     tracesSampleRate: 0,
     beforeBreadcrumb: () => null,
     beforeSend(event) {
@@ -60,8 +65,10 @@ app.use((_req, res, next) => {
 app.use(compression());
 app.use(express.json({ limit: "16kb" }));
 
+// Release checks read `commit` to know which build is live (Render sets RENDER_GIT_COMMIT).
 app.get("/healthz", (_req, res) => {
-  res.json({ ok: true });
+  res.setHeader("Cache-Control", "no-store");
+  res.json({ ok: true, commit: process.env.RENDER_GIT_COMMIT ?? null, env: process.env.APP_ENV ?? (isProd ? "production" : "development") });
 });
 
 // ─── Auth + rate limiting (abuse protection for APIs and protected content) ──
@@ -229,7 +236,7 @@ async function bootstrap() {
     //    (index.html, service worker, manifest) are forced to no-cache.
     const distDataDir = path.join(distPath, "data");
     const revalidatedFiles = new Set([
-      "index.html", "sw.js", "registerSW.js", "manifest.json", "manifest.webmanifest",
+      "index.html", "sw.js", "registerSW.js", "manifest.json", "manifest.webmanifest", "asset-manifest.json",
     ]);
     const assetsMarker = `${path.sep}assets${path.sep}`;
     // Authenticated content is same-origin so every pack request can be checked.

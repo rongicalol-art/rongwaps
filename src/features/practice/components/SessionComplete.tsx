@@ -3,9 +3,9 @@ import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import { ActionButton, AppIcon, LottiePlayer, type AppIconName } from '../../../lib/widgets';
 
-// Module-level so the player keeps one stable loader identity.
-const loadBird = () => import('../../../assets/animations/deck-complete-bird.json').then((m) => m.default);
-const BIRD_LAST_FRAME = 203;
+// Module-level so the player keeps one stable loader identity. Exported for other end screens (lesson test results).
+export const loadBird = () => import('../../../assets/animations/deck-complete-bird.json').then((m) => m.default);
+export const BIRD_LAST_FRAME = 203;
 const SPRING = 'cubic-bezier(.34,1.56,.64,1)';
 const RISE = 'cubic-bezier(.16,1,.3,1)';
 const MAX_CHIPS = 19;
@@ -22,7 +22,7 @@ const POUR_MS = 620;
 const BURST_PIECES = 14;
 const BURST_COLORS = ['bg-brand-primary', 'bg-feedback-success', 'bg-palette-purple', 'bg-feedback-warning'];
 
-const formatTime = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+export const formatTime = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 
 /** What the flashcard round hands to the quiz that follows it, so Session complete reports the whole session. */
 export interface SessionStats {
@@ -51,7 +51,7 @@ export interface SessionCompleteProps {
   onStudyAllAgain?: () => void;
 }
 
-interface StatTileProps {
+export interface StatTileProps {
   label: string;
   icon: AppIconName;
   shown: number;
@@ -63,7 +63,7 @@ interface StatTileProps {
 }
 
 /** Solid colored frame, white label, white body with the value (and a shine that sweeps once it lands). */
-function StatTile({ label, icon, shown, format, frameClass, inkClass, bodyRef }: StatTileProps) {
+export function StatTile({ label, icon, shown, format, frameClass, inkClass, bodyRef }: StatTileProps) {
   return (
     <div className={`origin-bottom rounded-sm border-b-4 p-0.5 ${frameClass}`}>
       <span className="block py-1 text-center text-[11px] font-black uppercase tracking-[0.09em] text-ui-on-solid">{label}</span>

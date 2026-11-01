@@ -4,84 +4,171 @@
     "title": "Complete the following dialogues.",
     "items": [
       {
-        "id": "b1l06-g01-p135-practice-1",
+        "id": "l6g1-1",
         "source": "p.136 #1",
-        "prompt": "Reply to the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "You learned to play from your brother and can join his team. 你會不會踢足球？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你會不會踢足球？",
+                "simplified": "你会不会踢足球？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "會"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "踢"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "足球，可是我會打籃球。",
+                "simplified": "足球，可是我会打篮球。"
+              }
+            ]
+          }
+        ],
         "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
           {
             "traditional": "會",
             "simplified": "会",
             "pinyin": "huì"
           },
           {
-            "traditional": "足球",
-            "pinyin": "zúqiú"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
             "traditional": "踢",
             "pinyin": "tī"
           },
           {
-            "traditional": "想",
-            "pinyin": "xiǎng"
-          }
-        ],
-        "accepted": [
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
           {
-            "order": [
-              "我",
-              "會",
-              "踢",
-              "足球"
-            ],
-            "sentence": {
-              "traditional": "我會踢足球。",
-              "pinyin": "Wǒ huì tī zúqiú.",
-              "english": "I know how to play soccer."
-            }
+            "traditional": "打",
+            "pinyin": "dǎ"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "想"
+              "沒"
             ],
             "mark": [
-              "想"
+              "沒"
             ],
-            "note": "The context says you learned the skill; use 會 rather than only saying you want to play."
+            "note": "會 is negated with 不, never 沒: 不會."
+          },
+          {
+            "placed": [
+              "打"
+            ],
+            "mark": [
+              "打"
+            ],
+            "note": "足球 is played with the feet: 踢足球. 打 goes with 籃球 and 網球."
           }
         ],
-        "fallbackRepair": "Put 會 before the activity 踢足球."
+        "fallbackRepair": "不 goes before 會, then the verb: 我不會踢足球.",
+        "result": {
+          "traditional": "我不會踢足球，可是我會打籃球。",
+          "simplified": "我不会踢足球，可是我会打篮球。",
+          "pinyin": "Wǒ bú huì tī zúqiú, kěshì wǒ huì dǎ lánqiú.",
+          "english": "I can't play soccer, but I can play basketball."
+        }
       },
       {
-        "id": "b1l06-g01-p135-practice-2",
+        "id": "l6g1-2",
         "source": "p.136 #2",
-        "prompt": "Reply to the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "Your brother has never learned Chinese and cannot speak it. 你弟弟會說中文嗎？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你弟弟會說中文嗎？",
+                "simplified": "你弟弟会说中文吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "他"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "會"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "中文，也很喜歡說。",
+                "simplified": "中文，也很喜欢说。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
-            "traditional": "說",
-            "simplified": "说",
-            "pinyin": "shuō"
-          },
-          {
-            "traditional": "想",
-            "pinyin": "xiǎng"
-          },
           {
             "traditional": "他",
             "pinyin": "tā"
@@ -92,189 +179,289 @@
             "pinyin": "huì"
           },
           {
-            "traditional": "中文",
-            "pinyin": "Zhōngwén"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "他",
-              "不",
-              "會",
-              "說",
-              "中文"
-            ],
-            "sentence": {
-              "traditional": "他不會說中文。",
-              "pinyin": "Tā bú huì shuō Zhōngwén.",
-              "english": "He does not know how to speak Chinese."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "想"
-            ],
-            "mark": [
-              "想"
-            ],
-            "note": "The context says he lacks the skill, so the reply needs 不會."
-          }
-        ],
-        "fallbackRepair": "Put 不 before 會 and the activity 說中文 after 會."
-      },
-      {
-        "id": "b1l06-g01-p135-practice-3",
-        "source": "p.136 #3",
-        "prompt": "Start the chat.",
-        "kind": "order-build",
-        "sub": "B replies afterward: 我不會做牛肉麵。",
-        "tiles": [
-          {
-            "traditional": "會",
-            "simplified": "会",
-            "pinyin": "huì"
+            "traditional": "說",
+            "simplified": "说",
+            "pinyin": "shuō"
           },
           {
-            "traditional": "會",
-            "simplified": "会",
-            "pinyin": "huì"
-          },
-          {
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
-          },
-          {
-            "traditional": "你",
-            "pinyin": "nǐ"
+            "traditional": "我",
+            "pinyin": "wǒ"
           },
           {
             "traditional": "不",
             "pinyin": "bù"
           },
           {
-            "traditional": "做牛肉麵",
-            "pinyin": "zuò niúròu miàn",
-            "simplified": "做牛肉面"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "你",
-              "會",
-              "不",
-              "會",
-              "做牛肉麵"
-            ],
-            "sentence": {
-              "traditional": "你會不會做牛肉麵？",
-              "pinyin": "Nǐ huì bú huì zuò niúròumiàn?",
-              "english": "Do you know how to make beef noodles?"
-            }
+            "traditional": "要",
+            "pinyin": "yào"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "嗎"
+              "我"
             ],
             "mark": [
-              "嗎"
+              "我"
             ],
-            "note": "For the repeated-verb question requested here, put 不 between the verbs and leave out 嗎."
+            "note": "A asks about 你弟弟, so B answers about him: 他."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "也很喜歡說 says he speaks it and likes it, so he can: no 不."
+          },
+          {
+            "placed": [
+              "要"
+            ],
+            "mark": [
+              "要"
+            ],
+            "note": "A asks 會 (know how), so answer with 會, not 要 (want)."
           }
         ],
-        "fallbackRepair": "Put 不 between the two copies of 會."
+        "fallbackRepair": "Who, then 會, then the verb: 他會說中文.",
+        "result": {
+          "traditional": "他會說中文，也很喜歡說。",
+          "simplified": "他会说中文，也很喜欢说。",
+          "pinyin": "Tā huì shuō Zhōngwén, yě hěn xǐhuan shuō.",
+          "english": "He can speak Chinese, and he likes speaking it too."
+        }
       },
       {
-        "id": "b1l06-g01-p135-practice-4",
-        "source": "own",
+        "id": "l6g1-3",
+        "source": "p.136 #3",
         "kind": "slot-build",
         "lines": [
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "今天下午我們去游泳，好不好？"
-              }
-            ],
             "speaker": {
               "traditional": "A"
             },
-            "me": false
-          },
-          {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我"
+                "traditional": "你"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "s1",
                 "answers": [
-                  "不想"
+                  "會"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "會"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "游泳，我們去打球吧。"
+                "traditional": "做牛肉麵？",
+                "simplified": "做牛肉面？"
               }
-            ],
+            ]
+          },
+          {
             "speaker": {
               "traditional": "B"
             },
-            "me": true
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不會做牛肉麵。",
+                "simplified": "我不会做牛肉面。"
+              }
+            ]
           }
         ],
         "tiles": [
           {
-            "traditional": "不會",
-            "simplified": "不会",
-            "pinyin": "bú huì"
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
           },
           {
-            "traditional": "不想",
-            "pinyin": "bù xiǎng"
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
-            "traditional": "不是",
-            "pinyin": "búshì"
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "要",
+            "pinyin": "yào"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不會"
+              "沒"
             ],
             "mark": [
-              "不會"
+              "沒"
             ],
-            "note": "You know how to swim, so it isn’t 不會; you just don’t feel like it: 不想."
+            "note": "會 is negated with 不: 會不會."
           },
           {
             "placed": [
-              "不是"
+              "要"
             ],
             "mark": [
-              "不是"
+              "要"
             ],
-            "note": "我不是游泳 is not Chinese. To say you don’t feel like swimming, use 不想."
+            "note": "B answers 不會, so A asked about the skill: 會不會, not 要不要."
           }
         ],
-        "fallbackRepair": "You can swim but don’t feel like it: 我不想游泳。",
+        "fallbackRepair": "Say 會, then 不, then 會 again: 會不會.",
         "result": {
-          "traditional": "我不想游泳，我們去打球吧。",
-          "pinyin": "Wǒ bù xiǎng yóuyǒng, wǒmen qù dǎqiú ba.",
-          "english": "I do not want to swim; let’s play ball."
-        },
-        "sub": "You know how to swim, but you prefer to play ball this afternoon.",
-        "prompt": "Reply to A using your plans.",
-        "quiet": true
+          "traditional": "你會不會做牛肉麵？",
+          "simplified": "你会不会做牛肉面？",
+          "pinyin": "Nǐ huì bú huì zuò niúròumiàn?",
+          "english": "Can you make beef noodles?"
+        }
+      },
+      {
+        "id": "l6g1-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你會游泳嗎？",
+                "simplified": "你会游泳吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "會"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，可是我哥哥會。",
+                "simplified": "，可是我哥哥会。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "要",
+            "pinyin": "yào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "Answer yes or no with the question’s verb, not 是: here 不會."
+          },
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "會 is negated with 不, never 沒: 不會."
+          },
+          {
+            "placed": [
+              "有"
+            ],
+            "mark": [
+              "有"
+            ],
+            "note": "A asks with 會, so answer with 會, not 有."
+          },
+          {
+            "placed": [
+              "要"
+            ],
+            "mark": [
+              "要"
+            ],
+            "note": "A asks 會 (know how), so answer with 會, not 要 (want)."
+          }
+        ],
+        "fallbackRepair": "可是 says your brother can and you can’t. 不 comes before 會: 不會.",
+        "result": {
+          "traditional": "不會，可是我哥哥會。",
+          "simplified": "不会，可是我哥哥会。",
+          "pinyin": "Bú huì, kěshì wǒ gēge huì.",
+          "english": "No, I can't, but my older brother can."
+        }
       }
     ]
   },
@@ -283,10 +470,9 @@
     "title": "Answer the following questions.",
     "items": [
       {
-        "id": "b1l06-g02-p136-practice-1",
+        "id": "l6g2-1",
         "source": "p.137 #1",
-        "prompt": "Answer the question using the picture.",
-        "quiet": true,
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 137,
@@ -298,48 +484,86 @@
           ],
           "alt": "A person drinking from a can beside many cans on the table."
         },
-        "kind": "order-build",
-        "sub": "他喝得多不多？",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他喝得多不多？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "喝"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "喝",
             "pinyin": "hē"
           },
           {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
             "traditional": "很",
             "pinyin": "hěn"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
           },
           {
             "traditional": "的",
             "pinyin": "de"
           },
           {
-            "traditional": "他",
-            "pinyin": "tā"
-          },
-          {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "多",
-            "pinyin": "duō"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "他",
-              "喝",
-              "得",
-              "很",
-              "多"
-            ],
-            "sentence": {
-              "traditional": "他喝得很多。",
-              "pinyin": "Tā hē de hěn duō.",
-              "english": "He drinks a lot."
-            }
+            "traditional": "少",
+            "pinyin": "shǎo"
           }
         ],
         "repairs": [
@@ -350,16 +574,29 @@
             "mark": [
               "的"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "After a verb, the comment takes 得, not 的."
+          },
+          {
+            "placed": [
+              "少"
+            ],
+            "mark": [
+              "少"
+            ],
+            "note": "Look at all the cans on the table: he drinks a lot (多)."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "Verb, 得, then the comment: 喝得很多.",
+        "result": {
+          "traditional": "他喝得很多。",
+          "pinyin": "Tā hē de hěn duō.",
+          "english": "He drinks a lot."
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-2",
+        "id": "l6g2-2",
         "source": "p.137 #2",
-        "prompt": "Answer the question using the picture.",
-        "quiet": true,
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 137,
@@ -371,43 +608,87 @@
           ],
           "alt": "A person eating between tall stacks of bowls."
         },
-        "kind": "order-build",
-        "sub": "他吃得怎麼樣？",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他吃得很多嗎？",
+                "simplified": "他吃得很多吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "吃"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "吃",
             "pinyin": "chī"
           },
           {
-            "traditional": "很多",
-            "pinyin": "hěn duō"
-          },
-          {
-            "traditional": "他",
-            "pinyin": "tā"
-          },
-          {
             "traditional": "得",
             "pinyin": "de"
           },
           {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
             "traditional": "的",
             "pinyin": "de"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "他",
-              "吃",
-              "得",
-              "很多"
-            ],
-            "sentence": {
-              "traditional": "他吃得很多。",
-              "pinyin": "Tā chī de hěn duō.",
-              "english": "He eats a lot."
-            }
+            "traditional": "少",
+            "pinyin": "shǎo"
           }
         ],
         "repairs": [
@@ -418,149 +699,226 @@
             "mark": [
               "的"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "After a verb, the comment takes 得, not 的."
+          },
+          {
+            "placed": [
+              "少"
+            ],
+            "mark": [
+              "少"
+            ],
+            "note": "Look at the stacks of bowls: he eats a lot (多)."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "Verb, 得, then 好多 (so much): 吃得好多.",
+        "result": {
+          "traditional": "他吃得好多。",
+          "pinyin": "Tā chī de hǎo duō.",
+          "english": "He eats so much."
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-3",
+        "id": "l6g2-3",
         "source": "p.137 #3",
-        "prompt": "You slept comfortably and feel rested. Answer the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "You were comfortable all night and feel rested this morning. 你昨天晚上睡得怎麼樣？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你昨天晚上睡得怎麼樣？",
+                "simplified": "你昨天晚上睡得怎么样？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "睡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，今天不累。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "昨天晚上",
-            "pinyin": "zuótiān wǎnshang"
-          },
-          {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
           {
             "traditional": "睡",
             "pinyin": "shuì"
           },
           {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "昨天晚上",
-              "睡",
-              "得",
-              "很好"
-            ],
-            "sentence": {
-              "traditional": "我昨天晚上睡得很好。",
-              "pinyin": "Wǒ zuótiān wǎnshang shuì de hěn hǎo.",
-              "english": "I slept very well last night."
-            }
+            "traditional": "得",
+            "pinyin": "de"
           },
           {
-            "order": [
-              "昨天晚上",
-              "我",
-              "睡",
-              "得",
-              "很好"
-            ],
-            "sentence": {
-              "traditional": "昨天晚上我睡得很好。",
-              "pinyin": "Zuótiān wǎnshang wǒ shuì de hěn hǎo.",
-              "english": "I slept very well last night."
-            }
+            "traditional": "很",
+            "pinyin": "hěn"
           },
           {
-            "order": [
-              "我",
-              "睡",
-              "得",
-              "很好"
-            ],
-            "sentence": {
-              "traditional": "我睡得很好。",
-              "pinyin": "Wǒ shuì de hěn hǎo.",
-              "english": "I slept very well.",
-              "simplified": "我睡得很好。"
-            }
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "的"
+              "睡覺"
             ],
             "mark": [
-              "的"
+              "睡覺"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "Use the plain verb here: 睡得. (With 睡覺 the verb comes twice: 睡覺睡得.)"
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "今天不累 says you slept well, so no 不."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "Verb, 得, then the comment: 睡得很好.",
+        "result": {
+          "traditional": "我睡得很好，今天不累。",
+          "pinyin": "Wǒ shuì de hěn hǎo, jīntiān bú lèi.",
+          "english": "I slept very well; I'm not tired today."
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-4",
+        "id": "l6g2-4",
         "source": "p.138 #1",
-        "prompt": "Your friend plays skillfully. Answer the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "Your friend plays tennis skillfully and wins the school games. 你朋友打網球打得怎麼樣？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你朋友打網球打得怎麼樣？",
+                "simplified": "你朋友打网球打得怎么样？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他是網球老師，他打網球",
+                "simplified": "他是网球老师，他打网球"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "打網球",
-            "simplified": "打网球",
-            "pinyin": "dǎ wǎngqiú"
+            "traditional": "打",
+            "pinyin": "dǎ"
           },
           {
             "traditional": "得",
             "pinyin": "de"
           },
           {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
             "traditional": "的",
             "pinyin": "de"
           },
           {
-            "traditional": "我朋友",
-            "pinyin": "wǒ péngyǒu"
-          },
-          {
-            "traditional": "打",
-            "pinyin": "dǎ"
-          },
-          {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我朋友",
-              "打網球",
-              "打",
-              "得",
-              "很好"
-            ],
-            "sentence": {
-              "traditional": "我朋友打網球打得很好。",
-              "pinyin": "Wǒ péngyǒu dǎ wǎngqiú dǎ de hěn hǎo.",
-              "english": "My friend plays tennis very well."
-            }
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
@@ -571,16 +929,30 @@
             "mark": [
               "的"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "After a verb, the comment takes 得, not 的."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "He is a tennis teacher, so he plays well: no 不."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "After 打網球, say the verb again, then 得: 打網球打得很好.",
+        "result": {
+          "traditional": "他是網球老師，他打網球打得很好。",
+          "simplified": "他是网球老师，他打网球打得很好。",
+          "pinyin": "Tā shì wǎngqiú lǎoshī, tā dǎ wǎngqiú dǎ de hěn hǎo.",
+          "english": "He's a tennis teacher; he plays tennis very well."
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-5",
+        "id": "l6g2-5",
         "source": "p.138 #2",
-        "prompt": "Answer the question using the picture.",
-        "quiet": true,
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 138,
@@ -590,10 +962,72 @@
             0.205,
             0.145
           ],
-          "alt": "A person awake and sweating in bed beside a window with a crescent moon."
+          "alt": "A person lying awake in bed at night, a crescent moon in the window."
         },
-        "kind": "order-build",
-        "sub": "昨天他睡覺睡得好嗎？",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "昨天他睡覺睡得好嗎？",
+                "simplified": "昨天他睡觉睡得好吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "睡覺"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "睡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "睡覺",
@@ -601,102 +1035,137 @@
             "pinyin": "shuìjiào"
           },
           {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "他",
-            "pinyin": "tā"
-          },
-          {
             "traditional": "睡",
             "pinyin": "shuì"
           },
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
-          }
-        ],
-        "accepted": [
+            "traditional": "得",
+            "pinyin": "de"
+          },
           {
-            "order": [
-              "他",
-              "睡覺",
-              "睡",
-              "得",
-              "不太好"
-            ],
-            "sentence": {
-              "traditional": "他睡覺睡得不太好。",
-              "pinyin": "Tā shuìjiào shuì de bú tài hǎo.",
-              "english": "He does not sleep very well."
-            }
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "的"
+              "很"
             ],
             "mark": [
-              "的"
+              "很"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "Look at the picture: he lies awake at night, so he didn’t sleep well: 不好."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "睡覺, then 睡 again, then 得 and the comment. 不 goes after 得: 睡覺睡得不好.",
+        "result": {
+          "traditional": "他睡覺睡得不好。",
+          "simplified": "他睡觉睡得不好。",
+          "pinyin": "Tā shuìjiào shuì de bù hǎo.",
+          "english": "He didn't sleep well."
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-6",
+        "id": "l6g2-6",
         "source": "p.138 #3",
-        "prompt": "You know the rules, but your shots often miss. Answer the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "You know the rules, but your kicks often miss the ball. 你踢足球踢得好不好？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你踢足球踢得好不好？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我踢足球"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "踢"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "太"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，可是我很喜歡踢。",
+                "simplified": "，可是我很喜欢踢。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "踢足球",
-            "pinyin": "tī zúqiú"
-          },
-          {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
           {
             "traditional": "踢",
             "pinyin": "tī"
           },
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
-          }
-        ],
-        "accepted": [
+            "traditional": "得",
+            "pinyin": "de"
+          },
           {
-            "order": [
-              "我",
-              "踢足球",
-              "踢",
-              "得",
-              "不太好"
-            ],
-            "sentence": {
-              "traditional": "我踢足球踢得不太好。",
-              "pinyin": "Wǒ tī zúqiú tī de bú tài hǎo.",
-              "english": "I do not play soccer very well."
-            }
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "太",
+            "pinyin": "tài"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
           }
         ],
         "repairs": [
@@ -707,126 +1176,230 @@
             "mark": [
               "的"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "After a verb, the comment takes 得, not 的."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "Say 踢 again, then 得, then 不太好 (not very good). 可是 says the first half is the bad news.",
+        "result": {
+          "traditional": "我踢足球踢得不太好，可是我很喜歡踢。",
+          "simplified": "我踢足球踢得不太好，可是我很喜欢踢。",
+          "pinyin": "Wǒ tī zúqiú tī de bú tài hǎo, kěshì wǒ hěn xǐhuan tī.",
+          "english": "I don't play soccer very well, but I really like playing."
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-7",
+        "id": "l6g2-7",
         "source": "p.139 #1",
-        "prompt": "Everyone likes your mother’s noodles. Answer the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "Everyone enjoys your mother’s beef noodles and asks her to cook them again. 你媽媽牛肉麵做得好不好？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你媽媽牛肉麵做得好不好？",
+                "simplified": "你妈妈牛肉面做得好不好？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我媽媽",
+                "simplified": "我妈妈"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "牛肉麵"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "做"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，大家都很愛吃。",
+                "simplified": "，大家都很爱吃。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "牛肉麵",
             "simplified": "牛肉面",
-            "pinyin": "niúròu miàn"
-          },
-          {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "我媽媽",
-            "simplified": "我妈妈",
-            "pinyin": "wǒ māma"
+            "pinyin": "niúròumiàn"
           },
           {
             "traditional": "做",
             "pinyin": "zuò"
           },
           {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
-          }
-        ],
-        "accepted": [
+            "traditional": "得",
+            "pinyin": "de"
+          },
           {
-            "order": [
-              "我媽媽",
-              "牛肉麵",
-              "做",
-              "得",
-              "很好"
-            ],
-            "sentence": {
-              "traditional": "我媽媽牛肉麵做得很好。",
-              "pinyin": "Wǒ māma niúròumiàn zuò de hěn hǎo.",
-              "english": "My mother makes beef noodles very well."
-            }
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "的"
+              "不"
             ],
             "mark": [
-              "的"
+              "不"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "大家都很愛吃 says her noodles are good: no 不."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "The noodles come first, then the verb + 得: 牛肉麵做得很好.",
+        "result": {
+          "traditional": "我媽媽牛肉麵做得很好，大家都很愛吃。",
+          "simplified": "我妈妈牛肉面做得很好，大家都很爱吃。",
+          "pinyin": "Wǒ māma niúròumiàn zuò de hěn hǎo, dàjiā dōu hěn ài chī.",
+          "english": "My mom makes beef noodles very well; everyone loves them."
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-8",
+        "id": "l6g2-8",
         "source": "p.139 #2",
-        "prompt": "You often lose the ball and miss the basket. Answer the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "You often lose the ball and miss the basket. 你籃球打得怎麼樣？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你籃球打得怎麼樣？",
+                "simplified": "你篮球打得怎么样？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我",
+                  "籃球"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "籃球",
+                  "我"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不錯。",
+                "simplified": "不错。"
+              }
+            ]
+          }
+        ],
         "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
           {
             "traditional": "籃球",
             "simplified": "篮球",
             "pinyin": "lánqiú"
           },
           {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
             "traditional": "打",
             "pinyin": "dǎ"
           },
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
-          }
-        ],
-        "accepted": [
+            "traditional": "得",
+            "pinyin": "de"
+          },
           {
-            "order": [
-              "我",
-              "籃球",
-              "打",
-              "得",
-              "不太好"
-            ],
-            "sentence": {
-              "traditional": "我籃球打得不太好。",
-              "pinyin": "Wǒ lánqiú dǎ de bú tài hǎo.",
-              "english": "I do not play basketball very well."
-            }
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "你"
+            ],
+            "mark": [
+              "你"
+            ],
+            "note": "A asks about you, so answer about yourself: 我."
+          },
           {
             "placed": [
               "的"
@@ -834,61 +1407,123 @@
             "mark": [
               "的"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "This answer takes 得 after the verb (打得); 的 has no place here."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "Who and the sport first, then 打得: 我籃球打得不錯.",
+        "result": {
+          "traditional": "我籃球打得不錯。",
+          "simplified": "我篮球打得不错。",
+          "pinyin": "Wǒ lánqiú dǎ de búcuò.",
+          "english": "I play basketball pretty well."
+        },
+        "alternatives": [
+          {
+            "traditional": "籃球我打得不錯。",
+            "simplified": "篮球我打得不错。",
+            "pinyin": "Lánqiú wǒ dǎ de búcuò.",
+            "english": "Basketball? I play it pretty well."
+          }
+        ]
       },
       {
-        "id": "b1l06-g02-p136-practice-9",
+        "id": "l6g2-9",
         "source": "p.139 #3",
-        "prompt": "Start the chat.",
-        "kind": "order-build",
-        "sub": "B replies afterward: 我哥哥棒球打得很好。",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你哥哥"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "棒球"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "怎麼樣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我哥哥棒球打得很好。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "棒球",
             "pinyin": "bàngqiú"
           },
           {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "你哥哥",
-            "pinyin": "nǐ gēge"
-          },
-          {
             "traditional": "打",
             "pinyin": "dǎ"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
           },
           {
             "traditional": "怎麼樣",
             "simplified": "怎么样",
             "pinyin": "zěnmeyàng"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "你哥哥",
-              "棒球",
-              "打",
-              "得",
-              "怎麼樣"
-            ],
-            "sentence": {
-              "traditional": "你哥哥棒球打得怎麼樣？",
-              "pinyin": "Nǐ gēge bàngqiú dǎ de zěnmeyàng?",
-              "english": "How well does your older brother play baseball?"
-            }
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "To ask how well, use 怎麼樣; 什麼 asks “what”."
+          },
           {
             "placed": [
               "的"
@@ -896,507 +1531,86 @@
             "mark": [
               "的"
             ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
+            "note": "After the verb 打, use 得, not 的."
           }
         ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
+        "fallbackRepair": "The sport first, then 打得, then 怎麼樣: 棒球打得怎麼樣.",
+        "result": {
+          "traditional": "你哥哥棒球打得怎麼樣？",
+          "simplified": "你哥哥棒球打得怎么样？",
+          "pinyin": "Nǐ gēge bàngqiú dǎ de zěnmeyàng?",
+          "english": "How well does your older brother play baseball?"
+        }
       },
       {
-        "id": "b1l06-g02-p136-practice-10",
+        "id": "l6g2-10",
         "source": "p.140 #1",
-        "prompt": "Everyone asks for more of your cooking. Answer the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "Everyone enjoys your cooking and asks for more. 你的飯做得怎麼樣？",
-        "tiles": [
-          {
-            "traditional": "做",
-            "pinyin": "zuò"
-          },
-          {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
-          },
-          {
-            "traditional": "我的飯",
-            "simplified": "我的饭",
-            "pinyin": "wǒ de fàn"
-          },
-          {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我的飯",
-              "做",
-              "得",
-              "很好"
-            ],
-            "sentence": {
-              "traditional": "我的飯做得很好。",
-              "pinyin": "Wǒ de fàn zuò de hěn hǎo.",
-              "english": "I cook very well."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "的"
-            ],
-            "mark": [
-              "的"
-            ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
-          }
-        ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
-      },
-      {
-        "id": "b1l06-g02-p136-practice-11",
-        "source": "p.140 #2",
-        "prompt": "Your brother plays skillfully. Answer the question.",
-        "quiet": true,
-        "kind": "order-build",
-        "sub": "Your older brother plays skillfully and wins the school basketball games. 你哥哥的籃球打得好不好？",
-        "tiles": [
-          {
-            "traditional": "籃球",
-            "simplified": "篮球",
-            "pinyin": "lánqiú"
-          },
-          {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "我哥哥的",
-            "pinyin": "wǒ gēge de"
-          },
-          {
-            "traditional": "打",
-            "pinyin": "dǎ"
-          },
-          {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我哥哥的",
-              "籃球",
-              "打",
-              "得",
-              "很好"
-            ],
-            "sentence": {
-              "traditional": "我哥哥的籃球打得很好。",
-              "pinyin": "Wǒ gēge de lánqiú dǎ de hěn hǎo.",
-              "english": "My older brother plays basketball very well."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "的"
-            ],
-            "mark": [
-              "的"
-            ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
-          }
-        ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
-      },
-      {
-        "id": "b1l06-g02-p136-practice-12",
-        "source": "p.140 #3",
-        "prompt": "Start the chat.",
-        "kind": "order-build",
-        "sub": "B replies afterward: 她的英文說得很好。",
-        "tiles": [
-          {
-            "traditional": "說",
-            "simplified": "说",
-            "pinyin": "shuō"
-          },
-          {
-            "traditional": "怎麼樣",
-            "simplified": "怎么样",
-            "pinyin": "zěnmeyàng"
-          },
-          {
-            "traditional": "她的英文",
-            "pinyin": "tā de Yīngwén"
-          },
-          {
-            "traditional": "得",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "她的英文",
-              "說",
-              "得",
-              "怎麼樣"
-            ],
-            "sentence": {
-              "traditional": "她的英文說得怎麼樣？",
-              "pinyin": "Tā de Yīngwén shuō de zěnmeyàng?",
-              "english": "How well does she speak English?"
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "的"
-            ],
-            "mark": [
-              "的"
-            ],
-            "note": "The comment about how the action is done follows 得; 的 links a description to a noun."
-          }
-        ],
-        "fallbackRepair": "Put 得 directly after the verb and before the comment."
-      }
-    ]
-  },
-  "B1L06-G03-P146": {
-    "bookPage": 146,
-    "title": "Complete the sentences with 有（一）點（兒）.",
-    "items": [
-      {
-        "id": "b1l06-g03-p146-practice-1",
-        "source": "p.146 #1",
-        "prompt": "You feel slightly tired after work. Complete the sentence.",
-        "kind": "order-build",
-        "sub": "After work, you feel slightly tired.",
-        "tiles": [
-          {
-            "traditional": "有點兒",
-            "simplified": "有点儿",
-            "pinyin": "yǒudiǎnr"
-          },
-          {
-            "traditional": "我想",
-            "pinyin": "wǒ xiǎng"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "累",
-            "pinyin": "lèi"
-          },
-          {
-            "traditional": "休息",
-            "pinyin": "xiūxí"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "有點兒",
-              "累",
-              "我想",
-              "休息"
-            ],
-            "sentence": {
-              "traditional": "我有點兒累，我想休息。",
-              "pinyin": "Wǒ yǒu diǎnr lèi, wǒ xiǎng xiūxí.",
-              "english": "I am a little tired; I want to rest."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "很"
-            ],
-            "mark": [
-              "很"
-            ],
-            "note": "The task asks for a little tired; 很 would make a stronger description."
-          }
-        ],
-        "fallbackRepair": "Put 有點兒 before 累, then say 我想休息。"
-      },
-      {
-        "id": "b1l06-g03-p146-practice-2",
-        "source": "p.146 #2",
-        "prompt": "Your mouth feels dry. Complete the sentence.",
-        "kind": "order-build",
-        "sub": "Your mouth feels dry.",
-        "tiles": [
-          {
-            "traditional": "有點兒",
-            "simplified": "有点儿",
-            "pinyin": "yǒudiǎnr"
-          },
-          {
-            "traditional": "我想喝",
-            "pinyin": "wǒ xiǎng hē"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "渴",
-            "pinyin": "kě"
-          },
-          {
-            "traditional": "點兒飲料",
-            "pinyin": "diǎnr yǐnliào",
-            "simplified": "点儿饮料"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "有點兒",
-              "渴",
-              "我想喝",
-              "點兒飲料"
-            ],
-            "sentence": {
-              "traditional": "我有點兒渴，我想喝點兒飲料。",
-              "pinyin": "Wǒ yǒu diǎnr kě, wǒ xiǎng hē diǎnr yǐnliào.",
-              "english": "I am a little thirsty; I want something to drink."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "很"
-            ],
-            "mark": [
-              "很"
-            ],
-            "note": "The task asks for a little thirsty; use 有點兒 before 渴."
-          }
-        ],
-        "fallbackRepair": "Put 有點兒 before 渴 and 點兒 before the drink."
-      },
-      {
-        "id": "b1l06-g03-p146-practice-3",
-        "source": "p.146 #3",
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
-                "traditional": "我的東西",
-                "simplified": "我的东西"
-              },
-              {
-                "type": "slot",
-                "id": "g1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "太多"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "，"
-              },
-              {
-                "type": "slot",
-                "id": "g3",
-                "answers": []
-              },
+                "traditional": "你的飯做得怎麼樣？",
+                "simplified": "你的饭做得怎么样？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
               {
                 "type": "text",
                 "traditional": "我"
               },
               {
                 "type": "slot",
-                "id": "g4",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "覺得",
-                "simplified": "觉得"
-              },
-              {
-                "type": "slot",
-                "id": "g5",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "這間房間",
-                "simplified": "这间房间"
-              },
-              {
-                "type": "slot",
-                "id": "g6",
+                "id": "s1",
                 "answers": [
-                  "有點兒"
+                  "的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "小"
+                "traditional": "飯做",
+                "simplified": "饭做"
               },
               {
                 "type": "slot",
-                "id": "g7",
-                "answers": []
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "很"
+                ]
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "好，我朋友都愛吃。",
+                "simplified": "好，我朋友都爱吃。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
           {
-            "traditional": "有點兒",
-            "simplified": "有点儿",
-            "pinyin": "yǒudiǎnr"
-          }
-        ],
-        "repairs": [
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "有點兒"
-            },
-            "note": "Put 有點兒 directly before the adjective to say a little."
+            "traditional": "的",
+            "pinyin": "de"
           },
           {
-            "slot": {
-              "id": "g1",
-              "tile": "有點兒"
-            },
-            "note": "Put 有點兒 directly before the adjective to say a little."
+            "traditional": "得",
+            "pinyin": "de"
           },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "有點兒"
-            },
-            "note": "Put 有點兒 directly before the adjective to say a little."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "有點兒"
-            },
-            "note": "Put 有點兒 directly before the adjective to say a little."
-          },
-          {
-            "slot": {
-              "id": "g4",
-              "tile": "有點兒"
-            },
-            "note": "Put 有點兒 directly before the adjective to say a little."
-          },
-          {
-            "slot": {
-              "id": "g5",
-              "tile": "有點兒"
-            },
-            "note": "Put 有點兒 directly before the adjective to say a little."
-          },
-          {
-            "slot": {
-              "id": "g7",
-              "tile": "有點兒"
-            },
-            "note": "Put 有點兒 directly before the adjective to say a little."
-          }
-        ],
-        "fallbackRepair": "有點兒 + how you feel: 有點兒小.",
-        "result": {
-          "traditional": "我的東西太多，我覺得這間房間有點兒小。",
-          "pinyin": "Wǒ de dōngxi tài duō, wǒ juéde zhè jiān fángjiān yǒu diǎnr xiǎo.",
-          "english": "I have too many things; I think this room is a little small."
-        },
-        "sub": "Your things fill every shelf, and there is nowhere to put the rest.",
-        "prompt": "Complete the sentence.",
-        "quiet": true,
-        "gaps": true
-      },
-      {
-        "id": "b1l06-g03-own-spot",
-        "source": "own",
-        "kind": "spot-fix",
-        "prompt": "Choose the corrected sentence.",
-        "chunks": [
-          {
-            "traditional": "我"
-          },
-          {
-            "traditional": "覺得",
-            "simplified": "觉得"
-          },
-          {
-            "traditional": "這部電影",
-            "simplified": "这部电影"
-          },
-          {
-            "traditional": "有點兒",
-            "simplified": "有点儿"
-          },
-          {
-            "traditional": "有趣",
-            "tail": "。"
-          }
-        ],
-        "wrong": 3,
-        "fix": "很",
-        "tiles": [
           {
             "traditional": "很",
             "pinyin": "hěn"
@@ -1406,8 +1620,8 @@
             "pinyin": "bù"
           },
           {
-            "traditional": "太",
-            "pinyin": "tài"
+            "traditional": "是",
+            "pinyin": "shì"
           }
         ],
         "repairs": [
@@ -1415,36 +1629,677 @@
             "placed": [
               "不"
             ],
-            "note": "不有趣 says the movie is not interesting. Your friend means it is."
+            "mark": [
+              "不"
+            ],
+            "note": "我朋友都愛吃 says your cooking is good: no 不."
           },
           {
             "placed": [
-              "太"
+              "是"
             ],
-            "note": "太有趣 is a stronger reaction (“so interesting”); the requested description is “very interesting”, with 很有趣.",
-            "title": "Try the requested meaning"
+            "mark": [
+              "是"
+            ],
+            "note": "是 has no place here: owner + thing takes 的, verb + comment takes 得."
           }
         ],
-        "takeOutNote": "Without 有點兒, the sentence loses the requested “very”; replace it with 很.",
-        "hint": "Your friend means “very interesting”; one word only says “a little”.",
+        "fallbackRepair": "Owner + thing takes 的 (我的飯); verb + comment takes 得 (做得).",
         "result": {
-          "traditional": "我覺得這部電影很有趣。",
-          "simplified": "我觉得这部电影很有趣。",
-          "pinyin": "Wǒ juéde zhè bù diànyǐng hěn yǒuqù.",
-          "english": "I think this movie is very interesting."
-        },
-        "successNote": "有點兒 means “a little”; 很有趣 matches the requested “very interesting”."
+          "traditional": "我的飯做得很好，我朋友都愛吃。",
+          "simplified": "我的饭做得很好，我朋友都爱吃。",
+          "pinyin": "Wǒ de fàn zuò de hěn hǎo, wǒ péngyǒu dōu ài chī.",
+          "english": "I cook very well; my friends all love it."
+        }
+      },
+      {
+        "id": "l6g2-11",
+        "source": "p.140 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你哥哥的籃球打得好不好？",
+                "simplified": "你哥哥的篮球打得好不好？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他的籃球",
+                "simplified": "他的篮球"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，可是他不喜歡打。",
+                "simplified": "，可是他不喜欢打。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "打",
+            "pinyin": "dǎ"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the comment takes 得, not 的."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "可是 turns the sentence: he doesn’t like it, but he plays well. No 不 here."
+          }
+        ],
+        "fallbackRepair": "Verb, 得, then the comment: 打得很好.",
+        "result": {
+          "traditional": "他的籃球打得很好，可是他不喜歡打。",
+          "simplified": "他的篮球打得很好，可是他不喜欢打。",
+          "pinyin": "Tā de lánqiú dǎ de hěn hǎo, kěshì tā bù xǐhuan dǎ.",
+          "english": "He plays basketball very well, but he doesn't like playing."
+        }
+      },
+      {
+        "id": "l6g2-12",
+        "source": "p.140 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她的英文說",
+                "simplified": "她的英文说"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她的英文說得很好。",
+                "simplified": "她的英文说得很好。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "快",
+            "pinyin": "kuài"
+          },
+          {
+            "traditional": "快",
+            "pinyin": "kuài"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "快"
+            ],
+            "mark": [
+              "快"
+            ],
+            "note": "B answers 說得很好, so A asked 好不好, not 快不快."
+          }
+        ],
+        "fallbackRepair": "得 right after 說, then 好不好: 說得好不好.",
+        "result": {
+          "traditional": "她的英文說得好不好？",
+          "simplified": "她的英文说得好不好？",
+          "pinyin": "Tā de Yīngwén shuō de hǎo bu hǎo?",
+          "english": "Does she speak English well?"
+        }
+      }
+    ]
+  },
+  "B1L06-G03-P146": {
+    "bookPage": 146,
+    "title": "Complete the sentences with 有（一）點（兒）.",
+    "items": [
+      {
+        "id": "l6g3-1",
+        "source": "p.146 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "一點兒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "累"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我想休息。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "累",
+            "pinyin": "lèi"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "餓",
+            "simplified": "饿",
+            "pinyin": "è"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "No 是 before an adjective. “A little tired” is 有一點兒累."
+          },
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "沒 doesn’t fit here: “a little tired” is 有一點兒累."
+          },
+          {
+            "placed": [
+              "餓"
+            ],
+            "mark": [
+              "餓"
+            ],
+            "note": "想休息 says you need rest: 累, not 餓 (hungry)."
+          }
+        ],
+        "fallbackRepair": "有一點兒 goes before the adjective: 有一點兒累.",
+        "result": {
+          "traditional": "我有一點兒累，我想休息。",
+          "simplified": "我有一点儿累，我想休息。",
+          "pinyin": "Wǒ yǒu yìdiǎnr lèi, wǒ xiǎng xiūxí.",
+          "english": "I'm a little tired; I want to rest."
+        }
+      },
+      {
+        "id": "l6g3-2",
+        "source": "p.146 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有點兒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "渴"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我想喝點兒飲料。",
+                "simplified": "，我想喝点儿饮料。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有點兒",
+            "simplified": "有点儿",
+            "pinyin": "yǒudiǎnr"
+          },
+          {
+            "traditional": "渴",
+            "pinyin": "kě"
+          },
+          {
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "餓",
+            "simplified": "饿",
+            "pinyin": "è"
+          },
+          {
+            "traditional": "忙",
+            "pinyin": "máng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一點兒"
+            ],
+            "mark": [
+              "一點兒"
+            ],
+            "note": "Before an adjective, “a little” needs 有: 有點兒."
+          },
+          {
+            "placed": [
+              "餓"
+            ],
+            "mark": [
+              "餓"
+            ],
+            "note": "A drink is for thirst: 渴, not 餓 (hungry)."
+          },
+          {
+            "placed": [
+              "忙"
+            ],
+            "mark": [
+              "忙"
+            ],
+            "note": "Wanting a drink comes from thirst: 渴, not 忙."
+          }
+        ],
+        "fallbackRepair": "有點兒 goes before the adjective: 有點兒渴.",
+        "result": {
+          "traditional": "我有點兒渴，我想喝點兒飲料。",
+          "simplified": "我有点儿渴，我想喝点儿饮料。",
+          "pinyin": "Wǒ yǒudiǎnr kě, wǒ xiǎng hē diǎnr yǐnliào.",
+          "english": "I'm a little thirsty; I want something to drink."
+        }
+      },
+      {
+        "id": "l6g3-3",
+        "source": "p.146 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我的東西太多，我覺得這間房間",
+                "simplified": "我的东西太多，我觉得这间房间"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有點兒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "小"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有點兒",
+            "simplified": "有点儿",
+            "pinyin": "yǒudiǎnr"
+          },
+          {
+            "traditional": "小",
+            "pinyin": "xiǎo"
+          },
+          {
+            "traditional": "大",
+            "pinyin": "dà"
+          },
+          {
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "大"
+            ],
+            "mark": [
+              "大"
+            ],
+            "note": "Too many things make a room feel small: 小."
+          },
+          {
+            "placed": [
+              "一點兒"
+            ],
+            "mark": [
+              "一點兒"
+            ],
+            "note": "Before an adjective, “a little” is 有點兒, not 一點兒."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "No 是 before an adjective."
+          }
+        ],
+        "fallbackRepair": "有點兒 goes before the adjective: 有點兒小.",
+        "result": {
+          "traditional": "我的東西太多，我覺得這間房間有點兒小。",
+          "simplified": "我的东西太多，我觉得这间房间有点儿小。",
+          "pinyin": "Wǒ de dōngxi tài duō, wǒ juéde zhè jiān fángjiān yǒudiǎnr xiǎo.",
+          "english": "I have too many things; I think this room is a little small."
+        }
+      },
+      {
+        "id": "l6g3-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要吃什麼？",
+                "simplified": "你要吃什么？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有點兒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "餓"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，想吃"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "一點兒"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "水果。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有點兒",
+            "simplified": "有点儿",
+            "pinyin": "yǒudiǎnr"
+          },
+          {
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "餓",
+            "simplified": "饿",
+            "pinyin": "è"
+          },
+          {
+            "traditional": "渴",
+            "pinyin": "kě"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "渴"
+            ],
+            "mark": [
+              "渴"
+            ],
+            "note": "想吃 says you want food: 餓, not 渴 (thirsty)."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "No 是 before an adjective."
+          }
+        ],
+        "fallbackRepair": "有點兒 goes before an adjective (有點兒餓); 一點兒 goes before a thing (一點兒水果).",
+        "result": {
+          "traditional": "我有點兒餓，想吃一點兒水果。",
+          "simplified": "我有点儿饿，想吃一点儿水果。",
+          "pinyin": "Wǒ yǒudiǎnr è, xiǎng chī yìdiǎnr shuǐguǒ.",
+          "english": "I'm a little hungry; I'd like some fruit."
+        }
       }
     ]
   },
   "B1L06-G04-P147": {
     "bookPage": 147,
     "title": "Complete the dialogues with 可以.",
+    "allowWords": [
+      "三明治"
+    ],
     "items": [
       {
-        "id": "b1l06-g04-p147-practice-1",
+        "id": "l6g4-1",
         "source": "p.147 #1",
-        "prompt": "Suggest something from the menu.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 147,
@@ -1456,33 +2311,60 @@
           ],
           "alt": "A customer looking at a menu booklet."
         },
-        "glossary": [
+        "lines": [
           {
-            "traditional": "三明治",
-            "pinyin": "sānmíngzhì",
-            "english": "sandwich"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在我不餓，不想吃飯。",
+                "simplified": "现在我不饿，不想吃饭。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "點"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "三明治"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
           }
         ],
-        "kind": "order-build",
-        "sub": "You are a customer choosing food from the menu. 現在我不餓，不想吃飯。 三明治 sānmíngzhì · sandwich",
         "tiles": [
           {
             "traditional": "可以",
             "pinyin": "kěyǐ"
-          },
-          {
-            "traditional": "一個",
-            "simplified": "一个",
-            "pinyin": "yí ge"
-          },
-          {
-            "traditional": "會",
-            "simplified": "会",
-            "pinyin": "huì"
-          },
-          {
-            "traditional": "你",
-            "pinyin": "nǐ"
           },
           {
             "traditional": "點",
@@ -1492,22 +2374,20 @@
           {
             "traditional": "三明治",
             "pinyin": "sānmíngzhì"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "你",
-              "可以",
-              "點",
-              "一個",
-              "三明治"
-            ],
-            "sentence": {
-              "traditional": "你可以點一個三明治。",
-              "pinyin": "Nǐ kěyǐ diǎn yì ge sānmíngzhì.",
-              "english": "You could order a sandwich."
-            }
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
+          },
+          {
+            "traditional": "飯",
+            "simplified": "饭",
+            "pinyin": "fàn"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
@@ -1518,15 +2398,39 @@
             "mark": [
               "會"
             ],
-            "note": "You are offering an idea, not describing a learned skill; use 可以."
+            "note": "會 is a skill you learned; to suggest something, use 可以."
+          },
+          {
+            "placed": [
+              "飯"
+            ],
+            "mark": [
+              "飯"
+            ],
+            "note": "A doesn’t want a meal (飯); suggest something light: 三明治."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "B is suggesting what A can do: 可以 + action, no 不."
           }
         ],
-        "fallbackRepair": "Put 可以 before 點一個三明治 to make the suggestion."
+        "fallbackRepair": "你可以, then the action: 可以點三明治.",
+        "result": {
+          "traditional": "你可以點三明治。",
+          "simplified": "你可以点三明治。",
+          "pinyin": "Nǐ kěyǐ diǎn sānmíngzhì.",
+          "english": "You could order a sandwich."
+        }
       },
       {
-        "id": "b1l06-g04-p147-practice-2",
+        "id": "l6g4-2",
         "source": "p.147 #2",
-        "prompt": "Suggest something to do indoors.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 147,
@@ -1538,12 +2442,67 @@
           ],
           "alt": "A person on a sofa facing a television in a living room."
         },
-        "kind": "order-build",
-        "sub": "天氣好熱，我不要去外面。",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "天氣好熱，我不要去外面。",
+                "simplified": "天气好热，我不要去外面。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們",
+                "simplified": "我们"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "可以",
+                  "在家"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "在家",
+                  "可以"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "看電視"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "可以",
             "pinyin": "kěyǐ"
+          },
+          {
+            "traditional": "在家",
+            "pinyin": "zài jiā"
           },
           {
             "traditional": "看電視",
@@ -1551,59 +2510,17 @@
             "pinyin": "kàn diànshì"
           },
           {
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen"
-          },
-          {
-            "traditional": "在家",
-            "pinyin": "zài jiā"
-          },
-          {
             "traditional": "會",
             "simplified": "会",
             "pinyin": "huì"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我們",
-              "可以",
-              "在家",
-              "看電視"
-            ],
-            "sentence": {
-              "traditional": "我們可以在家看電視。",
-              "pinyin": "Wǒmen kěyǐ zài jiā kàn diànshì.",
-              "english": "We could watch television at home."
-            }
           },
           {
-            "order": [
-              "我們",
-              "在家",
-              "可以",
-              "看電視"
-            ],
-            "sentence": {
-              "traditional": "我們在家可以看電視。",
-              "pinyin": "Wǒmen zài jiā kěyǐ kàn diànshì.",
-              "english": "We could watch television at home."
-            }
+            "traditional": "去外面",
+            "pinyin": "qù wàimiàn"
           },
           {
-            "order": [
-              "在家",
-              "我們",
-              "可以",
-              "看電視"
-            ],
-            "sentence": {
-              "traditional": "在家我們可以看電視。",
-              "pinyin": "Zài jiā wǒmen kěyǐ kàn diànshì.",
-              "english": "We could watch television at home."
-            }
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
@@ -1614,15 +2531,47 @@
             "mark": [
               "會"
             ],
-            "note": "You are suggesting an activity, not saying you know how to do it; use 可以."
+            "note": "會 is a skill you learned; to suggest something, use 可以."
+          },
+          {
+            "placed": [
+              "去外面"
+            ],
+            "mark": [
+              "去外面"
+            ],
+            "note": "A doesn’t want to go outside; the picture shows the sofa and TV: 在家."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "B is suggesting what you can do: 可以, no 不."
           }
         ],
-        "fallbackRepair": "Put 可以 before 在家看電視 to make the suggestion."
+        "fallbackRepair": "可以 and 在家 go before the action: 可以在家看電視.",
+        "result": {
+          "traditional": "我們可以在家看電視。",
+          "simplified": "我们可以在家看电视。",
+          "pinyin": "Wǒmen kěyǐ zài jiā kàn diànshì.",
+          "english": "We could watch TV at home."
+        },
+        "alternatives": [
+          {
+            "traditional": "我們在家可以看電視。",
+            "simplified": "我们在家可以看电视。",
+            "pinyin": "Wǒmen zài jiā kěyǐ kàn diànshì.",
+            "english": "At home, we can watch TV."
+          }
+        ]
       },
       {
-        "id": "b1l06-g04-p147-practice-3",
+        "id": "l6g4-3",
         "source": "p.147 #3",
-        "prompt": "Invite your friend to the cinema.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 147,
@@ -1634,47 +2583,89 @@
           ],
           "alt": "Two people outside a cinema entrance and ticket window."
         },
-        "kind": "order-build",
-        "sub": "聽說那部電影很不錯。",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說那部電影很不錯。",
+                "simplified": "听说那部电影很不错。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們",
+                "simplified": "我们"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "一起"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "可以",
             "pinyin": "kěyǐ"
           },
           {
-            "traditional": "看電影",
-            "simplified": "看电影",
-            "pinyin": "kàn diànyǐng"
+            "traditional": "一起",
+            "pinyin": "yìqǐ"
           },
           {
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen"
+            "traditional": "去",
+            "pinyin": "qù"
           },
           {
-            "traditional": "去那裡",
-            "simplified": "去那里",
-            "pinyin": "qù nàlǐ"
+            "traditional": "看",
+            "pinyin": "kàn"
           },
           {
             "traditional": "會",
             "simplified": "会",
             "pinyin": "huì"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "我們",
-              "可以",
-              "去那裡",
-              "看電影"
-            ],
-            "sentence": {
-              "traditional": "我們可以去那裡看電影。",
-              "pinyin": "Wǒmen kěyǐ qù nàlǐ kàn diànyǐng.",
-              "english": "We could go there to see a movie."
-            }
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
@@ -1685,76 +2676,104 @@
             "mark": [
               "會"
             ],
-            "note": "You are proposing a trip to the cinema, not describing a skill; use 可以."
+            "note": "會 is a skill you learned; to suggest something, use 可以."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "The movie is good, so B suggests going: 可以, no 不."
           }
         ],
-        "fallbackRepair": "Put 可以 before 去那裡看電影 to make the suggestion."
+        "fallbackRepair": "可以 comes right after 我們, then 一起去看.",
+        "result": {
+          "traditional": "我們可以一起去看。",
+          "simplified": "我们可以一起去看。",
+          "pinyin": "Wǒmen kěyǐ yìqǐ qù kàn.",
+          "english": "We could go see it together."
+        }
       },
       {
-        "id": "b1l06-g04-p147-practice-4",
+        "id": "l6g4-4",
         "source": "p.148 #1",
-        "prompt": "Your mother refuses because it is cold. What does she say?",
-        "kind": "order-build",
-        "sub": "Your mother refuses your request for ice cream because the weather is too cold.",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我媽媽說，我",
+                "simplified": "我妈妈说，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "吃"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "冰淇淋，太冷了。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "可以",
-            "pinyin": "kěyǐ"
-          },
-          {
-            "traditional": "會",
-            "simplified": "会",
-            "pinyin": "huì"
-          },
-          {
-            "traditional": "我媽媽說",
-            "pinyin": "wǒ māma shuō",
-            "simplified": "我妈妈说"
-          },
           {
             "traditional": "不",
             "pinyin": "bù"
           },
           {
-            "traditional": "吃冰淇淋",
-            "pinyin": "chī bīngqílín"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我媽媽說",
-              "我",
-              "不",
-              "可以",
-              "吃冰淇淋"
-            ],
-            "sentence": {
-              "traditional": "我媽媽說，我不可以吃冰淇淋。",
-              "pinyin": "Wǒ māma shuō, wǒ bù kěyǐ chī bīngqílín.",
-              "english": "My mother says I may not eat ice cream."
-            }
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
           },
           {
-            "order": [
-              "我",
-              "不",
-              "可以",
-              "吃冰淇淋"
-            ],
-            "sentence": {
-              "traditional": "我不可以吃冰淇淋。",
-              "pinyin": "Wǒ bù kěyǐ chī bīngqílín.",
-              "english": "I can't eat ice cream.",
-              "simplified": "我不可以吃冰淇淋。"
-            }
+            "traditional": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "可以 is negated with 不: 不可以."
+          },
           {
             "placed": [
               "會"
@@ -1762,21 +2781,64 @@
             "mark": [
               "會"
             ],
-            "note": "Your mother is refusing permission, not describing your ability; use 不可以."
+            "note": "Mom is allowing or forbidding: 可以, not 會 (a learned skill)."
+          },
+          {
+            "placed": [
+              "喝"
+            ],
+            "mark": [
+              "喝"
+            ],
+            "note": "Ice cream is eaten: 吃冰淇淋."
           }
         ],
-        "fallbackRepair": "Put 不 before 可以 to report refused permission."
+        "fallbackRepair": "不 goes before 可以: 不可以吃 = not allowed to eat.",
+        "result": {
+          "traditional": "我媽媽說，我不可以吃冰淇淋，太冷了。",
+          "simplified": "我妈妈说，我不可以吃冰淇淋，太冷了。",
+          "pinyin": "Wǒ māma shuō, wǒ bù kěyǐ chī bīngqílín, tài lěng le.",
+          "english": "My mom says I can't have ice cream; it's too cold."
+        }
       },
       {
-        "id": "b1l06-g04-p147-practice-5",
+        "id": "l6g4-5",
         "source": "p.148 #2",
-        "prompt": "Your teacher gives permission. What does the teacher say?",
-        "kind": "order-build",
-        "sub": "You ask to use the restroom; your teacher gives you permission to leave.",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "老師說，我",
+                "simplified": "老师说，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "洗手間，我現在去。",
+                "simplified": "洗手间，我现在去。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "我",
-            "pinyin": "wǒ"
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
           },
           {
             "traditional": "去",
@@ -1788,48 +2850,13 @@
             "pinyin": "huì"
           },
           {
-            "traditional": "老師說",
-            "simplified": "老师说",
-            "pinyin": "lǎoshī shuō"
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
-            "traditional": "可以",
-            "pinyin": "kěyǐ"
-          },
-          {
-            "traditional": "洗手間",
-            "simplified": "洗手间",
-            "pinyin": "xǐshǒujiān"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "老師說",
-              "我",
-              "可以",
-              "去",
-              "洗手間"
-            ],
-            "sentence": {
-              "traditional": "老師說，我可以去洗手間。",
-              "pinyin": "Lǎoshī shuō, wǒ kěyǐ qù xǐshǒujiān.",
-              "english": "The teacher says I may go to the restroom."
-            }
-          },
-          {
-            "order": [
-              "我",
-              "可以",
-              "去",
-              "洗手間"
-            ],
-            "sentence": {
-              "traditional": "我可以去洗手間。",
-              "pinyin": "Wǒ kěyǐ qù xǐshǒujiān.",
-              "english": "I may go to the restroom.",
-              "simplified": "我可以去洗手间。"
-            }
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
           }
         ],
         "repairs": [
@@ -1840,15 +2867,39 @@
             "mark": [
               "會"
             ],
-            "note": "The teacher is giving permission, not describing a skill; use 可以."
+            "note": "The teacher gives permission: 可以, not 會 (a learned skill)."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "我現在去 says the teacher said yes: no 不."
+          },
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "我現在去 says the teacher said yes: 可以, no 沒."
           }
         ],
-        "fallbackRepair": "Put 可以 before 去洗手間 to report permission."
+        "fallbackRepair": "可以 comes before the action: 可以去洗手間.",
+        "result": {
+          "traditional": "老師說，我可以去洗手間，我現在去。",
+          "simplified": "老师说，我可以去洗手间，我现在去。",
+          "pinyin": "Lǎoshī shuō, wǒ kěyǐ qù xǐshǒujiān, wǒ xiànzài qù.",
+          "english": "The teacher says I can go to the restroom; I'm going now."
+        }
       },
       {
-        "id": "b1l06-g04-p147-practice-6",
+        "id": "l6g4-6",
         "source": "p.148 #3",
-        "prompt": "Start the chat.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 148,
@@ -1860,17 +2911,57 @@
           ],
           "alt": "Two people at a library desk beside bookshelves and a library sign."
         },
-        "kind": "order-build",
-        "sub": "The librarian replies afterward: 好。",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "在這裡看書嗎？",
+                "simplified": "在这里看书吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "可以",
             "pinyin": "kěyǐ"
           },
           {
-            "traditional": "看書",
-            "simplified": "看书",
-            "pinyin": "kànshū"
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
           },
           {
             "traditional": "會",
@@ -1878,62 +2969,17 @@
             "pinyin": "huì"
           },
           {
-            "traditional": "我",
-            "pinyin": "wǒ"
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
           },
           {
-            "traditional": "在這裡",
-            "simplified": "在这里",
-            "pinyin": "zài zhèlǐ"
+            "traditional": "是",
+            "pinyin": "shì"
           },
           {
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "可以",
-              "在這裡",
-              "看書",
-              "嗎"
-            ],
-            "sentence": {
-              "traditional": "我可以在這裡看書嗎？",
-              "pinyin": "Wǒ kěyǐ zài zhèlǐ kàn shū ma?",
-              "english": "May I read here?"
-            }
-          },
-          {
-            "order": [
-              "我",
-              "在這裡",
-              "可以",
-              "看書",
-              "嗎"
-            ],
-            "sentence": {
-              "traditional": "我在這裡可以看書嗎？",
-              "pinyin": "Wǒ zài zhèlǐ kěyǐ kànshū ma?",
-              "english": "May I read here?"
-            }
-          },
-          {
-            "order": [
-              "在這裡",
-              "我",
-              "可以",
-              "看書",
-              "嗎"
-            ],
-            "sentence": {
-              "traditional": "在這裡我可以看書嗎？",
-              "pinyin": "Zài zhèlǐ wǒ kěyǐ kànshū ma?",
-              "english": "May I read here?"
-            }
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
@@ -1944,91 +2990,131 @@
             "mark": [
               "會"
             ],
-            "note": "Ask whether reading here is allowed with 可以, rather than asking about a skill with 會."
+            "note": "Asking permission takes 可以; 會 is a learned skill."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "Answer with the question’s verb: 可以, not 是."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "Look at the picture: it’s a library, so reading is fine. Ask and answer with 可以."
           }
         ],
-        "fallbackRepair": "Put 可以 before 在這裡看書 and 嗎 at the end."
+        "fallbackRepair": "Ask with 可以, and answer with 可以.",
+        "result": {
+          "traditional": "我可以在這裡看書嗎？可以。",
+          "simplified": "我可以在这里看书吗？可以。",
+          "pinyin": "Wǒ kěyǐ zài zhèlǐ kàn shū ma? Kěyǐ.",
+          "english": "May I read here? Yes, you may."
+        }
       },
       {
-        "id": "b1l06-g04-own-sort",
+        "id": "l6g4-own1",
         "source": "own",
-        "kind": "sort-groups",
-        "prompt": "Is 可以 giving permission or offering an idea?",
-        "groups": [
+        "kind": "slot-build",
+        "lines": [
           {
-            "label": "Permission"
-          },
-          {
-            "label": "Suggestion"
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "會"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "游泳，可是媽媽說我今天",
+                "simplified": "游泳，可是妈妈说我今天"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "去。"
+              }
+            ]
           }
         ],
-        "cards": [
+        "tiles": [
           {
-            "sentence": {
-              "traditional": "天氣很熱，我們可以去游泳。",
-              "simplified": "天气很热，我们可以去游泳。",
-              "pinyin": "Tiānqì hěn rè, wǒmen kěyǐ qù yóuyǒng.",
-              "english": "It is hot; we could go swimming."
-            },
-            "group": 1,
-            "note": "It offers an idea for what to do together; nobody is allowing anything."
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
           },
           {
-            "sentence": {
-              "traditional": "老師，我可以去洗手間嗎？",
-              "simplified": "老师，我可以去洗手间吗？",
-              "pinyin": "Lǎoshī, wǒ kěyǐ qù xǐshǒujiān ma?",
-              "english": "Teacher, may I go to the restroom?"
-            },
-            "group": 0,
-            "note": "It asks whether the teacher allows it, so 可以 is about permission."
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
           },
           {
-            "sentence": {
-              "traditional": "你不想喝咖啡，可以點一杯茶。",
-              "simplified": "你不想喝咖啡，可以点一杯茶。",
-              "pinyin": "Nǐ bù xiǎng hē kāfēi, kěyǐ diǎn yì bēi chá.",
-              "english": "You don’t want coffee; you could order a cup of tea."
-            },
-            "group": 1,
-            "note": "It offers an idea for what to order, not a permission."
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
-            "sentence": {
-              "traditional": "媽媽說，我可以看電視。",
-              "simplified": "妈妈说，我可以看电视。",
-              "pinyin": "Māma shuō, wǒ kěyǐ kàn diànshì.",
-              "english": "Mom says I may watch TV."
-            },
-            "group": 0,
-            "note": "Mom says it is allowed, so this is permission."
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
           },
           {
-            "sentence": {
-              "traditional": "這部電影很有趣，我們可以一起去看。",
-              "simplified": "这部电影很有趣，我们可以一起去看。",
-              "pinyin": "Zhè bù diànyǐng hěn yǒuqù, wǒmen kěyǐ yìqǐ qù kàn.",
-              "english": "This movie is interesting; we could go see it together."
-            },
-            "group": 1,
-            "note": "It suggests going together, which is an idea, not a permission."
-          },
-          {
-            "sentence": {
-              "traditional": "這裡不可以吃東西。",
-              "simplified": "这里不可以吃东西。",
-              "pinyin": "Zhèlǐ bù kěyǐ chī dōngxi.",
-              "english": "You may not eat here."
-            },
-            "group": 0,
-            "note": "It says what is not allowed: 不可以 is about permission."
+            "traditional": "是",
+            "pinyin": "shì"
           }
         ],
-        "successNote": "One word, two jobs: 可以 allows or refuses something, or offers an idea."
+        "repairs": [
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "This sentence needs 會 (a skill) and 不可以 (not allowed); 沒 goes with neither."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "是 doesn’t go before a verb: use 會 (a skill) or 可以 (allowed)."
+          }
+        ],
+        "fallbackRepair": "會 = know how (a skill): 會游泳. 可以 = allowed: 不可以去.",
+        "result": {
+          "traditional": "我會游泳，可是媽媽說我今天不可以去。",
+          "simplified": "我会游泳，可是妈妈说我今天不可以去。",
+          "pinyin": "Wǒ huì yóuyǒng, kěshì māma shuō wǒ jīntiān bù kěyǐ qù.",
+          "english": "I can swim, but Mom says I can't go today."
+        }
       }
-    ],
-    "allowWords": [
-      "三明治"
     ]
   }
 }
