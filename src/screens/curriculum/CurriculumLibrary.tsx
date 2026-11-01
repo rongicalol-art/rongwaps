@@ -21,6 +21,7 @@ import { useCourseDashboard } from './hooks/useCourseDashboard';
 import { LessonWindow, type LessonWindowTarget } from './lesson-window/LessonWindow';
 import { prepareLessonWindow } from './lesson-window/prepareLessonWindow';
 import { useReadyAction } from '../../hooks/useReadyAction';
+import { preparePracticeLaunch } from '../activities';
 import { GlobalPresenceButton, LessonFaces, lessonKey } from '../../features/social';
 import { lessonThumbnail } from '../../data/lessonThumbnails';
 
@@ -180,9 +181,9 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
       handleOpenLesson(ids[0]);
       return;
     }
-    // Several lessons: the saved selection is already the deck scope.
-    onStartPathPractice?.();
-  }, [handleOpenLesson, onStartPathPractice, selection.selectedIds]);
+    // Several lessons: the saved selection is already the deck scope; Start waits for the deck.
+    if (onStartPathPractice) void openWhenReady(() => preparePracticeLaunch({ activeBookId, selectedLessons, activity: 'flashcards' }), onStartPathPractice);
+  }, [activeBookId, handleOpenLesson, onStartPathPractice, openWhenReady, selectedLessons, selection.selectedIds]);
   const handlePartChange = useCallback((partIds: number[]) => {
     setLessonWindow((current) => (current ? { ...current, partIds } : current));
   }, []);

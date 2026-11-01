@@ -2,7 +2,7 @@ import type { ActivityType, LessonPartSelectionMap } from '../../types/models';
 import { loadActivityDeck } from '../../hooks/useActivityDataLoader';
 import { loadPracticeScreen, practiceScreenKey } from './practiceScreens';
 import { isHanziChar } from '../../utils/characters/hanzi';
-import { warmChineseFont } from '../../utils/browser/fontWarmup';
+import { warmChineseFont, whenFontReady } from '../../utils/browser/fontWarmup';
 import { FLASHCARD_EXTRAS_CACHE_LIMIT } from '../../utils/vocabulary/flashcardExtrasPack';
 
 /** Fetches the activity-screen chunk (the modal shell itself is eager). Resolves once it can render synchronously. */
@@ -64,6 +64,30 @@ export function prefetchPractice(intent: PracticeIntent): Promise<unknown> {
     preloadPracticeChunks(intent.activity),
     deckPromise,
   ]).catch(() => undefined);
+}
+
+/**
+ * Everything a curriculum practice session needs before it opens: the screen, the deck (same cache
+ * the modal reads), the study data and the first cards' font. A Start button waits on this, so the
+ * modal reveals without a loader. Library and review decks prepare only the screen.
+ */
+export async function preparePracticeLaunch(intent: PracticeIntent): Promise<void> {
+  const isCurriculumDeck = !intent.isReviewMode && !intent.isLibraryMode
+    && intent.activity !== 'flashcards-review' && intent.activity !== 'flashcards-library';
+  const [, deck] = await Promise.all([
+    preloadPracticeChunks(intent.activity),
+    isCurriculumDeck ? loadActivityDeck({
+      activeBookId: intent.activeBookId,
+      selectedLessons: intent.selectedLessons,
+      selectedLessonParts: intent.selectedLessonParts,
+    }) : undefined,
+  ]);
+  const cards = deck?.cards ?? [];
+  if (!cards.length) return;
+  await Promise.all([
+    preparePracticeData(cards, new AbortController().signal),
+    whenFontReady(cards.slice(0, 6).map((card) => card.front).join('')),
+  ]);
 }
 
 /** Normal lessons prepare completely; bulk review keeps a bounded initial working set. */

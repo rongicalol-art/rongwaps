@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence } from 'motion/react';
-import { ActionButton, AppIcon, Drawer, PlayfulNavIcon, WorkspaceWindow } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Drawer, PlayfulNavIcon, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
+import { useReadyAction } from '../../../hooks/useReadyAction';
+import { prepareGrammarOpen, prepareReadingOpen } from '../../../app/studyLaunch';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import type { ActivityType, CourseLessonProgress } from '../../../types/models';
 import { getEnglishLessonTitle } from '../../../utils/lesson/lessonTitle';
-import { preloadPracticeChunks, prefetchPractice } from '../../activities';
+import { preloadPracticeChunks, prefetchPractice, preparePracticeLaunch, type PracticeIntent } from '../../activities';
 import { formatPartSelection, getLessonSelectionKey, normalizePartSelection } from '../../../utils/lesson/lessonPartSelection';
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
@@ -107,23 +109,33 @@ function useHasPartSentences(bookId: number, lessonId: number, partIds: number[]
   return hasSentences;
 }
 
+type HubActivity = 'quiz' | 'writing' | 'pinyin' | 'tones' | 'sentences';
+
+const HUB_ROWS: { activity: HubActivity; icon: PlayfulNavIconName; label: string }[] = [
+  { activity: 'quiz', icon: 'quiz', label: 'Quiz' },
+  { activity: 'writing', icon: 'writing', label: 'Writing' },
+  { activity: 'pinyin', icon: 'pinyinPractice', label: 'Pinyin' },
+  { activity: 'tones', icon: 'tonesPractice', label: 'Tones' },
+  { activity: 'sentences', icon: 'reading', label: 'Sentences' },
+];
+
 function PracticeHubDrawer({
   canQuiz,
   canReadSentences,
   isOpen,
+  opening,
   onClose,
-  onQuizIntent,
-  onPinyinIntent,
   onSelect,
 }: {
   isOpen: boolean;
+  /** The activity getting ready to open; its row shows the loading state. */
+  opening: HubActivity | null;
   onClose: () => void;
   canQuiz: boolean;
   canReadSentences: boolean;
-  onQuizIntent: () => void;
-  onPinyinIntent: () => void;
-  onSelect: (activity: 'quiz' | 'writing' | 'pinyin' | 'tones' | 'sentences') => void;
+  onSelect: (activity: HubActivity) => void;
 }) {
+  const rows = HUB_ROWS.filter(({ activity }) => (activity !== 'quiz' || canQuiz) && (activity !== 'sentences' || canReadSentences));
   return (
     <Drawer
       isOpen={isOpen}
@@ -140,77 +152,38 @@ function PracticeHubDrawer({
       heightClassName="max-h-[60vh] md:max-h-full"
     >
       <div className="flex flex-col gap-3">
-        {canQuiz && (
-          <>
-            <ActionButton
-              variant="secondary"
-              size="lg"
-              fullWidth
-              edgeColor="var(--color-ui-border)"
-              onClick={() => onSelect('quiz')}
-              onPointerEnter={onQuizIntent}
-              onPointerDown={onQuizIntent}
-              onFocus={onQuizIntent}
-              className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-            >
-              <PlayfulNavIcon name="quiz" className="h-8 w-8" />
-              <span>Quiz</span>
-              <AppIcon name="next" size={18} className="ml-auto text-ui-muted-strong" />
-            </ActionButton>
-            <ChallengeCard onOpen={onClose} />
-            <div aria-hidden="true" className="border-t border-ui-divider" />
-          </>
-        )}
-        <ActionButton
-          variant="secondary"
-          size="lg"
-          fullWidth
-          edgeColor="var(--color-ui-border)"
-          onClick={() => onSelect('writing')}
-          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-        >
-          <PlayfulNavIcon name="writing" className="h-8 w-8" />
-          <span>Writing</span>
-        </ActionButton>
-        <ActionButton
-          variant="secondary"
-          size="lg"
-          fullWidth
-          edgeColor="var(--color-ui-border)"
-          onPointerEnter={onPinyinIntent}
-          onPointerDown={onPinyinIntent}
-          onFocus={onPinyinIntent}
-          onClick={() => onSelect('pinyin')}
-          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-        >
-          <PlayfulNavIcon name="pinyinPractice" className="h-8 w-8" />
-          <span>Pinyin</span>
-        </ActionButton>
-        <ActionButton
-          variant="secondary"
-          size="lg"
-          fullWidth
-          edgeColor="var(--color-ui-border)"
-          onClick={() => onSelect('tones')}
-          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-        >
-          <PlayfulNavIcon name="tonesPractice" className="h-8 w-8" />
-          <span>Tones</span>
-        </ActionButton>
-        {canReadSentences && (
-          <ActionButton
-            variant="secondary"
-            size="lg"
-            fullWidth
-            edgeColor="var(--color-ui-border)"
-            onPointerEnter={() => { void preloadPracticeChunks('sentences').catch(() => {}); }}
-            onClick={() => onSelect('sentences')}
-            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-          >
-            <PlayfulNavIcon name="reading" className="h-8 w-8" />
-            <span>Sentences</span>
-          </ActionButton>
-        )}
+        {rows.map(({ activity, icon, label }) => {
+          // Pointing at a row starts loading its screen, so the tap usually opens it at once.
+          const warm = () => { void preloadPracticeChunks(activity).catch(() => {}); };
+          return (
+            <Fragment key={activity}>
+              <ActionButton
+                variant="secondary"
+                size="lg"
+                fullWidth
+                edgeColor="var(--color-ui-border)"
+                loading={opening === activity}
+                loadingLabel={label}
+                disabled={opening !== null && opening !== activity}
+                onClick={() => onSelect(activity)}
+                onPointerEnter={warm}
+                onPointerDown={warm}
+                onFocus={warm}
+                className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+              >
+                <PlayfulNavIcon name={icon} className="h-8 w-8" />
+                <span>{label}</span>
+                {activity === 'quiz' && <AppIcon name="next" size={18} className="ml-auto text-ui-muted-strong" />}
+              </ActionButton>
+              {activity === 'quiz' && (
+                <>
+                  <ChallengeCard onOpen={onClose} />
+                  <div aria-hidden="true" className="border-t border-ui-divider" />
+                </>
+              )}
+            </Fragment>
+          );
+        })}
       </div>
     </Drawer>
   );
@@ -232,6 +205,8 @@ function LessonBody({
   const { parts, illustrationsByPart, fallbackImageSrc, fallbackIsIllustration } = useLessonWindowParts(bookId, lesson);
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
+  // Start and the Practice hub rows wait until their screen is ready, showing the loading state meanwhile.
+  const { pendingKey: opening, run: openWhenReady } = useReadyAction<'start' | HubActivity>();
 
   const fallbackPartId = getFirstOpenPartId(parts);
   const selectedPartIds = normalizePartSelection(partIds ?? [], parts.map((part) => part.id))
@@ -267,16 +242,27 @@ function LessonBody({
   const stored = modes[activePart.id];
   const mode = stored && isModeAvailable(activePart, stored) ? stored : getDefaultMode(activePart);
 
+  const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
+  const practiceIntent = (activity: ActivityType): PracticeIntent => ({
+    activeBookId: bookId,
+    selectedLessons: [lesson.id],
+    selectedLessonParts: { [getLessonSelectionKey(bookId, lesson.id)]: Array.isArray(practiceTarget) ? practiceTarget : [practiceTarget] },
+    activity,
+  });
   const handleStart = () => {
-    const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
-    if (mode === 'vocab') onStartPractice(lesson.id, practiceTarget, 'flashcards');
-    else if (mode === 'grammar' && activePart.grammar) onOpenGrammarPart(
-      selectedParts.length > 1
+    if (mode === 'vocab') {
+      void openWhenReady(() => preparePracticeLaunch(practiceIntent('flashcards')),
+        () => onStartPractice(lesson.id, practiceTarget, 'flashcards'), 'start');
+    } else if (mode === 'grammar' && activePart.grammar) {
+      const grammarIds = selectedParts.length > 1
         ? selectedParts.flatMap((part) => part.grammar ? [part.grammar.manifestId] : [])
-        : activePart.grammar.manifestId,
-      () => onModeChange(activePart.id, 'reading'),
-    );
-    else onOpenReadingPart({ bookId, lessonId: lesson.id, partId: practiceTarget });
+        : [activePart.grammar.manifestId];
+      void openWhenReady(() => prepareGrammarOpen(grammarIds),
+        () => onOpenGrammarPart(grammarIds, () => onModeChange(activePart.id, 'reading')), 'start');
+    } else {
+      const target = { bookId, lessonId: lesson.id, partId: practiceTarget };
+      void openWhenReady(() => prepareReadingOpen(target), () => onOpenReadingPart(target), 'start');
+    }
   };
   const swipe = (step: 1 | -1) => {
     const next = parts[activeIndex + step];
@@ -299,13 +285,9 @@ function LessonBody({
   const actions = (
     <LessonActions
       onStart={handleStart}
+      isStarting={opening === 'start'}
       onStartIntent={() => {
-        if (mode === 'vocab') void prefetchPractice({
-          activeBookId: bookId,
-          selectedLessons: [lesson.id],
-          selectedLessonParts: { [getLessonSelectionKey(bookId, lesson.id)]: selectedPartIds },
-          activity: 'flashcards',
-        });
+        if (mode === 'vocab') void prefetchPractice(practiceIntent('flashcards'));
       }}
       onOpenPracticeHub={() => setIsPracticeHubOpen(true)}
       isPracticeHubOpen={isPracticeHubOpen}
@@ -316,13 +298,13 @@ function LessonBody({
       canQuiz={activePart.vocab.total > 0}
       canReadSentences={hasSentences}
       isOpen={isPracticeHubOpen}
+      opening={opening === 'start' ? null : opening}
       onClose={() => setIsPracticeHubOpen(false)}
-      onQuizIntent={() => { void preloadPracticeChunks('quiz').catch(() => {}); }}
-      onPinyinIntent={() => { void preloadPracticeChunks('pinyin').catch(() => {}); }}
       onSelect={(activity) => {
-        setIsPracticeHubOpen(false);
-        const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
-        onStartPractice(lesson.id, practiceTarget, activity);
+        void openWhenReady(() => preparePracticeLaunch(practiceIntent(activity)), () => {
+          setIsPracticeHubOpen(false);
+          onStartPractice(lesson.id, practiceTarget, activity);
+        }, activity);
       }}
     />
   );
