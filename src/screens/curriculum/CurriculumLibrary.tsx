@@ -149,7 +149,8 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         }
       }
       anchorLessonIdRef.current = lessonId;
-      if (selection.selectedIds.includes(lessonId)) {
+      // Already picking several: a tap adds or removes. A single pick is replaced by the tapped lesson.
+      if (selection.isMultiSelecting || selection.selectedIds.includes(lessonId)) {
         selection.toggle(lessonId);
       } else {
         selection.enter(lessonId);
