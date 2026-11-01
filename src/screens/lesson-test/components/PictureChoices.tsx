@@ -40,7 +40,7 @@ export function PictureChoices({ question, order, selected, checked, onSelect }:
             className="[&>span:last-child]:!px-3 [&>span:last-child]:!py-2.5"
           >
             <span className="flex w-full items-center gap-3 sm:flex-col sm:gap-2">
-              <span className={cn('order-first flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-xs border-2 text-xs font-black sm:order-last', BADGE[state])}>
+              <span className={cn('order-first flex size-5.5 shrink-0 items-center justify-center rounded-xs border-2 text-xs font-black sm:order-last', BADGE[state])}>
                 {'ABCD'[shown]}
               </span>
               <img

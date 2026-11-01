@@ -38,7 +38,7 @@ export function AnswerDetail({ item, questions, script }: { item: LessonTestItem
           <div key={question.id} className="flex flex-col">
             <p className="leading-snug">
               <span className="font-chinese text-lg text-ui-ink-strong">{zh}</span>
-              <span className="ml-2 text-[15px] font-bold text-ui-muted-strong">{[shown?.pinyin, shown?.english].filter(Boolean).join(' · ')}</span>
+              <span className="ml-2 text-base font-bold text-ui-muted-strong">{[shown?.pinyin, shown?.english].filter(Boolean).join(' · ')}</span>
             </p>
             <p className="text-sm font-extrabold leading-snug text-ui-ink-strong">{question.why}</p>
           </div>
@@ -47,7 +47,7 @@ export function AnswerDetail({ item, questions, script }: { item: LessonTestItem
             {zh && <span className="font-chinese text-xl leading-snug text-ui-ink-strong">{zh}</span>}
             {shown?.pinyin && <span className="text-base font-bold leading-snug text-ui-muted-strong">{shown.pinyin}</span>}
             {shown?.english && <span className="text-base font-bold leading-snug text-ui-muted-strong">{shown.english}</span>}
-            <span className="mt-1 text-[15px] font-extrabold leading-snug text-ui-ink-strong">{question.why}</span>
+            <span className="mt-1 text-base font-extrabold leading-snug text-ui-ink-strong">{question.why}</span>
           </div>
         );
       })}

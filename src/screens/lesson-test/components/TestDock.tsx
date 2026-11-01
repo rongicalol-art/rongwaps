@@ -38,7 +38,7 @@ export function TestDock({ label, onPress, secondary, riseKey, className }: Test
         transition={{ duration: 0.36, ease: [0.16, 1, 0.3, 1] }}
         className={cn('pointer-events-auto mx-auto flex w-full max-w-md flex-col gap-2 md:pb-6', secondary && 'md:max-w-2xl md:flex-row-reverse md:gap-4')}
       >
-        <ActionButton size="lg" fullWidth onClick={onPress} className="text-base tracking-wider md:text-[17px]">
+        <ActionButton size="lg" fullWidth onClick={onPress} className="text-base tracking-wider md:text-lg">
           <span className="relative">
             {label}
             <KeyChip className="border-brand-on-primary/40 text-brand-on-primary/80">Enter</KeyChip>
@@ -51,7 +51,7 @@ export function TestDock({ label, onPress, secondary, riseKey, className }: Test
             fullWidth
             edgeColor="var(--color-ui-border)"
             onClick={secondary.onPress}
-            className="text-base tracking-wider md:text-[17px]"
+            className="text-base tracking-wider md:text-lg"
           >
             {secondary.label}
           </ActionButton>

@@ -19,8 +19,8 @@ export function SectionIntro({ part, script, onStart }: { part: LessonTestPart; 
   return (
     <>
       <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-2.5 px-6 pb-36 text-center">
-        <motion.p {...rise(0)} lang={script === 'simplified' ? 'zh-Hans' : 'zh-Hant'} className="font-chinese text-[72px] leading-none text-ui-ink-strong md:text-[84px]">{script === 'simplified' ? copy.zhSimplified : copy.zh}</motion.p>
-        <motion.h1 {...rise(0.05)} className="mt-2 text-[26px] font-black leading-tight text-ui-ink-strong">{copy.en}</motion.h1>
+        <motion.p {...rise(0)} lang={script === 'simplified' ? 'zh-Hans' : 'zh-Hant'} className="font-chinese text-7xl leading-none text-ui-ink-strong md:text-8xl">{script === 'simplified' ? copy.zhSimplified : copy.zh}</motion.p>
+        <motion.h1 {...rise(0.05)} className="mt-2 text-2xl font-black leading-tight text-ui-ink-strong">{copy.en}</motion.h1>
         {copy.line && <motion.p {...rise(0.1)} className="max-w-xs text-balance text-base font-bold text-ui-muted-strong">{copy.line}</motion.p>}
       </div>
       <TestDock label={copy.start} onPress={onStart} riseKey={part} />

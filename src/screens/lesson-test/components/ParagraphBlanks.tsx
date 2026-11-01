@@ -55,7 +55,7 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
   return (
     <LayoutGroup id={item.id}>
       <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-5 py-4">
-        <p className="font-chinese text-xl leading-[2.15] text-ui-ink-strong md:text-[22px]">
+        <p className="font-chinese text-xl leading-loose text-ui-ink-strong md:text-2xl">
           {parts.map((part, index) => {
             if (index % 2 === 0) return <span key={index}>{part}</span>;
             const blank = Number(part) - 1;
@@ -72,7 +72,7 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
                 aria-label={`Blank ${firstNumber + blank}${word ? `: ${word}` : ''}`}
                 onClick={() => { if (value !== undefined) onAnswer(question.id, undefined); setPicked(blank); }}
                 className={cn(
-                  'mx-1 inline-block min-w-[2.6em] border-b-[3px] px-1 text-center align-baseline leading-tight outline-none focus-ring-inline',
+                  'mx-1 inline-block min-w-12 border-b-3 px-1 text-center align-baseline leading-tight outline-none focus-ring-inline',
                   !isOpen && 'border-ui-divider text-ui-muted-strong',
                   isOpen && !checked && (blank === current ? 'border-brand-primary' : 'border-ui-border'),
                   isOpen && !checked && 'text-brand-primary-text',

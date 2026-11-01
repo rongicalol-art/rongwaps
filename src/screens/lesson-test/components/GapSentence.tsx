@@ -26,11 +26,11 @@ export function GapSentence({ question, order, selected, checked, script, onSele
 
   return (
     <div className="flex w-full flex-col items-center gap-5">
-      <p className="text-center font-chinese text-2xl leading-[1.9] text-ui-ink-strong md:text-[28px]">
+      <p className="text-center font-chinese text-2xl leading-loose text-ui-ink-strong md:text-3xl">
         {before}
         <span
           className={cn(
-            'mx-1 inline-block min-w-[2.2em] border-b-[3px] px-1 text-center align-baseline leading-tight',
+            'mx-1 inline-block min-w-12 border-b-3 px-1 text-center align-baseline leading-tight',
             !checked && 'border-brand-primary text-brand-primary-text',
             checked && !wrong && 'border-feedback-success text-feedback-success-text',
             wrong && 'border-feedback-danger text-feedback-danger-text',

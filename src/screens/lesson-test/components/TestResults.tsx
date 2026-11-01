@@ -99,7 +99,7 @@ function Celebration({ headline, success, children, dock }: CelebrationProps) {
               />
             </div>
           </div>
-          <h1 ref={titleRef} className={`flex flex-wrap justify-center gap-[0.28em] text-center text-[28px] font-black md:text-[32px] ${success ? 'text-feedback-success-text' : 'text-ui-ink-strong'}`}>
+          <h1 ref={titleRef} className={`flex flex-wrap justify-center gap-2 text-center text-3xl font-black md:text-4xl ${success ? 'text-feedback-success-text' : 'text-ui-ink-strong'}`}>
             {headline.map((word, index) => <span key={`${word}-${index}`} className="inline-block">{word}</span>)}
           </h1>
           <div ref={restRef} className="mt-6 flex w-full flex-col items-center gap-5">{children}</div>
@@ -133,7 +133,7 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onLater }
         ? <TestDock label={`Fix ${misses} mistake${misses === 1 ? '' : 's'}`} onPress={onFix} secondary={{ label: 'Later', onPress: onLater }} />
         : <TestDock label="Continue" onPress={onLater} />}
     >
-      <div data-tiles className="grid w-full max-w-[360px] grid-cols-3 gap-3 md:max-w-[440px] md:gap-4">
+      <div data-tiles className="grid w-full max-w-90 grid-cols-3 gap-3 md:max-w-110 md:gap-4">
         <StatTile
           label="Listening" icon="audio" shown={score.listening[0]} format={(value) => `${value}/${score.listening[1]}`}
           frameClass="border-brand-primary-edge bg-brand-primary" inkClass="text-brand-primary-text"
@@ -147,14 +147,14 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onLater }
           frameClass="border-palette-purple-edge bg-palette-purple" inkClass="text-palette-purple-text"
         />
       </div>
-      {!passed && <p className="text-center text-[15px] font-bold text-ui-muted-strong">You got {percent}%. You need 80% to pass.</p>}
+      {!passed && <p className="text-center text-base font-bold text-ui-muted-strong">You got {percent}%. You need 80% to pass.</p>}
       {rows.length > 0 && (
         <ul aria-label="To fix" className="flex w-full max-w-md flex-col">
           {rows.map((row) => (
             <li key={row.zh} className="flex items-baseline gap-3 border-b-2 border-ui-divider px-1 py-2.5 last:border-b-0">
-              <span className="min-w-[6.5em] font-chinese text-xl text-ui-ink-strong">{row.zh}</span>
-              <span className="flex-1 text-[15px] font-bold text-ui-muted-strong">{row.en}</span>
-              {row.lesson !== lessonId && <span className="whitespace-nowrap text-[13px] font-extrabold text-ui-muted">Lesson {row.lesson}</span>}
+              <span className="min-w-28 font-chinese text-xl text-ui-ink-strong">{row.zh}</span>
+              <span className="flex-1 text-base font-bold text-ui-muted-strong">{row.en}</span>
+              {row.lesson !== lessonId && <span className="whitespace-nowrap text-sm font-extrabold text-ui-muted">Lesson {row.lesson}</span>}
             </li>
           ))}
         </ul>
@@ -171,7 +171,7 @@ export function TestDone({ lessonId, passed, rescheduled, onClose }: { lessonId:
       success={passed}
       dock={<TestDock label="Back to lesson" onPress={onClose} />}
     >
-      {rescheduled && <p className="text-center text-[15px] font-bold text-ui-muted-strong">Missed words come back in your next review.</p>}
+      {rescheduled && <p className="text-center text-base font-bold text-ui-muted-strong">Missed words come back in your next review.</p>}
     </Celebration>
   );
 }

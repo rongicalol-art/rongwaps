@@ -8,12 +8,12 @@ export type Script = 'traditional' | 'simplified';
 /** Bars standing in for an answer that is only heard; they light up while it is read. */
 export function WaveBars({ seed, active }: { seed: number; active: boolean }) {
   return (
-    <span aria-hidden className="flex h-7 flex-1 items-center gap-[3px]">
+    <span aria-hidden className="flex h-7 flex-1 items-center gap-0.5">
       {Array.from({ length: 22 }, (_, index) => (
         <span
           key={index}
           style={{ height: `${30 + Math.round(60 * Math.abs(Math.sin((index + seed * 7) * 1.7)))}%` }}
-          className={cn('w-[4px] rounded-full transition-colors duration-200', active ? 'bg-brand-primary' : 'bg-ui-border')}
+          className={cn('w-1 rounded-full transition-colors duration-200', active ? 'bg-brand-primary' : 'bg-ui-border')}
         />
       ))}
     </span>
@@ -56,7 +56,7 @@ export function ChoiceList({ question, order, selected, checked, spoken, mark, s
             onClick={() => onSelect(original)}
           >
             {reveal ? (
-              <span className="font-chinese text-[21px] font-normal leading-snug text-ui-ink-strong">{choiceText(choice, script)}</span>
+              <span className="font-chinese text-xl font-normal leading-snug text-ui-ink-strong">{choiceText(choice, script)}</span>
             ) : (
               <WaveBars seed={shown} active={mark === shown} />
             )}

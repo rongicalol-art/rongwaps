@@ -32,7 +32,7 @@ const text = (value: Pick<TestText, 'traditional' | 'simplified'> | undefined, s
 function StimulusPicture({ name, alt, wide }: { name: string; alt: string; wide?: boolean }) {
   return (
     <div className={cn('mx-auto w-full rounded-feature border-2 border-ui-divider bg-ui-surface p-2', wide ? 'max-w-xl' : 'max-w-md')}>
-      <img src={testPicture(name)} alt={alt} draggable={false} className="block h-auto w-full select-none rounded-[14px]" />
+      <img src={testPicture(name)} alt={alt} draggable={false} className="block h-auto w-full select-none rounded-control" />
     </div>
   );
 }
@@ -47,7 +47,7 @@ function ReadingText({ item, script }: { item: Extract<LessonTestItem, { kind: '
         <p
           key={index}
           className={cn(
-            'font-chinese text-[19px] leading-[1.8] text-ui-ink-strong md:text-xl',
+            'font-chinese text-lg leading-8 text-ui-ink-strong md:text-xl',
             item.format === 'message' && index === lines.length - 1 && lines.length > 2 && 'text-right text-ui-muted-strong',
           )}
         >
@@ -91,7 +91,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   );
   const pictures = <PictureChoices question={question} order={order} selected={selected} checked={checked} onSelect={pick} />;
   const printedPrompt = question.prompt && (
-    <p className="text-center font-chinese text-[22px] leading-snug text-ui-ink-strong md:text-2xl">{text(question.prompt, script)}</p>
+    <p className="text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl">{text(question.prompt, script)}</p>
   );
 
   let body: React.ReactNode;
@@ -108,7 +108,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
     case 'read-pick-picture':
       body = (
         <>
-          <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-4 py-6 text-center font-chinese text-[26px] leading-normal text-ui-ink-strong md:py-8 md:text-[32px]">
+          <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-4 py-6 text-center font-chinese text-2xl leading-normal text-ui-ink-strong md:py-8 md:text-3xl">
             {text(question.prompt, script)}
           </div>
           {pictures}
@@ -149,7 +149,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-5">
-      <h1 className="text-balance text-center text-[22px] font-black leading-tight text-ui-ink-strong md:text-[26px]">{titleFor(item, question)}</h1>
+      <h1 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong">{titleFor(item, question)}</h1>
       {body}
     </div>
   );
