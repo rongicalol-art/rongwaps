@@ -1,5 +1,5 @@
 import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialImage, socialName } from '../shared/quizRace';
-import { verifyAccessToken } from './auth';
+import { verifyAccessToken } from '../shared/accessToken';
 import { newSeed } from './room';
 import { SOCIAL_FRAME_BYTES } from '../shared/lobby';
 export { GameRoom } from './room';

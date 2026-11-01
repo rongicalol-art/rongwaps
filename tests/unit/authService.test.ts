@@ -98,6 +98,39 @@ test('auth listener authorizes sessions and ignores a stale approval after sign-
   }
 });
 
+test('a session whose token carries the school decision starts without any access RPC', async (context) => {
+  process.env.VITE_SUPABASE_URL = 'https://beta-fixture.supabase.co';
+  process.env.VITE_SUPABASE_ANON_KEY = 'fixture-key';
+  const auth = supabase.auth;
+  const claims = (value: object) => `e30.${Buffer.from(JSON.stringify(value)).toString('base64url')}.sig`;
+  const stamped = { user: { id: 'stamped-student' }, access_token: claims({ sub: 'stamped-student', school_beta: true, full_course: false }) } as Session;
+  const legacy = { user: { id: 'legacy-student' }, access_token: claims({ sub: 'legacy-student' }) } as Session;
+  let authEvent: ((event: AuthChangeEvent, session: Session | null) => void) | undefined;
+  context.mock.method(auth, 'getSession', async () => ({ data: { session: stamped }, error: null }));
+  context.mock.method(auth, 'onAuthStateChange', (callback: (event: AuthChangeEvent, session: Session | null) => void) => {
+    authEvent = callback;
+    return { data: { subscription: { unsubscribe() {} } } };
+  });
+  const rpc = context.mock.method(SupabaseClient.prototype, 'rpc', async () => ({ data: true, error: null, status: 200 }));
+  const observed: Array<{ user: User | null; hasFullCourseAccess: boolean }> = [];
+  const stop = authService.onAuthStateChanged((user, hasFullCourseAccess) => observed.push({ user, hasFullCourseAccess }));
+  const settle = () => new Promise(resolve => setTimeout(resolve, 15));
+  try {
+    await settle();
+    assert.equal(observed.at(-1)?.user?.id, 'stamped-student');
+    assert.equal(observed.at(-1)?.hasFullCourseAccess, false, 'the stamped grant is used as is');
+    assert.equal(rpc.mock.callCount(), 0, 'no round trips before the app opens');
+    authEvent?.('TOKEN_REFRESHED', legacy);
+    await settle();
+    assert.equal(observed.at(-1)?.user?.id, 'legacy-student');
+    assert.deepEqual(rpc.mock.calls.map(call => call.arguments[0]), ['has_beta_access', 'has_full_course_access'], 'older tokens still ask the database');
+  } finally {
+    stop();
+    delete process.env.VITE_SUPABASE_URL;
+    delete process.env.VITE_SUPABASE_ANON_KEY;
+  }
+});
+
 test('redirect callback failure gives the Supabase allowlist fix without exposing details', () => {
   const message = getOAuthCallbackErrorMessage(
     '?error=server_error&error_description=Redirect%20URL%20denied%20for%20private-user@example.com',
