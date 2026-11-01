@@ -182,9 +182,12 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
       handleOpenLesson(ids[0]);
       return;
     }
-    // Several lessons: the saved selection is already the deck scope; Start waits for the deck.
-    if (onStartPathPractice) void openWhenReady(() => preparePracticeLaunch({ activeBookId, selectedLessons, activity: 'flashcards' }), onStartPathPractice);
-  }, [activeBookId, handleOpenLesson, onStartPathPractice, openWhenReady, selectedLessons, selection.selectedIds]);
+    // Several lessons: the saved selection is already the deck scope. Practice opens at once
+    // and shows its own loader; getting the deck ready starts on the same press.
+    if (!onStartPathPractice) return;
+    void preparePracticeLaunch({ activeBookId, selectedLessons, activity: 'flashcards' }).catch(() => {});
+    onStartPathPractice();
+  }, [activeBookId, handleOpenLesson, onStartPathPractice, selectedLessons, selection.selectedIds]);
   const handlePartChange = useCallback((partIds: number[]) => {
     setLessonWindow((current) => (current ? { ...current, partIds } : current));
   }, []);
