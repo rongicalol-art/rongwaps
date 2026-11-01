@@ -1,12 +1,11 @@
-import { lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import type { GrammarLessonScreen as GrammarLessonScreenType } from '../../screens/grammar-lesson';
 import { useOpenPhase } from '../../hooks/useOpenPhase';
+import { usePreloadedModule } from '../../hooks/useReadyAction';
 import { useReplacesLoader } from '../hooks/useReplacesLoader';
+import { grammarScreenModule } from '../screenModules';
 import { ActionButton, EmptyState, LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
-
-const GrammarLessonScreen = lazy(() => import('../../screens/grammar-lesson').then((m) => ({ default: m.GrammarLessonScreen })));
 
 type GrammarLessonScreenProps = React.ComponentProps<typeof GrammarLessonScreenType>;
 
@@ -35,7 +34,9 @@ export function GrammarWindow({
   useDocumentTitle(part?.title ?? null);
 
   const shouldRender = isOpen || Boolean(part);
-  const phase = useOpenPhase(Boolean(part), undefined, shouldRender ? 'open' : 'closed');
+  // Opens once the lesson data and the screen's code are both here (loaded ahead by a waiting Start button, usually).
+  const screen = usePreloadedModule(grammarScreenModule, shouldRender);
+  const phase = useOpenPhase(Boolean(part) && Boolean(screen), undefined, shouldRender ? 'open' : 'closed');
   const cameFromLoader = useReplacesLoader(phase === 'loading', shouldRender);
 
   return (
@@ -46,16 +47,15 @@ export function GrammarWindow({
             : <><LoadingScreen message="Loading grammar…" tone="canvas" /><div className="absolute inset-x-0 bottom-8 z-content flex justify-center"><ActionButton variant="secondary" onClick={onClose}>Cancel</ActionButton></div></>}
         </WorkspaceWindow>
       )}
-      {shouldRender && phase === 'ready' && part && (
-        <Suspense key={part.id} fallback={<WorkspaceWindow tone="canvas" animateIn={false}><LoadingScreen message="Loading grammar…" tone="canvas" /></WorkspaceWindow>}>
-          <GrammarLessonScreen
-            animateIn={!cameFromLoader}
-            part={part}
-            initialPageId={initialPageId}
-            onClose={onClose}
-            onProceedToReading={onProceedToReading}
-          />
-        </Suspense>
+      {shouldRender && phase === 'ready' && part && screen && (
+        <screen.GrammarLessonScreen
+          key={part.id}
+          animateIn={!cameFromLoader}
+          part={part}
+          initialPageId={initialPageId}
+          onClose={onClose}
+          onProceedToReading={onProceedToReading}
+        />
       )}
     </AnimatePresence>
   );

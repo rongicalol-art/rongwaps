@@ -1,15 +1,15 @@
-import { lazy, Suspense, useCallback, useMemo, useRef, type RefObject } from 'react';
+import { useCallback, useMemo, useRef, type RefObject } from 'react';
 import type { ReadingRecord, ReaderTextSize } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
-import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { AppIcon, IconActionButton, LoadingScreen } from '../../../lib/widgets';
+import { usePreloadedModule } from '../../../hooks/useReadyAction';
+import { readingCanvasModule, readingNarrativeModule } from '../readerChunks';
 import { useDialogueAlignment } from '../hooks/useDialogueAlignment';
 import { useReaderStudyData } from '../hooks/useReaderStudyData';
 import { isEssayReading } from '../../../utils/lesson/readingKind';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { ReaderSummary } from './ReaderSummary';
 
-const ReadingCanvas = lazy(() => import('./ReadingCanvas').then((m) => ({ default: m.ReadingCanvas })));
-const ReadingNarrativeView = lazy(() => import('./ReadingNarrativeView').then((m) => ({ default: m.ReadingNarrativeView })));
 
 export type ReaderPlayTarget = { lineIndex: number; onlyThisLine?: boolean } | { startSec: number };
 
@@ -53,6 +53,9 @@ export function ReaderSection({ reading, index, grouped, first, onPlay, onOpenGr
       { duration: 1600, delay: 350, easing: 'ease-out' },
     );
   }, [viewProps.followAudioRef]);
+  const isEssay = isEssayReading(reading);
+  const canvas = usePreloadedModule(readingCanvasModule, !isEssay);
+  const narrative = usePreloadedModule(readingNarrativeModule, isEssay);
   const props = {
     ...viewProps, reading, alignment, newWords, compactTop: grouped,
     onPlayLine: playLine, onPlayRange: playRange,
@@ -71,9 +74,9 @@ export function ReaderSection({ reading, index, grouped, first, onPlay, onOpenGr
           </div>
         </div>
       )}
-      <Suspense fallback={null}>
-        {isEssayReading(reading) ? <ReadingNarrativeView {...props} /> : <ReadingCanvas {...props} />}
-      </Suspense>
+      {isEssay
+        ? narrative ? <narrative.ReadingNarrativeView {...props} /> : <LoadingScreen inline tone="practice" message="Loading reading…" />
+        : canvas ? <canvas.ReadingCanvas {...props} /> : <LoadingScreen inline tone="practice" message="Loading reading…" />}
     </section>
   );
 }

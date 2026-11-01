@@ -1,4 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useReadyAction } from '../../../hooks/useReadyAction';
+import { whenIdle } from '../../../utils/browser/preloadAssets';
+import { prepareGrammarPractice } from '../grammarLessonChunks';
 import { findGrammarManifestPartForReading } from '../../../data/interactiveGrammarManifest';
 import { useAppStore } from '../../../store/useAppStore';
 import type { InteractiveGrammarPart } from '../../../types/models';
@@ -121,15 +124,30 @@ export function useGrammarLessonPage({
     setCurrentGrammarIndex(next.grammarIndex);
   }, [completedPageIds, currentGrammarIndex, isLastPage, markPageComplete, markPartComplete, onClose, onProceedToReading, page, part]);
 
+  // Practice opens once the exercise is ready (its button shows loading meanwhile); a page
+  // with an exercise before or after this one gets it ready in the background.
+  const { pendingKey: preparingPracticeFor, run: openWhenReady } = useReadyAction<string>();
+  const pageIdRef = useRef(page.id);
+  pageIdRef.current = page.id;
+  const nearbyPractice = page.practice ?? previousPage?.practice;
+  useEffect(() => {
+    if (!nearbyPractice) return;
+    return whenIdle(() => { void prepareGrammarPractice(nearbyPractice).catch(() => {}); });
+  }, [nearbyPractice]);
+
   const continueAfterStudy = useCallback(() => {
     if (!contentReady || isPracticing) return; // keyboard advance waits for content; the exercise drives itself
     if (page.practice) {
-      setPracticeInitialIndex(0);
-      setIsPracticing(true);
+      const pageId = page.id;
+      void openWhenReady(() => prepareGrammarPractice(page.practice!), () => {
+        if (pageIdRef.current !== pageId) return; // the learner moved on while it loaded
+        setPracticeInitialIndex(0);
+        setIsPracticing(true);
+      }, pageId);
     } else {
       completePage();
     }
-  }, [completePage, contentReady, isPracticing, page.practice]);
+  }, [completePage, contentReady, isPracticing, openWhenReady, page.id, page.practice]);
 
   /** Back from the exercise returns to its page; from a page, to the previous page (or previous exercise). */
   const goBackToPreviousGrammar = useCallback(() => {
@@ -161,6 +179,8 @@ export function useGrammarLessonPage({
     previousPage,
     isLastPage,
     continueAfterStudy,
+    /** True while Practice waits for the exercise to be ready. */
+    isPreparingPractice: preparingPracticeFor === page.id,
     goBackToPreviousGrammar,
     isPracticing,
     practiceInitialIndex,

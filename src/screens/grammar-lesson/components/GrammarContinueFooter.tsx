@@ -10,6 +10,8 @@ interface GrammarContinueFooterProps {
   isLastPage: boolean;
   /** 'Practice' when the page has a book exercise next. */
   continueLabel?: string;
+  /** Continue shows its loading state while the next screen gets ready. */
+  isPreparing?: boolean;
   onBack: () => void;
   onContinue: () => void;
 }
@@ -21,6 +23,7 @@ export function GrammarContinueFooter({
   previousPage,
   isLastPage,
   continueLabel,
+  isPreparing = false,
   onBack,
   onContinue,
 }: GrammarContinueFooterProps) {
@@ -58,6 +61,8 @@ export function GrammarContinueFooter({
                   size="lg"
                   fullWidth
                   onClick={onContinue}
+                  loading={isPreparing}
+                  loadingLabel={continueLabel ?? 'Next'}
                   aria-label={continueLabel ?? (isLastPage ? 'Finish grammar' : 'Continue')}
                   className="btn-touch-primary"
                 >
