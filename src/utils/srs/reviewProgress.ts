@@ -61,7 +61,7 @@ export function applyCardReview(
   const after = scheduled ? calculateNextReview(existingReview, cardId, quality, now) : existingReview;
   const event: ReviewEvent | null = context ? {
     ...context, durationMs: Math.max(0, Math.min(300_000, context.durationMs)),
-    cardId, quality, reviewedAt: now, scheduled, before: existingReview ?? null, after: after ?? null,
+    cardId, quality, reviewedAt: now, scheduled,
   } : null;
   return {
     ...(event ? { reviewEvents: [...history, event] } : {}),

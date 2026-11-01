@@ -22,6 +22,24 @@ DO $$ BEGIN
   IF (SELECT count(*) FROM public.user_review_events) <> 1 THEN RAISE EXCEPTION 'Duplicate review events'; END IF;
   IF jsonb_array_length(public.get_sync_state()->'review_events') <> 1 THEN RAISE EXCEPTION 'History missing from pull'; END IF;
 END $$;
+-- Card snapshots an older client still sends are not stored; rows stored before 20261101120100 still have them
+-- and come back without them in a pull.
+SELECT public.append_review_events(jsonb_build_array(jsonb_build_object(
+  'id','44444444-4444-4444-8444-444444444444','cardId','test-word','sessionId','local-test',
+  'quality',4,'source','daily','durationMs',15000,'scheduled',true,
+  'reviewedAt',extract(epoch FROM now()) * 1000,
+  'before',jsonb_build_object('interval',1),'after',jsonb_build_object('interval',3)
+)));
+INSERT INTO public.user_review_events(user_id,event_id,card_id,reviewed_at,payload) VALUES
+  ('11111111-1111-4111-8111-111111111111','55555555-5555-4555-8555-555555555555','old-word',now(),
+   jsonb_build_object('id','55555555-5555-4555-8555-555555555555','cardId','old-word','sessionId','old','quality',3,'source','daily',
+     'durationMs',1000,'scheduled',true,'reviewedAt',extract(epoch FROM now()) * 1000,'before',null,'after',jsonb_build_object('interval',2)));
+DO $$ BEGIN
+  IF (SELECT payload ? 'before' OR payload ? 'after' FROM public.user_review_events WHERE event_id='44444444-4444-4444-8444-444444444444') THEN RAISE EXCEPTION 'Card snapshots stored'; END IF;
+  IF (SELECT payload->>'quality' FROM public.user_review_events WHERE event_id='44444444-4444-4444-8444-444444444444') <> '4' THEN RAISE EXCEPTION 'Slim event lost its answer'; END IF;
+  IF jsonb_array_length(public.get_sync_state()->'review_events') <> 3 THEN RAISE EXCEPTION 'Slim history missing from pull'; END IF;
+  IF EXISTS (SELECT 1 FROM jsonb_array_elements(public.get_sync_state()->'review_events') e WHERE e ? 'before' OR e ? 'after') THEN RAISE EXCEPTION 'Pull returned card snapshots'; END IF;
+END $$;
 SELECT public.upsert_card_progress(jsonb_build_array(jsonb_build_object(
  'card_id','test-word','ease',2.5,'interval',3,'repetitions',1,'next_review_date',now()+interval '3 days','reviewed_at',now(),
  'scheduler_state',jsonb_build_object('version',1,'state',2,'stability',3,'difficulty',5,'reps',1,'lapses',0,'learningSteps',0,'scheduledDays',3,'elapsedDays',1)
