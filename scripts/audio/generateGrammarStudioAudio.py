@@ -14,7 +14,8 @@ pages. `--out` writes a separate batch (manifest, review page, clips) for `publi
 `checkStudioBatch.py` listed in its rejected.json. A take that stops mid-syllable is rendered again
 (other seeds, then with a tail-guard word cut off at the pause); a sentence read too fast on every take
 gets slower-instruction takes. `--delivery-bitrate` publishes a
-smaller copy of every mastered clip.
+smaller copy of every mastered clip. `--redo KEY ...` re-voices published sentences (e.g. a cut-off ending)
+into the batch; publishing the batch replaces their receipt entries.
 
 `--refresh-audio` masters published local takes and regenerates flagged takes or delivery above four Chinese
 characters per second with a naturally slower instruction. It never time-stretches speech.
@@ -79,10 +80,14 @@ SLOW_INSTRUCT = INSTRUCT + " 面向初學者，語速稍慢，像老師耐心示
 SLOWER_INSTRUCT = SLOW_INSTRUCT + " 這是給剛開始學中文的學生聽的，請放慢語速，每個字都說清楚。"
 SLOWER_MIN_PACE = 2.8
 MAX_PACE = 4.0  # Characters a second; --max-pace raises it for the few sentences no take reads slower.
+# Qwen can also drag a take (他很忙 over 2.8 s). 95% of the owner-approved L1–L8 clips read at 2.5+
+# characters per voiced second; a take under this is rendered again.
+MIN_VOICED_PACE = 2.3
 # Takes tried in order for a sentence: (seed, style), style "g" = tail guard, "s" = slower instruction.
 # A batch's rejected.json skips any of them by name (attempt_id).
 ATTEMPTS = [(SEED, ""), *((seed, "") for seed in RETRY_SEEDS), (42, "g"), (43, "g"), (44, "g"),
-            (42, "s"), (43, "s"), (44, "s"), (45, "s"), (42, "sg"), (43, "sg")]
+            (42, "s"), (43, "s"), (44, "s"), (45, "s"), (42, "sg"), (43, "sg"),
+            *((seed, "") for seed in range(46, 54))]
 HAN_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\U00020000-\U0002fa1f]")  # Han characters used for keys.
 SPEAKER_RE = re.compile(r"(?<![A-Za-z])([AB])[:：]\s*")  # Textbook A/B speaker labels.
 PAREN_RE = re.compile(r"[()（）]")  # Optional-parenthesis delimiters.
@@ -101,6 +106,11 @@ def set_out_dir(path):
     REVIEW_PATH = path / "review.html"
     NUMBERS_PATH = path / "numbers.json"
     PICKS_PATH = path / "picks.json"
+
+
+def syllables(text):
+    """Spoken syllables: each Han character, and each digit (2013 is read 二零一三)."""
+    return len(han(text)) + sum(char.isdigit() for char in text or "")
 
 
 def han(text):
@@ -192,7 +202,12 @@ def collect_targets(only=None, lessons=(1, 8), practice=False, skip_published=Fa
     `practice` adds each exercise's answer sentence from the matching content/grammar-practice file."""
     clipped = load_clip_keys(TRACK_CLIPS) | load_clip_keys(BOOK_CLIPS) | load_clip_keys(TRACK_APPROVED)
     if skip_published:
-        clipped |= load_clip_keys(STUDIO_RECEIPT)
+        # Sentences published from another batch; this batch's own published clips stay in it.
+        receipt = json.loads(STUDIO_RECEIPT.read_text(encoding="utf-8")) if STUDIO_RECEIPT.exists() else {}
+        clipped |= {
+            han(key) for key, clip in receipt.items()
+            if not (OUT_DIR / "delivery" / Path(clip["file"]).name).is_file()
+        }
     targets = {}
     missing = Counter()
     totals = Counter()
@@ -472,29 +487,41 @@ def synthesize(model, turns, seed, mx, np, instruct=SLOW_INSTRUCT, guard=False):
     return combined, sample_rate
 
 
-def validate_duration(audio, sample_rate, key):
-    """Enforce the requested duration range for the Han-only sentence key."""
+def validate_duration(audio, sample_rate, spoken):
+    """Enforce the requested duration range per spoken syllable."""
     duration = len(audio) / sample_rate
-    han_count = len(key)
+    han_count = syllables(spoken)
     seconds_per_han = duration / han_count
     if not MIN_SECONDS_PER_HAN <= seconds_per_han <= MAX_SECONDS_PER_HAN:
         raise ValueError(
-            f"{duration:.2f}s / {han_count} Han characters "
+            f"{duration:.2f}s / {han_count} syllables "
             f"= {seconds_per_han:.2f}s per character"
         )
     return duration
 
 
-def ending_ratio(path):
-    """Loudness of a clip's last speech frame against its typical speech frame (cut-off speech stays loud)."""
+def speech_frames(path):
+    """Loudness of each 20 ms frame of an encoded clip."""
     import numpy as np
     raw = subprocess.run(
         ["ffmpeg", "-v", "error", "-i", str(path), "-ac", "1", "-ar", "16000", "-f", "f32le", "-"],
         capture_output=True, check=True,
     ).stdout
     audio = np.frombuffer(raw, dtype=np.float32)
-    size = 320  # 20 ms frames.
-    frames = np.sqrt((audio[: len(audio) // size * size].reshape(-1, size) ** 2).mean(axis=1))
+    return np.sqrt((audio[: len(audio) // 320 * 320].reshape(-1, 320) ** 2).mean(axis=1))
+
+
+def voiced_pace(path, spoken):
+    """Characters a second of voiced time (pauses left out): a dragged take reads well under MIN_VOICED_PACE."""
+    frames = speech_frames(path)
+    voiced = (frames > frames.max() * 0.03).sum() * 0.02
+    return syllables(spoken) / max(voiced, 0.02)
+
+
+def ending_ratio(path):
+    """Loudness of a clip's last speech frame against its typical speech frame (cut-off speech stays loud)."""
+    import numpy as np
+    frames = speech_frames(path)
     speech = np.flatnonzero(frames > frames.max() * 0.05)
     if speech.size < 5:
         return 1.0
@@ -747,6 +774,7 @@ def main():
     parser.add_argument("--vocab-book", type=int, help="Also voice this book's vocabulary examples that have no book clip.")
     parser.add_argument("--max-pace", type=float, help=f"Fastest accepted delivery in characters a second (default {MAX_PACE}).")
     parser.add_argument("--delivery-bitrate", help="Publish a copy of each clip at this MP3 bitrate (e.g. 48k).")
+    parser.add_argument("--redo", nargs="+", help="Re-voice only these published sentence keys (Han characters) into the --out batch.")
     parser.add_argument("--out", help="Write a separate batch here (skips sentences already published).")
     parser.add_argument("--refresh-audio", action="store_true", help="Regenerate rushed or transcription-flagged clips and master all studio clips.")
     args = parser.parse_args()
@@ -764,7 +792,12 @@ def main():
         MAX_PACE = args.max_pace
     first, _, last = args.lessons.partition("-")
     lessons = (int(first), int(last or first))
-    targets, missing, totals = collect_targets(args.only, lessons, args.practice, bool(args.out), args.vocab_book)
+    targets, missing, totals = collect_targets(args.only, lessons, args.practice, bool(args.out) and not args.redo, args.vocab_book)
+    if args.redo:
+        targets = [target for target in targets if target["key"] in set(args.redo)]
+        unknown = set(args.redo) - {target["key"] for target in targets}
+        if unknown:
+            parser.error(f"not a sentence of the selected lessons: {', '.join(sorted(unknown))}")
     print(
         f"Uncovered users: {missing['example']} examples, {missing['row']} rows, {missing['exercise']} exercises, {missing['vocab']} vocabulary examples; "
         f"{len(targets)} unique keys ({totals['example']} total examples, {totals['row']} eligible rows).",
@@ -776,6 +809,8 @@ def main():
 
     old_data = json.loads(MANIFEST_PATH.read_text(encoding="utf-8")) if MANIFEST_PATH.exists() else []
     old_entries = {entry.get("key"): entry for entry in old_data if isinstance(entry, dict)}
+    if old_entries and not targets:
+        parser.error(f"no sentences selected; refusing to empty {MANIFEST_PATH.relative_to(ROOT)}")
     by_key = {}
     failures = []
     picks = json.loads(PICKS_PATH.read_text(encoding="utf-8")) if PICKS_PATH.exists() else {}
@@ -850,8 +885,8 @@ def main():
                     model, target["turns"], seed, mx, np,
                     instruct=SLOWER_INSTRUCT if "s" in style else SLOW_INSTRUCT, guard="g" in style,
                 )
-                duration = validate_duration(audio, sample_rate, key)
-                pace = len(han("".join(target["turns"]))) / duration
+                duration = validate_duration(audio, sample_rate, " ".join(target["turns"]))
+                pace = syllables("".join(target["turns"])) / duration
                 if pace > MAX_PACE:
                     raise ValueError(f"Generated delivery is {pace:.2f} characters per second (over {MAX_PACE})")
                 if "s" in style and pace < SLOWER_MIN_PACE:
@@ -864,6 +899,8 @@ def main():
                     raise ValueError(f"encoded duration changed from {duration:.2f}s to {encoded_duration:.2f}s")
                 if ending_ratio(path) > ENDING_MAX:
                     raise ValueError("speech stops mid-syllable")
+                if voiced_pace(path, " ".join(target["turns"])) < MIN_VOICED_PACE:
+                    raise ValueError("speech drags")
                 sidecar.write_text(digest + "\n", encoding="utf-8")
                 entry = build_manifest_entry(target, seed, path, encoded_duration, style)
                 by_key[key] = entry

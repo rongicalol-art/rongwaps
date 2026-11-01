@@ -6,12 +6,13 @@
 For each clip in <batch>/manifest.json:
 - independent, unprompted ASR (Qwen3-ASR) must hear the same syllables as the text (catches a clip
   that stops before the last word);
-- its last speech frame must have faded (catches a final syllable cut off mid-sound).
+- its last speech frame must have faded (catches a final syllable cut off mid-sound);
+- it must not drag (characters per voiced second at least MIN_VOICED_PACE).
 Passing clips get `quality.contentChecked`; failures go to <batch>/rejected.json ({key: [take, ...]}),
 which the generator reads to render those sentences again with another take. Transcripts are cached
 by file hash in <batch>/asr.json. A transcript that differs only where ASR can't match the text (names,
-numbers written in digits, sound-alikes such as 的/得 or 她/他) passes once a person has listed that exact
-file in <batch>/asr-reviewed.json ({key: {"sha256": ..., "note": ...}}). This is automated QA, not a listening review.
+numbers written in digits, sound-alikes such as 的/得 or 她/他) passes once a person has reviewed that
+transcript and listed it in <batch>/asr-reviewed.json ({key: {"heard": [transcript, ...], "note": ...}}). This is automated QA, not a listening review.
 """
 import json
 import sys
@@ -19,7 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from align_mms import pinyinize  # noqa: E402
-from generateGrammarStudioAudio import ENDING_MAX, attempt_id, ending_ratio  # noqa: E402
+from generateGrammarStudioAudio import ENDING_MAX, MIN_VOICED_PACE, attempt_id, ending_ratio, voiced_pace  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]  # Repository root.
 ASR_MODEL = "mlx-community/Qwen3-ASR-0.6B-8bit"  # Independent transcription model.
@@ -29,6 +30,8 @@ def main():
     batch = ROOT / sys.argv[1]
     manifest_path = batch / "manifest.json"
     entries = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if not entries:
+        raise SystemExit(f"{manifest_path} lists no clips.")
     asr_path = batch / "asr.json"
     transcripts = json.loads(asr_path.read_text(encoding="utf-8")) if asr_path.exists() else {}
     rejected_path = batch / "rejected.json"
@@ -51,11 +54,14 @@ def main():
         ratio = ending_ratio(path)
         problems = []
         review = reviewed.get(entry["key"])
-        if heard != expected and not (review and review["sha256"] == entry["sha256"]):
+        if heard != expected and not (review and heard in {pinyinize(text) for text in review["heard"]}):
             problems.append(f"heard {cached!r}")
         if ratio > ENDING_MAX:
             problems.append(f"ends abruptly ({ratio:.2f})")
-        quality = {**entry["quality"], "transcript": cached, "asrModel": ASR_MODEL, "endingRatio": round(ratio, 3)}
+        pace = voiced_pace(path, entry["spoken"])
+        if pace < MIN_VOICED_PACE:
+            problems.append(f"drags ({pace:.2f} characters per voiced second)")
+        quality = {**entry["quality"], "transcript": cached, "asrModel": ASR_MODEL, "endingRatio": round(ratio, 3), "voicedPace": round(pace, 2)}
         if heard != expected and not problems:
             quality["asrReview"] = review["note"]
         quality["contentChecked"] = not problems
