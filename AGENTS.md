@@ -1,48 +1,34 @@
 # Ron's Mandarin (repo: rongwaps) — agent instructions
 
-Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/`) + Supabase. Core rules only; details load on demand (see Routing).
+Chinese-learning PWA for Shu-Te University students (school Google accounts, 18+), built on the *Modern Chinese* textbooks. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/`) + Supabase + a Cloudflare Worker (`games/`). Live: https://ronsmandarin.com. Rules for every AI (Claude, Codex); details in `docs/` (map: `docs/INDEX.md`).
 
-## Working style (owner preferences)
+## Roles and communication
 
-- **Terse.** Short answers. No recap of the diff, no restating the task, no tool narration. Lead with the result or the recommendation.
-- **Intent over literal.** Prompts are short, informal, often a screenshot + "looks bad". Infer the real fix, state it in one line, act. When asked "what to do?", give one recommendation, not a menu.
-- **Design or open-ended work → plan first.** Propose something thoughtful and creative (not just what was asked), stop, wait for "go". After "go": execute and verify, no more discussion.
-- **Small tweak or bug → just do it.** One-line intent, then fix.
-- **Ask before:** new dependency, new abstraction, moving/deleting files, multi-file refactor, schema or pack changes.
-- **Plans must be self-contained** (files, steps, acceptance) — the owner often hands them to another model to execute.
-- Handoff file for a fresh session only when asked: concise, current task only.
+- **The owner owns the product vision; you own the technical side.** Decide tools, structure, tests and infrastructure yourself (the best setup, not the simplest) and give the reason in one line.
+- **Ask the owner only** for product decisions (what learners see, do or learn) and before anything that could affect real learners or their data, deletes something, changes hosting/domain/provider settings, or costs money. Ask with options and one recommendation.
+- The owner works at night, often from a phone. Updates are short: what you did, what's left, what they must decide. Lead with the result, plain words, no diff recaps.
+- Prompts are short (often a screenshot + "looks bad"): find the specific cause, name it in a line, fix it. "What should I do?" gets one recommendation.
+- Small tweak or bug → just do it. Design, motion, copy or open-ended work → plan, then a clickable prototype, then the owner's pick, then build. Read `.claude/OWNER_PREFERENCES.md` before any UI, design, motion or copy work.
+- Plans are self-contained (files, steps, acceptance checks): the owner may hand them to another model. Handoff notes only when asked.
+- Build everything yourself. Subagents only for parallel read-only research and independent reviews; they never edit files.
+- **Done means verified**: the checks below ran, UI was looked at, CI is green. Say what you checked and what you couldn't.
 
-## Session context and execution
+## How changes ship (`docs/RELEASING.md`)
 
-- **Owner taste and working style: read `.claude/OWNER_PREFERENCES.md` before any UI, design, motion or copy work.** It is the full, tool-neutral brief (any AI).
-- **One folder.** Work only in `~/Projects/rongwaps` (Claude and Codex both); no extra worktrees unless the owner asks. GitHub `main` is protected (PR + passing `verify` check), so a release goes branch → PR → merge → manual Render deploy (auto-deploy is off). Push, merge, deploy, or run production SQL/settings only when the owner explicitly asks; batch releases to avoid repeated app updates interrupting learners. Test risky changes on staging first (`docs/TESTING.md` → Staging); never point staging at production.
-- Work inline. Do not spawn subagents unless the owner explicitly asks.
-- Skills: `.claude/skills/` is the source of truth. Codex reads mirrored copies in `.agents/skills/` (local, gitignored, may lag); when they differ, the `.claude/` version wins. `.agents/portable-memory.md` is optional local context: verify its claims against current code.
-- Design/motion: plan, then a clickable prototype, then the owner's pick, then build (see the UI director skill).
-- **Testing on the owner's account is allowed** — the owner opted in globally, so no need to ask. Use the DEV debug window (Ctrl+Shift+0 → **UI Previews**) for UI-only checks, and the real account when the flow needs real data or progress (quiz/flashcards/SRS writes are fine).
-- `.agents/` and the other gitignored scratch folders never feed shipped code.
-
-## Commands
-
-`npm run dev` (http://localhost:3000) · `typecheck` · `lint` · `test` · `jev:lint` · `content:validate` · `build`
-
-**Verify once at the end of a task, scoped to what changed** — not after every edit:
-- `src/` `server/` `tests/` → typecheck, lint, test, `jev:lint`
-- lesson/grammar content → `content:validate`
-- course examples → `course-examples:preview`, `jev:qa:course`, source review, then export + coverage/tests; see `docs/TESTING.md`. Jev judgments never authorize invented pinyin or verification flags.
-- UI → also check mobile (390 wide) and desktop (1440 wide); Safari + Chrome quirks matter (touchpad, audio).
-Use the `verify-change` skill.
+- **Never commit to or push `main` or `production`** (git, Claude and Codex guards block it). Work on a branch; commit and push it freely; open a PR into `main`.
+- **Several sessions share this folder: never switch its branch or stash/clean/commit files you didn't create.** Make code changes in your own worktree branched from `origin/main` (the app's per-session worktree, Codex's, or `git worktree add` in a scratch folder; remove it when done). This folder stays on `main`.
+- `main` = staging (deploys itself after CI). `production` = ronsmandarin.com, which changes only when the owner merges the Release PR. Merge into `main` only when the owner says so.
+- Database changes: expand → migrate → contract (the previous app version must keep working; CI enforces it). They reach staging automatically; production only through the owner-run *Migrate production* workflow. Never point staging at production.
 
 ## Hard rules
 
-- Never read, print or commit `.env*`, `.batch_key_env`, `.openrouter_key`, `scripts/.config.json`. Service-role and API keys are server/script-side only, never in `src/`.
-- Never hand-edit `public/data/` packs; regenerate via npm scripts and commit manifests with them.
-- `output/`, `.audit/`, `materials/`, `.agents/` are gitignored scratch. Never depend on them in code.
-- Docs describe what EXISTS. Update `docs/WIDGETS.md` when adding a shared widget.
-- **Ponytail ladder (stop at first rung):** (1) Does it need to exist? (YAGNI) → (2) Already in repo? (`src/lib/widgets/`, `src/utils/`, tokens) → (3) Stdlib / native platform / CSS over JS → (4) Existing dep → (5) Minimum code. Deletion over addition; no unrequested abstractions or "for later" scaffolding; name the duplication before adding an abstraction.
-- **Root-cause fixes only:** Before fixing a bug, grep all callers of the function you touch. Fix once at the shared root, never patch a single caller's symptom.
-- `scripts/` is dev-only: never imported by `src/` or `server/`. DB migrations live in `supabase/migrations/`, applied with `supabase db push`.
-- **Data-safe migrations:** expand → migrate → contract across separate releases; apply the migration before the client that needs it, and never drop/rename what the previous client still uses. Staging first.
+- Never read, print or commit `.env*`, `.batch_key_env`, `.openrouter_key`, `scripts/.config.json`. Never type a password or paste a secret into any page or file: those steps are the owner's. Keys stay server/script-side, never in `src/`.
+- Never hand-edit `public/data/` packs; regenerate with the npm scripts and commit manifests with them. Pack and authored-content changes need the owner's OK (product).
+- `output/`, `.audit/`, `materials/`, `.agents/` are gitignored scratch; shipped code never depends on them. `materials/` (book scans) is copyrighted: never commit it.
+- `scripts/` is dev-only: never imported by `src/` or `server/`. Migrations live in `supabase/migrations/`; an applied migration is never edited.
+- Root-cause fixes: grep every caller of what you touch and fix the shared root once, never one caller's symptom.
+- Reuse before adding (`src/lib/widgets/`, `src/utils/`, design tokens). No speculative abstractions or "for later" scaffolding; name the duplication before extracting.
+- Docs describe what exists. Update `docs/WIDGETS.md` when adding a shared widget.
 
 ## Architecture (binding)
 
@@ -58,15 +44,25 @@ Use the `verify-change` skill.
 10. Shared UI used by 2+ features → `src/lib/widgets/`; feature-only UI beside its screen.
 11. Folder split: `screens/<name>/` = route-level slice (own components/hooks/utils; sibling screens only via `index.ts`) · `features/<name>/` = cross-screen domain package (hooks + components + content, public `index.ts`) · `lib/widgets/` = generic UI, no screen/feature imports · `app/` = shell wiring (routes, overlays, launchers) · `hooks/` = app-wide hooks no single screen owns · `utils/<domain>/` = pure helpers, grouped by domain (pinyin, grammar, lesson, srs, sync, vocabulary, characters, browser, debug).
 
-## Routing — read only what the task needs
+## Checks
 
-Before editing, read matching path-scoped rules in `.claude/rules/`; Codex must not assume Claude automatically loads them. UI: `ui.md`; stores/services/hooks/utils/types: `state-services.md`; server/grading: `server-jev.md`; scripts/packs/data: `content-pipelines.md`. Task → doc map: `docs/INDEX.md`. Do not read `docs/archive/` or `docs/reference/` unless the task names them.
+`npm run dev` (http://localhost:3000) · `typecheck` · `lint` · `test` · `jev:lint` · `content:validate` · `build` · `perf:check` · `test:e2e` (local Supabase; `docs/TESTING.md`)
 
-| Task | Skill / doc |
+- While working, run the checks for what you touch. Before opening a PR: typecheck, lint, test, jev:lint, build. CI repeats them, adds the secret scan, migration safety and browser journeys, and must be green.
+- Content → `content:validate`. Course examples → `docs/TESTING.md` (Jev judgments never authorize invented pinyin or verification flags).
+- UI → look at it at 390 and 1440 wide, light and dark; Safari and Chrome quirks matter (touchpad, audio).
+- Testing on the owner's account is allowed, including quiz/flashcard/SRS progress; the DEV window (Ctrl+Shift+0 → UI Previews) is quicker for UI-only checks.
+
+## Where things are
+
+Before editing, read the matching path rules in `.claude/rules/` (UI `ui.md`; stores/services/hooks/utils/types `state-services.md`; server/Jev `server-jev.md`; scripts/packs/data `content-pipelines.md`); Codex must read them explicitly. Skills: `.claude/skills/` is the source (Codex mirrors in `.agents/skills/` may lag; `.claude/` wins). `docs/archive/` is superseded history, never current.
+
+| Task | Read |
 | --- | --- |
-| Screen/component design, redesign, visual audit | `.claude/OWNER_PREFERENCES.md`, then `rongwaps-ui-director` skill |
-| Start non-trivial work | `task-start` skill |
-| Finish any change | `verify-change` skill |
+| Releasing, undo, backups, incidents, environments | `docs/RELEASING.md` |
+| Tests, browser journeys, Jev | `docs/TESTING.md` |
+| Screen/component design, visual audit | `.claude/OWNER_PREFERENCES.md`, `rongwaps-ui-director` skill |
+| Start non-trivial work / finish any change | `task-start` / `verify-change` skills |
 | Grammar lessons | `docs/GRAMMAR_LESSON_TEMPLATE.md`, `docs/DECISIONS.md` |
 | Data model / Supabase | `docs/DATABASE_SCHEMA.md` |
 | Server / TTS / Jev grading | `docs/API_SPEC.md` |
