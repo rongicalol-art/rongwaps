@@ -73,8 +73,22 @@ blanks each have 4 choices), `reading` with several questions.
 
 ### A 20-question Book 1 lesson (Lesson 4 is the model)
 
-8 listening (2 hear-pick-picture, 2 picture-hear, 4 dialogue of which 2 review) and 12 reading
-(2 read-pick-picture, 2 realia, 3 scene-gap, a 4-blank paragraph, 1 review reading).
+15 slots in this order, 20 questions per run:
+
+| # | Slot | Kind | Questions | Versions | Picture |
+| --- | --- | --- | --- | --- | --- |
+| 1–2 | two hear slots | `hear-pick-picture` | 1 each | 3, sharing one trio (each version hears a different panel) | new trio |
+| 3–4 | two picture slots | `picture-hear` | 1 each | 2, sharing one picture | this lesson's reading picture (`reading:<id>`) |
+| 5–6 | two dialogues | `dialogue` | 1 each | 2–3 | none |
+| 7–8 | two review dialogues | `dialogue`, `review: true` | 1 each | 2–3 | none |
+| 9–10 | two read slots | `read-pick-picture` | 1 each | 2–3, sharing one trio | new trio |
+| 11–12 | two realia | `realia` | 1 each | 2, sharing one picture | new menu, receipt, notice… |
+| 13 | scene gaps | `scene-gap` | 3 | 2, sharing one scene | new scene |
+| 14 | paragraph | `paragraph-bank` | 4 | 2 | none |
+| 15 | review reading | `reading`, `review: true` | 1 | 2 | none |
+
+Review share: the two review dialogues and the review reading (3 of 20), plus review questions elsewhere if
+needed, keep every run at 15–45%. Lesson 1 has no earlier lessons: its review slots test Lesson 1 too.
 
 ## Content rules (enforced by `tests/content/lessonTests.test.ts`)
 
@@ -102,7 +116,12 @@ illustrations (`scripts/assets/lesson-test-art/style.txt`); the book characters 
   changed** (TOCFL's rule), white gutters between panels, no numbers or labels.
 - **Single pictures** (scenes, realia): one image. Menus, receipts and notices state the **exact**
   Traditional Chinese text in the brief; check every character by eye before use.
-- Vary scenes across lessons; reuse existing art only where it truly fits.
+- Vary scenes across lessons; reuse existing art only where it truly fits. The two `picture-hear` slots use
+  the lesson's own reading pictures, named `reading:<reading id>` (see `src/data/readingIllustrations.ts`).
+- **Until Codex draws a picture**, `placeholders.py` writes a plain card with its description (or, for
+  realia, its exact writing) and lists it in `scripts/assets/lesson-test-art/pending.json`; `cut.py`
+  replaces the card with the art and takes it off the list. Briefs live in
+  `scripts/assets/lesson-test-art/briefs/<name>.txt`.
 
 ```bash
 scripts/assets/lesson-test-art/generate.sh b1l04-drinks scripts/assets/lesson-test-art/briefs/b1l04-drinks.txt src/assets/images/grammar-practice/generated/l04-two-teas-180-v1.webp
@@ -111,6 +130,18 @@ scripts/assets/lesson-test-art/generate.sh b1l04-drinks scripts/assets/lesson-te
 ```bash
 python3 scripts/assets/lesson-test-art/cut.py b1l04-drinks:strip b1l04-menu:single
 ```
+
+## Authoring a lesson
+
+1. Brief: `npx tsx scripts/content/lessonTestBrief.ts b1l05` writes `output/lesson-test-briefs/b1l05.md`
+   (the lesson's words, grammar points, dialogues, reading pictures and what earlier lessons taught).
+2. Draft the lesson to the slot plan above, then check it until it is clean:
+   `npx tsx scripts/content/checkLessonTest.ts <draft.json> --no-pictures` (same rules as the content tests).
+3. Blind review: `npx tsx scripts/content/lessonTestSheet.ts <draft.json> --mode learner --out sheet.md`
+   (and `--mode choices`) gives reviewers the test without its keys. Two solvers answer it blind, one only
+   from the choices, and a language reviewer reads the full draft; every disagreement is fixed or justified.
+4. Place it as `content/lesson-tests/book-N/lessonNN.json`, add its picture briefs, run `placeholders.py`
+   on it, voice it (Audio below), export the pack, and run the content tests.
 
 ## Audio
 
