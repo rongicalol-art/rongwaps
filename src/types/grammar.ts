@@ -89,18 +89,6 @@ export interface GrammarSentenceSpine {
   notes?: string[];
 }
 
-export interface GrammarCompletionRecapItem {
-  traditional: string;
-  simplified?: string;
-  explanation: string;
-}
-
-export interface GrammarCompletionRecap {
-  title: string;
-  correct: GrammarCompletionRecapItem;
-  avoid: GrammarCompletionRecapItem[];
-}
-
 export interface GrammarExerciseProfile {
   id: string;
   avatar: 'youmei' | 'jiale' | 'yiwen' | 'zhongming';
@@ -185,21 +173,6 @@ export interface GrammarContrast {
   description: string;
   items: GrammarContrastItem[];
   microChecks?: GrammarMicroCheck[];
-}
-
-export interface GrammarRuleContrastExample {
-  id: string;
-  status: 'correct' | 'incorrect';
-  label: string;
-  traditional: string;
-  simplified?: string;
-  explanation: string;
-}
-
-export interface GrammarRuleContrast {
-  title: string;
-  description?: string;
-  examples: GrammarRuleContrastExample[];
 }
 
 export interface GrammarUnscrambleTile extends GrammarExerciseTile {
@@ -321,7 +294,6 @@ export interface InteractiveGrammarPage {
   timelineLab?: GrammarLab<GrammarTimelineChoice>;
   pairCompareLab?: GrammarLab<GrammarCompareChoice>;
   contrast?: GrammarContrast;
-  ruleContrast?: GrammarRuleContrast;
   confusion?: GrammarConfusion;
   examples: GrammarLessonExample[];
   profiles?: GrammarExerciseProfile[];
@@ -333,7 +305,6 @@ export interface InteractiveGrammarPage {
   exerciseResponseMode?: 'tiles' | 'text';
   exerciseType?: 'fillBlank' | 'unscramble';
   unscrambleExercise?: GrammarUnscrambleExercise;
-  completionRecap?: GrammarCompletionRecap;
   questions: GrammarExerciseQuestion[];
   /** Book exercise shown after the page (merged from content/grammar-practice). */
   practice?: GrammarPractice;

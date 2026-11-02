@@ -178,7 +178,7 @@ The compact blank-tile exercise can also teach word order by rendering consecuti
 
 Use the optional `sentenceSpine` recipe when a grammar point depends on a stable sequence of semantic roles, such as subject–verb–object order. The grammar lesson `SentenceSpine` component should introduce the meaning slots before the formal pattern table, preserve the same column proportions at every state, and use a switch only when changing one element materially clarifies the rule. For negation, keep the negation visually attached to the verb and preserve it as a separate tile in structure-building Practice so the learner must place it deliberately.
 
-Use `patternColumnDetails` for compact notation such as `S`, `(Neg)V`, and `O` (≤ 8 units, e.g. `which word`, `right after`); keep the primary table labels as standardized 1–3 word grammar titles. The cell tooltip carries `label · detail`, and the column-share scorer reads the label's full width, so long headers are both unnecessary and penalised. Optional `teachingNote` text on examples should identify one useful discovery rather than restating the full translation. A `completionRecap` may contrast one correct sentence with a small number of deliberately authored structural mistakes after the exercise is complete.
+Use `patternColumnDetails` for compact notation such as `S`, `(Neg)V`, and `O` (≤ 8 units, e.g. `which word`, `right after`); keep the primary table labels as standardized 1–3 word grammar titles. The cell tooltip carries `label · detail`, and the column-share scorer reads the label's full width, so long headers are both unnecessary and penalised. Optional `teachingNote` text on examples should identify one useful discovery rather than restating the full translation.
 
 ### Guided timeline readings
 
