@@ -66,8 +66,8 @@ function Glyph({ face }: { face: TestFace | null }) {
 
 /**
  * The recording as a tactile key. In the test the recording presses it: down while a play runs, up between
- * the two plays, flat once both have played (TOCFL plays twice, no replays). In the Fix round it is a real
- * button that plays it again. Its face shows what is playing.
+ * the two plays, and it stays down once both have played (TOCFL plays twice, no replays), full colour, so it
+ * reads as used rather than broken. In the Fix round it is a real button that plays it again. Its face shows what is playing.
  */
 export function TestSpeaker({ face, playing, plays, maxPlays, onReplay }: TestSpeakerProps) {
   const exam = maxPlays !== null;
@@ -75,17 +75,10 @@ export function TestSpeaker({ face, playing, plays, maxPlays, onReplay }: TestSp
   const pressed = face !== null || spent;
   const key = (
     <>
-      <span
-        aria-hidden
-        className={cn(
-          'absolute inset-x-0 bottom-0 top-[length:var(--depth-xl)] rounded-feature bg-brand-primary-edge transition-opacity duration-200',
-          spent && 'opacity-0',
-        )}
-      />
+      <span aria-hidden className="absolute inset-x-0 bottom-0 top-[length:var(--depth-xl)] rounded-feature bg-brand-primary-edge" />
       <span
         className={cn(
-          'relative mb-[length:var(--depth-xl)] flex h-24 w-28 items-center justify-center rounded-feature transition-[translate,background-color,color] duration-150 ease-out',
-          spent ? 'bg-brand-primary-wash text-brand-primary-text' : 'bg-brand-primary text-brand-on-primary',
+          'relative mb-[length:var(--depth-xl)] flex h-24 w-28 items-center justify-center rounded-feature bg-brand-primary text-brand-on-primary transition-[translate] duration-150 ease-out',
           pressed && 'translate-y-[length:var(--depth-xl)]',
           !exam && 'group-active:translate-y-[length:var(--depth-xl)]',
         )}

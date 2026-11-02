@@ -4,7 +4,7 @@ import { PracticeChoiceButton, getPracticeChoiceState } from '../../../features/
 import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { ClozeItem, ParagraphBankItem } from '../../../types/lessonTest';
 import { cn } from '../../../utils/cn';
-import { ChineseText } from './ChineseText';
+import { ChineseText, splitClosing } from './ChineseText';
 import { choiceText, type Script } from './ChoiceList';
 
 interface ParagraphBlanksProps {
@@ -39,7 +39,7 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
   const isBank = item.kind === 'paragraph-bank';
   const words = isBank ? item.bank : currentQuestion?.choices ?? [];
   const used = new Set(isBank ? item.questions.map((_, index) => blankAnswer(index)).filter((value) => value !== undefined) : []);
-  // Every word keeps its letter (and number key) while others leave the bank, like the printed bank.
+  // Every word keeps its number key while others leave the bank.
   const shownOrder = isBank ? bankOrder ?? item.bank.map((_, index) => index) : currentQuestion ? orders[currentQuestion.id] ?? [] : [];
   const chips = shownOrder.filter((index) => !used.has(index));
   const layoutId = (index: number) => (reduceMotion || !isBank ? undefined : `${item.id}-word-${index}`);
@@ -58,7 +58,8 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
       <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-5 py-4">
         <p className="text-pretty font-chinese text-xl leading-loose text-ui-ink-strong md:text-2xl">
           {parts.map((part, index) => {
-            if (index % 2 === 0) return <ChineseText key={index} text={part} />;
+            // Punctuation right after a blank stays on the blank's line (a line never starts with 「。」).
+            if (index % 2 === 0) return <ChineseText key={index} text={index > 0 ? splitClosing(part)[1] : part} />;
             const blank = Number(part) - 1;
             const question = item.questions[blank];
             const value = blankAnswer(blank);
@@ -66,28 +67,30 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
             const wrong = checked && isOpen && value !== question.key;
             const word = value !== undefined ? choiceText((isBank ? item.bank : question.choices ?? [])[value], script) : '';
             return (
-              <button
-                key={index}
-                type="button"
-                disabled={!isOpen || checked}
-                aria-label={`Blank ${firstNumber + blank}${word ? `: ${word}` : ''}`}
-                onClick={() => { if (value !== undefined) onAnswer(question.id, undefined); setPicked(blank); }}
-                className={cn(
-                  'mx-1 inline-block min-w-12 border-b-3 px-1 text-center align-baseline leading-tight outline-none focus-ring-inline',
-                  !isOpen && 'border-ui-divider text-ui-muted-strong',
-                  isOpen && !checked && (blank === current ? 'border-brand-primary' : 'border-ui-border'),
-                  isOpen && !checked && 'text-brand-primary-text',
-                  checked && isOpen && (wrong ? 'border-feedback-danger text-feedback-danger-text' : 'border-feedback-success text-feedback-success-text'),
-                )}
-              >
-                {word ? (
-                  <motion.span layoutId={layoutId(value!)} className="inline-block">
-                    {wrong ? <><s className="opacity-60">{word}</s> <span className="text-feedback-success-text">{choiceText((isBank ? item.bank : question.choices ?? [])[question.key], script)}</span></> : word}
-                  </motion.span>
-                ) : (
-                  <span className="font-sans text-sm font-black text-ui-muted-strong">{firstNumber + blank}</span>
-                )}
-              </button>
+              <span key={index} className="whitespace-nowrap">
+                <button
+                  type="button"
+                  disabled={!isOpen || checked}
+                  aria-label={`Blank ${firstNumber + blank}${word ? `: ${word}` : ''}`}
+                  onClick={() => { if (value !== undefined) onAnswer(question.id, undefined); setPicked(blank); }}
+                  className={cn(
+                    'mx-1 inline-block min-w-12 border-b-3 px-1 text-center align-baseline leading-tight outline-none focus-ring-inline',
+                    !isOpen && 'border-ui-divider text-ui-muted-strong',
+                    isOpen && !checked && (blank === current ? 'border-brand-primary' : 'border-ui-border'),
+                    isOpen && !checked && 'text-brand-primary-text',
+                    checked && isOpen && (wrong ? 'border-feedback-danger text-feedback-danger-text' : 'border-feedback-success text-feedback-success-text'),
+                  )}
+                >
+                  {word ? (
+                    <motion.span layoutId={layoutId(value!)} className="inline-block">
+                      {wrong ? <><s className="opacity-60">{word}</s> <span className="text-feedback-success-text">{choiceText((isBank ? item.bank : question.choices ?? [])[question.key], script)}</span></> : word}
+                    </motion.span>
+                  ) : (
+                    <span className="font-sans text-sm font-black text-ui-muted-strong">{firstNumber + blank}</span>
+                  )}
+                </button>
+                {splitClosing(parts[index + 1] ?? '')[0]}
+              </span>
             );
           })}
         </p>
@@ -97,12 +100,10 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
           {chips.map((index) => (
             <motion.div key={index} layout={!reduceMotion} transition={{ type: 'spring', stiffness: 420, damping: 34 }}>
               <PracticeChoiceButton
-                index={shownOrder.indexOf(index)}
-                badge="letter"
-                align="center"
+                compact
                 state={getPracticeChoiceState(false, false, false)}
                 onClick={() => choose(index)}
-                className="[&>span:last-child]:!px-4 [&>span:last-child]:!py-3"
+                className="min-w-16 [&>span:last-child]:!px-5"
               >
                 <motion.span layoutId={layoutId(index)} className="inline-block font-chinese text-2xl font-normal text-ui-ink-strong">
                   {choiceText(words[index], script)}

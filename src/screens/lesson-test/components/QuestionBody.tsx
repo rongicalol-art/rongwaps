@@ -30,11 +30,20 @@ function titleFor(item: LessonTestItem, question: LessonTestQuestion): string {
 
 const text = (value: Pick<TestText, 'traditional' | 'simplified'> | undefined, script: Script) => (value ? value[script] ?? value.traditional : '');
 
-/** A picture the question is about: native ratio, uncropped, on a quiet card. Notices and menus (4:3) stay a little narrower until they have a column of their own. */
-function StimulusPicture({ name, alt, wide }: { name: string; alt: string; wide?: boolean }) {
+/**
+ * The picture a question is about, above its answers: native ratio, uncropped, on a quiet card. Its box is
+ * held before it loads (scenes 16:9, notices and menus 4:3) so the answers never jump; a notice is capped by
+ * the window height so the whole question still fits a 900px-tall window.
+ */
+function StimulusPicture({ name, alt, notice }: { name: string; alt: string; notice?: boolean }) {
   return (
-    <div className={cn('mx-auto w-full rounded-feature border-2 border-ui-divider bg-ui-surface p-2', wide ? 'max-w-xl' : 'max-w-lg lg:max-w-xl')}>
-      <img src={testPicture(name)} alt={alt} draggable={false} className="block h-auto w-full select-none rounded-control" />
+    <div className={cn('mx-auto w-full rounded-feature border-2 border-ui-divider bg-ui-surface p-2', notice && 'max-w-[min(28rem,40vh)]')}>
+      <img
+        src={testPicture(name)}
+        alt={alt}
+        draggable={false}
+        className={cn('block h-auto w-full select-none rounded-control object-contain', notice ? 'aspect-[4/3]' : 'aspect-video')}
+      />
     </div>
   );
 }
@@ -77,10 +86,10 @@ export interface QuestionBodyProps {
   onAnswer: (questionId: string, choice: number | undefined) => void;
 }
 
-/** On wide screens these sit side by side: what to look at or read on the left, the answers on the right. */
-const SPLIT = new Set<LessonTestItem['kind']>(['picture-hear', 'realia', 'scene-gap', 'reading']);
-
-/** One screen of the test: the instruction, the recording, picture or text, and the answers, as one group. */
+/**
+ * One screen of the test, one column at every size like TOCFL's computer test: the instruction, then the
+ * recording, picture or text, then the answers, all one width so their edges line up.
+ */
 export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, firstNumber, onAnswer }: QuestionBodyProps) {
   const question = item.questions.find((entry) => entry.id === questionIds[0]) ?? item.questions[0];
   const order = planned.orders[question.id] ?? (question.choices ?? []).map((_, index) => index);
@@ -130,7 +139,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       stimulus = speaker; answersPart = pictures;
       break;
     case 'picture-hear':
-      stimulus = <StimulusPicture name={item.picture.picture} alt={item.picture.alt} wide />; answersPart = choiceList(true);
+      stimulus = <StimulusPicture name={item.picture.picture} alt={item.picture.alt} />; answersPart = choiceList(true);
       break;
     case 'dialogue':
       stimulus = speaker; answersPart = <>{askedPrompt}{choiceList(!item.printed)}</>;
@@ -144,10 +153,10 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       answersPart = pictures;
       break;
     case 'realia':
-      stimulus = <StimulusPicture name={item.picture} alt={`${item.alt}: ${item.transcript.traditional}`} />; answersPart = <>{printedPrompt}{choiceList(false)}</>;
+      stimulus = <StimulusPicture name={item.picture} alt={`${item.alt}: ${item.transcript.traditional}`} notice />; answersPart = <>{printedPrompt}{choiceList(false)}</>;
       break;
     case 'scene-gap':
-      stimulus = <StimulusPicture name={item.picture} alt={item.alt} wide />;
+      stimulus = <StimulusPicture name={item.picture} alt={item.alt} />;
       answersPart = <GapSentence question={question} order={order} selected={selected} checked={checked} script={script} onSelect={pick} />;
       break;
     case 'paragraph-bank':
@@ -171,14 +180,13 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       break;
   }
 
-  const split = SPLIT.has(item.kind);
+  // Picture answers are compared at a glance, so they get a wider column on big screens.
+  const pictureAnswers = item.kind === 'hear-pick-picture' || item.kind === 'read-pick-picture';
   return (
-    <div className={cn('mx-auto flex w-full max-w-2xl flex-col items-center gap-6', split && 'lg:max-w-6xl')}>
+    <div className={cn('mx-auto flex w-full max-w-xl flex-col items-center gap-6', pictureAnswers && 'md:max-w-3xl')}>
       <h1 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong">{titleFor(item, question)}</h1>
-      <div className={cn('flex w-full flex-col items-center gap-6', split && 'lg:grid lg:grid-cols-2 lg:items-center lg:gap-14')}>
-        {stimulus && <div className="flex w-full flex-col items-center gap-5">{stimulus}</div>}
-        <div className="flex w-full flex-col items-center gap-5">{answersPart}</div>
-      </div>
+      {stimulus && <div className="flex w-full flex-col items-center gap-5">{stimulus}</div>}
+      <div className="flex w-full flex-col items-center gap-5">{answersPart}</div>
     </div>
   );
 }

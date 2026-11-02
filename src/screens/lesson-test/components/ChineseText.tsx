@@ -12,3 +12,11 @@ export function ChineseText({ text }: { text: string }) {
     segment.length > 1 ? <span key={index} className="whitespace-nowrap">{segment}</span> : segment
   ));
 }
+
+const CLOSING = /^[，。、！？；：」』）]+/;
+
+/** Punctuation that can't start a line, split off the front of the text after a blank, so it stays on the blank's line. */
+export function splitClosing(text: string): [closing: string, rest: string] {
+  const closing = CLOSING.exec(text)?.[0] ?? '';
+  return [closing, text.slice(closing.length)];
+}

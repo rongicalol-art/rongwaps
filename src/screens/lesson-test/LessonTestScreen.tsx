@@ -9,7 +9,7 @@ import { lessonItemIndex, type LessonTestScreen as TestScreen } from '../../util
 import { AnswerDetail } from './components/AnswerDetail';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
-import { SectionIntro } from './components/SectionIntro';
+import { SectionIntro, startLabel } from './components/SectionIntro';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
@@ -111,16 +111,9 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
     />
   );
 
-  if (run.stage === 'intro' && run.screen) {
-    return (
-      <>
-        {header}
-        <SectionIntro part={run.screen.part} lessonId={lesson.lessonId} script={script} onStart={() => run.setStage('question')} />
-      </>
-    );
-  }
   if (!screen || !item || !plannedItem) return null;
 
+  const intro = run.stage === 'intro';
   const fixQuestions = item.questions.filter((question) => screen.questionIds.includes(question.id));
   const correct = fixQuestions.every((question) => run.fixAnswers[question.id] === question.key);
   const last = run.screenIndex + 1 >= run.screens.length;
@@ -128,14 +121,16 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
 
   return (
     <TestWords value={lesson.allowWords ?? NO_WORDS}>
+      {/* One header for the part intros and the questions, so the progress bar never rebuilds (and refills) between them. */}
       <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
-        {/* Each screen rises in, centred in the space under the header; the last one leaves at once, so its keys and audio never outlive it. */}
+        {intro ? <SectionIntro key={screenKey} part={screen.part} lessonId={lesson.lessonId} script={script} /> : (
+        /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it. */
         <motion.div
           key={screenKey}
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
-          className={`flex flex-auto flex-col justify-center px-4 pt-2 sm:px-6 md:pt-6 ${barShown ? '' : 'pb-36'}`}
+          className={`flex flex-auto flex-col px-4 pt-[clamp(0.75rem,5vh,3.5rem)] sm:px-6 ${barShown ? '' : 'pb-36'}`}
           style={barShown ? { paddingBottom: 'max(9rem, calc(var(--cover, 0px) + 1.5rem))' } : undefined}
         >
           <QuestionBody
@@ -151,8 +146,11 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             onAnswer={isFix ? run.answerFix : run.answer}
           />
         </motion.div>
+        )}
       </div>
-      {isFix ? (
+      {intro ? (
+        <TestDock key={screenKey} label={startLabel(screen.part)} onPress={() => run.setStage('question')} riseKey={screen.part} />
+      ) : isFix ? (
         <FeedbackBottomBar
           status={run.checked ? (correct ? 'correct' : 'wrong') : 'idle'}
           detail={run.checked ? <AnswerDetail item={item} questions={fixQuestions} script={script} /> : undefined}
