@@ -8,10 +8,7 @@ import {
   createEmptySessionProgress,
   type ReviewOptions,
 } from '../../utils/srs/reviewProgress';
-import type {
-  PracticeHeaderActions,
-  SessionProgress,
-} from '../../types/models';
+import type { SessionProgress } from '../../types/models';
 
 export interface LearningState {
   learningBatches: Record<string, string[]>;
@@ -271,5 +268,3 @@ export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
   deckExclusions: {},
   wordConfusions: {},
 };
-
-export type PracticeHeaderActionsState = PracticeHeaderActions;
