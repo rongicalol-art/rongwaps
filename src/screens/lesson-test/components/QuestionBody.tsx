@@ -6,6 +6,7 @@ import { cn } from '../../../utils/cn';
 import { useTestAudio } from '../hooks/useTestAudio';
 import { listeningSteps } from '../testAudioSequence';
 import { testPicture } from '../testPictures';
+import { ChineseText } from './ChineseText';
 import { ChoiceList, type Script } from './ChoiceList';
 import { GapSentence } from './GapSentence';
 import { ParagraphBlanks } from './ParagraphBlanks';
@@ -29,10 +30,10 @@ function titleFor(item: LessonTestItem, question: LessonTestQuestion): string {
 
 const text = (value: Pick<TestText, 'traditional' | 'simplified'> | undefined, script: Script) => (value ? value[script] ?? value.traditional : '');
 
-/** A picture the question is about: native ratio, uncropped, on a quiet card. */
+/** A picture the question is about: native ratio, uncropped, on a quiet card. Notices and menus (4:3) stay a little narrower until they have a column of their own. */
 function StimulusPicture({ name, alt, wide }: { name: string; alt: string; wide?: boolean }) {
   return (
-    <div className={cn('mx-auto w-full rounded-feature border-2 border-ui-divider bg-ui-surface p-2', wide ? 'max-w-xl' : 'max-w-md')}>
+    <div className={cn('mx-auto w-full rounded-feature border-2 border-ui-divider bg-ui-surface p-2', wide ? 'max-w-xl' : 'max-w-lg lg:max-w-xl')}>
       <img src={testPicture(name)} alt={alt} draggable={false} className="block h-auto w-full select-none rounded-control" />
     </div>
   );
@@ -43,7 +44,7 @@ function ReadingText({ item, script }: { item: Extract<LessonTestItem, { kind: '
   const lines = text(item.text, script).split('\n');
   return (
     <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-5 py-4">
-      {item.title && <p className="mb-2 text-center font-chinese text-xl text-ui-ink-strong">{text(item.title, script)}</p>}
+      {item.title && <p className="mb-2 text-balance text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={text(item.title, script)} /></p>}
       {lines.map((line, index) => (
         <p
           key={index}
@@ -52,7 +53,7 @@ function ReadingText({ item, script }: { item: Extract<LessonTestItem, { kind: '
             item.format === 'message' && index === lines.length - 1 && lines.length > 2 && 'text-right text-ui-muted-strong',
           )}
         >
-          {line}
+          <ChineseText text={line} />
         </p>
       ))}
     </div>
@@ -107,7 +108,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   );
   const pictures = <PictureChoices question={question} order={order} selected={selected} checked={checked} onSelect={pick} />;
   const printedPrompt = question.prompt && (
-    <p className="text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl">{text(question.prompt, script)}</p>
+    <p className="text-balance text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl"><ChineseText text={text(question.prompt, script)} /></p>
   );
   // A dialogue's question appears when the narrator asks it, right after the ding (TOCFL order).
   const askedPrompt = question.prompt && (
@@ -116,9 +117,9 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       initial={false}
       animate={audio.asked || checked ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.96 }}
       transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 24 }}
-      className="text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl"
+      className="text-balance text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl"
     >
-      {text(question.prompt, script)}
+      <ChineseText text={text(question.prompt, script)} />
     </motion.p>
   );
 
@@ -136,9 +137,9 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       break;
     case 'read-pick-picture':
       stimulus = (
-        <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-4 py-6 text-center font-chinese text-2xl leading-normal text-ui-ink-strong md:py-8 md:text-3xl">
-          {text(question.prompt, script)}
-        </div>
+        <p className="w-full text-balance rounded-feature border-2 border-ui-divider bg-ui-surface px-4 py-6 text-center font-chinese text-2xl leading-normal text-ui-ink-strong md:py-8 md:text-3xl">
+          <ChineseText text={text(question.prompt, script)} />
+        </p>
       );
       answersPart = pictures;
       break;
@@ -172,7 +173,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
 
   const split = SPLIT.has(item.kind);
   return (
-    <div className={cn('mx-auto flex w-full max-w-2xl flex-col items-center gap-6', split && 'lg:max-w-5xl')}>
+    <div className={cn('mx-auto flex w-full max-w-2xl flex-col items-center gap-6', split && 'lg:max-w-6xl')}>
       <h1 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong">{titleFor(item, question)}</h1>
       <div className={cn('flex w-full flex-col items-center gap-6', split && 'lg:grid lg:grid-cols-2 lg:items-center lg:gap-14')}>
         {stimulus && <div className="flex w-full flex-col items-center gap-5">{stimulus}</div>}

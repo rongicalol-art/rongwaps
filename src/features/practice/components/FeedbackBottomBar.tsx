@@ -37,8 +37,11 @@ export interface FeedbackBottomBarProps {
   /**
    * When mounted inside an embedded or narrow container (e.g. landing preview frame),
    * keep the stacked result/action card rather than expanding to the wide single-row desktop layout.
+   * `wide`: the single row gets more room, for results with a long explanation (lesson tests).
    */
-  layout?: 'auto' | 'stacked';
+  layout?: 'auto' | 'stacked' | 'wide';
+  /** The bar's box, so a screen can keep its content clear of it (its height changes with the result). */
+  barRef?: React.Ref<HTMLDivElement>;
 }
 
 export function FeedbackBottomBar({ 
@@ -59,6 +62,7 @@ export function FeedbackBottomBar({
   onBreakdown,
   onRetry,
   layout = 'auto',
+  barRef,
 }: FeedbackBottomBarProps) {
   
   const reduceMotion = useReducedMotion();
@@ -151,6 +155,7 @@ export function FeedbackBottomBar({
       <AnimatePresence onExitComplete={() => setDockYielded?.(false)}>
         {isInteractionActive && (
           <motion.div 
+            ref={barRef}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -170,7 +175,8 @@ export function FeedbackBottomBar({
                 // Desktop: floating rounded tactile island card
                 'md:pointer-events-auto md:max-w-xl md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:border-ui-border md:bg-ui-surface md:p-6',
                 // Wide screens: one compact row (result + answer, then the action) instead of a tall card
-                isChecked && layout !== 'stacked' && 'lg:max-w-3xl lg:flex-row lg:items-center lg:gap-6 lg:py-4 lg:pl-6 lg:pr-4',
+                isChecked && layout !== 'stacked' && 'lg:flex-row lg:items-center lg:gap-6 lg:py-4 lg:pl-6 lg:pr-4',
+                isChecked && layout !== 'stacked' && (layout === 'wide' ? 'lg:max-w-5xl' : 'lg:max-w-3xl'),
               )}
             >
               {isChecked && (

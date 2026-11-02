@@ -4,6 +4,7 @@ import { PracticeChoiceButton, getPracticeChoiceState } from '../../../features/
 import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { ClozeItem, ParagraphBankItem } from '../../../types/lessonTest';
 import { cn } from '../../../utils/cn';
+import { ChineseText } from './ChineseText';
 import { choiceText, type Script } from './ChoiceList';
 
 interface ParagraphBlanksProps {
@@ -55,9 +56,9 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
   return (
     <LayoutGroup id={item.id}>
       <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-5 py-4">
-        <p className="font-chinese text-xl leading-loose text-ui-ink-strong md:text-2xl">
+        <p className="text-pretty font-chinese text-xl leading-loose text-ui-ink-strong md:text-2xl">
           {parts.map((part, index) => {
-            if (index % 2 === 0) return <span key={index}>{part}</span>;
+            if (index % 2 === 0) return <ChineseText key={index} text={part} />;
             const blank = Number(part) - 1;
             const question = item.questions[blank];
             const value = blankAnswer(blank);
@@ -81,7 +82,7 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
               >
                 {word ? (
                   <motion.span layoutId={layoutId(value!)} className="inline-block">
-                    {wrong ? <><s className="opacity-60">{word}</s> {choiceText((isBank ? item.bank : question.choices ?? [])[question.key], script)}</> : word}
+                    {wrong ? <><s className="opacity-60">{word}</s> <span className="text-feedback-success-text">{choiceText((isBank ? item.bank : question.choices ?? [])[question.key], script)}</span></> : word}
                   </motion.span>
                 ) : (
                   <span className="font-sans text-sm font-black text-ui-muted-strong">{firstNumber + blank}</span>
@@ -98,6 +99,7 @@ export function ParagraphBlanks({ item, questionIds, answers, checked, script, b
               <PracticeChoiceButton
                 index={shownOrder.indexOf(index)}
                 badge="letter"
+                align="center"
                 state={getPracticeChoiceState(false, false, false)}
                 onClick={() => choose(index)}
                 className="[&>span:last-child]:!px-4 [&>span:last-child]:!py-3"

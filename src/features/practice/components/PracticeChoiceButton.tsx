@@ -19,6 +19,8 @@ interface PracticeChoiceButtonProps extends ButtonHTMLAttributes<HTMLButtonEleme
   badge?: 'number' | 'letter';
   /** Centred content, no badge, tighter padding. */
   compact?: boolean;
+  /** `center` keeps the badge and label together in the middle (word tiles in a row); `start` lines labels up in a list. */
+  align?: 'start' | 'center';
   /** Held down without a tap (the lesson test presses the answer the narrator is reading). */
   pressed?: boolean;
   children: ReactNode;
@@ -57,6 +59,7 @@ export function PracticeChoiceButton({
   index,
   badge = 'number',
   compact = false,
+  align = 'start',
   pressed = false,
   children,
   state = 'idle',
@@ -103,7 +106,7 @@ export function PracticeChoiceButton({
       <span
         className={cn(
           'relative flex w-full select-none items-center rounded-[inherit] outline-none mb-[length:var(--depth-md)]',
-          compact ? 'justify-center px-3 py-4' : 'px-6 py-4',
+          compact ? 'justify-center px-3 py-4' : align === 'center' ? 'justify-center px-4 py-4' : 'px-6 py-4',
           'transition-[transform,background-color,border-color,color] duration-75',
           surfaceClasses[state],
           pressed && isRaised && 'translate-y-[length:var(--depth-md)]',
@@ -114,7 +117,8 @@ export function PracticeChoiceButton({
         {!compact && index !== undefined && (
         <span
           className={cn(
-            'mr-4 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-xs border-2 text-xs font-black',
+            'flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-xs border-2 text-xs font-black',
+            align === 'center' ? 'mr-2.5' : 'mr-4',
             // A picked letter (the TOCFL answer sheet) fills in, so the choice reads at a glance.
             badge === 'letter' && state === 'selected' ? 'border-brand-primary bg-brand-primary text-brand-on-primary' : badgeClasses[state],
           )}
@@ -122,7 +126,7 @@ export function PracticeChoiceButton({
           {badge === 'letter' ? 'ABCDEF'[index] : index + 1}
         </span>
         )}
-        <span className={cn('flex-1 text-[19px] font-bold leading-tight', compact ? 'text-center' : 'text-left')}>
+        <span className={cn('text-[19px] font-bold leading-tight', compact || align === 'center' ? 'text-center' : 'text-left', align === 'center' ? 'flex-none' : 'flex-1')}>
           {children}
         </span>
       </span>
