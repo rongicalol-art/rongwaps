@@ -38,6 +38,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const planned = useMemo(() => new Map(run.plan.items.map((entry) => [entry.itemId, entry])), [run.plan]);
   const numbers = useMemo(() => questionNumbers(run.screens), [run.screens]);
   const total = numbers.length ? numbers[numbers.length - 1] + run.screens[run.screens.length - 1].questionIds.length : 0;
+  const listeningCount = useMemo(() => run.screens.filter((entry) => entry.part === 'listening').reduce((sum, entry) => sum + entry.questionIds.length, 0), [run.screens]);
   const isFix = run.stage === 'fix';
   useReviewTone(isFix);
 
@@ -83,6 +84,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       tone="practice"
       onClose={onClose}
       progress={shownTotal ? (done / shownTotal) * 100 : 0}
+      progressSplit={!isFix && total && listeningCount > 0 && listeningCount < total ? listeningCount / total : undefined}
       currentIndex={shownIndex}
       totalCount={shownTotal}
       rightAction={null}
@@ -93,7 +95,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
     return (
       <>
         {header}
-        <SectionIntro part={run.screen.part} script={script} onStart={() => run.setStage('question')} />
+        <SectionIntro part={run.screen.part} lessonId={lesson.lessonId} script={script} onStart={() => run.setStage('question')} />
       </>
     );
   }
@@ -105,14 +107,14 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
 
   return (
     <>
-      <div ref={scrollerRef} className="absolute inset-0 overflow-y-auto overscroll-contain custom-scrollbar">
+      <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
-        {/* Each screen rises in; the last one leaves at once, so its keys and audio never outlive it. */}
+        {/* Each screen rises in, centred in the space under the header; the last one leaves at once, so its keys and audio never outlive it. */}
         <motion.div
           key={screenKey}
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
-          className={`px-4 pt-2 sm:px-6 md:pt-6 ${isFix && run.checked ? 'pb-80 lg:pb-56' : 'pb-40'}`}
+          className={`flex flex-auto flex-col justify-center px-4 pt-2 sm:px-6 md:pt-6 ${isFix && run.checked ? 'pb-80 lg:pb-56' : 'pb-36'}`}
         >
           <QuestionBody
             item={item}

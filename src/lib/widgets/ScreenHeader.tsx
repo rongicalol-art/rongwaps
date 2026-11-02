@@ -55,6 +55,8 @@ export interface ScreenHeaderProps {
   totalCount?: number;
   isRetry?: boolean;
   cleanupPhase?: { currentIndex: number; totalCount: number } | null;
+  /** Splits the progress rail into two parts at this fraction (0–1), e.g. a test's 聽力 and 閱讀; placed where the fill ends at that progress. */
+  progressSplit?: number;
   /** Drawn over the progress rail (a quiz race's other players). */
   progressOverlay?: React.ReactNode;
   onClose?: () => void;
@@ -91,6 +93,7 @@ export function ScreenHeader({
   isRetry = false,
   cleanupPhase = null,
   progressOverlay,
+  progressSplit,
   onClose, 
   onBack, 
   rightAction,
@@ -232,6 +235,9 @@ export function ScreenHeader({
                     <div aria-hidden className="absolute inset-x-2 top-1 h-1.5 overflow-hidden rounded-full">
                       <motion.div data-practice-progress-highlight className="absolute inset-0 rounded-full bg-white/30" style={{ x: progressOffset }} />
                     </div>
+                  )}
+                  {progressSplit !== undefined && (
+                    <span aria-hidden className="absolute inset-y-0 w-1.5 -translate-x-1/2 bg-ui-practice-canvas" style={{ left: `${visibleProgressScale(progressSplit * 100, progressRailWidth) * 100}%` }} />
                   )}
                 </div>
                 </div>
