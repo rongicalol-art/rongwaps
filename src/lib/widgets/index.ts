@@ -6,19 +6,17 @@ export * from './IconActionButton';
 export * from './KeyChip';
 export * from './SegmentedControl';
 export * from './SettingsDropdownPicker';
+export * from './SettingsPopover';
 export * from './ToggleSwitch';
 
 // Icons, flags, and branded presentation
 export * from './AppIcon';
 export * from './SpeakerIcon';
 export * from './BrandWordmark';
-export * from './CloudPuff';
 export * from './CountryFlag';
 export * from './PlayfulNavIcon';
 export * from './RongWapsCharacterPortrait';
 export * from './UserAvatar';
-export * from './ProfileAvatarButton';
-export * from './VideoBackground';
 
 // Dialogs, drawers, docks, menus, and accessibility boundaries
 export * from './ActivityModalWrapper';
@@ -27,7 +25,6 @@ export * from './ResumeDialog';
 export * from './DetailShell';
 export * from './WorkspaceWindow';
 export * from './Dialog';
-export * from './DisclosureLine';
 export * from './Drawer';
 export * from './DropdownMenu';
 export * from './ErrorBoundary';
@@ -41,8 +38,6 @@ export * from './TopToast';
 export * from './EmptyState';
 
 // Progress, loading, and animation presentation
-export * from './CircularProgress';
-export * from './CustomProgressBar';
 export * from './LoadingScreen';
 export * from './LottiePlayer';
 export * from './Skeleton';
@@ -57,13 +52,12 @@ export * from './StickyWorkspaceHeader';
 export * from './ContextualChineseText';
 export * from './ExpandableSearch';
 export * from './PosBadge';
-export * from './ProgressMetricCard';
 export * from './ReferenceRow';
 export * from './LevelTag';
-export * from './CharacterTile';
 export * from './CharacterGlyph';
+export * from './SearchField';
 export * from './SmartSentence';
+export * from './TranslationLines';
 export * from './AvatarStack';
 export * from './ProfileCover';
 
-export { useSentenceWordHover, useSentenceSegments } from './useSentenceLookup';

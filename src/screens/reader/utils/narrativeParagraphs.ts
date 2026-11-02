@@ -15,6 +15,10 @@ export interface NarrativeParagraphGroup<T extends NarrativeSentenceItem> {
 /** Book 1 essays store one sentence per entry (avg <= ~65 chars); Book 3 stores printed paragraphs (avg >= ~100). */
 const AUTHORED_PARAGRAPH_MIN_AVG_CHARS = 80;
 
+/** One paragraph per run of sentences, its English joined from theirs. */
+const toParagraphs = <T extends NarrativeSentenceItem>(runs: T[][]): NarrativeParagraphGroup<T>[] =>
+  runs.map((run, id) => ({ id, sentences: run, english: run.map((s) => s.english?.trim()).filter(Boolean).join(' ') }));
+
 const DISCOURSE_TRANSITIONS =
   /^(昨天|今天|明天|上個星期|下個星期|這個學期|開始|這次|每年|每天|平常|最近|但是|所以|現在|下午|晚上|節目裡|工廠裡|很多年輕男生|很多外國人|我覺得|今年是我第一次|華人聊天|老師告訴|台灣最有名的|而且)/;
 
@@ -46,53 +50,25 @@ export function groupSentencesIntoParagraphs<T extends NarrativeSentenceItem>(
     ),
   );
   if (distinctSpeakers.length > 1) {
-    const speakerGroups: NarrativeParagraphGroup<T>[] = [];
-    let currentTurn: T[] = [];
-
+    const turns: T[][] = [];
     sentences.forEach((sentence, idx) => {
-      if (idx === 0) {
-        currentTurn.push(sentence);
-        return;
-      }
       const prev = sentences[idx - 1];
-      if (sentence.speaker && prev?.speaker && sentence.speaker.trim() !== prev.speaker.trim()) {
-        speakerGroups.push({
-          id: speakerGroups.length,
-          sentences: currentTurn,
-          english: currentTurn.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-        });
-        currentTurn = [];
-      }
-      currentTurn.push(sentence);
+      if (idx === 0 || (sentence.speaker && prev?.speaker && sentence.speaker.trim() !== prev.speaker.trim())) turns.push([]);
+      turns[turns.length - 1].push(sentence);
     });
-
-    if (currentTurn.length > 0) {
-      speakerGroups.push({
-        id: speakerGroups.length,
-        sentences: currentTurn,
-        english: currentTurn.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-      });
-    }
-
-    return speakerGroups;
+    return toParagraphs(turns);
   }
 
   const totalChars = sentences.reduce((sum, s) => sum + s.text.length, 0);
 
   // Entries that are already whole paragraphs (Book 3 essays, ~100+ characters each) keep the book's own breaks.
   if (sentences.length > 1 && totalChars / sentences.length >= AUTHORED_PARAGRAPH_MIN_AVG_CHARS) {
-    return sentences.map((sentence, id) => ({ id, sentences: [sentence], english: sentence.english?.trim() ?? '' }));
+    return toParagraphs(sentences.map((sentence) => [sentence]));
   }
 
   // Short readings remain 1 natural, comfortable paragraph (e.g. L1-L7)
   if (totalChars < 135 || sentences.length < 4) {
-    return [
-      {
-        id: 0,
-        sentences,
-        english: sentences.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-      },
-    ];
+    return toParagraphs([sentences]);
   }
 
   // Evaluate candidate 3-paragraph splits for longer, multi-part readings
@@ -133,26 +109,7 @@ export function groupSentencesIntoParagraphs<T extends NarrativeSentenceItem>(
 
   if (best3Splits && best3Score >= 20 && totalChars >= 150) {
     const [s1, s2] = best3Splits;
-    const p1 = sentences.slice(0, s1);
-    const p2 = sentences.slice(s1, s2);
-    const p3 = sentences.slice(s2);
-    return [
-      {
-        id: 0,
-        sentences: p1,
-        english: p1.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-      },
-      {
-        id: 1,
-        sentences: p2,
-        english: p2.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-      },
-      {
-        id: 2,
-        sentences: p3,
-        english: p3.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-      },
-    ];
+    return toParagraphs([sentences.slice(0, s1), sentences.slice(s1, s2), sentences.slice(s2)]);
   }
 
   // 2-paragraph split fallback for other longer readings
@@ -172,27 +129,8 @@ export function groupSentencesIntoParagraphs<T extends NarrativeSentenceItem>(
   }
 
   if (splitIndex > 0) {
-    const p1 = sentences.slice(0, splitIndex);
-    const p2 = sentences.slice(splitIndex);
-    return [
-      {
-        id: 0,
-        sentences: p1,
-        english: p1.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-      },
-      {
-        id: 1,
-        sentences: p2,
-        english: p2.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-      },
-    ];
+    return toParagraphs([sentences.slice(0, splitIndex), sentences.slice(splitIndex)]);
   }
 
-  return [
-    {
-      id: 0,
-      sentences,
-      english: sentences.map((s) => s.english?.trim()).filter(Boolean).join(' '),
-    },
-  ];
+  return toParagraphs([sentences]);
 }

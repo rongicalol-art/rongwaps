@@ -5,7 +5,9 @@ import { useAppearance } from '../../hooks/useAppearance';
 import { useCloudSync } from '../../hooks/useCloudSync';
 import { useAuth } from '../../hooks/useAuth';
 import { useResetProgress } from '../../hooks/useResetProgress';
+import { useEffect } from 'react';
 import { useAppStore } from '../../store/useAppStore';
+import { lessonKey } from '../../store/slices/socialSlice';
 import { useActiveBook } from './useActiveBook';
 import { useAppShellActions } from './useAppShellActions';
 import { useAppShellState } from './useAppShellState';
@@ -85,6 +87,16 @@ export function useAppShell() {
   );
 
   const isLessonWindowOpen = useAppStore((state) => state.isLessonWindowOpen);
+
+  // Classmates see "Reading" or "Grammar" while those windows are open (grammar sits on top of the reader).
+  const studyingReading = reader.activeReadingIndex !== null ? reader.readings[reader.activeReadingIndex] : undefined;
+  const studyingPart = grammar.activeGrammarPart;
+  const studyingA = studyingPart ? 'grammar' : studyingReading ? 'reading' : null;
+  const studyingLesson = studyingPart ? lessonKey(studyingPart.bookId, studyingPart.lessonId)
+    : studyingReading ? lessonKey(studyingReading.bookId, studyingReading.lessonId) : null;
+  useEffect(() => {
+    useAppStore.getState().setSocial({ socialStudying: studyingA && studyingLesson !== null ? { a: studyingA, lesson: studyingLesson } : null });
+  }, [studyingA, studyingLesson]);
 
   useFocusModeSidebar({
     isReaderOpen,

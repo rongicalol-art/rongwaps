@@ -3,7 +3,6 @@ import { SAMPLE_BOOKS } from '../../../data/books';
 import { CharNodeItem } from './breakdown/CharNodeItem';
 
 // Re-export these for backward compatibility
-export { useCharBreakdown } from '../../../hooks/useCharBreakdown';
 
 function RootTree({
   char,

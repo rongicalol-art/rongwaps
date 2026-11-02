@@ -26,9 +26,7 @@ Each grammar page inside a part provides:
 - Book, lesson, part, grammar number, printed pages, and audio reference
 - Traditional title, English title, a concrete learner promise, and textbook-based explanation
 - Three pattern-column labels and one or more pattern rows. Labels use the standardized grammar term when the slot has one (`Subject`, `Verb`, `Object`, `Noun`, `Adjective`, `Number`, `Measure word`, `Statement`) and the canonical slot vocabulary (`Time`, `Place`, `Result`, `Condition`, `Tool`, `Receiver`, `Focus`, …) when the role has no standard term; they read as plain 1–3 word titles, stay within 6 visual-width units (≈ 6 CJK glyphs or ~13 Latin characters) so they never wrap in the narrowest mobile column, and keep particle labels (`嗎`, `有 / 沒有`, `一……就……`) where the slot *is* the particle. Full nuance belongs in the page `explanation` or the short `patternColumnDetails` notation (≤ 8 units) that rides in the cell tooltip, never in a compound, abbreviated, or parenthetical header such as "Suggested or permitted action", "Name / ID", or "(no noun)"; `validateInteractiveLessons` fails a label that is too wide, more than three words, or wrapped in parentheses.
-- A `confusion` block of don't-mix-these-up clarifiers (see below)
-- A discovery interaction when comparison, repair, or meaning choice makes the rule easier to notice
-- Segmented examples with pinyin, English translations, and dictionary meanings (a reference page such as the number system may ship no example cards when its full pattern table plus number lab already carry every reading — the printed book prints no numbered examples there)
+- Segmented examples with pinyin, English translations, and dictionary meanings
 - Data-driven exercise title, preview, instruction, optional note, and questions
 - Optional profile cards or book exercise cues
 
@@ -46,7 +44,7 @@ English instructions may explain the action ("Complete the dialogue", "Match eac
 
 `spot-fix` shows the original chunks first. Learners find the word, then choose a replacement or "Take it out" (always offered, so its presence is not a clue). The corrected sentence appears only in feedback. A wrong word pick retries identification; a wrong repair keeps the correctly identified word selected.
 
-`explanationEnglish` is the book’s verbatim English explanation, shown as **Full** (Book 1 copies it from the printed page; L16 and pages whose book prints only a table have none, so Full shows `explanation`). Full and 中文 keep the book's words but are laid out by `src/utils/grammar/explanationLayout.ts`: numbered points ((1), ①) get a number badge, lines under a point indent with it, and sentences after “For example” / 例如 or marked * (wrong) move onto their own lines; text that does not parse stays as written. Book 1's printed text covers every part, so in Full its subsections' notes are hidden. `summary` (from `content/grammar-summaries/book-N.json`, keyed by page id, merged by `npm run content:export`) is 1–4 short plain-English sentences that say the same thing, shown as **Summary**; it covers the subsections too, so their explanations are hidden in that view (headings, tables and examples stay). The lesson menu's Explanation switch offers Summary · Full · 中文 (each only when the page has it); Summary opens first and the choice holds across pages in the window. Every page needs a summary: `tests/content/grammarSummaries.test.ts` checks length (≤ 22 words a line) and that any Chinese in it appears on the page. Summaries follow the book's Chinese 說明 where its English translation differs, and never add a rule the page does not give. Mark book ★ examples with `fromDialogue: true` to show “★ From the dialogue”.
+`explanationEnglish` is the book’s verbatim English explanation, shown as **Full** (Book 1 copies it from the printed page; L16 and pages whose book prints only a table have none, so Full shows `explanation`). Full and 中文 keep the book's words but are laid out by `src/utils/grammar/explanationLayout.ts`: numbered points ((1), ①) get a number badge, lines under a point indent with it, and sentences after “For example” / 例如 or marked * (wrong) move onto their own lines; text that does not parse stays as written. Book 1's printed text covers every part, so in Full its subsections' notes are hidden. `summary` (from `content/grammar-summaries/book-N.json`, keyed by page id, merged by `npm run content:export`) is 1–4 short plain-English sentences that say the same thing, shown as **Summary**; it covers the subsections too, so their explanations are hidden in that view (headings, tables and examples stay). The lesson menu's Explanation switch offers Summary · Full · 中文 (each only when the page has it); Summary opens first and the choice holds across pages in the window. Every page needs a summary: `tests/content/grammarSummaries.test.ts` checks length (≤ 22 words a line) and that any Chinese in it appears on the page (or in the frozen list of reviewed quotes kept from the old mix-up blocks, `tests/content/grammarSummaryQuotes.ts`). Summaries follow the book's Chinese 說明 where its English translation differs, and never add a rule the page does not give. Mark book ★ examples with `fromDialogue: true` to show “★ From the dialogue”.
 
 `order-build` may include `situation` (Chinese, optional simplified/pinyin, and required English); its bubble appears above the free line with a “Show in English” toggle. A 練習2 situation pairs a `reply-pick` with an `order-build` carrying the same situation and prompt “Now say it yourself.”
 
@@ -146,19 +144,7 @@ Examples render flat on the study canvas — one row per sentence with a leading
 
 ### Optional interactive teaching
 
-Optional labs, contrasts, and sentence spines are implemented behind a single quiet `Explore this pattern` disclosure for a later beta phase. They are currently not mounted in the learner-facing grammar flow; preserve the authored content and disclosure component so it can be restored without redesign. Optional interactions never gate completion.
-
-### Don't-mix-these-up clarifiers
-
-Every grammar page carries a `confusion` block shown the same way the reader shows its Study Guide, through the shared `StudySidePanel` / `StudyDrawer` widgets: a permanent right-hand panel on desktop (`lg+`) inside the lesson's split layout, and a header lightbulb button on phones that opens the drawer over the study page. The lesson's hover zone and Continue footer live inside the content column, so no bottom fade ever crosses the panel. The block pre-empts the exact mix-ups beginners hit without cluttering the study page; the 2-4 items stay one tap (or zero taps on desktop) away. The block is required for every Book 1 grammar page and validated by `validateInteractiveLessons`.
-
-Authoring rules:
-
-- 2–4 items per page (aim for 3), each targeting a REAL trap for that specific point — never generic filler, never the same trap twice across pages.
-- Pick traps from: forms learners blend inside the point (就 vs 才; 了 placement; 二 vs 兩), a neighboring point in the same lesson, carry-over behavior from an earlier lesson, and English-transfer mistakes (time-word position, 是 never linking to adjectives, measure words after numbers).
-- `title` is exactly `Don't mix these up` on every page.
-- Each item: `question` phrased as the learner would ask it; `answer` of at most two short plain-English sentences following the Plain English rules below; `wrongTraditional` showing the natural mistaken sentence; `right` as a fully tokenized `GrammarLessonText` (tappable, pinyin with correct sandhi, natural English). Reuse vocabulary already on the page where possible.
-- Keep the wrong/right pair minimal: one clause each is ideal.
+Contrasts and sentence spines stay authored in the content but are not shown in the learner-facing grammar flow (a sentence spine still feeds the page's tap-to-define words). Optional interactions never gate completion.
 
 ### Book reference overlay
 
@@ -178,7 +164,7 @@ The compact blank-tile exercise can also teach word order by rendering consecuti
 
 Use the optional `sentenceSpine` recipe when a grammar point depends on a stable sequence of semantic roles, such as subject–verb–object order. The grammar lesson `SentenceSpine` component should introduce the meaning slots before the formal pattern table, preserve the same column proportions at every state, and use a switch only when changing one element materially clarifies the rule. For negation, keep the negation visually attached to the verb and preserve it as a separate tile in structure-building Practice so the learner must place it deliberately.
 
-Use `patternColumnDetails` for compact notation such as `S`, `(Neg)V`, and `O` (≤ 8 units, e.g. `which word`, `right after`); keep the primary table labels as standardized 1–3 word grammar titles. The cell tooltip carries `label · detail`, and the column-share scorer reads the label's full width, so long headers are both unnecessary and penalised. Optional `teachingNote` text on examples should identify one useful discovery rather than restating the full translation. A `completionRecap` may contrast one correct sentence with a small number of deliberately authored structural mistakes after the exercise is complete.
+Use `patternColumnDetails` for compact notation such as `S`, `(Neg)V`, and `O` (≤ 8 units, e.g. `which word`, `right after`); keep the primary table labels as standardized 1–3 word grammar titles. The cell tooltip carries `label · detail`, and the column-share scorer reads the label's full width, so long headers are both unnecessary and penalised. Optional `teachingNote` text on examples should identify one useful discovery rather than restating the full translation.
 
 ### Guided timeline readings
 
@@ -224,7 +210,7 @@ Do not add page-specific headings, continuation notes, pattern labels, or comple
 
 ## Plain English for learners
 
-All learner-facing English (titles, promises, explanations, glossary meanings, lab notes, feedback, hints, and completion copy) must work for beginners, including learners whose first language is not English.
+All learner-facing English (titles, promises, explanations, glossary meanings, feedback, hints, and completion copy) must work for beginners, including learners whose first language is not English.
 
 - One idea per sentence. Split long sentences.
 - Address the learner as "you".

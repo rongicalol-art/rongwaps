@@ -17,7 +17,6 @@ test('Lesson 5 has five ordered grammar points and all 16 source prompts', () =>
   assert.deepEqual(lessonFivePages.map((page) => page.grammarNumber), [1, 2, 3, 4, 5]);
   assert.equal(lessonFivePages.reduce((count, page) => count + page.questions.length, 0), 16);
   assert.ok(lessonFivePages.every((page) => page.examples.length >= 3));
-  assert.ok(lessonFivePages.every((page) => page.discoveryLab));
 });
 
 test('Lesson 5 progresses from location to action, direction, and existence', () => {

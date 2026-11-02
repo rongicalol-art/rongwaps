@@ -24,3 +24,38 @@ export const EASE_OUT = 'cubic-bezier(.16,1,.3,1)';
 /** Tile word size: the preset size, shrunk so a long word stays inside the tile. */
 export const fitFont = (front: string, tileW: number, base: number) =>
   Math.max(14, Math.min(base, (tileW - 20) / Array.from(front).length));
+
+/**
+ * Lays tile clones out as a centred sheet in `slot`: tiles shrink so the sheet fits the free height (minus
+ * `reserveH`) and width, words shrink to fit their tile. Returns the tile size and each tile's word size.
+ */
+export function layoutSheet({ slot, text, rootRect, tiles, fronts, cols, gap, tw: baseTw, font: baseFont, reserveH = 0 }: {
+  slot: HTMLElement; text: HTMLElement; rootRect: DOMRect; tiles: HTMLElement[]; fronts: string[];
+  cols: number; gap: number; tw: number; font: number; reserveH?: number;
+}) {
+  const count = fronts.length;
+  const rows = Math.ceil(count / cols);
+  const fitH = (slot.parentElement?.clientHeight ?? Infinity) - text.offsetHeight - 48 - reserveH;
+  const fitW = slot.clientWidth - 32;
+  const tw = Math.max(48, Math.min(baseTw, (fitW - (cols - 1) * gap) / cols, (fitH - (rows - 1) * gap) / rows / TILE_RATIO));
+  const th = tw * TILE_RATIO;
+  slot.style.height = `${rows * th + (rows - 1) * gap}px`;
+  const slotRect = slot.getBoundingClientRect();
+  const slotLeft = slotRect.left + slotRect.width / 2 - rootRect.left;
+  const slotTop = slotRect.top - rootRect.top;
+  const fontAt = (i: number) => fitFont(fronts[i], tw, (baseFont * tw) / baseTw);
+  tiles.forEach((el, i) => {
+    const row = Math.floor(i / cols);
+    const inRow = Math.min(cols, count - row * cols);
+    const rowW = inRow * tw + (inRow - 1) * gap;
+    const word = el.querySelector<HTMLElement>('[data-clone-word]');
+    if (word) word.style.fontSize = `${fontAt(i)}px`;
+    Object.assign(el.style, {
+      left: `${slotLeft - rowW / 2 + (i % cols) * (tw + gap)}px`,
+      top: `${slotTop + row * (th + gap)}px`,
+      width: `${tw}px`,
+      height: `${th}px`,
+    });
+  });
+  return { tw, th, fontAt };
+}

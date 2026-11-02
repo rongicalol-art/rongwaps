@@ -80,11 +80,7 @@ export function validateInteractiveLessons(
       if (!page.audioReference.trim()) {
         issues.push({ location: pageLocation, message: 'Audio reference is required.' });
       }
-      // The number-system reference page teaches with a complete place-value
-      // table plus the number lab; the printed book prints no numbered
-      // examples there, so example cards would only duplicate the table.
-      const teachesWithReferenceTable = Boolean(page.numberLab);
-      if ((page.examples.length === 0 && !teachesWithReferenceTable) || (part.bookId === 1 && page.questions.length === 0)) {
+      if (page.examples.length === 0 || (part.bookId === 1 && page.questions.length === 0)) {
         issues.push({ location: pageLocation, message: 'Examples and practice questions are required.' });
       }
       if (page.exerciseType === 'unscramble' && !page.unscrambleExercise) {
@@ -119,6 +115,13 @@ export function validateInteractiveLessons(
         });
       });
 
+      // A section that points at a missing example shows its heading over nothing.
+      const exampleIds = new Set(page.examples.map((example) => example.id));
+      page.subsections?.forEach((section) => {
+        const missing = (section.exampleIds ?? []).filter((id) => !exampleIds.has(id));
+        if (missing.length) issues.push({ location: `${pageLocation} section ${section.id}`, message: `Unknown example IDs: ${missing.join(', ')}.` });
+      });
+
       if (page.unscrambleExercise) {
         const exercise = page.unscrambleExercise;
         registerId(exercise.id, `${pageLocation} unscramble exercise`, pageIds, issues);
@@ -131,35 +134,6 @@ export function validateInteractiveLessons(
         ) {
           issues.push({ location: `${pageLocation} unscramble exercise`, message: 'Correct order must use every tile exactly once.' });
         }
-      }
-
-      if (page.confusion && (!page.confusion.title.trim() || page.confusion.items.length === 0)) {
-        issues.push({ location: `${pageLocation} confusion`, message: 'A confusion block needs a title and at least one item.' });
-      }
-      if (page.confusion) {
-        if (page.confusion.items.length > 4 || page.confusion.items.length < 2) {
-          issues.push({ location: `${pageLocation} confusion`, message: 'A confusion block needs two to four items.' });
-        }
-        page.confusion.items.forEach((item) => {
-          registerId(item.id, `${pageLocation} confusion item`, pageIds, issues);
-          if (!item.question.trim() || !item.answer.trim()) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'Question and answer are required.' });
-          }
-          if (!item.wrongTraditional.trim()) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The wrong form is required.' });
-          }
-          // Same optional-field rule as examples above: report, don't throw.
-          const { pinyin = '', english = '', words = [] } = item.right;
-          if (!item.right.traditional.trim() || !pinyin.trim() || !english.trim()) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The right form needs traditional text, pinyin, and English.' });
-          }
-          if (words.length === 0) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'Dictionary word tokens are required for the right form.' });
-          }
-          words.forEach((word) => {
-            registerId(word.id, `${pageLocation} confusion word`, pageIds, issues);
-          });
-        });
       }
 
       page.questions.forEach((question) => {

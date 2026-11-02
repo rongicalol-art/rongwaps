@@ -6,10 +6,12 @@ import type { Flashcard } from '../data/flashcards';
 export interface ComponentVocabRelation {
   exactVocab: Flashcard | null;
   usedInVocabs: Flashcard[];
-  hasRelation: boolean;
-  firstBookId: number | null;
+  /** The lesson that teaches the character: its own card, else the first word containing it. */
+  firstLesson: Flashcard | null;
   loading: boolean;
 }
+
+const NO_RELATION: ComponentVocabRelation = { exactVocab: null, usedInVocabs: [], firstLesson: null, loading: false };
 
 function calculateRelation(vocab: Flashcard[], char: string) {
   // 1. Find if the character is an exact vocabulary word
@@ -28,18 +30,6 @@ function calculateRelation(vocab: Flashcard[], char: string) {
     }
   }
 
-  // Determine which book introduced this first
-  let minBookId: number | null = null;
-  if (exact) {
-    minBookId = exact.bookId > 0 ? exact.bookId : null;
-  }
-  
-  uniqueContaining.forEach(card => {
-    if (card.bookId > 0 && (minBookId === null || card.bookId < minBookId)) {
-      minBookId = card.bookId;
-    }
-  });
-
   // Sort containing vocabs by book index and lesson index
   uniqueContaining.sort((a, b) => {
     if (a.bookId !== b.bookId) return a.bookId - b.bookId;
@@ -49,8 +39,7 @@ function calculateRelation(vocab: Flashcard[], char: string) {
   return {
     exactVocab: exact,
     usedInVocabs: uniqueContaining,
-    hasRelation: exact !== null || uniqueContaining.length > 0,
-    firstBookId: minBookId,
+    firstLesson: exact ?? uniqueContaining[0] ?? null,
     loading: false,
   };
 }
@@ -58,24 +47,12 @@ function calculateRelation(vocab: Flashcard[], char: string) {
 export function useComponentVocabRelation(char: string): ComponentVocabRelation {
   const [relation, setRelation] = useState<ComponentVocabRelation>(() => {
     const isInvalid = !char || char === '？' || char === '?';
-    return {
-      exactVocab: null,
-      usedInVocabs: [],
-      hasRelation: false,
-      firstBookId: null,
-      loading: !isInvalid,
-    };
+    return { ...NO_RELATION, loading: !isInvalid };
   });
 
   useEffect(() => {
     if (!char || char === '？' || char === '?') {
-      setRelation({
-        exactVocab: null,
-        usedInVocabs: [],
-        hasRelation: false,
-        firstBookId: null,
-        loading: false,
-      });
+      setRelation(NO_RELATION);
       return;
     }
 
@@ -89,15 +66,7 @@ export function useComponentVocabRelation(char: string): ComponentVocabRelation 
       })
       .catch((err) => {
         debugLogger.error('Supabase', 'Error in useComponentVocabRelation:', err);
-        if (active) {
-          setRelation({
-            exactVocab: null,
-            usedInVocabs: [],
-            hasRelation: false,
-            firstBookId: null,
-            loading: false,
-          });
-        }
+        if (active) setRelation(NO_RELATION);
       });
 
     return () => {

@@ -6,16 +6,29 @@ type Attachment = { userId: string; activeAt: number; tokens: number; updatedAt:
 const STALE_MS = 90_000;
 const LISTING_RETRY_MS = 5000;
 const LISTING_RETENTION_MS = 35 * 60_000; // The Lobby discards older listings even during a prolonged outage.
+/** Answer counts are written at most this often (a timer, not an alarm); everything else is written at once. */
+const PROGRESS_SAVE_MS = 10_000;
 export const newSeed = () => crypto.randomUUID().slice(0, 8);
 
-/** SQLite owns room rules and reconnect deadlines; socket attachments survive hibernation. */
+/**
+ * SQLite owns room rules and reconnect deadlines; socket attachments survive hibernation. The room is also held in
+ * memory: a progress-only answer is broadcast at once but written at most every 10 s, which divides storage writes
+ * per race several-fold. If the object is evicted in between, each player's next answer restores their count
+ * (progress is cumulative and order-independent), so nothing beyond those seconds of counts is ever at risk.
+ */
 export class GameRoom extends DurableObject<Env> {
+  private roomJson: string | null = null;
+  private savedAt = 0;
+  private pendingSave: ReturnType<typeof setTimeout> | null = null;
+
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     this.initialize();
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair('ping', 'pong'));
   }
   private initialize() {
+    this.roomJson = null;
+    if (this.pendingSave) { clearTimeout(this.pendingSave); this.pendingSave = null; }
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS state (id INTEGER PRIMARY KEY, data TEXT NOT NULL)');
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS room_chat (id INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT NOT NULL, ts INTEGER NOT NULL)');
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS mention_outbox (id INTEGER PRIMARY KEY AUTOINCREMENT, uid TEXT NOT NULL, data TEXT NOT NULL, ts INTEGER NOT NULL)');
@@ -25,13 +38,32 @@ export class GameRoom extends DurableObject<Env> {
     if (!this.ctx.storage.sql.exec<{ name: string }>('PRAGMA table_info(tickets)').toArray().some(column => column.name === 'auth_until')) this.ctx.storage.sql.exec('ALTER TABLE tickets ADD COLUMN auth_until INTEGER NOT NULL DEFAULT 0');
   }
 
+  /** A fresh copy each call: callers mutate it and compare it with the stored room. */
   private read(): RaceRoomState | null {
+    if (this.roomJson) return JSON.parse(this.roomJson) as RaceRoomState;
     const row = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM state WHERE id=1').toArray()[0];
     if (!row) return null;
     const room = JSON.parse(row.data) as Partial<RaceRoomState>;
     // The previous Worker used this binding for a different game; do not reinterpret those rooms.
-    return room.selection?.lessons && Array.isArray(room.selection.types) && Array.isArray(room.players)
-      && Number.isSafeInteger(room.round) && ['lobby', 'preparing', 'race', 'review', 'results'].includes(room.phase ?? '') ? room as RaceRoomState : null;
+    const valid = room.selection?.lessons && Array.isArray(room.selection.types) && Array.isArray(room.players)
+      && Number.isSafeInteger(room.round) && ['lobby', 'preparing', 'race', 'review', 'results'].includes(room.phase ?? '');
+    if (!valid) return null;
+    this.roomJson = row.data;
+    return room as RaceRoomState;
+  }
+
+  /** Keeps the room in memory; writes it now, or (progress only) within 10 s of the last write. */
+  private saveRoom(room: RaceRoomState, now = true) {
+    this.roomJson = JSON.stringify(room);
+    const wait = this.savedAt + PROGRESS_SAVE_MS - Date.now();
+    if (now || wait <= 0) { this.persistRoom(); return; }
+    this.pendingSave ??= setTimeout(() => { this.pendingSave = null; this.persistRoom(); }, wait);
+  }
+  private persistRoom() {
+    if (this.pendingSave) { clearTimeout(this.pendingSave); this.pendingSave = null; }
+    if (!this.roomJson) return;
+    this.ctx.storage.sql.exec('INSERT OR REPLACE INTO state VALUES (1,?)', this.roomJson);
+    this.savedAt = Date.now();
   }
 
   private record<T>(id: number): T | null {
@@ -78,7 +110,7 @@ export class GameRoom extends DurableObject<Env> {
     if (existing) return existing.players.some(player => player.id === userId && !player.left);
     const player = enterRace(room, userId, name, color, Date.now(), image);
     player.disconnectedAt = Date.now();
-    this.write(1, room);
+    this.saveRoom(room);
     await this.ctx.storage.setAlarm(room.expiresAt);
     return true;
   }
@@ -155,13 +187,16 @@ export class GameRoom extends DurableObject<Env> {
     }
   }
 
-  private commit(room: RaceRoomState, listing = true) {
+  /** `listing: false` marks a progress-only change: no listing to publish, and its write may wait (saveRoom). */
+  private commit(room: RaceRoomState, listing = true, persist = listing) {
     const previous = listing ? this.read() : null;
     const pendingListing = listing && this.record<number>(5) !== null;
     const announce = room.open && !room.announced && room.players.length > 0;
     if (announce) room.announced = true;
-    room.revision = (room.revision ?? 0) + 1;
-    this.write(1, room);
+    // Revisions count written states: answer counts held for a later write share the stored revision, so after an
+    // eviction clients (which ignore lower revisions) never see the room fall behind.
+    if (persist) room.revision = (room.revision ?? 0) + 1;
+    this.saveRoom(room, persist);
     this.broadcast(room);
     // Never-public rooms need no Lobby entry; previously public rooms must still publish closure.
     if (listing && (room.announced || previous?.open || pendingListing)
@@ -315,6 +350,7 @@ export class GameRoom extends DurableObject<Env> {
       if (action.type === 'leave') { await this.exit(att.userId); return; }
       const before = JSON.stringify(room);
       const phase = room.phase;
+      const finished = room.players.filter(player => player.finishedAt !== null).length;
       this.sweep(room, now);
       applyRaceAction(room, att.userId, action, now, newSeed);
       if (action.type === 'remove') {
@@ -327,7 +363,9 @@ export class GameRoom extends DurableObject<Env> {
         for (const player of room.players) if (!player.left) this.ctx.waitUntil(this.env.ROOMS.getByName(`limit:${player.id}`).renewRoom(room.code, room.expiresAt));
       }
       if (JSON.stringify(room) !== before) {
-        this.commit(room, action.type !== 'progress' || phase !== room.phase);
+        const listing = action.type !== 'progress' || phase !== room.phase;
+        // A finish (place awarded) is written at once; plain answer counts may wait.
+        this.commit(room, listing, listing || room.players.filter(player => player.finishedAt !== null).length !== finished);
         await this.schedule(room);
       }
     } catch (error) {

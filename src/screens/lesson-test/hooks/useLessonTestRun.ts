@@ -140,5 +140,3 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
     continueFix,
   };
 }
-
-export type LessonTestRun = ReturnType<typeof useLessonTestRun>;

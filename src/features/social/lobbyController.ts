@@ -1,6 +1,6 @@
 import { connectLobby, type Identity } from '../../services/socialService';
 import { useAppStore } from '../../store/useAppStore';
-import type { Activity, LobbyClientMessage, LobbyServerMessage, MentionNotice } from '../../../shared/lobby';
+import { ROOM_LIST_CAP, type Activity, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
 /**
  * The single Lobby connection. Presence/subscription frames are deduped here and re-sent after a reconnect,
@@ -10,7 +10,7 @@ let socket: ReturnType<typeof connectLobby> | null = null;
 let identityKey = '';
 let generation = 0;
 let here: Extract<LobbyClientMessage, { t: 'here' }> = { t: 'here', l: null, a: null, show: true };
-let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null };
+let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 2 };
 const CHAT_CAP = 50;
 const pendingReads = new Set<string>();
 let readOwner: string | null = null;
@@ -47,8 +47,10 @@ function receive(message: LobbyServerMessage) {
     case 'online': set({ socialOnline: message.v }); break;
     case 'rooms': {
       const rooms = new Map(message.v.map(room => [room.code, room]));
+      // A full list may leave out older open rooms: only a shorter one proves a missing room closed.
+      const complete = message.v.length < ROOM_LIST_CAP;
       set({ socialRooms: message.v, ...(store.socialChat ? { socialChat: { ...store.socialChat, messages: store.socialChat.messages.map(line => line.r
-        ? { ...line, r: rooms.get(line.r.code) ?? { ...line.r, joinable: false } } : line) } } : {}) });
+        ? { ...line, r: rooms.get(line.r.code) ?? (complete ? { ...line.r, joinable: false } : line.r) } : line) } } : {}) });
       break;
     }
     case 'history': if (message.l === sub.chat) set({ socialChat: { lesson: message.l, messages: message.v } }); break;
@@ -164,6 +166,8 @@ export function stopLobby() {
 
 export const lobby = {
   here(l: number | null, a: Activity | null, show: boolean, i?: string) {
+    // The store's copy resets on account switches; keep it equal to what this device reports.
+    if (useAppStore.getState().socialHere !== (show ? l : null)) useAppStore.getState().setSocial({ socialHere: show ? l : null });
     if (here.l === l && here.a === a && here.show === show && here.i === i) return;
     if (here.l !== l) useAppStore.getState().setSocial({ socialPeople: [] });
     here = { t: 'here', l, a, show, i };
@@ -172,9 +176,11 @@ export const lobby = {
   subscribe(online: boolean, chat: number | null) {
     if (sub.online === online && sub.chat === chat) return;
     if (sub.chat !== chat) useAppStore.getState().setSocial({ socialChat: null, socialUnread: false });
-    sub = { t: 'sub', online, chat };
+    sub = { t: 'sub', online, chat, v: 2 };
     send(sub);
   },
+  /** A fresh Online snapshot; opening the panel already brings one. */
+  roster: () => send({ t: 'roster' }),
   say: (l: number, text: string, mentions?: string[]) => send({ t: 'say', l, text, mentions }),
   cheer: (to: string[], p: number) => { if (to.length) send({ t: 'cheer', to, p }); },
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),

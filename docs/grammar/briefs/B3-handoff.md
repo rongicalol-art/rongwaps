@@ -26,7 +26,7 @@ Every Book 3 grammar point in Lessons 6–16 matches the printed book: nothing m
 - `focusTerms` cover every printed form of the pattern.
 - **Tables:** each row is the core clause of an example; invent nothing. Each pattern part gets its own column. Cells are ≤6 characters with no punctuation. Headers are plain words of ≤6 units.
 - Keep the Lesson 5 page shape. Every grammar page has:
-  - `bookPage` and `confusion`;
+  - `bookPage`;
   - `questions`, at least one item (reuse the old file's question for that point);
   - `text.words` tokens on every example.
 - Keep the existing ids, `dialogue` and audio fields. A G-number's page id may be registered in `src/data/grammarUsageRules.ts`; keep it.

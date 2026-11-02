@@ -1,6 +1,6 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { useEffect, useState } from 'react';
-import { ConfirmationDialog, DisclosureLine, Drawer, SettingsDropdownPicker } from '../../lib/widgets';
+import { AppIcon, ConfirmationDialog, Drawer, SettingsDropdownPicker } from '../../lib/widgets';
 import { isIosDevice, isStandaloneDisplay } from '../../utils/browser/pwaInstall';
 import { useAppStore } from '../../store/useAppStore';
 import {
@@ -117,11 +117,20 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
 
               {!isStandalone && (
                 <SettingsPageSection title="App">
-                  <DisclosureLine title="Add to Home Screen" description="Full screen, no browser bar" className="border-y-0 px-2">
-                    <p className="py-3 text-sm font-bold text-ui-ink">
+                  <details className="group px-2">
+                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-sm py-4 transition-colors hover:text-brand-primary focus-ring [&::-webkit-details-marker]:hidden">
+                      <span className="min-w-0">
+                        <span className="block text-sm font-black text-ui-ink-strong">Add to Home Screen</span>
+                        <span className="mt-0.5 block text-xs font-bold text-ui-muted-strong">Full screen, no browser bar</span>
+                      </span>
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ui-hover text-ui-muted-strong transition-transform group-open:rotate-180">
+                        <AppIcon name="expand" size={17} />
+                      </span>
+                    </summary>
+                    <p className="border-t-2 border-ui-divider py-3 text-sm font-bold text-ui-ink">
                       {isIos ? 'Tap Share in Safari, then choose Add to Home Screen.' : 'Open your browser menu and choose Install app.'}
                     </p>
-                  </DisclosureLine>
+                  </details>
                 </SettingsPageSection>
               )}
 

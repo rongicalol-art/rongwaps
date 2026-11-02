@@ -50,6 +50,8 @@ jobs:
       - run: npm run games:check
       - run: npx --no-install wrangler deploy --dry-run --config games/wrangler.staging.jsonc
       - run: npm run games:test
+      - name: Study together load budgets (500 synthetic learners, local Worker)
+        run: npm run games:load
       - run: npm test
       - run: npm run content:validate
       - run: npm run jev:lint

@@ -64,9 +64,14 @@ function emit() {
     if (entry.f.length < 3) entry.f.push(person);
   }
   deliver({ t: 'counts', v: counts, n: everyone.length, f: everyone.slice(0, 4) });
-  deliver({ t: 'people', l: me.l, v: me.l === null ? [] : everyone.filter((person) => person.l === me.l) });
-  if (sub.online) deliver({ t: 'online', v: everyone.slice(0, 100) });
-  deliver({ t: 'rooms', v: rooms });
+  deliver({ t: 'people', l: me.l, v: me.l === null ? [] : everyone.filter((person) => person.l === me.l).slice(0, 30) });
+  if (sub.online) deliver({ t: 'rooms', v: rooms });
+}
+
+/** Like the Lobby: the Online list is a capped snapshot, people in my lesson first. */
+function roster() {
+  const everyone = me.show ? [...users, meAsPerson()] : users;
+  deliver({ t: 'online', v: [...everyone].sort((a, b) => Number(b.l === me.l) - Number(a.l === me.l)).slice(0, 100) });
 }
 
 function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary) {
@@ -138,11 +143,13 @@ function handle(message: LobbyClientMessage) {
   if (message.t === 'here') { me = { l: message.l, a: message.a, show: message.show }; emit(); return; }
   if (message.t === 'sub') {
     const changed = message.chat !== sub.chat;
+    const opened = message.online && !sub.online;
     sub = { online: message.online, chat: message.chat };
     if (changed && sub.chat !== null) { seedHistory(sub.chat); deliver({ t: 'history', l: sub.chat, v: chats.get(sub.chat) ?? [] }); }
-    if (sub.online) emit();
+    if (opened) roster();
     return;
   }
+  if (message.t === 'roster') { roster(); return; }
   if (message.t === 'say') {
     post(meAsPerson(), message.l, message.text);
     later(() => post(someoneIn(message.l), message.l, pick(REPLIES)), between(1500, 3500));

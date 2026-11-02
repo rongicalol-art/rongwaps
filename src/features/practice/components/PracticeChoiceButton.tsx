@@ -19,6 +19,8 @@ interface PracticeChoiceButtonProps extends ButtonHTMLAttributes<HTMLButtonEleme
   badge?: 'number' | 'letter';
   /** Centred content, no badge, tighter padding. */
   compact?: boolean;
+  /** Held down without a tap (the lesson test presses the answer the narrator is reading). */
+  pressed?: boolean;
   children: ReactNode;
   state?: PracticeChoiceState;
   idleClassName?: string;
@@ -55,6 +57,7 @@ export function PracticeChoiceButton({
   index,
   badge = 'number',
   compact = false,
+  pressed = false,
   children,
   state = 'idle',
   idleClassName,
@@ -103,6 +106,7 @@ export function PracticeChoiceButton({
           compact ? 'justify-center px-3 py-4' : 'px-6 py-4',
           'transition-[transform,background-color,border-color,color] duration-75',
           surfaceClasses[state],
+          pressed && isRaised && 'translate-y-[length:var(--depth-md)]',
           state === 'idle' && idleClassName,
           state === 'selected' && selectedClassName,
         )}
@@ -111,7 +115,8 @@ export function PracticeChoiceButton({
         <span
           className={cn(
             'mr-4 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-xs border-2 text-xs font-black',
-            badgeClasses[state],
+            // A picked letter (the TOCFL answer sheet) fills in, so the choice reads at a glance.
+            badge === 'letter' && state === 'selected' ? 'border-brand-primary bg-brand-primary text-brand-on-primary' : badgeClasses[state],
           )}
         >
           {badge === 'letter' ? 'ABCDEF'[index] : index + 1}

@@ -2,10 +2,12 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readJson } from '../acceptance_helpers';
 import type { InteractiveGrammarPart } from '../../src/types/models';
+import { REVIEWED_SUMMARY_QUOTES } from './grammarSummaryQuotes';
 
 /**
  * Every grammar page has a plain-English summary (content/grammar-summaries/, merged by
- * `npm run content:export`): 1–4 short sentences, and any Chinese in them is copied from the page.
+ * `npm run content:export`): 1–4 short sentences, and any Chinese in them is copied from the page
+ * (or is one of the reviewed quotes kept from the old mix-up blocks).
  */
 
 const HAN_RUN = /[㐀-鿿豈-﫿]+/gu;
@@ -27,7 +29,7 @@ for (const bookId of [1, 2, 3]) {
         if (words > MAX_WORDS) problems.push(`${page.id}: ${words} words (max ${MAX_WORDS}): ${line}`);
         if (!/[.!?]$/.test(line.trim())) problems.push(`${page.id}: not a full sentence: ${line}`);
         for (const run of line.match(HAN_RUN) ?? []) {
-          if (!source.includes(run)) problems.push(`${page.id}: "${run}" is not on the page`);
+          if (!source.includes(run) && !REVIEWED_SUMMARY_QUOTES[page.id]?.includes(run)) problems.push(`${page.id}: "${run}" is not on the page`);
         }
       }
     }

@@ -1,13 +1,11 @@
-import type { Ref } from 'react';
+import { memo, type Ref } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon, ContextualChineseText } from '../../../lib/widgets';
+import { ContextualChineseText } from '../../../lib/widgets';
 import type { GrammarWordToken, PracticeLine, PracticeSentence, SlotBuildItem } from '../../../types/models';
 import { practiceSlots } from '../../../utils/grammar/grammarPracticeCheck';
 import { cn } from '../../../utils/cn';
 import { LEADING_CLOSING, textIn, type PracticeScript } from '../practiceTypes';
-import type { DragSource, DragState } from '../useTileDrag';
 import { BookBlank, type BookBlankState } from './BookBlank';
-import type { DragHandlers } from './InlineBlank';
 import { PracticeScene } from './PracticeScene';
 import { PracticeTileButton } from './PracticeTileButton';
 import { SentencePlayButton } from './SentencePlayButton';
@@ -15,8 +13,6 @@ import { SentencePlayButton } from './SentencePlayButton';
 export interface ExerciseItemState {
   /** Slot id → tile index. */
   placed: Record<string, number>;
-  /** Tiles dropped by hand: they settle in place instead of flying from the bank. */
-  byHand: number[];
   status: 'idle' | 'checking' | 'wrong' | 'correct' | 'revealed';
   tries: number;
   /** Slots shown wrong after a check. */
@@ -28,28 +24,31 @@ export interface ExerciseItemState {
 interface ExerciseItemProps {
   ref?: Ref<HTMLLIElement>;
   item: SlotBuildItem;
-  number: number;
+  /** Position on the page, from 0; shown as number + 1. */
+  index: number;
   state: ExerciseItemState;
   active: boolean;
   script: PracticeScript;
   showPinyin: boolean;
   contextTokens: GrammarWordToken[];
   onOpenWord: (word: string) => void;
-  drag: DragState | null;
-  bind: (source: DragSource, text: string) => DragHandlers;
-  onActivate: () => void;
-  onPlace: (tile: number) => void;
-  onTakeBack: (slotId: string) => void;
+  onActivate: (index: number) => void;
+  onPlace: (index: number, tile: number) => void;
+  onTakeBack: (index: number, slotId: string) => void;
 }
 
 /** Chinese line size; the badge and feedback indents are measured in it. */
-const LINE_SIZE = 'text-2xl sm:text-3xl lg:text-4xl';
+const LINE_SIZE = 'text-xl sm:text-2xl lg:text-3xl';
 const SHAKE = { x: [0, -6, 5, -4, 2, 0], transition: { duration: 0.36, ease: 'easeOut' as const } };
 
-/** One numbered item on a Book 1 exercise page: its lines with blanks, the book picture beside it, and (while active) its words. */
-export function ExerciseItem({
-  ref, item, number, state, active, script, showPinyin, contextTokens, onOpenWord, drag, bind, onActivate, onPlace, onTakeBack,
+/**
+ * One numbered item on a Book 1 exercise page: its lines with blanks, the book picture beside it, and (while active) its words.
+ * Memoised: answering one item re-renders only that item.
+ */
+export const ExerciseItem = memo(function ExerciseItem({
+  ref, item, index, state, active, script, showPinyin, contextTokens, onOpenWord, onActivate, onPlace, onTakeBack,
 }: ExerciseItemProps) {
+  const number = index + 1;
   const reduceMotion = useReducedMotion();
   const slots = practiceSlots(item);
   const finished = state.status === 'correct' || state.status === 'revealed';
@@ -60,7 +59,6 @@ export function ExerciseItem({
   const used = new Set(Object.values(state.placed));
   const bank = item.tiles.map((_, tile) => tile).filter((tile) => !used.has(tile));
   const textOf = (tile: number) => textIn(item.tiles[tile], script);
-  const layoutId = (tile: number) => (state.byHand.includes(tile) ? undefined : `${item.id}-tile-${tile}`);
 
   // The picture comes first on phone (as in the book) and sits beside the lines on wider screens.
   // A row of people always goes above. Columns are explicit ranges: `cn` drops a start when a span follows it.
@@ -86,14 +84,14 @@ export function ExerciseItem({
   };
 
   // A closing mark never wraps alone: it stays with the blank before it.
-  const renderLine = (line: PracticeLine) => line.segments.map((segment, index) => {
+  const renderLine = (line: PracticeLine) => line.segments.map((segment, at) => {
     if (segment.type === 'text') {
       const full = textIn(segment, script);
-      const text = line.segments[index - 1]?.type === 'slot' ? full.replace(LEADING_CLOSING, '') : full;
-      return text && <ContextualChineseText key={index} wordClassName="font-chinese font-semibold" text={text} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
+      const text = line.segments[at - 1]?.type === 'slot' ? full.replace(LEADING_CLOSING, '') : full;
+      return text && <ContextualChineseText key={at} wordClassName="font-chinese font-semibold" text={text} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
     }
     const tile = state.placed[segment.id];
-    const next = line.segments[index + 1];
+    const next = line.segments[at + 1];
     const closing = next?.type === 'text' ? textIn(next, script).match(LEADING_CLOSING)?.[0] : undefined;
     const blank = (
       <BookBlank
@@ -101,15 +99,7 @@ export function ExerciseItem({
         state={blankState(segment.id)}
         quiet={!answering}
         narrow={slots.length >= 4}
-        dropId={editable ? `${item.id}|${segment.id}` : undefined}
-        open={editable && drag?.over === `${item.id}|${segment.id}`}
-        word={tile === undefined ? undefined : {
-          text: textOf(tile),
-          layoutId: layoutId(tile),
-          onTakeBack: editable ? () => onTakeBack(segment.id) : undefined,
-          drag: editable ? bind({ kind: 'placed', tile, slotId: segment.id }, textOf(tile)) : undefined,
-          carried: drag?.source.kind === 'placed' && drag.source.slotId === segment.id,
-        }}
+        word={tile === undefined ? undefined : { text: textOf(tile), onTakeBack: editable ? () => onTakeBack(index, segment.id) : undefined }}
       />
     );
     return closing ? <span key={segment.id} className="whitespace-nowrap">{blank}{closing}</span> : blank;
@@ -119,12 +109,12 @@ export function ExerciseItem({
     <li
       ref={ref}
       aria-current={answering ? 'step' : undefined}
-      onClick={answering ? undefined : onActivate}
+      onClick={answering || finished ? undefined : () => onActivate(index)}
       className={cn(
-        'relative grid scroll-mt-[22vh] grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3.5 rounded-feature px-3 pb-4.5 pt-4 transition-colors duration-200 motion-reduce:transition-none sm:gap-x-5 sm:px-5 sm:pb-6 sm:pt-5',
-        // A hairline between numbered items; the active item's band separates itself, so no line touches it.
+        'relative grid scroll-mt-[22vh] grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3.5 rounded-feature border-2 border-b-4 border-transparent px-3 pb-4 pt-3.5 transition-colors duration-200 motion-reduce:transition-none sm:gap-x-5 sm:px-[18px] sm:pb-5.5 sm:pt-4.5',
+        // A hairline after every numbered item, the active one included; the line above the active band would touch it, so it hides.
         'after:pointer-events-none after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-ui-divider last:after:hidden sm:after:inset-x-5 [&:has(+[aria-current=step])]:after:hidden',
-        answering && 'bg-ui-surface after:hidden',
+        answering && 'border-ui-border bg-ui-surface after:hidden',
         !finished && !answering && 'cursor-pointer',
       )}
     >
@@ -132,19 +122,17 @@ export function ExerciseItem({
         <span
           aria-label={`Item ${number}${state.status === 'correct' ? ', correct' : ''}`}
           className={cn(
-            'flex size-[30px] items-center justify-center rounded-xs border-2 border-b-[3px] font-sans text-sm font-black transition-colors duration-200 sm:size-[34px] sm:text-base lg:size-9',
-            state.status === 'correct' ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary'
-              : answering ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep'
-                : 'border-ui-border bg-ui-surface text-ui-muted-strong',
+            'flex w-[30px] items-center justify-center font-sans text-lg font-black transition-colors duration-200 sm:w-[34px] sm:text-xl lg:w-9',
+            answering ? 'text-brand-primary' : state.status === 'correct' ? 'text-ui-muted' : 'text-ui-muted-strong',
           )}
         >
-          {state.status === 'correct' ? <AppIcon name="check" size={16} /> : number}
+          {number}
         </span>
       </span>
 
       <motion.div animate={state.status === 'wrong' && !reduceMotion ? SHAKE : { x: 0 }} className={cn('min-w-0', layout.body)}>
-        {item.lines.map((line, index) => (
-          <p key={index} className={cn('flex items-baseline font-chinese font-semibold text-ui-ink-strong', LINE_SIZE, 'leading-[1.75]')}>
+        {item.lines.map((line, at) => (
+          <p key={at} className={cn('flex items-baseline font-chinese font-semibold text-ui-ink-strong', LINE_SIZE, 'leading-[1.75]')}>
             {line.speaker && <span className="w-[2em] shrink-0 font-sans text-[0.75em] font-black text-ui-muted">{textIn(line.speaker, script)}:</span>}
             <span className="min-w-0">{renderLine(line)}</span>
           </p>
@@ -155,13 +143,13 @@ export function ExerciseItem({
               <p className={cn('mt-1 text-base font-extrabold leading-snug sm:text-lg', state.status === 'revealed' ? 'text-ui-ink' : 'text-feedback-danger-text')}>{state.note}</p>
             )}
             {state.sentence && (
-              <motion.div initial={reduceMotion ? false : { opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, ease: 'easeOut' }}>
+              <div>
                 {showPinyin && <p className="mt-1 text-base font-bold text-ui-muted-strong sm:text-lg">{state.sentence.pinyin}</p>}
                 <div className="mt-1 flex items-start gap-2">
                   <p className="min-w-0 text-base font-bold leading-snug text-ui-muted-strong sm:text-lg">{state.sentence.english}</p>
                   <SentencePlayButton sentence={state.sentence} script={script} />
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
         )}
@@ -178,12 +166,9 @@ export function ExerciseItem({
       )}
 
       {answering && (
-        <motion.div
+        <div
           role="group"
           aria-label="Word choices"
-          initial={reduceMotion ? false : { opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.24, delay: 0.08, ease: 'easeOut' }}
           className={cn('mt-4 flex flex-wrap gap-2.5 sm:mt-5 sm:gap-3', layout.bank)}
         >
           {bank.map((tile) => (
@@ -191,16 +176,13 @@ export function ExerciseItem({
               key={tile}
               tile={item.tiles[tile]}
               script={script}
-              layoutId={layoutId(tile)}
-              drag={editable ? bind({ kind: 'bank', tile }, textOf(tile)) : undefined}
-              carried={drag?.source.kind === 'bank' && drag.source.tile === tile}
               disabled={!editable}
-              large
-              onClick={() => onPlace(tile)}
+              slim
+              onClick={() => onPlace(index, tile)}
             />
           ))}
-        </motion.div>
+        </div>
       )}
     </li>
   );
-}
+});

@@ -7,6 +7,7 @@ import type {
   ReaderPointerHandler,
   ReaderPointerMoveHandler,
   ReaderPointerUpHandler,
+  useReaderWordInteractions,
 } from '../hooks/useReaderWordInteractions';
 
 /** Ruby type scale for one reading surface, per text size and syllable length. */
@@ -212,3 +213,55 @@ export const ReaderChunk = memo(function ReaderChunk({
     </span>
   );
 });
+
+/** The hold/hover state and pointer handlers every reader surface hands to its words. */
+export type ReaderWordInteractions = Pick<
+  ReturnType<typeof useReaderWordInteractions>,
+  | 'holdingChunkKey'
+  | 'hoveredChunkKey'
+  | 'handlePointerEnter'
+  | 'handlePointerLeave'
+  | 'handlePointerDown'
+  | 'handlePointerMove'
+  | 'handlePointerUp'
+  | 'handlePointerCancel'
+>;
+
+interface ReaderSegmentChunksProps extends Pick<ReaderChunkProps, 'lineIndex' | 'showPinyin' | 'textSize' | 'appearance' | 'onPlayLine' | 'onPlayRange'> {
+  /** A dialogue sentence or a narrative clause. */
+  segment: { id: string; chunks: PhraseChunk[]; start?: number; end?: number };
+  currentTime: number;
+  newWordChunks: ReadonlySet<PhraseChunk>;
+  wordInteractions: ReaderWordInteractions;
+  punctuationClassName: string;
+}
+
+/** One sentence or clause: punctuation as plain text, every word as a ReaderChunk. */
+export function ReaderSegmentChunks({ segment, currentTime, newWordChunks, wordInteractions, punctuationClassName, ...shared }: ReaderSegmentChunksProps) {
+  return segment.chunks.map((chunk, chunkIdx) => {
+    if (chunk.isPunctuation) return <span key={chunkIdx} className={punctuationClassName}>{chunk.text}</span>;
+    const chunkKey = `${segment.id}-${chunkIdx}`;
+    const isWordActive = typeof chunk.start === 'number' && typeof chunk.end === 'number'
+      && currentTime >= chunk.start && currentTime < chunk.end;
+    return (
+      <ReaderChunk
+        {...shared}
+        key={chunkIdx}
+        chunk={chunk}
+        keyPrefix={segment.id}
+        chunkIdx={chunkIdx}
+        fallbackStart={segment.start}
+        fallbackEnd={segment.end}
+        isActive={wordInteractions.holdingChunkKey === chunkKey || isWordActive}
+        isHovered={wordInteractions.hoveredChunkKey === chunkKey}
+        isNewWord={newWordChunks.has(chunk)}
+        onPointerEnter={wordInteractions.handlePointerEnter}
+        onPointerLeave={wordInteractions.handlePointerLeave}
+        onPointerDown={wordInteractions.handlePointerDown}
+        onPointerMove={wordInteractions.handlePointerMove}
+        onPointerUp={wordInteractions.handlePointerUp}
+        onPointerCancel={wordInteractions.handlePointerCancel}
+      />
+    );
+  });
+}

@@ -761,55 +761,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l13g1-cf1",
-              "question": "When should you use 這下子 instead of simple 現在?",
-              "answer": "「這下子」強調事情發生後的即刻後果或對突發情境的強烈感嘆反應；「現在」僅客觀表示當前時間。",
-              "wrongTraditional": "早上工廠停電了，現在你們的貨趕得出來嗎？",
-              "wrongSimplified": "早上工厂停电了，现在你们的货赶得出来吗？",
-              "right": {
-                "traditional": "工廠突然停電，這下子貨趕得出來嗎？",
-                "simplified": "工厂突然停电，这下子货赶得出来吗？",
-                "pinyin": "Gōngchǎng tūrán tíngdiàn, zhèxiàzi huò gǎn de chūlái ma?",
-                "english": "The factory suddenly lost power; now can the goods be rushed out in time?",
-                "words": [
-                  {
-                    "id": "b3l13g1-cf1-w1",
-                    "traditional": "這下子貨趕得出來嗎",
-                    "simplified": "这下子货赶得出来吗",
-                    "pinyin": "zhèxiàzi huò gǎn de chūlái ma",
-                    "meaning": "now can goods be produced?"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l13g1-cf2",
-              "question": "Can 這下子 be used for anticipated pleasant or unpleasant emergent turns?",
-              "answer": "兩者皆可，但在口語中常帶有「這下可麻煩了」或面對意外轉折的強烈情緒色彩。",
-              "wrongTraditional": "天氣很好，這下子我明天去學校。",
-              "wrongSimplified": "天气很好，这下子我明天去学校。",
-              "right": {
-                "traditional": "突然下大雨沒帶傘，這下子走不成了。",
-                "simplified": "突然下大雨没带伞，这下子走不成了。",
-                "pinyin": "Tūrán xià dàyǔ méi dài sǎn, zhèxiàzi zǒu bù chéng le.",
-                "english": "Sudden heavy rain and no umbrella—now we can't leave.",
-                "words": [
-                  {
-                    "id": "b3l13g1-cf2-w1",
-                    "traditional": "這下子走不成",
-                    "simplified": "这下子走不成",
-                    "pinyin": "zhèxiàzi zǒu bù chéng",
-                    "meaning": "now cannot leave"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "When talking about a certain event or situation in a conversation, the person speaking expresses his or her own views, or their immediate reaction to a sudden change in the situation.",
         "focusTerms": [
@@ -1388,55 +1339,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l13g2-cf1",
-              "question": "Can 既 and 又 pair opposite polarities (one positive, one negative)?",
-              "answer": "不行。「既……又……」連接的兩個性質必須同為正面（褒義）或同為負面（貶義）。",
-              "wrongTraditional": "這件衣服既漂亮又很難看。",
-              "wrongSimplified": "这件衣服既漂亮又很难看。",
-              "right": {
-                "traditional": "這件衣服既好看又便宜。",
-                "simplified": "这件衣服既好看又便宜。",
-                "pinyin": "Zhè jiàn yīfu jì hǎokàn yòu piányi.",
-                "english": "This piece of clothing is both nice-looking and affordable.",
-                "words": [
-                  {
-                    "id": "b3l13g2-cf1-w1",
-                    "traditional": "既好看又便宜",
-                    "simplified": "既好看又便宜",
-                    "pinyin": "jì hǎokàn yòu piányi",
-                    "meaning": "both nice and cheap"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l13g2-cf2",
-              "question": "Can degree adverbs like 很 precede adjectives after 既 / 又?",
-              "answer": "通常不加副詞「很」，直接接單純形容詞（如「既省時間又方便」，不說「既很省時間又很方便」）。",
-              "wrongTraditional": "網上開會既很省時又很方便。",
-              "wrongSimplified": "网上开会既很省时又很方便。",
-              "right": {
-                "traditional": "網上開會既省時又方便。",
-                "simplified": "网上开会既省时又方便。",
-                "pinyin": "Wǎngshàng kāihuì jì shěngshí yòu fāngbiàn.",
-                "english": "Online meetings are both time-saving and convenient.",
-                "words": [
-                  {
-                    "id": "b3l13g2-cf2-w1",
-                    "traditional": "既省時又方便",
-                    "simplified": "既省时又方便",
-                    "pinyin": "jì shěngshí yòu fāngbiàn",
-                    "meaning": "both time-saving and convenient"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "既……又…… indicates that the same subject has two states or situations. 既 and 又 are often followed by adjectives, verbs, or verb phrases. Adverbs are not used in front of adjectives, though volitive auxiliary verbs such as 會, 要, 能, 願意, etc. can be added before verbs. The adjectives, verbs or verb phrases following 既 and 又 must both be positive or negative. The level of the state or the situation after 又 is higher than 既. Finally, 既……又……is used more in written language than 又……又…….",
         "focusTerms": [
@@ -1996,55 +1898,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l13g3-cf1",
-              "question": "How is 更別說 structured with lesser vs. greater extremes?",
-              "answer": "前句先提出較容易或基本的情境（常搭配『連……都……』），「更別說」後則接難度更高或更極端、顯而易見的事情。",
-              "wrongTraditional": "他建立網站都不會，更別說上傳資料了。",
-              "wrongSimplified": "他建立网站都不会，更别说上传资料了。",
-              "right": {
-                "traditional": "他連上傳資料都不會，更別說建網站了。",
-                "simplified": "他连上传资料都不会，更别说建网站了。",
-                "pinyin": "Tā lián shàngchuán zīliào dōu bú huì, gèng bié shuō jiàn wǎngzhàn le.",
-                "english": "He doesn't even know how to upload files, let alone build a site.",
-                "words": [
-                  {
-                    "id": "b3l13g3-cf1-w1",
-                    "traditional": "更別說建網站",
-                    "simplified": "更别说建网站",
-                    "pinyin": "gèng bié shuō jiàn wǎngzhàn",
-                    "meaning": "let alone build a site"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l13g3-cf2",
-              "question": "Can 更別說 be replaced by 只要 or 除非?",
-              "answer": "不行。「更別說」表示遞進排除（不必說也知道），不可與假設連詞混淆。",
-              "wrongTraditional": "連房租都付不起，除非出國旅遊了。",
-              "wrongSimplified": "连房租都付不起，除非出国旅游了。",
-              "right": {
-                "traditional": "連房租都付不起，更別說出國旅遊了。",
-                "simplified": "连房租都付不起，更别说出国旅游了。",
-                "pinyin": "Lián fángzū dōu fù bù qǐ, gèng bié shuō chūguó lǚyóu le.",
-                "english": "Can't even afford rent, let alone travel abroad.",
-                "words": [
-                  {
-                    "id": "b3l13g3-cf2-w1",
-                    "traditional": "更別說出國",
-                    "simplified": "更别说出国",
-                    "pinyin": "gèng bié shuō chūguó",
-                    "meaning": "let alone go abroad"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "更別說 means the same as 不必說 or 不需要說. Because the situation after 更別說 is very clear, there is no need to say more.",
         "focusTerms": [
@@ -2589,55 +2442,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l13g4-cf1",
-              "question": "How is 就是……也 different from 只要……就?",
-              "answer": "「就是……也」表示縱使在極端假設下，結果依然不改；「只要……就」表示充分條件（只要A達成，就必然出現B）。",
-              "wrongTraditional": "只要吃再多苦，我也要堅持到底。",
-              "wrongSimplified": "只要吃再多苦，我也要坚持到底。",
-              "right": {
-                "traditional": "就是吃再多苦，我也要堅持到底。",
-                "simplified": "就是吃再多苦，我也要坚持到底。",
-                "pinyin": "Jiùshì chī zài duō kǔ, wǒ yě yào jiānchí dàodǐ.",
-                "english": "Even if I suffer more hardships, I will still persist to the end.",
-                "words": [
-                  {
-                    "id": "b3l13g4-cf1-w1",
-                    "traditional": "就是吃再多苦",
-                    "simplified": "就是吃再多苦",
-                    "pinyin": "jiùshì chī zài duō kǔ",
-                    "meaning": "even if bearing more pain"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l13g4-cf2",
-              "question": "Can 就是 be used interchangeably with 即使 in this concessive structure?",
-              "answer": "可以，「就是……也……」在口語中與「即使……也……」意思相通，極具口語強調色彩。",
-              "wrongTraditional": "除非吃很多苦，我也堅持到底。",
-              "wrongSimplified": "除非吃很多苦，我也坚持到底。",
-              "right": {
-                "traditional": "就是下雪了，我們也不會改變行程。",
-                "simplified": "就是下雪了，我们也不会改变行程。",
-                "pinyin": "Jiùshì xiàxuě le, wǒmen yě bú huì gǎibiàn xíngchéng.",
-                "english": "Even if it snows, we still won't change our itinerary.",
-                "words": [
-                  {
-                    "id": "b3l13g4-cf2-w1",
-                    "traditional": "就是下雪了",
-                    "simplified": "就是下雪了",
-                    "pinyin": "jiùshì xiàxuě le",
-                    "meaning": "even if it snows"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "就是 is followed by a hypothetical situation. Even if this situation should occur, the results after 也 will not change.",
         "focusTerms": [
@@ -3240,55 +3044,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l13g5-cf1",
-              "question": "Is there a priority ranking between the two aspects in 一方面……一方面……?",
-              "answer": "沒有。「一方面……，一方面……」並列陳述兩項同等重要的原因、目的或角度，前後無先後輕重之別。",
-              "wrongTraditional": "最重要是一方面照顧生意，次要是一方面訓練員工。",
-              "wrongSimplified": "最重要是一方面照顾生意，次要是一方面训练员工。",
-              "right": {
-                "traditional": "他一方面照顧生意，一方面訓練員工。",
-                "simplified": "他一方面照顾生意，一方面训练员工。",
-                "pinyin": "Tā yì fāngmiàn zhàogù shēngyì, yì fāngmiàn xùnliàn yuángōng.",
-                "english": "On one hand he minds business, and on the other he trains staff.",
-                "words": [
-                  {
-                    "id": "b3l13g5-cf1-w1",
-                    "traditional": "一方面照顧生意",
-                    "simplified": "一方面照顾生意",
-                    "pinyin": "yì fāngmiàn zhàogù shēngyì",
-                    "meaning": "on one hand minds business"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l13g5-cf2",
-              "question": "How is 一方面……一方面…… different from 不但……而且……?",
-              "answer": "「不但……而且……」表示程度遞進，後句比前句更進一層；「一方面……一方面……」則是平行列舉。",
-              "wrongTraditional": "雲端不但一方面帶來便利，而且帶給企業好管理。",
-              "wrongSimplified": "云端不但一方面带来便利，而且带给企业好管理。",
-              "right": {
-                "traditional": "雲端一方面帶來便利，一方面帶給企業良好管理。",
-                "simplified": "云端一方面带来便利，一方面带给企业良好管理。",
-                "pinyin": "Yúnduān yì fāngmiàn dàilái biànlì, yì fāngmiàn dài gěi qǐyè liánghǎo guǎnlǐ.",
-                "english": "The cloud brings convenience on one hand, and gives firms sound management on the other.",
-                "words": [
-                  {
-                    "id": "b3l13g5-cf2-w1",
-                    "traditional": "一方面帶來便利",
-                    "simplified": "一方面带来便利",
-                    "pinyin": "yì fāngmiàn dàilái biànlì",
-                    "meaning": "on one hand brings convenience"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "The use of the phrase 一方面……，一方面……can explain the cause, result or purpose of two aspects of a thing, and there is no important difference between the preceding and following sentences.",
         "focusTerms": [

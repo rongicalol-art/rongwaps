@@ -19,7 +19,6 @@ test('Lesson 3 has five ordered grammar points grouped by its two dialogues', ()
   assert.ok(lessonThreePages.every((page) => page.examples.length >= 3));
   assert.equal(lessonThreePages[3].examples.length, 9);
   assert.equal(lessonThreePages[3].questions.length, 9);
-  assert.ok(lessonThreePages.every((page) => page.discoveryLab));
 });
 
 test('Every Lesson 3 grammar completes with canonical authored answers', () => {

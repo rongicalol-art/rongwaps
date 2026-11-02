@@ -5,7 +5,7 @@ import { LottiePlayer } from '../../../lib/widgets';
 import type { Flashcard } from '../../../data/flashcards';
 import { cn } from '../../../utils/cn';
 import type { QuizHandoff } from '../../quiz';
-import { CARD_SURFACE_CLASS, EASE_OUT, TILE_BORDER, TILE_RADIUS, TILE_RATIO, fitFont, questionWordPx } from '../flashcardMotion';
+import { CARD_SURFACE_CLASS, EASE_OUT, TILE_BORDER, TILE_RADIUS, fitFont, layoutSheet, questionWordPx } from '../flashcardMotion';
 
 // Module-level so the player keeps one stable loader identity.
 const loadTrophy = () => import('../../../assets/animations/review-trophy.json').then((m) => m.default);
@@ -168,34 +168,11 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
     // tiles shrink to fit the space above the skip line, so the sheet never overlaps it ----
     const { gap } = size;
     const count = tiles.length;
-    const cols = Math.min(size.cols, count);
-    const rows = Math.ceil(count / cols);
-    const fitH = (slot.parentElement?.clientHeight ?? Infinity) - text.offsetHeight - 48;
-    const fitW = slot.clientWidth - 32;
-    const tw = Math.max(48, Math.min(
-      size.tw,
-      (fitW - (cols - 1) * gap) / cols,
-      (fitH - (rows - 1) * gap) / rows / TILE_RATIO,
-    ));
-    // Tiles are always portrait cards (the phone card's ratio), even where the real card is wide.
-    const th = tw * TILE_RATIO;
-    slot.style.height = `${rows * th + (rows - 1) * gap}px`;
-    const slotRect = slot.getBoundingClientRect();
-    const slotLeft = slotRect.left + slotRect.width / 2 - rootRect.left;
-    const slotTop = slotRect.top - rootRect.top;
     const tileEls = Array.from(layer.children) as HTMLElement[];
-    tileEls.forEach((el, i) => {
-      const row = Math.floor(i / cols);
-      const inRow = Math.min(cols, count - row * cols);
-      const rowW = inRow * tw + (inRow - 1) * gap;
-      const word = el.querySelector<HTMLElement>('[data-clone-word]');
-      if (word) word.style.fontSize = `${fitFont(tiles[i].card.front, tw, (size.font * tw) / size.tw)}px`;
-      Object.assign(el.style, {
-        left: `${slotLeft - rowW / 2 + (i % cols) * (tw + gap)}px`,
-        top: `${slotTop + row * (th + gap)}px`,
-        width: `${tw}px`,
-        height: `${th}px`,
-      });
+    // Tiles are always portrait cards (the phone card's ratio), even where the real card is wide.
+    const { tw } = layoutSheet({
+      slot, text, rootRect, tiles: tileEls, fronts: tiles.map((tile) => tile.card.front),
+      cols: Math.min(size.cols, count), gap, tw: size.tw, font: size.font,
     });
     const knownEls = tileEls.filter((_, i) => !tiles[i].miss);
     const missEls = tileEls.filter((_, i) => tiles[i].miss);

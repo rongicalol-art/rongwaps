@@ -9,10 +9,14 @@ contract; the code that enforces it is named in each section.
 
 - **Order**: 聽力 Listening, then 閱讀 Reading, each opened by a section page. One question per screen (a
   paragraph's blanks share one screen). No going back; Next appears once the screen is answered.
-- **Recordings** play on their own, **twice** (TOCFL Novice/Band A), as a flat disc with one dot per play.
+- **Recordings** play on their own, **twice** (TOCFL Novice/Band A), with no replays. The speaker is a tactile key the
+  recording presses: down while a play runs, up between plays, flat once both have played; its face shows what is
+  playing (a voice, the long pause, the ding, the question, then each letter). Picture-and-sentences items have no
+  speaker: the answer being read presses in. A dialogue's printed question appears when the narrator asks it.
   A dialogue plays its lines, then a **ding** and a pause, then the narrator's question, then the
   answers as "A … B … C …" (`src/screens/lesson-test/testAudioSequence.ts`). In the Fix round the
-  recording plays once and the speaker becomes a replay button.
+  recording plays once, the speaker becomes a replay button, and spoken answers play again on tap once
+  checked.
 - **Results**: Listening and Reading tiles, time, and up to four "to fix" points (earlier lessons named).
   **Pass at 80%** (`LESSON_TEST_PASS`): the Test tab gets a crown and the card shows the best score. The
   test never locks anything; retakes are unlimited.
