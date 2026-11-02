@@ -11,8 +11,9 @@ export interface AudioStep {
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const TURN_GAP_MS = 450;
-/** After a dialogue: the ding, then a pause before the question, so the two never blur together. */
-const AFTER_DING_MS = 900;
+/** After a dialogue: a beat of silence, the ding, then a pause before the question, so nothing blurs together. */
+const BEFORE_DING_MS = 2000;
+const AFTER_DING_MS = 800;
 const BEFORE_CHOICES_MS = 500;
 const BETWEEN_CHOICES_MS = 550;
 
@@ -49,7 +50,7 @@ export function listeningSteps(
     });
   }
   if (item.kind === 'dialogue') {
-    steps.push({ pauseMs: 350 });
+    steps.push({ pauseMs: BEFORE_DING_MS });
     if (sounds.ding) steps.push({ audio: sounds.ding });
     steps.push({ pauseMs: AFTER_DING_MS });
     if (question.prompt) say(question.prompt);

@@ -7,7 +7,7 @@ For each clip in <batch>/manifest.json:
 - independent, unprompted ASR (Qwen3-ASR) must hear the same syllables as the text (catches a clip
   that stops before the last word);
 - its last speech frame must have faded (catches a final syllable cut off mid-sound);
-- it must not drag (characters per voiced second at least MIN_VOICED_PACE).
+- it must not drag (characters per voiced second at least the entry's minVoicedPace, else MIN_VOICED_PACE).
 Passing clips get `quality.contentChecked`; failures go to <batch>/rejected.json ({key: [take, ...]}),
 which the generator reads to render those sentences again with another take. Transcripts are cached
 by file hash in <batch>/asr.json. A transcript that differs only where ASR can't match the text (names,
@@ -60,7 +60,7 @@ def main():
             problems.append(f"ends abruptly ({ratio:.2f})")
         pace = voiced_pace(path, entry["spoken"])
         # Pace says nothing about a one- or two-word answer (十點, 綠茶): only sentences can drag.
-        if syllables(entry["spoken"]) >= 4 and pace < MIN_VOICED_PACE:
+        if syllables(entry["spoken"]) >= 4 and pace < entry.get("minVoicedPace", MIN_VOICED_PACE):
             problems.append(f"drags ({pace:.2f} characters per voiced second)")
         quality = {**entry["quality"], "transcript": cached, "asrModel": ASR_MODEL, "endingRatio": round(ratio, 3), "voicedPace": round(pace, 2)}
         if heard != expected and not problems:

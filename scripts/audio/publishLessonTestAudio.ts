@@ -8,7 +8,9 @@
  * Reads output/lesson-test-audio/manifest.json and sounds.json (generateLessonTestAudio.py). Every sentence
  * clip must have passed checkStudioBatch.py (`quality.contentChecked`) and the loudness limits; each file is
  * uploaded once to its immutable hashed key and verified before the receipt is written. `--male` picks the
- * male dialogue voice the owner chose by ear. R2 settings come from the environment and are never printed.
+ * male dialogue voice the owner chose by ear (Qwen batches). A Yating batch (generateLessonTestAudio.py
+ * --engine yating) also writes voices.json, each test's voice per role, copied into the receipt as
+ * `lessonVoices`. R2 settings come from the environment and are never printed.
  */
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -84,8 +86,13 @@ async function main() {
     console.log(`Checked ${files.length} local clips; run with --upload to publish.`);
     return;
   }
+  // A Yating batch names each test's voices (their pace differs per lesson) in voices.json.
+  const lessonVoices = await readFile(path.join(BATCH, 'voices.json'), 'utf8')
+    .then((text) => JSON.parse(text) as Record<string, Record<'F' | 'M' | 'N', string>>)
+    .catch(() => undefined);
   const receipt = {
     voices: { F: 'Vivian', M: male, N: 'Serena' },
+    ...(lessonVoices ? { lessonVoices } : {}),
     clips: Object.fromEntries([...entries].sort((a, b) => a.key.localeCompare(b.key))
       .map((entry) => [entry.key, { file: entry.file, sha256: entry.sha256, duration: entry.duration }])),
     sounds: {
