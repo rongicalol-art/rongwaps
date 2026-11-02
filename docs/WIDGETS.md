@@ -89,6 +89,7 @@
 | CharacterTile | `CharacterTile.tsx` | Tappable character tile; `known`, `upcoming`, `active`. |
 | CharacterGlyph | `CharacterGlyph.tsx` | Character glyph with a puzzle-piece fallback when the active Chinese font cannot render it. |
 | LevelTag | `LevelTag.tsx` | Course `B1 · L3` or TOCFL fallback from `ResolvedLevel` (`resolveLevel`/`useLevel`, `src/utils/lesson/levels.ts`); `row` or `chip`; estimates render `~B1`. Lesson wins over TOCFL. |
+| SearchField | `SearchField.tsx` | Pressable search field with a clear button that appears once there is text; `large` for the dictionary, `inputRef` to refocus after clearing. |
 | SmartSentence | `SmartSentence.tsx` | Shared Chinese lookup and tooltip; authored `tokens`, `highlightTerms`, validated word boundaries; hover/focus and dictionary click. |
 | TranslationLines | `TranslationLines.tsx` | A translation one line per speaker with the label (A, B…) hanging in the margin; place inside the styled translation `<p>`/`<span>`. |
 
