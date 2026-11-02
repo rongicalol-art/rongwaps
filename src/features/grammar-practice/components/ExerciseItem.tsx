@@ -1,6 +1,6 @@
 import { memo, type Ref } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon, ContextualChineseText } from '../../../lib/widgets';
+import { ContextualChineseText } from '../../../lib/widgets';
 import type { GrammarWordToken, PracticeLine, PracticeSentence, SlotBuildItem } from '../../../types/models';
 import { practiceSlots } from '../../../utils/grammar/grammarPracticeCheck';
 import { cn } from '../../../utils/cn';
@@ -111,10 +111,10 @@ export const ExerciseItem = memo(function ExerciseItem({
       aria-current={answering ? 'step' : undefined}
       onClick={answering || finished ? undefined : () => onActivate(index)}
       className={cn(
-        'relative grid scroll-mt-[22vh] grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3.5 rounded-feature px-3 pb-4.5 pt-4 transition-colors duration-200 motion-reduce:transition-none sm:gap-x-5 sm:px-5 sm:pb-6 sm:pt-5',
+        'relative grid scroll-mt-[22vh] grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3.5 rounded-feature border-2 border-b-4 border-transparent px-3 pb-4 pt-3.5 transition-colors duration-200 motion-reduce:transition-none sm:gap-x-5 sm:px-[18px] sm:pb-5.5 sm:pt-4.5',
         // A hairline after every numbered item, the active one included; the line above the active band would touch it, so it hides.
         'after:pointer-events-none after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-ui-divider last:after:hidden sm:after:inset-x-5 [&:has(+[aria-current=step])]:after:hidden',
-        answering && 'bg-ui-surface',
+        answering && 'border-ui-border bg-ui-surface after:hidden',
         !finished && !answering && 'cursor-pointer',
       )}
     >
@@ -122,13 +122,11 @@ export const ExerciseItem = memo(function ExerciseItem({
         <span
           aria-label={`Item ${number}${state.status === 'correct' ? ', correct' : ''}`}
           className={cn(
-            'flex size-[30px] items-center justify-center rounded-xs border-2 border-b-[3px] font-sans text-sm font-black transition-colors duration-200 sm:size-[34px] sm:text-base lg:size-9',
-            state.status === 'correct' ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary'
-              : answering ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep'
-                : 'border-ui-border bg-ui-surface text-ui-muted-strong',
+            'flex w-[30px] items-center justify-center font-sans text-lg font-black transition-colors duration-200 sm:w-[34px] sm:text-xl lg:w-9',
+            answering ? 'text-brand-primary' : state.status === 'correct' ? 'text-ui-muted' : 'text-ui-muted-strong',
           )}
         >
-          {state.status === 'correct' ? <AppIcon name="check" size={16} /> : number}
+          {number}
         </span>
       </span>
 
