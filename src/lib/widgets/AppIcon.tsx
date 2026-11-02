@@ -97,119 +97,8 @@ import {
   PiChatCircleDotsBold,
 } from 'react-icons/pi';
 
-export type AppIconName =
-  | 'add'
-  | 'analytics'
-  | 'appSettings'
-  | 'at'
-  | 'audio'
-  | 'back'
-  | 'bookmark'
-  | 'bookmarkFilled'
-  | 'books'
-  | 'breakdown'
-  | 'cards'
-  | 'crown'
-  | 'check'
-  | 'clock'
-  | 'download'
-  | 'close'
-  | 'choices'
-  | 'deviceMobile'
-  | 'dictionary'
-  | 'dropdown'
-  | 'expand'
-  | 'exam'
-  | 'error'
-  | 'eye'
-  | 'eyeSlash'
-  | 'flashcard'
-  | 'flame'
-  | 'folder'
-  | 'gear'
-  | 'followUp'
-  | 'forward'
-  | 'grammar'
-  | 'copy'
-  | 'lightbulb'
-  | 'hint'
-  | 'lightbulbFilled'
-  | 'keyboard'
-  | 'lock'
-  | 'level'
-  | 'menu'
-  | 'more'
-  | 'minus'
-  | 'pause'
-  | 'play'
-  | 'pronounce'
-  | 'progress'
-  | 'profile'
-  | 'practice'
-  | 'plus'
-  | 'search'
-  | 'sidebarToggle'
-  | 'sparkles'
-  | 'star'
-  | 'settings'
-  | 'share'
-  | 'controls'
-  | 'shuffle'
-  | 'slowAudio'
-  | 'skipBack'
-  | 'skipForward'
-  | 'flow'
-  | 'restart'
-  | 'signIn'
-  | 'signOut'
-  | 'trash'
-  | 'trophy'
-  | 'target'
-  | 'typeText'
-  | 'next'
-  | 'numbers'
-  | 'greeting'
-  | 'food'
-  | 'family'
-  | 'party'
-  | 'colors'
-  | 'body'
-  | 'actions'
-  | 'places'
-  | 'nature'
-  | 'animals'
-  | 'school'
-  | 'shopping'
-  | 'travel'
-  | 'describe'
-  | 'home'
-  | 'questions'
-  | 'measure'
-  | 'leaf'
-  | 'plant'
-  | 'flower'
-  | 'drop'
-  | 'camera'
-  | 'upload'
-  | 'pencil'
-  | 'writingOutline'
-  | 'grid'
-  | 'quiz'
-  | 'quizMark'
-  | 'writing'
-  | 'book'
-  | 'send'
-  | 'link'
-  | 'bell'
-  | 'bellOff'
-  | 'chat'
-  | 'answerYes'
-  | 'answerNo'
-  | 'statusCheck'
-  | 'statusCross'
-  | 'statusShuffle'
-  | 'statusUnshuffled'
-  | 'statusRestart';
+/** Every icon the app draws; the names come from the ICONS table below. */
+export type AppIconName = keyof typeof ICONS;
 
 /** 24×24 svg icon from children; size/className/rest props pass through. */
 const svgIcon = (children: React.ReactNode): IconType => ({ size = '1em', className, ...props }) => (
@@ -315,7 +204,7 @@ const DuoStatusUnshuffledIcon = statusBadge('ui-border', 'ui-muted', 2, ...SHUFF
 /** Counter-clockwise curved arrow. */
 const DuoStatusRestartIcon = statusBadge('brand-primary-edge', 'brand-primary', 2.2, 'M15.5 11.5A3.8 3.8 0 1 1 10.6 8.2', 'M11.6 6.3L9.6 8.2L11.6 10.1');
 
-const ICONS: Record<AppIconName, IconType> = {
+const ICONS = {
   add: PiPlusBold,
   analytics: PiChartBarFill,
   appSettings: StudyGearIcon,
@@ -428,7 +317,7 @@ const ICONS: Record<AppIconName, IconType> = {
   statusShuffle: DuoStatusShuffleIcon,
   statusUnshuffled: DuoStatusUnshuffledIcon,
   statusRestart: DuoStatusRestartIcon,
-};
+} satisfies Record<string, IconType>;
 
 export interface AppIconProps extends IconBaseProps {
   name: AppIconName;
