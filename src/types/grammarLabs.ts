@@ -1,5 +1,14 @@
 import type { GrammarWordToken } from './grammar';
 
+/** An authored lab: one prompt, choices to compare, one takeaway. */
+export interface GrammarLab<Choice> {
+  title: string;
+  description: string;
+  prompt: string;
+  choices: Choice[];
+  takeaway: string;
+}
+
 export interface GrammarDiscoveryChoice {
   id: string;
   label: string;
@@ -9,14 +18,6 @@ export interface GrammarDiscoveryChoice {
   english: string;
   note: string;
   isCorrection?: boolean;
-}
-
-export interface GrammarDiscoveryLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarDiscoveryChoice[];
-  takeaway: string;
 }
 
 export interface GrammarNumberLabGroup {
@@ -38,14 +39,6 @@ export interface GrammarNumberLabChoice {
   note: string;
 }
 
-export interface GrammarNumberLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarNumberLabChoice[];
-  takeaway: string;
-}
-
 export interface GrammarRouteLabChoice {
   id: string;
   label: string;
@@ -58,14 +51,6 @@ export interface GrammarRouteLabChoice {
   pinyin: string;
   english: string;
   note: string;
-}
-
-export interface GrammarRouteLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarRouteLabChoice[];
-  takeaway: string;
 }
 
 export interface GrammarSceneChoice {
@@ -84,68 +69,11 @@ export interface GrammarLiveSceneChoice extends GrammarSceneChoice {
   place?: string;
 }
 
-export interface GrammarLiveSceneLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarLiveSceneChoice[];
-  takeaway: string;
-}
-
-export interface GrammarTimeRangeChoice extends GrammarSceneChoice {
-  start: string;
-  end: string;
-  spanLabel: string;
-}
-
-export interface GrammarTimeRangeLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarTimeRangeChoice[];
-  takeaway: string;
-}
-
 export interface GrammarTimelineChoice extends GrammarSceneChoice {
   start: string;
   duration: string;
   reachesNow: boolean;
   endLabel: string;
-}
-
-export interface GrammarTimelineLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarTimelineChoice[];
-  takeaway: string;
-}
-
-export interface GrammarSequenceChoice extends GrammarSceneChoice {
-  first: string;
-  then: string;
-}
-
-export interface GrammarSequenceLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarSequenceChoice[];
-  takeaway: string;
-}
-
-export interface GrammarAbilityChoice extends GrammarSceneChoice {
-  gate: 'open' | 'limited' | 'closed';
-  factor: 'body' | 'rules' | 'situation';
-  verb: string;
-}
-
-export interface GrammarAbilityLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarAbilityChoice[];
-  takeaway: string;
 }
 
 export interface GrammarCompareChoice extends GrammarSceneChoice {
@@ -154,20 +82,4 @@ export interface GrammarCompareChoice extends GrammarSceneChoice {
   leftValue: number;
   rightValue: number;
   quality: string;
-}
-
-export interface GrammarCompareLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarCompareChoice[];
-  takeaway: string;
-}
-
-export interface GrammarPairCompareLab {
-  title: string;
-  description: string;
-  prompt: string;
-  choices: GrammarCompareChoice[];
-  takeaway: string;
 }
