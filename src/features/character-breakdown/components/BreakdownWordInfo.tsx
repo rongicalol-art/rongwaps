@@ -84,7 +84,6 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
 
         <SummaryQuickActions
           char={activeChar}
-          audioSrc={charData?.audio ?? undefined}
           pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
           meaning={meaning}
         />

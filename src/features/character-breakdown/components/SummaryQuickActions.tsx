@@ -25,7 +25,6 @@ export function SummaryQuickActions({
   ttsText,
 }: {
   char: string;
-  audioSrc?: string | null;
   /** Reading and meaning the screen is showing, so Save keeps that sense instead of the first dictionary entry. */
   pinyin?: string;
   meaning?: string;
