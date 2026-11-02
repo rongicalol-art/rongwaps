@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { LevelTag } from '../../../lib/widgets';
 import type { ResolvedLevel } from '../../../utils/lesson/levels';
-import { ExtendedDefinitionsPanel, MoreDefinitionsToggle, type ExtendedDefinitionsData } from './ExtendedDefinitions';
+import { DefinitionsReveal, ExtendedDefinitionsPanel, MoreDefinitionsToggle, type ExtendedDefinitionsData } from './ExtendedDefinitions';
 import { SummaryQuickActions } from './SummaryQuickActions';
 
 export interface HeroActions {
@@ -27,7 +26,6 @@ interface HeroDetailsProps {
 /** A word or character hero's meaning (extra definitions one tap away), lesson and level tags, and wide-screen actions. */
 export function HeroDetails({ subject, meaning, more, wide, courseCard, level, actions }: HeroDetailsProps) {
   const [moreOpen, setMoreOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
   useEffect(() => setMoreOpen(false), [subject]);
 
   return (
@@ -44,21 +42,9 @@ export function HeroDetails({ subject, meaning, more, wide, courseCard, level, a
           )}
         </div>
       )}
-      <AnimatePresence initial={false}>
-        {moreOpen && more && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
-            className="overflow-hidden"
-          >
-            <div className="pt-2">
-              <ExtendedDefinitionsPanel data={more} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <DefinitionsReveal open={moreOpen && more !== null}>
+        {more && <div className="pt-2"><ExtendedDefinitionsPanel data={more} /></div>}
+      </DefinitionsReveal>
       {(courseCard || level) && (
         <div className={wide ? 'flex flex-wrap items-center gap-2' : 'flex flex-wrap items-center gap-1.5'}>
           {courseCard && <LevelTag long={wide} bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
