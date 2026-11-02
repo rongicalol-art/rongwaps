@@ -1618,10 +1618,10 @@
           "picture": "b1l03-invite",
           "alt": "A birthday invitation card from Youmei with the date, the day, the time and what there will be to eat",
           "transcript": {
-            "traditional": "友美的生日　10月7日　星期六　晚上 6:00　請你來我家玩！　有蛋糕、水果和點心",
-            "simplified": "友美的生日　10月7日　星期六　晚上 6:00　请你来我家玩！　有蛋糕、水果和点心",
-            "pinyin": "Yǒuměi de shēngrì: shí yuè qī rì, xīngqíliù, wǎnshàng liù diǎn. Qǐng nǐ lái wǒ jiā wán! Yǒu dàngāo, shuǐguǒ hé diǎnxīn",
-            "english": "Youmei's birthday: October 7, Saturday, 6:00 p.m. Come and have fun at my home! There will be cake, fruit and snacks"
+            "traditional": "友美的生日　10月7日　星期六　晚上 6:00　請你來我家玩！　有水果和點心",
+            "simplified": "友美的生日　10月7日　星期六　晚上 6:00　请你来我家玩！　有水果和点心",
+            "pinyin": "Yǒuměi de shēngrì: shí yuè qī rì, xīngqíliù, wǎnshàng liù diǎn. Qǐng nǐ lái wǒ jiā wán! Yǒu shuǐguǒ hé diǎnxīn",
+            "english": "Youmei's birthday: October 7, Saturday, 6:00 p.m. Come and have fun at my home! There will be fruit and snacks"
           },
           "questions": [
             {
@@ -1640,14 +1640,14 @@
                   "english": "Youmei wants to go to a friend's home to have fun."
                 },
                 {
-                  "traditional": "朋友請友美吃蛋糕。",
-                  "simplified": "朋友请友美吃蛋糕。",
-                  "pinyin": "Péngyǒu qǐng Yǒuměi chī dàngāo.",
-                  "english": "A friend treats Youmei to cake."
+                  "traditional": "友美的生日是星期天。",
+                  "simplified": "友美的生日是星期天。",
+                  "pinyin": "Yǒuměi de shēngrì shì xīngqítiān.",
+                  "english": "Youmei's birthday is on Sunday."
                 }
               ],
               "key": 0,
-              "why": "請你來我家玩 means Youmei invites you to her home. She is not going out, and the cake is hers to share, not a friend's treat.",
+              "why": "請你來我家玩 means Youmei invites you to her home; she is not going out. The card says 星期六, Saturday, not Sunday.",
               "focus": {
                 "zh": "請你來我家玩",
                 "en": "inviting someone over"
@@ -1667,10 +1667,10 @@
           "picture": "b1l03-invite",
           "alt": "A birthday invitation card from Youmei with the date, the day, the time and what there will be to eat",
           "transcript": {
-            "traditional": "友美的生日　10月7日　星期六　晚上 6:00　請你來我家玩！　有蛋糕、水果和點心",
-            "simplified": "友美的生日　10月7日　星期六　晚上 6:00　请你来我家玩！　有蛋糕、水果和点心",
-            "pinyin": "Yǒuměi de shēngrì: shí yuè qī rì, xīngqíliù, wǎnshàng liù diǎn. Qǐng nǐ lái wǒ jiā wán! Yǒu dàngāo, shuǐguǒ hé diǎnxīn",
-            "english": "Youmei's birthday: October 7, Saturday, 6:00 p.m. Come and have fun at my home! There will be cake, fruit and snacks"
+            "traditional": "友美的生日　10月7日　星期六　晚上 6:00　請你來我家玩！　有水果和點心",
+            "simplified": "友美的生日　10月7日　星期六　晚上 6:00　请你来我家玩！　有水果和点心",
+            "pinyin": "Yǒuměi de shēngrì: shí yuè qī rì, xīngqíliù, wǎnshàng liù diǎn. Qǐng nǐ lái wǒ jiā wán! Yǒu shuǐguǒ hé diǎnxīn",
+            "english": "Youmei's birthday: October 7, Saturday, 6:00 p.m. Come and have fun at my home! There will be fruit and snacks"
           },
           "questions": [
             {

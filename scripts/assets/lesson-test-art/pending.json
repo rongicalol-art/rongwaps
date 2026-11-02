@@ -223,5 +223,455 @@
   "lesson": "b1l03",
   "kind": "realia",
   "description": "A price board at a gift stand: small pencils, Chinese books, English books, flowers and cakes, each with its price"
+ },
+ "b1l05-cafe-menu": {
+  "lesson": "b1l05",
+  "kind": "realia",
+  "description": "A café's afternoon-tea menu board"
+ },
+ "b1l05-hide-1": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "The boy is under the table: the boy hides under the table, and the girl stands next to it"
+ },
+ "b1l05-hide-2": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "The girl is under the table: the girl hides under the table, and the boy stands next to it"
+ },
+ "b1l05-hide-3": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "Both under the table: the boy and the girl hide under the table together"
+ },
+ "b1l05-house-1": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "Two dogs: two dogs sit on the grass in front of the house"
+ },
+ "b1l05-house-2": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "Two cats: two cats sit on the grass in front of the house"
+ },
+ "b1l05-house-3": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "A cat and a dog: one cat and one dog sit on the grass in front of the house"
+ },
+ "b1l05-house-ad": {
+  "lesson": "b1l05",
+  "kind": "realia",
+  "description": "A house-for-rent notice pinned on a board"
+ },
+ "b1l05-living-room": {
+  "lesson": "b1l05",
+  "kind": "scene",
+  "description": "A sunny living room seen from behind the TV: the back of a low TV is at the bottom middle of the picture, its screen turned toward the sofa. An older sister sits alone in the middle of the sofa facing us, watching TV, with empty seats on both sides of her. The sofa stands against the back wall. Her little brother sits on the rug one step right in front of her, in the middle, between her and the TV, with his back to her; he is watching TV too. A dog sleeps under a table with two books on top. A cat lies in the sun by the big window. There is no bird."
+ },
+ "b1l05-room-1": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "A bed: a bed stands under the window"
+ },
+ "b1l05-room-2": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "A sofa: a sofa stands under the window"
+ },
+ "b1l05-room-3": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "A TV: a TV on a low cabinet stands under the window"
+ },
+ "b1l05-wallet-1": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "On the sofa: a brown wallet lies on the sofa seat"
+ },
+ "b1l05-wallet-2": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "Under the sofa: a brown wallet lies on the floor under the sofa"
+ },
+ "b1l05-wallet-3": {
+  "lesson": "b1l05",
+  "kind": "panel",
+  "description": "Next to the sofa: a brown wallet lies on the floor beside the sofa"
+ },
+ "b1l06-ball-1": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Basketball: the young man bounces a basketball on the sports field"
+ },
+ "b1l06-ball-2": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Soccer: the young man kicks a soccer ball on the sports field"
+ },
+ "b1l06-ball-3": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Baseball: the young man swings a bat at a baseball on the sports field"
+ },
+ "b1l06-beach": {
+  "lesson": "b1l06",
+  "kind": "scene",
+  "description": "A sunny beach with green mountains behind: a girl swims in the sea, a young boy runs fast along the sand, two friends kick a soccer ball, two bikes stand by the path, and many people are on the beach."
+ },
+ "b1l06-beach-sign": {
+  "lesson": "b1l06",
+  "kind": "realia",
+  "description": "A sign at the beach: what you may and may not do there, with the swimming hours"
+ },
+ "b1l06-games": {
+  "lesson": "b1l06",
+  "kind": "realia",
+  "description": "A school poster listing three sports matches with their days and times"
+ },
+ "b1l06-hobby-1": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Singing: the young woman sings with her hand on her chest, music notes around her"
+ },
+ "b1l06-hobby-2": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Dancing: the young woman dances with her arms up, mid-step"
+ },
+ "b1l06-hobby-3": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Drawing: the young woman sits at the table drawing a picture of a flower"
+ },
+ "b1l06-outing-1": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Mountain: the two friends stand on a mountain path looking at the view"
+ },
+ "b1l06-outing-2": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Movie theater: the two friends sit in a movie theater in front of the big screen"
+ },
+ "b1l06-outing-3": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Beach: the two friends stand on the sand at the beach by the sea"
+ },
+ "b1l06-race-1": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Sister ahead: the younger sister runs fast, far ahead of her older brother, who jogs slowly behind"
+ },
+ "b1l06-race-2": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Brother ahead: the older brother runs fast, far ahead of his younger sister, who jogs slowly behind"
+ },
+ "b1l06-race-3": {
+  "lesson": "b1l06",
+  "kind": "panel",
+  "description": "Side by side: the brother and sister both run fast, level with each other"
+ },
+ "b1l07-airport-ways": {
+  "lesson": "b1l07",
+  "kind": "realia",
+  "description": "A hotel lobby sign comparing three ways to get to the airport: minutes and price for the MRT, the bus and a taxi"
+ },
+ "b1l07-check-1": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Paper map: he looks at a big paper map"
+ },
+ "b1l07-check-2": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Phone: he looks at a map on his phone"
+ },
+ "b1l07-check-3": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Watch: he looks at his wristwatch"
+ },
+ "b1l07-corner-1": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Post office next to the hotel: green shop front, a green and a red mailbox outside"
+ },
+ "b1l07-corner-2": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Supermarket next to the hotel: shopping carts outside, fruit and food on shelves inside"
+ },
+ "b1l07-corner-3": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Café next to the hotel: small tables outside with coffee cups"
+ },
+ "b1l07-line-1": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Red line: an MRT train with a red stripe and a red round marker on the platform pillar"
+ },
+ "b1l07-line-2": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Green line: an MRT train with a green stripe and a green round marker on the platform pillar"
+ },
+ "b1l07-line-3": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Blue line: an MRT train with a blue stripe and a blue round marker on the platform pillar"
+ },
+ "b1l07-nearby": {
+  "lesson": "b1l07",
+  "kind": "realia",
+  "description": "A signboard at the school gate listing four nearby places and how many minutes each one is on foot"
+ },
+ "b1l07-ride-1": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Walking: she walks along the street, no bus or taxi"
+ },
+ "b1l07-ride-2": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Bus: she gets on a city bus"
+ },
+ "b1l07-ride-3": {
+  "lesson": "b1l07",
+  "kind": "panel",
+  "description": "Taxi: she gets into a yellow taxi"
+ },
+ "b1l07-street": {
+  "lesson": "b1l07",
+  "kind": "scene",
+  "description": "A city street in the daytime: a big, smart hotel with a small yellow taxi parked in front of its entrance, the driver sitting inside at the wheel, waiting (nobody stands outside or behind the taxi); right next to the hotel, a post office with a green front and a green mailbox; a blue bus at a bus stop a little way down the street; Youmei and Yuanzhen stand at the hotel entrance, just arrived, Yuanzhen holding a phone that shows a map."
+ },
+ "b1l08-brother-1": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "Tall and thin: the young man is slim, and his head almost reaches the top of the door"
+ },
+ "b1l08-brother-2": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "Short and thin: the young man is slim, and his head is far below the top of the door"
+ },
+ "b1l08-brother-3": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "Tall and fat: the young man is round and heavy, and his head almost reaches the top of the door"
+ },
+ "b1l08-clothes-1": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "A skirt: one black skirt laid flat on the shop counter"
+ },
+ "b1l08-clothes-2": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "Pants: one pair of black pants laid flat on the shop counter"
+ },
+ "b1l08-clothes-3": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "Shoes: one pair of black shoes on the shop counter"
+ },
+ "b1l08-floors": {
+  "lesson": "b1l08",
+  "kind": "realia",
+  "description": "A department store floor guide by the elevator. One floor per row, from 5樓 at the top down to 1樓: each row starts with the floor number, then what is sold on that floor. The opening hours are at the bottom"
+ },
+ "b1l08-purse-1": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "New black purse: a shiny new black purse on the table"
+ },
+ "b1l08-purse-2": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "Old black purse: the same black purse, still black but worn, with scuffed corners and a small patch"
+ },
+ "b1l08-purse-3": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "New yellow purse: a shiny new yellow purse on the table"
+ },
+ "b1l08-reader-1": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "A young man: a young man with short black hair reads a magazine by the bookstore shelf"
+ },
+ "b1l08-reader-2": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "An old man: an old man with grey hair reads a magazine by the bookstore shelf"
+ },
+ "b1l08-reader-3": {
+  "lesson": "b1l08",
+  "kind": "panel",
+  "description": "A young woman: a young woman with long hair reads a magazine by the bookstore shelf"
+ },
+ "b1l08-shoe-poster": {
+  "lesson": "b1l08",
+  "kind": "realia",
+  "description": "A price poster in a shoe shop window, with a black shoe, a white shoe and a pair of socks, each with its price"
+ },
+ "b1l08-store": {
+  "lesson": "b1l08",
+  "kind": "scene",
+  "description": "A department store clothing floor: Yiwen holds a long blue skirt up in front of a mirror while Yuanzhen smiles and gives a thumbs-up. Behind them are a rack of red, yellow, white and green skirts (none of them blue or black) and an open elevator. No bags, purses or phones are in the picture."
+ },
+ "b1l09-books-1": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "The boy has a tall stack of books; the girl has one book"
+ },
+ "b1l09-books-2": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "The girl has a tall stack of books; the boy has one book"
+ },
+ "b1l09-books-3": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "The boy and the girl have one book each"
+ },
+ "b1l09-brush-1": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "Between: the brush lies on the desk between the book and the cup"
+ },
+ "b1l09-brush-2": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "On the book: the brush lies on top of the book"
+ },
+ "b1l09-brush-3": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "In the cup: the brush stands in the cup"
+ },
+ "b1l09-calligraphy": {
+  "lesson": "b1l09",
+  "kind": "scene",
+  "description": "A calligraphy class in a classroom with a clean blackboard: at the front the teacher writes with a big writing brush to show the class, while a boy and a girl sit at their desks with brushes, ink and white paper and watch her before they practice."
+ },
+ "b1l09-doing-1": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "Calligraphy: she writes on white paper with a writing brush"
+ },
+ "b1l09-doing-2": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "Homework: she writes in a notebook with a pencil"
+ },
+ "b1l09-doing-3": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "Reading: she reads a book, with no pencil or brush in her hand"
+ },
+ "b1l09-exchange": {
+  "lesson": "b1l09",
+  "kind": "realia",
+  "description": "A small card pinned to a school notice board"
+ },
+ "b1l09-notice": {
+  "lesson": "b1l09",
+  "kind": "realia",
+  "description": "A notice taped to a classroom door"
+ },
+ "b1l09-teacher-1": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "Across: the teacher sits across the desk from the boy, facing him, watching him write in his notebook"
+ },
+ "b1l09-teacher-2": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "Beside: the teacher sits right next to the boy, side by side, watching him write in his notebook"
+ },
+ "b1l09-teacher-3": {
+  "lesson": "b1l09",
+  "kind": "panel",
+  "description": "Behind: the teacher stands squarely behind the boy's chair, both hands on the chair back, looking down over his head, watching him write"
+ },
+ "b1l10-hours": {
+  "lesson": "b1l10",
+  "kind": "realia",
+  "description": "A sign by a hospital door with its opening hours"
+ },
+ "b1l10-hurt-1": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Head: the young man presses both hands flat on his forehead; both ears are uncovered"
+ },
+ "b1l10-hurt-2": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Belly: the young man holds his belly with both hands"
+ },
+ "b1l10-hurt-3": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Ear: the young man cups one hand over one ear; his other hand rests on his knee"
+ },
+ "b1l10-masks-1": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Only the boy in a mask: two students with school backpacks; the boy wears a face mask, the girl does not"
+ },
+ "b1l10-masks-2": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Only the girl in a mask: two students with school backpacks; the girl wears a face mask, the boy does not"
+ },
+ "b1l10-masks-3": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Both in masks: two students with school backpacks; the boy and the girl both wear face masks"
+ },
+ "b1l10-notice": {
+  "lesson": "b1l10",
+  "kind": "realia",
+  "description": "A notice on a classroom notice board about colds"
+ },
+ "b1l10-waiting-room": {
+  "lesson": "b1l10",
+  "kind": "scene",
+  "description": "A clinic waiting room: a worried mother holds her small son, who holds his belly; a young man in a face mask and glasses stands away from the desk, bent a little forward, coughing (small cough lines at his mask) with one hand flat on his chest and the other arm at his side, sleeves pushed up, both bare wrists in plain view; a doctor sits at the desk with a glass of water on it. Only the young man wears a mask: the mother, the boy and the doctor wear none. Nobody wears a watch."
+ },
+ "b1l10-wash-1": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Washing his hands: the little boy rubs soapy hands under the tap; his face and hair are dry"
+ },
+ "b1l10-wash-2": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Washing his face: the little boy splashes water on his face; his hair is dry"
+ },
+ "b1l10-wash-3": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "Washing his hair: the little boy has shampoo foam in his hair; his face is dry"
+ },
+ "b1l10-with-1": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "With her mother: the young woman stands at the hospital door next to her mother"
+ },
+ "b1l10-with-2": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "With her father: the young woman stands at the hospital door next to her father"
+ },
+ "b1l10-with-3": {
+  "lesson": "b1l10",
+  "kind": "panel",
+  "description": "With her little brother: the young woman stands at the hospital door next to a small boy"
  }
 }

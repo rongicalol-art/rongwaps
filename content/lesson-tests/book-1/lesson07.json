@@ -1,0 +1,2444 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l07",
+  "bookId": 1,
+  "lessonId": 7,
+  "band": "A",
+  "allowWords": [
+    "友美",
+    "宜文",
+    "分鐘"
+  ],
+  "slots": [
+    {
+      "id": "hear-ride",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l07-hear-ride-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳怎麼去飯店？",
+              "simplified": "你怎么去饭店？",
+              "pinyin": "Nǐ zěnme qù fàndiàn?",
+              "english": "How are you getting to the hotel?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我坐公車去。",
+              "simplified": "我坐公车去。",
+              "pinyin": "Wǒ zuò gōngchē qù.",
+              "english": "I'm taking the bus."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-hear-ride-1-q",
+              "choices": [
+                {
+                  "picture": "b1l07-ride-1",
+                  "alt": "Walking: she walks along the street, no bus or taxi"
+                },
+                {
+                  "picture": "b1l07-ride-2",
+                  "alt": "Bus: she gets on a city bus"
+                },
+                {
+                  "picture": "b1l07-ride-3",
+                  "alt": "Taxi: she gets into a yellow taxi"
+                }
+              ],
+              "key": 1,
+              "why": "坐公車去 means going by bus. She does not walk or take a taxi.",
+              "focus": {
+                "zh": "坐公車去",
+                "en": "going by bus"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-01",
+                "B1L07-1-09",
+                "B1L07-1-11",
+                "B1L07-1-03"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-hear-ride-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "飯店很近，我走路去。",
+              "simplified": "饭店很近，我走路去。",
+              "pinyin": "Fàndiàn hěn jìn, wǒ zǒulù qù.",
+              "english": "The hotel is close, so I'll walk there."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-hear-ride-2-q",
+              "choices": [
+                {
+                  "picture": "b1l07-ride-1",
+                  "alt": "Walking: she walks along the street, no bus or taxi"
+                },
+                {
+                  "picture": "b1l07-ride-2",
+                  "alt": "Bus: she gets on a city bus"
+                },
+                {
+                  "picture": "b1l07-ride-3",
+                  "alt": "Taxi: she gets into a yellow taxi"
+                }
+              ],
+              "key": 0,
+              "why": "The hotel is 很近 (close), so she says 走路去: she goes on foot.",
+              "focus": {
+                "zh": "走路去",
+                "en": "going on foot"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-21",
+                "B1L07-1-18",
+                "B1L07-1-03"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-hear-ride-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我有點累，想坐計程車去。",
+              "simplified": "我有点累，想坐计程车去。",
+              "pinyin": "Wǒ yǒudiǎn lèi, xiǎng zuò jìchéngchē qù.",
+              "english": "I'm a bit tired. I want to take a taxi there."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-hear-ride-3-q",
+              "choices": [
+                {
+                  "picture": "b1l07-ride-1",
+                  "alt": "Walking: she walks along the street, no bus or taxi"
+                },
+                {
+                  "picture": "b1l07-ride-2",
+                  "alt": "Bus: she gets on a city bus"
+                },
+                {
+                  "picture": "b1l07-ride-3",
+                  "alt": "Taxi: she gets into a yellow taxi"
+                }
+              ],
+              "key": 2,
+              "why": "She is a bit tired, so she wants 坐計程車去: to go by taxi.",
+              "focus": {
+                "zh": "坐計程車去",
+                "en": "going by taxi"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-13",
+                "B1L07-1-09",
+                "B1L06-2-06"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-check",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l07-hear-check-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我不看手機，我看這張大地圖。",
+              "simplified": "我不看手机，我看这张大地图。",
+              "pinyin": "Wǒ bú kàn shǒujī, wǒ kàn zhè zhāng dà dìtú.",
+              "english": "I'm not looking at my phone; I'm looking at this big map."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-hear-check-1-q",
+              "choices": [
+                {
+                  "picture": "b1l07-check-1",
+                  "alt": "Paper map: he looks at a big paper map"
+                },
+                {
+                  "picture": "b1l07-check-2",
+                  "alt": "Phone: he looks at a map on his phone"
+                },
+                {
+                  "picture": "b1l07-check-3",
+                  "alt": "Watch: he looks at his wristwatch"
+                }
+              ],
+              "key": 0,
+              "why": "He says 不看手機 (not the phone) and looks at 這張大地圖, a big paper map (張 counts flat things like paper).",
+              "focus": {
+                "zh": "這張大地圖",
+                "en": "a paper map"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-24",
+                "B1L05-2-12",
+                "B1L06-2-10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-hear-check-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我沒有地圖，可是手機上有。",
+              "simplified": "我没有地图，可是手机上有。",
+              "pinyin": "Wǒ méiyǒu dìtú, kěshì shǒujī shàng yǒu.",
+              "english": "I don't have a map, but there's one on my phone."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-hear-check-2-q",
+              "choices": [
+                {
+                  "picture": "b1l07-check-1",
+                  "alt": "Paper map: he looks at a big paper map"
+                },
+                {
+                  "picture": "b1l07-check-2",
+                  "alt": "Phone: he looks at a map on his phone"
+                },
+                {
+                  "picture": "b1l07-check-3",
+                  "alt": "Watch: he looks at his wristwatch"
+                }
+              ],
+              "key": 1,
+              "why": "He says 沒有地圖 (no paper map), but 手機上有: there is a map on his phone.",
+              "focus": {
+                "zh": "手機上有",
+                "en": "a map on a phone"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L06-2-10",
+                "B1L07-1-24",
+                "B1L02-1-18",
+                "B1L05-2-02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-hear-check-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你看地圖還是看手機？",
+              "simplified": "你看地图还是看手机？",
+              "pinyin": "Nǐ kàn dìtú háishì kàn shǒujī?",
+              "english": "Are you looking at the map or at your phone?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "都不是，我看錶。三點四十分了。",
+              "simplified": "都不是，我看表。三点四十分了。",
+              "pinyin": "Dōu bú shì, wǒ kàn biǎo. Sān diǎn sìshí fēn le.",
+              "english": "Neither. I'm looking at my watch. It's three forty."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-hear-check-3-q",
+              "choices": [
+                {
+                  "picture": "b1l07-check-1",
+                  "alt": "Paper map: he looks at a big paper map"
+                },
+                {
+                  "picture": "b1l07-check-2",
+                  "alt": "Phone: he looks at a map on his phone"
+                },
+                {
+                  "picture": "b1l07-check-3",
+                  "alt": "Watch: he looks at his wristwatch"
+                }
+              ],
+              "key": 2,
+              "why": "She asks 地圖還是手機 (the map or the phone?), and he answers 都不是 (neither): 我看錶, he looks at his watch. The map and the phone are the two things he says no to.",
+              "focus": {
+                "zh": "都不是，我看錶",
+                "en": "neither: a watch"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-25",
+                "B1L07-1-24",
+                "B1L06-2-10",
+                "B1L03-2-19"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-school",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l07-picture-school-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L07-R01",
+            "alt": "Two young women stand in a school hallway just outside an open classroom door. Both carry school bags (one a backpack, one a tote bag), like the other students in the hallway. One holds a phone with a map on its screen and points at it; only these two look at it. They hold no book. Inside the classroom a teacher stands at the blackboard and students sit at desks facing him; other students walk away down the hallway behind them. Nobody in the picture reads a book, and there is no computer anywhere."
+          },
+          "questions": [
+            {
+              "id": "b1l07-picture-school-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "兩個人一起看書上的地圖。",
+                  "simplified": "两个人一起看书上的地图。",
+                  "pinyin": "Liǎng ge rén yìqǐ kàn shū shàng de dìtú.",
+                  "english": "Two people are looking at a map in a book together."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個人一起看手機上的地圖。",
+                  "simplified": "两个人一起看手机上的地图。",
+                  "pinyin": "Liǎng ge rén yìqǐ kàn shǒujī shàng de dìtú.",
+                  "english": "Two people are looking at a map on a phone together."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個人一起看電腦上的地圖。",
+                  "simplified": "两个人一起看电脑上的地图。",
+                  "pinyin": "Liǎng ge rén yìqǐ kàn diànnǎo shàng de dìtú.",
+                  "english": "Two people are looking at a map on a computer together."
+                }
+              ],
+              "key": 1,
+              "why": "The two of them look at a map on a phone (手機上的地圖). There is no book (書) and no computer (電腦) in the picture.",
+              "focus": {
+                "zh": "手機上的地圖",
+                "en": "a map on a phone"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-24",
+                "B1L06-2-10",
+                "B1L06-2-09",
+                "B1L03-1-07"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-picture-school-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L07-R01",
+            "alt": "Two young women stand in a school hallway just outside an open classroom door. Both carry school bags (one a backpack, one a tote bag), like the other students in the hallway. One holds a phone with a map on its screen and points at it; only these two look at it. They hold no book. Inside the classroom a teacher stands at the blackboard and students sit at desks facing him; other students walk away down the hallway behind them. Nobody in the picture reads a book, and there is no computer anywhere."
+          },
+          "questions": [
+            {
+              "id": "b1l07-picture-school-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "兩個學生在家裡看地圖。",
+                  "simplified": "两个学生在家里看地图。",
+                  "pinyin": "Liǎng ge xuéshēng zài jiā lǐ kàn dìtú.",
+                  "english": "Two students are looking at a map at home."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個學生在咖啡廳看地圖。",
+                  "simplified": "两个学生在咖啡厅看地图。",
+                  "pinyin": "Liǎng ge xuéshēng zài kāfēitīng kàn dìtú.",
+                  "english": "Two students are looking at a map in a café."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個學生在學校看地圖。",
+                  "simplified": "两个学生在学校看地图。",
+                  "pinyin": "Liǎng ge xuéshēng zài xuéxiào kàn dìtú.",
+                  "english": "Two students are looking at a map at school."
+                }
+              ],
+              "key": 2,
+              "why": "The hallway, the classroom and their school bags show they are at school (在學校), not at home (家裡) or in a café (咖啡廳).",
+              "focus": {
+                "zh": "在學校看地圖",
+                "en": "looking at a map at school"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-24",
+                "B1L02-1-06",
+                "B1L05-1-02",
+                "B1L05-1-08"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-mrt",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l07-picture-mrt-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L07-R02",
+            "alt": "A young woman sits by the window of an MRT train car (rows of seats, metal poles, and a colored MRT line map above the window), with no companion beside her, her chin on her hand, looking out of the window at a plane flying in the sky above an airport (more planes on the ground, city buildings behind, an elevated track running below). Other passengers sit further back in the car. She holds no phone, map or book, only the strap of a big bag, and she is not talking to anyone."
+          },
+          "questions": [
+            {
+              "id": "b1l07-picture-mrt-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她坐捷運，看飛機。",
+                  "simplified": "她坐捷运，看飞机。",
+                  "pinyin": "Tā zuò jiéyùn, kàn fēijī.",
+                  "english": "She's riding the MRT, watching the planes."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她坐計程車，看飛機。",
+                  "simplified": "她坐计程车，看飞机。",
+                  "pinyin": "Tā zuò jìchéngchē, kàn fēijī.",
+                  "english": "She's in a taxi, watching the planes."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她開車，看飛機。",
+                  "simplified": "她开车，看飞机。",
+                  "pinyin": "Tā kāichē, kàn fēijī.",
+                  "english": "She's driving, watching the planes."
+                }
+              ],
+              "key": 0,
+              "why": "She sits by the window of a long train car with rows of seats, other passengers and a line map: she is riding the MRT (坐捷運). She is not in a taxi (計程車), and she is not driving (開車).",
+              "focus": {
+                "zh": "坐捷運",
+                "en": "riding the MRT"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-10",
+                "B1L07-1-09",
+                "B1L07-1-13",
+                "B1L07-3-05"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-picture-mrt-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L07-R02",
+            "alt": "A young woman sits by the window of an MRT train car (rows of seats, metal poles, and a colored MRT line map above the window), with no companion beside her, her chin on her hand, looking out of the window at a plane flying in the sky above an airport (more planes on the ground, city buildings behind, an elevated track running below). Other passengers sit further back in the car. She holds no phone, map or book, only the strap of a big bag, and she is not talking to anyone."
+          },
+          "questions": [
+            {
+              "id": "b1l07-picture-mrt-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她跟旁邊的朋友說話。",
+                  "simplified": "她跟旁边的朋友说话。",
+                  "pinyin": "Tā gēn pángbiān de péngyǒu shuōhuà.",
+                  "english": "She's talking with the friend next to her."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她看窗戶外面的風景。",
+                  "simplified": "她看窗户外面的风景。",
+                  "pinyin": "Tā kàn chuānghù wàimiàn de fēngjǐng.",
+                  "english": "She's looking at the view out of the window."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她看手機上的電影。",
+                  "simplified": "她看手机上的电影。",
+                  "pinyin": "Tā kàn shǒujī shàng de diànyǐng.",
+                  "english": "She's watching a movie on her phone."
+                }
+              ],
+              "key": 1,
+              "why": "She looks at the view out of the window (看窗戶外面的風景). No friend sits next to her (旁邊的朋友), and her hands hold no phone, so she is not watching a movie on one (手機上的電影).",
+              "focus": {
+                "zh": "看窗戶外面的風景",
+                "en": "looking out the window"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L05-3-05",
+                "B1L05-2-08",
+                "B1L06-1-11",
+                "B1L06-2-10"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-from",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l07-dialogue-from-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳明天從家裡去機場嗎？",
+              "simplified": "你明天从家里去机场吗？",
+              "pinyin": "Nǐ míngtiān cóng jiā lǐ qù jīchǎng ma?",
+              "english": "Are you going to the airport from home tomorrow?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我下午有課，從學校去。",
+              "simplified": "不是，我下午有课，从学校去。",
+              "pinyin": "Bú shì, wǒ xiàwǔ yǒu kè, cóng xuéxiào qù.",
+              "english": "No. I have class in the afternoon, so I'll go from school."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-from-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的明天從哪裡去機場？",
+                "simplified": "女的明天从哪里去机场？",
+                "pinyin": "Nǚde míngtiān cóng nǎlǐ qù jīchǎng?",
+                "english": "Where is the woman going to the airport from tomorrow?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "家裡",
+                  "simplified": "家里",
+                  "pinyin": "jiā lǐ",
+                  "english": "home"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "english": "school"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "飯店",
+                  "simplified": "饭店",
+                  "pinyin": "fàndiàn",
+                  "english": "the hotel"
+                }
+              ],
+              "key": 1,
+              "why": "She says 不是 to 從家裡, then 從學校去: she has class, so she leaves for the airport from school.",
+              "focus": {
+                "zh": "從學校去",
+                "en": "going from a place"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L07-3-04",
+                "B1L02-1-06"
+              ],
+              "grammarIds": [
+                "B1L07-G01-P158"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-dialogue-from-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你要到哪裡去？要到郵局去嗎？",
+              "simplified": "你要到哪里去？要到邮局去吗？",
+              "pinyin": "Nǐ yào dào nǎlǐ qù? Yào dào yóujú qù ma?",
+              "english": "Where are you going? To the post office?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我要到超市去買水果，不去郵局。",
+              "simplified": "我要到超市去买水果，不去邮局。",
+              "pinyin": "Wǒ yào dào chāoshì qù mǎi shuǐguǒ, bú qù yóujú.",
+              "english": "I'm going to the supermarket to buy fruit, not to the post office."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-from-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的要到哪裡去？",
+                "simplified": "男的要到哪里去？",
+                "pinyin": "Nánde yào dào nǎlǐ qù?",
+                "english": "Where is the man going?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "郵局",
+                  "simplified": "邮局",
+                  "pinyin": "yóujú",
+                  "english": "the post office"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "市場",
+                  "simplified": "市场",
+                  "pinyin": "shìchǎng",
+                  "english": "the market"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "超市",
+                  "simplified": "超市",
+                  "pinyin": "chāoshì",
+                  "english": "the supermarket"
+                }
+              ],
+              "key": 2,
+              "why": "He says 我要到超市去: he is going to the supermarket, and 不去郵局 (not to the post office). 市場 (market) is not what he says.",
+              "focus": {
+                "zh": "到超市去",
+                "en": "going to a place"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-02",
+                "B1L07-2-11",
+                "B1L07-2-06",
+                "B1L07-2-12"
+              ],
+              "grammarIds": [
+                "B1L07-G01-P158"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-dialogue-from-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳的朋友從美國來嗎？",
+              "simplified": "你的朋友从美国来吗？",
+              "pinyin": "Nǐ de péngyǒu cóng Měiguó lái ma?",
+              "english": "Is your friend coming from the USA?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "她從英國來，不是從美國來。",
+              "simplified": "她从英国来，不是从美国来。",
+              "pinyin": "Tā cóng Yīngguó lái, bú shì cóng Měiguó lái.",
+              "english": "She's coming from the UK, not from the USA."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-from-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這個朋友從哪裡來？",
+                "simplified": "这个朋友从哪里来？",
+                "pinyin": "Zhège péngyǒu cóng nǎlǐ lái?",
+                "english": "Where is this friend coming from?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "英國",
+                  "simplified": "英国",
+                  "pinyin": "Yīngguó",
+                  "english": "the UK"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "美國",
+                  "simplified": "美国",
+                  "pinyin": "Měiguó",
+                  "english": "the USA"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "日本",
+                  "simplified": "日本",
+                  "pinyin": "Rìběn",
+                  "english": "Japan"
+                }
+              ],
+              "key": 0,
+              "why": "She says 她從英國來: her friend comes from the UK. 美國 is what the man asked about, and she says 不是從美國來.",
+              "focus": {
+                "zh": "從英國來",
+                "en": "coming from a place"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L01-1-18",
+                "B1L01-1-17",
+                "B1L01-3-02"
+              ],
+              "grammarIds": [
+                "B1L07-G01-P158"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-how",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l07-dialogue-how-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "飯店有點遠，我們怎麼去？",
+              "simplified": "饭店有点远，我们怎么去？",
+              "pinyin": "Fàndiàn yǒudiǎn yuǎn, wǒmen zěnme qù?",
+              "english": "The hotel is a bit far. How shall we get there?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "坐公車去太慢了，坐計程車吧。",
+              "simplified": "坐公车去太慢了，坐计程车吧。",
+              "pinyin": "Zuò gōngchē qù tài màn le, zuò jìchéngchē ba.",
+              "english": "Going by bus is too slow. Let's take a taxi."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-how-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的想怎麼去飯店？",
+                "simplified": "男的想怎么去饭店？",
+                "pinyin": "Nánde xiǎng zěnme qù fàndiàn?",
+                "english": "How does the man want to get to the hotel?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "走路",
+                  "simplified": "走路",
+                  "pinyin": "zǒulù",
+                  "english": "on foot"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐計程車",
+                  "simplified": "坐计程车",
+                  "pinyin": "zuò jìchéngchē",
+                  "english": "by taxi"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐公車",
+                  "simplified": "坐公车",
+                  "pinyin": "zuò gōngchē",
+                  "english": "by bus"
+                }
+              ],
+              "key": 1,
+              "why": "He says 坐公車去太慢了: the bus ride first, then his comment, too slow. So he wants 坐計程車, a taxi.",
+              "focus": {
+                "zh": "坐公車去太慢了",
+                "en": "activity first, then comment"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-13",
+                "B1L07-1-11",
+                "B1L06-1-17",
+                "B1L07-1-01"
+              ],
+              "grammarIds": [
+                "B1L07-G04-P170",
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-dialogue-how-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我們開車去，還是坐火車去？",
+              "simplified": "我们开车去，还是坐火车去？",
+              "pinyin": "Wǒmen kāichē qù, háishì zuò huǒchē qù?",
+              "english": "Shall we drive there, or take the train?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們坐火車吧，開車去太累了。",
+              "simplified": "我们坐火车吧，开车去太累了。",
+              "pinyin": "Wǒmen zuò huǒchē ba, kāichē qù tài lèi le.",
+              "english": "Let's take the train. Driving there is too tiring."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-how-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的想怎麼去？",
+                "simplified": "女的想怎么去？",
+                "pinyin": "Nǚde xiǎng zěnme qù?",
+                "english": "How does the woman want to go?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "坐火車",
+                  "simplified": "坐火车",
+                  "pinyin": "zuò huǒchē",
+                  "english": "by train"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "開車",
+                  "simplified": "开车",
+                  "pinyin": "kāichē",
+                  "english": "by car"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐飛機",
+                  "simplified": "坐飞机",
+                  "pinyin": "zuò fēijī",
+                  "english": "by plane"
+                }
+              ],
+              "key": 0,
+              "why": "She says 我們坐火車吧 (let's take the train). 開車去太累了 says driving first, then her comment: too tiring.",
+              "focus": {
+                "zh": "開車去太累了",
+                "en": "activity first, then comment"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-3-05",
+                "B1L07-1-14",
+                "B1L07-1-09"
+              ],
+              "grammarIds": [
+                "B1L07-G04-P170",
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-dialogue-how-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "去郵局要坐公車還是坐計程車？",
+              "simplified": "去邮局要坐公车还是坐计程车？",
+              "pinyin": "Qù yóujú yào zuò gōngchē háishì zuò jìchéngchē?",
+              "english": "Should we take the bus or a taxi to the post office?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "郵局很近，走路去最方便。",
+              "simplified": "邮局很近，走路去最方便。",
+              "pinyin": "Yóujú hěn jìn, zǒulù qù zuì fāngbiàn.",
+              "english": "The post office is close. Walking there is the most convenient."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-how-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的想怎麼去郵局？",
+                "simplified": "男的想怎么去邮局？",
+                "pinyin": "Nánde xiǎng zěnme qù yóujú?",
+                "english": "How does the man want to get to the post office?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "坐公車",
+                  "simplified": "坐公车",
+                  "pinyin": "zuò gōngchē",
+                  "english": "by bus"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐計程車",
+                  "simplified": "坐计程车",
+                  "pinyin": "zuò jìchéngchē",
+                  "english": "by taxi"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "走路",
+                  "simplified": "走路",
+                  "pinyin": "zǒulù",
+                  "english": "on foot"
+                }
+              ],
+              "key": 2,
+              "why": "She offers the bus or a taxi (坐公車還是坐計程車), but he says 郵局很近，走路去最方便: walking first, then his comment. He takes neither ride.",
+              "focus": {
+                "zh": "走路去最方便",
+                "en": "activity first, then comment"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-21",
+                "B1L07-2-15",
+                "B1L07-1-18",
+                "B1L07-2-06"
+              ],
+              "grammarIds": [
+                "B1L07-G04-P170",
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-a",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l07-dialogue-review-a-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你會打網球嗎？",
+              "simplified": "你会打网球吗？",
+              "pinyin": "Nǐ huì dǎ wǎngqiú ma?",
+              "english": "Can you play tennis?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我不會打網球，可是會打籃球。",
+              "simplified": "我不会打网球，可是会打篮球。",
+              "pinyin": "Wǒ bú huì dǎ wǎngqiú, kěshì huì dǎ lánqiú.",
+              "english": "I can't play tennis, but I can play basketball."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-review-a-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的會打什麼球？",
+                "simplified": "男的会打什么球？",
+                "pinyin": "Nánde huì dǎ shénme qiú?",
+                "english": "What ball game can the man play?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "籃球",
+                  "simplified": "篮球",
+                  "pinyin": "lánqiú",
+                  "english": "basketball"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "網球",
+                  "simplified": "网球",
+                  "pinyin": "wǎngqiú",
+                  "english": "tennis"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "棒球",
+                  "simplified": "棒球",
+                  "pinyin": "bàngqiú",
+                  "english": "baseball"
+                }
+              ],
+              "key": 0,
+              "why": "He says 不會打網球 (can't play tennis) but 會打籃球: he can play basketball.",
+              "focus": {
+                "zh": "會打籃球",
+                "en": "can play (a skill)"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L06-1-04",
+                "B1L06-1-02",
+                "B1L06-1-01"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-dialogue-review-a-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "你們家的狗在哪裡？",
+              "simplified": "你们家的狗在哪里？",
+              "pinyin": "Nǐmen jiā de gǒu zài nǎlǐ?",
+              "english": "Where's your family's dog?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不在客廳，在廚房的椅子下面。",
+              "simplified": "不在客厅，在厨房的椅子下面。",
+              "pinyin": "Bú zài kètīng, zài chúfáng de yǐzi xiàmiàn.",
+              "english": "Not in the living room. It's under the chair in the kitchen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-review-a-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "狗在哪裡？",
+                "simplified": "狗在哪里？",
+                "pinyin": "Gǒu zài nǎlǐ?",
+                "english": "Where is the dog?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在客廳",
+                  "simplified": "在客厅",
+                  "pinyin": "zài kètīng",
+                  "english": "in the living room"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在外面",
+                  "simplified": "在外面",
+                  "pinyin": "zài wàimiàn",
+                  "english": "outside"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在廚房",
+                  "simplified": "在厨房",
+                  "pinyin": "zài chúfáng",
+                  "english": "in the kitchen"
+                }
+              ],
+              "key": 2,
+              "why": "She says 不在客廳 (not in the living room), then 在廚房的椅子下面: the dog is under a chair in the kitchen.",
+              "focus": {
+                "zh": "在廚房",
+                "en": "where something is"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-3-08",
+                "B1L05-2-26",
+                "B1L05-2-09",
+                "B1L05-1-02"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-b",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l07-dialogue-review-b-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "先生，果汁跟牛奶多少錢？",
+              "simplified": "先生，果汁跟牛奶多少钱？",
+              "pinyin": "Xiānshēng, guǒzhī gēn niúnǎi duōshǎo qián?",
+              "english": "Excuse me, sir, how much are the juice and the milk?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "果汁六十塊，牛奶四十五塊。",
+              "simplified": "果汁六十块，牛奶四十五块。",
+              "pinyin": "Guǒzhī liùshí kuài, niúnǎi sìshíwǔ kuài.",
+              "english": "The juice is sixty, and the milk is forty-five."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-review-b-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "果汁多少錢？",
+                "simplified": "果汁多少钱？",
+                "pinyin": "Guǒzhī duōshǎo qián?",
+                "english": "How much is the juice?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "四十五塊",
+                  "simplified": "四十五块",
+                  "pinyin": "sìshíwǔ kuài",
+                  "english": "forty-five dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "六十塊",
+                  "simplified": "六十块",
+                  "pinyin": "liùshí kuài",
+                  "english": "sixty dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一百零五塊",
+                  "simplified": "一百零五块",
+                  "pinyin": "yì bǎi líng wǔ kuài",
+                  "english": "a hundred and five dollars"
+                }
+              ],
+              "key": 1,
+              "why": "The juice is 六十塊. 四十五塊 is the milk, and 一百零五 is both together.",
+              "focus": {
+                "zh": "多少錢",
+                "en": "asking the price"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-16",
+                "B1L04-3-06",
+                "B1L03-2-09"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-dialogue-review-b-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳想送朋友什麼生日禮物？",
+              "simplified": "你想送朋友什么生日礼物？",
+              "pinyin": "Nǐ xiǎng sòng péngyǒu shénme shēngrì lǐwù?",
+              "english": "What birthday present do you want to give your friend?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我想送她一件衣服，不想送書。",
+              "simplified": "我想送她一件衣服，不想送书。",
+              "pinyin": "Wǒ xiǎng sòng tā yí jiàn yīfu, bù xiǎng sòng shū.",
+              "english": "I want to give her some clothes. I don't want to give a book."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-dialogue-review-b-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的想送朋友什麼？",
+                "simplified": "女的想送朋友什么？",
+                "pinyin": "Nǚde xiǎng sòng péngyǒu shénme?",
+                "english": "What does the woman want to give her friend?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一件衣服",
+                  "simplified": "一件衣服",
+                  "pinyin": "yí jiàn yīfu",
+                  "english": "some clothes"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一本書",
+                  "simplified": "一本书",
+                  "pinyin": "yì běn shū",
+                  "english": "a book"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一枝筆",
+                  "simplified": "一枝笔",
+                  "pinyin": "yì zhī bǐ",
+                  "english": "a pen"
+                }
+              ],
+              "key": 0,
+              "why": "She says 想送她一件衣服 (wants to give her clothes) and 不想送書 (does not want to give a book).",
+              "focus": {
+                "zh": "送她一件衣服",
+                "en": "giving someone a gift"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-2-23",
+                "B1L03-2-24",
+                "B1L03-1-02"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-corner",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l07-read-corner-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l07-read-corner-1-q",
+              "prompt": {
+                "traditional": "飯店旁邊有一家超市，我們可以去那裡買水果。",
+                "simplified": "饭店旁边有一家超市，我们可以去那里买水果。",
+                "pinyin": "Fàndiàn pángbiān yǒu yì jiā chāoshì, wǒmen kěyǐ qù nàlǐ mǎi shuǐguǒ.",
+                "english": "There's a supermarket next to the hotel. We can buy fruit there."
+              },
+              "choices": [
+                {
+                  "picture": "b1l07-corner-1",
+                  "alt": "Post office next to the hotel: green shop front, a green and a red mailbox outside"
+                },
+                {
+                  "picture": "b1l07-corner-2",
+                  "alt": "Supermarket next to the hotel: shopping carts outside, fruit and food on shelves inside"
+                },
+                {
+                  "picture": "b1l07-corner-3",
+                  "alt": "Café next to the hotel: small tables outside with coffee cups"
+                }
+              ],
+              "key": 1,
+              "why": "超市 is a supermarket, the shop where you buy fruit. A post office does not sell fruit.",
+              "focus": {
+                "zh": "超市",
+                "en": "supermarket"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-11",
+                "B1L05-2-21",
+                "B1L07-1-03"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-read-corner-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l07-read-corner-2-q",
+              "prompt": {
+                "traditional": "飯店旁邊有一間郵局，那裡也賣信封。",
+                "simplified": "饭店旁边有一间邮局，那里也卖信封。",
+                "pinyin": "Fàndiàn pángbiān yǒu yì jiān yóujú, nàlǐ yě mài xìnfēng.",
+                "english": "There's a post office next to the hotel. It sells envelopes too."
+              },
+              "choices": [
+                {
+                  "picture": "b1l07-corner-1",
+                  "alt": "Post office next to the hotel: green shop front, a green and a red mailbox outside"
+                },
+                {
+                  "picture": "b1l07-corner-2",
+                  "alt": "Supermarket next to the hotel: shopping carts outside, fruit and food on shelves inside"
+                },
+                {
+                  "picture": "b1l07-corner-3",
+                  "alt": "Café next to the hotel: small tables outside with coffee cups"
+                }
+              ],
+              "key": 0,
+              "why": "郵局 is a post office: the shop with the mailboxes outside. It also sells 信封 (envelopes).",
+              "focus": {
+                "zh": "郵局",
+                "en": "post office"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-06",
+                "B1L07-2-10",
+                "B1L04-1-22",
+                "B1L05-2-21"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-read-corner-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l07-read-corner-3-q",
+              "prompt": {
+                "traditional": "我們先去飯店旁邊的咖啡廳喝咖啡吧。",
+                "simplified": "我们先去饭店旁边的咖啡厅喝咖啡吧。",
+                "pinyin": "Wǒmen xiān qù fàndiàn pángbiān de kāfēitīng hē kāfēi ba.",
+                "english": "Let's go to the café next to the hotel for coffee first."
+              },
+              "choices": [
+                {
+                  "picture": "b1l07-corner-1",
+                  "alt": "Post office next to the hotel: green shop front, a green and a red mailbox outside"
+                },
+                {
+                  "picture": "b1l07-corner-2",
+                  "alt": "Supermarket next to the hotel: shopping carts outside, fruit and food on shelves inside"
+                },
+                {
+                  "picture": "b1l07-corner-3",
+                  "alt": "Café next to the hotel: small tables outside with coffee cups"
+                }
+              ],
+              "key": 2,
+              "why": "咖啡廳 is a café, the place to drink coffee (喝咖啡).",
+              "focus": {
+                "zh": "咖啡廳",
+                "en": "café"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-08",
+                "B1L07-1-23",
+                "B1L05-2-21",
+                "B1L07-1-03"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-line",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l07-read-line-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l07-read-line-1-q",
+              "prompt": {
+                "traditional": "這是捷運藍線，我們在這裡上車吧。",
+                "simplified": "这是捷运蓝线，我们在这里上车吧。",
+                "pinyin": "Zhè shì jiéyùn lán xiàn, wǒmen zài zhèlǐ shàngchē ba.",
+                "english": "This is the MRT Blue Line. Let's get on here."
+              },
+              "choices": [
+                {
+                  "picture": "b1l07-line-1",
+                  "alt": "Red line: an MRT train with a red stripe and a red round marker on the platform pillar"
+                },
+                {
+                  "picture": "b1l07-line-2",
+                  "alt": "Green line: an MRT train with a green stripe and a green round marker on the platform pillar"
+                },
+                {
+                  "picture": "b1l07-line-3",
+                  "alt": "Blue line: an MRT train with a blue stripe and a blue round marker on the platform pillar"
+                }
+              ],
+              "key": 2,
+              "why": "藍線 is the Blue Line: 藍 means blue.",
+              "focus": {
+                "zh": "藍線",
+                "en": "the Blue Line"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-3-02",
+                "B1L07-3-01",
+                "B1L07-1-10",
+                "B1L07-1-15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-read-line-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l07-read-line-2-q",
+              "prompt": {
+                "traditional": "我們要坐綠色的那條線，不坐紅線。",
+                "simplified": "我们要坐绿色的那条线，不坐红线。",
+                "pinyin": "Wǒmen yào zuò lǜsè de nà tiáo xiàn, bú zuò hóng xiàn.",
+                "english": "We're taking the green line, not the Red Line."
+              },
+              "choices": [
+                {
+                  "picture": "b1l07-line-1",
+                  "alt": "Red line: an MRT train with a red stripe and a red round marker on the platform pillar"
+                },
+                {
+                  "picture": "b1l07-line-2",
+                  "alt": "Green line: an MRT train with a green stripe and a green round marker on the platform pillar"
+                },
+                {
+                  "picture": "b1l07-line-3",
+                  "alt": "Blue line: an MRT train with a blue stripe and a blue round marker on the platform pillar"
+                }
+              ],
+              "key": 1,
+              "why": "They take 綠色的那條線, the green line. 不坐紅線 means they do not take the red one.",
+              "focus": {
+                "zh": "綠色的那條線",
+                "en": "the green line"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-3-01",
+                "B1L04-2-12",
+                "B1L07-2-02",
+                "B1L03-2-16"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-read-line-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l07-read-line-3-q",
+              "prompt": {
+                "traditional": "紅線的車來了，我們上車吧。",
+                "simplified": "红线的车来了，我们上车吧。",
+                "pinyin": "Hóng xiàn de chē lái le, wǒmen shàngchē ba.",
+                "english": "The Red Line train is here. Let's get on."
+              },
+              "choices": [
+                {
+                  "picture": "b1l07-line-1",
+                  "alt": "Red line: an MRT train with a red stripe and a red round marker on the platform pillar"
+                },
+                {
+                  "picture": "b1l07-line-2",
+                  "alt": "Green line: an MRT train with a green stripe and a green round marker on the platform pillar"
+                },
+                {
+                  "picture": "b1l07-line-3",
+                  "alt": "Blue line: an MRT train with a blue stripe and a blue round marker on the platform pillar"
+                }
+              ],
+              "key": 0,
+              "why": "紅線的車來了: the Red Line train has come. 了 shows it is here now.",
+              "focus": {
+                "zh": "紅線的車來了",
+                "en": "the train is here now"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-3-01",
+                "B1L03-2-16",
+                "B1L07-1-15",
+                "B1L07-1-26"
+              ],
+              "grammarIds": [
+                "B1L07-G03-P162"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-nearby",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l07-realia-nearby-1",
+          "kind": "realia",
+          "picture": "b1l07-nearby",
+          "alt": "A signboard at the school gate listing four nearby places and how many minutes each one is on foot",
+          "transcript": {
+            "traditional": "學校附近　捷運站　走路3分鐘　郵局　走路5分鐘　超市　走路8分鐘　電影院　走路15分鐘",
+            "simplified": "学校附近　捷运站　走路3分钟　邮局　走路5分钟　超市　走路8分钟　电影院　走路15分钟",
+            "pinyin": "Xuéxiào fùjìn: jiéyùn zhàn zǒulù 3 fēnzhōng, yóujú zǒulù 5 fēnzhōng, chāoshì zǒulù 8 fēnzhōng, diànyǐngyuàn zǒulù 15 fēnzhōng",
+            "english": "Near the school: MRT station, 3 minutes on foot; post office, 5 minutes; supermarket, 8 minutes; movie theater, 15 minutes"
+          },
+          "questions": [
+            {
+              "id": "b1l07-realia-nearby-1-q",
+              "choices": [
+                {
+                  "traditional": "從學校到郵局最近。",
+                  "simplified": "从学校到邮局最近。",
+                  "pinyin": "Cóng xuéxiào dào yóujú zuì jìn.",
+                  "english": "The post office is the closest to the school."
+                },
+                {
+                  "traditional": "從學校到超市最近。",
+                  "simplified": "从学校到超市最近。",
+                  "pinyin": "Cóng xuéxiào dào chāoshì zuì jìn.",
+                  "english": "The supermarket is the closest to the school."
+                },
+                {
+                  "traditional": "從學校到捷運站最近。",
+                  "simplified": "从学校到捷运站最近。",
+                  "pinyin": "Cóng xuéxiào dào jiéyùn zhàn zuì jìn.",
+                  "english": "The MRT station is the closest to the school."
+                }
+              ],
+              "key": 2,
+              "why": "The MRT station is only 3 minutes away on foot, so it is the closest (最近). The post office is 5 minutes and the supermarket 8.",
+              "focus": {
+                "zh": "最近",
+                "en": "the closest place"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L07-1-18",
+                "B1L07-1-10",
+                "B1L07-3-08"
+              ],
+              "grammarIds": [
+                "B1L07-G01-P158"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-realia-nearby-2",
+          "kind": "realia",
+          "picture": "b1l07-nearby",
+          "alt": "A signboard at the school gate listing four nearby places and how many minutes each one is on foot",
+          "transcript": {
+            "traditional": "學校附近　捷運站　走路3分鐘　郵局　走路5分鐘　超市　走路8分鐘　電影院　走路15分鐘",
+            "simplified": "学校附近　捷运站　走路3分钟　邮局　走路5分钟　超市　走路8分钟　电影院　走路15分钟",
+            "pinyin": "Xuéxiào fùjìn: jiéyùn zhàn zǒulù 3 fēnzhōng, yóujú zǒulù 5 fēnzhōng, chāoshì zǒulù 8 fēnzhōng, diànyǐngyuàn zǒulù 15 fēnzhōng",
+            "english": "Near the school: MRT station, 3 minutes on foot; post office, 5 minutes; supermarket, 8 minutes; movie theater, 15 minutes"
+          },
+          "questions": [
+            {
+              "id": "b1l07-realia-nearby-2-q",
+              "prompt": {
+                "traditional": "從學校到哪裡最遠？",
+                "simplified": "从学校到哪里最远？",
+                "pinyin": "Cóng xuéxiào dào nǎlǐ zuì yuǎn?",
+                "english": "Which place is the farthest from the school?"
+              },
+              "choices": [
+                {
+                  "traditional": "電影院",
+                  "simplified": "电影院",
+                  "pinyin": "diànyǐngyuàn",
+                  "english": "the movie theater"
+                },
+                {
+                  "traditional": "超市",
+                  "simplified": "超市",
+                  "pinyin": "chāoshì",
+                  "english": "the supermarket"
+                },
+                {
+                  "traditional": "捷運站",
+                  "simplified": "捷运站",
+                  "pinyin": "jiéyùn zhàn",
+                  "english": "the MRT station"
+                }
+              ],
+              "key": 0,
+              "why": "The movie theater takes 15 minutes on foot, the longest walk, so it is the farthest (最遠). The supermarket is 8 minutes, and the MRT station is the closest.",
+              "focus": {
+                "zh": "最遠",
+                "en": "the farthest place"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L07-1-17",
+                "B1L06-2-03",
+                "B1L07-2-11"
+              ],
+              "grammarIds": [
+                "B1L07-G01-P158"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-airport",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l07-realia-airport-1",
+          "kind": "realia",
+          "picture": "b1l07-airport-ways",
+          "alt": "A hotel lobby sign comparing three ways to get to the airport: minutes and price for the MRT, the bus and a taxi",
+          "transcript": {
+            "traditional": "到機場怎麼去？　捷運　35分鐘　160元　公車　60分鐘　140元　計程車　40分鐘　1,200元",
+            "simplified": "到机场怎么去？　捷运　35分钟　160元　公车　60分钟　140元　计程车　40分钟　1,200元",
+            "pinyin": "Dào jīchǎng zěnme qù? Jiéyùn 35 fēnzhōng 160 yuán, gōngchē 60 fēnzhōng 140 yuán, jìchéngchē 40 fēnzhōng 1,200 yuán",
+            "english": "How to get to the airport: MRT, 35 minutes, 160 dollars; bus, 60 minutes, 140 dollars; taxi, 40 minutes, 1,200 dollars"
+          },
+          "questions": [
+            {
+              "id": "b1l07-realia-airport-1-q",
+              "choices": [
+                {
+                  "traditional": "坐計程車去機場最快。",
+                  "simplified": "坐计程车去机场最快。",
+                  "pinyin": "Zuò jìchéngchē qù jīchǎng zuì kuài.",
+                  "english": "Taking a taxi to the airport is the fastest."
+                },
+                {
+                  "traditional": "坐捷運去機場最快。",
+                  "simplified": "坐捷运去机场最快。",
+                  "pinyin": "Zuò jiéyùn qù jīchǎng zuì kuài.",
+                  "english": "Taking the MRT to the airport is the fastest."
+                },
+                {
+                  "traditional": "坐公車去機場最快。",
+                  "simplified": "坐公车去机场最快。",
+                  "pinyin": "Zuò gōngchē qù jīchǎng zuì kuài.",
+                  "english": "Taking the bus to the airport is the fastest."
+                }
+              ],
+              "key": 1,
+              "why": "The MRT (捷運) takes 35分鐘, the shortest time, so it is the fastest (最快). A taxi takes 40 minutes and the bus 60.",
+              "focus": {
+                "zh": "最快",
+                "en": "the fastest way"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-10",
+                "B1L07-3-04",
+                "B1L06-1-18",
+                "B1L04-1-21"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-realia-airport-2",
+          "kind": "realia",
+          "picture": "b1l07-airport-ways",
+          "alt": "A hotel lobby sign comparing three ways to get to the airport: minutes and price for the MRT, the bus and a taxi",
+          "transcript": {
+            "traditional": "到機場怎麼去？　捷運　35分鐘　160元　公車　60分鐘　140元　計程車　40分鐘　1,200元",
+            "simplified": "到机场怎么去？　捷运　35分钟　160元　公车　60分钟　140元　计程车　40分钟　1,200元",
+            "pinyin": "Dào jīchǎng zěnme qù? Jiéyùn 35 fēnzhōng 160 yuán, gōngchē 60 fēnzhōng 140 yuán, jìchéngchē 40 fēnzhōng 1,200 yuán",
+            "english": "How to get to the airport: MRT, 35 minutes, 160 dollars; bus, 60 minutes, 140 dollars; taxi, 40 minutes, 1,200 dollars"
+          },
+          "questions": [
+            {
+              "id": "b1l07-realia-airport-2-q",
+              "prompt": {
+                "traditional": "坐捷運去機場多少錢？",
+                "simplified": "坐捷运去机场多少钱？",
+                "pinyin": "Zuò jiéyùn qù jīchǎng duōshǎo qián?",
+                "english": "How much is the MRT to the airport?"
+              },
+              "choices": [
+                {
+                  "traditional": "一百四十元",
+                  "simplified": "一百四十元",
+                  "pinyin": "yì bǎi sìshí yuán",
+                  "english": "140 dollars"
+                },
+                {
+                  "traditional": "一千兩百元",
+                  "simplified": "一千两百元",
+                  "pinyin": "yì qiān liǎng bǎi yuán",
+                  "english": "1,200 dollars"
+                },
+                {
+                  "traditional": "一百六十元",
+                  "simplified": "一百六十元",
+                  "pinyin": "yì bǎi liùshí yuán",
+                  "english": "160 dollars"
+                }
+              ],
+              "key": 2,
+              "why": "The sign lists the MRT (捷運) at 160元. 140元 is the bus and 1,200元 is the taxi.",
+              "focus": {
+                "zh": "多少錢",
+                "en": "the MRT fare"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-10",
+                "B1L04-2-16",
+                "B1L03-2-10",
+                "B1L03-2-11"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l07-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l07-street",
+          "alt": "A city street in the daytime: a big, smart hotel with a small yellow taxi parked in front of its entrance, the driver sitting inside at the wheel, waiting (nobody stands outside or behind the taxi); right next to the hotel, a post office with a green front and a green mailbox; a blue bus at a bus stop a little way down the street; Youmei and Yuanzhen stand at the hotel entrance, just arrived, Yuanzhen holding a phone that shows a map.",
+          "questions": [
+            {
+              "id": "b1l07-scene-gap-1-a",
+              "prompt": {
+                "traditional": "這＿＿飯店很大，也很漂亮。",
+                "simplified": "这＿＿饭店很大，也很漂亮。"
+              },
+              "choices": [
+                {
+                  "traditional": "輛",
+                  "simplified": "辆",
+                  "pinyin": "liàng",
+                  "english": "(measure word for vehicles)"
+                },
+                {
+                  "traditional": "家",
+                  "simplified": "家",
+                  "pinyin": "jiā",
+                  "english": "(measure word for shops and hotels)"
+                },
+                {
+                  "traditional": "條",
+                  "simplified": "条",
+                  "pinyin": "tiáo",
+                  "english": "(measure word for long things)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "這家飯店很大，也很漂亮。",
+                "simplified": "这家饭店很大，也很漂亮。",
+                "pinyin": "Zhè jiā fàndiàn hěn dà, yě hěn piàoliàng.",
+                "english": "This hotel is big, and it's beautiful too."
+              },
+              "why": "家 counts shops, restaurants and hotels: 這家飯店. 輛 counts vehicles, and 條 counts long things like roads.",
+              "focus": {
+                "zh": "這家飯店",
+                "en": "measure word for hotels"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L04-1-13",
+                "B1L07-1-03"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81"
+              ]
+            },
+            {
+              "id": "b1l07-scene-gap-1-b",
+              "prompt": {
+                "traditional": "郵局在飯店旁邊，我想先去＿＿信。",
+                "simplified": "邮局在饭店旁边，我想先去＿＿信。"
+              },
+              "choices": [
+                {
+                  "traditional": "賣",
+                  "simplified": "卖",
+                  "pinyin": "mài",
+                  "english": "to sell"
+                },
+                {
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "mǎi",
+                  "english": "to buy"
+                },
+                {
+                  "traditional": "寄",
+                  "simplified": "寄",
+                  "pinyin": "jì",
+                  "english": "to mail"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "郵局在飯店旁邊，我想先去寄信。",
+                "simplified": "邮局在饭店旁边，我想先去寄信。",
+                "pinyin": "Yóujú zài fàndiàn pángbiān, wǒ xiǎng xiān qù jì xìn.",
+                "english": "The post office is next to the hotel. I want to go and mail a letter first."
+              },
+              "why": "寄信 means to mail a letter, which you do at the post office. You do not sell (賣) or buy (買) a letter there.",
+              "focus": {
+                "zh": "寄信",
+                "en": "to mail a letter"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-07",
+                "B1L07-2-08",
+                "B1L07-2-06",
+                "B1L07-1-23"
+              ]
+            },
+            {
+              "id": "b1l07-scene-gap-1-c",
+              "prompt": {
+                "traditional": "飯店前面有一輛計程車，司機在車子＿＿等人。",
+                "simplified": "饭店前面有一辆计程车，司机在车子＿＿等人。"
+              },
+              "choices": [
+                {
+                  "traditional": "裡面",
+                  "simplified": "里面",
+                  "pinyin": "lǐmiàn",
+                  "english": "inside"
+                },
+                {
+                  "traditional": "外面",
+                  "simplified": "外面",
+                  "pinyin": "wàimiàn",
+                  "english": "outside"
+                },
+                {
+                  "traditional": "後面",
+                  "simplified": "后面",
+                  "pinyin": "hòumiàn",
+                  "english": "behind"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "飯店前面有一輛計程車，司機在車子裡面等人。",
+                "simplified": "饭店前面有一辆计程车，司机在车子里面等人。",
+                "pinyin": "Fàndiàn qiánmiàn yǒu yí liàng jìchéngchē, sījī zài chēzi lǐmiàn děng rén.",
+                "english": "There is a taxi in front of the hotel, and the driver is waiting inside it."
+              },
+              "why": "The picture shows the driver sitting at the wheel, inside the taxi (車子裡面). He is not standing outside it or behind it.",
+              "focus": {
+                "zh": "在車子裡面",
+                "en": "inside"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-07",
+                "B1L07-3-06",
+                "B1L07-1-12",
+                "B1L07-1-08"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l07-street",
+          "alt": "A city street in the daytime: a big, smart hotel with a small yellow taxi parked in front of its entrance, the driver sitting inside at the wheel, waiting (nobody stands outside or behind the taxi); right next to the hotel, a post office with a green front and a green mailbox; a blue bus at a bus stop a little way down the street; Youmei and Yuanzhen stand at the hotel entrance, just arrived, Yuanzhen holding a phone that shows a map.",
+          "questions": [
+            {
+              "id": "b1l07-scene-gap-2-a",
+              "prompt": {
+                "traditional": "我們到飯店＿＿，妳的朋友在哪裡？",
+                "simplified": "我们到饭店＿＿，你的朋友在哪里？"
+              },
+              "choices": [
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "english": "(yes-no question word)"
+                },
+                {
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "english": "(change: now)"
+                },
+                {
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "english": "(“and …?” question word)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "我們到飯店了，妳的朋友在哪裡？",
+                "simplified": "我们到饭店了，你的朋友在哪里？",
+                "pinyin": "Wǒmen dào fàndiàn le, nǐ de péngyǒu zài nǎlǐ?",
+                "english": "We're at the hotel now. Where is your friend?"
+              },
+              "why": "了 at the end shows a new situation: now they have arrived. 嗎 and 呢 make questions and do not fit here.",
+              "focus": {
+                "zh": "到飯店了",
+                "en": "a new situation"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-26",
+                "B1L07-1-07",
+                "B1L07-1-03"
+              ],
+              "grammarIds": [
+                "B1L07-G03-P162"
+              ]
+            },
+            {
+              "id": "b1l07-scene-gap-2-b",
+              "prompt": {
+                "traditional": "這家飯店附近有郵局，也有公車站，寄信、坐車都很＿＿。",
+                "simplified": "这家饭店附近有邮局，也有公车站，寄信、坐车都很＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "方便",
+                  "simplified": "方便",
+                  "pinyin": "fāngbiàn",
+                  "english": "convenient"
+                },
+                {
+                  "traditional": "舒服",
+                  "simplified": "舒服",
+                  "pinyin": "shūfu",
+                  "english": "comfortable"
+                },
+                {
+                  "traditional": "遠",
+                  "simplified": "远",
+                  "pinyin": "yuǎn",
+                  "english": "far"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "這家飯店附近有郵局，也有公車站，寄信、坐車都很方便。",
+                "simplified": "这家饭店附近有邮局，也有公车站，寄信、坐车都很方便。",
+                "pinyin": "Zhè jiā fàndiàn fùjìn yǒu yóujú, yě yǒu gōngchē zhàn, jì xìn, zuò chē dōu hěn fāngbiàn.",
+                "english": "There is a post office and a bus stop near this hotel, so mailing letters and taking the bus are both very convenient."
+              },
+              "why": "The post office and the bus stop are nearby (附近), so mailing letters and taking the bus are 方便 (convenient). 遠 (far) does not fit 附近, and 舒服 (comfortable) does not fit mailing a letter.",
+              "focus": {
+                "zh": "方便",
+                "en": "convenient"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-15",
+                "B1L07-2-05",
+                "B1L07-2-07",
+                "B1L07-3-08"
+              ]
+            },
+            {
+              "id": "b1l07-scene-gap-2-c",
+              "prompt": {
+                "traditional": "那＿＿藍色的公車去機場嗎？",
+                "simplified": "那＿＿蓝色的公车去机场吗？"
+              },
+              "choices": [
+                {
+                  "traditional": "本",
+                  "simplified": "本",
+                  "pinyin": "běn",
+                  "english": "(measure word for books)"
+                },
+                {
+                  "traditional": "輛",
+                  "simplified": "辆",
+                  "pinyin": "liàng",
+                  "english": "(measure word for vehicles)"
+                },
+                {
+                  "traditional": "張",
+                  "simplified": "张",
+                  "pinyin": "zhāng",
+                  "english": "(measure word for flat things)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "那輛藍色的公車去機場嗎？",
+                "simplified": "那辆蓝色的公车去机场吗？",
+                "pinyin": "Nà liàng lánsè de gōngchē qù jīchǎng ma?",
+                "english": "Does that blue bus go to the airport?"
+              },
+              "why": "輛 counts vehicles: 那輛公車 is that bus. 本 counts books and 張 counts flat things like tables.",
+              "focus": {
+                "zh": "輛",
+                "en": "measure word for vehicles"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-17",
+                "B1L07-1-11",
+                "B1L07-3-03"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l07-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我要去郵局寄兩{1}信，可是不知道怎麼走。我先在手機上看地圖，現在我知道郵局在哪裡{2}。從我家到郵局不遠，可是今天天氣有點熱，我想坐公車去。公車站在我家{3}，坐公車{4}便宜又方便。",
+            "simplified": "我要去邮局寄两{1}信，可是不知道怎么走。我先在手机上看地图，现在我知道邮局在哪里{2}。从我家到邮局不远，可是今天天气有点热，我想坐公车去。公车站在我家{3}，坐公车{4}便宜又方便。",
+            "pinyin": "Wǒ yào qù yóujú jì liǎng fēng xìn, kěshì bù zhīdào zěnme zǒu. Wǒ xiān zài shǒujī shàng kàn dìtú, xiànzài wǒ zhīdào yóujú zài nǎlǐ le. Cóng wǒ jiā dào yóujú bù yuǎn, kěshì jīntiān tiānqì yǒudiǎn rè, wǒ xiǎng zuò gōngchē qù. Gōngchē zhàn zài wǒ jiā pángbiān, zuò gōngchē yòu piányí yòu fāngbiàn.",
+            "english": "I'm going to the post office to mail two letters, but I don't know how to get there. First I look at the map on my phone, and now I know where the post office is. It isn't far from my home to the post office, but it's a bit hot today, so I want to take the bus. The bus stop is next to my home, and the bus is both cheap and convenient."
+          },
+          "bank": [
+            {
+              "traditional": "又",
+              "simplified": "又",
+              "pinyin": "yòu",
+              "english": "both … and"
+            },
+            {
+              "traditional": "封",
+              "simplified": "封",
+              "pinyin": "fēng",
+              "english": "(measure word for letters)"
+            },
+            {
+              "traditional": "旁邊",
+              "simplified": "旁边",
+              "pinyin": "pángbiān",
+              "english": "next to"
+            },
+            {
+              "traditional": "條",
+              "simplified": "条",
+              "pinyin": "tiáo",
+              "english": "(measure word for long things)"
+            },
+            {
+              "traditional": "了",
+              "simplified": "了",
+              "pinyin": "le",
+              "english": "(change: now)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-paragraph-1-1",
+              "key": 1,
+              "why": "封 counts letters: 兩封信 is two letters. 條 counts long things like roads.",
+              "focus": {
+                "zh": "兩封信",
+                "en": "two letters"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-09",
+                "B1L07-2-08",
+                "B1L07-2-07"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            },
+            {
+              "id": "b1l07-paragraph-1-2",
+              "key": 4,
+              "why": "了 at the end shows a change: before, the writer did not know the way; now the writer knows where the post office is.",
+              "focus": {
+                "zh": "知道郵局在哪裡了",
+                "en": "a new situation"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-26",
+                "B1L01-1-12"
+              ],
+              "grammarIds": [
+                "B1L07-G03-P162"
+              ]
+            },
+            {
+              "id": "b1l07-paragraph-1-3",
+              "key": 2,
+              "why": "在我家旁邊 means next to my home: the bus stop is right by the writer's home.",
+              "focus": {
+                "zh": "在我家旁邊",
+                "en": "next to"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-21",
+                "B1L05-1-02"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            },
+            {
+              "id": "b1l07-paragraph-1-4",
+              "key": 0,
+              "why": "又 goes before each quality: 又便宜又方便 means both cheap and convenient.",
+              "focus": {
+                "zh": "又…又…",
+                "en": "both … and …"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-14",
+                "B1L07-2-15"
+              ],
+              "grammarIds": [
+                "B1L07-G05-P172"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "今天我的日本朋友要來台灣找我。她的飛機下午兩點半到，我想在機場{1}她。我不{2}開車，可是沒問題，坐捷運{3}快又舒服。啊，現在一點半{4}！我要去捷運站。",
+            "simplified": "今天我的日本朋友要来台湾找我。她的飞机下午两点半到，我想在机场{1}她。我不{2}开车，可是没问题，坐捷运{3}快又舒服。啊，现在一点半{4}！我要去捷运站。",
+            "pinyin": "Jīntiān wǒ de Rìběn péngyǒu yào lái Táiwān zhǎo wǒ. Tā de fēijī xiàwǔ liǎng diǎn bàn dào, wǒ xiǎng zài jīchǎng děng tā. Wǒ bú huì kāichē, kěshì méi wèntí, zuò jiéyùn yòu kuài yòu shūfu. A, xiànzài yì diǎn bàn le! Wǒ yào qù jiéyùn zhàn.",
+            "english": "Today my Japanese friend is coming to Taiwan to visit me. Her plane arrives at two thirty in the afternoon, and I want to wait for her at the airport. I can't drive, but that's no problem: the MRT is both fast and comfortable. Oh, it's one thirty now! I'm going to the MRT station."
+          },
+          "bank": [
+            {
+              "traditional": "又",
+              "simplified": "又",
+              "pinyin": "yòu",
+              "english": "both … and"
+            },
+            {
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "english": "(yes-no question word)"
+            },
+            {
+              "traditional": "了",
+              "simplified": "了",
+              "pinyin": "le",
+              "english": "(change: now)"
+            },
+            {
+              "traditional": "等",
+              "simplified": "等",
+              "pinyin": "děng",
+              "english": "to wait"
+            },
+            {
+              "traditional": "會",
+              "simplified": "会",
+              "pinyin": "huì",
+              "english": "can (skill)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l07-paragraph-2-1",
+              "key": 3,
+              "why": "等她 means wait for her: the writer will wait at the airport (在機場) for her plane.",
+              "focus": {
+                "zh": "等",
+                "en": "to wait for"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-08",
+                "B1L07-3-04"
+              ]
+            },
+            {
+              "id": "b1l07-paragraph-2-2",
+              "key": 4,
+              "why": "不會開車 means cannot drive: driving is a skill you learn, so it takes 會.",
+              "focus": {
+                "zh": "不會開車",
+                "en": "can't (a skill)"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L07-3-05"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            },
+            {
+              "id": "b1l07-paragraph-2-3",
+              "key": 0,
+              "why": "又 goes before each quality: 又快又舒服 means both fast and comfortable.",
+              "focus": {
+                "zh": "又…又…",
+                "en": "both … and …"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-14",
+                "B1L07-2-16",
+                "B1L06-1-18"
+              ],
+              "grammarIds": [
+                "B1L07-G05-P172"
+              ]
+            },
+            {
+              "id": "b1l07-paragraph-2-4",
+              "key": 2,
+              "why": "了 at the end shows a new situation: it is one thirty now, so it is time to go.",
+              "focus": {
+                "zh": "一點半了",
+                "en": "a new situation"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-26",
+                "B1L02-1-04"
+              ],
+              "grammarIds": [
+                "B1L07-G03-P162"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-message",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l07-reading-message-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "宜文：\n這個星期天下午我有空，我們去喝下午茶吧！學校旁邊有一家咖啡廳，那裡的蛋糕很好吃。我兩點在咖啡廳前面等妳。\n友美",
+            "simplified": "宜文：\n这个星期天下午我有空，我们去喝下午茶吧！学校旁边有一家咖啡厅，那里的蛋糕很好吃。我两点在咖啡厅前面等你。\n友美",
+            "pinyin": "Yíwén: Zhège xīngqítiān xiàwǔ wǒ yǒu kòng, wǒmen qù hē xiàwǔ chá ba! Xuéxiào pángbiān yǒu yì jiā kāfēitīng, nàlǐ de dàngāo hěn hǎochī. Wǒ liǎng diǎn zài kāfēitīng qiánmiàn děng nǐ. Yǒuměi",
+            "english": "Yiwen: I'm free this Sunday afternoon. Let's go for afternoon tea! There's a café next to the school, and the cake there is delicious. I'll wait for you in front of the café at two. Youmei"
+          },
+          "questions": [
+            {
+              "id": "b1l07-reading-message-1-q",
+              "prompt": {
+                "traditional": "友美要在哪裡等宜文？",
+                "simplified": "友美要在哪里等宜文？",
+                "pinyin": "Yǒuměi yào zài nǎlǐ děng Yíwén?",
+                "english": "Where will Youmei wait for Yiwen?"
+              },
+              "choices": [
+                {
+                  "traditional": "咖啡廳裡面",
+                  "simplified": "咖啡厅里面",
+                  "pinyin": "kāfēitīng lǐmiàn",
+                  "english": "inside the café"
+                },
+                {
+                  "traditional": "咖啡廳前面",
+                  "simplified": "咖啡厅前面",
+                  "pinyin": "kāfēitīng qiánmiàn",
+                  "english": "in front of the café"
+                },
+                {
+                  "traditional": "學校裡面",
+                  "simplified": "学校里面",
+                  "pinyin": "xuéxiào lǐmiàn",
+                  "english": "inside the school"
+                }
+              ],
+              "key": 1,
+              "why": "She writes 在咖啡廳前面等妳: in front of the café, not inside it. The café is next to the school, not inside the school.",
+              "focus": {
+                "zh": "在咖啡廳前面",
+                "en": "in front of"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-22",
+                "B1L05-1-08",
+                "B1L05-1-02"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l07-reading-message-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "宜文：\n這個週末我想去海邊，可是我不會游泳。妳會游泳，妳可以跟我一起去嗎？我們星期六早上九點去，晚上七點回家，好不好？\n友美",
+            "simplified": "宜文：\n这个周末我想去海边，可是我不会游泳。你会游泳，你可以跟我一起去吗？我们星期六早上九点去，晚上七点回家，好不好？\n友美",
+            "pinyin": "Yíwén: Zhège zhōumò wǒ xiǎng qù hǎibiān, kěshì wǒ bú huì yóuyǒng. Nǐ huì yóuyǒng, nǐ kěyǐ gēn wǒ yìqǐ qù ma? Wǒmen xīngqíliù zǎoshàng jiǔ diǎn qù, wǎnshàng qī diǎn huí jiā, hǎo bù hǎo? Yǒuměi",
+            "english": "Yiwen: I want to go to the beach this weekend, but I can't swim. You can swim. Can you go with me? Let's go at nine on Saturday morning and come home at seven in the evening, OK? Youmei"
+          },
+          "questions": [
+            {
+              "id": "b1l07-reading-message-2-q",
+              "prompt": {
+                "traditional": "友美想幾點去海邊？",
+                "simplified": "友美想几点去海边？",
+                "pinyin": "Yǒuměi xiǎng jǐ diǎn qù hǎibiān?",
+                "english": "What time does Youmei want to go to the beach?"
+              },
+              "choices": [
+                {
+                  "traditional": "晚上九點",
+                  "simplified": "晚上九点",
+                  "pinyin": "wǎnshàng jiǔ diǎn",
+                  "english": "nine in the evening"
+                },
+                {
+                  "traditional": "晚上七點",
+                  "simplified": "晚上七点",
+                  "pinyin": "wǎnshàng qī diǎn",
+                  "english": "seven in the evening"
+                },
+                {
+                  "traditional": "早上九點",
+                  "simplified": "早上九点",
+                  "pinyin": "zǎoshàng jiǔ diǎn",
+                  "english": "nine in the morning"
+                }
+              ],
+              "key": 2,
+              "why": "Youmei writes 星期六早上九點去: she wants to leave at nine in the morning. 晚上七點 is when they come home, and 晚上九點 mixes the two times.",
+              "focus": {
+                "zh": "早上九點",
+                "en": "the time to go"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-02",
+                "B1L02-1-16",
+                "B1L02-2-10",
+                "B1L06-1-08"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54",
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
