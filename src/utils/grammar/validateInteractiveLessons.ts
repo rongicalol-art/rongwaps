@@ -136,35 +136,6 @@ export function validateInteractiveLessons(
         }
       }
 
-      if (page.confusion && (!page.confusion.title.trim() || page.confusion.items.length === 0)) {
-        issues.push({ location: `${pageLocation} confusion`, message: 'A confusion block needs a title and at least one item.' });
-      }
-      if (page.confusion) {
-        if (page.confusion.items.length > 4 || page.confusion.items.length < 2) {
-          issues.push({ location: `${pageLocation} confusion`, message: 'A confusion block needs two to four items.' });
-        }
-        page.confusion.items.forEach((item) => {
-          registerId(item.id, `${pageLocation} confusion item`, pageIds, issues);
-          if (!item.question.trim() || !item.answer.trim()) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'Question and answer are required.' });
-          }
-          if (!item.wrongTraditional.trim()) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The wrong form is required.' });
-          }
-          // Same optional-field rule as examples above: report, don't throw.
-          const { pinyin = '', english = '', words = [] } = item.right;
-          if (!item.right.traditional.trim() || !pinyin.trim() || !english.trim()) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The right form needs traditional text, pinyin, and English.' });
-          }
-          if (words.length === 0) {
-            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'Dictionary word tokens are required for the right form.' });
-          }
-          words.forEach((word) => {
-            registerId(word.id, `${pageLocation} confusion word`, pageIds, issues);
-          });
-        });
-      }
-
       page.questions.forEach((question) => {
         registerId(question.id, `${pageLocation} question`, pageIds, issues);
         if (!Array.isArray(question.tiles) || !Array.isArray(question.segments)) {

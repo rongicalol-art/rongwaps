@@ -10,11 +10,11 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
-### 2026-11-02 — Grammar labs removed
+### 2026-11-02 — Grammar labs and mix-ups removed
 
-- Chosen: the authored grammar labs (discovery, number, route, live-scene, timeline and A/B compare) are deleted from `content/grammar/`, the grammar packs, the types, the validator and the content tests.
-- Reason: no screen had shown them since the grammar flow dropped its optional "Explore this pattern" layer; the owner does not use them. Route-lab phrases no longer act as tap-to-define words, so their example sentences split into dictionary words.
-- Affects: `content/grammar/*.json`, `public/data/grammar/`, `src/types/grammar.ts`, `src/utils/grammar/{grammarTeachingTokens,validateInteractiveLessons}.ts`, `tests/content/lesson*.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+- Chosen: the authored grammar labs (discovery, number, route, live-scene, timeline and A/B compare) and the "Don't mix these up" blocks (`confusion`) are deleted from `content/grammar/`, the grammar packs, the types, the validator and the content tests, along with the unwired mix-ups drawer and panel.
+- Reason: no screen showed them (the labs since the grammar flow dropped its optional "Explore this pattern" layer, the mix-ups since their drawer lost its last caller before Oct 30); the owner does not use them. Route-lab phrases no longer act as tap-to-define words, so their example sentences split into dictionary words.
+- Affects: `content/grammar/*.json`, `public/data/grammar/`, `src/types/grammar.ts`, `src/utils/grammar/{grammarTeachingTokens,validateInteractiveLessons}.ts`, `src/screens/grammar-lesson/components/`, `tests/content/lesson*.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
 
 ### 2026-10-24 — Example audio: the book's recording first everywhere
 

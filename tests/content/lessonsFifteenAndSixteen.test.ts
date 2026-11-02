@@ -38,7 +38,7 @@ test('Lesson 15 and 16 interactive grammar parts are registered and ordered', ()
   assert.deepEqual(l16Pages.map((p) => p.grammarNumber), [1, 2, 3, 4, 5]);
 });
 
-test('Every Lesson 15 and 16 grammar page has examples, questions, confusion, and glossary', () => {
+test('Every Lesson 15 and 16 grammar page has examples, questions, and glossary', () => {
   const allPages = [
     ...LESSON_FIFTEEN_PART_ONE.grammarPages,
     ...LESSON_FIFTEEN_PART_TWO.grammarPages,
@@ -50,7 +50,6 @@ test('Every Lesson 15 and 16 grammar page has examples, questions, confusion, an
   allPages.forEach((page) => {
     assert.ok(page.examples.length >= 3, `${page.id} must have >= 3 examples`);
     assert.ok(page.questions.length >= 3, `${page.id} must have >= 3 questions`);
-    assert.ok(page.confusion && page.confusion.items.length >= 2, `${page.id} must have confusion items`);
     assert.ok(page.teachingGlossary && page.teachingGlossary.length > 0, `${page.id} must have teaching glossary`);
   });
 });

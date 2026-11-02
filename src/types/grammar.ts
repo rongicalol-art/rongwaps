@@ -215,24 +215,6 @@ export interface GrammarLessonWorld {
   english: string;
 }
 
-export interface GrammarConfusionItem {
-  id: string;
-  /** The mix-up phrased as the question a learner would ask. */
-  question: string;
-  /** Short concrete answer in plain words. */
-  answer: string;
-  /** The form learners reach for by mistake; shown struck through. */
-  wrongTraditional: string;
-  wrongSimplified?: string;
-  /** What to say instead, fully tappable like an example. */
-  right: GrammarLessonText;
-}
-
-export interface GrammarConfusion {
-  title: string;
-  items: GrammarConfusionItem[];
-}
-
 export interface GrammarSubsection {
   id: string;
   sectionNumber?: number;
@@ -279,7 +261,6 @@ export interface InteractiveGrammarPage {
   patternRows: GrammarPatternRow[];
   sentenceSpine?: GrammarSentenceSpine;
   contrast?: GrammarContrast;
-  confusion?: GrammarConfusion;
   examples: GrammarLessonExample[];
   profiles?: GrammarExerciseProfile[];
   exerciseCues?: GrammarExerciseCue[];
