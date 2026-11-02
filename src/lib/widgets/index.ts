@@ -25,7 +25,6 @@ export * from './ResumeDialog';
 export * from './DetailShell';
 export * from './WorkspaceWindow';
 export * from './Dialog';
-export * from './DisclosureLine';
 export * from './Drawer';
 export * from './DropdownMenu';
 export * from './ErrorBoundary';

@@ -51,7 +51,6 @@
 | DetailShell | `DetailShell.tsx` | Workspace-bounded detail view; `.Root/.Scroller/.Content/.Floating`. `windowed` opens it as its own `WorkspaceWindow`. |
 | ConfirmationDialog | `ConfirmationDialog.tsx` | Destructive confirm on `Dialog`; focus starts on Cancel; `children` + `confirmDisabled` for type-to-confirm. |
 | ResumeDialog | `ResumeDialog.tsx` | Opens before a flashcard/quiz window that has saved progress (gate: `useResumeLaunch`), including quiz question 1 and full-deck missed-word reviews. First positions save immediately. Icon, title, position line, optional bar, Continue (primary) or Start over. Copy comes from `resumeCopy` in `utils/srs/resumeState.ts`. |
-| DisclosureLine | `DisclosureLine.tsx` | Closed-by-default `<details>` row. |
 | DropdownMenu / DropdownMenuItem | `DropdownMenu.tsx` | Keyboard-navigable `popover-surface` menu. |
 | SettingsPopover | `SettingsPopover.tsx` | Icon-button trigger with a small `popover-surface` settings panel (switches, segmented controls); outside click or Escape closes it. Children may take `close`. Use `DropdownMenu` for lists of menu items. |
 | ErrorBoundary | `ErrorBoundary.tsx` | Render fallback; `fallback`, `fallbackClassName`. Mounted in `main.tsx` and per tab screen. |
