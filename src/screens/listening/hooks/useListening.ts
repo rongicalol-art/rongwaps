@@ -45,7 +45,10 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
       setIsPlaying(false);
       clearAnswerState();
     },
-    onAnswerStateReset: clearAnswerState,
+    onAnswerStateReset: () => {
+      currentCardChoicesRef.current = null;
+      clearAnswerState();
+    },
   });
   const { activeCards, currentIndex, currentCard, completed } = session;
   const screenState: 'playing' | 'complete' = completed ? 'complete' : 'playing';
@@ -63,11 +66,6 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
       audioService.stop();
     };
   }, [screenState]);
-
-  const toggleShuffle = useCallback(() => {
-    currentCardChoicesRef.current = null;
-    session.toggleShuffle();
-  }, [session]);
 
   // Generate distinct, shuffled choices matching the preferred choice type.
   // Pinned per card ID and choiceType so background updates / tab switches never refresh choices mid-card.
@@ -145,16 +143,6 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     clearAnswerState();
   }, [isChecked, isCorrect, clearAnswerState, session]);
 
-  const resetAll = useCallback(() => {
-    currentCardChoicesRef.current = null;
-    session.resetAll();
-  }, [session]);
-
-  const reviewUnlearned = useCallback(() => {
-    currentCardChoicesRef.current = null;
-    session.reviewUnlearned();
-  }, [session]);
-
   return {
     screenState,
     currentIndex,
@@ -170,12 +158,12 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     retryAnswer,
     isCorrect,
     isLoading,
-    resetAll,
-    reviewUnlearned,
+    resetAll: session.resetAll,
+    reviewUnlearned: session.reviewUnlearned,
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,
-    toggleShuffle,
+    toggleShuffle: session.toggleShuffle,
     listeningChoiceType,
     progressInfo: session.progressInfo,
   };
