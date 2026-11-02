@@ -53,10 +53,8 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   const { activeCards, currentIndex, currentCard, completed } = session;
   const screenState: 'playing' | 'complete' = completed ? 'complete' : 'playing';
 
-  // Read playlist (the session's active card list, mistake-queue aware).
-  const playlist = useMemo(() => {
-    return activeCards.length > 0 ? activeCards : [];
-  }, [activeCards]);
+  // The session's active card list, mistake-queue aware.
+  const playlist = activeCards;
 
   useEffect(() => {
     isMountedRef.current = true;

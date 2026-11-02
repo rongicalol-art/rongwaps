@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { LevelTag, Skeleton } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
@@ -27,12 +27,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
   const data = useCharBreakdown(c);
   const { firstLesson } = useComponentVocabRelation(c);
 
-  const cardColors = useMemo(() => {
-    return {
-      bgLight: 'bg-ui-surface',
-      textAccent: activeBook.accent || 'text-brand-secondary',
-    };
-  }, [activeBook]);
+  const textAccent = activeBook.accent || 'text-brand-secondary';
 
   return (
     <button
@@ -49,7 +44,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
         </div>
         {firstLesson ? <LevelTag bookId={firstLesson.bookId} lessonId={firstLesson.lessonId} /> : <LevelTag level={resolveLevel(c, levels)} />}
       </div>
-      <span className={`text-4xl sm:text-5xl leading-none font-chinese ${cardColors.textAccent} transition-all block mb-1`}>
+      <span className={`text-4xl sm:text-5xl leading-none font-chinese ${textAccent} transition-all block mb-1`}>
         {c}
       </span>
       <div className="mb-1 flex h-4 min-h-4 w-full items-center justify-center px-1 text-xs font-bold text-ui-ink">
