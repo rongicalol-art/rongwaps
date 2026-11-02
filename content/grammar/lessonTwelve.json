@@ -4903,32 +4903,612 @@
         "sectionNumber": 1,
         "title": "Speaking to Someone",
         "explanation": "對 + person before 說 marks the person spoken to.",
-        "patternRows": [],
-        "exampleIds": [
-          "g3-example-1",
-          "g3-example-2"
-        ]
+        "patternRows": [
+          {
+            "id": "l12g3-s1-r1",
+            "subject": [
+              {
+                "id": "l12g3-s1-r1-c1-1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l12g3-s1-r1-c2-1",
+                "traditional": "常",
+                "pinyin": "cháng",
+                "meaning": "often"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l12g3-s1-r1-c3-1",
+                "traditional": "對",
+                "pinyin": "duì",
+                "meaning": "to",
+                "simplified": "对"
+              }
+            ],
+            "columns": [
+              [
+                {
+                  "id": "l12g3-s1-r1-c1-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r1-c2-1",
+                  "traditional": "常",
+                  "pinyin": "cháng",
+                  "meaning": "often"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r1-c3-1",
+                  "traditional": "對",
+                  "pinyin": "duì",
+                  "meaning": "to",
+                  "simplified": "对"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r1-c4-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r1-c5-1",
+                  "traditional": "說",
+                  "pinyin": "shuō",
+                  "meaning": "say",
+                  "simplified": "说",
+                  "suffix": "：「"
+                },
+                {
+                  "id": "l12g3-s1-r1-c5-2",
+                  "traditional": "我們",
+                  "pinyin": "wǒmen",
+                  "meaning": "we",
+                  "simplified": "我们"
+                },
+                {
+                  "id": "l12g3-s1-r1-c5-3",
+                  "traditional": "應該",
+                  "pinyin": "yīnggāi",
+                  "meaning": "should",
+                  "simplified": "应该"
+                },
+                {
+                  "id": "l12g3-s1-r1-c5-4",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "need to"
+                },
+                {
+                  "id": "l12g3-s1-r1-c5-5",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more"
+                },
+                {
+                  "id": "l12g3-s1-r1-c5-6",
+                  "traditional": "運動",
+                  "pinyin": "yùndòng",
+                  "meaning": "exercise",
+                  "simplified": "运动",
+                  "suffix": "、"
+                },
+                {
+                  "id": "l12g3-s1-r1-c5-7",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more"
+                },
+                {
+                  "id": "l12g3-s1-r1-c5-8",
+                  "traditional": "喝水",
+                  "pinyin": "hē shuǐ",
+                  "meaning": "drink water",
+                  "suffix": "。」"
+                }
+              ]
+            ],
+            "english": "He often says to me: “We should exercise more and drink more water.”"
+          },
+          {
+            "id": "l12g3-s1-r2",
+            "subject": [
+              {
+                "id": "l12g3-s1-r2-c1-1",
+                "traditional": "這",
+                "pinyin": "zhè",
+                "meaning": "this",
+                "simplified": "这"
+              },
+              {
+                "id": "l12g3-s1-r2-c1-2",
+                "traditional": "件",
+                "pinyin": "jiàn",
+                "meaning": "measure word"
+              },
+              {
+                "id": "l12g3-s1-r2-c1-3",
+                "traditional": "事",
+                "pinyin": "shì",
+                "meaning": "matter"
+              },
+              {
+                "id": "l12g3-s1-r2-c1-4",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l12g3-s1-r2-c2-1",
+                "traditional": "只",
+                "pinyin": "zhǐ",
+                "meaning": "only"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l12g3-s1-r2-c3-1",
+                "traditional": "對",
+                "pinyin": "duì",
+                "meaning": "to",
+                "simplified": "对"
+              }
+            ],
+            "columns": [
+              [
+                {
+                  "id": "l12g3-s1-r2-c1-1",
+                  "traditional": "這",
+                  "pinyin": "zhè",
+                  "meaning": "this",
+                  "simplified": "这"
+                },
+                {
+                  "id": "l12g3-s1-r2-c1-2",
+                  "traditional": "件",
+                  "pinyin": "jiàn",
+                  "meaning": "measure word"
+                },
+                {
+                  "id": "l12g3-s1-r2-c1-3",
+                  "traditional": "事",
+                  "pinyin": "shì",
+                  "meaning": "matter"
+                },
+                {
+                  "id": "l12g3-s1-r2-c1-4",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r2-c2-1",
+                  "traditional": "只",
+                  "pinyin": "zhǐ",
+                  "meaning": "only"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r2-c3-1",
+                  "traditional": "對",
+                  "pinyin": "duì",
+                  "meaning": "to",
+                  "simplified": "对"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r2-c4-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s1-r2-c5-1",
+                  "traditional": "說",
+                  "pinyin": "shuō",
+                  "meaning": "say",
+                  "simplified": "说",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l12g3-s1-r2-c5-2",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                },
+                {
+                  "id": "l12g3-s1-r2-c5-3",
+                  "traditional": "不",
+                  "pinyin": "bú",
+                  "meaning": "do not"
+                },
+                {
+                  "id": "l12g3-s1-r2-c5-4",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "want to"
+                },
+                {
+                  "id": "l12g3-s1-r2-c5-5",
+                  "traditional": "告訴",
+                  "pinyin": "gàosù",
+                  "meaning": "tell",
+                  "simplified": "告诉"
+                },
+                {
+                  "id": "l12g3-s1-r2-c5-6",
+                  "traditional": "別人",
+                  "pinyin": "biérén",
+                  "meaning": "other people",
+                  "simplified": "别人",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "I am telling this only to you; do not tell anyone else."
+          }
+        ],
+        "patternColumns": [
+          "Speaker",
+          "Adverb",
+          "對",
+          "Listener",
+          "說 + Words"
+        ],
+        "patternAccentColumn": 2,
+        "exampleIds": []
       },
       {
         "id": "b1l12-g03-sec-2",
         "sectionNumber": 2,
         "title": "Good or Bad For",
         "explanation": "對 + person or thing + 好／不好 says who or what is affected.",
-        "patternRows": [],
-        "exampleIds": [
-          "g3-example-3",
-          "g3-example-4"
-        ]
+        "patternRows": [
+          {
+            "id": "l12g3-s2-r1",
+            "subject": [
+              {
+                "id": "l12g3-s2-r1-c1-1",
+                "traditional": "常",
+                "pinyin": "cháng",
+                "meaning": "often"
+              },
+              {
+                "id": "l12g3-s2-r1-c1-2",
+                "traditional": "用",
+                "pinyin": "yòng",
+                "meaning": "use"
+              },
+              {
+                "id": "l12g3-s2-r1-c1-3",
+                "traditional": "手機",
+                "pinyin": "shǒujī",
+                "meaning": "mobile phone",
+                "simplified": "手机"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l12g3-s2-r1-c2-1",
+                "traditional": "對",
+                "pinyin": "duì",
+                "meaning": "for",
+                "simplified": "对"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l12g3-s2-r1-c3-1",
+                "traditional": "眼睛",
+                "pinyin": "yǎnjīng",
+                "meaning": "eyes"
+              }
+            ],
+            "columns": [
+              [
+                {
+                  "id": "l12g3-s2-r1-c1-1",
+                  "traditional": "常",
+                  "pinyin": "cháng",
+                  "meaning": "often"
+                },
+                {
+                  "id": "l12g3-s2-r1-c1-2",
+                  "traditional": "用",
+                  "pinyin": "yòng",
+                  "meaning": "use"
+                },
+                {
+                  "id": "l12g3-s2-r1-c1-3",
+                  "traditional": "手機",
+                  "pinyin": "shǒujī",
+                  "meaning": "mobile phone",
+                  "simplified": "手机"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s2-r1-c2-1",
+                  "traditional": "對",
+                  "pinyin": "duì",
+                  "meaning": "for",
+                  "simplified": "对"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s2-r1-c3-1",
+                  "traditional": "眼睛",
+                  "pinyin": "yǎnjīng",
+                  "meaning": "eyes"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s2-r1-c4-1",
+                  "traditional": "不好",
+                  "pinyin": "bù hǎo",
+                  "meaning": "bad",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "Using a phone often is bad for the eyes."
+          },
+          {
+            "id": "l12g3-s2-r2",
+            "subject": [
+              {
+                "id": "l12g3-s2-r2-c1-1",
+                "traditional": "這",
+                "pinyin": "zhè",
+                "meaning": "this",
+                "simplified": "这"
+              },
+              {
+                "id": "l12g3-s2-r2-c1-2",
+                "traditional": "本",
+                "pinyin": "běn",
+                "meaning": "measure word"
+              },
+              {
+                "id": "l12g3-s2-r2-c1-3",
+                "traditional": "書",
+                "pinyin": "shū",
+                "meaning": "book",
+                "simplified": "书"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l12g3-s2-r2-c2-1",
+                "traditional": "對",
+                "pinyin": "duì",
+                "meaning": "for",
+                "simplified": "对"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l12g3-s2-r2-c3-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "me"
+              }
+            ],
+            "columns": [
+              [
+                {
+                  "id": "l12g3-s2-r2-c1-1",
+                  "traditional": "這",
+                  "pinyin": "zhè",
+                  "meaning": "this",
+                  "simplified": "这"
+                },
+                {
+                  "id": "l12g3-s2-r2-c1-2",
+                  "traditional": "本",
+                  "pinyin": "běn",
+                  "meaning": "measure word"
+                },
+                {
+                  "id": "l12g3-s2-r2-c1-3",
+                  "traditional": "書",
+                  "pinyin": "shū",
+                  "meaning": "book",
+                  "simplified": "书"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s2-r2-c2-1",
+                  "traditional": "對",
+                  "pinyin": "duì",
+                  "meaning": "for",
+                  "simplified": "对"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s2-r2-c3-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s2-r2-c4-1",
+                  "traditional": "不難",
+                  "pinyin": "bù nán",
+                  "meaning": "not difficult",
+                  "simplified": "不难",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l12g3-s2-r2-c4-2",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
+                },
+                {
+                  "id": "l12g3-s2-r2-c4-3",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can"
+                },
+                {
+                  "id": "l12g3-s2-r2-c4-4",
+                  "traditional": "學學看",
+                  "pinyin": "xuéxue kàn",
+                  "meaning": "try studying",
+                  "simplified": "学学看",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "This book is not difficult for me; I can try studying it."
+          }
+        ],
+        "patternColumns": [
+          "Subject",
+          "對",
+          "Target",
+          "Effect"
+        ],
+        "patternAccentColumn": 1,
+        "exampleIds": []
       },
       {
         "id": "b1l12-g03-sec-3",
         "sectionNumber": 3,
         "title": "Treating a Person",
         "explanation": "對 + person + 很好／不錯 describes how someone treats that person.",
-        "patternRows": [],
+        "patternRows": [
+          {
+            "id": "l12g3-s3-r1",
+            "subject": [
+              {
+                "id": "l12g3-s3-r1-c1-1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l12g3-s3-r1-c2-1",
+                "traditional": "對",
+                "pinyin": "duì",
+                "meaning": "to",
+                "simplified": "对"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l12g3-s3-r1-c3-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "me"
+              }
+            ],
+            "columns": [
+              [
+                {
+                  "id": "l12g3-s3-r1-c1-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s3-r1-c2-1",
+                  "traditional": "對",
+                  "pinyin": "duì",
+                  "meaning": "to",
+                  "simplified": "对"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s3-r1-c3-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                }
+              ],
+              [
+                {
+                  "id": "l12g3-s3-r1-c4-1",
+                  "traditional": "很好",
+                  "pinyin": "hěn hǎo",
+                  "meaning": "very well",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l12g3-s3-r1-c4-2",
+                  "traditional": "常常",
+                  "pinyin": "chángcháng",
+                  "meaning": "often"
+                },
+                {
+                  "id": "l12g3-s3-r1-c4-3",
+                  "traditional": "幫",
+                  "pinyin": "bāng",
+                  "meaning": "help",
+                  "simplified": "帮"
+                },
+                {
+                  "id": "l12g3-s3-r1-c4-4",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                },
+                {
+                  "id": "l12g3-s3-r1-c4-5",
+                  "traditional": "忙",
+                  "pinyin": "máng",
+                  "meaning": "busy",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "He treats me very well and often helps me."
+          }
+        ],
+        "patternColumns": [
+          "Person",
+          "對",
+          "Person Treated",
+          "How"
+        ],
+        "patternAccentColumn": 1,
         "exampleIds": [
-          "g3-example-5",
-          "g3-example-6"
+          "l12g3-e6"
         ]
       }
     ],
@@ -11233,32 +11813,612 @@
             "sectionNumber": 1,
             "title": "Speaking to Someone",
             "explanation": "對 + person before 說 marks the person spoken to.",
-            "patternRows": [],
-            "exampleIds": [
-              "g3-example-1",
-              "g3-example-2"
-            ]
+            "patternRows": [
+              {
+                "id": "l12g3-s1-r1",
+                "subject": [
+                  {
+                    "id": "l12g3-s1-r1-c1-1",
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he"
+                  }
+                ],
+                "grammar": [
+                  {
+                    "id": "l12g3-s1-r1-c2-1",
+                    "traditional": "常",
+                    "pinyin": "cháng",
+                    "meaning": "often"
+                  }
+                ],
+                "complement": [
+                  {
+                    "id": "l12g3-s1-r1-c3-1",
+                    "traditional": "對",
+                    "pinyin": "duì",
+                    "meaning": "to",
+                    "simplified": "对"
+                  }
+                ],
+                "columns": [
+                  [
+                    {
+                      "id": "l12g3-s1-r1-c1-1",
+                      "traditional": "他",
+                      "pinyin": "tā",
+                      "meaning": "he"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r1-c2-1",
+                      "traditional": "常",
+                      "pinyin": "cháng",
+                      "meaning": "often"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r1-c3-1",
+                      "traditional": "對",
+                      "pinyin": "duì",
+                      "meaning": "to",
+                      "simplified": "对"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r1-c4-1",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r1-c5-1",
+                      "traditional": "說",
+                      "pinyin": "shuō",
+                      "meaning": "say",
+                      "simplified": "说",
+                      "suffix": "：「"
+                    },
+                    {
+                      "id": "l12g3-s1-r1-c5-2",
+                      "traditional": "我們",
+                      "pinyin": "wǒmen",
+                      "meaning": "we",
+                      "simplified": "我们"
+                    },
+                    {
+                      "id": "l12g3-s1-r1-c5-3",
+                      "traditional": "應該",
+                      "pinyin": "yīnggāi",
+                      "meaning": "should",
+                      "simplified": "应该"
+                    },
+                    {
+                      "id": "l12g3-s1-r1-c5-4",
+                      "traditional": "要",
+                      "pinyin": "yào",
+                      "meaning": "need to"
+                    },
+                    {
+                      "id": "l12g3-s1-r1-c5-5",
+                      "traditional": "多",
+                      "pinyin": "duō",
+                      "meaning": "more"
+                    },
+                    {
+                      "id": "l12g3-s1-r1-c5-6",
+                      "traditional": "運動",
+                      "pinyin": "yùndòng",
+                      "meaning": "exercise",
+                      "simplified": "运动",
+                      "suffix": "、"
+                    },
+                    {
+                      "id": "l12g3-s1-r1-c5-7",
+                      "traditional": "多",
+                      "pinyin": "duō",
+                      "meaning": "more"
+                    },
+                    {
+                      "id": "l12g3-s1-r1-c5-8",
+                      "traditional": "喝水",
+                      "pinyin": "hē shuǐ",
+                      "meaning": "drink water",
+                      "suffix": "。」"
+                    }
+                  ]
+                ],
+                "english": "He often says to me: “We should exercise more and drink more water.”"
+              },
+              {
+                "id": "l12g3-s1-r2",
+                "subject": [
+                  {
+                    "id": "l12g3-s1-r2-c1-1",
+                    "traditional": "這",
+                    "pinyin": "zhè",
+                    "meaning": "this",
+                    "simplified": "这"
+                  },
+                  {
+                    "id": "l12g3-s1-r2-c1-2",
+                    "traditional": "件",
+                    "pinyin": "jiàn",
+                    "meaning": "measure word"
+                  },
+                  {
+                    "id": "l12g3-s1-r2-c1-3",
+                    "traditional": "事",
+                    "pinyin": "shì",
+                    "meaning": "matter"
+                  },
+                  {
+                    "id": "l12g3-s1-r2-c1-4",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
+                  }
+                ],
+                "grammar": [
+                  {
+                    "id": "l12g3-s1-r2-c2-1",
+                    "traditional": "只",
+                    "pinyin": "zhǐ",
+                    "meaning": "only"
+                  }
+                ],
+                "complement": [
+                  {
+                    "id": "l12g3-s1-r2-c3-1",
+                    "traditional": "對",
+                    "pinyin": "duì",
+                    "meaning": "to",
+                    "simplified": "对"
+                  }
+                ],
+                "columns": [
+                  [
+                    {
+                      "id": "l12g3-s1-r2-c1-1",
+                      "traditional": "這",
+                      "pinyin": "zhè",
+                      "meaning": "this",
+                      "simplified": "这"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c1-2",
+                      "traditional": "件",
+                      "pinyin": "jiàn",
+                      "meaning": "measure word"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c1-3",
+                      "traditional": "事",
+                      "pinyin": "shì",
+                      "meaning": "matter"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c1-4",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r2-c2-1",
+                      "traditional": "只",
+                      "pinyin": "zhǐ",
+                      "meaning": "only"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r2-c3-1",
+                      "traditional": "對",
+                      "pinyin": "duì",
+                      "meaning": "to",
+                      "simplified": "对"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r2-c4-1",
+                      "traditional": "你",
+                      "pinyin": "nǐ",
+                      "meaning": "you"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s1-r2-c5-1",
+                      "traditional": "說",
+                      "pinyin": "shuō",
+                      "meaning": "say",
+                      "simplified": "说",
+                      "suffix": "，"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c5-2",
+                      "traditional": "你",
+                      "pinyin": "nǐ",
+                      "meaning": "you"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c5-3",
+                      "traditional": "不",
+                      "pinyin": "bú",
+                      "meaning": "do not"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c5-4",
+                      "traditional": "要",
+                      "pinyin": "yào",
+                      "meaning": "want to"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c5-5",
+                      "traditional": "告訴",
+                      "pinyin": "gàosù",
+                      "meaning": "tell",
+                      "simplified": "告诉"
+                    },
+                    {
+                      "id": "l12g3-s1-r2-c5-6",
+                      "traditional": "別人",
+                      "pinyin": "biérén",
+                      "meaning": "other people",
+                      "simplified": "别人",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "I am telling this only to you; do not tell anyone else."
+              }
+            ],
+            "patternColumns": [
+              "Speaker",
+              "Adverb",
+              "對",
+              "Listener",
+              "說 + Words"
+            ],
+            "patternAccentColumn": 2,
+            "exampleIds": []
           },
           {
             "id": "b1l12-g03-sec-2",
             "sectionNumber": 2,
             "title": "Good or Bad For",
             "explanation": "對 + person or thing + 好／不好 says who or what is affected.",
-            "patternRows": [],
-            "exampleIds": [
-              "g3-example-3",
-              "g3-example-4"
-            ]
+            "patternRows": [
+              {
+                "id": "l12g3-s2-r1",
+                "subject": [
+                  {
+                    "id": "l12g3-s2-r1-c1-1",
+                    "traditional": "常",
+                    "pinyin": "cháng",
+                    "meaning": "often"
+                  },
+                  {
+                    "id": "l12g3-s2-r1-c1-2",
+                    "traditional": "用",
+                    "pinyin": "yòng",
+                    "meaning": "use"
+                  },
+                  {
+                    "id": "l12g3-s2-r1-c1-3",
+                    "traditional": "手機",
+                    "pinyin": "shǒujī",
+                    "meaning": "mobile phone",
+                    "simplified": "手机"
+                  }
+                ],
+                "grammar": [
+                  {
+                    "id": "l12g3-s2-r1-c2-1",
+                    "traditional": "對",
+                    "pinyin": "duì",
+                    "meaning": "for",
+                    "simplified": "对"
+                  }
+                ],
+                "complement": [
+                  {
+                    "id": "l12g3-s2-r1-c3-1",
+                    "traditional": "眼睛",
+                    "pinyin": "yǎnjīng",
+                    "meaning": "eyes"
+                  }
+                ],
+                "columns": [
+                  [
+                    {
+                      "id": "l12g3-s2-r1-c1-1",
+                      "traditional": "常",
+                      "pinyin": "cháng",
+                      "meaning": "often"
+                    },
+                    {
+                      "id": "l12g3-s2-r1-c1-2",
+                      "traditional": "用",
+                      "pinyin": "yòng",
+                      "meaning": "use"
+                    },
+                    {
+                      "id": "l12g3-s2-r1-c1-3",
+                      "traditional": "手機",
+                      "pinyin": "shǒujī",
+                      "meaning": "mobile phone",
+                      "simplified": "手机"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s2-r1-c2-1",
+                      "traditional": "對",
+                      "pinyin": "duì",
+                      "meaning": "for",
+                      "simplified": "对"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s2-r1-c3-1",
+                      "traditional": "眼睛",
+                      "pinyin": "yǎnjīng",
+                      "meaning": "eyes"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s2-r1-c4-1",
+                      "traditional": "不好",
+                      "pinyin": "bù hǎo",
+                      "meaning": "bad",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "Using a phone often is bad for the eyes."
+              },
+              {
+                "id": "l12g3-s2-r2",
+                "subject": [
+                  {
+                    "id": "l12g3-s2-r2-c1-1",
+                    "traditional": "這",
+                    "pinyin": "zhè",
+                    "meaning": "this",
+                    "simplified": "这"
+                  },
+                  {
+                    "id": "l12g3-s2-r2-c1-2",
+                    "traditional": "本",
+                    "pinyin": "běn",
+                    "meaning": "measure word"
+                  },
+                  {
+                    "id": "l12g3-s2-r2-c1-3",
+                    "traditional": "書",
+                    "pinyin": "shū",
+                    "meaning": "book",
+                    "simplified": "书"
+                  }
+                ],
+                "grammar": [
+                  {
+                    "id": "l12g3-s2-r2-c2-1",
+                    "traditional": "對",
+                    "pinyin": "duì",
+                    "meaning": "for",
+                    "simplified": "对"
+                  }
+                ],
+                "complement": [
+                  {
+                    "id": "l12g3-s2-r2-c3-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "me"
+                  }
+                ],
+                "columns": [
+                  [
+                    {
+                      "id": "l12g3-s2-r2-c1-1",
+                      "traditional": "這",
+                      "pinyin": "zhè",
+                      "meaning": "this",
+                      "simplified": "这"
+                    },
+                    {
+                      "id": "l12g3-s2-r2-c1-2",
+                      "traditional": "本",
+                      "pinyin": "běn",
+                      "meaning": "measure word"
+                    },
+                    {
+                      "id": "l12g3-s2-r2-c1-3",
+                      "traditional": "書",
+                      "pinyin": "shū",
+                      "meaning": "book",
+                      "simplified": "书"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s2-r2-c2-1",
+                      "traditional": "對",
+                      "pinyin": "duì",
+                      "meaning": "for",
+                      "simplified": "对"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s2-r2-c3-1",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s2-r2-c4-1",
+                      "traditional": "不難",
+                      "pinyin": "bù nán",
+                      "meaning": "not difficult",
+                      "simplified": "不难",
+                      "suffix": "，"
+                    },
+                    {
+                      "id": "l12g3-s2-r2-c4-2",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I"
+                    },
+                    {
+                      "id": "l12g3-s2-r2-c4-3",
+                      "traditional": "可以",
+                      "pinyin": "kěyǐ",
+                      "meaning": "can"
+                    },
+                    {
+                      "id": "l12g3-s2-r2-c4-4",
+                      "traditional": "學學看",
+                      "pinyin": "xuéxue kàn",
+                      "meaning": "try studying",
+                      "simplified": "学学看",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "This book is not difficult for me; I can try studying it."
+              }
+            ],
+            "patternColumns": [
+              "Subject",
+              "對",
+              "Target",
+              "Effect"
+            ],
+            "patternAccentColumn": 1,
+            "exampleIds": []
           },
           {
             "id": "b1l12-g03-sec-3",
             "sectionNumber": 3,
             "title": "Treating a Person",
             "explanation": "對 + person + 很好／不錯 describes how someone treats that person.",
-            "patternRows": [],
+            "patternRows": [
+              {
+                "id": "l12g3-s3-r1",
+                "subject": [
+                  {
+                    "id": "l12g3-s3-r1-c1-1",
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he"
+                  }
+                ],
+                "grammar": [
+                  {
+                    "id": "l12g3-s3-r1-c2-1",
+                    "traditional": "對",
+                    "pinyin": "duì",
+                    "meaning": "to",
+                    "simplified": "对"
+                  }
+                ],
+                "complement": [
+                  {
+                    "id": "l12g3-s3-r1-c3-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "me"
+                  }
+                ],
+                "columns": [
+                  [
+                    {
+                      "id": "l12g3-s3-r1-c1-1",
+                      "traditional": "他",
+                      "pinyin": "tā",
+                      "meaning": "he"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s3-r1-c2-1",
+                      "traditional": "對",
+                      "pinyin": "duì",
+                      "meaning": "to",
+                      "simplified": "对"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s3-r1-c3-1",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l12g3-s3-r1-c4-1",
+                      "traditional": "很好",
+                      "pinyin": "hěn hǎo",
+                      "meaning": "very well",
+                      "suffix": "，"
+                    },
+                    {
+                      "id": "l12g3-s3-r1-c4-2",
+                      "traditional": "常常",
+                      "pinyin": "chángcháng",
+                      "meaning": "often"
+                    },
+                    {
+                      "id": "l12g3-s3-r1-c4-3",
+                      "traditional": "幫",
+                      "pinyin": "bāng",
+                      "meaning": "help",
+                      "simplified": "帮"
+                    },
+                    {
+                      "id": "l12g3-s3-r1-c4-4",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "me"
+                    },
+                    {
+                      "id": "l12g3-s3-r1-c4-5",
+                      "traditional": "忙",
+                      "pinyin": "máng",
+                      "meaning": "busy",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "He treats me very well and often helps me."
+              }
+            ],
+            "patternColumns": [
+              "Person",
+              "對",
+              "Person Treated",
+              "How"
+            ],
+            "patternAccentColumn": 1,
             "exampleIds": [
-              "g3-example-5",
-              "g3-example-6"
+              "l12g3-e6"
             ]
           }
         ],

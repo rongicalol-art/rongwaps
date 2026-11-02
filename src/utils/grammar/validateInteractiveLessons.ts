@@ -119,6 +119,13 @@ export function validateInteractiveLessons(
         });
       });
 
+      // A section that points at a missing example shows its heading over nothing.
+      const exampleIds = new Set(page.examples.map((example) => example.id));
+      page.subsections?.forEach((section) => {
+        const missing = (section.exampleIds ?? []).filter((id) => !exampleIds.has(id));
+        if (missing.length) issues.push({ location: `${pageLocation} section ${section.id}`, message: `Unknown example IDs: ${missing.join(', ')}.` });
+      });
+
       if (page.unscrambleExercise) {
         const exercise = page.unscrambleExercise;
         registerId(exercise.id, `${pageLocation} unscramble exercise`, pageIds, issues);
