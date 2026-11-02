@@ -5,6 +5,7 @@ export { CharacterAppearanceSection } from './settings/CharacterAppearanceSectio
 export { EmptyReviewState } from './components/EmptyReviewState';
 export { DOCK_SWAP, PracticeDockSlotOutlet, PracticeDockSlotProvider, usePracticeDockSlot } from './components/PracticeDockSlot';
 export { FeedbackBottomBar } from './components/FeedbackBottomBar';
+export { PracticeEmptyState } from './components/PracticeEmptyState';
 export { LessonComplete } from './components/LessonComplete';
 export { SessionComplete, StatTile, loadBird, BIRD_LAST_FRAME, formatTime } from './components/SessionComplete';
 export { ResumeLaunch } from './components/ResumeLaunch';
