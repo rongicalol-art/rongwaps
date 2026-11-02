@@ -7,7 +7,7 @@ import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderNewWordChunks } from '../hooks/useReaderNewWordChunks';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
-import { ReaderChunk, NARRATIVE_CHUNK_APPEARANCE } from './ReaderChunk';
+import { NARRATIVE_CHUNK_APPEARANCE, ReaderSegmentChunks } from './ReaderChunk';
 import { groupSentencesIntoParagraphs } from '../utils/narrativeParagraphs';
 import { SAMPLE_LESSONS } from '../../../data/books';
 import { ReaderSceneIntro } from './ReaderSceneIntro';
@@ -53,23 +53,12 @@ export function ReadingNarrativeView({
 }: ReadingNarrativeViewProps) {
   const sentenceRefs = useRef<Map<number, HTMLSpanElement>>(new Map());
 
-  const {
-    holdingChunkKey,
-    hoveredWord,
-    hoveredChunkKey,
-    handlePointerEnter,
-    handlePointerLeave,
-    handleTooltipMouseEnter,
-    handleTooltipMouseLeave,
-    handlePointerDown,
-    handlePointerMove,
-    handlePointerUp,
-    handlePointerCancel,
-  } = useReaderWordInteractions({
+  const wordInteractions = useReaderWordInteractions({
     onPlayLine,
     onPlayRange,
     showHoverDefinitions,
   });
+  const { hoveredWord, handleTooltipMouseEnter, handleTooltipMouseLeave } = wordInteractions;
 
   // Keep the spoken sentence centred while the learner is following the audio.
   useEffect(() => {
@@ -221,46 +210,19 @@ export function ReadingNarrativeView({
                         className={cn(
                           'group/clause relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong',
                         )}
-                      >{clause.chunks.map((chunk, chunkIdx) => {
-                          if (chunk.isPunctuation) {
-                            return (
-                              <span key={chunkIdx} className="transition-colors">
-                                {chunk.text}
-                              </span>
-                            );
-                          }
-
-                          const chunkKey = `${clause.id}-${chunkIdx}`;
-                          const isWordActive = typeof chunk.start === 'number' && typeof chunk.end === 'number'
-                            ? currentTime >= chunk.start && currentTime < chunk.end
-                            : false;
-
-                          return (
-                            <ReaderChunk
-                              key={chunkIdx}
-                              chunk={chunk}
-                              keyPrefix={clause.id}
-                              chunkIdx={chunkIdx}
-                              lineIndex={sentence.index}
-                              fallbackStart={clause.start}
-                              fallbackEnd={clause.end}
-                              isActive={holdingChunkKey === chunkKey || isWordActive}
-                              isHovered={hoveredChunkKey === chunkKey}
-                              isNewWord={newWordChunks.has(chunk)}
-                              showPinyin={showPinyin}
-                              textSize={textSize}
-                              appearance={NARRATIVE_CHUNK_APPEARANCE}
-                              onPlayLine={onPlayLine}
-                              onPlayRange={onPlayRange}
-                              onPointerEnter={handlePointerEnter}
-                              onPointerLeave={handlePointerLeave}
-                              onPointerDown={handlePointerDown}
-                              onPointerMove={handlePointerMove}
-                              onPointerUp={handlePointerUp}
-                              onPointerCancel={handlePointerCancel}
-                            />
-                          );
-                          })}</span>
+                      ><ReaderSegmentChunks
+                          segment={clause}
+                          lineIndex={sentence.index}
+                          currentTime={currentTime}
+                          newWordChunks={newWordChunks}
+                          showPinyin={showPinyin}
+                          textSize={textSize}
+                          appearance={NARRATIVE_CHUNK_APPEARANCE}
+                          onPlayLine={onPlayLine}
+                          onPlayRange={onPlayRange}
+                          wordInteractions={wordInteractions}
+                          punctuationClassName="transition-colors"
+                        /></span>
                     );
                   })}</span>
               ))}
