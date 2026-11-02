@@ -3,7 +3,7 @@ import { debugLogger } from '../../../utils/debug/debugLogger';
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';
-import { useUserFlashcards } from '../../../features/library';
+import { createLibraryFolder, useUserFlashcards } from '../../../features/library';
 import { useAppStore } from '../../../store/useAppStore';
 import { folderCollabService } from '../../../services/folderCollabService';
 import type { UserFolder } from '../../../types/models';
@@ -55,7 +55,6 @@ export function useLibrary() {
     () => (Array.isArray(customFoldersRaw) ? customFoldersRaw.filter((folder) => Boolean(folder)) : []),
     [customFoldersRaw],
   );
-  const addCustomFolder = useAppStore((state) => state.addCustomFolder);
   const deleteCustomFolder = useAppStore((state) => state.deleteCustomFolder);
   const updateCustomFolder = useAppStore((state) => state.updateCustomFolder);
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
@@ -216,19 +215,7 @@ export function useLibrary() {
     }
 
     setIsCreatingFolder(true);
-    const folderId = crypto.randomUUID();
-    
-    const folderColor = serializeFolderColor(selectedFolderColorId);
-
-    if (currentUser) {
-      await flashcardService.createFolder(currentUser.id, {
-        id: folderId,
-        name: newFolderName.trim(),
-        color: folderColor
-      });
-    }
-    addCustomFolder(newFolderName.trim(), folderColor, folderId);
-    
+    await createLibraryFolder(newFolderName.trim(), selectedFolderColorId, currentUser?.id);
     setShowFolderModal(false);
     setIsCreatingFolder(false);
   };
