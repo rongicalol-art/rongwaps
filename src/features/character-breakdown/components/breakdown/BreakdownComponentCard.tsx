@@ -25,7 +25,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
 }) => {
   const levels = useLevels();
   const data = useCharBreakdown(c);
-  const { exactVocab, usedInVocabs, hasRelation } = useComponentVocabRelation(c);
+  const { firstLesson } = useComponentVocabRelation(c);
 
   const cardColors = useMemo(() => {
     return {
@@ -33,17 +33,6 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
       textAccent: activeBook.accent || 'text-brand-secondary',
     };
   }, [activeBook]);
-
-  const badgeInfo = useMemo(() => {
-    if (!hasRelation) return null;
-    if (exactVocab) {
-      return { bookId: exactVocab.bookId, lessonId: exactVocab.lessonId };
-    }
-    if (usedInVocabs && usedInVocabs.length > 0) {
-      return { bookId: usedInVocabs[0].bookId, lessonId: usedInVocabs[0].lessonId };
-    }
-    return null;
-  }, [hasRelation, exactVocab, usedInVocabs]);
 
   return (
     <button
@@ -58,7 +47,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
             {data ? (data.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : ' ') : <Skeleton className="w-8 h-3 rounded-xs" />}
           </span>
         </div>
-        {badgeInfo ? <LevelTag bookId={badgeInfo.bookId} lessonId={badgeInfo.lessonId} /> : <LevelTag level={resolveLevel(c, levels)} />}
+        {firstLesson ? <LevelTag bookId={firstLesson.bookId} lessonId={firstLesson.lessonId} /> : <LevelTag level={resolveLevel(c, levels)} />}
       </div>
       <span className={`text-4xl sm:text-5xl leading-none font-chinese ${cardColors.textAccent} transition-all block mb-1`}>
         {c}
