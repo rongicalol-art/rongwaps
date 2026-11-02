@@ -1,7 +1,4 @@
-import { motion } from 'motion/react';
 import { cn } from '../../../utils/cn';
-import { WORD_FLIGHT } from '../practiceMotion';
-import type { DragHandlers } from './InlineBlank';
 
 export type BookBlankState = 'empty' | 'next' | 'filled' | 'correct' | 'wrong' | 'revealed';
 
@@ -11,55 +8,40 @@ interface BookBlankProps {
   quiet: boolean;
   /** A build line with many blanks: narrower boxes. */
   narrow?: boolean;
-  /** Marks this blank as somewhere a dragged word can land. */
-  dropId?: string;
-  /** A word is being carried over this blank. */
-  open?: boolean;
-  word?: {
-    text: string;
-    /** Shared with its bank tile so the word flies in; left out when it was dropped by hand. */
-    layoutId?: string;
-    onTakeBack?: () => void;
-    drag?: DragHandlers;
-    carried?: boolean;
-  };
+  /** The word placed in this blank; tapping it takes it back while the item is open. */
+  word?: { text: string; onTakeBack?: () => void };
 }
 
 const FILL: Record<BookBlankState, string> = {
   empty: '',
-  next: 'bg-brand-primary-soft shadow-[inset_0_0_0_2.5px_var(--color-brand-primary)]',
-  filled: 'bg-brand-primary-soft text-brand-primary-deep shadow-[inset_0_0_0_2px_var(--color-brand-primary-soft-edge)]',
-  correct: 'bg-feedback-success-surface text-feedback-success-text',
-  wrong: 'bg-feedback-danger-surface text-feedback-danger-text',
-  revealed: 'bg-ui-divider text-ui-ink-strong',
+  next: 'border-brand-primary bg-brand-primary-soft',
+  filled: 'border-brand-primary-soft-edge text-brand-primary-deep',
+  correct: 'border-feedback-success text-feedback-success-text',
+  wrong: 'border-feedback-danger text-feedback-danger-text',
+  revealed: 'border-ui-muted text-ui-ink-strong',
 };
 
-/** A blank on a Book 1 exercise page: a soft box sitting on the text line, holding the word placed in it. */
-export function BookBlank({ state, quiet, narrow, dropId, open, word }: BookBlankProps) {
-  const fill = open ? FILL.next : state === 'empty' ? (quiet ? 'bg-ui-divider' : 'bg-ui-hover') : FILL[state];
+/** A blank on a Book 1 exercise page: an underline on the text line, holding the word placed in it. */
+export function BookBlank({ state, quiet, narrow, word }: BookBlankProps) {
+  const fill = state === 'empty' ? (quiet ? 'border-ui-border' : 'border-ui-muted') : FILL[state];
   return (
     <span
-      data-drop-slot={dropId}
       className={cn(
-        'mx-[0.08em] inline-block h-[1.4em] rounded-xs px-[0.2em] text-center align-baseline leading-[1.4em] transition-[background-color,box-shadow,color] duration-200 motion-reduce:transition-none sm:rounded-sm',
+        'mx-[0.1em] inline-block h-[1.4em] border-b-[3px] px-[0.15em] text-center align-baseline leading-[1.3em]',
         narrow ? 'min-w-[1.5em]' : 'min-w-[1.7em]',
         fill,
       )}
     >
       {word ? (
-        <motion.button
+        <button
           type="button"
-          layout="position"
-          layoutId={word.layoutId}
-          transition={WORD_FLIGHT}
           disabled={!word.onTakeBack}
           onClick={word.onTakeBack}
           aria-label={word.onTakeBack ? `Take back ${word.text}` : word.text}
-          {...word.drag}
-          className={cn('inline select-none [font:inherit] focus-ring-inline enabled:hover:opacity-75', word.carried && 'opacity-30')}
+          className="inline select-none [font:inherit] focus-ring-inline enabled:hover:opacity-75"
         >
           {word.text}
-        </motion.button>
+        </button>
       ) : (
         // Zero-width text keeps the empty box on the same baseline as its neighbours.
         <span aria-hidden="true">{'​'}</span>

@@ -9,6 +9,7 @@ import path from "path";
 import dotenv from "dotenv";
 import * as Sentry from "@sentry/node";
 import { createUserSupabaseClient, supabase } from "./supabase.js";
+import { isLocallyVerifiable, schoolAccessFromClaims, verifyAccessToken } from "../shared/accessToken";
 
 // Load local server configuration.
 dotenv.config();
@@ -92,7 +93,24 @@ function tokenExpiryMs(token: string): number {
   } catch { return Infinity; }
 }
 
+/**
+ * Tokens signed with the project's asymmetric keys are checked here, and the school decision the sign-in hook
+ * stamped into them is trusted: no Supabase round trip. Older tokens, legacy shared-secret tokens and signing-key
+ * outages fall back to asking Supabase, as before. A forged or expired asymmetric token is refused at once.
+ */
+async function verifyLocally(token: string): Promise<AuthResult | null> {
+  const supabaseUrl = process.env.VITE_SUPABASE_URL;
+  if (!supabaseUrl || !isLocallyVerifiable(token)) return null;
+  let verified: Awaited<ReturnType<typeof verifyAccessToken>>;
+  try { verified = await verifyAccessToken(`Bearer ${token}`, supabaseUrl); }
+  catch { return null; }
+  if (!verified) return { status: 401, error: "Unauthorized" };
+  return schoolAccessFromClaims(verified.claims)?.school ? { userId: verified.userId } : null;
+}
+
 async function verifyToken(token: string): Promise<AuthResult> {
+  const local = await verifyLocally(token);
+  if (local) return local;
   try {
     const [userResult, accessResult] = await Promise.all([
       supabase.auth.getUser(token),

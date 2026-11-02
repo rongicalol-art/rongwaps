@@ -14,6 +14,7 @@ None of this code ships to learners. Run via the matching `npm run …` alias or
 | `memory-hooks/` | hook-generation pipeline (finished experiments in `archive/`); `phonetic/`, `jev/` hold sound-hook and Jev tooling |
 | `dev/` | one-off helpers (`listTables.mjs`, `ui_sweep.py`) |
 | `release/` | release safety used by CI and git hooks: `secretScan.ts`, `checkMigrations.ts` (see `docs/RELEASING.md`) |
+| `load/` | Study together load test against a local Worker or staging; CI runs its budgets (`npm run games:load`, see `load/README.md`) |
 | `lib/` | shared script helpers |
 
 Secrets: `scripts/.config.json` and `.env*` are never read by agents or committed.

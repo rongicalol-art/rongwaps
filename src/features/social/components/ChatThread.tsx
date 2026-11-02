@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { ActionButton, AppIcon, Avatar, PlayfulNavIcon, SmartSentence } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { CHAT_MAX, chatText, nextChatRate, type ChatRate, type ChatMessage, type MentionNotice } from '../../../../shared/lobby';
@@ -31,7 +31,9 @@ export function ChatThread({ lesson }: { lesson: number }) {
   const ready = useAppStore(state => state.socialStatus === 'live');
   useEffect(() => { useAppStore.getState().setSocial({ socialUnread: false }); }, [chat?.length]);
   const online = useAppStore(state => state.socialOnline);
-  const candidates = online.filter(person => lesson === GLOBAL_CHAT || person.l === lesson);
+  const people = useAppStore(state => state.socialPeople);
+  const candidates = useMemo(() => [...new Map([...online, ...people].map(person => [person.u, person])).values()]
+    .filter(person => lesson === GLOBAL_CHAT || person.l === lesson), [online, people, lesson]);
   return <MessageThread chat={chat} ready={ready} candidates={candidates} send={(text, mentions) => lobby.say(lesson, text, mentions)} report={id => { lobby.report(id); }} />;
 }
 

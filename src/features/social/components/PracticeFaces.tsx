@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, Avatar, AvatarStack } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
+import { countedIn } from '../../../store/slices/socialSlice';
 import { CHEER_PHRASES, type ChatMessage } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 import { lobby } from '../lobbyController';
@@ -27,6 +28,8 @@ export function PracticeFaces() {
   const root = useRef<HTMLDivElement>(null);
   const others = useMemo(() => people.filter((person) => person.u !== me), [people, me]);
   const lesson = people.find((person) => person.u === me)?.l ?? others[0]?.l ?? null;
+  // Lists are capped; the count is exact.
+  const hereTotal = useAppStore((state) => lesson === null ? others.length : Math.max(others.length, (state.socialCounts[lesson]?.n ?? 0) - (countedIn(state, lesson) ? 1 : 0)));
 
   useEffect(() => {
     if (!open) return;
@@ -86,11 +89,11 @@ export function PracticeFaces() {
             </div>
             <div className="mt-1">
               {others.slice(0, 3).map((person) => <PersonRow key={person.u} person={person} lesson={lesson} />)}
-              {(others.length > 3 || onlineTotal > others.length) && (
+              {(hereTotal > 3 || onlineTotal > hereTotal) && (
                 <button type="button" onClick={openOnline} className="-mx-1 mt-1 flex items-center gap-1.5 rounded-compact px-1 py-1 text-sm font-extrabold text-ui-muted outline-none transition-colors hover:text-ui-ink focus-ring-inline">
-                  {others.length > 3 && <span>+{others.length - 3} more here</span>}
-                  {others.length > 3 && onlineTotal > others.length && <span aria-hidden>·</span>}
-                  {onlineTotal > others.length && <><span className="h-2 w-2 rounded-full bg-feedback-success" />{onlineTotal} online</>}
+                  {hereTotal > 3 && <span>+{hereTotal - 3} more here</span>}
+                  {hereTotal > 3 && onlineTotal > hereTotal && <span aria-hidden>·</span>}
+                  {onlineTotal > hereTotal && <><span className="h-2 w-2 rounded-full bg-feedback-success" />{onlineTotal} online</>}
                 </button>
               )}
             </div>

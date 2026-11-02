@@ -137,7 +137,13 @@ export function ReaderHeader({
             onClick={onTogglePlay}
             className="ml-1 [--depth-sm:4px]"
           />
-          {partLabel && <span aria-live="polite" className="ml-2 whitespace-nowrap text-sm font-black text-ui-muted-strong">{partLabel}</span>}
+          {partLabel && (
+            <span aria-live="polite" aria-label={partLabel} className="ml-2 whitespace-nowrap text-sm font-black text-ui-muted-strong">
+              {/* A run over several lessons is crowded on a phone: the short form leaves the bar its room. */}
+              {lessonNumber !== undefined && <span aria-hidden="true" className="sm:hidden">{`L${lessonNumber} · P${partNumber}`}</span>}
+              <span aria-hidden={lessonNumber !== undefined} className={lessonNumber !== undefined ? 'hidden sm:inline' : undefined}>{partLabel}</span>
+            </span>
+          )}
         </>
       }
       rightAction={

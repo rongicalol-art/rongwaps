@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useAppStore } from '../../store/useAppStore';
 import { lessonKey } from '../../store/slices/socialSlice';
@@ -47,11 +47,23 @@ export function useSocialLifecycle() {
     const a: Activity | null = state.racePlaying ? 'race' : activity ? ACTIVITY[activity] ?? 'lesson' : lesson !== null ? 'lesson' : null;
     const panel = state.socialPanel;
     const chat = panel?.kind === 'people' && panel.tab === 'chat' ? panel.chatScope === 'global' ? GLOBAL_CHAT : panel.chatLesson ?? lesson ?? GLOBAL_CHAT : lesson;
-    return { lesson, a, show: state.showOnline, online: panel?.kind !== 'partyChat' && panel?.kind !== 'partyMention' && (panel?.tab === 'online' || panel?.tab === 'chat'), chat };
+    return { lesson, a, show: state.showOnline, online: panel?.kind === 'people' || panel?.kind === 'challenge', chat };
   }));
   useEffect(() => {
     lobby.here(presence.lesson, presence.a, presence.show, identity.image);
     // The current lesson's chat is followed so the unread dot and room cards arrive; Online only while open.
     lobby.subscribe(presence.online, presence.chat);
   }, [presence, identity.image]);
+
+  // The Online list is a snapshot: opening the panel brings one; switching to a list inside it asks again.
+  const view = useAppStore(state => {
+    const panel = state.socialPanel;
+    return panel?.kind === 'people' || panel?.kind === 'challenge' ? `${panel.kind}:${panel.tab}` : null;
+  });
+  const previousView = useRef<string | null>(null);
+  useEffect(() => {
+    const opened = previousView.current === null;
+    previousView.current = view;
+    if (view && !opened && !view.endsWith(':rooms')) lobby.roster();
+  }, [view]);
 }
