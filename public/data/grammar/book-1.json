@@ -122612,8 +122612,8 @@
               "explanation": "對 + person before 說 marks the person spoken to.",
               "patternRows": [],
               "exampleIds": [
-                "g3-example-1",
-                "g3-example-2"
+                "l12g3-e1",
+                "l12g3-e2"
               ]
             },
             {
@@ -122623,8 +122623,8 @@
               "explanation": "對 + person or thing + 好／不好 says who or what is affected.",
               "patternRows": [],
               "exampleIds": [
-                "g3-example-3",
-                "g3-example-4"
+                "l12g3-e3",
+                "l12g3-e4"
               ]
             },
             {
@@ -122634,8 +122634,8 @@
               "explanation": "對 + person + 很好／不錯 describes how someone treats that person.",
               "patternRows": [],
               "exampleIds": [
-                "g3-example-5",
-                "g3-example-6"
+                "l12g3-e5",
+                "l12g3-e6"
               ]
             }
           ],
@@ -149297,7 +149297,6 @@
                 }
               ],
               "exampleIds": [
-                "l14g2-e1",
                 "l14g2-e2",
                 "l14g2-e3"
               ]
@@ -153261,11 +153260,7 @@
                   }
                 }
               ],
-              "exampleIds": [
-                "l14g3-e1",
-                "l14g3-e2",
-                "l14g3-e3"
-              ]
+              "exampleIds": []
             },
             {
               "id": "b1l14-g03-sec-2",
