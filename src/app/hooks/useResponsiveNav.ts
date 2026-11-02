@@ -9,7 +9,6 @@ export const isExpandedViewport = () => (
   typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
 );
 
-export const DESKTOP_NAV_PREFERENCE_KEY = 'rongwaps:desktop-nav-open';
 export const SIDEBAR_COLLAPSED_PREFERENCE_KEY = 'rongwaps:sidebar-collapsed';
 
 export const getInitialSidebarCollapsed = () => {

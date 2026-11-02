@@ -17,11 +17,6 @@ export function preloadLottie(): Promise<void> {
   return lottieLoad;
 }
 
-/** Warms a `loadAnimationData` loader's JSON into the player cache. */
-export function preloadAnimation(load: () => Promise<unknown>): Promise<void> {
-  return load().then((data) => { animationCache.set(load, data); });
-}
-
 type LottieAnimationData = LottieComponentProps['animationData'];
 
 export interface LottiePlayerProps extends Omit<LottieComponentProps, 'animationData'> {
