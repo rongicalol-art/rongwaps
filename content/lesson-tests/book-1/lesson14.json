@@ -1,0 +1,2416 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l14",
+  "bookId": 1,
+  "lessonId": 14,
+  "band": "A",
+  "allowWords": [
+    "友美",
+    "宜文",
+    "最後面"
+  ],
+  "slots": [
+    {
+      "id": "hear-buildings",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l14-hear-buildings-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "左邊那棟大樓比右邊那棟高一點。",
+              "simplified": "左边那栋大楼比右边那栋高一点。",
+              "pinyin": "Zuǒbiān nà dòng dàlóu bǐ yòubiān nà dòng gāo yìdiǎn.",
+              "english": "The building on the left is a little taller than the one on the right."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-hear-buildings-1-q",
+              "choices": [
+                {
+                  "picture": "b1l14-buildings-1",
+                  "alt": "Left a little taller: two office buildings side by side; the left one is only a little taller than the right one (about one fifth taller)"
+                },
+                {
+                  "picture": "b1l14-buildings-2",
+                  "alt": "Left much taller: the same two buildings; the left one is about twice as tall as the right one"
+                },
+                {
+                  "picture": "b1l14-buildings-3",
+                  "alt": "Right taller: the same two buildings; the right one is clearly taller than the left one (about one and a half times as tall)"
+                }
+              ],
+              "key": 0,
+              "why": "比右邊那棟高一點: the left building is only a little taller. 高多了 would mean much taller.",
+              "focus": {
+                "zh": "比……高一點",
+                "en": "a little taller than"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L14-1-20",
+                "B1L08-1-18",
+                "B1L04-1-11"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-hear-buildings-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這兩棟大樓，左邊的比右邊的高多了。",
+              "simplified": "这两栋大楼，左边的比右边的高多了。",
+              "pinyin": "Zhè liǎng dòng dàlóu, zuǒbiān de bǐ yòubiān de gāo duō le.",
+              "english": "Of these two buildings, the left one is much taller than the right one."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-hear-buildings-2-q",
+              "choices": [
+                {
+                  "picture": "b1l14-buildings-1",
+                  "alt": "Left a little taller: two office buildings side by side; the left one is only a little taller than the right one (about one fifth taller)"
+                },
+                {
+                  "picture": "b1l14-buildings-2",
+                  "alt": "Left much taller: the same two buildings; the left one is about twice as tall as the right one"
+                },
+                {
+                  "picture": "b1l14-buildings-3",
+                  "alt": "Right taller: the same two buildings; the right one is clearly taller than the left one (about one and a half times as tall)"
+                }
+              ],
+              "key": 1,
+              "why": "高多了 means much taller: the left building is about twice as tall. 高一點 would be only a little taller.",
+              "focus": {
+                "zh": "比……高多了",
+                "en": "much taller than"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L14-1-20",
+                "B1L08-1-18",
+                "B1L13-1-13"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-hear-buildings-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "左邊的大樓比右邊的矮。",
+              "simplified": "左边的大楼比右边的矮。",
+              "pinyin": "Zuǒbiān de dàlóu bǐ yòubiān de ǎi.",
+              "english": "The building on the left is shorter than the one on the right."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-hear-buildings-3-q",
+              "choices": [
+                {
+                  "picture": "b1l14-buildings-1",
+                  "alt": "Left a little taller: two office buildings side by side; the left one is only a little taller than the right one (about one fifth taller)"
+                },
+                {
+                  "picture": "b1l14-buildings-2",
+                  "alt": "Left much taller: the same two buildings; the left one is about twice as tall as the right one"
+                },
+                {
+                  "picture": "b1l14-buildings-3",
+                  "alt": "Right taller: the same two buildings; the right one is clearly taller than the left one (about one and a half times as tall)"
+                }
+              ],
+              "key": 2,
+              "why": "左邊的比右邊的矮: the left building is shorter, so the right one is the taller one.",
+              "focus": {
+                "zh": "比……矮",
+                "en": "shorter than"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L14-1-20",
+                "B1L08-1-19",
+                "B1L13-1-12"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-sofa",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l14-hear-sofa-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我跟哥哥都站在沙發旁邊看電視。",
+              "simplified": "我跟哥哥都站在沙发旁边看电视。",
+              "pinyin": "Wǒ gēn gēge dōu zhàn zài shāfā pángbiān kàn diànshì.",
+              "english": "My brother and I are both standing next to the sofa, watching TV."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-hear-sofa-1-q",
+              "choices": [
+                {
+                  "picture": "b1l14-sofa-1",
+                  "alt": "Both standing: the boy and the girl both stand next to an empty sofa, watching a concert on TV"
+                },
+                {
+                  "picture": "b1l14-sofa-2",
+                  "alt": "Girl sitting: the girl sits on the sofa and the boy stands next to it, watching a concert on TV"
+                },
+                {
+                  "picture": "b1l14-sofa-3",
+                  "alt": "Boy sitting: the boy sits on the sofa and the girl stands next to it, watching a concert on TV"
+                }
+              ],
+              "key": 0,
+              "why": "都站在沙發旁邊: both of them stand next to the sofa, so nobody sits on it. In the other two pictures one child sits (坐).",
+              "focus": {
+                "zh": "都站在旁邊",
+                "en": "both standing"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-16",
+                "B1L05-2-19",
+                "B1L05-2-15",
+                "B1L03-2-19"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-hear-sofa-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妹妹坐在沙發上，我站在她旁邊。",
+              "simplified": "妹妹坐在沙发上，我站在她旁边。",
+              "pinyin": "Mèimei zuò zài shāfā shàng, wǒ zhàn zài tā pángbiān.",
+              "english": "My little sister is sitting on the sofa, and I'm standing next to her."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-hear-sofa-2-q",
+              "choices": [
+                {
+                  "picture": "b1l14-sofa-1",
+                  "alt": "Both standing: the boy and the girl both stand next to an empty sofa, watching a concert on TV"
+                },
+                {
+                  "picture": "b1l14-sofa-2",
+                  "alt": "Girl sitting: the girl sits on the sofa and the boy stands next to it, watching a concert on TV"
+                },
+                {
+                  "picture": "b1l14-sofa-3",
+                  "alt": "Boy sitting: the boy sits on the sofa and the girl stands next to it, watching a concert on TV"
+                }
+              ],
+              "key": 1,
+              "why": "妹妹坐在沙發上: the girl sits, and the boy (我) stands next to her.",
+              "focus": {
+                "zh": "坐在沙發上",
+                "en": "sitting on the sofa"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-17",
+                "B1L14-1-16",
+                "B1L05-2-18",
+                "B1L05-2-19"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-hear-sofa-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "哥哥坐在沙發上看電視，我站在旁邊。",
+              "simplified": "哥哥坐在沙发上看电视，我站在旁边。",
+              "pinyin": "Gēge zuò zài shāfā shàng kàn diànshì, wǒ zhàn zài pángbiān.",
+              "english": "My brother is sitting on the sofa watching TV, and I'm standing next to it."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-hear-sofa-3-q",
+              "choices": [
+                {
+                  "picture": "b1l14-sofa-1",
+                  "alt": "Both standing: the boy and the girl both stand next to an empty sofa, watching a concert on TV"
+                },
+                {
+                  "picture": "b1l14-sofa-2",
+                  "alt": "Girl sitting: the girl sits on the sofa and the boy stands next to it, watching a concert on TV"
+                },
+                {
+                  "picture": "b1l14-sofa-3",
+                  "alt": "Boy sitting: the boy sits on the sofa and the girl stands next to it, watching a concert on TV"
+                }
+              ],
+              "key": 2,
+              "why": "哥哥坐在沙發上: the boy sits, and the girl (我) stands next to the sofa.",
+              "focus": {
+                "zh": "哥哥坐、我站",
+                "en": "who sits, who stands"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-17",
+                "B1L14-1-16",
+                "B1L05-2-15",
+                "B1L05-2-19"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-dinner",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l14-picture-dinner-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L14-R02",
+            "alt": "Evening at Yiwen's home: Yiwen opens the door; Guo'an carries a covered white pot, Youmei a steamer basket of baozi, and the teacher a tray of four cups of bubble milk tea. Jiale, a young man, stands at the window looking out at a park with many trees. On the table are a big teal pot of beef soup, a plate of small white dumplings, a plate of greens, a bowl of a meat dish, small bowls and a few bottles. There is no TV in the room."
+          },
+          "questions": [
+            {
+              "id": "b1l14-picture-dinner-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "桌子上有菜，沒有湯。",
+                  "simplified": "桌子上有菜，没有汤。",
+                  "pinyin": "Zhuōzi shàng yǒu cài, méiyǒu tāng.",
+                  "english": "There are dishes on the table, but no soup."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "桌子上有湯，也有菜。",
+                  "simplified": "桌子上有汤，也有菜。",
+                  "pinyin": "Zhuōzi shàng yǒu tāng, yě yǒu cài.",
+                  "english": "There is soup on the table, and other dishes too."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "桌子上有蛋糕，也有菜。",
+                  "simplified": "桌子上有蛋糕，也有菜。",
+                  "pinyin": "Zhuōzi shàng yǒu dàngāo, yě yǒu cài.",
+                  "english": "There is cake on the table, and other dishes too."
+                }
+              ],
+              "key": 1,
+              "why": "The table has a big pot of soup (湯) in the middle and plates of food (菜) around it, so both are there. There is no cake (蛋糕) on the table.",
+              "focus": {
+                "zh": "有湯，也有菜",
+                "en": "soup and dishes"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-13",
+                "B1L11-3-05",
+                "B1L05-2-10",
+                "B1L05-2-14"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-picture-dinner-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L14-R02",
+            "alt": "Evening at Yiwen's home: Yiwen opens the door; Guo'an carries a covered white pot, Youmei a steamer basket of baozi, and the teacher a tray of four cups of bubble milk tea. Jiale, a young man, stands at the window looking out at a park with many trees. On the table are a big teal pot of beef soup, a plate of small white dumplings, a plate of greens, a bowl of a meat dish, small bowls and a few bottles. There is no TV in the room."
+          },
+          "questions": [
+            {
+              "id": "b1l14-picture-dinner-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "窗戶旁邊有一個男生在看外面的公園。",
+                  "simplified": "窗户旁边有一个男生在看外面的公园。",
+                  "pinyin": "Chuānghù pángbiān yǒu yí ge nánshēng zài kàn wàimiàn de gōngyuán.",
+                  "english": "A young man by the window is looking at the park outside."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "窗戶旁邊有一個女生在看外面的公園。",
+                  "simplified": "窗户旁边有一个女生在看外面的公园。",
+                  "pinyin": "Chuānghù pángbiān yǒu yí ge nǚshēng zài kàn wàimiàn de gōngyuán.",
+                  "english": "A young woman by the window is looking at the park outside."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "窗戶旁邊有一個男生在看電視。",
+                  "simplified": "窗户旁边有一个男生在看电视。",
+                  "pinyin": "Chuānghù pángbiān yǒu yí ge nánshēng zài kàn diànshì.",
+                  "english": "A young man by the window is watching TV."
+                }
+              ],
+              "key": 0,
+              "why": "A young man (Jiale) stands at the window looking out at the park (公園). No girl (女生) stands there, and there is no TV (電視) in the room.",
+              "focus": {
+                "zh": "看外面的公園",
+                "en": "looking at the park"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-03",
+                "B1L05-3-05",
+                "B1L08-3-05",
+                "B1L09-1-10"
+              ],
+              "grammarIds": [
+                "B1L09-G01-P205"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-fireworks",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l14-picture-fireworks-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L14-R03",
+            "alt": "At night, the teacher and four classmates (five people in all; the teacher is at the right edge) in winter coats and scarves stand together in a huge crowd in Taipei, looking up at fireworks over Taipei 101; under the tower, a lit stage has a concert. One girl raises her hand and everyone is smiling: it is very lively."
+          },
+          "questions": [
+            {
+              "id": "b1l14-picture-fireworks-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "晚上這裡人很多，很熱鬧。",
+                  "simplified": "晚上这里人很多，很热闹。",
+                  "pinyin": "Wǎnshàng zhèlǐ rén hěn duō, hěn rènao.",
+                  "english": "At night there are lots of people here; it's very lively."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "早上這裡人很多，很熱鬧。",
+                  "simplified": "早上这里人很多，很热闹。",
+                  "pinyin": "Zǎoshàng zhèlǐ rén hěn duō, hěn rènao.",
+                  "english": "In the morning there are lots of people here; it's very lively."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "早上這裡人很少，很安靜。",
+                  "simplified": "早上这里人很少，很安静。",
+                  "pinyin": "Zǎoshàng zhèlǐ rén hěn shǎo, hěn ānjìng.",
+                  "english": "In the morning there are few people here; it's very quiet."
+                }
+              ],
+              "key": 0,
+              "why": "It is night (晚上): the sky is dark and full of fireworks, and the square is full of people, so it is 很熱鬧, very lively. 早上 would be the morning.",
+              "focus": {
+                "zh": "熱鬧",
+                "en": "lively"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-14",
+                "B1L02-2-10",
+                "B1L02-1-16",
+                "B1L13-2-07"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-picture-fireworks-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L14-R03",
+            "alt": "At night, the teacher and four classmates (five people in all; the teacher is at the right edge) in winter coats and scarves stand together in a huge crowd in Taipei, looking up at fireworks over Taipei 101; under the tower, a lit stage has a concert. One girl raises her hand and everyone is smiling: it is very lively."
+          },
+          "questions": [
+            {
+              "id": "b1l14-picture-fireworks-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們五個人在台北看日出。",
+                  "simplified": "他们五个人在台北看日出。",
+                  "pinyin": "Tāmen wǔ ge rén zài Táiběi kàn rìchū.",
+                  "english": "The five of them are watching the sunrise in Taipei."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們五個人在台北看電影。",
+                  "simplified": "他们五个人在台北看电影。",
+                  "pinyin": "Tāmen wǔ ge rén zài Táiběi kàn diànyǐng.",
+                  "english": "The five of them are watching a movie in Taipei."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們五個人在台北跨年。",
+                  "simplified": "他们五个人在台北跨年。",
+                  "pinyin": "Tāmen wǔ ge rén zài Táiběi kuànián.",
+                  "english": "The five of them are celebrating New Year's Eve in Taipei."
+                }
+              ],
+              "key": 2,
+              "why": "It is night and fireworks fill the sky over Taipei 101, so they are celebrating New Year's Eve (跨年). 看日出 happens in the morning, and nobody is watching a movie (電影).",
+              "focus": {
+                "zh": "跨年",
+                "en": "New Year's Eve"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-01",
+                "B1L14-2-17",
+                "B1L06-2-01",
+                "B1L14-1-23"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-done",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l14-dialogue-done-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你以前在美國住過嗎？",
+              "simplified": "你以前在美国住过吗？",
+              "pinyin": "Nǐ yǐqián zài Měiguó zhù guo ma?",
+              "english": "Have you ever lived in the US?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "住過，我十歲去的，在那裡住了兩年。",
+              "simplified": "住过，我十岁去的，在那里住了两年。",
+              "pinyin": "Zhù guo, wǒ shí suì qù de, zài nàlǐ zhù le liǎng nián.",
+              "english": "Yes. I went when I was ten and lived there for two years."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-done-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他在美國住了多久？",
+                "simplified": "他在美国住了多久？",
+                "pinyin": "Tā zài Měiguó zhù le duōjiǔ?",
+                "english": "How long did he live in the US?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "十年",
+                  "simplified": "十年",
+                  "pinyin": "shí nián",
+                  "english": "ten years"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩年",
+                  "simplified": "两年",
+                  "pinyin": "liǎng nián",
+                  "english": "two years"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十二年",
+                  "simplified": "十二年",
+                  "pinyin": "shí'èr nián",
+                  "english": "twelve years"
+                }
+              ],
+              "key": 1,
+              "why": "在那裡住了兩年: he lived there for two years. 十 is his age when he went (十歲).",
+              "focus": {
+                "zh": "住了兩年",
+                "en": "lived there two years"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-03",
+                "B1L14-1-21",
+                "B1L08-1-03",
+                "B1L12-2-07"
+              ],
+              "grammarIds": [
+                "B1L14-G01-P319"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-dialogue-done-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你們在日本玩了幾天？",
+              "simplified": "你们在日本玩了几天？",
+              "pinyin": "Nǐmen zài Rìběn wán le jǐ tiān?",
+              "english": "How many days did you spend in Japan?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我們星期五去的，星期天回來的，玩了三天。",
+              "simplified": "我们星期五去的，星期天回来的，玩了三天。",
+              "pinyin": "Wǒmen xīngqíwǔ qù de, xīngqítiān huílái de, wán le sān tiān.",
+              "english": "We went on Friday and came back on Sunday. We had three days there."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-done-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他們在日本玩了幾天？",
+                "simplified": "他们在日本玩了几天？",
+                "pinyin": "Tāmen zài Rìběn wán le jǐ tiān?",
+                "english": "How many days did they spend in Japan?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "五天",
+                  "simplified": "五天",
+                  "pinyin": "wǔ tiān",
+                  "english": "five days"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩天",
+                  "simplified": "两天",
+                  "pinyin": "liǎng tiān",
+                  "english": "two days"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三天",
+                  "simplified": "三天",
+                  "pinyin": "sān tiān",
+                  "english": "three days"
+                }
+              ],
+              "key": 2,
+              "why": "玩了三天: Friday to Sunday, three days there. 五 comes from 星期五.",
+              "focus": {
+                "zh": "玩了三天",
+                "en": "spent three days"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L03-3-02",
+                "B1L04-3-10",
+                "B1L02-1-11"
+              ],
+              "grammarIds": [
+                "B1L14-G01-P319"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-dialogue-done-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳昨天晚上怎麼不在宿舍？",
+              "simplified": "你昨天晚上怎么不在宿舍？",
+              "pinyin": "Nǐ zuótiān wǎnshàng zěnme bú zài sùshè?",
+              "english": "How come you weren't in the dorm last night?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我六點去圖書館寫功課，寫了三個小時。",
+              "simplified": "我六点去图书馆写功课，写了三个小时。",
+              "pinyin": "Wǒ liù diǎn qù túshūguǎn xiě gōngkè, xiě le sān ge xiǎoshí.",
+              "english": "At six I went to the library to do homework, and I worked for three hours."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-done-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "她寫功課寫了多久？",
+                "simplified": "她写功课写了多久？",
+                "pinyin": "Tā xiě gōngkè xiě le duōjiǔ?",
+                "english": "How long did she do homework?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "三個小時",
+                  "simplified": "三个小时",
+                  "pinyin": "sān ge xiǎoshí",
+                  "english": "three hours"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "六個小時",
+                  "simplified": "六个小时",
+                  "pinyin": "liù ge xiǎoshí",
+                  "english": "six hours"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "九個小時",
+                  "simplified": "九个小时",
+                  "pinyin": "jiǔ ge xiǎoshí",
+                  "english": "nine hours"
+                }
+              ],
+              "key": 0,
+              "why": "寫了三個小時: three hours of homework. Six (六點) is when she went, and nine is when she finished.",
+              "focus": {
+                "zh": "寫了三個小時",
+                "en": "worked three hours"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-21",
+                "B1L12-2-11",
+                "B1L09-1-14",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L14-G01-P319"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-sofar",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l14-dialogue-sofar-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你學中文學了多久了？",
+              "simplified": "你学中文学了多久了？",
+              "pinyin": "Nǐ xué Zhōngwén xué le duōjiǔ le?",
+              "english": "How long have you been studying Chinese?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "學了三年了，可是我來台灣只有兩個月。",
+              "simplified": "学了三年了，可是我来台湾只有两个月。",
+              "pinyin": "Xué le sān nián le, kěshì wǒ lái Táiwān zhǐ yǒu liǎng ge yuè.",
+              "english": "Three years now, but I've only been in Taiwan for two months."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-sofar-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他學中文學了多久了？",
+                "simplified": "他学中文学了多久了？",
+                "pinyin": "Tā xué Zhōngwén xué le duōjiǔ le?",
+                "english": "How long has he been studying Chinese?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "三年",
+                  "simplified": "三年",
+                  "pinyin": "sān nián",
+                  "english": "three years"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個月",
+                  "simplified": "两个月",
+                  "pinyin": "liǎng ge yuè",
+                  "english": "two months"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三個月",
+                  "simplified": "三个月",
+                  "pinyin": "sān ge yuè",
+                  "english": "three months"
+                }
+              ],
+              "key": 0,
+              "why": "學了三年了: three years so far, and he is still studying. 兩個月 is how long he has been in Taiwan.",
+              "focus": {
+                "zh": "學了三年了",
+                "en": "three years so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-21",
+                "B1L08-1-03",
+                "B1L06-3-03",
+                "B1L03-1-10"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-dialogue-sofar-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳在這個城市住了多久了？",
+              "simplified": "你在这个城市住了多久了？",
+              "pinyin": "Nǐ zài zhège chéngshì zhù le duōjiǔ le?",
+              "english": "How long have you lived in this city?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "住了五年了。以前我在韓國住了八年。",
+              "simplified": "住了五年了。以前我在韩国住了八年。",
+              "pinyin": "Zhù le wǔ nián le. Yǐqián wǒ zài Hánguó zhù le bā nián.",
+              "english": "Five years now. Before that, I lived in Korea for eight years."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-sofar-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "她在這個城市住了多久了？",
+                "simplified": "她在这个城市住了多久了？",
+                "pinyin": "Tā zài zhège chéngshì zhù le duōjiǔ le?",
+                "english": "How long has she lived in this city?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "八年",
+                  "simplified": "八年",
+                  "pinyin": "bā nián",
+                  "english": "eight years"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五年",
+                  "simplified": "五年",
+                  "pinyin": "wǔ nián",
+                  "english": "five years"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十三年",
+                  "simplified": "十三年",
+                  "pinyin": "shísān nián",
+                  "english": "thirteen years"
+                }
+              ],
+              "key": 1,
+              "why": "住了五年了 (with a second 了): five years up to now, and she still lives here. The eight years in Korea are over, and 十三年 adds the two.",
+              "focus": {
+                "zh": "住了五年了",
+                "en": "five years so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-03",
+                "B1L14-1-21",
+                "B1L14-1-08",
+                "B1L07-1-06"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322",
+                "B1L14-G01-P319"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-dialogue-sofar-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你游泳游了多久了？",
+              "simplified": "你游泳游了多久了？",
+              "pinyin": "Nǐ yóuyǒng yóu le duōjiǔ le?",
+              "english": "How long have you been swimming?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "游了一個半小時了，再游半個小時就回家。",
+              "simplified": "游了一个半小时了，再游半个小时就回家。",
+              "pinyin": "Yóu le yí ge bàn xiǎoshí le, zài yóu bàn ge xiǎoshí jiù huí jiā.",
+              "english": "An hour and a half so far. I'll swim another half hour and then go home."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-sofar-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他游了多久了？",
+                "simplified": "他游了多久了？",
+                "pinyin": "Tā yóu le duōjiǔ le?",
+                "english": "How long has he been swimming?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "半個小時",
+                  "simplified": "半个小时",
+                  "pinyin": "bàn ge xiǎoshí",
+                  "english": "half an hour"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個小時",
+                  "simplified": "两个小时",
+                  "pinyin": "liǎng ge xiǎoshí",
+                  "english": "two hours"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一個半小時",
+                  "simplified": "一个半小时",
+                  "pinyin": "yí ge bàn xiǎoshí",
+                  "english": "an hour and a half"
+                }
+              ],
+              "key": 2,
+              "why": "游了一個半小時了: an hour and a half so far. 半個小時 is how much longer he will swim; 兩個小時 would be the total.",
+              "focus": {
+                "zh": "游了一個半小時了",
+                "en": "an hour and a half so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-21",
+                "B1L06-1-12",
+                "B1L12-2-11",
+                "B1L05-1-13"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-outing",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l14-dialogue-review-outing-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請問，博物館怎麼走？",
+              "simplified": "请问，博物馆怎么走？",
+              "pinyin": "Qǐngwèn, bówùguǎn zěnme zǒu?",
+              "english": "Excuse me, how do I get to the museum?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "從這裡往前走，到了路口往右轉就到了。",
+              "simplified": "从这里往前走，到了路口往右转就到了。",
+              "pinyin": "Cóng zhèlǐ wǎng qián zǒu, dào le lùkǒu wǎng yòu zhuǎn jiù dào le.",
+              "english": "Go straight on from here. At the intersection, turn right and you're there."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-review-outing-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "到了路口要怎麼走？",
+                "simplified": "到了路口要怎么走？",
+                "pinyin": "Dào le lùkǒu yào zěnme zǒu?",
+                "english": "Which way do you go at the intersection?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "往前走",
+                  "simplified": "往前走",
+                  "pinyin": "wǎng qián zǒu",
+                  "english": "go straight on"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "往左轉",
+                  "simplified": "往左转",
+                  "pinyin": "wǎng zuǒ zhuǎn",
+                  "english": "turn left"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "往右轉",
+                  "simplified": "往右转",
+                  "pinyin": "wǎng yòu zhuǎn",
+                  "english": "turn right"
+                }
+              ],
+              "key": 2,
+              "why": "到了路口往右轉: at the intersection, turn right. 往前走 is what you do before you get there.",
+              "focus": {
+                "zh": "往右轉",
+                "en": "turn right"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-11",
+                "B1L13-1-12",
+                "B1L13-1-14",
+                "B1L13-3-10"
+              ],
+              "grammarIds": [
+                "B1L13-G02-P296"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-dialogue-review-outing-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "電影票妳買了嗎？",
+              "simplified": "电影票你买了吗？",
+              "pinyin": "Diànyǐng piào nǐ mǎi le ma?",
+              "english": "Have you bought the movie tickets?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我打算明天下課以後去買。",
+              "simplified": "我打算明天下课以后去买。",
+              "pinyin": "Wǒ dǎsuàn míngtiān xiàkè yǐhòu qù mǎi.",
+              "english": "I plan to buy them tomorrow after class."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-review-outing-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "她買電影票了嗎？",
+                "simplified": "她买电影票了吗？",
+                "pinyin": "Tā mǎi diànyǐng piào le ma?",
+                "english": "Has she bought the movie tickets?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "還沒買",
+                  "simplified": "还没买",
+                  "pinyin": "hái méi mǎi",
+                  "english": "not yet"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "已經買了",
+                  "simplified": "已经买了",
+                  "pinyin": "yǐjīng mǎi le",
+                  "english": "already bought"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不想買",
+                  "simplified": "不想买",
+                  "pinyin": "bù xiǎng mǎi",
+                  "english": "doesn't want to buy"
+                }
+              ],
+              "key": 0,
+              "why": "She plans (打算) to buy them tomorrow after class, so she has not bought them yet: 還沒買. 不想買 is wrong because she does plan to buy them.",
+              "focus": {
+                "zh": "還沒",
+                "en": "not yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L11-2-08",
+                "B1L11-1-03",
+                "B1L13-2-03"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-plans",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l14-dialogue-review-plans-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你畢業以後想做什麼工作？",
+              "simplified": "你毕业以后想做什么工作？",
+              "pinyin": "Nǐ bìyè yǐhòu xiǎng zuò shénme gōngzuò?",
+              "english": "What job do you want after you graduate?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "以前想當醫生，現在想當記者。",
+              "simplified": "以前想当医生，现在想当记者。",
+              "pinyin": "Yǐqián xiǎng dāng yīshēng, xiànzài xiǎng dāng jìzhě.",
+              "english": "I used to want to be a doctor; now I want to be a reporter."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-review-plans-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他現在想做什麼工作？",
+                "simplified": "他现在想做什么工作？",
+                "pinyin": "Tā xiànzài xiǎng zuò shénme gōngzuò?",
+                "english": "What job does he want now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "當醫生",
+                  "simplified": "当医生",
+                  "pinyin": "dāng yīshēng",
+                  "english": "be a doctor"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "當記者",
+                  "simplified": "当记者",
+                  "pinyin": "dāng jìzhě",
+                  "english": "be a reporter"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "當老師",
+                  "simplified": "当老师",
+                  "pinyin": "dāng lǎoshī",
+                  "english": "be a teacher"
+                }
+              ],
+              "key": 1,
+              "why": "以前想當醫生 was his old plan; 現在想當記者: now he wants to be a reporter.",
+              "focus": {
+                "zh": "以前／現在",
+                "en": "before and now"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L11-2-01",
+                "B1L12-1-04",
+                "B1L12-1-07",
+                "B1L12-1-09"
+              ],
+              "grammarIds": [
+                "B1L12-G02-P272"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-dialogue-review-plans-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們明天下午去騎腳踏車，你能去嗎？",
+              "simplified": "我们明天下午去骑脚踏车，你能去吗？",
+              "pinyin": "Wǒmen míngtiān xiàwǔ qù qí jiǎotàchē, nǐ néng qù ma?",
+              "english": "We're going bike riding tomorrow afternoon. Can you come?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "明天下午不能，我要上班。後天下午可以。",
+              "simplified": "明天下午不能，我要上班。后天下午可以。",
+              "pinyin": "Míngtiān xiàwǔ bù néng, wǒ yào shàngbān. Hòutiān xiàwǔ kěyǐ.",
+              "english": "Not tomorrow afternoon, I have to work. The day after tomorrow in the afternoon is fine."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-dialogue-review-plans-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他什麼時候能去騎腳踏車？",
+                "simplified": "他什么时候能去骑脚踏车？",
+                "pinyin": "Tā shénme shíhòu néng qù qí jiǎotàchē?",
+                "english": "When can he go bike riding?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "明天下午",
+                  "simplified": "明天下午",
+                  "pinyin": "míngtiān xiàwǔ",
+                  "english": "tomorrow afternoon"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天上午",
+                  "simplified": "明天上午",
+                  "pinyin": "míngtiān shàngwǔ",
+                  "english": "tomorrow morning"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "後天下午",
+                  "simplified": "后天下午",
+                  "pinyin": "hòutiān xiàwǔ",
+                  "english": "the day after tomorrow, in the afternoon"
+                }
+              ],
+              "key": 2,
+              "why": "明天下午不能, because he has to work; 後天下午可以: the day after tomorrow in the afternoon is fine. Nobody talks about 明天上午.",
+              "focus": {
+                "zh": "能／不能",
+                "en": "can or can't"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-04",
+                "B1L06-2-19",
+                "B1L12-1-16",
+                "B1L06-2-15"
+              ],
+              "grammarIds": [
+                "B1L09-G04-P213"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-crossing",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l14-read-crossing-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l14-read-crossing-1-q",
+              "prompt": {
+                "traditional": "路口車很多，警察在幫一位老先生過馬路。",
+                "simplified": "路口车很多，警察在帮一位老先生过马路。",
+                "pinyin": "Lùkǒu chē hěn duō, jǐngchá zài bāng yí wèi lǎo xiānshēng guò mǎlù.",
+                "english": "There are lots of cars at the crossing; a police officer is helping an old man across the road."
+              },
+              "choices": [
+                {
+                  "picture": "b1l14-crossing-1",
+                  "alt": "An old man: a police officer, his hand on the man's shoulder, walks an old man with a walking stick across the road at a busy crossing"
+                },
+                {
+                  "picture": "b1l14-crossing-2",
+                  "alt": "A child: the same police officer, his hand on the boy's shoulder, walks a small boy across the road at the same crossing"
+                },
+                {
+                  "picture": "b1l14-crossing-3",
+                  "alt": "A young woman: the same police officer, his hand on her shoulder, walks a young woman across the road at the same crossing"
+                }
+              ],
+              "key": 0,
+              "why": "老先生 is an old man: the police officer (警察) helps him cross the road (過馬路).",
+              "focus": {
+                "zh": "幫老先生過馬路",
+                "en": "helping an old man across"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-3-04",
+                "B1L13-3-07",
+                "B1L07-2-01",
+                "B1L08-3-02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-read-crossing-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l14-read-crossing-2-q",
+              "prompt": {
+                "traditional": "一個孩子要過馬路，警察在幫他。",
+                "simplified": "一个孩子要过马路，警察在帮他。",
+                "pinyin": "Yí ge háizi yào guò mǎlù, jǐngchá zài bāng tā.",
+                "english": "A child wants to cross the road, and a police officer is helping him."
+              },
+              "choices": [
+                {
+                  "picture": "b1l14-crossing-1",
+                  "alt": "An old man: a police officer, his hand on the man's shoulder, walks an old man with a walking stick across the road at a busy crossing"
+                },
+                {
+                  "picture": "b1l14-crossing-2",
+                  "alt": "A child: the same police officer, his hand on the boy's shoulder, walks a small boy across the road at the same crossing"
+                },
+                {
+                  "picture": "b1l14-crossing-3",
+                  "alt": "A young woman: the same police officer, his hand on her shoulder, walks a young woman across the road at the same crossing"
+                }
+              ],
+              "key": 1,
+              "why": "一個孩子 is a child: the officer is helping the small boy cross.",
+              "focus": {
+                "zh": "孩子",
+                "en": "a child"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-3-04",
+                "B1L02-1-09",
+                "B1L13-3-07",
+                "B1L05-2-24"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-read-crossing-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l14-read-crossing-3-q",
+              "prompt": {
+                "traditional": "警察帶一位小姐過馬路。",
+                "simplified": "警察带一位小姐过马路。",
+                "pinyin": "Jǐngchá dài yí wèi xiǎojiě guò mǎlù.",
+                "english": "A police officer is taking a young woman across the road."
+              },
+              "choices": [
+                {
+                  "picture": "b1l14-crossing-1",
+                  "alt": "An old man: a police officer, his hand on the man's shoulder, walks an old man with a walking stick across the road at a busy crossing"
+                },
+                {
+                  "picture": "b1l14-crossing-2",
+                  "alt": "A child: the same police officer, his hand on the boy's shoulder, walks a small boy across the road at the same crossing"
+                },
+                {
+                  "picture": "b1l14-crossing-3",
+                  "alt": "A young woman: the same police officer, his hand on her shoulder, walks a young woman across the road at the same crossing"
+                }
+              ],
+              "key": 2,
+              "why": "一位小姐 is a young woman: the officer takes her across the road (帶……過馬路).",
+              "focus": {
+                "zh": "帶……過馬路",
+                "en": "taking someone across"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-3-04",
+                "B1L13-1-07",
+                "B1L00-1-12",
+                "B1L13-3-07"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-church",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l14-read-church-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l14-read-church-1-q",
+              "prompt": {
+                "traditional": "教堂裡有表演，我們到得太晚了，只能坐在最後面。",
+                "simplified": "教堂里有表演，我们到得太晚了，只能坐在最后面。",
+                "pinyin": "Jiàotáng lǐ yǒu biǎoyǎn, wǒmen dào de tài wǎn le, zhǐ néng zuò zài zuì hòumiàn.",
+                "english": "There was a performance in the church. We got there too late, so we could only sit at the very back."
+              },
+              "choices": [
+                {
+                  "picture": "b1l14-church-1",
+                  "alt": "Front row: at a performance in a church, the girl and the boy sit at the aisle end of the very first bench"
+                },
+                {
+                  "picture": "b1l14-church-2",
+                  "alt": "Middle row: the same girl and boy sit at the aisle end of the middle bench, the third of five"
+                },
+                {
+                  "picture": "b1l14-church-3",
+                  "alt": "Back row: the same girl and boy sit at the aisle end of the very last bench"
+                }
+              ],
+              "key": 2,
+              "why": "到得太晚了, so they could only sit 最後面, at the very back.",
+              "focus": {
+                "zh": "坐在最後面",
+                "en": "at the very back"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-18",
+                "B1L13-1-17",
+                "B1L05-2-23",
+                "B1L14-1-17"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-read-church-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l14-read-church-2-q",
+              "prompt": {
+                "traditional": "我們很早就到了，所以坐在最前面。",
+                "simplified": "我们很早就到了，所以坐在最前面。",
+                "pinyin": "Wǒmen hěn zǎo jiù dào le, suǒyǐ zuò zài zuì qiánmiàn.",
+                "english": "We got there very early, so we sat at the very front."
+              },
+              "choices": [
+                {
+                  "picture": "b1l14-church-1",
+                  "alt": "Front row: at a performance in a church, the girl and the boy sit at the aisle end of the very first bench"
+                },
+                {
+                  "picture": "b1l14-church-2",
+                  "alt": "Middle row: the same girl and boy sit at the aisle end of the middle bench, the third of five"
+                },
+                {
+                  "picture": "b1l14-church-3",
+                  "alt": "Back row: the same girl and boy sit at the aisle end of the very last bench"
+                }
+              ],
+              "key": 0,
+              "why": "很早就到了, so they got seats 最前面, at the very front.",
+              "focus": {
+                "zh": "最前面",
+                "en": "the very front"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L13-1-18",
+                "B1L04-1-21",
+                "B1L05-2-22",
+                "B1L14-1-17"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-read-church-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l14-read-church-3-q",
+              "prompt": {
+                "traditional": "我們不想坐最前面，也不想坐最後面，就坐在中間。",
+                "simplified": "我们不想坐最前面，也不想坐最后面，就坐在中间。",
+                "pinyin": "Wǒmen bù xiǎng zuò zuì qiánmiàn, yě bù xiǎng zuò zuì hòumiàn, jiù zuò zài zhōngjiān.",
+                "english": "We didn't want to sit at the very front or at the very back, so we sat in the middle."
+              },
+              "choices": [
+                {
+                  "picture": "b1l14-church-1",
+                  "alt": "Front row: at a performance in a church, the girl and the boy sit at the aisle end of the very first bench"
+                },
+                {
+                  "picture": "b1l14-church-2",
+                  "alt": "Middle row: the same girl and boy sit at the aisle end of the middle bench, the third of five"
+                },
+                {
+                  "picture": "b1l14-church-3",
+                  "alt": "Back row: the same girl and boy sit at the aisle end of the very last bench"
+                }
+              ],
+              "key": 1,
+              "why": "Not 最前面 (the front) and not 最後面 (the back), so they sat 中間, in the middle row.",
+              "focus": {
+                "zh": "坐在中間",
+                "en": "in the middle"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L09-2-02",
+                "B1L05-2-23",
+                "B1L14-1-17"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-transport",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l14-realia-transport-1",
+          "kind": "realia",
+          "picture": "b1l14-transport",
+          "alt": "A New Year's Eve transport notice at an MRT station: the date and weekday, how late the trains run, when Taipei 101 Station is closed, and a reminder to be careful",
+          "transcript": {
+            "traditional": "跨年交通　12月31日 星期天　捷運：到1月1日 2:00 都有車　台北101站：晚上 11:00～1月1日 1:00 不能進站　請在附近的捷運站上車　警察會在捷運站幫忙　人很多，請小心！",
+            "simplified": "跨年交通　12月31日 星期天　捷运：到1月1日 2:00 都有车　台北101站：晚上 11:00～1月1日 1:00 不能进站　请在附近的捷运站上车　警察会在捷运站帮忙　人很多，请小心！",
+            "pinyin": "Kuànián jiāotōng: 12 yuè 31 rì, xīngqítiān. Jiéyùn: dào 1 yuè 1 rì 2:00 dōu yǒu chē. Táiběi 101 zhàn: wǎnshàng 11:00 – 1 yuè 1 rì 1:00 bù néng jìn zhàn. Qǐng zài fùjìn de jiéyùn zhàn shàngchē. Jǐngchá huì zài jiéyùn zhàn bāngmáng. Rén hěn duō, qǐng xiǎoxīn!",
+            "english": "New Year's Eve transport. December 31, Sunday. MRT: trains run until 2:00 a.m. on January 1. Taipei 101 Station: no entry from 11:00 p.m. to 1:00 a.m. on January 1. Please get on at a nearby MRT station. Police will help at the MRT stations. It will be very crowded, so please be careful!"
+          },
+          "questions": [
+            {
+              "id": "b1l14-realia-transport-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "晚上十一點半可以在台北101站上車。",
+                  "simplified": "晚上十一点半可以在台北101站上车。",
+                  "pinyin": "Wǎnshàng shíyī diǎn bàn kěyǐ zài Táiběi Yīlíngyī zhàn shàngchē.",
+                  "english": "You can get on at Taipei 101 Station at 11:30 p.m."
+                },
+                {
+                  "traditional": "一月一號一點半還可以坐捷運。",
+                  "simplified": "一月一号一点半还可以坐捷运。",
+                  "pinyin": "Yī yuè yī hào yì diǎn bàn hái kěyǐ zuò jiéyùn.",
+                  "english": "You can still take the MRT at 1:30 a.m. on January 1."
+                },
+                {
+                  "traditional": "十二月三十一號是星期六。",
+                  "simplified": "十二月三十一号是星期六。",
+                  "pinyin": "Shí'èr yuè sānshíyī hào shì xīngqíliù.",
+                  "english": "December 31 is a Saturday."
+                }
+              ],
+              "key": 1,
+              "why": "The notice says 捷運到1月1日 2:00 都有車, so at 1:30 the trains still run. Taipei 101 Station is closed from 11:00 p.m. to 1:00 a.m., and the 31st is a 星期天, not a 星期六.",
+              "focus": {
+                "zh": "到……都有車",
+                "en": "trains run until"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L07-1-10",
+                "B1L11-1-15",
+                "B1L06-2-14",
+                "B1L14-3-03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-realia-transport-2",
+          "kind": "realia",
+          "picture": "b1l14-transport",
+          "alt": "A New Year's Eve transport notice at an MRT station: the date and weekday, how late the trains run, when Taipei 101 Station is closed, and a reminder to be careful",
+          "transcript": {
+            "traditional": "跨年交通　12月31日 星期天　捷運：到1月1日 2:00 都有車　台北101站：晚上 11:00～1月1日 1:00 不能進站　請在附近的捷運站上車　警察會在捷運站幫忙　人很多，請小心！",
+            "simplified": "跨年交通　12月31日 星期天　捷运：到1月1日 2:00 都有车　台北101站：晚上 11:00～1月1日 1:00 不能进站　请在附近的捷运站上车　警察会在捷运站帮忙　人很多，请小心！",
+            "pinyin": "Kuànián jiāotōng: 12 yuè 31 rì, xīngqítiān. Jiéyùn: dào 1 yuè 1 rì 2:00 dōu yǒu chē. Táiběi 101 zhàn: wǎnshàng 11:00 – 1 yuè 1 rì 1:00 bù néng jìn zhàn. Qǐng zài fùjìn de jiéyùn zhàn shàngchē. Jǐngchá huì zài jiéyùn zhàn bāngmáng. Rén hěn duō, qǐng xiǎoxīn!",
+            "english": "New Year's Eve transport. December 31, Sunday. MRT: trains run until 2:00 a.m. on January 1. Taipei 101 Station: no entry from 11:00 p.m. to 1:00 a.m. on January 1. Please get on at a nearby MRT station. Police will help at the MRT stations. It will be very crowded, so please be careful!"
+          },
+          "questions": [
+            {
+              "id": "b1l14-realia-transport-2-q",
+              "prompt": {
+                "traditional": "十二月三十一號晚上，捷運到幾點還有車？",
+                "simplified": "十二月三十一号晚上，捷运到几点还有车？",
+                "pinyin": "Shí'èr yuè sānshíyī hào wǎnshàng, jiéyùn dào jǐ diǎn hái yǒu chē?",
+                "english": "On the night of December 31, until what time do the MRT trains run?"
+              },
+              "choices": [
+                {
+                  "traditional": "十一點",
+                  "simplified": "十一点",
+                  "pinyin": "shíyī diǎn",
+                  "english": "eleven o'clock"
+                },
+                {
+                  "traditional": "一點",
+                  "simplified": "一点",
+                  "pinyin": "yì diǎn",
+                  "english": "one o'clock"
+                },
+                {
+                  "traditional": "兩點",
+                  "simplified": "两点",
+                  "pinyin": "liǎng diǎn",
+                  "english": "two o'clock"
+                }
+              ],
+              "key": 2,
+              "why": "The notice says 到1月1日 2:00 都有車: trains run until two. 11:00 to 1:00 is when Taipei 101 Station is closed.",
+              "focus": {
+                "zh": "到兩點",
+                "en": "until two o'clock"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L07-1-10",
+                "B1L14-3-03",
+                "B1L02-1-30",
+                "B1L11-1-15"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-menu",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l14-realia-menu-1",
+          "kind": "realia",
+          "picture": "b1l14-menu",
+          "alt": "A dumpling shop's price board: dumplings, baozi, beef soup, fish soup and beef noodles, each with its price",
+          "transcript": {
+            "traditional": "好吃餃子店　餃子（10個） 80元　包子（1個） 25元　牛肉湯 90元　魚湯 70元　牛肉麵 120元",
+            "simplified": "好吃饺子店　饺子（10个） 80元　包子（1个） 25元　牛肉汤 90元　鱼汤 70元　牛肉面 120元",
+            "pinyin": "Hǎochī Jiǎozi Diàn: jiǎozi (10 ge) 80 yuán, bāozi (1 ge) 25 yuán, niúròu tāng 90 yuán, yú tāng 70 yuán, niúròu miàn 120 yuán",
+            "english": "Tasty Dumpling Shop: dumplings (10) 80, baozi (1) 25, beef soup 90, fish soup 70, beef noodles 120"
+          },
+          "questions": [
+            {
+              "id": "b1l14-realia-menu-1-q",
+              "choices": [
+                {
+                  "traditional": "魚湯比牛肉湯便宜。",
+                  "simplified": "鱼汤比牛肉汤便宜。",
+                  "pinyin": "Yú tāng bǐ niúròu tāng piányí.",
+                  "english": "Fish soup is cheaper than beef soup."
+                },
+                {
+                  "traditional": "牛肉湯比牛肉麵貴。",
+                  "simplified": "牛肉汤比牛肉面贵。",
+                  "pinyin": "Niúròu tāng bǐ niúròu miàn guì.",
+                  "english": "Beef soup is more expensive than beef noodles."
+                },
+                {
+                  "traditional": "牛肉湯比餃子便宜。",
+                  "simplified": "牛肉汤比饺子便宜。",
+                  "pinyin": "Niúròu tāng bǐ jiǎozi piányí.",
+                  "english": "Beef soup is cheaper than the dumplings."
+                }
+              ],
+              "key": 0,
+              "why": "魚湯 70元 is less than 牛肉湯 90元. Beef soup costs less than beef noodles (120元) but more than the dumplings (80元).",
+              "focus": {
+                "zh": "A比B便宜",
+                "en": "cheaper than"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L14-2-12",
+                "B1L14-2-13",
+                "B1L03-2-12"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-realia-menu-2",
+          "kind": "realia",
+          "picture": "b1l14-menu",
+          "alt": "A dumpling shop's price board: dumplings, baozi, beef soup, fish soup and beef noodles, each with its price",
+          "transcript": {
+            "traditional": "好吃餃子店　餃子（10個） 80元　包子（1個） 25元　牛肉湯 90元　魚湯 70元　牛肉麵 120元",
+            "simplified": "好吃饺子店　饺子（10个） 80元　包子（1个） 25元　牛肉汤 90元　鱼汤 70元　牛肉面 120元",
+            "pinyin": "Hǎochī Jiǎozi Diàn: jiǎozi (10 ge) 80 yuán, bāozi (1 ge) 25 yuán, niúròu tāng 90 yuán, yú tāng 70 yuán, niúròu miàn 120 yuán",
+            "english": "Tasty Dumpling Shop: dumplings (10) 80, baozi (1) 25, beef soup 90, fish soup 70, beef noodles 120"
+          },
+          "questions": [
+            {
+              "id": "b1l14-realia-menu-2-q",
+              "prompt": {
+                "traditional": "牛肉麵比魚湯貴多少錢？",
+                "simplified": "牛肉面比鱼汤贵多少钱？",
+                "pinyin": "Niúròu miàn bǐ yú tāng guì duōshǎo qián?",
+                "english": "How much more do beef noodles cost than fish soup?"
+              },
+              "choices": [
+                {
+                  "traditional": "三十塊",
+                  "simplified": "三十块",
+                  "pinyin": "sānshí kuài",
+                  "english": "thirty dollars"
+                },
+                {
+                  "traditional": "五十塊",
+                  "simplified": "五十块",
+                  "pinyin": "wǔshí kuài",
+                  "english": "fifty dollars"
+                },
+                {
+                  "traditional": "七十塊",
+                  "simplified": "七十块",
+                  "pinyin": "qīshí kuài",
+                  "english": "seventy dollars"
+                }
+              ],
+              "key": 1,
+              "why": "120 − 70 = 50, so beef noodles are 五十塊 more. Thirty is the gap to the beef soup, and seventy is the fish soup's own price.",
+              "focus": {
+                "zh": "比……貴多少",
+                "en": "how much more"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L03-2-13",
+                "B1L04-2-16",
+                "B1L14-2-12"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l14-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l14-park",
+          "alt": "New Year's Day morning in a busy city park with three big trees and many flowers: an old man reads a book at one end of a park bench, a mother sits resting at the other end, and her small son stands under a tree beside her; many people walk on the path behind",
+          "questions": [
+            {
+              "id": "b1l14-scene-gap-1-a",
+              "prompt": {
+                "traditional": "公園裡有三＿＿大樹，環境很好。",
+                "simplified": "公园里有三＿＿大树，环境很好。"
+              },
+              "choices": [
+                {
+                  "traditional": "條",
+                  "simplified": "条",
+                  "pinyin": "tiáo",
+                  "english": "(measure word for long things)"
+                },
+                {
+                  "traditional": "棵",
+                  "simplified": "棵",
+                  "pinyin": "kē",
+                  "english": "(measure word for trees)"
+                },
+                {
+                  "traditional": "張",
+                  "simplified": "张",
+                  "pinyin": "zhāng",
+                  "english": "(measure word for flat things)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "公園裡有三棵大樹，環境很好。",
+                "simplified": "公园里有三棵大树，环境很好。",
+                "pinyin": "Gōngyuán lǐ yǒu sān kē dà shù, huánjìng hěn hǎo.",
+                "english": "There are three big trees in the park; it's a lovely place."
+              },
+              "why": "Trees take the measure word 棵: 三棵大樹. 條 is for roads and 張 for tables.",
+              "focus": {
+                "zh": "三棵大樹",
+                "en": "measure word for trees"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-05",
+                "B1L14-2-04",
+                "B1L14-2-06"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            },
+            {
+              "id": "b1l14-scene-gap-1-b",
+              "prompt": {
+                "traditional": "那位老先生坐在椅子上看書，已經看了一個小時＿＿。",
+                "simplified": "那位老先生坐在椅子上看书，已经看了一个小时＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "guo",
+                  "english": "(experience particle)"
+                },
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "english": "(possessive particle)"
+                },
+                {
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "english": "(particle)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "那位老先生坐在椅子上看書，已經看了一個小時了。",
+                "simplified": "那位老先生坐在椅子上看书，已经看了一个小时了。",
+                "pinyin": "Nà wèi lǎo xiānshēng zuò zài yǐzi shàng kàn shū, yǐjīng kàn le yí ge xiǎoshí le.",
+                "english": "The old man is reading on the bench; he has been reading for an hour now."
+              },
+              "why": "已經……看了一個小時了: the second 了 says he is still reading now. 過 and 的 can't end this sentence.",
+              "focus": {
+                "zh": "看了一個小時了",
+                "en": "for an hour so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L11-1-03",
+                "B1L12-2-11",
+                "B1L14-1-17"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322"
+              ]
+            },
+            {
+              "id": "b1l14-scene-gap-1-c",
+              "prompt": {
+                "traditional": "今天是新年，＿＿公園裡的人比平常多。",
+                "simplified": "今天是新年，＿＿公园里的人比平常多。"
+              },
+              "choices": [
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "english": "so"
+                },
+                {
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "english": "because"
+                },
+                {
+                  "traditional": "如果",
+                  "simplified": "如果",
+                  "pinyin": "rúguǒ",
+                  "english": "if"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "今天是新年，所以公園裡的人比平常多。",
+                "simplified": "今天是新年，所以公园里的人比平常多。",
+                "pinyin": "Jīntiān shì xīnnián, suǒyǐ gōngyuán lǐ de rén bǐ píngcháng duō.",
+                "english": "Today is New Year's Day, so there are more people in the park than usual."
+              },
+              "why": "所以 brings in the result: it is New Year's Day, so the park is busier. 因為 would have to come before the reason, and 如果 (if) would leave the sentence unfinished.",
+              "focus": {
+                "zh": "所以",
+                "en": "so (the result)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-10",
+                "B1L08-1-07",
+                "B1L06-3-11"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l14-park",
+          "alt": "New Year's Day morning in a busy city park with three big trees and many flowers: an old man reads a book at one end of a park bench, a mother sits resting at the other end, and her small son stands under a tree beside her; many people walk on the path behind",
+          "questions": [
+            {
+              "id": "b1l14-scene-gap-2-a",
+              "prompt": {
+                "traditional": "那個孩子站在樹下面，他媽媽＿＿在椅子上休息。",
+                "simplified": "那个孩子站在树下面，他妈妈＿＿在椅子上休息。"
+              },
+              "choices": [
+                {
+                  "traditional": "站",
+                  "simplified": "站",
+                  "pinyin": "zhàn",
+                  "english": "to stand"
+                },
+                {
+                  "traditional": "住",
+                  "simplified": "住",
+                  "pinyin": "zhù",
+                  "english": "to live"
+                },
+                {
+                  "traditional": "坐",
+                  "simplified": "坐",
+                  "pinyin": "zuò",
+                  "english": "to sit"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "那個孩子站在樹下面，他媽媽坐在椅子上休息。",
+                "simplified": "那个孩子站在树下面，他妈妈坐在椅子上休息。",
+                "pinyin": "Nàge háizi zhàn zài shù xiàmiàn, tā māma zuò zài yǐzi shàng xiūxí.",
+                "english": "The child is standing under the tree, and his mom is sitting on the bench, resting."
+              },
+              "why": "You rest sitting on a bench: 坐在椅子上. 住 means to live somewhere, and the child is the one standing (站).",
+              "focus": {
+                "zh": "坐在椅子上",
+                "en": "sitting on the bench"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-17",
+                "B1L14-1-16",
+                "B1L14-1-03",
+                "B1L05-2-11"
+              ]
+            },
+            {
+              "id": "b1l14-scene-gap-2-b",
+              "prompt": {
+                "traditional": "你們在公園裡玩了＿＿了？——一個多小時了，孩子還不想回家。",
+                "simplified": "你们在公园里玩了＿＿了？——一个多小时了，孩子还不想回家。"
+              },
+              "choices": [
+                {
+                  "traditional": "多久",
+                  "simplified": "多久",
+                  "pinyin": "duōjiǔ",
+                  "english": "how long"
+                },
+                {
+                  "traditional": "多少",
+                  "simplified": "多少",
+                  "pinyin": "duōshǎo",
+                  "english": "how many; how much"
+                },
+                {
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "english": "what"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "你們在公園裡玩了多久了？——一個多小時了，孩子還不想回家。",
+                "simplified": "你们在公园里玩了多久了？——一个多小时了，孩子还不想回家。",
+                "pinyin": "Nǐmen zài gōngyuán lǐ wán le duōjiǔ le? Yí ge duō xiǎoshí le, háizi hái bù xiǎng huí jiā.",
+                "english": "How long have you been at the park? Over an hour now, and my child still doesn't want to go home."
+              },
+              "why": "The reply gives a length of time (一個多小時了), so the question is 多久, how long. 多少 asks how many or how much, and 什麼 asks what.",
+              "focus": {
+                "zh": "玩了多久了",
+                "en": "how long so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-21",
+                "B1L04-2-23",
+                "B1L12-2-11"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322"
+              ]
+            },
+            {
+              "id": "b1l14-scene-gap-2-c",
+              "prompt": {
+                "traditional": "這個公園又大＿＿漂亮，花也很多。",
+                "simplified": "这个公园又大＿＿漂亮，花也很多。"
+              },
+              "choices": [
+                {
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "english": "all; both"
+                },
+                {
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "english": "(both … and …)"
+                },
+                {
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "english": "very"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "這個公園又大又漂亮，花也很多。",
+                "simplified": "这个公园又大又漂亮，花也很多。",
+                "pinyin": "Zhège gōngyuán yòu dà yòu piàoliàng, huā yě hěn duō.",
+                "english": "This park is big and pretty, and it has lots of flowers too."
+              },
+              "why": "又……又…… joins two descriptions: 又大又漂亮, both big and pretty.",
+              "focus": {
+                "zh": "又……又……",
+                "en": "both … and …"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-14",
+                "B1L01-1-19",
+                "B1L03-1-16"
+              ],
+              "grammarIds": [
+                "B1L07-G05-P172"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l14-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我在台北學中文學了半年{1}。十二月三十一號晚上，我跟同學去看跨年演唱會。那裡的人{2}我想的多，真熱鬧！因為人太多了，我們沒有地方坐，在那裡{3}了四個小時。我們回到家的時候，{4}兩點了。",
+            "simplified": "我在台北学中文学了半年{1}。十二月三十一号晚上，我跟同学去看跨年演唱会。那里的人{2}我想的多，真热闹！因为人太多了，我们没有地方坐，在那里{3}了四个小时。我们回到家的时候，{4}两点了。",
+            "pinyin": "Wǒ zài Táiběi xué Zhōngwén xué le bàn nián le. Shí'èr yuè sānshíyī hào wǎnshàng, wǒ gēn tóngxué qù kàn kuànián yǎnchànghuì. Nàlǐ de rén bǐ wǒ xiǎng de duō, zhēn rènao! Yīnwèi rén tài duō le, wǒmen méiyǒu dìfāng zuò, zài nàlǐ zhàn le sì ge xiǎoshí. Wǒmen huí dào jiā de shíhòu, yǐjīng liǎng diǎn le.",
+            "english": "I've been studying Chinese in Taipei for half a year. On the night of December 31, my classmates and I went to a New Year's Eve concert. There were more people than I expected; it was so lively! It was too crowded to find a seat, so we stood there for four hours. When we got home, it was already two o'clock."
+          },
+          "bank": [
+            {
+              "traditional": "站",
+              "simplified": "站",
+              "pinyin": "zhàn",
+              "english": "to stand"
+            },
+            {
+              "traditional": "已經",
+              "simplified": "已经",
+              "pinyin": "yǐjīng",
+              "english": "already"
+            },
+            {
+              "traditional": "坐",
+              "simplified": "坐",
+              "pinyin": "zuò",
+              "english": "to sit"
+            },
+            {
+              "traditional": "了",
+              "simplified": "了",
+              "pinyin": "le",
+              "english": "(particle)"
+            },
+            {
+              "traditional": "比",
+              "simplified": "比",
+              "pinyin": "bǐ",
+              "english": "than"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-paragraph-1-1",
+              "key": 3,
+              "why": "學了半年了: the second 了 says it has been half a year up to now, and the studying goes on.",
+              "focus": {
+                "zh": "學了半年了",
+                "en": "half a year so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L11-1-02",
+                "B1L07-1-26"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322"
+              ]
+            },
+            {
+              "id": "b1l14-paragraph-1-2",
+              "key": 4,
+              "why": "比 compares the two: 那裡的人比我想的多, more people than I expected.",
+              "focus": {
+                "zh": "A比B多",
+                "en": "more than"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L07-1-19"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            },
+            {
+              "id": "b1l14-paragraph-1-3",
+              "key": 0,
+              "why": "沒有地方坐 means there were no seats, so they 站了四個小時, stood for four hours. 坐 would contradict it.",
+              "focus": {
+                "zh": "站了四個小時",
+                "en": "stood four hours"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-16",
+                "B1L14-1-17"
+              ],
+              "grammarIds": [
+                "B1L14-G01-P319"
+              ]
+            },
+            {
+              "id": "b1l14-paragraph-1-4",
+              "key": 1,
+              "why": "回到家的時候，已經兩點了: it was already two o'clock when they got home.",
+              "focus": {
+                "zh": "已經……了",
+                "en": "already"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "上個月我去美國找姐姐，在她家住{1}兩個星期。她住的城市不大，可是{2}很好，她家前面有一個公園。我在那裡{3}，每天早上都跟姐姐去公園跑步。那裡的人走路走得比台北人{4}，大家都不太忙。",
+            "simplified": "上个月我去美国找姐姐，在她家住{1}两个星期。她住的城市不大，可是{2}很好，她家前面有一个公园。我在那里{3}，每天早上都跟姐姐去公园跑步。那里的人走路走得比台北人{4}，大家都不太忙。",
+            "pinyin": "Shàng ge yuè wǒ qù Měiguó zhǎo jiějie, zài tā jiā zhù le liǎng ge xīngqí. Tā zhù de chéngshì bú dà, kěshì huánjìng hěn hǎo, tā jiā qiánmiàn yǒu yí ge gōngyuán. Wǒ zài nàlǐ de shíhòu, měi tiān zǎoshàng dōu gēn jiějie qù gōngyuán pǎobù. Nàlǐ de rén zǒulù zǒu de bǐ Táiběi rén màn, dàjiā dōu bú tài máng.",
+            "english": "Last month I went to the US to visit my older sister and stayed at her place for two weeks. The city she lives in isn't big, but it's a lovely place, and there is a park in front of her home. While I was there, I went running in the park with her every morning. People there walk more slowly than people in Taipei, and nobody is very busy."
+          },
+          "bank": [
+            {
+              "traditional": "熱鬧",
+              "simplified": "热闹",
+              "pinyin": "rènao",
+              "english": "lively"
+            },
+            {
+              "traditional": "慢",
+              "simplified": "慢",
+              "pinyin": "màn",
+              "english": "slow"
+            },
+            {
+              "traditional": "了",
+              "simplified": "了",
+              "pinyin": "le",
+              "english": "(particle)"
+            },
+            {
+              "traditional": "環境",
+              "simplified": "环境",
+              "pinyin": "huánjìng",
+              "english": "surroundings"
+            },
+            {
+              "traditional": "的時候",
+              "simplified": "的时候",
+              "pinyin": "de shíhòu",
+              "english": "when; while"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l14-paragraph-2-1",
+              "key": 2,
+              "why": "住了兩個星期: a stay of two weeks that is now over (the writer is back).",
+              "focus": {
+                "zh": "住了兩個星期",
+                "en": "stayed two weeks"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-03",
+                "B1L02-1-11"
+              ],
+              "grammarIds": [
+                "B1L14-G01-P319"
+              ]
+            },
+            {
+              "id": "b1l14-paragraph-2-2",
+              "key": 3,
+              "why": "環境很好: the surroundings are nice, with a park in front of the home.",
+              "focus": {
+                "zh": "環境",
+                "en": "surroundings"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-06",
+                "B1L14-1-08"
+              ]
+            },
+            {
+              "id": "b1l14-paragraph-2-3",
+              "key": 4,
+              "why": "我在那裡的時候 means while I was there; it sets the time for 每天早上.",
+              "focus": {
+                "zh": "……的時候",
+                "en": "while; when"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L06-3-12"
+              ],
+              "grammarIds": [
+                "B1L12-G05-P284"
+              ]
+            },
+            {
+              "id": "b1l14-paragraph-2-4",
+              "key": 1,
+              "why": "比台北人慢: they walk more slowly than people in Taipei, and 大家都不太忙 backs it up.",
+              "focus": {
+                "zh": "A比B慢",
+                "en": "slower than"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L06-1-17"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-message",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l14-reading-message-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "友美：\n明天下午三點，我們在電影院門口見面吧。我先去郵局寄信，等我寄了信，再坐捷運去電影院。\n宜文",
+            "simplified": "友美：\n明天下午三点，我们在电影院门口见面吧。我先去邮局寄信，等我寄了信，再坐捷运去电影院。\n宜文",
+            "pinyin": "Yǒuměi: Míngtiān xiàwǔ sān diǎn, wǒmen zài diànyǐngyuàn ménkǒu jiànmiàn ba. Wǒ xiān qù yóujú jì xìn, děng wǒ jì le xìn, zài zuò jiéyùn qù diànyǐngyuàn. Yíwén",
+            "english": "Youmei: Let's meet at the movie theater entrance at three tomorrow afternoon. I'll go to the post office first to mail a letter; once I've mailed it, I'll take the MRT to the movie theater. Yiwen"
+          },
+          "questions": [
+            {
+              "id": "b1l14-reading-message-1-q",
+              "prompt": {
+                "traditional": "宜文明天下午先去哪裡？",
+                "simplified": "宜文明天下午先去哪里？",
+                "pinyin": "Yíwén míngtiān xiàwǔ xiān qù nǎlǐ?",
+                "english": "Where is Yiwen going first tomorrow afternoon?"
+              },
+              "choices": [
+                {
+                  "traditional": "電影院",
+                  "simplified": "电影院",
+                  "pinyin": "diànyǐngyuàn",
+                  "english": "the movie theater"
+                },
+                {
+                  "traditional": "郵局",
+                  "simplified": "邮局",
+                  "pinyin": "yóujú",
+                  "english": "the post office"
+                },
+                {
+                  "traditional": "捷運站",
+                  "simplified": "捷运站",
+                  "pinyin": "jiéyùn zhàn",
+                  "english": "the MRT station"
+                }
+              ],
+              "key": 1,
+              "why": "我先去郵局寄信 … 再坐捷運去電影院: the post office comes first, the movie theater after.",
+              "focus": {
+                "zh": "先……等……再……",
+                "en": "first …, then …"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L07-2-06",
+                "B1L09-1-16",
+                "B1L07-1-08"
+              ],
+              "grammarIds": [
+                "B1L11-G04-P257"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l14-reading-message-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "宜文：\n明天有考試，我今天晚上在圖書館看書。如果妳有問題，就打電話給我。我九點以前都在那裡。\n友美",
+            "simplified": "宜文：\n明天有考试，我今天晚上在图书馆看书。如果你有问题，就打电话给我。我九点以前都在那里。\n友美",
+            "pinyin": "Yíwén: Míngtiān yǒu kǎoshì, wǒ jīntiān wǎnshàng zài túshūguǎn kàn shū. Rúguǒ nǐ yǒu wèntí, jiù dǎ diànhuà gěi wǒ. Wǒ jiǔ diǎn yǐqián dōu zài nàlǐ. Yǒuměi",
+            "english": "Yiwen: There's an exam tomorrow, so I'm studying at the library tonight. If you have a question, just call me. I'll be there until nine. Youmei"
+          },
+          "questions": [
+            {
+              "id": "b1l14-reading-message-2-q",
+              "prompt": {
+                "traditional": "如果宜文有問題，友美要她做什麼？",
+                "simplified": "如果宜文有问题，友美要她做什么？",
+                "pinyin": "Rúguǒ Yíwén yǒu wèntí, Yǒuměi yào tā zuò shénme?",
+                "english": "If Yiwen has a question, what does Youmei want her to do?"
+              },
+              "choices": [
+                {
+                  "traditional": "來宿舍找友美",
+                  "simplified": "来宿舍找友美",
+                  "pinyin": "lái sùshè zhǎo Yǒuměi",
+                  "english": "come to the dorm to find Youmei"
+                },
+                {
+                  "traditional": "明天問老師",
+                  "simplified": "明天问老师",
+                  "pinyin": "míngtiān wèn lǎoshī",
+                  "english": "ask the teacher tomorrow"
+                },
+                {
+                  "traditional": "打電話給友美",
+                  "simplified": "打电话给友美",
+                  "pinyin": "dǎ diànhuà gěi Yǒuměi",
+                  "english": "phone Youmei"
+                }
+              ],
+              "key": 2,
+              "why": "如果妳有問題，就打電話給我: if you have a question, call me. Youmei is at the library tonight, not in the dorm.",
+              "focus": {
+                "zh": "如果……就……",
+                "en": "if …, then …"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-17",
+                "B1L10-2-18",
+                "B1L10-3-01"
+              ],
+              "grammarIds": [
+                "B1L10-G05-P237"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -800,7 +800,7 @@
               "speaker": "M",
               "traditional": "那個女生是妳妹妹吧？",
               "simplified": "那个女生是你妹妹吧？",
-              "pinyin": "Nà ge nǚshēng shì nǐ mèimei ba?",
+              "pinyin": "Nàge nǚshēng shì nǐ mèimei ba?",
               "english": "That girl is your younger sister, right?"
             },
             {
@@ -818,7 +818,7 @@
                 "speaker": "N",
                 "traditional": "女的說那個女生是她的什麼人？",
                 "simplified": "女的说那个女生是她的什么人？",
-                "pinyin": "Nǚ de shuō nà ge nǚshēng shì tā de shénme rén?",
+                "pinyin": "Nǚ de shuō nàge nǚshēng shì tā de shénme rén?",
                 "english": "What does the woman say that girl is to her?"
               },
               "choices": [
@@ -1254,7 +1254,7 @@
               "prompt": {
                 "traditional": "這個黑色的皮包很舊了。",
                 "simplified": "这个黑色的皮包很旧了。",
-                "pinyin": "Zhè ge hēisè de píbāo hěn jiù le.",
+                "pinyin": "Zhège hēisè de píbāo hěn jiù le.",
                 "english": "This black purse is very old now."
               },
               "choices": [
@@ -1336,7 +1336,7 @@
               "prompt": {
                 "traditional": "這個皮包很新，是黑色的。",
                 "simplified": "这个皮包很新，是黑色的。",
-                "pinyin": "Zhè ge píbāo hěn xīn, shì hēisè de.",
+                "pinyin": "Zhège píbāo hěn xīn, shì hēisè de.",
                 "english": "This purse is new, and it is black."
               },
               "choices": [
@@ -1426,7 +1426,7 @@
               "prompt": {
                 "traditional": "這個女生在書店看雜誌。",
                 "simplified": "这个女生在书店看杂志。",
-                "pinyin": "Zhè ge nǚshēng zài shūdiàn kàn zázhì.",
+                "pinyin": "Zhège nǚshēng zài shūdiàn kàn zázhì.",
                 "english": "This girl is reading a magazine in the bookstore."
               },
               "choices": [
@@ -1466,7 +1466,7 @@
               "prompt": {
                 "traditional": "那個男生很年輕，他在書店看雜誌。",
                 "simplified": "那个男生很年轻，他在书店看杂志。",
-                "pinyin": "Nà ge nánshēng hěn niánqīng, tā zài shūdiàn kàn zázhì.",
+                "pinyin": "Nàge nánshēng hěn niánqīng, tā zài shūdiàn kàn zázhì.",
                 "english": "That young man is reading a magazine in the bookstore."
               },
               "choices": [
