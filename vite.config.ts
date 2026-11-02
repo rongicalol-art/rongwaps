@@ -240,6 +240,11 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    // Pre-bundle from the app entry only: by default Vite scans every .html in the
+    // repo, including gitignored prototypes in output/ that import stale code.
+    optimizeDeps: {
+      entries: ['index.html'],
+    },
     server: {
       allowedHosts: true as const,
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
