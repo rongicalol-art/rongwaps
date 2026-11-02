@@ -47,6 +47,8 @@ export interface SocialState {
   socialCheer: { from: Person; phrase: number; at: number } | null;
   /** Lesson key (`bookId * 100 + lessonId`) of the open lesson window, for presence. */
   socialViewingLesson: number | null;
+  /** Reading or grammar window open, with its lesson key: they are windows, not activities, so presence learns of them here. */
+  socialStudying: { a: 'reading' | 'grammar'; lesson: number } | null;
   /** The lesson this device reports while visible (null when hidden or outside a lesson); the server counts it. */
   socialHere: number | null;
   socialPanel: SocialPanel;
@@ -81,6 +83,7 @@ const LIVE_DEFAULTS = {
   socialMentionDraft: null,
   socialCheer: null,
   socialViewingLesson: null,
+  socialStudying: null,
   socialHere: null,
   socialPanel: null,
   race: null,
