@@ -58,6 +58,7 @@ export * from './LevelTag';
 export * from './CharacterTile';
 export * from './CharacterGlyph';
 export * from './SmartSentence';
+export * from './TranslationLines';
 export * from './AvatarStack';
 export * from './ProfileCover';
 

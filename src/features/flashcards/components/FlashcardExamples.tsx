@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { Skeleton, SmartSentence, LevelTag, SpeakerIcon } from '../../../lib/widgets';
+import { Skeleton, SmartSentence, LevelTag, SpeakerIcon, TranslationLines } from '../../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import {
   groupRankedExamples,
@@ -9,7 +9,6 @@ import {
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import { cn } from '../../../utils/cn';
-import { splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
 import { useAppStore } from '../../../store/useAppStore';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import { useAudioPending } from '../../../hooks/useAudioPending';
@@ -106,16 +105,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
       )}
       {showTranslation && example.english && (
         <p className={cn('ui-translation text-sm leading-snug sm:text-[15px]', compact ? 'mt-1.5' : '-mt-1.5')}>
-          {splitTranslationLines(example.english).map((line, i) => (
-            <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
-              {line.label && (
-                <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans text-xs font-black text-ui-muted">
-                  {line.label}
-                </span>
-              )}
-              {line.text}
-            </span>
-          ))}
+          <TranslationLines text={example.english} />
         </p>
       )}
     </li>
