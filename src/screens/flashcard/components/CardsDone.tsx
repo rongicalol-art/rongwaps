@@ -9,7 +9,7 @@ import { ActionButton, LottiePlayer } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import type { QuizTypeId } from '../../../utils/vocabulary/quizDirector';
 import { QuizTypePicker, type QuizPickerEntrance } from './QuizTypePicker';
-import { CARD_SURFACE_CLASS, EASE_OUT, TILE_BORDER, TILE_RADIUS, TILE_RATIO, fitFont, questionWordPx } from '../flashcardMotion';
+import { CARD_SURFACE_CLASS, EASE_OUT, TILE_BORDER, TILE_RADIUS, layoutSheet, questionWordPx } from '../flashcardMotion';
 
 // Module-level so the player keeps one stable loader identity (same trophy as the review intro).
 const loadTrophy = () => import('../../../assets/animations/review-trophy.json').then((m) => m.default);
@@ -94,37 +94,13 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
     // ---- sheet geometry: one row on wide screens (width is plentiful), a grid on phones; tiles shrink to fit,
     // so nothing crowds the button ----
     const wide = window.innerWidth >= 1024;
-    const slots = count;
-    const baseTw = wide ? 136 : 92;
-    const gap = wide ? 28 : 14;
-    const baseFont = wide ? 42 : 28;
-    const cols = wide ? slots : Math.min(3, slots);
-    const rows = Math.ceil(slots / cols);
-    // On desktop the two buttons sit in the group under the sheet (2 × h-14 + gaps).
-    const fitH = (slot.parentElement?.clientHeight ?? Infinity) - text.offsetHeight - 48 - (wide ? 290 : 0);
-    const fitW = slot.clientWidth - 32;
-    const tw = Math.max(48, Math.min(baseTw, (fitW - (cols - 1) * gap) / cols, (fitH - (rows - 1) * gap) / rows / TILE_RATIO));
-    const th = tw * TILE_RATIO;
-    slot.style.height = `${rows * th + (rows - 1) * gap}px`;
-    const slotRect = slot.getBoundingClientRect();
-    const slotLeft = slotRect.left + slotRect.width / 2 - rootRect.left;
-    const slotTop = slotRect.top - rootRect.top;
     const tileEls = Array.from(layer.children) as HTMLElement[];
-    const wordOf = (el: HTMLElement) => el.querySelector<HTMLElement>('[data-clone-word]');
-    const tileFont = (i: number) => fitFont(cards[i].front, tw, (baseFont * tw) / baseTw);
-    tileEls.forEach((el, i) => {
-      const row = Math.floor(i / cols);
-      const inRow = Math.min(cols, slots - row * cols);
-      const rowW = inRow * tw + (inRow - 1) * gap;
-      const word = wordOf(el);
-      if (word) word.style.fontSize = `${tileFont(i)}px`;
-      Object.assign(el.style, {
-        left: `${slotLeft - rowW / 2 + (i % cols) * (tw + gap)}px`,
-        top: `${slotTop + row * (th + gap)}px`,
-        width: `${tw}px`,
-        height: `${th}px`,
-      });
+    // On desktop the two buttons sit in the group under the sheet (2 × h-14 + gaps).
+    const { tw, th, fontAt: tileFont } = layoutSheet({
+      slot, text, rootRect, tiles: tileEls, fronts: cards.map((card) => card.front),
+      cols: wide ? count : Math.min(3, count), gap: wide ? 28 : 14, tw: wide ? 136 : 92, font: wide ? 42 : 28, reserveH: wide ? 290 : 0,
     });
+    const wordOf = (el: HTMLElement) => el.querySelector<HTMLElement>('[data-clone-word]');
     const [title, subtitle] = Array.from(text.querySelectorAll<HTMLElement>('h2, p'));
     const morphEl = tileEls[lastIdx];
     const morphWord = wordOf(morphEl);
