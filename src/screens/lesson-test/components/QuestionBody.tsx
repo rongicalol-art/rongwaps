@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import type { LessonTestItem, LessonTestQuestion, LessonTestSounds, TestText } from '../../../types/lessonTest';
 import type { PlannedItem } from '../../../utils/lesson/lessonTestPlan';
 import { cn } from '../../../utils/cn';
@@ -75,60 +76,82 @@ export interface QuestionBodyProps {
   onAnswer: (questionId: string, choice: number | undefined) => void;
 }
 
-/** One screen of the test: the instruction, the recording or text, and the answers. */
+/** On wide screens these sit side by side: what to look at or read on the left, the answers on the right. */
+const SPLIT = new Set<LessonTestItem['kind']>(['picture-hear', 'realia', 'scene-gap', 'reading']);
+
+/** One screen of the test: the instruction, the recording, picture or text, and the answers, as one group. */
 export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, firstNumber, onAnswer }: QuestionBodyProps) {
   const question = item.questions.find((entry) => entry.id === questionIds[0]) ?? item.questions[0];
   const order = planned.orders[question.id] ?? (question.choices ?? []).map((_, index) => index);
   const steps = useMemo(() => listeningSteps(item, question, order, sounds, script), [item, question, order, sounds, script]);
   const audio = useTestAudio(steps, `${mode}:${item.id}:${question.id}`, mode, script);
+  const reduceMotion = useReducedMotion();
   const selected = answers[question.id];
   const pick = (choice: number) => onAnswer(question.id, choice);
-  const speaker = steps.length > 0 && (
-    <TestSpeaker playing={audio.playing} plays={audio.plays} maxPlays={item.kind === 'dialogue' && item.plays === 1 ? 1 : audio.maxPlays} onReplay={audio.replay} />
+  // Picture questions have no speaker: the answer being read presses in instead.
+  const speaker = steps.length > 0 && item.kind !== 'picture-hear' && (
+    <TestSpeaker
+      face={audio.face}
+      playing={audio.playing}
+      plays={audio.plays}
+      maxPlays={item.kind === 'dialogue' && item.plays === 1 ? 1 : audio.maxPlays}
+      onReplay={audio.replay}
+    />
   );
+  const sayChoice = (original: number, shown: number) => {
+    const choice = question.choices?.[original];
+    if (choice) void audio.say({ audio: choice.audio, text: choice[script] ?? choice.traditional, mark: shown });
+  };
   const choiceList = (spoken: boolean) => (
-    <ChoiceList question={question} order={order} selected={selected} checked={checked} spoken={spoken} mark={audio.mark} script={script} onSelect={pick} />
+    <ChoiceList question={question} order={order} selected={selected} checked={checked} spoken={spoken} mark={audio.mark} script={script} onSelect={pick} onSay={sayChoice} />
   );
   const pictures = <PictureChoices question={question} order={order} selected={selected} checked={checked} onSelect={pick} />;
   const printedPrompt = question.prompt && (
     <p className="text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl">{text(question.prompt, script)}</p>
   );
+  // A dialogue's question appears when the narrator asks it, right after the ding (TOCFL order).
+  const askedPrompt = question.prompt && (
+    <motion.p
+      aria-hidden={!(audio.asked || checked)}
+      initial={false}
+      animate={audio.asked || checked ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.96 }}
+      transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 24 }}
+      className="text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl"
+    >
+      {text(question.prompt, script)}
+    </motion.p>
+  );
 
-  let body: React.ReactNode;
+  let stimulus: React.ReactNode = null;
+  let answersPart: React.ReactNode = null;
   switch (item.kind) {
     case 'hear-pick-picture':
-      body = <>{speaker}{pictures}</>;
+      stimulus = speaker; answersPart = pictures;
       break;
     case 'picture-hear':
-      body = <><StimulusPicture name={item.picture.picture} alt={item.picture.alt} wide />{speaker}{choiceList(true)}</>;
+      stimulus = <StimulusPicture name={item.picture.picture} alt={item.picture.alt} wide />; answersPart = choiceList(true);
       break;
     case 'dialogue':
-      body = <>{speaker}{printedPrompt}{choiceList(!item.printed)}</>;
+      stimulus = speaker; answersPart = <>{askedPrompt}{choiceList(!item.printed)}</>;
       break;
     case 'read-pick-picture':
-      body = (
-        <>
-          <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-4 py-6 text-center font-chinese text-2xl leading-normal text-ui-ink-strong md:py-8 md:text-3xl">
-            {text(question.prompt, script)}
-          </div>
-          {pictures}
-        </>
+      stimulus = (
+        <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-4 py-6 text-center font-chinese text-2xl leading-normal text-ui-ink-strong md:py-8 md:text-3xl">
+          {text(question.prompt, script)}
+        </div>
       );
+      answersPart = pictures;
       break;
     case 'realia':
-      body = <><StimulusPicture name={item.picture} alt={`${item.alt}: ${item.transcript.traditional}`} />{printedPrompt}{choiceList(false)}</>;
+      stimulus = <StimulusPicture name={item.picture} alt={`${item.alt}: ${item.transcript.traditional}`} />; answersPart = <>{printedPrompt}{choiceList(false)}</>;
       break;
     case 'scene-gap':
-      body = (
-        <>
-          <StimulusPicture name={item.picture} alt={item.alt} wide />
-          <GapSentence question={question} order={order} selected={selected} checked={checked} script={script} onSelect={pick} />
-        </>
-      );
+      stimulus = <StimulusPicture name={item.picture} alt={item.alt} wide />;
+      answersPart = <GapSentence question={question} order={order} selected={selected} checked={checked} script={script} onSelect={pick} />;
       break;
     case 'paragraph-bank':
     case 'cloze':
-      body = (
+      answersPart = (
         <ParagraphBlanks
           item={item}
           questionIds={questionIds}
@@ -143,14 +166,18 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       );
       break;
     case 'reading':
-      body = <><ReadingText item={item} script={script} />{printedPrompt}{choiceList(false)}</>;
+      stimulus = <ReadingText item={item} script={script} />; answersPart = <>{printedPrompt}{choiceList(false)}</>;
       break;
   }
 
+  const split = SPLIT.has(item.kind);
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-5">
+    <div className={cn('mx-auto flex w-full max-w-2xl flex-col items-center gap-6', split && 'lg:max-w-5xl')}>
       <h1 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong">{titleFor(item, question)}</h1>
-      {body}
+      <div className={cn('flex w-full flex-col items-center gap-6', split && 'lg:grid lg:grid-cols-2 lg:items-center lg:gap-14')}>
+        {stimulus && <div className="flex w-full flex-col items-center gap-5">{stimulus}</div>}
+        <div className="flex w-full flex-col items-center gap-5">{answersPart}</div>
+      </div>
     </div>
   );
 }

@@ -7,6 +7,8 @@ export interface AudioStep {
   text?: string;
   pauseMs?: number;
   mark?: number;
+  /** What the speaker key shows while this clip plays (choices show their letter through `mark`). */
+  cue?: 'voice' | 'ding' | 'question';
 }
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
@@ -28,8 +30,8 @@ export function listeningSteps(
   script: 'traditional' | 'simplified',
 ): AudioStep[] {
   const steps: AudioStep[] = [];
-  const say = (line: { audio?: SentenceAudio; traditional?: string; simplified?: string }) => {
-    steps.push({ audio: line.audio, text: line[script] ?? line.traditional });
+  const say = (line: { audio?: SentenceAudio; traditional?: string; simplified?: string }, cue: AudioStep['cue']) => {
+    steps.push({ audio: line.audio, text: line[script] ?? line.traditional, cue });
   };
   const readChoices = () => {
     const choices = question.choices ?? [];
@@ -45,14 +47,14 @@ export function listeningSteps(
   if (item.kind === 'hear-pick-picture' || item.kind === 'dialogue') {
     item.lines.forEach((line, index) => {
       if (index > 0) steps.push({ pauseMs: TURN_GAP_MS });
-      say(line);
+      say(line, 'voice');
     });
   }
   if (item.kind === 'dialogue') {
     steps.push({ pauseMs: 350 });
-    if (sounds.ding) steps.push({ audio: sounds.ding });
+    if (sounds.ding) steps.push({ audio: sounds.ding, cue: 'ding' });
     steps.push({ pauseMs: AFTER_DING_MS });
-    if (question.prompt) say(question.prompt);
+    if (question.prompt) say(question.prompt, 'question');
     if (!item.printed) {
       steps.push({ pauseMs: BEFORE_CHOICES_MS });
       readChoices();
