@@ -27,8 +27,7 @@ Each grammar page inside a part provides:
 - Traditional title, English title, a concrete learner promise, and textbook-based explanation
 - Three pattern-column labels and one or more pattern rows. Labels use the standardized grammar term when the slot has one (`Subject`, `Verb`, `Object`, `Noun`, `Adjective`, `Number`, `Measure word`, `Statement`) and the canonical slot vocabulary (`Time`, `Place`, `Result`, `Condition`, `Tool`, `Receiver`, `Focus`, …) when the role has no standard term; they read as plain 1–3 word titles, stay within 6 visual-width units (≈ 6 CJK glyphs or ~13 Latin characters) so they never wrap in the narrowest mobile column, and keep particle labels (`嗎`, `有 / 沒有`, `一……就……`) where the slot *is* the particle. Full nuance belongs in the page `explanation` or the short `patternColumnDetails` notation (≤ 8 units) that rides in the cell tooltip, never in a compound, abbreviated, or parenthetical header such as "Suggested or permitted action", "Name / ID", or "(no noun)"; `validateInteractiveLessons` fails a label that is too wide, more than three words, or wrapped in parentheses.
 - A `confusion` block of don't-mix-these-up clarifiers (see below)
-- A discovery interaction when comparison, repair, or meaning choice makes the rule easier to notice
-- Segmented examples with pinyin, English translations, and dictionary meanings (a reference page such as the number system may ship no example cards when its full pattern table plus number lab already carry every reading — the printed book prints no numbered examples there)
+- Segmented examples with pinyin, English translations, and dictionary meanings
 - Data-driven exercise title, preview, instruction, optional note, and questions
 - Optional profile cards or book exercise cues
 
@@ -146,7 +145,7 @@ Examples render flat on the study canvas — one row per sentence with a leading
 
 ### Optional interactive teaching
 
-Optional labs, contrasts, and sentence spines are implemented behind a single quiet `Explore this pattern` disclosure for a later beta phase. They are currently not mounted in the learner-facing grammar flow; preserve the authored content and disclosure component so it can be restored without redesign. Optional interactions never gate completion.
+Contrasts and sentence spines stay authored in the content but are not shown in the learner-facing grammar flow (a sentence spine still feeds the page's tap-to-define words). Optional interactions never gate completion.
 
 ### Don't-mix-these-up clarifiers
 
@@ -224,7 +223,7 @@ Do not add page-specific headings, continuation notes, pattern labels, or comple
 
 ## Plain English for learners
 
-All learner-facing English (titles, promises, explanations, glossary meanings, lab notes, feedback, hints, and completion copy) must work for beginners, including learners whose first language is not English.
+All learner-facing English (titles, promises, explanations, glossary meanings, feedback, hints, and completion copy) must work for beginners, including learners whose first language is not English.
 
 - One idea per sentence. Split long sentences.
 - Address the learner as "you".

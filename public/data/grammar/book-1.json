@@ -576,56 +576,6 @@
               }
             ]
           },
-          "discoveryLab": {
-            "title": "Change the word, change the clue",
-            "description": "叫 introduces a name, 姓 a surname, and 是 an identity.",
-            "prompt": "Which word introduces each detail?",
-            "choices": [
-              {
-                "id": "l1g1-lab1",
-                "label": "Her name",
-                "traditional": "她不姓李，她姓小林，叫小林友美。",
-                "simplified": "她不姓李，她姓小林，叫小林友美。",
-                "pinyin": "Tā bú xìng Lǐ, tā xìng Xiǎolín, jiào Xiǎolín Yǒuměi.",
-                "english": "Her surname is not Li. Her surname is Xiaolin; her name is Xiaolin Youmei.",
-                "note": "叫 comes before a given name or a full name.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-1-3.mp3",
-                  "start": 40.5,
-                  "end": 48.04
-                }
-              },
-              {
-                "id": "l1g1-lab2",
-                "label": "A surname",
-                "traditional": "誰姓李？",
-                "simplified": "谁姓李？",
-                "pinyin": "Shéi xìng Lǐ?",
-                "english": "Whose surname is Li?",
-                "note": "姓 comes only before a family name.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0d2d8d0930f7.mp3"
-                }
-              },
-              {
-                "id": "l1g1-lab3",
-                "label": "Who she is",
-                "traditional": "她是新同學。",
-                "simplified": "她是新同学。",
-                "pinyin": "Tā shì xīn tóngxué.",
-                "english": "She is a new classmate.",
-                "note": "是 says who someone is.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-1-1.mp3",
-                  "start": 3.88,
-                  "end": 6.15
-                }
-              }
-            ]
-          },
           "questions": [
             {
               "id": "l1g1-q1",
@@ -2061,44 +2011,6 @@
               }
             ]
           },
-          "discoveryLab": {
-            "title": "Say it is true, or say it is not",
-            "description": "The word 不 replaces 很 when the description is not true. 是 never joins in.",
-            "prompt": "What do you want to say?",
-            "choices": [
-              {
-                "id": "l1g2-lab1",
-                "label": "It is true",
-                "traditional": "她很可愛。",
-                "simplified": "她很可爱。",
-                "pinyin": "Tā hěn kě'ài.",
-                "english": "She is cute.",
-                "note": "很 is the usual word before a description.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-1-3.mp3",
-                  "start": 62.01,
-                  "end": 64.09
-                }
-              },
-              {
-                "id": "l1g2-lab2",
-                "label": "It is not true",
-                "traditional": "我們不累，王太太很累。",
-                "simplified": "我们不累，王太太很累。",
-                "pinyin": "Wǒmen bú lèi, Wáng tàitai hěn lèi.",
-                "english": "We are not tired; Mrs. Wang is very tired.",
-                "note": "Put 不 before the word. Do not add 是.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-1-3.mp3",
-                  "start": 73.87,
-                  "end": 79.41
-                }
-              }
-            ],
-            "takeaway": "Words like 漂亮 and 累 already carry the meaning of \"is\". 很 or 不 sits before them, and 是 stays out."
-          },
           "questions": [
             {
               "id": "l1g2-q1",
@@ -3154,44 +3066,6 @@
                 }
               }
             ]
-          },
-          "discoveryLab": {
-            "title": "One ending word turns a statement into a question",
-            "description": "The statement does not change; only the ending changes.",
-            "prompt": "Telling or asking?",
-            "choices": [
-              {
-                "id": "l1g3-lab1",
-                "label": "Ask with 嗎",
-                "traditional": "他忙嗎？",
-                "simplified": "他忙吗？",
-                "pinyin": "Tā máng ma?",
-                "english": "Is he busy?",
-                "note": "The statement 他忙 stays as printed; 嗎 closes it.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-1-3.mp3",
-                  "start": 111.23,
-                  "end": 112.27
-                }
-              },
-              {
-                "id": "l1g3-lab2",
-                "label": "Keep the order",
-                "traditional": "高先生叫家樂嗎？",
-                "simplified": "高先生叫家乐吗？",
-                "pinyin": "Gāo xiānsheng jiào Jiālè ma?",
-                "english": "Is Mr. Gao called Jiale?",
-                "note": "Say the whole statement first, then add 嗎 at the end.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-1-3.mp3",
-                  "start": 105.25,
-                  "end": 107.59
-                }
-              }
-            ],
-            "takeaway": "Statement first, 嗎 last. Nothing inside the sentence moves."
           },
           "questions": [
             {
@@ -4450,41 +4324,6 @@
               }
             ]
           },
-          "discoveryLab": {
-            "title": "呢 echoes the question implied by the preceding statement",
-            "description": "Say the new person or thing, add 呢, and stop: the question itself is not repeated.",
-            "prompt": "What does 呢 ask back about?",
-            "choices": [
-              {
-                "id": "l1g4-lab1",
-                "label": "Country",
-                "traditional": "我是日本人，你呢？",
-                "simplified": "我是日本人，你呢？",
-                "pinyin": "Wǒ shì Rìběn rén, nǐ ne?",
-                "english": "I am Japanese. How about you?",
-                "note": "The listener answers the same country question about themselves."
-              },
-              {
-                "id": "l1g4-lab2",
-                "label": "Given name",
-                "traditional": "小林小姐叫友美，李先生呢？",
-                "simplified": "小林小姐叫友美，李先生呢？",
-                "pinyin": "Xiǎolín xiǎojiě jiào Yǒuměi, Lǐ xiānsheng ne?",
-                "english": "Miss Xiaolin is called Youmei. How about Mr. Li?",
-                "note": "李先生 stands before 呢; the name question is not repeated."
-              },
-              {
-                "id": "l1g4-lab3",
-                "label": "Tired?",
-                "traditional": "王太太很累，王先生呢？",
-                "simplified": "王太太很累，王先生呢？",
-                "pinyin": "Wáng tàitai hěn lèi, Wáng xiānsheng ne?",
-                "english": "Mrs. Wang is very tired. How about Mr. Wang?",
-                "note": "The question now asks whether Mr. Wang is tired."
-              }
-            ],
-            "takeaway": "呢 is a shortcut: keep the question implied by the preceding statement, change the person, and do not repeat the sentence."
-          },
           "questions": [
             {
               "id": "l1g4-q1",
@@ -5568,59 +5407,6 @@
               }
             ]
           },
-          "discoveryLab": {
-            "title": "Slot the sentence together",
-            "description": "The book's pattern keeps one order: subject first, then the verb, then the object.",
-            "prompt": "How does the sentence slot together?",
-            "choices": [
-              {
-                "id": "l1g5-lab1",
-                "label": "Verb then object",
-                "traditional": "你喜歡什麼？",
-                "simplified": "你喜欢什么？",
-                "pinyin": "Nǐ xǐhuān shénme?",
-                "english": "What do you like?",
-                "note": "The verb 喜歡 comes first; 什麼 stands in the object slot.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-2-3.mp3",
-                  "start": 73.9,
-                  "end": 75.8
-                }
-              },
-              {
-                "id": "l1g5-lab2",
-                "label": "Two objects, one verb",
-                "traditional": "我愛爸爸、媽媽。",
-                "simplified": "我爱爸爸、妈妈。",
-                "pinyin": "Wǒ ài bàba, māma.",
-                "english": "I love Dad and Mom.",
-                "note": "Both 爸爸 and 媽媽 follow the verb 愛.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-2-3.mp3",
-                  "start": 79.42,
-                  "end": 81.86
-                }
-              },
-              {
-                "id": "l1g5-lab3",
-                "label": "Negate the verb",
-                "traditional": "我喜歡李小姐，不喜歡王小姐。",
-                "simplified": "我喜欢李小姐，不喜欢王小姐。",
-                "pinyin": "Wǒ xǐhuān Lǐ xiǎojiě, bù xǐhuān Wáng xiǎojiě.",
-                "english": "I like Miss Li, but I do not like Miss Wang.",
-                "note": "Put 不 right before 喜歡.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-01-2-3.mp3",
-                  "start": 64.19,
-                  "end": 70.49
-                }
-              }
-            ],
-            "takeaway": "Build the sentence in order: subject → verb → object. 不 sits right before the verb."
-          },
           "sentenceSpine": {
             "title": "Read the pattern",
             "description": "Subject first, then the verb, then the object. Put 不 right before the verb to say you do not like someone.",
@@ -6553,59 +6339,6 @@
             "號 · 日 · 分"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Build time from big pieces to small pieces",
-            "description": "Choose what you want to say. The markers tell the listener whether your numbers mean a date, weekday, or clock time.",
-            "prompt": "Which kind of time do you need?",
-            "choices": [
-              {
-                "id": "g1-date",
-                "label": "Date",
-                "traditional": "五月十六號",
-                "simplified": "五月十六号",
-                "pinyin": "Wǔ yuè shíliù hào",
-                "english": "May 16",
-                "note": "Month comes first: 五月. The spoken date ends with 號."
-              },
-              {
-                "id": "g1-weekday",
-                "label": "Weekday",
-                "traditional": "星期四",
-                "pinyin": "Xīngqí sì",
-                "english": "Thursday",
-                "note": "星期 comes before the number: 星期四. Numbers one to six give Monday to Saturday; Sunday uses 星期天 or 星期日.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-1-3.mp3",
-                  "start": 13.81,
-                  "end": 15.38
-                }
-              },
-              {
-                "id": "g1-clock",
-                "label": "Clock time",
-                "traditional": "九點二十分",
-                "simplified": "九点二十分",
-                "pinyin": "Jiǔ diǎn èrshí fēn",
-                "english": "9:20",
-                "note": "Say the hour with 點, then the minute number with 分.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7e8c7dd6797b.mp3"
-                }
-              },
-              {
-                "id": "g1-question",
-                "label": "Ask with 幾",
-                "traditional": "現在幾點（幾分）？",
-                "simplified": "现在几点（几分）？",
-                "pinyin": "Xiànzài jǐ diǎn (jǐ fēn)?",
-                "english": "What time is it now?",
-                "note": "Replace the unknown number with 幾. Keep its time marker after it."
-              }
-            ],
-            "takeaway": "Large unit first, small unit second: month then date, hour then minute. 星期 is different: it comes before its number."
-          },
           "patternRows": [],
           "subsections": [
             {
@@ -8230,55 +7963,6 @@
             "V(O)"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Give the listener the time before the event",
-            "description": "The book’s table: the time word sits between the subject and the action.",
-            "prompt": "Where does the time block belong?",
-            "choices": [
-              {
-                "id": "g2-correct",
-                "label": "Time before the action",
-                "traditional": "我九點三十分上課。",
-                "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
-                "english": "I start class at 9:30.",
-                "note": "The time 九點三十分 sits right before the action 上課.",
-                "simplified": "我九点三十分上课。",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7d9eb6fc6feb.mp3"
-                }
-              },
-              {
-                "id": "g2-negative",
-                "label": "Time with 沒有",
-                "traditional": "他今天沒有課。",
-                "pinyin": "Tā jīntiān méi yǒu kè.",
-                "english": "He does not have class today.",
-                "note": "After 他 comes the time 今天, then 沒有課.",
-                "simplified": "他今天没有课。",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-1-3.mp3",
-                  "start": 66.48,
-                  "end": 68.92
-                }
-              },
-              {
-                "id": "g2-question",
-                "label": "Ask when",
-                "traditional": "你幾點去圖書館？",
-                "pinyin": "Nǐ jǐ diǎn qù túshūguǎn?",
-                "english": "What time do you go to the library?",
-                "note": "幾點 fills the same time position as a clock answer.",
-                "simplified": "你几点去图书馆？",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f730f54a5bac.mp3"
-                }
-              }
-            ],
-            "takeaway": "Say who, then when, then the action."
-          },
           "patternRows": [
             {
               "id": "g2-pattern-1",
@@ -9439,53 +9123,6 @@
             "O"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "有 has its own negative partner",
-            "description": "Switch between having and not having by changing only the middle block.",
-            "prompt": "Does she have a Taiwanese friend?",
-            "choices": [
-              {
-                "id": "g3-positive",
-                "label": "Has · 有",
-                "traditional": "她有台灣朋友。",
-                "pinyin": "Tā yǒu Táiwān péngyǒu.",
-                "english": "She has a Taiwanese friend.",
-                "note": "有 sits between the person and the thing they have.",
-                "simplified": "她有台湾朋友。",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-1-3.mp3",
-                  "start": 85.1,
-                  "end": 87.67
-                }
-              },
-              {
-                "id": "g3-new",
-                "label": "New classmate",
-                "traditional": "我們有新同學。",
-                "pinyin": "Wǒmen yǒu xīn tóngxué.",
-                "english": "We have a new classmate.",
-                "note": "Same shape: person, then 有, then the thing.",
-                "simplified": "我们有新同学。",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-1-3.mp3",
-                  "start": 91.01,
-                  "end": 93.64
-                }
-              },
-              {
-                "id": "g3-negative",
-                "label": "Does not have · 沒有",
-                "traditional": "王先生沒有孩子。",
-                "pinyin": "Wáng xiānshēng méi yǒu háizi.",
-                "english": "Mr. Wang does not have children.",
-                "note": "Negate 有 with 沒有, never with 不.",
-                "simplified": "王先生没有孩子。"
-              }
-            ],
-            "takeaway": "有 becomes 沒有 in a negative sentence."
-          },
           "patternRows": [
             {
               "id": "g3-pattern-1",
@@ -10638,59 +10275,6 @@
             "Noun"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Use 的 as a connection link",
-            "description": "Each book sentence places 的 between the owner and the thing.",
-            "prompt": "What connection do you want to make?",
-            "choices": [
-              {
-                "id": "g4-phone",
-                "label": "A phone",
-                "traditional": "你的手機很新。",
-                "pinyin": "Nǐ de shǒujī hěn xīn.",
-                "english": "Your cell phone is very new.",
-                "note": "的 links the owner 你 to the thing 手機.",
-                "simplified": "你的手机很新。",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 21.29,
-                  "end": 24.06
-                }
-              },
-              {
-                "id": "g4-child",
-                "label": "A child",
-                "traditional": "他的孩子可愛嗎？",
-                "pinyin": "Tā de háizi kě'ài ma?",
-                "english": "Is his child cute?",
-                "note": "的 links 他 to 孩子, then the question ends with 嗎.",
-                "simplified": "他的孩子可爱吗？",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 27.63,
-                  "end": 30.15
-                }
-              },
-              {
-                "id": "g4-friend",
-                "label": "A friend",
-                "traditional": "我的英國朋友不喜歡喝奶茶。",
-                "pinyin": "Wǒ de Yīngguó péngyǒu bù xǐhuān hē nǎichá.",
-                "english": "My British friend does not like drinking milk tea.",
-                "note": "英國 describes 朋友 inside the larger phrase 我的英國朋友.",
-                "simplified": "我的英国朋友不喜欢喝奶茶。",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 33.85,
-                  "end": 38.68
-                }
-              }
-            ],
-            "takeaway": "Use 的 to make the owner-to-thing connection explicit."
-          },
           "patternRows": [
             {
               "id": "g4-pattern-1",
@@ -11767,58 +11351,6 @@
             "V(O)"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Put the feeling before the action",
-            "description": "The want or feel word goes first; the action word follows it.",
-            "prompt": "What meaning comes before the action?",
-            "choices": [
-              {
-                "id": "g5-want",
-                "label": "Want · 要",
-                "traditional": "我要喝茶。",
-                "pinyin": "Wǒ yào hē chá.",
-                "english": "I want to drink tea.",
-                "note": "要 comes before the action 喝.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 43,
-                  "end": 44.99
-                }
-              },
-              {
-                "id": "g5-like",
-                "label": "Like · 喜歡",
-                "traditional": "媽媽喜歡喝奶茶。",
-                "pinyin": "Māma xǐhuān hē nǎichá.",
-                "english": "Mom likes drinking milk tea.",
-                "note": "喜歡 comes before the action 喝.",
-                "simplified": "妈妈喜欢喝奶茶。",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 48.62,
-                  "end": 51.56
-                }
-              },
-              {
-                "id": "g5-love",
-                "label": "Love · 愛",
-                "traditional": "我愛吃水果，不愛喝珍珠奶茶。",
-                "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē zhēnzhū nǎichá.",
-                "english": "I love eating fruit; I do not love drinking bubble milk tea.",
-                "note": "不 stays before 愛, and the action 喝 still comes last.",
-                "simplified": "我爱吃水果，不爱喝珍珠奶茶。",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 61.62,
-                  "end": 67.9
-                }
-              }
-            ],
-            "takeaway": "Intention or feeling first, action second."
-          },
           "patternRows": [
             {
               "id": "g5-pattern-1",
@@ -13012,71 +12544,6 @@
             "Verb"
           ],
           "patternAccentColumn": 2,
-          "discoveryLab": {
-            "title": "Let the verb ask both possibilities",
-            "description": "The repeated form presents a compact choice: yes or no.",
-            "prompt": "Which positive-negative family do you need?",
-            "choices": [
-              {
-                "id": "g6-state",
-                "label": "Adjective",
-                "traditional": "你忙不忙？",
-                "pinyin": "Nǐ máng bù máng?",
-                "english": "Are you busy?",
-                "note": "Repeat the adjective 忙 around 不.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 72.13,
-                  "end": 74.25
-                }
-              },
-              {
-                "id": "g6-action",
-                "label": "Verb",
-                "traditional": "你吃不吃？",
-                "pinyin": "Nǐ chī bù chī?",
-                "english": "Do you eat?",
-                "note": "Repeat the verb 吃 around 不.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 75.58,
-                  "end": 77.79
-                }
-              },
-              {
-                "id": "g6-have",
-                "label": "有",
-                "traditional": "他有沒有台灣朋友？",
-                "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
-                "english": "Does he have a Taiwanese friend?",
-                "note": "有 pairs with its own negative 沒有: 有沒有.",
-                "simplified": "他有没有台湾朋友？",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 90.31,
-                  "end": 93.26
-                }
-              },
-              {
-                "id": "g6-want",
-                "label": "要",
-                "traditional": "他要不要去？",
-                "pinyin": "Tā yào bú yào qù?",
-                "english": "Does he want to go?",
-                "note": "Pair 要 with 不 in front of the action 去.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-02-2-3.mp3",
-                  "start": 79.16,
-                  "end": 81.34
-                }
-              }
-            ],
-            "takeaway": "Repeat the key form around its negative, and leave 嗎 out."
-          },
           "patternRows": [
             {
               "id": "g6-pattern-1",
@@ -14612,67 +14079,6 @@
             "N"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Pick the right measure word",
-            "description": "The measure word links the number to the thing. The thing you name chooses the measure word.",
-            "prompt": "What are you counting?",
-            "choices": [
-              {
-                "id": "g1-books",
-                "label": "Books · 本",
-                "traditional": "兩本書",
-                "simplified": "两本书",
-                "pinyin": "liǎng běn shū",
-                "english": "two books",
-                "note": "Use 本 for books and similar things.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-03-1-3.mp3",
-                  "start": 9.19,
-                  "end": 10.81
-                }
-              },
-              {
-                "id": "g1-flowers",
-                "label": "Flowers · 朵",
-                "traditional": "幾朵花？",
-                "simplified": "几朵花？",
-                "pinyin": "jǐ duǒ huā?",
-                "english": "how many flowers?",
-                "note": "朵 counts flowers. 幾 still needs a measure word.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-03-1-3.mp3",
-                  "start": 12.19,
-                  "end": 13.84
-                }
-              },
-              {
-                "id": "g1-general",
-                "label": "General · 個",
-                "traditional": "一個蛋糕",
-                "simplified": "一个蛋糕",
-                "pinyin": "yí ge dàngāo",
-                "english": "one cake",
-                "note": "個 is the useful general measure word in this lesson.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/099564f7e2be.mp3"
-                }
-              },
-              {
-                "id": "g1-repair",
-                "label": "Repair “two”",
-                "traditional": "二本書 → 兩本書",
-                "simplified": "二本书 → 两本书",
-                "pinyin": "èr běn shū → liǎng běn shū",
-                "english": "two books",
-                "note": "Use 兩 before a measure word when counting two things.",
-                "isCorrection": true
-              }
-            ],
-            "takeaway": "Put them in order: number + measure word + thing: 兩 + 本 + 書."
-          },
           "patternRows": [
             {
               "id": "g1-pattern-1",
@@ -16112,55 +15518,6 @@
             "DO"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Put the person first, then the gift",
-            "description": "送 takes two things after it: first the person who gets the gift, then the gift itself.",
-            "prompt": "What belongs immediately after 送?",
-            "choices": [
-              {
-                "id": "g2-mom",
-                "label": "Person then gift",
-                "traditional": "媽媽送我一個禮物。",
-                "simplified": "妈妈送我一个礼物。",
-                "pinyin": "Māma sòng wǒ yí ge lǐwù.",
-                "english": "Mom gave me a gift.",
-                "note": "我 is the receiver. 一個禮物 is the gift.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/27499566f1c5.mp3"
-                }
-              },
-              {
-                "id": "g2-question-person",
-                "label": "Ask for the person",
-                "traditional": "你要送誰蛋糕？",
-                "simplified": "你要送谁蛋糕？",
-                "pinyin": "Nǐ yào sòng shéi dàngāo?",
-                "english": "Who will you give cake to?",
-                "note": "誰 asks for the person who gets the gift."
-              },
-              {
-                "id": "g2-question-gift",
-                "label": "Ask for the gift",
-                "traditional": "你想送媽媽什麼？",
-                "simplified": "你想送妈妈什么？",
-                "pinyin": "Nǐ xiǎng sòng māma shénme?",
-                "english": "What would you like to give Mom?",
-                "note": "媽媽 names the person who gets the gift. 什麼 asks for the gift."
-              },
-              {
-                "id": "g2-repair",
-                "label": "Repair the order",
-                "traditional": "我想送一本中文書他 → 我想送他一本中文書。",
-                "simplified": "我想送一本中文书他 → 我想送他一本中文书。",
-                "pinyin": "Wǒ xiǎng sòng yì běn Zhōngwén shū tā → wǒ xiǎng sòng tā yì běn Zhōngwén shū.",
-                "english": "I would like to give him a Chinese book.",
-                "note": "Keep the receiver before the gift.",
-                "isCorrection": true
-              }
-            ],
-            "takeaway": "After 送, answer “who?” before “what?”"
-          },
           "patternRows": [
             {
               "id": "g2-pattern-1",
@@ -18454,53 +17811,6 @@
             "N"
           ],
           "patternAccentColumn": 0,
-          "discoveryLab": {
-            "title": "Pick the pointing word first",
-            "description": "The first word shows distance or asks the listener to choose.",
-            "prompt": "What job should the first word do?",
-            "choices": [
-              {
-                "id": "g3-this",
-                "label": "Near · 這",
-                "traditional": "這（一）種筆",
-                "simplified": "这（一）种笔",
-                "pinyin": "zhè (yì) zhǒng bǐ",
-                "english": "this kind of pen",
-                "note": "Use 這 for something near the speaker. 一 is normally omitted here.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/80d10624e4ca.mp3"
-                }
-              },
-              {
-                "id": "g3-that",
-                "label": "Far · 那",
-                "traditional": "那兩本書",
-                "simplified": "那两本书",
-                "pinyin": "nà liǎng běn shū",
-                "english": "those two books",
-                "note": "Use 那 for items farther away. Two becomes 兩 before 本.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/d5dea6b7b8ca.mp3"
-                }
-              },
-              {
-                "id": "g3-which",
-                "label": "Choose · 哪",
-                "traditional": "哪十個人？",
-                "simplified": "哪十个人？",
-                "pinyin": "nǎ shí ge rén?",
-                "english": "which ten people?",
-                "note": "哪 asks which people or things you mean.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c6e9e71cd97c.mp3"
-                }
-              }
-            ],
-            "takeaway": "Choose 這, 那, or 哪 first, then the full number + measure word + noun."
-          },
           "patternRows": [
             {
               "id": "g3-pattern-1",
@@ -20434,59 +19744,6 @@
             "Noun"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Keep 的 when the thing is not named",
-            "description": "的 can join a describing word to a thing, or stand in for a thing everyone already knows.",
-            "prompt": "Does the listener need the thing named again?",
-            "choices": [
-              {
-                "id": "g4-full",
-                "label": "Say the noun",
-                "traditional": "便宜的東西",
-                "simplified": "便宜的东西",
-                "pinyin": "piányí de dōngxi",
-                "english": "cheap things",
-                "note": "A longer description uses 的 before the noun.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b4c19643ef4c.mp3"
-                }
-              },
-              {
-                "id": "g4-short",
-                "label": "Short description",
-                "traditional": "新（的）書",
-                "simplified": "新（的）书",
-                "pinyin": "xīn (de) shū",
-                "english": "new books",
-                "note": "With a one-syllable description such as 新, 的 is often omitted.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4dbba9a9284d.mp3"
-                }
-              },
-              {
-                "id": "g4-replace",
-                "label": "Noun already known",
-                "traditional": "他要買大的，我要買小的。",
-                "simplified": "他要买大的，我要买小的。",
-                "pinyin": "Tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
-                "english": "He wants to buy the big one; I want to buy the small one.",
-                "note": "大的 keeps 的 because it stands for the thing already named."
-              },
-              {
-                "id": "g4-repair",
-                "label": "Do not drop both",
-                "traditional": "他要買大，我要買小 → 他要買大的，我要買小的。",
-                "simplified": "他要买大，我要买小 → 他要买大的，我要买小的。",
-                "pinyin": "Tā yào mǎi dà, wǒ yào mǎi xiǎo → tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
-                "english": "He wants to buy the big one; I want to buy the small one.",
-                "note": "When the thing is dropped, 的 stays.",
-                "isCorrection": true
-              }
-            ],
-            "takeaway": "When the noun is omitted, keep 的: 他要買大的，我要買小的。"
-          },
           "patternRows": [],
           "confusion": {
             "title": "Don't mix these up",
@@ -23016,69 +22273,6 @@
             "V or adjective"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Gather the group before 都",
-            "description": "都 collects everyone or everything already named, then gives them one shared result.",
-            "prompt": "Which group shares the result?",
-            "choices": [
-              {
-                "id": "g5-people",
-                "label": "All people",
-                "traditional": "我們都買筆。",
-                "simplified": "我们都买笔。",
-                "pinyin": "Wǒmen dōu mǎi bǐ.",
-                "english": "Both (All) of us bought pens.",
-                "note": "我們 is the group. 都 comes before the action 買.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-03-2-3.mp3",
-                  "start": 163.66,
-                  "end": 165.82
-                }
-              },
-              {
-                "id": "g5-things",
-                "label": "Both colors",
-                "traditional": "這兩個顏色都很好看。",
-                "simplified": "这两个颜色都很好看。",
-                "pinyin": "Zhè liǎng ge yánsè dōu hěn hǎokàn.",
-                "english": "These two colors are both very beautiful.",
-                "note": "The two colors share the same description.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-03-2-3.mp3",
-                  "start": 167.28,
-                  "end": 170.83
-                }
-              },
-              {
-                "id": "g5-negative",
-                "label": "Whole group shares the “not”",
-                "traditional": "我們都不要去他家。",
-                "simplified": "我们都不要去他家。",
-                "pinyin": "Wǒmen dōu bú yào qù tā jiā.",
-                "english": "None of us wants to go to his home.",
-                "note": "都 comes before 不要 because the whole group shares the same “not.”",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-03-2-3.mp3",
-                  "start": 181.47,
-                  "end": 184.37
-                }
-              },
-              {
-                "id": "g5-repair",
-                "label": "Repair placement",
-                "traditional": "都他們喜歡喝珍珠奶茶嗎？ → 他們都喜歡喝珍珠奶茶嗎？",
-                "simplified": "都他们喜欢喝珍珠奶茶吗？ → 他们都喜欢喝珍珠奶茶吗？",
-                "pinyin": "dōu tāmen xǐhuān hē zhēnzhū nǎichá ma? → tāmen dōu xǐhuān hē zhēnzhū nǎichá ma?",
-                "english": "Do they all like drinking bubble milk tea?",
-                "note": "Name the group before 都.",
-                "isCorrection": true
-              }
-            ],
-            "takeaway": "Group first, 都 second, shared action or description last."
-          },
           "patternRows": [
             {
               "id": "g5-pattern-1",
@@ -25035,57 +24229,6 @@
             "S + (Neg) + V"
           ],
           "patternAccentColumn": 0,
-          "discoveryLab": {
-            "title": "Move the spotlight, keep the meaning",
-            "description": "The thing at the start tells the listener what this sentence is about. What follows is what you think or do about it.",
-            "prompt": "What deserves the spotlight?",
-            "choices": [
-              {
-                "id": "g1-cake",
-                "label": "One thing",
-                "traditional": "蛋糕，我喜歡。",
-                "simplified": "蛋糕，我喜欢。",
-                "pinyin": "Dàngāo, wǒ xǐhuān.",
-                "english": "I like cakes.",
-                "note": "蛋糕 is in the spotlight. 我喜歡 says what you think about it.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-1-3.mp3",
-                  "start": 5.49,
-                  "end": 8
-                }
-              },
-              {
-                "id": "g1-two-things",
-                "label": "Several things",
-                "traditional": "書、筆，我都有。",
-                "simplified": "书、笔，我都有。",
-                "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
-                "english": "The book and the pen, I have them both.",
-                "note": "Two things come first, so 都 means \"both\".",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/2b27eff7b571.mp3"
-                }
-              },
-              {
-                "id": "g1-contrast",
-                "label": "Contrast two things",
-                "traditional": "茶，我喜歡；咖啡，我不喜歡。",
-                "simplified": "茶，我喜欢；咖啡，我不喜欢。",
-                "pinyin": "Chá, wǒ xǐhuān; kāfēi, wǒ bù xǐhuān.",
-                "english": "Tea, I like; coffee, I do not.",
-                "note": "Putting each drink at the start makes the contrast easy to hear.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-1-3.mp3",
-                  "start": 16.3,
-                  "end": 22.79
-                }
-              }
-            ],
-            "takeaway": "Put the thing first, pause, then say what you think or do."
-          },
           "patternRows": [],
           "confusion": {
             "title": "Don't mix these up",
@@ -27259,59 +26402,6 @@
             "(A)Vs / V(O)"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Send an echo with 也",
-            "description": "The first part of the sentence states a fact. 也 tells the listener that the next person, thing, or action matches it.",
-            "prompt": "What kind of echo follows?",
-            "choices": [
-              {
-                "id": "g2-quality",
-                "label": "Same person, another quality",
-                "traditional": "她很漂亮，也很可愛。",
-                "simplified": "她很漂亮，也很可爱。",
-                "pinyin": "Tā hěn piàoliang, yě hěn kě’ài.",
-                "english": "She is very beautiful, and is also very cute.",
-                "note": "The same person stays; 也 adds another matching description.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-1-3.mp3",
-                  "start": 65.52,
-                  "end": 69.83
-                }
-              },
-              {
-                "id": "g2-object",
-                "label": "Same person, another thing",
-                "traditional": "我買書，也買筆。",
-                "simplified": "我买书，也买笔。",
-                "pinyin": "Wǒ mǎi shū, yě mǎi bǐ.",
-                "english": "I bought a book, and(I bought) a pen too.",
-                "note": "買 is repeated after 也 because the second thing shares the same action.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-1-3.mp3",
-                  "start": 71.2,
-                  "end": 74.78
-                }
-              },
-              {
-                "id": "g2-person",
-                "label": "Another person",
-                "traditional": "我買書，他也買書。",
-                "simplified": "我买书，他也买书。",
-                "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
-                "english": "I bought a book, and he also bought one.",
-                "note": "The new person 他 comes before 也.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-1-3.mp3",
-                  "start": 84.88,
-                  "end": 88.92
-                }
-              }
-            ],
-            "takeaway": "New person or thing first, 也 second, shared result after it."
-          },
           "patternRows": [],
           "confusion": {
             "title": "Don't mix these up",
@@ -29316,51 +28406,6 @@
             "ending"
           ],
           "patternAccentColumn": 0,
-          "discoveryLab": {
-            "title": "Turn up the reaction meter",
-            "description": "太…了 frames one description. Context tells you whether the reaction is delighted or uncomfortable.",
-            "prompt": "What kind of reaction do you hear?",
-            "choices": [
-              {
-                "id": "g3-delight",
-                "label": "Delighted",
-                "traditional": "太好了！",
-                "pinyin": "Tài hǎo le!",
-                "english": "Awesome!",
-                "note": "With 好, the strong reaction is enthusiastic and positive.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-1-3.mp3",
-                  "start": 134.21,
-                  "end": 135.53
-                }
-              },
-              {
-                "id": "g3-size",
-                "label": "Too much",
-                "traditional": "太大了！",
-                "pinyin": "Tài dà le!",
-                "english": "It is so big!",
-                "note": "With 大, it can mean \"too big\" — more than what fits.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-1-3.mp3",
-                  "start": 136.86,
-                  "end": 138.29
-                }
-              },
-              {
-                "id": "g3-taste",
-                "label": "Very impressed",
-                "traditional": "太好吃了，我常常去吃。",
-                "pinyin": "Tài hǎochī le, wǒ chángcháng qù chī.",
-                "english": "It is so delicious; I often go eat them.",
-                "note": "The reaction frame stays complete: 太 opens it, 了 closes it.",
-                "simplified": "太好吃了，我常常去吃。"
-              }
-            ],
-            "takeaway": "Open with 太, name the feeling, close with 了."
-          },
           "patternRows": [
             {
               "id": "g3-pattern-1",
@@ -31888,170 +30933,6 @@
             "number + block"
           ],
           "patternAccentColumn": 2,
-          "numberLab": {
-            "title": "Climb the place-value staircase",
-            "description": "Tap a number. Each block shows which place contributes sound and where 零 bridges an empty step.",
-            "prompt": "Choose a number to take apart",
-            "choices": [
-              {
-                "id": "number-105",
-                "label": "105",
-                "digits": "105",
-                "traditional": "一百零五",
-                "pinyin": "yì bǎi líng wǔ",
-                "english": "one hundred and five",
-                "groups": [
-                  {
-                    "label": "百",
-                    "digit": "1",
-                    "traditional": "一百"
-                  },
-                  {
-                    "label": "十",
-                    "digit": "0",
-                    "traditional": "零"
-                  },
-                  {
-                    "label": "個",
-                    "digit": "5",
-                    "traditional": "五"
-                  }
-                ],
-                "note": "The tens place is empty between two spoken places, so 零 bridges 百 to 五.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1fe2eef03c7f.mp3"
-                }
-              },
-              {
-                "id": "number-2005",
-                "label": "2,005",
-                "digits": "2,005",
-                "traditional": "兩千零五",
-                "simplified": "两千零五",
-                "pinyin": "liǎng qiān líng wǔ",
-                "english": "two thousand and five",
-                "groups": [
-                  {
-                    "label": "千",
-                    "digit": "2",
-                    "traditional": "兩千",
-                    "simplified": "两千"
-                  },
-                  {
-                    "label": "百／十",
-                    "digit": "00",
-                    "traditional": "零"
-                  },
-                  {
-                    "label": "個",
-                    "digit": "5",
-                    "traditional": "五"
-                  }
-                ],
-                "note": "Two empty places are crossed with one 零, not two.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c9238e1b6956.mp3"
-                }
-              },
-              {
-                "id": "number-90500",
-                "label": "90,500",
-                "digits": "90,500",
-                "traditional": "九萬零五百",
-                "simplified": "九万零五百",
-                "pinyin": "jiǔ wàn líng wǔ bǎi",
-                "english": "ninety thousand five hundred",
-                "groups": [
-                  {
-                    "label": "萬",
-                    "digit": "9",
-                    "traditional": "九萬",
-                    "simplified": "九万"
-                  },
-                  {
-                    "label": "千",
-                    "digit": "0",
-                    "traditional": "零"
-                  },
-                  {
-                    "label": "百",
-                    "digit": "5",
-                    "traditional": "五百"
-                  },
-                  {
-                    "label": "十／個",
-                    "digit": "00",
-                    "traditional": "—",
-                    "simplified": "—"
-                  }
-                ],
-                "note": "零 bridges the missing 千 place. Zeroes at the end are not spoken.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b1bcb834d555.mp3"
-                }
-              },
-              {
-                "id": "number-3050000",
-                "label": "3,050,000",
-                "digits": "3,050,000",
-                "traditional": "三百零五萬",
-                "simplified": "三百零五万",
-                "pinyin": "sān bǎi líng wǔ wàn",
-                "english": "three million fifty thousand",
-                "groups": [
-                  {
-                    "label": "萬 block",
-                    "digit": "305",
-                    "traditional": "三百零五萬",
-                    "simplified": "三百零五万"
-                  },
-                  {
-                    "label": "ones block",
-                    "digit": "0000",
-                    "traditional": "—",
-                    "simplified": "—"
-                  }
-                ],
-                "note": "Chinese groups large numbers around 萬: 305 groups of ten thousand.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/bf94e5a4dcd4.mp3"
-                }
-              },
-              {
-                "id": "number-90090000",
-                "label": "90,090,000",
-                "digits": "90,090,000",
-                "traditional": "九千零九萬",
-                "simplified": "九千零九万",
-                "pinyin": "jiǔ qiān líng jiǔ wàn",
-                "english": "90,090,000",
-                "groups": [
-                  {
-                    "label": "萬 block",
-                    "digit": "9009",
-                    "traditional": "九千零九萬",
-                    "simplified": "九千零九万"
-                  },
-                  {
-                    "label": "ones block",
-                    "digit": "0000",
-                    "traditional": "—",
-                    "simplified": "—"
-                  }
-                ],
-                "note": "Say how many 萬 there are: 九千零九 groups of ten thousand. The final zeroes are not spoken.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e5fee783018a.mp3"
-                }
-              }
-            ],
-            "takeaway": "Read large to small; use one 零 for an empty place inside; do not say zeroes at the end."
-          },
           "patternRows": [],
           "confusion": {
             "title": "Don't mix these up",
@@ -34351,68 +33232,6 @@
             "N"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Move 多, change the size of the fuzzy zone",
-            "description": "多 always means “over,” but its position tells the listener how wide the possible range is.",
-            "prompt": "How wide is the unknown extra amount?",
-            "choices": [
-              {
-                "id": "g5-tens",
-                "label": "After a round ten",
-                "traditional": "十多個蛋糕",
-                "simplified": "十多个蛋糕",
-                "pinyin": "shí duō ge dàngāo",
-                "english": "11–19 cakes",
-                "note": "多 follows 十, so the unknown part can fill the ones place.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-04-2-3.mp3",
-                  "start": 56.93,
-                  "end": 59.13
-                }
-              },
-              {
-                "id": "g5-hundreds",
-                "label": "After a round hundred",
-                "traditional": "一百多枝鉛筆",
-                "simplified": "一百多枝铅笔",
-                "pinyin": "yì bǎi duō zhī qiānbǐ",
-                "english": "101–199 pencils",
-                "note": "多 follows 百, so the amount stays below the next hundred.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f4558b6e3e2e.mp3"
-                }
-              },
-              {
-                "id": "g5-small-extra",
-                "label": "After the measure word",
-                "traditional": "十個多蛋糕",
-                "simplified": "十个多蛋糕",
-                "pinyin": "shí ge duō dàngāo",
-                "english": "a little more than ten cakes",
-                "note": "多 follows 個, so the extra amount is less than one whole 個.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6995dd7f7942.mp3"
-                }
-              },
-              {
-                "id": "g5-time",
-                "label": "A little after a time",
-                "traditional": "十一點多",
-                "simplified": "十一点多",
-                "pinyin": "shíyī diǎn duō",
-                "english": "a little after 11:00",
-                "note": "多 follows 點, so the time is after eleven but before twelve.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7cad4e164190.mp3"
-                }
-              }
-            ],
-            "takeaway": "多 after a round number gives a wider range; 多 after a unit means only a little beyond it."
-          },
           "patternRows": [],
           "confusion": {
             "title": "Don't mix these up",
@@ -37575,44 +36394,6 @@
             "PW"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Explore this pattern",
-            "description": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word.",
-            "prompt": "Compare the book sentences.",
-            "choices": [
-              {
-                "id": "g1-book-1",
-                "label": "Book sentence 1",
-                "traditional": "我在台灣。",
-                "simplified": "我在台湾。",
-                "pinyin": "Wǒ zài Táiwān.",
-                "english": "I am in Taiwan.",
-                "note": "Compare the word order with the pattern table.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-05-1-3.mp3",
-                  "start": 7.32,
-                  "end": 9.35
-                }
-              },
-              {
-                "id": "g1-book-2",
-                "label": "Book sentence 2",
-                "traditional": "他不在圖書館。",
-                "simplified": "他不在图书馆。",
-                "pinyin": "Tā bú zài túshūguǎn.",
-                "english": "He is not at the library.",
-                "note": "Compare the word order with the pattern table.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-05-1-3.mp3",
-                  "start": 10.55,
-                  "end": 13.28
-                }
-              }
-            ],
-            "takeaway": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word."
-          },
           "patternRows": [
             {
               "id": "g1-p1",
@@ -39268,44 +38049,6 @@
             "V(O)"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Explore this pattern",
-            "description": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens.",
-            "prompt": "Compare the book sentences.",
-            "choices": [
-              {
-                "id": "g2-book-1",
-                "label": "Book sentence 1",
-                "traditional": "我在台灣上中文課。",
-                "simplified": "我在台湾上中文课。",
-                "pinyin": "Wǒ zài Táiwān shàng Zhōngwén kè.",
-                "english": "I study Chinese in Taiwan.",
-                "note": "Compare the word order with the pattern table.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-05-1-3.mp3",
-                  "start": 50.78,
-                  "end": 54.09
-                }
-              },
-              {
-                "id": "g2-book-2",
-                "label": "Book sentence 2",
-                "traditional": "他在圖書館看書。",
-                "simplified": "他在图书馆看书。",
-                "pinyin": "Tā zài túshūguǎn kànshū.",
-                "english": "He reads at the library.",
-                "note": "Compare the word order with the pattern table.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-05-1-3.mp3",
-                  "start": 55.38,
-                  "end": 58.32
-                }
-              }
-            ],
-            "takeaway": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens."
-          },
           "patternRows": [
             {
               "id": "g2-p1",
@@ -41099,44 +39842,6 @@
             "action + 吧"
           ],
           "patternAccentColumn": 2,
-          "discoveryLab": {
-            "title": "Explore this pattern",
-            "description": "Put 吧 at the end of a sentence to make a suggestion.",
-            "prompt": "Compare the book sentences.",
-            "choices": [
-              {
-                "id": "g3-book-1",
-                "label": "Book sentence 1",
-                "traditional": "這個蛋糕太大，你買小的吧。",
-                "simplified": "这个蛋糕太大，你买小的吧。",
-                "pinyin": "Zhè ge dàngāo tài dà, nǐ mǎi xiǎo de ba.",
-                "english": "This cake is too large, you had better buy the small one.",
-                "note": "Compare the word order with the pattern table.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-05-1-3.mp3",
-                  "start": 97.12,
-                  "end": 102.18
-                }
-              },
-              {
-                "id": "g3-book-2",
-                "label": "Book sentence 2",
-                "traditional": "那杯水太熱，你喝這杯吧。",
-                "simplified": "那杯水太热，你喝这杯吧。",
-                "pinyin": "Nà bēi shuǐ tài rè, nǐ hē zhè bēi ba.",
-                "english": "That water is too hot; drink this cup instead.",
-                "note": "吧 comes at the end of the suggestion.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-05-1-3.mp3",
-                  "start": 105.24,
-                  "end": 109.53
-                }
-              }
-            ],
-            "takeaway": "Put 吧 at the end of a sentence to make a suggestion."
-          },
           "patternRows": [
             {
               "id": "g3-p1",
@@ -43280,42 +41985,6 @@
             "N + Direction"
           ],
           "patternAccentColumn": 2,
-          "discoveryLab": {
-            "title": "Explore this pattern",
-            "description": "Put a direction word after a noun to describe a location, as in 桌子上面 or 學校旁邊.",
-            "prompt": "Compare the book sentences.",
-            "choices": [
-              {
-                "id": "g4-book-1",
-                "label": "Book sentence 1",
-                "traditional": "你的書在桌子上面。",
-                "simplified": "你的书在桌子上面。",
-                "pinyin": "Nǐ de shū zài zhuōzi shàngmiàn.",
-                "english": "Your book is on the table.",
-                "note": "Compare the word order with the pattern table.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-05-2-3.mp3",
-                  "start": 5.32,
-                  "end": 8.42
-                }
-              },
-              {
-                "id": "g4-book-2",
-                "label": "Book sentence 2",
-                "traditional": "那家餐廳不在學校旁邊。",
-                "simplified": "那家餐厅不在学校旁边。",
-                "pinyin": "Nà jiā cāntīng bú zài xuéxiào pángbiān.",
-                "english": "That restaurant is not next to the school.",
-                "note": "Compare the word order with the pattern table.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/8e63449d0562.mp3"
-                }
-              }
-            ],
-            "takeaway": "Put a direction word after a noun to describe a location, as in 桌子上面 or 學校旁邊."
-          },
           "patternRows": [],
           "confusion": {
             "title": "Don't mix these up",
@@ -45560,53 +44229,6 @@
             "N"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Explore this pattern",
-            "description": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
-            "prompt": "Compare the book sentences.",
-            "choices": [
-              {
-                "id": "g5-book-1",
-                "label": "Book sentence 1",
-                "traditional": "台灣有很多好吃的東西。",
-                "simplified": "台湾有很多好吃的东西。",
-                "pinyin": "Táiwān yǒu hěn duō hǎochī de dōngxi.",
-                "english": "There is a lot of delicious food in Taiwan.",
-                "note": "The place comes before 有 or 沒有.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1537411d306b.mp3"
-                }
-              },
-              {
-                "id": "g5-book-2",
-                "label": "Book sentence 2",
-                "traditional": "圖書館旁邊沒有咖啡廳。",
-                "simplified": "图书馆旁边没有咖啡厅。",
-                "pinyin": "Túshūguǎn pángbiān méiyǒu kāfēitīng.",
-                "english": "There is no café next to the library.",
-                "note": "The place comes before 有 or 沒有.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b776d3e33ec6.mp3"
-                }
-              },
-              {
-                "id": "g5-book-3",
-                "label": "Book sentence 3",
-                "traditional": "桌子上面有很多東西。",
-                "simplified": "桌子上面有很多东西。",
-                "pinyin": "Zhuōzi shàngmiàn yǒu hěn duō dōngxi.",
-                "english": "There are a lot of things on the table.",
-                "note": "The place comes before 有 or 沒有.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/698376237347.mp3"
-                }
-              }
-            ],
-            "takeaway": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there."
-          },
           "patternRows": [
             {
               "id": "g5-p1",
@@ -47579,51 +46201,6 @@
             "V(O)"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Flip the skill switch",
-            "description": "The activity stays the same. 會 tells whether the skill is available.",
-            "prompt": "Is the skill switched on?",
-            "choices": [
-              {
-                "id": "g1-on",
-                "label": "Skill on",
-                "traditional": "我會游泳。",
-                "simplified": "我会游泳。",
-                "pinyin": "Wǒ huì yóuyǒng.",
-                "english": "I know how to swim.",
-                "note": "會 shows a learned ability.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-06-1-3.mp3",
-                  "start": 30.95,
-                  "end": 32.8
-                }
-              },
-              {
-                "id": "g1-off",
-                "label": "Skill off",
-                "traditional": "我不會打棒球。",
-                "simplified": "我不会打棒球。",
-                "pinyin": "Wǒ bú huì dǎ bàngqiú.",
-                "english": "I do not know how to play baseball.",
-                "note": "不 goes directly before 會.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/fc96a9ad3e5c.mp3"
-                }
-              },
-              {
-                "id": "g1-check",
-                "label": "Ask about a skill",
-                "traditional": "你會不會做飯？",
-                "simplified": "你会不会做饭？",
-                "pinyin": "Nǐ huì bú huì zuòfàn?",
-                "english": "Do you know how to cook?",
-                "note": "會不會 asks whether the skill is available."
-              }
-            ],
-            "takeaway": "Person + 會 + skill. Use 不會 for no skill and 會不會 to ask."
-          },
           "patternRows": [
             {
               "id": "g1-p1",
@@ -49172,60 +47749,6 @@
             "(A)Vs"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Choose the lane to 得",
-            "description": "Every lane ends with verb + 得 + performance. The activity’s shape decides what comes before it.",
-            "prompt": "How is the activity introduced?",
-            "choices": [
-              {
-                "id": "g2-simple",
-                "label": "Simple verb",
-                "traditional": "他跑得很快。",
-                "simplified": "他跑得很快。",
-                "pinyin": "Tā pǎo de hěn kuài.",
-                "english": "He runs very fast.",
-                "note": "The action word 跑 goes straight before 得.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/2927c70110f4.mp3"
-                }
-              },
-              {
-                "id": "g2-repeat",
-                "label": "Repeat the verb",
-                "traditional": "我跑步跑得很快。",
-                "simplified": "我跑步跑得很快。",
-                "pinyin": "Wǒ pǎobù pǎo de hěn kuài.",
-                "english": "I run very fast.",
-                "note": "Say the full activity 跑步, then repeat the action word 跑 before 得."
-              },
-              {
-                "id": "g2-object",
-                "label": "Move object forward",
-                "traditional": "他網球打得不錯。",
-                "simplified": "他网球打得不错。",
-                "pinyin": "Tā wǎngqiú dǎ de búcuò.",
-                "english": "He plays tennis quite well.",
-                "note": "網球 becomes the topic, leaving 打 next to 得."
-              },
-              {
-                "id": "g2-owned",
-                "label": "Owned activity",
-                "traditional": "他的牛肉麵做得很不錯。",
-                "simplified": "他的牛肉面做得很不错。",
-                "pinyin": "Tā de niúròumiàn zuò de hěn búcuò.",
-                "english": "He cooks good beef noodles.",
-                "note": "他的牛肉麵 is the topic; 做 still stands directly before 得.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-06-1-3.mp3",
-                  "start": 182.56,
-                  "end": 186.08
-                }
-              }
-            ],
-            "takeaway": "Protect the core: action word + 得 + performance. Move or repeat the thing when needed."
-          },
           "sentenceSpine": {
             "title": "Build the unbreakable core",
             "description": "Three blocks. The middle block is the rule that never changes.",
@@ -53829,41 +52352,6 @@
             "Vs"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Turn up only one notch",
-            "description": "The dial makes the describing word softer — often before you explain a problem or say no.",
-            "prompt": "What kind of small problem appears?",
-            "choices": [
-              {
-                "id": "g3-tired",
-                "label": "Feeling",
-                "traditional": "今天我有點兒忙，我不想去。",
-                "simplified": "今天我有点儿忙，我不想去。",
-                "pinyin": "Jīntiān wǒ yǒudiǎnr máng, wǒ bù xiǎng qù.",
-                "english": "I am a little busy today. I do not want to go.",
-                "note": "有點兒忙 explains why the speaker does not want to go."
-              },
-              {
-                "id": "g3-price",
-                "label": "Evaluation",
-                "traditional": "我覺得有點兒貴。",
-                "simplified": "我觉得有点儿贵。",
-                "pinyin": "Wǒ juéde yǒudiǎnr guì.",
-                "english": "I feel it is a little expensive.",
-                "note": "It is a little expensive, so you may choose another place."
-              },
-              {
-                "id": "g3-size",
-                "label": "Reservation",
-                "traditional": "我很喜歡這件衣服，可是我覺得有點兒小。",
-                "simplified": "我很喜欢这件衣服，可是我觉得有点儿小。",
-                "pinyin": "Wǒ hěn xǐhuan zhè jiàn yīfu, kěshì wǒ juéde yǒudiǎnr xiǎo.",
-                "english": "I like these clothes very much, but I think they are a little small.",
-                "note": "The clothes look nice, but they are a little small."
-              }
-            ],
-            "takeaway": "Say who or what first, then 有點兒, then the describing word. One small notch, often for a mild problem."
-          },
           "contrast": {
             "title": "A little vs. a little amount",
             "description": "有點兒 softens a describing word. 點兒 after an action or a thing means a small amount.",
@@ -55398,41 +53886,6 @@
             "V(O)"
           ],
           "patternAccentColumn": 1,
-          "discoveryLab": {
-            "title": "Read the green-light card",
-            "description": "The same 可以 either opens a possible path or checks permission.",
-            "prompt": "What job is 可以 doing?",
-            "choices": [
-              {
-                "id": "g4-suggest",
-                "label": "Suggestion",
-                "traditional": "你可以點一杯熱茶。",
-                "simplified": "你可以点一杯热茶。",
-                "pinyin": "Nǐ kěyǐ diǎn yì bēi rè chá.",
-                "english": "You could order a cup of hot tea.",
-                "note": "A problem comes first; 可以 offers one useful option."
-              },
-              {
-                "id": "g4-permit",
-                "label": "Ask permission",
-                "traditional": "老師，我現在可以去洗手間嗎？",
-                "simplified": "老师，我现在可以去洗手间吗？",
-                "pinyin": "Lǎoshī, wǒ xiànzài kěyǐ qù xǐshǒujiān ma?",
-                "english": "Teacher, may I go to the restroom now?",
-                "note": "The speaker asks whether the action has a green light."
-              },
-              {
-                "id": "g4-red",
-                "label": "No permission",
-                "traditional": "不可以，也不可以喝飲料。",
-                "simplified": "不可以，也不可以喝饮料。",
-                "pinyin": "Bù kěyǐ, yě bù kěyǐ hē yǐnliào.",
-                "english": "No. Drinking is not allowed either.",
-                "note": "不可以 removes permission."
-              }
-            ],
-            "takeaway": "Problem + 可以 = possible solution. 可以…嗎 = permission check."
-          },
           "contrast": {
             "title": "Learned ability or permission",
             "description": "Both can translate as “can,” but they answer different questions.",
@@ -58256,118 +56709,6 @@
                 }
               }
             ]
-          },
-          "routeLab": {
-            "title": "Read the book routes",
-            "description": "Compare the printed examples.",
-            "prompt": "Choose an example.",
-            "choices": [
-              {
-                "id": "route-class",
-                "label": "Visit home",
-                "traditional": "他從旅館到我家來吃飯。",
-                "simplified": "他从旅馆到我家来吃饭。",
-                "pinyin": "Tā cóng lǚguǎn dào wǒ jiā lái chīfàn.",
-                "english": "He is coming from the hotel to my home to eat.",
-                "note": "Read the starting place and destination.",
-                "origin": {
-                  "id": "route-class-origin",
-                  "traditional": "旅館",
-                  "pinyin": "lǚguǎn",
-                  "meaning": "inn",
-                  "simplified": "旅馆"
-                },
-                "destination": {
-                  "id": "route-class-destination",
-                  "traditional": "我家",
-                  "pinyin": "wǒ jiā",
-                  "meaning": "my home",
-                  "simplified": "我家"
-                },
-                "purpose": {
-                  "id": "route-class-purpose",
-                  "traditional": "吃飯",
-                  "pinyin": "chīfàn",
-                  "meaning": "eat",
-                  "simplified": "吃饭"
-                },
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/50ead8a0a76e.mp3"
-                }
-              },
-              {
-                "id": "route-letter",
-                "label": "Buy milk tea",
-                "traditional": "他從學校到飲料店去買珍珠奶茶。",
-                "simplified": "他从学校到饮料店去买珍珠奶茶。",
-                "pinyin": "Tā cóng xuéxiào dào yǐnliào diàn qù mǎi zhēnzhū nǎichá.",
-                "english": "He goes from school to the drink shop to buy pearl milk tea.",
-                "note": "Read the starting place and destination.",
-                "origin": {
-                  "id": "route-letter-origin",
-                  "traditional": "學校",
-                  "pinyin": "xuéxiào",
-                  "meaning": "school",
-                  "simplified": "学校"
-                },
-                "destination": {
-                  "id": "route-letter-destination",
-                  "traditional": "飲料店",
-                  "pinyin": "yǐnliào diàn",
-                  "meaning": "drink shop",
-                  "simplified": "饮料店"
-                },
-                "purpose": {
-                  "id": "route-letter-purpose",
-                  "traditional": "買珍珠奶茶",
-                  "pinyin": "mǎi zhēnzhū nǎichá",
-                  "meaning": "buy pearl milk tea",
-                  "simplified": "买珍珠奶茶"
-                },
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/33f014147295.mp3"
-                }
-              },
-              {
-                "id": "route-visit",
-                "label": "Visit Taiwan",
-                "traditional": "他今天從韓國到台灣來看朋友。",
-                "simplified": "他今天从韩国到台湾来看朋友。",
-                "pinyin": "Tā jīntiān cóng Hánguó dào Táiwān lái kàn péngyǒu.",
-                "english": "He came from Korea to Taiwan today to visit a friend.",
-                "note": "Read the starting place and destination.",
-                "origin": {
-                  "id": "route-visit-origin",
-                  "traditional": "韓國",
-                  "pinyin": "Hánguó",
-                  "meaning": "Korea",
-                  "simplified": "韩国"
-                },
-                "destination": {
-                  "id": "route-visit-destination",
-                  "traditional": "台灣",
-                  "pinyin": "Táiwān",
-                  "meaning": "Taiwan",
-                  "simplified": "台湾"
-                },
-                "purpose": {
-                  "id": "route-visit-purpose",
-                  "traditional": "看朋友",
-                  "pinyin": "kàn péngyǒu",
-                  "meaning": "visit friends",
-                  "simplified": "看朋友"
-                },
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-07-1-3.mp3",
-                  "start": 73.45,
-                  "end": 78.27
-                }
-              }
-            ],
-            "takeaway": "Pins stay paired: 從 + start, 到 + destination. 來/去 shows which way the trip points, not the vehicle."
           },
           "examples": [
             {
@@ -61377,55 +59718,6 @@
               }
             ]
           },
-          "discoveryLab": {
-            "title": "Ring the change bell",
-            "description": "See the moment when a state becomes true for the first time.",
-            "prompt": "What changed?",
-            "choices": [
-              {
-                "id": "l7g3-source-1",
-                "label": "Example 1",
-                "traditional": "我餓了，想吃一點東西。",
-                "simplified": "我饿了，想吃一点东西。",
-                "pinyin": "Wǒ è le, xiǎng chī yìdiǎn dōngxi.",
-                "english": "I am hungry; I want to eat something.",
-                "note": "Read 了 at the end of the new situation.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/66307b925a51.mp3"
-                }
-              },
-              {
-                "id": "l7g3-source-2",
-                "label": "Example 2",
-                "traditional": "孩子都累了，我們一起休息吧！",
-                "simplified": "孩子都累了，我们一起休息吧！",
-                "pinyin": "Háizi dōu lèi le, wǒmen yìqǐ xiūxí ba!",
-                "english": "The children are all tired; let us take a rest together!",
-                "note": "Read 了 at the end of the new situation.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9595a220340f.mp3"
-                }
-              },
-              {
-                "id": "l7g3-source-3",
-                "label": "Example 3",
-                "traditional": "啊！現在十點了！我的錶慢了。",
-                "simplified": "啊！现在十点了！我的表慢了。",
-                "pinyin": "Ā! Xiànzài shí diǎn le! Wǒ de biǎo màn le.",
-                "english": "Oh! It is ten o’clock now! My watch is slow.",
-                "note": "Read 了 at the end of the new situation.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-07-1-3.mp3",
-                  "start": 146.05,
-                  "end": 151.49
-                }
-              }
-            ],
-            "takeaway": "Use 了 when \"now it is different\" matters."
-          },
           "examples": [
             {
               "id": "l7g3-e1",
@@ -63668,59 +61960,6 @@
               }
             ]
           },
-          "discoveryLab": {
-            "title": "Put the activity on stage",
-            "description": "The first chunk is what we are talking about; the rest is the comment.",
-            "prompt": "Which activity is on stage?",
-            "choices": [
-              {
-                "id": "l7g4-source-1",
-                "label": "Example 1",
-                "traditional": "走路去太慢了！",
-                "simplified": "走路去太慢了！",
-                "pinyin": "Zǒulù qù tài màn le!",
-                "english": "Walking there is too slow!",
-                "note": "Read the activity before its comment.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-07-2-3.mp3",
-                  "start": 17.68,
-                  "end": 19.91
-                }
-              },
-              {
-                "id": "l7g4-source-2",
-                "label": "Example 2",
-                "traditional": "唱歌、跳舞都很有趣。",
-                "simplified": "唱歌、跳舞都很有趣。",
-                "pinyin": "Chànggē, tiàowǔ dōu hěn yǒuqù.",
-                "english": "Singing and dancing are both very interesting.",
-                "note": "Read the activity before its comment.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-07-2-3.mp3",
-                  "start": 22.95,
-                  "end": 26.16
-                }
-              },
-              {
-                "id": "l7g4-source-3",
-                "label": "Example 3",
-                "traditional": "跑步、游泳、打網球，我都喜歡。",
-                "simplified": "跑步、游泳、打网球，我都喜欢。",
-                "pinyin": "Pǎobù, yóuyǒng, dǎ wǎngqiú, wǒ dōu xǐhuan.",
-                "english": "Running, swimming, and playing tennis — I like them all.",
-                "note": "Read the activity before its comment.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-07-2-3.mp3",
-                  "start": 29.44,
-                  "end": 35.99
-                }
-              }
-            ],
-            "takeaway": "Activity first, comment second. You do not need 是 between them."
-          },
           "examples": [
             {
               "id": "l7g4-e1",
@@ -64803,55 +63042,6 @@
                 }
               }
             ]
-          },
-          "discoveryLab": {
-            "title": "Balance the two sides",
-            "description": "Each 又 opens one matching description. Both sides describe the same person or thing.",
-            "prompt": "Which pair fits?",
-            "choices": [
-              {
-                "id": "l7g5-source-1",
-                "label": "Example 1",
-                "traditional": "我同學的妹妹又可愛又漂亮。",
-                "simplified": "我同学的妹妹又可爱又漂亮。",
-                "pinyin": "Wǒ tóngxué de mèimei yòu kě’ài yòu piàoliang.",
-                "english": "My classmate’s younger sister is both cute and pretty.",
-                "note": "Find 又 before each quality or action.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/17b0cbfffc93.mp3"
-                }
-              },
-              {
-                "id": "l7g5-source-2",
-                "label": "Example 2",
-                "traditional": "我現在又餓又渴，想喝一點兒茶、吃一點兒飯。",
-                "simplified": "我现在又饿又渴，想喝一点儿茶、吃一点儿饭。",
-                "pinyin": "Wǒ xiànzài yòu è yòu kě, xiǎng hē yìdiǎnr chá, chī yìdiǎnr fàn.",
-                "english": "I am both hungry and thirsty right now; I want to drink some tea and eat a little rice.",
-                "note": "Find 又 before each quality or action.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1fe8490b727a.mp3"
-                }
-              },
-              {
-                "id": "l7g5-source-3",
-                "label": "Example 3",
-                "traditional": "他又想去日本，又想去韓國，不知道應該先去哪國。",
-                "simplified": "他又想去日本，又想去韩国，不知道应该先去哪国。",
-                "pinyin": "Tā yòu xiǎng qù Rìběn, yòu xiǎng qù Hánguó, bù zhīdào yīnggāi xiān qù nǎ guó.",
-                "english": "He wants to go to Japan and also wants to go to Korea; he does not know which country to visit first.",
-                "note": "Find 又 before each quality or action.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-07-2-3.mp3",
-                  "start": 74.2,
-                  "end": 82.03
-                }
-              }
-            ],
-            "takeaway": "One person or thing, two matching 又 blocks."
           },
           "examples": [
             {
@@ -68061,42 +66251,6 @@
               "meaning": "ride"
             }
           ],
-          "discoveryLab": {
-            "title": "Pleasant or difficult",
-            "description": "Read the book’s examples.",
-            "prompt": "Choose an example.",
-            "choices": [
-              {
-                "id": "l8g1-lab1",
-                "label": "Taste",
-                "traditional": "這家餐廳的牛肉麵很好吃，我常吃。",
-                "simplified": "这家餐厅的牛肉面很好吃，我常吃。",
-                "pinyin": "Zhè jiā cāntīng de niúròu miàn hěn hǎochī, wǒ cháng chī.",
-                "english": "The beef noodles is delicious from this restaurant; I have (it) often.",
-                "note": "好吃 describes a pleasant taste.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/200f5258f37c.mp3"
-                }
-              },
-              {
-                "id": "l8g1-lab2",
-                "label": "Ease",
-                "traditional": "這輛腳踏車太小了，很難騎。",
-                "simplified": "这辆脚踏车太小了，很难骑。",
-                "pinyin": "Zhè liàng jiǎotàchē tài xiǎo le, hěn nánqí.",
-                "english": "This bike is too small; it is difficult to ride.",
-                "note": "難騎 describes a difficult action.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-08-1-3.mp3",
-                  "start": 103.62,
-                  "end": 108.47
-                }
-              }
-            ],
-            "takeaway": "好 or 難 before a perception verb says something is pleasant or unpleasant. Before an action verb, it says something is easy or hard to do."
-          },
           "contrast": {
             "title": "Taste and ease",
             "description": "Read the book’s examples.",
@@ -72678,42 +70832,6 @@
               "meaning": "measure word for songs"
             }
           ],
-          "discoveryLab": {
-            "title": "Check an assumption",
-            "description": "Read the book’s examples.",
-            "prompt": "Choose an example.",
-            "choices": [
-              {
-                "id": "l8g3-lab1",
-                "label": "Confirmed",
-                "traditional": "A：你會唱中文歌吧？ B：會。可是不多，我只會唱三首。",
-                "simplified": "A：你会唱中文歌吧？ B：会。可是不多，我只会唱三首。",
-                "pinyin": "A: Nǐ huì chàng Zhōngwén gē ba? B: Huì. Kěshì bù duō, wǒ zhǐ huì chàng sān shǒu.",
-                "english": "A: You can sing Chinese songs, right? B: Yes, but not many. I can only sing three.",
-                "note": "B confirms the guess.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/48cd2c8f761b.mp3"
-                }
-              },
-              {
-                "id": "l8g3-lab2",
-                "label": "Corrected",
-                "traditional": "A：他平常都坐捷運來上課吧？ B：不是，他都坐公車來上課。",
-                "simplified": "A：他平常都坐捷运来上课吧？ B：不是，他都坐公车来上课。",
-                "pinyin": "A: Tā píngcháng dōu zuò jiéyùn lái shàng kè ba? B: Bú shì, tā dōu zuò gōngchē lái shàng kè.",
-                "english": "A: He usually comes to class by MRT, right? B: No, he always comes to class by bus.",
-                "note": "B corrects the guess.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-08-2-3.mp3",
-                  "start": 23.99,
-                  "end": 32.19
-                }
-              }
-            ],
-            "takeaway": "Put 吧 after a statement when you think it is true and want confirmation."
-          },
           "contrast": {
             "title": "A guess can be corrected",
             "description": "Read the book’s examples.",
@@ -74263,44 +72381,6 @@
               "meaning": "measure word for songs"
             }
           ],
-          "discoveryLab": {
-            "title": "Try the action",
-            "description": "Read the book’s examples.",
-            "prompt": "Choose an example.",
-            "choices": [
-              {
-                "id": "l8g4-lab1",
-                "label": "Try eating",
-                "traditional": "A：我不知道要買哪種甜點。 B：你可以先吃吃看。",
-                "simplified": "A：我不知道要买哪种甜点。 B：你可以先吃吃看。",
-                "pinyin": "A: Wǒ bù zhīdào yào mǎi nǎ zhǒng tiándiǎn. B: Nǐ kěyǐ xiān chī chi kàn.",
-                "english": "A: I don’t know which kind of dessert to buy. B: You can try some first and see.",
-                "note": "The action verb is 吃.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-08-2-3.mp3",
-                  "start": 56.59,
-                  "end": 63.55
-                }
-              },
-              {
-                "id": "l8g4-lab2",
-                "label": "Try drinking",
-                "traditional": "A：聽說這裡的咖啡很好喝。 B：好，我喝喝看。",
-                "simplified": "A：听说这里的咖啡很好喝。 B：好，我喝喝看。",
-                "pinyin": "A: Tīngshuō zhèlǐ de kāfēi hěn hǎohē. B: Hǎo, wǒ hē he kàn.",
-                "english": "A: I hear the coffee here tastes good. B: OK, I’ll try some and see.",
-                "note": "The action verb is 喝.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-08-2-3.mp3",
-                  "start": 66.52,
-                  "end": 73.64
-                }
-              }
-            ],
-            "takeaway": "Repeat a one-syllable action verb, then add 看: try the action and see."
-          },
           "practice": {
             "bookPage": 194,
             "title": "Complete the following dialogues.",
@@ -127516,49 +125596,6 @@
               }
             ]
           },
-          "liveSceneLab": {
-            "title": "Open a different life moment",
-            "description": "The moment changes; 的時候 keeps the situation attached to what happens inside it.",
-            "prompt": "Choose a moment",
-            "choices": [
-              {
-                "id": "l12g5-meal",
-                "label": "Eating",
-                "subject": "我",
-                "action": "不用手機",
-                "place": "家",
-                "traditional": "吃飯的時候，我不用手機。",
-                "simplified": "吃饭的时候，我不用手机。",
-                "pinyin": "Chīfàn de shíhòu, wǒ bú yòng shǒujī.",
-                "english": "When eating, I do not use my phone.",
-                "note": "吃飯 names the moment."
-              },
-              {
-                "id": "l12g5-mood",
-                "label": "Feeling down",
-                "subject": "我",
-                "action": "聽音樂",
-                "traditional": "心情不好的時候，我會聽音樂。",
-                "simplified": "心情不好的时候，我会听音乐。",
-                "pinyin": "Xīnqíng bù hǎo de shíhòu, wǒ huì tīng yīnyuè.",
-                "english": "When I feel unhappy, I listen to music.",
-                "note": "A state can open the moment window."
-              },
-              {
-                "id": "l12g5-work",
-                "label": "At work",
-                "subject": "我",
-                "action": "說中文",
-                "place": "公司",
-                "traditional": "工作的時候，我常常說中文。",
-                "simplified": "工作的时候，我常常说中文。",
-                "pinyin": "Gōngzuò de shíhòu, wǒ chángcháng shuō Zhōngwén.",
-                "english": "When working, I often speak Chinese.",
-                "note": "工作 is the situation."
-              }
-            ],
-            "takeaway": "Name the moment first: situation + 的時候. Then say what happens."
-          },
           "examples": [
             {
               "id": "l12g5-e1",
@@ -134058,96 +132095,6 @@
             }
           ],
           "exerciseNote": "The book exercise on p.296 has pictures and no answer key; the practice model answers follow the printed pictures.",
-          "routeLab": {
-            "title": "Follow the printed directions",
-            "description": "Read the three 從…往… examples from p.296.",
-            "prompt": "Choose an example.",
-            "choices": [
-              {
-                "id": "l13g2-route-left-right",
-                "label": "Left to right",
-                "traditional": "中國字應該從左往右寫，韓國字呢？",
-                "simplified": "中国字应该从左往右写，韩国字呢？",
-                "pinyin": "Zhōngguó zì yīnggāi cóng zuǒ wǎng yòu xiě, Hánguó zì ne?",
-                "english": "Chinese characters should be written from left to right; what about Korean characters?",
-                "note": "從左 marks the start; 往右 marks the direction.",
-                "origin": {
-                  "id": "l13g2-route-left-origin",
-                  "traditional": "左",
-                  "pinyin": "zuǒ",
-                  "meaning": "left"
-                },
-                "destination": {
-                  "id": "l13g2-route-left-destination",
-                  "traditional": "右",
-                  "pinyin": "yòu",
-                  "meaning": "right"
-                },
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-13-1-3.mp3",
-                  "start": 71.99,
-                  "end": 77.39
-                }
-              },
-              {
-                "id": "l13g2-route-window",
-                "label": "Look outside",
-                "traditional": "從我房間的窗戶往外看，就可以看到漂亮的風景。",
-                "simplified": "从我房间的窗户往外看，就可以看到漂亮的风景。",
-                "pinyin": "Cóng wǒ fángjiān de chuānghu wǎng wài kàn, jiù kěyǐ kàndào piàoliang de fēngjǐng.",
-                "english": "Looking out from my room’s window, you can see a beautiful view.",
-                "note": "從我房間的窗戶 marks the start; 往外 marks the direction.",
-                "origin": {
-                  "id": "l13g2-route-window-origin",
-                  "traditional": "我房間的窗戶",
-                  "simplified": "我房间的窗户",
-                  "pinyin": "wǒ fángjiān de chuānghu",
-                  "meaning": "my room’s window"
-                },
-                "destination": {
-                  "id": "l13g2-route-window-destination",
-                  "traditional": "外",
-                  "pinyin": "wài",
-                  "meaning": "outside"
-                },
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-13-1-3.mp3",
-                  "start": 80.28,
-                  "end": 86.65
-                }
-              },
-              {
-                "id": "l13g2-route-tower",
-                "label": "Walk to the tall building",
-                "traditional": "從這裡往最高的那棟房子走，你會看到兩家百貨公司。",
-                "simplified": "从这里往最高的那栋房子走，你会看到两家百货公司。",
-                "pinyin": "Cóng zhèlǐ wǎng zuì gāo de nà dòng fángzi zǒu, nǐ huì kàndào liǎng jiā bǎihuò gōngsī.",
-                "english": "Walk from here toward the tallest building, and you will see two department stores.",
-                "note": "從這裡 marks the start; 往最高的那棟房子 marks the direction.",
-                "origin": {
-                  "id": "l13g2-route-tower-origin",
-                  "traditional": "這裡",
-                  "simplified": "这里",
-                  "pinyin": "zhèlǐ",
-                  "meaning": "here"
-                },
-                "destination": {
-                  "id": "l13g2-route-tower-destination",
-                  "traditional": "最高的那棟房子",
-                  "simplified": "最高的那栋房子",
-                  "pinyin": "zuì gāo de nà dòng fángzi",
-                  "meaning": "the tallest building"
-                },
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/d921bd2b570f.mp3"
-                }
-              }
-            ],
-            "takeaway": "從 marks the starting point; 往 marks the direction of the movement."
-          },
           "practice": {
             "bookPage": 296,
             "title": "Describe the following pictures with 從……往……。",
@@ -146271,65 +144218,6 @@
               }
             ]
           },
-          "timelineLab": {
-            "title": "Does the line end before NOW?",
-            "description": "A finished story ends before now. The time word tells how long the action lasted.",
-            "prompt": "Choose a memory",
-            "choices": [
-              {
-                "id": "l14g1-japan",
-                "label": "Last year",
-                "start": "去年開始",
-                "duration": "半年",
-                "reachesNow": false,
-                "endLabel": "去年結束",
-                "traditional": "去年我在日本住了半年。",
-                "simplified": "去年我在日本住了半年。",
-                "pinyin": "Qùnián wǒ zài Rìběn zhù le bànnián.",
-                "english": "Last year I lived in Japan for half a year.",
-                "note": "去年 closes the whole stay in the past.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/882eca0ae936.mp3"
-                }
-              },
-              {
-                "id": "l14g1-study",
-                "label": "Three years",
-                "start": "三年前",
-                "duration": "三年",
-                "reachesNow": false,
-                "endLabel": "學完了",
-                "traditional": "我學中文學了三年。",
-                "simplified": "我学中文学了三年。",
-                "pinyin": "Wǒ xué Zhōngwén xué le sān nián.",
-                "english": "I studied Chinese for three years.",
-                "note": "The repeated verb 學 introduces the duration.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/fca1d593fdfe.mp3"
-                }
-              },
-              {
-                "id": "l14g1-song",
-                "label": "Yesterday",
-                "start": "昨天",
-                "duration": "三個小時",
-                "reachesNow": false,
-                "endLabel": "唱完了",
-                "traditional": "我們昨天唱了三個小時歌。",
-                "simplified": "我们昨天唱了三个小时歌。",
-                "pinyin": "Wǒmen zuótiān chàng le sān ge xiǎoshí gē.",
-                "english": "We sang for three hours yesterday.",
-                "note": "The finished yesterday closes the story.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e3cb66c4d281.mp3"
-                }
-              }
-            ],
-            "takeaway": "This page says how long something lasted in a finished story. Context—not just the count of 了—closes the timeline."
-          },
           "examples": [
             {
               "id": "l14g1-e1",
@@ -148995,65 +146883,6 @@
                 }
               }
             ]
-          },
-          "timelineLab": {
-            "title": "Does the line touch NOW?",
-            "description": "When the action reaches now, the final 了 shows that it is still going on.",
-            "prompt": "What is still true?",
-            "choices": [
-              {
-                "id": "l14g2-taiwan",
-                "label": "Still in Taiwan",
-                "start": "兩年前",
-                "duration": "兩年",
-                "reachesNow": true,
-                "endLabel": "現在",
-                "traditional": "他在台灣住了兩年了。",
-                "simplified": "他在台湾住了两年了。",
-                "pinyin": "Tā zài Táiwān zhù le liǎng nián le.",
-                "english": "He has lived in Taiwan for two years.",
-                "note": "The stay reaches NOW and still holds.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-14-1-3.mp3",
-                  "start": 140.54,
-                  "end": 143.49
-                }
-              },
-              {
-                "id": "l14g2-sleep",
-                "label": "Still sleeping",
-                "start": "八小時前",
-                "duration": "八個小時",
-                "reachesNow": true,
-                "endLabel": "還在睡",
-                "traditional": "他已經睡了八個小時了，現在還在睡。",
-                "simplified": "他已经睡了八个小时了，现在还在睡。",
-                "pinyin": "Tā yǐjīng shuì le bā ge xiǎoshí le, xiànzài hái zài shuì.",
-                "english": "He has slept for eight hours and is still sleeping.",
-                "note": "現在還在睡 shows that the action is still going on.",
-                "audio": {
-                  "voice": "book",
-                  "file": "B1-14-1-3.mp3",
-                  "start": 132.65,
-                  "end": 137.65
-                }
-              },
-              {
-                "id": "l14g2-football",
-                "label": "Still playing",
-                "start": "一小時前",
-                "duration": "一個小時",
-                "reachesNow": true,
-                "endLabel": "現在",
-                "traditional": "我們已經踢了一個小時的足球了。",
-                "simplified": "我们已经踢了一个小时的足球了。",
-                "pinyin": "Wǒmen yǐjīng tī le yí ge xiǎoshí de zúqiú le.",
-                "english": "We have been playing soccer for an hour.",
-                "note": "The time reaches now, so the speakers may decide to rest."
-              }
-            ],
-            "takeaway": "If the action reaches now, the final 了 makes that clear."
           },
           "examples": [
             {
@@ -153024,64 +150853,6 @@
                 }
               }
             ]
-          },
-          "pairCompareLab": {
-            "title": "Keep both sides visible",
-            "description": "A is the thing you describe. B is the thing after 比 that you compare with. Reverse them and the meaning reverses.",
-            "prompt": "What are you comparing?",
-            "choices": [
-              {
-                "id": "l14g3-weather",
-                "label": "Weather",
-                "leftLabel": "今天",
-                "rightLabel": "昨天",
-                "leftValue": 82,
-                "rightValue": 48,
-                "quality": "冷",
-                "traditional": "今天比昨天冷。",
-                "simplified": "今天比昨天冷。",
-                "pinyin": "Jīntiān bǐ zuótiān lěng.",
-                "english": "Today is colder than yesterday.",
-                "note": "今天 is the one described. 昨天 is what it is compared with.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/29aa6f89473e.mp3"
-                }
-              },
-              {
-                "id": "l14g3-travel",
-                "label": "Travel speed",
-                "leftLabel": "坐飛機",
-                "rightLabel": "坐火車",
-                "leftValue": 92,
-                "rightValue": 55,
-                "quality": "快",
-                "traditional": "坐飛機比坐火車快多了。",
-                "simplified": "坐飞机比坐火车快多了。",
-                "pinyin": "Zuò fēijī bǐ zuò huǒchē kuài duō le.",
-                "english": "Flying is much faster than taking a train.",
-                "note": "多了 shows a large difference."
-              },
-              {
-                "id": "l14g3-age",
-                "label": "Age",
-                "leftLabel": "我",
-                "rightLabel": "他",
-                "leftValue": 30,
-                "rightValue": 28,
-                "quality": "大",
-                "traditional": "我比他大兩歲。",
-                "simplified": "我比他大两岁。",
-                "pinyin": "Wǒ bǐ tā dà liǎng suì.",
-                "english": "I am two years older than him.",
-                "note": "我 is the one described; 他 is the comparison.",
-                "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/96b8d3dc9322.mp3"
-                }
-              }
-            ],
-            "takeaway": "Read left to right: A, compared with B, has more of this quality."
           },
           "examples": [
             {

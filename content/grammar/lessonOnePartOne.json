@@ -472,40 +472,6 @@
         }
       }
     ],
-    "discoveryLab": {
-      "title": "Change the word, change the clue",
-      "description": "叫 introduces a name, 姓 a surname, and 是 an identity.",
-      "prompt": "Which word introduces each detail?",
-      "choices": [
-        {
-          "id": "l1g1-lab1",
-          "label": "Her name",
-          "traditional": "她不姓李，她姓小林，叫小林友美。",
-          "simplified": "她不姓李，她姓小林，叫小林友美。",
-          "pinyin": "Tā bú xìng Lǐ, tā xìng Xiǎolín, jiào Xiǎolín Yǒuměi.",
-          "english": "Her surname is not Li. Her surname is Xiaolin; her name is Xiaolin Youmei.",
-          "note": "叫 comes before a given name or a full name."
-        },
-        {
-          "id": "l1g1-lab2",
-          "label": "A surname",
-          "traditional": "誰姓李？",
-          "simplified": "谁姓李？",
-          "pinyin": "Shéi xìng Lǐ?",
-          "english": "Whose surname is Li?",
-          "note": "姓 comes only before a family name."
-        },
-        {
-          "id": "l1g1-lab3",
-          "label": "Who she is",
-          "traditional": "她是新同學。",
-          "simplified": "她是新同学。",
-          "pinyin": "Tā shì xīn tóngxué.",
-          "english": "She is a new classmate.",
-          "note": "是 says who someone is."
-        }
-      ]
-    },
     "questions": [
       {
         "id": "l1g1-q1",
@@ -977,32 +943,6 @@
         }
       }
     ],
-    "discoveryLab": {
-      "title": "Say it is true, or say it is not",
-      "description": "The word 不 replaces 很 when the description is not true. 是 never joins in.",
-      "prompt": "What do you want to say?",
-      "choices": [
-        {
-          "id": "l1g2-lab1",
-          "label": "It is true",
-          "traditional": "她很可愛。",
-          "simplified": "她很可爱。",
-          "pinyin": "Tā hěn kě'ài.",
-          "english": "She is cute.",
-          "note": "很 is the usual word before a description."
-        },
-        {
-          "id": "l1g2-lab2",
-          "label": "It is not true",
-          "traditional": "我們不累，王太太很累。",
-          "simplified": "我们不累，王太太很累。",
-          "pinyin": "Wǒmen bú lèi, Wáng tàitai hěn lèi.",
-          "english": "We are not tired; Mrs. Wang is very tired.",
-          "note": "Put 不 before the word. Do not add 是."
-        }
-      ],
-      "takeaway": "Words like 漂亮 and 累 already carry the meaning of \"is\". 很 or 不 sits before them, and 是 stays out."
-    },
     "questions": [
       {
         "id": "l1g2-q1",
@@ -1492,32 +1432,6 @@
         }
       }
     ],
-    "discoveryLab": {
-      "title": "One ending word turns a statement into a question",
-      "description": "The statement does not change; only the ending changes.",
-      "prompt": "Telling or asking?",
-      "choices": [
-        {
-          "id": "l1g3-lab1",
-          "label": "Ask with 嗎",
-          "traditional": "他忙嗎？",
-          "simplified": "他忙吗？",
-          "pinyin": "Tā máng ma?",
-          "english": "Is he busy?",
-          "note": "The statement 他忙 stays as printed; 嗎 closes it."
-        },
-        {
-          "id": "l1g3-lab2",
-          "label": "Keep the order",
-          "traditional": "高先生叫家樂嗎？",
-          "simplified": "高先生叫家乐吗？",
-          "pinyin": "Gāo xiānsheng jiào Jiālè ma?",
-          "english": "Is Mr. Gao called Jiale?",
-          "note": "Say the whole statement first, then add 嗎 at the end."
-        }
-      ],
-      "takeaway": "Statement first, 嗎 last. Nothing inside the sentence moves."
-    },
     "questions": [
       {
         "id": "l1g3-q1",
@@ -2197,40 +2111,6 @@
             }
           ]
         },
-        "discoveryLab": {
-          "title": "Change the word, change the clue",
-          "description": "叫 introduces a name, 姓 a surname, and 是 an identity.",
-          "prompt": "Which word introduces each detail?",
-          "choices": [
-            {
-              "id": "l1g1-lab1",
-              "label": "Her name",
-              "traditional": "她不姓李，她姓小林，叫小林友美。",
-              "simplified": "她不姓李，她姓小林，叫小林友美。",
-              "pinyin": "Tā bú xìng Lǐ, tā xìng Xiǎolín, jiào Xiǎolín Yǒuměi.",
-              "english": "Her surname is not Li. Her surname is Xiaolin; her name is Xiaolin Youmei.",
-              "note": "叫 comes before a given name or a full name."
-            },
-            {
-              "id": "l1g1-lab2",
-              "label": "A surname",
-              "traditional": "誰姓李？",
-              "simplified": "谁姓李？",
-              "pinyin": "Shéi xìng Lǐ?",
-              "english": "Whose surname is Li?",
-              "note": "姓 comes only before a family name."
-            },
-            {
-              "id": "l1g1-lab3",
-              "label": "Who she is",
-              "traditional": "她是新同學。",
-              "simplified": "她是新同学。",
-              "pinyin": "Tā shì xīn tóngxué.",
-              "english": "She is a new classmate.",
-              "note": "是 says who someone is."
-            }
-          ]
-        },
         "questions": [
           {
             "id": "l1g1-q1",
@@ -2807,32 +2687,6 @@
               }
             }
           ]
-        },
-        "discoveryLab": {
-          "title": "Say it is true, or say it is not",
-          "description": "The word 不 replaces 很 when the description is not true. 是 never joins in.",
-          "prompt": "What do you want to say?",
-          "choices": [
-            {
-              "id": "l1g2-lab1",
-              "label": "It is true",
-              "traditional": "她很可愛。",
-              "simplified": "她很可爱。",
-              "pinyin": "Tā hěn kě'ài.",
-              "english": "She is cute.",
-              "note": "很 is the usual word before a description."
-            },
-            {
-              "id": "l1g2-lab2",
-              "label": "It is not true",
-              "traditional": "我們不累，王太太很累。",
-              "simplified": "我们不累，王太太很累。",
-              "pinyin": "Wǒmen bú lèi, Wáng tàitai hěn lèi.",
-              "english": "We are not tired; Mrs. Wang is very tired.",
-              "note": "Put 不 before the word. Do not add 是."
-            }
-          ],
-          "takeaway": "Words like 漂亮 and 累 already carry the meaning of \"is\". 很 or 不 sits before them, and 是 stays out."
         },
         "questions": [
           {
@@ -3456,32 +3310,6 @@
               }
             }
           ]
-        },
-        "discoveryLab": {
-          "title": "One ending word turns a statement into a question",
-          "description": "The statement does not change; only the ending changes.",
-          "prompt": "Telling or asking?",
-          "choices": [
-            {
-              "id": "l1g3-lab1",
-              "label": "Ask with 嗎",
-              "traditional": "他忙嗎？",
-              "simplified": "他忙吗？",
-              "pinyin": "Tā máng ma?",
-              "english": "Is he busy?",
-              "note": "The statement 他忙 stays as printed; 嗎 closes it."
-            },
-            {
-              "id": "l1g3-lab2",
-              "label": "Keep the order",
-              "traditional": "高先生叫家樂嗎？",
-              "simplified": "高先生叫家乐吗？",
-              "pinyin": "Gāo xiānsheng jiào Jiālè ma?",
-              "english": "Is Mr. Gao called Jiale?",
-              "note": "Say the whole statement first, then add 嗎 at the end."
-            }
-          ],
-          "takeaway": "Statement first, 嗎 last. Nothing inside the sentence moves."
         },
         "questions": [
           {

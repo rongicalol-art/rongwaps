@@ -380,51 +380,6 @@
       "N"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Pick the right measure word",
-      "description": "The measure word links the number to the thing. The thing you name chooses the measure word.",
-      "prompt": "What are you counting?",
-      "choices": [
-        {
-          "id": "g1-books",
-          "label": "Books · 本",
-          "traditional": "兩本書",
-          "simplified": "两本书",
-          "pinyin": "liǎng běn shū",
-          "english": "two books",
-          "note": "Use 本 for books and similar things."
-        },
-        {
-          "id": "g1-flowers",
-          "label": "Flowers · 朵",
-          "traditional": "幾朵花？",
-          "simplified": "几朵花？",
-          "pinyin": "jǐ duǒ huā?",
-          "english": "how many flowers?",
-          "note": "朵 counts flowers. 幾 still needs a measure word."
-        },
-        {
-          "id": "g1-general",
-          "label": "General · 個",
-          "traditional": "一個蛋糕",
-          "simplified": "一个蛋糕",
-          "pinyin": "yí ge dàngāo",
-          "english": "one cake",
-          "note": "個 is the useful general measure word in this lesson."
-        },
-        {
-          "id": "g1-repair",
-          "label": "Repair “two”",
-          "traditional": "二本書 → 兩本書",
-          "simplified": "二本书 → 两本书",
-          "pinyin": "èr běn shū → liǎng běn shū",
-          "english": "two books",
-          "note": "Use 兩 before a measure word when counting two things.",
-          "isCorrection": true
-        }
-      ],
-      "takeaway": "Put them in order: number + measure word + thing: 兩 + 本 + 書."
-    },
     "patternRows": [
       {
         "id": "g1-pattern-1",
@@ -1439,51 +1394,6 @@
       "DO"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Put the person first, then the gift",
-      "description": "送 takes two things after it: first the person who gets the gift, then the gift itself.",
-      "prompt": "What belongs immediately after 送?",
-      "choices": [
-        {
-          "id": "g2-mom",
-          "label": "Person then gift",
-          "traditional": "媽媽送我一個禮物。",
-          "simplified": "妈妈送我一个礼物。",
-          "pinyin": "Māma sòng wǒ yí ge lǐwù.",
-          "english": "Mom gave me a gift.",
-          "note": "我 is the receiver. 一個禮物 is the gift."
-        },
-        {
-          "id": "g2-question-person",
-          "label": "Ask for the person",
-          "traditional": "你要送誰蛋糕？",
-          "simplified": "你要送谁蛋糕？",
-          "pinyin": "Nǐ yào sòng shéi dàngāo?",
-          "english": "Who will you give cake to?",
-          "note": "誰 asks for the person who gets the gift."
-        },
-        {
-          "id": "g2-question-gift",
-          "label": "Ask for the gift",
-          "traditional": "你想送媽媽什麼？",
-          "simplified": "你想送妈妈什么？",
-          "pinyin": "Nǐ xiǎng sòng māma shénme?",
-          "english": "What would you like to give Mom?",
-          "note": "媽媽 names the person who gets the gift. 什麼 asks for the gift."
-        },
-        {
-          "id": "g2-repair",
-          "label": "Repair the order",
-          "traditional": "我想送一本中文書他 → 我想送他一本中文書。",
-          "simplified": "我想送一本中文书他 → 我想送他一本中文书。",
-          "pinyin": "Wǒ xiǎng sòng yì běn Zhōngwén shū tā → wǒ xiǎng sòng tā yì běn Zhōngwén shū.",
-          "english": "I would like to give him a Chinese book.",
-          "note": "Keep the receiver before the gift.",
-          "isCorrection": true
-        }
-      ],
-      "takeaway": "After 送, answer “who?” before “what?”"
-    },
     "patternRows": [
       {
         "id": "g2-pattern-1",
@@ -2579,51 +2489,6 @@
           "N"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Pick the right measure word",
-          "description": "The measure word links the number to the thing. The thing you name chooses the measure word.",
-          "prompt": "What are you counting?",
-          "choices": [
-            {
-              "id": "g1-books",
-              "label": "Books · 本",
-              "traditional": "兩本書",
-              "simplified": "两本书",
-              "pinyin": "liǎng běn shū",
-              "english": "two books",
-              "note": "Use 本 for books and similar things."
-            },
-            {
-              "id": "g1-flowers",
-              "label": "Flowers · 朵",
-              "traditional": "幾朵花？",
-              "simplified": "几朵花？",
-              "pinyin": "jǐ duǒ huā?",
-              "english": "how many flowers?",
-              "note": "朵 counts flowers. 幾 still needs a measure word."
-            },
-            {
-              "id": "g1-general",
-              "label": "General · 個",
-              "traditional": "一個蛋糕",
-              "simplified": "一个蛋糕",
-              "pinyin": "yí ge dàngāo",
-              "english": "one cake",
-              "note": "個 is the useful general measure word in this lesson."
-            },
-            {
-              "id": "g1-repair",
-              "label": "Repair “two”",
-              "traditional": "二本書 → 兩本書",
-              "simplified": "二本书 → 两本书",
-              "pinyin": "èr běn shū → liǎng běn shū",
-              "english": "two books",
-              "note": "Use 兩 before a measure word when counting two things.",
-              "isCorrection": true
-            }
-          ],
-          "takeaway": "Put them in order: number + measure word + thing: 兩 + 本 + 書."
-        },
         "patternRows": [
           {
             "id": "g1-pattern-1",
@@ -3638,51 +3503,6 @@
           "DO"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Put the person first, then the gift",
-          "description": "送 takes two things after it: first the person who gets the gift, then the gift itself.",
-          "prompt": "What belongs immediately after 送?",
-          "choices": [
-            {
-              "id": "g2-mom",
-              "label": "Person then gift",
-              "traditional": "媽媽送我一個禮物。",
-              "simplified": "妈妈送我一个礼物。",
-              "pinyin": "Māma sòng wǒ yí ge lǐwù.",
-              "english": "Mom gave me a gift.",
-              "note": "我 is the receiver. 一個禮物 is the gift."
-            },
-            {
-              "id": "g2-question-person",
-              "label": "Ask for the person",
-              "traditional": "你要送誰蛋糕？",
-              "simplified": "你要送谁蛋糕？",
-              "pinyin": "Nǐ yào sòng shéi dàngāo?",
-              "english": "Who will you give cake to?",
-              "note": "誰 asks for the person who gets the gift."
-            },
-            {
-              "id": "g2-question-gift",
-              "label": "Ask for the gift",
-              "traditional": "你想送媽媽什麼？",
-              "simplified": "你想送妈妈什么？",
-              "pinyin": "Nǐ xiǎng sòng māma shénme?",
-              "english": "What would you like to give Mom?",
-              "note": "媽媽 names the person who gets the gift. 什麼 asks for the gift."
-            },
-            {
-              "id": "g2-repair",
-              "label": "Repair the order",
-              "traditional": "我想送一本中文書他 → 我想送他一本中文書。",
-              "simplified": "我想送一本中文书他 → 我想送他一本中文书。",
-              "pinyin": "Wǒ xiǎng sòng yì běn Zhōngwén shū tā → wǒ xiǎng sòng tā yì běn Zhōngwén shū.",
-              "english": "I would like to give him a Chinese book.",
-              "note": "Keep the receiver before the gift.",
-              "isCorrection": true
-            }
-          ],
-          "takeaway": "After 送, answer “who?” before “what?”"
-        },
         "patternRows": [
           {
             "id": "g2-pattern-1",

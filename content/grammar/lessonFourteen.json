@@ -550,53 +550,6 @@
         }
       ]
     },
-    "timelineLab": {
-      "title": "Does the line end before NOW?",
-      "description": "A finished story ends before now. The time word tells how long the action lasted.",
-      "prompt": "Choose a memory",
-      "choices": [
-        {
-          "id": "l14g1-japan",
-          "label": "Last year",
-          "start": "去年開始",
-          "duration": "半年",
-          "reachesNow": false,
-          "endLabel": "去年結束",
-          "traditional": "去年我在日本住了半年。",
-          "simplified": "去年我在日本住了半年。",
-          "pinyin": "Qùnián wǒ zài Rìběn zhù le bànnián.",
-          "english": "Last year I lived in Japan for half a year.",
-          "note": "去年 closes the whole stay in the past."
-        },
-        {
-          "id": "l14g1-study",
-          "label": "Three years",
-          "start": "三年前",
-          "duration": "三年",
-          "reachesNow": false,
-          "endLabel": "學完了",
-          "traditional": "我學中文學了三年。",
-          "simplified": "我学中文学了三年。",
-          "pinyin": "Wǒ xué Zhōngwén xué le sān nián.",
-          "english": "I studied Chinese for three years.",
-          "note": "The repeated verb 學 introduces the duration."
-        },
-        {
-          "id": "l14g1-song",
-          "label": "Yesterday",
-          "start": "昨天",
-          "duration": "三個小時",
-          "reachesNow": false,
-          "endLabel": "唱完了",
-          "traditional": "我們昨天唱了三個小時歌。",
-          "simplified": "我们昨天唱了三个小时歌。",
-          "pinyin": "Wǒmen zuótiān chàng le sān ge xiǎoshí gē.",
-          "english": "We sang for three hours yesterday.",
-          "note": "The finished yesterday closes the story."
-        }
-      ],
-      "takeaway": "This page says how long something lasted in a finished story. Context—not just the count of 了—closes the timeline."
-    },
     "examples": [
       {
         "id": "l14g1-e1",
@@ -2134,56 +2087,6 @@
         }
       ]
     },
-    "pairCompareLab": {
-      "title": "Keep both sides visible",
-      "description": "A is the thing you describe. B is the thing after 比 that you compare with. Reverse them and the meaning reverses.",
-      "prompt": "What are you comparing?",
-      "choices": [
-        {
-          "id": "l14g3-weather",
-          "label": "Weather",
-          "leftLabel": "今天",
-          "rightLabel": "昨天",
-          "leftValue": 82,
-          "rightValue": 48,
-          "quality": "冷",
-          "traditional": "今天比昨天冷。",
-          "simplified": "今天比昨天冷。",
-          "pinyin": "Jīntiān bǐ zuótiān lěng.",
-          "english": "Today is colder than yesterday.",
-          "note": "今天 is the one described. 昨天 is what it is compared with."
-        },
-        {
-          "id": "l14g3-travel",
-          "label": "Travel speed",
-          "leftLabel": "坐飛機",
-          "rightLabel": "坐火車",
-          "leftValue": 92,
-          "rightValue": 55,
-          "quality": "快",
-          "traditional": "坐飛機比坐火車快多了。",
-          "simplified": "坐飞机比坐火车快多了。",
-          "pinyin": "Zuò fēijī bǐ zuò huǒchē kuài duō le.",
-          "english": "Flying is much faster than taking a train.",
-          "note": "多了 shows a large difference."
-        },
-        {
-          "id": "l14g3-age",
-          "label": "Age",
-          "leftLabel": "我",
-          "rightLabel": "他",
-          "leftValue": 30,
-          "rightValue": 28,
-          "quality": "大",
-          "traditional": "我比他大兩歲。",
-          "simplified": "我比他大两岁。",
-          "pinyin": "Wǒ bǐ tā dà liǎng suì.",
-          "english": "I am two years older than him.",
-          "note": "我 is the one described; 他 is the comparison."
-        }
-      ],
-      "takeaway": "Read left to right: A, compared with B, has more of this quality."
-    },
     "examples": [
       {
         "id": "l14g3-e4",
@@ -3657,53 +3560,6 @@
           }
         }
       ]
-    },
-    "timelineLab": {
-      "title": "Does the line touch NOW?",
-      "description": "When the action reaches now, the final 了 shows that it is still going on.",
-      "prompt": "What is still true?",
-      "choices": [
-        {
-          "id": "l14g2-taiwan",
-          "label": "Still in Taiwan",
-          "start": "兩年前",
-          "duration": "兩年",
-          "reachesNow": true,
-          "endLabel": "現在",
-          "traditional": "他在台灣住了兩年了。",
-          "simplified": "他在台湾住了两年了。",
-          "pinyin": "Tā zài Táiwān zhù le liǎng nián le.",
-          "english": "He has lived in Taiwan for two years.",
-          "note": "The stay reaches NOW and still holds."
-        },
-        {
-          "id": "l14g2-sleep",
-          "label": "Still sleeping",
-          "start": "八小時前",
-          "duration": "八個小時",
-          "reachesNow": true,
-          "endLabel": "還在睡",
-          "traditional": "他已經睡了八個小時了，現在還在睡。",
-          "simplified": "他已经睡了八个小时了，现在还在睡。",
-          "pinyin": "Tā yǐjīng shuì le bā ge xiǎoshí le, xiànzài hái zài shuì.",
-          "english": "He has slept for eight hours and is still sleeping.",
-          "note": "現在還在睡 shows that the action is still going on."
-        },
-        {
-          "id": "l14g2-football",
-          "label": "Still playing",
-          "start": "一小時前",
-          "duration": "一個小時",
-          "reachesNow": true,
-          "endLabel": "現在",
-          "traditional": "我們已經踢了一個小時的足球了。",
-          "simplified": "我们已经踢了一个小时的足球了。",
-          "pinyin": "Wǒmen yǐjīng tī le yí ge xiǎoshí de zúqiú le.",
-          "english": "We have been playing soccer for an hour.",
-          "note": "The time reaches now, so the speakers may decide to rest."
-        }
-      ],
-      "takeaway": "If the action reaches now, the final 了 makes that clear."
     },
     "examples": [
       {
@@ -5299,53 +5155,6 @@
             }
           ]
         },
-        "timelineLab": {
-          "title": "Does the line end before NOW?",
-          "description": "A finished story ends before now. The time word tells how long the action lasted.",
-          "prompt": "Choose a memory",
-          "choices": [
-            {
-              "id": "l14g1-japan",
-              "label": "Last year",
-              "start": "去年開始",
-              "duration": "半年",
-              "reachesNow": false,
-              "endLabel": "去年結束",
-              "traditional": "去年我在日本住了半年。",
-              "simplified": "去年我在日本住了半年。",
-              "pinyin": "Qùnián wǒ zài Rìběn zhù le bànnián.",
-              "english": "Last year I lived in Japan for half a year.",
-              "note": "去年 closes the whole stay in the past."
-            },
-            {
-              "id": "l14g1-study",
-              "label": "Three years",
-              "start": "三年前",
-              "duration": "三年",
-              "reachesNow": false,
-              "endLabel": "學完了",
-              "traditional": "我學中文學了三年。",
-              "simplified": "我学中文学了三年。",
-              "pinyin": "Wǒ xué Zhōngwén xué le sān nián.",
-              "english": "I studied Chinese for three years.",
-              "note": "The repeated verb 學 introduces the duration."
-            },
-            {
-              "id": "l14g1-song",
-              "label": "Yesterday",
-              "start": "昨天",
-              "duration": "三個小時",
-              "reachesNow": false,
-              "endLabel": "唱完了",
-              "traditional": "我們昨天唱了三個小時歌。",
-              "simplified": "我们昨天唱了三个小时歌。",
-              "pinyin": "Wǒmen zuótiān chàng le sān ge xiǎoshí gē.",
-              "english": "We sang for three hours yesterday.",
-              "note": "The finished yesterday closes the story."
-            }
-          ],
-          "takeaway": "This page says how long something lasted in a finished story. Context—not just the count of 了—closes the timeline."
-        },
         "examples": [
           {
             "id": "l14g1-e1",
@@ -6880,53 +6689,6 @@
               }
             }
           ]
-        },
-        "timelineLab": {
-          "title": "Does the line touch NOW?",
-          "description": "When the action reaches now, the final 了 shows that it is still going on.",
-          "prompt": "What is still true?",
-          "choices": [
-            {
-              "id": "l14g2-taiwan",
-              "label": "Still in Taiwan",
-              "start": "兩年前",
-              "duration": "兩年",
-              "reachesNow": true,
-              "endLabel": "現在",
-              "traditional": "他在台灣住了兩年了。",
-              "simplified": "他在台湾住了两年了。",
-              "pinyin": "Tā zài Táiwān zhù le liǎng nián le.",
-              "english": "He has lived in Taiwan for two years.",
-              "note": "The stay reaches NOW and still holds."
-            },
-            {
-              "id": "l14g2-sleep",
-              "label": "Still sleeping",
-              "start": "八小時前",
-              "duration": "八個小時",
-              "reachesNow": true,
-              "endLabel": "還在睡",
-              "traditional": "他已經睡了八個小時了，現在還在睡。",
-              "simplified": "他已经睡了八个小时了，现在还在睡。",
-              "pinyin": "Tā yǐjīng shuì le bā ge xiǎoshí le, xiànzài hái zài shuì.",
-              "english": "He has slept for eight hours and is still sleeping.",
-              "note": "現在還在睡 shows that the action is still going on."
-            },
-            {
-              "id": "l14g2-football",
-              "label": "Still playing",
-              "start": "一小時前",
-              "duration": "一個小時",
-              "reachesNow": true,
-              "endLabel": "現在",
-              "traditional": "我們已經踢了一個小時的足球了。",
-              "simplified": "我们已经踢了一个小时的足球了。",
-              "pinyin": "Wǒmen yǐjīng tī le yí ge xiǎoshí de zúqiú le.",
-              "english": "We have been playing soccer for an hour.",
-              "note": "The time reaches now, so the speakers may decide to rest."
-            }
-          ],
-          "takeaway": "If the action reaches now, the final 了 makes that clear."
         },
         "examples": [
           {
@@ -9668,56 +9430,6 @@
               }
             }
           ]
-        },
-        "pairCompareLab": {
-          "title": "Keep both sides visible",
-          "description": "A is the thing you describe. B is the thing after 比 that you compare with. Reverse them and the meaning reverses.",
-          "prompt": "What are you comparing?",
-          "choices": [
-            {
-              "id": "l14g3-weather",
-              "label": "Weather",
-              "leftLabel": "今天",
-              "rightLabel": "昨天",
-              "leftValue": 82,
-              "rightValue": 48,
-              "quality": "冷",
-              "traditional": "今天比昨天冷。",
-              "simplified": "今天比昨天冷。",
-              "pinyin": "Jīntiān bǐ zuótiān lěng.",
-              "english": "Today is colder than yesterday.",
-              "note": "今天 is the one described. 昨天 is what it is compared with."
-            },
-            {
-              "id": "l14g3-travel",
-              "label": "Travel speed",
-              "leftLabel": "坐飛機",
-              "rightLabel": "坐火車",
-              "leftValue": 92,
-              "rightValue": 55,
-              "quality": "快",
-              "traditional": "坐飛機比坐火車快多了。",
-              "simplified": "坐飞机比坐火车快多了。",
-              "pinyin": "Zuò fēijī bǐ zuò huǒchē kuài duō le.",
-              "english": "Flying is much faster than taking a train.",
-              "note": "多了 shows a large difference."
-            },
-            {
-              "id": "l14g3-age",
-              "label": "Age",
-              "leftLabel": "我",
-              "rightLabel": "他",
-              "leftValue": 30,
-              "rightValue": 28,
-              "quality": "大",
-              "traditional": "我比他大兩歲。",
-              "simplified": "我比他大两岁。",
-              "pinyin": "Wǒ bǐ tā dà liǎng suì.",
-              "english": "I am two years older than him.",
-              "note": "我 is the one described; 他 is the comparison."
-            }
-          ],
-          "takeaway": "Read left to right: A, compared with B, has more of this quality."
         },
         "examples": [
           {

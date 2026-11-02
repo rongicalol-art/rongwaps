@@ -404,41 +404,6 @@
       "V(O)"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Read the green-light card",
-      "description": "The same 可以 either opens a possible path or checks permission.",
-      "prompt": "What job is 可以 doing?",
-      "choices": [
-        {
-          "id": "g4-suggest",
-          "label": "Suggestion",
-          "traditional": "你可以點一杯熱茶。",
-          "simplified": "你可以点一杯热茶。",
-          "pinyin": "Nǐ kěyǐ diǎn yì bēi rè chá.",
-          "english": "You could order a cup of hot tea.",
-          "note": "A problem comes first; 可以 offers one useful option."
-        },
-        {
-          "id": "g4-permit",
-          "label": "Ask permission",
-          "traditional": "老師，我現在可以去洗手間嗎？",
-          "simplified": "老师，我现在可以去洗手间吗？",
-          "pinyin": "Lǎoshī, wǒ xiànzài kěyǐ qù xǐshǒujiān ma?",
-          "english": "Teacher, may I go to the restroom now?",
-          "note": "The speaker asks whether the action has a green light."
-        },
-        {
-          "id": "g4-red",
-          "label": "No permission",
-          "traditional": "不可以，也不可以喝飲料。",
-          "simplified": "不可以，也不可以喝饮料。",
-          "pinyin": "Bù kěyǐ, yě bù kěyǐ hē yǐnliào.",
-          "english": "No. Drinking is not allowed either.",
-          "note": "不可以 removes permission."
-        }
-      ],
-      "takeaway": "Problem + 可以 = possible solution. 可以…嗎 = permission check."
-    },
     "contrast": {
       "title": "Learned ability or permission",
       "description": "Both can translate as “can,” but they answer different questions.",
@@ -1886,41 +1851,6 @@
       "Vs"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Turn up only one notch",
-      "description": "The dial makes the describing word softer — often before you explain a problem or say no.",
-      "prompt": "What kind of small problem appears?",
-      "choices": [
-        {
-          "id": "g3-tired",
-          "label": "Feeling",
-          "traditional": "今天我有點兒忙，我不想去。",
-          "simplified": "今天我有点儿忙，我不想去。",
-          "pinyin": "Jīntiān wǒ yǒudiǎnr máng, wǒ bù xiǎng qù.",
-          "english": "I am a little busy today. I do not want to go.",
-          "note": "有點兒忙 explains why the speaker does not want to go."
-        },
-        {
-          "id": "g3-price",
-          "label": "Evaluation",
-          "traditional": "我覺得有點兒貴。",
-          "simplified": "我觉得有点儿贵。",
-          "pinyin": "Wǒ juéde yǒudiǎnr guì.",
-          "english": "I feel it is a little expensive.",
-          "note": "It is a little expensive, so you may choose another place."
-        },
-        {
-          "id": "g3-size",
-          "label": "Reservation",
-          "traditional": "我很喜歡這件衣服，可是我覺得有點兒小。",
-          "simplified": "我很喜欢这件衣服，可是我觉得有点儿小。",
-          "pinyin": "Wǒ hěn xǐhuan zhè jiàn yīfu, kěshì wǒ juéde yǒudiǎnr xiǎo.",
-          "english": "I like these clothes very much, but I think they are a little small.",
-          "note": "The clothes look nice, but they are a little small."
-        }
-      ],
-      "takeaway": "Say who or what first, then 有點兒, then the describing word. One small notch, often for a mild problem."
-    },
     "contrast": {
       "title": "A little vs. a little amount",
       "description": "有點兒 softens a describing word. 點兒 after an action or a thing means a small amount.",
@@ -3018,41 +2948,6 @@
           "Vs"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Turn up only one notch",
-          "description": "The dial makes the describing word softer — often before you explain a problem or say no.",
-          "prompt": "What kind of small problem appears?",
-          "choices": [
-            {
-              "id": "g3-tired",
-              "label": "Feeling",
-              "traditional": "今天我有點兒忙，我不想去。",
-              "simplified": "今天我有点儿忙，我不想去。",
-              "pinyin": "Jīntiān wǒ yǒudiǎnr máng, wǒ bù xiǎng qù.",
-              "english": "I am a little busy today. I do not want to go.",
-              "note": "有點兒忙 explains why the speaker does not want to go."
-            },
-            {
-              "id": "g3-price",
-              "label": "Evaluation",
-              "traditional": "我覺得有點兒貴。",
-              "simplified": "我觉得有点儿贵。",
-              "pinyin": "Wǒ juéde yǒudiǎnr guì.",
-              "english": "I feel it is a little expensive.",
-              "note": "It is a little expensive, so you may choose another place."
-            },
-            {
-              "id": "g3-size",
-              "label": "Reservation",
-              "traditional": "我很喜歡這件衣服，可是我覺得有點兒小。",
-              "simplified": "我很喜欢这件衣服，可是我觉得有点儿小。",
-              "pinyin": "Wǒ hěn xǐhuan zhè jiàn yīfu, kěshì wǒ juéde yǒudiǎnr xiǎo.",
-              "english": "I like these clothes very much, but I think they are a little small.",
-              "note": "The clothes look nice, but they are a little small."
-            }
-          ],
-          "takeaway": "Say who or what first, then 有點兒, then the describing word. One small notch, often for a mild problem."
-        },
         "contrast": {
           "title": "A little vs. a little amount",
           "description": "有點兒 softens a describing word. 點兒 after an action or a thing means a small amount.",
@@ -4136,41 +4031,6 @@
           "V(O)"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Read the green-light card",
-          "description": "The same 可以 either opens a possible path or checks permission.",
-          "prompt": "What job is 可以 doing?",
-          "choices": [
-            {
-              "id": "g4-suggest",
-              "label": "Suggestion",
-              "traditional": "你可以點一杯熱茶。",
-              "simplified": "你可以点一杯热茶。",
-              "pinyin": "Nǐ kěyǐ diǎn yì bēi rè chá.",
-              "english": "You could order a cup of hot tea.",
-              "note": "A problem comes first; 可以 offers one useful option."
-            },
-            {
-              "id": "g4-permit",
-              "label": "Ask permission",
-              "traditional": "老師，我現在可以去洗手間嗎？",
-              "simplified": "老师，我现在可以去洗手间吗？",
-              "pinyin": "Lǎoshī, wǒ xiànzài kěyǐ qù xǐshǒujiān ma?",
-              "english": "Teacher, may I go to the restroom now?",
-              "note": "The speaker asks whether the action has a green light."
-            },
-            {
-              "id": "g4-red",
-              "label": "No permission",
-              "traditional": "不可以，也不可以喝飲料。",
-              "simplified": "不可以，也不可以喝饮料。",
-              "pinyin": "Bù kěyǐ, yě bù kěyǐ hē yǐnliào.",
-              "english": "No. Drinking is not allowed either.",
-              "note": "不可以 removes permission."
-            }
-          ],
-          "takeaway": "Problem + 可以 = possible solution. 可以…嗎 = permission check."
-        },
         "contrast": {
           "title": "Learned ability or permission",
           "description": "Both can translate as “can,” but they answer different questions.",

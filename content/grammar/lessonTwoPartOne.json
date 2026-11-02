@@ -265,49 +265,6 @@
       "號 · 日 · 分"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Build time from big pieces to small pieces",
-      "description": "Choose what you want to say. The markers tell the listener whether your numbers mean a date, weekday, or clock time.",
-      "prompt": "Which kind of time do you need?",
-      "choices": [
-        {
-          "id": "g1-date",
-          "label": "Date",
-          "traditional": "五月十六號",
-          "simplified": "五月十六号",
-          "pinyin": "Wǔ yuè shíliù hào",
-          "english": "May 16",
-          "note": "Month comes first: 五月. The spoken date ends with 號."
-        },
-        {
-          "id": "g1-weekday",
-          "label": "Weekday",
-          "traditional": "星期四",
-          "pinyin": "Xīngqí sì",
-          "english": "Thursday",
-          "note": "星期 comes before the number: 星期四. Numbers one to six give Monday to Saturday; Sunday uses 星期天 or 星期日."
-        },
-        {
-          "id": "g1-clock",
-          "label": "Clock time",
-          "traditional": "九點二十分",
-          "simplified": "九点二十分",
-          "pinyin": "Jiǔ diǎn èrshí fēn",
-          "english": "9:20",
-          "note": "Say the hour with 點, then the minute number with 分."
-        },
-        {
-          "id": "g1-question",
-          "label": "Ask with 幾",
-          "traditional": "現在幾點（幾分）？",
-          "simplified": "现在几点（几分）？",
-          "pinyin": "Xiànzài jǐ diǎn (jǐ fēn)?",
-          "english": "What time is it now?",
-          "note": "Replace the unknown number with 幾. Keep its time marker after it."
-        }
-      ],
-      "takeaway": "Large unit first, small unit second: month then date, hour then minute. 星期 is different: it comes before its number."
-    },
     "patternRows": [],
     "subsections": [
       {
@@ -1275,41 +1232,6 @@
       "O"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "有 has its own negative partner",
-      "description": "Switch between having and not having by changing only the middle block.",
-      "prompt": "Does she have a Taiwanese friend?",
-      "choices": [
-        {
-          "id": "g3-positive",
-          "label": "Has · 有",
-          "traditional": "她有台灣朋友。",
-          "pinyin": "Tā yǒu Táiwān péngyǒu.",
-          "english": "She has a Taiwanese friend.",
-          "note": "有 sits between the person and the thing they have.",
-          "simplified": "她有台湾朋友。"
-        },
-        {
-          "id": "g3-new",
-          "label": "New classmate",
-          "traditional": "我們有新同學。",
-          "pinyin": "Wǒmen yǒu xīn tóngxué.",
-          "english": "We have a new classmate.",
-          "note": "Same shape: person, then 有, then the thing.",
-          "simplified": "我们有新同学。"
-        },
-        {
-          "id": "g3-negative",
-          "label": "Does not have · 沒有",
-          "traditional": "王先生沒有孩子。",
-          "pinyin": "Wáng xiānshēng méi yǒu háizi.",
-          "english": "Mr. Wang does not have children.",
-          "note": "Negate 有 with 沒有, never with 不.",
-          "simplified": "王先生没有孩子。"
-        }
-      ],
-      "takeaway": "有 becomes 沒有 in a negative sentence."
-    },
     "patternRows": [
       {
         "id": "g3-pattern-1",
@@ -1923,41 +1845,6 @@
       "V(O)"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Give the listener the time before the event",
-      "description": "The book’s table: the time word sits between the subject and the action.",
-      "prompt": "Where does the time block belong?",
-      "choices": [
-        {
-          "id": "g2-correct",
-          "label": "Time before the action",
-          "traditional": "我九點三十分上課。",
-          "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
-          "english": "I start class at 9:30.",
-          "note": "The time 九點三十分 sits right before the action 上課.",
-          "simplified": "我九点三十分上课。"
-        },
-        {
-          "id": "g2-negative",
-          "label": "Time with 沒有",
-          "traditional": "他今天沒有課。",
-          "pinyin": "Tā jīntiān méi yǒu kè.",
-          "english": "He does not have class today.",
-          "note": "After 他 comes the time 今天, then 沒有課.",
-          "simplified": "他今天没有课。"
-        },
-        {
-          "id": "g2-question",
-          "label": "Ask when",
-          "traditional": "你幾點去圖書館？",
-          "pinyin": "Nǐ jǐ diǎn qù túshūguǎn?",
-          "english": "What time do you go to the library?",
-          "note": "幾點 fills the same time position as a clock answer.",
-          "simplified": "你几点去图书馆？"
-        }
-      ],
-      "takeaway": "Say who, then when, then the action."
-    },
     "patternRows": [
       {
         "id": "g2-pattern-1",
@@ -2571,49 +2458,6 @@
           "號 · 日 · 分"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Build time from big pieces to small pieces",
-          "description": "Choose what you want to say. The markers tell the listener whether your numbers mean a date, weekday, or clock time.",
-          "prompt": "Which kind of time do you need?",
-          "choices": [
-            {
-              "id": "g1-date",
-              "label": "Date",
-              "traditional": "五月十六號",
-              "simplified": "五月十六号",
-              "pinyin": "Wǔ yuè shíliù hào",
-              "english": "May 16",
-              "note": "Month comes first: 五月. The spoken date ends with 號."
-            },
-            {
-              "id": "g1-weekday",
-              "label": "Weekday",
-              "traditional": "星期四",
-              "pinyin": "Xīngqí sì",
-              "english": "Thursday",
-              "note": "星期 comes before the number: 星期四. Numbers one to six give Monday to Saturday; Sunday uses 星期天 or 星期日."
-            },
-            {
-              "id": "g1-clock",
-              "label": "Clock time",
-              "traditional": "九點二十分",
-              "simplified": "九点二十分",
-              "pinyin": "Jiǔ diǎn èrshí fēn",
-              "english": "9:20",
-              "note": "Say the hour with 點, then the minute number with 分."
-            },
-            {
-              "id": "g1-question",
-              "label": "Ask with 幾",
-              "traditional": "現在幾點（幾分）？",
-              "simplified": "现在几点（几分）？",
-              "pinyin": "Xiànzài jǐ diǎn (jǐ fēn)?",
-              "english": "What time is it now?",
-              "note": "Replace the unknown number with 幾. Keep its time marker after it."
-            }
-          ],
-          "takeaway": "Large unit first, small unit second: month then date, hour then minute. 星期 is different: it comes before its number."
-        },
         "patternRows": [],
         "subsections": [
           {
@@ -3583,41 +3427,6 @@
           "V(O)"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Give the listener the time before the event",
-          "description": "The book’s table: the time word sits between the subject and the action.",
-          "prompt": "Where does the time block belong?",
-          "choices": [
-            {
-              "id": "g2-correct",
-              "label": "Time before the action",
-              "traditional": "我九點三十分上課。",
-              "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
-              "english": "I start class at 9:30.",
-              "note": "The time 九點三十分 sits right before the action 上課.",
-              "simplified": "我九点三十分上课。"
-            },
-            {
-              "id": "g2-negative",
-              "label": "Time with 沒有",
-              "traditional": "他今天沒有課。",
-              "pinyin": "Tā jīntiān méi yǒu kè.",
-              "english": "He does not have class today.",
-              "note": "After 他 comes the time 今天, then 沒有課.",
-              "simplified": "他今天没有课。"
-            },
-            {
-              "id": "g2-question",
-              "label": "Ask when",
-              "traditional": "你幾點去圖書館？",
-              "pinyin": "Nǐ jǐ diǎn qù túshūguǎn?",
-              "english": "What time do you go to the library?",
-              "note": "幾點 fills the same time position as a clock answer.",
-              "simplified": "你几点去图书馆？"
-            }
-          ],
-          "takeaway": "Say who, then when, then the action."
-        },
         "patternRows": [
           {
             "id": "g2-pattern-1",
@@ -4239,41 +4048,6 @@
           "O"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "有 has its own negative partner",
-          "description": "Switch between having and not having by changing only the middle block.",
-          "prompt": "Does she have a Taiwanese friend?",
-          "choices": [
-            {
-              "id": "g3-positive",
-              "label": "Has · 有",
-              "traditional": "她有台灣朋友。",
-              "pinyin": "Tā yǒu Táiwān péngyǒu.",
-              "english": "She has a Taiwanese friend.",
-              "note": "有 sits between the person and the thing they have.",
-              "simplified": "她有台湾朋友。"
-            },
-            {
-              "id": "g3-new",
-              "label": "New classmate",
-              "traditional": "我們有新同學。",
-              "pinyin": "Wǒmen yǒu xīn tóngxué.",
-              "english": "We have a new classmate.",
-              "note": "Same shape: person, then 有, then the thing.",
-              "simplified": "我们有新同学。"
-            },
-            {
-              "id": "g3-negative",
-              "label": "Does not have · 沒有",
-              "traditional": "王先生沒有孩子。",
-              "pinyin": "Wáng xiānshēng méi yǒu háizi.",
-              "english": "Mr. Wang does not have children.",
-              "note": "Negate 有 with 沒有, never with 不.",
-              "simplified": "王先生没有孩子。"
-            }
-          ],
-          "takeaway": "有 becomes 沒有 in a negative sentence."
-        },
         "patternRows": [
           {
             "id": "g3-pattern-1",

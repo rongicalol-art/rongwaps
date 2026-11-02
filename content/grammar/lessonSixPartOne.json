@@ -238,41 +238,6 @@
       "V(O)"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Flip the skill switch",
-      "description": "The activity stays the same. 會 tells whether the skill is available.",
-      "prompt": "Is the skill switched on?",
-      "choices": [
-        {
-          "id": "g1-on",
-          "label": "Skill on",
-          "traditional": "我會游泳。",
-          "simplified": "我会游泳。",
-          "pinyin": "Wǒ huì yóuyǒng.",
-          "english": "I know how to swim.",
-          "note": "會 shows a learned ability."
-        },
-        {
-          "id": "g1-off",
-          "label": "Skill off",
-          "traditional": "我不會打棒球。",
-          "simplified": "我不会打棒球。",
-          "pinyin": "Wǒ bú huì dǎ bàngqiú.",
-          "english": "I do not know how to play baseball.",
-          "note": "不 goes directly before 會."
-        },
-        {
-          "id": "g1-check",
-          "label": "Ask about a skill",
-          "traditional": "你會不會做飯？",
-          "simplified": "你会不会做饭？",
-          "pinyin": "Nǐ huì bú huì zuòfàn?",
-          "english": "Do you know how to cook?",
-          "note": "會不會 asks whether the skill is available."
-        }
-      ],
-      "takeaway": "Person + 會 + skill. Use 不會 for no skill and 會不會 to ask."
-    },
     "patternRows": [
       {
         "id": "g1-p1",
@@ -1304,50 +1269,6 @@
       "(A)Vs"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Choose the lane to 得",
-      "description": "Every lane ends with verb + 得 + performance. The activity’s shape decides what comes before it.",
-      "prompt": "How is the activity introduced?",
-      "choices": [
-        {
-          "id": "g2-simple",
-          "label": "Simple verb",
-          "traditional": "他跑得很快。",
-          "simplified": "他跑得很快。",
-          "pinyin": "Tā pǎo de hěn kuài.",
-          "english": "He runs very fast.",
-          "note": "The action word 跑 goes straight before 得."
-        },
-        {
-          "id": "g2-repeat",
-          "label": "Repeat the verb",
-          "traditional": "我跑步跑得很快。",
-          "simplified": "我跑步跑得很快。",
-          "pinyin": "Wǒ pǎobù pǎo de hěn kuài.",
-          "english": "I run very fast.",
-          "note": "Say the full activity 跑步, then repeat the action word 跑 before 得."
-        },
-        {
-          "id": "g2-object",
-          "label": "Move object forward",
-          "traditional": "他網球打得不錯。",
-          "simplified": "他网球打得不错。",
-          "pinyin": "Tā wǎngqiú dǎ de búcuò.",
-          "english": "He plays tennis quite well.",
-          "note": "網球 becomes the topic, leaving 打 next to 得."
-        },
-        {
-          "id": "g2-owned",
-          "label": "Owned activity",
-          "traditional": "他的牛肉麵做得很不錯。",
-          "simplified": "他的牛肉面做得很不错。",
-          "pinyin": "Tā de niúròumiàn zuò de hěn búcuò.",
-          "english": "He cooks good beef noodles.",
-          "note": "他的牛肉麵 is the topic; 做 still stands directly before 得."
-        }
-      ],
-      "takeaway": "Protect the core: action word + 得 + performance. Move or repeat the thing when needed."
-    },
     "sentenceSpine": {
       "title": "Build the unbreakable core",
       "description": "Three blocks. The middle block is the rule that never changes.",
@@ -3676,41 +3597,6 @@
           "V(O)"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Flip the skill switch",
-          "description": "The activity stays the same. 會 tells whether the skill is available.",
-          "prompt": "Is the skill switched on?",
-          "choices": [
-            {
-              "id": "g1-on",
-              "label": "Skill on",
-              "traditional": "我會游泳。",
-              "simplified": "我会游泳。",
-              "pinyin": "Wǒ huì yóuyǒng.",
-              "english": "I know how to swim.",
-              "note": "會 shows a learned ability."
-            },
-            {
-              "id": "g1-off",
-              "label": "Skill off",
-              "traditional": "我不會打棒球。",
-              "simplified": "我不会打棒球。",
-              "pinyin": "Wǒ bú huì dǎ bàngqiú.",
-              "english": "I do not know how to play baseball.",
-              "note": "不 goes directly before 會."
-            },
-            {
-              "id": "g1-check",
-              "label": "Ask about a skill",
-              "traditional": "你會不會做飯？",
-              "simplified": "你会不会做饭？",
-              "pinyin": "Nǐ huì bú huì zuòfàn?",
-              "english": "Do you know how to cook?",
-              "note": "會不會 asks whether the skill is available."
-            }
-          ],
-          "takeaway": "Person + 會 + skill. Use 不會 for no skill and 會不會 to ask."
-        },
         "patternRows": [
           {
             "id": "g1-p1",
@@ -4742,50 +4628,6 @@
           "(A)Vs"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Choose the lane to 得",
-          "description": "Every lane ends with verb + 得 + performance. The activity’s shape decides what comes before it.",
-          "prompt": "How is the activity introduced?",
-          "choices": [
-            {
-              "id": "g2-simple",
-              "label": "Simple verb",
-              "traditional": "他跑得很快。",
-              "simplified": "他跑得很快。",
-              "pinyin": "Tā pǎo de hěn kuài.",
-              "english": "He runs very fast.",
-              "note": "The action word 跑 goes straight before 得."
-            },
-            {
-              "id": "g2-repeat",
-              "label": "Repeat the verb",
-              "traditional": "我跑步跑得很快。",
-              "simplified": "我跑步跑得很快。",
-              "pinyin": "Wǒ pǎobù pǎo de hěn kuài.",
-              "english": "I run very fast.",
-              "note": "Say the full activity 跑步, then repeat the action word 跑 before 得."
-            },
-            {
-              "id": "g2-object",
-              "label": "Move object forward",
-              "traditional": "他網球打得不錯。",
-              "simplified": "他网球打得不错。",
-              "pinyin": "Tā wǎngqiú dǎ de búcuò.",
-              "english": "He plays tennis quite well.",
-              "note": "網球 becomes the topic, leaving 打 next to 得."
-            },
-            {
-              "id": "g2-owned",
-              "label": "Owned activity",
-              "traditional": "他的牛肉麵做得很不錯。",
-              "simplified": "他的牛肉面做得很不错。",
-              "pinyin": "Tā de niúròumiàn zuò de hěn búcuò.",
-              "english": "He cooks good beef noodles.",
-              "note": "他的牛肉麵 is the topic; 做 still stands directly before 得."
-            }
-          ],
-          "takeaway": "Protect the core: action word + 得 + performance. Move or repeat the thing when needed."
-        },
         "sentenceSpine": {
           "title": "Build the unbreakable core",
           "description": "Three blocks. The middle block is the rule that never changes.",

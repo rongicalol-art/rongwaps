@@ -629,41 +629,6 @@
       "S + (Neg) + V"
     ],
     "patternAccentColumn": 0,
-    "discoveryLab": {
-      "title": "Move the spotlight, keep the meaning",
-      "description": "The thing at the start tells the listener what this sentence is about. What follows is what you think or do about it.",
-      "prompt": "What deserves the spotlight?",
-      "choices": [
-        {
-          "id": "g1-cake",
-          "label": "One thing",
-          "traditional": "蛋糕，我喜歡。",
-          "simplified": "蛋糕，我喜欢。",
-          "pinyin": "Dàngāo, wǒ xǐhuān.",
-          "english": "I like cakes.",
-          "note": "蛋糕 is in the spotlight. 我喜歡 says what you think about it."
-        },
-        {
-          "id": "g1-two-things",
-          "label": "Several things",
-          "traditional": "書、筆，我都有。",
-          "simplified": "书、笔，我都有。",
-          "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
-          "english": "The book and the pen, I have them both.",
-          "note": "Two things come first, so 都 means \"both\"."
-        },
-        {
-          "id": "g1-contrast",
-          "label": "Contrast two things",
-          "traditional": "茶，我喜歡；咖啡，我不喜歡。",
-          "simplified": "茶，我喜欢；咖啡，我不喜欢。",
-          "pinyin": "Chá, wǒ xǐhuān; kāfēi, wǒ bù xǐhuān.",
-          "english": "Tea, I like; coffee, I do not.",
-          "note": "Putting each drink at the start makes the contrast easy to hear."
-        }
-      ],
-      "takeaway": "Put the thing first, pause, then say what you think or do."
-    },
     "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
@@ -2072,39 +2037,6 @@
       "ending"
     ],
     "patternAccentColumn": 0,
-    "discoveryLab": {
-      "title": "Turn up the reaction meter",
-      "description": "太…了 frames one description. Context tells you whether the reaction is delighted or uncomfortable.",
-      "prompt": "What kind of reaction do you hear?",
-      "choices": [
-        {
-          "id": "g3-delight",
-          "label": "Delighted",
-          "traditional": "太好了！",
-          "pinyin": "Tài hǎo le!",
-          "english": "Awesome!",
-          "note": "With 好, the strong reaction is enthusiastic and positive."
-        },
-        {
-          "id": "g3-size",
-          "label": "Too much",
-          "traditional": "太大了！",
-          "pinyin": "Tài dà le!",
-          "english": "It is so big!",
-          "note": "With 大, it can mean \"too big\" — more than what fits."
-        },
-        {
-          "id": "g3-taste",
-          "label": "Very impressed",
-          "traditional": "太好吃了，我常常去吃。",
-          "pinyin": "Tài hǎochī le, wǒ chángcháng qù chī.",
-          "english": "It is so delicious; I often go eat them.",
-          "note": "The reaction frame stays complete: 太 opens it, 了 closes it.",
-          "simplified": "太好吃了，我常常去吃。"
-        }
-      ],
-      "takeaway": "Open with 太, name the feeling, close with 了."
-    },
     "patternRows": [
       {
         "id": "g3-pattern-1",
@@ -3289,41 +3221,6 @@
       "(A)Vs / V(O)"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Send an echo with 也",
-      "description": "The first part of the sentence states a fact. 也 tells the listener that the next person, thing, or action matches it.",
-      "prompt": "What kind of echo follows?",
-      "choices": [
-        {
-          "id": "g2-quality",
-          "label": "Same person, another quality",
-          "traditional": "她很漂亮，也很可愛。",
-          "simplified": "她很漂亮，也很可爱。",
-          "pinyin": "Tā hěn piàoliang, yě hěn kě’ài.",
-          "english": "She is very beautiful, and is also very cute.",
-          "note": "The same person stays; 也 adds another matching description."
-        },
-        {
-          "id": "g2-object",
-          "label": "Same person, another thing",
-          "traditional": "我買書，也買筆。",
-          "simplified": "我买书，也买笔。",
-          "pinyin": "Wǒ mǎi shū, yě mǎi bǐ.",
-          "english": "I bought a book, and(I bought) a pen too.",
-          "note": "買 is repeated after 也 because the second thing shares the same action."
-        },
-        {
-          "id": "g2-person",
-          "label": "Another person",
-          "traditional": "我買書，他也買書。",
-          "simplified": "我买书，他也买书。",
-          "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
-          "english": "I bought a book, and he also bought one.",
-          "note": "The new person 他 comes before 也."
-        }
-      ],
-      "takeaway": "New person or thing first, 也 second, shared result after it."
-    },
     "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
@@ -4790,41 +4687,6 @@
           "S + (Neg) + V"
         ],
         "patternAccentColumn": 0,
-        "discoveryLab": {
-          "title": "Move the spotlight, keep the meaning",
-          "description": "The thing at the start tells the listener what this sentence is about. What follows is what you think or do about it.",
-          "prompt": "What deserves the spotlight?",
-          "choices": [
-            {
-              "id": "g1-cake",
-              "label": "One thing",
-              "traditional": "蛋糕，我喜歡。",
-              "simplified": "蛋糕，我喜欢。",
-              "pinyin": "Dàngāo, wǒ xǐhuān.",
-              "english": "I like cakes.",
-              "note": "蛋糕 is in the spotlight. 我喜歡 says what you think about it."
-            },
-            {
-              "id": "g1-two-things",
-              "label": "Several things",
-              "traditional": "書、筆，我都有。",
-              "simplified": "书、笔，我都有。",
-              "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
-              "english": "The book and the pen, I have them both.",
-              "note": "Two things come first, so 都 means \"both\"."
-            },
-            {
-              "id": "g1-contrast",
-              "label": "Contrast two things",
-              "traditional": "茶，我喜歡；咖啡，我不喜歡。",
-              "simplified": "茶，我喜欢；咖啡，我不喜欢。",
-              "pinyin": "Chá, wǒ xǐhuān; kāfēi, wǒ bù xǐhuān.",
-              "english": "Tea, I like; coffee, I do not.",
-              "note": "Putting each drink at the start makes the contrast easy to hear."
-            }
-          ],
-          "takeaway": "Put the thing first, pause, then say what you think or do."
-        },
         "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
@@ -6232,41 +6094,6 @@
           "(A)Vs / V(O)"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Send an echo with 也",
-          "description": "The first part of the sentence states a fact. 也 tells the listener that the next person, thing, or action matches it.",
-          "prompt": "What kind of echo follows?",
-          "choices": [
-            {
-              "id": "g2-quality",
-              "label": "Same person, another quality",
-              "traditional": "她很漂亮，也很可愛。",
-              "simplified": "她很漂亮，也很可爱。",
-              "pinyin": "Tā hěn piàoliang, yě hěn kě’ài.",
-              "english": "She is very beautiful, and is also very cute.",
-              "note": "The same person stays; 也 adds another matching description."
-            },
-            {
-              "id": "g2-object",
-              "label": "Same person, another thing",
-              "traditional": "我買書，也買筆。",
-              "simplified": "我买书，也买笔。",
-              "pinyin": "Wǒ mǎi shū, yě mǎi bǐ.",
-              "english": "I bought a book, and(I bought) a pen too.",
-              "note": "買 is repeated after 也 because the second thing shares the same action."
-            },
-            {
-              "id": "g2-person",
-              "label": "Another person",
-              "traditional": "我買書，他也買書。",
-              "simplified": "我买书，他也买书。",
-              "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
-              "english": "I bought a book, and he also bought one.",
-              "note": "The new person 他 comes before 也."
-            }
-          ],
-          "takeaway": "New person or thing first, 也 second, shared result after it."
-        },
         "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
@@ -7725,39 +7552,6 @@
           "ending"
         ],
         "patternAccentColumn": 0,
-        "discoveryLab": {
-          "title": "Turn up the reaction meter",
-          "description": "太…了 frames one description. Context tells you whether the reaction is delighted or uncomfortable.",
-          "prompt": "What kind of reaction do you hear?",
-          "choices": [
-            {
-              "id": "g3-delight",
-              "label": "Delighted",
-              "traditional": "太好了！",
-              "pinyin": "Tài hǎo le!",
-              "english": "Awesome!",
-              "note": "With 好, the strong reaction is enthusiastic and positive."
-            },
-            {
-              "id": "g3-size",
-              "label": "Too much",
-              "traditional": "太大了！",
-              "pinyin": "Tài dà le!",
-              "english": "It is so big!",
-              "note": "With 大, it can mean \"too big\" — more than what fits."
-            },
-            {
-              "id": "g3-taste",
-              "label": "Very impressed",
-              "traditional": "太好吃了，我常常去吃。",
-              "pinyin": "Tài hǎochī le, wǒ chángcháng qù chī.",
-              "english": "It is so delicious; I often go eat them.",
-              "note": "The reaction frame stays complete: 太 opens it, 了 closes it.",
-              "simplified": "太好吃了，我常常去吃。"
-            }
-          ],
-          "takeaway": "Open with 太, name the feeling, close with 了."
-        },
         "patternRows": [
           {
             "id": "g3-pattern-1",

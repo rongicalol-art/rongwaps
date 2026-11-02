@@ -1767,33 +1767,7 @@
         "pinyin": "shǒu",
         "meaning": "measure word for songs"
       }
-    ],
-    "discoveryLab": {
-      "title": "Try the action",
-      "description": "Read the book’s examples.",
-      "prompt": "Choose an example.",
-      "choices": [
-        {
-          "id": "l8g4-lab1",
-          "label": "Try eating",
-          "traditional": "A：我不知道要買哪種甜點。 B：你可以先吃吃看。",
-          "simplified": "A：我不知道要买哪种甜点。 B：你可以先吃吃看。",
-          "pinyin": "A: Wǒ bù zhīdào yào mǎi nǎ zhǒng tiándiǎn. B: Nǐ kěyǐ xiān chī chi kàn.",
-          "english": "A: I don’t know which kind of dessert to buy. B: You can try some first and see.",
-          "note": "The action verb is 吃."
-        },
-        {
-          "id": "l8g4-lab2",
-          "label": "Try drinking",
-          "traditional": "A：聽說這裡的咖啡很好喝。 B：好，我喝喝看。",
-          "simplified": "A：听说这里的咖啡很好喝。 B：好，我喝喝看。",
-          "pinyin": "A: Tīngshuō zhèlǐ de kāfēi hěn hǎohē. B: Hǎo, wǒ hē he kàn.",
-          "english": "A: I hear the coffee here tastes good. B: OK, I’ll try some and see.",
-          "note": "The action verb is 喝."
-        }
-      ],
-      "takeaway": "Repeat a one-syllable action verb, then add 看: try the action and see."
-    }
+    ]
   },
   "LESSON_EIGHT_GRAMMAR_ONE": {
     "bookId": 1,
@@ -3577,32 +3551,6 @@
         "meaning": "ride"
       }
     ],
-    "discoveryLab": {
-      "title": "Pleasant or difficult",
-      "description": "Read the book’s examples.",
-      "prompt": "Choose an example.",
-      "choices": [
-        {
-          "id": "l8g1-lab1",
-          "label": "Taste",
-          "traditional": "這家餐廳的牛肉麵很好吃，我常吃。",
-          "simplified": "这家餐厅的牛肉面很好吃，我常吃。",
-          "pinyin": "Zhè jiā cāntīng de niúròu miàn hěn hǎochī, wǒ cháng chī.",
-          "english": "The beef noodles is delicious from this restaurant; I have (it) often.",
-          "note": "好吃 describes a pleasant taste."
-        },
-        {
-          "id": "l8g1-lab2",
-          "label": "Ease",
-          "traditional": "這輛腳踏車太小了，很難騎。",
-          "simplified": "这辆脚踏车太小了，很难骑。",
-          "pinyin": "Zhè liàng jiǎotàchē tài xiǎo le, hěn nánqí.",
-          "english": "This bike is too small; it is difficult to ride.",
-          "note": "難騎 describes a difficult action."
-        }
-      ],
-      "takeaway": "好 or 難 before a perception verb says something is pleasant or unpleasant. Before an action verb, it says something is easy or hard to do."
-    },
     "contrast": {
       "title": "Taste and ease",
       "description": "Read the book’s examples.",
@@ -4805,32 +4753,6 @@
         "meaning": "measure word for songs"
       }
     ],
-    "discoveryLab": {
-      "title": "Check an assumption",
-      "description": "Read the book’s examples.",
-      "prompt": "Choose an example.",
-      "choices": [
-        {
-          "id": "l8g3-lab1",
-          "label": "Confirmed",
-          "traditional": "A：你會唱中文歌吧？ B：會。可是不多，我只會唱三首。",
-          "simplified": "A：你会唱中文歌吧？ B：会。可是不多，我只会唱三首。",
-          "pinyin": "A: Nǐ huì chàng Zhōngwén gē ba? B: Huì. Kěshì bù duō, wǒ zhǐ huì chàng sān shǒu.",
-          "english": "A: You can sing Chinese songs, right? B: Yes, but not many. I can only sing three.",
-          "note": "B confirms the guess."
-        },
-        {
-          "id": "l8g3-lab2",
-          "label": "Corrected",
-          "traditional": "A：他平常都坐捷運來上課吧？ B：不是，他都坐公車來上課。",
-          "simplified": "A：他平常都坐捷运来上课吧？ B：不是，他都坐公车来上课。",
-          "pinyin": "A: Tā píngcháng dōu zuò jiéyùn lái shàng kè ba? B: Bú shì, tā dōu zuò gōngchē lái shàng kè.",
-          "english": "A: He usually comes to class by MRT, right? B: No, he always comes to class by bus.",
-          "note": "B corrects the guess."
-        }
-      ],
-      "takeaway": "Put 吧 after a statement when you think it is true and want confirmation."
-    },
     "contrast": {
       "title": "A guess can be corrected",
       "description": "Read the book’s examples.",
@@ -8006,32 +7928,6 @@
             "meaning": "ride"
           }
         ],
-        "discoveryLab": {
-          "title": "Pleasant or difficult",
-          "description": "Read the book’s examples.",
-          "prompt": "Choose an example.",
-          "choices": [
-            {
-              "id": "l8g1-lab1",
-              "label": "Taste",
-              "traditional": "這家餐廳的牛肉麵很好吃，我常吃。",
-              "simplified": "这家餐厅的牛肉面很好吃，我常吃。",
-              "pinyin": "Zhè jiā cāntīng de niúròu miàn hěn hǎochī, wǒ cháng chī.",
-              "english": "The beef noodles is delicious from this restaurant; I have (it) often.",
-              "note": "好吃 describes a pleasant taste."
-            },
-            {
-              "id": "l8g1-lab2",
-              "label": "Ease",
-              "traditional": "這輛腳踏車太小了，很難騎。",
-              "simplified": "这辆脚踏车太小了，很难骑。",
-              "pinyin": "Zhè liàng jiǎotàchē tài xiǎo le, hěn nánqí.",
-              "english": "This bike is too small; it is difficult to ride.",
-              "note": "難騎 describes a difficult action."
-            }
-          ],
-          "takeaway": "好 or 難 before a perception verb says something is pleasant or unpleasant. Before an action verb, it says something is easy or hard to do."
-        },
         "contrast": {
           "title": "Taste and ease",
           "description": "Read the book’s examples.",
@@ -11466,32 +11362,6 @@
             "meaning": "measure word for songs"
           }
         ],
-        "discoveryLab": {
-          "title": "Check an assumption",
-          "description": "Read the book’s examples.",
-          "prompt": "Choose an example.",
-          "choices": [
-            {
-              "id": "l8g3-lab1",
-              "label": "Confirmed",
-              "traditional": "A：你會唱中文歌吧？ B：會。可是不多，我只會唱三首。",
-              "simplified": "A：你会唱中文歌吧？ B：会。可是不多，我只会唱三首。",
-              "pinyin": "A: Nǐ huì chàng Zhōngwén gē ba? B: Huì. Kěshì bù duō, wǒ zhǐ huì chàng sān shǒu.",
-              "english": "A: You can sing Chinese songs, right? B: Yes, but not many. I can only sing three.",
-              "note": "B confirms the guess."
-            },
-            {
-              "id": "l8g3-lab2",
-              "label": "Corrected",
-              "traditional": "A：他平常都坐捷運來上課吧？ B：不是，他都坐公車來上課。",
-              "simplified": "A：他平常都坐捷运来上课吧？ B：不是，他都坐公车来上课。",
-              "pinyin": "A: Tā píngcháng dōu zuò jiéyùn lái shàng kè ba? B: Bú shì, tā dōu zuò gōngchē lái shàng kè.",
-              "english": "A: He usually comes to class by MRT, right? B: No, he always comes to class by bus.",
-              "note": "B corrects the guess."
-            }
-          ],
-          "takeaway": "Put 吧 after a statement when you think it is true and want confirmation."
-        },
         "contrast": {
           "title": "A guess can be corrected",
           "description": "Read the book’s examples.",
@@ -12631,33 +12501,7 @@
             "pinyin": "shǒu",
             "meaning": "measure word for songs"
           }
-        ],
-        "discoveryLab": {
-          "title": "Try the action",
-          "description": "Read the book’s examples.",
-          "prompt": "Choose an example.",
-          "choices": [
-            {
-              "id": "l8g4-lab1",
-              "label": "Try eating",
-              "traditional": "A：我不知道要買哪種甜點。 B：你可以先吃吃看。",
-              "simplified": "A：我不知道要买哪种甜点。 B：你可以先吃吃看。",
-              "pinyin": "A: Wǒ bù zhīdào yào mǎi nǎ zhǒng tiándiǎn. B: Nǐ kěyǐ xiān chī chi kàn.",
-              "english": "A: I don’t know which kind of dessert to buy. B: You can try some first and see.",
-              "note": "The action verb is 吃."
-            },
-            {
-              "id": "l8g4-lab2",
-              "label": "Try drinking",
-              "traditional": "A：聽說這裡的咖啡很好喝。 B：好，我喝喝看。",
-              "simplified": "A：听说这里的咖啡很好喝。 B：好，我喝喝看。",
-              "pinyin": "A: Tīngshuō zhèlǐ de kāfēi hěn hǎohē. B: Hǎo, wǒ hē he kàn.",
-              "english": "A: I hear the coffee here tastes good. B: OK, I’ll try some and see.",
-              "note": "The action verb is 喝."
-            }
-          ],
-          "takeaway": "Repeat a one-syllable action verb, then add 看: try the action and see."
-        }
+        ]
       },
       {
         "bookId": 1,

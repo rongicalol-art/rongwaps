@@ -435,49 +435,6 @@
         }
       ]
     },
-    "liveSceneLab": {
-      "title": "Open a different life moment",
-      "description": "The moment changes; 的時候 keeps the situation attached to what happens inside it.",
-      "prompt": "Choose a moment",
-      "choices": [
-        {
-          "id": "l12g5-meal",
-          "label": "Eating",
-          "subject": "我",
-          "action": "不用手機",
-          "place": "家",
-          "traditional": "吃飯的時候，我不用手機。",
-          "simplified": "吃饭的时候，我不用手机。",
-          "pinyin": "Chīfàn de shíhòu, wǒ bú yòng shǒujī.",
-          "english": "When eating, I do not use my phone.",
-          "note": "吃飯 names the moment."
-        },
-        {
-          "id": "l12g5-mood",
-          "label": "Feeling down",
-          "subject": "我",
-          "action": "聽音樂",
-          "traditional": "心情不好的時候，我會聽音樂。",
-          "simplified": "心情不好的时候，我会听音乐。",
-          "pinyin": "Xīnqíng bù hǎo de shíhòu, wǒ huì tīng yīnyuè.",
-          "english": "When I feel unhappy, I listen to music.",
-          "note": "A state can open the moment window."
-        },
-        {
-          "id": "l12g5-work",
-          "label": "At work",
-          "subject": "我",
-          "action": "說中文",
-          "place": "公司",
-          "traditional": "工作的時候，我常常說中文。",
-          "simplified": "工作的时候，我常常说中文。",
-          "pinyin": "Gōngzuò de shíhòu, wǒ chángcháng shuō Zhōngwén.",
-          "english": "When working, I often speak Chinese.",
-          "note": "工作 is the situation."
-        }
-      ],
-      "takeaway": "Name the moment first: situation + 的時候. Then say what happens."
-    },
     "examples": [
       {
         "id": "l12g5-e1",
@@ -15415,49 +15372,6 @@
               }
             }
           ]
-        },
-        "liveSceneLab": {
-          "title": "Open a different life moment",
-          "description": "The moment changes; 的時候 keeps the situation attached to what happens inside it.",
-          "prompt": "Choose a moment",
-          "choices": [
-            {
-              "id": "l12g5-meal",
-              "label": "Eating",
-              "subject": "我",
-              "action": "不用手機",
-              "place": "家",
-              "traditional": "吃飯的時候，我不用手機。",
-              "simplified": "吃饭的时候，我不用手机。",
-              "pinyin": "Chīfàn de shíhòu, wǒ bú yòng shǒujī.",
-              "english": "When eating, I do not use my phone.",
-              "note": "吃飯 names the moment."
-            },
-            {
-              "id": "l12g5-mood",
-              "label": "Feeling down",
-              "subject": "我",
-              "action": "聽音樂",
-              "traditional": "心情不好的時候，我會聽音樂。",
-              "simplified": "心情不好的时候，我会听音乐。",
-              "pinyin": "Xīnqíng bù hǎo de shíhòu, wǒ huì tīng yīnyuè.",
-              "english": "When I feel unhappy, I listen to music.",
-              "note": "A state can open the moment window."
-            },
-            {
-              "id": "l12g5-work",
-              "label": "At work",
-              "subject": "我",
-              "action": "說中文",
-              "place": "公司",
-              "traditional": "工作的時候，我常常說中文。",
-              "simplified": "工作的时候，我常常说中文。",
-              "pinyin": "Gōngzuò de shíhòu, wǒ chángcháng shuō Zhōngwén.",
-              "english": "When working, I often speak Chinese.",
-              "note": "工作 is the situation."
-            }
-          ],
-          "takeaway": "Name the moment first: situation + 的時候. Then say what happens."
         },
         "examples": [
           {

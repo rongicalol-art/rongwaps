@@ -624,51 +624,6 @@
       "V or adjective"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Gather the group before 都",
-      "description": "都 collects everyone or everything already named, then gives them one shared result.",
-      "prompt": "Which group shares the result?",
-      "choices": [
-        {
-          "id": "g5-people",
-          "label": "All people",
-          "traditional": "我們都買筆。",
-          "simplified": "我们都买笔。",
-          "pinyin": "Wǒmen dōu mǎi bǐ.",
-          "english": "Both (All) of us bought pens.",
-          "note": "我們 is the group. 都 comes before the action 買."
-        },
-        {
-          "id": "g5-things",
-          "label": "Both colors",
-          "traditional": "這兩個顏色都很好看。",
-          "simplified": "这两个颜色都很好看。",
-          "pinyin": "Zhè liǎng ge yánsè dōu hěn hǎokàn.",
-          "english": "These two colors are both very beautiful.",
-          "note": "The two colors share the same description."
-        },
-        {
-          "id": "g5-negative",
-          "label": "Whole group shares the “not”",
-          "traditional": "我們都不要去他家。",
-          "simplified": "我们都不要去他家。",
-          "pinyin": "Wǒmen dōu bú yào qù tā jiā.",
-          "english": "None of us wants to go to his home.",
-          "note": "都 comes before 不要 because the whole group shares the same “not.”"
-        },
-        {
-          "id": "g5-repair",
-          "label": "Repair placement",
-          "traditional": "都他們喜歡喝珍珠奶茶嗎？ → 他們都喜歡喝珍珠奶茶嗎？",
-          "simplified": "都他们喜欢喝珍珠奶茶吗？ → 他们都喜欢喝珍珠奶茶吗？",
-          "pinyin": "dōu tāmen xǐhuān hē zhēnzhū nǎichá ma? → tāmen dōu xǐhuān hē zhēnzhū nǎichá ma?",
-          "english": "Do they all like drinking bubble milk tea?",
-          "note": "Name the group before 都.",
-          "isCorrection": true
-        }
-      ],
-      "takeaway": "Group first, 都 second, shared action or description last."
-    },
     "patternRows": [
       {
         "id": "g5-pattern-1",
@@ -1841,51 +1796,6 @@
       "Noun"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Keep 的 when the thing is not named",
-      "description": "的 can join a describing word to a thing, or stand in for a thing everyone already knows.",
-      "prompt": "Does the listener need the thing named again?",
-      "choices": [
-        {
-          "id": "g4-full",
-          "label": "Say the noun",
-          "traditional": "便宜的東西",
-          "simplified": "便宜的东西",
-          "pinyin": "piányí de dōngxi",
-          "english": "cheap things",
-          "note": "A longer description uses 的 before the noun."
-        },
-        {
-          "id": "g4-short",
-          "label": "Short description",
-          "traditional": "新（的）書",
-          "simplified": "新（的）书",
-          "pinyin": "xīn (de) shū",
-          "english": "new books",
-          "note": "With a one-syllable description such as 新, 的 is often omitted."
-        },
-        {
-          "id": "g4-replace",
-          "label": "Noun already known",
-          "traditional": "他要買大的，我要買小的。",
-          "simplified": "他要买大的，我要买小的。",
-          "pinyin": "Tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
-          "english": "He wants to buy the big one; I want to buy the small one.",
-          "note": "大的 keeps 的 because it stands for the thing already named."
-        },
-        {
-          "id": "g4-repair",
-          "label": "Do not drop both",
-          "traditional": "他要買大，我要買小 → 他要買大的，我要買小的。",
-          "simplified": "他要买大，我要买小 → 他要买大的，我要买小的。",
-          "pinyin": "Tā yào mǎi dà, wǒ yào mǎi xiǎo → tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
-          "english": "He wants to buy the big one; I want to buy the small one.",
-          "note": "When the thing is dropped, 的 stays.",
-          "isCorrection": true
-        }
-      ],
-      "takeaway": "When the noun is omitted, keep 的: 他要買大的，我要買小的。"
-    },
     "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
@@ -3866,41 +3776,6 @@
       "N"
     ],
     "patternAccentColumn": 0,
-    "discoveryLab": {
-      "title": "Pick the pointing word first",
-      "description": "The first word shows distance or asks the listener to choose.",
-      "prompt": "What job should the first word do?",
-      "choices": [
-        {
-          "id": "g3-this",
-          "label": "Near · 這",
-          "traditional": "這（一）種筆",
-          "simplified": "这（一）种笔",
-          "pinyin": "zhè (yì) zhǒng bǐ",
-          "english": "this kind of pen",
-          "note": "Use 這 for something near the speaker. 一 is normally omitted here."
-        },
-        {
-          "id": "g3-that",
-          "label": "Far · 那",
-          "traditional": "那兩本書",
-          "simplified": "那两本书",
-          "pinyin": "nà liǎng běn shū",
-          "english": "those two books",
-          "note": "Use 那 for items farther away. Two becomes 兩 before 本."
-        },
-        {
-          "id": "g3-which",
-          "label": "Choose · 哪",
-          "traditional": "哪十個人？",
-          "simplified": "哪十个人？",
-          "pinyin": "nǎ shí ge rén?",
-          "english": "which ten people?",
-          "note": "哪 asks which people or things you mean."
-        }
-      ],
-      "takeaway": "Choose 這, 那, or 哪 first, then the full number + measure word + noun."
-    },
     "patternRows": [
       {
         "id": "g3-pattern-1",
@@ -5258,41 +5133,6 @@
           "N"
         ],
         "patternAccentColumn": 0,
-        "discoveryLab": {
-          "title": "Pick the pointing word first",
-          "description": "The first word shows distance or asks the listener to choose.",
-          "prompt": "What job should the first word do?",
-          "choices": [
-            {
-              "id": "g3-this",
-              "label": "Near · 這",
-              "traditional": "這（一）種筆",
-              "simplified": "这（一）种笔",
-              "pinyin": "zhè (yì) zhǒng bǐ",
-              "english": "this kind of pen",
-              "note": "Use 這 for something near the speaker. 一 is normally omitted here."
-            },
-            {
-              "id": "g3-that",
-              "label": "Far · 那",
-              "traditional": "那兩本書",
-              "simplified": "那两本书",
-              "pinyin": "nà liǎng běn shū",
-              "english": "those two books",
-              "note": "Use 那 for items farther away. Two becomes 兩 before 本."
-            },
-            {
-              "id": "g3-which",
-              "label": "Choose · 哪",
-              "traditional": "哪十個人？",
-              "simplified": "哪十个人？",
-              "pinyin": "nǎ shí ge rén?",
-              "english": "which ten people?",
-              "note": "哪 asks which people or things you mean."
-            }
-          ],
-          "takeaway": "Choose 這, 那, or 哪 first, then the full number + measure word + noun."
-        },
         "patternRows": [
           {
             "id": "g3-pattern-1",
@@ -6655,51 +6495,6 @@
           "Noun"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Keep 的 when the thing is not named",
-          "description": "的 can join a describing word to a thing, or stand in for a thing everyone already knows.",
-          "prompt": "Does the listener need the thing named again?",
-          "choices": [
-            {
-              "id": "g4-full",
-              "label": "Say the noun",
-              "traditional": "便宜的東西",
-              "simplified": "便宜的东西",
-              "pinyin": "piányí de dōngxi",
-              "english": "cheap things",
-              "note": "A longer description uses 的 before the noun."
-            },
-            {
-              "id": "g4-short",
-              "label": "Short description",
-              "traditional": "新（的）書",
-              "simplified": "新（的）书",
-              "pinyin": "xīn (de) shū",
-              "english": "new books",
-              "note": "With a one-syllable description such as 新, 的 is often omitted."
-            },
-            {
-              "id": "g4-replace",
-              "label": "Noun already known",
-              "traditional": "他要買大的，我要買小的。",
-              "simplified": "他要买大的，我要买小的。",
-              "pinyin": "Tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
-              "english": "He wants to buy the big one; I want to buy the small one.",
-              "note": "大的 keeps 的 because it stands for the thing already named."
-            },
-            {
-              "id": "g4-repair",
-              "label": "Do not drop both",
-              "traditional": "他要買大，我要買小 → 他要買大的，我要買小的。",
-              "simplified": "他要买大，我要买小 → 他要买大的，我要买小的。",
-              "pinyin": "Tā yào mǎi dà, wǒ yào mǎi xiǎo → tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
-              "english": "He wants to buy the big one; I want to buy the small one.",
-              "note": "When the thing is dropped, 的 stays.",
-              "isCorrection": true
-            }
-          ],
-          "takeaway": "When the noun is omitted, keep 的: 他要買大的，我要買小的。"
-        },
         "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
@@ -8659,51 +8454,6 @@
           "V or adjective"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Gather the group before 都",
-          "description": "都 collects everyone or everything already named, then gives them one shared result.",
-          "prompt": "Which group shares the result?",
-          "choices": [
-            {
-              "id": "g5-people",
-              "label": "All people",
-              "traditional": "我們都買筆。",
-              "simplified": "我们都买笔。",
-              "pinyin": "Wǒmen dōu mǎi bǐ.",
-              "english": "Both (All) of us bought pens.",
-              "note": "我們 is the group. 都 comes before the action 買."
-            },
-            {
-              "id": "g5-things",
-              "label": "Both colors",
-              "traditional": "這兩個顏色都很好看。",
-              "simplified": "这两个颜色都很好看。",
-              "pinyin": "Zhè liǎng ge yánsè dōu hěn hǎokàn.",
-              "english": "These two colors are both very beautiful.",
-              "note": "The two colors share the same description."
-            },
-            {
-              "id": "g5-negative",
-              "label": "Whole group shares the “not”",
-              "traditional": "我們都不要去他家。",
-              "simplified": "我们都不要去他家。",
-              "pinyin": "Wǒmen dōu bú yào qù tā jiā.",
-              "english": "None of us wants to go to his home.",
-              "note": "都 comes before 不要 because the whole group shares the same “not.”"
-            },
-            {
-              "id": "g5-repair",
-              "label": "Repair placement",
-              "traditional": "都他們喜歡喝珍珠奶茶嗎？ → 他們都喜歡喝珍珠奶茶嗎？",
-              "simplified": "都他们喜欢喝珍珠奶茶吗？ → 他们都喜欢喝珍珠奶茶吗？",
-              "pinyin": "dōu tāmen xǐhuān hē zhēnzhū nǎichá ma? → tāmen dōu xǐhuān hē zhēnzhū nǎichá ma?",
-              "english": "Do they all like drinking bubble milk tea?",
-              "note": "Name the group before 都.",
-              "isCorrection": true
-            }
-          ],
-          "takeaway": "Group first, 都 second, shared action or description last."
-        },
         "patternRows": [
           {
             "id": "g5-pattern-1",

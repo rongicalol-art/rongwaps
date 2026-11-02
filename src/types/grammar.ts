@@ -1,12 +1,3 @@
-import type {
-  GrammarCompareChoice,
-  GrammarDiscoveryChoice,
-  GrammarLab,
-  GrammarLiveSceneChoice,
-  GrammarNumberLabChoice,
-  GrammarRouteLabChoice,
-  GrammarTimelineChoice,
-} from './grammarLabs';
 import type { SentenceAudio } from './grammarPractice';
 import type { GrammarPractice } from './grammarPractice';
 
@@ -286,13 +277,7 @@ export interface InteractiveGrammarPage {
   patternColumnDetails?: string[];
   patternAccentColumn?: number;
   patternRows: GrammarPatternRow[];
-  discoveryLab?: GrammarLab<GrammarDiscoveryChoice>;
-  numberLab?: GrammarLab<GrammarNumberLabChoice>;
-  routeLab?: GrammarLab<GrammarRouteLabChoice>;
   sentenceSpine?: GrammarSentenceSpine;
-  liveSceneLab?: GrammarLab<GrammarLiveSceneChoice>;
-  timelineLab?: GrammarLab<GrammarTimelineChoice>;
-  pairCompareLab?: GrammarLab<GrammarCompareChoice>;
   contrast?: GrammarContrast;
   confusion?: GrammarConfusion;
   examples: GrammarLessonExample[];

@@ -562,41 +562,6 @@
         }
       ]
     },
-    "discoveryLab": {
-      "title": "呢 echoes the question implied by the preceding statement",
-      "description": "Say the new person or thing, add 呢, and stop: the question itself is not repeated.",
-      "prompt": "What does 呢 ask back about?",
-      "choices": [
-        {
-          "id": "l1g4-lab1",
-          "label": "Country",
-          "traditional": "我是日本人，你呢？",
-          "simplified": "我是日本人，你呢？",
-          "pinyin": "Wǒ shì Rìběn rén, nǐ ne?",
-          "english": "I am Japanese. How about you?",
-          "note": "The listener answers the same country question about themselves."
-        },
-        {
-          "id": "l1g4-lab2",
-          "label": "Given name",
-          "traditional": "小林小姐叫友美，李先生呢？",
-          "simplified": "小林小姐叫友美，李先生呢？",
-          "pinyin": "Xiǎolín xiǎojiě jiào Yǒuměi, Lǐ xiānsheng ne?",
-          "english": "Miss Xiaolin is called Youmei. How about Mr. Li?",
-          "note": "李先生 stands before 呢; the name question is not repeated."
-        },
-        {
-          "id": "l1g4-lab3",
-          "label": "Tired?",
-          "traditional": "王太太很累，王先生呢？",
-          "simplified": "王太太很累，王先生呢？",
-          "pinyin": "Wáng tàitai hěn lèi, Wáng xiānsheng ne?",
-          "english": "Mrs. Wang is very tired. How about Mr. Wang?",
-          "note": "The question now asks whether Mr. Wang is tired."
-        }
-      ],
-      "takeaway": "呢 is a shortcut: keep the question implied by the preceding statement, change the person, and do not repeat the sentence."
-    },
     "questions": [
       {
         "id": "l1g4-q1",
@@ -1036,41 +1001,6 @@
         "teachingNote": "One verb can take two objects."
       }
     ],
-    "discoveryLab": {
-      "title": "Slot the sentence together",
-      "description": "The book's pattern keeps one order: subject first, then the verb, then the object.",
-      "prompt": "How does the sentence slot together?",
-      "choices": [
-        {
-          "id": "l1g5-lab1",
-          "label": "Verb then object",
-          "traditional": "你喜歡什麼？",
-          "simplified": "你喜欢什么？",
-          "pinyin": "Nǐ xǐhuān shénme?",
-          "english": "What do you like?",
-          "note": "The verb 喜歡 comes first; 什麼 stands in the object slot."
-        },
-        {
-          "id": "l1g5-lab2",
-          "label": "Two objects, one verb",
-          "traditional": "我愛爸爸、媽媽。",
-          "simplified": "我爱爸爸、妈妈。",
-          "pinyin": "Wǒ ài bàba, māma.",
-          "english": "I love Dad and Mom.",
-          "note": "Both 爸爸 and 媽媽 follow the verb 愛."
-        },
-        {
-          "id": "l1g5-lab3",
-          "label": "Negate the verb",
-          "traditional": "我喜歡李小姐，不喜歡王小姐。",
-          "simplified": "我喜欢李小姐，不喜欢王小姐。",
-          "pinyin": "Wǒ xǐhuān Lǐ xiǎojiě, bù xǐhuān Wáng xiǎojiě.",
-          "english": "I like Miss Li, but I do not like Miss Wang.",
-          "note": "Put 不 right before 喜歡."
-        }
-      ],
-      "takeaway": "Build the sentence in order: subject → verb → object. 不 sits right before the verb."
-    },
     "sentenceSpine": {
       "title": "Read the pattern",
       "description": "Subject first, then the verb, then the object. Put 不 right before the verb to say you do not like someone.",
@@ -1833,41 +1763,6 @@
             }
           ]
         },
-        "discoveryLab": {
-          "title": "呢 echoes the question implied by the preceding statement",
-          "description": "Say the new person or thing, add 呢, and stop: the question itself is not repeated.",
-          "prompt": "What does 呢 ask back about?",
-          "choices": [
-            {
-              "id": "l1g4-lab1",
-              "label": "Country",
-              "traditional": "我是日本人，你呢？",
-              "simplified": "我是日本人，你呢？",
-              "pinyin": "Wǒ shì Rìběn rén, nǐ ne?",
-              "english": "I am Japanese. How about you?",
-              "note": "The listener answers the same country question about themselves."
-            },
-            {
-              "id": "l1g4-lab2",
-              "label": "Given name",
-              "traditional": "小林小姐叫友美，李先生呢？",
-              "simplified": "小林小姐叫友美，李先生呢？",
-              "pinyin": "Xiǎolín xiǎojiě jiào Yǒuměi, Lǐ xiānsheng ne?",
-              "english": "Miss Xiaolin is called Youmei. How about Mr. Li?",
-              "note": "李先生 stands before 呢; the name question is not repeated."
-            },
-            {
-              "id": "l1g4-lab3",
-              "label": "Tired?",
-              "traditional": "王太太很累，王先生呢？",
-              "simplified": "王太太很累，王先生呢？",
-              "pinyin": "Wáng tàitai hěn lèi, Wáng xiānsheng ne?",
-              "english": "Mrs. Wang is very tired. How about Mr. Wang?",
-              "note": "The question now asks whether Mr. Wang is tired."
-            }
-          ],
-          "takeaway": "呢 is a shortcut: keep the question implied by the preceding statement, change the person, and do not repeat the sentence."
-        },
         "questions": [
           {
             "id": "l1g4-q1",
@@ -2427,41 +2322,6 @@
               }
             }
           ]
-        },
-        "discoveryLab": {
-          "title": "Slot the sentence together",
-          "description": "The book's pattern keeps one order: subject first, then the verb, then the object.",
-          "prompt": "How does the sentence slot together?",
-          "choices": [
-            {
-              "id": "l1g5-lab1",
-              "label": "Verb then object",
-              "traditional": "你喜歡什麼？",
-              "simplified": "你喜欢什么？",
-              "pinyin": "Nǐ xǐhuān shénme?",
-              "english": "What do you like?",
-              "note": "The verb 喜歡 comes first; 什麼 stands in the object slot."
-            },
-            {
-              "id": "l1g5-lab2",
-              "label": "Two objects, one verb",
-              "traditional": "我愛爸爸、媽媽。",
-              "simplified": "我爱爸爸、妈妈。",
-              "pinyin": "Wǒ ài bàba, māma.",
-              "english": "I love Dad and Mom.",
-              "note": "Both 爸爸 and 媽媽 follow the verb 愛."
-            },
-            {
-              "id": "l1g5-lab3",
-              "label": "Negate the verb",
-              "traditional": "我喜歡李小姐，不喜歡王小姐。",
-              "simplified": "我喜欢李小姐，不喜欢王小姐。",
-              "pinyin": "Wǒ xǐhuān Lǐ xiǎojiě, bù xǐhuān Wáng xiǎojiě.",
-              "english": "I like Miss Li, but I do not like Miss Wang.",
-              "note": "Put 不 right before 喜歡."
-            }
-          ],
-          "takeaway": "Build the sentence in order: subject → verb → object. 不 sits right before the verb."
         },
         "sentenceSpine": {
           "title": "Read the pattern",

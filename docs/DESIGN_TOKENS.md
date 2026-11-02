@@ -120,7 +120,7 @@ Typography rules maintain visual harmony across Latin UI text, Chinese glyphs, a
 - **Universal translation style (`.ui-translation`)**:
   - Translations (English glosses accompanying Chinese example sentences, patterns, and words) must use the `.ui-translation` utility class rather than one-off weights or tones.
   - `.ui-translation` sets `font-family: var(--font-sans)`, `font-weight: 700`, `color: var(--color-ui-muted-strong)`, and `line-height: 1.625` — the same bold voice as definitions and memory-hook body copy, in the shared muted gray token.
-- **Eyebrow label (`.ui-eyebrow`)**: 13px (same as `SectionEyebrow`), weight 900, 0.1em tracking, uppercase. Use it for every small label above a block (exercise cues, lab headers, spine roles); pair with a colour token only.
+- **Eyebrow label (`.ui-eyebrow`)**: 13px (same as `SectionEyebrow`), weight 900, 0.1em tracking, uppercase. Use it for every small label above a block (exercise cues, spine roles); pair with a colour token only.
 - **Inline Chinese in prose (`.prose-chinese`)**:
   - Applied to prose containers whose inline Chinese must match the example-sentence scale (grammar explanations). It scales every `.font-chinese` descendant to `1.25em` (mobile) / `1.3333em` (sm+) — e.g. 16px prose → 20px characters, 18px prose → 24px characters — so characters do not read smaller than the bold Latin around them. Line boxes stay inside the prose leading (20px glyphs in `leading-7`, 24px in `sm:leading-8`).
   - Component-specific sizing (e.g. `text-xs`, `text-sm`, `text-base`) can be paired with `.ui-translation` to fit information density.

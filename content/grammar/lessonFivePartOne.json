@@ -656,32 +656,6 @@
       "PW"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Explore this pattern",
-      "description": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word.",
-      "prompt": "Compare the book sentences.",
-      "choices": [
-        {
-          "id": "g1-book-1",
-          "label": "Book sentence 1",
-          "traditional": "我在台灣。",
-          "simplified": "我在台湾。",
-          "pinyin": "Wǒ zài Táiwān.",
-          "english": "I am in Taiwan.",
-          "note": "Compare the word order with the pattern table."
-        },
-        {
-          "id": "g1-book-2",
-          "label": "Book sentence 2",
-          "traditional": "他不在圖書館。",
-          "simplified": "他不在图书馆。",
-          "pinyin": "Tā bú zài túshūguǎn.",
-          "english": "He is not at the library.",
-          "note": "Compare the word order with the pattern table."
-        }
-      ],
-      "takeaway": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word."
-    },
     "patternRows": [
       {
         "id": "g1-p1",
@@ -1877,32 +1851,6 @@
       "action + 吧"
     ],
     "patternAccentColumn": 2,
-    "discoveryLab": {
-      "title": "Explore this pattern",
-      "description": "Put 吧 at the end of a sentence to make a suggestion.",
-      "prompt": "Compare the book sentences.",
-      "choices": [
-        {
-          "id": "g3-book-1",
-          "label": "Book sentence 1",
-          "traditional": "這個蛋糕太大，你買小的吧。",
-          "simplified": "这个蛋糕太大，你买小的吧。",
-          "pinyin": "Zhè ge dàngāo tài dà, nǐ mǎi xiǎo de ba.",
-          "english": "This cake is too large, you had better buy the small one.",
-          "note": "Compare the word order with the pattern table."
-        },
-        {
-          "id": "g3-book-2",
-          "label": "Book sentence 2",
-          "traditional": "那杯水太熱，你喝這杯吧。",
-          "simplified": "那杯水太热，你喝这杯吧。",
-          "pinyin": "Nà bēi shuǐ tài rè, nǐ hē zhè bēi ba.",
-          "english": "That water is too hot; drink this cup instead.",
-          "note": "吧 comes at the end of the suggestion."
-        }
-      ],
-      "takeaway": "Put 吧 at the end of a sentence to make a suggestion."
-    },
     "patternRows": [
       {
         "id": "g3-p1",
@@ -3116,32 +3064,6 @@
       "V(O)"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Explore this pattern",
-      "description": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens.",
-      "prompt": "Compare the book sentences.",
-      "choices": [
-        {
-          "id": "g2-book-1",
-          "label": "Book sentence 1",
-          "traditional": "我在台灣上中文課。",
-          "simplified": "我在台湾上中文课。",
-          "pinyin": "Wǒ zài Táiwān shàng Zhōngwén kè.",
-          "english": "I study Chinese in Taiwan.",
-          "note": "Compare the word order with the pattern table."
-        },
-        {
-          "id": "g2-book-2",
-          "label": "Book sentence 2",
-          "traditional": "他在圖書館看書。",
-          "simplified": "他在图书馆看书。",
-          "pinyin": "Tā zài túshūguǎn kànshū.",
-          "english": "He reads at the library.",
-          "note": "Compare the word order with the pattern table."
-        }
-      ],
-      "takeaway": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens."
-    },
     "patternRows": [
       {
         "id": "g2-p1",
@@ -4397,32 +4319,6 @@
           "PW"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Explore this pattern",
-          "description": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word.",
-          "prompt": "Compare the book sentences.",
-          "choices": [
-            {
-              "id": "g1-book-1",
-              "label": "Book sentence 1",
-              "traditional": "我在台灣。",
-              "simplified": "我在台湾。",
-              "pinyin": "Wǒ zài Táiwān.",
-              "english": "I am in Taiwan.",
-              "note": "Compare the word order with the pattern table."
-            },
-            {
-              "id": "g1-book-2",
-              "label": "Book sentence 2",
-              "traditional": "他不在圖書館。",
-              "simplified": "他不在图书馆。",
-              "pinyin": "Tā bú zài túshūguǎn.",
-              "english": "He is not at the library.",
-              "note": "Compare the word order with the pattern table."
-            }
-          ],
-          "takeaway": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word."
-        },
         "patternRows": [
           {
             "id": "g1-p1",
@@ -5622,32 +5518,6 @@
           "V(O)"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Explore this pattern",
-          "description": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens.",
-          "prompt": "Compare the book sentences.",
-          "choices": [
-            {
-              "id": "g2-book-1",
-              "label": "Book sentence 1",
-              "traditional": "我在台灣上中文課。",
-              "simplified": "我在台湾上中文课。",
-              "pinyin": "Wǒ zài Táiwān shàng Zhōngwén kè.",
-              "english": "I study Chinese in Taiwan.",
-              "note": "Compare the word order with the pattern table."
-            },
-            {
-              "id": "g2-book-2",
-              "label": "Book sentence 2",
-              "traditional": "他在圖書館看書。",
-              "simplified": "他在图书馆看书。",
-              "pinyin": "Tā zài túshūguǎn kànshū.",
-              "english": "He reads at the library.",
-              "note": "Compare the word order with the pattern table."
-            }
-          ],
-          "takeaway": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens."
-        },
         "patternRows": [
           {
             "id": "g2-p1",
@@ -6890,32 +6760,6 @@
           "action + 吧"
         ],
         "patternAccentColumn": 2,
-        "discoveryLab": {
-          "title": "Explore this pattern",
-          "description": "Put 吧 at the end of a sentence to make a suggestion.",
-          "prompt": "Compare the book sentences.",
-          "choices": [
-            {
-              "id": "g3-book-1",
-              "label": "Book sentence 1",
-              "traditional": "這個蛋糕太大，你買小的吧。",
-              "simplified": "这个蛋糕太大，你买小的吧。",
-              "pinyin": "Zhè ge dàngāo tài dà, nǐ mǎi xiǎo de ba.",
-              "english": "This cake is too large, you had better buy the small one.",
-              "note": "Compare the word order with the pattern table."
-            },
-            {
-              "id": "g3-book-2",
-              "label": "Book sentence 2",
-              "traditional": "那杯水太熱，你喝這杯吧。",
-              "simplified": "那杯水太热，你喝这杯吧。",
-              "pinyin": "Nà bēi shuǐ tài rè, nǐ hē zhè bēi ba.",
-              "english": "That water is too hot; drink this cup instead.",
-              "note": "吧 comes at the end of the suggestion."
-            }
-          ],
-          "takeaway": "Put 吧 at the end of a sentence to make a suggestion."
-        },
         "patternRows": [
           {
             "id": "g3-p1",

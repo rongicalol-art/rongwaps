@@ -531,41 +531,6 @@
         }
       ]
     },
-    "discoveryLab": {
-      "title": "Balance the two sides",
-      "description": "Each 又 opens one matching description. Both sides describe the same person or thing.",
-      "prompt": "Which pair fits?",
-      "choices": [
-        {
-          "id": "l7g5-source-1",
-          "label": "Example 1",
-          "traditional": "我同學的妹妹又可愛又漂亮。",
-          "simplified": "我同学的妹妹又可爱又漂亮。",
-          "pinyin": "Wǒ tóngxué de mèimei yòu kě’ài yòu piàoliang.",
-          "english": "My classmate’s younger sister is both cute and pretty.",
-          "note": "Find 又 before each quality or action."
-        },
-        {
-          "id": "l7g5-source-2",
-          "label": "Example 2",
-          "traditional": "我現在又餓又渴，想喝一點兒茶、吃一點兒飯。",
-          "simplified": "我现在又饿又渴，想喝一点儿茶、吃一点儿饭。",
-          "pinyin": "Wǒ xiànzài yòu è yòu kě, xiǎng hē yìdiǎnr chá, chī yìdiǎnr fàn.",
-          "english": "I am both hungry and thirsty right now; I want to drink some tea and eat a little rice.",
-          "note": "Find 又 before each quality or action."
-        },
-        {
-          "id": "l7g5-source-3",
-          "label": "Example 3",
-          "traditional": "他又想去日本，又想去韓國，不知道應該先去哪國。",
-          "simplified": "他又想去日本，又想去韩国，不知道应该先去哪国。",
-          "pinyin": "Tā yòu xiǎng qù Rìběn, yòu xiǎng qù Hánguó, bù zhīdào yīnggāi xiān qù nǎ guó.",
-          "english": "He wants to go to Japan and also wants to go to Korea; he does not know which country to visit first.",
-          "note": "Find 又 before each quality or action."
-        }
-      ],
-      "takeaway": "One person or thing, two matching 又 blocks."
-    },
     "examples": [
       {
         "id": "l7g5-e1",
@@ -1236,41 +1201,6 @@
         }
       ]
     },
-    "discoveryLab": {
-      "title": "Put the activity on stage",
-      "description": "The first chunk is what we are talking about; the rest is the comment.",
-      "prompt": "Which activity is on stage?",
-      "choices": [
-        {
-          "id": "l7g4-source-1",
-          "label": "Example 1",
-          "traditional": "走路去太慢了！",
-          "simplified": "走路去太慢了！",
-          "pinyin": "Zǒulù qù tài màn le!",
-          "english": "Walking there is too slow!",
-          "note": "Read the activity before its comment."
-        },
-        {
-          "id": "l7g4-source-2",
-          "label": "Example 2",
-          "traditional": "唱歌、跳舞都很有趣。",
-          "simplified": "唱歌、跳舞都很有趣。",
-          "pinyin": "Chànggē, tiàowǔ dōu hěn yǒuqù.",
-          "english": "Singing and dancing are both very interesting.",
-          "note": "Read the activity before its comment."
-        },
-        {
-          "id": "l7g4-source-3",
-          "label": "Example 3",
-          "traditional": "跑步、游泳、打網球，我都喜歡。",
-          "simplified": "跑步、游泳、打网球，我都喜欢。",
-          "pinyin": "Pǎobù, yóuyǒng, dǎ wǎngqiú, wǒ dōu xǐhuan.",
-          "english": "Running, swimming, and playing tennis — I like them all.",
-          "note": "Read the activity before its comment."
-        }
-      ],
-      "takeaway": "Activity first, comment second. You do not need 是 between them."
-    },
     "examples": [
       {
         "id": "l7g4-e1",
@@ -1879,104 +1809,6 @@
           }
         }
       ]
-    },
-    "routeLab": {
-      "title": "Read the book routes",
-      "description": "Compare the printed examples.",
-      "prompt": "Choose an example.",
-      "choices": [
-        {
-          "id": "route-class",
-          "label": "Visit home",
-          "traditional": "他從旅館到我家來吃飯。",
-          "simplified": "他从旅馆到我家来吃饭。",
-          "pinyin": "Tā cóng lǚguǎn dào wǒ jiā lái chīfàn.",
-          "english": "He is coming from the hotel to my home to eat.",
-          "note": "Read the starting place and destination.",
-          "origin": {
-            "id": "route-class-origin",
-            "traditional": "旅館",
-            "pinyin": "lǚguǎn",
-            "meaning": "inn",
-            "simplified": "旅馆"
-          },
-          "destination": {
-            "id": "route-class-destination",
-            "traditional": "我家",
-            "pinyin": "wǒ jiā",
-            "meaning": "my home",
-            "simplified": "我家"
-          },
-          "purpose": {
-            "id": "route-class-purpose",
-            "traditional": "吃飯",
-            "pinyin": "chīfàn",
-            "meaning": "eat",
-            "simplified": "吃饭"
-          }
-        },
-        {
-          "id": "route-letter",
-          "label": "Buy milk tea",
-          "traditional": "他從學校到飲料店去買珍珠奶茶。",
-          "simplified": "他从学校到饮料店去买珍珠奶茶。",
-          "pinyin": "Tā cóng xuéxiào dào yǐnliào diàn qù mǎi zhēnzhū nǎichá.",
-          "english": "He goes from school to the drink shop to buy pearl milk tea.",
-          "note": "Read the starting place and destination.",
-          "origin": {
-            "id": "route-letter-origin",
-            "traditional": "學校",
-            "pinyin": "xuéxiào",
-            "meaning": "school",
-            "simplified": "学校"
-          },
-          "destination": {
-            "id": "route-letter-destination",
-            "traditional": "飲料店",
-            "pinyin": "yǐnliào diàn",
-            "meaning": "drink shop",
-            "simplified": "饮料店"
-          },
-          "purpose": {
-            "id": "route-letter-purpose",
-            "traditional": "買珍珠奶茶",
-            "pinyin": "mǎi zhēnzhū nǎichá",
-            "meaning": "buy pearl milk tea",
-            "simplified": "买珍珠奶茶"
-          }
-        },
-        {
-          "id": "route-visit",
-          "label": "Visit Taiwan",
-          "traditional": "他今天從韓國到台灣來看朋友。",
-          "simplified": "他今天从韩国到台湾来看朋友。",
-          "pinyin": "Tā jīntiān cóng Hánguó dào Táiwān lái kàn péngyǒu.",
-          "english": "He came from Korea to Taiwan today to visit a friend.",
-          "note": "Read the starting place and destination.",
-          "origin": {
-            "id": "route-visit-origin",
-            "traditional": "韓國",
-            "pinyin": "Hánguó",
-            "meaning": "Korea",
-            "simplified": "韩国"
-          },
-          "destination": {
-            "id": "route-visit-destination",
-            "traditional": "台灣",
-            "pinyin": "Táiwān",
-            "meaning": "Taiwan",
-            "simplified": "台湾"
-          },
-          "purpose": {
-            "id": "route-visit-purpose",
-            "traditional": "看朋友",
-            "pinyin": "kàn péngyǒu",
-            "meaning": "visit friends",
-            "simplified": "看朋友"
-          }
-        }
-      ],
-      "takeaway": "Pins stay paired: 從 + start, 到 + destination. 來/去 shows which way the trip points, not the vehicle."
     },
     "examples": [
       {
@@ -3268,41 +3100,6 @@
           }
         }
       ]
-    },
-    "discoveryLab": {
-      "title": "Ring the change bell",
-      "description": "See the moment when a state becomes true for the first time.",
-      "prompt": "What changed?",
-      "choices": [
-        {
-          "id": "l7g3-source-1",
-          "label": "Example 1",
-          "traditional": "我餓了，想吃一點東西。",
-          "simplified": "我饿了，想吃一点东西。",
-          "pinyin": "Wǒ è le, xiǎng chī yìdiǎn dōngxi.",
-          "english": "I am hungry; I want to eat something.",
-          "note": "Read 了 at the end of the new situation."
-        },
-        {
-          "id": "l7g3-source-2",
-          "label": "Example 2",
-          "traditional": "孩子都累了，我們一起休息吧！",
-          "simplified": "孩子都累了，我们一起休息吧！",
-          "pinyin": "Háizi dōu lèi le, wǒmen yìqǐ xiūxí ba!",
-          "english": "The children are all tired; let us take a rest together!",
-          "note": "Read 了 at the end of the new situation."
-        },
-        {
-          "id": "l7g3-source-3",
-          "label": "Example 3",
-          "traditional": "啊！現在十點了！我的錶慢了。",
-          "simplified": "啊！现在十点了！我的表慢了。",
-          "pinyin": "Ā! Xiànzài shí diǎn le! Wǒ de biǎo màn le.",
-          "english": "Oh! It is ten o’clock now! My watch is slow.",
-          "note": "Read 了 at the end of the new situation."
-        }
-      ],
-      "takeaway": "Use 了 when \"now it is different\" matters."
     },
     "examples": [
       {
@@ -5367,104 +5164,6 @@
               }
             }
           ]
-        },
-        "routeLab": {
-          "title": "Read the book routes",
-          "description": "Compare the printed examples.",
-          "prompt": "Choose an example.",
-          "choices": [
-            {
-              "id": "route-class",
-              "label": "Visit home",
-              "traditional": "他從旅館到我家來吃飯。",
-              "simplified": "他从旅馆到我家来吃饭。",
-              "pinyin": "Tā cóng lǚguǎn dào wǒ jiā lái chīfàn.",
-              "english": "He is coming from the hotel to my home to eat.",
-              "note": "Read the starting place and destination.",
-              "origin": {
-                "id": "route-class-origin",
-                "traditional": "旅館",
-                "pinyin": "lǚguǎn",
-                "meaning": "inn",
-                "simplified": "旅馆"
-              },
-              "destination": {
-                "id": "route-class-destination",
-                "traditional": "我家",
-                "pinyin": "wǒ jiā",
-                "meaning": "my home",
-                "simplified": "我家"
-              },
-              "purpose": {
-                "id": "route-class-purpose",
-                "traditional": "吃飯",
-                "pinyin": "chīfàn",
-                "meaning": "eat",
-                "simplified": "吃饭"
-              }
-            },
-            {
-              "id": "route-letter",
-              "label": "Buy milk tea",
-              "traditional": "他從學校到飲料店去買珍珠奶茶。",
-              "simplified": "他从学校到饮料店去买珍珠奶茶。",
-              "pinyin": "Tā cóng xuéxiào dào yǐnliào diàn qù mǎi zhēnzhū nǎichá.",
-              "english": "He goes from school to the drink shop to buy pearl milk tea.",
-              "note": "Read the starting place and destination.",
-              "origin": {
-                "id": "route-letter-origin",
-                "traditional": "學校",
-                "pinyin": "xuéxiào",
-                "meaning": "school",
-                "simplified": "学校"
-              },
-              "destination": {
-                "id": "route-letter-destination",
-                "traditional": "飲料店",
-                "pinyin": "yǐnliào diàn",
-                "meaning": "drink shop",
-                "simplified": "饮料店"
-              },
-              "purpose": {
-                "id": "route-letter-purpose",
-                "traditional": "買珍珠奶茶",
-                "pinyin": "mǎi zhēnzhū nǎichá",
-                "meaning": "buy pearl milk tea",
-                "simplified": "买珍珠奶茶"
-              }
-            },
-            {
-              "id": "route-visit",
-              "label": "Visit Taiwan",
-              "traditional": "他今天從韓國到台灣來看朋友。",
-              "simplified": "他今天从韩国到台湾来看朋友。",
-              "pinyin": "Tā jīntiān cóng Hánguó dào Táiwān lái kàn péngyǒu.",
-              "english": "He came from Korea to Taiwan today to visit a friend.",
-              "note": "Read the starting place and destination.",
-              "origin": {
-                "id": "route-visit-origin",
-                "traditional": "韓國",
-                "pinyin": "Hánguó",
-                "meaning": "Korea",
-                "simplified": "韩国"
-              },
-              "destination": {
-                "id": "route-visit-destination",
-                "traditional": "台灣",
-                "pinyin": "Táiwān",
-                "meaning": "Taiwan",
-                "simplified": "台湾"
-              },
-              "purpose": {
-                "id": "route-visit-purpose",
-                "traditional": "看朋友",
-                "pinyin": "kàn péngyǒu",
-                "meaning": "visit friends",
-                "simplified": "看朋友"
-              }
-            }
-          ],
-          "takeaway": "Pins stay paired: 從 + start, 到 + destination. 來/去 shows which way the trip points, not the vehicle."
         },
         "examples": [
           {
@@ -7658,41 +7357,6 @@
             }
           ]
         },
-        "discoveryLab": {
-          "title": "Ring the change bell",
-          "description": "See the moment when a state becomes true for the first time.",
-          "prompt": "What changed?",
-          "choices": [
-            {
-              "id": "l7g3-source-1",
-              "label": "Example 1",
-              "traditional": "我餓了，想吃一點東西。",
-              "simplified": "我饿了，想吃一点东西。",
-              "pinyin": "Wǒ è le, xiǎng chī yìdiǎn dōngxi.",
-              "english": "I am hungry; I want to eat something.",
-              "note": "Read 了 at the end of the new situation."
-            },
-            {
-              "id": "l7g3-source-2",
-              "label": "Example 2",
-              "traditional": "孩子都累了，我們一起休息吧！",
-              "simplified": "孩子都累了，我们一起休息吧！",
-              "pinyin": "Háizi dōu lèi le, wǒmen yìqǐ xiūxí ba!",
-              "english": "The children are all tired; let us take a rest together!",
-              "note": "Read 了 at the end of the new situation."
-            },
-            {
-              "id": "l7g3-source-3",
-              "label": "Example 3",
-              "traditional": "啊！現在十點了！我的錶慢了。",
-              "simplified": "啊！现在十点了！我的表慢了。",
-              "pinyin": "Ā! Xiànzài shí diǎn le! Wǒ de biǎo màn le.",
-              "english": "Oh! It is ten o’clock now! My watch is slow.",
-              "note": "Read 了 at the end of the new situation."
-            }
-          ],
-          "takeaway": "Use 了 when \"now it is different\" matters."
-        },
         "examples": [
           {
             "id": "l7g3-e1",
@@ -9389,41 +9053,6 @@
             }
           ]
         },
-        "discoveryLab": {
-          "title": "Put the activity on stage",
-          "description": "The first chunk is what we are talking about; the rest is the comment.",
-          "prompt": "Which activity is on stage?",
-          "choices": [
-            {
-              "id": "l7g4-source-1",
-              "label": "Example 1",
-              "traditional": "走路去太慢了！",
-              "simplified": "走路去太慢了！",
-              "pinyin": "Zǒulù qù tài màn le!",
-              "english": "Walking there is too slow!",
-              "note": "Read the activity before its comment."
-            },
-            {
-              "id": "l7g4-source-2",
-              "label": "Example 2",
-              "traditional": "唱歌、跳舞都很有趣。",
-              "simplified": "唱歌、跳舞都很有趣。",
-              "pinyin": "Chànggē, tiàowǔ dōu hěn yǒuqù.",
-              "english": "Singing and dancing are both very interesting.",
-              "note": "Read the activity before its comment."
-            },
-            {
-              "id": "l7g4-source-3",
-              "label": "Example 3",
-              "traditional": "跑步、游泳、打網球，我都喜歡。",
-              "simplified": "跑步、游泳、打网球，我都喜欢。",
-              "pinyin": "Pǎobù, yóuyǒng, dǎ wǎngqiú, wǒ dōu xǐhuan.",
-              "english": "Running, swimming, and playing tennis — I like them all.",
-              "note": "Read the activity before its comment."
-            }
-          ],
-          "takeaway": "Activity first, comment second. You do not need 是 between them."
-        },
         "examples": [
           {
             "id": "l7g4-e1",
@@ -10147,41 +9776,6 @@
               }
             }
           ]
-        },
-        "discoveryLab": {
-          "title": "Balance the two sides",
-          "description": "Each 又 opens one matching description. Both sides describe the same person or thing.",
-          "prompt": "Which pair fits?",
-          "choices": [
-            {
-              "id": "l7g5-source-1",
-              "label": "Example 1",
-              "traditional": "我同學的妹妹又可愛又漂亮。",
-              "simplified": "我同学的妹妹又可爱又漂亮。",
-              "pinyin": "Wǒ tóngxué de mèimei yòu kě’ài yòu piàoliang.",
-              "english": "My classmate’s younger sister is both cute and pretty.",
-              "note": "Find 又 before each quality or action."
-            },
-            {
-              "id": "l7g5-source-2",
-              "label": "Example 2",
-              "traditional": "我現在又餓又渴，想喝一點兒茶、吃一點兒飯。",
-              "simplified": "我现在又饿又渴，想喝一点儿茶、吃一点儿饭。",
-              "pinyin": "Wǒ xiànzài yòu è yòu kě, xiǎng hē yìdiǎnr chá, chī yìdiǎnr fàn.",
-              "english": "I am both hungry and thirsty right now; I want to drink some tea and eat a little rice.",
-              "note": "Find 又 before each quality or action."
-            },
-            {
-              "id": "l7g5-source-3",
-              "label": "Example 3",
-              "traditional": "他又想去日本，又想去韓國，不知道應該先去哪國。",
-              "simplified": "他又想去日本，又想去韩国，不知道应该先去哪国。",
-              "pinyin": "Tā yòu xiǎng qù Rìběn, yòu xiǎng qù Hánguó, bù zhīdào yīnggāi xiān qù nǎ guó.",
-              "english": "He wants to go to Japan and also wants to go to Korea; he does not know which country to visit first.",
-              "note": "Find 又 before each quality or action."
-            }
-          ],
-          "takeaway": "One person or thing, two matching 又 blocks."
         },
         "examples": [
           {

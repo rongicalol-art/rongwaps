@@ -10,6 +10,12 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-02 — Grammar labs removed
+
+- Chosen: the authored grammar labs (discovery, number, route, live-scene, timeline and A/B compare) are deleted from `content/grammar/`, the grammar packs, the types, the validator and the content tests.
+- Reason: no screen had shown them since the grammar flow dropped its optional "Explore this pattern" layer; the owner does not use them. Route-lab phrases no longer act as tap-to-define words, so their example sentences split into dictionary words.
+- Affects: `content/grammar/*.json`, `public/data/grammar/`, `src/types/grammar.ts`, `src/utils/grammar/{grammarTeachingTokens,validateInteractiveLessons}.ts`, `tests/content/lesson*.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
 ### 2026-10-24 — Example audio: the book's recording first everywhere
 
 - Chosen: a vocabulary example plays its aligned book clip whenever one exists, including Book 3 L1–5 (which used to prefer our studio recordings); our studio clip is only the fallback for a sentence the book never recorded. Flashcard extras went from 12,036 studio examples to 36.
@@ -156,7 +162,6 @@ Record choices that should remain stable across tasks. Keep each entry short.
   - Tables match the printed columns elsewhere: L1 G3 `Statement | 嗎`; L2 G1 `Number | Time word | Number | Measure word` (incl. 號/日, plus the note on why 星期四 puts 星期 first); L3 G3 `這 · 那 · 哪 | Number | Measure word | Noun` (incl. （一）); L5 G2 `Subject | 在 | Place | Verb`.
   - L4 G4 is the deliberate exception to book shape: the printed place-value grid is replaced by four labelled step tables around one mechanical model — read the biggest part first, then read the rest — so every row reads left to right as the spoken number: (1) the four building blocks (`Block | Means | Example`: 三百, 五千, 八萬), (2) `Number | First part | The rest` incl. the 零 start (115 = 一百 + 一十五, 105 = 一百 + 零五), (3) the droppable last word (`Number | Full reading | Short way`: 八百五十 = 八百五), (4) big numbers counted in 萬 (`Number | How many | 萬 | The rest`: 90,500 = 九 + 萬 + 零五百). These number rows carry no `english`, so the translation band is skipped for them (`GrammarPatternRow.english` is optional and the table renders the band only when authored).
   - Multi-column rows use `GrammarPatternRow.columns`; `validateInteractiveLessons` and `grammarTeachingTokens` read rows through `getPatternRowGroups`, so four/five-column tables keep ID checks and dictionary targets.
-  - L4 G4 ships no example cards: the printed page has no numbered examples and the table already lists every reading, so the validator's examples requirement is calibrated to exempt a page that teaches with its number lab + reference table.
 - Reason: owner review of Lessons 1–6 against the printed book found tables that dropped or mislabeled slots, two-part grammars shown as one invented table, and "who does" role labels instead of grammar terms.
 - Affects: `content/grammar/*.json` (Lessons 1–6), `src/data/interactiveGrammarPages.ts`, `src/data/interactiveGrammarLessonOnePartTwo.ts`, `src/utils/grammar/{validateInteractiveLessons,grammarTeachingTokens}.ts`, `tests/lessonFive.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
 

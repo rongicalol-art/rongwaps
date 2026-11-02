@@ -80,11 +80,7 @@ export function validateInteractiveLessons(
       if (!page.audioReference.trim()) {
         issues.push({ location: pageLocation, message: 'Audio reference is required.' });
       }
-      // The number-system reference page teaches with a complete place-value
-      // table plus the number lab; the printed book prints no numbered
-      // examples there, so example cards would only duplicate the table.
-      const teachesWithReferenceTable = Boolean(page.numberLab);
-      if ((page.examples.length === 0 && !teachesWithReferenceTable) || (part.bookId === 1 && page.questions.length === 0)) {
+      if (page.examples.length === 0 || (part.bookId === 1 && page.questions.length === 0)) {
         issues.push({ location: pageLocation, message: 'Examples and practice questions are required.' });
       }
       if (page.exerciseType === 'unscramble' && !page.unscrambleExercise) {

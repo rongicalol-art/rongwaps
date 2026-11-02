@@ -275,40 +275,6 @@
       "V(O)"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Put the feeling before the action",
-      "description": "The want or feel word goes first; the action word follows it.",
-      "prompt": "What meaning comes before the action?",
-      "choices": [
-        {
-          "id": "g5-want",
-          "label": "Want · 要",
-          "traditional": "我要喝茶。",
-          "pinyin": "Wǒ yào hē chá.",
-          "english": "I want to drink tea.",
-          "note": "要 comes before the action 喝."
-        },
-        {
-          "id": "g5-like",
-          "label": "Like · 喜歡",
-          "traditional": "媽媽喜歡喝奶茶。",
-          "pinyin": "Māma xǐhuān hē nǎichá.",
-          "english": "Mom likes drinking milk tea.",
-          "note": "喜歡 comes before the action 喝.",
-          "simplified": "妈妈喜欢喝奶茶。"
-        },
-        {
-          "id": "g5-love",
-          "label": "Love · 愛",
-          "traditional": "我愛吃水果，不愛喝珍珠奶茶。",
-          "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē zhēnzhū nǎichá.",
-          "english": "I love eating fruit; I do not love drinking bubble milk tea.",
-          "note": "不 stays before 愛, and the action 喝 still comes last.",
-          "simplified": "我爱吃水果，不爱喝珍珠奶茶。"
-        }
-      ],
-      "takeaway": "Intention or feeling first, action second."
-    },
     "patternRows": [
       {
         "id": "g5-pattern-1",
@@ -1026,41 +992,6 @@
       "Noun"
     ],
     "patternAccentColumn": 1,
-    "discoveryLab": {
-      "title": "Use 的 as a connection link",
-      "description": "Each book sentence places 的 between the owner and the thing.",
-      "prompt": "What connection do you want to make?",
-      "choices": [
-        {
-          "id": "g4-phone",
-          "label": "A phone",
-          "traditional": "你的手機很新。",
-          "pinyin": "Nǐ de shǒujī hěn xīn.",
-          "english": "Your cell phone is very new.",
-          "note": "的 links the owner 你 to the thing 手機.",
-          "simplified": "你的手机很新。"
-        },
-        {
-          "id": "g4-child",
-          "label": "A child",
-          "traditional": "他的孩子可愛嗎？",
-          "pinyin": "Tā de háizi kě'ài ma?",
-          "english": "Is his child cute?",
-          "note": "的 links 他 to 孩子, then the question ends with 嗎.",
-          "simplified": "他的孩子可爱吗？"
-        },
-        {
-          "id": "g4-friend",
-          "label": "A friend",
-          "traditional": "我的英國朋友不喜歡喝奶茶。",
-          "pinyin": "Wǒ de Yīngguó péngyǒu bù xǐhuān hē nǎichá.",
-          "english": "My British friend does not like drinking milk tea.",
-          "note": "英國 describes 朋友 inside the larger phrase 我的英國朋友.",
-          "simplified": "我的英国朋友不喜欢喝奶茶。"
-        }
-      ],
-      "takeaway": "Use 的 to make the owner-to-thing connection explicit."
-    },
     "patternRows": [
       {
         "id": "g4-pattern-1",
@@ -1687,47 +1618,6 @@
       "Verb"
     ],
     "patternAccentColumn": 2,
-    "discoveryLab": {
-      "title": "Let the verb ask both possibilities",
-      "description": "The repeated form presents a compact choice: yes or no.",
-      "prompt": "Which positive-negative family do you need?",
-      "choices": [
-        {
-          "id": "g6-state",
-          "label": "Adjective",
-          "traditional": "你忙不忙？",
-          "pinyin": "Nǐ máng bù máng?",
-          "english": "Are you busy?",
-          "note": "Repeat the adjective 忙 around 不."
-        },
-        {
-          "id": "g6-action",
-          "label": "Verb",
-          "traditional": "你吃不吃？",
-          "pinyin": "Nǐ chī bù chī?",
-          "english": "Do you eat?",
-          "note": "Repeat the verb 吃 around 不."
-        },
-        {
-          "id": "g6-have",
-          "label": "有",
-          "traditional": "他有沒有台灣朋友？",
-          "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
-          "english": "Does he have a Taiwanese friend?",
-          "note": "有 pairs with its own negative 沒有: 有沒有.",
-          "simplified": "他有没有台湾朋友？"
-        },
-        {
-          "id": "g6-want",
-          "label": "要",
-          "traditional": "他要不要去？",
-          "pinyin": "Tā yào bú yào qù?",
-          "english": "Does he want to go?",
-          "note": "Pair 要 with 不 in front of the action 去."
-        }
-      ],
-      "takeaway": "Repeat the key form around its negative, and leave 嗎 out."
-    },
     "patternRows": [
       {
         "id": "g6-pattern-1",
@@ -2466,41 +2356,6 @@
           "Noun"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Use 的 as a connection link",
-          "description": "Each book sentence places 的 between the owner and the thing.",
-          "prompt": "What connection do you want to make?",
-          "choices": [
-            {
-              "id": "g4-phone",
-              "label": "A phone",
-              "traditional": "你的手機很新。",
-              "pinyin": "Nǐ de shǒujī hěn xīn.",
-              "english": "Your cell phone is very new.",
-              "note": "的 links the owner 你 to the thing 手機.",
-              "simplified": "你的手机很新。"
-            },
-            {
-              "id": "g4-child",
-              "label": "A child",
-              "traditional": "他的孩子可愛嗎？",
-              "pinyin": "Tā de háizi kě'ài ma?",
-              "english": "Is his child cute?",
-              "note": "的 links 他 to 孩子, then the question ends with 嗎.",
-              "simplified": "他的孩子可爱吗？"
-            },
-            {
-              "id": "g4-friend",
-              "label": "A friend",
-              "traditional": "我的英國朋友不喜歡喝奶茶。",
-              "pinyin": "Wǒ de Yīngguó péngyǒu bù xǐhuān hē nǎichá.",
-              "english": "My British friend does not like drinking milk tea.",
-              "note": "英國 describes 朋友 inside the larger phrase 我的英國朋友.",
-              "simplified": "我的英国朋友不喜欢喝奶茶。"
-            }
-          ],
-          "takeaway": "Use 的 to make the owner-to-thing connection explicit."
-        },
         "patternRows": [
           {
             "id": "g4-pattern-1",
@@ -3119,40 +2974,6 @@
           "V(O)"
         ],
         "patternAccentColumn": 1,
-        "discoveryLab": {
-          "title": "Put the feeling before the action",
-          "description": "The want or feel word goes first; the action word follows it.",
-          "prompt": "What meaning comes before the action?",
-          "choices": [
-            {
-              "id": "g5-want",
-              "label": "Want · 要",
-              "traditional": "我要喝茶。",
-              "pinyin": "Wǒ yào hē chá.",
-              "english": "I want to drink tea.",
-              "note": "要 comes before the action 喝."
-            },
-            {
-              "id": "g5-like",
-              "label": "Like · 喜歡",
-              "traditional": "媽媽喜歡喝奶茶。",
-              "pinyin": "Māma xǐhuān hē nǎichá.",
-              "english": "Mom likes drinking milk tea.",
-              "note": "喜歡 comes before the action 喝.",
-              "simplified": "妈妈喜欢喝奶茶。"
-            },
-            {
-              "id": "g5-love",
-              "label": "Love · 愛",
-              "traditional": "我愛吃水果，不愛喝珍珠奶茶。",
-              "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē zhēnzhū nǎichá.",
-              "english": "I love eating fruit; I do not love drinking bubble milk tea.",
-              "note": "不 stays before 愛, and the action 喝 still comes last.",
-              "simplified": "我爱吃水果，不爱喝珍珠奶茶。"
-            }
-          ],
-          "takeaway": "Intention or feeling first, action second."
-        },
         "patternRows": [
           {
             "id": "g5-pattern-1",
@@ -3841,47 +3662,6 @@
           "Verb"
         ],
         "patternAccentColumn": 2,
-        "discoveryLab": {
-          "title": "Let the verb ask both possibilities",
-          "description": "The repeated form presents a compact choice: yes or no.",
-          "prompt": "Which positive-negative family do you need?",
-          "choices": [
-            {
-              "id": "g6-state",
-              "label": "Adjective",
-              "traditional": "你忙不忙？",
-              "pinyin": "Nǐ máng bù máng?",
-              "english": "Are you busy?",
-              "note": "Repeat the adjective 忙 around 不."
-            },
-            {
-              "id": "g6-action",
-              "label": "Verb",
-              "traditional": "你吃不吃？",
-              "pinyin": "Nǐ chī bù chī?",
-              "english": "Do you eat?",
-              "note": "Repeat the verb 吃 around 不."
-            },
-            {
-              "id": "g6-have",
-              "label": "有",
-              "traditional": "他有沒有台灣朋友？",
-              "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
-              "english": "Does he have a Taiwanese friend?",
-              "note": "有 pairs with its own negative 沒有: 有沒有.",
-              "simplified": "他有没有台湾朋友？"
-            },
-            {
-              "id": "g6-want",
-              "label": "要",
-              "traditional": "他要不要去？",
-              "pinyin": "Tā yào bú yào qù?",
-              "english": "Does he want to go?",
-              "note": "Pair 要 with 不 in front of the action 去."
-            }
-          ],
-          "takeaway": "Repeat the key form around its negative, and leave 嗎 out."
-        },
         "patternRows": [
           {
             "id": "g6-pattern-1",
