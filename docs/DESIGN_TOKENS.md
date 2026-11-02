@@ -96,7 +96,7 @@ Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@the
 | `z-shell` | 600 | App chrome that outranks every window (sidebar and mobile nav panel in `LayoutShell`) and full-screen viewers that cover it (`BookPageViewer`, grammar book fallback) |
 | `z-drawer` | 650 | Reader study drawer (`ReaderStudyDrawer`) |
 | `z-dialog` | 700 | Dialogs and settings windows (`ConfirmationDialog`, `FolderModal`) |
-| `z-popover` | 800 | Hover/anchored popovers and tooltips (`PosBadge`, `MemoryHookPopover`, `ReaderWordTooltip`, `SmartSentence`) |
+| `z-popover` | 800 | Hover/anchored popovers and tooltips (`PosBadge`, `ReaderWordTooltip`, `SmartSentence`) |
 | `z-auth` | 900 | Sign-in window (`SignInWindow`) |
 | `z-devtools` | 1000 | Developer tools (`DebugToolsOverlay`) |
 
