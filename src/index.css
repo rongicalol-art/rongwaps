@@ -397,24 +397,6 @@ body {
   scrollbar-width: none !important; /* Firefox */
 }
 
-/* Custom scrolling fade mask for lists to prevent sudden sharp cutoff */
-.scroll-faded-y {
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 12px,
-    black calc(100% - 12px),
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 12px,
-    black calc(100% - 12px),
-    transparent 100%
-  );
-}
-
 /* Flashcard answer: parts rise in one after another once the word has settled. Opt-in via [data-reveal]. */
 [data-reveal] .rw-rise { opacity: 0; transform: translateY(14px); transition: opacity 260ms ease-out, transform 420ms cubic-bezier(0.2, 0.9, 0.3, 1); }
 [data-reveal='true'] .rw-rise { opacity: 1; transform: none; }
@@ -458,12 +440,10 @@ body {
     min-height: var(--size-window-header);
   }
 
-  .no-scrollbar::-webkit-scrollbar,
-  .hide-scrollbar::-webkit-scrollbar {
+  .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  .no-scrollbar,
-  .hide-scrollbar {
+  .no-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
@@ -541,23 +521,14 @@ body {
   .bottom-dock-safe {
     bottom: var(--dock-bottom);
   }
-  .pb-dock-safe {
-    padding-bottom: var(--dock-bottom);
-  }
   @media (min-width: 640px) {
     .bottom-dock-safe {
       bottom: 1.25rem;
-    }
-    .pb-dock-safe {
-      padding-bottom: 1.25rem;
     }
   }
   @media (min-width: 768px) {
     .bottom-dock-safe {
       bottom: 1.5rem;
-    }
-    .pb-dock-safe {
-      padding-bottom: 1.5rem;
     }
   }
 
@@ -633,14 +604,6 @@ body {
 .flip-card[data-flipped="true"] { transform: rotateY(180deg); }
 .flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .flip-face-back { transform: rotateY(180deg); }
-.anim-float { animation: none; }
-.spring-transition { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
-@keyframes teaser-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.anim-teaser-marquee { animation: none; }
 
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
@@ -649,13 +612,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .flip-card { transition: none; }
-  .anim-float,
-  .anim-teaser-marquee {
-    animation: none;
-  }
-  .spring-transition {
-    transition: none;
-  }
 }
 
 /* Tones: a tone is a complete colour-role set (canvas, text, lines, accent) swapped by attributes on <html>

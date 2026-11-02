@@ -143,7 +143,6 @@ Ron's Mandarin supports both web and iOS standalone PWA (`viewport-fit=cover`). 
 | Utility | Property / Value | Usage & Owners |
 |---|---|---|
 | `.bottom-dock-safe` | `bottom: var(--dock-bottom)` (responsive: `sm:bottom-5`, `md:bottom-6`) | Floating docks (`ReadingBottomDock`, `WritingDock`, `SearchModeDock`). Lifts dock comfortably above iOS home indicator. |
-| `.pb-dock-safe` | `padding-bottom: var(--dock-bottom)` (responsive: `sm:pb-5`, `md:pb-6`) | Bottom-anchored floating dock wrappers (`PracticeModeDock`). Ensures responsive bottom clearance while anchoring to viewport bottom. |
 | `.pb-dock-clearance` | `padding-bottom: var(--dock-clearance)` (responsive: `sm:pb-28`) | Scroll containers containing floating docks (`FlashcardScreen`, `FlashcardList`, `SearchScreen`, `LessonComplete`). Prevents last element from hiding behind dock. |
 | `.pb-sheet-safe` | `padding-bottom: var(--sheet-safe-pb)` | Docked sheets and sticky bottom footers (`FeedbackBottomBar`, `CurriculumLibrary`, `LibraryScreen`, `GrammarLessonScreen`, `BookViewerFooter`). |
 | `.pb-safe-area` | `padding-bottom: max(1rem, var(--safe-area-bottom))` | Scrollable drawer/sheet inner content (`Drawer`, `ReaderStudyDrawer`). |
@@ -152,7 +151,7 @@ Ron's Mandarin supports both web and iOS standalone PWA (`viewport-fit=cover`). 
 
 ### Rules
 
-- **Never hardcode `env(safe-area-inset-bottom)` in component files.** Use `.bottom-dock-safe`, `.pb-dock-safe`, `.pb-dock-clearance`, `.pb-sheet-safe`, or `.pb-safe-area`.
+- **Never hardcode `env(safe-area-inset-bottom)` in component files.** Use `.bottom-dock-safe`, `.pb-dock-clearance`, `.pb-sheet-safe`, or `.pb-safe-area`.
 - **Never use arbitrary dock dimensions** (e.g. `bottom-[max(...)]`, `pb-[calc(...)]`, `h-[60px]`). Use the semantic utility classes.
 
 
