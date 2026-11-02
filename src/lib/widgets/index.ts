@@ -6,6 +6,7 @@ export * from './IconActionButton';
 export * from './KeyChip';
 export * from './SegmentedControl';
 export * from './SettingsDropdownPicker';
+export * from './SettingsPopover';
 export * from './ToggleSwitch';
 
 // Icons, flags, and branded presentation
