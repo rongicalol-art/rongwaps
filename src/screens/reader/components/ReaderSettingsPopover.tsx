@@ -8,7 +8,7 @@ import {
 import type { ReaderTextSize } from '../../../types/models';
 import type { CharacterFont } from '../../../store/useAppStore';
 
-interface ReaderSettingsPopoverProps {
+export interface ReaderSettingsPopoverProps {
   textSize: ReaderTextSize;
   onTextSizeChange: (size: ReaderTextSize) => void;
   characterFont?: CharacterFont;
