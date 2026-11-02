@@ -1,2 +1,2 @@
 export { ConfettiBurst } from './ConfettiBurst';
-export { ScoreGauge, type ScoreGaugeProps } from './ScoreGauge';
+export { ScoreGauge } from './ScoreGauge';

@@ -11,9 +11,7 @@ export { ResumeLaunch } from './components/ResumeLaunch';
 export { PracticeChoiceButton, getPracticeChoiceState } from './components/PracticeChoiceButton';
 export { PracticeFormatMenu } from './components/PracticeFormatMenu';
 
-export type { SessionCompleteProps, SessionStats } from './components/SessionComplete';
-export type { PracticeSettingsScreenProps } from './components/PracticeSettingsScreen';
-export type { FeedbackBottomBarProps } from './components/FeedbackBottomBar';
+export type { SessionStats } from './components/SessionComplete';
 export type { PracticeChoiceState } from './components/PracticeChoiceButton';
 
 export { beginQuizLaunch, cancelQuizLaunch } from './quizLaunch';

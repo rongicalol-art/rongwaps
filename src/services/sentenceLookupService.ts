@@ -9,7 +9,6 @@ import type { SentenceWordContext, SentenceWordLookupResult } from '../types/sen
 import { AppCache } from '../utils/cache';
 import { pronunciationKey } from '../utils/pinyin/pronunciationMatching';
 import { sentenceSegments, sentenceCandidates, validatedSentenceSegments } from '../utils/vocabulary/sentenceSegments';
-export type { SentenceWordLookupResult } from '../types/sentenceLookup';
 
 const wordCache = new AppCache(256);
 const pendingWords = new Map<string, Promise<SentenceWordLookupResult | null>>();

@@ -6,7 +6,6 @@ import { useSentenceSegments, useSentenceWordHover, sentenceLookupHandlers, type
 import type { SentenceWordContext, SentenceWordLookupResult } from '../../types/sentenceLookup';
 export { registerSentenceLookupHandlers } from './useSentenceLookup';
 export type { HoveredWordState } from './useSentenceLookup';
-export type { SentenceWordPart, SentenceWordLookupResult } from '../../types/sentenceLookup';
 import { calculateTooltipPlacement, type TooltipPlacement } from '../../utils/browser/tooltipPosition';
 import { AppIcon } from './AppIcon';
 import type { WordSyllable } from '../../utils/pinyin/pinyinTones';
