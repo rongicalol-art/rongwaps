@@ -1,6 +1,7 @@
 -- Run only in a disposable Postgres database, never against owner progress.
 -- psql -v migration=/absolute/path/to/20261016015445_school_beta_access.sql \
---   -v course_migration=/absolute/path/to/20261018154836_full_course_access_grants.sql -f this-file
+--   -v course_migration=/absolute/path/to/20261018154836_full_course_access_grants.sql \
+--   -v claims_migration=/absolute/path/to/20261101120000_access_claims_in_token.sql -f this-file
 \set ON_ERROR_STOP on
 do $$ begin
   if current_database() <> 'school_beta_test' then
@@ -25,6 +26,7 @@ create policy owner_only on public.user_profiles for all to authenticated
 grant select, insert on public.user_profiles to authenticated;
 \i :migration
 \i :course_migration
+\i :claims_migration
 
 begin;
 create function pg_temp.check_beta(ok boolean, label text) returns void
@@ -58,13 +60,17 @@ select pg_temp.check_beta(not private.school_beta_identity_allowed('google', '{"
 
 insert into private.beta_owner_emails values ('owner@example.test');
 select pg_temp.check_beta(private.school_beta_user_allowed('00000000-0000-0000-0000-000000000004'), 'explicit owner accepted');
+set role supabase_auth_admin;
+select pg_temp.check_beta(private.school_beta_access_token_hook('{"user_id":"00000000-0000-0000-0000-000000000004","claims":{}}') -> 'claims' = '{"school_beta":true,"full_course":false}', 'approved owner without a grant gets a school token without full course');
+reset role;
 delete from private.beta_owner_emails;
 select pg_temp.check_beta(not private.school_beta_user_allowed('00000000-0000-0000-0000-000000000004'), 'owner removal effective immediately');
 
 set role supabase_auth_admin;
 select pg_temp.check_beta(private.before_school_beta_signup('{"user":{"email":"s25113312@stu.edu.tw","app_metadata":{"provider":"google"},"user_metadata":{"email_verified":true,"custom_claims":{"hd":"stu.edu.tw"}}}}') = '{}', 'school signup accepted');
 select pg_temp.check_beta(private.before_school_beta_signup('{"user":{"email":"personal@example.test","app_metadata":{"provider":"google"},"user_metadata":{"email_verified":true}}}') ? 'error', 'personal signup denied');
-select pg_temp.check_beta(private.school_beta_access_token_hook('{"user_id":"00000000-0000-0000-0000-000000000001","claims":{"sub":"fixture"}}') -> 'claims' = '{"sub":"fixture"}', 'allowed token claims unchanged');
+select pg_temp.check_beta(private.school_beta_access_token_hook('{"user_id":"00000000-0000-0000-0000-000000000001","claims":{"sub":"fixture"}}') -> 'claims' = '{"sub":"fixture","school_beta":true,"full_course":true}', 'allowed token keeps its claims and gains the school decision');
+select pg_temp.check_beta(private.school_beta_access_token_hook('{"user_id":"00000000-0000-0000-0000-000000000001","claims":{"sub":"fixture","school_beta":false,"full_course":false}}') -> 'claims' = '{"sub":"fixture","school_beta":true,"full_course":true}', 'the hook overwrites any supplied school claims');
 select pg_temp.check_beta(private.school_beta_access_token_hook('{"user_id":"00000000-0000-0000-0000-000000000002","claims":{}}') ? 'error', 'existing personal account token denied');
 reset role;
 
@@ -109,4 +115,4 @@ do $$ begin
 end $$;
 reset role;
 rollback;
-\echo 'School beta identity, hooks, RLS, old-token, spoofing, owner and ACL checks passed.'
+\echo 'School beta identity, hooks, token claims, RLS, old-token, spoofing, owner and ACL checks passed.'

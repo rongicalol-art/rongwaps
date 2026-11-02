@@ -1,6 +1,7 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 import { isSupabaseConfigured, supabase } from './supabaseClient';
 import { type Session, type User } from '@supabase/supabase-js';
+import { schoolAccessFromClaims, unverifiedClaims } from '../../shared/accessToken';
 
 const missingSupabaseMessage = 'Supabase is not configured for this local environment.';
 const productionAuthRedirectUrl = 'https://ronsmandarin.com/';
@@ -124,6 +125,9 @@ export const authService = {
     const notify = async (session: Session | null, expectedRevision: number) => {
       if (disposed || expectedRevision !== revision) return;
       if (!session) { callback(null, false); return; }
+      // Tokens issued by the school sign-in hook already carry its decision; older ones ask the database.
+      const stamped = schoolAccessFromClaims(unverifiedClaims(session.access_token));
+      if (stamped) { callback(session.user, stamped.fullCourse); return; }
       try {
         const { data, error, status } = await supabase.rpc('has_beta_access');
         if (disposed || expectedRevision !== revision) return;

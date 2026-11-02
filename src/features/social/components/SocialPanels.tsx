@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ActionButton, AppIcon, AvatarStack, Drawer, DropdownMenu, DropdownMenuItem, IconActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import type { SocialPanel } from '../../../store/slices/socialSlice';
+import { countedIn, type SocialPanel } from '../../../store/slices/socialSlice';
 import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
@@ -25,22 +25,35 @@ function useOnlineTotal() {
   });
 }
 
+/** Others in a lesson by the exact count (the lists themselves are capped). */
+function useLessonTotal(lesson: number | null) {
+  return useAppStore((state) => lesson === null ? 0 : Math.max(0, (state.socialCounts[lesson]?.n ?? 0) - (countedIn(state, lesson) ? 1 : 0)));
+}
+
+/** Lists show the first people; one quiet line says how many more there are. */
+function MoreNote({ count, where }: { count: number; where: string }) {
+  return count > 0 ? <p className="py-2 text-sm font-bold text-ui-muted">{count} more {where}</p> : null;
+}
+
 function useOthers(list: Person[], hideRoom = false) {
   const me = useAppStore((state) => state.socialMe);
   const race = useAppStore(state => state.race);
   return list.filter((person) => person.u !== me && (!hideRoom || !race?.players.some(player => player.id === person.u && !player.left)));
 }
 
-function useClassmates(people: Person[], online: Person[], lesson: number | null) {
+/**
+ * The Online list is a snapshot from when it was opened; this lesson's list is live. Live entries win, and when the
+ * live list holds everyone counted here, snapshot entries still claiming this lesson have left it.
+ */
+function useClassmates(people: Person[], online: Person[], lesson: number | null, lessonTotal: number) {
   const classmates = useMemo(() => {
+    const live = new Set(people.map(p => p.u));
+    const liveComplete = people.length >= lessonTotal;
     const map = new Map<string, Person>();
-    for (const p of online) map.set(p.u, p);
-    for (const p of people) {
-      const existing = map.get(p.u);
-      map.set(p.u, existing ? { ...existing, l: existing.l ?? lesson } : { ...p, l: p.l ?? lesson });
-    }
+    for (const p of online) if (!(liveComplete && lesson !== null && p.l === lesson && !live.has(p.u))) map.set(p.u, p);
+    for (const p of people) map.set(p.u, { ...p, l: p.l ?? lesson });
     return Array.from(map.values());
-  }, [online, people, lesson]);
+  }, [online, people, lesson, lessonTotal]);
 
   return useMemo(() => {
     if (lesson === null) {
@@ -79,7 +92,10 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const inMyRoom = (person: Person) => !!roomPlayers?.some(player => player.id === person.u && !player.left);
   const rooms = useAppStore(state => state.socialRooms);
   const [roomMenuOpen, setRoomMenuOpen] = useState(false);
-  const { classmates, here, others } = useClassmates(people, online, lesson);
+  const lessonTotal = useLessonTotal(lesson);
+  const { classmates, here, others } = useClassmates(people, online, lesson, lessonTotal);
+  const moreHere = Math.max(0, lessonTotal - here.length);
+  const moreOnline = Math.max(0, onlineTotal - classmates.length - moreHere);
   const crowd = classmates.slice(0, 4).map(person => ({ name: person.n, color: person.c, src: person.i }));
   const visit = panel.tab === 'online' ? panel.visit : undefined;
   const selected = visit ? classmates.find(person => person.u === visit.u) ?? visit : null;
@@ -143,6 +159,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
                   {here.map((person) => (
                     <PersonRow key={person.u} person={person} lesson={lesson} onOpen={() => setProfile(person)} action={<ActionButton size="sm" variant="secondary" onClick={() => invite(person)}>Invite</ActionButton>} />
                   ))}
+                  <MoreNote count={moreHere} where="in this lesson" />
                 </>
               ) : (
                 <>
@@ -157,6 +174,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
                 <PersonRow person={person} lesson={lesson} onOpen={() => setProfile(person)} action={<ActionButton size="sm" variant="secondary" onClick={() => invite(person)}>Invite</ActionButton>} />
               </div>
             ))}
+            <MoreNote count={moreOnline} where="online" />
           </>}
         </div>
         {(pending || selected || panel.tab === 'online') && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? inMyRoom(selected) ? <ActionButton fullWidth size="lg" variant="secondary" onClick={() => mention(selected)}><AppIcon name="at" size={20} />Mention</ActionButton> : <div className="flex gap-2.5"><ActionButton size="lg" variant="secondary" aria-label="Mention" onClick={() => mention(selected)}><AppIcon name="at" size={20} /><span className="hidden sm:inline">Mention</span></ActionButton><div className="min-w-0 flex-1"><ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton></div></div> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
@@ -180,7 +198,12 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
   const [picked, setPicked] = useState<string[]>([]);
   const [recentRoom, setRecentRoom] = useState<string | null>(null);
   useEffect(() => { setRecentRoom(getRecentRaceCode(userId)); }, [userId, panel.tab]);
-  const { classmates, here, others } = useClassmates(people, online, lesson);
+  const lessonTotal = useLessonTotal(lesson);
+  const { classmates, here, others } = useClassmates(people, online, lesson, lessonTotal);
+  // Your own party is hidden from these lists but still counted online; the "more" lines must not count it.
+  const withParty = useClassmates(useOthers(useAppStore((state) => state.socialPeople)), useOthers(useAppStore((state) => state.socialOnline)), lesson, lessonTotal);
+  const moreHere = Math.max(0, lessonTotal - withParty.here.length);
+  const moreOnline = Math.max(0, onlineTotal - withParty.classmates.length - moreHere);
   const openRooms = rooms.filter((room) => room.code !== recentRoom);
   const toggle = (id: string) => setPicked((prev) => (prev.includes(id) ? prev.filter((value) => value !== id) : prev.length < seats ? [...prev, id] : prev));
   const heading = (key: number | null) => {
@@ -248,6 +271,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
                     />
                   </button>
                 ))}
+                <MoreNote count={moreHere} where="in this lesson" />
               </>
             ) : (
               <>
@@ -274,6 +298,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
               </button>
             </div>
           ))}
+          <MoreNote count={moreOnline} where="online" />
         </>}
       </div>
       <div className="shrink-0 border-t-2 border-ui-divider pt-4">

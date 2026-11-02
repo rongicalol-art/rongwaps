@@ -12,6 +12,8 @@ export const GLOBAL_CHAT = 0;
 export const CHAT_KEEP = 50;
 export const CHAT_TTL_MS = 24 * 3_600_000;
 export const SOCIAL_FRAME_BYTES = 4096;
+/** The Lobby lists at most this many open rooms (newest first); a full list may not include every open room. */
+export const ROOM_LIST_CAP = 20;
 
 /** Plain text only; cap visible characters and remove control/bidi spoofing characters. */
 export function chatText(value: unknown): string {
@@ -65,7 +67,10 @@ export interface LessonCount { n: number; f: Person[] }
 
 export type LobbyClientMessage =
   | { t: 'here'; l: number | null; a: Activity | null; show: boolean; i?: string }
-  | { t: 'sub'; online: boolean; chat: number | null }
+  /** `online`: the social panel is open (rooms stream, one Online snapshot). `v: 2`: rooms stream only while it is. */
+  | { t: 'sub'; online: boolean; chat: number | null; v?: 2 }
+  /** A fresh Online snapshot (people in this lesson first, then the most recently active; capped). */
+  | { t: 'roster' }
   | { t: 'say'; l: number; text: string; mentions?: string[] }
   | { t: 'cheer'; to: string[]; p: number }
   | { t: 'invite'; to: string[]; code: string }
@@ -111,7 +116,8 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
     const i = typeof data.i === 'string' && data.i.length <= MAX_SOCIAL_IMAGE_LENGTH ? data.i : undefined;
     return { t: 'here', l: lessonKey(data.l), a, show: data.show !== false, ...(i ? { i } : {}) };
   }
-  if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat) };
+  if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat), ...(data.v === 2 ? { v: 2 as const } : {}) };
+  if (data.t === 'roster') return { t: 'roster' };
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {
     const text = chatText(data.text);
     const mentions = mentionIds(data.mentions);

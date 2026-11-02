@@ -27,7 +27,7 @@ The backend (`server/index.ts`) runs under Node.js + Express and serves protecte
 
 There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 404 without authenticating or calling a provider. Jev content-review scripts remain development tooling.
 
-Protected lesson-content requests require a valid Supabase user and `has_beta_access() = true` from a request-scoped database client. Unauthorized school-beta accounts receive 403; an access-verification outage returns 503. The database owns the student/owner rule; Express does not duplicate it or trust editable user metadata.
+Protected lesson-content requests require a school-beta session. A token signed with the project's asymmetric keys is verified locally against the cached signing keys (`shared/accessToken.ts`); when it carries the `school_beta` claim stamped by the database's sign-in hook, no Supabase call is made, and a forged, expired or foreign token is refused with 401 at once. Other tokens (issued before the hook stamped claims, legacy shared-secret tokens, or during a signing-key outage) are checked as before: a valid Supabase user and `has_beta_access() = true` from a request-scoped database client. Unauthorized school-beta accounts receive 403; an access-verification outage returns 503. The database owns the student/owner rule; Express does not duplicate it or trust editable user metadata.
 
 ## Study together bootstrap
 

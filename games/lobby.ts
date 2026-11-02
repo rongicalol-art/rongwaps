@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, SOCIAL_FRAME_BYTES, nextChatRate, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, ROOM_LIST_CAP, SOCIAL_FRAME_BYTES, nextChatRate, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 
 type Att = {
@@ -7,16 +7,51 @@ type Att = {
   on: boolean; ch: number | null; cheer: number; inv: number[];
   activeAt: number; tokens: number; updatedAt: number;
   authUntil: number;
+  /** Accepted at (ms): orders faces and lesson lists the same way after every wake. */
+  j?: number;
+  /** Set by the first `sub`: true streams open rooms only while the social panel is open; false (older clients) streams every listing change. */
+  v2?: boolean;
 };
 type ChatRow = { id: number; lesson: number; uid: string; name: string; color: string; text: string; room: string | null; ts: number };
 const FLUSH_MS = 2000;
+/** With sockets connected: stale sockets, expired rows and a safety flush; idle objects clean up hourly. */
+const MAINTENANCE_MS = 5 * 60_000;
+const IDLE_MAINTENANCE_MS = 3_600_000;
 const ROOM_TTL_MS = 35 * 60_000;
 const STALE_MS = 90_000;
+/** Admission limit, measured with scripts/load/socialLoad.mjs (docs/reports/scale-audit.md). */
+export const LOBBY_CAPACITY = 2000;
+/** People sent per lesson (faces, "In this lesson"); the lesson's count stays exact. */
+const PEOPLE_CAP = 30;
+/** The Online list is a snapshot on request, never streamed. */
+const ROSTER_CAP = 100;
+const ROSTER_GAP_MS = 3000;
+const ROOMS_REUSE_MS = 30_000;
+/** Same allowance the per-account limiter gives HTTP requests; kept here, it costs no extra request. */
+const TICKET_BURST = 30;
+const TICKET_REFILL_MS = 2000;
+export const TICKET_LIMIT_ERROR = 'Too many connection requests. Try again shortly.';
 
-/** One hibernating lobby for the school beta (150 concurrent users); group once, batch and dedupe snapshots. */
+/**
+ * Presence, lesson and global chat, mentions, cheers and invites for everyone signed in. Hibernating; socket
+ * attachments are the durable per-socket state, mirrored in memory (rebuilt on wake) so each event touches only
+ * the sockets it concerns: a chat line reaches its channel's subscribers, a mention or cheer its recipients.
+ * A flush (at most every 2 s, only after a change) sends lesson counts, each lesson's first people and, to open
+ * panels, the open rooms; per-socket dedupe skips unchanged frames.
+ */
 export class Lobby extends DurableObject<Env> {
+  protected capacity = LOBBY_CAPACITY;
   private lastFlush = 0;
+  private flushTimer: ReturnType<typeof setTimeout> | null = null;
+  /** The stored alarm, once read after a wake (undefined = not read yet). */
+  private alarmAt: number | null | undefined;
   private sent = new WeakMap<WebSocket, Map<string, string>>();
+  private live: Map<WebSocket, Att> | null = null;
+  private byUser = new Map<string, WebSocket>();
+  private byChannel = new Map<number, Set<WebSocket>>();
+  private ticketBuckets = new Map<string, { tokens: number; at: number }>();
+  private roomsCache: { frame: string; at: number } | null = null;
+  private rosterAt = new WeakMap<WebSocket, number>();
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -34,10 +69,16 @@ export class Lobby extends DurableObject<Env> {
   }
 
   async issue(uid: string, name: string, color: string, authUntil: number): Promise<{ ticket: string }> {
+    const now = Date.now();
+    const bucket = this.ticketBuckets.get(uid);
+    const tokens = Math.min(TICKET_BURST, (bucket?.tokens ?? TICKET_BURST) + (now - (bucket?.at ?? now)) / TICKET_REFILL_MS);
+    if (tokens < 1) throw new Error(TICKET_LIMIT_ERROR);
+    this.ticketBuckets.set(uid, { tokens: tokens - 1, at: now });
+    if (this.ticketBuckets.size > 10_000) for (const [key, value] of this.ticketBuckets) if (now - value.at > TICKET_BURST * TICKET_REFILL_MS) this.ticketBuckets.delete(key);
     const ticket = crypto.randomUUID();
-    this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires <= ?', Date.now());
-    this.ctx.storage.sql.exec('INSERT INTO tickets VALUES (?,?,?,?,?,?)', ticket, uid, name, socialColor(color), Math.min(authUntil, Date.now() + 30_000), Math.min(authUntil, Date.now() + 15 * 60_000));
-    await this.schedule();
+    this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires <= ?', now);
+    this.ctx.storage.sql.exec('INSERT INTO tickets VALUES (?,?,?,?,?,?)', ticket, uid, name, socialColor(color), Math.min(authUntil, now + 30_000), Math.min(authUntil, now + 15 * 60_000));
+    await this.ensureAlarm();
     return { ticket };
   }
 
@@ -46,15 +87,56 @@ export class Lobby extends DurableObject<Env> {
     const previous = existing ? JSON.parse(existing.data) as RaceRoomSummary : null;
     if (previous && (previous.revision ?? 0) >= (summary.revision ?? 0)) return;
     this.ctx.storage.sql.exec('INSERT OR REPLACE INTO rooms VALUES (?,?,?)', summary.code, JSON.stringify(summary), Date.now());
+    this.roomsCache = null;
     if (summary.open && summary.players.length && !this.ctx.storage.sql.exec('SELECT id FROM chat WHERE room=? LIMIT 1', summary.code).toArray().length) {
       const lesson = (summary.selection.book ?? 1) * 100 + Number(Object.keys(summary.selection.lessons)[0]);
       this.post({ u: hostUid, n: summary.host, c: socialColor(summary.hostColor), i: summary.hostImage }, lesson, '', summary.code);
     }
-    await this.schedule();
+    this.scheduleFlush();
+    await this.ensureAlarm();
   }
 
-  private sockets() { return this.ctx.getWebSockets().filter(socket => socket.readyState === 1); }
-  private attachments() { return this.sockets().map(socket => socket.deserializeAttachment() as Att); }
+  /** Live sockets and their state; rebuilt from attachments after a wake (and by every maintenance alarm). */
+  private index(): Map<WebSocket, Att> {
+    if (this.live) return this.live;
+    this.live = new Map();
+    this.byUser.clear(); this.byChannel.clear();
+    for (const socket of this.ctx.getWebSockets()) if (socket.readyState === 1) this.track(socket, socket.deserializeAttachment() as Att);
+    return this.live;
+  }
+  private track(socket: WebSocket, att: Att) {
+    this.index().set(socket, att);
+    this.byUser.set(att.u, socket);
+    if (att.ch !== null) this.channel(att.ch).add(socket);
+  }
+  private channel(key: number) {
+    let set = this.byChannel.get(key);
+    if (!set) { set = new Set(); this.byChannel.set(key, set); }
+    return set;
+  }
+  private moveChannel(socket: WebSocket, att: Att, next: number | null) {
+    if (att.ch !== null) this.byChannel.get(att.ch)?.delete(socket);
+    att.ch = next;
+    if (next !== null) this.channel(next).add(socket);
+  }
+  private forget(socket: WebSocket) {
+    const att = this.live?.get(socket);
+    if (!att) return;
+    this.live!.delete(socket);
+    if (this.byUser.get(att.u) === socket) this.byUser.delete(att.u);
+    if (att.ch !== null) this.byChannel.get(att.ch)?.delete(socket);
+  }
+  private close(socket: WebSocket, code: number, reason: string) {
+    this.forget(socket);
+    try { socket.close(code, reason); } catch { /* Already closing. */ }
+  }
+  /** The live, visible socket of an account, if any. */
+  private visible(uid: string): { socket: WebSocket; att: Att } | null {
+    const socket = this.byUser.get(uid);
+    const att = socket && this.index().get(socket);
+    return socket && att?.show ? { socket, att } : null;
+  }
+
   private send(socket: WebSocket, message: LobbyServerMessage | string, key?: string) {
     const frame = typeof message === 'string' ? message : JSON.stringify(message);
     if (key) {
@@ -63,7 +145,7 @@ export class Lobby extends DurableObject<Env> {
       if (sent.get(key) === frame) return;
       sent.set(key, frame);
     }
-    try { socket.send(frame); } catch { socket.close(1011, 'Reconnect.'); }
+    try { socket.send(frame); } catch { this.close(socket, 1011, 'Reconnect.'); }
   }
   private person(att: Att): Person { return { u: att.u, n: att.n, c: att.c, l: att.l, a: att.a, ...(att.i ? { i: att.i } : {}) }; }
 
@@ -75,28 +157,33 @@ export class Lobby extends DurableObject<Env> {
     const entry = this.ctx.storage.sql.exec<{ uid: string; name: string; color: string; expires: number; auth_until: number }>('SELECT uid,name,color,expires,auth_until FROM tickets WHERE ticket=?', ticket).toArray()[0];
     if (!entry || entry.expires <= Date.now() || entry.auth_until <= Date.now()) return new Response('Sign in again.', { status: 401 });
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE ticket=?', ticket);
-    for (const old of this.sockets()) if ((old.deserializeAttachment() as Att).u === entry.uid) old.close(4001, 'Opened in another tab.');
-    if (this.sockets().length >= 250) return new Response('Study together is full. Try again shortly.', { status: 503 });
+    const live = this.index();
+    const old = this.byUser.get(entry.uid);
+    if (old) this.close(old, 4001, 'Opened in another tab.');
+    if (live.size >= this.capacity) return new Response('Study together is full. Try again shortly.', { status: 503 });
     const [client, server] = Object.values(new WebSocketPair());
     this.ctx.acceptWebSocket(server);
     // Hidden until the client's privacy preference arrives; never briefly disclose hidden users.
-    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until };
+    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until, j: Date.now() };
     server.serializeAttachment(att);
+    this.track(server, att);
     this.send(server, { t: 'me', u: att.u });
     this.ctx.waitUntil(this.inbox(att.u).then(v => { if (server.readyState === 1) this.send(server, { t: 'mentions', v }); }).catch(() => {}));
-    await this.schedule();
+    this.scheduleFlush();
+    await this.ensureAlarm();
     return new Response(null, { status: 101, webSocket: client, headers: { 'Sec-WebSocket-Protocol': 'lobby' } });
   }
 
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer) {
     if (socket.readyState !== 1) return;
-    if (typeof raw !== 'string' || raw.length > SOCIAL_FRAME_BYTES || new TextEncoder().encode(raw).byteLength > SOCIAL_FRAME_BYTES) { socket.close(1008, 'Invalid message.'); return; }
-    const att = socket.deserializeAttachment() as Att;
-    if ((att.authUntil ?? 0) <= Date.now()) { socket.close(4002, 'Refresh your sign-in.'); return; }
+    if (typeof raw !== 'string' || raw.length > SOCIAL_FRAME_BYTES || new TextEncoder().encode(raw).byteLength > SOCIAL_FRAME_BYTES) { this.close(socket, 1008, 'Invalid message.'); return; }
+    let att = this.index().get(socket);
+    if (!att) { att = socket.deserializeAttachment() as Att; this.track(socket, att); }
+    if ((att.authUntil ?? 0) <= Date.now()) { this.close(socket, 4002, 'Refresh your sign-in.'); return; }
     const now = Date.now();
     att.tokens = Math.min(30, (att.tokens ?? 30) + (now - (att.updatedAt ?? now)) / 200);
     att.activeAt = now; att.updatedAt = now;
-    if (att.tokens < 1) { socket.close(1008, 'Too many actions.'); return; }
+    if (att.tokens < 1) { this.close(socket, 1008, 'Too many actions.'); return; }
     att.tokens -= 1; socket.serializeAttachment(att);
     let message;
     try { message = parseLobbyMessage(JSON.parse(raw)); } catch { return; }
@@ -107,33 +194,39 @@ export class Lobby extends DurableObject<Env> {
       socket.serializeAttachment(att);
       // Clear old lesson people immediately, including when leaving the last lesson.
       this.sent.get(socket)?.delete('people');
-      await this.schedule();
+      this.scheduleFlush();
     } else if (message.t === 'sub') {
       const chatChanged = message.chat !== att.ch;
-      const onlineOpened = message.online && !att.on;
-      att.on = message.online; att.ch = message.chat;
+      const panelOpened = message.online && !att.on;
+      att.on = message.online; att.v2 = message.v === 2;
+      this.moveChannel(socket, att, message.chat);
       socket.serializeAttachment(att);
       if (chatChanged && att.ch !== null) this.send(socket, { t: 'history', l: att.ch, v: this.history(att.ch, now) });
-      if (onlineOpened) this.send(socket, { t: 'online', v: this.online(this.attachments()) }, 'online');
+      if (panelOpened) this.sendRoster(socket, att, now);
+      // Open panels (and older clients, which always follow listings) get the current list at once; deduped.
+      if (att.on || !att.v2) this.send(socket, this.roomsFrame(), 'rooms');
+    } else if (message.t === 'roster') {
+      this.sendRoster(socket, att, now);
     } else if (message.t === 'say') {
       if (att.ch !== message.l) return;
       const saved = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM chat_rate WHERE uid=?', att.u).toArray()[0];
       const rate = nextChatRate(saved ? JSON.parse(saved.data) as ChatRate : null, message.text, now);
       if (!rate) { this.send(socket, { t: 'error', message: 'Please wait before sending another message.' }); return; }
       this.ctx.storage.sql.exec('INSERT OR REPLACE INTO chat_rate VALUES (?,?,?)', att.u, JSON.stringify(rate), now);
-      let recipients: string[] = [];
-      if (message.mentions?.length) {
-        const eligible = new Set(this.attachments().filter(person => person.show && (message.l === 0 || person.l === message.l)).map(person => person.u));
-        for (const row of this.ctx.storage.sql.exec<{ uid: string }>('SELECT DISTINCT uid FROM chat WHERE lesson=? AND ts>=?', message.l, now - CHAT_TTL_MS)) eligible.add(row.uid);
-        recipients = message.mentions.filter(id => id !== att.u && eligible.has(id));
-      }
+      // Mentions reach people visibly online in this channel, or who wrote in it recently.
+      const recipients = (message.mentions ?? []).filter(id => {
+        if (id === att.u) return false;
+        const target = this.visible(id);
+        if (target && (message.l === 0 || target.att.l === message.l)) return true;
+        return this.ctx.storage.sql.exec('SELECT 1 FROM chat WHERE lesson=? AND uid=? AND ts>=? LIMIT 1', message.l, id, now - CHAT_TTL_MS).toArray().length > 0;
+      });
       this.post(att, message.l, message.text, null, recipients);
+      await this.ensureAlarm();
     } else if (message.t === 'cheer') {
       if (now - att.cheer < 3000) return;
       att.cheer = now; socket.serializeAttachment(att);
       const frame = JSON.stringify({ t: 'cheer', from: this.person(att), p: message.p } satisfies LobbyServerMessage);
-      const to = new Set(message.to);
-      for (const target of this.sockets()) if (this.reachable(target, to)) this.send(target, frame);
+      for (const id of new Set(message.to)) { const target = this.visible(id); if (target) this.send(target.socket, frame); }
     } else if (message.t === 'invite') {
       att.inv = att.inv.filter(time => now - time < 60_000);
       if (att.inv.length >= 10) return;
@@ -142,9 +235,11 @@ export class Lobby extends DurableObject<Env> {
       if (socket.readyState !== 1) return;
       if (!room) { this.send(socket, { t: 'error', message: 'This room is full or no longer accepting players.' }); return; }
       const frame = JSON.stringify({ t: 'invite', from: this.person(att), room } satisfies LobbyServerMessage);
-      const to = new Set(message.to);
       let delivered = 0;
-      for (const target of this.sockets()) if (target !== socket && this.reachable(target, to)) { this.send(target, frame); delivered++; }
+      for (const id of new Set(message.to)) {
+        const target = this.visible(id);
+        if (target && target.socket !== socket) { this.send(target.socket, frame); delivered++; }
+      }
       if (!delivered) this.send(socket, { t: 'error', message: 'Those classmates are offline. Share your room link instead.' });
     } else if (message.t === 'mention-open') {
       const row = this.ctx.storage.sql.exec<{ data: string; read: number }>('SELECT data,read FROM mentions WHERE uid=? AND key=? AND ts>=?', att.u, message.key, now - CHAT_TTL_MS).toArray()[0];
@@ -162,28 +257,29 @@ export class Lobby extends DurableObject<Env> {
       if (duplicate) return;
       this.ctx.storage.sql.exec('INSERT INTO reports (msg,uid,text,reporter,ts) VALUES (?,?,?,?,?)', message.id, row.uid, row.text, att.u, now);
       console.log(JSON.stringify({ event: 'chat_report', msg: message.id }));
+      await this.ensureAlarm();
     } else if (message.t === 'card-ask' || message.t === 'card') {
       // Profile visits: only between people who are visibly online; forwarded, never stored.
       if (!att.show || message.t === 'card-ask' && message.u === att.u) return;
-      const to = message.t === 'card-ask' ? message.u : message.to;
-      let frame: string;
-      if (message.t === 'card-ask') frame = JSON.stringify({ t: 'card-ask', from: att.u } satisfies LobbyServerMessage);
+      const target = this.visible(message.t === 'card-ask' ? message.u : message.to);
+      if (!target || target.socket === socket) return;
+      if (message.t === 'card-ask') this.send(target.socket, { t: 'card-ask', from: att.u });
       else {
         const { ci, ...card } = message.v ?? {};
         const cover = socialImage(ci, this.env.SUPABASE_URL, 'cover');
-        frame = JSON.stringify({ t: 'card', u: att.u, v: message.v ? { ...card, ...(cover ? { ci: cover } : {}) } as typeof message.v : null } satisfies LobbyServerMessage);
-      }
-      for (const target of this.sockets()) {
-        const other = target.deserializeAttachment() as Att;
-        if (other.u === to && other.show && target !== socket) this.send(target, frame);
+        this.send(target.socket, { t: 'card', u: att.u, v: message.v ? { ...card, ...(cover ? { ci: cover } : {}) } as typeof message.v : null });
       }
     }
   }
 
-  /** Cheers and invites reach only people who are visibly online; hidden people count as offline. */
-  private reachable(target: WebSocket, to: Set<string>) {
-    const other = target.deserializeAttachment() as Att;
-    return other.show && to.has(other.u);
+  /** The Online list: people in this lesson first, then the most recently active; one capped snapshot per request. */
+  private sendRoster(socket: WebSocket, att: Att, now: number) {
+    if (now - (this.rosterAt.get(socket) ?? 0) < ROSTER_GAP_MS) return;
+    this.rosterAt.set(socket, now);
+    const here = (other: Att) => att.l !== null && other.l === att.l ? 1 : 0;
+    const people = [...this.index().values()].filter(other => other.show)
+      .sort((a, b) => here(b) - here(a) || b.activeAt - a.activeAt).slice(0, ROSTER_CAP).map(other => this.person(other));
+    this.send(socket, { t: 'online', v: people }, 'online');
   }
 
   private post(att: Pick<Att, 'u' | 'n' | 'c' | 'i'>, lesson: number, text: string, room: string | null, recipients: string[] = []) {
@@ -199,7 +295,8 @@ export class Lobby extends DurableObject<Env> {
     });
     for (const { uid, notice } of notices) this.deliverMention(uid, notice);
     const frame = JSON.stringify({ t: 'msg', m: line } satisfies LobbyServerMessage);
-    for (const socket of this.sockets()) if ((socket.deserializeAttachment() as Att).ch === lesson) this.send(socket, frame);
+    this.index();
+    for (const socket of [...(this.byChannel.get(lesson) ?? [])]) this.send(socket, frame);
   }
 
   private async inbox(uid: string): Promise<MentionNotice[]> {
@@ -220,14 +317,16 @@ export class Lobby extends DurableObject<Env> {
   }
 
   private deliverMention(uid: string, notice: MentionNotice) {
-    for (const socket of this.sockets()) if ((socket.deserializeAttachment() as Att).u === uid) this.send(socket, { t: 'mention', v: notice });
+    this.index();
+    const socket = this.byUser.get(uid);
+    if (socket) this.send(socket, { t: 'mention', v: notice });
   }
   async partyMention(uid: string, notice: MentionNotice) {
     let allowed: boolean;
     try { allowed = !!notice.room && await this.env.ROOMS.getByName(notice.room).canSeeMention(uid); } catch { throw new Error('Could not verify room membership.'); }
     const safe = allowed ? notice : { ...notice, message: { ...notice.message, t: '' } };
     if (this.ctx.storage.transactionSync(() => this.saveMention(uid, safe))) this.deliverMention(uid, safe);
-    await this.schedule();
+    await this.ensureAlarm();
   }
 
   private message(row: ChatRow, image?: string): ChatMessage {
@@ -242,67 +341,99 @@ export class Lobby extends DurableObject<Env> {
   }
 
   private history(lesson: number, now: number) {
-    const images = new Map(this.attachments().filter(att => att.i).map(att => [att.u, att.i!]));
+    const live = this.index();
+    const image = (uid: string) => { const socket = this.byUser.get(uid); return socket ? live.get(socket)?.i : undefined; };
     return this.ctx.storage.sql.exec<ChatRow>('SELECT * FROM chat WHERE lesson=? AND ts>=? ORDER BY id DESC LIMIT ?', lesson, now - CHAT_TTL_MS, CHAT_KEEP)
-      .toArray().reverse().map(row => this.message(row, images.get(row.uid))).filter(message => message.t || message.r);
+      .toArray().reverse().map(row => this.message(row, image(row.uid))).filter(message => message.t || message.r);
   }
-  private online(atts: Att[]) { return atts.filter(att => att.show).map(att => this.person(att)); }
-  private rooms(): RaceRoomSummary[] {
-    return this.ctx.storage.sql.exec<{ data: string }>("SELECT data FROM rooms WHERE updated>? AND json_extract(data,'$.open')=1 AND json_extract(data,'$.joinable')=1 ORDER BY updated DESC LIMIT 100", Date.now() - ROOM_TTL_MS)
-      .toArray().map(row => JSON.parse(row.data) as RaceRoomSummary).filter(room => (room.expiresAt ?? Infinity) > Date.now());
+  /** Open, joinable rooms, newest first; reused for 30 s unless a listing changes. */
+  private roomsFrame(): string {
+    const now = Date.now();
+    if (this.roomsCache && now - this.roomsCache.at < ROOMS_REUSE_MS) return this.roomsCache.frame;
+    const rooms = this.ctx.storage.sql.exec<{ data: string }>("SELECT data FROM rooms WHERE updated>? AND json_extract(data,'$.open')=1 AND json_extract(data,'$.joinable')=1 ORDER BY updated DESC LIMIT ?", now - ROOM_TTL_MS, ROOM_LIST_CAP)
+      .toArray().map(row => JSON.parse(row.data) as RaceRoomSummary).filter(room => (room.expiresAt ?? Infinity) > now);
+    this.roomsCache = { frame: JSON.stringify({ t: 'rooms', v: rooms } satisfies LobbyServerMessage), at: now };
+    return this.roomsCache.frame;
   }
 
-  private async schedule() {
-    const now = Date.now();
-    let next = this.lastFlush + FLUSH_MS;
-    if (now - this.lastFlush >= FLUSH_MS) { this.flush(); next = now + 60_000; }
-    const scheduled = await this.ctx.storage.getAlarm();
-    if (scheduled === null || next < scheduled) await this.ctx.storage.setAlarm(next);
+  /** A change goes out at once, or with the trailing flush of its 2 s window (a timer, not a billed alarm). */
+  private scheduleFlush() {
+    const wait = this.lastFlush + FLUSH_MS - Date.now();
+    if (wait <= 0) { this.flush(); return; }
+    this.flushTimer ??= setTimeout(() => { this.flushTimer = null; this.flush(); }, wait);
+  }
+  /** Makes sure maintenance runs within five minutes; reads the stored alarm only once per wake. */
+  private async ensureAlarm() {
+    const target = Date.now() + MAINTENANCE_MS;
+    this.alarmAt ??= await this.ctx.storage.getAlarm();
+    if (this.alarmAt === null || this.alarmAt > target) { await this.ctx.storage.setAlarm(target); this.alarmAt = target; }
+  }
+
+  /** Closes sockets whose sign-in expired or that stopped answering pings. */
+  private sweep(now: number) {
+    for (const [socket, att] of this.index()) {
+      const seen = Math.max(att.activeAt ?? 0, this.ctx.getWebSocketAutoResponseTimestamp(socket)?.getTime() ?? 0);
+      if ((att.authUntil ?? 0) <= now) this.close(socket, 4002, 'Refresh your sign-in.');
+      else if (now - seen >= STALE_MS) this.close(socket, 1011, 'Connection timed out. Reconnect.');
+    }
   }
 
   private flush() {
+    if (this.flushTimer) { clearTimeout(this.flushTimer); this.flushTimer = null; }
     this.lastFlush = Date.now();
-    const sockets = this.sockets();
-    const atts = sockets.map(socket => socket.deserializeAttachment() as Att);
+    this.sweep(this.lastFlush);
+    const live = this.index();
     const byLesson = new Map<number, Person[]>();
-    const online = this.online(atts);
-    for (const person of online) if (person.l !== null) {
-      const group = byLesson.get(person.l) ?? [];
-      group.push(person); byLesson.set(person.l, group);
+    const faces: Person[] = [];
+    // Longest-present first, so the faces and capped lists stay put (and deduped) across wakes.
+    const visible = [...live.values()].filter(att => att.show).sort((a, b) => (a.j ?? 0) - (b.j ?? 0) || (a.u < b.u ? -1 : a.u > b.u ? 1 : 0));
+    const total = visible.length;
+    for (const att of visible) {
+      const person = this.person(att);
+      if (faces.length < 4) faces.push(person);
+      if (att.l !== null) { const group = byLesson.get(att.l); if (group) group.push(person); else byLesson.set(att.l, [person]); }
     }
     const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([key, people]) => [key, { n: people.length, f: people.slice(0, 3) }]));
-    const countFrame = JSON.stringify({ t: 'counts', v: counts, n: online.length, f: online.slice(0, 4) } satisfies LobbyServerMessage);
-    const onlineFrame = JSON.stringify({ t: 'online', v: online } satisfies LobbyServerMessage);
-    const rooms = JSON.stringify({ t: 'rooms', v: this.rooms() } satisfies LobbyServerMessage);
+    const countFrame = JSON.stringify({ t: 'counts', v: counts, n: total, f: faces } satisfies LobbyServerMessage);
     const people = new Map<number | null, string>();
-    sockets.forEach((socket, index) => {
-      const att = atts[index];
+    let rooms: string | undefined;
+    for (const [socket, att] of live) {
       this.send(socket, countFrame, 'counts');
-      if (att.on) this.send(socket, onlineFrame, 'online');
-      this.send(socket, rooms, 'rooms');
-      if (!people.has(att.l)) people.set(att.l, JSON.stringify({ t: 'people', l: att.l, v: att.l === null ? [] : byLesson.get(att.l) ?? [] } satisfies LobbyServerMessage));
-      this.send(socket, people.get(att.l)!, 'people');
-    });
+      if (att.on || att.v2 === false) this.send(socket, rooms ??= this.roomsFrame(), 'rooms');
+      let frame = people.get(att.l);
+      if (frame === undefined) {
+        frame = JSON.stringify({ t: 'people', l: att.l, v: att.l === null ? [] : (byLesson.get(att.l) ?? []).slice(0, PEOPLE_CAP) } satisfies LobbyServerMessage);
+        people.set(att.l, frame);
+      }
+      this.send(socket, frame, 'people');
+    }
   }
 
   async alarm() {
     const now = Date.now();
-    for (const socket of this.sockets()) {
-      const att = socket.deserializeAttachment() as Att;
-      const seen = Math.max(att.activeAt ?? 0, this.ctx.getWebSocketAutoResponseTimestamp(socket)?.getTime() ?? 0);
-      if ((att.authUntil ?? 0) <= now) socket.close(4002, 'Refresh your sign-in.');
-      else if (now - seen >= STALE_MS) socket.close(1011, 'Connection timed out. Reconnect.');
-    }
+    this.alarmAt = null;
+    // Rebuild from the durable attachments: maintenance never trusts drifted memory.
+    this.live = null;
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires<=?', now);
     this.ctx.storage.sql.exec('DELETE FROM rooms WHERE updated<?', now - ROOM_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM chat WHERE ts<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM chat_rate WHERE updated<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM mentions WHERE ts<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM reports WHERE ts<? OR id NOT IN (SELECT id FROM reports ORDER BY id DESC LIMIT 1000)', now - 30 * CHAT_TTL_MS);
+    this.roomsCache = null;
     this.flush();
-    const hasData = this.ctx.storage.sql.exec('SELECT 1 FROM chat UNION ALL SELECT 1 FROM rooms UNION ALL SELECT 1 FROM reports UNION ALL SELECT 1 FROM mentions LIMIT 1').toArray().length > 0;
-    if (this.sockets().length || hasData) await this.ctx.storage.setAlarm(now + (this.sockets().length ? 60_000 : 3_600_000));
+    const sockets = this.index().size;
+    const hasData = this.ctx.storage.sql.exec('SELECT 1 FROM chat UNION ALL SELECT 1 FROM rooms UNION ALL SELECT 1 FROM reports UNION ALL SELECT 1 FROM mentions UNION ALL SELECT 1 FROM tickets LIMIT 1').toArray().length > 0;
+    if (sockets || hasData) {
+      const at = now + (sockets ? MAINTENANCE_MS : IDLE_MAINTENANCE_MS);
+      await this.ctx.storage.setAlarm(at);
+      this.alarmAt = at;
+    }
   }
-  async webSocketClose(socket: WebSocket) { if (socket.readyState === 2) socket.close(1000, 'Closed.'); await this.schedule(); }
-  webSocketError(socket: WebSocket) { socket.close(1011, 'Reconnect.'); }
+  async webSocketClose(socket: WebSocket) {
+    this.forget(socket);
+    if (socket.readyState === 2) socket.close(1000, 'Closed.');
+    this.scheduleFlush();
+  }
+  webSocketError(socket: WebSocket) { this.close(socket, 1011, 'Reconnect.'); this.scheduleFlush(); }
 }

@@ -1,4 +1,4 @@
-import type { Quality, SRSData } from './srsEngine';
+import type { Quality } from './srsEngine';
 
 export type ReviewSource = 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'daily' | 'practice';
 export interface ReviewContext {
@@ -10,13 +10,12 @@ export interface ReviewContext {
   /** Original daily goal, so another device can recognize a finished short session. */
   dailyTarget?: number;
 }
+/** One answer. The card's scheduling state itself lives in srsData / user_card_progress, not in its history. */
 export interface ReviewEvent extends ReviewContext {
   cardId: string;
   quality: Quality;
   reviewedAt: number;
   scheduled: boolean;
-  before: SRSData | null;
-  after: SRSData | null;
 }
 
 /** Immutable identities make retried uploads and overlapping pulls idempotent. */
