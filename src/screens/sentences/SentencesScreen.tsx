@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { LessonComplete } from '../../features/practice';
+import { LessonComplete, PracticeEmptyState } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
-import { ActionButton, EmptyState, PlayfulNavIcon } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
@@ -52,22 +51,8 @@ export function SentencesScreen({
 
   if (loadError || sentences.length === 0) {
     return (
-      <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
-        <EmptyState
-          icon={<PlayfulNavIcon name="reading" className="h-12 w-12" />}
-          iconBg={loadError ? 'bg-feedback-danger-surface' : 'bg-ui-surface'}
-          iconColor={loadError ? 'text-feedback-danger' : activeBook.accent}
-          title={loadError ? 'Something went wrong' : 'No sentences here yet'}
-          description={loadError
-            ? "We couldn't load these sentences. Please try again."
-            : "This part's sentences haven't been added yet. Try another part."}
-          action={(
-            <ActionButton variant="primary" size="lg" onClick={onClose} className="uppercase tracking-wider">
-              Go back
-            </ActionButton>
-          )}
-        />
-      </div>
+      <PracticeEmptyState icon="reading" accent={activeBook.accent} loadError={loadError} errorSubject="these sentences" onClose={onClose}
+        emptyTitle="No sentences here yet" emptyDescription="This part's sentences haven't been added yet. Try another part." />
     );
   }
 

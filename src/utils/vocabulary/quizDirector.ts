@@ -28,14 +28,6 @@ export const QUIZ_TYPE_FORMATS: Readonly<Record<QuizTypeId, readonly QuizFormat[
   build: ['word-build'],
 };
 
-/** The picker types this word can take: listening needs a recording, building needs a 2-4 character word. */
-export function quizTypesFor(card: Flashcard, deck: readonly Flashcard[]): QuizTypeId[] {
-  const types: QuizTypeId[] = ['meaning', 'hanzi', 'match', 'true-false'];
-  if (card.audio) types.push('listen');
-  if (hasWordTiles(card, deckCharacters(deck))) types.push('build');
-  return types;
-}
-
 /** Picked types keep only the words that fit one of them ([] = Mixed keeps every word). */
 export function wordsForQuizTypes(deck: readonly Flashcard[], types: readonly QuizTypeId[]): Flashcard[] {
   if (types.length === 0 || types.some((type) => type !== 'listen' && type !== 'build')) return [...deck];

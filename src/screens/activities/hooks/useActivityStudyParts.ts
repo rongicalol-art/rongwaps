@@ -24,10 +24,6 @@ export interface UseActivityStudyPartsOptions {
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
 }
 
-export interface VisibleStudyPart extends CourseLessonPartProgress {
-  isSelected: boolean;
-}
-
 export interface UseActivityStudyPartsResult {
   studyLessonParts: CourseLessonPartProgress[];
   selectedStudyPartIds: number[];

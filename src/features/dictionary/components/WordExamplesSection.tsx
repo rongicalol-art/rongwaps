@@ -1,10 +1,9 @@
-import { SmartSentence, Skeleton, LevelTag, ToggleSwitch, SpeakerIcon } from '../../../lib/widgets';
+import { SmartSentence, Skeleton, LevelTag, ToggleSwitch, SpeakerIcon, TranslationLines } from '../../../lib/widgets';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import type { WordExample } from '../../../types/models';
-import { splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
 import { useAudioPending } from '../../../hooks/useAudioPending';
 
 const PLAY_BUTTON =
@@ -77,16 +76,7 @@ export function WordExamplesSection({
           )}
           {ex.english && (
             <p className="ui-translation text-sm leading-snug sm:text-base">
-              {splitTranslationLines(ex.english).map((line, i) => (
-                <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
-                  {line.label && (
-                    <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans text-xs font-black text-ui-muted">
-                      {line.label}
-                    </span>
-                  )}
-                  {line.text}
-                </span>
-              ))}
+              <TranslationLines text={ex.english} />
             </p>
           )}
           <span className="mt-1 self-start"><LevelTag bookId={ex.sourceBookId} lessonId={ex.sourceLessonId} /></span>

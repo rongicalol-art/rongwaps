@@ -309,15 +309,18 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     // observe() reports once on subscribe: only a real size change may re-pose, and never mid-animation.
     let width = surface.offsetWidth;
     let height = surface.offsetHeight;
-    const observer = new ResizeObserver(() => {
-      if (surface.offsetWidth === width && surface.offsetHeight === height) return;
-      width = surface.offsetWidth;
-      height = surface.offsetHeight;
+    const applyPose = () => {
       if (isFlipped || wordAnimRef.current?.playState === 'running') return;
       const layout = readWordPose();
       if (!layout) return;
       layout.word.style.transformOrigin = layout.origin;
       layout.word.style.transform = layout.pose;
+    };
+    const observer = new ResizeObserver(() => {
+      if (surface.offsetWidth === width && surface.offsetHeight === height) return;
+      width = surface.offsetWidth;
+      height = surface.offsetHeight;
+      applyPose();
     });
     observer.observe(surface);
 
@@ -327,13 +330,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     let frame = 0;
     const repose = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        if (isFlipped || wordAnimRef.current?.playState === 'running') return;
-        const layout = readWordPose();
-        if (!layout) return;
-        layout.word.style.transformOrigin = layout.origin;
-        layout.word.style.transform = layout.pose;
-      });
+      frame = requestAnimationFrame(applyPose);
     };
     const back = backRef.current;
     const mutations = back && typeof MutationObserver !== 'undefined' ? new MutationObserver(repose) : null;

@@ -1,10 +1,10 @@
 import { memo, useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { AppIcon } from '../../../lib/widgets';
+import { AppIcon, TranslationLines } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
-import { splitDialogueTurns, splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
+import { splitDialogueTurns } from '../../../utils/lesson/dialogueTurns';
 import { cn } from '../../../utils/cn';
 import { sentenceText, type SentenceSession } from '../hooks/useSentenceSession';
 import type { LessonSentence } from '../hooks/useLessonSentences';
@@ -183,16 +183,7 @@ const SentenceCard = memo(function SentenceCard({
               )}
               <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
                 <p className="ui-translation min-w-0 text-base sm:text-lg">
-                  {splitTranslationLines(record.english).map((line, i) => (
-                    <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
-                      {line.label && (
-                        <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans text-xs font-black text-ui-muted">
-                          {line.label}
-                        </span>
-                      )}
-                      {line.text}
-                    </span>
-                  ))}
+                  <TranslationLines text={record.english} />
                 </p>
                 <div className="-mr-2 flex shrink-0 items-center gap-1 self-end">
                   <button

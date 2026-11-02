@@ -26,20 +26,14 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   const { answerAudioPlaying, playWord, stopAnswerAudio } = useQuizAnswerAudio();
   const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; simpleDefinitions: boolean; options: Flashcard[] } | null>(null);
 
-  const session = useCardSession(cards, sessionKey, {
-    requeueMissed: false,
-    onSessionReset: () => {
-      stopAnswerAudio();
-      currentCardChoicesRef.current = null;
-      setSelectedOption(null);
-      setIsChecked(false);
-    },
-    onAnswerStateReset: () => {
-      stopAnswerAudio();
-      setSelectedOption(null);
-      setIsChecked(false);
-    },
-  });
+  // A new session, shuffle, reset or review round also draws fresh choices.
+  const resetAnswer = () => {
+    stopAnswerAudio();
+    currentCardChoicesRef.current = null;
+    setSelectedOption(null);
+    setIsChecked(false);
+  };
+  const session = useCardSession(cards, sessionKey, { requeueMissed: false, onSessionReset: resetAnswer, onAnswerStateReset: resetAnswer });
   const { activeCards, currentIndex, currentCard, completed } = session;
 
   useAudioSessionLifecycle(completed);
@@ -96,21 +90,6 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     }
   };
 
-  const toggleShuffle = useCallback(() => {
-    currentCardChoicesRef.current = null;
-    session.toggleShuffle();
-  }, [session]);
-
-  const resetAll = useCallback(() => {
-    currentCardChoicesRef.current = null;
-    session.resetAll();
-  }, [session]);
-
-  const reviewUnlearned = useCallback(() => {
-    currentCardChoicesRef.current = null;
-    session.reviewUnlearned();
-  }, [session]);
-
   return {
     activeCards,
     currentIndex,
@@ -125,14 +104,14 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     handleCheck,
     completed,
     resumedReview: session.resumedReview,
-    resetAll,
+    resetAll: session.resetAll,
     practiceCards: session.practiceCards,
     missedCards: activeCards.filter((card) => session.sessionResults[card.id] === 1 || session.sessionResults[card.id] === 2),
-    reviewUnlearned,
+    reviewUnlearned: session.reviewUnlearned,
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,
-    toggleShuffle,
+    toggleShuffle: session.toggleShuffle,
     progressInfo: session.progressInfo,
   };
 }

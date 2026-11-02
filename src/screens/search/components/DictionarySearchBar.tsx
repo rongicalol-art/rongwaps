@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react';
-import { AppIcon } from '../../../lib/widgets';
+import { SearchField } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 
 export type SearchMode = 'global' | 'curriculum';
@@ -34,33 +34,7 @@ export function DictionarySearchBar({ value, onChange, mode, onModeChange, summa
 
   return (
     <div className="flex flex-col gap-3.5">
-      <div className="flex h-14 items-center gap-2.5 rounded-control border-2 border-b-[length:var(--depth-lg)] border-ui-divider bg-ui-surface pl-4 pr-2 transition-colors focus-within:border-brand-primary focus-within:border-b-brand-primary-edge">
-        <AppIcon name="search" size={22} className="shrink-0 text-ui-muted" />
-        <input
-          ref={inputRef}
-          type="search"
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          placeholder="Hanzi, pinyin or English"
-          aria-label="Search the dictionary"
-          autoComplete="off"
-          className="h-full min-w-0 flex-1 appearance-none bg-transparent text-[17px] font-extrabold text-ui-ink-strong outline-none placeholder:font-bold placeholder:text-ui-muted [&::-webkit-search-cancel-button]:hidden"
-        />
-        <button
-          type="button"
-          aria-label="Clear search"
-          onClick={() => {
-            onChange('');
-            inputRef.current?.focus();
-          }}
-          className={cn(
-            'flex h-10 w-10 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-[transform,opacity,background-color] duration-200 hover:bg-ui-hover focus-ring',
-            value ? 'scale-100 opacity-100' : 'pointer-events-none scale-0 opacity-0',
-          )}
-        >
-          <AppIcon name="close" size={20} />
-        </button>
-      </div>
+      <SearchField value={value} onChange={onChange} placeholder="Hanzi, pinyin or English" label="Search the dictionary" large inputRef={inputRef} />
 
       <div className="flex items-center gap-2">
       <div role="group" aria-label="Search in" className="flex gap-2">

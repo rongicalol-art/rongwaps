@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState, type RefObject } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
+import type { RefObject } from 'react';
+import { AppIcon, ScreenHeader, SettingsPopover } from '../../../lib/widgets';
 import { GrammarReadingAids } from './GrammarReadingAids';
 import type { CharacterFont } from '../../../store/useAppStore';
 import type { GrammarExplanationView } from './GrammarStudyPage';
@@ -46,25 +45,6 @@ export function GrammarLessonHeader({
   explanationViews,
   onExplanationViewChange,
 }: GrammarLessonHeaderProps) {
-  const [isAidsOpen, setIsAidsOpen] = useState(false);
-  const aidsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!isAidsOpen) return;
-    const handlePointerDown = (event: PointerEvent) => {
-      if (!aidsRef.current?.contains(event.target as Node)) setIsAidsOpen(false);
-    };
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsAidsOpen(false);
-    };
-    document.addEventListener('pointerdown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('pointerdown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isAidsOpen]);
-
   return (
     <ScreenHeader
       variant="window"
@@ -78,44 +58,30 @@ export function GrammarLessonHeader({
         <div className="flex items-center gap-2">
           <GlobalPresenceButton />
           {showReadingAids ? (
-            <div ref={aidsRef} className="relative">
-              <IconActionButton
-                ref={bookPageButtonRef}
-                size="lg"
-                onClick={() => setIsAidsOpen((open) => !open)}
-                className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
-                icon={<AppIcon name="menu" size={25} />}
-                label="Lesson options"
-                title="Lesson options"
-                aria-haspopup="dialog"
-                aria-expanded={isAidsOpen}
-              />
-              <AnimatePresence>
-                {isAidsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 4, scale: 0.98 }}
-                    transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                    className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 popover-surface p-2.5 text-left"
-                  >
-                    <GrammarReadingAids
-                      characterFont={characterFont}
-                      onCharacterFontChange={onCharacterFontChange}
-                      bookPageLabel={bookPageLabel}
-                      onOpenBookPage={onOpenBookPage ? () => { setIsAidsOpen(false); onOpenBookPage(); } : undefined}
-                      showPinyin={showPinyin}
-                      showTranslation={showTranslation}
-                      onTogglePinyin={onTogglePinyin}
-                      onToggleTranslation={onToggleTranslation}
-                      explanationView={explanationView}
-                      explanationViews={explanationViews}
-                      onExplanationViewChange={onExplanationViewChange}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <SettingsPopover
+              ref={bookPageButtonRef}
+              size="lg"
+              triggerClassName={(open) => (open ? 'text-brand-primary hover:text-brand-primary' : undefined)}
+              icon={<AppIcon name="menu" size={25} />}
+              label="Lesson options"
+              title="Lesson options"
+            >
+              {(close) => (
+                <GrammarReadingAids
+                  characterFont={characterFont}
+                  onCharacterFontChange={onCharacterFontChange}
+                  bookPageLabel={bookPageLabel}
+                  onOpenBookPage={onOpenBookPage ? () => { close(); onOpenBookPage(); } : undefined}
+                  showPinyin={showPinyin}
+                  showTranslation={showTranslation}
+                  onTogglePinyin={onTogglePinyin}
+                  onToggleTranslation={onToggleTranslation}
+                  explanationView={explanationView}
+                  explanationViews={explanationViews}
+                  onExplanationViewChange={onExplanationViewChange}
+                />
+              )}
+            </SettingsPopover>
           ) : (
             <span aria-hidden="true" className="h-10 w-10 shrink-0" />
           )}

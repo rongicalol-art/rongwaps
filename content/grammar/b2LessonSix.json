@@ -577,57 +577,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g1-cf1",
-              "question": "「V好了」和「V得好」一樣嗎？",
-              "answer": "不一樣。「V好了」說動作完成、準備好了；「V得好」說做得好不好。",
-              "wrongTraditional": "你還沒把功課寫得好，不能出去踢足球。",
-              "wrongSimplified": "你还没把功课写得好，不能出去踢足球。",
-              "right": {
-                "traditional": "你還沒把功課寫好，不能出去踢足球。",
-                "simplified": "你还没把功课写好，不能出去踢足球。",
-                "pinyin": "Nǐ hái méi bǎ gōngkè xiě hǎo, bù néng chūqù tī zúqiú.",
-                "english": "You haven't finished your homework yet; you can't go out to play soccer.",
-                "words": [
-                  {
-                    "id": "b2l06g1-cf1-w1",
-                    "traditional": "你還沒把功課寫好，不能出去踢足球。",
-                    "simplified": "你还没把功课写好，不能出去踢足球。",
-                    "pinyin": "Nǐ hái méi bǎ gōngkè xiě hǎo, bù néng chūqù tī zúqiú.",
-                    "meaning": "You haven't finished your homework yet; you can't go out to play soccer.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g1-cf2",
-              "question": "「學不好」的「不」放在哪裡？",
-              "answer": "放在「好」前面，說結果不好；「不學好」是「不學」加「好」，意思不同。",
-              "wrongTraditional": "學新的語言，要是你不常練習，當然不學好。",
-              "wrongSimplified": "学新的语言，要是你不常练习，当然不学好。",
-              "right": {
-                "traditional": "學新的語言，要是你不常練習，當然學不好。",
-                "simplified": "学新的语言，要是你不常练习，当然学不好。",
-                "pinyin": "Xué xīn de yǔyán, yàoshi nǐ bù cháng liànxí, dāngrán xué bu hǎo.",
-                "english": "If you don't practice often, of course you won't learn a new language well.",
-                "words": [
-                  {
-                    "id": "b2l06g1-cf2-w1",
-                    "traditional": "學新的語言，要是你不常練習，當然學不好。",
-                    "simplified": "学新的语言，要是你不常练习，当然学不好。",
-                    "pinyin": "Xué xīn de yǔyán, yàoshi nǐ bù cháng liànxí, dāngrán xué bu hǎo.",
-                    "meaning": "If you don't practice often, of course you won't learn a new language well.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "好 after a verb is a result complement. V好 means the action is finished with the intended result, often meaning something is ready. 沒V好 means it is not finished yet; V得好 and V不好 describe how well the action is done.",
         "exerciseTitle": "",
@@ -1359,57 +1308,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g2-cf1",
-              "question": "「V錯了」的「錯」放在哪裡？",
-              "answer": "放在動詞後面，說動作的結果錯了；不能放在動詞前面。",
-              "wrongTraditional": "他是黃先生不是王先生，你錯聽了。",
-              "wrongSimplified": "他是黄先生不是王先生，你错听了。",
-              "right": {
-                "traditional": "他是黃先生不是王先生，你聽錯了。",
-                "simplified": "他是黄先生不是王先生，你听错了。",
-                "pinyin": "Tā shì Huáng xiānsheng bú shì Wáng xiānsheng, nǐ tīng cuò le.",
-                "english": "He is Mr. Huang, not Mr. Wang; you heard wrong.",
-                "words": [
-                  {
-                    "id": "b2l06g2-cf1-w1",
-                    "traditional": "他是黃先生不是王先生，你聽錯了。",
-                    "simplified": "他是黄先生不是王先生，你听错了。",
-                    "pinyin": "Tā shì Huáng xiānsheng bú shì Wáng xiānsheng, nǐ tīng cuò le.",
-                    "meaning": "He is Mr. Huang, not Mr. Wang; you heard wrong.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g2-cf2",
-              "question": "「沒V錯」後面可以加「了」嗎？",
-              "answer": "不可以。「沒」已經表示否定，後面不再用「了」。",
-              "wrongTraditional": "醫生說我沒吃錯了東西，可能是飲料不新鮮。",
-              "wrongSimplified": "医生说我没吃错了东西，可能是饮料不新鲜。",
-              "right": {
-                "traditional": "醫生說我沒吃錯東西，可能是飲料不新鮮。",
-                "simplified": "医生说我没吃错东西，可能是饮料不新鲜。",
-                "pinyin": "Yīshēng shuō wǒ méi chī cuò dōngxi, kěnéng shì yǐnliào bù xīnxiān.",
-                "english": "The doctor said I didn't eat the wrong thing; maybe the drink wasn't fresh.",
-                "words": [
-                  {
-                    "id": "b2l06g2-cf2-w1",
-                    "traditional": "醫生說我沒吃錯東西，可能是飲料不新鮮。",
-                    "simplified": "医生说我没吃错东西，可能是饮料不新鲜。",
-                    "pinyin": "Yīshēng shuō wǒ méi chī cuò dōngxi, kěnéng shì yǐnliào bù xīnxiān.",
-                    "meaning": "The doctor said I didn't eat the wrong thing; maybe the drink wasn't fresh.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "錯 after a verb is a result complement: V錯 means the action was done, but the result was wrong. 沒V錯 means the action was not done incorrectly.",
         "exerciseTitle": "",
@@ -1753,57 +1651,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g3-cf1",
-              "question": "「學會」和「學得會」有什麼不同？",
-              "answer": "「學會了」說已經學會；「學得會」說有能力學會。",
-              "wrongTraditional": "我學游泳，學了一個月就學得會了。",
-              "wrongSimplified": "我学游泳，学了一个月就学得会了。",
-              "right": {
-                "traditional": "我學游泳，學了一個月就學會了。",
-                "simplified": "我学游泳，学了一个月就学会了。",
-                "pinyin": "Wǒ xué yóuyǒng, xué le yí ge yuè jiù xuéhuì le.",
-                "english": "I learned to swim; after a month of learning, I had learned it.",
-                "words": [
-                  {
-                    "id": "b2l06g3-cf1-w1",
-                    "traditional": "我學游泳，學了一個月就學會了。",
-                    "simplified": "我学游泳，学了一个月就学会了。",
-                    "pinyin": "Wǒ xué yóuyǒng, xué le yí ge yuè jiù xuéhuì le.",
-                    "meaning": "I learned to swim; after a month of learning, I had learned it.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g3-cf2",
-              "question": "「教不會」的「不」放在哪裡？",
-              "answer": "放在「會」前面；否定的是結果，不是「教」。",
-              "wrongTraditional": "那個孩子那麼小，爸爸不會教他怎麼騎腳踏車。",
-              "wrongSimplified": "那个孩子那么小，爸爸不会教他怎么骑脚踏车。",
-              "right": {
-                "traditional": "那個孩子那麼小，爸爸教不會他怎麼騎腳踏車。",
-                "simplified": "那个孩子那么小，爸爸教不会他怎么骑脚踏车。",
-                "pinyin": "Nàge háizi nàme xiǎo, bàba jiāo bu huì tā zěnme qí jiǎotàchē.",
-                "english": "That child is so small; his father cannot teach him how to ride a bike.",
-                "words": [
-                  {
-                    "id": "b2l06g3-cf2-w1",
-                    "traditional": "那個孩子那麼小，爸爸教不會他怎麼騎腳踏車。",
-                    "simplified": "那个孩子那么小，爸爸教不会他怎么骑脚踏车。",
-                    "pinyin": "Nàge háizi nàme xiǎo, bàba jiāo bu huì tā zěnme qí jiǎotàchē.",
-                    "meaning": "That child is so small; his father cannot teach him how to ride a bike.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "會 after a verb is a result complement meaning that someone has gained a skill. The examples most often use 學 or 教: 學會 means to learn how to do something, and 教會 means to teach someone how.",
         "exerciseTitle": "",
@@ -2269,57 +2116,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g4-cf1",
-              "question": "前後兩個疑問詞要不一樣嗎？",
-              "answer": "要用同一個疑問詞，表示同樣的人、事、地方或方式。",
-              "wrongTraditional": "他很有錢，想買什麼就買哪個。",
-              "wrongSimplified": "他很有钱，想买什么就买哪个。",
-              "right": {
-                "traditional": "他很有錢，想買什麼就買什麼。",
-                "simplified": "他很有钱，想买什么就买什么。",
-                "pinyin": "Tā hěn yǒu qián, xiǎng mǎi shénme jiù mǎi shénme.",
-                "english": "He is rich; he buys whatever he wants to buy.",
-                "words": [
-                  {
-                    "id": "b2l06g4-cf1-w1",
-                    "traditional": "他很有錢，想買什麼就買什麼。",
-                    "simplified": "他很有钱，想买什么就买什么。",
-                    "pinyin": "Tā hěn yǒu qián, xiǎng mǎi shénme jiù mǎi shénme.",
-                    "meaning": "He is rich; he buys whatever he wants to buy.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g4-cf2",
-              "question": "「誰想吃誰就吃」的「誰」放在哪裡？",
-              "answer": "第二個「誰」可以放在「就」前面。",
-              "wrongTraditional": "這個巧克力，誰想吃就誰吃。",
-              "wrongSimplified": "这个巧克力，谁想吃就谁吃。",
-              "right": {
-                "traditional": "這個巧克力，誰想吃誰就吃。",
-                "simplified": "这个巧克力，谁想吃谁就吃。",
-                "pinyin": "Zhège qiǎokèlì, shéi xiǎng chī shéi jiù chī.",
-                "english": "Whoever wants to eat this chocolate can eat it.",
-                "words": [
-                  {
-                    "id": "b2l06g4-cf2-w1",
-                    "traditional": "這個巧克力，誰想吃誰就吃。",
-                    "simplified": "这个巧克力，谁想吃谁就吃。",
-                    "pinyin": "Zhège qiǎokèlì, shéi xiǎng chī shéi jiù chī.",
-                    "meaning": "Whoever wants to eat this chocolate can eat it.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "Repeat the same question word to mean “whichever” or “whoever.” The first phrase sets the choice or condition; the second gives the matching action, with 就 before it. The choice has no special restriction once the condition is met. For 誰, the second 誰 can also come before 就: 誰想吃，誰就吃.",
         "exerciseTitle": "",
@@ -2658,57 +2454,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g5-cf1",
-              "question": "「會……的」的「的」放在哪裡？",
-              "answer": "「的」放在句尾，表示說話者很肯定，語氣也比較緩和。",
-              "wrongTraditional": "他一定會的找到好工作。",
-              "wrongSimplified": "他一定会的找到好工作。",
-              "right": {
-                "traditional": "他一定會找到好工作的。",
-                "simplified": "他一定会找到好工作的。",
-                "pinyin": "Tā yídìng huì zhǎodào hǎo gōngzuò de.",
-                "english": "He will definitely find a good job.",
-                "words": [
-                  {
-                    "id": "b2l06g5-cf1-w1",
-                    "traditional": "他一定會找到好工作的。",
-                    "simplified": "他一定会找到好工作的。",
-                    "pinyin": "Tā yídìng huì zhǎodào hǎo gōngzuò de.",
-                    "meaning": "He will definitely find a good job.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g5-cf2",
-              "question": "「不會不同意」是什麼意思？",
-              "answer": "這是雙重否定，表示「會同意」。",
-              "wrongTraditional": "只要好好地跟他們說，他們不會同意。",
-              "wrongSimplified": "只要好好地跟他们说，他们不会同意。",
-              "right": {
-                "traditional": "只要好好地跟他們說，他們不會不同意的。",
-                "simplified": "只要好好地跟他们说，他们不会不同意的。",
-                "pinyin": "Zhǐyào hǎohǎo de gēn tāmen shuō, tāmen bú huì bù tóngyì de.",
-                "english": "As long as you talk to them nicely, they will not disagree.",
-                "words": [
-                  {
-                    "id": "b2l06g5-cf2-w1",
-                    "traditional": "只要好好地跟他們說，他們不會不同意的。",
-                    "simplified": "只要好好地跟他们说，他们不会不同意的。",
-                    "pinyin": "Zhǐyào hǎohǎo de gēn tāmen shuō, tāmen bú huì bù tóngyì de.",
-                    "meaning": "As long as you talk to them nicely, they will not disagree.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "會 + statement + 的 expresses the speaker’s confidence that the situation will happen. Ending with 的 makes the assurance sound gentler.",
         "exerciseTitle": "",
@@ -3007,57 +2752,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g6-cf1",
-              "question": "「不」和「沒」放在「等」的哪裡？",
-              "answer": "放在「等」前面，不是「就」前面。",
-              "wrongTraditional": "有很多人等舞會沒結束，就先走了。",
-              "wrongSimplified": "有很多人等舞会没结束，就先走了。",
-              "right": {
-                "traditional": "有很多人沒等舞會結束，就先走了。",
-                "simplified": "有很多人没等舞会结束，就先走了。",
-                "pinyin": "Yǒu hěn duō rén méi děng wǔhuì jiéshù, jiù xiān zǒu le.",
-                "english": "Many people left before the dance ended.",
-                "words": [
-                  {
-                    "id": "b2l06g6-cf1-w1",
-                    "traditional": "有很多人沒等舞會結束，就先走了。",
-                    "simplified": "有很多人没等舞会结束，就先走了。",
-                    "pinyin": "Yǒu hěn duō rén méi děng wǔhuì jiéshù, jiù xiān zǒu le.",
-                    "meaning": "Many people left before the dance ended.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g6-cf2",
-              "question": "「就」放在哪裡？",
-              "answer": "「就」放在第二個主語後面、動作前面。",
-              "wrongTraditional": "等這個學期結束，我不要就住在宿舍了。",
-              "wrongSimplified": "等这个学期结束，我不要就住在宿舍了。",
-              "right": {
-                "traditional": "等這個學期結束，我就不要住在宿舍了。",
-                "simplified": "等这个学期结束，我就不要住在宿舍了。",
-                "pinyin": "Děng zhège xuéqī jiéshù, wǒ jiù bú yào zhù zài sùshè le.",
-                "english": "Once this semester ends, I won't live in the dormitory anymore.",
-                "words": [
-                  {
-                    "id": "b2l06g6-cf2-w1",
-                    "traditional": "等這個學期結束，我就不要住在宿舍了。",
-                    "simplified": "等这个学期结束，我就不要住在宿舍了。",
-                    "pinyin": "Děng zhège xuéqī jiéshù, wǒ jiù bú yào zhù zài sùshè le.",
-                    "meaning": "Once this semester ends, I won't live in the dormitory anymore.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "等 + situation, + result describes what happens after that situation. Put 不 or 沒 before 等 when saying the action does not wait for the situation to finish.",
         "exerciseTitle": "",
@@ -3475,57 +3169,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g7-cf1",
-              "question": "「才三個人」的「才」是什麼意思？",
-              "answer": "說話者覺得三個人比預期的少。",
-              "wrongTraditional": "今天咖啡館裡只才三個人，客人真少。",
-              "wrongSimplified": "今天咖啡馆里只才三个人，客人真少。",
-              "right": {
-                "traditional": "今天咖啡館裡才三個人，客人真少。",
-                "simplified": "今天咖啡馆里才三个人，客人真少。",
-                "pinyin": "Jīntiān kāfēiguǎn lǐ cái sān ge rén, kèrén zhēn shǎo.",
-                "english": "There are only three people in the café today; there are really few customers.",
-                "words": [
-                  {
-                    "id": "b2l06g7-cf1-w1",
-                    "traditional": "今天咖啡館裡才三個人，客人真少。",
-                    "simplified": "今天咖啡馆里才三个人，客人真少。",
-                    "pinyin": "Jīntiān kāfēiguǎn lǐ cái sān ge rén, kèrén zhēn shǎo.",
-                    "meaning": "There are only three people in the café today; there are really few customers.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g7-cf2",
-              "question": "「才教了半個月」是說教得久還是短？",
-              "answer": "說時間比預期的短，所以後面接「就教會了」。",
-              "wrongTraditional": "老師說他很聰明，才教了半個月，所以還沒教會。",
-              "wrongSimplified": "老师说他很聪明，才教了半个月，所以还没教会。",
-              "right": {
-                "traditional": "老師說他很聰明，才教了半個月就教會（他）了。",
-                "simplified": "老师说他很聪明，才教了半个月就教会（他）了。",
-                "pinyin": "Lǎoshī shuō tā hěn cōngming, cái jiāo le bàn ge yuè jiù jiāo huì (tā) le.",
-                "english": "The teacher said he is very smart; he taught him for only half a month and he learned it.",
-                "words": [
-                  {
-                    "id": "b2l06g7-cf2-w1",
-                    "traditional": "老師說他很聰明，才教了半個月就教會（他）了。",
-                    "simplified": "老师说他很聪明，才教了半个月就教会（他）了。",
-                    "pinyin": "Lǎoshī shuō tā hěn cōngming, cái jiāo le bàn ge yuè jiù jiāo huì (tā) le.",
-                    "meaning": "The teacher said he is very smart; he taught him for only half a month and he learned it.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "Here, 才 before a number says the amount is less than the speaker expected. 只 can also suggest a small amount, but it goes before a verb; it cannot directly come before a number. 才 can: 這件衣服才一百塊錢.",
         "exerciseTitle": "",
@@ -3799,57 +3442,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b2l06g8-cf1",
-              "question": "「讓」後面接的是原因還是感覺？",
-              "answer": "「讓」後面接人，再接那個人的感覺；前面的部分是原因。",
-              "wrongTraditional": "朋友送了我一個生日蛋糕，很開心讓我。",
-              "wrongSimplified": "朋友送了我一个生日蛋糕，很开心让我。",
-              "right": {
-                "traditional": "朋友送了我一個生日蛋糕，讓我很開心。",
-                "simplified": "朋友送了我一个生日蛋糕，让我很开心。",
-                "pinyin": "Péngyou sòng le wǒ yí ge shēngrì dàngāo, ràng wǒ hěn kāixīn.",
-                "english": "A friend gave me a birthday cake, which made me very happy.",
-                "words": [
-                  {
-                    "id": "b2l06g8-cf1-w1",
-                    "traditional": "朋友送了我一個生日蛋糕，讓我很開心。",
-                    "simplified": "朋友送了我一个生日蛋糕，让我很开心。",
-                    "pinyin": "Péngyou sòng le wǒ yí ge shēngrì dàngāo, ràng wǒ hěn kāixīn.",
-                    "meaning": "A friend gave me a birthday cake, which made me very happy.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b2l06g8-cf2",
-              "question": "「讓」的句子裡，感覺的主語是誰？",
-              "answer": "是「讓」後面的人，不是前面的原因。",
-              "wrongTraditional": "昨天吃了不乾淨的東西，讓我不太舒服我的肚子。",
-              "wrongSimplified": "昨天吃了不干净的东西，让我不太舒服我的肚子。",
-              "right": {
-                "traditional": "昨天吃了不乾淨的東西，讓我的肚子不太舒服。",
-                "simplified": "昨天吃了不干净的东西，让我的肚子不太舒服。",
-                "pinyin": "Zuótiān chī le bù gānjìng de dōngxi, ràng wǒ de dùzi bú tài shūfu.",
-                "english": "Yesterday I ate something unclean, which made my stomach feel a bit uncomfortable.",
-                "words": [
-                  {
-                    "id": "b2l06g8-cf2-w1",
-                    "traditional": "昨天吃了不乾淨的東西，讓我的肚子不太舒服。",
-                    "simplified": "昨天吃了不干净的东西，让我的肚子不太舒服。",
-                    "pinyin": "Zuótiān chī le bù gānjìng de dōngxi, ràng wǒ de dùzi bú tài shūfu.",
-                    "meaning": "Yesterday I ate something unclean, which made my stomach feel a bit uncomfortable.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "A讓B + feeling or state means that A causes B to feel or become that way. The cause is A; the person affected is B.",
         "exerciseTitle": "",

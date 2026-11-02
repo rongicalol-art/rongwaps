@@ -1,6 +1,6 @@
 import { rectMorphFrames } from '../../utils/browser/rectMorph';
 import { cancelQuizLaunch } from '../../features/practice';
-export { beginQuizLaunch, cancelQuizLaunch } from '../../features/practice';
+export { cancelQuizLaunch } from '../../features/practice';
 import { useLayoutEffect, useRef, useState, type RefObject } from 'react';
 
 /** The top card of the Cards done shuffle (a fixed clone in document.body), handed to the first quiz question. */

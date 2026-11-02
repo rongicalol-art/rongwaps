@@ -405,57 +405,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "「不但」後面可以接「但是」嗎？",
-              "answer": "不行。這個句型後面用「還」或「也」來說第二件事，不用轉折的「但是」。",
-              "wrongTraditional": "這家民宿不但有免費的無線網路，但是有游泳池。",
-              "wrongSimplified": "这家民宿不但有免费的无线网路，但是有游泳池。",
-              "id": "b2l07g1-cf1",
-              "right": {
-                "traditional": "這家民宿不但有免費的無線網路，還有游泳池呢！",
-                "simplified": "这家民宿不但有免费的无线网路，还有游泳池呢！",
-                "pinyin": "Zhè jiā mínsù búdàn yǒu miǎnfèi de wúxiàn wǎnglù, hái yǒu yóuyǒngchí ne!",
-                "english": "This B&B not only has free Wi-Fi but also a swimming pool.",
-                "words": [
-                  {
-                    "id": "b2l07g1-cf1-w1",
-                    "traditional": "這家民宿不但有免費的無線網路，還有游泳池呢！",
-                    "simplified": "这家民宿不但有免费的无线网路，还有游泳池呢！",
-                    "pinyin": "Zhè jiā mínsù búdàn yǒu miǎnfèi de wúxiàn wǎnglù, hái yǒu yóuyǒngchí ne!",
-                    "meaning": "This B&B not only has free Wi-Fi but also a swimming pool.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "兩個句子的主語不一樣，還可以用「不但……，還……」嗎？",
-              "answer": "不可以。主語不一樣時，第二句用「也」，不要用「還」再接一個新主語。",
-              "wrongTraditional": "不但我喜歡吃雞排，可欣還喜歡吃蚵仔煎。",
-              "wrongSimplified": "不但我喜欢吃鸡排，可欣还喜欢吃蚵仔煎。",
-              "id": "b2l07g1-cf2",
-              "right": {
-                "traditional": "我喜歡吃雞排，可欣也喜歡吃蚵仔煎。",
-                "simplified": "我喜欢吃鸡排，可欣也喜欢吃蚵仔煎。",
-                "pinyin": "Wǒ xǐhuan chī jīpái, Kěxīn yě xǐhuan chī ézǐjiān.",
-                "english": "I like chicken fillet, and Kexin also likes oyster omelet.",
-                "words": [
-                  {
-                    "id": "b2l07g1-cf2-w1",
-                    "traditional": "我喜歡吃雞排，可欣也喜歡吃蚵仔煎。",
-                    "simplified": "我喜欢吃鸡排，可欣也喜欢吃蚵仔煎。",
-                    "pinyin": "Wǒ xǐhuan chī jīpái, Kěxīn yě xǐhuan chī ézǐjiān.",
-                    "meaning": "I like chicken fillet, and Kexin also likes oyster omelet.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "不但 introduces one fact, and 還 adds another fact for extra emphasis. The two clauses normally have the same subject; the second subject can be omitted when it is the same as the first.",
         "exerciseTitle": "",
@@ -703,57 +652,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "「一」後面的量詞可以省掉嗎？",
-              "answer": "不行。「一」後面要有量詞，例如「一班公車」「一個字」。",
-              "wrongTraditional": "我等了一個小時，一公車都沒來。",
-              "wrongSimplified": "我等了一个小时，一公车都没来。",
-              "id": "b2l07g2-cf1",
-              "right": {
-                "traditional": "我等了一個小時，一班公車都沒來。",
-                "simplified": "我等了一个小时，一班公车都没来。",
-                "pinyin": "Wǒ děng le yí ge xiǎoshí, yì bān gōngchē dōu méi lái.",
-                "english": "I waited for an hour, but not a single bus came.",
-                "words": [
-                  {
-                    "id": "b2l07g2-cf1-w1",
-                    "traditional": "我等了一個小時，一班公車都沒來。",
-                    "simplified": "我等了一个小时，一班公车都没来。",
-                    "pinyin": "Wǒ děng le yí ge xiǎoshí, yì bān gōngchē dōu méi lái.",
-                    "meaning": "I waited for an hour, but not a single bus came.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "「願意」前面用「不」還是「沒」？",
-              "answer": "用「不」。這裡說意願，不用「沒」。",
-              "wrongTraditional": "那個學生不愛上課，一個字都沒願意寫。",
-              "wrongSimplified": "那个学生不爱上课，一个字都没愿意写。",
-              "id": "b2l07g2-cf2",
-              "right": {
-                "traditional": "那個學生不愛上課，一個字都不願意寫。",
-                "simplified": "那个学生不爱上课，一个字都不愿意写。",
-                "pinyin": "Nà ge xuésheng bú ài shàngkè, yí ge zì dōu bú yuànyì xiě.",
-                "english": "That student doesn't like going to class and isn't willing to write even one character.",
-                "words": [
-                  {
-                    "id": "b2l07g2-cf2-w1",
-                    "traditional": "那個學生不愛上課，一個字都不願意寫。",
-                    "simplified": "那个学生不爱上课，一个字都不愿意写。",
-                    "pinyin": "Nà ge xuésheng bú ài shàngkè, yí ge zì dōu bú yuànyì xiě.",
-                    "meaning": "That student doesn't like going to class and isn't willing to write even one character.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "一 + measure word (+ noun) + 都／也 + 不／沒 + verb means “not even one” or “none at all.” It often emphasizes a surprising or extreme situation. The negative verb phrase can also include a helping verb such as 願意.",
         "exerciseTitle": "",
@@ -1074,57 +972,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "「讓」後面接人，還是接事情？",
-              "answer": "接人，再說請他做的事：「讓 + 人 + 動作」。",
-              "wrongTraditional": "我對餐廳老闆送過來。",
-              "wrongSimplified": "我对餐厅老板送过来。",
-              "id": "b2l07g3-cf1",
-              "right": {
-                "traditional": "我讓餐廳老闆送過來。",
-                "simplified": "我让餐厅老板送过来。",
-                "pinyin": "Wǒ ràng cāntīng lǎobǎn sòng guòlái.",
-                "english": "I'll have the restaurant owner deliver it.",
-                "words": [
-                  {
-                    "id": "b2l07g3-cf1-w1",
-                    "traditional": "我讓餐廳老闆送過來。",
-                    "simplified": "我让餐厅老板送过来。",
-                    "pinyin": "Wǒ ràng cāntīng lǎobǎn sòng guòlái.",
-                    "meaning": "I'll have the restaurant owner deliver it.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "「讓」後面可以直接加「了」嗎？",
-              "answer": "不行。「了」放在句尾或動詞後面，不放在「讓」後面。",
-              "wrongTraditional": "老闆讓了我回家休息。",
-              "wrongSimplified": "老板让了我回家休息。",
-              "id": "b2l07g3-cf2",
-              "right": {
-                "traditional": "老闆讓我回家休息。",
-                "simplified": "老板让我回家休息。",
-                "pinyin": "Lǎobǎn ràng wǒ huí jiā xiūxi.",
-                "english": "The boss let me go home and rest.",
-                "words": [
-                  {
-                    "id": "b2l07g3-cf2-w1",
-                    "traditional": "老闆讓我回家休息。",
-                    "simplified": "老板让我回家休息。",
-                    "pinyin": "Lǎobǎn ràng wǒ huí jiā xiūxi.",
-                    "meaning": "The boss let me go home and rest.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "讓 + person + verb can mean “let” or “allow” someone to do something. It can also be a polite way to ask or tell someone to do it; compared with 叫 or 要, 讓 sounds less like a direct order. Elsewhere in the book, 讓 can mean “make” someone feel or become a certain way.",
         "exerciseTitle": "",
@@ -1361,57 +1208,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "每個形容詞前面都要加「是」嗎？",
-              "answer": "不用。平常說「她很漂亮」；想強調時才說「她是比以前漂亮多了」。",
-              "wrongTraditional": "我覺得她是漂亮。",
-              "wrongSimplified": "我觉得她是漂亮。",
-              "id": "b2l07g4-cf1",
-              "right": {
-                "traditional": "我覺得她很漂亮。",
-                "simplified": "我觉得她很漂亮。",
-                "pinyin": "Wǒ juéde tā hěn piàoliang.",
-                "english": "I think she is pretty.",
-                "words": [
-                  {
-                    "id": "b2l07g4-cf1-w1",
-                    "traditional": "我覺得她很漂亮。",
-                    "simplified": "我觉得她很漂亮。",
-                    "pinyin": "Wǒ juéde tā hěn piàoliang.",
-                    "meaning": "I think she is pretty.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "「是」要放在主語前面還是後面？",
-              "answer": "放在主語後面：「王小姐是比以前漂亮多了」。",
-              "wrongTraditional": "是王小姐比以前漂亮多了。",
-              "wrongSimplified": "是王小姐比以前漂亮多了。",
-              "id": "b2l07g4-cf2",
-              "right": {
-                "traditional": "王小姐是比以前漂亮多了。",
-                "simplified": "王小姐是比以前漂亮多了。",
-                "pinyin": "Wáng xiǎojiě shì bǐ yǐqián piàoliang duō le.",
-                "english": "Miss Wang is indeed much prettier than before.",
-                "words": [
-                  {
-                    "id": "b2l07g4-cf2-w1",
-                    "traditional": "王小姐是比以前漂亮多了。",
-                    "simplified": "王小姐是比以前漂亮多了。",
-                    "pinyin": "Wáng xiǎojiě shì bǐ yǐqián piàoliang duō le.",
-                    "meaning": "Miss Wang is indeed much prettier than before.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "Adjectives such as 美 and 漂亮 can describe someone or something without 是. Add 是 before the adjective when confirming or emphasizing the degree; a degree word can come between 是 and the adjective.",
         "exerciseTitle": "",
@@ -1591,57 +1387,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "「光」要放在動詞前面還是後面？",
-              "answer": "放在動詞後面，說結果一點也不剩。",
-              "wrongTraditional": "弟弟把我的巧克力都光吃了。",
-              "wrongSimplified": "弟弟把我的巧克力都光吃了。",
-              "id": "b2l07g5-cf1",
-              "right": {
-                "traditional": "弟弟把我的巧克力都吃光了。",
-                "simplified": "弟弟把我的巧克力都吃光了。",
-                "pinyin": "Dìdi bǎ wǒ de qiǎokèlì dōu chī guāng le.",
-                "english": "My younger brother ate all my chocolate.",
-                "words": [
-                  {
-                    "id": "b2l07g5-cf1-w1",
-                    "traditional": "弟弟把我的巧克力都吃光了。",
-                    "simplified": "弟弟把我的巧克力都吃光了。",
-                    "pinyin": "Dìdi bǎ wǒ de qiǎokèlì dōu chī guāng le.",
-                    "meaning": "My younger brother ate all my chocolate.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "功課可以用「V光」嗎？",
-              "answer": "不行。「寫光」不自然；功課是「寫完」，不是用完。",
-              "wrongTraditional": "我把功課寫光了。",
-              "wrongSimplified": "我把功课写光了。",
-              "id": "b2l07g5-cf2",
-              "right": {
-                "traditional": "我把功課寫完了。",
-                "simplified": "我把功课写完了。",
-                "pinyin": "Wǒ bǎ gōngkè xiě wán le.",
-                "english": "I finished my homework.",
-                "words": [
-                  {
-                    "id": "b2l07g5-cf2-w1",
-                    "traditional": "我把功課寫完了。",
-                    "simplified": "我把功课写完了。",
-                    "pinyin": "Wǒ bǎ gōngkè xiě wán le.",
-                    "meaning": "I finished my homework.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "光 after a verb means that something has been used, eaten, or otherwise depleted until none is left. It often appears with 把 and 了. Depending on the situation, it can also suggest regret or disappointment.",
         "exerciseTitle": "",
@@ -1805,57 +1550,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "「一點兒」可以放在否定詞後面嗎？",
-              "answer": "不行。要說「一點兒都不甜」，不是「都不甜一點兒」。",
-              "wrongTraditional": "這杯珍珠奶茶是無糖的，都不甜一點兒。",
-              "wrongSimplified": "这杯珍珠奶茶是无糖的，都不甜一点儿。",
-              "id": "b2l07g6-cf1",
-              "right": {
-                "traditional": "這杯珍珠奶茶是無糖的，一點兒都不甜。",
-                "simplified": "这杯珍珠奶茶是无糖的，一点儿都不甜。",
-                "pinyin": "Zhè bēi zhēnzhū nǎichá shì wútáng de, yìdiǎnr dōu bù tián.",
-                "english": "This cup of bubble tea is sugar-free; it's not sweet at all.",
-                "words": [
-                  {
-                    "id": "b2l07g6-cf1-w1",
-                    "traditional": "這杯珍珠奶茶是無糖的，一點兒都不甜。",
-                    "simplified": "这杯珍珠奶茶是无糖的，一点儿都不甜。",
-                    "pinyin": "Zhè bēi zhēnzhū nǎichá shì wútáng de, yìdiǎnr dōu bù tián.",
-                    "meaning": "This cup of bubble tea is sugar-free; it's not sweet at all.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "「有一點兒」和「一點兒都」一樣嗎？",
-              "answer": "不一樣。「有一點兒」是「稍微」；「一點兒都」加否定是「完全不」。",
-              "wrongTraditional": "網路訂票有一點兒不難。",
-              "wrongSimplified": "网路订票有一点儿不难。",
-              "id": "b2l07g6-cf2",
-              "right": {
-                "traditional": "網路訂票一點兒也不難。",
-                "simplified": "网路订票一点儿也不难。",
-                "pinyin": "Wǎnglù dìngpiào yìdiǎnr yě bù nán.",
-                "english": "Booking tickets online is not difficult at all.",
-                "words": [
-                  {
-                    "id": "b2l07g6-cf2-w1",
-                    "traditional": "網路訂票一點兒也不難。",
-                    "simplified": "网路订票一点儿也不难。",
-                    "pinyin": "Wǎnglù dìngpiào yìdiǎnr yě bù nán.",
-                    "meaning": "Booking tickets online is not difficult at all.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "一點兒 + 都／也 + 不／沒 + verb or adjective makes a strong negative: the subject is not in that state or does not do that action at all.",
         "exerciseTitle": "",
@@ -2075,57 +1769,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "兩個句子的主語不同時，「就」要放在哪裡？",
-              "answer": "放在第二個主語後面。",
-              "wrongTraditional": "他剛搬進宿舍，就無線網路壞了。",
-              "wrongSimplified": "他刚搬进宿舍，就无线网路坏了。",
-              "id": "b2l07g7-cf1",
-              "right": {
-                "traditional": "他剛搬進宿舍，無線網路就壞了。",
-                "simplified": "他刚搬进宿舍，无线网路就坏了。",
-                "pinyin": "Tā gāng bān jìn sùshè, wúxiàn wǎnglù jiù huài le.",
-                "english": "The Wi-Fi broke right after he moved into the dorm.",
-                "words": [
-                  {
-                    "id": "b2l07g7-cf1-w1",
-                    "traditional": "他剛搬進宿舍，無線網路就壞了。",
-                    "simplified": "他刚搬进宿舍，无线网路就坏了。",
-                    "pinyin": "Tā gāng bān jìn sùshè, wúxiàn wǎnglù jiù huài le.",
-                    "meaning": "The Wi-Fi broke right after he moved into the dorm.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "「剛」後面可以加「了」嗎？",
-              "answer": "不行。這個句型說「剛 + 動作」，後面直接接「就」。",
-              "wrongTraditional": "他剛畢業了，就找到了一份好工作。",
-              "wrongSimplified": "他刚毕业了，就找到了一份好工作。",
-              "id": "b2l07g7-cf2",
-              "right": {
-                "traditional": "他剛畢業就找到了一份好工作。",
-                "simplified": "他刚毕业就找到了一份好工作。",
-                "pinyin": "Tā gāng bìyè jiù zhǎodào le yí fèn hǎo gōngzuò.",
-                "english": "He found a good job right after graduating.",
-                "words": [
-                  {
-                    "id": "b2l07g7-cf2-w1",
-                    "traditional": "他剛畢業就找到了一份好工作。",
-                    "simplified": "他刚毕业就找到了一份好工作。",
-                    "pinyin": "Tā gāng bìyè jiù zhǎodào le yí fèn hǎo gōngzuò.",
-                    "meaning": "He found a good job right after graduating.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "剛 + first action, + 就 + second action says the second event happened as soon as the first happened. If the clauses have different subjects, put the second subject before 就.",
         "exerciseTitle": "",
@@ -2290,57 +1933,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "question": "「趁」和「因為」一樣嗎？",
-              "answer": "不一樣。「趁」是利用機會；「因為」是說原因。",
-              "wrongTraditional": "張先生因為到花蓮旅行時，買了一些當地的名產。",
-              "wrongSimplified": "张先生因为到花莲旅行时，买了一些当地的名产。",
-              "id": "b2l07g8-cf1",
-              "right": {
-                "traditional": "張先生趁著到花蓮旅行時，買了一些當地的名產。",
-                "simplified": "张先生趁着到花莲旅行时，买了一些当地的名产。",
-                "pinyin": "Zhāng xiānsheng chènzhe dào Huālián lǚxíng shí, mǎi le yìxiē dāngdì de míngchǎn.",
-                "english": "Mr. Zhang bought some local specialties while traveling to Hualien.",
-                "words": [
-                  {
-                    "id": "b2l07g8-cf1-w1",
-                    "traditional": "張先生趁著到花蓮旅行時，買了一些當地的名產。",
-                    "simplified": "张先生趁着到花莲旅行时，买了一些当地的名产。",
-                    "pinyin": "Zhāng xiānsheng chènzhe dào Huālián lǚxíng shí, mǎi le yìxiē dāngdì de míngchǎn.",
-                    "meaning": "Mr. Zhang bought some local specialties while traveling to Hualien.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            },
-            {
-              "question": "「趁」後面可以加「了」嗎？",
-              "answer": "不行。要說「趁著」或「趁」，不是「趁了」。",
-              "wrongTraditional": "他趁了去法國留學的時候，參觀了有名的博物館。",
-              "wrongSimplified": "他趁了去法国留学的时候，参观了有名的博物馆。",
-              "id": "b2l07g8-cf2",
-              "right": {
-                "traditional": "他趁著去法國留學的時候，參觀了有名的博物館。",
-                "simplified": "他趁着去法国留学的时候，参观了有名的博物馆。",
-                "pinyin": "Tā chènzhe qù Fǎguó liúxué de shíhou, cānguān le yǒumíng de bówùguǎn.",
-                "english": "He visited a famous museum while studying in France.",
-                "words": [
-                  {
-                    "id": "b2l07g8-cf2-w1",
-                    "traditional": "他趁著去法國留學的時候，參觀了有名的博物館。",
-                    "simplified": "他趁着去法国留学的时候，参观了有名的博物馆。",
-                    "pinyin": "Tā chènzhe qù Fǎguó liúxué de shíhou, cānguān le yǒumíng de bówùguǎn.",
-                    "meaning": "He visited a famous museum while studying in France.",
-                    "suffix": ""
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "explanationEnglish": "趁（著）introduces an opportunity, time, or favorable condition that someone uses to do something useful. It can be followed by a noun, a verb phrase, or a state verb. 著 is optional.",
         "exerciseTitle": "",

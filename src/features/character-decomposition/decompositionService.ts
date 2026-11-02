@@ -233,10 +233,6 @@ export function getDecompositionRuntimeService(): DecompositionService {
   return defaultService;
 }
 
-export function resetDecompositionRuntimeServiceForTests(): void {
-  defaultService = null;
-}
-
 export interface DecompositionRuntimeComparison {
   character: string;
   legacyDirectComponents: string[];

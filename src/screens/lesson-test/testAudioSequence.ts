@@ -61,5 +61,3 @@ export function listeningSteps(
   if (item.kind === 'picture-hear') readChoices();
   return steps;
 }
-
-export const isListeningItem = (item: LessonTestItem) => item.kind === 'hear-pick-picture' || item.kind === 'picture-hear' || item.kind === 'dialogue';

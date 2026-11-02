@@ -148,8 +148,6 @@ export type LessonTestItem =
   | ClozeItem
   | ReadingItem;
 
-export type LessonTestKind = LessonTestItem['kind'];
-
 export interface LessonTestSlot {
   id: string;
   part: LessonTestPart;

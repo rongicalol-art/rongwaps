@@ -96,7 +96,7 @@ Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@the
 | `z-shell` | 600 | App chrome that outranks every window (sidebar and mobile nav panel in `LayoutShell`) and full-screen viewers that cover it (`BookPageViewer`, grammar book fallback) |
 | `z-drawer` | 650 | Reader study drawer (`ReaderStudyDrawer`) |
 | `z-dialog` | 700 | Dialogs and settings windows (`ConfirmationDialog`, `FolderModal`) |
-| `z-popover` | 800 | Hover/anchored popovers and tooltips (`PosBadge`, `MemoryHookPopover`, `ReaderWordTooltip`, `SmartSentence`) |
+| `z-popover` | 800 | Hover/anchored popovers and tooltips (`PosBadge`, `ReaderWordTooltip`, `SmartSentence`) |
 | `z-auth` | 900 | Sign-in window (`SignInWindow`) |
 | `z-devtools` | 1000 | Developer tools (`DebugToolsOverlay`) |
 
@@ -120,7 +120,7 @@ Typography rules maintain visual harmony across Latin UI text, Chinese glyphs, a
 - **Universal translation style (`.ui-translation`)**:
   - Translations (English glosses accompanying Chinese example sentences, patterns, and words) must use the `.ui-translation` utility class rather than one-off weights or tones.
   - `.ui-translation` sets `font-family: var(--font-sans)`, `font-weight: 700`, `color: var(--color-ui-muted-strong)`, and `line-height: 1.625` — the same bold voice as definitions and memory-hook body copy, in the shared muted gray token.
-- **Eyebrow label (`.ui-eyebrow`)**: 13px (same as `SectionEyebrow`), weight 900, 0.1em tracking, uppercase. Use it for every small label above a block (exercise cues, lab headers, spine roles); pair with a colour token only.
+- **Eyebrow label (`.ui-eyebrow`)**: 13px (same as `SectionEyebrow`), weight 900, 0.1em tracking, uppercase. Use it for every small label above a block (exercise cues, spine roles); pair with a colour token only.
 - **Inline Chinese in prose (`.prose-chinese`)**:
   - Applied to prose containers whose inline Chinese must match the example-sentence scale (grammar explanations). It scales every `.font-chinese` descendant to `1.25em` (mobile) / `1.3333em` (sm+) — e.g. 16px prose → 20px characters, 18px prose → 24px characters — so characters do not read smaller than the bold Latin around them. Line boxes stay inside the prose leading (20px glyphs in `leading-7`, 24px in `sm:leading-8`).
   - Component-specific sizing (e.g. `text-xs`, `text-sm`, `text-base`) can be paired with `.ui-translation` to fit information density.
@@ -143,7 +143,6 @@ Ron's Mandarin supports both web and iOS standalone PWA (`viewport-fit=cover`). 
 | Utility | Property / Value | Usage & Owners |
 |---|---|---|
 | `.bottom-dock-safe` | `bottom: var(--dock-bottom)` (responsive: `sm:bottom-5`, `md:bottom-6`) | Floating docks (`ReadingBottomDock`, `WritingDock`, `SearchModeDock`). Lifts dock comfortably above iOS home indicator. |
-| `.pb-dock-safe` | `padding-bottom: var(--dock-bottom)` (responsive: `sm:pb-5`, `md:pb-6`) | Bottom-anchored floating dock wrappers (`PracticeModeDock`). Ensures responsive bottom clearance while anchoring to viewport bottom. |
 | `.pb-dock-clearance` | `padding-bottom: var(--dock-clearance)` (responsive: `sm:pb-28`) | Scroll containers containing floating docks (`FlashcardScreen`, `FlashcardList`, `SearchScreen`, `LessonComplete`). Prevents last element from hiding behind dock. |
 | `.pb-sheet-safe` | `padding-bottom: var(--sheet-safe-pb)` | Docked sheets and sticky bottom footers (`FeedbackBottomBar`, `CurriculumLibrary`, `LibraryScreen`, `GrammarLessonScreen`, `BookViewerFooter`). |
 | `.pb-safe-area` | `padding-bottom: max(1rem, var(--safe-area-bottom))` | Scrollable drawer/sheet inner content (`Drawer`, `ReaderStudyDrawer`). |
@@ -152,7 +151,7 @@ Ron's Mandarin supports both web and iOS standalone PWA (`viewport-fit=cover`). 
 
 ### Rules
 
-- **Never hardcode `env(safe-area-inset-bottom)` in component files.** Use `.bottom-dock-safe`, `.pb-dock-safe`, `.pb-dock-clearance`, `.pb-sheet-safe`, or `.pb-safe-area`.
+- **Never hardcode `env(safe-area-inset-bottom)` in component files.** Use `.bottom-dock-safe`, `.pb-dock-clearance`, `.pb-sheet-safe`, or `.pb-safe-area`.
 - **Never use arbitrary dock dimensions** (e.g. `bottom-[max(...)]`, `pb-[calc(...)]`, `h-[60px]`). Use the semantic utility classes.
 
 

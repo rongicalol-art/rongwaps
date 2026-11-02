@@ -3,8 +3,8 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
+import { createLibraryFolder } from '../createFolder';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
-import { serializeFolderColor } from '../../../utils/folderColors';
 import { definitionStrings } from '../../../utils/vocabulary/dictionaryDefinitions';
 import { useUserFlashcards } from './useUserFlashcards';
 import type { SaveWordTarget } from '../../../store/slices/librarySlice';
@@ -44,7 +44,6 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     () => (Array.isArray(customFoldersRaw) ? customFoldersRaw.filter((folder) => Boolean(folder) && canEditFolder(folder)) : []),
     [customFoldersRaw],
   );
-  const addCustomFolder = useAppStore((state) => state.addCustomFolder);
   const addLocalFlashcard = useAppStore((state) => state.addLocalFlashcard);
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
   const updateLocalFlashcard = useAppStore((state) => state.updateLocalFlashcard);
@@ -212,21 +211,9 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     const trimmed = name.trim();
     if (!trimmed || !headword) return;
 
-    const folderId = crypto.randomUUID();
-    const folderColor = serializeFolderColor(colorId);
-
-    if (currentUser) {
-      await flashcardService.createFolder(currentUser.id, {
-        id: folderId,
-        name: trimmed,
-        color: folderColor,
-      });
-    }
-    addCustomFolder(trimmed, folderColor, folderId);
-
     // Immediately add the word to the new folder
-    await addCardToFolder(folderId);
-  }, [headword, currentUser, addCustomFolder, addCardToFolder]);
+    await addCardToFolder(await createLibraryFolder(trimmed, colorId, currentUser?.id));
+  }, [headword, currentUser, addCardToFolder]);
 
   return {
     headword,
