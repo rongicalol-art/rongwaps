@@ -1,17 +1,8 @@
-import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { LevelTag } from '../../../lib/widgets';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import type { ResolvedLevel } from '../../../utils/lesson/levels';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { Flashcard } from '../../../data/flashcards';
-import {
-  ExtendedDefinitionsPanel,
-  MoreDefinitionsToggle,
-  StrokeOrderBox,
-  SummaryQuickActions,
-  useExtendedDefinitions,
-} from '../../character-breakdown';
+import { HeroDetails, StrokeOrderBox, SummaryQuickActions, useExtendedDefinitions } from '../../character-breakdown';
 
 const HANZI_RE = /[㐀-鿿]/u;
 
@@ -50,9 +41,7 @@ export function WordHero({
   const wide = useMediaQuery('(min-width: 640px)');
   const size = canvasSize(chars.length, wide);
   const more = useExtendedDefinitions(undefined, entries);
-  const [moreOpen, setMoreOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
-  useEffect(() => setMoreOpen(false), [word]);
+  const actions = { char: primaryChar, pinyin: pinyin || undefined, meaning, ttsText: word };
   const stacked = chars.length >= 3;
 
   return (
@@ -78,67 +67,10 @@ export function WordHero({
           <div className="flex min-w-0 items-center gap-1.5">
             {pinyin && <span className="truncate text-2xl font-black leading-tight text-brand-primary-text sm:text-[26px]">{pinyin}</span>}
             {!wide && (
-              <SummaryQuickActions
-                className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8"
-                char={primaryChar}
-                pinyin={pinyin || undefined}
-                meaning={meaning}
-                ttsText={word}
-              />
+              <SummaryQuickActions className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8" {...actions} />
             )}
           </div>
-          {meaning && (
-            <div className="flex min-w-0 items-start gap-0.5 sm:gap-1">
-              <p className="line-clamp-3 min-w-0 max-w-2xl text-pretty text-[18px] font-black leading-snug text-ui-ink-strong sm:line-clamp-2 sm:text-[22px] sm:leading-tight">{meaning}</p>
-              {more?.hasExtra && (
-                <MoreDefinitionsToggle
-                  open={moreOpen}
-                  onToggle={() => setMoreOpen((value) => !value)}
-                  count={wide && more.hasExtraDefinitions ? more.definitions.length - 1 : undefined}
-                />
-              )}
-            </div>
-          )}
-          <AnimatePresence initial={false}>
-            {moreOpen && more && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
-                className="overflow-hidden"
-              >
-                <div className="pt-2">
-                  <ExtendedDefinitionsPanel data={more} />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-          {wide ? (
-            <>
-              {(courseCard || level) && (
-                <div className="flex flex-wrap items-center gap-2">
-                  {courseCard && <LevelTag long bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
-                  <LevelTag variant="chip" level={level} />
-                </div>
-              )}
-              <SummaryQuickActions
-                className="-ml-2 mt-0.5 flex items-center gap-1"
-                char={primaryChar}
-                audioSrc={courseCard?.audio}
-                pinyin={pinyin || undefined}
-                meaning={meaning}
-                ttsText={word}
-              />
-            </>
-          ) : (
-            (courseCard || level) && (
-              <div className="flex flex-wrap items-center gap-1.5">
-                {courseCard && <LevelTag bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
-                <LevelTag variant="chip" level={level} />
-              </div>
-            )
-          )}
+          <HeroDetails subject={word} meaning={meaning} more={more} wide={wide} courseCard={courseCard} level={level} actions={actions} />
         </div>
       </div>
     </header>

@@ -12,5 +12,6 @@ export { BreakdownRow } from './components/v3/BreakdownRow';
 export { ShowMoreButton } from './components/v3/ShowMoreButton';
 export { StrokeOrderBox } from './components/StrokeOrderBox';
 export { SummaryQuickActions } from './components/SummaryQuickActions';
+export { HeroDetails } from './components/HeroDetails';
 export { useRuntimeDecompositionTree } from './hooks/useRuntimeDecompositionTree';
 export { useBreakdownBackHandler } from './hooks/useBreakdownBackHandler';
