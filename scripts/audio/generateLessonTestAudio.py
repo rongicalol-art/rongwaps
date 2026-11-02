@@ -57,21 +57,27 @@ LETTERS = ["A", "B", "C", "D"]
 # --engine yating: the owner-picked Yating API voices (scripts/audio/yatingTts.py). The A/B/C/D letters stay the
 # English letter clips read by VOICES["N"] (owner's choice), so they are never sent to Yating.
 YATING_VOICES = {"F": "zh_en_female_1", "M": "zh_en_male_1", "N": "zh_en_female_2"}  # 雅婷, 家豪, 意晴.
-# Pace per test, after the textbook's own recordings (output/checks/speech_rate.py: Book 1 L1–8 ≈ 2.0 characters a
-# second, L9–16 ≈ 2.5, Book 2 ≈ 3.2–3.5). Yating speed: a higher value speaks slower (max 1.5). Book 1 adds a
-# 400 ms pause at every comma (owner's pick over slowing the voice further). (dialogue speed, narrator speed, pauses)
-YATING_PACE = {(1, 8): (1.2, 1.3, True), (1, 16): (1.1, 1.2, True), (2, 16): (1.0, 1.1, False)}
-# Retakes nudge the speed (higher = slower): a little faster first, since a slow short line drags and a slow
-# question can end on a held syllable; then a little slower, for a take that reads too fast.
-YATING_SPEED_STEPS = (0.0, -0.1, 0.1, -0.2)
+# Pace per test: each voice near its natural speed, evened out so 雅婷 and the narrator match 家豪's calmer pace
+# (owner's pick "Natural, evened out" over stretching to the textbook's exact pace, which sounded drawn out).
+# Yating speed: a higher value speaks slower (max 1.5). At the same setting 家豪 is ~10% slower than 雅婷 and 意晴 ~10%
+# faster (output/checks/yating_calibrate.py), so each role has its own setting. Book 1 adds a 400 ms pause at every
+# comma. The textbook's own pace (output/checks/speech_rate.py): Book 1 L1–8 ≈ 2.0 characters a second, L9–16 ≈ 2.5,
+# Book 2 ≈ 3.2–3.5; these land a little faster, closer to TOCFL's natural speech. {(book, last lesson): ({role: speed}, pauses)}
+YATING_PACE = {
+    (1, 8): ({"F": 1.35, "M": 1.2, "N": 1.4}, True),
+    (1, 16): ({"F": 1.25, "M": 1.1, "N": 1.3}, True),
+    (2, 16): ({"F": 1.1, "M": 1.0, "N": 1.1}, False),  # Owner OK'd 1.0 for Book 2; evened out the same way (check by ear).
+}
+# Retakes change the speed only a little, so a retaken line never sounds slower or faster than its neighbours.
+YATING_SPEED_STEPS = (0.0, -0.05, 0.05)
 YATING_TAKES = [(take, "y") for take in range(len(YATING_SPEED_STEPS))]
 
 
 def yating_pace(book, lesson, speaker):
     """The (speed, pauses) a lesson's test uses for one role."""
-    for (pace_book, last), (dialogue, narrator, pauses) in sorted(YATING_PACE.items()):
+    for (pace_book, last), (speeds, pauses) in sorted(YATING_PACE.items()):
         if pace_book == book and lesson <= last:
-            return (narrator if speaker == "N" else dialogue), pauses
+            return speeds[speaker], pauses
     raise SystemExit(f"No Yating pace for book {book}")
 
 
@@ -155,6 +161,13 @@ def yating_request(target, take=0):
     return text, target["model"], speed, False
 
 
+def yating_model(target, take):
+    """The manifest's model field for a Yating take: model and the speed actually sent."""
+    if take >= len(YATING_SPEED_STEPS):
+        return None
+    return f"yating-tts-v2/{target['model']}/speed-{yating_request(target, take)[2]}"
+
+
 def synthesize_yating(target, take, np, sf):
     """One Yating take (cached by request), trimmed and padded like the Qwen takes."""
     import io
@@ -202,7 +215,7 @@ def render(model, target, rejected, masters, mx, np, sf):
                 "key": key, "text": text, "spoken": text, "voice": voice, "speaker": target["speaker"],
                 "file": FILE_PREFIX + published.name, "local": published.relative_to(ROOT).as_posix(),
                 "master": master.relative_to(ROOT).as_posix(), "sha256": digest, "duration": round(duration, 3),
-                "model": f"yating-tts-v2/{target['model']}/speed-{yating_request(target, seed)[2]}" if yating else MODEL,
+                "model": yating_model(target, seed) if yating else MODEL,
                 "instruct": "" if yating else instruct + (SLOWER if style else ""), "seed": seed, "take": style,
                 "deliveryBitrate": DELIVERY_BITRATE, "minVoicedPace": floor,
                 "quality": measure_quality(published),
@@ -266,6 +279,8 @@ def main():
     entries, pending = [], []
     for key, target in targets.items():
         previous = old.get(key)
+        if previous and target.get("engine") == "yating" and previous.get("model") != yating_model(target, previous["seed"]):
+            previous = None  # Rendered at another speed (an older retake rule): render it again at this one.
         if previous and (ROOT / previous["local"]).is_file() and attempt_id(previous["seed"], previous.get("take", "")) not in rejected.get(key, []):
             if previous["quality"]["truePeakDbfs"] > -1.0 and (ROOT / previous["master"]).is_file():
                 # Published before deliver() checked peaks: re-deliver from its master; the checker runs on it again.

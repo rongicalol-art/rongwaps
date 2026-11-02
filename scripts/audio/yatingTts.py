@@ -63,6 +63,6 @@ def synthesize(text, model, *, speed=1.0, pitch=1.0, energy=1.0, rate="22K", ssm
                 time.sleep(2 * (attempt + 1))
                 continue
             raise RuntimeError(f"Yating {error.code}: {detail}") from None
-        except urllib.error.URLError:
+        except (urllib.error.URLError, TimeoutError, ConnectionError):  # A slow or dropped answer: try again.
             time.sleep(2 * (attempt + 1))
     raise RuntimeError("Yating did not answer after 5 tries")
