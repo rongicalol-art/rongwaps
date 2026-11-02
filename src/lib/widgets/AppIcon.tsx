@@ -288,155 +288,32 @@ const AnswerNoIcon = svgIcon(
 );
 
 /**
- * Chunky Duolingo-style status check badge: solid green circle with a tactile 3D
- * bottom edge and a bold, rounded white checkmark.
+ * Chunky Duolingo-style status badge: a solid circle on a tactile 3D bottom
+ * edge (two colour tokens) with a bold, rounded white glyph drawn from `paths`.
  */
-const DuoStatusCheckIcon = svgIcon(
+const statusBadge = (edge: string, face: string, strokeWidth: number, ...paths: string[]) => svgIcon(
   <>
-    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-feedback-success-edge)" />
-    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-feedback-success)" />
-    <path
-      d="M8.2 11.5L10.8 14.1L15.8 9.1"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <circle cx="12" cy="13.2" r="9.5" fill={`var(--color-${edge})`} />
+    <circle cx="12" cy="11.5" r="9.5" fill={`var(--color-${face})`} />
+    <g fill="none" stroke="var(--color-ui-surface)" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+      {paths.map((d) => <path key={d} d={d} />)}
+    </g>
   </>
 );
 
-/**
- * Chunky Duolingo-style status cross badge: solid red circle with a tactile 3D
- * bottom edge and a bold, rounded white X.
- */
-const DuoStatusCrossIcon = svgIcon(
-  <>
-    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-feedback-danger-edge)" />
-    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-feedback-danger)" />
-    <path
-      d="M9.2 8.7L14.8 14.3M14.8 8.7L9.2 14.3"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </>
-);
+const SHUFFLE_ARROWS = [
+  'M7.8 9.2h2c1.4 0 2.2 4.6 4.2 4.6h2.2',
+  'M14.5 11.8L16.5 13.8L14.5 15.8',
+  'M7.8 13.8h2c.8 0 1.5-1 2-2.3m.4-1c.5-1 1.2-1.3 1.8-1.3h2',
+  'M14.5 7.2L16.5 9.2L14.5 11.2',
+];
 
-/**
- * Chunky Duolingo-style status shuffle badge: solid brand blue circle with a tactile
- * 3D bottom edge and bold white shuffle arrows.
- */
-const DuoStatusShuffleIcon = svgIcon(
-  <>
-    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-brand-primary-edge)" />
-    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-brand-primary)" />
-    <path
-      d="M7.8 9.2h2c1.4 0 2.2 4.6 4.2 4.6h2.2"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M14.5 11.8L16.5 13.8L14.5 15.8"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M7.8 13.8h2c.8 0 1.5-1 2-2.3m.4-1c.5-1 1.2-1.3 1.8-1.3h2"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M14.5 7.2L16.5 9.2L14.5 11.2"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </>
-);
-
-/**
- * Chunky status unshuffled badge: neutral surface circle with a tactile 3D
- * bottom edge and bold white shuffle arrows.
- */
-const DuoStatusUnshuffledIcon = svgIcon(
-  <>
-    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-ui-border)" />
-    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-ui-muted)" />
-    <path
-      d="M7.8 9.2h2c1.4 0 2.2 4.6 4.2 4.6h2.2"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M14.5 11.8L16.5 13.8L14.5 15.8"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M7.8 13.8h2c.8 0 1.5-1 2-2.3m.4-1c.5-1 1.2-1.3 1.8-1.3h2"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M14.5 7.2L16.5 9.2L14.5 11.2"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </>
-);
-
-/**
- * Chunky Duolingo-style status restart badge: solid brand blue circle with a tactile
- * 3D bottom edge and a bold white counter-clockwise curved arrow.
- */
-const DuoStatusRestartIcon = svgIcon(
-  <>
-    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-brand-primary-edge)" />
-    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-brand-primary)" />
-    <path
-      d="M15.5 11.5A3.8 3.8 0 1 1 10.6 8.2"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M11.6 6.3L9.6 8.2L11.6 10.1"
-      fill="none"
-      stroke="var(--color-ui-surface)"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </>
-);
+const DuoStatusCheckIcon = statusBadge('feedback-success-edge', 'feedback-success', 2.5, 'M8.2 11.5L10.8 14.1L15.8 9.1');
+const DuoStatusCrossIcon = statusBadge('feedback-danger-edge', 'feedback-danger', 2.5, 'M9.2 8.7L14.8 14.3M14.8 8.7L9.2 14.3');
+const DuoStatusShuffleIcon = statusBadge('brand-primary-edge', 'brand-primary', 2, ...SHUFFLE_ARROWS);
+const DuoStatusUnshuffledIcon = statusBadge('ui-border', 'ui-muted', 2, ...SHUFFLE_ARROWS);
+/** Counter-clockwise curved arrow. */
+const DuoStatusRestartIcon = statusBadge('brand-primary-edge', 'brand-primary', 2.2, 'M15.5 11.5A3.8 3.8 0 1 1 10.6 8.2', 'M11.6 6.3L9.6 8.2L11.6 10.1');
 
 const ICONS: Record<AppIconName, IconType> = {
   add: PiPlusBold,
