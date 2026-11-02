@@ -3,12 +3,6 @@ export { BreakdownSkeleton } from './components/BreakdownSkeleton';
 export { SingleBreakdownView } from './components/breakdown/SingleBreakdownView';
 export { V3RuntimeTree } from './components/v3/V3RuntimeTree';
 export {
-  compareDecompositionRuntimes,
-  createDecompositionRuntimeService,
-  getDecompositionRuntimeService,
-} from '../character-decomposition';
-export {
-  ExtendedDefinitions,
   ExtendedDefinitionsPanel,
   MoreDefinitionsToggle,
   useExtendedDefinitions,
