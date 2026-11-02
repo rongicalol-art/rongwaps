@@ -90,14 +90,15 @@ export function ActivityScreens({
   const quizFormat = useAppStore((state) => state.quizFormat);
   const picksQuiz = Boolean(quizTypes) || (quizFormat === 'mixed' && (activeQuizMode ?? 'choices') === 'choices');
   const instant = picksQuiz && activeActivity === 'quiz';
+  const deck = { activeBookId, selectedLessons, isReviewDeck: isReviewMode, isLibraryDeck: isLibraryMode };
+  const next = { onContinue, continueLabel };
 
   return (
     <AnimatePresence custom={instant ? 'instant' : direction} mode="popLayout">
       {(activeActivity === 'flashcards' || activeActivity === 'flashcards-library' || activeActivity === 'flashcards-review') && FlashcardScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="flashcards" direction={direction} className={edgeInsetClassName}>
           <FlashcardScreen
-            activeBookId={activeBookId}
-            selectedLessons={selectedLessons}
+            {...deck}
             isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
             isLibraryDeck={(activeActivity === 'flashcards-library' || isLibraryMode) && !(isReviewMode || activeActivity === 'flashcards-review')}
             isIndependentStudy={isIndependentStudy}
@@ -113,25 +114,14 @@ export function ActivityScreens({
 
       {activeActivity === 'listening' && ListeningScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="listening" direction={direction} className={edgeInsetClassName}>
-          <ListeningScreen
-            activeBookId={activeBookId}
-            selectedLessons={selectedLessons}
-            isReviewDeck={isReviewMode}
-            isLibraryDeck={isLibraryMode}
-            onClose={onClose}
-            onContinue={onContinue}
-            continueLabel={continueLabel}
-          />
+          <ListeningScreen {...deck} onClose={onClose} {...next} />
         </AnimatedActivityScreen>
       )}
 
       {activeActivity === 'quiz' && QuizScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="quiz" direction={direction} instant={instant} className={edgeInsetClassName}>
           <QuizScreen
-            activeBookId={activeBookId}
-            selectedLessons={selectedLessons}
-            isReviewDeck={isReviewMode}
-            isLibraryDeck={isLibraryMode}
+            {...deck}
             mode={activeQuizMode ?? 'choices'}
             quizTypes={quizTypes}
             sessionDeck={sessionDeck}
@@ -145,55 +135,25 @@ export function ActivityScreens({
 
       {activeActivity === 'writing' && WritingScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="writing" direction={direction} className={edgeInsetClassName}>
-          <WritingScreen
-            activeBookId={activeBookId}
-            selectedLessons={selectedLessons}
-            isReviewDeck={isReviewMode}
-            isLibraryDeck={isLibraryMode}
-            onClose={onWritingClose}
-            onContinue={onContinue}
-            continueLabel={continueLabel}
-          />
+          <WritingScreen {...deck} onClose={onWritingClose} {...next} />
         </AnimatedActivityScreen>
       )}
 
       {activeActivity === 'tones' && ToneScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="tones" direction={direction} className={edgeInsetClassName}>
-          <ToneScreen
-            activeBookId={activeBookId}
-            selectedLessons={selectedLessons}
-            isReviewDeck={isReviewMode}
-            isLibraryDeck={isLibraryMode}
-            onClose={onClose}
-            onContinue={onContinue}
-            continueLabel={continueLabel}
-          />
+          <ToneScreen {...deck} onClose={onClose} {...next} />
         </AnimatedActivityScreen>
       )}
 
       {activeActivity === 'pinyin' && PinyinScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="pinyin" direction={direction} className={edgeInsetClassName}>
-          <PinyinScreen
-            activeBookId={activeBookId}
-            selectedLessons={selectedLessons}
-            isReviewDeck={isReviewMode}
-            isLibraryDeck={isLibraryMode}
-            onClose={onClose}
-            onContinue={onContinue}
-            continueLabel={continueLabel}
-          />
+          <PinyinScreen {...deck} onClose={onClose} {...next} />
         </AnimatedActivityScreen>
       )}
 
       {activeActivity === 'sentences' && SentencesScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="sentences" direction={direction} className={edgeInsetClassName}>
-          <SentencesScreen
-            activeBookId={activeBookId}
-            selectedLessons={selectedLessons}
-            isReviewDeck={isReviewMode}
-            isLibraryDeck={isLibraryMode}
-            onClose={onClose}
-          />
+          <SentencesScreen {...deck} onClose={onClose} />
         </AnimatedActivityScreen>
       )}
 
