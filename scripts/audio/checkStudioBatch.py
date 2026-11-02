@@ -67,9 +67,14 @@ def main():
             quality["asrReview"] = review["note"]
         quality["contentChecked"] = not problems
         entry["quality"] = quality
+        take = attempt_id(entry["seed"], entry.get("take", "g" if entry.get("tailGuard") else ""))
+        if not problems and take in rejected.get(entry["key"], []):
+            # Rejected by an earlier, stricter check; it passes now, so it may be used again.
+            rejected[entry["key"]].remove(take)
+            if not rejected[entry["key"]]:
+                del rejected[entry["key"]]
         if problems:
             failures.append(entry["key"])
-            take = attempt_id(entry["seed"], entry.get("take", "g" if entry.get("tailGuard") else ""))
             takes = rejected.setdefault(entry["key"], [])
             if take not in takes:
                 takes.append(take)
