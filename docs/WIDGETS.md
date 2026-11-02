@@ -32,14 +32,11 @@
 | AppIcon | `AppIcon.tsx` | Semantic icon gateway (Phosphor + in-house glyphs/status badges). Includes semantic `camera` and `upload` controls. Decorative by default; pass `title`/`aria-label` to make it `role="img"`. |
 | SpeakerIcon | `SpeakerIcon.tsx` | The speaker on tap-to-hear buttons. `status` from `useAudioPending` (`claim(key)` before playing, `status(key)`): `loading` = small spinner while the recording is fetched (only after 200ms, so cached clips never flash), `playing` = three sound bars while it plays. |
 | BrandWordmark | `BrandWordmark.tsx` | 文 tile + wordmark; `name`, `collapsed`. |
-| CloudPuff | `CloudPuff.tsx` | Decorative cloud silhouette (`aria-hidden` container). |
-| VideoBackground | `VideoBackground.tsx` | Static decorative artwork via `posterSrc`; no continuous video decoding. Optional scrim and children. |
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
 | PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`); `challenge` (lightning) for quiz races. `preloadPlayfulNavIcons()` loads the files ahead (at idle after boot, and before the lesson window opens). |
 | UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
 | Avatar / AvatarStack | `AvatarStack.tsx` | Initials on a profile avatar colour (`avatarStyle`), optional live dot; `AvatarStack` overlaps up to `max` faces then "+N" and renders nothing when empty. Study together faces (Books tiles, lesson window, practice header, rooms). |
 | ProfileCover | `ProfileCover.tsx` | `coverStyle(preset, image?)` paints a profile cover (uploaded photo, else the preset colour); `ProfileCoverGlyphs` draws the faint character pattern, sized by `className`. Own profile and classmate visits. |
-| ProfileAvatarButton | `ProfileAvatarButton.tsx` | Signed-in avatar button for `StickyWorkspaceHeader` `rightContent` (Books / Library / Dictionary). |
 | RongWapsCharacterPortrait | `RongWapsCharacterPortrait.tsx` | 1:1 character bust; requires `character` + `label`. |
 | PosBadge | `PosBadge.tsx` | Part-of-speech tag with hover explainer; renders nothing without `pos`. |
 
@@ -68,8 +65,6 @@
 | AlertBanner | `AlertBanner.tsx` | `variant` danger/warning/info/success; `title`, `onDismiss`, action slot. |
 | TopToast | `TopToast.tsx` | Notice card that drops in at the top (top-right from `md`), same card and spring as the quiz-invite toast: `icon`, `title`, `message`, quiet dismiss plus an optional primary action; `open` drives enter/exit; `inline` for DEV previews. Used by the legal-update, new-version and can't-save-on-this-device notices. |
 | EmptyState | `EmptyState.tsx` | Icon badge + headline + copy + optional action; `compact` for drawers. |
-| CircularProgress | `CircularProgress.tsx` | SVG ring; clamped `value`. |
-| CustomProgressBar | `CustomProgressBar.tsx` | Rounded bar; `progress`, `accentClassName`. |
 | LoadingScreen | `LoadingScreen.tsx` | Shared loader: `fullScreen`, `inline`, `tone` (`canvas`/`practice`) match the surface being prepared. Windows use `useOpenPhase` (150ms hold; ready content appears immediately). Shows large audio bars (the `ActionButton` loading look) in CSS on every device. |
 | LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. Until loaded it is an empty box of its final size (no spinner); JSON + lottie-react are cached at module level (`preloadLottie`). Pauses outside the viewport or in a hidden tab, respects reduced motion, and renders authored frames without subframe interpolation. Course art plays once when selected; loading indicators may loop. |
 | Skeleton | `Skeleton.tsx` | Generic placeholder. |
@@ -89,7 +84,6 @@
 | --- | --- | --- |
 | ContextualChineseText | `ContextualChineseText.tsx` | Grammar/exercise text using SmartSentence; requires `onOpenWord`; authored tokens win; optional `wordClassName` selects the sentence face without changing study-font settings. |
 | ExpandableSearch | `ExpandableSearch.tsx` | Compact trigger expanding to search input; `label` = accessible name. |
-| ProgressMetricCard | `ProgressMetricCard.tsx` | Derived metric (`label`, `value`, `detail`, `icon`); real metrics only. |
 | ReferenceRow | `ReferenceRow.tsx` | Row for reference sheets: glyph, pinyin over meaning, meta, `loading`; `accentClassName` tints glyph. |
 | CharacterTile | `CharacterTile.tsx` | Tappable character tile; `known`, `upcoming`, `active`. |
 | CharacterGlyph | `CharacterGlyph.tsx` | Character glyph with a puzzle-piece fallback when the active Chinese font cannot render it. |

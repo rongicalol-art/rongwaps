@@ -12,13 +12,10 @@ export * from './ToggleSwitch';
 export * from './AppIcon';
 export * from './SpeakerIcon';
 export * from './BrandWordmark';
-export * from './CloudPuff';
 export * from './CountryFlag';
 export * from './PlayfulNavIcon';
 export * from './RongWapsCharacterPortrait';
 export * from './UserAvatar';
-export * from './ProfileAvatarButton';
-export * from './VideoBackground';
 
 // Dialogs, drawers, docks, menus, and accessibility boundaries
 export * from './ActivityModalWrapper';
@@ -41,8 +38,6 @@ export * from './TopToast';
 export * from './EmptyState';
 
 // Progress, loading, and animation presentation
-export * from './CircularProgress';
-export * from './CustomProgressBar';
 export * from './LoadingScreen';
 export * from './LottiePlayer';
 export * from './Skeleton';
@@ -57,7 +52,6 @@ export * from './StickyWorkspaceHeader';
 export * from './ContextualChineseText';
 export * from './ExpandableSearch';
 export * from './PosBadge';
-export * from './ProgressMetricCard';
 export * from './ReferenceRow';
 export * from './LevelTag';
 export * from './CharacterTile';
@@ -66,4 +60,3 @@ export * from './SmartSentence';
 export * from './AvatarStack';
 export * from './ProfileCover';
 
-export { useSentenceWordHover, useSentenceSegments } from './useSentenceLookup';
