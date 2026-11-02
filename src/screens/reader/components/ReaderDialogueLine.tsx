@@ -2,23 +2,10 @@ import { motion, useReducedMotion } from 'motion/react';
 import { cn } from '../../../utils/cn';
 import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import type { ReaderTextSize } from '../../../types/models';
-import type { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { getDialogueTextClasses } from '../utils/readerTextStyles';
 import type { ReadingCanvasLine } from '../utils/readingCanvasLines';
-import { ReaderChunk, DIALOGUE_CHUNK_APPEARANCE } from './ReaderChunk';
+import { DIALOGUE_CHUNK_APPEARANCE, ReaderSegmentChunks, type ReaderWordInteractions } from './ReaderChunk';
 import { ReaderSpeakerAvatar } from './ReaderSpeakerAvatar';
-
-type WordInteractions = Pick<
-  ReturnType<typeof useReaderWordInteractions>,
-  | 'holdingChunkKey'
-  | 'hoveredChunkKey'
-  | 'handlePointerEnter'
-  | 'handlePointerLeave'
-  | 'handlePointerDown'
-  | 'handlePointerMove'
-  | 'handlePointerUp'
-  | 'handlePointerCancel'
->;
 
 export interface ReaderDialogueLineProps {
   line: ReadingCanvasLine;
@@ -34,7 +21,7 @@ export interface ReaderDialogueLineProps {
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
   playFragment: (start: number | undefined, end: number | undefined, lineIndex: number) => void;
-  wordInteractions: WordInteractions;
+  wordInteractions: ReaderWordInteractions;
   onLineRef: (index: number, node: HTMLDivElement | null) => void;
 }
 
@@ -60,16 +47,6 @@ export function ReaderDialogueLine({
 }: ReaderDialogueLineProps) {
   const reduceMotion = useReducedMotion();
   const { index, paragraph, speakerDotColor, speakerChar, avatarInitial, sentences, isRightAligned } = line;
-  const {
-    holdingChunkKey,
-    hoveredChunkKey,
-    handlePointerEnter,
-    handlePointerLeave,
-    handlePointerDown,
-    handlePointerMove,
-    handlePointerUp,
-    handlePointerCancel,
-  } = wordInteractions;
 
   return (
     <motion.div
@@ -162,50 +139,19 @@ export function ReaderDialogueLine({
                     }}
                     className="group/sentence relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong"
                   >
-                    {sentence.chunks.map((chunk, chunkIdx) => {
-                      if (chunk.isPunctuation) {
-                        return (
-                          <span key={chunkIdx} className="transition-colors inline select-text">
-                            {chunk.rubyItems.map((item, itemIdx) => (
-                              <span key={itemIdx} className="inline">
-                                {item.char}
-                              </span>
-                            ))}
-                          </span>
-                        );
-                      }
-
-                      const chunkKey = `${sentence.id}-${chunkIdx}`;
-                      const isWordActive = typeof chunk.start === 'number' && typeof chunk.end === 'number'
-                        ? currentTime >= chunk.start && currentTime < chunk.end
-                        : false;
-
-                      return (
-                        <ReaderChunk
-                          key={chunkIdx}
-                          chunk={chunk}
-                          keyPrefix={sentence.id}
-                          chunkIdx={chunkIdx}
-                          lineIndex={index}
-                          fallbackStart={sentence.start}
-                          fallbackEnd={sentence.end}
-                          isActive={holdingChunkKey === chunkKey || isWordActive}
-                          isHovered={hoveredChunkKey === chunkKey}
-                          isNewWord={newWordChunks.has(chunk)}
-                          showPinyin={showPinyin}
-                          textSize={textSize}
-                          appearance={DIALOGUE_CHUNK_APPEARANCE}
-                          onPlayLine={onPlayLine}
-                          onPlayRange={onPlayRange}
-                          onPointerEnter={handlePointerEnter}
-                          onPointerLeave={handlePointerLeave}
-                          onPointerDown={handlePointerDown}
-                          onPointerMove={handlePointerMove}
-                          onPointerUp={handlePointerUp}
-                          onPointerCancel={handlePointerCancel}
-                        />
-                      );
-                    })}
+                    <ReaderSegmentChunks
+                      segment={sentence}
+                      lineIndex={index}
+                      currentTime={currentTime}
+                      newWordChunks={newWordChunks}
+                      showPinyin={showPinyin}
+                      textSize={textSize}
+                      appearance={DIALOGUE_CHUNK_APPEARANCE}
+                      onPlayLine={onPlayLine}
+                      onPlayRange={onPlayRange}
+                      wordInteractions={wordInteractions}
+                      punctuationClassName="transition-colors inline select-text"
+                    />
                   </span>
                 );
               })}

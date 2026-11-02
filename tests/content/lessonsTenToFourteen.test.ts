@@ -102,22 +102,6 @@ test('Every grammar page has beginner support, varied examples, and practice', (
   });
 });
 
-test('The hardest lesson ideas get purpose-built visual tools', () => {
-  const lessonThirteenPages = [
-    ...LESSON_THIRTEEN_PART_ONE.grammarPages,
-    ...LESSON_THIRTEEN_PART_TWO.grammarPages,
-  ];
-  const lessonFourteenPages = [
-    ...LESSON_FOURTEEN_PART_ONE.grammarPages,
-    ...LESSON_FOURTEEN_PART_TWO.grammarPages,
-  ];
-
-  assert.ok(lessonThirteenPages[1].routeLab, 'Lesson 13 direction grammar needs its route lab');
-  assert.ok(lessonFourteenPages[0].timelineLab, 'Lesson 14 one-了 grammar needs its finished timeline');
-  assert.ok(lessonFourteenPages[1].timelineLab, 'Lesson 14 double-了 grammar needs its continuing timeline');
-  assert.ok(lessonFourteenPages[2].pairCompareLab, 'Lesson 14 比 grammar needs its A/B comparison lab');
-});
-
 test('Every Lessons 10–14 grammar completes with its canonical authored answers', () => {
   lessons.flatMap(({ parts }) => parts).flatMap((part) => part.grammarPages).forEach((page) => {
     const placements: Record<string, string> = {};

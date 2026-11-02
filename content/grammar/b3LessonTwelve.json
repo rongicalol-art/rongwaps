@@ -563,55 +563,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l12g1-cf1",
-              "question": "When should you use 這就 instead of a generic time adverb like 馬上?",
-              "answer": "這就 specifically indicates an immediate response or action undertaken on the spot by the speaker, right at this very second.",
-              "wrongTraditional": "我明天這就通知經理。",
-              "wrongSimplified": "我明天这就通知经理。",
-              "right": {
-                "traditional": "請坐一下，我這就通知經理。",
-                "simplified": "请坐一下，我这就通知经理。",
-                "pinyin": "Qǐng zuò yíxià, wǒ zhè jiù tōngzhī jīnglǐ.",
-                "english": "Please sit down, I will notify the manager right away.",
-                "words": [
-                  {
-                    "id": "b3l12g1-cf1-w1",
-                    "traditional": "我這就通知",
-                    "simplified": "我这就通知",
-                    "pinyin": "wǒ zhè jiù tōngzhī",
-                    "meaning": "I notify right now"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l12g1-cf2",
-              "question": "Can 這就 be replaced by a simple 就 in immediate responsive declarations?",
-              "answer": "雖然「就」也能表示馬上，但「這就」強化了「現在這一刻立即採取行動」的現場口語語氣。",
-              "wrongTraditional": "孔老闆到了，我快快就去門口。",
-              "wrongSimplified": "孔老板到了，我快快就去门口。",
-              "right": {
-                "traditional": "好，我這就到門口去歡迎他。",
-                "simplified": "好，我这就到门口去欢迎他。",
-                "pinyin": "Hǎo, wǒ zhè jiù dào ménkǒu qù huānyíng tā.",
-                "english": "Okay, I will head right to the entrance to welcome him.",
-                "words": [
-                  {
-                    "id": "b3l12g1-cf2-w1",
-                    "traditional": "我這就去",
-                    "simplified": "我这就去",
-                    "pinyin": "wǒ zhè jiù qù",
-                    "meaning": "I go right this moment"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
@@ -1098,55 +1049,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l12g2-cf1",
-              "question": "How is 在……方面 different from 對……來說?",
-              "answer": "「在……方面」界定討論的領域、專業或範圍；「對……來說」則界定評估的角度或主體視角。",
-              "wrongTraditional": "對穿著方面，白小姐很有品味。",
-              "wrongSimplified": "对穿着方面，白小姐很有品味。",
-              "right": {
-                "traditional": "在穿著方面，白小姐很有品味。",
-                "simplified": "在穿着方面，白小姐很有品味。",
-                "pinyin": "Zài chuānzhuó fāngmiàn, Bái xiǎojiě hěn yǒu pǐnwèi.",
-                "english": "In terms of attire, Miss Bai has great taste.",
-                "words": [
-                  {
-                    "id": "b3l12g2-cf1-w1",
-                    "traditional": "在穿著方面",
-                    "simplified": "在穿着方面",
-                    "pinyin": "zài chuānzhuó fāngmiàn",
-                    "meaning": "in aspect of attire"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l12g2-cf2",
-              "question": "Can 方面 be omitted when defining a domain?",
-              "answer": "「在」與「方面」搭配成框架標記範疇，若缺少「方面」，句子往往失去界定領域的完整結構。",
-              "wrongTraditional": "你在這有經驗嗎？",
-              "wrongSimplified": "你在这有经验吗？",
-              "right": {
-                "traditional": "你在這方面有經驗嗎？",
-                "simplified": "你在这方面有经验吗？",
-                "pinyin": "Nǐ zài zhè fāngmiàn yǒu jīngyàn ma?",
-                "english": "Do you have experience in this field?",
-                "words": [
-                  {
-                    "id": "b3l12g2-cf2-w1",
-                    "traditional": "在這方面",
-                    "simplified": "在这方面",
-                    "pinyin": "zài zhè fāngmiàn",
-                    "meaning": "in this aspect"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
@@ -1560,55 +1462,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l12g3-cf1",
-              "question": "How does 往往 differ from 常常?",
-              "answer": "「往往」表示在一定條件下經常出現的規律或客觀事實，不能用於個人主觀意願或未發生的事，且不能被否定（不能說「不往往」）；「常常」純粹表示頻率高，可用於個人習慣與意願。",
-              "wrongTraditional": "我希望下個月往往去慢跑。",
-              "wrongSimplified": "我希望下个月往往去慢跑。",
-              "right": {
-                "traditional": "只要天氣好，他往往起床後就去慢跑。",
-                "simplified": "只要天气好，他往往起床后就去慢跑。",
-                "pinyin": "Zhǐyào tiānqì hǎo, tā wǎngwǎng qǐchuáng hòu jiù qù mànpǎo.",
-                "english": "As long as the weather is fine, he tends to go jogging after getting up.",
-                "words": [
-                  {
-                    "id": "b3l12g3-cf1-w1",
-                    "traditional": "往往起床後",
-                    "simplified": "往往起床后",
-                    "pinyin": "wǎngwǎng qǐchuáng hòu",
-                    "meaning": "tend to after getting up"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l12g3-cf2",
-              "question": "Can 往往 appear with negative markers like 不 before it?",
-              "answer": "不行。「往往」前面不能加否定詞，否定詞必須放在「往往」之後（例如：往往不是、往往沒有）。",
-              "wrongTraditional": "他不往往週末去打球。",
-              "wrongSimplified": "他不往往周末去打球。",
-              "right": {
-                "traditional": "要不要補習往往不是孩子能決定的。",
-                "simplified": "要不要补习往往不是孩子能决定的。",
-                "pinyin": "Yào bú yào bǔxí wǎngwǎng bú shì háizi néng juédìng de.",
-                "english": "Whether to attend cram school is often not something children can decide.",
-                "words": [
-                  {
-                    "id": "b3l12g3-cf2-w1",
-                    "traditional": "往往不是",
-                    "simplified": "往往不是",
-                    "pinyin": "wǎngwǎng bú shì",
-                    "meaning": "often is not"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
@@ -2081,55 +1934,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l12g4-cf1",
-              "question": "How is 有關 used compared with 對於?",
-              "answer": "「有關」置於句首引出討論的題材或對象，指「涉及……」；「對於」則引出對象以表達對該對象的態度或看法。",
-              "wrongTraditional": "在於這方面的問題，會有專人說明。",
-              "wrongSimplified": "在于这方面的问题，会有专人说明。",
-              "right": {
-                "traditional": "有關這方面的問題，會有相關人員說明。",
-                "simplified": "有关这方面的问题，会有相关人员说明。",
-                "pinyin": "Yǒuguān zhè fāngmiàn de wèntí, huì yǒu xiāngguān rényuán shuōmíng.",
-                "english": "Regarding questions in this area, relevant personnel will explain.",
-                "words": [
-                  {
-                    "id": "b3l12g4-cf1-w1",
-                    "traditional": "有關這方面",
-                    "simplified": "有关这方面",
-                    "pinyin": "yǒuguān zhè fāngmiàn",
-                    "meaning": "regarding this aspect"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l12g4-cf2",
-              "question": "Can 有關 directly modify a noun or introduce a prepositional topic?",
-              "answer": "「有關」常置於句首作介詞引導話題（有關……），亦可作為修飾語（跟……有關的資料）。",
-              "wrongTraditional": "朝向這方面的問題，請看網站。",
-              "wrongSimplified": "朝向这方面的问题，请看网站。",
-              "right": {
-                "traditional": "有關這類的活動，你看旅遊中心網站就知道了。",
-                "simplified": "有关这类的活动，你看旅游中心网站就知道了。",
-                "pinyin": "Yǒuguān zhè lèi de huódòng, nǐ kàn lǚyóu zhōngxīn wǎngzhàn jiù zhīdào le.",
-                "english": "Regarding this type of activity, check the travel center website and you will know.",
-                "words": [
-                  {
-                    "id": "b3l12g4-cf2-w1",
-                    "traditional": "有關這類的活動",
-                    "simplified": "有关这类的活动",
-                    "pinyin": "yǒuguān zhè lèi de huódòng",
-                    "meaning": "regarding this type of activity"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
@@ -2682,55 +2486,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l12g5-cf1",
-              "question": "How is 儘管 different from 即使?",
-              "answer": "「儘管」引導的是已經發生的既成事實；「即使」引導的是假設性的退讓條件（即便如此……）。",
-              "wrongTraditional": "即使已經下課了，張老師昨天留在教室改作業。",
-              "wrongSimplified": "即使已经下课了，张老师昨天留在教室改作业。",
-              "right": {
-                "traditional": "儘管已經下課了，張老師還是留在教室改作業。",
-                "simplified": "尽管已经下课了，张老师还是留在教室改作业。",
-                "pinyin": "Jǐnguǎn yǐjīng xiàkè le, Zhāng lǎoshī háishì liú zài jiàoshì gǎi zuòyè.",
-                "english": "Even though class had dismissed, Teacher Zhang still stayed in the classroom grading.",
-                "words": [
-                  {
-                    "id": "b3l12g5-cf1-w1",
-                    "traditional": "儘管已經下課",
-                    "simplified": "尽管已经下课",
-                    "pinyin": "jǐnguǎn yǐjīng xiàkè",
-                    "meaning": "even though class dismissed"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l12g5-cf2",
-              "question": "Can 儘管 pair with 但 / 還是 / 卻 in the following clause?",
-              "answer": "是的，「儘管」後面常搭配「但是、可是、還是、卻」以凸顯出乎意料的轉折結果。",
-              "wrongTraditional": "儘管平時成績不好，所以他很開心。",
-              "wrongSimplified": "尽管平时成绩不好，所以他很开心。",
-              "right": {
-                "traditional": "儘管成績不理想，卻不影響他的興趣。",
-                "simplified": "尽管成绩不理想，却不影响他的兴趣。",
-                "pinyin": "Jǐnguǎn chéngjī bù lǐxiǎng, què bù yǐngxiǎng tā de xìngqù.",
-                "english": "Even though grades were not ideal, it did not affect his interest.",
-                "words": [
-                  {
-                    "id": "b3l12g5-cf2-w1",
-                    "traditional": "卻不影響",
-                    "simplified": "却不影响",
-                    "pinyin": "què bù yǐngxiǎng",
-                    "meaning": "yet does not affect"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "audioReference": "12-2-1",
         "bookId": 3,
@@ -3380,55 +3135,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l12g6-cf1",
-              "question": "What types of conditions follow 不論?",
-              "answer": "「不論」後面通常接疑問代詞（什麼、哪裡）、反義詞對舉（遠近、好壞）或正反問句（去不去），表示各種變數下結論都不變。",
-              "wrongTraditional": "不論教練去，我都要參加。",
-              "wrongSimplified": "不论教练去，我都要参加。",
-              "right": {
-                "traditional": "不論教練去不去，我都要參加。",
-                "simplified": "不论教练去不去，我都要参加。",
-                "pinyin": "Búlùn jiàoliàn qù bú qù, wǒ dōu yào cānjiā.",
-                "english": "No matter whether the coach goes or not, I will participate.",
-                "words": [
-                  {
-                    "id": "b3l12g6-cf1-w1",
-                    "traditional": "不論去不去",
-                    "simplified": "不论去不去",
-                    "pinyin": "búlùn qù bú qù",
-                    "meaning": "regardless whether go or not"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l12g6-cf2",
-              "question": "How is 不論……都 different from 既然……就?",
-              "answer": "「不論……都」表示排除任何變數限制，結果始終恆定；「既然……就」表示在既成前題下順理成章採取對應動作。",
-              "wrongTraditional": "既然主管有什麼要求，員工都要配合。",
-              "wrongSimplified": "既然主管有什么要求，员工都要配合。",
-              "right": {
-                "traditional": "不論主管有什麼要求，員工都應該配合。",
-                "simplified": "不论主管有什么要求，员工都应该配合。",
-                "pinyin": "Búlùn zhǔguǎn yǒu shénme yāoqiú, yuángōng dōu yīnggāi pèihé.",
-                "english": "No matter what the supervisor requires, employees should cooperate.",
-                "words": [
-                  {
-                    "id": "b3l12g6-cf2-w1",
-                    "traditional": "不論主管要求",
-                    "simplified": "不论主管要求",
-                    "pinyin": "búlùn zhǔguǎn yāoqiú",
-                    "meaning": "no matter supervisor demands"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": [],
         "audioReference": "12-2-1",
         "bookId": 3,

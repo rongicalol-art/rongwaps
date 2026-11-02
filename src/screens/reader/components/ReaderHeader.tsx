@@ -1,25 +1,13 @@
 import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
-import type { ReaderTextSize, ReadingRecord } from '../../../types/models';
-import type { CharacterFont } from '../../../store/useAppStore';
-import { ReaderSettingsPopover } from './ReaderSettingsPopover';
+import type { ReadingRecord } from '../../../types/models';
+import { ReaderSettingsPopover, type ReaderSettingsPopoverProps } from './ReaderSettingsPopover';
 import { GlobalPresenceButton } from '../../../features/social';
 
-interface ReaderHeaderProps {
+/** Header props; the reading settings pass straight to the settings popover. */
+interface ReaderHeaderProps extends Omit<ReaderSettingsPopoverProps, 'size' | 'iconSize'> {
   partNumber?: number;
   /** Shown before the part: a combined run can span several lessons. */
   lessonNumber?: number;
-  textSize: ReaderTextSize;
-  onTextSizeChange: (size: ReaderTextSize) => void;
-  characterFont?: CharacterFont;
-  onCharacterFontChange?: (font: CharacterFont) => void;
-  showPinyin: boolean;
-  onTogglePinyin: () => void;
-  showMeaning: boolean;
-  onToggleMeaning: () => void;
-  showHoverDefinitions?: boolean;
-  onToggleHoverDefinitions?: () => void;
-  isSlowAudio: boolean;
-  onToggleSlowAudio: () => void;
   playing: boolean;
   onTogglePlay: () => void;
   /** Share of the recording played, 0–1. */
@@ -95,24 +83,13 @@ export function getReaderHeaderTitles(
 export function ReaderHeader({
   partNumber,
   lessonNumber,
-  textSize,
-  onTextSizeChange,
-  characterFont,
-  onCharacterFontChange,
-  showPinyin,
-  onTogglePinyin,
-  showMeaning,
-  onToggleMeaning,
-  showHoverDefinitions = true,
-  onToggleHoverDefinitions,
-  isSlowAudio,
-  onToggleSlowAudio,
   playing,
   onTogglePlay,
   progress,
   onScrub,
   onSeek,
   onClose,
+  ...settings
 }: ReaderHeaderProps) {
   // Reading Mode keeps playback, classmates and reader settings in the header.
   const partLabel = partNumber === undefined ? undefined : `${lessonNumber !== undefined ? `Lesson ${lessonNumber} · ` : ''}Part ${partNumber}`;
@@ -149,22 +126,7 @@ export function ReaderHeader({
       rightAction={
         <div className="flex items-center gap-1">
           <GlobalPresenceButton />
-          <ReaderSettingsPopover
-            size="lg"
-            iconSize={25}
-            textSize={textSize}
-            onTextSizeChange={onTextSizeChange}
-            characterFont={characterFont}
-            onCharacterFontChange={onCharacterFontChange}
-            showPinyin={showPinyin}
-            onTogglePinyin={onTogglePinyin}
-            showMeaning={showMeaning}
-            onToggleMeaning={onToggleMeaning}
-            showHoverDefinitions={showHoverDefinitions}
-            onToggleHoverDefinitions={onToggleHoverDefinitions}
-            isSlowAudio={isSlowAudio}
-            onToggleSlowAudio={onToggleSlowAudio}
-          />
+          <ReaderSettingsPopover size="lg" iconSize={25} {...settings} />
         </div>
       }
     />

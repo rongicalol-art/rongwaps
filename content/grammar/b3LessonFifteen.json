@@ -450,55 +450,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l15g1-cf1",
-              "question": "How is 簡直 different from ordinary intensifiers like 很 or 非常?",
-              "answer": "「很」與「非常」是客觀的程度副詞；「簡直」則帶有說話者生動、誇張的譬喻評價，常搭配「像」、「快……了」或極端狀態。",
-              "wrongTraditional": "那幾條龍很像快飛起來了，非常了不起。",
-              "wrongSimplified": "那几条龙很像快飞起来了，非常了不起。",
-              "right": {
-                "traditional": "看過的人都說那幾條龍簡直快飛起來了。",
-                "simplified": "看过的人都说那几条龙简直快飞起来了。",
-                "pinyin": "Kànguò de rén dōu shuō nà jǐ tiáo lóng jiǎnzhí kuài fēi qǐlái le.",
-                "english": "Everyone who saw them said those dragons practically looked ready to take flight.",
-                "words": [
-                  {
-                    "id": "b3l15g1-cf1-w1",
-                    "traditional": "簡直快飛起來了",
-                    "simplified": "简直快飞起来了",
-                    "pinyin": "jiǎnzhí kuài fēi qǐlái le",
-                    "meaning": "virtually about to take flight"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l15g1-cf2",
-              "question": "Can 簡直 directly precede an adjective without 像 or 是?",
-              "answer": "可以，但該形容詞通常表示極端程度或帶有誇張意味，例如「簡直太棒了」、「簡直不可思議」。",
-              "wrongTraditional": "他唱歌唱得簡直好聽極了的一首歌。",
-              "wrongSimplified": "他唱歌唱得简直好听极了的一首歌。",
-              "right": {
-                "traditional": "聽他唱歌，簡直像在演唱會現場一樣。",
-                "simplified": "听他唱歌，简直像在演唱会现场一样。",
-                "pinyin": "Tīng tā chànggē, jiǎnzhí xiàng zài yǎnchànghuì xiànchǎng yíyàng.",
-                "english": "Listening to him sing feels virtually like being at a live concert.",
-                "words": [
-                  {
-                    "id": "b3l15g1-cf2-w1",
-                    "traditional": "簡直像在演唱會",
-                    "simplified": "简直像在演唱会",
-                    "pinyin": "jiǎnzhí xiàng zài yǎnchànghuì",
-                    "meaning": "practically like at a concert"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": []
       },
       {
@@ -800,55 +751,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l15g2-cf1",
-              "question": "Is Vs得沒話說 used for praise or complaints?",
-              "answer": "主要用於極高程度的正面讚嘆與誇獎（如「美得沒話說」、「快得沒話說」）；不用於批評或責備人。",
-              "wrongTraditional": "這個服務人員態度很差得沒話說，真令人討厭。",
-              "wrongSimplified": "这个服务人员态度很差得没话说，真令人讨厌。",
-              "right": {
-                "traditional": "大家都說那裡的夕陽美得沒話說呢！",
-                "simplified": "大家都说那里的夕阳美得没话说呢！",
-                "pinyin": "Dàjiā dōu shuō nàlǐ de xīyáng měi de méi huà shuō ne!",
-                "english": "Everyone says the sunset there is incomparably gorgeous!",
-                "words": [
-                  {
-                    "id": "b3l15g2-cf1-w1",
-                    "traditional": "美得沒話說",
-                    "simplified": "美得没话说",
-                    "pinyin": "měi de méi huà shuō",
-                    "meaning": "beautiful beyond words"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l15g2-cf2",
-              "question": "Can 沒話說 be used by itself as a predicate?",
-              "answer": "可以。口語中「服務沒話說」、「品質沒話說」常直接作謂語，表示品質或表現達到無可挑剔的極致水準。",
-              "wrongTraditional": "這座古蹟的建築難怪沒話說。",
-              "wrongSimplified": "这座古迹的建筑难怪没话说。",
-              "right": {
-                "traditional": "這家餐廳的服務和料理品質真的沒話說。",
-                "simplified": "这家餐厅的服务和料理品质真的没话说。",
-                "pinyin": "Zhè jiā cāntīng de fúwù hé liàolǐ pǐnzhí zhēn de méi huà shuō.",
-                "english": "The service and culinary quality at this restaurant are truly beyond reproach.",
-                "words": [
-                  {
-                    "id": "b3l15g2-cf2-w1",
-                    "traditional": "品質沒話說",
-                    "simplified": "品质没话说",
-                    "pinyin": "pǐnzhí méi huà shuō",
-                    "meaning": "quality beyond words"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": []
       }
     ]
@@ -1182,55 +1084,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l15g3-cf1",
-              "question": "How is 同時 different from 一邊……一邊……?",
-              "answer": "「一邊……一邊……」專門指同一個主體在當下同時做出兩個肢體或口語動作（如一邊吃飯一邊看電視）；「同時」則能連結宏觀的社會事件、多重身分或更進一步的觀點。",
-              "wrongTraditional": "他一邊是公司老闆，一邊是大學教授。",
-              "wrongSimplified": "他一边是公司老板，一边是大学教授。",
-              "right": {
-                "traditional": "他是這家公司的老闆，同時也是大學哲學系的教授。",
-                "simplified": "他是这家公司的老板，同时也是大学哲学系的教授。",
-                "pinyin": "Tā shì zhè jiā gōngsī de lǎobǎn, tóngshí yě shì dàxué zhéxuéxì de jiàoshòu.",
-                "english": "He is the boss of this firm, and simultaneously a professor in the college philosophy department.",
-                "words": [
-                  {
-                    "id": "b3l15g3-cf1-w1",
-                    "traditional": "同時也是教授",
-                    "simplified": "同时也是教授",
-                    "pinyin": "tóngshí yě shì jiàoshòu",
-                    "meaning": "concurrently also a professor"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l15g3-cf2",
-              "question": "Can 同時 serve as an adverb meaning 'at the same time'?",
-              "answer": "可以。「同時」可作時間副詞，修飾動詞（如「同時出發」、「同時到達」），表示多方行動分秒不差同步完成。",
-              "wrongTraditional": "我們兩個一邊到家了，真巧。",
-              "wrongSimplified": "我们两个一边到家了，真巧。",
-              "right": {
-                "traditional": "沒想到我們兩個居然同時完成了。",
-                "simplified": "没想到我们两个居然同时完成了。",
-                "pinyin": "Méi xiǎngdào wǒmen liǎng ge jūrán tóngshí wánchéng le.",
-                "english": "Unexpectedly the two of us actually finished at the exact same moment.",
-                "words": [
-                  {
-                    "id": "b3l15g3-cf2-w1",
-                    "traditional": "同時完成",
-                    "simplified": "同时完成",
-                    "pinyin": "tóngshí wánchéng",
-                    "meaning": "finish simultaneously"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": []
       },
       {
@@ -1525,55 +1378,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l15g4-cf1",
-              "question": "Can 及 connect independent clauses or conversational questions?",
-              "answer": "不行。「及」主要用於書面語，且專門連接名詞或名詞短語；口語句子或動詞分句的連接應用「和」或「而且」。",
-              "wrongTraditional": "今天天氣很好，及我們一起去公園散步吧。",
-              "wrongSimplified": "今天天气很好，及我们一起去公园散步吧。",
-              "right": {
-                "traditional": "只要它具有歷史意義及紀念價值，就該被重視。",
-                "simplified": "只要它具有历史意义及纪念价值，就该被重视。",
-                "pinyin": "Zhǐyào tā jùyǒu lìshǐ yìyì jí jìniàn jiàzhí, jiù gāi bèi zhòngshì.",
-                "english": "As long as it possesses historical meaning and commemorative value, it should be treasured.",
-                "words": [
-                  {
-                    "id": "b3l15g4-cf1-w1",
-                    "traditional": "意義及價值",
-                    "simplified": "意义及价值",
-                    "pinyin": "yìyì jí jiàzhí",
-                    "meaning": "meaning and value"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l15g4-cf2",
-              "question": "Where does 及 appear when connecting three or more noun items?",
-              "answer": "連接三個或以上名詞時，「及」僅放在最後兩項之間（如：英國、美國及德國）。",
-              "wrongTraditional": "手機及筆電及平板都是現代常用的產品。",
-              "wrongSimplified": "手机及笔电及平板都是现代常用的产品。",
-              "right": {
-                "traditional": "手機、筆電及平板都是現代人常用的3C產品。",
-                "simplified": "手机、笔电及平板都是现代人常用的3C产品。",
-                "pinyin": "Shǒujī, bǐdiàn jí píngbǎn dōu shì xiàndàirén chángyòng de 3C chǎnpǐn.",
-                "english": "Phones, laptops, and tablets are all common 3C products used today.",
-                "words": [
-                  {
-                    "id": "b3l15g4-cf2-w1",
-                    "traditional": "筆電及平板",
-                    "simplified": "笔电及平板",
-                    "pinyin": "bǐdiàn jí píngbǎn",
-                    "meaning": "laptops and tablets"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": []
       },
       {
@@ -1901,55 +1705,6 @@
             }
           }
         ],
-        "confusion": {
-          "title": "Don't mix these up",
-          "items": [
-            {
-              "id": "b3l15g5-cf1",
-              "question": "How is 總之 / 總而言之 different from 總算?",
-              "answer": "「總算」表示經過漫長等待或艱辛努力後事情「終於實現」；「總之 / 總而言之」則是對前面各項討論進行綜合歸納（意即「一句話說到底」）。",
-              "wrongTraditional": "討論了三個小時，總之我們把計畫定下來了。",
-              "wrongSimplified": "讨论了三个小时，总之我们把计划定下来了。",
-              "right": {
-                "traditional": "大家討論了很久，總算把解決方案定下來了。",
-                "simplified": "大家讨论了很久，总算把解决方案定下来了。",
-                "pinyin": "Dàjiā tǎolùn le hěn jiǔ, zǒngsuàn bǎ jiějué fāng'àn dìng xiàlái le.",
-                "english": "Everyone discussed for a long time and finally settled on a solution.",
-                "words": [
-                  {
-                    "id": "b3l15g5-cf1-w1",
-                    "traditional": "總算定下來",
-                    "simplified": "总算定下来",
-                    "pinyin": "zǒngsuàn dìng xiàlái",
-                    "meaning": "finally settled on"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "b3l15g5-cf2",
-              "question": "How is 總之 different from 總共?",
-              "answer": "「總共」是數量上的統計（合計、總計）；「總之」則是語意上的總結概括。",
-              "wrongTraditional": "這次去淡水參觀古蹟，總之花了三千塊錢。",
-              "wrongSimplified": "这次去淡水参观古迹，总之花了三千块钱。",
-              "right": {
-                "traditional": "去淡水參觀古蹟，總共花了我三千塊錢。",
-                "simplified": "去淡水参观古迹，总共花了我三千块钱。",
-                "pinyin": "Qù Dànshuǐ cānguān gǔjī, zǒnggòng huā le wǒ sānqiān kuài qián.",
-                "english": "Visiting historic sites in Tamsui cost me three thousand dollars in total.",
-                "words": [
-                  {
-                    "id": "b3l15g5-cf2-w1",
-                    "traditional": "總共花了",
-                    "simplified": "总共花了",
-                    "pinyin": "zǒnggòng huā le",
-                    "meaning": "in total spent"
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "questions": []
       }
     ]

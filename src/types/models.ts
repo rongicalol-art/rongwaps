@@ -107,7 +107,6 @@ export type ActivityType = PracticeActivityType | 'flashcards-review' | 'flashca
 
 
 export * from './grammar';
-export * from './grammarLabs';
 export * from './grammarPractice';
 
 export interface AlignedWord {

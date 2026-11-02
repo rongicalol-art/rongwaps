@@ -18,9 +18,6 @@ export const pick = <T,>(items: readonly T[]): T => items[Math.floor(Math.random
 export const distractors = (word: SampleWord, count: number): SampleWord[] =>
   shuffle(SAMPLE_WORDS.filter((other) => other[2] !== word[2])).slice(0, count);
 
-/** How long an answered round stays on screen before the next one. */
-export const NEXT_ROUND_MS = 1300;
-
 let playing: HTMLAudioElement | null = null;
 
 /** The word's real recording (the same files the app plays); silent if it cannot load. */

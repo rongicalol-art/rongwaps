@@ -2,9 +2,8 @@ import type { Flashcard } from '../../../../data/flashcards';
 import type { DBCharacterBreakdown } from '../../../../types/database';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { CharacterHeroPanel } from './CharacterHeroPanel';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { useEffect, useState } from 'react';
-import { ExtendedDefinitionsPanel, MoreDefinitionsToggle, useExtendedDefinitions } from '../ExtendedDefinitions';
+import { useExtendedDefinitions } from '../ExtendedDefinitions';
+import { HeroDetails } from '../HeroDetails';
 import { SummaryQuickActions } from '../SummaryQuickActions';
 import { useCharDictionaryEntry } from '../../hooks/useCharDictionaryEntry';
 import {
@@ -13,7 +12,6 @@ import {
   extractCedictReference,
 } from '../../../../utils/vocabulary/dictionaryDefinitions';
 import { useAppStore } from '../../../../store/useAppStore';
-import { LevelTag } from '../../../../lib/widgets';
 import { usePrimaryReading, useReadings } from '../../../../hooks/usePronunciation';
 import { useLevel } from '../../../../hooks/useLevels';
 import { useMediaQuery } from '../../../../hooks/useMediaQuery';
@@ -56,10 +54,8 @@ export function V3CharacterSummary({
     : undefined;
 
   const more = useExtendedDefinitions(character);
-  const [moreOpen, setMoreOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
-  useEffect(() => setMoreOpen(false), [character]);
   const wide = useMediaQuery('(min-width: 640px)');
+  const actions = { char: character, pinyin: pinyin ? numberToToneMarks(pinyin) : undefined, meaning };
 
   return (
     <header className="min-w-0">
@@ -80,59 +76,10 @@ export function V3CharacterSummary({
               </span>
             )}
             {!wide && (
-              <SummaryQuickActions
-                className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8"
-                char={character}
-                pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
-                meaning={meaning}
-              />
+              <SummaryQuickActions className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8" {...actions} />
             )}
           </div>
-          {meaning && (
-            <div className="flex min-w-0 items-start gap-0.5 sm:gap-1">
-              <p className="line-clamp-3 min-w-0 max-w-2xl text-pretty text-[18px] font-black leading-snug text-ui-ink-strong sm:line-clamp-2 sm:text-[22px] sm:leading-tight">{meaning}</p>
-              {more?.hasExtra && <MoreDefinitionsToggle open={moreOpen} onToggle={() => setMoreOpen((value) => !value)} count={wide && more.hasExtraDefinitions ? more.definitions.length - 1 : undefined} />}
-            </div>
-          )}
-            <AnimatePresence initial={false}>
-              {moreOpen && more && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-2">
-                    <ExtendedDefinitionsPanel data={more} />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          {wide ? (
-            <>
-              {(courseCard || level) && (
-                <div className="flex flex-wrap items-center gap-2">
-                  {courseCard && <LevelTag long bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
-                  <LevelTag variant="chip" level={level} />
-                </div>
-              )}
-              <SummaryQuickActions
-                className="-ml-2 mt-0.5 flex items-center gap-1"
-                char={character}
-                audioSrc={data?.audio ?? undefined}
-                pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
-                meaning={meaning}
-              />
-            </>
-          ) : (
-            (courseCard || level) && (
-              <div className="flex flex-wrap items-center gap-1.5">
-                {courseCard && <LevelTag bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
-                <LevelTag variant="chip" level={level} />
-              </div>
-            )
-          )}
+          <HeroDetails subject={character} meaning={meaning} more={more} wide={wide} courseCard={courseCard} level={level} actions={actions} />
         </div>
       </div>
     </header>

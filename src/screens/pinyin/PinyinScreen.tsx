@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
+import { FeedbackBottomBar, LessonComplete, PracticeEmptyState } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
-import { ActionButton, AppIcon, EmptyState, PlayfulNavIcon, ScreenLayout } from '../../lib/widgets';
+import { AppIcon, ScreenLayout } from '../../lib/widgets';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
@@ -88,22 +88,8 @@ export function PinyinScreen({
 
   if (loadError || playlist.length === 0 || !currentCard) {
     return (
-      <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
-        <EmptyState
-          icon={<PlayfulNavIcon name="pinyinPractice" className="h-12 w-12" />}
-          iconBg={loadError ? 'bg-feedback-danger-surface' : 'bg-ui-surface'}
-          iconColor={loadError ? 'text-feedback-danger' : activeBook.accent}
-          title={loadError ? 'Something went wrong' : 'No pinyin to practise yet'}
-          description={loadError
-            ? "We couldn't load these words. Please try again."
-            : 'There are no words with pinyin in this selection. Try another lesson or add cards to your library.'}
-          action={(
-            <ActionButton variant="primary" size="lg" onClick={onClose} className="uppercase tracking-wider">
-              Go back
-            </ActionButton>
-          )}
-        />
-      </div>
+      <PracticeEmptyState icon="pinyinPractice" accent={activeBook.accent} loadError={loadError} errorSubject="these words" onClose={onClose}
+        emptyTitle="No pinyin to practise yet" emptyDescription="There are no words with pinyin in this selection. Try another lesson or add cards to your library." />
     );
   }
 

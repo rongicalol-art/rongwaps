@@ -19,12 +19,9 @@ test('Lesson 8 follows two source dialogues with five ordered grammar points', (
 });
 
 test('Lesson 8 uses varied visual teaching tools intentionally', () => {
-  assert.ok(pages[0].discoveryLab);
   assert.ok(pages[0].contrast);
   assert.ok(pages[1].sentenceSpine);
-  assert.ok(pages[2].discoveryLab);
   assert.ok(pages[2].contrast);
-  assert.ok(pages[3].discoveryLab);
   assert.ok(pages[4].sentenceSpine);
   assert.ok(pages[4].contrast);
 });

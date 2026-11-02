@@ -6,7 +6,6 @@ import { fetchGrammarPack } from '../../../services/contentPacks';
 import type { Flashcard } from '../../../data/flashcards';
 import { buildReaderStudyTargets } from '../utils/readerStudyTargets';
 
-export type { ReaderGrammarPoint, ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 
 interface UseReaderStudyDataOptions {
   reading: ReadingRecord;

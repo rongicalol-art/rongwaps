@@ -10,7 +10,8 @@ import { ReaderNarratorLine } from './ReaderNarratorLine';
 import { ReaderDialogueLine } from './ReaderDialogueLine';
 import { ReaderSceneIntro } from './ReaderSceneIntro';
 
-interface ReadingCanvasProps {
+/** Props shared by both reading surfaces (dialogue canvas and narrative view). */
+export interface ReadingCanvasProps {
   reading: ReadingRecord;
   compactTop?: boolean;
   alignment: DialogueAlignment | null;
@@ -23,7 +24,7 @@ interface ReadingCanvasProps {
   currentTime: number;
   /** This part's words that appear in the text; underlined as new. */
   newWords: readonly ReaderStudyTargetWord[];
-  /** False once the learner scrolls by hand; the spoken line is then left where it is. */
+  /** False once the learner scrolls by hand; the spoken line or sentence is then left where it is. */
   followAudioRef: RefObject<boolean>;
   /** Rendered after the reading: what this part teaches. */
   footer?: ReactNode;

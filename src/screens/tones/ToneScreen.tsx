@@ -1,8 +1,8 @@
 import { useCallback, useState, type MouseEvent } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
+import { FeedbackBottomBar, LessonComplete, PracticeEmptyState } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
-import { ActionButton, EmptyState, PlayfulNavIcon, ScreenLayout } from '../../lib/widgets';
+import { ScreenLayout } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { useTones } from './hooks/useTones';
@@ -58,22 +58,8 @@ export function ToneScreen({
 
   if (loadError || playlist.length === 0) {
     return (
-      <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
-        <EmptyState
-          icon={<PlayfulNavIcon name="tones" className="h-12 w-12" />}
-          iconBg={loadError ? 'bg-feedback-danger-surface' : 'bg-ui-surface'}
-          iconColor={loadError ? 'text-feedback-danger' : activeBook.accent}
-          title={loadError ? 'Something went wrong' : 'No words to draw yet'}
-          description={loadError
-            ? "We couldn't load these words. Please try again."
-            : 'Tones work with words of one to four characters. Try another lesson or add cards to your library.'}
-          action={(
-            <ActionButton variant="primary" size="lg" onClick={onClose} className="uppercase tracking-wider">
-              Go back
-            </ActionButton>
-          )}
-        />
-      </div>
+      <PracticeEmptyState icon="tones" accent={activeBook.accent} loadError={loadError} errorSubject="these words" onClose={onClose}
+        emptyTitle="No words to draw yet" emptyDescription="Tones work with words of one to four characters. Try another lesson or add cards to your library." />
     );
   }
 

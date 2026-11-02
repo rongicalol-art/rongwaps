@@ -17,7 +17,6 @@ test('Lesson 6 has four ordered grammar points and all 24 source prompts', () =>
   assert.deepEqual(lessonSixPages.map((page) => page.grammarNumber), [1, 2, 3, 4]);
   assert.equal(lessonSixPages.reduce((count, page) => count + page.questions.length, 0), 24);
   assert.ok(lessonSixPages.every((page) => page.examples.length >= 3));
-  assert.ok(lessonSixPages.every((page) => page.discoveryLab));
 });
 
 test('The 得 grammar remains one point with four progressive frames', () => {
@@ -31,10 +30,6 @@ test('The 得 grammar remains one point with four progressive frames', () => {
       '3 · Object as topic',
       '4 · Possessor + 的 + object',
     ],
-  );
-  assert.deepEqual(
-    performancePage.discoveryLab?.choices.filter((choice) => !choice.isCorrection).map((choice) => choice.id),
-    ['g2-simple', 'g2-repeat', 'g2-object', 'g2-owned'],
   );
 });
 

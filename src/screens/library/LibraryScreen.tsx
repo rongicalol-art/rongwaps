@@ -8,6 +8,7 @@ import {
   ConfirmationDialog,
   EmptyState,
   IconActionButton,
+  SearchField,
   StickyWorkspaceHeader,
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
@@ -26,7 +27,6 @@ import { DeleteFolderModal } from './DeleteFolderModal';
 import { LibrarySkeleton } from './components/LibrarySkeleton';
 import { LibraryCardGrid } from './components/LibraryCardGrid';
 import { LibraryHomeView } from './components/LibraryHomeView';
-import { LibrarySearchField } from './components/LibrarySearchField';
 import { MoveCardsDialog } from './MoveCardsDialog';
 import { EditCardDialog } from './EditCardDialog';
 import { LibraryContextMenu, type LibraryMenuAction, type MenuPoint } from './components/LibraryContextMenu';
@@ -189,7 +189,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
       />
 
       <div className="mx-auto w-full max-w-6xl px-4 pb-5 md:px-8">
-        <LibrarySearchField
+        <SearchField
           value={searchQuery}
           onChange={setSearchQuery}
           placeholder={activeView === 'folder' ? `Search ${activeCollection.title ?? 'folder'}` : 'Search folders'}

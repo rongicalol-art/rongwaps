@@ -1,15 +1,3 @@
-import type {
-  GrammarAbilityLab,
-  GrammarCompareLab,
-  GrammarDiscoveryLab,
-  GrammarLiveSceneLab,
-  GrammarNumberLab,
-  GrammarPairCompareLab,
-  GrammarRouteLab,
-  GrammarSequenceLab,
-  GrammarTimeRangeLab,
-  GrammarTimelineLab,
-} from './grammarLabs';
 import type { SentenceAudio } from './grammarPractice';
 import type { GrammarPractice } from './grammarPractice';
 
@@ -90,18 +78,6 @@ export interface GrammarSentenceSpine {
   positiveEnglish: string;
   negativeEnglish?: string;
   notes?: string[];
-}
-
-export interface GrammarCompletionRecapItem {
-  traditional: string;
-  simplified?: string;
-  explanation: string;
-}
-
-export interface GrammarCompletionRecap {
-  title: string;
-  correct: GrammarCompletionRecapItem;
-  avoid: GrammarCompletionRecapItem[];
 }
 
 export interface GrammarExerciseProfile {
@@ -190,21 +166,6 @@ export interface GrammarContrast {
   microChecks?: GrammarMicroCheck[];
 }
 
-export interface GrammarRuleContrastExample {
-  id: string;
-  status: 'correct' | 'incorrect';
-  label: string;
-  traditional: string;
-  simplified?: string;
-  explanation: string;
-}
-
-export interface GrammarRuleContrast {
-  title: string;
-  description?: string;
-  examples: GrammarRuleContrastExample[];
-}
-
 export interface GrammarUnscrambleTile extends GrammarExerciseTile {
   role: string;
 }
@@ -254,24 +215,6 @@ export interface GrammarLessonWorld {
   english: string;
 }
 
-export interface GrammarConfusionItem {
-  id: string;
-  /** The mix-up phrased as the question a learner would ask. */
-  question: string;
-  /** Short concrete answer in plain words. */
-  answer: string;
-  /** The form learners reach for by mistake; shown struck through. */
-  wrongTraditional: string;
-  wrongSimplified?: string;
-  /** What to say instead, fully tappable like an example. */
-  right: GrammarLessonText;
-}
-
-export interface GrammarConfusion {
-  title: string;
-  items: GrammarConfusionItem[];
-}
-
 export interface GrammarSubsection {
   id: string;
   sectionNumber?: number;
@@ -316,20 +259,8 @@ export interface InteractiveGrammarPage {
   patternColumnDetails?: string[];
   patternAccentColumn?: number;
   patternRows: GrammarPatternRow[];
-  discoveryLab?: GrammarDiscoveryLab;
-  numberLab?: GrammarNumberLab;
-  routeLab?: GrammarRouteLab;
   sentenceSpine?: GrammarSentenceSpine;
-  liveSceneLab?: GrammarLiveSceneLab;
-  timeRangeLab?: GrammarTimeRangeLab;
-  timelineLab?: GrammarTimelineLab;
-  sequenceLab?: GrammarSequenceLab;
-  abilityLab?: GrammarAbilityLab;
-  compareLab?: GrammarCompareLab;
-  pairCompareLab?: GrammarPairCompareLab;
   contrast?: GrammarContrast;
-  ruleContrast?: GrammarRuleContrast;
-  confusion?: GrammarConfusion;
   examples: GrammarLessonExample[];
   profiles?: GrammarExerciseProfile[];
   exerciseCues?: GrammarExerciseCue[];
@@ -340,7 +271,6 @@ export interface InteractiveGrammarPage {
   exerciseResponseMode?: 'tiles' | 'text';
   exerciseType?: 'fillBlank' | 'unscramble';
   unscrambleExercise?: GrammarUnscrambleExercise;
-  completionRecap?: GrammarCompletionRecap;
   questions: GrammarExerciseQuestion[];
   /** Book exercise shown after the page (merged from content/grammar-practice). */
   practice?: GrammarPractice;

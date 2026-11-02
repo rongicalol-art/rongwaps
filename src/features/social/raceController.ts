@@ -217,7 +217,6 @@ export function joinRace(identity: Identity, code: string) {
   }
   return open(identity, { code });
 }
-export const inviteToRace = (to: string[]) => { to.forEach(id => invites.add(id)); drainInvites(); };
 export function raceSend(action: RaceAction) {
   const state = useAppStore.getState();
   if (!state.race || state.raceStatus !== 'live') return;

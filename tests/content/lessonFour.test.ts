@@ -16,23 +16,7 @@ test('Lesson 4 has five ordered grammar points and all 19 source prompts', () =>
   assert.deepEqual(lessonFourParts.map((part) => part.grammarPages.length), [3, 2]);
   assert.deepEqual(lessonFourPages.map((page) => page.grammarNumber), [1, 2, 3, 4, 5]);
   assert.equal(lessonFourPages.reduce((count, page) => count + page.questions.length, 0), 19);
-  // The number-system page ships no example cards: its table carries every
-  // reading (the printed page has no numbered examples there either).
-  assert.ok(lessonFourPages.every((page) => page.examples.length >= 3 || page.numberLab));
-  assert.ok(lessonFourPages.every((page) => page.discoveryLab || page.numberLab));
-});
-
-test('Lesson 4 number grammar uses the place-value staircase', () => {
-  const numberPage = lessonFourPages.find((page) => page.grammarNumber === 4);
-  assert.ok(numberPage?.numberLab);
-  assert.deepEqual(numberPage.numberLab.choices.map((choice) => choice.digits), [
-    '105',
-    '2,005',
-    '90,500',
-    '3,050,000',
-    '90,090,000',
-  ]);
-  assert.ok(numberPage.numberLab.choices.some((choice) => choice.traditional.includes('零')));
+  assert.ok(lessonFourPages.every((page) => page.examples.length >= 3));
 });
 
 test('Every Lesson 4 grammar completes with canonical authored answers', () => {

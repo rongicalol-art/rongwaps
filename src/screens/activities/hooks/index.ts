@@ -1,7 +1,2 @@
-export {
-  useActivityStudyParts,
-  type UseActivityStudyPartsOptions,
-  type UseActivityStudyPartsResult,
-  type VisibleStudyPart,
-} from './useActivityStudyParts';
+export { useActivityStudyParts } from './useActivityStudyParts';
 export { usePracticeScreenReady } from './usePracticeScreenReady';

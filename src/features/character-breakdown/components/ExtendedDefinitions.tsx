@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { sanitizeDictionaryDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
 import { useAppStore } from '../../../store/useAppStore';
@@ -101,6 +101,26 @@ export function ExtendedDefinitionsPanel({ data }: { data: ExtendedDefinitionsDa
 }
 
 /** Round chevron toggle; sits next to the main definition. */
+/** Height-and-fade reveal for the extra definitions. */
+export function DefinitionsReveal({ open, children }: { open: boolean; children: ReactNode }) {
+  const reduceMotion = useReducedMotion();
+  return (
+    <AnimatePresence initial={false}>
+      {open && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
+          className="overflow-hidden"
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export function MoreDefinitionsToggle({ open, onToggle, count }: { open: boolean; onToggle: () => void; count?: number }) {
   return (
     <button
@@ -128,7 +148,6 @@ export function MoreDefinitionsToggle({ open, onToggle, count }: { open: boolean
 export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: string; entries?: DBDictionaryEntry[] }) {
   const data = useExtendedDefinitions(char, entriesProp);
   const [open, setOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
 
   if (!data || !data.hasExtra) return null;
   const { definitions, hasExtraDefinitions } = data;
@@ -148,23 +167,13 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
         <Chevron open={open} />
       </button>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
-            className="overflow-hidden"
-          >
-            <div className="px-4 pb-4 sm:px-5">
-              {/* Single inset hairline separating the trigger from the details */}
-              <div aria-hidden="true" className="mb-4 border-t-2 border-ui-divider" />
-              <ExtendedDefinitionsPanel data={data} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <DefinitionsReveal open={open}>
+        <div className="px-4 pb-4 sm:px-5">
+          {/* Single inset hairline separating the trigger from the details */}
+          <div aria-hidden="true" className="mb-4 border-t-2 border-ui-divider" />
+          <ExtendedDefinitionsPanel data={data} />
+        </div>
+      </DefinitionsReveal>
     </div>
   );
 }

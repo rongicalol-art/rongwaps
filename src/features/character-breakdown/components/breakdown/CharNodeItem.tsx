@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { AppIcon, LevelTag } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
 import { resolveLevel } from '../../../../utils/lesson/levels';
@@ -34,7 +34,7 @@ export function CharNodeItem({
   const py = data?.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : null;
   const def = data?.definition ? data.definition.split(';')[0].split(',')[0].toUpperCase() : null;
 
-  const { exactVocab, usedInVocabs, hasRelation } = useComponentVocabRelation(char);
+  const { firstLesson } = useComponentVocabRelation(char);
 
   const { components: subChars, operator: ids } = projectLegacyDecomposition(data?.decomposition);
   const hasChildren = subChars.length > 1;
@@ -57,17 +57,6 @@ export function CharNodeItem({
   };
 
   const structureName = ids ? IdsMap[ids] || 'Structure' : 'Structure';
-
-  const badgeInfo = useMemo(() => {
-    if (!hasRelation) return null;
-    if (exactVocab) {
-      return { bookId: exactVocab.bookId, lessonId: exactVocab.lessonId };
-    }
-    if (usedInVocabs && usedInVocabs.length > 0) {
-      return { bookId: usedInVocabs[0].bookId, lessonId: usedInVocabs[0].lessonId };
-    }
-    return null;
-  }, [hasRelation, exactVocab, usedInVocabs]);
 
   return (
     <div className="flex flex-col w-full">
@@ -108,12 +97,12 @@ export function CharNodeItem({
              {py ? (
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   <span className="text-[13px] sm:text-[14px] font-black text-ui-ink tracking-widest leading-none">{py}</span>
-                  {badgeInfo ? <LevelTag bookId={badgeInfo.bookId} lessonId={badgeInfo.lessonId} /> : <LevelTag level={resolveLevel(char, levels)} />}
+                  {firstLesson ? <LevelTag bookId={firstLesson.bookId} lessonId={firstLesson.lessonId} /> : <LevelTag level={resolveLevel(char, levels)} />}
                 </div>
               ) : (
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   <span className="text-[13px] sm:text-[14px] font-black text-ui-muted tracking-widest leading-none">???</span>
-                  {badgeInfo ? <LevelTag bookId={badgeInfo.bookId} lessonId={badgeInfo.lessonId} /> : <LevelTag level={resolveLevel(char, levels)} />}
+                  {firstLesson ? <LevelTag bookId={firstLesson.bookId} lessonId={firstLesson.lessonId} /> : <LevelTag level={resolveLevel(char, levels)} />}
                 </div>
               )}
               {def && <div className="text-[11px] sm:text-[12px] font-bold text-ui-muted uppercase truncate w-[130px] xs:w-[150px] sm:w-[180px] leading-tight">{def}</div>}

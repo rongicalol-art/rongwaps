@@ -96,4 +96,4 @@ The grammar-author rules 1–11 still apply. The one exception is `bank-pick`: i
 
 ## Open (owner)
 
-- Later, phase 2: an optional "say it your way" typed answer, checked by Jev (`server/jevClient.ts`). Not in this plan.
+- Later, phase 2: an optional "say it your way" typed answer, checked by Jev (needs a new server grader). Not in this plan.
