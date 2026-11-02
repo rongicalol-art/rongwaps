@@ -100,10 +100,9 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Chosen:
   - **In words** stays a list (words need meanings); course words from later books are dimmed (`ReferenceRow` `muted`). Dictionary-only suggestions rank by official level (never estimates) and drop vulgar / slang / neologism entries (`isNoisyDictionarySuggestion`, plus a short reviewed hide list for unlabelled transliterations such as 嗎哪).
   - **Sound family** (see the 2026-10-05 parts-index entry) replaces the earlier ladder and tile grids; the known-state summary line and ✓ marks are gone from the rail (2026-10-05). The card has no play button (removed 2026-10-05); the tree and word rows already carry audio.
-  - The shared `CharacterTile` widget backs every character grid, including Library "Learn next".
   - Unencoded tree pieces read "Picture part" (a quiet icon + label; the full "no meaning of its own — part of the drawing" is a tooltip) instead of "No glyph for this".
 - Reason: three identical row lists gave beginners no hierarchy, no sense of progress, and a long mobile scroll. Tiles fit twice the content, and hearing the sound family teaches the pattern.
-- Affects: `src/features/character-breakdown/components/v3/{V3SupportingInformation,SoundFamilyCard,SoundRow,AppearsInCard,railStyles,V3RuntimeTree}.tsx`, `src/lib/widgets/{CharacterTile,ReferenceRow}.tsx`, `src/screens/library/**`.
+- Affects: `src/features/character-breakdown/components/v3/{V3SupportingInformation,SoundFamilyCard,SoundRow,AppearsInCard,railStyles,V3RuntimeTree}.tsx`, `src/lib/widgets/ReferenceRow.tsx`, `src/screens/library/**`.
 
 ### 2026-10-04 — TBCL levels: learner pool, level tags, TOCFL readiness
 

@@ -54,7 +54,6 @@ export * from './ExpandableSearch';
 export * from './PosBadge';
 export * from './ReferenceRow';
 export * from './LevelTag';
-export * from './CharacterTile';
 export * from './CharacterGlyph';
 export * from './SearchField';
 export * from './SmartSentence';
