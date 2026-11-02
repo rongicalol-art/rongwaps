@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { createPortal } from 'react-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import { AppIcon, DropdownMenuItem } from '../../../lib/widgets';
+import { useDismiss } from '../../../hooks/useDismiss';
 
 export interface MenuPoint {
   x: number;
@@ -93,24 +94,12 @@ export function LibraryContextMenu({ point, label, actions, onClose }: LibraryCo
     });
   }, [point]);
 
+  useDismiss({ ref, onDismiss: onClose });
   useEffect(() => {
     ref.current?.querySelector<HTMLElement>('[role="menuitem"]')?.focus();
-    const onPointerDown = (event: PointerEvent) => {
-      if (!ref.current?.contains(event.target as Node)) onClose();
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onClose();
-      }
-    };
-    document.addEventListener('pointerdown', onPointerDown);
-    document.addEventListener('keydown', onKeyDown);
     window.addEventListener('resize', onClose);
     window.addEventListener('scroll', onClose, true);
     return () => {
-      document.removeEventListener('pointerdown', onPointerDown);
-      document.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('resize', onClose);
       window.removeEventListener('scroll', onClose, true);
     };
