@@ -30,7 +30,7 @@ test('a dialogue waits two seconds before the ding, then reads the question and 
   assert.deepEqual(describe(steps), [
     '你要喝咖啡還是茶？', '450ms', '我要一杯綠茶。',
     '2000ms', 'ding', '800ms', '他要喝什麼？',
-    '500ms', 'A', '150ms', '咖啡', '550ms', 'B', '150ms', '綠茶', '550ms', 'C', '150ms', '紅茶',
+    '1000ms', 'A', '800ms', '咖啡', '1300ms', 'B', '800ms', '綠茶', '1300ms', 'C', '800ms', '紅茶',
   ]);
 });
 
