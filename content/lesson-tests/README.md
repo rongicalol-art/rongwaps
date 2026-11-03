@@ -144,9 +144,13 @@ answer; a solver given only the choices (no recording or text) does no better th
 
 ## Pictures (Book 1 only)
 
-Drawn by Codex image generation from a written brief, never in code. Style: the app's warm flat
-illustrations (`scripts/assets/lesson-test-art/style.txt`); the book characters keep their looks
-(portraits in `src/assets/images/characters/portraits/`).
+Drawn by Codex image generation from a written brief, never in code. Style: the owner's lesson covers
+(`scripts/assets/lesson-test-art/style.txt` is their master prompt from `docs/reference/READING_ART_PROMPTS.md`;
+the approved cover `src/assets/images/readings/b1l01-r01-new-classmate-v8.webp` is every picture's style
+reference): flat, saturated, geometric, never anime and never a lone clip-art icon on a blank background. The
+book characters keep their looks (portraits in `src/assets/images/characters/portraits/`). Every drawing is
+reviewed with `scripts/assets/lesson-test-art/REVIEW.md` (weird AI mistakes, focus, content, text, style)
+before it is cut; a failed one is redrawn with the reviewer's one fix.
 
 - **Picture trios** (answer pictures): one 3-panel strip, the same scene three times with **one detail
   changed** (TOCFL's rule), white gutters between panels, no numbers or labels.
@@ -158,11 +162,12 @@ illustrations (`scripts/assets/lesson-test-art/style.txt`); the book characters 
   realia, its exact writing) and lists it in `scripts/assets/lesson-test-art/pending.json`; `cut.py`
   replaces the card with the art and takes it off the list. Briefs live in
   `scripts/assets/lesson-test-art/briefs/<name>.txt`; a brief opens with `Kind:` (strip or single),
-  `Style:` (objects or scene: which style reference to pass) and `Characters:` (the portraits to attach),
-  lines `generate.sh` leaves out of the prompt.
+  `Style:` (objects or scene; both now draw from the cover, kept for older briefs) and `Characters:` (the
+  portraits to attach), lines `generate.sh` leaves out of the prompt. `draw_batch.py` draws several at once
+  with the right references.
 
 ```bash
-scripts/assets/lesson-test-art/generate.sh b1l04-drinks scripts/assets/lesson-test-art/briefs/b1l04-drinks.txt src/assets/images/grammar-practice/generated/l04-two-teas-180-v1.webp
+python3 scripts/assets/lesson-test-art/draw_batch.py 3 b1l04-drinks b1l04-menu
 ```
 
 ```bash

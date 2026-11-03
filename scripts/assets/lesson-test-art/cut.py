@@ -32,7 +32,8 @@ def runs(mask):
 
 def panels(image):
     """The three panels, found as runs of non-white columns (a box resize averages each column and row)."""
-    mask = image.convert("L").point(lambda value: 0 if value > 236 else 255)
+    # Gutters are pure white; a pale cream wall (~244) must still count as picture, not gutter.
+    mask = image.convert("L").point(lambda value: 0 if value > 250 else 255)
     columns = [value / 255 > 0.08 for value in mask.resize((image.width, 1), Image.BOX).getdata()]
     rows = [value / 255 > 0.08 for value in mask.resize((1, image.height), Image.BOX).getdata()]
     cols = [r for r in runs(columns) if r[1] - r[0] > image.width * 0.15]
