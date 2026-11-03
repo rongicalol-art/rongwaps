@@ -30,7 +30,13 @@ MARK="$OUT/logs/$NAME.mark"
 touch "$MARK"
 printf '%s' "$PROMPT" | "$CODEX" exec --skip-git-repo-check -m gpt-6-luna -c model_reasoning_effort=low -s workspace-write -C "$OUT" "${REFS[@]}" > "$OUT/logs/$NAME.log" 2>&1
 CODE=$?
-NEW=$(find ~/.codex/generated_images -name '*.png' -newer "$MARK" -print0 2>/dev/null | xargs -0 ls -t 2>/dev/null | head -1)
+# Take the image from this run's own session folder, so several runs can draw at once (the newest image only when the log names no session).
+SESSION=$(grep -m1 -o 'session id: [0-9a-f-]*' "$OUT/logs/$NAME.log" | cut -d' ' -f3)
+NEW=""
+if [ -n "$SESSION" ] && [ -d ~/.codex/generated_images/$SESSION ]; then
+  NEW=$(ls -t ~/.codex/generated_images/$SESSION/*.png 2>/dev/null | head -1)
+fi
+[ -z "$SESSION" ] && NEW=$(find ~/.codex/generated_images -name '*.png' -newer "$MARK" -print0 2>/dev/null | xargs -0 ls -t 2>/dev/null | head -1)
 if [ -z "$NEW" ]; then echo "NO IMAGE for $NAME (codex exit $CODE, log: $OUT/logs/$NAME.log)"; exit 1; fi
 DEST="$OUT/$NAME.png"
 if [ -f "$DEST" ]; then n=2; while [ -f "$OUT/$NAME-v$n.png" ]; do n=$((n+1)); done; DEST="$OUT/$NAME-v$n.png"; fi
