@@ -2,11 +2,11 @@
 # One lesson-test picture from a written brief, drawn by Codex (gpt-6-luna image generation, never code).
 #
 #   scripts/assets/lesson-test-art/generate.sh <name> <brief.txt> <style ref> [character portraits...]
-#   e.g. … b1l04-cafe briefs/b1l04-cafe.txt src/assets/images/grammar-practice/generated/l04-two-teas-180-v1.webp \
+#   e.g. … b1l04-cafe briefs/b1l04-cafe.txt src/assets/images/readings/b1l01-r01-new-classmate-v8.webp \
 #          src/assets/images/characters/portraits/zhongming.webp src/assets/images/characters/portraits/youmei.webp
 #
-# References are repo paths: the first sets the style (objects: a grammar-practice picture; scenes: a reading
-# picture), the rest are the book characters whose looks must be kept. Codex saves the image under
+# References are repo paths: the first sets the style (always the approved lesson cover, b1l01-r01-new-classmate-v8;
+# see draw_batch.py), the rest are the book characters whose looks must be kept. Codex saves the image under
 # ~/.codex/generated_images; this copies the newest one to output/lesson-test-art/<name>.png (a second take
 # becomes <name>-v2.png). Then cut and convert with cut.py. Rules: content/lesson-tests/README.md → Pictures.
 # A brief may start with Kind:/Style:/Characters: lines (which references to pass); they stay out of the prompt.
@@ -21,7 +21,7 @@ REFS=()
 for ref in "$@"; do REFS+=(-i "$ROOT/$ref"); done
 PROMPT="You are generating ONE illustration for a Mandarin-learning app. Use the built-in image_gen tool exactly once, then stop. Do not try to copy, move or save the file afterwards: the harness collects it. The attached images are references: the first is the STYLE reference (copy its rendering, colors and shape language, not its content); any others are character portraits whose identity (face, hair, skin tone, outfit colors) must be preserved.
 
-$(cat "$HERE/style.txt")
+$(cat "${STYLE_FILE:-$HERE/style.txt}")
 
 $(grep -v -E '^(Kind|Style|Characters):' "$BRIEF")
 
