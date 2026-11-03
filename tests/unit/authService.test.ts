@@ -141,6 +141,15 @@ test('redirect callback failure gives the Supabase allowlist fix without exposin
   assert.doesNotMatch(message ?? '', /private-user@example\.com/);
 });
 
+test('a project with sign-ups switched off says so instead of blaming the return address', () => {
+  const message = getOAuthCallbackErrorMessage(
+    '', '#error=server_error&error_code=signup_disabled&error_description=Signups+not+allowed+for+this+instance',
+  );
+  assert.match(message ?? '', /Allow new users to sign up/);
+  assert.doesNotMatch(message ?? '', /return address/);
+  assert.match(getOAuthLoginErrorMessage(new Error('Signups not allowed for this instance')), /Allow new users to sign up/);
+});
+
 test('cancelled Google sign-in is explained without treating it as a server failure', () => {
   assert.equal(
     getOAuthCallbackErrorMessage('?error=access_denied', ''),
