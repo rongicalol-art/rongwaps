@@ -15,35 +15,41 @@ export function setToneOrigin(x: number, y: number) {
 }
 let transition: ViewTransition | undefined;
 
+/** View-transition classes on <html>: the spread from a tapped point, or a quick fade when nothing was tapped. */
+const SPREAD = 'review-tone-transition';
+const FADE = 'tone-fade-transition';
+
 /**
- * Applies a tone or theme change (`apply` flips attributes on <html>) as a spread from the tone origin, or
- * instantly when the browser can't, the tab is hidden or motion is reduced. Shared by the review tone and the
- * light/dark switch so both feel the same.
+ * Applies a tone or theme change (`apply` flips attributes on <html>): as a spread from the tone origin when a
+ * surface set one (the tile or switch that was tapped), as a quick fade when none did (a spread from the middle of
+ * the screen explains nothing and feels slow), or instantly when the browser can't, the tab is hidden or motion is
+ * reduced. Shared by the review tone and the light/dark switch so both feel the same.
  */
 export function changeTone(apply: () => void) {
   const root = document.documentElement;
   transition?.skipTransition();
   if (!document.startViewTransition || document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     transition = undefined;
-    root.classList.remove('review-tone-transition');
+    root.classList.remove(SPREAD, FADE);
     apply();
     return;
   }
-  // The spread ends exactly at the farthest corner, so its whole duration is visible (an oversized radius finishes early).
-  const ox = parseFloat(root.style.getPropertyValue('--tone-x'));
-  const oy = parseFloat(root.style.getPropertyValue('--tone-y'));
-  const x = Number.isFinite(ox) ? ox : window.innerWidth / 2;
-  const y = Number.isFinite(oy) ? oy : window.innerHeight / 2;
-  root.style.setProperty('--tone-x', `${x}px`);
-  root.style.setProperty('--tone-y', `${y}px`);
-  root.style.setProperty('--tone-r', `${Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y))}px`);
-  root.classList.add('review-tone-transition');
+  const x = parseFloat(root.style.getPropertyValue('--tone-x'));
+  const y = parseFloat(root.style.getPropertyValue('--tone-y'));
+  root.classList.remove(SPREAD, FADE);
+  if (Number.isFinite(x) && Number.isFinite(y)) {
+    // The spread ends exactly at the farthest corner, so its whole duration is visible (an oversized radius finishes early).
+    root.style.setProperty('--tone-r', `${Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y))}px`);
+    root.classList.add(SPREAD);
+  } else {
+    root.classList.add(FADE);
+  }
   const current = document.startViewTransition(apply);
   transition = current;
   const clean = () => {
     if (transition !== current) return;
     transition = undefined;
-    root.classList.remove('review-tone-transition');
+    root.classList.remove(SPREAD, FADE);
     root.style.removeProperty('--tone-x');
     root.style.removeProperty('--tone-y');
     root.style.removeProperty('--tone-r');

@@ -5,6 +5,7 @@ import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../store/useAppStore';
 import { ActionButton, AppIcon, IconActionButton, KeyChip } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { isTappedFocus, watchTaps } from '../../../utils/browser/tappedFocus';
 import { usePracticeDockSlot } from './PracticeDockSlot';
 
 export interface FeedbackBottomBarProps {
@@ -106,11 +107,13 @@ export function FeedbackBottomBar({
 
   useEffect(() => {
     if (!isInteractionActive || keyboardShortcutDisabled) return;
+    watchTaps();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
-      // A focused button activates itself on Space / Enter; don't fire the bar's action twice.
-      if (event.target instanceof HTMLButtonElement && !event.target.disabled) return;
+      // A button reached with Tab presses itself (don't fire twice). A just-tapped answer or tile must not swallow the
+      // key: Space / Enter mean the bar's action, and preventDefault below stops the tapped button's own press.
+      if (event.target instanceof HTMLButtonElement && !event.target.disabled && !isTappedFocus(event.target)) return;
       if (
         (event.key !== ' ' && event.key !== 'Enter') ||
         event.repeat ||
