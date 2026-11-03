@@ -179,7 +179,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       ) : ready && (
         <TestDock key={screenKey} label={last ? 'Finish' : 'Next'} onPress={run.next} riseKey={screenKey} />
       )}
-      {/* Each part opens with its intro (the rocket flies through), which also waits out the audio download (a
+      {/* Each part opens with its intro (the rocket flies in), which also waits out the audio download (a
           resumed test shows it too); it leaves as the part's first question rises in. */}
       <AnimatePresence>
         {introShown && (
