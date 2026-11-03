@@ -12,9 +12,11 @@ interface TestSpeakerProps {
   /** Exam mode: the recording plays on its own this many times and can't be replayed. */
   maxPlays: number | null;
   onReplay: () => void;
+  /** A recording couldn't play: the key becomes a button that plays it again (the failed play isn't used up). */
+  onRetry?: () => void;
 }
 
-const GLYPHS: (TestFace | 'idle')[] = ['idle', 'voice', 'wait', 'ding', 'question', 'A', 'B', 'C', 'D'];
+const GLYPHS: (TestFace | 'idle')[] = ['idle', 'voice', 'loading', 'retry', 'wait', 'ding', 'question', 'A', 'B', 'C', 'D'];
 
 /** The key's face: one glyph at a time, each popping in as the recording reaches it. */
 function Glyph({ face }: { face: TestFace | null }) {
@@ -32,6 +34,8 @@ function Glyph({ face }: { face: TestFace | null }) {
         >
           {glyph === 'idle' && <SpeakerIcon size={44} />}
           {glyph === 'voice' && <SpeakerIcon status="playing" size={44} />}
+          {glyph === 'loading' && <SpeakerIcon status="loading" size={44} />}
+          {glyph === 'retry' && <AppIcon name="restart" size={40} />}
           {glyph === 'wait' && (
             <span className="flex gap-1.5">
               {[0, 1, 2].map((dot) => (
@@ -69,10 +73,12 @@ function Glyph({ face }: { face: TestFace | null }) {
  * the two plays, and it stays down once both have played (TOCFL plays twice, no replays), full colour, so it
  * reads as used rather than broken. In the Fix round it is a real button that plays it again. Its face shows what is playing.
  */
-export function TestSpeaker({ face, playing, plays, maxPlays, onReplay }: TestSpeakerProps) {
-  const exam = maxPlays !== null;
+export function TestSpeaker({ face, playing, plays, maxPlays, onReplay, onRetry }: TestSpeakerProps) {
+  const failed = face === 'retry';
+  const exam = maxPlays !== null && !failed;
   const spent = exam && !playing && plays >= maxPlays;
-  const pressed = face !== null || spent;
+  // Up while it downloads (nothing plays yet) and when it offers a retry (it's a button then).
+  const pressed = (face !== null && face !== 'loading' && !failed) || spent;
   const key = (
     <>
       <span aria-hidden className="absolute inset-x-0 bottom-0 top-[length:var(--depth-xl)] rounded-feature bg-brand-primary-edge" />
@@ -90,7 +96,12 @@ export function TestSpeaker({ face, playing, plays, maxPlays, onReplay }: TestSp
 
   if (!exam) {
     return (
-      <button type="button" onClick={onReplay} aria-label="Play the recording again" className="group relative block rounded-feature outline-none focus-ring">
+      <button
+        type="button"
+        onClick={failed ? onRetry : onReplay}
+        aria-label={failed ? "The recording didn't load. Try again" : 'Play the recording again'}
+        className="group relative block rounded-feature outline-none focus-ring"
+      >
         {key}
       </button>
     );

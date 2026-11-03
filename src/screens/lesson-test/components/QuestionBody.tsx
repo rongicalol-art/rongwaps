@@ -81,6 +81,8 @@ export interface QuestionBodyProps {
   mode: 'exam' | 'replay';
   sounds: LessonTestSounds;
   script: Script;
+  /** This screen's recordings are downloaded (or can stream): the audio starts then, never part-way late. */
+  audioReady: boolean;
   /** Question number of the screen's first question (paragraph blanks show it). */
   firstNumber: number;
   onAnswer: (questionId: string, choice: number | undefined) => void;
@@ -90,22 +92,23 @@ export interface QuestionBodyProps {
  * One screen of the test, one column at every size like TOCFL's computer test: the instruction, then the
  * recording, picture or text, then the answers, all one width so their edges line up.
  */
-export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, firstNumber, onAnswer }: QuestionBodyProps) {
+export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, audioReady, firstNumber, onAnswer }: QuestionBodyProps) {
   const question = item.questions.find((entry) => entry.id === questionIds[0]) ?? item.questions[0];
   const order = planned.orders[question.id] ?? (question.choices ?? []).map((_, index) => index);
   const steps = useMemo(() => listeningSteps(item, question, order, sounds, script), [item, question, order, sounds, script]);
-  const audio = useTestAudio(steps, `${mode}:${item.id}:${question.id}`, mode, script);
+  const audio = useTestAudio(steps, `${mode}:${item.id}:${question.id}`, mode, audioReady);
   const reduceMotion = useReducedMotion();
   const selected = answers[question.id];
   const pick = (choice: number) => onAnswer(question.id, choice);
-  // Picture questions have no speaker: the answer being read presses in instead.
-  const speaker = steps.length > 0 && item.kind !== 'picture-hear' && (
+  // Picture questions have no speaker (the answer being read presses in instead), unless a clip failed: then it offers a retry.
+  const speaker = steps.length > 0 && (item.kind !== 'picture-hear' || audio.failed) && (
     <TestSpeaker
       face={audio.face}
       playing={audio.playing}
       plays={audio.plays}
       maxPlays={item.kind === 'dialogue' && item.plays === 1 ? 1 : audio.maxPlays}
       onReplay={audio.replay}
+      onRetry={audio.retry}
     />
   );
   const sayChoice = (original: number, shown: number) => {
@@ -139,7 +142,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       stimulus = speaker; answersPart = pictures;
       break;
     case 'picture-hear':
-      stimulus = <StimulusPicture name={item.picture.picture} alt={item.picture.alt} />; answersPart = choiceList(true);
+      stimulus = <>{speaker}<StimulusPicture name={item.picture.picture} alt={item.picture.alt} /></>; answersPart = choiceList(true);
       break;
     case 'dialogue':
       stimulus = speaker; answersPart = <>{askedPrompt}{choiceList(!item.printed)}</>;

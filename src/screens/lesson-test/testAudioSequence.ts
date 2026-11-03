@@ -69,3 +69,9 @@ export function listeningSteps(
   if (item.kind === 'picture-hear') readChoices();
   return steps;
 }
+
+/** Every recording a question plays (its own clips, the ding and the letters), for downloading ahead. */
+export function testRecordings(item: LessonTestItem, question: LessonTestQuestion, sounds: LessonTestSounds): string[] {
+  const files = listeningSteps(item, question, undefined, sounds, 'traditional').map((step) => step.audio?.file);
+  return [...new Set(files.filter((file): file is string => Boolean(file)))];
+}
