@@ -13,6 +13,8 @@ import { SectionIntro, startLabel } from './components/SectionIntro';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
+import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
+import { testRecordings } from './testAudioSequence';
 import { itemPictureUrls } from './testPictures';
 
 interface LessonTestScreenProps {
@@ -59,6 +61,14 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
 
   const scrollerRef = useRef<HTMLDivElement>(null);
   const screenKey = `${run.stage}:${isFix ? run.fixIndex : run.screenIndex}`;
+  // Each screen's recordings download ahead (from the part intro on), so audio starts on time and never late.
+  const audioScreens = isFix ? run.fixScreens : run.screens;
+  const recordings = useMemo(() => audioScreens.map((entry) => {
+    const entryItem = items.get(entry.itemId);
+    const entryQuestion = entryItem?.questions.find((q) => q.id === entry.questionIds[0]) ?? entryItem?.questions[0];
+    return entryItem && entryQuestion ? testRecordings(entryItem, entryQuestion, sounds) : [];
+  }), [audioScreens, items, sounds]);
+  const audioReady = useTestAudioPreparation(recordings, isFix ? run.fixIndex : run.screenIndex, `${isFix ? 'fix' : 'test'}:${isFix ? run.fixIndex : run.screenIndex}`);
   useEffect(() => { scrollerRef.current?.scrollTo({ top: 0 }); }, [screenKey]);
   // The Fix round's bar grows with its explanation. The question keeps clear of it (--cover), and once
   // checked it scrolls up with the bar, so the checked answers stay in view right above it.
@@ -139,6 +149,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             checked={isFix && run.checked}
             mode={isFix ? 'replay' : 'exam'}
             sounds={sounds}
+            audioReady={audioReady}
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}
             onAnswer={isFix ? run.answerFix : run.answer}
