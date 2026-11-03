@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ActionButton, KeyChip } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { isTappedFocus, watchTaps } from '../../../utils/browser/tappedFocus';
 
 interface TestDockProps {
   /** The primary action; Space presses it. */
@@ -18,11 +19,13 @@ interface TestDockProps {
 export function TestDock({ label, onPress, secondary, riseKey, className }: TestDockProps) {
   const reduceMotion = useReducedMotion();
   useEffect(() => {
+    watchTaps();
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== ' ' || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
-      // Space always means this action, even with a just-tapped choice focused (it would press the choice again);
-      // only typing keeps its space. preventDefault also stops the focused button's own Space click.
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+      // A button reached with Tab presses itself; a just-tapped choice must not (Space means this action), so its
+      // own Space click is prevented.
+      if (event.target instanceof HTMLButtonElement && !isTappedFocus(event.target)) return;
       event.preventDefault();
       onPress();
     };
