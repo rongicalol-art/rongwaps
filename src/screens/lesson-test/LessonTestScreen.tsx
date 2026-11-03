@@ -9,7 +9,7 @@ import { lessonItemIndex, type LessonTestScreen as TestScreen } from '../../util
 import { AnswerDetail } from './components/AnswerDetail';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
-import { PartCurtain } from './components/PartCurtain';
+import { PartIntro } from './components/PartIntro';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
@@ -136,14 +136,15 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
 
   return (
     <TestWords value={lesson.allowWords ?? NO_WORDS}>
-      {/* One header for the part openings and the questions, so the progress bar never rebuilds (and refills) between them. */}
+      {/* One header for the part intros and the questions, so the progress bar never rebuilds (and refills) between them. */}
       <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
-        {downloading ? (
+        {/* The part intro covers the download; "Getting audio ready" shows only if it outlasts the intro. */}
+        {intro ? null : downloading ? (
           (download.slow || download.error) && (
             <AudioPreparation progress={download.progress} error={download.error} onRetry={download.retry} onBack={onClose} />
           )
-        ) : intro ? null : (
+        ) : (
         /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it. */
         <motion.div
           key={screenKey}
@@ -181,10 +182,10 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       ) : ready && (
         <TestDock key={screenKey} label={last ? 'Finish' : 'Next'} onPress={run.next} riseKey={screenKey} />
       )}
-      {/* Each part opens under a gold curtain; it lifts as the part's first question rises in. */}
+      {/* Each part opens with its intro (the rocket flies through); it leaves as the part's first question rises in. */}
       <AnimatePresence>
         {intro && (
-          <PartCurtain
+          <PartIntro
             key={screen.part}
             part={screen.part}
             lessonId={lesson.lessonId}

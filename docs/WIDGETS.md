@@ -68,7 +68,6 @@
 | LoadingScreen | `LoadingScreen.tsx` | Shared loader: `fullScreen`, `inline`, `tone` (`canvas`/`practice`) match the surface being prepared. Windows use `useOpenPhase` (150ms hold; ready content appears immediately). Shows large audio bars (the `ActionButton` loading look) in CSS on every device. |
 | AudioPreparation | `AudioPreparation.tsx` | "Getting audio ready" before audio-led practice (quiz, lesson test): `AudioBlocks` (a row of tactile blocks that fill in the book colour as recordings download, `progress` from `audioService.preload`), then on `error` "Audio couldn't load" with Retry; `onBack` cancels. |
 | LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. Until loaded it is an empty box of its final size (no spinner); JSON + lottie-react are cached at module level (`preloadLottie`). Pauses outside the viewport or in a hidden tab, respects reduced motion, and renders authored frames without subframe interpolation. Course art plays once when selected; loading indicators may loop. |
-| RocketLottie | `RocketLottie.tsx` | The lesson test's rocket (lazy JSON). Plays one pass and rests by default; `loop` for the part curtain. Decorative (`aria-hidden`). |
 | Skeleton | `Skeleton.tsx` | Generic placeholder. |
 
 ## Headers and shells

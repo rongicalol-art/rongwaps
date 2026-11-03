@@ -41,7 +41,7 @@ function reviewMissedWords(missed: LessonTestQuestion[], sessionId: string): boo
 }
 
 /**
- * The test's flow: part curtain → questions (no right or wrong, no going back) → results → Fix round over
+ * The test's flow: part intro → questions (no right or wrong, no going back) → results → Fix round over
  * every miss (answers checked, with the reason) → done. The run is saved after every answer.
  */
 export function useLessonTestRun(lesson: LessonTestLesson) {

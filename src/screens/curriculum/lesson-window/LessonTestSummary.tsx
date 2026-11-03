@@ -1,4 +1,4 @@
-import { AppIcon, RocketLottie } from '../../../lib/widgets';
+import { AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { LESSON_TEST_PARTS } from '../../../utils/lesson/lessonTestPlan';
 
@@ -20,7 +20,3 @@ export function LessonTestTitle({ lessonId, best, isDesktop }: { lessonId: numbe
   );
 }
 
-/** Fills the Test tab's space above Begin test: the rocket flies one pass when the tab opens, then rests. */
-export function LessonTestRocket({ isDesktop }: { isDesktop: boolean }) {
-  return <RocketLottie className={cn('mx-auto aspect-square', isDesktop ? 'w-56' : 'w-40')} />;
-}
