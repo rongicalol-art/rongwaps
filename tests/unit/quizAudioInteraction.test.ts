@@ -45,7 +45,7 @@ test('a race renders the planned sound match despite a personal characters-only 
                 : args.path.endsWith('PairMatch') ? 'import React from "react"; export const PairMatch=({variant})=>React.createElement("div",{"data-match":variant});'
                   : args.path.endsWith('books') ? 'export const SAMPLE_BOOKS=[{id:1}];'
                     : args.path.endsWith('quizDirector') ? 'export const buildMeasureWordChoices=()=>[]; export const createQuizRng=()=>()=>0; export const parseMeasureWord=()=>null;'
-                      : 'export const MeasureWordFollowUp=()=>null,PickOne=()=>null,TrueFalseFlip=()=>null,WordBuild=()=>null,QuizAudioPreparation=()=>null,ActionButton=()=>null,EmptyState=()=>null,LoadingScreen=()=>null;';
+                      : 'export const MeasureWordFollowUp=()=>null,PickOne=()=>null,TrueFalseFlip=()=>null,WordBuild=()=>null,AudioPreparation=()=>null,ActionButton=()=>null,EmptyState=()=>null,LoadingScreen=()=>null;';
         return { contents };
       });
     } }],

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { FeedbackBottomBar } from '../../features/practice';
-import { ScreenHeader } from '../../lib/widgets';
+import { AudioPreparation, ScreenHeader } from '../../lib/widgets';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
 import type { LessonTestLesson, LessonTestSounds } from '../../types/lessonTest';
@@ -13,6 +13,7 @@ import { SectionIntro, startLabel } from './components/SectionIntro';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
+import { useTestAudioDownload } from './hooks/useTestAudioDownload';
 import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
 import { testRecordings } from './testAudioSequence';
 import { itemPictureUrls } from './testPictures';
@@ -61,13 +62,19 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
 
   const scrollerRef = useRef<HTMLDivElement>(null);
   const screenKey = `${run.stage}:${isFix ? run.fixIndex : run.screenIndex}`;
-  // Each screen's recordings download ahead (from the part intro on), so audio starts on time and never late.
-  const audioScreens = isFix ? run.fixScreens : run.screens;
-  const recordings = useMemo(() => audioScreens.map((entry) => {
+  // Every recording downloads before the listening part (the quiz's "Getting audio ready" screen); then each
+  // screen's clips are prepared as it comes up, so audio starts on time and never late.
+  const recordingsOf = useCallback((list: TestScreen[]) => list.map((entry) => {
     const entryItem = items.get(entry.itemId);
     const entryQuestion = entryItem?.questions.find((q) => q.id === entry.questionIds[0]) ?? entryItem?.questions[0];
     return entryItem && entryQuestion ? testRecordings(entryItem, entryQuestion, sounds) : [];
-  }), [audioScreens, items, sounds]);
+  }), [items, sounds]);
+  const examRecordings = useMemo(() => recordingsOf(run.screens), [recordingsOf, run.screens]);
+  const fixRecordings = useMemo(() => recordingsOf(run.fixScreens), [recordingsOf, run.fixScreens]);
+  const recordings = isFix ? fixRecordings : examRecordings;
+  const testFiles = useMemo(() => [...new Set(examRecordings.flat())], [examRecordings]);
+  const download = useTestAudioDownload(testFiles);
+  const downloading = !isFix && !download.ready && (examRecordings[run.screenIndex]?.length ?? 0) > 0;
   const audioReady = useTestAudioPreparation(recordings, isFix ? run.fixIndex : run.screenIndex, `${isFix ? 'fix' : 'test'}:${isFix ? run.fixIndex : run.screenIndex}`);
   useEffect(() => { scrollerRef.current?.scrollTo({ top: 0 }); }, [screenKey]);
   // The Fix round's bar grows with its explanation. The question keeps clear of it (--cover), and once
@@ -132,7 +139,11 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       {/* One header for the part intros and the questions, so the progress bar never rebuilds (and refills) between them. */}
       <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
-        {intro ? <SectionIntro key={screenKey} part={screen.part} lessonId={lesson.lessonId} script={script} /> : (
+        {downloading ? (
+          (download.slow || download.error) && (
+            <AudioPreparation progress={download.progress} error={download.error} onRetry={download.retry} onBack={onClose} />
+          )
+        ) : intro ? <SectionIntro key={screenKey} part={screen.part} lessonId={lesson.lessonId} script={script} /> : (
         /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it. */
         <motion.div
           key={screenKey}
@@ -157,7 +168,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
         </motion.div>
         )}
       </div>
-      {intro ? (
+      {downloading ? null : intro ? (
         <TestDock key={screenKey} label={startLabel(screen.part)} onPress={() => run.setStage('question')} riseKey={screen.part} />
       ) : isFix ? (
         <FeedbackBottomBar
