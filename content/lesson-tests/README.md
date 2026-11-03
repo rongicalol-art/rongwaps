@@ -105,7 +105,8 @@ needed, keep every run at 15–45%. Lesson 1 has no earlier lessons: its review 
   Choices are about the same length; no choice repeats; the bank never lists answers in blank order.
 - **Heard choices must sound different**: 他 and 她 are both tā, so two spoken choices never differ only
   there. A picture question never rests on telling two look-alike characters apart (use a girl and a boy).
-- **TOCFL-like, never copied**: the saved mock exams (© SC-TOP) are a format reference only.
+- **TOCFL-like, never copied**: the saved mock exams (© SC-TOP) are a format reference only. The exam's parts
+  per band, how the books map to its levels and SC-TOP's item-writing rules are in `docs/reference/TOCFL.md`.
 - **Pinyin**: tone marks, word-joined like the book (Wǒmen yào liǎng wǎn niúròu miàn.), with the Taiwan
   readings the word lists use (xīngqí, wǎnshàng, xiānshēng). Spellings the tests share: hái méi, yǒu kòng,
   jiù yào, zhège / nàge / nǎge, nán de / nǚ de, yǒu yìsi, verb + le apart (wèn le), experience 過 as
@@ -188,15 +189,20 @@ python3 scripts/assets/lesson-test-art/cut.py b1l04-drinks:strip b1l04-menu:sing
 
 ## Audio
 
-Studio voices with a Taiwan accent: **F** Vivian, **M** Dylan (or Uncle_Fu, the owner's pick), **N**
-Serena the narrator (questions, spoken answers, letters). Dialogue voices speak like everyday
-conversation; the narrator like a test recording. The ding is a synthesized soft bell.
+Yating TTS voices with a Taiwan accent (`--engine yating`, key `YATING_API_KEY` in `.env`): **F** 雅婷,
+**M** 家豪, **N** 意晴 the narrator (questions and spoken answers). The A/B/C/D letters are English letter
+clips. Dialogue voices speak like everyday conversation; the narrator like a test recording. Each book has
+its own pace per voice (`YATING_PACE`: near natural speed, evened out between the voices; Book 1 adds a
+short pause at commas). The ding is a recorded small bell (`scripts/audio/sounds/lesson-test-ding.mp3`, CC0).
+The script's default engine is the older local Qwen studio voices (Vivian, Dylan, Serena).
 
-1. Generate: `HF_HUB_OFFLINE=1 <venv>/bin/python scripts/audio/generateLessonTestAudio.py --lessons b1l04`
-   (`<venv>` = `output/qwen-pilot-venv` in the main checkout).
+1. Generate: `<venv>/bin/python scripts/audio/generateLessonTestAudio.py --engine yating --lessons b1l01 … b1l16`
+   (`<venv>` = `output/qwen-pilot-venv` in the main checkout; keys space-separated). Name every lesson
+   already voiced: the manifest is rewritten with only the named lessons.
 2. Check: `checkStudioBatch.py output/lesson-test-audio` (independent ASR must hear the whole line; endings
-   must fade). Rejected takes are re-voiced by running step 1 again. Listen to the letters and ding by ear.
-3. Publish: `node --env-file=<.env> --import tsx scripts/audio/publishLessonTestAudio.ts --upload --male dylan`
-   (uploads to R2 under `lesson-test-studio/v1/`, writes the receipt).
+   must fade; lines the owner listened to and accepted are listed in the batch's `asr-reviewed.json`).
+   Rejected takes are re-voiced by running step 1 again, at a speed nudged by at most 0.05.
+3. Publish: `node --env-file=<.env> --import tsx scripts/audio/publishLessonTestAudio.ts --upload`
+   (uploads to R2 under `lesson-test-studio/v1/`, writes the receipt with each test's voices).
 4. Export: `npm run lesson-tests:export -- --strict` (fails if a spoken line has no recording), then commit
    the content, receipt and pack together.
