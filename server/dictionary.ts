@@ -11,12 +11,20 @@ let generation = 0;
 let cancelStartup: ((error: Error) => void) | undefined;
 let sequence = 0;
 let queued = 0;
-const pending = new Map<number, { resolve: (result: unknown) => void; reject: (error: Error) => void; timer: ReturnType<typeof setTimeout> }>();
+const pending = new Map<number, { resolve: (result: unknown) => void; reject: (error: Error) => void }>();
+// The worker answers jobs one at a time, so a job may wait behind slower ones on a small CPU.
+// Restart it only when it stops answering altogether: a restart fails every queued job.
+let watchdog: ReturnType<typeof setTimeout> | undefined;
+function rearmWatchdog() {
+  clearTimeout(watchdog);
+  watchdog = pending.size ? setTimeout(() => closeDictionary(new Error('Dictionary request timed out')), 15_000) : undefined;
+}
 export function closeDictionary(error = new Error('Dictionary closed')) {
   generation++;
+  clearTimeout(watchdog); watchdog = undefined;
   cancelStartup?.(error); cancelStartup = undefined;
   void worker?.terminate(); worker = undefined; starting = undefined;
-  for (const job of pending.values()) { clearTimeout(job.timer); job.reject(error); }
+  for (const job of pending.values()) job.reject(error);
   pending.clear();
 }
 async function initialize() {
@@ -48,7 +56,7 @@ async function initialize() {
         if (ready) { clearTimeout(deadline); cancelStartup = undefined; instance.unref(); resolveReady(); return; }
         if (fatal) { const error = new Error(fatal); clearTimeout(deadline); closeDictionary(error); reject(error); return; }
         const job = pending.get(id); if (!job) return;
-        clearTimeout(job.timer); pending.delete(id);
+        pending.delete(id); rearmWatchdog();
         if (error) job.reject(new Error(error)); else job.resolve(result);
         if (!pending.size) instance.unref();
       });
@@ -65,8 +73,8 @@ async function request<T>(message: object): Promise<T> {
   if (generation !== currentGeneration) throw new Error('Dictionary closed');
   return await new Promise<T>((resolveResult, reject) => {
     const id = ++sequence;
-    const timer = setTimeout(() => { closeDictionary(new Error('Dictionary request timed out')); }, 15_000);
-    pending.set(id, { resolve: result => resolveResult(result as T), reject, timer });
+    pending.set(id, { resolve: result => resolveResult(result as T), reject });
+    if (!watchdog) rearmWatchdog();
     worker!.ref(); worker!.postMessage({ ...message, id });
   });
   } finally { queued--; }

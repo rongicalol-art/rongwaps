@@ -375,6 +375,11 @@ export function segmentPinyinQuery(
   return results.length >= 2 ? results : [];
 }
 
+/** Lowercased Latin query with spacing collapsed and a leading "to"/"a"/"an"/"the" dropped. */
+export const normalizeLatinQuery = (query: string) => query.trim().toLowerCase().replace(/\s+/g, ' ').replace(/^(?:to |an? |the )/, '');
+/** Typo matching covers one plain word of 5+ letters; only those queries need a whole-corpus rescan. */
+export const allowsTypoMatch = (query: string) => /^[a-z]{5,}$/.test(normalizeLatinQuery(query));
+
 export function searchInIndex(
   index: CompactSearchEntry[] | null,
   searchQuery: string,
@@ -434,7 +439,7 @@ export function searchInIndex(
     }
   }
 
-  const queryLower = query.toLowerCase().replace(/\s+/g, ' ').replace(/^(?:to |an? |the )/, '');
+  const queryLower = normalizeLatinQuery(query);
   const isHanzi = hasHanzi;
   const queryFlat = stripPinyinTones(query);
   const toneTokens = !isHanzi ? parseToneNumberedPinyin(query) : null;
@@ -448,7 +453,7 @@ export function searchInIndex(
     : queryLower.slice(0, Math.min(3, queryLower.length));
   const synonymPrefixes = synonymStems.map((syn) => syn.slice(0, Math.min(3, syn.length))).filter((p) => p.length >= 2);
   const englishWord = new RegExp(`(?:^|[^a-z])${escapeRegExp(queryLower)}(?=$|[^a-z])`);
-  const allowTypo = !isHanzi && /^[a-z]{5,}$/.test(queryLower);
+  const allowTypo = allowsTypoMatch(query);
   const matches: SearchResult[] = [];
 
   const slots = getPreparedSlots(index);

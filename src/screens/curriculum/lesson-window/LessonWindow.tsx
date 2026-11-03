@@ -11,11 +11,13 @@ import { preloadPracticeChunks, prefetchPractice, preparePracticeLaunch, type Pr
 import { formatPartSelection, getLessonSelectionKey, normalizePartSelection } from '../../../utils/lesson/lessonPartSelection';
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
+import { TestPictureFan } from './TestPictureFan';
 import { PartTabs } from './PartTabs';
-import { LessonTestCard } from './LessonTestCard';
+import { LessonTestTitle } from './LessonTestSummary';
 import { useLessonTestData } from '../../../hooks/useLessonTestData';
 import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
+import { cn } from '../../../utils/cn';
 import { LESSON_TEST_PASS } from '../../../utils/lesson/lessonTestPlan';
 import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
 import {
@@ -65,20 +67,17 @@ function LessonTitle({
   part,
   selectedPartIds,
   isDesktop,
-  isTest = false,
 }: {
   lesson: CourseLessonProgress;
   part: LessonWindowPart;
   selectedPartIds: number[];
   isDesktop: boolean;
-  /** The Test tab: the lesson's own title, not the part's. */
-  isTest?: boolean;
 }) {
   const [, lessonChinese] = lesson.title.split('·').map((piece) => piece.trim());
-  const [partChinese, ...partEnglish] = isTest ? [''] : part.title.split(' · ');
+  const [partChinese, ...partEnglish] = part.title.split(' · ');
   const english = partEnglish.length > 0 ? partEnglish.join(' · ') : getEnglishLessonTitle(lesson.title);
   const chinese = partEnglish.length > 0 ? partChinese : lessonChinese;
-  const eyebrow = !isTest && selectedPartIds.length > 1
+  const eyebrow = selectedPartIds.length > 1
     ? `${lesson.label} · ${formatPartSelection(selectedPartIds)}`
     : lesson.label;
   return (
@@ -250,8 +249,15 @@ function LessonBody({
 
   if (!activePart) return null;
 
-  const imageSrc = illustrationsByPart[activePart.id] ?? fallbackImageSrc;
-  const isIllustration = Boolean(illustrationsByPart[activePart.id]) || fallbackIsIllustration;
+  // The Test tab shows the lesson's closing scene (its last part's picture) in a gold frame.
+  const picturePartId = isTest ? parts[parts.length - 1]?.id ?? activePart.id : activePart.id;
+  const imageSrc = illustrationsByPart[picturePartId] ?? illustrationsByPart[activePart.id] ?? fallbackImageSrc;
+  const isIllustration = Boolean(illustrationsByPart[picturePartId] ?? illustrationsByPart[activePart.id]) || fallbackIsIllustration;
+
+  // The Test tab fans the lesson's earlier scenes out behind its closing scene (up to two, oldest first).
+  const behindSrcs = isTest
+    ? parts.slice(-3, -1).flatMap((part) => illustrationsByPart[part.id] ?? []).filter((src) => src !== imageSrc)
+    : [];
 
   const stored = modes[activePart.id];
   const mode = stored && isModeAvailable(activePart, stored) ? stored : getDefaultMode(activePart);
@@ -295,15 +301,8 @@ function LessonBody({
     onPartChange([...selectedPartIds, id].sort((a, b) => a - b));
   };
 
-  const testCard = testData && (
-    <LessonTestCard
-      questionCount={testData.lesson.slots.reduce((sum, slot) => sum + slot.versions[0].questions.length, 0)}
-      best={testRecord ? { correct: testRecord.best, total: testRecord.total } : null}
-      large={isDesktop}
-      onStart={onOpenTest}
-    />
-  );
-  const modeButtons = isTest ? testCard : (
+  const best = testRecord ? { correct: testRecord.best, total: testRecord.total } : null;
+  const modeButtons = isTest ? null : (
     <ModeButtons part={activePart} selected={mode} large={isDesktop} onSelect={(next) => onModeChange(activePart.id, next)} />
   );
   const partTabs = (className: string) => (
@@ -320,12 +319,16 @@ function LessonBody({
       className={className}
     />
   );
-  const actions = (
+  const actions = isTest ? (
+    // The review tone turns the start button honey: the test is the lesson's one gold action.
+    <div data-tone="review">
+      <LessonActions label="Begin test" onStart={onOpenTest} onStartIntent={() => { void loadLessonTest().catch(() => {}); }} />
+    </div>
+  ) : (
     <LessonActions
-      onStart={isTest ? onOpenTest : handleStart}
+      onStart={handleStart}
       onStartIntent={() => {
-        if (isTest) void loadLessonTest().catch(() => {});
-        else if (mode === 'vocab') void prefetchPractice(practiceIntent('flashcards'));
+        if (mode === 'vocab') void prefetchPractice(practiceIntent('flashcards'));
       }}
       onOpenPracticeHub={() => setIsPracticeHubOpen(true)}
       isPracticeHubOpen={isPracticeHubOpen}
@@ -345,6 +348,15 @@ function LessonBody({
       }}
     />
   );
+
+  const picture = (className: string, compact = false) => (isTest && behindSrcs.length > 0 ? (
+    <TestPictureFan front={imageSrc} isIcon={!isIllustration} behind={behindSrcs} onSwipe={swipe} compact={compact} />
+  ) : (
+    <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className={className} />
+  ));
+  const title = (desktop: boolean) => (isTest
+    ? <LessonTestTitle lessonId={lesson.id} best={best} isDesktop={desktop} />
+    : <LessonTitle lesson={lesson} part={activePart} selectedPartIds={selectedPartIds} isDesktop={desktop} />);
 
   const backButton = (
     <button
@@ -368,15 +380,26 @@ function LessonBody({
         >
           <div className="flex flex-col">
             {backButton}
-            <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="rounded-modal" />
+            {picture('rounded-modal')}
             {partTabs('mt-3.5')}
           </div>
-          <div className="mt-12 flex flex-col">
-            <LessonTitle lesson={lesson} part={activePart} selectedPartIds={selectedPartIds} isDesktop isTest={isTest} />
-            <HereButton lesson={lessonKey(bookId, lesson.id)} />
-            <div className="mt-6">{modeButtons}</div>
-            <div className="mt-auto pt-5">{actions}</div>
-          </div>
+          {isTest ? (
+            // Title and button sit together, ending level with the front picture's bottom edge.
+            <div className="flex flex-col pt-12">
+              <div className="mb-24 mt-auto">
+                {title(true)}
+                <HereButton lesson={lessonKey(bookId, lesson.id)} />
+                <div className="mt-7">{actions}</div>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-12 flex flex-col">
+              {title(true)}
+              <HereButton lesson={lessonKey(bookId, lesson.id)} />
+              <div className="mt-6">{modeButtons}</div>
+              <div className="mt-auto pt-5">{actions}</div>
+            </div>
+          )}
         </div>
         {practiceHubDrawer}
       </div>
@@ -389,10 +412,10 @@ function LessonBody({
         <div className="mx-auto w-full max-w-xl">
           <div className="px-4 pt-3">
             {backButton}
-            <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="max-h-[38vh] rounded-modal" />
+            {picture('max-h-[38vh] rounded-modal', true)}
           </div>
           {partTabs('mx-4 mt-2')}
-          <div className="px-4 pt-4"><LessonTitle lesson={lesson} part={activePart} selectedPartIds={selectedPartIds} isDesktop={false} isTest={isTest} /><HereButton lesson={lessonKey(bookId, lesson.id)} /></div>
+          <div className={cn('px-4', isTest ? 'pt-7' : 'pt-4')}>{title(false)}<HereButton lesson={lessonKey(bookId, lesson.id)} /></div>
           <div className="px-4 pb-3 pt-3">
             {modeButtons}
           </div>

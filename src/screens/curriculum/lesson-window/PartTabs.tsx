@@ -142,9 +142,17 @@ export function PartTabs({
           );
         })}
         {test && (
-          <button type="button" role="tab" aria-selected={test.selected} onClick={test.onSelect} className={cn(TAB_CLASS, tabState(test.selected))}>
+          // Honey tone: the test is the lesson's one gold tab; a shine passes over its label until it is picked.
+          <button
+            type="button"
+            role="tab"
+            data-tone="review"
+            aria-selected={test.selected}
+            onClick={test.onSelect}
+            className={cn(TAB_CLASS, test.selected ? 'border-brand-primary text-brand-primary-deep' : 'border-transparent text-brand-primary-text hover:text-brand-primary-deep')}
+          >
             {test.passed && <AppIcon name="crown" size={16} className="shrink-0 text-feedback-warning" aria-label="Passed" />}
-            <span>Test</span>
+            <span data-word="Test" className={cn(!test.selected && 'rw-test-tab-shine')}>Test</span>
           </button>
         )}
       </div>

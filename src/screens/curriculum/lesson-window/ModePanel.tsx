@@ -89,6 +89,8 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
 
 interface LessonActionsProps {
   onStart: () => void;
+  /** The start button's label (the Test tab says "Begin test"). */
+  label?: string;
   onStartIntent: () => void;
   onOpenPracticeHub?: () => void;
   isPracticeHubOpen?: boolean;
@@ -98,6 +100,7 @@ interface LessonActionsProps {
 /** Start the selected lesson mode. Quiz lives in Practice hub. */
 export function LessonActions({
   onStart,
+  label = 'Start',
   onStartIntent,
   onOpenPracticeHub,
   isPracticeHubOpen,
@@ -137,7 +140,7 @@ export function LessonActions({
         onPointerDown={onStartIntent}
         onFocus={onStartIntent}
       >
-        <span>Start</span>
+        <span>{label}</span>
       </ActionButton>
     </div>
   );

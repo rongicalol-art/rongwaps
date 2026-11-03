@@ -12,7 +12,7 @@ const preload = (files: string[], signal: AbortSignal) =>
 
 /**
  * Downloads the test's recordings ahead, the way the quiz does: this screen's first (and prepares them, so each
- * clip starts at once), then the next two while this one is answered. Starts on the part intro, so the first
+ * clip starts at once), then the next two while this one is answered. Starts under the part intro, so the first
  * question is usually ready before it appears. `ready` turns true once this screen's clips are in, after
  * MAX_WAIT_MS, or at once when downloading is blocked (the audio host's CORS rules): playback then streams.
  */
