@@ -19,6 +19,9 @@ export function getOAuthRedirectUrl(
   return new URL('/', redirect).toString();
 }
 
+const SIGNUPS_OFF = /signup_disabled|signups? (are )?not allowed/;
+const SIGNUPS_OFF_MESSAGE = 'New accounts are switched off for this Supabase project. Turn on Authentication → Sign In / Providers → Allow new users to sign up.';
+
 export function getOAuthCallbackErrorMessage(search: string, hash: string): string | null {
   const queryParams = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
   const hashParams = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash);
@@ -42,6 +45,8 @@ export function getOAuthCallbackErrorMessage(search: string, hash: string): stri
   if (errorCode === 'access_denied') {
     return 'Google sign-in was cancelled. Try again when you’re ready.';
   }
+  // Before the redirect check: "Signups not allowed for this instance" also says "not allowed".
+  if (SIGNUPS_OFF.test(details)) return SIGNUPS_OFF_MESSAGE;
   if (/redirect|allow.?list|not allowed/.test(details)) {
     return `Supabase blocked this return address. Add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`;
   }
@@ -60,6 +65,7 @@ export function getOAuthLoginErrorMessage(error: unknown): string {
   if (message.includes('supabase is not configured')) {
     return 'Sign-in is not configured. Check that VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set for this build.';
   }
+  if (SIGNUPS_OFF.test(message)) return SIGNUPS_OFF_MESSAGE;
   if (/redirect|allow.?list|not allowed/.test(message)) {
     return `Supabase blocked this return address. Add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`;
   }

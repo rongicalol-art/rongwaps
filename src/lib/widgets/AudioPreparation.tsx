@@ -1,8 +1,10 @@
-import { ActionButton } from '../../../lib/widgets';
-import type { AudioPreloadProgress } from '../../../services/audio/audioCache';
+import { ActionButton } from './ActionButton';
+
+/** Download progress (the shape `audioService.preload` reports): recordings ready, failed, and in all. */
+export interface AudioProgress { ready: number; failed: number; total: number }
 
 interface Props {
-  progress: AudioPreloadProgress | null;
+  progress: AudioProgress | null;
   error: boolean;
   onRetry: () => void;
   onBack: () => void;
@@ -12,7 +14,7 @@ interface Props {
 const HEIGHTS = [44, 62, 82, 104, 120, 104, 82, 62, 44];
 
 /** The tactile block row: blocks turn blue as recordings land; unfinished ones swell until it fails. */
-export function AudioBlocks({ progress, error }: { progress: AudioPreloadProgress | null; error: boolean }) {
+export function AudioBlocks({ progress, error }: { progress: AudioProgress | null; error: boolean }) {
   const ready = progress?.total ? Math.floor(HEIGHTS.length * progress.ready / progress.total) : 0;
   return (
     <div aria-hidden className="flex h-32 items-end justify-center gap-2.5">
@@ -27,8 +29,8 @@ export function AudioBlocks({ progress, error }: { progress: AudioPreloadProgres
   );
 }
 
-/** Also used by the DEV gallery: loading and recovery without recording study progress. */
-export function QuizAudioPreparation({ progress, error, onRetry, onBack }: Props) {
+/** "Getting audio ready" before audio-led practice (the quiz, the lesson test): blocks fill as recordings download; on failure, Retry. Also in the DEV gallery. */
+export function AudioPreparation({ progress, error, onRetry, onBack }: Props) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-8 px-6 py-12">
       <AudioBlocks progress={progress} error={error} />

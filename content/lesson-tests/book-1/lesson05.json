@@ -1,0 +1,2491 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l05",
+  "bookId": 1,
+  "lessonId": 5,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "友美",
+    "宜文"
+  ],
+  "slots": [
+    {
+      "id": "hear-wallet",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l05-hear-wallet-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我的錢包在沙發下面。",
+              "simplified": "我的钱包在沙发下面。",
+              "pinyin": "Wǒ de qiánbāo zài shāfā xiàmiàn.",
+              "english": "My wallet is under the sofa."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-hear-wallet-1-q",
+              "choices": [
+                {
+                  "picture": "b1l05-wallet-1",
+                  "alt": "On the sofa: a brown wallet lies on the sofa seat"
+                },
+                {
+                  "picture": "b1l05-wallet-2",
+                  "alt": "Under the sofa: a brown wallet lies on the floor under the sofa"
+                },
+                {
+                  "picture": "b1l05-wallet-3",
+                  "alt": "Next to the sofa: a brown wallet lies on the floor beside the sofa"
+                }
+              ],
+              "key": 1,
+              "why": "下面 means under: 沙發下面 is under the sofa.",
+              "focus": {
+                "zh": "沙發下面",
+                "en": "under the sofa"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-01",
+                "B1L05-1-02",
+                "B1L05-2-19",
+                "B1L05-2-20"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-hear-wallet-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我的錢包在哪裡？",
+              "simplified": "我的钱包在哪里？",
+              "pinyin": "Wǒ de qiánbāo zài nǎlǐ?",
+              "english": "Where is my wallet?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "妳看，在沙發上面！",
+              "simplified": "你看，在沙发上面！",
+              "pinyin": "Nǐ kàn, zài shāfā shàngmiàn!",
+              "english": "Look, it's on the sofa!"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-hear-wallet-2-q",
+              "choices": [
+                {
+                  "picture": "b1l05-wallet-1",
+                  "alt": "On the sofa: a brown wallet lies on the sofa seat"
+                },
+                {
+                  "picture": "b1l05-wallet-2",
+                  "alt": "Under the sofa: a brown wallet lies on the floor under the sofa"
+                },
+                {
+                  "picture": "b1l05-wallet-3",
+                  "alt": "Next to the sofa: a brown wallet lies on the floor beside the sofa"
+                }
+              ],
+              "key": 0,
+              "why": "He answers 在沙發上面: the wallet is on top of the sofa.",
+              "focus": {
+                "zh": "沙發上面",
+                "en": "on the sofa"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-01",
+                "B1L05-1-03",
+                "B1L05-2-19",
+                "B1L05-2-13"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-hear-wallet-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "錢包不在沙發上面，在沙發旁邊。",
+              "simplified": "钱包不在沙发上面，在沙发旁边。",
+              "pinyin": "Qiánbāo bú zài shāfā shàngmiàn, zài shāfā pángbiān.",
+              "english": "The wallet isn't on the sofa. It's next to the sofa."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-hear-wallet-3-q",
+              "choices": [
+                {
+                  "picture": "b1l05-wallet-1",
+                  "alt": "On the sofa: a brown wallet lies on the sofa seat"
+                },
+                {
+                  "picture": "b1l05-wallet-2",
+                  "alt": "Under the sofa: a brown wallet lies on the floor under the sofa"
+                },
+                {
+                  "picture": "b1l05-wallet-3",
+                  "alt": "Next to the sofa: a brown wallet lies on the floor beside the sofa"
+                }
+              ],
+              "key": 2,
+              "why": "不在沙發上面 rules out the top of the sofa; 在沙發旁邊 puts the wallet next to it.",
+              "focus": {
+                "zh": "沙發旁邊",
+                "en": "next to the sofa"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-2-19",
+                "B1L05-2-21",
+                "B1L05-2-13"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-room",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l05-hear-room-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "窗戶下面有一張床。",
+              "simplified": "窗户下面有一张床。",
+              "pinyin": "Chuānghù xiàmiàn yǒu yì zhāng chuáng.",
+              "english": "There is a bed under the window."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-hear-room-1-q",
+              "choices": [
+                {
+                  "picture": "b1l05-room-1",
+                  "alt": "A bed: a bed stands under the window"
+                },
+                {
+                  "picture": "b1l05-room-2",
+                  "alt": "A sofa: a sofa stands under the window"
+                },
+                {
+                  "picture": "b1l05-room-3",
+                  "alt": "A TV: a TV on a low cabinet stands under the window"
+                }
+              ],
+              "key": 0,
+              "why": "The place comes first, then 有: 窗戶下面有一張床 means there is a bed under the window.",
+              "focus": {
+                "zh": "有一張床",
+                "en": "there is a bed"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-3-05",
+                "B1L05-2-14",
+                "B1L05-2-12",
+                "B1L05-3-01"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-hear-room-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這個房間裡沒有床，有一張沙發。",
+              "simplified": "这个房间里没有床，有一张沙发。",
+              "pinyin": "Zhège fángjiān lǐ méiyǒu chuáng, yǒu yì zhāng shāfā.",
+              "english": "There's no bed in this room. There's a sofa."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-hear-room-2-q",
+              "choices": [
+                {
+                  "picture": "b1l05-room-1",
+                  "alt": "A bed: a bed stands under the window"
+                },
+                {
+                  "picture": "b1l05-room-2",
+                  "alt": "A sofa: a sofa stands under the window"
+                },
+                {
+                  "picture": "b1l05-room-3",
+                  "alt": "A TV: a TV on a low cabinet stands under the window"
+                }
+              ],
+              "key": 1,
+              "why": "沒有床 means there is no bed; 有一張沙發 means there is a sofa.",
+              "focus": {
+                "zh": "沒有床，有沙發",
+                "en": "there is / there isn't"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-03",
+                "B1L05-2-14",
+                "B1L05-3-01",
+                "B1L05-2-19"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-hear-room-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "那個房間裡有什麼？",
+              "simplified": "那个房间里有什么？",
+              "pinyin": "Nàge fángjiān lǐ yǒu shénme?",
+              "english": "What's in that room?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "有一台電視，沒有床，也沒有沙發。",
+              "simplified": "有一台电视，没有床，也没有沙发。",
+              "pinyin": "Yǒu yì tái diànshì, méiyǒu chuáng, yě méiyǒu shāfā.",
+              "english": "There's a TV. There's no bed and no sofa."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-hear-room-3-q",
+              "choices": [
+                {
+                  "picture": "b1l05-room-1",
+                  "alt": "A bed: a bed stands under the window"
+                },
+                {
+                  "picture": "b1l05-room-2",
+                  "alt": "A sofa: a sofa stands under the window"
+                },
+                {
+                  "picture": "b1l05-room-3",
+                  "alt": "A TV: a TV on a low cabinet stands under the window"
+                }
+              ],
+              "key": 2,
+              "why": "He says 有一台電視: there is a TV. 沒有床，也沒有沙發 rules out the bed and the sofa.",
+              "focus": {
+                "zh": "有一台電視",
+                "en": "there is a TV"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-14",
+                "B1L05-3-04",
+                "B1L05-3-03",
+                "B1L05-2-19"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-wallet",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l05-picture-wallet-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L05-R02",
+            "alt": "In his bedroom, with his bed behind him, Zhongming tips up one edge of a big blue book that still rests on his desk, and a red wallet lies under it. His mother stands at the open door holding a spatula, with the kitchen behind her."
+          },
+          "questions": [
+            {
+              "id": "b1l05-picture-wallet-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "錢包在書上面。",
+                  "simplified": "钱包在书上面。",
+                  "pinyin": "Qiánbāo zài shū shàngmiàn.",
+                  "english": "The wallet is on the book."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "錢包在書下面。",
+                  "simplified": "钱包在书下面。",
+                  "pinyin": "Qiánbāo zài shū xiàmiàn.",
+                  "english": "The wallet is under the book."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "錢包在床上面。",
+                  "simplified": "钱包在床上面。",
+                  "pinyin": "Qiánbāo zài chuáng shàngmiàn.",
+                  "english": "The wallet is on the bed."
+                }
+              ],
+              "key": 1,
+              "why": "He tips up one edge of the book, and the wallet lies under it: 書下面. The book is on top of the wallet, and there is no wallet on the bed.",
+              "focus": {
+                "zh": "書下面",
+                "en": "under the book"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-01",
+                "B1L05-1-02",
+                "B1L05-2-20",
+                "B1L05-2-13"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-picture-wallet-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L05-R02",
+            "alt": "In his bedroom, with his bed behind him, Zhongming tips up one edge of a big blue book that still rests on his desk, and a red wallet lies under it. His mother stands at the open door holding a spatula, with the kitchen behind her."
+          },
+          "questions": [
+            {
+              "id": "b1l05-picture-wallet-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中明在客廳裡找東西。",
+                  "simplified": "中明在客厅里找东西。",
+                  "pinyin": "Zhōngmíng zài kètīng lǐ zhǎo dōngxi.",
+                  "english": "Zhongming is looking for something in the living room."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明在廚房裡找東西。",
+                  "simplified": "中明在厨房里找东西。",
+                  "pinyin": "Zhōngmíng zài chúfáng lǐ zhǎo dōngxi.",
+                  "english": "Zhongming is looking for something in the kitchen."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明在房間裡找東西。",
+                  "simplified": "中明在房间里找东西。",
+                  "pinyin": "Zhōngmíng zài fángjiān lǐ zhǎo dōngxi.",
+                  "english": "Zhongming is looking for something in his room."
+                }
+              ],
+              "key": 2,
+              "why": "Zhongming lifts the book on his desk to look under it, and his bed is behind him, so he is looking for something in his room (房間). The kitchen (廚房) is only seen behind his mother, through the door.",
+              "focus": {
+                "zh": "在房間裡找",
+                "en": "looking in his room"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-03",
+                "B1L05-2-25",
+                "B1L05-2-09",
+                "B1L05-2-26"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-room",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l05-picture-room-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L05-R03",
+            "alt": "A sunny room: a girl sits alone on a red sofa reading a book. A cat stretches in the sunlight on the floor right by the big window, nearer to it than to anything else. A TV stands in front of the sofa; at the back are a desk with an empty chair and a bed. There is no dog and no bird, and no animal is on the sofa."
+          },
+          "questions": [
+            {
+              "id": "b1l05-picture-room-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "窗戶旁邊有一隻貓。",
+                  "simplified": "窗户旁边有一只猫。",
+                  "pinyin": "Chuānghù pángbiān yǒu yì zhī māo.",
+                  "english": "There is a cat next to the window."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "沙發上面有一隻貓。",
+                  "simplified": "沙发上面有一只猫。",
+                  "pinyin": "Shāfā shàngmiàn yǒu yì zhī māo.",
+                  "english": "There is a cat on the sofa."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "窗戶旁邊有一隻狗。",
+                  "simplified": "窗户旁边有一只狗。",
+                  "pinyin": "Chuānghù pángbiān yǒu yì zhī gǒu.",
+                  "english": "There is a dog next to the window."
+                }
+              ],
+              "key": 0,
+              "why": "The cat (貓) lies on the floor by the window: 窗戶旁邊. No animal is on the sofa (沙發上面), and there is no dog (狗).",
+              "focus": {
+                "zh": "窗戶旁邊有一隻貓",
+                "en": "a cat by the window"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-3-05",
+                "B1L05-2-21",
+                "B1L05-3-07",
+                "B1L05-2-13"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-picture-room-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L05-R03",
+            "alt": "A sunny room: a girl sits alone on a red sofa reading a book. A cat stretches in the sunlight on the floor right by the big window, nearer to it than to anything else. A TV stands in front of the sofa; at the back are a desk with an empty chair and a bed. There is no dog and no bird, and no animal is on the sofa."
+          },
+          "questions": [
+            {
+              "id": "b1l05-picture-room-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她在床上看書。",
+                  "simplified": "她在床上看书。",
+                  "pinyin": "Tā zài chuáng shàng kàn shū.",
+                  "english": "She is reading on the bed."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她在沙發上看書。",
+                  "simplified": "她在沙发上看书。",
+                  "pinyin": "Tā zài shāfā shàng kàn shū.",
+                  "english": "She is reading on the sofa."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她在椅子上看書。",
+                  "simplified": "她在椅子上看书。",
+                  "pinyin": "Tā zài yǐzi shàng kàn shū.",
+                  "english": "She is reading on the chair."
+                }
+              ],
+              "key": 1,
+              "why": "She sits on the sofa (沙發) with her book. The bed and the chair at the back are empty.",
+              "focus": {
+                "zh": "在沙發上看書",
+                "en": "reading on the sofa"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-2-19",
+                "B1L05-2-13",
+                "B1L05-3-01"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-suggest",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l05-dialogue-suggest-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "星期六我們去圖書館看書，好嗎？",
+              "simplified": "星期六我们去图书馆看书，好吗？",
+              "pinyin": "Xīngqíliù wǒmen qù túshūguǎn kàn shū, hǎo ma?",
+              "english": "Let's go and read at the library on Saturday, OK?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "圖書館人太多了，我們去咖啡廳喝下午茶吧。",
+              "simplified": "图书馆人太多了，我们去咖啡厅喝下午茶吧。",
+              "pinyin": "Túshūguǎn rén tài duō le, wǒmen qù kāfēitīng hē xiàwǔ chá ba.",
+              "english": "The library is too crowded. Let's go to a café for afternoon tea."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-suggest-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的想做什麼？",
+                "simplified": "男的想做什么？",
+                "pinyin": "Nán de xiǎng zuò shénme?",
+                "english": "What does the man want to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去圖書館看書",
+                  "simplified": "去图书馆看书",
+                  "pinyin": "qù túshūguǎn kàn shū",
+                  "english": "go and read at the library"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去咖啡廳看書",
+                  "simplified": "去咖啡厅看书",
+                  "pinyin": "qù kāfēitīng kàn shū",
+                  "english": "go and read at a café"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去咖啡廳喝下午茶",
+                  "simplified": "去咖啡厅喝下午茶",
+                  "pinyin": "qù kāfēitīng hē xiàwǔ chá",
+                  "english": "go to a café for afternoon tea"
+                }
+              ],
+              "key": 2,
+              "why": "The man turns the library down (人太多了) and suggests 我們去咖啡廳喝下午茶吧: afternoon tea, not reading. Reading (看書) was the woman's idea.",
+              "focus": {
+                "zh": "我們去咖啡廳喝下午茶吧",
+                "en": "making a suggestion"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-14",
+                "B1L05-1-06",
+                "B1L05-1-08"
+              ],
+              "grammarIds": [
+                "B1L05-G03-P118"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-dialogue-suggest-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們吃巧克力冰淇淋還是咖啡冰淇淋？",
+              "simplified": "我们吃巧克力冰淇淋还是咖啡冰淇淋？",
+              "pinyin": "Wǒmen chī qiǎokèlì bīngqílín háishì kāfēi bīngqílín?",
+              "english": "Shall we have chocolate ice cream or coffee ice cream?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我都不想吃，我們吃綠茶冰淇淋吧。",
+              "simplified": "我都不想吃，我们吃绿茶冰淇淋吧。",
+              "pinyin": "Wǒ dōu bù xiǎng chī, wǒmen chī lǜchá bīngqílín ba.",
+              "english": "I don't want either. Let's have green tea ice cream."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-suggest-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的想吃什麼？",
+                "simplified": "男的想吃什么？",
+                "pinyin": "Nán de xiǎng chī shénme?",
+                "english": "What does the man want to eat?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "巧克力冰淇淋",
+                  "simplified": "巧克力冰淇淋",
+                  "pinyin": "qiǎokèlì bīngqílín",
+                  "english": "chocolate ice cream"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "綠茶冰淇淋",
+                  "simplified": "绿茶冰淇淋",
+                  "pinyin": "lǜchá bīngqílín",
+                  "english": "green tea ice cream"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "咖啡冰淇淋",
+                  "simplified": "咖啡冰淇淋",
+                  "pinyin": "kāfēi bīngqílín",
+                  "english": "coffee ice cream"
+                }
+              ],
+              "key": 1,
+              "why": "The woman offers chocolate or coffee (還是). The man says 我都不想吃 (he wants neither) and suggests 我們吃綠茶冰淇淋吧: green tea.",
+              "focus": {
+                "zh": "我們吃綠茶冰淇淋吧",
+                "en": "let's have …"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-14",
+                "B1L05-1-11",
+                "B1L04-2-11"
+              ],
+              "grammarIds": [
+                "B1L05-G03-P118"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-dialogue-suggest-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "明天我們幾點去喝下午茶？",
+              "simplified": "明天我们几点去喝下午茶？",
+              "pinyin": "Míngtiān wǒmen jǐ diǎn qù hē xiàwǔ chá?",
+              "english": "What time shall we go for afternoon tea tomorrow?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我兩點有課，三點下課，三點半去吧。",
+              "simplified": "我两点有课，三点下课，三点半去吧。",
+              "pinyin": "Wǒ liǎng diǎn yǒu kè, sān diǎn xiàkè, sān diǎn bàn qù ba.",
+              "english": "I have class at two and finish at three. Let's go at half past three."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-suggest-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的想幾點去？",
+                "simplified": "女的想几点去？",
+                "pinyin": "Nǚ de xiǎng jǐ diǎn qù?",
+                "english": "What time does the woman want to go?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "三點半",
+                  "simplified": "三点半",
+                  "pinyin": "sān diǎn bàn",
+                  "english": "half past three"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩點",
+                  "simplified": "两点",
+                  "pinyin": "liǎng diǎn",
+                  "english": "two o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三點",
+                  "simplified": "三点",
+                  "pinyin": "sān diǎn",
+                  "english": "three o'clock"
+                }
+              ],
+              "key": 0,
+              "why": "Her class is at 兩點 and ends at 三點, so she suggests 三點半去吧: half past three.",
+              "focus": {
+                "zh": "三點半去吧",
+                "en": "suggesting a time"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-13",
+                "B1L05-1-14",
+                "B1L05-1-06"
+              ],
+              "grammarIds": [
+                "B1L05-G03-P118"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-where",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l05-dialogue-where-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你哥哥在家還是在朋友家？",
+              "simplified": "你哥哥在家还是在朋友家？",
+              "pinyin": "Nǐ gēge zài jiā háishì zài péngyǒu jiā?",
+              "english": "Is your older brother at home or at a friend's home?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "他不在家，也不在朋友家，他在咖啡廳。",
+              "simplified": "他不在家，也不在朋友家，他在咖啡厅。",
+              "pinyin": "Tā bú zài jiā, yě bú zài péngyǒu jiā, tā zài kāfēitīng.",
+              "english": "He isn't at home or at a friend's home. He's at a café."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-where-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "哥哥在哪裡？",
+                "simplified": "哥哥在哪里？",
+                "pinyin": "Gēge zài nǎlǐ?",
+                "english": "Where is the older brother?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在家",
+                  "simplified": "在家",
+                  "pinyin": "zài jiā",
+                  "english": "at home"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在朋友家",
+                  "simplified": "在朋友家",
+                  "pinyin": "zài péngyǒu jiā",
+                  "english": "at a friend's home"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在咖啡廳",
+                  "simplified": "在咖啡厅",
+                  "pinyin": "zài kāfēitīng",
+                  "english": "at a café"
+                }
+              ],
+              "key": 2,
+              "why": "He says 不在家，也不在朋友家, so he is at neither place from the question, and ends with 他在咖啡廳: he is at a café.",
+              "focus": {
+                "zh": "在咖啡廳",
+                "en": "where he is"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-15",
+                "B1L05-1-02",
+                "B1L05-1-08"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-dialogue-where-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳姐姐在房間裡嗎？",
+              "simplified": "你姐姐在房间里吗？",
+              "pinyin": "Nǐ jiějie zài fángjiān lǐ ma?",
+              "english": "Is your older sister in her room?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不在，她在客廳看電視，媽媽在廚房。",
+              "simplified": "不在，她在客厅看电视，妈妈在厨房。",
+              "pinyin": "Bú zài, tā zài kètīng kàn diànshì, māma zài chúfáng.",
+              "english": "No, she's watching TV in the living room. Mom is in the kitchen."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-where-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "姐姐在哪裡？",
+                "simplified": "姐姐在哪里？",
+                "pinyin": "Jiějie zài nǎlǐ?",
+                "english": "Where is the older sister?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在客廳",
+                  "simplified": "在客厅",
+                  "pinyin": "zài kètīng",
+                  "english": "in the living room"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在房間",
+                  "simplified": "在房间",
+                  "pinyin": "zài fángjiān",
+                  "english": "in her room"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在廚房",
+                  "simplified": "在厨房",
+                  "pinyin": "zài chúfáng",
+                  "english": "in the kitchen"
+                }
+              ],
+              "key": 0,
+              "why": "不在 says she is not in her room; 她在客廳看電視 puts her in the living room. The kitchen (廚房) is where Mom is.",
+              "focus": {
+                "zh": "在客廳看電視",
+                "en": "where she is doing it"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-16",
+                "B1L05-1-02",
+                "B1L05-2-09",
+                "B1L05-2-03"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117",
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-dialogue-where-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "弟弟，你要在家吃晚飯嗎？",
+              "simplified": "弟弟，你要在家吃晚饭吗？",
+              "pinyin": "Dìdi, nǐ yào zài jiā chī wǎnfàn ma?",
+              "english": "Are you having dinner at home, little brother?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我不在家吃，我在學校吃，晚上在圖書館看書。",
+              "simplified": "我不在家吃，我在学校吃，晚上在图书馆看书。",
+              "pinyin": "Wǒ bú zài jiā chī, wǒ zài xuéxiào chī, wǎnshàng zài túshūguǎn kàn shū.",
+              "english": "I won't eat at home. I'll eat at school, and this evening I'll read at the library."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-where-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "弟弟要在哪裡吃晚飯？",
+                "simplified": "弟弟要在哪里吃晚饭？",
+                "pinyin": "Dìdi yào zài nǎlǐ chī wǎnfàn?",
+                "english": "Where is the younger brother having dinner?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在家",
+                  "simplified": "在家",
+                  "pinyin": "zài jiā",
+                  "english": "at home"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在學校",
+                  "simplified": "在学校",
+                  "pinyin": "zài xuéxiào",
+                  "english": "at school"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在圖書館",
+                  "simplified": "在图书馆",
+                  "pinyin": "zài túshūguǎn",
+                  "english": "at the library"
+                }
+              ],
+              "key": 1,
+              "why": "He says 我不在家吃，我在學校吃: he will eat dinner at school. The library (圖書館) is where he will read in the evening, not where he eats.",
+              "focus": {
+                "zh": "在學校吃",
+                "en": "where he will eat"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-17",
+                "B1L05-1-02",
+                "B1L02-1-06"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-shop",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l05-dialogue-shop-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "兩杯紅茶，多少錢？",
+              "simplified": "两杯红茶，多少钱？",
+              "pinyin": "Liǎng bēi hóngchá, duōshǎo qián?",
+              "english": "Two black teas. How much is that?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "一杯三十五，兩杯七十塊。",
+              "simplified": "一杯三十五，两杯七十块。",
+              "pinyin": "Yì bēi sānshíwǔ, liǎng bēi qīshí kuài.",
+              "english": "Thirty-five for one cup, seventy for two."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好，給妳一百塊。",
+              "simplified": "好，给你一百块。",
+              "pinyin": "Hǎo, gěi nǐ yì bǎi kuài.",
+              "english": "OK, here's a hundred."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-shop-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "兩杯紅茶一共多少錢？",
+                "simplified": "两杯红茶一共多少钱？",
+                "pinyin": "Liǎng bēi hóngchá yígòng duōshǎo qián?",
+                "english": "How much are the two black teas altogether?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "七十塊",
+                  "simplified": "七十块",
+                  "pinyin": "qīshí kuài",
+                  "english": "seventy dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三十五塊",
+                  "simplified": "三十五块",
+                  "pinyin": "sānshíwǔ kuài",
+                  "english": "thirty-five dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一百塊",
+                  "simplified": "一百块",
+                  "pinyin": "yì bǎi kuài",
+                  "english": "a hundred dollars"
+                }
+              ],
+              "key": 0,
+              "why": "She says 兩杯七十塊: two cups cost seventy. 三十五 is the price of one cup (一杯), and 一百 is the money he hands over.",
+              "focus": {
+                "zh": "兩杯七十塊",
+                "en": "the price of two cups"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-15",
+                "B1L04-2-16",
+                "B1L04-2-03",
+                "B1L04-2-10"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-dialogue-shop-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我要一杯咖啡跟一杯奶茶。",
+              "simplified": "我要一杯咖啡跟一杯奶茶。",
+              "pinyin": "Wǒ yào yì bēi kāfēi gēn yì bēi nǎichá.",
+              "english": "I'd like a coffee and a milk tea."
+            },
+            {
+              "speaker": "F",
+              "traditional": "咖啡六十，奶茶六十五，一共一百二十五。",
+              "simplified": "咖啡六十，奶茶六十五，一共一百二十五。",
+              "pinyin": "Kāfēi liùshí, nǎichá liùshíwǔ, yígòng yì bǎi èrshíwǔ.",
+              "english": "Coffee is sixty and milk tea sixty-five: a hundred and twenty-five altogether."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-shop-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "奶茶多少錢？",
+                "simplified": "奶茶多少钱？",
+                "pinyin": "Nǎichá duōshǎo qián?",
+                "english": "How much is the milk tea?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "六十塊",
+                  "simplified": "六十块",
+                  "pinyin": "liùshí kuài",
+                  "english": "sixty dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一百二十五塊",
+                  "simplified": "一百二十五块",
+                  "pinyin": "yì bǎi èrshíwǔ kuài",
+                  "english": "a hundred and twenty-five dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "六十五塊",
+                  "simplified": "六十五块",
+                  "pinyin": "liùshíwǔ kuài",
+                  "english": "sixty-five dollars"
+                }
+              ],
+              "key": 2,
+              "why": "She says 奶茶六十五: the milk tea is sixty-five. 六十 is the coffee, and 一百二十五 is the total.",
+              "focus": {
+                "zh": "奶茶六十五",
+                "en": "hearing a price"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-03",
+                "B1L04-2-16",
+                "B1L04-2-15",
+                "B1L04-2-17"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-class",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l05-dialogue-class-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳是日本人嗎？",
+              "simplified": "你是日本人吗？",
+              "pinyin": "Nǐ shì Rìběn rén ma?",
+              "english": "Are you Japanese?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我朋友是日本人，我是美國人。",
+              "simplified": "不是，我朋友是日本人，我是美国人。",
+              "pinyin": "Bú shì, wǒ péngyǒu shì Rìběn rén, wǒ shì Měiguó rén.",
+              "english": "No, my friend is Japanese. I'm American."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-class-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的是哪國人？",
+                "simplified": "女的是哪国人？",
+                "pinyin": "Nǚ de shì nǎ guó rén?",
+                "english": "What nationality is the woman?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "日本人",
+                  "simplified": "日本人",
+                  "pinyin": "Rìběn rén",
+                  "english": "Japanese"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "美國人",
+                  "simplified": "美国人",
+                  "pinyin": "Měiguó rén",
+                  "english": "American"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "英國人",
+                  "simplified": "英国人",
+                  "pinyin": "Yīngguó rén",
+                  "english": "British"
+                }
+              ],
+              "key": 1,
+              "why": "She answers 不是 to \"Japanese\" and says 我是美國人: she is American. 日本人 is her friend.",
+              "focus": {
+                "zh": "是…嗎？不是",
+                "en": "yes-no questions with 嗎"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-13",
+                "B1L01-1-17",
+                "B1L01-1-14",
+                "B1L01-1-10"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40",
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-dialogue-class-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請問，你是中明的哥哥嗎？",
+              "simplified": "请问，你是中明的哥哥吗？",
+              "pinyin": "Qǐngwèn, nǐ shì Zhōngmíng de gēge ma?",
+              "english": "Excuse me, are you Zhongming's older brother?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不是，我是他的同學。",
+              "simplified": "不是，我是他的同学。",
+              "pinyin": "Bú shì, wǒ shì tā de tóngxué.",
+              "english": "No, I'm his classmate."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l05-dialogue-class-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的是誰？",
+                "simplified": "男的是谁？",
+                "pinyin": "Nán de shì shéi?",
+                "english": "Who is the man?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中明的同學",
+                  "simplified": "中明的同学",
+                  "pinyin": "Zhōngmíng de tóngxué",
+                  "english": "Zhongming's classmate"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明的哥哥",
+                  "simplified": "中明的哥哥",
+                  "pinyin": "Zhōngmíng de gēge",
+                  "english": "Zhongming's older brother"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明的老師",
+                  "simplified": "中明的老师",
+                  "pinyin": "Zhōngmíng de lǎoshī",
+                  "english": "Zhongming's teacher"
+                }
+              ],
+              "key": 0,
+              "why": "The man answers 不是 to \"older brother\" and says 我是他的同學: he is Zhongming's classmate.",
+              "focus": {
+                "zh": "是…嗎？不是",
+                "en": "yes-no questions with 嗎"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L00-1-06",
+                "B1L01-1-13",
+                "B1L01-1-02"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40",
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-hide",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l05-read-hide-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l05-read-hide-1-q",
+              "prompt": {
+                "traditional": "弟弟在桌子下面，妹妹在桌子旁邊。",
+                "simplified": "弟弟在桌子下面，妹妹在桌子旁边。",
+                "pinyin": "Dìdi zài zhuōzi xiàmiàn, mèimei zài zhuōzi pángbiān.",
+                "english": "The little brother is under the table, and the little sister is next to it."
+              },
+              "choices": [
+                {
+                  "picture": "b1l05-hide-1",
+                  "alt": "The boy is under the table: the boy hides under the table, and the girl stands next to it"
+                },
+                {
+                  "picture": "b1l05-hide-2",
+                  "alt": "The girl is under the table: the girl hides under the table, and the boy stands next to it"
+                },
+                {
+                  "picture": "b1l05-hide-3",
+                  "alt": "Both under the table: the boy and the girl hide under the table together"
+                }
+              ],
+              "key": 0,
+              "why": "弟弟 (the boy) is 在桌子下面, under the table; 妹妹 (the girl) is 在桌子旁邊, next to it.",
+              "focus": {
+                "zh": "在桌子下面",
+                "en": "under the table"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-17",
+                "B1L05-2-18",
+                "B1L05-2-20",
+                "B1L05-2-21"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-read-hide-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l05-read-hide-2-q",
+              "prompt": {
+                "traditional": "弟弟跟妹妹都在桌子下面。",
+                "simplified": "弟弟跟妹妹都在桌子下面。",
+                "pinyin": "Dìdi gēn mèimei dōu zài zhuōzi xiàmiàn.",
+                "english": "The little brother and the little sister are both under the table."
+              },
+              "choices": [
+                {
+                  "picture": "b1l05-hide-1",
+                  "alt": "The boy is under the table: the boy hides under the table, and the girl stands next to it"
+                },
+                {
+                  "picture": "b1l05-hide-2",
+                  "alt": "The girl is under the table: the girl hides under the table, and the boy stands next to it"
+                },
+                {
+                  "picture": "b1l05-hide-3",
+                  "alt": "Both under the table: the boy and the girl hide under the table together"
+                }
+              ],
+              "key": 2,
+              "why": "都 means both: 弟弟跟妹妹都在桌子下面, the boy and the girl are both under the table.",
+              "focus": {
+                "zh": "都在桌子下面",
+                "en": "both under the table"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-01",
+                "B1L05-2-17",
+                "B1L05-2-18",
+                "B1L05-2-20"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-read-hide-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l05-read-hide-3-q",
+              "prompt": {
+                "traditional": "妹妹在桌子下面，弟弟在桌子旁邊。",
+                "simplified": "妹妹在桌子下面，弟弟在桌子旁边。",
+                "pinyin": "Mèimei zài zhuōzi xiàmiàn, dìdi zài zhuōzi pángbiān.",
+                "english": "The little sister is under the table, and the little brother is next to it."
+              },
+              "choices": [
+                {
+                  "picture": "b1l05-hide-1",
+                  "alt": "The boy is under the table: the boy hides under the table, and the girl stands next to it"
+                },
+                {
+                  "picture": "b1l05-hide-2",
+                  "alt": "The girl is under the table: the girl hides under the table, and the boy stands next to it"
+                },
+                {
+                  "picture": "b1l05-hide-3",
+                  "alt": "Both under the table: the boy and the girl hide under the table together"
+                }
+              ],
+              "key": 1,
+              "why": "妹妹 (the girl) is 在桌子下面, under the table; 弟弟 (the boy) is 在桌子旁邊, next to it.",
+              "focus": {
+                "zh": "在桌子旁邊",
+                "en": "next to the table"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-18",
+                "B1L05-2-17",
+                "B1L05-2-20",
+                "B1L05-2-21"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-house",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l05-read-house-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l05-read-house-1-q",
+              "prompt": {
+                "traditional": "這棟房子前面有兩隻貓。",
+                "simplified": "这栋房子前面有两只猫。",
+                "pinyin": "Zhè dòng fángzi qiánmiàn yǒu liǎng zhī māo.",
+                "english": "There are two cats in front of this house."
+              },
+              "choices": [
+                {
+                  "picture": "b1l05-house-1",
+                  "alt": "Two dogs: two dogs sit on the grass in front of the house"
+                },
+                {
+                  "picture": "b1l05-house-2",
+                  "alt": "Two cats: two cats sit on the grass in front of the house"
+                },
+                {
+                  "picture": "b1l05-house-3",
+                  "alt": "A cat and a dog: one cat and one dog sit on the grass in front of the house"
+                }
+              ],
+              "key": 1,
+              "why": "房子前面有兩隻貓: there are two cats (貓) in front of the house, no dogs.",
+              "focus": {
+                "zh": "有兩隻貓",
+                "en": "there are two cats"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-06",
+                "B1L05-2-05",
+                "B1L05-2-22",
+                "B1L05-3-07"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-read-house-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l05-read-house-2-q",
+              "prompt": {
+                "traditional": "房子前面有一隻貓跟一隻狗。",
+                "simplified": "房子前面有一只猫跟一只狗。",
+                "pinyin": "Fángzi qiánmiàn yǒu yì zhī māo gēn yì zhī gǒu.",
+                "english": "There is a cat and a dog in front of the house."
+              },
+              "choices": [
+                {
+                  "picture": "b1l05-house-1",
+                  "alt": "Two dogs: two dogs sit on the grass in front of the house"
+                },
+                {
+                  "picture": "b1l05-house-2",
+                  "alt": "Two cats: two cats sit on the grass in front of the house"
+                },
+                {
+                  "picture": "b1l05-house-3",
+                  "alt": "A cat and a dog: one cat and one dog sit on the grass in front of the house"
+                }
+              ],
+              "key": 2,
+              "why": "有一隻貓跟一隻狗: one cat and one dog. 跟 joins the two animals.",
+              "focus": {
+                "zh": "一隻貓跟一隻狗",
+                "en": "a cat and a dog"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-05",
+                "B1L05-3-10",
+                "B1L05-2-01",
+                "B1L05-3-08"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-read-house-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l05-read-house-3-q",
+              "prompt": {
+                "traditional": "房子前面沒有貓，有兩隻狗。",
+                "simplified": "房子前面没有猫，有两只狗。",
+                "pinyin": "Fángzi qiánmiàn méiyǒu māo, yǒu liǎng zhī gǒu.",
+                "english": "There are no cats in front of the house. There are two dogs."
+              },
+              "choices": [
+                {
+                  "picture": "b1l05-house-1",
+                  "alt": "Two dogs: two dogs sit on the grass in front of the house"
+                },
+                {
+                  "picture": "b1l05-house-2",
+                  "alt": "Two cats: two cats sit on the grass in front of the house"
+                },
+                {
+                  "picture": "b1l05-house-3",
+                  "alt": "A cat and a dog: one cat and one dog sit on the grass in front of the house"
+                }
+              ],
+              "key": 0,
+              "why": "沒有貓 means there are no cats; 有兩隻狗 means there are two dogs.",
+              "focus": {
+                "zh": "沒有貓，有兩隻狗",
+                "en": "there are / there aren't"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-05",
+                "B1L05-2-14",
+                "B1L05-3-08",
+                "B1L05-3-07"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-menu",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l05-realia-menu-1",
+          "kind": "realia",
+          "picture": "b1l05-cafe-menu",
+          "alt": "A café's afternoon-tea menu board",
+          "transcript": {
+            "traditional": "午安咖啡廳　下午茶 2:00～5:30　咖啡 80元　紅茶 60元　巧克力冰淇淋 90元　水果冰淇淋 75元　蛋糕 70元",
+            "simplified": "午安咖啡厅　下午茶 2:00～5:30　咖啡 80元　红茶 60元　巧克力冰淇淋 90元　水果冰淇淋 75元　蛋糕 70元",
+            "pinyin": "Wǔ'ān Kāfēitīng: xiàwǔ chá 2:00–5:30, kāfēi 80 yuán, hóngchá 60 yuán, qiǎokèlì bīngqílín 90 yuán, shuǐguǒ bīngqílín 75 yuán, dàngāo 70 yuán",
+            "english": "Good Afternoon Café: afternoon tea 2:00–5:30; coffee 80, black tea 60, chocolate ice cream 90, fruit ice cream 75, cake 70"
+          },
+          "questions": [
+            {
+              "id": "b1l05-realia-menu-1-q",
+              "choices": [
+                {
+                  "traditional": "紅茶一杯八十塊。",
+                  "simplified": "红茶一杯八十块。",
+                  "pinyin": "Hóngchá yì bēi bāshí kuài.",
+                  "english": "Black tea is 80 a cup."
+                },
+                {
+                  "traditional": "蛋糕跟咖啡都是七十塊。",
+                  "simplified": "蛋糕跟咖啡都是七十块。",
+                  "pinyin": "Dàngāo gēn kāfēi dōu shì qīshí kuài.",
+                  "english": "The cake and the coffee are both 70."
+                },
+                {
+                  "traditional": "巧克力冰淇淋最貴。",
+                  "simplified": "巧克力冰淇淋最贵。",
+                  "pinyin": "Qiǎokèlì bīngqílín zuì guì.",
+                  "english": "The chocolate ice cream is the most expensive."
+                }
+              ],
+              "key": 2,
+              "why": "巧克力冰淇淋 is 90元, the highest price on the menu. 紅茶 is 60元, not 80元, and the coffee is 80元, not 70元.",
+              "focus": {
+                "zh": "巧克力冰淇淋最貴",
+                "en": "reading a menu"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L05-1-12",
+                "B1L05-1-11",
+                "B1L04-1-21",
+                "B1L03-2-13"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-realia-menu-2",
+          "kind": "realia",
+          "picture": "b1l05-cafe-menu",
+          "alt": "A café's afternoon-tea menu board",
+          "transcript": {
+            "traditional": "午安咖啡廳　下午茶 2:00～5:30　咖啡 80元　紅茶 60元　巧克力冰淇淋 90元　水果冰淇淋 75元　蛋糕 70元",
+            "simplified": "午安咖啡厅　下午茶 2:00～5:30　咖啡 80元　红茶 60元　巧克力冰淇淋 90元　水果冰淇淋 75元　蛋糕 70元",
+            "pinyin": "Wǔ'ān Kāfēitīng: xiàwǔ chá 2:00–5:30, kāfēi 80 yuán, hóngchá 60 yuán, qiǎokèlì bīngqílín 90 yuán, shuǐguǒ bīngqílín 75 yuán, dàngāo 70 yuán",
+            "english": "Good Afternoon Café: afternoon tea 2:00–5:30; coffee 80, black tea 60, chocolate ice cream 90, fruit ice cream 75, cake 70"
+          },
+          "questions": [
+            {
+              "id": "b1l05-realia-menu-2-q",
+              "prompt": {
+                "traditional": "我要一杯紅茶跟一個水果冰淇淋，一共多少錢？",
+                "simplified": "我要一杯红茶跟一个水果冰淇淋，一共多少钱？",
+                "pinyin": "Wǒ yào yì bēi hóngchá gēn yí ge shuǐguǒ bīngqílín, yígòng duōshǎo qián?",
+                "english": "I'd like a cup of black tea and a fruit ice cream. How much is that altogether?"
+              },
+              "choices": [
+                {
+                  "traditional": "一百五十塊",
+                  "simplified": "一百五十块",
+                  "pinyin": "yì bǎi wǔshí kuài",
+                  "english": "150 dollars"
+                },
+                {
+                  "traditional": "一百三十五塊",
+                  "simplified": "一百三十五块",
+                  "pinyin": "yì bǎi sānshíwǔ kuài",
+                  "english": "135 dollars"
+                },
+                {
+                  "traditional": "一百五十五塊",
+                  "simplified": "一百五十五块",
+                  "pinyin": "yì bǎi wǔshíwǔ kuài",
+                  "english": "155 dollars"
+                }
+              ],
+              "key": 1,
+              "why": "紅茶 60元 + 水果冰淇淋 75元 = 135. 150 would be the tea with the chocolate ice cream (90元).",
+              "focus": {
+                "zh": "一共",
+                "en": "adding up prices"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-15",
+                "B1L04-2-16",
+                "B1L04-2-17",
+                "B1L04-2-10"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-house",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l05-realia-house-1",
+          "kind": "realia",
+          "picture": "b1l05-house-ad",
+          "alt": "A house-for-rent notice pinned on a board",
+          "transcript": {
+            "traditional": "學校旁邊的好房子　房間 3間　客廳 1間　廚房 1間　家具：床、桌子、椅子、沙發　沒有電視　每個月 9,000元",
+            "simplified": "学校旁边的好房子　房间 3间　客厅 1间　厨房 1间　家具：床、桌子、椅子、沙发　没有电视　每个月 9,000元",
+            "pinyin": "Xuéxiào pángbiān de hǎo fángzi: fángjiān 3 jiān, kètīng 1 jiān, chúfáng 1 jiān; jiājù: chuáng, zhuōzi, yǐzi, shāfā; méiyǒu diànshì; měi ge yuè 9,000 yuán",
+            "english": "A nice house next to the school: 3 bedrooms, 1 living room, 1 kitchen; furniture: beds, tables, chairs, a sofa; no TV; 9,000 a month"
+          },
+          "questions": [
+            {
+              "id": "b1l05-realia-house-1-q",
+              "choices": [
+                {
+                  "traditional": "這棟房子裡有沙發。",
+                  "simplified": "这栋房子里有沙发。",
+                  "pinyin": "Zhè dòng fángzi lǐ yǒu shāfā.",
+                  "english": "There is a sofa in this house."
+                },
+                {
+                  "traditional": "這棟房子有兩個房間。",
+                  "simplified": "这栋房子有两个房间。",
+                  "pinyin": "Zhè dòng fángzi yǒu liǎng ge fángjiān.",
+                  "english": "This house has two bedrooms."
+                },
+                {
+                  "traditional": "這棟房子裡有一台電視。",
+                  "simplified": "这栋房子里有一台电视。",
+                  "pinyin": "Zhè dòng fángzi lǐ yǒu yì tái diànshì.",
+                  "english": "There is a TV in this house."
+                }
+              ],
+              "key": 0,
+              "why": "The furniture (家具) list ends with 沙發, so there is a sofa. The house has 3 bedrooms (房間 3間), and the notice says 沒有電視.",
+              "focus": {
+                "zh": "有沙發",
+                "en": "what a place has"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-3-02",
+                "B1L05-2-19",
+                "B1L05-2-03",
+                "B1L05-3-03"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-realia-house-2",
+          "kind": "realia",
+          "picture": "b1l05-house-ad",
+          "alt": "A house-for-rent notice pinned on a board",
+          "transcript": {
+            "traditional": "學校旁邊的好房子　房間 3間　客廳 1間　廚房 1間　家具：床、桌子、椅子、沙發　沒有電視　每個月 9,000元",
+            "simplified": "学校旁边的好房子　房间 3间　客厅 1间　厨房 1间　家具：床、桌子、椅子、沙发　没有电视　每个月 9,000元",
+            "pinyin": "Xuéxiào pángbiān de hǎo fángzi: fángjiān 3 jiān, kètīng 1 jiān, chúfáng 1 jiān; jiājù: chuáng, zhuōzi, yǐzi, shāfā; méiyǒu diànshì; měi ge yuè 9,000 yuán",
+            "english": "A nice house next to the school: 3 bedrooms, 1 living room, 1 kitchen; furniture: beds, tables, chairs, a sofa; no TV; 9,000 a month"
+          },
+          "questions": [
+            {
+              "id": "b1l05-realia-house-2-q",
+              "prompt": {
+                "traditional": "這棟房子一個月多少錢？",
+                "simplified": "这栋房子一个月多少钱？",
+                "pinyin": "Zhè dòng fángzi yí ge yuè duōshǎo qián?",
+                "english": "How much is this house a month?"
+              },
+              "choices": [
+                {
+                  "traditional": "九百塊",
+                  "simplified": "九百块",
+                  "pinyin": "jiǔ bǎi kuài",
+                  "english": "900 dollars"
+                },
+                {
+                  "traditional": "九萬塊",
+                  "simplified": "九万块",
+                  "pinyin": "jiǔ wàn kuài",
+                  "english": "90,000 dollars"
+                },
+                {
+                  "traditional": "九千塊",
+                  "simplified": "九千块",
+                  "pinyin": "jiǔ qiān kuài",
+                  "english": "9,000 dollars"
+                }
+              ],
+              "key": 2,
+              "why": "9,000 is 九千: nine thousands. 九百 is 900 and 九萬 is 90,000.",
+              "focus": {
+                "zh": "九千",
+                "en": "reading 9,000"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-18",
+                "B1L04-2-17",
+                "B1L04-2-19"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l05-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l05-living-room",
+          "alt": "A sunny living room seen from behind the TV: the back of a low TV is at the bottom middle of the picture, its screen turned toward the sofa. An older sister sits alone in the middle of the sofa facing us, watching TV, with empty seats on both sides of her. The sofa stands against the back wall. Her little brother sits on the rug one step right in front of her, in the middle, between her and the TV, with his back to her; he is watching TV too. A dog sleeps under a table with two books on top. A cat lies in the sun by the big window. There is no bird.",
+          "questions": [
+            {
+              "id": "b1l05-scene-gap-1-a",
+              "prompt": {
+                "traditional": "客廳裡＿＿兩個人。",
+                "simplified": "客厅里＿＿两个人。"
+              },
+              "choices": [
+                {
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "english": "to be at"
+                },
+                {
+                  "traditional": "有",
+                  "simplified": "有",
+                  "pinyin": "yǒu",
+                  "english": "there is"
+                },
+                {
+                  "traditional": "跟",
+                  "simplified": "跟",
+                  "pinyin": "gēn",
+                  "english": "with"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "客廳裡有兩個人。",
+                "simplified": "客厅里有两个人。",
+                "pinyin": "Kètīng lǐ yǒu liǎng ge rén.",
+                "english": "There are two people in the living room."
+              },
+              "why": "The place comes first, then 有, then what is there: 客廳裡有兩個人. 在 needs the people first (他們在客廳裡), and 跟 (with) is not a verb.",
+              "focus": {
+                "zh": "客廳裡有…",
+                "en": "there is (in a place)"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-09",
+                "B1L05-2-14",
+                "B1L05-2-07"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            },
+            {
+              "id": "b1l05-scene-gap-1-b",
+              "prompt": {
+                "traditional": "狗在桌子＿＿睡覺。",
+                "simplified": "狗在桌子＿＿睡觉。"
+              },
+              "choices": [
+                {
+                  "traditional": "上面",
+                  "simplified": "上面",
+                  "pinyin": "shàngmiàn",
+                  "english": "on top"
+                },
+                {
+                  "traditional": "旁邊",
+                  "simplified": "旁边",
+                  "pinyin": "pángbiān",
+                  "english": "next to"
+                },
+                {
+                  "traditional": "下面",
+                  "simplified": "下面",
+                  "pinyin": "xiàmiàn",
+                  "english": "under"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "狗在桌子下面睡覺。",
+                "simplified": "狗在桌子下面睡觉。",
+                "pinyin": "Gǒu zài zhuōzi xiàmiàn shuìjiào.",
+                "english": "The dog is sleeping under the table."
+              },
+              "why": "In the picture the dog sleeps under the table: 桌子下面. The books are on top of the table.",
+              "focus": {
+                "zh": "桌子下面",
+                "en": "under the table"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-3-08",
+                "B1L05-2-10",
+                "B1L05-2-20"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124",
+                "B1L05-G02-P117"
+              ]
+            },
+            {
+              "id": "b1l05-scene-gap-1-c",
+              "prompt": {
+                "traditional": "這兩＿＿書在桌子上。",
+                "simplified": "这两＿＿书在桌子上。"
+              },
+              "choices": [
+                {
+                  "traditional": "本",
+                  "simplified": "本",
+                  "pinyin": "běn",
+                  "english": "(measure word for books)"
+                },
+                {
+                  "traditional": "張",
+                  "simplified": "张",
+                  "pinyin": "zhāng",
+                  "english": "(measure word for tables, chairs)"
+                },
+                {
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "gè",
+                  "english": "(general measure word)"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "這兩本書在桌子上。",
+                "simplified": "这两本书在桌子上。",
+                "pinyin": "Zhè liǎng běn shū zài zhuōzi shàng.",
+                "english": "These two books are on the table."
+              },
+              "why": "本 counts books. 張 counts flat things such as tables and beds, and 個 is the general measure word, but books always take 本.",
+              "focus": {
+                "zh": "這兩本書",
+                "en": "these two books"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-09",
+                "B1L03-1-07",
+                "B1L03-1-08",
+                "B1L03-1-05"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l05-living-room",
+          "alt": "A sunny living room seen from behind the TV: the back of a low TV is at the bottom middle of the picture, its screen turned toward the sofa. An older sister sits alone in the middle of the sofa facing us, watching TV, with empty seats on both sides of her. The sofa stands against the back wall. Her little brother sits on the rug one step right in front of her, in the middle, between her and the TV, with his back to her; he is watching TV too. A dog sleeps under a table with two books on top. A cat lies in the sun by the big window. There is no bird.",
+          "questions": [
+            {
+              "id": "b1l05-scene-gap-2-a",
+              "prompt": {
+                "traditional": "弟弟在姐姐＿＿看電視。",
+                "simplified": "弟弟在姐姐＿＿看电视。"
+              },
+              "choices": [
+                {
+                  "traditional": "後面",
+                  "simplified": "后面",
+                  "pinyin": "hòumiàn",
+                  "english": "behind"
+                },
+                {
+                  "traditional": "前面",
+                  "simplified": "前面",
+                  "pinyin": "qiánmiàn",
+                  "english": "in front"
+                },
+                {
+                  "traditional": "旁邊",
+                  "simplified": "旁边",
+                  "pinyin": "pángbiān",
+                  "english": "next to"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "弟弟在姐姐前面看電視。",
+                "simplified": "弟弟在姐姐前面看电视。",
+                "pinyin": "Dìdi zài jiějie qiánmiàn kàn diànshì.",
+                "english": "My younger brother is watching TV in front of my older sister."
+              },
+              "why": "In the picture the boy sits on the rug right in front of his sister, in the middle between her and the TV, with his back to her: 姐姐前面. He is not behind her (後面) or beside her on the sofa (旁邊).",
+              "focus": {
+                "zh": "姐姐前面",
+                "en": "in front of"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-22",
+                "B1L05-2-23",
+                "B1L05-2-21",
+                "B1L05-2-17"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124",
+                "B1L05-G02-P117"
+              ]
+            },
+            {
+              "id": "b1l05-scene-gap-2-b",
+              "prompt": {
+                "traditional": "電視＿＿沙發前面。",
+                "simplified": "电视＿＿沙发前面。"
+              },
+              "choices": [
+                {
+                  "traditional": "有",
+                  "simplified": "有",
+                  "pinyin": "yǒu",
+                  "english": "there is"
+                },
+                {
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "english": "to be"
+                },
+                {
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "english": "to be at"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "電視在沙發前面。",
+                "simplified": "电视在沙发前面。",
+                "pinyin": "Diànshì zài shāfā qiánmiàn.",
+                "english": "The TV is in front of the sofa."
+              },
+              "why": "The TV stands in front of the sofa. The thing comes first, then 在 and the place: 電視在沙發前面. 有 would need the place first (沙發前面有電視).",
+              "focus": {
+                "zh": "電視在沙發前面",
+                "en": "saying where a thing is"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-3-03",
+                "B1L05-1-02",
+                "B1L05-2-22",
+                "B1L05-2-19"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            },
+            {
+              "id": "b1l05-scene-gap-2-c",
+              "prompt": {
+                "traditional": "姐姐喜歡看電視，弟弟＿＿喜歡看電視。",
+                "simplified": "姐姐喜欢看电视，弟弟＿＿喜欢看电视。"
+              },
+              "choices": [
+                {
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "english": "also"
+                },
+                {
+                  "traditional": "和",
+                  "simplified": "和",
+                  "pinyin": "hé",
+                  "english": "and"
+                },
+                {
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "english": "again"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "姐姐喜歡看電視，弟弟也喜歡看電視。",
+                "simplified": "姐姐喜欢看电视，弟弟也喜欢看电视。",
+                "pinyin": "Jiějie xǐhuān kàn diànshì, dìdi yě xǐhuān kàn diànshì.",
+                "english": "My older sister likes watching TV, and my younger brother likes it too."
+              },
+              "why": "Both of them are watching TV. 也 means also: the older sister likes TV, and the younger brother likes it too. 和 joins nouns and can't sit before a verb.",
+              "focus": {
+                "zh": "也",
+                "en": "also"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-08",
+                "B1L01-2-06"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l05-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我家的房子不大，可是很漂亮。客廳裡有一{1}大沙發，也有一{2}新電視。妹妹常常在客廳裡玩，我們家的狗{3}常常在那裡睡覺。我不喜歡看電視，我喜歡{4}我的房間裡聽音樂。",
+            "simplified": "我家的房子不大，可是很漂亮。客厅里有一{1}大沙发，也有一{2}新电视。妹妹常常在客厅里玩，我们家的狗{3}常常在那里睡觉。我不喜欢看电视，我喜欢{4}我的房间里听音乐。",
+            "pinyin": "Wǒ jiā de fángzi bú dà, kěshì hěn piàoliàng. Kètīng lǐ yǒu yì zhāng dà shāfā, yě yǒu yì tái xīn diànshì. Mèimei chángcháng zài kètīng lǐ wán, wǒmen jiā de gǒu yě chángcháng zài nàlǐ shuìjiào. Wǒ bù xǐhuān kàn diànshì, wǒ xǐhuān zài wǒ de fángjiān lǐ tīng yīnyuè.",
+            "english": "Our house isn't big, but it's very pretty. In the living room there's a big sofa and also a new TV. My younger sister often plays in the living room, and our dog often sleeps there too. I don't like watching TV; I like listening to music in my own room."
+          },
+          "bank": [
+            {
+              "traditional": "在",
+              "simplified": "在",
+              "pinyin": "zài",
+              "english": "to be at"
+            },
+            {
+              "traditional": "本",
+              "simplified": "本",
+              "pinyin": "běn",
+              "english": "(measure word for books)"
+            },
+            {
+              "traditional": "台",
+              "simplified": "台",
+              "pinyin": "tái",
+              "english": "(measure word for machines)"
+            },
+            {
+              "traditional": "也",
+              "simplified": "也",
+              "pinyin": "yě",
+              "english": "also"
+            },
+            {
+              "traditional": "張",
+              "simplified": "张",
+              "pinyin": "zhāng",
+              "english": "(measure word for tables, chairs, sofas)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-paragraph-1-1",
+              "key": 4,
+              "why": "張 counts flat furniture such as tables, beds and sofas: 一張大沙發.",
+              "focus": {
+                "zh": "一張沙發",
+                "en": "a sofa (張)"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-12",
+                "B1L05-2-19"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            },
+            {
+              "id": "b1l05-paragraph-1-2",
+              "key": 2,
+              "why": "台 counts machines: 一台電視 is a TV. 張 is for furniture.",
+              "focus": {
+                "zh": "一台電視",
+                "en": "a TV (台)"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-3-04",
+                "B1L05-3-03"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            },
+            {
+              "id": "b1l05-paragraph-1-3",
+              "key": 3,
+              "why": "也 means also: my sister is often in the living room, and the dog is often there too. 在 can't sit in front of 常常.",
+              "focus": {
+                "zh": "也",
+                "en": "also"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-08"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97"
+              ]
+            },
+            {
+              "id": "b1l05-paragraph-1-4",
+              "key": 0,
+              "why": "Put 在 + place before the action: 在我的房間裡聽音樂, listening to music in my room.",
+              "focus": {
+                "zh": "在我的房間裡聽音樂",
+                "en": "place before the action"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-2-03",
+                "B1L05-1-04",
+                "B1L05-1-05"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "星期六下午，我{1}姐姐一起去喝下午茶。那家咖啡廳在學校{2}，那裡的冰淇淋都不錯，巧克力的{3}好吃。五點我們要回家，可是姐姐的錢包不在桌子上，也不在桌子下面。我們{4}椅子下面找，錢包在那裡！",
+            "simplified": "星期六下午，我{1}姐姐一起去喝下午茶。那家咖啡厅在学校{2}，那里的冰淇淋都不错，巧克力的{3}好吃。五点我们要回家，可是姐姐的钱包不在桌子上，也不在桌子下面。我们{4}椅子下面找，钱包在那里！",
+            "pinyin": "Xīngqíliù xiàwǔ, wǒ gēn jiějie yìqǐ qù hē xiàwǔ chá. Nà jiā kāfēitīng zài xuéxiào pángbiān, nàlǐ de bīngqílín dōu búcuò, qiǎokèlì de zuì hǎochī. Wǔ diǎn wǒmen yào huí jiā, kěshì jiějie de qiánbāo bú zài zhuōzi shàng, yě bú zài zhuōzi xiàmiàn. Wǒmen zài yǐzi xiàmiàn zhǎo, qiánbāo zài nàlǐ!",
+            "english": "On Saturday afternoon, my older sister and I go for afternoon tea. The café is next to the school, and all the ice cream there is good; the chocolate one is the best. At five we want to go home, but my sister's wallet isn't on the table, and it isn't under the table either. We look under the chairs, and there it is!"
+          },
+          "bank": [
+            {
+              "traditional": "最",
+              "simplified": "最",
+              "pinyin": "zuì",
+              "english": "most"
+            },
+            {
+              "traditional": "在",
+              "simplified": "在",
+              "pinyin": "zài",
+              "english": "to be at"
+            },
+            {
+              "traditional": "再",
+              "simplified": "再",
+              "pinyin": "zài",
+              "english": "again"
+            },
+            {
+              "traditional": "跟",
+              "simplified": "跟",
+              "pinyin": "gēn",
+              "english": "with"
+            },
+            {
+              "traditional": "旁邊",
+              "simplified": "旁边",
+              "pinyin": "pángbiān",
+              "english": "next to"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l05-paragraph-2-1",
+              "key": 3,
+              "why": "跟 + person + 一起 means together with someone: 我跟姐姐一起去.",
+              "focus": {
+                "zh": "跟…一起",
+                "en": "together with"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-01",
+                "B1L05-2-16"
+              ]
+            },
+            {
+              "id": "b1l05-paragraph-2-2",
+              "key": 4,
+              "why": "A direction word follows the place: 學校旁邊 means next to the school.",
+              "focus": {
+                "zh": "學校旁邊",
+                "en": "next to the school"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-21",
+                "B1L05-1-08"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124",
+                "B1L05-G01-P116"
+              ]
+            },
+            {
+              "id": "b1l05-paragraph-2-3",
+              "key": 0,
+              "why": "All the ice cream is good (都不錯), and the chocolate one is 最好吃, the best.",
+              "focus": {
+                "zh": "最好吃",
+                "en": "the most delicious"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-21",
+                "B1L04-1-18"
+              ]
+            },
+            {
+              "id": "b1l05-paragraph-2-4",
+              "key": 1,
+              "why": "在 + place comes before the action: 在椅子下面找, look under the chairs. 再 (again) sounds the same but can't come right before a place.",
+              "focus": {
+                "zh": "在椅子下面找",
+                "en": "place before the action"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-2-25",
+                "B1L05-2-11",
+                "B1L05-2-20"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l05-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n媽媽今天很忙，晚上八點回家。哥哥六點回家，你們七點在家吃晚飯吧。牛肉麵在廚房裡，你們一起吃。\n媽媽",
+            "simplified": "中明：\n妈妈今天很忙，晚上八点回家。哥哥六点回家，你们七点在家吃晚饭吧。牛肉面在厨房里，你们一起吃。\n妈妈",
+            "pinyin": "Zhōngmíng: Māma jīntiān hěn máng, wǎnshàng bā diǎn huí jiā. Gēge liù diǎn huí jiā, nǐmen qī diǎn zài jiā chī wǎnfàn ba. Niúròu miàn zài chúfáng lǐ, nǐmen yìqǐ chī. Māma",
+            "english": "Zhongming: I'm very busy today and will be home at eight tonight. Your brother gets home at six; you two have dinner at home at seven. The beef noodles are in the kitchen; eat them together. Mom"
+          },
+          "questions": [
+            {
+              "id": "b1l05-reading-note-1-q",
+              "prompt": {
+                "traditional": "中明的媽媽幾點回家？",
+                "simplified": "中明的妈妈几点回家？",
+                "pinyin": "Zhōngmíng de māma jǐ diǎn huí jiā?",
+                "english": "What time does Zhongming's mom get home?"
+              },
+              "choices": [
+                {
+                  "traditional": "六點",
+                  "simplified": "六点",
+                  "pinyin": "liù diǎn",
+                  "english": "six o'clock"
+                },
+                {
+                  "traditional": "八點",
+                  "simplified": "八点",
+                  "pinyin": "bā diǎn",
+                  "english": "eight o'clock"
+                },
+                {
+                  "traditional": "七點",
+                  "simplified": "七点",
+                  "pinyin": "qī diǎn",
+                  "english": "seven o'clock"
+                }
+              ],
+              "key": 1,
+              "why": "Mom writes 晚上八點回家. 六點 is when his brother gets home, and 七點 is dinner.",
+              "focus": {
+                "zh": "八點回家",
+                "en": "what time someone comes home"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-30",
+                "B1L02-1-22",
+                "B1L02-1-23",
+                "B1L02-2-10"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55",
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l05-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "弟弟：\n我今天上午九點有課，十一點半下課。我們十二點一起吃午飯吧，我請你。\n姐姐",
+            "simplified": "弟弟：\n我今天上午九点有课，十一点半下课。我们十二点一起吃午饭吧，我请你。\n姐姐",
+            "pinyin": "Dìdi: Wǒ jīntiān shàngwǔ jiǔ diǎn yǒu kè, shíyī diǎn bàn xiàkè. Wǒmen shí'èr diǎn yìqǐ chī wǔfàn ba, wǒ qǐng nǐ. Jiějie",
+            "english": "Little brother: Today I have class at nine in the morning and finish at half past eleven. Let's have lunch together at twelve. My treat. Your big sister"
+          },
+          "questions": [
+            {
+              "id": "b1l05-reading-note-2-q",
+              "prompt": {
+                "traditional": "姐姐跟弟弟幾點吃午飯？",
+                "simplified": "姐姐跟弟弟几点吃午饭？",
+                "pinyin": "Jiějie gēn dìdi jǐ diǎn chī wǔfàn?",
+                "english": "What time are the sister and brother having lunch?"
+              },
+              "choices": [
+                {
+                  "traditional": "九點",
+                  "simplified": "九点",
+                  "pinyin": "jiǔ diǎn",
+                  "english": "nine o'clock"
+                },
+                {
+                  "traditional": "十一點半",
+                  "simplified": "十一点半",
+                  "pinyin": "shíyī diǎn bàn",
+                  "english": "half past eleven"
+                },
+                {
+                  "traditional": "十二點",
+                  "simplified": "十二点",
+                  "pinyin": "shí'èr diǎn",
+                  "english": "twelve o'clock"
+                }
+              ],
+              "key": 2,
+              "why": "She writes 我們十二點一起吃午飯吧. 九點 is when her class starts, and 十一點半 is when it ends.",
+              "focus": {
+                "zh": "十二點一起吃午飯",
+                "en": "what time something happens"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-30",
+                "B1L02-3-04",
+                "B1L02-1-27",
+                "B1L02-1-02"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55",
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

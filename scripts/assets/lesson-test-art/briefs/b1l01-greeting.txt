@@ -1,0 +1,11 @@
+Kind: strip
+Style: scene
+Characters: src/assets/images/characters/portraits/yiwen.webp, src/assets/images/characters/portraits/zhongming.webp
+
+SUBJECT: a 3-panel picture strip for a listening question ("which picture matches what you hear?"). The characters are Yiwen (attached portrait: high dark ponytail with a coral tie, teal jacket) and Zhongming (attached portrait: curly black hair, yellow jacket over a blue T-shirt); keep both identities identical in all three panels.
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: the same school gate with a round wall clock on a post (a plain face with hands only, no numerals), Yiwen on the left and Zhongming on the right, both from the knees up, each with a school bag on one shoulder. Panels 1 and 2 use the same pose: they face each other and wave hello as they meet. Panel 3 changes only the pose needed for a night-time "good night": they stand the same distance apart but are turning away toward home, waving goodbye over the shoulder. Only the TIME OF DAY changes (sky, light and the clock hands):
+- Panel 1 (left): MORNING. A pale pink-and-yellow sky, the sun just rising low on the horizon, long soft shadows; the clock hands show eight o'clock.
+- Panel 2 (middle): AFTERNOON. A bright blue sky with the sun high overhead, short shadows; the clock hands show two o'clock.
+- Panel 3 (right): NIGHT. A dark navy sky with a crescent moon and a few stars, a lit street lamp by the gate; the clock hands show nine o'clock; the two are turning toward home, waving goodbye.
+No text anywhere, no numbers on the clock.

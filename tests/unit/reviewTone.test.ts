@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { claimReviewTone } from '../../src/hooks/useReviewTone';
+import { claimReviewTone, setToneOrigin } from '../../src/hooks/useReviewTone';
 
 test('review tone claims survive overlapping owners and delayed, skipped transition callbacks', async () => {
   const oldDocument = Object.getOwnPropertyDescriptor(globalThis, 'document');
@@ -17,7 +17,7 @@ test('review tone claims survive overlapping owners and delayed, skipped transit
   };
   const doc = {
     hidden: false,
-    documentElement: { dataset, style, classList: { add: (name: string) => classes.add(name), remove: (name: string) => classes.delete(name) } },
+    documentElement: { dataset, style, classList: { add: (name: string) => classes.add(name), remove: (...names: string[]) => names.forEach((name) => classes.delete(name)) } },
     startViewTransition: undefined as undefined | ((apply: () => void) => object),
   };
   Object.defineProperty(globalThis, 'document', { configurable: true, value: doc });
@@ -54,19 +54,30 @@ test('review tone claims survive overlapping owners and delayed, skipped transit
     assert.equal(dataset.tone, 'review', 'a delayed release cannot clear a newer owner');
     queued[0].finish(); queued[1].finish();
     await Promise.resolve();
-    assert.ok(classes.has('review-tone-transition'), 'old cleanup cannot remove a new transition class');
+    assert.ok(classes.has('tone-fade-transition'), 'old cleanup cannot remove a new transition class');
+    assert.ok(!classes.has('review-tone-transition'), 'with no tapped point the tone fades instead of spreading from the middle');
     queued[2].apply(); queued[2].finish();
     await Promise.resolve();
-    assert.ok(!classes.has('review-tone-transition'));
-    reduced = true;
+    assert.ok(!classes.has('tone-fade-transition'));
     fifth();
+    queued[3].apply(); queued[3].finish();
+    await Promise.resolve();
+    setToneOrigin(100, 200);
+    const spread = claim();
+    assert.ok(classes.has('review-tone-transition') && !classes.has('tone-fade-transition'), 'a tapped point spreads the tone from there');
+    assert.equal(styleProps.get('--tone-r'), `${Math.hypot(900, 600)}px`, 'the spread ends at the farthest corner');
+    queued[4].apply(); queued[4].finish();
+    await Promise.resolve();
+    assert.ok(!classes.has('review-tone-transition') && !styleProps.has('--tone-x'), 'the origin is used once');
+    reduced = true;
+    spread();
     assert.equal(dataset.tone, undefined);
     const sixth = claim(); sixth();
-    assert.equal(queued.length, 3, 'reduced motion creates no snapshots');
+    assert.equal(queued.length, 5, 'reduced motion creates no snapshots');
     reduced = false;
     doc.hidden = true;
     const seventh = claim(); seventh();
-    assert.equal(queued.length, 3, 'hidden tabs create no snapshots');
+    assert.equal(queued.length, 5, 'hidden tabs create no snapshots');
   } finally {
     reduced = true;
     releases.forEach((release) => release());

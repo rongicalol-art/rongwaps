@@ -1,0 +1,2559 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l11",
+  "bookId": 1,
+  "lessonId": 11,
+  "band": "A",
+  "allowWords": [
+    "友美"
+  ],
+  "slots": [
+    {
+      "id": "hear-chat",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l11-hear-chat-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們不常見面，常常上網聊天。",
+              "simplified": "我们不常见面，常常上网聊天。",
+              "pinyin": "Wǒmen bù cháng jiànmiàn, chángcháng shàngwǎng liáotiān.",
+              "english": "We don't meet much; we often chat online."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-hear-chat-1-q",
+              "choices": [
+                {
+                  "picture": "b1l11-chat-1",
+                  "alt": "On the phone: she talks on her phone at her desk; the laptop is closed and nobody is with her"
+                },
+                {
+                  "picture": "b1l11-chat-2",
+                  "alt": "Online: she types a chat on her open laptop at her desk; nobody is with her"
+                },
+                {
+                  "picture": "b1l11-chat-3",
+                  "alt": "Face to face: a friend sits next to her at the desk and they talk; the laptop is closed"
+                }
+              ],
+              "key": 1,
+              "why": "上網聊天 means chatting on the internet: she types on her laptop. They do not 見面 (meet) much.",
+              "focus": {
+                "zh": "上網聊天",
+                "en": "chatting online"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L06-2-08",
+                "B1L11-1-10",
+                "B1L11-1-13"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-hear-chat-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我朋友沒有電腦，所以我們常常打電話聊天。",
+              "simplified": "我朋友没有电脑，所以我们常常打电话聊天。",
+              "pinyin": "Wǒ péngyǒu méiyǒu diànnǎo, suǒyǐ wǒmen chángcháng dǎ diànhuà liáotiān.",
+              "english": "My friend doesn't have a computer, so we often chat on the phone."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-hear-chat-2-q",
+              "choices": [
+                {
+                  "picture": "b1l11-chat-1",
+                  "alt": "On the phone: she talks on her phone at her desk; the laptop is closed and nobody is with her"
+                },
+                {
+                  "picture": "b1l11-chat-2",
+                  "alt": "Online: she types a chat on her open laptop at her desk; nobody is with her"
+                },
+                {
+                  "picture": "b1l11-chat-3",
+                  "alt": "Face to face: a friend sits next to her at the desk and they talk; the laptop is closed"
+                }
+              ],
+              "key": 0,
+              "why": "打電話聊天 means chatting on the phone. Her friend has no 電腦 (computer), so they do not chat online.",
+              "focus": {
+                "zh": "打電話聊天",
+                "en": "chatting on the phone"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L10-3-01",
+                "B1L11-1-10",
+                "B1L06-2-09"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-hear-chat-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們不在網路上聊天，我們喜歡見面聊。",
+              "simplified": "我们不在网路上聊天，我们喜欢见面聊。",
+              "pinyin": "Wǒmen bú zài wǎnglù shàng liáotiān, wǒmen xǐhuān jiànmiàn liáo.",
+              "english": "We don't chat online; we like to meet up and talk."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-hear-chat-3-q",
+              "choices": [
+                {
+                  "picture": "b1l11-chat-1",
+                  "alt": "On the phone: she talks on her phone at her desk; the laptop is closed and nobody is with her"
+                },
+                {
+                  "picture": "b1l11-chat-2",
+                  "alt": "Online: she types a chat on her open laptop at her desk; nobody is with her"
+                },
+                {
+                  "picture": "b1l11-chat-3",
+                  "alt": "Face to face: a friend sits next to her at the desk and they talk; the laptop is closed"
+                }
+              ],
+              "key": 2,
+              "why": "見面聊 means meeting up and talking face to face. 不在網路上聊天 rules out the laptop.",
+              "focus": {
+                "zh": "見面聊",
+                "en": "meeting to chat"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-13",
+                "B1L11-1-12",
+                "B1L11-3-01"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-mood",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l11-hear-mood-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "她給我留言了，我今天心情很好！",
+              "simplified": "她给我留言了，我今天心情很好！",
+              "pinyin": "Tā gěi wǒ liúyán le, wǒ jīntiān xīnqíng hěn hǎo!",
+              "english": "She left me a message. I'm in a great mood today!"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-hear-mood-1-q",
+              "choices": [
+                {
+                  "picture": "b1l11-mood-1",
+                  "alt": "Happy: the young man smiles widely at his desk with both arms up"
+                },
+                {
+                  "picture": "b1l11-mood-2",
+                  "alt": "Nervous: the young man sits stiffly at his desk with wide eyes, a drop of sweat and his hands gripping his knees"
+                },
+                {
+                  "picture": "b1l11-mood-3",
+                  "alt": "Sad: the young man sits slumped at his desk, head down, with a sad face"
+                }
+              ],
+              "key": 0,
+              "why": "心情很好 means in a good mood: he is happy because she left him a message.",
+              "focus": {
+                "zh": "心情很好",
+                "en": "in a good mood"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-3-12",
+                "B1L11-1-08"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-hear-mood-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "明天要跟她見面，我有一點緊張。",
+              "simplified": "明天要跟她见面，我有一点紧张。",
+              "pinyin": "Míngtiān yào gēn tā jiànmiàn, wǒ yǒu yìdiǎn jǐnzhāng.",
+              "english": "I'm meeting her tomorrow, and I'm a bit nervous."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-hear-mood-2-q",
+              "choices": [
+                {
+                  "picture": "b1l11-mood-1",
+                  "alt": "Happy: the young man smiles widely at his desk with both arms up"
+                },
+                {
+                  "picture": "b1l11-mood-2",
+                  "alt": "Nervous: the young man sits stiffly at his desk with wide eyes, a drop of sweat and his hands gripping his knees"
+                },
+                {
+                  "picture": "b1l11-mood-3",
+                  "alt": "Sad: the young man sits slumped at his desk, head down, with a sad face"
+                }
+              ],
+              "key": 1,
+              "why": "有一點緊張 means a bit nervous, not sad or happy.",
+              "focus": {
+                "zh": "有一點緊張",
+                "en": "a bit nervous"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L09-3-12",
+                "B1L11-1-13",
+                "B1L06-2-06"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-hear-mood-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "今天考試考得不好，我心情不好。",
+              "simplified": "今天考试考得不好，我心情不好。",
+              "pinyin": "Jīntiān kǎoshì kǎo de bù hǎo, wǒ xīnqíng bù hǎo.",
+              "english": "I didn't do well on today's test, and I'm in a bad mood."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-hear-mood-3-q",
+              "choices": [
+                {
+                  "picture": "b1l11-mood-1",
+                  "alt": "Happy: the young man smiles widely at his desk with both arms up"
+                },
+                {
+                  "picture": "b1l11-mood-2",
+                  "alt": "Nervous: the young man sits stiffly at his desk with wide eyes, a drop of sweat and his hands gripping his knees"
+                },
+                {
+                  "picture": "b1l11-mood-3",
+                  "alt": "Sad: the young man sits slumped at his desk, head down, with a sad face"
+                }
+              ],
+              "key": 2,
+              "why": "心情不好 means in a bad mood: listen for 不好, not 很好.",
+              "focus": {
+                "zh": "心情不好",
+                "en": "in a bad mood"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-3-12",
+                "B1L09-3-14"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-card",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l11-picture-card-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L11-R01",
+            "alt": "Night in a dorm room (dark sky with stars outside the window, a desk lamp on): Youmei (short reddish-brown hair, red cardigan) sits at the desk holding an open card with flowers on it in both hands and looking at it; Yiwen (black ponytail, teal jacket) leans next to her, chin on her hand. Right beside Youmei on the desk is an open laptop that nobody is using; there are piles of books and an envelope on the desk too. Nobody holds a pen. There is no TV, no phone and no camera anywhere in the room."
+          },
+          "questions": [
+            {
+              "id": "b1l11-picture-card-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "現在是晚上，友美手上有一張卡片。",
+                  "simplified": "现在是晚上，友美手上有一张卡片。",
+                  "pinyin": "Xiànzài shì wǎnshàng, Yǒuměi shǒu shàng yǒu yì zhāng kǎpiàn.",
+                  "english": "It's evening, and Youmei has a card in her hands."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是晚上，友美手上有一支手機。",
+                  "simplified": "现在是晚上，友美手上有一支手机。",
+                  "pinyin": "Xiànzài shì wǎnshàng, Yǒuměi shǒu shàng yǒu yì zhī shǒujī.",
+                  "english": "It's evening, and Youmei has a phone in her hands."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是早上，友美手上有一支手機。",
+                  "simplified": "现在是早上，友美手上有一支手机。",
+                  "pinyin": "Xiànzài shì zǎoshàng, Yǒuměi shǒu shàng yǒu yì zhī shǒujī.",
+                  "english": "It's morning, and Youmei has a phone in her hands."
+                }
+              ],
+              "key": 0,
+              "why": "It is dark with stars outside, so it is 晚上 (evening), and Youmei holds a card (卡片), not a phone (手機).",
+              "focus": {
+                "zh": "手上有一張卡片",
+                "en": "a card in her hands"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-04",
+                "B1L02-2-10",
+                "B1L06-2-10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-picture-card-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L11-R01",
+            "alt": "Night in a dorm room (dark sky with stars outside the window, a desk lamp on): Youmei (short reddish-brown hair, red cardigan) sits at the desk holding an open card with flowers on it in both hands and looking at it; Yiwen (black ponytail, teal jacket) leans next to her, chin on her hand. Right beside Youmei on the desk is an open laptop that nobody is using; there are piles of books and an envelope on the desk too. Nobody holds a pen. There is no TV, no phone and no camera anywhere in the room."
+          },
+          "questions": [
+            {
+              "id": "b1l11-picture-card-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "友美在給朋友打電話。",
+                  "simplified": "友美在给朋友打电话。",
+                  "pinyin": "Yǒuměi zài gěi péngyǒu dǎ diànhuà.",
+                  "english": "Youmei is calling a friend."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "友美在看一張卡片。",
+                  "simplified": "友美在看一张卡片。",
+                  "pinyin": "Yǒuměi zài kàn yì zhāng kǎpiàn.",
+                  "english": "Youmei is looking at a card."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "友美在用電腦上網。",
+                  "simplified": "友美在用电脑上网。",
+                  "pinyin": "Yǒuměi zài yòng diànnǎo shàngwǎng.",
+                  "english": "Youmei is using the computer to go online."
+                }
+              ],
+              "key": 1,
+              "why": "Youmei holds an open card and looks at it: 在看一張卡片. The laptop is beside her, but she is not using it, and she has no phone.",
+              "focus": {
+                "zh": "在看一張卡片",
+                "en": "reading a card"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-04",
+                "B1L03-1-06",
+                "B1L06-2-08",
+                "B1L06-2-09"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-dinner",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l11-picture-dinner-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L11-R03",
+            "alt": "Evening at a restaurant (dark sky and city lights outside the windows): Youmei and Yiwen sit side by side at a round table, smiling and making V signs, while a young man in a blue shirt, seen from behind, takes their photo with his phone. On the table are a few plates of food (a big dish of noodles, a plate of meat and vegetables, a plate of green vegetables), small empty bowls and glasses of water. No coffee cups, no menu, no card and no pen."
+          },
+          "questions": [
+            {
+              "id": "b1l11-picture-dinner-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "那個男生在幫兩個女生點菜。",
+                  "simplified": "那个男生在帮两个女生点菜。",
+                  "pinyin": "Nàge nánshēng zài bāng liǎng ge nǚshēng diǎncài.",
+                  "english": "The young man is ordering food for the two young women."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那個男生在幫兩個女生照相。",
+                  "simplified": "那个男生在帮两个女生照相。",
+                  "pinyin": "Nàge nánshēng zài bāng liǎng ge nǚshēng zhàoxiàng.",
+                  "english": "The young man is taking a photo of the two young women."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那個男生在幫兩個女生寫卡片。",
+                  "simplified": "那个男生在帮两个女生写卡片。",
+                  "pinyin": "Nàge nánshēng zài bāng liǎng ge nǚshēng xiě kǎpiàn.",
+                  "english": "The young man is writing a card for the two young women."
+                }
+              ],
+              "key": 1,
+              "why": "The young man holds up his phone and takes a photo of the two young women: 幫兩個女生照相 (幫 = for, on their behalf). Nobody is ordering food (點菜) or writing a card (寫卡片).",
+              "focus": {
+                "zh": "幫兩個女生照相",
+                "en": "taking their photo"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-3-08",
+                "B1L11-2-12",
+                "B1L08-3-05",
+                "B1L08-3-04",
+                "B1L05-2-24"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-picture-dinner-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L11-R03",
+            "alt": "Evening at a restaurant (dark sky and city lights outside the windows): Youmei and Yiwen sit side by side at a round table, smiling and making V signs, while a young man in a blue shirt, seen from behind, takes their photo with his phone. On the table are a few plates of food (a big dish of noodles, a plate of meat and vegetables, a plate of green vegetables), small empty bowls and glasses of water. No coffee cups, no menu, no card and no pen."
+          },
+          "questions": [
+            {
+              "id": "b1l11-picture-dinner-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "桌子上只有一盤菜，杯子裡有水。",
+                  "simplified": "桌子上只有一盘菜，杯子里有水。",
+                  "pinyin": "Zhuōzi shàng zhǐ yǒu yì pán cài, bēizi lǐ yǒu shuǐ.",
+                  "english": "There is only one plate of food on the table, and there is water in the glasses."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "桌子上只有一盤菜，杯子裡有咖啡。",
+                  "simplified": "桌子上只有一盘菜，杯子里有咖啡。",
+                  "pinyin": "Zhuōzi shàng zhǐ yǒu yì pán cài, bēizi lǐ yǒu kāfēi.",
+                  "english": "There is only one plate of food on the table, and there is coffee in the cups."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "桌子上有一些菜，杯子裡有水。",
+                  "simplified": "桌子上有一些菜，杯子里有水。",
+                  "pinyin": "Zhuōzi shàng yǒu yìxiē cài, bēizi lǐ yǒu shuǐ.",
+                  "english": "There are some dishes on the table, and there is water in the glasses."
+                }
+              ],
+              "key": 2,
+              "why": "There are three dishes on the table, so 有一些菜 (some dishes) is right, not 只有一盤菜 (only one plate). The glasses (杯子) hold water (水), not coffee.",
+              "focus": {
+                "zh": "有一些菜",
+                "en": "some dishes"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L03-1-12",
+                "B1L11-3-06",
+                "B1L11-3-05",
+                "B1L01-3-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-met",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l11-dialogue-met-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳跟妳的男朋友是在哪裡認識的？",
+              "simplified": "你跟你的男朋友是在哪里认识的？",
+              "pinyin": "Nǐ gēn nǐ de nánpéngyǒu shì zài nǎlǐ rènshì de?",
+              "english": "Where did you and your boyfriend meet?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們是在書法課上認識的，不是在網路上。",
+              "simplified": "我们是在书法课上认识的，不是在网路上。",
+              "pinyin": "Wǒmen shì zài shūfǎ kè shàng rènshì de, bú shì zài wǎnglù shàng.",
+              "english": "We met in calligraphy class, not online."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-met-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的跟她的男朋友是在哪裡認識的？",
+                "simplified": "女的跟她的男朋友是在哪里认识的？",
+                "pinyin": "Nǚ de gēn tā de nánpéngyǒu shì zài nǎlǐ rènshì de?",
+                "english": "Where did the woman and her boyfriend meet?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在網路上",
+                  "simplified": "在网路上",
+                  "pinyin": "zài wǎnglù shàng",
+                  "english": "online"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在書法課上",
+                  "simplified": "在书法课上",
+                  "pinyin": "zài shūfǎ kè shàng",
+                  "english": "in calligraphy class"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在圖書館",
+                  "simplified": "在图书馆",
+                  "pinyin": "zài túshūguǎn",
+                  "english": "at the library"
+                }
+              ],
+              "key": 1,
+              "why": "是在書法課上認識的 puts the focus on where they met. She says 不是在網路上: not online.",
+              "focus": {
+                "zh": "是在…認識的",
+                "en": "where they met (是…的)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-01",
+                "B1L09-1-11",
+                "B1L11-3-01"
+              ],
+              "grammarIds": [
+                "B1L11-G03-P251"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-met-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳跟妳的新朋友是什麼時候認識的？",
+              "simplified": "你跟你的新朋友是什么时候认识的？",
+              "pinyin": "Nǐ gēn nǐ de xīn péngyǒu shì shénme shíhòu rènshì de?",
+              "english": "When did you and your new friend get to know each other?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們是上個月認識的，昨天見面了。",
+              "simplified": "我们是上个月认识的，昨天见面了。",
+              "pinyin": "Wǒmen shì shàng ge yuè rènshì de, zuótiān jiànmiàn le.",
+              "english": "We got to know each other last month, and we met up yesterday."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-met-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的跟她的新朋友是什麼時候認識的？",
+                "simplified": "女的跟她的新朋友是什么时候认识的？",
+                "pinyin": "Nǚ de gēn tā de xīn péngyǒu shì shénme shíhòu rènshì de?",
+                "english": "When did the woman and her new friend get to know each other?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "上個星期",
+                  "simplified": "上个星期",
+                  "pinyin": "shàng ge xīngqí",
+                  "english": "last week"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "昨天",
+                  "simplified": "昨天",
+                  "pinyin": "zuótiān",
+                  "english": "yesterday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "上個月",
+                  "simplified": "上个月",
+                  "pinyin": "shàng ge yuè",
+                  "english": "last month"
+                }
+              ],
+              "key": 2,
+              "why": "是上個月認識的: they got to know each other last month. 昨天 is when they met up (見面), not when they got to know each other.",
+              "focus": {
+                "zh": "是上個月認識的",
+                "en": "when they met (是…的)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-01",
+                "B1L11-2-13",
+                "B1L09-3-11",
+                "B1L11-1-13"
+              ],
+              "grammarIds": [
+                "B1L11-G03-P251"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-met-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這張相片是你姐姐照的嗎？",
+              "simplified": "这张相片是你姐姐照的吗？",
+              "pinyin": "Zhè zhāng xiàngpiàn shì nǐ jiějie zhào de ma?",
+              "english": "Did your older sister take this photo?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不是，姐姐在相片裡，是我妹妹照的。",
+              "simplified": "不是，姐姐在相片里，是我妹妹照的。",
+              "pinyin": "Bú shì, jiějie zài xiàngpiàn lǐ, shì wǒ mèimei zhào de.",
+              "english": "No, my older sister is in the photo. My younger sister took it."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-met-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這張相片是誰照的？",
+                "simplified": "这张相片是谁照的？",
+                "pinyin": "Zhè zhāng xiàngpiàn shì shéi zhào de?",
+                "english": "Who took this photo?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他妹妹",
+                  "simplified": "他妹妹",
+                  "pinyin": "tā mèimei",
+                  "english": "his younger sister"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他姐姐",
+                  "simplified": "他姐姐",
+                  "pinyin": "tā jiějie",
+                  "english": "his older sister"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他媽媽",
+                  "simplified": "他妈妈",
+                  "pinyin": "tā māma",
+                  "english": "his mom"
+                }
+              ],
+              "key": 0,
+              "why": "是我妹妹照的 says who took it: his younger sister. His older sister is in the photo, so she did not take it.",
+              "focus": {
+                "zh": "是誰照的",
+                "en": "who did it (是…的)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-3-11",
+                "B1L11-3-09",
+                "B1L05-2-18",
+                "B1L05-2-16"
+              ],
+              "grammarIds": [
+                "B1L11-G03-P251"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-notyet",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l11-dialogue-notyet-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你昨天給她打電話了嗎？",
+              "simplified": "你昨天给她打电话了吗？",
+              "pinyin": "Nǐ zuótiān gěi tā dǎ diànhuà le ma?",
+              "english": "Did you call her yesterday?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "昨天沒打，今天沒空，明天晚上再打。",
+              "simplified": "昨天没打，今天没空，明天晚上再打。",
+              "pinyin": "Zuótiān méi dǎ, jīntiān méi kòng, míngtiān wǎnshàng zài dǎ.",
+              "english": "I didn't call yesterday, and I'm busy today. I'll call tomorrow night."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-notyet-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的打算什麼時候給她打電話？",
+                "simplified": "男的打算什么时候给她打电话？",
+                "pinyin": "Nán de dǎsuàn shénme shíhòu gěi tā dǎ diànhuà?",
+                "english": "When does the man plan to call her?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "昨天晚上",
+                  "simplified": "昨天晚上",
+                  "pinyin": "zuótiān wǎnshàng",
+                  "english": "last night"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "今天晚上",
+                  "simplified": "今天晚上",
+                  "pinyin": "jīntiān wǎnshàng",
+                  "english": "tonight"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天晚上",
+                  "simplified": "明天晚上",
+                  "pinyin": "míngtiān wǎnshàng",
+                  "english": "tomorrow night"
+                }
+              ],
+              "key": 2,
+              "why": "昨天沒打 means he did not call yesterday, and 今天沒空 means he is busy today, so he will call 明天晚上 (tomorrow night).",
+              "focus": {
+                "zh": "昨天沒打",
+                "en": "did not (沒)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-16",
+                "B1L10-3-01",
+                "B1L05-1-16"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-notyet-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳的卡片都寄了嗎？",
+              "simplified": "你的卡片都寄了吗？",
+              "pinyin": "Nǐ de kǎpiàn dōu jì le ma?",
+              "english": "Have you mailed all your cards?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "給媽媽的寄了，給哥哥的還沒寄。",
+              "simplified": "给妈妈的寄了，给哥哥的还没寄。",
+              "pinyin": "Gěi māma de jì le, gěi gēge de hái méi jì.",
+              "english": "I've mailed the one for Mom, but not the one for my brother yet."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-notyet-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "哪一張卡片還沒寄？",
+                "simplified": "哪一张卡片还没寄？",
+                "pinyin": "Nǎ yì zhāng kǎpiàn hái méi jì?",
+                "english": "Which card has not been mailed yet?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "給哥哥的",
+                  "simplified": "给哥哥的",
+                  "pinyin": "gěi gēge de",
+                  "english": "the one for her older brother"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "給媽媽的",
+                  "simplified": "给妈妈的",
+                  "pinyin": "gěi māma de",
+                  "english": "the one for her mom"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "給姐姐的",
+                  "simplified": "给姐姐的",
+                  "pinyin": "gěi jiějie de",
+                  "english": "the one for her older sister"
+                }
+              ],
+              "key": 0,
+              "why": "給哥哥的還沒寄 means the card for her brother is not mailed yet. 給媽媽的寄了: Mom's card is already mailed.",
+              "focus": {
+                "zh": "還沒寄",
+                "en": "not yet (還沒)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L11-1-04",
+                "B1L07-2-07",
+                "B1L11-1-02"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249",
+                "B1L11-G01-P247"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-notyet-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳決定了沒有？要去日本還是韓國？",
+              "simplified": "你决定了没有？要去日本还是韩国？",
+              "pinyin": "Nǐ juédìng le méiyǒu? Yào qù Rìběn háishì Hánguó?",
+              "english": "Have you decided? Are you going to Japan or Korea?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "決定去日本了，但是還沒決定哪一天去。",
+              "simplified": "决定去日本了，但是还没决定哪一天去。",
+              "pinyin": "Juédìng qù Rìběn le, dànshì hái méi juédìng nǎ yì tiān qù.",
+              "english": "I've decided on Japan, but I haven't decided which day to go yet."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-notyet-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的還沒決定什麼？",
+                "simplified": "女的还没决定什么？",
+                "pinyin": "Nǚ de hái méi juédìng shénme?",
+                "english": "What has the woman not decided yet?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "要去哪裡",
+                  "simplified": "要去哪里",
+                  "pinyin": "yào qù nǎlǐ",
+                  "english": "where to go"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "哪一天去",
+                  "simplified": "哪一天去",
+                  "pinyin": "nǎ yì tiān qù",
+                  "english": "which day to go"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "要不要去",
+                  "simplified": "要不要去",
+                  "pinyin": "yào bu yào qù",
+                  "english": "whether to go"
+                }
+              ],
+              "key": 1,
+              "why": "還沒決定哪一天去 means she has not picked the day yet. 決定去日本了 shows she has already decided to go, and where (Japan).",
+              "focus": {
+                "zh": "還沒決定",
+                "en": "not decided yet (還沒)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L11-1-17",
+                "B1L11-1-02"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249",
+                "B1L11-G01-P247"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-a",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l11-dialogue-review-a-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳要請假，告訴老師了沒有？",
+              "simplified": "你要请假，告诉老师了没有？",
+              "pinyin": "Nǐ yào qǐngjià, gàosu lǎoshī le méiyǒu?",
+              "english": "You want to ask for leave. Have you told the teacher?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我今天忘記了，明天沒課，後天再跟老師說。",
+              "simplified": "我今天忘记了，明天没课，后天再跟老师说。",
+              "pinyin": "Wǒ jīntiān wàngjì le, míngtiān méi kè, hòutiān zài gēn lǎoshī shuō.",
+              "english": "I forgot today, and I have no class tomorrow, so I'll tell the teacher the day after tomorrow."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-review-a-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的打算什麼時候跟老師說？",
+                "simplified": "女的打算什么时候跟老师说？",
+                "pinyin": "Nǚ de dǎsuàn shénme shíhòu gēn lǎoshī shuō?",
+                "english": "When does the woman plan to tell the teacher?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "後天",
+                  "simplified": "后天",
+                  "pinyin": "hòutiān",
+                  "english": "the day after tomorrow"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "今天",
+                  "simplified": "今天",
+                  "pinyin": "jīntiān",
+                  "english": "today"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天",
+                  "simplified": "明天",
+                  "pinyin": "míngtiān",
+                  "english": "tomorrow"
+                }
+              ],
+              "key": 0,
+              "why": "忘記了 means she forgot today, and 明天沒課 means she has no class tomorrow, so she will tell the teacher 後天 (the day after tomorrow).",
+              "focus": {
+                "zh": "後天再跟老師說",
+                "en": "tell the teacher later"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-3-07",
+                "B1L10-1-05",
+                "B1L10-1-02",
+                "B1L06-2-19"
+              ],
+              "grammarIds": [
+                "B1L10-G01-P226"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-review-a-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你下午能來幫我嗎？",
+              "simplified": "你下午能来帮我吗？",
+              "pinyin": "Nǐ xiàwǔ néng lái bāng wǒ ma?",
+              "english": "Can you come and help me this afternoon?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "對不起，我不能去，我從兩點到四點有課。",
+              "simplified": "对不起，我不能去，我从两点到四点有课。",
+              "pinyin": "Duìbùqǐ, wǒ bù néng qù, wǒ cóng liǎng diǎn dào sì diǎn yǒu kè.",
+              "english": "Sorry, I can't. I have class from two to four."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-review-a-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的幾點下課？",
+                "simplified": "男的几点下课？",
+                "pinyin": "Nán de jǐ diǎn xiàkè?",
+                "english": "What time does the man finish class?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "兩點",
+                  "simplified": "两点",
+                  "pinyin": "liǎng diǎn",
+                  "english": "two o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "四點",
+                  "simplified": "四点",
+                  "pinyin": "sì diǎn",
+                  "english": "four o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五點",
+                  "simplified": "五点",
+                  "pinyin": "wǔ diǎn",
+                  "english": "five o'clock"
+                }
+              ],
+              "key": 1,
+              "why": "從兩點到四點 means from two to four: class starts at two and ends at four.",
+              "focus": {
+                "zh": "從…到…",
+                "en": "from … to … (time)"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L09-2-04",
+                "B1L02-1-27"
+              ],
+              "grammarIds": [
+                "B1L09-G02-P206"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-review-a-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳覺得這部電影怎麼樣？",
+              "simplified": "你觉得这部电影怎么样？",
+              "pinyin": "Nǐ juéde zhè bù diànyǐng zěnmeyàng?",
+              "english": "What do you think of this movie?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "很有趣，可是有一點長。",
+              "simplified": "很有趣，可是有一点长。",
+              "pinyin": "Hěn yǒuqù, kěshì yǒu yìdiǎn cháng.",
+              "english": "It's very interesting, but a bit long."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-review-a-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得這部電影怎麼樣？",
+                "simplified": "女的觉得这部电影怎么样？",
+                "pinyin": "Nǚ de juéde zhè bù diànyǐng zěnmeyàng?",
+                "english": "What does the woman think of the movie?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "有一點短",
+                  "simplified": "有一点短",
+                  "pinyin": "yǒu yìdiǎn duǎn",
+                  "english": "a bit short"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不太有趣",
+                  "simplified": "不太有趣",
+                  "pinyin": "bú tài yǒuqù",
+                  "english": "not very interesting"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "有一點長",
+                  "simplified": "有一点长",
+                  "pinyin": "yǒu yìdiǎn cháng",
+                  "english": "a bit long"
+                }
+              ],
+              "key": 2,
+              "why": "有一點長 means a bit long, so 有一點短 (a bit short) is wrong. She says 很有趣, so 不太有趣 is wrong too.",
+              "focus": {
+                "zh": "有一點長",
+                "en": "a bit long"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-06",
+                "B1L08-2-06",
+                "B1L06-2-04",
+                "B1L06-2-05",
+                "B1L08-2-05"
+              ],
+              "grammarIds": [
+                "B1L06-G03-P146"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-b",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l11-dialogue-review-b-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們快要上課了，你在哪裡？",
+              "simplified": "我们快要上课了，你在哪里？",
+              "pinyin": "Wǒmen kuàiyào shàngkè le, nǐ zài nǎlǐ?",
+              "english": "Class is about to start. Where are you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我在電梯裡，快要到了。",
+              "simplified": "我在电梯里，快要到了。",
+              "pinyin": "Wǒ zài diàntī lǐ, kuàiyào dào le.",
+              "english": "I'm in the elevator. I'm almost there."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-review-b-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的現在在哪裡？",
+                "simplified": "男的现在在哪里？",
+                "pinyin": "Nán de xiànzài zài nǎlǐ?",
+                "english": "Where is the man now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "教室裡",
+                  "simplified": "教室里",
+                  "pinyin": "jiàoshì lǐ",
+                  "english": "in the classroom"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "電梯裡",
+                  "simplified": "电梯里",
+                  "pinyin": "diàntī lǐ",
+                  "english": "in the elevator"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "宿舍裡",
+                  "simplified": "宿舍里",
+                  "pinyin": "sùshè lǐ",
+                  "english": "in the dorm"
+                }
+              ],
+              "key": 1,
+              "why": "我在電梯裡 means he is in the elevator. 快要到了: he is almost there, so he is not in the classroom yet.",
+              "focus": {
+                "zh": "在電梯裡",
+                "en": "in the elevator"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-19",
+                "B1L08-2-15",
+                "B1L05-1-02"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-review-b-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我要寄信，這附近有郵局嗎？",
+              "simplified": "我要寄信，这附近有邮局吗？",
+              "pinyin": "Wǒ yào jì xìn, zhè fùjìn yǒu yóujú ma?",
+              "english": "I want to mail a letter. Is there a post office near here?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "有，超市對面有一間郵局。",
+              "simplified": "有，超市对面有一间邮局。",
+              "pinyin": "Yǒu, chāoshì duìmiàn yǒu yì jiān yóujú.",
+              "english": "Yes, there's a post office across from the supermarket."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-review-b-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "郵局在哪裡？",
+                "simplified": "邮局在哪里？",
+                "pinyin": "Yóujú zài nǎlǐ?",
+                "english": "Where is the post office?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "超市對面",
+                  "simplified": "超市对面",
+                  "pinyin": "chāoshì duìmiàn",
+                  "english": "across from the supermarket"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "超市旁邊",
+                  "simplified": "超市旁边",
+                  "pinyin": "chāoshì pángbiān",
+                  "english": "next to the supermarket"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "學校旁邊",
+                  "simplified": "学校旁边",
+                  "pinyin": "xuéxiào pángbiān",
+                  "english": "next to the school"
+                }
+              ],
+              "key": 0,
+              "why": "超市對面 means across from the supermarket. 旁邊 would be next to it, and she does not talk about a school.",
+              "focus": {
+                "zh": "超市對面",
+                "en": "across from"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-06",
+                "B1L07-2-05",
+                "B1L09-2-01",
+                "B1L07-2-07"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-dialogue-review-b-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳週末常常在哪裡看書？",
+              "simplified": "你周末常常在哪里看书？",
+              "pinyin": "Nǐ zhōumò chángcháng zài nǎlǐ kàn shū?",
+              "english": "Where do you often read on weekends?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我不在宿舍看，常常在咖啡廳看書。",
+              "simplified": "我不在宿舍看，常常在咖啡厅看书。",
+              "pinyin": "Wǒ bú zài sùshè kàn, chángcháng zài kāfēitīng kàn shū.",
+              "english": "Not in the dorm. I often read at a café."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-dialogue-review-b-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的週末常常在哪裡看書？",
+                "simplified": "女的周末常常在哪里看书？",
+                "pinyin": "Nǚ de zhōumò chángcháng zài nǎlǐ kàn shū?",
+                "english": "Where does the woman often read on weekends?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在宿舍",
+                  "simplified": "在宿舍",
+                  "pinyin": "zài sùshè",
+                  "english": "in the dorm"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在圖書館",
+                  "simplified": "在图书馆",
+                  "pinyin": "zài túshūguǎn",
+                  "english": "at the library"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在咖啡廳",
+                  "simplified": "在咖啡厅",
+                  "pinyin": "zài kāfēitīng",
+                  "english": "at a café"
+                }
+              ],
+              "key": 2,
+              "why": "在咖啡廳看書: she reads at a café. 不在宿舍看 rules out the dorm.",
+              "focus": {
+                "zh": "在 + 地方 + 看書",
+                "en": "where she reads"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-1-08",
+                "B1L09-1-13"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-plate",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l11-read-plate-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l11-read-plate-1-q",
+              "prompt": {
+                "traditional": "弟弟還沒吃，盤子裡的菜都還在。",
+                "simplified": "弟弟还没吃，盘子里的菜都还在。",
+                "pinyin": "Dìdi hái méi chī, pánzi lǐ de cài dōu hái zài.",
+                "english": "My little brother hasn't started eating; all the food is still on his plate."
+              },
+              "choices": [
+                {
+                  "picture": "b1l11-plate-1",
+                  "alt": "Full plate: the little boy sits at the table with a full plate of food he has not touched"
+                },
+                {
+                  "picture": "b1l11-plate-2",
+                  "alt": "Half eaten: the little boy eats, and half of the food is left on his plate"
+                },
+                {
+                  "picture": "b1l11-plate-3",
+                  "alt": "Empty plate: the little boy sits back, and his plate is empty"
+                }
+              ],
+              "key": 0,
+              "why": "還沒吃 means he has not started eating yet, so all the food (菜都還在) is still on the plate.",
+              "focus": {
+                "zh": "還沒吃",
+                "en": "not eaten yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L11-3-07",
+                "B1L11-3-05"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-read-plate-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l11-read-plate-2-q",
+              "prompt": {
+                "traditional": "弟弟吃了半盤了，還在吃。",
+                "simplified": "弟弟吃了半盘了，还在吃。",
+                "pinyin": "Dìdi chī le bàn pán le, hái zài chī.",
+                "english": "My little brother has eaten half a plate so far and is still eating."
+              },
+              "choices": [
+                {
+                  "picture": "b1l11-plate-1",
+                  "alt": "Full plate: the little boy sits at the table with a full plate of food he has not touched"
+                },
+                {
+                  "picture": "b1l11-plate-2",
+                  "alt": "Half eaten: the little boy eats, and half of the food is left on his plate"
+                },
+                {
+                  "picture": "b1l11-plate-3",
+                  "alt": "Empty plate: the little boy sits back, and his plate is empty"
+                }
+              ],
+              "key": 1,
+              "why": "吃了半盤了 means he has eaten half a plate so far (the second 了: he is not done), and 還在吃 means he is still eating: half the food is left.",
+              "focus": {
+                "zh": "吃了半盤了",
+                "en": "half a plate so far"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-02",
+                "B1L05-1-13",
+                "B1L11-3-06",
+                "B1L11-1-15"
+              ],
+              "grammarIds": [
+                "B1L11-G01-P247"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-read-plate-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l11-read-plate-3-q",
+              "prompt": {
+                "traditional": "弟弟的盤子裡已經沒有菜了。",
+                "simplified": "弟弟的盘子里已经没有菜了。",
+                "pinyin": "Dìdi de pánzi lǐ yǐjīng méiyǒu cài le.",
+                "english": "There's no food left on my little brother's plate."
+              },
+              "choices": [
+                {
+                  "picture": "b1l11-plate-1",
+                  "alt": "Full plate: the little boy sits at the table with a full plate of food he has not touched"
+                },
+                {
+                  "picture": "b1l11-plate-2",
+                  "alt": "Half eaten: the little boy eats, and half of the food is left on his plate"
+                },
+                {
+                  "picture": "b1l11-plate-3",
+                  "alt": "Empty plate: the little boy sits back, and his plate is empty"
+                }
+              ],
+              "key": 2,
+              "why": "已經沒有菜了 means there is no food left now: the plate is empty.",
+              "focus": {
+                "zh": "已經沒有…了",
+                "en": "none left now"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-03",
+                "B1L11-3-07",
+                "B1L11-3-05"
+              ],
+              "grammarIds": [
+                "B1L07-G03-P162"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-buy",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l11-read-buy-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l11-read-buy-1-q",
+              "prompt": {
+                "traditional": "哥哥在給妹妹買冰淇淋。",
+                "simplified": "哥哥在给妹妹买冰淇淋。",
+                "pinyin": "Gēge zài gěi mèimei mǎi bīngqílín.",
+                "english": "The older brother is buying ice cream for his little sister."
+              },
+              "choices": [
+                {
+                  "picture": "b1l11-buy-1",
+                  "alt": "Brother buys for sister: the older brother pays at the ice-cream cart, and the seller hands the cone to his little sister"
+                },
+                {
+                  "picture": "b1l11-buy-2",
+                  "alt": "Sister buys for brother: the little sister pays at the ice-cream cart, and the seller hands the cone to her older brother"
+                },
+                {
+                  "picture": "b1l11-buy-3",
+                  "alt": "Juice for sister: the older brother pays at the same cart, and the seller hands a bottle of juice to his little sister"
+                }
+              ],
+              "key": 0,
+              "why": "給 + person + 買 means buying something for that person. 哥哥給妹妹買冰淇淋: the brother pays, and the ice cream goes to his little sister.",
+              "focus": {
+                "zh": "給妹妹買",
+                "en": "buy for his sister"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-2-12",
+                "B1L03-1-01",
+                "B1L05-1-11",
+                "B1L05-2-15",
+                "B1L05-2-18"
+              ],
+              "grammarIds": [
+                "B1L11-G05-P259"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-read-buy-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l11-read-buy-2-q",
+              "prompt": {
+                "traditional": "妹妹在給哥哥買冰淇淋。",
+                "simplified": "妹妹在给哥哥买冰淇淋。",
+                "pinyin": "Mèimei zài gěi gēge mǎi bīngqílín.",
+                "english": "The little sister is buying ice cream for her older brother."
+              },
+              "choices": [
+                {
+                  "picture": "b1l11-buy-1",
+                  "alt": "Brother buys for sister: the older brother pays at the ice-cream cart, and the seller hands the cone to his little sister"
+                },
+                {
+                  "picture": "b1l11-buy-2",
+                  "alt": "Sister buys for brother: the little sister pays at the ice-cream cart, and the seller hands the cone to her older brother"
+                },
+                {
+                  "picture": "b1l11-buy-3",
+                  "alt": "Juice for sister: the older brother pays at the same cart, and the seller hands a bottle of juice to his little sister"
+                }
+              ],
+              "key": 1,
+              "why": "給哥哥買 means buying for the brother: the little sister pays, and the ice cream goes to her older brother.",
+              "focus": {
+                "zh": "給哥哥買",
+                "en": "buy for her brother"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-2-12",
+                "B1L03-1-01",
+                "B1L05-1-11",
+                "B1L05-2-15",
+                "B1L05-2-18"
+              ],
+              "grammarIds": [
+                "B1L11-G05-P259"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-read-buy-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l11-read-buy-3-q",
+              "prompt": {
+                "traditional": "哥哥在給妹妹買果汁。",
+                "simplified": "哥哥在给妹妹买果汁。",
+                "pinyin": "Gēge zài gěi mèimei mǎi guǒzhī.",
+                "english": "The older brother is buying juice for his little sister."
+              },
+              "choices": [
+                {
+                  "picture": "b1l11-buy-1",
+                  "alt": "Brother buys for sister: the older brother pays at the ice-cream cart, and the seller hands the cone to his little sister"
+                },
+                {
+                  "picture": "b1l11-buy-2",
+                  "alt": "Sister buys for brother: the little sister pays at the ice-cream cart, and the seller hands the cone to her older brother"
+                },
+                {
+                  "picture": "b1l11-buy-3",
+                  "alt": "Juice for sister: the older brother pays at the same cart, and the seller hands a bottle of juice to his little sister"
+                }
+              ],
+              "key": 2,
+              "why": "給妹妹買果汁: the brother pays, and his little sister gets a bottle of juice (果汁), not an ice cream.",
+              "focus": {
+                "zh": "給妹妹買果汁",
+                "en": "buy juice for his sister"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-2-12",
+                "B1L03-1-01",
+                "B1L04-3-06",
+                "B1L05-2-15",
+                "B1L05-2-18"
+              ],
+              "grammarIds": [
+                "B1L11-G05-P259"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-list",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l11-realia-list-1",
+          "kind": "realia",
+          "picture": "b1l11-list",
+          "alt": "A handwritten packing list on a notebook page: \"things to bring on the outing\". Camera, water and medicine are ticked; map, face mask and glasses have empty boxes. A note at the bottom says a tick means already packed",
+          "transcript": {
+            "traditional": "出去玩要帶的東西　✓ 照相機　✓ 水　✓ 藥　□ 地圖　□ 口罩　□ 眼鏡　（✓＝已經帶了）",
+            "simplified": "出去玩要带的东西　✓ 照相机　✓ 水　✓ 药　□ 地图　□ 口罩　□ 眼镜　（✓＝已经带了）",
+            "pinyin": "Chūqù wán yào dài de dōngxi: ✓ zhàoxiàngjī, ✓ shuǐ, ✓ yào, □ dìtú, □ kǒuzhào, □ yǎnjìng (✓ = yǐjīng dài le)",
+            "english": "Things to bring on the outing: ✓ camera, ✓ water, ✓ medicine, □ map, □ face mask, □ glasses (✓ = already packed)"
+          },
+          "questions": [
+            {
+              "id": "b1l11-realia-list-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "地圖已經帶了。",
+                  "simplified": "地图已经带了。",
+                  "pinyin": "Dìtú yǐjīng dài le.",
+                  "english": "The map is already packed."
+                },
+                {
+                  "traditional": "口罩已經帶了。",
+                  "simplified": "口罩已经带了。",
+                  "pinyin": "Kǒuzhào yǐjīng dài le.",
+                  "english": "The face mask is already packed."
+                },
+                {
+                  "traditional": "水已經帶了。",
+                  "simplified": "水已经带了。",
+                  "pinyin": "Shuǐ yǐjīng dài le.",
+                  "english": "The water is already packed."
+                }
+              ],
+              "key": 2,
+              "why": "A tick means 已經帶了 (already packed). 水 has a tick, so it is packed. 地圖 and 口罩 have empty boxes, so they are not packed yet.",
+              "focus": {
+                "zh": "已經帶了",
+                "en": "already packed"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-03",
+                "B1L11-1-02",
+                "B1L10-1-19",
+                "B1L01-3-06"
+              ],
+              "grammarIds": [
+                "B1L11-G01-P247"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-realia-list-2",
+          "kind": "realia",
+          "picture": "b1l11-list",
+          "alt": "A handwritten packing list on a notebook page: \"things to bring on the outing\". Camera, water and medicine are ticked; map, face mask and glasses have empty boxes. A note at the bottom says a tick means already packed",
+          "transcript": {
+            "traditional": "出去玩要帶的東西　✓ 照相機　✓ 水　✓ 藥　□ 地圖　□ 口罩　□ 眼鏡　（✓＝已經帶了）",
+            "simplified": "出去玩要带的东西　✓ 照相机　✓ 水　✓ 药　□ 地图　□ 口罩　□ 眼镜　（✓＝已经带了）",
+            "pinyin": "Chūqù wán yào dài de dōngxi: ✓ zhàoxiàngjī, ✓ shuǐ, ✓ yào, □ dìtú, □ kǒuzhào, □ yǎnjìng (✓ = yǐjīng dài le)",
+            "english": "Things to bring on the outing: ✓ camera, ✓ water, ✓ medicine, □ map, □ face mask, □ glasses (✓ = already packed)"
+          },
+          "questions": [
+            {
+              "id": "b1l11-realia-list-2-q",
+              "prompt": {
+                "traditional": "哪一個東西還沒帶？",
+                "simplified": "哪一个东西还没带？",
+                "pinyin": "Nǎ yí ge dōngxi hái méi dài?",
+                "english": "Which thing isn't packed yet?"
+              },
+              "choices": [
+                {
+                  "traditional": "藥",
+                  "simplified": "药",
+                  "pinyin": "yào",
+                  "english": "medicine"
+                },
+                {
+                  "traditional": "眼鏡",
+                  "simplified": "眼镜",
+                  "pinyin": "yǎnjìng",
+                  "english": "glasses"
+                },
+                {
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                }
+              ],
+              "key": 1,
+              "why": "眼鏡 has an empty box, so it is not packed yet. 藥 and 水 are ticked.",
+              "focus": {
+                "zh": "還沒帶",
+                "en": "not packed yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L10-1-19",
+                "B1L10-2-10",
+                "B1L10-2-14"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-phone",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l11-realia-phone-1",
+          "kind": "realia",
+          "picture": "b1l11-phone",
+          "alt": "A phone screen showing a family group chat named 家人. Mom (12:10) suggests going out to eat together this Sunday evening; the older brother (12:30) says yes, he is free in the evening; the younger sister (18:45) says a classmate asked her to a movie on Sunday evening and she has not decided yet; Mom (18:50) says that's okay, tell her once she has decided",
+          "transcript": {
+            "traditional": "家人　媽媽 12:10：這個星期天晚上，我們一起去外面吃飯，好嗎？　哥哥 12:30：好啊！我晚上有空。　妹妹 18:45：同學約我星期天晚上看電影，我還沒決定。　媽媽 18:50：沒關係，妳決定了再告訴我。",
+            "simplified": "家人　妈妈 12:10：这个星期天晚上，我们一起去外面吃饭，好吗？　哥哥 12:30：好啊！我晚上有空。　妹妹 18:45：同学约我星期天晚上看电影，我还没决定。　妈妈 18:50：没关系，你决定了再告诉我。",
+            "pinyin": "Jiārén. Māma 12:10: Zhège xīngqítiān wǎnshàng, wǒmen yìqǐ qù wàimiàn chī fàn, hǎo ma? Gēge 12:30: Hǎo a! Wǒ wǎnshàng yǒu kòng. Mèimei 18:45: Tóngxué yuē wǒ xīngqítiān wǎnshàng kàn diànyǐng, wǒ hái méi juédìng. Māma 18:50: Méiguānxi, nǐ juédìng le zài gàosu wǒ.",
+            "english": "Family. Mom 12:10: This Sunday evening, shall we all go out to eat together? Big brother 12:30: Sure! I'm free in the evening. Little sister 18:45: A classmate asked me to see a movie on Sunday evening. I haven't decided yet. Mom 18:50: That's okay. Tell me when you've decided."
+          },
+          "questions": [
+            {
+              "id": "b1l11-realia-phone-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "哥哥還沒回答。",
+                  "simplified": "哥哥还没回答。",
+                  "pinyin": "Gēge hái méi huídá.",
+                  "english": "Big brother hasn't answered yet."
+                },
+                {
+                  "traditional": "妹妹還沒決定。",
+                  "simplified": "妹妹还没决定。",
+                  "pinyin": "Mèimei hái méi juédìng.",
+                  "english": "Little sister hasn't decided yet."
+                },
+                {
+                  "traditional": "媽媽還沒留言。",
+                  "simplified": "妈妈还没留言。",
+                  "pinyin": "Māma hái méi liúyán.",
+                  "english": "Mom hasn't left a message yet."
+                }
+              ],
+              "key": 1,
+              "why": "妹妹 writes 我還沒決定: she has not decided yet. 哥哥 has already answered (好啊！), and 媽媽 has left two messages.",
+              "focus": {
+                "zh": "還沒決定",
+                "en": "not decided yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L11-1-17",
+                "B1L11-1-09",
+                "B1L11-1-08"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-realia-phone-2",
+          "kind": "realia",
+          "picture": "b1l11-phone",
+          "alt": "A phone screen showing a family group chat named 家人. Mom (12:10) suggests going out to eat together this Sunday evening; the older brother (12:30) says yes, he is free in the evening; the younger sister (18:45) says a classmate asked her to a movie on Sunday evening and she has not decided yet; Mom (18:50) says that's okay, tell her once she has decided",
+          "transcript": {
+            "traditional": "家人　媽媽 12:10：這個星期天晚上，我們一起去外面吃飯，好嗎？　哥哥 12:30：好啊！我晚上有空。　妹妹 18:45：同學約我星期天晚上看電影，我還沒決定。　媽媽 18:50：沒關係，妳決定了再告訴我。",
+            "simplified": "家人　妈妈 12:10：这个星期天晚上，我们一起去外面吃饭，好吗？　哥哥 12:30：好啊！我晚上有空。　妹妹 18:45：同学约我星期天晚上看电影，我还没决定。　妈妈 18:50：没关系，你决定了再告诉我。",
+            "pinyin": "Jiārén. Māma 12:10: Zhège xīngqítiān wǎnshàng, wǒmen yìqǐ qù wàimiàn chī fàn, hǎo ma? Gēge 12:30: Hǎo a! Wǒ wǎnshàng yǒu kòng. Mèimei 18:45: Tóngxué yuē wǒ xīngqítiān wǎnshàng kàn diànyǐng, wǒ hái méi juédìng. Māma 18:50: Méiguānxi, nǐ juédìng le zài gàosu wǒ.",
+            "english": "Family. Mom 12:10: This Sunday evening, shall we all go out to eat together? Big brother 12:30: Sure! I'm free in the evening. Little sister 18:45: A classmate asked me to see a movie on Sunday evening. I haven't decided yet. Mom 18:50: That's okay. Tell me when you've decided."
+          },
+          "questions": [
+            {
+              "id": "b1l11-realia-phone-2-q",
+              "prompt": {
+                "traditional": "誰約妹妹看電影？",
+                "simplified": "谁约妹妹看电影？",
+                "pinyin": "Shéi yuē mèimei kàn diànyǐng?",
+                "english": "Who asked the little sister to a movie?"
+              },
+              "choices": [
+                {
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "english": "Mom"
+                },
+                {
+                  "traditional": "哥哥",
+                  "simplified": "哥哥",
+                  "pinyin": "gēge",
+                  "english": "her older brother"
+                },
+                {
+                  "traditional": "同學",
+                  "simplified": "同学",
+                  "pinyin": "tóngxué",
+                  "english": "a classmate"
+                }
+              ],
+              "key": 2,
+              "why": "妹妹 writes 同學約我…看電影: a classmate asked her to a movie. 媽媽 asked the family out to eat, not to a movie.",
+              "focus": {
+                "zh": "同學約我",
+                "en": "who made the plan (約)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-2-10",
+                "B1L01-1-02",
+                "B1L06-2-01"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l11-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l11-cafe",
+          "alt": "A café in the afternoon. Left: a young woman with very long hair sits alone and holds a camera up to take a photo of the small cake and cup of coffee on her table; she has no phone or laptop. Middle: a young man and a young woman with very short hair sit across from each other, talking and laughing; they each have a coffee cup (his is empty, and he is not holding it), with nothing to eat and no menu, phone or laptop on their table. Right: a clerk has stepped out from the counter (a glass case of small cakes) and walks toward the middle table with a tray of two small cakes; she has not reached it yet",
+          "questions": [
+            {
+              "id": "b1l11-scene-gap-1-a",
+              "prompt": {
+                "traditional": "那個頭髮很長的女生點＿＿一個小蛋糕和一杯咖啡。",
+                "simplified": "那个头发很长的女生点＿＿一个小蛋糕和一杯咖啡。"
+              },
+              "choices": [
+                {
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "english": "(completed action)"
+                },
+                {
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "english": "(complement particle)"
+                },
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "english": "(possessive particle)"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "那個頭髮很長的女生點了一個小蛋糕和一杯咖啡。",
+                "simplified": "那个头发很长的女生点了一个小蛋糕和一杯咖啡。",
+                "pinyin": "Nàge tóufǎ hěn cháng de nǚshēng diǎn le yí ge xiǎo dàngāo hé yì bēi kāfēi.",
+                "english": "The girl with long hair ordered a small cake and a cup of coffee."
+              },
+              "why": "了 after the verb shows the ordering is done: 點了一個小蛋糕. 得 and 的 cannot follow 點 here.",
+              "focus": {
+                "zh": "點了",
+                "en": "ordered (了)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-02",
+                "B1L04-2-01",
+                "B1L03-1-18"
+              ],
+              "grammarIds": [
+                "B1L11-G01-P247"
+              ]
+            },
+            {
+              "id": "b1l11-scene-gap-1-b",
+              "prompt": {
+                "traditional": "她先＿＿，再吃蛋糕。",
+                "simplified": "她先＿＿，再吃蛋糕。"
+              },
+              "choices": [
+                {
+                  "traditional": "聊天",
+                  "simplified": "聊天",
+                  "pinyin": "liáotiān",
+                  "english": "to chat"
+                },
+                {
+                  "traditional": "照相",
+                  "simplified": "照相",
+                  "pinyin": "zhàoxiàng",
+                  "english": "to take a photo"
+                },
+                {
+                  "traditional": "上網",
+                  "simplified": "上网",
+                  "pinyin": "shàngwǎng",
+                  "english": "to go online"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "她先照相，再吃蛋糕。",
+                "simplified": "她先照相，再吃蛋糕。",
+                "pinyin": "Tā xiān zhàoxiàng, zài chī dàngāo.",
+                "english": "She takes a photo first, and then she eats the cake."
+              },
+              "why": "She holds a camera up to her cake, so she 照相 first. She sits alone, so she is not 聊天, and she has no phone or laptop, so she is not 上網.",
+              "focus": {
+                "zh": "先照相，再吃",
+                "en": "photo first, then eat"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-3-08",
+                "B1L07-1-23",
+                "B1L09-1-16"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            },
+            {
+              "id": "b1l11-scene-gap-1-c",
+              "prompt": {
+                "traditional": "這家咖啡廳的蛋糕又好看＿＿好吃。",
+                "simplified": "这家咖啡厅的蛋糕又好看＿＿好吃。"
+              },
+              "choices": [
+                {
+                  "traditional": "和",
+                  "simplified": "和",
+                  "pinyin": "hé",
+                  "english": "and"
+                },
+                {
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "english": "all; both"
+                },
+                {
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "english": "both … and …"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "這家咖啡廳的蛋糕又好看又好吃。",
+                "simplified": "这家咖啡厅的蛋糕又好看又好吃。",
+                "pinyin": "Zhè jiā kāfēitīng de dàngāo yòu hǎokàn yòu hǎochī.",
+                "english": "This café's cakes are both pretty and tasty."
+              },
+              "why": "又 … 又 … comes in a pair: 又好看又好吃 means both pretty and tasty. 和 joins nouns, not describing words, and 都 cannot follow 又好看.",
+              "focus": {
+                "zh": "又…又…",
+                "en": "both … and …"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-14",
+                "B1L03-2-20",
+                "B1L04-1-18"
+              ],
+              "grammarIds": [
+                "B1L07-G05-P172"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l11-cafe",
+          "alt": "A café in the afternoon. Left: a young woman with very long hair sits alone and holds a camera up to take a photo of the small cake and cup of coffee on her table; she has no phone or laptop. Middle: a young man and a young woman with very short hair sit across from each other, talking and laughing; they each have a coffee cup (his is empty, and he is not holding it), with nothing to eat and no menu, phone or laptop on their table. Right: a clerk has stepped out from the counter (a glass case of small cakes) and walks toward the middle table with a tray of two small cakes; she has not reached it yet",
+          "questions": [
+            {
+              "id": "b1l11-scene-gap-2-a",
+              "prompt": {
+                "traditional": "那個男生＿＿一杯咖啡。",
+                "simplified": "那个男生＿＿一杯咖啡。"
+              },
+              "choices": [
+                {
+                  "traditional": "在喝",
+                  "simplified": "在喝",
+                  "pinyin": "zài hē",
+                  "english": "is drinking"
+                },
+                {
+                  "traditional": "喝了",
+                  "simplified": "喝了",
+                  "pinyin": "hē le",
+                  "english": "drank (done)"
+                },
+                {
+                  "traditional": "還沒點",
+                  "simplified": "还没点",
+                  "pinyin": "hái méi diǎn",
+                  "english": "has not ordered yet"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "那個男生喝了一杯咖啡。",
+                "simplified": "那个男生喝了一杯咖啡。",
+                "pinyin": "Nàge nánshēng hē le yì bēi kāfēi.",
+                "english": "The young man has drunk a cup of coffee."
+              },
+              "why": "His cup is empty, so he 喝了一杯 (has drunk a cup: 了 = done). He is not holding the empty cup, so he is not 在喝 (drinking now), and he has a cup, so he did order (not 還沒點).",
+              "focus": {
+                "zh": "喝了一杯",
+                "en": "drank one (了)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-02",
+                "B1L04-2-03",
+                "B1L09-1-10",
+                "B1L11-1-14"
+              ],
+              "grammarIds": [
+                "B1L11-G01-P247"
+              ]
+            },
+            {
+              "id": "b1l11-scene-gap-2-b",
+              "prompt": {
+                "traditional": "那兩個人點的蛋糕＿＿，他們的桌子上只有咖啡。",
+                "simplified": "那两个人点的蛋糕＿＿，他们的桌子上只有咖啡。"
+              },
+              "choices": [
+                {
+                  "traditional": "已經來了",
+                  "simplified": "已经来了",
+                  "pinyin": "yǐjīng lái le",
+                  "english": "has already come"
+                },
+                {
+                  "traditional": "很好吃",
+                  "simplified": "很好吃",
+                  "pinyin": "hěn hǎochī",
+                  "english": "is very tasty"
+                },
+                {
+                  "traditional": "還沒來",
+                  "simplified": "还没来",
+                  "pinyin": "hái méi lái",
+                  "english": "has not come yet"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "那兩個人點的蛋糕還沒來，他們的桌子上只有咖啡。",
+                "simplified": "那两个人点的蛋糕还没来，他们的桌子上只有咖啡。",
+                "pinyin": "Nà liǎng ge rén diǎn de dàngāo hái méi lái, tāmen de zhuōzi shàng zhǐ yǒu kāfēi.",
+                "english": "The cakes those two ordered haven't come yet; there's only coffee on their table."
+              },
+              "why": "The clerk is still carrying their cakes over, and their table has only coffee, so the cake 還沒來 (has not come yet). It is not on their table (not 已經來了), and they have not eaten it, so they cannot know it is 很好吃.",
+              "focus": {
+                "zh": "還沒來",
+                "en": "not here yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L03-1-18",
+                "B1L06-2-18",
+                "B1L02-2-05"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            },
+            {
+              "id": "b1l11-scene-gap-2-c",
+              "prompt": {
+                "traditional": "那兩個人在＿＿，他們很開心。",
+                "simplified": "那两个人在＿＿，他们很开心。"
+              },
+              "choices": [
+                {
+                  "traditional": "聊天",
+                  "simplified": "聊天",
+                  "pinyin": "liáotiān",
+                  "english": "to chat"
+                },
+                {
+                  "traditional": "上網",
+                  "simplified": "上网",
+                  "pinyin": "shàngwǎng",
+                  "english": "to go online"
+                },
+                {
+                  "traditional": "點菜",
+                  "simplified": "点菜",
+                  "pinyin": "diǎncài",
+                  "english": "to order food"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "那兩個人在聊天，他們很開心。",
+                "simplified": "那两个人在聊天，他们很开心。",
+                "pinyin": "Nà liǎng ge rén zài liáotiān, tāmen hěn kāixīn.",
+                "english": "Those two are chatting, and they are very happy."
+              },
+              "why": "Look at the two people at the middle table: they talk and laugh (聊天). They have no computer or phone out, and no menu, so they are not going online or ordering.",
+              "focus": {
+                "zh": "在聊天",
+                "en": "chatting"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-10",
+                "B1L09-1-10",
+                "B1L03-3-08"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l11-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "上個月是我的生日，爸爸給我買{1}一台照相機。這個週末，我打算跟朋友去市場照相，那裡的東西很多，也很{2}。朋友說：「中午市場的人太多了，我們先去吃午飯，{3}下午人少了，我們{4}去吧。」",
+            "simplified": "上个月是我的生日，爸爸给我买{1}一台照相机。这个周末，我打算跟朋友去市场照相，那里的东西很多，也很{2}。朋友说：「中午市场的人太多了，我们先去吃午饭，{3}下午人少了，我们{4}去吧。」",
+            "pinyin": "Shàng ge yuè shì wǒ de shēngrì, bàba gěi wǒ mǎi le yì tái zhàoxiàngjī. Zhège zhōumò, wǒ dǎsuàn gēn péngyǒu qù shìchǎng zhàoxiàng, nàlǐ de dōngxi hěn duō, yě hěn yǒuqù. Péngyǒu shuō: “Zhōngwǔ shìchǎng de rén tài duō le, wǒmen xiān qù chī wǔfàn, děng xiàwǔ rén shǎo le, wǒmen zài qù ba.”",
+            "english": "Last month was my birthday, and Dad bought me a camera. This weekend I plan to go and take photos at the market with a friend; there are lots of interesting things there. My friend said, \"The market is too crowded at noon. Let's have lunch first, and when there are fewer people in the afternoon, we'll go.\""
+          },
+          "bank": [
+            {
+              "traditional": "有趣",
+              "simplified": "有趣",
+              "pinyin": "yǒuqù",
+              "english": "interesting"
+            },
+            {
+              "traditional": "再",
+              "simplified": "再",
+              "pinyin": "zài",
+              "english": "then (next)"
+            },
+            {
+              "traditional": "了",
+              "simplified": "了",
+              "pinyin": "le",
+              "english": "(completed action)"
+            },
+            {
+              "traditional": "機會",
+              "simplified": "机会",
+              "pinyin": "jīhuì",
+              "english": "chance"
+            },
+            {
+              "traditional": "等",
+              "simplified": "等",
+              "pinyin": "děng",
+              "english": "to wait (until)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-paragraph-1-1",
+              "key": 2,
+              "why": "了 after the verb shows the buying is done: 爸爸給我買了一台照相機, Dad bought me a camera.",
+              "focus": {
+                "zh": "買了",
+                "en": "bought (了)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-02",
+                "B1L03-1-01",
+                "B1L11-3-10",
+                "B1L11-2-12"
+              ],
+              "grammarIds": [
+                "B1L11-G01-P247",
+                "B1L11-G05-P259"
+              ]
+            },
+            {
+              "id": "b1l11-paragraph-1-2",
+              "key": 0,
+              "why": "很 needs a describing word: 很有趣, very interesting. 機會 is a noun.",
+              "focus": {
+                "zh": "很有趣",
+                "en": "very interesting"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-04"
+              ]
+            },
+            {
+              "id": "b1l11-paragraph-1-3",
+              "key": 4,
+              "why": "等 + something happens: 等下午人少了 means once there are fewer people in the afternoon.",
+              "focus": {
+                "zh": "等…再…",
+                "en": "wait until …, then"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L07-1-08",
+                "B1L07-1-23"
+              ],
+              "grammarIds": [
+                "B1L11-G04-P257"
+              ]
+            },
+            {
+              "id": "b1l11-paragraph-1-4",
+              "key": 1,
+              "why": "再 marks the next step after 等: 等下午人少了，我們再去.",
+              "focus": {
+                "zh": "等…再…",
+                "en": "wait until …, then"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L09-1-16",
+                "B1L07-1-23"
+              ],
+              "grammarIds": [
+                "B1L11-G04-P257"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我在網路上認識了一個韓國女生，我們{1}每天晚上都上網聊天。她說下個月要來台灣{2}我玩。我想先買一張台灣的地圖，{3}她來了，我們{4}一起去很多地方。",
+            "simplified": "我在网路上认识了一个韩国女生，我们{1}每天晚上都上网聊天。她说下个月要来台湾{2}我玩。我想先买一张台湾的地图，{3}她来了，我们{4}一起去很多地方。",
+            "pinyin": "Wǒ zài wǎnglù shàng rènshì le yí ge Hánguó nǚshēng, wǒmen chàbùduō měi tiān wǎnshàng dōu shàngwǎng liáotiān. Tā shuō xià ge yuè yào lái Táiwān zhǎo wǒ wán. Wǒ xiǎng xiān mǎi yì zhāng Táiwān de dìtú, děng tā lái le, wǒmen zài yìqǐ qù hěn duō dìfāng.",
+            "english": "I got to know a Korean girl online, and we chat online almost every night. She says she will come to Taiwan to visit me next month. I want to buy a map of Taiwan first; when she comes, we will go to lots of places together."
+          },
+          "bank": [
+            {
+              "traditional": "再",
+              "simplified": "再",
+              "pinyin": "zài",
+              "english": "then (next)"
+            },
+            {
+              "traditional": "差不多",
+              "simplified": "差不多",
+              "pinyin": "chàbùduō",
+              "english": "about; almost"
+            },
+            {
+              "traditional": "經驗",
+              "simplified": "经验",
+              "pinyin": "jīngyàn",
+              "english": "experience"
+            },
+            {
+              "traditional": "等",
+              "simplified": "等",
+              "pinyin": "děng",
+              "english": "to wait (until)"
+            },
+            {
+              "traditional": "找",
+              "simplified": "找",
+              "pinyin": "zhǎo",
+              "english": "to visit (people)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l11-paragraph-2-1",
+              "key": 1,
+              "why": "差不多每天晚上 means almost every night.",
+              "focus": {
+                "zh": "差不多",
+                "en": "almost"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-11",
+                "B1L04-3-09"
+              ]
+            },
+            {
+              "id": "b1l11-paragraph-2-2",
+              "key": 4,
+              "why": "來 + place + 找 + person: 來台灣找我玩 means come to Taiwan to visit me. 等我玩 makes no sense here.",
+              "focus": {
+                "zh": "來…找我",
+                "en": "come to visit me"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-05"
+              ]
+            },
+            {
+              "id": "b1l11-paragraph-2-3",
+              "key": 3,
+              "why": "等她來了 means once she has come: 等 marks what we wait for.",
+              "focus": {
+                "zh": "等…再…",
+                "en": "wait until …, then"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L07-1-08",
+                "B1L07-1-23"
+              ],
+              "grammarIds": [
+                "B1L11-G04-P257"
+              ]
+            },
+            {
+              "id": "b1l11-paragraph-2-4",
+              "key": 0,
+              "why": "再 marks the step after 等: 等她來了，我們再一起去.",
+              "focus": {
+                "zh": "等…再…",
+                "en": "wait until …, then"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L09-1-16",
+                "B1L03-1-20"
+              ],
+              "grammarIds": [
+                "B1L11-G04-P257"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l11-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "哥哥：\n我感冒了，有一點發燒，今天不去上課了。等你下課了，可以幫我買一些藥嗎？醫生說我要多喝水、多休息。\n妹妹",
+            "simplified": "哥哥：\n我感冒了，有一点发烧，今天不去上课了。等你下课了，可以帮我买一些药吗？医生说我要多喝水、多休息。\n妹妹",
+            "pinyin": "Gēge: Wǒ gǎnmào le, yǒu yìdiǎn fāshāo, jīntiān bú qù shàngkè le. Děng nǐ xiàkè le, kěyǐ bāng wǒ mǎi yìxiē yào ma? Yīshēng shuō wǒ yào duō hē shuǐ, duō xiūxí. Mèimei",
+            "english": "Big brother: I've caught a cold and have a bit of a fever, so I'm not going to class today. After your class, could you buy me some medicine? The doctor says I should drink more water and rest more. Your little sister"
+          },
+          "questions": [
+            {
+              "id": "b1l11-reading-note-1-q",
+              "prompt": {
+                "traditional": "妹妹要哥哥做什麼？",
+                "simplified": "妹妹要哥哥做什么？",
+                "pinyin": "Mèimei yào gēge zuò shénme?",
+                "english": "What does the little sister want her brother to do?"
+              },
+              "choices": [
+                {
+                  "traditional": "幫她買藥",
+                  "simplified": "帮她买药",
+                  "pinyin": "bāng tā mǎi yào",
+                  "english": "buy her medicine"
+                },
+                {
+                  "traditional": "帶她去醫院",
+                  "simplified": "带她去医院",
+                  "pinyin": "dài tā qù yīyuàn",
+                  "english": "take her to the hospital"
+                },
+                {
+                  "traditional": "幫她請假",
+                  "simplified": "帮她请假",
+                  "pinyin": "bāng tā qǐngjià",
+                  "english": "ask for leave for her"
+                }
+              ],
+              "key": 0,
+              "why": "She asks 幫我買一些藥: buy her some medicine. She has already seen the doctor (醫生說), and she does not ask him to ask for leave.",
+              "focus": {
+                "zh": "幫我買藥",
+                "en": "buy medicine for me"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L05-2-24",
+                "B1L10-2-14",
+                "B1L10-1-01",
+                "B1L10-1-03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l11-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "姐姐：\n對不起，禮拜六我不能跟妳去看電影了。那天我要在宿舍練習寫字，因為下個禮拜一有期中考。我們下個週末再去，好嗎？\n妹妹",
+            "simplified": "姐姐：\n对不起，礼拜六我不能跟你去看电影了。那天我要在宿舍练习写字，因为下个礼拜一有期中考。我们下个周末再去，好吗？\n妹妹",
+            "pinyin": "Jiějie: Duìbùqǐ, lǐbàiliù wǒ bù néng gēn nǐ qù kàn diànyǐng le. Nà tiān wǒ yào zài sùshè liànxí xiě zì, yīnwèi xià ge lǐbàiyī yǒu qízhōngkǎo. Wǒmen xià ge zhōumò zài qù, hǎo ma? Mèimei",
+            "english": "Big sister: Sorry, I can't go to the movie with you on Saturday. That day I need to practice writing characters in the dorm, because I have a midterm next Monday. Shall we go next weekend? Your little sister"
+          },
+          "questions": [
+            {
+              "id": "b1l11-reading-note-2-q",
+              "prompt": {
+                "traditional": "妹妹禮拜六要做什麼？",
+                "simplified": "妹妹礼拜六要做什么？",
+                "pinyin": "Mèimei lǐbàiliù yào zuò shénme?",
+                "english": "What will the little sister do on Saturday?"
+              },
+              "choices": [
+                {
+                  "traditional": "去看電影",
+                  "simplified": "去看电影",
+                  "pinyin": "qù kàn diànyǐng",
+                  "english": "go to a movie"
+                },
+                {
+                  "traditional": "練習寫字",
+                  "simplified": "练习写字",
+                  "pinyin": "liànxí xiě zì",
+                  "english": "practice writing characters"
+                },
+                {
+                  "traditional": "考期中考",
+                  "simplified": "考期中考",
+                  "pinyin": "kǎo qízhōngkǎo",
+                  "english": "take her midterm"
+                }
+              ],
+              "key": 1,
+              "why": "不能跟妳去看電影了: she cancels the movie. 那天 (Saturday) she will 練習寫字, because the midterm is next Monday, not Saturday.",
+              "focus": {
+                "zh": "練習寫字",
+                "en": "practice writing"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-3-05",
+                "B1L09-3-13",
+                "B1L09-2-14",
+                "B1L09-2-04"
+              ],
+              "grammarIds": [
+                "B1L09-G04-P213"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

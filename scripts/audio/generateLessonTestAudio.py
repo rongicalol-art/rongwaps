@@ -7,6 +7,12 @@
 
 (<venv> is the local MLX environment, output/qwen-pilot-venv in the main checkout.)
 
+  <venv>/bin/python scripts/audio/generateLessonTestAudio.py --engine yating --lessons b1l01 ... b1l16
+
+--engine yating voices the sentences with the owner-picked Yating API voices (雅婷 F, 家豪 M, 意晴 N; key
+YATING_API_KEY in .env) at each test's pace (YATING_PACE, after the textbook's recordings), and writes voices.json
+(each test's voice per role) for the receipt. The A/B/C/D letters stay the English Serena clips.
+
 Voices (TOCFL recordings use two dialogue voices and a separate narrator):
 - F: Vivian, the owner-approved studio voice;
 - M: Dylan (owner-approved for speaker B) and Uncle_Fu, a non-dialect male voice, both rendered so the owner
@@ -17,11 +23,11 @@ Dialogue voices speak naturally, like everyday conversation; the narrator reads 
 Every clip is mastered like the grammar studio clips, published as a 48 kbps copy named by its hash
 (`lesson-test-studio/v1/<hash>.mp3`) and listed in <out>/manifest.json, which checkStudioBatch.py checks
 (independent ASR must hear the whole sentence; the ending must fade) and publishLessonTestAudio.ts uploads.
-The ding is synthesized here (a soft bell, no model). It never time-stretches speech.
+The ding is a recorded small bell (scripts/audio/sounds, CC0). It never time-stretches speech.
 """
 import argparse
 import json
-import math
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -48,6 +54,36 @@ SLOWER = " 語速稍微慢一點，在逗號自然停頓，但不要拖長字音
 TAKES = [(seed, "") for seed in SEEDS] + [(seed, "s") for seed in SEEDS[:5]]
 MAX_PACE = {"N": 4.2, "F": 4.5, "M": 4.5}  # Characters a second: the narrator stays measured, dialogue may be conversational.
 LETTERS = ["A", "B", "C", "D"]
+# --engine yating: the owner-picked Yating API voices (scripts/audio/yatingTts.py). The A/B/C/D letters stay the
+# English letter clips read by VOICES["N"] (owner's choice), so they are never sent to Yating.
+YATING_VOICES = {"F": "zh_en_female_1", "M": "zh_en_male_1", "N": "zh_en_female_2"}  # 雅婷, 家豪, 意晴.
+# Pace per test: each voice near its natural speed, evened out so 雅婷 and the narrator match 家豪's calmer pace
+# (owner's pick "Natural, evened out" over stretching to the textbook's exact pace, which sounded drawn out).
+# Yating speed: a higher value speaks slower (max 1.5). At the same setting 家豪 is ~10% slower than 雅婷 and 意晴 ~10%
+# faster (output/checks/yating_calibrate.py), so each role has its own setting. Book 1 adds a 400 ms pause at every
+# comma. The textbook's own pace (output/checks/speech_rate.py): Book 1 L1–8 ≈ 2.0 characters a second, L9–16 ≈ 2.5,
+# Book 2 ≈ 3.2–3.5; these land a little faster, closer to TOCFL's natural speech. {(book, last lesson): ({role: speed}, pauses)}
+YATING_PACE = {
+    (1, 8): ({"F": 1.35, "M": 1.2, "N": 1.4}, True),
+    (1, 16): ({"F": 1.25, "M": 1.1, "N": 1.3}, True),
+    (2, 16): ({"F": 1.1, "M": 1.0, "N": 1.1}, False),  # Owner OK'd 1.0 for Book 2; evened out the same way (check by ear).
+}
+# Retakes change the speed only a little, so a retaken line never sounds slower or faster than its neighbours.
+YATING_SPEED_STEPS = (0.0, -0.05, 0.05)
+YATING_TAKES = [(take, "y") for take in range(len(YATING_SPEED_STEPS))]
+
+
+def yating_pace(book, lesson, speaker):
+    """The (speed, pauses) a lesson's test uses for one role."""
+    for (pace_book, last), (speeds, pauses) in sorted(YATING_PACE.items()):
+        if pace_book == book and lesson <= last:
+            return speeds[speaker], pauses
+    raise SystemExit(f"No Yating pace for book {book}")
+
+
+def yating_label(speaker, speed, pauses):
+    """The receipt's voice name: Yating model, speed and pause flag (e.g. zh_en_female_1@1.2p)."""
+    return f"{YATING_VOICES[speaker]}@{speed}{'p' if pauses else ''}"
 
 
 def spoken_units(lesson):
@@ -73,23 +109,13 @@ def clip_key(voice, text):
     return f"{voice}|{text}"
 
 
+DING_SOURCE = Path(__file__).resolve().parent / "sounds" / "lesson-test-ding.mp3"
+
+
 def ding(destination):
-    """A soft bell (C6 with bell partials and an exponential fade), mastered like speech but quieter."""
-    import numpy as np
-    import soundfile as sf
-    rate = 24000
-    seconds = 1.3
-    t = np.arange(int(rate * seconds)) / rate
-    f0 = 1046.5
-    partials = [(1.0, 1.0, 1.6), (2.0, 0.32, 2.4), (2.76, 0.16, 3.4), (5.4, 0.05, 6.0)]
-    wave = sum(amp * np.sin(2 * math.pi * f0 * ratio * t) * np.exp(-t * decay) for ratio, amp, decay in partials)
-    wave *= np.minimum(1.0, t / 0.006)  # 6 ms attack: no click.
-    wave = (wave / np.max(np.abs(wave)) * 0.5).astype(np.float32)
-    tmp = destination.with_suffix(".tmp.wav")
-    sf.write(tmp, wave, rate, subtype="FLOAT")
-    subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(tmp), "-af", "volume=-9dB",
-                    "-ac", "1", "-ar", "24000", "-codec:a", "libmp3lame", "-b:a", "96k", str(destination)], check=True)
-    tmp.unlink(missing_ok=True)
+    """The ding: the first strike of "Ding Ding Small Bell" (Freesound 173932, CC0), cut 0.43 s in for 2.2 s with a
+    4 ms fade-in and a fade-out from 1.4 s, then levelled to about -18 LUFS, a little under the voices."""
+    shutil.copyfile(DING_SOURCE, destination)
 
 
 def deliver(master, folder):
@@ -126,16 +152,49 @@ def synthesize(model, text, voice, instruct, seed, lang, mx, np):
     return np.concatenate([pad, audio, pad]), rate
 
 
+def yating_request(target, take=0):
+    """The Yating call for a target's take: its model, speed (nudged per retake) and comma pauses as SSML."""
+    speed = round(min(1.5, max(0.5, target["speed"] + YATING_SPEED_STEPS[take])), 2)
+    text = target["text"]
+    if target["pauses"] and "，" in text:
+        return "<speak>" + text.replace("，", '，<break time="400ms"/>') + "</speak>", target["model"], speed, True
+    return text, target["model"], speed, False
+
+
+def yating_model(target, take):
+    """The manifest's model field for a Yating take: model and the speed actually sent."""
+    if take >= len(YATING_SPEED_STEPS):
+        return None
+    return f"yating-tts-v2/{target['model']}/speed-{yating_request(target, take)[2]}"
+
+
+def synthesize_yating(target, take, np, sf):
+    """One Yating take (cached by request), trimmed and padded like the Qwen takes."""
+    import io
+    from yatingTts import synthesize as yating
+    text, model, speed, ssml = yating_request(target, take)
+    audio, rate = sf.read(io.BytesIO(yating(text, model, speed=speed, ssml=ssml)), dtype="float32")
+    audio = trim_to_active(np.asarray(audio, dtype=np.float32).reshape(-1), np)
+    pad = np.zeros(round(rate * TRIM_PADDING), dtype=np.float32)
+    return np.concatenate([pad, audio, pad]), rate
+
+
 def render(model, target, rejected, masters, mx, np, sf):
-    """Try seeds until a take passes duration, pace, fade and drag checks; return its manifest entry."""
+    """Try takes until one passes duration, pace, fade and drag checks; return its manifest entry."""
     key, text, voice, instruct, lang = target["key"], target["text"], target["voice"], target["instruct"], target["lang"]
+    yating = target.get("engine") == "yating"
     errors = []
-    for seed, style in TAKES:
+    for seed, style in (YATING_TAKES if yating else TAKES):
         if attempt_id(seed, style) in rejected.get(key, []):
             continue
         master = masters / f"{abs(hash((key, seed, style))) % 10**12:012d}.mp3"
+        # Yating's pace is set on purpose (Book 1 speaks slower), so "drags" means slower than that pace.
+        floor = MIN_VOICED_PACE / max(1.0, yating_request(target, seed)[2]) if yating else MIN_VOICED_PACE
         try:
-            audio, rate = synthesize(model, text, voice, instruct + (SLOWER if style else ""), seed, lang, mx, np)
+            if yating:
+                audio, rate = synthesize_yating(target, seed, np, sf)
+            else:
+                audio, rate = synthesize(model, text, voice, instruct + (SLOWER if style else ""), seed, lang, mx, np)
             if lang == LANG_CODE:
                 duration = validate_duration(audio, rate, text)
                 pace = syllables(text) / duration
@@ -148,7 +207,7 @@ def render(model, target, rejected, masters, mx, np, sf):
             if lang == LANG_CODE:
                 if ending_ratio(master) > ENDING_MAX:
                     raise ValueError("ends abruptly")
-                if syllables(text) >= 4 and voiced_pace(master, text) < MIN_VOICED_PACE:
+                if syllables(text) >= 4 and voiced_pace(master, text) < floor:
                     raise ValueError("drags")
             published, digest = deliver(master, OUT / "studio")
             duration, _ = probe_audio(published)
@@ -156,8 +215,9 @@ def render(model, target, rejected, masters, mx, np, sf):
                 "key": key, "text": text, "spoken": text, "voice": voice, "speaker": target["speaker"],
                 "file": FILE_PREFIX + published.name, "local": published.relative_to(ROOT).as_posix(),
                 "master": master.relative_to(ROOT).as_posix(), "sha256": digest, "duration": round(duration, 3),
-                "model": MODEL, "instruct": instruct + (SLOWER if style else ""), "seed": seed, "take": style,
-                "deliveryBitrate": DELIVERY_BITRATE,
+                "model": yating_model(target, seed) if yating else MODEL,
+                "instruct": "" if yating else instruct + (SLOWER if style else ""), "seed": seed, "take": style,
+                "deliveryBitrate": DELIVERY_BITRATE, "minVoicedPace": floor,
                 "quality": measure_quality(published),
             }
         except Exception as error:  # noqa: BLE001 - every failure means "try the next seed"
@@ -180,13 +240,26 @@ def main():
     parser.add_argument("--lessons", nargs="+", required=True, help="Lesson keys, e.g. b1l04")
     parser.add_argument("--male", choices=sorted(MALE_VOICES), default="dylan", help="Which male voice the manifest publishes.")
     parser.add_argument("--both-male", action="store_true", help="Also render the other male voice for comparison.")
+    parser.add_argument("--engine", choices=["qwen", "yating"], default="qwen",
+                        help="qwen: the local MLX voices; yating: the Yating API voices (YATING_API_KEY in .env).")
     args = parser.parse_args()
 
     targets = {}
+    lesson_voices = {}  # Yating: which voice label each test uses per role (its pace), for the receipt.
     for key in args.lessons:
         book = int(key[1:key.index("l")])
-        lesson = json.loads((CONTENT / f"book-{book}" / f"lesson{int(key[key.index('l') + 1:]):02d}.json").read_text(encoding="utf-8"))
+        number = int(key[key.index('l') + 1:])
+        lesson = json.loads((CONTENT / f"book-{book}" / f"lesson{number:02d}.json").read_text(encoding="utf-8"))
+        if args.engine == "yating":
+            lesson_voices[key] = {s: yating_label(s, *yating_pace(book, number, s)) for s in YATING_VOICES}
         for speaker, text in spoken_units(lesson):
+            if args.engine == "yating":
+                speed, pauses = yating_pace(book, number, speaker)
+                voice = yating_label(speaker, speed, pauses)
+                targets[clip_key(voice, text)] = {"key": clip_key(voice, text), "text": text, "voice": voice,
+                                                  "speaker": speaker, "instruct": "", "lang": LANG_CODE, "engine": "yating",
+                                                  "model": YATING_VOICES[speaker], "speed": speed, "pauses": pauses}
+                continue
             voices = [VOICES.get(speaker)] if speaker != "M" else [MALE_VOICES[args.male]] + (
                 [v for k, v in MALE_VOICES.items() if k != args.male] if args.both_male else [])
             for voice in voices:
@@ -206,6 +279,8 @@ def main():
     entries, pending = [], []
     for key, target in targets.items():
         previous = old.get(key)
+        if previous and target.get("engine") == "yating" and previous.get("model") != yating_model(target, previous["seed"]):
+            previous = None  # Rendered at another speed (an older retake rule): render it again at this one.
         if previous and (ROOT / previous["local"]).is_file() and attempt_id(previous["seed"], previous.get("take", "")) not in rejected.get(key, []):
             if previous["quality"]["truePeakDbfs"] > -1.0 and (ROOT / previous["master"]).is_file():
                 # Published before deliver() checked peaks: re-deliver from its master; the checker runs on it again.
@@ -218,32 +293,62 @@ def main():
     print(f"{len(targets)} clips, {len(pending)} to render", flush=True)
 
     ding_path = OUT / "ding.mp3"
-    if not ding_path.exists():
-        ding(ding_path)
+    ding(ding_path)
     published, digest = deliver(ding_path, OUT / "studio")
     sounds = {"ding": {"file": FILE_PREFIX + published.name, "local": published.relative_to(ROOT).as_posix(), "sha256": digest}}
 
     failures = []
     if pending:
-        import mlx.core as mx
         import numpy as np
         import soundfile as sf
-        from mlx_audio.tts.utils import load_model
-        model = load_model(MODEL)
+        model = mx = None
+        if any(t.get("engine") != "yating" for t in pending):
+            import mlx.core as mx
+            from mlx_audio.tts.utils import load_model
+            model = load_model(MODEL)
+        api = [t for t in pending if t.get("engine") == "yating"]
+        if api:
+            # Fetch every first take up front, 3 at a time (Yating's limit per key); render() then reads the cache.
+            from concurrent.futures import ThreadPoolExecutor
+            from yatingTts import synthesize as yating
+            def first_take(target):
+                text, model, speed, ssml = yating_request(target)
+                return yating(text, model, speed=speed, ssml=ssml)
+
+            with ThreadPoolExecutor(3) as pool:
+                list(pool.map(first_take, api))
+            print(f"fetched {len(api)} Yating takes", flush=True)
         masters = OUT / "masters"
         masters.mkdir(parents=True, exist_ok=True)
-        for index, target in enumerate(pending, 1):
+        # Yating takes are already fetched: mastering and checks (ffmpeg) run on several cores at once.
+        # The local Qwen model renders one take at a time.
+        import threading
+        from concurrent.futures import ThreadPoolExecutor
+        lock = threading.Lock()
+        done = [0]
+
+        def one(target):
             try:
-                entries.append(render(model, target, rejected, masters, mx, np, sf))
-                print(f"[{index}/{len(pending)}] {target['voice']} {target['text']}", flush=True)
-                write_json(manifest_path, [e for e in entries if e["text"] not in LETTERS])
+                entry = render(model, target, rejected, masters, mx, np, sf)
+                with lock:
+                    entries.append(entry)
+                    done[0] += 1
+                    print(f"[{done[0]}/{len(pending)}] {target['voice']} {target['text']}", flush=True)
+                    write_json(manifest_path, [e for e in entries if e["text"] not in LETTERS])
             except Exception as error:  # noqa: BLE001
-                failures.append((target["key"], str(error)))
-                print(f"FAILED {target['key']}: {error}", flush=True)
+                with lock:
+                    failures.append((target["key"], str(error)))
+                    print(f"FAILED {target['key']}: {error}", flush=True)
+
+        workers = 6 if all(t.get("engine") == "yating" for t in pending) else 1
+        with ThreadPoolExecutor(workers) as pool:
+            list(pool.map(one, pending))
     # Letters are not sentences: the ASR/pace checker can't judge them, so they live with the ding (checked by ear).
     sounds["letters"] = {e["text"]: e for e in entries if e["text"] in LETTERS}
     write_json(manifest_path, [e for e in entries if e["text"] not in LETTERS])
     write_json(OUT / "sounds.json", sounds)
+    if lesson_voices:
+        write_json(OUT / "voices.json", lesson_voices)  # publishLessonTestAudio.ts copies it into the receipt.
     write_review(entries)
     print(f"done: {len(entries)} clips, {len(failures)} failed", flush=True)
     if failures:

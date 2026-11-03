@@ -66,6 +66,13 @@ export function SourcesContent() {
           preset voices of <Ext href="https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice">Qwen3-TTS</Ext>{' '}
           (Apache 2.0). No textbook recording was replaced or used for voice cloning.
         </LegalParagraph>
+        <LegalParagraph>
+          Lesson test dialogues, questions and spoken answers use AI-generated voices from a commercial
+          text-to-speech service; they are not recordings of real people. The A–D answer letters use the
+          Qwen3-TTS voices above. The bell before each question is{' '}
+          <Ext href="https://freesound.org/s/173932/">Freesound sound 173932</Ext>, dedicated to the public domain
+          (<Ext href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</Ext>).
+        </LegalParagraph>
       </LegalSection>
 
       <LegalSection title="Characters and words">

@@ -149,11 +149,12 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onLater }
       </div>
       {!passed && <p className="text-center text-base font-bold text-ui-muted-strong">You got {percent}%. You need 80% to pass.</p>}
       {rows.length > 0 && (
-        <ul aria-label="To fix" className="flex w-full max-w-md flex-col">
+        // Shared columns: the meanings line up however long the Chinese is.
+        <ul aria-label="To fix" className="grid w-full max-w-md grid-cols-[auto_1fr_auto] gap-x-3">
           {rows.map((row) => (
-            <li key={row.zh} className="flex items-baseline gap-3 border-b-2 border-ui-divider px-1 py-2.5 last:border-b-0">
+            <li key={row.zh} className="col-span-full grid grid-cols-subgrid items-baseline border-b-2 border-ui-divider px-1 py-2.5 last:border-b-0">
               <span className="min-w-28 font-chinese text-xl text-ui-ink-strong">{row.zh}</span>
-              <span className="flex-1 text-base font-bold text-ui-muted-strong">{row.en}</span>
+              <span className="text-base font-bold text-ui-muted-strong">{row.en}</span>
               {row.lesson !== lessonId && <span className="whitespace-nowrap text-sm font-extrabold text-ui-muted">Lesson {row.lesson}</span>}
             </li>
           ))}

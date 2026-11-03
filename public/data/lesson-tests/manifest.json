@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "version": "b8acf6c66d88ac41",
-  "totalCount": 1,
+  "version": "f25ca10c4cdabc67",
+  "totalCount": 16,
   "books": [
     {
       "bookId": 1,
-      "count": 1,
+      "count": 16,
       "path": "/data/lesson-tests/book-1.json",
-      "sha256": "47fa3e61c4c875678e093a8c14cc55c55d614f3ce945f00ee50f32aa6e4716c6",
-      "bytes": 50944
+      "sha256": "07c3f223a3045aceb895f26587cffb5bd8814b2463b09e952c4d14179fe09e8d",
+      "bytes": 986821
     }
   ]
 }

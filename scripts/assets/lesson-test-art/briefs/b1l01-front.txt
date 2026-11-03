@@ -1,0 +1,11 @@
+Kind: strip
+Style: scene
+Characters: src/assets/images/characters/portraits/teacher.webp, src/assets/images/characters/portraits/youmei.webp, src/assets/images/characters/portraits/zhongming.webp
+
+SUBJECT: a 3-panel picture strip for a reading question ("which picture matches the sentence?"). The people are the teacher (attached portrait: woman with a short black bob, blue cardigan over a white blouse, small green pendant), Youmei (attached portrait: dark-red bob with bangs, coral cardigan over a white collared shirt) and Zhongming (attached portrait: curly black hair, yellow jacket over a blue T-shirt); keep each identity exactly as in the portraits.
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: the front of the same classroom, a dark green board (blank, no writing) and a small wooden lectern beside it, one person standing in front of the board, seen from the knees up. Only WHO STANDS THERE changes:
+- Panel 1 (left): THE TEACHER. The teacher stands behind the lectern holding an open textbook, an adult, calm and smiling. No backpack.
+- Panel 2 (middle): A NEW FEMALE STUDENT. Youmei stands in front of the board with a navy backpack on her shoulders, waving shyly with one hand.
+- Panel 3 (right): A NEW MALE STUDENT. An unnamed young man (NOT Zhongming: short straight black hair, green hoodie) stands in front of the board with a navy backpack on his shoulders, waving with one hand.
+No text anywhere, nothing written on the board.

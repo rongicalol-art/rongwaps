@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ActionButton, KeyChip } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { isTappedFocus, watchTaps } from '../../../utils/browser/tappedFocus';
 
 interface TestDockProps {
-  /** The primary action; Enter or Space presses it. */
+  /** The primary action; Space presses it. */
   label: string;
   onPress: () => void;
   /** A quiet second action under (phone) or beside (desktop) the first. */
@@ -18,10 +19,13 @@ interface TestDockProps {
 export function TestDock({ label, onPress, secondary, riseKey, className }: TestDockProps) {
   const reduceMotion = useReducedMotion();
   useEffect(() => {
+    watchTaps();
     const onKey = (event: KeyboardEvent) => {
-      if ((event.key !== 'Enter' && event.key !== ' ') || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
-      // A focused button presses itself.
-      if (event.target instanceof HTMLButtonElement || event.target instanceof HTMLInputElement) return;
+      if (event.key !== ' ' || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+      // A button reached with Tab presses itself; a just-tapped choice must not (Space means this action), so its
+      // own Space click is prevented.
+      if (event.target instanceof HTMLButtonElement && !isTappedFocus(event.target)) return;
       event.preventDefault();
       onPress();
     };
@@ -41,7 +45,7 @@ export function TestDock({ label, onPress, secondary, riseKey, className }: Test
         <ActionButton size="lg" fullWidth onClick={onPress} className="text-base tracking-wider md:text-lg">
           <span className="relative">
             {label}
-            <KeyChip className="border-brand-on-primary/40 text-brand-on-primary/80">Enter</KeyChip>
+            <KeyChip className="border-brand-on-primary/40 text-brand-on-primary/80">Space</KeyChip>
           </span>
         </ActionButton>
         {secondary && (

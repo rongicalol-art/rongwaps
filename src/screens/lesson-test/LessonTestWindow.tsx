@@ -13,7 +13,7 @@ interface LessonTestWindowProps {
 /** The lesson test over the lesson window. Closing mid-test keeps the run; opening again resumes it. */
 export function LessonTestWindow({ bookId, lessonId, onClose }: LessonTestWindowProps) {
   const ref = useRef<HTMLDivElement>(null);
-  // Focus starts on the window itself, not its Close button: Enter belongs to the test's own action.
+  // Focus starts on the window itself, not its Close button: Space belongs to the test's own action.
   const modalFocus = useModalFocus({ containerRef: ref, initialFocusRef: ref, isActive: true, onEscape: onClose });
   const { data, isLoading, error, retry } = useLessonTestData(bookId, lessonId);
   return (

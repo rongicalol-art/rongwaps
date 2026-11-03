@@ -1,0 +1,2470 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l09",
+  "bookId": 1,
+  "lessonId": 9,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "友美",
+    "宜文",
+    "國安"
+  ],
+  "slots": [
+    {
+      "id": "hear-doing",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l09-hear-doing-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳在看書嗎？",
+              "simplified": "你在看书吗？",
+              "pinyin": "Nǐ zài kàn shū ma?",
+              "english": "Are you reading?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "沒有，我在寫作業。",
+              "simplified": "没有，我在写作业。",
+              "pinyin": "Méiyǒu, wǒ zài xiě zuòyè.",
+              "english": "No, I'm doing my homework."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-hear-doing-1-q",
+              "choices": [
+                {
+                  "picture": "b1l09-doing-1",
+                  "alt": "Calligraphy: she writes on white paper with a writing brush"
+                },
+                {
+                  "picture": "b1l09-doing-2",
+                  "alt": "Homework: she writes in a notebook with a pencil"
+                },
+                {
+                  "picture": "b1l09-doing-3",
+                  "alt": "Reading: she reads a book, with no pencil or brush in her hand"
+                }
+              ],
+              "key": 1,
+              "why": "She says 沒有 to reading. 我在寫作業 means she is doing written homework right now.",
+              "focus": {
+                "zh": "在寫作業",
+                "en": "doing homework now"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-10",
+                "B1L09-1-15",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L09-G01-P205"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-hear-doing-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳在做什麼？",
+              "simplified": "你在做什么？",
+              "pinyin": "Nǐ zài zuò shénme?",
+              "english": "What are you doing?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我在看書，晚上再寫功課。",
+              "simplified": "我在看书，晚上再写功课。",
+              "pinyin": "Wǒ zài kàn shū, wǎnshàng zài xiě gōngkè.",
+              "english": "I'm reading. I'll do my homework tonight."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-hear-doing-2-q",
+              "choices": [
+                {
+                  "picture": "b1l09-doing-1",
+                  "alt": "Calligraphy: she writes on white paper with a writing brush"
+                },
+                {
+                  "picture": "b1l09-doing-2",
+                  "alt": "Homework: she writes in a notebook with a pencil"
+                },
+                {
+                  "picture": "b1l09-doing-3",
+                  "alt": "Reading: she reads a book, with no pencil or brush in her hand"
+                }
+              ],
+              "key": 2,
+              "why": "我在看書 is what she is doing now. The homework comes later: 晚上再寫功課.",
+              "focus": {
+                "zh": "在看書",
+                "en": "reading right now"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-10",
+                "B1L09-1-16",
+                "B1L09-1-14"
+              ],
+              "grammarIds": [
+                "B1L09-G01-P205"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-hear-doing-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳在寫功課嗎？",
+              "simplified": "你在写功课吗？",
+              "pinyin": "Nǐ zài xiě gōngkè ma?",
+              "english": "Are you doing your homework?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我在寫書法。",
+              "simplified": "不是，我在写书法。",
+              "pinyin": "Bú shì, wǒ zài xiě shūfǎ.",
+              "english": "No, I'm writing calligraphy."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-hear-doing-3-q",
+              "choices": [
+                {
+                  "picture": "b1l09-doing-1",
+                  "alt": "Calligraphy: she writes on white paper with a writing brush"
+                },
+                {
+                  "picture": "b1l09-doing-2",
+                  "alt": "Homework: she writes in a notebook with a pencil"
+                },
+                {
+                  "picture": "b1l09-doing-3",
+                  "alt": "Reading: she reads a book, with no pencil or brush in her hand"
+                }
+              ],
+              "key": 0,
+              "why": "She says 不是 to homework. 我在寫書法 means she is writing calligraphy, with a brush.",
+              "focus": {
+                "zh": "在寫書法",
+                "en": "writing calligraphy now"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-10",
+                "B1L09-1-11",
+                "B1L09-1-14",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L09-G01-P205"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-brush",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l09-hear-brush-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你的毛筆不在書上面，在杯子裡面。",
+              "simplified": "你的毛笔不在书上面，在杯子里面。",
+              "pinyin": "Nǐ de máobǐ bú zài shū shàngmiàn, zài bēizi lǐmiàn.",
+              "english": "Your brush isn't on the book. It's in the cup."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-hear-brush-1-q",
+              "choices": [
+                {
+                  "picture": "b1l09-brush-1",
+                  "alt": "Between: the brush lies on the desk between the book and the cup"
+                },
+                {
+                  "picture": "b1l09-brush-2",
+                  "alt": "On the book: the brush lies on top of the book"
+                },
+                {
+                  "picture": "b1l09-brush-3",
+                  "alt": "In the cup: the brush stands in the cup"
+                }
+              ],
+              "key": 2,
+              "why": "不在書上面 rules out the book. 杯子裡面 means inside the cup: the brush stands in the cup.",
+              "focus": {
+                "zh": "在杯子裡面",
+                "en": "inside the cup"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L09-1-12",
+                "B1L05-2-07",
+                "B1L04-2-04"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-hear-brush-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我的毛筆不在杯子裡，在書和杯子中間。",
+              "simplified": "我的毛笔不在杯子里，在书和杯子中间。",
+              "pinyin": "Wǒ de máobǐ bú zài bēizi lǐ, zài shū hé bēizi zhōngjiān.",
+              "english": "My brush isn't in the cup. It's between the book and the cup."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-hear-brush-2-q",
+              "choices": [
+                {
+                  "picture": "b1l09-brush-1",
+                  "alt": "Between: the brush lies on the desk between the book and the cup"
+                },
+                {
+                  "picture": "b1l09-brush-2",
+                  "alt": "On the book: the brush lies on top of the book"
+                },
+                {
+                  "picture": "b1l09-brush-3",
+                  "alt": "In the cup: the brush stands in the cup"
+                }
+              ],
+              "key": 0,
+              "why": "不在杯子裡 rules out the cup. 中間 means between: the brush lies on the desk between the book and the cup, touching neither.",
+              "focus": {
+                "zh": "書和杯子中間",
+                "en": "between two things"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-02",
+                "B1L09-1-12",
+                "B1L04-2-04"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-hear-brush-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我的毛筆在書和杯子中間嗎？",
+              "simplified": "我的毛笔在书和杯子中间吗？",
+              "pinyin": "Wǒ de máobǐ zài shū hé bēizi zhōngjiān ma?",
+              "english": "Is my brush between the book and the cup?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不在，在書上面。",
+              "simplified": "不在，在书上面。",
+              "pinyin": "Bú zài, zài shū shàngmiàn.",
+              "english": "No, it's on the book."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-hear-brush-3-q",
+              "choices": [
+                {
+                  "picture": "b1l09-brush-1",
+                  "alt": "Between: the brush lies on the desk between the book and the cup"
+                },
+                {
+                  "picture": "b1l09-brush-2",
+                  "alt": "On the book: the brush lies on top of the book"
+                },
+                {
+                  "picture": "b1l09-brush-3",
+                  "alt": "In the cup: the brush stands in the cup"
+                }
+              ],
+              "key": 1,
+              "why": "She says 不在 to \"between\" (中間), then 在書上面: the brush is on top of the book.",
+              "focus": {
+                "zh": "在書上面",
+                "en": "on top of the book"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L09-1-12",
+                "B1L05-2-13",
+                "B1L09-2-02"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-workbook",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l09-picture-workbook-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L09-R01",
+            "alt": "Daytime: bright sunlight, blue sky and green trees in the window behind them, no lamp on. A boy and a girl look at one open workbook. The boy frowns, points at one written sentence on the page and holds his head: he is puzzled by it. The girl holds a plain ballpoint pen over the page, her other hand on her chin. There is no computer, phone or tablet anywhere in the picture. Far behind them, through an open door into another room, writing brushes hang on a wooden stand; nobody holds a brush and there is no brush, ink or calligraphy paper on their table."
+          },
+          "questions": [
+            {
+              "id": "b1l09-picture-workbook-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們在上網。",
+                  "simplified": "他们在上网。",
+                  "pinyin": "Tāmen zài shàngwǎng.",
+                  "english": "They are on the internet."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在寫書法。",
+                  "simplified": "他们在写书法。",
+                  "pinyin": "Tāmen zài xiě shūfǎ.",
+                  "english": "They are writing calligraphy."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在做功課。",
+                  "simplified": "他们在做功课。",
+                  "pinyin": "Tāmen zài zuò gōngkè.",
+                  "english": "They are doing homework."
+                }
+              ],
+              "key": 2,
+              "why": "They are working through an open workbook with a pen: 在做功課. There is no computer or phone for 上網, and the brushes hang on the rack in the room behind them, so nobody is writing calligraphy (寫書法).",
+              "focus": {
+                "zh": "在做功課",
+                "en": "what they are doing"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-10",
+                "B1L09-1-14",
+                "B1L02-3-01",
+                "B1L09-1-11"
+              ],
+              "grammarIds": [
+                "B1L09-G01-P205"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-picture-workbook-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L09-R01",
+            "alt": "Daytime: bright sunlight, blue sky and green trees in the window behind them, no lamp on. A boy and a girl look at one open workbook. The boy frowns, points at one written sentence on the page and holds his head: he is puzzled by it. The girl holds a plain ballpoint pen over the page, her other hand on her chin. There is no computer, phone or tablet anywhere in the picture. Far behind them, through an open door into another room, writing brushes hang on a wooden stand; nobody holds a brush and there is no brush, ink or calligraphy paper on their table."
+          },
+          "questions": [
+            {
+              "id": "b1l09-picture-workbook-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "現在是晚上，他們在讀書。",
+                  "simplified": "现在是晚上，他们在读书。",
+                  "pinyin": "Xiànzài shì wǎnshàng, tāmen zài dúshū.",
+                  "english": "It's evening, and they are studying."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "男生不懂這個句子。",
+                  "simplified": "男生不懂这个句子。",
+                  "pinyin": "Nánshēng bù dǒng zhège jùzi.",
+                  "english": "The boy doesn't understand this sentence."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女生在用電腦寫作業。",
+                  "simplified": "女生在用电脑写作业。",
+                  "pinyin": "Nǚshēng zài yòng diànnǎo xiě zuòyè.",
+                  "english": "The girl is doing homework on a computer."
+                }
+              ],
+              "key": 1,
+              "why": "The boy holds his head and points at a sentence in the workbook: 男生不懂這個句子, he doesn't understand this sentence. They are studying, but it is daytime (the sunny window), not 晚上, and there is no computer on the table.",
+              "focus": {
+                "zh": "不懂這個句子",
+                "en": "not understanding"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-03",
+                "B1L09-1-01",
+                "B1L08-3-05"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-library",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l09-picture-library-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L09-R03",
+            "alt": "Night (a dark window with city lights, a desk lamp switched on) in a library with tall bookshelves; other students sit at tables far behind, small and blurred. In front, two girls study together at one table. One points at her notebook; the other writes with a pen. On the two girls' own table: a stack of books, two open paper notebooks (white ruled pages, one spiral-bound), a pencil case, a pen, sticky notes and exactly one open laptop (a screen and a keyboard) at the girl who writes; no phone or tablet."
+          },
+          "questions": [
+            {
+              "id": "b1l09-picture-library-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "兩個女生晚上在圖書館讀書。",
+                  "simplified": "两个女生晚上在图书馆读书。",
+                  "pinyin": "Liǎng ge nǚshēng wǎnshàng zài túshūguǎn dúshū.",
+                  "english": "Two girls are studying in the library in the evening."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個女生早上在圖書館讀書。",
+                  "simplified": "两个女生早上在图书馆读书。",
+                  "pinyin": "Liǎng ge nǚshēng zǎoshàng zài túshūguǎn dúshū.",
+                  "english": "Two girls are studying in the library in the morning."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩個女生中午在圖書館讀書。",
+                  "simplified": "两个女生中午在图书馆读书。",
+                  "pinyin": "Liǎng ge nǚshēng zhōngwǔ zài túshūguǎn dúshū.",
+                  "english": "Two girls are studying in the library at noon."
+                }
+              ],
+              "key": 0,
+              "why": "It is dark outside and the desk lamp is on, so they study in the evening (晚上), not in the morning (早上) or at noon (中午).",
+              "focus": {
+                "zh": "晚上在圖書館讀書",
+                "en": "time of day"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-3-07",
+                "B1L02-2-10",
+                "B1L02-1-16",
+                "B1L02-1-21"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-picture-library-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L09-R03",
+            "alt": "Night (a dark window with city lights, a desk lamp switched on) in a library with tall bookshelves; other students sit at tables far behind, small and blurred. In front, two girls study together at one table. One points at her notebook; the other writes with a pen. On the two girls' own table: a stack of books, two open paper notebooks (white ruled pages, one spiral-bound), a pencil case, a pen, sticky notes and exactly one open laptop (a screen and a keyboard) at the girl who writes; no phone or tablet."
+          },
+          "questions": [
+            {
+              "id": "b1l09-picture-library-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個女生的桌子上有兩台電腦。",
+                  "simplified": "这两个女生的桌子上有两台电脑。",
+                  "pinyin": "Zhè liǎng ge nǚshēng de zhuōzi shàng yǒu liǎng tái diànnǎo.",
+                  "english": "There are two computers on these two girls' table."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個女生的桌子上沒有電腦。",
+                  "simplified": "这两个女生的桌子上没有电脑。",
+                  "pinyin": "Zhè liǎng ge nǚshēng de zhuōzi shàng méiyǒu diànnǎo.",
+                  "english": "There's no computer on these two girls' table."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個女生的桌子上有一台電腦。",
+                  "simplified": "这两个女生的桌子上有一台电脑。",
+                  "pinyin": "Zhè liǎng ge nǚshēng de zhuōzi shàng yǒu yì tái diànnǎo.",
+                  "english": "There's one computer on these two girls' table."
+                }
+              ],
+              "key": 2,
+              "why": "On the two girls' own table there is one laptop, in front of the girl who is writing: 有一台電腦. 台 counts machines. The other students sit at other tables, so they do not count.",
+              "focus": {
+                "zh": "有一台電腦",
+                "en": "what is on the table"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-10",
+                "B1L06-2-09",
+                "B1L05-2-14",
+                "B1L05-3-04"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126",
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-time",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l09-dialogue-time-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳禮拜四幾點有課？",
+              "simplified": "你礼拜四几点有课？",
+              "pinyin": "Nǐ lǐbàisì jǐ diǎn yǒu kè?",
+              "english": "What time do you have class on Thursday?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "從上午九點到下午三點，五點我要去打球。",
+              "simplified": "从上午九点到下午三点，五点我要去打球。",
+              "pinyin": "Cóng shàngwǔ jiǔ diǎn dào xiàwǔ sān diǎn, wǔ diǎn wǒ yào qù dǎ qiú.",
+              "english": "From nine in the morning to three in the afternoon. At five I'm going to play ball."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-time-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生禮拜四幾點下課？",
+                "simplified": "女生礼拜四几点下课？",
+                "pinyin": "Nǚshēng lǐbàisì jǐ diǎn xiàkè?",
+                "english": "What time does the young woman finish class on Thursday?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "九點",
+                  "simplified": "九点",
+                  "pinyin": "jiǔ diǎn",
+                  "english": "nine o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五點",
+                  "simplified": "五点",
+                  "pinyin": "wǔ diǎn",
+                  "english": "five o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三點",
+                  "simplified": "三点",
+                  "pinyin": "sān diǎn",
+                  "english": "three o'clock"
+                }
+              ],
+              "key": 2,
+              "why": "從九點到三點: class starts at nine and ends at three. 五點 is when she is going to play ball.",
+              "focus": {
+                "zh": "從……到……",
+                "en": "from … to …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L07-1-02",
+                "B1L09-2-07",
+                "B1L02-1-27"
+              ],
+              "grammarIds": [
+                "B1L09-G02-P206"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-dialogue-time-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你們的期中考是哪幾天？",
+              "simplified": "你们的期中考是哪几天？",
+              "pinyin": "Nǐmen de qízhōngkǎo shì nǎ jǐ tiān?",
+              "english": "Which days is your midterm?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "從下禮拜二到禮拜四都有考試。",
+              "simplified": "从下礼拜二到礼拜四都有考试。",
+              "pinyin": "Cóng xià lǐbài'èr dào lǐbàisì dōu yǒu kǎoshì.",
+              "english": "We have exams from next Tuesday to Thursday."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-time-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "期中考從哪天開始？",
+                "simplified": "期中考从哪天开始？",
+                "pinyin": "Qízhōngkǎo cóng nǎ tiān kāishǐ?",
+                "english": "On which day does the midterm start?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這禮拜二",
+                  "simplified": "这礼拜二",
+                  "pinyin": "zhè lǐbài'èr",
+                  "english": "this Tuesday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下禮拜二",
+                  "simplified": "下礼拜二",
+                  "pinyin": "xià lǐbài'èr",
+                  "english": "next Tuesday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下禮拜四",
+                  "simplified": "下礼拜四",
+                  "pinyin": "xià lǐbàisì",
+                  "english": "next Thursday"
+                }
+              ],
+              "key": 1,
+              "why": "從下禮拜二到禮拜四: the midterm starts next Tuesday (從) and lasts until Thursday (到). He says 下, next week, not this week.",
+              "focus": {
+                "zh": "從下禮拜二",
+                "en": "when it starts"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-14",
+                "B1L07-1-20",
+                "B1L09-3-10",
+                "B1L09-3-02"
+              ],
+              "grammarIds": [
+                "B1L09-G02-P206"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-dialogue-time-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳今天晚上八點有空嗎？",
+              "simplified": "你今天晚上八点有空吗？",
+              "pinyin": "Nǐ jīntiān wǎnshàng bā diǎn yǒu kòng ma?",
+              "english": "Are you free at eight this evening?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "沒有，從七點到九點我要練習書法。",
+              "simplified": "没有，从七点到九点我要练习书法。",
+              "pinyin": "Méiyǒu, cóng qī diǎn dào jiǔ diǎn wǒ yào liànxí shūfǎ.",
+              "english": "No, from seven to nine I'm going to practice calligraphy."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-time-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生幾點開始練習書法？",
+                "simplified": "女生几点开始练习书法？",
+                "pinyin": "Nǚshēng jǐ diǎn kāishǐ liànxí shūfǎ?",
+                "english": "What time does the young woman start practicing calligraphy?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "七點",
+                  "simplified": "七点",
+                  "pinyin": "qī diǎn",
+                  "english": "seven o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "八點",
+                  "simplified": "八点",
+                  "pinyin": "bā diǎn",
+                  "english": "eight o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "九點",
+                  "simplified": "九点",
+                  "pinyin": "jiǔ diǎn",
+                  "english": "nine o'clock"
+                }
+              ],
+              "key": 0,
+              "why": "從七點 marks the start: she begins at seven. 八點 is the time he asks about, and 九點 comes after 到, so it is when she stops.",
+              "focus": {
+                "zh": "從七點到九點",
+                "en": "start and end times"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L07-1-02",
+                "B1L09-3-05",
+                "B1L09-1-11"
+              ],
+              "grammarIds": [
+                "B1L09-G02-P206"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-first",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l09-dialogue-first-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們一起去打籃球吧！",
+              "simplified": "我们一起去打篮球吧！",
+              "pinyin": "Wǒmen yìqǐ qù dǎ lánqiú ba!",
+              "english": "Let's go play basketball together!"
+            },
+            {
+              "speaker": "M",
+              "traditional": "好啊，可是我要先寫作業，再去。",
+              "simplified": "好啊，可是我要先写作业，再去。",
+              "pinyin": "Hǎo a, kěshì wǒ yào xiān xiě zuòyè, zài qù.",
+              "english": "Sure, but I'll do my homework first, then go."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-first-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男生要先做什麼？",
+                "simplified": "男生要先做什么？",
+                "pinyin": "Nánshēng yào xiān zuò shénme?",
+                "english": "What will the young man do first?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "打籃球",
+                  "simplified": "打篮球",
+                  "pinyin": "dǎ lánqiú",
+                  "english": "play basketball"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "寫作業",
+                  "simplified": "写作业",
+                  "pinyin": "xiě zuòyè",
+                  "english": "do homework"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看書",
+                  "simplified": "看书",
+                  "pinyin": "kàn shū",
+                  "english": "read"
+                }
+              ],
+              "key": 1,
+              "why": "先寫作業，再去: homework comes first, and basketball after it (再).",
+              "focus": {
+                "zh": "先……再……",
+                "en": "first …, then …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L09-1-16",
+                "B1L09-1-15",
+                "B1L06-1-04"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-dialogue-first-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "下課了，我們去吃飯吧。",
+              "simplified": "下课了，我们去吃饭吧。",
+              "pinyin": "Xiàkè le, wǒmen qù chī fàn ba.",
+              "english": "Class is over. Let's go eat."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我不去，我要先回宿舍，再去圖書館。",
+              "simplified": "我不去，我要先回宿舍，再去图书馆。",
+              "pinyin": "Wǒ bú qù, wǒ yào xiān huí sùshè, zài qù túshūguǎn.",
+              "english": "I'm not going. I'm going back to the dorm first, then to the library."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-first-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生先去哪裡？",
+                "simplified": "女生先去哪里？",
+                "pinyin": "Nǚshēng xiān qù nǎlǐ?",
+                "english": "Where does the young woman go first?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "宿舍",
+                  "simplified": "宿舍",
+                  "pinyin": "sùshè",
+                  "english": "the dorm"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "圖書館",
+                  "simplified": "图书馆",
+                  "pinyin": "túshūguǎn",
+                  "english": "the library"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "餐廳",
+                  "simplified": "餐厅",
+                  "pinyin": "cāntīng",
+                  "english": "a restaurant"
+                }
+              ],
+              "key": 0,
+              "why": "先回宿舍: the dorm comes first. The library comes after 再, and she says 我不去 to eating.",
+              "focus": {
+                "zh": "先回宿舍",
+                "en": "where she goes first"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L09-1-16",
+                "B1L09-1-13",
+                "B1L02-1-20"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-dialogue-first-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們先吃飯，再寫功課，好嗎？",
+              "simplified": "我们先吃饭，再写功课，好吗？",
+              "pinyin": "Wǒmen xiān chī fàn, zài xiě gōngkè, hǎo ma?",
+              "english": "Let's eat first and then do homework, OK?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我有一點累，想先休息，再吃飯。",
+              "simplified": "我有一点累，想先休息，再吃饭。",
+              "pinyin": "Wǒ yǒu yìdiǎn lèi, xiǎng xiān xiūxí, zài chī fàn.",
+              "english": "I'm a little tired. I want to rest first, then eat."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-first-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男生想先做什麼？",
+                "simplified": "男生想先做什么？",
+                "pinyin": "Nánshēng xiǎng xiān zuò shénme?",
+                "english": "What does the young man want to do first?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "寫功課",
+                  "simplified": "写功课",
+                  "pinyin": "xiě gōngkè",
+                  "english": "do homework"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "吃飯",
+                  "simplified": "吃饭",
+                  "pinyin": "chī fàn",
+                  "english": "eat"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "休息",
+                  "simplified": "休息",
+                  "pinyin": "xiūxí",
+                  "english": "rest"
+                }
+              ],
+              "key": 2,
+              "why": "想先休息，再吃飯: he wants to rest first and eat after that. Eating first and then doing homework is her plan, not his.",
+              "focus": {
+                "zh": "先休息，再吃飯",
+                "en": "first …, then …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L09-1-16",
+                "B1L06-2-07"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-questions",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l09-dialogue-review-questions-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳去咖啡廳看書，是宿舍太小，還是那裡很近？",
+              "simplified": "你去咖啡厅看书，是宿舍太小，还是那里很近？",
+              "pinyin": "Nǐ qù kāfēitīng kàn shū, shì sùshè tài xiǎo, háishì nàlǐ hěn jìn?",
+              "english": "You read at the café. Is the dorm too small, or is the café close?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "都不是，因為宿舍太熱了，所以我去那裡。",
+              "simplified": "都不是，因为宿舍太热了，所以我去那里。",
+              "pinyin": "Dōu bú shì, yīnwèi sùshè tài rè le, suǒyǐ wǒ qù nàlǐ.",
+              "english": "Neither. The dorm is too hot, so I go there."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-review-questions-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生為什麼去咖啡廳？",
+                "simplified": "女生为什么去咖啡厅？",
+                "pinyin": "Nǚshēng wèishénme qù kāfēitīng?",
+                "english": "Why does the young woman go to the café?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "宿舍太小了",
+                  "simplified": "宿舍太小了",
+                  "pinyin": "sùshè tài xiǎo le",
+                  "english": "the dorm is too small"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "宿舍太熱了",
+                  "simplified": "宿舍太热了",
+                  "pinyin": "sùshè tài rè le",
+                  "english": "the dorm is too hot"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "咖啡廳很近",
+                  "simplified": "咖啡厅很近",
+                  "pinyin": "kāfēitīng hěn jìn",
+                  "english": "the café is near"
+                }
+              ],
+              "key": 1,
+              "why": "The man asks if the dorm is too small or the café is close; she says 都不是 (neither), then gives the reason: 因為宿舍太熱了, the dorm is too hot.",
+              "focus": {
+                "zh": "因為……所以……",
+                "en": "because …, so …"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-11",
+                "B1L08-1-07",
+                "B1L09-1-13",
+                "B1L04-1-05"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-dialogue-review-questions-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳怎麼去電影院？坐捷運嗎？",
+              "simplified": "你怎么去电影院？坐捷运吗？",
+              "pinyin": "Nǐ zěnme qù diànyǐngyuàn? Zuò jiéyùn ma?",
+              "english": "How are you getting to the movie theater? By MRT?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我坐公車去，比較便宜。",
+              "simplified": "不是，我坐公车去，比较便宜。",
+              "pinyin": "Bú shì, wǒ zuò gōngchē qù, bǐjiào piányí.",
+              "english": "No, I'm taking the bus. It's cheaper."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-review-questions-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生怎麼去電影院？",
+                "simplified": "女生怎么去电影院？",
+                "pinyin": "Nǚshēng zěnme qù diànyǐngyuàn?",
+                "english": "How does the young woman get to the movie theater?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "坐捷運",
+                  "simplified": "坐捷运",
+                  "pinyin": "zuò jiéyùn",
+                  "english": "by MRT"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐計程車",
+                  "simplified": "坐计程车",
+                  "pinyin": "zuò jìchéngchē",
+                  "english": "by taxi"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐公車",
+                  "simplified": "坐公车",
+                  "pinyin": "zuò gōngchē",
+                  "english": "by bus"
+                }
+              ],
+              "key": 2,
+              "why": "She says 不是 to the MRT, then 我坐公車去: she takes the bus.",
+              "focus": {
+                "zh": "怎麼去",
+                "en": "how to get there"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-01",
+                "B1L07-1-09",
+                "B1L07-1-11",
+                "B1L06-2-03"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-dialogue-review-questions-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我的襪子在哪裡？在床上嗎？",
+              "simplified": "我的袜子在哪里？在床上吗？",
+              "pinyin": "Wǒ de wàzi zài nǎlǐ? Zài chuáng shàng ma?",
+              "english": "Where are my socks? Are they on the bed?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不在床上，在鞋子裡面。",
+              "simplified": "不在床上，在鞋子里面。",
+              "pinyin": "Bú zài chuáng shàng, zài xiézi lǐmiàn.",
+              "english": "They're not on the bed. They're in the shoes."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-review-questions-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "襪子在哪裡？",
+                "simplified": "袜子在哪里？",
+                "pinyin": "Wàzi zài nǎlǐ?",
+                "english": "Where are the socks?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "鞋子裡面",
+                  "simplified": "鞋子里面",
+                  "pinyin": "xiézi lǐmiàn",
+                  "english": "in the shoes"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "床上",
+                  "simplified": "床上",
+                  "pinyin": "chuáng shàng",
+                  "english": "on the bed"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "鞋子旁邊",
+                  "simplified": "鞋子旁边",
+                  "pinyin": "xiézi pángbiān",
+                  "english": "next to the shoes"
+                }
+              ],
+              "key": 0,
+              "why": "不在床上 rules out the bed. The socks are 在鞋子裡面, inside the shoes, not next to them (旁邊).",
+              "focus": {
+                "zh": "在鞋子裡面",
+                "en": "where things are"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-03",
+                "B1L08-2-08",
+                "B1L05-3-01",
+                "B1L05-2-07"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-sport-store",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l09-dialogue-review-sport-store-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳週末常常去跳舞嗎？",
+              "simplified": "你周末常常去跳舞吗？",
+              "pinyin": "Nǐ zhōumò chángcháng qù tiàowǔ ma?",
+              "english": "Do you often go dancing on weekends?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不常去，我週末常常在家畫畫。",
+              "simplified": "不常去，我周末常常在家画画。",
+              "pinyin": "Bù cháng qù, wǒ zhōumò chángcháng zài jiā huàhuà.",
+              "english": "Not often. On weekends I often draw at home."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-review-sport-store-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生週末常常做什麼？",
+                "simplified": "女生周末常常做什么？",
+                "pinyin": "Nǚshēng zhōumò chángcháng zuò shénme?",
+                "english": "What does the young woman often do on weekends?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在家畫畫",
+                  "simplified": "在家画画",
+                  "pinyin": "zài jiā huàhuà",
+                  "english": "draw at home"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去跳舞",
+                  "simplified": "去跳舞",
+                  "pinyin": "qù tiàowǔ",
+                  "english": "go dancing"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在家跳舞",
+                  "simplified": "在家跳舞",
+                  "pinyin": "zài jiā tiàowǔ",
+                  "english": "dance at home"
+                }
+              ],
+              "key": 0,
+              "why": "To 常常去跳舞嗎 she answers 不常去: she does not often go dancing. Then 我週末常常在家畫畫: on weekends she often draws at home, so she does not dance at home either.",
+              "focus": {
+                "zh": "不常／常常",
+                "en": "often or not often"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L03-2-21",
+                "B1L02-2-03",
+                "B1L06-3-09",
+                "B1L06-3-08"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-dialogue-review-sport-store-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我們現在去百貨公司，好嗎？",
+              "simplified": "我们现在去百货公司，好吗？",
+              "pinyin": "Wǒmen xiànzài qù bǎihuò gōngsī, hǎo ma?",
+              "english": "Shall we go to the department store now?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "百貨公司快要關門了，我們明天去吧。",
+              "simplified": "百货公司快要关门了，我们明天去吧。",
+              "pinyin": "Bǎihuò gōngsī kuàiyào guānmén le, wǒmen míngtiān qù ba.",
+              "english": "The department store is about to close. Let's go tomorrow."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-dialogue-review-sport-store-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生想哪天去百貨公司？",
+                "simplified": "女生想哪天去百货公司？",
+                "pinyin": "Nǚshēng xiǎng nǎ tiān qù bǎihuò gōngsī?",
+                "english": "Which day does the young woman want to go to the department store?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "今天",
+                  "simplified": "今天",
+                  "pinyin": "jīntiān",
+                  "english": "today"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天",
+                  "simplified": "明天",
+                  "pinyin": "míngtiān",
+                  "english": "tomorrow"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "後天",
+                  "simplified": "后天",
+                  "pinyin": "hòutiān",
+                  "english": "the day after tomorrow"
+                }
+              ],
+              "key": 1,
+              "why": "快要關門了 means it is about to close, so she says 明天去吧: she wants to go tomorrow, not now (today).",
+              "focus": {
+                "zh": "快要……了",
+                "en": "about to …"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-15",
+                "B1L08-2-17",
+                "B1L08-1-12",
+                "B1L02-2-01"
+              ],
+              "grammarIds": [
+                "B1L08-G05-P195"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-books",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l09-read-books-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l09-read-books-1-q",
+              "prompt": {
+                "traditional": "女生的書比較多，男生只有一本書。",
+                "simplified": "女生的书比较多，男生只有一本书。",
+                "pinyin": "Nǚshēng de shū bǐjiào duō, nánshēng zhǐ yǒu yì běn shū.",
+                "english": "The girl has more books; the boy has only one."
+              },
+              "choices": [
+                {
+                  "picture": "b1l09-books-1",
+                  "alt": "The boy has a tall stack of books; the girl has one book"
+                },
+                {
+                  "picture": "b1l09-books-2",
+                  "alt": "The girl has a tall stack of books; the boy has one book"
+                },
+                {
+                  "picture": "b1l09-books-3",
+                  "alt": "The boy and the girl have one book each"
+                }
+              ],
+              "key": 1,
+              "why": "女生的書比較多: the girl has more books, and the boy has only one.",
+              "focus": {
+                "zh": "女生的書比較多",
+                "en": "who has more"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-11",
+                "B1L08-3-04",
+                "B1L04-1-15",
+                "B1L06-2-18"
+              ],
+              "grammarIds": [
+                "B1L09-G05-P216"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-read-books-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l09-read-books-2-q",
+              "prompt": {
+                "traditional": "女生的書不多，男生的書比較多。",
+                "simplified": "女生的书不多，男生的书比较多。",
+                "pinyin": "Nǚshēng de shū bù duō, nánshēng de shū bǐjiào duō.",
+                "english": "The girl doesn't have many books; the boy has more."
+              },
+              "choices": [
+                {
+                  "picture": "b1l09-books-1",
+                  "alt": "The boy has a tall stack of books; the girl has one book"
+                },
+                {
+                  "picture": "b1l09-books-2",
+                  "alt": "The girl has a tall stack of books; the boy has one book"
+                },
+                {
+                  "picture": "b1l09-books-3",
+                  "alt": "The boy and the girl have one book each"
+                }
+              ],
+              "key": 0,
+              "why": "男生的書比較多: the boy has more books than the girl, and 女生的書不多: the girl has only a few. They do not have the same number.",
+              "focus": {
+                "zh": "男生的書比較多",
+                "en": "who has more"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-11",
+                "B1L08-3-05",
+                "B1L04-1-15",
+                "B1L03-1-07"
+              ],
+              "grammarIds": [
+                "B1L09-G05-P216"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-teacher",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l09-read-teacher-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l09-read-teacher-1-q",
+              "prompt": {
+                "traditional": "老師在學生旁邊看他寫字。",
+                "simplified": "老师在学生旁边看他写字。",
+                "pinyin": "Lǎoshī zài xuéshēng pángbiān kàn tā xiě zì.",
+                "english": "The teacher is next to the student, watching him write characters."
+              },
+              "choices": [
+                {
+                  "picture": "b1l09-teacher-1",
+                  "alt": "Across: the teacher sits across the desk from the boy, facing him, watching him write in his notebook"
+                },
+                {
+                  "picture": "b1l09-teacher-2",
+                  "alt": "Beside: the teacher sits right next to the boy, side by side, watching him write in his notebook"
+                },
+                {
+                  "picture": "b1l09-teacher-3",
+                  "alt": "Behind: the teacher stands squarely behind the boy's chair, both hands on the chair back, looking down over his head, watching him write"
+                }
+              ],
+              "key": 1,
+              "why": "旁邊 means next to: the teacher sits right beside the student, not across the desk (對面) or behind his chair (後面).",
+              "focus": {
+                "zh": "在學生旁邊",
+                "en": "next to"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-21",
+                "B1L03-1-06",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-read-teacher-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l09-read-teacher-2-q",
+              "prompt": {
+                "traditional": "老師在學生後面看他寫字。",
+                "simplified": "老师在学生后面看他写字。",
+                "pinyin": "Lǎoshī zài xuéshēng hòumiàn kàn tā xiě zì.",
+                "english": "The teacher is behind the student, watching him write characters."
+              },
+              "choices": [
+                {
+                  "picture": "b1l09-teacher-1",
+                  "alt": "Across: the teacher sits across the desk from the boy, facing him, watching him write in his notebook"
+                },
+                {
+                  "picture": "b1l09-teacher-2",
+                  "alt": "Beside: the teacher sits right next to the boy, side by side, watching him write in his notebook"
+                },
+                {
+                  "picture": "b1l09-teacher-3",
+                  "alt": "Behind: the teacher stands squarely behind the boy's chair, both hands on the chair back, looking down over his head, watching him write"
+                }
+              ],
+              "key": 2,
+              "why": "後面 means behind: the teacher stands right behind the student's chair, not beside him (旁邊) or across the desk (對面).",
+              "focus": {
+                "zh": "在學生後面",
+                "en": "behind"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-23",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-read-teacher-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l09-read-teacher-3-q",
+              "prompt": {
+                "traditional": "老師在學生對面看他寫字。",
+                "simplified": "老师在学生对面看他写字。",
+                "pinyin": "Lǎoshī zài xuéshēng duìmiàn kàn tā xiě zì.",
+                "english": "The teacher is across from the student, watching him write characters."
+              },
+              "choices": [
+                {
+                  "picture": "b1l09-teacher-1",
+                  "alt": "Across: the teacher sits across the desk from the boy, facing him, watching him write in his notebook"
+                },
+                {
+                  "picture": "b1l09-teacher-2",
+                  "alt": "Beside: the teacher sits right next to the boy, side by side, watching him write in his notebook"
+                },
+                {
+                  "picture": "b1l09-teacher-3",
+                  "alt": "Behind: the teacher stands squarely behind the boy's chair, both hands on the chair back, looking down over his head, watching him write"
+                }
+              ],
+              "key": 0,
+              "why": "對面 means across from: the teacher sits on the other side of the desk, facing the student, not beside him (旁邊) or behind his chair (後面).",
+              "focus": {
+                "zh": "在學生對面",
+                "en": "across from"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-01",
+                "B1L09-3-13",
+                "B1L09-3-04",
+                "B1L03-1-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-notice",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l09-realia-notice-1",
+          "kind": "realia",
+          "picture": "b1l09-notice",
+          "alt": "A notice taped to a classroom door",
+          "transcript": {
+            "traditional": "305教室　期中考快要到了，來這裡讀書吧！　星期一到星期五　下午 1:00–5:00　不能吃東西　不能用手機",
+            "simplified": "305教室　期中考快要到了，来这里读书吧！　星期一到星期五　下午 1:00–5:00　不能吃东西　不能用手机",
+            "pinyin": "305 jiàoshì: Qízhōngkǎo kuàiyào dào le, lái zhèlǐ dúshū ba! Xīngqíyī dào xīngqíwǔ, xiàwǔ 1:00–5:00. Bù néng chī dōngxi. Bù néng yòng shǒujī.",
+            "english": "Room 305: Midterms are coming soon. Come and study here! Monday to Friday, 1:00–5:00 p.m. No eating. No phones."
+          },
+          "questions": [
+            {
+              "id": "b1l09-realia-notice-1-q",
+              "choices": [
+                {
+                  "traditional": "星期六下午也可以來這裡讀書。",
+                  "simplified": "星期六下午也可以来这里读书。",
+                  "pinyin": "Xīngqíliù xiàwǔ yě kěyǐ lái zhèlǐ dúshū.",
+                  "english": "You can also study here on Saturday afternoon."
+                },
+                {
+                  "traditional": "在這裡讀書，不能用手機。",
+                  "simplified": "在这里读书，不能用手机。",
+                  "pinyin": "Zài zhèlǐ dúshū, bù néng yòng shǒujī.",
+                  "english": "When you study here, you can't use your phone."
+                },
+                {
+                  "traditional": "星期五下午不能來這裡讀書。",
+                  "simplified": "星期五下午不能来这里读书。",
+                  "pinyin": "Xīngqíwǔ xiàwǔ bù néng lái zhèlǐ dúshū.",
+                  "english": "You can't come and study here on Friday afternoon."
+                }
+              ],
+              "key": 1,
+              "why": "The notice says 不能用手機: no phones. The room is open 星期一到星期五, Monday through Friday, in the afternoon, so Friday afternoon is fine and Saturday is not.",
+              "focus": {
+                "zh": "不能用手機",
+                "en": "what is not allowed"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-04",
+                "B1L09-2-05",
+                "B1L06-2-10",
+                "B1L09-3-07"
+              ],
+              "grammarIds": [
+                "B1L09-G04-P213"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-realia-notice-2",
+          "kind": "realia",
+          "picture": "b1l09-notice",
+          "alt": "A notice taped to a classroom door",
+          "transcript": {
+            "traditional": "305教室　期中考快要到了，來這裡讀書吧！　星期一到星期五　下午 1:00–5:00　不能吃東西　不能用手機",
+            "simplified": "305教室　期中考快要到了，来这里读书吧！　星期一到星期五　下午 1:00–5:00　不能吃东西　不能用手机",
+            "pinyin": "305 jiàoshì: Qízhōngkǎo kuàiyào dào le, lái zhèlǐ dúshū ba! Xīngqíyī dào xīngqíwǔ, xiàwǔ 1:00–5:00. Bù néng chī dōngxi. Bù néng yòng shǒujī.",
+            "english": "Room 305: Midterms are coming soon. Come and study here! Monday to Friday, 1:00–5:00 p.m. No eating. No phones."
+          },
+          "questions": [
+            {
+              "id": "b1l09-realia-notice-2-q",
+              "prompt": {
+                "traditional": "從幾點到幾點能來這間教室讀書？",
+                "simplified": "从几点到几点能来这间教室读书？",
+                "pinyin": "Cóng jǐ diǎn dào jǐ diǎn néng lái zhè jiān jiàoshì dúshū?",
+                "english": "From what time to what time can you come and study in this classroom?"
+              },
+              "choices": [
+                {
+                  "traditional": "從上午九點到下午五點",
+                  "simplified": "从上午九点到下午五点",
+                  "pinyin": "cóng shàngwǔ jiǔ diǎn dào xiàwǔ wǔ diǎn",
+                  "english": "from 9 a.m. to 5 p.m."
+                },
+                {
+                  "traditional": "從下午五點到六點",
+                  "simplified": "从下午五点到六点",
+                  "pinyin": "cóng xiàwǔ wǔ diǎn dào liù diǎn",
+                  "english": "from 5 p.m. to 6 p.m."
+                },
+                {
+                  "traditional": "從下午一點到五點",
+                  "simplified": "从下午一点到五点",
+                  "pinyin": "cóng xiàwǔ yì diǎn dào wǔ diǎn",
+                  "english": "from 1 p.m. to 5 p.m."
+                }
+              ],
+              "key": 2,
+              "why": "The notice says 下午 1:00–5:00: you can (能) come from one to five in the afternoon. Five is when it closes, and it is not open in the morning (上午), so not from nine.",
+              "focus": {
+                "zh": "從下午一點到五點",
+                "en": "when you can come"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-04",
+                "B1L07-1-20",
+                "B1L02-1-25",
+                "B1L09-2-03"
+              ],
+              "grammarIds": [
+                "B1L09-G04-P213",
+                "B1L09-G02-P206"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-exchange",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l09-realia-exchange-1",
+          "kind": "realia",
+          "picture": "b1l09-exchange",
+          "alt": "A small card pinned to a school notice board",
+          "transcript": {
+            "traditional": "語言交換　我是台灣學生，會說中文和英文。　我想學日文，可以教你中文。　禮拜三 下午 3:00–5:00　在圖書館",
+            "simplified": "语言交换　我是台湾学生，会说中文和英文。　我想学日文，可以教你中文。　礼拜三 下午 3:00–5:00　在图书馆",
+            "pinyin": "Yǔyán jiāohuàn. Wǒ shì Táiwān xuéshēng, huì shuō Zhōngwén hé Yīngwén. Wǒ xiǎng xué Rìwén, kěyǐ jiāo nǐ Zhōngwén. Lǐbàisān xiàwǔ 3:00–5:00, zài túshūguǎn.",
+            "english": "Language exchange. I am a Taiwanese student and I speak Chinese and English. I want to learn Japanese, and I can teach you Chinese. Wednesday 3:00–5:00 p.m., at the library."
+          },
+          "questions": [
+            {
+              "id": "b1l09-realia-exchange-1-q",
+              "choices": [
+                {
+                  "traditional": "這個學生是日本學生。",
+                  "simplified": "这个学生是日本学生。",
+                  "pinyin": "Zhège xuéshēng shì Rìběn xuéshēng.",
+                  "english": "This student is Japanese."
+                },
+                {
+                  "traditional": "語言交換在禮拜三上午。",
+                  "simplified": "语言交换在礼拜三上午。",
+                  "pinyin": "Yǔyán jiāohuàn zài lǐbàisān shàngwǔ.",
+                  "english": "The language exchange is on Wednesday morning."
+                },
+                {
+                  "traditional": "這個學生會說英文。",
+                  "simplified": "这个学生会说英文。",
+                  "pinyin": "Zhège xuéshēng huì shuō Yīngwén.",
+                  "english": "This student speaks English."
+                }
+              ],
+              "key": 2,
+              "why": "The card says 會說中文和英文, so the writer speaks English. The writer is a Taiwanese student (台灣學生), not Japanese, and the time is 下午, the afternoon.",
+              "focus": {
+                "zh": "會說英文",
+                "en": "what they can speak"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L06-1-19",
+                "B1L03-1-11",
+                "B1L09-2-15"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-realia-exchange-2",
+          "kind": "realia",
+          "picture": "b1l09-exchange",
+          "alt": "A small card pinned to a school notice board",
+          "transcript": {
+            "traditional": "語言交換　我是台灣學生，會說中文和英文。　我想學日文，可以教你中文。　禮拜三 下午 3:00–5:00　在圖書館",
+            "simplified": "语言交换　我是台湾学生，会说中文和英文。　我想学日文，可以教你中文。　礼拜三 下午 3:00–5:00　在图书馆",
+            "pinyin": "Yǔyán jiāohuàn. Wǒ shì Táiwān xuéshēng, huì shuō Zhōngwén hé Yīngwén. Wǒ xiǎng xué Rìwén, kěyǐ jiāo nǐ Zhōngwén. Lǐbàisān xiàwǔ 3:00–5:00, zài túshūguǎn.",
+            "english": "Language exchange. I am a Taiwanese student and I speak Chinese and English. I want to learn Japanese, and I can teach you Chinese. Wednesday 3:00–5:00 p.m., at the library."
+          },
+          "questions": [
+            {
+              "id": "b1l09-realia-exchange-2-q",
+              "prompt": {
+                "traditional": "這個學生想學什麼？",
+                "simplified": "这个学生想学什么？",
+                "pinyin": "Zhège xuéshēng xiǎng xué shénme?",
+                "english": "What does this student want to learn?"
+              },
+              "choices": [
+                {
+                  "traditional": "日文",
+                  "simplified": "日文",
+                  "pinyin": "Rìwén",
+                  "english": "Japanese"
+                },
+                {
+                  "traditional": "中文",
+                  "simplified": "中文",
+                  "pinyin": "Zhōngwén",
+                  "english": "Chinese"
+                },
+                {
+                  "traditional": "英文",
+                  "simplified": "英文",
+                  "pinyin": "Yīngwén",
+                  "english": "English"
+                }
+              ],
+              "key": 0,
+              "why": "我想學日文: the writer wants to learn Japanese. Chinese is what they can teach (可以教你中文), and they already speak English.",
+              "focus": {
+                "zh": "想學日文",
+                "en": "what they want to learn"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-3-06",
+                "B1L06-3-03",
+                "B1L09-2-15"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l09-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l09-calligraphy",
+          "alt": "A calligraphy class in a classroom with a clean blackboard: at the front the teacher writes with a big writing brush to show the class, while a boy and a girl sit at their desks with brushes, ink and white paper and watch her before they practice.",
+          "questions": [
+            {
+              "id": "b1l09-scene-gap-1-a",
+              "prompt": {
+                "traditional": "我們用＿＿寫書法。",
+                "simplified": "我们用＿＿写书法。"
+              },
+              "choices": [
+                {
+                  "traditional": "毛筆",
+                  "simplified": "毛笔",
+                  "pinyin": "máobǐ",
+                  "english": "writing brush"
+                },
+                {
+                  "traditional": "鉛筆",
+                  "simplified": "铅笔",
+                  "pinyin": "qiānbǐ",
+                  "english": "pencil"
+                },
+                {
+                  "traditional": "電腦",
+                  "simplified": "电脑",
+                  "pinyin": "diànnǎo",
+                  "english": "computer"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "我們用毛筆寫書法。",
+                "simplified": "我们用毛笔写书法。",
+                "pinyin": "Wǒmen yòng máobǐ xiě shūfǎ.",
+                "english": "We write calligraphy with a brush."
+              },
+              "why": "Calligraphy is written with a writing brush (毛筆), like the ones in the picture, not with a pencil or a computer.",
+              "focus": {
+                "zh": "用毛筆",
+                "en": "writing with a brush"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-12",
+                "B1L09-2-05",
+                "B1L09-1-11"
+              ]
+            },
+            {
+              "id": "b1l09-scene-gap-1-b",
+              "prompt": {
+                "traditional": "書法課從兩點＿＿四點。",
+                "simplified": "书法课从两点＿＿四点。"
+              },
+              "choices": [
+                {
+                  "traditional": "和",
+                  "simplified": "和",
+                  "pinyin": "hé",
+                  "english": "and"
+                },
+                {
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "english": "to; until"
+                },
+                {
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "english": "then"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "書法課從兩點到四點。",
+                "simplified": "书法课从两点到四点。",
+                "pinyin": "Shūfǎ kè cóng liǎng diǎn dào sì diǎn.",
+                "english": "Calligraphy class is from two to four."
+              },
+              "why": "從 … 到 … gives a span of time: from two until four. 和 joins two things, not a start and an end, and 再 means then.",
+              "focus": {
+                "zh": "從兩點到四點",
+                "en": "from … to …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-02",
+                "B1L07-1-20",
+                "B1L09-1-11"
+              ],
+              "grammarIds": [
+                "B1L09-G02-P206"
+              ]
+            },
+            {
+              "id": "b1l09-scene-gap-1-c",
+              "prompt": {
+                "traditional": "我們在＿＿上書法課。",
+                "simplified": "我们在＿＿上书法课。"
+              },
+              "choices": [
+                {
+                  "traditional": "宿舍",
+                  "simplified": "宿舍",
+                  "pinyin": "sùshè",
+                  "english": "dormitory"
+                },
+                {
+                  "traditional": "圖書館",
+                  "simplified": "图书馆",
+                  "pinyin": "túshūguǎn",
+                  "english": "library"
+                },
+                {
+                  "traditional": "教室",
+                  "simplified": "教室",
+                  "pinyin": "jiàoshì",
+                  "english": "classroom"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "我們在教室上書法課。",
+                "simplified": "我们在教室上书法课。",
+                "pinyin": "Wǒmen zài jiàoshì shàng shūfǎ kè.",
+                "english": "We have calligraphy class in the classroom."
+              },
+              "why": "The picture shows a classroom with a blackboard and desks, so the class is in the 教室. The dorm (宿舍) and the library (圖書館) are other places to study, not this room.",
+              "focus": {
+                "zh": "在教室上課",
+                "en": "where the class is"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-03",
+                "B1L09-1-11",
+                "B1L02-1-28"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l09-calligraphy",
+          "alt": "A calligraphy class in a classroom with a clean blackboard: at the front the teacher writes with a big writing brush to show the class, while a boy and a girl sit at their desks with brushes, ink and white paper and watch her before they practice.",
+          "questions": [
+            {
+              "id": "b1l09-scene-gap-2-a",
+              "prompt": {
+                "traditional": "我只會寫這幾個字，＿＿字我都不會寫。",
+                "simplified": "我只会写这几个字，＿＿字我都不会写。"
+              },
+              "choices": [
+                {
+                  "traditional": "別人",
+                  "simplified": "别人",
+                  "pinyin": "biérén",
+                  "english": "other people"
+                },
+                {
+                  "traditional": "別的",
+                  "simplified": "别的",
+                  "pinyin": "biéde",
+                  "english": "other"
+                },
+                {
+                  "traditional": "每",
+                  "simplified": "每",
+                  "pinyin": "měi",
+                  "english": "every"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "我只會寫這幾個字，別的字我都不會寫。",
+                "simplified": "我只会写这几个字，别的字我都不会写。",
+                "pinyin": "Wǒ zhǐ huì xiě zhè jǐ ge zì, biéde zì wǒ dōu bú huì xiě.",
+                "english": "I can only write these few characters; I can't write any other characters."
+              },
+              "why": "別的 + a noun means other: 別的字, the other characters. 別人 means other people, and 每 needs a measure word (每個字).",
+              "focus": {
+                "zh": "別的字",
+                "en": "other characters"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-09",
+                "B1L09-2-10",
+                "B1L09-3-13"
+              ]
+            },
+            {
+              "id": "b1l09-scene-gap-2-b",
+              "prompt": {
+                "traditional": "你看，老師＿＿寫書法，我們先看。",
+                "simplified": "你看，老师＿＿写书法，我们先看。"
+              },
+              "choices": [
+                {
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "english": "(doing) right now"
+                },
+                {
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "english": "then (later)"
+                },
+                {
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bù",
+                  "english": "not"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "你看，老師在寫書法，我們先看。",
+                "simplified": "你看，老师在写书法，我们先看。",
+                "pinyin": "Nǐ kàn, lǎoshī zài xiě shūfǎ, wǒmen xiān kàn.",
+                "english": "Look, the teacher is writing calligraphy. Let's watch first."
+              },
+              "why": "在 before a verb says the action is happening now: the teacher is writing while the students watch (我們先看). 再 sounds the same but means then (later), and the picture shows her writing, so 不 (not) is wrong.",
+              "focus": {
+                "zh": "在寫書法",
+                "en": "doing right now"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-10",
+                "B1L09-1-11",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L09-G01-P205"
+              ]
+            },
+            {
+              "id": "b1l09-scene-gap-2-c",
+              "prompt": {
+                "traditional": "我每天都練習，我的書法＿＿了。",
+                "simplified": "我每天都练习，我的书法＿＿了。"
+              },
+              "choices": [
+                {
+                  "traditional": "聰明",
+                  "simplified": "聪明",
+                  "pinyin": "cōngmíng",
+                  "english": "smart"
+                },
+                {
+                  "traditional": "進步",
+                  "simplified": "进步",
+                  "pinyin": "jìnbù",
+                  "english": "to improve"
+                },
+                {
+                  "traditional": "緊張",
+                  "simplified": "紧张",
+                  "pinyin": "jǐnzhāng",
+                  "english": "nervous"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "我每天都練習，我的書法進步了。",
+                "simplified": "我每天都练习，我的书法进步了。",
+                "pinyin": "Wǒ měitiān dōu liànxí, wǒ de shūfǎ jìnbù le.",
+                "english": "I practice every day, and my calligraphy has improved."
+              },
+              "why": "進步 means to improve: daily practice made her calligraphy better. 聰明 and 緊張 describe people, not calligraphy.",
+              "focus": {
+                "zh": "書法進步了",
+                "en": "improving"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-3-09",
+                "B1L09-3-05",
+                "B1L09-1-11"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l09-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "明天有華語考試，我有一點{1}。今天下午我{2}去圖書館寫作業，再回宿舍練習寫字。我的同學非常聰明，他寫字寫{3}又快又好看，{4}我常常問他字怎麼寫。希望明天的考試不難！",
+            "simplified": "明天有华语考试，我有一点{1}。今天下午我{2}去图书馆写作业，再回宿舍练习写字。我的同学非常聪明，他写字写{3}又快又好看，{4}我常常问他字怎么写。希望明天的考试不难！",
+            "pinyin": "Míngtiān yǒu Huáyǔ kǎoshì, wǒ yǒu yìdiǎn jǐnzhāng. Jīntiān xiàwǔ wǒ xiān qù túshūguǎn xiě zuòyè, zài huí sùshè liànxí xiě zì. Wǒ de tóngxué fēicháng cōngmíng, tā xiě zì xiě de yòu kuài yòu hǎokàn, suǒyǐ wǒ chángcháng wèn tā zì zěnme xiě. Xīwàng míngtiān de kǎoshì bù nán!",
+            "english": "There's a Chinese test tomorrow, and I'm a little nervous. This afternoon I'll go to the library first to do my homework, then go back to the dorm to practice writing characters. My classmate is very smart. He writes characters fast and neatly, so I often ask him how to write them. I hope tomorrow's test isn't hard!"
+          },
+          "bank": [
+            {
+              "traditional": "得",
+              "simplified": "得",
+              "pinyin": "de",
+              "english": "(links an action to how it is done)"
+            },
+            {
+              "traditional": "教",
+              "simplified": "教",
+              "pinyin": "jiāo",
+              "english": "to teach"
+            },
+            {
+              "traditional": "緊張",
+              "simplified": "紧张",
+              "pinyin": "jǐnzhāng",
+              "english": "nervous"
+            },
+            {
+              "traditional": "先",
+              "simplified": "先",
+              "pinyin": "xiān",
+              "english": "first"
+            },
+            {
+              "traditional": "所以",
+              "simplified": "所以",
+              "pinyin": "suǒyǐ",
+              "english": "so"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-paragraph-1-1",
+              "key": 2,
+              "why": "有一點 goes with an unwelcome feeling: before a test you feel 緊張, nervous.",
+              "focus": {
+                "zh": "有一點緊張",
+                "en": "a little nervous"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-3-12",
+                "B1L06-2-06"
+              ]
+            },
+            {
+              "id": "b1l09-paragraph-1-2",
+              "key": 3,
+              "why": "先 … 再 … puts two actions in order: the library first, then (再) back to the dorm.",
+              "focus": {
+                "zh": "先……再……",
+                "en": "first …, then …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L09-1-16"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            },
+            {
+              "id": "b1l09-paragraph-1-3",
+              "key": 0,
+              "why": "得 joins an action to how it is done: 寫字寫得又快又好看.",
+              "focus": {
+                "zh": "寫得又快又好看",
+                "en": "how he writes"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-14"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            },
+            {
+              "id": "b1l09-paragraph-1-4",
+              "key": 4,
+              "why": "所以 gives the result: he writes well, so I often ask him how to write characters.",
+              "focus": {
+                "zh": "所以",
+                "en": "so (a result)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-10"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我們{1}考試了。老師說我中文說得{2}好，可是寫字寫得很慢。我想請朋友教我寫字。他最近很忙，可是這個週末他{3}有空，我不知道。我不想問{4}，我想等他。我希望他能教我寫很多字。",
+            "simplified": "我们{1}考试了。老师说我中文说得{2}好，可是写字写得很慢。我想请朋友教我写字。他最近很忙，可是这个周末他{3}有空，我不知道。我不想问{4}，我想等他。我希望他能教我写很多字。",
+            "pinyin": "Wǒmen kuàiyào kǎoshì le. Lǎoshī shuō wǒ Zhōngwén shuō de fēicháng hǎo, kěshì xiě zì xiě de hěn màn. Wǒ xiǎng qǐng péngyǒu jiāo wǒ xiě zì. Tā zuìjìn hěn máng, kěshì zhège zhōumò tā yěxǔ yǒu kòng, wǒ bù zhīdào. Wǒ bù xiǎng wèn biérén, wǒ xiǎng děng tā. Wǒ xīwàng tā néng jiāo wǒ xiě hěn duō zì.",
+            "english": "We're about to have a test. My teacher says I speak Chinese very well, but I write characters slowly. I want to ask a friend to teach me to write characters. He's busy lately, but maybe he's free this weekend; I don't know. I don't want to ask anyone else; I'll wait for him. I hope he can teach me to write lots of characters."
+          },
+          "bank": [
+            {
+              "traditional": "別人",
+              "simplified": "别人",
+              "pinyin": "biérén",
+              "english": "other people"
+            },
+            {
+              "traditional": "常常",
+              "simplified": "常常",
+              "pinyin": "chángcháng",
+              "english": "often"
+            },
+            {
+              "traditional": "也許",
+              "simplified": "也许",
+              "pinyin": "yěxǔ",
+              "english": "maybe"
+            },
+            {
+              "traditional": "快要",
+              "simplified": "快要",
+              "pinyin": "kuàiyào",
+              "english": "about to"
+            },
+            {
+              "traditional": "非常",
+              "simplified": "非常",
+              "pinyin": "fēicháng",
+              "english": "very"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l09-paragraph-2-1",
+              "key": 3,
+              "why": "快要 … 了 means something is about to happen: the test is coming soon.",
+              "focus": {
+                "zh": "快要……了",
+                "en": "about to …"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-15",
+                "B1L09-3-14"
+              ],
+              "grammarIds": [
+                "B1L08-G05-P195"
+              ]
+            },
+            {
+              "id": "b1l09-paragraph-2-2",
+              "key": 4,
+              "why": "非常 means very and goes between 得 and 好: the teacher says the speaking is very good, but (可是) the writing is slow.",
+              "focus": {
+                "zh": "說得非常好",
+                "en": "very well"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-07",
+                "B1L06-1-14"
+              ]
+            },
+            {
+              "id": "b1l09-paragraph-2-3",
+              "key": 2,
+              "why": "也許 means maybe, and 我不知道 shows the writer is not sure: 這個週末他也許有空. 非常 cannot describe something you don't know, and 常常 (often) does not fit one weekend.",
+              "focus": {
+                "zh": "也許",
+                "en": "maybe"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-12",
+                "B1L02-2-03"
+              ]
+            },
+            {
+              "id": "b1l09-paragraph-2-4",
+              "key": 0,
+              "why": "別人 means other people: the writer does not want to ask anyone else, so they wait for the friend.",
+              "focus": {
+                "zh": "別人",
+                "en": "other people"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-2-10",
+                "B1L09-1-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l09-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n禮拜三我們去機場看飛機吧！坐計程車太貴了，我們坐捷運去。九點我在捷運站等你。\n國安",
+            "simplified": "中明：\n礼拜三我们去机场看飞机吧！坐计程车太贵了，我们坐捷运去。九点我在捷运站等你。\n国安",
+            "pinyin": "Zhōngmíng: Lǐbàisān wǒmen qù jīchǎng kàn fēijī ba! Zuò jìchéngchē tài guì le, wǒmen zuò jiéyùn qù. Jiǔ diǎn wǒ zài jiéyùn zhàn děng nǐ. Guó'ān",
+            "english": "Zhongming: Let's go to the airport on Wednesday and watch the planes! A taxi is too expensive, so we'll take the MRT. I'll wait for you at the MRT station at nine. Guoan"
+          },
+          "questions": [
+            {
+              "id": "b1l09-reading-note-1-q",
+              "prompt": {
+                "traditional": "國安九點在哪裡等中明？",
+                "simplified": "国安九点在哪里等中明？",
+                "pinyin": "Guó'ān jiǔ diǎn zài nǎlǐ děng Zhōngmíng?",
+                "english": "Where will Guoan wait for Zhongming at nine?"
+              },
+              "choices": [
+                {
+                  "traditional": "在機場",
+                  "simplified": "在机场",
+                  "pinyin": "zài jīchǎng",
+                  "english": "at the airport"
+                },
+                {
+                  "traditional": "在計程車上",
+                  "simplified": "在计程车上",
+                  "pinyin": "zài jìchéngchē shàng",
+                  "english": "in a taxi"
+                },
+                {
+                  "traditional": "在捷運站",
+                  "simplified": "在捷运站",
+                  "pinyin": "zài jiéyùn zhàn",
+                  "english": "at the MRT station"
+                }
+              ],
+              "key": 2,
+              "why": "九點我在捷運站等你: he waits at the MRT station. The airport is where they are going, and he says a taxi is too expensive.",
+              "focus": {
+                "zh": "在捷運站等你",
+                "en": "where they meet"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-08",
+                "B1L07-3-08",
+                "B1L07-1-10",
+                "B1L07-3-04"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l09-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "友美：\n妳網球打得很好，禮拜六上午我們一起去打網球，好嗎？下午我要去游泳，晚上我們一起吃飯吧！\n宜文",
+            "simplified": "友美：\n你网球打得很好，礼拜六上午我们一起去打网球，好吗？下午我要去游泳，晚上我们一起吃饭吧！\n宜文",
+            "pinyin": "Yǒuměi: Nǐ wǎngqiú dǎ de hěn hǎo, lǐbàiliù shàngwǔ wǒmen yìqǐ qù dǎ wǎngqiú, hǎo ma? Xiàwǔ wǒ yào qù yóuyǒng, wǎnshàng wǒmen yìqǐ chī fàn ba! Yíwén",
+            "english": "Youmei: You play tennis really well. Shall we play tennis together on Saturday morning? In the afternoon I'm going swimming. Let's have dinner together in the evening! Yiwen"
+          },
+          "questions": [
+            {
+              "id": "b1l09-reading-note-2-q",
+              "prompt": {
+                "traditional": "宜文禮拜六上午想做什麼？",
+                "simplified": "宜文礼拜六上午想做什么？",
+                "pinyin": "Yíwén lǐbàiliù shàngwǔ xiǎng zuò shénme?",
+                "english": "What does Yiwen want to do on Saturday morning?"
+              },
+              "choices": [
+                {
+                  "traditional": "去游泳",
+                  "simplified": "去游泳",
+                  "pinyin": "qù yóuyǒng",
+                  "english": "go swimming"
+                },
+                {
+                  "traditional": "去打網球",
+                  "simplified": "去打网球",
+                  "pinyin": "qù dǎ wǎngqiú",
+                  "english": "go play tennis"
+                },
+                {
+                  "traditional": "一起吃飯",
+                  "simplified": "一起吃饭",
+                  "pinyin": "yìqǐ chī fàn",
+                  "english": "eat together"
+                }
+              ],
+              "key": 1,
+              "why": "For 上午 she writes 我們一起去打網球，好嗎: she wants to play tennis with Youmei. Swimming is in the afternoon (下午) and eating together in the evening (晚上).",
+              "focus": {
+                "zh": "禮拜六上午",
+                "en": "plans for the morning"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-02",
+                "B1L06-1-01",
+                "B1L03-1-20",
+                "B1L02-1-26"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

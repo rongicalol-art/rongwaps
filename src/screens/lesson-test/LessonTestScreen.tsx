@@ -1,17 +1,21 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { FeedbackBottomBar } from '../../features/practice';
-import { ScreenHeader } from '../../lib/widgets';
+import { AudioPreparation, ScreenHeader } from '../../lib/widgets';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
 import type { LessonTestLesson, LessonTestSounds } from '../../types/lessonTest';
 import { lessonItemIndex, type LessonTestScreen as TestScreen } from '../../utils/lesson/lessonTestPlan';
 import { AnswerDetail } from './components/AnswerDetail';
+import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
-import { SectionIntro } from './components/SectionIntro';
+import { SectionIntro, startLabel } from './components/SectionIntro';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
+import { useTestAudioDownload } from './hooks/useTestAudioDownload';
+import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
+import { testRecordings } from './testAudioSequence';
 import { itemPictureUrls } from './testPictures';
 
 interface LessonTestScreenProps {
@@ -19,6 +23,8 @@ interface LessonTestScreenProps {
   sounds: LessonTestSounds;
   onClose: () => void;
 }
+
+const NO_WORDS: string[] = [];
 
 /** Number of the first question on each screen (a paragraph screen covers several). */
 function questionNumbers(screens: TestScreen[]) {
@@ -56,7 +62,38 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
 
   const scrollerRef = useRef<HTMLDivElement>(null);
   const screenKey = `${run.stage}:${isFix ? run.fixIndex : run.screenIndex}`;
+  // Every recording downloads before the listening part (the quiz's "Getting audio ready" screen); then each
+  // screen's clips are prepared as it comes up, so audio starts on time and never late.
+  const recordingsOf = useCallback((list: TestScreen[]) => list.map((entry) => {
+    const entryItem = items.get(entry.itemId);
+    const entryQuestion = entryItem?.questions.find((q) => q.id === entry.questionIds[0]) ?? entryItem?.questions[0];
+    return entryItem && entryQuestion ? testRecordings(entryItem, entryQuestion, sounds) : [];
+  }), [items, sounds]);
+  const examRecordings = useMemo(() => recordingsOf(run.screens), [recordingsOf, run.screens]);
+  const fixRecordings = useMemo(() => recordingsOf(run.fixScreens), [recordingsOf, run.fixScreens]);
+  const recordings = isFix ? fixRecordings : examRecordings;
+  const testFiles = useMemo(() => [...new Set(examRecordings.flat())], [examRecordings]);
+  const download = useTestAudioDownload(testFiles);
+  const downloading = !isFix && !download.ready && (examRecordings[run.screenIndex]?.length ?? 0) > 0;
+  const audioReady = useTestAudioPreparation(recordings, isFix ? run.fixIndex : run.screenIndex, `${isFix ? 'fix' : 'test'}:${isFix ? run.fixIndex : run.screenIndex}`);
   useEffect(() => { scrollerRef.current?.scrollTo({ top: 0 }); }, [screenKey]);
+  // The Fix round's bar grows with its explanation. The question keeps clear of it (--cover), and once
+  // checked it scrolls up with the bar, so the checked answers stay in view right above it.
+  const checkedRef = useRef(false);
+  checkedRef.current = isFix && run.checked;
+  const barRef = useCallback((bar: HTMLDivElement | null) => {
+    const scroller = scrollerRef.current;
+    if (!bar || !scroller) return undefined;
+    const observer = new ResizeObserver(() => {
+      scroller.style.setProperty('--cover', `${bar.offsetHeight}px`);
+      if (checkedRef.current) scroller.scrollTop = scroller.scrollHeight;
+    });
+    observer.observe(bar);
+    return () => {
+      observer.disconnect();
+      scroller.style.removeProperty('--cover');
+    };
+  }, []);
 
   if (run.stage === 'results' && run.result) {
     return (
@@ -89,30 +126,31 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
     />
   );
 
-  if (run.stage === 'intro' && run.screen) {
-    return (
-      <>
-        {header}
-        <SectionIntro part={run.screen.part} script={script} onStart={() => run.setStage('question')} />
-      </>
-    );
-  }
   if (!screen || !item || !plannedItem) return null;
 
+  const intro = run.stage === 'intro';
   const fixQuestions = item.questions.filter((question) => screen.questionIds.includes(question.id));
   const correct = fixQuestions.every((question) => run.fixAnswers[question.id] === question.key);
   const last = run.screenIndex + 1 >= run.screens.length;
+  const barShown = isFix && (run.checked || ready);
 
   return (
-    <>
-      <div ref={scrollerRef} className="absolute inset-0 overflow-y-auto overscroll-contain custom-scrollbar">
+    <TestWords value={lesson.allowWords ?? NO_WORDS}>
+      {/* One header for the part intros and the questions, so the progress bar never rebuilds (and refills) between them. */}
+      <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
-        {/* Each screen rises in; the last one leaves at once, so its keys and audio never outlive it. */}
+        {downloading ? (
+          (download.slow || download.error) && (
+            <AudioPreparation progress={download.progress} error={download.error} onRetry={download.retry} onBack={onClose} />
+          )
+        ) : intro ? <SectionIntro key={screenKey} part={screen.part} lessonId={lesson.lessonId} script={script} /> : (
+        /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it. */
         <motion.div
           key={screenKey}
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
-          className={`px-4 pt-2 sm:px-6 md:pt-6 ${isFix && run.checked ? 'pb-80 lg:pb-56' : 'pb-40'}`}
+          className={`flex flex-auto flex-col px-4 pt-[clamp(0.75rem,5vh,3.5rem)] sm:px-6 ${barShown ? '' : 'pb-36'}`}
+          style={barShown ? { paddingBottom: 'max(9rem, calc(var(--cover, 0px) + 1.5rem))' } : undefined}
         >
           <QuestionBody
             item={item}
@@ -122,23 +160,29 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             checked={isFix && run.checked}
             mode={isFix ? 'replay' : 'exam'}
             sounds={sounds}
+            audioReady={audioReady}
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}
             onAnswer={isFix ? run.answerFix : run.answer}
           />
         </motion.div>
+        )}
       </div>
-      {isFix ? (
+      {downloading ? null : intro ? (
+        <TestDock key={screenKey} label={startLabel(screen.part)} onPress={() => run.setStage('question')} riseKey={screen.part} />
+      ) : isFix ? (
         <FeedbackBottomBar
           status={run.checked ? (correct ? 'correct' : 'wrong') : 'idle'}
           detail={run.checked ? <AnswerDetail item={item} questions={fixQuestions} script={script} /> : undefined}
           onCheck={run.check}
           isCheckDisabled={!ready}
           onContinue={run.continueFix}
+          layout="wide"
+          barRef={barRef}
         />
       ) : ready && (
         <TestDock key={screenKey} label={last ? 'Finish' : 'Next'} onPress={run.next} riseKey={screenKey} />
       )}
-    </>
+    </TestWords>
   );
 }

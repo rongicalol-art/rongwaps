@@ -5,6 +5,7 @@ import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../store/useAppStore';
 import { ActionButton, AppIcon, IconActionButton, KeyChip } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { isTappedFocus, watchTaps } from '../../../utils/browser/tappedFocus';
 import { usePracticeDockSlot } from './PracticeDockSlot';
 
 export interface FeedbackBottomBarProps {
@@ -37,8 +38,11 @@ export interface FeedbackBottomBarProps {
   /**
    * When mounted inside an embedded or narrow container (e.g. landing preview frame),
    * keep the stacked result/action card rather than expanding to the wide single-row desktop layout.
+   * `wide`: the single row gets more room, for results with a long explanation (lesson tests).
    */
-  layout?: 'auto' | 'stacked';
+  layout?: 'auto' | 'stacked' | 'wide';
+  /** The bar's box, so a screen can keep its content clear of it (its height changes with the result). */
+  barRef?: React.Ref<HTMLDivElement>;
 }
 
 export function FeedbackBottomBar({ 
@@ -59,6 +63,7 @@ export function FeedbackBottomBar({
   onBreakdown,
   onRetry,
   layout = 'auto',
+  barRef,
 }: FeedbackBottomBarProps) {
   
   const reduceMotion = useReducedMotion();
@@ -102,11 +107,13 @@ export function FeedbackBottomBar({
 
   useEffect(() => {
     if (!isInteractionActive || keyboardShortcutDisabled) return;
+    watchTaps();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
-      // A focused button activates itself on Space / Enter; don't fire the bar's action twice.
-      if (event.target instanceof HTMLButtonElement && !event.target.disabled) return;
+      // A button reached with Tab presses itself (don't fire twice). A just-tapped answer or tile must not swallow the
+      // key: Space / Enter mean the bar's action, and preventDefault below stops the tapped button's own press.
+      if (event.target instanceof HTMLButtonElement && !event.target.disabled && !isTappedFocus(event.target)) return;
       if (
         (event.key !== ' ' && event.key !== 'Enter') ||
         event.repeat ||
@@ -151,6 +158,7 @@ export function FeedbackBottomBar({
       <AnimatePresence onExitComplete={() => setDockYielded?.(false)}>
         {isInteractionActive && (
           <motion.div 
+            ref={barRef}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -170,7 +178,8 @@ export function FeedbackBottomBar({
                 // Desktop: floating rounded tactile island card
                 'md:pointer-events-auto md:max-w-xl md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:border-ui-border md:bg-ui-surface md:p-6',
                 // Wide screens: one compact row (result + answer, then the action) instead of a tall card
-                isChecked && layout !== 'stacked' && 'lg:max-w-3xl lg:flex-row lg:items-center lg:gap-6 lg:py-4 lg:pl-6 lg:pr-4',
+                isChecked && layout !== 'stacked' && 'lg:flex-row lg:items-center lg:gap-6 lg:py-4 lg:pl-6 lg:pr-4',
+                isChecked && layout !== 'stacked' && (layout === 'wide' ? 'lg:max-w-5xl' : 'lg:max-w-3xl'),
               )}
             >
               {isChecked && (

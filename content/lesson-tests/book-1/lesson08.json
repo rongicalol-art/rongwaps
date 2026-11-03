@@ -1,0 +1,2405 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l08",
+  "bookId": 1,
+  "lessonId": 8,
+  "band": "A",
+  "allowWords": [],
+  "slots": [
+    {
+      "id": "hear-clothes",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l08-hear-clothes-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這雙黑色的鞋子很好看。",
+              "simplified": "这双黑色的鞋子很好看。",
+              "pinyin": "Zhè shuāng hēisè de xiézi hěn hǎokàn.",
+              "english": "This pair of black shoes looks great."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-hear-clothes-1-q",
+              "choices": [
+                {
+                  "picture": "b1l08-clothes-1",
+                  "alt": "A skirt: one black skirt laid flat on the shop counter"
+                },
+                {
+                  "picture": "b1l08-clothes-2",
+                  "alt": "Pants: one pair of black pants laid flat on the shop counter"
+                },
+                {
+                  "picture": "b1l08-clothes-3",
+                  "alt": "Shoes: one pair of black shoes on the shop counter"
+                }
+              ],
+              "key": 2,
+              "why": "雙 counts pairs, and 鞋子 are shoes: 這雙黑色的鞋子 is this pair of black shoes.",
+              "focus": {
+                "zh": "這雙鞋子",
+                "en": "this pair of shoes"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-09",
+                "B1L08-2-07"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-hear-clothes-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我想買這條黑色的褲子。",
+              "simplified": "我想买这条黑色的裤子。",
+              "pinyin": "Wǒ xiǎng mǎi zhè tiáo hēisè de kùzi.",
+              "english": "I want to buy these black pants."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-hear-clothes-2-q",
+              "choices": [
+                {
+                  "picture": "b1l08-clothes-1",
+                  "alt": "A skirt: one black skirt laid flat on the shop counter"
+                },
+                {
+                  "picture": "b1l08-clothes-2",
+                  "alt": "Pants: one pair of black pants laid flat on the shop counter"
+                },
+                {
+                  "picture": "b1l08-clothes-3",
+                  "alt": "Shoes: one pair of black shoes on the shop counter"
+                }
+              ],
+              "key": 1,
+              "why": "褲子 (kùzi) are pants. 條 counts both pants and skirts, so listen for the noun: a skirt is 裙子 (qúnzi).",
+              "focus": {
+                "zh": "褲子",
+                "en": "pants"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-09",
+                "B1L07-2-02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-hear-clothes-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我很喜歡這條黑色的裙子。",
+              "simplified": "我很喜欢这条黑色的裙子。",
+              "pinyin": "Wǒ hěn xǐhuān zhè tiáo hēisè de qúnzi.",
+              "english": "I really like this black skirt."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-hear-clothes-3-q",
+              "choices": [
+                {
+                  "picture": "b1l08-clothes-1",
+                  "alt": "A skirt: one black skirt laid flat on the shop counter"
+                },
+                {
+                  "picture": "b1l08-clothes-2",
+                  "alt": "Pants: one pair of black pants laid flat on the shop counter"
+                },
+                {
+                  "picture": "b1l08-clothes-3",
+                  "alt": "Shoes: one pair of black shoes on the shop counter"
+                }
+              ],
+              "key": 0,
+              "why": "裙子 (qúnzi) is a skirt; 褲子 (kùzi) are pants, and shoes take 雙, not 條.",
+              "focus": {
+                "zh": "裙子",
+                "en": "skirt"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-01",
+                "B1L07-2-02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-brother",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l08-hear-brother-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我哥哥很高，也很瘦。",
+              "simplified": "我哥哥很高，也很瘦。",
+              "pinyin": "Wǒ gēge hěn gāo, yě hěn shòu.",
+              "english": "My older brother is tall, and he is thin too."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-hear-brother-1-q",
+              "choices": [
+                {
+                  "picture": "b1l08-brother-1",
+                  "alt": "Tall and thin: the young man is slim, and his head almost reaches the top of the door"
+                },
+                {
+                  "picture": "b1l08-brother-2",
+                  "alt": "Short and thin: the young man is slim, and his head is far below the top of the door"
+                },
+                {
+                  "picture": "b1l08-brother-3",
+                  "alt": "Tall and fat: the young man is round and heavy, and his head almost reaches the top of the door"
+                }
+              ],
+              "key": 0,
+              "why": "高 is tall and 瘦 is thin. The brother in the third picture is tall too, but he is fat (胖).",
+              "focus": {
+                "zh": "高、瘦",
+                "en": "tall and thin"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-18",
+                "B1L08-1-17",
+                "B1L05-2-15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-hear-brother-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我哥哥很瘦，也很矮。",
+              "simplified": "我哥哥很瘦，也很矮。",
+              "pinyin": "Wǒ gēge hěn shòu, yě hěn ǎi.",
+              "english": "My older brother is thin, and he is short too."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-hear-brother-2-q",
+              "choices": [
+                {
+                  "picture": "b1l08-brother-1",
+                  "alt": "Tall and thin: the young man is slim, and his head almost reaches the top of the door"
+                },
+                {
+                  "picture": "b1l08-brother-2",
+                  "alt": "Short and thin: the young man is slim, and his head is far below the top of the door"
+                },
+                {
+                  "picture": "b1l08-brother-3",
+                  "alt": "Tall and fat: the young man is round and heavy, and his head almost reaches the top of the door"
+                }
+              ],
+              "key": 1,
+              "why": "矮 means short (not tall): he is thin and short. The other two pictures show a tall brother.",
+              "focus": {
+                "zh": "矮",
+                "en": "short (height)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-19",
+                "B1L08-1-17",
+                "B1L05-2-15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-hear-brother-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我哥哥很胖，也很高。",
+              "simplified": "我哥哥很胖，也很高。",
+              "pinyin": "Wǒ gēge hěn pàng, yě hěn gāo.",
+              "english": "My older brother is fat, and he is tall too."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-hear-brother-3-q",
+              "choices": [
+                {
+                  "picture": "b1l08-brother-1",
+                  "alt": "Tall and thin: the young man is slim, and his head almost reaches the top of the door"
+                },
+                {
+                  "picture": "b1l08-brother-2",
+                  "alt": "Short and thin: the young man is slim, and his head is far below the top of the door"
+                },
+                {
+                  "picture": "b1l08-brother-3",
+                  "alt": "Tall and fat: the young man is round and heavy, and his head almost reaches the top of the door"
+                }
+              ],
+              "key": 2,
+              "why": "胖 is fat and 高 is tall: the tall, heavy brother. The tall brother in the first picture is thin (瘦), not fat.",
+              "focus": {
+                "zh": "胖",
+                "en": "fat"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-16",
+                "B1L08-1-18",
+                "B1L05-2-15"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-skirt",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l08-picture-skirt-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L08-R01",
+            "alt": "On a sunny campus walkway, two young women walk and talk, large in the foreground. The one on the left (ponytail, teal jacket) wears long dark navy pants with two separate legs and carries a backpack. The one on the right (short hair, blue top, pink scarf) wears one long, wide cream-white skirt that falls far below her knees and carries a white bag. Far behind them, two small students with backpacks walk away: a short-haired boy in light-brown pants and a long-haired student in blue jeans; their lower legs are hidden behind the woman's arm and a low wall. The woman on the right is the only person in the picture who wears a skirt, and nobody wears white pants."
+          },
+          "questions": [
+            {
+              "id": "b1l08-picture-skirt-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個女生，只有一個穿裙子。",
+                  "simplified": "这两个女生，只有一个穿裙子。",
+                  "pinyin": "Zhè liǎng ge nǚshēng, zhǐ yǒu yí ge chuān qúnzi.",
+                  "english": "Of these two girls, only one is wearing a skirt."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個女生都穿裙子。",
+                  "simplified": "这两个女生都穿裙子。",
+                  "pinyin": "Zhè liǎng ge nǚshēng dōu chuān qúnzi.",
+                  "english": "These two girls are both wearing skirts."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個女生都穿褲子。",
+                  "simplified": "这两个女生都穿裤子。",
+                  "pinyin": "Zhè liǎng ge nǚshēng dōu chuān kùzi.",
+                  "english": "These two girls are both wearing pants."
+                }
+              ],
+              "key": 0,
+              "why": "Of the two girls in front, only the one on the right wears a skirt (裙子); her friend wears pants (褲子). So they do not both (都) wear skirts, and they do not both wear pants.",
+              "focus": {
+                "zh": "裙子、褲子",
+                "en": "skirt or pants"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-01",
+                "B1L08-1-09",
+                "B1L08-3-04",
+                "B1L06-2-18"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-picture-skirt-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L08-R01",
+            "alt": "On a sunny campus walkway, two young women walk and talk, large in the foreground. The one on the left (ponytail, teal jacket) wears long dark navy pants with two separate legs and carries a backpack. The one on the right (short hair, blue top, pink scarf) wears one long, wide cream-white skirt that falls far below her knees and carries a white bag. Far behind them, two small students with backpacks walk away: a short-haired boy in light-brown pants and a long-haired student in blue jeans; their lower legs are hidden behind the woman's arm and a low wall. The woman on the right is the only person in the picture who wears a skirt, and nobody wears white pants."
+          },
+          "questions": [
+            {
+              "id": "b1l08-picture-skirt-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "那條白色的是褲子。",
+                  "simplified": "那条白色的是裤子。",
+                  "pinyin": "Nà tiáo báisè de shì kùzi.",
+                  "english": "That white one is a pair of pants."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那條裙子很短。",
+                  "simplified": "那条裙子很短。",
+                  "pinyin": "Nà tiáo qúnzi hěn duǎn.",
+                  "english": "That skirt is short."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那條裙子很長。",
+                  "simplified": "那条裙子很长。",
+                  "pinyin": "Nà tiáo qúnzi hěn cháng.",
+                  "english": "That skirt is long."
+                }
+              ],
+              "key": 2,
+              "why": "The skirt falls far below her knees: 很長, long, not 短 (short). The white piece of clothing is a skirt (裙子), not pants (褲子).",
+              "focus": {
+                "zh": "長、短",
+                "en": "long or short"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-06",
+                "B1L08-2-05",
+                "B1L08-1-01",
+                "B1L08-1-09"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-elevator",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l08-picture-elevator-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L08-R02",
+            "alt": "Inside a department store, two young women hurry toward an open elevator. Both wear long pants (one navy, one white); their feet are out of the picture. The wall clock above them shows nine o'clock. On the far left is a rack of yellow and blue pants. Right next to the elevator, a red stand holds black boots, black shoes and white sneakers; there are no socks and no skirts there. There are no stairs in the picture."
+          },
+          "questions": [
+            {
+              "id": "b1l08-picture-elevator-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "現在六點，兩個女生要坐電梯。",
+                  "simplified": "现在六点，两个女生要坐电梯。",
+                  "pinyin": "Xiànzài liù diǎn, liǎng ge nǚshēng yào zuò diàntī.",
+                  "english": "It's six o'clock, and the two girls are going to take the elevator."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在九點，兩個女生要坐電梯。",
+                  "simplified": "现在九点，两个女生要坐电梯。",
+                  "pinyin": "Xiànzài jiǔ diǎn, liǎng ge nǚshēng yào zuò diàntī.",
+                  "english": "It's nine o'clock, and the two girls are going to take the elevator."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在九點，兩個女生要走樓梯。",
+                  "simplified": "现在九点，两个女生要走楼梯。",
+                  "pinyin": "Xiànzài jiǔ diǎn, liǎng ge nǚshēng yào zǒu lóutī.",
+                  "english": "It's nine o'clock, and the two girls are going to take the stairs."
+                }
+              ],
+              "key": 1,
+              "why": "The clock shows nine (九點), not six: the short hand points left and the long hand points up. They are running to the elevator (電梯); there are no stairs (樓梯).",
+              "focus": {
+                "zh": "電梯、樓梯",
+                "en": "elevator or stairs"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-19",
+                "B1L08-2-20",
+                "B1L07-1-09",
+                "B1L02-1-02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-picture-elevator-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L08-R02",
+            "alt": "Inside a department store, two young women hurry toward an open elevator. Both wear long pants (one navy, one white); their feet are out of the picture. The wall clock above them shows nine o'clock. On the far left is a rack of yellow and blue pants. Right next to the elevator, a red stand holds black boots, black shoes and white sneakers; there are no socks and no skirts there. There are no stairs in the picture."
+          },
+          "questions": [
+            {
+              "id": "b1l08-picture-elevator-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "電梯旁邊有鞋子。",
+                  "simplified": "电梯旁边有鞋子。",
+                  "pinyin": "Diàntī pángbiān yǒu xiézi.",
+                  "english": "There are shoes next to the elevator."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "電梯旁邊有襪子。",
+                  "simplified": "电梯旁边有袜子。",
+                  "pinyin": "Diàntī pángbiān yǒu wàzi.",
+                  "english": "There are socks next to the elevator."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "電梯旁邊有裙子。",
+                  "simplified": "电梯旁边有裙子。",
+                  "pinyin": "Diàntī pángbiān yǒu qúnzi.",
+                  "english": "There are skirts next to the elevator."
+                }
+              ],
+              "key": 0,
+              "why": "The red stand right next to the elevator (電梯旁邊) holds shoes (鞋子). There are no socks (襪子) and no skirts (裙子) by the elevator, and both women wear long pants.",
+              "focus": {
+                "zh": "電梯旁邊有鞋子",
+                "en": "what is by the elevator"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-07",
+                "B1L08-2-08",
+                "B1L08-2-19",
+                "B1L05-2-21"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-why",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l08-dialogue-why-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳為什麼不買那條褲子？太貴了嗎？",
+              "simplified": "你为什么不买那条裤子？太贵了吗？",
+              "pinyin": "Nǐ wèishénme bù mǎi nà tiáo kùzi? Tài guì le ma?",
+              "english": "Why aren't you buying those pants? Are they too expensive?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不貴，因為太長了，所以我不買。",
+              "simplified": "不贵，因为太长了，所以我不买。",
+              "pinyin": "Bú guì, yīnwèi tài cháng le, suǒyǐ wǒ bù mǎi.",
+              "english": "They aren't expensive. They're too long, so I'm not buying them."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-why-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的為什麼不買那條褲子？",
+                "simplified": "女的为什么不买那条裤子？",
+                "pinyin": "Nǚ de wèishénme bù mǎi nà tiáo kùzi?",
+                "english": "Why doesn't the woman buy those pants?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "太貴了",
+                  "simplified": "太贵了",
+                  "pinyin": "tài guì le",
+                  "english": "they're too expensive"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "太長了",
+                  "simplified": "太长了",
+                  "pinyin": "tài cháng le",
+                  "english": "they're too long"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "太短了",
+                  "simplified": "太短了",
+                  "pinyin": "tài duǎn le",
+                  "english": "they're too short"
+                }
+              ],
+              "key": 1,
+              "why": "She answers his guess with 不貴 (not expensive). 因為 gives her real reason: 太長了, too long, not too short (短).",
+              "focus": {
+                "zh": "因為……所以……",
+                "en": "because … so …"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-07",
+                "B1L08-1-10",
+                "B1L08-1-11",
+                "B1L08-2-06"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-dialogue-why-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你為什麼不去百貨公司？你沒有錢嗎？",
+              "simplified": "你为什么不去百货公司？你没有钱吗？",
+              "pinyin": "Nǐ wèishénme bú qù bǎihuò gōngsī? Nǐ méiyǒu qián ma?",
+              "english": "Why aren't you going to the department store? Don't you have money?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不是，因為我最近很忙，所以沒有時間。",
+              "simplified": "不是，因为我最近很忙，所以没有时间。",
+              "pinyin": "Bú shì, yīnwèi wǒ zuìjìn hěn máng, suǒyǐ méiyǒu shíjiān.",
+              "english": "No, it's because I've been busy lately, so I don't have time."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-why-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的為什麼不去百貨公司？",
+                "simplified": "男的为什么不去百货公司？",
+                "pinyin": "Nán de wèishénme bú qù bǎihuò gōngsī?",
+                "english": "Why isn't the man going to the department store?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "很忙",
+                  "simplified": "很忙",
+                  "pinyin": "hěn máng",
+                  "english": "he's busy"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "沒有錢",
+                  "simplified": "没有钱",
+                  "pinyin": "méiyǒu qián",
+                  "english": "he has no money"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很累",
+                  "simplified": "很累",
+                  "pinyin": "hěn lèi",
+                  "english": "he's tired"
+                }
+              ],
+              "key": 0,
+              "why": "He says 不是 to her guess about money; 因為我最近很忙 gives the real reason: he is busy.",
+              "focus": {
+                "zh": "因為",
+                "en": "because (the reason)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-07",
+                "B1L08-1-11",
+                "B1L08-1-15",
+                "B1L08-1-24"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-dialogue-why-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳為什麼走樓梯？電梯太慢了嗎？",
+              "simplified": "你为什么走楼梯？电梯太慢了吗？",
+              "pinyin": "Nǐ wèishénme zǒu lóutī? Diàntī tài màn le ma?",
+              "english": "Why are you taking the stairs? Is the elevator too slow?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，因為電梯裡人太多了，所以我走樓梯。",
+              "simplified": "不是，因为电梯里人太多了，所以我走楼梯。",
+              "pinyin": "Bú shì, yīnwèi diàntī lǐ rén tài duō le, suǒyǐ wǒ zǒu lóutī.",
+              "english": "No. There are too many people in the elevator, so I'm taking the stairs."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-why-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的為什麼走樓梯？",
+                "simplified": "女的为什么走楼梯？",
+                "pinyin": "Nǚ de wèishénme zǒu lóutī?",
+                "english": "Why is the woman taking the stairs?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "電梯很慢",
+                  "simplified": "电梯很慢",
+                  "pinyin": "diàntī hěn màn",
+                  "english": "the elevator is slow"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "電梯裡很熱",
+                  "simplified": "电梯里很热",
+                  "pinyin": "diàntī lǐ hěn rè",
+                  "english": "it's hot in the elevator"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "電梯裡人很多",
+                  "simplified": "电梯里人很多",
+                  "pinyin": "diàntī lǐ rén hěn duō",
+                  "english": "there are lots of people in the elevator"
+                }
+              ],
+              "key": 2,
+              "why": "He guesses the elevator is too slow (太慢了嗎), and she answers 不是. 因為 gives her real reason: 電梯裡人太多了, the elevator is full of people. Nobody says it is hot (熱).",
+              "focus": {
+                "zh": "因為……所以……",
+                "en": "because … so …"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-07",
+                "B1L08-1-10",
+                "B1L08-2-19",
+                "B1L08-2-20"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-guess",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l08-dialogue-guess-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳想買新鞋子吧？",
+              "simplified": "你想买新鞋子吧？",
+              "pinyin": "Nǐ xiǎng mǎi xīn xiézi ba?",
+              "english": "You want to buy new shoes, right?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我要買襪子，我的鞋子太多了。",
+              "simplified": "不是，我要买袜子，我的鞋子太多了。",
+              "pinyin": "Bú shì, wǒ yào mǎi wàzi, wǒ de xiézi tài duō le.",
+              "english": "No, I want to buy socks. I have too many shoes."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-guess-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的要買什麼？",
+                "simplified": "女的要买什么？",
+                "pinyin": "Nǚ de yào mǎi shénme?",
+                "english": "What does the woman want to buy?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "襪子",
+                  "simplified": "袜子",
+                  "pinyin": "wàzi",
+                  "english": "socks"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "褲子",
+                  "simplified": "裤子",
+                  "pinyin": "kùzi",
+                  "english": "pants"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "鞋子",
+                  "simplified": "鞋子",
+                  "pinyin": "xiézi",
+                  "english": "shoes"
+                }
+              ],
+              "key": 0,
+              "why": "吧 marks his guess (shoes), and she answers 不是: she wants 襪子, socks. She already has too many shoes (我的鞋子太多了).",
+              "focus": {
+                "zh": "吧",
+                "en": "checking a guess"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-03",
+                "B1L08-2-08",
+                "B1L08-2-07",
+                "B1L04-1-14"
+              ],
+              "grammarIds": [
+                "B1L08-G03-P193"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-dialogue-guess-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "那個女生是妳妹妹吧？",
+              "simplified": "那个女生是你妹妹吧？",
+              "pinyin": "Nàge nǚshēng shì nǐ mèimei ba?",
+              "english": "That girl is your younger sister, right?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，她是我姐姐。",
+              "simplified": "不是，她是我姐姐。",
+              "pinyin": "Bú shì, tā shì wǒ jiějie.",
+              "english": "No, she's my older sister."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-guess-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的說那個女生是她的什麼人？",
+                "simplified": "女的说那个女生是她的什么人？",
+                "pinyin": "Nǚ de shuō nàge nǚshēng shì tā de shénme rén?",
+                "english": "What does the woman say that girl is to her?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "妹妹",
+                  "simplified": "妹妹",
+                  "pinyin": "mèimei",
+                  "english": "her younger sister"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "姐姐",
+                  "simplified": "姐姐",
+                  "pinyin": "jiějie",
+                  "english": "her older sister"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "同學",
+                  "simplified": "同学",
+                  "pinyin": "tóngxué",
+                  "english": "her classmate"
+                }
+              ],
+              "key": 1,
+              "why": "吧 marks his guess (妹妹, younger sister), and she answers 不是: 她是我姐姐, the girl is her older sister.",
+              "focus": {
+                "zh": "吧",
+                "en": "checking a guess"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-03",
+                "B1L08-3-04",
+                "B1L05-2-16",
+                "B1L05-2-18"
+              ],
+              "grammarIds": [
+                "B1L08-G03-P193"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-dialogue-guess-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳今年十九歲吧？",
+              "simplified": "你今年十九岁吧？",
+              "pinyin": "Nǐ jīnnián shíjiǔ suì ba?",
+              "english": "You're nineteen this year, right?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我去年十九歲，今年二十了。",
+              "simplified": "不是，我去年十九岁，今年二十了。",
+              "pinyin": "Bú shì, wǒ qùnián shíjiǔ suì, jīnnián èrshí le.",
+              "english": "No, I was nineteen last year. I'm twenty now."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-guess-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的今年幾歲？",
+                "simplified": "女的今年几岁？",
+                "pinyin": "Nǚ de jīnnián jǐ suì?",
+                "english": "How old is the woman this year?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "十九歲",
+                  "simplified": "十九岁",
+                  "pinyin": "shíjiǔ suì",
+                  "english": "nineteen"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "二十一歲",
+                  "simplified": "二十一岁",
+                  "pinyin": "èrshíyī suì",
+                  "english": "twenty-one"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "二十歲",
+                  "simplified": "二十岁",
+                  "pinyin": "èrshí suì",
+                  "english": "twenty"
+                }
+              ],
+              "key": 2,
+              "why": "吧 marks his guess, and she says 不是: nineteen was last year (去年); this year (今年) she is twenty.",
+              "focus": {
+                "zh": "去年、今年",
+                "en": "last year, this year"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-03",
+                "B1L08-1-04",
+                "B1L08-1-02",
+                "B1L02-3-02"
+              ],
+              "grammarIds": [
+                "B1L08-G03-P193"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-route",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l08-dialogue-route-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你要坐公車去機場嗎？",
+              "simplified": "你要坐公车去机场吗？",
+              "pinyin": "Nǐ yào zuò gōngchē qù jīchǎng ma?",
+              "english": "Are you taking the bus to the airport?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "是啊，因為我家附近沒有捷運站。",
+              "simplified": "是啊，因为我家附近没有捷运站。",
+              "pinyin": "Shì a, yīnwèi wǒ jiā fùjìn méiyǒu jiéyùn zhàn.",
+              "english": "Yes, because there's no MRT station near my home."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-route-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的怎麼去機場？",
+                "simplified": "男的怎么去机场？",
+                "pinyin": "Nán de zěnme qù jīchǎng?",
+                "english": "How is the man getting to the airport?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "坐捷運",
+                  "simplified": "坐捷运",
+                  "pinyin": "zuò jiéyùn",
+                  "english": "by MRT"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "開車",
+                  "simplified": "开车",
+                  "pinyin": "kāichē",
+                  "english": "by car"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐公車",
+                  "simplified": "坐公车",
+                  "pinyin": "zuò gōngchē",
+                  "english": "by bus"
+                }
+              ],
+              "key": 2,
+              "why": "She asks if he is taking the bus (坐公車), and he says 是啊, yes. He names the MRT only to say there is no MRT station (捷運站) near his home.",
+              "focus": {
+                "zh": "怎麼去",
+                "en": "how you get there"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-01",
+                "B1L07-1-11",
+                "B1L07-1-10",
+                "B1L07-2-05"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-dialogue-route-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "從妳家到學校遠嗎？",
+              "simplified": "从你家到学校远吗？",
+              "pinyin": "Cóng nǐ jiā dào xuéxiào yuǎn ma?",
+              "english": "Is it far from your home to school?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "很近，我都走路去，不坐公車。",
+              "simplified": "很近，我都走路去，不坐公车。",
+              "pinyin": "Hěn jìn, wǒ dōu zǒulù qù, bú zuò gōngchē.",
+              "english": "It's close. I always walk there; I don't take the bus."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-route-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的怎麼去學校？",
+                "simplified": "女的怎么去学校？",
+                "pinyin": "Nǚ de zěnme qù xuéxiào?",
+                "english": "How does the woman get to school?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "走路",
+                  "simplified": "走路",
+                  "pinyin": "zǒulù",
+                  "english": "on foot"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐公車",
+                  "simplified": "坐公车",
+                  "pinyin": "zuò gōngchē",
+                  "english": "by bus"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐捷運",
+                  "simplified": "坐捷运",
+                  "pinyin": "zuò jiéyùn",
+                  "english": "by MRT"
+                }
+              ],
+              "key": 0,
+              "why": "Her home is close (很近). She says 都走路去, she always walks there, and 不坐公車, she does not take the bus.",
+              "focus": {
+                "zh": "走路去",
+                "en": "going on foot"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-21",
+                "B1L07-1-18",
+                "B1L07-1-20",
+                "B1L07-1-02"
+              ],
+              "grammarIds": [
+                "B1L07-G01-P158",
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-sports",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l08-dialogue-sports-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳會騎腳踏車嗎？游泳呢？",
+              "simplified": "你会骑脚踏车吗？游泳呢？",
+              "pinyin": "Nǐ huì qí jiǎotàchē ma? Yóuyǒng ne?",
+              "english": "Can you ride a bike? What about swimming?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "都不會，可是我會開車。",
+              "simplified": "都不会，可是我会开车。",
+              "pinyin": "Dōu bú huì, kěshì wǒ huì kāichē.",
+              "english": "I can't do either, but I can drive."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-sports-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的會什麼？",
+                "simplified": "女的会什么？",
+                "pinyin": "Nǚ de huì shénme?",
+                "english": "What can the woman do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "騎腳踏車",
+                  "simplified": "骑脚踏车",
+                  "pinyin": "qí jiǎotàchē",
+                  "english": "ride a bike"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "游泳",
+                  "simplified": "游泳",
+                  "pinyin": "yóuyǒng",
+                  "english": "swim"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "開車",
+                  "simplified": "开车",
+                  "pinyin": "kāichē",
+                  "english": "drive"
+                }
+              ],
+              "key": 2,
+              "why": "會 is for skills you have learned. He asks about riding a bike and swimming, and she answers 都不會: she can do neither. Then 可是我會開車: she can drive.",
+              "focus": {
+                "zh": "會",
+                "en": "can (a skill)"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L06-2-15",
+                "B1L06-2-16",
+                "B1L07-3-05"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-dialogue-sports-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你會游泳嗎？",
+              "simplified": "你会游泳吗？",
+              "pinyin": "Nǐ huì yóuyǒng ma?",
+              "english": "Can you swim?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "會，可是我游得很慢，跑步跑得很快。",
+              "simplified": "会，可是我游得很慢，跑步跑得很快。",
+              "pinyin": "Huì, kěshì wǒ yóu de hěn màn, pǎobù pǎo de hěn kuài.",
+              "english": "Yes, but I swim slowly. I run fast."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-dialogue-sports-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的游泳游得怎麼樣？",
+                "simplified": "男的游泳游得怎么样？",
+                "pinyin": "Nán de yóuyǒng yóu de zěnmeyàng?",
+                "english": "How does the man swim?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "很快",
+                  "simplified": "很快",
+                  "pinyin": "hěn kuài",
+                  "english": "fast"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很慢",
+                  "simplified": "很慢",
+                  "pinyin": "hěn màn",
+                  "english": "slowly"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不會游泳",
+                  "simplified": "不会游泳",
+                  "pinyin": "bú huì yóuyǒng",
+                  "english": "he can't swim"
+                }
+              ],
+              "key": 1,
+              "why": "He can swim (會), but 游得很慢: he swims slowly. 很快 is how he runs.",
+              "focus": {
+                "zh": "游得很慢",
+                "en": "swims slowly"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-12",
+                "B1L06-1-17",
+                "B1L06-1-14",
+                "B1L06-1-13"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136",
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-purse",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l08-read-purse-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l08-read-purse-1-q",
+              "prompt": {
+                "traditional": "這個黑色的皮包很舊了。",
+                "simplified": "这个黑色的皮包很旧了。",
+                "pinyin": "Zhège hēisè de píbāo hěn jiù le.",
+                "english": "This black purse is very old now."
+              },
+              "choices": [
+                {
+                  "picture": "b1l08-purse-1",
+                  "alt": "New black purse: a shiny new black purse on the table"
+                },
+                {
+                  "picture": "b1l08-purse-2",
+                  "alt": "Old black purse: the same black purse, still black but worn, with scuffed corners and a small patch"
+                },
+                {
+                  "picture": "b1l08-purse-3",
+                  "alt": "New yellow purse: a shiny new yellow purse on the table"
+                }
+              ],
+              "key": 1,
+              "why": "舊 means old and worn (for things). The other black purse is shiny and new (新).",
+              "focus": {
+                "zh": "舊",
+                "en": "old (things)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-3-07",
+                "B1L08-3-03",
+                "B1L08-2-10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-read-purse-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l08-read-purse-2-q",
+              "prompt": {
+                "traditional": "我的皮包是黃色的，很新。",
+                "simplified": "我的皮包是黄色的，很新。",
+                "pinyin": "Wǒ de píbāo shì huángsè de, hěn xīn.",
+                "english": "My purse is yellow, and it is new."
+              },
+              "choices": [
+                {
+                  "picture": "b1l08-purse-1",
+                  "alt": "New black purse: a shiny new black purse on the table"
+                },
+                {
+                  "picture": "b1l08-purse-2",
+                  "alt": "Old black purse: the same black purse, still black but worn, with scuffed corners and a small patch"
+                },
+                {
+                  "picture": "b1l08-purse-3",
+                  "alt": "New yellow purse: a shiny new yellow purse on the table"
+                }
+              ],
+              "key": 2,
+              "why": "黃色 is yellow and 新 is new: the shiny yellow purse. The other two purses are black.",
+              "focus": {
+                "zh": "黃色",
+                "en": "yellow"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-01",
+                "B1L08-3-03",
+                "B1L01-1-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-read-purse-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l08-read-purse-3-q",
+              "prompt": {
+                "traditional": "這個皮包很新，是黑色的。",
+                "simplified": "这个皮包很新，是黑色的。",
+                "pinyin": "Zhège píbāo hěn xīn, shì hēisè de.",
+                "english": "This purse is new, and it is black."
+              },
+              "choices": [
+                {
+                  "picture": "b1l08-purse-1",
+                  "alt": "New black purse: a shiny new black purse on the table"
+                },
+                {
+                  "picture": "b1l08-purse-2",
+                  "alt": "Old black purse: the same black purse, still black but worn, with scuffed corners and a small patch"
+                },
+                {
+                  "picture": "b1l08-purse-3",
+                  "alt": "New yellow purse: a shiny new yellow purse on the table"
+                }
+              ],
+              "key": 0,
+              "why": "新 is new and 黑色 is black: the shiny black purse. The worn black one is old (舊).",
+              "focus": {
+                "zh": "新、舊",
+                "en": "new or old"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L01-1-01",
+                "B1L08-3-07",
+                "B1L08-2-10",
+                "B1L08-3-03"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-reader",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l08-read-reader-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l08-read-reader-1-q",
+              "prompt": {
+                "traditional": "這位老先生在書店看雜誌。",
+                "simplified": "这位老先生在书店看杂志。",
+                "pinyin": "Zhè wèi lǎo xiānshēng zài shūdiàn kàn zázhì.",
+                "english": "This old man is reading a magazine in the bookstore."
+              },
+              "choices": [
+                {
+                  "picture": "b1l08-reader-1",
+                  "alt": "A young man: a young man with short black hair reads a magazine by the bookstore shelf"
+                },
+                {
+                  "picture": "b1l08-reader-2",
+                  "alt": "An old man: an old man with grey hair reads a magazine by the bookstore shelf"
+                },
+                {
+                  "picture": "b1l08-reader-3",
+                  "alt": "A young woman: a young woman with long hair reads a magazine by the bookstore shelf"
+                }
+              ],
+              "key": 1,
+              "why": "老先生 is an old man (老 means old, for people; 先生 is a man). The young man is not old, and the young woman is neither old nor a man.",
+              "focus": {
+                "zh": "老",
+                "en": "old (age)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-3-02",
+                "B1L08-3-06",
+                "B1L04-2-09",
+                "B1L00-1-11"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-read-reader-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l08-read-reader-2-q",
+              "prompt": {
+                "traditional": "這個女生在書店看雜誌。",
+                "simplified": "这个女生在书店看杂志。",
+                "pinyin": "Zhège nǚshēng zài shūdiàn kàn zázhì.",
+                "english": "This girl is reading a magazine in the bookstore."
+              },
+              "choices": [
+                {
+                  "picture": "b1l08-reader-1",
+                  "alt": "A young man: a young man with short black hair reads a magazine by the bookstore shelf"
+                },
+                {
+                  "picture": "b1l08-reader-2",
+                  "alt": "An old man: an old man with grey hair reads a magazine by the bookstore shelf"
+                },
+                {
+                  "picture": "b1l08-reader-3",
+                  "alt": "A young woman: a young woman with long hair reads a magazine by the bookstore shelf"
+                }
+              ],
+              "key": 2,
+              "why": "女生 is a girl or young woman. 男生 would be a young man.",
+              "focus": {
+                "zh": "女生",
+                "en": "girl"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-3-04",
+                "B1L08-3-06"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-read-reader-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l08-read-reader-3-q",
+              "prompt": {
+                "traditional": "那個男生很年輕，他在書店看雜誌。",
+                "simplified": "那个男生很年轻，他在书店看杂志。",
+                "pinyin": "Nàge nánshēng hěn niánqīng, tā zài shūdiàn kàn zázhì.",
+                "english": "That young man is reading a magazine in the bookstore."
+              },
+              "choices": [
+                {
+                  "picture": "b1l08-reader-1",
+                  "alt": "A young man: a young man with short black hair reads a magazine by the bookstore shelf"
+                },
+                {
+                  "picture": "b1l08-reader-2",
+                  "alt": "An old man: an old man with grey hair reads a magazine by the bookstore shelf"
+                },
+                {
+                  "picture": "b1l08-reader-3",
+                  "alt": "A young woman: a young woman with long hair reads a magazine by the bookstore shelf"
+                }
+              ],
+              "key": 0,
+              "why": "男生 is a young man and 年輕 means young. The old man is not 年輕, and 女生 would be a girl.",
+              "focus": {
+                "zh": "年輕",
+                "en": "young"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-3-05",
+                "B1L08-3-01",
+                "B1L08-3-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-floors",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l08-realia-floors-1",
+          "kind": "realia",
+          "picture": "b1l08-floors",
+          "alt": "A department store floor guide by the elevator. One floor per row, from 5樓 at the top down to 1樓: each row starts with the floor number, then what is sold on that floor. The opening hours are at the bottom",
+          "transcript": {
+            "traditional": "百貨公司　5樓 書店、咖啡廳　4樓 褲子　3樓 裙子　2樓 皮包　1樓 鞋子、襪子　上午11:00—晚上9:30",
+            "simplified": "百货公司　5楼 书店、咖啡厅　4楼 裤子　3楼 裙子　2楼 皮包　1楼 鞋子、袜子　上午11:00—晚上9:30",
+            "pinyin": "Bǎihuò gōngsī: 5 lóu shūdiàn, kāfēitīng; 4 lóu kùzi; 3 lóu qúnzi; 2 lóu píbāo; 1 lóu xiézi, wàzi; shàngwǔ 11:00 – wǎnshàng 9:30",
+            "english": "Department store: 5F bookstore, café; 4F pants; 3F skirts; 2F purses; 1F shoes, socks; 11:00 a.m. – 9:30 p.m."
+          },
+          "questions": [
+            {
+              "id": "b1l08-realia-floors-1-q",
+              "choices": [
+                {
+                  "traditional": "鞋子在二樓。",
+                  "simplified": "鞋子在二楼。",
+                  "pinyin": "Xiézi zài èr lóu.",
+                  "english": "Shoes are on the second floor."
+                },
+                {
+                  "traditional": "咖啡廳在四樓。",
+                  "simplified": "咖啡厅在四楼。",
+                  "pinyin": "Kāfēitīng zài sì lóu.",
+                  "english": "The café is on the fourth floor."
+                },
+                {
+                  "traditional": "裙子在三樓。",
+                  "simplified": "裙子在三楼。",
+                  "pinyin": "Qúnzi zài sān lóu.",
+                  "english": "Skirts are on the third floor."
+                }
+              ],
+              "key": 2,
+              "why": "The guide says 3樓 裙子: skirts are on the third floor. Shoes are on 1樓, and the café is on 5樓.",
+              "focus": {
+                "zh": "樓",
+                "en": "floors"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-12",
+                "B1L08-1-01",
+                "B1L08-2-07",
+                "B1L05-1-02"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-realia-floors-2",
+          "kind": "realia",
+          "picture": "b1l08-floors",
+          "alt": "A department store floor guide by the elevator. One floor per row, from 5樓 at the top down to 1樓: each row starts with the floor number, then what is sold on that floor. The opening hours are at the bottom",
+          "transcript": {
+            "traditional": "百貨公司　5樓 書店、咖啡廳　4樓 褲子　3樓 裙子　2樓 皮包　1樓 鞋子、襪子　上午11:00—晚上9:30",
+            "simplified": "百货公司　5楼 书店、咖啡厅　4楼 裤子　3楼 裙子　2楼 皮包　1楼 鞋子、袜子　上午11:00—晚上9:30",
+            "pinyin": "Bǎihuò gōngsī: 5 lóu shūdiàn, kāfēitīng; 4 lóu kùzi; 3 lóu qúnzi; 2 lóu píbāo; 1 lóu xiézi, wàzi; shàngwǔ 11:00 – wǎnshàng 9:30",
+            "english": "Department store: 5F bookstore, café; 4F pants; 3F skirts; 2F purses; 1F shoes, socks; 11:00 a.m. – 9:30 p.m."
+          },
+          "questions": [
+            {
+              "id": "b1l08-realia-floors-2-q",
+              "prompt": {
+                "traditional": "我想買一個新皮包，要到幾樓去？",
+                "simplified": "我想买一个新皮包，要到几楼去？",
+                "pinyin": "Wǒ xiǎng mǎi yí ge xīn píbāo, yào dào jǐ lóu qù?",
+                "english": "I want to buy a new purse. Which floor should I go to?"
+              },
+              "choices": [
+                {
+                  "traditional": "一樓",
+                  "simplified": "一楼",
+                  "pinyin": "yì lóu",
+                  "english": "the first floor"
+                },
+                {
+                  "traditional": "二樓",
+                  "simplified": "二楼",
+                  "pinyin": "èr lóu",
+                  "english": "the second floor"
+                },
+                {
+                  "traditional": "三樓",
+                  "simplified": "三楼",
+                  "pinyin": "sān lóu",
+                  "english": "the third floor"
+                }
+              ],
+              "key": 1,
+              "why": "Purses are on 2樓, the second floor. The floors on either side sell other things: 1樓 has shoes and socks, and 3樓 has skirts.",
+              "focus": {
+                "zh": "幾樓",
+                "en": "which floor"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-12",
+                "B1L08-3-03",
+                "B1L07-1-02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-shoes",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l08-realia-shoes-1",
+          "kind": "realia",
+          "picture": "b1l08-shoe-poster",
+          "alt": "A price poster in a shoe shop window, with a black shoe, a white shoe and a pair of socks, each with its price",
+          "transcript": {
+            "traditional": "今年最流行　黑色鞋子 一雙 1,800元　白色鞋子 一雙 1,500元　襪子 一雙 120元",
+            "simplified": "今年最流行　黑色鞋子 一双 1,800元　白色鞋子 一双 1,500元　袜子 一双 120元",
+            "pinyin": "Jīnnián zuì liúxíng: hēisè xiézi, yì shuāng 1,800 yuán; báisè xiézi, yì shuāng 1,500 yuán; wàzi, yì shuāng 120 yuán",
+            "english": "Most popular this year: black shoes, 1,800 a pair; white shoes, 1,500 a pair; socks, 120 a pair"
+          },
+          "questions": [
+            {
+              "id": "b1l08-realia-shoes-1-q",
+              "choices": [
+                {
+                  "traditional": "白色的鞋子一雙一千八百塊。",
+                  "simplified": "白色的鞋子一双一千八百块。",
+                  "pinyin": "Báisè de xiézi yì shuāng yì qiān bā bǎi kuài.",
+                  "english": "The white shoes are 1,800 a pair."
+                },
+                {
+                  "traditional": "黑色的鞋子一雙一千八百塊。",
+                  "simplified": "黑色的鞋子一双一千八百块。",
+                  "pinyin": "Hēisè de xiézi yì shuāng yì qiān bā bǎi kuài.",
+                  "english": "The black shoes are 1,800 a pair."
+                },
+                {
+                  "traditional": "白色的鞋子一雙一百五十塊。",
+                  "simplified": "白色的鞋子一双一百五十块。",
+                  "pinyin": "Báisè de xiézi yì shuāng yì bǎi wǔshí kuài.",
+                  "english": "The white shoes are 150 a pair."
+                }
+              ],
+              "key": 1,
+              "why": "The poster says 黑色鞋子 一雙 1,800元: black shoes are 1,800 a pair. White shoes are 1,500 a pair (一千五百), not 1,800 and not 150 (一百五十).",
+              "focus": {
+                "zh": "一雙",
+                "en": "a pair"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-10",
+                "B1L08-2-09",
+                "B1L08-2-07",
+                "B1L04-2-18"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-realia-shoes-2",
+          "kind": "realia",
+          "picture": "b1l08-shoe-poster",
+          "alt": "A price poster in a shoe shop window, with a black shoe, a white shoe and a pair of socks, each with its price",
+          "transcript": {
+            "traditional": "今年最流行　黑色鞋子 一雙 1,800元　白色鞋子 一雙 1,500元　襪子 一雙 120元",
+            "simplified": "今年最流行　黑色鞋子 一双 1,800元　白色鞋子 一双 1,500元　袜子 一双 120元",
+            "pinyin": "Jīnnián zuì liúxíng: hēisè xiézi, yì shuāng 1,800 yuán; báisè xiézi, yì shuāng 1,500 yuán; wàzi, yì shuāng 120 yuán",
+            "english": "Most popular this year: black shoes, 1,800 a pair; white shoes, 1,500 a pair; socks, 120 a pair"
+          },
+          "questions": [
+            {
+              "id": "b1l08-realia-shoes-2-q",
+              "prompt": {
+                "traditional": "一雙白色的鞋子和兩雙襪子，一共多少錢？",
+                "simplified": "一双白色的鞋子和两双袜子，一共多少钱？",
+                "pinyin": "Yì shuāng báisè de xiézi hé liǎng shuāng wàzi, yígòng duōshǎo qián?",
+                "english": "One pair of white shoes and two pairs of socks: how much altogether?"
+              },
+              "choices": [
+                {
+                  "traditional": "一千六百二十塊",
+                  "simplified": "一千六百二十块",
+                  "pinyin": "yì qiān liù bǎi èrshí kuài",
+                  "english": "1,620"
+                },
+                {
+                  "traditional": "一千七百四十塊",
+                  "simplified": "一千七百四十块",
+                  "pinyin": "yì qiān qī bǎi sìshí kuài",
+                  "english": "1,740"
+                },
+                {
+                  "traditional": "兩千零四十塊",
+                  "simplified": "两千零四十块",
+                  "pinyin": "liǎng qiān líng sìshí kuài",
+                  "english": "2,040"
+                }
+              ],
+              "key": 1,
+              "why": "White shoes are 1,500 and socks 120 a pair: 1,500 + 240 = 1,740. 1,620 has only one pair of socks; 2,040 uses the black shoes.",
+              "focus": {
+                "zh": "一共",
+                "en": "adding up prices"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-09",
+                "B1L08-2-08",
+                "B1L04-2-15",
+                "B1L04-2-16"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l08-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l08-store",
+          "alt": "A department store clothing floor: Yiwen holds a long blue skirt up in front of a mirror while Yuanzhen smiles and gives a thumbs-up. Behind them are a rack of red, yellow, white and green skirts (none of them blue or black) and an open elevator. No bags, purses or phones are in the picture.",
+          "questions": [
+            {
+              "id": "b1l08-scene-gap-1-a",
+              "prompt": {
+                "traditional": "這條藍色的裙子很好看，妳可以＿＿看。",
+                "simplified": "这条蓝色的裙子很好看，你可以＿＿看。"
+              },
+              "choices": [
+                {
+                  "traditional": "找找",
+                  "simplified": "找找",
+                  "pinyin": "zhǎo zhao",
+                  "english": "look for (and see)"
+                },
+                {
+                  "traditional": "坐坐",
+                  "simplified": "坐坐",
+                  "pinyin": "zuò zuo",
+                  "english": "sit (and see)"
+                },
+                {
+                  "traditional": "穿穿",
+                  "simplified": "穿穿",
+                  "pinyin": "chuān chuan",
+                  "english": "wear (and see)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "這條藍色的裙子很好看，妳可以穿穿看。",
+                "simplified": "这条蓝色的裙子很好看，你可以穿穿看。",
+                "pinyin": "Zhè tiáo lánsè de qúnzi hěn hǎokàn, nǐ kěyǐ chuān chuan kàn.",
+                "english": "This blue skirt looks great. You can try it on and see."
+              },
+              "why": "Verb + same verb + 看 means try it and see. She is already holding this skirt (這條), so she does not need to look for it (找找看): she can try it on, 穿穿看.",
+              "focus": {
+                "zh": "穿穿看",
+                "en": "try it on"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L03-2-22",
+                "B1L08-1-01",
+                "B1L06-2-14"
+              ],
+              "grammarIds": [
+                "B1L08-G04-P194"
+              ]
+            },
+            {
+              "id": "b1l08-scene-gap-1-b",
+              "prompt": {
+                "traditional": "這家百貨公司在捷運站旁邊，所以很＿＿找。",
+                "simplified": "这家百货公司在捷运站旁边，所以很＿＿找。"
+              },
+              "choices": [
+                {
+                  "traditional": "難",
+                  "simplified": "难",
+                  "pinyin": "nán",
+                  "english": "difficult"
+                },
+                {
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "hǎo",
+                  "english": "good; easy"
+                },
+                {
+                  "traditional": "多",
+                  "simplified": "多",
+                  "pinyin": "duō",
+                  "english": "many"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "這家百貨公司在捷運站旁邊，所以很好找。",
+                "simplified": "这家百货公司在捷运站旁边，所以很好找。",
+                "pinyin": "Zhè jiā bǎihuò gōngsī zài jiéyùn zhàn pángbiān, suǒyǐ hěn hǎo zhǎo.",
+                "english": "This department store is next to the MRT station, so it's easy to find."
+              },
+              "why": "好 + verb means easy to do: 好找, easy to find. 所以 makes it follow from being next to the MRT station (捷運站旁邊), so 難找 (hard to find) does not fit.",
+              "focus": {
+                "zh": "好找",
+                "en": "easy to find"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-13",
+                "B1L05-2-25",
+                "B1L08-1-12",
+                "B1L05-2-21"
+              ],
+              "grammarIds": [
+                "B1L08-G01-P185"
+              ]
+            },
+            {
+              "id": "b1l08-scene-gap-1-c",
+              "prompt": {
+                "traditional": "我們從三樓走樓梯＿＿二樓去買皮包。",
+                "simplified": "我们从三楼走楼梯＿＿二楼去买皮包。"
+              },
+              "choices": [
+                {
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "english": "to"
+                },
+                {
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "english": "at"
+                },
+                {
+                  "traditional": "跟",
+                  "simplified": "跟",
+                  "pinyin": "gēn",
+                  "english": "with; and"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "我們從三樓走樓梯到二樓去買皮包。",
+                "simplified": "我们从三楼走楼梯到二楼去买皮包。",
+                "pinyin": "Wǒmen cóng sān lóu zǒu lóutī dào èr lóu qù mǎi píbāo.",
+                "english": "We're taking the stairs from the third floor to the second floor to buy a purse."
+              },
+              "why": "從 … 到 … gives a start and an end: from the third floor (從三樓), by the stairs, to the second floor (到二樓). 在 and 跟 cannot pair with 從 like this.",
+              "focus": {
+                "zh": "從……到……",
+                "en": "from … to …"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-20",
+                "B1L07-1-02",
+                "B1L08-2-20",
+                "B1L08-3-03"
+              ],
+              "grammarIds": [
+                "B1L07-G01-P158"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l08-store",
+          "alt": "A department store clothing floor: Yiwen holds a long blue skirt up in front of a mirror while Yuanzhen smiles and gives a thumbs-up. Behind them are a rack of red, yellow, white and green skirts (none of them blue or black) and an open elevator. No bags, purses or phones are in the picture.",
+          "questions": [
+            {
+              "id": "b1l08-scene-gap-2-a",
+              "prompt": {
+                "traditional": "這裡沒有黑色的裙子，我坐電梯去樓下＿＿看。",
+                "simplified": "这里没有黑色的裙子，我坐电梯去楼下＿＿看。"
+              },
+              "choices": [
+                {
+                  "traditional": "吃吃",
+                  "simplified": "吃吃",
+                  "pinyin": "chī chi",
+                  "english": "eat (and see)"
+                },
+                {
+                  "traditional": "找找",
+                  "simplified": "找找",
+                  "pinyin": "zhǎo zhao",
+                  "english": "look for (and see)"
+                },
+                {
+                  "traditional": "坐坐",
+                  "simplified": "坐坐",
+                  "pinyin": "zuò zuo",
+                  "english": "sit (and see)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "這裡沒有黑色的裙子，我坐電梯去樓下找找看。",
+                "simplified": "这里没有黑色的裙子，我坐电梯去楼下找找看。",
+                "pinyin": "Zhèlǐ méiyǒu hēisè de qúnzi, wǒ zuò diàntī qù lóuxià zhǎo zhao kàn.",
+                "english": "There are no black skirts here. I'll take the elevator downstairs and try looking for one."
+              },
+              "why": "找找看 means look for it and see: there are no black skirts here, so the speaker goes downstairs to look for one. 吃吃看 (try eating) and 坐坐看 (try sitting) do not fit looking for a skirt.",
+              "focus": {
+                "zh": "找找看",
+                "en": "try looking"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L05-2-25",
+                "B1L08-2-13",
+                "B1L08-2-10",
+                "B1L08-2-19"
+              ],
+              "grammarIds": [
+                "B1L08-G04-P194"
+              ]
+            },
+            {
+              "id": "b1l08-scene-gap-2-b",
+              "prompt": {
+                "traditional": "因為那條紅色的裙子很＿＿看，所以我不買。",
+                "simplified": "因为那条红色的裙子很＿＿看，所以我不买。"
+              },
+              "choices": [
+                {
+                  "traditional": "難",
+                  "simplified": "难",
+                  "pinyin": "nán",
+                  "english": "difficult"
+                },
+                {
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "hǎo",
+                  "english": "good; easy"
+                },
+                {
+                  "traditional": "貴",
+                  "simplified": "贵",
+                  "pinyin": "guì",
+                  "english": "expensive"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "因為那條紅色的裙子很難看，所以我不買。",
+                "simplified": "因为那条红色的裙子很难看，所以我不买。",
+                "pinyin": "Yīnwèi nà tiáo hóngsè de qúnzi hěn nánkàn, suǒyǐ wǒ bù mǎi.",
+                "english": "That red skirt doesn't look good, so I'm not buying it."
+              },
+              "why": "難 + a verb like 看 means unpleasant: 難看, not nice to look at, the opposite of 好看. 因為 … 所以我不買 needs a reason not to buy it, so 好看 does not fit, and 貴 cannot go before 看.",
+              "focus": {
+                "zh": "難看",
+                "en": "not good-looking"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-13",
+                "B1L08-1-01",
+                "B1L08-1-07",
+                "B1L08-1-10"
+              ],
+              "grammarIds": [
+                "B1L08-G01-P185",
+                "B1L08-G02-P186"
+              ]
+            },
+            {
+              "id": "b1l08-scene-gap-2-c",
+              "prompt": {
+                "traditional": "這條很好看，我想＿＿媽媽一條。",
+                "simplified": "这条很好看，我想＿＿妈妈一条。"
+              },
+              "choices": [
+                {
+                  "traditional": "找",
+                  "simplified": "找",
+                  "pinyin": "zhǎo",
+                  "english": "to look for"
+                },
+                {
+                  "traditional": "穿",
+                  "simplified": "穿",
+                  "pinyin": "chuān",
+                  "english": "to wear"
+                },
+                {
+                  "traditional": "送",
+                  "simplified": "送",
+                  "pinyin": "sòng",
+                  "english": "to give (as a gift)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "這條很好看，我想送媽媽一條。",
+                "simplified": "这条很好看，我想送妈妈一条。",
+                "pinyin": "Zhè tiáo hěn hǎokàn, wǒ xiǎng sòng māma yì tiáo.",
+                "english": "This one looks great. I want to give Mom one."
+              },
+              "why": "送 + person + gift: 送媽媽一條 means give Mom one (a skirt). 找 and 穿 cannot take a person and a thing like this.",
+              "focus": {
+                "zh": "送 + 人 + 禮物",
+                "en": "giving someone a gift"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L02-1-07",
+                "B1L07-2-02"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l08-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "星期六晚上，我跟姐姐去百貨公司。藍色今年很{1}，所以姐姐想買一條藍色的裙子。有一條她很喜歡，可是她最近{2}了，所以那條裙子太小了。九點二十了，百貨公司{3}關門了，我們{4}電梯到一樓，回家了。",
+            "simplified": "星期六晚上，我跟姐姐去百货公司。蓝色今年很{1}，所以姐姐想买一条蓝色的裙子。有一条她很喜欢，可是她最近{2}了，所以那条裙子太小了。九点二十了，百货公司{3}关门了，我们{4}电梯到一楼，回家了。",
+            "pinyin": "Xīngqíliù wǎnshàng, wǒ gēn jiějie qù bǎihuò gōngsī. Lánsè jīnnián hěn liúxíng, suǒyǐ jiějie xiǎng mǎi yì tiáo lánsè de qúnzi. Yǒu yì tiáo tā hěn xǐhuān, kěshì tā zuìjìn pàng le, suǒyǐ nà tiáo qúnzi tài xiǎo le. Jiǔ diǎn èrshí le, bǎihuò gōngsī kuàiyào guānmén le, wǒmen zuò diàntī dào yì lóu, huí jiā le.",
+            "english": "On Saturday evening my older sister and I went to the department store. Blue is very trendy this year, so my sister wanted a blue skirt. There was one she liked a lot, but she has put on weight lately, so that skirt was too small. It was 9:20 and the store was about to close. We took the elevator to the first floor and went home."
+          },
+          "bank": [
+            {
+              "traditional": "坐",
+              "simplified": "坐",
+              "pinyin": "zuò",
+              "english": "to take (a ride)"
+            },
+            {
+              "traditional": "流行",
+              "simplified": "流行",
+              "pinyin": "liúxíng",
+              "english": "trendy"
+            },
+            {
+              "traditional": "瘦",
+              "simplified": "瘦",
+              "pinyin": "shòu",
+              "english": "thin"
+            },
+            {
+              "traditional": "快要",
+              "simplified": "快要",
+              "pinyin": "kuàiyào",
+              "english": "about to"
+            },
+            {
+              "traditional": "胖",
+              "simplified": "胖",
+              "pinyin": "pàng",
+              "english": "fat"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-paragraph-1-1",
+              "key": 1,
+              "why": "流行 means trendy: 藍色今年很流行, blue is very trendy this year. That is why she wants a blue skirt.",
+              "focus": {
+                "zh": "流行",
+                "en": "trendy"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-04",
+                "B1L07-3-03",
+                "B1L08-1-04"
+              ]
+            },
+            {
+              "id": "b1l08-paragraph-1-2",
+              "key": 4,
+              "why": "胖了 means she has put on weight, and 所以 says that is why the skirt is too small. 瘦了 (got thinner) would not make it too small.",
+              "focus": {
+                "zh": "胖了",
+                "en": "put on weight"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-16",
+                "B1L08-1-15",
+                "B1L08-1-17"
+              ],
+              "grammarIds": [
+                "B1L07-G03-P162"
+              ]
+            },
+            {
+              "id": "b1l08-paragraph-1-3",
+              "key": 3,
+              "why": "快要 … 了 means something is about to happen: it is 9:20, and the store is about to close.",
+              "focus": {
+                "zh": "快要……了",
+                "en": "about to happen"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-15",
+                "B1L08-2-17",
+                "B1L08-1-12"
+              ],
+              "grammarIds": [
+                "B1L08-G05-P195"
+              ]
+            },
+            {
+              "id": "b1l08-paragraph-1-4",
+              "key": 0,
+              "why": "坐 is for riding in something: 坐電梯 means take the elevator.",
+              "focus": {
+                "zh": "坐電梯",
+                "en": "take the elevator"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-09",
+                "B1L07-1-02",
+                "B1L08-2-19"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我的鞋子都很{1}了，我想買一{2}新的。我的生日{3}到了，所以媽媽跟我去一家店買鞋子。那家店在我家{4}，我們走路去。店裡的鞋子很多，我最喜歡黑色的。",
+            "simplified": "我的鞋子都很{1}了，我想买一{2}新的。我的生日{3}到了，所以妈妈跟我去一家店买鞋子。那家店在我家{4}，我们走路去。店里的鞋子很多，我最喜欢黑色的。",
+            "pinyin": "Wǒ de xiézi dōu hěn jiù le, wǒ xiǎng mǎi yì shuāng xīn de. Wǒ de shēngrì kuàiyào dào le, suǒyǐ māma gēn wǒ qù yì jiā diàn mǎi xiézi. Nà jiā diàn zài wǒ jiā fùjìn, wǒmen zǒulù qù. Diàn lǐ de xiézi hěn duō, wǒ zuì xǐhuān hēisè de.",
+            "english": "My shoes are all old now, so I want to buy a new pair. My birthday is coming soon, so Mom and I go to a shop to buy shoes. The shop is near my home, so we walk there. There are lots of shoes, and I like the black ones best."
+          },
+          "bank": [
+            {
+              "traditional": "雙",
+              "simplified": "双",
+              "pinyin": "shuāng",
+              "english": "pair (measure word)"
+            },
+            {
+              "traditional": "附近",
+              "simplified": "附近",
+              "pinyin": "fùjìn",
+              "english": "nearby"
+            },
+            {
+              "traditional": "舊",
+              "simplified": "旧",
+              "pinyin": "jiù",
+              "english": "old (things)"
+            },
+            {
+              "traditional": "條",
+              "simplified": "条",
+              "pinyin": "tiáo",
+              "english": "measure word (long things)"
+            },
+            {
+              "traditional": "快要",
+              "simplified": "快要",
+              "pinyin": "kuàiyào",
+              "english": "about to"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l08-paragraph-2-1",
+              "key": 2,
+              "why": "舊 means old and worn: the writer's shoes are old, so the writer needs new ones (新的).",
+              "focus": {
+                "zh": "舊",
+                "en": "old (things)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-3-07",
+                "B1L08-2-07",
+                "B1L01-1-01"
+              ]
+            },
+            {
+              "id": "b1l08-paragraph-2-2",
+              "key": 0,
+              "why": "Shoes come in pairs, so they take 雙: 一雙新的. 條 is for skirts and pants.",
+              "focus": {
+                "zh": "一雙",
+                "en": "a pair"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-09",
+                "B1L08-2-07"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            },
+            {
+              "id": "b1l08-paragraph-2-3",
+              "key": 4,
+              "why": "快要 … 了 means something is about to happen: the writer's birthday is coming soon.",
+              "focus": {
+                "zh": "快要……了",
+                "en": "about to happen"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-2-15",
+                "B1L02-2-08",
+                "B1L07-1-07"
+              ],
+              "grammarIds": [
+                "B1L08-G05-P195"
+              ]
+            },
+            {
+              "id": "b1l08-paragraph-2-4",
+              "key": 1,
+              "why": "附近 means nearby: the shop is near the writer's home (在我家附近), so they walk there.",
+              "focus": {
+                "zh": "附近",
+                "en": "nearby"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-05",
+                "B1L07-1-21",
+                "B1L02-1-23"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l08-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "哥哥：\n我跟媽媽去超市買東西，晚上七點回家。弟弟在他的房間裡睡覺，爸爸在客廳看電視。\n妹妹",
+            "simplified": "哥哥：\n我跟妈妈去超市买东西，晚上七点回家。弟弟在他的房间里睡觉，爸爸在客厅看电视。\n妹妹",
+            "pinyin": "Gēge: Wǒ gēn māma qù chāoshì mǎi dōngxi, wǎnshàng qī diǎn huí jiā. Dìdi zài tā de fángjiān lǐ shuìjiào, bàba zài kètīng kàn diànshì. Mèimei",
+            "english": "Big brother: Mom and I are going to the supermarket to buy some things; we'll be home at seven tonight. Our little brother is sleeping in his room, and Dad is watching TV in the living room. Your little sister"
+          },
+          "questions": [
+            {
+              "id": "b1l08-reading-note-1-q",
+              "prompt": {
+                "traditional": "弟弟在哪裡？",
+                "simplified": "弟弟在哪里？",
+                "pinyin": "Dìdi zài nǎlǐ?",
+                "english": "Where is the younger brother?"
+              },
+              "choices": [
+                {
+                  "traditional": "在房間裡",
+                  "simplified": "在房间里",
+                  "pinyin": "zài fángjiān lǐ",
+                  "english": "in his room"
+                },
+                {
+                  "traditional": "在客廳裡",
+                  "simplified": "在客厅里",
+                  "pinyin": "zài kètīng lǐ",
+                  "english": "in the living room"
+                },
+                {
+                  "traditional": "在超市裡",
+                  "simplified": "在超市里",
+                  "pinyin": "zài chāoshì lǐ",
+                  "english": "at the supermarket"
+                }
+              ],
+              "key": 0,
+              "why": "She writes 弟弟在他的房間裡睡覺: the younger brother is sleeping in his room. Dad is the one in the living room (客廳), and the supermarket is where she and Mom are going.",
+              "focus": {
+                "zh": "在房間裡",
+                "en": "in the room"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-2-03",
+                "B1L05-2-07",
+                "B1L05-2-09"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l08-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "姐姐：\n今天天氣有一點冷，我不去游泳了，下午想在家休息。晚上我們一起去看電影，好嗎？\n弟弟",
+            "simplified": "姐姐：\n今天天气有一点冷，我不去游泳了，下午想在家休息。晚上我们一起去看电影，好吗？\n弟弟",
+            "pinyin": "Jiějie: Jīntiān tiānqì yǒu yìdiǎn lěng, wǒ bú qù yóuyǒng le, xiàwǔ xiǎng zài jiā xiūxí. Wǎnshàng wǒmen yìqǐ qù kàn diànyǐng, hǎo ma? Dìdi",
+            "english": "Big sister: It's a bit cold today, so I'm not going swimming after all; I want to rest at home this afternoon. Shall we go to a movie together tonight? Your little brother"
+          },
+          "questions": [
+            {
+              "id": "b1l08-reading-note-2-q",
+              "prompt": {
+                "traditional": "弟弟今天晚上想做什麼？",
+                "simplified": "弟弟今天晚上想做什么？",
+                "pinyin": "Dìdi jīntiān wǎnshàng xiǎng zuò shénme?",
+                "english": "What does the younger brother want to do tonight?"
+              },
+              "choices": [
+                {
+                  "traditional": "去游泳",
+                  "simplified": "去游泳",
+                  "pinyin": "qù yóuyǒng",
+                  "english": "go swimming"
+                },
+                {
+                  "traditional": "在家休息",
+                  "simplified": "在家休息",
+                  "pinyin": "zài jiā xiūxí",
+                  "english": "rest at home"
+                },
+                {
+                  "traditional": "去看電影",
+                  "simplified": "去看电影",
+                  "pinyin": "qù kàn diànyǐng",
+                  "english": "see a movie"
+                }
+              ],
+              "key": 2,
+              "why": "He won't swim today (不去游泳了) and rests at home in the afternoon (下午); 晚上 he wants to see a movie with her.",
+              "focus": {
+                "zh": "晚上",
+                "en": "plans for the evening"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-01",
+                "B1L06-2-07",
+                "B1L06-1-12",
+                "B1L06-2-06"
+              ],
+              "grammarIds": [
+                "B1L06-G03-P146"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

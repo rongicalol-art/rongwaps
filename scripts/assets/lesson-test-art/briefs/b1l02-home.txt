@@ -1,0 +1,11 @@
+Kind: strip
+Style: scene
+Characters: src/assets/images/characters/portraits/zhongming.webp
+
+SUBJECT: a 3-panel picture strip for a listening question ("which picture matches what you hear?"). The character is Zhongming (attached portrait: curly black hair, warm smile, yellow shirt over a blue T-shirt); keep his identity identical in all three panels.
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: the same small, cozy one-room flat seen from the same angle, with a single bed on the left, a small wooden table with one chair in the middle, and a little stove counter with a pan on the right. A window behind shows a plain pale sky (no sun, no moon), and the room light is the same in every panel. Only what Zhongming is DOING changes:
+- Panel 1 (left): EATING. Zhongming sits at the table eating a bowl of rice with chopsticks; the stove is off and the bed is made and empty.
+- Panel 2 (middle): SLEEPING. Zhongming lies asleep in the bed under a blanket, eyes closed; the table and stove are empty.
+- Panel 3 (right): COOKING. Zhongming stands at the stove stirring the pan with a spatula, a little steam rising; the table is empty and the bed is made and empty.
+He is large and clear in every panel so the action is obvious at a glance. No text anywhere.

@@ -1,0 +1,11 @@
+Kind: strip
+Style: scene
+Characters: src/assets/images/characters/portraits/mrsWang.webp
+
+SUBJECT: a 3-panel picture strip for a reading question ("which picture matches the sentence?"). The character is Mrs. Wang (attached portrait: wavy dark hair in a low bun, mustard-yellow cardigan over a teal top); keep her identity identical in all three panels.
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: Mrs. Wang from the waist up at the same wooden desk in the same small office with a window behind her. Only HER STATE changes:
+- Panel 1 (left): TIRED. She slumps forward with her chin on one hand, eyes half closed, mouth open in a big yawn. The desk is clear: no papers, no phone, no cup.
+- Panel 2 (middle): BUSY. She sits up straight, a phone held to her ear with one hand, writing fast with the other, two tall piles of papers on the desk. No cup.
+- Panel 3 (right): RELAXED, NOT BUSY, NOT TIRED. She leans back in her chair, eyes open and bright, smiling calmly, hands resting in her lap. The desk is clear: no papers, no phone, no cup.
+No text anywhere.

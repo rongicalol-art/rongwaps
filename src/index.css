@@ -661,6 +661,14 @@ body {
 .review-tone-transition::view-transition-old(review-intro) {
   display: none;
 }
+/* No tapped point to spread from (the lesson test's Fix round, the quiz review): the new tone simply fades in, quickly. */
+.tone-fade-transition::view-transition-old(root),
+.tone-fade-transition::view-transition-new(root) {
+  animation-duration: 200ms;
+}
+.tone-fade-transition::view-transition {
+  pointer-events: none;
+}
 @media (prefers-reduced-motion: reduce) {
   .review-tone-transition::view-transition-new(root) { animation: none; }
 }

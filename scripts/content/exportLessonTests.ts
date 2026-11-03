@@ -22,6 +22,8 @@ const OUT = resolve(ROOT, 'public/data/lesson-tests');
 
 export interface LessonTestAudioReceipt {
   voices: Record<'F' | 'M' | 'N', string>;
+  /** Per test (e.g. b1l03): its own voice per role, when the pace differs by lesson (Yating batches). */
+  lessonVoices?: Record<string, Record<'F' | 'M' | 'N', string>>;
   clips: Record<string, { file: string; sha256: string; duration: number }>;
   sounds: { ding?: { file: string }; letters?: Record<string, { file: string }> };
 }
@@ -30,17 +32,18 @@ const sha256 = (text: string) => createHash('sha256').update(text).digest('hex')
 const studio = (file: string): SentenceAudio => ({ voice: 'studio', file });
 
 /** Attach recordings in place; returns the spoken texts that have none. */
-function attachAudio(node: unknown, receipt: LessonTestAudioReceipt | null, missing: string[]): void {
-  if (Array.isArray(node)) { node.forEach((entry) => attachAudio(entry, receipt, missing)); return; }
+function attachAudio(node: unknown, receipt: LessonTestAudioReceipt | null, voices: LessonTestAudioReceipt['voices'] | undefined,
+  missing: string[]): void {
+  if (Array.isArray(node)) { node.forEach((entry) => attachAudio(entry, receipt, voices, missing)); return; }
   if (!node || typeof node !== 'object') return;
   const record = node as Record<string, unknown>;
   const speaker = record.speaker as 'F' | 'M' | 'N' | undefined;
   if (speaker && typeof record.traditional === 'string') {
-    const clip = receipt?.clips[`${receipt.voices[speaker]}|${record.traditional}`];
+    const clip = voices && receipt?.clips[`${voices[speaker]}|${record.traditional}`];
     if (clip) record.audio = studio(clip.file);
     else missing.push(`${speaker}: ${record.traditional}`);
   }
-  for (const value of Object.values(record)) attachAudio(value, receipt, missing);
+  for (const value of Object.values(record)) attachAudio(value, receipt, voices, missing);
 }
 
 async function main() {
@@ -63,7 +66,7 @@ async function main() {
     for (const file of files) {
       const lesson = JSON.parse(await readFile(resolve(CONTENT, folder, file), 'utf8')) as LessonTestLesson;
       if (lesson.bookId !== bookId) throw new Error(`${folder}/${file}: bookId ${lesson.bookId} is not ${bookId}`);
-      attachAudio(lesson.slots, receipt, missing);
+      attachAudio(lesson.slots, receipt, receipt?.lessonVoices?.[lesson.key] ?? receipt?.voices, missing);
       lessons.push(lesson);
     }
     lessons.sort((a, b) => a.lessonId - b.lessonId);

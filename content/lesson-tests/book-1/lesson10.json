@@ -1,0 +1,2435 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l10",
+  "bookId": 1,
+  "lessonId": 10,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "國安",
+    "元真",
+    "家樂"
+  ],
+  "slots": [
+    {
+      "id": "hear-with",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l10-hear-with-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "弟弟在家，我跟媽媽去醫院。",
+              "simplified": "弟弟在家，我跟妈妈去医院。",
+              "pinyin": "Dìdi zài jiā, wǒ gēn māma qù yīyuàn.",
+              "english": "My little brother is at home. I'm going to the hospital with my mom."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-hear-with-1-q",
+              "choices": [
+                {
+                  "picture": "b1l10-with-1",
+                  "alt": "With her mother: the young woman stands at the hospital door next to her mother"
+                },
+                {
+                  "picture": "b1l10-with-2",
+                  "alt": "With her father: the young woman stands at the hospital door next to her father"
+                },
+                {
+                  "picture": "b1l10-with-3",
+                  "alt": "With her little brother: the young woman stands at the hospital door next to a small boy"
+                }
+              ],
+              "key": 0,
+              "why": "我跟媽媽去醫院: she goes with her mom. Her little brother (弟弟) stays at home.",
+              "focus": {
+                "zh": "跟媽媽去",
+                "en": "going with someone"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-05",
+                "B1L10-1-06",
+                "B1L02-1-07",
+                "B1L05-2-17"
+              ],
+              "grammarIds": [
+                "B1L10-G01-P226"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-hear-with-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "爸爸媽媽都很忙，我跟弟弟去醫院。",
+              "simplified": "爸爸妈妈都很忙，我跟弟弟去医院。",
+              "pinyin": "Bàba māma dōu hěn máng, wǒ gēn dìdi qù yīyuàn.",
+              "english": "Mom and Dad are both busy, so I'm going to the hospital with my little brother."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-hear-with-2-q",
+              "choices": [
+                {
+                  "picture": "b1l10-with-1",
+                  "alt": "With her mother: the young woman stands at the hospital door next to her mother"
+                },
+                {
+                  "picture": "b1l10-with-2",
+                  "alt": "With her father: the young woman stands at the hospital door next to her father"
+                },
+                {
+                  "picture": "b1l10-with-3",
+                  "alt": "With her little brother: the young woman stands at the hospital door next to a small boy"
+                }
+              ],
+              "key": 2,
+              "why": "Mom and Dad are busy; 我跟弟弟去 means she goes with her little brother.",
+              "focus": {
+                "zh": "跟弟弟去",
+                "en": "going with someone"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-05",
+                "B1L10-1-06",
+                "B1L05-2-17",
+                "B1L02-1-08"
+              ],
+              "grammarIds": [
+                "B1L10-G01-P226"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-hear-with-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "媽媽今天很忙，爸爸跟我一起去醫院。",
+              "simplified": "妈妈今天很忙，爸爸跟我一起去医院。",
+              "pinyin": "Māma jīntiān hěn máng, bàba gēn wǒ yìqǐ qù yīyuàn.",
+              "english": "Mom is busy today, so Dad is going to the hospital with me."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-hear-with-3-q",
+              "choices": [
+                {
+                  "picture": "b1l10-with-1",
+                  "alt": "With her mother: the young woman stands at the hospital door next to her mother"
+                },
+                {
+                  "picture": "b1l10-with-2",
+                  "alt": "With her father: the young woman stands at the hospital door next to her father"
+                },
+                {
+                  "picture": "b1l10-with-3",
+                  "alt": "With her little brother: the young woman stands at the hospital door next to a small boy"
+                }
+              ],
+              "key": 1,
+              "why": "爸爸跟我一起去 means Dad goes with her. Mom (媽媽) is busy today.",
+              "focus": {
+                "zh": "爸爸跟我一起去",
+                "en": "going with someone"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-05",
+                "B1L10-1-06",
+                "B1L02-1-08",
+                "B1L03-1-20"
+              ],
+              "grammarIds": [
+                "B1L10-G01-P226"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-hurt",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l10-hear-hurt-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "醫生，我的肚子很痛。",
+              "simplified": "医生，我的肚子很痛。",
+              "pinyin": "Yīshēng, wǒ de dùzi hěn tòng.",
+              "english": "Doctor, my belly really hurts."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-hear-hurt-1-q",
+              "choices": [
+                {
+                  "picture": "b1l10-hurt-1",
+                  "alt": "Head: the young man presses both hands flat on his forehead; both ears are uncovered"
+                },
+                {
+                  "picture": "b1l10-hurt-2",
+                  "alt": "Belly: the young man holds his belly with both hands"
+                },
+                {
+                  "picture": "b1l10-hurt-3",
+                  "alt": "Ear: the young man cups one hand over one ear; his other hand rests on his knee"
+                }
+              ],
+              "key": 1,
+              "why": "肚子 is the belly: 我的肚子很痛 means his belly hurts.",
+              "focus": {
+                "zh": "肚子很痛",
+                "en": "a stomachache"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-11",
+                "B1L10-2-04",
+                "B1L10-1-04"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-hear-hurt-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你哪裡不舒服？",
+              "simplified": "你哪里不舒服？",
+              "pinyin": "Nǐ nǎlǐ bù shūfu?",
+              "english": "Where don't you feel well?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我的頭很痛。",
+              "simplified": "我的头很痛。",
+              "pinyin": "Wǒ de tóu hěn tòng.",
+              "english": "My head really hurts."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-hear-hurt-2-q",
+              "choices": [
+                {
+                  "picture": "b1l10-hurt-1",
+                  "alt": "Head: the young man presses both hands flat on his forehead; both ears are uncovered"
+                },
+                {
+                  "picture": "b1l10-hurt-2",
+                  "alt": "Belly: the young man holds his belly with both hands"
+                },
+                {
+                  "picture": "b1l10-hurt-3",
+                  "alt": "Ear: the young man cups one hand over one ear; his other hand rests on his knee"
+                }
+              ],
+              "key": 0,
+              "why": "頭 is the head: 我的頭很痛 means he has a headache.",
+              "focus": {
+                "zh": "頭很痛",
+                "en": "a headache"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-02",
+                "B1L10-2-04",
+                "B1L10-2-19"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-hear-hurt-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我不是頭痛，是耳朵痛。",
+              "simplified": "我不是头痛，是耳朵痛。",
+              "pinyin": "Wǒ bú shì tóu tòng, shì ěrduo tòng.",
+              "english": "It's not my head that hurts. It's my ear."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-hear-hurt-3-q",
+              "choices": [
+                {
+                  "picture": "b1l10-hurt-1",
+                  "alt": "Head: the young man presses both hands flat on his forehead; both ears are uncovered"
+                },
+                {
+                  "picture": "b1l10-hurt-2",
+                  "alt": "Belly: the young man holds his belly with both hands"
+                },
+                {
+                  "picture": "b1l10-hurt-3",
+                  "alt": "Ear: the young man cups one hand over one ear; his other hand rests on his knee"
+                }
+              ],
+              "key": 2,
+              "why": "不是頭痛 rules out the head; 是耳朵痛 says the pain is in his ear.",
+              "focus": {
+                "zh": "耳朵痛",
+                "en": "an earache"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-08",
+                "B1L10-2-02",
+                "B1L10-2-04"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-classroom",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l10-picture-classroom-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L10-R01",
+            "alt": "At a classroom door on a sunny day: a student in a blue top and a red scarf, with a bag on her shoulder and a phone in her hand, talks to the teacher, who holds a dark red book. Neither woman wears a mask or glasses. The teacher points to a counter right beside the door frame. On it stand a clear box with a mask printed on its front and blue face masks plainly visible inside, and a bottle of hand soap. There is no fruit and there are no glasses anywhere."
+          },
+          "questions": [
+            {
+              "id": "b1l10-picture-classroom-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個人都戴口罩。",
+                  "simplified": "这两个人都戴口罩。",
+                  "pinyin": "Zhè liǎng ge rén dōu dài kǒuzhào.",
+                  "english": "These two people are both wearing masks."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "老師戴口罩，學生沒戴。",
+                  "simplified": "老师戴口罩，学生没戴。",
+                  "pinyin": "Lǎoshī dài kǒuzhào, xuéshēng méi dài.",
+                  "english": "The teacher is wearing a mask; the student isn't."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這兩個人都沒戴口罩。",
+                  "simplified": "这两个人都没戴口罩。",
+                  "pinyin": "Zhè liǎng ge rén dōu méi dài kǒuzhào.",
+                  "english": "Neither of them is wearing a mask."
+                }
+              ],
+              "key": 2,
+              "why": "Neither woman has a mask on her face: 都沒戴口罩. The masks are in a box on the counter, so the teacher is not wearing one either.",
+              "focus": {
+                "zh": "都沒戴口罩",
+                "en": "not wearing masks"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-07",
+                "B1L10-1-08",
+                "B1L03-2-19"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-picture-classroom-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L10-R01",
+            "alt": "At a classroom door on a sunny day: a student in a blue top and a red scarf, with a bag on her shoulder and a phone in her hand, talks to the teacher, who holds a dark red book. Neither woman wears a mask or glasses. The teacher points to a counter right beside the door frame. On it stand a clear box with a mask printed on its front and blue face masks plainly visible inside, and a bottle of hand soap. There is no fruit and there are no glasses anywhere."
+          },
+          "questions": [
+            {
+              "id": "b1l10-picture-classroom-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "門旁邊有香蕉。",
+                  "simplified": "门旁边有香蕉。",
+                  "pinyin": "Mén pángbiān yǒu xiāngjiāo.",
+                  "english": "There are bananas next to the door."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "門旁邊有口罩。",
+                  "simplified": "门旁边有口罩。",
+                  "pinyin": "Mén pángbiān yǒu kǒuzhào.",
+                  "english": "There are masks next to the door."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "門旁邊有眼鏡。",
+                  "simplified": "门旁边有眼镜。",
+                  "pinyin": "Mén pángbiān yǒu yǎnjìng.",
+                  "english": "There are glasses next to the door."
+                }
+              ],
+              "key": 1,
+              "why": "The clear box on the counter next to the door (門旁邊) is full of masks (口罩), with a mask printed on it. There are no bananas and no glasses.",
+              "focus": {
+                "zh": "門旁邊有口罩",
+                "en": "masks by the door"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-08",
+                "B1L05-3-06",
+                "B1L05-2-21",
+                "B1L10-1-21"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-visit",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l10-picture-visit-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L10-R03",
+            "alt": "His living room at home in the daytime: a young man in a green hoodie rests on the sofa under a yellow blanket, holding a mug. A young woman in a blue top and a red scarf has come to visit him with a basket of red apples. A bookshelf and a floor lamp stand behind the sofa. A glass of water stands on a side table and a purple book lies on the low table. There are no bananas and no medicine."
+          },
+          "questions": [
+            {
+              "id": "b1l10-picture-visit-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "那個女生帶蘋果來看他。",
+                  "simplified": "那个女生带苹果来看他。",
+                  "pinyin": "Nàge nǚshēng dài píngguǒ lái kàn tā.",
+                  "english": "That young woman brought apples to visit him."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那個女生帶香蕉來看他。",
+                  "simplified": "那个女生带香蕉来看他。",
+                  "pinyin": "Nàge nǚshēng dài xiāngjiāo lái kàn tā.",
+                  "english": "That young woman brought bananas to visit him."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那個女生帶藥來看他。",
+                  "simplified": "那个女生带药来看他。",
+                  "pinyin": "Nàge nǚshēng dài yào lái kàn tā.",
+                  "english": "That young woman brought medicine to visit him."
+                }
+              ],
+              "key": 0,
+              "why": "Her basket is full of red apples (蘋果): she brought apples, not bananas or medicine.",
+              "focus": {
+                "zh": "帶蘋果來",
+                "en": "bringing apples"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-19",
+                "B1L10-1-20",
+                "B1L10-1-21",
+                "B1L10-2-14"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-picture-visit-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L10-R03",
+            "alt": "His living room at home in the daytime: a young man in a green hoodie rests on the sofa under a yellow blanket, holding a mug. A young woman in a blue top and a red scarf has come to visit him with a basket of red apples. A bookshelf and a floor lamp stand behind the sofa. A glass of water stands on a side table and a purple book lies on the low table. There are no bananas and no medicine."
+          },
+          "questions": [
+            {
+              "id": "b1l10-picture-visit-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們在廚房。",
+                  "simplified": "他们在厨房。",
+                  "pinyin": "Tāmen zài chúfáng.",
+                  "english": "They are in the kitchen."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在教室。",
+                  "simplified": "他们在教室。",
+                  "pinyin": "Tāmen zài jiàoshì.",
+                  "english": "They are in a classroom."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在客廳。",
+                  "simplified": "他们在客厅。",
+                  "pinyin": "Tāmen zài kètīng.",
+                  "english": "They are in the living room."
+                }
+              ],
+              "key": 2,
+              "why": "The room has a sofa, a low table, a bookshelf and a lamp: it is a living room (客廳). There is no stove for a kitchen and no desks or board for a classroom.",
+              "focus": {
+                "zh": "在客廳",
+                "en": "where they are"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-09",
+                "B1L05-2-26",
+                "B1L09-2-03"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-plan",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l10-dialogue-plan-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你明天會來學校嗎？",
+              "simplified": "你明天会来学校吗？",
+              "pinyin": "Nǐ míngtiān huì lái xuéxiào ma?",
+              "english": "Will you come to school tomorrow?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不會，我明天會去醫院看醫生。",
+              "simplified": "不会，我明天会去医院看医生。",
+              "pinyin": "Bú huì, wǒ míngtiān huì qù yīyuàn kàn yīshēng.",
+              "english": "No, I won't. Tomorrow I'll go to the hospital to see a doctor."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-plan-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的明天會去哪裡？",
+                "simplified": "男的明天会去哪里？",
+                "pinyin": "Nán de míngtiān huì qù nǎlǐ?",
+                "english": "Where will the man go tomorrow?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "english": "school"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "醫院",
+                  "simplified": "医院",
+                  "pinyin": "yīyuàn",
+                  "english": "the hospital"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "宿舍",
+                  "simplified": "宿舍",
+                  "pinyin": "sùshè",
+                  "english": "the dorm"
+                }
+              ],
+              "key": 1,
+              "why": "He answers 不會 (he won't come to school), then says 我明天會去醫院: he will go to the hospital.",
+              "focus": {
+                "zh": "明天會去醫院",
+                "en": "will (future)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-15",
+                "B1L10-1-06",
+                "B1L10-1-04"
+              ],
+              "grammarIds": [
+                "B1L10-G04-P236"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-dialogue-plan-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "週末你會跟我們去看電影嗎？",
+              "simplified": "周末你会跟我们去看电影吗？",
+              "pinyin": "Zhōumò nǐ huì gēn wǒmen qù kàn diànyǐng ma?",
+              "english": "Will you go to a movie with us this weekend?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我感冒了，週末會在家休息。",
+              "simplified": "我感冒了，周末会在家休息。",
+              "pinyin": "Wǒ gǎnmào le, zhōumò huì zài jiā xiūxí.",
+              "english": "I've caught a cold. I'll rest at home this weekend."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-plan-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的週末會做什麼？",
+                "simplified": "男的周末会做什么？",
+                "pinyin": "Nán de zhōumò huì zuò shénme?",
+                "english": "What will the man do this weekend?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去看電影",
+                  "simplified": "去看电影",
+                  "pinyin": "qù kàn diànyǐng",
+                  "english": "go to a movie"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去看醫生",
+                  "simplified": "去看医生",
+                  "pinyin": "qù kàn yīshēng",
+                  "english": "go to see a doctor"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在家休息",
+                  "simplified": "在家休息",
+                  "pinyin": "zài jiā xiūxí",
+                  "english": "rest at home"
+                }
+              ],
+              "key": 2,
+              "why": "The man has a cold, so 週末會在家休息: he will rest at home. The movie is the woman's plan, and he never says he will see a doctor.",
+              "focus": {
+                "zh": "會在家休息",
+                "en": "will (future)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-15",
+                "B1L10-1-01",
+                "B1L06-2-07",
+                "B1L02-2-03"
+              ],
+              "grammarIds": [
+                "B1L10-G04-P236"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-dialogue-plan-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳今天幾點下課？",
+              "simplified": "你今天几点下课？",
+              "pinyin": "Nǐ jīntiān jǐ diǎn xiàkè?",
+              "english": "What time does your class end today?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我三點下課，四點會到醫院，五點回家。",
+              "simplified": "我三点下课，四点会到医院，五点回家。",
+              "pinyin": "Wǒ sān diǎn xiàkè, sì diǎn huì dào yīyuàn, wǔ diǎn huí jiā.",
+              "english": "At three. I'll get to the hospital at four and go home at five."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-plan-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的今天幾點會到醫院？",
+                "simplified": "女的今天几点会到医院？",
+                "pinyin": "Nǚ de jīntiān jǐ diǎn huì dào yīyuàn?",
+                "english": "What time will the woman get to the hospital today?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "四點",
+                  "simplified": "四点",
+                  "pinyin": "sì diǎn",
+                  "english": "four o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三點",
+                  "simplified": "三点",
+                  "pinyin": "sān diǎn",
+                  "english": "three o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五點",
+                  "simplified": "五点",
+                  "pinyin": "wǔ diǎn",
+                  "english": "five o'clock"
+                }
+              ],
+              "key": 0,
+              "why": "He asks when her class ends (三點), but the question is about the hospital: 四點會到醫院, she will get there at four. Five is when she goes home.",
+              "focus": {
+                "zh": "四點會到醫院",
+                "en": "will (future)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-15",
+                "B1L10-1-06",
+                "B1L07-1-07"
+              ],
+              "grammarIds": [
+                "B1L10-G04-P236"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-advice",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l10-dialogue-advice-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "醫生，我要注意什麼？",
+              "simplified": "医生，我要注意什么？",
+              "pinyin": "Yīshēng, wǒ yào zhùyì shénme?",
+              "english": "Doctor, what should I be careful about?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "妳要多喝水，少喝咖啡。",
+              "simplified": "你要多喝水，少喝咖啡。",
+              "pinyin": "Nǐ yào duō hē shuǐ, shǎo hē kāfēi.",
+              "english": "Drink more water and less coffee."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-advice-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "醫生要她少喝什麼？",
+                "simplified": "医生要她少喝什么？",
+                "pinyin": "Yīshēng yào tā shǎo hē shénme?",
+                "english": "What does the doctor want her to drink less of?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "果汁",
+                  "simplified": "果汁",
+                  "pinyin": "guǒzhī",
+                  "english": "juice"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "咖啡",
+                  "simplified": "咖啡",
+                  "pinyin": "kāfēi",
+                  "english": "coffee"
+                }
+              ],
+              "key": 2,
+              "why": "少 before a verb means do it less: 少喝咖啡, drink less coffee. Water is what she should drink more of (多喝水).",
+              "focus": {
+                "zh": "多喝水，少喝咖啡",
+                "en": "do more / do less"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-17",
+                "B1L10-1-16",
+                "B1L04-1-01",
+                "B1L10-1-14"
+              ],
+              "grammarIds": [
+                "B1L10-G03-P231"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-dialogue-advice-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我最近常常頭痛。",
+              "simplified": "我最近常常头痛。",
+              "pinyin": "Wǒ zuìjìn chángcháng tóu tòng.",
+              "english": "I often have headaches lately."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你應該多運動，少玩手機。",
+              "simplified": "你应该多运动，少玩手机。",
+              "pinyin": "Nǐ yīnggāi duō yùndòng, shǎo wán shǒujī.",
+              "english": "You should exercise more and play on your phone less."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-advice-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的說男的應該多做什麼？",
+                "simplified": "女的说男的应该多做什么？",
+                "pinyin": "Nǚ de shuō nán de yīnggāi duō zuò shénme?",
+                "english": "What does the woman say the man should do more?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "運動",
+                  "simplified": "运动",
+                  "pinyin": "yùndòng",
+                  "english": "exercise"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "玩手機",
+                  "simplified": "玩手机",
+                  "pinyin": "wán shǒujī",
+                  "english": "play on his phone"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "休息",
+                  "simplified": "休息",
+                  "pinyin": "xiūxí",
+                  "english": "rest"
+                }
+              ],
+              "key": 0,
+              "why": "多 before a verb means do it more: 多運動, exercise more. 少玩手機 is what he should do less.",
+              "focus": {
+                "zh": "多運動",
+                "en": "do more / do less"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-16",
+                "B1L10-1-17",
+                "B1L06-2-13",
+                "B1L06-2-10"
+              ],
+              "grammarIds": [
+                "B1L10-G03-P231"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-dialogue-advice-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我感冒了，不想吃麵，想吃水果。",
+              "simplified": "我感冒了，不想吃面，想吃水果。",
+              "pinyin": "Wǒ gǎnmào le, bù xiǎng chī miàn, xiǎng chī shuǐguǒ.",
+              "english": "I have a cold. I don't want noodles. I want some fruit."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那少吃香蕉，多吃一點蘋果吧。",
+              "simplified": "那少吃香蕉，多吃一点苹果吧。",
+              "pinyin": "Nà shǎo chī xiāngjiāo, duō chī yìdiǎn píngguǒ ba.",
+              "english": "Then eat fewer bananas and a few more apples."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-advice-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的說女的應該多吃什麼？",
+                "simplified": "男的说女的应该多吃什么？",
+                "pinyin": "Nán de shuō nǚ de yīnggāi duō chī shénme?",
+                "english": "What does the man say the woman should eat more of?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "麵",
+                  "simplified": "面",
+                  "pinyin": "miàn",
+                  "english": "noodles"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "蘋果",
+                  "simplified": "苹果",
+                  "pinyin": "píngguǒ",
+                  "english": "apples"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "香蕉",
+                  "simplified": "香蕉",
+                  "pinyin": "xiāngjiāo",
+                  "english": "bananas"
+                }
+              ],
+              "key": 1,
+              "why": "多吃一點蘋果 means eat a few more apples. Bananas are what he says to eat less of (少吃香蕉), and noodles are what she does not want (不想吃麵).",
+              "focus": {
+                "zh": "多吃一點蘋果",
+                "en": "do more / do less"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-16",
+                "B1L10-1-17",
+                "B1L10-1-20",
+                "B1L10-1-21"
+              ],
+              "grammarIds": [
+                "B1L10-G03-P231"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-which",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l10-dialogue-which-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你會做飯嗎？",
+              "simplified": "你会做饭吗？",
+              "pinyin": "Nǐ huì zuòfàn ma?",
+              "english": "Can you cook?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "會，可是我做得很慢，我哥哥做得比較快。",
+              "simplified": "会，可是我做得很慢，我哥哥做得比较快。",
+              "pinyin": "Huì, kěshì wǒ zuò de hěn màn, wǒ gēge zuò de bǐjiào kuài.",
+              "english": "Yes, but I cook very slowly. My older brother cooks faster."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-which-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的做飯做得怎麼樣？",
+                "simplified": "男的做饭做得怎么样？",
+                "pinyin": "Nán de zuòfàn zuò de zěnmeyàng?",
+                "english": "How does the man cook?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "很快",
+                  "simplified": "很快",
+                  "pinyin": "hěn kuài",
+                  "english": "fast"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很好",
+                  "simplified": "很好",
+                  "pinyin": "hěn hǎo",
+                  "english": "well"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很慢",
+                  "simplified": "很慢",
+                  "pinyin": "hěn màn",
+                  "english": "slowly"
+                }
+              ],
+              "key": 2,
+              "why": "He can cook, but 我做得很慢: he cooks slowly. 比較快 is about his older brother, not him.",
+              "focus": {
+                "zh": "做得很慢",
+                "en": "how well (V得)"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-14",
+                "B1L02-3-08",
+                "B1L06-1-17",
+                "B1L05-2-15"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-dialogue-which-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳英文歌唱得怎麼樣？",
+              "simplified": "你英文歌唱得怎么样？",
+              "pinyin": "Nǐ Yīngwén gē chàng de zěnmeyàng?",
+              "english": "How well do you sing English songs?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "唱得不好，我中文歌唱得比較好。",
+              "simplified": "唱得不好，我中文歌唱得比较好。",
+              "pinyin": "Chàng de bù hǎo, wǒ Zhōngwén gē chàng de bǐjiào hǎo.",
+              "english": "Not well. I sing Chinese songs better."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-which-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的什麼歌唱得比較好？",
+                "simplified": "女的什么歌唱得比较好？",
+                "pinyin": "Nǚ de shénme gē chàng de bǐjiào hǎo?",
+                "english": "Which songs does the woman sing better?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "英文歌",
+                  "simplified": "英文歌",
+                  "pinyin": "Yīngwén gē",
+                  "english": "English songs"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中文歌",
+                  "simplified": "中文歌",
+                  "pinyin": "Zhōngwén gē",
+                  "english": "Chinese songs"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "日文歌",
+                  "simplified": "日文歌",
+                  "pinyin": "Rìwén gē",
+                  "english": "Japanese songs"
+                }
+              ],
+              "key": 1,
+              "why": "She sings English songs 不好 (not well); 中文歌唱得比較好: she sings Chinese songs better. Japanese songs never come up.",
+              "focus": {
+                "zh": "唱得比較好",
+                "en": "how well (V得)"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-14",
+                "B1L06-3-05",
+                "B1L06-3-06",
+                "B1L03-1-10"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-out",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l10-dialogue-out-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "從學校到醫院，我們坐公車去，還是坐捷運去？",
+              "simplified": "从学校到医院，我们坐公车去，还是坐捷运去？",
+              "pinyin": "Cóng xuéxiào dào yīyuàn, wǒmen zuò gōngchē qù, háishì zuò jiéyùn qù?",
+              "english": "From school to the hospital, shall we take the bus or the MRT?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "坐公車又慢又不舒服，坐捷運又快又方便。",
+              "simplified": "坐公车又慢又不舒服，坐捷运又快又方便。",
+              "pinyin": "Zuò gōngchē yòu màn yòu bù shūfu, zuò jiéyùn yòu kuài yòu fāngbiàn.",
+              "english": "The bus is slow and uncomfortable. The MRT is fast and convenient."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-out-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得坐捷運怎麼樣？",
+                "simplified": "女的觉得坐捷运怎么样？",
+                "pinyin": "Nǚ de juéde zuò jiéyùn zěnmeyàng?",
+                "english": "What does the woman think of taking the MRT?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "又快又方便",
+                  "simplified": "又快又方便",
+                  "pinyin": "yòu kuài yòu fāngbiàn",
+                  "english": "fast and convenient"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "又慢又不舒服",
+                  "simplified": "又慢又不舒服",
+                  "pinyin": "yòu màn yòu bù shūfu",
+                  "english": "slow and uncomfortable"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "又快又便宜",
+                  "simplified": "又快又便宜",
+                  "pinyin": "yòu kuài yòu piányí",
+                  "english": "fast and cheap"
+                }
+              ],
+              "key": 0,
+              "why": "She says 坐捷運又快又方便: the MRT is fast and convenient. 又慢又不舒服 is what she says about the bus, and she never says the MRT is cheap (便宜).",
+              "focus": {
+                "zh": "又快又方便",
+                "en": "both … and … (又…又…)"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-14",
+                "B1L07-2-15",
+                "B1L07-1-10",
+                "B1L07-2-16"
+              ],
+              "grammarIds": [
+                "B1L07-G05-P172"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-dialogue-out-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳晚上怎麼回家？騎腳踏車嗎？",
+              "simplified": "你晚上怎么回家？骑脚踏车吗？",
+              "pinyin": "Nǐ wǎnshàng zěnme huí jiā? Qí jiǎotàchē ma?",
+              "english": "How are you getting home tonight? By bike?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不騎了，晚上會很冷，我要坐計程車回家。",
+              "simplified": "不骑了，晚上会很冷，我要坐计程车回家。",
+              "pinyin": "Bù qí le, wǎnshàng huì hěn lěng, wǒ yào zuò jìchéngchē huí jiā.",
+              "english": "No. It will be very cold tonight, so I'm taking a taxi home."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-dialogue-out-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的晚上要怎麼回家？",
+                "simplified": "女的晚上要怎么回家？",
+                "pinyin": "Nǚ de wǎnshàng yào zěnme huí jiā?",
+                "english": "How will the woman get home tonight?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "騎腳踏車",
+                  "simplified": "骑脚踏车",
+                  "pinyin": "qí jiǎotàchē",
+                  "english": "by bike"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "坐計程車",
+                  "simplified": "坐计程车",
+                  "pinyin": "zuò jìchéngchē",
+                  "english": "by taxi"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "走路",
+                  "simplified": "走路",
+                  "pinyin": "zǒulù",
+                  "english": "on foot"
+                }
+              ],
+              "key": 1,
+              "why": "She says 不騎了 (no bike), then 我要坐計程車回家: she will take a taxi home. 很冷 is only her reason.",
+              "focus": {
+                "zh": "怎麼回家",
+                "en": "how to get there"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-01",
+                "B1L07-1-13",
+                "B1L06-2-15",
+                "B1L06-2-16"
+              ],
+              "grammarIds": [
+                "B1L07-G02-P160"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-masks",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l10-read-masks-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l10-read-masks-1-q",
+              "prompt": {
+                "traditional": "戴口罩的是男生，女生沒戴。",
+                "simplified": "戴口罩的是男生，女生没戴。",
+                "pinyin": "Dài kǒuzhào de shì nánshēng, nǚshēng méi dài.",
+                "english": "The one wearing a mask is the boy. The girl isn't wearing one."
+              },
+              "choices": [
+                {
+                  "picture": "b1l10-masks-1",
+                  "alt": "Only the boy in a mask: two students with school backpacks; the boy wears a face mask, the girl does not"
+                },
+                {
+                  "picture": "b1l10-masks-2",
+                  "alt": "Only the girl in a mask: two students with school backpacks; the girl wears a face mask, the boy does not"
+                },
+                {
+                  "picture": "b1l10-masks-3",
+                  "alt": "Both in masks: two students with school backpacks; the boy and the girl both wear face masks"
+                }
+              ],
+              "key": 0,
+              "why": "戴口罩的 is \"the one wearing a mask\": that is the boy (男生), and the girl does not wear one (女生沒戴).",
+              "focus": {
+                "zh": "戴口罩的是男生",
+                "en": "the one who … (的)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-07",
+                "B1L10-1-08",
+                "B1L08-3-05",
+                "B1L08-3-04"
+              ],
+              "grammarIds": [
+                "B1L10-G02-P228"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-read-masks-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l10-read-masks-2-q",
+              "prompt": {
+                "traditional": "沒戴口罩的是男生。",
+                "simplified": "没戴口罩的是男生。",
+                "pinyin": "Méi dài kǒuzhào de shì nánshēng.",
+                "english": "The one not wearing a mask is the boy."
+              },
+              "choices": [
+                {
+                  "picture": "b1l10-masks-1",
+                  "alt": "Only the boy in a mask: two students with school backpacks; the boy wears a face mask, the girl does not"
+                },
+                {
+                  "picture": "b1l10-masks-2",
+                  "alt": "Only the girl in a mask: two students with school backpacks; the girl wears a face mask, the boy does not"
+                },
+                {
+                  "picture": "b1l10-masks-3",
+                  "alt": "Both in masks: two students with school backpacks; the boy and the girl both wear face masks"
+                }
+              ],
+              "key": 1,
+              "why": "沒戴口罩的 is \"the one not wearing a mask\": the boy has no mask, so only the girl wears one.",
+              "focus": {
+                "zh": "沒戴口罩的",
+                "en": "the one who … (的)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-07",
+                "B1L10-1-08",
+                "B1L08-3-05"
+              ],
+              "grammarIds": [
+                "B1L10-G02-P228"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-read-masks-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l10-read-masks-3-q",
+              "prompt": {
+                "traditional": "戴口罩的學生有兩個。",
+                "simplified": "戴口罩的学生有两个。",
+                "pinyin": "Dài kǒuzhào de xuéshēng yǒu liǎng ge.",
+                "english": "Two students are wearing masks."
+              },
+              "choices": [
+                {
+                  "picture": "b1l10-masks-1",
+                  "alt": "Only the boy in a mask: two students with school backpacks; the boy wears a face mask, the girl does not"
+                },
+                {
+                  "picture": "b1l10-masks-2",
+                  "alt": "Only the girl in a mask: two students with school backpacks; the girl wears a face mask, the boy does not"
+                },
+                {
+                  "picture": "b1l10-masks-3",
+                  "alt": "Both in masks: two students with school backpacks; the boy and the girl both wear face masks"
+                }
+              ],
+              "key": 2,
+              "why": "戴口罩的學生有兩個: two students wear masks, so both of them do.",
+              "focus": {
+                "zh": "戴口罩的學生",
+                "en": "the students who … (的)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-07",
+                "B1L10-1-08",
+                "B1L00-1-02",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L10-G02-P228"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-wash",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l10-read-wash-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l10-read-wash-1-q",
+              "prompt": {
+                "traditional": "弟弟在洗手，手指也洗得很乾淨。",
+                "simplified": "弟弟在洗手，手指也洗得很干净。",
+                "pinyin": "Dìdi zài xǐ shǒu, shǒuzhǐ yě xǐ de hěn gānjìng.",
+                "english": "My little brother is washing his hands, and he gets his fingers clean too."
+              },
+              "choices": [
+                {
+                  "picture": "b1l10-wash-1",
+                  "alt": "Washing his hands: the little boy rubs soapy hands under the tap; his face and hair are dry"
+                },
+                {
+                  "picture": "b1l10-wash-2",
+                  "alt": "Washing his face: the little boy splashes water on his face; his hair is dry"
+                },
+                {
+                  "picture": "b1l10-wash-3",
+                  "alt": "Washing his hair: the little boy has shampoo foam in his hair; his face is dry"
+                }
+              ],
+              "key": 0,
+              "why": "在洗手 means he is washing his hands; his fingers (手指) are part of the hands he is washing.",
+              "focus": {
+                "zh": "洗手",
+                "en": "washing hands"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-09",
+                "B1L10-1-10",
+                "B1L10-1-11",
+                "B1L10-2-12"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-read-wash-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l10-read-wash-2-q",
+              "prompt": {
+                "traditional": "弟弟的手很乾淨，現在他在洗臉。",
+                "simplified": "弟弟的手很干净，现在他在洗脸。",
+                "pinyin": "Dìdi de shǒu hěn gānjìng, xiànzài tā zài xǐ liǎn.",
+                "english": "My little brother's hands are clean. Now he is washing his face."
+              },
+              "choices": [
+                {
+                  "picture": "b1l10-wash-1",
+                  "alt": "Washing his hands: the little boy rubs soapy hands under the tap; his face and hair are dry"
+                },
+                {
+                  "picture": "b1l10-wash-2",
+                  "alt": "Washing his face: the little boy splashes water on his face; his hair is dry"
+                },
+                {
+                  "picture": "b1l10-wash-3",
+                  "alt": "Washing his hair: the little boy has shampoo foam in his hair; his face is dry"
+                }
+              ],
+              "key": 1,
+              "why": "His hands are already clean (手很乾淨); 現在他在洗臉 means he is washing his face now.",
+              "focus": {
+                "zh": "洗臉",
+                "en": "washing your face"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-09",
+                "B1L10-2-07",
+                "B1L10-2-12",
+                "B1L10-1-10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-read-wash-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l10-read-wash-3-q",
+              "prompt": {
+                "traditional": "弟弟不是在洗臉，他在洗頭髮。",
+                "simplified": "弟弟不是在洗脸，他在洗头发。",
+                "pinyin": "Dìdi bú shì zài xǐ liǎn, tā zài xǐ tóufǎ.",
+                "english": "My little brother isn't washing his face. He's washing his hair."
+              },
+              "choices": [
+                {
+                  "picture": "b1l10-wash-1",
+                  "alt": "Washing his hands: the little boy rubs soapy hands under the tap; his face and hair are dry"
+                },
+                {
+                  "picture": "b1l10-wash-2",
+                  "alt": "Washing his face: the little boy splashes water on his face; his hair is dry"
+                },
+                {
+                  "picture": "b1l10-wash-3",
+                  "alt": "Washing his hair: the little boy has shampoo foam in his hair; his face is dry"
+                }
+              ],
+              "key": 2,
+              "why": "不是在洗臉 rules out the face; 在洗頭髮 means he is washing his hair.",
+              "focus": {
+                "zh": "洗頭髮",
+                "en": "washing your hair"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-09",
+                "B1L10-2-03",
+                "B1L10-2-07"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-notice",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l10-realia-notice-1",
+          "kind": "realia",
+          "picture": "b1l10-notice",
+          "alt": "A notice on a classroom notice board about colds",
+          "transcript": {
+            "traditional": "注意！　最近很多同學感冒了　請常常洗手　如果咳嗽，就要戴口罩　如果頭痛，就去看醫生　如果發燒了，就跟老師請假，在家多休息",
+            "simplified": "注意！　最近很多同学感冒了　请常常洗手　如果咳嗽，就要戴口罩　如果头痛，就去看医生　如果发烧了，就跟老师请假，在家多休息",
+            "pinyin": "Zhùyì! Zuìjìn hěn duō tóngxué gǎnmào le. Qǐng chángcháng xǐ shǒu. Rúguǒ késòu, jiù yào dài kǒuzhào. Rúguǒ tóu tòng, jiù qù kàn yīshēng. Rúguǒ fāshāo le, jiù gēn lǎoshī qǐngjià, zài jiā duō xiūxí.",
+            "english": "Note! Many classmates have colds lately. Please wash your hands often. If you cough, wear a mask. If you have a headache, see a doctor. If you have a fever, ask your teacher for leave and rest at home."
+          },
+          "questions": [
+            {
+              "id": "b1l10-realia-notice-1-q",
+              "prompt": {
+                "traditional": "咳嗽的學生要做什麼？",
+                "simplified": "咳嗽的学生要做什么？",
+                "pinyin": "Késòu de xuéshēng yào zuò shénme?",
+                "english": "What should a student with a cough do?"
+              },
+              "choices": [
+                {
+                  "traditional": "戴口罩",
+                  "simplified": "戴口罩",
+                  "pinyin": "dài kǒuzhào",
+                  "english": "wear a mask"
+                },
+                {
+                  "traditional": "跟老師請假",
+                  "simplified": "跟老师请假",
+                  "pinyin": "gēn lǎoshī qǐngjià",
+                  "english": "ask the teacher for leave"
+                },
+                {
+                  "traditional": "去看醫生",
+                  "simplified": "去看医生",
+                  "pinyin": "qù kàn yīshēng",
+                  "english": "see a doctor"
+                }
+              ],
+              "key": 0,
+              "why": "The notice says 如果咳嗽，就要戴口罩: a cough means a mask. Seeing a doctor is for a headache, and asking for leave is for a fever.",
+              "focus": {
+                "zh": "如果咳嗽，就要戴口罩",
+                "en": "if …, then …"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-17",
+                "B1L10-2-18",
+                "B1L10-2-01",
+                "B1L10-1-08"
+              ],
+              "grammarIds": [
+                "B1L10-G05-P237"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-realia-notice-2",
+          "kind": "realia",
+          "picture": "b1l10-notice",
+          "alt": "A notice on a classroom notice board about colds",
+          "transcript": {
+            "traditional": "注意！　最近很多同學感冒了　請常常洗手　如果咳嗽，就要戴口罩　如果頭痛，就去看醫生　如果發燒了，就跟老師請假，在家多休息",
+            "simplified": "注意！　最近很多同学感冒了　请常常洗手　如果咳嗽，就要戴口罩　如果头痛，就去看医生　如果发烧了，就跟老师请假，在家多休息",
+            "pinyin": "Zhùyì! Zuìjìn hěn duō tóngxué gǎnmào le. Qǐng chángcháng xǐ shǒu. Rúguǒ késòu, jiù yào dài kǒuzhào. Rúguǒ tóu tòng, jiù qù kàn yīshēng. Rúguǒ fāshāo le, jiù gēn lǎoshī qǐngjià, zài jiā duō xiūxí.",
+            "english": "Note! Many classmates have colds lately. Please wash your hands often. If you cough, wear a mask. If you have a headache, see a doctor. If you have a fever, ask your teacher for leave and rest at home."
+          },
+          "questions": [
+            {
+              "id": "b1l10-realia-notice-2-q",
+              "choices": [
+                {
+                  "traditional": "咳嗽的學生要跟老師請假。",
+                  "simplified": "咳嗽的学生要跟老师请假。",
+                  "pinyin": "Késòu de xuéshēng yào gēn lǎoshī qǐngjià.",
+                  "english": "Students with a cough should ask the teacher for leave."
+                },
+                {
+                  "traditional": "發燒的學生要在家多休息。",
+                  "simplified": "发烧的学生要在家多休息。",
+                  "pinyin": "Fāshāo de xuéshēng yào zài jiā duō xiūxí.",
+                  "english": "Students with a fever should rest more at home."
+                },
+                {
+                  "traditional": "頭痛的學生要戴口罩。",
+                  "simplified": "头痛的学生要戴口罩。",
+                  "pinyin": "Tóu tòng de xuéshēng yào dài kǒuzhào.",
+                  "english": "Students with a headache should wear a mask."
+                }
+              ],
+              "key": 1,
+              "why": "The notice says 如果發燒了，就跟老師請假，在家多休息: resting at home is for a fever. A cough needs a mask, not leave, and a headache means seeing a doctor (如果頭痛，就去看醫生), not a mask.",
+              "focus": {
+                "zh": "如果發燒了，就……",
+                "en": "if …, then …"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-17",
+                "B1L10-2-18",
+                "B1L10-1-03",
+                "B1L06-2-07"
+              ],
+              "grammarIds": [
+                "B1L10-G05-P237"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-hours",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l10-realia-hours-1",
+          "kind": "realia",
+          "picture": "b1l10-hours",
+          "alt": "A sign by a hospital door with its opening hours",
+          "transcript": {
+            "traditional": "健康醫院　星期一到星期五　上午 9:00–12:00　下午 2:00–5:00　星期六 上午 9:00–12:00　星期天休息　電話：2345-6789",
+            "simplified": "健康医院　星期一到星期五　上午 9:00–12:00　下午 2:00–5:00　星期六 上午 9:00–12:00　星期天休息　电话：2345-6789",
+            "pinyin": "Jiànkāng Yīyuàn: xīngqíyī dào xīngqíwǔ, shàngwǔ 9:00–12:00, xiàwǔ 2:00–5:00; xīngqíliù shàngwǔ 9:00–12:00; xīngqítiān xiūxí; diànhuà: 2345-6789",
+            "english": "Jiankang Hospital: Monday to Friday, 9:00 a.m.–12:00 noon and 2:00–5:00 p.m.; Saturday 9:00 a.m.–12:00 noon; closed on Sunday; phone: 2345-6789"
+          },
+          "questions": [
+            {
+              "id": "b1l10-realia-hours-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期六下午可以去看醫生。",
+                  "simplified": "星期六下午可以去看医生。",
+                  "pinyin": "Xīngqíliù xiàwǔ kěyǐ qù kàn yīshēng.",
+                  "english": "You can see a doctor on Saturday afternoon."
+                },
+                {
+                  "traditional": "星期五下午可以去看醫生。",
+                  "simplified": "星期五下午可以去看医生。",
+                  "pinyin": "Xīngqíwǔ xiàwǔ kěyǐ qù kàn yīshēng.",
+                  "english": "You can see a doctor on Friday afternoon."
+                },
+                {
+                  "traditional": "星期天上午可以去看醫生。",
+                  "simplified": "星期天上午可以去看医生。",
+                  "pinyin": "Xīngqítiān shàngwǔ kěyǐ qù kàn yīshēng.",
+                  "english": "You can see a doctor on Sunday morning."
+                }
+              ],
+              "key": 1,
+              "why": "Monday to Friday (星期一到星期五) the hospital is open 2:00–5:00 in the afternoon, so Friday afternoon works. On Saturday only the morning is open, and 星期天休息 means it is closed on Sunday.",
+              "focus": {
+                "zh": "星期五下午",
+                "en": "reading opening hours"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-11",
+                "B1L02-1-25",
+                "B1L02-1-15",
+                "B1L10-1-04"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-realia-hours-2",
+          "kind": "realia",
+          "picture": "b1l10-hours",
+          "alt": "A sign by a hospital door with its opening hours",
+          "transcript": {
+            "traditional": "健康醫院　星期一到星期五　上午 9:00–12:00　下午 2:00–5:00　星期六 上午 9:00–12:00　星期天休息　電話：2345-6789",
+            "simplified": "健康医院　星期一到星期五　上午 9:00–12:00　下午 2:00–5:00　星期六 上午 9:00–12:00　星期天休息　电话：2345-6789",
+            "pinyin": "Jiànkāng Yīyuàn: xīngqíyī dào xīngqíwǔ, shàngwǔ 9:00–12:00, xiàwǔ 2:00–5:00; xīngqíliù shàngwǔ 9:00–12:00; xīngqítiān xiūxí; diànhuà: 2345-6789",
+            "english": "Jiankang Hospital: Monday to Friday, 9:00 a.m.–12:00 noon and 2:00–5:00 p.m.; Saturday 9:00 a.m.–12:00 noon; closed on Sunday; phone: 2345-6789"
+          },
+          "questions": [
+            {
+              "id": "b1l10-realia-hours-2-q",
+              "prompt": {
+                "traditional": "星期六幾點可以去看醫生？",
+                "simplified": "星期六几点可以去看医生？",
+                "pinyin": "Xīngqíliù jǐ diǎn kěyǐ qù kàn yīshēng?",
+                "english": "On Saturday, at what time can you see a doctor?"
+              },
+              "choices": [
+                {
+                  "traditional": "下午三點",
+                  "simplified": "下午三点",
+                  "pinyin": "xiàwǔ sān diǎn",
+                  "english": "three in the afternoon"
+                },
+                {
+                  "traditional": "晚上七點",
+                  "simplified": "晚上七点",
+                  "pinyin": "wǎnshàng qī diǎn",
+                  "english": "seven in the evening"
+                },
+                {
+                  "traditional": "上午十點",
+                  "simplified": "上午十点",
+                  "pinyin": "shàngwǔ shí diǎn",
+                  "english": "ten in the morning"
+                }
+              ],
+              "key": 2,
+              "why": "On Saturday the sign shows only 上午 9:00–12:00, so ten in the morning works. The afternoon hours are for Monday to Friday, and it is never open in the evening.",
+              "focus": {
+                "zh": "星期六上午",
+                "en": "reading opening hours"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-11",
+                "B1L02-1-26",
+                "B1L02-1-25",
+                "B1L02-2-10"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l10-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l10-waiting-room",
+          "alt": "A clinic waiting room: a worried mother holds her small son, who holds his belly; a young man in a face mask and glasses stands away from the desk, bent a little forward, coughing (small cough lines at his mask) with one hand flat on his chest and the other arm at his side, sleeves pushed up, both bare wrists in plain view; a doctor sits at the desk with a glass of water on it. Only the young man wears a mask: the mother, the boy and the doctor wear none. Nobody wears a watch.",
+          "questions": [
+            {
+              "id": "b1l10-scene-gap-1-a",
+              "prompt": {
+                "traditional": "戴口罩的男生在＿＿。",
+                "simplified": "戴口罩的男生在＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "咳嗽",
+                  "simplified": "咳嗽",
+                  "pinyin": "késòu",
+                  "english": "cough"
+                },
+                {
+                  "traditional": "喝水",
+                  "simplified": "喝水",
+                  "pinyin": "hē shuǐ",
+                  "english": "drink water"
+                },
+                {
+                  "traditional": "洗手",
+                  "simplified": "洗手",
+                  "pinyin": "xǐ shǒu",
+                  "english": "wash hands"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "戴口罩的男生在咳嗽。",
+                "simplified": "戴口罩的男生在咳嗽。",
+                "pinyin": "Dài kǒuzhào de nánshēng zài késòu.",
+                "english": "The young man in the mask is coughing."
+              },
+              "why": "戴口罩的男生 is the young man in the mask, and the picture shows him coughing (咳嗽). The water glass is on the doctor's desk, and nobody is washing their hands.",
+              "focus": {
+                "zh": "戴口罩的男生",
+                "en": "the one who … (的)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-01",
+                "B1L10-1-07",
+                "B1L10-1-08"
+              ],
+              "grammarIds": [
+                "B1L10-G02-P228"
+              ]
+            },
+            {
+              "id": "b1l10-scene-gap-1-b",
+              "prompt": {
+                "traditional": "那個肚子痛的孩子要多休息，明天就＿＿好了。",
+                "simplified": "那个肚子痛的孩子要多休息，明天就＿＿好了。"
+              },
+              "choices": [
+                {
+                  "traditional": "想",
+                  "simplified": "想",
+                  "pinyin": "xiǎng",
+                  "english": "to want"
+                },
+                {
+                  "traditional": "會",
+                  "simplified": "会",
+                  "pinyin": "huì",
+                  "english": "will"
+                },
+                {
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "english": "in the middle of (doing)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "那個肚子痛的孩子要多休息，明天就會好了。",
+                "simplified": "那个肚子痛的孩子要多休息，明天就会好了。",
+                "pinyin": "Nàge dùzi tòng de háizi yào duō xiūxí, míngtiān jiù huì hǎo le.",
+                "english": "The child with the sore belly needs to rest more. Then he will be well again tomorrow."
+              },
+              "why": "明天 points to the future, and 會 means will: 明天就會好了, the boy holding his belly will be well (好了) tomorrow. 在 (in the middle of doing) and 想 (to want) do not fit before 好了 here.",
+              "focus": {
+                "zh": "明天就會好了",
+                "en": "will (future)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-15",
+                "B1L10-3-08",
+                "B1L06-2-07",
+                "B1L02-1-09"
+              ],
+              "grammarIds": [
+                "B1L10-G04-P236"
+              ]
+            },
+            {
+              "id": "b1l10-scene-gap-1-c",
+              "prompt": {
+                "traditional": "醫生跟那個孩子說：「如果你肚子痛，＿＿要少吃一點。」",
+                "simplified": "医生跟那个孩子说：「如果你肚子痛，＿＿要少吃一点。」"
+              },
+              "choices": [
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "english": "so"
+                },
+                {
+                  "traditional": "可是",
+                  "simplified": "可是",
+                  "pinyin": "kěshì",
+                  "english": "but"
+                },
+                {
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "english": "then"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "醫生跟那個孩子說：「如果你肚子痛，就要少吃一點。」",
+                "simplified": "医生跟那个孩子说：「如果你肚子痛，就要少吃一点。」",
+                "pinyin": "Yīshēng gēn nàge háizi shuō: “Rúguǒ nǐ dùzi tòng, jiù yào shǎo chī yìdiǎn.”",
+                "english": "The doctor tells the child, “If your belly hurts, you should eat a little less.”"
+              },
+              "why": "如果 opens the condition and 就 starts the result: 如果……，就……. 所以 goes with 因為, not 如果, and 可是 (but) does not fit the doctor's advice for a sore belly.",
+              "focus": {
+                "zh": "如果……，就……",
+                "en": "if …, then …"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-17",
+                "B1L10-2-18",
+                "B1L10-2-11",
+                "B1L10-2-04"
+              ],
+              "grammarIds": [
+                "B1L10-G05-P237"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l10-waiting-room",
+          "alt": "A clinic waiting room: a worried mother holds her small son, who holds his belly; a young man in a face mask and glasses stands away from the desk, bent a little forward, coughing (small cough lines at his mask) with one hand flat on his chest and the other arm at his side, sleeves pushed up, both bare wrists in plain view; a doctor sits at the desk with a glass of water on it. Only the young man wears a mask: the mother, the boy and the doctor wear none. Nobody wears a watch.",
+          "questions": [
+            {
+              "id": "b1l10-scene-gap-2-a",
+              "prompt": {
+                "traditional": "那個孩子肚子痛，他媽媽很＿＿。",
+                "simplified": "那个孩子肚子痛，他妈妈很＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "舒服",
+                  "simplified": "舒服",
+                  "pinyin": "shūfu",
+                  "english": "comfortable"
+                },
+                {
+                  "traditional": "擔心",
+                  "simplified": "担心",
+                  "pinyin": "dānxīn",
+                  "english": "worried"
+                },
+                {
+                  "traditional": "高興",
+                  "simplified": "高兴",
+                  "pinyin": "gāoxìng",
+                  "english": "glad"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "那個孩子肚子痛，他媽媽很擔心。",
+                "simplified": "那个孩子肚子痛，他妈妈很担心。",
+                "pinyin": "Nàge háizi dùzi tòng, tā māma hěn dānxīn.",
+                "english": "That child's belly hurts, and his mother is very worried."
+              },
+              "why": "Her child's belly hurts, so the mother is worried: 很擔心. In the picture she looks worried, not glad (高興), and 舒服 (comfortable) does not fit a mother whose child is sick.",
+              "focus": {
+                "zh": "很擔心",
+                "en": "worried"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-3-05",
+                "B1L10-2-11",
+                "B1L07-2-16",
+                "B1L06-3-15"
+              ]
+            },
+            {
+              "id": "b1l10-scene-gap-2-b",
+              "prompt": {
+                "traditional": "那個男生戴口罩，也戴＿＿。",
+                "simplified": "那个男生戴口罩，也戴＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "眼睛",
+                  "simplified": "眼睛",
+                  "pinyin": "yǎnjīng",
+                  "english": "eyes"
+                },
+                {
+                  "traditional": "手錶",
+                  "simplified": "手表",
+                  "pinyin": "shǒubiǎo",
+                  "english": "a watch"
+                },
+                {
+                  "traditional": "眼鏡",
+                  "simplified": "眼镜",
+                  "pinyin": "yǎnjìng",
+                  "english": "glasses"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "那個男生戴口罩，也戴眼鏡。",
+                "simplified": "那个男生戴口罩，也戴眼镜。",
+                "pinyin": "Nàge nánshēng dài kǒuzhào, yě dài yǎnjìng.",
+                "english": "That young man wears a mask and glasses too."
+              },
+              "why": "He wears glasses (眼鏡), not a watch; 眼睛 looks alike but means eyes.",
+              "focus": {
+                "zh": "眼鏡 vs 眼睛",
+                "en": "glasses or eyes"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-10",
+                "B1L10-2-09",
+                "B1L10-1-07",
+                "B1L07-1-25"
+              ]
+            },
+            {
+              "id": "b1l10-scene-gap-2-c",
+              "prompt": {
+                "traditional": "醫生跟那個咳嗽的男生說：「你要＿＿多喝水。」",
+                "simplified": "医生跟那个咳嗽的男生说：「你要＿＿多喝水。」"
+              },
+              "choices": [
+                {
+                  "traditional": "記得",
+                  "simplified": "记得",
+                  "pinyin": "jìde",
+                  "english": "to remember"
+                },
+                {
+                  "traditional": "覺得",
+                  "simplified": "觉得",
+                  "pinyin": "juéde",
+                  "english": "to think; to feel"
+                },
+                {
+                  "traditional": "告訴",
+                  "simplified": "告诉",
+                  "pinyin": "gàosu",
+                  "english": "to tell"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "醫生跟那個咳嗽的男生說：「你要記得多喝水。」",
+                "simplified": "医生跟那个咳嗽的男生说：「你要记得多喝水。」",
+                "pinyin": "Yīshēng gēn nàge késòu de nánshēng shuō: “Nǐ yào jìde duō hē shuǐ.”",
+                "english": "The doctor tells the coughing young man, “You must remember to drink more water.”"
+              },
+              "why": "記得 + an action means remember to do it: 要記得多喝水, remember to drink more water. 覺得 (to think) and 告訴 (to tell) cannot come right before an action like this; 告訴 needs a person (告訴你……).",
+              "focus": {
+                "zh": "記得",
+                "en": "remember to"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-16",
+                "B1L10-1-16",
+                "B1L10-2-01"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l10-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "{1}我發燒了，所以今天不能去上課。我打電話{2}老師請假，媽媽帶我去看醫生。醫生說我要{3}休息，少上網。{4}明天好了，我就會去學校上課。",
+            "simplified": "{1}我发烧了，所以今天不能去上课。我打电话{2}老师请假，妈妈带我去看医生。医生说我要{3}休息，少上网。{4}明天好了，我就会去学校上课。",
+            "pinyin": "Yīnwèi wǒ fāshāo le, suǒyǐ jīntiān bù néng qù shàngkè. Wǒ dǎ diànhuà gēn lǎoshī qǐngjià, māma dài wǒ qù kàn yīshēng. Yīshēng shuō wǒ yào duō xiūxí, shǎo shàngwǎng. Rúguǒ míngtiān hǎo le, wǒ jiù huì qù xuéxiào shàngkè.",
+            "english": "Because I have a fever, I can't go to class today. I call my teacher to ask for leave, and Mom takes me to see a doctor. The doctor says I should rest more and go online less. If I'm better tomorrow, I'll go to school."
+          },
+          "bank": [
+            {
+              "traditional": "多",
+              "simplified": "多",
+              "pinyin": "duō",
+              "english": "more"
+            },
+            {
+              "traditional": "如果",
+              "simplified": "如果",
+              "pinyin": "rúguǒ",
+              "english": "if"
+            },
+            {
+              "traditional": "少",
+              "simplified": "少",
+              "pinyin": "shǎo",
+              "english": "less"
+            },
+            {
+              "traditional": "因為",
+              "simplified": "因为",
+              "pinyin": "yīnwèi",
+              "english": "because"
+            },
+            {
+              "traditional": "跟",
+              "simplified": "跟",
+              "pinyin": "gēn",
+              "english": "to (someone)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-paragraph-1-1",
+              "key": 3,
+              "why": "所以 (so) in the same sentence needs 因為 (because) before the reason: 因為我發燒了，所以…….",
+              "focus": {
+                "zh": "因為……所以……",
+                "en": "because … so …"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-07",
+                "B1L08-1-10",
+                "B1L10-1-03"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            },
+            {
+              "id": "b1l10-paragraph-1-2",
+              "key": 4,
+              "why": "跟 comes before the person you speak to: 跟老師請假, ask the teacher for leave.",
+              "focus": {
+                "zh": "跟老師請假",
+                "en": "跟 + person"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-05",
+                "B1L10-1-02",
+                "B1L10-3-01"
+              ],
+              "grammarIds": [
+                "B1L10-G01-P226"
+              ]
+            },
+            {
+              "id": "b1l10-paragraph-1-3",
+              "key": 0,
+              "why": "多 before a verb gives advice: 多休息 (rest more) pairs with 少上網 (go online less). 少休息 would be wrong advice for a fever.",
+              "focus": {
+                "zh": "多休息",
+                "en": "do more"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-16",
+                "B1L10-1-17",
+                "B1L06-2-07"
+              ],
+              "grammarIds": [
+                "B1L10-G03-P231"
+              ]
+            },
+            {
+              "id": "b1l10-paragraph-1-4",
+              "key": 1,
+              "why": "如果 opens the condition, and 就 starts the result: 如果明天好了，我就會去.",
+              "focus": {
+                "zh": "如果……就……",
+                "en": "if …, then …"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-17",
+                "B1L10-2-18",
+                "B1L10-3-08"
+              ],
+              "grammarIds": [
+                "B1L10-G05-P237"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我的朋友{1}了，很不舒服。我打電話{2}她說，要多喝水、多休息。她說她明天不{3}來上課。今天下午我想{4}去超市買一些水果，再去她家看她。",
+            "simplified": "我的朋友{1}了，很不舒服。我打电话{2}她说，要多喝水、多休息。她说她明天不{3}来上课。今天下午我想{4}去超市买一些水果，再去她家看她。",
+            "pinyin": "Wǒ de péngyǒu gǎnmào le, hěn bù shūfu. Wǒ dǎ diànhuà gēn tā shuō, yào duō hē shuǐ, duō xiūxí. Tā shuō tā míngtiān bú huì lái shàngkè. Jīntiān xiàwǔ wǒ xiǎng xiān qù chāoshì mǎi yìxiē shuǐguǒ, zài qù tā jiā kàn tā.",
+            "english": "My friend has caught a cold and doesn't feel well. I called her and told her to drink more water and rest more. She said she won't come to class tomorrow. This afternoon I want to go to the supermarket first to buy some fruit, then go to her home to see her."
+          },
+          "bank": [
+            {
+              "traditional": "會",
+              "simplified": "会",
+              "pinyin": "huì",
+              "english": "will"
+            },
+            {
+              "traditional": "健康",
+              "simplified": "健康",
+              "pinyin": "jiànkāng",
+              "english": "healthy"
+            },
+            {
+              "traditional": "感冒",
+              "simplified": "感冒",
+              "pinyin": "gǎnmào",
+              "english": "to catch a cold"
+            },
+            {
+              "traditional": "跟",
+              "simplified": "跟",
+              "pinyin": "gēn",
+              "english": "to (someone)"
+            },
+            {
+              "traditional": "先",
+              "simplified": "先",
+              "pinyin": "xiān",
+              "english": "first"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l10-paragraph-2-1",
+              "key": 2,
+              "why": "了 after the blank and 很不舒服 show she is sick: 感冒了, she has caught a cold. 健康 (healthy) does not fit someone who feels unwell.",
+              "focus": {
+                "zh": "感冒了",
+                "en": "catch a cold"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-01",
+                "B1L10-2-19"
+              ]
+            },
+            {
+              "id": "b1l10-paragraph-2-2",
+              "key": 3,
+              "why": "跟 comes before the person you speak to: 我打電話跟她說, I called and told her.",
+              "focus": {
+                "zh": "跟她說",
+                "en": "跟 + person"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-1-05",
+                "B1L10-3-01"
+              ],
+              "grammarIds": [
+                "B1L10-G01-P226"
+              ]
+            },
+            {
+              "id": "b1l10-paragraph-2-3",
+              "key": 0,
+              "why": "不會 means will not: 明天不會來上課, she won't come to class tomorrow.",
+              "focus": {
+                "zh": "明天不會來",
+                "en": "will not (future)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-15"
+              ],
+              "grammarIds": [
+                "B1L10-G04-P236"
+              ]
+            },
+            {
+              "id": "b1l10-paragraph-2-4",
+              "key": 4,
+              "why": "先 goes with the 再 that follows: 先去超市……，再去她家, first the supermarket, then her home.",
+              "focus": {
+                "zh": "先……再……",
+                "en": "first …, then …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L09-1-16",
+                "B1L07-2-11"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l10-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "國安：\n你發燒了，現在好一點了嗎？老師說明天的功課不多，你先在家多休息，再寫功課吧。明天我會帶蘋果去看你。\n元真",
+            "simplified": "国安：\n你发烧了，现在好一点了吗？老师说明天的功课不多，你先在家多休息，再写功课吧。明天我会带苹果去看你。\n元真",
+            "pinyin": "Guó'ān: Nǐ fāshāo le, xiànzài hǎo yìdiǎn le ma? Lǎoshī shuō míngtiān de gōngkè bù duō, nǐ xiān zài jiā duō xiūxí, zài xiě gōngkè ba. Míngtiān wǒ huì dài píngguǒ qù kàn nǐ. Yuánzhēn",
+            "english": "Guo'an: You have a fever. Are you a bit better now? The teacher says there isn't much homework for tomorrow. Rest at home first, then do your homework. Tomorrow I'll bring some apples and come to see you. Yuanzhen"
+          },
+          "questions": [
+            {
+              "id": "b1l10-reading-note-1-q",
+              "prompt": {
+                "traditional": "元真要國安先做什麼？",
+                "simplified": "元真要国安先做什么？",
+                "pinyin": "Yuánzhēn yào Guó'ān xiān zuò shénme?",
+                "english": "What does Yuanzhen want Guo'an to do first?"
+              },
+              "choices": [
+                {
+                  "traditional": "寫功課",
+                  "simplified": "写功课",
+                  "pinyin": "xiě gōngkè",
+                  "english": "do homework"
+                },
+                {
+                  "traditional": "多休息",
+                  "simplified": "多休息",
+                  "pinyin": "duō xiūxí",
+                  "english": "rest more"
+                },
+                {
+                  "traditional": "去上課",
+                  "simplified": "去上课",
+                  "pinyin": "qù shàngkè",
+                  "english": "go to class"
+                }
+              ],
+              "key": 1,
+              "why": "先在家多休息，再寫功課: rest comes first (先), homework after (再). She never tells him to go to class.",
+              "focus": {
+                "zh": "先……再……",
+                "en": "first …, then …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L09-1-16",
+                "B1L09-1-14",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l10-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n今天下午我先上書法課，四點下課，再去圖書館找你，我們一起看書吧。\n家樂",
+            "simplified": "中明：\n今天下午我先上书法课，四点下课，再去图书馆找你，我们一起看书吧。\n家乐",
+            "pinyin": "Zhōngmíng: Jīntiān xiàwǔ wǒ xiān shàng shūfǎ kè, sì diǎn xiàkè, zài qù túshūguǎn zhǎo nǐ, wǒmen yìqǐ kàn shū ba. Jiālè",
+            "english": "Zhongming: This afternoon I have calligraphy class first. It ends at four. Then I will go to the library to find you, and we can study together. Jiale"
+          },
+          "questions": [
+            {
+              "id": "b1l10-reading-note-2-q",
+              "prompt": {
+                "traditional": "家樂今天下午先做什麼？",
+                "simplified": "家乐今天下午先做什么？",
+                "pinyin": "Jiālè jīntiān xiàwǔ xiān zuò shénme?",
+                "english": "What does Jiale do first this afternoon?"
+              },
+              "choices": [
+                {
+                  "traditional": "去圖書館",
+                  "simplified": "去图书馆",
+                  "pinyin": "qù túshūguǎn",
+                  "english": "go to the library"
+                },
+                {
+                  "traditional": "一起看書",
+                  "simplified": "一起看书",
+                  "pinyin": "yìqǐ kàn shū",
+                  "english": "study together"
+                },
+                {
+                  "traditional": "上書法課",
+                  "simplified": "上书法课",
+                  "pinyin": "shàng shūfǎ kè",
+                  "english": "have calligraphy class"
+                }
+              ],
+              "key": 2,
+              "why": "我先上書法課……再去圖書館找你: calligraphy class comes first (先); the library and studying together come after (再).",
+              "focus": {
+                "zh": "先……再……",
+                "en": "first …, then …"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L07-1-23",
+                "B1L09-1-16",
+                "B1L09-1-11",
+                "B1L02-1-20"
+              ],
+              "grammarIds": [
+                "B1L09-G03-P207"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
