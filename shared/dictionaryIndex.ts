@@ -1,4 +1,4 @@
-import { searchInIndex, type CompactSearchEntry } from './dictionarySearch';
+import { allowsTypoMatch, normalizeLatinQuery, searchInIndex, type CompactSearchEntry } from './dictionarySearch';
 import { stripPinyinTones } from './pinyinNormalize';
 import { stemEnglishWord, getSemanticSynonymStems } from './englishStem';
 
@@ -67,7 +67,7 @@ export function createDictionaryIndex(items: CompactSearchEntry[]) {
     }
     if (/[*?＊？]/.test(query)) return items;
     if (/[^a-z]/i.test(query.trim().slice(0, 3))) return items;
-    const lower = query.toLowerCase().replace(/\s+/g, ' ').replace(/^(?:to |an? |the )/, '');
+    const lower = normalizeLatinQuery(query);
     const stem = !lower.includes(' ') ? stemEnglishWord(lower) : '';
     const flat = stripPinyinTones(query);
     const keys = [lower, stem.length >= 2 ? stem : lower, ...getSemanticSynonymStems(lower), flat].filter(Boolean).map(key => key.slice(0, 3));
@@ -81,8 +81,8 @@ export function createDictionaryIndex(items: CompactSearchEntry[]) {
     search(query: string, limit = 30) {
       const selected = candidates(query);
       const results = searchInIndex(selected, query, limit, false);
-      // Typo fallback must see the entire corpus; it runs off the HTTP thread.
-      return results.length ? results : searchInIndex(items, query, limit);
+      // Candidates already hold every exact, prefix and gloss match; only typo matching needs the entire corpus.
+      return results.length || !allowsTypoMatch(query) ? results : searchInIndex(items, query, limit);
     },
   };
 }

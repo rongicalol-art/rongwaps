@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { EventEmitter } from 'node:events';
-import test from 'node:test';
+import test, { mock } from 'node:test';
 import { build } from 'esbuild';
 
 // Bundle an isolated service with controlled worker events, including events arriving after termination.
@@ -74,4 +74,30 @@ test('worker failures preserve their cause for startup and pending requests, the
     instances[2].emit('message', { id: instances[2].messages[0].id, result: [] });
     assert.deepEqual(await recovered, []);
   } finally { cleanup(); }
+});
+
+test('a job queued behind slow ones keeps the worker; a worker that stops answering is restarted', async () => {
+  const { service, instances, cleanup } = await fixture();
+  mock.timers.enable({ apis: ['setTimeout'] });
+  try {
+    const first = service.searchDictionary('a', 3);
+    const second = service.searchDictionary('i', 3);
+    instances[0].emit('message', { ready: true });
+    await flush();
+    mock.timers.tick(14_000);
+    instances[0].emit('message', { id: instances[0].messages[0].id, result: ['first'] });
+    mock.timers.tick(14_000);
+    instances[0].emit('message', { id: instances[0].messages[1].id, result: ['second'] });
+    assert.deepEqual([await first, await second], [['first'], ['second']]);
+
+    const stalled = assert.rejects(service.searchDictionary('school', 3), /Dictionary request timed out/);
+    await flush();
+    mock.timers.tick(15_000);
+    await stalled;
+    const recovered = service.searchDictionary('student', 3);
+    instances[1].emit('message', { ready: true });
+    await flush();
+    instances[1].emit('message', { id: instances[1].messages[0].id, result: [] });
+    assert.deepEqual(await recovered, []);
+  } finally { mock.timers.reset(); cleanup(); }
 });
