@@ -4,7 +4,7 @@ import { ActionButton, KeyChip } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 
 interface TestDockProps {
-  /** The primary action; Enter or Space presses it. */
+  /** The primary action; Space presses it. */
   label: string;
   onPress: () => void;
   /** A quiet second action under (phone) or beside (desktop) the first. */
@@ -19,7 +19,7 @@ export function TestDock({ label, onPress, secondary, riseKey, className }: Test
   const reduceMotion = useReducedMotion();
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if ((event.key !== 'Enter' && event.key !== ' ') || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.key !== ' ' || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
       // A focused button presses itself.
       if (event.target instanceof HTMLButtonElement || event.target instanceof HTMLInputElement) return;
       event.preventDefault();
@@ -41,7 +41,7 @@ export function TestDock({ label, onPress, secondary, riseKey, className }: Test
         <ActionButton size="lg" fullWidth onClick={onPress} className="text-base tracking-wider md:text-lg">
           <span className="relative">
             {label}
-            <KeyChip className="border-brand-on-primary/40 text-brand-on-primary/80">Enter</KeyChip>
+            <KeyChip className="border-brand-on-primary/40 text-brand-on-primary/80">Space</KeyChip>
           </span>
         </ActionButton>
         {secondary && (
