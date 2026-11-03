@@ -39,6 +39,7 @@ export * from './EmptyState';
 
 // Progress, loading, and animation presentation
 export * from './LoadingScreen';
+export * from './AudioPreparation';
 export * from './LottiePlayer';
 export * from './Skeleton';
 

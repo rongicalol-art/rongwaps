@@ -14,8 +14,7 @@ import { WordBuild } from './formats/WordBuild';
 import { CardsDone, ReviewDealIntro, CARD_SURFACE_CLASS } from '../flashcard';
 import { QuizShell } from './QuizShell';
 import { useReviewTone } from '../../hooks/useReviewTone';
-import { ActionButton, ResumeDialog, ScreenHeader, WorkspaceWindow } from '../../lib/widgets';
-import { QuizAudioPreparation } from './components/QuizAudioPreparation';
+import { ActionButton, AudioPreparation, ResumeDialog, ScreenHeader, WorkspaceWindow } from '../../lib/widgets';
 import { RESUME_ICON, resumeCopy, resumeDetail, resumeProgress, type ResumeState } from '../../utils/srs/resumeState';
 
 /**
@@ -188,7 +187,7 @@ function AudioPreparationPreview({ failed }: { failed: boolean }) {
     <WorkspaceWindow tone="practice" className="workspace-window" style={{ zIndex: 'var(--z-index-devtools)', paddingLeft: 0 }} animateIn={false} role="dialog" aria-modal="true" aria-label="Audio preparation preview">
       <div className="absolute inset-x-0 top-0 z-40"><ScreenHeader variant="window" tone="practice" onClose={close} /></div>
       <div className="flex flex-1 flex-col pt-18">
-        {ready < 8 ? <QuizAudioPreparation progress={{ ready, failed: error ? 1 : 0, total: 8 }} error={error}
+        {ready < 8 ? <AudioPreparation progress={{ ready, failed: error ? 1 : 0, total: 8 }} error={error}
           onRetry={() => { setError(false); setReady(3); setRunning(true); }} onBack={close} /> : (
           <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6">
             <h2 className="text-2xl font-black text-ui-ink-strong">Audio ready</h2>

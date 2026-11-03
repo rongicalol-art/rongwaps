@@ -11,8 +11,7 @@ import { PickOne, type PickChoice, type PickPrompt } from './formats/PickOne';
 import { TrueFalseFlip } from './formats/TrueFalseFlip';
 import { WordBuild } from './formats/WordBuild';
 import { useQuizAudioPreparation } from './hooks/useQuizAudioPreparation';
-import { QuizAudioPreparation } from './components/QuizAudioPreparation';
-import { ActionButton, EmptyState, LoadingScreen } from '../../lib/widgets';
+import { ActionButton, AudioPreparation, EmptyState, LoadingScreen } from '../../lib/widgets';
 import { useRaceQuiz, useRaceReady } from '../../features/social';
 
 const TITLES: Record<QuizFormat, string> = {
@@ -108,7 +107,7 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
       title={beatTitle}
       preparation={session.planning.pending ? <div className="flex flex-1 flex-col items-center justify-center"><LoadingScreen inline message="Preparing quiz…" tone="practice" /><ActionButton variant="secondary" onClick={shell.onEnd}>Cancel</ActionButton></div>
         : session.planning.error ? <EmptyState title="Quiz couldn’t load" action={<div className="flex gap-3"><ActionButton onClick={session.planning.retry}>Retry</ActionButton><ActionButton variant="secondary" onClick={shell.onEnd}>Back</ActionButton></div>} />
-        : !audio.ready ? <QuizAudioPreparation progress={audio.progress} error={audio.error} onRetry={audio.retry} onBack={shell.onEnd} />
+        : !audio.ready ? <AudioPreparation progress={audio.progress} error={audio.error} onRetry={audio.retry} onBack={shell.onEnd} />
         : seed && race?.phase === 'preparing' && racePlanDigest?.source === racePlanSource && racePlanDigest.error ? <EmptyState title="Quiz couldn’t sync" description="This browser couldn’t verify the shared quiz data. Leave this race and try an updated browser." action={<ActionButton variant="secondary" onClick={shell.onEnd}>Leave race</ActionButton>} />
         : seed && race?.phase === 'preparing' ? <div className="flex flex-1 flex-col items-center justify-center gap-4"><LoadingScreen inline message={`${planHash ? 'Waiting for everyone’s audio' : 'Checking the shared quiz'}… ${race.preparedCount}/${race.playerCount}`} tone="practice" /><ActionButton variant="secondary" onClick={shell.onEnd}>Leave race</ActionButton></div>
         : undefined}
