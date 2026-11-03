@@ -40,6 +40,7 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 - Compact, confident buttons. One radius family per surface.
 - Nunito heavy for titles. The Chinese study font for characters. PingFang semibold for Chinese subtitles.
 - Sibling blocks share exactly the same text styles. Short copy, no uppercase sentences.
+- App labels and titles are English. Chinese characters belong to the study content (words, sentences, readings), not to the chrome around it; keep them off buttons, tabs and screen titles where possible.
 
 **Pictures.**
 - The app's illustrations are the picture style: warm, colourful flat art (sunny rooms, wooden desks, plants, coral, navy and gold). Anything drawn for an exercise (clocks, calendars, objects) matches that style, not a style of its own.
