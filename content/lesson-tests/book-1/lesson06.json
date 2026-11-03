@@ -1,0 +1,2481 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l06",
+  "bookId": 1,
+  "lessonId": 6,
+  "band": "A",
+  "allowWords": [
+    "中明"
+  ],
+  "slots": [
+    {
+      "id": "hear-ball",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l06-hear-ball-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我不會打籃球，我會踢足球。",
+              "simplified": "我不会打篮球，我会踢足球。",
+              "pinyin": "Wǒ bú huì dǎ lánqiú, wǒ huì tī zúqiú.",
+              "english": "I can't play basketball, but I can play soccer."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-hear-ball-1-q",
+              "choices": [
+                {
+                  "picture": "b1l06-ball-1",
+                  "alt": "Basketball: the young man bounces a basketball on the sports field"
+                },
+                {
+                  "picture": "b1l06-ball-2",
+                  "alt": "Soccer: the young man kicks a soccer ball on the sports field"
+                },
+                {
+                  "picture": "b1l06-ball-3",
+                  "alt": "Baseball: the young man swings a bat at a baseball on the sports field"
+                }
+              ],
+              "key": 1,
+              "why": "不會打籃球 means he can't play basketball; 會踢足球 means he can play soccer.",
+              "focus": {
+                "zh": "會踢足球",
+                "en": "can play soccer"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L06-1-07",
+                "B1L06-1-06",
+                "B1L06-1-04"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-hear-ball-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我會打棒球，可是不會踢足球。",
+              "simplified": "我会打棒球，可是不会踢足球。",
+              "pinyin": "Wǒ huì dǎ bàngqiú, kěshì bú huì tī zúqiú.",
+              "english": "I can play baseball, but I can't play soccer."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-hear-ball-2-q",
+              "choices": [
+                {
+                  "picture": "b1l06-ball-1",
+                  "alt": "Basketball: the young man bounces a basketball on the sports field"
+                },
+                {
+                  "picture": "b1l06-ball-2",
+                  "alt": "Soccer: the young man kicks a soccer ball on the sports field"
+                },
+                {
+                  "picture": "b1l06-ball-3",
+                  "alt": "Baseball: the young man swings a bat at a baseball on the sports field"
+                }
+              ],
+              "key": 2,
+              "why": "會打棒球 means he can play baseball. Soccer is the one he 不會 (can't) play.",
+              "focus": {
+                "zh": "會打棒球",
+                "en": "can play baseball"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L06-1-01",
+                "B1L06-1-05",
+                "B1L06-1-06"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-hear-ball-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "足球和棒球我都不會，我只會打籃球。",
+              "simplified": "足球和棒球我都不会，我只会打篮球。",
+              "pinyin": "Zúqiú hé bàngqiú wǒ dōu bú huì, wǒ zhǐ huì dǎ lánqiú.",
+              "english": "I can't play soccer or baseball. I can only play basketball."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-hear-ball-3-q",
+              "choices": [
+                {
+                  "picture": "b1l06-ball-1",
+                  "alt": "Basketball: the young man bounces a basketball on the sports field"
+                },
+                {
+                  "picture": "b1l06-ball-2",
+                  "alt": "Soccer: the young man kicks a soccer ball on the sports field"
+                },
+                {
+                  "picture": "b1l06-ball-3",
+                  "alt": "Baseball: the young man swings a bat at a baseball on the sports field"
+                }
+              ],
+              "key": 0,
+              "why": "只會打籃球 means basketball is the only one he can play. 足球和棒球我都不會 says he can play neither soccer nor baseball.",
+              "focus": {
+                "zh": "只會打籃球",
+                "en": "can only play basketball"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L06-2-18",
+                "B1L06-1-04",
+                "B1L06-1-01"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-hobby",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l06-hear-hobby-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我不會唱歌，平常喜歡在家畫畫。",
+              "simplified": "我不会唱歌，平常喜欢在家画画。",
+              "pinyin": "Wǒ bú huì chànggē, píngcháng xǐhuān zài jiā huàhuà.",
+              "english": "I can't sing. I usually like to draw at home."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-hear-hobby-1-q",
+              "choices": [
+                {
+                  "picture": "b1l06-hobby-1",
+                  "alt": "Singing: the young woman sings with her hand on her chest, music notes around her"
+                },
+                {
+                  "picture": "b1l06-hobby-2",
+                  "alt": "Dancing: the young woman dances with her arms up, mid-step"
+                },
+                {
+                  "picture": "b1l06-hobby-3",
+                  "alt": "Drawing: the young woman sits at the table drawing a picture of a flower"
+                }
+              ],
+              "key": 2,
+              "why": "平常喜歡在家畫畫 means she usually likes to draw at home. 不會唱歌 says she can't sing.",
+              "focus": {
+                "zh": "喜歡畫畫",
+                "en": "likes drawing"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-3-11",
+                "B1L06-3-09",
+                "B1L06-3-05",
+                "B1L06-1-13"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-hear-hobby-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳週末喜歡做什麼？",
+              "simplified": "你周末喜欢做什么？",
+              "pinyin": "Nǐ zhōumò xǐhuān zuò shénme?",
+              "english": "What do you like to do on weekends?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我喜歡跳舞，不喜歡唱歌。",
+              "simplified": "我喜欢跳舞，不喜欢唱歌。",
+              "pinyin": "Wǒ xǐhuān tiàowǔ, bù xǐhuān chànggē.",
+              "english": "I like dancing, not singing."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-hear-hobby-2-q",
+              "choices": [
+                {
+                  "picture": "b1l06-hobby-1",
+                  "alt": "Singing: the young woman sings with her hand on her chest, music notes around her"
+                },
+                {
+                  "picture": "b1l06-hobby-2",
+                  "alt": "Dancing: the young woman dances with her arms up, mid-step"
+                },
+                {
+                  "picture": "b1l06-hobby-3",
+                  "alt": "Drawing: the young woman sits at the table drawing a picture of a flower"
+                }
+              ],
+              "key": 1,
+              "why": "She says 喜歡跳舞 (likes dancing) and 不喜歡唱歌 (doesn't like singing).",
+              "focus": {
+                "zh": "跳舞",
+                "en": "to dance"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-3-08",
+                "B1L06-3-05",
+                "B1L02-2-03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-hear-hobby-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我不會跳舞，可是我很愛唱歌。",
+              "simplified": "我不会跳舞，可是我很爱唱歌。",
+              "pinyin": "Wǒ bú huì tiàowǔ, kěshì wǒ hěn ài chànggē.",
+              "english": "I can't dance, but I love singing."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-hear-hobby-3-q",
+              "choices": [
+                {
+                  "picture": "b1l06-hobby-1",
+                  "alt": "Singing: the young woman sings with her hand on her chest, music notes around her"
+                },
+                {
+                  "picture": "b1l06-hobby-2",
+                  "alt": "Dancing: the young woman dances with her arms up, mid-step"
+                },
+                {
+                  "picture": "b1l06-hobby-3",
+                  "alt": "Drawing: the young woman sits at the table drawing a picture of a flower"
+                }
+              ],
+              "key": 0,
+              "why": "很愛唱歌 means she loves singing. 不會跳舞 means she can't dance.",
+              "focus": {
+                "zh": "愛唱歌",
+                "en": "loves singing"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-3-05",
+                "B1L06-3-08",
+                "B1L06-1-13"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-bike",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l06-picture-bike-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L06-R02",
+            "alt": "A sunny day on campus, in front of a big school building with stone steps. A young man in a green hoodie and navy jacket stands holding ONE blue bicycle and talks; a curly-haired young man in a yellow shirt sits on the low wall with headphones around his neck and a backpack beside him. Only one bicycle; no computers, no phones, no sea."
+          },
+          "questions": [
+            {
+              "id": "b1l06-picture-bike-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這裡有兩輛腳踏車。",
+                  "simplified": "这里有两辆脚踏车。",
+                  "pinyin": "Zhèlǐ yǒu liǎng liàng jiǎotàchē.",
+                  "english": "There are two bikes here."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這裡有一輛腳踏車。",
+                  "simplified": "这里有一辆脚踏车。",
+                  "pinyin": "Zhèlǐ yǒu yí liàng jiǎotàchē.",
+                  "english": "There is one bike here."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這裡有兩支手機。",
+                  "simplified": "这里有两支手机。",
+                  "pinyin": "Zhèlǐ yǒu liǎng zhī shǒujī.",
+                  "english": "There are two cell phones here."
+                }
+              ],
+              "key": 1,
+              "why": "There is one bicycle in the picture: 一輛腳踏車. 輛 counts bikes; there are no phones.",
+              "focus": {
+                "zh": "一輛腳踏車",
+                "en": "one bike"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-17",
+                "B1L06-2-16",
+                "B1L06-2-10",
+                "B1L06-2-11"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-picture-bike-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L06-R02",
+            "alt": "A sunny day on campus, in front of a big school building with stone steps. A young man in a green hoodie and navy jacket stands holding ONE blue bicycle and talks; a curly-haired young man in a yellow shirt sits on the low wall with headphones around his neck and a backpack beside him. Only one bicycle; no computers, no phones, no sea."
+          },
+          "questions": [
+            {
+              "id": "b1l06-picture-bike-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們在學校。",
+                  "simplified": "他们在学校。",
+                  "pinyin": "Tāmen zài xuéxiào.",
+                  "english": "They are at school."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在海邊。",
+                  "simplified": "他们在海边。",
+                  "pinyin": "Tāmen zài hǎibiān.",
+                  "english": "They are at the beach."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在電影院。",
+                  "simplified": "他们在电影院。",
+                  "pinyin": "Tāmen zài diànyǐngyuàn.",
+                  "english": "They are at the movie theater."
+                }
+              ],
+              "key": 0,
+              "why": "They are in front of a big school building on campus, so 他們在學校. There is no sea and no movie theater.",
+              "focus": {
+                "zh": "在學校",
+                "en": "at school"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L02-1-06",
+                "B1L05-1-02",
+                "B1L06-1-08",
+                "B1L06-2-03"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-sports",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l06-picture-sports-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L06-R03",
+            "alt": "Four young friends, two young women and two young men, walk together through a sunny sports park with a swimming pool and a basketball court behind them. One young woman carries a tennis racket, one young man holds ONE basketball, the other young woman carries a bag with swimming goggles. They are going to exercise; no soccer ball, no baseball or bat, no tennis ball, no books or library, no movie theater."
+          },
+          "questions": [
+            {
+              "id": "b1l06-picture-sports-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們四個人要去運動。",
+                  "simplified": "他们四个人要去运动。",
+                  "pinyin": "Tāmen sì ge rén yào qù yùndòng.",
+                  "english": "The four of them are going to exercise."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們四個人要去看電影。",
+                  "simplified": "他们四个人要去看电影。",
+                  "pinyin": "Tāmen sì ge rén yào qù kàn diànyǐng.",
+                  "english": "The four of them are going to see a movie."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們四個人要去圖書館。",
+                  "simplified": "他们四个人要去图书馆。",
+                  "pinyin": "Tāmen sì ge rén yào qù túshūguǎn.",
+                  "english": "The four of them are going to the library."
+                }
+              ],
+              "key": 0,
+              "why": "They walk through a sports park with a tennis racket, a basketball and swimming goggles: 他們要去運動. Nothing shows a movie, books or a library.",
+              "focus": {
+                "zh": "要去運動",
+                "en": "going to exercise"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-13",
+                "B1L06-2-01",
+                "B1L02-1-20"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-picture-sports-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L06-R03",
+            "alt": "Four young friends, two young women and two young men, walk together through a sunny sports park with a swimming pool and a basketball court behind them. One young woman carries a tennis racket, one young man holds ONE basketball, the other young woman carries a bag with swimming goggles. They are going to exercise; no soccer ball, no baseball or bat, no tennis ball, no books or library, no movie theater."
+          },
+          "questions": [
+            {
+              "id": "b1l06-picture-sports-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們有一個足球。",
+                  "simplified": "他们有一个足球。",
+                  "pinyin": "Tāmen yǒu yí ge zúqiú.",
+                  "english": "They have a soccer ball."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們有一個棒球。",
+                  "simplified": "他们有一个棒球。",
+                  "pinyin": "Tāmen yǒu yí ge bàngqiú.",
+                  "english": "They have a baseball."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們有一個籃球。",
+                  "simplified": "他们有一个篮球。",
+                  "pinyin": "Tāmen yǒu yí ge lánqiú.",
+                  "english": "They have a basketball."
+                }
+              ],
+              "key": 2,
+              "why": "The young man in green holds an orange basketball: 一個籃球. Nobody has a soccer ball or a baseball.",
+              "focus": {
+                "zh": "籃球",
+                "en": "basketball"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-04",
+                "B1L06-1-06",
+                "B1L06-1-05"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-well",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l06-dialogue-well-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你網球打得好不好？",
+              "simplified": "你网球打得好不好？",
+              "pinyin": "Nǐ wǎngqiú dǎ de hǎo bu hǎo?",
+              "english": "Do you play tennis well?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "網球和籃球我都打得不好，棒球打得很好。",
+              "simplified": "网球和篮球我都打得不好，棒球打得很好。",
+              "pinyin": "Wǎngqiú hé lánqiú wǒ dōu dǎ de bù hǎo, bàngqiú dǎ de hěn hǎo.",
+              "english": "I don't play tennis or basketball well, but I play baseball very well."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-well-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的什麼球打得很好？",
+                "simplified": "男的什么球打得很好？",
+                "pinyin": "Nán de shénme qiú dǎ de hěn hǎo?",
+                "english": "Which ball game does the man play well?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "籃球",
+                  "simplified": "篮球",
+                  "pinyin": "lánqiú",
+                  "english": "basketball"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "棒球",
+                  "simplified": "棒球",
+                  "pinyin": "bàngqiú",
+                  "english": "baseball"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "網球",
+                  "simplified": "网球",
+                  "pinyin": "wǎngqiú",
+                  "english": "tennis"
+                }
+              ],
+              "key": 1,
+              "why": "棒球打得很好 means he plays baseball very well. Tennis and basketball he 都打得不好 (plays both badly).",
+              "focus": {
+                "zh": "棒球打得很好",
+                "en": "plays baseball well"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-05",
+                "B1L06-1-04",
+                "B1L06-1-01",
+                "B1L06-1-14"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-dialogue-well-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "明天早上我們去跑步吧。",
+              "simplified": "明天早上我们去跑步吧。",
+              "pinyin": "Míngtiān zǎoshàng wǒmen qù pǎobù ba.",
+              "english": "Let's go jogging tomorrow morning."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我跑得很慢，可是網球打得很好。",
+              "simplified": "我跑得很慢，可是网球打得很好。",
+              "pinyin": "Wǒ pǎo de hěn màn, kěshì wǎngqiú dǎ de hěn hǎo.",
+              "english": "I run very slowly, but I play tennis very well."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-well-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的跑步跑得怎麼樣？",
+                "simplified": "女的跑步跑得怎么样？",
+                "pinyin": "Nǚ de pǎobù pǎo de zěnmeyàng?",
+                "english": "How well does the woman run?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "很慢",
+                  "simplified": "很慢",
+                  "pinyin": "hěn màn",
+                  "english": "very slowly"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很快",
+                  "simplified": "很快",
+                  "pinyin": "hěn kuài",
+                  "english": "very fast"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很好",
+                  "simplified": "很好",
+                  "pinyin": "hěn hǎo",
+                  "english": "very well"
+                }
+              ],
+              "key": 0,
+              "why": "She says 我跑得很慢: she runs slowly. 很好 is how she plays tennis, not how she runs.",
+              "focus": {
+                "zh": "跑得很慢",
+                "en": "runs slowly"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-15",
+                "B1L06-1-16",
+                "B1L06-1-14",
+                "B1L06-1-17"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-dialogue-well-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "你們家誰網球打得最好？",
+              "simplified": "你们家谁网球打得最好？",
+              "pinyin": "Nǐmen jiā shéi wǎngqiú dǎ de zuì hǎo?",
+              "english": "Who in your family plays tennis best?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我姐姐打得最好，我弟弟也打得不錯。",
+              "simplified": "我姐姐打得最好，我弟弟也打得不错。",
+              "pinyin": "Wǒ jiějie dǎ de zuì hǎo, wǒ dìdi yě dǎ de búcuò.",
+              "english": "My older sister plays best; my younger brother also plays quite well."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-well-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "誰網球打得最好？",
+                "simplified": "谁网球打得最好？",
+                "pinyin": "Shéi wǎngqiú dǎ de zuì hǎo?",
+                "english": "Who plays tennis best?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "弟弟",
+                  "simplified": "弟弟",
+                  "pinyin": "dìdi",
+                  "english": "younger brother"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "妹妹",
+                  "simplified": "妹妹",
+                  "pinyin": "mèimei",
+                  "english": "younger sister"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "姐姐",
+                  "simplified": "姐姐",
+                  "pinyin": "jiějie",
+                  "english": "older sister"
+                }
+              ],
+              "key": 2,
+              "why": "我姐姐打得最好 means her older sister plays best. Her younger brother only plays 不錯 (quite well).",
+              "focus": {
+                "zh": "打得最好",
+                "en": "plays best"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-02",
+                "B1L06-1-01",
+                "B1L06-1-14",
+                "B1L05-2-16"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-bit",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l06-dialogue-bit-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這輛腳踏車很好看，也不太大，妳要不要買？",
+              "simplified": "这辆脚踏车很好看，也不太大，你要不要买？",
+              "pinyin": "Zhè liàng jiǎotàchē hěn hǎokàn, yě bú tài dà, nǐ yào bu yào mǎi?",
+              "english": "This bike looks great, and it isn't too big. Do you want to buy it?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "很好看，可是有一點貴。",
+              "simplified": "很好看，可是有一点贵。",
+              "pinyin": "Hěn hǎokàn, kěshì yǒu yìdiǎn guì.",
+              "english": "It looks great, but it's a little expensive."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-bit-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得這輛腳踏車怎麼樣？",
+                "simplified": "女的觉得这辆脚踏车怎么样？",
+                "pinyin": "Nǚ de juéde zhè liàng jiǎotàchē zěnmeyàng?",
+                "english": "What does the woman think of this bike?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "有一點貴",
+                  "simplified": "有一点贵",
+                  "pinyin": "yǒu yìdiǎn guì",
+                  "english": "a little expensive"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "有一點小",
+                  "simplified": "有一点小",
+                  "pinyin": "yǒu yìdiǎn xiǎo",
+                  "english": "a little small"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很便宜",
+                  "simplified": "很便宜",
+                  "pinyin": "hěn piányí",
+                  "english": "very cheap"
+                }
+              ],
+              "key": 0,
+              "why": "可是有一點貴 means it is a little too expensive for her. The man says it is 不太大 (not too big), but nobody says it is small, and she does not say it is cheap.",
+              "focus": {
+                "zh": "有一點貴",
+                "en": "a little expensive"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-06",
+                "B1L03-2-13",
+                "B1L06-2-16",
+                "B1L06-2-17"
+              ],
+              "grammarIds": [
+                "B1L06-G03-P146"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-dialogue-bit-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們下午去打網球，好不好？",
+              "simplified": "我们下午去打网球，好不好？",
+              "pinyin": "Wǒmen xiàwǔ qù dǎ wǎngqiú, hǎo bu hǎo?",
+              "english": "Shall we play tennis this afternoon?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "下午我有點忙，晚上去吧。",
+              "simplified": "下午我有点忙，晚上去吧。",
+              "pinyin": "Xiàwǔ wǒ yǒudiǎn máng, wǎnshàng qù ba.",
+              "english": "I'm a bit busy this afternoon. Let's go in the evening."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-bit-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的說他下午怎麼樣？",
+                "simplified": "男的说他下午怎么样？",
+                "pinyin": "Nán de shuō tā xiàwǔ zěnmeyàng?",
+                "english": "What does the man say about his afternoon?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "有點累",
+                  "simplified": "有点累",
+                  "pinyin": "yǒudiǎn lèi",
+                  "english": "a bit tired"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不太忙",
+                  "simplified": "不太忙",
+                  "pinyin": "bú tài máng",
+                  "english": "not very busy"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "有點忙",
+                  "simplified": "有点忙",
+                  "pinyin": "yǒudiǎn máng",
+                  "english": "a bit busy"
+                }
+              ],
+              "key": 2,
+              "why": "下午我有點忙 means he is a bit busy in the afternoon, so he asks to play in the evening. He never says he is tired.",
+              "focus": {
+                "zh": "有點忙",
+                "en": "a bit busy"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-06",
+                "B1L02-3-10",
+                "B1L04-2-08"
+              ],
+              "grammarIds": [
+                "B1L06-G03-P146"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-dialogue-bit-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這家店的冰淇淋好吃嗎？貴不貴？",
+              "simplified": "这家店的冰淇淋好吃吗？贵不贵？",
+              "pinyin": "Zhè jiā diàn de bīngqílín hǎochī ma? Guì bu guì?",
+              "english": "Is the ice cream at this shop good? Is it expensive?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "很好吃，也不太貴，可是有一點甜。",
+              "simplified": "很好吃，也不太贵，可是有一点甜。",
+              "pinyin": "Hěn hǎochī, yě bú tài guì, kěshì yǒu yìdiǎn tián.",
+              "english": "It's very good, and not too expensive, but it's a little sweet."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-bit-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得冰淇淋怎麼樣？",
+                "simplified": "女的觉得冰淇淋怎么样？",
+                "pinyin": "Nǚ de juéde bīngqílín zěnmeyàng?",
+                "english": "What does the woman think of the ice cream?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "太貴了",
+                  "simplified": "太贵了",
+                  "pinyin": "tài guì le",
+                  "english": "too expensive"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "有一點甜",
+                  "simplified": "有一点甜",
+                  "pinyin": "yǒu yìdiǎn tián",
+                  "english": "a little sweet"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不太好吃",
+                  "simplified": "不太好吃",
+                  "pinyin": "bú tài hǎochī",
+                  "english": "not very good"
+                }
+              ],
+              "key": 1,
+              "why": "可是有一點甜 means it is a little too sweet. She says 不太貴 (not too expensive), not 太貴, and 很好吃 (very good).",
+              "focus": {
+                "zh": "有一點甜",
+                "en": "a little sweet"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-06",
+                "B1L03-3-07",
+                "B1L05-1-11",
+                "B1L03-2-13"
+              ],
+              "grammarIds": [
+                "B1L06-G03-P146"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-where",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l06-dialogue-where-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "媽媽，我的籃球在哪裡？",
+              "simplified": "妈妈，我的篮球在哪里？",
+              "pinyin": "Māma, wǒ de lánqiú zài nǎlǐ?",
+              "english": "Mom, where's my basketball?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不在床下面，在門後面。",
+              "simplified": "不在床下面，在门后面。",
+              "pinyin": "Bú zài chuáng xiàmiàn, zài mén hòumiàn.",
+              "english": "Not under the bed. It's behind the door."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-where-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "籃球在哪裡？",
+                "simplified": "篮球在哪里？",
+                "pinyin": "Lánqiú zài nǎlǐ?",
+                "english": "Where is the basketball?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在門前面",
+                  "simplified": "在门前面",
+                  "pinyin": "zài mén qiánmiàn",
+                  "english": "in front of the door"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在床下面",
+                  "simplified": "在床下面",
+                  "pinyin": "zài chuáng xiàmiàn",
+                  "english": "under the bed"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在門後面",
+                  "simplified": "在门后面",
+                  "pinyin": "zài mén hòumiàn",
+                  "english": "behind the door"
+                }
+              ],
+              "key": 2,
+              "why": "She says 不在床下面 (not under the bed), then 在門後面: behind the door. 後面 is behind; 前面 is in front.",
+              "focus": {
+                "zh": "門後面",
+                "en": "behind the door"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-2-23",
+                "B1L05-3-06",
+                "B1L05-2-20"
+              ],
+              "grammarIds": [
+                "B1L05-G04-P124",
+                "B1L05-G01-P116"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-dialogue-where-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳爸爸現在在哪裡？",
+              "simplified": "你爸爸现在在哪里？",
+              "pinyin": "Nǐ bàba xiànzài zài nǎlǐ?",
+              "english": "Where is your dad now?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "他跟朋友在餐廳吃飯，九點回家。",
+              "simplified": "他跟朋友在餐厅吃饭，九点回家。",
+              "pinyin": "Tā gēn péngyǒu zài cāntīng chī fàn, jiǔ diǎn huí jiā.",
+              "english": "He's eating with friends at a restaurant. He'll be home at nine."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-where-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "爸爸現在在哪裡？",
+                "simplified": "爸爸现在在哪里？",
+                "pinyin": "Bàba xiànzài zài nǎlǐ?",
+                "english": "Where is the dad now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在家",
+                  "simplified": "在家",
+                  "pinyin": "zài jiā",
+                  "english": "at home"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在餐廳",
+                  "simplified": "在餐厅",
+                  "pinyin": "zài cāntīng",
+                  "english": "at a restaurant"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在朋友家",
+                  "simplified": "在朋友家",
+                  "pinyin": "zài péngyǒu jiā",
+                  "english": "at a friend's home"
+                }
+              ],
+              "key": 1,
+              "why": "他跟朋友在餐廳吃飯 puts him at a restaurant now. He is with friends, but not at a friend's home, and he goes home later, at nine.",
+              "focus": {
+                "zh": "在餐廳吃飯",
+                "en": "at a restaurant"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-1-03",
+                "B1L04-1-12",
+                "B1L05-2-01"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l06-dialogue-review-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "今天外面冷不冷？",
+              "simplified": "今天外面冷不冷？",
+              "pinyin": "Jīntiān wàimiàn lěng bu lěng?",
+              "english": "Is it cold outside today?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不太冷，昨天太冷了。",
+              "simplified": "不太冷，昨天太冷了。",
+              "pinyin": "Bú tài lěng, zuótiān tài lěng le.",
+              "english": "Not very. Yesterday was too cold."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-review-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "今天天氣怎麼樣？",
+                "simplified": "今天天气怎么样？",
+                "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+                "english": "What's the weather like today?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "太冷了",
+                  "simplified": "太冷了",
+                  "pinyin": "tài lěng le",
+                  "english": "too cold"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不太冷",
+                  "simplified": "不太冷",
+                  "pinyin": "bú tài lěng",
+                  "english": "not very cold"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "太熱了",
+                  "simplified": "太热了",
+                  "pinyin": "tài rè le",
+                  "english": "too hot"
+                }
+              ],
+              "key": 1,
+              "why": "He answers about today with 不太冷 (not very cold). 太冷了 (too cold) is what he says about yesterday.",
+              "focus": {
+                "zh": "不太冷",
+                "en": "not very cold"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-06",
+                "B1L04-1-14",
+                "B1L04-1-03",
+                "B1L02-2-02"
+              ],
+              "grammarIds": [
+                "B1L04-G03-P98"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-dialogue-review-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們星期五去看電影吧。",
+              "simplified": "我们星期五去看电影吧。",
+              "pinyin": "Wǒmen xīngqíwǔ qù kàn diànyǐng ba.",
+              "english": "Let's go see a movie on Friday."
+            },
+            {
+              "speaker": "M",
+              "traditional": "星期五我有課，星期六去，好嗎？",
+              "simplified": "星期五我有课，星期六去，好吗？",
+              "pinyin": "Xīngqíwǔ wǒ yǒu kè, xīngqíliù qù, hǎo ma?",
+              "english": "I have class on Friday. How about Saturday?"
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-review-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的想星期幾去看電影？",
+                "simplified": "男的想星期几去看电影？",
+                "pinyin": "Nán de xiǎng xīngqí jǐ qù kàn diànyǐng?",
+                "english": "Which day does the man want to see the movie?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期天",
+                  "simplified": "星期天",
+                  "pinyin": "xīngqítiān",
+                  "english": "Sunday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期五",
+                  "simplified": "星期五",
+                  "pinyin": "xīngqíwǔ",
+                  "english": "Friday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期六",
+                  "simplified": "星期六",
+                  "pinyin": "xīngqíliù",
+                  "english": "Saturday"
+                }
+              ],
+              "key": 2,
+              "why": "The man has class on 星期五 (Friday), so he asks to go on 星期六 (Saturday). Friday was the woman's idea.",
+              "focus": {
+                "zh": "星期六",
+                "en": "Saturday"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-11",
+                "B1L02-1-19",
+                "B1L02-1-17",
+                "B1L04-2-08"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-dialogue-review-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "弟弟生日，我們要送他什麼禮物？",
+              "simplified": "弟弟生日，我们要送他什么礼物？",
+              "pinyin": "Dìdi shēngrì, wǒmen yào sòng tā shénme lǐwù?",
+              "english": "It's our younger brother's birthday. What gift should we give him?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "他不喜歡打球，我們送他兩本書吧。",
+              "simplified": "他不喜欢打球，我们送他两本书吧。",
+              "pinyin": "Tā bù xǐhuān dǎ qiú, wǒmen sòng tā liǎng běn shū ba.",
+              "english": "He doesn't like playing ball. Let's give him two books."
+            }
+          ],
+          "answerLine": 1,
+          "questions": [
+            {
+              "id": "b1l06-dialogue-review-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的想送弟弟什麼？",
+                "simplified": "女的想送弟弟什么？",
+                "pinyin": "Nǚ de xiǎng sòng dìdi shénme?",
+                "english": "What does the woman want to give their younger brother?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "兩本書",
+                  "simplified": "两本书",
+                  "pinyin": "liǎng běn shū",
+                  "english": "two books"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一個球",
+                  "simplified": "一个球",
+                  "pinyin": "yí ge qiú",
+                  "english": "a ball"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一枝筆",
+                  "simplified": "一枝笔",
+                  "pinyin": "yì zhī bǐ",
+                  "english": "a pen"
+                }
+              ],
+              "key": 0,
+              "why": "送他兩本書 means give him two books. She says he doesn't like playing ball, so not a ball.",
+              "focus": {
+                "zh": "送他兩本書",
+                "en": "give him two books"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-08",
+                "B1L03-1-09",
+                "B1L03-1-07"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-race",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l06-read-race-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l06-read-race-1-q",
+              "prompt": {
+                "traditional": "哥哥跑得不太快，妹妹跑得很快。",
+                "simplified": "哥哥跑得不太快，妹妹跑得很快。",
+                "pinyin": "Gēge pǎo de bú tài kuài, mèimei pǎo de hěn kuài.",
+                "english": "The older brother doesn't run very fast; the younger sister runs very fast."
+              },
+              "choices": [
+                {
+                  "picture": "b1l06-race-1",
+                  "alt": "Sister ahead: the younger sister runs fast, far ahead of her older brother, who jogs slowly behind"
+                },
+                {
+                  "picture": "b1l06-race-2",
+                  "alt": "Brother ahead: the older brother runs fast, far ahead of his younger sister, who jogs slowly behind"
+                },
+                {
+                  "picture": "b1l06-race-3",
+                  "alt": "Side by side: the brother and sister both run fast, level with each other"
+                }
+              ],
+              "key": 0,
+              "why": "妹妹跑得很快 (the sister runs very fast) and 哥哥跑得不太快 (the brother is not very fast), so the sister is ahead.",
+              "focus": {
+                "zh": "跑得不太快",
+                "en": "not very fast"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-16",
+                "B1L06-1-14",
+                "B1L06-1-18",
+                "B1L04-1-14"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-read-race-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l06-read-race-2-q",
+              "prompt": {
+                "traditional": "哥哥跑步跑得很快，妹妹跑得很慢。",
+                "simplified": "哥哥跑步跑得很快，妹妹跑得很慢。",
+                "pinyin": "Gēge pǎobù pǎo de hěn kuài, mèimei pǎo de hěn màn.",
+                "english": "The older brother runs fast; the younger sister runs slowly."
+              },
+              "choices": [
+                {
+                  "picture": "b1l06-race-1",
+                  "alt": "Sister ahead: the younger sister runs fast, far ahead of her older brother, who jogs slowly behind"
+                },
+                {
+                  "picture": "b1l06-race-2",
+                  "alt": "Brother ahead: the older brother runs fast, far ahead of his younger sister, who jogs slowly behind"
+                },
+                {
+                  "picture": "b1l06-race-3",
+                  "alt": "Side by side: the brother and sister both run fast, level with each other"
+                }
+              ],
+              "key": 1,
+              "why": "哥哥跑步跑得很快 means the brother runs fast; the sister runs 很慢 (slowly), so the brother is ahead.",
+              "focus": {
+                "zh": "跑步跑得很快",
+                "en": "runs fast"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-15",
+                "B1L06-1-14",
+                "B1L06-1-18",
+                "B1L06-1-17"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-read-race-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l06-read-race-3-q",
+              "prompt": {
+                "traditional": "哥哥跑得很快，妹妹也跑得很快。",
+                "simplified": "哥哥跑得很快，妹妹也跑得很快。",
+                "pinyin": "Gēge pǎo de hěn kuài, mèimei yě pǎo de hěn kuài.",
+                "english": "The older brother runs fast, and the younger sister runs fast too."
+              },
+              "choices": [
+                {
+                  "picture": "b1l06-race-1",
+                  "alt": "Sister ahead: the younger sister runs fast, far ahead of her older brother, who jogs slowly behind"
+                },
+                {
+                  "picture": "b1l06-race-2",
+                  "alt": "Brother ahead: the older brother runs fast, far ahead of his younger sister, who jogs slowly behind"
+                },
+                {
+                  "picture": "b1l06-race-3",
+                  "alt": "Side by side: the brother and sister both run fast, level with each other"
+                }
+              ],
+              "key": 2,
+              "why": "也 means too: both run 很快, so they run side by side. In the other pictures one child jogs slowly.",
+              "focus": {
+                "zh": "也跑得很快",
+                "en": "both run fast"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-16",
+                "B1L06-1-14",
+                "B1L06-1-18",
+                "B1L04-1-08"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-outing",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l06-read-outing-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l06-read-outing-1-q",
+              "prompt": {
+                "traditional": "天氣太熱了，我們不去山上，去海邊吧！",
+                "simplified": "天气太热了，我们不去山上，去海边吧！",
+                "pinyin": "Tiānqì tài rè le, wǒmen bú qù shān shàng, qù hǎibiān ba!",
+                "english": "It's too hot. Let's not go to the mountains. Let's go to the beach!"
+              },
+              "choices": [
+                {
+                  "picture": "b1l06-outing-1",
+                  "alt": "Mountain: the two friends stand on a mountain path looking at the view"
+                },
+                {
+                  "picture": "b1l06-outing-2",
+                  "alt": "Movie theater: the two friends sit in a movie theater in front of the big screen"
+                },
+                {
+                  "picture": "b1l06-outing-3",
+                  "alt": "Beach: the two friends stand on the sand at the beach by the sea"
+                }
+              ],
+              "key": 2,
+              "why": "不去山上，去海邊 means not the mountains but the beach. The mountain is the place they decide against.",
+              "focus": {
+                "zh": "海邊",
+                "en": "the beach"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-08",
+                "B1L04-1-14",
+                "B1L04-1-05"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-read-outing-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l06-read-outing-2-q",
+              "prompt": {
+                "traditional": "今天天氣很好，我們不去看電影，去山上看風景吧。",
+                "simplified": "今天天气很好，我们不去看电影，去山上看风景吧。",
+                "pinyin": "Jīntiān tiānqì hěn hǎo, wǒmen bú qù kàn diànyǐng, qù shān shàng kàn fēngjǐng ba.",
+                "english": "The weather is nice today. Let's not see a movie. Let's go up the mountain to enjoy the view."
+              },
+              "choices": [
+                {
+                  "picture": "b1l06-outing-1",
+                  "alt": "Mountain: the two friends stand on a mountain path looking at the view"
+                },
+                {
+                  "picture": "b1l06-outing-2",
+                  "alt": "Movie theater: the two friends sit in a movie theater in front of the big screen"
+                },
+                {
+                  "picture": "b1l06-outing-3",
+                  "alt": "Beach: the two friends stand on the sand at the beach by the sea"
+                }
+              ],
+              "key": 0,
+              "why": "不去看電影 means no movie; 去山上看風景 means go up the mountain to see the view.",
+              "focus": {
+                "zh": "山上的風景",
+                "en": "the mountain view"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-10",
+                "B1L06-1-11",
+                "B1L06-2-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-read-outing-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l06-read-outing-3-q",
+              "prompt": {
+                "traditional": "今天有一點冷，海邊和山上我們都不去，去電影院吧。",
+                "simplified": "今天有一点冷，海边和山上我们都不去，去电影院吧。",
+                "pinyin": "Jīntiān yǒu yìdiǎn lěng, hǎibiān hé shān shàng wǒmen dōu bú qù, qù diànyǐngyuàn ba.",
+                "english": "It's a little cold today. We won't go to the beach or the mountains. Let's go to the movie theater."
+              },
+              "choices": [
+                {
+                  "picture": "b1l06-outing-1",
+                  "alt": "Mountain: the two friends stand on a mountain path looking at the view"
+                },
+                {
+                  "picture": "b1l06-outing-2",
+                  "alt": "Movie theater: the two friends sit in a movie theater in front of the big screen"
+                },
+                {
+                  "picture": "b1l06-outing-3",
+                  "alt": "Beach: the two friends stand on the sand at the beach by the sea"
+                }
+              ],
+              "key": 1,
+              "why": "海邊和山上我們都不去 rules out both the beach and the mountains; 去電影院吧 means go to the movie theater.",
+              "focus": {
+                "zh": "電影院",
+                "en": "movie theater"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-03",
+                "B1L06-1-08",
+                "B1L06-1-10",
+                "B1L03-2-19"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-beach",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l06-realia-beach-1",
+          "kind": "realia",
+          "picture": "b1l06-beach-sign",
+          "alt": "A sign at the beach: what you may and may not do there, with the swimming hours",
+          "transcript": {
+            "traditional": "海邊　可以：跑步、游泳　游泳：上午8:00～下午5:00　不可以：打棒球、騎腳踏車",
+            "simplified": "海边　可以：跑步、游泳　游泳：上午8:00～下午5:00　不可以：打棒球、骑脚踏车",
+            "pinyin": "Hǎibiān: kěyǐ: pǎobù, yóuyǒng; yóuyǒng: shàngwǔ 8:00～xiàwǔ 5:00; bù kěyǐ: dǎ bàngqiú, qí jiǎotàchē",
+            "english": "Beach. You may: jog, swim. Swimming: 8:00 a.m. to 5:00 p.m. You may not: play baseball, ride bikes."
+          },
+          "questions": [
+            {
+              "id": "b1l06-realia-beach-1-q",
+              "choices": [
+                {
+                  "traditional": "上午七點可以在海邊游泳。",
+                  "simplified": "上午七点可以在海边游泳。",
+                  "pinyin": "Shàngwǔ qī diǎn kěyǐ zài hǎibiān yóuyǒng.",
+                  "english": "You can swim at the beach at 7 a.m."
+                },
+                {
+                  "traditional": "下午三點可以在海邊游泳。",
+                  "simplified": "下午三点可以在海边游泳。",
+                  "pinyin": "Xiàwǔ sān diǎn kěyǐ zài hǎibiān yóuyǒng.",
+                  "english": "You can swim at the beach at 3 p.m."
+                },
+                {
+                  "traditional": "上午十點可以在海邊打棒球。",
+                  "simplified": "上午十点可以在海边打棒球。",
+                  "pinyin": "Shàngwǔ shí diǎn kěyǐ zài hǎibiān dǎ bàngqiú.",
+                  "english": "You can play baseball at the beach at 10 a.m."
+                }
+              ],
+              "key": 1,
+              "why": "The sign says 游泳：上午8:00～下午5:00: swimming is allowed from 8:00 a.m. to 5:00 p.m., so 3:00 p.m. is fine. 7:00 a.m. is too early, and baseball is under 不可以 at any time.",
+              "focus": {
+                "zh": "可以",
+                "en": "may (allowed)"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-14",
+                "B1L06-1-12",
+                "B1L06-1-08",
+                "B1L06-1-05"
+              ],
+              "grammarIds": [
+                "B1L06-G04-P147"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-realia-beach-2",
+          "kind": "realia",
+          "picture": "b1l06-beach-sign",
+          "alt": "A sign at the beach: what you may and may not do there, with the swimming hours",
+          "transcript": {
+            "traditional": "海邊　可以：跑步、游泳　游泳：上午8:00～下午5:00　不可以：打棒球、騎腳踏車",
+            "simplified": "海边　可以：跑步、游泳　游泳：上午8:00～下午5:00　不可以：打棒球、骑脚踏车",
+            "pinyin": "Hǎibiān: kěyǐ: pǎobù, yóuyǒng; yóuyǒng: shàngwǔ 8:00～xiàwǔ 5:00; bù kěyǐ: dǎ bàngqiú, qí jiǎotàchē",
+            "english": "Beach. You may: jog, swim. Swimming: 8:00 a.m. to 5:00 p.m. You may not: play baseball, ride bikes."
+          },
+          "questions": [
+            {
+              "id": "b1l06-realia-beach-2-q",
+              "prompt": {
+                "traditional": "在海邊可以做什麼？",
+                "simplified": "在海边可以做什么？",
+                "pinyin": "Zài hǎibiān kěyǐ zuò shénme?",
+                "english": "What may you do at the beach?"
+              },
+              "choices": [
+                {
+                  "traditional": "打棒球",
+                  "simplified": "打棒球",
+                  "pinyin": "dǎ bàngqiú",
+                  "english": "play baseball"
+                },
+                {
+                  "traditional": "騎腳踏車",
+                  "simplified": "骑脚踏车",
+                  "pinyin": "qí jiǎotàchē",
+                  "english": "ride a bike"
+                },
+                {
+                  "traditional": "跑步",
+                  "simplified": "跑步",
+                  "pinyin": "pǎobù",
+                  "english": "jog"
+                }
+              ],
+              "key": 2,
+              "why": "The sign lists 跑步 under 可以 (allowed). 打棒球 and 騎腳踏車 are under 不可以 (not allowed).",
+              "focus": {
+                "zh": "可以／不可以",
+                "en": "allowed or not"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-14",
+                "B1L06-1-15",
+                "B1L06-1-05",
+                "B1L06-2-15"
+              ],
+              "grammarIds": [
+                "B1L06-G04-P147"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-games",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l06-realia-games-1",
+          "kind": "realia",
+          "picture": "b1l06-games",
+          "alt": "A school poster listing three sports matches with their days and times",
+          "transcript": {
+            "traditional": "學校運動比賽　籃球 10月20日 星期五 下午3:00　足球 10月21日 星期六 上午9:00　棒球 10月22日 星期天 下午1:30",
+            "simplified": "学校运动比赛　篮球 10月20日 星期五 下午3:00　足球 10月21日 星期六 上午9:00　棒球 10月22日 星期天 下午1:30",
+            "pinyin": "Xuéxiào yùndòng bǐsài: lánqiú 10 yuè 20 rì xīngqíwǔ xiàwǔ 3:00; zúqiú 10 yuè 21 rì xīngqíliù shàngwǔ 9:00; bàngqiú 10 yuè 22 rì xīngqítiān xiàwǔ 1:30",
+            "english": "School sports matches: basketball, Fri Oct 20, 3:00 p.m.; soccer, Sat Oct 21, 9:00 a.m.; baseball, Sun Oct 22, 1:30 p.m."
+          },
+          "questions": [
+            {
+              "id": "b1l06-realia-games-1-q",
+              "choices": [
+                {
+                  "traditional": "籃球比賽是星期六上午。",
+                  "simplified": "篮球比赛是星期六上午。",
+                  "pinyin": "Lánqiú bǐsài shì xīngqíliù shàngwǔ.",
+                  "english": "The basketball match is on Saturday morning."
+                },
+                {
+                  "traditional": "足球比賽是星期五下午。",
+                  "simplified": "足球比赛是星期五下午。",
+                  "pinyin": "Zúqiú bǐsài shì xīngqíwǔ xiàwǔ.",
+                  "english": "The soccer match is on Friday afternoon."
+                },
+                {
+                  "traditional": "棒球比賽是星期天下午。",
+                  "simplified": "棒球比赛是星期天下午。",
+                  "pinyin": "Bàngqiú bǐsài shì xīngqítiān xiàwǔ.",
+                  "english": "The baseball match is on Sunday afternoon."
+                }
+              ],
+              "key": 2,
+              "why": "The baseball match is on 星期天 at 下午1:30. Basketball is Friday afternoon and soccer is Saturday morning.",
+              "focus": {
+                "zh": "星期天下午",
+                "en": "match day and time"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-3-13",
+                "B1L06-1-05",
+                "B1L06-1-04",
+                "B1L06-1-06"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-realia-games-2",
+          "kind": "realia",
+          "picture": "b1l06-games",
+          "alt": "A school poster listing three sports matches with their days and times",
+          "transcript": {
+            "traditional": "學校運動比賽　籃球 10月20日 星期五 下午3:00　足球 10月21日 星期六 上午9:00　棒球 10月22日 星期天 下午1:30",
+            "simplified": "学校运动比赛　篮球 10月20日 星期五 下午3:00　足球 10月21日 星期六 上午9:00　棒球 10月22日 星期天 下午1:30",
+            "pinyin": "Xuéxiào yùndòng bǐsài: lánqiú 10 yuè 20 rì xīngqíwǔ xiàwǔ 3:00; zúqiú 10 yuè 21 rì xīngqíliù shàngwǔ 9:00; bàngqiú 10 yuè 22 rì xīngqítiān xiàwǔ 1:30",
+            "english": "School sports matches: basketball, Fri Oct 20, 3:00 p.m.; soccer, Sat Oct 21, 9:00 a.m.; baseball, Sun Oct 22, 1:30 p.m."
+          },
+          "questions": [
+            {
+              "id": "b1l06-realia-games-2-q",
+              "prompt": {
+                "traditional": "今天是10月23日星期一，前天有什麼比賽？",
+                "simplified": "今天是10月23日星期一，前天有什么比赛？",
+                "pinyin": "Jīntiān shì 10 yuè 23 rì xīngqíyī, qiántiān yǒu shénme bǐsài?",
+                "english": "Today is Monday, October 23. Which match was the day before yesterday?"
+              },
+              "choices": [
+                {
+                  "traditional": "籃球比賽",
+                  "simplified": "篮球比赛",
+                  "pinyin": "lánqiú bǐsài",
+                  "english": "the basketball match"
+                },
+                {
+                  "traditional": "足球比賽",
+                  "simplified": "足球比赛",
+                  "pinyin": "zúqiú bǐsài",
+                  "english": "the soccer match"
+                },
+                {
+                  "traditional": "棒球比賽",
+                  "simplified": "棒球比赛",
+                  "pinyin": "bàngqiú bǐsài",
+                  "english": "the baseball match"
+                }
+              ],
+              "key": 1,
+              "why": "前天 is the day before yesterday: two days before Monday the 23rd is Saturday the 21st, the soccer match. Baseball on Sunday the 22nd was 昨天 (yesterday).",
+              "focus": {
+                "zh": "前天",
+                "en": "day before yesterday"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-20",
+                "B1L06-3-13",
+                "B1L06-1-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l06-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l06-beach",
+          "alt": "A sunny beach with green mountains behind: a girl swims in the sea, a young boy runs fast along the sand, two friends kick a soccer ball, two bikes stand by the path, and many people are on the beach.",
+          "questions": [
+            {
+              "id": "b1l06-scene-gap-1-a",
+              "prompt": {
+                "traditional": "我們去海邊＿＿足球吧！",
+                "simplified": "我们去海边＿＿足球吧！"
+              },
+              "choices": [
+                {
+                  "traditional": "打",
+                  "simplified": "打",
+                  "pinyin": "dǎ",
+                  "english": "to play (with the hands)"
+                },
+                {
+                  "traditional": "踢",
+                  "simplified": "踢",
+                  "pinyin": "tī",
+                  "english": "to kick"
+                },
+                {
+                  "traditional": "騎",
+                  "simplified": "骑",
+                  "pinyin": "qí",
+                  "english": "to ride"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "我們去海邊踢足球吧！",
+                "simplified": "我们去海边踢足球吧！",
+                "pinyin": "Wǒmen qù hǎibiān tī zúqiú ba!",
+                "english": "Let's go play soccer at the beach!"
+              },
+              "why": "You kick a soccer ball: 踢足球. 打 goes with basketball, baseball and tennis; 騎 goes with bikes.",
+              "focus": {
+                "zh": "踢足球",
+                "en": "play soccer"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-07",
+                "B1L06-1-06",
+                "B1L06-1-08"
+              ]
+            },
+            {
+              "id": "b1l06-scene-gap-1-b",
+              "prompt": {
+                "traditional": "我妹妹＿＿游泳，她常常去海邊游泳。",
+                "simplified": "我妹妹＿＿游泳，她常常去海边游泳。"
+              },
+              "choices": [
+                {
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bù",
+                  "english": "not"
+                },
+                {
+                  "traditional": "太",
+                  "simplified": "太",
+                  "pinyin": "tài",
+                  "english": "too"
+                },
+                {
+                  "traditional": "會",
+                  "simplified": "会",
+                  "pinyin": "huì",
+                  "english": "can (a learned skill)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "我妹妹會游泳，她常常去海邊游泳。",
+                "simplified": "我妹妹会游泳，她常常去海边游泳。",
+                "pinyin": "Wǒ mèimei huì yóuyǒng, tā chángcháng qù hǎibiān yóuyǒng.",
+                "english": "My younger sister can swim; she often swims at the beach."
+              },
+              "why": "She often swims, so she 會游泳 (can swim). 不 would contradict the second part, and 太 can't go before a verb like 游泳.",
+              "focus": {
+                "zh": "會游泳",
+                "en": "can swim"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-13",
+                "B1L06-1-12",
+                "B1L05-2-18"
+              ],
+              "grammarIds": [
+                "B1L06-G01-P135"
+              ]
+            },
+            {
+              "id": "b1l06-scene-gap-1-c",
+              "prompt": {
+                "traditional": "今天海邊＿＿很多人。",
+                "simplified": "今天海边＿＿很多人。"
+              },
+              "choices": [
+                {
+                  "traditional": "有",
+                  "simplified": "有",
+                  "pinyin": "yǒu",
+                  "english": "there is / there are"
+                },
+                {
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "english": "to be at"
+                },
+                {
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "english": "to be"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "今天海邊有很多人。",
+                "simplified": "今天海边有很多人。",
+                "pinyin": "Jīntiān hǎibiān yǒu hěn duō rén.",
+                "english": "There are many people at the beach today."
+              },
+              "why": "Place + 有 + things says what is there: 海邊有很多人. 在 needs the person first (人在海邊).",
+              "focus": {
+                "zh": "地方＋有",
+                "en": "there are … at a place"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-14",
+                "B1L06-1-08"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l06-beach",
+          "alt": "A sunny beach with green mountains behind: a girl swims in the sea, a young boy runs fast along the sand, two friends kick a soccer ball, two bikes stand by the path, and many people are on the beach.",
+          "questions": [
+            {
+              "id": "b1l06-scene-gap-2-a",
+              "prompt": {
+                "traditional": "那個孩子跑＿＿很快。",
+                "simplified": "那个孩子跑＿＿很快。"
+              },
+              "choices": [
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "english": "possessive particle"
+                },
+                {
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "english": "particle before how well"
+                },
+                {
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "english": "particle"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "那個孩子跑得很快。",
+                "simplified": "那个孩子跑得很快。",
+                "pinyin": "Nàge háizi pǎo de hěn kuài.",
+                "english": "That child runs very fast."
+              },
+              "why": "Verb + 得 + description tells how well someone does it: 跑得很快.",
+              "focus": {
+                "zh": "跑得很快",
+                "en": "runs fast"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-14",
+                "B1L06-1-16",
+                "B1L06-1-18"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            },
+            {
+              "id": "b1l06-scene-gap-2-b",
+              "prompt": {
+                "traditional": "我們可以＿＿腳踏車去海邊。",
+                "simplified": "我们可以＿＿脚踏车去海边。"
+              },
+              "choices": [
+                {
+                  "traditional": "騎",
+                  "simplified": "骑",
+                  "pinyin": "qí",
+                  "english": "to ride"
+                },
+                {
+                  "traditional": "打",
+                  "simplified": "打",
+                  "pinyin": "dǎ",
+                  "english": "to play (with the hands)"
+                },
+                {
+                  "traditional": "踢",
+                  "simplified": "踢",
+                  "pinyin": "tī",
+                  "english": "to kick"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "我們可以騎腳踏車去海邊。",
+                "simplified": "我们可以骑脚踏车去海边。",
+                "pinyin": "Wǒmen kěyǐ qí jiǎotàchē qù hǎibiān.",
+                "english": "We can ride bikes to the beach."
+              },
+              "why": "You ride a bike: 騎腳踏車. 打 and 踢 go with balls.",
+              "focus": {
+                "zh": "騎腳踏車",
+                "en": "ride a bike"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-15",
+                "B1L06-2-16",
+                "B1L06-2-14"
+              ],
+              "grammarIds": [
+                "B1L06-G04-P147"
+              ]
+            },
+            {
+              "id": "b1l06-scene-gap-2-c",
+              "prompt": {
+                "traditional": "週末我常常＿＿朋友去海邊。",
+                "simplified": "周末我常常＿＿朋友去海边。"
+              },
+              "choices": [
+                {
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "english": "also"
+                },
+                {
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "english": "all"
+                },
+                {
+                  "traditional": "跟",
+                  "simplified": "跟",
+                  "pinyin": "gēn",
+                  "english": "with"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "週末我常常跟朋友去海邊。",
+                "simplified": "周末我常常跟朋友去海边。",
+                "pinyin": "Zhōumò wǒ chángcháng gēn péngyǒu qù hǎibiān.",
+                "english": "On weekends I often go to the beach with friends."
+              },
+              "why": "跟 + person means with someone: 跟朋友去 means go with friends. 也 and 都 can't come before a person like this.",
+              "focus": {
+                "zh": "跟朋友",
+                "en": "with friends"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-2-01",
+                "B1L01-3-02",
+                "B1L02-2-03"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l06-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我的興趣是游泳和看電影。我每天早上都去游泳，游{1}很好。週末我{2}跟朋友去電影院。聽說這{3}新電影很有趣，我們星期六要去看，我{4}高興！",
+            "simplified": "我的兴趣是游泳和看电影。我每天早上都去游泳，游{1}很好。周末我{2}跟朋友去电影院。听说这{3}新电影很有趣，我们星期六要去看，我{4}高兴！",
+            "pinyin": "Wǒ de xìngqù shì yóuyǒng hé kàn diànyǐng. Wǒ měi tiān zǎoshàng dōu qù yóuyǒng, yóu de hěn hǎo. Zhōumò wǒ yǒushíhòu gēn péngyǒu qù diànyǐngyuàn. Tīngshuō zhè bù xīn diànyǐng hěn yǒuqù, wǒmen xīngqíliù yào qù kàn, wǒ zhēn gāoxìng!",
+            "english": "My hobbies are swimming and watching movies. I go swimming every morning, and I swim very well. On weekends I sometimes go to the movie theater with friends. I hear this new movie is very interesting. We're going to see it on Saturday, and I'm really happy!"
+          },
+          "bank": [
+            {
+              "traditional": "真",
+              "simplified": "真",
+              "pinyin": "zhēn",
+              "english": "really"
+            },
+            {
+              "traditional": "部",
+              "simplified": "部",
+              "pinyin": "bù",
+              "english": "measure word for movies"
+            },
+            {
+              "traditional": "有時候",
+              "simplified": "有时候",
+              "pinyin": "yǒushíhòu",
+              "english": "sometimes"
+            },
+            {
+              "traditional": "輛",
+              "simplified": "辆",
+              "pinyin": "liàng",
+              "english": "measure word for vehicles"
+            },
+            {
+              "traditional": "得",
+              "simplified": "得",
+              "pinyin": "de",
+              "english": "particle before how well"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-paragraph-1-1",
+              "key": 4,
+              "why": "Verb + 得 + description tells how well: 游得很好 means swims very well.",
+              "focus": {
+                "zh": "游得很好",
+                "en": "swims well"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-14",
+                "B1L06-1-12"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            },
+            {
+              "id": "b1l06-paragraph-1-2",
+              "key": 2,
+              "why": "有時候 means sometimes: 週末我有時候跟朋友去 = on weekends I sometimes go with friends.",
+              "focus": {
+                "zh": "有時候",
+                "en": "sometimes"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-3-12"
+              ]
+            },
+            {
+              "id": "b1l06-paragraph-1-3",
+              "key": 1,
+              "why": "部 is the measure word for movies: 這部電影. 輛 is for bikes and cars.",
+              "focus": {
+                "zh": "這部電影",
+                "en": "this movie"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-02",
+                "B1L06-2-01"
+              ]
+            },
+            {
+              "id": "b1l06-paragraph-1-4",
+              "key": 0,
+              "why": "真 + adjective means really: 我真高興 means I'm really happy.",
+              "focus": {
+                "zh": "真高興",
+                "en": "really happy"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-3-14",
+                "B1L06-3-15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "今天是星期五，{1}是星期天。朋友覺得山上的風景{2}漂亮了，我和姐姐想去看。我{3}山上晚上有一點冷，姐姐說我們星期天早上{4}去，下午回家。",
+            "simplified": "今天是星期五，{1}是星期天。朋友觉得山上的风景{2}漂亮了，我和姐姐想去看。我{3}山上晚上有一点冷，姐姐说我们星期天早上{4}去，下午回家。",
+            "pinyin": "Jīntiān shì xīngqíwǔ, hòutiān shì xīngqítiān. Péngyǒu juéde shān shàng de fēngjǐng tài piàoliàng le, wǒ hé jiějie xiǎng qù kàn. Wǒ tīngshuō shān shàng wǎnshàng yǒu yìdiǎn lěng, jiějie shuō wǒmen xīngqítiān zǎoshàng yīnggāi qù, xiàwǔ huí jiā.",
+            "english": "Today is Friday, so the day after tomorrow is Sunday. A friend thinks the view on the mountain is so beautiful, so my older sister and I want to go and see it. I've heard it's a little cold on the mountain in the evening, so my sister says we should go on Sunday morning and come home in the afternoon."
+          },
+          "bank": [
+            {
+              "traditional": "應該",
+              "simplified": "应该",
+              "pinyin": "yīnggāi",
+              "english": "should"
+            },
+            {
+              "traditional": "前天",
+              "simplified": "前天",
+              "pinyin": "qiántiān",
+              "english": "the day before yesterday"
+            },
+            {
+              "traditional": "太",
+              "simplified": "太",
+              "pinyin": "tài",
+              "english": "too; so"
+            },
+            {
+              "traditional": "後天",
+              "simplified": "后天",
+              "pinyin": "hòutiān",
+              "english": "the day after tomorrow"
+            },
+            {
+              "traditional": "聽說",
+              "simplified": "听说",
+              "pinyin": "tīngshuō",
+              "english": "to hear (that)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l06-paragraph-2-1",
+              "key": 3,
+              "why": "Two days after Friday is Sunday, so 後天是星期天. 前天 would be Wednesday.",
+              "focus": {
+                "zh": "後天",
+                "en": "day after tomorrow"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-19",
+                "B1L06-2-20",
+                "B1L02-1-15"
+              ]
+            },
+            {
+              "id": "b1l06-paragraph-2-2",
+              "key": 2,
+              "why": "太 goes with 了 at the end: 太漂亮了 means so beautiful. The friend loves the view, so the sisters want to see it.",
+              "focus": {
+                "zh": "太…了",
+                "en": "so …!"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-14",
+                "B1L04-1-20"
+              ],
+              "grammarIds": [
+                "B1L04-G03-P98"
+              ]
+            },
+            {
+              "id": "b1l06-paragraph-2-3",
+              "key": 4,
+              "why": "我聽說 + a whole sentence means I've heard that: the writer has not been up the mountain yet, so this comes from other people. 應該 can't come right after 我 here, because no verb follows it.",
+              "focus": {
+                "zh": "聽說",
+                "en": "to hear (that)"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-21"
+              ]
+            },
+            {
+              "id": "b1l06-paragraph-2-4",
+              "key": 0,
+              "why": "應該 comes right before the verb 去: 星期天早上應該去 means we should go on Sunday morning, before the cold evening. 後天 and 前天 are time words and can't sit between 早上 and 去.",
+              "focus": {
+                "zh": "應該",
+                "en": "should"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-12",
+                "B1L02-1-16"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l06-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n你的手機不在客廳，在我房間的桌子上。我現在在圖書館看書，六點回家。\n哥哥",
+            "simplified": "中明：\n你的手机不在客厅，在我房间的桌子上。我现在在图书馆看书，六点回家。\n哥哥",
+            "pinyin": "Zhōngmíng: Nǐ de shǒujī bú zài kètīng, zài wǒ fángjiān de zhuōzi shàng. Wǒ xiànzài zài túshūguǎn kàn shū, liù diǎn huí jiā. Gēge",
+            "english": "Zhongming: Your phone isn't in the living room; it's on the table in my room. I'm reading at the library now and will be home at six. Your brother"
+          },
+          "questions": [
+            {
+              "id": "b1l06-reading-note-1-q",
+              "prompt": {
+                "traditional": "中明的手機在哪裡？",
+                "simplified": "中明的手机在哪里？",
+                "pinyin": "Zhōngmíng de shǒujī zài nǎlǐ?",
+                "english": "Where is Zhongming's phone?"
+              },
+              "choices": [
+                {
+                  "traditional": "在客廳的桌子上",
+                  "simplified": "在客厅的桌子上",
+                  "pinyin": "zài kètīng de zhuōzi shàng",
+                  "english": "on the living-room table"
+                },
+                {
+                  "traditional": "在哥哥房間的桌子上",
+                  "simplified": "在哥哥房间的桌子上",
+                  "pinyin": "zài gēge fángjiān de zhuōzi shàng",
+                  "english": "on the table in his brother's room"
+                },
+                {
+                  "traditional": "在中明房間的桌子上",
+                  "simplified": "在中明房间的桌子上",
+                  "pinyin": "zài Zhōngmíng fángjiān de zhuōzi shàng",
+                  "english": "on the table in Zhongming's room"
+                }
+              ],
+              "key": 1,
+              "why": "The note is signed 哥哥, so 我房間 is the brother's room: the phone is on the table there. It is 不在客廳, and the writer 我 is not Zhongming.",
+              "focus": {
+                "zh": "在…上",
+                "en": "where something is"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L05-2-03",
+                "B1L05-2-09",
+                "B1L05-2-15"
+              ],
+              "grammarIds": [
+                "B1L05-G01-P116",
+                "B1L05-G04-P124"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l06-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "姐姐：\n我今天下午有課，四點四十分下課。媽媽說我們晚上七點吃晚飯，妳六點半回家，好不好？\n妹妹",
+            "simplified": "姐姐：\n我今天下午有课，四点四十分下课。妈妈说我们晚上七点吃晚饭，你六点半回家，好不好？\n妹妹",
+            "pinyin": "Jiějie: Wǒ jīntiān xiàwǔ yǒu kè, sì diǎn sìshí fēn xiàkè. Māma shuō wǒmen wǎnshàng qī diǎn chī wǎnfàn, nǐ liù diǎn bàn huí jiā, hǎo bu hǎo? Mèimei",
+            "english": "Big sister: I have class this afternoon and finish at 4:40. Mom says we'll have dinner at seven this evening. Can you come home at six thirty? Your little sister"
+          },
+          "questions": [
+            {
+              "id": "b1l06-reading-note-2-q",
+              "prompt": {
+                "traditional": "媽媽說幾點吃晚飯？",
+                "simplified": "妈妈说几点吃晚饭？",
+                "pinyin": "Māma shuō jǐ diǎn chī wǎnfàn?",
+                "english": "What time does Mom say dinner is?"
+              },
+              "choices": [
+                {
+                  "traditional": "四點四十分",
+                  "simplified": "四点四十分",
+                  "pinyin": "sì diǎn sìshí fēn",
+                  "english": "4:40"
+                },
+                {
+                  "traditional": "六點半",
+                  "simplified": "六点半",
+                  "pinyin": "liù diǎn bàn",
+                  "english": "6:30"
+                },
+                {
+                  "traditional": "七點",
+                  "simplified": "七点",
+                  "pinyin": "qī diǎn",
+                  "english": "7:00"
+                }
+              ],
+              "key": 2,
+              "why": "媽媽說我們晚上七點吃晚飯: dinner is at seven. 四點四十分 is when class ends, and 六點半 is when her sister should come home.",
+              "focus": {
+                "zh": "晚上七點",
+                "en": "seven in the evening"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-06",
+                "B1L02-1-02",
+                "B1L02-2-10"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

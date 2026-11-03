@@ -1,0 +1,2406 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l15",
+  "bookId": 1,
+  "lessonId": 15,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "宜文",
+    "友美",
+    "國安",
+    "元真"
+  ],
+  "slots": [
+    {
+      "id": "hear-card",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l15-hear-card-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "朋友送了我一張卡片，上面有一隻猴子。",
+              "simplified": "朋友送了我一张卡片，上面有一只猴子。",
+              "pinyin": "Péngyǒu sòng le wǒ yì zhāng kǎpiàn, shàngmiàn yǒu yì zhī hóuzi.",
+              "english": "A friend gave me a card with a monkey on it."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-hear-card-1-q",
+              "choices": [
+                {
+                  "picture": "b1l15-card-1",
+                  "alt": "Monkey card: the young woman holds up a card with a monkey on it"
+                },
+                {
+                  "picture": "b1l15-card-2",
+                  "alt": "Snake card: the young woman holds up a card with a snake on it"
+                },
+                {
+                  "picture": "b1l15-card-3",
+                  "alt": "Pig card: the young woman holds up a card with a pig on it"
+                }
+              ],
+              "key": 0,
+              "why": "上面有一隻猴子: the animal on her card is a monkey (猴子), not a snake (蛇) or a pig (豬).",
+              "focus": {
+                "zh": "猴子",
+                "en": "monkey"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-3-13",
+                "B1L11-1-04"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-hear-card-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我妹妹手裡拿著一張卡片，上面畫著一條蛇。",
+              "simplified": "我妹妹手里拿着一张卡片，上面画着一条蛇。",
+              "pinyin": "Wǒ mèimei shǒu lǐ názhe yì zhāng kǎpiàn, shàngmiàn huàzhe yì tiáo shé.",
+              "english": "My younger sister is holding a card with a snake drawn on it."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-hear-card-2-q",
+              "choices": [
+                {
+                  "picture": "b1l15-card-1",
+                  "alt": "Monkey card: the young woman holds up a card with a monkey on it"
+                },
+                {
+                  "picture": "b1l15-card-2",
+                  "alt": "Snake card: the young woman holds up a card with a snake on it"
+                },
+                {
+                  "picture": "b1l15-card-3",
+                  "alt": "Pig card: the young woman holds up a card with a pig on it"
+                }
+              ],
+              "key": 1,
+              "why": "上面畫著一條蛇: a snake (蛇) is drawn on the card. 條 counts long animals; the monkey and the pig would take 隻.",
+              "focus": {
+                "zh": "一條蛇",
+                "en": "a snake"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-3-12",
+                "B1L15-2-01",
+                "B1L11-1-04"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-hear-card-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳手裡的卡片上是什麼動物？",
+              "simplified": "你手里的卡片上是什么动物？",
+              "pinyin": "Nǐ shǒu lǐ de kǎpiàn shàng shì shénme dòngwù?",
+              "english": "What animal is on the card in your hand?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "是一隻豬，很可愛吧？",
+              "simplified": "是一只猪，很可爱吧？",
+              "pinyin": "Shì yì zhī zhū, hěn kě'ài ba?",
+              "english": "It's a pig. Cute, isn't it?"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-hear-card-3-q",
+              "choices": [
+                {
+                  "picture": "b1l15-card-1",
+                  "alt": "Monkey card: the young woman holds up a card with a monkey on it"
+                },
+                {
+                  "picture": "b1l15-card-2",
+                  "alt": "Snake card: the young woman holds up a card with a snake on it"
+                },
+                {
+                  "picture": "b1l15-card-3",
+                  "alt": "Pig card: the young woman holds up a card with a pig on it"
+                }
+              ],
+              "key": 2,
+              "why": "She answers 是一隻豬: the animal on the card is a pig (豬).",
+              "focus": {
+                "zh": "豬",
+                "en": "pig"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-3-15",
+                "B1L15-1-04"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-open",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l15-hear-open-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "哥哥一回家就打開電腦。",
+              "simplified": "哥哥一回家就打开电脑。",
+              "pinyin": "Gēge yì huí jiā jiù dǎkāi diànnǎo.",
+              "english": "As soon as my older brother gets home, he turns on his computer."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-hear-open-1-q",
+              "choices": [
+                {
+                  "picture": "b1l15-open-1",
+                  "alt": "Laptop: the young man, just home, opens the laptop on his desk"
+                },
+                {
+                  "picture": "b1l15-open-2",
+                  "alt": "Textbook: the young man, just home, opens the textbook on his desk"
+                },
+                {
+                  "picture": "b1l15-open-3",
+                  "alt": "Juice: the young man, just home, opens a bottle of juice at his desk"
+                }
+              ],
+              "key": 0,
+              "why": "一回家就打開電腦: the first thing he does at home is turn on the computer (電腦).",
+              "focus": {
+                "zh": "一…就…",
+                "en": "as soon as"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-05",
+                "B1L06-2-09"
+              ],
+              "grammarIds": [
+                "B1L15-G03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-hear-open-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你一回家就做什麼？",
+              "simplified": "你一回家就做什么？",
+              "pinyin": "Nǐ yì huí jiā jiù zuò shénme?",
+              "english": "What do you do as soon as you get home?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我一回家就打開課本，看課文。",
+              "simplified": "我一回家就打开课本，看课文。",
+              "pinyin": "Wǒ yì huí jiā jiù dǎkāi kèběn, kàn kèwén.",
+              "english": "As soon as I get home, I open my textbook and read the lesson text."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-hear-open-2-q",
+              "choices": [
+                {
+                  "picture": "b1l15-open-1",
+                  "alt": "Laptop: the young man, just home, opens the laptop on his desk"
+                },
+                {
+                  "picture": "b1l15-open-2",
+                  "alt": "Textbook: the young man, just home, opens the textbook on his desk"
+                },
+                {
+                  "picture": "b1l15-open-3",
+                  "alt": "Juice: the young man, just home, opens a bottle of juice at his desk"
+                }
+              ],
+              "key": 1,
+              "why": "一回家就打開課本: as soon as he gets home he opens his textbook (課本), not the computer or a drink.",
+              "focus": {
+                "zh": "打開課本",
+                "en": "opening the textbook"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-05",
+                "B1L15-1-06",
+                "B1L15-1-07"
+              ],
+              "grammarIds": [
+                "B1L15-G03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-hear-open-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我一回家就打開一瓶果汁。",
+              "simplified": "我一回家就打开一瓶果汁。",
+              "pinyin": "Wǒ yì huí jiā jiù dǎkāi yì píng guǒzhī.",
+              "english": "As soon as I get home, I open a bottle of juice."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-hear-open-3-q",
+              "choices": [
+                {
+                  "picture": "b1l15-open-1",
+                  "alt": "Laptop: the young man, just home, opens the laptop on his desk"
+                },
+                {
+                  "picture": "b1l15-open-2",
+                  "alt": "Textbook: the young man, just home, opens the textbook on his desk"
+                },
+                {
+                  "picture": "b1l15-open-3",
+                  "alt": "Juice: the young man, just home, opens a bottle of juice at his desk"
+                }
+              ],
+              "key": 2,
+              "why": "一回家就打開一瓶果汁: the first thing he opens at home is a bottle of juice (果汁), not the computer or the textbook.",
+              "focus": {
+                "zh": "打開一瓶果汁",
+                "en": "opening a bottle of juice"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-05",
+                "B1L04-2-06",
+                "B1L04-3-06"
+              ],
+              "grammarIds": [
+                "B1L15-G03"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-lantern",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l15-picture-lantern-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L15-R02",
+            "alt": "Night on a walkway under hanging red lanterns, the sky dark blue: Zhongming (the boy: curly black hair, yellow shirt) holds up a glowing tiger-shaped lantern by its handle; Yiwen (the girl: black ponytail, teal jacket) leans in and looks at it. Her hands are empty: one rests on her knee, away from the lantern."
+          },
+          "questions": [
+            {
+              "id": "b1l15-picture-lantern-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中明手裡拿著一個兔子燈籠。",
+                  "simplified": "中明手里拿着一个兔子灯笼。",
+                  "pinyin": "Zhōngmíng shǒu lǐ názhe yí ge tùzi dēnglóng.",
+                  "english": "Zhongming is holding a rabbit lantern."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明手裡拿著一個老虎燈籠。",
+                  "simplified": "中明手里拿着一个老虎灯笼。",
+                  "pinyin": "Zhōngmíng shǒu lǐ názhe yí ge lǎohǔ dēnglóng.",
+                  "english": "Zhongming is holding a tiger lantern."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明手裡拿著一個猴子燈籠。",
+                  "simplified": "中明手里拿着一个猴子灯笼。",
+                  "pinyin": "Zhōngmíng shǒu lǐ názhe yí ge hóuzi dēnglóng.",
+                  "english": "Zhongming is holding a monkey lantern."
+                }
+              ],
+              "key": 1,
+              "why": "The lantern in Zhongming's hand has tiger stripes and tiger ears: 老虎燈籠. It is not a rabbit (兔子) or a monkey (猴子).",
+              "focus": {
+                "zh": "老虎燈籠",
+                "en": "a tiger lantern"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-01",
+                "B1L15-2-02",
+                "B1L15-2-10",
+                "B1L14-2-16"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-picture-lantern-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L15-R02",
+            "alt": "Night on a walkway under hanging red lanterns, the sky dark blue: Zhongming (the boy: curly black hair, yellow shirt) holds up a glowing tiger-shaped lantern by its handle; Yiwen (the girl: black ponytail, teal jacket) leans in and looks at it. Her hands are empty: one rests on her knee, away from the lantern."
+          },
+          "questions": [
+            {
+              "id": "b1l15-picture-lantern-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "現在是中午，中明拿著燈籠。",
+                  "simplified": "现在是中午，中明拿着灯笼。",
+                  "pinyin": "Xiànzài shì zhōngwǔ, Zhōngmíng názhe dēnglóng.",
+                  "english": "It's noon, and Zhongming is holding the lantern."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是晚上，宜文拿著燈籠。",
+                  "simplified": "现在是晚上，宜文拿着灯笼。",
+                  "pinyin": "Xiànzài shì wǎnshàng, Yíwén názhe dēnglóng.",
+                  "english": "It's night, and Yiwen is holding the lantern."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是晚上，宜文看著燈籠。",
+                  "simplified": "现在是晚上，宜文看着灯笼。",
+                  "pinyin": "Xiànzài shì wǎnshàng, Yíwén kànzhe dēnglóng.",
+                  "english": "It's night, and Yiwen is looking at the lantern."
+                }
+              ],
+              "key": 2,
+              "why": "The sky is dark and the lanterns are lit, so it is 晚上, not 中午. Yiwen's hands are empty: she 看著 (is looking at) the lantern, and Zhongming is the one holding it.",
+              "focus": {
+                "zh": "看著／拿著",
+                "en": "looking vs holding"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-01",
+                "B1L15-2-02",
+                "B1L14-2-16",
+                "B1L02-2-10"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-race",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l15-picture-race-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L15-R03",
+            "alt": "The zodiac animals race across a river on a sunny day: the rat has already reached the bank and cheers; the ox is stepping out of the water just behind it, clearly in second place; a body length back come the tiger and the rabbit, the dragon and the snake, the horse, the goat, the monkey, the rooster and the dog; the pig swims far behind, last of all."
+          },
+          "questions": [
+            {
+              "id": "b1l15-picture-race-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "第一個過河的是牛。",
+                  "simplified": "第一个过河的是牛。",
+                  "pinyin": "Dì yī ge guò hé de shì niú.",
+                  "english": "The first one across the river is the ox."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "第一個過河的是老鼠。",
+                  "simplified": "第一个过河的是老鼠。",
+                  "pinyin": "Dì yī ge guò hé de shì lǎoshǔ.",
+                  "english": "The first one across the river is the rat."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "第一個過河的是兔子。",
+                  "simplified": "第一个过河的是兔子。",
+                  "pinyin": "Dì yī ge guò hé de shì tùzi.",
+                  "english": "The first one across the river is the rabbit."
+                }
+              ],
+              "key": 1,
+              "why": "The rat (老鼠) is already on the bank, cheering. The ox is still stepping out of the water, and the rabbit is still in the water.",
+              "focus": {
+                "zh": "過河",
+                "en": "crossing the river"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-3-11",
+                "B1L15-3-04",
+                "B1L13-3-07",
+                "B1L13-3-08"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-picture-race-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L15-R03",
+            "alt": "The zodiac animals race across a river on a sunny day: the rat has already reached the bank and cheers; the ox is stepping out of the water just behind it, clearly in second place; a body length back come the tiger and the rabbit, the dragon and the snake, the horse, the goat, the monkey, the rooster and the dog; the pig swims far behind, last of all."
+          },
+          "questions": [
+            {
+              "id": "b1l15-picture-race-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "現在排第二的是老虎。",
+                  "simplified": "现在排第二的是老虎。",
+                  "pinyin": "Xiànzài pái dì èr de shì lǎohǔ.",
+                  "english": "The tiger is in second place now."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在排第二的是兔子。",
+                  "simplified": "现在排第二的是兔子。",
+                  "pinyin": "Xiànzài pái dì èr de shì tùzi.",
+                  "english": "The rabbit is in second place now."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在排第二的是牛。",
+                  "simplified": "现在排第二的是牛。",
+                  "pinyin": "Xiànzài pái dì èr de shì niú.",
+                  "english": "The ox is in second place now."
+                }
+              ],
+              "key": 2,
+              "why": "The rat is first, already on the bank. Right behind it the big ox (牛) is stepping out of the water, so the ox is second (排第二). The tiger and the rabbit come after the ox.",
+              "focus": {
+                "zh": "排第二",
+                "en": "second place"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-3-09",
+                "B1L13-3-08",
+                "B1L14-2-10",
+                "B1L15-2-10"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-sign",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l15-dialogue-sign-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你屬什麼？你妹妹呢？",
+              "simplified": "你属什么？你妹妹呢？",
+              "pinyin": "Nǐ shǔ shénme? Nǐ mèimei ne?",
+              "english": "What's your zodiac sign? And your younger sister's?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我是馬年出生的，我妹妹屬羊。",
+              "simplified": "我是马年出生的，我妹妹属羊。",
+              "pinyin": "Wǒ shì mǎ nián chūshēng de, wǒ mèimei shǔ yáng.",
+              "english": "I was born in the Year of the Horse, and my younger sister is a Goat."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-sign-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男生屬什麼？",
+                "simplified": "男生属什么？",
+                "pinyin": "Nánshēng shǔ shénme?",
+                "english": "What is the man's zodiac sign?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "屬羊",
+                  "simplified": "属羊",
+                  "pinyin": "shǔ yáng",
+                  "english": "the Goat"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "屬馬",
+                  "simplified": "属马",
+                  "pinyin": "shǔ mǎ",
+                  "english": "the Horse"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "屬猴",
+                  "simplified": "属猴",
+                  "pinyin": "shǔ hóu",
+                  "english": "the Monkey"
+                }
+              ],
+              "key": 1,
+              "why": "He says 我是馬年出生的: born in the Year of the Horse, so he is a Horse. 屬羊 is his younger sister.",
+              "focus": {
+                "zh": "屬",
+                "en": "zodiac sign"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-14",
+                "B1L15-1-19",
+                "B1L15-1-18",
+                "B1L15-1-13"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-dialogue-sign-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳的生肖跟妳姐姐的一樣嗎？",
+              "simplified": "你的生肖跟你姐姐的一样吗？",
+              "pinyin": "Nǐ de shēngxiào gēn nǐ jiějie de yíyàng ma?",
+              "english": "Is your zodiac sign the same as your older sister's?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不一樣，我屬蛇，她屬龍。",
+              "simplified": "不一样，我属蛇，她属龙。",
+              "pinyin": "Bù yíyàng, wǒ shǔ shé, tā shǔ lóng.",
+              "english": "No, they're different. I'm a Snake and she's a Dragon."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-sign-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生屬什麼？",
+                "simplified": "女生属什么？",
+                "pinyin": "Nǚshēng shǔ shénme?",
+                "english": "What is the woman's zodiac sign?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "屬龍",
+                  "simplified": "属龙",
+                  "pinyin": "shǔ lóng",
+                  "english": "the Dragon"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "屬虎",
+                  "simplified": "属虎",
+                  "pinyin": "shǔ hǔ",
+                  "english": "the Tiger"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "屬蛇",
+                  "simplified": "属蛇",
+                  "pinyin": "shǔ shé",
+                  "english": "the Snake"
+                }
+              ],
+              "key": 2,
+              "why": "She says 不一樣: she is a Snake (我屬蛇); the Dragon is her sister.",
+              "focus": {
+                "zh": "跟…不一樣",
+                "en": "not the same as"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-10",
+                "B1L15-1-01",
+                "B1L15-3-12",
+                "B1L15-1-21"
+              ],
+              "grammarIds": [
+                "B1L15-G01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-dialogue-sign-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳屬雞嗎？",
+              "simplified": "你属鸡吗？",
+              "pinyin": "Nǐ shǔ jī ma?",
+              "english": "Are you a Rooster?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我屬豬，我哥哥屬雞。",
+              "simplified": "不是，我属猪，我哥哥属鸡。",
+              "pinyin": "Bú shì, wǒ shǔ zhū, wǒ gēge shǔ jī.",
+              "english": "No, I'm a Pig. My older brother is a Rooster."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-sign-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女生的哥哥屬什麼？",
+                "simplified": "女生的哥哥属什么？",
+                "pinyin": "Nǚshēng de gēge shǔ shénme?",
+                "english": "What is the woman's older brother's zodiac sign?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "屬雞",
+                  "simplified": "属鸡",
+                  "pinyin": "shǔ jī",
+                  "english": "the Rooster"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "屬豬",
+                  "simplified": "属猪",
+                  "pinyin": "shǔ zhū",
+                  "english": "the Pig"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "屬狗",
+                  "simplified": "属狗",
+                  "pinyin": "shǔ gǒu",
+                  "english": "the Dog"
+                }
+              ],
+              "key": 0,
+              "why": "She says 我哥哥屬雞: her brother is a Rooster. The Pig (屬豬) is her own sign.",
+              "focus": {
+                "zh": "我哥哥屬雞",
+                "en": "whose sign is which"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-14",
+                "B1L15-3-14",
+                "B1L15-3-15"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-just-now",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l15-dialogue-just-now-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你剛才在睡覺嗎？",
+              "simplified": "你刚才在睡觉吗？",
+              "pinyin": "Nǐ gāngcái zài shuìjiào ma?",
+              "english": "Were you sleeping just now?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "沒有，我剛才在打電話，現在要去看電視。",
+              "simplified": "没有，我刚才在打电话，现在要去看电视。",
+              "pinyin": "Méiyǒu, wǒ gāngcái zài dǎ diànhuà, xiànzài yào qù kàn diànshì.",
+              "english": "No, I was on the phone just now. Now I'm going to watch TV."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-just-now-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男生剛才在做什麼？",
+                "simplified": "男生刚才在做什么？",
+                "pinyin": "Nánshēng gāngcái zài zuò shénme?",
+                "english": "What was the man doing just now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "睡覺",
+                  "simplified": "睡觉",
+                  "pinyin": "shuìjiào",
+                  "english": "sleeping"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "打電話",
+                  "simplified": "打电话",
+                  "pinyin": "dǎ diànhuà",
+                  "english": "talking on the phone"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看電視",
+                  "simplified": "看电视",
+                  "pinyin": "kàn diànshì",
+                  "english": "watching TV"
+                }
+              ],
+              "key": 1,
+              "why": "He says 沒有 to sleeping: 我剛才在打電話, he was on the phone just now. Watching TV (看電視) is what he will do now (現在), not what he did.",
+              "focus": {
+                "zh": "剛才",
+                "en": "just now"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-03",
+                "B1L10-3-01",
+                "B1L02-1-04"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-dialogue-just-now-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "剛才跟妳講話的人是妳同學嗎？",
+              "simplified": "刚才跟你讲话的人是你同学吗？",
+              "pinyin": "Gāngcái gēn nǐ jiǎnghuà de rén shì nǐ tóngxué ma?",
+              "english": "Was the person talking to you just now your classmate?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，是我同事，我們一起在銀行上班。",
+              "simplified": "不是，是我同事，我们一起在银行上班。",
+              "pinyin": "Bú shì, shì wǒ tóngshì, wǒmen yìqǐ zài yínháng shàngbān.",
+              "english": "No, it was my colleague. We work at the bank together."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-just-now-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "剛才跟女生講話的是誰？",
+                "simplified": "刚才跟女生讲话的是谁？",
+                "pinyin": "Gāngcái gēn nǚshēng jiǎnghuà de shì shéi?",
+                "english": "Who was talking to the woman just now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她的同事",
+                  "simplified": "她的同事",
+                  "pinyin": "tā de tóngshì",
+                  "english": "her colleague"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她的同學",
+                  "simplified": "她的同学",
+                  "pinyin": "tā de tóngxué",
+                  "english": "her classmate"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她的老闆",
+                  "simplified": "她的老板",
+                  "pinyin": "tā de lǎobǎn",
+                  "english": "her boss"
+                }
+              ],
+              "key": 0,
+              "why": "She says 不是 to 同學: it was 我同事, a colleague she works with at the bank.",
+              "focus": {
+                "zh": "講話",
+                "en": "talking"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-04",
+                "B1L15-1-03",
+                "B1L12-2-04"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-dialogue-just-now-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "剛才那個人是越南人嗎？",
+              "simplified": "刚才那个人是越南人吗？",
+              "pinyin": "Gāngcái nàge rén shì Yuènán rén ma?",
+              "english": "Was that person just now Vietnamese?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我剛才問了他，原來他是日本人。",
+              "simplified": "不是，我刚才问了他，原来他是日本人。",
+              "pinyin": "Bú shì, wǒ gāngcái wèn le tā, yuánlái tā shì Rìběn rén.",
+              "english": "No. I asked him just now; it turns out he's Japanese."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-just-now-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "那個人是哪國人？",
+                "simplified": "那个人是哪国人？",
+                "pinyin": "Nàge rén shì nǎ guó rén?",
+                "english": "Which country is that person from?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "韓國人",
+                  "simplified": "韩国人",
+                  "pinyin": "Hánguó rén",
+                  "english": "Korean"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "越南人",
+                  "simplified": "越南人",
+                  "pinyin": "Yuènán rén",
+                  "english": "Vietnamese"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "日本人",
+                  "simplified": "日本人",
+                  "pinyin": "Rìběn rén",
+                  "english": "Japanese"
+                }
+              ],
+              "key": 2,
+              "why": "She says 不是 to Vietnamese. She asked him (我剛才問了他), and 原來他是日本人: it turns out he is Japanese.",
+              "focus": {
+                "zh": "原來",
+                "en": "it turns out"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-08",
+                "B1L15-1-12",
+                "B1L01-1-14",
+                "B1L15-1-03"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-city",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l15-dialogue-review-city-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你跟妹妹在台北住了多久了？",
+              "simplified": "你跟妹妹在台北住了多久了？",
+              "pinyin": "Nǐ gēn mèimei zài Táiběi zhù le duōjiǔ le?",
+              "english": "How long have you and your younger sister lived in Taipei?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我住了兩年了，妹妹住了半年了。",
+              "simplified": "我住了两年了，妹妹住了半年了。",
+              "pinyin": "Wǒ zhù le liǎng nián le, mèimei zhù le bàn nián le.",
+              "english": "I've lived here two years, and my sister half a year."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-review-city-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男生在台北住了多久了？",
+                "simplified": "男生在台北住了多久了？",
+                "pinyin": "Nánshēng zài Táiběi zhù le duōjiǔ le?",
+                "english": "How long has the man lived in Taipei?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "半年",
+                  "simplified": "半年",
+                  "pinyin": "bàn nián",
+                  "english": "half a year"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一年",
+                  "simplified": "一年",
+                  "pinyin": "yì nián",
+                  "english": "one year"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩年",
+                  "simplified": "两年",
+                  "pinyin": "liǎng nián",
+                  "english": "two years"
+                }
+              ],
+              "key": 2,
+              "why": "He says 我住了兩年了: two years so far. Half a year (半年) is his sister.",
+              "focus": {
+                "zh": "住了兩年了",
+                "en": "how long so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-03",
+                "B1L14-1-21",
+                "B1L05-1-13"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-dialogue-review-city-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請問，博物館怎麼走？",
+              "simplified": "请问，博物馆怎么走？",
+              "pinyin": "Qǐngwèn, bówùguǎn zěnme zǒu?",
+              "english": "Excuse me, how do I get to the museum?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "第一個路口不要轉，到第二個路口再往左轉。",
+              "simplified": "第一个路口不要转，到第二个路口再往左转。",
+              "pinyin": "Dì yī ge lùkǒu bú yào zhuǎn, dào dì èr ge lùkǒu zài wǎng zuǒ zhuǎn.",
+              "english": "Don't turn at the first intersection. Go on to the second intersection, and then turn left."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-review-city-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "要在哪裡往左轉？",
+                "simplified": "要在哪里往左转？",
+                "pinyin": "Yào zài nǎlǐ wǎng zuǒ zhuǎn?",
+                "english": "Where do you turn left?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "第一個路口",
+                  "simplified": "第一个路口",
+                  "pinyin": "dì yī ge lùkǒu",
+                  "english": "at the first intersection"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "第二個路口",
+                  "simplified": "第二个路口",
+                  "pinyin": "dì èr ge lùkǒu",
+                  "english": "at the second intersection"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "第三個路口",
+                  "simplified": "第三个路口",
+                  "pinyin": "dì sān ge lùkǒu",
+                  "english": "at the third intersection"
+                }
+              ],
+              "key": 1,
+              "why": "第一個路口不要轉: don't turn at the first intersection. 到第二個路口再往左轉: go on to the second one, then turn left.",
+              "focus": {
+                "zh": "往左轉",
+                "en": "turn left"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-11",
+                "B1L13-1-13",
+                "B1L13-1-14",
+                "B1L13-3-10"
+              ],
+              "grammarIds": [
+                "B1L13-G02-P296"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-who",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l15-dialogue-review-who-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這盤菜是妳做的嗎？很好吃！",
+              "simplified": "这盘菜是你做的吗？很好吃！",
+              "pinyin": "Zhè pán cài shì nǐ zuò de ma? Hěn hǎochī!",
+              "english": "Did you make this dish? It's delicious!"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是我做的，是我爸爸做的。",
+              "simplified": "不是我做的，是我爸爸做的。",
+              "pinyin": "Bú shì wǒ zuò de, shì wǒ bàba zuò de.",
+              "english": "I didn't make it. My dad did."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-review-who-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這盤菜是誰做的？",
+                "simplified": "这盘菜是谁做的？",
+                "pinyin": "Zhè pán cài shì shéi zuò de?",
+                "english": "Who made this dish?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她自己",
+                  "simplified": "她自己",
+                  "pinyin": "tā zìjǐ",
+                  "english": "she herself"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她爸爸",
+                  "simplified": "她爸爸",
+                  "pinyin": "tā bàba",
+                  "english": "her dad"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她媽媽",
+                  "simplified": "她妈妈",
+                  "pinyin": "tā māma",
+                  "english": "her mom"
+                }
+              ],
+              "key": 1,
+              "why": "不是我做的，是我爸爸做的: 是…的 points to who made it, her dad.",
+              "focus": {
+                "zh": "是…的",
+                "en": "who did it"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-3-06",
+                "B1L11-3-05",
+                "B1L02-1-08"
+              ],
+              "grammarIds": [
+                "B1L11-G03-P251"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-dialogue-review-who-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你畢業以後想當記者嗎？",
+              "simplified": "你毕业以后想当记者吗？",
+              "pinyin": "Nǐ bìyè yǐhòu xiǎng dāng jìzhě ma?",
+              "english": "Do you want to be a reporter after you graduate?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "以前想，現在我想當老師。",
+              "simplified": "以前想，现在我想当老师。",
+              "pinyin": "Yǐqián xiǎng, xiànzài wǒ xiǎng dāng lǎoshī.",
+              "english": "I used to. Now I want to be a teacher."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-dialogue-review-who-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男生現在想當什麼？",
+                "simplified": "男生现在想当什么？",
+                "pinyin": "Nánshēng xiànzài xiǎng dāng shénme?",
+                "english": "What does the man want to be now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "english": "a teacher"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "記者",
+                  "simplified": "记者",
+                  "pinyin": "jìzhě",
+                  "english": "a reporter"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "醫生",
+                  "simplified": "医生",
+                  "pinyin": "yīshēng",
+                  "english": "a doctor"
+                }
+              ],
+              "key": 0,
+              "why": "以前 (before) he wanted to be a reporter; 現在 (now) he wants to be a teacher.",
+              "focus": {
+                "zh": "以前／現在",
+                "en": "before and now"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-11",
+                "B1L12-1-07",
+                "B1L12-1-04",
+                "B1L12-1-09"
+              ],
+              "grammarIds": [
+                "B1L12-G02-P272"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-height",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l15-read-height-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l15-read-height-1-q",
+              "prompt": {
+                "traditional": "弟弟跟妹妹一樣高。",
+                "simplified": "弟弟跟妹妹一样高。",
+                "pinyin": "Dìdi gēn mèimei yíyàng gāo.",
+                "english": "My younger brother is as tall as my younger sister."
+              },
+              "choices": [
+                {
+                  "picture": "b1l15-height-1",
+                  "alt": "Same height: the boy and the girl stand side by side, exactly as tall as each other"
+                },
+                {
+                  "picture": "b1l15-height-2",
+                  "alt": "Girl taller: the girl is clearly taller than the boy, by about a head"
+                },
+                {
+                  "picture": "b1l15-height-3",
+                  "alt": "Boy taller: the boy is clearly taller than the girl, by about a head"
+                }
+              ],
+              "key": 0,
+              "why": "跟…一樣高 means as tall as: the boy and the girl are the same height.",
+              "focus": {
+                "zh": "跟…一樣高",
+                "en": "as tall as"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-10",
+                "B1L08-1-18",
+                "B1L05-2-17",
+                "B1L05-2-18"
+              ],
+              "grammarIds": [
+                "B1L15-G01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-read-height-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l15-read-height-2-q",
+              "prompt": {
+                "traditional": "妹妹跟弟弟不一樣高，妹妹比較高。",
+                "simplified": "妹妹跟弟弟不一样高，妹妹比较高。",
+                "pinyin": "Mèimei gēn dìdi bù yíyàng gāo, mèimei bǐjiào gāo.",
+                "english": "My younger sister and brother aren't the same height; my sister is taller."
+              },
+              "choices": [
+                {
+                  "picture": "b1l15-height-1",
+                  "alt": "Same height: the boy and the girl stand side by side, exactly as tall as each other"
+                },
+                {
+                  "picture": "b1l15-height-2",
+                  "alt": "Girl taller: the girl is clearly taller than the boy, by about a head"
+                },
+                {
+                  "picture": "b1l15-height-3",
+                  "alt": "Boy taller: the boy is clearly taller than the girl, by about a head"
+                }
+              ],
+              "key": 1,
+              "why": "不一樣高 means they are not the same height, and 妹妹比較高 means the girl is the taller one.",
+              "focus": {
+                "zh": "不一樣高",
+                "en": "not the same height"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-10",
+                "B1L08-1-18",
+                "B1L09-2-11"
+              ],
+              "grammarIds": [
+                "B1L15-G01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-read-height-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l15-read-height-3-q",
+              "prompt": {
+                "traditional": "弟弟跟妹妹不一樣高，妹妹比較矮。",
+                "simplified": "弟弟跟妹妹不一样高，妹妹比较矮。",
+                "pinyin": "Dìdi gēn mèimei bù yíyàng gāo, mèimei bǐjiào ǎi.",
+                "english": "My younger brother and sister aren't the same height; my sister is shorter."
+              },
+              "choices": [
+                {
+                  "picture": "b1l15-height-1",
+                  "alt": "Same height: the boy and the girl stand side by side, exactly as tall as each other"
+                },
+                {
+                  "picture": "b1l15-height-2",
+                  "alt": "Girl taller: the girl is clearly taller than the boy, by about a head"
+                },
+                {
+                  "picture": "b1l15-height-3",
+                  "alt": "Boy taller: the boy is clearly taller than the girl, by about a head"
+                }
+              ],
+              "key": 2,
+              "why": "不一樣高 rules out the first picture, and 妹妹比較矮 means the girl is the shorter one, so the boy is taller.",
+              "focus": {
+                "zh": "不一樣高",
+                "en": "not the same height"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-10",
+                "B1L08-1-19",
+                "B1L09-2-11"
+              ],
+              "grammarIds": [
+                "B1L15-G01"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-door",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l15-read-door-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l15-read-door-1-q",
+              "prompt": {
+                "traditional": "圖書館的門開著，窗戶關著。",
+                "simplified": "图书馆的门开着，窗户关着。",
+                "pinyin": "Túshūguǎn de mén kāizhe, chuānghù guānzhe.",
+                "english": "The library door is open and the window is shut."
+              },
+              "choices": [
+                {
+                  "picture": "b1l15-door-1",
+                  "alt": "Door open, window closed: in the library room the door stands open and the window is shut"
+                },
+                {
+                  "picture": "b1l15-door-2",
+                  "alt": "Door closed, window open: in the library room the door is shut and the window stands open"
+                },
+                {
+                  "picture": "b1l15-door-3",
+                  "alt": "Both open: in the library room the door and the window both stand open"
+                }
+              ],
+              "key": 0,
+              "why": "開著 means it stays open and 關著 means it stays shut: the door is open, the window is shut.",
+              "focus": {
+                "zh": "開著／關著",
+                "en": "open / shut"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-01",
+                "B1L08-2-18",
+                "B1L08-2-17",
+                "B1L05-3-06"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-read-door-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l15-read-door-2-q",
+              "prompt": {
+                "traditional": "圖書館的窗戶開著，門關著。",
+                "simplified": "图书馆的窗户开着，门关着。",
+                "pinyin": "Túshūguǎn de chuānghù kāizhe, mén guānzhe.",
+                "english": "The library window is open and the door is shut."
+              },
+              "choices": [
+                {
+                  "picture": "b1l15-door-1",
+                  "alt": "Door open, window closed: in the library room the door stands open and the window is shut"
+                },
+                {
+                  "picture": "b1l15-door-2",
+                  "alt": "Door closed, window open: in the library room the door is shut and the window stands open"
+                },
+                {
+                  "picture": "b1l15-door-3",
+                  "alt": "Both open: in the library room the door and the window both stand open"
+                }
+              ],
+              "key": 1,
+              "why": "The window (窗戶) is 開著, open, and the door (門) is 關著, shut.",
+              "focus": {
+                "zh": "窗戶開著",
+                "en": "the window is open"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-01",
+                "B1L08-2-18",
+                "B1L08-2-17",
+                "B1L05-3-05"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-read-door-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l15-read-door-3-q",
+              "prompt": {
+                "traditional": "圖書館的門跟窗戶都開著。",
+                "simplified": "图书馆的门跟窗户都开着。",
+                "pinyin": "Túshūguǎn de mén gēn chuānghù dōu kāizhe.",
+                "english": "The library door and window are both open."
+              },
+              "choices": [
+                {
+                  "picture": "b1l15-door-1",
+                  "alt": "Door open, window closed: in the library room the door stands open and the window is shut"
+                },
+                {
+                  "picture": "b1l15-door-2",
+                  "alt": "Door closed, window open: in the library room the door is shut and the window stands open"
+                },
+                {
+                  "picture": "b1l15-door-3",
+                  "alt": "Both open: in the library room the door and the window both stand open"
+                }
+              ],
+              "key": 2,
+              "why": "門跟窗戶都開著: both the door and the window are open (都).",
+              "focus": {
+                "zh": "都開著",
+                "en": "both open"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-01",
+                "B1L08-2-18",
+                "B1L05-3-06",
+                "B1L05-3-05"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-paper",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l15-realia-paper-1",
+          "kind": "realia",
+          "picture": "b1l15-paper-class",
+          "alt": "A poster for a paper-craft class: making the twelve zodiac animals out of paper, with the day, the time and the prices for adults and children",
+          "transcript": {
+            "traditional": "用紙做十二生肖動物　星期六　下午2:00－4:00　大人 200元　小孩 100元　小孩要跟大人一起來",
+            "simplified": "用纸做十二生肖动物　星期六　下午2:00－4:00　大人 200元　小孩 100元　小孩要跟大人一起来",
+            "pinyin": "Yòng zhǐ zuò shí'èr shēngxiào dòngwù: xīngqíliù, xiàwǔ 2:00–4:00; dàrén 200 yuán, xiǎohái 100 yuán; xiǎohái yào gēn dàrén yìqǐ lái",
+            "english": "Make the twelve zodiac animals out of paper: Saturday, 2:00–4:00 p.m.; adults 200, children 100; children must come with an adult"
+          },
+          "questions": [
+            {
+              "id": "b1l15-realia-paper-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "一個大人跟一個小孩一共三百元。",
+                  "simplified": "一个大人跟一个小孩一共三百元。",
+                  "pinyin": "Yí ge dàrén gēn yí ge xiǎohái yígòng sān bǎi yuán.",
+                  "english": "One adult and one child cost 300 altogether."
+                },
+                {
+                  "traditional": "這個活動是在星期六的上午。",
+                  "simplified": "这个活动是在星期六的上午。",
+                  "pinyin": "Zhège huódòng shì zài xīngqíliù de shàngwǔ.",
+                  "english": "This activity is on Saturday morning."
+                },
+                {
+                  "traditional": "小孩不跟大人一起來，也可以參加。",
+                  "simplified": "小孩不跟大人一起来，也可以参加。",
+                  "pinyin": "Xiǎohái bù gēn dàrén yìqǐ lái, yě kěyǐ cānjiā.",
+                  "english": "Children can join without coming with an adult."
+                }
+              ],
+              "key": 0,
+              "why": "200元 + 100元 = 300元 altogether (一共). The class is in the afternoon (下午), not the morning, and children must come with an adult (要跟大人一起來).",
+              "focus": {
+                "zh": "大人／小孩",
+                "en": "adults and children"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-06",
+                "B1L15-2-07",
+                "B1L04-2-15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-realia-paper-2",
+          "kind": "realia",
+          "picture": "b1l15-paper-class",
+          "alt": "A poster for a paper-craft class: making the twelve zodiac animals out of paper, with the day, the time and the prices for adults and children",
+          "transcript": {
+            "traditional": "用紙做十二生肖動物　星期六　下午2:00－4:00　大人 200元　小孩 100元　小孩要跟大人一起來",
+            "simplified": "用纸做十二生肖动物　星期六　下午2:00－4:00　大人 200元　小孩 100元　小孩要跟大人一起来",
+            "pinyin": "Yòng zhǐ zuò shí'èr shēngxiào dòngwù: xīngqíliù, xiàwǔ 2:00–4:00; dàrén 200 yuán, xiǎohái 100 yuán; xiǎohái yào gēn dàrén yìqǐ lái",
+            "english": "Make the twelve zodiac animals out of paper: Saturday, 2:00–4:00 p.m.; adults 200, children 100; children must come with an adult"
+          },
+          "questions": [
+            {
+              "id": "b1l15-realia-paper-2-q",
+              "prompt": {
+                "traditional": "媽媽帶著兩個小孩去參加，三個人一共多少錢？",
+                "simplified": "妈妈带着两个小孩去参加，三个人一共多少钱？",
+                "pinyin": "Māma dàizhe liǎng ge xiǎohái qù cānjiā, sān ge rén yígòng duōshǎo qián?",
+                "english": "A mom takes her two children to join in. How much is it for the three of them altogether?"
+              },
+              "choices": [
+                {
+                  "traditional": "三百塊",
+                  "simplified": "三百块",
+                  "pinyin": "sān bǎi kuài",
+                  "english": "300 dollars"
+                },
+                {
+                  "traditional": "四百塊",
+                  "simplified": "四百块",
+                  "pinyin": "sì bǎi kuài",
+                  "english": "400 dollars"
+                },
+                {
+                  "traditional": "五百塊",
+                  "simplified": "五百块",
+                  "pinyin": "wǔ bǎi kuài",
+                  "english": "500 dollars"
+                }
+              ],
+              "key": 1,
+              "why": "One adult is 200元 and each child 100元: 200 + 100 + 100 = 400.",
+              "focus": {
+                "zh": "帶著",
+                "en": "taking someone along"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-07",
+                "B1L15-2-06",
+                "B1L13-1-07",
+                "B1L04-2-15",
+                "B1L12-1-03"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-board",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l15-realia-board-1",
+          "kind": "realia",
+          "picture": "b1l15-blackboard",
+          "alt": "A classroom blackboard with the teacher's chalk note about tomorrow's Chinese class: the morning lesson, what to bring and the afternoon test",
+          "transcript": {
+            "traditional": "明天的華語課　上午9:00 第十五課　請帶課本，先看課文　下午2:00 第十四課考試",
+            "simplified": "明天的华语课　上午9:00 第十五课　请带课本，先看课文　下午2:00 第十四课考试",
+            "pinyin": "Míngtiān de Huáyǔ kè: shàngwǔ 9:00 dì shíwǔ kè; qǐng dài kèběn, xiān kàn kèwén; xiàwǔ 2:00 dì shísì kè kǎoshì",
+            "english": "Tomorrow's Chinese class: 9:00 a.m. Lesson 15; please bring your textbook and read the lesson text first; 2:00 p.m. Lesson 14 test"
+          },
+          "questions": [
+            {
+              "id": "b1l15-realia-board-1-q",
+              "prompt": {
+                "traditional": "明天什麼時候上第十五課？",
+                "simplified": "明天什么时候上第十五课？",
+                "pinyin": "Míngtiān shénme shíhòu shàng dì shíwǔ kè?",
+                "english": "When is the Lesson 15 class tomorrow?"
+              },
+              "choices": [
+                {
+                  "traditional": "上午",
+                  "simplified": "上午",
+                  "pinyin": "shàngwǔ",
+                  "english": "in the morning"
+                },
+                {
+                  "traditional": "中午",
+                  "simplified": "中午",
+                  "pinyin": "zhōngwǔ",
+                  "english": "at noon"
+                },
+                {
+                  "traditional": "下午",
+                  "simplified": "下午",
+                  "pinyin": "xiàwǔ",
+                  "english": "in the afternoon"
+                }
+              ],
+              "key": 0,
+              "why": "The board says 上午9:00 第十五課: the Lesson 15 class is in the morning. The afternoon (下午2:00) is the Lesson 14 test.",
+              "focus": {
+                "zh": "上午",
+                "en": "class time"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-02",
+                "B1L02-1-26",
+                "B1L13-3-08"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-realia-board-2",
+          "kind": "realia",
+          "picture": "b1l15-blackboard",
+          "alt": "A classroom blackboard with the teacher's chalk note about tomorrow's Chinese class: the morning lesson, what to bring and the afternoon test",
+          "transcript": {
+            "traditional": "明天的華語課　上午9:00 第十五課　請帶課本，先看課文　下午2:00 第十四課考試",
+            "simplified": "明天的华语课　上午9:00 第十五课　请带课本，先看课文　下午2:00 第十四课考试",
+            "pinyin": "Míngtiān de Huáyǔ kè: shàngwǔ 9:00 dì shíwǔ kè; qǐng dài kèběn, xiān kàn kèwén; xiàwǔ 2:00 dì shísì kè kǎoshì",
+            "english": "Tomorrow's Chinese class: 9:00 a.m. Lesson 15; please bring your textbook and read the lesson text first; 2:00 p.m. Lesson 14 test"
+          },
+          "questions": [
+            {
+              "id": "b1l15-realia-board-2-q",
+              "prompt": {
+                "traditional": "明天下午要做什麼？",
+                "simplified": "明天下午要做什么？",
+                "pinyin": "Míngtiān xiàwǔ yào zuò shénme?",
+                "english": "What will they do tomorrow afternoon?"
+              },
+              "choices": [
+                {
+                  "traditional": "上第十五課",
+                  "simplified": "上第十五课",
+                  "pinyin": "shàng dì shíwǔ kè",
+                  "english": "have the Lesson 15 class"
+                },
+                {
+                  "traditional": "考第十四課",
+                  "simplified": "考第十四课",
+                  "pinyin": "kǎo dì shísì kè",
+                  "english": "take the Lesson 14 test"
+                },
+                {
+                  "traditional": "考第十五課",
+                  "simplified": "考第十五课",
+                  "pinyin": "kǎo dì shíwǔ kè",
+                  "english": "take the Lesson 15 test"
+                }
+              ],
+              "key": 1,
+              "why": "下午2:00 第十四課考試: the afternoon is the Lesson 14 test. Lesson 15 is the morning class.",
+              "focus": {
+                "zh": "考試",
+                "en": "test time"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-02",
+                "B1L09-3-15",
+                "B1L02-1-25"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l15-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l15-farm",
+          "alt": "A sunny animal farm by a small river: a father has brought his son, a boy of about nine, and his younger daughter, a little girl of about five. By the river a tall brown horse stands next to two white sheep. The boy holds out a red apple to the horse; the girl holds a red apple of the same size and laughs at exactly three chickens, each one fully visible. Under a tree, exactly two pigs of the same size are asleep. There are no other chickens or pigs.",
+          "questions": [
+            {
+              "id": "b1l15-scene-gap-1-a",
+              "prompt": {
+                "traditional": "哥哥手裡拿著一個＿＿，他想給馬吃。",
+                "simplified": "哥哥手里拿着一个＿＿，他想给马吃。"
+              },
+              "choices": [
+                {
+                  "traditional": "蘋果",
+                  "simplified": "苹果",
+                  "pinyin": "píngguǒ",
+                  "english": "apple"
+                },
+                {
+                  "traditional": "香蕉",
+                  "simplified": "香蕉",
+                  "pinyin": "xiāngjiāo",
+                  "english": "banana"
+                },
+                {
+                  "traditional": "麵包",
+                  "simplified": "面包",
+                  "pinyin": "miànbāo",
+                  "english": "bread"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "哥哥手裡拿著一個蘋果，他想給馬吃。",
+                "simplified": "哥哥手里拿着一个苹果，他想给马吃。",
+                "pinyin": "Gēge shǒu lǐ názhe yí ge píngguǒ, tā xiǎng gěi mǎ chī.",
+                "english": "The older brother is holding an apple; he wants to give it to the horse."
+              },
+              "why": "In the picture the boy holds out a red apple (蘋果) to the horse. There is no banana (香蕉) or bread (麵包) in the picture.",
+              "focus": {
+                "zh": "拿著蘋果",
+                "en": "holding an apple"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-2-01",
+                "B1L10-1-20",
+                "B1L15-1-19"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            },
+            {
+              "id": "b1l15-scene-gap-1-b",
+              "prompt": {
+                "traditional": "這裡的雞＿＿。",
+                "simplified": "这里的鸡＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "比豬少",
+                  "simplified": "比猪少",
+                  "pinyin": "bǐ zhū shǎo",
+                  "english": "fewer than the pigs"
+                },
+                {
+                  "traditional": "比豬多",
+                  "simplified": "比猪多",
+                  "pinyin": "bǐ zhū duō",
+                  "english": "more than the pigs"
+                },
+                {
+                  "traditional": "跟豬一樣多",
+                  "simplified": "跟猪一样多",
+                  "pinyin": "gēn zhū yíyàng duō",
+                  "english": "as many as the pigs"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "這裡的雞比豬多。",
+                "simplified": "这里的鸡比猪多。",
+                "pinyin": "Zhèlǐ de jī bǐ zhū duō.",
+                "english": "There are more chickens than pigs here."
+              },
+              "why": "Count them: three chickens (雞) and two pigs (豬), so 雞比豬多. 比豬少 says the opposite, and 跟豬一樣多 would need the same number.",
+              "focus": {
+                "zh": "比…多",
+                "en": "more than"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-2-19",
+                "B1L04-1-15",
+                "B1L15-3-14",
+                "B1L15-3-15"
+              ],
+              "grammarIds": [
+                "B1L14-G03-P331"
+              ]
+            },
+            {
+              "id": "b1l15-scene-gap-1-c",
+              "prompt": {
+                "traditional": "妹妹一看到雞，＿＿很高興。",
+                "simplified": "妹妹一看到鸡，＿＿很高兴。"
+              },
+              "choices": [
+                {
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "english": "then (next)"
+                },
+                {
+                  "traditional": "太",
+                  "simplified": "太",
+                  "pinyin": "tài",
+                  "english": "too"
+                },
+                {
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "english": "then (right away)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "妹妹一看到雞，就很高興。",
+                "simplified": "妹妹一看到鸡，就很高兴。",
+                "pinyin": "Mèimei yí kàndào jī, jiù hěn gāoxìng.",
+                "english": "As soon as the little sister sees the chickens, she is happy."
+              },
+              "why": "一……就…… means the second thing comes right after the first: as soon as she sees the chickens, she is happy. 再 (next; again) and 太 (too) do not pair with 一 like this.",
+              "focus": {
+                "zh": "一…就…",
+                "en": "as soon as"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-3-14",
+                "B1L11-1-05",
+                "B1L06-3-15"
+              ],
+              "grammarIds": [
+                "B1L15-G03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l15-farm",
+          "alt": "A sunny animal farm by a small river: a father has brought his son, a boy of about nine, and his younger daughter, a little girl of about five. By the river a tall brown horse stands next to two white sheep. The boy holds out a red apple to the horse; the girl holds a red apple of the same size and laughs at exactly three chickens, each one fully visible. Under a tree, exactly two pigs of the same size are asleep. There are no other chickens or pigs.",
+          "questions": [
+            {
+              "id": "b1l15-scene-gap-2-a",
+              "prompt": {
+                "traditional": "河旁邊有兩＿＿羊。",
+                "simplified": "河旁边有两＿＿羊。"
+              },
+              "choices": [
+                {
+                  "traditional": "條",
+                  "simplified": "条",
+                  "pinyin": "tiáo",
+                  "english": "(measure word for long things)"
+                },
+                {
+                  "traditional": "隻",
+                  "simplified": "只",
+                  "pinyin": "zhī",
+                  "english": "(measure word for animals)"
+                },
+                {
+                  "traditional": "張",
+                  "simplified": "张",
+                  "pinyin": "zhāng",
+                  "english": "(measure word for flat things)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "河旁邊有兩隻羊。",
+                "simplified": "河旁边有两只羊。",
+                "pinyin": "Hé pángbiān yǒu liǎng zhī yáng.",
+                "english": "There are two sheep by the river."
+              },
+              "why": "Animals like sheep take 隻: 兩隻羊. 條 is for snakes and rivers, and 張 is for paper and tables.",
+              "focus": {
+                "zh": "兩隻羊",
+                "en": "two sheep"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-18",
+                "B1L05-3-10",
+                "B1L15-3-04"
+              ]
+            },
+            {
+              "id": "b1l15-scene-gap-2-b",
+              "prompt": {
+                "traditional": "爸爸＿＿著哥哥跟妹妹來看動物。",
+                "simplified": "爸爸＿＿着哥哥跟妹妹来看动物。"
+              },
+              "choices": [
+                {
+                  "traditional": "帶",
+                  "simplified": "带",
+                  "pinyin": "dài",
+                  "english": "to take along"
+                },
+                {
+                  "traditional": "拿",
+                  "simplified": "拿",
+                  "pinyin": "ná",
+                  "english": "to hold"
+                },
+                {
+                  "traditional": "穿",
+                  "simplified": "穿",
+                  "pinyin": "chuān",
+                  "english": "to wear"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "爸爸帶著哥哥跟妹妹來看動物。",
+                "simplified": "爸爸带着哥哥跟妹妹来看动物。",
+                "pinyin": "Bàba dàizhe gēge gēn mèimei lái kàn dòngwù.",
+                "english": "Dad has brought the brother and sister to see the animals."
+              },
+              "why": "You 帶 (take along) people: 帶著哥哥跟妹妹. 拿 is for things in your hand, and 穿 is for clothes.",
+              "focus": {
+                "zh": "帶著",
+                "en": "taking someone along"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-07",
+                "B1L15-1-04"
+              ],
+              "grammarIds": [
+                "B1L15-G02"
+              ]
+            },
+            {
+              "id": "b1l15-scene-gap-2-c",
+              "prompt": {
+                "traditional": "樹下的這隻豬跟那隻豬＿＿大。",
+                "simplified": "树下的这只猪跟那只猪＿＿大。"
+              },
+              "choices": [
+                {
+                  "traditional": "一起",
+                  "simplified": "一起",
+                  "pinyin": "yìqǐ",
+                  "english": "together"
+                },
+                {
+                  "traditional": "不一樣",
+                  "simplified": "不一样",
+                  "pinyin": "bù yíyàng",
+                  "english": "not the same"
+                },
+                {
+                  "traditional": "一樣",
+                  "simplified": "一样",
+                  "pinyin": "yíyàng",
+                  "english": "the same"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "樹下的這隻豬跟那隻豬一樣大。",
+                "simplified": "树下的这只猪跟那只猪一样大。",
+                "pinyin": "Shù xià de zhè zhī zhū gēn nà zhī zhū yíyàng dà.",
+                "english": "This pig under the tree is as big as that one."
+              },
+              "why": "跟…一樣大 means as big as: the two pigs under the tree are the same size, so not 不一樣. 一起 (together) cannot stand before 大 like this.",
+              "focus": {
+                "zh": "跟…一樣大",
+                "en": "as big as"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-10",
+                "B1L15-3-15",
+                "B1L14-2-04"
+              ],
+              "grammarIds": [
+                "B1L15-G01"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l15-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "今天是我的生日。我是兔年{1}的，所以媽媽送我一個兔子蛋糕，我一看{2}很喜歡。我在台灣住{3}三年了，這是我在台灣過的第三個生日。朋友說兔子很可愛，在十二生肖裡很{4}。",
+            "simplified": "今天是我的生日。我是兔年{1}的，所以妈妈送我一个兔子蛋糕，我一看{2}很喜欢。我在台湾住{3}三年了，这是我在台湾过的第三个生日。朋友说兔子很可爱，在十二生肖里很{4}。",
+            "pinyin": "Jīntiān shì wǒ de shēngrì. Wǒ shì tù nián chūshēng de, suǒyǐ māma sòng wǒ yí ge tùzi dàngāo, wǒ yí kàn jiù hěn xǐhuān. Wǒ zài Táiwān zhù le sān nián le, zhè shì wǒ zài Táiwān guò de dì sān ge shēngrì. Péngyǒu shuō tùzi hěn kě'ài, zài shí'èr shēngxiào lǐ hěn shòu huānyíng.",
+            "english": "Today is my birthday. I was born in the Year of the Rabbit, so Mom gave me a rabbit cake, and I loved it the moment I saw it. I have lived in Taiwan for three years now; this is my third birthday in Taiwan. My friends say rabbits are cute and very popular among the twelve zodiac animals."
+          },
+          "bank": [
+            {
+              "traditional": "一樣",
+              "simplified": "一样",
+              "pinyin": "yíyàng",
+              "english": "the same"
+            },
+            {
+              "traditional": "就",
+              "simplified": "就",
+              "pinyin": "jiù",
+              "english": "then (right away)"
+            },
+            {
+              "traditional": "受歡迎",
+              "simplified": "受欢迎",
+              "pinyin": "shòu huānyíng",
+              "english": "popular"
+            },
+            {
+              "traditional": "出生",
+              "simplified": "出生",
+              "pinyin": "chūshēng",
+              "english": "to be born"
+            },
+            {
+              "traditional": "了",
+              "simplified": "了",
+              "pinyin": "le",
+              "english": "(particle for time so far)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-paragraph-1-1",
+              "key": 3,
+              "why": "兔年出生的 means born in the Year of the Rabbit.",
+              "focus": {
+                "zh": "出生",
+                "en": "to be born"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-13",
+                "B1L15-1-20"
+              ]
+            },
+            {
+              "id": "b1l15-paragraph-1-2",
+              "key": 1,
+              "why": "一看就很喜歡: 一 … 就 … means the writer loved it the moment they saw it.",
+              "focus": {
+                "zh": "一…就…",
+                "en": "as soon as"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L10-2-18",
+                "B1L01-2-06"
+              ],
+              "grammarIds": [
+                "B1L15-G03"
+              ]
+            },
+            {
+              "id": "b1l15-paragraph-1-3",
+              "key": 4,
+              "why": "住了三年了: the second 了 shows the writer still lives here, three years so far.",
+              "focus": {
+                "zh": "V了＋時間＋了",
+                "en": "how long so far"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L14-1-03"
+              ],
+              "grammarIds": [
+                "B1L14-G02-P322"
+              ]
+            },
+            {
+              "id": "b1l15-paragraph-1-4",
+              "key": 2,
+              "why": "很受歡迎 means very popular. 一樣 would need 跟 and a second thing to compare.",
+              "focus": {
+                "zh": "受歡迎",
+                "en": "popular"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-3-16"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我以前不知道自己屬什麼，所以{1}去問了媽媽。{2}我屬羊！我哥哥屬蛇，他的生肖{3}我的不一樣。十二生肖裡，每一種動物都{4}一年，真有意思。",
+            "simplified": "我以前不知道自己属什么，所以{1}去问了妈妈。{2}我属羊！我哥哥属蛇，他的生肖{3}我的不一样。十二生肖里，每一种动物都{4}一年，真有意思。",
+            "pinyin": "Wǒ yǐqián bù zhīdào zìjǐ shǔ shénme, suǒyǐ gāngcái qù wèn le māma. Yuánlái wǒ shǔ yáng! Wǒ gēge shǔ shé, tā de shēngxiào gēn wǒ de bù yíyàng. Shí'èr shēngxiào lǐ, měi yì zhǒng dòngwù dōu dàibiǎo yì nián, zhēn yǒu yìsi.",
+            "english": "I didn't know my zodiac sign before, so just now I went and asked Mom. It turns out I'm a Goat! My older brother is a Snake; his sign is different from mine. In the zodiac, each animal stands for one year. How interesting."
+          },
+          "bank": [
+            {
+              "traditional": "代表",
+              "simplified": "代表",
+              "pinyin": "dàibiǎo",
+              "english": "to stand for"
+            },
+            {
+              "traditional": "一樣",
+              "simplified": "一样",
+              "pinyin": "yíyàng",
+              "english": "the same"
+            },
+            {
+              "traditional": "原來",
+              "simplified": "原来",
+              "pinyin": "yuánlái",
+              "english": "it turns out"
+            },
+            {
+              "traditional": "剛才",
+              "simplified": "刚才",
+              "pinyin": "gāngcái",
+              "english": "just now"
+            },
+            {
+              "traditional": "跟",
+              "simplified": "跟",
+              "pinyin": "gēn",
+              "english": "with; as (in comparisons)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l15-paragraph-2-1",
+              "key": 3,
+              "why": "剛才 means just now: the writer went and asked Mom a moment ago.",
+              "focus": {
+                "zh": "剛才",
+                "en": "just now"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-03"
+              ]
+            },
+            {
+              "id": "b1l15-paragraph-2-2",
+              "key": 2,
+              "why": "原來 introduces what the writer found out from Mom: it turns out they are a Goat (屬羊).",
+              "focus": {
+                "zh": "原來",
+                "en": "it turns out"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-08"
+              ]
+            },
+            {
+              "id": "b1l15-paragraph-2-3",
+              "key": 4,
+              "why": "A 跟 B 不一樣 means A is different from B. 一樣 is already in the sentence after 不.",
+              "focus": {
+                "zh": "跟…不一樣",
+                "en": "different from"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-10",
+                "B1L15-1-01"
+              ],
+              "grammarIds": [
+                "B1L15-G01"
+              ]
+            },
+            {
+              "id": "b1l15-paragraph-2-4",
+              "key": 0,
+              "why": "每一種動物都代表一年: each animal stands for (代表) one year.",
+              "focus": {
+                "zh": "代表",
+                "en": "to stand for"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L15-1-11"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l15-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "元真：\n這個星期天我想去參觀科學展，妳要不要一起去？從捷運站走路五分鐘就到了。聽說去看的人很多，買票要排隊排很久，所以我們早一點去吧。九點在捷運站門口見，好嗎？\n宜文",
+            "simplified": "元真：\n这个星期天我想去参观科学展，你要不要一起去？从捷运站走路五分钟就到了。听说去看的人很多，买票要排队排很久，所以我们早一点去吧。九点在捷运站门口见，好吗？\n宜文",
+            "pinyin": "Yuánzhēn: Zhège xīngqítiān wǒ xiǎng qù cānguān kēxué zhǎn, nǐ yào bu yào yìqǐ qù? Cóng jiéyùn zhàn zǒulù wǔ fēnzhōng jiù dào le. Tīngshuō qù kàn de rén hěn duō, mǎi piào yào páiduì pái hěn jiǔ, suǒyǐ wǒmen zǎo yìdiǎn qù ba. Jiǔ diǎn zài jiéyùn zhàn ménkǒu jiàn, hǎo ma? Yíwén",
+            "english": "Yuanzhen: This Sunday I'd like to visit the science exhibition. Do you want to come? It's a five-minute walk from the MRT station. I hear lots of people go, and the ticket line is long, so let's go early. Shall we meet at nine at the MRT station entrance? Yiwen"
+          },
+          "questions": [
+            {
+              "id": "b1l15-reading-note-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "排隊買票要等很久",
+                  "simplified": "排队买票要等很久",
+                  "pinyin": "páiduì mǎi piào yào děng hěn jiǔ",
+                  "english": "the ticket line is long"
+                },
+                {
+                  "traditional": "九點在科學展門口見",
+                  "simplified": "九点在科学展门口见",
+                  "pinyin": "jiǔ diǎn zài kēxué zhǎn ménkǒu jiàn",
+                  "english": "they meet at nine at the exhibition entrance"
+                },
+                {
+                  "traditional": "去看的人不多",
+                  "simplified": "去看的人不多",
+                  "pinyin": "qù kàn de rén bù duō",
+                  "english": "not many people go"
+                }
+              ],
+              "key": 0,
+              "why": "Yiwen writes 買票要排隊排很久: the ticket line is long. They meet at the MRT station entrance (捷運站門口), not at the exhibition, and many people go (去看的人很多).",
+              "focus": {
+                "zh": "排隊",
+                "en": "waiting in line"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-02",
+                "B1L13-2-03",
+                "B1L07-1-21",
+                "B1L14-1-19"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l15-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n我今天問了老闆，他說我們麵包店週末還需要一個人，一天只工作兩個小時。如果你想來，明天下課以後跟我一起去見老闆吧。\n國安",
+            "simplified": "中明：\n我今天问了老板，他说我们面包店周末还需要一个人，一天只工作两个小时。如果你想来，明天下课以后跟我一起去见老板吧。\n国安",
+            "pinyin": "Zhōngmíng: Wǒ jīntiān wèn le lǎobǎn, tā shuō wǒmen miànbāo diàn zhōumò hái xūyào yí ge rén, yì tiān zhǐ gōngzuò liǎng ge xiǎoshí. Rúguǒ nǐ xiǎng lái, míngtiān xiàkè yǐhòu gēn wǒ yìqǐ qù jiàn lǎobǎn ba. Guó'ān",
+            "english": "Zhongming: I asked my boss today. He says our bakery still needs one more person on weekends, and it's only two hours a day. If you'd like to come, go with me to meet the boss tomorrow after class. Guo'an"
+          },
+          "questions": [
+            {
+              "id": "b1l15-reading-note-2-q",
+              "prompt": {
+                "traditional": "中明什麼時候可以去見老闆？",
+                "simplified": "中明什么时候可以去见老板？",
+                "pinyin": "Zhōngmíng shénme shíhòu kěyǐ qù jiàn lǎobǎn?",
+                "english": "When can Zhongming go to meet the boss?"
+              },
+              "choices": [
+                {
+                  "traditional": "今天下課以後",
+                  "simplified": "今天下课以后",
+                  "pinyin": "jīntiān xiàkè yǐhòu",
+                  "english": "today after class"
+                },
+                {
+                  "traditional": "明天上課以前",
+                  "simplified": "明天上课以前",
+                  "pinyin": "míngtiān shàngkè yǐqián",
+                  "english": "tomorrow before class"
+                },
+                {
+                  "traditional": "明天下課以後",
+                  "simplified": "明天下课以后",
+                  "pinyin": "míngtiān xiàkè yǐhòu",
+                  "english": "tomorrow after class"
+                }
+              ],
+              "key": 2,
+              "why": "Guo'an writes 明天下課以後跟我一起去見老闆: tomorrow after class (下課以後), not before class (上課以前). 今天 is when Guo'an asked the boss.",
+              "focus": {
+                "zh": "下課以後",
+                "en": "after class"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-10",
+                "B1L12-1-13",
+                "B1L02-1-27",
+                "B1L02-2-01"
+              ],
+              "grammarIds": [
+                "B1L12-G02-P272"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Kind: strip
+Style: scene
+Characters: src/assets/images/characters/portraits/youmei.webp
+
+SUBJECT: a 3-panel picture strip for a reading question ("which picture matches the sentence?"). The character is Youmei (attached portrait: dark-red bob with straight bangs, coral cardigan over a white collared shirt); keep her identity identical in all three panels.
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: Youmei sits at the same small table by a large window, eating from the same bowl of rice with chopsticks, the same plant on the sill. Only the SKY in the window (the time of day) changes, and the room light follows it:
+- Panel 1 (left): MORNING. A big sun just rising above the rooftops at the bottom of the window, orange-pink sunrise sky, soft long golden light.
+- Panel 2 (middle): NIGHT. Dark navy sky with a crescent moon and a few stars; a warm ceiling lamp is on.
+- Panel 3 (right): NOON. A small bright sun high at the very top of the window in a clear blue sky, bright white daylight.
+No clocks, no text anywhere.

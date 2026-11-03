@@ -1,0 +1,2275 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l13",
+  "bookId": 1,
+  "lessonId": 13,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "友美",
+    "宜文",
+    "國安"
+  ],
+  "slots": [
+    {
+      "id": "hear-route",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l13-hear-route-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你從捷運站出去，走到十字路口，再往右轉。",
+              "simplified": "你从捷运站出去，走到十字路口，再往右转。",
+              "pinyin": "Nǐ cóng jiéyùn zhàn chūqù, zǒu dào shízì lùkǒu, zài wǎng yòu zhuǎn.",
+              "english": "Go out of the MRT station, walk to the crossroads, then turn right."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-hear-route-1-q",
+              "choices": [
+                {
+                  "picture": "b1l13-route-1",
+                  "alt": "Turns left: on the phone map, the dotted route goes up to the crossroads and turns left to the red pin"
+                },
+                {
+                  "picture": "b1l13-route-2",
+                  "alt": "Straight on: on the phone map, the dotted route goes straight across the crossroads to the red pin"
+                },
+                {
+                  "picture": "b1l13-route-3",
+                  "alt": "Turns right: on the phone map, the dotted route goes up to the crossroads and turns right to the red pin"
+                }
+              ],
+              "key": 2,
+              "why": "往右轉 means turn right: walk to the crossroads (十字路口), then (再) turn right. 往左轉 would be left.",
+              "focus": {
+                "zh": "往右轉",
+                "en": "turn right"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-11",
+                "B1L13-1-12",
+                "B1L13-1-14",
+                "B1L13-3-09"
+              ],
+              "grammarIds": [
+                "B1L13-G02-P296"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-hear-route-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "你從這裡出去，到了十字路口往左轉。",
+              "simplified": "你从这里出去，到了十字路口往左转。",
+              "pinyin": "Nǐ cóng zhèlǐ chūqù, dào le shízì lùkǒu wǎng zuǒ zhuǎn.",
+              "english": "Go out from here, and when you get to the crossroads, turn left."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-hear-route-2-q",
+              "choices": [
+                {
+                  "picture": "b1l13-route-1",
+                  "alt": "Turns left: on the phone map, the dotted route goes up to the crossroads and turns left to the red pin"
+                },
+                {
+                  "picture": "b1l13-route-2",
+                  "alt": "Straight on: on the phone map, the dotted route goes straight across the crossroads to the red pin"
+                },
+                {
+                  "picture": "b1l13-route-3",
+                  "alt": "Turns right: on the phone map, the dotted route goes up to the crossroads and turns right to the red pin"
+                }
+              ],
+              "key": 0,
+              "why": "往左轉 means turn left: when you get to the crossroads (到了十字路口), go left. 往右轉 would be right.",
+              "focus": {
+                "zh": "往左轉",
+                "en": "turn left"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-11",
+                "B1L13-1-13",
+                "B1L13-1-14",
+                "B1L13-3-09"
+              ],
+              "grammarIds": [
+                "B1L13-G02-P296"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-hear-route-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "從捷運站往前走，過了十字路口就是博物館。",
+              "simplified": "从捷运站往前走，过了十字路口就是博物馆。",
+              "pinyin": "Cóng jiéyùn zhàn wǎng qián zǒu, guò le shízì lùkǒu jiù shì bówùguǎn.",
+              "english": "Walk straight ahead from the MRT station; just past the crossroads is the museum."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-hear-route-3-q",
+              "choices": [
+                {
+                  "picture": "b1l13-route-1",
+                  "alt": "Turns left: on the phone map, the dotted route goes up to the crossroads and turns left to the red pin"
+                },
+                {
+                  "picture": "b1l13-route-2",
+                  "alt": "Straight on: on the phone map, the dotted route goes straight across the crossroads to the red pin"
+                },
+                {
+                  "picture": "b1l13-route-3",
+                  "alt": "Turns right: on the phone map, the dotted route goes up to the crossroads and turns right to the red pin"
+                }
+              ],
+              "key": 1,
+              "why": "往前走 is straight ahead, and 過了十字路口 means once you have crossed the crossroads: there is no turn.",
+              "focus": {
+                "zh": "過了十字路口",
+                "en": "go across the crossroads"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-11",
+                "B1L13-3-07",
+                "B1L13-3-09"
+              ],
+              "grammarIds": [
+                "B1L13-G02-P296"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-tickets",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l13-hear-tickets-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我要買票，我和兩個孩子，一個人一張。",
+              "simplified": "我要买票，我和两个孩子，一个人一张。",
+              "pinyin": "Wǒ yào mǎi piào, wǒ hé liǎng ge háizi, yí ge rén yì zhāng.",
+              "english": "I'd like to buy tickets: one each for me and my two children."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-hear-tickets-1-q",
+              "choices": [
+                {
+                  "picture": "b1l13-tickets-1",
+                  "alt": "Two tickets: the ticket seller's hand passes two tickets out over the ticket counter"
+                },
+                {
+                  "picture": "b1l13-tickets-2",
+                  "alt": "Three tickets: the ticket seller's hand passes three tickets out over the ticket counter"
+                },
+                {
+                  "picture": "b1l13-tickets-3",
+                  "alt": "Four tickets: the ticket seller's hand passes four tickets out over the ticket counter"
+                }
+              ],
+              "key": 1,
+              "why": "One each (一個人一張) for her and her two children (我和兩個孩子): three tickets. Two would leave her out.",
+              "focus": {
+                "zh": "一個人一張",
+                "en": "one ticket each"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-03",
+                "B1L05-2-12",
+                "B1L02-1-09"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-hear-tickets-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你們要買幾張票？",
+              "simplified": "你们要买几张票？",
+              "pinyin": "Nǐmen yào mǎi jǐ zhāng piào?",
+              "english": "How many tickets would you like to buy?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我們一共三個人，可是我已經有一張了。",
+              "simplified": "我们一共三个人，可是我已经有一张了。",
+              "pinyin": "Wǒmen yígòng sān ge rén, kěshì wǒ yǐjīng yǒu yì zhāng le.",
+              "english": "There are three of us, but I already have one."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-hear-tickets-2-q",
+              "choices": [
+                {
+                  "picture": "b1l13-tickets-1",
+                  "alt": "Two tickets: the ticket seller's hand passes two tickets out over the ticket counter"
+                },
+                {
+                  "picture": "b1l13-tickets-2",
+                  "alt": "Three tickets: the ticket seller's hand passes three tickets out over the ticket counter"
+                },
+                {
+                  "picture": "b1l13-tickets-3",
+                  "alt": "Four tickets: the ticket seller's hand passes four tickets out over the ticket counter"
+                }
+              ],
+              "key": 0,
+              "why": "The seller asks how many tickets they will buy (買幾張票). There are three of them (一共三個人), but he already has one (已經有一張了), so he buys two, not three.",
+              "focus": {
+                "zh": "已經有一張了",
+                "en": "already has one"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-03",
+                "B1L11-1-03",
+                "B1L04-2-15",
+                "B1L05-2-12"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-hear-tickets-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我跟爸爸、媽媽還有妹妹都要買票。",
+              "simplified": "我跟爸爸、妈妈还有妹妹都要买票。",
+              "pinyin": "Wǒ gēn bàba, māma hái yǒu mèimei dōu yào mǎi piào.",
+              "english": "Dad, Mom, my little sister and I all need to buy tickets."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-hear-tickets-3-q",
+              "choices": [
+                {
+                  "picture": "b1l13-tickets-1",
+                  "alt": "Two tickets: the ticket seller's hand passes two tickets out over the ticket counter"
+                },
+                {
+                  "picture": "b1l13-tickets-2",
+                  "alt": "Three tickets: the ticket seller's hand passes three tickets out over the ticket counter"
+                },
+                {
+                  "picture": "b1l13-tickets-3",
+                  "alt": "Four tickets: the ticket seller's hand passes four tickets out over the ticket counter"
+                }
+              ],
+              "key": 2,
+              "why": "Count the people: 我, 爸爸, 媽媽 and 妹妹 are four, and 都要買票 means they all need tickets.",
+              "focus": {
+                "zh": "都要買票",
+                "en": "everyone needs a ticket"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-03",
+                "B1L03-2-19",
+                "B1L02-1-08",
+                "B1L05-2-18"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-link",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l13-picture-link-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L13-R01",
+            "alt": "Evening: Zhongming, in a yellow jacket, sits at his desk with the lamp on; through the window behind him are a blue sky and the lit windows of other buildings. He smiles at his phone and points at its screen, which shows a picture of a museum above a map with a red pin. Closed books, a cup of pens and an open notebook lie on the desk; he is not using them, and there is no computer."
+          },
+          "questions": [
+            {
+              "id": "b1l13-picture-link-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他在看桌子上的書。",
+                  "simplified": "他在看桌子上的书。",
+                  "pinyin": "Tā zài kàn zhuōzi shàng de shū.",
+                  "english": "He's reading the books on the desk."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他在看手機上的圖片。",
+                  "simplified": "他在看手机上的图片。",
+                  "pinyin": "Tā zài kàn shǒujī shàng de túpiàn.",
+                  "english": "He's looking at a picture on his phone."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他在看窗戶外面的房子。",
+                  "simplified": "他在看窗户外面的房子。",
+                  "pinyin": "Tā zài kàn chuānghu wàimiàn de fángzi.",
+                  "english": "He's looking at the buildings outside the window."
+                }
+              ],
+              "key": 1,
+              "why": "His eyes are on the phone screen, which shows a picture of a museum: 看手機上的圖片. The books on the desk are closed, and he is not looking out of the window.",
+              "focus": {
+                "zh": "手機上的圖片",
+                "en": "a picture on the phone"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-10",
+                "B1L06-2-10",
+                "B1L05-2-10",
+                "B1L05-3-05"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-picture-link-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L13-R01",
+            "alt": "Evening: Zhongming, in a yellow jacket, sits at his desk with the lamp on; through the window behind him are a blue sky and the lit windows of other buildings. He smiles at his phone and points at its screen, which shows a picture of a museum above a map with a red pin. Closed books, a cup of pens and an open notebook lie on the desk; he is not using them, and there is no computer."
+          },
+          "questions": [
+            {
+              "id": "b1l13-picture-link-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "桌子上有一張博物館的圖片。",
+                  "simplified": "桌子上有一张博物馆的图片。",
+                  "pinyin": "Zhuōzi shàng yǒu yì zhāng bówùguǎn de túpiàn.",
+                  "english": "There's a picture of a museum on the desk."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "電腦上有一張博物館的圖片。",
+                  "simplified": "电脑上有一张博物馆的图片。",
+                  "pinyin": "Diànnǎo shàng yǒu yì zhāng bówùguǎn de túpiàn.",
+                  "english": "There's a picture of a museum on the computer."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "手機上有一張博物館的圖片。",
+                  "simplified": "手机上有一张博物馆的图片。",
+                  "pinyin": "Shǒujī shàng yǒu yì zhāng bówùguǎn de túpiàn.",
+                  "english": "There's a picture of a museum on the phone."
+                }
+              ],
+              "key": 2,
+              "why": "The top of the phone screen shows a museum building: 手機上有一張博物館的圖片. There is no such picture on the desk, and there is no computer (電腦).",
+              "focus": {
+                "zh": "博物館的圖片",
+                "en": "a picture of a museum"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-10",
+                "B1L13-1-05",
+                "B1L06-2-10",
+                "B1L06-2-09"
+              ],
+              "grammarIds": [
+                "B1L05-G05-P126"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-gate",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l13-picture-gate-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L13-R02",
+            "alt": "Daytime at the top of a museum's front steps. The big golden doors are open and a few other visitors are walking in. Outside on the steps stand three people who are already there: a curly-haired boy with glasses in an orange sweater, a boy in a green hoodie with an open navy jacket over it, and the teacher in a blue cardigan. On the right Zhongming, in a yellow jacket and with his backpack on, has just come up the steps and waves to them. None of the four has gone in."
+          },
+          "questions": [
+            {
+              "id": "b1l13-picture-gate-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們在博物館裡面。",
+                  "simplified": "他们在博物馆里面。",
+                  "pinyin": "Tāmen zài bówùguǎn lǐmiàn.",
+                  "english": "They're inside the museum."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在圖書館裡面。",
+                  "simplified": "他们在图书馆里面。",
+                  "pinyin": "Tāmen zài túshūguǎn lǐmiàn.",
+                  "english": "They're inside the library."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們在博物館門口。",
+                  "simplified": "他们在博物馆门口。",
+                  "pinyin": "Tāmen zài bówùguǎn ménkǒu.",
+                  "english": "They're at the museum entrance."
+                }
+              ],
+              "key": 2,
+              "why": "The four stand outside by the museum's open doors: 在博物館門口. Nobody has gone in yet, so 裡面 (inside) is wrong, and this is a museum, not a library (圖書館).",
+              "focus": {
+                "zh": "在博物館門口",
+                "en": "at the museum door"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-15",
+                "B1L13-1-05",
+                "B1L05-2-07",
+                "B1L02-1-20"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-picture-gate-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L13-R02",
+            "alt": "Daytime at the top of a museum's front steps. The big golden doors are open and a few other visitors are walking in. Outside on the steps stand three people who are already there: a curly-haired boy with glasses in an orange sweater, a boy in a green hoodie with an open navy jacket over it, and the teacher in a blue cardigan. On the right Zhongming, in a yellow jacket and with his backpack on, has just come up the steps and waves to them. None of the four has gone in."
+          },
+          "questions": [
+            {
+              "id": "b1l13-picture-gate-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "穿黃色衣服的男生剛剛到。",
+                  "simplified": "穿黄色衣服的男生刚刚到。",
+                  "pinyin": "Chuān huángsè yīfu de nánshēng gānggāng dào.",
+                  "english": "The boy in yellow has just arrived."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "戴眼鏡的男生剛剛到。",
+                  "simplified": "戴眼镜的男生刚刚到。",
+                  "pinyin": "Dài yǎnjìng de nánshēng gānggāng dào.",
+                  "english": "The boy with glasses has just arrived."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "穿綠色衣服的男生剛剛到。",
+                  "simplified": "穿绿色衣服的男生刚刚到。",
+                  "pinyin": "Chuān lǜsè yīfu de nánshēng gānggāng dào.",
+                  "english": "The boy in green has just arrived."
+                }
+              ],
+              "key": 0,
+              "why": "The boy in yellow (穿黃色衣服的男生) is coming up to the group and waving: he 剛剛到, has just arrived. The boy with glasses and the boy in green are already standing there.",
+              "focus": {
+                "zh": "剛剛到",
+                "en": "has just arrived"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-04",
+                "B1L07-1-07",
+                "B1L08-2-01",
+                "B1L08-3-05"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-soon",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l13-dialogue-soon-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你這個週末有空嗎？",
+              "simplified": "你这个周末有空吗？",
+              "pinyin": "Nǐ zhège zhōumò yǒu kòng ma?",
+              "english": "Are you free this weekend?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "沒有，下個星期一就要考試了。",
+              "simplified": "没有，下个星期一就要考试了。",
+              "pinyin": "Méiyǒu, xià ge xīngqíyī jiù yào kǎoshì le.",
+              "english": "No. I have an exam next Monday."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-dialogue-soon-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的什麼時候考試？",
+                "simplified": "男的什么时候考试？",
+                "pinyin": "Nán de shénme shíhòu kǎoshì?",
+                "english": "When is the man's exam?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這個週末",
+                  "simplified": "这个周末",
+                  "pinyin": "zhège zhōumò",
+                  "english": "this weekend"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下個星期一",
+                  "simplified": "下个星期一",
+                  "pinyin": "xià ge xīngqíyī",
+                  "english": "next Monday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個星期一",
+                  "simplified": "这个星期一",
+                  "pinyin": "zhège xīngqíyī",
+                  "english": "this Monday"
+                }
+              ],
+              "key": 1,
+              "why": "下個星期一就要考試了: the exam is coming soon, next Monday. 這個週末 is only when she asks if he is free.",
+              "focus": {
+                "zh": "就要考試了",
+                "en": "the exam is coming soon"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-01",
+                "B1L09-3-14",
+                "B1L09-3-10",
+                "B1L05-1-15"
+              ],
+              "grammarIds": [
+                "B1L13-G04-P303"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-dialogue-soon-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我二十分鐘以後到，電影開始了嗎？",
+              "simplified": "我二十分钟以后到，电影开始了吗？",
+              "pinyin": "Wǒ èrshí fēnzhōng yǐhòu dào, diànyǐng kāishǐ le ma?",
+              "english": "I'll get there in twenty minutes. Has the movie started?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "還沒，再十分鐘就要開始了。",
+              "simplified": "还没，再十分钟就要开始了。",
+              "pinyin": "Hái méi, zài shí fēnzhōng jiù yào kāishǐ le.",
+              "english": "Not yet. It starts in ten more minutes."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-dialogue-soon-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "電影什麼時候開始？",
+                "simplified": "电影什么时候开始？",
+                "pinyin": "Diànyǐng shénme shíhòu kāishǐ?",
+                "english": "When does the movie start?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "十分鐘以後",
+                  "simplified": "十分钟以后",
+                  "pinyin": "shí fēnzhōng yǐhòu",
+                  "english": "in ten minutes"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "二十分鐘以後",
+                  "simplified": "二十分钟以后",
+                  "pinyin": "èrshí fēnzhōng yǐhòu",
+                  "english": "in twenty minutes"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三十分鐘以後",
+                  "simplified": "三十分钟以后",
+                  "pinyin": "sānshí fēnzhōng yǐhòu",
+                  "english": "in thirty minutes"
+                }
+              ],
+              "key": 0,
+              "why": "還沒 means it hasn't started yet, and 再十分鐘就要開始了 means it starts in ten more minutes. 二十分鐘以後 is when the man will get there.",
+              "focus": {
+                "zh": "再十分鐘就要開始了",
+                "en": "starting in ten minutes"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-01",
+                "B1L12-2-12",
+                "B1L11-2-02",
+                "B1L09-3-02"
+              ],
+              "grammarIds": [
+                "B1L13-G04-P303"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-hours",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l13-dialogue-hours-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你每天上網上幾個小時？",
+              "simplified": "你每天上网上几个小时？",
+              "pinyin": "Nǐ měi tiān shàngwǎng shàng jǐ ge xiǎoshí?",
+              "english": "How many hours a day do you spend online?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "平常一個小時，週末六個小時。",
+              "simplified": "平常一个小时，周末六个小时。",
+              "pinyin": "Píngcháng yí ge xiǎoshí, zhōumò liù ge xiǎoshí.",
+              "english": "Usually one hour; on weekends, six."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-dialogue-hours-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的平常上網上幾個小時？",
+                "simplified": "男的平常上网上几个小时？",
+                "pinyin": "Nán de píngcháng shàngwǎng shàng jǐ ge xiǎoshí?",
+                "english": "How many hours does the man usually spend online?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一個小時",
+                  "simplified": "一个小时",
+                  "pinyin": "yí ge xiǎoshí",
+                  "english": "one hour"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "六個小時",
+                  "simplified": "六个小时",
+                  "pinyin": "liù ge xiǎoshí",
+                  "english": "six hours"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "七個小時",
+                  "simplified": "七个小时",
+                  "pinyin": "qī ge xiǎoshí",
+                  "english": "seven hours"
+                }
+              ],
+              "key": 0,
+              "why": "平常一個小時: on a normal day he is online for one hour. 六個小時 is his weekend time (週末).",
+              "focus": {
+                "zh": "上網上一個小時",
+                "en": "online for one hour"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L06-2-08",
+                "B1L12-2-11",
+                "B1L06-3-11",
+                "B1L02-2-03"
+              ],
+              "grammarIds": [
+                "B1L13-G05-P304"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-dialogue-hours-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳今天很累吧？",
+              "simplified": "你今天很累吧？",
+              "pinyin": "Nǐ jīntiān hěn lèi ba?",
+              "english": "You're tired today, aren't you?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "對，我昨天晚上十一點睡覺，今天早上五點就起床了。",
+              "simplified": "对，我昨天晚上十一点睡觉，今天早上五点就起床了。",
+              "pinyin": "Duì, wǒ zuótiān wǎnshàng shíyī diǎn shuìjiào, jīntiān zǎoshàng wǔ diǎn jiù qǐchuáng le.",
+              "english": "Yes. I went to bed at eleven last night and was already up at five this morning."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-dialogue-hours-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的睡了幾個小時？",
+                "simplified": "女的睡了几个小时？",
+                "pinyin": "Nǚ de shuì le jǐ ge xiǎoshí?",
+                "english": "How many hours did the woman sleep?"
+              },
+              "choices": [
+                {
+                  "traditional": "十一個小時",
+                  "simplified": "十一个小时",
+                  "pinyin": "shíyī ge xiǎoshí",
+                  "english": "eleven hours"
+                },
+                {
+                  "traditional": "五個小時",
+                  "simplified": "五个小时",
+                  "pinyin": "wǔ ge xiǎoshí",
+                  "english": "five hours"
+                },
+                {
+                  "traditional": "六個小時",
+                  "simplified": "六个小时",
+                  "pinyin": "liù ge xiǎoshí",
+                  "english": "six hours"
+                }
+              ],
+              "key": 2,
+              "why": "She went to bed at eleven last night (十一點睡覺) and got up at five this morning (五點起床): six hours of sleep. 十一 and 五 are clock times, not how long she slept.",
+              "focus": {
+                "zh": "睡了五個小時",
+                "en": "slept five hours"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L12-2-11",
+                "B1L02-3-09",
+                "B1L02-3-03",
+                "B1L02-2-02"
+              ],
+              "grammarIds": [
+                "B1L13-G05-P304"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-routine-job",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l13-review-routine-job-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你在家常常聽音樂嗎？",
+              "simplified": "你在家常常听音乐吗？",
+              "pinyin": "Nǐ zài jiā chángcháng tīng yīnyuè ma?",
+              "english": "Do you often listen to music at home?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "做飯的時候聽音樂，吃飯的時候看電視。",
+              "simplified": "做饭的时候听音乐，吃饭的时候看电视。",
+              "pinyin": "Zuòfàn de shíhòu tīng yīnyuè, chī fàn de shíhòu kàn diànshì.",
+              "english": "I listen to music while I cook and watch TV while I eat."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-review-routine-job-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的吃飯的時候做什麼？",
+                "simplified": "男的吃饭的时候做什么？",
+                "pinyin": "Nán de chī fàn de shíhòu zuò shénme?",
+                "english": "What does the man do while he eats?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "聽音樂",
+                  "simplified": "听音乐",
+                  "pinyin": "tīng yīnyuè",
+                  "english": "listen to music"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "上網",
+                  "simplified": "上网",
+                  "pinyin": "shàngwǎng",
+                  "english": "go online"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看電視",
+                  "simplified": "看电视",
+                  "pinyin": "kàn diànshì",
+                  "english": "watch TV"
+                }
+              ],
+              "key": 2,
+              "why": "吃飯的時候看電視: while he eats, he watches TV. Music is for when he cooks (做飯的時候).",
+              "focus": {
+                "zh": "……的時候",
+                "en": "while doing something"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L02-3-08",
+                "B1L05-1-05",
+                "B1L05-3-03",
+                "B1L03-2-21"
+              ],
+              "grammarIds": [
+                "B1L12-G05-P284"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-review-routine-job-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳在咖啡廳工作過嗎？",
+              "simplified": "你在咖啡厅工作过吗？",
+              "pinyin": "Nǐ zài kāfēitīng gōngzuò guo ma?",
+              "english": "Have you ever worked in a café?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "沒有，可是我在麵包店上過班。",
+              "simplified": "没有，可是我在面包店上过班。",
+              "pinyin": "Méiyǒu, kěshì wǒ zài miànbāo diàn shàng guo bān.",
+              "english": "No, but I've worked at a bakery."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-review-routine-job-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的在哪裡上過班？",
+                "simplified": "女的在哪里上过班？",
+                "pinyin": "Nǚ de zài nǎlǐ shàng guo bān?",
+                "english": "Where has the woman worked?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "麵包店",
+                  "simplified": "面包店",
+                  "pinyin": "miànbāo diàn",
+                  "english": "a bakery"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "咖啡廳",
+                  "simplified": "咖啡厅",
+                  "pinyin": "kāfēitīng",
+                  "english": "a café"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "百貨公司",
+                  "simplified": "百货公司",
+                  "pinyin": "bǎihuò gōngsī",
+                  "english": "a department store"
+                }
+              ],
+              "key": 0,
+              "why": "沒有 answers the café question. She has worked (上過班) at a 麵包店, a bakery.",
+              "focus": {
+                "zh": "上過班",
+                "en": "has worked at"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-07",
+                "B1L12-1-16",
+                "B1L12-2-01",
+                "B1L05-1-08"
+              ],
+              "grammarIds": [
+                "B1L12-G04-P282"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-when-done",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l13-review-when-done-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳是什麼時候來台灣的？",
+              "simplified": "你是什么时候来台湾的？",
+              "pinyin": "Nǐ shì shénme shíhòu lái Táiwān de?",
+              "english": "When did you come to Taiwan?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我是去年來的，我妹妹是今年來的。",
+              "simplified": "我是去年来的，我妹妹是今年来的。",
+              "pinyin": "Wǒ shì qùnián lái de, wǒ mèimei shì jīnnián lái de.",
+              "english": "I came last year; my younger sister came this year."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-review-when-done-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的是什麼時候來台灣的？",
+                "simplified": "女的是什么时候来台湾的？",
+                "pinyin": "Nǚ de shì shénme shíhòu lái Táiwān de?",
+                "english": "When did the woman come to Taiwan?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去年",
+                  "simplified": "去年",
+                  "pinyin": "qùnián",
+                  "english": "last year"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "今年",
+                  "simplified": "今年",
+                  "pinyin": "jīnnián",
+                  "english": "this year"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明年",
+                  "simplified": "明年",
+                  "pinyin": "míngnián",
+                  "english": "next year"
+                }
+              ],
+              "key": 0,
+              "why": "我是去年來的: she came last year. 今年 is when her sister came.",
+              "focus": {
+                "zh": "是……來的",
+                "en": "when someone came"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L08-1-02",
+                "B1L08-1-04",
+                "B1L01-1-15"
+              ],
+              "grammarIds": [
+                "B1L11-G03-P251"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-review-when-done-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你的功課都寫了嗎？",
+              "simplified": "你的功课都写了吗？",
+              "pinyin": "Nǐ de gōngkè dōu xiě le ma?",
+              "english": "Have you done all your homework?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "數學寫了，中文還沒寫。",
+              "simplified": "数学写了，中文还没写。",
+              "pinyin": "Shùxué xiě le, Zhōngwén hái méi xiě.",
+              "english": "Math is done; Chinese isn't yet."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-review-when-done-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的什麼功課還沒寫？",
+                "simplified": "男的什么功课还没写？",
+                "pinyin": "Nán de shénme gōngkè hái méi xiě?",
+                "english": "Which homework hasn't the man done yet?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "數學",
+                  "simplified": "数学",
+                  "pinyin": "shùxué",
+                  "english": "math"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中文",
+                  "simplified": "中文",
+                  "pinyin": "Zhōngwén",
+                  "english": "Chinese"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "英文",
+                  "simplified": "英文",
+                  "pinyin": "Yīngwén",
+                  "english": "English"
+                }
+              ],
+              "key": 1,
+              "why": "數學寫了 means the math is done; 中文還沒寫 means the Chinese is not done yet.",
+              "focus": {
+                "zh": "還沒寫",
+                "en": "not done yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L11-1-02",
+                "B1L09-1-14",
+                "B1L03-1-10"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-queue",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l13-read-queue-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l13-read-queue-1-q",
+              "prompt": {
+                "traditional": "三個人在排隊，第一個是女生，後面是兩個男生。",
+                "simplified": "三个人在排队，第一个是女生，后面是两个男生。",
+                "pinyin": "Sān ge rén zài páiduì, dì yī ge shì nǚshēng, hòumiàn shì liǎng ge nánshēng.",
+                "english": "Three people are standing in line. The first one is the girl, and behind her are two boys."
+              },
+              "choices": [
+                {
+                  "picture": "b1l13-queue-1",
+                  "alt": "Girl first: at the bus stop the girl stands first in line, with two boys behind her"
+                },
+                {
+                  "picture": "b1l13-queue-2",
+                  "alt": "Girl second: one boy stands in front of the girl and one boy behind her"
+                },
+                {
+                  "picture": "b1l13-queue-3",
+                  "alt": "Girl last: both boys stand in front of the girl; she is at the end of the line"
+                }
+              ],
+              "key": 0,
+              "why": "第一個是女生 means the first in line is the girl, and both boys are behind her (後面).",
+              "focus": {
+                "zh": "第一個是女生",
+                "en": "the girl is first"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-02",
+                "B1L13-3-08",
+                "B1L05-2-23",
+                "B1L08-3-04"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-read-queue-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l13-read-queue-2-q",
+              "prompt": {
+                "traditional": "三個人在排隊，兩個男生都在女生前面。",
+                "simplified": "三个人在排队，两个男生都在女生前面。",
+                "pinyin": "Sān ge rén zài páiduì, liǎng ge nánshēng dōu zài nǚshēng qiánmiàn.",
+                "english": "Three people are standing in line. Both boys are in front of the girl."
+              },
+              "choices": [
+                {
+                  "picture": "b1l13-queue-1",
+                  "alt": "Girl first: at the bus stop the girl stands first in line, with two boys behind her"
+                },
+                {
+                  "picture": "b1l13-queue-2",
+                  "alt": "Girl second: one boy stands in front of the girl and one boy behind her"
+                },
+                {
+                  "picture": "b1l13-queue-3",
+                  "alt": "Girl last: both boys stand in front of the girl; she is at the end of the line"
+                }
+              ],
+              "key": 2,
+              "why": "Both boys (都) are in front of (前面) the girl, so she is last in line.",
+              "focus": {
+                "zh": "都在女生前面",
+                "en": "both in front of her"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-02",
+                "B1L05-2-22",
+                "B1L03-2-19",
+                "B1L08-3-05"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-read-queue-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l13-read-queue-3-q",
+              "prompt": {
+                "traditional": "三個人在排隊，第二個是女生，她前面和後面都有一個男生。",
+                "simplified": "三个人在排队，第二个是女生，她前面和后面都有一个男生。",
+                "pinyin": "Sān ge rén zài páiduì, dì èr ge shì nǚshēng, tā qiánmiàn hé hòumiàn dōu yǒu yí ge nánshēng.",
+                "english": "Three people are standing in line. The second one is the girl: there is one boy in front of her and one behind her."
+              },
+              "choices": [
+                {
+                  "picture": "b1l13-queue-1",
+                  "alt": "Girl first: at the bus stop the girl stands first in line, with two boys behind her"
+                },
+                {
+                  "picture": "b1l13-queue-2",
+                  "alt": "Girl second: one boy stands in front of the girl and one boy behind her"
+                },
+                {
+                  "picture": "b1l13-queue-3",
+                  "alt": "Girl last: both boys stand in front of the girl; she is at the end of the line"
+                }
+              ],
+              "key": 1,
+              "why": "第二個是女生 means the girl is second in line, with one boy in front of her (前面) and one behind her (後面).",
+              "focus": {
+                "zh": "第二個是女生",
+                "en": "the girl is second"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-02",
+                "B1L13-3-08",
+                "B1L05-2-22",
+                "B1L05-2-23"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-clock",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l13-read-clock-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l13-read-clock-1-q",
+              "prompt": {
+                "traditional": "八點上課，可是他七點半就到教室了。",
+                "simplified": "八点上课，可是他七点半就到教室了。",
+                "pinyin": "Bā diǎn shàngkè, kěshì tā qī diǎn bàn jiù dào jiàoshì le.",
+                "english": "Class starts at eight, but he got to the classroom at seven thirty."
+              },
+              "choices": [
+                {
+                  "picture": "b1l13-clock-1",
+                  "alt": "7:30: the classroom clock shows half past seven as the boy walks in"
+                },
+                {
+                  "picture": "b1l13-clock-2",
+                  "alt": "8:00: the classroom clock shows eight o'clock as the boy walks in"
+                },
+                {
+                  "picture": "b1l13-clock-3",
+                  "alt": "8:30: the classroom clock shows half past eight as the boy walks in"
+                }
+              ],
+              "key": 0,
+              "why": "七點半就到了: 就 shows he came early, at 7:30, before the 8:00 class.",
+              "focus": {
+                "zh": "七點半就到了",
+                "en": "early: there at 7:30"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L09-2-03",
+                "B1L05-1-13",
+                "B1L07-1-07",
+                "B1L10-2-18"
+              ],
+              "grammarIds": [
+                "B1L13-G03-P297"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-read-clock-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l13-read-clock-2-q",
+              "prompt": {
+                "traditional": "八點上課，他遲到了三十分鐘。",
+                "simplified": "八点上课，他迟到了三十分钟。",
+                "pinyin": "Bā diǎn shàngkè, tā chídào le sānshí fēnzhōng.",
+                "english": "Class starts at eight, and he was thirty minutes late."
+              },
+              "choices": [
+                {
+                  "picture": "b1l13-clock-1",
+                  "alt": "7:30: the classroom clock shows half past seven as the boy walks in"
+                },
+                {
+                  "picture": "b1l13-clock-2",
+                  "alt": "8:00: the classroom clock shows eight o'clock as the boy walks in"
+                },
+                {
+                  "picture": "b1l13-clock-3",
+                  "alt": "8:30: the classroom clock shows half past eight as the boy walks in"
+                }
+              ],
+              "key": 2,
+              "why": "遲到了三十分鐘 means thirty minutes late: eight o'clock plus thirty minutes is 8:30.",
+              "focus": {
+                "zh": "遲到了三十分鐘",
+                "en": "thirty minutes late"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L12-2-09",
+                "B1L12-2-12",
+                "B1L02-1-28"
+              ],
+              "grammarIds": [
+                "B1L13-G05-P304"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-read-clock-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l13-read-clock-3-q",
+              "prompt": {
+                "traditional": "八點上課，他很準時，不早也不晚。",
+                "simplified": "八点上课，他很准时，不早也不晚。",
+                "pinyin": "Bā diǎn shàngkè, tā hěn zhǔnshí, bù zǎo yě bù wǎn.",
+                "english": "Class starts at eight; he's on time, not early and not late."
+              },
+              "choices": [
+                {
+                  "picture": "b1l13-clock-1",
+                  "alt": "7:30: the classroom clock shows half past seven as the boy walks in"
+                },
+                {
+                  "picture": "b1l13-clock-2",
+                  "alt": "8:00: the classroom clock shows eight o'clock as the boy walks in"
+                },
+                {
+                  "picture": "b1l13-clock-3",
+                  "alt": "8:30: the classroom clock shows half past eight as the boy walks in"
+                }
+              ],
+              "key": 1,
+              "why": "準時 means on time, 不早也不晚 (not early, not late): he walks in at 8:00.",
+              "focus": {
+                "zh": "準時",
+                "en": "on time"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L12-1-15",
+                "B1L13-1-18",
+                "B1L13-1-17"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-museum",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l13-realia-museum-1",
+          "kind": "realia",
+          "picture": "b1l13-museum-sign",
+          "alt": "A sign by a history museum's entrance with its opening hours, ticket prices and guided-talk times",
+          "transcript": {
+            "traditional": "歷史博物館　上午9:00—下午5:00　星期二不開門　票 一張150元　學生票 一張100元　介紹時間 上午10:00、下午2:00",
+            "simplified": "历史博物馆　上午9:00—下午5:00　星期二不开门　票 一张150元　学生票 一张100元　介绍时间 上午10:00、下午2:00",
+            "pinyin": "Lìshǐ Bówùguǎn: shàngwǔ 9:00—xiàwǔ 5:00; xīngqí'èr bù kāimén; piào yì zhāng 150 yuán; xuéshēng piào yì zhāng 100 yuán; jièshào shíjiān shàngwǔ 10:00, xiàwǔ 2:00",
+            "english": "History Museum: 9:00 a.m.–5:00 p.m.; closed on Tuesdays; tickets 150 each; student tickets 100 each; guided talks at 10:00 a.m. and 2:00 p.m."
+          },
+          "questions": [
+            {
+              "id": "b1l13-realia-museum-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期一上午十點可以來這裡參觀。",
+                  "simplified": "星期一上午十点可以来这里参观。",
+                  "pinyin": "Xīngqíyī shàngwǔ shí diǎn kěyǐ lái zhèlǐ cānguān.",
+                  "english": "You can visit here at 10 a.m. on Monday."
+                },
+                {
+                  "traditional": "星期二下午三點可以來這裡參觀。",
+                  "simplified": "星期二下午三点可以来这里参观。",
+                  "pinyin": "Xīngqí'èr xiàwǔ sān diǎn kěyǐ lái zhèlǐ cānguān.",
+                  "english": "You can visit here at 3 p.m. on Tuesday."
+                },
+                {
+                  "traditional": "星期六晚上七點可以來這裡參觀。",
+                  "simplified": "星期六晚上七点可以来这里参观。",
+                  "pinyin": "Xīngqíliù wǎnshàng qī diǎn kěyǐ lái zhèlǐ cānguān.",
+                  "english": "You can visit here at 7 p.m. on Saturday."
+                }
+              ],
+              "key": 0,
+              "why": "The museum is open from 9:00 to 5:00 and closed only on Tuesdays (星期二不開門), so 10:00 on Monday is fine. On Tuesday it is closed, and at 7:00 in the evening it has been closed since 5:00.",
+              "focus": {
+                "zh": "星期二不開門",
+                "en": "closed on Tuesdays"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-08",
+                "B1L02-1-11",
+                "B1L02-1-26",
+                "B1L02-2-10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-realia-museum-2",
+          "kind": "realia",
+          "picture": "b1l13-museum-sign",
+          "alt": "A sign by a history museum's entrance with its opening hours, ticket prices and guided-talk times",
+          "transcript": {
+            "traditional": "歷史博物館　上午9:00—下午5:00　星期二不開門　票 一張150元　學生票 一張100元　介紹時間 上午10:00、下午2:00",
+            "simplified": "历史博物馆　上午9:00—下午5:00　星期二不开门　票 一张150元　学生票 一张100元　介绍时间 上午10:00、下午2:00",
+            "pinyin": "Lìshǐ Bówùguǎn: shàngwǔ 9:00—xiàwǔ 5:00; xīngqí'èr bù kāimén; piào yì zhāng 150 yuán; xuéshēng piào yì zhāng 100 yuán; jièshào shíjiān shàngwǔ 10:00, xiàwǔ 2:00",
+            "english": "History Museum: 9:00 a.m.–5:00 p.m.; closed on Tuesdays; tickets 150 each; student tickets 100 each; guided talks at 10:00 a.m. and 2:00 p.m."
+          },
+          "questions": [
+            {
+              "id": "b1l13-realia-museum-2-q",
+              "prompt": {
+                "traditional": "老師買一張票，三個學生買學生票，一共多少錢？",
+                "simplified": "老师买一张票，三个学生买学生票，一共多少钱？",
+                "pinyin": "Lǎoshī mǎi yì zhāng piào, sān ge xuéshēng mǎi xuéshēng piào, yígòng duōshǎo qián?",
+                "english": "The teacher buys one ticket, and three students buy student tickets. How much is that altogether?"
+              },
+              "choices": [
+                {
+                  "traditional": "四百元",
+                  "simplified": "四百元",
+                  "pinyin": "sì bǎi yuán",
+                  "english": "400 dollars"
+                },
+                {
+                  "traditional": "三百五十元",
+                  "simplified": "三百五十元",
+                  "pinyin": "sān bǎi wǔshí yuán",
+                  "english": "350 dollars"
+                },
+                {
+                  "traditional": "四百五十元",
+                  "simplified": "四百五十元",
+                  "pinyin": "sì bǎi wǔshí yuán",
+                  "english": "450 dollars"
+                }
+              ],
+              "key": 2,
+              "why": "One ticket is 150元 and three student tickets are 3 × 100元: 150 + 300 = 450. 四百元 would be four student tickets, and 三百五十元 counts only two students.",
+              "focus": {
+                "zh": "一張票和三張學生票",
+                "en": "one ticket, three student tickets"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-03",
+                "B1L04-2-15",
+                "B1L05-2-12",
+                "B1L03-2-11"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-network",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l13-realia-network-1",
+          "kind": "realia",
+          "picture": "b1l13-network-notice",
+          "alt": "A notice on the library door about the internet",
+          "transcript": {
+            "traditional": "注意！　星期三 上午8:00—11:00　圖書館的網路不能用　電腦也不能上網　要上網的同學，請用自己的手機　11:00以後就沒問題了",
+            "simplified": "注意！　星期三 上午8:00—11:00　图书馆的网路不能用　电脑也不能上网　要上网的同学，请用自己的手机　11:00以后就没问题了",
+            "pinyin": "Zhùyì! Xīngqísān shàngwǔ 8:00—11:00: túshūguǎn de wǎnglù bù néng yòng, diànnǎo yě bù néng shàngwǎng. Yào shàngwǎng de tóngxué, qǐng yòng zìjǐ de shǒujī. 11:00 yǐhòu jiù méi wèntí le.",
+            "english": "Note! Wednesday 8:00–11:00 a.m.: the library internet can't be used, and the computers can't go online either. Students who need to go online, please use your own phones. After 11:00 it will be fine."
+          },
+          "questions": [
+            {
+              "id": "b1l13-realia-network-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期三上午十點，在圖書館可以用電腦上網。",
+                  "simplified": "星期三上午十点，在图书馆可以用电脑上网。",
+                  "pinyin": "Xīngqísān shàngwǔ shí diǎn, zài túshūguǎn kěyǐ yòng diànnǎo shàngwǎng.",
+                  "english": "At 10 a.m. on Wednesday, you can go online with a computer in the library."
+                },
+                {
+                  "traditional": "星期三上午十點，在圖書館可以用手機上網。",
+                  "simplified": "星期三上午十点，在图书馆可以用手机上网。",
+                  "pinyin": "Xīngqísān shàngwǔ shí diǎn, zài túshūguǎn kěyǐ yòng shǒujī shàngwǎng.",
+                  "english": "At 10 a.m. on Wednesday, you can go online with a phone in the library."
+                },
+                {
+                  "traditional": "星期三上午十點，圖書館的網路沒有問題。",
+                  "simplified": "星期三上午十点，图书馆的网路没有问题。",
+                  "pinyin": "Xīngqísān shàngwǔ shí diǎn, túshūguǎn de wǎnglù méiyǒu wèntí.",
+                  "english": "At 10 a.m. on Wednesday, the library internet has no problems."
+                }
+              ],
+              "key": 1,
+              "why": "The notice says 電腦也不能上網 (the computers can't go online either) but 要上網的同學，請用自己的手機: you can go online with your own phone. At ten the library internet is still down, so it is not 沒有問題.",
+              "focus": {
+                "zh": "請用自己的手機",
+                "en": "use your own phone"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L06-2-10",
+                "B1L06-2-09",
+                "B1L06-2-08",
+                "B1L12-3-09"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-realia-network-2",
+          "kind": "realia",
+          "picture": "b1l13-network-notice",
+          "alt": "A notice on the library door about the internet",
+          "transcript": {
+            "traditional": "注意！　星期三 上午8:00—11:00　圖書館的網路不能用　電腦也不能上網　要上網的同學，請用自己的手機　11:00以後就沒問題了",
+            "simplified": "注意！　星期三 上午8:00—11:00　图书馆的网路不能用　电脑也不能上网　要上网的同学，请用自己的手机　11:00以后就没问题了",
+            "pinyin": "Zhùyì! Xīngqísān shàngwǔ 8:00—11:00: túshūguǎn de wǎnglù bù néng yòng, diànnǎo yě bù néng shàngwǎng. Yào shàngwǎng de tóngxué, qǐng yòng zìjǐ de shǒujī. 11:00 yǐhòu jiù méi wèntí le.",
+            "english": "Note! Wednesday 8:00–11:00 a.m.: the library internet can't be used, and the computers can't go online either. Students who need to go online, please use your own phones. After 11:00 it will be fine."
+          },
+          "questions": [
+            {
+              "id": "b1l13-realia-network-2-q",
+              "prompt": {
+                "traditional": "星期三上午，圖書館的網路有幾個小時不能用？",
+                "simplified": "星期三上午，图书馆的网路有几个小时不能用？",
+                "pinyin": "Xīngqísān shàngwǔ, túshūguǎn de wǎnglù yǒu jǐ ge xiǎoshí bù néng yòng?",
+                "english": "On Wednesday morning, for how many hours can't the library internet be used?"
+              },
+              "choices": [
+                {
+                  "traditional": "八個小時",
+                  "simplified": "八个小时",
+                  "pinyin": "bā ge xiǎoshí",
+                  "english": "eight hours"
+                },
+                {
+                  "traditional": "三個小時",
+                  "simplified": "三个小时",
+                  "pinyin": "sān ge xiǎoshí",
+                  "english": "three hours"
+                },
+                {
+                  "traditional": "四個小時",
+                  "simplified": "四个小时",
+                  "pinyin": "sì ge xiǎoshí",
+                  "english": "four hours"
+                }
+              ],
+              "key": 1,
+              "why": "From 8:00 to 11:00 is three hours (三個小時). 8 is the start time, not the length; 8, 9, 10 and 11 are four clock times but only three hours.",
+              "focus": {
+                "zh": "三個小時",
+                "en": "three hours"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L12-2-11",
+                "B1L11-3-01",
+                "B1L09-2-04"
+              ],
+              "grammarIds": [
+                "B1L13-G05-P304"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l13-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l13-exhibit-room",
+          "alt": "A museum exhibition room; the wall clock shows ten to five. On the left a woman guide points at a big picture of an old ship and talks to four students. On the right a boy talks loudly on his phone, and the two visitors next to him turn to look at him.",
+          "questions": [
+            {
+              "id": "b1l13-scene-gap-1-a",
+              "prompt": {
+                "traditional": "那個男生在打電話，說話很＿＿，旁邊的人都在看他。",
+                "simplified": "那个男生在打电话，说话很＿＿，旁边的人都在看他。"
+              },
+              "choices": [
+                {
+                  "traditional": "大聲",
+                  "simplified": "大声",
+                  "pinyin": "dàshēng",
+                  "english": "loud"
+                },
+                {
+                  "traditional": "安靜",
+                  "simplified": "安静",
+                  "pinyin": "ānjìng",
+                  "english": "quiet"
+                },
+                {
+                  "traditional": "準時",
+                  "simplified": "准时",
+                  "pinyin": "zhǔnshí",
+                  "english": "on time"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "那個男生在打電話，說話很大聲，旁邊的人都在看他。",
+                "simplified": "那个男生在打电话，说话很大声，旁边的人都在看他。",
+                "pinyin": "Nàge nánshēng zài dǎ diànhuà, shuōhuà hěn dàshēng, pángbiān de rén dōu zài kàn tā.",
+                "english": "That boy is on the phone, talking very loudly, and the people next to him are looking at him."
+              },
+              "why": "In the picture he talks loudly into his phone and the people next to him (旁邊的人) turn to look: 大聲 means loud. 安靜 is the opposite, and 準時 (on time) says nothing about talking.",
+              "focus": {
+                "zh": "大聲",
+                "en": "loud"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-08",
+                "B1L13-2-07",
+                "B1L06-1-20",
+                "B1L10-3-01"
+              ]
+            },
+            {
+              "id": "b1l13-scene-gap-1-b",
+              "prompt": {
+                "traditional": "那位小姐在跟學生＿＿這張圖片。",
+                "simplified": "那位小姐在跟学生＿＿这张图片。"
+              },
+              "choices": [
+                {
+                  "traditional": "參觀",
+                  "simplified": "参观",
+                  "pinyin": "cānguān",
+                  "english": "to visit"
+                },
+                {
+                  "traditional": "排隊",
+                  "simplified": "排队",
+                  "pinyin": "páiduì",
+                  "english": "to line up"
+                },
+                {
+                  "traditional": "介紹",
+                  "simplified": "介绍",
+                  "pinyin": "jièshào",
+                  "english": "to introduce"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "那位小姐在跟學生介紹這張圖片。",
+                "simplified": "那位小姐在跟学生介绍这张图片。",
+                "pinyin": "Nà wèi xiǎojiě zài gēn xuéshēng jièshào zhè zhāng túpiàn.",
+                "english": "That woman is telling the students about this picture."
+              },
+              "why": "跟學生介紹 means to introduce something to the students: she explains the picture. You 參觀 a place, not a picture, and 排隊 (line up) takes no object.",
+              "focus": {
+                "zh": "跟學生介紹",
+                "en": "introduce to the students"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-04",
+                "B1L13-2-10",
+                "B1L10-1-05"
+              ],
+              "grammarIds": [
+                "B1L10-G01-P226"
+              ]
+            },
+            {
+              "id": "b1l13-scene-gap-1-c",
+              "prompt": {
+                "traditional": "這張圖片很有趣，請你也看＿＿。",
+                "simplified": "这张图片很有趣，请你也看＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "english": "to arrive"
+                },
+                {
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "kàn",
+                  "english": "to look"
+                },
+                {
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "guo",
+                  "english": "(experience particle)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "這張圖片很有趣，請你也看看。",
+                "simplified": "这张图片很有趣，请你也看看。",
+                "pinyin": "Zhè zhāng túpiàn hěn yǒuqù, qǐng nǐ yě kànkan.",
+                "english": "This picture is interesting. Please have a look too."
+              },
+              "why": "看看 repeats the verb for a light “have a look” in a polite request with 請. 看到 and 看過 say what someone saw or has seen; they do not make a request.",
+              "focus": {
+                "zh": "看看",
+                "en": "have a look"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-10",
+                "B1L06-2-04",
+                "B1L03-1-06"
+              ],
+              "grammarIds": [
+                "B1L13-G01-P295"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l13-exhibit-room",
+          "alt": "A museum exhibition room; the wall clock shows ten to five. On the left a woman guide points at a big picture of an old ship and talks to four students. On the right a boy talks loudly on his phone, and the two visitors next to him turn to look at him.",
+          "questions": [
+            {
+              "id": "b1l13-scene-gap-2-a",
+              "prompt": {
+                "traditional": "博物館五點關門，現在四點五十分，＿＿關門了。",
+                "simplified": "博物馆五点关门，现在四点五十分，＿＿关门了。"
+              },
+              "choices": [
+                {
+                  "traditional": "就要",
+                  "simplified": "就要",
+                  "pinyin": "jiù yào",
+                  "english": "will soon"
+                },
+                {
+                  "traditional": "已經",
+                  "simplified": "已经",
+                  "pinyin": "yǐjīng",
+                  "english": "already"
+                },
+                {
+                  "traditional": "剛剛",
+                  "simplified": "刚刚",
+                  "pinyin": "gānggāng",
+                  "english": "just now"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "博物館五點關門，現在四點五十分，就要關門了。",
+                "simplified": "博物馆五点关门，现在四点五十分，就要关门了。",
+                "pinyin": "Bówùguǎn wǔ diǎn guānmén, xiànzài sì diǎn wǔshí fēn, jiù yào guānmén le.",
+                "english": "The museum closes at five. It's ten to five now, so it will close soon."
+              },
+              "why": "It closes at five (五點關門) and it is only 4:50, so it has not closed yet: 就要……了 means it will close soon. 已經 and 剛剛 would mean it has closed already.",
+              "focus": {
+                "zh": "就要……了",
+                "en": "will soon"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-01",
+                "B1L08-2-17",
+                "B1L02-1-04",
+                "B1L02-1-29"
+              ],
+              "grammarIds": [
+                "B1L13-G04-P303"
+              ]
+            },
+            {
+              "id": "b1l13-scene-gap-2-b",
+              "prompt": {
+                "traditional": "從四點半到現在，那個男生打電話打了二十＿＿了。",
+                "simplified": "从四点半到现在，那个男生打电话打了二十＿＿了。"
+              },
+              "choices": [
+                {
+                  "traditional": "點",
+                  "simplified": "点",
+                  "pinyin": "diǎn",
+                  "english": "o'clock"
+                },
+                {
+                  "traditional": "分鐘",
+                  "simplified": "分钟",
+                  "pinyin": "fēnzhōng",
+                  "english": "minute"
+                },
+                {
+                  "traditional": "號",
+                  "simplified": "号",
+                  "pinyin": "hào",
+                  "english": "(day of the month)"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "從四點半到現在，那個男生打電話打了二十分鐘了。",
+                "simplified": "从四点半到现在，那个男生打电话打了二十分钟了。",
+                "pinyin": "Cóng sì diǎn bàn dào xiànzài, nàge nánshēng dǎ diànhuà dǎ le èrshí fēnzhōng le.",
+                "english": "From half past four until now, that boy has been on the phone for twenty minutes."
+              },
+              "why": "How long goes after the repeated verb: 打電話打了二十分鐘, from 4:30 to the 4:50 on the clock. 點 is a clock time and 號 a date, not a length of time.",
+              "focus": {
+                "zh": "打了二十分鐘",
+                "en": "for twenty minutes"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L12-2-12",
+                "B1L10-3-01",
+                "B1L11-1-02"
+              ],
+              "grammarIds": [
+                "B1L13-G05-P304"
+              ]
+            },
+            {
+              "id": "b1l13-scene-gap-2-c",
+              "prompt": {
+                "traditional": "那位小姐在說這張圖片的故事，我們一起去聽＿＿，好嗎？",
+                "simplified": "那位小姐在说这张图片的故事，我们一起去听＿＿，好吗？"
+              },
+              "choices": [
+                {
+                  "traditional": "說",
+                  "simplified": "说",
+                  "pinyin": "shuō",
+                  "english": "to say"
+                },
+                {
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "guo",
+                  "english": "(experience particle)"
+                },
+                {
+                  "traditional": "聽",
+                  "simplified": "听",
+                  "pinyin": "tīng",
+                  "english": "to listen"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "那位小姐在說這張圖片的故事，我們一起去聽聽，好嗎？",
+                "simplified": "那位小姐在说这张图片的故事，我们一起去听听，好吗？",
+                "pinyin": "Nà wèi xiǎojiě zài shuō zhè zhāng túpiàn de gùshì, wǒmen yìqǐ qù tīngting, hǎo ma?",
+                "english": "That woman is telling the story of this picture. Shall we go and have a listen?"
+              },
+              "why": "聽聽 repeats the verb for a light “have a listen” in a suggestion (……，好嗎？). 聽說 means to hear it said, and 聽過 is for past experience; neither makes a suggestion.",
+              "focus": {
+                "zh": "聽聽",
+                "en": "have a listen"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-2-13",
+                "B1L13-2-10",
+                "B1L05-1-04"
+              ],
+              "grammarIds": [
+                "B1L13-G01-P295"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l13-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "星期六我{1}妹妹去參觀博物館。我們從捷運站走十分鐘{2}到了。博物館九點開門，我們八點半到，在門口等了{3}。妹妹很喜歡那裡的畫，看了兩個小時還不想走。我們{4}捷運回家的時候，她說下個月還想再來。",
+            "simplified": "星期六我{1}妹妹去参观博物馆。我们从捷运站走十分钟{2}到了。博物馆九点开门，我们八点半到，在门口等了{3}。妹妹很喜欢那里的画，看了两个小时还不想走。我们{4}捷运回家的时候，她说下个月还想再来。",
+            "pinyin": "Xīngqíliù wǒ dài mèimei qù cānguān bówùguǎn. Wǒmen cóng jiéyùn zhàn zǒu shí fēnzhōng jiù dào le. Bówùguǎn jiǔ diǎn kāimén, wǒmen bā diǎn bàn dào, zài ménkǒu děng le bàn ge xiǎoshí. Mèimei hěn xǐhuān nàlǐ de huà, kàn le liǎng ge xiǎoshí hái bù xiǎng zǒu. Wǒmen zuò jiéyùn huí jiā de shíhòu, tā shuō xià ge yuè hái xiǎng zài lái.",
+            "english": "On Saturday I took my little sister to visit a museum. From the MRT station we walked ten minutes, and we were there. The museum opens at nine; we got there at eight thirty and waited at the door for half an hour. My sister loved the paintings there; after two hours she still didn't want to leave. When we took the MRT home, she said she wanted to come again next month."
+          },
+          "bank": [
+            {
+              "traditional": "半個小時",
+              "simplified": "半个小时",
+              "pinyin": "bàn ge xiǎoshí",
+              "english": "half an hour"
+            },
+            {
+              "traditional": "坐",
+              "simplified": "坐",
+              "pinyin": "zuò",
+              "english": "to take (a bus, the MRT)"
+            },
+            {
+              "traditional": "往",
+              "simplified": "往",
+              "pinyin": "wǎng",
+              "english": "toward"
+            },
+            {
+              "traditional": "帶",
+              "simplified": "带",
+              "pinyin": "dài",
+              "english": "to take (a person)"
+            },
+            {
+              "traditional": "就",
+              "simplified": "就",
+              "pinyin": "jiù",
+              "english": "then"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-paragraph-1-1",
+              "key": 3,
+              "why": "帶 + a person means to take someone along: 我帶妹妹去 means I take my sister there.",
+              "focus": {
+                "zh": "帶妹妹",
+                "en": "take my sister"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-07",
+                "B1L05-2-18"
+              ]
+            },
+            {
+              "id": "b1l13-paragraph-1-2",
+              "key": 4,
+              "why": "就 links an action to its easy result: walk ten minutes from the station, and then (就) you are there.",
+              "focus": {
+                "zh": "走十分鐘就到了",
+                "en": "there after ten minutes"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L10-2-18",
+                "B1L07-1-07",
+                "B1L12-2-12"
+              ],
+              "grammarIds": [
+                "B1L13-G03-P297"
+              ]
+            },
+            {
+              "id": "b1l13-paragraph-1-3",
+              "key": 0,
+              "why": "From 8:30 to 9:00 they waited: 等了半個小時, half an hour. The length of time goes after the verb.",
+              "focus": {
+                "zh": "等了半個小時",
+                "en": "waited half an hour"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L05-1-13",
+                "B1L12-2-11",
+                "B1L07-1-08"
+              ],
+              "grammarIds": [
+                "B1L13-G05-P304"
+              ]
+            },
+            {
+              "id": "b1l13-paragraph-1-4",
+              "key": 1,
+              "why": "坐捷運 means to take the MRT. 往 needs a direction after it, like 往右.",
+              "focus": {
+                "zh": "坐捷運",
+                "en": "take the MRT"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-1-09",
+                "B1L07-1-10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "{1}我的手機不能上網，我很擔心。同學說：「你先等十分鐘，{2}可以上網了。」十分鐘以後，我的手機真的能上網了。我馬上{3}了一{4}電子郵件給老師。",
+            "simplified": "{1}我的手机不能上网，我很担心。同学说：「你先等十分钟，{2}可以上网了。」十分钟以后，我的手机真的能上网了。我马上{3}了一{4}电子邮件给老师。",
+            "pinyin": "Gānggāng wǒ de shǒujī bù néng shàngwǎng, wǒ hěn dānxīn. Tóngxué shuō: “Nǐ xiān děng shí fēnzhōng, jiù kěyǐ shàngwǎng le.” Shí fēnzhōng yǐhòu, wǒ de shǒujī zhēnde néng shàngwǎng le. Wǒ mǎshàng jì le yì fēng diànzǐ yóujiàn gěi lǎoshī.",
+            "english": "A little while ago my phone couldn't go online, and I was worried. A classmate said, “Wait ten minutes first, and then you can go online.” Ten minutes later, my phone really could go online. Right away I sent an email to my teacher."
+          },
+          "bank": [
+            {
+              "traditional": "寄",
+              "simplified": "寄",
+              "pinyin": "jì",
+              "english": "to send"
+            },
+            {
+              "traditional": "張",
+              "simplified": "张",
+              "pinyin": "zhāng",
+              "english": "(measure word: flat things)"
+            },
+            {
+              "traditional": "就",
+              "simplified": "就",
+              "pinyin": "jiù",
+              "english": "then"
+            },
+            {
+              "traditional": "封",
+              "simplified": "封",
+              "pinyin": "fēng",
+              "english": "(measure word: letters)"
+            },
+            {
+              "traditional": "剛剛",
+              "simplified": "刚刚",
+              "pinyin": "gānggāng",
+              "english": "just now"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l13-paragraph-2-1",
+              "key": 4,
+              "why": "剛剛 means a little while ago: it opens the story and says when the phone could not go online.",
+              "focus": {
+                "zh": "剛剛",
+                "en": "just now"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L13-1-04"
+              ]
+            },
+            {
+              "id": "b1l13-paragraph-2-2",
+              "key": 2,
+              "why": "就 gives the easy result: wait ten minutes first, and then (就) you can go online.",
+              "focus": {
+                "zh": "就可以上網了",
+                "en": "then you can go online"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L10-2-18",
+                "B1L06-2-14",
+                "B1L06-2-08"
+              ],
+              "grammarIds": [
+                "B1L13-G03-P297"
+              ]
+            },
+            {
+              "id": "b1l13-paragraph-2-3",
+              "key": 0,
+              "why": "寄 means to send: 寄了一封電子郵件 means sent an email.",
+              "focus": {
+                "zh": "寄電子郵件",
+                "en": "send an email"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B1L07-2-07",
+                "B1L13-1-02"
+              ]
+            },
+            {
+              "id": "b1l13-paragraph-2-4",
+              "key": 3,
+              "why": "Emails and letters take 封: 一封電子郵件. 張 is for flat things like tickets and pictures.",
+              "focus": {
+                "zh": "一封電子郵件",
+                "en": "measure word 封"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L07-2-09",
+                "B1L13-1-02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-review",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l13-reading-review-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "宜文：\n我現在在宿舍寫作業，晚上七點要去圖書館。妳要不要跟我一起去？\n友美",
+            "simplified": "宜文：\n我现在在宿舍写作业，晚上七点要去图书馆。你要不要跟我一起去？\n友美",
+            "pinyin": "Yíwén: Wǒ xiànzài zài sùshè xiě zuòyè, wǎnshàng qī diǎn yào qù túshūguǎn. Nǐ yào bu yào gēn wǒ yìqǐ qù? Yǒuměi",
+            "english": "Yiwen: I'm doing my homework in the dorm now, and at seven this evening I'm going to the library. Do you want to come with me? Youmei"
+          },
+          "questions": [
+            {
+              "id": "b1l13-reading-review-1-q",
+              "prompt": {
+                "traditional": "友美現在在哪裡？",
+                "simplified": "友美现在在哪里？",
+                "pinyin": "Yǒuměi xiànzài zài nǎlǐ?",
+                "english": "Where is Youmei now?"
+              },
+              "choices": [
+                {
+                  "traditional": "圖書館",
+                  "simplified": "图书馆",
+                  "pinyin": "túshūguǎn",
+                  "english": "the library"
+                },
+                {
+                  "traditional": "教室",
+                  "simplified": "教室",
+                  "pinyin": "jiàoshì",
+                  "english": "the classroom"
+                },
+                {
+                  "traditional": "宿舍",
+                  "simplified": "宿舍",
+                  "pinyin": "sùshè",
+                  "english": "the dorm"
+                }
+              ],
+              "key": 2,
+              "why": "現在在宿舍寫作業: she is in the dorm now. The library (圖書館) is where she is going at seven this evening.",
+              "focus": {
+                "zh": "現在在宿舍",
+                "en": "in the dorm now"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B1L09-1-13",
+                "B1L09-1-15",
+                "B1L09-1-10",
+                "B1L02-1-04"
+              ],
+              "grammarIds": [
+                "B1L09-G01-P205"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l13-reading-review-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n這個星期天，要是天氣不冷，我們就去騎腳踏車；要是很冷，我們就去咖啡廳喝下午茶。你覺得怎麼樣？\n國安",
+            "simplified": "中明：\n这个星期天，要是天气不冷，我们就去骑脚踏车；要是很冷，我们就去咖啡厅喝下午茶。你觉得怎么样？\n国安",
+            "pinyin": "Zhōngmíng: Zhège xīngqítiān, yàoshì tiānqì bù lěng, wǒmen jiù qù qí jiǎotàchē; yàoshì hěn lěng, wǒmen jiù qù kāfēitīng hē xiàwǔ chá. Nǐ juéde zěnmeyàng? Guó'ān",
+            "english": "Zhongming: This Sunday, if it isn't cold, let's go for a bike ride; if it's very cold, let's go to a café for afternoon tea. What do you think? Guo'an"
+          },
+          "questions": [
+            {
+              "id": "b1l13-reading-review-2-q",
+              "prompt": {
+                "traditional": "要是星期天很冷，他們要做什麼？",
+                "simplified": "要是星期天很冷，他们要做什么？",
+                "pinyin": "Yàoshì xīngqítiān hěn lěng, tāmen yào zuò shénme?",
+                "english": "If it's very cold on Sunday, what will they do?"
+              },
+              "choices": [
+                {
+                  "traditional": "騎腳踏車",
+                  "simplified": "骑脚踏车",
+                  "pinyin": "qí jiǎotàchē",
+                  "english": "ride bikes"
+                },
+                {
+                  "traditional": "喝下午茶",
+                  "simplified": "喝下午茶",
+                  "pinyin": "hē xiàwǔ chá",
+                  "english": "have afternoon tea"
+                },
+                {
+                  "traditional": "在家休息",
+                  "simplified": "在家休息",
+                  "pinyin": "zài jiā xiūxí",
+                  "english": "rest at home"
+                }
+              ],
+              "key": 1,
+              "why": "要是很冷，我們就去咖啡廳喝下午茶: if it is cold, then afternoon tea. The bike ride is for a day that isn't cold.",
+              "focus": {
+                "zh": "要是……，就……",
+                "en": "if …, then …"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B1L10-2-17",
+                "B1L10-2-18",
+                "B1L06-2-15",
+                "B1L05-1-06"
+              ],
+              "grammarIds": [
+                "B1L10-G05-P237"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Kind: strip
+Style: objects
+Characters: none
+
+SUBJECT: a 3-panel picture strip for a reading question ("which picture matches the sentence?"). The scene is a small, quiet school LIBRARY room with no people in it.
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing, seen straight on from inside the room: on the LEFT side of the back wall, one plain wooden DOOR; on the RIGHT side of the back wall, one large WINDOW with two glass panes that swing open; between them, a tall bookshelf full of books and a reading table with two chairs in front. ONLY WHETHER THE DOOR AND THE WINDOW ARE OPEN OR SHUT changes, and it must be obvious at a glance (an open door shows the bright hallway behind it; an open window has both panes swung wide with a light breeze moving a curtain; a shut door and a shut window are flat and closed):
+- Panel 1 (left): the DOOR is wide OPEN; the WINDOW is SHUT.
+- Panel 2 (middle): the DOOR is SHUT; the WINDOW is wide OPEN.
+- Panel 3 (right): the DOOR and the WINDOW are BOTH wide OPEN.
+Everything else (bookshelf, table, chairs, light) identical in all three panels. No people, no text anywhere (no signs, no writing on the books).

@@ -21,6 +21,7 @@ import sys
 import tempfile
 import unicodedata
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 import numpy as np
@@ -176,10 +177,29 @@ def normalize_to_syllables(line_text: str):
     return syllables
 
 
+@lru_cache(maxsize=1)
+def _traditional_to_simplified():
+    from opencc import OpenCC  # Dev-only dependency of the audio scripts (qwen-pilot-requirements.txt).
+    return OpenCC('t2s')  # Not tw2s: it turns an already simplified 么 into 幺.
+
+
+ZHU_WORDS = re.compile(r'(?<!显)著(?![名作])')  # The particle 著 (拿著 → 拿着); 著名/著作/显著 keep zhù.
+
+
+def to_simplified(text: str) -> str:
+    """Traditional (or mixed) text → simplified; already simplified text is unchanged."""
+    return ZHU_WORDS.sub('着', _traditional_to_simplified().convert(text))
+
+
 def pinyinize(text: str) -> str:
-    """Tone-free pinyin for a whole string (for matching Whisper transcripts)."""
+    """Tone-free pinyin for a whole string (for matching Whisper transcripts).
+
+    Both sides go through simplified characters first: pypinyin's word readings are keyed by simplified
+    text, so traditional 銀行/音樂/拿著 would read yinxing/yinle/nazhu. 的/得/地 all count as "de"
+    (a transcript writes any of them, and 打的 alone reads dǎdī, "take a taxi")."""
     text = re.sub(r'[（(][^）)]*[）)]', '', text)
     text = re.sub(r'[兒儿]', '', text)
+    text = re.sub(r'[的得地]', '得', to_simplified(text))
     text = expand_digits(text)
     plain = re.sub(r'[^a-z]', '', ''.join(lazy_pinyin(text)).lower())
     for variant, canonical in PINYIN_VARIANTS.items():

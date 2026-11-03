@@ -77,8 +77,22 @@ blanks each have 4 choices), `reading` with several questions.
 
 ### A 20-question Book 1 lesson (Lesson 4 is the model)
 
-8 listening (2 hear-pick-picture, 2 picture-hear, 4 dialogue of which 2 review) and 12 reading
-(2 read-pick-picture, 2 realia, 3 scene-gap, a 4-blank paragraph, 1 review reading).
+15 slots in this order, 20 questions per run:
+
+| # | Slot | Kind | Questions | Versions | Picture |
+| --- | --- | --- | --- | --- | --- |
+| 1–2 | two hear slots | `hear-pick-picture` | 1 each | 3, sharing one trio (each version hears a different panel) | new trio |
+| 3–4 | two picture slots | `picture-hear` | 1 each | 2, sharing one picture | this lesson's reading picture (`reading:<id>`) |
+| 5–6 | two dialogues | `dialogue` | 1 each | 2–3 | none |
+| 7–8 | two review dialogues | `dialogue`, `review: true` | 1 each | 2–3 | none |
+| 9–10 | two read slots | `read-pick-picture` | 1 each | 2–3, sharing one trio | new trio |
+| 11–12 | two realia | `realia` | 1 each | 2, sharing one picture | new menu, receipt, notice… |
+| 13 | scene gaps | `scene-gap` | 3 | 2, sharing one scene | new scene |
+| 14 | paragraph | `paragraph-bank` | 4 | 2 | none |
+| 15 | review reading | `reading`, `review: true` | 1 | 2 | none |
+
+Review share: the two review dialogues and the review reading (3 of 20), plus review questions elsewhere if
+needed, keep every run at 15–45%. Lesson 1 has no earlier lessons: its review slots test Lesson 1 too.
 
 ## Content rules (enforced by `tests/content/lessonTests.test.ts`)
 
@@ -89,8 +103,40 @@ blanks each have 4 choices), `reading` with several questions.
 - **One right answer, decided by the context.** Wrong answers are real taught words or facts from the
   recording, text or picture that are wrong *here* (the next price on the menu, the drink she turned down).
   Choices are about the same length; no choice repeats; the bank never lists answers in blank order.
+- **Heard choices must sound different**: 他 and 她 are both tā, so two spoken choices never differ only
+  there. A picture question never rests on telling two look-alike characters apart (use a girl and a boy).
 - **TOCFL-like, never copied**: the saved mock exams (© SC-TOP) are a format reference only.
-- **Pinyin**: tone marks, word-joined like the book (Wǒmen yào liǎng wǎn niúròu miàn.).
+- **Pinyin**: tone marks, word-joined like the book (Wǒmen yào liǎng wǎn niúròu miàn.), with the Taiwan
+  readings the word lists use (xīngqí, wǎnshàng, xiānshēng). Spellings the tests share: hái méi, yǒu kòng,
+  jiù yào, zhège / nàge / nǎge, nán de / nǚ de, yǒu yìsi, verb + le apart (wèn le), experience 過 as
+  neutral guo (qù guo; the verb 過 in 過馬路 keeps guò).
+- **Taiwan usage**: taking someone's photo is 幫 + person + 照相 (給 marks a receiver: 寫信、打電話、買);
+  大家 is a group the speaker belongs to or speaks to, not three people in a picture; a time after
+  midnight is not 昨天晚上三點 (pick times that cannot be misread).
+- **Choices don't give themselves away**: the key is not the only choice copied word for word from the
+  text, and not the one choice that shares a part with both others.
+- **One world**: the book characters keep the same facts in every test. The book's facts come first (its
+  dialogues and readings are in each lesson brief); a fact a test adds is listed below and reused, never
+  contradicted. Dates with a weekday follow the book's calendar: 九月二十三號 is a Saturday (B1 L2: "today
+  is Friday, tomorrow is the weekend"), so 9/30, 10/7 … 11/4 are Saturdays. The tests add 12/2 and 12/30 (Saturdays) and 12/31 (a Sunday;
+the MRT runs until 2:00 on 1/1) (B1 L14, L16).
+
+| Character | From the book | Added by the tests |
+| --- | --- | --- |
+| 王宜文 Yiwen | American (B1 L1 exercises); birthday 九月二十三號, party 晚上六點 at her home (B1 L2); gives Youmei two Chinese books (B1 L3) | loves tea, not milk tea (B1 L1–L2 tests); can swim; plays tennis with Youmei one Saturday morning, swims that afternoon, dinner with her in the evening (B1 L7, L9 messages); tries on a long blue skirt with Yuanzhen at a department store by an MRT station (B1 L8 test); meets Youmei at a movie theater entrance at 3 p.m. one day, after mailing a letter at the post office (B1 L14 message); invites Yuanzhen to a science exhibition one Sunday, a 5-minute walk from an MRT station, meeting at the station entrance at 9:00 (B1 L15 note) |
+| 小林友美 Youmei | Japanese; loves fruit and bubble milk tea (B1 L1); 19; on school days up at 6:30, school 7:00, class 8:40, lunch 12:00, library 1:00, home to cook 4:00, dinner 6:00, bed 10:00 (B1 L2); orders black tea (B1 L4) | birthday 10月7日 星期六, party 晚上六點 at her home (B1 L3 invitation; the party picture B1L03-R03 is in the evening); doesn't love water (B1 L1 test); can't swim but wants a beach day with Yiwen (Saturday, 9 a.m. to 7 p.m.); afternoon tea with Yiwen one Sunday at the café next to the school, 2:00 (B1 L7 messages); plays tennis well (B1 L9 message); a trip with Yuanzhen to 天美飯店, which has a post office next door (B1 L7 test); lives in a dorm (book: B1L09-R01, B1L11-R01), does homework there and goes to the library at 7 p.m. (B1 L13 note); studies at the library until 9 the evening before an exam (B1 L14 message); invites Yiwen to the lantern show on the Saturday evening of B1L15-R02 (B1 L16 note) |
+| 李中明 Zhongming | Indonesian (B1 L1); on Monday no morning class, library at 9:00, class in the afternoon until 4:40 (B1 L2); buys Youmei flowers and a cake, and two white pencils with Yiwen (B1 L3); loves beef noodles, likes coffee and tea (B1 L4) | birthday 11月4日 星期六 (B1 L2 invitation); classes Mon 1:00–4:40, Tue 9–12, Thu 10–12, Fri 8–12 (B1 L2 timetable; B1 L4 has his 1:00 class); loves water, not milk tea (B1 L1 test); one Wednesday (no class) goes with Guo'an by MRT to watch planes at the airport, meeting at the station at 9:00 (B1 L9 note); Guo'an plans a Sunday bike ride with him if it isn't cold, otherwise afternoon tea at a café (B1 L13 note); Guo'an's bakery needs someone on weekends, two hours a day, and Zhongming goes with Guo'an to meet the boss after class (B1 L15 note, following B1L12-R02), so he works weekends as in B1L15-R02 and comes to the lantern show after work (B1 L16 note) |
+| 高家樂 Jiale | British; surname 高 (B1 L1 exercises) | loves tea, not milk tea (B1 L1 test card); does homework on the library's 2nd floor (the 3rd is too crowded) and asks Zhongming to join him after class (B1 L12 note) |
+| 中明的家人 his family | mother cooks, has a living room with a sofa; older brother (B1 L5) | mother: home at 8 p.m. on a busy day, leaves dinner (beef noodles) in the kitchen (B1 L5, L10 notes); brother: own room with a table, studies at the library, home at 6 (B1 L5–L6 notes) |
+| 元真, 國安, 老師 | see the book from B1 L7 on | 元真 writes to a sick Guo'an and brings apples 明天, as in B1L10-R01 (B1 L10 note); the calligraphy teacher (teacher.webp, a woman) teaches 2:00–4:00 (B1 L9 test); 元真 buys only a pair of socks at a department store (the skirts are too expensive) and suggests the bookstore with 宜文 that weekend (B1 L12 note) |
+| The B1 L5 room reading | B1L05-R03 is a girl's room (the art shows a girl and a cat) | never make its narrator Zhongming |
+
+Two teachers surnamed 王 already appear (a man in B1 L1, a Taiwanese woman in B1 L2): avoid 王老師 in new tests. Where the book disagrees with itself (Yiwen swims 不太好 in B1L06-R01 but 不錯 in R03; Guo'an's 4:00 class vs his 4–6 bakery job; 元真's apples 明天 vs 今天), never test that fact.
+
+How the book characters look in the B1 L11–16 reading art (keep new picture briefs consistent):
+Zhongming curly black hair, yellow top; Jiale curly hair, round glasses, orange sweater; Guo'an short black
+hair, green hoodie under a navy jacket; Yiwen high black ponytail, teal jacket; Youmei short reddish-brown
+bob with bangs, red cardigan; the teacher a blue cardigan.
 
 Quality gate before a lesson ships: two blind solvers agree on every key and find no second defensible
 answer; a solver given only the choices (no recording or text) does no better than chance; the
@@ -106,7 +152,14 @@ illustrations (`scripts/assets/lesson-test-art/style.txt`); the book characters 
   changed** (TOCFL's rule), white gutters between panels, no numbers or labels.
 - **Single pictures** (scenes, realia): one image. Menus, receipts and notices state the **exact**
   Traditional Chinese text in the brief; check every character by eye before use.
-- Vary scenes across lessons; reuse existing art only where it truly fits.
+- Vary scenes across lessons; reuse existing art only where it truly fits. The two `picture-hear` slots use
+  the lesson's own reading pictures, named `reading:<reading id>` (see `src/data/readingIllustrations.ts`).
+- **Until Codex draws a picture**, `placeholders.py` writes a plain card with its description (or, for
+  realia, its exact writing) and lists it in `scripts/assets/lesson-test-art/pending.json`; `cut.py`
+  replaces the card with the art and takes it off the list. Briefs live in
+  `scripts/assets/lesson-test-art/briefs/<name>.txt`; a brief opens with `Kind:` (strip or single),
+  `Style:` (objects or scene: which style reference to pass) and `Characters:` (the portraits to attach),
+  lines `generate.sh` leaves out of the prompt.
 
 ```bash
 scripts/assets/lesson-test-art/generate.sh b1l04-drinks scripts/assets/lesson-test-art/briefs/b1l04-drinks.txt src/assets/images/grammar-practice/generated/l04-two-teas-180-v1.webp
@@ -115,6 +168,18 @@ scripts/assets/lesson-test-art/generate.sh b1l04-drinks scripts/assets/lesson-te
 ```bash
 python3 scripts/assets/lesson-test-art/cut.py b1l04-drinks:strip b1l04-menu:single
 ```
+
+## Authoring a lesson
+
+1. Brief: `npx tsx scripts/content/lessonTestBrief.ts b1l05` writes `output/lesson-test-briefs/b1l05.md`
+   (the lesson's words, grammar points, dialogues, reading pictures and what earlier lessons taught).
+2. Draft the lesson to the slot plan above, then check it until it is clean:
+   `npx tsx scripts/content/checkLessonTest.ts <draft.json> --no-pictures` (same rules as the content tests).
+3. Blind review: `npx tsx scripts/content/lessonTestSheet.ts <draft.json> --mode learner --out sheet.md`
+   (and `--mode choices`) gives reviewers the test without its keys. Two solvers answer it blind, one only
+   from the choices, and a language reviewer reads the full draft; every disagreement is fixed or justified.
+4. Place it as `content/lesson-tests/book-N/lessonNN.json`, add its picture briefs, run `placeholders.py`
+   on it, voice it (Audio below), export the pack, and run the content tests.
 
 ## Audio
 

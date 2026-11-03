@@ -1,0 +1,11 @@
+Kind: strip
+Style: scene
+Characters: none
+
+SUBJECT: a 3-panel picture strip for a reading question ("which picture matches the sentence?").
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Each panel is a self-contained square scene. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: the same clean, bright Taipei-style MRT platform seen from a slight angle, a silver MRT train standing at the platform with its doors open, the same platform edge line, the same tiled floor and ceiling lights. ONLY ONE COLOR changes: the thick stripe along the side of the train AND the big round line-marker disc on the platform pillar share that color:
+- Panel 1 (left): RED stripe and RED round marker.
+- Panel 2 (middle): GREEN stripe and GREEN round marker.
+- Panel 3 (right): BLUE stripe and BLUE round marker.
+Use strong, clearly different red, green and blue; nothing else in the picture uses those colors. No people. No text anywhere: no station names, no numbers, no letters on the marker discs.

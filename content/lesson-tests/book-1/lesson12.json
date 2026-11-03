@@ -1,0 +1,2368 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l12",
+  "bookId": 1,
+  "lessonId": 12,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "國安",
+    "宜文",
+    "友美",
+    "家樂",
+    "元真"
+  ],
+  "slots": [
+    {
+      "id": "hear-tools",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l12-hear-tools-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我寫文章的時候都用電腦。",
+              "simplified": "我写文章的时候都用电脑。",
+              "pinyin": "Wǒ xiě wénzhāng de shíhòu dōu yòng diànnǎo.",
+              "english": "When I write articles, I always use a computer."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-hear-tools-1-q",
+              "choices": [
+                {
+                  "picture": "b1l12-tools-1",
+                  "alt": "Computer: the reporter types on a laptop computer on a park bench"
+                },
+                {
+                  "picture": "b1l12-tools-2",
+                  "alt": "Phone: the reporter takes a photo with a cell phone on a park bench"
+                },
+                {
+                  "picture": "b1l12-tools-3",
+                  "alt": "Pen: the reporter writes in a small notepad with a pen on a park bench"
+                }
+              ],
+              "key": 0,
+              "why": "用 comes before the tool: 寫文章的時候都用電腦 means she always writes her articles on a computer, not with a pen.",
+              "focus": {
+                "zh": "用電腦",
+                "en": "using a computer"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-06",
+                "B1L06-2-09",
+                "B1L11-1-06"
+              ],
+              "grammarIds": [
+                "B1L12-G01-P271",
+                "B1L12-G05-P284"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-hear-tools-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我沒帶照相機，所以用手機照相。",
+              "simplified": "我没带照相机，所以用手机照相。",
+              "pinyin": "Wǒ méi dài zhàoxiàngjī, suǒyǐ yòng shǒujī zhàoxiàng.",
+              "english": "I didn't bring a camera, so I'm taking photos with my cell phone."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-hear-tools-2-q",
+              "choices": [
+                {
+                  "picture": "b1l12-tools-1",
+                  "alt": "Computer: the reporter types on a laptop computer on a park bench"
+                },
+                {
+                  "picture": "b1l12-tools-2",
+                  "alt": "Phone: the reporter takes a photo with a cell phone on a park bench"
+                },
+                {
+                  "picture": "b1l12-tools-3",
+                  "alt": "Pen: the reporter writes in a small notepad with a pen on a park bench"
+                }
+              ],
+              "key": 1,
+              "why": "用手機照相 means she takes photos with her cell phone, because she has no camera with her.",
+              "focus": {
+                "zh": "用手機",
+                "en": "using a phone"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-06",
+                "B1L06-2-10",
+                "B1L11-3-08"
+              ],
+              "grammarIds": [
+                "B1L12-G01-P271"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-hear-tools-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我的電腦有問題，所以今天用筆寫。",
+              "simplified": "我的电脑有问题，所以今天用笔写。",
+              "pinyin": "Wǒ de diànnǎo yǒu wèntí, suǒyǐ jīntiān yòng bǐ xiě.",
+              "english": "My computer has a problem, so today I'm writing with a pen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-hear-tools-3-q",
+              "choices": [
+                {
+                  "picture": "b1l12-tools-1",
+                  "alt": "Computer: the reporter types on a laptop computer on a park bench"
+                },
+                {
+                  "picture": "b1l12-tools-2",
+                  "alt": "Phone: the reporter takes a photo with a cell phone on a park bench"
+                },
+                {
+                  "picture": "b1l12-tools-3",
+                  "alt": "Pen: the reporter writes in a small notepad with a pen on a park bench"
+                }
+              ],
+              "key": 2,
+              "why": "The computer is broken (電腦有問題), so she writes with a pen: 用筆寫.",
+              "focus": {
+                "zh": "用筆寫",
+                "en": "writing with a pen"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-06",
+                "B1L03-2-05",
+                "B1L09-3-04",
+                "B1L06-2-09"
+              ],
+              "grammarIds": [
+                "B1L12-G01-P271"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-jobs",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l12-hear-jobs-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳做什麼工作？",
+              "simplified": "你做什么工作？",
+              "pinyin": "Nǐ zuò shénme gōngzuò?",
+              "english": "What do you do for work?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我是護理師，每天都很忙。",
+              "simplified": "我是护理师，每天都很忙。",
+              "pinyin": "Wǒ shì hùlǐshī, měi tiān dōu hěn máng.",
+              "english": "I'm a nurse. I'm busy every day."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-hear-jobs-1-q",
+              "choices": [
+                {
+                  "picture": "b1l12-jobs-1",
+                  "alt": "Nurse: the young woman in pale pink nurse scrubs with a stethoscope around her neck, holding a clipboard"
+                },
+                {
+                  "picture": "b1l12-jobs-2",
+                  "alt": "Reporter: the young woman holding a microphone and a small notebook"
+                },
+                {
+                  "picture": "b1l12-jobs-3",
+                  "alt": "Factory worker: the young woman in work overalls, a yellow hard hat and work gloves"
+                }
+              ],
+              "key": 0,
+              "why": "我是護理師 means she is a nurse (護理師).",
+              "focus": {
+                "zh": "護理師",
+                "en": "nurse"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-05",
+                "B1L12-1-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-hear-jobs-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳是記者嗎？",
+              "simplified": "你是记者吗？",
+              "pinyin": "Nǐ shì jìzhě ma?",
+              "english": "Are you a reporter?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我在工廠工作。",
+              "simplified": "不是，我在工厂工作。",
+              "pinyin": "Bú shì, wǒ zài gōngchǎng gōngzuò.",
+              "english": "No, I work in a factory."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-hear-jobs-2-q",
+              "choices": [
+                {
+                  "picture": "b1l12-jobs-1",
+                  "alt": "Nurse: the young woman in pale pink nurse scrubs with a stethoscope around her neck, holding a clipboard"
+                },
+                {
+                  "picture": "b1l12-jobs-2",
+                  "alt": "Reporter: the young woman holding a microphone and a small notebook"
+                },
+                {
+                  "picture": "b1l12-jobs-3",
+                  "alt": "Factory worker: the young woman in work overalls, a yellow hard hat and work gloves"
+                }
+              ],
+              "key": 2,
+              "why": "She says 不是 to 記者 (reporter); 我在工廠工作 means she works in a factory.",
+              "focus": {
+                "zh": "工廠",
+                "en": "factory"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-15",
+                "B1L12-1-07",
+                "B1L12-1-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-hear-jobs-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我是記者，今天要去工廠看工人工作。",
+              "simplified": "我是记者，今天要去工厂看工人工作。",
+              "pinyin": "Wǒ shì jìzhě, jīntiān yào qù gōngchǎng kàn gōngrén gōngzuò.",
+              "english": "I'm a reporter. Today I'm going to a factory to watch the workers."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-hear-jobs-3-q",
+              "choices": [
+                {
+                  "picture": "b1l12-jobs-1",
+                  "alt": "Nurse: the young woman in pale pink nurse scrubs with a stethoscope around her neck, holding a clipboard"
+                },
+                {
+                  "picture": "b1l12-jobs-2",
+                  "alt": "Reporter: the young woman holding a microphone and a small notebook"
+                },
+                {
+                  "picture": "b1l12-jobs-3",
+                  "alt": "Factory worker: the young woman in work overalls, a yellow hard hat and work gloves"
+                }
+              ],
+              "key": 1,
+              "why": "我是記者 means she is a reporter. The workers (工人) are the people she is going to see.",
+              "focus": {
+                "zh": "記者",
+                "en": "reporter"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-07",
+                "B1L12-3-16",
+                "B1L12-3-15"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-bakery",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l12-picture-bakery-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L12-R02",
+            "alt": "Daytime in a bakery: Guo'an (green hoodie under a navy jacket, a light beige work apron) holds a big tray of fresh bread at the counter. Zhongming (curly black hair, yellow shirt over a blue T-shirt) still has his school backpack on and wears no apron; he leans on the counter next to Guo'an, chin on his hand, with an open book in front of him. Shelves full of bread behind them."
+          },
+          "questions": [
+            {
+              "id": "b1l12-picture-bakery-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中明手上有很多麵包。",
+                  "simplified": "中明手上有很多面包。",
+                  "pinyin": "Zhōngmíng shǒu shàng yǒu hěn duō miànbāo.",
+                  "english": "Zhongming has lots of bread in his hands."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "國安手上有很多麵包。",
+                  "simplified": "国安手上有很多面包。",
+                  "pinyin": "Guó'ān shǒu shàng yǒu hěn duō miànbāo.",
+                  "english": "Guo'an has lots of bread in his hands."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明手上有一杯咖啡。",
+                  "simplified": "中明手上有一杯咖啡。",
+                  "pinyin": "Zhōngmíng shǒu shàng yǒu yì bēi kāfēi.",
+                  "english": "Zhongming has a cup of coffee in his hands."
+                }
+              ],
+              "key": 1,
+              "why": "Guo'an, in the apron, holds the tray of bread: 國安手上有很多麵包. Zhongming's hands hold nothing (his chin rests on one hand), and there is no coffee.",
+              "focus": {
+                "zh": "手上有很多麵包",
+                "en": "holding lots of bread"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-01",
+                "B1L10-1-10",
+                "B1L04-1-15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-picture-bakery-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L12-R02",
+            "alt": "Daytime in a bakery: Guo'an (green hoodie under a navy jacket, a light beige work apron) holds a big tray of fresh bread at the counter. Zhongming (curly black hair, yellow shirt over a blue T-shirt) still has his school backpack on and wears no apron; he leans on the counter next to Guo'an, chin on his hand, with an open book in front of him. Shelves full of bread behind them."
+          },
+          "questions": [
+            {
+              "id": "b1l12-picture-bakery-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "國安上班的時候，中明來找他。",
+                  "simplified": "国安上班的时候，中明来找他。",
+                  "pinyin": "Guó'ān shàngbān de shíhòu, Zhōngmíng lái zhǎo tā.",
+                  "english": "While Guo'an is at work, Zhongming comes to see him."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "國安下班以後，跟中明一起吃麵包。",
+                  "simplified": "国安下班以后，跟中明一起吃面包。",
+                  "pinyin": "Guó'ān xiàbān yǐhòu, gēn Zhōngmíng yìqǐ chī miànbāo.",
+                  "english": "After Guo'an finishes work, he eats bread with Zhongming."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "國安和中明一起在麵包店上班。",
+                  "simplified": "国安和中明一起在面包店上班。",
+                  "pinyin": "Guó'ān hé Zhōngmíng yìqǐ zài miànbāo diàn shàngbān.",
+                  "english": "Guo'an and Zhongming work at the bakery together."
+                }
+              ],
+              "key": 0,
+              "why": "Guo'an wears the apron and holds the tray of bread, so he is at work (上班). Zhongming still has his school bag on and no apron: he has come to see him (來找他), not to work there, and nobody is eating.",
+              "focus": {
+                "zh": "上班的時候",
+                "en": "while at work"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-16",
+                "B1L07-1-05",
+                "B1L12-2-01"
+              ],
+              "grammarIds": [
+                "B1L12-G05-P284"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-tv",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l12-picture-tv-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L12-R03",
+            "alt": "At night (dark windows, lit buildings outside), Zhongming (curly black hair, yellow shirt) sits on a red sofa at home, chin on his fist, watching TV. On the screen two men sit in armchairs facing each other across a small empty round table and talk (the one on the left moves his hand as he speaks; the one on the right holds a small notepad). Behind them, on one side, is an office with a desk, a computer and tall city buildings; on the other side is a factory with a big machine arm and gears. A lamp is on; a book and a plant are on the low table."
+          },
+          "questions": [
+            {
+              "id": "b1l12-picture-tv-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這個節目裡有銀行和醫院。",
+                  "simplified": "这个节目里有银行和医院。",
+                  "pinyin": "Zhège jiémù lǐ yǒu yínháng hé yīyuàn.",
+                  "english": "This program shows a bank and a hospital."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個節目裡有工廠和醫院。",
+                  "simplified": "这个节目里有工厂和医院。",
+                  "pinyin": "Zhège jiémù lǐ yǒu gōngchǎng hé yīyuàn.",
+                  "english": "This program shows a factory and a hospital."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個節目裡有工廠和辦公室。",
+                  "simplified": "这个节目里有工厂和办公室。",
+                  "pinyin": "Zhège jiémù lǐ yǒu gōngchǎng hé bàngōngshì.",
+                  "english": "This program shows a factory and an office."
+                }
+              ],
+              "key": 2,
+              "why": "On the TV program (節目) there is a factory with machines (工廠) on one side and an office with a desk and a computer (辦公室) on the other. There is no hospital (醫院) and no bank (銀行).",
+              "focus": {
+                "zh": "工廠、辦公室",
+                "en": "factory and office"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-01",
+                "B1L12-3-15",
+                "B1L12-3-13"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-picture-tv-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L12-R03",
+            "alt": "At night (dark windows, lit buildings outside), Zhongming (curly black hair, yellow shirt) sits on a red sofa at home, chin on his fist, watching TV. On the screen two men sit in armchairs facing each other across a small empty round table and talk (the one on the left moves his hand as he speaks; the one on the right holds a small notepad). Behind them, on one side, is an office with a desk, a computer and tall city buildings; on the other side is a factory with a big machine arm and gears. A lamp is on; a book and a plant are on the low table."
+          },
+          "questions": [
+            {
+              "id": "b1l12-picture-tv-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這個節目裡有兩個人在談話。",
+                  "simplified": "这个节目里有两个人在谈话。",
+                  "pinyin": "Zhège jiémù lǐ yǒu liǎng ge rén zài tánhuà.",
+                  "english": "On this program, two people are talking."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個節目裡有兩個人在唱歌。",
+                  "simplified": "这个节目里有两个人在唱歌。",
+                  "pinyin": "Zhège jiémù lǐ yǒu liǎng ge rén zài chànggē.",
+                  "english": "On this program, two people are singing."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個節目裡有兩個人在跳舞。",
+                  "simplified": "这个节目里有两个人在跳舞。",
+                  "pinyin": "Zhège jiémù lǐ yǒu liǎng ge rén zài tiàowǔ.",
+                  "english": "On this program, two people are dancing."
+                }
+              ],
+              "key": 0,
+              "why": "On the TV program (節目) the two people sit in armchairs facing each other, and one moves his hand as he speaks: they are talking (談話). They are sitting down, so they are not dancing (跳舞), and nobody is singing.",
+              "focus": {
+                "zh": "節目、談話",
+                "en": "a TV talk program"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-01",
+                "B1L12-3-08",
+                "B1L03-1-08"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-before",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l12-dialogue-before-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳以前在銀行工作嗎？",
+              "simplified": "你以前在银行工作吗？",
+              "pinyin": "Nǐ yǐqián zài yínháng gōngzuò ma?",
+              "english": "Did you use to work at a bank?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "對，可是現在在一家大公司上班了。",
+              "simplified": "对，可是现在在一家大公司上班了。",
+              "pinyin": "Duì, kěshì xiànzài zài yì jiā dà gōngsī shàngbān le.",
+              "english": "Yes, but now I work at a big company."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-before-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的以前在哪裡工作？",
+                "simplified": "女的以前在哪里工作？",
+                "pinyin": "Nǚ de yǐqián zài nǎlǐ gōngzuò?",
+                "english": "Where did the woman work before?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "公司",
+                  "simplified": "公司",
+                  "pinyin": "gōngsī",
+                  "english": "a company"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "醫院",
+                  "simplified": "医院",
+                  "pinyin": "yīyuàn",
+                  "english": "a hospital"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "銀行",
+                  "simplified": "银行",
+                  "pinyin": "yínháng",
+                  "english": "a bank"
+                }
+              ],
+              "key": 2,
+              "why": "以前 means before: she says 對 to working at a bank before. The big company (公司) is where she works now (現在).",
+              "focus": {
+                "zh": "以前",
+                "en": "before; in the past"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-11",
+                "B1L12-1-08",
+                "B1L12-1-12",
+                "B1L02-1-04"
+              ],
+              "grammarIds": [
+                "B1L12-G02-P272"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-dialogue-before-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳畢業以後想做什麼？",
+              "simplified": "你毕业以后想做什么？",
+              "pinyin": "Nǐ bìyè yǐhòu xiǎng zuò shénme?",
+              "english": "What do you want to do after you graduate?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我想去美國工作兩年，以後再回台灣。",
+              "simplified": "我想去美国工作两年，以后再回台湾。",
+              "pinyin": "Wǒ xiǎng qù Měiguó gōngzuò liǎng nián, yǐhòu zài huí Táiwān.",
+              "english": "I want to work in the US for two years, and later come back to Taiwan."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-before-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的畢業以後想去哪裡工作？",
+                "simplified": "女的毕业以后想去哪里工作？",
+                "pinyin": "Nǚ de bìyè yǐhòu xiǎng qù nǎlǐ gōngzuò?",
+                "english": "Where does the woman want to work after she graduates?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "美國",
+                  "simplified": "美国",
+                  "pinyin": "Měiguó",
+                  "english": "the US"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "台灣",
+                  "simplified": "台湾",
+                  "pinyin": "Táiwān",
+                  "english": "Taiwan"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "日本",
+                  "simplified": "日本",
+                  "pinyin": "Rìběn",
+                  "english": "Japan"
+                }
+              ],
+              "key": 0,
+              "why": "After she graduates (畢業以後) she wants to work in the US (美國) for two years. She only comes back to Taiwan later: 以後再回台灣.",
+              "focus": {
+                "zh": "畢業以後",
+                "en": "after graduating"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-09",
+                "B1L12-1-10",
+                "B1L01-1-17",
+                "B1L12-1-01"
+              ],
+              "grammarIds": [
+                "B1L12-G02-P272"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-dialogue-before-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你吃飯以前會喝咖啡嗎？",
+              "simplified": "你吃饭以前会喝咖啡吗？",
+              "pinyin": "Nǐ chī fàn yǐqián huì hē kāfēi ma?",
+              "english": "Do you drink coffee before you eat?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不喝，吃飯以後喝一杯。",
+              "simplified": "不喝，吃饭以后喝一杯。",
+              "pinyin": "Bù hē, chī fàn yǐhòu hē yì bēi.",
+              "english": "No. I have a cup after I eat."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-before-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的什麼時候喝咖啡？",
+                "simplified": "男的什么时候喝咖啡？",
+                "pinyin": "Nán de shénme shíhòu hē kāfēi?",
+                "english": "When does the man drink coffee?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "吃飯以前",
+                  "simplified": "吃饭以前",
+                  "pinyin": "chī fàn yǐqián",
+                  "english": "before eating"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "吃飯以後",
+                  "simplified": "吃饭以后",
+                  "pinyin": "chī fàn yǐhòu",
+                  "english": "after eating"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "吃飯的時候",
+                  "simplified": "吃饭的时候",
+                  "pinyin": "chī fàn de shíhòu",
+                  "english": "while eating"
+                }
+              ],
+              "key": 1,
+              "why": "He says 不喝 to coffee before eating (以前); he has a cup after eating: 吃飯以後喝一杯.",
+              "focus": {
+                "zh": "以前／以後",
+                "en": "before vs after"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-10",
+                "B1L12-1-11",
+                "B1L04-1-01"
+              ],
+              "grammarIds": [
+                "B1L12-G02-P272"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-toward",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l12-dialogue-toward-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你們老闆對你好不好？",
+              "simplified": "你们老板对你好不好？",
+              "pinyin": "Nǐmen lǎobǎn duì nǐ hǎo bu hǎo?",
+              "english": "Is your boss nice to you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不太好，可是同事都對我很好。",
+              "simplified": "不太好，可是同事都对我很好。",
+              "pinyin": "Bú tài hǎo, kěshì tóngshì dōu duì wǒ hěn hǎo.",
+              "english": "Not really, but my coworkers are all very nice to me."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-toward-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "誰對男的很好？",
+                "simplified": "谁对男的很好？",
+                "pinyin": "Shéi duì nán de hěn hǎo?",
+                "english": "Who is nice to the man?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "同事",
+                  "simplified": "同事",
+                  "pinyin": "tóngshì",
+                  "english": "his coworkers"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "lǎobǎn",
+                  "english": "his boss"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "父母",
+                  "simplified": "父母",
+                  "pinyin": "fùmǔ",
+                  "english": "his parents"
+                }
+              ],
+              "key": 0,
+              "why": "對 + person + 很好 means being nice to someone: 同事都對我很好. The boss (老闆) is 不太好.",
+              "focus": {
+                "zh": "對我很好",
+                "en": "nice to me"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-05",
+                "B1L12-2-04",
+                "B1L12-1-13"
+              ],
+              "grammarIds": [
+                "B1L12-G03-P281"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-dialogue-toward-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳要參加的比賽很難吧？",
+              "simplified": "你要参加的比赛很难吧？",
+              "pinyin": "Nǐ yào cānjiā de bǐsài hěn nán ba?",
+              "english": "The competition you're entering must be hard, right?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不難，可是這個比賽對我很重要。",
+              "simplified": "不难，可是这个比赛对我很重要。",
+              "pinyin": "Bù nán, kěshì zhège bǐsài duì wǒ hěn zhòngyào.",
+              "english": "It's not hard, but this competition is very important to me."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-toward-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得這個比賽怎麼樣？",
+                "simplified": "女的觉得这个比赛怎么样？",
+                "pinyin": "Nǚ de juéde zhège bǐsài zěnmeyàng?",
+                "english": "What does the woman think of this competition?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "很難",
+                  "simplified": "很难",
+                  "pinyin": "hěn nán",
+                  "english": "very hard"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很辛苦",
+                  "simplified": "很辛苦",
+                  "pinyin": "hěn xīnkǔ",
+                  "english": "very tiring"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很重要",
+                  "simplified": "很重要",
+                  "pinyin": "hěn zhòngyào",
+                  "english": "very important"
+                }
+              ],
+              "key": 2,
+              "why": "對我很重要 means important to me. She answers 不難, so it is not hard, and she never says it is tiring (辛苦).",
+              "focus": {
+                "zh": "對我很重要",
+                "en": "important to me"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-05",
+                "B1L12-3-11",
+                "B1L12-1-03",
+                "B1L12-2-02"
+              ],
+              "grammarIds": [
+                "B1L12-G03-P281"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-met",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l12-dialogue-review-met-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳跟妳的好朋友是在學校認識的嗎？",
+              "simplified": "你跟你的好朋友是在学校认识的吗？",
+              "pinyin": "Nǐ gēn nǐ de hǎo péngyǒu shì zài xuéxiào rènshì de ma?",
+              "english": "Did you and your good friend meet at school?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我們是在咖啡廳認識的。",
+              "simplified": "不是，我们是在咖啡厅认识的。",
+              "pinyin": "Bú shì, wǒmen shì zài kāfēitīng rènshì de.",
+              "english": "No, we met at a café."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-review-met-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的跟她的好朋友是在哪裡認識的？",
+                "simplified": "女的跟她的好朋友是在哪里认识的？",
+                "pinyin": "Nǚ de gēn tā de hǎo péngyǒu shì zài nǎlǐ rènshì de?",
+                "english": "Where did the woman and her good friend meet?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "english": "at school"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "圖書館",
+                  "simplified": "图书馆",
+                  "pinyin": "túshūguǎn",
+                  "english": "at the library"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "咖啡廳",
+                  "simplified": "咖啡厅",
+                  "pinyin": "kāfēitīng",
+                  "english": "at a café"
+                }
+              ],
+              "key": 2,
+              "why": "是在咖啡廳認識的 tells where they met: at a café. She says 不是 to the school (學校).",
+              "focus": {
+                "zh": "是……的",
+                "en": "where something happened"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-01",
+                "B1L05-1-08",
+                "B1L02-1-06"
+              ],
+              "grammarIds": [
+                "B1L11-G03-P251"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-dialogue-review-met-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你給你媽媽打電話了沒有？",
+              "simplified": "你给你妈妈打电话了没有？",
+              "pinyin": "Nǐ gěi nǐ māma dǎ diànhuà le méiyǒu?",
+              "english": "Have you called your mom yet?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "已經打了，可是還沒給爸爸打。",
+              "simplified": "已经打了，可是还没给爸爸打。",
+              "pinyin": "Yǐjīng dǎ le, kěshì hái méi gěi bàba dǎ.",
+              "english": "I've already called her, but I haven't called Dad yet."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-review-met-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的給誰打電話了？",
+                "simplified": "男的给谁打电话了？",
+                "pinyin": "Nán de gěi shéi dǎ diànhuà le?",
+                "english": "Who has the man called?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "english": "his mom"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "爸爸",
+                  "simplified": "爸爸",
+                  "pinyin": "bàba",
+                  "english": "his dad"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "哥哥",
+                  "simplified": "哥哥",
+                  "pinyin": "gēge",
+                  "english": "his older brother"
+                }
+              ],
+              "key": 0,
+              "why": "已經打了 means he has already called his mom. 還沒給爸爸打 means he has not called his dad yet.",
+              "focus": {
+                "zh": "已經／還沒",
+                "en": "already vs not yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-03",
+                "B1L11-1-14",
+                "B1L11-2-12",
+                "B1L10-3-01"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249",
+                "B1L11-G05-P259"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-review-taste",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l12-dialogue-review-taste-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳的同事做麵包做得怎麼樣？",
+              "simplified": "你的同事做面包做得怎么样？",
+              "pinyin": "Nǐ de tóngshì zuò miànbāo zuò de zěnmeyàng?",
+              "english": "How well does your colleague make bread?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "做得很快，可是不太好吃。",
+              "simplified": "做得很快，可是不太好吃。",
+              "pinyin": "Zuò de hěn kuài, kěshì bú tài hǎochī.",
+              "english": "Fast, but it doesn't taste very good."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-review-taste-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "同事做麵包做得怎麼樣？",
+                "simplified": "同事做面包做得怎么样？",
+                "pinyin": "Tóngshì zuò miànbāo zuò de zěnmeyàng?",
+                "english": "How does the colleague make bread?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "做得很慢",
+                  "simplified": "做得很慢",
+                  "pinyin": "zuò de hěn màn",
+                  "english": "slowly"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "做得很快",
+                  "simplified": "做得很快",
+                  "pinyin": "zuò de hěn kuài",
+                  "english": "fast"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "做得很好吃",
+                  "simplified": "做得很好吃",
+                  "pinyin": "zuò de hěn hǎochī",
+                  "english": "it tastes very good"
+                }
+              ],
+              "key": 1,
+              "why": "做得很快 means the colleague makes bread fast; 很慢 is the opposite. The bread is 不太好吃 (not very tasty), so 做得很好吃 is wrong.",
+              "focus": {
+                "zh": "做得很快",
+                "en": "makes it fast"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-14",
+                "B1L06-1-18",
+                "B1L12-2-04",
+                "B1L12-2-01"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-dialogue-review-taste-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你們的新記者寫文章寫得怎麼樣？",
+              "simplified": "你们的新记者写文章写得怎么样？",
+              "pinyin": "Nǐmen de xīn jìzhě xiě wénzhāng xiě de zěnmeyàng?",
+              "english": "How well does your new reporter write articles?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "寫得很好，可是很慢。",
+              "simplified": "写得很好，可是很慢。",
+              "pinyin": "Xiě de hěn hǎo, kěshì hěn màn.",
+              "english": "Very well, but slowly."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-dialogue-review-taste-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "新記者寫文章寫得怎麼樣？",
+                "simplified": "新记者写文章写得怎么样？",
+                "pinyin": "Xīn jìzhě xiě wénzhāng xiě de zěnmeyàng?",
+                "english": "How does the new reporter write articles?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "寫得很快",
+                  "simplified": "写得很快",
+                  "pinyin": "xiě de hěn kuài",
+                  "english": "fast"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "寫得不好",
+                  "simplified": "写得不好",
+                  "pinyin": "xiě de bù hǎo",
+                  "english": "badly"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "寫得很慢",
+                  "simplified": "写得很慢",
+                  "pinyin": "xiě de hěn màn",
+                  "english": "slowly"
+                }
+              ],
+              "key": 2,
+              "why": "可是很慢 means the new reporter writes slowly, so 寫得很快 is wrong. The articles are written 很好 (well), so 寫得不好 is wrong.",
+              "focus": {
+                "zh": "寫得很慢",
+                "en": "writes slowly"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-1-14",
+                "B1L06-1-17",
+                "B1L12-1-07",
+                "B1L09-3-04"
+              ],
+              "grammarIds": [
+                "B1L06-G02-P136"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-car",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l12-read-car-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l12-read-car-1-q",
+              "prompt": {
+                "traditional": "爸爸開車的時候，兒子在後面睡覺。",
+                "simplified": "爸爸开车的时候，儿子在后面睡觉。",
+                "pinyin": "Bàba kāichē de shíhòu, érzi zài hòumiàn shuìjiào.",
+                "english": "While Dad drives, his son sleeps in the back."
+              },
+              "choices": [
+                {
+                  "picture": "b1l12-car-1",
+                  "alt": "Sleeping: the father drives while the boy sleeps in the back seat"
+                },
+                {
+                  "picture": "b1l12-car-2",
+                  "alt": "Singing: the father drives while the boy sings in the back seat"
+                },
+                {
+                  "picture": "b1l12-car-3",
+                  "alt": "Eating bread: the father drives while the boy eats bread in the back seat"
+                }
+              ],
+              "key": 0,
+              "why": "爸爸開車的時候 sets the moment: while Dad drives, the son sleeps (睡覺) in the back.",
+              "focus": {
+                "zh": "開車的時候",
+                "en": "while driving"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-05",
+                "B1L07-3-05",
+                "B1L02-3-09"
+              ],
+              "grammarIds": [
+                "B1L12-G05-P284"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-read-car-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l12-read-car-2-q",
+              "prompt": {
+                "traditional": "父親開車的時候，兒子在後面唱歌。",
+                "simplified": "父亲开车的时候，儿子在后面唱歌。",
+                "pinyin": "Fùqīn kāichē de shíhòu, érzi zài hòumiàn chànggē.",
+                "english": "While the father drives, his son sings in the back."
+              },
+              "choices": [
+                {
+                  "picture": "b1l12-car-1",
+                  "alt": "Sleeping: the father drives while the boy sleeps in the back seat"
+                },
+                {
+                  "picture": "b1l12-car-2",
+                  "alt": "Singing: the father drives while the boy sings in the back seat"
+                },
+                {
+                  "picture": "b1l12-car-3",
+                  "alt": "Eating bread: the father drives while the boy eats bread in the back seat"
+                }
+              ],
+              "key": 1,
+              "why": "父親開車的時候 sets the moment: while the father drives, the son sings (唱歌) in the back.",
+              "focus": {
+                "zh": "開車的時候",
+                "en": "while driving"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-03",
+                "B1L12-3-05",
+                "B1L06-3-05"
+              ],
+              "grammarIds": [
+                "B1L12-G05-P284"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-read-car-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l12-read-car-3-q",
+              "prompt": {
+                "traditional": "爸爸開車的時候，兒子在後面吃麵包。",
+                "simplified": "爸爸开车的时候，儿子在后面吃面包。",
+                "pinyin": "Bàba kāichē de shíhòu, érzi zài hòumiàn chī miànbāo.",
+                "english": "While Dad drives, his son eats bread in the back."
+              },
+              "choices": [
+                {
+                  "picture": "b1l12-car-1",
+                  "alt": "Sleeping: the father drives while the boy sleeps in the back seat"
+                },
+                {
+                  "picture": "b1l12-car-2",
+                  "alt": "Singing: the father drives while the boy sings in the back seat"
+                },
+                {
+                  "picture": "b1l12-car-3",
+                  "alt": "Eating bread: the father drives while the boy eats bread in the back seat"
+                }
+              ],
+              "key": 2,
+              "why": "爸爸開車的時候 sets the moment: while Dad drives, the son eats bread (吃麵包) in the back.",
+              "focus": {
+                "zh": "開車的時候",
+                "en": "while driving"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-05",
+                "B1L12-2-01",
+                "B1L07-3-05"
+              ],
+              "grammarIds": [
+                "B1L12-G05-P284"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-family",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l12-read-family-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l12-read-family-1-q",
+              "prompt": {
+                "traditional": "他們有一個兒子、一個女兒。",
+                "simplified": "他们有一个儿子、一个女儿。",
+                "pinyin": "Tāmen yǒu yí ge érzi, yí ge nǚ'ér.",
+                "english": "They have a son and a daughter."
+              },
+              "choices": [
+                {
+                  "picture": "b1l12-family-1",
+                  "alt": "A son and a daughter: the mother and father sit on a sofa with a boy and a girl in front of them"
+                },
+                {
+                  "picture": "b1l12-family-2",
+                  "alt": "Two daughters: the mother and father sit on a sofa with two girls in front of them"
+                },
+                {
+                  "picture": "b1l12-family-3",
+                  "alt": "Two sons: the mother and father sit on a sofa with two boys in front of them"
+                }
+              ],
+              "key": 0,
+              "why": "兒子 is a son and 女兒 a daughter: they have one of each, a boy and a girl.",
+              "focus": {
+                "zh": "兒子、女兒",
+                "en": "son and daughter"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-05",
+                "B1L12-3-06"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-read-family-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l12-read-family-2-q",
+              "prompt": {
+                "traditional": "他們有兩個孩子，都是女兒。",
+                "simplified": "他们有两个孩子，都是女儿。",
+                "pinyin": "Tāmen yǒu liǎng ge háizi, dōu shì nǚ'ér.",
+                "english": "They have two children, and both are daughters."
+              },
+              "choices": [
+                {
+                  "picture": "b1l12-family-1",
+                  "alt": "A son and a daughter: the mother and father sit on a sofa with a boy and a girl in front of them"
+                },
+                {
+                  "picture": "b1l12-family-2",
+                  "alt": "Two daughters: the mother and father sit on a sofa with two girls in front of them"
+                },
+                {
+                  "picture": "b1l12-family-3",
+                  "alt": "Two sons: the mother and father sit on a sofa with two boys in front of them"
+                }
+              ],
+              "key": 1,
+              "why": "都是女兒 means both children are daughters: two girls.",
+              "focus": {
+                "zh": "女兒",
+                "en": "daughter"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-06",
+                "B1L02-1-09",
+                "B1L03-2-19"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-read-family-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l12-read-family-3-q",
+              "prompt": {
+                "traditional": "他們沒有女兒，有兩個兒子。",
+                "simplified": "他们没有女儿，有两个儿子。",
+                "pinyin": "Tāmen méiyǒu nǚ'ér, yǒu liǎng ge érzi.",
+                "english": "They don't have a daughter. They have two sons."
+              },
+              "choices": [
+                {
+                  "picture": "b1l12-family-1",
+                  "alt": "A son and a daughter: the mother and father sit on a sofa with a boy and a girl in front of them"
+                },
+                {
+                  "picture": "b1l12-family-2",
+                  "alt": "Two daughters: the mother and father sit on a sofa with two girls in front of them"
+                },
+                {
+                  "picture": "b1l12-family-3",
+                  "alt": "Two sons: the mother and father sit on a sofa with two boys in front of them"
+                }
+              ],
+              "key": 2,
+              "why": "沒有女兒 means no daughters; 兩個兒子 means two sons: two boys.",
+              "focus": {
+                "zh": "兒子",
+                "en": "son"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-05",
+                "B1L12-3-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-ad",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l12-realia-ad-1",
+          "kind": "realia",
+          "picture": "b1l12-ad",
+          "alt": "A job poster from a magazine looking for a reporter, with the languages, work days, hours and monthly pay",
+          "transcript": {
+            "traditional": "快樂雜誌　我們需要記者！　要會說中文和英文　星期一到星期五　上午 10:00～下午 6:00　一個月 35,000元",
+            "simplified": "快乐杂志　我们需要记者！　要会说中文和英文　星期一到星期五　上午 10:00～下午 6:00　一个月 35,000元",
+            "pinyin": "Kuàilè Zázhì: Wǒmen xūyào jìzhě! Yào huì shuō Zhōngwén hé Yīngwén. Xīngqíyī dào xīngqíwǔ, shàngwǔ 10:00 dào xiàwǔ 6:00. Yí ge yuè 35,000 yuán.",
+            "english": "Happy Magazine: We need reporters! You must speak Chinese and English. Monday to Friday, 10 a.m. to 6 p.m. 35,000 dollars a month."
+          },
+          "questions": [
+            {
+              "id": "b1l12-realia-ad-1-q",
+              "prompt": {
+                "traditional": "哪一個是對的？",
+                "simplified": "哪一个是对的？",
+                "pinyin": "Nǎ yí ge shì duì de?",
+                "english": "Which one is true?"
+              },
+              "choices": [
+                {
+                  "traditional": "這個工作下午五點下班。",
+                  "simplified": "这个工作下午五点下班。",
+                  "pinyin": "Zhège gōngzuò xiàwǔ wǔ diǎn xiàbān.",
+                  "english": "This job finishes at 5 p.m."
+                },
+                {
+                  "traditional": "這個工作星期六也要上班。",
+                  "simplified": "这个工作星期六也要上班。",
+                  "pinyin": "Zhège gōngzuò xīngqíliù yě yào shàngbān.",
+                  "english": "In this job, you also have to work on Saturdays."
+                },
+                {
+                  "traditional": "這個工作上午十點上班。",
+                  "simplified": "这个工作上午十点上班。",
+                  "pinyin": "Zhège gōngzuò shàngwǔ shí diǎn shàngbān.",
+                  "english": "This job starts at 10 a.m."
+                }
+              ],
+              "key": 2,
+              "why": "The hours are 上午 10:00～下午 6:00, so you start work (上班) at ten. You finish (下班) at six, not five, and the days are 星期一到星期五, so no Saturdays.",
+              "focus": {
+                "zh": "上班、下班",
+                "en": "start and finish work"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-17",
+                "B1L12-1-16",
+                "B1L02-1-25",
+                "B1L02-1-11"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-realia-ad-2",
+          "kind": "realia",
+          "picture": "b1l12-ad",
+          "alt": "A job poster from a magazine looking for a reporter, with the languages, work days, hours and monthly pay",
+          "transcript": {
+            "traditional": "快樂雜誌　我們需要記者！　要會說中文和英文　星期一到星期五　上午 10:00～下午 6:00　一個月 35,000元",
+            "simplified": "快乐杂志　我们需要记者！　要会说中文和英文　星期一到星期五　上午 10:00～下午 6:00　一个月 35,000元",
+            "pinyin": "Kuàilè Zázhì: Wǒmen xūyào jìzhě! Yào huì shuō Zhōngwén hé Yīngwén. Xīngqíyī dào xīngqíwǔ, shàngwǔ 10:00 dào xiàwǔ 6:00. Yí ge yuè 35,000 yuán.",
+            "english": "Happy Magazine: We need reporters! You must speak Chinese and English. Monday to Friday, 10 a.m. to 6 p.m. 35,000 dollars a month."
+          },
+          "questions": [
+            {
+              "id": "b1l12-realia-ad-2-q",
+              "prompt": {
+                "traditional": "這個工作一個月多少錢？",
+                "simplified": "这个工作一个月多少钱？",
+                "pinyin": "Zhège gōngzuò yí ge yuè duōshǎo qián?",
+                "english": "How much does this job pay a month?"
+              },
+              "choices": [
+                {
+                  "traditional": "三萬零五百塊",
+                  "simplified": "三万零五百块",
+                  "pinyin": "sān wàn líng wǔ bǎi kuài",
+                  "english": "30,500 dollars"
+                },
+                {
+                  "traditional": "三萬五千塊",
+                  "simplified": "三万五千块",
+                  "pinyin": "sān wàn wǔ qiān kuài",
+                  "english": "35,000 dollars"
+                },
+                {
+                  "traditional": "兩萬八千塊",
+                  "simplified": "两万八千块",
+                  "pinyin": "liǎng wàn bā qiān kuài",
+                  "english": "28,000 dollars"
+                }
+              ],
+              "key": 1,
+              "why": "35,000 is three ten-thousands and five thousands: 三萬五千. 三萬零五百 is 30,500 and 兩萬八千 is 28,000.",
+              "focus": {
+                "zh": "三萬五千",
+                "en": "reading 35,000"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-19",
+                "B1L04-2-18",
+                "B1L04-2-20"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l12-realia-card-1",
+          "kind": "realia",
+          "picture": "b1l12-card",
+          "alt": "A handwritten graduation card from a mother and father to their daughter",
+          "transcript": {
+            "traditional": "女兒：　畢業快樂！　以後工作的時候，　不要忘記多休息。　我們很愛妳！　爸爸、媽媽",
+            "simplified": "女儿：　毕业快乐！　以后工作的时候，　不要忘记多休息。　我们很爱你！　爸爸、妈妈",
+            "pinyin": "Nǚ'ér: Bìyè kuàilè! Yǐhòu gōngzuò de shíhòu, búyào wàngjì duō xiūxí. Wǒmen hěn ài nǐ! Bàba, Māma",
+            "english": "Dear daughter: Happy graduation! When you work later on, don't forget to get plenty of rest. We love you very much! Dad and Mom"
+          },
+          "questions": [
+            {
+              "id": "b1l12-realia-card-1-q",
+              "prompt": {
+                "traditional": "父母希望女兒什麼時候多休息？",
+                "simplified": "父母希望女儿什么时候多休息？",
+                "pinyin": "Fùmǔ xīwàng nǚ'ér shénme shíhòu duō xiūxí?",
+                "english": "When do the parents want their daughter to rest more?"
+              },
+              "choices": [
+                {
+                  "traditional": "畢業的時候",
+                  "simplified": "毕业的时候",
+                  "pinyin": "bìyè de shíhòu",
+                  "english": "when she graduates"
+                },
+                {
+                  "traditional": "工作的時候",
+                  "simplified": "工作的时候",
+                  "pinyin": "gōngzuò de shíhòu",
+                  "english": "when she is working"
+                },
+                {
+                  "traditional": "考試的時候",
+                  "simplified": "考试的时候",
+                  "pinyin": "kǎoshì de shíhòu",
+                  "english": "when she has exams"
+                }
+              ],
+              "key": 1,
+              "why": "The card says 以後工作的時候，不要忘記多休息: rest more when you are working later on. 畢業快樂 is only the greeting, and the card says nothing about exams (考試).",
+              "focus": {
+                "zh": "工作的時候",
+                "en": "while working"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-01",
+                "B1L06-2-07",
+                "B1L12-3-02",
+                "B1L12-3-06"
+              ],
+              "grammarIds": [
+                "B1L12-G05-P284"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-realia-card-2",
+          "kind": "realia",
+          "picture": "b1l12-card",
+          "alt": "A handwritten graduation card from a mother and father to their daughter",
+          "transcript": {
+            "traditional": "女兒：　畢業快樂！　以後工作的時候，　不要忘記多休息。　我們很愛妳！　爸爸、媽媽",
+            "simplified": "女儿：　毕业快乐！　以后工作的时候，　不要忘记多休息。　我们很爱你！　爸爸、妈妈",
+            "pinyin": "Nǚ'ér: Bìyè kuàilè! Yǐhòu gōngzuò de shíhòu, búyào wàngjì duō xiūxí. Wǒmen hěn ài nǐ! Bàba, Māma",
+            "english": "Dear daughter: Happy graduation! When you work later on, don't forget to get plenty of rest. We love you very much! Dad and Mom"
+          },
+          "questions": [
+            {
+              "id": "b1l12-realia-card-2-q",
+              "prompt": {
+                "traditional": "父母為什麼給女兒這張卡片？",
+                "simplified": "父母为什么给女儿这张卡片？",
+                "pinyin": "Fùmǔ wèishénme gěi nǚ'ér zhè zhāng kǎpiàn?",
+                "english": "Why do the parents give their daughter this card?"
+              },
+              "choices": [
+                {
+                  "traditional": "她畢業了",
+                  "simplified": "她毕业了",
+                  "pinyin": "tā bìyè le",
+                  "english": "she has graduated"
+                },
+                {
+                  "traditional": "她結婚了",
+                  "simplified": "她结婚了",
+                  "pinyin": "tā jiéhūn le",
+                  "english": "she has got married"
+                },
+                {
+                  "traditional": "她生病了",
+                  "simplified": "她生病了",
+                  "pinyin": "tā shēngbìng le",
+                  "english": "she is sick"
+                }
+              ],
+              "key": 0,
+              "why": "畢業快樂 means happy graduation: the daughter has just graduated. Nothing on the card is about a wedding (結婚) or being sick (生病).",
+              "focus": {
+                "zh": "畢業",
+                "en": "to graduate"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-09",
+                "B1L12-3-10",
+                "B1L10-1-13"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l12-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l12-office",
+          "alt": "A hot summer morning in an office. A large wall clock shows 9:20. A young man in a white shirt and blue tie hurries in through the door with his bag, sweating; the boss, an older man in a black suit, stands by the door and speaks to him. Inside, a young woman works at a computer with a mug of hot coffee beside it. An air conditioner on the wall blows cool air; through the window the sun is blazing.",
+          "questions": [
+            {
+              "id": "b1l12-scene-gap-1-a",
+              "prompt": {
+                "traditional": "那個男生九點上班，今天＿＿了二十分鐘。",
+                "simplified": "那个男生九点上班，今天＿＿了二十分钟。",
+                "pinyin": "Nàge nánshēng jiǔ diǎn shàngbān, jīntiān ＿＿ le èrshí fēnzhōng.",
+                "english": "That young man starts work at nine; today he was ＿＿ by twenty minutes."
+              },
+              "choices": [
+                {
+                  "traditional": "準時",
+                  "simplified": "准时",
+                  "pinyin": "zhǔnshí",
+                  "english": "on time"
+                },
+                {
+                  "traditional": "遲到",
+                  "simplified": "迟到",
+                  "pinyin": "chídào",
+                  "english": "to be late"
+                },
+                {
+                  "traditional": "下班",
+                  "simplified": "下班",
+                  "pinyin": "xiàbān",
+                  "english": "to finish work"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "那個男生九點上班，今天遲到了二十分鐘。",
+                "simplified": "那个男生九点上班，今天迟到了二十分钟。",
+                "pinyin": "Nàge nánshēng jiǔ diǎn shàngbān, jīntiān chídào le èrshí fēnzhōng.",
+                "english": "That young man starts work at nine; today he was twenty minutes late."
+              },
+              "why": "The clock shows 9:20 and he starts at nine, so he is twenty minutes late: 遲到了二十分鐘. 準時 (on time) cannot take 二十分鐘 after it.",
+              "focus": {
+                "zh": "遲到",
+                "en": "to be late"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-09",
+                "B1L12-2-12",
+                "B1L12-1-16",
+                "B1L12-1-15"
+              ]
+            },
+            {
+              "id": "b1l12-scene-gap-1-b",
+              "prompt": {
+                "traditional": "那個女生覺得這個工作很好：辦公室裡有冷氣，＿＿休息的時候還可以喝咖啡。",
+                "simplified": "那个女生觉得这个工作很好：办公室里有冷气，＿＿休息的时候还可以喝咖啡。",
+                "pinyin": "Nàge nǚshēng juéde zhège gōngzuò hěn hǎo: bàngōngshì lǐ yǒu lěngqì, ＿＿ xiūxí de shíhòu hái kěyǐ hē kāfēi.",
+                "english": "That young woman thinks this job is good: the office has air conditioning, ＿＿ she can drink coffee on her breaks."
+              },
+              "choices": [
+                {
+                  "traditional": "而且",
+                  "simplified": "而且",
+                  "pinyin": "érqiě",
+                  "english": "moreover"
+                },
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "english": "so"
+                },
+                {
+                  "traditional": "可是",
+                  "simplified": "可是",
+                  "pinyin": "kěshì",
+                  "english": "but"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "那個女生覺得這個工作很好：辦公室裡有冷氣，而且休息的時候還可以喝咖啡。",
+                "simplified": "那个女生觉得这个工作很好：办公室里有冷气，而且休息的时候还可以喝咖啡。",
+                "pinyin": "Nàge nǚshēng juéde zhège gōngzuò hěn hǎo: bàngōngshì lǐ yǒu lěngqì, érqiě xiūxí de shíhòu hái kěyǐ hē kāfēi.",
+                "english": "That young woman thinks this job is good: the office has air conditioning, and on top of that she can drink coffee on her breaks."
+              },
+              "why": "而且 adds one more good point: the office has air conditioning, and on top of that (還) she can drink coffee on her breaks. 所以 (so) and 可是 (but) do not join two good points.",
+              "focus": {
+                "zh": "而且",
+                "en": "and also; moreover"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-03",
+                "B1L12-3-14",
+                "B1L12-3-12",
+                "B1L12-3-13",
+                "B1L06-2-07"
+              ]
+            },
+            {
+              "id": "b1l12-scene-gap-1-c",
+              "prompt": {
+                "traditional": "老闆＿＿那個男生說：「明天要準時！」",
+                "simplified": "老板＿＿那个男生说：「明天要准时！」",
+                "pinyin": "Lǎobǎn ＿＿ nàge nánshēng shuō: \"Míngtiān yào zhǔnshí!\"",
+                "english": "The boss says ＿＿ that young man: \"Be on time tomorrow!\""
+              },
+              "choices": [
+                {
+                  "traditional": "用",
+                  "simplified": "用",
+                  "pinyin": "yòng",
+                  "english": "using"
+                },
+                {
+                  "traditional": "從",
+                  "simplified": "从",
+                  "pinyin": "cóng",
+                  "english": "from"
+                },
+                {
+                  "traditional": "對",
+                  "simplified": "对",
+                  "pinyin": "duì",
+                  "english": "to (someone)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "老闆對那個男生說：「明天要準時！」",
+                "simplified": "老板对那个男生说：「明天要准时！」",
+                "pinyin": "Lǎobǎn duì nàge nánshēng shuō: \"Míngtiān yào zhǔnshí!\"",
+                "english": "The boss says to that young man: \"Be on time tomorrow!\""
+              },
+              "why": "對 + person + 說 means to say something to someone: 老闆對那個男生說. 用 needs a tool, and 從 needs a starting place.",
+              "focus": {
+                "zh": "對……說",
+                "en": "to say to someone"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-05",
+                "B1L12-1-13",
+                "B1L12-1-15"
+              ],
+              "grammarIds": [
+                "B1L12-G03-P281"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l12-office",
+          "alt": "A hot summer morning in an office. A large wall clock shows 9:20. A young man in a white shirt and blue tie hurries in through the door with his bag, sweating; the boss, an older man in a black suit, stands by the door and speaks to him. Inside, a young woman works at a computer with a mug of hot coffee beside it. An air conditioner on the wall blows cool air; through the window the sun is blazing.",
+          "questions": [
+            {
+              "id": "b1l12-scene-gap-2-a",
+              "prompt": {
+                "traditional": "穿黑衣服的先生是那個男生的＿＿。",
+                "simplified": "穿黑衣服的先生是那个男生的＿＿。",
+                "pinyin": "Chuān hēi yīfu de xiānshēng shì nàge nánshēng de ＿＿.",
+                "english": "The man in black is that young man's ＿＿."
+              },
+              "choices": [
+                {
+                  "traditional": "同學",
+                  "simplified": "同学",
+                  "pinyin": "tóngxué",
+                  "english": "classmate"
+                },
+                {
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "lǎobǎn",
+                  "english": "boss"
+                },
+                {
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "english": "teacher"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "穿黑衣服的先生是那個男生的老闆。",
+                "simplified": "穿黑衣服的先生是那个男生的老板。",
+                "pinyin": "Chuān hēi yīfu de xiānshēng shì nàge nánshēng de lǎobǎn.",
+                "english": "The man in black is that young man's boss."
+              },
+              "why": "The older man in the black suit stands at the door and speaks seriously to the late young man: he is his boss (老闆). This is an office, not a school, so he is not his teacher (老師) or classmate (同學).",
+              "focus": {
+                "zh": "老闆",
+                "en": "boss"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-13",
+                "B1L00-1-01",
+                "B1L01-1-02"
+              ]
+            },
+            {
+              "id": "b1l12-scene-gap-2-b",
+              "prompt": {
+                "traditional": "外面很熱，可是辦公室裡有＿＿，很舒服。",
+                "simplified": "外面很热，可是办公室里有＿＿，很舒服。",
+                "pinyin": "Wàimiàn hěn rè, kěshì bàngōngshì lǐ yǒu ＿＿, hěn shūfu.",
+                "english": "It's hot outside, but the office has ＿＿, so it's comfortable."
+              },
+              "choices": [
+                {
+                  "traditional": "電腦",
+                  "simplified": "电脑",
+                  "pinyin": "diànnǎo",
+                  "english": "a computer"
+                },
+                {
+                  "traditional": "窗戶",
+                  "simplified": "窗户",
+                  "pinyin": "chuānghù",
+                  "english": "a window"
+                },
+                {
+                  "traditional": "冷氣",
+                  "simplified": "冷气",
+                  "pinyin": "lěngqì",
+                  "english": "air conditioning"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "外面很熱，可是辦公室裡有冷氣，很舒服。",
+                "simplified": "外面很热，可是办公室里有冷气，很舒服。",
+                "pinyin": "Wàimiàn hěn rè, kěshì bàngōngshì lǐ yǒu lěngqì, hěn shūfu.",
+                "english": "It's hot outside, but the office has air conditioning, so it's comfortable."
+              },
+              "why": "It is hot outside, but (可是) the office is comfortable because of the air conditioner on the wall: 冷氣. A computer does not cool a room, and the window only shows the hot sun outside.",
+              "focus": {
+                "zh": "冷氣",
+                "en": "air conditioner"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-3-12",
+                "B1L12-3-13",
+                "B1L04-1-05",
+                "B1L07-2-16"
+              ]
+            },
+            {
+              "id": "b1l12-scene-gap-2-c",
+              "prompt": {
+                "traditional": "那個男生＿＿上班都很準時，可是今天遲到了。",
+                "simplified": "那个男生＿＿上班都很准时，可是今天迟到了。",
+                "pinyin": "Nàge nánshēng ＿＿ shàngbān dōu hěn zhǔnshí, kěshì jīntiān chídào le.",
+                "english": "That young man ＿＿ was always on time for work, but today he is late."
+              },
+              "choices": [
+                {
+                  "traditional": "以前",
+                  "simplified": "以前",
+                  "pinyin": "yǐqián",
+                  "english": "before; in the past"
+                },
+                {
+                  "traditional": "以後",
+                  "simplified": "以后",
+                  "pinyin": "yǐhòu",
+                  "english": "after; in the future"
+                },
+                {
+                  "traditional": "明天",
+                  "simplified": "明天",
+                  "pinyin": "míngtiān",
+                  "english": "tomorrow"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "那個男生以前上班都很準時，可是今天遲到了。",
+                "simplified": "那个男生以前上班都很准时，可是今天迟到了。",
+                "pinyin": "Nàge nánshēng yǐqián shàngbān dōu hěn zhǔnshí, kěshì jīntiān chídào le.",
+                "english": "That young man was always on time for work before, but today he is late."
+              },
+              "why": "以前 means before, in the past: he was always on time before, but (可是) today he is late. 以後 and 明天 point to the future, so they cannot be set against what happened today.",
+              "focus": {
+                "zh": "以前",
+                "en": "in the past"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-11",
+                "B1L12-1-15",
+                "B1L12-2-09",
+                "B1L12-1-10"
+              ],
+              "grammarIds": [
+                "B1L12-G02-P272"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l12-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我哥哥今年畢業以後，就在一家公司上班了。他以前沒工作{1}，所以現在覺得工作很{2}。他每天都走路去公司，還{3}遲到過。他說，走路{4}身體很好。",
+            "simplified": "我哥哥今年毕业以后，就在一家公司上班了。他以前没工作{1}，所以现在觉得工作很{2}。他每天都走路去公司，还{3}迟到过。他说，走路{4}身体很好。",
+            "pinyin": "Wǒ gēge jīnnián bìyè yǐhòu, jiù zài yì jiā gōngsī shàngbān le. Tā yǐqián méi gōngzuò guo, suǒyǐ xiànzài juéde gōngzuò hěn xīnkǔ. Tā měi tiān dōu zǒulù qù gōngsī, hái méi chídào guo. Tā shuō, zǒulù duì shēntǐ hěn hǎo.",
+            "english": "After my older brother graduated this year, he started working at a company. He had never worked before, so now he finds work hard. He walks to work every day and hasn't been late yet. He says walking is very good for your health."
+          },
+          "bank": [
+            {
+              "traditional": "對",
+              "simplified": "对",
+              "pinyin": "duì",
+              "english": "to; toward"
+            },
+            {
+              "traditional": "過",
+              "simplified": "过",
+              "pinyin": "guo",
+              "english": "(experience particle)"
+            },
+            {
+              "traditional": "準時",
+              "simplified": "准时",
+              "pinyin": "zhǔnshí",
+              "english": "on time"
+            },
+            {
+              "traditional": "辛苦",
+              "simplified": "辛苦",
+              "pinyin": "xīnkǔ",
+              "english": "hard; tiring"
+            },
+            {
+              "traditional": "沒",
+              "simplified": "没",
+              "pinyin": "méi",
+              "english": "did not; have not"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-paragraph-1-1",
+              "key": 1,
+              "why": "沒 + verb + 過 says something has never happened: 沒工作過, he had never worked before.",
+              "focus": {
+                "zh": "沒V過",
+                "en": "have never done"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-07",
+                "B1L12-1-01",
+                "B1L12-1-11"
+              ],
+              "grammarIds": [
+                "B1L12-G04-P282"
+              ]
+            },
+            {
+              "id": "b1l12-paragraph-1-2",
+              "key": 3,
+              "why": "很 needs a describing word after it: 工作很辛苦, work is hard. He had never worked before, so now (現在) he finds it hard.",
+              "focus": {
+                "zh": "辛苦",
+                "en": "hard; tiring"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-02",
+                "B1L12-1-01"
+              ]
+            },
+            {
+              "id": "b1l12-paragraph-1-3",
+              "key": 4,
+              "why": "還沒 + verb + 過 says something has not happened yet: 還沒遲到過, he hasn't been late yet. 過 is already there, so the blank needs 沒.",
+              "focus": {
+                "zh": "還沒",
+                "en": "not yet"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B1L11-1-14",
+                "B1L12-2-09",
+                "B1L12-2-07"
+              ],
+              "grammarIds": [
+                "B1L11-G02-P249"
+              ]
+            },
+            {
+              "id": "b1l12-paragraph-1-4",
+              "key": 0,
+              "why": "對 points to who or what something is good for: 走路對身體很好, walking is good for your body.",
+              "focus": {
+                "zh": "對身體很好",
+                "en": "good for your health"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-05",
+                "B1L10-1-18",
+                "B1L07-1-21"
+              ],
+              "grammarIds": [
+                "B1L12-G03-P281"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我妹妹想當記者。她說，記者的工作很{1}，可以去很多地方。她去{2}日本和美國，也會{3}英文跟別人聊天。她的英文老師也{4}她說：「妳以後一定能當一個好記者！」",
+            "simplified": "我妹妹想当记者。她说，记者的工作很{1}，可以去很多地方。她去{2}日本和美国，也会{3}英文跟别人聊天。她的英文老师也{4}她说：「你以后一定能当一个好记者！」",
+            "pinyin": "Wǒ mèimei xiǎng dāng jìzhě. Tā shuō, jìzhě de gōngzuò hěn yǒuqù, kěyǐ qù hěn duō dìfāng. Tā qù guo Rìběn hé Měiguó, yě huì yòng Yīngwén gēn biérén liáotiān. Tā de Yīngwén lǎoshī yě duì tā shuō: \"Nǐ yǐhòu yídìng néng dāng yí ge hǎo jìzhě!\"",
+            "english": "My younger sister wants to be a reporter. She says a reporter's job is interesting, and you can go to lots of places. She has been to Japan and the US, and she can chat with people in English. Her English teacher also says to her: \"You'll surely be a good reporter one day!\""
+          },
+          "bank": [
+            {
+              "traditional": "對",
+              "simplified": "对",
+              "pinyin": "duì",
+              "english": "to; toward"
+            },
+            {
+              "traditional": "能",
+              "simplified": "能",
+              "pinyin": "néng",
+              "english": "can; be able to"
+            },
+            {
+              "traditional": "有趣",
+              "simplified": "有趣",
+              "pinyin": "yǒuqù",
+              "english": "interesting"
+            },
+            {
+              "traditional": "用",
+              "simplified": "用",
+              "pinyin": "yòng",
+              "english": "using; with"
+            },
+            {
+              "traditional": "過",
+              "simplified": "过",
+              "pinyin": "guo",
+              "english": "(experience particle)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l12-paragraph-2-1",
+              "key": 2,
+              "why": "很 needs a describing word after it: the job is 有趣 (interesting), since you can go to many places.",
+              "focus": {
+                "zh": "有趣",
+                "en": "interesting"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B1L06-2-04",
+                "B1L12-1-07"
+              ]
+            },
+            {
+              "id": "b1l12-paragraph-2-2",
+              "key": 4,
+              "why": "過 right after a verb marks an experience: 去過日本和美國, she has been to Japan and the US.",
+              "focus": {
+                "zh": "去過",
+                "en": "have been to"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-07",
+                "B1L01-1-14",
+                "B1L01-1-17"
+              ],
+              "grammarIds": [
+                "B1L12-G04-P282"
+              ]
+            },
+            {
+              "id": "b1l12-paragraph-2-3",
+              "key": 3,
+              "why": "用 comes before the language you use: 用英文跟別人聊天, chat with people in English.",
+              "focus": {
+                "zh": "用英文",
+                "en": "in English"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-1-06",
+                "B1L03-1-11",
+                "B1L11-1-10"
+              ],
+              "grammarIds": [
+                "B1L12-G01-P271"
+              ]
+            },
+            {
+              "id": "b1l12-paragraph-2-4",
+              "key": 0,
+              "why": "對 + person + 說 means to say something to someone: 她的英文老師也對她說.",
+              "focus": {
+                "zh": "對她說",
+                "en": "to say to her"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L12-2-05",
+                "B1L06-1-19"
+              ],
+              "grammarIds": [
+                "B1L12-G03-P281"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l12-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "宜文：\n昨天我去百貨公司買夏天的衣服。因為那裡的裙子都太貴了，所以我只買了一雙襪子。週末我們一起去書店看雜誌吧！\n元真",
+            "simplified": "宜文：\n昨天我去百货公司买夏天的衣服。因为那里的裙子都太贵了，所以我只买了一双袜子。周末我们一起去书店看杂志吧！\n元真",
+            "pinyin": "Yíwén: Zuótiān wǒ qù bǎihuò gōngsī mǎi xiàtiān de yīfu. Yīnwèi nàlǐ de qúnzi dōu tài guì le, suǒyǐ wǒ zhǐ mǎi le yì shuāng wàzi. Zhōumò wǒmen yìqǐ qù shūdiàn kàn zázhì ba! Yuánzhēn",
+            "english": "Yiwen: Yesterday I went to the department store to buy summer clothes. Because the skirts there were all too expensive, I only bought a pair of socks. Let's go to the bookstore together this weekend and look at magazines! Yuanzhen"
+          },
+          "questions": [
+            {
+              "id": "b1l12-reading-note-1-q",
+              "prompt": {
+                "traditional": "元真昨天在百貨公司買了什麼？",
+                "simplified": "元真昨天在百货公司买了什么？",
+                "pinyin": "Yuánzhēn zuótiān zài bǎihuò gōngsī mǎi le shénme?",
+                "english": "What did Yuanzhen buy at the department store yesterday?"
+              },
+              "choices": [
+                {
+                  "traditional": "裙子",
+                  "simplified": "裙子",
+                  "pinyin": "qúnzi",
+                  "english": "a skirt"
+                },
+                {
+                  "traditional": "襪子",
+                  "simplified": "袜子",
+                  "pinyin": "wàzi",
+                  "english": "socks"
+                },
+                {
+                  "traditional": "雜誌",
+                  "simplified": "杂志",
+                  "pinyin": "zázhì",
+                  "english": "a magazine"
+                }
+              ],
+              "key": 1,
+              "why": "因為那裡的裙子都太貴了，所以我只買了一雙襪子: the skirts were too expensive, so she only bought socks. The magazines are for the weekend trip to the bookstore.",
+              "focus": {
+                "zh": "因為……所以……",
+                "en": "because … so …"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-07",
+                "B1L08-1-10",
+                "B1L08-2-08",
+                "B1L06-2-18"
+              ],
+              "grammarIds": [
+                "B1L08-G02-P186"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l12-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n圖書館三樓人太多了，我在二樓寫功課。你下課以後來這裡找我，我們一起寫吧。\n家樂",
+            "simplified": "中明：\n图书馆三楼人太多了，我在二楼写功课。你下课以后来这里找我，我们一起写吧。\n家乐",
+            "pinyin": "Zhōngmíng: Túshūguǎn sān lóu rén tài duō le, wǒ zài èr lóu xiě gōngkè. Nǐ xiàkè yǐhòu lái zhèlǐ zhǎo wǒ, wǒmen yìqǐ xiě ba. Jiālè",
+            "english": "Zhongming: There are too many people on the library's third floor, so I'm doing homework on the second floor. Come and find me here after class, and let's do it together. Jiale"
+          },
+          "questions": [
+            {
+              "id": "b1l12-reading-note-2-q",
+              "prompt": {
+                "traditional": "家樂在哪裡寫功課？",
+                "simplified": "家乐在哪里写功课？",
+                "pinyin": "Jiālè zài nǎlǐ xiě gōngkè?",
+                "english": "Where is Jiale doing his homework?"
+              },
+              "choices": [
+                {
+                  "traditional": "圖書館二樓",
+                  "simplified": "图书馆二楼",
+                  "pinyin": "túshūguǎn èr lóu",
+                  "english": "the library's second floor"
+                },
+                {
+                  "traditional": "圖書館三樓",
+                  "simplified": "图书馆三楼",
+                  "pinyin": "túshūguǎn sān lóu",
+                  "english": "the library's third floor"
+                },
+                {
+                  "traditional": "教室裡",
+                  "simplified": "教室里",
+                  "pinyin": "jiàoshì lǐ",
+                  "english": "in a classroom"
+                }
+              ],
+              "key": 0,
+              "why": "我在二樓寫功課: he is on the second floor. The third floor (三樓) has too many people.",
+              "focus": {
+                "zh": "在 + 地方 + 做事",
+                "en": "where someone does something"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L05-1-02",
+                "B1L08-2-12",
+                "B1L02-1-20",
+                "B1L09-1-14"
+              ],
+              "grammarIds": [
+                "B1L05-G02-P117"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
