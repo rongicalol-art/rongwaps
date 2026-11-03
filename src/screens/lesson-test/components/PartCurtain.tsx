@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon } from '../../../lib/widgets';
+import { AppIcon, RocketLottie } from '../../../lib/widgets';
 import type { LessonTestPart } from '../../../types/lessonTest';
 import { cn } from '../../../utils/cn';
 import { LESSON_TEST_PARTS } from '../../../utils/lesson/lessonTestPlan';
@@ -21,8 +21,8 @@ interface PartCurtainProps {
 }
 
 /**
- * Each part opens with a gold curtain over the whole test window: the test's name, the parts with the current
- * one lit, and its one rule. It rises from the bottom, holds while the part gets ready, then lifts off the top
+ * Each part opens with a gold curtain over the whole test window: the rocket flying, the test's name, the parts with
+ * the current one lit, and its one rule. It rises from the bottom, holds while the part gets ready, then lifts off the top
  * as the first question rises in (the parent's AnimatePresence plays the exit). Only the panel moves (one
  * transform), so it stays smooth on slow phones; the text inside never animates on its own.
  */
@@ -63,6 +63,7 @@ export function PartCurtain({ part, lessonId, holding, onDone }: PartCurtainProp
       transition={{ duration: 0.45, ease: EASE }}
       className="absolute inset-0 z-50 flex cursor-pointer select-none flex-col items-center justify-center gap-7 bg-brand-primary px-6 text-center text-brand-on-primary will-change-transform md:gap-8"
     >
+      <RocketLottie loop className="-mb-2 size-36 md:size-44" />
       <h1 className="text-4xl font-black leading-tight md:text-6xl">Lesson {lessonId} test</h1>
       <p className="flex items-center gap-3 text-xl font-black md:gap-4 md:text-2xl">
         {LESSON_TEST_PARTS.map((entry, index) => (

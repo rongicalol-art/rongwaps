@@ -41,6 +41,7 @@ export * from './EmptyState';
 export * from './LoadingScreen';
 export * from './AudioPreparation';
 export * from './LottiePlayer';
+export * from './RocketLottie';
 export * from './Skeleton';
 
 // Generic headers and workspace shells
