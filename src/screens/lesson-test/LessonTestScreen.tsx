@@ -41,7 +41,6 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const planned = useMemo(() => new Map(run.plan.items.map((entry) => [entry.itemId, entry])), [run.plan]);
   const numbers = useMemo(() => questionNumbers(run.screens), [run.screens]);
   const total = numbers.length ? numbers[numbers.length - 1] + run.screens[run.screens.length - 1].questionIds.length : 0;
-  const listeningCount = useMemo(() => run.screens.filter((entry) => entry.part === 'listening').reduce((sum, entry) => sum + entry.questionIds.length, 0), [run.screens]);
   const isFix = run.stage === 'fix';
   useReviewTone(isFix);
 
@@ -104,7 +103,6 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       tone="practice"
       onClose={onClose}
       progress={shownTotal ? (done / shownTotal) * 100 : 0}
-      progressSplit={!isFix && total && listeningCount > 0 && listeningCount < total ? listeningCount / total : undefined}
       currentIndex={shownIndex}
       totalCount={shownTotal}
       rightAction={null}
