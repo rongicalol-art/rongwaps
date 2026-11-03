@@ -1,14 +1,12 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
-import { AppIcon, LottiePlayer } from '../../../lib/widgets';
+import { ActionButton, LottiePlayer } from '../../../lib/widgets';
+import type { AudioPreloadProgress } from '../../../services/audio/audioCache';
 import type { LessonTestPart } from '../../../types/lessonTest';
-import { cn } from '../../../utils/cn';
 import { LESSON_TEST_PARTS } from '../../../utils/lesson/lessonTestPlan';
 
-/** Long enough to read the title and the part's one rule. */
+/** Long enough to read the title and see the rocket fly. */
 const SHOW_MS = 1600;
-/** Never held longer than this for the audio download; "Getting audio ready" takes over after. */
-const MAX_HOLD_MS = 5000;
 const SETTLE = [0.16, 1, 0.3, 1] as const;
 const LAUNCH = [0.55, 0, 0.75, 0.2] as const;
 
@@ -34,22 +32,51 @@ const title: Variants = {
 const frame: Variants = { hidden: {}, shown: {}, gone: { transition: { when: 'afterChildren' } } };
 const still: Variants = { hidden: { opacity: 0 }, shown: { opacity: 1 }, gone: { opacity: 0, transition: { duration: 0 } } };
 
+/** The test's recordings downloading: the intro stays (the rocket keeps flying) until they're ready. */
+export interface PartIntroLoading {
+  progress: AudioPreloadProgress | null;
+  error: boolean;
+  onRetry: () => void;
+  onBack: () => void;
+}
+
 interface PartIntroProps {
   part: LessonTestPart;
   lessonId: number;
-  /** Still getting the part ready (the listening audio downloads): stay a little longer. */
-  holding: boolean;
+  /** Set while the audio downloads: the intro is the loading screen, and a tap can't skip it. */
+  loading: PartIntroLoading | null;
   /** Starts the part; called again by a tap, Space or Enter (each call is the same "start"). */
   onDone: () => void;
 }
 
+/** Shown once the intro has had its time and the audio still isn't ready: a bar, or Try again. */
+function AudioWait({ loading }: { loading: PartIntroLoading }) {
+  if (loading.error) {
+    return (
+      <div className="mt-8 flex w-full max-w-xs flex-col items-center gap-2" onClick={(event) => event.stopPropagation()}>
+        <p className="mb-2 text-lg font-black text-ui-ink-strong">Audio couldn’t load</p>
+        <ActionButton size="lg" fullWidth onClick={loading.onRetry}>Try again</ActionButton>
+        <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" onClick={loading.onBack}>Back</ActionButton>
+      </div>
+    );
+  }
+  const { ready = 0, total = 0 } = loading.progress ?? {};
+  const percent = total ? Math.round((ready / total) * 100) : 0;
+  return (
+    <div role="progressbar" aria-label="Getting audio ready" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} className="mt-8 h-2.5 w-56 overflow-hidden rounded-full bg-brand-primary-track">
+      <div className="h-full rounded-full bg-brand-primary transition-[width] duration-300 ease-out" style={{ width: `${Math.max(percent, 4)}%` }} />
+    </div>
+  );
+}
+
 /**
- * Each part opens on the test's own canvas, under its header: the rocket flies in, "Lesson N test" pops,
- * the parts show with the current one lit, and its one rule. It holds while the part gets ready, then the
+ * Each part opens on the test's own canvas, under its header: the rocket flies in and keeps drifting, "Lesson N
+ * test" pops, and the part's name rises under it. While the recordings download it is also the loading screen
+ * (a bar, or Try again, once it has had its time); when they're ready, the
  * rocket blasts off the top right and the words lift away as the first question rises in (the parent's
  * AnimatePresence plays the exit). Only transforms and opacity move, so slow phones keep up.
  */
-export function PartIntro({ part, lessonId, holding, onDone }: PartIntroProps) {
+export function PartIntro({ part, lessonId, loading, onDone }: PartIntroProps) {
   const reduceMotion = useReducedMotion();
   const done = useRef(onDone);
   done.current = onDone;
@@ -57,7 +84,6 @@ export function PartIntro({ part, lessonId, holding, onDone }: PartIntroProps) {
 
   useEffect(() => {
     const shown = window.setTimeout(() => setShownLong(true), SHOW_MS);
-    const maxHold = window.setTimeout(() => done.current(), MAX_HOLD_MS);
     const onKey = (event: KeyboardEvent) => {
       if ((event.key !== ' ' && event.key !== 'Enter') || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
       event.preventDefault();
@@ -66,15 +92,13 @@ export function PartIntro({ part, lessonId, holding, onDone }: PartIntroProps) {
     window.addEventListener('keydown', onKey);
     return () => {
       window.clearTimeout(shown);
-      window.clearTimeout(maxHold);
       window.removeEventListener('keydown', onKey);
     };
   }, []);
   useEffect(() => {
-    if (shownLong && !holding) done.current();
-  }, [shownLong, holding]);
+    if (shownLong && !loading) done.current();
+  }, [shownLong, loading]);
 
-  const current = LESSON_TEST_PARTS.findIndex((entry) => entry.part === part);
   const pick = (variants: Variants) => (reduceMotion ? still : variants);
   return (
     <motion.div
@@ -87,25 +111,28 @@ export function PartIntro({ part, lessonId, holding, onDone }: PartIntroProps) {
       className="absolute inset-0 z-10 flex cursor-pointer select-none flex-col items-center justify-center overflow-hidden px-6 pb-24 text-center"
     >
       <motion.div aria-hidden variants={pick(rocket)} className="mb-2 size-36 will-change-transform md:size-44">
-        <LottiePlayer loadAnimationData={loadRocket} loop autoplay />
+        {/* The drift is a CSS animation (rw-rocket-drift), so it runs off the main thread. */}
+        <div className="rw-rocket-drift size-full">
+          <LottiePlayer loadAnimationData={loadRocket} loop autoplay />
+        </div>
       </motion.div>
       <motion.h1 variants={pick(title)} className="text-4xl font-black leading-tight text-ui-ink-strong md:text-6xl">
         Lesson {lessonId} test
       </motion.h1>
-      <motion.p variants={pick(rise(0.36))} className="mt-5 flex items-center gap-3 text-xl font-black md:gap-4 md:text-2xl">
-        {LESSON_TEST_PARTS.map((entry, index) => (
-          <Fragment key={entry.part}>
-            {index > 0 && <span aria-hidden className="text-ui-border">·</span>}
-            <span className={cn('inline-flex items-center gap-1.5', index === current ? 'text-ui-ink-strong' : 'text-ui-muted')}>
-              {index < current && <AppIcon name="check" size={20} className="text-brand-primary-text" />}
-              {entry.label}
-            </span>
-          </Fragment>
-        ))}
-      </motion.p>
-      <motion.p variants={pick(rise(0.46))} className="mt-3 text-base font-bold text-ui-muted-strong md:text-lg">
-        {LESSON_TEST_PARTS[current]?.rule}
-      </motion.p>
+      <motion.div variants={pick(rise(0.36))} className="relative mt-3">
+        <p className="text-xl font-black text-ui-muted-strong md:text-2xl">{LESSON_TEST_PARTS.find((entry) => entry.part === part)?.label}</p>
+        {/* Hangs below the part's name, so the title and rocket never move when it appears. */}
+        {loading && shownLong && (
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="absolute left-1/2 top-full flex w-80 -translate-x-1/2 justify-center"
+          >
+            <AudioWait loading={loading} />
+          </motion.div>
+        )}
+      </motion.div>
     </motion.div>
   );
 }

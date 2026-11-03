@@ -29,7 +29,7 @@ export function AudioBlocks({ progress, error }: { progress: AudioProgress | nul
   );
 }
 
-/** "Getting audio ready" before audio-led practice (the quiz, the lesson test): blocks fill as recordings download; on failure, Retry. Also in the DEV gallery. */
+/** "Getting audio ready" before the quiz's audio-led rounds: blocks fill as recordings download; on failure, Retry. Also in the DEV gallery. */
 export function AudioPreparation({ progress, error, onRetry, onBack }: Props) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-8 px-6 py-12">
