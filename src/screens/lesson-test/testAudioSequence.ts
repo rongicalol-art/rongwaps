@@ -16,8 +16,13 @@ const TURN_GAP_MS = 450;
 /** After a dialogue: a beat of silence, the ding, then a pause before the question, so nothing blurs together. */
 const BEFORE_DING_MS = 2000;
 const AFTER_DING_MS = 800;
-const BEFORE_CHOICES_MS = 500;
-const BETWEEN_CHOICES_MS = 550;
+/**
+ * Reading the answers, at the pace of the official TOCFL Band A mock recordings (vol. 4 Part 1: about 0.9 s after the
+ * question, 0.7–1.0 s between a letter and its answer, 1.25–1.55 s before the next letter), so each one can sink in.
+ */
+const BEFORE_CHOICES_MS = 1000;
+const LETTER_GAP_MS = 800;
+const BETWEEN_CHOICES_MS = 1300;
 
 /**
  * What a listening question plays, in TOCFL order: the dialogue, a ding and a pause, the narrator's
@@ -39,7 +44,7 @@ export function listeningSteps(
     (order ?? choices.map((_, index) => index)).forEach((original, shown) => {
       if (shown > 0) steps.push({ pauseMs: BETWEEN_CHOICES_MS });
       steps.push({ audio: sounds.letters?.[LETTERS[shown]], text: LETTERS[shown], mark: shown });
-      steps.push({ pauseMs: 150, mark: shown });
+      steps.push({ pauseMs: LETTER_GAP_MS, mark: shown });
       const choice = choices[original];
       steps.push({ audio: choice.audio, text: choice[script] ?? choice.traditional, mark: shown });
     });

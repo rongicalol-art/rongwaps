@@ -4,11 +4,11 @@ import { playSentence } from '../../../services/audio/sentenceAudio';
 import type { AudioStep } from '../testAudioSequence';
 
 const wait = (ms: number) => new Promise((resolve) => { window.setTimeout(resolve, ms); });
-/** TOCFL Novice/Band A: every recording plays twice, with a short gap. */
+/** TOCFL Novice/Band A: every recording plays twice (the mocks leave ~5 s between; the app lets you answer meanwhile, so 3 s). */
 const EXAM_PLAYS = 2;
-const BETWEEN_PLAYS_MS = 1500;
-/** A pause this long (the beat before the ding) shows as waiting dots on the speaker key. */
-const WAIT_MS = 1000;
+const BETWEEN_PLAYS_MS = 3000;
+/** A pause this long (the 2 s beat before the ding, not the gaps between answers) shows as waiting dots on the speaker key. */
+const WAIT_MS = 1500;
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
 /** What the speaker key shows: a voice, the long pause, the ding, the question, or the letter being read. */
