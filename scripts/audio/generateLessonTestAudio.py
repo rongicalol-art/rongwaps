@@ -62,12 +62,18 @@ YATING_VOICES = {"F": "zh_en_female_1", "M": "zh_en_male_1", "N": "zh_en_female_
 # Yating speed: a higher value speaks slower (max 1.5). At the same setting 家豪 is ~10% slower than 雅婷 and 意晴 ~10%
 # faster (output/checks/yating_calibrate.py), so each role has its own setting. Book 1 adds a 400 ms pause at every
 # comma. The textbook's own pace (output/checks/speech_rate.py): Book 1 L1–8 ≈ 2.0 characters a second, L9–16 ≈ 2.5,
-# Book 2 ≈ 3.2–3.5; these land a little faster, closer to TOCFL's natural speech. {(book, last lesson): ({role: speed}, pauses)}
+# Book 2 ≈ 3.2–3.5. L9–16 (owner's pick) speaks like the official TOCFL Band A mock's dialogues, ≈ 3.9 characters a
+# second not counting pauses (the narrator a little calmer, under MAX_PACE); Book 2 keeps that speed without the extra
+# comma pauses.
+# {(book, last lesson): ({role: speed}, pauses)}
 YATING_PACE = {
     (1, 8): ({"F": 1.35, "M": 1.2, "N": 1.4}, True),
-    (1, 16): ({"F": 1.25, "M": 1.1, "N": 1.3}, True),
-    (2, 16): ({"F": 1.1, "M": 1.0, "N": 1.1}, False),  # Owner OK'd 1.0 for Book 2; evened out the same way (check by ear).
+    (1, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, True),
+    (2, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, False),  # Not heard yet: check by ear when Book 2 is voiced.
 }
+# Yating pitch per role (1.0 = the voice's own). 家豪 is raised to ≈ 141 Hz, near the TOCFL mock's man (≈ 145 Hz;
+# his own ≈ 118 Hz sounded heavy). Pitch does not change his speed.
+YATING_PITCH = {"F": 1.0, "M": 1.3, "N": 1.0}
 # Retakes change the speed only a little, so a retaken line never sounds slower or faster than its neighbours.
 YATING_SPEED_STEPS = (0.0, -0.05, 0.05)
 YATING_TAKES = [(take, "y") for take in range(len(YATING_SPEED_STEPS))]
@@ -82,8 +88,9 @@ def yating_pace(book, lesson, speaker):
 
 
 def yating_label(speaker, speed, pauses):
-    """The receipt's voice name: Yating model, speed and pause flag (e.g. zh_en_female_1@1.2p)."""
-    return f"{YATING_VOICES[speaker]}@{speed}{'p' if pauses else ''}"
+    """The receipt's voice name: Yating model, speed, pause flag and any pitch (e.g. zh_en_male_1@1.2p-pitch1.3)."""
+    pitch = YATING_PITCH[speaker]
+    return f"{YATING_VOICES[speaker]}@{speed}{'p' if pauses else ''}" + (f"-pitch{pitch}" if pitch != 1.0 else "")
 
 
 def spoken_units(lesson):
@@ -153,27 +160,29 @@ def synthesize(model, text, voice, instruct, seed, lang, mx, np):
 
 
 def yating_request(target, take=0):
-    """The Yating call for a target's take: its model, speed (nudged per retake) and comma pauses as SSML."""
+    """The Yating call for a target's take: text (comma pauses as SSML), model, speed (nudged per retake), SSML flag
+    and pitch."""
     speed = round(min(1.5, max(0.5, target["speed"] + YATING_SPEED_STEPS[take])), 2)
-    text = target["text"]
+    text, pitch = target["text"], target["pitch"]
     if target["pauses"] and "，" in text:
-        return "<speak>" + text.replace("，", '，<break time="400ms"/>') + "</speak>", target["model"], speed, True
-    return text, target["model"], speed, False
+        return "<speak>" + text.replace("，", '，<break time="400ms"/>') + "</speak>", target["model"], speed, True, pitch
+    return text, target["model"], speed, False, pitch
 
 
 def yating_model(target, take):
     """The manifest's model field for a Yating take: model and the speed actually sent."""
     if take >= len(YATING_SPEED_STEPS):
         return None
-    return f"yating-tts-v2/{target['model']}/speed-{yating_request(target, take)[2]}"
+    _, model, speed, _, pitch = yating_request(target, take)
+    return f"yating-tts-v2/{model}/speed-{speed}" + (f"/pitch-{pitch}" if pitch != 1.0 else "")
 
 
 def synthesize_yating(target, take, np, sf):
     """One Yating take (cached by request), trimmed and padded like the Qwen takes."""
     import io
     from yatingTts import synthesize as yating
-    text, model, speed, ssml = yating_request(target, take)
-    audio, rate = sf.read(io.BytesIO(yating(text, model, speed=speed, ssml=ssml)), dtype="float32")
+    text, model, speed, ssml, pitch = yating_request(target, take)
+    audio, rate = sf.read(io.BytesIO(yating(text, model, speed=speed, pitch=pitch, ssml=ssml)), dtype="float32")
     audio = trim_to_active(np.asarray(audio, dtype=np.float32).reshape(-1), np)
     pad = np.zeros(round(rate * TRIM_PADDING), dtype=np.float32)
     return np.concatenate([pad, audio, pad]), rate
@@ -258,7 +267,8 @@ def main():
                 voice = yating_label(speaker, speed, pauses)
                 targets[clip_key(voice, text)] = {"key": clip_key(voice, text), "text": text, "voice": voice,
                                                   "speaker": speaker, "instruct": "", "lang": LANG_CODE, "engine": "yating",
-                                                  "model": YATING_VOICES[speaker], "speed": speed, "pauses": pauses}
+                                                  "model": YATING_VOICES[speaker], "speed": speed, "pauses": pauses,
+                                                  "pitch": YATING_PITCH[speaker]}
                 continue
             voices = [VOICES.get(speaker)] if speaker != "M" else [MALE_VOICES[args.male]] + (
                 [v for k, v in MALE_VOICES.items() if k != args.male] if args.both_male else [])
@@ -312,8 +322,8 @@ def main():
             from concurrent.futures import ThreadPoolExecutor
             from yatingTts import synthesize as yating
             def first_take(target):
-                text, model, speed, ssml = yating_request(target)
-                return yating(text, model, speed=speed, ssml=ssml)
+                text, model, speed, ssml, pitch = yating_request(target)
+                return yating(text, model, speed=speed, pitch=pitch, ssml=ssml)
 
             with ThreadPoolExecutor(3) as pool:
                 list(pool.map(first_take, api))
