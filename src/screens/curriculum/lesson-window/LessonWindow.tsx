@@ -12,7 +12,7 @@ import { formatPartSelection, getLessonSelectionKey, normalizePartSelection } fr
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
 import { PartTabs } from './PartTabs';
-import { LessonTestParts, LessonTestTitle } from './LessonTestSummary';
+import { LessonTestTitle } from './LessonTestSummary';
 import { useLessonTestData } from '../../../hooks/useLessonTestData';
 import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
@@ -295,7 +295,7 @@ function LessonBody({
   };
 
   const best = testRecord ? { correct: testRecord.best, total: testRecord.total } : null;
-  const modeButtons = isTest ? <LessonTestParts large={isDesktop} /> : (
+  const modeButtons = isTest ? null : (
     <ModeButtons part={activePart} selected={mode} large={isDesktop} onSelect={(next) => onModeChange(activePart.id, next)} />
   );
   const partTabs = (className: string) => (

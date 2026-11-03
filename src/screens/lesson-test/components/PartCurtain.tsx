@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { AppIcon } from '../../../lib/widgets';
 import type { LessonTestPart } from '../../../types/lessonTest';
@@ -64,25 +64,17 @@ export function PartCurtain({ part, lessonId, holding, onDone }: PartCurtainProp
       className="absolute inset-0 z-50 flex cursor-pointer select-none flex-col items-center justify-center gap-7 bg-brand-primary px-6 text-center text-brand-on-primary will-change-transform md:gap-8"
     >
       <h1 className="text-4xl font-black leading-tight md:text-6xl">Lesson {lessonId} test</h1>
-      <ol className="flex gap-6 md:gap-9">
-        {LESSON_TEST_PARTS.map((entry, index) => {
-          const lit = index === current;
-          return (
-            <li key={entry.part} className={cn('flex items-center gap-2.5 text-xl font-black md:text-2xl', !lit && 'opacity-60')}>
-              <span
-                aria-hidden
-                className={cn(
-                  'flex size-9 items-center justify-center rounded-xs border-[3px] text-base tabular-nums md:size-11 md:text-lg',
-                  lit ? 'border-brand-on-primary bg-brand-on-primary text-brand-primary' : 'border-current',
-                )}
-              >
-                {index < current ? <AppIcon name="check" size={20} /> : index + 1}
-              </span>
+      <p className="flex items-center gap-3 text-xl font-black md:gap-4 md:text-2xl">
+        {LESSON_TEST_PARTS.map((entry, index) => (
+          <Fragment key={entry.part}>
+            {index > 0 && <span aria-hidden className="opacity-40">·</span>}
+            <span className={cn('inline-flex items-center gap-1.5', index !== current && 'opacity-50')}>
+              {index < current && <AppIcon name="check" size={20} />}
               {entry.label}
-            </li>
-          );
-        })}
-      </ol>
+            </span>
+          </Fragment>
+        ))}
+      </p>
       <p className="text-base font-extrabold opacity-80 md:text-lg">{LESSON_TEST_PARTS[current]?.rule}</p>
     </motion.div>
   );
