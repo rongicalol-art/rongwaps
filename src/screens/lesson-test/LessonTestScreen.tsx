@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { FeedbackBottomBar } from '../../features/practice';
 import { AudioPreparation, ScreenHeader } from '../../lib/widgets';
 import { useReviewTone } from '../../hooks/useReviewTone';
@@ -9,7 +9,7 @@ import { lessonItemIndex, type LessonTestScreen as TestScreen } from '../../util
 import { AnswerDetail } from './components/AnswerDetail';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
-import { SectionIntro, startLabel } from './components/SectionIntro';
+import { PartIntro } from './components/PartIntro';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
@@ -139,11 +139,12 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       {/* One header for the part intros and the questions, so the progress bar never rebuilds (and refills) between them. */}
       <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
-        {downloading ? (
+        {/* The part intro covers the download; "Getting audio ready" shows only if it outlasts the intro. */}
+        {intro ? null : downloading ? (
           (download.slow || download.error) && (
             <AudioPreparation progress={download.progress} error={download.error} onRetry={download.retry} onBack={onClose} />
           )
-        ) : intro ? <SectionIntro key={screenKey} part={screen.part} lessonId={lesson.lessonId} script={script} /> : (
+        ) : (
         /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it. */
         <motion.div
           key={screenKey}
@@ -168,9 +169,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
         </motion.div>
         )}
       </div>
-      {downloading ? null : intro ? (
-        <TestDock key={screenKey} label={startLabel(screen.part)} onPress={() => run.setStage('question')} riseKey={screen.part} />
-      ) : isFix ? (
+      {downloading || intro ? null : isFix ? (
         <FeedbackBottomBar
           status={run.checked ? (correct ? 'correct' : 'wrong') : 'idle'}
           detail={run.checked ? <AnswerDetail item={item} questions={fixQuestions} script={script} /> : undefined}
@@ -183,6 +182,18 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       ) : ready && (
         <TestDock key={screenKey} label={last ? 'Finish' : 'Next'} onPress={run.next} riseKey={screenKey} />
       )}
+      {/* Each part opens with its intro (the rocket flies through); it leaves as the part's first question rises in. */}
+      <AnimatePresence>
+        {intro && (
+          <PartIntro
+            key={screen.part}
+            part={screen.part}
+            lessonId={lesson.lessonId}
+            holding={downloading && !download.error}
+            onDone={() => run.setStage('question')}
+          />
+        )}
+      </AnimatePresence>
     </TestWords>
   );
 }

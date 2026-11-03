@@ -164,3 +164,9 @@ export function scoreLessonTest(lesson: LessonTestLesson, plan: LessonTestPlan, 
 
 /** TOCFL lesson tests pass at 80%. */
 export const LESSON_TEST_PASS = 0.8;
+
+/** The test's two parts in order, with the one rule each part opens with. */
+export const LESSON_TEST_PARTS: ReadonlyArray<{ part: LessonTestPart; label: string; rule: string }> = [
+  { part: 'listening', label: 'Listening', rule: 'Each recording plays twice' },
+  { part: 'reading', label: 'Reading', rule: 'Answers show at the end' },
+];
