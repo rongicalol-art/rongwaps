@@ -1,4 +1,5 @@
 import type { LessonTestItem, LessonTestQuestion, TestChoice, TestText } from '../../../types/lessonTest';
+import { ChineseText } from './ChineseText';
 import type { Script } from './ChoiceList';
 
 type Shown = Partial<TestText> & Pick<TestChoice, 'traditional'>;
@@ -38,14 +39,14 @@ export function AnswerDetail({ item, questions, script }: { item: LessonTestItem
         return compact ? (
           <div key={question.id} className="flex flex-col">
             <p className="leading-snug">
-              <span className="font-chinese text-lg text-ui-ink-strong">{zh}</span>
+              <span className="font-chinese text-lg text-ui-ink-strong"><ChineseText text={zh} /></span>
               <span className="ml-2 text-base font-bold text-ui-muted-strong">{[shown?.pinyin, shown?.english].filter(Boolean).join(' · ')}</span>
             </p>
             <p className="text-sm font-extrabold leading-snug text-ui-ink-strong">{question.why}</p>
           </div>
         ) : (
           <div key={question.id} className="flex flex-col gap-0.5">
-            {zh && <span className="whitespace-pre-line font-chinese text-xl leading-snug text-ui-ink-strong">{zh}</span>}
+            {zh && <span className="whitespace-pre-line text-pretty font-chinese text-xl leading-snug text-ui-ink-strong"><ChineseText text={zh} /></span>}
             {shown?.pinyin && <span className="text-base font-bold leading-snug text-ui-muted-strong">{shown.pinyin}</span>}
             {shown?.english && <span className="text-base font-bold leading-snug text-ui-muted-strong">{shown.english}</span>}
             <span className="mt-1 text-base font-extrabold leading-snug text-ui-ink-strong">{question.why}</span>

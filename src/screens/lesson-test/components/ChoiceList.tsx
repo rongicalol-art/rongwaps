@@ -3,6 +3,7 @@ import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import { SpeakerIcon } from '../../../lib/widgets';
 import type { LessonTestQuestion, TestChoice } from '../../../types/lessonTest';
 import { cn } from '../../../utils/cn';
+import { ChineseText } from './ChineseText';
 
 export type Script = 'traditional' | 'simplified';
 
@@ -62,7 +63,7 @@ export function ChoiceList({ question, order, selected, checked, spoken, mark, s
           >
             {reveal ? (
               <span className="flex items-center gap-3">
-                <span className="flex-1 font-chinese text-xl font-normal leading-snug text-ui-ink-strong">{choiceText(choice, script)}</span>
+                <span className="flex-1 text-pretty font-chinese text-xl font-normal leading-snug text-ui-ink-strong"><ChineseText text={choiceText(choice, script)} /></span>
                 {say && <SpeakerIcon status={mark === shown ? 'playing' : null} size={20} className="shrink-0 text-ui-muted" />}
               </span>
             ) : (
