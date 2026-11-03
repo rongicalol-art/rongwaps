@@ -8,29 +8,26 @@ import { LESSON_TEST_PARTS } from '../../../utils/lesson/lessonTestPlan';
 /** Long enough to read the title and see the rocket fly. */
 const SHOW_MS = 1600;
 const SETTLE = [0.16, 1, 0.3, 1] as const;
-const LAUNCH = [0.55, 0, 0.75, 0.2] as const;
 
 const loadRocket = () => import('../../../assets/animations/rocket.json').then((m) => m.default);
 
-// The rocket's nose points up and right, so it flies in from the lower left and leaves off the upper right.
+// The rocket's nose points up and right, so it flies in from the lower left.
 const rocket: Variants = {
   hidden: { x: '-38vw', y: '32vh', scale: 0.55, opacity: 0 },
   shown: { x: 0, y: 0, scale: 1, opacity: 1, transition: { type: 'spring', stiffness: 110, damping: 15, mass: 0.9, opacity: { duration: 0.15 } } },
-  gone: { x: '48vw', y: '-62vh', scale: 0.7, transition: { duration: 0.5, ease: LAUNCH } },
 };
 const rise = (delay: number): Variants => ({
   hidden: { opacity: 0, y: 14 },
   shown: { opacity: 1, y: 0, transition: { delay, duration: 0.45, ease: SETTLE } },
-  gone: { opacity: 0, y: -18, transition: { delay: 0.06, duration: 0.22, ease: 'easeIn' } },
 });
 const title: Variants = {
   hidden: { opacity: 0, scale: 0.86 },
   shown: { opacity: 1, scale: 1, transition: { delay: 0.22, type: 'spring', stiffness: 320, damping: 20 } },
-  gone: { opacity: 0, y: -18, transition: { duration: 0.22, ease: 'easeIn' } },
 };
-// The whole intro stays until the rocket has left.
-const frame: Variants = { hidden: {}, shown: {}, gone: { transition: { when: 'afterChildren' } } };
-const still: Variants = { hidden: { opacity: 0 }, shown: { opacity: 1 }, gone: { opacity: 0, transition: { duration: 0 } } };
+// The intro leaves as one plain fade, everything in place.
+const frame: Variants = { hidden: {}, shown: {}, gone: { opacity: 0, transition: { duration: 0.25, ease: 'easeOut' } } };
+const stillFrame: Variants = { ...frame, gone: { opacity: 0, transition: { duration: 0 } } };
+const still: Variants = { hidden: { opacity: 0 }, shown: { opacity: 1 } };
 
 /** The test's recordings downloading: the intro stays (the rocket keeps flying) until they're ready. */
 export interface PartIntroLoading {
@@ -72,9 +69,8 @@ function AudioWait({ loading }: { loading: PartIntroLoading }) {
 /**
  * Each part opens on the test's own canvas, under its header: the rocket flies in and keeps drifting, "Lesson N
  * test" pops, and the part's name rises under it. While the recordings download it is also the loading screen
- * (a bar, or Try again, once it has had its time); when they're ready, the
- * rocket blasts off the top right and the words lift away as the first question rises in (the parent's
- * AnimatePresence plays the exit). Only transforms and opacity move, so slow phones keep up.
+ * (a bar, or Try again, once it has had its time); when they're ready, the whole intro fades out in place as
+ * the first question rises in (the parent's AnimatePresence plays the exit). Only transforms and opacity move, so slow phones keep up.
  */
 export function PartIntro({ part, lessonId, loading, onDone }: PartIntroProps) {
   const reduceMotion = useReducedMotion();
@@ -104,7 +100,7 @@ export function PartIntro({ part, lessonId, loading, onDone }: PartIntroProps) {
     <motion.div
       role="status"
       onClick={() => done.current()}
-      variants={frame}
+      variants={reduceMotion ? stillFrame : frame}
       initial="hidden"
       animate="shown"
       exit="gone"
