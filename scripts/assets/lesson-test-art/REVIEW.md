@@ -22,7 +22,11 @@ Judge only what is drawn; never edit files. Be strict: a learner must answer fro
 5. **Style drift** from the benchmark: anime styling (outlined hair strands, big glossy eyes, detailed lips),
    painterly or soft shading, gradients, 3D, photorealism, or children's clip-art (a lone icon on a blank
    background, mascot animals with tongues out, primary-colour kids' book look). The benchmark is flat, saturated
-   (cobalt, coral, yellow, teal), geometric, with sparse hard-edged shadow shapes and real settings.
+   (cobalt, coral, yellow, teal), geometric, with sparse hard-edged shadow shapes and real settings. Test it
+   honestly: picture this image on a phone right after the benchmark in the same app. If it would look like it came
+   from a different artist (a single object floating on a plain coloured backdrop or one flat wall-and-table-edge
+   strip, chibi kids with huge heads, generic faces in another drawing style), it fails; this was missed before, so
+   don't wave it through because the content is right.
 6. **People**: book characters must match their portraits (`src/assets/images/characters/portraits/`); adults,
    not children (unless the brief says children); faces in the benchmark's simple style.
 
