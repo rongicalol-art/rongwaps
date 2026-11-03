@@ -182,3 +182,14 @@ test('single-word typos are a fallback, never padding for a strong match', () =>
   assert.doesNotThrow(() => searchInIndex(entries, '['));
   assert.deepEqual(searchInIndex(entries, 'teacher', 0), []);
 });
+
+test('one- and two-letter queries match whole glosses only', () => {
+  const entries: CompactSearchEntry[] = [
+    [1, '丙', '', 'bǐng', 'bing', ['C (programming language)'], 50],
+    [2, '貓', '', 'māo', 'mao', ['cat; cocoa'], 50],
+    [3, '去', '', 'qù', 'qu', ['to go; ago'], 50],
+    [4, '過去', '', 'guò qù', 'guoqu', ['ago'], 50],
+  ];
+  assert.deepEqual(searchInIndex(entries, 'c').map((word) => word.id), [1]);
+  assert.deepEqual(searchInIndex(entries, 'go').map((word) => word.id), [3]);
+});
