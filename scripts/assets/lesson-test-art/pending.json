@@ -1,19 +1,4 @@
 {
- "b1l09-books-1": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "The boy has a tall stack of books; the girl has one book"
- },
- "b1l09-books-2": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "The girl has a tall stack of books; the boy has one book"
- },
- "b1l09-books-3": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "The boy and the girl have one book each"
- },
  "b1l09-brush-1": {
   "lesson": "b1l09",
   "kind": "panel",
@@ -29,26 +14,6 @@
   "kind": "panel",
   "description": "In the cup: the brush stands in the cup"
  },
- "b1l09-calligraphy": {
-  "lesson": "b1l09",
-  "kind": "scene",
-  "description": "A calligraphy class in a classroom with a clean blackboard: at the front the teacher writes with a big writing brush to show the class, while a boy and a girl sit at their desks with brushes, ink and white paper and watch her before they practice."
- },
- "b1l09-doing-1": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "Calligraphy: she writes on white paper with a writing brush"
- },
- "b1l09-doing-2": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "Homework: she writes in a notebook with a pencil"
- },
- "b1l09-doing-3": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "Reading: she reads a book, with no pencil or brush in her hand"
- },
  "b1l09-exchange": {
   "lesson": "b1l09",
   "kind": "realia",
@@ -59,80 +24,15 @@
   "kind": "realia",
   "description": "A notice taped to a classroom door"
  },
- "b1l09-teacher-1": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "Across: the teacher sits across the desk from the boy, facing him, watching him write in his notebook"
- },
- "b1l09-teacher-2": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "Beside: the teacher sits right next to the boy, side by side, watching him write in his notebook"
- },
- "b1l09-teacher-3": {
-  "lesson": "b1l09",
-  "kind": "panel",
-  "description": "Behind: the teacher stands squarely behind the boy's chair, both hands on the chair back, looking down over his head, watching him write"
- },
  "b1l10-hours": {
   "lesson": "b1l10",
   "kind": "realia",
   "description": "A sign by a hospital door with its opening hours"
  },
- "b1l10-hurt-1": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Head: the young man presses both hands flat on his forehead; both ears are uncovered"
- },
- "b1l10-hurt-2": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Belly: the young man holds his belly with both hands"
- },
- "b1l10-hurt-3": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Ear: the young man cups one hand over one ear; his other hand rests on his knee"
- },
- "b1l10-masks-1": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Only the boy in a mask: two students with school backpacks; the boy wears a face mask, the girl does not"
- },
- "b1l10-masks-2": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Only the girl in a mask: two students with school backpacks; the girl wears a face mask, the boy does not"
- },
- "b1l10-masks-3": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Both in masks: two students with school backpacks; the boy and the girl both wear face masks"
- },
  "b1l10-notice": {
   "lesson": "b1l10",
   "kind": "realia",
   "description": "A notice on a classroom notice board about colds"
- },
- "b1l10-waiting-room": {
-  "lesson": "b1l10",
-  "kind": "scene",
-  "description": "A clinic waiting room: a worried mother holds her small son, who holds his belly; a young man in a face mask and glasses stands away from the desk, bent a little forward, coughing (small cough lines at his mask) with one hand flat on his chest and the other arm at his side, sleeves pushed up, both bare wrists in plain view; a doctor sits at the desk with a glass of water on it. Only the young man wears a mask: the mother, the boy and the doctor wear none. Nobody wears a watch."
- },
- "b1l10-wash-1": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Washing his hands: the little boy rubs soapy hands under the tap; his face and hair are dry"
- },
- "b1l10-wash-2": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Washing his face: the little boy splashes water on his face; his hair is dry"
- },
- "b1l10-wash-3": {
-  "lesson": "b1l10",
-  "kind": "panel",
-  "description": "Washing his hair: the little boy has shampoo foam in his hair; his face is dry"
  },
  "b1l10-with-1": {
   "lesson": "b1l10",
