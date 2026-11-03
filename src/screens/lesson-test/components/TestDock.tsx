@@ -20,8 +20,9 @@ export function TestDock({ label, onPress, secondary, riseKey, className }: Test
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== ' ' || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
-      // A focused button presses itself.
-      if (event.target instanceof HTMLButtonElement || event.target instanceof HTMLInputElement) return;
+      // Space always means this action, even with a just-tapped choice focused (it would press the choice again);
+      // only typing keeps its space. preventDefault also stops the focused button's own Space click.
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
       event.preventDefault();
       onPress();
     };
