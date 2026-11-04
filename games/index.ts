@@ -2,6 +2,7 @@ import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialImage, socia
 import { verifyAccessToken } from '../shared/accessToken';
 import { newSeed } from './room';
 import { SOCIAL_FRAME_BYTES } from '../shared/lobby';
+import { NAME_NOT_ALLOWED, isNameAllowed } from '../shared/nameFilter';
 import { TICKET_LIMIT_ERROR } from './lobby';
 export { GameRoom } from './room';
 export { Lobby } from './lobby';
@@ -34,6 +35,7 @@ const JOIN_ERRORS = new Set([
   'This room is full.',
   'Pick at least one lesson part.',
   TICKET_LIMIT_ERROR,
+  NAME_NOT_ALLOWED,
 ]);
 const LIMIT_ERRORS = new Set([ROOM_LIMIT_ERROR, TICKET_LIMIT_ERROR]);
 
@@ -67,6 +69,7 @@ export default {
       const color = socialColor(data.color);
       const image = socialImage(data.image, env.SUPABASE_URL);
       if (!name) return reply({ error: 'Add a display name in your profile first.' }, 400);
+      if (!isNameAllowed(name)) return reply({ error: NAME_NOT_ALLOWED }, 400);
       if (url.pathname === '/lobby') return reply({ userId, ...await env.LOBBY.getByName('main').issue(userId, name, color, expiresAt) });
       if (url.pathname === '/rooms') {
         const selection = parseSelection(data.selection);

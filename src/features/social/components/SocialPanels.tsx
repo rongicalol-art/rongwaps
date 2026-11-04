@@ -10,6 +10,7 @@ import { defaultSelection, describeSelection } from '../socialText';
 import { ChatThread } from './ChatThread';
 import { EmptyNote, MuteButton, PanelTabs, PanelTitle, PersonRow, lessonHeading } from './SocialBits';
 import { VisitProfile } from './VisitProfile';
+import { ProfileSafetyMenu } from './SafetySheets';
 
 /** The lesson the learner is in, for presence lists and a new room's default words. */
 function useCurrentLesson() {
@@ -130,7 +131,10 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
             </div>
             <MuteButton />
           </div>
-        : selected ? <IconActionButton size="md" label="Back to classmates" icon={<AppIcon name="back" size={20} />} onClick={() => setProfile(null)} /> : `Online${onlineTotal || classmates.length ? ` ${onlineTotal || classmates.length}` : ''}`}
+        : selected ? <div className="flex flex-1 items-center justify-between gap-2">
+            <IconActionButton size="md" label="Back to classmates" icon={<AppIcon name="back" size={20} />} onClick={() => setProfile(null)} />
+            <ProfileSafetyMenu person={selected} />
+          </div> : `Online${onlineTotal || classmates.length ? ` ${onlineTotal || classmates.length}` : ''}`}
       tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"
       className="top-auto h-[80dvh] max-h-[80dvh] rounded-t-3xl md:h-full md:max-h-full md:rounded-none"
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">

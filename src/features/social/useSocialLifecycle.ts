@@ -5,6 +5,7 @@ import { useProfileAvatar } from '../../hooks/useProfileAvatar';
 import { GLOBAL_CHAT } from '../../../shared/lobby';
 import { lobby, startLobby, stopLobby } from './lobbyController';
 import { presenceFor } from './presence';
+import { loadBlocks } from './safety';
 
 const HIDDEN_CLOSE_MS = 30_000;
 
@@ -33,6 +34,9 @@ export function useSocialLifecycle() {
     document.addEventListener('visibilitychange', sync);
     return () => { clearTimeout(timer); document.removeEventListener('visibilitychange', sync); stopLobby(); };
   }, [identity.name, identity.color, userId]);
+
+  // The block list loads once per account; the Lobby gets it on every connect.
+  useEffect(() => { if (userId) void loadBlocks(userId); }, [userId]);
 
   // Presence: only lesson and activity changes, never per card.
   const presence = useAppStore(useShallow((state) => {

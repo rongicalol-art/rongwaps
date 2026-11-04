@@ -4,3 +4,4 @@ export { PracticeFaces } from './components/PracticeFaces';
 export { RaceBar, useRaceFill } from './components/RaceRiders';
 export { useRaceQuiz, useRaceReady, useRaceReporter } from './useRaceQuiz';
 export { lessonKey } from '../../store/slices/socialSlice';
+export { BlockedPeople } from './components/BlockedPeople';

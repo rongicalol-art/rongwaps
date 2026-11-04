@@ -10,6 +10,7 @@ import { useSocialIdentity, useSocialLifecycle } from './useSocialLifecycle';
 import { Avatar, Drawer } from '../../lib/widgets';
 import { CHAT_TTL_MS } from '../../../shared/lobby';
 import { PartyChatThread } from './components/ChatThread';
+import { SafetySheet } from './components/SafetySheets';
 
 /**
  * Study together, mounted by the app shell after first idle (its own chunk). Owns the Lobby lifecycle and the
@@ -84,6 +85,7 @@ export default function SocialRoot({ setActiveActivity, startRaceQuiz }: { setAc
       {panel?.kind === 'challenge' && <ChallengePanel panel={panel} />}
       {panel?.kind === 'partyMention' && mentionTarget && <Drawer isOpen onClose={() => useAppStore.getState().setSocial({ socialPanel: null, socialMentionTarget: null })} title={<Drawer.Title>Party chat</Drawer.Title>} tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"><div className="flex items-end gap-2.5 py-4"><Avatar name={mentionTarget.message.n} color={mentionTarget.message.c} src={mentionTarget.message.i} size="md" /><div><p className="text-sm font-black text-ui-ink">{mentionTarget.message.n}</p><p className="rounded-control border-2 border-brand-primary bg-ui-surface px-3.5 py-2 font-chinese font-bold text-ui-ink-strong">{mentionTarget.message.t}</p></div></div></Drawer>}
       {panel?.kind === 'partyChat' && race && <Drawer isOpen onClose={() => useAppStore.getState().setSocial({ socialPanel: null })} title={<Drawer.Title>Party chat</Drawer.Title>} tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full" contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4"><PartyChatThread /></Drawer>}
+      <SafetySheet />
     </>
   );
 }

@@ -189,6 +189,18 @@ The first filters registrations; the second checks provider-owned identities on 
 
 A ban stops database requests at once and sign-in at the next token refresh (within an hour); the landing page then says "This account can't sign in". New public sign-ups past the cap are refused with `signups_full:` (the landing page says it is full for now); existing accounts keep access. A new public account sees a one-time age step before the app (`src/screens/auth/AgeCheck.tsx`): "I'm 18 or older" records it with `confirm_age()`; "I'm under 18" deletes the new account and returns to the landing page. Check with `supabase db query --linked --file supabase/tests/public_accounts.sql` (rolls back).
 
+### Reports, blocks and limits
+
+Learners report from a profile's ⋯ menu or under a chat line (a reason in one tap) and can block from the same places; a blocked pair stops seeing each other in Study together (online lists, faces, chat, mentions, cheers, invites, profile visits), and party chat hides the other person's lines. Unblock: Settings → Study together → Blocked people.
+
+| To | Run (Supabase SQL editor) |
+| --- | --- |
+| Read new reports | `select r.id, r.created_at, r.reason, r.place, r.message, r.reporter, r.target from private.user_reports r order by r.id desc limit 50;` |
+| Who an account is | `select email, raw_user_meta_data->>'full_name' as name from auth.users where id = '<user id>';` |
+| Ban the reported account | the Ban row under Public accounts above |
+
+Daily limits per account (UTC day): 300 chat lines per chat, 200 cheers, 60 party invites, 20 reports. Display names with words on the list in `shared/nameFilter.ts` are refused by the games Worker and by the profile editor; extend the list there. A banned account's open Study together connection ends when its sign-in does (within an hour; tickets last at most 15 minutes).
+
 `20261023120000_inactive_account_cleanup.sql` schedules the daily 12-month inactive-account deletion with `pg_cron` (see `docs/DATABASE_SCHEMA.md`). Check `select * from private.inactive_accounts();` after applying it; it must not list anyone who is still studying.
 
 Grant an owner exception only after the owner explicitly supplies the exact Google email; insert its lowercase value into `private.beta_owner_emails` through an administrative database connection. Removing that row immediately denies subsequent database requests; lesson content and the app's start-up check follow at the account's next token refresh (tokens last one hour). Neither client-editable `user_metadata` nor Google's account-picker hints authorize access.

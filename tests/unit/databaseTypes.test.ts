@@ -22,6 +22,7 @@ const MIGRATIONS_DIR = resolve(process.cwd(), 'supabase', 'migrations');
 /** Tables the migrations leave in `public` (post-drops). Keep in sync with the migrations. */
 const EXPECTED_TABLES = [
   'folder_members',
+  'user_blocks',
   'user_card_progress',
   'user_flashcards',
   'user_folders',
@@ -37,7 +38,9 @@ const EXPECTED_FUNCTIONS = [
   'join_folder',
   'set_folder_member_role',
   'remove_folder_member', 'list_folder_members',
+  'report_user',
   'append_review_events',
+  'block_user',
   'confirm_age',
   'delete_my_account',
   'enforce_user_flashcard_cap',

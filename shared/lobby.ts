@@ -22,12 +22,25 @@ export function chatText(value: unknown): string {
   return Array.from(clean).slice(0, CHAT_MAX).join('');
 }
 
-export interface ChatRate { times: number[]; text: string; at: number }
-/** Stored by account so reconnecting cannot reset the chat cooldown. */
+/** Per account per day (UTC): chat lines (lesson, global and party chat each), cheers, party invites. */
+export const DAILY_LIMITS = { chat: 300, cheer: 200, invite: 60 } as const;
+export const DAILY_LIMIT_ERROR = 'You\u2019ve reached today\u2019s limit. Try again tomorrow.';
+/** Most blocked accounts (the database caps the list at the same size); 100 IDs fit in one 4 KB frame. */
+export const BLOCK_MAX = 100;
+export const utcDay = (now: number) => Math.floor(now / 86_400_000);
+
+/** `d`/`n`: the UTC day and lines sent that day (absent in rows saved before the daily limit). */
+export interface ChatRate { times: number[]; text: string; at: number; d?: number; n?: number }
+/** Stored by account so reconnecting cannot reset the chat cooldown or the daily count. */
+/** True when this account has used today's chat lines (the cooldown is the other reason a line is refused). */
+export const chatDailyFull = (previous: ChatRate | null, now: number) => previous?.d === utcDay(now) && (previous.n ?? 0) >= DAILY_LIMITS.chat;
 export function nextChatRate(previous: ChatRate | null, text: string, now: number): ChatRate | null {
   const times = (previous?.times ?? []).filter(time => now - time < 10_000);
   if (times.length >= 5 || (previous && (now - previous.at < 1000 || (previous.text === text && now - previous.at < 30_000)))) return null;
-  return { times: [...times, now], text, at: now };
+  const day = utcDay(now);
+  const sent = previous?.d === day ? previous.n ?? 0 : 0;
+  if (sent >= DAILY_LIMITS.chat) return null;
+  return { times: [...times, now], text, at: now, d: day, n: sent + 1 };
 }
 
 export type PartyChatClientMessage = { type: 'chat'; text: string; mentions?: string[] } | { type: 'chat-report'; id: number };
@@ -78,7 +91,9 @@ export type LobbyClientMessage =
   | { t: 'mention-read'; key: string }
   | { t: 'mention-open'; key: string }
   | { t: 'card-ask'; u: string }
-  | { t: 'card'; to: string; v: ProfileCard | null };
+  | { t: 'card'; to: string; v: ProfileCard | null }
+  /** The sender's whole block list (account IDs); the Lobby hides both sides of each pair from each other. */
+  | { t: 'blocks'; v: string[] };
 
 export type LobbyServerMessage =
   | { t: 'error'; message: string }
@@ -137,5 +152,6 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   const accountId = (id: unknown): id is string => typeof id === 'string' && id.length > 0 && id.length <= 64;
   if (data.t === 'card-ask' && accountId(data.u)) return { t: 'card-ask', u: data.u };
   if (data.t === 'card' && accountId(data.to)) return { t: 'card', to: data.to, v: parseProfileCard(data.v) };
+  if (data.t === 'blocks' && Array.isArray(data.v) && data.v.length <= BLOCK_MAX) return { t: 'blocks', v: [...new Set(data.v.filter(accountId))] };
   throw new Error('Invalid message.');
 }

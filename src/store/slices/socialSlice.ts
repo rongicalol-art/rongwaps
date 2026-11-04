@@ -5,6 +5,10 @@
 import type { ChatMessage, LessonCount, Person, MentionNotice, ProfileCard } from '../../../shared/lobby';
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
 import type { SocialStatus } from '../../services/socialService';
+import type { BlockedPerson, ReportPlace } from '../../services/safetyService';
+
+/** The open report or block sheet; `report-done` offers to block after a report. */
+export interface SafetyPrompt { kind: 'report' | 'report-done' | 'block'; person: BlockedPerson; place: ReportPlace; message?: string }
 
 export type SocialPanel =
   | { kind: 'people'; tab: 'online' | 'chat'; chatScope?: 'global' | 'lesson'; chatLesson?: number; visit?: Person }
@@ -57,6 +61,9 @@ export interface SocialState {
   racePlaying: boolean;
   raceStatus: SocialStatus;
   racePending: boolean;
+  /** People this account blocked (from the database; null until loaded). The Lobby hides each pair from each other. */
+  socialBlocks: BlockedPerson[] | null;
+  socialSafety: SafetyPrompt | null;
   setSocial: (patch: Partial<Omit<SocialState, 'setSocial' | 'setShowOnline' | 'setShowProfile' | 'setSocialMuted'>>) => void;
 }
 
@@ -90,6 +97,8 @@ const LIVE_DEFAULTS = {
   racePlaying: false,
   raceStatus: 'off' as SocialStatus,
   racePending: false,
+  socialBlocks: null,
+  socialSafety: null,
 } satisfies Partial<SocialState>;
 
 export function createSocialSlice(set: SetState): SocialState {
