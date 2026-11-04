@@ -140,6 +140,12 @@ returns jsonb language plpgsql security invoker set search_path = '' as $$
 declare
   target uuid := (event ->> 'user_id')::uuid;
 begin
+  -- Its own message, so a blocked learner isn't told to use a school account.
+  if exists (select 1 from private.account_flags f where f.user_id = target and f.banned_at is not null) then
+    return jsonb_build_object('error', jsonb_build_object(
+      'http_code', 403, 'message', 'account_blocked: This account can''t sign in.'
+    ));
+  end if;
   if not private.school_beta_user_allowed(target) then
     return jsonb_build_object('error', jsonb_build_object(
       'http_code', 403, 'message', 'school_beta_only: Use your Shu-Te student Google account.'

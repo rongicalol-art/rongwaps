@@ -147,7 +147,7 @@ begin
   assert not private.school_beta_user_allowed('ac000000-0000-4000-8000-000000000002'), 'banned public account refused';
   assert private.school_beta_access_token_hook(
     jsonb_build_object('user_id', 'ac000000-0000-4000-8000-000000000002', 'claims', '{}'::jsonb)
-  ) ? 'error', 'banned account gets no token';
+  ) #>> '{error,message}' like 'account_blocked:%', 'banned account gets no token, with its own message';
 end;
 $$;
 reset role;
