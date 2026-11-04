@@ -47,7 +47,8 @@ async function initialize() {
     }
     worker = instance;
     await new Promise<void>((resolveReady, reject) => {
-      const deadline = setTimeout(() => { const error = new Error('Dictionary startup timed out'); if (worker === instance) closeDictionary(error); reject(error); }, 20_000);
+      // A small shared CPU can need well over 20 s to read the index; cancelling then restarts from zero and never finishes.
+      const deadline = setTimeout(() => { const error = new Error('Dictionary startup timed out'); if (worker === instance) closeDictionary(error); reject(error); }, 90_000);
       cancelStartup = error => { clearTimeout(deadline); reject(error); };
       instance.on('error', error => { clearTimeout(deadline); if (worker === instance) closeDictionary(error); reject(error); });
       instance.on('exit', code => { const error = new Error(`Dictionary worker exited (${code})`); clearTimeout(deadline); if (worker === instance) closeDictionary(error); reject(error); });
