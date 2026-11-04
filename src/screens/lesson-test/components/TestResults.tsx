@@ -12,11 +12,13 @@ const AT = { bird: 100, title: 480, tiles: 820, rest: 1150 };
 
 /** What to work on: one row per tested point, earlier lessons named. */
 function focusRows(score: LessonTestScore, lessonId: number) {
-  const rows = new Map<string, { zh: string; en: string; lesson: number }>();
+  const rows = new Map<string, { zh: string; en: string; from: string | null }>();
   for (const { question } of score.missed) {
-    if (!rows.has(question.focus.zh)) rows.set(question.focus.zh, { ...question.focus, lesson: question.lesson });
+    // Earlier lessons are named; a Lesson 1 test's review names the book before.
+    const from = question.book ? `Book ${question.book} · Lesson ${question.lesson}` : question.lesson !== lessonId ? `Lesson ${question.lesson}` : null;
+    if (!rows.has(question.focus.zh)) rows.set(question.focus.zh, { ...question.focus, from });
   }
-  return [...rows.values()].sort((a, b) => Number(a.lesson !== lessonId) - Number(b.lesson !== lessonId)).slice(0, 4);
+  return [...rows.values()].sort((a, b) => Number(Boolean(a.from)) - Number(Boolean(b.from))).slice(0, 4);
 }
 
 interface CelebrationProps {
@@ -155,7 +157,7 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onLater }
             <li key={row.zh} className="col-span-full grid grid-cols-subgrid items-baseline border-b-2 border-ui-divider px-1 py-2.5 last:border-b-0">
               <span className="min-w-28 font-chinese text-xl text-ui-ink-strong">{row.zh}</span>
               <span className="text-base font-bold text-ui-muted-strong">{row.en}</span>
-              {row.lesson !== lessonId && <span className="whitespace-nowrap text-sm font-extrabold text-ui-muted">Lesson {row.lesson}</span>}
+              {row.from && <span className="whitespace-nowrap text-sm font-extrabold text-ui-muted">{row.from}</span>}
             </li>
           ))}
         </ul>

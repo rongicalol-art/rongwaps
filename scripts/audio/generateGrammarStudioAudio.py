@@ -519,14 +519,15 @@ def voiced_pace(path, spoken):
 
 
 def ending_ratio(path):
-    """Loudness of a clip's last speech frame against its typical speech frame (cut-off speech stays loud)."""
+    """Loudness of a clip's ending against its typical speech frame: the quieter of the last two speech frames, so a
+    natural fade with a tiny uptick in its final frame passes while cut-off speech (loud to the end) still fails."""
     import numpy as np
     frames = speech_frames(path)
     speech = np.flatnonzero(frames > frames.max() * 0.05)
     if speech.size < 5:
         return 1.0
     typical = np.percentile(frames[speech[0]: speech[-1] + 1], 75)
-    return float(frames[speech[-1]] / typical)
+    return float(min(frames[speech[-1]], frames[speech[-2]]) / typical)
 
 
 def deliver(entry):

@@ -27,7 +27,7 @@ const WHO: Record<TestLine['speaker'], string> = { F: 'Woman', M: 'Man', N: 'Nar
 const KIND: Record<LessonTestItem['kind'], string> = {
   'hear-pick-picture': 'Listening: hear, then pick the picture',
   'picture-hear': 'Listening: look at the picture, hear three sentences, pick the one that matches it',
-  dialogue: 'Listening: a short dialogue, then a question',
+  dialogue: 'Listening: a dialogue or talk, then its question(s); the narrator reads each choice',
   'read-pick-picture': 'Reading: read the sentence, pick the picture',
   realia: 'Reading: look at the picture with writing in it, then answer',
   'scene-gap': 'Reading: look at the picture, fill the blank',
@@ -58,6 +58,8 @@ if (mode === 'learner') {
       if (questions.length === 0) continue;
       lines.push('');
       lines.push(`## ${item.id} — ${KIND[item.kind]}`);
+      if (item.kind === 'dialogue' && item.printed) lines.push('The choices are printed on screen while the recording plays, and the narrator reads them after each question. The recording plays once.');
+      if (item.kind === 'dialogue' && item.intro) lines.push(`Narrator: ${item.intro.traditional}`);
       if (item.kind === 'hear-pick-picture' || item.kind === 'dialogue') {
         lines.push('You hear:');
         item.lines.forEach((line) => lines.push(`   ${WHO[line.speaker]}: ${line.traditional}`));

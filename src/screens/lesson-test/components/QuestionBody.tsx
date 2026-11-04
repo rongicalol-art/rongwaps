@@ -8,6 +8,7 @@ import { listeningSteps } from '../testAudioSequence';
 import { testPicture } from '../testPictures';
 import { ChineseText } from './ChineseText';
 import { ChoiceList, type Script } from './ChoiceList';
+import { GroupQuestions } from './GroupQuestions';
 import { GapSentence } from './GapSentence';
 import { ParagraphBlanks } from './ParagraphBlanks';
 import { PictureChoices } from './PictureChoices';
@@ -48,17 +49,66 @@ function StimulusPicture({ name, alt, notice }: { name: string; alt: string; not
   );
 }
 
-/** A note, notice or passage, set like a printed card. */
+/** A notice line like 時間：十一月每個星期六 splits into its label and value. */
+const LABELLED = /^(.{1,6})：(.+)$/;
+
+/**
+ * A note, notice, timetable or passage, drawn by the app as a printed card (its writing is exact, and it follows
+ * dark mode). Notices and timetables carry their title on a tinted band; a message's last line signs it.
+ */
 function ReadingText({ item, script }: { item: Extract<LessonTestItem, { kind: 'reading' }>; script: Script }) {
   const lines = text(item.text, script).split('\n');
+  const title = item.title && text(item.title, script);
+  if (item.format === 'table' || item.format === 'notice') {
+    const [head = [], ...rows] = item.format === 'table' ? lines.map((line) => line.split('｜')) : [];
+    return (
+      <div className="w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface">
+        {title && <p className="text-balance bg-brand-primary-wash px-5 py-3 text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={title} /></p>}
+        {item.format === 'table' ? (
+          // Phones: smaller type and margins so five columns keep their headers and titles on one or two lines.
+          <table className="mx-3 my-3 w-[calc(100%-1.5rem)] border-collapse font-chinese text-base text-ui-ink-strong sm:mx-5 sm:w-[calc(100%-2.5rem)] sm:text-lg">
+            <thead>
+              <tr>{head.map((cell, index) => <th key={index} scope="col" className="border-b-2 border-ui-divider px-1 pb-2 text-left text-sm font-normal text-ui-muted-strong sm:px-1.5 sm:text-base"><ChineseText text={cell} /></th>)}</tr>
+            </thead>
+            <tbody>
+              {rows.map((row, index) => (
+                <tr key={index} className="border-b-2 border-ui-divider last:border-b-0">
+                  {row.map((cell, column) => <td key={column} className="px-1 py-2 tabular-nums sm:px-1.5"><ChineseText text={cell} /></td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="flex flex-col gap-2 px-5 py-4">
+            {lines.map((line, index) => {
+              const labelled = LABELLED.exec(line);
+              const signature = index === lines.length - 1 && !labelled && lines.length > 2;
+              return labelled ? (
+                <p key={index} className="flex gap-3 font-chinese text-lg leading-7 text-ui-ink-strong">
+                  <span className="shrink-0 text-ui-muted-strong">{labelled[1]}</span>
+                  <span><ChineseText text={labelled[2]} /></span>
+                </p>
+              ) : (
+                <p key={index} className={cn('font-chinese text-lg leading-8 text-ui-ink-strong', signature && 'text-right text-base text-ui-muted-strong')}>
+                  <ChineseText text={line} />
+                </p>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }
   return (
     <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-5 py-4">
-      {item.title && <p className="mb-2 text-balance text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={text(item.title, script)} /></p>}
+      {title && <p className="mb-2 text-balance text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={title} /></p>}
       {lines.map((line, index) => (
         <p
           key={index}
           className={cn(
             'font-chinese text-lg leading-8 text-ui-ink-strong md:text-xl',
+            // A passage's paragraphs start two characters in, as printed Chinese does.
+            item.format === 'passage' && 'indent-[2em]',
             item.format === 'message' && index === lines.length - 1 && lines.length > 2 && 'text-right text-ui-muted-strong',
           )}
         >
@@ -93,10 +143,16 @@ export interface QuestionBodyProps {
  * recording, picture or text, then the answers, all one width so their edges line up.
  */
 export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, audioReady, firstNumber, onAnswer }: QuestionBodyProps) {
-  const question = item.questions.find((entry) => entry.id === questionIds[0]) ?? item.questions[0];
+  const screenKey = questionIds.join(',');
+  // The screen's questions: one, or every question of a recording (the Fix round keeps only the missed ones).
+  const questions = useMemo(() => {
+    const open = item.questions.filter((entry) => screenKey.split(',').includes(entry.id));
+    return open.length ? open : [item.questions[0]];
+  }, [item, screenKey]);
+  const question = questions[0];
   const order = planned.orders[question.id] ?? (question.choices ?? []).map((_, index) => index);
-  const steps = useMemo(() => listeningSteps(item, question, order, sounds, script), [item, question, order, sounds, script]);
-  const audio = useTestAudio(steps, `${mode}:${item.id}:${question.id}`, mode, audioReady);
+  const steps = useMemo(() => listeningSteps(item, questions, planned.orders, sounds, script), [item, questions, planned.orders, sounds, script]);
+  const audio = useTestAudio(steps, `${mode}:${item.id}:${screenKey}`, mode, audioReady, item.kind === 'dialogue' && item.plays === 1 ? 1 : 2);
   const reduceMotion = useReducedMotion();
   const selected = answers[question.id];
   const pick = (choice: number) => onAnswer(question.id, choice);
@@ -106,17 +162,17 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       face={audio.face}
       playing={audio.playing}
       plays={audio.plays}
-      maxPlays={item.kind === 'dialogue' && item.plays === 1 ? 1 : audio.maxPlays}
+      maxPlays={audio.maxPlays}
       onReplay={audio.replay}
       onRetry={audio.retry}
     />
   );
   const sayChoice = (original: number, shown: number) => {
     const choice = question.choices?.[original];
-    if (choice) void audio.say({ audio: choice.audio, text: choice[script] ?? choice.traditional, mark: shown });
+    if (choice) void audio.say({ audio: choice.audio, text: choice[script] ?? choice.traditional, mark: shown, question: 0 });
   };
   const choiceList = (spoken: boolean) => (
-    <ChoiceList question={question} order={order} selected={selected} checked={checked} spoken={spoken} mark={audio.mark} script={script} onSelect={pick} onSay={sayChoice} />
+    <ChoiceList question={question} order={order} selected={selected} checked={checked} spoken={spoken} mark={audio.markQuestion === 0 ? audio.mark : null} script={script} onSelect={pick} onSay={sayChoice} />
   );
   const pictures = <PictureChoices question={question} order={order} selected={selected} checked={checked} onSelect={pick} />;
   const printedPrompt = question.prompt && (
@@ -125,9 +181,9 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   // A dialogue's question appears when the narrator asks it, right after the ding (TOCFL order).
   const askedPrompt = question.prompt && (
     <motion.p
-      aria-hidden={!(audio.asked || checked)}
+      aria-hidden={!(audio.asked > 0 || checked)}
       initial={false}
-      animate={audio.asked || checked ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.96 }}
+      animate={audio.asked > 0 || checked ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.96 }}
       transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 24 }}
       className="text-balance text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl"
     >
@@ -145,7 +201,24 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       stimulus = <>{speaker}<StimulusPicture name={item.picture.picture} alt={item.picture.alt} /></>; answersPart = choiceList(true);
       break;
     case 'dialogue':
-      stimulus = speaker; answersPart = <>{askedPrompt}{choiceList(!item.printed)}</>;
+      stimulus = speaker;
+      answersPart = questions.length > 1 ? (
+        <GroupQuestions
+          questions={questions}
+          orders={planned.orders}
+          answers={answers}
+          checked={checked}
+          spoken={!item.printed}
+          script={script}
+          firstNumber={firstNumber}
+          asked={audio.asked}
+          mark={audio.mark}
+          markQuestion={audio.markQuestion}
+          playing={audio.playing}
+          say={(step) => { void audio.say(step); }}
+          onAnswer={onAnswer}
+        />
+      ) : <>{askedPrompt}{choiceList(!item.printed)}</>;
       break;
     case 'read-pick-picture':
       stimulus = (

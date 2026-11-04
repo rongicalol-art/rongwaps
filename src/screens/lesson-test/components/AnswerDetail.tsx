@@ -8,7 +8,7 @@ type Shown = Partial<TestText> & Pick<TestChoice, 'traditional'>;
 export function answerText(item: LessonTestItem, question: LessonTestQuestion): Shown | undefined {
   switch (item.kind) {
     case 'scene-gap': return question.answer;
-    case 'dialogue': return item.lines[item.answerLine];
+    case 'dialogue': return item.lines[question.answerLine ?? item.answerLine];
     case 'hear-pick-picture': {
       const lines = item.lines;
       return lines.length === 1 ? lines[0] : {

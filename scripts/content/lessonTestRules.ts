@@ -92,7 +92,23 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
           if (!node[2]) problems.push(`${item.id}: "${node[1]}" has no simplified text`);
         }
       }
-      if (item.kind === 'dialogue' && (item.answerLine < 0 || item.answerLine >= item.lines.length)) problems.push(`${item.id}: answerLine out of range`);
+      if (item.kind === 'dialogue') {
+        const inRange = (line: number) => line >= 0 && line < item.lines.length;
+        if (!inRange(item.answerLine)) problems.push(`${item.id}: answerLine out of range`);
+        if (lesson.band === 'B' && !item.printed) problems.push(`${item.id}: Band B prints its choices (printed: true)`);
+        if (lesson.band === 'B' && item.plays !== 1) problems.push(`${item.id}: Band B plays each recording once (plays: 1)`);
+        if (item.questions.length > 1 && !item.intro) problems.push(`${item.id}: a recording with several questions opens with the narrator's intro`);
+        if (item.intro && item.intro.speaker !== 'N') problems.push(`${item.id}: the intro is the narrator's (speaker N)`);
+        for (const question of item.questions) {
+          if (item.questions.length > 1 && (question.answerLine === undefined || !inRange(question.answerLine))) problems.push(`${question.id}: each question of a group names its answerLine`);
+          if (question.choices?.some((choice) => choice.speaker !== 'N')) problems.push(`${question.id}: the narrator reads every choice (speaker N)`);
+          if (!question.prompt || question.prompt.speaker !== 'N') problems.push(`${question.id}: the narrator asks the question (prompt with speaker N)`);
+        }
+      }
+      if (item.kind === 'reading' && item.format === 'table') {
+        const widths = new Set(item.text.traditional.split('\n').map((row) => row.split('｜').length));
+        if (widths.size !== 1) problems.push(`${item.id}: every table row has the same number of ｜ cells`);
+      }
       if (item.kind === 'paragraph-bank') {
         if (item.bank.length !== item.questions.length + 1) problems.push(`${item.id}: the bank needs one extra word`);
         const markers = [...item.passage.traditional.matchAll(/\{(\d+)\}/g)].map((match) => Number(match[1]));
@@ -110,7 +126,12 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
         if (PICTURE_CHOICE_KINDS.has(item.kind) && question.choices?.some((choice) => !choice.picture)) problems.push(`${question.id}: picture questions choose between pictures`);
         if (item.kind === 'scene-gap' && question.prompt?.traditional.split('＿＿').length !== 2) problems.push(`${question.id}: a gap sentence has exactly one ＿＿`);
         if (item.kind === 'scene-gap' && !question.answer) problems.push(`${question.id}: a gap question shows its full answer sentence`);
-        if (question.lesson > lesson.lessonId) problems.push(`${question.id}: tests lesson ${question.lesson}, after this one`);
+        if (question.book !== undefined && question.book >= lesson.bookId) problems.push(`${question.id}: book is only for an earlier book's lesson`);
+        if (question.book === undefined && question.lesson > lesson.lessonId) problems.push(`${question.id}: tests lesson ${question.lesson}, after this one`);
+        // SC-TOP's item-writing rule: Band B choices stay short (about 15 characters at most).
+        for (const choice of question.choices ?? []) {
+          if (lesson.band === 'B' && [...(choice.traditional ?? '').replace(/[，。、？！：；「」\s]/g, '')].length > 15) problems.push(`${question.id}: choice "${choice.traditional}" is longer than 15 characters`);
+        }
         for (const id of question.wordIds) {
           if (!ctx.vocabIds.has(id)) problems.push(`${question.id}: unknown word id ${id}`);
           else if (!isTaughtWord(id, lesson.bookId, lesson.lessonId)) problems.push(`${question.id}: ${id} is not taught yet`);
@@ -161,8 +182,9 @@ export function runProblems(lesson: LessonTestLesson, ctx: LessonTestContext): s
       problems.push(`${lesson.key}: a run (${run.map((item) => item.id).join(', ')}) misses ${missingPoints.join(', ')}`);
       break;
     }
-    const review = questions.filter((question) => question.lesson < lesson.lessonId).length / questions.length;
-    if (lesson.lessonId > 1 && (review < 0.15 || review > 0.45)) {
+    const review = questions.filter((question) => question.book !== undefined || question.lesson < lesson.lessonId).length / questions.length;
+    // Only Book 1 Lesson 1 has nothing earlier to review (a later book's Lesson 1 reviews the book before).
+    if (!(lesson.bookId === 1 && lesson.lessonId === 1) && (review < 0.15 || review > 0.45)) {
       problems.push(`${lesson.key}: a run reviews ${Math.round(review * 100)}% earlier lessons (want 15–45%)`);
       break;
     }
