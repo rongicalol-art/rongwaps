@@ -118,3 +118,57 @@ test('splits 3-speaker dialogue into turns A, B, and C', () => {
   assert.equal(result.turns[2].english, 'I haven’t read it yet.');
 });
 
+test('splits named-speaker dialogue into one turn per line, names in the learner script', () => {
+  const text: GrammarLessonText = {
+    traditional: '助理：要怎麼做呢？\n老闆：就按會議的決定做吧。',
+    simplified: '助理：要怎么做呢？\n老板：就按会议的决定做吧。',
+    pinyin: 'Zhùlǐ: Yào zěnme zuò ne?\nLǎobǎn: Jiù àn huìyì de juédìng zuò ba.',
+    english: 'Assistant: How should we do it?\nBoss: Just follow what the meeting decided.',
+    words: [
+      { id: 'w1', traditional: '助理', simplified: '助理', pinyin: 'Zhùlǐ', meaning: '', suffix: '：' },
+      { id: 'w2', traditional: '要', simplified: '要', pinyin: 'yào', meaning: '' },
+      { id: 'w3', traditional: '呢', simplified: '呢', pinyin: 'ne', meaning: '', suffix: '？\n' },
+      { id: 'w4', traditional: '老闆', simplified: '老板', pinyin: 'Lǎobǎn', meaning: '', suffix: '：' },
+      { id: 'w5', traditional: '吧', simplified: '吧', pinyin: 'ba', meaning: '', suffix: '。' },
+    ],
+  };
+
+  const result = splitDialogueText(text, 'simplified');
+  assert.ok(result);
+  assert.equal(result.turns.length, 2);
+  assert.equal(result.turns[1].speaker, '老板');
+  assert.equal(result.bRaw, '就按会议的决定做吧。');
+  assert.deepEqual(result.aWords.map((w) => w.id), ['w1', 'w2', 'w3']);
+  assert.equal(result.aWords[2].suffix, '？');
+  assert.deepEqual(result.bWords.map((w) => w.id), ['w4', 'w5']);
+  assert.equal(result.pinyinB, 'Jiù àn huìyì de juédìng zuò ba.');
+  assert.equal(result.englishA, 'How should we do it?');
+});
+
+test('a single named line is not a dialogue', () => {
+  const text: GrammarLessonText = {
+    traditional: '朋子：你可以去那裡領。',
+    pinyin: 'Péngzǐ: Nǐ kěyǐ qù nàlǐ lǐng.',
+    english: 'Tomoko: You can pick it up there.',
+  };
+  assert.equal(splitDialogueText(text), null);
+});
+
+test('A/B turns drop the line break their words carry', () => {
+  const text: GrammarLessonText = {
+    traditional: 'A：你好嗎？\nB：很好。',
+    pinyin: 'A: Nǐ hǎo ma?\nB: Hěn hǎo.',
+    english: 'A: How are you?\nB: Fine.',
+    words: [
+      { id: 'w1', traditional: '你', pinyin: 'nǐ', meaning: '', prefix: 'A：' },
+      { id: 'w2', traditional: '嗎', pinyin: 'ma', meaning: '', suffix: '？\n' },
+      { id: 'w3', traditional: '很好', pinyin: 'hěn hǎo', meaning: '', prefix: 'B：', suffix: '。' },
+    ],
+  };
+  const result = splitDialogueText(text);
+  assert.ok(result);
+  assert.equal(result.aWords[result.aWords.length - 1].suffix, '？');
+  assert.equal(result.bWords[0].traditional, '很好');
+  assert.equal(result.englishB, 'Fine.');
+});
+

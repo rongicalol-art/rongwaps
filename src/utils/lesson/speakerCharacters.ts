@@ -231,6 +231,9 @@ const SPEAKER_ALIASES: Record<string, RongWapsCharacter> = {
   'mingzhe': 'mingzhe',
   '王經理': 'managerWang',
   '王经理': 'managerWang',
+  // Book 3 Lesson 12 labels him 經理, as the book prints it.
+  '經理': 'managerWang',
+  '经理': 'managerWang',
   'manager wang': 'managerWang',
   '職員': 'officeStaff',
   '职员': 'officeStaff',

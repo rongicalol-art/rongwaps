@@ -1,6 +1,7 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { executeRemoteSearch } from '../services/dictionaryService';
+import { warmCommonWords } from '../services/dictionaryCommonSearch';
 import { sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
 
 export interface SearchResult {
@@ -33,6 +34,9 @@ export function useDictionarySearch(externalQuery: string) {
   const [isSearching, setIsSearching] = useState(!initialCached && Boolean(externalQuery.trim()));
   const [searchError, setSearchError] = useState<string | null>(null);
   const searchIdRef = useRef(0);
+
+  // Common words load while the learner starts typing, so the first letters answer on the device.
+  useEffect(() => { warmCommonWords(); }, []);
 
   const executeSearch = useCallback(async (searchQuery: string) => {
     const currentId = ++searchIdRef.current;

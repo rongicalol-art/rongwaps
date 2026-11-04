@@ -10,6 +10,18 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-04 — Global search answers common words on the device first
+
+- Chosen: each build derives `/data/search/common-words.json` (the 20,000 highest-scored entries of the search index, ~0.65 MB Brotli, with course tags from the same lookup the server uses). A browser worker (`src/services/dictionaryCommon.worker.ts`) searches it with the shared engine and publishes those rows while the server request runs; the server's result page stays the final answer. Character-part queries go to the server only.
+- Reason: since search moved to the server (Oct 22) every keystroke waited on a round trip to a small shared CPU. The full 11 MB index was too heavy for low-memory phones; the common slice is not.
+- Affects: `scripts/performance/studyPacks.ts`, `scripts/performance/checkBudget.ts` (700 kB Brotli cap), `shared/dictionarySearch.ts` (`courseFields`), `server/dictionary.worker.ts`, `src/services/dictionarySearchService.ts`, `src/services/dictionaryCommonSearch.ts`, `src/hooks/useDictionarySearch.ts`.
+
+### 2026-11-04 — Book 3 word blocks and pinyin come from the course word lists
+
+- Chosen: Book 3 grammar examples, pattern rows and readings are rebuilt by `scripts/content/rebuildGrammarWords.ts`: blocks are the app's own lookup words (names, numbers and the page's grammar phrase kept whole), pinyin is the book's Taiwan reading from the course cards (card wins; 一/不 tone changes, 一 also before 百/千/萬; particles neutral, aspect 過 guò), meanings are left empty so taps use the dictionary, simplified follows the cards (網路 网路, 妳 你) and names convert (东贤). Reviewed corrections live in `scripts/content/grammarFixes-book3.json` (each with its reason) and are re-applied after every rebuild; a rebuild run twice must change nothing. Book text (titles, 說明, examples, readings, stage lines) matches the scans.
+- Reason: the hand-made blocks had wrong splits and Mainland or invented readings; two independent reviews per lesson checked the result against the scans and the word lists.
+- Affects: `content/grammar/b3Lesson*.json`, `content/readings/book-3.json`, `content/dialogueAlignment-book3.json`, `scripts/content/{rebuildGrammarWords.ts,grammarFixes-book3.json,grammarNames-book3.json}`, `tests/content/{b3GrammarWords,b3SimplifiedConsistency}.test.ts`.
+
 ### 2026-11-02 — Grammar labs and mix-ups removed
 
 - Chosen: the authored grammar labs (discovery, number, route, live-scene, timeline and A/B compare) and the "Don't mix these up" blocks (`confusion`) are deleted from `content/grammar/`, the grammar packs, the types, the validator and the content tests, along with the unwired mix-ups drawer and panel.

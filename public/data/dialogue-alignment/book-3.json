@@ -15148,7 +15148,7 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
           "index": 1,
@@ -15363,7 +15363,7 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
           "index": 2,
@@ -15543,7 +15543,7 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
           "index": 3,
@@ -15912,10 +15912,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
           "index": 4,
+          "speaker": "旁白",
+          "text": "（她們到了二樓A專櫃）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 5,
           "speaker": "芳草",
           "text": "這個專櫃的衣服都不錯，模特兒身上那件深藍色的洋裝，設計得很有特色，看起來很適合參加婚禮。",
           "start": 54.02,
@@ -16204,10 +16215,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 5,
+          "index": 6,
           "speaker": "瑪莉",
           "text": "嗯，這套淺色的也很好看，妳都試穿一下吧！",
           "start": 64.27,
@@ -16335,10 +16346,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 6,
+          "index": 7,
+          "speaker": "旁白",
+          "text": "（芳草先試穿了深藍色的洋裝後）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 8,
           "speaker": "瑪莉",
           "text": "不錯喔！妳的個子高，穿起洋裝來挺好看的。",
           "start": 70.81,
@@ -16466,10 +16488,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 7,
+          "index": 9,
           "speaker": "芳草",
           "text": "是挺好看的。不過，價錢有點兒貴，樣子也太正式了，恐怕平常沒什麼機會穿。我再試穿那件淺色的吧！",
           "start": 76.01,
@@ -16758,10 +16780,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 8,
+          "index": 10,
+          "speaker": "旁白",
+          "text": "（芳草試穿了淺色的衣服後）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 11,
           "speaker": "芳草",
           "text": "這件穿起來有點兒緊，而且比剛才那件還要貴。算了，去別家吧。",
           "start": 89.34,
@@ -16787,7 +16820,7 @@
               "charEnd": 3,
               "start": 89.66,
               "end": 89.88,
-              "score": 0.957
+              "score": 0.958
             },
             {
               "charStart": 3,
@@ -16945,10 +16978,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 9,
+          "index": 12,
+          "speaker": "旁白",
+          "text": "（她們到了B專櫃）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 13,
           "speaker": "芳草",
           "text": "沒想到這個專櫃的衣服這麼便宜，設計也不錯，難怪顧客這麼多。我看，在這裡找就行了。",
           "start": 97.99,
@@ -17202,10 +17246,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 10,
+          "index": 14,
           "speaker": "瑪莉",
           "text": "是比較便宜。不過，我朋友在這裡買過顏色相同的情侶裝，沒穿幾次就破了，最後只好扔掉。",
           "start": 108.54,
@@ -17466,10 +17510,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 11,
+          "index": 15,
           "speaker": "芳草",
           "text": "我也有差不多的經驗。以前我買過很便宜的牛仔褲，只穿了一天，皮膚就紅起來了，非常不舒服。後來吃了三天的藥才好，真是受不了。",
           "start": 118.02,
@@ -17849,10 +17893,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 12,
+          "index": 16,
           "speaker": "瑪莉",
           "text": "便宜沒好貨嘛！為了省錢買了品質差的東西，最後吃虧的還是自己。",
           "start": 131.13,
@@ -18050,10 +18094,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 13,
+          "index": 17,
           "speaker": "芳草",
           "text": "嗯，說的沒錯。我們還是去別家吧。",
           "start": 138.78,
@@ -18153,10 +18197,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 14,
+          "index": 18,
+          "speaker": "旁白",
+          "text": "（她們到了C專櫃，店員給她們介紹了各式各樣的衣服，還提到今天有打折活動。）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 19,
           "speaker": "芳草",
           "text": "我覺得這個專櫃什麼都好，就是價格高了很多。",
           "start": 144.96,
@@ -18298,10 +18353,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 15,
+          "index": 20,
           "speaker": "瑪莉",
           "text": "沒關係，專櫃小姐一直強調他們的衣服平時不打折，只有今天打六折，可以省不少錢喔！",
           "start": 149.38,
@@ -18555,10 +18610,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 16,
+          "index": 21,
           "speaker": "芳草",
           "text": "真的嗎？那我趕快找找合適的。",
           "start": 158.77,
@@ -18651,10 +18706,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 17,
+          "index": 22,
+          "speaker": "旁白",
+          "text": "（芳草試穿了一件洋裝後）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 23,
           "speaker": "芳草",
           "text": "這件我很滿意，肩膀的大小也沒問題。妳覺得呢？",
           "start": 163.15,
@@ -18796,10 +18862,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 18,
+          "index": 24,
           "speaker": "瑪莉",
           "text": "嗯，好看。參加婚禮或是平常上課穿都很合適。",
           "start": 168.58,
@@ -18934,10 +19000,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 19,
+          "index": 25,
           "speaker": "芳草",
           "text": "是啊，而且打了折就便宜多了。我還看到好幾件漂亮的外套、長褲，趁今天打折的好機會，我要多買幾件給我的姊妹。",
           "start": 174.38,
@@ -19268,10 +19334,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 20,
+          "index": 26,
+          "speaker": "旁白",
+          "text": "（芳草又選了一件外套，兩件襯衫。）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 27,
           "speaker": "瑪莉",
           "text": "好了，好了，別再買了，妳還要去看球鞋呢！",
           "start": 186.49,
@@ -19392,10 +19469,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 21,
+          "index": 28,
           "speaker": "芳草",
           "text": "好好好，我就買這幾件。",
           "start": 190.67,
@@ -19467,10 +19544,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 22,
+          "index": 29,
+          "speaker": "旁白",
+          "text": "（付錢的時候）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 30,
           "speaker": "店員",
           "text": "小姐，這是您的發票，您購買的商品如果有任何問題，七天以內都可以換。",
           "start": 195.06,
@@ -19682,10 +19770,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 23,
+          "index": 31,
           "speaker": "芳草",
           "text": "好的，謝謝妳。",
           "start": 202.08,
@@ -19729,10 +19817,21 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 24,
+          "index": 32,
+          "speaker": "旁白",
+          "text": "（她們離開專櫃後）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 33,
           "speaker": "芳草",
           "text": "這個專櫃的小姐真體貼，不但用漂亮的紙把衣服包起來，還很小心地放進袋子裡。像她那樣的服務態度，讓我覺得很滿意。",
           "start": 205.02,
@@ -20084,10 +20183,10 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         },
         {
-          "index": 25,
+          "index": 34,
           "speaker": "瑪莉",
           "text": "這就是「貨比三家不吃虧」的道理啊！還好我們看了三家，又比了比價錢、品質，要不然恐怕花了錢還不開心呢！",
           "start": 217.11,
@@ -20397,7 +20496,7 @@
             }
           ],
           "words": [],
-          "unmatched": false
+          "unmatched": true
         }
       ],
       "trimSec": 0
@@ -25976,7 +26075,7 @@
         {
           "index": 10,
           "speaker": "瑪莉",
-          "text": "沒錯。還好我婆婆常教我臺灣的送禮文化，也會給我介紹臺灣的風俗，現在我終於比較了解了。",
+          "text": "沒錯。還好我婆婆常教我臺灣的送禮文化，也會給我介紹台灣的風俗，現在我終於比較了解了。",
           "start": 126.91,
           "end": 136.51,
           "score": 0.969,
@@ -27108,6 +27207,17 @@
         },
         {
           "index": 14,
+          "speaker": "旁白",
+          "text": "（瑪莉和芳草吃完了飯）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 15,
           "speaker": "瑪莉",
           "text": "這些菜樣樣都好吃，特別是紅豆點心，可惜我吃不下了。",
           "start": 170.6,
@@ -27273,7 +27383,7 @@
           "unmatched": false
         },
         {
-          "index": 15,
+          "index": 16,
           "speaker": "芳草",
           "text": "剩下的菜妳要不要打包？",
           "start": 176.66,
@@ -27355,7 +27465,7 @@
           "unmatched": false
         },
         {
-          "index": 16,
+          "index": 17,
           "speaker": "瑪莉",
           "text": "不用了。在美國打包剩菜是很常見的，只是我沒這個習慣，從不打包。",
           "start": 179.18,
@@ -27556,7 +27666,7 @@
           "unmatched": false
         },
         {
-          "index": 17,
+          "index": 18,
           "speaker": "芳草",
           "text": "那就算了吧。",
           "start": 186.35,
@@ -28038,7 +28148,7 @@
         {
           "index": 1,
           "speaker": "佳琳",
-          "text": "記得我在美國留學時，我們常一塊兒吃喝玩樂，也常一同閱讀、討論，思考未來的方向。開心時，會笑個不停；傷心時，會哭個不停。戀愛了五年的男友離開我時，妳陪著我哭，三大盒面紙都被我們抽光了。對我來說，那些珍貴的回憶是一輩子都忘不了的。",
+          "text": "記得我在美國留學時，我們常一塊兒吃喝玩樂，也常一同閱讀、討論，思考未來的方向。開心時，會笑個不停；傷心時，會哭個不停。戀愛了五年的男友離開我時，你陪著我哭，三大盒面紙都被我們抽光了。對我來說，那些珍貴的回憶是一輩子都忘不了的。",
           "start": 23.42,
           "end": 53.44,
           "score": 0.946,
@@ -29390,7 +29500,7 @@
               "charEnd": 104,
               "start": 84.12,
               "end": 84.34,
-              "score": 0.968
+              "score": 0.967
             },
             {
               "charStart": 104,
@@ -38916,7 +39026,7 @@
               "charEnd": 39,
               "start": 36.84,
               "end": 37.14,
-              "score": 0.963
+              "score": 0.964
             }
           ],
           "words": [],
@@ -39673,7 +39783,7 @@
               "charEnd": 62,
               "start": 66.12,
               "end": 66.24,
-              "score": 0.539
+              "score": 0.538
             },
             {
               "charStart": 62,
@@ -40707,10 +40817,10 @@
         {
           "index": 7,
           "speaker": "明哲",
-          "text": "我不去！我怕水，對大海還有心理障礙。",
+          "text": "我不去！我怕水，對大海也有心理障礙。",
           "start": 107.37,
           "end": 112.75,
-          "score": 0.884,
+          "score": 0.95,
           "chars": [
             {
               "charStart": 0,
@@ -40780,7 +40890,7 @@
               "charEnd": 12,
               "start": 111.51,
               "end": 111.65,
-              "score": 0
+              "score": 0.998
             },
             {
               "charStart": 12,
@@ -47650,7 +47760,7 @@
         {
           "index": 7,
           "speaker": "東賢",
-          "text": "我們的運氣很差，碰到了壞天氣。出發前，氣象預報說那幾天都是晴天。頭幾天的天氣很好，誰知道到了第六天，一到山區天空就突然變黑，也下起了大雨，我的衣服都濕了，自行車也壞了。",
+          "text": "我們的運氣很差，碰到了壞天氣。出發前，氣象預報說那幾天都是晴天。頭幾天的天氣很好，誰知道到了第六天，一到山區天空就突然變黑，也下起了大雨，我的衣服都溼了，自行車也壞了。",
           "start": 76.55,
           "end": 98.07,
           "score": 0.949,
@@ -53226,10 +53336,10 @@
         {
           "index": 3,
           "speaker": "旁白",
-          "text": "其實馬丁剛到臺灣時，還忘不了工作的問題，所以心情不太好。但是，當他在東部又寬又平的公路上，邊騎著自行車，邊欣賞美麗的風景時，他忽然覺得就像在天堂一樣，太美好、太值得了！還有一次，馬丁坐在椅子上，很專心地看著寺廟前的歌仔戲表演。演員演出時，剛好穿著和明信片上一樣的服裝，那種熟悉的感覺讓他很興奮，立刻拿起相機拍了起來。這段時間他也認識了一些樂觀、幽默的朋友，大家一起聊天、開玩笑，讓他開心得把工作的問題都忘了。馬丁覺得在臺灣經驗過的這些美好生活，就是這次旅行最珍貴的紀念。",
+          "text": "其實馬丁剛到臺灣時，還忘不了工作的問題，所以心情不太好。但是，當他在東部又寬又平的公路上，邊騎著自行車，邊欣賞美麗的風景時，他忽然覺得就像在天堂一樣，太美好、太值得了！還有一次，馬丁坐在凳子上，很專心地看著寺廟前的歌仔戲表演。演員演出時，剛好穿著和明信片上一樣的服裝，那種熟悉的感覺讓他很興奮，立刻拿起相機拍了起來。這段時間他也認識了一些樂觀、幽默的朋友，大家一起聊天、開玩笑，讓他開心得把工作的問題都忘了。馬丁覺得在臺灣經驗過的這些美好生活，就是這次旅行最珍貴的紀念。",
           "start": 88.11,
           "end": 151.79,
-          "score": 0.952,
+          "score": 0.956,
           "chars": [
             {
               "charStart": 0,
@@ -53810,7 +53920,7 @@
               "charEnd": 94,
               "start": 112.94,
               "end": 113.12,
-              "score": 0
+              "score": 0.748
             },
             {
               "charStart": 94,
@@ -64109,10 +64219,10 @@
         {
           "index": 3,
           "speaker": "家豪",
-          "text": "問題是，我爸媽希望他能考上前三名的大學，不是打球得第一，要求他把全部的時間都拿來準備考試。可是我弟弟覺得打球不會影響他念書，他們還因為這件事吵了一架。",
+          "text": "問題是，我爸媽希望他能考上前三名的大學，不是打球得第一，他們要求他把全部的時間都拿來準備考試。可是我弟弟覺得打球不會影響他念書，他們還因為這件事吵了一架。",
           "start": 45.49,
           "end": 64.29,
-          "score": 0.909,
+          "score": 0.916,
           "chars": [
             {
               "charStart": 0,
@@ -64279,320 +64389,334 @@
               "charStart": 25,
               "charEnd": 26,
               "start": 51.52,
-              "end": 52.52,
+              "end": 51.72,
               "score": 0.518
             },
             {
               "charStart": 26,
               "charEnd": 27,
-              "start": 52.52,
-              "end": 52.8,
-              "score": 0.003
+              "start": 51.72,
+              "end": 52.52,
+              "score": 0.32
             },
             {
               "charStart": 28,
               "charEnd": 29,
+              "start": 52.52,
+              "end": 52.66,
+              "score": 0.996
+            },
+            {
+              "charStart": 29,
+              "charEnd": 30,
+              "start": 52.66,
+              "end": 52.8,
+              "score": 1
+            },
+            {
+              "charStart": 30,
+              "charEnd": 31,
               "start": 52.8,
               "end": 53,
               "score": 0.999
             },
             {
-              "charStart": 29,
-              "charEnd": 30,
+              "charStart": 31,
+              "charEnd": 32,
               "start": 53,
               "end": 53.48,
               "score": 0.999
             },
             {
-              "charStart": 30,
-              "charEnd": 31,
+              "charStart": 32,
+              "charEnd": 33,
               "start": 53.48,
               "end": 53.64,
               "score": 0.972
             },
             {
-              "charStart": 31,
-              "charEnd": 32,
+              "charStart": 33,
+              "charEnd": 34,
               "start": 53.64,
               "end": 53.82,
               "score": 0.993
             },
             {
-              "charStart": 32,
-              "charEnd": 33,
+              "charStart": 34,
+              "charEnd": 35,
               "start": 53.82,
               "end": 54.26,
               "score": 0.997
             },
             {
-              "charStart": 33,
-              "charEnd": 34,
+              "charStart": 35,
+              "charEnd": 36,
               "start": 54.26,
               "end": 54.42,
               "score": 0.98
             },
             {
-              "charStart": 34,
-              "charEnd": 35,
+              "charStart": 36,
+              "charEnd": 37,
               "start": 54.42,
               "end": 54.56,
               "score": 0.998
             },
             {
-              "charStart": 35,
-              "charEnd": 36,
+              "charStart": 37,
+              "charEnd": 38,
               "start": 54.56,
               "end": 54.76,
               "score": 0.961
             },
             {
-              "charStart": 36,
-              "charEnd": 37,
+              "charStart": 38,
+              "charEnd": 39,
               "start": 54.76,
               "end": 55.16,
               "score": 0.938
             },
             {
-              "charStart": 37,
-              "charEnd": 38,
+              "charStart": 39,
+              "charEnd": 40,
               "start": 55.16,
               "end": 55.36,
               "score": 0.957
             },
             {
-              "charStart": 38,
-              "charEnd": 39,
+              "charStart": 40,
+              "charEnd": 41,
               "start": 55.36,
               "end": 55.52,
               "score": 0.997
             },
             {
-              "charStart": 39,
-              "charEnd": 40,
+              "charStart": 41,
+              "charEnd": 42,
               "start": 55.52,
               "end": 55.72,
               "score": 0.998
             },
             {
-              "charStart": 40,
-              "charEnd": 41,
+              "charStart": 42,
+              "charEnd": 43,
               "start": 55.72,
               "end": 55.92,
               "score": 0.998
             },
             {
-              "charStart": 41,
-              "charEnd": 42,
+              "charStart": 43,
+              "charEnd": 44,
               "start": 55.92,
               "end": 56.1,
               "score": 0.976
             },
             {
-              "charStart": 42,
-              "charEnd": 43,
+              "charStart": 44,
+              "charEnd": 45,
               "start": 56.1,
               "end": 56.46,
               "score": 0.999
             },
             {
-              "charStart": 43,
-              "charEnd": 44,
+              "charStart": 45,
+              "charEnd": 46,
               "start": 56.46,
               "end": 57.34,
               "score": 0.988
             },
             {
-              "charStart": 45,
-              "charEnd": 46,
+              "charStart": 47,
+              "charEnd": 48,
               "start": 57.34,
               "end": 57.58,
               "score": 0.972
             },
             {
-              "charStart": 46,
-              "charEnd": 47,
+              "charStart": 48,
+              "charEnd": 49,
               "start": 57.58,
               "end": 57.74,
               "score": 0.995
             },
             {
-              "charStart": 47,
-              "charEnd": 48,
+              "charStart": 49,
+              "charEnd": 50,
               "start": 57.74,
               "end": 57.92,
               "score": 0.997
             },
             {
-              "charStart": 48,
-              "charEnd": 49,
+              "charStart": 50,
+              "charEnd": 51,
               "start": 57.92,
               "end": 58.1,
               "score": 0.567
             },
             {
-              "charStart": 49,
-              "charEnd": 50,
+              "charStart": 51,
+              "charEnd": 52,
               "start": 58.1,
               "end": 58.26,
               "score": 0.417
             },
             {
-              "charStart": 50,
-              "charEnd": 51,
+              "charStart": 52,
+              "charEnd": 53,
               "start": 58.26,
               "end": 58.5,
               "score": 0.988
             },
             {
-              "charStart": 51,
-              "charEnd": 52,
+              "charStart": 53,
+              "charEnd": 54,
               "start": 58.5,
               "end": 59,
               "score": 0.997
             },
             {
-              "charStart": 52,
-              "charEnd": 53,
+              "charStart": 54,
+              "charEnd": 55,
               "start": 59,
               "end": 59.24,
               "score": 0.998
             },
             {
-              "charStart": 53,
-              "charEnd": 54,
+              "charStart": 55,
+              "charEnd": 56,
               "start": 59.24,
               "end": 59.62,
               "score": 0.901
             },
             {
-              "charStart": 54,
-              "charEnd": 55,
+              "charStart": 56,
+              "charEnd": 57,
               "start": 59.62,
               "end": 59.78,
               "score": 0.998
             },
             {
-              "charStart": 55,
-              "charEnd": 56,
+              "charStart": 57,
+              "charEnd": 58,
               "start": 59.78,
               "end": 59.96,
               "score": 0.999
             },
             {
-              "charStart": 56,
-              "charEnd": 57,
+              "charStart": 58,
+              "charEnd": 59,
               "start": 59.96,
               "end": 60.18,
               "score": 0.922
             },
             {
-              "charStart": 57,
-              "charEnd": 58,
+              "charStart": 59,
+              "charEnd": 60,
               "start": 60.18,
               "end": 60.42,
               "score": 0.957
             },
             {
-              "charStart": 58,
-              "charEnd": 59,
+              "charStart": 60,
+              "charEnd": 61,
               "start": 60.42,
               "end": 60.64,
               "score": 0.99
             },
             {
-              "charStart": 59,
-              "charEnd": 60,
+              "charStart": 61,
+              "charEnd": 62,
               "start": 60.64,
               "end": 60.92,
               "score": 0.988
             },
             {
-              "charStart": 60,
-              "charEnd": 61,
+              "charStart": 62,
+              "charEnd": 63,
               "start": 60.92,
               "end": 61.76,
               "score": 0.996
             },
             {
-              "charStart": 62,
-              "charEnd": 63,
+              "charStart": 64,
+              "charEnd": 65,
               "start": 61.76,
               "end": 61.9,
               "score": 0.991
             },
             {
-              "charStart": 63,
-              "charEnd": 64,
+              "charStart": 65,
+              "charEnd": 66,
               "start": 61.9,
               "end": 62.04,
               "score": 0.952
             },
             {
-              "charStart": 64,
-              "charEnd": 65,
+              "charStart": 66,
+              "charEnd": 67,
               "start": 62.04,
               "end": 62.27,
               "score": 0.998
             },
             {
-              "charStart": 65,
-              "charEnd": 66,
+              "charStart": 67,
+              "charEnd": 68,
               "start": 62.27,
               "end": 62.43,
               "score": 0.998
             },
             {
-              "charStart": 66,
-              "charEnd": 67,
+              "charStart": 68,
+              "charEnd": 69,
               "start": 62.43,
               "end": 62.57,
               "score": 0.999
             },
             {
-              "charStart": 67,
-              "charEnd": 68,
+              "charStart": 69,
+              "charEnd": 70,
               "start": 62.57,
               "end": 62.73,
               "score": 0.999
             },
             {
-              "charStart": 68,
-              "charEnd": 69,
+              "charStart": 70,
+              "charEnd": 71,
               "start": 62.73,
               "end": 62.95,
               "score": 0.925
             },
             {
-              "charStart": 69,
-              "charEnd": 70,
+              "charStart": 71,
+              "charEnd": 72,
               "start": 62.95,
               "end": 63.35,
               "score": 0.99
             },
             {
-              "charStart": 70,
-              "charEnd": 71,
+              "charStart": 72,
+              "charEnd": 73,
               "start": 63.35,
               "end": 63.71,
               "score": 0.972
             },
             {
-              "charStart": 71,
-              "charEnd": 72,
+              "charStart": 73,
+              "charEnd": 74,
               "start": 63.71,
               "end": 63.83,
               "score": 0.995
             },
             {
-              "charStart": 72,
-              "charEnd": 73,
+              "charStart": 74,
+              "charEnd": 75,
               "start": 63.83,
               "end": 64.01,
               "score": 0.002
             },
             {
-              "charStart": 73,
-              "charEnd": 74,
+              "charStart": 75,
+              "charEnd": 76,
               "start": 64.01,
               "end": 64.29,
               "score": 0.996
@@ -65721,7 +65845,7 @@
               "charEnd": 17,
               "start": 109.14,
               "end": 109.4,
-              "score": 0.992
+              "score": 0.991
             },
             {
               "charStart": 17,
@@ -68208,7 +68332,7 @@
               "charEnd": 45,
               "start": 204.21,
               "end": 204.69,
-              "score": 0.965
+              "score": 0.966
             },
             {
               "charStart": 45,
@@ -68570,7 +68694,7 @@
               "charEnd": 22,
               "start": 217.74,
               "end": 217.92,
-              "score": 0.953
+              "score": 0.954
             },
             {
               "charStart": 22,
@@ -75560,6 +75684,17 @@
         },
         {
           "index": 13,
+          "speaker": "旁白",
+          "text": "（家豪看了一下手上的簡介）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 14,
           "speaker": "家豪",
           "text": "這家醫院的醫生挺有名的，應該很可靠，健檢手續也不麻煩，只要上網填個表就行了。",
           "start": 140.62,
@@ -75809,7 +75944,7 @@
           "unmatched": false
         },
         {
-          "index": 14,
+          "index": 15,
           "speaker": "芳草",
           "text": "我最大的願望就是家人都健健康康的。既然手續這麼簡單，那明天就先帶我先生去做個健檢吧。",
           "start": 149.47,
@@ -85447,10 +85582,10 @@
         {
           "index": 0,
           "speaker": "旁白",
-          "text": "自從無線網路出現的那天起，現代人的生活似乎就離不開網路了。網路科技的進步，不但改變了從前的生活方式，甚至連人與人之間的關係，也產生了極大的變化。住在不同地區的人，可以透過網路互相交流，這一點是我們祖父母那個年代的人很難想像的。",
+          "text": "自從無線網路出現的那天起，現代人的生活似乎就離不開網路了。",
           "start": 6.56,
-          "end": 32.52,
-          "score": 0.951,
+          "end": 12.53,
+          "score": 0.956,
           "chars": [
             {
               "charStart": 0,
@@ -85638,544 +85773,549 @@
               "charStart": 27,
               "charEnd": 28,
               "start": 12.29,
-              "end": 13.97,
+              "end": 12.53,
               "score": 0.996
-            },
+            }
+          ],
+          "words": [],
+          "unmatched": false
+        },
+        {
+          "index": 1,
+          "speaker": "旁白",
+          "text": "網路科技的進步，不但改變了從前的生活方式，就連人與人之間的關係，也產生了極大的變化。住在不同地區的人，可以透過網路互相交流，這一點是我們祖父母那個年代的人很難想像的。",
+          "start": 13.97,
+          "end": 32.52,
+          "score": 0.971,
+          "chars": [
             {
-              "charStart": 29,
-              "charEnd": 30,
+              "charStart": 0,
+              "charEnd": 1,
               "start": 13.97,
               "end": 14.15,
               "score": 0.996
             },
             {
-              "charStart": 30,
-              "charEnd": 31,
+              "charStart": 1,
+              "charEnd": 2,
               "start": 14.15,
               "end": 14.31,
               "score": 0.999
             },
             {
-              "charStart": 31,
-              "charEnd": 32,
+              "charStart": 2,
+              "charEnd": 3,
               "start": 14.31,
               "end": 14.51,
               "score": 1
             },
             {
-              "charStart": 32,
-              "charEnd": 33,
+              "charStart": 3,
+              "charEnd": 4,
               "start": 14.51,
               "end": 14.65,
               "score": 1
             },
             {
-              "charStart": 33,
-              "charEnd": 34,
+              "charStart": 4,
+              "charEnd": 5,
               "start": 14.65,
               "end": 14.75,
               "score": 0.999
             },
             {
-              "charStart": 34,
-              "charEnd": 35,
+              "charStart": 5,
+              "charEnd": 6,
               "start": 14.75,
               "end": 14.99,
               "score": 1
             },
             {
-              "charStart": 35,
-              "charEnd": 36,
+              "charStart": 6,
+              "charEnd": 7,
               "start": 14.99,
               "end": 15.53,
               "score": 0.999
             },
             {
-              "charStart": 37,
-              "charEnd": 38,
+              "charStart": 8,
+              "charEnd": 9,
               "start": 15.53,
               "end": 15.65,
               "score": 1
             },
             {
-              "charStart": 38,
-              "charEnd": 39,
+              "charStart": 9,
+              "charEnd": 10,
               "start": 15.65,
               "end": 15.83,
               "score": 0.999
             },
             {
-              "charStart": 39,
-              "charEnd": 40,
+              "charStart": 10,
+              "charEnd": 11,
               "start": 15.83,
               "end": 16.01,
               "score": 0.997
             },
             {
-              "charStart": 40,
-              "charEnd": 41,
+              "charStart": 11,
+              "charEnd": 12,
               "start": 16.01,
               "end": 16.17,
               "score": 0.999
             },
             {
-              "charStart": 41,
-              "charEnd": 42,
+              "charStart": 12,
+              "charEnd": 13,
               "start": 16.17,
               "end": 16.31,
               "score": 0.999
             },
             {
-              "charStart": 42,
-              "charEnd": 43,
+              "charStart": 13,
+              "charEnd": 14,
               "start": 16.31,
               "end": 16.59,
               "score": 0.982
             },
             {
-              "charStart": 43,
-              "charEnd": 44,
+              "charStart": 14,
+              "charEnd": 15,
               "start": 16.59,
               "end": 16.75,
               "score": 0.997
             },
             {
-              "charStart": 44,
-              "charEnd": 45,
+              "charStart": 15,
+              "charEnd": 16,
               "start": 16.75,
               "end": 16.85,
               "score": 0.998
             },
             {
-              "charStart": 45,
-              "charEnd": 46,
+              "charStart": 16,
+              "charEnd": 17,
               "start": 16.85,
               "end": 17.07,
               "score": 0.964
             },
             {
-              "charStart": 46,
-              "charEnd": 47,
+              "charStart": 17,
+              "charEnd": 18,
               "start": 17.07,
               "end": 17.23,
               "score": 0.998
             },
             {
-              "charStart": 47,
-              "charEnd": 48,
+              "charStart": 18,
+              "charEnd": 19,
               "start": 17.23,
               "end": 17.51,
               "score": 0.979
             },
             {
-              "charStart": 48,
-              "charEnd": 49,
+              "charStart": 19,
+              "charEnd": 20,
               "start": 17.51,
-              "end": 17.69,
+              "end": 18.35,
               "score": 0.999
             },
             {
-              "charStart": 50,
-              "charEnd": 51,
-              "start": 17.69,
-              "end": 18.35,
-              "score": 0
-            },
-            {
-              "charStart": 51,
-              "charEnd": 52,
+              "charStart": 21,
+              "charEnd": 22,
               "start": 18.35,
               "end": 18.53,
-              "score": 0.333
+              "score": 0.999
             },
             {
-              "charStart": 52,
-              "charEnd": 53,
+              "charStart": 22,
+              "charEnd": 23,
               "start": 18.53,
               "end": 18.73,
               "score": 0.925
             },
             {
-              "charStart": 53,
-              "charEnd": 54,
+              "charStart": 23,
+              "charEnd": 24,
               "start": 18.73,
               "end": 18.91,
               "score": 0.999
             },
             {
-              "charStart": 54,
-              "charEnd": 55,
+              "charStart": 24,
+              "charEnd": 25,
               "start": 18.91,
               "end": 19.07,
               "score": 0.941
             },
             {
-              "charStart": 55,
-              "charEnd": 56,
+              "charStart": 25,
+              "charEnd": 26,
               "start": 19.07,
               "end": 19.27,
               "score": 1
             },
             {
-              "charStart": 56,
-              "charEnd": 57,
+              "charStart": 26,
+              "charEnd": 27,
               "start": 19.27,
               "end": 19.41,
               "score": 0.988
             },
             {
-              "charStart": 57,
-              "charEnd": 58,
+              "charStart": 27,
+              "charEnd": 28,
               "start": 19.41,
               "end": 19.55,
               "score": 0.977
             },
             {
-              "charStart": 58,
-              "charEnd": 59,
+              "charStart": 28,
+              "charEnd": 29,
               "start": 19.55,
               "end": 19.63,
               "score": 0.998
             },
             {
-              "charStart": 59,
-              "charEnd": 60,
+              "charStart": 29,
+              "charEnd": 30,
               "start": 19.63,
               "end": 19.91,
               "score": 0.999
             },
             {
-              "charStart": 60,
-              "charEnd": 61,
+              "charStart": 30,
+              "charEnd": 31,
               "start": 19.91,
               "end": 20.41,
               "score": 0.999
             },
             {
-              "charStart": 62,
-              "charEnd": 63,
+              "charStart": 32,
+              "charEnd": 33,
               "start": 20.41,
               "end": 20.57,
               "score": 1
             },
             {
-              "charStart": 63,
-              "charEnd": 64,
+              "charStart": 33,
+              "charEnd": 34,
               "start": 20.57,
               "end": 20.85,
               "score": 0.993
             },
             {
-              "charStart": 64,
-              "charEnd": 65,
+              "charStart": 34,
+              "charEnd": 35,
               "start": 20.85,
               "end": 21.03,
               "score": 0.986
             },
             {
-              "charStart": 65,
-              "charEnd": 66,
+              "charStart": 35,
+              "charEnd": 36,
               "start": 21.03,
               "end": 21.19,
               "score": 0.999
             },
             {
-              "charStart": 66,
-              "charEnd": 67,
+              "charStart": 36,
+              "charEnd": 37,
               "start": 21.19,
               "end": 21.45,
               "score": 0.996
             },
             {
-              "charStart": 67,
-              "charEnd": 68,
+              "charStart": 37,
+              "charEnd": 38,
               "start": 21.45,
               "end": 21.61,
               "score": 0.998
             },
             {
-              "charStart": 68,
-              "charEnd": 69,
+              "charStart": 38,
+              "charEnd": 39,
               "start": 21.61,
               "end": 21.73,
               "score": 0.998
             },
             {
-              "charStart": 69,
-              "charEnd": 70,
+              "charStart": 39,
+              "charEnd": 40,
               "start": 21.73,
               "end": 21.97,
               "score": 0.998
             },
             {
-              "charStart": 70,
-              "charEnd": 71,
+              "charStart": 40,
+              "charEnd": 41,
               "start": 21.97,
               "end": 23.44,
               "score": 1
             },
             {
-              "charStart": 72,
-              "charEnd": 73,
+              "charStart": 42,
+              "charEnd": 43,
               "start": 23.44,
               "end": 23.62,
               "score": 0.999
             },
             {
-              "charStart": 73,
-              "charEnd": 74,
+              "charStart": 43,
+              "charEnd": 44,
               "start": 23.62,
               "end": 23.76,
               "score": 0.999
             },
             {
-              "charStart": 74,
-              "charEnd": 75,
+              "charStart": 44,
+              "charEnd": 45,
               "start": 23.76,
               "end": 23.88,
               "score": 0.999
             },
             {
-              "charStart": 75,
-              "charEnd": 76,
+              "charStart": 45,
+              "charEnd": 46,
               "start": 23.88,
               "end": 24.1,
               "score": 0.998
             },
             {
-              "charStart": 76,
-              "charEnd": 77,
+              "charStart": 46,
+              "charEnd": 47,
               "start": 24.1,
               "end": 24.26,
               "score": 0.503
             },
             {
-              "charStart": 77,
-              "charEnd": 78,
+              "charStart": 47,
+              "charEnd": 48,
               "start": 24.26,
               "end": 24.44,
               "score": 0.999
             },
             {
-              "charStart": 78,
-              "charEnd": 79,
+              "charStart": 48,
+              "charEnd": 49,
               "start": 24.44,
               "end": 24.56,
               "score": 0.997
             },
             {
-              "charStart": 79,
-              "charEnd": 80,
+              "charStart": 49,
+              "charEnd": 50,
               "start": 24.56,
               "end": 25.24,
               "score": 1
             },
             {
-              "charStart": 81,
-              "charEnd": 82,
+              "charStart": 51,
+              "charEnd": 52,
               "start": 25.24,
               "end": 25.36,
               "score": 1
             },
             {
-              "charStart": 82,
-              "charEnd": 83,
+              "charStart": 52,
+              "charEnd": 53,
               "start": 25.36,
               "end": 25.44,
               "score": 1
             },
             {
-              "charStart": 83,
-              "charEnd": 84,
+              "charStart": 53,
+              "charEnd": 54,
               "start": 25.44,
               "end": 25.64,
               "score": 0.999
             },
             {
-              "charStart": 84,
-              "charEnd": 85,
+              "charStart": 54,
+              "charEnd": 55,
               "start": 25.64,
               "end": 25.82,
               "score": 0.999
             },
             {
-              "charStart": 85,
-              "charEnd": 86,
+              "charStart": 55,
+              "charEnd": 56,
               "start": 25.82,
               "end": 26.06,
               "score": 0.989
             },
             {
-              "charStart": 86,
-              "charEnd": 87,
+              "charStart": 56,
+              "charEnd": 57,
               "start": 26.06,
               "end": 26.32,
               "score": 0.998
             },
             {
-              "charStart": 87,
-              "charEnd": 88,
+              "charStart": 57,
+              "charEnd": 58,
               "start": 26.32,
               "end": 26.56,
               "score": 0.961
             },
             {
-              "charStart": 88,
-              "charEnd": 89,
+              "charStart": 58,
+              "charEnd": 59,
               "start": 26.56,
               "end": 26.78,
               "score": 0.996
             },
             {
-              "charStart": 89,
-              "charEnd": 90,
+              "charStart": 59,
+              "charEnd": 60,
               "start": 26.78,
               "end": 27,
               "score": 0.997
             },
             {
-              "charStart": 90,
-              "charEnd": 91,
+              "charStart": 60,
+              "charEnd": 61,
               "start": 27,
               "end": 28.08,
               "score": 0.858
             },
             {
-              "charStart": 92,
-              "charEnd": 93,
+              "charStart": 62,
+              "charEnd": 63,
               "start": 28.08,
               "end": 28.26,
               "score": 0.978
             },
             {
-              "charStart": 93,
-              "charEnd": 94,
+              "charStart": 63,
+              "charEnd": 64,
               "start": 28.26,
               "end": 28.38,
               "score": 0.07
             },
             {
-              "charStart": 94,
-              "charEnd": 95,
+              "charStart": 64,
+              "charEnd": 65,
               "start": 28.38,
               "end": 28.96,
               "score": 0.993
             },
             {
-              "charStart": 95,
-              "charEnd": 96,
+              "charStart": 65,
+              "charEnd": 66,
               "start": 28.96,
               "end": 29.1,
               "score": 0.997
             },
             {
-              "charStart": 96,
-              "charEnd": 97,
+              "charStart": 66,
+              "charEnd": 67,
               "start": 29.1,
               "end": 29.22,
               "score": 0.999
             },
             {
-              "charStart": 97,
-              "charEnd": 98,
+              "charStart": 67,
+              "charEnd": 68,
               "start": 29.22,
               "end": 29.38,
               "score": 0.999
             },
             {
-              "charStart": 98,
-              "charEnd": 99,
+              "charStart": 68,
+              "charEnd": 69,
               "start": 29.38,
               "end": 29.62,
               "score": 0.998
             },
             {
-              "charStart": 99,
-              "charEnd": 100,
+              "charStart": 69,
+              "charEnd": 70,
               "start": 29.62,
               "end": 29.82,
               "score": 0.999
             },
             {
-              "charStart": 100,
-              "charEnd": 101,
+              "charStart": 70,
+              "charEnd": 71,
               "start": 29.82,
               "end": 30.08,
               "score": 0.999
             },
             {
-              "charStart": 101,
-              "charEnd": 102,
+              "charStart": 71,
+              "charEnd": 72,
               "start": 30.08,
               "end": 30.22,
               "score": 0.994
             },
             {
-              "charStart": 102,
-              "charEnd": 103,
+              "charStart": 72,
+              "charEnd": 73,
               "start": 30.22,
               "end": 30.34,
               "score": 0.999
             },
             {
-              "charStart": 103,
-              "charEnd": 104,
+              "charStart": 73,
+              "charEnd": 74,
               "start": 30.34,
               "end": 30.56,
               "score": 0.997
             },
             {
-              "charStart": 104,
-              "charEnd": 105,
+              "charStart": 74,
+              "charEnd": 75,
               "start": 30.56,
               "end": 30.72,
               "score": 0.998
             },
             {
-              "charStart": 105,
-              "charEnd": 106,
+              "charStart": 75,
+              "charEnd": 76,
               "start": 30.72,
               "end": 30.86,
               "score": 0.999
             },
             {
-              "charStart": 106,
-              "charEnd": 107,
+              "charStart": 76,
+              "charEnd": 77,
               "start": 30.86,
               "end": 31.28,
               "score": 1
             },
             {
-              "charStart": 107,
-              "charEnd": 108,
+              "charStart": 77,
+              "charEnd": 78,
               "start": 31.28,
               "end": 31.5,
               "score": 0.88
             },
             {
-              "charStart": 108,
-              "charEnd": 109,
+              "charStart": 78,
+              "charEnd": 79,
               "start": 31.5,
               "end": 31.74,
               "score": 0.999
             },
             {
-              "charStart": 109,
-              "charEnd": 110,
+              "charStart": 79,
+              "charEnd": 80,
               "start": 31.74,
               "end": 32,
               "score": 0.994
             },
             {
-              "charStart": 110,
-              "charEnd": 111,
+              "charStart": 80,
+              "charEnd": 81,
               "start": 32,
               "end": 32.28,
               "score": 0.881
             },
             {
-              "charStart": 111,
-              "charEnd": 112,
+              "charStart": 81,
+              "charEnd": 82,
               "start": 32.28,
               "end": 32.52,
               "score": 0.999
@@ -86185,12 +86325,12 @@
           "unmatched": false
         },
         {
-          "index": 1,
+          "index": 2,
           "speaker": "旁白",
-          "text": "在網路出現以前，想要做報告，得去圖書館借一堆書；想要認識新朋友，就非和本人面對面接觸不可。但現代社會，只要有網路，就沒有時間和空間的限制，人人都可以隨時隨地傳訊息、查資料、認識世界各地的人。不但擴大了視野、增加了知識，甚至能和網友建立珍貴的友誼。但也因為這樣，越來越多人以網路傳訊息代替當面對話。時間久了，有些人反而失去了在真實生活中與人接觸的能力，這真是不可忽視的缺點。",
+          "text": "在網路出現以前，想要做報告，得去圖書館借一堆書；想要認識新朋友，就非和本人面對面接觸不可。但現代社會只要有網路，就沒有時間和空間的限制，人人都可以隨時隨地傳訊息、查資料、認識世界各地的人。不但擴大了視野、增加了知識，甚至能和網友建立珍貴的友誼。但也因為這樣，越來越多人以網路傳訊息代替當面對話。時間久了，在真實世界中，人與人之間的關係就變得較冷淡了。",
           "start": 34.54,
-          "end": 80.05,
-          "score": 0.837,
+          "end": 77.79,
+          "score": 0.954,
           "chars": [
             {
               "charStart": 0,
@@ -86508,1645 +86648,1694 @@
               "score": 0.999
             },
             {
-              "charStart": 51,
-              "charEnd": 52,
+              "charStart": 50,
+              "charEnd": 51,
               "start": 47.17,
               "end": 47.31,
               "score": 0.999
             },
             {
-              "charStart": 52,
-              "charEnd": 53,
+              "charStart": 51,
+              "charEnd": 52,
               "start": 47.31,
               "end": 47.47,
               "score": 0.999
             },
             {
-              "charStart": 53,
-              "charEnd": 54,
+              "charStart": 52,
+              "charEnd": 53,
               "start": 47.47,
               "end": 47.65,
               "score": 0.999
             },
             {
-              "charStart": 54,
-              "charEnd": 55,
+              "charStart": 53,
+              "charEnd": 54,
               "start": 47.65,
               "end": 47.91,
               "score": 0.999
             },
             {
-              "charStart": 55,
-              "charEnd": 56,
+              "charStart": 54,
+              "charEnd": 55,
               "start": 47.91,
               "end": 48.41,
               "score": 0.999
             },
             {
-              "charStart": 57,
-              "charEnd": 58,
+              "charStart": 56,
+              "charEnd": 57,
               "start": 48.41,
               "end": 48.59,
               "score": 0.999
             },
             {
-              "charStart": 58,
-              "charEnd": 59,
+              "charStart": 57,
+              "charEnd": 58,
               "start": 48.59,
               "end": 48.71,
               "score": 1
             },
             {
-              "charStart": 59,
-              "charEnd": 60,
+              "charStart": 58,
+              "charEnd": 59,
               "start": 48.71,
               "end": 48.89,
               "score": 1
             },
             {
-              "charStart": 60,
-              "charEnd": 61,
+              "charStart": 59,
+              "charEnd": 60,
               "start": 48.89,
               "end": 49.11,
               "score": 0.956
             },
             {
-              "charStart": 61,
-              "charEnd": 62,
+              "charStart": 60,
+              "charEnd": 61,
               "start": 49.11,
               "end": 49.41,
               "score": 0.995
             },
             {
-              "charStart": 62,
-              "charEnd": 63,
+              "charStart": 61,
+              "charEnd": 62,
               "start": 49.41,
               "end": 49.59,
               "score": 1
             },
             {
-              "charStart": 63,
-              "charEnd": 64,
+              "charStart": 62,
+              "charEnd": 63,
               "start": 49.59,
               "end": 49.79,
               "score": 0.988
             },
             {
-              "charStart": 64,
-              "charEnd": 65,
+              "charStart": 63,
+              "charEnd": 64,
               "start": 49.79,
               "end": 49.95,
               "score": 0.97
             },
             {
-              "charStart": 65,
-              "charEnd": 66,
+              "charStart": 64,
+              "charEnd": 65,
               "start": 49.95,
               "end": 50.07,
               "score": 0.997
             },
             {
-              "charStart": 66,
-              "charEnd": 67,
+              "charStart": 65,
+              "charEnd": 66,
               "start": 50.07,
               "end": 50.35,
               "score": 0.939
             },
             {
-              "charStart": 67,
-              "charEnd": 68,
+              "charStart": 66,
+              "charEnd": 67,
               "start": 50.35,
               "end": 51.23,
               "score": 0.936
             },
             {
-              "charStart": 69,
-              "charEnd": 70,
+              "charStart": 68,
+              "charEnd": 69,
               "start": 51.23,
               "end": 51.45,
               "score": 1
             },
             {
-              "charStart": 70,
-              "charEnd": 71,
+              "charStart": 69,
+              "charEnd": 70,
               "start": 51.45,
               "end": 51.67,
               "score": 0.955
             },
             {
-              "charStart": 71,
-              "charEnd": 72,
+              "charStart": 70,
+              "charEnd": 71,
               "start": 51.67,
               "end": 51.81,
               "score": 0.999
             },
             {
-              "charStart": 72,
-              "charEnd": 73,
+              "charStart": 71,
+              "charEnd": 72,
               "start": 51.81,
               "end": 51.95,
               "score": 1
             },
             {
-              "charStart": 73,
-              "charEnd": 74,
+              "charStart": 72,
+              "charEnd": 73,
               "start": 51.95,
               "end": 52.13,
               "score": 1
             },
             {
-              "charStart": 74,
-              "charEnd": 75,
+              "charStart": 73,
+              "charEnd": 74,
               "start": 52.13,
               "end": 52.43,
               "score": 0.999
             },
             {
-              "charStart": 75,
-              "charEnd": 76,
+              "charStart": 74,
+              "charEnd": 75,
               "start": 52.43,
               "end": 52.63,
               "score": 0.854
             },
             {
-              "charStart": 76,
-              "charEnd": 77,
+              "charStart": 75,
+              "charEnd": 76,
               "start": 52.63,
               "end": 52.83,
               "score": 0.999
             },
             {
-              "charStart": 77,
-              "charEnd": 78,
+              "charStart": 76,
+              "charEnd": 77,
               "start": 52.83,
               "end": 53.05,
               "score": 0.504
             },
             {
-              "charStart": 78,
-              "charEnd": 79,
+              "charStart": 77,
+              "charEnd": 78,
               "start": 53.05,
               "end": 53.33,
               "score": 0.982
             },
             {
-              "charStart": 79,
-              "charEnd": 80,
+              "charStart": 78,
+              "charEnd": 79,
               "start": 53.33,
               "end": 53.59,
               "score": 0.931
             },
             {
-              "charStart": 80,
-              "charEnd": 81,
+              "charStart": 79,
+              "charEnd": 80,
               "start": 53.59,
               "end": 54.22,
               "score": 0.999
             },
             {
-              "charStart": 82,
-              "charEnd": 83,
+              "charStart": 81,
+              "charEnd": 82,
               "start": 54.22,
               "end": 54.52,
               "score": 0.921
             },
             {
-              "charStart": 83,
-              "charEnd": 84,
+              "charStart": 82,
+              "charEnd": 83,
               "start": 54.52,
               "end": 54.68,
               "score": 0.999
             },
             {
-              "charStart": 84,
-              "charEnd": 85,
+              "charStart": 83,
+              "charEnd": 84,
               "start": 54.68,
               "end": 55.38,
               "score": 0.501
             },
             {
-              "charStart": 86,
-              "charEnd": 87,
+              "charStart": 85,
+              "charEnd": 86,
               "start": 55.38,
               "end": 55.56,
               "score": 1
             },
             {
-              "charStart": 87,
-              "charEnd": 88,
+              "charStart": 86,
+              "charEnd": 87,
               "start": 55.56,
               "end": 55.78,
               "score": 0.96
             },
             {
-              "charStart": 88,
-              "charEnd": 89,
+              "charStart": 87,
+              "charEnd": 88,
               "start": 55.78,
               "end": 56,
               "score": 0.898
             },
             {
-              "charStart": 89,
-              "charEnd": 90,
+              "charStart": 88,
+              "charEnd": 89,
               "start": 56,
               "end": 56.2,
               "score": 0.99
             },
             {
-              "charStart": 90,
-              "charEnd": 91,
+              "charStart": 89,
+              "charEnd": 90,
               "start": 56.2,
               "end": 56.36,
               "score": 0.998
             },
             {
-              "charStart": 91,
-              "charEnd": 92,
+              "charStart": 90,
+              "charEnd": 91,
               "start": 56.36,
               "end": 56.5,
               "score": 0.509
             },
             {
-              "charStart": 92,
-              "charEnd": 93,
+              "charStart": 91,
+              "charEnd": 92,
               "start": 56.5,
               "end": 56.64,
               "score": 0.998
             },
             {
-              "charStart": 93,
-              "charEnd": 94,
+              "charStart": 92,
+              "charEnd": 93,
               "start": 56.64,
               "end": 57.8,
               "score": 0.999
             },
             {
-              "charStart": 95,
-              "charEnd": 96,
+              "charStart": 94,
+              "charEnd": 95,
               "start": 57.8,
               "end": 57.94,
               "score": 0.999
             },
             {
-              "charStart": 96,
-              "charEnd": 97,
+              "charStart": 95,
+              "charEnd": 96,
               "start": 57.94,
               "end": 58.14,
               "score": 0.999
             },
             {
-              "charStart": 97,
-              "charEnd": 98,
+              "charStart": 96,
+              "charEnd": 97,
               "start": 58.14,
               "end": 58.34,
               "score": 0.998
             },
             {
-              "charStart": 98,
-              "charEnd": 99,
+              "charStart": 97,
+              "charEnd": 98,
               "start": 58.34,
               "end": 58.52,
               "score": 0.997
             },
             {
-              "charStart": 99,
-              "charEnd": 100,
+              "charStart": 98,
+              "charEnd": 99,
               "start": 58.52,
               "end": 58.68,
               "score": 0.996
             },
             {
-              "charStart": 100,
-              "charEnd": 101,
+              "charStart": 99,
+              "charEnd": 100,
               "start": 58.68,
               "end": 58.9,
               "score": 0.993
             },
             {
-              "charStart": 101,
-              "charEnd": 102,
+              "charStart": 100,
+              "charEnd": 101,
               "start": 58.9,
               "end": 59.5,
               "score": 0.998
             },
             {
-              "charStart": 103,
-              "charEnd": 104,
+              "charStart": 102,
+              "charEnd": 103,
               "start": 59.5,
               "end": 59.7,
               "score": 0.998
             },
             {
-              "charStart": 104,
-              "charEnd": 105,
+              "charStart": 103,
+              "charEnd": 104,
               "start": 59.7,
               "end": 59.88,
               "score": 0.999
             },
             {
-              "charStart": 105,
-              "charEnd": 106,
+              "charStart": 104,
+              "charEnd": 105,
               "start": 59.88,
               "end": 60,
               "score": 0.994
             },
             {
-              "charStart": 106,
-              "charEnd": 107,
+              "charStart": 105,
+              "charEnd": 106,
               "start": 60,
               "end": 60.24,
               "score": 0.959
             },
             {
-              "charStart": 107,
-              "charEnd": 108,
+              "charStart": 106,
+              "charEnd": 107,
               "start": 60.24,
               "end": 61.12,
               "score": 0.981
             },
             {
-              "charStart": 109,
-              "charEnd": 110,
+              "charStart": 108,
+              "charEnd": 109,
               "start": 61.12,
               "end": 61.32,
               "score": 0.999
             },
             {
-              "charStart": 110,
-              "charEnd": 111,
+              "charStart": 109,
+              "charEnd": 110,
               "start": 61.32,
               "end": 61.46,
               "score": 0.968
             },
             {
-              "charStart": 111,
-              "charEnd": 112,
+              "charStart": 110,
+              "charEnd": 111,
               "start": 61.46,
               "end": 61.7,
               "score": 0.98
             },
             {
-              "charStart": 112,
-              "charEnd": 113,
+              "charStart": 111,
+              "charEnd": 112,
               "start": 61.7,
               "end": 61.88,
               "score": 1
             },
             {
-              "charStart": 113,
-              "charEnd": 114,
+              "charStart": 112,
+              "charEnd": 113,
               "start": 61.88,
               "end": 62.1,
               "score": 0.998
             },
             {
-              "charStart": 114,
-              "charEnd": 115,
+              "charStart": 113,
+              "charEnd": 114,
               "start": 62.1,
               "end": 62.34,
               "score": 0.999
             },
             {
-              "charStart": 115,
-              "charEnd": 116,
+              "charStart": 114,
+              "charEnd": 115,
               "start": 62.34,
               "end": 62.52,
               "score": 0.951
             },
             {
-              "charStart": 116,
-              "charEnd": 117,
+              "charStart": 115,
+              "charEnd": 116,
               "start": 62.52,
               "end": 62.7,
               "score": 0.999
             },
             {
-              "charStart": 117,
-              "charEnd": 118,
+              "charStart": 116,
+              "charEnd": 117,
               "start": 62.7,
               "end": 62.92,
               "score": 0.923
             },
             {
-              "charStart": 118,
-              "charEnd": 119,
+              "charStart": 117,
+              "charEnd": 118,
               "start": 62.92,
               "end": 63.08,
               "score": 0.996
             },
             {
-              "charStart": 119,
-              "charEnd": 120,
+              "charStart": 118,
+              "charEnd": 119,
               "start": 63.08,
               "end": 63.2,
               "score": 0.998
             },
             {
-              "charStart": 120,
-              "charEnd": 121,
+              "charStart": 119,
+              "charEnd": 120,
               "start": 63.2,
               "end": 63.44,
               "score": 0.997
             },
             {
-              "charStart": 121,
-              "charEnd": 122,
+              "charStart": 120,
+              "charEnd": 121,
               "start": 63.44,
               "end": 64.76,
               "score": 0.746
             },
             {
-              "charStart": 123,
-              "charEnd": 124,
+              "charStart": 122,
+              "charEnd": 123,
               "start": 64.76,
               "end": 65.08,
               "score": 0.999
             },
             {
-              "charStart": 124,
-              "charEnd": 125,
+              "charStart": 123,
+              "charEnd": 124,
               "start": 65.08,
               "end": 65.24,
               "score": 0.998
             },
             {
-              "charStart": 125,
-              "charEnd": 126,
+              "charStart": 124,
+              "charEnd": 125,
               "start": 65.24,
               "end": 65.42,
               "score": 0.997
             },
             {
-              "charStart": 126,
-              "charEnd": 127,
+              "charStart": 125,
+              "charEnd": 126,
               "start": 65.42,
               "end": 65.56,
               "score": 0.998
             },
             {
-              "charStart": 127,
-              "charEnd": 128,
+              "charStart": 126,
+              "charEnd": 127,
               "start": 65.56,
               "end": 65.78,
               "score": 0.979
             },
             {
-              "charStart": 128,
-              "charEnd": 129,
+              "charStart": 127,
+              "charEnd": 128,
               "start": 65.78,
               "end": 66.92,
               "score": 0.961
             },
             {
-              "charStart": 130,
-              "charEnd": 131,
+              "charStart": 129,
+              "charEnd": 130,
               "start": 66.92,
               "end": 67.08,
               "score": 0.988
             },
             {
-              "charStart": 131,
-              "charEnd": 132,
+              "charStart": 130,
+              "charEnd": 131,
               "start": 67.08,
               "end": 67.24,
               "score": 0.999
             },
             {
-              "charStart": 132,
-              "charEnd": 133,
+              "charStart": 131,
+              "charEnd": 132,
               "start": 67.24,
               "end": 67.4,
               "score": 0.925
             },
             {
-              "charStart": 133,
-              "charEnd": 134,
+              "charStart": 132,
+              "charEnd": 133,
               "start": 67.4,
               "end": 67.6,
               "score": 0.985
             },
             {
-              "charStart": 134,
-              "charEnd": 135,
+              "charStart": 133,
+              "charEnd": 134,
               "start": 67.6,
               "end": 68.02,
               "score": 1
             },
             {
-              "charStart": 135,
-              "charEnd": 136,
+              "charStart": 134,
+              "charEnd": 135,
               "start": 68.02,
               "end": 68.2,
               "score": 0.857
             },
             {
-              "charStart": 136,
-              "charEnd": 137,
+              "charStart": 135,
+              "charEnd": 136,
               "start": 68.2,
               "end": 68.4,
               "score": 0.945
             },
             {
-              "charStart": 137,
-              "charEnd": 138,
+              "charStart": 136,
+              "charEnd": 137,
               "start": 68.4,
               "end": 68.56,
               "score": 0.997
             },
             {
-              "charStart": 138,
-              "charEnd": 139,
+              "charStart": 137,
+              "charEnd": 138,
               "start": 68.56,
               "end": 68.82,
               "score": 0.956
             },
             {
-              "charStart": 139,
-              "charEnd": 140,
+              "charStart": 138,
+              "charEnd": 139,
               "start": 68.82,
               "end": 69.08,
               "score": 0.999
             },
             {
-              "charStart": 140,
-              "charEnd": 141,
+              "charStart": 139,
+              "charEnd": 140,
               "start": 69.08,
               "end": 69.49,
               "score": 0.999
             },
             {
-              "charStart": 141,
-              "charEnd": 142,
+              "charStart": 140,
+              "charEnd": 141,
               "start": 69.49,
               "end": 69.69,
               "score": 0.998
             },
             {
-              "charStart": 142,
-              "charEnd": 143,
+              "charStart": 141,
+              "charEnd": 142,
               "start": 69.69,
               "end": 69.89,
               "score": 0.746
             },
             {
-              "charStart": 143,
-              "charEnd": 144,
+              "charStart": 142,
+              "charEnd": 143,
               "start": 69.89,
               "end": 70.11,
               "score": 0.995
             },
             {
-              "charStart": 144,
-              "charEnd": 145,
+              "charStart": 143,
+              "charEnd": 144,
               "start": 70.11,
               "end": 70.33,
               "score": 0.934
             },
             {
-              "charStart": 145,
-              "charEnd": 146,
+              "charStart": 144,
+              "charEnd": 145,
               "start": 70.33,
               "end": 70.53,
               "score": 0.999
             },
             {
-              "charStart": 146,
-              "charEnd": 147,
+              "charStart": 145,
+              "charEnd": 146,
               "start": 70.53,
               "end": 71.75,
               "score": 0.999
             },
             {
-              "charStart": 148,
-              "charEnd": 149,
+              "charStart": 147,
+              "charEnd": 148,
               "start": 71.75,
               "end": 71.91,
               "score": 0.616
             },
             {
-              "charStart": 149,
-              "charEnd": 150,
+              "charStart": 148,
+              "charEnd": 149,
               "start": 71.91,
               "end": 72.09,
               "score": 0.702
             },
             {
+              "charStart": 149,
+              "charEnd": 150,
+              "start": 72.09,
+              "end": 72.35,
+              "score": 0.752
+            },
+            {
               "charStart": 150,
               "charEnd": 151,
-              "start": 72.09,
-              "end": 72.19,
-              "score": 0.505
-            },
-            {
-              "charStart": 151,
-              "charEnd": 152,
-              "start": 72.19,
-              "end": 72.25,
-              "score": 0
-            },
-            {
-              "charStart": 153,
-              "charEnd": 154,
-              "start": 72.25,
-              "end": 72.31,
-              "score": 0.247
-            },
-            {
-              "charStart": 154,
-              "charEnd": 155,
-              "start": 72.31,
-              "end": 72.41,
-              "score": 0
-            },
-            {
-              "charStart": 155,
-              "charEnd": 156,
-              "start": 72.41,
-              "end": 72.49,
-              "score": 0.331
-            },
-            {
-              "charStart": 156,
-              "charEnd": 157,
-              "start": 72.49,
-              "end": 72.55,
-              "score": 0
-            },
-            {
-              "charStart": 157,
-              "charEnd": 158,
-              "start": 72.55,
-              "end": 72.63,
-              "score": 0
-            },
-            {
-              "charStart": 158,
-              "charEnd": 159,
-              "start": 72.63,
-              "end": 72.69,
-              "score": 0
-            },
-            {
-              "charStart": 159,
-              "charEnd": 160,
-              "start": 72.69,
-              "end": 72.77,
-              "score": 0
-            },
-            {
-              "charStart": 160,
-              "charEnd": 161,
-              "start": 72.77,
+              "start": 72.35,
               "end": 72.91,
-              "score": 0
+              "score": 0.979
             },
             {
-              "charStart": 161,
-              "charEnd": 162,
+              "charStart": 152,
+              "charEnd": 153,
               "start": 72.91,
               "end": 73.15,
               "score": 0.999
             },
             {
-              "charStart": 162,
-              "charEnd": 163,
+              "charStart": 153,
+              "charEnd": 154,
               "start": 73.15,
               "end": 73.35,
               "score": 0.976
             },
             {
-              "charStart": 163,
-              "charEnd": 164,
+              "charStart": 154,
+              "charEnd": 155,
               "start": 73.35,
               "end": 73.55,
               "score": 0.984
             },
             {
-              "charStart": 164,
-              "charEnd": 165,
+              "charStart": 155,
+              "charEnd": 156,
               "start": 73.55,
-              "end": 73.75,
-              "score": 0.394
+              "end": 73.71,
+              "score": 0.987
             },
             {
-              "charStart": 165,
-              "charEnd": 166,
-              "start": 73.75,
+              "charStart": 156,
+              "charEnd": 157,
+              "start": 73.71,
               "end": 73.89,
-              "score": 0
+              "score": 0.98
             },
             {
-              "charStart": 166,
-              "charEnd": 167,
+              "charStart": 157,
+              "charEnd": 158,
               "start": 73.89,
-              "end": 74.79,
+              "end": 74.61,
               "score": 0.992
             },
             {
-              "charStart": 167,
-              "charEnd": 168,
+              "charStart": 159,
+              "charEnd": 160,
+              "start": 74.61,
+              "end": 74.79,
+              "score": 1
+            },
+            {
+              "charStart": 160,
+              "charEnd": 161,
               "start": 74.79,
               "end": 74.93,
               "score": 0.972
             },
             {
+              "charStart": 161,
+              "charEnd": 162,
+              "start": 74.93,
+              "end": 75.11,
+              "score": 0.999
+            },
+            {
+              "charStart": 162,
+              "charEnd": 163,
+              "start": 75.11,
+              "end": 75.23,
+              "score": 0.996
+            },
+            {
+              "charStart": 163,
+              "charEnd": 164,
+              "start": 75.23,
+              "end": 75.37,
+              "score": 0.996
+            },
+            {
+              "charStart": 164,
+              "charEnd": 165,
+              "start": 75.37,
+              "end": 75.45,
+              "score": 0.996
+            },
+            {
+              "charStart": 165,
+              "charEnd": 166,
+              "start": 75.45,
+              "end": 75.75,
+              "score": 0.997
+            },
+            {
+              "charStart": 166,
+              "charEnd": 167,
+              "start": 75.75,
+              "end": 76.31,
+              "score": 0.997
+            },
+            {
+              "charStart": 167,
+              "charEnd": 168,
+              "start": 76.31,
+              "end": 76.47,
+              "score": 0.994
+            },
+            {
               "charStart": 168,
               "charEnd": 169,
-              "start": 74.93,
-              "end": 75.23,
-              "score": 0.999
+              "start": 76.47,
+              "end": 76.63,
+              "score": 0.959
             },
             {
               "charStart": 169,
               "charEnd": 170,
-              "start": 75.23,
-              "end": 75.37,
-              "score": 0.668
+              "start": 76.63,
+              "end": 76.75,
+              "score": 0.994
             },
             {
               "charStart": 170,
               "charEnd": 171,
-              "start": 75.37,
-              "end": 75.53,
-              "score": 0.333
+              "start": 76.75,
+              "end": 76.99,
+              "score": 0.993
             },
             {
               "charStart": 171,
               "charEnd": 172,
-              "start": 75.53,
-              "end": 75.63,
-              "score": 0
+              "start": 76.99,
+              "end": 77.27,
+              "score": 0.82
             },
             {
               "charStart": 172,
               "charEnd": 173,
-              "start": 75.63,
-              "end": 76.47,
-              "score": 0.266
+              "start": 77.27,
+              "end": 77.55,
+              "score": 0.996
             },
             {
               "charStart": 173,
               "charEnd": 174,
-              "start": 76.47,
-              "end": 76.57,
-              "score": 0.499
-            },
-            {
-              "charStart": 175,
-              "charEnd": 176,
-              "start": 76.57,
-              "end": 76.75,
-              "score": 0.331
-            },
-            {
-              "charStart": 176,
-              "charEnd": 177,
-              "start": 76.75,
-              "end": 78.55,
-              "score": 0.486
-            },
-            {
-              "charStart": 177,
-              "charEnd": 178,
-              "start": 79.09,
-              "end": 79.29,
-              "score": 0.333
-            },
-            {
-              "charStart": 178,
-              "charEnd": 179,
-              "start": 79.29,
-              "end": 79.37,
-              "score": 0
-            },
-            {
-              "charStart": 179,
-              "charEnd": 180,
-              "start": 79.37,
-              "end": 79.45,
-              "score": 0
-            },
-            {
-              "charStart": 180,
-              "charEnd": 181,
-              "start": 79.45,
-              "end": 79.61,
-              "score": 0.5
-            },
-            {
-              "charStart": 181,
-              "charEnd": 182,
-              "start": 79.61,
-              "end": 79.69,
-              "score": 0.994
-            },
-            {
-              "charStart": 182,
-              "charEnd": 183,
-              "start": 79.69,
-              "end": 79.77,
-              "score": 0
-            },
-            {
-              "charStart": 183,
-              "charEnd": 184,
-              "start": 79.77,
-              "end": 79.95,
-              "score": 0.331
-            },
-            {
-              "charStart": 184,
-              "charEnd": 185,
-              "start": 79.95,
-              "end": 80.05,
-              "score": 0.25
+              "start": 77.55,
+              "end": 77.79,
+              "score": 0.993
             }
           ],
           "words": [],
           "unmatched": false
         },
         {
-          "index": 2,
+          "index": 3,
           "speaker": "旁白",
-          "text": "再說，網路雖然為現代人帶來了不少好處，但也有壞處。比如有些人在網路上說的話不一定是真的。某人已經五十歲了，在網路上卻說自己才二十歲，甚至拿別人的照片當作自己的大頭照。更嚴重的是，有些騙子利用別人的同情心騙錢，那些騙子不僅可惡，還對不起社會。",
-          "start": 80.13,
+          "text": "在網路世界中，這種不必面對面的溝通方式，也讓部分不誠實的人，有機會用假資料到處騙人。例如，某人已經五十歲了，在網路上卻說自己才二十歲；有人已經有了老公或老婆，卻假裝自己單身。還有一些花心又不老實的人，用浪漫的話，讓渴望愛情的人或不懂事的青少年上當，那些騙子不僅可惡，還對不起社會。",
+          "start": 79.09,
           "end": 113.39,
-          "score": 0.569,
+          "score": 0.956,
           "chars": [
             {
               "charStart": 0,
               "charEnd": 1,
-              "start": 80.13,
-              "end": 80.53,
-              "score": 0
+              "start": 79.09,
+              "end": 79.29,
+              "score": 0.999
             },
             {
               "charStart": 1,
               "charEnd": 2,
-              "start": 80.53,
-              "end": 80.67,
-              "score": 0.25
+              "start": 79.29,
+              "end": 79.45,
+              "score": 0.981
+            },
+            {
+              "charStart": 2,
+              "charEnd": 3,
+              "start": 79.45,
+              "end": 79.61,
+              "score": 0.999
             },
             {
               "charStart": 3,
               "charEnd": 4,
-              "start": 80.67,
-              "end": 80.83,
-              "score": 0.498
+              "start": 79.61,
+              "end": 79.77,
+              "score": 0.994
             },
             {
               "charStart": 4,
               "charEnd": 5,
-              "start": 80.83,
-              "end": 80.99,
-              "score": 0.499
+              "start": 79.77,
+              "end": 79.95,
+              "score": 0.995
             },
             {
               "charStart": 5,
               "charEnd": 6,
-              "start": 80.99,
-              "end": 81.19,
-              "score": 0.333
-            },
-            {
-              "charStart": 6,
-              "charEnd": 7,
-              "start": 81.19,
-              "end": 81.39,
-              "score": 0.666
+              "start": 79.95,
+              "end": 80.53,
+              "score": 0.976
             },
             {
               "charStart": 7,
               "charEnd": 8,
-              "start": 81.39,
-              "end": 81.53,
-              "score": 0.333
+              "start": 80.53,
+              "end": 80.67,
+              "score": 0.998
             },
             {
               "charStart": 8,
               "charEnd": 9,
-              "start": 81.53,
-              "end": 81.67,
-              "score": 0.746
+              "start": 80.67,
+              "end": 80.83,
+              "score": 0.981
             },
             {
               "charStart": 9,
               "charEnd": 10,
-              "start": 81.67,
-              "end": 81.95,
-              "score": 0.333
+              "start": 80.83,
+              "end": 80.99,
+              "score": 0.999
             },
             {
               "charStart": 10,
               "charEnd": 11,
-              "start": 81.95,
-              "end": 82.15,
-              "score": 0.333
+              "start": 80.99,
+              "end": 81.19,
+              "score": 0.998
             },
             {
               "charStart": 11,
               "charEnd": 12,
-              "start": 82.15,
-              "end": 83.25,
-              "score": 0.666
+              "start": 81.19,
+              "end": 81.39,
+              "score": 1
             },
             {
               "charStart": 12,
               "charEnd": 13,
-              "start": 83.25,
-              "end": 83.59,
-              "score": 0.333
+              "start": 81.39,
+              "end": 81.53,
+              "score": 0.999
             },
             {
               "charStart": 13,
               "charEnd": 14,
-              "start": 83.59,
-              "end": 83.79,
-              "score": 0.5
+              "start": 81.53,
+              "end": 81.67,
+              "score": 0.996
             },
             {
               "charStart": 14,
               "charEnd": 15,
-              "start": 83.79,
-              "end": 83.93,
+              "start": 81.67,
+              "end": 81.79,
               "score": 0.999
             },
             {
               "charStart": 15,
               "charEnd": 16,
-              "start": 83.93,
-              "end": 84.19,
-              "score": 0.246
+              "start": 81.79,
+              "end": 81.95,
+              "score": 0.999
             },
             {
               "charStart": 16,
               "charEnd": 17,
-              "start": 84.19,
-              "end": 84.29,
-              "score": 0
+              "start": 81.95,
+              "end": 82.15,
+              "score": 0.999
             },
             {
               "charStart": 17,
               "charEnd": 18,
-              "start": 84.29,
-              "end": 84.45,
-              "score": 0.324
+              "start": 82.15,
+              "end": 82.43,
+              "score": 0.931
             },
             {
-              "charStart": 19,
-              "charEnd": 20,
-              "start": 84.45,
-              "end": 84.59,
-              "score": 0.332
+              "charStart": 18,
+              "charEnd": 19,
+              "start": 82.43,
+              "end": 83.11,
+              "score": 0.998
             },
             {
               "charStart": 20,
               "charEnd": 21,
-              "start": 84.59,
-              "end": 85.12,
-              "score": 0.499
+              "start": 83.11,
+              "end": 83.25,
+              "score": 0.999
             },
             {
               "charStart": 21,
               "charEnd": 22,
-              "start": 85.12,
-              "end": 85.24,
-              "score": 0.998
+              "start": 83.25,
+              "end": 83.41,
+              "score": 0.971
             },
             {
               "charStart": 22,
               "charEnd": 23,
-              "start": 85.24,
-              "end": 85.4,
-              "score": 0.247
+              "start": 83.41,
+              "end": 83.59,
+              "score": 0.999
             },
             {
               "charStart": 23,
               "charEnd": 24,
-              "start": 85.4,
-              "end": 85.58,
-              "score": 0.666
+              "start": 83.59,
+              "end": 83.79,
+              "score": 0.999
+            },
+            {
+              "charStart": 24,
+              "charEnd": 25,
+              "start": 83.79,
+              "end": 83.93,
+              "score": 0.999
             },
             {
               "charStart": 25,
               "charEnd": 26,
-              "start": 85.58,
-              "end": 85.7,
-              "score": 0.499
+              "start": 83.93,
+              "end": 84.29,
+              "score": 0.989
             },
             {
               "charStart": 26,
               "charEnd": 27,
-              "start": 85.7,
-              "end": 85.74,
-              "score": 0
+              "start": 84.29,
+              "end": 84.45,
+              "score": 0.984
             },
             {
               "charStart": 27,
               "charEnd": 28,
-              "start": 85.74,
-              "end": 85.92,
-              "score": 0.666
+              "start": 84.45,
+              "end": 84.59,
+              "score": 0.996
             },
             {
               "charStart": 28,
               "charEnd": 29,
-              "start": 85.92,
-              "end": 86.12,
-              "score": 0.333
-            },
-            {
-              "charStart": 29,
-              "charEnd": 30,
-              "start": 86.12,
-              "end": 86.18,
-              "score": 0
+              "start": 84.59,
+              "end": 85.12,
+              "score": 0.998
             },
             {
               "charStart": 30,
               "charEnd": 31,
-              "start": 86.18,
-              "end": 86.38,
-              "score": 0.659
+              "start": 85.12,
+              "end": 85.28,
+              "score": 0.998
             },
             {
               "charStart": 31,
               "charEnd": 32,
-              "start": 86.38,
-              "end": 86.54,
-              "score": 0.248
+              "start": 85.28,
+              "end": 85.5,
+              "score": 0.991
             },
             {
               "charStart": 32,
               "charEnd": 33,
-              "start": 86.54,
-              "end": 86.58,
-              "score": 0
+              "start": 85.5,
+              "end": 85.74,
+              "score": 0.998
             },
             {
               "charStart": 33,
               "charEnd": 34,
-              "start": 86.58,
-              "end": 86.9,
-              "score": 0.2
+              "start": 85.74,
+              "end": 85.92,
+              "score": 0.995
             },
             {
               "charStart": 34,
               "charEnd": 35,
-              "start": 86.9,
-              "end": 87.06,
-              "score": 0.497
+              "start": 85.92,
+              "end": 86.18,
+              "score": 0.998
             },
             {
               "charStart": 35,
               "charEnd": 36,
-              "start": 87.06,
-              "end": 87.1,
-              "score": 0
+              "start": 86.18,
+              "end": 86.32,
+              "score": 0.999
             },
             {
               "charStart": 36,
               "charEnd": 37,
-              "start": 87.1,
-              "end": 87.3,
-              "score": 0.331
+              "start": 86.32,
+              "end": 86.66,
+              "score": 0.502
             },
             {
               "charStart": 37,
               "charEnd": 38,
-              "start": 87.3,
-              "end": 87.38,
-              "score": 0
+              "start": 86.66,
+              "end": 86.9,
+              "score": 0.999
             },
             {
               "charStart": 38,
               "charEnd": 39,
-              "start": 87.38,
-              "end": 87.46,
-              "score": 0
+              "start": 86.9,
+              "end": 87.1,
+              "score": 0.994
             },
             {
               "charStart": 39,
               "charEnd": 40,
-              "start": 87.46,
-              "end": 88.7,
-              "score": 0.25
+              "start": 87.1,
+              "end": 87.38,
+              "score": 0.992
             },
             {
               "charStart": 40,
               "charEnd": 41,
-              "start": 88.7,
-              "end": 88.88,
-              "score": 0.333
-            },
-            {
-              "charStart": 41,
-              "charEnd": 42,
-              "start": 88.88,
-              "end": 89.08,
-              "score": 0
+              "start": 87.38,
+              "end": 88.7,
+              "score": 0.999
             },
             {
               "charStart": 42,
               "charEnd": 43,
-              "start": 89.08,
-              "end": 89.62,
-              "score": 0
+              "start": 88.7,
+              "end": 88.88,
+              "score": 0.998
             },
             {
-              "charStart": 44,
-              "charEnd": 45,
+              "charStart": 43,
+              "charEnd": 44,
+              "start": 88.88,
+              "end": 89.62,
+              "score": 0.999
+            },
+            {
+              "charStart": 45,
+              "charEnd": 46,
               "start": 89.62,
               "end": 89.84,
               "score": 0.987
             },
             {
-              "charStart": 45,
-              "charEnd": 46,
+              "charStart": 46,
+              "charEnd": 47,
               "start": 89.84,
               "end": 90.14,
               "score": 0.999
             },
             {
-              "charStart": 46,
-              "charEnd": 47,
+              "charStart": 47,
+              "charEnd": 48,
               "start": 90.14,
               "end": 90.28,
               "score": 0.989
             },
             {
-              "charStart": 47,
-              "charEnd": 48,
+              "charStart": 48,
+              "charEnd": 49,
               "start": 90.28,
               "end": 90.5,
               "score": 0.922
             },
             {
-              "charStart": 48,
-              "charEnd": 49,
+              "charStart": 49,
+              "charEnd": 50,
               "start": 90.5,
               "end": 90.68,
               "score": 0.983
             },
             {
-              "charStart": 49,
-              "charEnd": 50,
+              "charStart": 50,
+              "charEnd": 51,
               "start": 90.68,
               "end": 90.86,
               "score": 0.941
             },
             {
-              "charStart": 50,
-              "charEnd": 51,
+              "charStart": 51,
+              "charEnd": 52,
               "start": 90.86,
               "end": 91.12,
               "score": 0.999
             },
             {
-              "charStart": 51,
-              "charEnd": 52,
+              "charStart": 52,
+              "charEnd": 53,
               "start": 91.12,
               "end": 91.78,
               "score": 0.998
             },
             {
-              "charStart": 53,
-              "charEnd": 54,
+              "charStart": 54,
+              "charEnd": 55,
               "start": 91.78,
               "end": 91.94,
               "score": 1
             },
             {
-              "charStart": 54,
-              "charEnd": 55,
+              "charStart": 55,
+              "charEnd": 56,
               "start": 91.94,
               "end": 92.12,
               "score": 0.995
             },
             {
-              "charStart": 55,
-              "charEnd": 56,
+              "charStart": 56,
+              "charEnd": 57,
               "start": 92.12,
               "end": 92.28,
               "score": 0.995
             },
             {
-              "charStart": 56,
-              "charEnd": 57,
+              "charStart": 57,
+              "charEnd": 58,
               "start": 92.28,
               "end": 92.56,
               "score": 0.983
             },
             {
-              "charStart": 57,
-              "charEnd": 58,
+              "charStart": 58,
+              "charEnd": 59,
               "start": 92.56,
               "end": 92.74,
               "score": 0.999
             },
             {
-              "charStart": 58,
-              "charEnd": 59,
+              "charStart": 59,
+              "charEnd": 60,
               "start": 92.74,
               "end": 92.9,
               "score": 0.988
             },
             {
-              "charStart": 59,
-              "charEnd": 60,
+              "charStart": 60,
+              "charEnd": 61,
               "start": 92.9,
               "end": 93.08,
               "score": 1
             },
             {
-              "charStart": 60,
-              "charEnd": 61,
+              "charStart": 61,
+              "charEnd": 62,
               "start": 93.08,
               "end": 93.3,
               "score": 0.999
             },
             {
-              "charStart": 61,
-              "charEnd": 62,
+              "charStart": 62,
+              "charEnd": 63,
               "start": 93.3,
               "end": 93.58,
               "score": 0.998
             },
             {
-              "charStart": 62,
-              "charEnd": 63,
+              "charStart": 63,
+              "charEnd": 64,
               "start": 93.58,
               "end": 93.76,
               "score": 0.016
             },
             {
-              "charStart": 63,
-              "charEnd": 64,
+              "charStart": 64,
+              "charEnd": 65,
               "start": 93.76,
               "end": 93.94,
               "score": 0.177
             },
             {
-              "charStart": 64,
-              "charEnd": 65,
+              "charStart": 65,
+              "charEnd": 66,
               "start": 93.94,
               "end": 95.36,
               "score": 0.979
             },
             {
-              "charStart": 66,
-              "charEnd": 67,
-              "start": 95.36,
-              "end": 95.72,
-              "score": 0.499
-            },
-            {
               "charStart": 67,
               "charEnd": 68,
-              "start": 95.72,
-              "end": 95.94,
-              "score": 0.333
+              "start": 95.36,
+              "end": 95.54,
+              "score": 0.999
             },
             {
               "charStart": 68,
               "charEnd": 69,
-              "start": 95.94,
-              "end": 96.02,
-              "score": 0.5
+              "start": 95.54,
+              "end": 95.72,
+              "score": 0.999
             },
             {
               "charStart": 69,
               "charEnd": 70,
-              "start": 96.02,
-              "end": 96.26,
-              "score": 0.333
+              "start": 95.72,
+              "end": 95.84,
+              "score": 0.975
             },
             {
               "charStart": 70,
               "charEnd": 71,
-              "start": 96.26,
-              "end": 96.54,
-              "score": 0
+              "start": 95.84,
+              "end": 96.02,
+              "score": 0.975
             },
             {
               "charStart": 71,
               "charEnd": 72,
-              "start": 96.54,
-              "end": 96.66,
-              "score": 0
+              "start": 96.02,
+              "end": 96.16,
+              "score": 0.999
             },
             {
               "charStart": 72,
               "charEnd": 73,
-              "start": 96.66,
-              "end": 97.22,
-              "score": 0.748
+              "start": 96.16,
+              "end": 96.26,
+              "score": 0.996
             },
             {
               "charStart": 73,
               "charEnd": 74,
-              "start": 97.22,
-              "end": 98.28,
-              "score": 0.25
+              "start": 96.26,
+              "end": 96.54,
+              "score": 0.996
             },
             {
               "charStart": 74,
               "charEnd": 75,
-              "start": 98.28,
-              "end": 98.48,
-              "score": 0.249
+              "start": 96.54,
+              "end": 96.84,
+              "score": 0.956
             },
             {
               "charStart": 75,
               "charEnd": 76,
-              "start": 98.48,
-              "end": 98.7,
-              "score": 0.666
+              "start": 96.84,
+              "end": 97,
+              "score": 0.935
             },
             {
               "charStart": 76,
               "charEnd": 77,
+              "start": 97,
+              "end": 97.22,
+              "score": 0.997
+            },
+            {
+              "charStart": 77,
+              "charEnd": 78,
+              "start": 97.22,
+              "end": 98.1,
+              "score": 0.999
+            },
+            {
+              "charStart": 79,
+              "charEnd": 80,
+              "start": 98.1,
+              "end": 98.28,
+              "score": 0.919
+            },
+            {
+              "charStart": 80,
+              "charEnd": 81,
+              "start": 98.28,
+              "end": 98.48,
+              "score": 0.999
+            },
+            {
+              "charStart": 81,
+              "charEnd": 82,
+              "start": 98.48,
+              "end": 98.7,
+              "score": 0.996
+            },
+            {
+              "charStart": 82,
+              "charEnd": 83,
               "start": 98.7,
               "end": 98.84,
               "score": 1
             },
             {
-              "charStart": 77,
-              "charEnd": 78,
+              "charStart": 83,
+              "charEnd": 84,
               "start": 98.84,
               "end": 99,
               "score": 0.999
             },
             {
-              "charStart": 78,
-              "charEnd": 79,
-              "start": 99,
-              "end": 100.79,
-              "score": 0.997
-            },
-            {
-              "charStart": 79,
-              "charEnd": 80,
-              "start": 100.79,
-              "end": 101.01,
-              "score": 0.5
-            },
-            {
-              "charStart": 80,
-              "charEnd": 81,
-              "start": 101.01,
-              "end": 101.25,
-              "score": 0.655
-            },
-            {
-              "charStart": 81,
-              "charEnd": 82,
-              "start": 101.25,
-              "end": 102.27,
-              "score": 0.748
-            },
-            {
-              "charStart": 83,
-              "charEnd": 84,
-              "start": 102.27,
-              "end": 103.59,
-              "score": 0.5
-            },
-            {
               "charStart": 84,
               "charEnd": 85,
-              "start": 103.59,
-              "end": 103.73,
-              "score": 0.666
+              "start": 99,
+              "end": 99.24,
+              "score": 0.996
             },
             {
               "charStart": 85,
               "charEnd": 86,
-              "start": 103.73,
-              "end": 104.19,
-              "score": 0.4
-            },
-            {
-              "charStart": 86,
-              "charEnd": 87,
-              "start": 104.19,
-              "end": 104.25,
-              "score": 0.998
+              "start": 99.24,
+              "end": 100.79,
+              "score": 0.963
             },
             {
               "charStart": 87,
               "charEnd": 88,
-              "start": 104.25,
-              "end": 105.05,
-              "score": 0.333
+              "start": 100.79,
+              "end": 101.01,
+              "score": 1
+            },
+            {
+              "charStart": 88,
+              "charEnd": 89,
+              "start": 101.01,
+              "end": 101.15,
+              "score": 0.988
             },
             {
               "charStart": 89,
               "charEnd": 90,
-              "start": 105.05,
-              "end": 105.19,
-              "score": 0
+              "start": 101.15,
+              "end": 101.25,
+              "score": 0.001
             },
             {
               "charStart": 90,
               "charEnd": 91,
-              "start": 105.19,
-              "end": 105.45,
-              "score": 0.333
+              "start": 101.25,
+              "end": 101.45,
+              "score": 0.999
             },
             {
               "charStart": 91,
               "charEnd": 92,
-              "start": 105.45,
-              "end": 105.57,
-              "score": 0.498
+              "start": 101.45,
+              "end": 101.71,
+              "score": 1
             },
             {
               "charStart": 92,
               "charEnd": 93,
-              "start": 105.57,
-              "end": 105.71,
-              "score": 0
+              "start": 101.71,
+              "end": 101.97,
+              "score": 1
             },
             {
               "charStart": 93,
               "charEnd": 94,
-              "start": 105.71,
-              "end": 105.85,
-              "score": 0.499
+              "start": 101.97,
+              "end": 102.13,
+              "score": 0.997
             },
             {
               "charStart": 94,
               "charEnd": 95,
-              "start": 105.85,
-              "end": 106.05,
-              "score": 0.468
+              "start": 102.13,
+              "end": 102.27,
+              "score": 0.998
             },
             {
               "charStart": 95,
               "charEnd": 96,
-              "start": 106.05,
-              "end": 106.15,
-              "score": 0.333
+              "start": 102.27,
+              "end": 102.55,
+              "score": 0.997
             },
             {
               "charStart": 96,
               "charEnd": 97,
+              "start": 102.55,
+              "end": 102.73,
+              "score": 0.984
+            },
+            {
+              "charStart": 97,
+              "charEnd": 98,
+              "start": 102.73,
+              "end": 102.85,
+              "score": 0.998
+            },
+            {
+              "charStart": 98,
+              "charEnd": 99,
+              "start": 102.85,
+              "end": 103.59,
+              "score": 1
+            },
+            {
+              "charStart": 100,
+              "charEnd": 101,
+              "start": 103.59,
+              "end": 103.83,
+              "score": 0.971
+            },
+            {
+              "charStart": 101,
+              "charEnd": 102,
+              "start": 103.83,
+              "end": 104.03,
+              "score": 0.997
+            },
+            {
+              "charStart": 102,
+              "charEnd": 103,
+              "start": 104.03,
+              "end": 104.19,
+              "score": 0.998
+            },
+            {
+              "charStart": 103,
+              "charEnd": 104,
+              "start": 104.19,
+              "end": 104.29,
+              "score": 0.998
+            },
+            {
+              "charStart": 104,
+              "charEnd": 105,
+              "start": 104.29,
+              "end": 105.05,
+              "score": 1
+            },
+            {
+              "charStart": 106,
+              "charEnd": 107,
+              "start": 105.05,
+              "end": 105.25,
+              "score": 0.995
+            },
+            {
+              "charStart": 107,
+              "charEnd": 108,
+              "start": 105.25,
+              "end": 105.45,
+              "score": 1
+            },
+            {
+              "charStart": 108,
+              "charEnd": 109,
+              "start": 105.45,
+              "end": 105.69,
+              "score": 0.998
+            },
+            {
+              "charStart": 109,
+              "charEnd": 110,
+              "start": 105.69,
+              "end": 105.85,
+              "score": 0.998
+            },
+            {
+              "charStart": 110,
+              "charEnd": 111,
+              "start": 105.85,
+              "end": 106.05,
+              "score": 0.967
+            },
+            {
+              "charStart": 111,
+              "charEnd": 112,
+              "start": 106.05,
+              "end": 106.15,
+              "score": 0.999
+            },
+            {
+              "charStart": 112,
+              "charEnd": 113,
               "start": 106.15,
               "end": 106.65,
               "score": 1
             },
             {
-              "charStart": 97,
-              "charEnd": 98,
-              "start": 106.65,
-              "end": 106.97,
-              "score": 0
-            },
-            {
-              "charStart": 98,
-              "charEnd": 99,
-              "start": 106.97,
-              "end": 107.45,
-              "score": 0.747
-            },
-            {
-              "charStart": 99,
-              "charEnd": 100,
-              "start": 107.45,
-              "end": 107.65,
-              "score": 0.974
-            },
-            {
-              "charStart": 100,
-              "charEnd": 101,
-              "start": 107.65,
-              "end": 107.87,
-              "score": 0.014
-            },
-            {
-              "charStart": 101,
-              "charEnd": 102,
-              "start": 107.87,
-              "end": 108.19,
-              "score": 0.748
-            },
-            {
-              "charStart": 102,
-              "charEnd": 103,
-              "start": 108.19,
-              "end": 109.99,
-              "score": 0.5
-            },
-            {
-              "charStart": 104,
-              "charEnd": 105,
-              "start": 110.01,
-              "end": 110.19,
-              "score": 0.987
-            },
-            {
-              "charStart": 105,
-              "charEnd": 106,
-              "start": 110.19,
-              "end": 110.35,
-              "score": 0.989
-            },
-            {
-              "charStart": 106,
-              "charEnd": 107,
-              "start": 110.35,
-              "end": 110.63,
-              "score": 0.947
-            },
-            {
-              "charStart": 107,
-              "charEnd": 108,
-              "start": 110.63,
-              "end": 110.77,
-              "score": 0.997
-            },
-            {
-              "charStart": 108,
-              "charEnd": 109,
-              "start": 110.77,
-              "end": 110.91,
-              "score": 0.997
-            },
-            {
-              "charStart": 109,
-              "charEnd": 110,
-              "start": 110.91,
-              "end": 111.13,
-              "score": 0.996
-            },
-            {
-              "charStart": 110,
-              "charEnd": 111,
-              "start": 111.13,
-              "end": 111.53,
-              "score": 0.999
-            },
-            {
-              "charStart": 111,
-              "charEnd": 112,
-              "start": 111.53,
-              "end": 112.09,
-              "score": 0.001
-            },
-            {
               "charStart": 113,
               "charEnd": 114,
-              "start": 112.09,
-              "end": 112.29,
-              "score": 0.999
+              "start": 106.65,
+              "end": 106.81,
+              "score": 0.996
             },
             {
               "charStart": 114,
               "charEnd": 115,
-              "start": 112.29,
-              "end": 112.45,
+              "start": 106.81,
+              "end": 106.97,
               "score": 0.999
             },
             {
               "charStart": 115,
               "charEnd": 116,
+              "start": 106.97,
+              "end": 107.21,
+              "score": 0.995
+            },
+            {
+              "charStart": 116,
+              "charEnd": 117,
+              "start": 107.21,
+              "end": 107.35,
+              "score": 0.999
+            },
+            {
+              "charStart": 117,
+              "charEnd": 118,
+              "start": 107.35,
+              "end": 107.45,
+              "score": 0.998
+            },
+            {
+              "charStart": 118,
+              "charEnd": 119,
+              "start": 107.45,
+              "end": 107.65,
+              "score": 0.974
+            },
+            {
+              "charStart": 119,
+              "charEnd": 120,
+              "start": 107.65,
+              "end": 107.87,
+              "score": 0.964
+            },
+            {
+              "charStart": 120,
+              "charEnd": 121,
+              "start": 107.87,
+              "end": 108.19,
+              "score": 0.992
+            },
+            {
+              "charStart": 121,
+              "charEnd": 122,
+              "start": 108.19,
+              "end": 108.45,
+              "score": 0.993
+            },
+            {
+              "charStart": 122,
+              "charEnd": 123,
+              "start": 108.45,
+              "end": 110.01,
+              "score": 0.999
+            },
+            {
+              "charStart": 124,
+              "charEnd": 125,
+              "start": 110.01,
+              "end": 110.19,
+              "score": 0.987
+            },
+            {
+              "charStart": 125,
+              "charEnd": 126,
+              "start": 110.19,
+              "end": 110.35,
+              "score": 0.989
+            },
+            {
+              "charStart": 126,
+              "charEnd": 127,
+              "start": 110.35,
+              "end": 110.63,
+              "score": 0.947
+            },
+            {
+              "charStart": 127,
+              "charEnd": 128,
+              "start": 110.63,
+              "end": 110.77,
+              "score": 0.997
+            },
+            {
+              "charStart": 128,
+              "charEnd": 129,
+              "start": 110.77,
+              "end": 110.91,
+              "score": 0.997
+            },
+            {
+              "charStart": 129,
+              "charEnd": 130,
+              "start": 110.91,
+              "end": 111.13,
+              "score": 0.996
+            },
+            {
+              "charStart": 130,
+              "charEnd": 131,
+              "start": 111.13,
+              "end": 111.53,
+              "score": 0.999
+            },
+            {
+              "charStart": 131,
+              "charEnd": 132,
+              "start": 111.53,
+              "end": 112.09,
+              "score": 0.001
+            },
+            {
+              "charStart": 133,
+              "charEnd": 134,
+              "start": 112.09,
+              "end": 112.29,
+              "score": 0.999
+            },
+            {
+              "charStart": 134,
+              "charEnd": 135,
+              "start": 112.29,
+              "end": 112.45,
+              "score": 0.999
+            },
+            {
+              "charStart": 135,
+              "charEnd": 136,
               "start": 112.45,
               "end": 112.57,
               "score": 0.999
             },
             {
-              "charStart": 116,
-              "charEnd": 117,
+              "charStart": 136,
+              "charEnd": 137,
               "start": 112.57,
               "end": 112.85,
               "score": 0.887
             },
             {
-              "charStart": 117,
-              "charEnd": 118,
+              "charStart": 137,
+              "charEnd": 138,
               "start": 112.85,
               "end": 113.07,
               "score": 0.989
             },
             {
-              "charStart": 118,
-              "charEnd": 119,
+              "charStart": 138,
+              "charEnd": 139,
               "start": 113.07,
               "end": 113.39,
               "score": 0.957
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false
         },
         {
-          "index": 3,
+          "index": 4,
           "speaker": "旁白",
-          "text": "網路只是提供一種更便利的交友方式給大家，至於要不要以網路交友，或是能不能找到合適的對象，就得看個人的智慧了。畢竟真實生活中的朋友，無論如何都比虛擬世界的網友重要，沒有人可以取代。",
+          "text": "網路世界有美好的一面，也有危險的一面，網路交友同樣有優缺點。透過社群網站，可以交到好朋友，甚至找到理想的結婚對象；萬一不幸交到了壞朋友，錢被騙走了，就算怪自己也是沒有用的。畢竟網路只是提供一種更便利的交友方式給大家，至於要不要以網路交友取代傳統的交流方式，就看個人的選擇了。",
           "start": 114.87,
-          "end": 148.28,
-          "score": 0.463,
+          "end": 148.3,
+          "score": 0.958,
           "chars": [
             {
               "charStart": 0,
@@ -88167,564 +88356,865 @@
               "charEnd": 3,
               "start": 115.23,
               "end": 115.41,
-              "score": 0.652
+              "score": 0.985
             },
             {
               "charStart": 3,
               "charEnd": 4,
               "start": 115.41,
-              "end": 115.98,
-              "score": 0
+              "end": 115.8,
+              "score": 0.99
             },
             {
               "charStart": 4,
               "charEnd": 5,
-              "start": 115.98,
-              "end": 116.24,
-              "score": 0.5
+              "start": 115.8,
+              "end": 115.98,
+              "score": 0.999
             },
             {
               "charStart": 5,
               "charEnd": 6,
-              "start": 116.24,
-              "end": 116.6,
-              "score": 0.25
+              "start": 115.98,
+              "end": 116.24,
+              "score": 0.999
             },
             {
               "charStart": 6,
               "charEnd": 7,
-              "start": 116.6,
-              "end": 117.48,
-              "score": 0.55
+              "start": 116.24,
+              "end": 116.48,
+              "score": 0.999
             },
             {
               "charStart": 7,
               "charEnd": 8,
-              "start": 117.48,
-              "end": 117.8,
-              "score": 0.2
+              "start": 116.48,
+              "end": 116.6,
+              "score": 0.999
             },
             {
               "charStart": 8,
               "charEnd": 9,
-              "start": 117.8,
-              "end": 118.54,
-              "score": 0.499
+              "start": 116.6,
+              "end": 116.74,
+              "score": 0.088
             },
             {
               "charStart": 9,
               "charEnd": 10,
-              "start": 118.54,
-              "end": 119.72,
-              "score": 0.746
-            },
-            {
-              "charStart": 10,
-              "charEnd": 11,
-              "start": 119.72,
-              "end": 119.88,
-              "score": 0
+              "start": 116.74,
+              "end": 117.48,
+              "score": 0.993
             },
             {
               "charStart": 11,
               "charEnd": 12,
-              "start": 119.88,
-              "end": 120,
-              "score": 0
+              "start": 117.48,
+              "end": 117.62,
+              "score": 0.999
             },
             {
               "charStart": 12,
               "charEnd": 13,
+              "start": 117.62,
+              "end": 117.8,
+              "score": 0.997
+            },
+            {
+              "charStart": 13,
+              "charEnd": 14,
+              "start": 117.8,
+              "end": 118.08,
+              "score": 0.999
+            },
+            {
+              "charStart": 14,
+              "charEnd": 15,
+              "start": 118.08,
+              "end": 118.3,
+              "score": 0.97
+            },
+            {
+              "charStart": 15,
+              "charEnd": 16,
+              "start": 118.3,
+              "end": 118.4,
+              "score": 0.988
+            },
+            {
+              "charStart": 16,
+              "charEnd": 17,
+              "start": 118.4,
+              "end": 118.54,
+              "score": 0.146
+            },
+            {
+              "charStart": 17,
+              "charEnd": 18,
+              "start": 118.54,
+              "end": 119.72,
+              "score": 0.996
+            },
+            {
+              "charStart": 19,
+              "charEnd": 20,
+              "start": 119.72,
+              "end": 119.88,
+              "score": 0.947
+            },
+            {
+              "charStart": 20,
+              "charEnd": 21,
+              "start": 119.88,
+              "end": 120,
+              "score": 0.999
+            },
+            {
+              "charStart": 21,
+              "charEnd": 22,
               "start": 120,
               "end": 120.22,
               "score": 0.998
             },
             {
-              "charStart": 13,
-              "charEnd": 14,
+              "charStart": 22,
+              "charEnd": 23,
               "start": 120.22,
               "end": 120.42,
               "score": 0.998
             },
             {
-              "charStart": 14,
-              "charEnd": 15,
-              "start": 120.42,
-              "end": 120.74,
-              "score": 0.499
-            },
-            {
-              "charStart": 15,
-              "charEnd": 16,
-              "start": 120.74,
-              "end": 120.9,
-              "score": 0
-            },
-            {
-              "charStart": 16,
-              "charEnd": 17,
-              "start": 120.9,
-              "end": 121.18,
-              "score": 0.265
-            },
-            {
-              "charStart": 17,
-              "charEnd": 18,
-              "start": 121.18,
-              "end": 121.36,
-              "score": 0
-            },
-            {
-              "charStart": 18,
-              "charEnd": 19,
-              "start": 121.36,
-              "end": 121.5,
-              "score": 0.001
-            },
-            {
-              "charStart": 20,
-              "charEnd": 21,
-              "start": 121.5,
-              "end": 121.68,
-              "score": 0.332
-            },
-            {
-              "charStart": 21,
-              "charEnd": 22,
-              "start": 121.68,
-              "end": 123.22,
-              "score": 0
-            },
-            {
-              "charStart": 22,
-              "charEnd": 23,
-              "start": 123.22,
-              "end": 123.4,
-              "score": 0.316
-            },
-            {
               "charStart": 23,
               "charEnd": 24,
-              "start": 123.4,
-              "end": 123.56,
-              "score": 0.498
+              "start": 120.42,
+              "end": 120.74,
+              "score": 0.999
             },
             {
               "charStart": 24,
               "charEnd": 25,
-              "start": 123.56,
-              "end": 123.76,
-              "score": 0.001
+              "start": 120.74,
+              "end": 121,
+              "score": 0.947
             },
             {
               "charStart": 25,
               "charEnd": 26,
-              "start": 123.76,
-              "end": 123.96,
-              "score": 0.001
+              "start": 121,
+              "end": 121.18,
+              "score": 0.998
             },
             {
               "charStart": 26,
               "charEnd": 27,
+              "start": 121.18,
+              "end": 121.36,
+              "score": 0.987
+            },
+            {
+              "charStart": 27,
+              "charEnd": 28,
+              "start": 121.36,
+              "end": 121.56,
+              "score": 0.917
+            },
+            {
+              "charStart": 28,
+              "charEnd": 29,
+              "start": 121.56,
+              "end": 123.22,
+              "score": 0.989
+            },
+            {
+              "charStart": 30,
+              "charEnd": 31,
+              "start": 123.22,
+              "end": 123.4,
+              "score": 0.959
+            },
+            {
+              "charStart": 31,
+              "charEnd": 32,
+              "start": 123.4,
+              "end": 123.56,
+              "score": 0.998
+            },
+            {
+              "charStart": 32,
+              "charEnd": 33,
+              "start": 123.56,
+              "end": 123.76,
+              "score": 0.995
+            },
+            {
+              "charStart": 33,
+              "charEnd": 34,
+              "start": 123.76,
+              "end": 123.96,
+              "score": 0.998
+            },
+            {
+              "charStart": 34,
+              "charEnd": 35,
               "start": 123.96,
               "end": 124.16,
               "score": 0.997
             },
             {
-              "charStart": 27,
-              "charEnd": 28,
+              "charStart": 35,
+              "charEnd": 36,
               "start": 124.16,
-              "end": 124.94,
-              "score": 0
+              "end": 124.7,
+              "score": 0.967
             },
             {
-              "charStart": 28,
-              "charEnd": 29,
+              "charStart": 37,
+              "charEnd": 38,
+              "start": 124.7,
+              "end": 124.84,
+              "score": 1
+            },
+            {
+              "charStart": 38,
+              "charEnd": 39,
+              "start": 124.84,
+              "end": 124.94,
+              "score": 1
+            },
+            {
+              "charStart": 39,
+              "charEnd": 40,
               "start": 124.94,
               "end": 125.12,
               "score": 0.998
             },
             {
-              "charStart": 29,
-              "charEnd": 30,
-              "start": 125.12,
-              "end": 125.26,
-              "score": 0.001
-            },
-            {
-              "charStart": 31,
-              "charEnd": 32,
-              "start": 125.26,
-              "end": 125.44,
-              "score": 0.666
-            },
-            {
-              "charStart": 32,
-              "charEnd": 33,
-              "start": 125.44,
-              "end": 125.52,
-              "score": 0
-            },
-            {
-              "charStart": 33,
-              "charEnd": 34,
-              "start": 125.52,
-              "end": 125.72,
-              "score": 0.749
-            },
-            {
-              "charStart": 34,
-              "charEnd": 35,
-              "start": 125.72,
-              "end": 126.42,
-              "score": 0.499
-            },
-            {
-              "charStart": 35,
-              "charEnd": 36,
-              "start": 126.42,
-              "end": 126.6,
-              "score": 0.573
-            },
-            {
-              "charStart": 36,
-              "charEnd": 37,
-              "start": 126.6,
-              "end": 126.94,
-              "score": 0.94
-            },
-            {
-              "charStart": 37,
-              "charEnd": 38,
-              "start": 126.94,
-              "end": 127.1,
-              "score": 0.998
-            },
-            {
-              "charStart": 38,
-              "charEnd": 39,
-              "start": 127.1,
-              "end": 127.32,
-              "score": 0
-            },
-            {
-              "charStart": 39,
-              "charEnd": 40,
-              "start": 127.32,
-              "end": 127.5,
-              "score": 0
-            },
-            {
               "charStart": 40,
               "charEnd": 41,
-              "start": 127.5,
-              "end": 127.98,
-              "score": 0.998
+              "start": 125.12,
+              "end": 125.26,
+              "score": 0.961
             },
             {
               "charStart": 41,
               "charEnd": 42,
-              "start": 127.98,
-              "end": 128.18,
+              "start": 125.26,
+              "end": 125.46,
               "score": 0.999
             },
             {
               "charStart": 42,
               "charEnd": 43,
-              "start": 128.18,
-              "end": 129.98,
-              "score": 0.977
+              "start": 125.46,
+              "end": 125.72,
+              "score": 0.999
             },
             {
-              "charStart": 44,
-              "charEnd": 45,
-              "start": 130.22,
-              "end": 130.44,
-              "score": 0.616
+              "charStart": 43,
+              "charEnd": 44,
+              "start": 125.72,
+              "end": 126.42,
+              "score": 0.999
             },
             {
               "charStart": 45,
               "charEnd": 46,
-              "start": 130.44,
-              "end": 130.68,
-              "score": 0.998
+              "start": 126.42,
+              "end": 126.6,
+              "score": 0.995
             },
             {
               "charStart": 46,
               "charEnd": 47,
-              "start": 130.68,
-              "end": 131.11,
-              "score": 0.665
+              "start": 126.6,
+              "end": 126.76,
+              "score": 0.998
             },
             {
               "charStart": 47,
               "charEnd": 48,
-              "start": 131.11,
-              "end": 132.21,
-              "score": 0.514
+              "start": 126.76,
+              "end": 126.94,
+              "score": 0.909
             },
             {
               "charStart": 48,
               "charEnd": 49,
-              "start": 132.21,
-              "end": 133.01,
-              "score": 0.665
+              "start": 126.94,
+              "end": 127.1,
+              "score": 0.998
             },
             {
               "charStart": 49,
               "charEnd": 50,
-              "start": 133.01,
-              "end": 134.39,
-              "score": 0.5
+              "start": 127.1,
+              "end": 127.32,
+              "score": 0.997
             },
             {
               "charStart": 50,
               "charEnd": 51,
-              "start": 134.39,
-              "end": 135.43,
-              "score": 1
+              "start": 127.32,
+              "end": 127.5,
+              "score": 0.996
             },
             {
               "charStart": 51,
               "charEnd": 52,
-              "start": 135.43,
-              "end": 135.91,
-              "score": 0.333
+              "start": 127.5,
+              "end": 127.62,
+              "score": 0.998
             },
             {
               "charStart": 52,
               "charEnd": 53,
-              "start": 135.91,
-              "end": 137.21,
-              "score": 0.5
+              "start": 127.62,
+              "end": 127.8,
+              "score": 0.98
+            },
+            {
+              "charStart": 53,
+              "charEnd": 54,
+              "start": 127.8,
+              "end": 127.98,
+              "score": 0.974
             },
             {
               "charStart": 54,
               "charEnd": 55,
+              "start": 127.98,
+              "end": 128.18,
+              "score": 0.999
+            },
+            {
+              "charStart": 55,
+              "charEnd": 56,
+              "start": 128.18,
+              "end": 129.52,
+              "score": 0.977
+            },
+            {
+              "charStart": 57,
+              "charEnd": 58,
+              "start": 129.52,
+              "end": 129.7,
+              "score": 0.996
+            },
+            {
+              "charStart": 58,
+              "charEnd": 59,
+              "start": 129.7,
+              "end": 129.86,
+              "score": 0.923
+            },
+            {
+              "charStart": 59,
+              "charEnd": 60,
+              "start": 129.86,
+              "end": 130.02,
+              "score": 0.998
+            },
+            {
+              "charStart": 60,
+              "charEnd": 61,
+              "start": 130.02,
+              "end": 130.22,
+              "score": 0.85
+            },
+            {
+              "charStart": 61,
+              "charEnd": 62,
+              "start": 130.22,
+              "end": 130.44,
+              "score": 0.961
+            },
+            {
+              "charStart": 62,
+              "charEnd": 63,
+              "start": 130.44,
+              "end": 130.58,
+              "score": 0.998
+            },
+            {
+              "charStart": 63,
+              "charEnd": 64,
+              "start": 130.58,
+              "end": 130.68,
+              "score": 0.995
+            },
+            {
+              "charStart": 64,
+              "charEnd": 65,
+              "start": 130.68,
+              "end": 130.92,
+              "score": 0.998
+            },
+            {
+              "charStart": 65,
+              "charEnd": 66,
+              "start": 130.92,
+              "end": 131.19,
+              "score": 0.997
+            },
+            {
+              "charStart": 66,
+              "charEnd": 67,
+              "start": 131.19,
+              "end": 131.87,
+              "score": 0.997
+            },
+            {
+              "charStart": 68,
+              "charEnd": 69,
+              "start": 131.87,
+              "end": 132.35,
+              "score": 0.956
+            },
+            {
+              "charStart": 69,
+              "charEnd": 70,
+              "start": 132.35,
+              "end": 132.49,
+              "score": 0.996
+            },
+            {
+              "charStart": 70,
+              "charEnd": 71,
+              "start": 132.49,
+              "end": 132.79,
+              "score": 0.989
+            },
+            {
+              "charStart": 71,
+              "charEnd": 72,
+              "start": 132.79,
+              "end": 133.01,
+              "score": 0.991
+            },
+            {
+              "charStart": 72,
+              "charEnd": 73,
+              "start": 133.01,
+              "end": 133.79,
+              "score": 0.997
+            },
+            {
+              "charStart": 74,
+              "charEnd": 75,
+              "start": 133.79,
+              "end": 133.99,
+              "score": 0.877
+            },
+            {
+              "charStart": 75,
+              "charEnd": 76,
+              "start": 133.99,
+              "end": 134.17,
+              "score": 0.984
+            },
+            {
+              "charStart": 76,
+              "charEnd": 77,
+              "start": 134.17,
+              "end": 134.39,
+              "score": 0.995
+            },
+            {
+              "charStart": 77,
+              "charEnd": 78,
+              "start": 134.39,
+              "end": 134.55,
+              "score": 0.999
+            },
+            {
+              "charStart": 78,
+              "charEnd": 79,
+              "start": 134.55,
+              "end": 134.99,
+              "score": 0.999
+            },
+            {
+              "charStart": 79,
+              "charEnd": 80,
+              "start": 134.99,
+              "end": 135.13,
+              "score": 0.999
+            },
+            {
+              "charStart": 80,
+              "charEnd": 81,
+              "start": 135.13,
+              "end": 135.29,
+              "score": 0.999
+            },
+            {
+              "charStart": 81,
+              "charEnd": 82,
+              "start": 135.29,
+              "end": 135.43,
+              "score": 0.999
+            },
+            {
+              "charStart": 82,
+              "charEnd": 83,
+              "start": 135.43,
+              "end": 135.61,
+              "score": 0.999
+            },
+            {
+              "charStart": 83,
+              "charEnd": 84,
+              "start": 135.61,
+              "end": 135.91,
+              "score": 0.999
+            },
+            {
+              "charStart": 84,
+              "charEnd": 85,
+              "start": 135.91,
+              "end": 137.21,
+              "score": 0.999
+            },
+            {
+              "charStart": 86,
+              "charEnd": 87,
               "start": 137.21,
               "end": 137.39,
               "score": 0.991
             },
             {
-              "charStart": 55,
-              "charEnd": 56,
+              "charStart": 87,
+              "charEnd": 88,
               "start": 137.39,
+              "end": 137.61,
+              "score": 0.836
+            },
+            {
+              "charStart": 88,
+              "charEnd": 89,
+              "start": 137.61,
+              "end": 137.81,
+              "score": 0.999
+            },
+            {
+              "charStart": 89,
+              "charEnd": 90,
+              "start": 137.81,
               "end": 138.11,
               "score": 0.999
             },
             {
-              "charStart": 56,
-              "charEnd": 57,
+              "charStart": 90,
+              "charEnd": 91,
               "start": 138.11,
               "end": 138.25,
-              "score": 0.498
+              "score": 0.997
             },
             {
-              "charStart": 57,
-              "charEnd": 58,
+              "charStart": 91,
+              "charEnd": 92,
               "start": 138.25,
               "end": 138.41,
               "score": 0.968
             },
             {
-              "charStart": 58,
-              "charEnd": 59,
+              "charStart": 92,
+              "charEnd": 93,
               "start": 138.41,
-              "end": 138.79,
-              "score": 0.398
+              "end": 138.61,
+              "score": 0.998
             },
             {
-              "charStart": 59,
-              "charEnd": 60,
-              "start": 138.79,
+              "charStart": 93,
+              "charEnd": 94,
+              "start": 138.61,
+              "end": 138.81,
+              "score": 0.997
+            },
+            {
+              "charStart": 94,
+              "charEnd": 95,
+              "start": 138.81,
               "end": 138.93,
-              "score": 0
+              "score": 0.008
             },
             {
-              "charStart": 60,
-              "charEnd": 61,
+              "charStart": 95,
+              "charEnd": 96,
               "start": 138.93,
               "end": 139.21,
               "score": 0.974
             },
             {
-              "charStart": 61,
-              "charEnd": 62,
+              "charStart": 96,
+              "charEnd": 97,
               "start": 139.21,
               "end": 139.45,
-              "score": 0.5
+              "score": 0.998
             },
             {
-              "charStart": 62,
-              "charEnd": 63,
+              "charStart": 97,
+              "charEnd": 98,
               "start": 139.45,
-              "end": 140.13,
-              "score": 0.25
+              "end": 139.65,
+              "score": 0.987
             },
             {
-              "charStart": 63,
-              "charEnd": 64,
+              "charStart": 98,
+              "charEnd": 99,
+              "start": 139.65,
+              "end": 139.79,
+              "score": 0.998
+            },
+            {
+              "charStart": 99,
+              "charEnd": 100,
+              "start": 139.79,
+              "end": 139.91,
+              "score": 0.998
+            },
+            {
+              "charStart": 100,
+              "charEnd": 101,
+              "start": 139.91,
+              "end": 140.13,
+              "score": 0.937
+            },
+            {
+              "charStart": 101,
+              "charEnd": 102,
               "start": 140.13,
               "end": 140.27,
               "score": 0.999
             },
             {
-              "charStart": 65,
-              "charEnd": 66,
+              "charStart": 102,
+              "charEnd": 103,
               "start": 140.27,
-              "end": 140.31,
-              "score": 0
+              "end": 140.51,
+              "score": 1
             },
             {
-              "charStart": 66,
-              "charEnd": 67,
-              "start": 140.31,
-              "end": 140.43,
-              "score": 0.333
-            },
-            {
-              "charStart": 67,
-              "charEnd": 68,
-              "start": 140.43,
-              "end": 140.53,
-              "score": 0
-            },
-            {
-              "charStart": 68,
-              "charEnd": 69,
-              "start": 140.53,
+              "charStart": 103,
+              "charEnd": 104,
+              "start": 140.51,
               "end": 140.71,
-              "score": 0.447
+              "score": 0.964
             },
             {
-              "charStart": 69,
-              "charEnd": 70,
+              "charStart": 104,
+              "charEnd": 105,
               "start": 140.71,
               "end": 140.85,
-              "score": 0
-            },
-            {
-              "charStart": 70,
-              "charEnd": 71,
-              "start": 140.85,
-              "end": 141.07,
-              "score": 0
-            },
-            {
-              "charStart": 71,
-              "charEnd": 72,
-              "start": 141.07,
-              "end": 141.15,
-              "score": 0
-            },
-            {
-              "charStart": 72,
-              "charEnd": 73,
-              "start": 141.15,
-              "end": 142.25,
-              "score": 0
-            },
-            {
-              "charStart": 73,
-              "charEnd": 74,
-              "start": 142.25,
-              "end": 142.89,
-              "score": 0.664
-            },
-            {
-              "charStart": 74,
-              "charEnd": 75,
-              "start": 142.89,
-              "end": 143.15,
-              "score": 0
-            },
-            {
-              "charStart": 75,
-              "charEnd": 76,
-              "start": 143.15,
-              "end": 143.51,
-              "score": 0
-            },
-            {
-              "charStart": 76,
-              "charEnd": 77,
-              "start": 143.51,
-              "end": 144.13,
               "score": 0.999
             },
             {
-              "charStart": 77,
-              "charEnd": 78,
+              "charStart": 105,
+              "charEnd": 106,
+              "start": 140.85,
+              "end": 141.07,
+              "score": 0.999
+            },
+            {
+              "charStart": 106,
+              "charEnd": 107,
+              "start": 141.07,
+              "end": 142.25,
+              "score": 0.999
+            },
+            {
+              "charStart": 108,
+              "charEnd": 109,
+              "start": 142.25,
+              "end": 142.45,
+              "score": 0.997
+            },
+            {
+              "charStart": 109,
+              "charEnd": 110,
+              "start": 142.45,
+              "end": 142.89,
+              "score": 0.827
+            },
+            {
+              "charStart": 110,
+              "charEnd": 111,
+              "start": 142.89,
+              "end": 143.05,
+              "score": 0.999
+            },
+            {
+              "charStart": 111,
+              "charEnd": 112,
+              "start": 143.05,
+              "end": 143.15,
+              "score": 0.999
+            },
+            {
+              "charStart": 112,
+              "charEnd": 113,
+              "start": 143.15,
+              "end": 143.33,
+              "score": 0.998
+            },
+            {
+              "charStart": 113,
+              "charEnd": 114,
+              "start": 143.33,
+              "end": 143.51,
+              "score": 0.389
+            },
+            {
+              "charStart": 114,
+              "charEnd": 115,
+              "start": 143.51,
+              "end": 143.73,
+              "score": 0.999
+            },
+            {
+              "charStart": 115,
+              "charEnd": 116,
+              "start": 143.73,
+              "end": 143.89,
+              "score": 0.999
+            },
+            {
+              "charStart": 116,
+              "charEnd": 117,
+              "start": 143.89,
+              "end": 144.13,
+              "score": 0.998
+            },
+            {
+              "charStart": 117,
+              "charEnd": 118,
               "start": 144.13,
+              "end": 144.53,
+              "score": 0.999
+            },
+            {
+              "charStart": 118,
+              "charEnd": 119,
+              "start": 144.53,
+              "end": 144.71,
+              "score": 0.98
+            },
+            {
+              "charStart": 119,
+              "charEnd": 120,
+              "start": 144.71,
               "end": 144.87,
-              "score": 0.987
+              "score": 0.998
             },
             {
-              "charStart": 78,
-              "charEnd": 79,
+              "charStart": 120,
+              "charEnd": 121,
               "start": 144.87,
+              "end": 145.15,
+              "score": 0.97
+            },
+            {
+              "charStart": 121,
+              "charEnd": 122,
+              "start": 145.15,
               "end": 145.33,
-              "score": 0.799
+              "score": 0.997
             },
             {
-              "charStart": 79,
-              "charEnd": 80,
+              "charStart": 122,
+              "charEnd": 123,
               "start": 145.33,
+              "end": 145.45,
+              "score": 0.999
+            },
+            {
+              "charStart": 123,
+              "charEnd": 124,
+              "start": 145.45,
               "end": 145.63,
-              "score": 0.664
+              "score": 0.998
             },
             {
-              "charStart": 81,
-              "charEnd": 82,
+              "charStart": 124,
+              "charEnd": 125,
               "start": 145.63,
-              "end": 146.8,
-              "score": 0.365
+              "end": 145.79,
+              "score": 0.943
             },
             {
-              "charStart": 82,
-              "charEnd": 83,
+              "charStart": 125,
+              "charEnd": 126,
+              "start": 145.79,
+              "end": 146.07,
+              "score": 0.998
+            },
+            {
+              "charStart": 126,
+              "charEnd": 127,
+              "start": 146.07,
+              "end": 146.8,
+              "score": 0.994
+            },
+            {
+              "charStart": 128,
+              "charEnd": 129,
               "start": 146.8,
               "end": 146.94,
-              "score": 0.333
+              "score": 0.999
             },
             {
-              "charStart": 83,
-              "charEnd": 84,
+              "charStart": 129,
+              "charEnd": 130,
               "start": 146.94,
               "end": 147.14,
-              "score": 0.333
+              "score": 0.998
             },
             {
-              "charStart": 84,
-              "charEnd": 85,
+              "charStart": 130,
+              "charEnd": 131,
               "start": 147.14,
               "end": 147.32,
-              "score": 0.499
+              "score": 0.999
             },
             {
-              "charStart": 85,
-              "charEnd": 86,
+              "charStart": 131,
+              "charEnd": 132,
               "start": 147.32,
-              "end": 147.56,
-              "score": 0
+              "end": 147.46,
+              "score": 0.999
             },
             {
-              "charStart": 86,
-              "charEnd": 87,
+              "charStart": 132,
+              "charEnd": 133,
+              "start": 147.46,
+              "end": 147.56,
+              "score": 0.999
+            },
+            {
+              "charStart": 133,
+              "charEnd": 134,
               "start": 147.56,
               "end": 147.82,
-              "score": 0.5
+              "score": 0.978
             },
             {
-              "charStart": 87,
-              "charEnd": 88,
+              "charStart": 134,
+              "charEnd": 135,
               "start": 147.82,
-              "end": 148.28,
-              "score": 0
+              "end": 148.06,
+              "score": 0.998
+            },
+            {
+              "charStart": 135,
+              "charEnd": 136,
+              "start": 148.06,
+              "end": 148.3,
+              "score": 0.996
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false
         }
       ],
       "trimSec": 0
@@ -88736,7 +89226,7 @@
       "lines": [
         {
           "index": 0,
-          "speaker": "林家豪",
+          "speaker": "家豪",
           "text": "您好，我是林家豪。貴公司上星期通知我今天十點來面試。",
           "start": 20.41,
           "end": 26.96,
@@ -89096,7 +89586,18 @@
         },
         {
           "index": 2,
-          "speaker": "王經理",
+          "speaker": "旁白",
+          "text": "（在會議室）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 3,
+          "speaker": "經理",
           "text": "你好。我姓王，負責今天的面試。",
           "start": 34.78,
           "end": 38.69,
@@ -89191,8 +89692,8 @@
           "unmatched": false
         },
         {
-          "index": 3,
-          "speaker": "林家豪",
+          "index": 4,
+          "speaker": "家豪",
           "text": "您好，王經理，我是林家豪。這是我的工作經驗相關資料，請您參考。",
           "start": 39.23,
           "end": 46.49,
@@ -89385,8 +89886,19 @@
           "unmatched": false
         },
         {
-          "index": 4,
-          "speaker": "王經理",
+          "index": 5,
+          "speaker": "旁白",
+          "text": "（經理看了一下家豪的資料）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 6,
+          "speaker": "經理",
           "text": "這次我們要找的是銷售人員，你在這方面有經驗嗎？",
           "start": 46.87,
           "end": 52.18,
@@ -89544,8 +90056,8 @@
           "unmatched": false
         },
         {
-          "index": 5,
-          "speaker": "林家豪",
+          "index": 7,
+          "speaker": "家豪",
           "text": "念大學時，我在電腦公司打過工。向客人介紹商品功能、使用方法、和其他牌子的差異，最重要的是想辦法把商品賣出去。",
           "start": 53,
           "end": 65.45,
@@ -89892,8 +90404,8 @@
           "unmatched": false
         },
         {
-          "index": 6,
-          "speaker": "王經理",
+          "index": 8,
+          "speaker": "經理",
           "text": "不過推銷時，多多少少都會碰到喜歡隨便批評，甚至對你亂發脾氣的客人，你會怎麼處理呢？",
           "start": 66.15,
           "end": 74.81,
@@ -90163,8 +90675,8 @@
           "unmatched": false
         },
         {
-          "index": 7,
-          "speaker": "林家豪",
+          "index": 9,
+          "speaker": "家豪",
           "text": "我會先了解問題是什麼，然後耐心地跟他說明，想辦法讓他理解。我想只要態度親切、謙虛，客人就會接受的。萬一他還是不滿意，我就說笑話逗他開心，或是送他小禮物什麼的。",
           "start": 75.51,
           "end": 95.63,
@@ -90665,8 +91177,8 @@
           "unmatched": false
         },
         {
-          "index": 8,
-          "speaker": "王經理",
+          "index": 10,
+          "speaker": "經理",
           "text": "你的推銷觀念很正確。透過良好的溝通，往往能解決不必要的麻煩。在職場上，你碰過什麼大問題嗎？",
           "start": 96.17,
           "end": 106.53,
@@ -90782,7 +91294,7 @@
               "charEnd": 17,
               "start": 99.67,
               "end": 100.41,
-              "score": 0.927
+              "score": 0.926
             },
             {
               "charStart": 18,
@@ -90908,7 +91420,7 @@
               "charEnd": 38,
               "start": 105.11,
               "end": 105.51,
-              "score": 0.958
+              "score": 0.959
             },
             {
               "charStart": 38,
@@ -90957,8 +91469,8 @@
           "unmatched": false
         },
         {
-          "index": 9,
-          "speaker": "林家豪",
+          "index": 11,
+          "speaker": "家豪",
           "text": "沒有。不過有一次，公司舉辦電腦遊戲比賽，經理叫我們早上七點先去布置會場，因為鬧鐘壞了，我睡到八點才醒來。等我趕到時，小組的同事早就把任務完成了。雖然大家沒怪我，但我卻不能原諒自己，從那次之後，我就非常注意時間，絕對不再遲到了。",
           "start": 107.57,
           "end": 135.43,
@@ -91669,8 +92181,8 @@
           "unmatched": false
         },
         {
-          "index": 10,
-          "speaker": "王經理",
+          "index": 12,
+          "speaker": "經理",
           "text": "其實，不論在哪裡工作，準時是最基本的要求。對了，假如主管忙不過來，你願意配合加班嗎？",
           "start": 136.01,
           "end": 145.76,
@@ -91933,8 +92445,8 @@
           "unmatched": false
         },
         {
-          "index": 11,
-          "speaker": "林家豪",
+          "index": 13,
+          "speaker": "家豪",
           "text": "沒問題。平日或假日，我都能配合。",
           "start": 146.68,
           "end": 150.66,
@@ -92036,8 +92548,8 @@
           "unmatched": false
         },
         {
-          "index": 12,
-          "speaker": "王經理",
+          "index": 14,
+          "speaker": "經理",
           "text": "除了準時，請你再說說自己其他的優點。",
           "start": 151.38,
           "end": 155.63,
@@ -92160,8 +92672,8 @@
           "unmatched": false
         },
         {
-          "index": 13,
-          "speaker": "林家豪",
+          "index": 15,
+          "speaker": "家豪",
           "text": "我個性開朗、說話幽默、做事細心、溝通能力強，是個容易相處的人。",
           "start": 156.31,
           "end": 164.13,
@@ -92354,8 +92866,8 @@
           "unmatched": false
         },
         {
-          "index": 14,
-          "speaker": "王經理",
+          "index": 16,
+          "speaker": "經理",
           "text": "聽起來你挺優秀的。對這份工作你還有什麼要了解的？",
           "start": 165.13,
           "end": 169.88,
@@ -92520,8 +93032,8 @@
           "unmatched": false
         },
         {
-          "index": 15,
-          "speaker": "林家豪",
+          "index": 17,
+          "speaker": "家豪",
           "text": "請問薪水怎麼算？有哪些福利？",
           "start": 170.38,
           "end": 173.98,
@@ -92616,12 +93128,12 @@
           "unmatched": false
         },
         {
-          "index": 16,
-          "speaker": "王經理",
+          "index": 18,
+          "speaker": "經理",
           "text": "有關這方面的問題，會有相關人員來跟你詳細說明。",
           "start": 174.86,
-          "end": 179.85,
-          "score": 0.972,
+          "end": 179.56,
+          "score": 0.971,
           "chars": [
             {
               "charStart": 0,
@@ -92767,8 +93279,48 @@
               "charStart": 21,
               "charEnd": 22,
               "start": 179.2,
-              "end": 179.85,
-              "score": 0.999
+              "end": 179.56,
+              "score": 0.974
+            }
+          ],
+          "words": [],
+          "unmatched": false
+        },
+        {
+          "index": 19,
+          "speaker": "家豪",
+          "text": "好，感謝您。",
+          "start": 180.02,
+          "end": 181.5,
+          "score": 0.879,
+          "chars": [
+            {
+              "charStart": 0,
+              "charEnd": 1,
+              "start": 180.02,
+              "end": 180.7,
+              "score": 0.99
+            },
+            {
+              "charStart": 2,
+              "charEnd": 3,
+              "start": 180.7,
+              "end": 180.92,
+              "score": 0.995
+            },
+            {
+              "charStart": 3,
+              "charEnd": 4,
+              "start": 180.92,
+              "end": 181.12,
+              "score": 0.631
+            },
+            {
+              "charStart": 4,
+              "charEnd": 5,
+              "start": 181.12,
+              "end": 181.5,
+              "score": 0.902
             }
           ],
           "words": [],
@@ -94286,10 +94838,10 @@
         {
           "index": 2,
           "speaker": "旁白",
-          "text": "一開始，經理請我說明對銷售工作的想法。我回答他，銷售人員是最常接觸顧客的，所以對客人要有禮貌，態度也要主動，絕對不能像木頭一樣沒反應；萬一他們亂發脾氣，就該忍耐、冷靜。畢竟，只顧自己的感覺，把跟顧客的關係搞壞，讓大家都不高興，又有什麼好處呢？",
+          "text": "一開始，經理請我說明對銷售工作的想法。我回答他，銷售人員是最常接觸顧客的，所以對客人要有禮貌，態度也要主動，絕對不能像木頭一樣沒反應；萬一他們亂發脾氣，就該忍耐、冷靜。畢竟，只顧自己的感覺，把跟顧客的關係搞壞，甚至變成了敵人，又有什麼好處呢？",
           "start": 66.91,
           "end": 98.49,
-          "score": 0.913,
+          "score": 0.961,
           "chars": [
             {
               "charStart": 0,
@@ -94940,49 +95492,49 @@
               "charEnd": 106,
               "start": 95.23,
               "end": 95.45,
-              "score": 0.294
+              "score": 0.996
             },
             {
               "charStart": 106,
               "charEnd": 107,
               "start": 95.45,
               "end": 95.69,
-              "score": 0
+              "score": 0.998
             },
             {
               "charStart": 107,
               "charEnd": 108,
               "start": 95.69,
-              "end": 95.83,
-              "score": 0.661
+              "end": 95.89,
+              "score": 0.995
             },
             {
               "charStart": 108,
               "charEnd": 109,
-              "start": 95.83,
-              "end": 96.01,
-              "score": 0
+              "start": 95.89,
+              "end": 96.15,
+              "score": 0.957
             },
             {
               "charStart": 109,
               "charEnd": 110,
-              "start": 96.01,
-              "end": 96.09,
-              "score": 0
+              "start": 96.15,
+              "end": 96.27,
+              "score": 0.995
             },
             {
               "charStart": 110,
               "charEnd": 111,
-              "start": 96.09,
-              "end": 96.27,
-              "score": 0.333
+              "start": 96.27,
+              "end": 96.47,
+              "score": 0.973
             },
             {
               "charStart": 111,
               "charEnd": 112,
-              "start": 96.27,
+              "start": 96.47,
               "end": 97.13,
-              "score": 0.487
+              "score": 0.999
             },
             {
               "charStart": 113,
@@ -98562,7 +99114,7 @@
               "charEnd": 3,
               "start": 71.39,
               "end": 71.51,
-              "score": 0.88
+              "score": 0.881
             },
             {
               "charStart": 3,
@@ -100882,6 +101434,17 @@
         },
         {
           "index": 15,
+          "speaker": "旁白",
+          "text": "（明哲的手機忽然響了，他看了看雲端日曆。）",
+          "start": 0,
+          "end": 0,
+          "score": 0,
+          "chars": [],
+          "words": [],
+          "unmatched": true
+        },
+        {
+          "index": 16,
           "speaker": "明哲",
           "text": "明天系主任邀請馬博士來演講，題目跟雲端科技有關，妳要一起去嗎？",
           "start": 160.05,
@@ -101089,7 +101652,7 @@
           "unmatched": false
         },
         {
-          "index": 16,
+          "index": 17,
           "speaker": "朋子",
           "text": "說實話，我本來對雲端科技沒什麼興趣，今天聽你說了這麼多，似乎該研究一下了。",
           "start": 168.1,
@@ -101332,7 +101895,7 @@
           "unmatched": false
         },
         {
-          "index": 17,
+          "index": 18,
           "speaker": "明哲",
           "text": "那我明天騎摩托車去接妳。",
           "start": 176.96,
@@ -101421,7 +101984,7 @@
           "unmatched": false
         },
         {
-          "index": 18,
+          "index": 19,
           "speaker": "朋子",
           "text": "太好了！麻煩你了！",
           "start": 179.71,
@@ -113038,10 +113601,10 @@
         {
           "index": 0,
           "speaker": "明哲",
-          "text": "老師要我們寫一份報告，主題是臺灣的古蹟，我想介紹紅毛城。",
+          "text": "老師要我們寫一份報告，主題是臺灣的古蹟，我想介紹紅毛城，這個週末要去一趟。",
           "start": 20.67,
-          "end": 27.85,
-          "score": 0.915,
+          "end": 29.52,
+          "score": 0.872,
           "chars": [
             {
               "charStart": 0,
@@ -113215,8 +113778,64 @@
               "charStart": 26,
               "charEnd": 27,
               "start": 27.2,
-              "end": 27.85,
-              "score": 0.989
+              "end": 27.88,
+              "score": 0.994
+            },
+            {
+              "charStart": 28,
+              "charEnd": 29,
+              "start": 27.88,
+              "end": 28,
+              "score": 0.912
+            },
+            {
+              "charStart": 29,
+              "charEnd": 30,
+              "start": 28,
+              "end": 28.12,
+              "score": 0.979
+            },
+            {
+              "charStart": 30,
+              "charEnd": 31,
+              "start": 28.12,
+              "end": 28.34,
+              "score": 0.982
+            },
+            {
+              "charStart": 31,
+              "charEnd": 32,
+              "start": 28.34,
+              "end": 28.72,
+              "score": 0.996
+            },
+            {
+              "charStart": 32,
+              "charEnd": 33,
+              "start": 28.72,
+              "end": 28.88,
+              "score": 0.996
+            },
+            {
+              "charStart": 33,
+              "charEnd": 34,
+              "start": 28.88,
+              "end": 29.02,
+              "score": 0.997
+            },
+            {
+              "charStart": 34,
+              "charEnd": 35,
+              "start": 29.02,
+              "end": 29.16,
+              "score": 0.001
+            },
+            {
+              "charStart": 35,
+              "charEnd": 36,
+              "start": 29.16,
+              "end": 29.52,
+              "score": 0.024
             }
           ],
           "words": [],

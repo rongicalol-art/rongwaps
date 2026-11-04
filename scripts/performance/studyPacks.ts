@@ -5,10 +5,12 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { brotliCompressSync, gzipSync, constants } from 'node:zlib';
 import type { Plugin } from 'vite';
+import { brotliQuality } from '../build/brotliQuality';
 import { prepareVocabulary } from '../../src/utils/vocabulary/vocabularyMapping';
 import { lessonExamples, flashcardExtrasKey, type FlashcardExtrasRow } from '../../src/utils/vocabulary/flashcardExtrasPack';
 import { studyPartKey, type StudyPack, type StudyPart } from '../../src/utils/vocabulary/studyPack';
 import { extractCedictReference, sanitizeDictionaryDefinitions } from '../../shared/dictionaryDefinitions';
+import { courseFields, type CompactSearchEntry } from '../../shared/dictionarySearch';
 import type { GenericContentManifest } from '../../src/utils/packValidators';
 import type { DBDictionaryRow } from '../../src/types/database';
 import { buildCharacterCourseIndex } from '../../src/features/character-breakdown/utils/rankParentCharacters';
@@ -36,6 +38,9 @@ async function buildHotDecomposition(root: string, courseText: string): Promise<
 
 const HOT_DECOMPOSITION = '/data/decomposition-runtime/hot.json';
 const COURSE_CHARS = '/data/search/course-chars.json';
+const COMMON_WORDS = '/data/search/common-words.json';
+// Phones search the most common words themselves (~0.65 MB Brotli); the server still answers every query in full.
+const COMMON_WORD_COUNT = 20_000;
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 /** Build artifacts only: source packs remain canonical and are never modified here. */
 export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>> {
@@ -69,7 +74,15 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
   const cardIds = new Map(cards.map((card, id) => [card, id]));
   // Earliest course lesson per character (~30 kB): breakdowns rank "built with" by it, without downloading every vocabulary book.
   assets.set(COURSE_CHARS, Buffer.from(JSON.stringify(Object.fromEntries([...buildCharacterCourseIndex(cards)].map(([character, { bookId, lessonId }]) => [character, [bookId, lessonId]])))));
-  assets.set('/data/search/course-lookup.json', Buffer.from(JSON.stringify({ cards, entries: [...buildCourseVocabLookupMap(cards)].map(([key, card]) => [key, cardIds.get(card)]) })));
+  const courseLookup = buildCourseVocabLookupMap(cards);
+  assets.set('/data/search/course-lookup.json', Buffer.from(JSON.stringify({ cards, entries: [...courseLookup].map(([key, card]) => [key, cardIds.get(card)]) })));
+  // The search index is sorted most common first; course tags match the server's (same lookup, same rule).
+  const common = (await json<{ items: CompactSearchEntry[] }>('/data/search/dictionary-search-index.json')).items.slice(0, COMMON_WORD_COUNT);
+  const commonCourse = common.flatMap(([id, simplified, traditional, pinyin_accented]) => {
+    const card = courseLookup.get(traditional || simplified) ?? courseLookup.get(simplified);
+    return card ? [[id, courseFields({ pinyin_accented }, card)]] : [];
+  });
+  assets.set(COMMON_WORDS, Buffer.from(JSON.stringify({ schemaVersion: 1, items: common, course: commonCourse })));
 
   for (const [key, group] of groups) {
     const pack: StudyPack = { schemaVersion: 1, key, count: group.length, cards: group, sentences: [], extras: [], dictionary: [] };
@@ -108,7 +121,7 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
   const version = hash(JSON.stringify(parts)).slice(0, 16);
   assets.set('/data/study/manifest.json', Buffer.from(JSON.stringify({ schemaVersion: 1, version, totalCount: cards.length, parts })));
   for (const [path, bytes] of [...assets]) {
-    assets.set(`${path}.br`, brotliCompressSync(bytes, { params: { [constants.BROTLI_PARAM_QUALITY]: 6 } }));
+    assets.set(`${path}.br`, brotliCompressSync(bytes, { params: { [constants.BROTLI_PARAM_QUALITY]: brotliQuality(path) } }));
     assets.set(`${path}.gz`, gzipSync(bytes));
   }
   return assets;
@@ -134,7 +147,7 @@ export function studyPacksPlugin(): Plugin {
       server.watcher.on('change', file => { if (file.includes('/public/data/') && file.endsWith('/manifest.json')) { pending = undefined; void prepareDevAssets().catch(error => server.config.logger.error(String(error))); } });
       server.middlewares.use(async (request, response, next) => {
         const path = request.url?.split('?')[0];
-        if (!path?.startsWith('/data/study/') && path !== '/data/search/course-lookup.json' && path !== HOT_DECOMPOSITION && path !== COURSE_CHARS) return next();
+        if (!path?.startsWith('/data/study/') && path !== '/data/search/course-lookup.json' && path !== HOT_DECOMPOSITION && path !== COURSE_CHARS && path !== COMMON_WORDS) return next();
         try {
           const bytes = (await getAssets()).get(path);
           if (!bytes) { response.statusCode = 404; response.end(); return; }

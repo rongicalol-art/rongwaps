@@ -776,18 +776,21 @@
               },
               "choices": [
                 {
+                  "speaker": "N",
                   "traditional": "十一個小時",
                   "simplified": "十一个小时",
                   "pinyin": "shíyī ge xiǎoshí",
                   "english": "eleven hours"
                 },
                 {
+                  "speaker": "N",
                   "traditional": "五個小時",
                   "simplified": "五个小时",
                   "pinyin": "wǔ ge xiǎoshí",
                   "english": "five hours"
                 },
                 {
+                  "speaker": "N",
                   "traditional": "六個小時",
                   "simplified": "六个小时",
                   "pinyin": "liù ge xiǎoshí",
@@ -797,8 +800,8 @@
               "key": 2,
               "why": "She went to bed at eleven last night (十一點睡覺) and got up at five this morning (五點起床): six hours of sleep. 十一 and 五 are clock times, not how long she slept.",
               "focus": {
-                "zh": "睡了五個小時",
-                "en": "slept five hours"
+                "zh": "睡了六個小時",
+                "en": "slept six hours"
               },
               "lesson": 13,
               "wordIds": [
