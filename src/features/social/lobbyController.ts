@@ -109,6 +109,8 @@ function receive(message: LobbyServerMessage) {
 /** A stand-in for the Lobby socket (the DEV classmate simulator). */
 export interface LobbyTransport { send: (message: LobbyClientMessage) => boolean | void; close: () => void }
 let transport: LobbyTransport | null = null;
+/** This account's block list, resent on every connect once loaded (the Lobby keeps only what changed). */
+let blocks: LobbyClientMessage | null = null;
 let lastIdentity: Identity | null = null;
 
 function send(message: LobbyClientMessage): boolean {
@@ -126,7 +128,7 @@ export function setLobbyTransport(next: LobbyTransport | null) {
   if (next) {
     ++generation; socket?.close(); socket = null; identityKey = '';
     useAppStore.getState().setSocial({ socialStatus: 'live' });
-    next.send(here); next.send(sub); readInFlight = false; flushReads();
+    next.send(here); next.send(sub); if (blocks) next.send(blocks); readInFlight = false; flushReads();
   } else if (lastIdentity) {
     useAppStore.getState().setSocial({ socialStatus: 'off', socialCounts: {}, socialFaces: [], socialPeople: [], socialOnline: [], socialRooms: [], socialChat: null });
     startLobby(lastIdentity);
@@ -137,7 +139,7 @@ export function startLobby(identity: Identity) {
   lastIdentity = identity;
   if (transport) return;
   const owner = useAppStore.getState().currentUser?.id ?? null;
-  if (owner !== readOwner) { clearTimeout(readTimer); readTimer = undefined; pendingReads.clear(); readInFlight = false; readOwner = owner; }
+  if (owner !== readOwner) { clearTimeout(readTimer); readTimer = undefined; pendingReads.clear(); readInFlight = false; readOwner = owner; blocks = null; }
   const key = `${owner}|${identity.name}|${identity.color}`;
   if (socket && key === identityKey) return;
   const version = ++generation;
@@ -150,7 +152,7 @@ export function startLobby(identity: Identity) {
       useAppStore.getState().setSocial({ socialStatus: status, ...(status !== 'live' ? { socialCounts: {}, socialFaces: [], socialPeople: [], socialOnline: [], socialRooms: [], socialOnlineTotal: 0 } : {}) });
       if (status === 'off') { socket = null; identityKey = ''; }
     },
-    onOpen: () => { if (version === generation) { readInFlight = false; send(here); send(sub); flushReads(); } },
+    onOpen: () => { if (version === generation) { readInFlight = false; send(here); send(sub); if (blocks) send(blocks); flushReads(); } },
   });
 }
 
@@ -186,6 +188,8 @@ export const lobby = {
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),
   readMention: (key: string) => { pendingReads.add(key); flushReads(); },
   report: (id: number) => send({ t: 'report', id }),
+  /** This account's whole block list; sent now and on every reconnect. */
+  setBlocks: (ids: string[]) => { blocks = { t: 'blocks', v: ids }; send(blocks); },
   /** Ask a classmate's device for their visit card; the answer lands in `socialCards`. */
   askCard: (u: string) => send({ t: 'card-ask', u }),
 };

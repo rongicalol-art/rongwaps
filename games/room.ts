@@ -1,6 +1,6 @@
 import { DurableObject } from 'cloudflare:workers';
 import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, parseRaceAction, socialColor, summarizeRoom, type RaceRoomState, type RaceSnapshot } from '../shared/quizRace';
-import { CHAT_KEEP, CHAT_TTL_MS, GLOBAL_CHAT, SOCIAL_FRAME_BYTES, chatText, nextChatRate, mentionIds, type ChatMessage, type ChatRate, type PartyChatServerMessage, type MentionNotice } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMIT_ERROR, GLOBAL_CHAT, SOCIAL_FRAME_BYTES, chatDailyFull, chatText, nextChatRate, mentionIds, type ChatMessage, type ChatRate, type PartyChatServerMessage, type MentionNotice } from '../shared/lobby';
 
 type Attachment = { userId: string; activeAt: number; tokens: number; updatedAt: number; authUntil: number };
 const STALE_MS = 90_000;
@@ -140,8 +140,9 @@ export class GameRoom extends DurableObject<Env> {
     const text = chatText(data.text);
     if (!text) throw new Error('Write a message first.');
     const saved = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM room_chat_rate WHERE uid=?', userId).toArray()[0];
-    const rate = nextChatRate(saved ? JSON.parse(saved.data) as ChatRate : null, text, now);
-    if (!rate) throw new Error('Please wait before sending another message.');
+    const previous = saved ? JSON.parse(saved.data) as ChatRate : null;
+    const rate = nextChatRate(previous, text, now);
+    if (!rate) throw new Error(chatDailyFull(previous, now) ? DAILY_LIMIT_ERROR : 'Please wait before sending another message.');
     this.ctx.storage.sql.exec('INSERT OR REPLACE INTO room_chat_rate VALUES (?,?)', userId, JSON.stringify(rate));
     const line: ChatMessage = { id: 0, l: GLOBAL_CHAT, u: userId, n: player.name, c: socialColor(player.color), t: text, ts: now, ...(player.image ? { i: player.image } : {}) };
     const members = new Set(room.players.filter(entry => !entry.left).map(entry => entry.id));

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ProfileSettings } from '../../../store/slices/profileSlice';
 import { useAppStore } from '../../../store/useAppStore';
+import { NAME_NOT_ALLOWED, isNameAllowed } from '../../../../shared/nameFilter';
 import { prepareProfileImage, removeProfileMedia, uploadProfileMedia, type ProfileImageCrop } from '../../../services/profileMedia';
 
 type MediaKind = 'avatar' | 'cover';
@@ -63,6 +64,7 @@ export function useProfileEditor(userId: string | undefined, onSaved: () => void
     saving.current = true; setBusy(true); setError(null);
     try {
       const settings = { ...draft.settings, displayName: draft.settings.displayName.trim().slice(0, 30) };
+      if (!isNameAllowed(settings.displayName)) { setError(NAME_NOT_ALLOWED); return; }
       if (userId) {
         // Storage writes happen only on Save, never while previewing.
         for (const kind of ['avatar', 'cover'] as const) {

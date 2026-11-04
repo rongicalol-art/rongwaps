@@ -8,6 +8,7 @@ import { useSocialIdentity } from '../useSocialLifecycle';
 import { describeSelection } from '../socialText';
 import { EmptyNote } from './SocialBits';
 import { updateMentionTokens, type MentionToken } from '../mentionTokens';
+import { openSafety } from '../safety';
 import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 
@@ -74,7 +75,10 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
   const scrolledTarget = useRef<string | null>(null);
   const rate = useRef<ChatRate | null>(null);
   const targetLine = target && (party ? target.room && target.room === useAppStore.getState().race?.code : !target.room && target.channel === useAppStore.getState().socialChat?.lesson) ? target.message : null;
-  const visible = targetLine && chat && !chat.some(line => line.id === targetLine.id) ? [targetLine, ...chat] : chat ?? [];
+  const blocks = useAppStore(state => state.socialBlocks);
+  const all = targetLine && chat && !chat.some(line => line.id === targetLine.id) ? [targetLine, ...chat] : chat ?? [];
+  // The Lobby already leaves blocked people out; this also covers party rooms and the moment before it catches up.
+  const visible = blocks?.length ? all.filter(line => !blocks.some(person => person.u === line.u)) : all;
   const prefix = draft.slice(0, caret);
   const match = /(?:^|\s)@([^@\s]*)$/.exec(prefix);
   const people = new Map(candidates.map(person => [person.u, person]));
@@ -198,7 +202,8 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
                         {isOpen && !mine && (
                           <div className="mt-1 flex gap-3 px-1 text-xs font-extrabold text-ui-muted">
                             {HAN.test(line.t) && <span>Tap a word for pinyin and meaning</span>}
-                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { report(line.id); setOpen(null); useAppStore.getState().showFeedbackToast('Reported'); }}>Report</button>
+                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { report(line.id); setOpen(null); openSafety({ kind: 'report', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat', message: line.t }); }}>Report</button>
+                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { setOpen(null); openSafety({ kind: 'block', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat' }); }}>Block</button>
                           </div>
                         )}
                       </div>

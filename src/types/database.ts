@@ -82,6 +82,12 @@ export type ProfileSettings = { [key: string]: Json | undefined };
 export interface Database {
   public: {
     Tables: {
+      user_blocks: {
+        Row: { blocker: string; blocked: string; blocked_name: string; blocked_color: string; created_at: string };
+        Insert: { blocker?: string; blocked: string; blocked_name?: string; blocked_color?: string; created_at?: string };
+        Update: { blocker?: string; blocked?: string; blocked_name?: string; blocked_color?: string; created_at?: string };
+        Relationships: [];
+      };
       user_review_events: {
         Row: { user_id: string; event_id: string; card_id: string; reviewed_at: string; created_at: string; payload: Json };
         Insert: { user_id: string; event_id: string; card_id: string; reviewed_at: string; created_at?: string; payload: Json };
@@ -267,6 +273,8 @@ export interface Database {
         Args: Record<PropertyKey, never>;
         Returns: undefined;
       };
+      block_user: { Args: { p_user: string; p_name?: string; p_color?: string }; Returns: boolean };
+      report_user: { Args: { p_target: string; p_reason: string; p_place: string; p_message?: string | null }; Returns: boolean };
       /** The caller's own "I'm 18 or older"; returns the first confirmation time. */
       confirm_age: {
         Args: Record<PropertyKey, never>;
