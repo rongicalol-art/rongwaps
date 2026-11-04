@@ -9,7 +9,7 @@ contract; the code that enforces it is named in each section.
 
 - **Order**: 聽力 Listening, then 閱讀 Reading, each opened by a section page. One question per screen (a
   paragraph's blanks share one screen). No going back; Next appears once the screen is answered.
-- **Recordings** play on their own, **twice** (TOCFL Novice/Band A), with no replays. The speaker is a tactile key the
+- **Recordings** play on their own, **twice** (TOCFL Novice/Band A; **once** at Band B, `plays: 1`), with no replays. The speaker is a tactile key the
   recording presses: down while a play runs, up between plays, flat once both have played; its face shows what is
   playing (a voice, the long pause, the ding, the question, then each letter). Picture-and-sentences items have no
   speaker: the answer being read presses in. A dialogue's printed question appears when the narrator asks it.
@@ -61,7 +61,7 @@ always `{ traditional, simplified, pinyin, english }` with tone-mark pinyin.
 | --- | --- | --- | --- |
 | `hear-pick-picture` | Novice 聽力 1 · Band A 問答理解 | hears a sentence, picks one of 3 pictures | `lines` (usually one); a picture trio |
 | `picture-hear` | Novice 聽力 2 · Band A 看圖回答 | sees one picture, hears 3 sentences | answers are spoken (`speaker: "N"`), shown as sound bars |
-| `dialogue` | Novice 聽力 3 · Band A 對話理解 | short dialogue, ding, question, spoken answers | `lines` (F/M), `answerLine`; `printed: true` prints the answers (Band B) |
+| `dialogue` | Novice 聽力 3 · Band A 對話理解 | short dialogue, ding, question, spoken answers | `lines` (F/M), `answerLine`; `printed: true` also prints the answers the narrator reads (Band B) |
 | `read-pick-picture` | 單句理解 | reads a sentence, picks a picture | the sentence is the question's `prompt` |
 | `realia` | 看圖釋義 | a menu, receipt or notice; which statement is true | `transcript` = the exact writing in the picture |
 | `scene-gap` | 選詞填空 | one scene picture, gap sentences (＿＿) | each question has `answer` (the full sentence); a reply line follows `——` |
@@ -70,10 +70,45 @@ always `{ traditional, simplified, pinyin, english }` with tone-mark pinyin.
 
 Book 1 has about 7 picture questions out of 20; Book 2 is text and audio with no new pictures.
 
-### Books 3–4: Band B (4 choices, text only)
+### Books 3–4: TOCFL Band B (4 choices, no pictures)
 
-`dialogue` with `printed: true` (and `plays: 1` for longer ones), `cloze` (a passage whose numbered
-blanks each have 4 choices), `reading` with several questions.
+`band: "B"`. Every recording plays **once** (`plays: 1`), its 4 choices are **printed and read aloud**
+(`printed: true`, each choice `speaker: "N"`), and the narrator asks each question (`prompt` with `speaker: "N"`).
+A recording or text with several questions is one item whose versions all ask the same number.
+
+| Slot kind | TOCFL part | What the learner does | Notes |
+| --- | --- | --- | --- |
+| `dialogue` | 聽力 對話 1–13 | one dialogue (40–100 characters), one question | two voices, turns shared evenly |
+| `dialogue`, 2–3 questions | 聽力 對話 14–30 | one dialogue (100–180 characters) | `intro` 請聽一段對話，然後回答兩個問題。; each question's `answerLine` |
+| `dialogue`, talk | 聽力 段落 31–50 | one voice: broadcast, announcement, voicemail, short speech (110–200 characters) | `intro` names it: 請聽一段廣播／一段留言／一段介紹……; each question's `answerLine` |
+| `cloze` | 閱讀 選詞填空 | a passage of 140–165 characters with 6 numbered blanks, 4 choices each | blanks test words and linking words (尤其、除了、至於、而、就算) |
+| `reading` | 閱讀理解 | a notice, message, timetable or passage with 1–4 questions | `format`: `message`, `notice` (lines like 時間：……), `table` (cells split by ｜, first row the heading), `passage` |
+
+Questions move from facts to a speaker's intent or attitude and a text's main idea (這位小姐的意思是什麼？
+作者的看法是什麼？). The app draws notices, messages and timetables from their text, so their writing is exact.
+
+**Book 3 Lessons 1–8 (Band B, B1)**: 10 slots, 20 questions per run.
+
+| # | Slot | Kind | Questions | Versions |
+| --- | --- | --- | --- | --- |
+| 1–3 | three dialogues | `dialogue` | 1 each | 2–3 |
+| 4 | review dialogue | `dialogue`, `review: true` | 1 | 2–3 |
+| 5 | dialogue, two questions | `dialogue` with `intro` | 2 | 2 |
+| 6 | talk, two questions | `dialogue` with `intro`, one voice | 2 | 2 |
+| 7 | cloze passage | `cloze` | 6 | 2 |
+| 8 | notice, message or timetable | `reading` (`notice`, `message` or `table`) | 2 | 2 |
+| 9 | passage, 180–290 characters | `reading` (`passage`) | 2 | 2 |
+| 10 | review passage, 180–290 characters | `reading` (`passage`), `review: true` | 2 | 2 |
+
+Review share: slots 4 and 10 (3 of 20, 15%), plus review blanks or questions elsewhere to stay inside 15–45%.
+A later book's **Lesson 1 reviews the book before, Lessons 9–16**: its review questions set `"book"` (e.g. 2)
+with that book's `lesson`, and the results name them "Book 2 · Lesson 12".
+
+**Item-writing rules for Band B** (SC-TOP's 命題設計概述, `docs/reference/TOCFL.md`), on top of the rules
+below: the first sentence sets the scene; choices about the same length and at most 15 characters, third
+person, no "both"/"all of the above"; never a negative question; nothing answerable from common sense
+without the recording or text; the right answer paraphrases, never copies; no choice contains another; in a
+group each question tests a different point, and none hints at another's answer or shares its choices.
 
 ### A 20-question Book 1 lesson (Lesson 4 is the model)
 

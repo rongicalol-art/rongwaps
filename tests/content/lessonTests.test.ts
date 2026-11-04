@@ -48,7 +48,8 @@ test('the exported pack matches the authored tests, and every spoken line has a 
       for (const [field, value] of Object.entries(record)) if (field !== 'audio') visit(value, `${path}.${field}`);
     };
     visit(exported, lesson.key);
-    if (!pack.sounds.ding || (['A', 'B', 'C'] as const).some((letter) => !pack.sounds.letters?.[letter])) {
+    const letters = lesson.band === 'B' ? (['A', 'B', 'C', 'D'] as const) : (['A', 'B', 'C'] as const);
+    if (!pack.sounds.ding || letters.some((letter) => !pack.sounds.letters?.[letter])) {
       problems.push(`book ${lesson.bookId}: the ding or a letter has no recording`);
     }
   }

@@ -37,12 +37,14 @@ interface ChoiceListProps {
   onSelect: (original: number) => void;
   /** Fix round, after Check: a spoken answer plays again on tap. */
   onSay?: (original: number, shown: number) => void;
+  /** Number keys answer another question on this screen. */
+  keysOff?: boolean;
 }
 
 /** A/B/C answers in their shuffled order (TOCFL letters; keys 1–4 still pick them). */
-export function ChoiceList({ question, order, selected, checked, spoken, mark, script, onSelect, onSay }: ChoiceListProps) {
+export function ChoiceList({ question, order, selected, checked, spoken, mark, script, onSelect, onSay, keysOff = false }: ChoiceListProps) {
   const choices = question.choices ?? [];
-  useNumberKeySelection({ items: order, onSelect, disabled: checked });
+  useNumberKeySelection({ items: order, onSelect, disabled: checked || keysOff });
   return (
     <div className="grid w-full grid-cols-1 gap-3">
       {order.map((original, shown) => {
