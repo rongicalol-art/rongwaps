@@ -65,14 +65,15 @@ function ReadingText({ item, script }: { item: Extract<LessonTestItem, { kind: '
       <div className="w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface">
         {title && <p className="text-balance bg-brand-primary-wash px-5 py-3 text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={title} /></p>}
         {item.format === 'table' ? (
-          <table className="mx-5 my-3 w-[calc(100%-2.5rem)] border-collapse font-chinese text-lg text-ui-ink-strong">
+          // Phones: smaller type and margins so five columns keep their headers and titles on one or two lines.
+          <table className="mx-3 my-3 w-[calc(100%-1.5rem)] border-collapse font-chinese text-base text-ui-ink-strong sm:mx-5 sm:w-[calc(100%-2.5rem)] sm:text-lg">
             <thead>
-              <tr>{head.map((cell, index) => <th key={index} scope="col" className="border-b-2 border-ui-divider px-1.5 pb-2 text-left text-base font-normal text-ui-muted-strong"><ChineseText text={cell} /></th>)}</tr>
+              <tr>{head.map((cell, index) => <th key={index} scope="col" className="border-b-2 border-ui-divider px-1 pb-2 text-left text-sm font-normal text-ui-muted-strong sm:px-1.5 sm:text-base"><ChineseText text={cell} /></th>)}</tr>
             </thead>
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="border-b-2 border-ui-divider last:border-b-0">
-                  {row.map((cell, column) => <td key={column} className="px-1.5 py-2 tabular-nums"><ChineseText text={cell} /></td>)}
+                  {row.map((cell, column) => <td key={column} className="px-1 py-2 tabular-nums sm:px-1.5"><ChineseText text={cell} /></td>)}
                 </tr>
               ))}
             </tbody>
