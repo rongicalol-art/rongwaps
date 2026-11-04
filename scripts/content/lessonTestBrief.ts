@@ -9,6 +9,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import { getReadingIllustration } from '../../src/data/readingIllustrations';
+import type { InteractiveGrammarPart } from '../../src/types/models';
 import { vocabBook, vocabOrder } from '../../src/utils/lesson/lessonScope';
 import { isTaughtWord, loadLessonTestContext, picturePath, READING_PICTURE_PREFIX, type VocabEntry } from './lessonTestRules';
 
@@ -118,6 +119,21 @@ function brief(key: string): string {
       out.push(`- Words: ${words.map((word) => `${word.traditional} ${word.id} (${word.simple ?? word.meaning ?? ''})`).join('; ')}`);
       for (const reading of readings(before).filter((entry) => entry.lessonId === earlier)) out.push(`- Reading ${reading.id}: ${reading.title}${reading.setting ? ` · ${reading.setting}` : ''}`);
     }
+  }
+  // Words are checked character by character; grammar is not, so the author sees what is taught and what is not.
+  const titles = (pages: InteractiveGrammarPart['grammarPages']) => pages.map((page) => page.titleTraditional).join('；');
+  out.push('');
+  out.push('## Grammar taught so far (sentences may use these patterns)');
+  for (let earlierBook = 1; earlierBook <= book; earlierBook += 1) {
+    for (const part of (ctx.grammarByBook.get(earlierBook) ?? []).filter((entry) => earlierBook < book || entry.lessonId <= lesson)) {
+      out.push(`- Book ${earlierBook} L${part.lessonId}: ${titles(part.grammarPages)}`);
+    }
+  }
+  const later = (ctx.grammarByBook.get(book) ?? []).filter((part) => part.lessonId > lesson);
+  if (later.length) {
+    out.push('');
+    out.push(`## Not taught yet (never build a sentence or a question on these: Book ${book} teaches them later)`);
+    for (const part of later) out.push(`- Book ${book} L${part.lessonId}: ${titles(part.grammarPages)}`);
   }
   const earlierBooks = ctx.vocab.filter((word) => vocabBook(word.id) < book);
   if (earlierBooks.length) {

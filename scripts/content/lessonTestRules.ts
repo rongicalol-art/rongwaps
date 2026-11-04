@@ -96,6 +96,7 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
         const inRange = (line: number) => line >= 0 && line < item.lines.length;
         if (!inRange(item.answerLine)) problems.push(`${item.id}: answerLine out of range`);
         if (lesson.band === 'B' && !item.printed) problems.push(`${item.id}: Band B prints its choices (printed: true)`);
+        if (lesson.band === 'B' && item.plays !== 1) problems.push(`${item.id}: Band B plays each recording once (plays: 1)`);
         if (item.questions.length > 1 && !item.intro) problems.push(`${item.id}: a recording with several questions opens with the narrator's intro`);
         if (item.intro && item.intro.speaker !== 'N') problems.push(`${item.id}: the intro is the narrator's (speaker N)`);
         for (const question of item.questions) {

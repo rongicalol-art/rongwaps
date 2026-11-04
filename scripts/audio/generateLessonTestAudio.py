@@ -62,14 +62,15 @@ YATING_VOICES = {"F": "zh_en_female_1", "M": "zh_en_male_1", "N": "zh_en_female_
 # Yating speed: a higher value speaks slower (max 1.5). At the same setting 家豪 is ~10% slower than 雅婷 and 意晴 ~10%
 # faster (output/checks/yating_calibrate.py), so each role has its own setting. Book 1 adds a 400 ms pause at every
 # comma. The textbook's own pace (output/checks/speech_rate.py): Book 1 L1–8 ≈ 2.0 characters a second, L9–16 ≈ 2.5,
-# Book 2 ≈ 3.2–3.5. L9–16 (owner's pick) speaks like the official TOCFL Band A mock's dialogues, ≈ 3.9 characters a
-# second not counting pauses (the narrator a little calmer, under MAX_PACE); Book 2 keeps that speed without the extra
-# comma pauses.
+# Book 2 ≈ 3.2–3.5, Book 3 ≈ 3.9. L9–16 (owner's pick) speaks like the official TOCFL Band A mock's dialogues, ≈ 3.9
+# characters a second not counting pauses (the narrator a little calmer, under MAX_PACE); Books 2 and 3 keep that speed
+# without the extra comma pauses (Book 3's own recordings speak at it).
 # {(book, last lesson): ({role: speed}, pauses)}
 YATING_PACE = {
     (1, 8): ({"F": 1.35, "M": 1.2, "N": 1.4}, True),
     (1, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, True),
     (2, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, False),  # Not heard yet: check by ear when Book 2 is voiced.
+    (3, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, False),
 }
 # Yating pitch per role (1.0 = the voice's own). 家豪 is raised to ≈ 141 Hz, near the TOCFL mock's man (≈ 145 Hz;
 # his own ≈ 118 Hz sounded heavy). Pitch does not change his speed.
