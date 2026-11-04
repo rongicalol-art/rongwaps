@@ -8,26 +8,8 @@ const CJK_REGEX = /[㐀-鿿豈-﫿]/;
 const tokenText = (word: GrammarWordToken, characterPreference: 'traditional' | 'simplified') =>
   characterPreference === 'simplified' && word.simplified ? word.simplified : word.traditional;
 
-/**
- * Which tokens of a sentence belong to the lesson's grammar point.
- *
- * Terms are matched against the sentence text, longest first (the same rule the
- * title and explanation use), so multi-character patterns such as 忙不忙 or 有沒有
- * light up even when the sentence is segmented into smaller tokens. A negator
- * directly in front of a highlighted token joins it, so 不是 reads as one unit.
- * Non-Chinese terms are teaching labels, not sentence content, and are ignored.
- */
-export function getFocusTokenIds(
-  words: GrammarWordToken[],
-  focusTerms: string[],
-  characterPreference: 'traditional' | 'simplified',
-): Set<string> {
-  const terms = [...new Set(focusTerms.filter((term) => term && CJK_REGEX.test(term) && !/[A-Za-z→–]/.test(term)))]
-    .sort((a, b) => b.length - a.length);
-  const focused = new Set<string>();
-  if (terms.length === 0 || words.length === 0) return focused;
-
-  const texts = words.map((word) => tokenText(word, characterPreference));
+/** Ids of the tokens whose text (in one script) holds a term, longest term first. */
+function matchTerms(words: GrammarWordToken[], texts: string[], terms: string[], focused: Set<string>) {
   const starts: number[] = [];
   let sentence = '';
   for (const text of texts) {
@@ -49,6 +31,32 @@ export function getFocusTokenIds(
     const length = texts[index].length;
     if (length > 0 && covered.slice(starts[index], starts[index] + length).some(Boolean)) focused.add(word.id);
   });
+}
+
+/**
+ * Which tokens of a sentence belong to the lesson's grammar point.
+ *
+ * Terms are matched against the sentence text, longest first (the same rule the
+ * title and explanation use), so multi-character patterns such as 忙不忙 or 有沒有
+ * light up even when the sentence is segmented into smaller tokens. Terms are
+ * written in traditional characters, so they are matched on the traditional text
+ * too: 況且 still lights up 况且 in simplified. A negator directly in front of a
+ * highlighted token joins it, so 不是 reads as one unit. Non-Chinese terms are
+ * teaching labels, not sentence content, and are ignored.
+ */
+export function getFocusTokenIds(
+  words: GrammarWordToken[],
+  focusTerms: string[],
+  characterPreference: 'traditional' | 'simplified',
+): Set<string> {
+  const terms = [...new Set(focusTerms.filter((term) => term && CJK_REGEX.test(term) && !/[A-Za-z→–]/.test(term)))]
+    .sort((a, b) => b.length - a.length);
+  const focused = new Set<string>();
+  if (terms.length === 0 || words.length === 0) return focused;
+
+  const texts = words.map((word) => tokenText(word, characterPreference));
+  matchTerms(words, words.map((word) => word.traditional), terms, focused);
+  if (characterPreference === 'simplified') matchTerms(words, texts, terms, focused);
 
   // A number touching a highlighted unit joins it, so 十點, 十二月七號 and 星期一 light up whole.
   words.forEach((word, index) => {
