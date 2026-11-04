@@ -43,6 +43,7 @@ export function getOAuthCallbackErrorMessage(search: string, hash: string): stri
 
   if (details.includes('signups_full')) return SIGNUPS_FULL_MESSAGE;
   if (details.includes('account_blocked')) return 'This account can’t sign in.';
+  if (details.includes('google_only')) return 'Sign in with a Google account whose email is verified.';
   if (details.includes('school_beta_only')) {
     return 'This beta is for Shu-Te student Google accounts. Use your s…@stu.edu.tw account.';
   }

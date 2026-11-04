@@ -4,12 +4,12 @@ import { ContactLink, LegalList, LegalParagraph, LegalSection, LegalSummary, leg
 
 const SUMMARY = [
   '個人資料蒐集者：個人開發者 Ron（台灣）。依《個人資料保護法》第 8 條告知如下。',
-  '蒐集項目：學校電子郵件、Google 帳號名稱與頭像、學習紀錄、您建立的資料夾與字卡，以及基本技術資料。',
+  '蒐集項目：Google 電子郵件、帳號名稱與頭像、年齡確認紀錄、學習紀錄、您建立的資料夾與字卡、封鎖名單與檢舉紀錄，以及基本技術資料。',
   '目的：提供與同步學習服務、帳號管理、防止濫用、改善教材（僅使用匿名統計）。',
   '期間與地區：保存至您刪除帳號，或連續 12 個月未登入為止；資料存放於印度（Supabase），並由下列服務商處理。',
   '我們不販售資料、不投放廣告，未經您同意不會將個人資料提供給學校或老師。',
   '您可隨時查詢、閱覽、取得副本、更正、停止使用或刪除個人資料；在「設定 → 帳號」即可下載資料或刪除帳號。',
-  '若您不提供必要資料（如學校帳號），將無法使用本服務。',
+  '若您不提供必要資料（如 Google 帳號），將無法使用本服務。',
 ];
 
 /**
@@ -24,8 +24,8 @@ export function PrivacyPolicyContent() {
       <LegalSection title="1. Who is responsible">
         <LegalParagraph>
           Ron&apos;s Mandarin is run by Ron, an individual developer based in Taiwan, who decides how your personal data
-          is used and is responsible for it. The app is currently an invite-only beta for Shu-Te University
-          students. Questions or requests: <ContactLink />.
+          is used and is responsible for it. The app is a free beta, open to anyone 18 or older with a Google
+          account. Questions or requests: <ContactLink />.
         </LegalParagraph>
         <LegalParagraph>
           This policy is written to meet Taiwan&apos;s Personal Data Protection Act (個人資料保護法), including the notice
@@ -38,9 +38,10 @@ export function PrivacyPolicyContent() {
         <LegalList
           items={[
             <>
-              <strong>Account:</strong> your school email address, plus your name and profile picture from your
-              Google account, kept only in your sign-in record. Your school email shows that you are a Shu-Te
-              student; we do not collect your student records, grades or enrolment status.
+              <strong>Account:</strong> your Google email address, name and profile picture, kept only in your
+              sign-in record, and the date you confirmed you are 18 or older. If you sign in with a Shu-Te school
+              account, it shows you are a Shu-Te student; we do not collect student records, grades or enrolment
+              status.
             </>,
             <>
               <strong>Learning data:</strong> which cards you have learned, their review schedule and review
@@ -51,12 +52,15 @@ export function PrivacyPolicyContent() {
               <strong>Your content:</strong> the folders and custom flashcards you create.
             </>,
             <>
-              <strong>Study together:</strong> while the app is open, other signed-in students can see your display
-              name, avatar colour and which lesson and activity you are on. You can turn this off with Settings → Show
-              me online. A student who opens your profile also sees your cover, book, the month you started and
-              your words known, characters known and day streak, sent straight from your device and not stored; turn
-              this off with Settings → Show my profile. Lesson chat messages, quiz rooms you open and reports you make
-              are visible to the other students in that lesson or room.
+              <strong>Study together:</strong> while the app is open, other signed-in learners, including people
+              outside Shu-Te, can see your display name, avatar colour and which lesson and activity you are on. You
+              can turn this off with Settings → Show me online. A learner who opens your profile also sees your cover,
+              book, the month you started and your words known, characters known and day streak, sent straight from
+              your device and not stored; turn this off with Settings → Show my profile. Lesson chat messages and quiz
+              rooms you open are visible to the other learners in that lesson or room. If you block someone, we keep
+              your block list so the two of you stay hidden from each other. If you report someone, we keep the
+              report: the reason, where it happened, the message you reported and who sent the report. The person you
+              report is not told.
             </>,
             <>
               <strong>Messages:</strong> feedback you send in the app or by email. In-app feedback includes
@@ -80,10 +84,11 @@ export function PrivacyPolicyContent() {
       <LegalSection title="3. Why we use it">
         <LegalList
           items={[
-            'to create and run your account and check that you are allowed into the beta;',
+            'to create and run your account and check that you can join (age and sign-up limits);',
             'to save your progress and sync it between your devices;',
             'to schedule your reviews and show your levels and readiness;',
             'to prevent abuse and keep the service secure (for example, usage limits per account);',
+            'to keep Study together safe: blocks, reports, daily limits and, when needed, closing an account;',
             'to answer your messages and fix problems;',
             'to improve the lessons using anonymous, combined statistics only, such as which words most learners find hard. These statistics never identify you and are never used to build a profile of you.',
           ]}
@@ -120,7 +125,7 @@ export function PrivacyPolicyContent() {
             </>,
             <>
               <strong>Cloudflare Workers</strong> run study together: who is online (kept only while you are
-              connected), lesson chat, quiz rooms and chat reports.
+              connected), lesson chat, quiz rooms, chat reports and your block list.
             </>,
             <>
               <strong>Our web host</strong> serves the app and may keep standard server logs.
@@ -160,6 +165,7 @@ export function PrivacyPolicyContent() {
             'Account, learning data and your content: until you delete your account, or until your account has had no sign-in for 12 months, whichever comes first.',
             'Deleting your account removes your profile, progress, folders and cards from our database right away. Our database provider may keep routine backups for a limited time afterwards.',
             'Study together: who is online is kept only while you are connected. Lesson chat shows the last 50 messages per lesson for 24 hours; expired storage is cleaned hourly. Quiz rooms expire automatically and races have a ten-minute limit. We keep up to 1,000 recent chat reports for up to 30 days.',
+            'Reports you send, or that name you, are kept for 12 months and then deleted. Your block list is kept until you unblock or delete your account.',
             'In-app feedback is removed when you delete your account. Emails and feedback notifications are kept only as long as needed to handle your request.',
             'Anonymous statistics contain no personal data and may be kept.',
             'Cached audio is stored by text, not by user, so it is not linked to you.',
@@ -212,14 +218,15 @@ export function PrivacyPolicyContent() {
 
       <LegalSection title="10. If you do not provide data">
         <LegalParagraph>
-          A school Google account is needed to sign in. Without it you cannot use the app during the beta. All
+          A Google account with a verified email is needed to sign in. Without it you cannot use the app. All
           other data is created by using the app.
         </LegalParagraph>
       </LegalSection>
 
       <LegalSection title="11. Age">
         <LegalParagraph>
-          The app is for adults 18 and older. We do not knowingly collect data from anyone younger. If you believe
+          The app is for adults 18 and older. New accounts confirm this on first sign-in; if you say you are under
+          18, the new account is deleted right away. We do not knowingly collect data from anyone younger. If you believe
           someone under 18 has given us data, email us and we will delete it.
         </LegalParagraph>
       </LegalSection>

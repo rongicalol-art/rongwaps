@@ -86,7 +86,7 @@ begin
   assert not private.school_beta_user_allowed(u), 'unverified Google email refused';
   assert not private.school_beta_user_allowed(p), 'password-only account refused';
   assert private.before_school_beta_signup((select event from signup_event where kind = 'gmail')) = '{}'::jsonb;
-  assert private.before_school_beta_signup((select event from signup_event where kind = 'unverified')) ? 'error';
+  assert private.before_school_beta_signup((select event from signup_event where kind = 'unverified')) #>> '{error,message}' like 'google_only:%', 'open: the refusal no longer mentions Shu-Te';
   assert private.before_school_beta_signup((select event from signup_event where kind = 'password')) ? 'error';
   token := private.school_beta_access_token_hook(jsonb_build_object('user_id', g, 'claims', '{}'::jsonb));
   assert token #> '{claims,school_beta}' = 'true', 'public token issued';
