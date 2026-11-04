@@ -168,7 +168,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
         </div>
       )}
       <div ref={scroller} onScroll={checkMentions} className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-3 pt-8 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_2rem)]">
-        {chat === null ? <EmptyNote>Loading messages…</EmptyNote> : visible.length === 0 ? <EmptyNote>Say hi to your classmates.</EmptyNote> : (
+        {chat === null ? <EmptyNote>Loading messages…</EmptyNote> : visible.length === 0 ? <EmptyNote>Say hi to everyone.</EmptyNote> : (
           <div className="flex flex-col gap-2">
             {groups(visible).map((group) => 'room' in group ? (
               <div key={group.key} className="my-2 flex items-center gap-3 rounded-feature border-2 border-brand-primary-soft-edge bg-brand-primary-soft py-3 pl-3.5 pr-3">
@@ -217,7 +217,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
       </div>
       </div>
       <div className="relative flex flex-col gap-1.5 pt-2">
-        {suggestions.length > 0 && <div role="listbox" ref={picker} id="mention-suggestions" aria-label="Mention a classmate" className="absolute bottom-full left-0 right-0 z-popover mb-2 max-h-60 overflow-y-auto rounded-control border-2 border-ui-border bg-ui-surface p-1">
+        {suggestions.length > 0 && <div role="listbox" ref={picker} id="mention-suggestions" aria-label="Mention someone" className="absolute bottom-full left-0 right-0 z-popover mb-2 max-h-60 overflow-y-auto rounded-control border-2 border-ui-border bg-ui-surface p-1">
           {suggestions.map((person, index) => <button key={person.u} id={`mention-option-${index}`} type="button" role="option" aria-selected={index === choice % suggestions.length} onMouseDown={event => event.preventDefault()} onClick={() => select(person)} className={`flex w-full items-center gap-2 rounded-control px-3 py-2 text-left font-bold text-ui-ink-strong ${index === choice % suggestions.length ? 'bg-brand-primary-soft' : 'hover:bg-ui-canvas'}`}><Avatar name={person.n} color={person.c} size="sm" src={person.i} /><span>{person.n}</span>{suggestions.filter(other => other.n === person.n).length > 1 && <span className="text-xs text-ui-muted">Classmate {suggestions.filter(other => other.n === person.n).findIndex(other => other.u === person.u) + 1}</span>}</button>)}
         </div>}
         {!ready && <p role="status" className="text-center text-xs font-bold text-ui-muted-strong">Reconnecting…</p>}

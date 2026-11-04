@@ -79,6 +79,11 @@ do $$
 begin
   assert (select count(*) from public.user_blocks where blocker = 'bb000000-0000-4000-8000-000000000001') = 1, 'still there';
   assert (select count(*) from private.user_reports where reporter = 'bb000000-0000-4000-8000-000000000001') = 20;
+  update private.user_reports set created_at = now() - interval '13 months'
+    where id = (select min(id) from private.user_reports where reporter = 'bb000000-0000-4000-8000-000000000001');
+  assert private.delete_old_reports() >= 1, 'reports older than 12 months are deleted';
+  assert (select count(*) from private.user_reports where reporter = 'bb000000-0000-4000-8000-000000000001') = 19;
+  assert exists (select 1 from cron.job where jobname = 'delete-old-reports');
 end;
 $$;
 

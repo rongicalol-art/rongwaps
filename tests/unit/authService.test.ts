@@ -46,6 +46,7 @@ test('school access rejection explains the required account without provider int
   assert.match(getOAuthCallbackErrorMessage('?error=access_denied&error_description=school_beta_only', '') ?? '', /Shu-Te student/);
   assert.equal(getOAuthCallbackErrorMessage('?error=access_denied&error_description=signups_full%3A+full', ''), SIGNUPS_FULL_MESSAGE);
   assert.match(getOAuthCallbackErrorMessage('', '#error=access_denied&error_description=account_blocked%3A+no') ?? '', /can’t sign in/);
+  assert.equal(getOAuthCallbackErrorMessage('?error=access_denied&error_description=google_only%3A+x', ''), 'Sign in with a Google account whose email is verified.');
 });
 
 test('auth listener authorizes sessions and ignores a stale approval after sign-out', async (context) => {

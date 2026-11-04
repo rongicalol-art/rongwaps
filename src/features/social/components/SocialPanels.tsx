@@ -132,7 +132,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
             <MuteButton />
           </div>
         : selected ? <div className="flex flex-1 items-center justify-between gap-2">
-            <IconActionButton size="md" label="Back to classmates" icon={<AppIcon name="back" size={20} />} onClick={() => setProfile(null)} />
+            <IconActionButton size="md" label="Back to everyone online" icon={<AppIcon name="back" size={20} />} onClick={() => setProfile(null)} />
             <ProfileSafetyMenu person={selected} />
           </div> : `Online${onlineTotal || classmates.length ? ` ${onlineTotal || classmates.length}` : ''}`}
       tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"
