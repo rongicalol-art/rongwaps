@@ -70,7 +70,8 @@ export async function verifyAccessToken(authorization: string | null, supabaseUr
   } catch { return null; }
 }
 
-export interface SchoolAccess { school: boolean; fullCourse: boolean }
+/** `ageOk` is false only when the hook says so: tokens from before the age step (all school accounts) pass. */
+export interface SchoolAccess { school: boolean; fullCourse: boolean; ageOk: boolean }
 
 /**
  * The school decision the token hook made when it issued this token, or null for tokens issued before the hook
@@ -80,7 +81,7 @@ export interface SchoolAccess { school: boolean; fullCourse: boolean }
  */
 export function schoolAccessFromClaims(claims: Record<string, unknown> | null | undefined): SchoolAccess | null {
   if (!claims || claims.school_beta !== true || typeof claims.full_course !== 'boolean') return null;
-  return { school: true, fullCourse: claims.full_course };
+  return { school: true, fullCourse: claims.full_course, ageOk: claims.age_ok !== false };
 }
 
 /** Claims of a token without checking its signature (the app's own session; never for authorization). */

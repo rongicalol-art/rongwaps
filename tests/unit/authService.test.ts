@@ -5,6 +5,7 @@ import {
   getOAuthCallbackErrorMessage,
   getOAuthLoginErrorMessage,
   getOAuthRedirectUrl,
+  SIGNUPS_FULL_MESSAGE,
 } from '../../src/services/authService';
 import { supabase } from '../../src/services/supabaseClient';
 import { SupabaseClient, type AuthChangeEvent, type Session, type User } from '@supabase/supabase-js';
@@ -43,6 +44,8 @@ test('callback without an auth error does not show an error', () => {
 
 test('school access rejection explains the required account without provider internals', () => {
   assert.match(getOAuthCallbackErrorMessage('?error=access_denied&error_description=school_beta_only', '') ?? '', /Shu-Te student/);
+  assert.equal(getOAuthCallbackErrorMessage('?error=access_denied&error_description=signups_full%3A+full', ''), SIGNUPS_FULL_MESSAGE);
+  assert.match(getOAuthCallbackErrorMessage('', '#error=access_denied&error_description=account_blocked%3A+no') ?? '', /can’t sign in/);
 });
 
 test('auth listener authorizes sessions and ignores a stale approval after sign-out', async (context) => {
@@ -176,4 +179,40 @@ test('unknown OAuth errors do not leak provider details to the sign-in screen', 
 
   assert.equal(message, 'Google sign-in could not start. Please try again.');
   assert.doesNotMatch(message, /user@example\.com/);
+});
+
+test('a public account before the age step reaches the app as needing it; confirming refreshes the token', async (context) => {
+  process.env.VITE_SUPABASE_URL = 'https://beta-fixture.supabase.co';
+  process.env.VITE_SUPABASE_ANON_KEY = 'fixture-key';
+  const auth = supabase.auth;
+  const claims = (value: object) => `e30.${Buffer.from(JSON.stringify(value)).toString('base64url')}.sig`;
+  const before = { user: { id: 'public-learner' }, access_token: claims({ sub: 'public-learner', school_beta: true, full_course: false, age_ok: false }) } as Session;
+  const after = { user: { id: 'public-learner' }, access_token: claims({ sub: 'public-learner', school_beta: true, full_course: false, age_ok: true }) } as Session;
+  let authEvent: ((event: AuthChangeEvent, session: Session | null) => void) | undefined;
+  context.mock.method(auth, 'getSession', async () => ({ data: { session: before }, error: null }));
+  context.mock.method(auth, 'onAuthStateChange', (callback: (event: AuthChangeEvent, session: Session | null) => void) => {
+    authEvent = callback;
+    return { data: { subscription: { unsubscribe() {} } } };
+  });
+  const rpc = context.mock.method(SupabaseClient.prototype, 'rpc', async () => ({ data: '2026-11-04T00:00:00Z', error: null, status: 200 }));
+  const refresh = context.mock.method(auth, 'refreshSession', async () => {
+    authEvent?.('TOKEN_REFRESHED', after);
+    return { data: { session: after, user: after.user }, error: null };
+  });
+  const observed: Array<boolean | undefined> = [];
+  const stop = authService.onAuthStateChanged((_user, _fullCourse, ageOk) => observed.push(ageOk));
+  const settle = () => new Promise(resolve => setTimeout(resolve, 15));
+  try {
+    await settle();
+    assert.equal(observed.at(-1), false, 'the age step is due');
+    await authService.confirmAge();
+    await settle();
+    assert.equal(rpc.mock.calls[0].arguments[0], 'confirm_age');
+    assert.equal(refresh.mock.callCount(), 1);
+    assert.equal(observed.at(-1), true, 'the refreshed token opens the app');
+  } finally {
+    stop();
+    delete process.env.VITE_SUPABASE_URL;
+    delete process.env.VITE_SUPABASE_ANON_KEY;
+  }
 });

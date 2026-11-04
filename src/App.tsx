@@ -8,6 +8,7 @@ import { takeFolderReturn } from './utils/browser/shareLink';
 
 const AppShell = lazy(() => import('./app/AppShell'));
 const LegalScreen = lazy(() => import('./screens/legal').then((m) => ({ default: m.LegalScreen })));
+const AgeCheck = lazy(() => import('./screens/auth').then((m) => ({ default: m.AgeCheck })));
 const JoinFolderSignIn = lazy(() => import('./screens/join-folder/JoinFolderSignIn').then((m) => ({ default: m.JoinFolderSignIn })));
 
 /** Auth and legal pages never load the study workspace or start cloud sync. */
@@ -34,7 +35,7 @@ function JoinFolderEntry() {
   const { currentUser, isLoading } = useAuth();
   if (isLoading) return <LoadingScreen message="Opening shared folder…" fullScreen />;
   if (!currentUser) return <JoinFolderSignIn code={id} />;
-  return <AppShell />;
+  return <SignedInApp />;
 }
 
 function RegularApp({ pathname }: { pathname: string }) {
@@ -46,5 +47,11 @@ function AuthenticatedWorkspace() {
   const { currentUser, isLoading } = useAuth();
   if (isLoading) return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen />;
   if (!currentUser && !import.meta.env.DEV) return <LazyLandingPage />;
-  return <AppShell />;
+  return <SignedInApp />;
+}
+
+/** A new public account answers the age step before the workspace (or cloud sync) starts. */
+function SignedInApp() {
+  const { needsAgeCheck } = useAuth();
+  return needsAgeCheck ? <AgeCheck /> : <AppShell />;
 }

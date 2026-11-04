@@ -1,0 +1,99 @@
+import { useState } from 'react';
+import { useAccountActions } from '../../app/hooks/useAccountActions';
+import { useAuth } from '../../hooks/useAuth';
+import { useCharacterFont } from '../../hooks/useCharacterFont';
+import { ActionButton, BrandWordmark } from '../../lib/widgets';
+import { authService } from '../../services/authService';
+import { debugLogger } from '../../utils/debug/debugLogger';
+import { DeskScene } from './DeskScene';
+import { setSignInNotice, takeSignInNotice } from './signInNotice';
+
+function firstName(fullName: unknown): string | null {
+  const first = typeof fullName === 'string' ? fullName.trim().split(/\s+/)[0] : '';
+  return first ? first.slice(0, 24) : null;
+}
+
+/**
+ * "Nod": shown once to a new public account after its first Google sign-in, before the workspace.
+ * Yes records the answer and refreshes the token (the app then opens); under 18 deletes the new account.
+ */
+export function AgeCheck() {
+  const { currentUser } = useAuth();
+  const { deleteAccount } = useAccountActions();
+  useCharacterFont();
+  const [busy, setBusy] = useState<'yes' | 'no' | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const name = firstName(currentUser?.user_metadata?.full_name ?? currentUser?.user_metadata?.name);
+
+  const confirm = async () => {
+    if (busy) return;
+    setBusy('yes');
+    setError(null);
+    try {
+      await authService.confirmAge();
+      // The refreshed token flips useAuth's needsAgeCheck; the workspace replaces this screen.
+    } catch (cause) {
+      debugLogger.error('Auth', 'Age confirmation failed', cause);
+      setError('That didn’t save. Check your connection and try again.');
+      setBusy(null);
+    }
+  };
+
+  const decline = async () => {
+    if (busy) return;
+    setBusy('no');
+    setError(null);
+    setSignInNotice('under-18');
+    try {
+      await deleteAccount();
+    } catch (cause) {
+      debugLogger.error('Auth', 'Under-18 account removal failed', cause);
+      takeSignInNotice();
+      setError('That didn’t go through. Check your connection and try again.');
+      setBusy(null);
+    }
+  };
+
+  return (
+    <div className="flex h-[100dvh] w-full flex-col overflow-y-auto bg-ui-canvas font-sans text-ui-ink">
+      <header className="mx-auto flex w-full max-w-[90rem] items-center px-5 py-3 lg:px-26">
+        <BrandWordmark />
+      </header>
+      <main className="flex flex-1 flex-col items-center justify-center px-6 pb-12 text-center lg:pb-20">
+        <DeskScene leaving={busy === 'yes'} className="size-56 shrink-0 lg:size-84" />
+        <h1 className="mt-2 text-4xl font-black leading-[1.1] tracking-tight text-ui-ink-strong text-balance lg:text-6xl">
+          {name ? `Welcome, ${name}!` : 'Welcome!'}
+        </h1>
+        <p className="mt-4 max-w-[30ch] text-lg font-bold leading-relaxed text-ui-muted-strong text-balance lg:text-xl">
+          Ron’s Mandarin is for learners 18 and older.
+        </p>
+        <div className="mt-8 flex w-full max-w-sm flex-col items-center gap-2 lg:mt-10">
+          <ActionButton
+            variant="primary"
+            size="lg"
+            fullWidth
+            onClick={() => void confirm()}
+            loading={busy === 'yes'}
+            loadingLabel="Opening your books"
+            className="normal-case tracking-normal"
+          >
+            I’m 18 or older
+          </ActionButton>
+          {busy !== 'yes' && (
+            <ActionButton
+              variant="quiet"
+              onClick={() => void decline()}
+              loading={busy === 'no'}
+              loadingLabel="Signing out"
+              className="normal-case tracking-normal text-base"
+              frontClassName="text-ui-muted-strong hover:bg-transparent hover:text-ui-ink-strong"
+            >
+              I’m under 18
+            </ActionButton>
+          )}
+          {error && <p role="alert" className="mt-2 rounded-sm bg-feedback-danger-surface px-3.5 py-2.5 text-sm font-bold text-feedback-danger-text">{error}</p>}
+        </div>
+      </main>
+    </div>
+  );
+}

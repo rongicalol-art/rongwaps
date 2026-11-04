@@ -5,6 +5,7 @@ import { useAppStore, UserSnapshot } from '../store/useAppStore';
 
 let globalUser: User | null = null;
 let globalHasFullCourseAccess = false;
+let globalNeedsAgeCheck = false;
 let globalIsLoading = true;
 const listeners = new Set<() => void>();
 
@@ -32,10 +33,11 @@ function subscribe(callback: () => void) {
   listeners.add(callback);
 
   if (listeners.size === 1 && !unsubscribeAuth) {
-    unsubscribeAuth = authService.onAuthStateChanged((user, hasFullCourseAccess) => {
+    unsubscribeAuth = authService.onAuthStateChanged((user, hasFullCourseAccess, ageOk = true) => {
       clearTimeout(loadingTimeout);
       globalUser = user;
       globalHasFullCourseAccess = Boolean(user && hasFullCourseAccess);
+      globalNeedsAgeCheck = Boolean(user && !ageOk);
       globalIsLoading = false;
       const snapshot = userToSnapshot(user);
       useAppStore.getState().setCurrentUser(snapshot);
@@ -56,6 +58,8 @@ export function useAuth() {
   const currentUser = useSyncExternalStore(subscribe, () => globalUser, () => globalUser);
   const hasFullCourseAccess = useSyncExternalStore(subscribe, () => globalHasFullCourseAccess, () => globalHasFullCourseAccess);
   const initialLoading = useSyncExternalStore(subscribe, () => globalIsLoading, () => globalIsLoading);
+  /** A public account signed in but not past the age step: the app shows the age step instead of the workspace. */
+  const needsAgeCheck = useSyncExternalStore(subscribe, () => globalNeedsAgeCheck, () => globalNeedsAgeCheck);
   const [isAuthActionLoading, setIsAuthActionLoading] = useState(false);
 
   const loginWithGoogle = useCallback(async () => {
@@ -81,6 +85,7 @@ export function useAuth() {
   return {
     currentUser,
     hasFullCourseAccess,
+    needsAgeCheck,
     isLoading: initialLoading,
     isAuthActionLoading,
     loginWithGoogle,

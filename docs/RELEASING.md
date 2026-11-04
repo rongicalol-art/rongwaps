@@ -187,7 +187,7 @@ The first filters registrations; the second checks provider-owned identities on 
 | Unban | `update private.account_flags set banned_at = null, banned_reason = null where user_id = '<user id>';` |
 | Count public accounts | `select private.public_account_count();` |
 
-A ban stops database requests at once and sign-in at the next token refresh (within an hour). New public sign-ups past the cap are refused with `signups_full:`; existing accounts keep access. Check with `supabase db query --linked --file supabase/tests/public_accounts.sql` (rolls back).
+A ban stops database requests at once and sign-in at the next token refresh (within an hour); the landing page then says "This account can't sign in". New public sign-ups past the cap are refused with `signups_full:` (the landing page says it is full for now); existing accounts keep access. A new public account sees a one-time age step before the app (`src/screens/auth/AgeCheck.tsx`): "I'm 18 or older" records it with `confirm_age()`; "I'm under 18" deletes the new account and returns to the landing page. Check with `supabase db query --linked --file supabase/tests/public_accounts.sql` (rolls back).
 
 `20261023120000_inactive_account_cleanup.sql` schedules the daily 12-month inactive-account deletion with `pg_cron` (see `docs/DATABASE_SCHEMA.md`). Check `select * from private.inactive_accounts();` after applying it; it must not list anyone who is still studying.
 
