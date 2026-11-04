@@ -448,25 +448,25 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L02-G02-P52': detected('順便', [inOrder(['順便'])]),
   'B3L02-G03-P53': detected('一會兒…一會兒…', [inOrder(['一會兒', '一會兒'], 6)]),
   'B3L02-G04-P54': detected('算了', [inOrder(['算了'])]),
-  'B3L02-G05-P62': detected('V開', [inOrder(['開'])]),
+  'B3L02-G05-P62': detected('V 開', [inOrder(['開'])]),
   'B3L02-G06-P64': detected('經過', [inOrder(['經過'])]),
   'B3L02-G07-P65': detected('用…來…', [inOrder(['用', '來'], 6)]),
 
   // Book 3 Lesson 3 — 貨比三家不吃虧
   'B3L03-G01-P78': detected('試+V', [inOrder(['試'])]),
-  'B3L03-G02-P80': detected('V掉', [inOrder(['掉'])]),
+  'B3L03-G02-P80': detected('V 掉', [inOrder(['掉'])]),
   'B3L03-G03-P81': detected('什麼(N)都……，就是……', [inOrder(['什麼', '都', '就是'], 10)]),
   'B3L03-G04-P82': detected('別再……了', [inOrder(['別再', '了'], 6), inOrder(['不再', '了'], 6)]),
   'B3L03-G05-P88': detected('不僅……也/還……', [inOrder(['不僅'])]),
-  'B3L03-G06-P90': detected('NP 一M比一M + Vs (了)', [inOrder(['比'], 4)]),
+  'B3L03-G06-P90': detected('NP 一 M 比一 M + Vs（了）', [inOrder(['比'], 4)]),
 
   // Book 3 Lesson 4 — 孩子滿月了
-  'B3L04-G01-P101': detected('好Vs的N(啊)!', [inOrder(['好', '的'], 4)]),
-  'B3L04-G02-P103': detected('V來V去，還是……', [inOrder(['來', '去'], 3), inOrder(['還是'])]),
+  'B3L04-G01-P101': detected('好 Vs 的 N（啊）！', [inOrder(['好', '的'], 4)]),
+  'B3L04-G02-P103': detected('V 來 V 去，還是……', [inOrder(['來', '去'], 3), inOrder(['還是'])]),
   'B3L04-G03-P105': detected('終於', [inOrder(['終於'])]),
-  'B3L04-G04-P113': detected('V個不停 / V個沒完', [inOrder(['個不停']), inOrder(['個沒完'])]),
-  'B3L04-G05-P114': detected('不Vs1不Vs2', [inOrder(['不', '不'], 4)]),
-  'B3L04-G06-P115': detected('除了……(以外)，就是……', [inOrder(['除了', '就是'], 8)]),
+  'B3L04-G04-P113': detected('V 個不停/V 個沒完', [inOrder(['個不停']), inOrder(['個沒完'])]),
+  'B3L04-G05-P114': detected('不 Vs₁ 不 Vs₂', [inOrder(['不', '不'], 4)]),
+  'B3L04-G06-P115': detected('除了……（以外），就是……', [inOrder(['除了', '就是'], 8)]),
   'B3L04-G07-P117': detected('不是……，就是……', [inOrder(['不是', '就是'], 8)]),
 
   // Book 3 Lesson 5 — 地震與颱風
@@ -504,7 +504,7 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L08-G06-P222': detected('畢竟', [inOrder(['畢竟'])]),
 
   // Book 3 Lesson 9 — 誰說得念大學才有未來？
-  'B3L09-G01-P235': detected('V過來', [inOrder(['過來'])]),
+  'B3L09-G01-P235': detected('V 過來', [inOrder(['過來'])]),
   'B3L09-G02-P237': detected('怎麼不……反而……呢？', [inOrder(['怎麼不', '反而'], 8)]),
   'B3L09-G03-P238': detected('不但不/沒……反而……', [inOrder(['不但', '反而'], 8)]),
   'B3L09-G04-P240': detected('才……(呢)', [inOrder(['才', '呢'], 6), inOrder(['才不']), inOrder(['才沒'])]),
@@ -516,7 +516,7 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L10-G01-P262': detected('直到……(以後/時)才……', [inOrder(['直到', '才'], 12)]),
   'B3L10-G02-P263': detected('只不過', [inOrder(['只不過'])]),
   'B3L10-G03-P265': detected('害', [inOrder(['害'])]),
-  'B3L10-G04-P272': detected('V到底', [inOrder(['到底'])]),
+  'B3L10-G04-P272': detected('V 到底', [inOrder(['到底'])]),
   'B3L10-G05-P274': detected('一再', [inOrder(['一再'])]),
   'B3L10-G06-P275': detected('假如', [inOrder(['假如'])]),
   'B3L10-G07-P276': detected('為了……而……', [inOrder(['為了', '而'], 10)]),
@@ -537,7 +537,7 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L12-G05-P325': detected('儘管', [inOrder(['儘管'])]),
   'B3L12-G06-P327': detected('不論……都……', [inOrder(['不論', '都'], 10)]),
 
-  // Book 3 Lesson 13 — 雲端科技真方便
+  // Book 3 Lesson 13 — 雲端科技真便利
   'B3L13-G01-P338': detected('這下子', [inOrder(['這下子'])]),
   'B3L13-G02-P339': detected('既……又……', [inOrder(['既', '又'], 8)]),
   'B3L13-G03-P341': detected('更別說', [inOrder(['更別說'])]),
@@ -546,7 +546,7 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
 
   // Book 3 Lesson 14 — 七夕情人節的故事
   'B3L14-G01-P360': detected('(這)就要從……V起了', [inOrder(['就要從']), inOrder(['說起']), inOrder(['談起']), inOrder(['找起'])]),
-  'B3L14-G02-P362': detected('V下去', [inOrder(['下去']), inOrder(['下去了'])]),
+  'B3L14-G02-P362': detected('V 下去', [inOrder(['下去']), inOrder(['下去了'])]),
   'B3L14-G03-P363': detected('幸虧……要不然……', [inOrder(['幸虧', '要不然'], 12), inOrder(['幸虧'])]),
   'B3L14-G04-P369': detected('根據', [inOrder(['根據'])]),
   'B3L14-G05-P371': detected('按照 / 按 / 照 NP + V', [inOrder(['按照']), inOrder(['就按']), inOrder(['照說明書'])]),
@@ -914,12 +914,12 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
 
   // Book 3 Lesson 15 — 去淡水參觀古蹟
   'B3L15-G01-P383': detected('簡直', [inOrder(['簡直'])]),
-  'B3L15-G02-P384': detected('Vs得沒話說', [inOrder(['得沒話說'])]),
+  'B3L15-G02-P384': detected('Vs 得沒話說', [inOrder(['得沒話說'])]),
   'B3L15-G03-P392': detected('同時', [inOrder(['同時'])]),
   'B3L15-G04-P393': detected('及', [inOrder(['及'])]),
   'B3L15-G05-P395': detected('總而言之 / 總之', [inOrder(['總而言之']), inOrder(['總之'])]),
 
-  // Book 3 Lesson 16 — 愛惜食物，從你我做起
+  // Book 3 Lesson 16 — 愛惜食物從你我做起
   'B3L16-G01-P404': detected('當作 / 當做', [inOrder(['當作']), inOrder(['當做'])]),
   'B3L16-G02-P406': detected('至少', [inOrder(['至少'])]),
   'B3L16-G03-P413': detected('由於……(因此)……', [inOrder(['由於', '因此'], 12), inOrder(['由於']), inOrder(['是由於'])]),

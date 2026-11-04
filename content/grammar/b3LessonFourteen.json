@@ -15,177 +15,219 @@
       ],
       "grammarFocus": [
         "(這)就要從……V起了",
-        "V下去",
+        "V 下去",
         "幸虧……要不然……"
       ],
       "lines": [
         {
           "id": "b3l14d1-l1",
           "speaker": "尚恩",
-          "traditional": "你這個布做的錢包好漂亮，在哪裡買的？",
-          "simplified": "你这个布做的钱包好漂亮，在哪里买的？",
-          "pinyin": "Nǐ zhège bù zuò de qiánbāo hǎo piàoliang, zài nǎlǐ mǎi de?",
-          "english": "This cloth wallet of yours is so pretty. Where did you buy it?"
+          "text": {
+            "traditional": "你這個布做的錢包好漂亮，在哪裡買的？",
+            "simplified": "你这个布做的钱包好漂亮，在哪里买的？",
+            "pinyin": "Nǐ zhège bù zuò de qiánbāo hǎo piàoliàng, zài nǎlǐ mǎi de?",
+            "english": "This cloth wallet of yours is so pretty. Where did you buy it?"
+          }
         },
         {
           "id": "b3l14d1-l2",
           "speaker": "家豪",
-          "traditional": "是我女朋友親手做的七夕情人節禮物。法國也有情人節吧？",
-          "simplified": "是我女朋友亲手做的七夕情人节礼物。法国也有情人节吧？",
-          "pinyin": "Shì wǒ nǚpéngyǒu qīnshǒu zuò de Qīxī Qíngrénjié lǐwù. Fǎguó yě yǒu Qíngrénjié ba?",
-          "english": "It's a Qixi Valentine's gift handmade by my girlfriend. France has Valentine's Day too, right?"
+          "text": {
+            "traditional": "是我女朋友親手做的七夕情人節禮物。法國也有情人節吧？",
+            "simplified": "是我女朋友亲手做的七夕情人节礼物。法国也有情人节吧？",
+            "pinyin": "Shì wǒ nǚpéngyǒu qīnshǒu zuò de Qīxī Qíngrénjié lǐwù. Fǎguó yě yǒu Qíngrénjié ba?",
+            "english": "It's a Qixi Valentine's gift handmade by my girlfriend. France has Valentine's Day too, right?"
+          }
         },
         {
           "id": "b3l14d1-l3",
           "speaker": "尚恩",
-          "traditional": "有啊，不過不是在七夕。你們這個節日背後應該有故事吧？",
-          "simplified": "有啊，不过不是在七夕。你们这个节日背后应该有故事吧？",
-          "pinyin": "Yǒu a, bùguò búshì zài Qīxī. Nǐmen zhège jiérì bèihòu yīnggāi yǒu gùshì ba?",
-          "english": "Yes, but not on Qixi. There must be a story behind your festival, right?"
+          "text": {
+            "traditional": "有啊，不過不是在七夕。你們這個節日背後應該有故事吧？",
+            "simplified": "有啊，不过不是在七夕。你们这个节日背后应该有故事吧？",
+            "pinyin": "Yǒu a, búguò búshì zài Qīxī. Nǐmen zhège jiérì bèihòu yīnggāi yǒu gùshì ba?",
+            "english": "Yes, but not on Qixi. There must be a story behind your festival, right?"
+          }
         },
         {
           "id": "b3l14d1-l4",
           "speaker": "家豪",
-          "traditional": "這就要從牛郎、織女說起了。從前有個叫牛郎的青年，每天都帶著老牛去田裡工作。有一天，他在河邊休息時，看見了一位非常美麗的姑娘。",
-          "simplified": "这就要从牛郎、织女说起了。从前有个叫牛郎的青年，每天都带着老牛去田里工作。有一天，他在河边休息时，看见了一位非常美丽的姑娘。",
-          "pinyin": "Zhè jiù yào cóng Niúláng, Zhīnǚ shuōqǐ le. Cóngqián yǒu ge jiào Niúláng de qīngnián, měitiān dōu dài zhe lǎoniú qù tián lǐ gōngzuò. Yǒu yì tiān, tā zài hébiān xiūxí shí, kànjiàn le yí wèi fēicháng měilì de gūniáng.",
-          "english": "That has to be told starting from the Cowherd and Weaver Girl. Once there was a young man named Niulang who took his old ox to work the fields every day. One day while resting by the river, he saw an exceptionally beautiful girl."
+          "text": {
+            "traditional": "這就要從牛郎、織女說起了。從前有個叫牛郎的青年，每天都帶著老牛去田裡工作。有一天，他在河邊休息時，看見了一位非常美麗的姑娘。",
+            "simplified": "这就要从牛郎、织女说起了。从前有个叫牛郎的青年，每天都带着老牛去田里工作。有一天，他在河边休息时，看见了一位非常美丽的姑娘。",
+            "pinyin": "Zhè jiùyào cóng Niúláng, Zhīnǚ shuōqǐ le. Cóngqián yǒu ge jiào Niúláng de qīngnián, měitiān dōu dài zhe lǎo niú qù tián lǐ gōngzuò. Yǒu yì tiān, tā zài hébiān xiūxí shí, kànjiàn le yí wèi fēicháng měilì de gūniáng.",
+            "english": "To explain that, we have to start with Niulang and Weaver Girl. Once there was a young man named Niulang who took his old ox to work the fields every day. One day while resting by the river, he saw an exceptionally beautiful girl."
+          }
         },
         {
           "id": "b3l14d1-l5",
           "speaker": "尚恩",
-          "traditional": "我猜牛郎第一眼看到她，就覺得遇到了真愛吧。",
-          "simplified": "我猜牛郎第一眼看到她，就觉得遇到了真爱吧。",
-          "pinyin": "Wǒ cāi Niúláng dì-yī yǎn kàndào tā, jiù juéde yùdào le zhēn'ài ba.",
-          "english": "I bet the very first moment Niulang saw her, he felt he had found true love."
+          "text": {
+            "traditional": "我猜牛郎第一眼看到她，就覺得遇到了真愛吧。",
+            "simplified": "我猜牛郎第一眼看到她，就觉得遇到了真爱吧。",
+            "pinyin": "Wǒ cāi Niúláng dì yī yǎn kàndào tā, jiù juéde yùdào le zhēn'ài ba.",
+            "english": "I bet the very first moment Niulang saw her, he felt he had found true love."
+          }
         },
         {
           "id": "b3l14d1-l6",
           "speaker": "家豪",
-          "traditional": "是啊。那個天真可愛的姑娘名叫織女，她是天上的仙女，跟著幾個姊姊來人間玩，過幾天就得回到天上。",
-          "simplified": "是啊。那个天真可爱的小姑娘名叫织女，她是天上的仙女，跟着几个姐姐来人间玩，过几天就得回到天上。",
-          "pinyin": "Shì a. Nàge tiānzhēn kě'ài de gūniáng míng jiào Zhīnǚ, tā shì tiānshàng de xiānnǚ, gēn zhe jǐ ge jiějiě lái rénjiān wán, guò jǐ tiān jiù děi huídào tiānshàng.",
-          "english": "Indeed. That innocent and lovely girl was named Weaver Girl. She was a celestial fairy from heaven, visiting the mortal world with her older sisters for fun, and had to return to heaven after a few days."
+          "text": {
+            "traditional": "是啊。那個天真可愛的姑娘名叫織女，她是天上的仙女，跟著幾個姊姊來人間玩，過幾天就得回到天上。",
+            "simplified": "是啊。那个天真可爱的姑娘名叫织女，她是天上的仙女，跟着几个姊姊来人间玩，过几天就得回到天上。",
+            "pinyin": "Shì a. Nàge tiānzhēn kě'ài de gūniáng míng jiào Zhīnǚ, tā shì tiānshàng de xiānnǚ, gēn zhe jǐ ge jiějie lái rénjiān wán, guò jǐ tiān jiù děi huídào tiānshàng.",
+            "english": "Indeed. That innocent and lovely girl was named Weaver Girl. She was a celestial fairy from heaven, visiting the mortal world with her older sisters for fun, and had to return to heaven after a few days."
+          }
         },
         {
           "id": "b3l14d1-l7",
           "speaker": "尚恩",
-          "traditional": "牛郎不想把她留下來嗎？",
-          "simplified": "牛郎不想把她留下来吗？",
-          "pinyin": "Niúláng bù xiǎng bǎ tā liú xiàlái ma?",
-          "english": "Didn't Niulang want to keep her here?"
+          "text": {
+            "traditional": "牛郎不想把她留下來嗎？",
+            "simplified": "牛郎不想把她留下来吗？",
+            "pinyin": "Niúláng bù xiǎng bǎ tā liú xià lái ma?",
+            "english": "Didn't Niulang want to keep her here?"
+          }
         },
         {
           "id": "b3l14d1-l8",
           "speaker": "家豪",
-          "traditional": "當然想啊！為了把織女留在身邊，牛郎就拿走了能讓織女飛回天上的衣服。後來，因為牛郎很溫柔、很體貼，織女就慢慢愛上他了，最後他們成了夫婦，還生了兩個寶貝。",
-          "simplified": "当然想啊！为了把织女留在身边，牛郎就拿走了能让织女飞回天上的衣服。后来，因为牛郎很温柔、很体贴，织女就慢慢爱上他了，最后他们成了夫妇，还生了两个宝贝。",
-          "pinyin": "Dāngrán xiǎng a! Wèile bǎ Zhīnǚ liú zài shēnbiān, Niúláng jiù názǒu le néng ràng Zhīnǚ fēi huí tiānshàng de yīfú. Hòulái, yīnwèi Niúláng hěn wēnróu, hěn tǐtiē, Zhīnǚ jiù mànmàn àishàng tā le, zuìhòu tāmen chéng le fūfù, hái shēng le liǎng ge bǎobèi.",
-          "english": "Of course he did! To keep Weaver Girl by his side, Niulang took away the clothes that allowed her to fly back to heaven. Later, because Niulang was gentle and thoughtful, Weaver Girl gradually fell in love with him, and eventually they became husband and wife and had two precious children."
+          "text": {
+            "traditional": "當然想啊！為了把織女留在身邊，牛郎就拿走了能讓織女飛回天上的衣服。後來，因為牛郎很溫柔、很體貼，織女就慢慢愛上他了，最後他們成了夫婦，還生了兩個寶貝。",
+            "simplified": "当然想啊！为了把织女留在身边，牛郎就拿走了能让织女飞回天上的衣服。后来，因为牛郎很温柔、很体贴，织女就慢慢爱上他了，最后他们成了夫妇，还生了两个宝贝。",
+            "pinyin": "Dāngrán xiǎng a! Wèile bǎ Zhīnǚ liú zài shēnbiān, Niúláng jiù ná zǒu le néng ràng Zhīnǚ fēi huí tiānshàng de yīfu. Hòulái, yīnwèi Niúláng hěn wēnróu, hěn tǐtiē, Zhīnǚ jiù mànmàn àishàng tā le, zuìhòu tāmen chéng le fūfù, hái shēng le liǎng ge bǎobèi.",
+            "english": "Of course he did! To keep Weaver Girl by his side, Niulang took away the clothes that allowed her to fly back to heaven. Later, because Niulang was gentle and thoughtful, Weaver Girl gradually fell in love with him, and eventually they became husband and wife and had two precious children."
+          }
         },
         {
           "id": "b3l14d1-l9",
           "speaker": "尚恩",
-          "traditional": "他們就這樣過著幸福快樂的日子嗎？",
-          "simplified": "他们就这样过着幸福快乐的日子吗？",
-          "pinyin": "Tāmen jiù zhèyàng guò zhe xìngfú kuàilè de rìzi ma?",
-          "english": "And did they live happily ever after just like that?"
+          "text": {
+            "traditional": "他們就這樣過著幸福快樂的日子嗎？",
+            "simplified": "他们就这样过着幸福快乐的日子吗？",
+            "pinyin": "Tāmen jiù zhèyàng guò zhe xìngfú kuàilè de rìzi ma?",
+            "english": "And did they live happily ever after just like that?"
+          }
         },
         {
           "id": "b3l14d1-l10",
           "speaker": "家豪",
-          "traditional": "唉，沒那麼簡單。天帝知道了以後，氣得叫王母娘娘把織女抓回天上，還把她關了起來。牛郎找來找去，總算在天上某個神祕的地方找到了織女。沒想到王母娘娘卻在他們中間變出一條銀河，讓他們只能遠遠地看著對方。",
-          "simplified": "唉，没那么简单。天帝知道了以后，气得叫王母娘娘把织女抓回天上，还把她关了起来。牛郎找来找去，总算在天上某个神秘的地方找到了织女。没想到王母娘娘却在他们中间变出一条银河，让他们只能远远地看着对方。",
-          "pinyin": "Ài, méi nàme jiǎndān. Tiāndì zhīdào le yǐhòu, qì de jiào Wángmǔ Niángniang bǎ Zhīnǚ zhuā huí tiānshàng, hái bǎ tā guān le qǐlái. Niúláng zhǎoláizhǎoqù, zǒngsuàn zài tiānshàng mǒu ge shénmì de dìfāng zhǎodào le Zhīnǚ. Méi xiǎngdào Wángmǔ Niángniang què zài tāmen zhōngjiān biànchū yì tiáo Yínhé, ràng tāmen zhǐ néng yuǎnyuǎn de kàn zhe duìfāng.",
-          "english": "Alas, it wasn't so simple. When the Heavenly Emperor found out, he was furious and ordered the Queen Mother of the West to drag Weaver Girl back to heaven and lock her up. Niulang searched everywhere and finally found Weaver Girl in a mysterious place in heaven. Unexpectedly, the Queen Mother conjured up the Milky Way between them, allowing them only to gaze at each other from afar."
+          "text": {
+            "traditional": "唉，沒那麼簡單。天帝知道了以後，氣得叫王母娘娘把織女抓回天上，還把她關了起來。牛郎找來找去，總算在天上某個神祕的地方找到了織女。沒想到王母娘娘卻在他們中間變出一條銀河，讓他們只能遠遠地看著對方。",
+            "simplified": "唉，没那么简单。天帝知道了以后，气得叫王母娘娘把织女抓回天上，还把她关了起来。牛郎找来找去，总算在天上某个神秘的地方找到了织女。没想到王母娘娘却在他们中间变出一条银河，让他们只能远远地看着对方。",
+            "pinyin": "Āi, méi nàme jiǎndān. Tiāndì zhīdào le yǐhòu, qì de jiào Wángmǔ Niángniang bǎ Zhīnǚ zhuā huí tiānshàng, hái bǎ tā guān le qǐlái. Niúláng zhǎo lái zhǎo qù, zǒngsuàn zài tiānshàng mǒu ge shénmì de dìfāng zhǎodào le Zhīnǚ. Méixiǎngdào Wángmǔ Niángniang què zài tāmen zhōngjiān biàn chū yì tiáo Yínhé, ràng tāmen zhǐ néng yuǎnyuǎn de kàn zhe duìfāng.",
+            "english": "Alas, it wasn't so simple. When the Heavenly Emperor found out, he was furious and ordered the Queen Mother of the West to drag Weaver Girl back to heaven and lock her up. Niulang searched everywhere and finally found Weaver Girl in a mysterious place in heaven. Unexpectedly, the Queen Mother conjured up the Milky Way between them, allowing them only to gaze at each other from afar."
+          }
         },
         {
           "id": "b3l14d1-l11",
           "speaker": "尚恩",
-          "traditional": "織女不能跟牛郎聚在一起，也不能在人間住下去，真可憐。",
-          "simplified": "织女不能跟牛郎聚在一起，也不能在人间住下去，真可怜。",
-          "pinyin": "Zhīnǚ bù néng gēn Niúláng jù zài yìqǐ, yě bù néng zài rénjiān zhù xiàqù, zhēn kělián.",
-          "english": "Weaver Girl couldn't be together with Niulang, nor could she live on in the mortal world; how pitiful."
+          "text": {
+            "traditional": "織女不能跟牛郎聚在一起，也不能在人間住下去，真可憐。",
+            "simplified": "织女不能跟牛郎聚在一起，也不能在人间住下去，真可怜。",
+            "pinyin": "Zhīnǚ bùnéng gēn Niúláng jù zài yìqǐ, yě bùnéng zài rénjiān zhù xiàqù, zhēn kělián.",
+            "english": "Weaver Girl couldn't be together with Niulang, nor could she live on in the mortal world; how pitiful."
+          }
         },
         {
           "id": "b3l14d1-l12",
           "speaker": "家豪",
-          "traditional": "還好姊姊們很同情她，好幾次請求王母娘娘幫忙。王母娘娘仔細觀察了兩人的情況，終於被他們的愛情感動了，答應讓他們在每年的農曆七月初七見面。有人說，七夕年年都會下雨，那就是織女流下的眼淚。",
-          "simplified": "还好姐姐们很同情她，好几次请求王母娘娘帮忙。王母娘娘仔细观察了两人的情况，终于被他们的爱情感动了，答应让他们在每年的农历七月初七见面。有人说，七夕年年都会下雨，那就是织女流下的眼泪。",
-          "pinyin": "Háihǎo jiějiěmen hěn tóngqíng tā, hǎojǐ cì qǐngqiú Wángmǔ Niángniang bāngmáng. Wángmǔ Niángniang zǐxì guānchá le liǎng rén de qíngkuàng, zhōngyú bèi tāmen de àiqíng gǎndòng le, dāyìng ràng tāmen zài měinián de nónglì qīyuè chū qī jiànmiàn. Yǒu rén shuō, Qīxī niánnián dōu huì xiàyǔ, nà jiùshì Zhīnǚ liúxià de yǎnlèi.",
-          "english": "Fortunately her sisters sympathized with her and begged the Queen Mother repeatedly for help. The Queen Mother closely observed the couple's devotion and was finally moved by their love, granting them permission to meet every year on the seventh day of the seventh lunar month. Some say that it rains every year on Qixi, and that is Weaver Girl shedding tears."
+          "text": {
+            "traditional": "還好姊姊們很同情她，好幾次請求王母娘娘幫忙。王母娘娘仔細觀察了兩人的情況，終於被他們的愛情感動了，答應讓他們在每年的農曆七月初七見面。有人說，七夕年年都會下雨，那就是織女流下的眼淚。",
+            "simplified": "还好姊姊们很同情她，好几次请求王母娘娘帮忙。王母娘娘仔细观察了两人的情况，终于被他们的爱情感动了，答应让他们在每年的农历七月初七见面。有人说，七夕年年都会下雨，那就是织女流下的眼泪。",
+            "pinyin": "Háihǎo jiějie men hěn tóngqíng tā, hǎojǐ cì qǐngqiú Wángmǔ Niángniang bāngmáng. Wángmǔ Niángniang zǐxì guānchá le liǎng rén de qíngkuàng, zhōngyú bèi tāmen de àiqíng gǎndòng le, dāyìng ràng tāmen zài měinián de nónglì qīyuè chū qī jiànmiàn. Yǒu rén shuō, Qīxī niánnián dōu huì xiàyǔ, nà jiùshì Zhīnǚ liú xià de yǎnlèi.",
+            "english": "Fortunately her sisters sympathized with her and begged the Queen Mother repeatedly for help. The Queen Mother carefully observed the couple's situation and was finally moved by their love, granting them permission to meet every year on the seventh day of the seventh lunar month. Some say that it rains every year on Qixi, and that is Weaver Girl shedding tears."
+          }
         },
         {
           "id": "b3l14d1-l13",
           "speaker": "尚恩",
-          "traditional": "幸虧有姊姊們的幫助，要不然他們一生都不能團圓了。",
-          "simplified": "幸亏有姐姐们的帮助，要不然他们一生都不能团圆了。",
-          "pinyin": "Xìngkuī yǒu jiějiěmen de bāngzhù, yàobùrán tāmen yìshēng dōu bù néng tuányuán le.",
-          "english": "Fortunately they had the sisters' help, otherwise they would never have reunited in their entire lives."
+          "text": {
+            "traditional": "幸虧有姊姊們的幫助，要不然他們一生都不能團圓了。",
+            "simplified": "幸亏有姊姊们的帮助，要不然他们一生都不能团圆了。",
+            "pinyin": "Xìngkuī yǒu jiějie men de bāngzhù, yàobùrán tāmen yìshēng dōu bùnéng tuányuán le.",
+            "english": "Fortunately they had the sisters' help, otherwise they would never have reunited in their entire lives."
+          }
         },
         {
           "id": "b3l14d1-l14",
           "speaker": "家豪",
-          "traditional": "可是一年只能見一次面，這樣的結局讓我很難過。",
-          "simplified": "可是一年只能见一次面，这样的结局让我很难过。",
-          "pinyin": "Kěshì yì nián zhǐ néng jiàn yí cì miàn, zhèyàng de jiéjú ràng wǒ hěn nánguò.",
-          "english": "But meeting only once a year—such an ending makes me sad."
+          "text": {
+            "traditional": "可是一年只能見一次面，這樣的結局讓我很難過。",
+            "simplified": "可是一年只能见一次面，这样的结局让我很难过。",
+            "pinyin": "Kěshì yì nián zhǐ néng jiàn yí cì miàn, zhèyàng de jiéjú ràng wǒ hěn nánguò.",
+            "english": "But meeting only once a year—such an ending makes me sad."
+          }
         },
         {
           "id": "b3l14d1-l15",
           "speaker": "尚恩",
-          "traditional": "怎麼說呢？",
-          "simplified": "怎么说呢？",
-          "pinyin": "Zěnme shuō ne?",
-          "english": "Why do you say that?"
+          "text": {
+            "traditional": "怎麼說呢？",
+            "simplified": "怎么说呢？",
+            "pinyin": "Zěnme shuō ne?",
+            "english": "Why do you say that?"
+          }
         },
         {
           "id": "b3l14d1-l16",
           "speaker": "家豪",
-          "traditional": "我女朋友畢業後就要出國念書，我擔心兩個人分開太久，關係就變淡了。",
-          "simplified": "我女朋友毕业后就要出国念书，我担心两个人分开太久，关系就变淡了。",
-          "pinyin": "Wǒ nǚpéngyǒu bìyè hòu jiù yào chūguó niànshū, wǒ dānxīn liǎng ge rén fēnkāi tài jiǔ, guānxì jiù biàn dàn le.",
-          "english": "My girlfriend is going abroad to study after graduation. I worry that being apart too long will cause our relationship to fade."
+          "text": {
+            "traditional": "我女朋友畢業後就要出國念書，我擔心兩個人分開太久，關係就變淡了。",
+            "simplified": "我女朋友毕业后就要出国念书，我担心两个人分开太久，关系就变淡了。",
+            "pinyin": "Wǒ nǚpéngyǒu bìyè hòu jiùyào chūguó niànshū, wǒ dānxīn liǎng ge rén fēnkāi tài jiǔ, guānxì jiù biàn dàn le.",
+            "english": "My girlfriend is going abroad to study after graduation. I worry that being apart too long will cause our relationship to fade."
+          }
         },
         {
           "id": "b3l14d1-l17",
           "speaker": "尚恩",
-          "traditional": "別擔心，現在網路這麼方便，隨時都能聊天、傳照片，距離再遠也沒問題。",
-          "simplified": "别担心，现在网络这么方便，随时都能聊天、传照片，距离再远也没问题。",
-          "pinyin": "Bié dānxīn, xiànzài wǎnglù zhème fāngbiàn, suíshí dōu néng liáotiān, chuán zhàopiàn, jùlí zài yuǎn yě méi wèntí.",
-          "english": "Don't worry. The internet is so convenient now; you can chat and send photos anytime. No matter how far the distance, it won't be a problem."
+          "text": {
+            "traditional": "別擔心，現在網路這麼方便，隨時都能聊天、傳照片，距離再遠也沒問題。",
+            "simplified": "别担心，现在网路这么方便，随时都能聊天、传照片，距离再远也没问题。",
+            "pinyin": "Bié dānxīn, xiànzài wǎnglù zhème fāngbiàn, suíshí dōu néng liáotiān, chuán zhàopiàn, jùlí zài yuǎn yě méi wèntí.",
+            "english": "Don't worry. The internet is so convenient now; you can chat and send photos anytime. No matter how far the distance, it won't be a problem."
+          }
         },
         {
           "id": "b3l14d1-l18",
           "speaker": "家豪",
-          "traditional": "沒問題倒是沒問題，不過遠距離的戀愛還是很辛苦的。",
-          "simplified": "没问题倒是没问题，不过远距离的恋爱还是很辛苦的。",
-          "pinyin": "Méi wèntí dàoshì méi wèntí, bùguò yuǎnjùlí de liàn'ài háishì hěn xīnkǔ de.",
-          "english": "No problem is true enough, but a long-distance relationship is still very tough."
+          "text": {
+            "traditional": "沒問題倒是沒問題，不過遠距離的戀愛還是很辛苦的。",
+            "simplified": "没问题倒是没问题，不过远距离的恋爱还是很辛苦的。",
+            "pinyin": "Méi wèntí dàoshì méi wèntí, búguò yuǎnjùlí de liàn'ài háishì hěn xīnkǔ de.",
+            "english": "It's true that it's not a problem, but a long-distance relationship is still really hard."
+          }
         },
         {
           "id": "b3l14d1-l19",
           "speaker": "尚恩",
-          "traditional": "別想那麼多了，你還是說說跟七夕有關的習俗吧。",
-          "simplified": "别想那么多了，你还是说说跟七夕有关的习俗吧。",
-          "pinyin": "Bié xiǎng nàme duō le, nǐ háishì shuōshuo gēn Qīxī yǒuguān de xísú ba.",
-          "english": "Don't overthink it; why not tell me about customs related to Qixi instead?"
+          "text": {
+            "traditional": "別想那麼多了，你還是說說跟七夕有關的習俗吧。",
+            "simplified": "别想那么多了，你还是说说跟七夕有关的习俗吧。",
+            "pinyin": "Bié xiǎng nàme duō le, nǐ háishì shuōshuo gēn Qīxī yǒuguān de xísú ba.",
+            "english": "Don't overthink it; why not tell me about customs related to Qixi instead?"
+          }
         },
         {
           "id": "b3l14d1-l20",
           "speaker": "家豪",
-          "traditional": "好吧。七夕那天，當月亮升起時，就會有拜織女的活動。因為織女織布的技巧很好，能織出漂亮的衣服和美麗的雲。人間的姑娘希望能像她那樣又聰明又漂亮，就會用一些親手做的東西來拜她。",
-          "simplified": "好吧。七夕那天，当月亮升起时，就会有拜织女的活动。因为织女织布的技巧很好，能织出漂亮的衣服和美丽的云。人间的小姑娘希望能像她那样又聪明又漂亮，就会用一些亲手做的小东西来拜她。",
-          "pinyin": "Hǎoba. Qīxī nà tiān, dāng yuèliàng shēngqǐ shí, jiù huì yǒu bài Zhīnǚ de huódòng. Yīnwèi Zhīnǚ zhībù de jìqiǎo hěn hǎo, néng zhīchū piàoliang de yīfú hé měilì de yún. Rénjiān de gūniáng xīwàng néng xiàng tā nàyàng yòu cōngmíng yòu piàoliang, jiù huì yòng yìxiē qīnshǒu zuò de xiǎo dōngxī lái bài tā.",
-          "english": "All right. On Qixi day, when the moon rises, there are activities honoring Weaver Girl. Because Weaver Girl's weaving skill was superb, able to weave beautiful clothes and splendid clouds. Girls in the mortal world hoping to be clever and lovely like her would worship her with handmade items."
+          "text": {
+            "traditional": "好吧。七夕那天，當月亮升起時，就會有拜織女的活動。因為織女織布的技巧很好，能織出漂亮的衣服和美麗的雲。人間的姑娘希望能像她那樣又聰明又漂亮，就會用一些親手做的東西來拜她。",
+            "simplified": "好吧。七夕那天，当月亮升起时，就会有拜织女的活动。因为织女织布的技巧很好，能织出漂亮的衣服和美丽的云。人间的姑娘希望能像她那样又聪明又漂亮，就会用一些亲手做的东西来拜她。",
+            "pinyin": "Hǎo ba. Qīxī nà tiān, dāng yuèliàng shēngqǐ shí, jiù huì yǒu bài Zhīnǚ de huódòng. Yīnwèi Zhīnǚ zhībù de jìqiǎo hěn hǎo, néng zhī chū piàoliàng de yīfu hé měilì de yún. Rénjiān de gūniáng xīwàng néng xiàng tā nàyàng yòu cōngmíng yòu piàoliàng, jiù huì yòng yìxiē qīnshǒu zuò de dōngxi lái bài tā.",
+            "english": "All right. On Qixi day, when the moon rises, there are activities honoring Weaver Girl. Because Weaver Girl was very good at weaving, she could weave beautiful clothes and lovely clouds. Girls in the mortal world who hope to be as clever and pretty as she was worship her with things they have made by hand."
+          }
         },
         {
           "id": "b3l14d1-l21",
           "speaker": "尚恩",
-          "traditional": "你女朋友在七夕送你這個親手做的錢包，原來有特別的意義啊！",
-          "simplified": "你女朋友在七夕送你这个亲手做的钱包，原来有特别的意义啊！",
-          "pinyin": "Nǐ nǚpéngyǒu zài Qīxī sòng nǐ zhège qīnshǒu zuò de qiánbāo, yuánlái yǒu tèbié de yìyì a!",
-          "english": "So your girlfriend giving you this handmade wallet on Qixi carries a special meaning after all!"
+          "text": {
+            "traditional": "你女朋友在七夕送你這個親手做的錢包，原來有特別的意義啊！",
+            "simplified": "你女朋友在七夕送你这个亲手做的钱包，原来有特别的意义啊！",
+            "pinyin": "Nǐ nǚpéngyǒu zài Qīxī sòng nǐ zhège qīnshǒu zuò de qiánbāo, yuánlái yǒu tèbié de yìyì a!",
+            "english": "So your girlfriend giving you this handmade wallet on Qixi carries a special meaning after all!"
+          }
         }
       ]
     },
@@ -200,7 +242,7 @@
         "grammarNumber": 1,
         "titleTraditional": "（這）就要從……說起了",
         "titleEnglish": "Starting to explain/narrate from a specific point",
-        "learnerPromise": "Explain origins or multi-faceted backgrounds by starting at an appropriate context or timeline.",
+        "learnerPromise": "Say that something can't be explained simply and has to start from a certain point, with (這)就要從……說起了 (說 can also be 看, 找, 做…).",
         "printedPages": [
           360,
           361,
@@ -214,7 +256,7 @@
           "這就要從……說起了",
           "就要從……說起了"
         ],
-        "pattern": "(這) + 就要從 + Source + V + 起了",
+        "pattern": "(這) + 就要從 + Starting point + Verb (說/看/找…) + 起了",
         "patternColumns": [
           "這",
           "就要從",
@@ -231,7 +273,7 @@
                   "traditional": "這",
                   "simplified": "这",
                   "pinyin": "zhè",
-                  "meaning": "this"
+                  "meaning": ""
                 }
               ],
               [
@@ -240,7 +282,7 @@
                   "traditional": "就要從",
                   "simplified": "就要从",
                   "pinyin": "jiùyào cóng",
-                  "meaning": "is going to start from"
+                  "meaning": ""
                 }
               ],
               [
@@ -249,7 +291,7 @@
                   "traditional": "牛郎織女",
                   "simplified": "牛郎织女",
                   "pinyin": "Niúláng Zhīnǚ",
-                  "meaning": "the Cowherd and the Weaver Girl"
+                  "meaning": ""
                 }
               ],
               [
@@ -258,7 +300,7 @@
                   "traditional": "說起了",
                   "simplified": "说起了",
                   "pinyin": "shuōqǐ le",
-                  "meaning": "start talking about it"
+                  "meaning": ""
                 }
               ]
             ]
@@ -273,25 +315,60 @@
                   "traditional": "就要從",
                   "simplified": "就要从",
                   "pinyin": "jiùyào cóng",
-                  "meaning": "is going to start from"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g1-r2-c3-w1",
-                  "traditional": "兩年前的",
-                  "simplified": "两年前的",
-                  "pinyin": "liǎng nián qián de",
-                  "meaning": "from two years ago"
+                  "traditional": "兩",
+                  "simplified": "两",
+                  "pinyin": "liǎng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r2-c3-w2",
+                  "traditional": "年",
+                  "simplified": "年",
+                  "pinyin": "nián",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r2-c3-w3",
+                  "traditional": "前",
+                  "simplified": "前",
+                  "pinyin": "qián",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r2-c3-w4",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g1-r2-c4-w1",
-                  "traditional": "找起了",
-                  "simplified": "找起了",
-                  "pinyin": "zhǎoqǐ le",
-                  "meaning": "start looking from it"
+                  "traditional": "找",
+                  "simplified": "找",
+                  "pinyin": "zhǎo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r2-c4-w2",
+                  "traditional": "起",
+                  "simplified": "起",
+                  "pinyin": "qǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r2-c4-w3",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
                 }
               ]
             ]
@@ -305,7 +382,7 @@
                   "traditional": "這",
                   "simplified": "这",
                   "pinyin": "zhè",
-                  "meaning": "this"
+                  "meaning": ""
                 }
               ],
               [
@@ -314,16 +391,37 @@
                   "traditional": "就要從",
                   "simplified": "就要从",
                   "pinyin": "jiùyào cóng",
-                  "meaning": "is going to start from"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g1-r3-c3-w1",
-                  "traditional": "你的飲食習慣",
-                  "simplified": "你的饮食习惯",
-                  "pinyin": "nǐ de yǐnshí xíguàn",
-                  "meaning": "your eating habits"
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r3-c3-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r3-c3-w3",
+                  "traditional": "飲食",
+                  "simplified": "饮食",
+                  "pinyin": "yǐnshí",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-r3-c3-w4",
+                  "traditional": "習慣",
+                  "simplified": "习惯",
+                  "pinyin": "xíguàn",
+                  "meaning": ""
                 }
               ],
               [
@@ -332,7 +430,7 @@
                   "traditional": "說起了",
                   "simplified": "说起了",
                   "pinyin": "shuōqǐ le",
-                  "meaning": "start talking about it"
+                  "meaning": ""
                 }
               ]
             ]
@@ -346,35 +444,43 @@
               "traditional": "這就要從牛郎、織女說起了。……",
               "simplified": "这就要从牛郎、织女说起了。……",
               "pinyin": "Zhè jiùyào cóng Niúláng, Zhīnǚ shuōqǐ le.…",
-              "english": "It has to start from the Cowherd and the Weaver Girl…",
+              "english": "To explain that, we have to start with the Cowherd and the Weaver Girl…",
               "words": [
                 {
                   "id": "b3l14g1-ex1-w1",
                   "traditional": "這",
                   "simplified": "这",
                   "pinyin": "zhè",
-                  "meaning": "this"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex1-w2",
                   "traditional": "就要從",
                   "simplified": "就要从",
                   "pinyin": "jiùyào cóng",
-                  "meaning": "is going to start from"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex1-w3",
-                  "traditional": "牛郎、織女",
-                  "simplified": "牛郎、织女",
-                  "pinyin": "Niúláng, Zhīnǚ",
-                  "meaning": "the Cowherd and the Weaver Girl"
+                  "traditional": "牛郎",
+                  "simplified": "牛郎",
+                  "pinyin": "Niúláng",
+                  "meaning": "",
+                  "suffix": "、"
                 },
                 {
                   "id": "b3l14g1-ex1-w4",
+                  "traditional": "織女",
+                  "simplified": "织女",
+                  "pinyin": "Zhīnǚ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex1-w5",
                   "traditional": "說起了",
                   "simplified": "说起了",
                   "pinyin": "shuōqǐ le",
-                  "meaning": "start talking about it",
+                  "meaning": "",
                   "suffix": "。……"
                 }
               ]
@@ -386,81 +492,151 @@
             "number": 2,
             "text": {
               "traditional": "這個計畫一再地調整內容，想找到舊資料的話，就要從兩年前的找起了。",
-              "simplified": "这个计画一再地调整内容，想找到旧资料的话，就要从两年前的找起了。",
-              "pinyin": "Zhège jìhuà yízàidì tiáozhěng nèiróng, xiǎng zhǎodào jiù zīliào de huà, jiùyào cóng liǎng nián qián de zhǎoqǐ le.",
-              "english": "This plan has been adjusted again and again. If you want old data, you have to start looking from two years ago.",
+              "simplified": "这个计划一再地调整内容，想找到旧资料的话，就要从两年前的找起了。",
+              "pinyin": "Zhè ge jìhuà yízài de tiáozhěng nèiróng, xiǎng zhǎodào jiù zīliào dehuà, jiùyào cóng liǎng nián qián de zhǎo qǐ le.",
+              "english": "This plan's content has been changed again and again, so if you want to find the old files, you'll have to start looking with the ones from two years ago.",
               "words": [
                 {
                   "id": "b3l14g1-ex2-w1",
-                  "traditional": "這個計畫",
-                  "simplified": "这个计画",
-                  "pinyin": "zhège jìhuà",
-                  "meaning": "this plan"
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "zhè",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w2",
-                  "traditional": "一再地",
-                  "simplified": "一再地",
-                  "pinyin": "yízàidì",
-                  "meaning": "again and again"
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w3",
-                  "traditional": "調整內容",
-                  "simplified": "调整内容",
-                  "pinyin": "tiáozhěng nèiróng",
-                  "meaning": "adjust the content",
-                  "suffix": "，"
+                  "traditional": "計畫",
+                  "simplified": "计划",
+                  "pinyin": "jìhuà",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w4",
-                  "traditional": "想找到",
-                  "simplified": "想找到",
-                  "pinyin": "xiǎng zhǎodào",
-                  "meaning": "want to find"
+                  "traditional": "一再",
+                  "simplified": "一再",
+                  "pinyin": "yízài",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w5",
-                  "traditional": "舊資料",
-                  "simplified": "旧资料",
-                  "pinyin": "jiù zīliào",
-                  "meaning": "old data"
+                  "traditional": "地",
+                  "simplified": "地",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w6",
-                  "traditional": "的話",
-                  "simplified": "的话",
-                  "pinyin": "de huà",
-                  "meaning": "if",
-                  "suffix": "，"
+                  "traditional": "調整",
+                  "simplified": "调整",
+                  "pinyin": "tiáozhěng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w7",
-                  "traditional": "就要從",
-                  "simplified": "就要从",
-                  "pinyin": "jiùyào cóng",
-                  "meaning": "is going to start from"
+                  "traditional": "內容",
+                  "simplified": "内容",
+                  "pinyin": "nèiróng",
+                  "meaning": "",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l14g1-ex2-w8",
-                  "traditional": "兩年前",
-                  "simplified": "两年前",
-                  "pinyin": "liǎng nián qián",
-                  "meaning": "two years ago"
+                  "traditional": "想",
+                  "simplified": "想",
+                  "pinyin": "xiǎng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w9",
-                  "traditional": "的",
-                  "simplified": "的",
-                  "pinyin": "de",
-                  "meaning": "particle"
+                  "traditional": "找到",
+                  "simplified": "找到",
+                  "pinyin": "zhǎodào",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex2-w10",
-                  "traditional": "找起了",
-                  "simplified": "找起了",
-                  "pinyin": "zhǎoqǐ le",
-                  "meaning": "start looking from it",
+                  "traditional": "舊",
+                  "simplified": "旧",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w11",
+                  "traditional": "資料",
+                  "simplified": "资料",
+                  "pinyin": "zīliào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w12",
+                  "traditional": "的話",
+                  "simplified": "的话",
+                  "pinyin": "dehuà",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g1-ex2-w13",
+                  "traditional": "就要從",
+                  "simplified": "就要从",
+                  "pinyin": "jiùyào cóng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w14",
+                  "traditional": "兩",
+                  "simplified": "两",
+                  "pinyin": "liǎng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w15",
+                  "traditional": "年",
+                  "simplified": "年",
+                  "pinyin": "nián",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w16",
+                  "traditional": "前",
+                  "simplified": "前",
+                  "pinyin": "qián",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w17",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w18",
+                  "traditional": "找",
+                  "simplified": "找",
+                  "pinyin": "zhǎo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w19",
+                  "traditional": "起",
+                  "simplified": "起",
+                  "pinyin": "qǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w20",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -473,112 +649,294 @@
             "text": {
               "traditional": "A：我花了很多錢去健身房運動，怎麼過了三個月還沒變瘦？\nB：這就要從你的飲食習慣說起了。要是你不改掉愛吃零食的壞習慣，怎麼瘦得下來呢？",
               "simplified": "A：我花了很多钱去健身房运动，怎么过了三个月还没变瘦？\nB：这就要从你的饮食习惯说起了。要是你不改掉爱吃零食的坏习惯，怎么瘦得下来呢？",
-              "pinyin": "A: wǒ huāle hěn duō qián qù jiànshēnfáng yùndòng, zěnme guòle sān ge yuè hái méi biànshòu?\nB: zhè jiùyào cóng nǐ de yǐnshí xíguàn shuōqǐ le. yàoshi nǐ bù gǎidiào ài chī língshí de huài xíguàn, zěnme shòu de xiàlai ne?",
-              "english": "A: I spent a lot of money going to the gym, why have I not lost weight after three months? B: That is where we start: your eating habits. If you do not give up your bad habit of loving snacks, how can you lose weight?",
+              "pinyin": "A: Wǒ huā le hěn duō qián qù jiànshēnfáng yùndòng, zěnme guò le sān ge yuè háiméi biàn shòu?\nB: Zhè jiùyào cóng nǐ de yǐnshí xíguàn shuōqǐ le. Yàoshì nǐ bù gǎidiào ài chī língshí de huài xíguàn, zěnme shòu de xiàlái ne?",
+              "english": "A: I've spent a lot of money going to the gym, so how come I still haven't lost weight after three months?\nB: For that, we have to start with your eating habits. If you don't break your bad habit of snacking, how will you ever lose weight?",
               "words": [
                 {
                   "id": "b3l14g1-ex3-w1",
-                  "traditional": "我花了很多錢",
-                  "simplified": "我花了很多钱",
-                  "pinyin": "wǒ huāle hěn duō qián",
-                  "meaning": "I spent a lot of money",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "",
                   "prefix": "A："
                 },
                 {
                   "id": "b3l14g1-ex3-w2",
-                  "traditional": "去健身房運動",
-                  "simplified": "去健身房运动",
-                  "pinyin": "qù jiànshēnfáng yùndòng",
-                  "meaning": "go to the gym to exercise",
-                  "suffix": "，"
+                  "traditional": "花",
+                  "simplified": "花",
+                  "pinyin": "huā",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w3",
-                  "traditional": "怎麼過了三個月",
-                  "simplified": "怎么过了三个月",
-                  "pinyin": "zěnme guòle sān ge yuè",
-                  "meaning": "how three months have already passed"
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w4",
-                  "traditional": "還沒變瘦",
-                  "simplified": "还没变瘦",
-                  "pinyin": "hái méi biànshòu",
-                  "meaning": "still have not lost weight",
-                  "suffix": "？"
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w5",
-                  "traditional": "這",
-                  "simplified": "这",
-                  "pinyin": "zhè",
-                  "meaning": "this",
-                  "prefix": "\nB："
+                  "traditional": "多",
+                  "simplified": "多",
+                  "pinyin": "duō",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w6",
-                  "traditional": "就要從",
-                  "simplified": "就要从",
-                  "pinyin": "jiùyào cóng",
-                  "meaning": "is going to start from"
+                  "traditional": "錢",
+                  "simplified": "钱",
+                  "pinyin": "qián",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w7",
-                  "traditional": "你的飲食習慣",
-                  "simplified": "你的饮食习惯",
-                  "pinyin": "nǐ de yǐnshí xíguàn",
-                  "meaning": "your eating habits"
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w8",
-                  "traditional": "說起了",
-                  "simplified": "说起了",
-                  "pinyin": "shuōqǐ le",
-                  "meaning": "start talking about it",
-                  "suffix": "。"
+                  "traditional": "健身房",
+                  "simplified": "健身房",
+                  "pinyin": "jiànshēnfáng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w9",
-                  "traditional": "要是",
-                  "simplified": "要是",
-                  "pinyin": "yàoshi",
-                  "meaning": "if"
-                },
-                {
-                  "id": "b3l14g1-ex3-w10",
-                  "traditional": "你",
-                  "simplified": "你",
-                  "pinyin": "nǐ",
-                  "meaning": "you"
-                },
-                {
-                  "id": "b3l14g1-ex3-w11",
-                  "traditional": "不改掉",
-                  "simplified": "不改掉",
-                  "pinyin": "bù gǎidiào",
-                  "meaning": "do not give up"
-                },
-                {
-                  "id": "b3l14g1-ex3-w12",
-                  "traditional": "愛吃零食的壞習慣",
-                  "simplified": "爱吃零食的坏习惯",
-                  "pinyin": "ài chī língshí de huài xíguàn",
-                  "meaning": "bad habit of loving snacks",
+                  "traditional": "運動",
+                  "simplified": "运动",
+                  "pinyin": "yùndòng",
+                  "meaning": "",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l14g1-ex3-w13",
+                  "id": "b3l14g1-ex3-w10",
                   "traditional": "怎麼",
                   "simplified": "怎么",
                   "pinyin": "zěnme",
-                  "meaning": "how"
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w11",
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "guò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w12",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w13",
+                  "traditional": "三",
+                  "simplified": "三",
+                  "pinyin": "sān",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g1-ex3-w14",
-                  "traditional": "瘦得下來呢",
-                  "simplified": "瘦得下来呢",
-                  "pinyin": "shòu de xiàlai ne",
-                  "meaning": "be able to lose weight",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w15",
+                  "traditional": "月",
+                  "simplified": "月",
+                  "pinyin": "yuè",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w16",
+                  "traditional": "還沒",
+                  "simplified": "还没",
+                  "pinyin": "háiméi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w17",
+                  "traditional": "變",
+                  "simplified": "变",
+                  "pinyin": "biàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w18",
+                  "traditional": "瘦",
+                  "simplified": "瘦",
+                  "pinyin": "shòu",
+                  "meaning": "",
+                  "suffix": "？\n"
+                },
+                {
+                  "id": "b3l14g1-ex3-w19",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "zhè",
+                  "meaning": "",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b3l14g1-ex3-w20",
+                  "traditional": "就要從",
+                  "simplified": "就要从",
+                  "pinyin": "jiùyào cóng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w21",
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w22",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w23",
+                  "traditional": "飲食",
+                  "simplified": "饮食",
+                  "pinyin": "yǐnshí",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w24",
+                  "traditional": "習慣",
+                  "simplified": "习惯",
+                  "pinyin": "xíguàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w25",
+                  "traditional": "說起了",
+                  "simplified": "说起了",
+                  "pinyin": "shuōqǐ le",
+                  "meaning": "",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l14g1-ex3-w26",
+                  "traditional": "要是",
+                  "simplified": "要是",
+                  "pinyin": "yàoshì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w27",
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w28",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w29",
+                  "traditional": "改掉",
+                  "simplified": "改掉",
+                  "pinyin": "gǎidiào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w30",
+                  "traditional": "愛",
+                  "simplified": "爱",
+                  "pinyin": "ài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w31",
+                  "traditional": "吃",
+                  "simplified": "吃",
+                  "pinyin": "chī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w32",
+                  "traditional": "零食",
+                  "simplified": "零食",
+                  "pinyin": "língshí",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w33",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w34",
+                  "traditional": "壞",
+                  "simplified": "坏",
+                  "pinyin": "huài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w35",
+                  "traditional": "習慣",
+                  "simplified": "习惯",
+                  "pinyin": "xíguàn",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g1-ex3-w36",
+                  "traditional": "怎麼",
+                  "simplified": "怎么",
+                  "pinyin": "zěnme",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w37",
+                  "traditional": "瘦",
+                  "simplified": "瘦",
+                  "pinyin": "shòu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w38",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w39",
+                  "traditional": "下來",
+                  "simplified": "下来",
+                  "pinyin": "xiàlái",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w40",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "",
                   "suffix": "？"
                 }
               ]
@@ -598,9 +956,9 @@
         "lessonTitle": "七夕情人節的故事",
         "lessonTitleEnglish": "The Story of the Double Seventh Festival (Chinese Valentine's Day)",
         "grammarNumber": 2,
-        "titleTraditional": "V下去",
+        "titleTraditional": "V 下去",
         "titleEnglish": "Continuing an ongoing action",
-        "learnerPromise": "Express continuation of an ongoing activity or the feasibility of persevering with it.",
+        "learnerPromise": "Say that someone keeps on doing something, or can or can't keep going, with V下去, V得下去 and V不下去.",
         "printedPages": [
           362,
           363
@@ -610,7 +968,7 @@
         "audioReference": "14-1-2",
         "explanation": "「下去」放在動詞之後，當作補語，表示某個動作繼續進行，「V下去」後面不可加賓語。",
         "focusTerms": [
-          "V下去",
+          "V 下去",
           "V得下去",
           "V不下去"
         ],
@@ -627,19 +985,40 @@
               [
                 {
                   "id": "b3l14g2-r1-c1-w1",
-                  "traditional": "也不能",
-                  "simplified": "也不能",
-                  "pinyin": "yě bù néng",
-                  "meaning": "also cannot"
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-r1-c1-w2",
+                  "traditional": "不能",
+                  "simplified": "不能",
+                  "pinyin": "bùnéng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-r1-c1-w3",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-r1-c1-w4",
+                  "traditional": "人間",
+                  "simplified": "人间",
+                  "pinyin": "rénjiān",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g2-r1-c2-w1",
-                  "traditional": "在人間住",
-                  "simplified": "在人间住",
-                  "pinyin": "zài rénjiān zhù",
-                  "meaning": "live in the human world"
+                  "traditional": "住",
+                  "simplified": "住",
+                  "pinyin": "zhù",
+                  "meaning": ""
                 }
               ],
               [
@@ -647,8 +1026,8 @@
                   "id": "b3l14g2-r1-c3-w1",
                   "traditional": "下去",
                   "simplified": "下去",
-                  "pinyin": "xiàqu",
-                  "meaning": "keep on"
+                  "pinyin": "xiàqù",
+                  "meaning": ""
                 }
               ]
             ]
@@ -659,10 +1038,17 @@
               [
                 {
                   "id": "b3l14g2-r2-c1-w1",
-                  "traditional": "我實在",
-                  "simplified": "我实在",
-                  "pinyin": "wǒ shízài",
-                  "meaning": "really"
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-r2-c1-w2",
+                  "traditional": "實在",
+                  "simplified": "实在",
+                  "pinyin": "shízài",
+                  "meaning": ""
                 }
               ],
               [
@@ -671,16 +1057,23 @@
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
-                  "meaning": "watch"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g2-r2-c3-w1",
-                  "traditional": "不下去",
-                  "simplified": "不下去",
-                  "pinyin": "bù xiàqu",
-                  "meaning": "cannot keep going"
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bú",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-r2-c3-w2",
+                  "traditional": "下去",
+                  "simplified": "下去",
+                  "pinyin": "xiàqù",
+                  "meaning": ""
                 }
               ]
             ]
@@ -691,10 +1084,17 @@
               [
                 {
                   "id": "b3l14g2-r3-c1-w1",
-                  "traditional": "你們能",
-                  "simplified": "你们能",
-                  "pinyin": "nǐmen néng",
-                  "meaning": "you can"
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-r3-c1-w2",
+                  "traditional": "能",
+                  "simplified": "能",
+                  "pinyin": "néng",
+                  "meaning": ""
                 }
               ],
               [
@@ -703,7 +1103,7 @@
                   "traditional": "堅持",
                   "simplified": "坚持",
                   "pinyin": "jiānchí",
-                  "meaning": "persist"
+                  "meaning": ""
                 }
               ],
               [
@@ -711,8 +1111,8 @@
                   "id": "b3l14g2-r3-c3-w1",
                   "traditional": "下去",
                   "simplified": "下去",
-                  "pinyin": "xiàqu",
-                  "meaning": "keep on"
+                  "pinyin": "xiàqù",
+                  "meaning": ""
                 }
               ]
             ]
@@ -725,7 +1125,7 @@
             "text": {
               "traditional": "織女不能跟牛郎聚在一起，也不能在人間住下去，真可憐。",
               "simplified": "织女不能跟牛郎聚在一起，也不能在人间住下去，真可怜。",
-              "pinyin": "Zhīnǚ bù néng gēn Niúláng jù zài yìqǐ, yě bù néng zài rénjiān zhù xiàqu, zhēn kělián.",
+              "pinyin": "Zhīnǚ bùnéng gēn Niúláng jù zài yìqǐ, yě bùnéng zài rénjiān zhù xiàqù, zhēn kělián.",
               "english": "The Weaver Girl could not be together with the Cowherd, and could not keep living in the human world either. How pitiful.",
               "words": [
                 {
@@ -733,58 +1133,93 @@
                   "traditional": "織女",
                   "simplified": "织女",
                   "pinyin": "Zhīnǚ",
-                  "meaning": "the Weaver Girl"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex1-w2",
                   "traditional": "不能",
                   "simplified": "不能",
-                  "pinyin": "bù néng",
-                  "meaning": "cannot"
+                  "pinyin": "bùnéng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex1-w3",
-                  "traditional": "跟牛郎",
-                  "simplified": "跟牛郎",
-                  "pinyin": "gēn Niúláng",
-                  "meaning": "with the Cowherd"
+                  "traditional": "跟",
+                  "simplified": "跟",
+                  "pinyin": "gēn",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex1-w4",
-                  "traditional": "聚在一起",
-                  "simplified": "聚在一起",
-                  "pinyin": "jù zài yìqǐ",
-                  "meaning": "be together",
-                  "suffix": "，"
+                  "traditional": "牛郎",
+                  "simplified": "牛郎",
+                  "pinyin": "Niúláng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex1-w5",
-                  "traditional": "也不能",
-                  "simplified": "也不能",
-                  "pinyin": "yě bù néng",
-                  "meaning": "also cannot"
-                },
-                {
-                  "id": "b3l14g2-ex1-w6",
-                  "traditional": "在人間",
-                  "simplified": "在人间",
-                  "pinyin": "zài rénjiān",
-                  "meaning": "in the human world"
-                },
-                {
-                  "id": "b3l14g2-ex1-w7",
-                  "traditional": "住下去",
-                  "simplified": "住下去",
-                  "pinyin": "zhù xiàqu",
-                  "meaning": "keep living",
+                  "traditional": "聚在一起",
+                  "simplified": "聚在一起",
+                  "pinyin": "jù zài yìqǐ",
+                  "meaning": "",
                   "suffix": "，"
                 },
                 {
+                  "id": "b3l14g2-ex1-w6",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex1-w7",
+                  "traditional": "不能",
+                  "simplified": "不能",
+                  "pinyin": "bùnéng",
+                  "meaning": ""
+                },
+                {
                   "id": "b3l14g2-ex1-w8",
-                  "traditional": "真可憐",
-                  "simplified": "真可怜",
-                  "pinyin": "zhēn kělián",
-                  "meaning": "really pitiful",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex1-w9",
+                  "traditional": "人間",
+                  "simplified": "人间",
+                  "pinyin": "rénjiān",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex1-w10",
+                  "traditional": "住",
+                  "simplified": "住",
+                  "pinyin": "zhù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex1-w11",
+                  "traditional": "下去",
+                  "simplified": "下去",
+                  "pinyin": "xiàqù",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g2-ex1-w12",
+                  "traditional": "真",
+                  "simplified": "真",
+                  "pinyin": "zhēn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex1-w13",
+                  "traditional": "可憐",
+                  "simplified": "可怜",
+                  "pinyin": "kělián",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -797,59 +1232,129 @@
             "text": {
               "traditional": "這部電影很無聊，演員的演戲技巧也不好，我實在看不下去了。",
               "simplified": "这部电影很无聊，演员的演戏技巧也不好，我实在看不下去了。",
-              "pinyin": "Zhè bù diànyǐng hěn wúliáo, yǎnyuán de yǎnxì jìqiǎo yě bù hǎo, wǒ shízài kàn bu xiàqu le.",
-              "english": "This film is so boring, and the actors acting skills are poor too. I really cannot keep watching it.",
+              "pinyin": "Zhè bù diànyǐng hěn wúliáo, yǎnyuán de yǎnxì jìqiǎo yě bùhǎo, wǒ shízài kàn bú xiàqù le.",
+              "english": "This movie is boring, and the actors' acting isn't good either. I really can't keep watching it.",
               "words": [
                 {
                   "id": "b3l14g2-ex2-w1",
-                  "traditional": "這部電影",
-                  "simplified": "这部电影",
-                  "pinyin": "zhè bù diànyǐng",
-                  "meaning": "this film"
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "zhè",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex2-w2",
-                  "traditional": "很無聊",
-                  "simplified": "很无聊",
-                  "pinyin": "hěn wúliáo",
-                  "meaning": "very boring",
-                  "suffix": "，"
+                  "traditional": "部",
+                  "simplified": "部",
+                  "pinyin": "bù",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex2-w3",
-                  "traditional": "演員的演戲技巧",
-                  "simplified": "演员的演戏技巧",
-                  "pinyin": "yǎnyuán de yǎnxì jìqiǎo",
-                  "meaning": "actors acting skills"
+                  "traditional": "電影",
+                  "simplified": "电影",
+                  "pinyin": "diànyǐng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex2-w4",
-                  "traditional": "也不好",
-                  "simplified": "也不好",
-                  "pinyin": "yě bù hǎo",
-                  "meaning": "also not good",
-                  "suffix": "，"
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex2-w5",
-                  "traditional": "我實在",
-                  "simplified": "我实在",
-                  "pinyin": "wǒ shízài",
-                  "meaning": "really"
+                  "traditional": "無聊",
+                  "simplified": "无聊",
+                  "pinyin": "wúliáo",
+                  "meaning": "",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l14g2-ex2-w6",
-                  "traditional": "看不下去",
-                  "simplified": "看不下去",
-                  "pinyin": "kàn bu xiàqu",
-                  "meaning": "cannot keep watching"
+                  "traditional": "演員",
+                  "simplified": "演员",
+                  "pinyin": "yǎnyuán",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex2-w7",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w8",
+                  "traditional": "演戲",
+                  "simplified": "演戏",
+                  "pinyin": "yǎnxì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w9",
+                  "traditional": "技巧",
+                  "simplified": "技巧",
+                  "pinyin": "jìqiǎo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w10",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w11",
+                  "traditional": "不好",
+                  "simplified": "不好",
+                  "pinyin": "bùhǎo",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g2-ex2-w12",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w13",
+                  "traditional": "實在",
+                  "simplified": "实在",
+                  "pinyin": "shízài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w14",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "kàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w15",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bú",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w16",
+                  "traditional": "下去",
+                  "simplified": "下去",
+                  "pinyin": "xiàqù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w17",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "meaning": "particle",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -862,84 +1367,175 @@
             "text": {
               "traditional": "A：總統給你們的任務很危險，你們能堅持下去嗎？\nB：我們是軍人，為了國家，就算犧牲生命也必須完成。",
               "simplified": "A：总统给你们的任务很危险，你们能坚持下去吗？\nB：我们是军人，为了国家，就算牺牲生命也必须完成。",
-              "pinyin": "A: zǒngtǒng gěi nǐmen de rènwu hěn wéixiǎn, nǐmen néng jiānchí xiàqu ma?\nB: wǒmen shì jūnrén, wèile guójiā, jiùsuàn xīshēng shēngmìng yě bìxū wánchéng.",
-              "english": "A: The task the president gave you is very dangerous. Can you keep going? B: We are soldiers; for the country, we must complete it even if we sacrifice our lives.",
+              "pinyin": "A: Zǒngtǒng gěi nǐmen de rènwù hěn wéixiǎn, nǐmen néng jiānchí xiàqù ma?\nB: Wǒmen shì jūnrén, wèile guójiā, jiùsuàn xīshēng shēngmìng yě bìxū wánchéng.",
+              "english": "A: The task the president gave you is very dangerous. Can you keep going?\nB: We are soldiers; for the country, we must complete it even if we sacrifice our lives.",
               "words": [
                 {
                   "id": "b3l14g2-ex3-w1",
-                  "traditional": "總統給你們的任務",
-                  "simplified": "总统给你们的任务",
-                  "pinyin": "zǒngtǒng gěi nǐmen de rènwu",
-                  "meaning": "the task the president gave you",
+                  "traditional": "總統",
+                  "simplified": "总统",
+                  "pinyin": "zǒngtǒng",
+                  "meaning": "",
                   "prefix": "A："
                 },
                 {
                   "id": "b3l14g2-ex3-w2",
-                  "traditional": "很危險",
-                  "simplified": "很危险",
-                  "pinyin": "hěn wéixiǎn",
-                  "meaning": "very dangerous",
-                  "suffix": "，"
+                  "traditional": "給",
+                  "simplified": "给",
+                  "pinyin": "gěi",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex3-w3",
-                  "traditional": "你們能",
-                  "simplified": "你们能",
-                  "pinyin": "nǐmen néng",
-                  "meaning": "you can"
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex3-w4",
-                  "traditional": "堅持",
-                  "simplified": "坚持",
-                  "pinyin": "jiānchí",
-                  "meaning": "persist"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex3-w5",
-                  "traditional": "下去",
-                  "simplified": "下去",
-                  "pinyin": "xiàqu",
-                  "meaning": "keep on"
+                  "traditional": "任務",
+                  "simplified": "任务",
+                  "pinyin": "rènwù",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex3-w6",
-                  "traditional": "嗎",
-                  "simplified": "吗",
-                  "pinyin": "ma",
-                  "meaning": "question particle",
-                  "suffix": "？"
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex3-w7",
-                  "traditional": "我們是軍人",
-                  "simplified": "我们是军人",
-                  "pinyin": "wǒmen shì jūnrén",
-                  "meaning": "we are soldiers",
-                  "prefix": "\nB：",
+                  "traditional": "危險",
+                  "simplified": "危险",
+                  "pinyin": "wéixiǎn",
+                  "meaning": "",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l14g2-ex3-w8",
-                  "traditional": "為了國家",
-                  "simplified": "为了国家",
-                  "pinyin": "wèile guójiā",
-                  "meaning": "for the country",
-                  "suffix": "，"
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex3-w9",
-                  "traditional": "就算犧牲生命",
-                  "simplified": "就算牺牲生命",
-                  "pinyin": "jiùsuàn xīshēng shēngmìng",
-                  "meaning": "even if we sacrifice our lives"
+                  "traditional": "能",
+                  "simplified": "能",
+                  "pinyin": "néng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g2-ex3-w10",
-                  "traditional": "也必須完成",
-                  "simplified": "也必须完成",
-                  "pinyin": "yě bìxū wánchéng",
-                  "meaning": "must also complete it",
+                  "traditional": "堅持",
+                  "simplified": "坚持",
+                  "pinyin": "jiānchí",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w11",
+                  "traditional": "下去",
+                  "simplified": "下去",
+                  "pinyin": "xiàqù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w12",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "",
+                  "suffix": "？\n"
+                },
+                {
+                  "id": "b3l14g2-ex3-w13",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b3l14g2-ex3-w14",
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w15",
+                  "traditional": "軍人",
+                  "simplified": "军人",
+                  "pinyin": "jūnrén",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g2-ex3-w16",
+                  "traditional": "為了",
+                  "simplified": "为了",
+                  "pinyin": "wèile",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w17",
+                  "traditional": "國家",
+                  "simplified": "国家",
+                  "pinyin": "guójiā",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g2-ex3-w18",
+                  "traditional": "就算",
+                  "simplified": "就算",
+                  "pinyin": "jiùsuàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w19",
+                  "traditional": "犧牲",
+                  "simplified": "牺牲",
+                  "pinyin": "xīshēng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w20",
+                  "traditional": "生命",
+                  "simplified": "生命",
+                  "pinyin": "shēngmìng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w21",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w22",
+                  "traditional": "必須",
+                  "simplified": "必须",
+                  "pinyin": "bìxū",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g2-ex3-w23",
+                  "traditional": "完成",
+                  "simplified": "完成",
+                  "pinyin": "wánchéng",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -993,16 +1589,44 @@
                   "traditional": "幸虧",
                   "simplified": "幸亏",
                   "pinyin": "xìngkuī",
-                  "meaning": "fortunately"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g3-r1-c2-w1",
-                  "traditional": "有姊姊們的幫助",
-                  "simplified": "有姐姐们的帮助",
-                  "pinyin": "yǒu jiějiemen de bāngzhù",
-                  "meaning": "having the sisters help"
+                  "traditional": "有",
+                  "simplified": "有",
+                  "pinyin": "yǒu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c2-w2",
+                  "traditional": "姊姊",
+                  "simplified": "姊姊",
+                  "pinyin": "jiějie",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c2-w3",
+                  "traditional": "們",
+                  "simplified": "们",
+                  "pinyin": "men",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c2-w4",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c2-w5",
+                  "traditional": "幫助",
+                  "simplified": "帮助",
+                  "pinyin": "bāngzhù",
+                  "meaning": ""
                 }
               ],
               [
@@ -1011,16 +1635,51 @@
                   "traditional": "要不然",
                   "simplified": "要不然",
                   "pinyin": "yàobùrán",
-                  "meaning": "otherwise"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g3-r1-c4-w1",
-                  "traditional": "他們一生都不能團圓了",
-                  "simplified": "他们一生都不能团圆了",
-                  "pinyin": "tāmen yìshēng dōu bù néng tuányuán le",
-                  "meaning": "could never be reunited in their lifetime"
+                  "traditional": "他們",
+                  "simplified": "他们",
+                  "pinyin": "tāmen",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c4-w2",
+                  "traditional": "一生",
+                  "simplified": "一生",
+                  "pinyin": "yìshēng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c4-w3",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c4-w4",
+                  "traditional": "不能",
+                  "simplified": "不能",
+                  "pinyin": "bùnéng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c4-w5",
+                  "traditional": "團圓",
+                  "simplified": "团圆",
+                  "pinyin": "tuányuán",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r1-c4-w6",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1034,16 +1693,37 @@
                   "traditional": "幸虧",
                   "simplified": "幸亏",
                   "pinyin": "xìngkuī",
-                  "meaning": "fortunately"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g3-r2-c2-w1",
-                  "traditional": "她那天沒去",
-                  "simplified": "她那天没去",
-                  "pinyin": "tā nà tiān méi qù",
-                  "meaning": "she did not go that day"
+                  "traditional": "她",
+                  "simplified": "她",
+                  "pinyin": "tā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r2-c2-w2",
+                  "traditional": "那天",
+                  "simplified": "那天",
+                  "pinyin": "nà tiān",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r2-c2-w3",
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r2-c2-w4",
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": ""
                 }
               ],
               [
@@ -1052,16 +1732,30 @@
                   "traditional": "要不然",
                   "simplified": "要不然",
                   "pinyin": "yàobùrán",
-                  "meaning": "otherwise"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g3-r2-c4-w1",
-                  "traditional": "就糟了",
-                  "simplified": "就糟了",
-                  "pinyin": "jiù zāo le",
-                  "meaning": "then it would be bad"
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r2-c4-w2",
+                  "traditional": "糟",
+                  "simplified": "糟",
+                  "pinyin": "zāo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r2-c4-w3",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1075,16 +1769,37 @@
                   "traditional": "幸虧",
                   "simplified": "幸亏",
                   "pinyin": "xìngkuī",
-                  "meaning": "fortunately"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g3-r3-c2-w1",
-                  "traditional": "警察就在路邊",
-                  "simplified": "警察就在路边",
-                  "pinyin": "jǐngchá jiù zài lùbiān",
-                  "meaning": "the police were right by the road"
+                  "traditional": "警察",
+                  "simplified": "警察",
+                  "pinyin": "jǐngchá",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r3-c2-w2",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r3-c2-w3",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r3-c2-w4",
+                  "traditional": "路邊",
+                  "simplified": "路边",
+                  "pinyin": "lùbiān",
+                  "meaning": ""
                 }
               ],
               [
@@ -1093,16 +1808,44 @@
                   "traditional": "要不然",
                   "simplified": "要不然",
                   "pinyin": "yàobùrán",
-                  "meaning": "otherwise"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g3-r3-c4-w1",
-                  "traditional": "他的命就沒了",
-                  "simplified": "他的命就没了",
-                  "pinyin": "tā de mìng jiù méi le",
-                  "meaning": "his life would be gone"
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r3-c4-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r3-c4-w3",
+                  "traditional": "命",
+                  "simplified": "命",
+                  "pinyin": "mìng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r3-c4-w4",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-r3-c4-w5",
+                  "traditional": "沒了",
+                  "simplified": "没了",
+                  "pinyin": "méi le",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1114,8 +1857,8 @@
             "number": 1,
             "text": {
               "traditional": "幸虧有姊姊們的幫助，要不然他們一生都不能團圓了。",
-              "simplified": "幸亏有姐姐们的帮助，要不然他们一生都不能团圆了。",
-              "pinyin": "Xìngkuī yǒu jiějiemen de bāngzhù, yàobùrán tāmen yìshēng dōu bù néng tuányuán le.",
+              "simplified": "幸亏有姊姊们的帮助，要不然他们一生都不能团圆了。",
+              "pinyin": "Xìngkuī yǒu jiějie men de bāngzhù, yàobùrán tāmen yìshēng dōu bùnéng tuányuán le.",
               "english": "Luckily the older sisters helped; otherwise they could never have been reunited in their lifetime.",
               "words": [
                 {
@@ -1123,50 +1866,92 @@
                   "traditional": "幸虧",
                   "simplified": "幸亏",
                   "pinyin": "xìngkuī",
-                  "meaning": "fortunately"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex1-w2",
-                  "traditional": "有姊姊們的幫助",
-                  "simplified": "有姐姐们的帮助",
-                  "pinyin": "yǒu jiějiemen de bāngzhù",
-                  "meaning": "having the sisters help",
-                  "suffix": "，"
+                  "traditional": "有",
+                  "simplified": "有",
+                  "pinyin": "yǒu",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex1-w3",
-                  "traditional": "要不然",
-                  "simplified": "要不然",
-                  "pinyin": "yàobùrán",
-                  "meaning": "otherwise"
+                  "traditional": "姊姊",
+                  "simplified": "姊姊",
+                  "pinyin": "jiějie",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex1-w4",
-                  "traditional": "他們",
-                  "simplified": "他们",
-                  "pinyin": "tāmen",
-                  "meaning": "they"
+                  "traditional": "們",
+                  "simplified": "们",
+                  "pinyin": "men",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex1-w5",
-                  "traditional": "一生",
-                  "simplified": "一生",
-                  "pinyin": "yìshēng",
-                  "meaning": "lifetime"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex1-w6",
-                  "traditional": "都不能",
-                  "simplified": "都不能",
-                  "pinyin": "dōu bù néng",
-                  "meaning": "cannot at all"
+                  "traditional": "幫助",
+                  "simplified": "帮助",
+                  "pinyin": "bāngzhù",
+                  "meaning": "",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l14g3-ex1-w7",
-                  "traditional": "團圓了",
-                  "simplified": "团圆了",
-                  "pinyin": "tuányuán le",
-                  "meaning": "reunited",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w8",
+                  "traditional": "他們",
+                  "simplified": "他们",
+                  "pinyin": "tāmen",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w9",
+                  "traditional": "一生",
+                  "simplified": "一生",
+                  "pinyin": "yìshēng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w10",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w11",
+                  "traditional": "不能",
+                  "simplified": "不能",
+                  "pinyin": "bùnéng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w12",
+                  "traditional": "團圓",
+                  "simplified": "团圆",
+                  "pinyin": "tuányuán",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w13",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -1179,59 +1964,157 @@
             "text": {
               "traditional": "奶奶天天去拜拜的那座寺廟前天忽然塌了，幸虧她那天沒去，要不然就糟了。",
               "simplified": "奶奶天天去拜拜的那座寺庙前天忽然塌了，幸亏她那天没去，要不然就糟了。",
-              "pinyin": "Nǎinai tiāntiān qù bàibai de nà zuò sìmiào qiántiān hūrán tā le, xìngkuī tā nà tiān méi qù, yàobùrán jiù zāo le.",
-              "english": "The temple Grandma visited every day collapsed the day before. Luckily she did not go that day; otherwise it would have been bad.",
+              "pinyin": "Nǎinai tiāntiān qù bàibài de nà zuò sìmiào qiántiān hūrán tā le, xìngkuī tā nà tiān méi qù, yàobùrán jiù zāo le.",
+              "english": "The temple where Grandma goes to pray every day suddenly collapsed the day before yesterday. Luckily she didn't go that day; otherwise it would have been terrible.",
               "words": [
                 {
                   "id": "b3l14g3-ex2-w1",
-                  "traditional": "奶奶天天去拜拜的那座寺廟",
-                  "simplified": "奶奶天天去拜拜的那座寺庙",
-                  "pinyin": "nǎinai tiāntiān qù bàibai de nà zuò sìmiào",
-                  "meaning": "the temple Grandma visited every day"
+                  "traditional": "奶奶",
+                  "simplified": "奶奶",
+                  "pinyin": "nǎinai",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex2-w2",
-                  "traditional": "前天",
-                  "simplified": "前天",
-                  "pinyin": "qiántiān",
-                  "meaning": "the day before yesterday"
+                  "traditional": "天天",
+                  "simplified": "天天",
+                  "pinyin": "tiāntiān",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex2-w3",
-                  "traditional": "忽然塌了",
-                  "simplified": "忽然塌了",
-                  "pinyin": "hūrán tā le",
-                  "meaning": "suddenly collapsed",
-                  "suffix": "，"
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex2-w4",
-                  "traditional": "幸虧",
-                  "simplified": "幸亏",
-                  "pinyin": "xìngkuī",
-                  "meaning": "fortunately"
+                  "traditional": "拜拜",
+                  "simplified": "拜拜",
+                  "pinyin": "bàibài",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex2-w5",
-                  "traditional": "她那天沒去",
-                  "simplified": "她那天没去",
-                  "pinyin": "tā nà tiān méi qù",
-                  "meaning": "she did not go that day",
-                  "suffix": "，"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex2-w6",
-                  "traditional": "要不然",
-                  "simplified": "要不然",
-                  "pinyin": "yàobùrán",
-                  "meaning": "otherwise"
+                  "traditional": "那",
+                  "simplified": "那",
+                  "pinyin": "nà",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex2-w7",
-                  "traditional": "就糟了",
-                  "simplified": "就糟了",
-                  "pinyin": "jiù zāo le",
-                  "meaning": "then it would be bad",
+                  "traditional": "座",
+                  "simplified": "座",
+                  "pinyin": "zuò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w8",
+                  "traditional": "寺廟",
+                  "simplified": "寺庙",
+                  "pinyin": "sìmiào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w9",
+                  "traditional": "前天",
+                  "simplified": "前天",
+                  "pinyin": "qiántiān",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w10",
+                  "traditional": "忽然",
+                  "simplified": "忽然",
+                  "pinyin": "hūrán",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w11",
+                  "traditional": "塌",
+                  "simplified": "塌",
+                  "pinyin": "tā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w12",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex2-w13",
+                  "traditional": "幸虧",
+                  "simplified": "幸亏",
+                  "pinyin": "xìngkuī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w14",
+                  "traditional": "她",
+                  "simplified": "她",
+                  "pinyin": "tā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w15",
+                  "traditional": "那天",
+                  "simplified": "那天",
+                  "pinyin": "nà tiān",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w16",
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w17",
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex2-w18",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w19",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w20",
+                  "traditional": "糟",
+                  "simplified": "糟",
+                  "pinyin": "zāo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w21",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -1244,53 +2127,172 @@
             "text": {
               "traditional": "錢先生發生嚴重車禍時，幸虧警察就在路邊，趕快把他送到了醫院，要不然他的命就沒了。",
               "simplified": "钱先生发生严重车祸时，幸亏警察就在路边，赶快把他送到了医院，要不然他的命就没了。",
-              "pinyin": "Qián xiānsheng fāshēng yánzhòng chēhuò shí, xìngkuī jǐngchá jiù zài lùbiān, gǎnkuài bǎ tā sòngdào le yīyuàn, yàobùrán tā de mìng jiù méi le.",
-              "english": "When Mr. Qian had a serious car accident, luckily a police officer was right by the road and quickly took him to the hospital; otherwise his life would have been gone.",
+              "pinyin": "Qián xiānshēng fāshēng yánzhòng chēhuò shí, xìngkuī jǐngchá jiù zài lùbiān, gǎnkuài bǎ tā sòng dào le yīyuàn, yàobùrán tā de mìng jiù méi le.",
+              "english": "When Mr. Qian had a serious car accident, luckily a police officer was right by the road and quickly took him to the hospital; otherwise he would have died.",
               "words": [
                 {
                   "id": "b3l14g3-ex3-w1",
-                  "traditional": "錢先生發生嚴重車禍時",
-                  "simplified": "钱先生发生严重车祸时",
-                  "pinyin": "Qián xiānsheng fāshēng yánzhòng chēhuò shí",
-                  "meaning": "when Mr. Qian had a serious car accident",
-                  "suffix": "，"
+                  "traditional": "錢先生",
+                  "simplified": "钱先生",
+                  "pinyin": "Qián xiānshēng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex3-w2",
-                  "traditional": "幸虧",
-                  "simplified": "幸亏",
-                  "pinyin": "xìngkuī",
-                  "meaning": "fortunately"
+                  "traditional": "發生",
+                  "simplified": "发生",
+                  "pinyin": "fāshēng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex3-w3",
-                  "traditional": "警察就在路邊",
-                  "simplified": "警察就在路边",
-                  "pinyin": "jǐngchá jiù zài lùbiān",
-                  "meaning": "the police were right by the road",
-                  "suffix": "，"
+                  "traditional": "嚴重",
+                  "simplified": "严重",
+                  "pinyin": "yánzhòng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex3-w4",
-                  "traditional": "趕快把他送到了醫院",
-                  "simplified": "赶快把他送到了医院",
-                  "pinyin": "gǎnkuài bǎ tā sòngdào le yīyuàn",
-                  "meaning": "quickly took him to the hospital",
-                  "suffix": "，"
+                  "traditional": "車禍",
+                  "simplified": "车祸",
+                  "pinyin": "chēhuò",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g3-ex3-w5",
-                  "traditional": "要不然",
-                  "simplified": "要不然",
-                  "pinyin": "yàobùrán",
-                  "meaning": "otherwise"
+                  "traditional": "時",
+                  "simplified": "时",
+                  "pinyin": "shí",
+                  "meaning": "",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l14g3-ex3-w6",
-                  "traditional": "他的命就沒了",
-                  "simplified": "他的命就没了",
-                  "pinyin": "tā de mìng jiù méi le",
-                  "meaning": "his life would be gone",
+                  "traditional": "幸虧",
+                  "simplified": "幸亏",
+                  "pinyin": "xìngkuī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w7",
+                  "traditional": "警察",
+                  "simplified": "警察",
+                  "pinyin": "jǐngchá",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w8",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w9",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w10",
+                  "traditional": "路邊",
+                  "simplified": "路边",
+                  "pinyin": "lùbiān",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex3-w11",
+                  "traditional": "趕快",
+                  "simplified": "赶快",
+                  "pinyin": "gǎnkuài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w12",
+                  "traditional": "把",
+                  "simplified": "把",
+                  "pinyin": "bǎ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w13",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w14",
+                  "traditional": "送",
+                  "simplified": "送",
+                  "pinyin": "sòng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w15",
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w16",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w17",
+                  "traditional": "醫院",
+                  "simplified": "医院",
+                  "pinyin": "yīyuàn",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex3-w18",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w19",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w20",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w21",
+                  "traditional": "命",
+                  "simplified": "命",
+                  "pinyin": "mìng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w22",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w23",
+                  "traditional": "沒了",
+                  "simplified": "没了",
+                  "pinyin": "méi le",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -1326,26 +2328,32 @@
         {
           "id": "b3l14d2-l1",
           "speaker": "旁白",
-          "traditional": "根據中國古代的說法，農曆七月初七是所謂的「七夕」。一提到七夕，人們就會想到牛郎和織女的愛情故事。這個故事不是真的，不過大家對愛情還是有無窮的想像，希望在現實中能夠擁有最美好的愛情。",
-          "simplified": "根据中国古代的说法，农历七月初七是所谓的「七夕」。一提到七夕，人们就会想到牛郎和织女的爱情故事。这个故事不是真的，不过大家对爱情还是有无穷的想像，希望在现实中能够拥有最美好的爱情。",
-          "pinyin": "Gēnjù Zhōngguó gǔdài de shuōfǎ, nónglì qīyuè chū qī shì suǒwèi de \"Qīxī\". Yì tídào Qīxī, rénmen jiù huì xiǎngdào Niúláng hé Zhīnǚ de àiqíng gùshì. Zhège gùshì búshì zhēn de, bùguò dàjiā duì àiqíng háishì yǒu wúqióng de xiǎngxiàng, xīwàng zài xiànshí zhōng nénggòu yǒngyǒu zuì měihǎo de àiqíng.",
-          "english": "According to ancient Chinese accounts, the seventh day of the seventh lunar month is known as \"Qixi\". Whenever Qixi is mentioned, people think of the love story of Niulang and Weaver Girl. While this tale is not true, people still harbor boundless imagination for romance, hoping to possess the finest love in reality."
+          "text": {
+            "traditional": "根據中國古代的說法，農曆七月初七是所謂的「七夕」。一提到七夕，人們就會想到牛郎和織女的愛情故事。這個故事不是真的，不過大家對愛情還是有無窮的想像，希望在現實中能夠擁有最美好的愛情。",
+            "simplified": "根据中国古代的说法，农历七月初七是所谓的「七夕」。一提到七夕，人们就会想到牛郎和织女的爱情故事。这个故事不是真的，不过大家对爱情还是有无穷的想像，希望在现实中能够拥有最美好的爱情。",
+            "pinyin": "Gēnjù Zhōngguó gǔdài de shuōfǎ, nónglì qīyuè chū qī shì suǒwèi de “Qīxī”. Yì tídào Qīxī, rénmen jiù huì xiǎngdào Niúláng hé Zhīnǚ de àiqíng gùshì. Zhège gùshì búshì zhēnde, búguò dàjiā duì àiqíng háishì yǒu wú qióng de xiǎngxiàng, xīwàng zài xiànshí zhōng nénggòu yǒngyǒu zuì měihǎo de àiqíng.",
+            "english": "According to ancient Chinese accounts, the seventh day of the seventh lunar month is known as \"Qixi\". Whenever Qixi is mentioned, people think of the love story of Niulang and Weaver Girl. This story isn't true, but people still have endless imagination about love and hope to have the most beautiful love in real life."
+          }
         },
         {
           "id": "b3l14d2-l2",
           "speaker": "旁白",
-          "traditional": "按照過去的習俗，姑娘會在七夕把親手做的小東西送給朋友，向對方表達心意。後來，商人抓到了這個能創造更多利益的機會，就在七夕和西方情人節這兩個節日，推銷屬於情人節的特別禮物。不僅戀愛中的男女願意花錢買，平時只有以網路聊天、寫信等方式談戀愛的情侶，也會在這天送禮。但是某一些商業廣告強調，情人節交換禮物是愛對方的表現，也是情侶之間該有的責任。讓很多人以為不送禮、不約會是個錯誤，而犯了錯的人就得道歉。其實只要對情人是真心的，送不送禮物沒那麼重要，畢竟單純的愛情才是最珍貴的。",
-          "simplified": "按照过去的习俗，姑娘会在七夕把亲手做的小东西送给朋友，向对方表达心意。后来，商人抓到了这个能创造更多利益的机会，就在七夕和西方情人节这两个节日，推销属于情人节的特别礼物。不仅恋爱中的男女愿意花钱买，平时只有以网络聊天、写信等方式谈恋爱的情侣，也会在这天送礼。但是某一些商业广告强调，情人节交换礼物是爱对方的表现，也是情侣之间该有的责任。让很多人以为不送礼、不约会是个错误，而犯了错的人就得道歉。其实只要对情人是真心的，送不送礼物没那么重要，毕竟单纯的爱情才是最珍贵的。",
-          "pinyin": "Ànzhào guòqù de xísú, gūniáng huì zài Qīxī bǎ qīnshǒu zuò de xiǎo dōngxī sòng gěi péngyǒu, xiàng duìfāng biǎodá xīnyì. Hòulái, shāngrén zhuādào le zhège néng chuàngzào gèng duō lìyì de jīhuì, jiù zài Qīxī hé xīfāng Qíngrénjié zhè liǎng ge jiérì, tuīxiāo shǔyú Qíngrénjié de tèbié lǐwù. Bùjǐn liàn'ài zhōng de nánnǚ yuànyì huāqián mǎi, píngshí zhǐyǒu yǐ wǎnglù liáotiān, xiěxìn děng fāngshì tán liàn'ài de qínglǚ, yě huì zài zhè tiān sònglǐ. Dànshì mǒu yìxiē shāngyè guǎnggào qiángdiào, Qíngrénjié jiāohuàn lǐwù shì ài duìfāng de biǎoxiàn, yě shì qínglǚ zhījiān gāi yǒu de zérèn. Ràng hěn duō rén yǐwéi bú sònglǐ, bú yuēhuì shì ge cuòwù, ér fàn le cuò de rén jiù děi dàoqiàn. Qíshí zhǐyào duì qíngrén shì zhēnxīn de, sòng bu sòng lǐwù méi nàme zhòngyào, bìjìng dānchún de àiqíng cái shì zuì zhēnguì de.",
-          "english": "According to past customs, young maidens would give handmade trinkets to friends on Qixi to express their affection. Later, merchants seized upon this opportunity to create greater profits, promoting special Valentine gifts during both Qixi and Western Valentine's Day. Not only were courting couples eager to spend money, but long-distance lovers who usually interacted only by online chatting and letters would also send gifts on this day. However, certain commercial advertisements emphasized that exchanging gifts on Valentine's Day proves one's love and is an obligation between lovers. This led many to believe that not giving gifts or going on dates is a misstep requiring an apology. In reality, as long as one is sincere toward their beloved, whether gifts are given is not so critical—after all, pure love is what is truly precious."
+          "text": {
+            "traditional": "按照過去的習俗，姑娘會在七夕把親手做的小東西送給朋友，向對方表達心意。後來，商人抓到了這個能創造更多利益的機會，就在七夕和西方情人節這兩個節日，推銷屬於情人節的特別禮物。不僅戀愛中的男女願意花錢買，平時只有以網路聊天、寫信等方式談戀愛的情侶，也會在這天送禮。但是某一些商業廣告強調，情人節交換禮物是愛對方的表現，也是情侶之間該有的責任。讓很多人以為不送禮、不約會是個錯誤，而犯了錯的人就得道歉。其實只要對情人是真心的，送不送禮物沒那麼重要，畢竟單純的愛情才是最珍貴的。",
+            "simplified": "按照过去的习俗，姑娘会在七夕把亲手做的小东西送给朋友，向对方表达心意。后来，商人抓到了这个能创造更多利益的机会，就在七夕和西方情人节这两个节日，推销属于情人节的特别礼物。不仅恋爱中的男女愿意花钱买，平时只有以网路聊天、写信等方式谈恋爱的情侣，也会在这天送礼。但是某一些商业广告强调，情人节交换礼物是爱对方的表现，也是情侣之间该有的责任。让很多人以为不送礼、不约会是个错误，而犯了错的人就得道歉。其实只要对情人是真心的，送不送礼物没那么重要，毕竟单纯的爱情才是最珍贵的。",
+            "pinyin": "Ànzhào guòqù de xísú, gūniáng huì zài Qīxī bǎ qīnshǒu zuò de xiǎo dōngxi sòng gěi péngyǒu, xiàng duìfāng biǎodá xīnyì. Hòulái, shāngrén zhuā dào le zhège néng chuàngzào gèng duō lìyì de jīhuì, jiù zài Qīxī hé xīfāng Qíngrénjié zhè liǎng ge jiérì, tuīxiāo shǔyú Qíngrénjié de tèbié lǐwù. Bù jǐn liàn'ài zhōng de nánnǚ yuànyì huāqián mǎi, píngshí zhǐyǒu yǐ wǎnglù liáotiān, xiěxìn děng fāngshì tán liàn'ài de qínglǚ, yě huì zài zhè tiān sònglǐ. Dànshì mǒu yìxiē shāngyè guǎnggào qiángdiào, Qíngrénjié jiāohuàn lǐwù shì ài duìfāng de biǎoxiàn, yě shì qínglǚ zhījiān gāi yǒu de zérèn. Ràng hěn duō rén yǐwéi bú sònglǐ, bù yuēhuì shì ge cuòwù, ér fàn le cuò de rén jiù děi dàoqiàn. Qíshí zhǐyào duì qíngrén shì zhēnxīn de, sòng bú sòng lǐwù méi nàme zhòngyào, bìjìng dānchún de àiqíng cái shì zuì zhēnguì de.",
+            "english": "According to past customs, young maidens would give handmade trinkets to friends on Qixi to express their affection. Later, merchants seized upon this opportunity to create greater profits, promoting special Valentine gifts during both Qixi and Western Valentine's Day. Not only were courting couples eager to spend money, but couples who usually date only through online chatting, letters and the like would also send gifts on this day. However, certain commercial advertisements emphasized that exchanging gifts on Valentine's Day proves one's love and is an obligation between lovers. This led many to believe that not giving gifts or going on dates is a misstep requiring an apology. In reality, as long as one is sincere toward their beloved, whether gifts are given is not so critical—after all, pure love is what is truly precious."
+          }
         },
         {
           "id": "b3l14d2-l3",
           "speaker": "旁白",
-          "traditional": "不過話說回來，像牛郎與織女這樣的愛情故事，還是感動了無數人。不少文學與戲劇都採用這類的題材，畫家也常透過作品來表達浪漫的愛情。如能花點時間欣賞這方面的作品，或許就能更深入了解情人節的意義了。",
-          "simplified": "不过话说回来，像牛郎与织女这样的爱情故事，还是感动了无数人。不少文学与戏剧都采用这类的题材，画家也常透过作品来表达浪漫的爱情。如能花点时间欣赏这方面的作品，或许就能更深入了解情人节的意义了。",
-          "pinyin": "Bùguò huàshuōhuílái, xiàng Niúláng yǔ Zhīnǚ zhèyàng de àiqíng gùshì, háishì gǎndòng le wúshù rén. Bùshǎo wénxué yǔ xìjù dōu cǎiyòng zhè lèi de tícái, huàjiā yě cháng tòuguò zuòpǐn lái biǎodá làngmàn de àiqíng. Rú néng huā diǎn shíjiān xīnshǎng zhè fāngmiàn de zuòpǐn, huòxǔ jiù néng gèng shēnrù liǎojiě Qíngrénjié de yìyì le.",
-          "english": "Then again, love stories like Niulang and Weaver Girl still touch countless hearts. Many literary works and dramas adopt themes of this kind, and painters frequently convey romantic love through their art. If one can take some time to appreciate works in this domain, perhaps one will gain a deeper understanding of Valentine's true meaning."
+          "text": {
+            "traditional": "不過話說回來，像牛郎與織女這樣的愛情故事，還是感動了無數人。不少文學與戲劇都採用這類的題材，畫家也常透過作品來表達浪漫的愛情。如能花點時間欣賞這方面的作品，或許就能更深入了解情人節的意義了。",
+            "simplified": "不过话说回来，像牛郎与织女这样的爱情故事，还是感动了无数人。不少文学与戏剧都采用这类的题材，画家也常透过作品来表达浪漫的爱情。如能花点时间欣赏这方面的作品，或许就能更深入了解情人节的意义了。",
+            "pinyin": "Búguò huàshuō huílái, xiàng Niúláng yǔ Zhīnǚ zhèyàng de àiqíng gùshì, háishì gǎndòng le wúshù rén. Bùshǎo wénxué yǔ xìjù dōu cǎiyòng zhè lèi de tícái, huàjiā yě cháng tòuguò zuòpǐn lái biǎodá làngmàn de àiqíng. Rú néng huā diǎn shíjiān xīnshǎng zhè fāngmiàn de zuòpǐn, huòxǔ jiù néng gèng shēnrù liǎojiě Qíngrénjié de yìyì le.",
+            "english": "Then again, love stories like Niulang and Weaver Girl still touch countless hearts. Many literary works and dramas adopt themes of this kind, and painters frequently convey romantic love through their art. If one can take some time to appreciate works in this domain, perhaps one will gain a deeper understanding of Valentine's true meaning."
+          }
         }
       ]
     },
@@ -1360,7 +2368,7 @@
         "grammarNumber": 4,
         "titleTraditional": "根據",
         "titleEnglish": "According to / Based on (basis or evidence)",
-        "learnerPromise": "State the authoritative premise, survey data, law, or evidence underlying a claim or judgment.",
+        "learnerPromise": "Say what a statement, decision or conclusion is based on (a report, survey, law, experience…) with 根據.",
         "printedPages": [
           369,
           370
@@ -1388,25 +2396,95 @@
                   "traditional": "根據",
                   "simplified": "根据",
                   "pinyin": "gēnjù",
-                  "meaning": "according to"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g4-r1-c2-w1",
-                  "traditional": "中國古代的說法",
-                  "simplified": "中国古代的说法",
-                  "pinyin": "Zhōngguó gǔdài de shuōfǎ",
-                  "meaning": "ancient Chinese sayings"
+                  "traditional": "中國",
+                  "simplified": "中国",
+                  "pinyin": "Zhōngguó",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c2-w2",
+                  "traditional": "古代",
+                  "simplified": "古代",
+                  "pinyin": "gǔdài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c2-w3",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c2-w4",
+                  "traditional": "說法",
+                  "simplified": "说法",
+                  "pinyin": "shuōfǎ",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g4-r1-c3-w1",
-                  "traditional": "農曆七月初七是所謂的七夕",
-                  "simplified": "农历七月初七是所谓的七夕",
-                  "pinyin": "nónglì qīyuè chūqī shì suǒwèi de Qīxī",
-                  "meaning": "the seventh day of the seventh lunar month is called Qixi"
+                  "traditional": "農曆",
+                  "simplified": "农历",
+                  "pinyin": "nónglì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c3-w2",
+                  "traditional": "七月",
+                  "simplified": "七月",
+                  "pinyin": "qīyuè",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c3-w3",
+                  "traditional": "初",
+                  "simplified": "初",
+                  "pinyin": "chū",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c3-w4",
+                  "traditional": "七",
+                  "simplified": "七",
+                  "pinyin": "qī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c3-w5",
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c3-w6",
+                  "traditional": "所謂",
+                  "simplified": "所谓",
+                  "pinyin": "suǒwèi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c3-w7",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r1-c3-w8",
+                  "traditional": "七夕",
+                  "simplified": "七夕",
+                  "pinyin": "Qīxī",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1420,25 +2498,74 @@
                   "traditional": "根據",
                   "simplified": "根据",
                   "pinyin": "gēnjù",
-                  "meaning": "according to"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g4-r2-c2-w1",
-                  "traditional": "我國的法律",
-                  "simplified": "我国的法律",
-                  "pinyin": "wǒguó de fǎlǜ",
-                  "meaning": "our country laws"
+                  "traditional": "我國",
+                  "simplified": "我国",
+                  "pinyin": "wǒguó",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r2-c2-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r2-c2-w3",
+                  "traditional": "法律",
+                  "simplified": "法律",
+                  "pinyin": "fǎlǜ",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g4-r2-c3-w1",
-                  "traditional": "十八歲以上才可以喝酒",
-                  "simplified": "十八岁以上才可以喝酒",
-                  "pinyin": "shíbā suì yǐshàng cái kěyǐ hē jiǔ",
-                  "meaning": "eighteen or older may drink alcohol"
+                  "traditional": "十八",
+                  "simplified": "十八",
+                  "pinyin": "shíbā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r2-c3-w2",
+                  "traditional": "歲",
+                  "simplified": "岁",
+                  "pinyin": "suì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r2-c3-w3",
+                  "traditional": "以上",
+                  "simplified": "以上",
+                  "pinyin": "yǐshàng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r2-c3-w4",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r2-c3-w5",
+                  "traditional": "可以",
+                  "simplified": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r2-c3-w6",
+                  "traditional": "喝酒",
+                  "simplified": "喝酒",
+                  "pinyin": "hē jiǔ",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1452,25 +2579,95 @@
                   "traditional": "根據",
                   "simplified": "根据",
                   "pinyin": "gēnjù",
-                  "meaning": "according to"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g4-r3-c2-w1",
-                  "traditional": "氣象調查的資料",
-                  "simplified": "气象调查的资料",
-                  "pinyin": "qìxiàng diàochá de zīliào",
-                  "meaning": "meteorological survey data"
+                  "traditional": "氣象",
+                  "simplified": "气象",
+                  "pinyin": "qìxiàng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c2-w2",
+                  "traditional": "調查",
+                  "simplified": "调查",
+                  "pinyin": "diàochá",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c2-w3",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c2-w4",
+                  "traditional": "資料",
+                  "simplified": "资料",
+                  "pinyin": "zīliào",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g4-r3-c3-w1",
-                  "traditional": "全球溫度比以前高了兩度",
-                  "simplified": "全球温度比以前高了两度",
-                  "pinyin": "quánqiú wēndù bǐ yǐqián gāo le liǎng dù",
-                  "meaning": "global temperature rose two degrees compared with before"
+                  "traditional": "全球",
+                  "simplified": "全球",
+                  "pinyin": "quánqiú",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c3-w2",
+                  "traditional": "溫度",
+                  "simplified": "温度",
+                  "pinyin": "wēndù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c3-w3",
+                  "traditional": "比",
+                  "simplified": "比",
+                  "pinyin": "bǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c3-w4",
+                  "traditional": "以前",
+                  "simplified": "以前",
+                  "pinyin": "yǐqián",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c3-w5",
+                  "traditional": "高",
+                  "simplified": "高",
+                  "pinyin": "gāo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c3-w6",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c3-w7",
+                  "traditional": "兩",
+                  "simplified": "两",
+                  "pinyin": "liǎng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-r3-c3-w8",
+                  "traditional": "度",
+                  "simplified": "度",
+                  "pinyin": "dù",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1483,44 +2680,100 @@
             "text": {
               "traditional": "根據中國古代的說法，農曆七月初七是所謂的「七夕」。",
               "simplified": "根据中国古代的说法，农历七月初七是所谓的「七夕」。",
-              "pinyin": "Gēnjù Zhōngguó gǔdài de shuōfǎ, nónglì qīyuè chūqī shì suǒwèi de Qīxī.",
-              "english": "According to ancient Chinese sayings, the seventh day of the seventh lunar month is what is called “Qixi”.",
+              "pinyin": "Gēnjù Zhōngguó gǔdài de shuōfǎ, nónglì qīyuè chū qī shì suǒwèi de “Qīxī”.",
+              "english": "According to ancient Chinese accounts, the seventh day of the seventh lunar month is what is known as Qixi.",
               "words": [
                 {
                   "id": "b3l14g4-ex1-w1",
                   "traditional": "根據",
                   "simplified": "根据",
                   "pinyin": "gēnjù",
-                  "meaning": "according to"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex1-w2",
-                  "traditional": "中國古代的說法",
-                  "simplified": "中国古代的说法",
-                  "pinyin": "Zhōngguó gǔdài de shuōfǎ",
-                  "meaning": "ancient Chinese sayings",
-                  "suffix": "，"
+                  "traditional": "中國",
+                  "simplified": "中国",
+                  "pinyin": "Zhōngguó",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex1-w3",
-                  "traditional": "農曆七月初七",
-                  "simplified": "农历七月初七",
-                  "pinyin": "nónglì qīyuè chūqī",
-                  "meaning": "the seventh day of the seventh lunar month"
+                  "traditional": "古代",
+                  "simplified": "古代",
+                  "pinyin": "gǔdài",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex1-w4",
-                  "traditional": "是所謂的",
-                  "simplified": "是所谓的",
-                  "pinyin": "shì suǒwèi de",
-                  "meaning": "is what is called"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex1-w5",
+                  "traditional": "說法",
+                  "simplified": "说法",
+                  "pinyin": "shuōfǎ",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g4-ex1-w6",
+                  "traditional": "農曆",
+                  "simplified": "农历",
+                  "pinyin": "nónglì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w7",
+                  "traditional": "七月",
+                  "simplified": "七月",
+                  "pinyin": "qīyuè",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w8",
+                  "traditional": "初",
+                  "simplified": "初",
+                  "pinyin": "chū",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w9",
+                  "traditional": "七",
+                  "simplified": "七",
+                  "pinyin": "qī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w10",
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w11",
+                  "traditional": "所謂",
+                  "simplified": "所谓",
+                  "pinyin": "suǒwèi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w12",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w13",
                   "traditional": "七夕",
                   "simplified": "七夕",
                   "pinyin": "Qīxī",
-                  "meaning": "Qixi (Double Seventh Festival)",
+                  "meaning": "",
                   "prefix": "「",
                   "suffix": "」。"
                 }
@@ -1535,43 +2788,78 @@
               "traditional": "根據我國的法律，十八歲以上才可以喝酒。",
               "simplified": "根据我国的法律，十八岁以上才可以喝酒。",
               "pinyin": "Gēnjù wǒguó de fǎlǜ, shíbā suì yǐshàng cái kěyǐ hē jiǔ.",
-              "english": "According to our country law, one must be eighteen or older to drink alcohol.",
+              "english": "According to our country's law, you have to be 18 or older to drink alcohol.",
               "words": [
                 {
                   "id": "b3l14g4-ex2-w1",
                   "traditional": "根據",
                   "simplified": "根据",
                   "pinyin": "gēnjù",
-                  "meaning": "according to"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex2-w2",
-                  "traditional": "我國的法律",
-                  "simplified": "我国的法律",
-                  "pinyin": "wǒguó de fǎlǜ",
-                  "meaning": "our country laws",
-                  "suffix": "，"
+                  "traditional": "我國",
+                  "simplified": "我国",
+                  "pinyin": "wǒguó",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex2-w3",
-                  "traditional": "十八歲以上",
-                  "simplified": "十八岁以上",
-                  "pinyin": "shíbā suì yǐshàng",
-                  "meaning": "eighteen years old or older"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex2-w4",
-                  "traditional": "才可以",
-                  "simplified": "才可以",
-                  "pinyin": "cái kěyǐ",
-                  "meaning": "only then may"
+                  "traditional": "法律",
+                  "simplified": "法律",
+                  "pinyin": "fǎlǜ",
+                  "meaning": "",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l14g4-ex2-w5",
+                  "traditional": "十八",
+                  "simplified": "十八",
+                  "pinyin": "shíbā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex2-w6",
+                  "traditional": "歲",
+                  "simplified": "岁",
+                  "pinyin": "suì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex2-w7",
+                  "traditional": "以上",
+                  "simplified": "以上",
+                  "pinyin": "yǐshàng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex2-w8",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex2-w9",
+                  "traditional": "可以",
+                  "simplified": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex2-w10",
                   "traditional": "喝酒",
                   "simplified": "喝酒",
                   "pinyin": "hē jiǔ",
-                  "meaning": "drink alcohol",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -1592,58 +2880,142 @@
                   "traditional": "根據",
                   "simplified": "根据",
                   "pinyin": "gēnjù",
-                  "meaning": "according to"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex3-w2",
-                  "traditional": "氣象調查的資料",
-                  "simplified": "气象调查的资料",
-                  "pinyin": "qìxiàng diàochá de zīliào",
-                  "meaning": "meteorological survey data",
-                  "suffix": "，"
+                  "traditional": "氣象",
+                  "simplified": "气象",
+                  "pinyin": "qìxiàng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex3-w3",
-                  "traditional": "全球溫度",
-                  "simplified": "全球温度",
-                  "pinyin": "quánqiú wēndù",
-                  "meaning": "global temperature"
+                  "traditional": "調查",
+                  "simplified": "调查",
+                  "pinyin": "diàochá",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex3-w4",
-                  "traditional": "比以前",
-                  "simplified": "比以前",
-                  "pinyin": "bǐ yǐqián",
-                  "meaning": "compared with before"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex3-w5",
-                  "traditional": "高了兩度",
-                  "simplified": "高了两度",
-                  "pinyin": "gāo le liǎng dù",
-                  "meaning": "rose two degrees",
+                  "traditional": "資料",
+                  "simplified": "资料",
+                  "pinyin": "zīliào",
+                  "meaning": "",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l14g4-ex3-w6",
-                  "traditional": "也因此",
-                  "simplified": "也因此",
-                  "pinyin": "yě yīncǐ",
-                  "meaning": "as a result"
+                  "traditional": "全球",
+                  "simplified": "全球",
+                  "pinyin": "quánqiú",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex3-w7",
-                  "traditional": "造成了",
-                  "simplified": "造成了",
-                  "pinyin": "zàochéng le",
-                  "meaning": "caused"
+                  "traditional": "溫度",
+                  "simplified": "温度",
+                  "pinyin": "wēndù",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g4-ex3-w8",
-                  "traditional": "一些環境問題",
-                  "simplified": "一些环境问题",
-                  "pinyin": "yìxiē huánjìng wèntí",
-                  "meaning": "some environmental problems",
+                  "traditional": "比",
+                  "simplified": "比",
+                  "pinyin": "bǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w9",
+                  "traditional": "以前",
+                  "simplified": "以前",
+                  "pinyin": "yǐqián",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w10",
+                  "traditional": "高",
+                  "simplified": "高",
+                  "pinyin": "gāo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w11",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w12",
+                  "traditional": "兩",
+                  "simplified": "两",
+                  "pinyin": "liǎng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w13",
+                  "traditional": "度",
+                  "simplified": "度",
+                  "pinyin": "dù",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g4-ex3-w14",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w15",
+                  "traditional": "因此",
+                  "simplified": "因此",
+                  "pinyin": "yīncǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w16",
+                  "traditional": "造成",
+                  "simplified": "造成",
+                  "pinyin": "zàochéng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w17",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w18",
+                  "traditional": "一些",
+                  "simplified": "一些",
+                  "pinyin": "yìxiē",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w19",
+                  "traditional": "環境",
+                  "simplified": "环境",
+                  "pinyin": "huánjìng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w20",
+                  "traditional": "問題",
+                  "simplified": "问题",
+                  "pinyin": "wèntí",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -1695,25 +3067,46 @@
                   "traditional": "按照",
                   "simplified": "按照",
                   "pinyin": "ànzhào",
-                  "meaning": "according to"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g5-r1-c2-w1",
-                  "traditional": "過去的習俗",
-                  "simplified": "过去的习俗",
-                  "pinyin": "guòqù de xísú",
-                  "meaning": "past customs"
+                  "traditional": "過去",
+                  "simplified": "过去",
+                  "pinyin": "guòqù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r1-c2-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r1-c2-w3",
+                  "traditional": "習俗",
+                  "simplified": "习俗",
+                  "pinyin": "xísú",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g5-r1-c3-w1",
-                  "traditional": "送給朋友",
-                  "simplified": "送给朋友",
-                  "pinyin": "sòng gěi péngyou",
-                  "meaning": "give to friends"
+                  "traditional": "送給",
+                  "simplified": "送给",
+                  "pinyin": "sòng gěi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r1-c3-w2",
+                  "traditional": "朋友",
+                  "simplified": "朋友",
+                  "pinyin": "péngyǒu",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1727,25 +3120,46 @@
                   "traditional": "按照",
                   "simplified": "按照",
                   "pinyin": "ànzhào",
-                  "meaning": "according to"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g5-r2-c2-w1",
-                  "traditional": "醫生的話",
-                  "simplified": "医生的话",
-                  "pinyin": "yīshēng de huà",
-                  "meaning": "the doctor's advice"
+                  "traditional": "醫生",
+                  "simplified": "医生",
+                  "pinyin": "yīshēng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r2-c2-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r2-c2-w3",
+                  "traditional": "話",
+                  "simplified": "话",
+                  "pinyin": "huà",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g5-r2-c3-w1",
-                  "traditional": "去做",
-                  "simplified": "去做",
-                  "pinyin": "qù zuò",
-                  "meaning": "do it"
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r2-c3-w2",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1759,16 +3173,30 @@
                   "traditional": "按",
                   "simplified": "按",
                   "pinyin": "àn",
-                  "meaning": "according to"
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b3l14g5-r3-c2-w1",
-                  "traditional": "會議的決定",
-                  "simplified": "会议的决定",
-                  "pinyin": "huìyì de juédìng",
-                  "meaning": "the decision of the meeting"
+                  "traditional": "會議",
+                  "simplified": "会议",
+                  "pinyin": "huìyì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r3-c2-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-r3-c2-w3",
+                  "traditional": "決定",
+                  "simplified": "决定",
+                  "pinyin": "juédìng",
+                  "meaning": ""
                 }
               ],
               [
@@ -1777,7 +3205,7 @@
                   "traditional": "做",
                   "simplified": "做",
                   "pinyin": "zuò",
-                  "meaning": "do"
+                  "meaning": ""
                 }
               ]
             ]
@@ -1790,7 +3218,7 @@
             "text": {
               "traditional": "按照過去的習俗，姑娘會在七夕把親手做的小東西送給朋友……",
               "simplified": "按照过去的习俗，姑娘会在七夕把亲手做的小东西送给朋友……",
-              "pinyin": "Ànzhào guòqù de xísú, gūniang huì zài Qīxī bǎ qīnshǒu zuò de xiǎo dōngxi sòng gěi péngyou…",
+              "pinyin": "Ànzhào guòqù de xísú, gūniáng huì zài Qīxī bǎ qīnshǒu zuò de xiǎo dōngxi sòng gěi péngyǒu…",
               "english": "Following past custom, girls would give the little things they made by hand to their friends on Qixi…",
               "words": [
                 {
@@ -1798,43 +3226,113 @@
                   "traditional": "按照",
                   "simplified": "按照",
                   "pinyin": "ànzhào",
-                  "meaning": "according to"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex1-w2",
-                  "traditional": "過去的習俗",
-                  "simplified": "过去的习俗",
-                  "pinyin": "guòqù de xísú",
-                  "meaning": "past customs",
-                  "suffix": "，"
+                  "traditional": "過去",
+                  "simplified": "过去",
+                  "pinyin": "guòqù",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex1-w3",
-                  "traditional": "姑娘會",
-                  "simplified": "姑娘会",
-                  "pinyin": "gūniang huì",
-                  "meaning": "girls would"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex1-w4",
-                  "traditional": "在七夕",
-                  "simplified": "在七夕",
-                  "pinyin": "zài Qīxī",
-                  "meaning": "on Qixi"
+                  "traditional": "習俗",
+                  "simplified": "习俗",
+                  "pinyin": "xísú",
+                  "meaning": "",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l14g5-ex1-w5",
-                  "traditional": "把親手做的小東西",
-                  "simplified": "把亲手做的小东西",
-                  "pinyin": "bǎ qīnshǒu zuò de xiǎo dōngxi",
-                  "meaning": "make little things by hand"
+                  "traditional": "姑娘",
+                  "simplified": "姑娘",
+                  "pinyin": "gūniáng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex1-w6",
-                  "traditional": "送給朋友",
-                  "simplified": "送给朋友",
-                  "pinyin": "sòng gěi péngyou",
-                  "meaning": "give to friends",
+                  "traditional": "會",
+                  "simplified": "会",
+                  "pinyin": "huì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w7",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w8",
+                  "traditional": "七夕",
+                  "simplified": "七夕",
+                  "pinyin": "Qīxī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w9",
+                  "traditional": "把",
+                  "simplified": "把",
+                  "pinyin": "bǎ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w10",
+                  "traditional": "親手",
+                  "simplified": "亲手",
+                  "pinyin": "qīnshǒu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w11",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w12",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w13",
+                  "traditional": "小",
+                  "simplified": "小",
+                  "pinyin": "xiǎo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w14",
+                  "traditional": "東西",
+                  "simplified": "东西",
+                  "pinyin": "dōngxi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w15",
+                  "traditional": "送給",
+                  "simplified": "送给",
+                  "pinyin": "sòng gěi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w16",
+                  "traditional": "朋友",
+                  "simplified": "朋友",
+                  "pinyin": "péngyǒu",
+                  "meaning": "",
                   "suffix": "……"
                 }
               ]
@@ -1847,15 +3345,15 @@
             "text": {
               "traditional": "A：怎麼辦？奶奶忽然生病住院了。\nB：別擔心，只要按照醫生的話去做，應該可以很快出院的。",
               "simplified": "A：怎么办？奶奶忽然生病住院了。\nB：别担心，只要按照医生的话去做，应该可以很快出院的。",
-              "pinyin": "A: zěnme bàn? nǎinai hūrán shēngbìng zhùyuàn le.\nB: bié dānxīn, zhǐyào ànzhào yīshēng de huà qù zuò, yīnggāi kěyǐ hěn kuài chūyuàn de.",
-              "english": "A: What should we do? Grandma suddenly got sick and was hospitalized. B: Do not worry; as long as we follow the doctor's advice, she should be discharged very soon.",
+              "pinyin": "A: Zěnmebàn? Nǎinai hūrán shēngbìng zhùyuàn le.\nB: Bié dānxīn, zhǐyào ànzhào yīshēng de huà qù zuò, yīnggāi kěyǐ hěn kuài chūyuàn de.",
+              "english": "A: What should we do? Grandma suddenly got sick and is in the hospital.\nB: Don't worry. As long as she does what the doctor says, she should be able to leave the hospital soon.",
               "words": [
                 {
                   "id": "b3l14g5-ex2-w1",
                   "traditional": "怎麼辦",
                   "simplified": "怎么办",
-                  "pinyin": "zěnme bàn",
-                  "meaning": "what to do",
+                  "pinyin": "zěnmebàn",
+                  "meaning": "",
                   "prefix": "A：",
                   "suffix": "？"
                 },
@@ -1864,67 +3362,144 @@
                   "traditional": "奶奶",
                   "simplified": "奶奶",
                   "pinyin": "nǎinai",
-                  "meaning": "grandma"
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex2-w3",
-                  "traditional": "忽然生病住院了",
-                  "simplified": "忽然生病住院了",
-                  "pinyin": "hūrán shēngbìng zhùyuàn le",
-                  "meaning": "suddenly got sick and was hospitalized",
-                  "suffix": "。"
+                  "traditional": "忽然",
+                  "simplified": "忽然",
+                  "pinyin": "hūrán",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex2-w4",
-                  "traditional": "別擔心",
-                  "simplified": "别担心",
-                  "pinyin": "bié dānxīn",
-                  "meaning": "do not worry",
-                  "prefix": "\nB：",
-                  "suffix": "，"
+                  "traditional": "生病",
+                  "simplified": "生病",
+                  "pinyin": "shēngbìng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex2-w5",
-                  "traditional": "只要",
-                  "simplified": "只要",
-                  "pinyin": "zhǐyào",
-                  "meaning": "as long as"
+                  "traditional": "住院",
+                  "simplified": "住院",
+                  "pinyin": "zhùyuàn",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex2-w6",
-                  "traditional": "按照",
-                  "simplified": "按照",
-                  "pinyin": "ànzhào",
-                  "meaning": "according to"
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "",
+                  "suffix": "。\n"
                 },
                 {
                   "id": "b3l14g5-ex2-w7",
-                  "traditional": "醫生的話",
-                  "simplified": "医生的话",
-                  "pinyin": "yīshēng de huà",
-                  "meaning": "the doctor's advice"
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "bié",
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
                   "id": "b3l14g5-ex2-w8",
-                  "traditional": "去做",
-                  "simplified": "去做",
-                  "pinyin": "qù zuò",
-                  "meaning": "do it",
+                  "traditional": "擔心",
+                  "simplified": "担心",
+                  "pinyin": "dānxīn",
+                  "meaning": "",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l14g5-ex2-w9",
-                  "traditional": "應該可以",
-                  "simplified": "应该可以",
-                  "pinyin": "yīnggāi kěyǐ",
-                  "meaning": "should be able to"
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex2-w10",
-                  "traditional": "很快出院的",
-                  "simplified": "很快出院的",
-                  "pinyin": "hěn kuài chūyuàn de",
-                  "meaning": "be discharged soon",
+                  "traditional": "按照",
+                  "simplified": "按照",
+                  "pinyin": "ànzhào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w11",
+                  "traditional": "醫生",
+                  "simplified": "医生",
+                  "pinyin": "yīshēng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w12",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w13",
+                  "traditional": "話",
+                  "simplified": "话",
+                  "pinyin": "huà",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w14",
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w15",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g5-ex2-w16",
+                  "traditional": "應該",
+                  "simplified": "应该",
+                  "pinyin": "yīnggāi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w17",
+                  "traditional": "可以",
+                  "simplified": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w18",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w19",
+                  "traditional": "快",
+                  "simplified": "快",
+                  "pinyin": "kuài",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w20",
+                  "traditional": "出院",
+                  "simplified": "出院",
+                  "pinyin": "chūyuàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w21",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
@@ -1937,62 +3512,181 @@
             "text": {
               "traditional": "助理：下個月的員工訓練，要怎麼做呢？\n老闆：昨天已經開過主管會議了，就按會議的決定做吧。",
               "simplified": "助理：下个月的员工训练，要怎么做呢？\n老板：昨天已经开过主管会议了，就按会议的决定做吧。",
-              "pinyin": "助理: xià ge yuè de yuángōng xùnliàn, yào zěnme zuò ne?\n老闆: zuótiān yǐjīng kāiguò zhǔguǎn huìyì le, jiù àn huìyì de juédìng zuò ba.",
-              "english": "Assistant: What should we do for next month staff training? Boss: We already held a managers meeting yesterday, so just do it according to the meeting decision.",
+              "pinyin": "Zhùlǐ: Xià ge yuè de yuángōng xùnliàn, yào zěnme zuò ne?\nLǎobǎn: Zuótiān yǐjīng kāi guò zhǔguǎn huìyì le, jiù àn huìyì de juédìng zuò ba.",
+              "english": "Assistant\\: How should we run next month's staff training?\nBoss: We already held the managers' meeting yesterday, so just do it the way the meeting decided.",
               "words": [
                 {
                   "id": "b3l14g5-ex3-w1",
-                  "traditional": "下個月的員工訓練",
-                  "simplified": "下个月的员工训练",
-                  "pinyin": "xià ge yuè de yuángōng xùnliàn",
-                  "meaning": "next month staff training",
-                  "prefix": "助理：",
-                  "suffix": "，"
+                  "traditional": "助理",
+                  "simplified": "助理",
+                  "pinyin": "Zhùlǐ",
+                  "meaning": "",
+                  "suffix": "："
                 },
                 {
                   "id": "b3l14g5-ex3-w2",
-                  "traditional": "要怎麼做呢",
-                  "simplified": "要怎么做呢",
-                  "pinyin": "yào zěnme zuò ne",
-                  "meaning": "how should it be done",
-                  "suffix": "？"
+                  "traditional": "下個月",
+                  "simplified": "下个月",
+                  "pinyin": "xià ge yuè",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex3-w3",
-                  "traditional": "昨天已經開過主管會議了",
-                  "simplified": "昨天已经开过主管会议了",
-                  "pinyin": "zuótiān yǐjīng kāiguò zhǔguǎn huìyì le",
-                  "meaning": "we already held a managers meeting yesterday",
-                  "prefix": "\n老闆：",
-                  "suffix": "，"
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex3-w4",
-                  "traditional": "就",
-                  "simplified": "就",
-                  "pinyin": "jiù",
-                  "meaning": "then"
+                  "traditional": "員工",
+                  "simplified": "员工",
+                  "pinyin": "yuángōng",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex3-w5",
-                  "traditional": "按",
-                  "simplified": "按",
-                  "pinyin": "àn",
-                  "meaning": "according to"
+                  "traditional": "訓練",
+                  "simplified": "训练",
+                  "pinyin": "xùnliàn",
+                  "meaning": "",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l14g5-ex3-w6",
-                  "traditional": "會議的決定",
-                  "simplified": "会议的决定",
-                  "pinyin": "huìyì de juédìng",
-                  "meaning": "the decision of the meeting"
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "yào",
+                  "meaning": ""
                 },
                 {
                   "id": "b3l14g5-ex3-w7",
-                  "traditional": "做吧",
-                  "simplified": "做吧",
-                  "pinyin": "zuò ba",
-                  "meaning": "just do it",
+                  "traditional": "怎麼",
+                  "simplified": "怎么",
+                  "pinyin": "zěnme",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w8",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w9",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "",
+                  "suffix": "？\n"
+                },
+                {
+                  "id": "b3l14g5-ex3-w10",
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "Lǎobǎn",
+                  "meaning": "",
+                  "suffix": "："
+                },
+                {
+                  "id": "b3l14g5-ex3-w11",
+                  "traditional": "昨天",
+                  "simplified": "昨天",
+                  "pinyin": "zuótiān",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w12",
+                  "traditional": "已經",
+                  "simplified": "已经",
+                  "pinyin": "yǐjīng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w13",
+                  "traditional": "開",
+                  "simplified": "开",
+                  "pinyin": "kāi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w14",
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "guò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w15",
+                  "traditional": "主管",
+                  "simplified": "主管",
+                  "pinyin": "zhǔguǎn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w16",
+                  "traditional": "會議",
+                  "simplified": "会议",
+                  "pinyin": "huìyì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w17",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g5-ex3-w18",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w19",
+                  "traditional": "按",
+                  "simplified": "按",
+                  "pinyin": "àn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w20",
+                  "traditional": "會議",
+                  "simplified": "会议",
+                  "pinyin": "huìyì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w21",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w22",
+                  "traditional": "決定",
+                  "simplified": "决定",
+                  "pinyin": "juédìng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w23",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w24",
+                  "traditional": "吧",
+                  "simplified": "吧",
+                  "pinyin": "ba",
+                  "meaning": "",
                   "suffix": "。"
                 }
               ]
