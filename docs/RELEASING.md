@@ -174,6 +174,21 @@ Enable these Authentication hooks after applying the migration:
 
 The first filters registrations; the second checks provider-owned identities on sign-in and refresh and, since `20261101120000_access_claims_in_token.sql`, stamps its decision into the token it issues (`school_beta: true`, `full_course: true|false`). The PostgREST pre-request function and restrictive user-table policies keep checking identities on every request and never trust those claims. Express checks the token signature against the project's signing keys (`shared/accessToken.ts`) and trusts the stamped claim without calling Supabase; the client reads the same claims before publishing a signed-in user. Tokens without the claims (issued before the migration, legacy shared-secret tokens, a signing-key outage) fall back to `getUser` plus `has_beta_access` in Express and to the `has_beta_access`/`has_full_course_access` RPCs in the client. Existing users and progress are retained.
 
+### Public accounts
+
+`20261104120000_public_accounts.sql` lets any Google account with a verified email in, once the owner opens it. It ships closed: until then nothing changes. The hooks above stay as they are. Settings live in the database, so changing them needs no deploy (Supabase dashboard → SQL editor, staging first):
+
+| To | Run |
+| --- | --- |
+| Open to everyone | `update private.signup_settings set public_open = true, updated_at = now();` |
+| Raise the sign-up cap | `update private.signup_settings set public_cap = 500, updated_at = now();` |
+| Emergency stop (public accounts lose access, school ones keep it, no data deleted) | `update private.signup_settings set public_open = false, updated_at = now();` |
+| Ban an account | `insert into private.account_flags (user_id, banned_at, banned_reason) values ('<user id>', now(), '<why>') on conflict (user_id) do update set banned_at = now(), banned_reason = excluded.banned_reason;` |
+| Unban | `update private.account_flags set banned_at = null, banned_reason = null where user_id = '<user id>';` |
+| Count public accounts | `select private.public_account_count();` |
+
+A ban stops database requests at once and sign-in at the next token refresh (within an hour). New public sign-ups past the cap are refused with `signups_full:`; existing accounts keep access. Check with `supabase db query --linked --file supabase/tests/public_accounts.sql` (rolls back).
+
 `20261023120000_inactive_account_cleanup.sql` schedules the daily 12-month inactive-account deletion with `pg_cron` (see `docs/DATABASE_SCHEMA.md`). Check `select * from private.inactive_accounts();` after applying it; it must not list anyone who is still studying.
 
 Grant an owner exception only after the owner explicitly supplies the exact Google email; insert its lowercase value into `private.beta_owner_emails` through an administrative database connection. Removing that row immediately denies subsequent database requests; lesson content and the app's start-up check follow at the account's next token refresh (tokens last one hour). Neither client-editable `user_metadata` nor Google's account-picker hints authorize access.

@@ -38,6 +38,7 @@ const EXPECTED_FUNCTIONS = [
   'set_folder_member_role',
   'remove_folder_member', 'list_folder_members',
   'append_review_events',
+  'confirm_age',
   'delete_my_account',
   'enforce_user_flashcard_cap',
   'export_my_data',
