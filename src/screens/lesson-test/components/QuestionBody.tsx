@@ -48,17 +48,65 @@ function StimulusPicture({ name, alt, notice }: { name: string; alt: string; not
   );
 }
 
-/** A note, notice or passage, set like a printed card. */
+/** A notice line like 時間：十一月每個星期六 splits into its label and value. */
+const LABELLED = /^(.{1,6})：(.+)$/;
+
+/**
+ * A note, notice, timetable or passage, drawn by the app as a printed card (its writing is exact, and it follows
+ * dark mode). Notices and timetables carry their title on a tinted band; a message's last line signs it.
+ */
 function ReadingText({ item, script }: { item: Extract<LessonTestItem, { kind: 'reading' }>; script: Script }) {
   const lines = text(item.text, script).split('\n');
+  const title = item.title && text(item.title, script);
+  if (item.format === 'table' || item.format === 'notice') {
+    const [head = [], ...rows] = item.format === 'table' ? lines.map((line) => line.split('｜')) : [];
+    return (
+      <div className="w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface">
+        {title && <p className="text-balance bg-brand-primary-wash px-5 py-3 text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={title} /></p>}
+        {item.format === 'table' ? (
+          <table className="mx-5 my-3 w-[calc(100%-2.5rem)] border-collapse font-chinese text-lg text-ui-ink-strong">
+            <thead>
+              <tr>{head.map((cell, index) => <th key={index} scope="col" className="border-b-2 border-ui-divider px-1.5 pb-2 text-left text-base font-normal text-ui-muted-strong"><ChineseText text={cell} /></th>)}</tr>
+            </thead>
+            <tbody>
+              {rows.map((row, index) => (
+                <tr key={index} className="border-b-2 border-ui-divider last:border-b-0">
+                  {row.map((cell, column) => <td key={column} className="px-1.5 py-2 tabular-nums"><ChineseText text={cell} /></td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="flex flex-col gap-2 px-5 py-4">
+            {lines.map((line, index) => {
+              const labelled = LABELLED.exec(line);
+              const signature = index === lines.length - 1 && !labelled && lines.length > 2;
+              return labelled ? (
+                <p key={index} className="flex gap-3 font-chinese text-lg leading-7 text-ui-ink-strong">
+                  <span className="shrink-0 text-ui-muted-strong">{labelled[1]}</span>
+                  <span><ChineseText text={labelled[2]} /></span>
+                </p>
+              ) : (
+                <p key={index} className={cn('font-chinese text-lg leading-8 text-ui-ink-strong', signature && 'text-right text-base text-ui-muted-strong')}>
+                  <ChineseText text={line} />
+                </p>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }
   return (
     <div className="w-full rounded-feature border-2 border-ui-divider bg-ui-surface px-5 py-4">
-      {item.title && <p className="mb-2 text-balance text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={text(item.title, script)} /></p>}
+      {title && <p className="mb-2 text-balance text-center font-chinese text-xl text-ui-ink-strong"><ChineseText text={title} /></p>}
       {lines.map((line, index) => (
         <p
           key={index}
           className={cn(
             'font-chinese text-lg leading-8 text-ui-ink-strong md:text-xl',
+            // A passage's paragraphs start two characters in, as printed Chinese does.
+            item.format === 'passage' && 'indent-[2em]',
             item.format === 'message' && index === lines.length - 1 && lines.length > 2 && 'text-right text-ui-muted-strong',
           )}
         >
