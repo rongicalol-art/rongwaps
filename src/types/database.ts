@@ -267,6 +267,11 @@ export interface Database {
         Args: Record<PropertyKey, never>;
         Returns: undefined;
       };
+      /** The caller's own "I'm 18 or older"; returns the first confirmation time. */
+      confirm_age: {
+        Args: Record<PropertyKey, never>;
+        Returns: string;
+      };
       append_review_events: { Args: { p_events: Json }; Returns: undefined };
       upsert_card_progress: {
         Args: { p_records: Json };
