@@ -53,7 +53,14 @@ export function LandingPage() {
                 Flashcards, quizzes and grammar for every lesson of the Taiwan textbook.
               </p>
               <GoogleSignInButton onClick={start} busy={isBusy} className="mt-10 lg:mt-14" />
-              {error && <p role="alert" className="mt-3 rounded-sm bg-feedback-danger-surface px-3.5 py-2.5 text-sm font-bold text-feedback-danger-text">{error}</p>}
+              {error && (
+                <p
+                  role={error.tone === 'danger' ? 'alert' : 'status'}
+                  className={`mt-3 max-w-sm rounded-sm px-3.5 py-2.5 text-sm font-bold ${error.tone === 'danger' ? 'bg-feedback-danger-surface text-feedback-danger-text' : 'bg-ui-hover text-ui-ink'}`}
+                >
+                  {error.text}
+                </p>
+              )}
               <SignInConsent className="mt-6 lg:mt-8" />
             </div>
           </section>
