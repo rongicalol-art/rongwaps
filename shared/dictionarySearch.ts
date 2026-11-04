@@ -453,6 +453,12 @@ export function searchInIndex(
     : queryLower.slice(0, Math.min(3, queryLower.length));
   const synonymPrefixes = synonymStems.map((syn) => syn.slice(0, Math.min(3, syn.length))).filter((p) => p.length >= 2);
   const englishWord = new RegExp(`(?:^|[^a-z])${escapeRegExp(queryLower)}(?=$|[^a-z])`);
+  // A 1–2 letter query only matches a gloss that is that word (or, from 2 letters, one word with the same
+  // stem), so it needs a word start, not any substring. The substring check prepared nearly every entry's
+  // glosses: 0.4–0.6 s per keystroke here, several seconds on the server's small CPU.
+  const shortQueryWord = queryLower.length < 3
+    ? new RegExp(`(?:^|[^a-z])(?:${escapeRegExp(queryLower)}(?![a-z0-9'-])${queryStemmed.length >= 2 ? `|${escapeRegExp(stemRootPrefix)}` : ''})`)
+    : null;
   const allowTypo = allowsTypoMatch(query);
   const matches: SearchResult[] = [];
 
@@ -517,8 +523,9 @@ export function searchInIndex(
       for (let d = 0; d < defs.length; d++) {
         const defLower = defs[d].toLowerCase();
         if (
-          (stemRootPrefix && defLower.includes(stemRootPrefix)) ||
-          defLower.includes(queryLower) ||
+          (shortQueryWord
+            ? shortQueryWord.test(defLower)
+            : (stemRootPrefix && defLower.includes(stemRootPrefix)) || defLower.includes(queryLower)) ||
           (synonymPrefixes.length > 0 && synonymPrefixes.some((sp) => defLower.includes(sp)))
         ) {
           mightMatchEnglish = true;
