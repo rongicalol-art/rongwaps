@@ -21,10 +21,13 @@ const css = (await stat(resolve(root, `dist${style}`))).size;
 // exercise kinds would win it back.
 assert.ok(css <= 275_000, `Critical CSS exceeds 275 kB: ${css}`);
 const assets = await readdir(resolve(root, 'dist/assets'));
-for (const worker of ['quizPlanner.worker-']) {
+for (const worker of ['quizPlanner.worker-', 'dictionaryCommon.worker-']) {
   assert.ok(assets.some((file) => file.startsWith(worker)), `Missing production worker: ${worker}`);
 }
-assert.ok(!assets.some(file => file.startsWith('dictionarySearch.worker-')), 'Dictionary indexing must stay on the server');
+assert.ok(!assets.some(file => file.startsWith('dictionarySearch.worker-')), 'The full dictionary index must stay on the server');
+// Phones search only the common-words slice; keep it small enough for low-memory devices.
+const commonWordsBytes = (await stat(resolve(root, 'dist/data/search/common-words.json.br'))).size;
+assert.ok(commonWordsBytes <= 700_000, `Common words exceed 700 kB Brotli: ${commonWordsBytes}`);
 const studyManifest = JSON.parse(await readFile(resolve(root, 'dist/data/study/manifest.json'), 'utf8'));
 for (const part of studyManifest.parts) {
   const bytes = (await stat(resolve(root, `dist${part.path}.br`))).size;
@@ -41,7 +44,7 @@ const sw = await readFile(resolve(root, 'dist/sw.js'), 'utf8');
 const precached = [...sw.matchAll(/\{url:"([^"]+)",revision:/g)].map((match) => match[1]);
 assert.ok(precached.length > 0, 'Service-worker precache must contain the shell');
 assert.equal(new Set(precached).size, precached.length, 'Service-worker precache must not repeat assets');
-assert.ok(!precached.some((path) => /vendor-lottie|quizPlanner\.worker|dictionarySearch\.worker/.test(path)), 'Unused animation and workers must load on demand');
+assert.ok(!precached.some((path) => /vendor-lottie|quizPlanner\.worker|dictionarySearch\.worker|dictionaryCommon\.worker/.test(path)), 'Unused animation and workers must load on demand');
 const precacheBytes = (await Promise.all(precached.map((path) => stat(resolve(root, 'dist', path))))).reduce((sum, entry) => sum + entry.size, 0);
 assert.ok(precacheBytes <= 1_300_000, `Shell precache exceeds 1300 kB: ${precacheBytes}`);
-console.log(JSON.stringify({ mainEntryBytes: sizes[0].bytes, initialJsBytes: total, criticalCssBytes: css, precacheBytes, budgets: 'pass' }, null, 2));
+console.log(JSON.stringify({ mainEntryBytes: sizes[0].bytes, initialJsBytes: total, criticalCssBytes: css, precacheBytes, commonWordsBytes, budgets: 'pass' }, null, 2));
