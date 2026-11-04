@@ -28,6 +28,14 @@ test('simplified preference matches simplified terms', () => {
   assert.equal(getFocusTokenIds(words, ['没有'], 'traditional').size, 0);
 });
 
+test('traditional terms still light up their words in simplified', () => {
+  const words = [
+    { id: 'a', traditional: '況且', simplified: '况且', pinyin: '', meaning: '' },
+    { id: 'b', traditional: '我', simplified: '我', pinyin: '', meaning: '' },
+  ] as GrammarWordToken[];
+  assert.deepEqual([...getFocusTokenIds(words, ['況且'], 'simplified')], ['a']);
+});
+
 test('a number touching a highlighted unit joins it', () => {
   const words = ['現在', '十', '點', '十五', '分'].map((traditional, index) => ({ id: `w${index}`, traditional, pinyin: '', meaning: '' }));
   const ids = getFocusTokenIds(words, ['點', '分'], 'traditional');

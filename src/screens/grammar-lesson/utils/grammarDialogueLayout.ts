@@ -39,7 +39,7 @@ export function splitDialogueText(
 
   const speakerRegex = /(?:^|\s*)([A-Z][:：])\s*/g;
   const matches = [...rawText.matchAll(speakerRegex)];
-  if (matches.length < 2) return null;
+  if (matches.length < 2) return splitNamedTurns(text, rawText);
 
   const turns: DialogueTurn[] = [];
   for (let i = 0; i < matches.length; i++) {
@@ -149,6 +149,55 @@ export function splitDialogueText(
     turns[turns.length - 1].words = remainingWords;
   }
 
+  return toResult(turns);
+}
+
+/** A line that opens with a named speaker (朋子：, 老闆：), as the book prints them. */
+const NAMED_LABEL = /^\s*([\p{Script=Han}]{1,4})[：:]/u;
+/** A "Name:" at the start of a pinyin or English line. */
+const LINE_LABEL = /^[^:：\s][^:：]{0,24}[:：]\s*/;
+
+/**
+ * Dialogues with named speakers, one turn per line in the text, pinyin and English. The speaker's
+ * name is the turn's first word (so it shows in the learner's script, with its pinyin); the line
+ * breaks between turns are dropped from the words.
+ */
+function splitNamedTurns(text: GrammarLessonText, rawText: string): SplitDialogueResult | null {
+  const lines = rawText.split('\n').map((line) => line.trim()).filter(Boolean);
+  if (lines.length < 2 || !lines.every((line) => NAMED_LABEL.test(line))) return null;
+
+  const turns: DialogueTurn[] = lines.map((line) => {
+    const label = line.match(NAMED_LABEL)!;
+    return { speaker: label[1], raw: line.slice(label[0].length).trim(), words: [], pinyin: '', english: '' };
+  });
+  const byLine = (value: string | undefined) => {
+    const parts = (value ?? '').split('\n').map((part) => part.trim()).filter(Boolean);
+    return parts.length === turns.length ? parts.map((part) => part.replace(LINE_LABEL, '').trim()) : null;
+  };
+  byLine(text.pinyin)?.forEach((pinyin, i) => { turns[i].pinyin = pinyin; });
+  byLine(text.english)?.forEach((english, i) => { turns[i].english = english; });
+
+  let turn = 0;
+  for (const word of text.words ?? []) {
+    if (word.prefix?.startsWith('\n') && turns[turn].words.length > 0 && turn < turns.length - 1) turn += 1;
+    turns[turn].words.push({
+      ...word,
+      prefix: word.prefix?.replace(/\n/g, '') || undefined,
+      suffix: word.suffix?.replace(/\n/g, '') || undefined,
+    });
+    if (word.suffix?.includes('\n') && turn < turns.length - 1) turn += 1;
+  }
+
+  return toResult(turns);
+}
+
+function toResult(turns: DialogueTurn[]): SplitDialogueResult {
+  // Turn breaks live in the text; a word never shows a raw line break.
+  for (const turn of turns) {
+    turn.words = turn.words.map((word) => (word.suffix?.includes('\n')
+      ? { ...word, suffix: word.suffix.replace(/\n/g, '') || undefined }
+      : word));
+  }
   return {
     isDialogue: true,
     turns,

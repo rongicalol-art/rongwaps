@@ -8,7 +8,7 @@ import { readJson } from '../acceptance_helpers';
  */
 const REDONE = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen'];
 /** Traditional characters that genuinely have more than one simplified form. */
-const ONE_TO_MANY = new Set(['著', '乾', '藉', '瞭', '覆', '餘', '麼', '幹', '徵', '於', '甚', '畫', '路']);
+const ONE_TO_MANY = new Set(['著', '乾', '藉', '瞭', '覆', '餘', '麼', '幹', '徵', '於', '甚', '畫']);
 
 function pairs(value: unknown, out: [string, string][] = []): [string, string][] {
   if (Array.isArray(value)) value.forEach((entry) => pairs(entry, out));
