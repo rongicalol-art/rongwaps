@@ -3,11 +3,12 @@ import { LEGAL_ROUTES } from '../../app/routes';
 import { ContactLink, LegalList, LegalParagraph, LegalSection, LegalSummary, legalLinkClass } from './LegalBlocks';
 
 const SUMMARY = [
-  '本服務由個人開發者 Ron 在台灣經營，目前為僅限樹德科技大學學生的封閉測試版。',
-  '使用者須年滿 18 歲，並以學校 Google 帳號登入；一人一帳號，不得共用或轉讓。',
+  '本服務由個人開發者 Ron 在台灣經營，目前為公開測試版。',
+  '使用者須年滿 18 歲，並以 Google 帳號登入；一人一帳號，不得共用或轉讓。',
+  '在「一起學習」中請友善待人：禁止騷擾、辱罵、廣告，以及不當的名稱或訊息；違者可能被停權。',
   '本 App 配合《時代華語》教材使用，供已購買課本的學生個人學習；課本內容之著作權屬原出版社及作者。',
   '禁止大量下載、轉載、販售內容，或將內容用於訓練人工智慧模型。',
-  '測試期間免費，打賞完全自願，不會解鎖任何內容。',
+  '本服務免費，打賞完全自願，不會解鎖任何內容。',
   '連續 12 個月未登入的帳號將被刪除。',
   '本條款以中華民國（台灣）法律為準據法，並以臺灣高雄地方法院為第一審管轄法院。',
 ];
@@ -37,7 +38,7 @@ export function TermsContent() {
         <LegalList
           items={[
             'You must be 18 or older.',
-            'During the beta, you must sign in with a Shu-Te University student Google account. Your access ends if that account is closed or no longer accepted.',
+            'You sign in with a Google account whose email Google has verified. We may limit how many new accounts can join at a time.',
             'One person per account. Do not share your sign-in, let others use your account, or sell or transfer it.',
             'The app is meant for people who own the 時代華語 Modern Chinese textbook it follows.',
           ]}
@@ -46,7 +47,7 @@ export function TermsContent() {
 
       <LegalSection title="4. The beta">
         <LegalParagraph>
-          The app is an early, invite-only test version. Features can change, break or be removed; lessons may
+          The app is an early test version. Features can change, break or be removed; lessons may
           contain mistakes; and the service may be paused or reset. We may limit which books and lessons are
           open. We will try to warn you before anything that affects your saved progress.
         </LegalParagraph>
@@ -102,9 +103,16 @@ export function TermsContent() {
             'get around sign-in, lesson locks, usage limits, rate limits or other protections;',
             'reverse engineer the app except where the law allows it;',
             'probe, attack or overload the service, or try to access other people’s data;',
-            'upload harmful code, or use the app for anything unlawful, abusive or harassing.',
+            'upload harmful code, or use the app for anything unlawful, abusive or harassing;',
+            'harass, threaten, insult or spam other learners, or send them unwanted sexual content;',
+            'use a display name or messages that are rude, hateful or sexual, or that pretend to be someone else;',
+            'share other people’s personal information.',
           ]}
         />
+        <LegalParagraph>
+          We may hide messages, limit an account or close it for breaking these rules. Use Report on a profile or a
+          message to tell us.
+        </LegalParagraph>
       </LegalSection>
 
       <LegalSection title="9. Your content">
@@ -149,7 +157,7 @@ export function TermsContent() {
 
       <LegalSection title="14. Price and tips">
         <LegalParagraph>
-          The app is free during the beta. If we offer a way to tip, tips are voluntary gifts to support
+          The app is free. If we offer a way to tip, tips are voluntary gifts to support
           development. They do not buy content, unlock features, or create any extra obligation for us, and they
           are not refundable except where the law requires. Any tip platform we use has its own terms. If we
           introduce paid plans later, they will come with separate terms you would need to accept first.

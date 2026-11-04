@@ -2,7 +2,7 @@
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
 /** ISO date the current Terms and Privacy Policy take effect. */
-export const LEGAL_EFFECTIVE_DATE = '2026-11-06';
+export const LEGAL_EFFECTIVE_DATE = '2026-11-14';
 
 export interface LegalUpdate {
   page: 'terms' | 'privacy';
@@ -17,9 +17,14 @@ export interface LegalUpdate {
  * takes effect. Keep null when nothing meaningful changed.
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
-  page: 'privacy',
-  summary: 'Study together shows your name and lesson to others online, classmates can open your profile (hide either in Settings), and feedback is now emailed to us.',
+  page: 'terms',
+  summary: 'From November 14, anyone 18 or older can join Ron’s Mandarin. Study together will include learners from outside Shu-Te, and you can report or block anyone.',
 };
+
+/** Public sign-up opens with the current Terms (owner sets private.signup_settings.public_open that day). */
+export function isPublicLaunched(now = Date.now()): boolean {
+  return now >= Date.parse(`${LEGAL_EFFECTIVE_DATE}T00:00:00+08:00`);
+}
 
 const NOTICE_AFTER_EFFECTIVE_MS = 30 * 24 * 60 * 60 * 1000;
 

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { formatLegalDate, isLegalUpdateCurrent } from '../../src/screens/legal/legalMeta';
+import { LEGAL_EFFECTIVE_DATE, formatLegalDate, isLegalUpdateCurrent, isPublicLaunched } from '../../src/screens/legal/legalMeta';
 
 test('legal update notice shows until 30 days after the Taiwan effective date', () => {
   const effective = Date.parse('2026-11-01T00:00:00+08:00');
@@ -12,4 +12,10 @@ test('legal update notice shows until 30 days after the Taiwan effective date', 
 
 test('legal dates format as the written calendar day', () => {
   assert.equal(formatLegalDate('2026-10-23'), 'October 23, 2026');
+});
+
+test('public wording switches at midnight Taiwan time on the effective date', () => {
+  const launch = Date.parse(`${LEGAL_EFFECTIVE_DATE}T00:00:00+08:00`);
+  assert.equal(isPublicLaunched(launch - 1), false);
+  assert.equal(isPublicLaunched(launch), true);
 });

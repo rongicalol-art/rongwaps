@@ -22,6 +22,9 @@ export function getOAuthRedirectUrl(
 const SIGNUPS_OFF = /signup_disabled|signups? (are )?not allowed/;
 const SIGNUPS_OFF_MESSAGE = 'New accounts are switched off for this Supabase project. Turn on Authentication → Sign In / Providers → Allow new users to sign up.';
 
+/** Not an error: the database's public sign-up cap is reached (private.signup_settings.public_cap). */
+export const SIGNUPS_FULL_MESSAGE = 'Ron’s Mandarin is full for now. New places open soon, so try again in a few days.';
+
 export function getOAuthCallbackErrorMessage(search: string, hash: string): string | null {
   const queryParams = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
   const hashParams = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash);
@@ -38,6 +41,9 @@ export function getOAuthCallbackErrorMessage(search: string, hash: string): stri
     hashParams.get('error_description'),
   ].filter(Boolean).join(' ').toLowerCase();
 
+  if (details.includes('signups_full')) return SIGNUPS_FULL_MESSAGE;
+  if (details.includes('account_blocked')) return 'This account can’t sign in.';
+  if (details.includes('google_only')) return 'Sign in with a Google account whose email is verified.';
   if (details.includes('school_beta_only')) {
     return 'This beta is for Shu-Te student Google accounts. Use your s…@stu.edu.tw account.';
   }
@@ -119,7 +125,16 @@ export const authService = {
     }
   },
 
-  onAuthStateChanged: (callback: (user: User | null, hasFullCourseAccess: boolean) => void) => {
+  /** The caller's own "I'm 18 or older", then a fresh token so its `age_ok` claim (and the app) follow. */
+  confirmAge: async (): Promise<void> => {
+    const { error } = await supabase.rpc('confirm_age');
+    if (error) throw error;
+    const { error: refreshError } = await supabase.auth.refreshSession();
+    if (refreshError) throw refreshError;
+  },
+
+  /** `ageOk` is false only for a public account that has not passed the age step yet. */
+  onAuthStateChanged: (callback: (user: User | null, hasFullCourseAccess: boolean, ageOk?: boolean) => void) => {
     if (!isSupabaseConfigured()) {
       debugLogger.warn('Auth', missingSupabaseMessage);
       callback(null, false);
@@ -133,7 +148,7 @@ export const authService = {
       if (!session) { callback(null, false); return; }
       // Tokens issued by the school sign-in hook already carry its decision; older ones ask the database.
       const stamped = schoolAccessFromClaims(unverifiedClaims(session.access_token));
-      if (stamped) { callback(session.user, stamped.fullCourse); return; }
+      if (stamped) { callback(session.user, stamped.fullCourse, stamped.ageOk); return; }
       try {
         const { data, error, status } = await supabase.rpc('has_beta_access');
         if (disposed || expectedRevision !== revision) return;

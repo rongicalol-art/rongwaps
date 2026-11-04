@@ -117,7 +117,7 @@ export function PracticeFaces() {
                   Chat{unread && <span className="h-2 w-2 rounded-full bg-ui-ink-strong" aria-label="New messages" />}
                 </span>
                 <span className="block truncate font-chinese text-sm font-bold text-ui-muted-strong">
-                  {lastLine ? <><span className="font-black text-ui-ink">{lastLine.n}</span> {lastLine.t}</> : 'Say hi to your classmates'}
+                  {lastLine ? <><span className="font-black text-ui-ink">{lastLine.n}</span> {lastLine.t}</> : 'Say hi to everyone'}
                 </span>
               </span>
               <AppIcon name="next" size={18} className="text-ui-ink-strong" />

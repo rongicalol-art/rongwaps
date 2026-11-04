@@ -66,8 +66,8 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   // screen's clips are prepared as it comes up, so audio starts on time and never late.
   const recordingsOf = useCallback((list: TestScreen[]) => list.map((entry) => {
     const entryItem = items.get(entry.itemId);
-    const entryQuestion = entryItem?.questions.find((q) => q.id === entry.questionIds[0]) ?? entryItem?.questions[0];
-    return entryItem && entryQuestion ? testRecordings(entryItem, entryQuestion, sounds) : [];
+    const entryQuestions = entryItem?.questions.filter((q) => entry.questionIds.includes(q.id)) ?? [];
+    return entryItem && entryQuestions.length ? testRecordings(entryItem, entryQuestions, sounds) : [];
   }), [items, sounds]);
   const examRecordings = useMemo(() => recordingsOf(run.screens), [recordingsOf, run.screens]);
   const fixRecordings = useMemo(() => recordingsOf(run.fixScreens), [recordingsOf, run.fixScreens]);

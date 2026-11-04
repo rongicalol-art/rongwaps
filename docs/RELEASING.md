@@ -15,6 +15,7 @@ feature branch ──PR──▶ main ──Release PR──▶ production
 | Merge into `main` | CI again → **Deploy**: new migrations applied to staging, the staging Study together server and that exact commit deployed to staging, staging checked (right build, staging database only, content gated, noindex). **Release PR** updated |
 | Merge the Release PR | CI + browser journeys on `production` → **Deploy**: refuses if a migration isn't applied yet, deploys the Study together server, then the exact app commit, checks the live site, **rolls back automatically** and opens an issue if a check fails, tags the release with notes |
 | Every night | **Backup** (02:30 Taiwan) with a restore proof; CI and journeys on `main` (03:00) |
+| Every morning | **Health** (09:30 Taiwan, read-only): opens or comments on one "Health check" issue when the database passes 400 MB, public sign-ups reach 90% of the cap, or reports arrived in the last day |
 
 Render auto-deploy stays off on both services: the Deploy workflow is the only deployer, so a rollback is never undone by an automatic redeploy.
 
@@ -173,6 +174,42 @@ Enable these Authentication hooks after applying the migration:
 - Custom Access Token: `pg-functions://postgres/private/school_beta_access_token_hook`
 
 The first filters registrations; the second checks provider-owned identities on sign-in and refresh and, since `20261101120000_access_claims_in_token.sql`, stamps its decision into the token it issues (`school_beta: true`, `full_course: true|false`). The PostgREST pre-request function and restrictive user-table policies keep checking identities on every request and never trust those claims. Express checks the token signature against the project's signing keys (`shared/accessToken.ts`) and trusts the stamped claim without calling Supabase; the client reads the same claims before publishing a signed-in user. Tokens without the claims (issued before the migration, legacy shared-secret tokens, a signing-key outage) fall back to `getUser` plus `has_beta_access` in Express and to the `has_beta_access`/`has_full_course_access` RPCs in the client. Existing users and progress are retained.
+
+### Public accounts
+
+**Launch day (2026-11-14, the Terms and Privacy effective date):** the new pages and the in-app notice ship at least 7 days earlier; on the day, About and the landing FAQ switch wording by themselves (`isPublicLaunched()` in `src/screens/legal/legalMeta.ts`). Owner steps, in order:
+
+1. Google Cloud → Google Auth Platform → Audience: External, *Publish app*; Branding: name, logo, support email, Privacy and Terms links (start a week early: the brand check takes days).
+2. Cloudflare → Notifications: Workers and Durable Objects usage.
+3. Staging SQL editor: `update private.signup_settings set public_open = true, updated_at = now();`, then sign up with a personal Gmail on staging (age step, Study together).
+4. Production SQL editor: the same line. Raise `public_cap` later as the Health issue suggests.
+
+Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`); before that, "Use your Shu-Te student Google account" (`school_beta_only:`). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
+
+`20261104120000_public_accounts.sql` lets any Google account with a verified email in, once the owner opens it. It ships closed: until then nothing changes. The hooks above stay as they are. Settings live in the database, so changing them needs no deploy (Supabase dashboard → SQL editor, staging first):
+
+| To | Run |
+| --- | --- |
+| Open to everyone | `update private.signup_settings set public_open = true, updated_at = now();` |
+| Raise the sign-up cap | `update private.signup_settings set public_cap = 500, updated_at = now();` |
+| Emergency stop (public accounts lose access, school ones keep it, no data deleted) | `update private.signup_settings set public_open = false, updated_at = now();` |
+| Ban an account | `insert into private.account_flags (user_id, banned_at, banned_reason) values ('<user id>', now(), '<why>') on conflict (user_id) do update set banned_at = now(), banned_reason = excluded.banned_reason;` |
+| Unban | `update private.account_flags set banned_at = null, banned_reason = null where user_id = '<user id>';` |
+| Count public accounts | `select private.public_account_count();` |
+
+A ban stops database requests at once and sign-in at the next token refresh (within an hour); the landing page then says "This account can't sign in". New public sign-ups past the cap are refused with `signups_full:` (the landing page says it is full for now); existing accounts keep access. A new public account sees a one-time age step before the app (`src/screens/auth/AgeCheck.tsx`): "I'm 18 or older" records it with `confirm_age()`; "I'm under 18" deletes the new account and returns to the landing page. Check with `supabase db query --linked --file supabase/tests/public_accounts.sql` (rolls back).
+
+### Reports, blocks and limits
+
+Learners report from a profile's ⋯ menu or under a chat line (a reason in one tap) and can block from the same places; a blocked pair stops seeing each other in Study together (online lists, faces, chat, mentions, cheers, invites, profile visits), and party chat hides the other person's lines. Unblock: Settings → Study together → Blocked people.
+
+| To | Run (Supabase SQL editor) |
+| --- | --- |
+| Read new reports | `select r.id, r.created_at, r.reason, r.place, r.message, r.reporter, r.target from private.user_reports r order by r.id desc limit 50;` |
+| Who an account is | `select email, raw_user_meta_data->>'full_name' as name from auth.users where id = '<user id>';` |
+| Ban the reported account | the Ban row under Public accounts above |
+
+Daily limits per account (UTC day): 300 chat lines per chat, 200 cheers, 60 party invites, 20 reports. Display names with words on the list in `shared/nameFilter.ts` are refused by the games Worker and by the profile editor; extend the list there. A banned account's open Study together connection ends when its sign-in does (within an hour; tickets last at most 15 minutes).
 
 `20261023120000_inactive_account_cleanup.sql` schedules the daily 12-month inactive-account deletion with `pg_cron` (see `docs/DATABASE_SCHEMA.md`). Check `select * from private.inactive_accounts();` after applying it; it must not list anyone who is still studying.
 

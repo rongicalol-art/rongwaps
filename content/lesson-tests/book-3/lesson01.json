@@ -1,0 +1,2962 @@
+{
+  "schemaVersion": 1,
+  "key": "b3l01",
+  "bookId": 3,
+  "lessonId": 1,
+  "band": "B",
+  "allowWords": [
+    "段",
+    "對話",
+    "時候"
+  ],
+  "slots": [
+    {
+      "id": "dialogue-how",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l01-dialogue-how-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我昨天在路上遇到一位導演，他說我身高夠高，想請我去拍廣告。可是我從來沒拍過，有點害怕，就說不要了。",
+              "simplified": "我昨天在路上遇到一位导演，他说我身高够高，想请我去拍广告。可是我从来没拍过，有点害怕，就说不要了。",
+              "pinyin": "Wǒ zuótiān zài lùshàng yùdào yí wèi dǎoyǎn, tā shuō wǒ shēngāo gòu gāo, xiǎng qǐng wǒ qù pāi guǎnggào. Kěshì wǒ cónglái méi pāi guo, yǒudiǎn hàipà, jiù shuō bú yào le.",
+              "english": "Yesterday I met a director on the street. He said I was tall enough and wanted me to do an ad. But I've never done one and I was a bit scared, so I said no."
+            },
+            {
+              "speaker": "F",
+              "traditional": "這麼好的機會，不去多可惜啊！沒拍過可以學啊，導演會教你的。",
+              "simplified": "这么好的机会，不去多可惜啊！没拍过可以学啊，导演会教你的。",
+              "pinyin": "Zhème hǎo de jīhuì, bú qù duó kěxí a! Méi pāi guo kěyǐ xué a, dǎoyǎn huì jiāo nǐ de.",
+              "english": "Such a good chance! What a pity not to go! If you have never done it, you can learn. The director will teach you."
+            },
+            {
+              "speaker": "M",
+              "traditional": "妳說得也對，讓我再想一想。",
+              "simplified": "你说得也对，让我再想一想。",
+              "pinyin": "Nǐ shuō de yě duì, ràng wǒ zài xiǎng yì xiǎng.",
+              "english": "You have a point. Let me think about it again."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-how-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的是什麼意思？",
+                "simplified": "女的是什么意思？",
+                "pinyin": "Nǚ de shì shénme yìsi?",
+                "english": "What does the woman mean?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "男的說不要是對的",
+                  "simplified": "男的说不要是对的",
+                  "pinyin": "Nán de shuō bú yào shì duì de.",
+                  "english": "He was right to say no."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "男的應該接受邀請",
+                  "simplified": "男的应该接受邀请",
+                  "pinyin": "Nán de yīnggāi jiēshòu yāoqǐng.",
+                  "english": "He should accept the offer."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "男的應該問問家人",
+                  "simplified": "男的应该问问家人",
+                  "pinyin": "Nán de yīnggāi wènwen jiārén.",
+                  "english": "He should ask his family."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "導演應該找別人拍",
+                  "simplified": "导演应该找别人拍",
+                  "pinyin": "Dǎoyǎn yīnggāi zhǎo biérén pāi.",
+                  "english": "The director should ask someone else."
+                }
+              ],
+              "key": 1,
+              "why": "不去多可惜啊 (what a pity not to go) and 導演會教你的: she wants him to accept. She does not think he was right to refuse, she never mentions his family, and she does not want the director to find someone else.",
+              "focus": {
+                "zh": "不去多可惜啊",
+                "en": "how …! (what a pity)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-25",
+                "B3L01-1-15",
+                "B3L01-1-22"
+              ],
+              "grammarIds": [
+                "B3L01-G02-P30"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-dialogue-how-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "聽說你女兒要去國外學跳舞？她才十八歲，你不擔心嗎？",
+              "simplified": "听说你女儿要去国外学跳舞？她才十八岁，你不担心吗？",
+              "pinyin": "Tīngshuō nǐ nǚ'ér yào qù guówài xué tiàowǔ? Tā cái shíbā suì, nǐ bù dānxīn ma?",
+              "english": "I hear your daughter is going abroad to study dance? She is only eighteen. Aren't you worried?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "當然擔心啊。可是她從小就愛跳舞，每天練習好幾個小時。能去學自己最喜歡的東西，多好啊！",
+              "simplified": "当然担心啊。可是她从小就爱跳舞，每天练习好几个小时。能去学自己最喜欢的东西，多好啊！",
+              "pinyin": "Dāngrán dānxīn a. Kěshì tā cóngxiǎo jiù ài tiàowǔ, měi tiān liànxí hǎojǐ ge xiǎoshí. Néng qù xué zìjǐ zuì xǐhuān de dōngxi, duó hǎo a!",
+              "english": "Of course I worry. But she has loved dancing since she was little and practises for hours every day. To study what she loves most — how wonderful!"
+            },
+            {
+              "speaker": "F",
+              "traditional": "那她什麼時候出發？",
+              "simplified": "那她什么时候出发？",
+              "pinyin": "Nà tā shénme shíhòu chūfā?",
+              "english": "So when does she leave?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "下個月就走了，先去學兩年。",
+              "simplified": "下个月就走了，先去学两年。",
+              "pinyin": "Xià ge yuè jiù zǒu le, xiān qù xué liǎng nián.",
+              "english": "Next month. She will study there for two years first."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-how-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的是什麼意思？",
+                "simplified": "男的是什么意思？",
+                "pinyin": "Nán de shì shénme yìsi?",
+                "english": "What does the man mean?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "女兒去國外年紀太小",
+                  "simplified": "女儿去国外年纪太小",
+                  "pinyin": "Nǚ'ér qù guówài niánjì tài xiǎo.",
+                  "english": "His daughter is too young to go abroad."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他不擔心女兒去國外",
+                  "simplified": "他不担心女儿去国外",
+                  "pinyin": "Tā bù dānxīn nǚ'ér qù guówài.",
+                  "english": "He is not worried about her going abroad."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女兒去學兩年太久了",
+                  "simplified": "女儿去学两年太久了",
+                  "pinyin": "Nǚ'ér qù xué liǎng nián tài jiǔ le.",
+                  "english": "Two years of study is too long."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女兒去學跳舞是好事",
+                  "simplified": "女儿去学跳舞是好事",
+                  "pinyin": "Nǚ'ér qù xué tiàowǔ shì hǎoshì.",
+                  "english": "It is good that she is going to study dance."
+                }
+              ],
+              "key": 3,
+              "why": "能去學自己最喜歡的東西，多好啊: he thinks it is a good thing. Her age (才十八歲) is the woman's worry, not his point; he says he is worried (當然擔心啊), and he never says two years is too long.",
+              "focus": {
+                "zh": "多好啊",
+                "en": "how …! (how good)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-25",
+                "B1L10-3-05",
+                "B2L03-2-13"
+              ],
+              "grammarIds": [
+                "B3L01-G02-P30"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-dialogue-how-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這部電影的導演才二十五歲，劇本也是他自己寫的。",
+              "simplified": "这部电影的导演才二十五岁，剧本也是他自己写的。",
+              "pinyin": "Zhè bù diànyǐng de dǎoyǎn cái èrshíwǔ suì, jùběn yě shì tā zìjǐ xiě de.",
+              "english": "The director of this film is only twenty-five, and he wrote the script himself too."
+            },
+            {
+              "speaker": "F",
+              "traditional": "這麼年輕就能拍出這麼好的電影，多麼不簡單啊！不過裡面的演員，我覺得演得不太好。",
+              "simplified": "这么年轻就能拍出这么好的电影，多么不简单啊！不过里面的演员，我觉得演得不太好。",
+              "pinyin": "Zhème niánqīng jiù néng pāi chū zhème hǎo de diànyǐng, duóme bù jiǎndān a! Búguò lǐmiàn de yǎnyuán, wǒ juéde yǎn de bú tài hǎo.",
+              "english": "To make such a good film so young — how impressive! But I don't think the actors in it were very good."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我也這麼覺得。聽說他明年還要拍一部新電影，希望能找到更好的演員。",
+              "simplified": "我也这么觉得。听说他明年还要拍一部新电影，希望能找到更好的演员。",
+              "pinyin": "Wǒ yě zhème juéde. Tīngshuō tā míngnián hái yào pāi yí bù xīn diànyǐng, xīwàng néng zhǎodào gèng hǎo de yǎnyuán.",
+              "english": "I think so too. I hear he is making a new film next year. I hope he can find better actors."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-how-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得這位導演怎麼樣？",
+                "simplified": "女的觉得这位导演怎么样？",
+                "pinyin": "Nǚ de juéde zhè wèi dǎoyǎn zěnmeyàng?",
+                "english": "What does the woman think of this director?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "明年的電影會更好看",
+                  "simplified": "明年的电影会更好看",
+                  "pinyin": "Míngnián de diànyǐng huì gèng hǎokàn.",
+                  "english": "His film next year will be better."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "找的演員演得很好",
+                  "simplified": "找的演员演得很好",
+                  "pinyin": "Zhǎo de yǎnyuán yǎn de hěn hǎo.",
+                  "english": "The actors he chose act well."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "很年輕就很會拍電影",
+                  "simplified": "很年轻就很会拍电影",
+                  "pinyin": "Hěn niánqīng jiù hěn huì pāi diànyǐng.",
+                  "english": "He is very good at making films for someone so young."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "寫劇本比拍電影好",
+                  "simplified": "写剧本比拍电影好",
+                  "pinyin": "Xiě jùběn bǐ pāi diànyǐng hǎo.",
+                  "english": "He writes scripts better than he makes films."
+                }
+              ],
+              "key": 2,
+              "why": "這麼年輕就能拍出這麼好的電影，多麼不簡單啊: she admires how well he makes films at his age. She thinks the actors are weak (演得不太好), she does not compare his scripts with his filming, and next year's film is only the man's news.",
+              "focus": {
+                "zh": "多麼不簡單啊",
+                "en": "how …! (how impressive)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-25",
+                "B3L01-1-20",
+                "B3L01-1-15"
+              ],
+              "grammarIds": [
+                "B3L01-G02-P30",
+                "B3L01-G05-P40"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-even-if",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l01-dialogue-even-if-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "聽說那位明星今天下午在百貨公司幫戲迷簽名，可是要排隊排很久。他週末還會再來一次，你要不要週末再去？",
+              "simplified": "听说那位明星今天下午在百货公司帮戏迷签名，可是要排队排很久。他周末还会再来一次，你要不要周末再去？",
+              "pinyin": "Tīngshuō nà wèi míngxīng jīntiān xiàwǔ zài bǎihuò gōngsī bāng xìmí qiānmíng, kěshì yào páiduì pái hěn jiǔ. Tā zhōumò hái huì zài lái yí cì, nǐ yào bú yào zhōumò zài qù?",
+              "english": "I heard that star is signing autographs for fans at the department store this afternoon, but the line will be long. He's coming again at the weekend. Why not go then?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "就算要排三個小時，我也要今天去。他演的每部戲，我都看了好幾遍。",
+              "simplified": "就算要排三个小时，我也要今天去。他演的每部戏，我都看了好几遍。",
+              "pinyin": "Jiùsuàn yào pái sān ge xiǎoshí, wǒ yě yào jīntiān qù. Tā yǎn de měi bù xì, wǒ dōu kàn le hǎojǐ biàn.",
+              "english": "Even if I have to wait three hours, I'm going today. I've watched every show he's been in several times."
+            },
+            {
+              "speaker": "F",
+              "traditional": "好吧，可是我下午有課，不能陪你去了。",
+              "simplified": "好吧，可是我下午有课，不能陪你去了。",
+              "pinyin": "Hǎo ba, kěshì wǒ xiàwǔ yǒu kè, bù néng péi nǐ qù le.",
+              "english": "All right, but I have class this afternoon, so I can't go with you."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-even-if-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的打算怎麼做？",
+                "simplified": "男的打算怎么做？",
+                "pinyin": "Nán de dǎsuàn zěnme zuò?",
+                "english": "What is the man going to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "週末再去請他簽名",
+                  "simplified": "周末再去请他签名",
+                  "pinyin": "Zhōumò zài qù qǐng tā qiānmíng.",
+                  "english": "Go at the weekend to get his autograph."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "今天一個人去排隊",
+                  "simplified": "今天一个人去排队",
+                  "pinyin": "Jīntiān yígerén qù páiduì.",
+                  "english": "Go and wait in line alone today."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "今天跟女的一起去",
+                  "simplified": "今天跟女的一起去",
+                  "pinyin": "Jīntiān gēn nǚ de yìqǐ qù.",
+                  "english": "Go with the woman today."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "請女的替他去排隊",
+                  "simplified": "请女的替他去排队",
+                  "pinyin": "Qǐng nǚ de tì tā qù páiduì.",
+                  "english": "Ask the woman to wait in line for him."
+                }
+              ],
+              "key": 1,
+              "why": "就算要排三個小時，我也要今天去: even a three-hour wait does not change his plan, so he goes today, not at the weekend. She has class (不能陪你去了), so she can neither go with him nor wait in line for him: he goes alone.",
+              "focus": {
+                "zh": "就算……也……",
+                "en": "even if"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-16",
+                "B3L01-1-08",
+                "B3L01-1-07",
+                "B3L01-1-03"
+              ],
+              "grammarIds": [
+                "B3L01-G06-P42"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-dialogue-even-if-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "下個月有一個模特兒比賽，我很想參加，可是比賽那天剛好要期末考。",
+              "simplified": "下个月有一个模特儿比赛，我很想参加，可是比赛那天刚好要期末考。",
+              "pinyin": "Xià ge yuè yǒu yí ge mótèr bǐsài, wǒ hěn xiǎng cānjiā, kěshì bǐsài nà tiān gānghǎo yào qímòkǎo.",
+              "english": "There's a modelling contest next month and I really want to enter, but it's on the same day as my final exam."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那妳要不要問問老師，看能不能改天再考？",
+              "simplified": "那你要不要问问老师，看能不能改天再考？",
+              "pinyin": "Nà nǐ yào bú yào wènwen lǎoshī, kàn néng bù néng gǎitiān zài kǎo?",
+              "english": "Then why not ask your teacher if you can take the exam another day?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我問過了，老師說不可以，這次只好不參加了。比賽每年都有，就算要再等一年，我也一定要參加！",
+              "simplified": "我问过了，老师说不可以，这次只好不参加了。比赛每年都有，就算要再等一年，我也一定要参加！",
+              "pinyin": "Wǒ wèn guo le, lǎoshī shuō bù kěyǐ, zhè cì zhǐhǎo bù cānjiā le. Bǐsài měi nián dōu yǒu, jiùsuàn yào zài děng yì nián, wǒ yě yídìng yào cānjiā!",
+              "english": "I did ask. The teacher said no, so this time I'll have to sit it out. The contest is held every year, and even if I have to wait another year, I'm definitely entering!"
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-even-if-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的打算怎麼做？",
+                "simplified": "女的打算怎么做？",
+                "pinyin": "Nǚ de dǎsuàn zěnme zuò?",
+                "english": "What is the woman going to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "下個月去參加比賽",
+                  "simplified": "下个月去参加比赛",
+                  "pinyin": "Xià ge yuè qù cānjiā bǐsài.",
+                  "english": "Enter the contest next month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "請老師讓她改天考",
+                  "simplified": "请老师让她改天考",
+                  "pinyin": "Qǐng lǎoshī ràng tā gǎitiān kǎo.",
+                  "english": "Ask the teacher to let her take the exam another day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "等到明年才去比賽",
+                  "simplified": "等到明年才去比赛",
+                  "pinyin": "Děngdào míngnián cái qù bǐsài.",
+                  "english": "Wait until next year to compete."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去參加別的比賽",
+                  "simplified": "去参加别的比赛",
+                  "pinyin": "Qù cānjiā bié de bǐsài.",
+                  "english": "Enter a different contest."
+                }
+              ],
+              "key": 2,
+              "why": "這次只好不參加了 rules out next month, and 比賽每年都有 + 就算要再等一年，我也一定要參加 means she will enter next year. Asking the teacher was the man's idea and she has already done it, and she never mentions another contest.",
+              "focus": {
+                "zh": "就算……也……",
+                "en": "even if"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-16",
+                "B3L01-2-15",
+                "B3L01-1-01",
+                "B2L08-1-25"
+              ],
+              "grammarIds": [
+                "B3L01-G06-P42"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-dialogue-even-if-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "那部新戲下星期就要開始演了，聽說票快賣完了。妳不是很想看嗎？怎麼還不買？",
+              "simplified": "那部新戏下星期就要开始演了，听说票快卖完了。你不是很想看吗？怎么还不买？",
+              "pinyin": "Nà bù xīn xì xià xīngqí jiù yào kāishǐ yǎn le, tīngshuō piào kuài mài wán le. Nǐ bú shì hěn xiǎng kàn ma? Zěnme hái bù mǎi?",
+              "english": "That new play opens next week, and I hear the tickets are almost sold out. Don't you really want to see it? Why haven't you bought one?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我上網看過了，就算現在買，也只買得到很後面的位子。聽說下個月還會再演，我打算一開始賣票就去買。",
+              "simplified": "我上网看过了，就算现在买，也只买得到很后面的位子。听说下个月还会再演，我打算一开始卖票就去买。",
+              "pinyin": "Wǒ shàngwǎng kàn guo le, jiùsuàn xiànzài mǎi, yě zhǐ mǎi de dào hěn hòumiàn de wèizi. Tīngshuō xià ge yuè hái huì zài yǎn, wǒ dǎsuàn yì kāishǐ mài piào jiù qù mǎi.",
+              "english": "I checked online. Even if I buy now, I can only get seats right at the back. I heard they'll put it on again next month, so I plan to buy as soon as those tickets go on sale."
+            },
+            {
+              "speaker": "M",
+              "traditional": "這樣也好，坐前面才看得清楚。",
+              "simplified": "这样也好，坐前面才看得清楚。",
+              "pinyin": "Zhèyàng yě hǎo, zuò qiánmiàn cái kàn de qīngchǔ.",
+              "english": "That's a good idea. You can only see well from the front."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-even-if-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的打算怎麼做？",
+                "simplified": "女的打算怎么做？",
+                "pinyin": "Nǚ de dǎsuàn zěnme zuò?",
+                "english": "What is the woman going to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "今天就上網買票",
+                  "simplified": "今天就上网买票",
+                  "pinyin": "Jīntiān jiù shàngwǎng mǎi piào.",
+                  "english": "Buy a ticket online today."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "買後面的位子",
+                  "simplified": "买后面的位子",
+                  "pinyin": "Mǎi hòumiàn de wèizi.",
+                  "english": "Buy a seat at the back."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下星期就去看戲",
+                  "simplified": "下星期就去看戏",
+                  "pinyin": "Xià xīngqí jiù qù kàn xì.",
+                  "english": "Go to the play next week."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看下個月的表演",
+                  "simplified": "看下个月的表演",
+                  "pinyin": "Kàn xià ge yuè de biǎoyǎn.",
+                  "english": "See the show next month."
+                }
+              ],
+              "key": 3,
+              "why": "就算現在買，也只買得到很後面的位子 … 聽說下個月還會再演，我打算一開始賣票就去買: she will wait and see next month's run. Buying today is the man's push, she does not want a back seat, and next week is only when the play opens.",
+              "focus": {
+                "zh": "就算……也……",
+                "en": "even if"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-16",
+                "B3L01-1-06",
+                "B2L07-1-29"
+              ],
+              "grammarIds": [
+                "B3L01-G06-P42"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-could-say",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l01-dialogue-could-say-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這家老電影院下個月就不開了，你知道嗎？",
+              "simplified": "这家老电影院下个月就不开了，你知道吗？",
+              "pinyin": "Zhè jiā lǎo diànyǐngyuàn xià ge yuè jiù bù kāi le, nǐ zhīdào ma?",
+              "english": "This old cinema is closing next month. Did you know?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "知道，我很難過。我小時候，爸爸常帶我來這裡，很多好電影我都是在這裡看的。這裡可以說是讓我愛上電影的地方。",
+              "simplified": "知道，我很难过。我小时候，爸爸常带我来这里，很多好电影我都是在这里看的。这里可以说是让我爱上电影的地方。",
+              "pinyin": "Zhīdào, wǒ hěn nánguò. Wǒ xiǎoshíhòu, bàba cháng dài wǒ lái zhèlǐ, hěn duō hǎo diànyǐng wǒ dōu shì zài zhèlǐ kàn de. Zhèlǐ kěyǐ shuō shì ràng wǒ àishàng diànyǐng de dìfāng.",
+              "english": "Yes, and I'm sad. When I was little, my dad often brought me here, and I saw lots of good films here. You could say this is the place where I fell in love with films."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那我們這個週末再來看一次吧。",
+              "simplified": "那我们这个周末再来看一次吧。",
+              "pinyin": "Nà wǒmen zhège zhōumò zài lái kàn yí cì ba.",
+              "english": "Then let's come and watch one more time this weekend."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-could-say-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的是什麼意思？",
+                "simplified": "男的是什么意思？",
+                "pinyin": "Nán de shì shénme yìsi?",
+                "english": "What does the man mean?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他常跟朋友來這裡看電影",
+                  "simplified": "他常跟朋友来这里看电影",
+                  "pinyin": "Tā cháng gēn péngyǒu lái zhèlǐ kàn diànyǐng.",
+                  "english": "He often came here with friends to see films."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這裡讓他開始愛看電影",
+                  "simplified": "这里让他开始爱看电影",
+                  "pinyin": "Zhèlǐ ràng tā kāishǐ ài kàn diànyǐng.",
+                  "english": "This place made him start to love films."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他以前在這裡上過班",
+                  "simplified": "他以前在这里上过班",
+                  "pinyin": "Tā yǐqián zài zhèlǐ shàng guo bān.",
+                  "english": "He used to work here."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他現在還常來這裡看電影",
+                  "simplified": "他现在还常来这里看电影",
+                  "pinyin": "Tā xiànzài hái cháng lái zhèlǐ kàn diànyǐng.",
+                  "english": "He still often comes here to see films."
+                }
+              ],
+              "key": 1,
+              "why": "這裡可以說是讓我愛上電影的地方: this cinema is where he came to love films. He came with his father (爸爸常帶我來), not friends, he never says he worked there, and he talks about his childhood, not now.",
+              "focus": {
+                "zh": "可以說是",
+                "en": "you could say"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B2L08-2-24",
+                "B2L10-2-19",
+                "B1L06-2-03"
+              ],
+              "grammarIds": [
+                "B3L01-G01-P29"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-dialogue-could-say-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳看過那部新電影了嗎？那個演員演一個八十歲的老人，好像真的一樣。",
+              "simplified": "你看过那部新电影了吗？那个演员演一个八十岁的老人，好像真的一样。",
+              "pinyin": "Nǐ kàn guo nà bù xīn diànyǐng le ma? Nàge yǎnyuán yǎn yí ge bāshí suì de lǎorén, hǎoxiàng zhēn de yíyàng.",
+              "english": "Have you seen that new film? That actor plays an eighty-year-old man, and it looks completely real."
+            },
+            {
+              "speaker": "F",
+              "traditional": "看過了。他去年演醫生，今年演老人，不管演什麼角色，都演得很好，可以說是現在最有實力的演員，可惜知道他的人不多。",
+              "simplified": "看过了。他去年演医生，今年演老人，不管演什么角色，都演得很好，可以说是现在最有实力的演员，可惜知道他的人不多。",
+              "pinyin": "Kàn guo le. Tā qùnián yǎn yīshēng, jīnnián yǎn lǎorén, bùguǎn yǎn shénme jiǎosè, dōu yǎn de hěn hǎo, kěyǐ shuō shì xiànzài zuì yǒu shílì de yǎnyuán, kěxí zhīdào tā de rén bù duō.",
+              "english": "Yes. Last year he played a doctor and this year an old man. He plays every role well. You could say he is the most able actor today. It's a pity not many people know him."
+            },
+            {
+              "speaker": "M",
+              "traditional": "是啊，他的下一部戲我一定去看。",
+              "simplified": "是啊，他的下一部戏我一定去看。",
+              "pinyin": "Shì a, tā de xià yí bù xì wǒ yídìng qù kàn.",
+              "english": "Yes. I'm definitely going to see his next one."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-could-say-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得那位演員怎麼樣？",
+                "simplified": "女的觉得那位演员怎么样？",
+                "pinyin": "Nǚ de juéde nà wèi yǎnyuán zěnmeyàng?",
+                "english": "What does the woman think of that actor?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他是現在最有名的演員",
+                  "simplified": "他是现在最有名的演员",
+                  "pinyin": "Tā shì xiànzài zuì yǒumíng de yǎnyuán.",
+                  "english": "He is the most famous actor today."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他演老人演得最好",
+                  "simplified": "他演老人演得最好",
+                  "pinyin": "Tā yǎn lǎorén yǎn de zuì hǎo.",
+                  "english": "He is best at playing old men."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他的下一部戲會更好看",
+                  "simplified": "他的下一部戏会更好看",
+                  "pinyin": "Tā de xià yí bù xì huì gèng hǎokàn.",
+                  "english": "His next film will be even better."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "別的演員都比不上他",
+                  "simplified": "别的演员都比不上他",
+                  "pinyin": "Bié de yǎnyuán dōu bǐ bú shàng tā.",
+                  "english": "No other actor is as good as him."
+                }
+              ],
+              "key": 3,
+              "why": "可以說是現在最有實力的演員: she means no other actor is as able as he is. He is not famous (可惜知道他的人不多); the old man is only the man's example, and she says he is good in every role (不管演什麼角色，都演得很好); his next film is the man's plan.",
+              "focus": {
+                "zh": "可以說是",
+                "en": "you could say"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-32",
+                "B3L01-1-24",
+                "B3L01-1-23"
+              ],
+              "grammarIds": [
+                "B3L01-G01-P29"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-dialogue-could-say-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你們班那位男同學，怎麼每次考試都考第一名？",
+              "simplified": "你们班那位男同学，怎么每次考试都考第一名？",
+              "pinyin": "Nǐmen bān nà wèi nán tóngxué, zěnme měi cì kǎoshì dōu kǎo dìyī míng?",
+              "english": "That guy in your class — how does he come first in every exam?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "他每天都在圖書館念書念到很晚。同學有不懂的地方，都會去找他。他可以說是我們班的小老師。",
+              "simplified": "他每天都在图书馆念书念到很晚。同学有不懂的地方，都会去找他。他可以说是我们班的小老师。",
+              "pinyin": "Tā měi tiān dōu zài túshūguǎn niànshū niàn dào hěn wǎn. Tóngxué yǒu bù dǒng de dìfāng, dōu huì qù zhǎo tā. Tā kěyǐ shuō shì wǒmen bān de xiǎo lǎoshī.",
+              "english": "He studies in the library until late every day. When classmates don't understand something, they all go to him. You could call him our class's little teacher."
+            },
+            {
+              "speaker": "F",
+              "traditional": "難怪大家都那麼喜歡他，連老師都很肯定他。",
+              "simplified": "难怪大家都那么喜欢他，连老师都很肯定他。",
+              "pinyin": "Nánguài dàjiā dōu nàme xǐhuān tā, lián lǎoshī dōu hěn kěndìng tā.",
+              "english": "No wonder everyone likes him so much. Even the teachers think highly of him."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-could-say-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的覺得那位同學怎麼樣？",
+                "simplified": "男的觉得那位同学怎么样？",
+                "pinyin": "Nán de juéde nà wèi tóngxué zěnmeyàng?",
+                "english": "What does the man think of that classmate?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "常常教同學功課",
+                  "simplified": "常常教同学功课",
+                  "pinyin": "Chángcháng jiāo tóngxué gōngkè.",
+                  "english": "He often helps classmates with their homework."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "常常帶同學去圖書館",
+                  "simplified": "常常带同学去图书馆",
+                  "pinyin": "Chángcháng dài tóngxué qù túshūguǎn.",
+                  "english": "He often takes classmates to the library."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "常常去問老師問題",
+                  "simplified": "常常去问老师问题",
+                  "pinyin": "Chángcháng qù wèn lǎoshī wèntí.",
+                  "english": "He often asks the teacher questions."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "常常在家念到很晚",
+                  "simplified": "常常在家念到很晚",
+                  "pinyin": "Chángcháng zài jiā niàn dào hěn wǎn.",
+                  "english": "He often studies at home until late."
+                }
+              ],
+              "key": 0,
+              "why": "他可以說是我們班的小老師: classmates come to him with what they don't understand, and he is like a teacher to them, so he often teaches them. He studies in the library himself (not with classmates, not at home), and the questions come to him, not from him.",
+              "focus": {
+                "zh": "可以說是",
+                "en": "you could say"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B2L02-1-28",
+                "B1L02-1-20",
+                "B1L02-2-11"
+              ],
+              "grammarIds": [
+                "B3L01-G01-P29"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-dialogue",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l01-review-dialogue-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我的筆電又壞了，我想這個週末去買一台新的，或是先跟我哥哥借一台。",
+              "simplified": "我的笔电又坏了，我想这个周末去买一台新的，或是先跟我哥哥借一台。",
+              "pinyin": "Wǒ de bǐdiàn yòu huài le, wǒ xiǎng zhège zhōumò qù mǎi yì tái xīn de, huòshì xiān gēn wǒ gēge jiè yì tái.",
+              "english": "My laptop broke again. I'm thinking of buying a new one this weekend, or borrowing one from my brother for now."
+            },
+            {
+              "speaker": "F",
+              "traditional": "新的那麼貴，跟別人借也不方便，不如先拿去修理吧。我上次修我的，才花了兩千塊。",
+              "simplified": "新的那么贵，跟别人借也不方便，不如先拿去修理吧。我上次修我的，才花了两千块。",
+              "pinyin": "Xīn de nàme guì, gēn biérén jiè yě bù fāngbiàn, bùrú xiān ná qù xiūlǐ ba. Wǒ shàng cì xiū wǒ de, cái huā le liǎngqiān kuài.",
+              "english": "New ones are so expensive, and borrowing isn't convenient either. You'd better get it repaired first. When I had mine fixed last time, it only cost two thousand."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好吧，那我明天先拿去店裡問問看。",
+              "simplified": "好吧，那我明天先拿去店里问问看。",
+              "pinyin": "Hǎo ba, nà wǒ míngtiān xiān ná qù diàn lǐ wènwen kàn.",
+              "english": "All right, I'll take it to the shop tomorrow and ask."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-review-dialogue-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的建議男的怎麼做？",
+                "simplified": "女的建议男的怎么做？",
+                "pinyin": "Nǚ de jiànyì nán de zěnme zuò?",
+                "english": "What does the woman suggest the man do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這個週末買新的",
+                  "simplified": "这个周末买新的",
+                  "pinyin": "Zhège zhōumò mǎi xīn de.",
+                  "english": "Buy a new one this weekend."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "先跟哥哥借一台",
+                  "simplified": "先跟哥哥借一台",
+                  "pinyin": "Xiān gēn gēge jiè yì tái.",
+                  "english": "Borrow one from his brother for now."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "買便宜一點的筆電",
+                  "simplified": "买便宜一点的笔电",
+                  "pinyin": "Mǎi piányí yìdiǎn de bǐdiàn.",
+                  "english": "Buy a cheaper laptop."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "把這台修好再用",
+                  "simplified": "把这台修好再用",
+                  "pinyin": "Bǎ zhè tái xiū hǎo zài yòng.",
+                  "english": "Get this one fixed and keep using it."
+                }
+              ],
+              "key": 3,
+              "why": "新的那麼貴，跟別人借也不方便，不如先拿去修理吧: she says repairing it is better. Buying this weekend and borrowing from his brother were his own ideas, which she turns down, and she never suggests a cheaper laptop.",
+              "focus": {
+                "zh": "不如",
+                "en": "it would be better to"
+              },
+              "lesson": 13,
+              "book": 2,
+              "wordIds": [
+                "B2L13-1-09",
+                "B2L13-1-20",
+                "B2L13-1-01"
+              ],
+              "grammarIds": [
+                "B2L13-G02-P294"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-review-dialogue-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "明天就要交報告了，妳怎麼還在看電視？",
+              "simplified": "明天就要交报告了，你怎么还在看电视？",
+              "pinyin": "Míngtiān jiù yào jiāo bàogào le, nǐ zěnme hái zài kàn diànshì?",
+              "english": "The report is due tomorrow. Why are you still watching TV?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "教授上課的時候不是說了嗎？報告下個星期才要交，明天是口試。",
+              "simplified": "教授上课的时候不是说了吗？报告下个星期才要交，明天是口试。",
+              "pinyin": "Jiàoshòu shàngkè de shíhòu bú shì shuō le ma? Bàogào xià ge xīngqí cái yào jiāo, míngtiān shì kǒushì.",
+              "english": "Didn't the professor say so in class? The report isn't due until next week. Tomorrow is the oral exam."
+            },
+            {
+              "speaker": "M",
+              "traditional": "什麼？明天口試？那我得快一點準備了！",
+              "simplified": "什么？明天口试？那我得快一点准备了！",
+              "pinyin": "Shénme? Míngtiān kǒushì? Nà wǒ děi kuài yìdiǎn zhǔnbèi le!",
+              "english": "What? The oral exam is tomorrow? Then I'd better hurry up and prepare!"
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-review-dialogue-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他們明天要做什麼？",
+                "simplified": "他们明天要做什么？",
+                "pinyin": "Tāmen míngtiān yào zuò shénme?",
+                "english": "What do they have to do tomorrow?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "交報告",
+                  "simplified": "交报告",
+                  "pinyin": "Jiāo bàogào.",
+                  "english": "Hand in a report."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "考口試",
+                  "simplified": "考口试",
+                  "pinyin": "Kǎo kǒushì.",
+                  "english": "Take an oral exam."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "考筆試",
+                  "simplified": "考笔试",
+                  "pinyin": "Kǎo bǐshì.",
+                  "english": "Take a written exam."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "準備報告",
+                  "simplified": "准备报告",
+                  "pinyin": "Zhǔnbèi bàogào.",
+                  "english": "Prepare a report."
+                }
+              ],
+              "key": 1,
+              "why": "不是說了嗎 reminds him of what the professor said: the report is due 下個星期, and tomorrow is the 口試 (oral exam). What he must prepare now is the exam.",
+              "focus": {
+                "zh": "不是……嗎？",
+                "en": "didn't …? (reminding)"
+              },
+              "lesson": 9,
+              "book": 2,
+              "wordIds": [
+                "B2L09-1-09",
+                "B2L09-1-23",
+                "B2L09-1-15",
+                "B2L09-1-22"
+              ],
+              "grammarIds": [
+                "B2L09-G01-P208"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-review-dialogue-3",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這個週末社區舉辦的文化日，你報名了沒有？",
+              "simplified": "这个周末社区举办的文化日，你报名了没有？",
+              "pinyin": "Zhège zhōumò shèqū jǔbàn de wénhuà rì, nǐ bàomíng le méiyǒu?",
+              "english": "Have you signed up for the community culture day this weekend?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "還沒。聽說只有報名的人，才能進去嚐各國的菜，是真的嗎？",
+              "simplified": "还没。听说只有报名的人，才能进去尝各国的菜，是真的吗？",
+              "pinyin": "Hái méi. Tīngshuō zhǐyǒu bàomíng de rén, cái néng jìnqù cháng gè guó de cài, shì zhēn de ma?",
+              "english": "Not yet. I hear only people who have signed up can go in and taste food from different countries. Is that true?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "對，而且報名今天晚上就結束了，你快一點上網報名吧！",
+              "simplified": "对，而且报名今天晚上就结束了，你快一点上网报名吧！",
+              "pinyin": "Duì, érqiě bàomíng jīntiān wǎnshàng jiù jiéshù le, nǐ kuài yìdiǎn shàngwǎng bàomíng ba!",
+              "english": "Yes, and sign-up closes tonight. Hurry up and sign up online!"
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-review-dialogue-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的要男的做什麼？",
+                "simplified": "女的要男的做什么？",
+                "pinyin": "Nǚ de yào nán de zuò shénme?",
+                "english": "What does the woman want the man to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "今天就報名參加",
+                  "simplified": "今天就报名参加",
+                  "pinyin": "Jīntiān jiù bàomíng cānjiā.",
+                  "english": "Sign up today."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天再上網報名",
+                  "simplified": "明天再上网报名",
+                  "pinyin": "Míngtiān zài shàngwǎng bàomíng.",
+                  "english": "Sign up online tomorrow."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "週末再去嚐嚐看",
+                  "simplified": "周末再去尝尝看",
+                  "pinyin": "Zhōumò zài qù chángchang kàn.",
+                  "english": "Go and taste the food at the weekend."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "今天先上網看菜單",
+                  "simplified": "今天先上网看菜单",
+                  "pinyin": "Jīntiān xiān shàngwǎng kàn càidān.",
+                  "english": "Look at the menu online today first."
+                }
+              ],
+              "key": 0,
+              "why": "報名今天晚上就結束了，你快一點上網報名吧: she wants him to sign up today, before it closes. Tomorrow is too late, only people who signed up (只有報名的人，才能) can go in at the weekend, and she never mentions a menu.",
+              "focus": {
+                "zh": "只有……才……",
+                "en": "only those who sign up"
+              },
+              "lesson": 16,
+              "book": 2,
+              "wordIds": [
+                "B2L16-1-30",
+                "B2L16-1-01",
+                "B2L16-1-11"
+              ],
+              "grammarIds": [
+                "B2L16-G06-P371"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-new-job",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l01-dialogue-new-job-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "聽說妳不在銀行上班了？是因為工作太忙嗎？",
+              "simplified": "听说你不在银行上班了？是因为工作太忙吗？",
+              "pinyin": "Tīngshuō nǐ bú zài yínháng shàngbān le? Shì yīnwèi gōngzuò tài máng ma?",
+              "english": "I heard you don't work at the bank any more. Was the work too busy?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，銀行的工作是不錯，可是我從小的夢想是設計衣服。上個月我在網路上開了一家小店，賣自己設計的衣服。",
+              "simplified": "不是，银行的工作是不错，可是我从小的梦想是设计衣服。上个月我在网路上开了一家小店，卖自己设计的衣服。",
+              "pinyin": "Bú shì, yínháng de gōngzuò shì búcuò, kěshì wǒ cóngxiǎo de mèngxiǎng shì shèjì yīfu. Shàng ge yuè wǒ zài wǎnglù shàng kāi le yì jiā xiǎo diàn, mài zìjǐ shèjì de yīfu.",
+              "english": "No. The bank job was fine, but my dream since I was little has been to design clothes. Last month I opened a small online shop selling clothes I design."
+            },
+            {
+              "speaker": "M",
+              "traditional": "真的嗎？生意怎麼樣？",
+              "simplified": "真的吗？生意怎么样？",
+              "pinyin": "Zhēn de ma? Shēngyì zěnmeyàng?",
+              "english": "Really? How is business?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "剛開始，一件衣服都沒人買，我差一點就回銀行上班了。後來請朋友穿我的衣服照相，把照片放在網路上，現在每個星期能賣二十幾件。",
+              "simplified": "刚开始，一件衣服都没人买，我差一点就回银行上班了。后来请朋友穿我的衣服照相，把照片放在网路上，现在每个星期能卖二十几件。",
+              "pinyin": "Gāng kāishǐ, yí jiàn yīfu dōu méi rén mǎi, wǒ chà yìdiǎn jiù huí yínháng shàngbān le. Hòulái qǐng péngyǒu chuān wǒ de yīfu zhàoxiàng, bǎ zhàopiàn fàng zài wǎnglù shàng, xiànzài měi ge xīngqí néng mài èrshí jǐ jiàn.",
+              "english": "At first nobody bought a single piece, and I almost went back to work at the bank. Later I asked friends to wear my clothes for photos and put the photos online. Now I sell over twenty pieces a week."
+            },
+            {
+              "speaker": "M",
+              "traditional": "妳的性格這麼開朗，又肯吃苦，我相信妳的店會越來越好。",
+              "simplified": "你的性格这么开朗，又肯吃苦，我相信你的店会越来越好。",
+              "pinyin": "Nǐ de xìnggé zhème kāilǎng, yòu kěn chīkǔ, wǒ xiāngxìn nǐ de diàn huì yuè lái yuè hǎo.",
+              "english": "You are so cheerful and willing to work hard. I'm sure your shop will keep getting better."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-new-job-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這位小姐為什麼不在銀行上班了？",
+                "simplified": "这位小姐为什么不在银行上班了？",
+                "pinyin": "Zhè wèi xiǎojiě wèishénme bú zài yínháng shàngbān le?",
+                "english": "Why does this woman no longer work at the bank?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她想自己做衣服來賣",
+                  "simplified": "她想自己做衣服来卖",
+                  "pinyin": "Tā xiǎng zìjǐ zuò yīfu lái mài.",
+                  "english": "She wants to make clothes and sell them herself."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "銀行的工作太忙了",
+                  "simplified": "银行的工作太忙了",
+                  "pinyin": "Yínháng de gōngzuò tài máng le.",
+                  "english": "The bank job was too busy."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "銀行給的錢太少了",
+                  "simplified": "银行给的钱太少了",
+                  "pinyin": "Yínháng gěi de qián tài shǎo le.",
+                  "english": "The bank did not pay enough."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她想去網路公司上班",
+                  "simplified": "她想去网路公司上班",
+                  "pinyin": "Tā xiǎng qù wǎnglù gōngsī shàngbān.",
+                  "english": "She wants to work for an internet company."
+                }
+              ],
+              "key": 0,
+              "why": "我從小的夢想是設計衣服 … 賣自己設計的衣服: she left to make and sell her own clothes. She says no to the man's guess that the work was too busy, she says the bank job was good (銀行的工作是不錯), and her shop is online; she does not work for an internet company.",
+              "focus": {
+                "zh": "夢想",
+                "en": "dream"
+              },
+              "lesson": 1,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L01-1-01",
+                "B3L01-2-19",
+                "B3L01-2-15"
+              ]
+            },
+            {
+              "id": "b3l01-dialogue-new-job-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這位小姐的店剛開的時候怎麼樣？",
+                "simplified": "这位小姐的店刚开的时候怎么样？",
+                "pinyin": "Zhè wèi xiǎojiě de diàn gāng kāi de shíhòu zěnmeyàng?",
+                "english": "How was this woman's shop when it first opened?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "只有朋友買她的衣服",
+                  "simplified": "只有朋友买她的衣服",
+                  "pinyin": "Zhǐyǒu péngyǒu mǎi tā de yīfu.",
+                  "english": "Only her friends bought her clothes."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "每星期賣二十幾件",
+                  "simplified": "每星期卖二十几件",
+                  "pinyin": "Měi xīngqí mài èrshí jǐ jiàn.",
+                  "english": "It sold over twenty pieces a week."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她又回銀行上班了",
+                  "simplified": "她又回银行上班了",
+                  "pinyin": "Tā yòu huí yínháng shàngbān le.",
+                  "english": "She went back to work at the bank."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "衣服都賣不出去",
+                  "simplified": "衣服都卖不出去",
+                  "pinyin": "Yīfu dōu mài bù chūqù.",
+                  "english": "She could not sell any clothes."
+                }
+              ],
+              "key": 3,
+              "why": "剛開始，一件衣服都沒人買: at first she sold nothing. She only almost went back to the bank (差一點就回銀行上班了), her friends wore the clothes for photos rather than buying them, and the twenty-odd pieces a week came later.",
+              "focus": {
+                "zh": "一件衣服都沒人買",
+                "en": "nobody bought any"
+              },
+              "lesson": 1,
+              "answerLine": 3,
+              "wordIds": [
+                "B1L04-1-22",
+                "B2L04-2-19"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-dialogue-new-job-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你現在做什麼工作？",
+              "simplified": "你现在做什么工作？",
+              "pinyin": "Nǐ xiànzài zuò shénme gōngzuò?",
+              "english": "What do you do now?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我在一家做卡通的公司上班。我不畫卡通，也不寫故事，卡通人物說的話很多都是我錄的。",
+              "simplified": "我在一家做卡通的公司上班。我不画卡通，也不写故事，卡通人物说的话很多都是我录的。",
+              "pinyin": "Wǒ zài yì jiā zuò kǎtōng de gōngsī shàngbān. Wǒ bú huà kǎtōng, yě bù xiě gùshì, kǎtōng rénwù shuō de huà hěn duō dōu shì wǒ lù de.",
+              "english": "I work at a company that makes cartoons. I don't draw them or write the stories; much of what the cartoon characters say is recorded by me."
+            },
+            {
+              "speaker": "F",
+              "traditional": "一個人錄那麼多角色的聲音？你是怎麼做到的？",
+              "simplified": "一个人录那么多角色的声音？你是怎么做到的？",
+              "pinyin": "Yí ge rén lù nàme duō jiǎosè de shēngyīn? Nǐ shì zěnme zuòdào de?",
+              "english": "One person recording the voices of so many characters? How do you do it?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我每天不斷地聽別人說話，再自己練習。剛開始，導演常說我錄得不好，有時候一個角色要錄十幾次。",
+              "simplified": "我每天不断地听别人说话，再自己练习。刚开始，导演常说我录得不好，有时候一个角色要录十几次。",
+              "pinyin": "Wǒ měi tiān búduàn de tīng biérén shuōhuà, zài zìjǐ liànxí. Gāng kāishǐ, dǎoyǎn cháng shuō wǒ lù de bù hǎo, yǒushíhòu yí ge jiǎosè yào lù shí jǐ cì.",
+              "english": "Every day I keep listening to how people talk, then practise on my own. At first the director often said my recordings were bad, and sometimes one role took over ten takes."
+            },
+            {
+              "speaker": "F",
+              "traditional": "這麼辛苦，你沒想過換工作嗎？",
+              "simplified": "这么辛苦，你没想过换工作吗？",
+              "pinyin": "Zhème xīnkǔ, nǐ méi xiǎng guo huàn gōngzuò ma?",
+              "english": "It's so hard. Haven't you thought about changing jobs?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "想過。這份工作的錢不多，公司也離我家很遠，可是看到小朋友聽了我錄的聲音，笑得那麼開心，我就覺得很值得。",
+              "simplified": "想过。这份工作的钱不多，公司也离我家很远，可是看到小朋友听了我录的声音，笑得那么开心，我就觉得很值得。",
+              "pinyin": "Xiǎng guo. Zhè fèn gōngzuò de qián bù duō, gōngsī yě lí wǒ jiā hěn yuǎn, kěshì kàndào xiǎopéngyǒu tīng le wǒ lù de shēngyīn, xiào de nàme kāixīn, wǒ jiù juéde hěn zhídé.",
+              "english": "I have. The pay isn't much and the company is far from my home, but when I see children laughing so happily at the voices I recorded, I feel it is worth it."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-dialogue-new-job-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的做的是什麼工作？",
+                "simplified": "男的做的是什么工作？",
+                "pinyin": "Nán de zuò de shì shénme gōngzuò?",
+                "english": "What is the man's job?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "畫卡通裡的人物",
+                  "simplified": "画卡通里的人物",
+                  "pinyin": "Huà kǎtōng lǐ de rénwù.",
+                  "english": "Drawing cartoon characters."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "寫卡通的故事",
+                  "simplified": "写卡通的故事",
+                  "pinyin": "Xiě kǎtōng de gùshì.",
+                  "english": "Writing cartoon stories."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "替卡通角色錄音",
+                  "simplified": "替卡通角色录音",
+                  "pinyin": "Tì kǎtōng jiǎosè lùyīn.",
+                  "english": "Recording the voices of cartoon characters."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "替卡通找人錄音",
+                  "simplified": "替卡通找人录音",
+                  "pinyin": "Tì kǎtōng zhǎo rén lùyīn.",
+                  "english": "Finding people to record cartoon voices."
+                }
+              ],
+              "key": 2,
+              "why": "卡通人物說的話很多都是我錄的: he records the characters' voices himself (一個人錄那麼多角色的聲音), so he does not find others to do it. He says he does not draw the cartoons or write the stories (我不畫卡通，也不寫故事).",
+              "focus": {
+                "zh": "卡通人物說的話是我錄的",
+                "en": "voicing cartoon characters"
+              },
+              "lesson": 1,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L01-1-11",
+                "B3L01-1-12",
+                "B3L01-1-23"
+              ]
+            },
+            {
+              "id": "b3l01-dialogue-new-job-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的為什麼還在做這個工作？",
+                "simplified": "男的为什么还在做这个工作？",
+                "pinyin": "Nán de wèishénme hái zài zuò zhège gōngzuò?",
+                "english": "Why is the man still doing this job?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這份工作的錢不少",
+                  "simplified": "这份工作的钱不少",
+                  "pinyin": "Zhè fèn gōngzuò de qián bù shǎo.",
+                  "english": "The job pays quite well."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "能讓孩子很快樂",
+                  "simplified": "能让孩子很快乐",
+                  "pinyin": "Néng ràng háizi hěn kuàilè.",
+                  "english": "It makes children happy."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "導演說他錄得很好",
+                  "simplified": "导演说他录得很好",
+                  "pinyin": "Dǎoyǎn shuō tā lù de hěn hǎo.",
+                  "english": "The director says his recordings are good."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "公司離他家不遠",
+                  "simplified": "公司离他家不远",
+                  "pinyin": "Gōngsī lí tā jiā bù yuǎn.",
+                  "english": "The company is not far from his home."
+                }
+              ],
+              "key": 1,
+              "why": "可是看到小朋友……笑得那麼開心，我就覺得很值得: he stays because the children are so happy. He says the pay is low and the company is far (錢不多，公司也離我家很遠), and the director said his recordings were bad (導演常說我錄得不好).",
+              "focus": {
+                "zh": "值得",
+                "en": "worth it"
+              },
+              "lesson": 1,
+              "answerLine": 5,
+              "wordIds": [
+                "B2L04-2-27",
+                "B1L07-1-17",
+                "B1L12-2-02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talk",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l01-talk-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段留言，然後回答兩個問題。",
+            "simplified": "请听一段留言，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn liúyán, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a voice message, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你好，我是表演社團的社員。這個星期六的練習要改到星期天下午兩點，因為星期六禮堂有別的活動。",
+              "simplified": "你好，我是表演社团的社员。这个星期六的练习要改到星期天下午两点，因为星期六礼堂有别的活动。",
+              "pinyin": "Nǐ hǎo, wǒ shì biǎoyǎn shètuán de shèyuán. Zhège xīngqíliù de liànxí yào gǎi dào xīngqítiān xiàwǔ liǎng diǎn, yīnwèi xīngqíliù lǐtáng yǒu bié de huódòng.",
+              "english": "Hi, I'm a member of the drama club. This Saturday's practice is moving to Sunday at two in the afternoon, because the hall has another event on Saturday."
+            },
+            {
+              "speaker": "F",
+              "traditional": "還有，導演看了新的劇本，覺得你很像裡面那個爸爸，想請你來演這個角色。",
+              "simplified": "还有，导演看了新的剧本，觉得你很像里面那个爸爸，想请你来演这个角色。",
+              "pinyin": "Hái yǒu, dǎoyǎn kàn le xīn de jùběn, juéde nǐ hěn xiàng lǐmiàn nàge bàba, xiǎng qǐng nǐ lái yǎn zhège jiǎosè.",
+              "english": "Also, the director has read the new script and thinks you are a lot like the father in it. He would like you to play that role."
+            },
+            {
+              "speaker": "F",
+              "traditional": "劇本放在社團辦公室，你有空的時候去拿。看完以後，請在星期五晚上九點以前打電話給我，告訴我你要不要演。謝謝！",
+              "simplified": "剧本放在社团办公室，你有空的时候去拿。看完以后，请在星期五晚上九点以前打电话给我，告诉我你要不要演。谢谢！",
+              "pinyin": "Jùběn fàng zài shètuán bàngōngshì, nǐ yǒu kòng de shíhòu qù ná. Kàn wán yǐhòu, qǐng zài xīngqíwǔ wǎnshàng jiǔ diǎn yǐqián dǎ diànhuà gěi wǒ, gàosu wǒ nǐ yào bú yào yǎn. Xièxie!",
+              "english": "The script is in the club office; pick it up when you are free. After reading it, please call me before nine on Friday evening and tell me whether you will do it. Thanks!"
+            }
+          ],
+          "answerLine": 0,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-talk-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這個星期的練習改到什麼時候？",
+                "simplified": "这个星期的练习改到什么时候？",
+                "pinyin": "Zhège xīngqí de liànxí gǎi dào shénme shíhòu?",
+                "english": "When has this week's practice been moved to?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期五晚上",
+                  "simplified": "星期五晚上",
+                  "pinyin": "Xīngqíwǔ wǎnshàng.",
+                  "english": "Friday evening."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期六下午",
+                  "simplified": "星期六下午",
+                  "pinyin": "Xīngqíliù xiàwǔ.",
+                  "english": "Saturday afternoon."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期天下午",
+                  "simplified": "星期天下午",
+                  "pinyin": "Xīngqítiān xiàwǔ.",
+                  "english": "Sunday afternoon."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期天晚上",
+                  "simplified": "星期天晚上",
+                  "pinyin": "Xīngqítiān wǎnshàng.",
+                  "english": "Sunday evening."
+                }
+              ],
+              "key": 2,
+              "why": "練習要改到星期天下午兩點: the practice moves to Sunday afternoon because the hall is busy on Saturday. Friday evening is only the deadline to call.",
+              "focus": {
+                "zh": "改到",
+                "en": "moved to (a time)"
+              },
+              "lesson": 1,
+              "answerLine": 0,
+              "wordIds": [
+                "B1L09-3-05",
+                "B2L10-1-06",
+                "B2L16-1-27"
+              ]
+            },
+            {
+              "id": "b3l01-talk-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "導演想請聽留言的人做什麼？",
+                "simplified": "导演想请听留言的人做什么？",
+                "pinyin": "Dǎoyǎn xiǎng qǐng tīng liúyán de rén zuò shénme?",
+                "english": "What does the director want the listener to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "演新戲裡的父親",
+                  "simplified": "演新戏里的父亲",
+                  "pinyin": "Yǎn xīn xì lǐ de fùqīn.",
+                  "english": "Play the father in the new play."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "幫忙修改新劇本",
+                  "simplified": "帮忙修改新剧本",
+                  "pinyin": "Bāngmáng xiūgǎi xīn jùběn.",
+                  "english": "Help revise the new script."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "幫忙找演爸爸的人",
+                  "simplified": "帮忙找演爸爸的人",
+                  "pinyin": "Bāngmáng zhǎo yǎn bàba de rén.",
+                  "english": "Help find someone to play the father."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去辦公室拿劇本",
+                  "simplified": "去办公室拿剧本",
+                  "pinyin": "Qù bàngōngshì ná jùběn.",
+                  "english": "Fetch the script from the office."
+                }
+              ],
+              "key": 0,
+              "why": "覺得你很像裡面那個爸爸，想請你來演這個角色: the director wants the listener to play the father. Fetching the script is the caller's own request, and the director has already read the script, not asked for changes.",
+              "focus": {
+                "zh": "角色",
+                "en": "role"
+              },
+              "lesson": 1,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L01-1-23",
+                "B3L01-1-15",
+                "B3L01-1-10"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-talk-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段介紹，然後回答兩個問題。",
+            "simplified": "请听一段介绍，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn jièshào, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to an introduction, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "大家好，我是這個電影課程的老師。我以前是一名演員，演了十年的戲，後來因為腿受傷，不能再演戲，而開始當導演。",
+              "simplified": "大家好，我是这个电影课程的老师。我以前是一名演员，演了十年的戏，后来因为腿受伤，不能再演戏，而开始当导演。",
+              "pinyin": "Dàjiā hǎo, wǒ shì zhège diànyǐng kèchéng de lǎoshī. Wǒ yǐqián shì yì míng yǎnyuán, yǎn le shí nián de xì, hòulái yīnwèi tuǐ shòushāng, bù néng zài yǎnxì, ér kāishǐ dāng dǎoyǎn.",
+              "english": "Hello, everyone. I am the teacher of this film course. I used to be an actor and acted for ten years; later I hurt my leg and could not act any more, so I became a director."
+            },
+            {
+              "speaker": "M",
+              "traditional": "這個課程一共八個星期。前四個星期，我們學怎麼寫劇本；後四個星期，每個人要跟兩位同學一起，拍出一部十分鐘的電影。",
+              "simplified": "这个课程一共八个星期。前四个星期，我们学怎么写剧本；后四个星期，每个人要跟两位同学一起，拍出一部十分钟的电影。",
+              "pinyin": "Zhège kèchéng yígòng bā ge xīngqí. Qián sì ge xīngqí, wǒmen xué zěnme xiě jùběn; hòu sì ge xīngqí, měi ge rén yào gēn liǎng wèi tóngxué yìqǐ, pāi chū yí bù shí fēnzhōng de diànyǐng.",
+              "english": "The course lasts eight weeks. In the first four weeks we learn how to write a script; in the last four, each of you will make a ten-minute film with two classmates."
+            },
+            {
+              "speaker": "M",
+              "traditional": "不管你以前有沒有拍過電影，只要肯花時間，就一定能拍出自己的故事。歡迎大家來報名！",
+              "simplified": "不管你以前有没有拍过电影，只要肯花时间，就一定能拍出自己的故事。欢迎大家来报名！",
+              "pinyin": "Bùguǎn nǐ yǐqián yǒu méi yǒu pāi guo diànyǐng, zhǐyào kěn huā shíjiān, jiù yídìng néng pāi chū zìjǐ de gùshì. Huānyíng dàjiā lái bàomíng!",
+              "english": "Whether or not you have made a film before, if you are willing to put in the time, you can film your own story. Everyone is welcome to sign up!"
+            }
+          ],
+          "answerLine": 0,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l01-talk-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這位老師為什麼開始當導演？",
+                "simplified": "这位老师为什么开始当导演？",
+                "pinyin": "Zhè wèi lǎoshī wèishénme kāishǐ dāng dǎoyǎn?",
+                "english": "Why did this teacher become a director?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "演了十年想換工作",
+                  "simplified": "演了十年想换工作",
+                  "pinyin": "Yǎn le shí nián xiǎng huàn gōngzuò.",
+                  "english": "After ten years of acting he wanted a new job."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "身體出了問題不能演",
+                  "simplified": "身体出了问题不能演",
+                  "pinyin": "Shēntǐ chū le wèntí bù néng yǎn.",
+                  "english": "A health problem stopped him from acting."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "想教學生拍電影",
+                  "simplified": "想教学生拍电影",
+                  "pinyin": "Xiǎng jiāo xuéshēng pāi diànyǐng.",
+                  "english": "He wanted to teach students to make films."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "想拍自己寫的劇本",
+                  "simplified": "想拍自己写的剧本",
+                  "pinyin": "Xiǎng pāi zìjǐ xiě de jùběn.",
+                  "english": "He wanted to film a script he wrote."
+                }
+              ],
+              "key": 1,
+              "why": "因為腿受傷，不能再演戲，而開始當導演: an injury stopped him acting, so he became a director. The ten years only say how long he acted, teaching is what he does now, and filming your own story is what the course offers the students.",
+              "focus": {
+                "zh": "因為……而……",
+                "en": "because … (so)"
+              },
+              "lesson": 1,
+              "answerLine": 0,
+              "wordIds": [
+                "B3L01-1-15",
+                "B3L01-1-24",
+                "B3L01-2-02"
+              ],
+              "grammarIds": [
+                "B3L01-G04-P38"
+              ]
+            },
+            {
+              "id": "b3l01-talk-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "後四個星期，上課的人要做什麼？",
+                "simplified": "后四个星期，上课的人要做什么？",
+                "pinyin": "Hòu sì ge xīngqí, shàngkè de rén yào zuò shénme?",
+                "english": "What will the students do in the last four weeks?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "學怎麼寫劇本",
+                  "simplified": "学怎么写剧本",
+                  "pinyin": "Xué zěnme xiě jùběn.",
+                  "english": "Learn how to write a script."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟老師學演戲",
+                  "simplified": "跟老师学演戏",
+                  "pinyin": "Gēn lǎoshī xué yǎnxì.",
+                  "english": "Learn acting from the teacher."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "自己拍一部電影",
+                  "simplified": "自己拍一部电影",
+                  "pinyin": "Zìjǐ pāi yí bù diànyǐng.",
+                  "english": "Make a film on their own."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三個人一起拍電影",
+                  "simplified": "三个人一起拍电影",
+                  "pinyin": "Sān ge rén yìqǐ pāi diànyǐng.",
+                  "english": "Make a film in groups of three."
+                }
+              ],
+              "key": 3,
+              "why": "後四個星期，每個人要跟兩位同學一起，拍出一部十分鐘的電影: in the last four weeks students make a film in threes, not alone. Script writing is the first four weeks, and he never says he will teach acting.",
+              "focus": {
+                "zh": "V出",
+                "en": "make (something new)"
+              },
+              "lesson": 1,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L01-1-20",
+                "B3L01-1-10",
+                "B3L01-1-27"
+              ],
+              "grammarIds": [
+                "B3L01-G05-P40"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloze-dream",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l01-cloze-dream-1",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "我從小就是個戲迷，可是大學念的是電腦。畢業以後，我白天上班，晚上寫劇本。朋友問我累不累，我說：「{1}每天只有五個小時能睡覺，我也要寫。」剛開始寫的故事，連自己都不喜歡，一直寫{2}好的劇本。後來，一位導演看了我的新劇本，說：「故事很特別，{3}，每個角色都很有意思，觀眾一定會喜歡。」他決定拍這個故事。我{4}他的肯定而更努力了。{5}那位導演，我可能還在公司上班呢！今年{6}我最快樂的一年。",
+            "simplified": "我从小就是个戏迷，可是大学念的是电脑。毕业以后，我白天上班，晚上写剧本。朋友问我累不累，我说：「{1}每天只有五个小时能睡觉，我也要写。」刚开始写的故事，连自己都不喜欢，一直写{2}好的剧本。后来，一位导演看了我的新剧本，说：「故事很特别，{3}，每个角色都很有意思，观众一定会喜欢。」他决定拍这个故事。我{4}他的肯定而更努力了。{5}那位导演，我可能还在公司上班呢！今年{6}我最快乐的一年。",
+            "pinyin": "Wǒ cóngxiǎo jiù shì ge xìmí, kěshì dàxué niàn de shì diànnǎo. Bìyè yǐhòu, wǒ báitiān shàngbān, wǎnshàng xiě jùběn. Péngyǒu wèn wǒ lèi bú lèi, wǒ shuō: “Jiùsuàn měi tiān zhǐyǒu wǔ ge xiǎoshí néng shuìjiào, wǒ yě yào xiě.” Gāng kāishǐ xiě de gùshì, lián zìjǐ dōu bù xǐhuān, yìzhí xiě bù chū hǎo de jùběn. Hòulái, yí wèi dǎoyǎn kàn le wǒ de xīn jùběn, shuō: “Gùshì hěn tèbié, zàishuō, měi ge jiǎosè dōu hěn yǒuyìsi, guānzhòng yídìng huì xǐhuān.” Tā juédìng pāi zhège gùshì. Wǒ yīnwèi tā de kěndìng ér gèng nǔlì le. Yàobúshì nà wèi dǎoyǎn, wǒ kěnéng hái zài gōngsī shàngbān ne! Jīnnián kě shuō shì wǒ zuì kuàilè de yì nián.",
+            "english": "I have loved drama since I was a child, but I studied computers at university. After graduating I worked in the day and wrote scripts at night. Friends asked if I was tired. I said, \"Even if I can only sleep five hours a night, I will keep writing.\" Even I didn't like the stories I wrote at first; I just couldn't write a good script. Later a director read my new script and said, \"The story is special; besides, every character is interesting. Audiences will surely like it.\" He decided to film it. Because of his approval, I work even harder. If it weren't for that director, I might still be working at a company! You could say this year is the happiest year of my life."
+          },
+          "questions": [
+            {
+              "id": "b3l01-cloze-dream-1-1",
+              "choices": [
+                {
+                  "traditional": "只有",
+                  "simplified": "只有",
+                  "pinyin": "zhǐyǒu",
+                  "english": "only if"
+                },
+                {
+                  "traditional": "就算",
+                  "simplified": "就算",
+                  "pinyin": "jiùsuàn",
+                  "english": "even if"
+                },
+                {
+                  "traditional": "不管",
+                  "simplified": "不管",
+                  "pinyin": "bùguǎn",
+                  "english": "no matter"
+                },
+                {
+                  "traditional": "除了",
+                  "simplified": "除了",
+                  "pinyin": "chúle",
+                  "english": "apart from"
+                }
+              ],
+              "key": 1,
+              "why": "也 in 我也要寫 goes with 就算 (even if): even with only five hours of sleep, the writer will still write. 不管 needs a question form (不管睡幾個小時), 只有 goes with 才, and 除了 would need 以外 and makes no sense here.",
+              "focus": {
+                "zh": "就算……也……",
+                "en": "even if"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-16"
+              ],
+              "grammarIds": [
+                "B3L01-G06-P42"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-1-2",
+              "choices": [
+                {
+                  "traditional": "不下",
+                  "simplified": "不下",
+                  "pinyin": "bú xià",
+                  "english": "not … down (no room)"
+                },
+                {
+                  "traditional": "不起",
+                  "simplified": "不起",
+                  "pinyin": "bù qǐ",
+                  "english": "can't afford to"
+                },
+                {
+                  "traditional": "不出",
+                  "simplified": "不出",
+                  "pinyin": "bù chū",
+                  "english": "can't produce"
+                },
+                {
+                  "traditional": "不到",
+                  "simplified": "不到",
+                  "pinyin": "bú dào",
+                  "english": "can't reach"
+                }
+              ],
+              "key": 2,
+              "why": "寫不出好的劇本: the writer could not produce a good script. V出 means making something new; 寫不下, 寫不起 and 寫不到 don't mean that.",
+              "focus": {
+                "zh": "V不出",
+                "en": "can't make (something new)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-10",
+                "B3L01-2-17"
+              ],
+              "grammarIds": [
+                "B3L01-G05-P40"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-1-3",
+              "choices": [
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "english": "so"
+                },
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "可是",
+                  "simplified": "可是",
+                  "pinyin": "kěshì",
+                  "english": "but"
+                },
+                {
+                  "traditional": "再說",
+                  "simplified": "再说",
+                  "pinyin": "zàishuō",
+                  "english": "besides"
+                }
+              ],
+              "key": 3,
+              "why": "再說 (besides) adds a second good point (every character is interesting) to the first (the story is special), and both lead to 觀眾一定會喜歡. 所以 and 難怪 would make the characters a result of the story, and 可是 needs a contrast.",
+              "focus": {
+                "zh": "再說",
+                "en": "besides"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-26",
+                "B3L01-1-23"
+              ],
+              "grammarIds": [
+                "B3L01-G03-P32"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-1-4",
+              "choices": [
+                {
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "english": "because"
+                },
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                },
+                {
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                },
+                {
+                  "traditional": "不但",
+                  "simplified": "不但",
+                  "pinyin": "búdàn",
+                  "english": "not only"
+                }
+              ],
+              "key": 0,
+              "why": "因為……而……: 因為他的肯定而更努力了 means the writer works harder because of his approval. 而 needs a cause after 因為.",
+              "focus": {
+                "zh": "因為……而……",
+                "en": "because … (so)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-02",
+                "B3L01-1-29"
+              ],
+              "grammarIds": [
+                "B3L01-G04-P38"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-1-5",
+              "choices": [
+                {
+                  "traditional": "要不是",
+                  "simplified": "要不是",
+                  "pinyin": "yàobúshì",
+                  "english": "if it weren't for"
+                },
+                {
+                  "traditional": "要是",
+                  "simplified": "要是",
+                  "pinyin": "yàoshì",
+                  "english": "if"
+                },
+                {
+                  "traditional": "因為",
+                  "simplified": "因為",
+                  "pinyin": "yīnwèi",
+                  "english": "because"
+                },
+                {
+                  "traditional": "雖然",
+                  "simplified": "雖然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                }
+              ],
+              "key": 0,
+              "why": "要不是那位導演 (if it weren't for that director) fits 我可能還在公司上班呢: without him, the writer might still be at the company. 要是 (if) and 因為 (because) would make the director the reason the writer stays at the company, and 雖然 (although) needs a contrast that never comes.",
+              "focus": {
+                "zh": "要不是",
+                "en": "if it weren't for"
+              },
+              "lesson": 14,
+              "book": 2,
+              "wordIds": [
+                "B2L14-2-22"
+              ],
+              "grammarIds": [
+                "B2L14-G08-P329"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-1-6",
+              "choices": [
+                {
+                  "traditional": "本來是",
+                  "simplified": "本来是",
+                  "pinyin": "běnlái shì",
+                  "english": "originally was"
+                },
+                {
+                  "traditional": "不會是",
+                  "simplified": "不会是",
+                  "pinyin": "bú huì shì",
+                  "english": "won't be"
+                },
+                {
+                  "traditional": "可說是",
+                  "simplified": "可说是",
+                  "pinyin": "kě shuō shì",
+                  "english": "you could say (it) is"
+                },
+                {
+                  "traditional": "還不是",
+                  "simplified": "还不是",
+                  "pinyin": "hái bú shì",
+                  "english": "is still not"
+                }
+              ],
+              "key": 2,
+              "why": "可說是 means the same as 可以說是 (you could say): with the script being filmed, this year is the writer's happiest. 本來是 points to the past, not to 今年, and 不會是 and 還不是 go against the happy ending.",
+              "focus": {
+                "zh": "可說是",
+                "en": "you could say"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-01"
+              ],
+              "grammarIds": [
+                "B3L01-G01-P29"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-cloze-dream-2",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "我家樓下住著一位七十歲的老太太。她年輕的時候很想演戲，可是父母不肯讓她去學表演。退休以後，她參加了社區的表演社團，{1}演越好，{2}社團裡最受歡迎的演員了。去年，社團還{3}她演的一部戲而變得有名，很多觀眾都是為了看她才來的。最近，她自己寫{4}了一個新劇本，要演一個大學生。有人說她年紀太大了，她笑著說：「{5}觀眾不喜歡，我也要試試看。{6}，跟年輕的朋友一起練習，讓我覺得自己也變年輕了。」",
+            "simplified": "我家楼下住着一位七十岁的老太太。她年轻的时候很想演戏，可是父母不肯让她去学表演。退休以后，她参加了社区的表演社团，{1}演越好，{2}社团里最受欢迎的演员了。去年，社团还{3}她演的一部戏而变得有名，很多观众都是为了看她才来的。最近，她自己写{4}了一个新剧本，要演一个大学生。有人说她年纪太大了，她笑着说：「{5}观众不喜欢，我也要试试看。{6}，跟年轻的朋友一起练习，让我觉得自己也变年轻了。」",
+            "pinyin": "Wǒ jiā lóuxià zhù zhe yí wèi qīshí suì de lǎotàitai. Tā niánqīng de shíhòu hěn xiǎng yǎnxì, kěshì fùmǔ bù kěn ràng tā qù xué biǎoyǎn. Tuìxiū yǐhòu, tā cānjiā le shèqū de biǎoyǎn shètuán, yuè yǎn yuè hǎo, kěyǐ shuō shì shètuán lǐ zuì shòu huānyíng de yǎnyuán le. Qùnián, shètuán hái yīnwèi tā yǎn de yí bù xì ér biàn de yǒumíng, hěn duō guānzhòng dōu shì wèile kàn tā cái lái de. Zuìjìn, tā zìjǐ xiě chū le yí ge xīn jùběn, yào yǎn yí ge dàxuéshēng. Yǒu rén shuō tā niánjì tài dà le, tā xiào zhe shuō: “Jiùsuàn guānzhòng bù xǐhuān, wǒ yě yào shìshi kàn. Zàishuō, gēn niánqīng de péngyǒu yìqǐ liànxí, ràng wǒ juéde zìjǐ yě biàn niánqīng le.”",
+            "english": "A seventy-year-old woman lives downstairs from me. When she was young she wanted to act, but her parents would not let her study acting. After retiring she joined the community drama club. The more she acts, the better she gets, and you could say she is now the most popular actor in the club. Last year the club even became famous because of a play she acted in, and many people in the audience came just to see her. Recently she wrote a new script herself, in which she will play a university student. Some people say she is too old. She laughs and says, \"Even if the audience doesn't like it, I still want to try. Besides, practising with young friends makes me feel young again.\""
+          },
+          "questions": [
+            {
+              "id": "b3l01-cloze-dream-2-1",
+              "choices": [
+                {
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "english": "both / and"
+                },
+                {
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "english": "also"
+                },
+                {
+                  "traditional": "越",
+                  "simplified": "越",
+                  "pinyin": "yuè",
+                  "english": "the more"
+                },
+                {
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "english": "then"
+                }
+              ],
+              "key": 2,
+              "why": "越演越好 (the more she acts, the better she gets) needs 越 in both places, and the second 越 is in the text. 又……又…… joins two descriptions, and 也 and 就 cannot start this pattern.",
+              "focus": {
+                "zh": "越……越……",
+                "en": "the more … the more"
+              },
+              "lesson": 10,
+              "book": 2,
+              "wordIds": [],
+              "grammarIds": [
+                "B2L10-G03-P232"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-2-2",
+              "choices": [
+                {
+                  "traditional": "本來就是",
+                  "simplified": "本来就是",
+                  "pinyin": "běnlái jiù shì",
+                  "english": "always was"
+                },
+                {
+                  "traditional": "差一點就是",
+                  "simplified": "差一点就是",
+                  "pinyin": "chà yìdiǎn jiù shì",
+                  "english": "almost was"
+                },
+                {
+                  "traditional": "已經不是",
+                  "simplified": "已经不是",
+                  "pinyin": "yǐjīng bú shì",
+                  "english": "is no longer"
+                },
+                {
+                  "traditional": "可以說是",
+                  "simplified": "可以说是",
+                  "pinyin": "kěyǐ shuō shì",
+                  "english": "you could say (she) is"
+                }
+              ],
+              "key": 3,
+              "why": "越演越好 and 很多觀眾都是為了看她才來的 show she has become the club's most popular actor, so 可以說是 fits. She only began acting after retiring and got better over time, so 本來就是 is wrong, and the audiences who come for her rule out 差一點就是 and 已經不是.",
+              "focus": {
+                "zh": "可以說是",
+                "en": "you could say"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-24"
+              ],
+              "grammarIds": [
+                "B3L01-G01-P29"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-2-3",
+              "choices": [
+                {
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                },
+                {
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "english": "because"
+                },
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                },
+                {
+                  "traditional": "除了",
+                  "simplified": "除了",
+                  "pinyin": "chúle",
+                  "english": "apart from"
+                }
+              ],
+              "key": 1,
+              "why": "因為她演的一部戲而變得有名: the club became famous because of a play she acted in. 而 links a cause after 因為 to its result.",
+              "focus": {
+                "zh": "因為……而……",
+                "en": "because … (so)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-02",
+                "B3L01-1-06"
+              ],
+              "grammarIds": [
+                "B3L01-G04-P38"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-2-4",
+              "choices": [
+                {
+                  "traditional": "出",
+                  "simplified": "出",
+                  "pinyin": "chū",
+                  "english": "out (make something new)"
+                },
+                {
+                  "traditional": "上",
+                  "simplified": "上",
+                  "pinyin": "shàng",
+                  "english": "on"
+                },
+                {
+                  "traditional": "進",
+                  "simplified": "进",
+                  "pinyin": "jìn",
+                  "english": "into"
+                },
+                {
+                  "traditional": "走",
+                  "simplified": "走",
+                  "pinyin": "zǒu",
+                  "english": "away"
+                }
+              ],
+              "key": 0,
+              "why": "寫出了一個新劇本: V出 shows something new was made, here a new script. 寫上 and 寫進 need a place to write on or into, and 寫走 is not a phrase.",
+              "focus": {
+                "zh": "V出",
+                "en": "make (something new)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-10"
+              ],
+              "grammarIds": [
+                "B3L01-G05-P40"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-2-5",
+              "choices": [
+                {
+                  "traditional": "就算",
+                  "simplified": "就算",
+                  "pinyin": "jiùsuàn",
+                  "english": "even if"
+                },
+                {
+                  "traditional": "不但",
+                  "simplified": "不但",
+                  "pinyin": "búdàn",
+                  "english": "not only"
+                },
+                {
+                  "traditional": "只有",
+                  "simplified": "只有",
+                  "pinyin": "zhǐyǒu",
+                  "english": "only if"
+                },
+                {
+                  "traditional": "而且",
+                  "simplified": "而且",
+                  "pinyin": "érqiě",
+                  "english": "moreover"
+                }
+              ],
+              "key": 0,
+              "why": "也 in 我也要試試看 goes with 就算 (even if): even if the audience doesn't like it, she will still try. 只有 needs 才, and 不但 and 而且 add a second point of the same kind instead of a condition.",
+              "focus": {
+                "zh": "就算……也……",
+                "en": "even if"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-16",
+                "B3L01-1-27"
+              ],
+              "grammarIds": [
+                "B3L01-G06-P42"
+              ]
+            },
+            {
+              "id": "b3l01-cloze-dream-2-6",
+              "choices": [
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had to"
+                },
+                {
+                  "traditional": "再說",
+                  "simplified": "再说",
+                  "pinyin": "zàishuō",
+                  "english": "besides"
+                },
+                {
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "english": "otherwise"
+                }
+              ],
+              "key": 2,
+              "why": "She adds another reason to try (practising with young people makes her feel young), so 再說 (besides) fits. 難怪, 只好 and 要不然 do not add a reason.",
+              "focus": {
+                "zh": "再說",
+                "en": "besides"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-26"
+              ],
+              "grammarIds": [
+                "B3L01-G03-P32"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l01-reading-card-1",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "週末表演課",
+            "simplified": "周末表演课",
+            "pinyin": "Zhōumò biǎoyǎn kè",
+            "english": "Weekend Acting Class"
+          },
+          "text": {
+            "traditional": "想當演員嗎？想知道怎麼演好一個角色嗎？\n時間：11月每個星期六 14:00–17:00（一共四次）\n地點：學生活動中心3樓\n老師：演了二十年戲的電影演員\n費用：學生NT$1,200，其他人NT$1,800\n報名：10/31以前上網報名，只收20人\n最後一次上課時間不變，可是不在教室，我們要去電影公司，看演員和導演怎麼拍戲！\n學校表演社團 10/15",
+            "simplified": "想当演员吗？想知道怎么演好一个角色吗？\n时间：11月每个星期六 14:00–17:00（一共四次）\n地点：学生活动中心3楼\n老师：演了二十年戏的电影演员\n费用：学生NT$1,200，其他人NT$1,800\n报名：10/31以前上网报名，只收20人\n最后一次上课时间不变，可是不在教室，我们要去电影公司，看演员和导演怎么拍戏！\n学校表演社团 10/15",
+            "pinyin": "Xiǎng dāng yǎnyuán ma? Xiǎng zhīdào zěnme yǎn hǎo yí ge jiǎosè ma? Shíjiān: Shíyī yuè měi ge xīngqíliù shísì diǎn dào shíqī diǎn (yígòng sì cì). Dìdiǎn: Xuéshēng huódòng zhōngxīn sān lóu. Lǎoshī: Yǎn le èrshí nián xì de diànyǐng yǎnyuán. Fèiyòng: Xuéshēng yìqiān liǎngbǎi yuán, qítā rén yìqiān bābǎi yuán. Bàomíng: Shí yuè sānshíyī hào yǐqián shàngwǎng bàomíng, zhǐ shōu èrshí rén. Zuìhòu yí cì shàngkè shíjiān bú biàn, kěshì bú zài jiàoshì, wǒmen yào qù diànyǐng gōngsī, kàn yǎnyuán hé dǎoyǎn zěnme pāixì! Xuéxiào biǎoyǎn shètuán, shí yuè shíwǔ hào.",
+            "english": "Want to be an actor? Want to know how to play a role well?\nTime: every Saturday in November, 2:00–5:00 p.m. (four classes)\nPlace: Student Activity Center, 3rd floor\nTeacher: a film actor with twenty years of acting\nFee: students NT$1,200, others NT$1,800\nSign-up: online before 10/31, 20 people only\nThe last class is at the same time but not in the classroom: we will go to a film company and watch how actors and directors shoot a film!\nSchool drama club, 10/15"
+          },
+          "questions": [
+            {
+              "id": "b3l01-reading-card-1-1",
+              "prompt": {
+                "traditional": "這個課程一共要上幾個小時？",
+                "simplified": "这个课程一共要上几个小时？",
+                "pinyin": "Zhège kèchéng yígòng yào shàng jǐ ge xiǎoshí?",
+                "english": "How many hours of class are there in all?"
+              },
+              "choices": [
+                {
+                  "traditional": "三個小時",
+                  "simplified": "三个小时",
+                  "pinyin": "Sān ge xiǎoshí.",
+                  "english": "Three hours."
+                },
+                {
+                  "traditional": "四個小時",
+                  "simplified": "四个小时",
+                  "pinyin": "Sì ge xiǎoshí.",
+                  "english": "Four hours."
+                },
+                {
+                  "traditional": "八個小時",
+                  "simplified": "八个小时",
+                  "pinyin": "Bā ge xiǎoshí.",
+                  "english": "Eight hours."
+                },
+                {
+                  "traditional": "十二個小時",
+                  "simplified": "十二个小时",
+                  "pinyin": "Shí'èr ge xiǎoshí.",
+                  "english": "Twelve hours."
+                }
+              ],
+              "key": 3,
+              "why": "Each class runs 14:00–17:00 (three hours), there are 一共四次 (four classes), and the last one keeps the same time (時間不變): 3 × 4 = 12 hours.",
+              "focus": {
+                "zh": "一共四次",
+                "en": "four times in all"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L04-2-15",
+                "B1L12-2-11",
+                "B2L12-1-05"
+              ]
+            },
+            {
+              "id": "b3l01-reading-card-1-2",
+              "prompt": {
+                "traditional": "最後一次上課的時候，學生要做什麼？",
+                "simplified": "最后一次上课的时候，学生要做什么？",
+                "pinyin": "Zuìhòu yí cì shàngkè de shíhòu, xuéshēng yào zuò shénme?",
+                "english": "What do students do in the last class?"
+              },
+              "choices": [
+                {
+                  "traditional": "每個人演一場戲",
+                  "simplified": "每个人演一场戏",
+                  "pinyin": "Měi ge rén yǎn yì chǎng xì.",
+                  "english": "Each person acts in a scene."
+                },
+                {
+                  "traditional": "請家人朋友來看戲",
+                  "simplified": "请家人朋友来看戏",
+                  "pinyin": "Qǐng jiārén péngyǒu lái kàn xì.",
+                  "english": "Invite family and friends to watch a play."
+                },
+                {
+                  "traditional": "出去看別人拍電影",
+                  "simplified": "出去看别人拍电影",
+                  "pinyin": "Chūqù kàn biérén pāi diànyǐng.",
+                  "english": "Go out and watch other people make a film."
+                },
+                {
+                  "traditional": "在教室看老師演戲",
+                  "simplified": "在教室看老师演戏",
+                  "pinyin": "Zài jiàoshì kàn lǎoshī yǎnxì.",
+                  "english": "Watch the teacher act in the classroom."
+                }
+              ],
+              "key": 2,
+              "why": "最後一次上課不在教室，我們要去電影公司，看演員和導演怎麼拍戲: the last class goes out to watch filming. It is not in the classroom, and the notice says nothing about students acting a scene or inviting family.",
+              "focus": {
+                "zh": "看演員和導演怎麼拍戲",
+                "en": "watching a film shoot"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-20",
+                "B3L01-1-24",
+                "B3L01-1-15"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-reading-card-2",
+          "kind": "reading",
+          "format": "table",
+          "title": {
+            "traditional": "學校電影節",
+            "simplified": "学校电影节",
+            "pinyin": "Xuéxiào diànyǐng jié",
+            "english": "School Film Festival"
+          },
+          "text": {
+            "traditional": "星期｜電影｜開始時間｜看完和導演聊天｜票\n星期一｜我的模特兒媽媽｜19:00｜有｜NT$100\n星期二｜市長的女兒｜18:30｜沒有｜NT$100\n星期三｜夢到明天｜19:30｜有｜NT$150\n星期四｜總統的一天｜14:00｜沒有｜免費\n星期五｜離婚以後｜15:00｜沒有｜NT$120",
+            "simplified": "星期｜电影｜开始时间｜看完和导演聊天｜票\n星期一｜我的模特儿妈妈｜19:00｜有｜NT$100\n星期二｜市长的女儿｜18:30｜没有｜NT$100\n星期三｜梦到明天｜19:30｜有｜NT$150\n星期四｜总统的一天｜14:00｜没有｜免费\n星期五｜离婚以后｜15:00｜没有｜NT$120",
+            "pinyin": "Xīngqí | Diànyǐng | Kāishǐ shíjiān | Kàn wán hé dǎoyǎn liáotiān | Piào. Xīngqíyī | Wǒ de mótèr māma | shíjiǔ diǎn | yǒu | yìbǎi yuán. Xīngqí'èr | Shìzhǎng de nǚ'ér | shíbā diǎn sānshí fēn | méiyǒu | yìbǎi yuán. Xīngqísān | Mèngdào míngtiān | shíjiǔ diǎn sānshí fēn | yǒu | yìbǎi wǔshí yuán. Xīngqísì | Zǒngtǒng de yì tiān | shísì diǎn | méiyǒu | miǎnfèi. Xīngqíwǔ | Líhūn yǐhòu | shíwǔ diǎn | méiyǒu | yìbǎi èrshí yuán.",
+            "english": "Day | Film | Starts | Talk with the director after the film | Ticket\nMonday | My Model Mom | 19:00 | yes | NT$100\nTuesday | The Mayor's Daughter | 18:30 | no | NT$100\nWednesday | Dreaming of Tomorrow | 19:30 | yes | NT$150\nThursday | A Day in the Life of the President | 14:00 | no | free\nFriday | After the Divorce | 15:00 | no | NT$120"
+          },
+          "questions": [
+            {
+              "id": "b3l01-reading-card-2-1",
+              "prompt": {
+                "traditional": "一位同學想看完電影以後跟導演聊天，可是他星期一晚上要打工。他應該哪一天去？",
+                "simplified": "一位同学想看完电影以后跟导演聊天，可是他星期一晚上要打工。他应该哪一天去？",
+                "pinyin": "Yí wèi tóngxué xiǎng kàn wán diànyǐng yǐhòu gēn dǎoyǎn liáotiān, kěshì tā xīngqíyī wǎnshàng yào dǎgōng. Tā yīnggāi nǎ yì tiān qù?",
+                "english": "A student wants to talk with the director after a film, but he works on Monday evening. Which day should he go?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期一",
+                  "simplified": "星期一",
+                  "pinyin": "Xīngqíyī.",
+                  "english": "Monday."
+                },
+                {
+                  "traditional": "星期二",
+                  "simplified": "星期二",
+                  "pinyin": "Xīngqí'èr.",
+                  "english": "Tuesday."
+                },
+                {
+                  "traditional": "星期三",
+                  "simplified": "星期三",
+                  "pinyin": "Xīngqísān.",
+                  "english": "Wednesday."
+                },
+                {
+                  "traditional": "星期四",
+                  "simplified": "星期四",
+                  "pinyin": "Xīngqísì.",
+                  "english": "Thursday."
+                }
+              ],
+              "key": 2,
+              "why": "Only Monday and Wednesday say 有 under 看完和導演聊天, and he works on Monday evening, so Wednesday.",
+              "focus": {
+                "zh": "看完和導演聊天",
+                "en": "talk with the director after"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-15",
+                "B2L12-2-07"
+              ]
+            },
+            {
+              "id": "b3l01-reading-card-2-2",
+              "prompt": {
+                "traditional": "《總統的一天》這部電影怎麼樣？",
+                "simplified": "《总统的一天》这部电影怎么样？",
+                "pinyin": "“Zǒngtǒng de yì tiān” zhè bù diànyǐng zěnmeyàng?",
+                "english": "What is true of the film \"A Day in the Life of the President\"?"
+              },
+              "choices": [
+                {
+                  "traditional": "下午開始，不用花錢",
+                  "simplified": "下午开始，不用花钱",
+                  "pinyin": "Xiàwǔ kāishǐ, búyòng huā qián.",
+                  "english": "It starts in the afternoon and is free."
+                },
+                {
+                  "traditional": "晚上開始，能跟導演聊天",
+                  "simplified": "晚上开始，能跟导演聊天",
+                  "pinyin": "Wǎnshàng kāishǐ, néng gēn dǎoyǎn liáotiān.",
+                  "english": "It starts in the evening, with a talk with the director."
+                },
+                {
+                  "traditional": "下午開始，票一百二十塊",
+                  "simplified": "下午开始，票一百二十块",
+                  "pinyin": "Xiàwǔ kāishǐ, piào yìbǎi èrshí kuài.",
+                  "english": "It starts in the afternoon, and tickets are NT$120."
+                },
+                {
+                  "traditional": "晚上開始，不用花錢",
+                  "simplified": "晚上开始，不用花钱",
+                  "pinyin": "Wǎnshàng kāishǐ, búyòng huā qián.",
+                  "english": "It starts in the evening and is free."
+                }
+              ],
+              "key": 0,
+              "why": "Its row says 14:00 (afternoon) and 免費 (free). NT$120 is Friday's film; Monday and Wednesday, the evening films with a director talk, are not free.",
+              "focus": {
+                "zh": "免費",
+                "en": "free of charge"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-33",
+                "B2L07-1-07"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passage-career",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l01-passage-career-1",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "父母的希望",
+            "simplified": "父母的希望",
+            "pinyin": "Fùmǔ de xīwàng",
+            "english": "What Parents Hope For"
+          },
+          "text": {
+            "traditional": "很多父母希望孩子將來當醫生或是律師，因為他們覺得這樣的工作錢多，別人也會很肯定他們。所以他們從小就替孩子安排好念什麼學校、學什麼東西。可是孩子長大以後，不一定喜歡父母選的路。我有一個朋友，從小就聽爸爸媽媽的話念法律，當了五年律師。他不討厭這份工作，可是發現自己週末在家做麵包的時候最快樂，最後決定去學做麵包。他父母一開始非常生氣，可是看到大家都很喜歡他做出來的麵包，也慢慢改變了想法。我覺得父母當然可以給孩子意見，但是孩子成年以後，應該讓他們自己決定未來。就算選錯了，也是一次寶貴的經驗。",
+            "simplified": "很多父母希望孩子将来当医生或是律师，因为他们觉得这样的工作钱多，别人也会很肯定他们。所以他们从小就替孩子安排好念什么学校、学什么东西。可是孩子长大以后，不一定喜欢父母选的路。我有一个朋友，从小就听爸爸妈妈的话念法律，当了五年律师。他不讨厌这份工作，可是发现自己周末在家做面包的时候最快乐，最后决定去学做面包。他父母一开始非常生气，可是看到大家都很喜欢他做出来的面包，也慢慢改变了想法。我觉得父母当然可以给孩子意见，但是孩子成年以后，应该让他们自己决定未来。就算选错了，也是一次宝贵的经验。",
+            "pinyin": "Hěn duō fùmǔ xīwàng háizi jiānglái dāng yīshēng huòshì lǜshī, yīnwèi tāmen juéde zhèyàng de gōngzuò qián duō, biérén yě huì hěn kěndìng tāmen. Suǒyǐ tāmen cóngxiǎo jiù tì háizi ānpái hǎo niàn shénme xuéxiào, xué shénme dōngxi. Kěshì háizi zhǎngdà yǐhòu, bù yídìng xǐhuān fùmǔ xuǎn de lù. Wǒ yǒu yí ge péngyǒu, cóngxiǎo jiù tīng bàba māma de huà niàn fǎlǜ, dāng le wǔ nián lǜshī. Tā bù tǎoyàn zhè fèn gōngzuò, kěshì fāxiàn zìjǐ zhōumò zài jiā zuò miànbāo de shíhòu zuì kuàilè, zuìhòu juédìng qù xué zuò miànbāo. Tā fùmǔ yìkāishǐ fēicháng shēngqì, kěshì kàndào dàjiā dōu hěn xǐhuān tā zuò chūlái de miànbāo, yě mànmàn gǎibiàn le xiǎngfǎ. Wǒ juéde fùmǔ dāngrán kěyǐ gěi háizi yìjiàn, dànshì háizi chéngnián yǐhòu, yīnggāi ràng tāmen zìjǐ juédìng wèilái. Jiùsuàn xuǎn cuò le, yě shì yí cì bǎoguì de jīngyàn.",
+            "english": "Many parents hope their children will become doctors or lawyers, because they think such jobs pay well and others will think highly of them. So from early on they arrange which schools their children attend and what they learn. But when the children grow up, they may not like the path their parents chose. A friend of mine studied law because his parents wanted it. He worked as a lawyer for five years. He did not dislike the job, but he found he was happiest when he baked bread at home at the weekend, and in the end he decided to learn to bake bread. His parents were very angry at first, but when they saw how much everyone liked his bread, they slowly changed their minds. I think parents can of course give their children advice, but once children are adults, they should decide their own future. Even if they choose wrong, it is a precious experience."
+          },
+          "questions": [
+            {
+              "id": "b3l01-passage-career-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人有什麼想法？",
+                "simplified": "写这篇文章的人有什么想法？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén yǒu shénme xiǎngfǎ?",
+                "english": "What does the writer think?"
+              },
+              "choices": [
+                {
+                  "traditional": "孩子大了應該自己選",
+                  "simplified": "孩子大了应该自己选",
+                  "pinyin": "Háizi dà le yīnggāi zìjǐ xuǎn.",
+                  "english": "Grown children should choose for themselves."
+                },
+                {
+                  "traditional": "孩子應該聽父母的安排",
+                  "simplified": "孩子应该听父母的安排",
+                  "pinyin": "Háizi yīnggāi tīng fùmǔ de ānpái.",
+                  "english": "Children should follow their parents' plans."
+                },
+                {
+                  "traditional": "選工作要先想到錢",
+                  "simplified": "选工作要先想到钱",
+                  "pinyin": "Xuǎn gōngzuò yào xiān xiǎngdào qián.",
+                  "english": "When choosing a job, think about money first."
+                },
+                {
+                  "traditional": "選錯了路就很難改",
+                  "simplified": "选错了路就很难改",
+                  "pinyin": "Xuǎn cuò le lù jiù hěn nán gǎi.",
+                  "english": "A wrong path is hard to change."
+                }
+              ],
+              "key": 0,
+              "why": "孩子成年以後，應該讓他們自己決定未來: the writer thinks grown children should choose. Parents' plans and money are the parents' view, and the friend changed his path, so a wrong choice can be changed (就算選錯了，也是一次寶貴的經驗).",
+              "focus": {
+                "zh": "寫文章的人的想法",
+                "en": "the writer's view"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-11",
+                "B3L01-1-43",
+                "B2L06-2-20"
+              ]
+            },
+            {
+              "id": "b3l01-passage-career-1-2",
+              "prompt": {
+                "traditional": "文章裡的那位朋友為什麼不當律師了？",
+                "simplified": "文章里的那位朋友为什么不当律师了？",
+                "pinyin": "Wénzhāng lǐ de nà wèi péngyǒu wèishénme bù dāng lǜshī le?",
+                "english": "Why did the friend in the passage stop being a lawyer?"
+              },
+              "choices": [
+                {
+                  "traditional": "他討厭律師的工作",
+                  "simplified": "他讨厌律师的工作",
+                  "pinyin": "Tā tǎoyàn lǜshī de gōngzuò.",
+                  "english": "He hated working as a lawyer."
+                },
+                {
+                  "traditional": "他比較喜歡做麵包",
+                  "simplified": "他比较喜欢做面包",
+                  "pinyin": "Tā bǐjiào xǐhuān zuò miànbāo.",
+                  "english": "He liked making bread more."
+                },
+                {
+                  "traditional": "律師的工作太辛苦",
+                  "simplified": "律师的工作太辛苦",
+                  "pinyin": "Lǜshī de gōngzuò tài xīnkǔ.",
+                  "english": "A lawyer's work was too hard."
+                },
+                {
+                  "traditional": "父母希望他換工作",
+                  "simplified": "父母希望他换工作",
+                  "pinyin": "Fùmǔ xīwàng tā huàn gōngzuò.",
+                  "english": "His parents wanted him to change jobs."
+                }
+              ],
+              "key": 1,
+              "why": "發現自己週末在家做麵包的時候最快樂: he was happiest making bread. He did not hate the law (他不討厭這份工作), the text never calls the work too hard, and his parents were angry at first (一開始非常生氣), so they did not want the change.",
+              "focus": {
+                "zh": "不討厭……，可是……最快樂",
+                "en": "liked baking more"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-38",
+                "B2L04-1-31",
+                "B1L12-2-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-passage-career-2",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "當演員",
+            "simplified": "当演员",
+            "pinyin": "Dāng yǎnyuán",
+            "english": "Being an Actor"
+          },
+          "text": {
+            "traditional": "很多年輕人在電視上看到明星，就覺得當演員是一件很輕鬆的事，每天只要穿漂亮的衣服、照照相就好了。其實，演員的工作比大家想的辛苦多了。為了演好一個角色，他們得先把劇本看很多遍，了解這個人的性格和生活。有一位演員為了演一位小學老師，還真的到小學去教了一個月的書。拍戲的時候，一場戲常常要拍十幾次，有時候從早上拍到半夜。再說，演員常常得到別的城市工作，很少有時間陪家人。所以，想當演員的人不能只看到明星好看的樣子，還得有吃苦的準備。",
+            "simplified": "很多年轻人在电视上看到明星，就觉得当演员是一件很轻松的事，每天只要穿漂亮的衣服、照照相就好了。其实，演员的工作比大家想的辛苦多了。为了演好一个角色，他们得先把剧本看很多遍，了解这个人的性格和生活。有一位演员为了演一位小学老师，还真的到小学去教了一个月的书。拍戏的时候，一场戏常常要拍十几次，有时候从早上拍到半夜。再说，演员常常得到别的城市工作，很少有时间陪家人。所以，想当演员的人不能只看到明星好看的样子，还得有吃苦的准备。",
+            "pinyin": "Hěn duō niánqīng rén zài diànshì shàng kàndào míngxīng, jiù juéde dāng yǎnyuán shì yí jiàn hěn qīngsōng de shì, měi tiān zhǐyào chuān piàoliàng de yīfu, zhàozhao xiàng jiù hǎo le. Qíshí, yǎnyuán de gōngzuò bǐ dàjiā xiǎng de xīnkǔ duō le. Wèile yǎn hǎo yí ge jiǎosè, tāmen děi xiān bǎ jùběn kàn hěn duō biàn, liǎojiě zhège rén de xìnggé hé shēnghuó. Yǒu yí wèi yǎnyuán wèile yǎn yí wèi xiǎoxué lǎoshī, hái zhēn de dào xiǎoxué qù jiāo le yí ge yuè de shū. Pāixì de shíhòu, yì chǎng xì chángcháng yào pāi shí jǐ cì, yǒushíhòu cóng zǎoshàng pāi dào bànyè. Zàishuō, yǎnyuán chángcháng děi dào bié de chéngshì gōngzuò, hěn shǎo yǒu shíjiān péi jiārén. Suǒyǐ, xiǎng dāng yǎnyuán de rén bù néng zhǐ kàndào míngxīng hǎokàn de yàngzi, hái děi yǒu chīkǔ de zhǔnbèi.",
+            "english": "Many young people see stars on TV and think acting is an easy job: you just wear nice clothes and have your photo taken every day. In fact, actors work much harder than people think. To play a role well, they first read the script many times to understand the person's character and life. One actor who was going to play an elementary school teacher really went and taught at a school for a month. When filming, one scene often has to be shot over ten times, sometimes from morning until midnight. Besides, actors often have to work in other cities and have little time for their families. So people who want to be actors cannot see only the stars' good looks; they must also be ready for hard work."
+          },
+          "questions": [
+            {
+              "id": "b3l01-passage-career-2-1",
+              "prompt": {
+                "traditional": "這篇文章最想說的是什麼？",
+                "simplified": "这篇文章最想说的是什么？",
+                "pinyin": "Zhè piān wénzhāng zuì xiǎng shuō de shì shénme?",
+                "english": "What is this passage mainly saying?"
+              },
+              "choices": [
+                {
+                  "traditional": "演員應該多了解觀眾",
+                  "simplified": "演员应该多了解观众",
+                  "pinyin": "Yǎnyuán yīnggāi duō liǎojiě guānzhòng.",
+                  "english": "Actors should understand their audience better."
+                },
+                {
+                  "traditional": "演員的錢比別人多",
+                  "simplified": "演员的钱比别人多",
+                  "pinyin": "Yǎnyuán de qián bǐ biérén duō.",
+                  "english": "Actors earn more than other people."
+                },
+                {
+                  "traditional": "演員的工作很不容易",
+                  "simplified": "演员的工作很不容易",
+                  "pinyin": "Yǎnyuán de gōngzuò hěn bù róngyì.",
+                  "english": "An actor's work is very hard."
+                },
+                {
+                  "traditional": "演員應該多陪陪家人",
+                  "simplified": "演员应该多陪陪家人",
+                  "pinyin": "Yǎnyuán yīnggāi duō péipei jiārén.",
+                  "english": "Actors should spend more time with their families."
+                }
+              ],
+              "key": 2,
+              "why": "演員的工作比大家想的辛苦多了 and 還得有吃苦的準備: acting is much harder than it looks. Actors try to understand their roles (了解這個人的性格), not the audience; the writer never mentions pay; and little family time is one example of the hard work, not advice.",
+              "focus": {
+                "zh": "最想說的是什麼",
+                "en": "main idea"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-24",
+                "B3L01-2-12",
+                "B3L01-1-03"
+              ]
+            },
+            {
+              "id": "b3l01-passage-career-2-2",
+              "prompt": {
+                "traditional": "那位演員為什麼到小學去教書？",
+                "simplified": "那位演员为什么到小学去教书？",
+                "pinyin": "Nà wèi yǎnyuán wèishénme dào xiǎoxué qù jiāoshū?",
+                "english": "Why did that actor go and teach at an elementary school?"
+              },
+              "choices": [
+                {
+                  "traditional": "他想換一份工作",
+                  "simplified": "他想换一份工作",
+                  "pinyin": "Tā xiǎng huàn yí fèn gōngzuò.",
+                  "english": "He wanted to change jobs."
+                },
+                {
+                  "traditional": "他想了解小學生",
+                  "simplified": "他想了解小学生",
+                  "pinyin": "Tā xiǎng liǎojiě xiǎoxuéshēng.",
+                  "english": "He wanted to understand pupils."
+                },
+                {
+                  "traditional": "拍戲的地方在小學",
+                  "simplified": "拍戏的地方在小学",
+                  "pinyin": "Pāixì de dìfāng zài xiǎoxué.",
+                  "english": "The filming was at a primary school."
+                },
+                {
+                  "traditional": "他的角色是個老師",
+                  "simplified": "他的角色是个老师",
+                  "pinyin": "Tā de jiǎosè shì ge lǎoshī.",
+                  "english": "His role was a teacher."
+                }
+              ],
+              "key": 3,
+              "why": "為了演一位小學老師，還真的到小學去教了一個月的書: he taught for a month because he was going to play a teacher. He wanted to understand the teacher he played, not the pupils, and the text says nothing about filming at the school or changing jobs.",
+              "focus": {
+                "zh": "為了演一位小學老師",
+                "en": "preparing for a role"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-23",
+                "B3L01-1-10",
+                "B3L01-2-08"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-passage",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l01-review-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "剛上大學的時候，我對什麼都不感興趣，每天下了課就回宿舍上網。後來，室友帶我去參加吉他社團。一開始，我連一首簡單的歌都不會，可是社員一點都不笑我，還一遍一遍地教我。學期快結束的時候，我們到安養院表演，老人聽得很開心，有一位老太太還拉著我的手，說謝謝我們。那天晚上，我在宿舍想了很久，覺得這是我上大學以後最開心的一天。我從這次活動中發現，跟社員一起練習、一起表演，比一個人在宿舍上網有意思多了。現在，我每個週末都跟社員一起練習吉他，還交到了很多好朋友。",
+            "simplified": "刚上大学的时候，我对什么都不感兴趣，每天下了课就回宿舍上网。后来，室友带我去参加吉他社团。一开始，我连一首简单的歌都不会，可是社员一点都不笑我，还一遍一遍地教我。学期快结束的时候，我们到安养院表演，老人听得很开心，有一位老太太还拉着我的手，说谢谢我们。那天晚上，我在宿舍想了很久，觉得这是我上大学以后最开心的一天。我从这次活动中发现，跟社员一起练习、一起表演，比一个人在宿舍上网有意思多了。现在，我每个周末都跟社员一起练习吉他，还交到了很多好朋友。",
+            "pinyin": "Gāng shàng dàxué de shíhòu, wǒ duì shénme dōu bù gǎn xìngqù, měi tiān xià le kè jiù huí sùshè shàngwǎng. Hòulái, shìyǒu dài wǒ qù cānjiā jítā shètuán. Yìkāishǐ, wǒ lián yì shǒu jiǎndān de gē dōu bú huì, kěshì shèyuán yìdiǎn dōu bú xiào wǒ, hái yí biàn yí biàn de jiāo wǒ. Xuéqí kuài jiéshù de shíhòu, wǒmen dào ānyǎng yuàn biǎoyǎn, lǎorén tīng de hěn kāixīn, yǒu yí wèi lǎotàitai hái lā zhe wǒ de shǒu, shuō xièxie wǒmen. Nà tiān wǎnshàng, wǒ zài sùshè xiǎng le hěn jiǔ, juéde zhè shì wǒ shàng dàxué yǐhòu zuì kāixīn de yì tiān. Wǒ cóng zhè cì huódòng zhōng fāxiàn, gēn shèyuán yìqǐ liànxí, yìqǐ biǎoyǎn, bǐ yí ge rén zài sùshè shàngwǎng yǒuyìsi duō le. Xiànzài, wǒ měi ge zhōumò dōu gēn shèyuán yìqǐ liànxí jítā, hái jiāo dào le hěn duō hǎo péngyǒu.",
+            "english": "When I first started university, nothing interested me; after class every day I went back to the dorm and went online. Later my roommate took me to join the guitar club. At first I couldn't play even one simple song, but the members never laughed at me and taught me again and again. Near the end of the semester we performed at a nursing home. The old people enjoyed it very much, and one old lady held my hand and thanked us. That night I sat in the dorm thinking for a long time; it was the happiest day since I had started university. From this event I found that practising and performing with the club members is far more interesting than going online alone in the dorm. Now I practise guitar with them every weekend, and I've made lots of good friends."
+          },
+          "questions": [
+            {
+              "id": "b3l01-review-passage-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人剛上大學的時候怎麼樣？",
+                "simplified": "写这篇文章的人刚上大学的时候怎么样？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén gāng shàng dàxué de shíhòu zěnmeyàng?",
+                "english": "What was the writer like when the writer first started university?"
+              },
+              "choices": [
+                {
+                  "traditional": "常常跟室友出去玩",
+                  "simplified": "常常跟室友出去玩",
+                  "pinyin": "Chángcháng gēn shìyǒu chūqù wán.",
+                  "english": "Often went out with the roommate."
+                },
+                {
+                  "traditional": "沒有特別喜歡的事",
+                  "simplified": "没有特别喜欢的事",
+                  "pinyin": "Méiyǒu tèbié xǐhuān de shì.",
+                  "english": "Had nothing in particular they liked."
+                },
+                {
+                  "traditional": "很想參加吉他社團",
+                  "simplified": "很想参加吉他社团",
+                  "pinyin": "Hěn xiǎng cānjiā jítā shètuán.",
+                  "english": "Really wanted to join the guitar club."
+                },
+                {
+                  "traditional": "下了課還忙著念書",
+                  "simplified": "下了课还忙着念书",
+                  "pinyin": "Xià le kè hái máng zhe niànshū.",
+                  "english": "Was still busy studying after class."
+                }
+              ],
+              "key": 1,
+              "why": "我對什麼都不感興趣，每天下了課就回宿舍上網: the writer had nothing they enjoyed. They went back to the dorm to go online, not out or to study, and the guitar club was the roommate's idea (室友帶我去).",
+              "focus": {
+                "zh": "對……感興趣",
+                "en": "be interested in"
+              },
+              "lesson": 11,
+              "book": 2,
+              "wordIds": [
+                "B2L11-1-11",
+                "B2L11-1-01",
+                "B2L03-2-01"
+              ],
+              "grammarIds": [
+                "B2L11-G02-P252"
+              ]
+            },
+            {
+              "id": "b3l01-review-passage-1-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人從表演中學到了什麼？",
+                "simplified": "写这篇文章的人从表演中学到了什么？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén cóng biǎoyǎn zhōng xuédào le shénme?",
+                "english": "What did the writer learn from the performance?"
+              },
+              "choices": [
+                {
+                  "traditional": "跟別人一起做更有意思",
+                  "simplified": "跟别人一起做更有意思",
+                  "pinyin": "Gēn biérén yìqǐ zuò gèng yǒuyìsi.",
+                  "english": "Doing things with others is more fun."
+                },
+                {
+                  "traditional": "多練習就能學好吉他",
+                  "simplified": "多练习就能学好吉他",
+                  "pinyin": "Duō liànxí jiù néng xué hǎo jítā.",
+                  "english": "With practice you can learn the guitar well."
+                },
+                {
+                  "traditional": "應該常去安養院看老人",
+                  "simplified": "应该常去安养院看老人",
+                  "pinyin": "Yīnggāi cháng qù ānyǎng yuàn kàn lǎorén.",
+                  "english": "One should visit the nursing home often."
+                },
+                {
+                  "traditional": "一個人練習進步比較快",
+                  "simplified": "一个人练习进步比较快",
+                  "pinyin": "Yí ge rén liànxí jìnbù bǐjiào kuài.",
+                  "english": "Practising alone makes faster progress."
+                }
+              ],
+              "key": 0,
+              "why": "我從這次活動中發現，跟社員一起練習、一起表演，比一個人在宿舍上網有意思多了: doing things with others is more fun. The nursing home was only where they performed, the writer never says practising alone is faster, and practice is not what the show taught.",
+              "focus": {
+                "zh": "從……中",
+                "en": "from (an experience)"
+              },
+              "lesson": 11,
+              "book": 2,
+              "wordIds": [
+                "B2L11-2-24",
+                "B2L11-1-05",
+                "B2L11-1-17"
+              ],
+              "grammarIds": [
+                "B2L11-G07-P260"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l01-review-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "我念大學的時候，為了存學費，在一家義大利餐廳當服務生。除了星期一，每天晚上都得工作到十一點。剛開始，我常常記錯客人點的菜，有一次還不小心把湯倒在客人的衣服上，經理非常生氣。經理要我向一位做了十年的服務生學習，可是她太忙了，沒時間教我。後來，我每天上班以前都先把菜單看兩遍。從那時候起，我就很少弄錯了。這份工作雖然很累，可是讓我學會了怎麼跟不同的人說話，也讓我變得比以前成熟。現在我在一家貿易公司上班，常常得跟國外的客人開會，同事都說我很會跟客人說話。我想，這都是在餐廳打工的時候學會的。",
+            "simplified": "我念大学的时候，为了存学费，在一家义大利餐厅当服务生。除了星期一，每天晚上都得工作到十一点。刚开始，我常常记错客人点的菜，有一次还不小心把汤倒在客人的衣服上，经理非常生气。经理要我向一位做了十年的服务生学习，可是她太忙了，没时间教我。后来，我每天上班以前都先把菜单看两遍。从那时候起，我就很少弄错了。这份工作虽然很累，可是让我学会了怎么跟不同的人说话，也让我变得比以前成熟。现在我在一家贸易公司上班，常常得跟国外的客人开会，同事都说我很会跟客人说话。我想，这都是在餐厅打工的时候学会的。",
+            "pinyin": "Wǒ niàn dàxué de shíhòu, wèile cún xuéfèi, zài yì jiā Yìdàlì cāntīng dāng fúwùshēng. Chúle xīngqíyī, měi tiān wǎnshàng dōu děi gōngzuò dào shíyī diǎn. Gāng kāishǐ, wǒ chángcháng jì cuò kèrén diǎn de cài, yǒu yí cì hái bù xiǎoxīn bǎ tāng dào zài kèrén de yīfu shàng, jīnglǐ fēicháng shēngqì. Jīnglǐ yào wǒ xiàng yí wèi zuò le shí nián de fúwùshēng xuéxí, kěshì tā tài máng le, méi shíjiān jiāo wǒ. Hòulái, wǒ měi tiān shàngbān yǐqián dōu xiān bǎ càidān kàn liǎng biàn. Cóng nà shíhòu qǐ, wǒ jiù hěn shǎo nòngcuò le. Zhè fèn gōngzuò suīrán hěn lèi, kěshì ràng wǒ xuéhuì le zěnme gēn bùtóng de rén shuōhuà, yě ràng wǒ biàn de bǐ yǐqián chéngshú. Xiànzài wǒ zài yì jiā màoyì gōngsī shàngbān, chángcháng děi gēn guówài de kèrén kāihuì, tóngshì dōu shuō wǒ hěn huì gēn kèrén shuōhuà. Wǒ xiǎng, zhè dōu shì zài cāntīng dǎgōng de shíhòu xuéhuì de.",
+            "english": "At university I worked as a waiter in an Italian restaurant to save for my tuition. Except on Mondays, I had to work until eleven every night. At first I often got customers' orders wrong, and once I even spilled soup on a customer's clothes; the manager was very angry. The manager told me to learn from a waiter who had worked there for ten years, but she was too busy to teach me. Later, every day before work I read through the menu twice. From then on I seldom made mistakes. The job was tiring, but it taught me how to talk with all kinds of people and made me more mature than before. Now I work at a trading company and often have meetings with clients from abroad; my colleagues all say I am good at talking with clients. I think I learned all this while working at the restaurant."
+          },
+          "questions": [
+            {
+              "id": "b3l01-review-passage-2-1",
+              "prompt": {
+                "traditional": "這份工作對寫這篇文章的人有什麼影響？",
+                "simplified": "这份工作对写这篇文章的人有什么影响？",
+                "pinyin": "Zhè fèn gōngzuò duì xiě zhè piān wénzhāng de rén yǒu shénme yǐngxiǎng?",
+                "english": "How did this job affect the writer?"
+              },
+              "choices": [
+                {
+                  "traditional": "讓他更會做義大利菜",
+                  "simplified": "让他更会做义大利菜",
+                  "pinyin": "Ràng tā gèng huì zuò Yìdàlì cài.",
+                  "english": "It made him better at cooking Italian food."
+                },
+                {
+                  "traditional": "讓他更會跟人聊天",
+                  "simplified": "让他更会跟人聊天",
+                  "pinyin": "Ràng tā gèng huì gēn rén liáotiān.",
+                  "english": "It made him better at talking with people."
+                },
+                {
+                  "traditional": "讓他更喜歡當服務生",
+                  "simplified": "让他更喜欢当服务生",
+                  "pinyin": "Ràng tā gèng xǐhuān dāng fúwùshēng.",
+                  "english": "It made him like being a waiter more."
+                },
+                {
+                  "traditional": "讓他交到很多朋友",
+                  "simplified": "让他交到很多朋友",
+                  "pinyin": "Ràng tā jiāo dào hěn duō péngyǒu.",
+                  "english": "It helped him make many friends."
+                }
+              ],
+              "key": 1,
+              "why": "讓我學會了怎麼跟不同的人說話 and 同事都說我很會跟客人說話: the job made the writer better at talking with people. The writer was a waiter, not a cook, calls the job tiring (很累), and never mentions making friends there.",
+              "focus": {
+                "zh": "學會了怎麼跟不同的人說話",
+                "en": "learned to talk with people"
+              },
+              "lesson": 12,
+              "book": 2,
+              "wordIds": [
+                "B2L12-2-17",
+                "B2L02-1-14"
+              ]
+            },
+            {
+              "id": "b3l01-review-passage-2-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人後來為什麼很少弄錯了？",
+                "simplified": "写这篇文章的人后来为什么很少弄错了？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén hòulái wèishénme hěn shǎo nòngcuò le?",
+                "english": "Why did the writer later seldom make mistakes?"
+              },
+              "choices": [
+                {
+                  "traditional": "請經理多教他幾次",
+                  "simplified": "请经理多教他几次",
+                  "pinyin": "Qǐng jīnglǐ duō jiāo tā jǐ cì.",
+                  "english": "He asked the manager to teach him more."
+                },
+                {
+                  "traditional": "跟有經驗的同事學",
+                  "simplified": "跟有经验的同事学",
+                  "pinyin": "Gēn yǒu jīngyàn de tóngshì xué.",
+                  "english": "He learned from an experienced co-worker."
+                },
+                {
+                  "traditional": "把客人點的菜寫下來",
+                  "simplified": "把客人点的菜写下来",
+                  "pinyin": "Bǎ kèrén diǎn de cài xiě xiàlái.",
+                  "english": "He wrote down what customers ordered."
+                },
+                {
+                  "traditional": "上班前先複習菜單",
+                  "simplified": "上班前先复习菜单",
+                  "pinyin": "Shàngbān qián xiān fùxí càidān.",
+                  "english": "He went over the menu before work."
+                }
+              ],
+              "key": 3,
+              "why": "後來，我每天上班以前都先把菜單看兩遍。從那時候起，我就很少弄錯了: going over the menu before work stopped the mistakes. The experienced waitress was too busy to teach (沒時間教我), the manager only told the writer to learn from her, and the writer never mentions writing orders down.",
+              "focus": {
+                "zh": "從……起",
+                "en": "from (then) on"
+              },
+              "lesson": 12,
+              "book": 2,
+              "wordIds": [
+                "B2L12-1-18",
+                "B1L11-3-02"
+              ],
+              "grammarIds": [
+                "B2L12-G03-P273"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

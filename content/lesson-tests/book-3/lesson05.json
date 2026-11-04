@@ -1,0 +1,2629 @@
+{
+  "schemaVersion": 1,
+  "key": "b3l05",
+  "bookId": 3,
+  "lessonId": 5,
+  "band": "B",
+  "allowWords": [
+    "臺中",
+    "臺東",
+    "臺北",
+    "吳"
+  ],
+  "slots": [
+    {
+      "id": "dialogue-thought",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l05-dialogue-thought-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳怎麼買了這麼多泡麵和水？家裡要開店嗎？",
+              "simplified": "你怎么买了这么多泡面和水？家里要开店吗？",
+              "pinyin": "Nǐ zěnme mǎi le zhème duō pàomiàn hé shuǐ? Jiālǐ yào kāi diàn ma?",
+              "english": "Why did you buy so many instant noodles and so much water? Are you opening a shop at home?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "上次颱風來，我以為它一天就會走，沒想到一連下了四天大雨，還停了兩天水，連洗澡都不方便。",
+              "simplified": "上次台风来，我以为它一天就会走，没想到一连下了四天大雨，还停了两天水，连洗澡都不方便。",
+              "pinyin": "Shàng cì táifēng lái, wǒ yǐwéi tā yì tiān jiù huì zǒu, méixiǎngdào yìlián xià le sì tiān dàyǔ, hái tíng le liǎng tiān shuǐ, lián xǐzǎo dōu bù fāngbiàn.",
+              "english": "When the last typhoon came, I thought it would be gone in a day. But it rained hard for four days in a row, and the water was cut off for two days. I couldn't even shower properly."
+            },
+            {
+              "speaker": "M",
+              "traditional": "原來是這樣。那我也應該去買一些。",
+              "simplified": "原来是这样。那我也应该去买一些。",
+              "pinyin": "Yuánlái shì zhèyàng. Nà wǒ yě yīnggāi qù mǎi yìxiē.",
+              "english": "So that's why. Then I should go and buy some too."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-thought-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的本來以為颱風幾天就會走？",
+                "simplified": "女的本来以为台风几天就会走？",
+                "pinyin": "Nǚ de běnlái yǐwéi táifēng jǐ tiān jiù huì zǒu?",
+                "english": "How soon did the woman think the typhoon would be gone?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一天",
+                  "simplified": "一天",
+                  "pinyin": "Yì tiān.",
+                  "english": "In one day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩天",
+                  "simplified": "两天",
+                  "pinyin": "Liǎng tiān.",
+                  "english": "In two days."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三天",
+                  "simplified": "三天",
+                  "pinyin": "Sān tiān.",
+                  "english": "In three days."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "四天",
+                  "simplified": "四天",
+                  "pinyin": "Sì tiān.",
+                  "english": "In four days."
+                }
+              ],
+              "key": 0,
+              "why": "我以為它一天就會走，沒想到一連下了四天大雨，還停了兩天水: she thought one day. Four days is how long the rain really lasted, and two days is the water cut.",
+              "focus": {
+                "zh": "以為……，沒想到……",
+                "en": "thought, but actually"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-02",
+                "B3L05-1-35",
+                "B3L05-1-15"
+              ],
+              "grammarIds": [
+                "B3L05-G03-P132",
+                "B3L05-G02-P130"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-dialogue-thought-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "昨天半夜的地震，你感覺到了嗎？我嚇得馬上跑到樓下去。",
+              "simplified": "昨天半夜的地震，你感觉到了吗？我吓得马上跑到楼下去。",
+              "pinyin": "Zuótiān bànyè de dìzhèn, nǐ gǎnjué dào le ma? Wǒ xià de mǎshàng pǎo dào lóuxià qù.",
+              "english": "Did you feel the earthquake in the middle of last night? I was so scared I ran straight downstairs."
+            },
+            {
+              "speaker": "M",
+              "traditional": "感覺到了。我剛來臺灣的時候，以為這裡很少有地震，沒想到一年就碰到了好幾次。昨天那次最強烈，書架上的書都掉下來了。",
+              "simplified": "感觉到了。我刚来台湾的时候，以为这里很少有地震，没想到一年就碰到了好几次。昨天那次最强烈，书架上的书都掉下来了。",
+              "pinyin": "Gǎnjué dào le. Wǒ gāng lái Táiwān de shíhòu, yǐwéi zhèlǐ hěn shǎo yǒu dìzhèn, méixiǎngdào yì nián jiù pèngdào le hǎojǐ cì. Zuótiān nà cì zuì qiángliè, shūjià shàng de shū dōu diàoxiàlái le.",
+              "english": "I did. When I first came to Taiwan, I thought there were few earthquakes here, but I've been through several in just one year. Yesterday's was the strongest: the books on my bookshelf all fell down."
+            },
+            {
+              "speaker": "F",
+              "traditional": "昨天那麼大的地震，我也是第一次碰到。以後我們都要小心一點。",
+              "simplified": "昨天那么大的地震，我也是第一次碰到。以后我们都要小心一点。",
+              "pinyin": "Zuótiān nàme dà de dìzhèn, wǒ yě shì dì yī cì pèngdào. Yǐhòu wǒmen dōu yào xiǎoxīn yìdiǎn.",
+              "english": "It was my first time in such a big earthquake too. We all need to be careful from now on."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-thought-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的剛來臺灣的時候，以為這裡的地震怎麼樣？",
+                "simplified": "男的刚来台湾的时候，以为这里的地震怎么样？",
+                "pinyin": "Nán de gāng lái Táiwān de shíhòu, yǐwéi zhèlǐ de dìzhèn zěnmeyàng?",
+                "english": "When the man first came to Taiwan, what did he think earthquakes here were like?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "不會常常發生",
+                  "simplified": "不会常常发生",
+                  "pinyin": "Bú huì chángcháng fāshēng.",
+                  "english": "They don't happen often."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "常常在白天發生",
+                  "simplified": "常常在白天发生",
+                  "pinyin": "Chángcháng zài báitiān fāshēng.",
+                  "english": "They mostly happen in the daytime."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不會太強烈",
+                  "simplified": "不会太强烈",
+                  "pinyin": "Bú huì tài qiángliè.",
+                  "english": "They aren't very strong."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "會讓人很害怕",
+                  "simplified": "会让人很害怕",
+                  "pinyin": "Huì ràng rén hěn hàipà.",
+                  "english": "They are very frightening."
+                }
+              ],
+              "key": 0,
+              "why": "以為這裡很少有地震，沒想到一年就碰到了好幾次: he thought earthquakes here were rare. That yesterday's was strong (最強烈) is what really happened, not what he expected, and the night-time quake says nothing about daytime.",
+              "focus": {
+                "zh": "以為……，沒想到……",
+                "en": "thought, but actually"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-01",
+                "B2L08-2-04",
+                "B3L02-2-22"
+              ],
+              "grammarIds": [
+                "B3L05-G03-P132"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-better",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l05-dialogue-better-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這個週末我們不是要去山上玩嗎？我已經租好車了。",
+              "simplified": "这个周末我们不是要去山上玩吗？我已经租好车了。",
+              "pinyin": "Zhège zhōumò wǒmen bú shì yào qù shān shàng wán ma? Wǒ yǐjīng zū hǎo chē le.",
+              "english": "Aren't we going to the mountains this weekend? I've already rented a car."
+            },
+            {
+              "speaker": "F",
+              "traditional": "可是新聞說星期六有颱風。山區一下大雨，路就可能不通，萬一被困在山上怎麼辦？",
+              "simplified": "可是新闻说星期六有台风。山区一下大雨，路就可能不通，万一被困在山上怎么办？",
+              "pinyin": "Kěshì xīnwén shuō xīngqíliù yǒu táifēng. Shānqū yí xià dàyǔ, lù jiù kěnéng bù tōng, wànyī bèi kùn zài shān shàng zěnmebàn?",
+              "english": "But the news says a typhoon is coming on Saturday. When it rains hard in the mountains, the roads may close. What if we get stuck up there?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "那我們晚一天，星期天再去，好不好？",
+              "simplified": "那我们晚一天，星期天再去，好不好？",
+              "pinyin": "Nà wǒmen wǎn yì tiān, xīngqítiān zài qù, hǎo bù hǎo?",
+              "english": "Then let's go a day later, on Sunday. OK?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "就算星期天颱風走了，山上的路也會很危險。我們還是下個月再去吧。",
+              "simplified": "就算星期天台风走了，山上的路也会很危险。我们还是下个月再去吧。",
+              "pinyin": "Jiùsuàn xīngqítiān táifēng zǒu le, shān shàng de lù yě huì hěn wéixiǎn. Wǒmen háishì xià ge yuè zài qù ba.",
+              "english": "Even if the typhoon has gone by Sunday, the mountain roads will still be dangerous. We'd better go next month."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-better-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的是什麼意思？",
+                "simplified": "女的是什么意思？",
+                "pinyin": "Nǚ de shì shénme yìsi?",
+                "english": "What does the woman mean?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期天再去山上",
+                  "simplified": "星期天再去山上",
+                  "pinyin": "Xīngqítiān zài qù shān shàng.",
+                  "english": "Go to the mountains on Sunday instead."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "改去別的地方玩",
+                  "simplified": "改去别的地方玩",
+                  "pinyin": "Gǎi qù biéde dìfāng wán.",
+                  "english": "Go somewhere else instead."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "開車要特別小心",
+                  "simplified": "开车要特别小心",
+                  "pinyin": "Kāichē yào tèbié xiǎoxīn.",
+                  "english": "Drive with extra care."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個月先不去山上",
+                  "simplified": "这个月先不去山上",
+                  "pinyin": "Zhège yuè xiān bú qù shān shàng.",
+                  "english": "Not go to the mountains this month."
+                }
+              ],
+              "key": 3,
+              "why": "我們還是下個月再去吧: she wants to put the trip off until next month. Sunday was the man's idea, and she says the mountain roads will still be dangerous then (就算星期天颱風走了，山上的路也會很危險).",
+              "focus": {
+                "zh": "還是……吧",
+                "en": "had better"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-32",
+                "B3L05-2-13",
+                "B3L05-2-16",
+                "B3L05-2-14"
+              ],
+              "grammarIds": [
+                "B3L05-G04-P133"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-dialogue-better-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "外面風這麼大，可是我還得去打工，騎車十分鐘就到了。",
+              "simplified": "外面风这么大，可是我还得去打工，骑车十分钟就到了。",
+              "pinyin": "Wàimiàn fēng zhème dà, kěshì wǒ hái děi qù dǎgōng, qí chē shí fēnzhōng jiù dào le.",
+              "english": "The wind outside is so strong, but I still have to go to my part-time job. It's only ten minutes by bike."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你沒看到嗎？路旁的樹倒了好幾棵，剛才還有一個騎車的人被風吹倒了。",
+              "simplified": "你没看到吗？路旁的树倒了好几棵，刚才还有一个骑车的人被风吹倒了。",
+              "pinyin": "Nǐ méi kàndào ma? Lù páng de shù dǎo le hǎojǐ kē, gāngcái hái yǒu yí ge qí chē de rén bèi fēng chuī dǎo le.",
+              "english": "Didn't you see? Several trees by the road have fallen, and just now the wind knocked over someone on a bike."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那我改坐公車去，晚一點到應該沒關係吧？",
+              "simplified": "那我改坐公车去，晚一点到应该没关系吧？",
+              "pinyin": "Nà wǒ gǎi zuò gōngchē qù, wǎn yìdiǎn dào yīnggāi méiguānxi ba?",
+              "english": "Then I'll take the bus instead. Being a bit late should be OK, right?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "這種天氣，坐公車也不安全。你還是打個電話跟老闆說一聲，今天別去了吧。",
+              "simplified": "这种天气，坐公车也不安全。你还是打个电话跟老板说一声，今天别去了吧。",
+              "pinyin": "Zhè zhǒng tiānqì, zuò gōngchē yě bù ānquán. Nǐ háishì dǎ ge diànhuà gēn lǎobǎn shuō yì shēng, jīntiān bié qù le ba.",
+              "english": "In weather like this, the bus isn't safe either. You'd better call your boss and not go today."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-better-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的要男的怎麼做？",
+                "simplified": "女的要男的怎么做？",
+                "pinyin": "Nǚ de yào nán de zěnme zuò?",
+                "english": "What does the woman want the man to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "騎車的時候慢一點",
+                  "simplified": "骑车的时候慢一点",
+                  "pinyin": "Qí chē de shíhòu màn yìdiǎn.",
+                  "english": "Ride more slowly."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "告訴老闆他不去了",
+                  "simplified": "告诉老板他不去了",
+                  "pinyin": "Gàosu lǎobǎn tā bú qù le.",
+                  "english": "Tell his boss he is not coming."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "改坐公車去打工",
+                  "simplified": "改坐公车去打工",
+                  "pinyin": "Gǎi zuò gōngchē qù dǎgōng.",
+                  "english": "Take the bus to work instead."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "等風小一點再去",
+                  "simplified": "等风小一点再去",
+                  "pinyin": "Děng fēng xiǎo yìdiǎn zài qù.",
+                  "english": "Wait until the wind drops, then go."
+                }
+              ],
+              "key": 1,
+              "why": "你還是打個電話跟老闆說一聲，今天別去了吧: she wants him to call his boss and not go at all today. The bus was his own idea, and she says the bus is not safe either.",
+              "focus": {
+                "zh": "還是……吧",
+                "en": "had better"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-10",
+                "B3L05-1-11",
+                "B2L12-2-07",
+                "B2L04-2-10"
+              ],
+              "grammarIds": [
+                "B3L05-G04-P133"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-at-home",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l05-dialogue-at-home-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "颱風走了以後，妳家那條路的路燈都壞了，晚上走路很危險吧？要不要我送妳回家？",
+              "simplified": "台风走了以后，你家那条路的路灯都坏了，晚上走路很危险吧？要不要我送你回家？",
+              "pinyin": "Táifēng zǒu le yǐhòu, nǐ jiā nà tiáo lù de lùdēng dōu huài le, wǎnshàng zǒulù hěn wéixiǎn ba? Yào bú yào wǒ sòng nǐ huí jiā?",
+              "english": "Since the typhoon, the street lamps on your road have all been broken. Isn't it dangerous to walk there at night? Do you want me to take you home?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "謝謝你，不用麻煩了。這幾天我都在天黑以前就到家了。",
+              "simplified": "谢谢你，不用麻烦了。这几天我都在天黑以前就到家了。",
+              "pinyin": "Xièxie nǐ, búyòng máfán le. Zhè jǐ tiān wǒ dōu zài tiān hēi yǐqián jiù dào jiā le.",
+              "english": "Thank you, but there's no need to trouble yourself. These days I get home before dark."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那如果下課比較晚呢？",
+              "simplified": "那如果下课比较晚呢？",
+              "pinyin": "Nà rúguǒ xiàkè bǐjiào wǎn ne?",
+              "english": "And if your class ends late?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "那我就坐公車，公車站就在我家門口，很方便。",
+              "simplified": "那我就坐公车，公车站就在我家门口，很方便。",
+              "pinyin": "Nà wǒ jiù zuò gōngchē, gōngchē zhàn jiù zài wǒ jiā ménkǒu, hěn fāngbiàn.",
+              "english": "Then I'll take the bus. The bus stop is right at my door, so it's easy."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-at-home-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的為什麼說不用男的送她？",
+                "simplified": "女的为什么说不用男的送她？",
+                "pinyin": "Nǚ de wèishénme shuō búyòng nán de sòng tā?",
+                "english": "Why does the woman say the man doesn't need to take her home?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她家附近的路燈修好了",
+                  "simplified": "她家附近的路灯修好了",
+                  "pinyin": "Tā jiā fùjìn de lùdēng xiū hǎo le.",
+                  "english": "The street lamps near her home have been fixed."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她的家人會陪她回家",
+                  "simplified": "她的家人会陪她回家",
+                  "pinyin": "Tā de jiārén huì péi tā huí jiā.",
+                  "english": "Her family will go home with her."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她晚上不必走路回家",
+                  "simplified": "她晚上不必走路回家",
+                  "pinyin": "Tā wǎnshàng búbì zǒulù huí jiā.",
+                  "english": "She doesn't have to walk home at night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她下課後會騎車回家",
+                  "simplified": "她下课后会骑车回家",
+                  "pinyin": "Tā xiàkè hòu huì qí chē huí jiā.",
+                  "english": "She will ride home after class."
+                }
+              ],
+              "key": 2,
+              "why": "這幾天我都在天黑以前就到家了……那我就坐公車，公車站就在我家門口: she is home before dark, and on late days the bus stops at her door, so she never walks home at night. The man says the lamps are broken, and she takes the bus, not a bike.",
+              "focus": {
+                "zh": "天黑以前就到家了",
+                "en": "home before dark"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-12",
+                "B2L05-2-09"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-dialogue-at-home-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這個星期每天下雨，房間裡出現了好多螞蟻，我每天打掃都沒有用。",
+              "simplified": "这个星期每天下雨，房间里出现了好多蚂蚁，我每天打扫都没有用。",
+              "pinyin": "Zhège xīngqí měi tiān xià yǔ, fángjiān lǐ chūxiàn le hǎo duō mǎyǐ, wǒ měi tiān dǎsǎo dōu méiyǒu yòng.",
+              "english": "It has rained every day this week, and lots of ants have shown up in my room. Cleaning every day doesn't help."
+            },
+            {
+              "speaker": "F",
+              "traditional": "下雨天螞蟻特別多。你是不是把吃的東西放在桌子上了？",
+              "simplified": "下雨天蚂蚁特别多。你是不是把吃的东西放在桌子上了？",
+              "pinyin": "Xià yǔ tiān mǎyǐ tèbié duō. Nǐ shì bú shì bǎ chī de dōngxi fàng zài zhuōzi shàng le?",
+              "english": "There are lots of ants on rainy days. Did you leave food on your desk?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "沒有，吃的我都放進冰箱了，窗戶也關好了。",
+              "simplified": "没有，吃的我都放进冰箱了，窗户也关好了。",
+              "pinyin": "Méiyǒu, chī de wǒ dōu fàng jìn bīngxiāng le, chuānghù yě guān hǎo le.",
+              "english": "No, I've put all my food in the fridge, and I've shut the window too."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那可能是垃圾的問題。你還是每天晚上把垃圾拿出去丟吧。",
+              "simplified": "那可能是垃圾的问题。你还是每天晚上把垃圾拿出去丢吧。",
+              "pinyin": "Nà kěnéng shì lèsè de wèntí. Nǐ háishì měi tiān wǎnshàng bǎ lèsè ná chūqù diū ba.",
+              "english": "Then it may be your rubbish. You'd better take the rubbish out every evening."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-at-home-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的建議男的怎麼做？",
+                "simplified": "女的建议男的怎么做？",
+                "pinyin": "Nǚ de jiànyì nán de zěnme zuò?",
+                "english": "What does the woman suggest the man do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "每天把房間打掃好",
+                  "simplified": "每天把房间打扫好",
+                  "pinyin": "Měi tiān bǎ fángjiān dǎsǎo hǎo.",
+                  "english": "Clean his room every day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "睡覺前把窗戶關好",
+                  "simplified": "睡觉前把窗户关好",
+                  "pinyin": "Shuìjiào qián bǎ chuānghù guān hǎo.",
+                  "english": "Shut the window before bed."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "把食物放進冰箱裡",
+                  "simplified": "把食物放进冰箱里",
+                  "pinyin": "Bǎ shíwù fàng jìn bīngxiāng lǐ.",
+                  "english": "Put the food in the fridge."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "別把垃圾留在房間裡",
+                  "simplified": "别把垃圾留在房间里",
+                  "pinyin": "Bié bǎ lèsè liú zài fángjiān lǐ.",
+                  "english": "Not keep rubbish in his room."
+                }
+              ],
+              "key": 3,
+              "why": "你還是每天晚上把垃圾拿出去丟吧: she thinks the rubbish brings the ants. He already cleans every day, keeps his food in the fridge and has shut the window, so those are not her advice.",
+              "focus": {
+                "zh": "還是……吧",
+                "en": "had better"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-18",
+                "B2L02-2-05"
+              ],
+              "grammarIds": [
+                "B3L05-G04-P133"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-dialogue",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l05-review-dialogue-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你要去超商嗎？可以順便幫我買一把傘嗎？我的傘昨天被風吹壞了。",
+              "simplified": "你要去超商吗？可以顺便帮我买一把伞吗？我的伞昨天被风吹坏了。",
+              "pinyin": "Nǐ yào qù chāoshāng ma? Kěyǐ shùnbiàn bāng wǒ mǎi yì bǎ sǎn ma? Wǒ de sǎn zuótiān bèi fēng chuī huài le.",
+              "english": "Are you going to the convenience store? Could you get me an umbrella while you're there? The wind broke mine yesterday."
+            },
+            {
+              "speaker": "M",
+              "traditional": "沒問題。要不要也幫妳買點吃的？",
+              "simplified": "没问题。要不要也帮你买点吃的？",
+              "pinyin": "Méi wèntí. Yào bú yào yě bāng nǐ mǎi diǎn chī de?",
+              "english": "No problem. Shall I get you something to eat too?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不用了，我吃過了。算了，傘也先別買了，新聞說明天就不下雨了，下次要用再買吧。",
+              "simplified": "不用了，我吃过了。算了，伞也先别买了，新闻说明天就不下雨了，下次要用再买吧。",
+              "pinyin": "Búyòng le, wǒ chī guo le. Suànle, sǎn yě xiān bié mǎi le, xīnwén shuō míngtiān jiù bú xià yǔ le, xià cì yào yòng zài mǎi ba.",
+              "english": "No thanks, I've eaten. Actually, forget it: don't buy the umbrella for now either. The news says the rain stops tomorrow. I'll buy one next time I need it."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好，那我很快就回來。",
+              "simplified": "好，那我很快就回来。",
+              "pinyin": "Hǎo, nà wǒ hěn kuài jiù huílái.",
+              "english": "OK, I'll be right back."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-review-dialogue-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的最後決定怎麼做？",
+                "simplified": "女的最后决定怎么做？",
+                "pinyin": "Nǚ de zuìhòu juédìng zěnme zuò?",
+                "english": "What does the woman decide in the end?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "請男的買一把傘",
+                  "simplified": "请男的买一把伞",
+                  "pinyin": "Qǐng nán de mǎi yì bǎ sǎn.",
+                  "english": "Ask the man to buy an umbrella."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "請男的買點吃的",
+                  "simplified": "请男的买点吃的",
+                  "pinyin": "Qǐng nán de mǎi diǎn chī de.",
+                  "english": "Ask the man to buy some food."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "等以後再買傘",
+                  "simplified": "等以后再买伞",
+                  "pinyin": "Děng yǐhòu zài mǎi sǎn.",
+                  "english": "Buy an umbrella later."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "自己去超商買傘",
+                  "simplified": "自己去超商买伞",
+                  "pinyin": "Zìjǐ qù chāoshāng mǎi sǎn.",
+                  "english": "Go and buy an umbrella herself."
+                }
+              ],
+              "key": 2,
+              "why": "算了，傘也先別買了……下次要用再買吧: she drops the umbrella and will buy one when she next needs it. She turns down the food (不用了，我吃過了), and she does not go to the store herself either.",
+              "focus": {
+                "zh": "算了",
+                "en": "forget it"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B3L02-1-30",
+                "B3L02-1-11",
+                "B3L02-2-08"
+              ],
+              "grammarIds": [
+                "B3L02-G04-P54",
+                "B3L02-G02-P52"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-review-dialogue-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我們的中文老師下個月要退休了，班上的同學想送她禮物。有人說送花，有人說送書，大家想來想去，還是決定不了。",
+              "simplified": "我们的中文老师下个月要退休了，班上的同学想送她礼物。有人说送花，有人说送书，大家想来想去，还是决定不了。",
+              "pinyin": "Wǒmen de Zhōngwén lǎoshī xià ge yuè yào tuìxiū le, bān shàng de tóngxué xiǎng sòng tā lǐwù. Yǒu rén shuō sòng huā, yǒu rén shuō sòng shū, dàjiā xiǎng lái xiǎng qù, háishì juédìng bù liǎo.",
+              "english": "Our Chinese teacher retires next month, and the class wants to give her a present. Some say flowers, some say a book. We've thought and thought, but we still can't decide."
+            },
+            {
+              "speaker": "F",
+              "traditional": "老師的書應該已經夠多了。你們不如一起寫一張大卡片，每個人都寫一些祝福的話。",
+              "simplified": "老师的书应该已经够多了。你们不如一起写一张大卡片，每个人都写一些祝福的话。",
+              "pinyin": "Lǎoshī de shū yīnggāi yǐjīng gòu duō le. Nǐmen bùrú yìqǐ xiě yì zhāng dà kǎpiàn, měi ge rén dōu xiě yìxiē zhùfú de huà.",
+              "english": "Your teacher surely has enough books already. Why not write one big card together, each of you writing a few good wishes?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "好主意！我明天就去買卡片。",
+              "simplified": "好主意！我明天就去买卡片。",
+              "pinyin": "Hǎo zhǔyì! Wǒ míngtiān jiù qù mǎi kǎpiàn.",
+              "english": "Good idea! I'll go and buy a card tomorrow."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-review-dialogue-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的建議他們送什麼？",
+                "simplified": "女的建议他们送什么？",
+                "pinyin": "Nǚ de jiànyì tāmen sòng shénme?",
+                "english": "What does the woman suggest they give?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "班上同學買的花",
+                  "simplified": "班上同学买的花",
+                  "pinyin": "Bān shàng tóngxué mǎi de huā.",
+                  "english": "Flowers the whole class buys."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "班上同學寫的卡片",
+                  "simplified": "班上同学写的卡片",
+                  "pinyin": "Bān shàng tóngxué xiě de kǎpiàn.",
+                  "english": "A card the whole class writes."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "班上同學選的書",
+                  "simplified": "班上同学选的书",
+                  "pinyin": "Bān shàng tóngxué xuǎn de shū.",
+                  "english": "A book the whole class chooses."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "班上同學拍的照片",
+                  "simplified": "班上同学拍的照片",
+                  "pinyin": "Bān shàng tóngxué pāi de zhàopiàn.",
+                  "english": "A photo the whole class takes."
+                }
+              ],
+              "key": 1,
+              "why": "你們不如一起寫一張大卡片，每個人都寫一些祝福的話: she suggests a card the class writes together. Flowers and a book were the classmates' ideas, and she says the teacher already has enough books.",
+              "focus": {
+                "zh": "不如……",
+                "en": "why not … instead"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B3L04-1-11"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-aftermath",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l05-dialogue-aftermath-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "昨天晚上的風雨真大，我整個晚上都沒睡好。你家還好吧？",
+              "simplified": "昨天晚上的风雨真大，我整个晚上都没睡好。你家还好吧？",
+              "pinyin": "Zuótiān wǎnshàng de fēngyǔ zhēn dà, wǒ zhěng ge wǎnshàng dōu méi shuì hǎo. Nǐ jiā hái hǎo ba?",
+              "english": "The storm last night was really bad. I didn't sleep well all night. Is your home all right?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "屋子裡沒什麼問題，可是我停在樓下的車被水淹了一半，不知道還能不能開。",
+              "simplified": "屋子里没什么问题，可是我停在楼下的车被水淹了一半，不知道还能不能开。",
+              "pinyin": "Wūzi lǐ méi shénme wèntí, kěshì wǒ tíng zài lóuxià de chē bèi shuǐ yān le yíbàn, bù zhīdào hái néng bù néng kāi.",
+              "english": "Inside the house it's fine, but my car parked downstairs was half under water. I don't know if it still runs."
+            },
+            {
+              "speaker": "F",
+              "traditional": "真糟糕！我家門口那棵大樹也倒了，就倒在路上，車都過不去。",
+              "simplified": "真糟糕！我家门口那棵大树也倒了，就倒在路上，车都过不去。",
+              "pinyin": "Zhēn zāogāo! Wǒ jiā ménkǒu nà kē dà shù yě dǎo le, jiù dǎo zài lù shàng, chē dōu guò bú qù.",
+              "english": "That's terrible! The big tree at my door fell down too, right across the road. Cars can't get past."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那得趕快找人來處理啊。",
+              "simplified": "那得赶快找人来处理啊。",
+              "pinyin": "Nà děi gǎnkuài zhǎo rén lái chǔlǐ a.",
+              "english": "Then you need to get someone to deal with it quickly."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我早上就打過電話了，可是他們說今天要去的地方太多，最快明天中午以後才能來。",
+              "simplified": "我早上就打过电话了，可是他们说今天要去的地方太多，最快明天中午以后才能来。",
+              "pinyin": "Wǒ zǎoshàng jiù dǎ guo diànhuà le, kěshì tāmen shuō jīntiān yào qù de dìfāng tài duō, zuì kuài míngtiān zhōngwǔ yǐhòu cái néng lái.",
+              "english": "I called this morning, but they said they have too many places to go today. The earliest they can come is tomorrow after noon."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那這兩天妳要出門，就只好走路了。",
+              "simplified": "那这两天你要出门，就只好走路了。",
+              "pinyin": "Nà zhè liǎng tiān nǐ yào chūmén, jiù zhǐhǎo zǒulù le.",
+              "english": "Then for these two days you'll have to walk when you go out."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-aftermath-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的遇到了什麼問題？",
+                "simplified": "男的遇到了什么问题？",
+                "pinyin": "Nán de yùdào le shénme wèntí?",
+                "english": "What problem does the man have?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他家裡停電了",
+                  "simplified": "他家里停电了",
+                  "pinyin": "Tā jiālǐ tíngdiàn le.",
+                  "english": "His home lost power."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他的車子進水了",
+                  "simplified": "他的车子进水了",
+                  "pinyin": "Tā de chēzi jìn shuǐ le.",
+                  "english": "Water got into his car."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他家門口的樹倒了",
+                  "simplified": "他家门口的树倒了",
+                  "pinyin": "Tā jiā ménkǒu de shù dǎo le.",
+                  "english": "The tree at his door fell down."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他昨天晚上沒睡好",
+                  "simplified": "他昨天晚上没睡好",
+                  "pinyin": "Tā zuótiān wǎnshàng méi shuì hǎo.",
+                  "english": "He didn't sleep well last night."
+                }
+              ],
+              "key": 1,
+              "why": "我停在樓下的車被水淹了一半: the flood came halfway up his parked car. He says nothing is wrong inside his home (屋子裡沒什麼問題); the fallen tree and the bad night are the woman's.",
+              "focus": {
+                "zh": "車被水淹了一半",
+                "en": "his car flooded"
+              },
+              "lesson": 5,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L05-1-17",
+                "B3L05-1-05"
+              ]
+            },
+            {
+              "id": "b3l05-dialogue-aftermath-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的找的人最快什麼時候能來？",
+                "simplified": "女的找的人最快什么时候能来？",
+                "pinyin": "Nǚ de zhǎo de rén zuì kuài shénme shíhòu néng lái?",
+                "english": "When is the earliest the people the woman called can come?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "今天早上",
+                  "simplified": "今天早上",
+                  "pinyin": "Jīntiān zǎoshàng.",
+                  "english": "This morning."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天早上",
+                  "simplified": "明天早上",
+                  "pinyin": "Míngtiān zǎoshàng.",
+                  "english": "Tomorrow morning."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天下午",
+                  "simplified": "明天下午",
+                  "pinyin": "Míngtiān xiàwǔ.",
+                  "english": "Tomorrow afternoon."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "後天下午",
+                  "simplified": "后天下午",
+                  "pinyin": "Hòutiān xiàwǔ.",
+                  "english": "The afternoon after tomorrow."
+                }
+              ],
+              "key": 2,
+              "why": "最快明天中午以後才能來: the earliest is after noon tomorrow, that is, tomorrow afternoon. This morning is when she phoned them, and today they have too many places to go.",
+              "focus": {
+                "zh": "最快……才……",
+                "en": "at the earliest"
+              },
+              "lesson": 5,
+              "answerLine": 4,
+              "wordIds": [
+                "B2L11-2-11"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-dialogue-aftermath-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳看新聞了嗎？這次的颱風在南部造成了好幾場水災，高雄以南的災情最嚴重。",
+              "simplified": "你看新闻了吗？这次的台风在南部造成了好几场水灾，高雄以南的灾情最严重。",
+              "pinyin": "Nǐ kàn xīnwén le ma? Zhè cì de táifēng zài nánbù zàochéng le hǎojǐ chǎng shuǐzāi, Gāoxióng yǐ nán de zāiqíng zuì yánzhòng.",
+              "english": "Did you see the news? This typhoon caused several floods in the south. The damage is worst south of Kaohsiung."
+            },
+            {
+              "speaker": "F",
+              "traditional": "看了。有一些地方的路到現在都還不通，甚至有人被困在屋頂上，等了一天才被救出來。",
+              "simplified": "看了。有一些地方的路到现在都还不通，甚至有人被困在屋顶上，等了一天才被救出来。",
+              "pinyin": "Kàn le. Yǒu yìxiē dìfāng de lù dào xiànzài dōu hái bù tōng, shènzhì yǒu rén bèi kùn zài wūdǐng shàng, děng le yì tiān cái bèi jiù chūlái.",
+              "english": "I did. In some places the roads are still closed, and some people were even stuck on their roofs and rescued only after a whole day."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我們社團這個星期六要去災區幫忙整理房子，妳要不要一起去？",
+              "simplified": "我们社团这个星期六要去灾区帮忙整理房子，你要不要一起去？",
+              "pinyin": "Wǒmen shètuán zhège xīngqíliù yào qù zāiqū bāngmáng zhěnglǐ fángzi, nǐ yào bú yào yìqǐ qù?",
+              "english": "Our club is going to the disaster area this Saturday to help clean up houses. Do you want to come?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我很想去，可是星期六我得上班。我出錢買一些水和食物，請你們帶過去，好不好？",
+              "simplified": "我很想去，可是星期六我得上班。我出钱买一些水和食物，请你们带过去，好不好？",
+              "pinyin": "Wǒ hěn xiǎng qù, kěshì xīngqíliù wǒ děi shàngbān. Wǒ chū qián mǎi yìxiē shuǐ hé shíwù, qǐng nǐmen dài guòqù, hǎo bù hǎo?",
+              "english": "I'd love to, but I have to work on Saturday. How about I pay for some water and food and you take it there?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "當然好，災民現在最需要乾淨的水。那我星期五晚上去妳家拿。",
+              "simplified": "当然好，灾民现在最需要干净的水。那我星期五晚上去你家拿。",
+              "pinyin": "Dāngrán hǎo, zāimín xiànzài zuì xūyào gānjìng de shuǐ. Nà wǒ xīngqíwǔ wǎnshàng qù nǐ jiā ná.",
+              "english": "Of course. Clean water is what the victims need most now. I'll come to your place on Friday evening to pick it up."
+            },
+            {
+              "speaker": "F",
+              "traditional": "好，我星期五下班就先去超市買好。",
+              "simplified": "好，我星期五下班就先去超市买好。",
+              "pinyin": "Hǎo, wǒ xīngqíwǔ xiàbān jiù xiān qù chāoshì mǎi hǎo.",
+              "english": "OK. I'll go to the supermarket after work on Friday and buy it first."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-dialogue-aftermath-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的星期六要做什麼？",
+                "simplified": "女的星期六要做什么？",
+                "pinyin": "Nǚ de xīngqíliù yào zuò shénme?",
+                "english": "What will the woman do on Saturday?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去公司工作",
+                  "simplified": "去公司工作",
+                  "pinyin": "Qù gōngsī gōngzuò.",
+                  "english": "Go to work."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟社團去災區",
+                  "simplified": "跟社团去灾区",
+                  "pinyin": "Gēn shètuán qù zāiqū.",
+                  "english": "Go to the disaster area with the club."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在家整理房子",
+                  "simplified": "在家整理房子",
+                  "pinyin": "Zài jiā zhěnglǐ fángzi.",
+                  "english": "Tidy up her home."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟家人去高雄",
+                  "simplified": "跟家人去高雄",
+                  "pinyin": "Gēn jiārén qù Gāoxióng.",
+                  "english": "Go to Kaohsiung with her family."
+                }
+              ],
+              "key": 0,
+              "why": "我很想去，可是星期六我得上班: on Saturday she has to work. The club goes to the disaster area without her, and Kaohsiung is only in the news.",
+              "focus": {
+                "zh": "上班",
+                "en": "go to work"
+              },
+              "lesson": 5,
+              "answerLine": 3,
+              "wordIds": [
+                "B3L05-2-25",
+                "B3L05-1-23",
+                "B2L11-1-01"
+              ]
+            },
+            {
+              "id": "b3l05-dialogue-aftermath-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的星期五晚上要做什麼？",
+                "simplified": "男的星期五晚上要做什么？",
+                "pinyin": "Nán de xīngqíwǔ wǎnshàng yào zuò shénme?",
+                "english": "What will the man do on Friday evening?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去超市買水和食物",
+                  "simplified": "去超市买水和食物",
+                  "pinyin": "Qù chāoshì mǎi shuǐ hé shíwù.",
+                  "english": "Buy water and food at the supermarket."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去銀行領一些錢",
+                  "simplified": "去银行领一些钱",
+                  "pinyin": "Qù yínháng lǐng yìxiē qián.",
+                  "english": "Take out some money at the bank."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看颱風的最新消息",
+                  "simplified": "看台风的最新消息",
+                  "pinyin": "Kàn táifēng de zuì xīn xiāoxí.",
+                  "english": "Follow the latest typhoon news."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "到女的那裡拿東西",
+                  "simplified": "到女的那里拿东西",
+                  "pinyin": "Dào nǚ de nàlǐ ná dōngxi.",
+                  "english": "Pick up things at the woman's place."
+                }
+              ],
+              "key": 3,
+              "why": "那我星期五晚上去妳家拿: on Friday evening he picks up the water and food at her home. She does the shopping herself (我星期五下班就先去超市買好).",
+              "focus": {
+                "zh": "拿",
+                "en": "pick up"
+              },
+              "lesson": 5,
+              "answerLine": 4,
+              "wordIds": [
+                "B3L05-2-34",
+                "B1L16-3-11",
+                "B1L10-2-12"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talk",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l05-talk-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段廣播，然後回答兩個問題。",
+            "simplified": "请听一段广播，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn guǎngbò, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a radio broadcast, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "聽眾朋友晚安，現在告訴大家最新的颱風消息。這個颱風的速度越來越快，今天半夜就會到達花蓮，明天早上會經過臺中以北的地區，下午就會離開臺灣。",
+              "simplified": "听众朋友晚安，现在告诉大家最新的台风消息。这个台风的速度越来越快，今天半夜就会到达花莲，明天早上会经过台中以北的地区，下午就会离开台湾。",
+              "pinyin": "Tīngzhòng péngyǒu wǎn'ān, xiànzài gàosu dàjiā zuì xīn de táifēng xiāoxí. Zhège táifēng de sùdù yuè lái yuè kuài, jīntiān bànyè jiù huì dàodá Huālián, míngtiān zǎoshàng huì jīngguò Táizhōng yǐ běi de dìqū, xiàwǔ jiù huì líkāi Táiwān.",
+              "english": "Good evening, listeners. Here is the latest typhoon news. The typhoon is moving faster and faster. It will reach Hualien at midnight tonight, pass over the area north of Taichung tomorrow morning, and leave Taiwan in the afternoon."
+            },
+            {
+              "speaker": "M",
+              "traditional": "臺中以北明天會一直下大雨，河邊的路可能會淹水，請大家明天不要到河邊去。住在海邊的民眾，今天晚上最好也不要出門。",
+              "simplified": "台中以北明天会一直下大雨，河边的路可能会淹水，请大家明天不要到河边去。住在海边的民众，今天晚上最好也不要出门。",
+              "pinyin": "Táizhōng yǐ běi míngtiān huì yìzhí xià dàyǔ, hébiān de lù kěnéng huì yānshuǐ, qǐng dàjiā míngtiān búyào dào hébiān qù. Zhù zài hǎibiān de mínzhòng, jīntiān wǎnshàng zuìhǎo yě búyào chūmén.",
+              "english": "North of Taichung it will rain hard all day tomorrow, and roads by the rivers may flood, so please stay away from the rivers tomorrow. People living by the sea had better not go out tonight either."
+            },
+            {
+              "speaker": "M",
+              "traditional": "還有，颱風可能會造成停電，請大家先準備好收音機和電池，家裡也要有兩三天的水和食物。萬一淹水了，得離開家，請打開收音機聽我們的廣播，我們會告訴大家，哪個學校可以讓大家去住。",
+              "simplified": "还有，台风可能会造成停电，请大家先准备好收音机和电池，家里也要有两三天的水和食物。万一淹水了，得离开家，请打开收音机听我们的广播，我们会告诉大家，哪个学校可以让大家去住。",
+              "pinyin": "Háiyǒu, táifēng kěnéng huì zàochéng tíngdiàn, qǐng dàjiā xiān zhǔnbèi hǎo shōuyīnjī hé diànchí, jiālǐ yě yào yǒu liǎng sān tiān de shuǐ hé shíwù. Wànyī yānshuǐ le, děi líkāi jiā, qǐng dǎkāi shōuyīnjī tīng wǒmen de guǎngbò, wǒmen huì gàosu dàjiā, nǎge xuéxiào kěyǐ ràng dàjiā qù zhù.",
+              "english": "Also, the typhoon may cause power cuts. Please get a radio and batteries ready, and keep two or three days of water and food at home. If your home floods and you have to leave, turn on your radio and listen to us: we will tell you which school you can go and stay at."
+            }
+          ],
+          "answerLine": 0,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-talk-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "颱風明天早上會在哪裡？",
+                "simplified": "台风明天早上会在哪里？",
+                "pinyin": "Táifēng míngtiān zǎoshàng huì zài nǎlǐ?",
+                "english": "Where will the typhoon be tomorrow morning?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "花蓮附近的地區",
+                  "simplified": "花莲附近的地区",
+                  "pinyin": "Huālián fùjìn de dìqū.",
+                  "english": "The area around Hualien."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "臺中北邊的地區",
+                  "simplified": "台中北边的地区",
+                  "pinyin": "Táizhōng běibiān de dìqū.",
+                  "english": "The area north of Taichung."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "高雄附近的地區",
+                  "simplified": "高雄附近的地区",
+                  "pinyin": "Gāoxióng fùjìn de dìqū.",
+                  "english": "The area around Kaohsiung."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "已經離開臺灣了",
+                  "simplified": "已经离开台湾了",
+                  "pinyin": "Yǐjīng líkāi Táiwān le.",
+                  "english": "It will have left Taiwan."
+                }
+              ],
+              "key": 1,
+              "why": "明天早上會經過臺中以北的地區: 以北 means north of Taichung. It reaches Hualien tonight, leaves Taiwan only in the afternoon, and Kaohsiung is not on its way.",
+              "focus": {
+                "zh": "以北",
+                "en": "north of"
+              },
+              "lesson": 5,
+              "answerLine": 0,
+              "wordIds": [
+                "B3L02-2-14",
+                "B1L16-1-11"
+              ],
+              "grammarIds": [
+                "B3L05-G07-P144"
+              ]
+            },
+            {
+              "id": "b3l05-talk-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "廣播為什麼請大家準備收音機？",
+                "simplified": "广播为什么请大家准备收音机？",
+                "pinyin": "Guǎngbò wèishénme qǐng dàjiā zhǔnbèi shōuyīnjī?",
+                "english": "Why does the broadcast ask people to get a radio ready?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "知道哪一條路能走",
+                  "simplified": "知道哪一条路能走",
+                  "pinyin": "Zhīdào nǎ yì tiáo lù néng zǒu.",
+                  "english": "To know which roads are open."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "知道什麼時候會有電",
+                  "simplified": "知道什么时候会有电",
+                  "pinyin": "Zhīdào shénme shíhòu huì yǒu diàn.",
+                  "english": "To know when the power will be back."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "知道哪裡有吃的喝的",
+                  "simplified": "知道哪里有吃的喝的",
+                  "pinyin": "Zhīdào nǎlǐ yǒu chī de hē de.",
+                  "english": "To know where to get food and drink."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "知道能住在什麼地方",
+                  "simplified": "知道能住在什么地方",
+                  "pinyin": "Zhīdào néng zhù zài shénme dìfāng.",
+                  "english": "To know where they can stay."
+                }
+              ],
+              "key": 3,
+              "why": "萬一淹水了，得離開家，請打開收音機聽我們的廣播，我們會告訴大家，哪個學校可以讓大家去住: the radio will say where people can stay. The power cut is why a radio is needed, not what it will report; water and food are to be kept at home already, and the river roads were named in the broadcast itself.",
+              "focus": {
+                "zh": "收音機",
+                "en": "radio"
+              },
+              "lesson": 5,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L05-1-26",
+                "B3L05-1-27",
+                "B3L05-1-16",
+                "B3L05-1-32"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-talk-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段留言，然後回答兩個問題。",
+            "simplified": "请听一段留言，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn liúyán, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a voice message, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你好，我是房東。昨天的颱風把屋頂上的一些設備吹壞了，工人明天要來修理，所以這棟樓明天早上九點到下午五點都會停水。我會在樓下放一些水給大家用，你不用自己準備。",
+              "simplified": "你好，我是房东。昨天的台风把屋顶上的一些设备吹坏了，工人明天要来修理，所以这栋楼明天早上九点到下午五点都会停水。我会在楼下放一些水给大家用，你不用自己准备。",
+              "pinyin": "Nǐ hǎo, wǒ shì fángdōng. Zuótiān de táifēng bǎ wūdǐng shàng de yìxiē shèbèi chuī huài le, gōngrén míngtiān yào lái xiūlǐ, suǒyǐ zhè dòng lóu míngtiān zǎoshàng jiǔ diǎn dào xiàwǔ wǔ diǎn dōu huì tíngshuǐ. Wǒ huì zài lóuxià fàng yìxiē shuǐ gěi dàjiā yòng, nǐ búyòng zìjǐ zhǔnbèi.",
+              "english": "Hello, this is your landlord. Yesterday's typhoon damaged some equipment on the roof, and workers are coming to fix it tomorrow, so the building will have no water from 9 a.m. to 5 p.m. tomorrow. I'll leave some water downstairs for everyone, so you don't need to get your own."
+            },
+            {
+              "speaker": "F",
+              "traditional": "工人的車明天要停在樓下，所以請你今天晚上先把車停到別的地方去。還有，你上次說房間的窗戶關不好，我請工人星期四下午去看看。萬一那天你不在家，就把鑰匙放在樓下的便利商店，我會去拿。",
+              "simplified": "工人的车明天要停在楼下，所以请你今天晚上先把车停到别的地方去。还有，你上次说房间的窗户关不好，我请工人星期四下午去看看。万一那天你不在家，就把钥匙放在楼下的便利商店，我会去拿。",
+              "pinyin": "Gōngrén de chē míngtiān yào tíng zài lóuxià, suǒyǐ qǐng nǐ jīntiān wǎnshàng xiān bǎ chē tíng dào biéde dìfāng qù. Háiyǒu, nǐ shàng cì shuō fángjiān de chuānghù guān bù hǎo, wǒ qǐng gōngrén xīngqísì xiàwǔ qù kànkan. Wànyī nà tiān nǐ bú zài jiā, jiù bǎ yàoshi fàng zài lóuxià de biànlì shāngdiàn, wǒ huì qù ná.",
+              "english": "The workers' van will park downstairs tomorrow, so please move your car somewhere else tonight. Also, you said last time that your window doesn't close properly, so I've asked the workers to look at it on Thursday afternoon. In case you're not home that day, leave the key at the convenience store downstairs and I'll pick it up."
+            },
+            {
+              "speaker": "F",
+              "traditional": "有什麼問題，再打電話給我。謝謝！",
+              "simplified": "有什么问题，再打电话给我。谢谢！",
+              "pinyin": "Yǒu shénme wèntí, zài dǎ diànhuà gěi wǒ. Xièxie!",
+              "english": "If there's any problem, call me. Thanks!"
+            }
+          ],
+          "answerLine": 0,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l05-talk-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "房東要聽留言的人今天晚上做什麼？",
+                "simplified": "房东要听留言的人今天晚上做什么？",
+                "pinyin": "Fángdōng yào tīng liúyán de rén jīntiān wǎnshàng zuò shénme?",
+                "english": "What does the landlord want the listener to do tonight?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "先準備好要用的水",
+                  "simplified": "先准备好要用的水",
+                  "pinyin": "Xiān zhǔnbèi hǎo yào yòng de shuǐ.",
+                  "english": "Get the water he needs ready."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "打個電話給房東",
+                  "simplified": "打个电话给房东",
+                  "pinyin": "Dǎ ge diànhuà gěi fángdōng.",
+                  "english": "Phone the landlord."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "把車換個地方停",
+                  "simplified": "把车换个地方停",
+                  "pinyin": "Bǎ chē huàn ge dìfāng tíng.",
+                  "english": "Park his car somewhere else."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "把房間的窗戶關好",
+                  "simplified": "把房间的窗户关好",
+                  "pinyin": "Bǎ fángjiān de chuānghù guān hǎo.",
+                  "english": "Close his window properly."
+                }
+              ],
+              "key": 2,
+              "why": "請你今天晚上先把車停到別的地方去: the workers' van needs the space downstairs tomorrow. She will leave water downstairs herself (你不用自己準備), the window waits for Thursday, and he only needs to phone her if there is a problem.",
+              "focus": {
+                "zh": "今天晚上先……",
+                "en": "tonight's request"
+              },
+              "lesson": 5,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L05-1-15",
+                "B2L05-2-17"
+              ]
+            },
+            {
+              "id": "b3l05-talk-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "萬一星期四聽留言的人不在家，他應該怎麼做？",
+                "simplified": "万一星期四听留言的人不在家，他应该怎么做？",
+                "pinyin": "Wànyī xīngqísì tīng liúyán de rén bú zài jiā, tā yīnggāi zěnme zuò?",
+                "english": "If the listener happens to be out on Thursday, what should he do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "把鑰匙留在店裡",
+                  "simplified": "把钥匙留在店里",
+                  "pinyin": "Bǎ yàoshi liú zài diàn lǐ.",
+                  "english": "Leave the key at the store."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "請房東來開門",
+                  "simplified": "请房东来开门",
+                  "pinyin": "Qǐng fángdōng lái kāimén.",
+                  "english": "Ask the landlord to open the door."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "改天再請工人來",
+                  "simplified": "改天再请工人来",
+                  "pinyin": "Gǎitiān zài qǐng gōngrén lái.",
+                  "english": "Ask the worker to come another day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "自己把窗戶修好",
+                  "simplified": "自己把窗户修好",
+                  "pinyin": "Zìjǐ bǎ chuānghù xiū hǎo.",
+                  "english": "Fix the window himself."
+                }
+              ],
+              "key": 0,
+              "why": "萬一那天你不在家，就把鑰匙放在樓下的便利商店: if he is out, he leaves the key at the store downstairs for the landlord.",
+              "focus": {
+                "zh": "萬一",
+                "en": "in case"
+              },
+              "lesson": 5,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L05-1-32",
+                "B2L03-1-46"
+              ],
+              "grammarIds": [
+                "B3L05-G01-P128"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloze-storm",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l05-cloze-storm-1",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "去年夏天我去臺東旅行，碰到了強烈颱風。颱風來了以後，我{1}三天都不能出門，只好在旅館裡看電視、看書。我本來想第二天就坐火車往北回臺北，{2}臺東{3}的路都不通了，火車也停了。新聞說，有一些地方不但淹水，{4}連電話都打不通。旅館老闆每天晚上都把蠟燭準備好，放在每個房間裡。他說：「這樣{5}停電了，大家才不會什麼都看不到。」第五天，路{6}通了，我才坐上火車回到臺北。",
+            "simplified": "去年夏天我去台东旅行，碰到了强烈台风。台风来了以后，我{1}三天都不能出门，只好在旅馆里看电视、看书。我本来想第二天就坐火车往北回台北，{2}台东{3}的路都不通了，火车也停了。新闻说，有一些地方不但淹水，{4}连电话都打不通。旅馆老板每天晚上都把蜡烛准备好，放在每个房间里。他说：「这样{5}停电了，大家才不会什么都看不到。」第五天，路{6}通了，我才坐上火车回到台北。",
+            "pinyin": "Qùnián xiàtiān wǒ qù Táidōng lǚxíng, pèngdào le qiángliè táifēng. Táifēng lái le yǐhòu, wǒ yìlián sān tiān dōu bù néng chūmén, zhǐhǎo zài lǚguǎn lǐ kàn diànshì, kàn shū. Wǒ běnlái xiǎng dì èr tiān jiù zuò huǒchē wǎng běi huí Táiběi, jiéguǒ Táidōng yǐ běi de lù dōu bù tōng le, huǒchē yě tíng le. Xīnwén shuō, yǒu yìxiē dìfāng búdàn yānshuǐ, shènzhì lián diànhuà dōu dǎ bù tōng. Lǚguǎn lǎobǎn měi tiān wǎnshàng dōu bǎ làzhú zhǔnbèi hǎo, fàng zài měi ge fángjiān lǐ. Tā shuō: “Zhèyàng wànyī tíngdiàn le, dàjiā cái bú huì shénme dōu kàn bú dào.” Dì wǔ tiān, lù zhōngyú tōng le, wǒ cái zuò shàng huǒchē huí dào Táiběi.",
+            "english": "Last summer I travelled to Taitung and ran into a strong typhoon. Once it came, I couldn't go out for three days in a row, so I stayed in the hotel watching TV and reading. I had planned to take the train north back to Taipei the next day, but in the end the roads north of Taitung were all closed, and the trains stopped too. The news said some places were not only flooded; even the phones didn't work. Every evening the hotel owner got candles ready and put them in every room. He said, \"This way, if the power happens to go out, nobody will be left in the dark.\" On the fifth day the road finally opened, and only then could I take the train back to Taipei."
+          },
+          "questions": [
+            {
+              "id": "b3l05-cloze-storm-1-1",
+              "choices": [
+                {
+                  "traditional": "不斷",
+                  "simplified": "不断",
+                  "pinyin": "búduàn",
+                  "english": "continuously"
+                },
+                {
+                  "traditional": "突然",
+                  "simplified": "突然",
+                  "pinyin": "túrán",
+                  "english": "suddenly"
+                },
+                {
+                  "traditional": "一連",
+                  "simplified": "一连",
+                  "pinyin": "yìlián",
+                  "english": "in a row"
+                },
+                {
+                  "traditional": "隨時",
+                  "simplified": "随时",
+                  "pinyin": "suíshí",
+                  "english": "at any time"
+                }
+              ],
+              "key": 2,
+              "why": "我一連三天都不能出門: three days in a row (一連 + number + 都). 不斷 (continuously), 突然 (suddenly) and 隨時 (at any time) cannot stand before a number of days like this.",
+              "focus": {
+                "zh": "一連",
+                "en": "in a row"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-35"
+              ],
+              "grammarIds": [
+                "B3L05-G02-P130"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-1-2",
+              "choices": [
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "english": "so"
+                },
+                {
+                  "traditional": "而且",
+                  "simplified": "而且",
+                  "pinyin": "érqiě",
+                  "english": "and also"
+                },
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "in the end"
+                },
+                {
+                  "traditional": "再說",
+                  "simplified": "再说",
+                  "pinyin": "zàishuō",
+                  "english": "besides"
+                }
+              ],
+              "key": 2,
+              "why": "The writer planned (本來想) to go home, but things turned out differently: 結果 brings in what really happened. 所以, 而且 and 再說 (besides) don't fit a plan that failed.",
+              "focus": {
+                "zh": "結果",
+                "en": "in the end"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-2-09"
+              ],
+              "grammarIds": [
+                "B3L05-G05-P141"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-1-3",
+              "choices": [
+                {
+                  "traditional": "以南",
+                  "simplified": "以南",
+                  "pinyin": "yǐ nán",
+                  "english": "south of"
+                },
+                {
+                  "traditional": "以北",
+                  "simplified": "以北",
+                  "pinyin": "yǐ běi",
+                  "english": "north of"
+                },
+                {
+                  "traditional": "以東",
+                  "simplified": "以东",
+                  "pinyin": "yǐ dōng",
+                  "english": "east of"
+                },
+                {
+                  "traditional": "以西",
+                  "simplified": "以西",
+                  "pinyin": "yǐ xī",
+                  "english": "west of"
+                }
+              ],
+              "key": 1,
+              "why": "The writer wanted to go north (往北) to Taipei, so the closed roads that stopped the trip were the ones north of Taitung: 臺東以北.",
+              "focus": {
+                "zh": "以北",
+                "en": "north of"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L16-1-11"
+              ],
+              "grammarIds": [
+                "B3L05-G07-P144"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-1-4",
+              "choices": [
+                {
+                  "traditional": "本來",
+                  "simplified": "本来",
+                  "pinyin": "běnlái",
+                  "english": "originally"
+                },
+                {
+                  "traditional": "一同",
+                  "simplified": "一同",
+                  "pinyin": "yìtóng",
+                  "english": "together"
+                },
+                {
+                  "traditional": "早就",
+                  "simplified": "早就",
+                  "pinyin": "zǎo jiù",
+                  "english": "long ago"
+                },
+                {
+                  "traditional": "甚至",
+                  "simplified": "甚至",
+                  "pinyin": "shènzhì",
+                  "english": "even"
+                }
+              ],
+              "key": 3,
+              "why": "不但淹水，甚至連電話都打不通: after 不但, 甚至 adds the most surprising case, here with 連……都.",
+              "focus": {
+                "zh": "甚至",
+                "en": "even"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-2-15"
+              ],
+              "grammarIds": [
+                "B3L05-G06-P143"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-1-5",
+              "choices": [
+                {
+                  "traditional": "萬一",
+                  "simplified": "万一",
+                  "pinyin": "wànyī",
+                  "english": "in case"
+                },
+                {
+                  "traditional": "就算",
+                  "simplified": "就算",
+                  "pinyin": "jiùsuàn",
+                  "english": "even if"
+                },
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                },
+                {
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                }
+              ],
+              "key": 0,
+              "why": "The candles are ready in case the power goes out: 這樣萬一停電了，大家才不會…… 就算 needs 也, 只要 goes with 就, and 雖然 needs a contrast.",
+              "focus": {
+                "zh": "萬一",
+                "en": "in case"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-32",
+                "B3L05-1-37"
+              ],
+              "grammarIds": [
+                "B3L05-G01-P128"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-1-6",
+              "choices": [
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had no choice but"
+                },
+                {
+                  "traditional": "不再",
+                  "simplified": "不再",
+                  "pinyin": "bú zài",
+                  "english": "no longer"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                },
+                {
+                  "traditional": "從不",
+                  "simplified": "从不",
+                  "pinyin": "cóngbù",
+                  "english": "never"
+                }
+              ],
+              "key": 2,
+              "why": "After days of closed roads, 路終於通了: the road finally opened. 不再通了 would mean it closed again and 從不 means never, which do not fit 我才坐上火車.",
+              "focus": {
+                "zh": "終於",
+                "en": "finally"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B3L04-1-23"
+              ],
+              "grammarIds": [
+                "B3L04-G03-P105"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-cloze-storm-2",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "上個星期花蓮市南邊發生了一場規模六點五的地震。那時候我在十樓上課，教室突然動了起來，{1}桌子上的書掉了滿地，還有幾個同學嚇哭了。老師要大家趕快到桌子底下去，她說：「{2}有東西掉下來打到頭，就麻煩了。」新聞說，花蓮市裡的房子都沒事，可是花蓮市{3}的地方離地震最近，災情很嚴重，一些老房子塌了，{4}連學校的牆也倒了。那天晚上，{5}發生了五次小地震，大家都不敢睡，{6}第二天很多同學上課都在睡覺。",
+            "simplified": "上个星期花莲市南边发生了一场规模六点五的地震。那时候我在十楼上课，教室突然动了起来，{1}桌子上的书掉了满地，还有几个同学吓哭了。老师要大家赶快到桌子底下去，她说：「{2}有东西掉下来打到头，就麻烦了。」新闻说，花莲市里的房子都没事，可是花莲市{3}的地方离地震最近，灾情很严重，一些老房子塌了，{4}连学校的墙也倒了。那天晚上，{5}发生了五次小地震，大家都不敢睡，{6}第二天很多同学上课都在睡觉。",
+            "pinyin": "Shàng ge xīngqí Huālián shì nánbiān fāshēng le yì chǎng guīmó liù diǎn wǔ de dìzhèn. Nà shíhòu wǒ zài shí lóu shàngkè, jiàoshì túrán dòng le qǐlái, bù jǐn zhuōzi shàng de shū diào le mǎn dì, hái yǒu jǐ ge tóngxué xià kū le. Lǎoshī yào dàjiā gǎnkuài dào zhuōzi dǐxià qù, tā shuō: “Wànyī yǒu dōngxi diàoxiàlái dǎ dào tóu, jiù máfán le.” Xīnwén shuō, Huālián shì lǐ de fángzi dōu méi shì, kěshì Huālián shì yǐ nán de dìfāng lí dìzhèn zuì jìn, zāiqíng hěn yánzhòng, yìxiē lǎo fángzi tā le, shènzhì lián xuéxiào de qiáng yě dǎo le. Nà tiān wǎnshàng, yìlián fāshēng le wǔ cì xiǎo dìzhèn, dàjiā dōu bù gǎn shuì, jiéguǒ dì èr tiān hěn duō tóngxué shàngkè dōu zài shuìjiào.",
+            "english": "Last week a magnitude 6.5 earthquake struck south of Hualien City. I was in class on the tenth floor when the classroom suddenly began to shake: not only did the books on the desks fall all over the floor, but a few classmates were so scared they cried. The teacher told us all to get under our desks quickly. She said, \"If something falls and hits your head, that would be bad.\" The news said that the buildings inside Hualien City were all fine, but the places south of the city, nearest the quake, were badly hit: some old houses collapsed, and even a school wall fell down. That night five small quakes came one after another, and nobody dared to sleep. As a result, the next day many classmates fell asleep in class."
+          },
+          "questions": [
+            {
+              "id": "b3l05-cloze-storm-2-1",
+              "choices": [
+                {
+                  "traditional": "只是",
+                  "simplified": "只是",
+                  "pinyin": "zhǐshì",
+                  "english": "it's just that"
+                },
+                {
+                  "traditional": "不僅",
+                  "simplified": "不仅",
+                  "pinyin": "bù jǐn",
+                  "english": "not only"
+                },
+                {
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                },
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                }
+              ],
+              "key": 1,
+              "why": "不僅……，還有……: not only did the books fall all over the floor, a few classmates even cried. 只是 (it's just that) and 雖然 (although) need a contrast, and 只要 (as long as) needs a result with 就; none of them fits a list that goes on with 還.",
+              "focus": {
+                "zh": "不僅……，還……",
+                "en": "not only … but also"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B3L03-2-03"
+              ],
+              "grammarIds": [
+                "B3L03-G05-P88"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-2-2",
+              "choices": [
+                {
+                  "traditional": "就算",
+                  "simplified": "就算",
+                  "pinyin": "jiùsuàn",
+                  "english": "even if"
+                },
+                {
+                  "traditional": "不管",
+                  "simplified": "不管",
+                  "pinyin": "bùguǎn",
+                  "english": "no matter"
+                },
+                {
+                  "traditional": "除了",
+                  "simplified": "除了",
+                  "pinyin": "chúle",
+                  "english": "apart from"
+                },
+                {
+                  "traditional": "萬一",
+                  "simplified": "万一",
+                  "pinyin": "wànyī",
+                  "english": "in case"
+                }
+              ],
+              "key": 3,
+              "why": "萬一有東西掉下來打到頭，就麻煩了: the teacher fears something unlikely but bad. 就算 needs 也, 不管 needs a choice and 都, and 除了 needs 以外 or 都.",
+              "focus": {
+                "zh": "萬一",
+                "en": "in case"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-32",
+                "B3L05-2-17"
+              ],
+              "grammarIds": [
+                "B3L05-G01-P128"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-2-3",
+              "choices": [
+                {
+                  "traditional": "以南",
+                  "simplified": "以南",
+                  "pinyin": "yǐ nán",
+                  "english": "south of"
+                },
+                {
+                  "traditional": "以北",
+                  "simplified": "以北",
+                  "pinyin": "yǐ běi",
+                  "english": "north of"
+                },
+                {
+                  "traditional": "以東",
+                  "simplified": "以东",
+                  "pinyin": "yǐ dōng",
+                  "english": "east of"
+                },
+                {
+                  "traditional": "以西",
+                  "simplified": "以西",
+                  "pinyin": "yǐ xī",
+                  "english": "west of"
+                }
+              ],
+              "key": 0,
+              "why": "The quake struck south of the city (花蓮市南邊發生了……地震), and the badly hit places are the ones nearest the quake (離地震最近), so they lie 花蓮市以南, not north, east or west of it.",
+              "focus": {
+                "zh": "以南",
+                "en": "south of"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L16-1-10",
+                "B3L05-2-10"
+              ],
+              "grammarIds": [
+                "B3L05-G07-P144"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-2-4",
+              "choices": [
+                {
+                  "traditional": "一直",
+                  "simplified": "一直",
+                  "pinyin": "yìzhí",
+                  "english": "all the time"
+                },
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had no choice but"
+                },
+                {
+                  "traditional": "甚至",
+                  "simplified": "甚至",
+                  "pinyin": "shènzhì",
+                  "english": "even"
+                },
+                {
+                  "traditional": "從不",
+                  "simplified": "从不",
+                  "pinyin": "cóngbù",
+                  "english": "never"
+                }
+              ],
+              "key": 2,
+              "why": "一些老房子塌了，甚至連學校的牆也倒了: 甚至 with 連……也 adds the most surprising damage.",
+              "focus": {
+                "zh": "甚至",
+                "en": "even"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-2-15",
+                "B3L05-1-30"
+              ],
+              "grammarIds": [
+                "B3L05-G06-P143"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-2-5",
+              "choices": [
+                {
+                  "traditional": "親眼",
+                  "simplified": "亲眼",
+                  "pinyin": "qīnyǎn",
+                  "english": "with one's own eyes"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                },
+                {
+                  "traditional": "本來",
+                  "simplified": "本来",
+                  "pinyin": "běnlái",
+                  "english": "originally"
+                },
+                {
+                  "traditional": "一連",
+                  "simplified": "一连",
+                  "pinyin": "yìlián",
+                  "english": "in a row"
+                }
+              ],
+              "key": 3,
+              "why": "一連發生了五次小地震: five small quakes happened one after another. 親眼 (with one's own eyes) and 本來 (originally) do not fit a count of events, and 終於 would mean the quakes were long awaited.",
+              "focus": {
+                "zh": "一連",
+                "en": "in a row"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-35",
+                "B3L05-1-01"
+              ],
+              "grammarIds": [
+                "B3L05-G02-P130"
+              ]
+            },
+            {
+              "id": "b3l05-cloze-storm-2-6",
+              "choices": [
+                {
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "english": "because"
+                },
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as a result"
+                },
+                {
+                  "traditional": "為了",
+                  "simplified": "为了",
+                  "pinyin": "wèile",
+                  "english": "in order to"
+                },
+                {
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "english": "otherwise"
+                }
+              ],
+              "key": 1,
+              "why": "Nobody dared to sleep, 結果 (as a result) many slept in class the next day. 因為 would make sleeping in class the cause, 為了 would make it a goal, and 要不然 (otherwise) makes no sense here.",
+              "focus": {
+                "zh": "結果",
+                "en": "as a result"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-2-09"
+              ],
+              "grammarIds": [
+                "B3L05-G05-P141"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l05-reading-card-1",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "颱風天通知",
+            "simplified": "台风天通知",
+            "pinyin": "Táifēng tiān tōngzhī",
+            "english": "Typhoon Notice"
+          },
+          "text": {
+            "traditional": "因為颱風快要到了，運動中心這幾天的時間有一些改變：\n健身房：11月18日只能使用到中午12:00，19日休息。\n游泳池：18日、19日休息。20日到22日來游泳，不用買票。\n20日開始，所有地方的時間都跟平常一樣。\n運動中心 11/17",
+            "simplified": "因为台风快要到了，运动中心这几天的时间有一些改变：\n健身房：11月18日只能使用到中午12:00，19日休息。\n游泳池：18日、19日休息。20日到22日来游泳，不用买票。\n20日开始，所有地方的时间都跟平常一样。\n运动中心 11/17",
+            "pinyin": "Yīnwèi táifēng kuài yào dào le, yùndòng zhōngxīn zhè jǐ tiān de shíjiān yǒu yìxiē gǎibiàn: Jiànshēnfáng: shíyī yuè shíbā rì zhǐ néng shǐyòng dào zhōngwǔ shí'èr diǎn, shíjiǔ rì xiūxí. Yóuyǒngchí: shíbā rì, shíjiǔ rì xiūxí. Èrshí rì dào èrshí'èr rì lái yóuyǒng, búyòng mǎi piào. Èrshí rì kāishǐ, suǒyǒu dìfāng de shíjiān dōu gēn píngcháng yíyàng. Yùndòng zhōngxīn, shíyī yuè shíqī rì.",
+            "english": "The typhoon is coming soon, so the sports center's hours change for a few days:\nGym: on 11/18 open only until 12:00 noon; closed on the 19th.\nPool: closed on the 18th and 19th. From the 20th to the 22nd, swimming is free (no ticket needed).\nFrom the 20th, everything keeps its usual hours.\nSports Center, 11/17"
+          },
+          "questions": [
+            {
+              "id": "b3l05-reading-card-1-1",
+              "prompt": {
+                "traditional": "11月18日，健身房會怎麼樣？",
+                "simplified": "11月18日，健身房会怎么样？",
+                "pinyin": "Shíyī yuè shíbā rì, jiànshēnfáng huì zěnmeyàng?",
+                "english": "What happens at the gym on November 18?"
+              },
+              "choices": [
+                {
+                  "traditional": "時間跟平常一樣",
+                  "simplified": "时间跟平常一样",
+                  "pinyin": "Shíjiān gēn píngcháng yíyàng.",
+                  "english": "Its hours are as usual."
+                },
+                {
+                  "traditional": "下午就不能用了",
+                  "simplified": "下午就不能用了",
+                  "pinyin": "Xiàwǔ jiù bù néng yòng le.",
+                  "english": "It can't be used in the afternoon."
+                },
+                {
+                  "traditional": "那天整天休息",
+                  "simplified": "那天整天休息",
+                  "pinyin": "Nà tiān zhěng tiān xiūxí.",
+                  "english": "It is closed all day."
+                },
+                {
+                  "traditional": "早上不能去運動",
+                  "simplified": "早上不能去运动",
+                  "pinyin": "Zǎoshàng bù néng qù yùndòng.",
+                  "english": "People can't go in the morning."
+                }
+              ],
+              "key": 1,
+              "why": "健身房：11月18日只能使用到中午12:00: on the 18th the gym is open only until noon, so not in the afternoon. It is closed all day only on the 19th, and usual hours come back on the 20th.",
+              "focus": {
+                "zh": "只能使用到中午",
+                "en": "open until noon"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B2L10-1-07",
+                "B3L02-1-13"
+              ]
+            },
+            {
+              "id": "b3l05-reading-card-1-2",
+              "prompt": {
+                "traditional": "11月20日去游泳的人，會怎麼樣？",
+                "simplified": "11月20日去游泳的人，会怎么样？",
+                "pinyin": "Shíyī yuè èrshí rì qù yóuyǒng de rén, huì zěnmeyàng?",
+                "english": "What happens to people who go swimming on November 20?"
+              },
+              "choices": [
+                {
+                  "traditional": "中午以後不能游泳",
+                  "simplified": "中午以后不能游泳",
+                  "pinyin": "Zhōngwǔ yǐhòu bù néng yóuyǒng.",
+                  "english": "They cannot swim after noon."
+                },
+                {
+                  "traditional": "游泳時間比較長",
+                  "simplified": "游泳时间比较长",
+                  "pinyin": "Yóuyǒng shíjiān bǐjiào cháng.",
+                  "english": "Swimming hours are longer."
+                },
+                {
+                  "traditional": "還是不能去游泳",
+                  "simplified": "还是不能去游泳",
+                  "pinyin": "Háishì bù néng qù yóuyǒng.",
+                  "english": "They still cannot swim."
+                },
+                {
+                  "traditional": "可以免費去游泳",
+                  "simplified": "可以免费去游泳",
+                  "pinyin": "Kěyǐ miǎnfèi qù yóuyǒng.",
+                  "english": "They can swim for free."
+                }
+              ],
+              "key": 3,
+              "why": "20日到22日來游泳，不用買票: from the 20th the pool is free. Its hours are back to normal then, and the noon closing is the gym's rule on the 18th.",
+              "focus": {
+                "zh": "不用買票",
+                "en": "no ticket needed"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L13-2-03",
+                "B1L06-1-12"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-reading-card-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "大家好：\n颱風明天就會到，學校已經通知明天不用上課，所以明天的考試改到下星期三，時間和教室都不變。\n颱風天請大家留在家裡，不要出門。萬一宿舍停電，可以到學生活動中心，那裡有電，也有食物。\n下星期一要交的報告，用電子郵件寄給我就可以了。\n吳老師",
+            "simplified": "大家好：\n台风明天就会到，学校已经通知明天不用上课，所以明天的考试改到下星期三，时间和教室都不变。\n台风天请大家留在家里，不要出门。万一宿舍停电，可以到学生活动中心，那里有电，也有食物。\n下星期一要交的报告，用电子邮件寄给我就可以了。\n吴老师",
+            "pinyin": "Dàjiā hǎo: Táifēng míngtiān jiù huì dào, xuéxiào yǐjīng tōngzhī míngtiān búyòng shàngkè, suǒyǐ míngtiān de kǎoshì gǎi dào xià xīngqísān, shíjiān hé jiàoshì dōu bú biàn. Táifēng tiān qǐng dàjiā liú zài jiālǐ, búyào chūmén. Wànyī sùshè tíngdiàn, kěyǐ dào xuéshēng huódòng zhōngxīn, nàlǐ yǒu diàn, yě yǒu shíwù. Xià xīngqíyī yào jiāo de bàogào, yòng diànzǐ yóujiàn jì gěi wǒ jiù kěyǐ le. Wú lǎoshī",
+            "english": "Hello, everyone,\nThe typhoon arrives tomorrow, and the school has announced there will be no classes, so tomorrow's test moves to next Wednesday, at the same time and in the same classroom.\nOn the typhoon day please stay at home and don't go out. If the dorm happens to lose power, you can go to the Student Activity Center, which has power and food.\nThe report due next Monday can simply be sent to me by email.\nTeacher Wu"
+          },
+          "questions": [
+            {
+              "id": "b3l05-reading-card-2-1",
+              "prompt": {
+                "traditional": "明天的考試會怎麼樣？",
+                "simplified": "明天的考试会怎么样？",
+                "pinyin": "Míngtiān de kǎoshì huì zěnmeyàng?",
+                "english": "What will happen to tomorrow's test?"
+              },
+              "choices": [
+                {
+                  "traditional": "改在活動中心考",
+                  "simplified": "改在活动中心考",
+                  "pinyin": "Gǎi zài huódòng zhōngxīn kǎo.",
+                  "english": "It will be held at the activity center."
+                },
+                {
+                  "traditional": "明天還是一樣考",
+                  "simplified": "明天还是一样考",
+                  "pinyin": "Míngtiān háishì yíyàng kǎo.",
+                  "english": "It is still tomorrow as planned."
+                },
+                {
+                  "traditional": "等下個星期再考",
+                  "simplified": "等下个星期再考",
+                  "pinyin": "Děng xià ge xīngqí zài kǎo.",
+                  "english": "It will be next week."
+                },
+                {
+                  "traditional": "改在家裡考",
+                  "simplified": "改在家里考",
+                  "pinyin": "Gǎi zài jiālǐ kǎo.",
+                  "english": "It will be taken at home."
+                }
+              ],
+              "key": 2,
+              "why": "考試改到下星期三，時間和教室都不變: the test moves to next Wednesday, in the same room. Staying at home (留在家裡) is only for the typhoon day, and the activity center is for dorm students without power.",
+              "focus": {
+                "zh": "改到",
+                "en": "moved to"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L09-3-14",
+                "B2L10-1-06"
+              ]
+            },
+            {
+              "id": "b3l05-reading-card-2-2",
+              "prompt": {
+                "traditional": "學生要怎麼交下星期一的報告？",
+                "simplified": "学生要怎么交下星期一的报告？",
+                "pinyin": "Xuéshēng yào zěnme jiāo xià xīngqíyī de bàogào?",
+                "english": "How should students hand in next Monday's report?"
+              },
+              "choices": [
+                {
+                  "traditional": "上網寄給老師",
+                  "simplified": "上网寄给老师",
+                  "pinyin": "Shàngwǎng jì gěi lǎoshī.",
+                  "english": "Send it to the teacher online."
+                },
+                {
+                  "traditional": "考試那天再交",
+                  "simplified": "考试那天再交",
+                  "pinyin": "Kǎoshì nà tiān zài jiāo.",
+                  "english": "Hand it in on the day of the test."
+                },
+                {
+                  "traditional": "拿到老師的辦公室",
+                  "simplified": "拿到老师的办公室",
+                  "pinyin": "Ná dào lǎoshī de bàngōngshì.",
+                  "english": "Take it to the teacher's office."
+                },
+                {
+                  "traditional": "請同學帶給老師",
+                  "simplified": "请同学带给老师",
+                  "pinyin": "Qǐng tóngxué dài gěi lǎoshī.",
+                  "english": "Ask a classmate to take it to the teacher."
+                }
+              ],
+              "key": 0,
+              "why": "用電子郵件寄給我就可以了: the report goes to the teacher by email (上網寄). The test moves to next Wednesday, but the report is due on Monday, and the message says nothing about the office or classmates.",
+              "focus": {
+                "zh": "電子郵件",
+                "en": "email"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B1L13-1-02",
+                "B2L09-2-10",
+                "B2L09-2-14"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passage-ready",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l05-passage-ready-1",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "門口的箱子",
+            "simplified": "门口的箱子",
+            "pinyin": "Ménkǒu de xiāngzi",
+            "english": "The Box by the Door"
+          },
+          "text": {
+            "traditional": "在臺灣，大家對地震已經很習慣了，很多人覺得小地震沒什麼，不必特別準備。我以前也這麼想。可是去年一場大地震以後，我家附近的路壞了，車開不進來，超市一連好幾天都買不到水和電池。家裡的水很快就喝完了，我們一家人只好向鄰居借。從那時候起，我家門口就放了一個箱子，裡面有水、餅乾、電池、收音機和一些藥。我每半年檢查一次，把舊的東西換掉。朋友笑我太緊張了，可是我覺得，這些東西花不了多少錢，萬一真的又發生大地震，就能幫上很大的忙。",
+            "simplified": "在台湾，大家对地震已经很习惯了，很多人觉得小地震没什么，不必特别准备。我以前也这么想。可是去年一场大地震以后，我家附近的路坏了，车开不进来，超市一连好几天都买不到水和电池。家里的水很快就喝完了，我们一家人只好向邻居借。从那时候起，我家门口就放了一个箱子，里面有水、饼干、电池、收音机和一些药。我每半年检查一次，把旧的东西换掉。朋友笑我太紧张了，可是我觉得，这些东西花不了多少钱，万一真的又发生大地震，就能帮上很大的忙。",
+            "pinyin": "Zài Táiwān, dàjiā duì dìzhèn yǐjīng hěn xíguàn le, hěn duō rén juéde xiǎo dìzhèn méi shénme, búbì tèbié zhǔnbèi. Wǒ yǐqián yě zhème xiǎng. Kěshì qùnián yì chǎng dà dìzhèn yǐhòu, wǒ jiā fùjìn de lù huài le, chē kāi bú jìnlái, chāoshì yìlián hǎo jǐ tiān dōu mǎi bú dào shuǐ hé diànchí. Jiālǐ de shuǐ hěn kuài jiù hē wán le, wǒmen yì jiā rén zhǐhǎo xiàng línjū jiè. Cóng nà shíhòu qǐ, wǒ jiā ménkǒu jiù fàng le yí ge xiāngzi, lǐmiàn yǒu shuǐ, bǐnggān, diànchí, shōuyīnjī hé yìxiē yào. Wǒ měi bàn nián jiǎnchá yí cì, bǎ jiù de dōngxi huàn diào. Péngyǒu xiào wǒ tài jǐnzhāng le, kěshì wǒ juéde, zhèxiē dōngxi huā bù liǎo duōshǎo qián, wànyī zhēn de yòu fāshēng dà dìzhèn, jiù néng bāng shàng hěn dà de máng.",
+            "english": "In Taiwan people are used to earthquakes, and many think small quakes are nothing and need no special preparation. I used to think so too. But after a big quake last year, the roads near my home were damaged and cars could not get in, so for several days in a row the supermarket had no water or batteries to buy. The water at home was soon gone, and my family had to borrow some from the neighbors. Since then I have kept a box by my front door with water, biscuits, batteries, a radio and some medicine. I check it every six months and replace old things. My friends laugh that I am too nervous, but I think these things cost very little, and if a big quake really happens again, they will be a great help."
+          },
+          "questions": [
+            {
+              "id": "b3l05-passage-ready-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人覺得準備這些東西怎麼樣？",
+                "simplified": "写这篇文章的人觉得准备这些东西怎么样？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén juéde zhǔnbèi zhèxiē dōngxi zěnmeyàng?",
+                "english": "What does the writer think about keeping these things ready?"
+              },
+              "choices": [
+                {
+                  "traditional": "花錢不多，需要時很有用",
+                  "simplified": "花钱不多，需要时很有用",
+                  "pinyin": "Huā qián bù duō, xūyào shí hěn yǒuyòng.",
+                  "english": "It costs little and is very useful when needed."
+                },
+                {
+                  "traditional": "要花不少錢，可是很有用",
+                  "simplified": "要花不少钱，可是很有用",
+                  "pinyin": "Yào huā bù shǎo qián, kěshì hěn yǒuyòng.",
+                  "english": "It costs quite a lot, but it is very useful."
+                },
+                {
+                  "traditional": "東西可以放很久，不必換",
+                  "simplified": "东西可以放很久，不必换",
+                  "pinyin": "Dōngxi kěyǐ fàng hěn jiǔ, búbì huàn.",
+                  "english": "The things keep a long time and need no changing."
+                },
+                {
+                  "traditional": "小地震的時候也用得到",
+                  "simplified": "小地震的时候也用得到",
+                  "pinyin": "Xiǎo dìzhèn de shíhòu yě yòng de dào.",
+                  "english": "It is useful in small earthquakes too."
+                }
+              ],
+              "key": 0,
+              "why": "這些東西花不了多少錢，萬一真的又發生大地震，就能幫上很大的忙: the box costs little and would help a lot in a big quake. The writer replaces old things every six months (把舊的東西換掉), and small quakes are what people think need nothing.",
+              "focus": {
+                "zh": "花不了多少錢",
+                "en": "the writer's view"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-32",
+                "B3L05-1-01"
+              ],
+              "grammarIds": [
+                "B3L05-G01-P128"
+              ]
+            },
+            {
+              "id": "b3l05-passage-ready-1-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人為什麼開始準備這個箱子？",
+                "simplified": "写这篇文章的人为什么开始准备这个箱子？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme kāishǐ zhǔnbèi zhège xiāngzi?",
+                "english": "Why did the writer start keeping this box?"
+              },
+              "choices": [
+                {
+                  "traditional": "地震後鄰居來借過水",
+                  "simplified": "地震后邻居来借过水",
+                  "pinyin": "Dìzhèn hòu línjū lái jiè guo shuǐ.",
+                  "english": "After the quake the neighbours came to borrow water."
+                },
+                {
+                  "traditional": "朋友說這樣比較安全",
+                  "simplified": "朋友说这样比较安全",
+                  "pinyin": "Péngyǒu shuō zhèyàng bǐjiào ānquán.",
+                  "english": "Friends said it was safer."
+                },
+                {
+                  "traditional": "臺灣的小地震很多",
+                  "simplified": "台湾的小地震很多",
+                  "pinyin": "Táiwān de xiǎo dìzhèn hěn duō.",
+                  "english": "Taiwan has many small earthquakes."
+                },
+                {
+                  "traditional": "地震後家裡的水不夠",
+                  "simplified": "地震后家里的水不够",
+                  "pinyin": "Dìzhèn hòu jiālǐ de shuǐ bú gòu.",
+                  "english": "After the quake the family ran short of water."
+                }
+              ],
+              "key": 3,
+              "why": "家裡的水很快就喝完了……只好向鄰居借。從那時候起: after the big quake the family ran out of water and could not buy more. It was the writer's family who borrowed from the neighbours, the friends laugh at the box, and small quakes are what the writer once thought needed nothing.",
+              "focus": {
+                "zh": "一連",
+                "en": "in a row"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-35",
+                "B3L05-1-01"
+              ],
+              "grammarIds": [
+                "B3L05-G02-P130"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-passage-ready-2",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "颱風天放假",
+            "simplified": "台风天放假",
+            "pinyin": "Táifēng tiān fàngjià",
+            "english": "A Typhoon Day Off"
+          },
+          "text": {
+            "traditional": "在臺灣，颱風來的時候，如果風雨太大，學校和公司就會放假。很多學生一聽到颱風天要放假就很高興，有的約朋友去看電影，有的在家玩一整天的遊戲。以前我也是這樣。可是有一年，外婆住的山區發生了水災，她的屋子被破壞得很嚴重，我們一家人花了一個星期才把房子整理好。從那次以後，我就不再覺得颱風天放假是一件快樂的事了。我認為，颱風天放假是為了大家的生命安全，不是讓大家出去玩的。颱風天出門很危險，萬一發生意外，還得麻煩救災人員。",
+            "simplified": "在台湾，台风来的时候，如果风雨太大，学校和公司就会放假。很多学生一听到台风天要放假就很高兴，有的约朋友去看电影，有的在家玩一整天的游戏。以前我也是这样。可是有一年，外婆住的山区发生了水灾，她的屋子被破坏得很严重，我们一家人花了一个星期才把房子整理好。从那次以后，我就不再觉得台风天放假是一件快乐的事了。我认为，台风天放假是为了大家的生命安全，不是让大家出去玩的。台风天出门很危险，万一发生意外，还得麻烦救灾人员。",
+            "pinyin": "Zài Táiwān, táifēng lái de shíhòu, rúguǒ fēngyǔ tài dà, xuéxiào hé gōngsī jiù huì fàngjià. Hěn duō xuéshēng yì tīngdào táifēng tiān yào fàngjià jiù hěn gāoxìng, yǒu de yuē péngyǒu qù kàn diànyǐng, yǒu de zài jiā wán yì zhěng tiān de yóuxì. Yǐqián wǒ yě shì zhèyàng. Kěshì yǒu yì nián, wàipó zhù de shānqū fāshēng le shuǐzāi, tā de wūzi bèi pòhuài de hěn yánzhòng, wǒmen yì jiā rén huā le yí ge xīngqí cái bǎ fángzi zhěnglǐ hǎo. Cóng nà cì yǐhòu, wǒ jiù bú zài juéde táifēng tiān fàngjià shì yí jiàn kuàilè de shì le. Wǒ rènwéi, táifēng tiān fàngjià shì wèile dàjiā de shēngmìng ānquán, bú shì ràng dàjiā chūqù wán de. Táifēng tiān chūmén hěn wéixiǎn, wànyī fāshēng yìwài, hái děi máfán jiùzāi rényuán.",
+            "english": "In Taiwan, when a typhoon brings very strong wind and rain, schools and companies close for the day. Many students are happy as soon as they hear there is a typhoon day off: some go to the movies with friends, some play games at home all day. I used to be like that. But one year there was a flood in the mountains where my grandmother lives. Her house was badly damaged, and it took my family a week to clean it up. Since then I no longer think a typhoon day off is a happy thing. I believe the day off is for everyone's safety, not for going out to play. Going out in a typhoon is dangerous, and if an accident happens, rescue workers have to come for you."
+          },
+          "questions": [
+            {
+              "id": "b3l05-passage-ready-2-1",
+              "prompt": {
+                "traditional": "這篇文章主要想說什麼？",
+                "simplified": "这篇文章主要想说什么？",
+                "pinyin": "Zhè piān wénzhāng zhǔyào xiǎng shuō shénme?",
+                "english": "What is this passage mainly saying?"
+              },
+              "choices": [
+                {
+                  "traditional": "颱風天應該留在家裡",
+                  "simplified": "台风天应该留在家里",
+                  "pinyin": "Táifēng tiān yīnggāi liú zài jiālǐ.",
+                  "english": "On typhoon days people should stay at home."
+                },
+                {
+                  "traditional": "颱風前要先整理好房子",
+                  "simplified": "台风前要先整理好房子",
+                  "pinyin": "Táifēng qián yào xiān zhěnglǐ hǎo fángzi.",
+                  "english": "Tidy the house before a typhoon comes."
+                },
+                {
+                  "traditional": "颱風天可以去災區幫忙",
+                  "simplified": "台风天可以去灾区帮忙",
+                  "pinyin": "Táifēng tiān kěyǐ qù zāiqū bāngmáng.",
+                  "english": "On typhoon days people can help in disaster areas."
+                },
+                {
+                  "traditional": "颱風天要注意新聞消息",
+                  "simplified": "台风天要注意新闻消息",
+                  "pinyin": "Táifēng tiān yào zhùyì xīnwén xiāoxí.",
+                  "english": "On typhoon days people should follow the news."
+                }
+              ],
+              "key": 0,
+              "why": "颱風天放假是為了大家的生命安全……颱風天出門很危險: the day off is for staying safe, not for going out. Going out to help only makes work for rescue workers, the grandmother's house was tidied after the flood, and the news is never mentioned.",
+              "focus": {
+                "zh": "主要想說什麼",
+                "en": "main idea"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-02",
+                "B3L05-2-37",
+                "B3L05-1-34"
+              ]
+            },
+            {
+              "id": "b3l05-passage-ready-2-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人為什麼改變了對颱風天放假的想法？",
+                "simplified": "写这篇文章的人为什么改变了对台风天放假的想法？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme gǎibiàn le duì táifēng tiān fàngjià de xiǎngfǎ?",
+                "english": "Why did the writer change their view of typhoon days off?"
+              },
+              "choices": [
+                {
+                  "traditional": "朋友在颱風天受傷了",
+                  "simplified": "朋友在台风天受伤了",
+                  "pinyin": "Péngyǒu zài táifēng tiān shòushāng le.",
+                  "english": "A friend got hurt on a typhoon day."
+                },
+                {
+                  "traditional": "外婆家遇到了水災",
+                  "simplified": "外婆家遇到了水灾",
+                  "pinyin": "Wàipó jiā yùdào le shuǐzāi.",
+                  "english": "The grandmother's home was hit by a flood."
+                },
+                {
+                  "traditional": "看到救災人員很辛苦",
+                  "simplified": "看到救灾人员很辛苦",
+                  "pinyin": "Kàndào jiùzāi rényuán hěn xīnkǔ.",
+                  "english": "The writer saw how hard rescue workers work."
+                },
+                {
+                  "traditional": "家裡停了好幾天電",
+                  "simplified": "家里停了好几天电",
+                  "pinyin": "Jiālǐ tíng le hǎojǐ tiān diàn.",
+                  "english": "The power at home was out for days."
+                }
+              ],
+              "key": 1,
+              "why": "外婆住的山區發生了水災，她的屋子被破壞得很嚴重……從那次以後: after the flood damaged the grandmother's home, the writer stopped seeing the day off as fun. Rescue workers come up only as people a risky trip out would trouble, and the passage mentions no injured friend or power cut.",
+              "focus": {
+                "zh": "水災",
+                "en": "flood"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-29",
+                "B3L05-1-20",
+                "B3L04-2-15"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-passage",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l05-review-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "我從小就喜歡演戲，夢想是當一名演員。十六歲那年，學校有一場表演，我第一次演一個重要的角色，可是因為太緊張而忘了下一句要說什麼，只演了一半就停了下來。那天回家以後，我哭了很久，覺得自己不可能成功。我媽媽對我說：「就算這次演得不好，也不代表你沒有實力。只要不斷練習，一定會有人肯定你。」後來，我每天下課都練習兩個小時，還請朋友把我演的戲錄下來，放在網路上。現在，我演的戲已經有好幾萬人看過了，也有觀眾寫信告訴我，他們很喜歡我的表演。我可以說是離夢想越來越近了。",
+            "simplified": "我从小就喜欢演戏，梦想是当一名演员。十六岁那年，学校有一场表演，我第一次演一个重要的角色，可是因为太紧张而忘了下一句要说什么，只演了一半就停了下来。那天回家以后，我哭了很久，觉得自己不可能成功。我妈妈对我说：「就算这次演得不好，也不代表你没有实力。只要不断练习，一定会有人肯定你。」后来，我每天下课都练习两个小时，还请朋友把我演的戏录下来，放在网路上。现在，我演的戏已经有好几万人看过了，也有观众写信告诉我，他们很喜欢我的表演。我可以说是离梦想越来越近了。",
+            "pinyin": "Wǒ cóngxiǎo jiù xǐhuān yǎnxì, mèngxiǎng shì dāng yì míng yǎnyuán. Shíliù suì nà nián, xuéxiào yǒu yì chǎng biǎoyǎn, wǒ dì yī cì yǎn yí ge zhòngyào de jiǎosè, kěshì yīnwèi tài jǐnzhāng ér wàng le xià yí jù yào shuō shénme, zhǐ yǎn le yíbàn jiù tíng le xiàlái. Nà tiān huí jiā yǐhòu, wǒ kū le hěn jiǔ, juéde zìjǐ bù kěnéng chénggōng. Wǒ māma duì wǒ shuō: “Jiùsuàn zhè cì yǎn de bù hǎo, yě bú dàibiǎo nǐ méiyǒu shílì. Zhǐyào búduàn liànxí, yídìng huì yǒu rén kěndìng nǐ.” Hòulái, wǒ měi tiān xiàkè dōu liànxí liǎng ge xiǎoshí, hái qǐng péngyǒu bǎ wǒ yǎn de xì lù xiàlái, fàng zài wǎnglù shàng. Xiànzài, wǒ yǎn de xì yǐjīng yǒu hǎojǐ wàn rén kàn guo le, yě yǒu guānzhòng xiě xìn gàosu wǒ, tāmen hěn xǐhuān wǒ de biǎoyǎn. Wǒ kěyǐ shuō shì lí mèngxiǎng yuè lái yuè jìn le.",
+            "english": "I have loved acting since I was little, and my dream is to be an actor. At sixteen, in a school show, I played an important role for the first time, but I was so nervous that I forgot my next line and stopped halfway through. When I got home that day I cried for a long time and felt I could never succeed. My mother said to me, \"Even if you didn't act well this time, it doesn't mean you have no talent. If you keep practising, someone will surely see how good you are.\" After that I practised for two hours every day after class, and I asked friends to film my acting and put it online. Now tens of thousands of people have watched it, and some viewers have written to tell me they love my acting. You could say I am getting closer and closer to my dream."
+          },
+          "questions": [
+            {
+              "id": "b3l05-review-passage-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人十六歲那年的表演，為什麼只演了一半？",
+                "simplified": "写这篇文章的人十六岁那年的表演，为什么只演了一半？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén shíliù suì nà nián de biǎoyǎn, wèishénme zhǐ yǎn le yíbàn?",
+                "english": "Why did the writer stop halfway through the show at sixteen?"
+              },
+              "choices": [
+                {
+                  "traditional": "身體突然不舒服",
+                  "simplified": "身体突然不舒服",
+                  "pinyin": "Shēntǐ túrán bù shūfu.",
+                  "english": "The writer suddenly felt ill."
+                },
+                {
+                  "traditional": "別的演員說錯了",
+                  "simplified": "别的演员说错了",
+                  "pinyin": "Bié de yǎnyuán shuō cuò le.",
+                  "english": "Another actor said the wrong line."
+                },
+                {
+                  "traditional": "表演的時間不夠了",
+                  "simplified": "表演的时间不够了",
+                  "pinyin": "Biǎoyǎn de shíjiān bú gòu le.",
+                  "english": "There was not enough time for the show."
+                },
+                {
+                  "traditional": "想不起來下面的話",
+                  "simplified": "想不起来下面的话",
+                  "pinyin": "Xiǎng bù qǐlái xiàmiàn de huà.",
+                  "english": "The writer could not recall what came next."
+                }
+              ],
+              "key": 3,
+              "why": "因為太緊張而忘了下一句要說什麼，只演了一半就停了下來: nerves made the writer forget the next line. It was the writer, not another actor, who went wrong, and the passage says nothing about feeling ill or about time.",
+              "focus": {
+                "zh": "因為……而……",
+                "en": "because … (so)"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-2-02",
+                "B3L01-1-23",
+                "B1L09-3-12"
+              ],
+              "grammarIds": [
+                "B3L01-G04-P38"
+              ]
+            },
+            {
+              "id": "b3l05-review-passage-1-2",
+              "prompt": {
+                "traditional": "媽媽說的話是什麼意思？",
+                "simplified": "妈妈说的话是什么意思？",
+                "pinyin": "Māma shuō de huà shì shénme yìsi?",
+                "english": "What did the writer's mother mean?"
+              },
+              "choices": [
+                {
+                  "traditional": "只要多練習，就會成功",
+                  "simplified": "只要多练习，就会成功",
+                  "pinyin": "Zhǐyào duō liànxí, jiù huì chénggōng.",
+                  "english": "With more practice, success will come."
+                },
+                {
+                  "traditional": "這次其實演得還不錯",
+                  "simplified": "这次其实演得还不错",
+                  "pinyin": "Zhè cì qíshí yǎn de hái búcuò.",
+                  "english": "The show actually went quite well."
+                },
+                {
+                  "traditional": "先休息一段時間再演",
+                  "simplified": "先休息一段时间再演",
+                  "pinyin": "Xiān xiūxí yí duàn shíjiān zài yǎn.",
+                  "english": "Rest for a while before acting again."
+                },
+                {
+                  "traditional": "以後先演小一點的角色",
+                  "simplified": "以后先演小一点的角色",
+                  "pinyin": "Yǐhòu xiān yǎn xiǎo yìdiǎn de jiǎosè.",
+                  "english": "Take smaller roles first from now on."
+                }
+              ],
+              "key": 0,
+              "why": "只要不斷練習，一定會有人肯定你: keep practising and people will recognise you, so the dream is still possible. She grants that the show went badly (就算這次演得不好), tells the writer to keep practising rather than rest, and says nothing about smaller roles.",
+              "focus": {
+                "zh": "只要不斷練習",
+                "en": "keep practising"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B3L01-1-13",
+                "B3L01-1-29",
+                "B3L01-2-16"
+              ],
+              "grammarIds": [
+                "B3L01-G06-P42"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l05-review-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "以前我買東西，看上了就買，從來不比價。上個月我想買一雙球鞋，在百貨公司的專櫃看到一雙很喜歡的，要三千八百塊。店員說今天有打折，我差點就買了，可是朋友叫我先上網看看。我上網一看，發現網路上的價錢一家比一家便宜，最便宜的只要兩千五百塊。可是買過的人都說，在那家買很容易吃虧，寄來的鞋子常常是壞掉的。所以我在一家賣兩千八百塊的網路商店買了，那家的顧客都說品質很好，兩天就送到家了。從那次以後，我買東西以前不僅會先比價，還會看看買過的人怎麼說。真是貨比三家不吃虧啊！",
+            "simplified": "以前我买东西，看上了就买，从来不比价。上个月我想买一双球鞋，在百货公司的专柜看到一双很喜欢的，要三千八百块。店员说今天有打折，我差点就买了，可是朋友叫我先上网看看。我上网一看，发现网路上的价钱一家比一家便宜，最便宜的只要两千五百块。可是买过的人都说，在那家买很容易吃亏，寄来的鞋子常常是坏掉的。所以我在一家卖两千八百块的网路商店买了，那家的顾客都说品质很好，两天就送到家了。从那次以后，我买东西以前不仅会先比价，还会看看买过的人怎么说。真是货比三家不吃亏啊！",
+            "pinyin": "Yǐqián wǒ mǎi dōngxi, kànshàng le jiù mǎi, cónglái bù bǐjià. Shàng ge yuè wǒ xiǎng mǎi yì shuāng qiúxié, zài bǎihuò gōngsī de zhuānguì kàndào yì shuāng hěn xǐhuān de, yào sānqiān bābǎi kuài. Diànyuán shuō jīntiān yǒu dǎzhé, wǒ chàdiǎn jiù mǎi le, kěshì péngyǒu jiào wǒ xiān shàngwǎng kànkan. Wǒ shàngwǎng yí kàn, fāxiàn wǎnglù shàng de jiàqián yì jiā bǐ yì jiā piányí, zuì piányí de zhǐ yào liǎngqiān wǔbǎi kuài. Kěshì mǎi guo de rén dōu shuō, zài nà jiā mǎi hěn róngyì chīkuī, jì lái de xiézi chángcháng shì huài diào de. Suǒyǐ wǒ zài yì jiā mài liǎngqiān bābǎi kuài de wǎnglù shāngdiàn mǎi le, nà jiā de gùkè dōu shuō pǐnzhí hěn hǎo, liǎng tiān jiù sòng dào jiā le. Cóng nà cì yǐhòu, wǒ mǎi dōngxi yǐqián bù jǐn huì xiān bǐjià, hái huì kànkan mǎi guo de rén zěnme shuō. Zhēn shì huò bǐ sān jiā bù chīkuī a!",
+            "english": "I used to buy things as soon as I liked them and never compared prices. Last month I wanted a pair of sneakers and saw a pair I liked at a department store counter for NT$3,800. The clerk said they were on sale today, and I nearly bought them, but a friend told me to look online first. When I looked, each online shop was cheaper than the last; the cheapest was only NT$2,500. But people who had bought there all said you easily got a bad deal: the shoes it sent were often damaged. So I bought them from an online shop selling them for NT$2,800. Its customers all said the quality was good, and they reached my home in two days. Since then, before I buy anything, I not only compare prices but also read what other buyers say. It really pays to shop around!"
+          },
+          "questions": [
+            {
+              "id": "b3l05-review-passage-2-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人最後花了多少錢買球鞋？",
+                "simplified": "写这篇文章的人最后花了多少钱买球鞋？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén zuìhòu huā le duōshǎo qián mǎi qiúxié?",
+                "english": "How much did the writer finally pay for the sneakers?"
+              },
+              "choices": [
+                {
+                  "traditional": "兩千五百塊",
+                  "simplified": "两千五百块",
+                  "pinyin": "Liǎngqiān wǔbǎi kuài.",
+                  "english": "NT$2,500."
+                },
+                {
+                  "traditional": "兩千八百塊",
+                  "simplified": "两千八百块",
+                  "pinyin": "Liǎngqiān bābǎi kuài.",
+                  "english": "NT$2,800."
+                },
+                {
+                  "traditional": "三千五百塊",
+                  "simplified": "三千五百块",
+                  "pinyin": "Sānqiān wǔbǎi kuài.",
+                  "english": "NT$3,500."
+                },
+                {
+                  "traditional": "三千八百塊",
+                  "simplified": "三千八百块",
+                  "pinyin": "Sānqiān bābǎi kuài.",
+                  "english": "NT$3,800."
+                }
+              ],
+              "key": 1,
+              "why": "可是買過的人都說，在那家買很容易吃虧……所以我在一家賣兩千八百塊的網路商店買了: NT$2,500 was the cheapest shop, but its buyers said you lose out there, so the writer paid NT$2,800. NT$3,800 was the department store price.",
+              "focus": {
+                "zh": "吃虧",
+                "en": "getting a bad deal"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B3L03-1-02"
+              ],
+              "grammarIds": [
+                "B3L03-G06-P90"
+              ]
+            },
+            {
+              "id": "b3l05-review-passage-2-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人現在買東西以前，除了比價，還會做什麼？",
+                "simplified": "写这篇文章的人现在买东西以前，除了比价，还会做什么？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén xiànzài mǎi dōngxi yǐqián, chúle bǐjià, hái huì zuò shénme?",
+                "english": "Besides comparing prices, what does the writer now do before buying something?"
+              },
+              "choices": [
+                {
+                  "traditional": "會先請朋友幫忙看看",
+                  "simplified": "会先请朋友帮忙看看",
+                  "pinyin": "Huì xiān qǐng péngyǒu bāngmáng kànkan.",
+                  "english": "Asks a friend to take a look first."
+                },
+                {
+                  "traditional": "會等東西打折再買",
+                  "simplified": "会等东西打折再买",
+                  "pinyin": "Huì děng dōngxi dǎzhé zài mǎi.",
+                  "english": "Waits for a sale before buying."
+                },
+                {
+                  "traditional": "會看用過的人的意見",
+                  "simplified": "会看用过的人的意见",
+                  "pinyin": "Huì kàn yòng guo de rén de yìjiàn.",
+                  "english": "Reads what people who used it think."
+                },
+                {
+                  "traditional": "會先看是哪國做的",
+                  "simplified": "会先看是哪国做的",
+                  "pinyin": "Huì xiān kàn shì nǎ guó zuò de.",
+                  "english": "Checks which country made it."
+                }
+              ],
+              "key": 2,
+              "why": "不僅會先比價，還會看看買過的人怎麼說: besides comparing prices, the writer now reads what other buyers say. The friend gave advice only that one time, the sale was only something the clerk mentioned, and where things are made is never mentioned.",
+              "focus": {
+                "zh": "不僅……，還……",
+                "en": "not only … but also"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B3L03-2-03",
+                "B3L03-2-01",
+                "B3L03-1-34"
+              ],
+              "grammarIds": [
+                "B3L03-G05-P88"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

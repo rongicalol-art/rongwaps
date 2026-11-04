@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { LEGAL_ROUTES } from '../../app/routes';
+import { isPublicLaunched } from './legalMeta';
 import { ContactLink, LegalList, LegalParagraph, LegalSection, LegalSummary, legalLinkClass } from './LegalBlocks';
 
 const SUMMARY = [
@@ -60,8 +61,9 @@ export function AboutContent() {
 
       <LegalSection title="Beta">
         <LegalParagraph>
-          The beta is open to Shu-Te University students who sign in with their school Google account. Books 1
-          to 3 are available now; Book 4 will open when it is ready. Things may change or break, and your
+          {isPublicLaunched()
+            ? 'The beta is open to anyone 18 or older with a Google account.'
+            : 'The beta is open to Shu-Te University students who sign in with their school Google account.'} Books 1 to 3 are available now; Book 4 will open when it is ready. Things may change or break, and your
           feedback decides what gets built next.
         </LegalParagraph>
       </LegalSection>

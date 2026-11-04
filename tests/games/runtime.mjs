@@ -372,6 +372,52 @@ try {
   send(bob, { t: 'sub', online: false, chat: 101 });
   await until(() => last(bob, 'history')?.l === 101);
 
+  // Blocks: a pair is hidden from each other everywhere in the Lobby, and only that pair.
+  const carol = await open('/lobby/socket', 'lobby', (await post('/lobby', 'carol')).ticket);
+  const dave = await open('/lobby/socket', 'lobby', (await post('/lobby', 'dave')).ticket);
+  const erin = await open('/lobby/socket', 'lobby', (await post('/lobby', 'erin')).ticket);
+  await until(() => last(carol, 'me') && last(dave, 'me') && last(erin, 'me'));
+  for (const client of [carol, dave, erin]) {
+    send(client, { t: 'here', l: 305, a: 'cards', show: true });
+    send(client, { t: 'sub', online: false, chat: 305 });
+  }
+  const sees = (client, uid) => (last(client, 'people')?.v ?? []).some(person => person.u === uid);
+  await until(() => sees(carol, 'dave') && sees(dave, 'carol') && sees(erin, 'carol'));
+  send(dave, { t: 'say', l: 305, text: 'before the block' });
+  await until(() => last(carol, 'msg')?.m.t === 'before the block');
+  send(carol, { t: 'blocks', v: ['dave', 'carol'] });
+  await until(() => !sees(carol, 'dave') && !sees(dave, 'carol'));
+  assert.ok(sees(erin, 'carol') && sees(erin, 'dave') && sees(carol, 'erin'), 'only the blocked pair is hidden');
+  assert.ok(!last(carol, 'history').v.some(line => line.u === 'dave'), 'their earlier lines leave the blocker’s chat');
+  const carolLines = carol.frames.filter(frame => frame.t === 'msg').length;
+  await delay(1100);
+  send(dave, { t: 'say', l: 305, text: 'after the block', mentions: ['carol'] });
+  await until(() => last(erin, 'msg')?.m.t === 'after the block');
+  assert.equal(carol.frames.filter(frame => frame.t === 'msg').length, carolLines, 'no live lines from a blocked person');
+  assert.ok(!carol.frames.some(frame => frame.t === 'mention' && frame.v.message.u === 'dave'), 'no mentions either');
+  send(dave, { t: 'cheer', to: ['carol', 'erin'], p: 0 });
+  send(dave, { t: 'card-ask', u: 'carol' });
+  await until(() => last(erin, 'cheer')?.from.u === 'dave');
+  await delay(150);
+  assert.ok(!last(carol, 'cheer') && !last(carol, 'card-ask'), 'no cheers or profile visits across a block');
+  send(dave, { t: 'sub', online: true, chat: 305 });
+  await until(() => last(dave, 'online'));
+  assert.ok(!last(dave, 'online').v.some(person => person.u === 'carol'), 'the blocked person disappears from the Online list too');
+  const blockRows = await mf.unsafeGetDurableObjectStorage('games', 'Lobby', { name: 'main' });
+  assert.deepEqual((await blockRows.exec('SELECT uid, other FROM blocks')).map(row => [row.uid, row.other]), [['carol', 'dave']], 'self-blocks are dropped');
+  send(carol, { t: 'blocks', v: [] });
+  await until(() => sees(carol, 'dave') && sees(dave, 'carol'));
+  assert.equal((await blockRows.exec('SELECT count(*) AS n FROM blocks'))[0].n, 0, 'unblocking removes the pair');
+
+  // Daily limits: chat lines past today's allowance are refused with their own message.
+  const dailyRow = (await blockRows.exec('SELECT data FROM chat_rate WHERE uid=?', 'dave'))[0];
+  const daily = JSON.parse(dailyRow.data);
+  await blockRows.exec('UPDATE chat_rate SET data=? WHERE uid=?', JSON.stringify({ ...daily, n: 300, at: 0, times: [] }), 'dave');
+  send(dave, { t: 'say', l: 305, text: 'one too many' });
+  await until(() => last(dave, 'error'));
+  assert.match(last(dave, 'error').message, /today/);
+  for (const client of [carol, dave, erin]) client.socket.close(1000, 'done');
+
   // A room whose creator never upgraded the socket must expire its reserved seat after the grace period.
   const abandoned = await post('/rooms', 'abandoned', { selection: { lessons: { 1: [1] }, types: [] }, open: true });
   const abandonedSql = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: abandoned.code });

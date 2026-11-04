@@ -62,6 +62,10 @@ export interface LessonTestQuestion {
   focus: { zh: string; en: string };
   /** The lesson this question practises (this lesson or an earlier one). */
   lesson: number;
+  /** The book of `lesson` when it is an earlier book's (a Lesson 1 test reviews the book before). */
+  book?: number;
+  /** A recording with several questions: the line that answers this one (shown in the Fix round). */
+  answerLine?: number;
   /** Vocabulary card ids the question tests: missed words go back into review. */
   wordIds: string[];
   grammarIds?: string[];
@@ -84,14 +88,20 @@ export interface PictureHearItem extends ItemBase {
   picture: { picture: string; alt: string };
 }
 
-/** A short dialogue, a ding, then the question; answers are spoken (Book 1) or printed (`printed`). */
+/**
+ * A dialogue or talk, a ding, then its question(s), whose choices the narrator reads A, B, C(, D). Book 1 only
+ * speaks them; `printed` also prints them (TOCFL Band A's last part and Band B). A recording with several
+ * questions (Band B) opens with the narrator's `intro` and names each question's `answerLine`.
+ */
 export interface DialogueItem extends ItemBase {
   kind: 'dialogue';
+  /** 請聽一段對話（廣播……），然後回答兩個問題。 */
+  intro?: TestLine;
   lines: TestLine[];
-  /** The line that holds the answer (shown in feedback). */
+  /** The line that holds the answer (shown in feedback); a question's own `answerLine` wins. */
   answerLine: number;
   printed?: boolean;
-  /** Times the recording plays in the test (TOCFL: twice at Novice/Band A, once for longer dialogues). */
+  /** Times the recording plays in the test (TOCFL: twice at Novice/Band A, once at Band B). */
   plays?: 1 | 2;
 }
 
@@ -129,10 +139,13 @@ export interface ClozeItem extends ItemBase {
   passage: TestText;
 }
 
-/** A short text (message, notice or passage) with one or more questions. TOCFL 閱讀理解. */
+/**
+ * A short text with one or more questions. TOCFL 閱讀理解. `message`: the last line signs it; `notice`: lines
+ * like 時間：…… are label and value; `table`: one row per line, cells split by ｜, the first row the heading.
+ */
 export interface ReadingItem extends ItemBase {
   kind: 'reading';
-  format: 'message' | 'notice' | 'passage';
+  format: 'message' | 'notice' | 'passage' | 'table';
   title?: TestText;
   text: TestText;
 }

@@ -120,13 +120,16 @@ export function lessonItemIndex(lesson: LessonTestLesson): Map<string, LessonTes
   return new Map(lesson.slots.flatMap((slot) => slot.versions.map((item) => [item.id, item] as const)));
 }
 
-/** Screens in order: paragraphs and cloze passages are one screen; other items show one question each. */
+/**
+ * Screens in order: paragraphs, cloze passages and a recording's questions (it plays once, so all of them are on
+ * screen while it plays, as in the TOCFL booklet) are one screen; other items show one question each.
+ */
 export function lessonTestScreens(lesson: LessonTestLesson, plan: LessonTestPlan): LessonTestScreen[] {
   const byId = lessonItemIndex(lesson);
   return plan.items.flatMap((planned) => {
     const item = byId.get(planned.itemId);
     if (!item) return [];
-    if (item.kind === 'paragraph-bank' || item.kind === 'cloze') {
+    if (item.kind === 'paragraph-bank' || item.kind === 'cloze' || item.kind === 'dialogue') {
       return [{ itemId: item.id, questionIds: item.questions.map((q) => q.id), part: planned.part }];
     }
     return item.questions.map((question) => ({ itemId: item.id, questionIds: [question.id], part: planned.part }));
