@@ -76,7 +76,9 @@ YATING_PACE = {
 # his own ≈ 118 Hz sounded heavy). Pitch does not change his speed.
 YATING_PITCH = {"F": 1.0, "M": 1.3, "N": 1.0}
 # Retakes change the speed only a little, so a retaken line never sounds slower or faster than its neighbours.
-YATING_SPEED_STEPS = (0.0, -0.05, 0.05)
+# Retakes keep the pace within ±0.05; a last, slower take only when all of those fail (short narrator lines can run
+# just past MAX_PACE). Yating's speed is a length factor: a higher value speaks slower.
+YATING_SPEED_STEPS = (0.0, -0.05, 0.05, 0.1)
 YATING_TAKES = [(take, "y") for take in range(len(YATING_SPEED_STEPS))]
 
 
