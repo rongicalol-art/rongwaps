@@ -7,7 +7,7 @@ import { createDictionaryIndex } from '../shared/dictionaryIndex';
 import { sanitizeDictionaryDefinitions } from '../shared/dictionaryDefinitions';
 import { getDictionaryShard } from '../shared/dictionaryShard';
 import { parseMembers, type PartsIndex } from '../shared/parts';
-import { searchByCharacterComponents, segmentChineseQuery, segmentPinyinQuery, type CompactSearchEntry, type SearchResult } from '../shared/dictionarySearch';
+import { courseFields, searchByCharacterComponents, segmentChineseQuery, segmentPinyinQuery, type CompactSearchEntry, type SearchResult } from '../shared/dictionarySearch';
 import type { Flashcard } from '../src/data/flashcards';
 import type { WordExample } from '../src/types/models';
 import type { StudyPack, StudyPart } from '../src/utils/vocabulary/studyPack';
@@ -138,9 +138,7 @@ async function start() {
           results = [...exact, ...results.filter(row => !seen.has(row.simplified) && !seen.has(row.traditional))].slice(0, limit);
           results = results.map(row => {
             const card = course.get(row.traditional) ?? course.get(row.simplified);
-            return card ? { ...row, courseDefinition: card.back, bookId: card.bookId, lessonId: card.lessonId, pos: card.pos,
-              ...(card.pinyin?.trim().toLowerCase() === row.pinyin_accented.trim().toLowerCase() ? { audio: card.audio } : {}),
-            } : row;
+            return card ? { ...row, ...courseFields(row, card) } : row;
           });
           cache.set(key, results);
           if (cache.size > 96) cache.delete(cache.keys().next().value!);

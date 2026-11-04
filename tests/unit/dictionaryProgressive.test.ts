@@ -39,9 +39,10 @@ test('exact lookup batches only requested words and stops after cancellation', a
 test('a failed warm dictionary lookup cannot block the global search', async () => {
   const bundle = await build({ entryPoints: ['src/services/dictionarySearchService.ts'], bundle: true, platform: 'node', format: 'esm', write: false,
     plugins: [{ name: 'failed-warm-lookup', setup(plugin) {
-      plugin.onResolve({ filter: /contentPacks$|dictionaryApi$/ }, args => ({ path: args.path, namespace: 'fixture' }));
+      plugin.onResolve({ filter: /contentPacks$|dictionaryApi$|dictionaryCommonSearch$/ }, args => ({ path: args.path, namespace: 'fixture' }));
       plugin.onLoad({ filter: /.*/, namespace: 'fixture' }, args => ({ contents: args.path.endsWith('contentPacks')
         ? "export const getLoadedStudyCards=()=>[{front:'老師'}]; export const fetchDictionaryRowsFromPacks=async()=>{throw new Error('warm lookup unavailable');};"
+        : args.path.endsWith('dictionaryCommonSearch') ? 'export const searchCommonWords=async()=>[];'
         : "export const searchDictionaryApi=async query=>[{id:1,traditional:query}];" }));
     } }],
   });
@@ -49,6 +50,37 @@ test('a failed warm dictionary lookup cannot block the global search', async () 
   const partial: unknown[][] = [];
   assert.equal((await service.searchDictionary('老師', 30, rows => partial.push(rows)))[0].traditional, '老師');
   assert.deepEqual(partial, []);
+});
+
+test('device common-word results publish before the server answer, never after it', async () => {
+  // The fixture lets each case decide when the device and the server answer.
+  const bundle = await build({ entryPoints: ['src/services/dictionarySearchService.ts'], bundle: true, platform: 'node', format: 'esm', write: false,
+    plugins: [{ name: 'timed-sources', setup(plugin) {
+      plugin.onResolve({ filter: /contentPacks$|dictionaryApi$|dictionaryCommonSearch$/ }, args => ({ path: args.path, namespace: 'fixture' }));
+      plugin.onLoad({ filter: /.*/, namespace: 'fixture' }, args => ({ contents: args.path.endsWith('contentPacks')
+        ? 'export const getLoadedStudyCards=()=>[]; export const fetchDictionaryRowsFromPacks=async()=>new Map();'
+        : args.path.endsWith('dictionaryCommonSearch') ? 'export const searchCommonWords=(...args)=>globalThis.__device(...args);'
+        : 'export const searchDictionaryApi=(...args)=>globalThis.__server(...args);' }));
+    } }],
+  });
+  const service = await import(`data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/services/dictionarySearchService');
+  const timed = (ms: number, rows: unknown[]) => () => new Promise(resolve => setTimeout(() => resolve(rows), ms));
+  const scope = globalThis as unknown as Record<string, unknown>;
+
+  scope.__device = timed(1, [{ id: 1, traditional: '吃', simplified: '吃' }]);
+  scope.__server = timed(20, [{ id: 1, traditional: '吃', simplified: '吃' }, { id: 2, traditional: '喫', simplified: '喫' }]);
+  const early: unknown[][] = [];
+  assert.equal((await service.searchDictionary('chi', 30, rows => early.push(rows))).length, 2, 'the server answer is final');
+  assert.equal(early.length, 1);
+  assert.equal(early[0].length, 1);
+
+  scope.__device = timed(20, [{ id: 1, traditional: '吃', simplified: '吃' }]);
+  scope.__server = timed(1, [{ id: 2, traditional: '喫', simplified: '喫' }]);
+  const late: unknown[][] = [];
+  await service.searchDictionary('chi', 30, rows => late.push(rows));
+  await new Promise(resolve => setTimeout(resolve, 30));
+  assert.deepEqual(late, [], 'a slower device result never replaces the server answer');
+  delete scope.__device; delete scope.__server;
 });
 
 test('same-tick lookup and course requests coalesce into one batch', async t => {
