@@ -25,8 +25,9 @@ const LETTER_GAP_MS = 800;
 const BETWEEN_CHOICES_MS = 1300;
 
 /**
- * What a listening question plays, in TOCFL order: the dialogue, a ding and a pause, the narrator's
- * question, then each answer as "A … B … C …" in the order the choices are shown.
+ * What a listening question plays, in TOCFL order: the narrator's opening line (Band B), the dialogue, a ding and
+ * a pause, the narrator's question, then each answer as "A … B … C …" in the order the choices are shown. Printed
+ * answers are read too, as on the exam.
  */
 export function listeningSteps(
   item: LessonTestItem,
@@ -50,6 +51,10 @@ export function listeningSteps(
     });
   };
 
+  if (item.kind === 'dialogue' && item.intro) {
+    say(item.intro, 'voice');
+    steps.push({ pauseMs: TURN_GAP_MS });
+  }
   if (item.kind === 'hear-pick-picture' || item.kind === 'dialogue') {
     item.lines.forEach((line, index) => {
       if (index > 0) steps.push({ pauseMs: TURN_GAP_MS });
@@ -61,10 +66,8 @@ export function listeningSteps(
     if (sounds.ding) steps.push({ audio: sounds.ding, cue: 'ding' });
     steps.push({ pauseMs: AFTER_DING_MS });
     if (question.prompt) say(question.prompt, 'question');
-    if (!item.printed) {
-      steps.push({ pauseMs: BEFORE_CHOICES_MS });
-      readChoices();
-    }
+    steps.push({ pauseMs: BEFORE_CHOICES_MS });
+    readChoices();
   }
   if (item.kind === 'picture-hear') readChoices();
   return steps;

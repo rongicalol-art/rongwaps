@@ -33,6 +33,8 @@ const readings = (book: number) => {
   return readingsByBook.get(book)!;
 };
 const lessonOf = (id: string) => Math.floor(vocabOrder(id) / 10);
+/** Reading speakers that are not characters (Book 3 essays are read by 旁白). */
+const NARRATORS = new Set(['narrator', '旁白']);
 const wordRow = (word: VocabEntry) => `| ${word.id} | ${word.traditional} | ${word.simplified ?? ''} | ${word.pinyin ?? ''} | ${word.simple ?? word.meaning ?? ''} | ${word.pos ?? ''} |`;
 
 function brief(key: string): string {
@@ -71,18 +73,20 @@ function brief(key: string): string {
     out.push(`### ${reading.title}${reading.setting ? ` · ${reading.setting}` : ''}`);
     for (const line of reading.paragraphs) out.push(`- ${line.speaker ? `${line.speaker}：` : ''}${line.traditional}${line.english ? ` (${line.english})` : ''}`);
   }
-  out.push('');
-  out.push(`## This lesson's reading pictures (real art: use one for each "look at the picture and listen" slot)`);
-  out.push('');
-  out.push('Name it `reading:<id>` in the lesson file. Open the file to see exactly what it shows before you write sentences about it.');
-  for (const reading of readings(book).filter((entry) => entry.lessonId === lesson)) {
-    const picture = getReadingIllustration(reading.id);
-    const path = picture ? picturePath(`${READING_PICTURE_PREFIX}${reading.id}`) : null;
-    if (picture && path) out.push(`- \`${READING_PICTURE_PREFIX}${reading.id}\` — ${relative(process.cwd(), path)} — ${picture.alt}`);
+  if (book <= 2) {
+    out.push('');
+    out.push(`## This lesson's reading pictures (real art: use one for each "look at the picture and listen" slot)`);
+    out.push('');
+    out.push('Name it `reading:<id>` in the lesson file. Open the file to see exactly what it shows before you write sentences about it.');
+    for (const reading of readings(book).filter((entry) => entry.lessonId === lesson)) {
+      const picture = getReadingIllustration(reading.id);
+      const path = picture ? picturePath(`${READING_PICTURE_PREFIX}${reading.id}`) : null;
+      if (picture && path) out.push(`- \`${READING_PICTURE_PREFIX}${reading.id}\` — ${relative(process.cwd(), path)} — ${picture.alt}`);
+    }
   }
   const names = new Set<string>();
   for (const reading of readings(book).filter((entry) => entry.lessonId <= lesson)) {
-    for (const line of reading.paragraphs) if (line.speaker && line.speaker !== 'narrator') names.add(line.speaker);
+    for (const line of reading.paragraphs) if (line.speaker && !NARRATORS.has(line.speaker)) names.add(line.speaker);
   }
   out.push('');
   out.push(`## Names from the book so far (add the ones you use to \`allowWords\`)`);
@@ -98,6 +102,22 @@ function brief(key: string): string {
     out.push(`### Lesson ${earlier}${earlierPages[0] ? ` — ${earlierPages[0].lessonTitle} · ${earlierPages[0].lessonTitleEnglish}` : ' (classroom words)'}`);
     if (earlierPages.length) out.push(`Grammar: ${earlierPages.map((page) => `\`${page.id}\` ${page.titleTraditional}`).join('; ')}`);
     out.push(`Words: ${words.map((word) => `${word.traditional} ${word.id} (${word.simple ?? word.meaning ?? ''})`).join('; ')}`);
+  }
+  // A later book's Lesson 1 reviews the second half of the book before (content/lesson-tests/README.md).
+  if (lesson === 1 && book > 1) {
+    const before = book - 1;
+    const beforeGrammar = ctx.grammarByBook.get(before) ?? [];
+    out.push('');
+    out.push(`## Review for this Lesson 1: Book ${before} Lessons 9–16 (set \`"book": ${before}\` and \`"lesson"\` on each review question)`);
+    for (let earlier = 9; earlier <= 16; earlier += 1) {
+      const words = ctx.vocab.filter((word) => vocabBook(word.id) === before && lessonOf(word.id) === earlier);
+      const earlierPages = beforeGrammar.filter((part) => part.lessonId === earlier).flatMap((part) => part.grammarPages);
+      out.push('');
+      out.push(`### Book ${before} Lesson ${earlier}${earlierPages[0] ? ` — ${earlierPages[0].lessonTitle} · ${earlierPages[0].lessonTitleEnglish}` : ''}`);
+      for (const page of earlierPages) out.push(`- Grammar \`${page.id}\` ${page.titleTraditional} — ${page.titleEnglish}${page.examples[0] ? `: ${page.examples[0].text.traditional}` : ''}`);
+      out.push(`- Words: ${words.map((word) => `${word.traditional} ${word.id} (${word.simple ?? word.meaning ?? ''})`).join('; ')}`);
+      for (const reading of readings(before).filter((entry) => entry.lessonId === earlier)) out.push(`- Reading ${reading.id}: ${reading.title}${reading.setting ? ` · ${reading.setting}` : ''}`);
+    }
   }
   const earlierBooks = ctx.vocab.filter((word) => vocabBook(word.id) < book);
   if (earlierBooks.length) {
