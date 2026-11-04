@@ -8,6 +8,7 @@ import { listeningSteps } from '../testAudioSequence';
 import { testPicture } from '../testPictures';
 import { ChineseText } from './ChineseText';
 import { ChoiceList, type Script } from './ChoiceList';
+import { GroupQuestions } from './GroupQuestions';
 import { GapSentence } from './GapSentence';
 import { ParagraphBlanks } from './ParagraphBlanks';
 import { PictureChoices } from './PictureChoices';
@@ -141,10 +142,16 @@ export interface QuestionBodyProps {
  * recording, picture or text, then the answers, all one width so their edges line up.
  */
 export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, audioReady, firstNumber, onAnswer }: QuestionBodyProps) {
-  const question = item.questions.find((entry) => entry.id === questionIds[0]) ?? item.questions[0];
+  const screenKey = questionIds.join(',');
+  // The screen's questions: one, or every question of a recording (the Fix round keeps only the missed ones).
+  const questions = useMemo(() => {
+    const open = item.questions.filter((entry) => screenKey.split(',').includes(entry.id));
+    return open.length ? open : [item.questions[0]];
+  }, [item, screenKey]);
+  const question = questions[0];
   const order = planned.orders[question.id] ?? (question.choices ?? []).map((_, index) => index);
-  const steps = useMemo(() => listeningSteps(item, question, order, sounds, script), [item, question, order, sounds, script]);
-  const audio = useTestAudio(steps, `${mode}:${item.id}:${question.id}`, mode, audioReady);
+  const steps = useMemo(() => listeningSteps(item, questions, planned.orders, sounds, script), [item, questions, planned.orders, sounds, script]);
+  const audio = useTestAudio(steps, `${mode}:${item.id}:${screenKey}`, mode, audioReady, item.kind === 'dialogue' && item.plays === 1 ? 1 : 2);
   const reduceMotion = useReducedMotion();
   const selected = answers[question.id];
   const pick = (choice: number) => onAnswer(question.id, choice);
@@ -154,17 +161,17 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       face={audio.face}
       playing={audio.playing}
       plays={audio.plays}
-      maxPlays={item.kind === 'dialogue' && item.plays === 1 ? 1 : audio.maxPlays}
+      maxPlays={audio.maxPlays}
       onReplay={audio.replay}
       onRetry={audio.retry}
     />
   );
   const sayChoice = (original: number, shown: number) => {
     const choice = question.choices?.[original];
-    if (choice) void audio.say({ audio: choice.audio, text: choice[script] ?? choice.traditional, mark: shown });
+    if (choice) void audio.say({ audio: choice.audio, text: choice[script] ?? choice.traditional, mark: shown, question: 0 });
   };
   const choiceList = (spoken: boolean) => (
-    <ChoiceList question={question} order={order} selected={selected} checked={checked} spoken={spoken} mark={audio.mark} script={script} onSelect={pick} onSay={sayChoice} />
+    <ChoiceList question={question} order={order} selected={selected} checked={checked} spoken={spoken} mark={audio.markQuestion === 0 ? audio.mark : null} script={script} onSelect={pick} onSay={sayChoice} />
   );
   const pictures = <PictureChoices question={question} order={order} selected={selected} checked={checked} onSelect={pick} />;
   const printedPrompt = question.prompt && (
@@ -173,9 +180,9 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   // A dialogue's question appears when the narrator asks it, right after the ding (TOCFL order).
   const askedPrompt = question.prompt && (
     <motion.p
-      aria-hidden={!(audio.asked || checked)}
+      aria-hidden={!(audio.asked > 0 || checked)}
       initial={false}
-      animate={audio.asked || checked ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.96 }}
+      animate={audio.asked > 0 || checked ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.96 }}
       transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 24 }}
       className="text-balance text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl"
     >
@@ -193,7 +200,24 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       stimulus = <>{speaker}<StimulusPicture name={item.picture.picture} alt={item.picture.alt} /></>; answersPart = choiceList(true);
       break;
     case 'dialogue':
-      stimulus = speaker; answersPart = <>{askedPrompt}{choiceList(!item.printed)}</>;
+      stimulus = speaker;
+      answersPart = questions.length > 1 ? (
+        <GroupQuestions
+          questions={questions}
+          orders={planned.orders}
+          answers={answers}
+          checked={checked}
+          spoken={!item.printed}
+          script={script}
+          firstNumber={firstNumber}
+          asked={audio.asked}
+          mark={audio.mark}
+          markQuestion={audio.markQuestion}
+          playing={audio.playing}
+          say={(step) => { void audio.say(step); }}
+          onAnswer={onAnswer}
+        />
+      ) : <>{askedPrompt}{choiceList(!item.printed)}</>;
       break;
     case 'read-pick-picture':
       stimulus = (

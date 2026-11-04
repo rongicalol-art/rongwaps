@@ -33,20 +33,22 @@ function playClip(step: AudioStep): Promise<boolean> {
 }
 
 /**
- * Plays a question's audio steps at normal speed. In the test (`exam`) it plays on its own, twice, and can't
- * be replayed; in the Fix round it plays once and `replay` plays it again. It starts once the screen's recordings
+ * Plays a screen's audio steps at normal speed. In the test (`exam`) it plays on its own, `examPlays` times (twice at
+ * Band A, once at Band B), and can't be replayed; in the Fix round it plays once and `replay` plays it again. It starts once the screen's recordings
  * are `ready` (downloaded ahead), so no clip starts late. A clip that can't play stops the play without using it
  * up: the key shows `retry`, and `retry()` plays it again.
  */
-export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 'replay', ready: boolean) {
+export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 'replay', ready: boolean, examPlays: 1 | 2 = EXAM_PLAYS) {
   const [playing, setPlaying] = useState(false);
   const [plays, setPlays] = useState(0);
   const [mark, setMark] = useState<number | null>(null);
+  /** Which of the screen's questions `mark` belongs to (a recording with several questions). */
+  const [markQuestion, setMarkQuestion] = useState(0);
   /** Null between plays: the key pops back up. */
   const [face, setFace] = useState<TestFace | null>(null);
   const [failed, setFailed] = useState(false);
-  /** The narrator has asked the question (a printed question appears on that cue). */
-  const [asked, setAsked] = useState(false);
+  /** How many of the screen's questions the narrator has asked (each printed question appears on its cue). */
+  const [asked, setAsked] = useState(0);
   const run = useRef(0);
   /** Plays finished in this screen's run; a failed play doesn't count. */
   const done = useRef(0);
@@ -59,9 +61,10 @@ export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 're
     for (const step of stepsRef.current) {
       if (run.current !== id) return 'stopped';
       setMark(step.mark ?? null);
+      setMarkQuestion(step.question ?? 0);
       shown = faceOf(step, shown) ?? 'voice';
       setFace(shown);
-      if (step.cue === 'question') setAsked(true);
+      if (step.cue === 'question') setAsked((count) => Math.max(count, (step.question ?? 0) + 1));
       if (step.pauseMs) await wait(step.pauseMs);
       else if (!(await playClip(step))) return run.current === id ? 'failed' : 'stopped';
     }
@@ -109,17 +112,18 @@ export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 're
     setPlaying(false);
     setFace(null);
     setMark(step.mark ?? null);
+    setMarkQuestion(step.question ?? 0);
     await playClip(step);
     if (run.current === id) setMark(null);
   }, []);
 
   useEffect(() => {
     setPlays(0);
-    setAsked(false);
+    setAsked(0);
     setFailed(false);
     done.current = 0;
-    total.current = mode === 'exam' ? EXAM_PLAYS : 1;
-  }, [key, mode]);
+    total.current = mode === 'exam' ? examPlays : 1;
+  }, [key, mode, examPlays]);
 
   useEffect(() => {
     if (!ready || stepsRef.current.length === 0) return undefined;
@@ -138,6 +142,7 @@ export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 're
     playing,
     plays,
     mark,
+    markQuestion,
     face: failed ? 'retry' as const : waiting ? 'loading' as const : face,
     failed,
     asked,
@@ -145,6 +150,6 @@ export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 're
     retry: () => { void start(); },
     say,
     stop,
-    maxPlays: mode === 'exam' ? EXAM_PLAYS : null,
+    maxPlays: mode === 'exam' ? examPlays : null,
   };
 }
