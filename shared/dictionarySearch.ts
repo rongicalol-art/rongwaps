@@ -20,6 +20,14 @@ export interface SearchResult {
 // Compact tuple: [id, simplified, traditional (if diff else ''), pinyin_accented, pinyin_flat, definitions[], freq]
 export type CompactSearchEntry = [number, string, string, string, string, string[], number];
 
+export type CourseFields = Pick<SearchResult, 'courseDefinition' | 'bookId' | 'lessonId' | 'pos' | 'audio'>;
+/** Course meaning, lesson tag and recording for a result; the recording only when its reading matches. */
+export function courseFields(row: Pick<SearchResult, 'pinyin_accented'>, card: { back: string; bookId: number; lessonId: number; pos?: string; pinyin?: string; audio?: string }): CourseFields {
+  return { courseDefinition: card.back, bookId: card.bookId, lessonId: card.lessonId, pos: card.pos,
+    ...(card.pinyin?.trim().toLowerCase() === row.pinyin_accented.trim().toLowerCase() ? { audio: card.audio } : {}),
+  };
+}
+
 interface PreparedGloss {
   raw: string;
   words: string[];

@@ -8,6 +8,7 @@ import { readdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { brotliCompress, constants, gzip } from 'node:zlib';
 import { promisify } from 'node:util';
+import { brotliQuality } from './brotliQuality';
 
 const brotli = promisify(brotliCompress);
 const gz = promisify(gzip);
@@ -38,7 +39,7 @@ await Promise.all(Array.from({ length: 6 }, async () => {
     const [sourceInfo, sidecarInfo] = await Promise.all([stat(file), stat(sidecar).catch(() => null)]);
     if (sidecarInfo && sidecarInfo.mtimeMs >= sourceInfo.mtimeMs) { after += sidecarInfo.size; continue; }
     const [br, gzipped] = await Promise.all([
-      brotli(source, { params: { [constants.BROTLI_PARAM_QUALITY]: 6 } }),
+      brotli(source, { params: { [constants.BROTLI_PARAM_QUALITY]: brotliQuality(file) } }),
       gz(source, { level: 9 }),
     ]);
     await Promise.all([writeFile(sidecar, br), writeFile(`${file}.gz`, gzipped)]);
