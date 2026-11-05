@@ -1,34 +1,56 @@
 import { AppIcon } from '../../../lib/widgets';
+import type { LessonTestLesson } from '../../../types/lessonTest';
 import { cn } from '../../../utils/cn';
-import { LESSON_TEST_PARTS } from '../../../utils/lesson/lessonTestPlan';
+import { LESSON_TEST_PASS, lessonTestQuestionCount } from '../../../utils/lesson/lessonTestPlan';
 
-/** The big gold "Test": its letters drop in one by one, then a shine sweeps across now and then (index.css). */
-function TestWord({ className }: { className?: string }) {
-  return (
-    <span role="img" aria-label="Test" data-word="Test" className={cn('rw-test-word', className)}>
-      {Array.from('Test').map((letter, index) => (
-        <span key={index} aria-hidden style={{ '--i': index } as React.CSSProperties}>{letter}</span>
-      ))}
-    </span>
-  );
+interface LessonTestTitleProps {
+  lessonLabel: string;
+  test: LessonTestLesson;
+  best: { correct: number; total: number } | null;
+  isDesktop: boolean;
 }
 
-/** The Test tab's title in place of the lesson title: the test's name, its parts, and the best score once taken. */
-export function LessonTestTitle({ lessonId, best, isDesktop }: { lessonId: number; best: { correct: number; total: number } | null; isDesktop: boolean }) {
+/**
+ * The Test tab's title, in the Part tabs' text styles: the lesson, "Mock test", its TOCFL band and length. Where the
+ * Part tabs list their modes, the best score sits on the app's progress bar, with the pass mark in words.
+ */
+export function LessonTestTitle({ lessonLabel, test, best, isDesktop }: LessonTestTitleProps) {
+  const total = lessonTestQuestionCount(test);
+  const passed = best !== null && best.correct / best.total >= LESSON_TEST_PASS;
+  const score = best === null ? 'Not taken yet' : `${passed ? 'Passed ·' : 'Best'} ${best.correct} / ${best.total}`;
   return (
-    <div data-tone="review" className={cn('flex flex-col', !isDesktop && 'items-center text-center')}>
-      <h2 className="sr-only">Lesson {lessonId} test</h2>
-      <p aria-hidden className={cn('font-black leading-none text-ui-muted-strong', isDesktop ? 'text-2xl' : 'text-xl')}>Lesson {lessonId}</p>
-      <TestWord className={cn('mb-4 mt-1.5', isDesktop ? 'text-[108px]' : 'text-[92px]')} />
-      <p className={cn('font-bold text-ui-muted-strong', isDesktop ? 'text-xl' : 'text-[17px]')}>
-        {LESSON_TEST_PARTS.map(({ label }) => label).join(' · ')}
+    <div data-tone="review">
+      <p className="text-xs font-black uppercase tracking-widest text-ui-muted">{lessonLabel}</p>
+      <h2 className={isDesktop ? 'mt-1 text-4xl font-black leading-tight text-ui-ink-strong' : 'text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl'}>
+        Mock test
+      </h2>
+      <p className={cn('mt-1 font-extrabold text-ui-muted-strong', isDesktop ? 'text-xl' : 'text-lg')}>
+        TOCFL Band {test.band} · {total} questions
       </p>
-      {best && (
-        <p className="mt-2 flex items-center gap-1.5 text-sm font-black text-ui-muted-strong">
-          <AppIcon name="crown" size={16} className="text-feedback-warning" />
-          Best {best.correct} / {best.total}
-        </p>
-      )}
+      <div className={isDesktop ? 'mt-8' : 'mt-6'}>
+        <div className="mb-2.5 flex items-baseline justify-between gap-3 tabular-nums">
+          <span className={cn('flex items-center gap-1.5 font-black text-ui-ink-strong', isDesktop ? 'text-lg' : 'text-base')}>
+            {passed && <AppIcon name="crown" size={18} className="text-brand-primary" />}
+            {score}
+          </span>
+          <span className="text-sm font-extrabold text-ui-muted-strong">Pass at {Math.ceil(total * LESSON_TEST_PASS)}</span>
+        </div>
+        {/* The practice header's progress bar, still: track, fill, and its light streak. */}
+        <div
+          role="progressbar"
+          aria-label="Best score"
+          aria-valuemin={0}
+          aria-valuemax={best?.total ?? total}
+          aria-valuenow={best?.correct ?? 0}
+          className="relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track"
+        >
+          {best !== null && best.correct > 0 && (
+            <div className="absolute inset-y-0 left-0 rounded-full bg-brand-primary" style={{ width: `${(best.correct / best.total) * 100}%` }}>
+              <div aria-hidden className="absolute inset-x-2 top-1 h-1.5 rounded-full bg-white/30" />
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
