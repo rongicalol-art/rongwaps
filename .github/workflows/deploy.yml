@@ -15,6 +15,7 @@ on:
 permissions:
   contents: write # release tags and notes
   issues: write # rollback notices
+  statuses: write # the "Staging" check on the commit a Release PR would ship
 
 concurrency:
   group: deploy-${{ github.event.workflow_run.head_branch }}
@@ -36,13 +37,25 @@ jobs:
       github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ env.SHA }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+      # Render's free plan has 500 build minutes a month for both sites; a docs- or test-only change keeps the
+      # running staging build (the app it serves is the same).
+      - name: Does staging need a new build?
+        id: changed
+        run: |
+          live=$(curl -fsS -m 90 "${{ vars.STAGING_URL }}/healthz" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{console.log(JSON.parse(s).commit||"")}catch{console.log("")}})' || true)
+          if [ -z "$live" ] || ! git cat-file -e "$live^{commit}" 2>/dev/null; then echo "build=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          app=$(git diff --name-only "$live" "$SHA" | grep -Ev '^(docs/|\.claude/|\.agents/|\.github/|tests/|supabase/tests/|scripts/(release|jev|dev|load)/|[^/]+\.md$)' || true)
+          if [ -n "$app" ]; then echo "build=true" >> "$GITHUB_OUTPUT"; else echo "build=false" >> "$GITHUB_OUTPUT"; echo "Staging already runs the same app ($live); no new build."; fi
       - uses: supabase/setup-cli@v3
         with:
           version: 2.106.0
@@ -62,9 +75,20 @@ jobs:
           npm ci --ignore-scripts
           npx --no-install wrangler deploy --config games/wrangler.staging.jsonc --message "staging ${SHA:0:8}"
       - name: Deploy staging
+        if: steps.changed.outputs.build == 'true'
         run: node scripts/release/render.ts deploy "${{ vars.STAGING_SERVICE_ID }}" "$SHA"
       - name: Check staging
+        if: steps.changed.outputs.build == 'true'
         run: node scripts/release/smoke.ts "${{ vars.STAGING_URL }}" --env staging --commit "$SHA" --supabase-ref "$STAGING_REF" --forbid-ref "$PRODUCTION_REF"
+      # The Release PR shows this check: green only once staging has run (or already ran) this exact app.
+      - name: Mark the commit as checked on staging
+        run: |
+          for attempt in 1 2 3; do
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" -f state=success -f context=Staging \
+              -f description="Staging ran this commit" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > /dev/null && exit 0
+            sleep $((attempt * 5))
+          done
+          exit 1
 
   production:
     if: >-

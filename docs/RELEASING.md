@@ -15,7 +15,8 @@ feature branch ──PR──▶ main ──Release PR──▶ production
 | Merge into `main` | CI again → **Deploy**: new migrations applied to staging, the staging Study together server and that exact commit deployed to staging, staging checked (right build, staging database only, content gated, noindex). **Release PR** updated |
 | Merge the Release PR | CI + browser journeys on `production` → **Deploy**: refuses if a migration isn't applied yet, deploys the Study together server, then the exact app commit, checks the live site, **rolls back automatically** and opens an issue if a check fails, tags the release with notes |
 | Every night | **Backup** (02:30 Taiwan) with a restore proof; CI and journeys on `main` (03:00) |
-| Every morning | **Health** (09:30 Taiwan, read-only): opens or comments on one "Health check" issue when the database passes 400 MB, public sign-ups reach 90% of the cap, or reports arrived in the last day |
+| Every morning | **Health** (09:30 Taiwan, read-only): opens or comments on one "Health check" issue when the database passes 400 MB, public sign-ups reach 90% of the cap, reports or feedback arrived since the last good run, or Study together passes 70,000 Worker requests a day (with `CLOUDFLARE_ANALYTICS_TOKEN`); Mondays add a sign-up summary. Run it by hand with *test* ticked to check it reaches your phone |
+| At once | **"Not safe" reports** are emailed to the owner by the server (Resend, the feedback settings) |
 
 Render auto-deploy stays off on both services: the Deploy workflow is the only deployer, so a rollback is never undone by an automatic redeploy.
 
@@ -27,6 +28,10 @@ Render auto-deploy stays off on both services: the Deploy workflow is the only d
 4. **Release:** merge the **Release PR** (`main` → `production`). Updates batch naturally: one Release PR carries everything merged since the last one. Learners get the new version on their next app open; open tabs keep working (previous week's code files stay on the server).
 5. Done when the Deploy run is green. A failure notifies you and the site is already back on the previous release.
 
+The Release PR's **Staging** check stays yellow until Deploy has run that exact commit on staging (docs- or test-only changes reuse the running staging build). Don't merge it yellow.
+
+**Merged before migrating?** Deploy refuses ("Not applied: …") and the live site stays as it was. Run **Migrate production**, then Actions → the failed **Deploy** run → *Re-run failed jobs*. If Actions can't run at all, Render → ronsmandarin → *Manual Deploy* → *Deploy latest commit* after the migration.
+
 Rules that keep this safe: migrations follow expand → migrate → contract (the previous client must keep working; CI blocks drops/renames without `-- migration-safety: contract <reason>`); never release on a red CI; one release at a time.
 
 ## Undo a release
@@ -34,6 +39,9 @@ Rules that keep this safe: migrations follow expand → migrate → contract (th
 - **Automatic:** a failed live check after deploy restores the previous build and opens an issue.
 - **By hand:** Actions → **Roll back** → Run workflow (`production`, `previous`). About 1–2 minutes, then the same live checks. Render's dashboard (Deploys → Rollback) works too.
 - Rollback restores code only. The database stays as it is, which is safe because migrations are backward compatible.
+- Render's rollback works even when GitHub Actions can't run.
+- **After sign-up opens (14 Nov):** a build from before then has no age step and the old Terms. Roll back only to a release from 14 Nov or later. If there is none, pause new sign-ups first (`public_cap = 0`, Public accounts below) and fix forward.
+- **Study together only:** `npx wrangler rollback --config games/wrangler.jsonc` on the Mac restores the previous Worker version (it asks which); the app keeps working with either.
 - Then fix forward: branch → PR into `main` → staging → Release PR.
 - **Hotfix** (staging holds unreleased work you don't want live): branch from `production`, PR into `production` (CI and journeys run), merge. Release PR opens a back-merge into `main` automatically from a `back-merge/production-…` copy; merge it.
 - **Never merge a PR whose head is `production`.** "Automatically delete head branches" deletes the head branch on merge, so that deletes the live branch and every later release and Migrate production fails (PR #74, 2026-11-04). If it happens: open the merged PR → **Restore branch**, or `git push origin <last production sha>:refs/heads/production` from the Mac (owner-typed; the guard blocks AI pushes to it). Keep that repo setting off: Settings → General → Pull Requests.
@@ -42,7 +50,7 @@ Rules that keep this safe: migrations follow expand → migrate → contract (th
 
 Backups: nightly, encrypted to the owner's age key, private R2 bucket `rongwaps-backups`: `daily/` 35 days, `monthly/` 90 days, `manual/` (pre-migration) 90 days (bucket lifecycle rules; Privacy §6 promises 90 days at most). Each was restored and compared (every row count, policy, grant, function, trigger, migration, cron job) before it was kept. `LATEST` names the newest.
 
-**The private key** (`rongwaps-backup-identity.txt`) is in the owner's password manager and in `~/Library/Application Support/RonsMandarin/backup-key/` on the Mac. Without it no backup can be read: never delete both.
+**The private key** (`rongwaps-backup-identity.txt`) is in the owner's password manager and in `~/Library/Application Support/RonsMandarin/backup-key/` on the Mac. Without it no backup can be read: never delete both. `scripts/release/backup/verify-key.sh` proves a key matches what GitHub encrypts to (run it for both copies; it prints only public keys), then fetch and restore-check one backup.
 
 On the Mac (needs `brew install age`, `wrangler login`, Docker):
 
@@ -68,9 +76,10 @@ Not in these backups: profile photo files (only their records), Study together c
 | Sign-in or saving | Supabase → ChineseApp → Logs (auth, PostgREST) |
 | Study together | Cloudflare → Workers → rons-mandarin-games → Logs |
 | Audio | `audio.ronsmandarin.com`, Cloudflare R2 metrics |
-| Backups | Actions → Backup; Sentry Crons (missed check-in alert) |
+| Backups | Actions → Backup. No missed-backup alert yet: it needs the Sentry cron monitor and `SENTRY_BACKUP_CRON_URL` (one-time setup below) |
 
 4. Never put tokens, keys or learner records in issues, chat or logs.
+5. Learner data exposed, a key leaked or a sign-in stolen: `docs/reference/INCIDENTS.md`.
 
 ## Guards
 
@@ -107,13 +116,16 @@ Never copy production data or keys into staging.
 
 ## Free-tier limits to watch
 
-| Service | Limit | When it bites |
-| --- | --- | --- |
-| Render Free | 750 instance hours/month shared by production and staging; sleeps after 15 min (≈1 min wake) | If production is busy all day, staging eats the rest and Render pauses both until the 1st. Upgrade production ($7) before that |
-| GitHub Actions (private) | 2,000 minutes/month | ~1,300 used by CI, journeys, backups at current pace |
-| Supabase Free | 500 MB database, 5 GB egress, pauses after a week idle (staging is kept awake by nightly runs) | Past ~100 daily learners: Supabase Pro adds managed backups and headroom |
-| Cloudflare R2 | 10 GB storage free | Audio + backups + scans |
-| Sentry Developer | 5k errors/month, 1 cron monitor | Noisy errors use it up: fix or filter |
+Figures from each provider's pricing page, checked 2026-11-05 (pre-launch review). Recheck before relying on them.
+
+| Service | Free limit | What learners see when it runs out | Watch |
+| --- | --- | --- | --- |
+| Render Free (both sites share it) | 750 instance hours, 5 GB outgoing bandwidth and 500 build minutes a month; sleeps after 15 min idle (≈1 min wake) | Without a card on file, both sites stop until the 1st. Out of build minutes: no fix can ship until the 1st | Render's usage emails (the API doesn't report these). Staging builds only when app code changed. A card with a spend limit turns overage into about $0.15/GB instead of an outage |
+| Supabase Free | 500 MB database, 1 GB file storage, 5 GB egress a month, 50,000 monthly active users; pauses after a week idle | Past a limit the project is restricted: saving progress and sign-in fail for everyone | Health (database size). Review history and photos are capped per account (20261106120000) |
+| Cloudflare Workers Free (Study together) | 100,000 requests a day, Durable Objects included in the free allowance | Study together stops until 00:00 UTC; lessons keep working | Health with `CLOUDFLARE_ANALYTICS_TOKEN`. The free plan has no usage notifications |
+| Cloudflare R2 | 10 GB storage | Uploads of audio or backups fail | Audio + backups (90 days) + scans |
+| GitHub Actions (private repo) | 2,000 minutes a month, then the budget set in Billing | Nothing ships, backs up or alerts (happened 2026-11-04) | `npm run gate` runs checks locally; set an Actions budget with alert emails |
+| Sentry Developer | 5,000 errors a month, 1 cron monitor | New crash reports are dropped silently | 5% of performance notes are sent; set a client-key rate limit and spike protection |
 
 ## Remaining one-time setup
 
@@ -125,6 +137,9 @@ Never copy production data or keys into staging.
 - [ ] Render production build secrets `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`; Sentry alert on new issues; backup cron monitor
 - [ ] Staging Google sign-in client; owner email in staging `private.beta_owner_emails`
 - [ ] First restore drill into a new project, timed
+- [ ] `scripts/release/backup/verify-key.sh` for the Mac and password-manager keys
+- [ ] Optional GitHub secret `CLOUDFLARE_ANALYTICS_TOKEN` (Account Analytics: Read) for the Health usage check
+- [ ] Repo Settings → General: "Automatically delete head branches" off (it deleted `production` once)
 
 # Configuration reference
 
@@ -188,6 +203,17 @@ The first filters registrations; the second checks provider-owned identities on 
 4. On or after 14 Nov, redeploy production once (Render → ronsmandarin → Manual Deploy → Deploy latest commit): the prebuilt landing and About pages keep the old wording until the next build.
 5. In the morning: the Health issue, one sign-up with a new Gmail, `select private.public_account_count();`. Raise `public_cap` later as the Health issue suggests.
 
+**Launch week checklist** (owner; from the pre-launch review, 2026-11-05):
+
+| By | Step |
+| --- | --- |
+| Thu 5 Nov | GitHub Billing: fix the payment, set an Actions budget with alert emails. Repo Settings → General: untick "Automatically delete head branches". Google Auth Platform: Audience "In production", submit Branding |
+| Fri 6 Nov, 23:59 Taiwan | Backup → Migrate production → merge the Release PR with the Privacy/Terms text (the 7-day notice starts when it is live). Sign in once; `/terms` says "Effective November 14, 2026" |
+| 7–12 Nov | Supabase (staging and production): both `private.*` auth hooks on, Email provider off. Render → Billing: hours, bandwidth, build minutes; usage emails reach your phone. Sentry: client-key rate limit (about 100 an hour) and spike protection. Render env: the three feedback email settings exist; send one test feedback. `verify-key.sh` for both key copies, then fetch and restore-check one backup. Run Health once with *test* ticked |
+| By Fri 13 Nov | Staging Google client; open sign-up on staging and sign up with a personal Gmail (age step, Study together, block, report); cap 0 shows "full"; ban and unban the test account. Migrate production again (the launch-safety migration). For launch week: Supabase JWT expiry 900 s and a higher token-refresh rate limit, set together |
+| Fri 13 Nov | Schedule the 00:00 open (step 3 above), or plan to run the line yourself |
+| Sat 14 Nov | Morning: Health issue, one new Gmail sign-up, `select private.public_account_count();`; redeploy production once (step 4 above) |
+
 Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`). `school_beta_only:` reads "Use your s…@stu.edu.tw account" before launch day and "closed to new sign-ins for now" after it (the emergency stop). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
 
 `20261104120000_public_accounts.sql` lets any Google account with a verified email in, once the owner opens it. It ships closed: until then nothing changes. The hooks above stay as they are. Settings live in the database, so changing them needs no deploy (Supabase dashboard → SQL editor, staging first):
@@ -199,10 +225,10 @@ Once open, accounts refused for not being Google or not verified see "Sign in wi
 | Pause new sign-ups only (everyone signed up keeps access) | `update private.signup_settings set public_cap = 0, updated_at = now();` (new people see "full for now"; set it back to resume) |
 | Emergency stop (public accounts lose saving and lessons at once, Study together at their next sign-in refresh; school ones keep it; no data deleted) | `update private.signup_settings set public_open = false, updated_at = now();` |
 | Ban an account | `insert into private.account_flags (user_id, banned_at, banned_reason) values ('<user id>', now(), '<why>') on conflict (user_id) do update set banned_at = now(), banned_reason = excluded.banned_reason;` |
-| Unban | `update private.account_flags set banned_at = null, banned_reason = null where user_id = '<user id>';` |
+| Unban | `update private.account_flags set banned_at = null, banned_reason = null where user_id = '<user id>';` (also frees the Google account for sign-up again) |
 | Count public accounts | `select private.public_account_count();` |
 
-A ban stops database requests at once and sign-in at the next token refresh (within an hour); the landing page then says "This account can't sign in". New public sign-ups past the cap are refused with `signups_full:` (the landing page says it is full for now); existing accounts keep access. A new public account sees a one-time age step before the app (`src/screens/auth/AgeCheck.tsx`): "I'm 18 or older" records it with `confirm_age()`; "I'm under 18" deletes the new account and returns to the landing page. Check with `supabase db query --linked --file supabase/tests/public_accounts.sql` (rolls back).
+A ban stops database requests at once and sign-in at the next token refresh (within an hour); the landing page then says "This account can't sign in". It also keeps a one-way code of the Google account (`private.banned_identities`, 2 years), so deleting the account doesn't let the same Google account join again. A new public account that never answers the age step is deleted after 7 days (`delete-unconfirmed-accounts` cron job, 03:20 Taiwan). New public sign-ups past the cap are refused with `signups_full:` (the landing page says it is full for now); existing accounts keep access. A new public account sees a one-time age step before the app (`src/screens/auth/AgeCheck.tsx`): "I'm 18 or older" records it with `confirm_age()`; "I'm under 18" deletes the new account and returns to the landing page. Check with `npm run db:test` against a local or staging database (every file rolls back; it refuses production).
 
 ### Reports, blocks and limits
 
@@ -213,8 +239,24 @@ Learners report from a profile's ⋯ menu or under a chat line (a reason in one 
 | Read new reports | `select r.id, r.created_at, r.reason, r.place, r.message, r.reporter, r.target from private.user_reports r order by r.id desc limit 50;` |
 | Who an account is | `select email, raw_user_meta_data->>'full_name' as name from auth.users where id = '<user id>';` |
 | Ban the reported account | the Ban row under Public accounts above |
+| Check a chat report against the server's copy | Cloudflare → Workers → rons-mandarin-games → Durable Objects → **Lobby** `main` → Data Studio: `select * from reports where msg = <message_id>;` (kept 30 days; party rooms keep `room_reports` only until the room closes) |
+| Look at a reported photo | `target_photo` is the Google photo link, or the path of an upload: Supabase → Storage → `profile-media/<user id>/avatar.webp` (a learner can replace it, so look soon) |
+| Remove a photo | Delete that file in Supabase Storage, and ban if needed; the learner falls back to initials |
 
-Daily limits per account (UTC day): 300 chat lines per chat, 200 cheers, 60 party invites, 20 reports. Display names with words on the list in `shared/nameFilter.ts` are refused by the games Worker and by the profile editor; extend the list there. A banned account's open Study together connection ends when its sign-in does (within an hour; tickets last at most 15 minutes).
+A report's `message` is what the reporter's app sent, so it can be invented: before banning for a chat line, find the same line in the server's copy (row above). `message_id`, `target_name` and `target_photo` say which line, name and photo it was.
+
+Daily limits per account (UTC day): 300 chat lines per chat, 200 cheers, 60 party invites, 20 reports. Display names with words on the list in `shared/nameFilter.ts` (after folding accents, look-alike letters, dots and spaces), links, emails and phone numbers are refused by the games Worker and the profile editor; chat lines have those words masked as ＊＊. Names that pose as the app ("Ron", "Admin", 官方, 老師) are refused by the Worker except for `OWNER_EMAILS` (`games/wrangler*.jsonc`). New accounts that haven't answered the 18+ step can't join Study together. Extend the lists in that file. A banned account's open Study together connection ends when its sign-in does (within an hour; tickets last at most 15 minutes). To end it at once, use `SOCIAL_BANNED` below.
+
+### Study together emergency
+
+| To | Do (Mac, `npx wrangler … --config games/wrangler.jsonc`) |
+| --- | --- |
+| Pause chat and races for everyone, at once | `npx wrangler secret put SOCIAL_PAUSED --config games/wrangler.jsonc` → `1`. Undo: `npx wrangler secret delete SOCIAL_PAUSED --config games/wrangler.jsonc` |
+| Shut one or more accounts out, at once | `npx wrangler secret put SOCIAL_BANNED --config games/wrangler.jsonc` → `<user id>,<user id>` (replace the whole list; delete the secret to clear it). Also ban them in the database |
+| Remove what someone posted | Cloudflare → Workers → rons-mandarin-games → Durable Objects → Lobby `main` → Data Studio: `delete from chat where uid = '<user id>';` (lines expire after 24 hours anyway) |
+| Undo a bad Worker release | `npx wrangler rollback --config games/wrangler.jsonc` |
+
+Changing a secret deploys a new Worker version, which closes every open connection; apps reconnect by themselves, and paused or banned ones are told why. Lessons keep working throughout.
 
 `20261023120000_inactive_account_cleanup.sql` schedules the daily 12-month inactive-account deletion with `pg_cron` (see `docs/DATABASE_SCHEMA.md`). Check `select * from private.inactive_accounts();` after applying it; it must not list anyone who is still studying.
 

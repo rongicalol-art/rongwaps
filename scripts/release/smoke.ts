@@ -114,6 +114,11 @@ export function checks(options: Options): Check[] {
       expect(response.status === 200, `status ${response.status}`);
       const body = await response.json() as { url?: string | null };
       if (body.url) expect(staging === body.url.includes('staging'), `games server ${body.url} does not match ${options.env}`);
+      // The Study together server ships with each release; check it answers too.
+      if (body.url) {
+        const health = await get(`${body.url.replace(/\/+$/, '')}/healthz`);
+        expect(health.status === 200, `games server /healthz: ${health.status}`);
+      }
     }],
   ];
 }

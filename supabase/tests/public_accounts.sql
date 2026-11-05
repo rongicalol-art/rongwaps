@@ -14,10 +14,11 @@ begin
   assert not has_function_privilege('authenticated', 'private.user_has_school_identity(uuid)', 'EXECUTE');
   assert (select relrowsecurity from pg_class where oid = 'private.account_flags'::regclass);
   assert (select relrowsecurity from pg_class where oid = 'private.signup_settings'::regclass);
-  assert not (select public_open from private.signup_settings), 'ships closed';
-  assert (select public_cap from private.signup_settings) = 300;
 end;
 $$;
+
+-- Works on staging or production after sign-up opens: start from the shipped settings (rolled back).
+update private.signup_settings set public_open = false, public_cap = 300;
 
 -- s = school, g = verified Gmail, u = unverified Google email, p = password only (no Google identity).
 insert into auth.users (id, email, email_confirmed_at, raw_app_meta_data, raw_user_meta_data) values

@@ -86,7 +86,8 @@
     "games:test": "node tests/games/runtime.mjs",
     "games:load": "node scripts/load/socialLoad.mjs --target local --users 500 --assert",
     "games:deploy": "wrangler deploy --config games/wrangler.jsonc",
-    "release:check-migrations": "tsx scripts/release/checkMigrations.ts"
+    "release:check-migrations": "tsx scripts/release/checkMigrations.ts",
+    "db:test": "bash scripts/release/dbTests.sh"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1146.0",

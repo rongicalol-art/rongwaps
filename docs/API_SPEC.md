@@ -1,5 +1,13 @@
 # 🔌 Express API Specification
 
+## Reports
+
+`POST /api/reports` requires a verified session and accepts `{ target, reason, place, message?, messageId?, name?, photo? }`
+(reason `spam|rude|unsafe|other`, place `profile|chat|party`; message at most 300 characters, name 30; a photo
+is kept without its query string). It saves through `public.submit_report` as the learner (20 a day; the limit
+returns 429 with its message) and, for `unsafe`, emails the owner at once through Resend with the report ID as the
+idempotency key. A failed email never fails a saved report. Errors: 400 invalid, 429 limit, 503 otherwise.
+
 ## Feedback
 
 `POST /api/feedback` requires a verified school-beta session and accepts

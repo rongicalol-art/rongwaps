@@ -20,8 +20,9 @@ function firstName(fullName: unknown): string | null {
  * Yes records the answer and refreshes the token (the app then opens); under 18 deletes the new account.
  * Every new public account passes here, so it also names the signed-in Google account, how other learners
  * will see it, and the Terms; a wrong account can leave (the new, empty account is deleted).
+ * `preview` (DEV UI Previews): buttons do nothing.
  */
-export function AgeCheck() {
+export function AgeCheck({ preview = false }: { preview?: boolean }) {
   const { currentUser } = useAuth();
   const { deleteAccount } = useAccountActions();
   useCharacterFont();
@@ -31,7 +32,7 @@ export function AgeCheck() {
   const shownName = name && isNameAllowed(name) ? name : 'Student';
 
   const confirm = async () => {
-    if (busy) return;
+    if (busy || preview) return;
     setBusy('yes');
     setError(null);
     try {
@@ -46,7 +47,7 @@ export function AgeCheck() {
 
   /** Under 18, or the wrong Google account: the brand-new account is deleted and the landing page returns. */
   const leave = async (why: 'no' | 'switch') => {
-    if (busy) return;
+    if (busy || preview) return;
     setBusy(why);
     setError(null);
     if (why === 'no') setSignInNotice('under-18');
@@ -61,7 +62,7 @@ export function AgeCheck() {
   };
 
   return (
-    <div className="flex h-[100dvh] w-full flex-col overflow-y-auto bg-ui-canvas font-sans text-ui-ink">
+    <div className={`flex w-full flex-col overflow-y-auto bg-ui-canvas font-sans text-ui-ink ${preview ? 'h-full' : 'h-[100dvh]'}`}>
       <header className="mx-auto flex w-full max-w-[90rem] items-center px-5 py-3 lg:px-26">
         <BrandWordmark />
       </header>
