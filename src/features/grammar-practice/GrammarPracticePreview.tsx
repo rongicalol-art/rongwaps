@@ -70,6 +70,7 @@ export function GrammarPracticePreview() {
             contextTokens={[]}
             onOpenWord={() => undefined}
             onComplete={() => pick(selected.exercise, 0)}
+            onBack={() => undefined}
           />
         ) : (
         <GrammarPracticeView
