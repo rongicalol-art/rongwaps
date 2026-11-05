@@ -138,6 +138,10 @@ export function SourcesContent() {
               <Ext href="https://github.com/open-spaced-repetition/ts-fsrs">ts-fsrs</Ext> (MIT).
             </>,
             <>
+              Profile photos on Safari: <Ext href="https://github.com/jamsinclair/jSquash">jSquash</Ext> WebP encoder
+              (Apache 2.0), built on libwebp (BSD).
+            </>,
+            <>
               Built with React, React Router, Vite, Tailwind CSS, Zustand, Motion, lottie-web, Express and
               Supabase, all open source. Thank you to everyone who makes them.
             </>,

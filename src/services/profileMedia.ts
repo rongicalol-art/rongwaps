@@ -46,6 +46,21 @@ export async function getProfileMediaUrl(userId: string, path: string): Promise<
   return data.signedUrl;
 }
 
+const WEBP_QUALITY = 0.85;
+
+/** Safari can't encode WebP from a canvas (it hands back PNG), so it falls back to a small WASM encoder loaded only then. */
+async function encodeWebp(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): Promise<Blob> {
+  const native = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', WEBP_QUALITY));
+  if (native?.type === 'image/webp') return native;
+  try {
+    const { default: encode } = await import('@jsquash/webp/encode');
+    const data = await encode(context.getImageData(0, 0, canvas.width, canvas.height), { quality: WEBP_QUALITY * 100 });
+    return new Blob([data], { type: 'image/webp' });
+  } catch {
+    throw new Error('This browser could not prepare that image. Try another browser.');
+  }
+}
+
 /** Crop and encode locally so the source image and its metadata are never uploaded. */
 export async function prepareProfileImage(file: File, kind: 'avatar' | 'cover', crop?: ProfileImageCrop): Promise<Blob> {
   const fileError = profileImageFileError(file);
@@ -75,10 +90,7 @@ export async function prepareProfileImage(file: File, kind: 'avatar' | 'cover', 
     const context = canvas.getContext('2d');
     if (!context) throw new Error('Image editing is unavailable.');
     context.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, canvas.width, canvas.height);
-    return await new Promise<Blob>((resolve, reject) => canvas.toBlob((blob) => {
-      if (blob?.type === 'image/webp') resolve(blob);
-      else reject(new Error('This browser could not create a WebP image.'));
-    }, 'image/webp', 0.85));
+    return await encodeWebp(canvas, context);
   } finally {
     URL.revokeObjectURL(source);
   }
