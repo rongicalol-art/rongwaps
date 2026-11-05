@@ -63,7 +63,7 @@ test('account switch resets missing fields to fresh-account defaults', () => {
   const patch = resolveCloudMetadataPatch({}, LOCAL, { isAccountSwitch: true });
 
   assert.deepEqual(patch, {
-    displayName: '', avatarColor: 'blue', coverPreset: 'clay', avatarPath: null, coverPath: null,
+    displayName: '', avatarColor: 'blue', coverPreset: 'clay', avatarPath: null, coverPath: null, googlePhoto: null,
     favorites: [],
     activeBookId: 1,
     characterPreference: 'traditional',

@@ -40,7 +40,7 @@ export function createCloudSyncFingerprint(
     state.characterPreference,
     state.selectedLessons,
     state.selectedBooks,
-    state.displayName, state.avatarColor, state.coverPreset, state.avatarPath, state.coverPath,
+    state.displayName, state.avatarColor, state.coverPreset, state.avatarPath, state.coverPath, state.googlePhoto,
     state.startedPartIds ?? [], state.completedPageIds ?? [], state.completedPartIds ?? [],
   ]);
 }

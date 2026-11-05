@@ -292,7 +292,7 @@ export class Lobby extends DurableObject<Env> {
         // A blocked pair looks offline to each other.
         if (target && target.socket !== socket && !this.apart(att.u, id)) { this.send(target.socket, frame); delivered++; }
       }
-      if (!delivered) this.send(socket, { t: 'error', message: 'Those classmates are offline. Share your room link instead.' });
+      if (!delivered) this.send(socket, { t: 'error', message: 'They’re offline. Share your room link instead.' });
     } else if (message.t === 'mention-open') {
       const row = this.ctx.storage.sql.exec<{ data: string; read: number }>('SELECT data,read FROM mentions WHERE uid=? AND key=? AND ts>=?', att.u, message.key, now - CHAT_TTL_MS).toArray()[0];
       const notice = row ? { ...JSON.parse(row.data) as MentionNotice, read: !!row.read } : null;

@@ -1,0 +1,15 @@
+[教育部標準楷書 TW-MOE-Std-Kai] edukai/*.woff2
+
+Source: 中華民國教育部 (Ministry of Education, Republic of China (Taiwan)),
+「教育部標準楷書」字型檔 (TW-MOE-Std-Kai), from the Ministry's 國字標準字體 font files:
+https://language.moe.gov.tw/files/國字標準字體字形檔.pdf
+
+License: Creative Commons Attribution-NoDerivs 3.0 Taiwan (CC BY-ND 3.0 TW)
+https://creativecommons.org/licenses/by-nd/3.0/tw/
+Legal code: https://creativecommons.org/licenses/by-nd/3.0/tw/legalcode
+
+Changes: none to the glyphs. For the web, the font file is split into slices
+(woff2) that each hold a range of characters, so a page downloads only the
+characters it shows. Glyph outlines, metrics and names are unchanged.
+
+Ron's Mandarin is not affiliated with or endorsed by the Ministry of Education.

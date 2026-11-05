@@ -121,10 +121,10 @@ async function verifyToken(token: string): Promise<AuthResult> {
     const { data: allowed, error: accessError, status } = accessResult;
     if (accessError) {
       return status === 403 || status === 401
-        ? { status, error: status === 403 ? 'Use your Shu-Te student Google account.' : 'Access verification unavailable.' }
+        ? { status, error: status === 403 ? 'This account can’t use Ron’s Mandarin right now.' : 'Access verification unavailable.' }
         : { status: 503, error: 'Access verification unavailable.' };
     }
-    if (allowed !== true) return { status: 403, error: 'Use your Shu-Te student Google account.' };
+    if (allowed !== true) return { status: 403, error: 'This account can’t use Ron’s Mandarin right now.' };
     return { userId: user.id };
   } catch (err: unknown) {
     console.error("Auth check failed:", err);

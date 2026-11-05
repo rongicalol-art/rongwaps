@@ -5,6 +5,8 @@ export interface UserSnapshot {
   avatar_url?: string;
   fullName?: string;
   avatarUrl?: string;
+  /** When the account was created (ISO), for defaults that depend on account age. */
+  createdAt?: string;
 }
 
 export interface AuthState {

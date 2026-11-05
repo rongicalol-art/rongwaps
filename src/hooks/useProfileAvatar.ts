@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
+import { showsGooglePhoto } from '../store/slices/profileSlice';
 import { getProfileMediaUrl, PROFILE_MEDIA_REFRESH_MS } from '../services/profileMedia';
 
-/** Resolves the current user's private custom avatar for the shared workspace headers. */
+/** The current user's photo as others see it: the uploaded one, else the Google photo when shown, else none (initials). */
 export function useProfileAvatar(): string | undefined {
   const user = useAppStore((state) => state.currentUser);
   const userId = user?.id;
   const avatarPath = useAppStore((state) => state.avatarPath);
   const revision = useAppStore((state) => state.avatarMediaRevision);
+  const googlePhoto = useAppStore((state) => state.googlePhoto);
   const [media, setMedia] = useState<{ key: string; url?: string }>({ key: '' });
   const key = `${userId ?? ''}:${avatarPath ?? ''}:${revision}`;
 
@@ -30,6 +32,6 @@ export function useProfileAvatar(): string | undefined {
     return () => { active = false; window.clearInterval(timer); };
   }, [userId, avatarPath, key]);
 
-  const fallback = user?.avatarUrl || user?.avatar_url;
+  const fallback = showsGooglePhoto(googlePhoto, user?.createdAt) ? user?.avatarUrl || user?.avatar_url : undefined;
   return (media.key === key ? media.url : undefined) || fallback;
 }

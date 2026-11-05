@@ -24,6 +24,7 @@ function userToSnapshot(user: User | null): UserSnapshot | null {
     email: user.email,
     fullName: user.user_metadata?.full_name || user.user_metadata?.name,
     avatarUrl: user.user_metadata?.avatar_url || user.user_metadata?.picture,
+    createdAt: user.created_at,
   };
 }
 

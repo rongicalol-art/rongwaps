@@ -5,8 +5,8 @@ import { ContactLink, LegalList, LegalParagraph, LegalSection, LegalSummary, leg
 const SUMMARY = [
   '本服務由個人開發者 Ron 在台灣經營，目前為公開測試版。',
   '使用者須年滿 18 歲，並以 Google 帳號登入；一人一帳號，不得共用或轉讓。',
-  '在「一起學習」中請友善待人：禁止騷擾、辱罵、廣告，以及不當的名稱或訊息；違者可能被停權。',
-  '本 App 配合《時代華語》教材使用，供已購買課本的學生個人學習；課本內容之著作權屬原出版社及作者。',
+  '在「一起學習」中請友善待人：禁止騷擾、辱罵、廣告，以及不當的名稱、照片或訊息；違者可能被停權。',
+  '本 App 配合《時代華語》教材設計，請搭配您自己的課本使用，並請購買正版課本；課本內容之著作權屬原出版社及作者。',
   '禁止大量下載、轉載、販售內容，或將內容用於訓練人工智慧模型。',
   '本服務免費，打賞完全自願，不會解鎖任何內容。',
   '連續 12 個月未登入的帳號將被刪除。',
@@ -40,7 +40,7 @@ export function TermsContent() {
             'You must be 18 or older.',
             'You sign in with a Google account whose email Google has verified. We may limit how many new accounts can join at a time.',
             'One person per account. Do not share your sign-in, let others use your account, or sell or transfer it.',
-            'The app is meant for people who own the 時代華語 Modern Chinese textbook it follows.',
+            'The app is made to be used with your own copy of the 時代華語 Modern Chinese textbook it follows. Please buy the book.',
           ]}
         />
       </LegalSection>
@@ -68,8 +68,8 @@ export function TermsContent() {
         <LegalParagraph>
           The app follows 時代華語 Modern Chinese, edited by the Tamkang University Chinese Language Center and
           published by Cheng Chung Book Co. Lesson texts, vocabulary, grammar examples, page images and recordings
-          taken from the book belong to their publisher and authors. We provide them only so that students who
-          own the book can study with it, and you may use them only for your own study inside the app.
+          taken from the book belong to their publisher and authors. We provide them to help you study alongside
+          your own copy of the book, and you may use them only for your own study inside the app.
         </LegalParagraph>
         <LegalParagraph>
           Ron&apos;s Mandarin is not affiliated with, approved or endorsed by the publisher or the editors. If a rights
@@ -105,13 +105,14 @@ export function TermsContent() {
             'probe, attack or overload the service, or try to access other people’s data;',
             'upload harmful code, or use the app for anything unlawful, abusive or harassing;',
             'harass, threaten, insult or spam other learners, or send them unwanted sexual content;',
-            'use a display name or messages that are rude, hateful or sexual, or that pretend to be someone else;',
+            'use a display name, photo or messages that are rude, hateful or sexual, or that pretend to be someone else, including the operator;',
             'share other people’s personal information.',
           ]}
         />
         <LegalParagraph>
-          We may hide messages, limit an account or close it for breaking these rules. Use Report on a profile or a
-          message to tell us.
+          Chat hides some offensive words automatically. We may hide messages or photos, limit an account or close
+          it for breaking these rules, and an account we close cannot join again with the same Google account. Use
+          Report on a profile or a message to tell us.
         </LegalParagraph>
       </LegalSection>
 

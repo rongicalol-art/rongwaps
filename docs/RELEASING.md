@@ -35,11 +35,12 @@ Rules that keep this safe: migrations follow expand → migrate → contract (th
 - **By hand:** Actions → **Roll back** → Run workflow (`production`, `previous`). About 1–2 minutes, then the same live checks. Render's dashboard (Deploys → Rollback) works too.
 - Rollback restores code only. The database stays as it is, which is safe because migrations are backward compatible.
 - Then fix forward: branch → PR into `main` → staging → Release PR.
-- **Hotfix** (staging holds unreleased work you don't want live): branch from `production`, PR into `production` (CI and journeys run), merge. Release PR opens a back-merge into `main` automatically; merge it.
+- **Hotfix** (staging holds unreleased work you don't want live): branch from `production`, PR into `production` (CI and journeys run), merge. Release PR opens a back-merge into `main` automatically from a `back-merge/production-…` copy; merge it.
+- **Never merge a PR whose head is `production`.** "Automatically delete head branches" deletes the head branch on merge, so that deletes the live branch and every later release and Migrate production fails (PR #74, 2026-11-04). If it happens: open the merged PR → **Restore branch**, or `git push origin <last production sha>:refs/heads/production` from the Mac (owner-typed; the guard blocks AI pushes to it). Keep that repo setting off: Settings → General → Pull Requests.
 
 ## Restore data
 
-Backups: nightly, encrypted to the owner's age key, private R2 bucket `rongwaps-backups`: `daily/` 35 days, `monthly/` 400 days, `manual/` (pre-migration) 90 days. Each was restored and compared (every row count, policy, grant, function, trigger, migration, cron job) before it was kept. `LATEST` names the newest.
+Backups: nightly, encrypted to the owner's age key, private R2 bucket `rongwaps-backups`: `daily/` 35 days, `monthly/` 90 days, `manual/` (pre-migration) 90 days (bucket lifecycle rules; Privacy §6 promises 90 days at most). Each was restored and compared (every row count, policy, grant, function, trigger, migration, cron job) before it was kept. `LATEST` names the newest.
 
 **The private key** (`rongwaps-backup-identity.txt`) is in the owner's password manager and in `~/Library/Application Support/RonsMandarin/backup-key/` on the Mac. Without it no backup can be read: never delete both.
 
@@ -177,14 +178,17 @@ The first filters registrations; the second checks provider-owned identities on 
 
 ### Public accounts
 
-**Launch day (2026-11-14, the Terms and Privacy effective date):** the new pages and the in-app notice ship at least 7 days earlier; on the day, About and the landing FAQ switch wording by themselves (`isPublicLaunched()` in `src/screens/legal/legalMeta.ts`). Owner steps, in order:
+**Launch day (2026-11-14, the Terms and Privacy effective date):** the new pages and the in-app notice ship at least 7 days earlier (live by 2026-11-07 00:00 Taiwan; if that slips, move `LEGAL_EFFECTIVE_DATE` and `PUBLIC_LAUNCH_AT` to deploy day + 7). On the day, About, the landing FAQ, the sign-in messages and the photo default switch by themselves (`shared/publicLaunch.ts`). Owner steps, in order:
 
 1. Google Cloud → Google Auth Platform → Audience: External, *Publish app*; Branding: name, logo, support email, Privacy and Terms links (start a week early: the brand check takes days).
-2. Cloudflare → Notifications: Workers and Durable Objects usage.
-3. Staging SQL editor: `update private.signup_settings set public_open = true, updated_at = now();`, then sign up with a personal Gmail on staging (age step, Study together).
-4. Production SQL editor: the same line. Raise `public_cap` later as the Health issue suggests.
+2. Staging SQL editor: `update private.signup_settings set public_open = true, updated_at = now();`, then sign up with a personal Gmail on staging (age step, Study together, block, report).
+3. Production: sign-up opens at 00:00 Taiwan by a one-time database job, scheduled after step 2 passes (production SQL editor; it removes itself after running):
+   `select cron.schedule('open-public-signup', '0 16 13 11 *', $$update private.signup_settings set public_open = true, updated_at = now(); select cron.unschedule('open-public-signup');$$);`
+   Check it: `select jobname, schedule from cron.job where jobname = 'open-public-signup';`. Cancel: `select cron.unschedule('open-public-signup');`. Or run the update line yourself at midnight.
+4. On or after 14 Nov, redeploy production once (Render → ronsmandarin → Manual Deploy → Deploy latest commit): the prebuilt landing and About pages keep the old wording until the next build.
+5. In the morning: the Health issue, one sign-up with a new Gmail, `select private.public_account_count();`. Raise `public_cap` later as the Health issue suggests.
 
-Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`); before that, "Use your Shu-Te student Google account" (`school_beta_only:`). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
+Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`). `school_beta_only:` reads "Use your s…@stu.edu.tw account" before launch day and "closed to new sign-ins for now" after it (the emergency stop). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
 
 `20261104120000_public_accounts.sql` lets any Google account with a verified email in, once the owner opens it. It ships closed: until then nothing changes. The hooks above stay as they are. Settings live in the database, so changing them needs no deploy (Supabase dashboard → SQL editor, staging first):
 
@@ -192,7 +196,8 @@ Once open, accounts refused for not being Google or not verified see "Sign in wi
 | --- | --- |
 | Open to everyone | `update private.signup_settings set public_open = true, updated_at = now();` |
 | Raise the sign-up cap | `update private.signup_settings set public_cap = 500, updated_at = now();` |
-| Emergency stop (public accounts lose access, school ones keep it, no data deleted) | `update private.signup_settings set public_open = false, updated_at = now();` |
+| Pause new sign-ups only (everyone signed up keeps access) | `update private.signup_settings set public_cap = 0, updated_at = now();` (new people see "full for now"; set it back to resume) |
+| Emergency stop (public accounts lose saving and lessons at once, Study together at their next sign-in refresh; school ones keep it; no data deleted) | `update private.signup_settings set public_open = false, updated_at = now();` |
 | Ban an account | `insert into private.account_flags (user_id, banned_at, banned_reason) values ('<user id>', now(), '<why>') on conflict (user_id) do update set banned_at = now(), banned_reason = excluded.banned_reason;` |
 | Unban | `update private.account_flags set banned_at = null, banned_reason = null where user_id = '<user id>';` |
 | Count public accounts | `select private.public_account_count();` |

@@ -22,7 +22,7 @@ async function request(path: string, body: object, signal?: AbortSignal): Promis
   const base = await getGamesOrigin();
   if (!base) throw new ConnectionError('Study together is not available right now.', 404);
   const token = await authService.getAccessToken();
-  if (!token) throw new ConnectionError('Sign in with your school account.', 401);
+  if (!token) throw new ConnectionError('Sign in again.', 401);
   signal?.throwIfAborted();
   const response = await fetch(`${base}${path}`, {
     method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },

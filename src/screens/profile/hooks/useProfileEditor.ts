@@ -42,6 +42,8 @@ export function useProfileEditor(userId: string | undefined, onSaved: () => void
     delete blobs.current.avatar;
     setDraft((value) => value && ({ ...value, avatar: fallback, settings: { ...value.settings, avatarPath: null } }));
   };
+  /** Without an uploaded photo: the Google photo (url) or initials. */
+  const setGooglePhoto = (on: boolean, url: string) => setDraft((value) => value && ({ ...value, avatar: on ? url : undefined, settings: { ...value.settings, googlePhoto: on } }));
   const upload = async (kind: MediaKind, file?: File, crop?: ProfileImageCrop): Promise<boolean> => {
     if (!file || !userId || saving.current) return false;
     const token = session.current;
@@ -87,7 +89,7 @@ export function useProfileEditor(userId: string | undefined, onSaved: () => void
     } finally { saving.current = false; setBusy(false); }
   };
   return {
-    draft, error, busy, open, close, change, chooseCover, removeAvatar, upload, save,
+    draft, error, busy, open, close, change, chooseCover, removeAvatar, setGooglePhoto, upload, save,
     hasAvatarUpload: Boolean(blobs.current.avatar), hasCoverUpload: Boolean(blobs.current.cover),
   };
 }
