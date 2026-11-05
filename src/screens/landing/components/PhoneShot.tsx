@@ -1,13 +1,13 @@
 import { cn } from '../../../utils/cn';
 
-const lessonShot = new URL('../../../assets/images/landing/phone-lesson.webp', import.meta.url).href;
 const nianCompositeShot = new URL('../../../assets/images/landing/phone-nian-composite.webp', import.meta.url).href;
 
+/** Real app screenshots (390×844 phone, light), one per headline feature. */
 export const PHONE_SHOTS = [
-  { src: lessonShot, alt: 'Book 2 Lesson 8 window with Vocabulary, Grammar and Reading' },
-  { src: new URL('../../../assets/images/landing/phone-card.webp', import.meta.url).href, alt: 'Flashcard for 貼紙' },
-  { src: new URL('../../../assets/images/landing/phone-examples.webp', import.meta.url).href, alt: 'Interactive grammar pattern table for 叫、姓、是' },
-  { src: new URL('../../../assets/images/landing/phone-write.webp', import.meta.url).href, alt: 'Stroke order for 貼' },
+  { src: new URL('../../../assets/images/landing/phone-read.webp', import.meta.url).href, label: 'Read along with the audio', alt: 'Book 1 Lesson 1 dialogue playing, with 同學 lit up as it is spoken' },
+  { src: new URL('../../../assets/images/landing/phone-hook.webp', import.meta.url).href, label: 'Memory hooks', alt: 'Character breakdown of 學 with its memory hook' },
+  { src: new URL('../../../assets/images/landing/phone-test.webp', import.meta.url).href, label: 'TOCFL mock tests', alt: 'Lesson 1 mock test: TOCFL Band A, 20 questions' },
+  { src: new URL('../../../assets/images/landing/phone-card.webp', import.meta.url).href, label: 'Flashcards', alt: 'Flashcard for 貼紙' },
 ];
 
 const FRAME = 'block aspect-[390/844] overflow-hidden rounded-modal border-[6px] border-ui-ink-strong bg-ui-ink-strong';

@@ -50,7 +50,7 @@ export function LandingPage() {
                 Practice <span className="whitespace-nowrap font-chinese text-brand-primary-text">時代華語</span> one lesson at a time
               </h1>
               <p className="mt-8 text-lg font-bold leading-relaxed text-ui-muted-strong lg:mt-10 text-balance lg:text-xl">
-                Flashcards, quizzes and grammar for every lesson of the Taiwan textbook.
+                Read-along audio, memory hooks, flashcards and TOCFL mock tests for the Taiwan textbook.
               </p>
               <GoogleSignInButton onClick={start} busy={isBusy} className="mt-10 lg:mt-14" />
               {error && <SignInMessageNote message={error} className="mt-3" />}
@@ -58,7 +58,19 @@ export function LandingPage() {
             </div>
           </section>
 
-          <section aria-label="Every lesson is its own story" className="mt-10 lg:mt-6">
+          <section className="mt-14 lg:mt-24">
+            <h2 className={SECTION_TITLE}>Inside the app</h2>
+            <div className="-mx-5 mt-6 flex snap-x items-start gap-3.5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] lg:mx-0 lg:mt-12 lg:justify-center lg:gap-8 lg:overflow-visible lg:px-0">
+              {PHONE_SHOTS.map(({ src, alt, label }, i) => (
+                <figure key={src} className={i % 2 ? 'w-52 shrink-0 snap-center lg:mt-12 lg:w-64' : 'w-52 shrink-0 snap-center lg:w-64'}>
+                  <PhoneShot src={src} alt={alt} />
+                  <figcaption className="mt-3 text-center text-base font-black text-ui-ink-strong lg:text-lg">{label}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+
+          <section aria-label="Every lesson is its own story" className="mt-18 lg:mt-36">
             <div className="relative">
               <img src={nianArtSmall} srcSet={`${nianArtSmall} 960w, ${nianArt} 1672w`} sizes="(min-width: 1024px) 1240px, 100vw" fetchPriority="high" width={1672} height={941} alt="The Nian monster flees a red doorway as firecrackers burst" className="aspect-video w-full rounded-feature object-cover lg:rounded-modal" />
               <NianLessonPhone className="absolute -bottom-18 -right-10 hidden w-60 lg:block" />
@@ -72,15 +84,6 @@ export function LandingPage() {
           <section className="mt-18 lg:mt-36">
             <h2 className={SECTION_TITLE}>Try it here</h2>
             <TryIt />
-          </section>
-
-          <section className="mt-18 lg:mt-36">
-            <h2 className={SECTION_TITLE}>Made for your phone</h2>
-            <div className="-mx-5 mt-6 flex snap-x items-start gap-3.5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] lg:mx-0 lg:mt-12 lg:justify-center lg:gap-8 lg:overflow-visible lg:px-0">
-              {PHONE_SHOTS.map((shot, i) => (
-                <PhoneShot key={shot.src} {...shot} className={i % 2 ? 'w-52 shrink-0 snap-center lg:mt-12 lg:w-64' : 'w-52 shrink-0 snap-center lg:w-64'} />
-              ))}
-            </div>
           </section>
 
           <section className="mt-18 lg:mt-36">
