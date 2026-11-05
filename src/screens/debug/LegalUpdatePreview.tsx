@@ -10,7 +10,7 @@ export function LegalUpdatePreview() {
       <div className="max-w-sm">
         <LegalUpdateBanner
           inline
-          update={{ page: 'terms', summary: 'Tips can now be sent through Ko-fi.' }}
+          update={{ pages: ['terms'], summary: 'Tips can now be sent through Ko-fi.' }}
           effectiveDate="2026-11-01"
           onRead={noop}
           onDismiss={noop}

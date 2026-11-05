@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { LEGAL_ROUTES } from '../../app/routes';
 import { ActionButton } from '../../lib/widgets';
@@ -27,6 +28,27 @@ export function GoogleSignInButton({ onClick, busy, label = 'Sign in with Google
         </span>
         {label}
       </ActionButton>
+    </div>
+  );
+}
+
+/** The note under a sign-in button: an error, quiet news, or (inside LINE or Instagram) a way to copy the link. */
+export function SignInMessageNote({ message, className }: { message: { text: string; tone: 'danger' | 'quiet'; copyLink?: boolean }; className?: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    void navigator.clipboard?.writeText(window.location.href.replace(/[?&]openExternalBrowser=1/, '')).then(() => setCopied(true), () => setCopied(false));
+  };
+  return (
+    <div
+      role={message.tone === 'danger' ? 'alert' : 'status'}
+      className={cn('max-w-sm rounded-sm px-3.5 py-2.5 text-sm font-bold', message.tone === 'danger' ? 'bg-feedback-danger-surface text-feedback-danger-text' : 'bg-ui-hover text-ui-ink', className)}
+    >
+      <p>{message.text}</p>
+      {message.copyLink && (
+        <button type="button" onClick={copy} className="mt-2 rounded-xs font-extrabold text-brand-primary-text hover:underline focus-ring-inline">
+          {copied ? 'Link copied' : 'Copy link'}
+        </button>
+      )}
     </div>
   );
 }

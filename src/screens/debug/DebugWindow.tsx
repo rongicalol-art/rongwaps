@@ -1,6 +1,7 @@
 import { FlashcardActionsPreview } from '../flashcard';
 import { SentenceLookupPreview } from './SentenceLookupPreview';
 import { LegalUpdatePreview } from './LegalUpdatePreview';
+import { AgeCheck } from '../auth';
 import { PerformancePanel } from './PerformancePanel';
 import { SocialSimulatorPanel } from './SocialSimulatorPanel';
 import React, { useEffect, useState } from 'react';
@@ -344,6 +345,10 @@ export const DebugWindow = () => {
             <SentencesPreview />
             <PinyinPreview />
             <LegalUpdatePreview />
+            <section className="space-y-3 rounded-feature border-2 border-ui-divider p-4">
+              <h2 className="text-xl font-black text-ui-ink-strong">Age step · safe preview (buttons do nothing)</h2>
+              <div className="h-[46rem] overflow-hidden rounded-feature border-2 border-ui-divider"><AgeCheck preview /></div>
+            </section>
           </div>
         )}
 

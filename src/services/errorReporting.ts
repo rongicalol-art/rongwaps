@@ -32,9 +32,12 @@ export function reportReactError(error: unknown, errorInfo: ErrorInfo) {
   void sentryClient.then((Sentry) => Sentry?.reactErrorHandler()(error, errorInfo));
 }
 
-/** One anonymous note per session when real-device performance was poor (no user, request or URL data). */
-export function reportPoorPerformance(summary: string, tags: Record<string, string>) {
-  if (!sentryClient) return;
+/** Performance notes share Sentry's 5,000 monthly events with crashes: send one session in twenty. */
+const PERFORMANCE_NOTE_SHARE = 0.05;
+
+/** One anonymous note per sampled session when real-device performance was poor (no user, request or URL data). */
+export function reportPoorPerformance(summary: string, tags: Record<string, string>, sample = Math.random()) {
+  if (!sentryClient || sample >= PERFORMANCE_NOTE_SHARE) return;
   void sentryClient.then((Sentry) => Sentry?.captureMessage(`Poor performance: ${summary}`, { level: 'info', tags }));
 }
 

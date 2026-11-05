@@ -31,6 +31,21 @@ test('social profile images only allow Google avatars and signed profile avatar 
   assert.equal(socialImage(`https://lh3.googleusercontent.com/${'a'.repeat(2100)}`, storage), undefined);
 });
 
+test('a photo a client sends must be its own: its sign-in Google photo or its own upload folder', () => {
+  const storage = 'https://project.supabase.co';
+  const google = 'https://lh3.googleusercontent.com/a/me=s96-c';
+  const owner = { uid: 'user', google };
+  assert.equal(socialImage(google, storage, 'avatar', owner), google);
+  assert.equal(socialImage('https://blogger.googleusercontent.com/img/anything.png', storage, 'avatar', owner), undefined, 'any other Google-hosted image');
+  assert.equal(socialImage(google, storage, 'avatar', { uid: 'user' }), undefined, 'no Google photo in the sign-in');
+  const own = 'https://project.supabase.co/storage/v1/object/sign/profile-media/user/avatar.webp?token=secret';
+  assert.equal(socialImage(own, storage, 'avatar', owner), own);
+  assert.equal(socialImage(own.replace('/user/', '/someone-else/'), storage, 'avatar', owner), undefined, 'a classmate’s photo');
+  const cover = own.replace('avatar.webp', 'cover.webp');
+  assert.equal(socialImage(cover, storage, 'cover', { uid: 'user' }), cover);
+  assert.equal(socialImage(cover.replace('/user/', '/x/'), storage, 'cover', { uid: 'user' }), undefined);
+});
+
 test('visit cards may carry only a signed profile cover URL', () => {
   const storage = 'https://project.supabase.co';
   const cover = 'https://project.supabase.co/storage/v1/object/sign/profile-media/user/cover.webp?token=secret';

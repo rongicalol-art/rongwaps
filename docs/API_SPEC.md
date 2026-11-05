@@ -1,5 +1,13 @@
 # 🔌 Express API Specification
 
+## Reports
+
+`POST /api/reports` requires a verified session and accepts `{ target, reason, place, message?, messageId?, name?, photo? }`
+(reason `spam|rude|unsafe|other`, place `profile|chat|party`; message at most 300 characters, name 30; a photo
+is kept without its query string). It saves through `public.submit_report` as the learner (20 a day; the limit
+returns 429 with its message) and, for `unsafe`, emails the owner at once through Resend with the report ID as the
+idempotency key. A failed email never fails a saved report. Errors: 400 invalid, 429 limit, 503 otherwise.
+
 ## Feedback
 
 `POST /api/feedback` requires a verified school-beta session and accepts
@@ -115,7 +123,7 @@ flowchart TD
 
 `GET /api/dictionary/search?q=…&limit=30` returns at most 50 ranked results. Queries are capped at 128 characters and four wildcards. `POST /api/dictionary/lookup` accepts `{ "words": ["你好"] }` (at most 64 words) and returns a word-to-dictionary-rows object. `POST /api/dictionary/course` accepts the same body and returns matching course cards, including reading-specific recordings. `GET /api/dictionary/examples?word=…&limit=3` returns up to 30 examples. These endpoints require the same verified school session as lesson content, use `private, no-store` and `Vary: Authorization`, and share the 300/IP/minute cold-token limiter with protected content; dictionary calls also have a 180/user/minute limit. Invalid requests return 400; unavailable search returns 503 and the client exposes a retryable error.
 
-The server keeps one lazy dictionary worker per process. Character/Latin postings narrow candidates before the shared ranking engine runs; typo and segmentation fallback retain the original corpus semantics. The worker isolates parsing and searching from HTTP/authentication. Its exact-shard cache holds eight shards and its result cache 96 queries. At most 32 jobs queue; startup and query deadlines return errors instead of leaving a permanent spinner. Canceled worker startups reject promptly, and late events from a retired worker cannot terminate its replacement. Global search requires a connection; warm lesson definitions remain available in memory. While the request runs, the browser publishes matches from `/data/search/common-words.json` (the 20,000 most common entries, derived at build time and served through the same authenticated `/data` gate), searched in a worker with the same engine; the server's page replaces them.
+The server keeps one lazy dictionary worker per process. Character/Latin postings narrow candidates before the shared ranking engine runs; typo and segmentation fallback retain the original corpus semantics. The worker isolates parsing and searching from HTTP/authentication. Its exact-shard cache holds eight shards and its result cache 96 queries. At most 32 jobs queue; startup (90 s, because a small shared CPU needs far more than 20 s to read the index; cancelling earlier restarts from zero) and query deadlines return errors instead of leaving a permanent spinner. Canceled worker startups reject promptly, and late events from a retired worker cannot terminate its replacement. Global search requires a connection; warm lesson definitions remain available in memory. While the request runs, the browser publishes matches from `/data/search/common-words.json` (the 20,000 most common entries, derived at build time and served through the same authenticated `/data` gate), searched in a worker with the same engine; the server's page replaces them.
 
 The Vite build derives `/data/study/manifest.json` and hashed lesson-part JSON bundles from the canonical vocabulary, flashcard-extras and dictionary packs. Each bundle contains its cards, full precomputed examples/hooks, matching dictionary rows plus bounded reference targets, and existing audio references. Repeated example sentences share a table. Brotli/gzip sidecars are generated once at build time and negotiated by Express **after** authentication; shared caches remain disabled. No authored data or audio is transcoded. Development generates equivalent temporary artifacts under `.vite/study`; production reads only `dist/`.
 

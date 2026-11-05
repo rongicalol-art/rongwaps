@@ -1,9 +1,9 @@
 import { TopToast } from '../../lib/widgets';
-import { formatLegalDate, type LegalUpdate } from './legalMeta';
+import { legalEffectivePhrase, type LegalUpdate } from './legalMeta';
 
-const PAGE_TITLES: Record<LegalUpdate['page'], string> = {
-  terms: 'Terms of Service',
-  privacy: 'Privacy Policy',
+const PAGE_TITLES: Record<LegalUpdate['pages'][number], string> = {
+  terms: 'Terms',
+  privacy: 'Privacy',
 };
 
 interface LegalUpdateBannerProps {
@@ -23,8 +23,8 @@ export function LegalUpdateBanner({ update, effectiveDate, open = true, inline, 
       open={open}
       inline={inline}
       icon="bell"
-      title={`${PAGE_TITLES[update.page]} update`}
-      message={`${update.summary} Takes effect ${formatLegalDate(effectiveDate)}.`}
+      title={`${update.pages.map((page) => PAGE_TITLES[page]).join(' and ')} update`}
+      message={`${update.summary} ${legalEffectivePhrase(effectiveDate)}`}
       dismissLabel="Later"
       onDismiss={onDismiss}
       actionLabel="Read"

@@ -3,6 +3,7 @@
  * A lesson key is `bookId * 100 + lessonId`.
  */
 import { MAX_SOCIAL_IMAGE_LENGTH, stripControl, type RaceRoomSummary, type SocialColor } from './quizRace';
+import { maskChat } from './nameFilter';
 
 export const CHEER_PHRASES = ['加油！', '好棒！', '一起考試？', '等我一下'] as const;
 export const ACTIVITIES = ['lesson', 'cards', 'quiz', 'grammar', 'reading', 'writing', 'race'] as const;
@@ -59,7 +60,7 @@ export type CoverPreset = typeof COVER_PRESETS[number];
  */
 export interface ProfileCard { cv: CoverPreset; ci?: string; b: number; s?: number; w: number; k?: number; st: number }
 const cardCount = (value: unknown, max: number): number | null => (Number.isInteger(value) && Number(value) >= 0 && Number(value) <= max ? Number(value) : null);
-/** Shape and bounds only; the Worker separately checks that `ci` is the sender's own signed cover URL. */
+/** Shape and bounds only; the Worker separately checks that `ci` is the sender's own signed cover URL (socialImage with `owner`). */
 export function parseProfileCard(value: unknown): ProfileCard | null {
   if (!value || typeof value !== 'object') return null;
   const data = value as Record<string, unknown>;
@@ -134,7 +135,7 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat), ...(data.v === 2 ? { v: 2 as const } : {}) };
   if (data.t === 'roster') return { t: 'roster' };
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {
-    const text = chatText(data.text);
+    const text = maskChat(chatText(data.text));
     const mentions = mentionIds(data.mentions);
     if (text) return { t: 'say', l: Number(data.l), text, ...(mentions.length ? { mentions } : {}) };
   }

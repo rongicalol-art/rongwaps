@@ -2,6 +2,7 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import { isSupabaseConfigured, supabase } from './supabaseClient';
 import { type Session, type User } from '@supabase/supabase-js';
 import { schoolAccessFromClaims, unverifiedClaims } from '../../shared/accessToken';
+import { SIGNUP_OPEN_AT } from '../../shared/publicLaunch';
 
 const missingSupabaseMessage = 'Supabase is not configured for this local environment.';
 const productionAuthRedirectUrl = 'https://ronsmandarin.com/';
@@ -20,12 +21,27 @@ export function getOAuthRedirectUrl(
 }
 
 const SIGNUPS_OFF = /signup_disabled|signups? (are )?not allowed/;
-const SIGNUPS_OFF_MESSAGE = 'New accounts are switched off for this Supabase project. Turn on Authentication → Sign In / Providers → Allow new users to sign up.';
+
+/** Learners see the plain message; local builds also name the dashboard setting to fix. */
+function setupMessage(message: string, devHint: string, hints = Boolean(import.meta.env?.DEV)): string {
+  return hints ? `${message} ${devHint}` : message;
+}
+const UNAVAILABLE = 'Sign-in isn’t available right now. Please try again later.';
+const signupsOffMessage = (hints?: boolean) => setupMessage('New accounts can’t be created right now. Please try again later.', 'Supabase: Authentication → Sign In / Providers → Allow new users to sign up.', hints);
+const redirectMessage = (hints?: boolean) => setupMessage(UNAVAILABLE, `Supabase blocked this return address: add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`, hints);
+const providerMessage = (hints?: boolean) => setupMessage(UNAVAILABLE, 'Google sign-in is not enabled for this Supabase project: Authentication → Sign In / Providers.', hints);
+
+/** Sign-in closed: school-only before sign-up opens to everyone; after it, the owner's pause. */
+export function closedSignInMessage(now = Date.now()): string {
+  return now < SIGNUP_OPEN_AT
+    ? 'This beta is for Shu-Te student Google accounts. Use your s…@stu.edu.tw account.'
+    : 'Ron’s Mandarin is closed to new sign-ins for now. Please try again later.';
+}
 
 /** Not an error: the database's public sign-up cap is reached (private.signup_settings.public_cap). */
 export const SIGNUPS_FULL_MESSAGE = 'Ron’s Mandarin is full for now. New places open soon, so try again in a few days.';
 
-export function getOAuthCallbackErrorMessage(search: string, hash: string): string | null {
+export function getOAuthCallbackErrorMessage(search: string, hash: string, hints?: boolean): string | null {
   const queryParams = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
   const hashParams = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash);
   const errorCode = queryParams.get('error_code')
@@ -44,40 +60,30 @@ export function getOAuthCallbackErrorMessage(search: string, hash: string): stri
   if (details.includes('signups_full')) return SIGNUPS_FULL_MESSAGE;
   if (details.includes('account_blocked')) return 'This account can’t sign in.';
   if (details.includes('google_only')) return 'Sign in with a Google account whose email is verified.';
-  if (details.includes('school_beta_only')) {
-    return 'This beta is for Shu-Te student Google accounts. Use your s…@stu.edu.tw account.';
-  }
+  if (details.includes('school_beta_only')) return closedSignInMessage();
 
   if (errorCode === 'access_denied') {
     return 'Google sign-in was cancelled. Try again when you’re ready.';
   }
   // Before the redirect check: "Signups not allowed for this instance" also says "not allowed".
-  if (SIGNUPS_OFF.test(details)) return SIGNUPS_OFF_MESSAGE;
-  if (/redirect|allow.?list|not allowed/.test(details)) {
-    return `Supabase blocked this return address. Add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`;
-  }
-  if (/provider|google/.test(details)) {
-    return 'Google sign-in is not enabled for this Supabase project. Check Authentication → Sign In / Providers.';
-  }
+  if (SIGNUPS_OFF.test(details)) return signupsOffMessage(hints);
+  if (/redirect|allow.?list|not allowed/.test(details)) return redirectMessage(hints);
+  if (/provider|google/.test(details)) return providerMessage(hints);
   if (/cancel|denied/.test(details)) {
     return 'Google sign-in was cancelled. Try again when you’re ready.';
   }
   return 'Google sign-in could not finish. Please try again.';
 }
 
-export function getOAuthLoginErrorMessage(error: unknown): string {
+export function getOAuthLoginErrorMessage(error: unknown, hints?: boolean): string {
   const message = error instanceof Error ? error.message.toLowerCase() : '';
 
   if (message.includes('supabase is not configured')) {
-    return 'Sign-in is not configured. Check that VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set for this build.';
+    return setupMessage(UNAVAILABLE, 'Check that VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set for this build.', hints);
   }
-  if (SIGNUPS_OFF.test(message)) return SIGNUPS_OFF_MESSAGE;
-  if (/redirect|allow.?list|not allowed/.test(message)) {
-    return `Supabase blocked this return address. Add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`;
-  }
-  if (/provider|google/.test(message)) {
-    return 'Google sign-in is not enabled for this Supabase project. Check Authentication → Sign In / Providers.';
-  }
+  if (SIGNUPS_OFF.test(message)) return signupsOffMessage(hints);
+  if (/redirect|allow.?list|not allowed/.test(message)) return redirectMessage(hints);
+  if (/provider|google/.test(message)) return providerMessage(hints);
   if (/network|fetch|offline|load failed/.test(message)) {
     return 'Could not reach the sign-in service. Check your connection and try again.';
   }
@@ -134,7 +140,7 @@ export const authService = {
   },
 
   /** `ageOk` is false only for a public account that has not passed the age step yet. */
-  onAuthStateChanged: (callback: (user: User | null, hasFullCourseAccess: boolean, ageOk?: boolean) => void) => {
+  onAuthStateChanged: (callback: (user: User | null, hasFullCourseAccess: boolean, ageOk?: boolean, publicAccount?: boolean) => void) => {
     if (!isSupabaseConfigured()) {
       debugLogger.warn('Auth', missingSupabaseMessage);
       callback(null, false);
@@ -148,7 +154,7 @@ export const authService = {
       if (!session) { callback(null, false); return; }
       // Tokens issued by the school sign-in hook already carry its decision; older ones ask the database.
       const stamped = schoolAccessFromClaims(unverifiedClaims(session.access_token));
-      if (stamped) { callback(session.user, stamped.fullCourse, stamped.ageOk); return; }
+      if (stamped) { callback(session.user, stamped.fullCourse, stamped.ageOk, stamped.publicAccount); return; }
       try {
         const { data, error, status } = await supabase.rpc('has_beta_access');
         if (disposed || expectedRevision !== revision) return;

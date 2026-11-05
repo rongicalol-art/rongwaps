@@ -1,39 +1,63 @@
 name: Health
 
 # Every morning, a read-only look at production: database size against the free
-# 500 MB, public sign-ups against the cap, and new reports. When something needs
-# the owner, it opens one "Health check" issue (or comments on the open one), so
-# the GitHub app on the phone notifies. Quiet days do nothing.
+# 500 MB, public sign-ups against the cap, new reports and feedback since the
+# last good run, and (with CLOUDFLARE_ANALYTICS_TOKEN) Study together's Worker
+# requests against the free 100,000 a day. When something needs the owner, it
+# opens one "Health check" issue (or comments on the open one), so the GitHub
+# app on the phone notifies. Mondays add a sign-up summary. Quiet days do nothing.
+# "Not safe" reports don't wait for this: the server emails them at once.
+# Render's API doesn't report free-plan instance hours or build minutes, so those
+# come only from Render's own usage emails (docs/RELEASING.md → Free-tier limits).
 
 on:
   schedule:
     - cron: '30 1 * * *' # 09:30 Taiwan
   workflow_dispatch:
+    inputs:
+      test:
+        description: 'Post a test note (checks the issue reaches your phone)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
   issues: write
+  actions: read # finds the last successful run, so nothing between runs is missed
 
 concurrency:
   group: health
   cancel-in-progress: false
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
 
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Since the last good run
+        id: since
+        run: |
+          # A late or skipped run still counts everything since the last one that finished.
+          last=$(gh run list --workflow health.yml --status success --limit 1 --json createdAt --jq '.[0].createdAt // ""' || true)
+          echo "since=${last:-$(date -u -d '1 day ago' +%FT%TZ)}" >> "$GITHUB_OUTPUT"
+
       - name: Read production numbers (read-only)
         id: read
         env:
           DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+          SINCE: ${{ steps.since.outputs.since }}
         run: |
           # Each query runs in a read-only transaction (as the backup does), so this job can never write.
           q() { psql "$DATABASE_URL" --no-psqlrc -q -v ON_ERROR_STOP=1 -At -c 'begin transaction read only' -c "$1" -c 'commit'; }
           size_mb=$(q "select pg_database_size(current_database()) / 1048576")
-          signups=$(q "select count(*) from auth.users where created_at > now() - interval '1 day'")
-          open=false; cap=0; public=0; reports=0
-          # Before the public-accounts migrations reach production these tables don't exist yet.
+          signups=$(q "select count(*) from auth.users where created_at > '$SINCE'::timestamptz")
+          week=$(q "select count(*) from auth.users where created_at > now() - interval '7 days'")
+          feedback=$(q "select count(*) from private.feedback where created_at > '$SINCE'::timestamptz")
+          open=false; cap=0; public=0; reports=0; unsafe=0
           if [ "$(q "select to_regclass('private.signup_settings') is not null")" = "t" ]; then
             open=$(q "select public_open from private.signup_settings")
             [ "$open" = "t" ] && open=true || open=false
@@ -41,39 +65,74 @@ jobs:
             public=$(q "select private.public_account_count()")
           fi
           if [ "$(q "select to_regclass('private.user_reports') is not null")" = "t" ]; then
-            reports=$(q "select count(*) from private.user_reports where created_at > now() - interval '1 day'")
+            reports=$(q "select count(*) from private.user_reports where created_at > '$SINCE'::timestamptz")
+            unsafe=$(q "select count(*) from private.user_reports where created_at > '$SINCE'::timestamptz and reason = 'unsafe'")
           fi
           {
-            echo "size_mb=$size_mb"; echo "signups=$signups"; echo "open=$open"
-            echo "cap=$cap"; echo "public=$public"; echo "reports=$reports"
+            echo "size_mb=$size_mb"; echo "signups=$signups"; echo "week=$week"; echo "feedback=$feedback"
+            echo "open=$open"; echo "cap=$cap"; echo "public=$public"; echo "reports=$reports"; echo "unsafe=$unsafe"
           } >> "$GITHUB_OUTPUT"
-          echo "Database ${size_mb} MB · sign-ups today ${signups} · public ${public}/${cap} (open: ${open}) · reports today ${reports}"
+          echo "Database ${size_mb} MB · sign-ups since ${SINCE}: ${signups} · public ${public}/${cap} (open: ${open}) · reports ${reports} (${unsafe} not safe) · feedback ${feedback}"
+
+      - name: Read Study together usage (Cloudflare, optional)
+        id: cloudflare
+        env:
+          CLOUDFLARE_ANALYTICS_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_TOKEN }}
+          ACCOUNT: ${{ vars.R2_ACCOUNT_ID }}
+        run: |
+          set -o pipefail
+          if [ -z "$CLOUDFLARE_ANALYTICS_TOKEN" ]; then echo "requests=" >> "$GITHUB_OUTPUT"; exit 0; fi
+          query='query($account: String!, $since: Time!, $until: Time!) { viewer { accounts(filter: { accountTag: $account }) { workersInvocationsAdaptive(limit: 100, filter: { datetime_geq: $since, datetime_leq: $until }) { sum { requests } } } } }'
+          body=$(jq -n --arg q "$query" --arg a "$ACCOUNT" --arg s "$(date -u -d '1 day ago' +%FT%TZ)" --arg u "$(date -u +%FT%TZ)" \
+            '{query: $q, variables: {account: $a, since: $s, until: $u}}')
+          requests=$(curl -fsS -m 30 https://api.cloudflare.com/client/v4/graphql -H "Authorization: Bearer $CLOUDFLARE_ANALYTICS_TOKEN" \
+            -H 'Content-Type: application/json' -d "$body" | jq '[.data.viewer.accounts[0].workersInvocationsAdaptive[].sum.requests] | add // 0' || echo "unknown")
+          echo "requests=$requests" >> "$GITHUB_OUTPUT"
+          echo "Worker requests in the last day: $requests (free plan: 100,000 a day)"
 
       - name: Tell the owner when something needs them
         env:
-          GH_TOKEN: ${{ github.token }}
           SIZE_MB: ${{ steps.read.outputs.size_mb }}
           SIGNUPS: ${{ steps.read.outputs.signups }}
+          WEEK: ${{ steps.read.outputs.week }}
+          FEEDBACK: ${{ steps.read.outputs.feedback }}
           OPEN: ${{ steps.read.outputs.open }}
           CAP: ${{ steps.read.outputs.cap }}
           PUBLIC: ${{ steps.read.outputs.public }}
           REPORTS: ${{ steps.read.outputs.reports }}
+          UNSAFE: ${{ steps.read.outputs.unsafe }}
+          SINCE: ${{ steps.since.outputs.since }}
+          REQUESTS: ${{ steps.cloudflare.outputs.requests }}
+          TEST: ${{ inputs.test }}
         run: |
           notes=""
+          add() { notes="$notes
+          - $1"; }
           if [ "$SIZE_MB" -ge 400 ]; then
-            notes="$notes
-          - **Database is ${SIZE_MB} MB** of the free 500 MB. Past 500 MB saving progress stops. Options: Supabase Pro, or ask Claude to trim review history."
+            add "**Database is ${SIZE_MB} MB** of the free 500 MB. Past 500 MB saving progress stops. Options: Supabase Pro, or ask Claude to trim review history."
           fi
           if [ "$OPEN" = "true" ] && [ "$CAP" -gt 0 ] && [ $((PUBLIC * 10)) -ge $((CAP * 9)) ]; then
-            notes="$notes
-          - **Sign-ups are at ${PUBLIC} of ${CAP}.** New people will see \"full for now\". To raise it: \`update private.signup_settings set public_cap = $((CAP + 200)), updated_at = now();\`"
+            add "**Sign-ups are at ${PUBLIC} of ${CAP}.** New people will see \"full for now\". To raise it: \`update private.signup_settings set public_cap = $((CAP + 200)), updated_at = now();\`"
           fi
           if [ "$REPORTS" -gt 0 ]; then
-            notes="$notes
-          - **${REPORTS} new report(s)** in the last day. Read them: \`select id, created_at, reason, place, message, reporter, target from private.user_reports order by id desc limit 50;\` (Supabase SQL editor). Ban or unban: docs/RELEASING.md → Public accounts."
+            add "**${REPORTS} new report(s)** (${UNSAFE} \"not safe\", already emailed). The text is the reporter's claim: check the server's copy before banning (docs/RELEASING.md → Reports, blocks and limits). Read them: \`select id, created_at, reason, place, message, message_id, target_name, target_photo, reporter, target from private.user_reports where created_at > '${SINCE}' order by id desc;\`"
+          fi
+          if [ "$FEEDBACK" -gt 0 ]; then
+            add "**${FEEDBACK} new feedback message(s).** Read them: \`select f.created_at, u.email, f.path, f.message from private.feedback f join auth.users u on u.id = f.user_id where f.created_at > '${SINCE}' order by f.created_at desc;\` (reply from your email)."
+          fi
+          if [ "$REQUESTS" = "unknown" ]; then
+            add "Couldn't read Study together usage from Cloudflare: check the CLOUDFLARE_ANALYTICS_TOKEN secret (Account Analytics: Read)."
+          elif [ -n "$REQUESTS" ] && [ "$REQUESTS" -ge 70000 ]; then
+            add "**Study together used ${REQUESTS} Worker requests** in the last day (free plan: 100,000 a day; past it, requests fail until 00:00 UTC). Options in docs/RELEASING.md → Free-tier limits."
+          fi
+          if [ "$(date -u +%u)" = 1 ]; then
+            add "Weekly: ${WEEK} new account(s) in 7 days; public accounts ${PUBLIC} of ${CAP} (sign-up open: ${OPEN})."
+          fi
+          if [ "$TEST" = "true" ]; then
+            add "Test note: if this reached your phone, Health can reach you."
           fi
           if [ -z "$notes" ]; then echo "Nothing needs the owner today."; exit 0; fi
-          body="Health check, $(date -u +%F) (09:30 Taiwan). Sign-ups in the last day: ${SIGNUPS}.
+          body="Health check, $(date -u +%F) (09:30 Taiwan). Sign-ups since the last check: ${SIGNUPS}.
           $notes
 
           Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

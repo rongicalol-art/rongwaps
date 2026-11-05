@@ -56,7 +56,10 @@ export async function unblockPerson(person: BlockedPerson) {
 /** Sends the report, then the sheet offers to block the same person. */
 export async function reportPerson(prompt: SafetyPrompt, reason: ReportReason) {
   try {
-    await safetyService.report(prompt.person.u, reason, prompt.place, prompt.message);
+    await safetyService.report({
+      target: prompt.person.u, reason, place: prompt.place, message: prompt.message,
+      messageId: prompt.messageId, name: prompt.person.n, photo: prompt.photo,
+    });
     useAppStore.getState().setSocial({ socialSafety: { ...prompt, kind: 'report-done' } });
   } catch (error) {
     debugLogger.error('Supabase', 'Report failed', error);

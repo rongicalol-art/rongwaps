@@ -1,9 +1,12 @@
 import { DurableObject } from 'cloudflare:workers';
 import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMITS, DAILY_LIMIT_ERROR, ROOM_LIST_CAP, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
+import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
 
 type Att = {
   u: string; n: string; c: SocialColor; i?: string; show: boolean; l: number | null; a: Activity | null;
+  /** The Google photo this account's sign-in carries: the only provider photo it may show. */
+  g?: string;
   on: boolean; ch: number | null; cheer: number; inv: number[];
   activeAt: number; tokens: number; updatedAt: number;
   authUntil: number;
@@ -52,7 +55,7 @@ export class Lobby extends DurableObject<Env> {
   private byUser = new Map<string, WebSocket>();
   private byChannel = new Map<number, Set<WebSocket>>();
   private ticketBuckets = new Map<string, { tokens: number; at: number }>();
-  private roomsCache: { frame: string; at: number } | null = null;
+  private roomsCache: { frame: string; at: number; rows: Array<{ room: RaceRoomSummary; members: string[] }> } | null = null;
   private rosterAt = new WeakMap<WebSocket, number>();
   /** Everyone in any block pair (loaded once per wake); accounts outside it skip per-person filtering. */
   private blockedAny: Set<string> | null = null;
@@ -62,13 +65,17 @@ export class Lobby extends DurableObject<Env> {
     super(ctx, env);
     const sql = ctx.storage.sql;
     sql.exec('CREATE TABLE IF NOT EXISTS tickets (ticket TEXT PRIMARY KEY, uid TEXT NOT NULL, name TEXT NOT NULL, color TEXT NOT NULL, expires INTEGER NOT NULL, auth_until INTEGER NOT NULL DEFAULT 0)');
-    if (!sql.exec<{ name: string }>('PRAGMA table_info(tickets)').toArray().some(column => column.name === 'auth_until')) sql.exec('ALTER TABLE tickets ADD COLUMN auth_until INTEGER NOT NULL DEFAULT 0');
+    const ticketColumns = sql.exec<{ name: string }>('PRAGMA table_info(tickets)').toArray().map(column => column.name);
+    if (!ticketColumns.includes('auth_until')) sql.exec('ALTER TABLE tickets ADD COLUMN auth_until INTEGER NOT NULL DEFAULT 0');
+    if (!ticketColumns.includes('google')) sql.exec('ALTER TABLE tickets ADD COLUMN google TEXT');
     sql.exec('CREATE TABLE IF NOT EXISTS chat (id INTEGER PRIMARY KEY AUTOINCREMENT, lesson INTEGER NOT NULL, uid TEXT NOT NULL, name TEXT NOT NULL, color TEXT NOT NULL, text TEXT NOT NULL, room TEXT, ts INTEGER NOT NULL)');
     sql.exec('CREATE INDEX IF NOT EXISTS chat_lesson ON chat (lesson, id)');
     sql.exec('CREATE TABLE IF NOT EXISTS chat_rate (uid TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
     sql.exec('CREATE TABLE IF NOT EXISTS mentions (uid TEXT NOT NULL, key TEXT NOT NULL, data TEXT NOT NULL, ts INTEGER NOT NULL, read INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(uid,key))');
     sql.exec('CREATE INDEX IF NOT EXISTS mentions_uid ON mentions(uid,ts)');
     sql.exec('CREATE TABLE IF NOT EXISTS rooms (code TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
+    // Account IDs in the room, so a listing is hidden from anyone in a block pair with one of them (never sent).
+    if (!sql.exec<{ name: string }>('PRAGMA table_info(rooms)').toArray().some(column => column.name === 'members')) sql.exec("ALTER TABLE rooms ADD COLUMN members TEXT NOT NULL DEFAULT '[]'");
     sql.exec('CREATE TABLE IF NOT EXISTS reports (id INTEGER PRIMARY KEY AUTOINCREMENT, msg INTEGER NOT NULL, uid TEXT NOT NULL, text TEXT NOT NULL, reporter TEXT NOT NULL, ts INTEGER NOT NULL)');
     // `uid` blocked `other`: both are hidden from each other. Sent by the blocker's own app (its saved list).
     sql.exec('CREATE TABLE IF NOT EXISTS blocks (uid TEXT NOT NULL, other TEXT NOT NULL, PRIMARY KEY(uid,other))');
@@ -77,7 +84,7 @@ export class Lobby extends DurableObject<Env> {
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair('ping', 'pong'));
   }
 
-  async issue(uid: string, name: string, color: string, authUntil: number): Promise<{ ticket: string }> {
+  async issue(uid: string, name: string, color: string, authUntil: number, google?: string): Promise<{ ticket: string }> {
     const now = Date.now();
     const bucket = this.ticketBuckets.get(uid);
     const tokens = Math.min(TICKET_BURST, (bucket?.tokens ?? TICKET_BURST) + (now - (bucket?.at ?? now)) / TICKET_REFILL_MS);
@@ -86,16 +93,16 @@ export class Lobby extends DurableObject<Env> {
     if (this.ticketBuckets.size > 10_000) for (const [key, value] of this.ticketBuckets) if (now - value.at > TICKET_BURST * TICKET_REFILL_MS) this.ticketBuckets.delete(key);
     const ticket = crypto.randomUUID();
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires <= ?', now);
-    this.ctx.storage.sql.exec('INSERT INTO tickets VALUES (?,?,?,?,?,?)', ticket, uid, name, socialColor(color), Math.min(authUntil, now + 30_000), Math.min(authUntil, now + 15 * 60_000));
+    this.ctx.storage.sql.exec('INSERT INTO tickets (ticket,uid,name,color,expires,auth_until,google) VALUES (?,?,?,?,?,?,?)', ticket, uid, name, socialColor(color), Math.min(authUntil, now + 30_000), Math.min(authUntil, now + 15 * 60_000), google ?? null);
     await this.ensureAlarm();
     return { ticket };
   }
 
-  async upsertRoom(summary: RaceRoomSummary, hostUid: string) {
+  async upsertRoom(summary: RaceRoomSummary, hostUid: string, members: string[] = []) {
     const existing = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM rooms WHERE code=?', summary.code).toArray()[0];
     const previous = existing ? JSON.parse(existing.data) as RaceRoomSummary : null;
     if (previous && (previous.revision ?? 0) >= (summary.revision ?? 0)) return;
-    this.ctx.storage.sql.exec('INSERT OR REPLACE INTO rooms VALUES (?,?,?)', summary.code, JSON.stringify(summary), Date.now());
+    this.ctx.storage.sql.exec('INSERT OR REPLACE INTO rooms (code,data,updated,members) VALUES (?,?,?,?)', summary.code, JSON.stringify(summary), Date.now(), JSON.stringify(members.slice(0, 12)));
     this.roomsCache = null;
     if (summary.open && summary.players.length && !this.ctx.storage.sql.exec('SELECT id FROM chat WHERE room=? LIMIT 1', summary.code).toArray().length) {
       const lesson = (summary.selection.book ?? 1) * 100 + Number(Object.keys(summary.selection.lessons)[0]);
@@ -168,6 +175,17 @@ export class Lobby extends DurableObject<Env> {
     return set;
   }
   private apart(a: string, b: string) { return this.hidden(a).has(b); }
+  /** For rooms: whether `uid` is in a block pair with anyone in `others` (a join is then refused as "full"). */
+  async apartFromAny(uid: string, others: string[]): Promise<boolean> {
+    const hide = this.hidden(uid);
+    return others.some(other => hide.has(other));
+  }
+  /** For rooms: the block pairs among `ids`, as "a|b" keys both ways (party chat skips them). */
+  async pairsAmong(ids: string[]): Promise<string[]> {
+    const pairs: string[] = [];
+    for (const a of ids) for (const b of ids) if (a !== b && this.apart(a, b)) pairs.push(`${a}|${b}`);
+    return pairs;
+  }
   /** Counts one cheer or invite toward today's allowance; false once it is used up. */
   private allowDaily(uid: string, kind: 'cheer' | 'invite', now: number): boolean {
     const day = utcDay(now);
@@ -199,7 +217,7 @@ export class Lobby extends DurableObject<Env> {
     const protocols = request.headers.get('Sec-WebSocket-Protocol')?.split(',').map(value => value.trim()) ?? [];
     const ticket = protocols.find(value => value.startsWith('ticket.'))?.slice(7);
     if (!ticket || !protocols.includes('lobby')) return new Response('Sign in again.', { status: 401 });
-    const entry = this.ctx.storage.sql.exec<{ uid: string; name: string; color: string; expires: number; auth_until: number }>('SELECT uid,name,color,expires,auth_until FROM tickets WHERE ticket=?', ticket).toArray()[0];
+    const entry = this.ctx.storage.sql.exec<{ uid: string; name: string; color: string; expires: number; auth_until: number; google: string | null }>('SELECT uid,name,color,expires,auth_until,google FROM tickets WHERE ticket=?', ticket).toArray()[0];
     if (!entry || entry.expires <= Date.now() || entry.auth_until <= Date.now()) return new Response('Sign in again.', { status: 401 });
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE ticket=?', ticket);
     const live = this.index();
@@ -209,7 +227,7 @@ export class Lobby extends DurableObject<Env> {
     const [client, server] = Object.values(new WebSocketPair());
     this.ctx.acceptWebSocket(server);
     // Hidden until the client's privacy preference arrives; never briefly disclose hidden users.
-    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until, j: Date.now() };
+    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), ...(entry.google ? { g: entry.google } : {}), show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until, j: Date.now() };
     server.serializeAttachment(att);
     this.track(server, att);
     this.send(server, { t: 'me', u: att.u });
@@ -225,6 +243,7 @@ export class Lobby extends DurableObject<Env> {
     let att = this.index().get(socket);
     if (!att) { att = socket.deserializeAttachment() as Att; this.track(socket, att); }
     if ((att.authUntil ?? 0) <= Date.now()) { this.close(socket, 4002, 'Refresh your sign-in.'); return; }
+    if (socialPaused(this.env) || socialBanned(this.env, att.u)) { this.close(socket, 4004, socialPaused(this.env) ? SOCIAL_PAUSED_ERROR : SOCIAL_BANNED_ERROR); return; }
     const now = Date.now();
     att.tokens = Math.min(30, (att.tokens ?? 30) + (now - (att.updatedAt ?? now)) / 200);
     att.activeAt = now; att.updatedAt = now;
@@ -233,7 +252,7 @@ export class Lobby extends DurableObject<Env> {
     let message;
     try { message = parseLobbyMessage(JSON.parse(raw)); } catch { return; }
     if (message.t === 'here') {
-      const image = socialImage(message.i, this.env.SUPABASE_URL);
+      const image = socialImage(message.i, this.env.SUPABASE_URL, 'avatar', { uid: att.u, google: att.g });
       if (message.l === att.l && message.a === att.a && message.show === att.show && image === att.i) return;
       att.l = message.l; att.a = message.a; att.show = message.show; att.i = image;
       socket.serializeAttachment(att);
@@ -249,7 +268,7 @@ export class Lobby extends DurableObject<Env> {
       if (chatChanged && att.ch !== null) this.send(socket, { t: 'history', l: att.ch, v: this.history(att.ch, now, att.u) });
       if (panelOpened) this.sendRoster(socket, att, now);
       // Open panels (and older clients, which always follow listings) get the current list at once; deduped.
-      if (att.on || !att.v2) this.send(socket, this.roomsFrame(), 'rooms');
+      if (att.on || !att.v2) this.send(socket, this.roomsFrame(att.u), 'rooms');
     } else if (message.t === 'roster') {
       this.sendRoster(socket, att, now);
     } else if (message.t === 'say') {
@@ -292,7 +311,7 @@ export class Lobby extends DurableObject<Env> {
         // A blocked pair looks offline to each other.
         if (target && target.socket !== socket && !this.apart(att.u, id)) { this.send(target.socket, frame); delivered++; }
       }
-      if (!delivered) this.send(socket, { t: 'error', message: 'Those classmates are offline. Share your room link instead.' });
+      if (!delivered) this.send(socket, { t: 'error', message: 'They’re offline. Share your room link instead.' });
     } else if (message.t === 'mention-open') {
       const row = this.ctx.storage.sql.exec<{ data: string; read: number }>('SELECT data,read FROM mentions WHERE uid=? AND key=? AND ts>=?', att.u, message.key, now - CHAT_TTL_MS).toArray()[0];
       const notice = row ? { ...JSON.parse(row.data) as MentionNotice, read: !!row.read } : null;
@@ -324,7 +343,7 @@ export class Lobby extends DurableObject<Env> {
       if (message.t === 'card-ask') this.send(target.socket, { t: 'card-ask', from: att.u });
       else {
         const { ci, ...card } = message.v ?? {};
-        const cover = socialImage(ci, this.env.SUPABASE_URL, 'cover');
+        const cover = socialImage(ci, this.env.SUPABASE_URL, 'cover', { uid: att.u });
         this.send(target.socket, { t: 'card', u: att.u, v: message.v ? { ...card, ...(cover ? { ci: cover } : {}) } as typeof message.v : null });
       }
     }
@@ -412,14 +431,20 @@ export class Lobby extends DurableObject<Env> {
     return this.ctx.storage.sql.exec<ChatRow>('SELECT * FROM chat WHERE lesson=? AND ts>=? ORDER BY id DESC LIMIT ?', lesson, now - CHAT_TTL_MS, CHAT_KEEP)
       .toArray().reverse().filter(row => !hide.has(row.uid)).map(row => this.message(row, image(row.uid))).filter(message => message.t || message.r);
   }
-  /** Open, joinable rooms, newest first; reused for 30 s unless a listing changes. */
-  private roomsFrame(): string {
+  /**
+   * Open, joinable rooms, newest first; reused for 30 s unless a listing changes. Someone in a block pair gets
+   * the list without rooms the other person is in (rare, so built only for them).
+   */
+  private roomsFrame(viewer: string): string {
     const now = Date.now();
-    if (this.roomsCache && now - this.roomsCache.at < ROOMS_REUSE_MS) return this.roomsCache.frame;
-    const rooms = this.ctx.storage.sql.exec<{ data: string }>("SELECT data FROM rooms WHERE updated>? AND json_extract(data,'$.open')=1 AND json_extract(data,'$.joinable')=1 ORDER BY updated DESC LIMIT ?", now - ROOM_TTL_MS, ROOM_LIST_CAP)
-      .toArray().map(row => JSON.parse(row.data) as RaceRoomSummary).filter(room => (room.expiresAt ?? Infinity) > now);
-    this.roomsCache = { frame: JSON.stringify({ t: 'rooms', v: rooms } satisfies LobbyServerMessage), at: now };
-    return this.roomsCache.frame;
+    if (!this.roomsCache || now - this.roomsCache.at >= ROOMS_REUSE_MS) {
+      const rows = this.ctx.storage.sql.exec<{ data: string; members: string }>("SELECT data,members FROM rooms WHERE updated>? AND json_extract(data,'$.open')=1 AND json_extract(data,'$.joinable')=1 ORDER BY updated DESC LIMIT ?", now - ROOM_TTL_MS, ROOM_LIST_CAP)
+        .toArray().map(row => ({ room: JSON.parse(row.data) as RaceRoomSummary, members: JSON.parse(row.members || '[]') as string[] })).filter(row => (row.room.expiresAt ?? Infinity) > now);
+      this.roomsCache = { frame: JSON.stringify({ t: 'rooms', v: rows.map(row => row.room) } satisfies LobbyServerMessage), at: now, rows };
+    }
+    const hide = this.hidden(viewer);
+    if (!hide.size) return this.roomsCache.frame;
+    return JSON.stringify({ t: 'rooms', v: this.roomsCache.rows.filter(row => !row.members.some(id => hide.has(id))).map(row => row.room) } satisfies LobbyServerMessage);
   }
 
   /** A change goes out at once, or with the trailing flush of its 2 s window (a timer, not a billed alarm). */
@@ -462,9 +487,8 @@ export class Lobby extends DurableObject<Env> {
     const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([key, people]) => [key, { n: people.length, f: people.slice(0, 3) }]));
     const countFrame = JSON.stringify({ t: 'counts', v: counts, n: total, f: faces } satisfies LobbyServerMessage);
     const people = new Map<number | null, string>();
-    let rooms: string | undefined;
     for (const [socket, att] of live) {
-      if (att.on || att.v2 === false) this.send(socket, rooms ??= this.roomsFrame(), 'rooms');
+      if (att.on || att.v2 === false) this.send(socket, this.roomsFrame(att.u), 'rooms');
       const hide = this.hidden(att.u);
       if (hide.size) {
         // Rare: someone in a block pair gets lists without the other person (counts stay exact).

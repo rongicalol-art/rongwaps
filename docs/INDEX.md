@@ -18,6 +18,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |
 | Server and grading | `API_SPEC.md`, `server/` |
 | Release, undo, backups and restore, incidents, environments | `RELEASING.md` |
+| Data breach, leaked key, stolen sign-in | `reference/INCIDENTS.md` |
 | Study together (presence, chat, quiz races) | `RELEASING.md` → Study together, `games/`, `shared/lobby.ts`, `shared/quizRace.ts`, `src/features/social/` |
 | Audio & karaoke alignment | `reference/OFFICIAL_AUDIO_SOURCES.md`, `API_SPEC.md`, `src/services/audioService.ts` |
 | Character/scene art prompts | `reference/VISUAL_PROMPTS.md` |
@@ -44,7 +45,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 
 ## Reference & Archive (not routed by default)
 
-- `reference/` — long lookup docs, read only when a task names them: `OFFICIAL_AUDIO_SOURCES.md`, `VISUAL_PROMPTS.md`, `READING_ART_PROMPTS.md`, `TOCFL.md` (the exam's parts per band, book-to-level mapping, item-writing rules).
+- `reference/` — long lookup docs, read only when a task names them: `OFFICIAL_AUDIO_SOURCES.md`, `VISUAL_PROMPTS.md`, `READING_ART_PROMPTS.md`, `TOCFL.md` (the exam's parts per band, book-to-level mapping, item-writing rules), `INCIDENTS.md` (data breach, leaked key or stolen sign-in: evidence, containment, who must be told, message templates, where each secret lives).
 - `archive/` — superseded or one-off material: `DECISIONS_ARCHIVE.md`, `REFACTOR_PROMPT.md`, `BETA_AUDIT_2026-10-23.md`.
 
 ## Generated Artifacts & Scratch Policy

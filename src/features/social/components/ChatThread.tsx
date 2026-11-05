@@ -13,11 +13,25 @@ import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 
 const HAN = /\p{Script=Han}/u;
+/** A message of only a few emoji shows large, without a bubble. */
+const EMOJI_ONLY = /^(?:\p{Extended_Pictographic}|\p{Emoji_Modifier}|\uFE0F|\u200D){1,8}$/u;
 
-/** Consecutive lines from one person share one face and name. */
+const clock = (ts: number) => new Date(ts).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+function dayLabel(ts: number) {
+  const day = new Date(ts).setHours(0, 0, 0, 0);
+  const today = new Date().setHours(0, 0, 0, 0);
+  if (day === today) return 'Today';
+  if (today - day <= 86_400_000 * 1.5) return 'Yesterday';
+  return new Date(ts).toLocaleDateString([], { month: 'short', day: 'numeric' });
+}
+
+/** Consecutive lines from one person share one face and name; a new day gets its own label. */
 function groups(messages: ChatMessage[]) {
-  const out: Array<{ key: number; u: string; n: string; c: ChatMessage['c']; i?: string; lines: ChatMessage[] } | { key: number; room: ChatMessage }> = [];
+  const out: Array<{ key: string | number; u: string; n: string; c: ChatMessage['c']; i?: string; lines: ChatMessage[] } | { key: number; room: ChatMessage } | { key: string; day: string }> = [];
+  let lastDay = '';
   for (const message of messages) {
+    const day = dayLabel(message.ts);
+    if (day !== lastDay) { out.push({ key: `day-${message.id}`, day }); lastDay = day; }
     if (message.r) { out.push({ key: message.id, room: message }); continue; }
     const last = out[out.length - 1];
     if (last && 'lines' in last && last.u === message.u) last.lines.push(message);
@@ -167,11 +181,13 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
           </ActionButton>
         </div>
       )}
-      <div ref={scroller} onScroll={checkMentions} className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-3 pt-8 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_2rem)]">
+      <div ref={scroller} onScroll={checkMentions} className="min-h-0 flex-1 flex flex-col overflow-y-auto overscroll-contain pb-3 pr-2 pt-4 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_1rem)]">
         {chat === null ? <EmptyNote>Loading messages…</EmptyNote> : visible.length === 0 ? <EmptyNote>Say hi to everyone.</EmptyNote> : (
-          <div className="flex flex-col gap-2">
-            {groups(visible).map((group) => 'room' in group ? (
-              <div key={group.key} className="my-2 flex items-center gap-3 rounded-feature border-2 border-brand-primary-soft-edge bg-brand-primary-soft py-3 pl-3.5 pr-3">
+          <div className="mt-auto flex flex-col gap-4">
+            {groups(visible).map((group) => 'day' in group ? (
+              <p key={group.key} className="self-center text-xs font-extrabold text-ui-muted">{group.day}</p>
+            ) : 'room' in group ? (
+              <div key={group.key} className="flex items-center gap-3 rounded-feature border-2 border-brand-primary-soft-edge bg-brand-primary-soft py-3 pl-3.5 pr-3">
                 <PlayfulNavIcon name="challenge" className="h-7 w-7" />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-base font-black text-ui-ink-strong">{group.room.u === me ? 'You' : group.room.n} opened a room</span>
@@ -182,34 +198,46 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
                 )}
               </div>
             ) : (
-              <div key={group.key} className={`mt-5 flex items-end gap-3 ${group.u === me ? 'flex-row-reverse' : ''}`}>
-                {group.u !== me && (party ? <Avatar name={group.n} color={group.c} size="md" src={group.i} />
-                  : <button type="button" onClick={() => visit(group.u)} aria-label={`Visit ${group.n}'s profile`} className="shrink-0 rounded-full outline-none focus-ring"><Avatar name={group.n} color={group.c} size="md" src={group.i} /></button>)}
-                <div className={`flex min-w-0 max-w-[80%] flex-col gap-1.5 ${group.u === me ? 'items-end' : 'items-start'}`}>
-                  {group.u !== me && <span className="ml-1 max-w-full truncate text-[15px] font-black text-ui-ink">{group.n}</span>}
-                  {group.lines.map((line) => {
-                    const mine = line.u === me;
-                    const isOpen = open === line.id;
-                    return (
-                      <div key={line.id} data-message-id={line.id} className={`max-w-full ${targetLine?.id === line.id || flash === line.id ? 'rounded-control ring-2 ring-brand-primary' : ''}`}>
+              <div key={group.key} className={`flex flex-col gap-0.5 ${group.u === me ? 'items-end' : 'items-start'}`}>
+                {group.u !== me && <span className="mb-0.5 ml-14 max-w-[80%] truncate text-xs font-extrabold text-ui-muted-strong">{group.n}</span>}
+                {group.lines.map((line, index) => {
+                  const mine = line.u === me;
+                  const isOpen = open === line.id;
+                  // Lines in a run tuck their corners toward the sender, so the run reads as one block.
+                  const first = index === 0;
+                  const last = index === group.lines.length - 1;
+                  const tuck = mine
+                    ? `${first ? '' : 'rounded-tr-xs'} ${last ? '' : 'rounded-br-xs'}`
+                    : `${first ? '' : 'rounded-tl-xs'} ${last ? '' : 'rounded-bl-xs'}`;
+                  // The face sits beside the run's last line, so opening a line's help never moves it.
+                  const face = !last ? <span aria-hidden className="w-8 shrink-0" />
+                    : party ? <Avatar name={group.n} color={group.c} size="md" src={group.i} />
+                    : <button type="button" onClick={() => visit(group.u)} aria-label={`Visit ${group.n}'s profile`} className="shrink-0 rounded-full outline-none focus-ring"><Avatar name={group.n} color={group.c} size="md" src={group.i} /></button>;
+                  const emoji = EMOJI_ONLY.test(line.t.replace(/\s/g, ''));
+                  const time = last && <span className="shrink-0 pb-1.5 text-xs font-bold text-ui-muted">{clock(line.ts)}</span>;
+                  return (
+                    <div key={line.id} data-message-id={line.id} className={`flex flex-col ${mine ? 'max-w-[calc(80%+3rem)] items-end' : 'max-w-[calc(80%+5.5rem)] items-start'}`}>
+                      <div className="flex max-w-full items-end gap-2">
+                        {mine ? time : face}
                         <button
                           type="button"
                           onClick={() => setOpen(isOpen ? null : line.id)}
-                          className={`max-w-full whitespace-pre-wrap [overflow-wrap:anywhere] rounded-control border-2 px-4 py-2.5 text-left text-[17px] leading-snug sm:text-lg outline-none focus-ring font-chinese font-bold ${mine ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-transparent bg-ui-divider/60 text-ui-ink-strong'}`}
+                          className={`min-w-0 whitespace-pre-wrap [overflow-wrap:anywhere] text-left focus-ring font-chinese ${emoji ? 'px-0.5 text-4xl leading-tight' : `rounded-control ${tuck} border-2 border-b-4 px-3.5 py-1.5 text-base font-semibold leading-snug ${mine ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface text-ui-ink-strong'}`} ${targetLine?.id === line.id || flash === line.id ? 'rounded-control outline-2 outline-offset-2 outline-brand-primary' : 'outline-none'}`}
                         >
                           {isOpen && HAN.test(line.t) && !mine ? <SmartSentence text={line.t} className="font-chinese" /> : line.t}
                         </button>
-                        {isOpen && !mine && (
-                          <div className="mt-1 flex gap-3 px-1 text-xs font-extrabold text-ui-muted">
-                            {HAN.test(line.t) && <span>Tap a word for pinyin and meaning</span>}
-                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { report(line.id); setOpen(null); openSafety({ kind: 'report', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat', message: line.t }); }}>Report</button>
-                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { setOpen(null); openSafety({ kind: 'block', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat' }); }}>Block</button>
-                          </div>
-                        )}
+                        {!mine && time}
                       </div>
-                    );
-                  })}
-                </div>
+                      {isOpen && !mine && (
+                        <div className="mb-1 ml-14 mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs font-extrabold text-ui-muted [&>*]:whitespace-nowrap">
+                          {HAN.test(line.t) && <span>Tap a word for pinyin</span>}
+                          <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { report(line.id); setOpen(null); openSafety({ kind: 'report', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat', message: line.t, messageId: line.id, photo: line.i }); }}>Report</button>
+                          <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { setOpen(null); openSafety({ kind: 'block', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat' }); }}>Block</button>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>
@@ -221,7 +249,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
           {suggestions.map((person, index) => <button key={person.u} id={`mention-option-${index}`} type="button" role="option" aria-selected={index === choice % suggestions.length} onMouseDown={event => event.preventDefault()} onClick={() => select(person)} className={`flex w-full items-center gap-2 rounded-control px-3 py-2 text-left font-bold text-ui-ink-strong ${index === choice % suggestions.length ? 'bg-brand-primary-soft' : 'hover:bg-ui-canvas'}`}><Avatar name={person.n} color={person.c} size="sm" src={person.i} /><span>{person.n}</span>{suggestions.filter(other => other.n === person.n).length > 1 && <span className="text-xs text-ui-muted">Classmate {suggestions.filter(other => other.n === person.n).findIndex(other => other.u === person.u) + 1}</span>}</button>)}
         </div>}
         {!ready && <p role="status" className="text-center text-xs font-bold text-ui-muted-strong">Reconnecting…</p>}
-        <form className="flex items-center gap-2" onSubmit={(event) => { event.preventDefault(); if (!composing.current && Date.now() - compositionEndedAt.current > 100) say(draft); }}>
+        <form className="flex items-center gap-2 rounded-control border-2 border-ui-border bg-ui-surface py-1 pl-4 pr-1 focus-within:border-brand-primary" onSubmit={(event) => { event.preventDefault(); if (!composing.current && Date.now() - compositionEndedAt.current > 100) say(draft); }}>
           <input
             ref={input}
             role="combobox"
@@ -246,9 +274,9 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
             disabled={!ready}
             placeholder="Message"
             aria-label="Message"
-            className="h-12 min-w-0 flex-1 rounded-control border-2 border-ui-border bg-ui-surface px-4 font-chinese text-base font-bold text-ui-ink-strong outline-none placeholder:text-ui-muted focus:border-brand-primary"
+            className="h-10 min-w-0 flex-1 bg-transparent font-chinese text-base font-semibold text-ui-ink-strong outline-none placeholder:text-ui-muted"
           />
-          <ActionButton type="submit" size="md" variant="primary" aria-label="Send" disabled={!ready}><AppIcon name="send" size={20} /></ActionButton>
+          <ActionButton type="submit" size="sm" variant="primary" aria-label="Send" disabled={!ready}><AppIcon name="send" size={18} /></ActionButton>
         </form>
       </div>
     </div>

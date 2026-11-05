@@ -19,7 +19,7 @@ export function ProfileSafetyMenu({ person }: { person: Person }) {
   return (
     <DropdownMenu label={`More options for ${person.n}`} open={open} onOpenChange={setOpen} widthClassName="w-56"
       renderTrigger={(props) => <IconActionButton {...props} size="md" label={`More options for ${person.n}`} icon={<AppIcon name="more" size={20} />} />}>
-      <DropdownMenuItem icon={<AppIcon name="report" size={18} />} onClick={() => { setOpen(false); openSafety({ kind: 'report', person: target, place: 'profile' }); }}>Report {person.n}</DropdownMenuItem>
+      <DropdownMenuItem icon={<AppIcon name="report" size={18} />} onClick={() => { setOpen(false); openSafety({ kind: 'report', person: target, place: 'profile', photo: person.i }); }}>Report {person.n}</DropdownMenuItem>
       <DropdownMenuItem icon={<AppIcon name="block" size={18} />} className="text-feedback-danger-text" onClick={() => { setOpen(false); openSafety({ kind: 'block', person: target, place: 'profile' }); }}>Block {person.n}</DropdownMenuItem>
     </DropdownMenu>
   );

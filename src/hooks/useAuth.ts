@@ -6,6 +6,7 @@ import { useAppStore, UserSnapshot } from '../store/useAppStore';
 let globalUser: User | null = null;
 let globalHasFullCourseAccess = false;
 let globalNeedsAgeCheck = false;
+let globalIsPublicAccount = false;
 let globalIsLoading = true;
 const listeners = new Set<() => void>();
 
@@ -24,6 +25,7 @@ function userToSnapshot(user: User | null): UserSnapshot | null {
     email: user.email,
     fullName: user.user_metadata?.full_name || user.user_metadata?.name,
     avatarUrl: user.user_metadata?.avatar_url || user.user_metadata?.picture,
+    createdAt: user.created_at,
   };
 }
 
@@ -33,11 +35,12 @@ function subscribe(callback: () => void) {
   listeners.add(callback);
 
   if (listeners.size === 1 && !unsubscribeAuth) {
-    unsubscribeAuth = authService.onAuthStateChanged((user, hasFullCourseAccess, ageOk = true) => {
+    unsubscribeAuth = authService.onAuthStateChanged((user, hasFullCourseAccess, ageOk = true, publicAccount = false) => {
       clearTimeout(loadingTimeout);
       globalUser = user;
       globalHasFullCourseAccess = Boolean(user && hasFullCourseAccess);
       globalNeedsAgeCheck = Boolean(user && !ageOk);
+      globalIsPublicAccount = Boolean(user && publicAccount);
       globalIsLoading = false;
       const snapshot = userToSnapshot(user);
       useAppStore.getState().setCurrentUser(snapshot);
@@ -60,6 +63,8 @@ export function useAuth() {
   const initialLoading = useSyncExternalStore(subscribe, () => globalIsLoading, () => globalIsLoading);
   /** A public account signed in but not past the age step: the app shows the age step instead of the workspace. */
   const needsAgeCheck = useSyncExternalStore(subscribe, () => globalNeedsAgeCheck, () => globalNeedsAgeCheck);
+  /** Not a school (or owner) account: Study together waits for it until 14 November (shared/publicLaunch.ts). */
+  const isPublicAccount = useSyncExternalStore(subscribe, () => globalIsPublicAccount, () => globalIsPublicAccount);
   const [isAuthActionLoading, setIsAuthActionLoading] = useState(false);
 
   const loginWithGoogle = useCallback(async () => {
@@ -86,6 +91,7 @@ export function useAuth() {
     currentUser,
     hasFullCourseAccess,
     needsAgeCheck,
+    isPublicAccount,
     isLoading: initialLoading,
     isAuthActionLoading,
     loginWithGoogle,

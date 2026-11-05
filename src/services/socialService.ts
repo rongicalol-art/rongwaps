@@ -22,7 +22,7 @@ async function request(path: string, body: object, signal?: AbortSignal): Promis
   const base = await getGamesOrigin();
   if (!base) throw new ConnectionError('Study together is not available right now.', 404);
   const token = await authService.getAccessToken();
-  if (!token) throw new ConnectionError('Sign in with your school account.', 401);
+  if (!token) throw new ConnectionError('Sign in again.', 401);
   signal?.throwIfAborted();
   const response = await fetch(`${base}${path}`, {
     method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
@@ -132,6 +132,8 @@ function reconnecting<In, Out>(options: {
 
 export function connectLobby(identity: Identity, handlers: {
   onMessage: (message: LobbyServerMessage) => void; onStatus: (status: SocialStatus) => void; onOpen: () => void;
+  /** Why the Lobby refused for good (a name, a pause, the 18+ step); it stops retrying. */
+  onError?: (message: string) => void;
 }): Socket<LobbyClientMessage> {
   return reconnecting<LobbyServerMessage, LobbyClientMessage>({
     path: () => '/lobby/socket', protocol: 'lobby', issue: signal => ticket('/lobby', { name: identity.name, color: identity.color }, signal), fatal: [4001, 1008], ...handlers,

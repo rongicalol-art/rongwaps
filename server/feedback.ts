@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import { createUserSupabaseClient } from './supabase.js';
+import { sendOwnerEmail } from './ownerEmail.js';
 
 type FeedbackInput = { id: string; message: string; path: string };
 
@@ -13,21 +14,9 @@ export function parseFeedback(body: unknown): FeedbackInput | null {
 }
 
 /** Notification failure never turns a saved submission into a user-facing failure. */
-export async function notifyFeedback(input: FeedbackInput, userId: string): Promise<boolean> {
-  const key = process.env.RESEND_API_KEY;
-  const from = process.env.FEEDBACK_EMAIL_FROM;
-  const to = process.env.FEEDBACK_EMAIL_TO;
-  if (!key || !from || !to) return false;
-  try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', 'Idempotency-Key': `feedback/${input.id}` },
-      body: JSON.stringify({ from, to: [to], subject: "Ron's Mandarin feedback",
-        text: `${input.message}\n\nScreen: ${input.path}\nAccount: ${userId}\nFeedback: ${input.id}` }),
-      signal: AbortSignal.timeout(5000),
-    });
-    return response.ok;
-  } catch { return false; }
+export function notifyFeedback(input: FeedbackInput, userId: string): Promise<boolean> {
+  return sendOwnerEmail("Ron's Mandarin feedback",
+    `${input.message}\n\nScreen: ${input.path}\nAccount: ${userId}\nFeedback: ${input.id}`, `feedback/${input.id}`);
 }
 
 export async function submitFeedback(req: Request, res: Response) {

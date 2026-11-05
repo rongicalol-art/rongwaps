@@ -38,8 +38,8 @@ export function SourcesContent() {
           Lessons follow <strong>時代華語 Modern Chinese</strong>, Books 1 to 4, edited by the Tamkang University
           Chinese Language Center (淡江大學華語中心) and published by Cheng Chung Book Co. (正中書局). Lesson
           texts, vocabulary, grammar examples, page images and recordings from the book remain the property of
-          their owners and are provided only to students who own the book. Ron&apos;s Mandarin is not affiliated
-          with or endorsed by them.
+          their owners and are provided for study alongside your own copy of the book. Ron&apos;s Mandarin is not
+          affiliated with or endorsed by them.
         </LegalParagraph>
         <LegalParagraph>
           If you hold rights to any of this material and have a concern, email <ContactLink /> and we will
@@ -93,9 +93,10 @@ export function SourcesContent() {
               <Ext href="https://github.com/chanind/hanzi-writer-data/blob/master/ARPHICPL.TXT">Arphic Public License</Ext>.
             </>,
             <>
-              Readings draw on <Ext href="https://cc-cedict.org/wiki/">CC-CEDICT</Ext> (MDBG), licensed under{' '}
-              <Ext href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</Ext>; the pronunciation
-              data derived from it is shared under the same license.
+              Dictionary: the dictionary entries (words, readings and English meanings) come from{' '}
+              <Ext href="https://cc-cedict.org/wiki/">CC-CEDICT</Ext> (MDBG and contributors), licensed under{' '}
+              <Ext href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</Ext>. Our dictionary pack and
+              the pronunciation data derived from it are shared under the same license.
             </>,
             <>
               Levels: the Taiwan Benchmarks for the Chinese Language (TBCL, 臺灣華語文能力基準) by the National
@@ -115,7 +116,12 @@ export function SourcesContent() {
             <>jf open 粉圓 (Huninn) by justfont, based on Kosugi Maru by Motoya (SIL OFL 1.1).</>,
             <>Resource Han Rounded by CyanoHao, based on Source Han Sans by Adobe (SIL OFL 1.1).</>,
             <>LXGW WenKai by LXGW, based on Klee One by Fontworks (SIL OFL 1.1).</>,
-            <>Taiwan Ministry of Education standard Kai font (教育部標準楷書).</>,
+            <>
+              教育部標準楷書 (TW-MOE-Std-Kai) by the Ministry of Education, Republic of China (Taiwan) (中華民國教育部),
+              licensed under{' '}
+              <Ext href="https://creativecommons.org/licenses/by-nd/3.0/tw/">CC BY-ND 3.0 TW</Ext>. Split into web
+              slices without changing any glyph.
+            </>,
             <>Noto Sans CJK TC by Google and Adobe, and Plangothic, subset for rare characters (SIL OFL 1.1).</>,
           ]}
         />

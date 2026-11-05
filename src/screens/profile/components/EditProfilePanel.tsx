@@ -63,7 +63,8 @@ export function EditProfilePanel({ editor, name, canUpload, googleAvatar }: {
               <ProfileAvatar name={draft.settings.displayName || name} color={draft.settings.avatarColor} image={draft.avatar} className="profile-avatar-preview" />
               {canUpload && <div className="flex flex-wrap items-center gap-2">
                 <label className="profile-upload focus-ring-inline"><AppIcon name="upload" size={16} />Upload photo<input type="file" accept="image/*" className="sr-only" onChange={(e) => { chooseImage('avatar', e.target.files?.[0]); e.target.value = ''; }} /></label>
-                {(draft.settings.avatarPath || editor.hasAvatarUpload) && <button type="button" onClick={() => { editor.removeAvatar(googleAvatar); setCropFiles((previous) => ({ ...previous, avatar: undefined })); }} className="focus-ring p-2 text-sm font-black text-ui-muted-strong">Remove</button>}
+                {(draft.settings.avatarPath || editor.hasAvatarUpload) && <button type="button" onClick={() => { editor.removeAvatar(draft.settings.googlePhoto ? googleAvatar : undefined); setCropFiles((previous) => ({ ...previous, avatar: undefined })); }} className="focus-ring p-2 text-sm font-black text-ui-muted-strong">Remove</button>}
+                {googleAvatar && !draft.settings.avatarPath && !editor.hasAvatarUpload && <button type="button" onClick={() => editor.setGooglePhoto(!draft.settings.googlePhoto, googleAvatar)} className="focus-ring p-2 text-sm font-black text-ui-muted-strong">{draft.settings.googlePhoto ? 'Use initials' : 'Use Google photo'}</button>}
                 {editor.hasAvatarUpload && cropFiles.avatar && <button type="button" onClick={() => chooseImage('avatar', cropFiles.avatar)} className="focus-ring p-2 text-sm font-black text-ui-muted-strong">Adjust crop</button>}
               </div>}
             </div>

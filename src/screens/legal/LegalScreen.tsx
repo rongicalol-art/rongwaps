@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, useNavigationType } from 'react-router';
+import { Link, useNavigate, useNavigationType } from 'react-router';
 import { usePageMeta } from '../../hooks/usePageMeta';
 import { documentTitleFor } from '../../utils/browser/documentTitle';
 import { dismissPrerender } from '../../utils/browser/prerender';
 import { StickyWorkspaceHeader } from '../../lib/widgets';
 import { LEGAL_ROUTES, type LegalPage } from '../../app/routes';
-import { LEGAL_EFFECTIVE_DATE, formatLegalDate } from './legalMeta';
+import { LEGAL_EFFECTIVE_DATE, LEGAL_NEW_ACCOUNTS_NOTE, LEGAL_UPDATE, formatLegalDate, isLegalUpdateCurrent } from './legalMeta';
+import { legalLinkClass } from './LegalBlocks';
 import { AboutContent } from './AboutContent';
 import { SourcesContent } from './SourcesContent';
 import { PrivacyPolicyContent } from './PrivacyPolicyContent';
@@ -33,6 +34,9 @@ export function LegalScreen({ page }: { page: LegalPage }) {
   const navigate = useNavigate();
   const navigationType = useNavigationType();
   const { title, Content, dated } = PAGES[page];
+  // A change that spans both binding pages links the other one, so one notice reaches both.
+  const alsoUpdated = LEGAL_UPDATE && isLegalUpdateCurrent(LEGAL_EFFECTIVE_DATE) && LEGAL_UPDATE.pages.some((changed) => changed === page)
+    ? LEGAL_UPDATE.pages.filter((changed) => changed !== page) : [];
   const contentRef = useRef<HTMLDivElement>(null);
   const [sections, setSections] = useState<{ id: string; title: string }[]>([]);
 
@@ -70,7 +74,12 @@ export function LegalScreen({ page }: { page: LegalPage }) {
               <span className="rounded-xs border-2 border-ui-border bg-ui-surface px-2 py-0.5 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
                 Beta
               </span>
-              {dated && <p className="text-sm font-bold text-ui-muted-strong">Effective {formatLegalDate(LEGAL_EFFECTIVE_DATE)}</p>}
+              {dated && <p className="text-sm font-bold text-ui-muted-strong">Effective {formatLegalDate(LEGAL_EFFECTIVE_DATE)} · {LEGAL_NEW_ACCOUNTS_NOTE}</p>}
+              {alsoUpdated.map((other) => (
+                <p key={other} className="text-sm font-bold text-ui-muted-strong">
+                  Also updated: <Link to={LEGAL_ROUTES[other]} className={legalLinkClass}>{PAGES[other].title}</Link>
+                </p>
+              ))}
             </div>
             <Content />
           </div>

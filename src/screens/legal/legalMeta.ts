@@ -1,3 +1,5 @@
+import { SIGNUP_OPEN_AT } from '../../../shared/publicLaunch';
+
 /** Shared facts the legal pages state; change them here, not in the prose. */
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
@@ -5,9 +7,12 @@ export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 export const LEGAL_EFFECTIVE_DATE = '2026-11-14';
 
 export interface LegalUpdate {
-  page: 'terms' | 'privacy';
-  /** One plain sentence: what changes for the user. */
+  /** The changed pages; Read opens the first, and each links the others. */
+  pages: readonly ('terms' | 'privacy')[];
+  /** One or two plain sentences: what changes for the user. */
   summary: string;
+  /** Accounts created from this ISO date accepted the new text at sign-up, so they never see the notice. */
+  acceptedFrom?: string;
 }
 
 /**
@@ -17,19 +22,33 @@ export interface LegalUpdate {
  * takes effect. Keep null when nothing meaningful changed.
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
-  page: 'terms',
-  summary: 'From November 14, anyone 18 or older can join Ron’s Mandarin. Study together will include learners from outside Shu-Te, and you can report or block anyone.',
+  pages: ['privacy', 'terms'],
+  summary: 'From November 6, anyone 18 or older can join. From November 14, learners outside Shu-Te will see your name, photo and lesson in Study together (to hide: Settings → Show me online). You can report or block anyone.',
+  acceptedFrom: '2026-11-06',
 };
 
-/** Public sign-up opens with the current Terms (owner sets private.signup_settings.public_open that day). */
-export function isPublicLaunched(now = Date.now()): boolean {
-  return now >= Date.parse(`${LEGAL_EFFECTIVE_DATE}T00:00:00+08:00`);
+/** Shown beside the effective date: accounts made since sign-up opened are bound from sign-up. */
+export const LEGAL_NEW_ACCOUNTS_NOTE = 'new accounts from sign-up';
+
+/** Anyone 18+ can sign up from that day (owner sets private.signup_settings.public_open). */
+export function isSignupOpen(now = Date.now()): boolean {
+  return now >= SIGNUP_OPEN_AT;
 }
 
 const NOTICE_AFTER_EFFECTIVE_MS = 30 * 24 * 60 * 60 * 1000;
 
-export function isLegalUpdateCurrent(effectiveIso: string, now = Date.now()): boolean {
-  return now < Date.parse(`${effectiveIso}T00:00:00+08:00`) + NOTICE_AFTER_EFFECTIVE_MS;
+const effectiveAt = (iso: string) => Date.parse(`${iso}T00:00:00+08:00`);
+
+/** Shown until 30 days after the change, and only to accounts made before they accepted it (at sign-up or the date). */
+export function isLegalUpdateCurrent(effectiveIso: string, now = Date.now(), accountCreatedAt?: string, acceptedFromIso = effectiveIso): boolean {
+  const created = accountCreatedAt ? Date.parse(accountCreatedAt) : Number.NaN;
+  if (Number.isFinite(created) && created >= effectiveAt(acceptedFromIso)) return false;
+  return now < effectiveAt(effectiveIso) + NOTICE_AFTER_EFFECTIVE_MS;
+}
+
+/** "Takes effect November 14, 2026." before the date, "Took effect …" from it. */
+export function legalEffectivePhrase(effectiveIso: string, now = Date.now()): string {
+  return `${now < effectiveAt(effectiveIso) ? 'Takes' : 'Took'} effect ${formatLegalDate(effectiveIso)}.`;
 }
 
 /** "October 23, 2026" — the date is a Taiwan calendar date, so no time zone shift. */

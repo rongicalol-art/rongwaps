@@ -9,11 +9,13 @@ on:
     branches: [main, production]
 
 permissions:
-  contents: read
+  contents: write # the back-merge pushes a throwaway copy of production
   pull-requests: write
+  statuses: write # "Staging" stays pending until Deploy has checked this commit on staging
 
+# One run per branch: a production push never cancels the main run that writes the Release PR description.
 concurrency:
-  group: release-pr
+  group: release-pr-${{ github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -30,6 +32,13 @@ jobs:
         if: github.ref_name == 'main'
         run: |
           set -euo pipefail
+          # GitHub's API fails now and then; retry instead of leaving a stale description.
+          gh() { for attempt in 1 2 3; do command gh "$@" && return 0; sleep $((attempt * 5)); done; return 1; }
+          head=$(git rev-parse origin/main)
+          state=$(command gh api "repos/$GITHUB_REPOSITORY/commits/$head/status" --jq '[.statuses[] | select(.context == "Staging")][0].state // ""' || true)
+          if [ "$state" != success ]; then
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$head" -f state=pending -f context=Staging -f description="Waiting for staging to run this commit" > /dev/null
+          fi
           git fetch --no-tags origin production
           if [ "$(git rev-list --count origin/production..origin/main)" = 0 ]; then echo "Nothing to release."; exit 0; fi
           prs=$(git log --first-parent --format='%s' origin/production..origin/main | sed -nE 's/^Merge pull request #([0-9]+).*/#\1/p; s/.*\(#([0-9]+)\)$/#\1/p' | sort -u -t'#' -k2 -n)
@@ -37,7 +46,7 @@ jobs:
           {
             echo "Merging this releases **staging** ($(git rev-parse --short origin/main)) to **ronsmandarin.com**."
             echo
-            echo "**Before merging:** try it on staging (link in the Deploy run for this commit)."
+            echo "**Before merging:** the **Staging** check below must be green (staging ran this exact commit), then try it on staging."
             if [ -n "$migrations" ]; then
               echo
               echo "**Database changes — run first:** Actions → *Migrate production* (ref \`main\`, type \`production\`). The release refuses to deploy until they are applied."
@@ -59,12 +68,17 @@ jobs:
             gh pr create --base production --head main --title "$title" --body-file "$RUNNER_TEMP/body.md"
           fi
 
+      # From a throwaway copy of production, never production itself: with "Automatically delete head
+      # branches" on, merging a PR whose head is production deletes the live branch (PR #74, 2026-11-04).
       - name: Back-merge a production hotfix into main
         if: github.ref_name == 'production'
         run: |
           set -euo pipefail
           git fetch --no-tags origin main
           if [ "$(git rev-list --count --no-merges origin/main..origin/production)" = 0 ]; then exit 0; fi
-          existing=$(gh pr list --base main --head production --state open --json number --jq '.[0].number // ""')
-          [ -n "$existing" ] || gh pr create --base main --head production --title "Back-merge production fixes into main" \
-            --body "Production has commits main lacks (a hotfix). Merge this so the next release keeps them."
+          existing=$(gh pr list --base main --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("back-merge/"))][0].headRefName // ""')
+          branch="${existing:-back-merge/production-$(git rev-parse --short origin/production)}"
+          # Production only moves forward, so this is a plain fast-forward of the copy.
+          git push origin "origin/production:refs/heads/$branch"
+          [ -n "$existing" ] || gh pr create --base main --head "$branch" --title "Back-merge production fixes into main" \
+            --body "Production has commits main lacks (a hotfix). Merge this so the next release keeps them. It comes from \`$branch\`, a copy of production, so merging it never deletes production."

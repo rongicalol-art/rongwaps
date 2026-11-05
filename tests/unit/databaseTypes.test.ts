@@ -38,7 +38,7 @@ const EXPECTED_FUNCTIONS = [
   'join_folder',
   'set_folder_member_role',
   'remove_folder_member', 'list_folder_members',
-  'report_user',
+  'report_user', 'submit_report',
   'append_review_events',
   'block_user',
   'confirm_age',

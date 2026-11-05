@@ -2,26 +2,35 @@ import { useEffect, useRef } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useAppStore } from '../../store/useAppStore';
 import { useProfileAvatar } from '../../hooks/useProfileAvatar';
+import { useAuth } from '../../hooks/useAuth';
+import { studyTogetherOpenToAll } from '../../../shared/publicLaunch';
 import { GLOBAL_CHAT } from '../../../shared/lobby';
+import { isNameAllowed } from '../../../shared/nameFilter';
 import { lobby, startLobby, stopLobby } from './lobbyController';
 import { presenceFor } from './presence';
 import { loadBlocks } from './safety';
 
 const HIDDEN_CLOSE_MS = 30_000;
 
-/** Self-chosen profile name, else the first word of the Google name; never the student id. */
+/** Self-chosen profile name, else the first word of the Google name (if the name filter allows it); never the student id. */
 export function useSocialIdentity() {
-  const identity = useAppStore(useShallow((state) => ({
-    name: state.displayName.trim() || (state.currentUser?.fullName ?? state.currentUser?.name ?? '').trim().split(/\s+/)[0] || 'Student',
-    color: state.avatarColor,
-  })));
+  const identity = useAppStore(useShallow((state) => {
+    const googleFirst = (state.currentUser?.fullName ?? state.currentUser?.name ?? '').trim().split(/\s+/)[0];
+    return {
+      name: state.displayName.trim() || (googleFirst && isNameAllowed(googleFirst) ? googleFirst : 'Student'),
+      color: state.avatarColor,
+    };
+  }));
   return { ...identity, image: useProfileAvatar() };
 }
 
 /** One Lobby socket while the app is visible; closed 30 s after the tab is hidden. */
 export function useSocialLifecycle() {
   const identity = useSocialIdentity();
-  const userId = useAppStore(state => state.currentUser?.id ?? null);
+  const { isPublicAccount } = useAuth();
+  // Until 14 November Study together is for school accounts only; its buttons stay hidden while it is off.
+  const signedInUser = useAppStore(state => state.currentUser?.id ?? null);
+  const userId = isPublicAccount && !studyTogetherOpenToAll() ? null : signedInUser;
   useEffect(() => {
     if (!userId) return;
     let timer: ReturnType<typeof setTimeout> | undefined;
