@@ -23,7 +23,7 @@ export interface LegalUpdate {
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
   pages: ['privacy', 'terms'],
-  summary: 'From November 6, anyone 18 or older can join. From November 14, learners outside Shu-Te will see your name, photo and lesson in Study together (to hide: Settings → Show me online). You can report or block anyone.',
+  summary: 'From November 6, anyone 18 or older can join, and learners outside Shu-Te can see your name, photo and lesson in Study together (to hide: Settings → Show me online). Shu-Te learners still see each other first. You can report or block anyone.',
   acceptedFrom: '2026-11-06',
 };
 
