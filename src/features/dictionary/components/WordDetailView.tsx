@@ -151,17 +151,12 @@ export function WordDetailView({
                     alsoReadings={<AlsoReadings readings={entry.readings} lead={lead} onSelect={selectReading} />}
                   />
                 )}
+                intro={<>
+                  <WordDecompositionStrip word={entry.word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+                  <MemoryHookBlock cacheKey={`word_${entry.word}`} word={entry.word} pinyin={lead.pinyin || undefined} />
+                </>}
                 senses={<EntrySenses entry={entry} leadKey={lead.key} onSelectReading={selectReading} onOpenWord={pushCharacter} />}
                 aside={<>
-                  <WordDecompositionStrip word={entry.word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
-
-                  <MemoryHookBlock
-                    cacheKey={`word_${entry.word}`}
-                    word={entry.word}
-                    pinyin={lead.pinyin || undefined}
-                    emptyText={<>No memory hook for this word yet.</>}
-                  />
-
                   {activeTab && (
                     <div className="flex min-w-0 flex-col gap-3">
                       <BreakdownTabs tabs={tabs} active={activeTab} onChange={setTab} />
