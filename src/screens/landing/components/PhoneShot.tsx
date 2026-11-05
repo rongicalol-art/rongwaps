@@ -12,11 +12,16 @@ export const PHONE_SHOTS = [
 
 const FRAME = 'block aspect-[390/844] overflow-hidden rounded-modal border-[6px] border-ui-ink-strong bg-ui-ink-strong';
 
-/** A real app screenshot in a simple phone frame. */
+/**
+ * A real app screenshot in a simple phone frame. The screen keeps a margin of the app's own canvas around the
+ * shot, so content doesn't run into the bezel at this small size.
+ */
 export function PhoneShot({ src, alt, className }: { src: string; alt: string; className?: string }) {
   return (
     <span className={cn(FRAME, className)}>
-      <img src={src} alt={alt} loading="lazy" decoding="async" className="size-full rounded-feature object-cover object-top" />
+      <span className="block size-full overflow-hidden rounded-feature bg-ui-canvas px-[6%] pt-[7%]">
+        <img src={src} alt={alt} loading="lazy" decoding="async" className="block w-full" />
+      </span>
     </span>
   );
 }
