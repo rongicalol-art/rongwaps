@@ -71,12 +71,15 @@ export function AgeCheck({ preview = false }: { preview?: boolean }) {
       <header className="mx-auto flex w-full max-w-[90rem] items-center px-5 py-3 lg:px-26">
         <BrandWordmark />
       </header>
-      <main className="flex flex-1 flex-col items-center justify-center px-6 pb-12 text-center lg:pb-20">
-        <DeskScene leaving={busy === 'yes'} className="size-56 shrink-0 lg:size-84" />
-        <h1 className="mt-2 text-4xl font-black leading-[1.1] tracking-tight text-ui-ink-strong text-balance lg:text-6xl">
-          {name ? `Welcome, ${name}!` : 'Welcome!'}
-        </h1>
-        <div className="mt-8 flex w-full max-w-sm flex-col items-center gap-2 lg:mt-10">
+      {/* Phone: picture and greeting fill the top, every action sits in the thumb zone. Desktop: one centred group. */}
+      <main className="flex flex-1 flex-col items-center px-6 pb-5 text-center lg:justify-center lg:pb-20">
+        <div className="flex flex-1 flex-col items-center justify-center lg:flex-none">
+          <DeskScene leaving={busy === 'yes'} className="size-64 shrink-0 lg:size-80" />
+          <h1 className="mt-2 text-4xl font-black leading-[1.1] tracking-tight text-ui-ink-strong text-balance lg:text-6xl">
+            {name ? `Welcome, ${name}!` : 'Welcome!'}
+          </h1>
+        </div>
+        <div className="flex w-full max-w-sm flex-col items-center lg:mt-10">
           <ActionButton
             variant="primary"
             size="lg"
@@ -94,23 +97,21 @@ export function AgeCheck({ preview = false }: { preview?: boolean }) {
               onClick={() => void leave('no')}
               loading={busy === 'no'}
               loadingLabel="Signing out"
-              className="normal-case tracking-normal text-base"
+              className="mt-2 normal-case tracking-normal text-base"
               frontClassName="text-ui-muted-strong hover:bg-transparent hover:text-ui-ink-strong"
             >
               I’m under 18
             </ActionButton>
           )}
           {error && <p role="alert" className="mt-2 rounded-sm bg-feedback-danger-surface px-3.5 py-2.5 text-sm font-bold text-feedback-danger-text">{error}</p>}
-        </div>
-        <div className="mt-10 flex max-w-md flex-col items-center gap-1.5 text-sm font-bold text-ui-muted lg:mt-12">
-          <SignInConsent className="text-ui-muted lg:text-sm" />
+          <SignInConsent className="mt-4 text-ui-muted text-balance lg:text-sm" />
           {busy !== 'yes' && busy !== 'no' && (
             <ActionButton
               variant="quiet"
               onClick={() => void leave('switch')}
               loading={busy === 'switch'}
               loadingLabel="Signing out"
-              className="normal-case tracking-normal text-sm"
+              className="mt-1 normal-case tracking-normal text-sm"
               frontClassName="text-ui-muted hover:bg-transparent hover:text-ui-ink-strong"
             >
               Switch account
