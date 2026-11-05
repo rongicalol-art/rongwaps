@@ -4,7 +4,8 @@ import { CHAT_MASK, NAME_RESERVED, isNameAllowed, maskChat, nameProblem } from '
 
 test('ordinary names pass, including ones that contain a listed word inside them', () => {
   for (const name of ['Mei Lin', '小明', 'Dickson', 'Sexton', 'Scunthorpe', 'Hancock', 'Cassidy', '幹嘛', 'Grape', 'Cumberbatch',
-    '王小美', 'Jun 俊', 'Ronald', 'Ronnie', 'José', 'Zoë', 'Анна', 'J. K.', 'Titus', 'Analise', 'Ana 3', 'Modesto']) {
+    '王小美', 'Jun 俊', 'Ronald', 'Ronnie', 'José', 'Zoë', 'Анна', 'J. K.', 'Titus', 'Analise', 'Ana 3', 'Modesto',
+    'Fuk Lam', 'F. K. Lee', 'Lee F K', 'Ma.Ly', 'Ma.Co', 'Ma.Info', 'Jun Ron', 'Ma', 'Analyn']) {
     assert.equal(isNameAllowed(name), true, name);
   }
 });
@@ -31,7 +32,8 @@ test('chat masks listed words and leaves the rest of the line alone', () => {
   assert.equal(maskChat('shit happens'), `${CHAT_MASK} happens`);
   assert.equal(maskChat('幹 你 娘 啦'), `${CHAT_MASK} 娘 啦`);
   assert.equal(maskChat('他媽的'), `${CHAT_MASK}的`);
-  for (const line of ['我們幹嘛去圖書館？', 'Dickson and Cassidy study grammar', 'Scunthorpe is in England', '老師好！', 'Ron is great']) {
+  for (const line of ['我們幹嘛去圖書館？', 'Dickson and Cassidy study grammar', 'Scunthorpe is in England', '老師好！', 'Ron is great',
+    '他媽媽是老師', '他妈妈是老师', '我喜歡他。媽媽也喜歡他。', '是他，媽媽說', '我要去死海', '靠北邊走', 'F. K. Lee says hi']) {
     assert.equal(maskChat(line), line, line);
   }
 });

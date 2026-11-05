@@ -59,7 +59,8 @@ export default {
     catch { return reply({ error: 'Sign-in verification is unavailable. Try again shortly.' }, 503); }
     if (!auth) return reply({ error: 'Sign in again.' }, 401);
     const { userId, expiresAt, claims } = auth;
-    const refusal = socialRefusal(env, userId, claims);
+    // Leaving a room always works; joining and connecting need access.
+    const refusal = match?.[2] === '/leave' ? null : socialRefusal(env, userId, claims);
     if (refusal) return reply({ error: refusal }, refusal === SOCIAL_PAUSED_ERROR ? 503 : 403);
     try {
       // The Lobby rate-limits its own tickets in memory: one Durable Object request fewer per connection.

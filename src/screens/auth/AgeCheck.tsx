@@ -10,6 +10,9 @@ import { DeskScene } from './DeskScene';
 import { SignInConsent } from './SignInParts';
 import { setSignInNotice, takeSignInNotice } from './signInNotice';
 
+/** Same window as the database's cleanup of unanswered new accounts (20261106120000). */
+const NEW_ACCOUNT_MS = 7 * 24 * 60 * 60 * 1000;
+
 function firstName(fullName: unknown): string | null {
   const first = typeof fullName === 'string' ? fullName.trim().split(/\s+/)[0] : '';
   return first ? first.slice(0, 24) : null;
@@ -19,11 +22,12 @@ function firstName(fullName: unknown): string | null {
  * "Nod": shown once to a new public account after its first Google sign-in, before the workspace.
  * Yes records the answer and refreshes the token (the app then opens); under 18 deletes the new account.
  * Every new public account passes here, so it also names the signed-in Google account, how other learners
- * will see it, and the Terms; a wrong account can leave (the new, empty account is deleted).
+ * will see it, and the Terms; a wrong account can leave (an account made this week is deleted; an older one, kept
+ * from before the school gate, is only signed out).
  * `preview` (DEV UI Previews): buttons do nothing.
  */
 export function AgeCheck({ preview = false }: { preview?: boolean }) {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
   const { deleteAccount } = useAccountActions();
   useCharacterFont();
   const [busy, setBusy] = useState<'yes' | 'no' | 'switch' | null>(null);
@@ -45,13 +49,16 @@ export function AgeCheck({ preview = false }: { preview?: boolean }) {
     }
   };
 
-  /** Under 18, or the wrong Google account: the brand-new account is deleted and the landing page returns. */
+  /** Under 18: the account is deleted. Wrong Google account: a new one is deleted, an older one only signed out. */
   const leave = async (why: 'no' | 'switch') => {
     if (busy || preview) return;
     setBusy(why);
     setError(null);
     if (why === 'no') setSignInNotice('under-18');
+    const created = Date.parse(currentUser?.created_at ?? '');
+    const madeThisWeek = Number.isFinite(created) && Date.now() - created < NEW_ACCOUNT_MS;
     try {
+      if (why === 'switch' && !madeThisWeek) { await logout(); return; }
       await deleteAccount();
     } catch (cause) {
       debugLogger.error('Auth', 'New account removal failed', cause);

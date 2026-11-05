@@ -2,17 +2,22 @@
 --
 -- 1. Review history is written only through append_review_events, now SECURITY
 --    DEFINER and pinned to the caller: known keys only, at most 2 KB per event,
---    at most 5,000 new events per account in any 24 hours. Direct INSERT is
---    revoked. Before this, one scripted account could fill the free 500 MB
+--    at most 5,000 new events per account in any 24 hours (events past that are
+--    dropped quietly, so card progress and settings still save). Direct INSERT
+--    is revoked. Before this, one scripted account could fill the free 500 MB
 --    database in minutes, and Supabase then restricts the whole project.
 -- 2. Profile photos: only <uid>/avatar.webp and <uid>/cover.webp, only for
 --    accounts that may use the app (bans included) and have answered the age
 --    step, at most 2 MB each (was any name, 10 MB, unlimited count).
 -- 3. A ban outlasts the account (Privacy §2, §6): a one-way code (SHA-256 of
 --    provider and Google account ID, never the email) is kept for 2 years and
---    sign-up refuses it. Unbanning removes it.
+--    sign-up refuses it. Unbanning removes it. The token now also carries
+--    google_photo, copied from Google's own identity record: the games Worker
+--    shows only that Google photo (user_metadata is editable by the learner).
 -- 4. A new public account that has not answered the age question after 7 days
---    is deleted (Privacy §6, §11), daily at 03:20 Taiwan.
+--    is deleted (Privacy §6, §11), daily at 03:20 Taiwan. Only accounts made
+--    from 2026-11-06 with no saved progress: older accounts kept from before
+--    the school gate are never touched.
 -- 5. Reports also keep the reported line's ID and the reported learner's name
 --    and photo (public.submit_report, used by the server, which emails "Not
 --    safe" reports to the owner). public.report_user stays for older apps.
@@ -28,7 +33,7 @@ declare
   e jsonb;
   clean jsonb;
   events jsonb := '[]'::jsonb;
-  fresh integer;
+  allowance integer;
 begin
   if me is null then raise exception 'Not authenticated' using errcode = '28000'; end if;
   if not private.has_school_beta_access() then raise exception 'School beta access required' using errcode = '42501'; end if;
@@ -63,16 +68,19 @@ begin
   end loop;
 
   perform pg_advisory_xact_lock(hashtextextended('review_events:' || me::text, 0));
-  select count(*) into fresh from jsonb_array_elements(events) x
-  where not exists (select 1 from public.user_review_events r where r.user_id = me and r.event_id = (x.value->>'id')::uuid);
-  if fresh > 0 and fresh + (select count(*) from public.user_review_events r
-      where r.user_id = me and r.created_at > now() - interval '1 day') > 5000 then
-    raise exception 'Too many reviews saved today. Try again tomorrow.' using errcode = '54000';
-  end if;
+  -- Room left in this account's daily allowance; new events past it are dropped without an error, so the same
+  -- save still stores card progress and settings (the card's state lives in user_card_progress anyway).
+  allowance := greatest(0, 5000 - (select count(*) from public.user_review_events r
+    where r.user_id = me and r.created_at > now() - interval '1 day'));
 
   insert into public.user_review_events(user_id, event_id, card_id, reviewed_at, payload)
-  select me, (x.value->>'id')::uuid, x.value->>'cardId', to_timestamp((x.value->>'reviewedAt')::double precision / 1000), x.value
-  from jsonb_array_elements(events) x
+  select me, x.id, x.value->>'cardId', to_timestamp((x.value->>'reviewedAt')::double precision / 1000), x.value
+  from (
+    select e.value, (e.value->>'id')::uuid as id from jsonb_array_elements(events) e
+    where not exists (select 1 from public.user_review_events r where r.user_id = me and r.event_id = (e.value->>'id')::uuid)
+    order by (e.value->>'reviewedAt')::double precision
+    limit allowance
+  ) x
   where not exists (
     select 1 from public.user_profiles p where p.id = me
     and p.progress_reset_at >= to_timestamp((x.value->>'reviewedAt')::double precision / 1000)
@@ -203,10 +211,18 @@ begin
   end if;
   return jsonb_set(
     jsonb_set(
-      jsonb_set(event, '{claims,school_beta}', 'true'::jsonb),
-      '{claims,full_course}', to_jsonb(private.full_course_user_allowed(target))
+      jsonb_set(
+        jsonb_set(event, '{claims,school_beta}', 'true'::jsonb),
+        '{claims,full_course}', to_jsonb(private.full_course_user_allowed(target))
+      ),
+      '{claims,age_ok}', to_jsonb(private.age_confirmed(target))
     ),
-    '{claims,age_ok}', to_jsonb(private.age_confirmed(target))
+    -- Google's own record, refreshed by Google at each sign-in; '' when there is none.
+    '{claims,google_photo}', to_jsonb(coalesce((
+      select coalesce(nullif(i.identity_data ->> 'avatar_url', ''), i.identity_data ->> 'picture')
+      from auth.identities i where i.user_id = target and i.provider = 'google'
+      order by i.last_sign_in_at desc nulls last limit 1
+    ), ''))
   );
 end;
 $$;
@@ -217,7 +233,8 @@ grant execute on function private.identity_code(text, text), private.identity_ba
 
 -- 4. Unanswered age step -----------------------------------------------------
 
-create function private.delete_unconfirmed_accounts()
+-- `p_made_since`: only accounts created from then on (the tests pass an earlier date).
+create function private.delete_unconfirmed_accounts(p_made_since timestamptz default '2026-11-06T00:00:00Z')
 returns integer language plpgsql volatile security definer set search_path = '' as $$
 declare
   deleted integer;
@@ -225,15 +242,21 @@ begin
   with doomed as (
     select u.id from auth.users u
     where u.created_at < now() - interval '7 days'
+      -- Only accounts made since the age step existed, and still empty: accounts kept from before the school gate
+      -- (and their progress) are never deleted here.
+      and u.created_at >= p_made_since
       and not private.user_has_school_identity(u.id)
       and not exists (select 1 from private.account_flags f where f.user_id = u.id and f.age_confirmed_at is not null)
+      and not exists (select 1 from public.user_card_progress c where c.user_id = u.id)
+      and not exists (select 1 from public.user_review_events r where r.user_id = u.id)
+      and not exists (select 1 from public.user_folders f where f.user_id = u.id)
   )
   delete from auth.users u using doomed d where u.id = d.id;
   get diagnostics deleted = row_count;
   return deleted;
 end;
 $$;
-revoke all on function private.delete_unconfirmed_accounts() from public, anon, authenticated;
+revoke all on function private.delete_unconfirmed_accounts(timestamptz) from public, anon, authenticated;
 
 create function private.delete_expired_ban_codes()
 returns integer language sql volatile security definer set search_path = '' as $$

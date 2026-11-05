@@ -30,10 +30,10 @@ export function socialRefusal(env: Env, userId: string, claims: Record<string, u
 export const isOwnerAccount = (env: Env, claims: Record<string, unknown>) =>
   typeof claims.email === 'string' && list(switches(env).OWNER_EMAILS).includes(claims.email.toLowerCase());
 
-/** The Google photo the sign-in itself carries: the only provider photo an account may show. */
+/**
+ * The Google photo the sign-in hook copied from Google's own identity record (`google_photo`, migration
+ * 20261106120000): the only provider photo an account may show. Never `user_metadata`, which learners can edit.
+ */
 export function googlePhoto(claims: Record<string, unknown>): string | undefined {
-  const meta = claims.user_metadata;
-  if (!meta || typeof meta !== 'object') return undefined;
-  const { avatar_url: avatar, picture } = meta as Record<string, unknown>;
-  return typeof avatar === 'string' && avatar ? avatar : typeof picture === 'string' && picture ? picture : undefined;
+  return typeof claims.google_photo === 'string' && claims.google_photo ? claims.google_photo : undefined;
 }

@@ -18,13 +18,13 @@ const ANYWHERE = ['fuck', 'nigger', 'nigga', 'faggot', 'whore', 'bitch', 'asshol
 const WHOLE_WORD = ['cunt', 'cunts', 'dick', 'dicks', 'cock', 'cocks', 'shit', 'slut', 'sluts', 'fag', 'fags', 'rape', 'rapist',
   'sex', 'sexy', 'nazi', 'hitler', 'kys', 'twat', 'wank', 'wanker', 'cum', 'tits', 'boobs', 'anal', 'dildo', 'penis', 'vagina',
   'nude', 'nudes', 'xxx', 'hentai', 'horny', 'milf', 'nsfw', 'jizz', 'pedo', 'paedo', 'kike', 'chink', 'spic', 'tranny',
-  'bastard', 'incest', 'whores', 'bitches', 'fck', 'fuk', 'fk', 'stfu', 'wtf'];
-/** Chinese phrases, refused anywhere, spaces between characters ignored (single characters like 幹 are common in ordinary words). */
+  'bastard', 'incest', 'whores', 'bitches', 'fck', 'stfu', 'wtf'];
+/** Chinese phrases refused in names anywhere, spaces between characters ignored (single characters like 幹 are common in ordinary words). */
 const CHINESE = ['幹你', '干你', '操你', '他媽', '他妈', '婊子', '雞巴', '鸡巴', '雞掰', '機掰', '机掰', '傻逼', '傻屄', '賤人', '贱人',
   '王八蛋', '屌', '肏', '屄', '去死', '靠北', '靠杯', '色情', '做愛', '做爱', '妓女', '屁眼', '陰莖', '阴茎', '陰道', '阴道', '強姦',
   '强奸', '智障', '腦殘', '脑残', '支那'];
-/** Names that would look like the app or its operator (the owner's own account may use them). */
-const RESERVED_WORDS = ['ron', 'admin', 'administrator', 'moderator', 'mod', 'official', 'staff', 'support', 'operator', 'system', 'ronsmandarin'];
+/** Words that make a name look like the app or its operator (the owner's own account may use them); "Ron" only as the whole name. */
+const RESERVED_WORDS = ['admin', 'administrator', 'moderator', 'mod', 'official', 'staff', 'support', 'operator', 'system', 'ronsmandarin'];
 const RESERVED_CHINESE = ['官方', '老師', '老师', '管理員', '管理员', '客服', '版主'];
 
 /** Invisible and direction-changing characters: never shown, often used to hide a word. */
@@ -43,16 +43,17 @@ export function foldForFilter(text: string): string {
   return Array.from(plain, char => LOOKALIKE[char] ?? LEET[char] ?? char).join('');
 }
 
-/** Latin words, with runs of single letters ("s.h.i.t", "f u c k") joined into one. */
+/** Latin words, with runs of three or more single letters ("s.h.i.t", "f u c k") joined; initials ("F. K. Lee") stay apart. */
 function words(folded: string): string[] {
   const out: string[] = [];
-  let run = '';
+  let run: string[] = [];
+  const flush = () => { if (run.length >= 3) out.push(run.join('')); else out.push(...run); run = []; };
   for (const word of folded.split(/[^a-z]+/).filter(Boolean)) {
-    if (word.length === 1) { run += word; continue; }
-    if (run) { out.push(run); run = ''; }
+    if (word.length === 1) { run.push(word); continue; }
+    flush();
     out.push(word);
   }
-  if (run) out.push(run);
+  flush();
   return out;
 }
 
@@ -66,14 +67,17 @@ function rude(folded: string): boolean {
 /** A web address, an email or a phone number: never a name. */
 function contact(name: string): boolean {
   const wide = name.normalize('NFKC').toLowerCase();
-  if (/https?:|www\.|@|\b[a-z0-9-]+\.(?:com|net|org|io|me|tw|cn|ly|gg|xyz|app|link|site|info|biz|co|cc|tv)\b/.test(wide)) return true;
+  // A domain name has at least three characters before the dot, so "Ma.Ly" (Ma. for María) stays a name.
+  if (/https?:|www\.|@|\b[a-z0-9-]{3,}\.(?:com|net|org|io|me|tw|cn|ly|gg|xyz|app|link|site|info|biz|co|cc|tv)\b/.test(wide)) return true;
   return (wide.match(/\d/g)?.length ?? 0) >= 7;
 }
 
 export function isNameReserved(name: string): boolean {
   const folded = foldForFilter(name);
+  const letters = folded.replace(/[^a-z]/g, '');
   return RESERVED_CHINESE.some(word => hanOnly(folded).includes(word))
-    || folded.replace(/[^a-z]/g, '').includes('ronsmandarin')
+    || letters.includes('ronsmandarin')
+    || (letters === 'ron' && !hanOnly(folded))
     || words(folded).some(word => RESERVED_WORDS.includes(word));
 }
 
@@ -90,7 +94,17 @@ export function nameProblem(name: string, options?: { owner?: boolean }): string
   return !options?.owner && isNameReserved(name) && isNameAllowed(name, { owner: true }) ? NAME_RESERVED : NAME_NOT_ALLOWED;
 }
 
-const CHINESE_PATTERNS = CHINESE.map(phrase => new RegExp(Array.from(phrase).join('[\\s\\p{P}\\p{S}]*'), 'gu'));
+/**
+ * Chat masks the Chinese list too, minus phrases that are also everyday words (去死海 the Dead Sea, 靠北邊走 keep to
+ * the north), with 他媽 only when it isn't 他媽媽 (his mum). Only spaces and symbols may sit between characters,
+ * never sentence punctuation: "我喜歡他。媽媽也喜歡他。" stays as it is.
+ */
+const CHAT_ONLY_IN_NAMES = new Set(['去死', '靠北', '他媽', '他妈']);
+const CHAT_GAP = '[ \\t\\p{S}._*~|/-]*';
+const CHINESE_PATTERNS = [
+  ...CHINESE.filter(phrase => !CHAT_ONLY_IN_NAMES.has(phrase)).map(phrase => Array.from(phrase).join(CHAT_GAP)),
+  `他${CHAT_GAP}[媽妈](?![媽妈])`,
+].map(source => new RegExp(source, 'gu'));
 
 /** Chat: listed words become ＊＊ (decision 9); the rest of the line is unchanged. */
 export function maskChat(text: string): string {

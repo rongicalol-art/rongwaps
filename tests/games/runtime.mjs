@@ -21,7 +21,7 @@ const b64 = value => Buffer.from(value).toString('base64url');
 async function token(sub, overrides = {}) {
   const head = b64(JSON.stringify({ alg: 'ES256', kid: 'test', typ: 'JWT' }));
   const body = b64(JSON.stringify({ sub, role: 'authenticated', aud: 'authenticated', iss: `${supabase}/auth/v1`, exp: Math.floor(Date.now() / 1000) + 600,
-    user_metadata: { avatar_url: `https://lh3.googleusercontent.com/${sub}` }, ...overrides }));
+    google_photo: `https://lh3.googleusercontent.com/${sub}`, ...overrides }));
   const signature = await webcrypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, privateKey, new TextEncoder().encode(`${head}.${body}`));
   return `${head}.${body}.${b64(signature)}`;
 }
@@ -147,6 +147,12 @@ try {
   assert.equal((await refused('impostor', { name: 'Ron' }, { email: 'someone@school.test' })).status, 400, 'only OWNER_EMAILS may use them');
   assert.equal((await refused('owner', { name: 'Ron' }, { email: 'Owner@School.test' })).status, 200, 'the owner keeps their name');
   const borrowed = await post('/rooms', 'borrower', { selection: { lessons: { 1: [1] }, types: [] }, open: false, image: 'https://blogger.googleusercontent.com/img/not-mine.png' });
+  const edited = await mf.dispatchFetch('https://games.test/rooms', { method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + await token('editor', { google_photo: undefined, user_metadata: { avatar_url: 'https://blogger.googleusercontent.com/img/edited.png' } }) },
+    body: JSON.stringify({ name: 'editor', color: 'jade', selection: { lessons: { 1: [1] }, types: [] }, open: false, image: 'https://blogger.googleusercontent.com/img/edited.png' }) });
+  const editedCode = (await edited.json()).code;
+  const editedSeat = JSON.parse((await (await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: editedCode })).exec('SELECT data FROM state WHERE id=1'))[0].data).players[0];
+  assert.equal(editedSeat.image, undefined, 'a photo written into the learner-editable user_metadata is ignored');
   const borrowedState = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: borrowed.code });
   const seat = JSON.parse((await borrowedState.exec('SELECT data FROM state WHERE id=1'))[0].data).players[0];
   assert.equal(seat.image, undefined, 'a Google-hosted image that isn’t the sign-in photo is dropped');

@@ -70,7 +70,7 @@ DO $$ BEGIN
   EXCEPTION WHEN insufficient_privilege THEN NULL;
   END;
 END $$;
--- At most 5,000 new events a day: a full day refuses more, but resending stored events still works.
+-- At most 5,000 new events a day: past that, new events are dropped quietly (the save itself still succeeds).
 RESET ROLE;
 INSERT INTO public.user_review_events(user_id,event_id,card_id,reviewed_at,payload)
 SELECT '11111111-1111-4111-8111-111111111111', gen_random_uuid(), 'bulk', now(), '{}'::jsonb FROM generate_series(1, 4996);
@@ -79,13 +79,10 @@ DO $$ BEGIN
   PERFORM public.append_review_events(jsonb_build_array(jsonb_build_object(
     'id','66666666-6666-4666-8666-666666666666','cardId','test-word','sessionId','local-test',
     'quality',2,'source','quiz','durationMs',1000,'scheduled',false,'reviewedAt',extract(epoch FROM now()) * 1000)));
-  BEGIN
-    PERFORM public.append_review_events(jsonb_build_array(jsonb_build_object(
-      'id','77777777-7777-4777-8777-777777777777','cardId','test-word','sessionId','local-test',
-      'quality',2,'source','quiz','durationMs',1000,'scheduled',false,'reviewedAt',extract(epoch FROM now()) * 1000)));
-    RAISE EXCEPTION 'Daily cap not enforced';
-  EXCEPTION WHEN sqlstate '54000' THEN NULL;
-  END;
+  PERFORM public.append_review_events(jsonb_build_array(jsonb_build_object(
+    'id','77777777-7777-4777-8777-777777777777','cardId','test-word','sessionId','local-test',
+    'quality',2,'source','quiz','durationMs',1000,'scheduled',false,'reviewedAt',extract(epoch FROM now()) * 1000)));
+  IF EXISTS (SELECT 1 FROM public.user_review_events WHERE event_id='77777777-7777-4777-8777-777777777777') THEN RAISE EXCEPTION 'Daily cap not enforced'; END IF;
 END $$;
 RESET ROLE;
 DELETE FROM public.user_review_events WHERE card_id = 'bulk';

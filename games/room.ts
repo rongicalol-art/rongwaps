@@ -285,8 +285,11 @@ export class GameRoom extends DurableObject<Env> {
     if (!before) throw new Error('Room not found. Check the code.');
     // Someone in a block pair with a player can't join; it reads as full so the block isn't revealed.
     const others = before.players.filter(player => !player.left && player.id !== userId).map(player => player.id);
-    if (!before.players.some(player => player.id === userId && !player.left) && others.length
-      && await this.env.LOBBY.getByName('main').apartFromAny(userId, others)) throw new Error('This room is full.');
+    let apart = false;
+    if (!before.players.some(player => player.id === userId && !player.left) && others.length) {
+      try { apart = await this.env.LOBBY.getByName('main').apartFromAny(userId, others); } catch { /* Same as chat: join without the check. */ }
+    }
+    if (apart) throw new Error('This room is full.');
     // RPC awaits allow other events to run: reload before changing authoritative state.
     const room = this.read();
     if (!room) throw new Error('Room not found. Check the code.');
