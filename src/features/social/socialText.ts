@@ -6,7 +6,7 @@ const TYPE_LABEL: Record<RaceType, string> = {
   meaning: 'Pick meaning', listen: 'Listen', hanzi: 'Pick character', match: 'Pair match', 'true-false': 'True or false', build: 'Build the word',
 };
 const ACTIVITY_LABEL: Record<Activity, string> = {
-  lesson: 'Browsing', cards: 'Flashcards', quiz: 'Quiz', grammar: 'Grammar', reading: 'Reading', writing: 'Writing', race: 'Quiz race',
+  lesson: 'Browsing', cards: 'Flashcards', quiz: 'Quiz', grammar: 'Grammar', reading: 'Reading', writing: 'Writing', race: 'Quiz race', test: 'Mock test',
 };
 
 export const typeLabel = (types: readonly RaceType[]) => (types.length === 0 ? 'Mixed' : types.map((type) => TYPE_LABEL[type]).join(', '));
