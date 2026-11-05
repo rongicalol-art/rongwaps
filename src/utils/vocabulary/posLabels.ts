@@ -26,20 +26,20 @@ const ZH_TOKEN_PATTERN = /\{zh:([A-Za-z0-9-]+)\}/g;
 /**
  * Expands a raw POS tag into a learner-facing label, or null when the card
  * has no tag. Compound tags (`N/M`, `Vst/Prep`) become joined labels such
- * as "Noun / Measure word"; unknown codes pass through as-is.
+ * as "Noun / Measure word"; tags with the same label show it once
+ * (`Vst/Vs` → "Stative verb"); `max` keeps the first few for tight rows.
+ * Unknown codes pass through as-is.
  */
-export function formatPosLabel(pos: string | null | undefined): string | null {
+export function formatPosLabel(pos: string | null | undefined, max = Number.POSITIVE_INFINITY): string | null {
   if (!pos) return null;
-  const trimmed = pos.trim();
-  if (!trimmed) return null;
-  return trimmed
+  const labels = [...new Set(pos
     .split('/')
     .map((part) => {
       const code = part.trim();
       return (code && POS_INFO[code]?.label) || code;
     })
-    .filter(Boolean)
-    .join(' / ');
+    .filter(Boolean))];
+  return labels.length ? labels.slice(0, max).join(' / ') : null;
 }
 
 /** Color category for a tag, used by the badge tint. */

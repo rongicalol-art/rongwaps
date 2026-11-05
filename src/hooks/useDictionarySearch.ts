@@ -12,6 +12,8 @@ export interface SearchResult {
   definitions: string | string[] | Record<string, unknown>;
   measure_words?: string[];
   courseDefinition?: string;
+  coursePinyin?: string;
+  courseSimple?: string;
   match_type: 'exact' | 'prefix' | 'partial';
   total_score: number;
   bookId?: number;

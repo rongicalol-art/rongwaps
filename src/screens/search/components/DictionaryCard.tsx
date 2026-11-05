@@ -6,19 +6,18 @@ import { resolveLevel } from '../../../utils/lesson/levels';
 import { FavoriteButton } from '../../../features/library';
 import { audioService } from '../../../services/audioService';
 import type { DictionaryListEntry } from '../../../types/models';
+import { useAppStore } from '../../../store/useAppStore';
+import { readingKey, searchRowMeaning } from '../../../utils/vocabulary/wordEntry';
+import { usePronunciation } from '../../../hooks/usePronunciation';
+import { allReadings } from '../../../utils/pinyin/pronunciation';
 import { DictionaryRow } from './DictionaryRow';
 
 interface DictionaryCardProps {
   entry: DictionaryListEntry;
-  onOpen: (word: string) => void;
+  /** Opens the word at this row's reading, so the page shows what the row showed. */
+  onOpen: (word: string, reading?: string) => void;
   isFavorite?: boolean;
   onToggleFavorite?: (word: string) => void;
-}
-
-function formatDefinitions(definitions: DictionaryListEntry['definitions']): string {
-  if (typeof definitions === 'string') return definitions;
-  if (Array.isArray(definitions)) return definitions.join(' • ');
-  return Object.values(definitions).join(' • ');
 }
 
 export const DictionaryCard = memo(function DictionaryCard({
@@ -27,17 +26,23 @@ export const DictionaryCard = memo(function DictionaryCard({
 }: DictionaryCardProps) {
   const levels = useLevels();
   const speaker = useAudioPending();
-  const level = useMemo(() => resolveLevel(entry.traditional, levels), [entry.traditional, levels]);
-  const meaning = formatDefinitions(entry.definitions);
+  // A word's level belongs to its main reading: 和 is Novice as hé "and", not as hè "to compose a poem in reply".
+  const readings = usePronunciation();
+  const mainReading = Array.from(entry.traditional).length === 1 ? allReadings(entry.traditional, readings)[0]?.pinyin : undefined;
+  const otherReading = entry.bookId === undefined && Boolean(mainReading) && readingKey(mainReading) !== readingKey(entry.pinyin_accented);
+  const level = useMemo(() => (otherReading ? null : resolveLevel(entry.traditional, levels)), [entry.traditional, levels, otherReading]);
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
+  const meaning = searchRowMeaning(entry, simpleDefinitions);
+  const pinyin = entry.coursePinyin || entry.pinyin_accented;
   const canPlayAudio = Boolean(entry.audio && audioService.isAudioFileName(entry.audio));
 
   return (
     <DictionaryRow
       glyph={entry.traditional}
-      pinyin={entry.pinyin_accented}
+      pinyin={pinyin}
       meaning={meaning}
       pos={entry.pos}
-      onOpen={() => onOpen(entry.traditional)}
+      onOpen={() => onOpen(entry.traditional, entry.pinyin_accented || undefined)}
       ariaLabel={`Open ${entry.traditional}: ${meaning}`}
       trailing={<LevelTag bookId={entry.bookId ?? undefined} lessonId={entry.lessonId ?? undefined} level={level} />}
       action={(
@@ -61,8 +66,8 @@ export const DictionaryCard = memo(function DictionaryCard({
             word={entry.traditional}
             traditional={entry.traditional}
             simplified={entry.simplified}
-            pinyin={entry.pinyin_accented || undefined}
-            definitions={entry.definitions}
+            pinyin={pinyin || undefined}
+            definitions={meaning || entry.definitions}
             size="lg"
             variant="ghost"
           />

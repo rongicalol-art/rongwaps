@@ -1,8 +1,8 @@
+import type { ReactNode } from 'react';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import type { ResolvedLevel } from '../../../utils/lesson/levels';
-import type { DBDictionaryEntry } from '../../../types/database';
 import type { Flashcard } from '../../../data/flashcards';
-import { HeroDetails, StrokeOrderBox, SummaryQuickActions, useExtendedDefinitions } from '../../character-breakdown';
+import { HeroDetails, StrokeOrderBox, SummaryQuickActions } from '../../character-breakdown';
 
 const HANZI_RE = /[㐀-鿿]/u;
 
@@ -15,33 +15,32 @@ function canvasSize(count: number, wide: boolean) {
 }
 
 /**
- * The word hero: one stroke-order canvas per character, then pinyin, meaning
- * (with the extra definitions one tap away), lesson and level, audio and save.
+ * The word hero: one stroke-order canvas per character, then the lead
+ * reading's pinyin (other readings beside it), meaning, lesson and level,
+ * audio and save. Every sense is listed below the hero.
  */
 export function WordHero({
   word,
   accentHex,
   pinyin,
   meaning,
-  entries,
   courseCard,
   level,
-  primaryChar,
+  alsoReadings,
 }: {
   word: string;
   accentHex?: string;
   pinyin: string;
   meaning?: string;
-  entries: DBDictionaryEntry[];
   courseCard?: Flashcard;
   level: ResolvedLevel | null;
-  primaryChar: string;
+  /** "also …" readings, beside the pinyin. */
+  alsoReadings?: ReactNode;
 }) {
   const chars = Array.from(word);
   const wide = useMediaQuery('(min-width: 640px)');
   const size = canvasSize(chars.length, wide);
-  const more = useExtendedDefinitions(undefined, entries);
-  const actions = { char: primaryChar, pinyin: pinyin || undefined, meaning, ttsText: word };
+  const actions = { char: word, pinyin: pinyin || undefined, meaning, ttsText: word };
   const stacked = chars.length >= 3;
 
   return (
@@ -64,13 +63,14 @@ export function WordHero({
         </div>
 
         <div className="flex min-w-0 max-w-full flex-1 flex-col items-start gap-1.5 text-left">
-          <div className="flex min-w-0 items-center gap-1.5">
+          <div className="flex min-w-0 flex-wrap items-center gap-1.5">
             {pinyin && <span className="truncate text-2xl font-black leading-tight text-brand-primary-text sm:text-[26px]">{pinyin}</span>}
+            {alsoReadings}
             {!wide && (
               <SummaryQuickActions className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8" {...actions} />
             )}
           </div>
-          <HeroDetails subject={word} meaning={meaning} more={more} wide={wide} courseCard={courseCard} level={level} actions={actions} />
+          <HeroDetails subject={word} meaning={meaning} more={null} wide={wide} courseCard={courseCard} level={level} actions={actions} />
         </div>
       </div>
     </header>

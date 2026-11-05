@@ -11,6 +11,7 @@ import { lessonExamples, flashcardExtrasKey, type FlashcardExtrasRow } from '../
 import { studyPartKey, type StudyPack, type StudyPart } from '../../src/utils/vocabulary/studyPack';
 import { extractCedictReference, sanitizeDictionaryDefinitions } from '../../shared/dictionaryDefinitions';
 import { courseFields, type CompactSearchEntry } from '../../shared/dictionarySearch';
+import { courseCardsByRow, courseWordOf } from '../../src/utils/vocabulary/wordEntry';
 import type { GenericContentManifest } from '../../src/utils/packValidators';
 import type { DBDictionaryRow } from '../../src/types/database';
 import { buildCharacterCourseIndex } from '../../src/features/character-breakdown/utils/rankParentCharacters';
@@ -75,12 +76,32 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
   // Earliest course lesson per character (~30 kB): breakdowns rank "built with" by it, without downloading every vocabulary book.
   assets.set(COURSE_CHARS, Buffer.from(JSON.stringify(Object.fromEntries([...buildCharacterCourseIndex(cards)].map(([character, { bookId, lessonId }]) => [character, [bookId, lessonId]])))));
   const courseLookup = buildCourseVocabLookupMap(cards);
-  assets.set('/data/search/course-lookup.json', Buffer.from(JSON.stringify({ cards, entries: [...courseLookup].map(([key, card]) => [key, cardIds.get(card)]) })));
-  // The search index is sorted most common first; course tags match the server's (same lookup, same rule).
+  // Which dictionary reading each course card teaches (wordEntry rules): search rows carry only their own lesson.
+  const cardsByWord = new Map<string, typeof cards>();
+  for (const card of cards) {
+    const word = courseWordOf(card);
+    if (word) cardsByWord.set(word, [...(cardsByWord.get(word) ?? []), card]);
+  }
+  const courseByRow = new Map<number, (typeof cards)[number]>();
+  for (const [word, wordCards] of cardsByWord) {
+    const rows = (dictionary.get(word) ?? []).filter(row => row.traditional === word);
+    for (const [rowId, linked] of courseCardsByRow(rows, wordCards)) courseByRow.set(rowId, linked[0]);
+  }
+  assets.set('/data/search/course-lookup.json', Buffer.from(JSON.stringify({
+    cards,
+    entries: [...courseLookup].map(([key, card]) => [key, cardIds.get(card)]),
+    rows: [...courseByRow].map(([rowId, card]) => [rowId, cardIds.get(card)]),
+  })));
+  // The search index is sorted most common first; course tags match the server's (same links, same rule).
   const common = (await json<{ items: CompactSearchEntry[] }>('/data/search/dictionary-search-index.json')).items.slice(0, COMMON_WORD_COUNT);
-  const commonCourse = common.flatMap(([id, simplified, traditional, pinyin_accented]) => {
-    const card = courseLookup.get(traditional || simplified) ?? courseLookup.get(simplified);
-    return card ? [[id, courseFields({ pinyin_accented }, card)]] : [];
+  const commonCourse = common.flatMap(([id, , , pinyin_accented]) => {
+    const card = courseByRow.get(id);
+    if (!card) return [];
+    // Phone rows show no speaker; the simple gloss and recordings arrive with the server's answer.
+    const fields = courseFields({ pinyin_accented }, card);
+    delete fields.courseSimple;
+    delete fields.audio;
+    return [[id, fields]];
   });
   assets.set(COMMON_WORDS, Buffer.from(JSON.stringify({ schemaVersion: 1, items: common, course: commonCourse })));
 

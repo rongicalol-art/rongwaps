@@ -12,7 +12,9 @@ export interface SaveWordTarget {
 export interface LibraryState {
   // Global Dictionary
   dictionaryWord: string | null;
-  setDictionaryWord: (word: string | null) => void;
+  /** The reading the word was opened for (a search row's pinyin); null opens its main reading. */
+  dictionaryReading: string | null;
+  setDictionaryWord: (word: string | null, reading?: string | null) => void;
 
   // Save Word Modal
   saveWordTarget: SaveWordTarget | null;
@@ -51,7 +53,8 @@ type SetState = (partial: Partial<LibraryState> | ((state: LibraryState) => Part
 export function createLibrarySlice(set: SetState): LibraryState {
   return {
     dictionaryWord: null,
-    setDictionaryWord: (word) => set({ dictionaryWord: word }),
+    dictionaryReading: null,
+    setDictionaryWord: (word, reading = null) => set({ dictionaryWord: word, dictionaryReading: word ? reading : null }),
 
     saveWordTarget: null,
     setSaveWordTarget: (target) => set({ saveWordTarget: target }),

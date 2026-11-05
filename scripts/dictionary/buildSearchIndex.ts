@@ -2,6 +2,11 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { DICTIONARY_SHARD_COUNT } from '../../src/utils/vocabulary/dictionaryShard';
 import { stripPinyinTones } from '../../src/utils/pinyin/pinyinNormalize';
+import { prepareVocabulary } from '../../src/utils/vocabulary/vocabularyMapping';
+import { courseWordOf, linkCourseReadings, orderReadingKeys, readingKey } from '../../src/utils/vocabulary/wordEntry';
+import { isReferenceOnlyDefinitions, REFERENCE_SENSE_RE } from '../../shared/dictionaryDefinitions';
+import { parseReadings } from '../../src/utils/pinyin/pronunciation';
+import type { Flashcard } from '../../src/data/flashcards';
 
 const SHARD_DIR = resolve(process.cwd(), 'public/data/dictionary');
 const SEARCH_DIR = resolve(process.cwd(), 'public/data/search');
@@ -9,11 +14,16 @@ const SEARCH_INDEX_PATH = resolve(SEARCH_DIR, 'dictionary-search-index.json');
 const FREQ_MAP_PATH = resolve(process.cwd(), 'output/dictionary-frequency-map.json');
 const LEVELS_PATH = resolve(process.cwd(), 'public/data/levels/levels.json');
 const VOCAB_DIR = resolve(process.cwd(), 'public/data/vocabulary');
+const PRONUNCIATION_PATH = resolve(process.cwd(), 'public/data/pronunciation/pronunciation.json');
 
 type RawShardTuple = [number, string, string, string, string[]];
 type CompactSearchTuple = [number, string, string, string, string, string[], number];
 
-const PURE_STUB_RE = /^(?:old |archaic |Japanese )?variant of\b|^surname\b|^see\b|^erhua variant of\b|^used in\b|^also written\b/i;
+/** A character's secondary readings rank lower: 嗎 má "what?" below 嗎 ma, the question particle. */
+const READING_RANK_FACTOR = 0.5;
+/** A variant spelling of another word (閤 gé "variant of 閣", 龢 "harmonious (variant of 和)") ranks lower. */
+const VARIANT_FACTOR = 0.3;
+const VARIANT_SENSE_RE = /\bvariant of\b/i;
 const OBSCURE_BIO_PLACE_RE = /\(\d{3,4}[-–]\d*\)|\b(?:county in |district in |prefecture in |township in |subdistrict in |town in )\b/i;
 
 async function loadFrequencyMap(existingFreqs: Map<number, number>): Promise<Record<string, number>> {
@@ -26,22 +36,31 @@ async function loadFrequencyMap(existingFreqs: Map<number, number>): Promise<Rec
   }
 }
 
-async function loadCourseWords(): Promise<Set<string>> {
-  const words = new Set<string>();
+async function loadCourseCards(): Promise<Map<string, Flashcard[]>> {
+  const items: unknown[] = [];
   for (const book of [1, 2, 3, 4]) {
     try {
       const raw = await readFile(resolve(VOCAB_DIR, `book-${book}.json`), 'utf8');
-      const data = JSON.parse(raw) as { items?: Array<{ front?: string; simplified?: string; traditional?: string }> };
-      for (const item of data.items || []) {
-        if (item.front) words.add(item.front.trim());
-        if (item.simplified) words.add(item.simplified.trim());
-        if (item.traditional) words.add(item.traditional.trim());
-      }
+      items.push(...((JSON.parse(raw) as { items?: unknown[] }).items ?? []));
     } catch {
       // ignore missing book
     }
   }
-  return words;
+  const byWord = new Map<string, Flashcard[]>();
+  for (const card of prepareVocabulary(items)) {
+    const word = courseWordOf(card);
+    if (word) byWord.set(word, [...(byWord.get(word) ?? []), card]);
+  }
+  return byWord;
+}
+
+async function loadTaiwanReadings(): Promise<Map<string, string[]>> {
+  try {
+    const pack = JSON.parse(await readFile(PRONUNCIATION_PATH, 'utf8')) as { readings: Record<string, string> };
+    return new Map(Object.entries(pack.readings).map(([character, value]) => [character, parseReadings(value).map((reading) => reading.pinyin)]));
+  } catch {
+    return new Map();
+  }
 }
 
 async function loadLevelWords(): Promise<Map<string, number>> {
@@ -73,8 +92,9 @@ async function main(): Promise<void> {
 
   const freqMap = await loadFrequencyMap(existingFreqById);
   const hasCorpusFreqMap = Object.keys(freqMap).length > 0;
-  const courseWords = await loadCourseWords();
+  const courseCards = await loadCourseCards();
   const levelWords = await loadLevelWords();
+  const taiwanReadings = await loadTaiwanReadings();
 
   // 2. Collect all unique dictionary entries across the 64 shards
   const entriesById = new Map<number, RawShardTuple>();
@@ -89,26 +109,49 @@ async function main(): Promise<void> {
     }
   }
 
-  // 3. Filter and build scored entries
+  // 3. Per word (traditional form): which reading each lesson teaches and the reading order (wordEntry rules)
+  const rowsByWord = new Map<string, Array<{ id: number; traditional: string; pinyin_accented: string; definitions: string[] }>>();
+  for (const [id, simplified, tradDiff, pinyinAccented, defs] of entriesById.values()) {
+    const traditional = tradDiff || simplified;
+    const list = rowsByWord.get(traditional) ?? [];
+    list.push({ id, traditional, pinyin_accented: pinyinAccented, definitions: defs });
+    rowsByWord.set(traditional, list);
+  }
+  const linkedRows = new Set<number>();
+  const readingRank = new Map<number, number>();
+  for (const [word, rows] of rowsByWord) {
+    const links = linkCourseReadings(rows, courseCards.get(word) ?? []);
+    const order = orderReadingKeys(rows, links, taiwanReadings.get(word));
+    for (const row of rows) {
+      const key = readingKey(row.pinyin_accented);
+      if (links.has(key)) linkedRows.add(row.id);
+      readingRank.set(row.id, Math.max(0, order.indexOf(key)));
+    }
+  }
+
+  // 4. Filter and build scored entries
   const items: CompactSearchTuple[] = [];
   for (const [id, simplified, tradDiff, pinyinAccented, defs] of entriesById.values()) {
     if (!Array.isArray(defs) || defs.length === 0) continue;
 
     const traditional = tradDiff || simplified;
-    const isCourse = courseWords.has(simplified) || courseWords.has(traditional);
-    const tocflLevel = levelWords.get(traditional) ?? levelWords.get(simplified);
+    // Course and level words are traditional forms: a variant sharing the simplified form (咊 for 和) is not one.
+    const isCourseWord = courseCards.has(traditional);
+    const isCourse = linkedRows.has(id);
+    const tocflLevel = levelWords.get(traditional);
     const rawFreq = hasCorpusFreqMap
       ? Math.max(freqMap[simplified] ?? 0, freqMap[traditional] ?? 0)
       : (existingFreqById.get(id) ?? 0);
 
-    // Filter out pure cross-reference stubs ("variant of...", "surname...", "see...")
-    const nonStubDefs = defs.filter((d) => !PURE_STUB_RE.test(d));
-    if (nonStubDefs.length === 0 && !isCourse && !tocflLevel && rawFreq < 15) continue;
+    // Pure cross-reference stubs ("variant of...", "used in...") stay only for course and level words.
+    const nonStubDefs = defs.filter((d) => !REFERENCE_SENSE_RE.test(d));
+    const isStub = isReferenceOnlyDefinitions(defs);
+    if (isStub && !isCourseWord && !tocflLevel) continue;
 
     // Filter out obscure historical biographies / minor administrative counties if freq == 0
     if (
       rawFreq === 0 &&
-      !isCourse &&
+      !isCourseWord &&
       !tocflLevel &&
       nonStubDefs.every((d) => OBSCURE_BIO_PLACE_RE.test(d))
     ) {
@@ -118,7 +161,7 @@ async function main(): Promise<void> {
     // Filter out long (>4 char) zero-frequency capitalized proper nouns (institutions, obscure titles)
     if (
       rawFreq === 0 &&
-      !isCourse &&
+      !isCourseWord &&
       !tocflLevel &&
       Array.from(simplified).length > 4 &&
       nonStubDefs.every((d) => /^[A-Z]/.test(d.replace(/^\([^)]+\)\s*/, '')))
@@ -147,10 +190,17 @@ async function main(): Promise<void> {
       const tocflFloor = Math.max(14, 42 - tocflLevel * 4);
       score = Math.max(score, tocflFloor);
     }
+    // Corpus frequency belongs to the spelling, not the reading: secondary readings and variant spellings rank lower.
+    const rank = readingRank.get(id) ?? 0;
+    if (!isCourse && rank > 0) score *= READING_RANK_FACTOR ** rank;
+    // Only a spelling of its own (traditional ≠ simplified) can be a variant: 合 mentions "variant of 盒" and stays.
+    if (!isCourse && traditional !== simplified && defs.some((d) => VARIANT_SENSE_RE.test(d))) score *= VARIANT_FACTOR;
+    if (isStub) score = Math.min(score, 3);
     if (isCourse) {
-      score = Math.max(score + 12, 45);
+      // Course readings in lesson order: 得 de (Book 1) before 得 dé (Book 3).
+      score = Math.max(score + 12, 45) - rank;
     }
-    score = Math.min(100, score);
+    score = Math.min(100, Math.round(score));
 
     const flat = stripPinyinTones(pinyinAccented);
     items.push([
