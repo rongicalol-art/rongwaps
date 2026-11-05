@@ -260,6 +260,16 @@ try {
   send(quiet, { t: 'roster' });
   await until(() => rosterFrames() > snapshots);
   assert.ok(last(quiet, 'online').v.some(person => person.u === 'alice' && person.l === 103), 'a requested snapshot is fresh');
+  // The mock test ('test') reaches v: 3 clients; older v: 2 clients get 'lesson', which they can name.
+  const modern = await open('/lobby/socket', 'lobby', (await post('/lobby', 'modern')).ticket);
+  send(modern, { t: 'sub', online: false, chat: null, v: 3 });
+  send(modern, { t: 'here', l: 101, a: 'lesson', show: true });
+  send(quiet, { t: 'here', l: 101, a: 'lesson', show: true });
+  send(alice, { t: 'here', l: 101, a: 'test', show: true });
+  await until(() => last(modern, 'people')?.v.some(person => person.u === 'alice' && person.a === 'test'));
+  await until(() => last(quiet, 'people')?.l === 101 && last(quiet, 'people').v.some(person => person.u === 'alice'));
+  assert.equal(last(quiet, 'people').v.find(person => person.u === 'alice').a, 'lesson', 'an older client never gets an activity it cannot name');
+  modern.socket.close(1000);
   send(alice, { t: 'here', l: 101, a: 'cards', show: true });
   quiet.socket.close(1000);
   await until(() => last(alice, 'counts')?.v['102'] === undefined && last(alice, 'counts')?.v['101']?.n === 1);

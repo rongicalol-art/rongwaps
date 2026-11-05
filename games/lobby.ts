@@ -16,6 +16,8 @@ type Att = {
   j?: number;
   /** Set by the first `sub`: true streams open rooms only while the social panel is open; false (older clients) streams every listing change. */
   v2?: boolean;
+  /** Subscribed with v: 3, so it knows the 'test' activity; older clients see it as 'lesson'. */
+  v3?: boolean;
 };
 type ChatRow = { id: number; lesson: number; uid: string; name: string; color: string; text: string; room: string | null; ts: number };
 const FLUSH_MS = 2000;
@@ -216,7 +218,10 @@ export class Lobby extends DurableObject<Env> {
     return true;
   }
 
-  private person(att: Att): Person { return { u: att.u, n: att.n, c: att.c, l: att.l, a: att.a, ...(att.i ? { i: att.i } : {}) }; }
+  /** `legacy` viewers (no v: 3) get 'test' as 'lesson', an activity they can name. */
+  private person(att: Att, legacy = false): Person {
+    return { u: att.u, n: att.n, c: att.c, l: att.l, a: legacy && att.a === 'test' ? 'lesson' : att.a, ...(att.i ? { i: att.i } : {}) };
+  }
 
   async fetch(request: Request): Promise<Response> {
     if (request.headers.get('Origin') !== this.env.APP_ORIGIN || request.headers.get('Upgrade')?.toLowerCase() !== 'websocket') return new Response('Forbidden', { status: 403 });
@@ -268,7 +273,7 @@ export class Lobby extends DurableObject<Env> {
     } else if (message.t === 'sub') {
       const chatChanged = message.chat !== att.ch;
       const panelOpened = message.online && !att.on;
-      att.on = message.online; att.v2 = message.v === 2;
+      att.on = message.online; att.v2 = message.v === 2 || message.v === 3; att.v3 = message.v === 3;
       this.moveChannel(socket, att, message.chat);
       socket.serializeAttachment(att);
       if (chatChanged && att.ch !== null) this.send(socket, { t: 'history', l: att.ch, v: this.history(att.ch, now, att.u) });
@@ -362,7 +367,7 @@ export class Lobby extends DurableObject<Env> {
     const here = (other: Att) => att.l !== null && other.l === att.l ? 1 : 0;
     const hide = this.hidden(att.u);
     const people = [...this.index().values()].filter(other => other.show && !hide.has(other.u))
-      .sort((a, b) => here(b) - here(a) || schoolFirst(att, a, b) || b.activeAt - a.activeAt).slice(0, ROSTER_CAP).map(other => this.person(other));
+      .sort((a, b) => here(b) - here(a) || schoolFirst(att, a, b) || b.activeAt - a.activeAt).slice(0, ROSTER_CAP).map(other => this.person(other, !att.v3));
     this.send(socket, { t: 'online', v: people }, 'online');
   }
 
@@ -485,16 +490,16 @@ export class Lobby extends DurableObject<Env> {
     const byJoin = (a: Att, b: Att) => (a.j ?? 0) - (b.j ?? 0) || (a.u < b.u ? -1 : a.u > b.u ? 1 : 0);
     const shown = [...live.values()].filter(att => att.show);
     const total = shown.length;
-    const views = new Map<'school' | 'all', { visible: Att[]; byLesson: Map<number, Person[]>; countFrame: string; people: Map<number | null, string> }>();
-    const view = (school: boolean) => {
-      const key = school ? 'school' : 'all';
+    const views = new Map<string, { visible: Att[]; byLesson: Map<number, Person[]>; countFrame: string; people: Map<number | null, string> }>();
+    const view = (school: boolean, legacy: boolean) => {
+      const key = `${school ? 'school' : 'all'}${legacy ? '-legacy' : ''}`;
       let built = views.get(key);
       if (built) return built;
       const visible = [...shown].sort((a, b) => (school ? schoolFirst({ s: true }, a, b) : 0) || byJoin(a, b));
       const byLesson = new Map<number, Person[]>();
       const faces: Person[] = [];
       for (const att of visible) {
-        const person = this.person(att);
+        const person = this.person(att, legacy);
         if (faces.length < 4) faces.push(person);
         if (att.l !== null) { const group = byLesson.get(att.l); if (group) group.push(person); else byLesson.set(att.l, [person]); }
       }
@@ -505,13 +510,13 @@ export class Lobby extends DurableObject<Env> {
     };
     for (const [socket, att] of live) {
       if (att.on || att.v2 === false) this.send(socket, this.roomsFrame(att.u), 'rooms');
-      const { visible, byLesson, countFrame, people } = view(att.s !== false);
+      const { visible, byLesson, countFrame, people } = view(att.s !== false, !att.v3);
       const hide = this.hidden(att.u);
       if (hide.size) {
         // Rare: someone in a block pair gets lists without the other person (counts stay exact).
         const keep = (person: Person) => !hide.has(person.u);
         const own = Object.fromEntries([...byLesson].map(([lesson, group]) => [lesson, { n: group.length, f: group.filter(keep).slice(0, 3) }]));
-        this.send(socket, { t: 'counts', v: own, n: total, f: visible.map(other => this.person(other)).filter(keep).slice(0, 4) }, 'counts');
+        this.send(socket, { t: 'counts', v: own, n: total, f: visible.map(other => this.person(other, !att.v3)).filter(keep).slice(0, 4) }, 'counts');
         this.send(socket, { t: 'people', l: att.l, v: att.l === null ? [] : (byLesson.get(att.l) ?? []).filter(keep).slice(0, PEOPLE_CAP) }, 'people');
         continue;
       }

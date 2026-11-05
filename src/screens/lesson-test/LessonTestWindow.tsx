@@ -1,4 +1,6 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { useAppStore } from '../../store/useAppStore';
+import { lessonKey } from '../../store/slices/socialSlice';
 import { ActionButton, LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 import { useModalFocus } from '../../hooks/useModalFocus';
 import { useLessonTestData } from '../../hooks/useLessonTestData';
@@ -16,6 +18,11 @@ export function LessonTestWindow({ bookId, lessonId, onClose }: LessonTestWindow
   // Focus starts on the window itself, not its Close button: Space belongs to the test's own action.
   const modalFocus = useModalFocus({ containerRef: ref, initialFocusRef: ref, isActive: true, onEscape: onClose });
   const { data, isLoading, error, retry } = useLessonTestData(bookId, lessonId);
+  // Study together shows "Mock test" while this window is open.
+  useEffect(() => {
+    useAppStore.getState().setSocial({ socialStudying: { a: 'test', lesson: lessonKey(bookId, lessonId) } });
+    return () => useAppStore.getState().setSocial({ socialStudying: null });
+  }, [bookId, lessonId]);
   return (
     <WorkspaceWindow
       ref={ref}

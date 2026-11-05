@@ -52,7 +52,7 @@ export interface SocialState {
   /** Lesson key (`bookId * 100 + lessonId`) of the open lesson window, for presence. */
   socialViewingLesson: number | null;
   /** Reading or grammar window open, with its lesson key: they are windows, not activities, so presence learns of them here. */
-  socialStudying: { a: 'reading' | 'grammar'; lesson: number } | null;
+  socialStudying: { a: 'reading' | 'grammar' | 'test'; lesson: number } | null;
   /** The lesson this device reports while visible (null when hidden or outside a lesson); the server counts it. */
   socialHere: number | null;
   socialPanel: SocialPanel;

@@ -6,7 +6,8 @@ import { MAX_SOCIAL_IMAGE_LENGTH, stripControl, type RaceRoomSummary, type Socia
 import { maskChat } from './nameFilter';
 
 export const CHEER_PHRASES = ['加油！', '好棒！', '一起考試？', '等我一下'] as const;
-export const ACTIVITIES = ['lesson', 'cards', 'quiz', 'grammar', 'reading', 'writing', 'race'] as const;
+/** 'test' (the lesson's mock test) reaches only clients that subscribe with v: 3; older ones see it as 'lesson'. */
+export const ACTIVITIES = ['lesson', 'cards', 'quiz', 'grammar', 'reading', 'writing', 'race', 'test'] as const;
 export type Activity = typeof ACTIVITIES[number];
 export const CHAT_MAX = 300;
 export const GLOBAL_CHAT = 0;
@@ -82,7 +83,7 @@ export interface LessonCount { n: number; f: Person[] }
 export type LobbyClientMessage =
   | { t: 'here'; l: number | null; a: Activity | null; show: boolean; i?: string }
   /** `online`: the social panel is open (rooms stream, one Online snapshot). `v: 2`: rooms stream only while it is. */
-  | { t: 'sub'; online: boolean; chat: number | null; v?: 2 }
+  | { t: 'sub'; online: boolean; chat: number | null; v?: 2 | 3 }
   /** A fresh Online snapshot (people in this lesson first, then the most recently active; capped). */
   | { t: 'roster' }
   | { t: 'say'; l: number; text: string; mentions?: string[] }
@@ -132,7 +133,7 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
     const i = typeof data.i === 'string' && data.i.length <= MAX_SOCIAL_IMAGE_LENGTH ? data.i : undefined;
     return { t: 'here', l: lessonKey(data.l), a, show: data.show !== false, ...(i ? { i } : {}) };
   }
-  if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat), ...(data.v === 2 ? { v: 2 as const } : {}) };
+  if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat), ...(data.v === 2 || data.v === 3 ? { v: data.v } : {}) };
   if (data.t === 'roster') return { t: 'roster' };
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {
     const text = maskChat(chatText(data.text));
