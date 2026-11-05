@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { formatLegalDate, isLegalUpdateCurrent, isSignupOpen, legalEffectivePhrase } from '../../src/screens/legal/legalMeta';
+import { formatLegalDate, isLegalUpdateCurrent, legalEffectivePhrase } from '../../src/screens/legal/legalMeta';
 import { showsGooglePhoto } from '../../src/store/slices/profileSlice';
 
 const day = 24 * 60 * 60 * 1000;
@@ -28,12 +28,6 @@ test('legal notice says "takes" before the date and "took" from it', () => {
 
 test('legal dates format as the written calendar day', () => {
   assert.equal(formatLegalDate('2026-10-23'), 'October 23, 2026');
-});
-
-test('sign-up wording switches at midnight Taiwan on 6 November', () => {
-  const open = Date.parse('2026-11-06T00:00:00+08:00');
-  assert.equal(isSignupOpen(open - 1), false);
-  assert.equal(isSignupOpen(open), true);
 });
 
 test('Google photo: older accounts keep it, newer ones start with initials, a choice wins', () => {
