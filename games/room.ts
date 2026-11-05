@@ -1,6 +1,8 @@
 import { DurableObject } from 'cloudflare:workers';
 import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, parseRaceAction, socialColor, summarizeRoom, type RaceRoomState, type RaceSnapshot } from '../shared/quizRace';
 import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMIT_ERROR, GLOBAL_CHAT, SOCIAL_FRAME_BYTES, chatDailyFull, chatText, nextChatRate, mentionIds, type ChatMessage, type ChatRate, type PartyChatServerMessage, type MentionNotice } from '../shared/lobby';
+import { maskChat } from '../shared/nameFilter';
+import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
 
 type Attachment = { userId: string; activeAt: number; tokens: number; updatedAt: number; authUntil: number };
 const STALE_MS = 90_000;
@@ -8,6 +10,8 @@ const LISTING_RETRY_MS = 5000;
 const LISTING_RETENTION_MS = 35 * 60_000; // The Lobby discards older listings even during a prolonged outage.
 /** Answer counts are written at most this often (a timer, not an alarm); everything else is written at once. */
 const PROGRESS_SAVE_MS = 10_000;
+/** Block pairs among the players, asked of the Lobby at most this often (party chat skips them). */
+const PAIRS_REUSE_MS = 30_000;
 export const newSeed = () => crypto.randomUUID().slice(0, 8);
 
 /**
@@ -20,6 +24,7 @@ export class GameRoom extends DurableObject<Env> {
   private roomJson: string | null = null;
   private savedAt = 0;
   private pendingSave: ReturnType<typeof setTimeout> | null = null;
+  private pairs: { key: string; at: number; pairs: Set<string> } | null = null;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -121,12 +126,23 @@ export class GameRoom extends DurableObject<Env> {
     return Math.max((socket.deserializeAttachment() as Attachment).activeAt ?? 0, this.ctx.getWebSocketAutoResponseTimestamp(socket)?.getTime() ?? 0);
   }
 
-  private chatHistory(): ChatMessage[] {
-    return this.ctx.storage.sql.exec<{ id: number; data: string }>('SELECT id,data FROM room_chat WHERE ts>=? ORDER BY id DESC LIMIT ?', Date.now() - CHAT_TTL_MS, CHAT_KEEP)
-      .toArray().reverse().map(row => ({ ...JSON.parse(row.data) as ChatMessage, id: row.id }));
+  /** Block pairs among the room's players ("a|b" both ways), cached; empty when the Lobby can't answer. */
+  private async blockPairs(room: RaceRoomState): Promise<Set<string>> {
+    const ids = room.players.filter(player => !player.left).map(player => player.id).sort();
+    const key = ids.join(',');
+    if (this.pairs?.key === key && Date.now() - this.pairs.at < PAIRS_REUSE_MS) return this.pairs.pairs;
+    let pairs = new Set<string>();
+    try { if (ids.length > 1) pairs = new Set(await this.env.LOBBY.getByName('main').pairsAmong(ids)); } catch { /* Keep chat working. */ }
+    this.pairs = { key, at: Date.now(), pairs };
+    return pairs;
   }
 
-  private chat(room: RaceRoomState, userId: string, data: Record<string, unknown>, now: number): boolean {
+  private chatHistory(viewer: string, pairs: Set<string>): ChatMessage[] {
+    return this.ctx.storage.sql.exec<{ id: number; data: string }>('SELECT id,data FROM room_chat WHERE ts>=? ORDER BY id DESC LIMIT ?', Date.now() - CHAT_TTL_MS, CHAT_KEEP)
+      .toArray().reverse().map(row => ({ ...JSON.parse(row.data) as ChatMessage, id: row.id })).filter(line => !pairs.has(`${viewer}|${line.u}`));
+  }
+
+  private async chat(room: RaceRoomState, userId: string, data: Record<string, unknown>, now: number): Promise<boolean> {
     if (data.type !== 'chat' && data.type !== 'chat-report') return false;
     const player = room.players.find(entry => entry.id === userId && !entry.left);
     if (!player) throw new Error('Join the room first.');
@@ -137,7 +153,7 @@ export class GameRoom extends DurableObject<Env> {
       this.ctx.storage.sql.exec('DELETE FROM room_reports WHERE id NOT IN (SELECT id FROM room_reports ORDER BY id DESC LIMIT 1000)');
       return true;
     }
-    const text = chatText(data.text);
+    const text = maskChat(chatText(data.text));
     if (!text) throw new Error('Write a message first.');
     const saved = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM room_chat_rate WHERE uid=?', userId).toArray()[0];
     const previous = saved ? JSON.parse(saved.data) as ChatRate : null;
@@ -146,7 +162,9 @@ export class GameRoom extends DurableObject<Env> {
     this.ctx.storage.sql.exec('INSERT OR REPLACE INTO room_chat_rate VALUES (?,?)', userId, JSON.stringify(rate));
     const line: ChatMessage = { id: 0, l: GLOBAL_CHAT, u: userId, n: player.name, c: socialColor(player.color), t: text, ts: now, ...(player.image ? { i: player.image } : {}) };
     const members = new Set(room.players.filter(entry => !entry.left).map(entry => entry.id));
-    const recipients = mentionIds(data.mentions).filter(id => id !== userId && members.has(id));
+    // A pair that blocked each other after joining: neither gets the other's lines or mentions.
+    const pairs = await this.blockPairs(room);
+    const recipients = mentionIds(data.mentions).filter(id => id !== userId && members.has(id) && !pairs.has(`${id}|${userId}`));
     if (recipients.length && this.ctx.storage.sql.exec<{ n: number }>('SELECT count(*) AS n FROM mention_outbox').one().n >= 2000) throw new Error('Mentions are temporarily unavailable.');
     this.ctx.storage.transactionSync(() => {
       line.id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO room_chat (data,ts) VALUES (?,?) RETURNING id', JSON.stringify(line), now).one().id;
@@ -158,7 +176,9 @@ export class GameRoom extends DurableObject<Env> {
     });
     if (recipients.length) this.ctx.waitUntil(this.publishMentions(room));
     const frame = JSON.stringify({ type: 'chat-message', code: room.code, message: line } satisfies PartyChatServerMessage);
-    for (const target of this.sockets()) if (members.has((target.deserializeAttachment() as Attachment).userId)) {
+    for (const target of this.sockets()) {
+      const reader = (target.deserializeAttachment() as Attachment).userId;
+      if (!members.has(reader) || pairs.has(`${reader}|${userId}`)) continue;
       try { target.send(frame); } catch { target.close(1011, 'Reconnect to restore the room.'); }
     }
     return true;
@@ -214,7 +234,7 @@ export class GameRoom extends DurableObject<Env> {
   /** Persist the pending revision until acknowledged; an evicted room retries from its alarm. */
   private async publishListing(room: RaceRoomState): Promise<boolean> {
     try {
-      await this.env.LOBBY.getByName('main').upsertRoom(summarizeRoom(room), room.hostId);
+      await this.env.LOBBY.getByName('main').upsertRoom(summarizeRoom(room), room.hostId, room.players.filter(player => !player.left).map(player => player.id));
       if ((this.record<number>(5) ?? Infinity) <= (room.revision ?? 0)) this.ctx.storage.sql.exec('DELETE FROM state WHERE id=5');
       return true;
     } catch {
@@ -261,6 +281,13 @@ export class GameRoom extends DurableObject<Env> {
   }
 
   async enter(userId: string, name: string, color: string, image: string | undefined, authUntil: number): Promise<{ ticket: string }> {
+    const before = this.read();
+    if (!before) throw new Error('Room not found. Check the code.');
+    // Someone in a block pair with a player can't join; it reads as full so the block isn't revealed.
+    const others = before.players.filter(player => !player.left && player.id !== userId).map(player => player.id);
+    if (!before.players.some(player => player.id === userId && !player.left) && others.length
+      && await this.env.LOBBY.getByName('main').apartFromAny(userId, others)) throw new Error('This room is full.');
+    // RPC awaits allow other events to run: reload before changing authoritative state.
     const room = this.read();
     if (!room) throw new Error('Room not found. Check the code.');
     this.sweep(room, Date.now());
@@ -322,7 +349,7 @@ export class GameRoom extends DurableObject<Env> {
     server.serializeAttachment({ userId: entry.user_id, activeAt: Date.now(), tokens: 20, updatedAt: Date.now(), authUntil: entry.auth_until } satisfies Attachment);
     player.disconnectedAt = null;
     this.commit(current);
-    server.send(JSON.stringify({ type: 'chat-history', code: current.code, messages: this.chatHistory() } satisfies PartyChatServerMessage));
+    server.send(JSON.stringify({ type: 'chat-history', code: current.code, messages: this.chatHistory(entry.user_id, await this.blockPairs(current)) } satisfies PartyChatServerMessage));
     await this.schedule(current);
     return new Response(null, { status: 101, webSocket: client, headers: { 'Sec-WebSocket-Protocol': 'quiz-race' } });
   }
@@ -334,6 +361,7 @@ export class GameRoom extends DurableObject<Env> {
     if (typeof message !== 'string' || message.length > SOCIAL_FRAME_BYTES || new TextEncoder().encode(message).byteLength > SOCIAL_FRAME_BYTES) { socket.close(1008, 'Invalid message.'); return; }
     const att = socket.deserializeAttachment() as Attachment;
     if ((att.authUntil ?? 0) <= Date.now()) { socket.close(4002, 'Refresh your sign-in.'); return; }
+    if (socialPaused(this.env) || socialBanned(this.env, att.userId)) { socket.close(4004, socialPaused(this.env) ? SOCIAL_PAUSED_ERROR : SOCIAL_BANNED_ERROR); return; }
     const now = Date.now();
     att.tokens = Math.min(20, (att.tokens ?? 20) + (now - (att.updatedAt ?? now)) / 100);
     att.activeAt = now; att.updatedAt = now;
@@ -345,7 +373,7 @@ export class GameRoom extends DurableObject<Env> {
         const before = JSON.stringify(room);
         this.sweep(room, now);
         if (JSON.stringify(room) !== before) this.commit(room);
-        if (this.chat(room, att.userId, data as Record<string, unknown>, now)) return;
+        if (await this.chat(room, att.userId, data as Record<string, unknown>, now)) return;
       }
       const action = parseRaceAction(data);
       if (action.type === 'leave') { await this.exit(att.userId); return; }

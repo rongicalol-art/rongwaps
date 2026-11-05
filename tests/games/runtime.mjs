@@ -20,7 +20,8 @@ const jwk = { ...await webcrypto.subtle.exportKey('jwk', publicKey), kid: 'test'
 const b64 = value => Buffer.from(value).toString('base64url');
 async function token(sub, overrides = {}) {
   const head = b64(JSON.stringify({ alg: 'ES256', kid: 'test', typ: 'JWT' }));
-  const body = b64(JSON.stringify({ sub, role: 'authenticated', aud: 'authenticated', iss: `${supabase}/auth/v1`, exp: Math.floor(Date.now() / 1000) + 600, ...overrides }));
+  const body = b64(JSON.stringify({ sub, role: 'authenticated', aud: 'authenticated', iss: `${supabase}/auth/v1`, exp: Math.floor(Date.now() / 1000) + 600,
+    user_metadata: { avatar_url: `https://lh3.googleusercontent.com/${sub}` }, ...overrides }));
   const signature = await webcrypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, privateKey, new TextEncoder().encode(`${head}.${body}`));
   return `${head}.${body}.${b64(signature)}`;
 }
@@ -54,9 +55,9 @@ export class Lobby extends BaseLobby {
     if (await this.ctx.storage.get('fixture-mention-outage')) throw new Error('Synthetic mention outage');
     return super.partyMention(uid, notice);
   }
-  async upsertRoom(summary, host) {
+  async upsertRoom(summary, host, members) {
     if (await this.ctx.storage.get('fixture-listing-outage')) throw new Error('Synthetic listing outage');
-    return super.upsertRoom(summary, host);
+    return super.upsertRoom(summary, host, members);
   }
   ageConnections() {
     for (const socket of this.ctx.getWebSockets()) {
@@ -83,7 +84,7 @@ export default { async fetch(request, env, ctx) {
 let jwksFetches = 0;
 const mf = new Miniflare(convertV4MiniflareOptions({ unsafeInspectDurableObjects: true, workers: [{
   name: 'games', modules: true, script: bundle.outputFiles[0].text, compatibilityDate: '2026-10-23',
-  bindings: { APP_ORIGIN: origin, SUPABASE_URL: supabase },
+  bindings: { APP_ORIGIN: origin, SUPABASE_URL: supabase, OWNER_EMAILS: 'owner@school.test' },
   durableObjects: { ROOMS: { className: 'GameRoom', useSQLite: true }, LOBBY: { className: 'Lobby', useSQLite: true } },
   outboundService: async request => {
     jwksFetches += 1;
@@ -134,6 +135,21 @@ try {
     const response = await mf.dispatchFetch('https://games.test/lobby', { method: 'POST', headers: { Origin: origin, Authorization: 'Bearer ' + bad }, body: '{"name":"x"}' });
     assert.equal(response.status, 401);
   }
+
+  // Access: the 18+ step, names reserved for the app, and photos that aren't the sender's own.
+  const refused = async (user, body, claims = {}) => {
+    const response = await mf.dispatchFetch('https://games.test/lobby', { method: 'POST',
+      headers: { Origin: origin, Authorization: 'Bearer ' + await token(user, claims), 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    return { status: response.status, error: (await response.json()).error };
+  };
+  assert.deepEqual(await refused('newbie', { name: 'Newbie' }, { age_ok: false }), { status: 403, error: 'Finish signing up in the app first.' });
+  assert.equal((await refused('poser', { name: 'Admin Ron' })).status, 400, 'names reserved for the app are refused');
+  assert.equal((await refused('impostor', { name: 'Ron' }, { email: 'someone@school.test' })).status, 400, 'only OWNER_EMAILS may use them');
+  assert.equal((await refused('owner', { name: 'Ron' }, { email: 'Owner@School.test' })).status, 200, 'the owner keeps their name');
+  const borrowed = await post('/rooms', 'borrower', { selection: { lessons: { 1: [1] }, types: [] }, open: false, image: 'https://blogger.googleusercontent.com/img/not-mine.png' });
+  const borrowedState = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: borrowed.code });
+  const seat = JSON.parse((await borrowedState.exec('SELECT data FROM state WHERE id=1'))[0].data).players[0];
+  assert.equal(seat.image, undefined, 'a Google-hosted image that isn’t the sign-in photo is dropped');
 
   // Lobby: presence counts, lesson people, chat history and live messages.
   const alice = await open('/lobby/socket', 'lobby', (await post('/lobby', 'alice')).ticket);
@@ -403,6 +419,18 @@ try {
   send(dave, { t: 'sub', online: true, chat: 305 });
   await until(() => last(dave, 'online'));
   assert.ok(!last(dave, 'online').v.some(person => person.u === 'carol'), 'the blocked person disappears from the Online list too');
+  const blockedRoom = await post('/rooms', 'carol', { selection: { lessons: { 1: [1] }, types: [] }, open: true });
+  send(erin, { t: 'sub', online: true, chat: 305 });
+  await until(() => last(erin, 'rooms')?.v.some(room => room.code === blockedRoom.code));
+  await delay(2100);
+  send(dave, { t: 'sub', online: false, chat: 305 }); send(dave, { t: 'sub', online: true, chat: 305 });
+  await until(() => last(dave, 'rooms'));
+  assert.ok(!last(dave, 'rooms').v.some(room => room.code === blockedRoom.code), 'a blocked person’s room is not listed');
+  const joinBlocked = await mf.dispatchFetch(`https://games.test/rooms/${blockedRoom.code}`, { method: 'POST',
+    headers: { Origin: origin, Authorization: 'Bearer ' + await token('dave'), 'Content-Type': 'application/json' }, body: JSON.stringify({ name: 'dave', color: 'jade' }) });
+  assert.equal(joinBlocked.status, 400);
+  assert.equal((await joinBlocked.json()).error, 'This room is full.', 'a blocked join reads as full');
+  assert.equal((await post(`/rooms/${blockedRoom.code}`, 'erin')).code, blockedRoom.code, 'others still join');
   const blockRows = await mf.unsafeGetDurableObjectStorage('games', 'Lobby', { name: 'main' });
   assert.deepEqual((await blockRows.exec('SELECT uid, other FROM blocks')).map(row => [row.uid, row.other]), [['carol', 'dave']], 'self-blocks are dropped');
   send(carol, { t: 'blocks', v: [] });

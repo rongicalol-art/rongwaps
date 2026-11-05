@@ -275,6 +275,7 @@ export interface Database {
       };
       block_user: { Args: { p_user: string; p_name?: string; p_color?: string }; Returns: boolean };
       report_user: { Args: { p_target: string; p_reason: string; p_place: string; p_message?: string | null }; Returns: boolean };
+      submit_report: { Args: { p_target: string; p_reason: string; p_place: string; p_message?: string | null; p_message_id?: number | null; p_name?: string | null; p_photo?: string | null }; Returns: number };
       /** The caller's own "I'm 18 or older"; returns the first confirmation time. */
       confirm_age: {
         Args: Record<PropertyKey, never>;

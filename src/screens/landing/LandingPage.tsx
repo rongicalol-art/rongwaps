@@ -5,7 +5,7 @@ import { LEGAL_ROUTES } from '../../app/routes';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { usePageMeta } from '../../hooks/usePageMeta';
 import { dismissPrerender } from '../../utils/browser/prerender';
-import { DeskScene, GoogleSignInButton, SignInConsent, useGoogleSignIn } from '../auth';
+import { DeskScene, GoogleSignInButton, SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
 import { LANDING_META, FAQ } from './landingContent';
 import { TryIt } from './components/TryIt';
 import { LessonShelf } from './components/LessonShelf';
@@ -53,14 +53,7 @@ export function LandingPage() {
                 Flashcards, quizzes and grammar for every lesson of the Taiwan textbook.
               </p>
               <GoogleSignInButton onClick={start} busy={isBusy} className="mt-10 lg:mt-14" />
-              {error && (
-                <p
-                  role={error.tone === 'danger' ? 'alert' : 'status'}
-                  className={`mt-3 max-w-sm rounded-sm px-3.5 py-2.5 text-sm font-bold ${error.tone === 'danger' ? 'bg-feedback-danger-surface text-feedback-danger-text' : 'bg-ui-hover text-ui-ink'}`}
-                >
-                  {error.text}
-                </p>
-              )}
+              {error && <SignInMessageNote message={error} className="mt-3" />}
               <SignInConsent className="mt-6 lg:mt-8" />
             </div>
           </section>

@@ -202,7 +202,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
                         {isOpen && !mine && (
                           <div className="mt-1 flex gap-3 px-1 text-xs font-extrabold text-ui-muted">
                             {HAN.test(line.t) && <span>Tap a word for pinyin and meaning</span>}
-                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { report(line.id); setOpen(null); openSafety({ kind: 'report', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat', message: line.t }); }}>Report</button>
+                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { report(line.id); setOpen(null); openSafety({ kind: 'report', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat', message: line.t, messageId: line.id, photo: line.i }); }}>Report</button>
                             <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { setOpen(null); openSafety({ kind: 'block', person: { u: line.u, n: line.n, c: line.c }, place: party ? 'party' : 'chat' }); }}>Block</button>
                           </div>
                         )}

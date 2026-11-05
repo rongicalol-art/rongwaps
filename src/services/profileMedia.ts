@@ -58,8 +58,10 @@ export async function prepareProfileImage(file: File, kind: 'avatar' | 'cover', 
     const cropHeight = Math.max(1, Math.min(image.naturalHeight, sourceCrop.height));
     const cropX = Math.max(0, Math.min(image.naturalWidth - cropWidth, sourceCrop.x));
     const cropY = Math.max(0, Math.min(image.naturalHeight - cropHeight, sourceCrop.y));
-    canvas.width = square ? 256 : Math.min(1600, Math.max(1, Math.round(cropWidth)));
-    canvas.height = square ? 256 : Math.max(1, Math.round(canvas.width * cropHeight / cropWidth));
+    // Covers fit inside 1600 × 900, so a tall crop can't make a huge file (the bucket takes 2 MB at most).
+    const scale = Math.min(1, 1600 / cropWidth, 900 / cropHeight);
+    canvas.width = square ? 256 : Math.max(1, Math.round(cropWidth * scale));
+    canvas.height = square ? 256 : Math.max(1, Math.round(cropHeight * scale));
     const context = canvas.getContext('2d');
     if (!context) throw new Error('Image editing is unavailable.');
     context.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, canvas.width, canvas.height);
