@@ -1,5 +1,3 @@
-import { SIGNUP_OPEN_AT } from '../../../shared/publicLaunch';
-
 /** Shared facts the legal pages state; change them here, not in the prose. */
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
@@ -29,11 +27,6 @@ export const LEGAL_UPDATE: LegalUpdate | null = {
 
 /** Shown beside the effective date: accounts made since sign-up opened are bound from sign-up. */
 export const LEGAL_NEW_ACCOUNTS_NOTE = 'new accounts from sign-up';
-
-/** Anyone 18+ can sign up from that day (owner sets private.signup_settings.public_open). */
-export function isSignupOpen(now = Date.now()): boolean {
-  return now >= SIGNUP_OPEN_AT;
-}
 
 const NOTICE_AFTER_EFFECTIVE_MS = 30 * 24 * 60 * 60 * 1000;
 
