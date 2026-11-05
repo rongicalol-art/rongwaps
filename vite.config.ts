@@ -244,6 +244,8 @@ export default defineConfig(() => {
     // repo, including gitignored prototypes in output/ that import stale code.
     optimizeDeps: {
       entries: ['index.html'],
+      // Its WASM files load by URL next to the module; pre-bundling would move the module away from them.
+      exclude: ['@jsquash/webp'],
     },
     server: {
       allowedHosts: true as const,

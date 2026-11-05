@@ -13,8 +13,18 @@ export interface ProfileImageCrop {
   height: number;
 }
 
+export const PROFILE_IMAGE_UNREADABLE = 'This browser can’t open that image. Try a JPG, PNG or WebP.';
+
+const IMAGE_EXTENSION = /\.(jpe?g|png|webp|gif|bmp|avif|heic|heif)$/i;
+
+/** Some systems report no type for WebP/AVIF/HEIC files, so a known extension counts too; decoding is the real check. */
+function looksLikeImage(file: File): boolean {
+  if (file.type.startsWith('image/')) return true;
+  return (!file.type || file.type === 'application/octet-stream') && IMAGE_EXTENSION.test(file.name);
+}
+
 export function profileImageFileError(file: File): string | null {
-  if (!file.type.startsWith('image/')) return 'Choose an image file.';
+  if (!looksLikeImage(file)) return 'Choose an image file.';
   if (file.size > PROFILE_IMAGE_MAX_BYTES) return 'Choose an image smaller than 20 MB.';
   return null;
 }
@@ -36,6 +46,21 @@ export async function getProfileMediaUrl(userId: string, path: string): Promise<
   return data.signedUrl;
 }
 
+const WEBP_QUALITY = 0.85;
+
+/** Safari can't encode WebP from a canvas (it hands back PNG), so it falls back to a small WASM encoder loaded only then. */
+async function encodeWebp(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): Promise<Blob> {
+  const native = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', WEBP_QUALITY));
+  if (native?.type === 'image/webp') return native;
+  try {
+    const { default: encode } = await import('@jsquash/webp/encode');
+    const data = await encode(context.getImageData(0, 0, canvas.width, canvas.height), { quality: WEBP_QUALITY * 100 });
+    return new Blob([data], { type: 'image/webp' });
+  } catch {
+    throw new Error('This browser could not prepare that image. Try another browser.');
+  }
+}
+
 /** Crop and encode locally so the source image and its metadata are never uploaded. */
 export async function prepareProfileImage(file: File, kind: 'avatar' | 'cover', crop?: ProfileImageCrop): Promise<Blob> {
   const fileError = profileImageFileError(file);
@@ -44,7 +69,7 @@ export async function prepareProfileImage(file: File, kind: 'avatar' | 'cover', 
   try {
     const image = new Image();
     image.src = source;
-    await image.decode();
+    try { await image.decode(); } catch { throw new Error(PROFILE_IMAGE_UNREADABLE); }
     if (image.naturalWidth * image.naturalHeight > PROFILE_IMAGE_MAX_PIXELS) {
       throw new Error('That image is too large to edit. Choose one with fewer pixels.');
     }
@@ -65,10 +90,7 @@ export async function prepareProfileImage(file: File, kind: 'avatar' | 'cover', 
     const context = canvas.getContext('2d');
     if (!context) throw new Error('Image editing is unavailable.');
     context.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, canvas.width, canvas.height);
-    return await new Promise<Blob>((resolve, reject) => canvas.toBlob((blob) => {
-      if (blob?.type === 'image/webp') resolve(blob);
-      else reject(new Error('This browser could not create a WebP image.'));
-    }, 'image/webp', 0.85));
+    return await encodeWebp(canvas, context);
   } finally {
     URL.revokeObjectURL(source);
   }

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import {
   PROFILE_IMAGE_MAX_PIXELS,
+  PROFILE_IMAGE_UNREADABLE,
   profileImageFileError,
   type ProfileImageCrop,
 } from '../../../services/profileMedia';
@@ -57,7 +58,7 @@ export function ProfileImageCropper({
       }
       setImageSize({ width: image.naturalWidth, height: image.naturalHeight });
     };
-    image.onerror = () => setError('This image could not be opened. Try another file.');
+    image.onerror = () => setError(PROFILE_IMAGE_UNREADABLE);
     image.src = url;
     return () => {
       image.onload = null;
