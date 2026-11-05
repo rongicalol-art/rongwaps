@@ -99,6 +99,13 @@ export function SourcesContent() {
               the pronunciation data derived from it are shared under the same license.
             </>,
             <>
+              Word types on dictionary meanings (noun, verb…) were assigned with AI help and checked against English{' '}
+              <Ext href="https://en.wiktionary.org/">Wiktionary</Ext> (
+              <Ext href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</Ext>) through{' '}
+              <Ext href="https://kaikki.org/">kaikki.org</Ext> (Tatu Ylonen, “Wiktextract”, LREC 2022). The word-type
+              data is shared under the same license.
+            </>,
+            <>
               Levels: the Taiwan Benchmarks for the Chinese Language (TBCL, 臺灣華語文能力基準) by the National
               Academy for Educational Research, via <Ext href="https://github.com/ivankra/tocfl">ivankra/tocfl</Ext>;
               gaps filled from the New HSK syllabus (2025) via{' '}

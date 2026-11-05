@@ -54,6 +54,7 @@
     "dictionary:packs": "tsx scripts/dictionary/exportDictionaryPacks.ts",
     "dictionary:split": "tsx scripts/dictionary/splitDictionaryReadings.ts",
     "dictionary:search:build": "tsx scripts/dictionary/buildSearchIndex.ts",
+    "dictionary:pos:build": "tsx scripts/dictionary/exportPosPack.ts",
     "dictionary:restore": "tsx scripts/dictionary/restoreDictionaryFromPacks.ts",
     "dictionary:frequency:build": "output/venv/bin/python scripts/dictionary/buildDictionaryFrequency.py",
     "dictionary:frequency:apply": "tsx scripts/dictionary/addDictionaryFrequency.ts",

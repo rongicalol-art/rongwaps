@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
-import { buildWordEntry, courseCardsByRow, linkCourseReadings, orderReadingKeys, pickReading, readingKey, type DictionaryRowLike } from '../../src/utils/vocabulary/wordEntry';
+import { buildWordEntry, courseCardsByRow, linkCourseReadings, orderReadingKeys, pickReading, readingDictionarySenses, readingKey, senseChecksum, senseTags, type DictionaryRowLike } from '../../src/utils/vocabulary/wordEntry';
+import { firstPosTag, posTagsKey } from '../../shared/dictionarySearch';
 
 const card = (front: string, pinyin: string, back: string, bookId: number, lessonId: number, pos?: string): Flashcard =>
   ({ id: `${front}-${bookId}-${lessonId}`, front, traditional: front, pinyin, back, bookId, lessonId, pos });
@@ -69,6 +70,27 @@ test('the opened reading leads, matched by dictionary or course reading', () => 
   assert.equal(pickReading(entry, 'zhǎng')?.key, 'zhang3');
   assert.equal(pickReading(entry, 'zhang3')?.key, 'zhang3');
   assert.equal(pickReading(entry, null)?.key, 'chang2');
+});
+
+test('word types group dictionary senses and join the book group of the same type', () => {
+  const rows = [row(8, '長', 'cháng', ['long', 'long (in time)', '(bound form) length', '(bound form) strong point; forte'])];
+  const { senses } = readingDictionarySenses(rows);
+  const pack = new Map([[posTagsKey('長', 'cháng'), `${senseChecksum(senses)}|Vs,Vs,N,N`]]);
+  const entry = buildWordEntry('長', rows, [card('長', 'cháng', 'long', 1, 8, 'Vs')], [], (key) => pack.get(key))!;
+  const groups = entry.readings[0].groups.map((group) => [group.pos, group.senses.map((sense) => sense.text)]);
+  assert.deepEqual(groups, [
+    ['Vs', ['long', 'long (in time)']],
+    ['N', ['(bound form) length', '(bound form) strong point; forte']],
+  ]);
+});
+
+test('word types are ignored once the dictionary lists other senses', () => {
+  const rows = [row(8, '長', 'cháng', ['long', 'length'])];
+  const stale = new Map([[posTagsKey('長', 'cháng'), 'abc123|Vs,N']]);
+  const entry = buildWordEntry('長', rows, [], [], (key) => stale.get(key))!;
+  assert.deepEqual(entry.readings[0].groups.map((group) => group.pos), [null]);
+  assert.equal(senseTags('abc123|Vs,N', [{ text: 'long' }, { text: 'length' }]), null);
+  assert.equal(firstPosTag(`${senseChecksum([{ text: 'x' }])}|,N,V`), 'N');
 });
 
 test('Taiwan reading order breaks ties when no lesson teaches the word', () => {
