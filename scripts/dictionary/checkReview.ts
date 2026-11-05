@@ -10,7 +10,7 @@ async function main() {
   let changed = 0;
   const names = (await readdir(resolve(OUT, 'review-input'))).filter((file) => file.endsWith('.json')).sort();
   for (const name of names) {
-    const input = JSON.parse(await readFile(resolve(OUT, 'review-input', name), 'utf8')) as Array<{ id: string; senses: Array<{ tag: string }> }>;
+    const input = JSON.parse(await readFile(resolve(OUT, 'review-input', name), 'utf8')) as Array<{ id: string; senses: Array<{ n: number; text: string; tag: string }> }>;
     let answer: unknown;
     try { answer = JSON.parse(await readFile(resolve(OUT, 'review', name), 'utf8')); } catch { answer = null; }
     const problems = checkAnswer(input, answer);
