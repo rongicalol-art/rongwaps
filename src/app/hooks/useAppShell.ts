@@ -129,6 +129,7 @@ export function useAppShell() {
     },
     dictionary: {
       dictionaryWord: shellState.dictionaryWord,
+      dictionaryReading: shellState.dictionaryReading,
       setDictionaryWord: shellState.setDictionaryWord,
     },
     activity: {

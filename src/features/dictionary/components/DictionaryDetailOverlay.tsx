@@ -14,6 +14,7 @@ const SINGLE_HANZI_RE = /^[\u3400-\u9FFF]$/u;
 
 export function DictionaryDetailOverlay() {
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
+  const dictionaryReading = useAppStore((state) => state.dictionaryReading);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const activeBookId = useAppStore((state) => state.activeBookId);
   const activeBook = SAMPLE_BOOKS.find((book) => book.id === activeBookId) || SAMPLE_BOOKS[0];
@@ -29,7 +30,7 @@ export function DictionaryDetailOverlay() {
     // No overlay source is registered here: this overlay is opened by
     // `dictionaryWord`, which `App.tsx` already folds into the shell overlay
     // flag it passes to `ActivityModals`.
-  }, [dictionaryWord]);
+  }, [dictionaryWord, dictionaryReading]);
 
   useEffect(() => {
     const handleSelectWord = (event: Event) => {
@@ -76,6 +77,7 @@ export function DictionaryDetailOverlay() {
               <SingleBreakdownView
                 key={`word-${rootWord.word}`}
                 word={rootWord.word}
+                reading={dictionaryReading}
                 initialCharIndex={0}
                 onClose={handleUiClose}
                 activeBook={activeBook}
@@ -86,6 +88,7 @@ export function DictionaryDetailOverlay() {
               <WordDetailView
                 key={`word-${rootWord.word}`}
                 word={rootWord.word}
+                reading={dictionaryReading}
                 onClose={handleUiClose}
                 pushCharacter={pushCharacter}
                 depth={0}

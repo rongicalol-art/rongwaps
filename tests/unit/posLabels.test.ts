@@ -24,6 +24,12 @@ test('formatPosLabel joins compound tags with a slash', () => {
   assert.equal(formatPosLabel('V-sep/N'), 'Separable verb / Noun');
 });
 
+test('formatPosLabel shows a repeated label once and can keep the first few', () => {
+  assert.equal(formatPosLabel('Vst/Vs/Adv/Vi'), 'Stative verb / Adverb / Intransitive verb');
+  assert.equal(formatPosLabel('Vst/Vs/Adv/Vi', 2), 'Stative verb / Adverb');
+  assert.equal(formatPosLabel('Vp'), 'Process verb');
+});
+
 test('formatPosLabel trims whitespace and handles unknown codes', () => {
   assert.equal(formatPosLabel('  N  '), 'Noun');
   assert.equal(formatPosLabel('XYZ'), 'XYZ');

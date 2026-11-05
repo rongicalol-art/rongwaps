@@ -24,6 +24,8 @@ interface SingleBreakdownViewProps {
   activeBook: CourseBook;
   pushBreakdown: (word: string) => void;
   depth: number;
+  /** The reading it was opened for (a dictionary row's pinyin). */
+  reading?: string | null;
 }
 
 export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
@@ -34,6 +36,7 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
   activeBook,
   pushBreakdown,
   depth,
+  reading,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -113,6 +116,7 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
                   setDictionaryWord={pushBreakdown}
                   openTree={() => setShowV3Tree(true)}
                   openRelatedBreakdown={() => setShowRelatedBreakdown(true)}
+                  reading={reading}
                 />
               ) : (
                 <BreakdownWordInfo

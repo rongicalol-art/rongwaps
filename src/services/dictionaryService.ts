@@ -2,7 +2,11 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import { DBDictionaryEntry, DBDictionaryEntryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
 import { sanitizeDictionaryDefinitions, extractCedictReference } from '../utils/vocabulary/dictionaryDefinitions';
-import { fetchDictionaryRowsFromPacks } from './contentPacks';
+import { fetchDictionaryRowsFromPacks, fetchPronunciationIndex, getLoadedStudyCards } from './contentPacks';
+import { rankExactRows } from '../utils/vocabulary/dictionarySearch';
+import { courseWordOf, linkCourseReadings, orderReadingKeys, readingKey } from '../utils/vocabulary/wordEntry';
+import { allReadings } from '../utils/pinyin/pronunciation';
+import type { DBDictionaryRow } from '../types/database';
 
 const remoteSearchPromises = new Map<string, Promise<unknown[]>>();
 const searchListeners = new Map<string, Set<(results: unknown[]) => void>>();
@@ -22,35 +26,28 @@ export interface DictionaryContainingWord {
 export async function resolveTargetMeaning(
   targetWord: string,
   visited: Set<string> = new Set(),
+  pinyin?: string,
 ): Promise<string | null> {
   const trimmed = targetWord.trim();
   if (!trimmed || visited.has(trimmed) || visited.size >= 3) return null;
   visited.add(trimmed);
 
+  // "variant of 合[he2]" means 合 hé, not 合 gě "100 ml": follow the bracketed reading when there is one.
+  const target = readingKey(pinyin);
   let targetDefs: unknown;
-
-  // 1. Check local cache
-  if (dictionaryCache.has(trimmed)) {
-    const cached = dictionaryCache.get<DBDictionaryEntry[]>(trimmed);
-    if (cached && cached.length > 0 && cached[0].definitions) {
-      targetDefs = cached[0].definitions;
-    }
+  const cached = dictionaryCache.get<DBDictionaryEntry[]>(trimmed);
+  if (cached && cached.length > 0) {
+    targetDefs = ((target && cached.find((entry) => readingKey(entry.pinyin?.[0]) === target)) || cached[0]).definitions;
   }
-
-  // 2. Static shard packs (offline, instant, pack-first)
-  if (!targetDefs) {
-    try {
-      const packed = await fetchDictionaryRowsFromPacks([trimmed]);
-      const rows = packed.get(trimmed);
-      if (rows && rows.length > 0) {
-        targetDefs = rows[0].definitions;
-      }
-    } catch {
-      // pack miss or unavailable
-    }
+  if (!targetDefs) try {
+    const packed = await fetchDictionaryRowsFromPacks([trimmed]);
+    const rows = await orderWordRows(trimmed, packed.get(trimmed) ?? []);
+    const byReading = target ? rows.filter((item) => readingKey(item.pinyin_accented) === target) : [];
+    const row = byReading.find((item) => item.traditional === trimmed) ?? byReading[0] ?? rows[0];
+    targetDefs = row?.definitions;
+  } catch {
+    // pack miss or unavailable
   }
-
-
 
   if (!targetDefs) return null;
 
@@ -60,8 +57,7 @@ export async function resolveTargetMeaning(
   const firstDef = sanitized[0];
   const ref = extractCedictReference(firstDef);
   if (ref) {
-    const nextTarget = ref.simplified || ref.traditional;
-    const resolvedNext = await resolveTargetMeaning(nextTarget, visited);
+    const resolvedNext = await resolveTargetMeaning(ref.simplified || ref.traditional, visited, ref.pinyin);
     if (resolvedNext) return resolvedNext;
   }
 
@@ -91,7 +87,7 @@ export async function dereferenceEntries(entries: DBDictionaryEntry[]): Promise<
       if (!ref) return entry;
 
       const targetWord = ref.simplified || ref.traditional;
-      const targetMeaning = await resolveTargetMeaning(targetWord);
+      const targetMeaning = await resolveTargetMeaning(targetWord, undefined, ref.pinyin);
       if (!targetMeaning) return entry;
 
       const relLower = ref.relation.toLowerCase();
@@ -211,7 +207,7 @@ export async function searchDictionaryWordsContaining(
       const ref = extractCedictReference(item.definition);
       if (!ref) return;
       const targetWord = ref.simplified || ref.traditional;
-      const targetMeaning = await resolveTargetMeaning(targetWord);
+      const targetMeaning = await resolveTargetMeaning(targetWord, undefined, ref.pinyin);
       if (!targetMeaning) return;
 
       const relLower = ref.relation.toLowerCase();
@@ -228,6 +224,23 @@ export async function searchDictionaryWordsContaining(
   );
 
   return results;
+}
+
+/**
+ * A word's dictionary rows, best first: its own readings in display order
+ * (course lessons, then the Taiwan order), then other spellings that share
+ * its simplified form (stubs dropped). Callers that read `rows[0]` get the
+ * reading a learner expects (嗎 ma, not má; 和, not 咊).
+ */
+export async function orderWordRows<T extends DBDictionaryRow>(word: string, rows: readonly T[]): Promise<T[]> {
+  if (rows.length < 2) return [...rows];
+  const own = rows.filter((row) => row.traditional === word);
+  const taiwan = Array.from(word).length === 1
+    ? allReadings(word, await fetchPronunciationIndex().catch(() => null)).map((reading) => reading.pinyin)
+    : [];
+  const links = linkCourseReadings(own, getLoadedStudyCards().filter((card) => courseWordOf(card) === word));
+  const order = orderReadingKeys(own, links, taiwan);
+  return rankExactRows(rows, word, (row) => (row.traditional === word ? -order.indexOf(readingKey(row.pinyin_accented)) : undefined));
 }
 
 function mapRowToEntry(row: DBDictionaryEntryRow): DBDictionaryEntry {
@@ -255,7 +268,7 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
   try {
     // 2. Prefer the static shard packs (IndexedDB-cached, zero network)
     const packed = await fetchDictionaryRowsFromPacks([trimmedWord]);
-    const packedRows = packed.get(trimmedWord) ?? [];
+    const packedRows = await orderWordRows(trimmedWord, packed.get(trimmedWord) ?? []);
     const results = packedRows.length > 0 ? await dereferenceEntries(packedRows.map(mapRowToEntry)) : [];
     dictionaryCache.set(trimmedWord, results);
     return results;
@@ -292,7 +305,8 @@ export async function getDictionaryEntriesBatch(words: string[], signal?: AbortS
   const packedRows = await fetchDictionaryRowsFromPacks(toFetch, signal);
   await Promise.all(toFetch.map(async (word) => {
     signal?.throwIfAborted();
-    const rows = packedRows.get(word) ?? [];
+    const rows = await orderWordRows(word, packedRows.get(word) ?? []);
+    signal?.throwIfAborted();
     if (rows.length > 0) {
       const dereferenced = await dereferenceEntries(rows.map(mapRowToEntry));
       signal?.throwIfAborted();

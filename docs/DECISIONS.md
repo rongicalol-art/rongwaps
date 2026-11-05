@@ -10,9 +10,15 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-06 — The dictionary has one entry per word and reading
+
+- Chosen: a course card belongs to the dictionary reading it teaches, never to a word that only shares its simplified form (`src/utils/vocabulary/wordEntry.ts`: exact reading, else the one reading with the same syllables for Taiwan tones, else the word's only reading; a card listing two readings teaches both). Search keeps one row per word and reading, ranks secondary readings and variant spellings lower, and drops "variant of" stubs unless the word is a course or level word. A tap opens the row's reading (`?word=長&r=zhǎng`). The word page lists every reading's senses: the book's senses first, grouped by the book's part of speech with their lesson and example, then the dictionary's remaining senses. The common-words slice carries no recordings or simple glosses (phone rows show no speaker; the server's answer brings them).
+- Reason: lessons were attached by spelling, so 嗎 showed "má" with the book's particle meaning, 咊 and 閤 wore Book 1 and Book 4 lessons, and the list and the word page described different readings.
+- Affects: `src/utils/vocabulary/wordEntry.ts`, `scripts/dictionary/buildSearchIndex.ts`, `scripts/performance/studyPacks.ts` (`course-lookup.json` `rows`), `server/dictionary.worker.ts`, `shared/dictionarySearch.ts`, `src/services/wordEntryService.ts`, `src/features/character-breakdown/components/EntrySenses.tsx`.
+
 ### 2026-11-04 — Global search answers common words on the device first
 
-- Chosen: each build derives `/data/search/common-words.json` (the 20,000 highest-scored entries of the search index, ~0.65 MB Brotli, with course tags from the same lookup the server uses). A browser worker (`src/services/dictionaryCommon.worker.ts`) searches it with the shared engine and publishes those rows while the server request runs; the server's result page stays the final answer. Character-part queries go to the server only.
+- Chosen: each build derives `/data/search/common-words.json` (the 20,000 highest-scored entries of the search index, ~0.65 MB Brotli, with course tags from the same reading links the server uses). A browser worker (`src/services/dictionaryCommon.worker.ts`) searches it with the shared engine and publishes those rows while the server request runs; the server's result page stays the final answer. Character-part queries go to the server only.
 - Reason: since search moved to the server (Oct 22) every keystroke waited on a round trip to a small shared CPU. The full 11 MB index was too heavy for low-memory phones; the common slice is not.
 - Affects: `scripts/performance/studyPacks.ts`, `scripts/performance/checkBudget.ts` (700 kB Brotli cap), `shared/dictionarySearch.ts` (`courseFields`), `server/dictionary.worker.ts`, `src/services/dictionarySearchService.ts`, `src/services/dictionaryCommonSearch.ts`, `src/hooks/useDictionarySearch.ts`.
 

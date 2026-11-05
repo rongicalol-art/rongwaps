@@ -10,8 +10,17 @@ test('parseOverlayParams reads every overlay param', () => {
     readerIndex: 2,
     grammarPartId: '1:2',
     dictionaryWord: '你好',
+    dictionaryReading: null,
     activity: 'quiz',
   });
+});
+
+test('a dictionary word keeps the reading it was opened for', () => {
+  const state = { readerIndex: null, grammarPartId: null, dictionaryWord: '長', dictionaryReading: 'zhǎng', activity: null };
+  assert.equal(new URLSearchParams(buildOverlayParams(state)).get('r'), 'zhǎng');
+  assert.deepEqual(parseOverlayParams(buildOverlayParams(state)), state);
+  assert.equal(parseOverlayParams('?r=zhǎng').dictionaryReading, null);
+  assert.equal(buildOverlayParams({ ...state, dictionaryWord: null }), '');
 });
 
 test('parseOverlayParams supports the legacy reader deep-link forms', () => {
@@ -24,30 +33,30 @@ test('parseOverlayParams supports the legacy reader deep-link forms', () => {
 });
 
 test('parseOverlayParams tolerates empty and absent search strings', () => {
-  const empty = { readerIndex: null, grammarPartId: null, dictionaryWord: null, activity: null };
+  const empty = { readerIndex: null, grammarPartId: null, dictionaryWord: null, dictionaryReading: null, activity: null };
   assert.deepEqual(parseOverlayParams(''), empty);
   assert.deepEqual(parseOverlayParams('?'), empty);
   assert.deepEqual(parseOverlayParams('?tab=path').activity, null);
 });
 
 test('buildOverlayParams emits canonical params and strips empties', () => {
-  assert.equal(buildOverlayParams({ readerIndex: 2, grammarPartId: '1:2', dictionaryWord: '你好', activity: 'quiz' }), '?reader=2&grammarPart=1%3A2&word=%E4%BD%A0%E5%A5%BD&activity=quiz');
-  assert.equal(buildOverlayParams({ readerIndex: null, grammarPartId: null, dictionaryWord: null, activity: null }), '');
-  assert.equal(buildOverlayParams({ readerIndex: 0, grammarPartId: null, dictionaryWord: null, activity: null }), '?reader=0');
+  assert.equal(buildOverlayParams({ readerIndex: 2, grammarPartId: '1:2', dictionaryWord: '你好', dictionaryReading: null, activity: 'quiz' }), '?reader=2&grammarPart=1%3A2&word=%E4%BD%A0%E5%A5%BD&activity=quiz');
+  assert.equal(buildOverlayParams({ readerIndex: null, grammarPartId: null, dictionaryWord: null, dictionaryReading: null, activity: null }), '');
+  assert.equal(buildOverlayParams({ readerIndex: 0, grammarPartId: null, dictionaryWord: null, dictionaryReading: null, activity: null }), '?reader=0');
 });
 
 test('build then parse round-trips', () => {
-  const state = { readerIndex: 1, grammarPartId: null, dictionaryWord: null, activity: 'writing' };
+  const state = { readerIndex: 1, grammarPartId: null, dictionaryWord: null, dictionaryReading: null, activity: 'writing' };
   assert.deepEqual(parseOverlayParams(buildOverlayParams(state)), state);
 });
 
 test('a combined grammar session keeps every part id', () => {
-  const state = { readerIndex: null, grammarPartId: 'B1L01-P01,B1L01-P02', dictionaryWord: null, activity: null };
+  const state = { readerIndex: null, grammarPartId: 'B1L01-P01,B1L01-P02', dictionaryWord: null, dictionaryReading: null, activity: null };
   assert.deepEqual(parseOverlayParams(buildOverlayParams(state)), state);
 });
 
 test('overlay changes preserve a game invite and closing removes only overlay keys', () => {
-  const empty = { readerIndex: null, grammarPartId: null, dictionaryWord: null, activity: null };
+  const empty = { readerIndex: null, grammarPartId: null, dictionaryWord: null, dictionaryReading: null, activity: null };
   const invite = '?room=ABC234';
   const opened = buildOverlayParams({ ...empty, dictionaryWord: '你好' }, invite);
   assert.equal(new URLSearchParams(opened).get('room'), 'ABC234');

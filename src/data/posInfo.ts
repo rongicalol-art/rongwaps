@@ -133,24 +133,25 @@ export const POS_INFO: Record<string, PosInfo> = {
     },
   },
   Vp: {
-    label: 'Verb phrase',
+    label: 'Process verb',
     category: 'verb',
-    zh: '动词短语',
+    zh: '变化动词',
     explanation:
-      'A verb with its object or complement, used as one unit — like {zh:read} (read books).',
+      'A change that happens at a moment, often with 了 — like {zh:get-up} (to get up) or {zh:catch-cold} (to catch a cold).',
     zhTokens: {
-      read: { s: '看书', t: '看書' },
+      'get-up': { s: '起床', t: '起床' },
+      'catch-cold': { s: '感冒', t: '感冒' },
     },
   },
   'Vp-sep': {
-    label: 'Separable verb phrase',
+    label: 'Separable process verb',
     category: 'verb',
-    zh: '离合短语',
+    zh: '变化离合词',
     explanation:
-      'A separable verb phrase can split to add detail: {zh:call} (make a phone call) → {zh:quick-call} (make a quick call).',
+      'A change that can split to add detail: {zh:sick} (to get sick) → {zh:sick-week} (sick for a week).',
     zhTokens: {
-      call: { s: '打电话', t: '打電話' },
-      'quick-call': { s: '打个电话', t: '打個電話' },
+      sick: { s: '生病', t: '生病' },
+      'sick-week': { s: '生了一个星期的病', t: '生了一個星期的病' },
     },
   },
   Vaux: {

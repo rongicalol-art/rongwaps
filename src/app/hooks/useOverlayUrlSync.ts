@@ -34,7 +34,8 @@ export interface OverlaySyncDeps {
   };
   dictionary: {
     dictionaryWord: string | null;
-    setDictionaryWord: (word: string | null) => void;
+    dictionaryReading: string | null;
+    setDictionaryWord: (word: string | null, reading?: string | null) => void;
   };
   activity: {
     activeActivity: ActivityType;
@@ -65,8 +66,8 @@ export function useOverlayUrlSync(deps: OverlaySyncDeps) {
       d.grammar.setActiveGrammarPartId(desired.grammarPartId);
       changed = true;
     }
-    if (desired.dictionaryWord !== d.dictionary.dictionaryWord) {
-      d.dictionary.setDictionaryWord(desired.dictionaryWord);
+    if (desired.dictionaryWord !== d.dictionary.dictionaryWord || desired.dictionaryReading !== d.dictionary.dictionaryReading) {
+      d.dictionary.setDictionaryWord(desired.dictionaryWord, desired.dictionaryReading);
       changed = true;
     }
     if (desired.activity !== (d.activity.activeActivity ?? null)) {
@@ -88,6 +89,7 @@ export function useOverlayUrlSync(deps: OverlaySyncDeps) {
       readerIndex: desired.readerIndex,
       grammarPartId: desired.grammarPartId,
       dictionaryWord: desired.dictionaryWord,
+      dictionaryReading: desired.dictionaryReading,
       activity: desired.activity,
     }, location.search);
   }, [location.key, location.search]);
@@ -99,6 +101,7 @@ export function useOverlayUrlSync(deps: OverlaySyncDeps) {
       readerIndex: d.reader.activeReadingIndex,
       grammarPartId: d.grammar.activeGrammarPartId,
       dictionaryWord: d.dictionary.dictionaryWord,
+      dictionaryReading: d.dictionary.dictionaryReading,
       activity: d.activity.activeActivity,
     }, location.search);
     const present = d.reader.activeReadingIndex !== null || Boolean(d.grammar.activeGrammarPartId
@@ -122,5 +125,5 @@ export function useOverlayUrlSync(deps: OverlaySyncDeps) {
     wasOverlayPresentRef.current = present;
     appliedParamsRef.current = paramsFromState;
     navigate(`${location.pathname}${paramsFromState}`, { replace: !shouldPush });
-  }, [location.key, location.search, location.pathname, navigate, reader.activeReadingIndex, reader.readingsLength, grammar.activeGrammarPartId, dictionary.dictionaryWord, activity.activeActivity]);
+  }, [location.key, location.search, location.pathname, navigate, reader.activeReadingIndex, reader.readingsLength, grammar.activeGrammarPartId, dictionary.dictionaryWord, dictionary.dictionaryReading, activity.activeActivity]);
 }
