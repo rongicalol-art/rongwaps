@@ -1,4 +1,5 @@
 import { connectLobby, type Identity } from '../../services/socialService';
+import { NAME_NOT_ALLOWED, NAME_RESERVED } from '../../../shared/nameFilter';
 import { useAppStore } from '../../store/useAppStore';
 import { ROOM_LIST_CAP, type Activity, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
@@ -153,6 +154,12 @@ export function startLobby(identity: Identity) {
       if (status === 'off') { socket = null; identityKey = ''; }
     },
     onOpen: () => { if (version === generation) { readInFlight = false; send(here); send(sub); if (blocks) send(blocks); flushReads(); } },
+    // Otherwise Study together would just turn off without saying why.
+    onError: message => {
+      if (version !== generation) return;
+      const name = message === NAME_NOT_ALLOWED || message === NAME_RESERVED;
+      useAppStore.getState().showFeedbackToast(name ? `${message} Change your name in Profile to use Study together.` : message, 'neutral', 6000);
+    },
   });
 }
 

@@ -66,7 +66,8 @@ export function useProfileEditor(userId: string | undefined, onSaved: () => void
     saving.current = true; setBusy(true); setError(null);
     try {
       const settings = { ...draft.settings, displayName: draft.settings.displayName.trim().slice(0, 30) };
-      if (!isNameAllowed(settings.displayName)) { setError(NAME_NOT_ALLOWED); return; }
+      // Names reserved for the app ("Ron", "Admin") are refused by the games Worker, which knows the owner's account.
+      if (!isNameAllowed(settings.displayName, { owner: true })) { setError(NAME_NOT_ALLOWED); return; }
       if (userId) {
         // Storage writes happen only on Save, never while previewing.
         for (const kind of ['avatar', 'cover'] as const) {

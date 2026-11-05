@@ -2,13 +2,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { SIGNUPS_FULL_MESSAGE, getOAuthCallbackErrorMessage, getOAuthLoginErrorMessage } from '../../services/authService';
 import { debugLogger } from '../../utils/debug/debugLogger';
+import { inAppBrowser, lineExternalUrl } from '../../utils/browser/inAppBrowser';
 import { takeSignInNotice } from './signInNotice';
 
 const OAUTH_ERROR_KEYS = ['error', 'error_code', 'error_description'];
 const UNDER_18_MESSAGE = 'Ron’s Mandarin is for learners 18 and older. Your account wasn’t kept.';
 
-/** A message under the sign-in button; `quiet` for news that isn't the learner's mistake. */
-export interface SignInMessage { text: string; tone: 'danger' | 'quiet' }
+/** A message under the sign-in button; `quiet` for news that isn't the learner's mistake; `copyLink` offers the page address. */
+export interface SignInMessage { text: string; tone: 'danger' | 'quiet'; copyLink?: boolean }
 
 const toMessage = (text: string): SignInMessage => ({ text, tone: text === SIGNUPS_FULL_MESSAGE ? 'quiet' : 'danger' });
 
@@ -22,6 +23,11 @@ export function useGoogleSignIn() {
   const [isSigningIn, setIsSigningIn] = useState(false);
 
   useEffect(() => {
+    // LINE can hand the page to the phone's own browser, where Google sign-in works.
+    if (inAppBrowser(navigator.userAgent) === 'LINE') {
+      const external = lineExternalUrl(window.location.href);
+      if (external) { window.location.replace(external); return; }
+    }
     if (takeSignInNotice() === 'under-18') setError(toMessage(UNDER_18_MESSAGE));
     const callbackError = getOAuthCallbackErrorMessage(window.location.search, window.location.hash);
     if (!callbackError) return;
@@ -42,6 +48,11 @@ export function useGoogleSignIn() {
   }, []);
 
   const signIn = useCallback(async () => {
+    const app = inAppBrowser(navigator.userAgent);
+    if (app) {
+      setError({ text: `Google sign-in doesn’t work inside ${app}. Open this page in Safari or Chrome to sign in.`, tone: 'quiet', copyLink: true });
+      return;
+    }
     setError(null);
     setIsSigningIn(true);
     try {

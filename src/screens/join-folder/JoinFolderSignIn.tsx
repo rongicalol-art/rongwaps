@@ -1,23 +1,13 @@
-import { useState } from 'react';
 import { ActionButton, AppIcon, BrandWordmark, WorkspaceWindow } from '../../lib/widgets';
-import { useAuth } from '../../hooks/useAuth';
 import { rememberFolderReturn } from '../../utils/browser/shareLink';
+import { SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
 
 export function JoinFolderSignIn({ code }: { code: string }) {
-  const { loginWithGoogle, isLoading } = useAuth();
-  const [signingIn, setSigningIn] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const { signIn, error, isBusy } = useGoogleSignIn();
 
-  const startSignIn = async () => {
-    setError(null);
-    setSigningIn(true);
+  const startSignIn = () => {
     rememberFolderReturn(`/join/${code}`);
-    try {
-      await loginWithGoogle();
-    } catch {
-      setSigningIn(false);
-      setError('Sign-in could not start. Please try again.');
-    }
+    void signIn();
   };
 
   return (
@@ -32,11 +22,12 @@ export function JoinFolderSignIn({ code }: { code: string }) {
           </div>
           <h1 className="text-2xl font-black text-ui-ink-strong">Sign in to open this shared folder</h1>
           <p className="mt-2 text-sm font-bold text-ui-muted-strong">Your sign-in will bring you back here.</p>
-          {error && <p role="alert" className="mt-4 text-sm font-bold text-feedback-danger-text">{error}</p>}
-          <ActionButton className="mt-6" size="lg" fullWidth loading={signingIn || isLoading} loadingLabel="Opening Google" onClick={() => void startSignIn()}>
+          {error && <SignInMessageNote message={error} className="mx-auto mt-4" />}
+          <ActionButton className="mt-6" size="lg" fullWidth loading={isBusy} loadingLabel="Opening Google" onClick={startSignIn}>
             <AppIcon name="signIn" size={19} />
             <span>Continue with Google</span>
           </ActionButton>
+          <SignInConsent className="mt-5" />
         </div>
       </main>
     </WorkspaceWindow>

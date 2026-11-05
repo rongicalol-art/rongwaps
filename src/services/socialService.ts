@@ -132,6 +132,8 @@ function reconnecting<In, Out>(options: {
 
 export function connectLobby(identity: Identity, handlers: {
   onMessage: (message: LobbyServerMessage) => void; onStatus: (status: SocialStatus) => void; onOpen: () => void;
+  /** Why the Lobby refused for good (a name, a pause, the 18+ step); it stops retrying. */
+  onError?: (message: string) => void;
 }): Socket<LobbyClientMessage> {
   return reconnecting<LobbyServerMessage, LobbyClientMessage>({
     path: () => '/lobby/socket', protocol: 'lobby', issue: signal => ticket('/lobby', { name: identity.name, color: identity.color }, signal), fatal: [4001, 1008], ...handlers,

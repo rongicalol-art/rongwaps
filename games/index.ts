@@ -2,7 +2,8 @@ import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialImage, socia
 import { verifyAccessToken } from '../shared/accessToken';
 import { newSeed } from './room';
 import { SOCIAL_FRAME_BYTES } from '../shared/lobby';
-import { NAME_NOT_ALLOWED, isNameAllowed } from '../shared/nameFilter';
+import { NAME_NOT_ALLOWED, NAME_RESERVED, nameProblem } from '../shared/nameFilter';
+import { SOCIAL_PAUSED_ERROR, googlePhoto, isOwnerAccount, socialRefusal } from './access';
 import { TICKET_LIMIT_ERROR } from './lobby';
 export { GameRoom } from './room';
 export { Lobby } from './lobby';
@@ -36,6 +37,7 @@ const JOIN_ERRORS = new Set([
   'Pick at least one lesson part.',
   TICKET_LIMIT_ERROR,
   NAME_NOT_ALLOWED,
+  NAME_RESERVED,
 ]);
 const LIMIT_ERRORS = new Set([ROOM_LIMIT_ERROR, TICKET_LIMIT_ERROR]);
 
@@ -56,7 +58,10 @@ export default {
     try { auth = await verifyAccessToken(request.headers.get('Authorization'), env.SUPABASE_URL); }
     catch { return reply({ error: 'Sign-in verification is unavailable. Try again shortly.' }, 503); }
     if (!auth) return reply({ error: 'Sign in again.' }, 401);
-    const { userId, expiresAt } = auth;
+    const { userId, expiresAt, claims } = auth;
+    // Leaving a room always works; joining and connecting need access.
+    const refusal = match?.[2] === '/leave' ? null : socialRefusal(env, userId, claims);
+    if (refusal) return reply({ error: refusal }, refusal === SOCIAL_PAUSED_ERROR ? 503 : 403);
     try {
       // The Lobby rate-limits its own tickets in memory: one Durable Object request fewer per connection.
       if (url.pathname !== '/lobby' && !await env.ROOMS.getByName(`limit:${userId}`).allowRequest()) return reply({ error: TICKET_LIMIT_ERROR }, 429);
@@ -67,10 +72,12 @@ export default {
       const data = await body(request);
       const name = socialName(data.name);
       const color = socialColor(data.color);
-      const image = socialImage(data.image, env.SUPABASE_URL);
+      const google = googlePhoto(claims);
+      const image = socialImage(data.image, env.SUPABASE_URL, 'avatar', { uid: userId, google });
       if (!name) return reply({ error: 'Add a display name in your profile first.' }, 400);
-      if (!isNameAllowed(name)) return reply({ error: NAME_NOT_ALLOWED }, 400);
-      if (url.pathname === '/lobby') return reply({ userId, ...await env.LOBBY.getByName('main').issue(userId, name, color, expiresAt) });
+      const problem = nameProblem(name, { owner: isOwnerAccount(env, claims) });
+      if (problem) return reply({ error: problem }, 400);
+      if (url.pathname === '/lobby') return reply({ userId, ...await env.LOBBY.getByName('main').issue(userId, name, color, expiresAt, google) });
       if (url.pathname === '/rooms') {
         const selection = parseSelection(data.selection);
         const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';

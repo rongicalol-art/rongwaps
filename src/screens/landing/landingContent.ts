@@ -2,7 +2,7 @@
  * Copy and sample content for the signed-out landing page. Grammar rows are the book's own
  * pattern rows (Book 1, Lessons 1–2); hooks and parts come from public/data/memory-hooks.
  */
-import { isPublicLaunched } from '../legal/legalMeta';
+import { isSignupOpen } from '../legal/legalMeta';
 
 export const LANDING_META = {
   title: "Ron's Mandarin · 時代華語 Modern Chinese Flashcards",
@@ -54,7 +54,7 @@ export const SAMPLE_SENTENCE: (readonly [word: string, pinyin: string, meaning: 
 
 export const FAQ: { q: string; a: string }[] = [
   { q: 'Is it free?', a: 'Yes. No ads, no paid plan.' },
-  ...(isPublicLaunched() ? [{ q: 'Who can join?', a: 'Anyone 18 or older with a Google account.' }] : []),
+  ...(isSignupOpen() ? [{ q: 'Who can join?', a: 'Anyone 18 or older with a Google account.' }] : []),
   { q: 'Do I need the book?', a: 'It’s made to be used with your own copy of 時代華語 Modern Chinese, so please buy it. The app adds audio, flashcards and practice around each lesson.' },
   { q: 'Does it have Chinese flashcards?', a: 'Yes. Traditional Chinese flashcards with Taiwan audio for every lesson, plus quizzes, tones and grammar.' },
   { q: 'Which books does it cover?', a: '時代華語 Modern Chinese Books 1 to 4, from TOCFL A1 to B2. Books 1 to 3 are open in the beta.' },

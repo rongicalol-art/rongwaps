@@ -30,10 +30,13 @@ SELECT public.append_review_events(jsonb_build_array(jsonb_build_object(
   'reviewedAt',extract(epoch FROM now()) * 1000,
   'before',jsonb_build_object('interval',1),'after',jsonb_build_object('interval',3)
 )));
+-- A row stored before 20261101120100 (written as the table owner: learners can no longer insert directly).
+RESET ROLE;
 INSERT INTO public.user_review_events(user_id,event_id,card_id,reviewed_at,payload) VALUES
   ('11111111-1111-4111-8111-111111111111','55555555-5555-4555-8555-555555555555','old-word',now(),
    jsonb_build_object('id','55555555-5555-4555-8555-555555555555','cardId','old-word','sessionId','old','quality',3,'source','daily',
      'durationMs',1000,'scheduled',true,'reviewedAt',extract(epoch FROM now()) * 1000,'before',null,'after',jsonb_build_object('interval',2)));
+SET LOCAL ROLE authenticated;
 DO $$ BEGIN
   IF (SELECT payload ? 'before' OR payload ? 'after' FROM public.user_review_events WHERE event_id='44444444-4444-4444-8444-444444444444') THEN RAISE EXCEPTION 'Card snapshots stored'; END IF;
   IF (SELECT payload->>'quality' FROM public.user_review_events WHERE event_id='44444444-4444-4444-8444-444444444444') <> '4' THEN RAISE EXCEPTION 'Slim event lost its answer'; END IF;
@@ -50,6 +53,40 @@ SELECT public.upsert_card_progress(jsonb_build_array(jsonb_build_object(
 DO $$ BEGIN
  IF (SELECT "interval" FROM public.user_card_progress WHERE card_id='test-word') <> 3 THEN RAISE EXCEPTION 'Old client overwrote FSRS'; END IF;
 END $$;
+-- Only known keys are stored; an oversized or unknown field never reaches the table.
+SELECT public.append_review_events(jsonb_build_array(jsonb_build_object(
+  'id','66666666-6666-4666-8666-666666666666','cardId','test-word','sessionId','local-test',
+  'quality',2,'source','quiz','durationMs',1000,'scheduled',false,'dailyTarget',10,'practiceOnly',true,
+  'reviewedAt',extract(epoch FROM now()) * 1000, 'junk', repeat('x', 30000)
+)));
+DO $$ BEGIN
+  IF (SELECT payload ? 'junk' FROM public.user_review_events WHERE event_id='66666666-6666-4666-8666-666666666666') THEN RAISE EXCEPTION 'Unknown key stored'; END IF;
+  IF (SELECT payload->>'dailyTarget' FROM public.user_review_events WHERE event_id='66666666-6666-4666-8666-666666666666') <> '10' THEN RAISE EXCEPTION 'Daily target lost'; END IF;
+  IF (SELECT payload->>'practiceOnly' FROM public.user_review_events WHERE event_id='66666666-6666-4666-8666-666666666666') <> 'true' THEN RAISE EXCEPTION 'practiceOnly lost'; END IF;
+  BEGIN
+    INSERT INTO public.user_review_events(user_id,event_id,card_id,reviewed_at,payload)
+      VALUES ('11111111-1111-4111-8111-111111111111',gen_random_uuid(),'own-direct',now(),'{}');
+    RAISE EXCEPTION 'Direct history write allowed';
+  EXCEPTION WHEN insufficient_privilege THEN NULL;
+  END;
+END $$;
+-- At most 5,000 new events a day: past that, new events are dropped quietly (the save itself still succeeds).
+RESET ROLE;
+INSERT INTO public.user_review_events(user_id,event_id,card_id,reviewed_at,payload)
+SELECT '11111111-1111-4111-8111-111111111111', gen_random_uuid(), 'bulk', now(), '{}'::jsonb FROM generate_series(1, 4996);
+SET LOCAL ROLE authenticated;
+DO $$ BEGIN
+  PERFORM public.append_review_events(jsonb_build_array(jsonb_build_object(
+    'id','66666666-6666-4666-8666-666666666666','cardId','test-word','sessionId','local-test',
+    'quality',2,'source','quiz','durationMs',1000,'scheduled',false,'reviewedAt',extract(epoch FROM now()) * 1000)));
+  PERFORM public.append_review_events(jsonb_build_array(jsonb_build_object(
+    'id','77777777-7777-4777-8777-777777777777','cardId','test-word','sessionId','local-test',
+    'quality',2,'source','quiz','durationMs',1000,'scheduled',false,'reviewedAt',extract(epoch FROM now()) * 1000)));
+  IF EXISTS (SELECT 1 FROM public.user_review_events WHERE event_id='77777777-7777-4777-8777-777777777777') THEN RAISE EXCEPTION 'Daily cap not enforced'; END IF;
+END $$;
+RESET ROLE;
+DELETE FROM public.user_review_events WHERE card_id = 'bulk';
+SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','22222222-2222-4222-8222-222222222222',true);
 DO $$ BEGIN
   IF (SELECT count(*) FROM public.user_review_events) <> 0 THEN RAISE EXCEPTION 'Cross-user history leak'; END IF;

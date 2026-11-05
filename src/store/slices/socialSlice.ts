@@ -8,7 +8,7 @@ import type { SocialStatus } from '../../services/socialService';
 import type { BlockedPerson, ReportPlace } from '../../services/safetyService';
 
 /** The open report or block sheet; `report-done` offers to block after a report. */
-export interface SafetyPrompt { kind: 'report' | 'report-done' | 'block'; person: BlockedPerson; place: ReportPlace; message?: string }
+export interface SafetyPrompt { kind: 'report' | 'report-done' | 'block'; person: BlockedPerson; place: ReportPlace; message?: string; messageId?: number; photo?: string }
 
 export type SocialPanel =
   | { kind: 'people'; tab: 'online' | 'chat'; chatScope?: 'global' | 'lesson'; chatLesson?: number; visit?: Person }

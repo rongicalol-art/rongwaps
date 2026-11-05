@@ -2,7 +2,7 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import { isSupabaseConfigured, supabase } from './supabaseClient';
 import { type Session, type User } from '@supabase/supabase-js';
 import { schoolAccessFromClaims, unverifiedClaims } from '../../shared/accessToken';
-import { PUBLIC_LAUNCH_AT } from '../../shared/publicLaunch';
+import { SIGNUP_OPEN_AT } from '../../shared/publicLaunch';
 
 const missingSupabaseMessage = 'Supabase is not configured for this local environment.';
 const productionAuthRedirectUrl = 'https://ronsmandarin.com/';
@@ -31,9 +31,9 @@ const signupsOffMessage = (hints?: boolean) => setupMessage('New accounts can’
 const redirectMessage = (hints?: boolean) => setupMessage(UNAVAILABLE, `Supabase blocked this return address: add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`, hints);
 const providerMessage = (hints?: boolean) => setupMessage(UNAVAILABLE, 'Google sign-in is not enabled for this Supabase project: Authentication → Sign In / Providers.', hints);
 
-/** Sign-in closed: school-only before the public launch; after it, the owner's pause. */
+/** Sign-in closed: school-only before sign-up opens to everyone; after it, the owner's pause. */
 export function closedSignInMessage(now = Date.now()): string {
-  return now < PUBLIC_LAUNCH_AT
+  return now < SIGNUP_OPEN_AT
     ? 'This beta is for Shu-Te student Google accounts. Use your s…@stu.edu.tw account.'
     : 'Ron’s Mandarin is closed to new sign-ins for now. Please try again later.';
 }
@@ -140,7 +140,7 @@ export const authService = {
   },
 
   /** `ageOk` is false only for a public account that has not passed the age step yet. */
-  onAuthStateChanged: (callback: (user: User | null, hasFullCourseAccess: boolean, ageOk?: boolean) => void) => {
+  onAuthStateChanged: (callback: (user: User | null, hasFullCourseAccess: boolean, ageOk?: boolean, publicAccount?: boolean) => void) => {
     if (!isSupabaseConfigured()) {
       debugLogger.warn('Auth', missingSupabaseMessage);
       callback(null, false);
@@ -154,7 +154,7 @@ export const authService = {
       if (!session) { callback(null, false); return; }
       // Tokens issued by the school sign-in hook already carry its decision; older ones ask the database.
       const stamped = schoolAccessFromClaims(unverifiedClaims(session.access_token));
-      if (stamped) { callback(session.user, stamped.fullCourse, stamped.ageOk); return; }
+      if (stamped) { callback(session.user, stamped.fullCourse, stamped.ageOk, stamped.publicAccount); return; }
       try {
         const { data, error, status } = await supabase.rpc('has_beta_access');
         if (disposed || expectedRevision !== revision) return;
