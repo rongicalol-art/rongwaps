@@ -116,6 +116,11 @@ export function planLessonTest(lesson: LessonTestLesson, history: LessonTestHist
   return { key: lesson.key, seed, items };
 }
 
+/** Questions in one run: one version of every slot (a slot's versions ask the same number). */
+export function lessonTestQuestionCount(lesson: LessonTestLesson): number {
+  return lesson.slots.reduce((sum, slot) => sum + (slot.versions[0]?.questions.length ?? 0), 0);
+}
+
 export function lessonItemIndex(lesson: LessonTestLesson): Map<string, LessonTestItem> {
   return new Map(lesson.slots.flatMap((slot) => slot.versions.map((item) => [item.id, item] as const)));
 }

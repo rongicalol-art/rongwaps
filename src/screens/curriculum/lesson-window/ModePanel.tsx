@@ -89,7 +89,7 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
 
 interface LessonActionsProps {
   onStart: () => void;
-  /** The start button's label (the Test tab says "Begin test"). */
+  /** The start button's label (the Test tab says "Start mock test"). */
   label?: string;
   onStartIntent: () => void;
   onOpenPracticeHub?: () => void;

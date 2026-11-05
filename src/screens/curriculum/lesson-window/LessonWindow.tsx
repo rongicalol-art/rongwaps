@@ -17,7 +17,6 @@ import { LessonTestTitle } from './LessonTestSummary';
 import { useLessonTestData } from '../../../hooks/useLessonTestData';
 import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
-import { cn } from '../../../utils/cn';
 import { LESSON_TEST_PASS } from '../../../utils/lesson/lessonTestPlan';
 import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
 import {
@@ -322,7 +321,7 @@ function LessonBody({
   const actions = isTest ? (
     // The review tone turns the start button honey: the test is the lesson's one gold action.
     <div data-tone="review">
-      <LessonActions label="Begin test" onStart={onOpenTest} onStartIntent={() => { void loadLessonTest().catch(() => {}); }} />
+      <LessonActions label="Start mock test" onStart={onOpenTest} onStartIntent={() => { void loadLessonTest().catch(() => {}); }} />
     </div>
   ) : (
     <LessonActions
@@ -354,8 +353,8 @@ function LessonBody({
   ) : (
     <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className={className} />
   ));
-  const title = (desktop: boolean) => (isTest
-    ? <LessonTestTitle lessonId={lesson.id} best={best} isDesktop={desktop} />
+  const title = (desktop: boolean) => (isTest && testData
+    ? <LessonTestTitle lessonLabel={lesson.label} test={testData.lesson} best={best} isDesktop={desktop} />
     : <LessonTitle lesson={lesson} part={activePart} selectedPartIds={selectedPartIds} isDesktop={desktop} />);
 
   const backButton = (
@@ -383,23 +382,13 @@ function LessonBody({
             {picture('rounded-modal')}
             {partTabs('mt-3.5')}
           </div>
-          {isTest ? (
-            // Title and button sit together, ending level with the front picture's bottom edge.
-            <div className="flex flex-col pt-12">
-              <div className="mb-24 mt-auto">
-                {title(true)}
-                <HereButton lesson={lessonKey(bookId, lesson.id)} />
-                <div className="mt-7">{actions}</div>
-              </div>
-            </div>
-          ) : (
-            <div className="mt-12 flex flex-col">
-              {title(true)}
-              <HereButton lesson={lessonKey(bookId, lesson.id)} />
-              <div className="mt-6">{modeButtons}</div>
-              <div className="mt-auto pt-5">{actions}</div>
-            </div>
-          )}
+          {/* The Test tab has the Part tabs' shape: its title block stands where they list their modes. */}
+          <div className="mt-12 flex flex-col">
+            {title(true)}
+            <HereButton lesson={lessonKey(bookId, lesson.id)} />
+            {modeButtons && <div className="mt-6">{modeButtons}</div>}
+            <div className="mt-auto pt-5">{actions}</div>
+          </div>
         </div>
         {practiceHubDrawer}
       </div>
@@ -415,7 +404,7 @@ function LessonBody({
             {picture('max-h-[38vh] rounded-modal', true)}
           </div>
           {partTabs('mx-4 mt-2')}
-          <div className={cn('px-4', isTest ? 'pt-7' : 'pt-4')}>{title(false)}<HereButton lesson={lessonKey(bookId, lesson.id)} /></div>
+          <div className="px-4 pt-4">{title(false)}<HereButton lesson={lessonKey(bookId, lesson.id)} /></div>
           <div className="px-4 pb-3 pt-3">
             {modeButtons}
           </div>

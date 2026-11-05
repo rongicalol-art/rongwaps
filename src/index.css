@@ -603,30 +603,17 @@ body {
 .rw-rocket-drift { animation: rw-rocket-drift 2.6s ease-in-out 0.7s infinite; }
 @media (prefers-reduced-motion: reduce) { .rw-rocket-drift { animation: none; } }
 
-/* Lesson test: the gold "Test" word. Dark honey outline and edge keep the letters apart; letters drop in, a shine passes now and then. */
-.rw-test-word {
-  position: relative; display: inline-flex; font-weight: 900; line-height: 1; letter-spacing: 0.02em;
-  color: var(--color-brand-primary);
-  -webkit-text-stroke: 0.045em var(--color-brand-primary-outline); paint-order: stroke fill;
-  text-shadow: 0 0.065em 0 var(--color-brand-primary-outline);
-}
-.rw-test-word > span { display: inline-block; animation: rw-test-drop 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(var(--i) * 70ms + 200ms); }
-.rw-test-word::after, .rw-test-tab-shine::after {
-  content: attr(data-word); position: absolute; inset: 0; pointer-events: none; color: transparent; -webkit-text-stroke: 0; text-shadow: none;
+/* Lesson test: the Test tab's label catches a shine now and then. */
+.rw-test-tab-shine::after {
+  content: attr(data-word); position: absolute; inset: 0; pointer-events: none; color: transparent;
   background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / 0.6) 50%, transparent 60%) no-repeat;
   background-size: 300% 100%; background-position: 150% 0; -webkit-background-clip: text; background-clip: text;
 }
-.rw-test-word::after { animation: rw-test-shine 6s ease-in-out 1s infinite; }
 .rw-test-tab-shine { position: relative; display: inline-block; }
 .rw-test-tab-shine::after { animation: rw-test-shine 5s ease-in-out 1.2s infinite; }
-@keyframes rw-test-drop {
-  0% { opacity: 0; transform: translateY(-60px); }
-  60% { opacity: 1; transform: translateY(6px); }
-  100% { transform: none; }
-}
 @keyframes rw-test-shine { 0% { background-position: 150% 0; } 22%, 100% { background-position: -50% 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .rw-test-word > span, .rw-test-word::after, .rw-test-tab-shine::after { animation: none; }
+  .rw-test-tab-shine::after { animation: none; }
 }
 
 @keyframes float {
@@ -910,7 +897,6 @@ body {
   --color-brand-primary-wash: #f6ecd2;
   --color-brand-on-primary: #4f3d18;
   --color-brand-primary-text: var(--color-brand-primary-edge);
-  --color-brand-primary-outline: #8a6a2a;
 }
 :root[data-theme="dark"][data-tone="review"],
 [data-theme="dark"] [data-tone="review"] {
@@ -934,7 +920,6 @@ body {
   --color-brand-primary-wash: #43341a;
   --color-brand-on-primary: #2a1f08;
   --color-brand-primary-text: var(--color-brand-primary-deep);
-  --color-brand-primary-outline: #5c4419;
 }
 
 /* Audio preparation blocks: one quick swell rolls across the row while recordings load. */
