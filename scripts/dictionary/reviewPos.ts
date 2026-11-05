@@ -52,8 +52,15 @@ async function main() {
     }
   }
   await mkdir(REVIEW_DIR, { recursive: true });
+  await mkdir(resolve(OUT, 'review-input'), { recursive: true });
   const batches = Array.from({ length: Math.ceil(picked.length / BATCH_SIZE) }, (_, index) => ({ name: `review-${String(index).padStart(3, '0')}`, entries: picked.slice(index * BATCH_SIZE, (index + 1) * BATCH_SIZE) }));
-  const todo = batches.filter((batch) => !existsSync(resolve(REVIEW_DIR, `${batch.name}.json`)));
+  // Every batch's input, so other reviewers can take a share (`--share i/n` keeps every n-th batch from i).
+  for (const { name, entries } of batches) {
+    const input = entries.map(({ id, pinyin, senses, book, wiktionary, tags, flags: reasons }) => ({ id, pinyin, senses: senses.map((sense, index) => ({ ...sense, tag: tags[index] })), book, wiktionary, flags: reasons }));
+    await writeFile(resolve(OUT, 'review-input', `${name}.json`), JSON.stringify(input), 'utf8');
+  }
+  const shareArg = args.includes('--share') ? args[args.indexOf('--share') + 1].split('/').map(Number) : [0, 1];
+  const todo = batches.filter((batch, index) => index % shareArg[1] === shareArg[0] && !existsSync(resolve(REVIEW_DIR, `${batch.name}.json`)));
   console.log(`Reviewing ${picked.length} readings (${flags.size} flagged) in ${batches.length} batches; ${todo.length} to do.`);
   let failed = 0;
   await eachLimited(todo, concurrency, async ({ name, entries }) => {
