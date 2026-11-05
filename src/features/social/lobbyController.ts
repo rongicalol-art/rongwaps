@@ -11,7 +11,7 @@ let socket: ReturnType<typeof connectLobby> | null = null;
 let identityKey = '';
 let generation = 0;
 let here: Extract<LobbyClientMessage, { t: 'here' }> = { t: 'here', l: null, a: null, show: true };
-let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 2 };
+let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 3 };
 const CHAT_CAP = 50;
 const pendingReads = new Set<string>();
 let readOwner: string | null = null;
@@ -185,7 +185,7 @@ export const lobby = {
   subscribe(online: boolean, chat: number | null) {
     if (sub.online === online && sub.chat === chat) return;
     if (sub.chat !== chat) useAppStore.getState().setSocial({ socialChat: null, socialUnread: false });
-    sub = { t: 'sub', online, chat, v: 2 };
+    sub = { t: 'sub', online, chat, v: 3 };
     send(sub);
   },
   /** A fresh Online snapshot; opening the panel already brings one. */
