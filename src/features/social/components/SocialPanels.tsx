@@ -128,6 +128,12 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
                 </>}
                 <DropdownMenuItem onClick={() => { setRoomMenuOpen(false); setPanel({ kind: 'people', tab: 'online' }); }}>Who’s online</DropdownMenuItem>
               </DropdownMenu>
+              {(scope === 'global' ? onlineTotal : lessonTotal) > 0 && (
+                <button type="button" onClick={() => setPanel({ kind: 'people', tab: 'online' })} className="flex items-center gap-1.5 rounded-xs text-xs font-bold text-ui-muted outline-none hover:text-ui-ink focus-ring-inline">
+                  <AvatarStack people={(scope === 'global' ? classmates : here).slice(0, 3).map(person => ({ name: person.n, color: person.c, src: person.i }))} size="sm" />
+                  {scope === 'global' ? `${onlineTotal} online` : `${lessonTotal} in this lesson`}
+                </button>
+              )}
             </div>
             <MuteButton />
           </div>
