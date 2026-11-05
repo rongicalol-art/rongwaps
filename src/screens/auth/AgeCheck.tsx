@@ -6,6 +6,7 @@ import { ActionButton, BrandWordmark } from '../../lib/widgets';
 import { authService } from '../../services/authService';
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { isNameAllowed } from '../../../shared/nameFilter';
+import { studyTogetherOpenToAll } from '../../../shared/publicLaunch';
 import { DeskScene } from './DeskScene';
 import { SignInConsent } from './SignInParts';
 import { setSignInNotice, takeSignInNotice } from './signInNotice';
@@ -109,7 +110,7 @@ export function AgeCheck({ preview = false }: { preview?: boolean }) {
           {error && <p role="alert" className="mt-2 rounded-sm bg-feedback-danger-surface px-3.5 py-2.5 text-sm font-bold text-feedback-danger-text">{error}</p>}
         </div>
         <p className="mt-8 max-w-sm text-sm font-bold text-ui-muted-strong text-balance">
-          In Study together, other learners see you as “{shownName}” with your initials. Change it in Profile, or hide in Settings.
+          {studyTogetherOpenToAll() ? 'In Study together, other learners see you' : 'From November 14, other learners in Study together will see you'} as “{shownName}” with your initials. Change it in Profile, or hide in Settings.
         </p>
         <SignInConsent className="mt-3 max-w-sm text-balance lg:text-sm" />
         {busy !== 'yes' && busy !== 'no' && (

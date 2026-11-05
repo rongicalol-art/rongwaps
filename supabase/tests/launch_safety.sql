@@ -59,6 +59,9 @@ begin
   assert token #>> '{claims,google_photo}' = 'https://lh3.googleusercontent.com/a/school', token::text;
   assert private.school_beta_access_token_hook(jsonb_build_object('user_id', '5a000000-0000-4000-8000-000000000002', 'claims', '{}'::jsonb))
     #>> '{claims,google_photo}' = '', 'empty when Google sent no photo';
+  assert token #>> '{claims,public_account}' = 'false', 'a school account';
+  assert private.school_beta_access_token_hook(jsonb_build_object('user_id', '5a000000-0000-4000-8000-000000000002', 'claims', '{}'::jsonb))
+    #>> '{claims,public_account}' = 'true', 'a Gmail account';
 end;
 $$;
 

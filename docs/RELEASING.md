@@ -193,28 +193,29 @@ The first filters registrations; the second checks provider-owned identities on 
 
 ### Public accounts
 
-**Launch day (2026-11-14, the Terms and Privacy effective date):** the new pages and the in-app notice ship at least 7 days earlier (live by 2026-11-07 00:00 Taiwan; if that slips, move `LEGAL_EFFECTIVE_DATE` and `PUBLIC_LAUNCH_AT` to deploy day + 7). On the day, About, the landing FAQ, the sign-in messages and the photo default switch by themselves (`shared/publicLaunch.ts`). Owner steps, in order:
+**Launch, in two steps** (`shared/publicLaunch.ts`):
+- **Sign-up opens 2026-11-06** (owner decision, 2026-11-05: promote from that day). New accounts accept the new Terms and Privacy at sign-up, start with initials, and get the full app except Study together. At 00:00 Taiwan the landing FAQ, About and the sign-in messages switch by themselves.
+- **Study together mixes school and public accounts on 2026-11-14**, the date the new Terms and Privacy take effect for accounts made earlier (their 7-day notice, shown in the app from the 5 Nov release). Until then the games Worker refuses public accounts ("Study together opens to everyone on November 14.") and the app hides Study together for them. Nothing to do on the day.
 
-1. Google Cloud → Google Auth Platform → Audience: External, *Publish app*; Branding: name, logo, support email, Privacy and Terms links (start a week early: the brand check takes days).
-2. Staging SQL editor: `update private.signup_settings set public_open = true, updated_at = now();`, then sign up with a personal Gmail on staging (age step, Study together, block, report).
-3. Production: sign-up opens at 00:00 Taiwan by a one-time database job, scheduled after step 2 passes (production SQL editor; it removes itself after running):
-   `select cron.schedule('open-public-signup', '0 16 13 11 *', $$update private.signup_settings set public_open = true, updated_at = now(); select cron.unschedule('open-public-signup');$$);`
-   Check it: `select jobname, schedule from cron.job where jobname = 'open-public-signup';`. Cancel: `select cron.unschedule('open-public-signup');`. Or run the update line yourself at midnight.
-4. On or after 14 Nov, redeploy production once (Render → ronsmandarin → Manual Deploy → Deploy latest commit): the prebuilt landing and About pages keep the old wording until the next build.
-5. In the morning: the Health issue, one sign-up with a new Gmail, `select private.public_account_count();`. Raise `public_cap` later as the Health issue suggests.
+Owner steps to open sign-up, in order (the release with #77 and #79 and the `20261106120000` migration must be live first):
 
-**Launch week checklist** (owner; from the pre-launch review, 2026-11-05):
+1. Google Cloud → Google Auth Platform → Audience: External and **In production** (in Testing, only listed test users can sign in). Branding (name, logo, support email, Privacy and Terms links) can follow: until Google checks it, the sign-in screen names the Supabase address.
+2. Supabase production → Authentication → Hooks: *Before User Created* `private.before_school_beta_signup` and *Custom Access Token* `private.school_beta_access_token_hook` both on; Sign In / Providers: Email off.
+3. Production SQL editor: `update private.signup_settings set public_open = true, updated_at = now();`
+4. Sign up with a personal Gmail on ronsmandarin.com (a private window): the age step, then the app. Then `select private.public_account_count();` should say 1.
+5. On or after 6 Nov, redeploy production once (Render → ronsmandarin → Manual Deploy → Deploy latest commit) so the prebuilt landing and About pages carry the new wording for search engines; again on or after 14 Nov is optional.
+6. Each morning: the Health issue. Raise `public_cap` (300) in steps as it suggests.
+
+**Launch week checklist** (owner; updated 2026-11-05 for opening on 6 Nov):
 
 | By | Step |
 | --- | --- |
-| Thu 5 Nov | GitHub Billing: fix the payment, set an Actions budget with alert emails. Repo Settings → General: untick "Automatically delete head branches". Google Auth Platform: Audience "In production", submit Branding |
-| Fri 6 Nov, 23:59 Taiwan | Backup → Migrate production → merge the Release PR with the Privacy/Terms text (the 7-day notice starts when it is live). Sign in once; `/terms` says "Effective November 14, 2026" |
-| 7–12 Nov | Supabase (staging and production): both `private.*` auth hooks on, Email provider off. Render → Billing: hours, bandwidth, build minutes; usage emails reach your phone. Sentry: client-key rate limit (about 100 an hour) and spike protection. Render env: the three feedback email settings exist; send one test feedback. `verify-key.sh` for both key copies, then fetch and restore-check one backup. Run Health once with *test* ticked |
-| By Fri 13 Nov | Staging Google client; open sign-up on staging and sign up with a personal Gmail (age step, Study together, block, report); cap 0 shows "full"; ban and unban the test account. Migrate production again (the launch-safety migration). For launch week: Supabase JWT expiry 900 s and a higher token-refresh rate limit, set together |
-| Fri 13 Nov | Schedule the 00:00 open (step 3 above), or plan to run the line yourself |
-| Sat 14 Nov | Morning: Health issue, one new Gmail sign-up, `select private.public_account_count();`; redeploy production once (step 4 above) |
+| Thu 5 Nov, night | Release #77 + #79: migration `20261106120000` on production (Migrate production, or the SQL editor), the Study together server, then the app. Steps 1–4 above. Repo Settings → General: untick "Automatically delete head branches". GitHub Billing when you can |
+| Fri 6 Nov | Promote. Watch the Health issue and "Not safe" emails. Redeploy once (step 5) |
+| 7–13 Nov | Render → Billing: hours, bandwidth (5 GB a month), build minutes; usage emails reach your phone. Sentry: client-key rate limit (about 100 an hour) and spike protection. Render env: the three feedback email settings exist; send one test feedback. `verify-key.sh` for both key copies, then fetch and restore-check one backup. Run Health once with *test* ticked. Supabase JWT expiry 900 s with a higher token-refresh rate limit, set together |
+| Sat 14 Nov | Study together opens to everyone by itself. Morning: Health issue, try Study together with a public test account |
 
-Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`). `school_beta_only:` reads "Use your s…@stu.edu.tw account" before launch day and "closed to new sign-ins for now" after it (the emergency stop). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
+Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`). `school_beta_only:` reads "Use your s…@stu.edu.tw account" before 6 Nov and "closed to new sign-ins for now" after it (the emergency stop). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
 
 `20261104120000_public_accounts.sql` lets any Google account with a verified email in, once the owner opens it. It ships closed: until then nothing changes. The hooks above stay as they are. Settings live in the database, so changing them needs no deploy (Supabase dashboard → SQL editor, staging first):
 

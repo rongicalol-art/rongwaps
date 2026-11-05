@@ -47,7 +47,7 @@ export function PrivacyPolicyContent() {
             <>
               <strong>Profile:</strong> the display name, colour, photo and cover you choose. Photos and covers you
               upload are stored by our database provider. Without a display name, the first word of your Google name
-              is used. Accounts created from November 14, 2026 show initials instead of the Google photo until you
+              is used. Accounts created from November 6, 2026 show initials instead of the Google photo until you
               choose <em>Use Google photo</em> in Profile; older accounts keep showing it until you choose{' '}
               <em>Use initials</em>.
             </>,
@@ -258,7 +258,9 @@ export function PrivacyPolicyContent() {
       <LegalSection title="12. Changes">
         <LegalParagraph>
           We will update the effective date above whenever this policy changes. For meaningful changes we will show
-          a notice in the app at least 7 days before they take effect. The Chinese summary at the top is for
+          a notice in the app at least 7 days before they take effect. This version applies from sign-up to accounts
+          created from November 6, 2026, and from the effective date above to accounts created earlier; until then the
+          previous version applies to those accounts, and Study together shows them only to other Shu-Te learners. The Chinese summary at the top is for
           convenience; the English text controls. See also our{' '}
           <Link to={LEGAL_ROUTES.terms} className={legalLinkClass}>Terms of Service</Link>.
         </LegalParagraph>

@@ -13,7 +13,9 @@
 --    provider and Google account ID, never the email) is kept for 2 years and
 --    sign-up refuses it. Unbanning removes it. The token now also carries
 --    google_photo, copied from Google's own identity record: the games Worker
---    shows only that Google photo (user_metadata is editable by the learner).
+--    shows only that Google photo (user_metadata is editable by the learner);
+--    and public_account (not a school or owner account): Study together waits
+--    for those until 2026-11-14.
 -- 4. A new public account that has not answered the age question after 7 days
 --    is deleted (Privacy §6, §11), daily at 03:20 Taiwan. Only accounts made
 --    from 2026-11-06 with no saved progress: older accounts kept from before
@@ -212,10 +214,13 @@ begin
   return jsonb_set(
     jsonb_set(
       jsonb_set(
-        jsonb_set(event, '{claims,school_beta}', 'true'::jsonb),
-        '{claims,full_course}', to_jsonb(private.full_course_user_allowed(target))
+        jsonb_set(
+          jsonb_set(event, '{claims,school_beta}', 'true'::jsonb),
+          '{claims,full_course}', to_jsonb(private.full_course_user_allowed(target))
+        ),
+        '{claims,age_ok}', to_jsonb(private.age_confirmed(target))
       ),
-      '{claims,age_ok}', to_jsonb(private.age_confirmed(target))
+      '{claims,public_account}', to_jsonb(not private.user_has_school_identity(target))
     ),
     -- Google's own record, refreshed by Google at each sign-in; '' when there is none.
     '{claims,google_photo}', to_jsonb(coalesce((

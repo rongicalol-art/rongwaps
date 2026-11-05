@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { LEGAL_ROUTES } from '../../app/routes';
-import { isPublicLaunched } from './legalMeta';
+import { isSignupOpen } from './legalMeta';
 import { ContactLink, LegalList, LegalParagraph, LegalSection, LegalSummary, legalLinkClass } from './LegalBlocks';
 
 const SUMMARY = [
@@ -14,7 +14,7 @@ const LAUNCHED_SUMMARY_LAST = '開放給所有年滿 18 歲、擁有 Google 帳�
 export function AboutContent() {
   return (
     <>
-      <LegalSummary points={isPublicLaunched() ? [...SUMMARY.slice(0, -1), LAUNCHED_SUMMARY_LAST] : SUMMARY} />
+      <LegalSummary points={isSignupOpen() ? [...SUMMARY.slice(0, -1), LAUNCHED_SUMMARY_LAST] : SUMMARY} />
 
       <LegalSection title="What it is">
         <LegalParagraph>
@@ -62,7 +62,7 @@ export function AboutContent() {
 
       <LegalSection title="Beta">
         <LegalParagraph>
-          {isPublicLaunched()
+          {isSignupOpen()
             ? 'The beta is open to anyone 18 or older with a Google account.'
             : 'The beta is open to Shu-Te University students who sign in with their school Google account.'} Books 1 to 3 are available now; Book 4 will open when it is ready. Things may change or break, and your
           feedback decides what gets built next.

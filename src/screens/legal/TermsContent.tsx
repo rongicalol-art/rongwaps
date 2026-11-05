@@ -30,7 +30,9 @@ export function TermsContent() {
         <LegalParagraph>
           These terms are a contract between you and us. By signing in or using the app you agree to them and to
           our <Link to={LEGAL_ROUTES.privacy} className={legalLinkClass}>Privacy Policy</Link>. If you do not
-          agree, please do not use the app.
+          agree, please do not use the app. If you create your account from November 6, 2026, these terms apply from
+          sign-up. For accounts created earlier they take effect on the date above, and the previous terms apply until
+          then.
         </LegalParagraph>
       </LegalSection>
 

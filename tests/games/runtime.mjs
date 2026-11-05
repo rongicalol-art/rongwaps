@@ -143,6 +143,10 @@ try {
     return { status: response.status, error: (await response.json()).error };
   };
   assert.deepEqual(await refused('newbie', { name: 'Newbie' }, { age_ok: false }), { status: 403, error: 'Finish signing up in the app first.' });
+  // Public accounts join Study together only from 14 November 2026 (existing learners' notice period).
+  const stranger = await refused('stranger', { name: 'Stranger' }, { public_account: true });
+  if (Date.now() < Date.parse('2026-11-14T00:00:00+08:00')) assert.deepEqual(stranger, { status: 403, error: 'Study together opens to everyone on November 14.' });
+  else assert.equal(stranger.status, 200);
   assert.equal((await refused('poser', { name: 'Admin Ron' })).status, 400, 'names reserved for the app are refused');
   assert.equal((await refused('impostor', { name: 'Ron' }, { email: 'someone@school.test' })).status, 400, 'only OWNER_EMAILS may use them');
   assert.equal((await refused('owner', { name: 'Ron' }, { email: 'Owner@School.test' })).status, 200, 'the owner keeps their name');

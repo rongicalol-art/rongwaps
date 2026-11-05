@@ -1,6 +1,6 @@
 /** Profile appearance is persisted locally and synced per account. */
 import { COVER_PRESETS } from '../../../shared/lobby';
-import { PUBLIC_LAUNCH_AT } from '../../../shared/publicLaunch';
+import { SIGNUP_OPEN_AT } from '../../../shared/publicLaunch';
 
 export { COVER_PRESETS };
 export const AVATAR_COLORS = ['blue', 'honey', 'jade', 'plum', 'ink'] as const;
@@ -50,5 +50,5 @@ export function normalizeProfileSettings(value: Partial<Record<keyof ProfileSett
 export function showsGooglePhoto(choice: boolean | null, accountCreatedAt: string | undefined): boolean {
   if (choice !== null) return choice;
   const created = accountCreatedAt ? Date.parse(accountCreatedAt) : Number.NaN;
-  return Number.isFinite(created) && created < PUBLIC_LAUNCH_AT;
+  return Number.isFinite(created) && created < SIGNUP_OPEN_AT;
 }

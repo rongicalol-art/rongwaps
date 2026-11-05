@@ -13,7 +13,7 @@ export function LegalUpdateNotice() {
   const { currentUser } = useAuth();
   const [dismissed, setDismissed] = useState(() => readString(DISMISSED_KEY) === LEGAL_EFFECTIVE_DATE);
   const update = LEGAL_UPDATE;
-  const show = Boolean(update) && !dismissed && isLegalUpdateCurrent(LEGAL_EFFECTIVE_DATE, Date.now(), currentUser?.created_at);
+  const show = Boolean(update) && !dismissed && isLegalUpdateCurrent(LEGAL_EFFECTIVE_DATE, Date.now(), currentUser?.created_at, update?.acceptedFrom);
   if (!update) return null;
 
   const dismiss = () => {
