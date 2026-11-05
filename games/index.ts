@@ -3,7 +3,7 @@ import { verifyAccessToken } from '../shared/accessToken';
 import { newSeed } from './room';
 import { SOCIAL_FRAME_BYTES } from '../shared/lobby';
 import { NAME_NOT_ALLOWED, NAME_RESERVED, nameProblem } from '../shared/nameFilter';
-import { SOCIAL_PAUSED_ERROR, googlePhoto, isOwnerAccount, socialRefusal } from './access';
+import { SOCIAL_PAUSED_ERROR, googlePhoto, isOwnerAccount, isSchoolAccount, socialRefusal } from './access';
 import { TICKET_LIMIT_ERROR } from './lobby';
 export { GameRoom } from './room';
 export { Lobby } from './lobby';
@@ -77,7 +77,7 @@ export default {
       if (!name) return reply({ error: 'Add a display name in your profile first.' }, 400);
       const problem = nameProblem(name, { owner: isOwnerAccount(env, claims) });
       if (problem) return reply({ error: problem }, 400);
-      if (url.pathname === '/lobby') return reply({ userId, ...await env.LOBBY.getByName('main').issue(userId, name, color, expiresAt, google) });
+      if (url.pathname === '/lobby') return reply({ userId, ...await env.LOBBY.getByName('main').issue(userId, name, color, expiresAt, google, isSchoolAccount(claims)) });
       if (url.pathname === '/rooms') {
         const selection = parseSelection(data.selection);
         const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';

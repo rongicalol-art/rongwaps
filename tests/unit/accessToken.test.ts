@@ -21,10 +21,9 @@ async function token(claims: Record<string, unknown>, header: Record<string, unk
 }
 
 test('stamped school claims are read only when both are present and well formed', () => {
-  assert.deepEqual(schoolAccessFromClaims({ school_beta: true, full_course: false }), { school: true, fullCourse: false, ageOk: true, publicAccount: false });
-  assert.deepEqual(schoolAccessFromClaims({ school_beta: true, full_course: true }), { school: true, fullCourse: true, ageOk: true, publicAccount: false });
-  assert.deepEqual(schoolAccessFromClaims({ school_beta: true, full_course: false, age_ok: true }), { school: true, fullCourse: false, ageOk: true, publicAccount: false });
-  assert.equal(schoolAccessFromClaims({ school_beta: true, full_course: false, public_account: true })?.publicAccount, true, 'a Gmail account');
+  assert.deepEqual(schoolAccessFromClaims({ school_beta: true, full_course: false }), { school: true, fullCourse: false, ageOk: true });
+  assert.deepEqual(schoolAccessFromClaims({ school_beta: true, full_course: true }), { school: true, fullCourse: true, ageOk: true });
+  assert.deepEqual(schoolAccessFromClaims({ school_beta: true, full_course: false, age_ok: true }), { school: true, fullCourse: false, ageOk: true });
   assert.equal(schoolAccessFromClaims({ school_beta: true, full_course: false, age_ok: false })?.ageOk, false, 'a public account before the age step');
   for (const claims of [null, {}, { school_beta: true }, { school_beta: 'true', full_course: false }, { school_beta: false, full_course: true }]) {
     assert.equal(schoolAccessFromClaims(claims), null, JSON.stringify(claims));

@@ -7,6 +7,8 @@ type Att = {
   u: string; n: string; c: SocialColor; i?: string; show: boolean; l: number | null; a: Activity | null;
   /** The Google photo this account's sign-in carries: the only provider photo it may show. */
   g?: string;
+  /** A Shu-Te (or owner) account: sees other Shu-Te learners first. */
+  s?: boolean;
   on: boolean; ch: number | null; cheer: number; inv: number[];
   activeAt: number; tokens: number; updatedAt: number;
   authUntil: number;
@@ -43,6 +45,9 @@ export const TICKET_LIMIT_ERROR = 'Too many connection requests. Try again short
  * panels, the open rooms; per-socket dedupe skips unchanged frames.
  */
 const NONE: ReadonlySet<string> = new Set();
+/** For a Shu-Te viewer, Shu-Te people before everyone else (0 when it makes no difference). */
+const schoolFirst = (viewer: Pick<Att, 's'>, a: Pick<Att, 's'>, b: Pick<Att, 's'>) =>
+  viewer.s === false ? 0 : Number(b.s !== false) - Number(a.s !== false);
 
 export class Lobby extends DurableObject<Env> {
   protected capacity = LOBBY_CAPACITY;
@@ -68,6 +73,7 @@ export class Lobby extends DurableObject<Env> {
     const ticketColumns = sql.exec<{ name: string }>('PRAGMA table_info(tickets)').toArray().map(column => column.name);
     if (!ticketColumns.includes('auth_until')) sql.exec('ALTER TABLE tickets ADD COLUMN auth_until INTEGER NOT NULL DEFAULT 0');
     if (!ticketColumns.includes('google')) sql.exec('ALTER TABLE tickets ADD COLUMN google TEXT');
+    if (!ticketColumns.includes('school')) sql.exec('ALTER TABLE tickets ADD COLUMN school INTEGER NOT NULL DEFAULT 1');
     sql.exec('CREATE TABLE IF NOT EXISTS chat (id INTEGER PRIMARY KEY AUTOINCREMENT, lesson INTEGER NOT NULL, uid TEXT NOT NULL, name TEXT NOT NULL, color TEXT NOT NULL, text TEXT NOT NULL, room TEXT, ts INTEGER NOT NULL)');
     sql.exec('CREATE INDEX IF NOT EXISTS chat_lesson ON chat (lesson, id)');
     sql.exec('CREATE TABLE IF NOT EXISTS chat_rate (uid TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
@@ -84,7 +90,7 @@ export class Lobby extends DurableObject<Env> {
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair('ping', 'pong'));
   }
 
-  async issue(uid: string, name: string, color: string, authUntil: number, google?: string): Promise<{ ticket: string }> {
+  async issue(uid: string, name: string, color: string, authUntil: number, google?: string, school = true): Promise<{ ticket: string }> {
     const now = Date.now();
     const bucket = this.ticketBuckets.get(uid);
     const tokens = Math.min(TICKET_BURST, (bucket?.tokens ?? TICKET_BURST) + (now - (bucket?.at ?? now)) / TICKET_REFILL_MS);
@@ -93,7 +99,7 @@ export class Lobby extends DurableObject<Env> {
     if (this.ticketBuckets.size > 10_000) for (const [key, value] of this.ticketBuckets) if (now - value.at > TICKET_BURST * TICKET_REFILL_MS) this.ticketBuckets.delete(key);
     const ticket = crypto.randomUUID();
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires <= ?', now);
-    this.ctx.storage.sql.exec('INSERT INTO tickets (ticket,uid,name,color,expires,auth_until,google) VALUES (?,?,?,?,?,?,?)', ticket, uid, name, socialColor(color), Math.min(authUntil, now + 30_000), Math.min(authUntil, now + 15 * 60_000), google ?? null);
+    this.ctx.storage.sql.exec('INSERT INTO tickets (ticket,uid,name,color,expires,auth_until,google,school) VALUES (?,?,?,?,?,?,?,?)', ticket, uid, name, socialColor(color), Math.min(authUntil, now + 30_000), Math.min(authUntil, now + 15 * 60_000), google ?? null, school ? 1 : 0);
     await this.ensureAlarm();
     return { ticket };
   }
@@ -217,7 +223,7 @@ export class Lobby extends DurableObject<Env> {
     const protocols = request.headers.get('Sec-WebSocket-Protocol')?.split(',').map(value => value.trim()) ?? [];
     const ticket = protocols.find(value => value.startsWith('ticket.'))?.slice(7);
     if (!ticket || !protocols.includes('lobby')) return new Response('Sign in again.', { status: 401 });
-    const entry = this.ctx.storage.sql.exec<{ uid: string; name: string; color: string; expires: number; auth_until: number; google: string | null }>('SELECT uid,name,color,expires,auth_until,google FROM tickets WHERE ticket=?', ticket).toArray()[0];
+    const entry = this.ctx.storage.sql.exec<{ uid: string; name: string; color: string; expires: number; auth_until: number; google: string | null; school: number }>('SELECT uid,name,color,expires,auth_until,google,school FROM tickets WHERE ticket=?', ticket).toArray()[0];
     if (!entry || entry.expires <= Date.now() || entry.auth_until <= Date.now()) return new Response('Sign in again.', { status: 401 });
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE ticket=?', ticket);
     const live = this.index();
@@ -227,7 +233,7 @@ export class Lobby extends DurableObject<Env> {
     const [client, server] = Object.values(new WebSocketPair());
     this.ctx.acceptWebSocket(server);
     // Hidden until the client's privacy preference arrives; never briefly disclose hidden users.
-    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), ...(entry.google ? { g: entry.google } : {}), show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until, j: Date.now() };
+    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), ...(entry.google ? { g: entry.google } : {}), s: entry.school !== 0, show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until, j: Date.now() };
     server.serializeAttachment(att);
     this.track(server, att);
     this.send(server, { t: 'me', u: att.u });
@@ -356,7 +362,7 @@ export class Lobby extends DurableObject<Env> {
     const here = (other: Att) => att.l !== null && other.l === att.l ? 1 : 0;
     const hide = this.hidden(att.u);
     const people = [...this.index().values()].filter(other => other.show && !hide.has(other.u))
-      .sort((a, b) => here(b) - here(a) || b.activeAt - a.activeAt).slice(0, ROSTER_CAP).map(other => this.person(other));
+      .sort((a, b) => here(b) - here(a) || schoolFirst(att, a, b) || b.activeAt - a.activeAt).slice(0, ROSTER_CAP).map(other => this.person(other));
     this.send(socket, { t: 'online', v: people }, 'online');
   }
 
@@ -474,26 +480,37 @@ export class Lobby extends DurableObject<Env> {
     this.lastFlush = Date.now();
     this.sweep(this.lastFlush);
     const live = this.index();
-    const byLesson = new Map<number, Person[]>();
-    const faces: Person[] = [];
-    // Longest-present first, so the faces and capped lists stay put (and deduped) across wakes.
-    const visible = [...live.values()].filter(att => att.show).sort((a, b) => (a.j ?? 0) - (b.j ?? 0) || (a.u < b.u ? -1 : a.u > b.u ? 1 : 0));
-    const total = visible.length;
-    for (const att of visible) {
-      const person = this.person(att);
-      if (faces.length < 4) faces.push(person);
-      if (att.l !== null) { const group = byLesson.get(att.l); if (group) group.push(person); else byLesson.set(att.l, [person]); }
-    }
-    const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([key, people]) => [key, { n: people.length, f: people.slice(0, 3) }]));
-    const countFrame = JSON.stringify({ t: 'counts', v: counts, n: total, f: faces } satisfies LobbyServerMessage);
-    const people = new Map<number | null, string>();
+    // Longest-present first, so the faces and capped lists stay put (and deduped) across wakes. Shu-Te viewers get
+    // the same lists with Shu-Te people first; everyone else sees one shared order.
+    const byJoin = (a: Att, b: Att) => (a.j ?? 0) - (b.j ?? 0) || (a.u < b.u ? -1 : a.u > b.u ? 1 : 0);
+    const shown = [...live.values()].filter(att => att.show);
+    const total = shown.length;
+    const views = new Map<'school' | 'all', { visible: Att[]; byLesson: Map<number, Person[]>; countFrame: string; people: Map<number | null, string> }>();
+    const view = (school: boolean) => {
+      const key = school ? 'school' : 'all';
+      let built = views.get(key);
+      if (built) return built;
+      const visible = [...shown].sort((a, b) => (school ? schoolFirst({ s: true }, a, b) : 0) || byJoin(a, b));
+      const byLesson = new Map<number, Person[]>();
+      const faces: Person[] = [];
+      for (const att of visible) {
+        const person = this.person(att);
+        if (faces.length < 4) faces.push(person);
+        if (att.l !== null) { const group = byLesson.get(att.l); if (group) group.push(person); else byLesson.set(att.l, [person]); }
+      }
+      const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([lesson, people]) => [lesson, { n: people.length, f: people.slice(0, 3) }]));
+      built = { visible, byLesson, countFrame: JSON.stringify({ t: 'counts', v: counts, n: total, f: faces } satisfies LobbyServerMessage), people: new Map() };
+      views.set(key, built);
+      return built;
+    };
     for (const [socket, att] of live) {
       if (att.on || att.v2 === false) this.send(socket, this.roomsFrame(att.u), 'rooms');
+      const { visible, byLesson, countFrame, people } = view(att.s !== false);
       const hide = this.hidden(att.u);
       if (hide.size) {
         // Rare: someone in a block pair gets lists without the other person (counts stay exact).
         const keep = (person: Person) => !hide.has(person.u);
-        const own = Object.fromEntries(Object.entries(counts).map(([key, count]) => [key, { n: count.n, f: (byLesson.get(Number(key)) ?? []).filter(keep).slice(0, 3) }]));
+        const own = Object.fromEntries([...byLesson].map(([lesson, group]) => [lesson, { n: group.length, f: group.filter(keep).slice(0, 3) }]));
         this.send(socket, { t: 'counts', v: own, n: total, f: visible.map(other => this.person(other)).filter(keep).slice(0, 4) }, 'counts');
         this.send(socket, { t: 'people', l: att.l, v: att.l === null ? [] : (byLesson.get(att.l) ?? []).filter(keep).slice(0, PEOPLE_CAP) }, 'people');
         continue;

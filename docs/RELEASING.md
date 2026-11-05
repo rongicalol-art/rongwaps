@@ -40,7 +40,7 @@ Rules that keep this safe: migrations follow expand → migrate → contract (th
 - **By hand:** Actions → **Roll back** → Run workflow (`production`, `previous`). About 1–2 minutes, then the same live checks. Render's dashboard (Deploys → Rollback) works too.
 - Rollback restores code only. The database stays as it is, which is safe because migrations are backward compatible.
 - Render's rollback works even when GitHub Actions can't run.
-- **After sign-up opens (14 Nov):** a build from before then has no age step and the old Terms. Roll back only to a release from 14 Nov or later. If there is none, pause new sign-ups first (`public_cap = 0`, Public accounts below) and fix forward.
+- **After sign-up opened (6 Nov):** a build from before then has no age step and the old Terms. Roll back only to a release from 5 Nov (8c66d279) or later. If there is none, pause new sign-ups first (`public_cap = 0`, Public accounts below) and fix forward.
 - **Study together only:** `npx wrangler rollback --config games/wrangler.jsonc` on the Mac restores the previous Worker version (it asks which); the app keeps working with either.
 - Then fix forward: branch → PR into `main` → staging → Release PR.
 - **Hotfix** (staging holds unreleased work you don't want live): branch from `production`, PR into `production` (CI and journeys run), merge. Release PR opens a back-merge into `main` automatically from a `back-merge/production-…` copy; merge it.
@@ -193,9 +193,7 @@ The first filters registrations; the second checks provider-owned identities on 
 
 ### Public accounts
 
-**Launch, in two steps** (`shared/publicLaunch.ts`):
-- **Sign-up opens 2026-11-06** (owner decision, 2026-11-05: promote from that day). New accounts accept the new Terms and Privacy at sign-up, start with initials, and get the full app except Study together. At 00:00 Taiwan the landing FAQ, About and the sign-in messages switch by themselves.
-- **Study together mixes school and public accounts on 2026-11-14**, the date the new Terms and Privacy take effect for accounts made earlier (their 7-day notice, shown in the app from the 5 Nov release). Until then the games Worker refuses public accounts ("Study together opens to everyone on November 14.") and the app hides Study together for them. Nothing to do on the day.
+**Launch** (`shared/publicLaunch.ts`): sign-up opened to anyone 18+ on 2026-11-06, Study together included (owner decision, 2026-11-05). New accounts accept the new Terms and Privacy at sign-up and start with initials; accounts made earlier are bound from 2026-11-14 (the notice). Shu-Te viewers see Shu-Te learners first in the online list, faces and lesson lists (`games/lobby.ts`, `public_account` claim).
 
 Owner steps to open sign-up, in order (the release with #77 and #79 and the `20261106120000` migration must be live first):
 
@@ -213,7 +211,7 @@ Owner steps to open sign-up, in order (the release with #77 and #79 and the `202
 | Thu 5 Nov, night | Release #77 + #79: migration `20261106120000` on production (Migrate production, or the SQL editor), the Study together server, then the app. Steps 1–4 above. Repo Settings → General: untick "Automatically delete head branches". GitHub Billing when you can |
 | Fri 6 Nov | Promote. Watch the Health issue and "Not safe" emails. Redeploy once (step 5) |
 | 7–13 Nov | Render → Billing: hours, bandwidth (5 GB a month), build minutes; usage emails reach your phone. Sentry: client-key rate limit (about 100 an hour) and spike protection. Render env: the three feedback email settings exist; send one test feedback. `verify-key.sh` for both key copies, then fetch and restore-check one backup. Run Health once with *test* ticked. Supabase JWT expiry 900 s with a higher token-refresh rate limit, set together |
-| Sat 14 Nov | Study together opens to everyone by itself. Morning: Health issue, try Study together with a public test account |
+| Sat 14 Nov | The new Terms and Privacy bind accounts made before 6 Nov. Morning: Health issue |
 
 Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`). `school_beta_only:` reads "Use your s…@stu.edu.tw account" before 6 Nov and "closed to new sign-ins for now" after it (the emergency stop). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
 

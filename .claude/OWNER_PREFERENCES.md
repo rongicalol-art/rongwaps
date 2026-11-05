@@ -14,6 +14,7 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 ## 2. Visual taste
 
 **Clean, few elements.**
+- Don't be "extra": simple, creative and intentional. Start a design with one creative detail and no showy motion; add more only when asked. A new tab or state reuses its siblings' layout and text styles before inventing its own.
 - Use the fewest zones that do the job. When a screen feels empty, fix the composition (size, alignment, centring) before adding anything.
 - Rejected again and again: description lines, "what you'll learn" lists, stats lines, breadcrumbs, status pills ("Review · 1 of 2", "Missed", "Done"), counts next to buttons, floating helper text.
 - **No bordered box inside a bordered container.** A tile inside a card inside a bar reads as "messy". Inside a container, use plain text with hierarchy (size, weight, ink colour).
