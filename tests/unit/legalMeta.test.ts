@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { formatLegalDate, isLegalUpdateCurrent, isSignupOpen, legalEffectivePhrase } from '../../src/screens/legal/legalMeta';
 import { showsGooglePhoto } from '../../src/store/slices/profileSlice';
-import { studyTogetherOpenToAll } from '../../shared/publicLaunch';
 
 const day = 24 * 60 * 60 * 1000;
 
@@ -31,13 +30,10 @@ test('legal dates format as the written calendar day', () => {
   assert.equal(formatLegalDate('2026-10-23'), 'October 23, 2026');
 });
 
-test('sign-up wording switches at midnight Taiwan on 6 November; Study together mixes on 14 November', () => {
+test('sign-up wording switches at midnight Taiwan on 6 November', () => {
   const open = Date.parse('2026-11-06T00:00:00+08:00');
   assert.equal(isSignupOpen(open - 1), false);
   assert.equal(isSignupOpen(open), true);
-  const mixed = Date.parse('2026-11-14T00:00:00+08:00');
-  assert.equal(studyTogetherOpenToAll(mixed - 1), false);
-  assert.equal(studyTogetherOpenToAll(mixed), true);
 });
 
 test('Google photo: older accounts keep it, newer ones start with initials, a choice wins', () => {

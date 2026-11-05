@@ -143,10 +143,20 @@ try {
     return { status: response.status, error: (await response.json()).error };
   };
   assert.deepEqual(await refused('newbie', { name: 'Newbie' }, { age_ok: false }), { status: 403, error: 'Finish signing up in the app first.' });
-  // Public accounts join Study together only from 14 November 2026 (existing learners' notice period).
-  const stranger = await refused('stranger', { name: 'Stranger' }, { public_account: true });
-  if (Date.now() < Date.parse('2026-11-14T00:00:00+08:00')) assert.deepEqual(stranger, { status: 403, error: 'Study together opens to everyone on November 14.' });
-  else assert.equal(stranger.status, 200);
+  assert.equal((await refused('stranger', { name: 'Stranger' }, { public_account: true })).status, 200, 'public accounts join Study together');
+  // Shu-Te viewers see Shu-Te people first; public viewers see everyone in join order.
+  const gmailFirst = await open('/lobby/socket', 'lobby', (await (await mf.dispatchFetch('https://games.test/lobby', { method: 'POST',
+    headers: { Origin: origin, Authorization: 'Bearer ' + await token('order-gmail', { public_account: true }), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: 'Gmail', color: 'jade' }) })).json()).ticket);
+  await until(() => last(gmailFirst, 'me'));
+  send(gmailFirst, { t: 'here', l: 901, a: 'cards', show: true });
+  const schoolSecond = await open('/lobby/socket', 'lobby', (await post('/lobby', 'order-school')).ticket);
+  await until(() => last(schoolSecond, 'me'));
+  send(schoolSecond, { t: 'here', l: 901, a: 'cards', show: true });
+  await until(() => last(schoolSecond, 'people')?.v.length === 2 && last(gmailFirst, 'people')?.v.length === 2);
+  assert.deepEqual(last(schoolSecond, 'people').v.map(person => person.u), ['order-school', 'order-gmail'], 'Shu-Te first for a Shu-Te viewer');
+  assert.deepEqual(last(gmailFirst, 'people').v.map(person => person.u), ['order-gmail', 'order-school'], 'join order for everyone else');
+  send(gmailFirst, { t: 'here', l: null, a: null, show: false }); send(schoolSecond, { t: 'here', l: null, a: null, show: false });
   assert.equal((await refused('poser', { name: 'Admin Ron' })).status, 400, 'names reserved for the app are refused');
   assert.equal((await refused('impostor', { name: 'Ron' }, { email: 'someone@school.test' })).status, 400, 'only OWNER_EMAILS may use them');
   assert.equal((await refused('owner', { name: 'Ron' }, { email: 'Owner@School.test' })).status, 200, 'the owner keeps their name');
