@@ -24,6 +24,8 @@ PRODUCTION_REF=ylpzxpqyfaayavkvhikw
 STAGING_REF=zpljyjcbqkrelpdzvmqz
 SITE=https://ronsmandarin.com
 
+# ENV_FILE=<path to .env>: read the keys from that file instead of the shell (values are never printed).
+if [[ -n "${ENV_FILE:-}" ]]; then set -a; . "$ENV_FILE"; set +a; fi
 : "${PRODUCTION_DATABASE_URL:?export PRODUCTION_DATABASE_URL first (Supabase → production project → Connect → Session pooler URI)}"
 : "${RENDER_API_KEY:?export RENDER_API_KEY first (Render → Account settings → API keys)}"
 for tool in pg_dump psql age docker supabase gh node npm; do
