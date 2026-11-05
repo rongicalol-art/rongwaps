@@ -9,11 +9,12 @@ const SUMMARY = [
   '使用正體字與台灣發音，程度對應 TOCFL（華語文能力測驗）。',
   '目前開放樹德科技大學學生測試第一至三冊，免費使用。',
 ];
+const LAUNCHED_SUMMARY_LAST = '開放給所有年滿 18 歲、擁有 Google 帳號的學習者，第一至三冊免費使用。';
 
 export function AboutContent() {
   return (
     <>
-      <LegalSummary points={SUMMARY} />
+      <LegalSummary points={isPublicLaunched() ? [...SUMMARY.slice(0, -1), LAUNCHED_SUMMARY_LAST] : SUMMARY} />
 
       <LegalSection title="What it is">
         <LegalParagraph>
@@ -25,7 +26,7 @@ export function AboutContent() {
 
       <LegalSection title="Use it with your book">
         <LegalParagraph>
-          The app is made for students who own the book. It follows the book&apos;s lessons and adds the
+          The app is made to be used with your own copy of the book, so please buy it. It follows the book&apos;s lessons and adds the
           things paper cannot do: audio on every word, reviews timed to when you are about to forget, and
           progress that syncs between your devices. Keep using the book in class; the app is for practice.
         </LegalParagraph>

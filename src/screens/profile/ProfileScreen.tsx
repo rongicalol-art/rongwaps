@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useAuth } from '../../hooks/useAuth';
 import { useAppStore } from '../../store/useAppStore';
+import { showsGooglePhoto } from '../../store/slices/profileSlice';
 import { StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { AppFooter } from '../../app/components/AppFooter';
 import { SAMPLE_BOOKS } from '../../data/books';
@@ -20,7 +21,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
   const [accountError, setAccountError] = useState<string | null>(null);
   const [revision, setRevision] = useState(0);
   const userSnapshot = useAppStore((s) => s.currentUser);
-  const profile = useAppStore(useShallow((s) => ({ displayName: s.displayName, avatarColor: s.avatarColor, coverPreset: s.coverPreset, avatarPath: s.avatarPath, coverPath: s.coverPath })));
+  const profile = useAppStore(useShallow((s) => ({ displayName: s.displayName, avatarColor: s.avatarColor, coverPreset: s.coverPreset, avatarPath: s.avatarPath, coverPath: s.coverPath, googlePhoto: s.googlePhoto })));
   const bookId = useAppStore((s) => s.activeBookId);
   const syncError = useAppStore((s) => s.syncError);
   const data = useProfileData();
@@ -31,7 +32,8 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
   const shownProfile = editor.draft?.settings ?? profile;
   const name = shownProfile.displayName || fallbackName;
   const googleAvatar = userSnapshot?.avatarUrl || userSnapshot?.avatar_url;
-  const avatar = editor.draft ? editor.draft.avatar : media.avatar || googleAvatar;
+  const shownGoogleAvatar = showsGooglePhoto(profile.googlePhoto, userSnapshot?.createdAt) ? googleAvatar : undefined;
+  const avatar = editor.draft ? editor.draft.avatar : media.avatar || shownGoogleAvatar;
   const cover = editor.draft ? editor.draft.cover : media.cover;
   const book = SAMPLE_BOOKS.find((item) => item.id === bookId);
   const handleSignOut = async () => {
@@ -44,7 +46,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
     {isLoading ? <div className="mx-auto w-full max-w-6xl px-4 md:px-8"><ProfileSkeleton /></div> :
       <div className="profile-layout">
         <div className="profile-main">
-          <ProfileHeroCard profile={shownProfile} name={name} handle={emailPrefix ? `@${emailPrefix}` : undefined} firstReview={data.firstReview} bookTitle={book?.title || `Modern Chinese ${bookId}`} avatar={avatar} cover={cover} onEdit={() => editor.open({ ...profile, displayName: profile.displayName || fallbackName }, media.avatar || googleAvatar, media.cover)} />
+          <ProfileHeroCard profile={shownProfile} name={name} handle={emailPrefix ? `@${emailPrefix}` : undefined} firstReview={data.firstReview} bookTitle={book?.title || `Modern Chinese ${bookId}`} avatar={avatar} cover={cover} onEdit={() => editor.open({ ...profile, displayName: profile.displayName || fallbackName, googlePhoto: Boolean(shownGoogleAvatar) }, media.avatar || shownGoogleAvatar, media.cover)} />
           {(accountError || syncError) && <p role="alert" className="text-sm text-feedback-danger-text">{accountError || syncError}</p>}
           <div className="profile-mobile-streak"><ProfileStreak data={data} /></div>
           <ProfileStatistics data={data} />

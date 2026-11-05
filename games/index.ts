@@ -55,7 +55,7 @@ export default {
     let auth: Awaited<ReturnType<typeof verifyAccessToken>>;
     try { auth = await verifyAccessToken(request.headers.get('Authorization'), env.SUPABASE_URL); }
     catch { return reply({ error: 'Sign-in verification is unavailable. Try again shortly.' }, 503); }
-    if (!auth) return reply({ error: 'Sign in with your school account.' }, 401);
+    if (!auth) return reply({ error: 'Sign in again.' }, 401);
     const { userId, expiresAt } = auth;
     try {
       // The Lobby rate-limits its own tickets in memory: one Durable Object request fewer per connection.

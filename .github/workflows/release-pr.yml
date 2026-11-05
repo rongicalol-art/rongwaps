@@ -9,7 +9,7 @@ on:
     branches: [main, production]
 
 permissions:
-  contents: read
+  contents: write # the back-merge pushes a throwaway copy of production
   pull-requests: write
 
 concurrency:
@@ -59,12 +59,17 @@ jobs:
             gh pr create --base production --head main --title "$title" --body-file "$RUNNER_TEMP/body.md"
           fi
 
+      # From a throwaway copy of production, never production itself: with "Automatically delete head
+      # branches" on, merging a PR whose head is production deletes the live branch (PR #74, 2026-11-04).
       - name: Back-merge a production hotfix into main
         if: github.ref_name == 'production'
         run: |
           set -euo pipefail
           git fetch --no-tags origin main
           if [ "$(git rev-list --count --no-merges origin/main..origin/production)" = 0 ]; then exit 0; fi
-          existing=$(gh pr list --base main --head production --state open --json number --jq '.[0].number // ""')
-          [ -n "$existing" ] || gh pr create --base main --head production --title "Back-merge production fixes into main" \
-            --body "Production has commits main lacks (a hotfix). Merge this so the next release keeps them."
+          existing=$(gh pr list --base main --state open --json number,headRefName --jq '[.[] | select(.headRefName | startswith("back-merge/"))][0].headRefName // ""')
+          branch="${existing:-back-merge/production-$(git rev-parse --short origin/production)}"
+          # Production only moves forward, so this is a plain fast-forward of the copy.
+          git push origin "origin/production:refs/heads/$branch"
+          [ -n "$existing" ] || gh pr create --base main --head "$branch" --title "Back-merge production fixes into main" \
+            --body "Production has commits main lacks (a hotfix). Merge this so the next release keeps them. It comes from \`$branch\`, a copy of production, so merging it never deletes production."
