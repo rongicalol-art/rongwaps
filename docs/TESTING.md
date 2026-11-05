@@ -24,7 +24,20 @@ VITE_SUPABASE_URL=http://127.0.0.1:54321 VITE_SUPABASE_ANON_KEY=<from supabase s
 npm run test:e2e
 ```
 
-CI runs them on every push to `production` (Deploy waits for them), nightly on `main`, and on PRs touching saving, sign-in, the server or the database. A scratch stack works too: `E2E_SUPABASE_WORKDIR=<dir> E2E_SUPABASE_PROJECT=<project_id>`.
+`npm run gate` runs them locally whenever a change touches saving, sign-in, the server or the database. CI runs them on every Release PR and push to `production` (Deploy waits for them), weekly on `main`, and on PRs labelled `full-ci`. A scratch stack works too: `E2E_SUPABASE_WORKDIR=<dir> E2E_SUPABASE_PROJECT=<project_id>`.
+
+## Where checks run
+
+GitHub Actions minutes are limited (a private repo's free plan), so the full suite runs once per change on the author's machine and once more on GitHub before the live site:
+
+| Where | When | What |
+| --- | --- | --- |
+| `npm run gate` (local) | before every PR | every CI check; browser journeys and the backup self-test when the change needs them (`-- --all` forces them). Paste `output/gate/summary.md` into the PR. |
+| CI `pr` | PRs into `main` | secret scan, migration safety |
+| CI `merge` | push to `main` | migration safety, typecheck, unit tests, build (staging deploys after it) |
+| CI `full` | Release PRs, push to `production`, weekly on `main`, manual runs, PRs labelled `full-ci` | everything, journeys and backup self-test included |
+
+Draft PRs run nothing. A session without Docker (cloud or phone) labels its PR `full-ci` instead of running the gate.
 
 ## Layout
 
