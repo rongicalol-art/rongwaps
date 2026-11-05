@@ -6,7 +6,6 @@ import { ActionButton, BrandWordmark } from '../../lib/widgets';
 import { authService } from '../../services/authService';
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { isNameAllowed } from '../../../shared/nameFilter';
-import { studyTogetherOpenToAll } from '../../../shared/publicLaunch';
 import { DeskScene } from './DeskScene';
 import { SignInConsent } from './SignInParts';
 import { setSignInNotice, takeSignInNotice } from './signInNotice';
@@ -79,8 +78,7 @@ export function AgeCheck({ preview = false }: { preview?: boolean }) {
         <h1 className="mt-2 text-4xl font-black leading-[1.1] tracking-tight text-ui-ink-strong text-balance lg:text-6xl">
           {name ? `Welcome, ${name}!` : 'Welcome!'}
         </h1>
-        {currentUser?.email && <p className="mt-2 text-sm font-bold text-ui-muted-strong">Signed in as {currentUser.email}</p>}
-        <p className="mt-4 max-w-[30ch] text-lg font-bold leading-relaxed text-ui-muted-strong text-balance lg:text-xl">
+        <p className="mt-3 max-w-[30ch] text-lg font-bold leading-relaxed text-ui-muted-strong text-balance lg:text-xl">
           Ron’s Mandarin is for learners 18 and older.
         </p>
         <div className="mt-8 flex w-full max-w-sm flex-col items-center gap-2 lg:mt-10">
@@ -109,22 +107,22 @@ export function AgeCheck({ preview = false }: { preview?: boolean }) {
           )}
           {error && <p role="alert" className="mt-2 rounded-sm bg-feedback-danger-surface px-3.5 py-2.5 text-sm font-bold text-feedback-danger-text">{error}</p>}
         </div>
-        <p className="mt-8 max-w-sm text-sm font-bold text-ui-muted-strong text-balance">
-          {studyTogetherOpenToAll() ? 'In Study together, other learners see you' : 'From November 14, other learners in Study together will see you'} as “{shownName}” with your initials. Change it in Profile, or hide in Settings.
-        </p>
-        <SignInConsent className="mt-3 max-w-sm text-balance lg:text-sm" />
-        {busy !== 'yes' && busy !== 'no' && (
-          <ActionButton
-            variant="quiet"
-            onClick={() => void leave('switch')}
-            loading={busy === 'switch'}
-            loadingLabel="Signing out"
-            className="mt-2 normal-case tracking-normal text-sm"
-            frontClassName="text-ui-muted-strong hover:bg-transparent hover:text-ui-ink-strong"
-          >
-            Use a different Google account
-          </ActionButton>
-        )}
+        <div className="mt-10 flex max-w-md flex-col items-center gap-1.5 text-sm font-bold text-ui-muted lg:mt-12">
+          <p>In Study together you’ll appear as “{shownName}”. Change it in Profile.</p>
+          <SignInConsent className="text-ui-muted lg:text-sm" />
+          {busy !== 'yes' && busy !== 'no' && (
+            <ActionButton
+              variant="quiet"
+              onClick={() => void leave('switch')}
+              loading={busy === 'switch'}
+              loadingLabel="Signing out"
+              className="normal-case tracking-normal text-sm"
+              frontClassName="text-ui-muted hover:bg-transparent hover:text-ui-ink-strong"
+            >
+              {currentUser?.email ? `Not ${currentUser.email}? Switch account` : 'Use a different Google account'}
+            </ActionButton>
+          )}
+        </div>
       </main>
     </div>
   );
