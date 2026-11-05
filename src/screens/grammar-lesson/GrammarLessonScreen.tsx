@@ -227,6 +227,7 @@ export function GrammarLessonScreen({
                             contextTokens={getGrammarTeachingTokens(page)}
                             onOpenWord={setDictionaryWord}
                             onComplete={finishPractice}
+                            onBack={goBackToPreviousGrammar}
                             shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord)}
                           />
                         ) : (

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useReducedMotion } from 'motion/react';
-import { ActionButton, ContextualChineseText } from '../../lib/widgets';
+import { ActionButton, AppIcon, ContextualChineseText } from '../../lib/widgets';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 import type { GrammarPractice, GrammarWordToken, SlotBuildItem } from '../../types/models';
 import { checkSlotBuild, practiceSlots, slotBuildResult, slotBuildSolutions } from '../../utils/grammar/grammarPracticeCheck';
@@ -17,6 +17,8 @@ export interface ExercisePageProps {
   onOpenWord: (word: string) => void;
   /** Continue after the last item. */
   onComplete: () => void;
+  /** Back to the grammar page this exercise follows. */
+  onBack?: () => void;
   /** A panel (book page, dictionary, notes) is open on top: ignore key shortcuts. */
   shortcutsDisabled?: boolean;
 }
@@ -33,7 +35,7 @@ const sameText = (a: { traditional: string }, b: { traditional: string }) => a.t
  * The learner taps words into the blanks; an item checks itself when it is full.
  * Wrong: the why, wrong words go back, one retry. Wrong again: the answer fills in and the page moves on.
  */
-export function ExercisePage({ practice, script, showPinyin, contextTokens, onOpenWord, onComplete, shortcutsDisabled = false }: ExercisePageProps) {
+export function ExercisePage({ practice, script, showPinyin, contextTokens, onOpenWord, onComplete, onBack, shortcutsDisabled = false }: ExercisePageProps) {
   const reduceMotion = useReducedMotion();
   // One picture for every item (the book's people row) shows once under the title, as the book prints it.
   const shared = useMemo(() => {
@@ -152,6 +154,14 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
 
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col pb-24">
+      {onBack && (
+        <div className="mb-1 px-1 sm:px-2">
+          <ActionButton variant="quiet" size="md" className="!px-3 !text-ui-muted-strong" onClick={onBack} aria-label="Back to grammar" title="Back to grammar">
+            <AppIcon name="back" size={20} />
+            <span>Grammar</span>
+          </ActionButton>
+        </div>
+      )}
       <h1 className="mb-4 px-3 text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:mb-6 sm:px-5 sm:text-2xl">{practice.title}</h1>
       {shared && (
         <div className="mb-4 max-w-md px-3 sm:mb-6 sm:px-5">
