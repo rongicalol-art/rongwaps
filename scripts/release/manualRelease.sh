@@ -32,7 +32,12 @@ done
 pg_dump --version | grep -q ' 17\.' || { echo "pg_dump must be version 17 (production runs Postgres 17): export PATH=\"\$(brew --prefix postgresql@17)/bin:\$PATH\""; exit 1; }
 docker info > /dev/null 2>&1 || { echo "Start Docker first (the backup is proven by restoring it in a container)."; exit 1; }
 
+# Stages for when the owner approves from a phone: `plan` backs up and dry-runs, then stops (nothing live
+# changes); `apply` runs the live steps without the typed questions (the owner already said yes to the plan).
+STAGE=${1:-all}
+[[ "$STAGE" =~ ^(all|plan|apply)$ ]] || { echo "usage: manualRelease.sh [plan|apply]"; exit 1; }
 ask() {
+  [[ "$STAGE" == apply ]] && return 0
   local answer
   read -r -p "$1 Type yes to continue: " answer
   [[ "$answer" == yes ]] || { echo "Stopped. Nothing after this step was changed."; exit 1; }
@@ -52,6 +57,7 @@ cd "$WT"
 echo "Releasing production ${SHA:0:8}: $(git log -1 --format=%s)"
 echo
 
+if [[ "$STAGE" != apply ]]; then
 echo "== 1/5 Backup of the live database (read-only)"
 stamp=$(date -u +%Y-%m-%dT%H%M%SZ)
 target=~/rongwaps-backups/manual-$stamp-pre-release-${SHA:0:8}.tar.age
@@ -69,6 +75,13 @@ echo
 
 echo "== 2/5 Database migrations"
 supabase db push --db-url "$PRODUCTION_DATABASE_URL" --dry-run
+if [[ "$STAGE" == plan ]]; then echo "Plan done: backup saved, nothing live changed. Next: manualRelease.sh apply"; exit 0; fi
+else
+  # apply: the plan stage's backup must be from today and for this commit.
+  ls ~/rongwaps-backups/manual-"$(date -u +%Y-%m-%d)"T*-pre-release-"${SHA:0:8}".tar.age > /dev/null 2>&1 \
+    || { echo "No backup from today for ${SHA:0:8}: run manualRelease.sh plan first."; exit 1; }
+  echo "== 2/5 Database migrations"
+fi
 ask "Apply the migrations above to the LIVE database?"
 supabase db push --db-url "$PRODUCTION_DATABASE_URL" --yes
 applied=$(psql "$PRODUCTION_DATABASE_URL" --no-psqlrc -At -c 'select version from supabase_migrations.schema_migrations')
