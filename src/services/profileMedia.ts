@@ -13,8 +13,18 @@ export interface ProfileImageCrop {
   height: number;
 }
 
+export const PROFILE_IMAGE_UNREADABLE = 'This browser can’t open that image. Try a JPG, PNG or WebP.';
+
+const IMAGE_EXTENSION = /\.(jpe?g|png|webp|gif|bmp|avif|heic|heif)$/i;
+
+/** Some systems report no type for WebP/AVIF/HEIC files, so a known extension counts too; decoding is the real check. */
+function looksLikeImage(file: File): boolean {
+  if (file.type.startsWith('image/')) return true;
+  return (!file.type || file.type === 'application/octet-stream') && IMAGE_EXTENSION.test(file.name);
+}
+
 export function profileImageFileError(file: File): string | null {
-  if (!file.type.startsWith('image/')) return 'Choose an image file.';
+  if (!looksLikeImage(file)) return 'Choose an image file.';
   if (file.size > PROFILE_IMAGE_MAX_BYTES) return 'Choose an image smaller than 20 MB.';
   return null;
 }
@@ -44,7 +54,7 @@ export async function prepareProfileImage(file: File, kind: 'avatar' | 'cover', 
   try {
     const image = new Image();
     image.src = source;
-    await image.decode();
+    try { await image.decode(); } catch { throw new Error(PROFILE_IMAGE_UNREADABLE); }
     if (image.naturalWidth * image.naturalHeight > PROFILE_IMAGE_MAX_PIXELS) {
       throw new Error('That image is too large to edit. Choose one with fewer pixels.');
     }
