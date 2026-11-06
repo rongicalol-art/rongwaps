@@ -106,6 +106,12 @@ export function SourcesContent() {
               data is shared under the same license.
             </>,
             <>
+              Dictionary examples: sentences from the course books, and where the books have none, sentences from{' '}
+              <Ext href="https://tatoeba.org/">Tatoeba</Ext> (via <Ext href="https://www.manythings.org/anki/">manythings.org</Ext>),
+              licensed under <Ext href="https://creativecommons.org/licenses/by/2.0/fr/">CC BY 2.0 FR</Ext>; each one links to
+              its authors. Characters were converted to traditional and pinyin added for this app.
+            </>,
+            <>
               Levels: the Taiwan Benchmarks for the Chinese Language (TBCL, 臺灣華語文能力基準) by the National
               Academy for Educational Research, via <Ext href="https://github.com/ivankra/tocfl">ivankra/tocfl</Ext>;
               gaps filled from the New HSK syllabus (2025) via{' '}

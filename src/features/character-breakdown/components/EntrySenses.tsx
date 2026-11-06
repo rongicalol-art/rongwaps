@@ -33,7 +33,27 @@ function SenseExample({ example, speakerId }: { example: EntryExample; speakerId
       <span className="ui-translation text-sm leading-snug sm:text-base">
         <TranslationLines text={example.english} />
       </span>
+      {example.credit && <TatoebaCredit credit={example.credit} />}
     </div>
+  );
+}
+
+/** Attribution a Tatoeba sentence needs (CC BY): a quiet link to the sentence and its authors. */
+function TatoebaCredit({ credit }: { credit: string }) {
+  const ids = [...credit.matchAll(/#(\d+)/g)].map((match) => match[1]);
+  const authors = [...credit.matchAll(/\(([^)]+)\)/g)].map((match) => match[1]).join(', ');
+  const sentenceId = ids[ids.length - 1];
+  if (!sentenceId) return null;
+  return (
+    <a
+      href={`https://tatoeba.org/en/sentences/show/${sentenceId}`}
+      target="_blank"
+      rel="noreferrer"
+      title={authors ? `Sentence by ${authors} on Tatoeba (CC BY 2.0 FR)` : 'Sentence from Tatoeba (CC BY 2.0 FR)'}
+      className="w-fit rounded-xs text-xs font-bold text-ui-muted hover:underline focus-ring-inline"
+    >
+      Tatoeba{authors ? ` · ${authors}` : ''}
+    </a>
   );
 }
 

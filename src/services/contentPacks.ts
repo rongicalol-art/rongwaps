@@ -15,6 +15,7 @@ import {
   recordsToExampleCards,
   resolveMnemonicFromMap,
   type LevelIndex,
+  type SenseExampleRow,
 } from '../utils/packValidators';
 import type { PartsIndex } from '../utils/characters/parts';
 import type { ReadingsIndex } from '../utils/pinyin/pronunciation';
@@ -294,6 +295,16 @@ export async function fetchWordTypeTags(word: string): Promise<Map<string, strin
     return (await loadPack<Map<string, string>>('dictionary-pos', getDictionaryShard(word))) ?? new Map();
   } catch (error) {
     debugLogger.warn('Cache', 'Word-type pack unavailable.', error);
+    return new Map();
+  }
+}
+
+/** Example sentences per word type for `word`'s shard, by `posTagsKey`; empty when the pack is unavailable. */
+export async function fetchSenseExamples(word: string): Promise<Map<string, SenseExampleRow[]>> {
+  try {
+    return (await loadPack<Map<string, SenseExampleRow[]>>('dictionary-examples', getDictionaryShard(word))) ?? new Map();
+  } catch (error) {
+    debugLogger.warn('Cache', 'Dictionary examples unavailable.', error);
     return new Map();
   }
 }
