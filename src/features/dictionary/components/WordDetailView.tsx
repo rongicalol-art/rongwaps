@@ -80,7 +80,7 @@ export function WordDetailView({
   const reduceMotion = useReducedMotion();
   type WordTab = 'related' | 'examples';
   const tabs: BreakdownTab<WordTab>[] = [];
-  if (relatedLoading || relatedWords.length > 0) tabs.push({ id: 'related', label: 'Related words', count: relatedLoading ? undefined : relatedWords.length });
+  if (relatedLoading || relatedWords.length > 0) tabs.push({ id: 'related', label: 'Words', count: relatedLoading ? undefined : relatedWords.length });
   if (examplesLoading || examples.length > 0) tabs.push({ id: 'examples', label: 'Examples', count: examplesLoading ? undefined : examples.length });
   const [tab, setTab] = useState<WordTab | null>(null);
   useEffect(() => setTab(null), [word]);

@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 import { Skeleton } from '../../../lib/widgets';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useLevels } from '../../../hooks/useLevels';
-import { officialLevel, resolveLevel } from '../../../utils/lesson/levels';
 import { levelRank } from '../../../utils/vocabulary/wordOrdering';
 import { withTaiwanReading } from '../../../utils/vocabulary/wordEntry';
 import { BreakdownRow, ShowMoreButton } from '../../character-breakdown';
@@ -12,10 +11,9 @@ import { CourseOrLevelTag } from './CourseOrLevelTag';
 const DEFAULT_VISIBLE = 8;
 
 /**
- * Words related to this one as flat list rows: words containing it and book
- * words first (as fetched), then dictionary words easiest first. Only those and
- * words with a real level show at first; rare ones wait behind "See all".
- * Pinyin follows the page's Taiwan reading (`taiwan`, see `taiwanReadingOf`).
+ * Longer words that contain this one, as flat list rows: book words first (as
+ * fetched), then dictionary words easiest first. Pinyin follows the page's
+ * Taiwan reading (`taiwan`, see `taiwanReadingOf`).
  */
 export function WordRelatedList({ word, relatedWords, isLoading, onOpenWord, taiwan }: {
   word: string;
@@ -26,17 +24,15 @@ export function WordRelatedList({ word, relatedWords, isLoading, onOpenWord, tai
 }) {
   const [showAll, setShowAll] = useState(false);
   const levels = useLevels();
-  const { ordered, prominent } = useMemo(() => {
-    const close = relatedWords.filter((item) => item.close);
-    const rest = relatedWords
+  const ordered = useMemo(() => [
+    ...relatedWords.filter((item) => item.close),
+    ...relatedWords
       .filter((item) => !item.close)
       .map((item, index) => ({ item, index, level: levelRank(item.word, levels) }))
       .sort((a, b) => a.level - b.level || a.index - b.index)
-      .map(({ item }) => item);
-    const all = [...close, ...rest];
-    return { ordered: all, prominent: all.filter((item) => item.close || officialLevel(resolveLevel(item.word, levels)) !== undefined) };
-  }, [relatedWords, levels]);
-  const visible = showAll ? ordered : (prominent.length > 0 ? prominent : ordered).slice(0, DEFAULT_VISIBLE);
+      .map(({ item }) => item),
+  ], [relatedWords, levels]);
+  const visible = showAll ? ordered : ordered.slice(0, DEFAULT_VISIBLE);
 
   if (isLoading) {
     return (

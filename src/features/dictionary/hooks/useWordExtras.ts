@@ -5,14 +5,9 @@ import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '
 import { isNoisyDictionarySuggestion } from '../../../utils/vocabulary/dictionaryDefinitions';
 import type { WordExample } from '../../../types/models';
 
-const HANZI_RE = /[一-鿿㐀-䶿]/u;
-/** Book words per shared character: a common one (上) is in hundreds of them. */
-const BOOK_WORDS_PER_CHARACTER = 6;
-
 /**
- * A word related to this one. `close` words lead: they contain the whole word
- * (行李 → 行李箱) or are book words sharing a character; the rest only share a
- * character in the dictionary and show when common enough or behind "See all".
+ * A longer word that contains this one (行李 → 行李箱). `close` marks book
+ * words, which lead; the rest are dictionary words.
  */
 export interface WordRelatedWord extends DictionaryContainingWord {
   close: boolean;
@@ -26,13 +21,15 @@ const fromCard = (card: Flashcard): DictionaryContainingWord => ({
   definition: card.back,
 });
 
-/** Related words, most related first: whole-word matches, then book words, then dictionary words sharing a character. */
+/**
+ * Longer words that contain this whole word: book words first (earliest lesson
+ * first), then dictionary words. A word that only shares one character (行李 and
+ * 旅行) is not related: it belongs to that character's own page.
+ */
 async function fetchRelatedWords(word: string): Promise<WordRelatedWord[]> {
-  const chars = [...new Set(Array.from(word).filter((char) => HANZI_RE.test(char)))];
-  const [cards, whole, ...perCharacter] = await Promise.all([
+  const [cards, containing] = await Promise.all([
     fetchVocabulary().catch(() => [] as Flashcard[]),
-    chars.length > 1 ? searchDictionaryWordsContaining(word) : Promise.resolve([]),
-    ...chars.map((char) => searchDictionaryWordsContaining(char)),
+    searchDictionaryWordsContaining(word),
   ]);
   const seen = new Set<string>([word]);
   const results: WordRelatedWord[] = [];
@@ -41,16 +38,11 @@ async function fetchRelatedWords(word: string): Promise<WordRelatedWord[]> {
     seen.add(item.word);
     results.push({ ...item, close });
   };
-
-  const bookWords = cards
-    .filter((card) => card.front !== word && chars.some((char) => card.front.includes(char)))
-    .sort((a, b) => a.bookId - b.bookId || a.lessonId - b.lessonId);
-  for (const card of bookWords) if (card.front.includes(word)) add(fromCard(card), true);
-  for (const item of whole) add(item, true);
-  for (const char of chars) {
-    bookWords.filter((card) => card.front.includes(char)).slice(0, BOOK_WORDS_PER_CHARACTER).forEach((card) => add(fromCard(card), true));
-  }
-  for (const list of perCharacter) for (const item of list) add(item, false);
+  cards
+    .filter((card) => card.front !== word && card.front.includes(word))
+    .sort((a, b) => a.bookId - b.bookId || a.lessonId - b.lessonId)
+    .forEach((card) => add(fromCard(card), true));
+  containing.forEach((item) => add(item, false));
   return results;
 }
 
