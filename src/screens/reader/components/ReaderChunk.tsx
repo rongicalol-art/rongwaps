@@ -167,6 +167,9 @@ export const ReaderChunk = memo(function ReaderChunk({
       }}
       className={cn(
         'outline-none -mx-0.5 px-0.5 rounded box-decoration-clone transition-colors duration-100',
+        // Plain text: a word never breaks across lines (教師 | 節). Not with pinyin: Chrome then finds no break
+        // between unbreakable ruby words at all, and the line overflows.
+        !showPinyin && 'whitespace-nowrap',
         isNewWord && 'underline decoration-brand-primary decoration-[3px] underline-offset-[6px] [text-decoration-skip-ink:none]',
         isActive
           ? 'bg-brand-primary-soft-edge text-ui-ink-strong'
@@ -234,10 +237,22 @@ interface ReaderSegmentChunksProps extends Pick<ReaderChunkProps, 'lineIndex' | 
   newWordChunks: ReadonlySet<PhraseChunk>;
   wordInteractions: ReaderWordInteractions;
   punctuationClassName: string;
+  /** Plain text: a one-character last word (嗎, 呢, 了) wraps with the word before it, so no line holds it alone. */
+  keepEndTogether?: boolean;
 }
 
 /** One sentence or clause: punctuation as plain text, every word as a ReaderChunk. */
-export function ReaderSegmentChunks({ segment, currentTime, newWordChunks, wordInteractions, punctuationClassName, ...shared }: ReaderSegmentChunksProps) {
+export function ReaderSegmentChunks({ keepEndTogether = false, ...props }: ReaderSegmentChunksProps) {
+  const nodes = renderSegmentChunks(props);
+  if (!keepEndTogether || props.showPinyin) return nodes;
+  const words = props.segment.chunks.flatMap((chunk, index) => (chunk.isPunctuation ? [] : [index]));
+  const last = props.segment.chunks[words[words.length - 1]];
+  if (words.length < 2 || [...last.text].length !== 1) return nodes;
+  const start = words[words.length - 2];
+  return [...nodes.slice(0, start), <span key="end" className="whitespace-nowrap">{nodes.slice(start)}</span>];
+}
+
+function renderSegmentChunks({ segment, currentTime, newWordChunks, wordInteractions, punctuationClassName, ...shared }: Omit<ReaderSegmentChunksProps, 'keepEndTogether'>) {
   return segment.chunks.map((chunk, chunkIdx) => {
     if (chunk.isPunctuation) return <span key={chunkIdx} className={punctuationClassName}>{chunk.text}</span>;
     const chunkKey = `${segment.id}-${chunkIdx}`;
