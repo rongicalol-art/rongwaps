@@ -1,7 +1,7 @@
 import { stripPinyinTones } from './pinyinNormalize';
 import { escapeRegExp } from './escapeRegExp';
 import { builtWith, type PartsIndex } from './parts';
-import { sanitizeDictionaryDefinitions } from './dictionaryDefinitions';
+import { isReferenceOnlyDefinitions, sanitizeDictionaryDefinitions } from './dictionaryDefinitions';
 import { getSemanticSynonymStems, stemEnglishPhrase, stemEnglishWord } from './englishStem';
 
 export interface SearchResult {
@@ -12,6 +12,10 @@ export interface SearchResult {
   definitions: string[] | string;
   measure_words?: string[];
   courseDefinition?: string;
+  /** The course's (Taiwan) reading of this row, shown instead of the dictionary's. */
+  coursePinyin?: string;
+  /** The course's everyday gloss ("Simple definitions"). */
+  courseSimple?: string;
   bookId?: number; lessonId?: number; pos?: string; audio?: string;
   match_type: 'exact' | 'prefix' | 'partial';
   total_score: number;
@@ -20,11 +24,49 @@ export interface SearchResult {
 // Compact tuple: [id, simplified, traditional (if diff else ''), pinyin_accented, pinyin_flat, definitions[], freq]
 export type CompactSearchEntry = [number, string, string, string, string, string[], number];
 
-export type CourseFields = Pick<SearchResult, 'courseDefinition' | 'bookId' | 'lessonId' | 'pos' | 'audio'>;
-/** Course meaning, lesson tag and recording for a result; the recording only when its reading matches. */
-export function courseFields(row: Pick<SearchResult, 'pinyin_accented'>, card: { back: string; bookId: number; lessonId: number; pos?: string; pinyin?: string; audio?: string }): CourseFields {
+const flatPinyin = (pinyin: string | null | undefined) => (pinyin ?? '').normalize('NFC').toLowerCase().replace(/[\s'’·]/g, '');
+
+/** One row per word and reading: 嗎 ma and 嗎 má are different entries, 長 and 长 the same one. */
+export function searchEntryKey(traditional: string, pinyin: string | null | undefined): string {
+  return `${traditional}\u0000${flatPinyin(pinyin)}`;
+}
+
+/** A reading's key in the word-type pack (`public/data/dictionary-pos/`): the word and its dictionary pinyin. */
+export function posTagsKey(traditional: string, pinyin: string | null | undefined): string {
+  return `${traditional}|${flatPinyin(pinyin)}`;
+}
+
+/** The word type of a reading's first tagged sense, from its pack value ("<checksum>|N,V,,Vs"). */
+export function firstPosTag(value: string | undefined): string | undefined {
+  return value?.split('|')[1]?.split(',').find(Boolean);
+}
+
+/**
+ * Dictionary rows for a typed word, best first: the word as written before
+ * spellings that only share its simplified form (和 before 龢), stubs among
+ * those dropped (咊 "old variant of 和"), then by learner rank.
+ */
+export function rankExactRows<T extends { traditional: string; definitions: unknown }>(rows: readonly T[], query: string, scoreOf: (row: T) => number | undefined): T[] {
+  return rows
+    .filter((row) => row.traditional === query || !isReferenceOnlyDefinitions(row.definitions))
+    .sort((a, b) => Number(b.traditional === query) - Number(a.traditional === query) || (scoreOf(b) ?? -1) - (scoreOf(a) ?? -1));
+}
+
+export type CourseFields = Pick<SearchResult, 'courseDefinition' | 'coursePinyin' | 'courseSimple' | 'bookId' | 'lessonId' | 'pos' | 'audio'>;
+/**
+ * Course meaning, reading, lesson tag and recording for a row the course
+ * teaches. Callers pass only cards linked to this row's reading
+ * (`courseCardsByRow`), so the recording always matches.
+ */
+export function courseFields(row: Pick<SearchResult, 'pinyin_accented'>, card: { back: string; simple?: string; bookId: number; lessonId: number; pos?: string; pinyin?: string; audio?: string }): CourseFields {
+  const flat = (value: string) => value.normalize('NFC').toLowerCase().replace(/[\s'’]/g, '');
+  const readings = (card.pinyin ?? '').split('/').map((reading) => reading.trim()).filter(Boolean);
+  // Only a reading that differs from the dictionary's (Taiwan tones: 星期 xīngqí), never mere spacing.
+  const coursePinyin = readings.some((reading) => flat(reading) === flat(row.pinyin_accented)) ? undefined : readings[0];
   return { courseDefinition: card.back, bookId: card.bookId, lessonId: card.lessonId, pos: card.pos,
-    ...(card.pinyin?.trim().toLowerCase() === row.pinyin_accented.trim().toLowerCase() ? { audio: card.audio } : {}),
+    ...(coursePinyin ? { coursePinyin } : {}),
+    ...(card.simple?.trim() ? { courseSimple: card.simple.trim() } : {}),
+    ...(card.audio ? { audio: card.audio } : {}),
   };
 }
 
@@ -481,9 +523,13 @@ export function searchInIndex(
     let senseBonus = 0;
 
     if (isHanzi) {
-      if (s === query || trad === query) {
+      if (trad === query) {
         matchType = 'exact';
         tier = 6;
+      } else if (s === query) {
+        // A simplified spelling ("长") still opens its word, below words written exactly as typed (合 before 閤).
+        matchType = 'exact';
+        tier = 5;
       } else if (s.startsWith(query) || trad.startsWith(query)) {
         matchType = 'prefix';
         tier = 4;
@@ -636,11 +682,11 @@ export function searchInIndex(
 
   matches.sort((a, b) => b.total_score - a.total_score || a.simplified.length - b.simplified.length);
   const hasStrongMatches = matches.some((match) => match.total_score >= 2000);
-  const seenWords = new Set<string>();
+  const seenEntries = new Set<string>();
   return matches.filter((match) => {
-    if ((hasStrongMatches && match.total_score < 2000) || seenWords.has(match.simplified) || seenWords.has(match.traditional)) return false;
-    seenWords.add(match.simplified);
-    seenWords.add(match.traditional);
+    const key = searchEntryKey(match.traditional, match.pinyin_accented);
+    if ((hasStrongMatches && match.total_score < 2000) || seenEntries.has(key)) return false;
+    seenEntries.add(key);
     return true;
   }).slice(0, resultLimit);
 }

@@ -1,18 +1,15 @@
 import { debugLogger } from '../../../utils/debug/debugLogger';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { DetailShell, ScreenHeader } from '../../../lib/widgets';
 import { useLevel } from '../../../hooks/useLevels';
 import { useAppStore } from '../../../store/useAppStore';
+import { useWordEntry } from '../../../hooks/useWordEntry';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
-import { searchVocabulary } from '../../../services/vocabularyService';
-import { cleanVocabText } from '../../../utils/vocabulary/vocabCleaner';
-import { sanitizeDictionaryDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
-import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
+import { readingHeadline } from '../../../utils/vocabulary/wordEntry';
 import type { DBDictionaryEntry } from '../../../types/database';
-import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { BreakdownTabs, type BreakdownTab } from '../../character-breakdown';
+import { AlsoReadings, BreakdownTabs, EntryLayout, EntrySenses, useEntryLead, type BreakdownTab } from '../../character-breakdown';
 import { MemoryHookBlock } from '../../character-memory-hooks';
 import { WordExamplesSection } from './WordExamplesSection';
 import { WordDecompositionStrip } from './WordDecompositionStrip';
@@ -23,10 +20,23 @@ import { FallbackWords } from './FallbackWords';
 import { NotFound } from './NotFound';
 import { useWordExtras } from '../hooks/useWordExtras';
 
-const HANZI_RE = /[\u3400-\u9FFF]/u;
+const HANZI_RE = /[㐀-鿿]/u;
+
+/** A phrase with no entry of its own, read as its dictionary words (我有拖延症 → 我 · 有 · 拖延症). */
+async function phraseParts(word: string): Promise<Array<{ word: string; entries: DBDictionaryEntry[] }>> {
+  const chineseOnly = Array.from(word).filter((character) => HANZI_RE.test(character)).join('');
+  const segmented = Array.from(new Intl.Segmenter('zh-TW', { granularity: 'word' }).segment(chineseOnly))
+    .map((segment) => segment.segment)
+    .filter((part) => HANZI_RE.test(part));
+  const candidates = segmented.length === 1 && segmented[0] === chineseOnly ? Array.from(chineseOnly) : segmented;
+  const resolved = await Promise.all(candidates.map(async (part) => ({ word: part, entries: await getDictionaryEntries(part) })));
+  return resolved.filter((item) => item.entries.length > 0);
+}
 
 interface WordDetailViewProps {
   word: string;
+  /** The reading it was opened for (a search row's pinyin). */
+  reading?: string | null;
   onClose?: () => void;
   /** Set when stacked over another view: shows a back arrow instead of close. */
   onBack?: () => void;
@@ -36,6 +46,7 @@ interface WordDetailViewProps {
 
 export function WordDetailView({
   word,
+  reading,
   onClose,
   onBack,
   pushCharacter,
@@ -44,84 +55,27 @@ export function WordDetailView({
   const activeBookId = useAppStore((state) => state.activeBookId);
   const activeBook = SAMPLE_BOOKS.find((book) => book.id === activeBookId) || SAMPLE_BOOKS[0];
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
 
-  const [entries, setEntries] = useState<DBDictionaryEntry[]>([]);
-  const [fallbackWords, setFallbackWords] = useState<Array<{ word: string; entries: DBDictionaryEntry[] }>>([]);
-  const [inCourseWords, setInCourseWords] = useState<Flashcard[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { entry, isLoading } = useWordEntry(word);
+  const topRef = useRef<HTMLDivElement>(null);
+  const { lead, selectReading } = useEntryLead(entry, word, reading, topRef);
+  const [fallbackWords, setFallbackWords] = useState<Array<{ word: string; entries: DBDictionaryEntry[] }> | null>(null);
   const { examples, relatedWords, examplesLoading, relatedLoading } = useWordExtras(word);
+  const level = useLevel(entry?.word ?? word);
 
   useEffect(() => {
-    let isMounted = true;
-    const fetchWord = async () => {
-      setLoading(true);
-      try {
-        const data = await getDictionaryEntries(word);
-        const vocabularyWords = await searchVocabulary(word);
-
-        let wordFallbacks: Array<{ word: string; entries: DBDictionaryEntry[] }> = [];
-        if (data.length === 0 && word.length > 1) {
-          const chineseOnly = Array.from(word)
-            .filter((character) => HANZI_RE.test(character))
-            .join('');
-          const segmented = Array.from(
-            new Intl.Segmenter('zh-TW', { granularity: 'word' }).segment(chineseOnly),
-          )
-            .map((segment) => segment.segment)
-            .filter((w) => HANZI_RE.test(w));
-          const candidates =
-            segmented.length === 1 && segmented[0] === chineseOnly
-              ? Array.from(chineseOnly)
-              : segmented;
-          const resolved = await Promise.all(
-            candidates.map(async (w) => ({ word: w, entries: await getDictionaryEntries(w) })),
-          );
-          wordFallbacks = resolved.filter((item) => item.entries.length > 0);
-        }
-
-        if (isMounted) {
-          setEntries(data);
-          setFallbackWords(wordFallbacks);
-          setInCourseWords(
-            vocabularyWords.filter(
-              (v) =>
-                v.front === word ||
-                v.traditional === word ||
-                v.simplified === word ||
-                cleanVocabText(v.traditional || '') === word ||
-                cleanVocabText(v.simplified || '') === word ||
-                cleanVocabText(v.front || '') === word,
-            ),
-          );
-          setLoading(false);
-        }
-      } catch (err) {
-        debugLogger.error('Supabase', 'WordDetailView: failed to load word:', err);
-        if (isMounted) setLoading(false);
-      }
-    };
-    fetchWord();
-    return () => {
-      isMounted = false;
-    };
-  }, [word]);
-
-  const primary = entries[0];
-  const primaryChar = primary?.traditional || word;
-  const pinyin = primary?.pinyin?.[0] ? numberToToneMarks(primary.pinyin[0]) : '';
-  const sanitized = useMemo(() => sanitizeDictionaryDefinitions(primary?.definitions), [primary]);
-  const primaryCourseCard = inCourseWords[0] ?? undefined;
-  const level = useLevel(primaryChar);
-
-  // Headline definition: the course book's own wording first; otherwise the
-  // shortest dictionary meaning, which reads best as a quick summary.
-  const heroDefinition = useMemo(() => {
-    const courseDefinition = primaryCourseCard?.back?.trim();
-    if (courseDefinition) return courseDefinition;
-    const lines = sanitized.definitions.filter((line) => line.trim().length > 0);
-    if (lines.length === 0) return undefined;
-    return lines.reduce((shortest, line) => (line.length < shortest.length ? line : shortest));
-  }, [primaryCourseCard, sanitized]);
+    setFallbackWords(null);
+    if (isLoading || lead || Array.from(word).length < 2) return undefined;
+    let active = true;
+    phraseParts(word)
+      .then((parts) => { if (active) setFallbackWords(parts); })
+      .catch((error) => {
+        debugLogger.error('Supabase', 'WordDetailView: failed to read the phrase as words:', error);
+        if (active) setFallbackWords([]);
+      });
+    return () => { active = false; };
+  }, [word, isLoading, lead]);
 
   const reduceMotion = useReducedMotion();
   type WordTab = 'related' | 'examples';
@@ -131,6 +85,7 @@ export function WordDetailView({
   const [tab, setTab] = useState<WordTab | null>(null);
   useEffect(() => setTab(null), [word]);
   const activeTab = tabs.find((item) => item.id === tab)?.id ?? tabs[0]?.id;
+  const loading = isLoading || (!lead && fallbackWords === null && Array.from(word).length > 1);
 
   return (
     <DetailShell.Root
@@ -150,7 +105,7 @@ export function WordDetailView({
             <h1 className="w-full text-center text-base sm:text-lg font-black uppercase tracking-wider text-ui-ink-strong">Word breakdown</h1>
           }
         />
-        <div className="relative mx-auto flex min-h-full w-full max-w-[800px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6">
+        <div className="relative mx-auto flex min-h-full w-full max-w-[800px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:max-w-[1180px]">
           {loading ? (
             <motion.div
               key="word-skeleton"
@@ -161,7 +116,7 @@ export function WordDetailView({
             >
               <WordDetailSkeleton />
             </motion.div>
-          ) : entries.length === 0 ? (
+          ) : !entry || !lead ? (
             <motion.div
               key="word-fallback"
               initial={{ opacity: 0 }}
@@ -169,7 +124,7 @@ export function WordDetailView({
               transition={{ duration: 0.16 }}
               className="w-full"
             >
-              {fallbackWords.length > 0 ? (
+              {fallbackWords && fallbackWords.length > 0 ? (
                 <FallbackWords word={word} fallbackWords={fallbackWords} onOpenWord={setDictionaryWord} />
               ) : (
                 <NotFound word={word} />
@@ -181,50 +136,51 @@ export function WordDetailView({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="flex w-full flex-col gap-7"
+              className="w-full"
             >
-              <WordHero
-                word={word}
-                accentHex={activeBook.accentHex}
-                pinyin={pinyin}
-                meaning={heroDefinition}
-                entries={entries}
-                courseCard={primaryCourseCard}
-                level={level}
-                primaryChar={primaryChar}
+              <EntryLayout
+                topRef={topRef}
+                hero={(
+                  <WordHero
+                    word={entry.word}
+                    accentHex={activeBook.accentHex}
+                    pinyin={lead.pinyin}
+                    meaning={readingHeadline(lead, simpleDefinitions) || undefined}
+                    courseCard={lead.cards[0]}
+                    level={lead === entry.readings[0] ? level : null}
+                    alsoReadings={<AlsoReadings readings={entry.readings} lead={lead} onSelect={selectReading} />}
+                  />
+                )}
+                intro={<>
+                  <WordDecompositionStrip word={entry.word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+                  <MemoryHookBlock cacheKey={`word_${entry.word}`} word={entry.word} pinyin={lead.pinyin || undefined} />
+                </>}
+                senses={<EntrySenses entry={entry} leadKey={lead.key} onSelectReading={selectReading} onOpenWord={pushCharacter} />}
+                aside={<>
+                  {activeTab && (
+                    <div className="flex min-w-0 flex-col gap-3">
+                      <BreakdownTabs tabs={tabs} active={activeTab} onChange={setTab} />
+                      <motion.div
+                        key={`${word}-${activeTab}`}
+                        role="tabpanel"
+                        id={`breakdown-panel-${activeTab}`}
+                        aria-labelledby={`breakdown-tab-${activeTab}`}
+                        initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1] }}
+                        className="min-w-0"
+                      >
+                        {activeTab === 'related' && (
+                          <WordRelatedList word={word} relatedWords={relatedWords} isLoading={relatedLoading} onOpenWord={setDictionaryWord} />
+                        )}
+                        {activeTab === 'examples' && (
+                          <WordExamplesSection examples={examples} isLoading={examplesLoading} word={word} />
+                        )}
+                      </motion.div>
+                    </div>
+                  )}
+                </>}
               />
-
-              <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
-
-              <MemoryHookBlock
-                cacheKey={`word_${word}`}
-                word={word}
-                pinyin={pinyin || undefined}
-                emptyText={<>No memory hook for this word yet.</>}
-              />
-
-              {activeTab && (
-                <div className="flex min-w-0 flex-col gap-3">
-                  <BreakdownTabs tabs={tabs} active={activeTab} onChange={setTab} />
-                  <motion.div
-                    key={`${word}-${activeTab}`}
-                    role="tabpanel"
-                    id={`breakdown-panel-${activeTab}`}
-                    aria-labelledby={`breakdown-tab-${activeTab}`}
-                    initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1] }}
-                    className="min-w-0"
-                  >
-                    {activeTab === 'related' && (
-                      <WordRelatedList word={word} relatedWords={relatedWords} isLoading={relatedLoading} onOpenWord={setDictionaryWord} />
-                    )}
-                    {activeTab === 'examples' && (
-                      <WordExamplesSection examples={examples} isLoading={examplesLoading} word={word} />
-                    )}
-                  </motion.div>
-                </div>
-              )}
             </motion.div>
           )}
         </div>

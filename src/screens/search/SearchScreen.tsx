@@ -92,6 +92,8 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
               traditional: card.traditional || card.front,
               pinyin_accented: card.pinyin || '',
               definitions: [card.back],
+              courseDefinition: card.back,
+              courseSimple: card.simple,
               bookId: card.bookId,
               lessonId: card.lessonId,
               pos: card.pos,

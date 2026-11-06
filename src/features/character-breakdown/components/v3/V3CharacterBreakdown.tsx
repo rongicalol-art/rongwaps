@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import type { DBCharacterBreakdown } from '../../../../types/database';
 import type { Flashcard } from '../../../../data/flashcards';
@@ -15,13 +15,17 @@ import type { BuiltWithMember, RankedSoundFamily } from '../../utils/rankBuiltWi
 import type { ResolvedSoundClue } from '../../hooks/useSoundClue';
 import { usePrimaryReading } from '../../../../hooks/usePronunciation';
 import { useCharExampleSentences } from '../../hooks/useCharExampleSentences';
+import { useWordEntry } from '../../../../hooks/useWordEntry';
+import { useEntryLead } from '../../hooks/useEntryLead';
+import { EntrySenses } from '../EntrySenses';
+import { EntryLayout } from '../EntryLayout';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 type DetailTab = 'words' | 'sentences' | 'sound' | 'appears';
 
 export function V3CharacterBreakdown({
   activeChar, charData, charCardsInfo, activeBook, builtWithMembers, soundFamily, relatedWords,
-  soundClue, setDictionaryWord, openTree, openRelatedBreakdown,
+  soundClue, setDictionaryWord, openTree, openRelatedBreakdown, reading,
 }: {
   activeChar: string;
   charData: DBCharacterBreakdown | null;
@@ -34,8 +38,13 @@ export function V3CharacterBreakdown({
   setDictionaryWord: (word: string) => void;
   openTree: () => void;
   openRelatedBreakdown: () => void;
+  /** The reading the character was opened for (a search row's pinyin). */
+  reading?: string | null;
 }) {
-  const primaryPinyin = usePrimaryReading(activeChar, charData?.pinyin?.[0]);
+  const { entry } = useWordEntry(activeChar);
+  const topRef = useRef<HTMLDivElement>(null);
+  const { lead, selectReading } = useEntryLead(entry, activeChar, reading, topRef);
+  const primaryPinyin = usePrimaryReading(activeChar, lead?.pinyin || charData?.pinyin?.[0]);
   const { sentences, isLoading: sentencesLoading } = useCharExampleSentences(activeChar);
   const reduceMotion = useReducedMotion();
 
@@ -50,10 +59,15 @@ export function V3CharacterBreakdown({
   const active = tabs.find((item) => item.id === tab)?.id ?? tabs[0]?.id;
 
   return (
-    <div className="mx-auto flex w-full min-w-0 max-w-[800px] flex-col gap-6">
-      <V3CharacterSummary character={activeChar} data={charData} courseCards={charCardsInfo} accentHex={activeBook.accentHex} />
-      <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" showHeading={false} onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
-      <V3MemoryHook character={activeChar} pinyin={primaryPinyin} />
+    <EntryLayout
+      topRef={topRef}
+      hero={<V3CharacterSummary character={activeChar} data={charData} courseCards={charCardsInfo} accentHex={activeBook.accentHex} entry={entry} lead={lead} onSelectReading={selectReading} />}
+      intro={<>
+        <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" showHeading={false} onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+        <V3MemoryHook character={activeChar} pinyin={primaryPinyin} />
+      </>}
+      senses={entry && lead ? <EntrySenses entry={entry} leadKey={lead.key} onSelectReading={selectReading} onOpenWord={setDictionaryWord} /> : null}
+      aside={<>
       {active && (
         <div className="flex min-w-0 flex-col gap-3">
           <BreakdownTabs tabs={tabs} active={active} onChange={setTab} />
@@ -68,7 +82,7 @@ export function V3CharacterBreakdown({
             className="min-w-0"
           >
             {active === 'words' && (
-              <V3WordsList relatedWords={relatedWords} activeChar={activeChar} setDictionaryWord={setDictionaryWord} openRelatedBreakdown={openRelatedBreakdown} />
+              <V3WordsList relatedWords={relatedWords} activeChar={activeChar} readings={entry?.readings} setDictionaryWord={setDictionaryWord} openRelatedBreakdown={openRelatedBreakdown} />
             )}
             {active === 'sentences' && <V3ExampleSentences character={activeChar} sentences={sentences} isLoading={sentencesLoading} />}
             {active === 'sound' && soundFamily && (
@@ -80,6 +94,7 @@ export function V3CharacterBreakdown({
           </motion.div>
         </div>
       )}
-    </div>
+      </>}
+    />
   );
 }

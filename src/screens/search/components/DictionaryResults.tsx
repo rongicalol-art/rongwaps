@@ -14,7 +14,7 @@ interface DictionaryResultsProps {
   onRetry?: () => void;
   /** Filters are narrowing the list, so an empty list says so. */
   isFiltered?: boolean;
-  onOpenWord: (word: string) => void;
+  onOpenWord: (word: string, reading?: string) => void;
   onToggleFavorite?: (word: string) => void;
 }
 

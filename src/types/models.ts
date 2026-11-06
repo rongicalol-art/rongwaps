@@ -87,6 +87,10 @@ export interface DictionaryListEntry {
   traditional: string;
   pinyin_accented: string;
   definitions: string | string[] | Record<string, unknown>;
+  /** The lesson's meaning, reading and simple gloss when a lesson teaches this row's reading. */
+  courseDefinition?: string;
+  coursePinyin?: string;
+  courseSimple?: string;
   bookId?: number;
   lessonId?: number;
   pos?: string;

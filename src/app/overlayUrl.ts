@@ -7,7 +7,7 @@
  *
  *   ?reader=<index|true>    (+ legacy ?readingIndex=<n>)
  *   ?grammarPart=<id>
- *   ?word=<text>
+ *   ?word=<text>(&r=<pinyin>)
  *   ?activity=<activity id>
  *
  * Pure module: parse reads a search string, build produces one. The sync
@@ -19,6 +19,8 @@ export interface OverlayUrlState {
   readerIndex: number | null;
   grammarPartId: string | null;
   dictionaryWord: string | null;
+  /** Which reading of the word (`r`); only with `word`. */
+  dictionaryReading: string | null;
   activity: string | null;
 }
 
@@ -26,6 +28,7 @@ const EMPTY: OverlayUrlState = {
   readerIndex: null,
   grammarPartId: null,
   dictionaryWord: null,
+  dictionaryReading: null,
   activity: null,
 };
 
@@ -48,6 +51,7 @@ export function parseOverlayParams(search: string): OverlayUrlState {
     readerIndex,
     grammarPartId: params.get('grammarPart'),
     dictionaryWord: params.get('word'),
+    dictionaryReading: params.get('word') ? params.get('r') : null,
     activity: params.get('activity'),
   };
 }
@@ -62,10 +66,11 @@ function parseBoundedIndex(value: string | null): number | null {
 export function buildOverlayParams(state: OverlayUrlState, search = ''): string {
   const params = new URLSearchParams(search);
   // Overlay sync owns these keys; preserve screen-owned params such as room.
-  for (const key of ['reader', 'readingIndex', 'grammarPart', 'word', 'activity']) params.delete(key);
+  for (const key of ['reader', 'readingIndex', 'grammarPart', 'word', 'r', 'activity']) params.delete(key);
   if (state.readerIndex !== null) params.set('reader', String(state.readerIndex));
   if (state.grammarPartId) params.set('grammarPart', state.grammarPartId);
   if (state.dictionaryWord) params.set('word', state.dictionaryWord);
+  if (state.dictionaryWord && state.dictionaryReading) params.set('r', state.dictionaryReading);
   if (state.activity) params.set('activity', state.activity);
   return params.size > 0 ? `?${params.toString()}` : '';
 }

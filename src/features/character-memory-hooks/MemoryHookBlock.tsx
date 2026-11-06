@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import { AppIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import { renderHookText } from './hookText';
@@ -11,7 +10,6 @@ export interface MemoryHookBlockProps {
   word: string;
   /** Optional tone-marked pinyin for the tile. */
   pinyin?: string;
-  emptyText: ReactNode;
   className?: string;
 }
 
@@ -27,12 +25,13 @@ function tileMetrics(word: string): { tile: string; glyph: string } {
  * Full-width "Memory Hook" card for detail views (character breakdown, word
  * detail): a solid gold word tile on the left — its own small "word of the
  * day" panel with the glyph and optional pinyin — beside the hook text on the
- * warm cream surface. Reads the canonical hook pack-first; a miss shows the
- * provided empty text.
+ * warm cream surface. Reads the canonical hook pack-first; a word without a
+ * hook shows nothing.
  */
-export function MemoryHookBlock({ cacheKey, word, pinyin, emptyText, className }: MemoryHookBlockProps) {
+export function MemoryHookBlock({ cacheKey, word, pinyin, className }: MemoryHookBlockProps) {
   const { hook, loaded } = useMemoryHook(cacheKey, true);
   const metrics = tileMetrics(word);
+  if (loaded && !hook) return null;
 
   return (
     <aside
@@ -70,16 +69,10 @@ export function MemoryHookBlock({ cacheKey, word, pinyin, emptyText, className }
           </span>
         </div>
 
-        {loaded ? (
-          hook ? (
-            <p className="text-sm sm:text-base font-bold leading-relaxed text-ui-ink">
-              {renderHookText(hook)}
-            </p>
-          ) : (
-            <p className="text-sm font-bold leading-relaxed text-ui-muted-strong">
-              {emptyText}
-            </p>
-          )
+        {loaded && hook ? (
+          <p className="text-sm sm:text-base font-bold leading-relaxed text-ui-ink">
+            {renderHookText(hook)}
+          </p>
         ) : (
           <div className="flex flex-col justify-start gap-2 pt-1">
             <span className="block h-4 w-full animate-pulse rounded-full bg-feedback-warning-edge/15" />

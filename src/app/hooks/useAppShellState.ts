@@ -12,6 +12,7 @@ export function useAppShellState() {
     setIsSettingsOpen: useAppStore((state) => state.setIsSettingsOpen),
     isLibraryFolderView: useAppStore((state) => state.libraryActiveView === 'folder'),
     dictionaryWord: useAppStore((state) => state.dictionaryWord),
+    dictionaryReading: useAppStore((state) => state.dictionaryReading),
     setDictionaryWord: useAppStore((state) => state.setDictionaryWord),
   };
 }

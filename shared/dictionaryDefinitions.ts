@@ -199,6 +199,8 @@ export function sanitizeDictionaryDefinitions(
     }
 
     text = humanizeCedictMarkup(text, options.preferredScript);
+    // "Taiwan pr. [han4]" → "Taiwan pr. hàn"
+    text = text.replace(/Taiwan pr\.\s*\[([^\]]+)\]/gi, (_match, reading: string) => `Taiwan pr. ${numberToToneMarks(reading)}`);
     text = text.replace(/classifier for/gi, 'measure word for');
     text = tidyUnbalancedParens(text.replace(/\(\s*\)/g, ''));
     return text.replace(/\s+/g, ' ').replace(/^\s*[,;]\s*/, '').replace(/\s*[,;]\s*$/, '').trim();
@@ -247,6 +249,15 @@ export function isNoisyDictionarySuggestion(word: string, definition: string | n
   if (HIDDEN_SUGGESTIONS.has(word)) return true;
   if (!definition) return false;
   return NOISY_LABEL_RE.test(definition) || PROFANITY_RE.test(definition);
+}
+
+/** A sense that only points elsewhere or notes a sound ("old variant of 和[he2]", "used in 嗎啡", "surname Ma", "Taiwan pr. [na2]"). */
+export const REFERENCE_SENSE_RE = /^(?:(?:old|archaic|popular|unofficial|Japanese|erhua) )?variant of\b|^surname\b|^see\b|^used in\b|^also written\b|^Taiwan pr\./i;
+
+/** True when every sense of a dictionary row only points to another word: a stub, not a meaning. */
+export function isReferenceOnlyDefinitions(value: unknown): boolean {
+  const strings = definitionStrings(value).map((text) => text.trim()).filter(Boolean);
+  return strings.length > 0 && strings.every((text) => REFERENCE_SENSE_RE.test(text));
 }
 
 /** Checks whether a definition is purely a variant / archaic pointer without distinct gloss. */

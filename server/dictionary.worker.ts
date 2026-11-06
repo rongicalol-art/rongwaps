@@ -7,7 +7,7 @@ import { createDictionaryIndex } from '../shared/dictionaryIndex';
 import { sanitizeDictionaryDefinitions } from '../shared/dictionaryDefinitions';
 import { getDictionaryShard } from '../shared/dictionaryShard';
 import { parseMembers, type PartsIndex } from '../shared/parts';
-import { courseFields, searchByCharacterComponents, segmentChineseQuery, segmentPinyinQuery, type CompactSearchEntry, type SearchResult } from '../shared/dictionarySearch';
+import { courseFields, firstPosTag, posTagsKey, rankExactRows, searchByCharacterComponents, searchEntryKey, segmentChineseQuery, segmentPinyinQuery, type CompactSearchEntry, type SearchResult } from '../shared/dictionarySearch';
 import type { Flashcard } from '../src/data/flashcards';
 import type { WordExample } from '../src/types/models';
 import type { StudyPack, StudyPart } from '../src/utils/vocabulary/studyPack';
@@ -16,6 +16,17 @@ import type { DBDictionaryRow } from '../src/types/database';
 const root = workerData.root as string;
 const json = async <T>(path: string): Promise<T> => JSON.parse(await readFile(resolve(path.startsWith('/data/study/') || path === '/data/search/course-lookup.json' ? workerData.generatedRoot : root, `.${path}`), 'utf8')) as T;
 const shards = new Map<number, Promise<{ schemaVersion: number; items: unknown[] }>>();
+/** Word types of dictionary senses (all 64 shards stay cached: ~1 MB). */
+const posShards = new Map<number, Promise<Record<string, string>>>();
+async function wordTypeOf(row: Pick<SearchResult, 'traditional' | 'pinyin_accented'>): Promise<string | undefined> {
+  const shard = getDictionaryShard(row.traditional);
+  let pack = posShards.get(shard);
+  if (!pack) {
+    pack = json<{ items: Record<string, string> }>(`/data/dictionary-pos/shard-${String(shard).padStart(2, '0')}.json`).then(data => data.items).catch(() => ({}));
+    posShards.set(shard, pack);
+  }
+  return firstPosTag((await pack)[posTagsKey(row.traditional, row.pinyin_accented)]);
+}
 async function lookup(words: string[]) {
   const result: Record<string, DBDictionaryRow[]> = {};
   const byShard = new Map<number, Set<string>>();
@@ -58,8 +69,11 @@ async function lookup(words: string[]) {
 async function start() {
   const { items } = await json<{ items: CompactSearchEntry[] }>('/data/search/dictionary-search-index.json');
   const index = createDictionaryIndex(items);
-  const coursePack = await json<{ cards: Flashcard[]; entries: [string, number][] }>('/data/search/course-lookup.json');
+  const scoreById = new Map(items.map(item => [item[0], item[6]]));
+  const coursePack = await json<{ cards: Flashcard[]; entries: [string, number][]; rows: [number, number][] }>('/data/search/course-lookup.json');
   const course = new Map(coursePack.entries.map(([key, id]) => [key, coursePack.cards[id]]));
+  // The lesson card of each dictionary row's own reading (built with the wordEntry rules).
+  const courseByRow = new Map(coursePack.rows.map(([rowId, id]) => [rowId, coursePack.cards[id]]));
   const courseByWord = new Map<string, Flashcard[]>();
   for (const [key, card] of course) {
     const word = key.split('\u0000')[0];
@@ -130,16 +144,26 @@ async function start() {
           if (!results.length) results = index.search(q, limit);
           if (!results.length) results = /\p{Script=Han}/u.test(q) ? segmentChineseQuery(items, q, limit) : segmentPinyinQuery(items, q, limit);
           // The compact search corpus excludes rare stubs; exact dictionary entries still lead.
-          const exact = !/[\s+＋*?＊？a-z]/i.test(q) && /\p{Script=Han}/u.test(q) ? (await lookup([q]))[q].map((row): SearchResult => ({
+          const exactRows = !/[\s+＋*?＊？a-z]/i.test(q) && /\p{Script=Han}/u.test(q) ? rankExactRows((await lookup([q]))[q], q, row => scoreById.get(row.id)) : [];
+          const exact = exactRows.map((row): SearchResult => ({
             id: row.id, simplified: row.simplified, traditional: row.traditional, pinyin_accented: row.pinyin_accented ?? '',
-            ...sanitizeDictionaryDefinitions(row.definitions), match_type: 'exact', total_score: 6200 + (row.frequency_score ?? 0),
-          })) : [];
-          const seen = new Set(exact.flatMap(row => [row.simplified, row.traditional]));
-          results = [...exact, ...results.filter(row => !seen.has(row.simplified) && !seen.has(row.traditional))].slice(0, limit);
-          results = results.map(row => {
-            const card = course.get(row.traditional) ?? course.get(row.simplified);
-            return card ? { ...row, ...courseFields(row, card) } : row;
-          });
+            ...sanitizeDictionaryDefinitions(row.definitions), match_type: 'exact', total_score: 6200 + (scoreById.get(row.id) ?? 0),
+          }));
+          // One row per word and reading.
+          const seen = new Set<string>();
+          results = [...exact, ...results].filter(row => {
+            const entry = searchEntryKey(row.traditional, row.pinyin_accented);
+            if (seen.has(entry)) return false;
+            seen.add(entry);
+            return true;
+          }).slice(0, limit);
+          // The lesson's meaning and tag, else the word type of the dictionary's first sense.
+          results = await Promise.all(results.map(async row => {
+            const card = courseByRow.get(row.id);
+            if (card) return { ...row, ...courseFields(row, card) };
+            const pos = await wordTypeOf(row);
+            return pos ? { ...row, pos } : row;
+          }));
           cache.set(key, results);
           if (cache.size > 96) cache.delete(cache.keys().next().value!);
         }
