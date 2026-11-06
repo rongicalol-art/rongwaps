@@ -107,7 +107,7 @@ export function AppOverlays({
         onProceedToReading={onProceedToReading}
       />
 
-      <DictionaryDetailOverlay />
+      <DictionaryDetailOverlay onOpenGrammarPart={onOpenGrammarPart} />
       {/* Drawer and modal slide in over the screen; a full-window loader here would flash on first open. */}
       <Suspense fallback={null}>
       {saveOpened && <SaveWordModal />}

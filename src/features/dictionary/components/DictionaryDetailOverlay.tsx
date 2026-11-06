@@ -1,10 +1,11 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { useAppStore } from '../../../store/useAppStore';
-import { SAMPLE_BOOKS } from '../../../data/books';
+import { useAuth } from '../../../hooks/useAuth';
+import { SAMPLE_BOOKS, isLessonLocked } from '../../../data/books';
 import { WorkspaceWindow } from '../../../lib/widgets';
-import { useBreakdownBackHandler } from '../../character-breakdown';
+import { GrammarOpenerContext, useBreakdownBackHandler, type GrammarOpener } from '../../character-breakdown';
 import { WordDetailSkeleton } from './WordDetailSkeleton';
 
 const SingleBreakdownView = lazy(() => import('../../character-breakdown').then((m) => ({ default: m.SingleBreakdownView })));
@@ -12,12 +13,21 @@ const WordDetailView = lazy(() => import('./WordDetailView').then((m) => ({ defa
 
 const SINGLE_HANZI_RE = /^[\u3400-\u9FFF]$/u;
 
-export function DictionaryDetailOverlay() {
+export function DictionaryDetailOverlay({ onOpenGrammarPart }: {
+  /** Opens a grammar lesson at one point's page; word pages link a word's grammar lessons through it. */
+  onOpenGrammarPart?: (partId: string, pageId: string) => void;
+}) {
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const dictionaryReading = useAppStore((state) => state.dictionaryReading);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const activeBookId = useAppStore((state) => state.activeBookId);
   const activeBook = SAMPLE_BOOKS.find((book) => book.id === activeBookId) || SAMPLE_BOOKS[0];
+  const { hasFullCourseAccess } = useAuth();
+  // The lesson opens in its own window, so the dictionary closes first; locked lessons get no link.
+  const grammarOpener = useMemo<GrammarOpener | null>(() => (onOpenGrammarPart ? {
+    open: (partId, pageId) => { setDictionaryWord(null); onOpenGrammarPart(partId, pageId); },
+    isOpenable: (bookId, lessonId) => !isLessonLocked(bookId, lessonId, hasFullCourseAccess),
+  } : null), [onOpenGrammarPart, setDictionaryWord, hasFullCourseAccess]);
 
   const [stack, setStack] = useState<{ word: string; index: number }[]>([]);
 
@@ -72,6 +82,7 @@ export function DictionaryDetailOverlay() {
         // Its own window over the workspace or any open study window, so the
         // tone behind the sidebar always matches and nothing beneath peeks out.
         <WorkspaceWindow key="dictionary-detail" id="dictionary-detail-overlay-container" layer="window-detail" tone="practice">
+          <GrammarOpenerContext.Provider value={grammarOpener}>
           <Suspense fallback={<WordDetailSkeleton />}>
             {rootIsSingleChar ? (
               <SingleBreakdownView
@@ -119,6 +130,7 @@ export function DictionaryDetailOverlay() {
               )}
             </AnimatePresence>
           </Suspense>
+          </GrammarOpenerContext.Provider>
         </WorkspaceWindow>
       )}
     </AnimatePresence>

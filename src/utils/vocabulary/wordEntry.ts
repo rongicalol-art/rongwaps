@@ -23,7 +23,7 @@ import {
 } from './dictionaryDefinitions';
 import { posTagsKey } from './dictionarySearch';
 import { formatPosLabel } from './posLabels';
-import type { SenseExampleRow } from '../packValidators';
+import type { SenseExampleRow, WordUsage } from '../packValidators';
 
 /** Looks up a reading's word-type tags in the pack by `posTagsKey`. */
 export type PosTagLookup = (key: string) => string | undefined;
@@ -137,10 +137,38 @@ export interface EntryExample {
   credit?: string;
 }
 
-/** Per-reading extras looked up by `posTagsKey`: word types, and one example per word type. */
+/** Per-reading extras looked up by `posTagsKey`: word types, and one example per word type; and how to use the word. */
 export interface EntryLookups {
   posTags?: PosTagLookup;
   senseExamples?: (key: string) => readonly SenseExampleRow[] | undefined;
+  /** How to use the word (grammar lessons, splits, goes-with), by its traditional form. */
+  usage?: WordUsage;
+}
+
+/** A grammar lesson whose point is this word: opens that point's page of the grammar lesson. */
+export interface EntryGrammarLink {
+  partId: string;
+  pageId: string;
+  bookId: number;
+  lessonId: number;
+  /** The point's title as the book prints it ("要是／如果……，就……"). */
+  title: string;
+  /** The simplified title, when the book gives one. */
+  titleSimplified?: string;
+  english: string;
+}
+
+/** A separable verb split apart (上 … 課), with book sentences that show it. */
+export interface EntrySplit {
+  first: string;
+  second: string;
+  examples: EntryExample[];
+}
+
+/** A word this one goes with: the phrase they make (穿衣服) and the other word, which opens on tap. */
+export interface EntryPartner {
+  word: string;
+  phrase: string;
 }
 
 /** Puts each example under its meaning, at most one per word type, never where the book already shows one. */
@@ -162,12 +190,18 @@ export interface EntrySense {
   example?: EntryExample;
   /** A pointer sense ("variant of 和"): the word it points to. */
   ref?: { word: string; pinyin?: string };
+  /** The grammar lesson that taught this sense, when that lesson has one point for the word. */
+  grammar?: EntryGrammarLink[];
+  /** For a separable verb's sense: how it splits. */
+  split?: EntrySplit;
 }
 
 export interface EntrySenseGroup {
   /** Course part-of-speech code ("Vs", "Vst/Adv"); null for dictionary senses, which carry none. */
   pos: string | null;
   senses: EntrySense[];
+  /** Words this group's sense goes with (a verb's objects, a noun's verbs). */
+  goesWith?: EntryPartner[];
 }
 
 export interface EntryReading {
@@ -201,6 +235,55 @@ export interface WordEntry {
   word: string;
   simplified: string;
   readings: EntryReading[];
+  /** Grammar lessons about the word that sit under no single sense ("More grammar with 就"). */
+  grammar: EntryGrammarLink[];
+}
+
+/**
+ * Puts how to use a word where it belongs, Pleco style but from the books:
+ * a grammar lesson under the sense its lesson taught (only when that lesson
+ * has one point for the word, so 才……就…… and 就……來說 of the same lesson
+ * never land on the wrong sense); a separable verb's split under its
+ * separable sense; goes-with words under the verb (or noun) group. Returns the
+ * grammar lessons that found no sense.
+ */
+function attachUsage(word: string, readings: EntryReading[], usage: WordUsage | undefined): EntryGrammarLink[] {
+  if (!usage) return [];
+  const groups = readings.flatMap((reading) => reading.groups);
+  const senses = groups.flatMap((group) => group.senses);
+
+  const links = (usage.g ?? []).map(([partId, pageId, bookId, lessonId, title, titleSimplified, english]): EntryGrammarLink => ({
+    partId, pageId, bookId, lessonId, title, ...(titleSimplified ? { titleSimplified } : {}), english,
+  }));
+  const perLesson = new Map<string, number>();
+  for (const link of links) perLesson.set(`${link.bookId}-${link.lessonId}`, (perLesson.get(`${link.bookId}-${link.lessonId}`) ?? 0) + 1);
+  const rest: EntryGrammarLink[] = [];
+  for (const link of links) {
+    const sense = perLesson.get(`${link.bookId}-${link.lessonId}`) === 1
+      ? senses.find((item) => item.course?.bookId === link.bookId && item.course.lessonId === link.lessonId)
+      : undefined;
+    if (sense) sense.grammar = [...(sense.grammar ?? []), link];
+    else rest.push(link);
+  }
+
+  const [first, second] = Array.from(word);
+  const separable = groups.find((group) => /sep/.test(group.pos ?? ''));
+  const splitSense = separable?.senses.find((sense) => sense.course) ?? separable?.senses[0];
+  if (usage.s?.length && splitSense && first && second) {
+    splitSense.split = {
+      first,
+      second,
+      examples: usage.s.map(([chinese, pinyin, english, audio]) => ({ chinese, pinyin, english, ...(audio ? { audio: audio as EntryExample['audio'] } : {}) })),
+    };
+  }
+
+  if (usage.w?.length) {
+    const asVerb = usage.w.every(([, phrase]) => phrase.startsWith(word));
+    const fits = (pos: string | null) => (asVerb ? /^V[ti]?(\/|$)/ : /^N(\/|$)/).test(pos ?? '');
+    const group = groups.find((item) => fits(item.pos)) ?? readings[0]?.groups[0];
+    if (group) group.goesWith = usage.w.map(([partner, phrase]) => ({ word: partner, phrase }));
+  }
+  return rest;
 }
 
 /** Lowercased gloss parts without notes, for "is this dictionary sense already taught?". */
@@ -372,7 +455,8 @@ export function buildWordEntry(
   const links = linkCourseReadings(wordRows, wordCards);
   const readings = orderReadingKeys(wordRows, links, taiwanReadings).map((key) =>
     buildReading(key, wordRows.filter((row) => readingKey(row.pinyin_accented) === key), links.get(key) ?? [], lookups));
-  return { word: traditional, simplified: wordRows[0]?.simplified ?? traditional, readings };
+  const grammar = attachUsage(traditional, readings, lookups.usage);
+  return { word: traditional, simplified: wordRows[0]?.simplified ?? traditional, readings, grammar };
 }
 
 /**

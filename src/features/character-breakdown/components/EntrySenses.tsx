@@ -1,61 +1,14 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { LevelTag, SpeakerIcon, TranslationLines } from '../../../lib/widgets';
+import { LevelTag } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import { useAudioPending } from '../../../hooks/useAudioPending';
-import { playSentence } from '../../../services/audio/sentenceAudio';
 import { formatPosLabel } from '../../../utils/vocabulary/posLabels';
-import { isBoundForm, senseText, type EntryExample, type EntryReading, type EntrySense, type WordEntry } from '../../../utils/vocabulary/wordEntry';
+import { isBoundForm, senseText, type EntryReading, type EntrySense, type WordEntry } from '../../../utils/vocabulary/wordEntry';
+import { GoesWith, MoreGrammar, SenseGrammar, SenseSplit } from './EntryUsage';
+import { SenseExample } from './SenseExample';
 import { ShowMoreButton } from './v3/ShowMoreButton';
 
 /** Dictionary senses shown before "Show all"; course senses always show. */
 const DICTIONARY_SENSES_SHOWN = 5;
-
-function SenseExample({ example, speakerId }: { example: EntryExample; speakerId: string }) {
-  const characterPreference = useAppStore((state) => state.characterPreference);
-  const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
-  const speaker = useAudioPending();
-  return (
-    <div className="col-start-2 flex min-w-0 flex-col gap-0.5">
-      <div className="flex min-w-0 items-start gap-1">
-        <span className="font-chinese text-lg font-bold leading-snug text-ui-ink-strong sm:text-xl">{example.chinese}</span>
-        <button
-          type="button"
-          aria-label={`Play the example sentence ${example.chinese}`}
-          onClick={() => { speaker.claim(speakerId); void playSentence(example.chinese, example.audio, characterPreference).catch(() => {}); }}
-          className="-my-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring"
-        >
-          <SpeakerIcon status={speaker.status(speakerId)} size={16} />
-        </button>
-      </div>
-      {!hideExamplePinyin && example.pinyin && (
-        <span className="text-sm font-bold leading-snug text-ui-muted-strong">{example.pinyin}</span>
-      )}
-      <span className="ui-translation text-sm leading-snug sm:text-base">
-        <TranslationLines text={example.english} />
-      </span>
-      {example.credit && <TatoebaCredit credit={example.credit} />}
-    </div>
-  );
-}
-
-/** Attribution a Tatoeba sentence needs (CC BY): a quiet link to the sentence and its authors. */
-function TatoebaCredit({ credit }: { credit: string }) {
-  const ids = [...credit.matchAll(/#(\d+)/g)].map((match) => match[1]);
-  const authors = [...credit.matchAll(/\(([^)]+)\)/g)].map((match) => match[1]).join(', ');
-  const sentenceId = ids[ids.length - 1];
-  if (!sentenceId) return null;
-  return (
-    <a
-      href={`https://tatoeba.org/en/sentences/show/${sentenceId}`}
-      target="_blank"
-      rel="noreferrer"
-      title={authors ? `Sentence by ${authors} on Tatoeba (CC BY 2.0 FR)` : 'Sentence from Tatoeba (CC BY 2.0 FR)'}
-      className="w-fit rounded-xs text-xs font-bold text-ui-muted hover:underline focus-ring-inline"
-    >
-      Tatoeba{authors ? ` · ${authors}` : ''}
-    </a>
-  );
-}
 
 function SenseItem({ sense, number, simple, speakerId, onOpenWord }: {
   sense: EntrySense;
@@ -86,6 +39,8 @@ function SenseItem({ sense, number, simple, speakerId, onOpenWord }: {
         {sense.course && <LevelTag bookId={sense.course.bookId} lessonId={sense.course.lessonId} />}
       </div>
       {sense.example && <SenseExample example={sense.example} speakerId={speakerId} />}
+      {sense.split && <SenseSplit split={sense.split} speakerId={speakerId} />}
+      {sense.grammar && <SenseGrammar links={sense.grammar} />}
     </li>
   );
 }
@@ -142,6 +97,7 @@ function ReadingSenses({ word, reading, lead, onSelectReading, onOpenWord }: {
             {capped && (
               <ShowMoreButton label={`Show all ${group.senses.length}`} onClick={() => setExpanded(true)} />
             )}
+            {group.goesWith && <GoesWith partners={group.goesWith} onOpenWord={onOpenWord} />}
           </div>
         );
       })}
@@ -190,6 +146,7 @@ export function EntrySenses({ entry, leadKey, onSelectReading, onOpenWord }: {
   if (!lead) return null;
   const others = entry.readings.filter((reading) => reading !== lead && !reading.reference);
   const pointers = entry.readings.filter((reading) => reading !== lead && reading.reference);
+  const inlineGrammar = entry.readings.some((reading) => reading.groups.some((group) => group.senses.some((sense) => sense.grammar?.length)));
 
   return (
     <section aria-label={`Meanings of ${entry.word}`} className="flex min-w-0 flex-col gap-5">
@@ -197,6 +154,7 @@ export function EntrySenses({ entry, leadKey, onSelectReading, onOpenWord }: {
       {others.map((reading) => (
         <ReadingSenses key={reading.key} word={entry.word} reading={reading} lead={false} onSelectReading={onSelectReading} onOpenWord={onOpenWord} />
       ))}
+      {entry.grammar.length > 0 && <MoreGrammar word={entry.word} links={entry.grammar} afterInline={inlineGrammar} />}
       {pointers.length > 0 && (
         <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t-2 border-ui-divider pt-4 text-sm font-bold text-ui-muted-strong">
           {pointers.map((reading) => {

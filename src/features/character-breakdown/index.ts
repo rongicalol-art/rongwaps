@@ -14,6 +14,7 @@ export { StrokeOrderBox } from './components/StrokeOrderBox';
 export { SummaryQuickActions } from './components/SummaryQuickActions';
 export { HeroDetails } from './components/HeroDetails';
 export { EntrySenses } from './components/EntrySenses';
+export { GrammarOpenerContext, type GrammarOpener } from './components/EntryUsage';
 export { EntryLayout } from './components/EntryLayout';
 export { AlsoReadings } from './components/AlsoReadings';
 export { useEntryLead } from './hooks/useEntryLead';
