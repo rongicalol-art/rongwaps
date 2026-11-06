@@ -25,6 +25,38 @@ Answer with JSON only: [{"word":"<word>","keep":["<partner>",…]},…], one obj
 
 interface Answer { word: string; keep: string[] }
 
+/**
+ * Pairs dropped in the final read of the reviewed list (2026-11-06): too narrow (看見蛇), unnatural
+ * (說語言, 開會議), not this word's use (有人, 發車), mainland spelling (抽煙: Taiwan writes 抽菸, 騎自行車
+ * on 騎's page), or a grim lead for a basic word (人: 罵人, 殺人). `*` drops the word's whole list.
+ */
+const FINAL_READ_DROPS: Record<string, readonly string[] | '*'> = {
+  人: '*',
+  事情: ['說事情'],
+  介紹: ['介紹特色'],
+  特色: ['介紹特色'],
+  使用: ['使用游泳池'],
+  游泳池: ['使用游泳池'],
+  住: ['住房子', '住房間'],
+  房子: ['住房子'],
+  房間: ['看看房間'],
+  看看: ['看看房間'],
+  判斷: ['判斷一個人'],
+  會議: ['開會議'],
+  有: ['有人'],
+  抽: ['抽煙'],
+  煙: ['抽煙'],
+  油: ['吃油'],
+  看見: ['看見蛇'],
+  騎: ['騎自行車'],
+  語言: ['說語言', '講語言'],
+  說: ['說語言'],
+  講: ['講語言'],
+  閱讀: ['閱讀書'],
+  追: ['追狗'],
+  車: ['發車'],
+};
+
 function checkAnswer(entries: GoesWithBatchEntry[], answer: unknown): Answer[] | string {
   if (!Array.isArray(answer) || answer.length !== entries.length) return `expected ${entries.length} objects`;
   const out: Answer[] = [];
@@ -65,9 +97,14 @@ async function collect(): Promise<void> {
     const answers = JSON.parse(await readFile(resolve(OUT, 'goes-with-reviewed', name), 'utf8')) as Answer[];
     for (const answer of answers) {
       const entry = batch.find((item) => item.word === answer.word);
-      if (!entry || answer.keep.length === 0) continue;
-      entries[answer.word] = answer.keep.map((partner) => [partner, entry.candidates.find((candidate) => candidate.partner === partner)!.phrase]);
-      pairs += answer.keep.length;
+      const dropped = FINAL_READ_DROPS[answer.word];
+      if (!entry || dropped === '*') continue;
+      const kept = answer.keep
+        .map((partner): [string, string] => [partner, entry.candidates.find((candidate) => candidate.partner === partner)!.phrase])
+        .filter(([, phrase]) => !dropped?.includes(phrase));
+      if (kept.length === 0) continue;
+      entries[answer.word] = kept;
+      pairs += kept.length;
     }
   }
   const sorted = Object.fromEntries(Object.entries(entries).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)));
