@@ -18,6 +18,7 @@ import {
 } from './dictionaryDefinitions';
 import { posTagsKey } from './dictionarySearch';
 import { formatPosLabel } from './posLabels';
+import type { SenseExampleRow } from '../packValidators';
 
 /** Looks up a reading's word-type tags in the pack by `posTagsKey`. */
 export type PosTagLookup = (key: string) => string | undefined;
@@ -127,6 +128,24 @@ export interface EntryExample {
   pinyin: string;
   english: string;
   audio?: NonNullable<Flashcard['examples']>[number]['audio'];
+  /** Tatoeba credit ("#<id> (author) & #<id> (author)") for sentences from there. */
+  credit?: string;
+}
+
+/** Per-reading extras looked up by `posTagsKey`: word types, and one example per word type. */
+export interface EntryLookups {
+  posTags?: PosTagLookup;
+  senseExamples?: (key: string) => readonly SenseExampleRow[] | undefined;
+}
+
+/** Puts each example under its meaning, at most one per word type, never where the book already shows one. */
+function attachExamples(groups: EntrySenseGroup[], rows: readonly SenseExampleRow[]): void {
+  for (const [text, chinese, pinyin, english, audio, credit] of rows) {
+    const group = groups.find((item) => item.senses.some((sense) => sense.text === text));
+    if (!group || group.senses.some((sense) => sense.example)) continue;
+    const sense = group.senses.find((item) => item.text === text)!;
+    sense.example = { chinese, pinyin, english, ...(audio ? { audio: audio as EntryExample['audio'] } : {}), ...(credit ? { credit } : {}) };
+  }
 }
 
 export interface EntrySense {
@@ -256,7 +275,7 @@ function groupBySenseType(groups: EntrySenseGroup[], senses: ReadonlyArray<{ sen
   if (untagged.length > 0) groups.push({ pos: null, senses: untagged });
 }
 
-function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: readonly Flashcard[], posTags?: PosTagLookup): EntryReading {
+function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: readonly Flashcard[], { posTags, senseExamples }: EntryLookups = {}): EntryReading {
   const groups: EntrySenseGroup[] = [];
   const { senses: allSenses, measureWords } = readingDictionarySenses(rows);
   const addMeasure = (detail: MeasureWordDetail) => {
@@ -281,7 +300,8 @@ function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: re
 
   const referenceOnly = rows.length > 0 && rows.every((row) => isReferenceOnlyDefinitions(row.definitions));
   // Word types are keyed on the full sense list; senses the book already teaches are then left out.
-  const tags = senseTags(posTags?.(posTagsKey(rows[0]?.traditional ?? '', rows[0]?.pinyin_accented)), allSenses);
+  const lookupKey = posTagsKey(rows[0]?.traditional ?? '', rows[0]?.pinyin_accented);
+  const tags = senseTags(posTags?.(lookupKey), allSenses);
   const dictionarySenses = allSenses
     .map((sense, index) => ({ sense: sense as EntrySense, tag: tags?.[index] ?? null }))
     .filter(({ sense }) => {
@@ -289,6 +309,7 @@ function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: re
       return !(parts.length > 0 && parts.every((part) => taught.has(part)));
     });
   groupBySenseType(groups, dictionarySenses);
+  attachExamples(groups, senseExamples?.(lookupKey) ?? []);
 
   const firstCard = cards[0];
   const rowPinyin = rows.find((row) => row.pinyin_accented)?.pinyin_accented ?? '';
@@ -311,7 +332,7 @@ export function buildWordEntry(
   rows: readonly DictionaryRowLike[],
   cards: readonly Flashcard[],
   taiwanReadings: readonly string[] = [],
-  posTags?: PosTagLookup,
+  lookups: EntryLookups = {},
 ): WordEntry | null {
   const own = rows.filter((row) => row.traditional === word);
   // A simplified spelling ("长") opens its traditional word.
@@ -321,7 +342,7 @@ export function buildWordEntry(
   const wordCards = cards.filter((card) => courseWordOf(card) === traditional);
   const links = linkCourseReadings(wordRows, wordCards);
   const readings = orderReadingKeys(wordRows, links, taiwanReadings).map((key) =>
-    buildReading(key, wordRows.filter((row) => readingKey(row.pinyin_accented) === key), links.get(key) ?? [], posTags));
+    buildReading(key, wordRows.filter((row) => readingKey(row.pinyin_accented) === key), links.get(key) ?? [], lookups));
   return { word: traditional, simplified: wordRows[0]?.simplified ?? traditional, readings };
 }
 

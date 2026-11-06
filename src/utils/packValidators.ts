@@ -45,6 +45,7 @@ export type ContentPackKind =
   | 'parts'
   | 'pronunciation'
   | 'dictionary-pos'
+  | 'dictionary-examples'
   | 'lesson-tests';
 
 const VALID_CONTENT_TYPES = new Set(['character', 'word', 'story']);
@@ -371,6 +372,32 @@ export function isValidDictionaryPosPack(pack: unknown, shard: number, expectedC
     && typeof candidate.items === 'object' && candidate.items !== null
     && Object.values(candidate.items).length === expectedCount
     && Object.values(candidate.items).every((value) => typeof value === 'string');
+}
+
+/**
+ * One example per word type for learner readings (public/data/dictionary-examples/, shards like the
+ * dictionary's): `posTagsKey(word, pinyin)` → rows of
+ * [sense text, chinese, pinyin, english, book recording or null, Tatoeba credit or null].
+ */
+export type SenseExampleRow = [string, string, string, string, unknown, string | null];
+
+export interface DictionaryExamplesPack {
+  schemaVersion: number;
+  shard: number;
+  count: number;
+  items: Record<string, SenseExampleRow[]>;
+}
+
+export function isValidDictionaryExamplesPack(pack: unknown, shard: number, expectedCount: number): pack is DictionaryExamplesPack {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as Partial<DictionaryExamplesPack>;
+  return candidate.schemaVersion === 1
+    && candidate.shard === shard
+    && candidate.count === expectedCount
+    && typeof candidate.items === 'object' && candidate.items !== null
+    && Object.values(candidate.items).length === expectedCount
+    && Object.values(candidate.items).every((rows) => Array.isArray(rows) && rows.every((row) => Array.isArray(row) && row.length === 6
+      && row.slice(0, 4).every((cell) => typeof cell === 'string')));
 }
 
 export function pronunciationPackToIndex(pack: PronunciationPack): ReadingsIndex {

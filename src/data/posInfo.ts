@@ -236,6 +236,15 @@ export const POS_INFO: Record<string, PosInfo> = {
     zh: '数词',
     explanation: 'A number — like 三 (three).',
   },
+  Suf: {
+    label: 'Suffix',
+    category: 'function',
+    zh: '后缀',
+    explanation: 'Attaches to the end of a word to add meaning — {zh:great} (great, extremely good).',
+    zhTokens: {
+      great: { s: '好极了', t: '好極了' },
+    },
+  },
 };
 
 /** Fallback for tags that are not (yet) in the map. */
