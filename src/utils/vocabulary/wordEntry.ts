@@ -16,6 +16,11 @@ import {
   sanitizeDictionaryDefinitions,
   type MeasureWordDetail,
 } from './dictionaryDefinitions';
+import { posTagsKey } from './dictionarySearch';
+import { formatPosLabel } from './posLabels';
+
+/** Looks up a reading's word-type tags in the pack by `posTagsKey`. */
+export type PosTagLookup = (key: string) => string | undefined;
 
 export interface DictionaryRowLike {
   id: number;
@@ -161,10 +166,12 @@ export interface WordEntry {
 }
 
 /** Lowercased gloss parts without notes, for "is this dictionary sense already taught?". */
-function glossParts(text: string): string[] {
-  return text
+function glossParts(text: string, keepQualifiers = false): string[] {
+  // Book notes ("with (someone)") never change the sense; a dictionary sense's trailing
+  // qualifier does ("long (in time)" is not "long"), only its leading label ("(bound form)") goes.
+  const plain = keepQualifiers ? text.replace(/^(?:\s*\([^)]*\))+/, ' ') : text.replace(/\([^)]*\)/g, ' ');
+  return plain
     .toLowerCase()
-    .replace(/\([^)]*\)/g, ' ')
     .split(/[;,/]/)
     .map((part) => part.replace(/^\s*(?:to|an?|the)\s+/, '').replace(/\s+/g, ' ').trim())
     .filter(Boolean);
@@ -180,9 +187,78 @@ function exampleOf(card: Flashcard): EntryExample | undefined {
   return example ? { chinese: example.chinese, pinyin: example.pinyin, english: example.english, audio: example.audio } : undefined;
 }
 
-function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: readonly Flashcard[]): EntryReading {
-  const groups: EntrySenseGroup[] = [];
+export interface DictionarySense {
+  text: string;
+  /** A pointer sense ("variant of 和"): the word it points to. */
+  ref?: { word: string; pinyin?: string };
+}
+
+/**
+ * One reading's dictionary senses in dictionary order: what the word page
+ * lists (before it drops senses the book already teaches) and what word-type
+ * tags are keyed on. Surnames are left out; measure words are collected.
+ */
+export function readingDictionarySenses(rows: readonly DictionaryRowLike[]): { senses: DictionarySense[]; measureWords: MeasureWordDetail[] } {
+  const senses: DictionarySense[] = [];
   const measureWords: MeasureWordDetail[] = [];
+  for (const row of rows) {
+    for (const raw of definitionStrings(row.definitions)) {
+      // Surnames mean nothing to a learner (the cleaner drops them from whole lists too).
+      if (/^surname\b/i.test(raw.trim())) continue;
+      const sanitized = sanitizeDictionaryDefinitions([raw], { preferredScript: 'traditional' });
+      for (const detail of sanitized.measure_word_details) {
+        if (!measureWords.some((item) => item.char === detail.char)) measureWords.push(detail);
+      }
+      const text = sanitized.definitions[0];
+      if (!text || senses.some((sense) => sense.text === text)) continue;
+      const reference = extractCedictReference(raw.trim());
+      const isPointer = Boolean(reference && raw.trim().length <= reference.raw.length + 2);
+      senses.push(isPointer && reference ? { text, ref: { word: reference.traditional, pinyin: reference.pinyin } } : { text });
+    }
+  }
+  return { senses, measureWords };
+}
+
+/** A short fingerprint of a reading's senses: word-type tags apply only while the dictionary lists exactly these. */
+export function senseChecksum(senses: readonly { text: string }[]): string {
+  let hash = 0x811c9dc5;
+  for (const char of senses.map((sense) => sense.text).join('\n')) {
+    hash ^= char.codePointAt(0)!;
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash.toString(36);
+}
+
+/** One word type per sense (null for pointer senses), only when the tags were made for exactly these senses. */
+export function senseTags(value: string | undefined, senses: readonly { text: string }[]): Array<string | null> | null {
+  if (!value) return null;
+  const [checksum, list = ''] = value.split('|');
+  const tags = list.split(',');
+  if (checksum !== senseChecksum(senses) || tags.length !== senses.length) return null;
+  return tags.map((tag) => tag || null);
+}
+
+/**
+ * Dictionary senses grouped by word type, Pleco style. A sense joins the
+ * book's group with the same label (長: "long (in time)" under the book's
+ * Stative verb), otherwise its own group in the order types first appear;
+ * untagged and pointer senses stay last, unlabelled.
+ */
+function groupBySenseType(groups: EntrySenseGroup[], senses: ReadonlyArray<{ sense: EntrySense; tag: string | null }>): void {
+  const untagged: EntrySense[] = [];
+  for (const { sense, tag } of senses) {
+    if (!tag) { untagged.push(sense); continue; }
+    const label = formatPosLabel(tag);
+    const group = groups.find((item) => item.pos !== null && formatPosLabel(item.pos) === label);
+    if (group) group.senses.push(sense);
+    else groups.push({ pos: tag, senses: [sense] });
+  }
+  if (untagged.length > 0) groups.push({ pos: null, senses: untagged });
+}
+
+function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: readonly Flashcard[], posTags?: PosTagLookup): EntryReading {
+  const groups: EntrySenseGroup[] = [];
+  const { senses: allSenses, measureWords } = readingDictionarySenses(rows);
   const addMeasure = (detail: MeasureWordDetail) => {
     if (!measureWords.some((item) => item.char === detail.char)) measureWords.push(detail);
   };
@@ -203,27 +279,16 @@ function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: re
     group.senses.push({ text: split.meaning, ...(simple ? { simple } : {}), course: { bookId: card.bookId, lessonId: card.lessonId }, example: exampleOf(card) });
   }
 
-  const dictionarySenses: EntrySense[] = [];
-  let referenceOnly = rows.length > 0;
-  for (const row of rows) {
-    if (!isReferenceOnlyDefinitions(row.definitions)) referenceOnly = false;
-    for (const raw of definitionStrings(row.definitions)) {
-      // Surnames mean nothing to a learner (the cleaner drops them from whole lists too).
-      if (/^surname\b/i.test(raw.trim())) continue;
-      const sanitized = sanitizeDictionaryDefinitions([raw], { preferredScript: 'traditional' });
-      sanitized.measure_word_details.forEach(addMeasure);
-      const text = sanitized.definitions[0];
-      if (!text || dictionarySenses.some((sense) => sense.text === text)) continue;
-      const parts = glossParts(text);
-      if (parts.length > 0 && parts.every((part) => taught.has(part))) continue;
-      const reference = extractCedictReference(raw.trim());
-      const isPointer = Boolean(reference && raw.trim().length <= reference.raw.length + 2);
-      dictionarySenses.push(isPointer && reference
-        ? { text, ref: { word: reference.traditional, pinyin: reference.pinyin } }
-        : { text });
-    }
-  }
-  if (dictionarySenses.length > 0) groups.push({ pos: null, senses: dictionarySenses });
+  const referenceOnly = rows.length > 0 && rows.every((row) => isReferenceOnlyDefinitions(row.definitions));
+  // Word types are keyed on the full sense list; senses the book already teaches are then left out.
+  const tags = senseTags(posTags?.(posTagsKey(rows[0]?.traditional ?? '', rows[0]?.pinyin_accented)), allSenses);
+  const dictionarySenses = allSenses
+    .map((sense, index) => ({ sense: sense as EntrySense, tag: tags?.[index] ?? null }))
+    .filter(({ sense }) => {
+      const parts = glossParts(sense.text, true);
+      return !(parts.length > 0 && parts.every((part) => taught.has(part)));
+    });
+  groupBySenseType(groups, dictionarySenses);
 
   const firstCard = cards[0];
   const rowPinyin = rows.find((row) => row.pinyin_accented)?.pinyin_accented ?? '';
@@ -246,6 +311,7 @@ export function buildWordEntry(
   rows: readonly DictionaryRowLike[],
   cards: readonly Flashcard[],
   taiwanReadings: readonly string[] = [],
+  posTags?: PosTagLookup,
 ): WordEntry | null {
   const own = rows.filter((row) => row.traditional === word);
   // A simplified spelling ("长") opens its traditional word.
@@ -255,7 +321,7 @@ export function buildWordEntry(
   const wordCards = cards.filter((card) => courseWordOf(card) === traditional);
   const links = linkCourseReadings(wordRows, wordCards);
   const readings = orderReadingKeys(wordRows, links, taiwanReadings).map((key) =>
-    buildReading(key, wordRows.filter((row) => readingKey(row.pinyin_accented) === key), links.get(key) ?? []));
+    buildReading(key, wordRows.filter((row) => readingKey(row.pinyin_accented) === key), links.get(key) ?? [], posTags));
   return { word: traditional, simplified: wordRows[0]?.simplified ?? traditional, readings };
 }
 

@@ -62,10 +62,12 @@ export function V3CharacterBreakdown({
     <EntryLayout
       topRef={topRef}
       hero={<V3CharacterSummary character={activeChar} data={charData} courseCards={charCardsInfo} accentHex={activeBook.accentHex} entry={entry} lead={lead} onSelectReading={selectReading} />}
+      intro={<>
+        <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" showHeading={false} onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+        <V3MemoryHook character={activeChar} pinyin={primaryPinyin} />
+      </>}
       senses={entry && lead ? <EntrySenses entry={entry} leadKey={lead.key} onSelectReading={selectReading} onOpenWord={setDictionaryWord} /> : null}
       aside={<>
-      <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" showHeading={false} onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
-      <V3MemoryHook character={activeChar} pinyin={primaryPinyin} />
       {active && (
         <div className="flex min-w-0 flex-col gap-3">
           <BreakdownTabs tabs={tabs} active={active} onChange={setTab} />

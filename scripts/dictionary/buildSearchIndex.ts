@@ -1,22 +1,14 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { DICTIONARY_SHARD_COUNT } from '../../src/utils/vocabulary/dictionaryShard';
 import { stripPinyinTones } from '../../src/utils/pinyin/pinyinNormalize';
-import { prepareVocabulary } from '../../src/utils/vocabulary/vocabularyMapping';
-import { courseWordOf, linkCourseReadings, orderReadingKeys, readingKey } from '../../src/utils/vocabulary/wordEntry';
+import { linkCourseReadings, orderReadingKeys, readingKey } from '../../src/utils/vocabulary/wordEntry';
 import { isReferenceOnlyDefinitions, REFERENCE_SENSE_RE } from '../../shared/dictionaryDefinitions';
-import { parseReadings } from '../../src/utils/pinyin/pronunciation';
-import type { Flashcard } from '../../src/data/flashcards';
+import { readCourseCards, readDictionaryRows, readLevelWords, readTaiwanReadings } from './learnerData';
 
-const SHARD_DIR = resolve(process.cwd(), 'public/data/dictionary');
 const SEARCH_DIR = resolve(process.cwd(), 'public/data/search');
 const SEARCH_INDEX_PATH = resolve(SEARCH_DIR, 'dictionary-search-index.json');
 const FREQ_MAP_PATH = resolve(process.cwd(), 'output/dictionary-frequency-map.json');
-const LEVELS_PATH = resolve(process.cwd(), 'public/data/levels/levels.json');
-const VOCAB_DIR = resolve(process.cwd(), 'public/data/vocabulary');
-const PRONUNCIATION_PATH = resolve(process.cwd(), 'public/data/pronunciation/pronunciation.json');
 
-type RawShardTuple = [number, string, string, string, string[]];
 type CompactSearchTuple = [number, string, string, string, string, string[], number];
 
 /** A character's secondary readings rank lower: 嗎 má "what?" below 嗎 ma, the question particle. */
@@ -36,47 +28,6 @@ async function loadFrequencyMap(existingFreqs: Map<number, number>): Promise<Rec
   }
 }
 
-async function loadCourseCards(): Promise<Map<string, Flashcard[]>> {
-  const items: unknown[] = [];
-  for (const book of [1, 2, 3, 4]) {
-    try {
-      const raw = await readFile(resolve(VOCAB_DIR, `book-${book}.json`), 'utf8');
-      items.push(...((JSON.parse(raw) as { items?: unknown[] }).items ?? []));
-    } catch {
-      // ignore missing book
-    }
-  }
-  const byWord = new Map<string, Flashcard[]>();
-  for (const card of prepareVocabulary(items)) {
-    const word = courseWordOf(card);
-    if (word) byWord.set(word, [...(byWord.get(word) ?? []), card]);
-  }
-  return byWord;
-}
-
-async function loadTaiwanReadings(): Promise<Map<string, string[]>> {
-  try {
-    const pack = JSON.parse(await readFile(PRONUNCIATION_PATH, 'utf8')) as { readings: Record<string, string> };
-    return new Map(Object.entries(pack.readings).map(([character, value]) => [character, parseReadings(value).map((reading) => reading.pinyin)]));
-  } catch {
-    return new Map();
-  }
-}
-
-async function loadLevelWords(): Promise<Map<string, number>> {
-  const map = new Map<string, number>();
-  try {
-    const raw = await readFile(LEVELS_PATH, 'utf8');
-    const data = JSON.parse(raw) as { words?: Record<string, [number, number]> };
-    for (const [word, [level]] of Object.entries(data.words || {})) {
-      map.set(word, level);
-    }
-  } catch {
-    // ignore
-  }
-  return map;
-}
-
 async function main(): Promise<void> {
   // 1. Load existing index frequencies as fallback
   const existingFreqById = new Map<number, number>();
@@ -92,31 +43,14 @@ async function main(): Promise<void> {
 
   const freqMap = await loadFrequencyMap(existingFreqById);
   const hasCorpusFreqMap = Object.keys(freqMap).length > 0;
-  const courseCards = await loadCourseCards();
-  const levelWords = await loadLevelWords();
-  const taiwanReadings = await loadTaiwanReadings();
+  const courseCards = await readCourseCards();
+  const levelWords = await readLevelWords();
+  const taiwanReadings = await readTaiwanReadings();
 
-  // 2. Collect all unique dictionary entries across the 64 shards
-  const entriesById = new Map<number, RawShardTuple>();
-  for (let shard = 0; shard < DICTIONARY_SHARD_COUNT; shard += 1) {
-    const filename = `shard-${String(shard).padStart(2, '0')}.json`;
-    const raw = await readFile(resolve(SHARD_DIR, filename), 'utf8');
-    const pack = JSON.parse(raw) as { items: RawShardTuple[] };
-    for (const item of pack.items) {
-      if (!entriesById.has(item[0])) {
-        entriesById.set(item[0], item);
-      }
-    }
-  }
+  // 2. Every dictionary row (shard order), by id and by traditional form
+  const { byId: entriesById, byWord: rowsByWord } = await readDictionaryRows();
 
   // 3. Per word (traditional form): which reading each lesson teaches and the reading order (wordEntry rules)
-  const rowsByWord = new Map<string, Array<{ id: number; traditional: string; pinyin_accented: string; definitions: string[] }>>();
-  for (const [id, simplified, tradDiff, pinyinAccented, defs] of entriesById.values()) {
-    const traditional = tradDiff || simplified;
-    const list = rowsByWord.get(traditional) ?? [];
-    list.push({ id, traditional, pinyin_accented: pinyinAccented, definitions: defs });
-    rowsByWord.set(traditional, list);
-  }
   const linkedRows = new Set<number>();
   const readingRank = new Map<number, number>();
   for (const [word, rows] of rowsByWord) {

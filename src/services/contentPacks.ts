@@ -19,6 +19,7 @@ import {
 import type { PartsIndex } from '../utils/characters/parts';
 import type { ReadingsIndex } from '../utils/pinyin/pronunciation';
 import { PACK_CONFIGS } from './contentPackConfigs';
+import { getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
 
 export * from '../utils/packValidators';
 
@@ -286,6 +287,16 @@ export async function fetchPartsIndex(): Promise<PartsIndex | null> {
 }
 
 let pronunciationPromise: Promise<ReadingsIndex | null> | null = null;
+
+/** Word types for the dictionary senses of `word`'s shard, by `posTagsKey`; empty when the pack is unavailable. */
+export async function fetchWordTypeTags(word: string): Promise<Map<string, string>> {
+  try {
+    return (await loadPack<Map<string, string>>('dictionary-pos', getDictionaryShard(word))) ?? new Map();
+  } catch (error) {
+    debugLogger.warn('Cache', 'Word-type pack unavailable.', error);
+    return new Map();
+  }
+}
 
 /** Character readings, Taiwan-first; null when unavailable (screens fall back to breakdown pinyin). */
 export async function fetchPronunciationIndex(): Promise<ReadingsIndex | null> {

@@ -44,6 +44,7 @@ export type ContentPackKind =
   | 'levels'
   | 'parts'
   | 'pronunciation'
+  | 'dictionary-pos'
   | 'lesson-tests';
 
 const VALID_CONTENT_TYPES = new Set(['character', 'word', 'story']);
@@ -348,6 +349,28 @@ export function isValidPronunciationPack(pack: unknown, expectedCount: number): 
     && candidate.count === expectedCount
     && typeof candidate.readings === 'object' && candidate.readings !== null
     && Object.keys(candidate.readings).length === expectedCount;
+}
+
+/**
+ * Word types for dictionary senses (public/data/dictionary-pos/, one shard per dictionary shard):
+ * `posTagsKey(word, pinyin)` → "<sense checksum>|<one tag per sense>". See src/utils/vocabulary/wordEntry.ts.
+ */
+export interface DictionaryPosPack {
+  schemaVersion: number;
+  shard: number;
+  count: number;
+  items: Record<string, string>;
+}
+
+export function isValidDictionaryPosPack(pack: unknown, shard: number, expectedCount: number): pack is DictionaryPosPack {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as Partial<DictionaryPosPack>;
+  return candidate.schemaVersion === 1
+    && candidate.shard === shard
+    && candidate.count === expectedCount
+    && typeof candidate.items === 'object' && candidate.items !== null
+    && Object.values(candidate.items).length === expectedCount
+    && Object.values(candidate.items).every((value) => typeof value === 'string');
 }
 
 export function pronunciationPackToIndex(pack: PronunciationPack): ReadingsIndex {

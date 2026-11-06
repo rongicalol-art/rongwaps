@@ -7,7 +7,7 @@ import { createDictionaryIndex } from '../shared/dictionaryIndex';
 import { sanitizeDictionaryDefinitions } from '../shared/dictionaryDefinitions';
 import { getDictionaryShard } from '../shared/dictionaryShard';
 import { parseMembers, type PartsIndex } from '../shared/parts';
-import { courseFields, rankExactRows, searchByCharacterComponents, searchEntryKey, segmentChineseQuery, segmentPinyinQuery, type CompactSearchEntry, type SearchResult } from '../shared/dictionarySearch';
+import { courseFields, firstPosTag, posTagsKey, rankExactRows, searchByCharacterComponents, searchEntryKey, segmentChineseQuery, segmentPinyinQuery, type CompactSearchEntry, type SearchResult } from '../shared/dictionarySearch';
 import type { Flashcard } from '../src/data/flashcards';
 import type { WordExample } from '../src/types/models';
 import type { StudyPack, StudyPart } from '../src/utils/vocabulary/studyPack';
@@ -16,6 +16,17 @@ import type { DBDictionaryRow } from '../src/types/database';
 const root = workerData.root as string;
 const json = async <T>(path: string): Promise<T> => JSON.parse(await readFile(resolve(path.startsWith('/data/study/') || path === '/data/search/course-lookup.json' ? workerData.generatedRoot : root, `.${path}`), 'utf8')) as T;
 const shards = new Map<number, Promise<{ schemaVersion: number; items: unknown[] }>>();
+/** Word types of dictionary senses (all 64 shards stay cached: ~1 MB). */
+const posShards = new Map<number, Promise<Record<string, string>>>();
+async function wordTypeOf(row: Pick<SearchResult, 'traditional' | 'pinyin_accented'>): Promise<string | undefined> {
+  const shard = getDictionaryShard(row.traditional);
+  let pack = posShards.get(shard);
+  if (!pack) {
+    pack = json<{ items: Record<string, string> }>(`/data/dictionary-pos/shard-${String(shard).padStart(2, '0')}.json`).then(data => data.items).catch(() => ({}));
+    posShards.set(shard, pack);
+  }
+  return firstPosTag((await pack)[posTagsKey(row.traditional, row.pinyin_accented)]);
+}
 async function lookup(words: string[]) {
   const result: Record<string, DBDictionaryRow[]> = {};
   const byShard = new Map<number, Set<string>>();
@@ -146,10 +157,13 @@ async function start() {
             seen.add(entry);
             return true;
           }).slice(0, limit);
-          results = results.map(row => {
+          // The lesson's meaning and tag, else the word type of the dictionary's first sense.
+          results = await Promise.all(results.map(async row => {
             const card = courseByRow.get(row.id);
-            return card ? { ...row, ...courseFields(row, card) } : row;
-          });
+            if (card) return { ...row, ...courseFields(row, card) };
+            const pos = await wordTypeOf(row);
+            return pos ? { ...row, pos } : row;
+          }));
           cache.set(key, results);
           if (cache.size > 96) cache.delete(cache.keys().next().value!);
         }

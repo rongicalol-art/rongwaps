@@ -1,7 +1,7 @@
 import type { Flashcard } from '../data/flashcards';
 import { allReadings } from '../utils/pinyin/pronunciation';
 import { buildWordEntry, courseWordOf, type WordEntry } from '../utils/vocabulary/wordEntry';
-import { fetchDictionaryRowsFromPacks, fetchPronunciationIndex, getLoadedStudyCards } from './contentPacks';
+import { fetchDictionaryRowsFromPacks, fetchPronunciationIndex, fetchWordTypeTags, getLoadedStudyCards } from './contentPacks';
 import { lookupCourseCardsApi } from './dictionaryApi';
 import { debugLogger } from '../utils/debug/debugLogger';
 
@@ -31,12 +31,13 @@ export function getWordEntry(word: string): Promise<WordEntry | null> {
   const cached = entries.get(key);
   if (cached) return cached;
   const pending = (async () => {
-    const [rows, cards, readings] = await Promise.all([
+    const [rows, cards, readings, wordTypes] = await Promise.all([
       fetchDictionaryRowsFromPacks([key]).then((map) => map.get(key) ?? []),
       courseCardsForWord(key),
       Array.from(key).length === 1 ? fetchPronunciationIndex().catch(() => null) : Promise.resolve(null),
+      fetchWordTypeTags(key),
     ]);
-    return buildWordEntry(key, rows, cards, allReadings(key, readings).map((reading) => reading.pinyin));
+    return buildWordEntry(key, rows, cards, allReadings(key, readings).map((reading) => reading.pinyin), (tagKey) => wordTypes.get(tagKey));
   })();
   pending.catch(() => entries.delete(key));
   entries.set(key, pending);

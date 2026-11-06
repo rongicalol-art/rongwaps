@@ -24,9 +24,21 @@ export interface SearchResult {
 // Compact tuple: [id, simplified, traditional (if diff else ''), pinyin_accented, pinyin_flat, definitions[], freq]
 export type CompactSearchEntry = [number, string, string, string, string, string[], number];
 
+const flatPinyin = (pinyin: string | null | undefined) => (pinyin ?? '').normalize('NFC').toLowerCase().replace(/[\s'’·]/g, '');
+
 /** One row per word and reading: 嗎 ma and 嗎 má are different entries, 長 and 长 the same one. */
 export function searchEntryKey(traditional: string, pinyin: string | null | undefined): string {
-  return `${traditional}\u0000${(pinyin ?? '').normalize('NFC').toLowerCase().replace(/[\s'’·]/g, '')}`;
+  return `${traditional}\u0000${flatPinyin(pinyin)}`;
+}
+
+/** A reading's key in the word-type pack (`public/data/dictionary-pos/`): the word and its dictionary pinyin. */
+export function posTagsKey(traditional: string, pinyin: string | null | undefined): string {
+  return `${traditional}|${flatPinyin(pinyin)}`;
+}
+
+/** The word type of a reading's first tagged sense, from its pack value ("<checksum>|N,V,,Vs"). */
+export function firstPosTag(value: string | undefined): string | undefined {
+  return value?.split('|')[1]?.split(',').find(Boolean);
 }
 
 /**

@@ -10,6 +10,12 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-06 — Dictionary meanings carry word types (learner words)
+
+- Chosen: every CC-CEDICT sense of the learner words (book words plus TBCL/HSK level words, ~17k readings) gets one word type from the book's set (N, Name, V, Vs, Vaux, Adv, M, Det, Num, Prep, Conj, Ptc, Ph); the text is never rewritten. Codex tags them with Wiktionary (kaikki.org) and the book's tags as evidence; `scripts/dictionary/checkPos.ts` flags disagreements, a stronger Codex pass reviews flags plus a sample, and the owner spot-checks before shipping. The reviewed source is `content/dictionary/posTags.json`; `npm run dictionary:pos:build` ships `public/data/dictionary-pos/` (64 shards by word hash). Each entry holds a checksum of its senses, so a dictionary update switches stale tags off. The word page groups senses by type (joining the book's group of the same type); search rows show the first sense's type, from the server only (the phone slice stays under its budget).
+- Reason: the owner asked for Pleco-style meanings grouped by word type; CC-CEDICT has none, and Wiktionary has none for single characters.
+- Affects: `scripts/dictionary/{extractWiktionary,posBatches,tagPos,checkPos,reviewPos,collectPos,exportPosPack}.ts`, `src/utils/vocabulary/wordEntry.ts`, `server/dictionary.worker.ts`, `src/services/contentPackConfigs.ts`.
+
 ### 2026-11-06 — The dictionary has one entry per word and reading
 
 - Chosen: a course card belongs to the dictionary reading it teaches, never to a word that only shares its simplified form (`src/utils/vocabulary/wordEntry.ts`: exact reading, else the one reading with the same syllables for Taiwan tones, else the word's only reading; a card listing two readings teaches both). Search keeps one row per word and reading, ranks secondary readings and variant spellings lower, and drops "variant of" stubs unless the word is a course or level word. A tap opens the row's reading (`?word=長&r=zhǎng`). The word page lists every reading's senses: the book's senses first, grouped by the book's part of speech with their lesson and example, then the dictionary's remaining senses. The common-words slice carries no recordings or simple glosses (phone rows show no speaker; the server's answer brings them).
