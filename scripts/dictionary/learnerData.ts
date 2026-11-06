@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { DICTIONARY_SHARD_COUNT } from '../../src/utils/vocabulary/dictionaryShard';
 import { prepareVocabulary } from '../../src/utils/vocabulary/vocabularyMapping';
@@ -72,4 +72,33 @@ export async function readTaiwanReadings(): Promise<Map<string, string[]>> {
   } catch {
     return new Map();
   }
+}
+
+/** A course-book example sentence (deduped by text), with its recording and lesson. */
+export interface BookSentence {
+  id: number;
+  source: 'book';
+  chinese: string;
+  pinyin: string;
+  english: string;
+  audio?: unknown;
+  bookId: number;
+  lessonId: number;
+}
+
+/** Every course-book example sentence, from the flashcard-extras packs. */
+export async function readBookSentences(): Promise<BookSentence[]> {
+  const dir = resolve(DATA, 'flashcard-extras');
+  const byText = new Map<string, BookSentence>();
+  for (const file of (await readdir(dir)).filter((name) => /^shard-\d+\.json$/.test(name))) {
+    const shard = JSON.parse(await readFile(resolve(dir, file), 'utf8')) as { items: Array<{ examples: Array<{ chinese?: string; pinyin?: string; english?: string; audio?: unknown; sourceBookId?: string | number; sourceLessonId?: string | number }> }> };
+    for (const row of shard.items) for (const example of row.examples) {
+      if (!example.chinese || !example.pinyin || !example.english || byText.has(example.chinese)) continue;
+      byText.set(example.chinese, {
+        id: byText.size, source: 'book', chinese: example.chinese, pinyin: example.pinyin, english: example.english,
+        ...(example.audio ? { audio: example.audio } : {}), bookId: Number(example.sourceBookId ?? 0), lessonId: Number(example.sourceLessonId ?? 0),
+      });
+    }
+  }
+  return [...byText.values()];
 }

@@ -150,6 +150,36 @@ test('"(bound form)" is shown as "only in words", never as jargon', () => {
   assert.equal(searchRowMeaning({ definitions: ['(bound form) to walk; to go', 'capable'] }), 'to walk; to go; capable');
 });
 
+test('how to use a word lands where it belongs', () => {
+  const rows = [row(40, '就', 'jiù', ['then', 'at once', 'with regard to'])];
+  const cards = [card('就', 'jiù', 'then', 1, 10, 'Conj'), card('就', 'jiù', 'with regard to, concerning', 3, 7, 'Prep')];
+  const usage = {
+    g: [
+      ['B1L10-P1', 'B1L10-G05', 1, 10, '要是／如果……，就……', '', 'If…, then…'],
+      ['B3L07-P1', 'B3L07-G01', 3, 7, '才……就……', '', 'Only… and already…'],
+      ['B3L07-P1', 'B3L07-G03', 3, 7, '就……來說', '', 'As for…'],
+      ['B1L13-P1', 'B1L13-G03', 1, 13, '就', '', 'Read the Time and Result Meanings of 就'],
+    ] as Array<[string, string, number, number, string, string, string]>,
+  };
+  const entry = buildWordEntry('就', rows, cards, [], { usage })!;
+  const senses = entry.readings[0].groups.flatMap((group) => group.senses);
+  // The one Book 1 Lesson 10 point sits under the sense that lesson taught.
+  assert.deepEqual(senses.find((sense) => sense.text === 'then')?.grammar?.map((link) => link.pageId), ['B1L10-G05']);
+  // Book 3 Lesson 7 has two 就 points: neither is guessed onto its sense; with the untaught one they go to the list.
+  assert.equal(senses.find((sense) => sense.text.startsWith('with regard to'))?.grammar, undefined);
+  assert.deepEqual(entry.grammar.map((link) => link.pageId), ['B3L07-G01', 'B3L07-G03', 'B1L13-G03']);
+
+  const verb = buildWordEntry('上課', [row(41, '上課', 'shàng kè', ['to go to class'])], [card('上課', 'shàngkè', 'to go to class', 1, 2, 'V-sep')], [], {
+    usage: { s: [['我要上英文課。', 'Wǒ yào shàng Yīngwén kè.', 'I have English class.', null]] },
+  })!;
+  const split = verb.readings[0].groups[0].senses[0].split;
+  assert.deepEqual([split?.first, split?.second, split?.examples[0].chinese], ['上', '課', '我要上英文課。']);
+
+  const eat = buildWordEntry('吃', [row(42, '吃', 'chī', ['to eat'])], [card('吃', 'chī', 'to eat', 1, 1, 'V')], [], { usage: { w: [['藥', '吃藥'], ['東西', '吃東西']] } })!;
+  assert.deepEqual(eat.readings[0].groups[0].goesWith, [{ word: '藥', phrase: '吃藥' }, { word: '東西', phrase: '吃東西' }]);
+  assert.deepEqual(buildWordEntry('吃', [row(43, '吃', 'chī', ['to eat'])], [])!.grammar, []);
+});
+
 test('lists never show a Taiwan-reading note as a meaning', () => {
   const cleaned = sanitizeDictionaryDefinitions(['(loanword) dozen', 'Taiwan pr. [da3]']);
   assert.deepEqual(cleaned.definitions, ['(loanword) dozen']);

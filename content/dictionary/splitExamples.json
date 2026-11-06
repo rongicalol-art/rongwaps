@@ -1,0 +1,488 @@
+{
+ "schemaVersion": 1,
+ "source": "Course-book sentences where a separable verb stands split apart, chosen by a Codex review from sentences whose two characters stand apart.",
+ "format": "\"<verb>\": [[chinese, pinyin, english, book recording or null], …], at most two.",
+ "count": 39,
+ "entries": {
+  "上課": [
+   [
+    "現在他在上書法課，我們四點去吧。",
+    "Xiànzài tā zài shàng shūfǎ kè, wǒmen sì diǎn qù ba.",
+    "He is in the calligraphy class now. Let’s do it at 4 p.m.",
+    {
+     "voice": "book",
+     "file": "B1-09-1-1.mp3",
+     "start": 28.83,
+     "end": 34.41
+    }
+   ],
+   [
+    "可是從四點到五點半我要上英文課，六點去，怎麼樣？",
+    "Kěshì cóng sì diǎn dào wǔ diǎn bàn wǒ yào shàng Yīngwén kè, liù diǎn qù, zěnmeyàng?",
+    "But I have an English class from 4 to 5:30 p.m. How about 6 p.m.?",
+    {
+     "voice": "book",
+     "file": "B1-09-1-1.mp3",
+     "start": 34.93,
+     "end": 42.52
+    }
+   ]
+  ],
+  "下雨": [
+   [
+    "從昨天晚上到現在，已經下了十個小時的雨了。",
+    "Cóng zuótiān wǎnshang dào xiànzài, yǐjīng xià le shí ge xiǎoshí de yǔ le.",
+    "From last night until now, it has already rained for ten hours.",
+    {
+     "voice": "book",
+     "file": "B1-16-1-2.mp3",
+     "start": 166.05,
+     "end": 171.47
+    }
+   ],
+   [
+    "昨天電視臺的氣象報告說今天會下雨，果然一大早就下起雨來了。",
+    "Zuótiān diànshìtái de qìxiàng bàogào shuō jīntiān huì xiàyǔ, guǒrán yí dàzǎo jiù xià qǐ yǔ lái le.",
+    "Yesterday the TV station's weather report said it would rain today, and just as expected, it started raining early in the morning.",
+    null
+   ]
+  ],
+  "中毒": [
+   [
+    "那個病人不知道中了哪一種毒，不僅皮膚變黑，也昏迷好幾天了。",
+    "Nàge bìngrén bù zhīdào zhòng le nǎ yī zhǒng dú, bùjǐn pífū biàn hēi, yě hūnmí hǎo jǐ tiān le.",
+    "That patient doesn't know what kind of poison he was poisoned with; not only has his skin turned black, but he has also been in a coma for several days.",
+    null
+   ]
+  ],
+  "休假": [
+   [
+    "我叔叔總是說工作很累想休息，可是休了假之後又覺得無聊。",
+    "Wǒ shūshu zǒngshì shuō gōngzuò hěn lèi xiǎng xiūxi, kěshì xiū le jià zhīhòu yòu juéde wúliáo.",
+    "My uncle always says work is tiring and he wants to rest, but after taking a vacation, he feels bored again.",
+    null
+   ]
+  ],
+  "做事": [
+   [
+    "小藍看起來糊里糊塗的，其實做起事來仔細得很。",
+    "Xiǎolán kàn qǐlái húlǐhútú de, qíshí zuò qǐ shì lái zǐxì de hěn.",
+    "Xiaolan looks muddle-headed, but actually she is very careful when doing things.",
+    {
+     "voice": "book",
+     "file": "B3-03-2-2.mp3",
+     "start": 283.97,
+     "end": 289.89
+    }
+   ],
+   [
+    "我今天做了很多事，現在累了，需要休息了。",
+    "Wǒ jīntiān zuò le hěn duō shì, xiànzài lèi le, xūyào xiūxí le.",
+    "Today I did many things; now I am tired and need to rest.",
+    null
+   ]
+  ],
+  "做夢": [
+   [
+    "弟弟做了一個可怕的夢，夜裡三點就醒了。",
+    "Dìdi zuò le yí ge kěpà de mèng, yèlǐ sān diǎn jiù xǐng le.",
+    "My younger brother had a scary dream and woke up at 3 a.m.",
+    null
+   ],
+   [
+    "小鐘昨天晚上做了好幾個夢，沒睡好，難怪今天精神很不好。",
+    "Xiǎo Zhōng zuótiān wǎnshang zuò le hǎo jǐ ge mèng, méi shuì hǎo, nánguài jīntiān jīngshén hěn bù hǎo.",
+    "Xiao Zhong had several dreams last night and didn't sleep well; no wonder he is in very low spirits today.",
+    null
+   ]
+  ],
+  "傷心": [
+   [
+    "王小姐的男朋友不愛她了，真的傷了她的心。",
+    "Wáng xiǎojiě de nánpéngyou bù ài tā le, zhēnde shāng le tā de xīn.",
+    "Miss Wang's boyfriend doesn't love her anymore; it really broke her heart.",
+    null
+   ]
+  ],
+  "刷牙": [
+   [
+    "他太晚起床，趕快刷了牙就去上班了。",
+    "Tā tài wǎn qǐchuáng, gǎnkuài shuā le yá jiù qù shàngbān le.",
+    "He got up too late; he quickly brushed his teeth and then went to work.",
+    null
+   ]
+  ],
+  "加班": [
+   [
+    "我這個星期很忙，每天下班後都得加三個小時的班。",
+    "Wǒ zhège xīngqī hěn máng, měitiān xiàbān hòu dōu děi jiā sān ge xiǎoshí de bān.",
+    "I am very busy this week; every day after work I have to work three hours of overtime.",
+    null
+   ]
+  ],
+  "受傷": [
+   [
+    "那個孩子受了傷，好像快死了，媽媽請醫生快點兒救救他。",
+    "Nàge háizi shòu le shāng, hǎoxiàng kuài sǐ le, māma qǐng yīshēng kuài diǎnr jiùjiu tā.",
+    "That child got hurt and seemed close to dying; the mother asked the doctor to save him quickly.",
+    null
+   ]
+  ],
+  "吵架": [
+   [
+    "張先生夫婦自從結婚以來，不曾吵過架，因為兩人的脾氣都太好了。",
+    "Zhāng xiānsheng fūfù zìcóng jiéhūn yǐlái, bùcéng chǎo guò jià, yīnwèi liǎng rén de píqi dōu tài hǎo le.",
+    "Since Mr. and Mrs. Zhang got married, they have never had a fight, because both of their tempers are too good.",
+    {
+     "voice": "book",
+     "file": "B3-15-1-2.mp3",
+     "start": 226.86,
+     "end": 235.35
+    }
+   ],
+   [
+    "王先生跟女朋友吵了一架，現在兩個人不說話了。",
+    "Wáng xiānsheng gēn nǚpéngyou chǎo le yì jià, xiànzài liǎng ge rén bù shuōhuà le.",
+    "Mr. Wang had an argument with his girlfriend; now the two of them are not speaking to each other.",
+    null
+   ]
+  ],
+  "唱歌": [
+   [
+    "他們在露營活動中現學現唱了八首歌，真是了不起。",
+    "Tāmen zài lùyíng huódòng zhōng xiàn xué xiàn chàng le bā shǒu gē, zhēn shì liǎobuqǐ.",
+    "At the camping activity, they learned and sang eight songs on the spot; that's really amazing.",
+    null
+   ],
+   [
+    "他會唱很多首中文歌。",
+    "Tā huì chàng hěn duō shǒu Zhōngwén gē.",
+    "He can sing a lot of Chinese songs.",
+    {
+     "voice": "book",
+     "file": "B1-06-3-2.mp3",
+     "start": 51.8,
+     "end": 54.96
+    }
+   ]
+  ],
+  "幫忙": [
+   [
+    "可以請你幫我一個忙嗎？",
+    "Kěyǐ qǐng nǐ bāng wǒ yí ge máng ma?",
+    "Can I ask you to help me with a favor?",
+    {
+     "voice": "book",
+     "file": "B1-11-2-2.mp3",
+     "start": 72.24,
+     "end": 74.82
+    }
+   ],
+   [
+    "我同學很體貼父母，經常煮飯、 做家事，幫了父母不少忙。",
+    "Wǒ tóngxué hěn tǐtiē fùmǔ, jīngcháng zhǔfàn, zuò jiāshì, bāng le fùmǔ bùshǎo máng.",
+    "My classmate is very considerate of his parents; he often cooks and does housework, helping his parents a lot.",
+    null
+   ]
+  ],
+  "念書": [
+   [
+    "你得多念一點兒書，將來才有能力當教授。",
+    "Nǐ děi duō niàn yīdiǎnr shū, jiānglái cái yǒu nénglì dāng jiàoshòu.",
+    "You need to study a bit more, so that in the future you will have the ability to be a professor.",
+    null
+   ]
+  ],
+  "打工": [
+   [
+    "很多大學生都打過工，因為得自己付生活費。",
+    "Hěn duō dàxuéshēng dōu dǎ guò gōng, yīnwèi děi zìjǐ fù shēnghuófèi.",
+    "Many university students have had part-time jobs because they have to pay their own living expenses.",
+    null
+   ]
+  ],
+  "打折": [
+   [
+    "這個牌子的衛生紙打八折，很多人搶著購買。",
+    "Zhè ge páizi de wèishēngzhǐ dǎ bā zhé, hěn duō rén qiǎng zhe gòumǎi.",
+    "This brand of toilet paper is 20% off; many people are rushing to buy it.",
+    null
+   ],
+   [
+    "按照商品目錄的說明，消費滿五百元可以打八五折。",
+    "Ànzhào shāngpǐn mùlù de shuōmíng, xiāofèi mǎn wǔbǎi yuán kěyǐ dǎ bāwǔzhé.",
+    "According to the product catalog, if you spend 500 yuan, you can get a 15% discount.",
+    null
+   ]
+  ],
+  "找錢": [
+   [
+    "他找你多少錢？",
+    "Tā zhǎo nǐ duōshǎo qián?",
+    "How much change did he give you?",
+    {
+     "voice": "book",
+     "file": "B1-04-2-2.mp3",
+     "start": 138.54,
+     "end": 140.9
+    }
+   ]
+  ],
+  "探病": [
+   [
+    "他現在的身體狀況很糟，請暫時先別去探他的病。",
+    "Tā xiànzài de shēntǐ zhuàngkuàng hěn zāo, qǐng zànshí xiān bié qù tàn tā de bìng.",
+    "His current health condition is very bad; please don't go visit him while he's sick for now.",
+    null
+   ]
+  ],
+  "搬家": [
+   [
+    "山本良介來台灣以後，搬了兩次家。",
+    "Shānběn Liángjiè lái Táiwān yǐhòu, bān le liǎng cì jiā.",
+    "After Yamamoto Ryosuke came to Taiwan, he moved house twice.",
+    null
+   ],
+   [
+    "同事搬新家，我們送他一組茶具，恭喜他吧。",
+    "Tóngshì bān xīn jiā, wǒmen sòng tā yī zǔ chájù, gōngxǐ tā ba.",
+    "A colleague is moving to a new home; let's give him a tea set to congratulate him.",
+    null
+   ]
+  ],
+  "放假": [
+   [
+    "下個月放四天假，我打算帶家人去日本玩。",
+    "Xià gè yuè fàng sì tiān jià, wǒ dǎsuàn dài jiārén qù Rìběn wán.",
+    "Next month we have four days off; I plan to take my family to Japan for fun.",
+    {
+     "voice": "book",
+     "file": "B1-16-1-2.mp3",
+     "start": 19.93,
+     "end": 25.68
+    }
+   ]
+  ],
+  "救命": [
+   [
+    "救護車開得很快，因為要救人一命。",
+    "Jiùhùchē kāi de hěn kuài, yīnwèi yào jiù rén yī mìng.",
+    "The ambulance drove very fast, because it needed to save a person's life.",
+    null
+   ]
+  ],
+  "散步": [
+   [
+    "夏天的晚上，我喜歡去公園散散步、吹吹風。",
+    "Xiàtiān de wǎnshang, wǒ xǐhuan qù gōngyuán sànsanbù, chuīchuifēng.",
+    "On summer evenings, I like to go to the park for a walk and to enjoy the breeze.",
+    null
+   ]
+  ],
+  "洗澡": [
+   [
+    "爸爸下班以後，總是先洗個澡、喝個飲料，再吃晚飯。",
+    "Bàba xiàbān yǐhòu, zǒngshì xiān xǐ ge zǎo, hē ge yǐnliào, zài chī wǎnfàn.",
+    "After work, Dad always first takes a shower, has a drink, and then eats dinner.",
+    null
+   ]
+  ],
+  "流汗": [
+   [
+    "我不太喜歡流很多汗，所以不常跑步，比較喜歡在公園散步。",
+    "Wǒ bù tài xǐhuān liú hěn duō hàn, suǒyǐ bù cháng pǎobù, bǐjiào xǐhuān zài gōngyuán sànbù.",
+    "I don't really like to sweat a lot, so I don't run often; I prefer to take walks in the park.",
+    {
+     "voice": "book",
+     "file": "B3-06-1-2.mp3",
+     "start": 236.14,
+     "end": 243.13
+    }
+   ]
+  ],
+  "流血": [
+   [
+    "那個工人使用工廠的機器時，不小心發生了意外，流了很多血。",
+    "Nàge gōngrén shǐyòng gōngchǎng de jīqì shí, bù xiǎoxīn fāshēng le yìwài, liú le hěn duō xiě.",
+    "When that worker was using the factory machine, an accident happened accidentally, and he bled a lot.",
+    {
+     "voice": "book",
+     "file": "B3-06-1-2.mp3",
+     "start": 371.44,
+     "end": 378.08
+    }
+   ]
+  ],
+  "犯錯": [
+   [
+    "有時候孩子不明白自己到底犯了什麼錯，父母應該好好跟他們溝通。",
+    "Yǒushíhou háizi bù míngbai zìjǐ dàodǐ fàn le shénme cuò, fùmǔ yīnggāi hǎohǎo gēn tāmen gōutōng.",
+    "Sometimes children don't understand what mistake they have actually made; parents should communicate well with them.",
+    {
+     "voice": "book",
+     "file": "B3-14-2-2.mp3",
+     "start": 139.12,
+     "end": 146.02
+    }
+   ]
+  ],
+  "省錢": [
+   [
+    "他很愛惜東西，所以東西都能用很久，省了不少錢。",
+    "Tā hěn àixī dōngxi, suǒyǐ dōngxi dōu néng yòng hěn jiǔ, shěng le bùshǎo qián.",
+    "He really cherishes things, so things can all be used for a long time, and he has saved quite a bit of money.",
+    null
+   ],
+   [
+    "在台北市租房子太貴了，住在郊區可以省一點兒錢。",
+    "Zài Táiběi shì zū fángzi tài guì le, zhù zài jiāoqū kěyǐ shěng yīdiǎnr qián.",
+    "Renting a house in Taipei City is too expensive; living in the suburbs can save a little money.",
+    null
+   ]
+  ],
+  "看病": [
+   [
+    "爸爸這幾天背很疼，看了兩次病了，還是不舒服。",
+    "Bàba zhè jǐ tiān bèi hěn téng, kànle liǎng cì bìng le, háishì bù shūfu.",
+    "Dad's back has been hurting these few days; he has seen the doctor twice, but he is still uncomfortable.",
+    null
+   ],
+   [
+    "我去醫院看完病後，醫生給了我一張單子去櫃檯付錢和領藥。",
+    "Wǒ qù yīyuàn kàn wán bìng hòu, yīshēng gěi le wǒ yī zhāng dānzi qù guìtái fù qián hé lǐng yào.",
+    "After I finished seeing the doctor at the hospital, the doctor gave me a form to go to the counter to pay and pick up medicine.",
+    null
+   ]
+  ],
+  "睡覺": [
+   [
+    "很濃的茶跟很濃的咖啡一樣，都會讓人睡不著覺。",
+    "Hěn nóng de chá gēn hěn nóng de kāfēi yīyàng, dōu huì ràng rén shuì bù zháo jiào.",
+    "Strong tea, like strong coffee, will keep people from sleeping.",
+    null
+   ]
+  ],
+  "算帳": [
+   [
+    "拿到購物收據，要是發現算錯帳了，就請店員再算一次。",
+    "Ná dào gòuwù shōujù, yàoshi fāxiàn suàn cuò zhàng le, jiù qǐng diànyuán zài suàn yí cì.",
+    "When you get the shopping receipt, if you find that the bill has been calculated wrong, ask the clerk to calculate it again.",
+    null
+   ]
+  ],
+  "結婚": [
+   [
+    "對某一些人來說，結了婚還能不能有其他情人，這是道德問題。",
+    "Duì mǒu yīxiē rén lái shuō, jié le hūn hái néng bù néng yǒu qítā qíngrén, zhè shì dàodé wèntí.",
+    "For some people, whether one can still have other lovers after getting married is a moral issue.",
+    {
+     "voice": "book",
+     "file": "B3-16-2-2.mp3",
+     "start": 114.6,
+     "end": 121.19
+    }
+   ]
+  ],
+  "說話": [
+   [
+    "我昨天跟朋友說了很多話，我們都很開心。",
+    "Wǒ zuótiān gēn péngyou shuō le hěn duō huà, wǒmen dōu hěn kāixīn.",
+    "Yesterday I said a lot to my friend, and we were both very happy.",
+    {
+     "voice": "book",
+     "file": "B1-11-1-2.mp3",
+     "start": 16.57,
+     "end": 22.16
+    }
+   ],
+   [
+    "當別人遇到不愉快的事時，應該避免說些刺激他的話。",
+    "Dāng biérén yùdào bù yúkuài de shì shí, yīnggāi bìmiǎn shuō xiē cìjī tā de huà.",
+    "When others encounter unpleasant things, one should avoid saying things that irritate them.",
+    null
+   ]
+  ],
+  "講話": [
+   [
+    "他在跟家人談事情，已經講了三十分鐘的話了。",
+    "Tā zài gēn jiārén tán shìqíng, yǐjīng jiǎngle sānshí fēnzhōng de huà le.",
+    "He is discussing something with his family; he has already been talking for thirty minutes.",
+    {
+     "voice": "book",
+     "file": "B1-15-2-2.mp3",
+     "start": 32.15,
+     "end": 37.89
+    }
+   ]
+  ],
+  "走路": [
+   [
+    "我奶奶八十歲了，走起路來腳步仍像年輕人一樣。",
+    "Wǒ nǎinai bāshí suì le, zǒu qǐ lù lái jiǎobù réng xiàng niánqīngrén yīyàng.",
+    "My grandmother is eighty years old, but when she walks, her footsteps are still like those of a young person.",
+    null
+   ],
+   [
+    "前面發生了交通意外，為了避免被困在路上，我們還是走別條路吧。",
+    "Qiánmiàn fāshēng le jiāotōng yìwài, wèile bìmiǎn bèi kùn zài lùshàng, wǒmen háishì zǒu bié tiáo lù ba.",
+    "There was a traffic accident ahead; to avoid being stuck on the road, we should take another route.",
+    {
+     "voice": "book",
+     "file": "B3-05-2-2.mp3",
+     "start": 176.63,
+     "end": 183.41
+    }
+   ]
+  ],
+  "造句": [
+   [
+    "老師說得寫了生字、造了句，才可以下課。",
+    "Lǎoshī shuō de xiěle shēngzì, zàole jù, cái kěyǐ xiàkè.",
+    "The teacher said that only after writing the new vocabulary and making sentences can we leave class.",
+    null
+   ]
+  ],
+  "開會": [
+   [
+    "為了做這個報告，經理已經跟我們開過三次會了。",
+    "Wèile zuò zhège bàogào, jīnglǐ yǐjīng gēn wǒmen kāi guò sān cì huì le.",
+    "In order to prepare this report, the manager has already had meetings with us three times.",
+    null
+   ]
+  ],
+  "開車": [
+   [
+    "這座橋對車子的高度有限制，開大車的人要小心。",
+    "Zhè zuò qiáo duì chēzi de gāodù yǒu xiànzhì, kāi dàchē de rén yào xiǎoxīn.",
+    "This bridge has a height restriction for vehicles; those driving large vehicles should be careful.",
+    null
+   ]
+  ],
+  "離婚": [
+   [
+    "聽說小張離過三次婚，你想他還會再結婚嗎？",
+    "Tīngshuō Xiǎo Zhāng lí guò sān cì hūn, nǐ xiǎng tā hái huì zài jiéhūn ma?",
+    "I heard Xiao Zhang has been divorced three times; do you think he will get married again?",
+    {
+     "voice": "book",
+     "file": "B3-01-1-2.mp3",
+     "start": 360.91,
+     "end": 366.15
+    }
+   ]
+  ],
+  "點菜": [
+   [
+    "我和朋友到餐廳點了好多菜，最後沒吃完，只好打包回家。",
+    "Wǒ hé péngyou dào cāntīng diǎn le hǎo duō cài, zuìhòu méi chī wán, zhǐhǎo dǎbāo huí jiā.",
+    "My friend and I went to a restaurant and ordered a lot of dishes. In the end, we couldn't finish them, so we had to pack them to take home.",
+    {
+     "voice": "book",
+     "file": "B3-04-1-2.mp3",
+     "start": 306.91,
+     "end": 312.95
+    }
+   ]
+  ]
+ }
+}

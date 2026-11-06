@@ -1,10 +1,10 @@
-import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { alignSentenceSyllables } from '../../src/utils/pinyin/pinyinTones';
-import { buildWordEntry, readingKey, type EntryExample } from '../../src/utils/vocabulary/wordEntry';
+import { buildWordEntry, readingKey } from '../../src/utils/vocabulary/wordEntry';
 import { posTagsKey } from '../../shared/dictionarySearch';
 import { formatPosLabel } from '../../src/utils/vocabulary/posLabels';
-import { readCourseCards, readDictionaryRows, readTaiwanReadings } from './learnerData';
+import { readBookSentences, readCourseCards, readDictionaryRows, readTaiwanReadings, type BookSentence } from './learnerData';
 
 /**
  * `npx tsx scripts/dictionary/exampleCandidates.ts` — dev-only. Matches the book's example
@@ -13,7 +13,6 @@ import { readCourseCards, readDictionaryRows, readTaiwanReadings } from './learn
  * Output (gitignored): output/dictionary-examples/{sentences.json, batches/*.json}.
  */
 const OUT = resolve(process.cwd(), 'output/dictionary-examples');
-const EXTRAS = resolve(process.cwd(), 'public/data/flashcard-extras');
 const TAGS = resolve(process.cwd(), 'content/dictionary/posTags.json');
 const PER_READING = 6;
 const MAX_WORD = 6;
@@ -21,7 +20,7 @@ const MAX_WORD = 6;
 const IDEAL_LENGTH = 12;
 const BATCH_SIZE = 30;
 
-export interface PoolSentence extends EntryExample { id: number; source: 'book'; bookId: number; lessonId: number }
+export type PoolSentence = BookSentence;
 
 export interface ExampleBatchEntry {
   /** posTagsKey of the reading. */
@@ -34,28 +33,13 @@ export interface ExampleBatchEntry {
 
 const toneless = (key: string) => key.replace(/[1-5]/g, '');
 
-async function bookSentences(): Promise<PoolSentence[]> {
-  const byText = new Map<string, PoolSentence>();
-  for (const file of (await readdir(EXTRAS)).filter((name) => /^shard-\d+\.json$/.test(name))) {
-    const shard = JSON.parse(await readFile(resolve(EXTRAS, file), 'utf8')) as { items: Array<{ examples: Array<EntryExample & { sourceBookId?: string | number; sourceLessonId?: string | number }> }> };
-    for (const row of shard.items) for (const example of row.examples) {
-      if (!example.chinese || !example.pinyin || !example.english || byText.has(example.chinese)) continue;
-      byText.set(example.chinese, {
-        id: byText.size, source: 'book', chinese: example.chinese, pinyin: example.pinyin, english: example.english,
-        ...(example.audio ? { audio: example.audio } : {}), bookId: Number(example.sourceBookId ?? 0), lessonId: Number(example.sourceLessonId ?? 0),
-      });
-    }
-  }
-  return [...byText.values()];
-}
-
 async function main() {
   const tags = (JSON.parse(await readFile(TAGS, 'utf8')) as { entries: Record<string, string> }).entries;
   const learner = [...new Set(Object.keys(tags).map((key) => key.slice(0, key.indexOf('|'))))].sort((a, b) => Array.from(b).length - Array.from(a).length);
   const { byWord } = await readDictionaryRows();
   const cards = await readCourseCards();
   const taiwan = await readTaiwanReadings();
-  const sentences = await bookSentences();
+  const sentences = await readBookSentences();
   const learnerSet = new Set(learner);
 
   // Which reading of which learner word each sentence uses, by its own aligned pinyin.
