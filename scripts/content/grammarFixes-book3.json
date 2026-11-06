@@ -546,7 +546,7 @@
   {"lesson": 11, "op": "reading", "target": "B3L11-R01", "paragraph": 4, "field": "pinyin", "find": "liáo dehěn kāixīn", "replace": "liáo de hěn kāixīn", "reason": "得 and 很 glued into a non-word"},
   {"lesson": 11, "op": "reading", "target": "B3L11-R01", "paragraph": 5, "field": "pinyin", "find": "Nà shíhou", "replace": "Nà shíhòu", "reason": "時候 is shíhòu (cards; p15 already has it)"},
   {"lesson": 11, "op": "reading", "target": "B3L11-R01", "paragraph": 13, "field": "pinyin", "find": "nà shíhou", "replace": "nà shíhòu", "reason": "時候 is shíhòu (cards)"},
-  {"lesson": 11, "op": "reading", "target": "B3L11-R01", "paragraph": 12, "field": "pinyin", "find": "tóng yí gèrén", "replace": "tóng yíge rén", "reason": "同一個人 is 一個 + 人, not 個人 gèrén 'individual'; yíge as everywhere else in Book 3 readings"},
+  {"lesson": 11, "op": "reading", "target": "B3L11-R01", "paragraph": 12, "field": "pinyin", "find": ["tóng yí gèrén", "tóng yí ge rén"], "replace": "tóng yíge rén", "reason": "同一個人 is 一個 + 人, not 個人 gèrén 'individual'; yíge as everywhere else in Book 3 readings"},
   {"lesson": 11, "op": "reading", "target": "B3L11-R01", "paragraph": 15, "field": "pinyin", "find": "huí xiǎng qǐ", "replace": "huíxiǎng qǐ", "reason": "回想 is one card word (B3L11 huíxiǎng)"},
   {"lesson": 11, "op": "reading", "target": "B3L11-R02", "paragraph": 4, "field": "pinyin", "find": "làngmàn dehuà", "replace": "làngmàn de huà", "reason": "浪漫的話 = romantic words (的 + 話), not 的話 'if'"},
   {"lesson": 11, "op": "reading", "target": "B3L11-R02", "paragraph": 5, "field": "pinyin", "find": "yào búyào yǐ", "replace": "yào bú yào yǐ", "reason": "A-not-A 要不要, not búyào 'don't' (as grammar b3l11g6-ex1)"},
