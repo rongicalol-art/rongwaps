@@ -6,7 +6,7 @@ import { useLevel } from '../../../hooks/useLevels';
 import { useAppStore } from '../../../store/useAppStore';
 import { useWordEntry } from '../../../hooks/useWordEntry';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
-import { readingHeadline } from '../../../utils/vocabulary/wordEntry';
+import { readingHeadline, taiwanReadingOf } from '../../../utils/vocabulary/wordEntry';
 import type { DBDictionaryEntry } from '../../../types/database';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { AlsoReadings, BreakdownTabs, EntryLayout, EntrySenses, useEntryLead, type BreakdownTab } from '../../character-breakdown';
@@ -171,7 +171,7 @@ export function WordDetailView({
                         className="min-w-0"
                       >
                         {activeTab === 'related' && (
-                          <WordRelatedList word={word} relatedWords={relatedWords} isLoading={relatedLoading} onOpenWord={setDictionaryWord} />
+                          <WordRelatedList word={word} relatedWords={relatedWords} isLoading={relatedLoading} onOpenWord={setDictionaryWord} taiwan={entry ? taiwanReadingOf(entry, lead) : null} />
                         )}
                         {activeTab === 'examples' && (
                           <WordExamplesSection examples={examples} isLoading={examplesLoading} word={word} />

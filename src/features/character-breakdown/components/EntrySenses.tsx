@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { LevelTag, SpeakerIcon, TranslationLines } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { useAudioPending } from '../../../hooks/useAudioPending';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import { formatPosLabel } from '../../../utils/vocabulary/posLabels';
-import { senseText, type EntryExample, type EntryReading, type EntrySense, type WordEntry } from '../../../utils/vocabulary/wordEntry';
+import { isBoundForm, senseText, type EntryExample, type EntryReading, type EntrySense, type WordEntry } from '../../../utils/vocabulary/wordEntry';
 import { ShowMoreButton } from './v3/ShowMoreButton';
 
 /** Dictionary senses shown before "Show all"; course senses always show. */
@@ -82,6 +82,7 @@ function SenseItem({ sense, number, simple, speakerId, onOpenWord }: {
         ) : (
           <span className="text-base font-extrabold leading-snug text-ui-ink-strong sm:text-lg">{text}</span>
         )}
+        {isBoundForm(sense) && <span className="text-sm font-bold text-ui-muted">only in words</span>}
         {sense.course && <LevelTag bookId={sense.course.bookId} lessonId={sense.course.lessonId} />}
       </div>
       {sense.example && <SenseExample example={sense.example} speakerId={speakerId} />}
@@ -145,17 +146,31 @@ function ReadingSenses({ word, reading, lead, onSelectReading, onOpenWord }: {
         );
       })}
       {reading.measureWords.length > 0 && (
-        <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm font-bold text-ui-muted-strong">
-          <span className="text-xs font-black uppercase tracking-widest">Measure word</span>
+        <NoteLine label="Measure word">
           {reading.measureWords.map((measure) => (
             <span key={measure.char} className="inline-flex items-baseline gap-1">
               <span className="font-chinese text-base text-ui-ink">{measure.char}</span>
               {measure.pinyin && <span>{measure.pinyin}</span>}
             </span>
           ))}
-        </p>
+        </NoteLine>
+      )}
+      {reading.otherReading && (
+        <NoteLine label={reading.otherReading.region}>
+          <span className="text-base font-extrabold text-ui-ink">{reading.otherReading.pinyin}</span>
+        </NoteLine>
       )}
     </div>
+  );
+}
+
+/** A quiet labelled line under a reading's meanings: its measure words, its reading in the other standard. */
+function NoteLine({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm font-bold text-ui-muted-strong">
+      <span className="text-xs font-black uppercase tracking-widest">{label}</span>
+      {children}
+    </p>
   );
 }
 

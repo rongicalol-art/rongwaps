@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
-import { buildWordEntry, courseCardsByRow, linkCourseReadings, orderReadingKeys, pickReading, readingDictionarySenses, readingKey, senseChecksum, senseTags, type DictionaryRowLike } from '../../src/utils/vocabulary/wordEntry';
+import { buildWordEntry, courseCardsByRow, isBoundForm, linkCourseReadings, orderReadingKeys, pickReading, readingDictionarySenses, readingHeadline, readingKey, searchRowMeaning, senseChecksum, senseTags, senseText, taiwanReadingOf, withTaiwanReading, type DictionaryRowLike } from '../../src/utils/vocabulary/wordEntry';
+import { sanitizeDictionaryDefinitions } from '../../shared/dictionaryDefinitions';
 import { firstPosTag, posTagsKey } from '../../shared/dictionarySearch';
 
 const card = (front: string, pinyin: string, back: string, bookId: number, lessonId: number, pos?: string): Flashcard =>
@@ -96,4 +97,62 @@ test('word types are ignored once the dictionary lists other senses', () => {
 test('Taiwan reading order breaks ties when no lesson teaches the word', () => {
   const rows = [row(13, '血', 'xuè', ['blood']), row(14, '血', 'xiě', ['blood'])];
   assert.deepEqual(orderReadingKeys(rows, new Map(), ['xiě', 'xuè']), ['xie3', 'xue4']);
+});
+
+test('a Taiwan-reading note is a note on the reading, never a numbered meaning', () => {
+  // The page shows the Taiwan reading (the book's lèsè): the note names the Mainland one.
+  const trash = buildWordEntry('垃圾', [row(30, '垃圾', 'lā jī', ['trash', 'garbage', 'Taiwan pr. [le4 se4]'])], [card('垃圾', 'lèsè', 'garbage, trash', 2, 2, 'N')]);
+  const lese = trash!.readings[0];
+  assert.ok(lese.groups.every((group) => group.senses.every((sense) => !sense.text.startsWith('Taiwan pr.'))));
+  assert.deepEqual(lese.otherReading, { region: 'Mainland', pinyin: 'lājī' });
+
+  // The page shows the dictionary reading: the note names the Taiwan one.
+  const dozen = buildWordEntry('打', [row(31, '打', 'dá', ['(loanword) dozen', 'Taiwan pr. [da3]'])], []);
+  assert.deepEqual(dozen!.readings[0].groups.flatMap((group) => group.senses.map((sense) => sense.text)), ['(loanword) dozen']);
+  assert.deepEqual(dozen!.readings[0].otherReading, { region: 'Taiwan', pinyin: 'dǎ' });
+
+  // A note inside a real meaning belongs to that meaning and stays where it is.
+  const chess = buildWordEntry('著', [row(32, '著', 'zhāo', ['a move in chess (Taiwan pr. [zhao2])'])], []);
+  assert.equal(chess!.readings[0].otherReading, undefined);
+});
+
+test('the Taiwan-reading note keeps its place in the list word types are keyed on', () => {
+  const { senses } = readingDictionarySenses([row(33, '打', 'dá', ['(loanword) dozen', 'Taiwan pr. [da3]'])]);
+  assert.deepEqual(senses.map((sense) => sense.text), ['(loanword) dozen', 'Taiwan pr. dǎ']);
+});
+
+test('longer words on a page use its Taiwan reading only where the dictionary notes one', () => {
+  const trash = buildWordEntry('垃圾', [row(35, '垃圾', 'lā jī', ['trash', 'Taiwan pr. [le4 se4]'])], [card('垃圾', 'lèsè', 'garbage, trash', 2, 2, 'N')])!;
+  const taiwan = taiwanReadingOf(trash, trash.readings[0]);
+  assert.deepEqual(taiwan, { word: '垃圾', pinyin: 'lèsè' });
+  assert.equal(withTaiwanReading('垃圾堆', 'lā jī duī', taiwan), 'lè sè duī');
+  assert.equal(withTaiwanReading('洋垃圾', 'yáng lā jī', taiwan), 'yáng lè sè');
+  assert.equal(withTaiwanReading('坷垃', 'kē lā', taiwan), 'kē lā', 'shares a character, not the word');
+  assert.equal(withTaiwanReading('垃圾 郵件', 'lā jī yóu', taiwan), 'lā jī yóu', 'syllables that do not line up stay as they were');
+
+  // The book's tone differs from the dictionary's (Taiwan says lǐ, the dictionary li): the book's wins too.
+  const luggage = buildWordEntry('行李', [row(37, '行李', 'xíng li', ['luggage'])], [card('行李', 'xínglǐ', 'luggage', 2, 7, 'N')])!;
+  assert.equal(withTaiwanReading('行李箱', 'xíng li xiāng', taiwanReadingOf(luggage, luggage.readings[0])), 'xíng lǐ xiāng');
+
+  // 東西 dōngxi "thing" reads the same in the book and the dictionary, so 東西方 "east and west" keeps its own reading.
+  const thing = buildWordEntry('東西', [row(36, '東西', 'dōng xi', ['thing; stuff'])], [card('東西', 'dōngxi', 'thing', 1, 4, 'N')])!;
+  assert.equal(taiwanReadingOf(thing, thing.readings[0]), null);
+  assert.equal(withTaiwanReading('東西方', 'dōng xī fāng', taiwanReadingOf(thing, thing.readings[0])), 'dōng xī fāng');
+});
+
+test('"(bound form)" is shown as "only in words", never as jargon', () => {
+  const entry = buildWordEntry('行', [row(34, '行', 'xíng', ['(bound form) to walk; to go', 'capable; competent'])], [])!;
+  const [walk, capable] = entry.readings[0].groups.flatMap((group) => group.senses);
+  assert.equal(senseText(walk), 'to walk; to go');
+  assert.equal(isBoundForm(walk), true);
+  assert.equal(isBoundForm(capable), false);
+  assert.equal(readingHeadline(entry.readings[0]), 'to walk; to go');
+  assert.equal(searchRowMeaning({ definitions: ['(bound form) to walk; to go', 'capable'] }), 'to walk; to go; capable');
+});
+
+test('lists never show a Taiwan-reading note as a meaning', () => {
+  const cleaned = sanitizeDictionaryDefinitions(['(loanword) dozen', 'Taiwan pr. [da3]']);
+  assert.deepEqual(cleaned.definitions, ['(loanword) dozen']);
+  assert.equal(cleaned.taiwan_pronunciation, 'dǎ');
+  assert.equal(searchRowMeaning({ definitions: ['Taiwan pr. dǎ', '(loanword) dozen'] }), '(loanword) dozen');
 });

@@ -2,30 +2,41 @@ import { useMemo, useState } from 'react';
 import { Skeleton } from '../../../lib/widgets';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useLevels } from '../../../hooks/useLevels';
+import { officialLevel, resolveLevel } from '../../../utils/lesson/levels';
 import { levelRank } from '../../../utils/vocabulary/wordOrdering';
+import { withTaiwanReading } from '../../../utils/vocabulary/wordEntry';
 import { BreakdownRow, ShowMoreButton } from '../../character-breakdown';
 import type { WordRelatedWord } from '../hooks/useWordExtras';
 import { CourseOrLevelTag } from './CourseOrLevelTag';
 
 const DEFAULT_VISIBLE = 8;
 
-/** Words that share characters with this one, easiest first, as flat list rows. */
-export function WordRelatedList({ word, relatedWords, isLoading, onOpenWord }: {
+/**
+ * Words related to this one as flat list rows: words containing it and book
+ * words first (as fetched), then dictionary words easiest first. Only those and
+ * words with a real level show at first; rare ones wait behind "See all".
+ * Pinyin follows the page's Taiwan reading (`taiwan`, see `taiwanReadingOf`).
+ */
+export function WordRelatedList({ word, relatedWords, isLoading, onOpenWord, taiwan }: {
   word: string;
   relatedWords: WordRelatedWord[];
   isLoading: boolean;
   onOpenWord: (word: string) => void;
+  taiwan?: { word: string; pinyin: string } | null;
 }) {
   const [showAll, setShowAll] = useState(false);
   const levels = useLevels();
-  const ordered = useMemo(
-    () => relatedWords
+  const { ordered, prominent } = useMemo(() => {
+    const close = relatedWords.filter((item) => item.close);
+    const rest = relatedWords
+      .filter((item) => !item.close)
       .map((item, index) => ({ item, index, level: levelRank(item.word, levels) }))
       .sort((a, b) => a.level - b.level || a.index - b.index)
-      .map(({ item }) => item),
-    [relatedWords, levels],
-  );
-  const visible = showAll ? ordered : ordered.slice(0, DEFAULT_VISIBLE);
+      .map(({ item }) => item);
+    const all = [...close, ...rest];
+    return { ordered: all, prominent: all.filter((item) => item.close || officialLevel(resolveLevel(item.word, levels)) !== undefined) };
+  }, [relatedWords, levels]);
+  const visible = showAll ? ordered : (prominent.length > 0 ? prominent : ordered).slice(0, DEFAULT_VISIBLE);
 
   if (isLoading) {
     return (
@@ -50,14 +61,14 @@ export function WordRelatedList({ word, relatedWords, isLoading, onOpenWord }: {
           key={item.word}
           glyph={item.word}
           highlight={word}
-          pinyin={item.pinyin ? numberToToneMarks(item.pinyin) : undefined}
+          pinyin={item.pinyin ? withTaiwanReading(item.word, numberToToneMarks(item.pinyin), taiwan) : undefined}
           meaning={item.definition}
           trailing={<CourseOrLevelTag text={item.word} />}
           onClick={() => onOpenWord(item.word)}
           ariaLabel={`Open breakdown for ${item.word}`}
         />
       ))}
-      {ordered.length > DEFAULT_VISIBLE && (
+      {(showAll || ordered.length > visible.length) && (
         <ShowMoreButton
           label={showAll ? 'Show less' : `See all ${ordered.length}`}
           expanded={showAll}

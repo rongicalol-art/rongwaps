@@ -11,6 +11,28 @@ export interface SanitizedDefinitions {
   measure_words: string[];
   /** Same measure words with their readings, for display. */
   measure_word_details: MeasureWordDetail[];
+  /** The Taiwan reading, when a sense only gives it ("Taiwan pr. [le4 se4]" → "lè sè"); it is not a meaning. */
+  taiwan_pronunciation?: string;
+}
+
+const BOUND_FORM_RE = /^\s*\(bound form\)\s*/i;
+
+/** CC-CEDICT marks a sense that only lives inside longer words "(bound form)": the sense without that jargon, and whether it had it. */
+export function withoutBoundForm(text: string): { text: string; bound: boolean } {
+  return BOUND_FORM_RE.test(text) ? { text: text.replace(BOUND_FORM_RE, ''), bound: true } : { text, bound: false };
+}
+
+/** How a cleaned pronunciation-only sense reads: "Taiwan pr. lè sè". */
+export const TAIWAN_PRONUNCIATION_PREFIX = 'Taiwan pr. ';
+
+/** A whole sense that only gives the Taiwan reading: "Taiwan pr. [le4 se4]", or "Taiwan pr. lè sè" once cleaned. */
+const TAIWAN_PRONUNCIATION_RE = /^\s*Taiwan pr\.\s*(?:\[([^\]]+)\]|([^[\],;()]+?))\s*$/i;
+
+/** The tone-marked Taiwan reading a pronunciation-only sense gives; null for every other sense. */
+export function taiwanPronunciationOf(text: string): string | null {
+  const match = TAIWAN_PRONUNCIATION_RE.exec(text);
+  if (!match) return null;
+  return match[1] ? numberToToneMarks(match[1]) : match[2].trim();
 }
 
 export interface SanitizeDefinitionsOptions {
@@ -168,8 +190,15 @@ export function sanitizeDictionaryDefinitions(
   const parsed = definitionStrings(value);
   const measureWords: string[] = [];
   const measureDetails: MeasureWordDetail[] = [];
+  let taiwanPronunciation: string | undefined;
 
   let clean = parsed.map((definition) => {
+    // "Taiwan pr. [da3]" says how Taiwan reads the word; it is reported apart, never listed as a meaning.
+    const taiwan = taiwanPronunciationOf(definition);
+    if (taiwan) {
+      taiwanPronunciation ??= taiwan;
+      return '';
+    }
     let text = definition;
     // Pull CEDICT classifier tokens (e.g. "(CL:場|场[chang2])") into measure
     // words before other cleanup, consuming their wrapping parentheses so no
@@ -214,8 +243,8 @@ export function sanitizeDictionaryDefinitions(
 
   // Last-resort fallback for unknown encodings — but never resurrect
   // raw machine markup or definitions that were purely classifier metadata.
-  const hadOnlyClassifierMetadata = parsed.every((text) => /\bCL:/i.test(text));
-  if (clean.length === 0 && parsed.length > 0 && !hadOnlyClassifierMetadata) {
+  const hadOnlyMetadata = parsed.every((text) => /\bCL:/i.test(text) || taiwanPronunciationOf(text));
+  if (clean.length === 0 && parsed.length > 0 && !hadOnlyMetadata) {
     clean = parsed
       .map((item) => humanizeCedictMarkup(String(item), options.preferredScript).trim())
       .filter((item) => item.length > 0);
@@ -226,6 +255,7 @@ export function sanitizeDictionaryDefinitions(
     measure_word_details: measureDetails.filter(
       (detail, index) => measureDetails.findIndex((other) => other.char === detail.char) === index,
     ),
+    ...(taiwanPronunciation ? { taiwan_pronunciation: taiwanPronunciation } : {}),
   };
 }
 

@@ -193,3 +193,18 @@ test('one- and two-letter queries match whole glosses only', () => {
   assert.deepEqual(searchInIndex(entries, 'c').map((word) => word.id), [1]);
   assert.deepEqual(searchInIndex(entries, 'go').map((word) => word.id), [3]);
 });
+
+test('rare names come last unless typed exactly; common names keep their place', () => {
+  const entries: CompactSearchEntry[] = [
+    [1, '学习', '學習', 'xué xí', 'xuexi', ['to learn; to study'], 60],
+    [2, '学习强国', '學習強國', 'Xué xí Qiáng guó', 'xuexiqiangguo', ['Xuexi Qiangguo, PRC app'], 2],
+    [3, '学习班', '學習班', 'xué xí bān', 'xuexiban', ['study class'], 5],
+    [4, '北京', '', 'Běi jīng', 'beijing', ['Beijing'], 69],
+    [5, '北京话', '北京話', 'Běi jīng huà', 'beijinghua', ['Beijing dialect'], 20],
+  ];
+  assert.deepEqual(searchInIndex(entries, '学习').map((word) => word.id), [1, 3, 2]);
+  assert.deepEqual(searchInIndex(entries, 'xuexi').map((word) => word.id), [1, 3, 2]);
+  assert.equal(searchInIndex(entries, '學習強國')[0]?.id, 2);
+  assert.equal(searchInIndex(entries, 'xuexiqiangguo')[0]?.id, 2);
+  assert.deepEqual(searchInIndex(entries, '北京').map((word) => word.id), [4, 5]);
+});
