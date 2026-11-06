@@ -24,7 +24,10 @@ const PLAIN_LEADING: Record<ReaderTextSize, string> = {
   'extra-large': 'leading-[1.9] sm:leading-[2.0] tracking-normal',
 };
 
-/** Glyph size + leading for a dialogue bubble's Chinese text. */
+/**
+ * Glyph size + leading for a dialogue bubble's Chinese text. `text-pretty` keeps the last line from holding a
+ * single character (嗎？ alone under a full line).
+ */
 export function getDialogueTextClasses(textSize: ReaderTextSize, showPinyin: boolean): string {
-  return `${GLYPH_SIZE[textSize]} ${showPinyin ? RUBY_LEADING[textSize] : PLAIN_LEADING[textSize]}`;
+  return `${GLYPH_SIZE[textSize]} ${showPinyin ? RUBY_LEADING[textSize] : PLAIN_LEADING[textSize]} text-pretty`;
 }

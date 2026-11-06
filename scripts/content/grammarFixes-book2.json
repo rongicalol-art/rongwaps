@@ -1,0 +1,6 @@
+[
+  {"lesson": 14, "op": "words", "target": "b2l14-g07-ex2", "from": "學期末", "to": [{"traditional": "學期", "pinyin": "xuéqí"}, {"traditional": "末", "pinyin": "mò"}], "reason": "上個學期末 is 學期 + 末 'end of last semester', not 學 + 期末"},
+  {"lesson": 14, "op": "words", "target": "b2l14-g07-ex2", "from": "不住", "to": [{"traditional": "不", "pinyin": "bú"}, {"traditional": "住", "pinyin": "zhù"}], "reason": "已經不住在宿舍了 is 不 + 住 'no longer lives', not the dictionary word 不住 'continually'"},
+  {"lesson": 14, "op": "reading", "target": "B2L14-R01", "paragraph": 14, "field": "pinyin", "find": "“Yú” gēn", "replace": "“yú” gēn", "reason": "the quoted 餘 sits mid-sentence; no capital"},
+  {"lesson": 12, "op": "reading", "target": "B2L12-R02", "paragraph": 7, "field": "pinyin", "find": "5 yuè 21 rì", "replace": "Wǔ yuè èrshíyī rì", "reason": "the letter's date is printed in digits; its pinyin spells the numbers out"}
+]
