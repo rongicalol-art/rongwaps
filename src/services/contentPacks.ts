@@ -15,6 +15,8 @@ import {
   recordsToExampleCards,
   resolveMnemonicFromMap,
   type LevelIndex,
+  type SenseExampleRow,
+  type WordUsage,
 } from '../utils/packValidators';
 import type { PartsIndex } from '../utils/characters/parts';
 import type { ReadingsIndex } from '../utils/pinyin/pronunciation';
@@ -294,6 +296,26 @@ export async function fetchWordTypeTags(word: string): Promise<Map<string, strin
     return (await loadPack<Map<string, string>>('dictionary-pos', getDictionaryShard(word))) ?? new Map();
   } catch (error) {
     debugLogger.warn('Cache', 'Word-type pack unavailable.', error);
+    return new Map();
+  }
+}
+
+/** How to use `word` (grammar lessons, splits, goes-with); undefined when it has none or the pack is unavailable. */
+export async function fetchWordUsage(word: string): Promise<WordUsage | undefined> {
+  try {
+    return (await loadPack<Map<string, WordUsage>>('dictionary-usage', getDictionaryShard(word)))?.get(word);
+  } catch (error) {
+    debugLogger.warn('Cache', 'Dictionary usage unavailable.', error);
+    return undefined;
+  }
+}
+
+/** Example sentences per word type for `word`'s shard, by `posTagsKey`; empty when the pack is unavailable. */
+export async function fetchSenseExamples(word: string): Promise<Map<string, SenseExampleRow[]>> {
+  try {
+    return (await loadPack<Map<string, SenseExampleRow[]>>('dictionary-examples', getDictionaryShard(word))) ?? new Map();
+  } catch (error) {
+    debugLogger.warn('Cache', 'Dictionary examples unavailable.', error);
     return new Map();
   }
 }

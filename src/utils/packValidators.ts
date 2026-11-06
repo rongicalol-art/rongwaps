@@ -45,6 +45,8 @@ export type ContentPackKind =
   | 'parts'
   | 'pronunciation'
   | 'dictionary-pos'
+  | 'dictionary-examples'
+  | 'dictionary-usage'
   | 'lesson-tests';
 
 const VALID_CONTENT_TYPES = new Set(['character', 'word', 'story']);
@@ -371,6 +373,71 @@ export function isValidDictionaryPosPack(pack: unknown, shard: number, expectedC
     && typeof candidate.items === 'object' && candidate.items !== null
     && Object.values(candidate.items).length === expectedCount
     && Object.values(candidate.items).every((value) => typeof value === 'string');
+}
+
+/**
+ * One example per word type for learner readings (public/data/dictionary-examples/, shards like the
+ * dictionary's): `posTagsKey(word, pinyin)` → rows of
+ * [sense text, chinese, pinyin, english, book recording or null, Tatoeba credit or null].
+ */
+export type SenseExampleRow = [string, string, string, string, unknown, string | null];
+
+export interface DictionaryExamplesPack {
+  schemaVersion: number;
+  shard: number;
+  count: number;
+  items: Record<string, SenseExampleRow[]>;
+}
+
+export function isValidDictionaryExamplesPack(pack: unknown, shard: number, expectedCount: number): pack is DictionaryExamplesPack {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as Partial<DictionaryExamplesPack>;
+  return candidate.schemaVersion === 1
+    && candidate.shard === shard
+    && candidate.count === expectedCount
+    && typeof candidate.items === 'object' && candidate.items !== null
+    && Object.values(candidate.items).length === expectedCount
+    && Object.values(candidate.items).every((rows) => Array.isArray(rows) && rows.every((row) => Array.isArray(row) && row.length === 6
+      && row.slice(0, 4).every((cell) => typeof cell === 'string')));
+}
+
+/** A grammar point a word is the key of: [part id, page id, book, lesson, title, simplified title or '', English title]. */
+export type GrammarLinkRow = [string, string, number, number, string, string, string];
+/** A book sentence where a separable verb's halves stand apart: [chinese, pinyin, english, recording or null]. */
+export type SplitRow = [string, string, string, unknown];
+
+/**
+ * How to use a word (public/data/dictionary-usage/, shards like the dictionary's), by its
+ * traditional form: the grammar lessons it is the point of (`g`), book sentences that split it
+ * (`s`, separable verbs), and the words it goes with (`w`: [partner word, phrase]).
+ */
+export interface WordUsage {
+  g?: GrammarLinkRow[];
+  s?: SplitRow[];
+  w?: Array<[string, string]>;
+}
+
+export interface DictionaryUsagePack {
+  schemaVersion: number;
+  shard: number;
+  count: number;
+  items: Record<string, WordUsage>;
+}
+
+const isStringCells = (row: unknown, length: number, strings: number[]) => Array.isArray(row) && row.length === length && strings.every((index) => typeof row[index] === 'string');
+
+export function isValidDictionaryUsagePack(pack: unknown, shard: number, expectedCount: number): pack is DictionaryUsagePack {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as Partial<DictionaryUsagePack>;
+  return candidate.schemaVersion === 1
+    && candidate.shard === shard
+    && candidate.count === expectedCount
+    && typeof candidate.items === 'object' && candidate.items !== null
+    && Object.values(candidate.items).length === expectedCount
+    && Object.values(candidate.items).every((item) => Boolean(item) && typeof item === 'object'
+      && (item.g === undefined || (Array.isArray(item.g) && item.g.every((row) => isStringCells(row, 7, [0, 1, 4, 5, 6]) && typeof row[2] === 'number' && typeof row[3] === 'number')))
+      && (item.s === undefined || (Array.isArray(item.s) && item.s.every((row) => isStringCells(row, 4, [0, 1, 2]))))
+      && (item.w === undefined || (Array.isArray(item.w) && item.w.every((row) => isStringCells(row, 2, [0, 1])))));
 }
 
 export function pronunciationPackToIndex(pack: PronunciationPack): ReadingsIndex {

@@ -430,6 +430,18 @@ export const normalizeLatinQuery = (query: string) => query.trim().toLowerCase()
 /** Typo matching covers one plain word of 5+ letters; only those queries need a whole-corpus rescan. */
 export const allowsTypoMatch = (query: string) => /^[a-z]{5,}$/.test(normalizeLatinQuery(query));
 
+/** CC-CEDICT capitalizes the pinyin of names (學習強國 "Xué xí Qiáng guó", 凱蒂貓 "Kǎi dì Māo"). */
+const NAME_PINYIN_RE = /(?:^|\s)[A-ZĀÁǍÀĒÉĚÈŌÓǑÒ]/;
+/**
+ * Below every TBCL word's search score (level 7's floor is 14): a name this rare is a newspaper, an app or a
+ * brand, not 北京 (69), 巴黎 (47) or a book word. Letter words ("A", "T") are not names.
+ */
+const RARE_NAME_SCORE = 14;
+
+function isRareName(simplified: string, pinyin: string, score: number): boolean {
+  return score < RARE_NAME_SCORE && NAME_PINYIN_RE.test(pinyin) && !/[A-Za-z]/.test(simplified);
+}
+
 export function searchInIndex(
   index: CompactSearchEntry[] | null,
   searchQuery: string,
@@ -511,6 +523,7 @@ export function searchInIndex(
     : null;
   const allowTypo = allowsTypoMatch(query);
   const matches: SearchResult[] = [];
+  const rareNames = new Set<number>();
 
   const slots = getPreparedSlots(index);
 
@@ -638,6 +651,9 @@ export function searchInIndex(
     }
 
     if (tier) {
+      // Typed exactly = the word itself (its characters or its whole pinyin), never a word of its English gloss.
+      const typedExactly = trad === query || s === query || Boolean(queryFlat && flat === queryFlat);
+      if (!typedExactly && isRareName(s, py, freq)) rareNames.add(id);
       const sanitized = sanitizeDictionaryDefinitions(defs);
       // Brevity preference: 1-3 char core words beat 4+ char phrases when frequency is equal
       const charLen = Array.from(s).length;
@@ -680,7 +696,9 @@ export function searchInIndex(
     }
   }
 
-  matches.sort((a, b) => b.total_score - a.total_score || a.simplified.length - b.simplified.length);
+  // A rare name (學習強國 for "学习") comes after every other match unless it was typed exactly.
+  const nameLast = (match: SearchResult) => Number(rareNames.has(match.id));
+  matches.sort((a, b) => nameLast(a) - nameLast(b) || b.total_score - a.total_score || a.simplified.length - b.simplified.length);
   const hasStrongMatches = matches.some((match) => match.total_score >= 2000);
   const seenEntries = new Set<string>();
   return matches.filter((match) => {

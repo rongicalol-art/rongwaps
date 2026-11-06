@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LevelTag } from '../../../lib/widgets';
+import { LevelTag, levelExplanation, shownLevel } from '../../../lib/widgets';
 import type { ResolvedLevel } from '../../../utils/lesson/levels';
 import { DefinitionsReveal, ExtendedDefinitionsPanel, MoreDefinitionsToggle, type ExtendedDefinitionsData } from './ExtendedDefinitions';
 import { SummaryQuickActions } from './SummaryQuickActions';
@@ -26,7 +26,9 @@ interface HeroDetailsProps {
 /** A word or character hero's meaning (extra definitions one tap away), lesson and level tags, and wide-screen actions. */
 export function HeroDetails({ subject, meaning, more, wide, courseCard, level, actions }: HeroDetailsProps) {
   const [moreOpen, setMoreOpen] = useState(false);
-  useEffect(() => setMoreOpen(false), [subject]);
+  const [levelOpen, setLevelOpen] = useState(false);
+  useEffect(() => { setMoreOpen(false); setLevelOpen(false); }, [subject]);
+  const tagLevel = shownLevel(level);
 
   return (
     <>
@@ -45,11 +47,16 @@ export function HeroDetails({ subject, meaning, more, wide, courseCard, level, a
       <DefinitionsReveal open={moreOpen && more !== null}>
         {more && <div className="pt-2"><ExtendedDefinitionsPanel data={more} /></div>}
       </DefinitionsReveal>
-      {(courseCard || level) && (
+      {(courseCard || tagLevel) && (
         <div className={wide ? 'flex flex-wrap items-center gap-2' : 'flex flex-wrap items-center gap-1.5'}>
           {courseCard && <LevelTag long={wide} bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
-          <LevelTag variant="chip" level={level} />
+          <LevelTag variant="chip" level={tagLevel} onClick={() => setLevelOpen((value) => !value)} expanded={levelOpen} />
         </div>
+      )}
+      {tagLevel && (
+        <DefinitionsReveal open={levelOpen}>
+          <p className="pt-1 text-sm font-bold leading-snug text-ui-muted-strong">{levelExplanation(tagLevel)}</p>
+        </DefinitionsReveal>
       )}
       {wide && <SummaryQuickActions className="-ml-2 mt-0.5 flex items-center gap-1" {...actions} />}
     </>

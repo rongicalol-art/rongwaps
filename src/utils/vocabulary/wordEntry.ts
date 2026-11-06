@@ -7,6 +7,8 @@
  */
 import type { Flashcard } from '../../data/flashcards';
 import { pronunciationKey } from '../pinyin/pronunciationMatching';
+import { characterReadings } from '../pinyin/characterReadings';
+import { numberToToneMarks } from '../pinyin/pinyin';
 import { cleanVocabText } from './vocabCleaner';
 import { splitCourseMeasureWords } from './measureWords';
 import {
@@ -14,10 +16,14 @@ import {
   extractCedictReference,
   isReferenceOnlyDefinitions,
   sanitizeDictionaryDefinitions,
+  taiwanPronunciationOf,
+  TAIWAN_PRONUNCIATION_PREFIX,
+  withoutBoundForm,
   type MeasureWordDetail,
 } from './dictionaryDefinitions';
 import { posTagsKey } from './dictionarySearch';
 import { formatPosLabel } from './posLabels';
+import type { SenseExampleRow, WordUsage } from '../packValidators';
 
 /** Looks up a reading's word-type tags in the pack by `posTagsKey`. */
 export type PosTagLookup = (key: string) => string | undefined;
@@ -127,6 +133,52 @@ export interface EntryExample {
   pinyin: string;
   english: string;
   audio?: NonNullable<Flashcard['examples']>[number]['audio'];
+  /** Tatoeba credit ("#<id> (author) & #<id> (author)") for sentences from there. */
+  credit?: string;
+}
+
+/** Per-reading extras looked up by `posTagsKey`: word types, and one example per word type; and how to use the word. */
+export interface EntryLookups {
+  posTags?: PosTagLookup;
+  senseExamples?: (key: string) => readonly SenseExampleRow[] | undefined;
+  /** How to use the word (grammar lessons, splits, goes-with), by its traditional form. */
+  usage?: WordUsage;
+}
+
+/** A grammar lesson whose point is this word: opens that point's page of the grammar lesson. */
+export interface EntryGrammarLink {
+  partId: string;
+  pageId: string;
+  bookId: number;
+  lessonId: number;
+  /** The point's title as the book prints it ("要是／如果……，就……"). */
+  title: string;
+  /** The simplified title, when the book gives one. */
+  titleSimplified?: string;
+  english: string;
+}
+
+/** A separable verb split apart (上 … 課), with book sentences that show it. */
+export interface EntrySplit {
+  first: string;
+  second: string;
+  examples: EntryExample[];
+}
+
+/** A word this one goes with: the phrase they make (穿衣服) and the other word, which opens on tap. */
+export interface EntryPartner {
+  word: string;
+  phrase: string;
+}
+
+/** Puts each example under its meaning, at most one per word type, never where the book already shows one. */
+function attachExamples(groups: EntrySenseGroup[], rows: readonly SenseExampleRow[]): void {
+  for (const [text, chinese, pinyin, english, audio, credit] of rows) {
+    const group = groups.find((item) => item.senses.some((sense) => sense.text === text));
+    if (!group || group.senses.some((sense) => sense.example)) continue;
+    const sense = group.senses.find((item) => item.text === text)!;
+    sense.example = { chinese, pinyin, english, ...(audio ? { audio: audio as EntryExample['audio'] } : {}), ...(credit ? { credit } : {}) };
+  }
 }
 
 export interface EntrySense {
@@ -138,18 +190,26 @@ export interface EntrySense {
   example?: EntryExample;
   /** A pointer sense ("variant of 和"): the word it points to. */
   ref?: { word: string; pinyin?: string };
+  /** The grammar lesson that taught this sense, when that lesson has one point for the word. */
+  grammar?: EntryGrammarLink[];
+  /** For a separable verb's sense: how it splits. */
+  split?: EntrySplit;
 }
 
 export interface EntrySenseGroup {
   /** Course part-of-speech code ("Vs", "Vst/Adv"); null for dictionary senses, which carry none. */
   pos: string | null;
   senses: EntrySense[];
+  /** Words this group's sense goes with (a verb's objects, a noun's verbs). */
+  goesWith?: EntryPartner[];
 }
 
 export interface EntryReading {
   key: string;
   /** Display reading: the course's (Taiwan) reading when a lesson teaches it. */
   pinyin: string;
+  /** The dictionary's own spelling of this reading (Mainland tones: 行李 "xíng li" where the book says xínglǐ). */
+  dictionaryPinyin: string;
   cards: Flashcard[];
   groups: EntrySenseGroup[];
   measureWords: MeasureWordDetail[];
@@ -157,12 +217,73 @@ export interface EntryReading {
   reference: boolean;
   /** The headline meaning for this reading (search row and hero). */
   headline: string;
+  /**
+   * The other standard's reading when the two differ: the Mainland one when this
+   * page shows the Taiwan reading (垃圾 lèsè → lājī), else the Taiwan one (打 dá → dǎ).
+   */
+  otherReading?: { region: 'Mainland' | 'Taiwan'; pinyin: string };
+}
+
+/** Pinyin written like the reading beside it: joined syllables (lājī, xī'ān) when that reading has no spaces. */
+function writtenLike(display: string, pinyin: string): string {
+  const syllables = pinyin.trim().split(/\s+/);
+  if (/\s/.test(display.trim())) return syllables.join(' ');
+  return syllables.map((syllable, index) => (index > 0 && /^[aeoāáǎàēéěèōóǒò]/i.test(syllable) ? `'${syllable}` : syllable)).join('');
 }
 
 export interface WordEntry {
   word: string;
   simplified: string;
   readings: EntryReading[];
+  /** Grammar lessons about the word that sit under no single sense ("More grammar with 就"). */
+  grammar: EntryGrammarLink[];
+}
+
+/**
+ * Puts how to use a word where it belongs, Pleco style but from the books:
+ * a grammar lesson under the sense its lesson taught (only when that lesson
+ * has one point for the word, so 才……就…… and 就……來說 of the same lesson
+ * never land on the wrong sense); a separable verb's split under its
+ * separable sense; goes-with words under the verb (or noun) group. Returns the
+ * grammar lessons that found no sense.
+ */
+function attachUsage(word: string, readings: EntryReading[], usage: WordUsage | undefined): EntryGrammarLink[] {
+  if (!usage) return [];
+  const groups = readings.flatMap((reading) => reading.groups);
+  const senses = groups.flatMap((group) => group.senses);
+
+  const links = (usage.g ?? []).map(([partId, pageId, bookId, lessonId, title, titleSimplified, english]): EntryGrammarLink => ({
+    partId, pageId, bookId, lessonId, title, ...(titleSimplified ? { titleSimplified } : {}), english,
+  }));
+  const perLesson = new Map<string, number>();
+  for (const link of links) perLesson.set(`${link.bookId}-${link.lessonId}`, (perLesson.get(`${link.bookId}-${link.lessonId}`) ?? 0) + 1);
+  const rest: EntryGrammarLink[] = [];
+  for (const link of links) {
+    const sense = perLesson.get(`${link.bookId}-${link.lessonId}`) === 1
+      ? senses.find((item) => item.course?.bookId === link.bookId && item.course.lessonId === link.lessonId)
+      : undefined;
+    if (sense) sense.grammar = [...(sense.grammar ?? []), link];
+    else rest.push(link);
+  }
+
+  const [first, second] = Array.from(word);
+  const separable = groups.find((group) => /sep/.test(group.pos ?? ''));
+  const splitSense = separable?.senses.find((sense) => sense.course) ?? separable?.senses[0];
+  if (usage.s?.length && splitSense && first && second) {
+    splitSense.split = {
+      first,
+      second,
+      examples: usage.s.map(([chinese, pinyin, english, audio]) => ({ chinese, pinyin, english, ...(audio ? { audio: audio as EntryExample['audio'] } : {}) })),
+    };
+  }
+
+  if (usage.w?.length) {
+    const asVerb = usage.w.every(([, phrase]) => phrase.startsWith(word));
+    const fits = (pos: string | null) => (asVerb ? /^V[ti]?(\/|$)/ : /^N(\/|$)/).test(pos ?? '');
+    const group = groups.find((item) => fits(item.pos)) ?? readings[0]?.groups[0];
+    if (group) group.goesWith = usage.w.map(([partner, phrase]) => ({ word: partner, phrase }));
+  }
+  return rest;
 }
 
 /** Lowercased gloss parts without notes, for "is this dictionary sense already taught?". */
@@ -209,7 +330,9 @@ export function readingDictionarySenses(rows: readonly DictionaryRowLike[]): { s
       for (const detail of sanitized.measure_word_details) {
         if (!measureWords.some((item) => item.char === detail.char)) measureWords.push(detail);
       }
-      const text = sanitized.definitions[0];
+      // The Taiwan reading stays in this list as before, so word-type tags keyed on it still match;
+      // the word page shows it as a note instead of a meaning.
+      const text = sanitized.definitions[0] ?? (sanitized.taiwan_pronunciation ? `${TAIWAN_PRONUNCIATION_PREFIX}${sanitized.taiwan_pronunciation}` : undefined);
       if (!text || senses.some((sense) => sense.text === text)) continue;
       const reference = extractCedictReference(raw.trim());
       const isPointer = Boolean(reference && raw.trim().length <= reference.raw.length + 2);
@@ -256,7 +379,7 @@ function groupBySenseType(groups: EntrySenseGroup[], senses: ReadonlyArray<{ sen
   if (untagged.length > 0) groups.push({ pos: null, senses: untagged });
 }
 
-function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: readonly Flashcard[], posTags?: PosTagLookup): EntryReading {
+function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: readonly Flashcard[], { posTags, senseExamples }: EntryLookups = {}): EntryReading {
   const groups: EntrySenseGroup[] = [];
   const { senses: allSenses, measureWords } = readingDictionarySenses(rows);
   const addMeasure = (detail: MeasureWordDetail) => {
@@ -281,14 +404,19 @@ function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: re
 
   const referenceOnly = rows.length > 0 && rows.every((row) => isReferenceOnlyDefinitions(row.definitions));
   // Word types are keyed on the full sense list; senses the book already teaches are then left out.
-  const tags = senseTags(posTags?.(posTagsKey(rows[0]?.traditional ?? '', rows[0]?.pinyin_accented)), allSenses);
+  const lookupKey = posTagsKey(rows[0]?.traditional ?? '', rows[0]?.pinyin_accented);
+  const tags = senseTags(posTags?.(lookupKey), allSenses);
+  // A Taiwan-reading note is not a meaning: it becomes `otherReading` below.
+  const taiwan = allSenses.map((sense) => taiwanPronunciationOf(sense.text)).find(Boolean) ?? null;
   const dictionarySenses = allSenses
     .map((sense, index) => ({ sense: sense as EntrySense, tag: tags?.[index] ?? null }))
+    .filter(({ sense }) => !taiwanPronunciationOf(sense.text))
     .filter(({ sense }) => {
       const parts = glossParts(sense.text, true);
       return !(parts.length > 0 && parts.every((part) => taught.has(part)));
     });
   groupBySenseType(groups, dictionarySenses);
+  attachExamples(groups, senseExamples?.(lookupKey) ?? []);
 
   const firstCard = cards[0];
   const rowPinyin = rows.find((row) => row.pinyin_accented)?.pinyin_accented ?? '';
@@ -296,7 +424,12 @@ function buildReading(key: string, rows: readonly DictionaryRowLike[], cards: re
     ? firstCard.pinyin.split('/').find((reading) => readingKey(reading) === key) ?? firstCard.pinyin.split('/')[0]
     : rowPinyin;
   const headline = groups[0]?.senses.find((sense) => !sense.ref)?.text ?? groups[0]?.senses[0]?.text ?? '';
-  return { key, pinyin: pinyin.trim(), cards: [...cards], groups, measureWords, reference: referenceOnly && cards.length === 0, headline };
+  const display = pinyin.trim();
+  const otherReading: EntryReading['otherReading'] = !taiwan ? undefined
+    : readingKey(taiwan) === readingKey(display)
+      ? (rowPinyin && readingKey(rowPinyin) !== readingKey(display) ? { region: 'Mainland', pinyin: writtenLike(display, rowPinyin) } : undefined)
+      : { region: 'Taiwan', pinyin: writtenLike(display, taiwan) };
+  return { key, pinyin: display, dictionaryPinyin: rowPinyin.trim(), cards: [...cards], groups, measureWords, reference: referenceOnly && cards.length === 0, headline, ...(otherReading ? { otherReading } : {}) };
 }
 
 /**
@@ -311,7 +444,7 @@ export function buildWordEntry(
   rows: readonly DictionaryRowLike[],
   cards: readonly Flashcard[],
   taiwanReadings: readonly string[] = [],
-  posTags?: PosTagLookup,
+  lookups: EntryLookups = {},
 ): WordEntry | null {
   const own = rows.filter((row) => row.traditional === word);
   // A simplified spelling ("长") opens its traditional word.
@@ -321,19 +454,28 @@ export function buildWordEntry(
   const wordCards = cards.filter((card) => courseWordOf(card) === traditional);
   const links = linkCourseReadings(wordRows, wordCards);
   const readings = orderReadingKeys(wordRows, links, taiwanReadings).map((key) =>
-    buildReading(key, wordRows.filter((row) => readingKey(row.pinyin_accented) === key), links.get(key) ?? [], posTags));
-  return { word: traditional, simplified: wordRows[0]?.simplified ?? traditional, readings };
+    buildReading(key, wordRows.filter((row) => readingKey(row.pinyin_accented) === key), links.get(key) ?? [], lookups));
+  const grammar = attachUsage(traditional, readings, lookups.usage);
+  return { word: traditional, simplified: wordRows[0]?.simplified ?? traditional, readings, grammar };
 }
 
-/** A sense as the learner reads it: the course's simple gloss when they chose simple definitions. */
+/**
+ * A sense as the learner reads it: the course's simple gloss when they chose simple
+ * definitions, and without the dictionary's "(bound form)" jargon (see `isBoundForm`).
+ */
 export function senseText(sense: EntrySense, simple = false): string {
-  return (simple && sense.simple) || sense.text;
+  return withoutBoundForm((simple && sense.simple) || sense.text).text;
+}
+
+/** A dictionary sense that only lives inside longer words (行 "to walk" in 旅行): the page marks it "only in words". */
+export function isBoundForm(sense: EntrySense): boolean {
+  return withoutBoundForm(sense.text).bound;
 }
 
 /** What a reading means at a glance (hero and search row): the book's sense, else the first dictionary sense. */
 export function readingHeadline(reading: EntryReading, simple = false): string {
   const course = reading.groups.flatMap((group) => group.senses).find((sense) => sense.course);
-  return course ? senseText(course, simple) : reading.headline;
+  return course ? senseText(course, simple) : withoutBoundForm(reading.headline).text;
 }
 
 /**
@@ -343,7 +485,45 @@ export function readingHeadline(reading: EntryReading, simple = false): string {
 export function searchRowMeaning(row: { courseDefinition?: string; courseSimple?: string; definitions: unknown }, simple = false): string {
   const course = ((simple && row.courseSimple) || row.courseDefinition)?.trim();
   if (course) return splitCourseMeasureWords(course).meaning;
-  return definitionStrings(row.definitions).map((text) => text.trim()).filter(Boolean).slice(0, 2).join('; ');
+  return definitionStrings(row.definitions)
+    .map((text) => withoutBoundForm(text.trim()).text)
+    .filter((text) => text && !taiwanPronunciationOf(text))
+    .slice(0, 2)
+    .join('; ');
+}
+
+/**
+ * The books' (Taiwan) reading of a word page's word when it differs from the
+ * dictionary's spelling of the same reading: 垃圾 lèsè (dictionary lājī),
+ * 行李 xínglǐ (dictionary xíng li); null otherwise, so 東西 dōngxi, which the
+ * dictionary spells the same, changes nothing. Lists of longer words on that
+ * page use it (`withTaiwanReading`).
+ */
+export function taiwanReadingOf(entry: WordEntry, reading: EntryReading | undefined): { word: string; pinyin: string } | null {
+  if (!reading || reading.cards.length === 0 || Array.from(entry.word).length < 2 || !reading.dictionaryPinyin) return null;
+  return readingKey(reading.pinyin) !== readingKey(reading.dictionaryPinyin) ? { word: entry.word, pinyin: reading.pinyin } : null;
+}
+
+/**
+ * A longer dictionary word's pinyin with the books' reading of the word inside
+ * it: 垃圾堆 "lā jī duī" holds 垃圾, read lèsè → "lè sè duī"; 行李箱 "xíng li
+ * xiāng" → "xíng lǐ xiāng", so the page never mixes the two standards. Only the
+ * page's own word (`taiwanReadingOf`), never a guess, and only when every
+ * syllable lines up; otherwise the pinyin is returned as it was.
+ */
+export function withTaiwanReading(longer: string, pinyin: string, taiwan: { word: string; pinyin: string } | null | undefined): string {
+  if (!taiwan || longer === taiwan.word || !longer.includes(taiwan.word)) return pinyin;
+  const chars = Array.from(longer);
+  const syllables = pinyin.trim().split(/\s+/);
+  const inner = characterReadings(taiwan.word, taiwan.pinyin)?.readings;
+  const length = Array.from(taiwan.word).length;
+  if (syllables.length !== chars.length || !inner || inner.length !== length || inner.some((options) => options.length !== 1)) return pinyin;
+  for (let start = 0; start + length <= chars.length; start += 1) {
+    if (chars.slice(start, start + length).join('') !== taiwan.word) continue;
+    inner.forEach(([reading], offset) => { syllables[start + offset] = numberToToneMarks(reading); });
+    start += length - 1;
+  }
+  return syllables.join(' ');
 }
 
 /** The reading to lead with: the one a row was opened for, else the first. */

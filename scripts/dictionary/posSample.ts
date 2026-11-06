@@ -28,7 +28,7 @@ async function main() {
   const common = tagged.filter((word) => Array.from(word).length === 1 && levels.get(word) === 1);
   const words = [...pick(common, 50, 7), ...pick(tagged.filter((word) => !common.includes(word)), 60, 11)];
   const sample = words.map((word) => {
-    const entry = buildWordEntry(word, byWord.get(word) ?? [], cards.get(word) ?? [], taiwan.get(word) ?? [], (key) => tags[key]);
+    const entry = buildWordEntry(word, byWord.get(word) ?? [], cards.get(word) ?? [], taiwan.get(word) ?? [], { posTags: (key) => tags[key] });
     return {
       word,
       readings: (entry?.readings ?? []).filter((reading) => !reading.reference).map((reading) => ({
