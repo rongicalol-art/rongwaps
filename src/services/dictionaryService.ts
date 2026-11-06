@@ -154,13 +154,13 @@ export async function executeRemoteSearch(queryNormalized: string, onResults?: (
   return request;
 }
 
-function mapContainingWord(row: unknown, character: string): DictionaryContainingWord | null {
+function mapContainingWord(row: unknown, text: string): DictionaryContainingWord | null {
   if (!row || typeof row !== 'object') return null;
   const record = row as Record<string, unknown>;
   const traditional = typeof record.traditional === 'string' ? record.traditional : '';
   const simplified = typeof record.simplified === 'string' ? record.simplified : traditional;
-  const word = traditional.includes(character) ? traditional : simplified.includes(character) ? simplified : '';
-  if (!word || word === character || Array.from(word).length < 2) return null;
+  const word = traditional.includes(text) ? traditional : simplified.includes(text) ? simplified : '';
+  if (!word || word === text || Array.from(word).length < 2) return null;
 
   const pinyin = typeof record.pinyin_accented === 'string'
     ? record.pinyin_accented
@@ -172,16 +172,16 @@ function mapContainingWord(row: unknown, character: string): DictionaryContainin
 }
 
 /**
- * Returns a bounded set of dictionary words containing a character, using the
- * server-side search (cached per query). The character breakdown view no longer
- * keeps a full local dictionary copy in memory.
+ * Returns a bounded set of dictionary words containing a character, or a whole
+ * word (行李 → 行李箱), using the server-side search (cached per query). The
+ * character breakdown view no longer keeps a full local dictionary copy in memory.
  */
 export async function searchDictionaryWordsContaining(
-  character: string,
+  text: string,
   limit = 30,
 ): Promise<DictionaryContainingWord[]> {
-  const query = character.trim();
-  if (Array.from(query).length !== 1) return [];
+  const query = text.trim();
+  if (!query) return [];
 
   let rows: unknown[];
   try {
@@ -199,7 +199,8 @@ export async function searchDictionaryWordsContaining(
   }
 
   const results = [...matches.values()]
-    .sort((a, b) => Array.from(a.word).length - Array.from(b.word).length || a.word.localeCompare(b.word))
+    // Shorter words first; within a length the search's own order (common words first), never code-point order.
+    .sort((a, b) => Array.from(a.word).length - Array.from(b.word).length)
     .slice(0, Math.max(0, limit));
 
   await Promise.all(
