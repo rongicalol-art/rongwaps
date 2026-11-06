@@ -557,7 +557,7 @@
             "text": {
               "traditional": "這台筆電太舊了，如果要花不少錢修理，不如買一台新的。",
               "simplified": "这台笔电太旧了，如果要花不少钱修理，不如买一台新的。",
-              "pinyin": "Zhè tái bǐ diàn tài jiù le, rúguǒ yào huā bùshǎo qián xiūlǐ, bùrú mǎi yì tái xīn de.",
+              "pinyin": "Zhè tái bǐdiàn tài jiù le, rúguǒ yào huā bùshǎo qián xiūlǐ, bùrú mǎi yì tái xīn de.",
               "english": "This laptop is too old. If repairing it would cost a lot, it would be better to buy a new one.",
               "words": [
                 {
@@ -578,7 +578,7 @@
                   "id": "b2l13-g02-p294-ex1-w3",
                   "traditional": "筆電",
                   "simplified": "笔电",
-                  "pinyin": "bǐ diàn",
+                  "pinyin": "bǐdiàn",
                   "meaning": ""
                 },
                 {
@@ -991,42 +991,35 @@
                 },
                 {
                   "id": "b2l13-g02-p294-ex3-w9",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l13-g02-p294-ex3-w10",
                   "traditional": "那",
                   "simplified": "那",
                   "pinyin": "nà",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w11",
+                  "id": "b2l13-g02-p294-ex3-w10",
                   "traditional": "家",
                   "simplified": "家",
                   "pinyin": "jiā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w12",
+                  "id": "b2l13-g02-p294-ex3-w11",
                   "traditional": "飯館",
                   "simplified": "饭馆",
                   "pinyin": "fànguǎn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w13",
+                  "id": "b2l13-g02-p294-ex3-w12",
                   "traditional": "常常",
                   "simplified": "常常",
                   "pinyin": "chángcháng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w14",
+                  "id": "b2l13-g02-p294-ex3-w13",
                   "traditional": "客滿",
                   "simplified": "客满",
                   "pinyin": "kèmǎn",
@@ -1034,35 +1027,35 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w15",
+                  "id": "b2l13-g02-p294-ex3-w14",
                   "traditional": "不如",
                   "simplified": "不如",
                   "pinyin": "bùrú",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w16",
+                  "id": "b2l13-g02-p294-ex3-w15",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w17",
+                  "id": "b2l13-g02-p294-ex3-w16",
                   "traditional": "便利商店",
                   "simplified": "便利商店",
                   "pinyin": "biànlì shāngdiàn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w18",
+                  "id": "b2l13-g02-p294-ex3-w17",
                   "traditional": "買",
                   "simplified": "买",
                   "pinyin": "mǎi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w19",
+                  "id": "b2l13-g02-p294-ex3-w18",
                   "traditional": "三明治",
                   "simplified": "三明治",
                   "pinyin": "sānmíngzhì",
@@ -1070,14 +1063,14 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w20",
+                  "id": "b2l13-g02-p294-ex3-w19",
                   "traditional": "不必",
                   "simplified": "不必",
                   "pinyin": "búbì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g02-p294-ex3-w21",
+                  "id": "b2l13-g02-p294-ex3-w20",
                   "traditional": "等",
                   "simplified": "等",
                   "pinyin": "děng",
@@ -1472,28 +1465,21 @@
                 },
                 {
                   "id": "b2l13-g03-p294-ex3-w13",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l13-g03-p294-ex3-w14",
                   "traditional": "日月潭",
                   "simplified": "日月潭",
                   "pinyin": "Rìyuè Tán",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w15",
+                  "id": "b2l13-g03-p294-ex3-w14",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w16",
+                  "id": "b2l13-g03-p294-ex3-w15",
                   "traditional": "美",
                   "simplified": "美",
                   "pinyin": "měi",
@@ -1501,35 +1487,35 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w17",
+                  "id": "b2l13-g03-p294-ex3-w16",
                   "traditional": "花",
                   "simplified": "花",
                   "pinyin": "huā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w18",
+                  "id": "b2l13-g03-p294-ex3-w17",
                   "traditional": "也",
                   "simplified": "也",
                   "pinyin": "yě",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w19",
+                  "id": "b2l13-g03-p294-ex3-w18",
                   "traditional": "都",
                   "simplified": "都",
                   "pinyin": "dōu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w20",
+                  "id": "b2l13-g03-p294-ex3-w19",
                   "traditional": "開",
                   "simplified": "开",
                   "pinyin": "kāi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w21",
+                  "id": "b2l13-g03-p294-ex3-w20",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -1537,28 +1523,28 @@
                   "suffix": "。"
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w22",
+                  "id": "b2l13-g03-p294-ex3-w21",
                   "traditional": "可惜",
                   "simplified": "可惜",
                   "pinyin": "kěxí",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w23",
+                  "id": "b2l13-g03-p294-ex3-w22",
                   "traditional": "人",
                   "simplified": "人",
                   "pinyin": "rén",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w24",
+                  "id": "b2l13-g03-p294-ex3-w23",
                   "traditional": "太",
                   "simplified": "太",
                   "pinyin": "tài",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w25",
+                  "id": "b2l13-g03-p294-ex3-w24",
                   "traditional": "多",
                   "simplified": "多",
                   "pinyin": "duō",
@@ -1566,21 +1552,21 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w26",
+                  "id": "b2l13-g03-p294-ex3-w25",
                   "traditional": "擠",
                   "simplified": "挤",
                   "pinyin": "jǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w27",
+                  "id": "b2l13-g03-p294-ex3-w26",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g03-p294-ex3-w28",
+                  "id": "b2l13-g03-p294-ex3-w27",
                   "traditional": "點兒",
                   "simplified": "点儿",
                   "pinyin": "diǎnr",
@@ -1617,7 +1603,7 @@
           "text": {
             "traditional": "您好，要找哪種產品？筆電還是平板？",
             "simplified": "您好，要找哪种产品？笔电还是平板？",
-            "pinyin": "Nín hǎo, yào zhǎo nǎ zhǒng chǎnpǐn? Bǐ diàn háishì píngbǎn?",
+            "pinyin": "Nín hǎo, yào zhǎo nǎ zhǒng chǎnpǐn? Bǐdiàn háishì píngbǎn?",
             "english": "Hello! What kind of product are you looking for? A laptop or a tablet?"
           }
         },
@@ -1647,7 +1633,7 @@
           "text": {
             "traditional": "你的意思是，帶著筆電出門很麻煩，不如買平板？",
             "simplified": "你的意思是，带着笔电出门很麻烦，不如买平板？",
-            "pinyin": "Nǐ de yìsi shì, dài zhe bǐ diàn chūmén hěn máfán, bùrú mǎi píngbǎn?",
+            "pinyin": "Nǐ de yìsi shì, dài zhe bǐdiàn chūmén hěn máfán, bùrú mǎi píngbǎn?",
             "english": "You mean it is very troublesome to go out with a laptop, and it is better to buy a laptop, right?"
           }
         },
@@ -1657,7 +1643,7 @@
           "text": {
             "traditional": "也不一定，大多數的大學生把筆電放在背包裡，不管去圖書館還是咖啡廳，隨時都能做功課、寫報告。",
             "simplified": "也不一定，大多数的大学生把笔电放在背包里，不管去图书馆还是咖啡厅，随时都能做功课、写报告。",
-            "pinyin": "Yě bù yídìng, dàduōshù de dàxuéshēng bǎ bǐ diàn fàng zài bēibāo lǐ, bùguǎn qù túshūguǎn háishì kāfēitīng, suíshí dōu néng zuò gōngkè, xiě bàogào.",
+            "pinyin": "Yě bù yídìng, dàduōshù de dàxuéshēng bǎ bǐdiàn fàng zài bēibāo lǐ, bùguǎn qù túshūguǎn háishì kāfēitīng, suíshí dōu néng zuò gōngkè, xiě bàogào.",
             "english": "Not necessarily. Most university students put laptops in their backpacks. No matter where they go, to a library or to a café, they can do homework and write reports anytime."
           }
         },
@@ -1667,7 +1653,7 @@
           "text": {
             "traditional": "我好像比較需要這樣的產品。那有沒有輕一點兒的筆電？",
             "simplified": "我好像比较需要这样的产品。那有没有轻一点儿的笔电？",
-            "pinyin": "Wǒ hǎoxiàng bǐjiào xūyào zhèyàng de chǎnpǐn. Nà yǒu méiyǒu qīng yìdiǎnr de bǐ diàn?",
+            "pinyin": "Wǒ hǎoxiàng bǐjiào xūyào zhèyàng de chǎnpǐn. Nà yǒu méiyǒu qīng yìdiǎnr de bǐdiàn?",
             "english": "I seem to need this kind of product more. In that case, do you have any laptop that is lighter?"
           }
         },
@@ -1677,7 +1663,7 @@
           "text": {
             "traditional": "有，請跟我來。您看，這部筆電是最新的，牌子很有名，也非常輕。",
             "simplified": "有，请跟我来。您看，这部笔电是最新的，牌子很有名，也非常轻。",
-            "pinyin": "Yǒu, qǐng gēn wǒ lái. Nín kàn, zhè bù bǐ diàn shì zuìxīn de, páizi hěn yǒumíng, yě fēicháng qīng.",
+            "pinyin": "Yǒu, qǐng gēn wǒ lái. Nín kàn, zhè bù bǐdiàn shì zuìxīn de, páizi hěn yǒumíng, yě fēicháng qīng.",
             "english": "We do. Please follow me. Look! This laptop is the newest. The brand is very famous and the laptop is very light, too."
           }
         },
@@ -1687,7 +1673,7 @@
           "text": {
             "traditional": "看起來很好用，拿起來也很輕，可是最近電視新聞說這個牌子的筆電不好，很多人都抱怨電池有問題。",
             "simplified": "看起来很好用，拿起来也很轻，可是最近电视新闻说这个牌子的笔电不好，很多人都抱怨电池有问题。",
-            "pinyin": "Kànqǐlái hěn hǎoyòng, ná qǐ lái yě hěn qīng, kěshì zuìjìn diànshì xīnwén shuō zhège páizi de bǐ diàn bùhǎo, hěn duō rén dōu bàoyuàn diànchí yǒu wèntí.",
+            "pinyin": "Kànqǐlái hěn hǎoyòng, ná qǐ lái yě hěn qīng, kěshì zuìjìn diànshì xīnwén shuō zhège páizi de bǐdiàn bùhǎo, hěn duō rén dōu bàoyuàn diànchí yǒu wèntí.",
             "english": "It looks useful, and is very light to carry. However, recently, in TV news people say laptops of this brand are not good. Many people complain about problems with the battery."
           }
         },
@@ -1747,7 +1733,7 @@
           "text": {
             "traditional": "那麼，我只要付大約兩萬八，就能夠把這部筆電帶回家，是嗎？",
             "simplified": "那么，我只要付大约两万八，就能够把这部笔电带回家，是吗？",
-            "pinyin": "Nàme, wǒ zhǐyào fù dàyuē liǎngwànbā, jiù nénggòu bǎ zhè bù bǐ diàn dài huí jiā, shì ma?",
+            "pinyin": "Nàme, wǒ zhǐyào fù dàyuē liǎngwànbā, jiù nénggòu bǎ zhè bù bǐdiàn dài huí jiā, shì ma?",
             "english": "So, I only need to pay about 28,000 dollars to bring the laptop home, right?"
           }
         },
@@ -1956,7 +1942,7 @@
             "text": {
               "traditional": "平板比筆電便宜，所以我比較想買平板。",
               "simplified": "平板比笔电便宜，所以我比较想买平板。",
-              "pinyin": "Píngbǎn bǐ bǐ diàn piányí, suǒyǐ wǒ bǐjiào xiǎng mǎi píngbǎn.",
+              "pinyin": "Píngbǎn bǐ bǐdiàn piányí, suǒyǐ wǒ bǐjiào xiǎng mǎi píngbǎn.",
               "english": "Tablets are cheaper than laptops, so I’d rather buy a tablet.",
               "words": [
                 {
@@ -1977,7 +1963,7 @@
                   "id": "b2l13-g04-p301-ex1-w3",
                   "traditional": "筆電",
                   "simplified": "笔电",
-                  "pinyin": "bǐ diàn",
+                  "pinyin": "bǐdiàn",
                   "meaning": ""
                 },
                 {
@@ -2138,7 +2124,7 @@
             "text": {
               "traditional": "雖然筆電的功能比平板好，可是跟平板比起來，筆電比較重。",
               "simplified": "虽然笔电的功能比平板好，可是跟平板比起来，笔电比较重。",
-              "pinyin": "Suīrán bǐ diàn de gōngnéng bǐ píngbǎn hǎo, kěshì gēn píngbǎn bǐ qǐ lái, bǐ diàn bǐjiào zhòng.",
+              "pinyin": "Suīrán bǐdiàn de gōngnéng bǐ píngbǎn hǎo, kěshì gēn píngbǎn bǐ qǐ lái, bǐdiàn bǐjiào zhòng.",
               "english": "Although laptops have better features than tablets, laptops are heavier compared with tablets.",
               "words": [
                 {
@@ -2152,7 +2138,7 @@
                   "id": "b2l13-g04-p301-ex3-w2",
                   "traditional": "筆電",
                   "simplified": "笔电",
-                  "pinyin": "bǐ diàn",
+                  "pinyin": "bǐdiàn",
                   "meaning": ""
                 },
                 {
@@ -2238,7 +2224,7 @@
                   "id": "b2l13-g04-p301-ex3-w14",
                   "traditional": "筆電",
                   "simplified": "笔电",
-                  "pinyin": "bǐ diàn",
+                  "pinyin": "bǐdiàn",
                   "meaning": ""
                 },
                 {
@@ -2348,7 +2334,7 @@
             "text": {
               "traditional": "我以為我的手機不見了，差一點兒就要去買新的。",
               "simplified": "我以为我的手机不见了，差一点儿就要去买新的。",
-              "pinyin": "Wǒ yǐwéi wǒ de shǒujī bújiàn le, chà yìdiǎnr jiùyào qù mǎi xīn de.",
+              "pinyin": "Wǒ yǐwéi wǒ de shǒujī bújiànle, chàyìdiǎnr jiùyào qù mǎi xīn de.",
               "english": "I thought I had lost my phone and almost went to buy a new one.",
               "words": [
                 {
@@ -2390,54 +2376,47 @@
                   "id": "b2l13-g05-p302-ex1-w6",
                   "traditional": "不見了",
                   "simplified": "不见了",
-                  "pinyin": "bújiàn le",
+                  "pinyin": "bújiànle",
                   "meaning": "",
                   "suffix": "，"
                 },
                 {
                   "id": "b2l13-g05-p302-ex1-w7",
-                  "traditional": "差",
-                  "simplified": "差",
-                  "pinyin": "chà",
+                  "traditional": "差一點兒",
+                  "simplified": "差一点儿",
+                  "pinyin": "chàyìdiǎnr",
                   "meaning": ""
                 },
                 {
                   "id": "b2l13-g05-p302-ex1-w8",
-                  "traditional": "一點兒",
-                  "simplified": "一点儿",
-                  "pinyin": "yìdiǎnr",
-                  "meaning": ""
-                },
-                {
-                  "id": "b2l13-g05-p302-ex1-w9",
                   "traditional": "就要",
                   "simplified": "就要",
                   "pinyin": "jiùyào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex1-w10",
+                  "id": "b2l13-g05-p302-ex1-w9",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex1-w11",
+                  "id": "b2l13-g05-p302-ex1-w10",
                   "traditional": "買",
                   "simplified": "买",
                   "pinyin": "mǎi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex1-w12",
+                  "id": "b2l13-g05-p302-ex1-w11",
                   "traditional": "新",
                   "simplified": "新",
                   "pinyin": "xīn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex1-w13",
+                  "id": "b2l13-g05-p302-ex1-w12",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
@@ -2453,7 +2432,7 @@
             "text": {
               "traditional": "他吃了不新鮮的食物，拉了三天的肚子，差一點兒就死了。",
               "simplified": "他吃了不新鲜的食物，拉了三天的肚子，差一点儿就死了。",
-              "pinyin": "Tā chī le bù xīnxiān de shíwù, lā le sān tiān de dùzi, chà yìdiǎnr jiù sǐ le.",
+              "pinyin": "Tā chī le bù xīnxiān de shíwù, lā le sān tiān de dùzi, chàyìdiǎnr jiù sǐ le.",
               "english": "He ate stale food and had diarrhea for three days; he almost died.",
               "words": [
                 {
@@ -2551,34 +2530,27 @@
                 },
                 {
                   "id": "b2l13-g05-p302-ex2-w14",
-                  "traditional": "差",
-                  "simplified": "差",
-                  "pinyin": "chà",
+                  "traditional": "差一點兒",
+                  "simplified": "差一点儿",
+                  "pinyin": "chàyìdiǎnr",
                   "meaning": ""
                 },
                 {
                   "id": "b2l13-g05-p302-ex2-w15",
-                  "traditional": "一點兒",
-                  "simplified": "一点儿",
-                  "pinyin": "yìdiǎnr",
-                  "meaning": ""
-                },
-                {
-                  "id": "b2l13-g05-p302-ex2-w16",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex2-w17",
+                  "id": "b2l13-g05-p302-ex2-w16",
                   "traditional": "死",
                   "simplified": "死",
                   "pinyin": "sǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex2-w18",
+                  "id": "b2l13-g05-p302-ex2-w17",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -2594,7 +2566,7 @@
             "text": {
               "traditional": "我差點兒忘了今天要考試，還好你告訴我，要不然這門課我一定會被當。",
               "simplified": "我差点儿忘了今天要考试，还好你告诉我，要不然这门课我一定会被当。",
-              "pinyin": "Wǒ chà diǎnr wàngle jīntiān yào kǎoshì, háihǎo nǐ gàosu wǒ, yàobùrán zhè mén kè wǒ yídìng huì bèi dāng.",
+              "pinyin": "Wǒ chàdiǎnr wàngle jīntiān yào kǎoshì, háihǎo nǐ gàosu wǒ, yàobùrán zhè mén kè wǒ yídìng huì bèi dàng.",
               "english": "I almost forgot that I had an exam today. Good thing you told me; otherwise, I would definitely have failed this class.",
               "words": [
                 {
@@ -2606,41 +2578,34 @@
                 },
                 {
                   "id": "b2l13-g05-p302-ex3-w2",
-                  "traditional": "差",
-                  "simplified": "差",
-                  "pinyin": "chà",
+                  "traditional": "差點兒",
+                  "simplified": "差点儿",
+                  "pinyin": "chàdiǎnr",
                   "meaning": ""
                 },
                 {
                   "id": "b2l13-g05-p302-ex3-w3",
-                  "traditional": "點兒",
-                  "simplified": "点儿",
-                  "pinyin": "diǎnr",
-                  "meaning": ""
-                },
-                {
-                  "id": "b2l13-g05-p302-ex3-w4",
                   "traditional": "忘了",
                   "simplified": "忘了",
                   "pinyin": "wàngle",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w5",
+                  "id": "b2l13-g05-p302-ex3-w4",
                   "traditional": "今天",
                   "simplified": "今天",
                   "pinyin": "jīntiān",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w6",
+                  "id": "b2l13-g05-p302-ex3-w5",
                   "traditional": "要",
                   "simplified": "要",
                   "pinyin": "yào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w7",
+                  "id": "b2l13-g05-p302-ex3-w6",
                   "traditional": "考試",
                   "simplified": "考试",
                   "pinyin": "kǎoshì",
@@ -2648,28 +2613,28 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w8",
+                  "id": "b2l13-g05-p302-ex3-w7",
                   "traditional": "還好",
                   "simplified": "还好",
                   "pinyin": "háihǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w9",
+                  "id": "b2l13-g05-p302-ex3-w8",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w10",
+                  "id": "b2l13-g05-p302-ex3-w9",
                   "traditional": "告訴",
                   "simplified": "告诉",
                   "pinyin": "gàosu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w11",
+                  "id": "b2l13-g05-p302-ex3-w10",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
@@ -2677,66 +2642,66 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w12",
+                  "id": "b2l13-g05-p302-ex3-w11",
                   "traditional": "要不然",
                   "simplified": "要不然",
                   "pinyin": "yàobùrán",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w13",
+                  "id": "b2l13-g05-p302-ex3-w12",
                   "traditional": "這",
                   "simplified": "这",
                   "pinyin": "zhè",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w14",
+                  "id": "b2l13-g05-p302-ex3-w13",
                   "traditional": "門",
                   "simplified": "门",
                   "pinyin": "mén",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w15",
+                  "id": "b2l13-g05-p302-ex3-w14",
                   "traditional": "課",
                   "simplified": "课",
                   "pinyin": "kè",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w16",
+                  "id": "b2l13-g05-p302-ex3-w15",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w17",
+                  "id": "b2l13-g05-p302-ex3-w16",
                   "traditional": "一定",
                   "simplified": "一定",
                   "pinyin": "yídìng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w18",
+                  "id": "b2l13-g05-p302-ex3-w17",
                   "traditional": "會",
                   "simplified": "会",
                   "pinyin": "huì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w19",
+                  "id": "b2l13-g05-p302-ex3-w18",
                   "traditional": "被",
                   "simplified": "被",
                   "pinyin": "bèi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g05-p302-ex3-w20",
+                  "id": "b2l13-g05-p302-ex3-w19",
                   "traditional": "當",
                   "simplified": "当",
-                  "pinyin": "dāng",
+                  "pinyin": "dàng",
                   "meaning": "",
                   "suffix": "。"
                 }
@@ -2924,7 +2889,7 @@
             "text": {
               "traditional": "那家餐廳很遠，你先打電話問他們今天做不做生意，別白跑了！",
               "simplified": "那家餐厅很远，你先打电话问他们今天做不做生意，别白跑了！",
-              "pinyin": "Nà jiā cāntīng hěn yuǎn, nǐ xiān dǎ diànhuà wèn tāmen jīntiān zuò bú zuò shēng yì, bié bái pǎo le!",
+              "pinyin": "Nà jiā cāntīng hěn yuǎn, nǐ xiān dǎ diànhuà wèn tāmen jīntiān zuò bú zuò shēngyì, bié bái pǎo le!",
               "english": "That restaurant is far away. Call first to ask whether they’re open today so you don’t make the trip for nothing!",
               "words": [
                 {
@@ -3021,35 +2986,42 @@
                 },
                 {
                   "id": "b2l13-g06-p303-ex2-w14",
-                  "traditional": "做生意",
-                  "simplified": "做生意",
-                  "pinyin": "zuò shēng yì",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l13-g06-p303-ex2-w15",
+                  "traditional": "生意",
+                  "simplified": "生意",
+                  "pinyin": "shēngyì",
                   "meaning": "",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l13-g06-p303-ex2-w15",
+                  "id": "b2l13-g06-p303-ex2-w16",
                   "traditional": "別",
                   "simplified": "别",
                   "pinyin": "bié",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g06-p303-ex2-w16",
+                  "id": "b2l13-g06-p303-ex2-w17",
                   "traditional": "白",
                   "simplified": "白",
                   "pinyin": "bái",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g06-p303-ex2-w17",
+                  "id": "b2l13-g06-p303-ex2-w18",
                   "traditional": "跑",
                   "simplified": "跑",
                   "pinyin": "pǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l13-g06-p303-ex2-w18",
+                  "id": "b2l13-g06-p303-ex2-w19",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -3247,8 +3219,8 @@
           "speaker": "旁白",
           "text": {
             "traditional": "我在台灣沒買過 3C 產品，所以買電腦以前，我看了好幾本電腦雜誌，也問了有經驗的朋友。朋友說他總是先上網打聽哪家店比較好、哪家店打折，或是哪家店的店員比較客氣。我覺得他說得很有道理，所以前兩天我也先上網找了一家不錯的商店。",
-            "simplified": "我在台湾没买过3C产品，所以买电脑以前，我看了好几本电脑杂志，也问了有经验的朋友。朋友说他总是先上网打听哪家店比较好、哪家店打折，或是哪家店的店员比较客气。我觉得他说得很有道理，所以前两天我也先上网找了一家不错的商店。",
-            "pinyin": "Wǒ zài Táiwān méi mǎi guò 3C chǎnpǐn, suǒyǐ mǎi diànnǎo yǐqián, wǒ kàn le hǎojǐ běn diànnǎo zázhì, yě wèn le yǒu jīngyàn de péngyǒu. Péngyǒu shuō tā zǒngshì xiān shàngwǎng dǎtīng nǎ jiā diàn bǐjiào hǎo, nǎ jiā diàn dǎzhé, huòshì nǎ jiā diàn de diànyuán bǐjiào kèqì. Wǒ juéde tā shuō dehěn yǒudàolǐ, suǒyǐ qián liǎng tiān wǒ yě xiān shàngwǎng zhǎo le yìjiā búcuò de shāngdiàn.",
+            "simplified": "我在台湾没买过 3C 产品，所以买电脑以前，我看了好几本电脑杂志，也问了有经验的朋友。朋友说他总是先上网打听哪家店比较好、哪家店打折，或是哪家店的店员比较客气。我觉得他说得很有道理，所以前两天我也先上网找了一家不错的商店。",
+            "pinyin": "Wǒ zài Táiwān méi mǎi guò 3C chǎnpǐn, suǒyǐ mǎi diànnǎo yǐqián, wǒ kàn le hǎojǐ běn diànnǎo zázhì, yě wèn le yǒu jīngyàn de péngyǒu. Péngyǒu shuō tā zǒngshì xiān shàngwǎng dǎtīng nǎ jiā diàn bǐjiào hǎo, nǎ jiā diàn dǎzhé, huòshì nǎ jiā diàn de diànyuán bǐjiào kèqì. Wǒ juéde tā shuō de hěn yǒudàolǐ, suǒyǐ qián liǎng tiān wǒ yě xiān shàngwǎng zhǎo le yìjiā búcuò de shāngdiàn.",
             "english": "I had never bought any electronic product in Taiwan before, so I read several computer magazines and asked an experienced friend before buying a computer. A friend told me that he would first inquire on the Internet about which store is better, which store gives discounts, or in which store the clerks are more polite. I thought that what he said made sense, so in the past two days, I also searched for a store on the Internet."
           }
         },
@@ -3258,7 +3230,7 @@
           "text": {
             "traditional": "那家店在光華商場，昨天我一下課就去那裡看看。本來我想買平板，但是店員認為大學生用筆電比較方便，而且跟平板比起來，筆電還是比較好用的。",
             "simplified": "那家店在光华商场，昨天我一下课就去那里看看。本来我想买平板，但是店员认为大学生用笔电比较方便，而且跟平板比起来，笔电还是比较好用的。",
-            "pinyin": "Nà jiā diàn zài Guānghuá Shāngchǎng, zuótiān wǒ yíxià kè jiù qù nàlǐ kànkan. Běnlái wǒ xiǎng mǎi píngbǎn, dànshì diànyuán rènwéi dàxuéshēng yòng bǐ diàn bǐjiào fāngbiàn, érqiě gēn píngbǎn bǐqǐ lái, bǐ diàn háishì bǐjiào hǎoyòng de.",
+            "pinyin": "Nà jiā diàn zài Guānghuá Shāngchǎng, zuótiān wǒ yíxià kè jiù qù nàlǐ kànkan. Běnlái wǒ xiǎng mǎi píngbǎn, dànshì diànyuán rènwéi dàxuéshēng yòng bǐdiàn bǐjiào fāngbiàn, érqiě gēn píngbǎn bǐqǐ lái, bǐdiàn háishì bǐjiào hǎoyòng de.",
             "english": "The store was in Guanghua Digital Plaza. I went there and had a look right after class yesterday. Originally, I wanted to buy the tablet, but the clerk thought using a laptop is more convenient for university students. Besides, in comparison to a tablet, a laptop is still more useful."
           }
         },
@@ -3268,7 +3240,7 @@
           "text": {
             "traditional": "店員建議我買的那部筆電是最新的產品，拿起來很輕、看起來很好用，可是價格太高了。我最近窮死了，買不起那麼貴的電腦。因為上次搬家的時候手機不見了，父母說我不愛惜東西，這兩個月不給我零用錢，逼我省錢。還好店員告訴我，那部電腦打折以後能便宜八千塊錢，而且還答應我，要是電腦有問題，不超過一年都可以免費修理，所以我當天就把電腦買回家了。付了錢以後，我差一點兒就又忘了拿自己的手機，真糊塗！",
             "simplified": "店员建议我买的那部笔电是最新的产品，拿起来很轻、看起来很好用，可是价格太高了。我最近穷死了，买不起那么贵的电脑。因为上次搬家的时候手机不见了，父母说我不爱惜东西，这两个月不给我零用钱，逼我省钱。还好店员告诉我，那部电脑打折以后能便宜八千块钱，而且还答应我，要是电脑有问题，不超过一年都可以免费修理，所以我当天就把电脑买回家了。付了钱以后，我差一点儿就又忘了拿自己的手机，真糊涂！",
-            "pinyin": "Diànyuán jiànyì wǒ mǎi de nà bù bǐ diàn shì zuìxīn de chǎnpǐn, ná qǐ lái hěn qīng, kànqǐlái hěn hǎoyòng, kěshì jiàgé tài gāo le. Wǒ zuìjìn qióng sǐ le, mǎi bù qǐ nàme guì de diànnǎo. Yīnwèi shàng cì bānjiā de shíhòu shǒujī bújiàn le, fùmǔ shuō wǒ bú àixí dōngxi, zhè liǎng ge yuè bù gěi wǒ língyòngqián, bī wǒ shěngqián. Háihǎo diànyuán gàosu wǒ, nà bù diànnǎo dǎzhé yǐhòu néng piányí bāqiān kuài qián, érqiě hái dāyìng wǒ, yàoshì diànnǎo yǒu wèntí, bù chāoguò yì nián dōu kěyǐ miǎnfèi xiūlǐ, suǒyǐ wǒ dāngtiān jiù bǎ diànnǎo mǎi huí jiā le. Fù le qián yǐhòu, wǒ chà yìdiǎnr jiù yòu wàngle ná zìjǐ de shǒujī, zhēn hútú!",
+            "pinyin": "Diànyuán jiànyì wǒ mǎi de nà bù bǐdiàn shì zuìxīn de chǎnpǐn, ná qǐ lái hěn qīng, kànqǐlái hěn hǎoyòng, kěshì jiàgé tài gāo le. Wǒ zuìjìn qióng sǐ le, mǎi bù qǐ nàme guì de diànnǎo. Yīnwèi shàng cì bānjiā de shíhòu shǒujī bújiànle, fùmǔ shuō wǒ bú àixí dōngxi, zhè liǎng ge yuè bù gěi wǒ língyòngqián, bī wǒ shěngqián. Háihǎo diànyuán gàosu wǒ, nà bù diànnǎo dǎzhé yǐhòu néng piányí bāqiān kuài qián, érqiě hái dāyìng wǒ, yàoshì diànnǎo yǒu wèntí, bù chāoguò yì nián dōu kěyǐ miǎnfèi xiūlǐ, suǒyǐ wǒ dāngtiān jiù bǎ diànnǎo mǎi huí jiā le. Fù le qián yǐhòu, wǒ chàyìdiǎnr jiù yòu wàngle ná zìjǐ de shǒujī, zhēn hútú!",
             "english": "The laptop the clerk suggested me to buy was the newest product. It was very light to carry and looked useful, but the price was too high. I was terribly poor recently, and I couldn’t afford such an expensive computer. Because my new cell phone was gone when I was moving house last time, my parents said that I didn’t cherish my stuff, so they didn’t give me pocket money these two months in order for me to save money. Fortunately, the clerk told me later that I could save 8,000 dollars after a discount, and he also promised me that if there were problems with the computer within a year, he would definitely help me repair it for free, so I brought the computer home on that same day. After paying the money, I almost forgot my cell phone again. How clumsy I was!"
           }
         },
@@ -3278,7 +3250,7 @@
           "text": {
             "traditional": "我很高興這次去光華商場沒白跑，很快就買到需要的筆電，省了不少麻煩。後來我又去看了其他的科技產品，有不少新發現。新產品的功能越來越多，不但能幫我們解決很多問題，也能讓我們的生活變得更便利。",
             "simplified": "我很高兴这次去光华商场没白跑，很快就买到需要的笔电，省了不少麻烦。后来我又去看了其他的科技产品，有不少新发现。新产品的功能越来越多，不但能帮我们解决很多问题，也能让我们的生活变得更便利。",
-            "pinyin": "Wǒ hěn gāoxìng zhè cì qù Guānghuá Shāngchǎng méi bái pǎo, hěn kuài jiù mǎi dào xūyào de bǐ diàn, shěng le bùshǎo máfán. Hòulái wǒ yòu qù kàn le qítā de kējì chǎnpǐn, yǒu bùshǎo xīn fāxiàn. Xīn chǎnpǐn de gōngnéng yuèláiyuè duō, búdàn néng bāng wǒmen jiějué hěn duō wèntí, yě néng ràng wǒmen de shēnghuó biàn de gèng biànlì.",
+            "pinyin": "Wǒ hěn gāoxìng zhè cì qù Guānghuá Shāngchǎng méi bái pǎo, hěn kuài jiù mǎi dào xūyào de bǐdiàn, shěng le bùshǎo máfán. Hòulái wǒ yòu qù kàn le qítā de kējì chǎnpǐn, yǒu bùshǎo xīn fāxiàn. Xīn chǎnpǐn de gōngnéng yuèláiyuè duō, búdàn néng bāng wǒmen jiějué hěn duō wèntí, yě néng ràng wǒmen de shēnghuó biàn de gèng biànlì.",
             "english": "I am glad that this time I didn’t go to Guanghua Digital Plaza for nothing. I quickly bought the laptop I wanted, and it saved me a lot of trouble. Afterwards I went to see other technological products and had many new discoveries. I think new products have more and more functions. They not only can help us solve many problems, but also can make our lives more convenient."
           }
         }

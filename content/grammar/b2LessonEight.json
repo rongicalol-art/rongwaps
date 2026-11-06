@@ -156,7 +156,7 @@
             "text": {
               "traditional": "在這家商店，買東西滿兩千塊（錢），就送一盒巧克力。",
               "english": "At this store, if you spend two thousand dollars, they will give you a box of chocolates.",
-              "pinyin": "Zài zhè jiā shāngdiàn, mǎi dōng xi mǎn liǎngqiān kuài (qián), jiù sòng yì hé qiǎokèlì.",
+              "pinyin": "Zài zhè jiā shāngdiàn, mǎi dōngxi mǎn liǎngqiān kuài (qián), jiù sòng yì hé qiǎokèlì.",
               "words": [
                 {
                   "id": "b2l8g1-ex2-w1",
@@ -189,34 +189,41 @@
                 },
                 {
                   "id": "b2l8g1-ex2-w5",
-                  "traditional": "買東西",
-                  "simplified": "买东西",
-                  "pinyin": "mǎi dōng xi",
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "mǎi",
                   "meaning": ""
                 },
                 {
                   "id": "b2l8g1-ex2-w6",
+                  "traditional": "東西",
+                  "simplified": "东西",
+                  "pinyin": "dōngxi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l8g1-ex2-w7",
                   "traditional": "滿",
                   "simplified": "满",
                   "pinyin": "mǎn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g1-ex2-w7",
+                  "id": "b2l8g1-ex2-w8",
                   "traditional": "兩千",
                   "simplified": "两千",
                   "pinyin": "liǎngqiān",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g1-ex2-w8",
+                  "id": "b2l8g1-ex2-w9",
                   "traditional": "塊",
                   "simplified": "块",
                   "pinyin": "kuài",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g1-ex2-w9",
+                  "id": "b2l8g1-ex2-w10",
                   "traditional": "錢",
                   "simplified": "钱",
                   "pinyin": "qián",
@@ -225,35 +232,35 @@
                   "suffix": "），"
                 },
                 {
-                  "id": "b2l8g1-ex2-w10",
+                  "id": "b2l8g1-ex2-w11",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g1-ex2-w11",
+                  "id": "b2l8g1-ex2-w12",
                   "traditional": "送",
                   "simplified": "送",
                   "pinyin": "sòng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g1-ex2-w12",
+                  "id": "b2l8g1-ex2-w13",
                   "traditional": "一",
                   "simplified": "一",
                   "pinyin": "yì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g1-ex2-w13",
+                  "id": "b2l8g1-ex2-w14",
                   "traditional": "盒",
                   "simplified": "盒",
                   "pinyin": "hé",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g1-ex2-w14",
+                  "id": "b2l8g1-ex2-w15",
                   "traditional": "巧克力",
                   "simplified": "巧克力",
                   "pinyin": "qiǎokèlì",
@@ -1405,7 +1412,7 @@
             "text": {
               "traditional": "像洗碗筷這樣的家事，父母可以讓小孩自己做。",
               "english": "Parents can let children do household chores on their own, such as washing dishes and chopsticks.",
-              "pinyin": "Xiàng xǐ wǎn kuài zhèyàng de jiāshì, fùmǔ kěyǐ ràng xiǎohái zìjǐ zuò.",
+              "pinyin": "Xiàng xǐ wǎnkuài zhèyàng de jiāshì, fùmǔ kěyǐ ràng xiǎohái zìjǐ zuò.",
               "words": [
                 {
                   "id": "b2l8g3-ex3-w1",
@@ -1425,7 +1432,7 @@
                   "id": "b2l8g3-ex3-w3",
                   "traditional": "碗筷",
                   "simplified": "碗筷",
-                  "pinyin": "wǎn kuài",
+                  "pinyin": "wǎnkuài",
                   "meaning": ""
                 },
                 {
@@ -1537,7 +1544,7 @@
             "text": {
               "traditional": "因為訂不到去花蓮的火車票，我們只好坐飛機去。",
               "english": "Because we could not get a train ticket to Hualien, we had no choice but to fly there.",
-              "pinyin": "Yīnwèi dìng búdào qù Huālián de huǒchēpiào, wǒmen zhǐhǎo zuò fēijī qù.",
+              "pinyin": "Yīnwèi dìng bú dào qù Huālián de huǒchēpiào, wǒmen zhǐhǎo zuò fēijī qù.",
               "words": [
                 {
                   "id": "b2l8g4-ex1-w1",
@@ -1555,34 +1562,41 @@
                 },
                 {
                   "id": "b2l8g4-ex1-w3",
-                  "traditional": "不到",
-                  "simplified": "不到",
-                  "pinyin": "búdào",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bú",
                   "meaning": ""
                 },
                 {
                   "id": "b2l8g4-ex1-w4",
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l8g4-ex1-w5",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g4-ex1-w5",
+                  "id": "b2l8g4-ex1-w6",
                   "traditional": "花蓮",
                   "simplified": "花莲",
                   "pinyin": "Huālián",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g4-ex1-w6",
+                  "id": "b2l8g4-ex1-w7",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g4-ex1-w7",
+                  "id": "b2l8g4-ex1-w8",
                   "traditional": "火車票",
                   "simplified": "火车票",
                   "pinyin": "huǒchēpiào",
@@ -1590,35 +1604,35 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l8g4-ex1-w8",
+                  "id": "b2l8g4-ex1-w9",
                   "traditional": "我們",
                   "simplified": "我们",
                   "pinyin": "wǒmen",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g4-ex1-w9",
+                  "id": "b2l8g4-ex1-w10",
                   "traditional": "只好",
                   "simplified": "只好",
                   "pinyin": "zhǐhǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g4-ex1-w10",
+                  "id": "b2l8g4-ex1-w11",
                   "traditional": "坐",
                   "simplified": "坐",
                   "pinyin": "zuò",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g4-ex1-w11",
+                  "id": "b2l8g4-ex1-w12",
                   "traditional": "飛機",
                   "simplified": "飞机",
                   "pinyin": "fēijī",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l8g4-ex1-w12",
+                  "id": "b2l8g4-ex1-w13",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
@@ -2296,7 +2310,7 @@
           "text": {
             "traditional": "以凡，你貼在豆漿盒子上的那張貼紙，可以給我嗎？",
             "simplified": "以凡，你贴在豆浆盒子上的那张贴纸，可以给我吗？",
-            "pinyin": "Yǐfán, nǐ tiē zài dòujiāng hézi shàng de nà zhāng tiē zhǐ, kěyǐ gěi wǒ ma?",
+            "pinyin": "Yǐfán, nǐ tiē zài dòujiāng hézi shàng de nà zhāng tiēzhǐ, kěyǐ gěi wǒ ma?",
             "english": "Yifan, can you give me the sticker that you pasted on the soy milk carton?"
           }
         },
@@ -2336,7 +2350,7 @@
           "text": {
             "traditional": "這是便利商店的活動，買東西只要滿八十元，就會有一張貼紙，四十張貼紙就可以換一個娃娃，而且不用錢。",
             "simplified": "这是便利商店的活动，买东西只要满八十元，就会有一张贴纸，四十张贴纸就可以换一个娃娃，而且不用钱。",
-            "pinyin": "Zhè shì biànlì shāngdiàn de huódòng, mǎi dōngxi zhǐyào mǎn bāshí yuán, jiù huì yǒu yì zhāng tiēzhǐ, sìshí zhāng tiē zhǐ jiù kěyǐ huàn yíge wáwa, érqiě búyòng qián.",
+            "pinyin": "Zhè shì biànlì shāngdiàn de huódòng, mǎi dōngxi zhǐyào mǎn bāshí yuán, jiù huì yǒu yì zhāng tiēzhǐ, sìshí zhāng tiēzhǐ jiù kěyǐ huàn yíge wáwa, érqiě búyòng qián.",
             "english": "It's a sales promotion of convenience stores. As long as the price of the products you buy exceeds $80, you can get one sticker, 40 stickers can be exchanged for a doll for free."
           }
         },
@@ -3440,7 +3454,7 @@
           "speaker": "旁白",
           "text": {
             "traditional": "其實，很多台灣人為了跟上流行，除了看韓劇，還會看日劇或是美國影集。去 KTV 唱日文歌、去美國餐廳吃飯，也都是很平常的活動。可欣想，原來流行會讓人的生活方式有這麼大的改變！現在有「韓流」，以後會有什麼呢？",
-            "simplified": "其实，很多台湾人为了跟上流行，除了看韩剧，还会看日剧或是美国影集。去KTV唱日文歌、去美国餐厅吃饭，也都是很平常的活动。可欣想，原来流行会让人的生活方式有这么大的改变！现在有「韩流」，以后会有什么呢？",
+            "simplified": "其实，很多台湾人为了跟上流行，除了看韩剧，还会看日剧或是美国影集。去 KTV 唱日文歌、去美国餐厅吃饭，也都是很平常的活动。可欣想，原来流行会让人的生活方式有这么大的改变！现在有「韩流」，以后会有什么呢？",
             "pinyin": "Qíshí, hěn duō Táiwān rén wèile gēnshàng liúxíng, chúle kàn Hánjù, hái huì kàn Rìjù huòshì Měiguó yǐngjí. Qù KTV chàng Rìwén gē, qù Měiguó cāntīng chīfàn, yě dōu shì hěn píngcháng de huódòng. Kěxīn xiǎng, yuánlái liúxíng huì ràng rén de shēnghuó fāngshì yǒu zhème dà de gǎibiàn! Xiànzài yǒu “Hánliú”, yǐhòu huì yǒu shénme ne?",
             "english": "In fact, many people also watch Japanese dramas or American TV series in order to keep up with the trends. Going to karaoke bars to sing Japanese songs or eating at American restaurants are both very common activities. Kexin thought: “So fashion really can change people's lives that much! Now we have the Korean wave, and then what will come next?”"
           }

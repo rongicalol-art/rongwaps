@@ -48,7 +48,7 @@ for (const card of fixFile.newCards) {
   const at = pack.items.findIndex((item) => item.id === card.after);
   if (at < 0) { problems.push(`${card.id}: no card ${card.after} to insert after`); continue; }
   const { traditional, simplified, pinyin, pos, meaning } = card;
-  // No book recording is cut for a new card yet: an empty audio field makes the app speak it.
+  // A new card has no recording of its own yet (a recording file belongs to one card id): the app speaks it.
   pack.items.splice(at + 1, 0, { id: card.id, traditional, simplified, meaning, pinyin, pos, audio: '' });
   changed++;
 }

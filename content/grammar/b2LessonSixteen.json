@@ -46,9 +46,16 @@
               [
                 {
                   "id": "b2l16-g01-p361-r1-c2-w1",
-                  "traditional": "得很",
-                  "simplified": "得很",
-                  "pinyin": "dehěn",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r1-c2-w2",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
                   "meaning": ""
                 }
               ]
@@ -65,7 +72,7 @@
             "text": {
               "traditional": "他的個性活潑得很，為什麼你覺得他很保守呢？",
               "simplified": "他的个性活泼得很，为什么你觉得他很保守呢？",
-              "pinyin": "Tā de gèxìng huópō dehěn, wèishénme nǐ juéde tā hěn bǎoshǒu ne?",
+              "pinyin": "Tā de gèxìng huópō de hěn, wèishénme nǐ juéde tā hěn bǎoshǒu ne?",
               "english": "His personality is very lively. Why do you think he is conservative?",
               "words": [
                 {
@@ -98,56 +105,63 @@
                 },
                 {
                   "id": "b2l16-g01-p361-ex1-w5",
-                  "traditional": "得很",
-                  "simplified": "得很",
-                  "pinyin": "dehěn",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-ex1-w6",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
                   "meaning": "",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l16-g01-p361-ex1-w6",
+                  "id": "b2l16-g01-p361-ex1-w7",
                   "traditional": "為什麼",
                   "simplified": "为什么",
                   "pinyin": "wèishénme",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g01-p361-ex1-w7",
+                  "id": "b2l16-g01-p361-ex1-w8",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g01-p361-ex1-w8",
+                  "id": "b2l16-g01-p361-ex1-w9",
                   "traditional": "覺得",
                   "simplified": "觉得",
                   "pinyin": "juéde",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g01-p361-ex1-w9",
+                  "id": "b2l16-g01-p361-ex1-w10",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g01-p361-ex1-w10",
+                  "id": "b2l16-g01-p361-ex1-w11",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g01-p361-ex1-w11",
+                  "id": "b2l16-g01-p361-ex1-w12",
                   "traditional": "保守",
                   "simplified": "保守",
                   "pinyin": "bǎoshǒu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g01-p361-ex1-w12",
+                  "id": "b2l16-g01-p361-ex1-w13",
                   "traditional": "呢",
                   "simplified": "呢",
                   "pinyin": "ne",
@@ -163,7 +177,7 @@
             "text": {
               "traditional": "外國人：臭豆腐太臭了，我一口也不敢吃。台灣人：臭豆腐一點兒都不臭，好吃得很呢！",
               "simplified": "外国人：臭豆腐太臭了，我一口也不敢吃。台湾人：臭豆腐一点儿都不臭，好吃得很呢！",
-              "pinyin": "Wàiguórén: Chòu dòufǔ tài chòu le, wǒ yìkǒu yě bù gǎn chī. Táiwān rén: Chòu dòufǔ yìdiǎnr dōu bú chòu, hǎochī dehěn ne!",
+              "pinyin": "Wàiguórén: Chòu dòufǔ tài chòu le, wǒ yìkǒu yě bù gǎn chī. Táiwān rén: Chòu dòufǔ yìdiǎnr dōu bú chòu, hǎochī de hěn ne!",
               "english": "Foreigner: Stinky tofu smells so bad; I wouldn’t dare eat even one bite. Taiwanese: Stinky tofu doesn’t smell at all; it’s very tasty!",
               "words": [
                 {
@@ -306,13 +320,20 @@
                 },
                 {
                   "id": "b2l16-g01-p361-ex2-w20",
-                  "traditional": "得很",
-                  "simplified": "得很",
-                  "pinyin": "dehěn",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
                   "meaning": ""
                 },
                 {
                   "id": "b2l16-g01-p361-ex2-w21",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-ex2-w22",
                   "traditional": "呢",
                   "simplified": "呢",
                   "pinyin": "ne",
@@ -328,7 +349,7 @@
             "text": {
               "traditional": "A：你等一下就要去見新老闆了，怎麼看起來無所謂的樣子。B：我緊張得很，你看不出來嗎？",
               "simplified": "A：你等一下就要去见新老板了，怎么看起来无所谓的样子。B：我紧张得很，你看不出来吗？",
-              "pinyin": "A: Nǐ děng yíxià jiùyào qù jiàn xīn lǎobǎn le, zěnme kànqǐlái wúsuǒwèi de yàngzi. B: Wǒ jǐnzhāng dehěn, nǐ kàn bù chū lái ma?",
+              "pinyin": "A: Nǐ děng yíxià jiùyào qù jiàn xīn lǎobǎn le, zěnme kànqǐlái wúsuǒwèi de yàngzi. B: Wǒ jǐnzhāng de hěn, nǐ kàn bù chū lái ma?",
               "english": "A: You’re about to meet the new boss. Why do you look so unconcerned? B: I’m very nervous. Can’t you tell?",
               "words": [
                 {
@@ -434,31 +455,31 @@
                 },
                 {
                   "id": "b2l16-g01-p361-ex3-w15",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l16-g01-p361-ex3-w16",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l16-g01-p361-ex3-w17",
+                  "id": "b2l16-g01-p361-ex3-w16",
                   "traditional": "緊張",
                   "simplified": "紧张",
                   "pinyin": "jǐnzhāng",
                   "meaning": ""
                 },
                 {
+                  "id": "b2l16-g01-p361-ex3-w17",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
                   "id": "b2l16-g01-p361-ex3-w18",
-                  "traditional": "得很",
-                  "simplified": "得很",
-                  "pinyin": "dehěn",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
                   "meaning": "",
                   "suffix": "，"
                 },
@@ -638,21 +659,14 @@
                 },
                 {
                   "id": "b2l16-g02-p362-ex1-w7",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l16-g02-p362-ex1-w8",
                   "traditional": "不",
                   "simplified": "不",
                   "pinyin": "bù",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l16-g02-p362-ex1-w9",
+                  "id": "b2l16-g02-p362-ex1-w8",
                   "traditional": "知道",
                   "simplified": "知道",
                   "pinyin": "zhīdào",
@@ -660,35 +674,35 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l16-g02-p362-ex1-w10",
+                  "id": "b2l16-g02-p362-ex1-w9",
                   "traditional": "得",
                   "simplified": "得",
                   "pinyin": "děi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex1-w11",
+                  "id": "b2l16-g02-p362-ex1-w10",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex1-w12",
+                  "id": "b2l16-g02-p362-ex1-w11",
                   "traditional": "老闆",
                   "simplified": "老板",
                   "pinyin": "lǎobǎn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex1-w13",
+                  "id": "b2l16-g02-p362-ex1-w12",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex1-w14",
+                  "id": "b2l16-g02-p362-ex1-w13",
                   "traditional": "決定",
                   "simplified": "决定",
                   "pinyin": "juédìng",
@@ -753,64 +767,57 @@
                 },
                 {
                   "id": "b2l16-g02-p362-ex2-w7",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l16-g02-p362-ex2-w8",
                   "traditional": "不一定",
                   "simplified": "不一定",
                   "pinyin": "bù yí dìng",
                   "meaning": "",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l16-g02-p362-ex2-w9",
+                  "id": "b2l16-g02-p362-ex2-w8",
                   "traditional": "要",
                   "simplified": "要",
                   "pinyin": "yào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex2-w10",
+                  "id": "b2l16-g02-p362-ex2-w9",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex2-w11",
+                  "id": "b2l16-g02-p362-ex2-w10",
                   "traditional": "是",
                   "simplified": "是",
                   "pinyin": "shì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex2-w12",
+                  "id": "b2l16-g02-p362-ex2-w11",
                   "traditional": "哪",
                   "simplified": "哪",
                   "pinyin": "nǎ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex2-w13",
+                  "id": "b2l16-g02-p362-ex2-w12",
                   "traditional": "一種",
                   "simplified": "一种",
                   "pinyin": "yìzhǒng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex2-w14",
+                  "id": "b2l16-g02-p362-ex2-w13",
                   "traditional": "口味",
                   "simplified": "口味",
                   "pinyin": "kǒuwèi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex2-w15",
+                  "id": "b2l16-g02-p362-ex2-w14",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
@@ -904,49 +911,42 @@
                 },
                 {
                   "id": "b2l16-g02-p362-ex3-w11",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l16-g02-p362-ex3-w12",
                   "traditional": "得",
                   "simplified": "得",
                   "pinyin": "děi",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w13",
+                  "id": "b2l16-g02-p362-ex3-w12",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w14",
+                  "id": "b2l16-g02-p362-ex3-w13",
                   "traditional": "機票",
                   "simplified": "机票",
                   "pinyin": "jīpiào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w15",
+                  "id": "b2l16-g02-p362-ex3-w14",
                   "traditional": "價格",
                   "simplified": "价格",
                   "pinyin": "jiàgé",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w16",
+                  "id": "b2l16-g02-p362-ex3-w15",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w17",
+                  "id": "b2l16-g02-p362-ex3-w16",
                   "traditional": "高低",
                   "simplified": "高低",
                   "pinyin": "gāodī",
@@ -954,42 +954,42 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w18",
+                  "id": "b2l16-g02-p362-ex3-w17",
                   "traditional": "便宜",
                   "simplified": "便宜",
                   "pinyin": "piányí",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w19",
+                  "id": "b2l16-g02-p362-ex3-w18",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w20",
+                  "id": "b2l16-g02-p362-ex3-w19",
                   "traditional": "話",
                   "simplified": "话",
                   "pinyin": "huà",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w21",
+                  "id": "b2l16-g02-p362-ex3-w20",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w22",
+                  "id": "b2l16-g02-p362-ex3-w21",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-ex3-w23",
+                  "id": "b2l16-g02-p362-ex3-w22",
                   "traditional": "歐洲",
                   "simplified": "欧洲",
                   "pinyin": "Ōuzhōu",
@@ -1580,7 +1580,7 @@
             "text": {
               "traditional": "那三隻小狗跑來跑去，玩得很開心。",
               "simplified": "那三只小狗跑来跑去，玩得很开心。",
-              "pinyin": "Nà sān zhī xiǎogǒu pǎo lái pǎo qù, wán dehěn kāixīn.",
+              "pinyin": "Nà sān zhī xiǎogǒu pǎo lái pǎo qù, wán de hěn kāixīn.",
               "english": "Those three puppies run around and play happily.",
               "words": [
                 {
@@ -1628,13 +1628,20 @@
                 },
                 {
                   "id": "b2l16-g04-p364-ex2-w7",
-                  "traditional": "得很",
-                  "simplified": "得很",
-                  "pinyin": "dehěn",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
                   "meaning": ""
                 },
                 {
                   "id": "b2l16-g04-p364-ex2-w8",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-ex2-w9",
                   "traditional": "開心",
                   "simplified": "开心",
                   "pinyin": "kāixīn",
@@ -1650,7 +1657,7 @@
             "text": {
               "traditional": "我看來看去，最後決定買那個台灣牌子的手機。",
               "simplified": "我看来看去，最后决定买那个台湾牌子的手机。",
-              "pinyin": "Wǒ kànlái kàn qù, zuìhòu juédìng mǎi nà ge Táiwān páizi de shǒujī.",
+              "pinyin": "Wǒ kàn lái kàn qù, zuìhòu juédìng mǎi nà ge Táiwān páizi de shǒujī.",
               "english": "I looked at them over and over, and finally decided to buy that Taiwanese-brand cellphone.",
               "words": [
                 {
@@ -1662,20 +1669,27 @@
                 },
                 {
                   "id": "b2l16-g04-p364-ex3-w2",
-                  "traditional": "看來",
-                  "simplified": "看来",
-                  "pinyin": "kànlái",
-                  "meaning": ""
-                },
-                {
-                  "id": "b2l16-g04-p364-ex3-w3",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
                   "meaning": ""
                 },
                 {
+                  "id": "b2l16-g04-p364-ex3-w3",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": ""
+                },
+                {
                   "id": "b2l16-g04-p364-ex3-w4",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "kàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-ex3-w5",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
@@ -1683,56 +1697,56 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w5",
+                  "id": "b2l16-g04-p364-ex3-w6",
                   "traditional": "最後",
                   "simplified": "最后",
                   "pinyin": "zuìhòu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w6",
+                  "id": "b2l16-g04-p364-ex3-w7",
                   "traditional": "決定",
                   "simplified": "决定",
                   "pinyin": "juédìng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w7",
+                  "id": "b2l16-g04-p364-ex3-w8",
                   "traditional": "買",
                   "simplified": "买",
                   "pinyin": "mǎi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w8",
+                  "id": "b2l16-g04-p364-ex3-w9",
                   "traditional": "那個",
                   "simplified": "那个",
                   "pinyin": "nà ge",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w9",
+                  "id": "b2l16-g04-p364-ex3-w10",
                   "traditional": "台灣",
                   "simplified": "台湾",
                   "pinyin": "Táiwān",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w10",
+                  "id": "b2l16-g04-p364-ex3-w11",
                   "traditional": "牌子",
                   "simplified": "牌子",
                   "pinyin": "páizi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w11",
+                  "id": "b2l16-g04-p364-ex3-w12",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g04-p364-ex3-w12",
+                  "id": "b2l16-g04-p364-ex3-w13",
                   "traditional": "手機",
                   "simplified": "手机",
                   "pinyin": "shǒujī",
@@ -1851,7 +1865,7 @@
           "text": {
             "traditional": "這是日本的納豆。我第一次去日本的時候，飯店的早餐有納豆，可是我嚐了一口就不敢吃了。",
             "simplified": "这是日本的纳豆。我第一次去日本的时候，饭店的早餐有纳豆，可是我尝了一口就不敢吃了。",
-            "pinyin": "Zhè shì Rìběn de Nàdòu. Wǒ dì yī cì qù Rìběn de shíhòu, fàndiàn de zǎocān yǒu Nàdòu, kěshì wǒ cháng le yìkǒu jiù bù gǎn chī le.",
+            "pinyin": "Zhè shì Rìběn de nàdòu. Wǒ dì yī cì qù Rìběn de shíhòu, fàndiàn de zǎocān yǒu nàdòu, kěshì wǒ cháng le yìkǒu jiù bù gǎn chī le.",
             "english": "This is Japanese Natto. When I went traveling in Japan for the first time, the hotel breakfast had Natto. I had a taste and dared not eat more."
           }
         },
@@ -1871,7 +1885,7 @@
           "text": {
             "traditional": "可是上次去夜市的時候，你說臭豆腐臭得很，連一口也不吃！",
             "simplified": "可是上次去夜市的时候，你说臭豆腐臭得很，连一口也不吃！",
-            "pinyin": "Kěshì shàng cì qù yèshì de shíhòu, nǐ shuō chòu dòufǔ chòu dehěn, lián yìkǒu yě bù chī!",
+            "pinyin": "Kěshì shàng cì qù yèshì de shíhòu, nǐ shuō chòu dòufǔ chòu de hěn, lián yìkǒu yě bù chī!",
             "english": "But last time when we went to the night market, you said stinky tofu is very smelly, and you didn't even take one bite!"
           }
         },
@@ -1881,7 +1895,7 @@
           "text": {
             "traditional": "其實食物好不好吃，得看個人的口味。我很喜歡納豆，可是臭豆腐真的太……",
             "simplified": "其实食物好不好吃，得看个人的口味。我很喜欢纳豆，可是臭豆腐真的太……",
-            "pinyin": "Qíshí shíwù hǎo bù hǎo chī, děi kàn gèrén de kǒuwèi. Wǒ hěn xǐhuān Nàdòu, kěshì chòu dòufǔ zhēnde tài…",
+            "pinyin": "Qíshí shíwù hǎo bù hǎo chī, děi kàn gèrén de kǒuwèi. Wǒ hěn xǐhuān nàdòu, kěshì chòu dòufǔ zhēnde tài…",
             "english": "In fact, whether a kind of food is yummy or not depends on personal tastes. I like Natto very much, but stinky tofu is just too..."
           }
         },
@@ -1921,7 +1935,7 @@
           "text": {
             "traditional": "我下個月也要在華語文中心學中文，希望能把中文學得更好，這樣才能更加了解中華文化。",
             "simplified": "我下个月也要在华语文中心学中文，希望能把中文学得更好，这样才能更加了解中华文化。",
-            "pinyin": "Wǒ xià ge yuè yě yào zài Huáyǔwén Zhōngxīn xué Zhōngwén, xīwàng néng bǎ Zhōng wénxué de gèng hǎo, zhèyàng cáinéng gèngjiā liǎojiě Zhōnghuá Wénhuà.",
+            "pinyin": "Wǒ xià ge yuè yě yào zài Huáyǔwén Zhōngxīn xué Zhōngwén, xīwàng néng bǎ Zhōngwén xué de gèng hǎo, zhèyàng cáinéng gèngjiā liǎojiě Zhōnghuá wénhuà.",
             "english": "I will also study Chinese at the Center of Chinese Language and Culture next month, hoping to improve my Chinese and in this way, I can understand more about Chinese culture."
           }
         },
@@ -2061,7 +2075,7 @@
                   "id": "b2l16-g05-p370-ex1-w1",
                   "traditional": "藍",
                   "simplified": "蓝",
-                  "pinyin": "lán",
+                  "pinyin": "Lán",
                   "meaning": ""
                 },
                 {
@@ -2264,7 +2278,7 @@
             "text": {
               "traditional": "許多台灣人覺得滷肉飯最好吃，其他小吃都比不上。",
               "simplified": "许多台湾人觉得卤肉饭最好吃，其他小吃都比不上。",
-              "pinyin": "Xǔduō Táiwān rén juéde lǔròu fàn zuìhǎo chī, qítā xiǎochī dōu bǐ bú shàng.",
+              "pinyin": "Xǔduō Táiwān rén juéde lǔròu fàn zuì hǎochī, qítā xiǎochī dōu bǐ bú shàng.",
               "english": "Many Taiwanese people think braised pork rice is the best; no other snack compares.",
               "words": [
                 {
@@ -2304,16 +2318,16 @@
                 },
                 {
                   "id": "b2l16-g05-p370-ex3-w6",
-                  "traditional": "最好",
-                  "simplified": "最好",
-                  "pinyin": "zuìhǎo",
+                  "traditional": "最",
+                  "simplified": "最",
+                  "pinyin": "zuì",
                   "meaning": ""
                 },
                 {
                   "id": "b2l16-g05-p370-ex3-w7",
-                  "traditional": "吃",
-                  "simplified": "吃",
-                  "pinyin": "chī",
+                  "traditional": "好吃",
+                  "simplified": "好吃",
+                  "pinyin": "hǎochī",
                   "meaning": "",
                   "suffix": "，"
                 },
@@ -2422,7 +2436,7 @@
             "text": {
               "traditional": "在便利商店買東西，只有滿七十九元，才能得到一張貼紙。",
               "simplified": "在便利商店买东西，只有满七十九元，才能得到一张贴纸。",
-              "pinyin": "Zài biànlì shāngdiàn mǎi dōng xi, zhǐyǒu mǎn qīshíjiǔ yuán, cáinéng dédào yì zhāng tiēzhǐ.",
+              "pinyin": "Zài biànlì shāngdiàn mǎi dōngxi, zhǐyǒu mǎn qīshíjiǔ yuán, cáinéng dédào yì zhāng tiēzhǐ.",
               "english": "At a convenience store, you can get a sticker only when you spend at least 79 dollars.",
               "words": [
                 {
@@ -2441,35 +2455,42 @@
                 },
                 {
                   "id": "b2l16-g06-p371-ex1-w3",
-                  "traditional": "買東西",
-                  "simplified": "买东西",
-                  "pinyin": "mǎi dōng xi",
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "mǎi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-ex1-w4",
+                  "traditional": "東西",
+                  "simplified": "东西",
+                  "pinyin": "dōngxi",
                   "meaning": "",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w4",
+                  "id": "b2l16-g06-p371-ex1-w5",
                   "traditional": "只有",
                   "simplified": "只有",
                   "pinyin": "zhǐyǒu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w5",
+                  "id": "b2l16-g06-p371-ex1-w6",
                   "traditional": "滿",
                   "simplified": "满",
                   "pinyin": "mǎn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w6",
+                  "id": "b2l16-g06-p371-ex1-w7",
                   "traditional": "七十九",
                   "simplified": "七十九",
                   "pinyin": "qīshíjiǔ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w7",
+                  "id": "b2l16-g06-p371-ex1-w8",
                   "traditional": "元",
                   "simplified": "元",
                   "pinyin": "yuán",
@@ -2477,35 +2498,35 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w8",
+                  "id": "b2l16-g06-p371-ex1-w9",
                   "traditional": "才能",
                   "simplified": "才能",
                   "pinyin": "cáinéng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w9",
+                  "id": "b2l16-g06-p371-ex1-w10",
                   "traditional": "得到",
                   "simplified": "得到",
                   "pinyin": "dédào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w10",
+                  "id": "b2l16-g06-p371-ex1-w11",
                   "traditional": "一",
                   "simplified": "一",
                   "pinyin": "yì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w11",
+                  "id": "b2l16-g06-p371-ex1-w12",
                   "traditional": "張",
                   "simplified": "张",
                   "pinyin": "zhāng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g06-p371-ex1-w12",
+                  "id": "b2l16-g06-p371-ex1-w13",
                   "traditional": "貼紙",
                   "simplified": "贴纸",
                   "pinyin": "tiēzhǐ",

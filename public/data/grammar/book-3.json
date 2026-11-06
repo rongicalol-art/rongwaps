@@ -11960,7 +11960,7 @@
               "text": {
                 "traditional": "A：你那輛車不常開又舊得很，不如賣掉吧！\nB：它還能開，賣掉太可惜了。",
                 "simplified": "A：你那辆车不常开又旧得很，不如卖掉吧！\nB：它还能开，卖掉太可惜了。",
-                "pinyin": "A: Nǐ nà liàng chē bù cháng kāi yòu jiù dehěn, bùrú màidiào ba!\nB: Tā hái néng kāi, màidiào tài kěxí le.",
+                "pinyin": "A: Nǐ nà liàng chē bù cháng kāi yòu jiù de hěn, bùrú màidiào ba!\nB: Tā hái néng kāi, màidiào tài kěxí le.",
                 "english": "A: You don't drive that car much, and it's really old. You might as well sell it!\nB: It still runs. Selling it would be a real shame.",
                 "words": [
                   {
@@ -12029,28 +12029,35 @@
                   },
                   {
                     "id": "b3l3g2-ex2-w10",
-                    "traditional": "得很",
-                    "simplified": "得很",
-                    "pinyin": "dehěn",
+                    "traditional": "得",
+                    "simplified": "得",
+                    "pinyin": "de",
+                    "meaning": ""
+                  },
+                  {
+                    "id": "b3l3g2-ex2-w11",
+                    "traditional": "很",
+                    "simplified": "很",
+                    "pinyin": "hěn",
                     "meaning": "",
                     "suffix": "，"
                   },
                   {
-                    "id": "b3l3g2-ex2-w11",
+                    "id": "b3l3g2-ex2-w12",
                     "traditional": "不如",
                     "simplified": "不如",
                     "pinyin": "bùrú",
                     "meaning": ""
                   },
                   {
-                    "id": "b3l3g2-ex2-w12",
+                    "id": "b3l3g2-ex2-w13",
                     "traditional": "賣掉",
                     "simplified": "卖掉",
                     "pinyin": "màidiào",
                     "meaning": ""
                   },
                   {
-                    "id": "b3l3g2-ex2-w13",
+                    "id": "b3l3g2-ex2-w14",
                     "traditional": "吧",
                     "simplified": "吧",
                     "pinyin": "ba",
@@ -12058,7 +12065,7 @@
                     "suffix": "！\n"
                   },
                   {
-                    "id": "b3l3g2-ex2-w14",
+                    "id": "b3l3g2-ex2-w15",
                     "traditional": "它",
                     "simplified": "它",
                     "pinyin": "tā",
@@ -12066,21 +12073,21 @@
                     "prefix": "B："
                   },
                   {
-                    "id": "b3l3g2-ex2-w15",
+                    "id": "b3l3g2-ex2-w16",
                     "traditional": "還",
                     "simplified": "还",
                     "pinyin": "hái",
                     "meaning": ""
                   },
                   {
-                    "id": "b3l3g2-ex2-w16",
+                    "id": "b3l3g2-ex2-w17",
                     "traditional": "能",
                     "simplified": "能",
                     "pinyin": "néng",
                     "meaning": ""
                   },
                   {
-                    "id": "b3l3g2-ex2-w17",
+                    "id": "b3l3g2-ex2-w18",
                     "traditional": "開",
                     "simplified": "开",
                     "pinyin": "kāi",
@@ -12088,28 +12095,28 @@
                     "suffix": "，"
                   },
                   {
-                    "id": "b3l3g2-ex2-w18",
+                    "id": "b3l3g2-ex2-w19",
                     "traditional": "賣掉",
                     "simplified": "卖掉",
                     "pinyin": "màidiào",
                     "meaning": ""
                   },
                   {
-                    "id": "b3l3g2-ex2-w19",
+                    "id": "b3l3g2-ex2-w20",
                     "traditional": "太",
                     "simplified": "太",
                     "pinyin": "tài",
                     "meaning": ""
                   },
                   {
-                    "id": "b3l3g2-ex2-w20",
+                    "id": "b3l3g2-ex2-w21",
                     "traditional": "可惜",
                     "simplified": "可惜",
                     "pinyin": "kěxí",
                     "meaning": ""
                   },
                   {
-                    "id": "b3l3g2-ex2-w21",
+                    "id": "b3l3g2-ex2-w22",
                     "traditional": "了",
                     "simplified": "了",
                     "pinyin": "le",
@@ -18288,7 +18295,7 @@
               "text": {
                 "traditional": "媽媽到了機場才發現護照不見了，找來找去，終於在她的口袋裡找到了，真糊塗啊！",
                 "simplified": "妈妈到了机场才发现护照不见了，找来找去，终于在她的口袋里找到了，真糊涂啊！",
-                "pinyin": "Māma dào le jīchǎng cái fāxiàn hùzhào bújiàn le, zhǎo lái zhǎo qù, zhōngyú zài tā de kǒudài lǐ zhǎodào le, zhēn hútú a!",
+                "pinyin": "Māma dào le jīchǎng cái fāxiàn hùzhào bújiànle, zhǎo lái zhǎo qù, zhōngyú zài tā de kǒudài lǐ zhǎodào le, zhēn hútú a!",
                 "english": "Mom only noticed her passport was missing when she reached the airport. After searching everywhere, she finally found it in her pocket. How forgetful!",
                 "words": [
                   {
@@ -18344,7 +18351,7 @@
                     "id": "b3l4g3-ex3-w8",
                     "traditional": "不見了",
                     "simplified": "不见了",
-                    "pinyin": "bújiàn le",
+                    "pinyin": "bújiànle",
                     "meaning": "",
                     "suffix": "，"
                   },
@@ -23925,7 +23932,7 @@
               "text": {
                 "traditional": "兒子：中秋節快到了，我可以找朋友來我們社區烤肉嗎？\n爸爸：我擔心會影響鄰居的生活，你們還是去別的地方吧。",
                 "simplified": "儿子：中秋节快到了，我可以找朋友来我们社区烤肉吗？\n爸爸：我担心会影响邻居的生活，你们还是去别的地方吧。",
-                "pinyin": "Érzi: Zhōngqiū jié kuài dào le, wǒ kěyǐ zhǎo péngyǒu lái wǒmen shèqū kǎoròu ma?\nBàba: Wǒ dānxīn huì yǐngxiǎng línjū de shēnghuó, nǐmen háishì qù biéde dìfāng ba.",
+                "pinyin": "Érzi: Zhōngqiū Jié kuài dào le, wǒ kěyǐ zhǎo péngyǒu lái wǒmen shèqū kǎoròu ma?\nBàba: Wǒ dānxīn huì yǐngxiǎng línjū de shēnghuó, nǐmen háishì qù biéde dìfāng ba.",
                 "english": "Son: The Mid-Autumn Festival is coming. May I invite friends to our community for a barbecue?\nDad: I worry it will disturb the neighbors; you had better go somewhere else.",
                 "words": [
                   {
@@ -23940,7 +23947,7 @@
                     "id": "b3l5g4-ex3-w2",
                     "traditional": "中秋節",
                     "simplified": "中秋节",
-                    "pinyin": "Zhōngqiū jié",
+                    "pinyin": "Zhōngqiū Jié",
                     "meaning": ""
                   },
                   {

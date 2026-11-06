@@ -37,12 +37,6 @@
       "reason": "Book entry 15 (PDF 62) prints '...to dump; to pour' and its examples are 倒垃圾 and 倒茶; app lacks 'to pour'."
     },
     {
-      "id": "B2L03-1-33",
-      "field": "pinyin",
-      "value": "yìhuǐér",
-      "reason": "Book entry 28 (PDF 74) prints 'yìhuǐér' (with ér, not 'r'); app has yìhuǐr. Tone mark on the first syllable is hard to read at scan resolution; I read it as yì, consistent with the other 一 words in the book."
-    },
-    {
       "id": "B2L03-2-15",
       "field": "pos",
       "value": "V",
@@ -121,12 +115,6 @@
       "reason": "Book prints only chà (PDF 142)."
     },
     {
-      "id": "B2L06-1-30",
-      "field": "pinyin",
-      "value": "méigui",
-      "reason": "Book prints only méigui (PDF 143)."
-    },
-    {
       "id": "B2L06-2-16",
       "field": "pos",
       "value": "V",
@@ -155,12 +143,6 @@
       "field": "pinyin",
       "value": "rìqí",
       "reason": "Book entry 29 (PDF 165) prints rìqí (second tone on qí, the Taiwan reading); app has rìqī. Read from the page image; tone mark small."
-    },
-    {
-      "id": "B2L07-2-21",
-      "field": "pinyin",
-      "value": "chèn",
-      "reason": "Book entry 21 (PDF 176) prints chèn for 趁（著）; the (zhe) variant is not printed."
     },
     {
       "id": "B2L07-2-25",

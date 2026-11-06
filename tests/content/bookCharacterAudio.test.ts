@@ -9,7 +9,9 @@ import { isPronunciationAudioPack } from '../../src/services/pronunciationAudio'
 
 // These are unresolved source gaps, not permission to substitute a different pronunciation.
 const knownReadingGaps = new Set<string>();
-const knownWordGaps = new Set<string>();
+// Book 2 words added 2026-11 from the book's word lists (死 Vp, 從來, 只有 in L15): no recording of their own yet;
+// the app speaks them.
+const knownWordGaps = new Set<string>(['B2L10-1-49', 'B2L14-1-41', 'B2L15-2-29']);
 
 test('every book form aligns and has exact-reading character or full-word audio, except declared source gaps', async () => {
   const cards = await fetchVocabulary();

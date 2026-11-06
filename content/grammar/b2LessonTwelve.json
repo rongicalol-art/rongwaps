@@ -98,7 +98,7 @@
           "text": {
             "traditional": "妳對日語有興趣，而且成績很好，應該繼續念研究所，將來當教授啊！",
             "simplified": "你对日语有兴趣，而且成绩很好，应该继续念研究所，将来当教授啊！",
-            "pinyin": "Nǐ duì Rì yǔ yǒu xìngqù, érqiě chéngjī hěn hǎo, yīnggāi jìxù niàn yánjiùsuǒ, jiānglái dāng jiàoshòu a!",
+            "pinyin": "Nǐ duì Rìyǔ yǒu xìngqù, érqiě chéngjī hěn hǎo, yīnggāi jìxù niàn yánjiùsuǒ, jiānglái dāng jiàoshòu a!",
             "english": "You are interested in the Japanese language, and you get good grades. You should continue going to a graduate school and become a professor in the future!"
           }
         },
@@ -148,7 +148,7 @@
           "text": {
             "traditional": "我覺得日語老師是很好的職業，所以從下個月起，我就要去當王教授的助理，向他學習怎麼教日文。妳呢？妳希望將來的職業是什麼？",
             "simplified": "我觉得日语老师是很好的职业，所以从下个月起，我就要去当王教授的助理，向他学习怎么教日文。你呢？你希望将来的职业是什么？",
-            "pinyin": "Wǒ juéde Rì yǔ lǎoshī shì hěn hǎo de zhíyè, suǒyǐ cóng xià ge yuè qǐ, wǒ jiùyào qù dāng Wáng jiàoshòu de zhùlǐ, xiàng tā xuéxí zěnme jiāo Rìwén. Nǐ ne? Nǐ xīwàng jiānglái de zhíyè shì shénme?",
+            "pinyin": "Wǒ juéde Rìyǔ lǎoshī shì hěn hǎo de zhíyè, suǒyǐ cóng xià ge yuè qǐ, wǒ jiùyào qù dāng Wáng jiàoshòu de zhùlǐ, xiàng tā xuéxí zěnme jiāo Rìwén. Nǐ ne? Nǐ xīwàng jiānglái de zhíyè shì shénme?",
             "english": "I think being a Japanese teacher is a very good job, so from next month I am going to work as Professor Wang’s assistant. I will learn from him how to teach Japanese. And you? What kind of job do you hope to have in the future?"
           }
         },
@@ -517,36 +517,29 @@
                 },
                 {
                   "id": "b2l12-g01-p271-ex3-w13",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l12-g01-p271-ex3-w14",
                   "traditional": "沒錯",
                   "simplified": "没错",
                   "pinyin": "méicuò",
                   "meaning": "",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w15",
+                  "id": "b2l12-g01-p271-ex3-w14",
                   "traditional": "除了",
                   "simplified": "除了",
                   "pinyin": "chúle",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w16",
+                  "id": "b2l12-g01-p271-ex3-w15",
                   "traditional": "電腦",
                   "simplified": "电脑",
                   "pinyin": "diànnǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w17",
+                  "id": "b2l12-g01-p271-ex3-w16",
                   "traditional": "課",
                   "simplified": "课",
                   "pinyin": "kè",
@@ -554,56 +547,56 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w18",
+                  "id": "b2l12-g01-p271-ex3-w17",
                   "traditional": "所有",
                   "simplified": "所有",
                   "pinyin": "suǒyǒu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w19",
+                  "id": "b2l12-g01-p271-ex3-w18",
                   "traditional": "課程",
                   "simplified": "课程",
                   "pinyin": "kèchéng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w20",
+                  "id": "b2l12-g01-p271-ex3-w19",
                   "traditional": "都",
                   "simplified": "都",
                   "pinyin": "dōu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w21",
+                  "id": "b2l12-g01-p271-ex3-w20",
                   "traditional": "是",
                   "simplified": "是",
                   "pinyin": "shì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w22",
+                  "id": "b2l12-g01-p271-ex3-w21",
                   "traditional": "用",
                   "simplified": "用",
                   "pinyin": "yòng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w23",
+                  "id": "b2l12-g01-p271-ex3-w22",
                   "traditional": "英文",
                   "simplified": "英文",
                   "pinyin": "Yīngwén",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w24",
+                  "id": "b2l12-g01-p271-ex3-w23",
                   "traditional": "上",
                   "simplified": "上",
                   "pinyin": "shàng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g01-p271-ex3-w25",
+                  "id": "b2l12-g01-p271-ex3-w24",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
@@ -1879,7 +1872,7 @@
             "number": 3,
             "text": {
               "traditional": "同事 A：經理說他感冒了，昨天晚上不但發燒，還一直咳嗽。同事 B：難怪他今天上班的時候，一直戴著口罩。",
-              "simplified": "同事A：经理说他感冒了，昨天晚上不但发烧，还一直咳嗽。同事B：难怪他今天上班的时候，一直戴着口罩。",
+              "simplified": "同事 A：经理说他感冒了，昨天晚上不但发烧，还一直咳嗽。同事 B：难怪他今天上班的时候，一直戴着口罩。",
               "pinyin": "Tóngshì A: Jīnglǐ shuō tā gǎnmào le, zuótiān wǎnshàng búdàn fāshāo, hái yìzhí késòu. Tóngshì B: Nánguài tā jīntiān shàngbān de shíhòu, yìzhí dài zhe kǒuzhào.",
               "english": "Coworker A: The manager said he has a cold. Last night he not only had a fever, but also kept coughing. Coworker B: No wonder he kept wearing a mask at work today.",
               "words": [
@@ -1888,7 +1881,8 @@
                   "traditional": "同事",
                   "simplified": "同事",
                   "pinyin": "tóngshì",
-                  "meaning": ""
+                  "meaning": "",
+                  "suffix": " "
                 },
                 {
                   "id": "b2l12-g05-p274-ex3-w2",
@@ -1990,7 +1984,8 @@
                   "traditional": "同事",
                   "simplified": "同事",
                   "pinyin": "tóngshì",
-                  "meaning": ""
+                  "meaning": "",
+                  "suffix": " "
                 },
                 {
                   "id": "b2l12-g05-p274-ex3-w16",
@@ -2111,7 +2106,7 @@
             "text": {
               "traditional": "你買了這麼多東西，一個人拿得了嗎？",
               "simplified": "你买了这么多东西，一个人拿得了吗？",
-              "pinyin": "Nǐ mǎi le zhème duō dōngxi, yígerén ná déle ma?",
+              "pinyin": "Nǐ mǎi le zhème duō dōngxi, yígerén ná de liǎo ma?",
               "english": "You bought so many things. Can one person carry them all?",
               "words": [
                 {
@@ -2173,13 +2168,20 @@
                 },
                 {
                   "id": "b2l12-g06-p275-ex1-w9",
-                  "traditional": "得了",
-                  "simplified": "得了",
-                  "pinyin": "déle",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
                   "meaning": ""
                 },
                 {
                   "id": "b2l12-g06-p275-ex1-w10",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "liǎo",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l12-g06-p275-ex1-w11",
                   "traditional": "嗎",
                   "simplified": "吗",
                   "pinyin": "ma",
@@ -2195,7 +2197,7 @@
             "text": {
               "traditional": "我們只有三個人，吃不了這麼多菜。",
               "simplified": "我们只有三个人，吃不了这么多菜。",
-              "pinyin": "Wǒmen zhǐyǒu sān gèrén, chī bùliǎo zhème duō cài.",
+              "pinyin": "Wǒmen zhǐyǒu sān ge rén, chī bùliǎo zhème duō cài.",
               "english": "There are only three of us; we can’t eat this many dishes.",
               "words": [
                 {
@@ -2221,42 +2223,49 @@
                 },
                 {
                   "id": "b2l12-g06-p275-ex2-w4",
-                  "traditional": "個人",
-                  "simplified": "个人",
-                  "pinyin": "gèrén",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l12-g06-p275-ex2-w5",
+                  "traditional": "人",
+                  "simplified": "人",
+                  "pinyin": "rén",
                   "meaning": "",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l12-g06-p275-ex2-w5",
+                  "id": "b2l12-g06-p275-ex2-w6",
                   "traditional": "吃",
                   "simplified": "吃",
                   "pinyin": "chī",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g06-p275-ex2-w6",
+                  "id": "b2l12-g06-p275-ex2-w7",
                   "traditional": "不了",
                   "simplified": "不了",
                   "pinyin": "bùliǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g06-p275-ex2-w7",
+                  "id": "b2l12-g06-p275-ex2-w8",
                   "traditional": "這麼",
                   "simplified": "这么",
                   "pinyin": "zhème",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g06-p275-ex2-w8",
+                  "id": "b2l12-g06-p275-ex2-w9",
                   "traditional": "多",
                   "simplified": "多",
                   "pinyin": "duō",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g06-p275-ex2-w9",
+                  "id": "b2l12-g06-p275-ex2-w10",
                   "traditional": "菜",
                   "simplified": "菜",
                   "pinyin": "cài",
@@ -2414,7 +2423,7 @@
           "text": {
             "traditional": "您好，我是陳可欣，今年二十一歲，是大學日文系的學生。父親在高中教書，母親是鐵路局的員工，哥哥在貿易公司上班。我是家裡最小的孩子，可是我知道怎麼照顧自己，不讓父母擔心。",
             "simplified": "您好，我是陈可欣，今年二十一岁，是大学日文系的学生。父亲在高中教书，母亲是铁路局的员工，哥哥在贸易公司上班。我是家里最小的孩子，可是我知道怎么照顾自己，不让父母担心。",
-            "pinyin": "Nín hǎo, wǒ shì Chén Kěxīn, jīnnián èrshíyī suì, shì dàxué Rìwén xì de xuéshēng. Fùqīn zài gāozhōng jiāoshū, mǔqīn shì Tiělù jú de yuángōng, gēge zài màoyì gōngsī shàngbān. Wǒ shì jiālǐ zuì xiǎo de háizi, kěshì wǒ zhīdào zěnme zhàogù zìjǐ, bú ràng fùmǔ dānxīn.",
+            "pinyin": "Nín hǎo, wǒ shì Chén Kěxīn, jīnnián èrshíyī suì, shì dàxué Rìwén xì de xuéshēng. Fùqīn zài gāozhōng jiāoshū, mǔqīn shì Tiělùjú de yuángōng, gēge zài màoyì gōngsī shàngbān. Wǒ shì jiālǐ zuì xiǎo de háizi, kěshì wǒ zhīdào zěnme zhàogù zìjǐ, bú ràng fùmǔ dānxīn.",
             "english": "I am Kexin Chen, 21 years old. I am a university student in the Department of Japanese Language. My father teaches in a senior high school, my mother is an employee in the Railways Administration, and my elder brother works in a trading company. I am the youngest in my family, but I know how to take care of myself, so I don’t let my parents worry about me."
           }
         },
@@ -2424,7 +2433,7 @@
           "text": {
             "traditional": "這個暑假，您要找人到鄉下的花園去種花、剪草。我不喜歡都市緊張的生活，也不習慣天天穿著襯衫，坐在辦公室裡打電腦。鄉下環境好、空氣新鮮，如果能在花園打工，不但可以認識很多植物，休息的時候，還可以坐在草地上喝個茶、聽個音樂。這樣的生活，一定會讓我很開心的。",
             "simplified": "这个暑假，您要找人到乡下的花园去种花、剪草。我不喜欢都市紧张的生活，也不习惯天天穿着衬衫，坐在办公室里打电脑。乡下环境好、空气新鲜，如果能在花园打工，不但可以认识很多植物，休息的时候，还可以坐在草地上喝个茶、听个音乐。这样的生活，一定会让我很开心的。",
-            "pinyin": "Zhège shǔjià, nín yào zhǎo rén dào xiāngxià de huāyuán qù zhǒng huā, jiǎn cǎo. Wǒ bù xǐhuān dūshì jǐnzhāng de shēnghuó, yě bù xíguàn tiāntiān chuān zhe chènshān, zuò zài bàngōngshì lǐ dǎ diànnǎo. Xiāngxià huánjìng hǎo, kōngqì xīnxiān, rúguǒ néng zài huāyuán dǎgōng, búdàn kěyǐ rènshì hěn duō zhíwù, xiūxí de shíhòu, hái kěyǐ zuò zài cǎodì shàng hē ge chá, tīng ge yīnyuè. Zhèyàng de shēnghuó, yídìng huì ràng wǒ hěn kāixīn de.",
+            "pinyin": "Zhège shǔjià, nín yào zhǎo rén dào xiāngxià de huāyuán qù zhòng huā, jiǎn cǎo. Wǒ bù xǐhuān dūshì jǐnzhāng de shēnghuó, yě bù xíguàn tiāntiān chuān zhe chènshān, zuò zài bàngōngshì lǐ dǎ diànnǎo. Xiāngxià huánjìng hǎo, kōngqì xīnxiān, rúguǒ néng zài huāyuán dǎgōng, búdàn kěyǐ rènshì hěn duō zhíwù, xiūxí de shíhòu, hái kěyǐ zuò zài cǎodì shàng hē ge chá, tīng ge yīnyuè. Zhèyàng de shēnghuó, yídìng huì ràng wǒ hěn kāixīn de.",
             "english": "This summer vacation, you are looking for people who will grow flowers and trim the lawn in a countryside garden. I don’t like stressful urban life, and I am not used to wearing a shirt every day or sitting in an office using a computer. In the countryside the environment is good, and the air is fresh. If I can work part-time in a garden, I can not only know many plants, but also sit on the grass drinking tea or listen to some music during the breaks. This kind of life will certainly make me happy!"
           }
         },
@@ -2463,7 +2472,7 @@
           "speaker": "旁白",
           "text": {
             "traditional": "5 月 21 日",
-            "simplified": "5月21日",
+            "simplified": "5 月 21 日",
             "pinyin": "5 yuè 21 rì",
             "english": "May 21st"
           }
@@ -2710,7 +2719,7 @@
             "number": 3,
             "text": {
               "traditional": "這個週末我想先去 KTV 唱個歌，再去看個電影，輕鬆一下。",
-              "simplified": "这个周末我想先去KTV唱个歌，再去看个电影，轻松一下。",
+              "simplified": "这个周末我想先去 KTV 唱个歌，再去看个电影，轻松一下。",
               "pinyin": "Zhè ge zhōumò wǒ xiǎng xiān qù KTV chàng ge gē, zài qù kàn ge diànyǐng, qīngsōng yíxià.",
               "english": "This weekend I want to go to KTV first for a bit of singing, then catch a movie and relax a little.",
               "words": [
@@ -2761,14 +2770,16 @@
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
-                  "meaning": ""
+                  "meaning": "",
+                  "suffix": " "
                 },
                 {
                   "id": "b2l12-g07-p282-ex3-w8",
                   "traditional": "KTV",
                   "simplified": "KTV",
                   "pinyin": "KTV",
-                  "meaning": ""
+                  "meaning": "",
+                  "suffix": " "
                 },
                 {
                   "id": "b2l12-g07-p282-ex3-w9",
@@ -3197,35 +3208,28 @@
                 },
                 {
                   "id": "b2l12-g08-p283-ex3-w13",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l12-g08-p283-ex3-w14",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w15",
+                  "id": "b2l12-g08-p283-ex3-w14",
                   "traditional": "才",
                   "simplified": "才",
                   "pinyin": "cái",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w16",
+                  "id": "b2l12-g08-p283-ex3-w15",
                   "traditional": "五",
                   "simplified": "五",
                   "pinyin": "wǔ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w17",
+                  "id": "b2l12-g08-p283-ex3-w16",
                   "traditional": "歲",
                   "simplified": "岁",
                   "pinyin": "suì",
@@ -3233,49 +3237,49 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w18",
+                  "id": "b2l12-g08-p283-ex3-w17",
                   "traditional": "這些",
                   "simplified": "这些",
                   "pinyin": "zhèxiē",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w19",
+                  "id": "b2l12-g08-p283-ex3-w18",
                   "traditional": "事",
                   "simplified": "事",
                   "pinyin": "shì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w20",
+                  "id": "b2l12-g08-p283-ex3-w19",
                   "traditional": "最好",
                   "simplified": "最好",
                   "pinyin": "zuìhǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w21",
+                  "id": "b2l12-g08-p283-ex3-w20",
                   "traditional": "讓",
                   "simplified": "让",
                   "pinyin": "ràng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w22",
+                  "id": "b2l12-g08-p283-ex3-w21",
                   "traditional": "父母",
                   "simplified": "父母",
                   "pinyin": "fùmǔ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w23",
+                  "id": "b2l12-g08-p283-ex3-w22",
                   "traditional": "來",
                   "simplified": "来",
                   "pinyin": "lái",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l12-g08-p283-ex3-w24",
+                  "id": "b2l12-g08-p283-ex3-w23",
                   "traditional": "做",
                   "simplified": "做",
                   "pinyin": "zuò",

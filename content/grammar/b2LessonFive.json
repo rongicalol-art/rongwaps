@@ -56,7 +56,7 @@
           "text": {
             "traditional": "這個社區又大又舒服，可是上個月有一輛汽車被小偷偷了，因為警察來幫忙，所以很快就找到汽車了。現在白天、晚上都有人負責社區的安全。",
             "simplified": "这个社区又大又舒服，可是上个月有一辆汽车被小偷偷了，因为警察来帮忙，所以很快就找到汽车了。现在白天、晚上都有人负责社区的安全。",
-            "pinyin": "Zhège shèqū yòu dà yòu shūfu, kěshì shàng ge yuè yǒu yí liàng qìchē bèi xiǎo tōutōu le, yīnwèi jǐngchá lái bāngmáng, suǒyǐ hěn kuài jiù zhǎodào qìchē le. Xiànzài báitiān, wǎnshàng dōu yǒu rén fùzé shèqū de ānquán.",
+            "pinyin": "Zhège shèqū yòu dà yòu shūfu, kěshì shàng ge yuè yǒu yí liàng qìchē bèi xiǎotōu tōu le, yīnwèi jǐngchá lái bāngmáng, suǒyǐ hěn kuài jiù zhǎodào qìchē le. Xiànzài báitiān, wǎnshàng dōu yǒu rén fùzé shèqū de ānquán.",
             "english": "This complex building is both big and comfortable. But last month a car was stolen by a thief, and the police came to help, so they found the car quickly. Now day and night there’s someone responsible for the safety of the community."
           }
         },
@@ -116,7 +116,7 @@
           "text": {
             "traditional": "聽妳這麼說，我也好想搬來這裡住。",
             "simplified": "听你这么说，我也好想搬来这里住。",
-            "pinyin": "Tīng nǐ zhème shuō, wǒ yěhǎo xiǎng bān lái zhèlǐ zhù.",
+            "pinyin": "Tīng nǐ zhème shuō, wǒ yě hǎo xiǎng bān lái zhèlǐ zhù.",
             "english": "As I hear you say so, I really want to move here too!"
           }
         },
@@ -721,7 +721,7 @@
             "text": {
               "traditional": "那張桌子在一樓，沒被搬上二樓去。",
               "simplified": "那张桌子在一楼，没被搬上二楼去。",
-              "pinyin": "Nà zhāng zhuōzi zài yì lóu, méi bèi bān shàng èr lóu qù.",
+              "pinyin": "Nà zhāng zhuōzi zài yī lóu, méi bèi bān shàng èr lóu qù.",
               "english": "That table is on the first floor; it was not moved up to the second floor.",
               "words": [
                 {
@@ -756,7 +756,7 @@
                   "id": "b2l05g1-ex4-w5",
                   "traditional": "一",
                   "simplified": "一",
-                  "pinyin": "yì",
+                  "pinyin": "yī",
                   "meaning": ""
                 },
                 {
@@ -874,41 +874,48 @@
                 },
                 {
                   "id": "b2l05g1-ex5-w7",
-                  "traditional": "才不",
-                  "simplified": "才不",
-                  "pinyin": "cái bú",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
                   "meaning": ""
                 },
                 {
                   "id": "b2l05g1-ex5-w8",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bú",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l05g1-ex5-w9",
                   "traditional": "會",
                   "simplified": "会",
                   "pinyin": "huì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g1-ex5-w9",
+                  "id": "b2l05g1-ex5-w10",
                   "traditional": "被",
                   "simplified": "被",
                   "pinyin": "bèi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g1-ex5-w10",
+                  "id": "b2l05g1-ex5-w11",
                   "traditional": "媽媽",
                   "simplified": "妈妈",
                   "pinyin": "māma",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g1-ex5-w11",
+                  "id": "b2l05g1-ex5-w12",
                   "traditional": "丟",
                   "simplified": "丢",
                   "pinyin": "diū",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g1-ex5-w12",
+                  "id": "b2l05g1-ex5-w13",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -2052,21 +2059,14 @@
                 },
                 {
                   "id": "b2l05g3-ex1-w10",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l05g3-ex1-w11",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l05g3-ex1-w12",
+                  "id": "b2l05g3-ex1-w11",
                   "traditional": "簡單",
                   "simplified": "简单",
                   "pinyin": "jiǎndān",
@@ -2074,49 +2074,49 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l05g3-ex1-w13",
+                  "id": "b2l05g3-ex1-w12",
                   "traditional": "只要",
                   "simplified": "只要",
                   "pinyin": "zhǐyào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex1-w14",
+                  "id": "b2l05g3-ex1-w13",
                   "traditional": "跟",
                   "simplified": "跟",
                   "pinyin": "gēn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex1-w15",
+                  "id": "b2l05g3-ex1-w14",
                   "traditional": "老師",
                   "simplified": "老师",
                   "pinyin": "lǎoshī",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex1-w16",
+                  "id": "b2l05g3-ex1-w15",
                   "traditional": "說",
                   "simplified": "说",
                   "pinyin": "shuō",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex1-w17",
+                  "id": "b2l05g3-ex1-w16",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex1-w18",
+                  "id": "b2l05g3-ex1-w17",
                   "traditional": "可以",
                   "simplified": "可以",
                   "pinyin": "kěyǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex1-w19",
+                  "id": "b2l05g3-ex1-w18",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -2225,77 +2225,70 @@
                 },
                 {
                   "id": "b2l05g3-ex2-w13",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l05g3-ex2-w14",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l05g3-ex2-w15",
+                  "id": "b2l05g3-ex2-w14",
                   "traditional": "只要",
                   "simplified": "只要",
                   "pinyin": "zhǐyào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w16",
+                  "id": "b2l05g3-ex2-w15",
                   "traditional": "跟",
                   "simplified": "跟",
                   "pinyin": "gēn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w17",
+                  "id": "b2l05g3-ex2-w16",
                   "traditional": "門口",
                   "simplified": "门口",
                   "pinyin": "ménkǒu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w18",
+                  "id": "b2l05g3-ex2-w17",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w19",
+                  "id": "b2l05g3-ex2-w18",
                   "traditional": "人",
                   "simplified": "人",
                   "pinyin": "rén",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w20",
+                  "id": "b2l05g3-ex2-w19",
                   "traditional": "說",
                   "simplified": "说",
                   "pinyin": "shuō",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w21",
+                  "id": "b2l05g3-ex2-w20",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w22",
+                  "id": "b2l05g3-ex2-w21",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w23",
+                  "id": "b2l05g3-ex2-w22",
                   "traditional": "名字",
                   "simplified": "名字",
                   "pinyin": "míngzi",
@@ -2303,28 +2296,28 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l05g3-ex2-w24",
+                  "id": "b2l05g3-ex2-w23",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w25",
+                  "id": "b2l05g3-ex2-w24",
                   "traditional": "可以",
                   "simplified": "可以",
                   "pinyin": "kěyǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w26",
+                  "id": "b2l05g3-ex2-w25",
                   "traditional": "進來",
                   "simplified": "进来",
                   "pinyin": "jìnlái",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g3-ex2-w27",
+                  "id": "b2l05g3-ex2-w26",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -2771,36 +2764,29 @@
                 },
                 {
                   "id": "b2l05g4-ex1-w10",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l05g4-ex1-w11",
                   "traditional": "不一定",
                   "simplified": "不一定",
                   "pinyin": "bù yídìng",
                   "meaning": "",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l05g4-ex1-w12",
+                  "id": "b2l05g4-ex1-w11",
                   "traditional": "有時候",
                   "simplified": "有时候",
                   "pinyin": "yǒushíhòu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex1-w13",
+                  "id": "b2l05g4-ex1-w12",
                   "traditional": "吃",
                   "simplified": "吃",
                   "pinyin": "chī",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex1-w14",
+                  "id": "b2l05g4-ex1-w13",
                   "traditional": "雞排",
                   "simplified": "鸡排",
                   "pinyin": "jīpái",
@@ -2808,28 +2794,28 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l05g4-ex1-w15",
+                  "id": "b2l05g4-ex1-w14",
                   "traditional": "有時候",
                   "simplified": "有时候",
                   "pinyin": "yǒushíhòu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex1-w16",
+                  "id": "b2l05g4-ex1-w15",
                   "traditional": "吃",
                   "simplified": "吃",
                   "pinyin": "chī",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex1-w17",
+                  "id": "b2l05g4-ex1-w16",
                   "traditional": "烤",
                   "simplified": "烤",
                   "pinyin": "kǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex1-w18",
+                  "id": "b2l05g4-ex1-w17",
                   "traditional": "魷魚",
                   "simplified": "鱿鱼",
                   "pinyin": "yóuyú",
@@ -2916,35 +2902,28 @@
                 },
                 {
                   "id": "b2l05g4-ex2-w10",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l05g4-ex2-w11",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l05g4-ex2-w12",
+                  "id": "b2l05g4-ex2-w11",
                   "traditional": "有時候",
                   "simplified": "有时候",
                   "pinyin": "yǒushíhòu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex2-w13",
+                  "id": "b2l05g4-ex2-w12",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex2-w14",
+                  "id": "b2l05g4-ex2-w13",
                   "traditional": "旅行",
                   "simplified": "旅行",
                   "pinyin": "lǚxíng",
@@ -2952,21 +2931,21 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l05g4-ex2-w15",
+                  "id": "b2l05g4-ex2-w14",
                   "traditional": "有時候",
                   "simplified": "有时候",
                   "pinyin": "yǒushíhòu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex2-w16",
+                  "id": "b2l05g4-ex2-w15",
                   "traditional": "在家",
                   "simplified": "在家",
                   "pinyin": "zài jiā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex2-w17",
+                  "id": "b2l05g4-ex2-w16",
                   "traditional": "休息",
                   "simplified": "休息",
                   "pinyin": "xiūxí",
@@ -3039,42 +3018,35 @@
                 },
                 {
                   "id": "b2l05g4-ex3-w8",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l05g4-ex3-w9",
                   "traditional": "有時候",
                   "simplified": "有时候",
                   "pinyin": "yǒushíhòu",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l05g4-ex3-w10",
+                  "id": "b2l05g4-ex3-w9",
                   "traditional": "去",
                   "simplified": "去",
                   "pinyin": "qù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex3-w11",
+                  "id": "b2l05g4-ex3-w10",
                   "traditional": "圖書館",
                   "simplified": "图书馆",
                   "pinyin": "túshūguǎn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex3-w12",
+                  "id": "b2l05g4-ex3-w11",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex3-w13",
+                  "id": "b2l05g4-ex3-w12",
                   "traditional": "書",
                   "simplified": "书",
                   "pinyin": "shū",
@@ -3082,28 +3054,28 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l05g4-ex3-w14",
+                  "id": "b2l05g4-ex3-w13",
                   "traditional": "有時候",
                   "simplified": "有时候",
                   "pinyin": "yǒushíhòu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex3-w15",
+                  "id": "b2l05g4-ex3-w14",
                   "traditional": "回家",
                   "simplified": "回家",
                   "pinyin": "huí jiā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex3-w16",
+                  "id": "b2l05g4-ex3-w15",
                   "traditional": "寫",
                   "simplified": "写",
                   "pinyin": "xiě",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l05g4-ex3-w17",
+                  "id": "b2l05g4-ex3-w16",
                   "traditional": "功課",
                   "simplified": "功课",
                   "pinyin": "gōngkè",

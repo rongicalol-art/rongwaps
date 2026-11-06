@@ -16,8 +16,11 @@ const LESSONS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight',
   'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen'];
 const HAN = /\p{Script=Han}/u;
 const PARTICLES = new Set([...'的了嗎呢吧啊呀喔哦啦們著得地麼個子頭過']);
-/** Same characters, another word than the card: 颱風假's 假 jià "day off" is not the card 假 jiǎ "false". */
-const HOMOGRAPHS = new Map([['假', ['jia4']]]);
+/**
+ * Same characters, another word than the card: 颱風假's 假 jià "day off" is not the card 假 jiǎ "false";
+ * 拿得了's 了 liǎo "manage" is not the card 了 le.
+ */
+const HOMOGRAPHS = new Map([['假', ['jia4']], ['了', ['liao3']]]);
 
 interface Text { traditional: string; pinyin?: string; words?: GrammarWordToken[] }
 interface Page { id: string; examples: { id: string; text: Text }[] }

@@ -279,6 +279,16 @@ function segmentRun(run: string, authored: string[], single: Set<string> = new S
   }
   // 的話 "if" ends a clause; inside one it is 的 + 話 (用浪漫的話 = with romantic words).
   for (let i = 0; i < out.length - 1; i++) if (out[i] === '的話') out.splice(i, 1, '的', '話');
+  // Words the dictionary glues that the books never mean: 聊得很愉快 is 得 + 很 (not 得很 "very"), 走路五分鐘
+  //就到了 is 到 + 了 (not 到了 "at last"), 兩個人 / 那個人 is 個 + 人 (not 個人 "individual").
+  for (let i = 0; i < out.length; i++) {
+    if (out[i] === '得很' || out[i] === '到了') out.splice(i, 1, ...[...out[i]]);
+    else if (out[i] === '個人' && i > 0 && /[一二兩三四五六七八九十幾這那哪每]$/u.test(out[i - 1])) {
+      const demonstrative = ['這', '那', '哪'].includes(out[i - 1]) && cards.has(`${out[i - 1]}個`);
+      if (demonstrative) out.splice(i - 1, 2, `${out[i - 1]}個`, '人');
+      else out.splice(i, 1, '個', '人');
+    }
+  }
   // A one-character grammar word at the edge of a looser word stands alone (常用 → 常 | 用).
   return out.flatMap((word) => {
     const chars = [...word];
@@ -320,7 +330,22 @@ function pieces(text: string, authored: string[], single: Set<string>, names: Se
       out.push({ kind: label[1] ? 'label' : 'name-label', text: label[1] ?? label[2] });
       rest = rest.slice(label[0].length);
     }
-    for (const run of rest.match(/[（(][^）)\p{Script=Han}]*[A-Za-z][^）)\p{Script=Han}]*[）)]|\p{Script=Han}+|[A-Za-z0-9]+|[^\p{Script=Han}A-Za-z0-9（(]+|[（(]/gu) ?? []) {
+    let labelColon = false;
+    for (const match of rest.matchAll(/[（(][^）)\p{Script=Han}]*[A-Za-z][^）)\p{Script=Han}]*[）)]|\p{Script=Han}+|[A-Za-z0-9]+|[^\p{Script=Han}A-Za-z0-9（(]+|[（(]/gu)) {
+      let run = match[0];
+      const next = rest.charAt((match.index ?? 0) + run.length);
+      // A speaker letter after a sentence end on the same line (……了。B：……) is the next turn's label, not a word.
+      const previous = out[out.length - 1];
+      if (/^[A-D]$/.test(run) && /[：:]/.test(next) && previous?.kind === 'punct' && /[。！？…」]$/.test(previous.text)) {
+        out.push({ kind: 'label', text: run });
+        labelColon = true;
+        continue;
+      }
+      if (labelColon) {
+        labelColon = false;
+        run = run.replace(/^[：:]/, '');
+        if (!run) continue;
+      }
       if (/^[（(].*[A-Za-z].*[）)]$/u.test(run)) {
         out.push({ kind: 'gloss', text: run });
         continue;
@@ -328,6 +353,8 @@ function pieces(text: string, authored: string[], single: Set<string>, names: Se
       if (HAN.test(run)) segmentRun(run, authored, single, names).forEach((word) => out.push({ kind: 'word', text: word }));
       else if (/[A-Za-z0-9]/.test(run)) out.push({ kind: 'latin', text: run });
       else if (run.trim()) out.push({ kind: 'punct', text: run.replace(/\s+/g, '') });
+      // A space the text prints around Latin (去 KTV 唱歌) stays, so the simplified text mirrors it.
+      else if (out[out.length - 1]?.kind === 'latin' || /[A-Za-z0-9]/.test(next)) out.push({ kind: 'punct', text: ' ' });
     }
   });
   return out;
@@ -379,6 +406,8 @@ function chooseReading(word: string, hint: (Syllable | null)[], flags: Flag[], i
   if (!isName && chars.length === 1 && FINAL_PARTICLES.has(word) && !hint[0] && cardOptions.length) {
     return [{ ...cardOptions[0][0], tone: 5, text: cardOptions[0][0].base.replace(/v/g, 'ü') }];
   }
+  // 了 read liǎo is the result complement of V得了 / V不了 ("can manage"), a reading its card (le) lacks.
+  if (word === '了' && hint[0]?.base === 'liao') return [hint[0]];
   if (!isName && cardOptions.length) {
     const match = cardOptions.find((option) => bases(option) === bases(hint));
     // A sentence particle keeps its neutral tone (吧, 啊, 喔); the card writes the citation form.
@@ -490,8 +519,8 @@ function applyToneChanges(slots: Slot[], flags: Flag[]) {
     if (slot.char === '一' && slot.last && next?.char === '兩') {
       // 一、兩 + measure "one or two" reads as 一兩 (yì, liǎng).
       tone = 4;
-    } else if (slot.char === '一' && before && '期拜週'.includes(before.char)) {
-      // The day of the week keeps yī (星期一要考試 xīngqíyī, not yí).
+    } else if ((slot.char === '一' && before && '期拜週'.includes(before.char)) || (slot.char === '一' && next?.char === '樓')) {
+      // The day of the week and the floor keep yī (星期一要考試 xīngqíyī, 住在一樓 yī lóu).
       tone = 1;
     } else if (slot.char === '不' || (next && '百千萬億'.includes(next.char) && before?.char !== '十')) {
       // 不 always changes; so does 一 counting hundreds, thousands, ten thousands (yìbǎi, yìqiān, yíwàn), as the
@@ -725,7 +754,7 @@ function assemble(words: GrammarWordToken[]): { simplified: string; pinyin: stri
   }
   return {
     simplified,
-    pinyin: pinyin.replace(/ +\n/g, '\n').replace(/ +$/, '').replace(/ ([,.?!;:”)])/g, '$1')
+    pinyin: pinyin.replace(/ {2,}/g, ' ').replace(/ +\n/g, '\n').replace(/ +$/, '').replace(/ ([,.?!;:”)])/g, '$1')
       // An opening quote after punctuation takes the space before it: wǒ: “Kuài, not wǒ:“ Kuài.
       .replace(/([,.?!;:])“ /g, '$1 “'),
   };
@@ -914,6 +943,8 @@ if (args.includes('--readings')) {
   for (const reading of readingsData) {
     if (ONLY_LESSON && reading.lessonId !== ONLY_LESSON) continue;
     reading.paragraphs.forEach((paragraph, index) => {
+      // A line with no Chinese (the book's scene break, a row of asterisks) keeps its own simplified and pinyin.
+      if (!HAN.test(paragraph.traditional)) return;
       const oldPinyin = paragraph.pinyin === 'TODO' ? '' : paragraph.pinyin ?? '';
       const oldSimplified = paragraph.simplified === 'TODO' ? '' : paragraph.simplified ?? '';
       const built = build(paragraph.traditional, oldPinyin, oldSimplified, `${reading.id}-p${index + 1}`, noFocus);

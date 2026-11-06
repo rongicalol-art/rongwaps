@@ -85,7 +85,7 @@
           "text": {
             "traditional": "不好意思，妳們等了很久了嗎？",
             "simplified": "不好意思，你们等了很久了吗？",
-            "pinyin": "Bùhǎoyìsi, nǐ men děng le hěn jiǔ le ma?",
+            "pinyin": "Bùhǎoyìsi, nǐmen děng le hěn jiǔ le ma?",
             "english": "Sorry! Have you been waiting for a long time?"
           }
         },
@@ -115,7 +115,7 @@
           "text": {
             "traditional": "妳們好，我叫九十九龍介。",
             "simplified": "你们好，我叫九十九龙介。",
-            "pinyin": "Nǐ men hǎo, wǒ jiào Jiǔshíjiǔ Lóngjiè.",
+            "pinyin": "Nǐmen hǎo, wǒ jiào Jiǔshíjiǔ Lóngjiè.",
             "english": "Hello! I'm Ryusuke Tsukumo."
           }
         },
@@ -145,7 +145,7 @@
           "text": {
             "traditional": "是啊！姓九十九的日本人很少。我一直想來夜市逛逛，今天請妳們帶我去吃好吃的台灣小吃。",
             "simplified": "是啊！姓九十九的日本人很少。我一直想来夜市逛逛，今天请你们带我去吃好吃的台湾小吃。",
-            "pinyin": "Shì a! Xìng Jiǔshíjiǔ de Rìběnrén hěn shǎo. Wǒ yìzhí xiǎng lái yèshì guàngguang, jīntiān qǐng nǐ men dài wǒ qù chī hǎochī de Táiwān xiǎochī.",
+            "pinyin": "Shì a! Xìng Jiǔshíjiǔ de Rìběnrén hěn shǎo. Wǒ yìzhí xiǎng lái yèshì guàngguang, jīntiān qǐng nǐmen dài wǒ qù chī hǎochī de Táiwān xiǎochī.",
             "english": "Yes! Few Japanese people have this surname. I have always wanted to walk around a night market. Please take me to eat delicious Taiwanese snacks today."
           }
         },
@@ -215,7 +215,7 @@
           "text": {
             "traditional": "太好了！妳們還推薦我們吃什麼？",
             "simplified": "太好了！你们还推荐我们吃什么？",
-            "pinyin": "Tài hǎo le! Nǐ men hái tuījiàn wǒmen chī shénme?",
+            "pinyin": "Tài hǎo le! Nǐmen hái tuījiàn wǒmen chī shénme?",
             "english": "That's great! What else do you recommend we eat?"
           }
         },
@@ -483,21 +483,14 @@
                 },
                 {
                   "id": "b2l04g1-ex1-w9",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l04g1-ex1-w10",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l04g1-ex1-w11",
+                  "id": "b2l04g1-ex1-w10",
                   "traditional": "看看",
                   "simplified": "看看",
                   "pinyin": "kànkan",
@@ -505,56 +498,56 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l04g1-ex1-w12",
+                  "id": "b2l04g1-ex1-w11",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex1-w13",
+                  "id": "b2l04g1-ex1-w12",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex1-w14",
+                  "id": "b2l04g1-ex1-w13",
                   "traditional": "筆",
                   "simplified": "笔",
                   "pinyin": "bǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex1-w15",
+                  "id": "b2l04g1-ex1-w14",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex1-w16",
+                  "id": "b2l04g1-ex1-w15",
                   "traditional": "在",
                   "simplified": "在",
                   "pinyin": "zài",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex1-w17",
+                  "id": "b2l04g1-ex1-w16",
                   "traditional": "桌",
                   "simplified": "桌",
                   "pinyin": "zhuō",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex1-w18",
+                  "id": "b2l04g1-ex1-w17",
                   "traditional": "上",
                   "simplified": "上",
                   "pinyin": "shàng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex1-w19",
+                  "id": "b2l04g1-ex1-w18",
                   "traditional": "啊",
                   "simplified": "啊",
                   "pinyin": "a",
@@ -621,21 +614,14 @@
                 },
                 {
                   "id": "b2l04g1-ex2-w7",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l04g1-ex2-w8",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l04g1-ex2-w9",
+                  "id": "b2l04g1-ex2-w8",
                   "traditional": "就是",
                   "simplified": "就是",
                   "pinyin": "jiùshì",
@@ -651,7 +637,7 @@
             "text": {
               "traditional": "A：我聽說他家在學校附近。B：是啊！他家就在學校旁邊，走路五分鐘就到了。",
               "simplified": "A：我听说他家在学校附近。B：是啊！他家就在学校旁边，走路五分钟就到了。",
-              "pinyin": "A: Wǒ tīngshuō tā jiā zài xuéxiào fùjìn. B: Shì a! Tā jiā jiù zài xuéxiào pángbiān, zǒulù wǔ fēnzhōng jiù dàoliǎo.",
+              "pinyin": "A: Wǒ tīngshuō tā jiā zài xuéxiào fùjìn. B: Shì a! Tā jiā jiù zài xuéxiào pángbiān, zǒulù wǔ fēnzhōng jiù dào le.",
               "english": "A: I heard his home is near the school. B: Yes! His home is right next to the school; it is a five-minute walk.",
               "words": [
                 {
@@ -707,21 +693,14 @@
                 },
                 {
                   "id": "b2l04g1-ex3-w8",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l04g1-ex3-w9",
                   "traditional": "是",
                   "simplified": "是",
                   "pinyin": "shì",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l04g1-ex3-w10",
+                  "id": "b2l04g1-ex3-w9",
                   "traditional": "啊",
                   "simplified": "啊",
                   "pinyin": "a",
@@ -729,42 +708,42 @@
                   "suffix": "！"
                 },
                 {
-                  "id": "b2l04g1-ex3-w11",
+                  "id": "b2l04g1-ex3-w10",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w12",
+                  "id": "b2l04g1-ex3-w11",
                   "traditional": "家",
                   "simplified": "家",
                   "pinyin": "jiā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w13",
+                  "id": "b2l04g1-ex3-w12",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w14",
+                  "id": "b2l04g1-ex3-w13",
                   "traditional": "在",
                   "simplified": "在",
                   "pinyin": "zài",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w15",
+                  "id": "b2l04g1-ex3-w14",
                   "traditional": "學校",
                   "simplified": "学校",
                   "pinyin": "xuéxiào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w16",
+                  "id": "b2l04g1-ex3-w15",
                   "traditional": "旁邊",
                   "simplified": "旁边",
                   "pinyin": "pángbiān",
@@ -772,38 +751,45 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l04g1-ex3-w17",
+                  "id": "b2l04g1-ex3-w16",
                   "traditional": "走路",
                   "simplified": "走路",
                   "pinyin": "zǒulù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w18",
+                  "id": "b2l04g1-ex3-w17",
                   "traditional": "五",
                   "simplified": "五",
                   "pinyin": "wǔ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w19",
+                  "id": "b2l04g1-ex3-w18",
                   "traditional": "分鐘",
                   "simplified": "分钟",
                   "pinyin": "fēnzhōng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g1-ex3-w20",
+                  "id": "b2l04g1-ex3-w19",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
+                  "id": "b2l04g1-ex3-w20",
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "meaning": ""
+                },
+                {
                   "id": "b2l04g1-ex3-w21",
-                  "traditional": "到了",
-                  "simplified": "到了",
-                  "pinyin": "dàoliǎo",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
                   "meaning": "",
                   "suffix": "。"
                 }
@@ -1158,7 +1144,7 @@
             "text": {
               "traditional": "在台灣，到處都吃得到小吃。",
               "simplified": "在台湾，到处都吃得到小吃。",
-              "pinyin": "Zài Táiwān, dàochù dōu chī dédào xiǎochī.",
+              "pinyin": "Zài Táiwān, dàochù dōu chī de dào xiǎochī.",
               "english": "In Taiwan, you can get snacks to eat everywhere.",
               "words": [
                 {
@@ -1199,13 +1185,20 @@
                 },
                 {
                   "id": "b2l04g2-ex5-w6",
-                  "traditional": "得到",
-                  "simplified": "得到",
-                  "pinyin": "dédào",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
                   "meaning": ""
                 },
                 {
                   "id": "b2l04g2-ex5-w7",
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l04g2-ex5-w8",
                   "traditional": "小吃",
                   "simplified": "小吃",
                   "pinyin": "xiǎochī",
@@ -1221,7 +1214,7 @@
             "text": {
               "traditional": "台北101離這裡有一點兒遠，你十五分鐘走得到走不到？",
               "simplified": "台北101离这里有一点儿远，你十五分钟走得到走不到？",
-              "pinyin": "Táiběi 101 lí zhèlǐ yǒuyìdiǎnr yuǎn, nǐ shíwǔ fēnzhōng zǒu dédào zǒu búdào?",
+              "pinyin": "Táiběi 101 lí zhèlǐ yǒuyìdiǎnr yuǎn, nǐ shíwǔ fēnzhōng zǒu de dào zǒu bú dào?",
               "english": "Taipei 101 is a little far from here. Can you walk there in fifteen minutes?",
               "words": [
                 {
@@ -1297,23 +1290,37 @@
                 },
                 {
                   "id": "b2l04g2-ex6-w11",
-                  "traditional": "得到",
-                  "simplified": "得到",
-                  "pinyin": "dédào",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
                   "meaning": ""
                 },
                 {
                   "id": "b2l04g2-ex6-w12",
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l04g2-ex6-w13",
                   "traditional": "走",
                   "simplified": "走",
                   "pinyin": "zǒu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g2-ex6-w13",
-                  "traditional": "不到",
-                  "simplified": "不到",
-                  "pinyin": "búdào",
+                  "id": "b2l04g2-ex6-w14",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bú",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l04g2-ex6-w15",
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
                   "meaning": "",
                   "suffix": "？"
                 }
@@ -1743,7 +1750,7 @@
             "text": {
               "traditional": "你剛剛說的話，我沒聽懂。",
               "simplified": "你刚刚说的话，我没听懂。",
-              "pinyin": "Nǐ gānggāng shuō dehuà, wǒ méi tīng dǒng.",
+              "pinyin": "Nǐ gānggāng shuō de huà, wǒ méi tīng dǒng.",
               "english": "I didn't understand what you just said.",
               "words": [
                 {
@@ -1769,35 +1776,42 @@
                 },
                 {
                   "id": "b2l04g3-ex2-w4",
-                  "traditional": "的話",
-                  "simplified": "的话",
-                  "pinyin": "dehuà",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l04g3-ex2-w5",
+                  "traditional": "話",
+                  "simplified": "话",
+                  "pinyin": "huà",
                   "meaning": "",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l04g3-ex2-w5",
+                  "id": "b2l04g3-ex2-w6",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g3-ex2-w6",
+                  "id": "b2l04g3-ex2-w7",
                   "traditional": "沒",
                   "simplified": "没",
                   "pinyin": "méi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g3-ex2-w7",
+                  "id": "b2l04g3-ex2-w8",
                   "traditional": "聽",
                   "simplified": "听",
                   "pinyin": "tīng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g3-ex2-w8",
+                  "id": "b2l04g3-ex2-w9",
                   "traditional": "懂",
                   "simplified": "懂",
                   "pinyin": "dǒng",
@@ -1855,35 +1869,28 @@
                 },
                 {
                   "id": "b2l04g3-ex3-w6",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l04g3-ex3-w7",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l04g3-ex3-w8",
+                  "id": "b2l04g3-ex3-w7",
                   "traditional": "只",
                   "simplified": "只",
                   "pinyin": "zhǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g3-ex3-w9",
+                  "id": "b2l04g3-ex3-w8",
                   "traditional": "聽得懂",
                   "simplified": "听得懂",
                   "pinyin": "tīng de dǒng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g3-ex3-w10",
+                  "id": "b2l04g3-ex3-w9",
                   "traditional": "一點兒",
                   "simplified": "一点儿",
                   "pinyin": "yìdiǎnr",
@@ -1938,7 +1945,7 @@
           "text": {
             "traditional": "這幾年，來台灣旅遊的外國人越來越多了。他們去夜市可以一邊逛街，一邊吃小吃，還能了解台灣的夜市文化。很多小吃的做法簡單，價錢也便宜，誰都吃得起。台灣最常見的小吃除了臭豆腐、蚵仔煎，還有鹹酥雞、滷肉飯、烤魷魚。天氣熱的時候，排隊買豆花、芒果冰、西瓜汁的人很多，生意好極了！逛夜市的時候，不但吃得飽，也買得到流行的衣服，你一定不會覺得無聊。最有意思的是，買東西的時候，你可以跟老闆講價，也許能便宜一點兒。",
             "simplified": "这几年，来台湾旅游的外国人越来越多了。他们去夜市可以一边逛街，一边吃小吃，还能了解台湾的夜市文化。很多小吃的做法简单，价钱也便宜，谁都吃得起。台湾最常见的小吃除了臭豆腐、蚵仔煎，还有咸酥鸡、卤肉饭、烤鱿鱼。天气热的时候，排队买豆花、芒果冰、西瓜汁的人很多，生意好极了！逛夜市的时候，不但吃得饱，也买得到流行的衣服，你一定不会觉得无聊。最有意思的是，买东西的时候，你可以跟老板讲价，也许能便宜一点儿。",
-            "pinyin": "Zhè jǐ nián, lái Táiwān lǚyóu de wàiguórén yuèláiyuè duō le. Tāmen qù yèshì kěyǐ yìbiān guàngjiē, yìbiān chī xiǎochī, hái néng liǎojiě Táiwān de yèshì wénhuà. Hěn duō xiǎochī de zuòfǎ jiǎndān, jiàqián yě piányí, shéi dōu chī de qǐ. Táiwān zuì chángjiàn de xiǎochī chúle chòu dòufǔ, ézǐjiān, háiyǒu xiánsūjī, lǔròu fàn, kǎo yóuyú. Tiānqì rè de shíhòu, páiduì mǎi dòuhuā, mángguǒ bīng, xīguā zhī de rén hěn duō, shēngyì hǎo jíle! Guàng yèshì de shíhòu, búdàn chī de bǎo, yě mǎi dédào liúxíng de yīfu, nǐ yídìng bú huì juéde wúliáo. Zuì yǒuyìsi de shì, mǎi dōngxi de shíhòu, nǐ kěyǐ gēn lǎobǎn jiǎngjià, yěxǔ néng piányí yìdiǎnr.",
+            "pinyin": "Zhè jǐ nián, lái Táiwān lǚyóu de wàiguórén yuèláiyuè duō le. Tāmen qù yèshì kěyǐ yìbiān guàngjiē, yìbiān chī xiǎochī, hái néng liǎojiě Táiwān de yèshì wénhuà. Hěn duō xiǎochī de zuòfǎ jiǎndān, jiàqián yě piányí, shéi dōu chī de qǐ. Táiwān zuì chángjiàn de xiǎochī chúle chòu dòufǔ, ézǐjiān, háiyǒu xiánsūjī, lǔròu fàn, kǎo yóuyú. Tiānqì rè de shíhòu, páiduì mǎi dòuhuā, mángguǒ bīng, xīguā zhī de rén hěn duō, shēngyì hǎo jíle! Guàng yèshì de shíhòu, búdàn chī de bǎo, yě mǎi de dào liúxíng de yīfu, nǐ yídìng bú huì juéde wúliáo. Zuì yǒuyìsi de shì, mǎi dōngxi de shíhòu, nǐ kěyǐ gēn lǎobǎn jiǎngjià, yěxǔ néng piányí yìdiǎnr.",
             "english": "In recent years, more and more foreigners have come to Taiwan to travel. At night markets they can shop, eat snacks, and learn about Taiwan's night market culture. Many snacks are simple to make and cheap; anyone can afford them. Besides stinky tofu and oyster omelet, the most common Taiwanese snacks also include popcorn chicken, braised pork on rice and grilled squid. When the weather is hot, many people line up to buy tofu pudding, mango ice and watermelon juice—business is great! When you walk around a night market, you can not only eat your fill but also buy trendy clothes, so you will definitely not feel bored. Most interestingly, when you buy things you can bargain with the vendor; perhaps you can get a lower price."
           }
         },
@@ -1948,7 +1955,7 @@
           "text": {
             "traditional": "在台灣，很多寺廟附近都有夜市，比如說：台北的龍山寺旁邊有華西街夜市。對龍山寺有興趣的外國遊客，常常先去廟裡參觀，再去夜市逛逛。這樣的旅行除了能了解寺廟文化，還吃得到有名的小吃，真的太值得了！",
             "simplified": "在台湾，很多寺庙附近都有夜市，比如说：台北的龙山寺旁边有华西街夜市。对龙山寺有兴趣的外国游客，常常先去庙里参观，再去夜市逛逛。这样的旅行除了能了解寺庙文化，还吃得到有名的小吃，真的太值得了！",
-            "pinyin": "Zài Táiwān, hěn duō sìmiào fùjìn dōu yǒu yèshì, bǐrú shuō: Táiběi de Lóngshān Sì pángbiān yǒu Huáxī Jiē yèshì. Duì Lóngshān Sì yǒu xìngqù de wàiguó yóukè, chángcháng xiān qù miào lǐ cānguān, zài qù yèshì guàngguang. Zhèyàng de lǚxíng chúle néng liǎojiě sìmiào wénhuà, hái chī dédào yǒumíng de xiǎochī, zhēnde tài zhídé le!",
+            "pinyin": "Zài Táiwān, hěn duō sìmiào fùjìn dōu yǒu yèshì, bǐrú shuō: Táiběi de Lóngshān Sì pángbiān yǒu Huáxī Jiē yèshì. Duì Lóngshān Sì yǒu xìngqù de wàiguó yóukè, chángcháng xiān qù miào lǐ cānguān, zài qù yèshì guàngguang. Zhèyàng de lǚxíng chúle néng liǎojiě sìmiào wénhuà, hái chī de dào yǒumíng de xiǎochī, zhēnde tài zhídé le!",
             "english": "In Taiwan, many temples have night markets nearby. For example, Huaxi Street Night Market is next to Longshan Temple in Taipei. Foreign tourists who are interested in Longshan Temple often visit the temple first and then walk around the night market. On a trip like this, besides learning about temple culture, you can also eat famous snacks—it is really worth it!"
           }
         }
@@ -2726,7 +2733,7 @@
             "text": {
               "traditional": "那個人很不客氣，所以他的朋友越來越少了。",
               "simplified": "那个人很不客气，所以他的朋友越来越少了。",
-              "pinyin": "Nà gèrén hěn bú kèqì, suǒyǐ tā de péngyǒu yuèláiyuè shǎo le.",
+              "pinyin": "Nà ge rén hěn bú kèqì, suǒyǐ tā de péngyǒu yuèláiyuè shǎo le.",
               "english": "That person is very rude, so he has fewer and fewer friends.",
               "words": [
                 {
@@ -2738,20 +2745,27 @@
                 },
                 {
                   "id": "b2l04g5-ex2-w2",
-                  "traditional": "個人",
-                  "simplified": "个人",
-                  "pinyin": "gèrén",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
                   "meaning": ""
                 },
                 {
                   "id": "b2l04g5-ex2-w3",
+                  "traditional": "人",
+                  "simplified": "人",
+                  "pinyin": "rén",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l04g5-ex2-w4",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g5-ex2-w4",
+                  "id": "b2l04g5-ex2-w5",
                   "traditional": "不客氣",
                   "simplified": "不客气",
                   "pinyin": "bú kèqì",
@@ -2759,49 +2773,49 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l04g5-ex2-w5",
+                  "id": "b2l04g5-ex2-w6",
                   "traditional": "所以",
                   "simplified": "所以",
                   "pinyin": "suǒyǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g5-ex2-w6",
+                  "id": "b2l04g5-ex2-w7",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g5-ex2-w7",
+                  "id": "b2l04g5-ex2-w8",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g5-ex2-w8",
+                  "id": "b2l04g5-ex2-w9",
                   "traditional": "朋友",
                   "simplified": "朋友",
                   "pinyin": "péngyǒu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g5-ex2-w9",
+                  "id": "b2l04g5-ex2-w10",
                   "traditional": "越來越",
                   "simplified": "越来越",
                   "pinyin": "yuèláiyuè",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g5-ex2-w10",
+                  "id": "b2l04g5-ex2-w11",
                   "traditional": "少",
                   "simplified": "少",
                   "pinyin": "shǎo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l04g5-ex2-w11",
+                  "id": "b2l04g5-ex2-w12",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",

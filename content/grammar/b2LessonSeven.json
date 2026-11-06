@@ -128,7 +128,7 @@
           "text": {
             "traditional": "（兩人哈哈大笑。這時候，美心剛好從外面走進來）",
             "simplified": "（两人哈哈大笑。这时候，美心刚好从外面走进来）",
-            "pinyin": "(Liǎng rén hāhā dàxiào. Zhè shí hou, Měixīn gānghǎo cóng wàimiàn zǒu jìn lái)",
+            "pinyin": "(Liǎng rén hāhā dàxiào. Zhè shí hòu, Měixīn gānghǎo cóng wàimiàn zǒu jìn lái)",
             "english": "(Both of them are laughing out loud. At that very moment, Meixin walks in.)"
           }
         },
@@ -228,7 +228,7 @@
           "text": {
             "traditional": "貴一點兒沒關係，要是訂得到第一班太魯閣號，早上從台北出發，中午就可以去太魯閣國家公園爬山了。",
             "simplified": "贵一点儿没关系，要是订得到第一班太鲁阁号，早上从台北出发，中午就可以去太鲁阁国家公园爬山了。",
-            "pinyin": "Guì yìdiǎnr méiguānxi, yàoshì dìng dédào dìyī bān Tàilǔgé Hào, zǎoshàng cóng Táiběi chūfā, zhōngwǔ jiù kěyǐ qù Tàilǔgé guójiā gōngyuán páshān le.",
+            "pinyin": "Guì yìdiǎnr méiguānxi, yàoshì dìng de dào dìyī bān Tàilǔgé Hào, zǎoshàng cóng Táiběi chūfā, zhōngwǔ jiù kěyǐ qù Tàilǔgé guójiā gōngyuán páshān le.",
             "english": "It's alright if it's a bit expensive. If I can book the first Taroko Express trip and leave from Taipei in the morning, I will be able to go to Taroko National Park to climb the mountains at noon."
           }
         },
@@ -258,7 +258,7 @@
           "text": {
             "traditional": "沒辦法，位子都是電腦選的。（看著網頁）訂好了！你把訂票號碼記下來，這個日期以前去便利商店付錢，就可以拿到票了。",
             "simplified": "没办法，位子都是电脑选的。（看着网页）订好了！你把订票号码记下来，这个日期以前去便利商店付钱，就可以拿到票了。",
-            "pinyin": "Méibànfǎ, wèizi dōu shì diànnǎo xuǎn de. (Kàn zhe wǎngyè) Dìng hǎo le! Nǐ bǎ dìngpiào hàomǎ jìxiàlái, zhège rìqī yǐqián qù biànlì shāngdiàn fù qián, jiù kěyǐ ná dào piào le.",
+            "pinyin": "Méibànfǎ, wèizi dōu shì diànnǎo xuǎn de. (Kàn zhe wǎngyè) Dìng hǎo le! Nǐ bǎ dìngpiào hàomǎ jìxiàlái, zhège rìqí yǐqián qù biànlì shāngdiàn fù qián, jiù kěyǐ ná dào piào le.",
             "english": "There's no way. The seats are all chosen by the computer. (She looks at the website.) Already booked! Write the reservation number down, and go to a convenience store to pay before this date. After that, you can get your tickets."
           }
         }
@@ -1439,43 +1439,36 @@
                 },
                 {
                   "id": "b2l07g3-ex3-w13",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l07g3-ex3-w14",
                   "traditional": "沒問題",
                   "simplified": "没问题",
                   "pinyin": "méi wèntí",
                   "meaning": "",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l07g3-ex3-w15",
+                  "id": "b2l07g3-ex3-w14",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w16",
+                  "id": "b2l07g3-ex3-w15",
                   "traditional": "想",
                   "simplified": "想",
                   "pinyin": "xiǎng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w17",
+                  "id": "b2l07g3-ex3-w16",
                   "traditional": "吃",
                   "simplified": "吃",
                   "pinyin": "chī",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w18",
+                  "id": "b2l07g3-ex3-w17",
                   "traditional": "什麼",
                   "simplified": "什么",
                   "pinyin": "shénme",
@@ -1483,42 +1476,42 @@
                   "suffix": "？"
                 },
                 {
-                  "id": "b2l07g3-ex3-w19",
+                  "id": "b2l07g3-ex3-w18",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w20",
+                  "id": "b2l07g3-ex3-w19",
                   "traditional": "讓",
                   "simplified": "让",
                   "pinyin": "ràng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w21",
+                  "id": "b2l07g3-ex3-w20",
                   "traditional": "餐廳",
                   "simplified": "餐厅",
                   "pinyin": "cāntīng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w22",
+                  "id": "b2l07g3-ex3-w21",
                   "traditional": "老闆",
                   "simplified": "老板",
                   "pinyin": "lǎobǎn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w23",
+                  "id": "b2l07g3-ex3-w22",
                   "traditional": "送",
                   "simplified": "送",
                   "pinyin": "sòng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g3-ex3-w24",
+                  "id": "b2l07g3-ex3-w23",
                   "traditional": "過來",
                   "simplified": "过来",
                   "pinyin": "guòlái",
@@ -1794,56 +1787,49 @@
                 },
                 {
                   "id": "b2l07g4-ex1-w8",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l07g4-ex1-w9",
                   "traditional": "她",
                   "simplified": "她",
                   "pinyin": "tā",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l07g4-ex1-w10",
+                  "id": "b2l07g4-ex1-w9",
                   "traditional": "是",
                   "simplified": "是",
                   "pinyin": "shì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex1-w11",
+                  "id": "b2l07g4-ex1-w10",
                   "traditional": "比",
                   "simplified": "比",
                   "pinyin": "bǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex1-w12",
+                  "id": "b2l07g4-ex1-w11",
                   "traditional": "以前",
                   "simplified": "以前",
                   "pinyin": "yǐqián",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex1-w13",
+                  "id": "b2l07g4-ex1-w12",
                   "traditional": "漂亮",
                   "simplified": "漂亮",
                   "pinyin": "piàoliàng",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex1-w14",
+                  "id": "b2l07g4-ex1-w13",
                   "traditional": "多",
                   "simplified": "多",
                   "pinyin": "duō",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex1-w15",
+                  "id": "b2l07g4-ex1-w14",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -1944,35 +1930,28 @@
                 },
                 {
                   "id": "b2l07g4-ex2-w12",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "B",
-                  "meaning": "",
-                  "suffix": "："
-                },
-                {
-                  "id": "b2l07g4-ex2-w13",
                   "traditional": "是",
                   "simplified": "是",
                   "pinyin": "shì",
-                  "meaning": ""
+                  "meaning": "",
+                  "prefix": "B："
                 },
                 {
-                  "id": "b2l07g4-ex2-w14",
+                  "id": "b2l07g4-ex2-w13",
                   "traditional": "有點兒",
                   "simplified": "有点儿",
                   "pinyin": "yǒudiǎnr",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex2-w15",
+                  "id": "b2l07g4-ex2-w14",
                   "traditional": "難",
                   "simplified": "难",
                   "pinyin": "nán",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex2-w16",
+                  "id": "b2l07g4-ex2-w15",
                   "traditional": "寫",
                   "simplified": "写",
                   "pinyin": "xiě",
@@ -1980,42 +1959,42 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l07g4-ex2-w17",
+                  "id": "b2l07g4-ex2-w16",
                   "traditional": "可是",
                   "simplified": "可是",
                   "pinyin": "kěshì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex2-w18",
+                  "id": "b2l07g4-ex2-w17",
                   "traditional": "多",
                   "simplified": "多",
                   "pinyin": "duō",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex2-w19",
+                  "id": "b2l07g4-ex2-w18",
                   "traditional": "練習",
                   "simplified": "练习",
                   "pinyin": "liànxí",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex2-w20",
+                  "id": "b2l07g4-ex2-w19",
                   "traditional": "幾次",
                   "simplified": "几次",
                   "pinyin": "jǐ cì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex2-w21",
+                  "id": "b2l07g4-ex2-w20",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l07g4-ex2-w22",
+                  "id": "b2l07g4-ex2-w21",
                   "traditional": "好了",
                   "simplified": "好了",
                   "pinyin": "hǎo le",
@@ -2918,7 +2897,7 @@
           "text": {
             "traditional": "我跟室友計畫春假去阿里山森林遊樂區走走。那時候草綠了、花開了，天氣也暖和了。不必帶太多行李，也不需要穿大衣，只要穿一雙好走的鞋子，再帶一件外套、雨衣、幾雙襪子跟幾件內衣褲就夠了。",
             "simplified": "我跟室友计划春假去阿里山森林游乐区走走。那时候草绿了、花开了，天气也暖和了。不必带太多行李，也不需要穿大衣，只要穿一双好走的鞋子，再带一件外套、雨衣、几双袜子跟几件内衣裤就够了。",
-            "pinyin": "Wǒ gēn shìyǒu jìhuà chūnjià qù Ālǐ Shān sēnlín yóulè qū zǒuzǒu. Nà shíhou cǎo lǜ le, huā kāi le, tiānqì yě nuǎnhuo le. Búbì dài tài duō xínglǐ, yě bù xūyào chuān dàyī, zhǐyào chuān yì shuāng hǎo zǒu de xiézi, zài dài yí jiàn wàitào, yǔyī, jǐ shuāng wàzi gēn jǐ jiàn nèiyīkù jiù gòu le.",
+            "pinyin": "Wǒ gēn shìyǒu jìhuà chūnjià qù Ālǐ Shān sēnlín yóulè qū zǒuzǒu. Nà shíhòu cǎo lǜ le, huā kāi le, tiānqì yě nuǎnhuo le. Búbì dài tài duō xínglǐ, yě bù xūyào chuān dàyī, zhǐyào chuān yì shuāng hǎo zǒu de xiézi, zài dài yí jiàn wàitào, yǔyī, jǐ shuāng wàzi gēn jǐ jiàn nèiyīkù jiù gòu le.",
             "english": "My roommate and I are planning to walk around Alishan Forest Recreation Area during the spring break. At that time the grass is green, the flowers are blooming, and the weather is already warm, too. We do not have to bring too much luggage or wear a coat. Just wear a pair of good walking shoes, and then bring a jacket, a raincoat, a few pairs of socks and some underwear is enough."
           }
         },

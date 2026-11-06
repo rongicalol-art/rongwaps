@@ -1363,7 +1363,7 @@
             "text": {
               "traditional": "A：你那輛車不常開又舊得很，不如賣掉吧！\nB：它還能開，賣掉太可惜了。",
               "simplified": "A：你那辆车不常开又旧得很，不如卖掉吧！\nB：它还能开，卖掉太可惜了。",
-              "pinyin": "A: Nǐ nà liàng chē bù cháng kāi yòu jiù dehěn, bùrú màidiào ba!\nB: Tā hái néng kāi, màidiào tài kěxí le.",
+              "pinyin": "A: Nǐ nà liàng chē bù cháng kāi yòu jiù de hěn, bùrú màidiào ba!\nB: Tā hái néng kāi, màidiào tài kěxí le.",
               "english": "A: You don't drive that car much, and it's really old. You might as well sell it!\nB: It still runs. Selling it would be a real shame.",
               "words": [
                 {
@@ -1432,28 +1432,35 @@
                 },
                 {
                   "id": "b3l3g2-ex2-w10",
-                  "traditional": "得很",
-                  "simplified": "得很",
-                  "pinyin": "dehěn",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b3l3g2-ex2-w11",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
                   "meaning": "",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l3g2-ex2-w11",
+                  "id": "b3l3g2-ex2-w12",
                   "traditional": "不如",
                   "simplified": "不如",
                   "pinyin": "bùrú",
                   "meaning": ""
                 },
                 {
-                  "id": "b3l3g2-ex2-w12",
+                  "id": "b3l3g2-ex2-w13",
                   "traditional": "賣掉",
                   "simplified": "卖掉",
                   "pinyin": "màidiào",
                   "meaning": ""
                 },
                 {
-                  "id": "b3l3g2-ex2-w13",
+                  "id": "b3l3g2-ex2-w14",
                   "traditional": "吧",
                   "simplified": "吧",
                   "pinyin": "ba",
@@ -1461,7 +1468,7 @@
                   "suffix": "！\n"
                 },
                 {
-                  "id": "b3l3g2-ex2-w14",
+                  "id": "b3l3g2-ex2-w15",
                   "traditional": "它",
                   "simplified": "它",
                   "pinyin": "tā",
@@ -1469,21 +1476,21 @@
                   "prefix": "B："
                 },
                 {
-                  "id": "b3l3g2-ex2-w15",
+                  "id": "b3l3g2-ex2-w16",
                   "traditional": "還",
                   "simplified": "还",
                   "pinyin": "hái",
                   "meaning": ""
                 },
                 {
-                  "id": "b3l3g2-ex2-w16",
+                  "id": "b3l3g2-ex2-w17",
                   "traditional": "能",
                   "simplified": "能",
                   "pinyin": "néng",
                   "meaning": ""
                 },
                 {
-                  "id": "b3l3g2-ex2-w17",
+                  "id": "b3l3g2-ex2-w18",
                   "traditional": "開",
                   "simplified": "开",
                   "pinyin": "kāi",
@@ -1491,28 +1498,28 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l3g2-ex2-w18",
+                  "id": "b3l3g2-ex2-w19",
                   "traditional": "賣掉",
                   "simplified": "卖掉",
                   "pinyin": "màidiào",
                   "meaning": ""
                 },
                 {
-                  "id": "b3l3g2-ex2-w19",
+                  "id": "b3l3g2-ex2-w20",
                   "traditional": "太",
                   "simplified": "太",
                   "pinyin": "tài",
                   "meaning": ""
                 },
                 {
-                  "id": "b3l3g2-ex2-w20",
+                  "id": "b3l3g2-ex2-w21",
                   "traditional": "可惜",
                   "simplified": "可惜",
                   "pinyin": "kěxí",
                   "meaning": ""
                 },
                 {
-                  "id": "b3l3g2-ex2-w21",
+                  "id": "b3l3g2-ex2-w22",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
