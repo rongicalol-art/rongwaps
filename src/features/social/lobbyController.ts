@@ -1,7 +1,7 @@
 import { connectLobby, type Identity } from '../../services/socialService';
 import { NAME_NOT_ALLOWED, NAME_RESERVED } from '../../../shared/nameFilter';
 import { useAppStore } from '../../store/useAppStore';
-import { ROOM_LIST_CAP, type Activity, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
+import { ROOM_LIST_CAP, ROSTER_GAP_MS, type Activity, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
 /**
  * The single Lobby connection. Presence/subscription frames are deduped here and re-sent after a reconnect,
@@ -17,6 +17,9 @@ const pendingReads = new Set<string>();
 let readOwner: string | null = null;
 let readTimer: ReturnType<typeof setTimeout> | undefined;
 let readInFlight = false;
+/** When the last Online snapshot was asked for or arrived; a request sooner than the Lobby's gap waits instead of being dropped. */
+let rosterAt = 0;
+let rosterTimer: ReturnType<typeof setTimeout> | undefined;
 let pendingOpen: { key: string; panel: ReturnType<typeof useAppStore.getState>['socialPanel'] } | null = null;
 
 function flushReads() {
@@ -45,7 +48,7 @@ function receive(message: LobbyServerMessage) {
       break;
     }
     case 'people': if (message.l === here.l) set({ socialPeople: message.v }); break;
-    case 'online': set({ socialOnline: message.v }); break;
+    case 'online': rosterAt = Math.max(rosterAt, Date.now()); set({ socialOnline: message.v }); break;
     case 'rooms': {
       const rooms = new Map(message.v.map(room => [room.code, room]));
       // A full list may leave out older open rooms: only a shorter one proves a missing room closed.
@@ -166,6 +169,7 @@ export function startLobby(identity: Identity) {
 export function stopLobby() {
   ++generation;
   clearTimeout(readTimer); readTimer = undefined; readInFlight = false; pendingOpen = null;
+  clearTimeout(rosterTimer); rosterTimer = undefined;
   socket?.close();
   socket = null;
   identityKey = '';
@@ -188,8 +192,14 @@ export const lobby = {
     sub = { t: 'sub', online, chat, v: 3 };
     send(sub);
   },
-  /** A fresh Online snapshot; opening the panel already brings one. */
-  roster: () => send({ t: 'roster' }),
+  /** A fresh Online snapshot; opening the panel already brings one. Calls inside the Lobby's gap collapse into one later request. */
+  roster() {
+    if (rosterTimer) return;
+    const wait = rosterAt + ROSTER_GAP_MS + 250 - Date.now();
+    const ask = () => { rosterTimer = undefined; rosterAt = Date.now(); send({ t: 'roster' }); };
+    if (wait <= 0) ask();
+    else rosterTimer = setTimeout(ask, wait);
+  },
   say: (l: number, text: string, mentions?: string[]) => send({ t: 'say', l, text, mentions }),
   cheer: (to: string[], p: number) => { if (to.length) send({ t: 'cheer', to, p }); },
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),
