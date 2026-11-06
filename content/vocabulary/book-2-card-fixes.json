@@ -1,0 +1,366 @@
+{
+  "fixes": [
+    {
+      "id": "B2L01-1-01",
+      "field": "meaning",
+      "value": "to wake up",
+      "reason": "Book p.28 (PDF 29) prints 'to wake up'; the app has 'to get up'. Simple gloss 'to get up' stays."
+    },
+    {
+      "id": "B2L01-1-20",
+      "field": "pos",
+      "value": "Adv",
+      "reason": "Book entry 18 (PDF 30) prints Adv; app has Vaux."
+    },
+    {
+      "id": "B2L02-1-05",
+      "field": "pos",
+      "value": "Prep",
+      "reason": "Book entry 5 (PDF 49) prints Prep; app has Ptc."
+    },
+    {
+      "id": "B2L02-1-07",
+      "field": "pinyin",
+      "value": "wǎnkuài",
+      "reason": "Book prints wǎnkuài as one word (PDF 49); app has 'wǎn kuài'."
+    },
+    {
+      "id": "B2L02-1-15",
+      "field": "pos",
+      "value": "Vp",
+      "reason": "Book entry 11 (PDF 50) prints Vp; app has Vs."
+    },
+    {
+      "id": "B2L02-2-16",
+      "field": "meaning",
+      "value": "to take out (the garbage), to dump; to pour",
+      "reason": "Book entry 15 (PDF 62) prints '...to dump; to pour' and its examples are 倒垃圾 and 倒茶; app lacks 'to pour'."
+    },
+    {
+      "id": "B2L03-1-33",
+      "field": "pinyin",
+      "value": "yìhuǐér",
+      "reason": "Book entry 28 (PDF 74) prints 'yìhuǐér' (with ér, not 'r'); app has yìhuǐr. Tone mark on the first syllable is hard to read at scan resolution; I read it as yì, consistent with the other 一 words in the book."
+    },
+    {
+      "id": "B2L03-2-15",
+      "field": "pos",
+      "value": "V",
+      "reason": "Book entry 15 (PDF 86) prints V; app has Vi."
+    },
+    {
+      "id": "B2L04-2-32",
+      "field": "pinyin",
+      "value": "Lóngshān Sì",
+      "reason": "Book Names list (PDF 109) prints 'Lóngshān Sì' with capital S; app has lowercase 'sì'."
+    },
+    {
+      "id": "B2L05-1-22",
+      "field": "traditional",
+      "value": "花香",
+      "reason": "Book entry 22 (PDF 122) is 花香, not 香味; the dialogue and reading also use 花香."
+    },
+    {
+      "id": "B2L05-1-22",
+      "field": "simplified",
+      "value": "花香",
+      "reason": "Same card: 花香 is the same in simplified."
+    },
+    {
+      "id": "B2L05-1-22",
+      "field": "pinyin",
+      "value": "huāxiāng",
+      "reason": "Book prints huāxiāng."
+    },
+    {
+      "id": "B2L05-1-22",
+      "field": "meaning",
+      "value": "fragrance, aroma (of flowers)",
+      "reason": "Book English for 花香."
+    },
+    {
+      "id": "B2L05-1-23",
+      "field": "meaning",
+      "value": "measure word for sports field and ball court",
+      "reason": "Book (PDF 122) prints 'sports field'; app has 'sport field'."
+    },
+    {
+      "id": "B2L05-1-24",
+      "field": "meaning",
+      "value": "sports field, ball court (M: 座 zuò)",
+      "reason": "Book prints 'sports field, ball court (M:座)'; app has 'sport field'."
+    },
+    {
+      "id": "B2L05-2-17",
+      "field": "pos",
+      "value": "Vp",
+      "reason": "Book entry 17 (PDF 130) prints Vp; app has Vp/Vpt."
+    },
+    {
+      "id": "B2L05-2-17",
+      "field": "meaning",
+      "value": "to park",
+      "reason": "Book prints only 'to park' with the example 停五百輛汽車; app adds 'to stop' (from an added example 雨停了) that the book does not list."
+    },
+    {
+      "id": "B2L05-2-23",
+      "field": "pinyin",
+      "value": "Zhōngqiū Jié",
+      "reason": "Book Names list (PDF 130) prints 'Zhōngqiū Jié' with capital J."
+    },
+    {
+      "id": "B2L06-1-02",
+      "field": "pinyin",
+      "value": "chàbùduō",
+      "reason": "Book prints only chàbùduō (PDF 141); the chābùduō variant is not in the book."
+    },
+    {
+      "id": "B2L06-1-20",
+      "field": "pinyin",
+      "value": "chà",
+      "reason": "Book prints only chà (PDF 142)."
+    },
+    {
+      "id": "B2L06-1-30",
+      "field": "pinyin",
+      "value": "méigui",
+      "reason": "Book prints only méigui (PDF 143)."
+    },
+    {
+      "id": "B2L06-2-16",
+      "field": "pos",
+      "value": "V",
+      "reason": "Book entry 14 (PDF 153) prints V; app has Ptc."
+    },
+    {
+      "id": "B2L07-1-18",
+      "field": "traditional",
+      "value": "一下子/一下子兒",
+      "reason": "Book entry 17 (PDF 164) prints headword 一下子/一下子兒; app has 一下子/一下."
+    },
+    {
+      "id": "B2L07-1-18",
+      "field": "simplified",
+      "value": "一下子/一下子儿",
+      "reason": "Simplified form of the book's headword."
+    },
+    {
+      "id": "B2L07-1-18",
+      "field": "pinyin",
+      "value": "yíxiàzi/yíxiàzǐr",
+      "reason": "Book prints yíxiàzi/yíxiàzǐr (the ǐ is hard to read in the scan; the lesson transcript also reads yíxiàzǐr)."
+    },
+    {
+      "id": "B2L07-1-31",
+      "field": "pinyin",
+      "value": "rìqí",
+      "reason": "Book entry 29 (PDF 165) prints rìqí (second tone on qí, the Taiwan reading); app has rìqī. Read from the page image; tone mark small."
+    },
+    {
+      "id": "B2L07-2-21",
+      "field": "pinyin",
+      "value": "chèn",
+      "reason": "Book entry 21 (PDF 176) prints chèn for 趁（著）; the (zhe) variant is not printed."
+    },
+    {
+      "id": "B2L07-2-25",
+      "field": "pinyin",
+      "value": "Ālǐ Shān",
+      "reason": "Book Names list (PDF 176) prints 'Ālǐ Shān' as two words, matching the app's own 阿里山小火車 card."
+    },
+    {
+      "id": "B2L08-1-07",
+      "field": "pinyin",
+      "value": "chà",
+      "reason": "Book entry 6 (PDF 186) prints only chà; the app (and the lesson transcript) list chà/chā."
+    },
+    {
+      "id": "B2L08-1-11",
+      "field": "pos",
+      "value": "Vp",
+      "reason": "Book entry 9 (PDF 186) prints Vp; app has Vp/Vs."
+    },
+    {
+      "id": "B2L08-1-32",
+      "field": "meaning",
+      "value": "this kind of, like this",
+      "reason": "Not in the book's list but used in the text (像這樣的活動, 這樣的活動). 'such as, so adj as' is wrong; mirrors the book's 那樣 'that kind of'."
+    },
+    {
+      "id": "B2L08-1-33",
+      "field": "meaning",
+      "value": "that kind of, like that",
+      "reason": "'as much as suggested' is wrong; the card's example 像史努比那樣可愛的娃娃 is the book's 那樣 'that kind of' (same word as B2L08-1-14)."
+    },
+    {
+      "id": "B2L08-1-33",
+      "field": "pos",
+      "value": "Vs",
+      "reason": "Book prints 那樣 as Vs (entry 12); the app card is the same word and usage."
+    },
+    {
+      "id": "B2L08-2-07",
+      "field": "pinyin",
+      "value": "hánshì",
+      "reason": "Book entry 7 (PDF 196) prints hánshì in lowercase; app has capital H."
+    },
+    {
+      "id": "B2L08-2-16",
+      "field": "pos",
+      "value": "V",
+      "reason": "Book entry 16 (PDF 196) prints V; app has N."
+    },
+    {
+      "id": "B2L09-1-07",
+      "field": "meaning",
+      "value": "classroom",
+      "reason": "Book prints 'classroom'; app has 'class'."
+    },
+    {
+      "id": "B2L09-1-13",
+      "field": "pos",
+      "value": "Vst",
+      "reason": "Book labels 當 (to fail, to flunk) Vst (p.206)."
+    },
+    {
+      "id": "B2L09-1-14",
+      "field": "meaning",
+      "value": "to take (a course)",
+      "reason": "Book's gloss is only 'to take (a course)'; the app's extra 'to study' is not in the book and misleads (修 = take a course)."
+    },
+    {
+      "id": "B2L09-2-04",
+      "field": "pinyin",
+      "value": "Hànzì",
+      "reason": "Book prints Hànzì with a capital (as Hànyǔ); verified on the page image (p.216). App has lowercase."
+    },
+    {
+      "id": "B2L09-2-11",
+      "field": "pos",
+      "value": "V",
+      "reason": "Book labels 表達 V (p.216); app has Vi."
+    },
+    {
+      "id": "B2L11-2-23",
+      "field": "pos",
+      "value": "Vs/V",
+      "reason": "Book labels 成長 Vs/V."
+    },
+    {
+      "id": "B2L13-1-01",
+      "field": "pinyin",
+      "value": "bǐdiàn (bǐjìxíng diànnǎo)",
+      "reason": "Page image (p.290) prints bǐdiàn as one word; app has 'bǐ diàn'."
+    },
+    {
+      "id": "B2L13-2-10",
+      "field": "pinyin",
+      "value": "bújiàn(le)",
+      "reason": "Page image (p.292) prints bújiàn(le) with no space before the bracket; app has 'bújiàn (le)'."
+    },
+    {
+      "id": "B2L13-2-16",
+      "field": "traditional",
+      "value": "差（一）點兒",
+      "reason": "Book headword is 差（一）點兒 (p.300); app drops 兒."
+    },
+    {
+      "id": "B2L13-2-16",
+      "field": "simplified",
+      "value": "差（一）点儿",
+      "reason": "Simplified of the book's headword 差（一）點兒."
+    },
+    {
+      "id": "B2L13-2-16",
+      "field": "pinyin",
+      "value": "chà(yì)diǎnr",
+      "reason": "Book prints only chà(yì)diǎnr (image p.300); drop the chā(yì)diǎn variant."
+    },
+    {
+      "id": "B2L14-2-08",
+      "field": "pos",
+      "value": "Prep",
+      "reason": "Book labels 讓 (passive marker) Prep; app has Ptc."
+    },
+    {
+      "id": "B2L15-1-19",
+      "field": "pos",
+      "value": "M",
+      "reason": "Book prints 度 as a sub-entry under 溫度 with POS M (image p.340); app has N."
+    },
+    {
+      "id": "B2L15-2-04",
+      "field": "meaning",
+      "value": "to commemorate, in memory of",
+      "reason": "Book's gloss includes 'in memory of'; app lacks it."
+    },
+    {
+      "id": "B2L15-2-06",
+      "field": "meaning",
+      "value": "once, ever",
+      "reason": "Book's gloss for 曾經 is 'once, ever'; app has only 'once'."
+    },
+    {
+      "id": "B2L15-2-08",
+      "field": "pinyin",
+      "value": "hàn/hé",
+      "reason": "Book prints hàn/hé for 和 (image p.349); app lists only hé. Check that the card audio still fits."
+    },
+    {
+      "id": "B2L15-2-11",
+      "field": "meaning",
+      "value": "life, lifetime",
+      "reason": "Book's gloss is 'life, lifetime'; the lesson sentences use 一輩子 / 這輩子 = lifetime, which 'life' lacks."
+    },
+    {
+      "id": "B2L15-2-16",
+      "field": "pos",
+      "value": "Vst",
+      "reason": "Book labels 信 Vst (image p.350); app has V."
+    },
+    {
+      "id": "B2L16-1-14",
+      "field": "meaning",
+      "value": "to blow, to play (wind instruments)",
+      "reason": "Book's gloss includes 'to play (wind instruments)', which the lesson (吹笛子) needs."
+    },
+    {
+      "id": "B2L16-2-16",
+      "field": "meaning",
+      "value": "generous; natural and poised",
+      "reason": "Book lists both senses; the lesson example uses both (請客 = generous, 活潑大方 = natural and poised)."
+    }
+  ],
+  "newCards": [
+    {
+      "id": "B2L10-1-49",
+      "after": "B2L10-1-13",
+      "traditional": "死",
+      "simplified": "死",
+      "pinyin": "sǐ",
+      "pos": "Vp",
+      "meaning": "to die",
+      "reason": "book 10-1 entry 15: Book prints 死 twice: #13 Vs 'dead/deceased' (app has it as B2L10-1-13) and #15 Vp 'to die' (no card). Book index p.388 lists both as 10-1."
+    },
+    {
+      "id": "B2L14-1-41",
+      "after": "B2L14-1-06",
+      "traditional": "從來",
+      "simplified": "从来",
+      "pinyin": "cónglái",
+      "pos": "Adv",
+      "meaning": "all the time",
+      "reason": "book 14-1 entry 7: Book entry 7 of lesson 14 part 1 (index p.378 lists 從來 as 14-1); no card."
+    },
+    {
+      "id": "B2L15-2-29",
+      "after": "B2L15-2-20",
+      "traditional": "只有",
+      "simplified": "只有",
+      "pinyin": "zhǐyǒu",
+      "pos": "Conj",
+      "meaning": "only",
+      "reason": "book 15-2 entry 21: Book entry 21 of lesson 15 part 2 (index p.394: 只有 Conj only 15-2); the app has it as B2L16-2-20 instead."
+    }
+  ]
+}
