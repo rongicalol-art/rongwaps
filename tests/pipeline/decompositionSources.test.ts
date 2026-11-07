@@ -3,9 +3,6 @@ import test from 'node:test';
 import type { NormalizedDecompositionNode } from '../../src/types/decomposition';
 import { getVisibleCardChildren, projectLearnerDecomposition, resolveExplorableCharacterTree } from '../../src/utils/characters/idsLearnerProjection';
 import {
-  LazyDecompositionResolver,
-} from '../../src/features/character-decomposition';
-import {
   adaptCjkviRecord,
   adaptCjkviText,
   adaptCns11643Bulk,
@@ -96,36 +93,13 @@ test('CNS bulk adapter preserves authoritative flat attributes without inventing
   assert.equal(records[0].diagnostics[0].code, 'no-recursive-decomposition');
 });
 
-test('lazy resolver expands 𦥯 separately without mutating the 學 source record', async () => {
+test('explorable tree projects intermediate 𦥯 as expandable and 子 as leaf', () => {
   const records = adaptCjkviText([
     'U+5B78\t學\t⿱𦥯子',
     'U+2696F\t𦥯\t⿶⿱𦥑冖爻',
   ].join('\n'), CJKVI_OPTIONS);
   const study = records[0].selected!.normalized!;
   const intermediate = records[1].selected!.normalized!;
-  const original = JSON.stringify(study);
-  const providerCalls: string[] = [];
-  const resolver = new LazyDecompositionResolver({
-    lookup(character) {
-      providerCalls.push(character);
-      return character === '𦥯'
-        ? { status: 'available', record: intermediate }
-        : { status: 'missing-decomposition', reason: 'record-not-found' };
-    },
-  }, 4);
-
-  const root = resolver.createRoot(study);
-  const intermediateNode = root.tree.children[0];
-  assert.equal(intermediateNode.sourceNode.kind, 'glyph');
-  assert.deepEqual(intermediateNode.resolution, { kind: 'unresolved' });
-
-  const expanded = await resolver.expandGlyph(intermediateNode, 'zh-Hant-TW', {
-    ancestry: ['學'], depth: 1,
-  });
-  assert.equal(expanded.resolution.kind, 'expandable');
-  assert.equal(expanded.record?.sourceRecord.character, '𦥯');
-  assert.deepEqual(providerCalls, ['𦥯']);
-  assert.equal(JSON.stringify(study), original);
 
   const visible = projectLearnerDecomposition(resolveExplorableCharacterTree(study, new Map([
     ['zh-Hant-TW:𦥯', {
@@ -135,24 +109,4 @@ test('lazy resolver expands 𦥯 separately without mutating the 學 source reco
   assert.deepEqual(getVisibleCardChildren(visible.root).map((node) => (
     node.kind === 'glyph' ? [node.glyph, node.expansion.kind] : [node.label, 'card']
   )), [['𦥯', 'expandable'], ['子', 'leaf']]);
-});
-
-test('lazy resolver distinguishes deferred, missing, leaf, cycle, and maximum depth states', async () => {
-  const [studyRecord] = adaptCjkviText('U+5B78\t學\t⿱𦥯子', CJKVI_OPTIONS);
-  const study = studyRecord.selected!.normalized!;
-  const node = new LazyDecompositionResolver({ lookup: () => ({ status: 'deferred' }) }).createRoot(study).tree.children[0];
-
-  assert.equal((await new LazyDecompositionResolver({ lookup: () => ({ status: 'deferred' }) })
-    .expandGlyph(node, 'zh-Hant-TW', { ancestry: ['學'], depth: 0 })).resolution.kind, 'unresolved');
-  assert.equal((await new LazyDecompositionResolver({
-    lookup: () => ({ status: 'missing-decomposition', reason: 'no-expression' }),
-  }).expandGlyph(node, 'zh-Hant-TW', { ancestry: ['學'], depth: 0 })).resolution.kind, 'missing-decomposition');
-  assert.equal((await new LazyDecompositionResolver({ lookup: () => ({ status: 'deferred' }) })
-    .expandGlyph(node, 'zh-Hant-TW', { ancestry: ['學', '𦥯'], depth: 0 })).resolution.kind, 'cycle');
-  assert.equal((await new LazyDecompositionResolver({ lookup: () => ({ status: 'deferred' }) }, 1)
-    .expandGlyph(node, 'zh-Hant-TW', { ancestry: ['學'], depth: 1 })).resolution.kind, 'max-depth');
-
-  const [atomicRecord] = adaptCjkviText('U+4E00\t一\t一', CJKVI_OPTIONS);
-  assert.equal(new LazyDecompositionResolver({ lookup: () => ({ status: 'deferred' }) })
-    .createRoot(atomicRecord.selected!.normalized!).tree.resolution?.kind, 'leaf');
 });

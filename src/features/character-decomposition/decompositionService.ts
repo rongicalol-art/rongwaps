@@ -232,37 +232,3 @@ export function getDecompositionRuntimeService(): DecompositionService {
   if (!defaultService) defaultService = createDecompositionRuntimeService();
   return defaultService;
 }
-
-export interface DecompositionRuntimeComparison {
-  character: string;
-  legacyDirectComponents: string[];
-  v3DirectComponents: string[];
-  legacySource?: DecompositionSourceInfo;
-  v3Source?: DecompositionSourceInfo;
-  different: boolean;
-  legacyStatus: DecompositionServiceStatus;
-  v3Status: DecompositionServiceStatus;
-}
-
-/** Development/test diagnostic only. Source disagreements are reported, not reconciled. */
-export async function compareDecompositionRuntimes(
-  character: string,
-  options: DecompositionServiceOptions & { v3Loader: RuntimePackLoader },
-): Promise<DecompositionRuntimeComparison> {
-  const legacy = new LegacyDecompositionService(options);
-  const v3 = new V3DecompositionService(options.v3Loader);
-  const [legacyResult, v3Result] = await Promise.all([
-    legacy.getRecord(character),
-    v3.getRecord(character),
-  ]);
-  return {
-    character,
-    legacyDirectComponents: legacyResult.directChildren,
-    v3DirectComponents: v3Result.directChildren,
-    legacySource: legacyResult.source,
-    v3Source: v3Result.source,
-    different: JSON.stringify(legacyResult.directChildren) !== JSON.stringify(v3Result.directChildren),
-    legacyStatus: legacyResult.status,
-    v3Status: v3Result.status,
-  };
-}
