@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMITS, DAILY_LIMIT_ERROR, ROOM_LIST_CAP, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMITS, DAILY_LIMIT_ERROR, ROOM_LIST_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
 
@@ -32,7 +32,6 @@ export const LOBBY_CAPACITY = 2000;
 const PEOPLE_CAP = 30;
 /** The Online list is a snapshot on request, never streamed. */
 const ROSTER_CAP = 100;
-const ROSTER_GAP_MS = 3000;
 const ROOMS_REUSE_MS = 30_000;
 /** Same allowance the per-account limiter gives HTTP requests; kept here, it costs no extra request. */
 const TICKET_BURST = 30;
