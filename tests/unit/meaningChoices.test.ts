@@ -1,22 +1,21 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
-  buildMeaningChoices,
   buildAttributeChoices,
   normalizeMeaning,
 } from '../../src/utils/vocabulary/meaningChoices';
 
 const cards = [
-  { id: 'correct', back: "o'clock" },
-  { id: 'duplicate-exact', back: "o'clock" },
-  { id: 'duplicate-formatting', back: "  O'CLOCK  " },
-  { id: 'morning', back: 'morning' },
-  { id: 'evening', back: 'evening' },
-  { id: 'night', back: 'night' },
+  { id: 'correct', front: '點', back: "o'clock" },
+  { id: 'duplicate-exact', front: '點鐘', back: "o'clock" },
+  { id: 'duplicate-formatting', front: '整點', back: "  O'CLOCK  " },
+  { id: 'morning', front: '早上', back: 'morning' },
+  { id: 'evening', front: '晚上', back: 'evening' },
+  { id: 'night', front: '半夜', back: 'night' },
 ];
 
 test('meaning choices exclude duplicate distractor meanings', () => {
-  const result = buildMeaningChoices(cards[0], cards);
+  const result = buildAttributeChoices(cards[0], cards, 'meaning');
 
   assert.deepEqual(
     result.map((choice) => choice.id),
@@ -32,11 +31,11 @@ test('meaning choice construction is pure and respects the requested limit', () 
   const originalIds = cards.map((card) => card.id);
 
   assert.deepEqual(
-    buildMeaningChoices(cards[0], cards, 2).map((choice) => choice.id),
+    buildAttributeChoices(cards[0], cards, 'meaning', 2).map((choice) => choice.id),
     ['correct', 'morning'],
   );
   assert.deepEqual(cards.map((card) => card.id), originalIds);
-  assert.deepEqual(buildMeaningChoices(cards[0], cards, 0), []);
+  assert.deepEqual(buildAttributeChoices(cards[0], cards, 'meaning', 0), []);
 });
 
 test('buildAttributeChoices builds distinct choices for hanzi, pinyin, and meaning', () => {

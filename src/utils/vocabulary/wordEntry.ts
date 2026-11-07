@@ -298,11 +298,6 @@ function glossParts(text: string, keepQualifiers = false): string[] {
     .filter(Boolean);
 }
 
-/** The course meaning a search row or hero shows: the book's wording without its measure-word note. */
-export function courseMeaning(card: Pick<Flashcard, 'back'>): string {
-  return splitCourseMeasureWords(card.back.trim()).meaning;
-}
-
 function exampleOf(card: Flashcard): EntryExample | undefined {
   const example = card.examples?.find((item) => !item.fromText) ?? card.examples?.[0];
   return example ? { chinese: example.chinese, pinyin: example.pinyin, english: example.english, audio: example.audio } : undefined;
