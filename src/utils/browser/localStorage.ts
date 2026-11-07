@@ -51,27 +51,6 @@ export function writeBoolean(key: string, value: boolean): void {
   writeString(key, String(value));
 }
 
-export function readJSON<T>(key: string, fallback: T): T {
-  const raw = readString(key);
-  if (raw === null) return fallback;
-  try {
-    return JSON.parse(raw) as T;
-  } catch (error) {
-    // Graceful degradation: JSON syntax error in stored value falls back to default
-    debugLogger.warn('App', `Stored JSON unparseable for "${key}"`, error);
-    return fallback;
-  }
-}
-
-export function writeJSON<T>(key: string, value: T): void {
-  try {
-    writeString(key, JSON.stringify(value));
-  } catch (error) {
-    // Graceful degradation: serialization error or quota exceeded
-    debugLogger.warn('App', `Value not serializable for "${key}"`, error);
-  }
-}
-
 export function remove(key: string): void {
   const storage = getStorage();
   if (!storage) return;

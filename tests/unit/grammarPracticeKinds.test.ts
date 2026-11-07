@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ListenBuildItem, MatchPairsItem, OrderBuildItem, PracticeSentence, SameMeaningItem, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../src/types/models';
 import { checkMatchPair, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
-import { checkOrderBuild, checkStoryOrder, misplacedPositions } from '../../src/utils/grammar/grammarPracticeSequence';
+import { checkOrderBuild, checkStoryOrder } from '../../src/utils/grammar/grammarPracticeSequence';
 import { validateGrammarPractice } from '../../src/utils/grammar/validateGrammarPractice';
 
 const sentence = (traditional: string): PracticeSentence => ({ traditional, pinyin: 'pinyin', english: 'English' });
@@ -54,8 +54,8 @@ test('order-build: more than one accepted order is allowed, and misplaced words 
     ],
   };
   assert.equal(checkOrderBuild(two, ['美國人', '家樂', '不', '是']).correct, true);
-  assert.deepEqual(misplacedPositions(['家樂', '是', '不', '美國人'], two.accepted), [1]);
-  assert.deepEqual(misplacedPositions(['美國人', '家樂', '是', '不'], two.accepted), [2]);
+  assert.deepEqual(checkOrderBuild(two, ['家樂', '是', '不', '美國人']).positions, [1, 2]);
+  assert.deepEqual(checkOrderBuild(two, ['美國人', '家樂', '是', '不']).positions, [2, 3]);
 });
 
 test('order-build: omissions preserve correctly ordered words and explain the missing word', () => {
@@ -65,7 +65,6 @@ test('order-build: omissions preserve correctly ordered words and explain the mi
   assert.equal(result.note, 'Add 不 before 是.');
   assert.deepEqual(result.positions, []);
   assert.deepEqual(result.mark, []);
-  assert.deepEqual(misplacedPositions(['家樂', '是', '美國人'], order.accepted), []);
 });
 
 test('order-build: a surplus repeated word marks only that occurrence', () => {

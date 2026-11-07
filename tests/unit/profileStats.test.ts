@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { computeStreak, countKnownCharacters, lessonProgress, topConfusionPairs } from '../../src/utils/srs/profileStats';
+import { computeStreak, countKnownCharacters, lessonProgress } from '../../src/utils/srs/profileStats';
 const local = (day: number, hour = 12) => +new Date(2026, 9, day, hour);
 test('streak stays alive yesterday, deduplicates days and uses Monday week', () => {
   const events = [12, 13, 14, 14].map((day) => ({ reviewedAt: local(day) }));
@@ -26,8 +26,4 @@ test('lesson progress excludes introduction and unknown ids and deduplicates row
   assert.deepEqual(lessonProgress(['B1L00-1', 'B1L01-1', 'B1L01-2', 'B1L02-1', 'B1L02-1', 'custom'].map((id) => ({ id })), ['B1L01-1', 'B1L01-2']), {
     1: { known: 2, total: 2 }, 2: { known: 0, total: 1 },
   });
-});
-test('confusions deduplicate mirrored pairs, skip self pairs and respect limit', () => {
-  assert.deepEqual(topConfusionPairs({ a: ['b'], b: ['a'], c: ['c', 'd', 'e'], d: ['c'] }), [['d', 'c'], ['c', 'e'], ['b', 'a']]);
-  assert.deepEqual(topConfusionPairs({ a: ['b'] }, 0), []);
 });

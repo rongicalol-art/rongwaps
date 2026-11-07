@@ -62,19 +62,3 @@ export function lessonProgress(vocabItems: Pick<DBVocabularyRow, 'id'>[], learne
   }
   return progress;
 }
-
-/** Records are ordered oldest first; each word's alternatives newest first. */
-export function topConfusionPairs(confusions: Record<string, string[]>, limit = 3): [string, string][] {
-  const seen = new Set<string>();
-  const pairs: [string, string][] = [];
-  for (const [a, others] of Object.entries(confusions).reverse()) {
-    for (const b of others) {
-      const key = JSON.stringify([a, b].sort());
-      if (a === b || seen.has(key)) continue;
-      seen.add(key);
-      pairs.push([a, b]);
-      if (pairs.length >= limit) return limit > 0 ? pairs : [];
-    }
-  }
-  return pairs;
-}
