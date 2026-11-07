@@ -5,14 +5,14 @@ description: Run the Ron's Mandarin verification gate before declaring any src/,
 
 # Verify change
 
-While working, run what fits the paths you touched (`git status --short`). **Before opening a PR, always run the full gate** (first row). CI repeats it, adds the secret scan, migration safety and browser journeys, and must be green before you say done.
+While working, run what fits the paths you touched (`git status --short`). **Before opening a PR, always run the full gate** (first row) and paste `output/gate/summary.md` into the PR description. To save Actions minutes, CI on PRs into `main` runs only the secret scan and migration safety (must be green); the full suite runs on Release PRs, `production` and PRs labelled `full-ci` (use it when this machine has no Docker).
 
 | Changed | Run |
 | --- | --- |
-| anything, before a PR | `npm run typecheck && npm run lint && npm test && npm run jev:lint && npm run build && npm run perf:check` |
+| anything, before a PR | `npm run gate` (every CI check; journeys and the backup self-test when the changed files need them, `-- --all` for everything) |
 | lesson/grammar content, `scripts/content/validateLessons.ts` inputs | `npm run content:validate` |
-| sign-in, saving/sync, `server/`, `supabase/` | the browser journeys: `npm run test:e2e` against local Supabase (`docs/TESTING.md`), or rely on the PR's `e2e` CI job and check it passed |
-| `supabase/migrations/` | `npm run release:check-migrations`; CI also restores a backup across it |
+| sign-in, saving/sync, `server/`, `supabase/` | the browser journeys: `npm run gate` runs them against a local Supabase stack (`docs/TESTING.md`); without Docker label the PR `full-ci` and check the `e2e` job passed |
+| `supabase/migrations/` | `npm run release:check-migrations`; `npm run gate` also restores a backup across it (CI again on the Release PR) |
 | `.github/workflows/` | `actionlint` if available; CI runs them |
 | UI | the above, plus look at 390×844 and 1440×900 in light and dark (loading/empty/error/long text; hover/active states not pre-activated) |
 

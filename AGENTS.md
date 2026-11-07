@@ -48,7 +48,7 @@ Chinese-learning PWA for Shu-Te University students (school Google accounts, 18+
 
 `npm run dev` (http://localhost:3000) · `typecheck` · `lint` · `test` · `jev:lint` · `content:validate` · `build` · `perf:check` · `test:e2e` (local Supabase; `docs/TESTING.md`)
 
-- While working, run the checks for what you touch. Before opening a PR: typecheck, lint, test, jev:lint, build. CI repeats them, adds the secret scan, migration safety and browser journeys, and must be green.
+- While working, run the checks for what you touch. Before opening a PR: `npm run gate` (the full CI suite on this machine, browser journeys and the backup self-test when the change needs them) and paste `output/gate/summary.md` into the PR. GitHub Actions minutes are limited: on PRs into `main` CI runs only the secret scan and migration safety, which must be green; Release PRs and `production` get the full suite. Without Docker (cloud/phone sessions) add the `full-ci` label so CI runs everything. Open work-in-progress PRs as drafts (CI skips drafts).
 - Content → `content:validate`. Course examples → `docs/TESTING.md` (Jev judgments never authorize invented pinyin or verification flags).
 - UI → look at it at 390 and 1440 wide, light and dark; Safari and Chrome quirks matter (touchpad, audio).
 - Testing on the owner's account is allowed, including quiz/flashcard/SRS progress; the DEV window (Ctrl+Shift+0 → UI Previews) is quicker for UI-only checks.
