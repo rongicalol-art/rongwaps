@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import { useAppStore } from '../../../store/useAppStore';
-import type { AnchorRect } from '../utils/readerTooltipPosition';
 
 export interface HoveredWordState {
   chunkKey: string;
@@ -12,7 +11,6 @@ export interface HoveredWordState {
     top: number;
     bottom: number;
   };
-  anchorRect: AnchorRect;
 }
 
 /**
@@ -133,14 +131,6 @@ export function useReaderWordInteractions({
           x: rect.left + rect.width / 2,
           top: rect.top,
           bottom: rect.bottom,
-        },
-        anchorRect: {
-          top: rect.top,
-          bottom: rect.bottom,
-          left: rect.left,
-          right: rect.right,
-          width: rect.width,
-          height: rect.height,
         },
       });
     },
