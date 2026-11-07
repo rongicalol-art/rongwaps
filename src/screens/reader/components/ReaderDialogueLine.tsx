@@ -119,7 +119,7 @@ export function ReaderDialogueLine({
                 getDialogueTextClasses(textSize, showPinyin),
               )}
             >
-              {sentences.map((sentence) => {
+              {sentences.map((sentence, sentenceIndex) => {
                 return (
                   <span
                     key={sentence.id}
@@ -151,6 +151,7 @@ export function ReaderDialogueLine({
                       onPlayRange={onPlayRange}
                       wordInteractions={wordInteractions}
                       punctuationClassName="transition-colors inline select-text"
+                      keepEndTogether={sentenceIndex === sentences.length - 1}
                     />
                   </span>
                 );

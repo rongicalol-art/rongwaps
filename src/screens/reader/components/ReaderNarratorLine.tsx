@@ -67,7 +67,7 @@ export function ReaderNarratorLine({
             getDialogueTextClasses(textSize, showPinyin),
           )}
         >
-          {sentences.map((sentence) => (
+          {sentences.map((sentence, sentenceIndex) => (
             <span
               key={sentence.id}
               className="inline rounded"
@@ -84,6 +84,7 @@ export function ReaderNarratorLine({
                 onPlayRange={onPlayRange}
                 wordInteractions={wordInteractions}
                 punctuationClassName="inline"
+                keepEndTogether={sentenceIndex === sentences.length - 1}
               />
             </span>
           ))}

@@ -4,6 +4,8 @@
  * lists (the book's Taiwan readings).
  *
  *   npx tsx scripts/content/rebuildGrammarWords.ts --book 3 [--lesson 6] [--write] [--report <file.json>]
+ *   --readings        the same pinyin and simplified rules for content/readings/book-N.json
+ *   --vocab-examples  the same pinyin rules for the word cards' example sentences (content/vocabulary/book-N-examples.json)
  *
  * - Words: the lookup's own segmentation (sentenceSegments + validation against the dictionary packs
  *   and course vocabulary), with the page's focus terms and the sentence's names kept whole, then
@@ -47,6 +49,7 @@ const NUMS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'N
 const HAN = /\p{Script=Han}/u;
 const NUMERAL = new Set([...'零〇二兩三四五六七八九十百千萬']);
 const PARTICLES = new Set([...'的了嗎呢吧啊呀喔哦啦們著得地麼個子頭過']);
+const FINAL_PARTICLES = new Set([...'嗎呢吧啊呀喔哦啦']);
 const OPENERS = new Set([...'「『（(《〈“‘']);
 
 interface Syllable { base: string; tone: PinyinTone; text: string; capital?: boolean; word?: number; sentenceStart?: boolean }
@@ -276,6 +279,16 @@ function segmentRun(run: string, authored: string[], single: Set<string> = new S
   }
   // 的話 "if" ends a clause; inside one it is 的 + 話 (用浪漫的話 = with romantic words).
   for (let i = 0; i < out.length - 1; i++) if (out[i] === '的話') out.splice(i, 1, '的', '話');
+  // Words the dictionary glues that the books never mean: 聊得很愉快 is 得 + 很 (not 得很 "very"), 走路五分鐘
+  //就到了 is 到 + 了 (not 到了 "at last"), 兩個人 / 那個人 is 個 + 人 (not 個人 "individual").
+  for (let i = 0; i < out.length; i++) {
+    if (out[i] === '得很' || out[i] === '到了') out.splice(i, 1, ...[...out[i]]);
+    else if (out[i] === '個人' && i > 0 && /[一二兩三四五六七八九十幾這那哪每]$/u.test(out[i - 1])) {
+      const demonstrative = ['這', '那', '哪'].includes(out[i - 1]) && cards.has(`${out[i - 1]}個`);
+      if (demonstrative) out.splice(i - 1, 2, `${out[i - 1]}個`, '人');
+      else out.splice(i, 1, '個', '人');
+    }
+  }
   // A one-character grammar word at the edge of a looser word stands alone (常用 → 常 | 用).
   return out.flatMap((word) => {
     const chars = [...word];
@@ -317,7 +330,22 @@ function pieces(text: string, authored: string[], single: Set<string>, names: Se
       out.push({ kind: label[1] ? 'label' : 'name-label', text: label[1] ?? label[2] });
       rest = rest.slice(label[0].length);
     }
-    for (const run of rest.match(/[（(][^）)\p{Script=Han}]*[A-Za-z][^）)\p{Script=Han}]*[）)]|\p{Script=Han}+|[A-Za-z0-9]+|[^\p{Script=Han}A-Za-z0-9（(]+|[（(]/gu) ?? []) {
+    let labelColon = false;
+    for (const match of rest.matchAll(/[（(][^）)\p{Script=Han}]*[A-Za-z][^）)\p{Script=Han}]*[）)]|\p{Script=Han}+|[A-Za-z0-9]+|[^\p{Script=Han}A-Za-z0-9（(]+|[（(]/gu)) {
+      let run = match[0];
+      const next = rest.charAt((match.index ?? 0) + run.length);
+      // A speaker letter after a sentence end on the same line (……了。B：……) is the next turn's label, not a word.
+      const previous = out[out.length - 1];
+      if (/^[A-D]$/.test(run) && /[：:]/.test(next) && previous?.kind === 'punct' && /[。！？…」]$/.test(previous.text)) {
+        out.push({ kind: 'label', text: run });
+        labelColon = true;
+        continue;
+      }
+      if (labelColon) {
+        labelColon = false;
+        run = run.replace(/^[：:]/, '');
+        if (!run) continue;
+      }
       if (/^[（(].*[A-Za-z].*[）)]$/u.test(run)) {
         out.push({ kind: 'gloss', text: run });
         continue;
@@ -325,6 +353,8 @@ function pieces(text: string, authored: string[], single: Set<string>, names: Se
       if (HAN.test(run)) segmentRun(run, authored, single, names).forEach((word) => out.push({ kind: 'word', text: word }));
       else if (/[A-Za-z0-9]/.test(run)) out.push({ kind: 'latin', text: run });
       else if (run.trim()) out.push({ kind: 'punct', text: run.replace(/\s+/g, '') });
+      // A space the text prints around Latin (去 KTV 唱歌) stays, so the simplified text mirrors it.
+      else if (out[out.length - 1]?.kind === 'latin' || /[A-Za-z0-9]/.test(next)) out.push({ kind: 'punct', text: ' ' });
     }
   });
   return out;
@@ -372,6 +402,12 @@ function chooseReading(word: string, hint: (Syllable | null)[], flags: Flag[], i
   const chars = [...word];
   const complete = hint.every(Boolean);
   const cardOptions = readings(word, cards.get(word));
+  // A sentence-final particle with no old syllable to go by is neutral (對啊 duì a); its card gives the citation tone.
+  if (!isName && chars.length === 1 && FINAL_PARTICLES.has(word) && !hint[0] && cardOptions.length) {
+    return [{ ...cardOptions[0][0], tone: 5, text: cardOptions[0][0].base.replace(/v/g, 'ü') }];
+  }
+  // 了 read liǎo is the result complement of V得了 / V不了 ("can manage"), a reading its card (le) lacks.
+  if (word === '了' && hint[0]?.base === 'liao') return [hint[0]];
   if (!isName && cardOptions.length) {
     const match = cardOptions.find((option) => bases(option) === bases(hint));
     // A sentence particle keeps its neutral tone (吧, 啊, 喔); the card writes the citation form.
@@ -480,7 +516,13 @@ function applyToneChanges(slots: Slot[], flags: Flag[]) {
     const nextTone = next && !slot.last ? (next.char === '一' ? 1 : underlyingTone(next.char, next.syllable)) : undefined;
     const before = slots[index - 1];
     let tone: PinyinTone;
-    if (slot.char === '不' || (next && '百千萬億'.includes(next.char) && before?.char !== '十')) {
+    if (slot.char === '一' && slot.last && next?.char === '兩') {
+      // 一、兩 + measure "one or two" reads as 一兩 (yì, liǎng).
+      tone = 4;
+    } else if ((slot.char === '一' && before && '期拜週'.includes(before.char)) || (slot.char === '一' && next?.char === '樓')) {
+      // The day of the week and the floor keep yī (星期一要考試 xīngqíyī, 住在一樓 yī lóu).
+      tone = 1;
+    } else if (slot.char === '不' || (next && '百千萬億'.includes(next.char) && before?.char !== '十')) {
       // 不 always changes; so does 一 counting hundreds, thousands, ten thousands (yìbǎi, yìqiān, yíwàn), as the
       // books print it, but not the 一 of 十一 (十一萬 shíyī wàn).
       tone = nextTone === 4 ? 2 : 4;
@@ -589,6 +631,9 @@ function build(
         // 得 read děi is "must" before a verb (都得到圖書館去 = 得 + 到, 得很小心 = 得 + 很), not part of 得到 / 得很.
         else if (options.length && !options.some((o) => bases(o) === bases(hint)) && chars[0] === '得' && hint[0]!.base === 'dei')
           split = ['得', chars.slice(1).join('')];
+        // 了 read liǎo is a result complement (拿得了 = 拿 + 得 + 了 liǎo), not the end of a card word (得了 déle).
+        else if (options.length && !options.some((o) => bases(o) === bases(hint)) && chars[chars.length - 1] === '了'
+          && last.base === 'liao') split = [...chars.slice(0, -1), '了'];
         if (split) {
           flags.push({ kind: 'split', word: piece.text, detail: split.join(' | ') });
           list.splice(p, 1, ...split.map((text) => ({ kind: 'word' as const, text })));
@@ -709,7 +754,7 @@ function assemble(words: GrammarWordToken[]): { simplified: string; pinyin: stri
   }
   return {
     simplified,
-    pinyin: pinyin.replace(/ +\n/g, '\n').replace(/ +$/, '').replace(/ ([,.?!;:”)])/g, '$1')
+    pinyin: pinyin.replace(/ {2,}/g, ' ').replace(/ +\n/g, '\n').replace(/ +$/, '').replace(/ ([,.?!;:”)])/g, '$1')
       // An opening quote after punctuation takes the space before it: wǒ: “Kuài, not wǒ:“ Kuài.
       .replace(/([,.?!;:])“ /g, '$1 “'),
   };
@@ -768,7 +813,8 @@ type Patch =
   | {
     lesson: number; op: 'reading'; target: string; paragraph?: number;
     field: 'pinyin' | 'simplified' | 'english' | 'title' | 'setting'; find: string | string[]; replace: string;
-  };
+  }
+  | { lesson: number; op: 'card-example'; target: string; find: string | string[]; replace: string };
 
 const PATCH = arg('patch');
 const patchProblems: string[] = [];
@@ -846,8 +892,8 @@ function applyPatches(lesson: number, data: Record<string, { grammarPages?: Page
         if (row.columns) row.columns = groups;
         if (mirrored) [row.subject, row.grammar, row.complement] = [groups[0] ?? [], groups[1] ?? [], groups[2] ?? []];
       } else patchProblems.push(`${where}: no example or row`);
-    } else if (patch.op === 'reading') {
-      continue; // readings take theirs in --readings mode
+    } else if (patch.op === 'reading' || patch.op === 'card-example') {
+      continue; // readings and card examples take theirs in --readings / --vocab-examples mode
     } else if (patch.op === 'cells') {
       if (!row) { patchProblems.push(`${where}: no row`); continue; }
       const groups = patch.cells.map((cell, c) => toWords(cell, `${row.id}-c${c + 1}`));
@@ -897,6 +943,8 @@ if (args.includes('--readings')) {
   for (const reading of readingsData) {
     if (ONLY_LESSON && reading.lessonId !== ONLY_LESSON) continue;
     reading.paragraphs.forEach((paragraph, index) => {
+      // A line with no Chinese (the book's scene break, a row of asterisks) keeps its own simplified and pinyin.
+      if (!HAN.test(paragraph.traditional)) return;
       const oldPinyin = paragraph.pinyin === 'TODO' ? '' : paragraph.pinyin ?? '';
       const oldSimplified = paragraph.simplified === 'TODO' ? '' : paragraph.simplified ?? '';
       const built = build(paragraph.traditional, oldPinyin, oldSimplified, `${reading.id}-p${index + 1}`, noFocus);
@@ -915,6 +963,47 @@ if (args.includes('--readings')) {
   console.log([...counts].sort((x, y) => y[1] - x[1]).map(([kind, n]) => `${kind} ${n}`).join(', '));
   if (REPORT) writeFileSync(REPORT, `${JSON.stringify(report.filter((entry) => entry.flags.length), null, 1)}\n`, 'utf8');
   process.exit(patchProblems.length ? 1 : 0);
+}
+
+// ---------- word-card examples (--vocab-examples): the same pinyin rules for content/vocabulary/book-N-examples.json ----------
+
+if (args.includes('--vocab-examples')) {
+  const path = resolve(ROOT, `content/vocabulary/book-${BOOK}-examples.json`);
+  const raw = readFileSync(path, 'utf8');
+  const examples = JSON.parse(raw) as Record<string, { chinese: string; pinyin?: string; english?: string }>;
+  const { items } = JSON.parse(readFileSync(resolve(ROOT, `public/data/vocabulary/book-${BOOK}.json`), 'utf8')) as {
+    items: { id: string; traditional: string }[];
+  };
+  const wordOf = new Map(items.map((item) => [item.id, item.traditional.split('/').flatMap(expandOptional)]));
+  for (const [id, example] of Object.entries(examples)) {
+    const lesson = Number(id.match(/^B\dL(\d+)/)?.[1]);
+    if (ONLY_LESSON && lesson !== ONLY_LESSON) continue;
+    // The card's own word stays one block, so it reads exactly as the card.
+    const whole = (wordOf.get(id) ?? []).filter((form) => example.chinese.includes(form));
+    // Cards keep both turns on one line ("A:… B:…"); the builder reads a label only at the start of a line.
+    const turns = example.chinese.replace(/\s+(?=[A-D][:：])/g, '\n');
+    const built = build(turns, example.pinyin ?? '', '', id, { whole, single: new Set() });
+    example.pinyin = built.pinyin.replace(/\n/g, ' ');
+    report.push({ lesson, where: id, flags: built.flags });
+  }
+  // Reviewed fixes for a card example's pinyin: { op: "card-example", target: <card id>, find, replace }.
+  for (const fix of (patches ?? fixes).filter((f) => f.op === 'card-example')) {
+    const example = examples[fix.target];
+    const finds = Array.isArray(fix.find) ? fix.find : [fix.find];
+    const find = finds.find((f) => example?.pinyin?.includes(f));
+    if (example?.pinyin?.includes(fix.replace) && !find) continue;
+    if (!example?.pinyin || !find) { patchProblems.push(`${fix.target} card example: "${finds[0]}" missing`); continue; }
+    example.pinyin = example.pinyin.replace(find, fix.replace);
+  }
+  patchProblems.forEach((problem) => console.log(`  fix not applied: ${problem}`));
+  const out = `${JSON.stringify(examples, null, 2)}\n`;
+  if (WRITE && out !== raw) writeFileSync(path, out, 'utf8');
+  const counts = new Map<string, number>();
+  for (const entry of report) for (const flag of entry.flags) counts.set(flag.kind, (counts.get(flag.kind) ?? 0) + 1);
+  console.log(`Book ${BOOK} card examples: ${report.length} sentences${WRITE ? ' written' : ' (dry run)'}; run npm run vocab:examples next.`);
+  console.log([...counts].sort((x, y) => y[1] - x[1]).map(([kind, n]) => `${kind} ${n}`).join(', '));
+  if (REPORT) writeFileSync(REPORT, `${JSON.stringify(report.filter((entry) => entry.flags.length), null, 1)}\n`, 'utf8');
+  process.exit(0);
 }
 
 for (let lesson = 1; lesson <= 16; lesson++) {
@@ -943,7 +1032,11 @@ for (let lesson = 1; lesson <= 16; lesson++) {
       for (const row of page.patternRows ?? []) {
         const groups = row.columns ?? [row.subject ?? [], row.grammar ?? [], row.complement ?? []];
         const rebuilt = groups.map((cell, c) => {
-          if (!cell.length || cell.some((token) => /[A-Za-z]/.test(token.traditional))) return cell;
+          // A cell with Latin labels (對 + person) keeps its blocks; only their simplified is brought in line.
+          if (!cell.length || cell.some((token) => /[A-Za-z]/.test(token.traditional))) {
+            return cell.map((token) => (HAN.test(token.traditional)
+              ? { ...token, simplified: simplifiedOf(token.traditional, token.simplified) } : token));
+          }
           const text = cell.map((token) => `${token.prefix ?? ''}${token.traditional}${token.suffix ?? ''}`).join('');
           const oldPinyin = cell.map((token) => token.pinyin).join(' ');
           const oldSimp = cell.map((token) => `${token.prefix ?? ''}${token.simplified ?? token.traditional}${token.suffix ?? ''}`).join('');
@@ -964,7 +1057,8 @@ for (let lesson = 1; lesson <= 16; lesson++) {
 }
 
 if (fixes.length && !patches) {
-  const inScope = fixes.filter((fix) => fix.op !== 'reading' && (!ONLY_LESSON || fix.lesson === ONLY_LESSON)).length;
+  const inScope = fixes.filter((fix) => fix.op !== 'reading' && fix.op !== 'card-example'
+    && (!ONLY_LESSON || fix.lesson === ONLY_LESSON)).length;
   console.log(`Re-applied ${inScope - patchProblems.length} of ${inScope} reviewed fixes.`);
   patchProblems.forEach((problem) => console.log(`  not applied: ${problem}`));
   if (patchProblems.length) process.exit(1);

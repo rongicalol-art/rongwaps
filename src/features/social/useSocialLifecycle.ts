@@ -66,4 +66,15 @@ export function useSocialLifecycle() {
     previousView.current = view;
     if (view && !opened && !view.endsWith(':rooms')) lobby.roster();
   }, [view]);
+
+  // While a list is open, someone arriving or leaving changes the live count; ask for a fresh snapshot so the list
+  // keeps up instead of showing "1 more online". Only open panels ask, and the controller spaces requests out.
+  const listOpen = !!view && !view.endsWith(':rooms');
+  const onlineTotal = useAppStore(state => state.socialOnlineTotal);
+  const seenTotal = useRef<number | null>(null);
+  useEffect(() => {
+    if (!listOpen) { seenTotal.current = null; return; }
+    if (seenTotal.current !== null && seenTotal.current !== onlineTotal) lobby.roster();
+    seenTotal.current = onlineTotal;
+  }, [listOpen, onlineTotal]);
 }
