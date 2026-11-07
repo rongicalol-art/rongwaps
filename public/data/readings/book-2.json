@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bookId": 2,
-  "count": 12,
+  "count": 14,
   "items": [
     {
       "id": "B2L01-R01",
@@ -1355,6 +1355,262 @@
           "simplified": "要是你想庆祝生日，去KTV跟大家合唱，一定会很开心的；如果心情不好，去KTV自己一个人唱歌，也能把不愉快的事情忘了，所以去KTV真是一个不错的选择。",
           "pinyin": "Yàoshi nǐ xiǎng qìngzhù shēngrì, qù KTV gēn dàjiā héchàng, yídìng huì hěn kāixīn de; rúguǒ xīnqíng bù hǎo, qù KTV zìjǐ yí ge rén chànggē, yě néng bǎ bù yúkuài de shìqing wàng le, suǒyǐ qù KTV zhēn shì yí ge búcuò de xuǎnzé.",
           "english": "If you want to celebrate your birthday, go to KTV bars to sing with people, you must be very happy; if you are in a bad mood, go to KTV bars to sing on your own, you can also forget the unpleasant things. So going to KTV bars is really a good choice."
+        }
+      ]
+    },
+    {
+      "id": "B2L07-R01",
+      "bookId": 2,
+      "lessonId": 7,
+      "dialogueNumber": 1,
+      "title": "坐火車到花蓮去旅行",
+      "titlePinyin": "Zuò Huǒchē Dào Huālián Qù Lǚxíng",
+      "titleEnglish": "Traveling to Hualien by Train",
+      "printedPages": [
+        157,
+        159
+      ],
+      "audioReference": "07-1",
+      "paragraphs": [
+        {
+          "id": "b2l07d1-l1",
+          "speaker": "旁白",
+          "traditional": "（在教室）",
+          "simplified": "（在教室）",
+          "pinyin": "（Zài jiàoshì）",
+          "english": "(In a classroom.)"
+        },
+        {
+          "id": "b2l07d1-l2",
+          "speaker": "良介",
+          "traditional": "還有一個星期就要放假了，我打算到花蓮去旅行，好好看看台灣東部的風景。",
+          "simplified": "还有一个星期就要放假了，我打算到花莲去旅行，好好看看台湾东部的风景。",
+          "pinyin": "Hái yǒu yí ge xīngqī jiù yào fàngjià le, wǒ dǎsuàn dào Huālián qù lǚxíng, hǎohǎo kànkan Táiwān dōngbù de fēngjǐng.",
+          "english": "There's only one week until the holidays. I'm planning to go to Hualien and take a good look at the scenery of eastern Taiwan."
+        },
+        {
+          "id": "b2l07d1-l3",
+          "speaker": "可欣",
+          "traditional": "前年我去花蓮玩，住在朋友的民宿，他不但請我吃飯，還送給我好幾包當地的名產跟風景明信片呢！",
+          "simplified": "前年我去花莲玩，住在朋友的民宿，他不但请我吃饭，还送给我好几包当地的名产跟风景明信片呢！",
+          "pinyin": "Qiánnián wǒ qù Huālián wán, zhù zài péngyou de mínsù, tā búdàn qǐng wǒ chīfàn, hái sòng gěi wǒ hǎojǐ bāo dāngdì de míngchǎn gēn fēngjǐng míngxìnpiàn ne!",
+          "english": "I went to Hualien two years ago and stayed at a friend's B&B. He not only treated me to a meal but also gave me several bags of local specialties and scenic postcards!"
+        },
+        {
+          "id": "b2l07d1-l4",
+          "speaker": "良介",
+          "traditional": "真好！你可以幫我訂那家民宿嗎？",
+          "simplified": "真好！你可以帮我订那家民宿吗？",
+          "pinyin": "Zhēn hǎo! Nǐ kěyǐ bāng wǒ dìng nà jiā mínsù ma?",
+          "english": "That's great! Can you help me book that B&B?"
+        },
+        {
+          "id": "b2l07d1-l5",
+          "speaker": "可欣",
+          "traditional": "可以啊！他的民宿有游泳池，也有免費的無線網路，最棒的是，從房間往外看，還可以看到美麗的大海，你一定會喜歡的。",
+          "simplified": "可以啊！他的民宿有游泳池，也有免费的无线网路，最棒的是，从房间往外看，还可以看到美丽的大海，你一定会喜欢的。",
+          "pinyin": "Kěyǐ a! Tā de mínsù yǒu yóuyǒngchí, yě yǒu miǎnfèi de wúxiàn wǎnglù, zuì bàng de shì, cóng fángjiān wǎng wài kàn, hái kěyǐ kàndào měilì de dàhǎi, nǐ yídìng huì xǐhuan de.",
+          "english": "Sure! His B&B has a swimming pool and free Wi-Fi. The best part is that you can see the beautiful ocean from the room. You'll definitely like it."
+        },
+        {
+          "id": "b2l07d1-l6",
+          "speaker": "良介",
+          "traditional": "住一個晚上要多少錢？要是太貴，我就住不起了。",
+          "simplified": "住一个晚上要多少钱？要是太贵，我就住不起了。",
+          "pinyin": "Zhù yí ge wǎnshang yào duōshao qián? Yàoshi tài guì, wǒ jiù zhù bu qǐ le.",
+          "english": "How much is it for one night? If it's too expensive, I won't be able to afford it."
+        },
+        {
+          "id": "b2l07d1-l7",
+          "speaker": "可欣",
+          "traditional": "別擔心，我會跟他說你是學生，請他算便宜一點兒。",
+          "simplified": "别担心，我会跟他说你是学生，请他算便宜一点儿。",
+          "pinyin": "Bié dānxīn, wǒ huì gēn tā shuō nǐ shì xuésheng, qǐng tā suàn piányi yìdiǎnr.",
+          "english": "Don't worry. I'll tell him you're a student and ask him to make it a little cheaper."
+        },
+        {
+          "id": "b2l07d1-l8",
+          "speaker": "旁白",
+          "traditional": "（良介拿出一塊錢來）",
+          "simplified": "（良介拿出一块钱来）",
+          "pinyin": "（Liángjiè ná chū yí kuài qián lái）",
+          "english": "(Ryosuke takes out one dollar.)"
+        },
+        {
+          "id": "b2l07d1-l9",
+          "speaker": "良介",
+          "traditional": "（笑著說）你看！我只剩下一塊錢，沒錢吃飯了。",
+          "simplified": "（笑着说）你看！我只剩下一块钱，没钱吃饭了。",
+          "pinyin": "（Xiàozhe shuō）Nǐ kàn! Wǒ zhǐ shèngxià yí kuài qián, méi qián chīfàn le.",
+          "english": "(Laughing.) Look! I only have one dollar left. I have no money for food."
+        },
+        {
+          "id": "b2l07d1-l10",
+          "speaker": "可欣",
+          "traditional": "你比我好，我今天出門時忘了帶錢包，現在一毛錢都沒有，我們中午讓美心請客吧。",
+          "simplified": "你比我好，我今天出门时忘了带钱包，现在一毛钱都没有，我们中午让美心请客吧。",
+          "pinyin": "Nǐ bǐ wǒ hǎo, wǒ jīntiān chūmén shí wàng le dài qiánbāo, xiànzài yì máo qián dōu méiyǒu, wǒmen zhōngwǔ ràng Měixīn qǐngkè ba.",
+          "english": "You're better off than me. I forgot my wallet when I left home today, and now I don't have a single cent. Let's have Meixin treat us to lunch."
+        },
+        {
+          "id": "b2l07d1-l11",
+          "speaker": "旁白",
+          "traditional": "（兩人哈哈大笑。這時候，美心剛好從外面走進來）",
+          "simplified": "（两人哈哈大笑。这时候，美心刚好从外面走进来）",
+          "pinyin": "（Liǎng rén hāhā dàxiào. Zhè shíhou, Měixīn gānghǎo cóng wàimiàn zǒu jìnlái）",
+          "english": "(Both of them laugh out loud. Just then, Meixin walks in from outside.)"
+        },
+        {
+          "id": "b2l07d1-l12",
+          "speaker": "美心",
+          "traditional": "你們在聊什麼？聊得這麼開心？",
+          "simplified": "你们在聊什么？聊得这么开心？",
+          "pinyin": "Nǐmen zài liáo shénme? Liáo de zhème kāixīn?",
+          "english": "What are you talking about? What's so funny?"
+        },
+        {
+          "id": "b2l07d1-l13",
+          "speaker": "良介",
+          "traditional": "我們正在聊去花蓮旅行的事，可欣要幫我訂民宿。",
+          "simplified": "我们正在聊去花莲旅行的事，可欣要帮我订民宿。",
+          "pinyin": "Wǒmen zhèngzài liáo qù Huālián lǚxíng de shì, Kěxīn yào bāng wǒ dìng mínsù.",
+          "english": "We're talking about traveling to Hualien. Kexin is going to help me book a B&B."
+        },
+        {
+          "id": "b2l07d1-l14",
+          "speaker": "美心",
+          "traditional": "住民宿不錯，你要怎麼去呢？",
+          "simplified": "住民宿不错，你要怎么去呢？",
+          "pinyin": "Zhù mínsù búcuò, nǐ yào zěnme qù ne?",
+          "english": "Staying at a B&B is nice. How are you going to get there?"
+        },
+        {
+          "id": "b2l07d1-l15",
+          "speaker": "良介",
+          "traditional": "我還沒決定。聽說蘇花公路有一點兒危險，下大雨的時候，山上的大石頭可能會掉下來。",
+          "simplified": "我还没决定。听说苏花公路有一点儿危险，下大雨的时候，山上的大石头可能会掉下来。",
+          "pinyin": "Wǒ hái méi juédìng. Tīngshuō Sūhuā Gōnglù yǒu yìdiǎnr wēixiǎn, xià dàyǔ de shíhou, shān shàng de dà shítou kěnéng huì diào xiàlái.",
+          "english": "I haven't decided yet. I heard the Suhua Highway is a little dangerous. When it rains heavily, rocks from the mountain may fall."
+        },
+        {
+          "id": "b2l07d1-l16",
+          "speaker": "美心",
+          "traditional": "蘇花公路是比較危險，搭火車去比較安全，可是假日的票很難買，一下子就賣光了，你最好趕快上網訂票。",
+          "simplified": "苏花公路是比较危险，搭火车去比较安全，可是假日的票很难买，一下子就卖光了，你最好赶快上网订票。",
+          "pinyin": "Sūhuā Gōnglù shì bǐjiào wēixiǎn, dā huǒchē qù bǐjiào ānquán, kěshì jiàrì de piào hěn nán mǎi, yíxiàzi jiù mài guāng le, nǐ zuìhǎo gǎnkuài shàngwǎng dìngpiào.",
+          "english": "The Suhua Highway is more dangerous. Taking the train is safer, but holiday tickets are hard to buy—they sell out in no time. You'd better book online soon."
+        },
+        {
+          "id": "b2l07d1-l17",
+          "speaker": "良介",
+          "traditional": "我上過台灣鐵路局的網站，可是看不懂網頁，覺得訂票很難。",
+          "simplified": "我上过台湾铁路局的网站，可是看不懂网页，觉得订票很难。",
+          "pinyin": "Wǒ shàng guò Táiwān Tiělùjú de wǎngzhàn, kěshì kàn bu dǒng wǎngyè, juéde dìngpiào hěn nán.",
+          "english": "I've been on the Taiwan Railways website, but I can't understand the web pages. I find booking tickets difficult."
+        },
+        {
+          "id": "b2l07d1-l18",
+          "speaker": "美心",
+          "traditional": "在台灣，上網訂票、訂位一點兒都不難，我現在就幫你訂。（用手機上台鐵的網站）你要訂什麼時候的？",
+          "simplified": "在台湾，上网订票、订位一点儿都不难，我现在就帮你订。（用手机上台铁的网站）你要订什么时候的？",
+          "pinyin": "Zài Táiwān, shàngwǎng dìngpiào, dìngwèi yìdiǎnr dōu bù nán, wǒ xiànzài jiù bāng nǐ dìng. （Yòng shǒujī shàng Táitiě de wǎngzhàn）Nǐ yào dìng shénme shíhou de?",
+          "english": "In Taiwan, booking tickets and seats online is not difficult at all. I'll help you book right now. (She goes to the Taiwan Railways website on her phone.) When do you want to book it for?"
+        },
+        {
+          "id": "b2l07d1-l19",
+          "speaker": "良介",
+          "traditional": "大概六月底。火車票貴不貴？",
+          "simplified": "大概六月底。火车票贵不贵？",
+          "pinyin": "Dàgài liùyuè dǐ. Huǒchē piào guì bu guì?",
+          "english": "Around the end of June. Are train tickets expensive?"
+        },
+        {
+          "id": "b2l07d1-l20",
+          "speaker": "美心",
+          "traditional": "太魯閣號比較貴，可是只停幾個站，兩個多鐘頭就到花蓮了。",
+          "simplified": "太鲁阁号比较贵，可是只停几个站，两个多钟头就到花莲了。",
+          "pinyin": "Tàilǔgé Hào bǐjiào guì, kěshì zhǐ tíng jǐ ge zhàn, liǎng ge duō zhōngtóu jiù dào Huālián le.",
+          "english": "The Taroko Express is more expensive, but it only stops at a few stations. It takes a little over two hours to get to Hualien."
+        },
+        {
+          "id": "b2l07d1-l21",
+          "speaker": "良介",
+          "traditional": "貴一點兒沒關係，要是訂得到第一班太魯閣號，早上從台北出發，中午就可以去太魯閣國家公園爬山了。",
+          "simplified": "贵一点儿没关系，要是订得到第一班太鲁阁号，早上从台北出发，中午就可以去太鲁阁国家公园爬山了。",
+          "pinyin": "Guì yìdiǎnr méi guānxi, yàoshi dìng de dào dì yī bān Tàilǔgé Hào, zǎoshang cóng Táiběi chūfā, zhōngwǔ jiù kěyǐ qù Tàilǔgé guójiā gōngyuán páshān le.",
+          "english": "A little more expensive is fine. If I can book the first Taroko Express and leave Taipei in the morning, I can go hiking in Taroko National Park at noon."
+        },
+        {
+          "id": "b2l07d1-l22",
+          "speaker": "可欣",
+          "traditional": "我前年就是搭太魯閣號去的，真的又快又方便！",
+          "simplified": "我前年就是搭太鲁阁号去的，真的又快又方便！",
+          "pinyin": "Wǒ qiánnián jiùshì dā Tàilǔgé Hào qù de, zhēn de yòu kuài yòu fāngbiàn!",
+          "english": "I took the Taroko Express two years ago. It's really fast and convenient!"
+        },
+        {
+          "id": "b2l07d1-l23",
+          "speaker": "良介",
+          "traditional": "不好意思，我想坐在窗戶旁邊，可以自己選座位嗎？",
+          "simplified": "不好意思，我想坐在窗户旁边，可以自己选座位吗？",
+          "pinyin": "Bù hǎoyìsi, wǒ xiǎng zuò zài chuānghu pángbiān, kěyǐ zìjǐ xuǎn zuòwèi ma?",
+          "english": "Excuse me. I'd like to sit by the window. Can I choose the seat myself?"
+        },
+        {
+          "id": "b2l07d1-l24",
+          "speaker": "美心",
+          "traditional": "沒辦法，位子都是電腦選的。（看著網頁）訂好了！你把訂票號碼記下來，這個日期以前去便利商店付錢，就可以拿到票了。",
+          "simplified": "没办法，位子都是电脑选的。（看着网页）订好了！你把订票号码记下来，这个日期以前去便利商店付钱，就可以拿到票了。",
+          "pinyin": "Méi bànfǎ, wèizi dōu shì diànnǎo xuǎn de. （Kànzhe wǎngyè）Dìng hǎo le! Nǐ bǎ dìngpiào hàomǎ jì xiàlái, zhège rìqī yǐqián qù biànlì shāngdiàn fù qián, jiù kěyǐ ná dào piào le.",
+          "english": "No way. The seats are all chosen by the computer. (She looks at the web page.) Booked! Write down the booking number. Pay at a convenience store before this date, and you can get the ticket."
+        }
+      ]
+    },
+    {
+      "id": "B2L07-R02",
+      "bookId": 2,
+      "lessonId": 7,
+      "dialogueNumber": 2,
+      "title": "短文 · 網路訂票",
+      "titlePinyin": "Duǎnwén · Wǎnglù Dìngpiào",
+      "titleEnglish": "Reading · Online Ticket Booking",
+      "printedPages": [
+        170,
+        171
+      ],
+      "audioReference": "07-3",
+      "paragraphs": [
+        {
+          "id": "b2l07d2-l1",
+          "speaker": "旁白",
+          "traditional": "我跟室友計畫春假去阿里山森林遊樂區走走。那時候草綠了、花開了，天氣也暖和了。不必帶太多行李，也不需要穿大衣，只要穿一雙好走的鞋子，再帶一件外套、雨衣、幾雙襪子跟幾件內衣褲就夠了。",
+          "simplified": "我跟室友计划春假去阿里山森林游乐区走走。那时候草绿了、花开了，天气也暖和了。不必带太多行李，也不需要穿大衣，只要穿一双好走的鞋子，再带一件外套、雨衣、几双袜子跟几件内衣裤就够了。",
+          "pinyin": "Wǒ gēn shìyǒu jìhuà chūnjià qù Ālǐ Shān sēnlín yóulè qū zǒuzǒu. Nà shíhou cǎo lǜ le, huā kāi le, tiānqì yě nuǎnhuo le. Búbì dài tài duō xínglǐ, yě bù xūyào chuān dàyī, zhǐyào chuān yì shuāng hǎo zǒu de xiézi, zài dài yí jiàn wàitào, yǔyī, jǐ shuāng wàzi gēn jǐ jiàn nèiyīkù jiù gòu le.",
+          "english": "My roommate and I are planning to walk around the Alishan Forest Recreation Area during spring break. At that time, the grass is green, the flowers are blooming, and the weather is warm. We don't need to bring much luggage or wear a coat. We just need a pair of comfortable walking shoes, a jacket, a raincoat, a few pairs of socks, and some underwear."
+        },
+        {
+          "id": "b2l07d2-l2",
+          "speaker": "旁白",
+          "traditional": "本來我想參加阿里山的團體旅遊，這樣就不必自己上網訂票、訂旅館，可是室友覺得自己去比較自由，也不趕時間，所以我們決定第一天搭台鐵到嘉義，再從嘉義搭小火車上阿里山，當天晚上就可以在山上散步、看星星了。沒想到剛上台鐵的網站，就發現春假第一天的票都賣光了。原來除了去國外旅行，想留在國內玩的人也不少。",
+          "simplified": "本来我想参加阿里山的团体旅游，这样就不必自己上网订票、订旅馆，可是室友觉得自己去比较自由，也不赶时间，所以我们决定第一天搭台铁到嘉义，再从嘉义搭小火车上阿里山，当天晚上就可以在山上散步、看星星了。没想到刚上台铁的网站，就发现春假第一天的票都卖光了。原来除了去国外旅行，想留在国内玩的人也不少。",
+          "pinyin": "Běnlái wǒ xiǎng cānjiā Ālǐ Shān de tuántǐ lǚyóu, zhèyàng jiù búbì zìjǐ shàngwǎng dìngpiào, dìng lǚguǎn, kěshì shìyǒu juéde zìjǐ qù bǐjiào zìyóu, yě bù gǎn shíjiān, suǒyǐ wǒmen juédìng dì yī tiān dā Táitiě dào Jiāyì, zài cóng Jiāyì dā xiǎo huǒchē shàng Ālǐ Shān, dāngtiān wǎnshang jiù kěyǐ zài shān shàng sànbù, kàn xīngxing le. Méi xiǎngdào gāng shàng Táitiě de wǎngzhàn, jiù fāxiàn chūnjià dì yī tiān de piào dōu mài guāng le. Yuánlái chúle qù guówài lǚxíng, xiǎng liú zài guónèi wán de rén yě bùshǎo.",
+          "english": "At first I wanted to join a group tour to Alishan so I wouldn't have to book tickets and a hotel online myself. But my roommate thought going on our own would be more free and we wouldn't be rushed, so we decided to take the Taiwan Railways to Chiayi on the first day, then take the small train from Chiayi up to Alishan. That evening we could take a walk in the mountains and look at the stars. Unexpectedly, as soon as I went to the Taiwan Railways website, I found that all the tickets for the first day of spring break were sold out. It turns out that besides traveling abroad, many people also want to stay in Taiwan for fun."
+        },
+        {
+          "id": "b2l07d2-l3",
+          "speaker": "旁白",
+          "traditional": "後來我上高鐵的網站，很幸運訂到了兩張台北到嘉義的車票，馬上用信用卡付了錢，這樣就放心了。雖然高鐵票比較貴，可是又快又舒服，而且第一天晚上住在嘉義市也不錯，因為當地的雞肉飯很有名，剛好趁這個機會去吃吃看。我正在想像一邊吃雞肉飯，一邊喝啤酒的樣子，室友忽然大叫，「成功了！阿里山小火車的票訂到了！」",
+          "simplified": "后来我上高铁的网站，很幸运订到了两张台北到嘉义的车票，马上用信用卡付了钱，这样就放心了。虽然高铁票比较贵，可是又快又舒服，而且第一天晚上住在嘉义市也不错，因为当地的鸡肉饭很有名，刚好趁这个机会去吃吃看。我正在想象一边吃鸡肉饭，一边喝啤酒的样子，室友忽然大叫，「成功了！阿里山小火车的票订到了！」",
+          "pinyin": "Hòulái wǒ shàng gāotiě de wǎngzhàn, hěn xìngyùn dìng dào le liǎng zhāng Táiběi dào Jiāyì de chēpiào, mǎshàng yòng xìnyòngkǎ fù le qián, zhèyàng jiù fàngxīn le. Suīrán gāotiě piào bǐjiào guì, kěshì yòu kuài yòu shūfu, érqiě dì yī tiān wǎnshang zhù zài Jiāyì Shì yě búcuò, yīnwèi dāngdì de jīròufàn hěn yǒumíng, gānghǎo chèn zhège jīhuì qù chīchi kàn. Wǒ zhèngzài xiǎngxiàng yìbiān chī jīròufàn, yìbiān hē píjiǔ de yàngzi, shìyǒu hūrán dàjiào, 「Chénggōng le! Ālǐ Shān xiǎo huǒchē de piào dìng dào le!」",
+          "english": "Later I went to the high-speed rail website and was lucky enough to book two tickets from Taipei to Chiayi. I immediately paid with a credit card, and then I felt relieved. Although the high-speed rail tickets are more expensive, it's fast and comfortable, and staying in Chiayi City the first night is also nice because the local chicken rice is famous. It's a good chance to try it. I was imagining eating chicken rice and drinking beer at the same time when my roommate suddenly shouted, \"Success! I booked the Alishan Forest Railway tickets!\""
+        },
+        {
+          "id": "b2l07d2-l4",
+          "speaker": "旁白",
+          "traditional": "我們能利用網路做好多事情，除了訂車票、機票、餐廳，還能買到各式各樣、又便宜又流行的衣服。有網路真好！",
+          "simplified": "我们能利用网路做好多事情，除了订车票、机票、餐厅，还能买到各式各样、又便宜又流行的衣服。有网路真好！",
+          "pinyin": "Wǒmen néng lìyòng wǎnglù zuò hǎo duō shìqing, chúle dìng chēpiào, jīpiào, cāntīng, hái néng mǎi dào gèshìgèyàng, yòu piányi yòu liúxíng de yīfu. Yǒu wǎnglù zhēn hǎo!",
+          "english": "We can use the Internet to do many things. Besides booking train tickets, plane tickets, and restaurants, we can also buy all kinds of cheap and fashionable clothes. It's really great to have the Internet!"
         }
       ]
     }

@@ -229,7 +229,7 @@ export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
 
 
 /** Authored lessons open per unlocked book. Book 2 opens one lesson per AUTHOR run. */
-const OPEN_LESSON_COUNTS: Record<number, number> = { 2: 6, 3: 16 };
+const OPEN_LESSON_COUNTS: Record<number, number> = { 2: 7, 3: 16 };
 
 /** True for any beta-locked lesson unless the verified account has a full-course grant. */
 export function isLessonLocked(bookId: number, lessonId: number, hasFullCourseAccess = false): boolean {

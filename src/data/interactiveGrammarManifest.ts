@@ -807,6 +807,48 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
     ]
   },
   {
+    "id": "B2L07-P01-D01",
+    "bookId": 2,
+    "lessonId": 7,
+    "partId": 1,
+    "title": "Grammar 1–6 · Traveling to Hualien by Train",
+    "grammarPages": [
+      {
+        "id": "B2L07-G01-P165"
+      },
+      {
+        "id": "B2L07-G02-P166"
+      },
+      {
+        "id": "B2L07-G03-P166"
+      },
+      {
+        "id": "B2L07-G04-P167"
+      },
+      {
+        "id": "B2L07-G05-P168"
+      },
+      {
+        "id": "B2L07-G06-P169"
+      }
+    ]
+  },
+  {
+    "id": "B2L07-P02-D02",
+    "bookId": 2,
+    "lessonId": 7,
+    "partId": 2,
+    "title": "Grammar 7–8 · Online Ticket Booking",
+    "grammarPages": [
+      {
+        "id": "B2L07-G07-P176"
+      },
+      {
+        "id": "B2L07-G08-P176"
+      }
+    ]
+  },
+  {
     "id": "B3L01-P01-D01",
     "bookId": 3,
     "lessonId": 1,

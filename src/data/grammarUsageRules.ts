@@ -108,6 +108,19 @@ const L06_CUO_ALT = L06_CUO_VERBS.join('|');
 /** Book 2 Lesson 6: question words its QW……就……QW page lists. */
 const L06_QW_ALT = `什${SEP}?麼|誰|哪裡|哪兒|怎麼|多少|幾|哪`;
 
+/** Book 2 Lesson 7: measure words its 一 + M + 都／也 + Neg page uses. */
+const L07_MEASURE_WORDS = [
+  '個', '班', '毛', '塊', '家', '位', '張', '件', '種', '隻', '條', '本',
+  '杯', '瓶', '點', '歲', '次', '遍', '趟', '句', '分', '層',
+];
+const L07_MEASURE_ALT = L07_MEASURE_WORDS.join('|');
+/** Book 2 Lesson 7: the verbs its V光 page pairs with 光. */
+const L07_GUANG_VERBS = [
+  '吃', '用', '賣', '走', '喝', '買', '花', '拿', '送', '丟', '脫', '洗',
+  '掃', '收', '看', '玩', '打', '開',
+];
+const L07_GUANG_ALT = L07_GUANG_VERBS.join('|');
+
 export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   // Lesson 1 — 新同學
   'B1L01-G01-P38': detected('叫／姓／是 introduce a name or identity', [
@@ -759,6 +772,37 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
     ),
   ]),
   'B2L06-G08-P154': detected('讓 + B + Feeling', [inOrder(['讓'])]),
+
+  // Book 2 Lesson 7 — 坐火車到花蓮去旅行
+  'B2L07-G01-P165': detected('不但……，還……', [inOrder(['不但', '還'], 12)]),
+  'B2L07-G02-P166': detected('一 + M（+N）+ 都／也 + Neg + V', [
+    regex(
+      `(?:^|${SEP})一${SEP}(?:${L07_MEASURE_ALT})(?:${SEP}[^${SEP}]+){0,2}${SEP}(?:都|也)${SEP}(?:沒有|不|沒)`,
+    ),
+  ]),
+  'B2L07-G03-P166': detected('讓 + Person + V（客氣地）', [
+    regex(
+      `(?:^|${SEP})讓(?:${SEP}[^${SEP}]+){1,3}${SEP}(?:請客|請|帶|送|等|去|來|吃|喝|看|坐|選|訂|說|買|休息|上班|回家|進來|出去|走|做|寫|讀|唱|玩|參加|打|用|開|關|放|拿|教|幫)`,
+    ),
+  ]),
+  'B2L07-G04-P167': detected('是 +（Adv）+ Vs', [
+    regex(
+      `(?:^|${SEP})是${SEP}(?:比較|有點兒|有點|有一點兒|有一點|很|真|太|更|非常|這麼|那麼)${SEP}(?:危險|安全|貴|便宜|難|難寫|難買|容易|忙|累|漂亮|好看|好吃|好玩|舒服|冷|熱|快|慢|遠|近|新|舊|大|小|高|矮|長|短|多|少|好|對|錯|無聊|有趣|開心|高興)`,
+    ),
+    regex(
+      `(?:^|${SEP})是${SEP}(?:危險|安全|貴|便宜|難|容易|忙|累|漂亮|好看|好吃|好玩|舒服|冷|熱|快|慢|遠|近|無聊|有趣|開心|高興)(?=${SEP}(?:的|了|多了|極了)?(?:${SEP}|$))`,
+    ),
+  ]),
+  'B2L07-G05-P168': detected('V光（了）', [
+    regex(`(?:^|${SEP})(?:${L07_GUANG_ALT})${SEP}?光(?:${SEP}?了)?(?=${SEP}|$)`),
+  ]),
+  'B2L07-G06-P169': detected('一點兒 + 都／也 + Neg + Vs', [
+    regex(`(?:^|${SEP})(?:一點兒|一點)${SEP}(?:都|也)${SEP}(?:沒有|不|沒)`),
+  ]),
+  'B2L07-G07-P176': detected('剛……（，）就……', [inOrder(['剛', '就'], 8)]),
+  'B2L07-G08-P176': detected('趁（著）', [
+    regex(`(?:^|${SEP})趁(?:著)?${SEP}[^${SEP}]+`),
+  ]),
 
   // Book 3 Lesson 15 — 去淡水參觀古蹟
   'B3L15-G01-P383': detected('簡直', [inOrder(['簡直'])]),
