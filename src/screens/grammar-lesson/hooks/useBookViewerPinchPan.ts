@@ -150,7 +150,7 @@ export function useBookViewerPinchPan({
     commitView(clamped, nextOffset, true);
   }, [commitView]);
 
-  const pointerGestures = useBookViewerPointerGestures({
+  const gestureContext = {
     stageRef,
     zoomRef,
     offsetRef,
@@ -160,19 +160,9 @@ export function useBookViewerPinchPan({
     canPagePrevious,
     canPageNext,
     onPageChange,
-  });
-
-  useBookViewerZoomInputs({
-    stageRef,
-    zoomRef,
-    offsetRef,
-    metricsRef,
-    commitView,
-    zoomTo,
-    canPagePrevious,
-    canPageNext,
-    onPageChange,
-  });
+  };
+  const pointerGestures = useBookViewerPointerGestures(gestureContext);
+  useBookViewerZoomInputs(gestureContext);
 
   const pageLayout = useMemo<BookPageLayout>(
     () => getBookPageLayout(zoom, offset, metrics),

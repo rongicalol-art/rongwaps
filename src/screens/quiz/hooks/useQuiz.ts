@@ -9,6 +9,25 @@ import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
 import { audioService } from '../../../services/audioService';
 
+function projectQuizSession(session: ReturnType<typeof useCardSession>) {
+  return {
+    activeCards: session.activeCards,
+    currentIndex: session.currentIndex,
+    currentCard: session.currentCard,
+    completed: session.completed,
+    resumedReview: session.resumedReview,
+    resetAll: session.resetAll,
+    practiceCards: session.practiceCards,
+    missedCards: session.activeCards.filter((card) => session.sessionResults[card.id] === 1 || session.sessionResults[card.id] === 2),
+    reviewUnlearned: session.reviewUnlearned,
+    unlearnedCount: session.unlearnedCount,
+    learnedCount: session.learnedCount,
+    isShuffled: session.isShuffled,
+    toggleShuffle: session.toggleShuffle,
+    progressInfo: session.progressInfo,
+  };
+}
+
 /**
  * Manages a multiple-choice quiz session.
  *
@@ -34,7 +53,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     setIsChecked(false);
   };
   const session = useCardSession(cards, sessionKey, { requeueMissed: false, onSessionReset: resetAnswer, onAnswerStateReset: resetAnswer });
-  const { activeCards, currentIndex, currentCard, completed } = session;
+  const { currentCard, completed } = session;
 
   useAudioSessionLifecycle(completed);
 
@@ -91,9 +110,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   };
 
   return {
-    activeCards,
-    currentIndex,
-    currentCard,
+    ...projectQuizSession(session),
     options,
     selectedOption,
     setSelectedOption,
@@ -102,17 +119,6 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     isCorrect,
     answerAudioPlaying,
     handleCheck,
-    completed,
-    resumedReview: session.resumedReview,
-    resetAll: session.resetAll,
-    practiceCards: session.practiceCards,
-    missedCards: activeCards.filter((card) => session.sessionResults[card.id] === 1 || session.sessionResults[card.id] === 2),
-    reviewUnlearned: session.reviewUnlearned,
-    unlearnedCount: session.unlearnedCount,
-    learnedCount: session.learnedCount,
-    isShuffled: session.isShuffled,
-    toggleShuffle: session.toggleShuffle,
-    progressInfo: session.progressInfo,
   };
 }
 
@@ -134,20 +140,17 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
 
+  const resetAnswer = () => {
+    audioService.stop();
+    setInput('');
+    setStatus('idle');
+  };
   const session = useCardSession(cards, sessionKey, {
     requeueMissed: false,
-    onSessionReset: () => {
-      audioService.stop();
-      setInput('');
-      setStatus('idle');
-    },
-    onAnswerStateReset: () => {
-      audioService.stop();
-      setInput('');
-      setStatus('idle');
-    },
+    onSessionReset: resetAnswer,
+    onAnswerStateReset: resetAnswer,
   });
-  const { activeCards, currentIndex, currentCard, completed } = session;
+  const { currentCard, completed } = session;
 
   useAudioSessionLifecycle(completed);
 
@@ -177,24 +180,11 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
   };
 
   return {
-    activeCards,
-    currentIndex,
-    currentCard,
+    ...projectQuizSession(session),
     input,
     handleInputChange: setInput,
     status,
     answerAudioPlaying: false,
     handleCheck,
-    completed,
-    resumedReview: session.resumedReview,
-    resetAll: session.resetAll,
-    practiceCards: session.practiceCards,
-    missedCards: activeCards.filter((card) => session.sessionResults[card.id] === 1 || session.sessionResults[card.id] === 2),
-    reviewUnlearned: session.reviewUnlearned,
-    unlearnedCount: session.unlearnedCount,
-    learnedCount: session.learnedCount,
-    isShuffled: session.isShuffled,
-    toggleShuffle: session.toggleShuffle,
-    progressInfo: session.progressInfo,
   };
 }
