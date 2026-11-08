@@ -7,7 +7,6 @@ import type { PracticeResult, PracticeScript, PracticeStatus } from '../practice
 import { textIn } from '../practiceTypes';
 import { DOCK_IN, DOCK_SWAP } from '../practiceMotion';
 import { SentencePlayButton } from './SentencePlayButton';
-import { BackAction } from './BackAction';
 
 /** Skip and Back are quiet: neutral ink, not the book's blue. */
 const NEUTRAL = '!text-ui-muted-strong';
@@ -28,20 +27,18 @@ interface PracticeDockProps {
   onTrayRef?: (element: HTMLDivElement | null) => void;
   onCheck: () => void;
   onSkip: () => void;
-  /** Previous item (or, from the first one, the grammar page); absent = no Back. */
+  /** Previous item; absent on the first one (the action is removed, not disabled). */
   onBack?: () => void;
-  /** Where Back goes, as its label: "Back" (previous item) or "Grammar". */
-  backLabel?: string;
   onContinue: () => void;
 }
 
 /**
- * The exercise dock, one surface in three states: the word bank with Back and Skip, the
+ * The exercise dock, one surface in three states: the word bank with Skip, the
  * word bank with Check once the answer is complete, and the result (green or
- * red) with Back and Continue / Try again. Space or Enter presses its action; arrow keys step.
+ * red) with Continue / Try again. Space or Enter presses its action.
  */
 export function PracticeDock({
-  host, status, ready, hasCheck, checking, result, script, shortcutsDisabled, onTrayRef, onCheck, onSkip, onBack, backLabel = 'Back', onContinue,
+  host, status, ready, hasCheck, checking, result, script, shortcutsDisabled, onTrayRef, onCheck, onSkip, onBack, onContinue,
 }: PracticeDockProps) {
   const reduceMotion = useReducedMotion();
   const checked = status !== 'idle';
@@ -62,13 +59,13 @@ export function PracticeDock({
     return () => window.removeEventListener('keydown', onKey);
   }, [action, checked, ready, shortcutsDisabled]);
 
-  // Arrow keys: Right skips to next (before an answer), Left goes back (also from a result).
+  // Arrow keys: Right skips to next, Left goes back.
   useEffect(() => {
-    if (checking || shortcutsDisabled) return;
+    if (checked || checking || shortcutsDisabled) return;
     const onArrow = (event: KeyboardEvent) => {
       if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
-      if (event.key === 'ArrowRight' && !checked) {
+      if (event.key === 'ArrowRight') {
         event.preventDefault();
         onSkip();
       } else if (event.key === 'ArrowLeft' && onBack) {
@@ -106,7 +103,11 @@ export function PracticeDock({
         >
           {onTrayRef && <div ref={onTrayRef} data-bank="" className="flex min-w-0 flex-wrap items-center justify-center gap-2 px-1 empty:hidden" />}
           <div data-action="" className="flex w-full items-center gap-2">
-            {onBack && !checking && <BackAction label={backLabel} onBack={onBack} />}
+            {onBack && !checking && (
+              <ActionButton variant="quiet" size="md" className={cn(NEUTRAL, '!px-3')} onClick={onBack} aria-label="Back" title="Back">
+                <AppIcon name="back" size={22} />
+              </ActionButton>
+            )}
             {!checking && (
               <div className="ml-auto flex items-center gap-2">
                 <ActionButton variant="quiet" size="md" className={NEUTRAL} onClick={onSkip}>Skip</ActionButton>
@@ -142,13 +143,10 @@ export function PracticeDock({
               )}
               {result?.note && <p className="mt-1 text-base font-extrabold leading-snug text-ui-ink">{result.note}</p>}
             </div>
-            <div className="flex shrink-0 items-center gap-2">
-              {onBack && <BackAction label={backLabel} onBack={onBack} />}
-              <div className="min-w-0 flex-1 md:min-w-44">
-                <ActionButton variant={correct ? 'success' : 'danger'} size="md" fullWidth onClick={onContinue}>
-                  {correct ? 'Continue' : 'Try again'}
-                </ActionButton>
-              </div>
+            <div className="shrink-0 md:min-w-44">
+              <ActionButton variant={correct ? 'success' : 'danger'} size="md" fullWidth onClick={onContinue}>
+                {correct ? 'Continue' : 'Try again'}
+              </ActionButton>
             </div>
           </motion.div>
         )}
