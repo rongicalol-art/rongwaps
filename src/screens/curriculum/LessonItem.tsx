@@ -5,6 +5,7 @@ import type { CourseLessonProgress } from '../../types/models';
 import { LESSON_LANDSCAPE_ART } from '../../data/lessonLandscapeArt';
 import { getEnglishLessonTitle } from '../../utils/lesson/lessonTitle';
 import { AppIcon, ContextMenu, useMenuTrigger, type ContextMenuAction, type MenuPoint } from '../../lib/widgets';
+import { ActivityRing } from './lesson-window/ActivityRing';
 
 interface LessonItemProps {
   lesson: CourseLessonProgress;
@@ -36,24 +37,11 @@ function containerShape(isSelected: boolean, isPrev: boolean, isNext: boolean) {
   return 'mb-3 rounded-b-control border-t-0 border-b-[length:var(--depth-lg)]';
 }
 
-/**
- * The card's thick bottom edge, split into one bar per activity (words, grammar, reading) that fills in
- * the book colour. A done lesson's bars are all full (also when the learner marked it done).
- */
-function ActivityEdge({ bars, isDone }: { bars: CourseLessonProgress['activityBars']; isDone: boolean }) {
-  if (bars.length === 0) return null;
-  return (
-    <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 flex h-[var(--depth-lg)] gap-[3px]">
-      {bars.map((bar) => (
-        <span key={bar.key} className="relative flex-1 overflow-hidden bg-brand-primary-track">
-          <span
-            className="absolute inset-y-0 left-0 bg-brand-primary transition-[width] duration-500 ease-out motion-reduce:transition-none"
-            style={{ width: `${(isDone ? 1 : bar.fraction) * 100}%` }}
-          />
-        </span>
-      ))}
-    </span>
-  );
+/** How far the lesson is, 0–1: each activity (words, grammar, reading) counts equally; done is full. */
+function lessonFraction(lesson: CourseLessonProgress) {
+  if (lesson.isFullyCompleted) return 1;
+  const bars = lesson.activityBars;
+  return bars.length ? bars.reduce((sum, bar) => sum + bar.fraction, 0) / bars.length : 0;
 }
 
 function LessonItemBase({
@@ -73,8 +61,9 @@ function LessonItemBase({
   const isLocked = lesson.state === 'locked';
   const isDone = lesson.isFullyCompleted;
   const englishTitle = getEnglishLessonTitle(lesson.title);
-  const isFused = isSelected && (isPrevSelected || isNextSelected);
-  const showEdge = !isLocked && !isFused && lesson.activityBars.length > 0;
+  // The same ring as the lesson screen: shown once the lesson is started, a check once it is done.
+  const fraction = lessonFraction(lesson);
+  const showRing = !isLocked && fraction > 0;
 
   const [shake, setShake] = useState(0);
   const [menuPoint, setMenuPoint] = useState<MenuPoint | null>(null);
@@ -114,7 +103,7 @@ function LessonItemBase({
       className={cn(
         'relative min-w-0 overflow-hidden border-2 bg-ui-surface transition-colors duration-200',
         containerShape(isSelected, isPrevSelected, isNextSelected),
-        (isLocked || showEdge) && 'border-b-2',
+        isLocked && 'border-b-2',
         isSelected ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-border',
       )}
     >
@@ -130,10 +119,7 @@ function LessonItemBase({
         aria-haspopup={actions.length > 0 && !isLocked ? 'menu' : undefined}
         aria-label={`${englishTitle === lesson.label ? englishTitle : `${lesson.label}: ${englishTitle}`}${isLocked ? ' (locked)' : isDone ? ' (done)' : ''}`}
         style={{ WebkitTouchCallout: 'none', touchAction: 'manipulation' }}
-        className={cn(
-          'group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent',
-          showEdge && 'pb-[calc(0.875rem+var(--depth-lg))]',
-        )}
+        className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent"
       >
         <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-compact bg-ui-surface">
           <img
@@ -169,9 +155,9 @@ function LessonItemBase({
         {!isLocked && lesson.isTestPassed && (
           <AppIcon name="crown" size={20} className="shrink-0 text-feedback-warning" aria-label="Test passed" />
         )}
+        {showRing && <ActivityRing fraction={fraction} label={lesson.label} />}
         {!isLocked && faces}
       </button>
-      {showEdge && <ActivityEdge bars={lesson.activityBars} isDone={isDone} />}
       {menuPoint && (
         <ContextMenu point={menuPoint} label={`${lesson.label} options`} actions={actions} onClose={closeMenu} />
       )}
