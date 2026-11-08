@@ -69,7 +69,7 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
     characterPreference: 'traditional',
     selectedLessons: [1],
     selectedBooks: [1],
-    grammarProgress: { startedPartIds: [], completedPageIds: [], completedPartIds: [] },
+    grammarProgress: { startedPartIds: [], completedPageIds: [], completedPartIds: [], readReadingIds: [], lessonDoneMarks: {} },
   };
 
   assert.equal(hasMetadataChanged(syncedSettings, payload), false);
@@ -97,7 +97,7 @@ test('grammar completion syncs in settings and merges as a union', () => {
     startedPartIds: ['p1'], completedPageIds: ['page-a'], completedPartIds: [] as string[],
   };
   const payload = buildMetadataPayload(source);
-  assert.deepEqual(payload.grammarProgress, { startedPartIds: ['p1'], completedPageIds: ['page-a'], completedPartIds: [] });
+  assert.deepEqual(payload.grammarProgress, { startedPartIds: ['p1'], completedPageIds: ['page-a'], completedPartIds: [], readReadingIds: [], lessonDoneMarks: {} });
   // A row saved before grammar synced counts as a change, so the device uploads it.
   assert.equal(hasMetadataChanged({ ...payload, grammarProgress: undefined }, payload), true);
   assert.equal(hasMetadataChanged({ ...payload, grammarProgress: { ...payload.grammarProgress, completedPageIds: ['page-b'] } }, payload), true);

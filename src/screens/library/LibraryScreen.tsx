@@ -29,7 +29,7 @@ import { LibraryCardGrid } from './components/LibraryCardGrid';
 import { LibraryHomeView } from './components/LibraryHomeView';
 import { MoveCardsDialog } from './MoveCardsDialog';
 import { EditCardDialog } from './EditCardDialog';
-import { LibraryContextMenu, type LibraryMenuAction, type MenuPoint } from './components/LibraryContextMenu';
+import { ContextMenu, type ContextMenuAction, type MenuPoint } from '../../lib/widgets';
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
@@ -135,7 +135,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
 
   const menuFolder = folders.find((folder) => folder.id === menu?.id);
   const menuOwner = isFolderOwner(menuFolder);
-  const menuActions: LibraryMenuAction[] = !menu ? [] : menu.kind === 'folder' ? [
+  const menuActions: ContextMenuAction[] = !menu ? [] : menu.kind === 'folder' ? [
     ...(currentUser && menuFolder ? [{ id: 'share', label: 'Share', icon: 'share' as const, onSelect: () => collaboration.setShareFolderId(menu.id) }] : []),
     ...(menuOwner ? [{ id: 'edit', label: 'Edit folder', icon: 'pencil' as const, onSelect: () => openEditFolder(menu.id) }] : []),
     { id: 'delete', label: menuOwner ? 'Delete folder' : 'Leave folder', icon: 'trash', danger: true, onSelect: () => { if (menuFolder) setDeleteFolderTarget(menuFolder); } },
@@ -305,7 +305,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         mode={editFolderId ? 'edit' : 'create'}
       />
       <EditCardDialog card={editCardTarget} onSave={saveEditedCard} onClose={() => setEditCardTarget(null)} />
-      {menu && <LibraryContextMenu point={menu.point} label={menu.kind === 'folder' ? `${menu.name} folder options` : `${menu.name} card options`} actions={menuActions} onClose={closeMenu} />}
+      {menu && <ContextMenu point={menu.point} label={menu.kind === 'folder' ? `${menu.name} folder options` : `${menu.name} card options`} actions={menuActions} onClose={closeMenu} />}
       <DeleteCardModal
         deleteTargetId={deleteTargetId}
         setDeleteTargetId={setDeleteTargetId}

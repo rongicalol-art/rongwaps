@@ -1,5 +1,6 @@
 import { normalizeProfileSettings, PROFILE_PERSISTED_KEYS, type ProfileSettings } from '../../store/slices/profileSlice';
 import { GRAMMAR_PROGRESS_PERSISTED_KEYS, type GrammarProgressState } from '../../store/slices/grammarProgressSlice';
+import { LESSON_PROGRESS_SYNCED_KEYS, type LessonProgressState } from '../../store/slices/lessonProgressSlice';
 /**
  * Pure transformations and payload builders for cloud synchronization.
  *
@@ -46,6 +47,8 @@ export function computeSrsDelta(
  */
 /** Grammar completion; synced inside the settings blob (see mergeGrammarProgress). */
 export type GrammarProgress = Pick<GrammarProgressState, (typeof GRAMMAR_PROGRESS_PERSISTED_KEYS)[number]>;
+/** Readings read and lessons marked done; synced in the same blob (see mergeLessonProgress). */
+export type LessonProgress = Pick<LessonProgressState, (typeof LESSON_PROGRESS_SYNCED_KEYS)[number]>;
 
 export type CloudMetadataPayload = ProfileSettings & {
   favorites: string[];
@@ -53,7 +56,8 @@ export type CloudMetadataPayload = ProfileSettings & {
   characterPreference: 'traditional' | 'simplified';
   selectedLessons: number[];
   selectedBooks: number[];
-  grammarProgress: GrammarProgress;
+  // Lesson progress rides in `grammarProgress`: the server's progress reset already clears that key.
+  grammarProgress: GrammarProgress & LessonProgress;
 };
 
 const METADATA_KEYS = [
@@ -66,7 +70,7 @@ const METADATA_KEYS = [
   'grammarProgress',
 ] as const satisfies readonly (keyof CloudMetadataPayload)[];
 
-export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarProgress & {
+export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarProgress & Partial<LessonProgress> & {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
@@ -84,6 +88,8 @@ export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarPr
       startedPartIds: store.startedPartIds,
       completedPageIds: store.completedPageIds,
       completedPartIds: store.completedPartIds,
+      readReadingIds: store.readReadingIds ?? [],
+      lessonDoneMarks: store.lessonDoneMarks ?? {},
     },
   };
 }
@@ -122,4 +128,5 @@ export const AUTO_SAVE_TRIGGER_SLICES = [
   'srsData',
   'pendingReviewEvents',
   ...GRAMMAR_PROGRESS_PERSISTED_KEYS,
+  ...LESSON_PROGRESS_SYNCED_KEYS,
 ] as const satisfies readonly (keyof AppStoreData)[];

@@ -7,6 +7,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import type { CourseDashboardProgress, LessonPartSelectionMap } from '../../../types/models';
 import { getLessonSelectionKey } from '../../../utils/lesson/lessonPartSelection';
 import { aggregateLessonPartProgress } from '../../../utils/lesson/lessonPartProgress';
+import { useKeepLegacyLessonsDone, useLessonCompletion } from './useLessonCompletionInputs';
 
 interface UseCourseDashboardOptions {
   activeBookId: number;
@@ -41,6 +42,7 @@ export function useCourseDashboard({
   const [error, setError] = useState<string | null>(null);
   const completedGrammarPartIds = useAppStore((state) => state.completedPartIds);
   const lastOpenedLessons = useAppStore((state) => state.lastOpenedLessons);
+  const completionFor = useLessonCompletion(activeBookId, cards.length > 0);
 
   useEffect(() => {
     let isMounted = true;
@@ -119,9 +121,15 @@ export function useCourseDashboard({
         const completedPathCount = grammarParts.filter(
           (part) => completedGrammarPartIds.includes(part.id),
         ).length;
-        const isCompleted = learnedCount === lessonCards.length
-          && completedPathCount === requiredPathCount;
+        const { completion, isTestPassed } = completionFor(
+          lesson.id,
+          { done: learnedCount, total: lessonCards.length },
+          grammarParts.flatMap((part) => part.grammarPages.map((page) => page.id)),
+        );
+        const isCompleted = completion.isDone;
         return {
+          completion,
+          isTestPassed,
           lesson,
           lessonCards,
           partRows,
@@ -147,6 +155,8 @@ export function useCourseDashboard({
       ?? null;
 
     const lessons = baseLessons.map(({
+      completion,
+      isTestPassed,
       lesson,
       lessonCards,
       partRows,
@@ -184,6 +194,9 @@ export function useCourseDashboard({
         completedPathCount,
         startedPathCount: completedPathCount,
         isFullyCompleted: isCompleted,
+        isMarkedDone: completion.isMarkedDone,
+        activityBars: completion.activityBars,
+        isTestPassed,
         state: isLocked
           ? 'locked' as const
           : isCurrent
@@ -226,11 +239,14 @@ export function useCourseDashboard({
     cards,
     hasFullCourseAccess,
     completedGrammarPartIds,
+    completionFor,
     lastOpenedLessons,
     learnedCards,
     selectedLessonParts,
     selectedLessons,
   ]);
+
+  useKeepLegacyLessonsDone(activeBookId, cards.length > 0 ? progress.lessons : null);
 
   return { progress, isLoading, error };
 }

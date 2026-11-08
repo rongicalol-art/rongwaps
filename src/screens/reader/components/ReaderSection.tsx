@@ -9,6 +9,7 @@ import { useReaderStudyData } from '../hooks/useReaderStudyData';
 import { isEssayReading } from '../../../utils/lesson/readingKind';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { ReaderSummary } from './ReaderSummary';
+import { ReadingEndMarker } from './ReadingEndMarker';
 
 
 export type ReaderPlayTarget = { lineIndex: number; onlyThisLine?: boolean } | { startSec: number };
@@ -59,9 +60,14 @@ export function ReaderSection({ reading, index, grouped, first, onPlay, onOpenGr
   const props = {
     ...viewProps, reading, alignment, newWords, compactTop: grouped,
     onPlayLine: playLine, onPlayRange: playRange,
-    footer: <ReaderSummary reading={reading} characterPreference={viewProps.characterPreference}
-      hasFinished={viewProps.hasFinished} words={newWords} grammarPoints={partGrammarPoints}
-      onPlayLine={playLineOnly} onOpenGrammar={onOpenGrammar} onLocateWord={locateWord} />,
+    footer: (
+      <>
+        <ReadingEndMarker readingId={reading.id} hasFinished={viewProps.hasFinished} />
+        <ReaderSummary reading={reading} characterPreference={viewProps.characterPreference}
+          hasFinished={viewProps.hasFinished} words={newWords} grammarPoints={partGrammarPoints}
+          onPlayLine={playLineOnly} onOpenGrammar={onOpenGrammar} onLocateWord={locateWord} />
+      </>
+    ),
   };
   return (
     <section ref={rootRef} aria-label={`Lesson ${reading.lessonId}, Part ${reading.dialogueNumber}`} data-reading-id={reading.id}>
