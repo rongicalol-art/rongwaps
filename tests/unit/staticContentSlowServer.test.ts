@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { mock } from 'node:test';
 import { fetchStaticJsonWithMetadata } from '../../src/services/staticContentService';
+import { supabase } from '../../src/services/supabaseClient';
 
 // A sleeping server (Render free plan) takes about a minute to answer the first request.
 async function withBrowser(run: (sent: RequestCache[]) => Promise<void>) {
@@ -59,6 +60,42 @@ test('a copy the server sent within the last minute is not checked again', () =>
   };
   assert.deepEqual((await load()).data, { version: 'fresh' });
   assert.deepEqual(sent, ['force-cache']);
+}));
+
+test('a reply that stalls after its headers counts as slow', () => withBrowser(async () => {
+  globalThis.fetch = async (_url, init) => (init?.cache === 'force-cache'
+    ? Response.json({ version: 'saved' })
+    : new Response(new ReadableStream({ start() {} }), { headers: { 'content-type': 'application/json' } }));
+  const result = load();
+  await settle();
+  mock.timers.tick(4_000);
+  assert.deepEqual((await result).data, { version: 'saved' });
+}));
+
+test('gated files use a saved copy only while a learner is signed in', () => withBrowser(async (sent) => {
+  const env = { url: process.env.VITE_SUPABASE_URL, key: process.env.VITE_SUPABASE_ANON_KEY };
+  process.env.VITE_SUPABASE_URL = 'https://saved-copy.invalid';
+  process.env.VITE_SUPABASE_ANON_KEY = 'test-public-key';
+  const auth = supabase.auth as unknown as Record<string, unknown>;
+  let session: { access_token: string } | null = null;
+  auth.getSession = async () => ({ data: { session }, error: null });
+  globalThis.fetch = async (_url, init) => {
+    sent.push(init?.cache ?? 'default');
+    return init?.cache === 'force-cache' ? Response.json({ version: 'saved' }) : Response.json({ version: 'fresh' });
+  };
+  const gated = () => fetchStaticJsonWithMetadata<{ version: string }>('/data/test/manifest.json', 'gated test', { revalidate: true });
+  try {
+    assert.deepEqual((await gated()).data, { version: 'fresh' });
+    assert.deepEqual(sent, ['no-cache'], 'signed out: only the server answers');
+    session = { access_token: 'token' };
+    sent.length = 0;
+    assert.deepEqual((await gated()).data, { version: 'fresh' });
+    assert.deepEqual(sent, ['force-cache', 'no-cache']);
+  } finally {
+    delete auth.getSession;
+    if (env.url === undefined) delete process.env.VITE_SUPABASE_URL; else process.env.VITE_SUPABASE_URL = env.url;
+    if (env.key === undefined) delete process.env.VITE_SUPABASE_ANON_KEY; else process.env.VITE_SUPABASE_ANON_KEY = env.key;
+  }
 }));
 
 test('a server error keeps the saved copy', () => withBrowser(async () => {

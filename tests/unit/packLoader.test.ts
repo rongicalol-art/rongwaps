@@ -270,7 +270,8 @@ test('after a deploy, a removed part refetches the manifest once and loads the n
   const stub = (async (input: RequestInfo | URL) => {
     const url = String(input);
     calls.push(url);
-    const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json' } });
+    // Dated now: the saved manifest counts as just sent, so only an explicit server check sees the deploy.
+    const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json', date: new Date().toUTCString() } });
     if (url === '/data/test/manifest.json') {
       manifestFetches++;
       const path = manifestFetches === 1 ? '/data/test/part-1-old.json' : '/data/test/part-1-new.json';
