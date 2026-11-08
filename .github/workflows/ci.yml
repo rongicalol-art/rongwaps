@@ -2,12 +2,21 @@ name: CI
 
 # `verify` is the gate: Render deploys staging (main) and the live site
 # (production) only after every check on that commit passes.
+#
+# How much runs (Actions minutes are limited; docs/TESTING.md "Where checks run"):
+#   full  - the whole suite: Release PRs and pushes to production, the weekly run, manual runs,
+#           and PRs labelled `full-ci` (e.g. from a phone session without Docker)
+#   merge - push to main: typecheck, tests and build, enough for the staging deploy
+#   pr    - PRs into main: secret scan and migration safety only; the author runs `npm run gate`
+#           locally and pastes its summary into the PR
+# Draft PRs run nothing.
 on:
   pull_request:
+    types: [opened, synchronize, reopened, labeled, ready_for_review]
   push:
     branches: [main, production]
   schedule:
-    - cron: '0 19 * * *' # 03:00 Taiwan: nightly journeys on main
+    - cron: '0 19 * * 0' # 03:00 Taiwan on Mondays: weekly full run on main
   workflow_dispatch:
 
 permissions:
@@ -19,11 +28,21 @@ concurrency:
 
 jobs:
   verify:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
       BASE_REF: ${{ github.event_name == 'pull_request' && github.base_ref || '' }}
+      LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
     steps:
+      - name: How much to check
+        id: depth
+        run: |
+          mode=full
+          if [ "$GITHUB_EVENT_NAME" = pull_request ] && [ "$BASE_REF" != production ] && [[ ",$LABELS," != *",full-ci,"* ]]; then mode=pr; fi
+          if [ "$GITHUB_EVENT_NAME" = push ] && [ "$GITHUB_REF_NAME" = main ]; then mode=merge; fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "Checking at depth: $mode"
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
@@ -37,7 +56,8 @@ jobs:
       - run: npm ci
       - name: Secret scan (changed lines)
         run: |
-          curl -sSfL -o /tmp/gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          # GitHub release downloads have 504 spells: retry for about two minutes before failing.
+          curl -sSfL --retry 8 --retry-delay 15 --retry-all-errors -o /tmp/gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
           echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  /tmp/gitleaks.tar.gz" | sha256sum -c -
           tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
           base=$([ -n "$BASE_REF" ] && echo "origin/$BASE_REF" || echo "HEAD~1")
@@ -45,28 +65,45 @@ jobs:
           { git diff --unified=0 "$base" HEAD | grep -E '^\+[^+]' || true; } | /tmp/gitleaks stdin --no-banner --redact --exit-code 1
       - name: Migration safety
         run: npx tsx scripts/release/checkMigrations.ts "$([ -n "$BASE_REF" ] && echo "origin/$BASE_REF" || echo "HEAD~1")"
-      - run: npm run typecheck
-      - run: npm run lint
-      - run: npm run games:check
-      - run: npx --no-install wrangler deploy --dry-run --config games/wrangler.staging.jsonc
-      - run: npm run games:test
+      - if: steps.depth.outputs.mode != 'pr'
+        run: npm run typecheck
+      - if: steps.depth.outputs.mode == 'full'
+        run: npm run lint
+      - if: steps.depth.outputs.mode == 'full'
+        run: npm run games:check
+      - if: steps.depth.outputs.mode == 'full'
+        run: npx --no-install wrangler deploy --dry-run --config games/wrangler.staging.jsonc
+      - if: steps.depth.outputs.mode == 'full'
+        run: npm run games:test
       - name: Study together load budgets (500 synthetic learners, local Worker)
+        if: steps.depth.outputs.mode == 'full'
         run: npm run games:load
-      - run: npm test
-      - run: npm run content:validate
-      - run: npm run jev:lint
-      - run: npm run build
+      - if: steps.depth.outputs.mode != 'pr'
+        run: npm test
+      - if: steps.depth.outputs.mode == 'full'
+        run: npm run content:validate
+      - if: steps.depth.outputs.mode == 'full'
+        run: npm run jev:lint
+      - if: steps.depth.outputs.mode != 'pr'
+        run: npm run build
         env:
           # Placeholders so the client bundle builds; never real keys.
           VITE_SUPABASE_URL: https://placeholder.supabase.co
           VITE_SUPABASE_ANON_KEY: placeholder-anon-key
       - name: Size budgets
+        if: steps.depth.outputs.mode == 'full'
         run: npm run perf:check
 
   # Learner journeys in real browsers against a throwaway local Supabase stack.
-  # Always on the way to production (deploy.yml waits for this workflow), nightly
-  # on main, and on PRs that touch saving, sign-in, the server or the database.
+  # Always on the way to production (deploy.yml waits for this workflow), weekly
+  # on main, and on `full-ci` PRs that touch saving, sign-in, the server or the
+  # database (other PRs run them locally with `npm run gate`).
   e2e:
+    if: >-
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      || (github.event_name == 'push' && github.ref_name == 'production')
+      || (github.event_name == 'pull_request' && !github.event.pull_request.draft
+          && (github.base_ref == 'production' || contains(github.event.pull_request.labels.*.name, 'full-ci')))
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -119,8 +156,14 @@ jobs:
           path: playwright-report/
           retention-days: 14
 
-  # A migration that would break restores must fail its PR, not the night it matters.
+  # A migration that would break restores must fail before production, not the night it matters
+  # (PRs into main run it locally with `npm run gate`).
   backup-selftest:
+    if: >-
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      || (github.event_name == 'push' && github.ref_name == 'production')
+      || (github.event_name == 'pull_request' && !github.event.pull_request.draft
+          && (github.base_ref == 'production' || contains(github.event.pull_request.labels.*.name, 'full-ci')))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

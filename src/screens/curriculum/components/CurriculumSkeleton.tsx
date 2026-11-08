@@ -1,4 +1,9 @@
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Skeleton } from '../../../lib/widgets';
+
+/** Lessons arrive within a second or two; a longer wait means the server is waking from sleep. */
+const WAKING_HINT_AFTER_MS = 5_000;
 
 interface CurriculumSkeletonProps {
   hasStarterLesson?: boolean;
@@ -27,8 +32,27 @@ function LessonItemSkeleton({ index }: { index: number }) {
 }
 
 export function CurriculumSkeleton({ hasStarterLesson = false }: CurriculumSkeletonProps) {
+  const [isWaking, setIsWaking] = useState(false);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsWaking(true), WAKING_HINT_AFTER_MS);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="w-full flex flex-col items-center animate-in fade-in duration-200" role="status" aria-label="Loading curriculum">
+      <AnimatePresence initial={false}>
+        {isWaking && (
+          <motion.div
+            key="waking"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full overflow-hidden"
+          >
+            <p className="pb-4 text-center text-sm font-bold text-ui-muted-strong">Waking up. This can take a minute.</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {hasStarterLesson && (
         <div className="mb-8 w-full max-w-[400px]">
           <div className="flex w-full items-center justify-between rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 text-left">

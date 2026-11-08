@@ -44,3 +44,29 @@ export function findReadingMatch(map: Map<string, Flashcard>, words: string[], p
   }
   return undefined;
 }
+
+/** Tones 一 and 不 take before other syllables (yí bèi, bú shì); the book writes these, CEDICT writes yī/bù. */
+const SANDHI_TONES: Record<string, { base: string; tones: string }> = { 一: { base: 'yi', tones: '124' }, 不: { base: 'bu', tones: '24' } };
+
+/**
+ * "Does this entry belong to this reading?" across the Taiwan book and CEDICT:
+ * a neutral tone inside a multi-syllable word matches any tone (要是 yàoshì = yào shi),
+ * and 一/不 match their sandhi tones when `word` lines up with the syllables.
+ * Two different full tones still differ (行 háng ≠ xíng). `allowNeutral: false` keeps only the 一/不 tolerance.
+ * Never use it for identity or storage keys.
+ */
+export function sameReading(a?: string | null, b?: string | null, word?: string, allowNeutral = true): boolean {
+  const left = pronunciationKey(a)?.split(' ');
+  const right = pronunciationKey(b)?.split(' ');
+  if (!left || !right || left.length !== right.length) return false;
+  const characters = word ? Array.from(word.trim()) : [];
+  return left.every((syllable, i) => {
+    const other = right[i];
+    if (syllable === other) return true;
+    const base = syllable.slice(0, -1);
+    if (base !== other.slice(0, -1)) return false;
+    if (allowNeutral && left.length > 1 && (syllable.endsWith('5') || other.endsWith('5'))) return true;
+    const sandhi = characters.length === left.length ? SANDHI_TONES[characters[i]] : undefined;
+    return Boolean(sandhi && sandhi.base === base && sandhi.tones.includes(syllable.slice(-1)) && sandhi.tones.includes(other.slice(-1)));
+  });
+}

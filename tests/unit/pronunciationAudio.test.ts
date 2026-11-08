@@ -31,7 +31,7 @@ test('invalid/contextual readings never fetch; character requests share one lazy
   globalThis.fetch = async (input) => {
     const url = String(input); calls.push(url);
     const payload = url.endsWith('manifest.json') ? { schemaVersion: 1, version: '0123456789abcdef', count: 4, path: '/data/pronunciation-audio/0123456789abcdef.json' } : pack;
-    return new Response(JSON.stringify(payload), { headers: { 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify(payload), { headers: { 'Content-Type': 'application/json', Date: new Date().toUTCString() } });
   };
   try {
     for (const [word, reading] of [['銀行', 'yin2hang2'], ['行', 'xing2/hang2'], ['行', ''], ['行', 'xing2 hang2']]) {

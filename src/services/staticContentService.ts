@@ -7,6 +7,8 @@ import { isSupabaseConfigured, supabase } from './supabaseClient';
 interface StaticJsonOptions {
   persistentKey?: string;
   revalidate?: boolean;
+  /** With `revalidate`: only the server's answer will do (e.g. a deploy removed a listed file). */
+  serverOnly?: boolean;
   fallbackToPersistent?: boolean;
   validate?: (data: unknown) => boolean;
 }
@@ -48,6 +50,66 @@ export function contentUrl(path: string): string {
 }
 
 /** All content packs require a school session; keep in sync with server/index.ts. */
+
+/** The app server sleeps after 15 idle minutes (Render free plan) and takes about a minute to wake: wait that long. */
+const SERVER_WAKE_MS = 75_000;
+/** The browser's saved copy of a file answers within this; slower means nothing is saved and the request went to the server. */
+const SAVED_COPY_READ_MS = 1_000;
+/** A check for a newer version slower than this (a sleeping server) leaves the saved copy in use. */
+const FRESH_CHECK_MS = 4_000;
+
+/**
+ * A copy the server sent this recently needs no second check: with nothing saved, the read itself went to
+ * the server. Short, so a late reply from another tab during a deploy is trusted for seconds at most.
+ */
+const RECENT_COPY_MS = 10_000;
+
+function isRecent(response: Response): boolean {
+  const age = Date.now() - Date.parse(response.headers.get('date') ?? '');
+  return Math.abs(age) < RECENT_COPY_MS;
+}
+
+/** Resolves with the promise's value, or null if it takes longer than `ms`. */
+function within<T>(promise: Promise<T>, ms: number): Promise<T | null> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const late = new Promise<null>((resolve) => { timer = setTimeout(() => resolve(null), ms); });
+  return Promise.race([promise, late]).finally(() => clearTimeout(timer));
+}
+
+/** The whole body, so a reply that stalls after its headers counts as slow. */
+async function readFully(response: Response): Promise<Response> {
+  return new Response(await response.text(), { status: response.status, headers: response.headers });
+}
+
+/** Saved copies of gated files are only for a signed-in learner; without a session the server decides. */
+async function maySaveGatedCopy(path: string): Promise<boolean> {
+  if (!PROTECTED_CONTENT.test(path) || !isSupabaseConfigured()) return true;
+  const { data } = await supabase.auth.getSession();
+  return Boolean(data.session);
+}
+
+/**
+ * Gets a file that may have changed since the last visit. The browser's saved copy is read first
+ * (once a server check starts, the browser holds that copy until the check ends), then the server is
+ * asked for a newer version. If the server is slow (asleep), the saved copy is used and the server's
+ * answer refreshes it for next time. With nothing saved, the request simply waits for the server.
+ */
+async function revalidateOrSavedCopy(path: string, signal: AbortSignal): Promise<Response> {
+  if (!(await maySaveGatedCopy(path))) return fetchContent(path, { cache: 'no-cache', signal });
+  const firstRequest = fetchContent(path, { cache: 'force-cache', signal });
+  const quick = await within(firstRequest, SAVED_COPY_READ_MS).catch(() => undefined);
+  if (quick === null) return firstRequest;
+  if (!quick?.ok) return fetchContent(path, { cache: 'no-cache', signal });
+  const saved = await readFully(quick);
+  if (isRecent(saved)) return saved;
+  const fresh = fetchContent(path, { cache: 'no-cache', signal }).then(readFully);
+  const answered = await within(fresh, FRESH_CHECK_MS).catch(() => null);
+  // A server error (e.g. while it restarts) is no reason to drop a good saved copy.
+  if (answered && answered.status < 500) return answered;
+  // The reply still lands in the browser cache when the server wakes.
+  fresh.catch(() => {});
+  return saved;
+}
 
 /** `fetch` for `/data/...` content; sends the session token for the gated lesson packs (same-origin only). */
 export async function fetchContent(path: string, init: RequestInit = {}): Promise<Response> {
@@ -94,7 +156,7 @@ export function fetchContentBlobUrl(path: string, signal?: AbortSignal): Promise
   if (entry?.controller.signal.aborted && !entry.url) { blobUrls.delete(path); entry = undefined; }
   if (!entry) {
     const created: ContentImageEntry = { promise: Promise.resolve(''), users: 0, controller: new AbortController() };
-    const deadline = setTimeout(() => created.controller.abort(), 20_000);
+    const deadline = setTimeout(() => created.controller.abort(), SERVER_WAKE_MS);
     created.promise = fetchContent(path, { signal: created.controller.signal }).then(async (response) => {
       if (!response.ok) throw new NetworkError(`${path} returned ${response.status}`, response.status);
       created.url = URL.createObjectURL(await response.blob());
@@ -169,11 +231,15 @@ export async function fetchStaticJsonWithMetadata<T>(
   }
 
   const controller = new AbortController();
-  const deadline = setTimeout(() => controller.abort(), 20_000);
+  const deadline = setTimeout(() => controller.abort(), SERVER_WAKE_MS);
   try {
   let response: Response;
   try {
-    response = await timeDataRequest(label, () => fetchContent(path, { cache: options.revalidate ? 'no-cache' : 'default', signal: controller.signal }));
+    response = await timeDataRequest(label, () => {
+      const { signal } = controller;
+      if (!options.revalidate) return fetchContent(path, { cache: 'default', signal });
+      return options.serverOnly ? fetchContent(path, { cache: 'no-cache', signal }) : revalidateOrSavedCopy(path, signal);
+    });
   } catch (error) {
     if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     throw error;

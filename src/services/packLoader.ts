@@ -95,13 +95,14 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     }
   }
 
-  async function getManifest(): Promise<TManifest> {
+  /** `fromServer`: skip the browser's saved copy (the listed files changed under us). */
+  async function getManifest(fromServer = false): Promise<TManifest> {
     if (manifestPromise) return manifestPromise;
 
     manifestPromise = fetchStaticJson<TManifest>(
       manifestPath,
       manifestLabel,
-      { revalidate: true, ...(options.persistManifest ? { persistentKey: `${namespace}-manifest`, fallbackToPersistent: true,
+      { revalidate: true, serverOnly: fromServer, ...(options.persistManifest ? { persistentKey: `${namespace}-manifest`, fallbackToPersistent: true,
         validate: (data: unknown) => validateManifest(data as TManifest) } : {}) },
     ).then((manifest) => {
       if (!validateManifest(manifest)) {
@@ -131,7 +132,7 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
         const current = await manifestPromise.catch(() => null);
         if (current === stale) manifestPromise = null;
       }
-      const fresh = await getManifest();
+      const fresh = await getManifest(true);
       if ((fresh as { version: string }).version === (stale as { version: string }).version) throw error;
       return loadPartFrom(fresh, key);
     }
@@ -173,7 +174,7 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
   }
 
   return {
-    manifest: getManifest,
+    manifest: () => getManifest(),
     loadedParts: () => partCache.values(),
     loadPart,
     retainParts: (keys) => {

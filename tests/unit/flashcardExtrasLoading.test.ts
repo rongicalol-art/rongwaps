@@ -19,7 +19,7 @@ test('course and saved-word lookups fetch only their derivative shards, not sour
     const path = String(input).replace(/\?v=[a-f0-9]+$/, '');
     requests.push(path);
     assert.ok(path.startsWith('/data/flashcard-extras/'), `Whole-corpus request: ${path}`);
-    return new Response(fs.readFileSync(`public${path}`, 'utf8'), { headers: { 'content-type': 'application/json' } });
+    return new Response(fs.readFileSync(`public${path}`, 'utf8'), { headers: { 'content-type': 'application/json', date: new Date().toUTCString() } });
   }) as typeof fetch;
   try {
     const packed = await fetchPackedFlashcardExtras(card);

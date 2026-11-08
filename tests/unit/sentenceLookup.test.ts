@@ -62,6 +62,15 @@ test('sentenceLookup: decomposes an unlisted question into meaningful parts', as
   assert.ok(result.fallbackParts.every(part => part.definition || part.pinyin));
 });
 
+test('sentenceLookup: book tones find CEDICT neutral and 一/不 readings, closest reading first', async () => {
+  for (const [word, pinyin, sense] of [['要是', 'yàoshì', 'if'], ['一輩子', 'yíbèizi', '(for) a lifetime'], ['不是', 'búshì', 'no'],
+    ['地道', 'dìdào', 'tunnel'], ['地道', 'dìdao', 'authentic'], ['東西', 'dōngxi', 'thing'], ['東西', 'dōngxī', 'east and west']]) {
+    const result = await lookupSentenceWord(word, 'traditional', { pinyin });
+    assert.ok(result?.definitions[0]?.startsWith(sense), `${word} ${pinyin}: ${result?.definitions[0]}`);
+    assert.equal(result?.pinyin, pinyin, 'the popup keeps the book pinyin');
+  }
+});
+
 test('sentenceLookup: handles empty or unknown input gracefully', async () => {
   const empty = await lookupSentenceWord('');
   assert.equal(empty, null);

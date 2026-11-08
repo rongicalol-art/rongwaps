@@ -31,3 +31,10 @@ test('sensesForReading prefers a tagged group that repeats the row reading', () 
   assert.deepEqual(sensesForReading(dou, 'dōu'), ['all; both; entirely', 'already']);
   assert.deepEqual(sensesForReading(dou, 'dū'), ['capital city']);
 });
+
+test('sensesForReading tolerates CEDICT neutral tones only when asked', () => {
+  const yaoshi = { pinyin: ['yào shi'], definitions: ['(coll.) if'] };
+  assert.equal(sensesForReading(yaoshi, 'yàoshì'), null);
+  assert.deepEqual(sensesForReading(yaoshi, 'yàoshì', { word: '要是' }), ['(coll.) if']);
+  assert.equal(sensesForReading(a, 'à', { word: '啊' }), null);
+});
