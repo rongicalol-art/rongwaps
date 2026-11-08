@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '../../../utils/cn';
 import { AppIcon, FolderSvg } from '../../../lib/widgets';
-import { useMenuTrigger, type MenuPoint } from './LibraryContextMenu';
+import { useMenuTrigger, type MenuPoint } from '../../../lib/widgets';
 
 interface FolderItemProps {
   id: string;

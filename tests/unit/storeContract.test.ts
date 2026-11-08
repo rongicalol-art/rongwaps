@@ -46,6 +46,10 @@ const EXPECTED_PERSISTED_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
+  // Lesson progress (readings read, lessons marked done, old-rule check per book)
+  'readReadingIds',
+  'lessonDoneMarks',
+  'legacyDoneBooks',
   // Practice preferences
   'preset',
   'pace',
@@ -138,6 +142,10 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
+  // Readings read and lessons marked done are the account's too.
+  'readReadingIds',
+  'lessonDoneMarks',
+  'legacyDoneBooks',
   // Study together: live state and blocks belong to the signed-in account.
   'race', 'racePlaying', 'racePending', 'raceStatus', 'socialBlocks', 'socialSafety', 'socialOnlineTotal', 'socialChat', 'socialCards', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe', 'socialMentionDraft',
   'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialUnread', 'socialViewingLesson', 'socialStudying', 'socialHere',
@@ -179,6 +187,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     startedPartIds: ['b1-l1-p1'],
     completedPageIds: ['b1-l1-g1'],
     completedPartIds: ['b1-l1-p1'],
+    readReadingIds: ['B1L01-R01'],
+    lessonDoneMarks: { b1l01: { done: true, at: '2026-11-08T00:00:00.000Z' } },
     // Account-agnostic state that must survive the switch:
     activeTab: 'library',
     activeBookId: 1,
@@ -215,6 +225,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.deepEqual(state.startedPartIds, []);
   assert.deepEqual(state.completedPageIds, []);
   assert.deepEqual(state.completedPartIds, []);
+  assert.deepEqual(state.readReadingIds, []);
+  assert.deepEqual(state.lessonDoneMarks, {});
 
   // Account-agnostic state survives.
   assert.equal(state.activeTab, 'library');

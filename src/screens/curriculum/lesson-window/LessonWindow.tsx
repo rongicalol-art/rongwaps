@@ -17,7 +17,7 @@ import { LessonTestTitle } from './LessonTestSummary';
 import { useLessonTestData } from '../../../hooks/useLessonTestData';
 import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
-import { LESSON_TEST_PASS } from '../../../utils/lesson/lessonTestPlan';
+import { isLessonTestPassed } from '../../../utils/lesson/lessonCompletion';
 import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
 import {
   getAggregatedPart,
@@ -81,7 +81,10 @@ function LessonTitle({
     : lesson.label;
   return (
     <div>
-      <p className="text-xs font-black uppercase tracking-widest text-ui-muted">{eyebrow}</p>
+      <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-ui-muted">
+        {eyebrow}
+        {lesson.isFullyCompleted && <AppIcon name="check" size={14} className="text-brand-primary" aria-label="Lesson done" />}
+      </p>
       <h2 className={isDesktop ? 'mt-1 text-4xl font-black leading-tight text-ui-ink-strong' : 'text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl'}>
         {english}
       </h2>
@@ -312,7 +315,7 @@ function LessonBody({
       onTogglePart={handleTogglePart}
       test={testData ? {
         selected: isTest,
-        passed: Boolean(testRecord && testRecord.best / testRecord.total >= LESSON_TEST_PASS),
+        passed: isLessonTestPassed(testRecord),
         onSelect: () => { setTestFor(lesson.id); void loadLessonTest().catch(() => {}); },
       } : undefined}
       className={className}

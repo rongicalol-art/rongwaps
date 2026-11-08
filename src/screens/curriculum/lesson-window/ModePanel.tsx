@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ActionButton, PlayfulNavIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { ActivityRing } from './ActivityRing';
 import { ModeIcon } from './ModeIcon';
 import { isModeAvailable, type LessonWindowPart, type PartModeKey } from './useLessonWindowParts';
 
@@ -11,6 +12,13 @@ const MODES: Array<{ key: PartModeKey; name: string }> = [
 ];
 
 const DIVIDER_EDGE = 'var(--color-ui-divider)';
+
+/** How far the part's activity is, 0–1 (reading counts once it was read to the end). */
+function getModeFraction(part: LessonWindowPart, mode: PartModeKey): number {
+  if (mode === 'vocab') return part.vocab.total > 0 ? part.vocab.done / part.vocab.total : 1;
+  if (mode === 'grammar') return part.grammar && part.grammar.total > 0 ? part.grammar.done / part.grammar.total : 1;
+  return part.isReadingRead ? 1 : 0;
+}
 
 function getModeStatus(part: LessonWindowPart, mode: PartModeKey): string {
   if (mode === 'vocab') {
@@ -80,6 +88,7 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
                 </span>
               ) : null}
             </span>
+            <ActivityRing fraction={getModeFraction(part, key)} label={name} />
           </ActionButton>
         );
       })}

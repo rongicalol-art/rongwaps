@@ -23,6 +23,7 @@ import { prepareLessonWindow } from './lesson-window/prepareLessonWindow';
 import { useReadyAction } from '../../hooks/useReadyAction';
 import { preparePracticeLaunch } from '../activities';
 import { GlobalPresenceButton, LessonFaces, lessonKey } from '../../features/social';
+import { lessonProgressKey } from '../../utils/lesson/lessonCompletion';
 import { lessonThumbnail } from '../../data/lessonThumbnails';
 
 interface CurriculumLibraryProps {
@@ -160,6 +161,12 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     [selectableLessonIds, selection],
   );
 
+  const setLessonDoneMark = useAppStore((state) => state.setLessonDoneMark);
+  const handleMarkDone = useCallback(
+    (lessonId: number, done: boolean) => setLessonDoneMark(lessonProgressKey(activeBookId, lessonId), done),
+    [activeBookId, setLessonDoneMark],
+  );
+
   const handleLongPress = useCallback(
     (lessonId: number) => {
       anchorLessonIdRef.current = lessonId;
@@ -211,6 +218,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         lesson={lesson}
         onOpen={handleLessonClick}
         onLongPress={handleLongPress}
+        onMarkDone={handleMarkDone}
         onToggle={handleLessonClick}
         isSelecting={selection.isMultiSelecting}
         isSelected={isPicked(lesson)}

@@ -7,6 +7,8 @@ import { useAppStore } from '../../../store/useAppStore';
 import type { CourseDashboardProgress, LessonPartSelectionMap } from '../../../types/models';
 import { getLessonSelectionKey } from '../../../utils/lesson/lessonPartSelection';
 import { aggregateLessonPartProgress } from '../../../utils/lesson/lessonPartProgress';
+import { isLessonTestPassed, lessonProgressKey, summarizeLessonCompletion } from '../../../utils/lesson/lessonCompletion';
+import { useKeepLegacyLessonsDone, useLessonReadingIds } from './useLessonCompletionInputs';
 
 interface UseCourseDashboardOptions {
   activeBookId: number;
@@ -40,7 +42,12 @@ export function useCourseDashboard({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const completedGrammarPartIds = useAppStore((state) => state.completedPartIds);
+  const completedPageIds = useAppStore((state) => state.completedPageIds);
+  const readReadingIds = useAppStore((state) => state.readReadingIds);
+  const lessonDoneMarks = useAppStore((state) => state.lessonDoneMarks);
+  const lessonTests = useAppStore((state) => state.lessonTests);
   const lastOpenedLessons = useAppStore((state) => state.lastOpenedLessons);
+  const readingIdsByLesson = useLessonReadingIds(activeBookId, cards.length > 0);
 
   useEffect(() => {
     let isMounted = true;
@@ -119,9 +126,20 @@ export function useCourseDashboard({
         const completedPathCount = grammarParts.filter(
           (part) => completedGrammarPartIds.includes(part.id),
         ).length;
-        const isCompleted = learnedCount === lessonCards.length
-          && completedPathCount === requiredPathCount;
+        const grammarPageIds = grammarParts.flatMap((part) => part.grammarPages.map((page) => page.id));
+        const readingIds = readingIdsByLesson?.get(lesson.id);
+        const completion = summarizeLessonCompletion({
+          words: { done: learnedCount, total: lessonCards.length },
+          grammar: { done: grammarPageIds.filter((id) => completedPageIds.includes(id)).length, total: grammarPageIds.length },
+          reading: readingIdsByLesson
+            ? { done: (readingIds ?? []).filter((id) => readReadingIds.includes(id)).length, total: readingIds?.length ?? 0 }
+            : null,
+          mark: lessonDoneMarks[lessonProgressKey(activeBookId, lesson.id)],
+        });
+        const isCompleted = completion.isDone;
         return {
+          completion,
+          isTestPassed: isLessonTestPassed(lessonTests[lessonProgressKey(activeBookId, lesson.id)]),
           lesson,
           lessonCards,
           partRows,
@@ -147,6 +165,8 @@ export function useCourseDashboard({
       ?? null;
 
     const lessons = baseLessons.map(({
+      completion,
+      isTestPassed,
       lesson,
       lessonCards,
       partRows,
@@ -184,6 +204,9 @@ export function useCourseDashboard({
         completedPathCount,
         startedPathCount: completedPathCount,
         isFullyCompleted: isCompleted,
+        isMarkedDone: completion.isMarkedDone,
+        activityBars: completion.activityBars,
+        isTestPassed,
         state: isLocked
           ? 'locked' as const
           : isCurrent
@@ -226,11 +249,23 @@ export function useCourseDashboard({
     cards,
     hasFullCourseAccess,
     completedGrammarPartIds,
+    completedPageIds,
     lastOpenedLessons,
+    lessonDoneMarks,
+    lessonTests,
+    readReadingIds,
+    readingIdsByLesson,
     learnedCards,
     selectedLessonParts,
     selectedLessons,
   ]);
+
+  // The old done rule: every word learned and every grammar part finished.
+  const legacyDoneKeys = useMemo(() => (cards.length === 0 ? null : progress.lessons
+    .filter((lesson) => lesson.state !== 'locked' && lesson.wordCount > 0
+      && lesson.learnedCount >= lesson.wordCount && lesson.completedPathCount >= lesson.requiredPathCount)
+    .map((lesson) => lessonProgressKey(activeBookId, lesson.id))), [activeBookId, cards.length, progress.lessons]);
+  useKeepLegacyLessonsDone(activeBookId, legacyDoneKeys);
 
   return { progress, isLoading, error };
 }

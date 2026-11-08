@@ -52,6 +52,7 @@
 | ConfirmationDialog | `ConfirmationDialog.tsx` | Destructive confirm on `Dialog`; focus starts on Cancel; `children` + `confirmDisabled` for type-to-confirm. |
 | ResumeDialog | `ResumeDialog.tsx` | Opens before a flashcard/quiz window that has saved progress (gate: `useResumeLaunch`), including quiz question 1 and full-deck missed-word reviews. First positions save immediately. Icon, title, position line, optional bar, Continue (primary) or Start over. Copy comes from `resumeCopy` in `utils/srs/resumeState.ts`. |
 | DropdownMenu / DropdownMenuItem | `DropdownMenu.tsx` | Keyboard-navigable `popover-surface` menu. |
+| ContextMenu / useMenuTrigger | `ContextMenu.tsx` | Right-click or touch long-press menu at the pointer (Library folders and cards, Books lesson cards); `useMenuTrigger` swallows the click that ends a long press. |
 | SettingsPopover | `SettingsPopover.tsx` | Icon-button trigger with a small `popover-surface` settings panel (switches, segmented controls); outside click or Escape closes it. Children may take `close`. Use `DropdownMenu` for lists of menu items. |
 | ErrorBoundary | `ErrorBoundary.tsx` | Render fallback; `fallback`, `fallbackClassName`. Mounted in `main.tsx` and per tab screen. |
 | FloatingDock | `FloatingDock.tsx` | `.Root/.Pill/.Popover` bottom dock; width `sm`-`xl`, `sleepOnIdle` ghost mode. Practice dock placement: `getPracticeDockLayout` in `src/screens/activities/components/practiceDockLayout.ts`; mode controls portal into this dock, never a second one. |

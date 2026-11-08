@@ -21,6 +21,7 @@ export * from './UserAvatar';
 // Dialogs, drawers, docks, menus, and accessibility boundaries
 export * from './ActivityModalWrapper';
 export * from './ConfirmationDialog';
+export * from './ContextMenu';
 export * from './ResumeDialog';
 export * from './DetailShell';
 export * from './WorkspaceWindow';

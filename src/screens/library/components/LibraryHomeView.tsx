@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ActionButton, SectionEyebrow } from '../../../lib/widgets';
 import { FolderItem } from './FolderItem';
-import type { MenuPoint } from './LibraryContextMenu';
+import type { MenuPoint } from '../../../lib/widgets';
 import { LibraryRecentChips, type RecentItem } from './LibraryRecentChips';
 
 interface LibraryCollectionSummary {

@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { AppIcon } from '../../../lib/widgets';
 import { SpellCard } from './SpellCard';
-import type { MenuPoint } from './LibraryContextMenu';
+import type { MenuPoint } from '../../../lib/widgets';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { UserFlashcard } from '../../../types/models';
 import { cn } from '../../../utils/cn';

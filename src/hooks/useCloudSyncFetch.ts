@@ -17,6 +17,7 @@ import {
   resolveCloudMetadataPatch,
   resolveGuestFolderMigration,
 } from '../utils/sync/cloudMetadata';
+import { mergeLessonProgress } from '../utils/lesson/lessonCompletion';
 
 export interface UseCloudSyncFetchOptions {
   currentUser: User | null;
@@ -91,6 +92,7 @@ export function useCloudSyncFetch({
       if (epoch?.wiped) {
         setSrsDataAndLearnedCards(epoch.srsData, epoch.learnedCards);
         useAppStore.getState().resetGrammarProgress();
+        useAppStore.getState().resetLessonProgress();
         useAppStore.getState().resetLessonTests();
         // Nothing local is known to be on the server any more.
         setSyncCheckpoint({ userId: currentUser.id, cursor: null, srs: {} });
@@ -145,6 +147,12 @@ export function useCloudSyncFetch({
 
       const grammarPatch = mergeGrammarProgress(cloudData.settings, useAppStore.getState());
       if (Object.keys(grammarPatch).length > 0) useAppStore.setState(grammarPatch);
+      const cloudLessonProgress = cloudData.settings.grammarProgress;
+      const lessonPatch = mergeLessonProgress(
+        useAppStore.getState(),
+        cloudLessonProgress && typeof cloudLessonProgress === 'object' ? cloudLessonProgress : {},
+      );
+      if (Object.keys(lessonPatch).length > 0) useAppStore.setState(lessonPatch);
 
       useAppStore.getState().mergeReviewHistory(
         cloudData.reviewEvents,

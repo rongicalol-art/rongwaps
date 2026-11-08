@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon, DropdownMenuItem } from '../../../lib/widgets';
-import { useDismiss } from '../../../hooks/useDismiss';
+import { AppIcon, type AppIconName } from './AppIcon';
+import { DropdownMenuItem } from './DropdownMenu';
+import { useDismiss } from '../../hooks/useDismiss';
 
 export interface MenuPoint {
   x: number;
@@ -61,25 +62,25 @@ export function useMenuTrigger(onOpen: (point: MenuPoint) => void, disabled = fa
   };
 }
 
-export interface LibraryMenuAction {
+export interface ContextMenuAction {
   id: string;
   label: string;
-  icon: 'pencil' | 'trash' | 'share' | 'link' | 'family';
+  icon: AppIconName;
   danger?: boolean;
   onSelect: () => void;
 }
 
-interface LibraryContextMenuProps {
+interface ContextMenuProps {
   point: MenuPoint;
   label: string;
-  actions: LibraryMenuAction[];
+  actions: ContextMenuAction[];
   onClose: () => void;
 }
 
 const EDGE = 8;
 
-/** Cursor- or finger-anchored menu for a folder or card; stays inside the viewport. */
-export function LibraryContextMenu({ point, label, actions, onClose }: LibraryContextMenuProps) {
+/** Cursor- or finger-anchored menu (right-click or long-press); stays inside the viewport. */
+export function ContextMenu({ point, label, actions, onClose }: ContextMenuProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const [position, setPosition] = useState(point);

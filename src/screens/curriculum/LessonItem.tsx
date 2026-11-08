@@ -1,12 +1,10 @@
-import { memo, useRef, useState, type ReactNode } from 'react';
+import { memo, useCallback, useState, type ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import type { CourseLessonProgress } from '../../types/models';
 import { LESSON_LANDSCAPE_ART } from '../../data/lessonLandscapeArt';
 import { getEnglishLessonTitle } from '../../utils/lesson/lessonTitle';
-
-const LONG_PRESS_MS = 450;
-const LONG_PRESS_SLOP_PX = 8;
+import { AppIcon, ContextMenu, useMenuTrigger, type ContextMenuAction, type MenuPoint } from '../../lib/widgets';
 
 interface LessonItemProps {
   lesson: CourseLessonProgress;
@@ -15,8 +13,10 @@ interface LessonItemProps {
   art?: string;
   /** `art` is a lesson picture: fill the tile with rounded corners instead of insetting an icon. */
   isPhoto?: boolean;
-  /** Long press: start picking lessons with this one selected. Omit to disable selecting. */
+  /** Menu "Select": start picking lessons with this one selected. Omit to disable selecting. */
   onLongPress?: (id: number) => void;
+  /** Menu "Mark as done" / "Mark as not done". Omit to leave it out of the menu. */
+  onMarkDone?: (id: number, done: boolean) => void;
   /** While picking, a tap toggles the lesson instead of opening it. */
   isSelecting?: boolean;
   isSelected?: boolean;
@@ -36,12 +36,33 @@ function containerShape(isSelected: boolean, isPrev: boolean, isNext: boolean) {
   return 'mb-3 rounded-b-control border-t-0 border-b-[length:var(--depth-lg)]';
 }
 
+/**
+ * The card's thick bottom edge, split into one bar per activity (words, grammar, reading) that fills in
+ * the book colour. A done lesson's bars are all full (also when the learner marked it done).
+ */
+function ActivityEdge({ bars, isDone }: { bars: CourseLessonProgress['activityBars']; isDone: boolean }) {
+  if (bars.length === 0) return null;
+  return (
+    <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 flex h-[var(--depth-lg)] gap-[3px]">
+      {bars.map((bar) => (
+        <span key={bar.key} className="relative flex-1 overflow-hidden bg-brand-primary-track">
+          <span
+            className="absolute inset-y-0 left-0 bg-brand-primary transition-[width] duration-500 ease-out motion-reduce:transition-none"
+            style={{ width: `${(isDone ? 1 : bar.fraction) * 100}%` }}
+          />
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function LessonItemBase({
   lesson,
   onOpen,
   art,
   isPhoto = false,
   onLongPress,
+  onMarkDone,
   isSelecting = false,
   isSelected = false,
   isPrevSelected = false,
@@ -50,56 +71,30 @@ function LessonItemBase({
   faces,
 }: LessonItemProps) {
   const isLocked = lesson.state === 'locked';
+  const isDone = lesson.isFullyCompleted;
   const englishTitle = getEnglishLessonTitle(lesson.title);
+  const isFused = isSelected && (isPrevSelected || isNextSelected);
+  const showEdge = !isLocked && !isFused && lesson.activityBars.length > 0;
 
   const [shake, setShake] = useState(0);
-  const pressTimer = useRef<number | null>(null);
-  const safetyTimer = useRef<number | null>(null);
-  const pressOrigin = useRef<{ x: number; y: number } | null>(null);
-  const longPressed = useRef(false);
-  const cancelPress = () => {
-    if (pressTimer.current !== null) window.clearTimeout(pressTimer.current);
-    pressTimer.current = null;
-  };
-  const clearSafetyTimer = () => {
-    if (safetyTimer.current !== null) window.clearTimeout(safetyTimer.current);
-    safetyTimer.current = null;
-  };
+  const [menuPoint, setMenuPoint] = useState<MenuPoint | null>(null);
+  const closeMenu = useCallback(() => setMenuPoint(null), []);
+  const actions: ContextMenuAction[] = [
+    ...(onMarkDone && !isDone ? [{ id: 'done', label: 'Mark as done', icon: 'check' as const, onSelect: () => onMarkDone(lesson.id, true) }] : []),
+    ...(onMarkDone && lesson.isMarkedDone ? [{ id: 'undone', label: 'Mark as not done', icon: 'restart' as const, onSelect: () => onMarkDone(lesson.id, false) }] : []),
+    ...(onLongPress ? [{ id: 'select', label: 'Select', icon: 'choices' as const, onSelect: () => onLongPress(lesson.id) }] : []),
+  ];
+  // Right-click or a long press opens the menu (not while picking lessons, never on a locked lesson).
+  const menuTrigger = useMenuTrigger((point) => {
+    navigator.vibrate?.(12);
+    setMenuPoint(point);
+  }, isLocked || isSelecting || actions.length === 0);
 
-  const handlePointerDown = (event: React.PointerEvent) => {
-    longPressed.current = false;
-    clearSafetyTimer();
-    if (isLocked || isSelecting || !onLongPress) return;
-    pressOrigin.current = { x: event.clientX, y: event.clientY };
-    pressTimer.current = window.setTimeout(() => {
-      longPressed.current = true;
-      pressTimer.current = null;
-      navigator.vibrate?.(12);
-      onLongPress(lesson.id);
-      safetyTimer.current = window.setTimeout(() => {
-        longPressed.current = false;
-        safetyTimer.current = null;
-      }, 800);
-    }, LONG_PRESS_MS);
-  };
-  const handlePointerMove = (event: React.PointerEvent) => {
-    const origin = pressOrigin.current;
-    if (!origin || pressTimer.current === null) return;
-    if (Math.hypot(event.clientX - origin.x, event.clientY - origin.y) > LONG_PRESS_SLOP_PX) cancelPress();
-  };
   const handleClick = (event: React.MouseEvent) => {
-    if (event.shiftKey) {
-      event.preventDefault();
-    }
-    // The release that ends a long press must not also open the lesson.
+    if (event.shiftKey) event.preventDefault();
     if (isLocked) {
       navigator.vibrate?.(8);
       setShake((n) => n + 1);
-      return;
-    }
-    if (longPressed.current) {
-      longPressed.current = false;
-      clearSafetyTimer();
       return;
     }
     if (isSelecting && onToggle) onToggle(lesson.id, event);
@@ -119,7 +114,7 @@ function LessonItemBase({
       className={cn(
         'relative min-w-0 overflow-hidden border-2 bg-ui-surface transition-colors duration-200',
         containerShape(isSelected, isPrevSelected, isNextSelected),
-        isLocked && 'border-b-2',
+        (isLocked || showEdge) && 'border-b-2',
         isSelected ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-border',
       )}
     >
@@ -130,16 +125,15 @@ function LessonItemBase({
         type="button"
         aria-disabled={isLocked || undefined}
         onClick={handleClick}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={cancelPress}
-        onPointerCancel={cancelPress}
-        onPointerLeave={cancelPress}
-        onContextMenu={(event) => onLongPress && event.preventDefault()}
+        {...menuTrigger}
         aria-pressed={isSelecting ? isSelected : undefined}
-        aria-label={`${englishTitle === lesson.label ? englishTitle : `${lesson.label}: ${englishTitle}`}${isLocked ? ' (locked)' : ''}`}
+        aria-haspopup={actions.length > 0 && !isLocked ? 'menu' : undefined}
+        aria-label={`${englishTitle === lesson.label ? englishTitle : `${lesson.label}: ${englishTitle}`}${isLocked ? ' (locked)' : isDone ? ' (done)' : ''}`}
         style={{ WebkitTouchCallout: 'none', touchAction: 'manipulation' }}
-        className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent"
+        className={cn(
+          'group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent',
+          showEdge && 'pb-[calc(0.875rem+var(--depth-lg))]',
+        )}
       >
         <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-compact bg-ui-surface">
           <img
@@ -167,13 +161,20 @@ function LessonItemBase({
           <span className={cn(
             'block text-lg font-black leading-tight',
             isLocked ? 'line-clamp-3' : 'line-clamp-2',
-            isSelected ? 'text-ui-ink-strong' : isLocked ? 'text-ui-muted' : 'text-ui-muted-strong',
+            isSelected || isDone ? 'text-ui-ink-strong' : isLocked ? 'text-ui-muted' : 'text-ui-muted-strong',
           )}>
             {englishTitle}
           </span>
         </span>
+        {!isLocked && lesson.isTestPassed && (
+          <AppIcon name="crown" size={20} className="shrink-0 text-feedback-warning" aria-label="Test passed" />
+        )}
         {!isLocked && faces}
       </button>
+      {showEdge && <ActivityEdge bars={lesson.activityBars} isDone={isDone} />}
+      {menuPoint && (
+        <ContextMenu point={menuPoint} label={`${lesson.label} options`} actions={actions} onClose={closeMenu} />
+      )}
     </motion.div>
   );
 }
