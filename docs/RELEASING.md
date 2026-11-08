@@ -44,7 +44,7 @@ Rules that keep this safe: migrations follow expand → migrate → contract (th
 - **Study together only:** `npx wrangler rollback --config games/wrangler.jsonc` on the Mac restores the previous Worker version (it asks which); the app keeps working with either.
 - Then fix forward: branch → PR into `main` → staging → Release PR.
 - **Hotfix** (staging holds unreleased work you don't want live): branch from `production`, PR into `production` (CI and journeys run), merge. Release PR opens a back-merge into `main` automatically from a `back-merge/production-…` copy; merge it.
-- **Never merge a PR whose head is `production`.** "Automatically delete head branches" deletes the head branch on merge, so that deletes the live branch and every later release and Migrate production fails (PR #74, 2026-11-04). If it happens: open the merged PR → **Restore branch**, or `git push origin <last production sha>:refs/heads/production` from the Mac (owner-typed; the guard blocks AI pushes to it). Keep that repo setting off: Settings → General → Pull Requests.
+- **Never merge a PR whose head is `production`.** "Automatically delete head branches" deletes the head branch on merge, so that deletes the live branch and every later release and Migrate production fails (PR #74, 2026-11-04). If it happens: open the merged PR → **Restore branch**, or `git push origin <last production sha>:refs/heads/production` from the Mac (owner-typed; the guard blocks AI pushes to it), then set the Render production service's Branch back to `production` (Render falls back to `main` when its branch disappears). Keep that repo setting off: Settings → General → Pull Requests.
 
 ## Restore data
 
@@ -139,7 +139,7 @@ Figures from each provider's pricing page, checked 2026-11-05 (pre-launch review
 - [ ] First restore drill into a new project, timed
 - [ ] `scripts/release/backup/verify-key.sh` for the Mac and password-manager keys
 - [ ] Optional GitHub secret `CLOUDFLARE_ANALYTICS_TOKEN` (Account Analytics: Read) for the Health usage check
-- [ ] Repo Settings → General: "Automatically delete head branches" off (it deleted `production` once)
+- [x] Repo Settings → General: "Automatically delete head branches" off (it deleted `production` once, and Render then switched the production service to `main`; turned off 2026-11-08)
 
 # Configuration reference
 
@@ -326,6 +326,7 @@ Before publication, run `HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scri
 ## Performance notes
 
 - Lesson packs (`/data/...`) are `private` browser-cached: hashed names for a year, others revalidate. Never `public` (Cloudflare must not store gated content).
+- A sleeping Render Free server takes about a minute to answer. While a learner is signed in, manifests read the browser's saved copy first, then ask the server for a newer one; after 4 s without a full answer the saved copy is used and the server's reply refreshes it for next time (`revalidateOrSavedCopy` in `src/services/staticContentService.ts`); a refetch after a deploy removed a listed part always asks the server. So a returning learner's home screen opens in about 5 s while the server wakes. Content requests wait up to 75 s before failing, and the Books skeleton says "Waking up. This can take a minute." after 5 s. First-time visitors still wait for the wake.
 - Study packs ship same-lesson examples only; other-lesson examples load via "Show more" from `flashcard-extras`. `npm run perf:check` enforces size budgets (study part ≤ 30 kB Brotli, book page ≤ 250 kB).
 - Book pages: `npm run book-pages:recompress` (1100px, q72; needs `cwebp`/`dwebp`, skips already-small pages).
 - Audio CDN (optional): put the `vocabulary-audio` bucket behind a CDN/Cloudflare R2 custom domain and set `VITE_AUDIO_BASE_URL` to its origin at build time. Files already have content-hashed names, so use long immutable caching.
