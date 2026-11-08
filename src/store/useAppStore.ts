@@ -71,6 +71,12 @@ import {
   type GrammarProgressState,
 } from './slices/grammarProgressSlice';
 import {
+  createLessonProgressSlice,
+  LESSON_PROGRESS_PERSISTED_KEYS,
+  LESSON_PROGRESS_ACCOUNT_SWITCH_DEFAULTS,
+  type LessonProgressState,
+} from './slices/lessonProgressSlice';
+import {
   createPracticePreferencesSlice,
   PRACTICE_PREFERENCES_PERSISTED_KEYS,
   PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS,
@@ -139,6 +145,7 @@ export type AppStoreData =
   & UiState
   & SyncState
   & GrammarProgressState
+  & LessonProgressState
   & PracticePreferencesState
   & SocialState
   & LessonTestState;
@@ -265,6 +272,7 @@ export const PERSISTED_KEYS = [
   ...UI_PERSISTED_KEYS,
   ...SYNC_PERSISTED_KEYS,
   ...GRAMMAR_PROGRESS_PERSISTED_KEYS,
+  ...LESSON_PROGRESS_PERSISTED_KEYS,
   ...PRACTICE_PREFERENCES_PERSISTED_KEYS,
   ...SOCIAL_PERSISTED_KEYS,
   ...LESSON_TEST_PERSISTED_KEYS,
@@ -296,6 +304,8 @@ const PERSISTED_ARRAY_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
+  'readReadingIds',
+  'legacyDoneBooks',
 ] as const;
 
 /** Persisted slice fields whose runtime shape is a plain record. */
@@ -310,6 +320,7 @@ const PERSISTED_RECORD_KEYS = [
   'progressResetSeen',
   'wordConfusions',
   'lessonTests',
+  'lessonDoneMarks',
 ] as const;
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {
@@ -346,6 +357,7 @@ export const ACCOUNT_SWITCH_DEFAULTS = {
   ...UI_ACCOUNT_SWITCH_DEFAULTS,
   ...SYNC_ACCOUNT_SWITCH_DEFAULTS,
   ...GRAMMAR_PROGRESS_ACCOUNT_SWITCH_DEFAULTS,
+  ...LESSON_PROGRESS_ACCOUNT_SWITCH_DEFAULTS,
   ...PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS,
   ...SOCIAL_ACCOUNT_SWITCH_DEFAULTS,
   ...LESSON_TEST_ACCOUNT_SWITCH_DEFAULTS,
@@ -367,6 +379,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
       ...createUiSlice(set),
       ...createSyncSlice(set),
       ...createGrammarProgressSlice(set),
+      ...createLessonProgressSlice(set),
       ...createPracticePreferencesSlice(set),
       ...createSocialSlice(set),
       ...createLessonTestSlice(set),

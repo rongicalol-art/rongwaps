@@ -35,6 +35,13 @@ export interface CourseLessonPartProgress {
   isSelected: boolean;
 }
 
+/** One activity's share of a lesson on the Books card. */
+export interface LessonActivityBar {
+  key: 'words' | 'grammar' | 'reading';
+  /** 0–1. */
+  fraction: number;
+}
+
 export interface CourseLessonProgress {
   id: number;
   label: string;
@@ -49,7 +56,13 @@ export interface CourseLessonProgress {
   requiredPathCount: number;
   completedPathCount: number;
   startedPathCount: number;
+  /** Done: every activity finished, or marked done by the learner (`isMarkedDone`). */
   isFullyCompleted: boolean;
+  /** Marked done by hand while some activity is still unfinished (only these can be unmarked). */
+  isMarkedDone: boolean;
+  /** One bar per activity the lesson has (words, grammar, reading), each 0–1. */
+  activityBars: LessonActivityBar[];
+  isTestPassed: boolean;
   state: CourseLessonState;
 }
 

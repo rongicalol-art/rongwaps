@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { DBDictionaryEntry } from '../../../types/database';
 import { UserFlashcard } from '../../../types/models';
 import { AppIcon } from '../../../lib/widgets';
-import { useMenuTrigger, type MenuPoint } from './LibraryContextMenu';
+import { useMenuTrigger, type MenuPoint } from '../../../lib/widgets';
 
 type LibraryCardItem = DBDictionaryEntry | UserFlashcard;
 

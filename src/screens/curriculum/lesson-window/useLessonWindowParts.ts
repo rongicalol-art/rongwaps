@@ -24,7 +24,9 @@ export interface LessonWindowPart {
   /** Null when the part has no grammar lesson. */
   grammar: (PartProgress & { manifestId: string; label: string }) | null;
   hasReading: boolean;
-  /** Reading completion is not persisted anywhere, so it never gates this. */
+  /** The part's reading was read to the end (false when it has none). */
+  isReadingRead: boolean;
+  /** Words learned, grammar pages reached to the end, and the reading read. */
   isDone: boolean;
 }
 
@@ -80,6 +82,7 @@ export function getAggregatedPart(selectedParts: LessonWindowPart[]): LessonWind
     vocab: { done: vocabDone, total: vocabTotal },
     grammar,
     hasReading: selectedParts.some((p) => p.hasReading),
+    isReadingRead: selectedParts.every((p) => !p.hasReading || p.isReadingRead) && selectedParts.some((p) => p.hasReading),
     isDone: selectedParts.every((p) => p.isDone),
   };
 }
@@ -130,6 +133,7 @@ export function lessonPictures(bookId: number, lessonId: number, partIds: number
 /** Per-part progress, captions and hero image for one lesson. */
 export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgress) {
   const completedPageIds = useAppStore((state) => state.completedPageIds);
+  const readReadingIds = useAppStore((state) => state.readReadingIds);
   const [readingPack, setReadingPack] = useState<{ bookId: number; readings: ReadingRecord[] } | null>(null);
 
   useEffect(() => {
@@ -178,6 +182,7 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
         }
         : null;
       const setting = reading?.setting ? settingEnglish(reading.setting) : '';
+      const isReadingRead = Boolean(reading && readReadingIds.includes(reading.id));
       return {
         id,
         title: partTitle(bookId, lesson.id, id, reading),
@@ -188,10 +193,11 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
         vocab,
         grammar,
         hasReading: Boolean(reading),
-        isDone: vocab.done >= vocab.total && (!grammar || grammar.done >= grammar.total),
+        isReadingRead,
+        isDone: vocab.done >= vocab.total && (!grammar || grammar.done >= grammar.total) && (!reading || isReadingRead),
       };
     });
-  }, [bookId, completedPageIds, lesson.id, lesson.parts, lessonReadings]);
+  }, [bookId, completedPageIds, lesson.id, lesson.parts, lessonReadings, readReadingIds]);
 
   const { illustrationsByPart, illustration, fallback } = lessonPictures(bookId, lesson.id, parts.map((part) => part.id), lessonReadings);
   const fallbackImageSrc = readings === null
