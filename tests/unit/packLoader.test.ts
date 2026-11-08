@@ -75,9 +75,24 @@ function createTestLoader(overrides: Partial<Parameters<typeof createPackLoader<
   });
 }
 
+/**
+ * The stub is the server. Manifest loads first read the browser's saved copy (`force-cache`): that read
+ * never reaches the server here; it returns the last manifest served, or fails when nothing is saved.
+ */
 function withFetch(stub: typeof fetch, run: () => Promise<void>) {
   const original = globalThis.fetch;
-  globalThis.fetch = stub;
+  const saved = new Map<string, Response>();
+  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = String(input);
+    if (init?.cache === 'force-cache') {
+      const copy = saved.get(url);
+      if (!copy) throw new TypeError('Nothing saved');
+      return copy.clone();
+    }
+    const response = await stub(input, init);
+    if (response.ok) saved.set(url, response.clone());
+    return response;
+  }) as typeof fetch;
   return run().finally(() => {
     globalThis.fetch = original;
   });

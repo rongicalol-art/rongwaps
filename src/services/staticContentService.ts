@@ -49,6 +49,49 @@ export function contentUrl(path: string): string {
 
 /** All content packs require a school session; keep in sync with server/index.ts. */
 
+/** The app server sleeps after 15 idle minutes (Render free plan) and takes about a minute to wake: wait that long. */
+const SERVER_WAKE_MS = 75_000;
+/** The browser's saved copy of a file answers within this; slower means nothing is saved and the request went to the server. */
+const SAVED_COPY_READ_MS = 1_000;
+/** A check for a newer version slower than this (a sleeping server) leaves the saved copy in use. */
+const FRESH_CHECK_MS = 4_000;
+
+/** A copy the server sent this recently needs no second check (with nothing saved, the read itself went to the server). */
+const RECENT_COPY_MS = 60_000;
+
+function isRecent(response: Response): boolean {
+  const age = Date.now() - Date.parse(response.headers.get('date') ?? '');
+  return Math.abs(age) < RECENT_COPY_MS;
+}
+
+/** Resolves with the promise's value, or null if it takes longer than `ms`. */
+function within<T>(promise: Promise<T>, ms: number): Promise<T | null> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const late = new Promise<null>((resolve) => { timer = setTimeout(() => resolve(null), ms); });
+  return Promise.race([promise, late]).finally(() => clearTimeout(timer));
+}
+
+/**
+ * Gets a file that may have changed since the last visit. The browser's saved copy is read first
+ * (once a server check starts, the browser holds that copy until the check ends), then the server is
+ * asked for a newer version. If the server is slow (asleep), the saved copy is used and the server's
+ * answer refreshes it for next time. With nothing saved, the request simply waits for the server.
+ */
+async function revalidateOrSavedCopy(path: string, signal: AbortSignal): Promise<Response> {
+  const firstRequest = fetchContent(path, { cache: 'force-cache', signal });
+  const quick = await within(firstRequest, SAVED_COPY_READ_MS).catch(() => undefined);
+  if (quick === null) return firstRequest;
+  if (!quick?.ok) return fetchContent(path, { cache: 'no-cache', signal });
+  const saved = new Response(await quick.text(), { status: quick.status, headers: quick.headers });
+  if (isRecent(saved)) return saved;
+  const fresh = fetchContent(path, { cache: 'no-cache', signal });
+  const answered = await within(fresh, FRESH_CHECK_MS).catch(() => null);
+  // A server error (e.g. while it restarts) is no reason to drop a good saved copy.
+  if (answered && answered.status < 500) return answered;
+  void fresh.then((response) => response.arrayBuffer()).catch(() => {});
+  return saved;
+}
+
 /** `fetch` for `/data/...` content; sends the session token for the gated lesson packs (same-origin only). */
 export async function fetchContent(path: string, init: RequestInit = {}): Promise<Response> {
   const headers = new Headers(init.headers);
@@ -94,7 +137,7 @@ export function fetchContentBlobUrl(path: string, signal?: AbortSignal): Promise
   if (entry?.controller.signal.aborted && !entry.url) { blobUrls.delete(path); entry = undefined; }
   if (!entry) {
     const created: ContentImageEntry = { promise: Promise.resolve(''), users: 0, controller: new AbortController() };
-    const deadline = setTimeout(() => created.controller.abort(), 20_000);
+    const deadline = setTimeout(() => created.controller.abort(), SERVER_WAKE_MS);
     created.promise = fetchContent(path, { signal: created.controller.signal }).then(async (response) => {
       if (!response.ok) throw new NetworkError(`${path} returned ${response.status}`, response.status);
       created.url = URL.createObjectURL(await response.blob());
@@ -169,11 +212,13 @@ export async function fetchStaticJsonWithMetadata<T>(
   }
 
   const controller = new AbortController();
-  const deadline = setTimeout(() => controller.abort(), 20_000);
+  const deadline = setTimeout(() => controller.abort(), SERVER_WAKE_MS);
   try {
   let response: Response;
   try {
-    response = await timeDataRequest(label, () => fetchContent(path, { cache: options.revalidate ? 'no-cache' : 'default', signal: controller.signal }));
+    response = await timeDataRequest(label, () => (options.revalidate
+      ? revalidateOrSavedCopy(path, controller.signal)
+      : fetchContent(path, { cache: 'default', signal: controller.signal })));
   } catch (error) {
     if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     throw error;
