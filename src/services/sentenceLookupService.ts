@@ -7,7 +7,7 @@ import { audioService } from './audioService';
 
 import type { SentenceWordContext, SentenceWordLookupResult } from '../types/sentenceLookup';
 import { AppCache } from '../utils/cache';
-import { pronunciationKey } from '../utils/pinyin/pronunciationMatching';
+import { sameReading } from '../utils/pinyin/pronunciationMatching';
 import { sentenceSegments, sentenceCandidates, validatedSentenceSegments } from '../utils/vocabulary/sentenceSegments';
 
 const wordCache = new AppCache(256);
@@ -89,7 +89,8 @@ async function resolveSentenceWord(
   // 1. Book (course) vocabulary first: the meaning the learner was taught
   try {
     const courseCard = await findMatchingCourseVocab(trimmed);
-    const readingMatches = !expectedPinyin || pronunciationKey(courseCard?.pinyin) === pronunciationKey(expectedPinyin);
+    // 一/不 tones only: a neutral-tone card (東西 dōngxi thing) must not claim a full-tone line (dōngxī).
+    const readingMatches = !expectedPinyin || sameReading(courseCard?.pinyin, expectedPinyin, trimmed, false);
     if (courseCard && readingMatches && [courseCard.front, courseCard.traditional, courseCard.simplified].includes(trimmed) && courseCard.back) {
       const pinyin = courseCard.pinyin ? numberToToneMarks(courseCard.pinyin) : '';
       const defs = courseCard.back
@@ -118,12 +119,13 @@ async function resolveSentenceWord(
     if (entries && entries.length > 0) {
       // Beginner hover: skip proper-noun / abbreviation entries (新 Xīn "abbr. for Xinjiang")
       // when a common-word entry exists, and drop those senses from the gloss.
-      const matching = expectedPinyin
-        ? entries.flatMap(entry => {
-            const senses = sensesForReading(entry, expectedPinyin);
-            return senses ? [{ ...entry, pinyin: [expectedPinyin], definitions: senses }] : [];
-          })
-        : entries;
+      // Closest reading wins: exact, then 一/不 tones, then CEDICT's neutral tones (要是 yàoshì = yào shi).
+      const byReading = (reading: string, tolerant?: { word: string; neutral?: boolean }) => entries.flatMap(entry => {
+        const senses = sensesForReading(entry, reading, tolerant);
+        return senses ? [{ ...entry, pinyin: [reading], definitions: senses }] : [];
+      });
+      const matching = !expectedPinyin ? entries : [undefined, { word: trimmed, neutral: false }, { word: trimmed }]
+        .map((tolerant) => byReading(expectedPinyin, tolerant)).find((found) => found.length) ?? [];
       const cleaned = matching.map((entry) => ({
         entry,
         defs: beginnerDefinitions(sanitizeDictionaryDefinitions(entry.definitions, {

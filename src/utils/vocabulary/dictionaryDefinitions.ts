@@ -1,5 +1,5 @@
 import { definitionStrings } from '../../../shared/dictionaryDefinitions';
-import { pronunciationKey } from '../pinyin/pronunciationMatching';
+import { pronunciationKey, sameReading } from '../pinyin/pronunciationMatching';
 
 export * from '../../../shared/dictionaryDefinitions';
 
@@ -10,10 +10,17 @@ const READING_LINE_RE = /^\[([^\]]+)\]:\s*(.+)$/;
  * no such reading. Merged rows carry only their first reading as `pinyin`;
  * each later reading lists its senses, then a "[reading]: senses, joined" line
  * (啊 ā … "[a]: modal particle …").
+ * `tolerant` (with the word) accepts the book's tones for CEDICT's neutral/一/不 ones;
+ * callers try the exact reading across all rows first.
  */
-export function sensesForReading(entry: { pinyin?: string[] | null; definitions: unknown }, reading: string): string[] | null {
+export function sensesForReading(
+  entry: { pinyin?: string[] | null; definitions: unknown },
+  reading: string,
+  tolerant?: { word: string; neutral?: boolean },
+): string[] | null {
   const target = pronunciationKey(reading);
   if (!target) return null;
+  const matches = (value: string) => (tolerant ? sameReading(value, reading, tolerant.word, tolerant.neutral ?? true) : pronunciationKey(value) === target);
   const tagged: string[] = [];
   let pending: string[] = [];
   for (const line of definitionStrings(entry.definitions)) {
@@ -25,10 +32,10 @@ export function sensesForReading(entry: { pinyin?: string[] | null; definitions:
     while (size > 0 && pending.slice(-size).join(', ') !== summary) size -= 1;
     const senses = size > 0 ? pending.slice(-size) : [summary];
     pending = pending.slice(0, pending.length - size);
-    if (pronunciationKey(match[1]) === target) tagged.push(...senses);
+    if (matches(match[1])) tagged.push(...senses);
   }
   if (tagged.length) return tagged;
-  return entry.pinyin?.some((value) => pronunciationKey(value) === target) ? pending : null;
+  return entry.pinyin?.some(matches) ? pending : null;
 }
 
 /** CEDICT cross-reference senses ("abbr. for Singapore 新加坡", "variant of 嬭") mean nothing to a beginner. */
