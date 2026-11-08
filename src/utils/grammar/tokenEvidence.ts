@@ -273,15 +273,6 @@ export function matchAllTokenEvidence(
   }
 }
 
-/** The first token span an authored evidence rule matches, or null when it does not. */
-export function matchTokenEvidence(
-  sentence: readonly string[],
-  evidence: TokenEvidence,
-  options: TokenEvidenceOptions = {},
-): TokenEvidenceMatch | null {
-  return matchAllTokenEvidence(sentence, evidence, options)[0] ?? null;
-}
-
 /** True when the sentence's token stream satisfies the authored evidence. */
 export function matchesTokenEvidence(
   sentence: readonly string[],

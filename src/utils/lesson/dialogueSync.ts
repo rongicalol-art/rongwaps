@@ -72,34 +72,6 @@ export function wordRangeForTime(
   return { start: word.charStart, end: word.charEnd };
 }
 
-/**
- * Character range of the syllable being spoken at `time` inside `lineIndex`,
- * from character-level forced-alignment data (`line.chars`). Returns null when
- * the time is between characters or the rendered text length differs from the
- * aligned (traditional) text. Prefer this over `wordRangeForTime` for the new
- * MMS alignments; the renderer groups characters into words via `getWordChunks`.
- */
-export function charRangeForTime(
-  alignment: DialogueAlignment,
-  lineIndex: number,
-  time: number,
-  renderedLineText: string,
-): WordCharRange | null {
-  const line = alignment.lines[lineIndex];
-  if (!line || line.unmatched || !line.chars || line.chars.length === 0) return null;
-
-  const ch = line.chars.find((candidate) => (
-    time >= candidate.start && time < candidate.end
-  ));
-  if (!ch) return null;
-
-  if (renderedLineText.length !== line.text.length) return null;
-  if (ch.charStart < 0 || ch.charEnd > line.text.length || ch.charEnd <= ch.charStart) {
-    return null;
-  }
-  return { start: ch.charStart, end: ch.charEnd };
-}
-
 /** Duration of the aligned dialogue audio (end of the last matched line). */
 export function alignmentDuration(alignment: DialogueAlignment): number {
   const lines = validLines(alignment);

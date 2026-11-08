@@ -2,20 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { ReaderHeader, getLessonTitles, getReaderHeaderTitles } from '../../src/screens/reader/components/ReaderHeader';
+import { ReaderHeader, getReaderHeaderTitles } from '../../src/screens/reader/components/ReaderHeader';
 import type { ReadingRecord } from '../../src/types/models';
-
-test('derives lesson titles correctly from standard lesson format', () => {
-  const titles = getLessonTitles('The New Classmate · 新同學');
-  assert.equal(titles.chineseTitle, '新同學');
-  assert.equal(titles.englishTitle, 'The New Classmate');
-});
-
-test('handles fallback when lesson title is missing or plain string', () => {
-  const titles = getLessonTitles(undefined, 'Fallback Title');
-  assert.equal(titles.chineseTitle, 'Fallback Title');
-  assert.equal(titles.englishTitle, '');
-});
 
 test('derives titles for 3-part narrative readings', () => {
   const reading = {

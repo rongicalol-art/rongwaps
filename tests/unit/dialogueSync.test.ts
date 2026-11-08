@@ -3,7 +3,6 @@ import test from 'node:test';
 
 import {
   alignmentDuration,
-  charRangeForTime,
   lineIndexForTime,
   wordRangeForTime,
   splitChunksIntoSentences,
@@ -93,27 +92,6 @@ test('wordRangeForTime locates words sequentially in longer lines', () => {
   assert.deepEqual(wordRangeForTime(alignment, 1, 4.0, rendered), { start: 0, end: 5 });
   assert.deepEqual(wordRangeForTime(alignment, 1, 5.5, rendered), { start: 6, end: 9 });
   assert.deepEqual(wordRangeForTime(alignment, 1, 7.5, rendered), { start: 10, end: 14 });
-});
-
-test('charRangeForTime returns the char range of the spoken syllable', () => {
-  const charAlignment: DialogueAlignment = {
-    ...alignment,
-    lines: [{
-      ...alignment.lines[0],
-      words: [],
-      chars: [
-        { charStart: 0, charEnd: 1, start: 0.10, end: 0.34 },
-        { charStart: 1, charEnd: 2, start: 0.34, end: 1.80 },
-        { charStart: 3, charEnd: 4, start: 1.80, end: 2.18 },
-      ],
-    }],
-  };
-  const rendered = '宜文，她是誰？';
-  assert.deepEqual(charRangeForTime(charAlignment, 0, 0.2, rendered), { start: 0, end: 1 });
-  assert.deepEqual(charRangeForTime(charAlignment, 0, 1.0, rendered), { start: 1, end: 2 });
-  assert.deepEqual(charRangeForTime(charAlignment, 0, 2.0, rendered), { start: 3, end: 4 });
-  assert.equal(charRangeForTime(charAlignment, 0, 2.5, rendered), null); // past last char
-  assert.equal(charRangeForTime(charAlignment, 0, 2.0, 'short'), null); // length mismatch
 });
 
 test('alignmentDuration is the end of the last line', () => {

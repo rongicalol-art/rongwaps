@@ -34,7 +34,6 @@
 | BrandWordmark | `BrandWordmark.tsx` | 文 tile + wordmark; `name`, `collapsed`. |
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
 | PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`); `challenge` (lightning) for quiz races. `preloadPlayfulNavIcons()` loads the files ahead (at idle after boot, and before the lesson window opens). |
-| UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
 | Avatar / AvatarStack | `AvatarStack.tsx` | Initials on a profile avatar colour (`avatarStyle`), optional live dot; `AvatarStack` overlaps up to `max` faces then "+N" and renders nothing when empty. Study together faces (Books tiles, lesson window, practice header, rooms). |
 | ProfileCover | `ProfileCover.tsx` | `coverStyle(preset, image?)` paints a profile cover (uploaded photo, else the preset colour); `ProfileCoverGlyphs` draws the faint character pattern, sized by `className`. Own profile and classmate visits. |
 | RongWapsCharacterPortrait | `RongWapsCharacterPortrait.tsx` | 1:1 character bust; requires `character` + `label`. |
@@ -55,8 +54,6 @@
 | SettingsPopover | `SettingsPopover.tsx` | Icon-button trigger with a small `popover-surface` settings panel (switches, segmented controls); outside click or Escape closes it. Children may take `close`. Use `DropdownMenu` for lists of menu items. |
 | ErrorBoundary | `ErrorBoundary.tsx` | Render fallback; `fallback`, `fallbackClassName`. Mounted in `main.tsx` and per tab screen. |
 | FloatingDock | `FloatingDock.tsx` | `.Root/.Pill/.Popover` bottom dock; width `sm`-`xl`, `sleepOnIdle` ghost mode. Practice dock placement: `getPracticeDockLayout` in `src/screens/activities/components/practiceDockLayout.ts`; mode controls portal into this dock, never a second one. |
-| StudyDrawer | `StudyDrawer.tsx` | Mobile (`lg`-hidden) study sheet; pair with `StudySidePanel`. |
-| StudySidePanel | `StudySidePanel.tsx` | Desktop right companion column (`hidden lg:flex`); no bottom fade. |
 
 ## Feedback, progress, loading
 

@@ -21,22 +21,6 @@ export interface TooltipPlacement {
   above: boolean;
 }
 
-// Backwards-compatible AnchorRect interface for existing callers and tests
-export interface AnchorRect {
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-  width: number;
-  height: number;
-}
-
-export interface TooltipPosition {
-  top: number;
-  left: number;
-  isFlipped: boolean;
-}
-
 const TOOLTIP_GAP = 10;
 const SCREEN_PADDING = 12;
 const DEFAULT_TOOLTIP_WIDTH = 150;
@@ -73,31 +57,5 @@ export function calculateTooltipPlacement(
     left,
     arrowLeft,
     above,
-  };
-}
-
-/**
- * Compatibility wrapper for calculateTooltipPosition
- */
-export function calculateTooltipPosition(
-  anchorRect: AnchorRect,
-  viewport: ViewportBounds,
-  tooltipWidth = DEFAULT_TOOLTIP_WIDTH,
-  tooltipHeight = DEFAULT_TOOLTIP_HEIGHT,
-): TooltipPosition {
-  const anchor: AnchorPosition = {
-    x: anchorRect.left + anchorRect.width / 2,
-    top: anchorRect.top,
-    bottom: anchorRect.bottom,
-  };
-  const placement = calculateTooltipPlacement(
-    anchor,
-    { width: tooltipWidth, height: tooltipHeight },
-    viewport,
-  );
-  return {
-    top: placement.top,
-    left: placement.left,
-    isFlipped: !placement.above,
   };
 }

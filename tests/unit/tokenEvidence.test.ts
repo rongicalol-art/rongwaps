@@ -2,10 +2,12 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   matchAllTokenEvidence,
-  matchTokenEvidence,
   USAGE_TOKEN_SEPARATOR as SEP,
   type TokenEvidence,
 } from '../../src/utils/grammar/tokenEvidence';
+
+const matchTokenEvidence = (sentence: readonly string[], evidence: TokenEvidence) =>
+  matchAllTokenEvidence(sentence, evidence)[0] ?? null;
 
 const inOrder = (tokens: string[], maxGap = 3): TokenEvidence => ({ kind: 'inOrder', tokens, maxGap });
 const regex = (source: string): TokenEvidence => ({ kind: 'regex', source });

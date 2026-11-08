@@ -1,4 +1,3 @@
-export * from './lazyResolver';
 export * from './runtimeLoader';
 export * from './runtimeMode';
 export * from './runtimePack';
@@ -11,7 +10,6 @@ export * from './runtimePack';
  * docs/ARCHITECTURE.md § Enforced boundaries).
  */
 export {
-  compareDecompositionRuntimes,
   createDecompositionRuntimeService,
   getDecompositionRuntimeService,
 } from './decompositionService';

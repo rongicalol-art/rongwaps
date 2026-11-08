@@ -16,7 +16,6 @@ export * from './BrandWordmark';
 export * from './CountryFlag';
 export * from './PlayfulNavIcon';
 export * from './RongWapsCharacterPortrait';
-export * from './UserAvatar';
 
 // Dialogs, drawers, docks, menus, and accessibility boundaries
 export * from './ActivityModalWrapper';
@@ -29,8 +28,6 @@ export * from './Drawer';
 export * from './DropdownMenu';
 export * from './ErrorBoundary';
 export * from './FloatingDock';
-export * from './StudyDrawer';
-export * from './StudySidePanel';
 
 // Feedback, empty, and alert presentation
 export * from './AlertBanner';

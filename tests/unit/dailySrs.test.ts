@@ -132,15 +132,3 @@ test('study days roll over at 04:00, including a resumed session', () => {
   assert.equal(reviewDay(new Date(2026,9,18,3,30).getTime()), '2026-10-17');
   assert.equal(reviewDay(new Date(2026,9,18,4,0).getTime()), '2026-10-18');
 });
-
-test('lesson learning and its quiz retain the same small batch', async () => {
-  const { selectLearningBatch } = await import('../../src/utils/srs/learningBatch');
-  const cards = Array.from({length: 30}, (_, i) => ({id:`lesson-${i}`} as Flashcard));
-  const first = selectLearningBatch(cards, {}, []);
-  assert.equal(first.length, 5);
-  const ids = first.map(card => card.id);
-  assert.deepEqual(selectLearningBatch(cards, {}, ids, ids), first);
-  const next = selectLearningBatch(cards, {}, ids);
-  assert.equal(next[0].id, 'lesson-5');
-  assert.equal(next.length, 5);
-});

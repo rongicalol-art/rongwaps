@@ -1,11 +1,32 @@
 import { debugLogger } from '../utils/debug/debugLogger';
-import { DBCharacterBreakdown } from '../types/database';
+import { DBCharacterBreakdown, DBDictionaryEntry } from '../types/database';
 import { breakdownCache } from '../utils/cache';
 import { fetchBreakdownsFromPacks, fetchPartsIndex } from './contentPacks';
 import { builtWith } from '../utils/characters/parts';
 import { getDictionaryEntries, getDictionaryEntriesBatch } from './dictionaryService';
 
 const pendingRequests = new Map<string, Promise<DBCharacterBreakdown | null>>();
+
+function toFallbackBreakdown(
+  character: string,
+  dict: Pick<DBDictionaryEntry, 'pinyin' | 'definitions'>,
+): DBCharacterBreakdown | null {
+  const pinyin = dict.pinyin?.[0]?.trim();
+  const firstDef = Array.isArray(dict.definitions)
+    ? dict.definitions[0]
+    : typeof dict.definitions === 'string'
+      ? dict.definitions
+      : null;
+  if (!pinyin && !firstDef) return null;
+  return {
+    character,
+    radical: null,
+    pinyin: pinyin ? [pinyin] : null,
+    definition: firstDef || null,
+    decomposition: null,
+    components_historical: null,
+  };
+}
 
 /**
  * Fetches a character breakdown pack-first, utilizing an in-memory cache
@@ -39,26 +60,10 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
 
       // 4. Fall back to dictionary if character is missing from breakdown dataset
       const dictEntries = await getDictionaryEntries(character);
-      if (dictEntries && dictEntries.length > 0) {
-        const dict = dictEntries[0];
-        const pinyin = dict.pinyin?.[0]?.trim();
-        const firstDef = Array.isArray(dict.definitions)
-          ? dict.definitions[0]
-          : typeof dict.definitions === 'string'
-            ? dict.definitions
-            : null;
-        if (pinyin || firstDef) {
-          const fallbackData: DBCharacterBreakdown = {
-            character,
-            radical: null,
-            pinyin: pinyin ? [pinyin] : null,
-            definition: firstDef || null,
-            decomposition: null,
-            components_historical: null,
-          };
-          breakdownCache.set(character, fallbackData);
-          return fallbackData;
-        }
+      const fallbackData = dictEntries?.[0] ? toFallbackBreakdown(character, dictEntries[0]) : null;
+      if (fallbackData) {
+        breakdownCache.set(character, fallbackData);
+        return fallbackData;
       }
 
       return null;
@@ -119,21 +124,8 @@ export async function getMultipleBreakdowns(characters: string[]): Promise<Recor
       try {
         const dictEntries = await getDictionaryEntriesBatch(stillMissing);
         for (const [char, dict] of dictEntries) {
-          const pinyin = dict.pinyin?.[0]?.trim();
-          const firstDef = Array.isArray(dict.definitions)
-            ? dict.definitions[0]
-            : typeof dict.definitions === 'string'
-              ? dict.definitions
-              : null;
-          if (pinyin || firstDef) {
-            const fallbackData: DBCharacterBreakdown = {
-              character: char,
-              radical: null,
-              pinyin: pinyin ? [pinyin] : null,
-              definition: firstDef || null,
-              decomposition: null,
-              components_historical: null,
-            };
+          const fallbackData = toFallbackBreakdown(char, dict);
+          if (fallbackData) {
             results[char] = fallbackData;
             breakdownCache.set(char, fallbackData);
           }

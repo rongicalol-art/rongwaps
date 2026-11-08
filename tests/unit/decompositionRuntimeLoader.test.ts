@@ -12,10 +12,8 @@ import {
   getDecompositionRuntimeMode,
 } from '../../src/features/character-decomposition/runtimeMode';
 import {
-  compareDecompositionRuntimes,
   createDecompositionRuntimeService,
 } from '../../src/features/character-decomposition/decompositionService';
-import type { DBCharacterBreakdown } from '../../src/types/database';
 
 function shardFor(value: string, count: number) {
   return (value.codePointAt(0) ?? 0) % count;
@@ -282,21 +280,4 @@ test('hot course records answer without loading any shard, and a stale bundle is
   const stale = new RuntimePackLoader({ basePath: '/pack', environment: 'test', allowDevelopmentCandidate: true, transport: transportFor('older') });
   await stale.getRecord('學');
   assert.equal(stale.getMetrics().shardLoads, 1, 'a bundle from another pack version falls back to shards');
-});
-
-test('dual-read comparison reports source differences without rewriting either result', async () => {
-  const fixture = makeFixture();
-  const loader = new RuntimePackLoader({ basePath: '/pack', environment: 'test', allowDevelopmentCandidate: true, transport: fixture.transport });
-  const legacy: DBCharacterBreakdown = {
-    character: '學', radical: null, pinyin: null, definition: null, decomposition: '⿱⿰臼爻子', components_historical: null,
-  };
-  const comparison = await compareDecompositionRuntimes('學', {
-    v3Loader: loader,
-    legacyLookup: async () => legacy,
-  });
-  assert.equal(comparison.character, '學');
-  assert.equal(comparison.v3DirectComponents[0], 'g:𦥯');
-  assert.equal(comparison.different, true);
-  const service = createDecompositionRuntimeService({ mode: 'v3', v3Loader: loader });
-  assert.equal((await service.getRecord('學')).runtime, 'v3');
 });

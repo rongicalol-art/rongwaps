@@ -23,15 +23,10 @@ export interface SRSData {
 }
 
 export const MAX_INTERVAL_DAYS = 36500;
-export const LEARNING_STEPS_MINUTES = [1, 10];
 export const REVIEW_DAY_ROLLOVER_HOUR = 4;
 export type Quality = 0 | 1 | 2 | 3 | 4 | 5;
 
 const scheduler = fsrs({ request_retention: 0.9, maximum_interval: MAX_INTERVAL_DAYS, enable_fuzz: true });
-
-export function fuzzInterval(intervalDays: number): number {
-  return Math.max(1, Math.round(intervalDays * (0.9 + Math.random() * 0.2)));
-}
 
 export function dayBoundaryDueTimestamp(intervalDays: number, nowMs: number = Date.now()): number {
   const boundary = new Date(nowMs);

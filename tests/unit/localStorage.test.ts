@@ -2,11 +2,9 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   readBoolean,
-  readJSON,
   readString,
   remove,
   writeBoolean,
-  writeJSON,
   writeString,
 } from '../../src/utils/browser/localStorage';
 
@@ -48,20 +46,6 @@ test('localStorage util: read and write booleans correctly', () => {
   assert.equal(readBoolean('bool-key', true), false);
 });
 
-test('localStorage util: read and write JSON objects and fallbacks', () => {
-  store.clear();
-  const fallback = { a: 1, b: 'two' };
-  assert.deepEqual(readJSON('json-key', fallback), fallback);
-
-  const payload = { a: 42, b: 'hello', list: [1, 2, 3] };
-  writeJSON('json-key', payload);
-  assert.deepEqual(readJSON('json-key', fallback), payload);
-
-  // Corrupted JSON returns fallback
-  store.set('json-key', '{ invalid-json');
-  assert.deepEqual(readJSON('json-key', fallback), fallback);
-});
-
 test('localStorage util: tolerates missing window or throwing storage', () => {
   // Simulate throwing storage (e.g. private mode)
   (globalThis as unknown as { window?: { localStorage?: Storage } }).window = {
@@ -74,6 +58,4 @@ test('localStorage util: tolerates missing window or throwing storage', () => {
 
   assert.equal(readString('any', 'safe'), 'safe');
   assert.doesNotThrow(() => writeString('any', 'value'));
-  assert.doesNotThrow(() => writeJSON('any', { val: 1 }));
-  assert.deepEqual(readJSON('any', { safe: true }), { safe: true });
 });
