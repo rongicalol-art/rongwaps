@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { pronunciationKey, matchesRecording, recordingLookupKey, findReadingMatch } from '../../src/utils/pinyin/pronunciationMatching';
+import { pronunciationKey, matchesRecording, recordingLookupKey, findReadingMatch, sameReading } from '../../src/utils/pinyin/pronunciationMatching';
 import { mapCustomCardsToFlashcards, mapStarredEntriesToFlashcards } from '../../src/utils/vocabulary/activityDataDerivations';
 import { mapVocabularyRows } from '../../src/utils/vocabulary/vocabularyMapping';
 import type { Flashcard } from '../../src/data/flashcards';
@@ -15,6 +15,18 @@ test('recording identity preserves tones, neutral tones, ü, boundaries and poly
     assert.notEqual(pronunciationKey(a), pronunciationKey(b), `${a} ≠ ${b}`);
   }
   for (const value of ['', 'nǎ/něi', 'hé, hàn', 'yi1(dian3)', 'ma11', 'unknown']) assert.equal(pronunciationKey(value), null);
+});
+
+test('sameReading accepts CEDICT neutral and 一/不 tones but keeps full tones apart', () => {
+  for (const [book, cedict, word] of [['yàoshì', 'yào shi', '要是'], ['yíbèizi', 'yī bèi zi', '一輩子'], ['búshì', 'bù shi', '不是'], ['yìqǐ', 'yī qǐ', '一起'], ['bú', 'bù', '不'], ['yao4shi5', 'yàoshì', '要是']]) {
+    assert.equal(sameReading(book, cedict, word), true, `${word} ${book} = ${cedict}`);
+  }
+  for (const [book, cedict, word] of [['háng', 'xíng', '行'], ['hǎo', 'hào', '好'], ['cháng', 'zhǎng', '長'], ['dé', 'děi', '得'],
+    ['dì', 'de', '地'], ['à', 'a', '啊'], ['yíbèizi', 'yī bèi zi', undefined], ['yìsi', 'yí si', '意思'], ['yǐqǐ', 'yī qǐ', '一起'], ['yàoshì', 'yào', '要是']]) {
+    assert.equal(sameReading(book, cedict, word), false, `${word} ${book} ≠ ${cedict}`);
+  }
+  assert.equal(sameReading('búshì', 'bù shi', '不是', false), false);
+  assert.equal(sameReading('búshì', 'bù shì', '不是', false), true);
 });
 
 test('matching requires exact word aliases and the intended reading', () => {
