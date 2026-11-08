@@ -9,6 +9,7 @@ import { describeSelection } from '../socialText';
 import { EmptyNote } from './SocialBits';
 import { updateMentionTokens, type MentionToken } from '../mentionTokens';
 import { openSafety } from '../safety';
+import { useClassmates, useCurrentLesson, useLessonTotal } from '../useClassmates';
 import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 
@@ -45,10 +46,10 @@ export function ChatThread({ lesson }: { lesson: number }) {
   const chat = useAppStore(state => state.socialChat?.lesson === lesson ? state.socialChat.messages : null);
   const ready = useAppStore(state => state.socialStatus === 'live');
   useEffect(() => { useAppStore.getState().setSocial({ socialUnread: false }); }, [chat?.length]);
-  const online = useAppStore(state => state.socialOnline);
-  const people = useAppStore(state => state.socialPeople);
-  const candidates = useMemo(() => [...new Map([...online, ...people].map(person => [person.u, person])).values()]
-    .filter(person => lesson === GLOBAL_CHAT || person.l === lesson), [online, people, lesson]);
+  // Only people online now: anyone in Everyone, only this lesson's people in a lesson chat.
+  const current = useCurrentLesson();
+  const { classmates } = useClassmates(useAppStore(state => state.socialPeople), useAppStore(state => state.socialOnline), current, useLessonTotal(current));
+  const candidates = useMemo(() => classmates.filter(person => lesson === GLOBAL_CHAT || person.l === lesson), [classmates, lesson]);
   return <MessageThread chat={chat} ready={ready} candidates={candidates} send={(text, mentions) => lobby.say(lesson, text, mentions)} report={id => { lobby.report(id); }} />;
 }
 
@@ -96,7 +97,6 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
   const prefix = draft.slice(0, caret);
   const match = /(?:^|\s)@([^@\s]*)$/.exec(prefix);
   const people = new Map(candidates.map(person => [person.u, person]));
-  for (const line of party ? [] : visible) if (!people.has(line.u)) people.set(line.u, { u: line.u, n: line.n, c: line.c, l: line.l, a: null, i: line.i });
   const suggestions = match && !dismissed && !composing.current ? [...people.values()].filter(person => person.u !== me && person.n.toLocaleLowerCase().includes(match[1].toLocaleLowerCase())).slice(0, 8) : [];
   const select = (person: Person) => {
     if (!match) return;
