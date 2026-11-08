@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useReducedMotion } from 'motion/react';
-import { ActionButton, AppIcon, ContextualChineseText } from '../../lib/widgets';
+import { ActionButton, ContextualChineseText } from '../../lib/widgets';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 import type { GrammarPractice, GrammarWordToken, SlotBuildItem } from '../../types/models';
 import { checkSlotBuild, practiceSlots, slotBuildResult, slotBuildSolutions } from '../../utils/grammar/grammarPracticeCheck';
@@ -8,6 +8,7 @@ import { shuffleItems } from '../../utils/srs/sessionOrder';
 import { ExerciseItem, type ExerciseItemState } from './components/ExerciseItem';
 import { textIn, type PracticeScript } from './practiceTypes';
 import { PracticeScene } from './components/PracticeScene';
+import { BackAction } from './components/BackAction';
 
 export interface ExercisePageProps {
   practice: GrammarPractice;
@@ -156,10 +157,7 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
     <div className="mx-auto flex w-full max-w-4xl flex-col pb-24">
       {onBack && (
         <div className="mb-1 px-1 sm:px-2">
-          <ActionButton variant="quiet" size="md" className="!px-3 !text-ui-muted-strong" onClick={onBack} aria-label="Back to grammar" title="Back to grammar">
-            <AppIcon name="back" size={20} />
-            <span>Grammar</span>
-          </ActionButton>
+          <BackAction label="Grammar" onBack={onBack} />
         </div>
       )}
       <h1 className="mb-4 px-3 text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:mb-6 sm:px-5 sm:text-2xl">{practice.title}</h1>
@@ -191,9 +189,10 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
           />
         ))}
       </ol>
-      <div ref={endRef} className="flex scroll-mt-[30vh] justify-center pt-10">
-        {/* Always a way on: Skip while items are left, Continue once every item is done. */}
-        <ActionButton size="lg" variant={finished ? 'primary' : 'secondary'} className="min-w-56" onClick={onComplete}>
+      <div ref={endRef} className="flex scroll-mt-[30vh] items-center justify-center gap-3 px-1 pt-10 sm:px-2">
+        {/* Back to the grammar page, and always a way on: Skip while items are left, Continue once every item is done. */}
+        {onBack && <div className="mr-auto"><BackAction label="Grammar" onBack={onBack} /></div>}
+        <ActionButton size="lg" variant={finished ? 'primary' : 'secondary'} className={onBack ? 'min-w-40 sm:min-w-56' : 'min-w-56'} onClick={onComplete}>
           {finished ? 'Continue' : 'Skip'}
         </ActionButton>
       </div>
