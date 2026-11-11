@@ -106,7 +106,7 @@ export const ExerciseItem = memo(function ExerciseItem({
         state={blankState(segment.id)}
         quiet={!answering}
         narrow={slots.length >= 4}
-        long={item.free && tile === undefined && (end > at || before?.type === 'slot')}
+        long={item.free && tile === undefined && (end > at || before?.type === 'slot') ? end - at + 1 : undefined}
         word={tile === undefined ? undefined : { text: textOf(tile), onTakeBack: editable ? () => onTakeBack(index, segment.id) : undefined }}
       />
     );

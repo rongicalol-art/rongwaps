@@ -161,8 +161,8 @@ export interface SlotBuildItem extends PracticeItemBase {
    */
   gaps?: boolean;
   /**
-   * Build line: blanks that stand next to each other are one free line (the book's long blank), so the
-   * learner cannot see how many words go there. The words go on in order. Book 2 and later, where
+   * Build line: blanks that stand next to each other are one free line (the book's long blank) with a
+   * small dot for each word still to place. The words go on in order. Book 2 and later, where
    * the book asks for a clause or a whole sentence; a blank on its own stays one word.
    */
   free?: boolean;
