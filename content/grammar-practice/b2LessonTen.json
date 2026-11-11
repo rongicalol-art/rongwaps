@@ -30,7 +30,7 @@
                 "id": "s2",
                 "answers": [
                   "很便宜",
-                  "很好用"
+                  "很有名"
                 ]
               },
               {
@@ -48,7 +48,7 @@
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "很好用",
+                  "很有名",
                   "很便宜"
                 ]
               },
@@ -73,17 +73,16 @@
             "pinyin": "érqiě"
           },
           {
-            "traditional": "很好用",
-            "pinyin": "hěn hǎoyòng"
+            "traditional": "很有名",
+            "pinyin": "hěn yǒumíng"
           },
           {
             "traditional": "可是",
             "pinyin": "kěshì"
           },
           {
-            "traditional": "很難用",
-            "simplified": "很难用",
-            "pinyin": "hěn nányòng"
+            "traditional": "和",
+            "pinyin": "hé"
           }
         ],
         "repairs": [
@@ -98,27 +97,27 @@
           },
           {
             "placed": [
-              "很難用"
+              "和"
             ],
             "mark": [
-              "很難用"
+              "和"
             ],
-            "note": "不但…，而且… adds a second point of the same kind. Cheap and easy to use are both good points; hard to use is not."
+            "note": "和 joins nouns (書和筆), not two qualities. The second point is added with 而且."
           }
         ],
         "fallbackRepair": "不但 before the first good point, 而且 before the second.",
         "result": {
-          "traditional": "這個牌子的化妝品不但很便宜，而且很好用。",
-          "simplified": "这个牌子的化妆品不但很便宜，而且很好用。",
-          "pinyin": "Zhège páizi de huàzhuāngpǐn búdàn hěn piányí, érqiě hěn hǎoyòng.",
-          "english": "This brand of cosmetics is not only cheap but also easy to use."
+          "traditional": "這個牌子的化妝品不但很便宜，而且很有名。",
+          "simplified": "这个牌子的化妆品不但很便宜，而且很有名。",
+          "pinyin": "Zhège páizi de huàzhuāngpǐn búdàn hěn piányí, érqiě hěn yǒumíng.",
+          "english": "This brand of cosmetics is not only cheap but also famous."
         },
         "alternatives": [
           {
-            "traditional": "這個牌子的化妝品不但很好用，而且很便宜。",
-            "simplified": "这个牌子的化妆品不但很好用，而且很便宜。",
-            "pinyin": "Zhège páizi de huàzhuāngpǐn búdàn hěn hǎoyòng, érqiě hěn piányí.",
-            "english": "This brand of cosmetics is not only easy to use but also cheap."
+            "traditional": "這個牌子的化妝品不但很有名，而且很便宜。",
+            "simplified": "这个牌子的化妆品不但很有名，而且很便宜。",
+            "pinyin": "Zhège páizi de huàzhuāngpǐn búdàn hěn yǒumíng, érqiě hěn piányí.",
+            "english": "This brand of cosmetics is not only famous but also cheap."
           }
         ]
       },
@@ -332,7 +331,7 @@
             "mark": [
               "和"
             ],
-            "note": "和 joins things (書和筆), not two actions. The second action is added with 而且."
+            "note": "和 joins nouns (書和筆), not two clauses. The second action is added with 而且."
           },
           {
             "placed": [
@@ -350,7 +349,7 @@
             "mark": [
               "雖然"
             ],
-            "note": "雖然 needs a turn with 可是 after it. Adding a second reason for being busy is 不但…，而且…."
+            "note": "雖然…可是 sets up a contrast, but classes and exams do not contrast: both keep B busy. That is 不但…，而且…."
           }
         ],
         "fallbackRepair": "不但 after 我, then 而且 opens the second half, with 還 before 要.",
@@ -805,7 +804,7 @@
           "traditional": "因為法文越學越難，所以不想學了。",
           "simplified": "因为法文越学越难，所以不想学了。",
           "pinyin": "Yīnwèi Fǎwén yuè xué yuè nán, suǒyǐ bù xiǎng xué le.",
-          "english": "Because the more he studied French, the harder it got, so he doesn't want to study it anymore."
+          "english": "French got harder the more he studied it, so he doesn't want to study it anymore."
         }
       },
       {
@@ -897,8 +896,8 @@
             "pinyin": "gèng"
           },
           {
-            "traditional": "休息",
-            "pinyin": "xiūxí"
+            "traditional": "累",
+            "pinyin": "lèi"
           }
         ],
         "repairs": [
@@ -913,12 +912,12 @@
           },
           {
             "placed": [
-              "休息"
+              "累"
             ],
             "mark": [
-              "休息"
+              "累"
             ],
-            "note": "A asks why they keep practicing, so the answer is about practice, not rest."
+            "note": "A asks why they keep practicing, so practice makes the singing better, not more tiring."
           }
         ],
         "fallbackRepair": "越 + the action, then 越 + what changes with it: 越練習，唱得越好.",
@@ -1227,8 +1226,8 @@
             "pinyin": "hěn hǎo"
           },
           {
-            "traditional": "真的",
-            "pinyin": "zhēnde"
+            "traditional": "一定",
+            "pinyin": "yídìng"
           }
         ],
         "repairs": [
@@ -1252,12 +1251,12 @@
           },
           {
             "placed": [
-              "真的"
+              "一定"
             ],
             "mark": [
-              "真的"
+              "一定"
             ],
-            "note": "真的 stresses something you believe. Pressing for an answer you do not have is 到底."
+            "note": "一定 says something is certain. Nobody has heard her, so they press for the answer: 到底."
           }
         ],
         "fallbackRepair": "到底 before the verb, and a choice question after it: 到底唱得好不好.",
@@ -1265,7 +1264,7 @@
           "traditional": "聽說高小姐歌唱得很好，可是誰都沒聽過，我們都不知道她到底唱得好不好。",
           "simplified": "听说高小姐歌唱得很好，可是谁都没听过，我们都不知道她到底唱得好不好。",
           "pinyin": "Tīngshuō Gāo xiǎojiě gē chàng de hěn hǎo, kěshì shéi dōu méi tīng guò, wǒmen dōu bù zhīdào tā dàodǐ chàng de hǎo bù hǎo.",
-          "english": "I hear Miss Gao sings very well, but nobody has heard her, so none of us know whether she really sings well or not."
+          "english": "I hear Miss Gao sings very well, but nobody has heard her, so none of us know whether she can actually sing well or not."
         }
       },
       {
@@ -1316,8 +1315,9 @@
             "pinyin": "nǎlǐ"
           },
           {
-            "traditional": "一定",
-            "pinyin": "yídìng"
+            "traditional": "已經",
+            "simplified": "已经",
+            "pinyin": "yǐjīng"
           },
           {
             "traditional": "什麼",
@@ -1333,12 +1333,12 @@
         "repairs": [
           {
             "placed": [
-              "一定"
+              "已經"
             ],
             "mark": [
-              "一定"
+              "已經"
             ],
-            "note": "一定 states something as certain. The speaker cannot tell and presses for an answer: 到底."
+            "note": "已經 says something has already happened. The two still disagree, so the speaker presses for an answer: 到底."
           },
           {
             "placed": [
@@ -1464,7 +1464,7 @@
           "traditional": "你一下子想上作文課，一下子要修文法課，你到底要上哪一門課？",
           "simplified": "你一下子想上作文课，一下子要修文法课，你到底要上哪一门课？",
           "pinyin": "Nǐ yíxiàzi xiǎng shàng zuòwén kè, yíxiàzi yào xiū wénfǎ kè, nǐ dàodǐ yào shàng nǎ yì mén kè?",
-          "english": "One minute you want to take composition, the next you want to take grammar. Which course on earth do you want to take?"
+          "english": "One minute you want to take composition, the next you want to take grammar. So which course do you actually want to take?"
         }
       }
     ]
@@ -2101,7 +2101,8 @@
               },
               {
                 "type": "text",
-                "traditional": "考不好。"
+                "traditional": "會考不好。",
+                "simplified": "会考不好。"
               }
             ]
           }
@@ -2143,7 +2144,7 @@
             "mark": [
               "才"
             ],
-            "note": "The result follows straight from the \"if\", which takes 就: 就考不好."
+            "note": "The result follows straight from the \"if\", which takes 就: 就會考不好."
           },
           {
             "placed": [
@@ -2161,14 +2162,14 @@
             "mark": [
               "也"
             ],
-            "note": "After an \"if\", the result is linked with 就: 就考不好."
+            "note": "也 would mean the exam is one more thing that goes badly, but nothing else is named. The result of the \"if\" takes 就."
           }
         ],
-        "fallbackRepair": "The condition, then 的話, and 就 before the result: 不念書的話，明天的考試就考不好.",
+        "fallbackRepair": "The condition, then 的話, and 就 before the result: 不念書的話，明天的考試就會考不好.",
         "result": {
-          "traditional": "我不念書的話，明天的考試就考不好。",
-          "simplified": "我不念书的话，明天的考试就考不好。",
-          "pinyin": "Wǒ bú niànshū dehuà, míngtiān de kǎoshì jiù kǎobùhǎo.",
+          "traditional": "我不念書的話，明天的考試就會考不好。",
+          "simplified": "我不念书的话，明天的考试就会考不好。",
+          "pinyin": "Wǒ bú niànshū dehuà, míngtiān de kǎoshì jiù huì kǎobùhǎo.",
           "english": "If I don't study, I'll do badly on tomorrow's exam."
         }
       }
@@ -2518,9 +2519,9 @@
             "pinyin": "gěi"
           },
           {
-            "traditional": "幫助",
-            "simplified": "帮助",
-            "pinyin": "bāngzhù"
+            "traditional": "關係",
+            "simplified": "关系",
+            "pinyin": "guānxì"
           }
         ],
         "repairs": [
@@ -2544,12 +2545,12 @@
           },
           {
             "placed": [
-              "幫助"
+              "關係"
             ],
             "mark": [
-              "幫助"
+              "關係"
             ],
-            "note": "Mom sets it against 壞處, and the opposite of 壞處 is 好處."
+            "note": "關係 goes with 跟 (跟…有關係), not 對. Mom sets this against 壞處, so it is 沒有好處."
           }
         ],
         "fallbackRepair": "對 before 身體, then 沒有, then 好處: 對身體沒有好處.",
