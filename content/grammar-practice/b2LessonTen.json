@@ -1253,10 +1253,6 @@
           {
             "traditional": "很好",
             "pinyin": "hěn hǎo"
-          },
-          {
-            "traditional": "一定",
-            "pinyin": "yídìng"
           }
         ],
         "repairs": [
@@ -1277,15 +1273,6 @@
               "很好"
             ],
             "note": "Nobody has heard her, so they do not know. After 不知道 comes a question: 好不好."
-          },
-          {
-            "placed": [
-              "一定"
-            ],
-            "mark": [
-              "一定"
-            ],
-            "note": "一定 says something is certain. Nobody has heard her, so they press for the answer: 到底."
           }
         ],
         "fallbackRepair": "到底 before the verb, and a choice question after it: 到底唱得好不好.",
@@ -1379,11 +1366,6 @@
             "pinyin": "yǐjīng"
           },
           {
-            "traditional": "什麼",
-            "simplified": "什么",
-            "pinyin": "shénme"
-          },
-          {
             "traditional": "公園",
             "simplified": "公园",
             "pinyin": "gōngyuán"
@@ -1398,15 +1380,6 @@
               "已經"
             ],
             "note": "已經 says something has already happened. The two still disagree, so the speaker presses for an answer: 到底."
-          },
-          {
-            "placed": [
-              "什麼"
-            ],
-            "mark": [
-              "什麼"
-            ],
-            "note": "After 住在 comes a place, so the question word is 哪裡."
           },
           {
             "placed": [
@@ -1509,10 +1482,6 @@
             "pinyin": "zhè yì mén"
           },
           {
-            "traditional": "哪一本",
-            "pinyin": "nǎ yì běn"
-          },
-          {
             "traditional": "已經",
             "simplified": "已经",
             "pinyin": "yǐjīng"
@@ -1527,15 +1496,6 @@
               "這一門"
             ],
             "note": "到底 needs a real question after it: 哪一門."
-          },
-          {
-            "placed": [
-              "哪一本"
-            ],
-            "mark": [
-              "哪一本"
-            ],
-            "note": "本 counts books. Courses are counted with 門: 哪一門課."
           },
           {
             "placed": [
@@ -2000,10 +1960,6 @@
             "pinyin": "cháng yùndòng"
           },
           {
-            "traditional": "所以",
-            "pinyin": "suǒyǐ"
-          },
-          {
             "traditional": "因為",
             "simplified": "因为",
             "pinyin": "yīnwèi"
@@ -2018,15 +1974,6 @@
               "常運動"
             ],
             "note": "People get fatter when they do not exercise, not when they exercise often."
-          },
-          {
-            "placed": [
-              "所以"
-            ],
-            "mark": [
-              "所以"
-            ],
-            "note": "所以 starts a result. The first half is an \"if\", which opens with 要是."
           },
           {
             "placed": [
@@ -2321,36 +2268,34 @@
             },
             "segments": [
               {
-                "type": "slot",
-                "id": "s1",
-                "answers": [
-                  "跟外國朋友聊天"
-                ]
+                "type": "text",
+                "traditional": "跟外國朋友聊天",
+                "simplified": "跟外国朋友聊天"
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s1",
                 "answers": [
                   "對"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "我的中文"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "有"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "幫助"
                 ]
@@ -2364,11 +2309,6 @@
           }
         ],
         "tiles": [
-          {
-            "traditional": "跟外國朋友聊天",
-            "simplified": "跟外国朋友聊天",
-            "pinyin": "gēn wàiguó péngyǒu liáotiān"
-          },
           {
             "traditional": "對",
             "simplified": "对",
@@ -2393,24 +2333,12 @@
             "pinyin": "gěi"
           },
           {
-            "traditional": "沒有",
-            "simplified": "没有",
-            "pinyin": "méiyǒu"
-          },
-          {
             "traditional": "壞處",
             "simplified": "坏处",
             "pinyin": "huàichù"
           }
         ],
         "repairs": [
-          {
-            "before": [
-              "我的中文",
-              "跟外國朋友聊天"
-            ],
-            "note": "Chatting is what helps the Chinese, not the other way round: 跟外國朋友聊天對我的中文有幫助."
-          },
           {
             "placed": [
               "給"
@@ -2419,15 +2347,6 @@
               "給"
             ],
             "note": "給 hands something to someone. What something is good or bad for takes 對."
-          },
-          {
-            "placed": [
-              "沒有"
-            ],
-            "mark": [
-              "沒有"
-            ],
-            "note": "B wants foreign friends, so chatting with them does help."
           },
           {
             "placed": [
@@ -2471,39 +2390,33 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "不好意思，"
+                "traditional": "不好意思，去那麼久",
+                "simplified": "不好意思，去那么久"
               },
               {
                 "type": "slot",
                 "id": "s1",
-                "answers": [
-                  "去那麼久"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s2",
                 "answers": [
                   "對"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "我的工作"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "有"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "影響"
                 ]
@@ -2516,11 +2429,6 @@
           }
         ],
         "tiles": [
-          {
-            "traditional": "去那麼久",
-            "simplified": "去那么久",
-            "pinyin": "qù nàme jiǔ"
-          },
           {
             "traditional": "對",
             "simplified": "对",
@@ -2547,11 +2455,6 @@
           {
             "traditional": "跟",
             "pinyin": "gēn"
-          },
-          {
-            "traditional": "好處",
-            "simplified": "好处",
-            "pinyin": "hǎochù"
           }
         ],
         "repairs": [
@@ -2572,15 +2475,6 @@
               "跟"
             ],
             "note": "跟 means \"with\". What something affects takes 對."
-          },
-          {
-            "placed": [
-              "好處"
-            ],
-            "mark": [
-              "好處"
-            ],
-            "note": "B is turning the trip down, so being away half a year is no benefit to the job."
           }
         ],
         "fallbackRepair": "對 before what is affected, then 有, then 影響: 對我的工作有影響.",
@@ -2681,11 +2575,6 @@
             "pinyin": "yǒu"
           },
           {
-            "traditional": "給",
-            "simplified": "给",
-            "pinyin": "gěi"
-          },
-          {
             "traditional": "關係",
             "simplified": "关系",
             "pinyin": "guānxì"
@@ -2700,15 +2589,6 @@
               "有"
             ],
             "note": "Mom says no and adds 只有壞處, so eating too much brings no benefit: 沒有好處."
-          },
-          {
-            "placed": [
-              "給"
-            ],
-            "mark": [
-              "給"
-            ],
-            "note": "給 hands something to someone. What something is good or bad for takes 對."
           },
           {
             "placed": [

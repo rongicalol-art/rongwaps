@@ -1324,26 +1324,20 @@
                 ]
               },
               {
+                "type": "text",
+                "traditional": "垃圾和蟲子，",
+                "simplified": "垃圾和虫子，"
+              },
+              {
                 "type": "slot",
                 "id": "s4",
-                "answers": [
-                  "垃圾和蟲子"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "，"
-              },
-              {
-                "type": "slot",
-                "id": "s5",
                 "answers": [
                   "就"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s6",
+                "id": "s5",
                 "answers": [
                   "可以"
                 ]
@@ -1370,11 +1364,6 @@
             "pinyin": "méiyǒu"
           },
           {
-            "traditional": "垃圾和蟲子",
-            "simplified": "垃圾和虫子",
-            "pinyin": "lèsè hé chóngzi"
-          },
-          {
             "traditional": "就",
             "pinyin": "jiù"
           },
@@ -1383,24 +1372,11 @@
             "pinyin": "kěyǐ"
           },
           {
-            "traditional": "有",
-            "pinyin": "yǒu"
-          },
-          {
             "traditional": "才",
             "pinyin": "cái"
           }
         ],
         "repairs": [
-          {
-            "placed": [
-              "有"
-            ],
-            "mark": [
-              "有"
-            ],
-            "note": "Nobody wants to lie down on trash and bugs. The condition is that there are none: 沒有."
-          },
           {
             "placed": [
               "才"
@@ -1599,15 +1575,13 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s2",
-                "answers": [
-                  "買"
-                ]
+                "type": "text",
+                "traditional": "買",
+                "simplified": "买"
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "紅色的",
                   "白色的"
@@ -1619,21 +1593,19 @@
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "有時候"
                 ]
               },
               {
-                "type": "slot",
-                "id": "s5",
-                "answers": [
-                  "買"
-                ]
+                "type": "text",
+                "traditional": "買",
+                "simplified": "买"
               },
               {
                 "type": "slot",
-                "id": "s6",
+                "id": "s4",
                 "answers": [
                   "白色的",
                   "紅色的"
@@ -1656,16 +1628,6 @@
             "traditional": "有時候",
             "simplified": "有时候",
             "pinyin": "yǒushíhòu"
-          },
-          {
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi"
-          },
-          {
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi"
           },
           {
             "traditional": "紅色的",
@@ -1720,8 +1682,7 @@
             "pinyin": "Tā yǒushíhòu mǎi báisè de, yǒushíhòu mǎi hóngsè de.",
             "english": "Sometimes she buys white ones, and sometimes she buys red ones."
           }
-        ],
-        "free": true
+        ]
       },
       {
         "id": "b2l5g4-3",
@@ -2625,21 +2586,13 @@
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "一次",
-                  "網球"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s5",
-                "answers": [
-                  "網球",
                   "一次"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "網球。",
+                "simplified": "网球。"
               }
             ]
           }
@@ -2661,11 +2614,6 @@
           {
             "traditional": "一次",
             "pinyin": "yí cì"
-          },
-          {
-            "traditional": "網球",
-            "simplified": "网球",
-            "pinyin": "wǎngqiú"
           },
           {
             "traditional": "第",
@@ -2703,14 +2651,6 @@
           "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ yí cì wǎngqiú.",
           "english": "Mr. Zhang plays tennis once every week."
         },
-        "alternatives": [
-          {
-            "traditional": "張先生每一個禮拜打網球一次。",
-            "simplified": "张先生每一个礼拜打网球一次。",
-            "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ wǎngqiú yí cì.",
-            "english": "Mr. Zhang plays tennis once every week."
-          }
-        ],
         "free": true
       },
       {

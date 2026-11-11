@@ -53,11 +53,11 @@ test('book items come first, in book order, with at most two own items after the
   assert.deepEqual(found, []);
 });
 
-test('every item offers at least four words, more than its blanks, and at most six (eight on a build line)', () => {
+test('every item offers at least four words, more than its blanks, and at most six', () => {
   const found = slotItems.flatMap(({ key, item }) => {
     const blanks = practiceSlots(item).length;
     const count = item.tiles.length;
-    return count < 4 || count <= blanks || count > (item.free ? 8 : 6) ? [`${key} ${item.id}: ${count} tiles for ${blanks} blanks`] : [];
+    return count < 4 || count <= blanks || count > 6 ? [`${key} ${item.id}: ${count} tiles for ${blanks} blanks`] : [];
   });
   assert.deepEqual(found, []);
 });

@@ -89,10 +89,6 @@
           {
             "traditional": "在",
             "pinyin": "zài"
-          },
-          {
-            "traditional": "也",
-            "pinyin": "yě"
           }
         ],
         "repairs": [
@@ -113,15 +109,6 @@
               "在"
             ],
             "note": "在 says where something is. Saying which one it is takes 是: 就是那輛…."
-          },
-          {
-            "placed": [
-              "也"
-            ],
-            "mark": [
-              "也"
-            ],
-            "note": "Nothing was said before for 也 to add to. Pointing at the one right here is 就."
           }
         ],
         "fallbackRepair": "就 first, then 是, then which one: 就是那輛紅色的英國車.",
@@ -220,10 +207,6 @@
           {
             "traditional": "都",
             "pinyin": "dōu"
-          },
-          {
-            "traditional": "才",
-            "pinyin": "cái"
           }
         ],
         "repairs": [
@@ -244,15 +227,6 @@
               "都"
             ],
             "note": "B points at one spot right here. That takes 就, not 都."
-          },
-          {
-            "placed": [
-              "才"
-            ],
-            "mark": [
-              "才"
-            ],
-            "note": "B is showing that the keys are right here, close by. That is 就."
           }
         ],
         "fallbackRepair": "就 first, then 在, then the place: 就在那本中文書的旁邊.",
@@ -344,10 +318,6 @@
             "pinyin": "zài"
           },
           {
-            "traditional": "也",
-            "pinyin": "yě"
-          },
-          {
             "traditional": "都",
             "pinyin": "dōu"
           }
@@ -361,15 +331,6 @@
               "在"
             ],
             "note": "在 says where something is. Saying which person she is takes 是: 就是那位…."
-          },
-          {
-            "placed": [
-              "也"
-            ],
-            "mark": [
-              "也"
-            ],
-            "note": "Nothing was said before for 也 to add to. Pointing at the one right here is 就."
           },
           {
             "placed": [
@@ -3210,36 +3171,34 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "s1",
-                "answers": [
-                  "陳先生"
-                ]
+                "type": "text",
+                "traditional": "陳先生",
+                "simplified": "陈先生"
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s1",
                 "answers": [
                   "對"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "做家事"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "有一點兒"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "興趣"
                 ]
@@ -3252,11 +3211,6 @@
           }
         ],
         "tiles": [
-          {
-            "traditional": "陳先生",
-            "simplified": "陈先生",
-            "pinyin": "Chén xiānshēng"
-          },
           {
             "traditional": "對",
             "simplified": "对",
@@ -3305,7 +3259,7 @@
             "note": "興趣 is a thing you have, so it cannot follow 很 directly. It is 有…興趣."
           }
         ],
-        "fallbackRepair": "The person first, then 對 + the activity, then 有一點兒, then 興趣.",
+        "fallbackRepair": "對 + the activity, then 有一點兒, then 興趣.",
         "result": {
           "traditional": "陳先生對做家事有一點兒興趣。",
           "simplified": "陈先生对做家事有一点儿兴趣。",
@@ -3322,15 +3276,12 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "s1",
-                "answers": [
-                  "山本良介"
-                ]
+                "type": "text",
+                "traditional": "山本良介"
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s1",
                 "answers": [
                   "對"
                 ]
@@ -3342,14 +3293,14 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "越來越"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "有興趣"
                 ]
@@ -3362,10 +3313,6 @@
           }
         ],
         "tiles": [
-          {
-            "traditional": "山本良介",
-            "pinyin": "Shānběn Liángjiè"
-          },
           {
             "traditional": "對",
             "simplified": "对",
@@ -3425,7 +3372,7 @@
             "note": "跟 means \"with\". What someone is interested in comes after 對."
           }
         ],
-        "fallbackRepair": "The person first, then 對 before the activity; after it 越來越, then 有興趣.",
+        "fallbackRepair": "對 before the activity, then 越來越, then 有興趣.",
         "result": {
           "traditional": "山本良介對學中文越來越有興趣。",
           "simplified": "山本良介对学中文越来越有兴趣。",

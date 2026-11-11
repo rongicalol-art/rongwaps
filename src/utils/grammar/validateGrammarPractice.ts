@@ -5,8 +5,6 @@ import type { LessonValidationIssue } from './validateInteractiveLessons';
 
 const HAN = /\p{Script=Han}/u;
 const MAX_TILES = 6;
-/** A build line takes the whole sentence in chunks, so its dock may be a little bigger. */
-const MAX_BUILD_TILES = 8;
 /** Book 1 tiles are single words; later books also take short phrases (their exercises ask for whole clauses). */
 const maxTileHan = (bookId: number) => (bookId === 1 ? 4 : 8);
 /** A clip is one clause or sentence, not a speech: long ones are hard to hold in the head while building. */
@@ -40,8 +38,7 @@ function itemIssues(item: PracticeItem, bookId: number): string[] {
     const pair = Math.max(1, ...tileNames.map(needed));
     new Set(tileNames).forEach((name) => { if (tileNames.filter((other) => other === name).length > Math.max(needed(name), pair)) problems.push(`tile ${name} repeats.`); });
     // Simplicity: short tiles, a small dock, and at least one tile that is wrong.
-    const maxTiles = item.kind === 'slot-build' && item.free ? MAX_BUILD_TILES : MAX_TILES;
-    if (item.tiles.length > maxTiles) problems.push(`${item.tiles.length} tiles; keep the dock to ${maxTiles}.`);
+    if (item.tiles.length > MAX_TILES) problems.push(`${item.tiles.length} tiles; keep the dock to ${MAX_TILES}.`);
     tileNames.forEach((tile) => { if (hanCount(tile) > maxTileHan(bookId)) problems.push(`tile ${tile} is longer than ${maxTileHan(bookId)} characters.`); });
     const right = new Set(item.kind === 'slot-build'
       ? practiceSlots(item).flatMap((slot) => slot.answers)

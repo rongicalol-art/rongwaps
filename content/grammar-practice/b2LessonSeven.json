@@ -603,22 +603,19 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s3",
-                "answers": [
-                  "歌"
-                ]
+                "type": "text",
+                "traditional": "歌"
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "都"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "不會唱"
                 ]
@@ -639,10 +636,6 @@
           {
             "traditional": "首",
             "pinyin": "shǒu"
-          },
-          {
-            "traditional": "歌",
-            "pinyin": "gē"
           },
           {
             "traditional": "都",

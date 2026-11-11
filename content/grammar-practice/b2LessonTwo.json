@@ -210,45 +210,33 @@
           {
             "segments": [
               {
+                "type": "text",
+                "traditional": "我昨天"
+              },
+              {
                 "type": "slot",
                 "id": "s1",
-                "answers": [
-                  "我",
-                  "昨天"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s2",
-                "answers": [
-                  "昨天",
-                  "我"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s3",
                 "answers": [
                   "把"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s2",
                 "answers": [
                   "不要的"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s3",
                 "answers": [
                   "小說"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s6",
+                "id": "s4",
                 "answers": [
                   "丟了"
                 ]
@@ -261,14 +249,6 @@
           }
         ],
         "tiles": [
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "昨天",
-            "pinyin": "zuótiān"
-          },
           {
             "traditional": "把",
             "pinyin": "bǎ"
@@ -324,14 +304,6 @@
           "pinyin": "Wǒ zuótiān bǎ búyào de xiǎoshuō diū le.",
           "english": "Yesterday I threw away the novels I didn't want."
         },
-        "alternatives": [
-          {
-            "traditional": "昨天我把不要的小說丟了。",
-            "simplified": "昨天我把不要的小说丢了。",
-            "pinyin": "Zuótiān wǒ bǎ búyào de xiǎoshuō diū le.",
-            "english": "Yesterday I threw away the novels I didn't want."
-          }
-        ],
         "free": true
       }
     ]
@@ -426,10 +398,6 @@
             "pinyin": "gěi"
           },
           {
-            "traditional": "在",
-            "pinyin": "zài"
-          },
-          {
             "traditional": "到",
             "pinyin": "dào"
           }
@@ -443,15 +411,6 @@
               "給"
             ],
             "note": "給 marks the one who receives something. The thing to finish comes after 把."
-          },
-          {
-            "placed": [
-              "在"
-            ],
-            "mark": [
-              "在"
-            ],
-            "note": "在 marks a place. The thing to finish comes after 把, and finishing is V完."
           },
           {
             "placed": [
@@ -559,10 +518,6 @@
             "traditional": "給",
             "simplified": "给",
             "pinyin": "gěi"
-          },
-          {
-            "traditional": "在",
-            "pinyin": "zài"
           }
         ],
         "repairs": [
@@ -583,15 +538,6 @@
               "給"
             ],
             "note": "給 marks the one who receives something. The thing to finish comes after 把."
-          },
-          {
-            "placed": [
-              "在"
-            ],
-            "mark": [
-              "在"
-            ],
-            "note": "在 marks a place. The thing to finish comes after 把, and finishing is V完."
           }
         ],
         "fallbackRepair": "把 before the thing, then the verb, then 完: 把報紙看完.",
@@ -647,15 +593,9 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s5",
-                "answers": [
-                  "看電視"
-                ]
-              },
-              {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "看電視。",
+                "simplified": "看电视。"
               }
             ]
           },
@@ -691,18 +631,9 @@
             "pinyin": "zài"
           },
           {
-            "traditional": "看電視",
-            "simplified": "看电视",
-            "pinyin": "kàn diànshì"
-          },
-          {
             "traditional": "給",
             "simplified": "给",
             "pinyin": "gěi"
-          },
-          {
-            "traditional": "在",
-            "pinyin": "zài"
           },
           {
             "traditional": "也",
@@ -718,15 +649,6 @@
               "給"
             ],
             "note": "給 marks the one who receives something. The thing to finish comes after 把."
-          },
-          {
-            "placed": [
-              "在"
-            ],
-            "mark": [
-              "在"
-            ],
-            "note": "在 marks a place. The thing to finish comes after 把."
           },
           {
             "placed": [
@@ -834,10 +756,6 @@
             "pinyin": "yī"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
             "traditional": "了",
             "pinyin": "le"
           }
@@ -851,15 +769,6 @@
               "了"
             ],
             "note": "把價錢查了 is also good Chinese, but this exercise practises verb + 一 + verb: 把價錢查一查."
-          },
-          {
-            "placed": [
-              "不"
-            ],
-            "mark": [
-              "不"
-            ],
-            "note": "This is a plan, not a question. A softened action repeats the verb around 一: 查一查."
           }
         ],
         "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把價錢查一查.",
@@ -954,10 +863,6 @@
             "pinyin": "yī"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
             "traditional": "完",
             "pinyin": "wán"
           }
@@ -971,15 +876,6 @@
               "完"
             ],
             "note": "把功課寫完 is also good Chinese, but this exercise practises verb + 一 + verb: 把功課寫一寫."
-          },
-          {
-            "placed": [
-              "不"
-            ],
-            "mark": [
-              "不"
-            ],
-            "note": "This is an instruction, not a question. A softened action repeats the verb around 一: 寫一寫."
           }
         ],
         "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把功課寫一寫.",
@@ -1410,25 +1306,12 @@
             "pinyin": "tīng"
           },
           {
-            "traditional": "看",
-            "pinyin": "kàn"
-          },
-          {
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
           }
         ],
         "repairs": [
-          {
-            "placed": [
-              "看"
-            ],
-            "mark": [
-              "看"
-            ],
-            "note": "A song is something you hear: 唱給我聽."
-          },
           {
             "placed": [
               "對"
@@ -3528,15 +3411,9 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s5",
-                "answers": [
-                  "袋子裡"
-                ]
-              },
-              {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "袋子裡。",
+                "simplified": "袋子里。"
               }
             ]
           }
@@ -3560,11 +3437,6 @@
             "pinyin": "dào"
           },
           {
-            "traditional": "袋子裡",
-            "simplified": "袋子里",
-            "pinyin": "dàizi lǐ"
-          },
-          {
             "traditional": "給",
             "simplified": "给",
             "pinyin": "gěi"
@@ -3573,11 +3445,6 @@
             "traditional": "寫",
             "simplified": "写",
             "pinyin": "xiě"
-          },
-          {
-            "traditional": "對",
-            "simplified": "对",
-            "pinyin": "duì"
           }
         ],
         "repairs": [
@@ -3598,15 +3465,6 @@
               "寫"
             ],
             "note": "A phone is put somewhere, not written: 放."
-          },
-          {
-            "placed": [
-              "對"
-            ],
-            "mark": [
-              "對"
-            ],
-            "note": "對 marks whom something is aimed at. The thing to move comes after 把."
           }
         ],
         "fallbackRepair": "把 before the thing, then the verb, then 到 before where it goes.",

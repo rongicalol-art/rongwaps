@@ -3029,10 +3029,6 @@
             "pinyin": "zhīdào"
           },
           {
-            "traditional": "到",
-            "pinyin": "dào"
-          },
-          {
             "traditional": "讓",
             "simplified": "让",
             "pinyin": "ràng"
@@ -3044,15 +3040,6 @@
           }
         ],
         "repairs": [
-          {
-            "placed": [
-              "到"
-            ],
-            "mark": [
-              "到"
-            ],
-            "note": "從…到… gives a start and an end. Learning something out of the results is 從…中."
-          },
           {
             "placed": [
               "讓"
@@ -3167,10 +3154,6 @@
             "pinyin": "zhōngjiān"
           },
           {
-            "traditional": "到",
-            "pinyin": "dào"
-          },
-          {
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
@@ -3185,15 +3168,6 @@
               "中間"
             ],
             "note": "中間 is the middle of a place. In this pattern 中 means \"in\" or \"out of\": 從…中."
-          },
-          {
-            "placed": [
-              "到"
-            ],
-            "mark": [
-              "到"
-            ],
-            "note": "從…到… gives a start and an end. Getting something out of an experience is 從…中."
           },
           {
             "placed": [
@@ -3278,6 +3252,11 @@
             "pinyin": "cóng"
           },
           {
+            "traditional": "華語中心的學生",
+            "simplified": "华语中心的学生",
+            "pinyin": "Huáyǔ zhōngxīn de xuéshēng"
+          },
+          {
             "traditional": "中",
             "pinyin": "zhōng"
           },
@@ -3292,18 +3271,9 @@
             "pinyin": "duì"
           },
           {
-            "traditional": "到",
-            "pinyin": "dào"
-          },
-          {
             "traditional": "給",
             "simplified": "给",
             "pinyin": "gěi"
-          },
-          {
-            "traditional": "華語中心的學生",
-            "simplified": "华语中心的学生",
-            "pinyin": "Huáyǔ zhōngxīn de xuéshēng"
           }
         ],
         "repairs": [
@@ -3315,15 +3285,6 @@
               "對"
             ],
             "note": "對 marks whom something affects. The group the teacher picks from takes 從…中."
-          },
-          {
-            "placed": [
-              "到"
-            ],
-            "mark": [
-              "到"
-            ],
-            "note": "從…到… gives a start and an end. Picking some out of a group is 從…中."
           },
           {
             "placed": [

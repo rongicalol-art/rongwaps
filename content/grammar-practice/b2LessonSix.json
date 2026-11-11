@@ -1601,15 +1601,12 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s4",
-                "answers": [
-                  "喝"
-                ]
+                "type": "text",
+                "traditional": "喝"
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "哪一種"
                 ]
@@ -1639,10 +1636,6 @@
           {
             "traditional": "就",
             "pinyin": "jiù"
-          },
-          {
-            "traditional": "喝",
-            "pinyin": "hē"
           },
           {
             "traditional": "這一種",

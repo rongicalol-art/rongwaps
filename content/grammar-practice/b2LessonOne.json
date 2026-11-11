@@ -2379,21 +2379,17 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "雖然",
-                  "這個房子"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s2",
-                "answers": [
-                  "這個房子",
                   "雖然"
                 ]
               },
               {
+                "type": "text",
+                "traditional": "這個房子",
+                "simplified": "这个房子"
+              },
+              {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "很小"
                 ]
@@ -2404,14 +2400,14 @@
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "可是"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "很便宜"
                 ]
@@ -2428,11 +2424,6 @@
             "traditional": "雖然",
             "simplified": "虽然",
             "pinyin": "suīrán"
-          },
-          {
-            "traditional": "這個房子",
-            "simplified": "这个房子",
-            "pinyin": "zhège fángzi"
           },
           {
             "traditional": "很小",
@@ -2483,14 +2474,6 @@
           "pinyin": "Suīrán zhège fángzi hěn xiǎo, kěshì hěn piányí.",
           "english": "Although this house is small, it is cheap."
         },
-        "alternatives": [
-          {
-            "traditional": "這個房子雖然很小，可是很便宜。",
-            "simplified": "这个房子虽然很小，可是很便宜。",
-            "pinyin": "Zhège fángzi suīrán hěn xiǎo, kěshì hěn piányí.",
-            "english": "Although this house is small, it is cheap."
-          }
-        ],
         "free": true
       },
       {

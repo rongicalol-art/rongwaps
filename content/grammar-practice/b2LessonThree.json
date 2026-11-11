@@ -1184,36 +1184,31 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s3",
-                "answers": [
-                  "書"
-                ]
+                "type": "text",
+                "traditional": "書",
+                "simplified": "书"
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "帶"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "回"
                 ]
               },
               {
-                "type": "slot",
-                "id": "s6",
-                "answers": [
-                  "家"
-                ]
+                "type": "text",
+                "traditional": "家"
               },
               {
                 "type": "slot",
-                "id": "s7",
+                "id": "s5",
                 "answers": [
                   "去"
                 ]
@@ -1236,11 +1231,6 @@
             "pinyin": "bǎ"
           },
           {
-            "traditional": "書",
-            "simplified": "书",
-            "pinyin": "shū"
-          },
-          {
             "traditional": "帶",
             "simplified": "带",
             "pinyin": "dài"
@@ -1248,10 +1238,6 @@
           {
             "traditional": "回",
             "pinyin": "huí"
-          },
-          {
-            "traditional": "家",
-            "pinyin": "jiā"
           },
           {
             "traditional": "去",
@@ -1290,50 +1276,44 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "s1",
-                "answers": [
-                  "孩子"
-                ]
+                "type": "text",
+                "traditional": "孩子"
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s1",
                 "answers": [
                   "把"
                 ]
               },
               {
-                "type": "slot",
-                "id": "s3",
-                "answers": [
-                  "垃圾"
-                ]
+                "type": "text",
+                "traditional": "垃圾"
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s2",
                 "answers": [
                   "丟"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s3",
                 "answers": [
                   "進"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s6",
+                "id": "s4",
                 "answers": [
                   "袋子裡"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s7",
+                "id": "s5",
                 "answers": [
                   "去"
                 ]
@@ -1347,16 +1327,8 @@
         ],
         "tiles": [
           {
-            "traditional": "孩子",
-            "pinyin": "háizi"
-          },
-          {
             "traditional": "把",
             "pinyin": "bǎ"
-          },
-          {
-            "traditional": "垃圾",
-            "pinyin": "lèsè"
           },
           {
             "traditional": "丟",
@@ -2982,43 +2954,33 @@
                 ]
               },
               {
+                "type": "text",
+                "traditional": "自己的名字"
+              },
+              {
                 "type": "slot",
                 "id": "s2",
-                "answers": [
-                  "自己的"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s3",
-                "answers": [
-                  "名字"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s4",
                 "answers": [
                   "寫"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s3",
                 "answers": [
                   "得"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s6",
+                "id": "s4",
                 "answers": [
                   "那麼"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s7",
+                "id": "s5",
                 "answers": [
                   "難看"
                 ]
@@ -3034,14 +2996,6 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
-          },
-          {
-            "traditional": "自己的",
-            "pinyin": "zìjǐ de"
-          },
-          {
-            "traditional": "名字",
-            "pinyin": "míngzi"
           },
           {
             "traditional": "寫",
@@ -3106,43 +3060,27 @@
                 ]
               },
               {
+                "type": "text",
+                "traditional": "新家的客廳",
+                "simplified": "新家的客厅"
+              },
+              {
                 "type": "slot",
                 "id": "s2",
-                "answers": [
-                  "新家"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s3",
-                "answers": [
-                  "的"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s4",
-                "answers": [
-                  "客廳"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s5",
                 "answers": [
                   "弄"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s6",
+                "id": "s3",
                 "answers": [
                   "得"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s7",
+                "id": "s4",
                 "answers": [
                   "很漂亮"
                 ]
@@ -3160,19 +3098,6 @@
             "pinyin": "bǎ"
           },
           {
-            "traditional": "新家",
-            "pinyin": "xīn jiā"
-          },
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "客廳",
-            "simplified": "客厅",
-            "pinyin": "kètīng"
-          },
-          {
             "traditional": "弄",
             "pinyin": "nòng"
           },
@@ -3185,17 +3110,23 @@
             "pinyin": "hěn piàoliàng"
           },
           {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
             "traditional": "了",
             "pinyin": "le"
           }
         ],
         "repairs": [
           {
-            "before": [
-              "得",
+            "placed": [
               "的"
             ],
-            "note": "的 links 新家 to 客廳; 得 links the verb to how it turned out: 新家的客廳弄得很漂亮."
+            "mark": [
+              "的"
+            ],
+            "note": "Between a verb and how it turned out, the particle is 得, not 的: 弄得很漂亮."
           },
           {
             "placed": [

@@ -5938,21 +5938,17 @@
                         "type": "slot",
                         "id": "s1",
                         "answers": [
-                          "雖然",
-                          "這個房子"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s2",
-                        "answers": [
-                          "這個房子",
                           "雖然"
                         ]
                       },
                       {
+                        "type": "text",
+                        "traditional": "這個房子",
+                        "simplified": "这个房子"
+                      },
+                      {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "很小"
                         ]
@@ -5963,14 +5959,14 @@
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "可是"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "很便宜"
                         ]
@@ -5987,11 +5983,6 @@
                     "traditional": "雖然",
                     "simplified": "虽然",
                     "pinyin": "suīrán"
-                  },
-                  {
-                    "traditional": "這個房子",
-                    "simplified": "这个房子",
-                    "pinyin": "zhège fángzi"
                   },
                   {
                     "traditional": "很小",
@@ -6042,14 +6033,6 @@
                   "pinyin": "Suīrán zhège fángzi hěn xiǎo, kěshì hěn piányí.",
                   "english": "Although this house is small, it is cheap."
                 },
-                "alternatives": [
-                  {
-                    "traditional": "這個房子雖然很小，可是很便宜。",
-                    "simplified": "这个房子虽然很小，可是很便宜。",
-                    "pinyin": "Zhège fángzi suīrán hěn xiǎo, kěshì hěn piányí.",
-                    "english": "Although this house is small, it is cheap."
-                  }
-                ],
                 "free": true
               },
               {
@@ -7710,45 +7693,33 @@
                   {
                     "segments": [
                       {
+                        "type": "text",
+                        "traditional": "我昨天"
+                      },
+                      {
                         "type": "slot",
                         "id": "s1",
-                        "answers": [
-                          "我",
-                          "昨天"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s2",
-                        "answers": [
-                          "昨天",
-                          "我"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s3",
                         "answers": [
                           "把"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s2",
                         "answers": [
                           "不要的"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s3",
                         "answers": [
                           "小說"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s6",
+                        "id": "s4",
                         "answers": [
                           "丟了"
                         ]
@@ -7761,14 +7732,6 @@
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "我",
-                    "pinyin": "wǒ"
-                  },
-                  {
-                    "traditional": "昨天",
-                    "pinyin": "zuótiān"
-                  },
                   {
                     "traditional": "把",
                     "pinyin": "bǎ"
@@ -7824,14 +7787,6 @@
                   "pinyin": "Wǒ zuótiān bǎ búyào de xiǎoshuō diū le.",
                   "english": "Yesterday I threw away the novels I didn't want."
                 },
-                "alternatives": [
-                  {
-                    "traditional": "昨天我把不要的小說丟了。",
-                    "simplified": "昨天我把不要的小说丢了。",
-                    "pinyin": "Zuótiān wǒ bǎ búyào de xiǎoshuō diū le.",
-                    "english": "Yesterday I threw away the novels I didn't want."
-                  }
-                ],
                 "free": true
               }
             ]
@@ -8353,10 +8308,6 @@
                     "pinyin": "gěi"
                   },
                   {
-                    "traditional": "在",
-                    "pinyin": "zài"
-                  },
-                  {
                     "traditional": "到",
                     "pinyin": "dào"
                   }
@@ -8370,15 +8321,6 @@
                       "給"
                     ],
                     "note": "給 marks the one who receives something. The thing to finish comes after 把."
-                  },
-                  {
-                    "placed": [
-                      "在"
-                    ],
-                    "mark": [
-                      "在"
-                    ],
-                    "note": "在 marks a place. The thing to finish comes after 把, and finishing is V完."
                   },
                   {
                     "placed": [
@@ -8486,10 +8428,6 @@
                     "traditional": "給",
                     "simplified": "给",
                     "pinyin": "gěi"
-                  },
-                  {
-                    "traditional": "在",
-                    "pinyin": "zài"
                   }
                 ],
                 "repairs": [
@@ -8510,15 +8448,6 @@
                       "給"
                     ],
                     "note": "給 marks the one who receives something. The thing to finish comes after 把."
-                  },
-                  {
-                    "placed": [
-                      "在"
-                    ],
-                    "mark": [
-                      "在"
-                    ],
-                    "note": "在 marks a place. The thing to finish comes after 把, and finishing is V完."
                   }
                 ],
                 "fallbackRepair": "把 before the thing, then the verb, then 完: 把報紙看完.",
@@ -8574,15 +8503,9 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s5",
-                        "answers": [
-                          "看電視"
-                        ]
-                      },
-                      {
                         "type": "text",
-                        "traditional": "。"
+                        "traditional": "看電視。",
+                        "simplified": "看电视。"
                       }
                     ]
                   },
@@ -8618,18 +8541,9 @@
                     "pinyin": "zài"
                   },
                   {
-                    "traditional": "看電視",
-                    "simplified": "看电视",
-                    "pinyin": "kàn diànshì"
-                  },
-                  {
                     "traditional": "給",
                     "simplified": "给",
                     "pinyin": "gěi"
-                  },
-                  {
-                    "traditional": "在",
-                    "pinyin": "zài"
                   },
                   {
                     "traditional": "也",
@@ -8645,15 +8559,6 @@
                       "給"
                     ],
                     "note": "給 marks the one who receives something. The thing to finish comes after 把."
-                  },
-                  {
-                    "placed": [
-                      "在"
-                    ],
-                    "mark": [
-                      "在"
-                    ],
-                    "note": "在 marks a place. The thing to finish comes after 把."
                   },
                   {
                     "placed": [
@@ -9360,10 +9265,6 @@
                     "pinyin": "yī"
                   },
                   {
-                    "traditional": "不",
-                    "pinyin": "bù"
-                  },
-                  {
                     "traditional": "了",
                     "pinyin": "le"
                   }
@@ -9377,15 +9278,6 @@
                       "了"
                     ],
                     "note": "把價錢查了 is also good Chinese, but this exercise practises verb + 一 + verb: 把價錢查一查."
-                  },
-                  {
-                    "placed": [
-                      "不"
-                    ],
-                    "mark": [
-                      "不"
-                    ],
-                    "note": "This is a plan, not a question. A softened action repeats the verb around 一: 查一查."
                   }
                 ],
                 "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把價錢查一查.",
@@ -9480,10 +9372,6 @@
                     "pinyin": "yī"
                   },
                   {
-                    "traditional": "不",
-                    "pinyin": "bù"
-                  },
-                  {
                     "traditional": "完",
                     "pinyin": "wán"
                   }
@@ -9497,15 +9385,6 @@
                       "完"
                     ],
                     "note": "把功課寫完 is also good Chinese, but this exercise practises verb + 一 + verb: 把功課寫一寫."
-                  },
-                  {
-                    "placed": [
-                      "不"
-                    ],
-                    "mark": [
-                      "不"
-                    ],
-                    "note": "This is an instruction, not a question. A softened action repeats the verb around 一: 寫一寫."
                   }
                 ],
                 "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把功課寫一寫.",
@@ -10432,25 +10311,12 @@
                     "pinyin": "tīng"
                   },
                   {
-                    "traditional": "看",
-                    "pinyin": "kàn"
-                  },
-                  {
                     "traditional": "對",
                     "simplified": "对",
                     "pinyin": "duì"
                   }
                 ],
                 "repairs": [
-                  {
-                    "placed": [
-                      "看"
-                    ],
-                    "mark": [
-                      "看"
-                    ],
-                    "note": "A song is something you hear: 唱給我聽."
-                  },
                   {
                     "placed": [
                       "對"
@@ -15651,15 +15517,9 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s5",
-                        "answers": [
-                          "袋子裡"
-                        ]
-                      },
-                      {
                         "type": "text",
-                        "traditional": "。"
+                        "traditional": "袋子裡。",
+                        "simplified": "袋子里。"
                       }
                     ]
                   }
@@ -15683,11 +15543,6 @@
                     "pinyin": "dào"
                   },
                   {
-                    "traditional": "袋子裡",
-                    "simplified": "袋子里",
-                    "pinyin": "dàizi lǐ"
-                  },
-                  {
                     "traditional": "給",
                     "simplified": "给",
                     "pinyin": "gěi"
@@ -15696,11 +15551,6 @@
                     "traditional": "寫",
                     "simplified": "写",
                     "pinyin": "xiě"
-                  },
-                  {
-                    "traditional": "對",
-                    "simplified": "对",
-                    "pinyin": "duì"
                   }
                 ],
                 "repairs": [
@@ -15721,15 +15571,6 @@
                       "寫"
                     ],
                     "note": "A phone is put somewhere, not written: 放."
-                  },
-                  {
-                    "placed": [
-                      "對"
-                    ],
-                    "mark": [
-                      "對"
-                    ],
-                    "note": "對 marks whom something is aimed at. The thing to move comes after 把."
                   }
                 ],
                 "fallbackRepair": "把 before the thing, then the verb, then 到 before where it goes.",
@@ -20236,36 +20077,31 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s3",
-                        "answers": [
-                          "書"
-                        ]
+                        "type": "text",
+                        "traditional": "書",
+                        "simplified": "书"
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "帶"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "回"
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s6",
-                        "answers": [
-                          "家"
-                        ]
+                        "type": "text",
+                        "traditional": "家"
                       },
                       {
                         "type": "slot",
-                        "id": "s7",
+                        "id": "s5",
                         "answers": [
                           "去"
                         ]
@@ -20288,11 +20124,6 @@
                     "pinyin": "bǎ"
                   },
                   {
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "shū"
-                  },
-                  {
                     "traditional": "帶",
                     "simplified": "带",
                     "pinyin": "dài"
@@ -20300,10 +20131,6 @@
                   {
                     "traditional": "回",
                     "pinyin": "huí"
-                  },
-                  {
-                    "traditional": "家",
-                    "pinyin": "jiā"
                   },
                   {
                     "traditional": "去",
@@ -20342,50 +20169,44 @@
                   {
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "s1",
-                        "answers": [
-                          "孩子"
-                        ]
+                        "type": "text",
+                        "traditional": "孩子"
                       },
                       {
                         "type": "slot",
-                        "id": "s2",
+                        "id": "s1",
                         "answers": [
                           "把"
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s3",
-                        "answers": [
-                          "垃圾"
-                        ]
+                        "type": "text",
+                        "traditional": "垃圾"
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s2",
                         "answers": [
                           "丟"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s3",
                         "answers": [
                           "進"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s6",
+                        "id": "s4",
                         "answers": [
                           "袋子裡"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s7",
+                        "id": "s5",
                         "answers": [
                           "去"
                         ]
@@ -20399,16 +20220,8 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "孩子",
-                    "pinyin": "háizi"
-                  },
-                  {
                     "traditional": "把",
                     "pinyin": "bǎ"
-                  },
-                  {
-                    "traditional": "垃圾",
-                    "pinyin": "lèsè"
                   },
                   {
                     "traditional": "丟",
@@ -24552,43 +24365,33 @@
                         ]
                       },
                       {
+                        "type": "text",
+                        "traditional": "自己的名字"
+                      },
+                      {
                         "type": "slot",
                         "id": "s2",
-                        "answers": [
-                          "自己的"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s3",
-                        "answers": [
-                          "名字"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s4",
                         "answers": [
                           "寫"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s3",
                         "answers": [
                           "得"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s6",
+                        "id": "s4",
                         "answers": [
                           "那麼"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s7",
+                        "id": "s5",
                         "answers": [
                           "難看"
                         ]
@@ -24604,14 +24407,6 @@
                   {
                     "traditional": "把",
                     "pinyin": "bǎ"
-                  },
-                  {
-                    "traditional": "自己的",
-                    "pinyin": "zìjǐ de"
-                  },
-                  {
-                    "traditional": "名字",
-                    "pinyin": "míngzi"
                   },
                   {
                     "traditional": "寫",
@@ -24676,43 +24471,27 @@
                         ]
                       },
                       {
+                        "type": "text",
+                        "traditional": "新家的客廳",
+                        "simplified": "新家的客厅"
+                      },
+                      {
                         "type": "slot",
                         "id": "s2",
-                        "answers": [
-                          "新家"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s3",
-                        "answers": [
-                          "的"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s4",
-                        "answers": [
-                          "客廳"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s5",
                         "answers": [
                           "弄"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s6",
+                        "id": "s3",
                         "answers": [
                           "得"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s7",
+                        "id": "s4",
                         "answers": [
                           "很漂亮"
                         ]
@@ -24730,19 +24509,6 @@
                     "pinyin": "bǎ"
                   },
                   {
-                    "traditional": "新家",
-                    "pinyin": "xīn jiā"
-                  },
-                  {
-                    "traditional": "的",
-                    "pinyin": "de"
-                  },
-                  {
-                    "traditional": "客廳",
-                    "simplified": "客厅",
-                    "pinyin": "kètīng"
-                  },
-                  {
                     "traditional": "弄",
                     "pinyin": "nòng"
                   },
@@ -24755,17 +24521,23 @@
                     "pinyin": "hěn piàoliàng"
                   },
                   {
+                    "traditional": "的",
+                    "pinyin": "de"
+                  },
+                  {
                     "traditional": "了",
                     "pinyin": "le"
                   }
                 ],
                 "repairs": [
                   {
-                    "before": [
-                      "得",
+                    "placed": [
                       "的"
                     ],
-                    "note": "的 links 新家 to 客廳; 得 links the verb to how it turned out: 新家的客廳弄得很漂亮."
+                    "mark": [
+                      "的"
+                    ],
+                    "note": "Between a verb and how it turned out, the particle is 得, not 的: 弄得很漂亮."
                   },
                   {
                     "placed": [
@@ -25687,10 +25459,6 @@
                   {
                     "traditional": "在",
                     "pinyin": "zài"
-                  },
-                  {
-                    "traditional": "也",
-                    "pinyin": "yě"
                   }
                 ],
                 "repairs": [
@@ -25711,15 +25479,6 @@
                       "在"
                     ],
                     "note": "在 says where something is. Saying which one it is takes 是: 就是那輛…."
-                  },
-                  {
-                    "placed": [
-                      "也"
-                    ],
-                    "mark": [
-                      "也"
-                    ],
-                    "note": "Nothing was said before for 也 to add to. Pointing at the one right here is 就."
                   }
                 ],
                 "fallbackRepair": "就 first, then 是, then which one: 就是那輛紅色的英國車.",
@@ -25818,10 +25577,6 @@
                   {
                     "traditional": "都",
                     "pinyin": "dōu"
-                  },
-                  {
-                    "traditional": "才",
-                    "pinyin": "cái"
                   }
                 ],
                 "repairs": [
@@ -25842,15 +25597,6 @@
                       "都"
                     ],
                     "note": "B points at one spot right here. That takes 就, not 都."
-                  },
-                  {
-                    "placed": [
-                      "才"
-                    ],
-                    "mark": [
-                      "才"
-                    ],
-                    "note": "B is showing that the keys are right here, close by. That is 就."
                   }
                 ],
                 "fallbackRepair": "就 first, then 在, then the place: 就在那本中文書的旁邊.",
@@ -25942,10 +25688,6 @@
                     "pinyin": "zài"
                   },
                   {
-                    "traditional": "也",
-                    "pinyin": "yě"
-                  },
-                  {
                     "traditional": "都",
                     "pinyin": "dōu"
                   }
@@ -25959,15 +25701,6 @@
                       "在"
                     ],
                     "note": "在 says where something is. Saying which person she is takes 是: 就是那位…."
-                  },
-                  {
-                    "placed": [
-                      "也"
-                    ],
-                    "mark": [
-                      "也"
-                    ],
-                    "note": "Nothing was said before for 也 to add to. Pointing at the one right here is 就."
                   },
                   {
                     "placed": [
@@ -32326,36 +32059,34 @@
                   {
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "s1",
-                        "answers": [
-                          "陳先生"
-                        ]
+                        "type": "text",
+                        "traditional": "陳先生",
+                        "simplified": "陈先生"
                       },
                       {
                         "type": "slot",
-                        "id": "s2",
+                        "id": "s1",
                         "answers": [
                           "對"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "做家事"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "有一點兒"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "興趣"
                         ]
@@ -32368,11 +32099,6 @@
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "陳先生",
-                    "simplified": "陈先生",
-                    "pinyin": "Chén xiānshēng"
-                  },
                   {
                     "traditional": "對",
                     "simplified": "对",
@@ -32421,7 +32147,7 @@
                     "note": "興趣 is a thing you have, so it cannot follow 很 directly. It is 有…興趣."
                   }
                 ],
-                "fallbackRepair": "The person first, then 對 + the activity, then 有一點兒, then 興趣.",
+                "fallbackRepair": "對 + the activity, then 有一點兒, then 興趣.",
                 "result": {
                   "traditional": "陳先生對做家事有一點兒興趣。",
                   "simplified": "陈先生对做家事有一点儿兴趣。",
@@ -32438,15 +32164,12 @@
                   {
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "s1",
-                        "answers": [
-                          "山本良介"
-                        ]
+                        "type": "text",
+                        "traditional": "山本良介"
                       },
                       {
                         "type": "slot",
-                        "id": "s2",
+                        "id": "s1",
                         "answers": [
                           "對"
                         ]
@@ -32458,14 +32181,14 @@
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "越來越"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "有興趣"
                         ]
@@ -32478,10 +32201,6 @@
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "山本良介",
-                    "pinyin": "Shānběn Liángjiè"
-                  },
                   {
                     "traditional": "對",
                     "simplified": "对",
@@ -32541,7 +32260,7 @@
                     "note": "跟 means \"with\". What someone is interested in comes after 對."
                   }
                 ],
-                "fallbackRepair": "The person first, then 對 before the activity; after it 越來越, then 有興趣.",
+                "fallbackRepair": "對 before the activity, then 越來越, then 有興趣.",
                 "result": {
                   "traditional": "山本良介對學中文越來越有興趣。",
                   "simplified": "山本良介对学中文越来越有兴趣。",
@@ -36611,26 +36330,20 @@
                         ]
                       },
                       {
+                        "type": "text",
+                        "traditional": "垃圾和蟲子，",
+                        "simplified": "垃圾和虫子，"
+                      },
+                      {
                         "type": "slot",
                         "id": "s4",
-                        "answers": [
-                          "垃圾和蟲子"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "，"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s5",
                         "answers": [
                           "就"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s6",
+                        "id": "s5",
                         "answers": [
                           "可以"
                         ]
@@ -36657,11 +36370,6 @@
                     "pinyin": "méiyǒu"
                   },
                   {
-                    "traditional": "垃圾和蟲子",
-                    "simplified": "垃圾和虫子",
-                    "pinyin": "lèsè hé chóngzi"
-                  },
-                  {
                     "traditional": "就",
                     "pinyin": "jiù"
                   },
@@ -36670,24 +36378,11 @@
                     "pinyin": "kěyǐ"
                   },
                   {
-                    "traditional": "有",
-                    "pinyin": "yǒu"
-                  },
-                  {
                     "traditional": "才",
                     "pinyin": "cái"
                   }
                 ],
                 "repairs": [
-                  {
-                    "placed": [
-                      "有"
-                    ],
-                    "mark": [
-                      "有"
-                    ],
-                    "note": "Nobody wants to lie down on trash and bugs. The condition is that there are none: 沒有."
-                  },
                   {
                     "placed": [
                       "才"
@@ -37492,15 +37187,13 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s2",
-                        "answers": [
-                          "買"
-                        ]
+                        "type": "text",
+                        "traditional": "買",
+                        "simplified": "买"
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "紅色的",
                           "白色的"
@@ -37512,21 +37205,19 @@
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "有時候"
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s5",
-                        "answers": [
-                          "買"
-                        ]
+                        "type": "text",
+                        "traditional": "買",
+                        "simplified": "买"
                       },
                       {
                         "type": "slot",
-                        "id": "s6",
+                        "id": "s4",
                         "answers": [
                           "白色的",
                           "紅色的"
@@ -37549,16 +37240,6 @@
                     "traditional": "有時候",
                     "simplified": "有时候",
                     "pinyin": "yǒushíhòu"
-                  },
-                  {
-                    "traditional": "買",
-                    "simplified": "买",
-                    "pinyin": "mǎi"
-                  },
-                  {
-                    "traditional": "買",
-                    "simplified": "买",
-                    "pinyin": "mǎi"
                   },
                   {
                     "traditional": "紅色的",
@@ -37613,8 +37294,7 @@
                     "pinyin": "Tā yǒushíhòu mǎi báisè de, yǒushíhòu mǎi hóngsè de.",
                     "english": "Sometimes she buys white ones, and sometimes she buys red ones."
                   }
-                ],
-                "free": true
+                ]
               },
               {
                 "id": "b2l5g4-3",
@@ -40073,21 +39753,13 @@
                         "type": "slot",
                         "id": "s4",
                         "answers": [
-                          "一次",
-                          "網球"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s5",
-                        "answers": [
-                          "網球",
                           "一次"
                         ]
                       },
                       {
                         "type": "text",
-                        "traditional": "。"
+                        "traditional": "網球。",
+                        "simplified": "网球。"
                       }
                     ]
                   }
@@ -40109,11 +39781,6 @@
                   {
                     "traditional": "一次",
                     "pinyin": "yí cì"
-                  },
-                  {
-                    "traditional": "網球",
-                    "simplified": "网球",
-                    "pinyin": "wǎngqiú"
                   },
                   {
                     "traditional": "第",
@@ -40151,14 +39818,6 @@
                   "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ yí cì wǎngqiú.",
                   "english": "Mr. Zhang plays tennis once every week."
                 },
-                "alternatives": [
-                  {
-                    "traditional": "張先生每一個禮拜打網球一次。",
-                    "simplified": "张先生每一个礼拜打网球一次。",
-                    "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ wǎngqiú yí cì.",
-                    "english": "Mr. Zhang plays tennis once every week."
-                  }
-                ],
                 "free": true
               },
               {
@@ -46164,15 +45823,12 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s4",
-                        "answers": [
-                          "喝"
-                        ]
+                        "type": "text",
+                        "traditional": "喝"
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "哪一種"
                         ]
@@ -46202,10 +45858,6 @@
                   {
                     "traditional": "就",
                     "pinyin": "jiù"
-                  },
-                  {
-                    "traditional": "喝",
-                    "pinyin": "hē"
                   },
                   {
                     "traditional": "這一種",
@@ -52176,22 +51828,19 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s3",
-                        "answers": [
-                          "歌"
-                        ]
+                        "type": "text",
+                        "traditional": "歌"
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "都"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "不會唱"
                         ]
@@ -52212,10 +51861,6 @@
                   {
                     "traditional": "首",
                     "pinyin": "shǒu"
-                  },
-                  {
-                    "traditional": "歌",
-                    "pinyin": "gē"
                   },
                   {
                     "traditional": "都",
@@ -74052,10 +73697,6 @@
                   {
                     "traditional": "很好",
                     "pinyin": "hěn hǎo"
-                  },
-                  {
-                    "traditional": "一定",
-                    "pinyin": "yídìng"
                   }
                 ],
                 "repairs": [
@@ -74076,15 +73717,6 @@
                       "很好"
                     ],
                     "note": "Nobody has heard her, so they do not know. After 不知道 comes a question: 好不好."
-                  },
-                  {
-                    "placed": [
-                      "一定"
-                    ],
-                    "mark": [
-                      "一定"
-                    ],
-                    "note": "一定 says something is certain. Nobody has heard her, so they press for the answer: 到底."
                   }
                 ],
                 "fallbackRepair": "到底 before the verb, and a choice question after it: 到底唱得好不好.",
@@ -74178,11 +73810,6 @@
                     "pinyin": "yǐjīng"
                   },
                   {
-                    "traditional": "什麼",
-                    "simplified": "什么",
-                    "pinyin": "shénme"
-                  },
-                  {
                     "traditional": "公園",
                     "simplified": "公园",
                     "pinyin": "gōngyuán"
@@ -74197,15 +73824,6 @@
                       "已經"
                     ],
                     "note": "已經 says something has already happened. The two still disagree, so the speaker presses for an answer: 到底."
-                  },
-                  {
-                    "placed": [
-                      "什麼"
-                    ],
-                    "mark": [
-                      "什麼"
-                    ],
-                    "note": "After 住在 comes a place, so the question word is 哪裡."
                   },
                   {
                     "placed": [
@@ -74308,10 +73926,6 @@
                     "pinyin": "zhè yì mén"
                   },
                   {
-                    "traditional": "哪一本",
-                    "pinyin": "nǎ yì běn"
-                  },
-                  {
                     "traditional": "已經",
                     "simplified": "已经",
                     "pinyin": "yǐjīng"
@@ -74326,15 +73940,6 @@
                       "這一門"
                     ],
                     "note": "到底 needs a real question after it: 哪一門."
-                  },
-                  {
-                    "placed": [
-                      "哪一本"
-                    ],
-                    "mark": [
-                      "哪一本"
-                    ],
-                    "note": "本 counts books. Courses are counted with 門: 哪一門課."
                   },
                   {
                     "placed": [
@@ -75994,10 +75599,6 @@
                     "pinyin": "cháng yùndòng"
                   },
                   {
-                    "traditional": "所以",
-                    "pinyin": "suǒyǐ"
-                  },
-                  {
                     "traditional": "因為",
                     "simplified": "因为",
                     "pinyin": "yīnwèi"
@@ -76012,15 +75613,6 @@
                       "常運動"
                     ],
                     "note": "People get fatter when they do not exercise, not when they exercise often."
-                  },
-                  {
-                    "placed": [
-                      "所以"
-                    ],
-                    "mark": [
-                      "所以"
-                    ],
-                    "note": "所以 starts a result. The first half is an \"if\", which opens with 要是."
                   },
                   {
                     "placed": [
@@ -76721,36 +76313,34 @@
                     },
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "s1",
-                        "answers": [
-                          "跟外國朋友聊天"
-                        ]
+                        "type": "text",
+                        "traditional": "跟外國朋友聊天",
+                        "simplified": "跟外国朋友聊天"
                       },
                       {
                         "type": "slot",
-                        "id": "s2",
+                        "id": "s1",
                         "answers": [
                           "對"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "我的中文"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "有"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "幫助"
                         ]
@@ -76764,11 +76354,6 @@
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "跟外國朋友聊天",
-                    "simplified": "跟外国朋友聊天",
-                    "pinyin": "gēn wàiguó péngyǒu liáotiān"
-                  },
                   {
                     "traditional": "對",
                     "simplified": "对",
@@ -76793,24 +76378,12 @@
                     "pinyin": "gěi"
                   },
                   {
-                    "traditional": "沒有",
-                    "simplified": "没有",
-                    "pinyin": "méiyǒu"
-                  },
-                  {
                     "traditional": "壞處",
                     "simplified": "坏处",
                     "pinyin": "huàichù"
                   }
                 ],
                 "repairs": [
-                  {
-                    "before": [
-                      "我的中文",
-                      "跟外國朋友聊天"
-                    ],
-                    "note": "Chatting is what helps the Chinese, not the other way round: 跟外國朋友聊天對我的中文有幫助."
-                  },
                   {
                     "placed": [
                       "給"
@@ -76819,15 +76392,6 @@
                       "給"
                     ],
                     "note": "給 hands something to someone. What something is good or bad for takes 對."
-                  },
-                  {
-                    "placed": [
-                      "沒有"
-                    ],
-                    "mark": [
-                      "沒有"
-                    ],
-                    "note": "B wants foreign friends, so chatting with them does help."
                   },
                   {
                     "placed": [
@@ -76871,39 +76435,33 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "不好意思，"
+                        "traditional": "不好意思，去那麼久",
+                        "simplified": "不好意思，去那么久"
                       },
                       {
                         "type": "slot",
                         "id": "s1",
-                        "answers": [
-                          "去那麼久"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s2",
                         "answers": [
                           "對"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "我的工作"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "有"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "影響"
                         ]
@@ -76916,11 +76474,6 @@
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "去那麼久",
-                    "simplified": "去那么久",
-                    "pinyin": "qù nàme jiǔ"
-                  },
                   {
                     "traditional": "對",
                     "simplified": "对",
@@ -76947,11 +76500,6 @@
                   {
                     "traditional": "跟",
                     "pinyin": "gēn"
-                  },
-                  {
-                    "traditional": "好處",
-                    "simplified": "好处",
-                    "pinyin": "hǎochù"
                   }
                 ],
                 "repairs": [
@@ -76972,15 +76520,6 @@
                       "跟"
                     ],
                     "note": "跟 means \"with\". What something affects takes 對."
-                  },
-                  {
-                    "placed": [
-                      "好處"
-                    ],
-                    "mark": [
-                      "好處"
-                    ],
-                    "note": "B is turning the trip down, so being away half a year is no benefit to the job."
                   }
                 ],
                 "fallbackRepair": "對 before what is affected, then 有, then 影響: 對我的工作有影響.",
@@ -77081,11 +76620,6 @@
                     "pinyin": "yǒu"
                   },
                   {
-                    "traditional": "給",
-                    "simplified": "给",
-                    "pinyin": "gěi"
-                  },
-                  {
                     "traditional": "關係",
                     "simplified": "关系",
                     "pinyin": "guānxì"
@@ -77100,15 +76634,6 @@
                       "有"
                     ],
                     "note": "Mom says no and adds 只有壞處, so eating too much brings no benefit: 沒有好處."
-                  },
-                  {
-                    "placed": [
-                      "給"
-                    ],
-                    "mark": [
-                      "給"
-                    ],
-                    "note": "給 hands something to someone. What something is good or bad for takes 對."
                   },
                   {
                     "placed": [
@@ -83338,10 +82863,6 @@
                     "pinyin": "zhīdào"
                   },
                   {
-                    "traditional": "到",
-                    "pinyin": "dào"
-                  },
-                  {
                     "traditional": "讓",
                     "simplified": "让",
                     "pinyin": "ràng"
@@ -83353,15 +82874,6 @@
                   }
                 ],
                 "repairs": [
-                  {
-                    "placed": [
-                      "到"
-                    ],
-                    "mark": [
-                      "到"
-                    ],
-                    "note": "從…到… gives a start and an end. Learning something out of the results is 從…中."
-                  },
                   {
                     "placed": [
                       "讓"
@@ -83476,10 +82988,6 @@
                     "pinyin": "zhōngjiān"
                   },
                   {
-                    "traditional": "到",
-                    "pinyin": "dào"
-                  },
-                  {
                     "traditional": "對",
                     "simplified": "对",
                     "pinyin": "duì"
@@ -83494,15 +83002,6 @@
                       "中間"
                     ],
                     "note": "中間 is the middle of a place. In this pattern 中 means \"in\" or \"out of\": 從…中."
-                  },
-                  {
-                    "placed": [
-                      "到"
-                    ],
-                    "mark": [
-                      "到"
-                    ],
-                    "note": "從…到… gives a start and an end. Getting something out of an experience is 從…中."
                   },
                   {
                     "placed": [
@@ -83587,6 +83086,11 @@
                     "pinyin": "cóng"
                   },
                   {
+                    "traditional": "華語中心的學生",
+                    "simplified": "华语中心的学生",
+                    "pinyin": "Huáyǔ zhōngxīn de xuéshēng"
+                  },
+                  {
                     "traditional": "中",
                     "pinyin": "zhōng"
                   },
@@ -83601,18 +83105,9 @@
                     "pinyin": "duì"
                   },
                   {
-                    "traditional": "到",
-                    "pinyin": "dào"
-                  },
-                  {
                     "traditional": "給",
                     "simplified": "给",
                     "pinyin": "gěi"
-                  },
-                  {
-                    "traditional": "華語中心的學生",
-                    "simplified": "华语中心的学生",
-                    "pinyin": "Huáyǔ zhōngxīn de xuéshēng"
                   }
                 ],
                 "repairs": [
@@ -83624,15 +83119,6 @@
                       "對"
                     ],
                     "note": "對 marks whom something affects. The group the teacher picks from takes 從…中."
-                  },
-                  {
-                    "placed": [
-                      "到"
-                    ],
-                    "mark": [
-                      "到"
-                    ],
-                    "note": "從…到… gives a start and an end. Picking some out of a group is 從…中."
                   },
                   {
                     "placed": [
@@ -85162,10 +84648,6 @@
                   {
                     "traditional": "像",
                     "pinyin": "xiàng"
-                  },
-                  {
-                    "traditional": "很",
-                    "pinyin": "hěn"
                   }
                 ],
                 "repairs": [
@@ -85184,15 +84666,6 @@
                       "像"
                     ],
                     "note": "The speaker is 168 and the brother is 185, so the speaker is not as tall: 不像."
-                  },
-                  {
-                    "placed": [
-                      "很"
-                    ],
-                    "mark": [
-                      "很"
-                    ],
-                    "note": "After the person compared with comes 那麼, not 很: 不像哥哥那麼高."
                   }
                 ],
                 "fallbackRepair": "The speaker first, then 不像 + the other person + 那麼 + the quality: 我不像哥哥那麼高.",
@@ -85220,15 +84693,12 @@
                   {
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "s1",
-                        "answers": [
-                          "高雄的夏天"
-                        ]
+                        "type": "text",
+                        "traditional": "高雄的夏天"
                       },
                       {
                         "type": "slot",
-                        "id": "s2",
+                        "id": "s1",
                         "answers": [
                           "不像",
                           "像"
@@ -85236,21 +84706,21 @@
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "台北的"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "那麼"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "熱"
                         ]
@@ -85263,10 +84733,6 @@
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "高雄的夏天",
-                    "pinyin": "Gāoxióng de xiàtiān"
-                  },
                   {
                     "traditional": "不像",
                     "pinyin": "bú xiàng"
@@ -85292,20 +84758,9 @@
                   {
                     "traditional": "冷",
                     "pinyin": "lěng"
-                  },
-                  {
-                    "traditional": "很",
-                    "pinyin": "hěn"
                   }
                 ],
                 "repairs": [
-                  {
-                    "before": [
-                      "台北的",
-                      "高雄的夏天"
-                    ],
-                    "note": "Start with 高雄的夏天. 台北的 (short for 台北的夏天) comes after 像 or 不像."
-                  },
                   {
                     "placed": [
                       "冷"
@@ -85314,18 +84769,9 @@
                       "冷"
                     ],
                     "note": "Both cities are around 35°C in summer, so the quality being compared is heat: 熱."
-                  },
-                  {
-                    "placed": [
-                      "很"
-                    ],
-                    "mark": [
-                      "很"
-                    ],
-                    "note": "After the thing compared with comes 那麼, not 很."
                   }
                 ],
-                "fallbackRepair": "高雄的夏天 first, then 像 or 不像 + 台北的 + 那麼 + the quality.",
+                "fallbackRepair": "像 or 不像, then 台北的, then 那麼, then the quality.",
                 "result": {
                   "traditional": "高雄的夏天不像台北的那麼熱。",
                   "simplified": "高雄的夏天不像台北的那么热。",
@@ -85425,10 +84871,6 @@
                   {
                     "traditional": "像",
                     "pinyin": "xiàng"
-                  },
-                  {
-                    "traditional": "很",
-                    "pinyin": "hěn"
                   }
                 ],
                 "repairs": [
@@ -85447,15 +84889,6 @@
                       "像"
                     ],
                     "note": "The speaker leaves at five and he works until ten, so the speaker is not as busy: 不像."
-                  },
-                  {
-                    "placed": [
-                      "很"
-                    ],
-                    "mark": [
-                      "很"
-                    ],
-                    "note": "After the person compared with comes 那麼, not 很: 不像他那麼忙."
                   }
                 ],
                 "fallbackRepair": "The speaker first, then 不像 + the other person + 那麼 + the quality: 我不像他那麼忙.",
@@ -87441,15 +86874,6 @@
                   {
                     "traditional": "奇怪",
                     "pinyin": "qíguài"
-                  },
-                  {
-                    "traditional": "因為",
-                    "simplified": "因为",
-                    "pinyin": "yīnwèi"
-                  },
-                  {
-                    "traditional": "如果",
-                    "pinyin": "rúguǒ"
                   }
                 ],
                 "repairs": [
@@ -87470,24 +86894,6 @@
                       "奇怪"
                     ],
                     "note": "奇怪 means something is strange. B now understands why: 難怪."
-                  },
-                  {
-                    "placed": [
-                      "因為"
-                    ],
-                    "mark": [
-                      "因為"
-                    ],
-                    "note": "A has just given the reason. B reacts to it with \"no wonder\": 難怪."
-                  },
-                  {
-                    "placed": [
-                      "如果"
-                    ],
-                    "mark": [
-                      "如果"
-                    ],
-                    "note": "如果 sets up an \"if\". B is reacting to a fact: 難怪."
                   }
                 ],
                 "fallbackRepair": "難怪 before what is now explained: 難怪你每天都在練習.",
@@ -90402,11 +89808,6 @@
                     "pinyin": "hěn duō"
                   },
                   {
-                    "traditional": "雖然",
-                    "simplified": "虽然",
-                    "pinyin": "suīrán"
-                  },
-                  {
                     "traditional": "才",
                     "pinyin": "cái"
                   }
@@ -90420,15 +89821,6 @@
                       "很多"
                     ],
                     "note": "After 不管 comes a question form that covers every case: 多不多."
-                  },
-                  {
-                    "placed": [
-                      "雖然"
-                    ],
-                    "mark": [
-                      "雖然"
-                    ],
-                    "note": "雖然 accepts one fact and needs a turn after it. \"Whatever the case\" is 不管…，都…."
                   },
                   {
                     "placed": [
@@ -90664,11 +90056,6 @@
                     "pinyin": "bù xǐhuān"
                   },
                   {
-                    "traditional": "因為",
-                    "simplified": "因为",
-                    "pinyin": "yīnwèi"
-                  },
-                  {
                     "traditional": "才",
                     "pinyin": "cái"
                   }
@@ -90682,15 +90069,6 @@
                       "不喜歡"
                     ],
                     "note": "After 不管 comes a question form that covers every case: 喜不喜歡."
-                  },
-                  {
-                    "placed": [
-                      "因為"
-                    ],
-                    "mark": [
-                      "因為"
-                    ],
-                    "note": "Dad is not giving a reason. He means liking it or not makes no difference: 不管."
                   },
                   {
                     "placed": [
@@ -99500,19 +98878,8 @@
                       },
                       {
                         "type": "text",
-                        "traditional": "，"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s5",
-                        "answers": [
-                          "就"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "會很傷心。",
-                        "simplified": "会很伤心。"
+                        "traditional": "，就會很傷心。",
+                        "simplified": "，就会很伤心。"
                       }
                     ]
                   }
@@ -99538,10 +98905,6 @@
                     "pinyin": "de shíhòu"
                   },
                   {
-                    "traditional": "就",
-                    "pinyin": "jiù"
-                  },
-                  {
                     "traditional": "考得很好",
                     "pinyin": "kǎo de hěn hǎo"
                   },
@@ -99549,11 +98912,6 @@
                     "traditional": "從",
                     "simplified": "从",
                     "pinyin": "cóng"
-                  },
-                  {
-                    "traditional": "還",
-                    "simplified": "还",
-                    "pinyin": "hái"
                   }
                 ],
                 "repairs": [
@@ -99574,15 +98932,6 @@
                       "從"
                     ],
                     "note": "從 marks where something starts. \"When\" opens with 當."
-                  },
-                  {
-                    "placed": [
-                      "還"
-                    ],
-                    "mark": [
-                      "還"
-                    ],
-                    "note": "After the \"when\" clause, what follows takes 就."
                   }
                 ],
                 "fallbackRepair": "當 opens the \"when\", and 就 comes before what follows.",
@@ -99685,11 +99034,6 @@
                     "traditional": "為了",
                     "simplified": "为了",
                     "pinyin": "wèile"
-                  },
-                  {
-                    "traditional": "還是",
-                    "simplified": "还是",
-                    "pinyin": "háishì"
                   }
                 ],
                 "repairs": [
@@ -99710,15 +99054,6 @@
                       "為了"
                     ],
                     "note": "為了 gives a goal. The moment something becomes possible opens with 當."
-                  },
-                  {
-                    "placed": [
-                      "還是"
-                    ],
-                    "mark": [
-                      "還是"
-                    ],
-                    "note": "Here 還是 would mean \"or\" or \"still\". After the \"when\" clause, what follows takes 就."
                   }
                 ],
                 "fallbackRepair": "當 opens the \"when\", 的時候 closes it, and 就 comes before what follows.",
@@ -108128,10 +107463,6 @@
                     "pinyin": "gānjìng"
                   },
                   {
-                    "traditional": "我知道",
-                    "pinyin": "wǒ zhīdào"
-                  },
-                  {
                     "traditional": "所以",
                     "pinyin": "suǒyǐ"
                   }
@@ -108145,15 +107476,6 @@
                       "乾淨"
                     ],
                     "note": "The cleaning is taking all morning, so the surprise is how dirty the room is."
-                  },
-                  {
-                    "placed": [
-                      "我知道"
-                    ],
-                    "mark": [
-                      "我知道"
-                    ],
-                    "note": "B says 我以為…: B did not know. The surprise that follows opens with 誰知道."
                   },
                   {
                     "placed": [
@@ -108230,15 +107552,9 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s5",
-                        "answers": [
-                          "沒有"
-                        ]
-                      },
-                      {
                         "type": "text",
-                        "traditional": "。"
+                        "traditional": "沒有。",
+                        "simplified": "没有。"
                       }
                     ]
                   }
@@ -108263,11 +107579,6 @@
                     "pinyin": "dōu"
                   },
                   {
-                    "traditional": "沒有",
-                    "simplified": "没有",
-                    "pinyin": "méiyǒu"
-                  },
-                  {
                     "traditional": "難怪",
                     "simplified": "难怪",
                     "pinyin": "nánguài"
@@ -108275,11 +107586,6 @@
                   {
                     "traditional": "才",
                     "pinyin": "cái"
-                  },
-                  {
-                    "traditional": "因為",
-                    "simplified": "因为",
-                    "pinyin": "yīnwèi"
                   }
                 ],
                 "repairs": [
@@ -108300,15 +107606,6 @@
                       "才"
                     ],
                     "note": "After 什麼 + noun, \"none at all\" takes 都: 什麼家具都沒有."
-                  },
-                  {
-                    "placed": [
-                      "因為"
-                    ],
-                    "mark": [
-                      "因為"
-                    ],
-                    "note": "B is not giving a reason. What follows 我也以為有 is a surprise: 誰知道."
                   }
                 ],
                 "fallbackRepair": "誰知道 opens the surprise, then 什麼家具, then 都 before 沒有.",

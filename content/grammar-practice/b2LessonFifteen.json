@@ -1404,10 +1404,6 @@
             "pinyin": "gānjìng"
           },
           {
-            "traditional": "我知道",
-            "pinyin": "wǒ zhīdào"
-          },
-          {
             "traditional": "所以",
             "pinyin": "suǒyǐ"
           }
@@ -1421,15 +1417,6 @@
               "乾淨"
             ],
             "note": "The cleaning is taking all morning, so the surprise is how dirty the room is."
-          },
-          {
-            "placed": [
-              "我知道"
-            ],
-            "mark": [
-              "我知道"
-            ],
-            "note": "B says 我以為…: B did not know. The surprise that follows opens with 誰知道."
           },
           {
             "placed": [
@@ -1506,15 +1493,9 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s5",
-                "answers": [
-                  "沒有"
-                ]
-              },
-              {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "沒有。",
+                "simplified": "没有。"
               }
             ]
           }
@@ -1539,11 +1520,6 @@
             "pinyin": "dōu"
           },
           {
-            "traditional": "沒有",
-            "simplified": "没有",
-            "pinyin": "méiyǒu"
-          },
-          {
             "traditional": "難怪",
             "simplified": "难怪",
             "pinyin": "nánguài"
@@ -1551,11 +1527,6 @@
           {
             "traditional": "才",
             "pinyin": "cái"
-          },
-          {
-            "traditional": "因為",
-            "simplified": "因为",
-            "pinyin": "yīnwèi"
           }
         ],
         "repairs": [
@@ -1576,15 +1547,6 @@
               "才"
             ],
             "note": "After 什麼 + noun, \"none at all\" takes 都: 什麼家具都沒有."
-          },
-          {
-            "placed": [
-              "因為"
-            ],
-            "mark": [
-              "因為"
-            ],
-            "note": "B is not giving a reason. What follows 我也以為有 is a surprise: 誰知道."
           }
         ],
         "fallbackRepair": "誰知道 opens the surprise, then 什麼家具, then 都 before 沒有.",

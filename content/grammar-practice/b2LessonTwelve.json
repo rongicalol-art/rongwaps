@@ -444,10 +444,6 @@
           {
             "traditional": "像",
             "pinyin": "xiàng"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
           }
         ],
         "repairs": [
@@ -466,15 +462,6 @@
               "像"
             ],
             "note": "The speaker is 168 and the brother is 185, so the speaker is not as tall: 不像."
-          },
-          {
-            "placed": [
-              "很"
-            ],
-            "mark": [
-              "很"
-            ],
-            "note": "After the person compared with comes 那麼, not 很: 不像哥哥那麼高."
           }
         ],
         "fallbackRepair": "The speaker first, then 不像 + the other person + 那麼 + the quality: 我不像哥哥那麼高.",
@@ -502,15 +489,12 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "s1",
-                "answers": [
-                  "高雄的夏天"
-                ]
+                "type": "text",
+                "traditional": "高雄的夏天"
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s1",
                 "answers": [
                   "不像",
                   "像"
@@ -518,21 +502,21 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "台北的"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "那麼"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "熱"
                 ]
@@ -545,10 +529,6 @@
           }
         ],
         "tiles": [
-          {
-            "traditional": "高雄的夏天",
-            "pinyin": "Gāoxióng de xiàtiān"
-          },
           {
             "traditional": "不像",
             "pinyin": "bú xiàng"
@@ -574,20 +554,9 @@
           {
             "traditional": "冷",
             "pinyin": "lěng"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
           }
         ],
         "repairs": [
-          {
-            "before": [
-              "台北的",
-              "高雄的夏天"
-            ],
-            "note": "Start with 高雄的夏天. 台北的 (short for 台北的夏天) comes after 像 or 不像."
-          },
           {
             "placed": [
               "冷"
@@ -596,18 +565,9 @@
               "冷"
             ],
             "note": "Both cities are around 35°C in summer, so the quality being compared is heat: 熱."
-          },
-          {
-            "placed": [
-              "很"
-            ],
-            "mark": [
-              "很"
-            ],
-            "note": "After the thing compared with comes 那麼, not 很."
           }
         ],
-        "fallbackRepair": "高雄的夏天 first, then 像 or 不像 + 台北的 + 那麼 + the quality.",
+        "fallbackRepair": "像 or 不像, then 台北的, then 那麼, then the quality.",
         "result": {
           "traditional": "高雄的夏天不像台北的那麼熱。",
           "simplified": "高雄的夏天不像台北的那么热。",
@@ -707,10 +667,6 @@
           {
             "traditional": "像",
             "pinyin": "xiàng"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
           }
         ],
         "repairs": [
@@ -729,15 +685,6 @@
               "像"
             ],
             "note": "The speaker leaves at five and he works until ten, so the speaker is not as busy: 不像."
-          },
-          {
-            "placed": [
-              "很"
-            ],
-            "mark": [
-              "很"
-            ],
-            "note": "After the person compared with comes 那麼, not 很: 不像他那麼忙."
           }
         ],
         "fallbackRepair": "The speaker first, then 不像 + the other person + 那麼 + the quality: 我不像他那麼忙.",
@@ -1635,15 +1582,6 @@
           {
             "traditional": "奇怪",
             "pinyin": "qíguài"
-          },
-          {
-            "traditional": "因為",
-            "simplified": "因为",
-            "pinyin": "yīnwèi"
-          },
-          {
-            "traditional": "如果",
-            "pinyin": "rúguǒ"
           }
         ],
         "repairs": [
@@ -1664,24 +1602,6 @@
               "奇怪"
             ],
             "note": "奇怪 means something is strange. B now understands why: 難怪."
-          },
-          {
-            "placed": [
-              "因為"
-            ],
-            "mark": [
-              "因為"
-            ],
-            "note": "A has just given the reason. B reacts to it with \"no wonder\": 難怪."
-          },
-          {
-            "placed": [
-              "如果"
-            ],
-            "mark": [
-              "如果"
-            ],
-            "note": "如果 sets up an \"if\". B is reacting to a fact: 難怪."
           }
         ],
         "fallbackRepair": "難怪 before what is now explained: 難怪你每天都在練習.",

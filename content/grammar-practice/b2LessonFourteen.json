@@ -1633,19 +1633,8 @@
               },
               {
                 "type": "text",
-                "traditional": "，"
-              },
-              {
-                "type": "slot",
-                "id": "s5",
-                "answers": [
-                  "就"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "會很傷心。",
-                "simplified": "会很伤心。"
+                "traditional": "，就會很傷心。",
+                "simplified": "，就会很伤心。"
               }
             ]
           }
@@ -1671,10 +1660,6 @@
             "pinyin": "de shíhòu"
           },
           {
-            "traditional": "就",
-            "pinyin": "jiù"
-          },
-          {
             "traditional": "考得很好",
             "pinyin": "kǎo de hěn hǎo"
           },
@@ -1682,11 +1667,6 @@
             "traditional": "從",
             "simplified": "从",
             "pinyin": "cóng"
-          },
-          {
-            "traditional": "還",
-            "simplified": "还",
-            "pinyin": "hái"
           }
         ],
         "repairs": [
@@ -1707,15 +1687,6 @@
               "從"
             ],
             "note": "從 marks where something starts. \"When\" opens with 當."
-          },
-          {
-            "placed": [
-              "還"
-            ],
-            "mark": [
-              "還"
-            ],
-            "note": "After the \"when\" clause, what follows takes 就."
           }
         ],
         "fallbackRepair": "當 opens the \"when\", and 就 comes before what follows.",
@@ -1818,11 +1789,6 @@
             "traditional": "為了",
             "simplified": "为了",
             "pinyin": "wèile"
-          },
-          {
-            "traditional": "還是",
-            "simplified": "还是",
-            "pinyin": "háishì"
           }
         ],
         "repairs": [
@@ -1843,15 +1809,6 @@
               "為了"
             ],
             "note": "為了 gives a goal. The moment something becomes possible opens with 當."
-          },
-          {
-            "placed": [
-              "還是"
-            ],
-            "mark": [
-              "還是"
-            ],
-            "note": "Here 還是 would mean \"or\" or \"still\". After the \"when\" clause, what follows takes 就."
           }
         ],
         "fallbackRepair": "當 opens the \"when\", 的時候 closes it, and 就 comes before what follows.",
