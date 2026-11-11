@@ -93,7 +93,12 @@ export const ExerciseItem = memo(function ExerciseItem({
       return text && <ContextualChineseText key={at} wordClassName="font-chinese font-semibold" text={text} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
     }
     const tile = state.placed[segment.id];
-    const next = line.segments[at + 1];
+    // A build line: the words placed so far, then one long blank for the rest of its blanks.
+    const before = line.segments[at - 1];
+    if (item.free && tile === undefined && before?.type === 'slot' && state.placed[before.id] === undefined) return null;
+    let end = at;
+    if (item.free && tile === undefined) while (line.segments[end + 1]?.type === 'slot') end += 1;
+    const next = line.segments[end + 1];
     const closing = next?.type === 'text' ? textIn(next, script).match(LEADING_CLOSING)?.[0] : undefined;
     const blank = (
       <BookBlank
@@ -101,6 +106,7 @@ export const ExerciseItem = memo(function ExerciseItem({
         state={blankState(segment.id)}
         quiet={!answering}
         narrow={slots.length >= 4}
+        long={item.free && tile === undefined && (end > at || before?.type === 'slot')}
         word={tile === undefined ? undefined : { text: textOf(tile), onTakeBack: editable ? () => onTakeBack(index, segment.id) : undefined }}
       />
     );

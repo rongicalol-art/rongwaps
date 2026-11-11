@@ -160,6 +160,12 @@ export interface SlotBuildItem extends PracticeItemBase {
    * One tile for a lone particle (吧), several for a frame (快要 and 了, 又 … 又).
    */
   gaps?: boolean;
+  /**
+   * Build the sentence: the blanks of a line are one free line (the book's long blank), so the
+   * learner cannot see how many words go there or where each one sits. The words go on in order.
+   * For the book's rewrite, reorder and whole-clause tasks; a line's blanks must be next to each other.
+   */
+  free?: boolean;
   successNote?: string;
 }
 
