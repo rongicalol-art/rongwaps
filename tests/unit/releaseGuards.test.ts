@@ -1,17 +1,32 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import { mkdtempSync, realpathSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 import test from 'node:test';
 
 // GitHub cannot lock branches on a free private repo, so these guards are the
 // lock. A regression here would let an AI session push straight to learners.
 
-function claudeGuard(command: string): string {
-  const run = spawnSync('node', ['.claude/hooks/guard.mjs'], {
-    input: JSON.stringify({ tool_name: 'Bash', tool_input: { command } }),
+const GUARD = resolve('.claude/hooks/guard.mjs');
+
+function runGuard(input: object, projectDir?: string): string {
+  const run = spawnSync('node', [GUARD], {
+    input: JSON.stringify(input),
     encoding: 'utf8',
+    env: { ...process.env, CLAUDE_PROJECT_DIR: projectDir ?? '' },
   });
   assert.equal(run.status, 0, run.stderr);
   return run.stdout ? JSON.parse(run.stdout).hookSpecificOutput.permissionDecision : 'allow';
+}
+
+/** `cwd` is where the session runs the command; it is also the session's project folder. */
+function claudeGuard(command: string, cwd?: string): string {
+  return runGuard({ tool_name: 'Bash', tool_input: { command }, ...(cwd ? { cwd } : {}) }, cwd);
+}
+
+function claudeEdit(file_path: string): string {
+  return runGuard({ tool_name: 'Write', tool_input: { file_path, content: '' } });
 }
 
 function prePush(remoteRef: string, env: Record<string, string> = {}): number | null {
@@ -102,3 +117,79 @@ test('pre-push hook rejects main and production, accepts feature branches', () =
   assert.equal(prePush('refs/heads/feature/main-menu'), 0);
   assert.equal(prePush('refs/heads/main', { ALLOW_PROTECTED_PUSH: '1' }), 0);
 });
+
+test('Claude guard blocks printing key files and hand edits to generated or key files', () => {
+  for (const command of [
+    'cat .env',
+    'head -3 .env.local',
+    'grep SUPABASE .env*',
+    'echo $(cat .openrouter_key)',
+    'jq . scripts/.config.json',
+    'cd server && tail -n 2 ../.batch_key_env',
+  ]) assert.equal(claudeGuard(command), 'deny', command);
+  for (const command of [
+    'cat .env.example',
+    'node --env-file=.env node_modules/vite/bin/vite.js',
+    'gh pr create --title "sort the .env notes"',
+    'cat src/utils/browser/environment.ts',
+  ]) assert.equal(claudeGuard(command), 'allow', command);
+
+  for (const file of ['public/data/vocabulary/book-1.json', '.env', 'scripts/.config.json']) {
+    assert.equal(claudeEdit(file), 'deny', file);
+  }
+  for (const file of ['.env.example', 'src/App.tsx', 'content/vocabulary/simpleDefinitions.json']) {
+    assert.equal(claudeEdit(file), 'allow', file);
+  }
+});
+
+test('Claude guard keeps sessions off main and out of the shared folder', () => {
+  const root = realpathSync(mkdtempSync(join(tmpdir(), 'guard-')));
+  const git = (dir: string, ...args: string[]) => {
+    const run = spawnSync('git', ['-C', dir, '-c', 'user.name=t', '-c', 'user.email=t@example.invalid', ...args], { encoding: 'utf8' });
+    assert.equal(run.status, 0, run.stderr);
+  };
+  try {
+    const shared = join(root, 'shared');
+    const worktree = join(root, 'worktree');
+    const other = join(root, 'other');
+    for (const dir of [shared, other]) {
+      git(root, 'init', '-q', '-b', 'main', dir);
+      git(dir, 'commit', '-q', '--allow-empty', '-m', 'start');
+    }
+
+    // A lone checkout (a cloud clone): branch freely, but never commit on main.
+    assert.equal(claudeGuard('git add -A && git commit -m work', shared), 'deny');
+    assert.equal(claudeGuard('git switch -c feature', shared), 'allow');
+
+    // Once another session has a worktree, the main checkout is the shared folder.
+    git(shared, 'worktree', 'add', '-q', worktree, '-b', 'work');
+    for (const command of [
+      'git switch work-2',
+      'git checkout -b feature',
+      'git stash',
+      'git clean -fd',
+      'git reset --hard HEAD~1',
+      'git merge origin/main',
+      'git pull',
+    ]) assert.equal(claudeGuard(command, shared), 'ask', command);
+    for (const command of [
+      'git status',
+      'git stash list',
+      'git clean -n',
+      'git checkout -- notes.txt',
+      'git fetch origin main && git merge --ff-only origin/main',
+    ]) assert.equal(claudeGuard(command, shared), 'allow', command);
+
+    // A session in its own worktree works freely there, and is stopped when it reaches into the shared folder.
+    assert.equal(claudeGuard('git commit -m work', worktree), 'allow');
+    assert.equal(claudeGuard('git switch -c next', worktree), 'allow');
+    assert.equal(claudeGuard(`git -C ${shared} commit -m oops`, worktree), 'deny');
+    assert.equal(claudeGuard(`cd ${shared} && git stash`, worktree), 'ask');
+
+    // Another repository (a scratch repo, a different project) is none of this guard's business.
+    assert.equal(claudeGuard(`git -C ${other} commit -m scratch`, worktree), 'allow');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+

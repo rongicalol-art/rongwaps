@@ -89,7 +89,7 @@ GitHub cannot lock branches on a free private repo, so the lock lives here:
 | --- | --- |
 | `.githooks/pre-push` (installed by `npm ci`) | pushes to `main` or `production` from any tool on a machine |
 | `.githooks/pre-commit` | commits containing credentials |
-| `.claude/hooks/guard.mjs` | AI sessions: protected/force pushes, hook bypass (denied); merges, hosted migrations, production DB commands, live Worker deploys, Render/Cloudflare/GitHub API changes (ask the owner) |
+| `.claude/hooks/guard.mjs` | AI sessions: protected/force pushes, hook bypass, commits on `main`/`production`, hand edits to `public/data/` or key files, printing key files (denied); merges, hosted migrations, production DB commands, live Worker deploys, Render/Cloudflare/GitHub API changes, and branch switches, stashes, cleans or non-fast-forward merges in the shared folder while other sessions have worktrees (ask the owner) |
 | Codex rules (`~/.codex/rules/default.rules`) | the same pushes (forbidden), merges and migrations (prompt) |
 | Deploy workflow | anything whose CI or journeys failed; production commits with unapplied migrations |
 

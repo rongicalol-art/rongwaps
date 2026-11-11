@@ -56,7 +56,7 @@ tests/
 
 - `documentation` — markdown count in root + `docs/` <= 13 (excluding README), no `.original.md`, `docs/INDEX.md` links resolve, `docs/DECISIONS.md` has no "superseded" entries.
 - `dependencies` — removed packages stay removed, build plugins in devDependencies, no phantom stores/empty dirs.
-- `agents_spec` — `AGENTS.md` references no deleted docs and no pixel/modal sizing rules.
+- `agents_spec` — `AGENTS.md` references no deleted docs and no pixel/modal sizing rules; the agent rule files stay within their line budgets, repeat no passage across files, and name only paths that exist.
 - `static_data` — `content/dialogueAlignment.json` and `content/grammar/*.json` are valid and loadable.
 - `code_quality` — line caps (`App.tsx` < 250, `audioService.ts` < 400, `models.ts` < 300), widgets import nothing from services/store, no Node built-ins in `src/`.
 - `server`, `build_runtime` — `server/index.ts` layout and script targets; build and dev entry points.
