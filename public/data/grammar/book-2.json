@@ -7448,6 +7448,312 @@
           "explanationEnglish": "The “把 construction”, also known as “disposal construction”, refers to how the Object is disposed of by the Subject through certain actions and cause certain result. Because this pattern often consists of a variety of complicated elements, the lesson begins with the most basic structure. The verbs used here must be outward and transitive, such as “看 (to see)”, “吃 (to eat)”, “賣 (to sell)”, and “寫 (to write)”. In negative sentences, negation words “不”, “沒” or “別” should be placed before “把”.",
           "questions": [],
           "sourceExplanationEnglish": "The “把 construction”, also known as “disposal construction”, refers to how the Object is disposed of by the Subject through certain actions and cause certain result. Because this pattern often consists of a variety of complicated elements, the lesson begins with the most basic structure. The verbs used here must be outward and transitive, such as “看 (to see)”, “吃 (to eat)”, “賣 (to sell)”, and “寫 (to write)”. In negative sentences, negation words “不”, “沒” or “別” should be placed before “把”.",
+          "practice": {
+            "bookPage": 51,
+            "title": "Put the words in order.",
+            "allowWords": [
+              "字典"
+            ],
+            "items": [
+              {
+                "id": "b2l2g1-1",
+                "source": "p.51 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "我"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "舊的"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "字典"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s5",
+                        "answers": [
+                          "賣了"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "我",
+                    "pinyin": "wǒ"
+                  },
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "舊的",
+                    "simplified": "旧的",
+                    "pinyin": "jiù de"
+                  },
+                  {
+                    "traditional": "字典",
+                    "pinyin": "zìdiǎn"
+                  },
+                  {
+                    "traditional": "賣了",
+                    "simplified": "卖了",
+                    "pinyin": "mài le"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. The thing that is dealt with comes after 把."
+                  }
+                ],
+                "fallbackRepair": "Who, then 把, then the thing, then what was done to it: 我把舊的字典賣了.",
+                "result": {
+                  "traditional": "我把舊的字典賣了。",
+                  "simplified": "我把旧的字典卖了。",
+                  "pinyin": "Wǒ bǎ jiù de zìdiǎn mài le.",
+                  "english": "I sold the old dictionary."
+                }
+              },
+              {
+                "id": "b2l2g1-2",
+                "source": "p.51 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "誰"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "我買的"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "蛋糕"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s5",
+                        "answers": [
+                          "吃了"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "？"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "誰",
+                    "simplified": "谁",
+                    "pinyin": "shéi"
+                  },
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "我買的",
+                    "simplified": "我买的",
+                    "pinyin": "wǒ mǎi de"
+                  },
+                  {
+                    "traditional": "蛋糕",
+                    "pinyin": "dàngāo"
+                  },
+                  {
+                    "traditional": "吃了",
+                    "pinyin": "chī le"
+                  },
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "對"
+                    ],
+                    "mark": [
+                      "對"
+                    ],
+                    "note": "對 marks whom something is aimed at. The thing that is dealt with comes after 把."
+                  }
+                ],
+                "fallbackRepair": "Who, then 把, then the thing, then what was done to it: 誰把我買的蛋糕吃了？",
+                "result": {
+                  "traditional": "誰把我買的蛋糕吃了？",
+                  "simplified": "谁把我买的蛋糕吃了？",
+                  "pinyin": "Shéi bǎ wǒ mǎi de dàngāo chī le?",
+                  "english": "Who ate the cake I bought?"
+                }
+              },
+              {
+                "id": "b2l2g1-3",
+                "source": "p.51 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我昨天"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "不要的"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "小說"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "丟了"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "不要的",
+                    "pinyin": "búyào de"
+                  },
+                  {
+                    "traditional": "小說",
+                    "simplified": "小说",
+                    "pinyin": "xiǎoshuō"
+                  },
+                  {
+                    "traditional": "丟了",
+                    "simplified": "丢了",
+                    "pinyin": "diū le"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. The thing that is dealt with comes after 把."
+                  },
+                  {
+                    "placed": [
+                      "在"
+                    ],
+                    "mark": [
+                      "在"
+                    ],
+                    "note": "在 marks a place. The thing that is dealt with comes after 把."
+                  }
+                ],
+                "fallbackRepair": "把 first, then the thing, then what was done to it: 把不要的小說丟了.",
+                "result": {
+                  "traditional": "我昨天把不要的小說丟了。",
+                  "simplified": "我昨天把不要的小说丢了。",
+                  "pinyin": "Wǒ zuótiān bǎ búyào de xiǎoshuō diū le.",
+                  "english": "Yesterday I threw away the novels I didn't want."
+                }
+              }
+            ]
+          },
           "summary": [
             "把 puts the thing you act on before the verb and says what was done to it.",
             "The verb must act on the object, like 看, 吃, 賣 or 寫.",
@@ -7875,6 +8181,384 @@
           "explanationEnglish": "This grammar denotes that the action of the verb is over. The “完” after the verb, used as the V complement, means to end or to finish. Pay attention to the usage of “完”. This lesson uses the complement structure to describe the end of the action instead of using the word “完” alone. For example, the meaning of “我完了。（I'm finished.）” is completely different from the V 完 pattern.",
           "questions": [],
           "sourceExplanationEnglish": "This grammar denotes that the action of the verb is over. The “完” after the verb, used as the V complement, means to end or to finish. Pay attention to the usage of “完”. This lesson uses the complement structure to describe the end of the action instead of using the word “完” alone. For example, the meaning of “我完了。（I'm finished.）” is completely different from the V 完 pattern.",
+          "practice": {
+            "bookPage": 52,
+            "title": "Complete the dialogues with the given words.",
+            "items": [
+              {
+                "id": "b2l2g2-1",
+                "source": "p.52 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你什麼時候來我家？",
+                        "simplified": "你什么时候来我家？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "書法",
+                        "simplified": "书法"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "寫"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "完"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "就去。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "寫",
+                    "simplified": "写",
+                    "pinyin": "xiě"
+                  },
+                  {
+                    "traditional": "完",
+                    "pinyin": "wán"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "到",
+                    "pinyin": "dào"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. The thing to finish comes after 把."
+                  },
+                  {
+                    "placed": [
+                      "在"
+                    ],
+                    "mark": [
+                      "在"
+                    ],
+                    "note": "在 marks a place. The thing to finish comes after 把, and finishing is V完."
+                  },
+                  {
+                    "placed": [
+                      "到"
+                    ],
+                    "mark": [
+                      "到"
+                    ],
+                    "note": "V到 is reaching a place or a point. Finishing a task is V完: 寫完."
+                  }
+                ],
+                "fallbackRepair": "把 before the thing, then the verb, then 完: 把書法寫完.",
+                "result": {
+                  "traditional": "我把書法寫完就去。",
+                  "simplified": "我把书法写完就去。",
+                  "pinyin": "Wǒ bǎ shūfǎ xiěwán jiù qù.",
+                  "english": "I'll go as soon as I finish my calligraphy."
+                }
+              },
+              {
+                "id": "b2l2g2-2",
+                "source": "p.52 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "太太"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "碗筷、刀叉，你都洗了嗎？",
+                        "simplified": "碗筷、刀叉，你都洗了吗？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "先生"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "等我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "報紙",
+                        "simplified": "报纸"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "看"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "完"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "再洗。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "看",
+                    "pinyin": "kàn"
+                  },
+                  {
+                    "traditional": "完",
+                    "pinyin": "wán"
+                  },
+                  {
+                    "traditional": "洗",
+                    "pinyin": "xǐ"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "洗"
+                    ],
+                    "mark": [
+                      "洗"
+                    ],
+                    "note": "A newspaper is read, not washed. The washing comes after: 再洗."
+                  },
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. The thing to finish comes after 把."
+                  },
+                  {
+                    "placed": [
+                      "在"
+                    ],
+                    "mark": [
+                      "在"
+                    ],
+                    "note": "在 marks a place. The thing to finish comes after 把, and finishing is V完."
+                  }
+                ],
+                "fallbackRepair": "把 before the thing, then the verb, then 完: 把報紙看完.",
+                "result": {
+                  "traditional": "等我把報紙看完再洗。",
+                  "simplified": "等我把报纸看完再洗。",
+                  "pinyin": "Děng wǒ bǎ bàozhǐ kànwán zài xǐ.",
+                  "english": "I'll wash them once I've finished reading the newspaper."
+                }
+              },
+              {
+                "id": "b2l2g2-3",
+                "source": "p.52 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "媽媽",
+                      "simplified": "妈妈"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "晚飯",
+                        "simplified": "晚饭"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "吃完"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "再"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "看電視。",
+                        "simplified": "看电视。"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "孩子"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "可是我現在就想看！",
+                        "simplified": "可是我现在就想看！"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "吃完",
+                    "pinyin": "chīwán"
+                  },
+                  {
+                    "traditional": "再",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "也",
+                    "pinyin": "yě"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. The thing to finish comes after 把."
+                  },
+                  {
+                    "placed": [
+                      "在"
+                    ],
+                    "mark": [
+                      "在"
+                    ],
+                    "note": "在 marks a place. The thing to finish comes after 把."
+                  },
+                  {
+                    "placed": [
+                      "也"
+                    ],
+                    "mark": [
+                      "也"
+                    ],
+                    "note": "Mom puts one thing after the other: first finish dinner, then television. That is 再."
+                  }
+                ],
+                "fallbackRepair": "把 before the thing, then the finished action, then 再 before what comes next.",
+                "result": {
+                  "traditional": "你把晚飯吃完再看電視。",
+                  "simplified": "你把晚饭吃完再看电视。",
+                  "pinyin": "Nǐ bǎ wǎnfàn chīwán zài kàn diànshì.",
+                  "english": "Finish your dinner first, then watch television."
+                }
+              }
+            ]
+          },
           "summary": [
             "Use 完 in a 把 sentence to say an action on the object is finished: 把家事做完.",
             "完 goes right after the verb.",
@@ -8474,6 +9158,329 @@
           "explanationEnglish": "The “V一V” pattern softens the tone and makes an action simple and clear. When used together with “把 construction”, it gives requests or orders in a gentler tone. However, the verb used in this pattern has to be monosyllabic.",
           "questions": [],
           "sourceExplanationEnglish": "The “V一V” pattern softens the tone and makes an action simple and clear. When used together with “把 construction”, it gives requests or orders in a gentler tone. However, the verb used in this pattern has to be monosyllabic.",
+          "practice": {
+            "bookPage": 53,
+            "title": "Complete the sentences with the given words.",
+            "allowWords": [
+              "價錢"
+            ],
+            "items": [
+              {
+                "id": "b2l2g3-1",
+                "source": "p.53 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "買手機以前，我先上網",
+                        "simplified": "买手机以前，我先上网"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "價錢",
+                        "simplified": "价钱"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "查"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "一"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "查"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "再去買。",
+                        "simplified": "再去买。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "查",
+                    "pinyin": "chá"
+                  },
+                  {
+                    "traditional": "查",
+                    "pinyin": "chá"
+                  },
+                  {
+                    "traditional": "一",
+                    "pinyin": "yī"
+                  },
+                  {
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi"
+                  },
+                  {
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "買"
+                    ],
+                    "mark": [
+                      "買"
+                    ],
+                    "note": "Before buying, the speaker checks the prices online: 查一查."
+                  }
+                ],
+                "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把價錢查一查.",
+                "result": {
+                  "traditional": "買手機以前，我先上網把價錢查一查再去買。",
+                  "simplified": "买手机以前，我先上网把价钱查一查再去买。",
+                  "pinyin": "Mǎi shǒujī yǐqián, wǒ xiān shàngwǎng bǎ jiàqián chá yì chá zài qù mǎi.",
+                  "english": "Before buying a cell phone, I first check the prices online and then go buy it."
+                }
+              },
+              {
+                "id": "b2l2g3-2",
+                "source": "p.53 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "老師說",
+                      "simplified": "老师说"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "「你們",
+                        "simplified": "「你们"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "功課",
+                        "simplified": "功课"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "寫"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "一"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "寫"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "就可以回家了。」"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "寫",
+                    "simplified": "写",
+                    "pinyin": "xiě"
+                  },
+                  {
+                    "traditional": "寫",
+                    "simplified": "写",
+                    "pinyin": "xiě"
+                  },
+                  {
+                    "traditional": "一",
+                    "pinyin": "yī"
+                  },
+                  {
+                    "traditional": "擦",
+                    "pinyin": "cā"
+                  },
+                  {
+                    "traditional": "擦",
+                    "pinyin": "cā"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "擦"
+                    ],
+                    "mark": [
+                      "擦"
+                    ],
+                    "note": "擦 is wiping something clean. Homework is written: 寫一寫."
+                  }
+                ],
+                "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把功課寫一寫.",
+                "result": {
+                  "traditional": "「你們把功課寫一寫就可以回家了。」",
+                  "simplified": "「你们把功课写一写就可以回家了。」",
+                  "pinyin": "“Nǐmen bǎ gōngkè xiě yì xiě jiù kěyǐ huí jiā le.”",
+                  "english": "The teacher said, \"Get your homework done and then you can go home.\""
+                }
+              },
+              {
+                "id": "b2l2g3-3",
+                "source": "p.53 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "媽媽",
+                      "simplified": "妈妈"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你可以幫我把桌子",
+                        "simplified": "你可以帮我把桌子"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "擦"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "一"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "擦"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "嗎？",
+                        "simplified": "吗？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "孩子"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我晚一點兒再擦，現在要跟朋友去看球賽呢！",
+                        "simplified": "我晚一点儿再擦，现在要跟朋友去看球赛呢！"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "擦",
+                    "pinyin": "cā"
+                  },
+                  {
+                    "traditional": "擦",
+                    "pinyin": "cā"
+                  },
+                  {
+                    "traditional": "一",
+                    "pinyin": "yī"
+                  },
+                  {
+                    "traditional": "洗",
+                    "pinyin": "xǐ"
+                  },
+                  {
+                    "traditional": "洗",
+                    "pinyin": "xǐ"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "洗"
+                    ],
+                    "mark": [
+                      "洗"
+                    ],
+                    "note": "The child answers 再擦, so Mom asked for the table to be wiped: 擦一擦."
+                  },
+                  {
+                    "placed": [
+                      "不"
+                    ],
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "A gentle request repeats the verb around 一, not 不: 擦一擦."
+                  }
+                ],
+                "fallbackRepair": "Verb + 一 + the same verb: 擦一擦.",
+                "result": {
+                  "traditional": "你可以幫我把桌子擦一擦嗎？",
+                  "simplified": "你可以帮我把桌子擦一擦吗？",
+                  "pinyin": "Nǐ kěyǐ bāng wǒ bǎ zhuōzi cā yì cā ma?",
+                  "english": "Could you give the table a wipe for me?"
+                }
+              }
+            ]
+          },
           "summary": [
             "Use V一V in a 把 sentence for a quick, light action on the object.",
             "It makes a request or instruction sound more polite and relaxed.",
@@ -8970,6 +9977,329 @@
           "explanationEnglish": "“給” is a preposition that indicates the direction of action and marks the recipient of the Direct Object. It can collocate with verbs “拿 (to take)”, “送 (to give)”, “賣 (to sell)”, “寄 (to send)”, “踢 (to kick)”, etc. It can also be used in 把 construction, such as “我把你做的蛋糕送給朋友了。”.",
           "questions": [],
           "sourceExplanationEnglish": "“給” is a preposition that indicates the direction of action and marks the recipient of the Direct Object. It can collocate with verbs “拿 (to take)”, “送 (to give)”, “賣 (to sell)”, “寄 (to send)”, “踢 (to kick)”, etc. It can also be used in 把 construction, such as “我把你做的蛋糕送給朋友了。”.",
+          "practice": {
+            "bookPage": 53,
+            "title": "Put the words in order.",
+            "allowWords": [
+              "張"
+            ],
+            "items": [
+              {
+                "id": "b2l2g4-1",
+                "source": "p.53 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我昨天就"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "禮物"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "送給"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "張小姐"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "了。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "禮物",
+                    "simplified": "礼物",
+                    "pinyin": "lǐwù"
+                  },
+                  {
+                    "traditional": "送給",
+                    "simplified": "送给",
+                    "pinyin": "sòng gěi"
+                  },
+                  {
+                    "traditional": "張小姐",
+                    "simplified": "张小姐",
+                    "pinyin": "Zhāng xiǎojiě"
+                  },
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  },
+                  {
+                    "traditional": "跟",
+                    "pinyin": "gēn"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "對"
+                    ],
+                    "mark": [
+                      "對"
+                    ],
+                    "note": "對 marks whom something is aimed at. The thing given comes after 把, and the person after 送給."
+                  },
+                  {
+                    "placed": [
+                      "跟"
+                    ],
+                    "mark": [
+                      "跟"
+                    ],
+                    "note": "跟 means \"with\". The thing given comes after 把, and the person after 送給."
+                  }
+                ],
+                "fallbackRepair": "把, then the thing, then 送給, then the person: 把禮物送給張小姐.",
+                "result": {
+                  "traditional": "我昨天就把禮物送給張小姐了。",
+                  "simplified": "我昨天就把礼物送给张小姐了。",
+                  "pinyin": "Wǒ zuótiān jiù bǎ lǐwù sòng gěi Zhāng xiǎojiě le.",
+                  "english": "I already gave the gift to Miss Zhang yesterday."
+                }
+              },
+              {
+                "id": "b2l2g4-2",
+                "source": "p.53 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "哥哥是不是"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "沒"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "生日卡片"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "寄給"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s5",
+                        "answers": [
+                          "媽媽"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "？"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "生日卡片",
+                    "pinyin": "shēngrì kǎpiàn"
+                  },
+                  {
+                    "traditional": "寄給",
+                    "simplified": "寄给",
+                    "pinyin": "jì gěi"
+                  },
+                  {
+                    "traditional": "媽媽",
+                    "simplified": "妈妈",
+                    "pinyin": "māma"
+                  },
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "對"
+                    ],
+                    "mark": [
+                      "對"
+                    ],
+                    "note": "對 marks whom something is aimed at. The thing sent comes after 把, and the person after 寄給."
+                  }
+                ],
+                "fallbackRepair": "沒 goes before 把, then the thing, then 寄給, then the person.",
+                "result": {
+                  "traditional": "哥哥是不是沒把生日卡片寄給媽媽？",
+                  "simplified": "哥哥是不是没把生日卡片寄给妈妈？",
+                  "pinyin": "Gēge shì búshì méi bǎ shēngrì kǎpiàn jì gěi māma?",
+                  "english": "Did my older brother not send the birthday card to Mom?"
+                }
+              },
+              {
+                "id": "b2l2g4-3",
+                "source": "p.53 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你可以"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "那首中文歌"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "唱給"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "我"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "聽"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "嗎？",
+                        "simplified": "吗？"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "唱給",
+                    "simplified": "唱给",
+                    "pinyin": "chàng gěi"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "wǒ"
+                  },
+                  {
+                    "traditional": "聽",
+                    "simplified": "听",
+                    "pinyin": "tīng"
+                  },
+                  {
+                    "traditional": "看",
+                    "pinyin": "kàn"
+                  },
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "看"
+                    ],
+                    "mark": [
+                      "看"
+                    ],
+                    "note": "A song is something you hear: 唱給我聽."
+                  },
+                  {
+                    "placed": [
+                      "對"
+                    ],
+                    "mark": [
+                      "對"
+                    ],
+                    "note": "對 marks whom something is aimed at. The song comes after 把, and the listener after 唱給."
+                  }
+                ],
+                "fallbackRepair": "把 before the song, then 唱給, then the person, then 聽.",
+                "result": {
+                  "traditional": "你可以把那首中文歌唱給我聽嗎？",
+                  "simplified": "你可以把那首中文歌唱给我听吗？",
+                  "pinyin": "Nǐ kěyǐ bǎ nà shǒu Zhōngwén gē chàng gěi wǒ tīng ma?",
+                  "english": "Could you sing that Chinese song for me?"
+                }
+              }
+            ]
+          },
           "summary": [
             "Put 給 after the verb in a 把 sentence to say who receives the object.",
             "Say the thing first, then the verb with 給, then the receiver: 把舊車賣給你.",
@@ -9452,6 +10782,375 @@
           "explanationEnglish": "This pattern contains “Question Word 多+Vs (as predicate)” to inquire the degree achieved. In this pattern, “有” is frequently omitted.",
           "questions": [],
           "sourceExplanationEnglish": "This pattern contains “Question Word 多+Vs (as predicate)” to inquire the degree achieved. In this pattern, “有” is frequently omitted.",
+          "practice": {
+            "bookPage": 54,
+            "title": "Complete the dialogues with the given words.",
+            "allowWords": [
+              "公斤"
+            ],
+            "items": [
+              {
+                "id": "b2l2g5-1",
+                "source": "p.54 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你妹妹"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "多"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "大"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我妹妹今年十八歲。",
+                        "simplified": "我妹妹今年十八岁。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "多",
+                    "pinyin": "duō"
+                  },
+                  {
+                    "traditional": "大",
+                    "pinyin": "dà"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  },
+                  {
+                    "traditional": "幾",
+                    "simplified": "几",
+                    "pinyin": "jǐ"
+                  },
+                  {
+                    "traditional": "多少",
+                    "pinyin": "duōshǎo"
+                  },
+                  {
+                    "traditional": "怎麼",
+                    "simplified": "怎么",
+                    "pinyin": "zěnme"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "很"
+                    ],
+                    "mark": [
+                      "很"
+                    ],
+                    "note": "很 states a degree. Asking about the degree is 多 + the quality."
+                  },
+                  {
+                    "placed": [
+                      "幾"
+                    ],
+                    "mark": [
+                      "幾"
+                    ],
+                    "note": "幾 goes with a measure word (幾歲). Before a quality like 大, \"how\" is 多."
+                  },
+                  {
+                    "placed": [
+                      "多少"
+                    ],
+                    "mark": [
+                      "多少"
+                    ],
+                    "note": "多少 asks for an amount of things (多少錢). Before a quality, \"how\" is just 多."
+                  },
+                  {
+                    "placed": [
+                      "怎麼"
+                    ],
+                    "mark": [
+                      "怎麼"
+                    ],
+                    "note": "怎麼 asks in what way. Asking how old is 多大."
+                  }
+                ],
+                "fallbackRepair": "多 first, then the quality: 多大？",
+                "result": {
+                  "traditional": "你妹妹多大？",
+                  "pinyin": "Nǐ mèimei duō dà?",
+                  "english": "How old is your younger sister?"
+                }
+              },
+              {
+                "id": "b2l2g5-2",
+                "source": "p.54 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "聽說那場演唱會的票很貴，",
+                        "simplified": "听说那场演唱会的票很贵，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "有"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "多"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "貴"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "一張要八千元。",
+                        "simplified": "一张要八千元。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "有",
+                    "pinyin": "yǒu"
+                  },
+                  {
+                    "traditional": "多",
+                    "pinyin": "duō"
+                  },
+                  {
+                    "traditional": "貴",
+                    "simplified": "贵",
+                    "pinyin": "guì"
+                  },
+                  {
+                    "traditional": "是",
+                    "pinyin": "shì"
+                  },
+                  {
+                    "traditional": "多少",
+                    "pinyin": "duōshǎo"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "是"
+                    ],
+                    "mark": [
+                      "是"
+                    ],
+                    "note": "The degree question is 有 + 多 + the quality, not 是."
+                  },
+                  {
+                    "placed": [
+                      "多少"
+                    ],
+                    "mark": [
+                      "多少"
+                    ],
+                    "note": "多少 asks for an amount of things (多少錢). Before a quality, \"how\" is just 多."
+                  },
+                  {
+                    "placed": [
+                      "很"
+                    ],
+                    "mark": [
+                      "很"
+                    ],
+                    "note": "很 states a degree. Asking about the degree is 多 + the quality."
+                  }
+                ],
+                "fallbackRepair": "有 first, then 多, then the quality: 有多貴？",
+                "result": {
+                  "traditional": "聽說那場演唱會的票很貴，有多貴？",
+                  "simplified": "听说那场演唱会的票很贵，有多贵？",
+                  "pinyin": "Tīngshuō nà chǎng yǎnchànghuì de piào hěn guì, yǒu duō guì?",
+                  "english": "I hear the tickets for that concert are expensive. How expensive?"
+                }
+              },
+              {
+                "id": "b2l2g5-3",
+                "source": "p.54 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你現在",
+                        "simplified": "你现在"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "多"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "重"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我現在七十五公斤了。",
+                        "simplified": "我现在七十五公斤了。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "多",
+                    "pinyin": "duō"
+                  },
+                  {
+                    "traditional": "重",
+                    "pinyin": "zhòng"
+                  },
+                  {
+                    "traditional": "高",
+                    "pinyin": "gāo"
+                  },
+                  {
+                    "traditional": "多少",
+                    "pinyin": "duōshǎo"
+                  },
+                  {
+                    "traditional": "幾",
+                    "simplified": "几",
+                    "pinyin": "jǐ"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "高"
+                    ],
+                    "mark": [
+                      "高"
+                    ],
+                    "note": "B answers in kilograms (公斤), so the question is about weight: 重."
+                  },
+                  {
+                    "placed": [
+                      "多少"
+                    ],
+                    "mark": [
+                      "多少"
+                    ],
+                    "note": "多少 asks for an amount of things. Before a quality, \"how\" is just 多."
+                  },
+                  {
+                    "placed": [
+                      "幾"
+                    ],
+                    "mark": [
+                      "幾"
+                    ],
+                    "note": "幾 goes with a measure word (幾公斤). Before a quality like 重, \"how\" is 多."
+                  },
+                  {
+                    "placed": [
+                      "很"
+                    ],
+                    "mark": [
+                      "很"
+                    ],
+                    "note": "很 states a degree. Asking about the degree is 多 + the quality."
+                  }
+                ],
+                "fallbackRepair": "多 first, then the quality: 多重？",
+                "result": {
+                  "traditional": "你現在多重？",
+                  "simplified": "你现在多重？",
+                  "pinyin": "Nǐ xiànzài duō zhòng?",
+                  "english": "How much do you weigh now?"
+                }
+              }
+            ]
+          },
           "summary": [
             "Put 多 before 大, 長, 高 or 遠 to ask how big, long, tall or far something is.",
             "多 goes before the word: say 多高, not 高多.",
@@ -9867,6 +11566,360 @@
           "explanationEnglish": "This pattern, always including a negation word “不” or “沒,” indicates the time duration of a certain situation in which an action has yet to happen.",
           "questions": [],
           "sourceExplanationEnglish": "This pattern, always including a negation word “不” or “沒,” indicates the time duration of a certain situation in which an action has yet to happen.",
+          "practice": {
+            "bookPage": 55,
+            "title": "Complete the sentences and dialogues.",
+            "allowWords": [
+              "林",
+              "頭髮"
+            ],
+            "items": [
+              {
+                "id": "b2l2g6-1",
+                "source": "p.55 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你的頭髮好髒！你",
+                        "simplified": "你的头发好脏！你"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "多久"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "沒"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "洗頭"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "了"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "？"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "多久",
+                    "pinyin": "duōjiǔ"
+                  },
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
+                    "traditional": "洗頭",
+                    "simplified": "洗头",
+                    "pinyin": "xǐ tóu"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "過",
+                    "simplified": "过",
+                    "pinyin": "guò"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "不"
+                    ],
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "A stretch of time up to now without doing something takes 沒…了."
+                  },
+                  {
+                    "placed": [
+                      "過"
+                    ],
+                    "mark": [
+                      "過"
+                    ],
+                    "note": "過 is for something done at least once. Time without doing it is 沒 + verb + 了."
+                  }
+                ],
+                "fallbackRepair": "How long, then 沒, then the action, then 了: 多久沒洗頭了？",
+                "result": {
+                  "traditional": "你的頭髮好髒！你多久沒洗頭了？",
+                  "simplified": "你的头发好脏！你多久没洗头了？",
+                  "pinyin": "Nǐ de tóufǎ hǎo zāng! Nǐ duōjiǔ méi xǐ tóu le?",
+                  "english": "Your hair is so dirty! How long has it been since you washed it?"
+                }
+              },
+              {
+                "id": "b2l2g6-2",
+                "source": "p.55 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "林先生非常不喜歡說話。",
+                        "simplified": "林先生非常不喜欢说话。"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "對啊，我想他能",
+                        "simplified": "对啊，我想他能"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "三天"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "不"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "說話"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "三天",
+                    "pinyin": "sān tiān"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "說話",
+                    "simplified": "说话",
+                    "pinyin": "shuōhuà"
+                  },
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "三點",
+                    "simplified": "三点",
+                    "pinyin": "sān diǎn"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "沒"
+                    ],
+                    "mark": [
+                      "沒"
+                    ],
+                    "note": "After 能, B imagines what he could do, not what happened. That takes 不."
+                  },
+                  {
+                    "placed": [
+                      "了"
+                    ],
+                    "mark": [
+                      "了"
+                    ],
+                    "note": "Nothing has happened yet: B only imagines it. There is no 了."
+                  },
+                  {
+                    "placed": [
+                      "三點"
+                    ],
+                    "mark": [
+                      "三點"
+                    ],
+                    "note": "三點 is a point in time. How long he could stay silent is a length of time: 三天."
+                  }
+                ],
+                "fallbackRepair": "The length of time, then 不, then the action: 三天不說話.",
+                "result": {
+                  "traditional": "對啊，我想他能三天不說話。",
+                  "simplified": "对啊，我想他能三天不说话。",
+                  "pinyin": "Duì a, wǒ xiǎng tā néng sān tiān bù shuōhuà.",
+                  "english": "Right, I think he could go three days without talking."
+                }
+              },
+              {
+                "id": "b2l2g6-3",
+                "source": "p.55 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "為什麼你今天一定要去運動？",
+                        "simplified": "为什么你今天一定要去运动？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "因為我已經",
+                        "simplified": "因为我已经"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "一個星期"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "沒"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "運動"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "了"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "一個星期",
+                    "simplified": "一个星期",
+                    "pinyin": "yí ge xīngqí"
+                  },
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
+                    "traditional": "運動",
+                    "simplified": "运动",
+                    "pinyin": "yùndòng"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "星期一",
+                    "pinyin": "xīngqíyī"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "不"
+                    ],
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "A stretch of time up to now without doing something takes 沒…了."
+                  },
+                  {
+                    "placed": [
+                      "星期一"
+                    ],
+                    "mark": [
+                      "星期一"
+                    ],
+                    "note": "星期一 is a day. How long B has gone without exercise is a length of time: 一個星期."
+                  }
+                ],
+                "fallbackRepair": "The length of time, then 沒, then the action, then 了.",
+                "result": {
+                  "traditional": "因為我已經一個星期沒運動了。",
+                  "simplified": "因为我已经一个星期没运动了。",
+                  "pinyin": "Yīnwèi wǒ yǐjīng yí ge xīngqí méi yùndòng le.",
+                  "english": "Because I haven't exercised for a week already."
+                }
+              }
+            ]
+          },
           "summary": [
             "Put a length of time before 沒 or 不 to say how long an action hasn't happened: 兩天沒睡覺.",
             "了 often comes at the end. With 沒, it shows the state still continues up to now.",
@@ -10334,6 +12387,365 @@
           "explanationEnglish": "In Chinese, question words may co-occur with “都” or “也” in declarative sentences to indicate entirety. That is, in affirmative sentences, this pattern indicates total inclusion, while in negative ones, it indicates total exclusion.",
           "questions": [],
           "sourceExplanationEnglish": "In Chinese, question words may co-occur with “都” or “也” in declarative sentences to indicate entirety. That is, in affirmative sentences, this pattern indicates total inclusion, while in negative ones, it indicates total exclusion.",
+          "practice": {
+            "bookPage": 55,
+            "title": "Complete the dialogues.",
+            "items": [
+              {
+                "id": "b2l2g7-1",
+                "source": "p.55 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我們什麼時候去看電影？",
+                        "simplified": "我们什么时候去看电影？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "什麼時候"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "都"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "可以"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "什麼時候",
+                    "simplified": "什么时候",
+                    "pinyin": "shénme shíhòu"
+                  },
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "可以",
+                    "pinyin": "kěyǐ"
+                  },
+                  {
+                    "traditional": "哪裡",
+                    "simplified": "哪里",
+                    "pinyin": "nǎlǐ"
+                  },
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  },
+                  {
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "哪裡"
+                    ],
+                    "mark": [
+                      "哪裡"
+                    ],
+                    "note": "A asks when, so the answer keeps 什麼時候."
+                  },
+                  {
+                    "placed": [
+                      "才"
+                    ],
+                    "mark": [
+                      "才"
+                    ],
+                    "note": "After a question word, \"any\" takes 都."
+                  },
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "mark": [
+                      "嗎"
+                    ],
+                    "note": "B is answering, not asking. \"Any time\" is 什麼時候都…."
+                  }
+                ],
+                "fallbackRepair": "The question word, then 都, then what is true: 什麼時候都可以.",
+                "result": {
+                  "traditional": "什麼時候都可以。",
+                  "simplified": "什么时候都可以。",
+                  "pinyin": "Shénme shíhòu dōu kěyǐ.",
+                  "english": "Any time is fine."
+                }
+              },
+              {
+                "id": "b2l2g7-2",
+                "source": "p.56 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你覺得我穿哪一件衣服好看？",
+                        "simplified": "你觉得我穿哪一件衣服好看？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你穿"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "哪一件"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "都"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "好看"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "哪一件",
+                    "pinyin": "nǎ yí jiàn"
+                  },
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "好看",
+                    "pinyin": "hǎokàn"
+                  },
+                  {
+                    "traditional": "這一件",
+                    "simplified": "这一件",
+                    "pinyin": "zhè yí jiàn"
+                  },
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "這一件"
+                    ],
+                    "mark": [
+                      "這一件"
+                    ],
+                    "note": "\"Every one\" is the question word + 都: 哪一件都…."
+                  },
+                  {
+                    "placed": [
+                      "才"
+                    ],
+                    "mark": [
+                      "才"
+                    ],
+                    "note": "After a question word, \"any\" takes 都."
+                  },
+                  {
+                    "placed": [
+                      "很"
+                    ],
+                    "mark": [
+                      "很"
+                    ],
+                    "note": "After the question word comes 都, then the quality: 哪一件都好看."
+                  }
+                ],
+                "fallbackRepair": "The question word, then 都, then what is true: 哪一件都好看.",
+                "result": {
+                  "traditional": "你穿哪一件都好看。",
+                  "pinyin": "Nǐ chuān nǎ yí jiàn dōu hǎokàn.",
+                  "english": "You look good in any of them."
+                }
+              },
+              {
+                "id": "b2l2g7-3",
+                "source": "p.56 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "放暑假的時候，你想去哪裡玩？",
+                        "simplified": "放暑假的时候，你想去哪里玩？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "哪裡"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "都"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "想去"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "哪裡",
+                    "simplified": "哪里",
+                    "pinyin": "nǎlǐ"
+                  },
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "想去",
+                    "pinyin": "xiǎng qù"
+                  },
+                  {
+                    "traditional": "什麼",
+                    "simplified": "什么",
+                    "pinyin": "shénme"
+                  },
+                  {
+                    "traditional": "誰",
+                    "simplified": "谁",
+                    "pinyin": "shéi"
+                  },
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "什麼"
+                    ],
+                    "mark": [
+                      "什麼"
+                    ],
+                    "note": "A asks where, so the answer keeps 哪裡."
+                  },
+                  {
+                    "placed": [
+                      "誰"
+                    ],
+                    "mark": [
+                      "誰"
+                    ],
+                    "note": "A asks where, so the answer keeps 哪裡."
+                  },
+                  {
+                    "placed": [
+                      "才"
+                    ],
+                    "mark": [
+                      "才"
+                    ],
+                    "note": "After a question word, \"everywhere\" takes 都."
+                  }
+                ],
+                "fallbackRepair": "The question word, then 都, then what is true: 哪裡都想去.",
+                "result": {
+                  "traditional": "我哪裡都想去。",
+                  "simplified": "我哪里都想去。",
+                  "pinyin": "Wǒ nǎlǐ dōu xiǎng qù.",
+                  "english": "I want to go everywhere."
+                }
+              }
+            ]
+          },
           "summary": [
             "Put 都 or 也 after a question word to mean everything, everyone or everywhere.",
             "In a positive sentence it includes all. In a negative sentence it means none.",
@@ -10857,6 +13269,274 @@
           "explanationEnglish": "“又” means the repetition of the same action or the reappearance of similar situation. “再” and “又” both mean repetition. However, “再” emphasizes the intention to repeat certain actions, so it can be used in imperative sentences and placed after modal verbs, e.g., “請再說一次” (Please say it again.) and “我想再喝一杯”. (I'd like to have another drink.) “又” is used after certain actions or showing the intention of performing the action. “又” mostly collocates with “了” or “沒” and is placed before the modal verbs. e.g., “我又說了一次” (I said that again.) and “我又想喝了” (I wanted to drink again.)",
           "questions": [],
           "sourceExplanationEnglish": "“又” means the repetition of the same action or the reappearance of similar situation. “再” and “又” both mean repetition. However, “再” emphasizes the intention to repeat certain actions, so it can be used in imperative sentences and placed after modal verbs, e.g., “請再說一次” (Please say it again.) and “我想再喝一杯”. (I'd like to have another drink.) “又” is used after certain actions or showing the intention of performing the action. “又” mostly collocates with “了” or “沒” and is placed before the modal verbs. e.g., “我又說了一次” (I said that again.) and “我又想喝了” (I wanted to drink again.)",
+          "practice": {
+            "bookPage": 56,
+            "title": "Complete the sentences.",
+            "items": [
+              {
+                "id": "b2l2g8-1",
+                "source": "p.56 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "姐姐上個禮拜買了新衣服，昨天",
+                        "simplified": "姐姐上个礼拜买了新衣服，昨天"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "又"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "買"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "了"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "一件。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "又",
+                    "pinyin": "yòu"
+                  },
+                  {
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "再",
+                    "pinyin": "zài"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "再"
+                    ],
+                    "mark": [
+                      "再"
+                    ],
+                    "note": "再 is for doing something again later. Something that already happened again takes 又."
+                  }
+                ],
+                "fallbackRepair": "又 before the verb, and 了 after it: 又買了一件.",
+                "result": {
+                  "traditional": "姐姐上個禮拜買了新衣服，昨天又買了一件。",
+                  "simplified": "姐姐上个礼拜买了新衣服，昨天又买了一件。",
+                  "pinyin": "Jiějie shàng ge lǐbài mǎi le xīn yīfu, zuótiān yòu mǎi le yí jiàn.",
+                  "english": "My older sister bought new clothes last week, and yesterday she bought another piece."
+                }
+              },
+              {
+                "id": "b2l2g8-2",
+                "source": "p.56 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "他去年來台灣學了半年的中文，今年",
+                        "simplified": "他去年来台湾学了半年的中文，今年"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "又"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "來"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "了"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "又",
+                    "pinyin": "yòu"
+                  },
+                  {
+                    "traditional": "來",
+                    "simplified": "来",
+                    "pinyin": "lái"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "再",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "去",
+                    "pinyin": "qù"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "再"
+                    ],
+                    "mark": [
+                      "再"
+                    ],
+                    "note": "再 is for doing something again later. Something that already happened again takes 又."
+                  },
+                  {
+                    "placed": [
+                      "去"
+                    ],
+                    "mark": [
+                      "去"
+                    ],
+                    "note": "The sentence says 來台灣, so this year he has come again: 來."
+                  }
+                ],
+                "fallbackRepair": "又 before the verb, and 了 after it: 又來了.",
+                "result": {
+                  "traditional": "他去年來台灣學了半年的中文，今年又來了。",
+                  "simplified": "他去年来台湾学了半年的中文，今年又来了。",
+                  "pinyin": "Tā qùnián lái Táiwān xué le bànnián de Zhōngwén, jīnnián yòu lái le.",
+                  "english": "Last year he came to Taiwan and studied Chinese for half a year, and this year he has come again."
+                }
+              },
+              {
+                "id": "b2l2g8-3",
+                "source": "p.56 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "那個學生前天沒寫功課，昨天",
+                        "simplified": "那个学生前天没写功课，昨天"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "又"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "沒"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "寫"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，老師很不高興。",
+                        "simplified": "，老师很不高兴。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "又",
+                    "pinyin": "yòu"
+                  },
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
+                    "traditional": "寫",
+                    "simplified": "写",
+                    "pinyin": "xiě"
+                  },
+                  {
+                    "traditional": "再",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "再"
+                    ],
+                    "mark": [
+                      "再"
+                    ],
+                    "note": "再 is for doing something again later. Something that already happened again takes 又."
+                  },
+                  {
+                    "placed": [
+                      "了"
+                    ],
+                    "mark": [
+                      "了"
+                    ],
+                    "note": "The teacher is unhappy, so the homework was again not done: 又沒寫."
+                  }
+                ],
+                "fallbackRepair": "又 first, then 沒, then the verb: 又沒寫.",
+                "result": {
+                  "traditional": "那個學生前天沒寫功課，昨天又沒寫，老師很不高興。",
+                  "simplified": "那个学生前天没写功课，昨天又没写，老师很不高兴。",
+                  "pinyin": "Nàge xuéshēng qiántiān méi xiě gōngkè, zuótiān yòu méi xiě, lǎoshī hěn bù gāoxìng.",
+                  "english": "That student didn't do the homework the day before yesterday and again didn't do it yesterday; the teacher is very unhappy."
+                }
+              }
+            ]
+          },
           "summary": [
             "又 says the same action or a similar situation happens again.",
             "又 goes before the verb and often pairs with 了 or 沒.",
@@ -11346,6 +14026,374 @@
           "explanationEnglish": "“才” implies that an action happened or will happen later than expected.",
           "questions": [],
           "sourceExplanationEnglish": "“才” implies that an action happened or will happen later than expected.",
+          "practice": {
+            "bookPage": 57,
+            "title": "Complete the dialogues with the given words.",
+            "items": [
+              {
+                "id": "b2l2g9-1",
+                "source": "p.57 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "聽說你這個週末要去日本？",
+                        "simplified": "听说你这个周末要去日本？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "不是，我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "下個週末"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "才"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "去"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "下個週末",
+                    "simplified": "下个周末",
+                    "pinyin": "xià ge zhōumò"
+                  },
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  },
+                  {
+                    "traditional": "去",
+                    "pinyin": "qù"
+                  },
+                  {
+                    "traditional": "就",
+                    "pinyin": "jiù"
+                  },
+                  {
+                    "traditional": "這個週末",
+                    "simplified": "这个周末",
+                    "pinyin": "zhège zhōumò"
+                  },
+                  {
+                    "traditional": "來",
+                    "simplified": "来",
+                    "pinyin": "lái"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "就"
+                    ],
+                    "mark": [
+                      "就"
+                    ],
+                    "note": "Next weekend is later than A thought, and later than expected takes 才."
+                  },
+                  {
+                    "placed": [
+                      "這個週末"
+                    ],
+                    "mark": [
+                      "這個週末"
+                    ],
+                    "note": "B says 不是, so it is not this weekend."
+                  },
+                  {
+                    "placed": [
+                      "來"
+                    ],
+                    "mark": [
+                      "來"
+                    ],
+                    "note": "B is going to Japan, away from here: 去."
+                  }
+                ],
+                "fallbackRepair": "The time first, then 才, then the verb: 下個週末才去.",
+                "result": {
+                  "traditional": "不是，我下個週末才去。",
+                  "simplified": "不是，我下个周末才去。",
+                  "pinyin": "Búshì, wǒ xià ge zhōumò cái qù.",
+                  "english": "No, I'm not going until next weekend."
+                }
+              },
+              {
+                "id": "b2l2g9-2",
+                "source": "p.57 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "趕快起來！你早上八點有中文課！",
+                        "simplified": "赶快起来！你早上八点有中文课！"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "不對，我",
+                        "simplified": "不对，我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "早上十點"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "才"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "有課"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "早上十點",
+                    "simplified": "早上十点",
+                    "pinyin": "zǎoshàng shí diǎn"
+                  },
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  },
+                  {
+                    "traditional": "有課",
+                    "simplified": "有课",
+                    "pinyin": "yǒu kè"
+                  },
+                  {
+                    "traditional": "就",
+                    "pinyin": "jiù"
+                  },
+                  {
+                    "traditional": "早上八點",
+                    "simplified": "早上八点",
+                    "pinyin": "zǎoshàng bā diǎn"
+                  },
+                  {
+                    "traditional": "沒課",
+                    "simplified": "没课",
+                    "pinyin": "méi kè"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "就"
+                    ],
+                    "mark": [
+                      "就"
+                    ],
+                    "note": "Ten o'clock is later than A thought, and later than expected takes 才."
+                  },
+                  {
+                    "placed": [
+                      "早上八點"
+                    ],
+                    "mark": [
+                      "早上八點"
+                    ],
+                    "note": "B says 不對, so the class is not at eight."
+                  },
+                  {
+                    "placed": [
+                      "沒課"
+                    ],
+                    "mark": [
+                      "沒課"
+                    ],
+                    "note": "B does have class, only later: 才有課."
+                  }
+                ],
+                "fallbackRepair": "The time first, then 才, then what happens: 早上十點才有課.",
+                "result": {
+                  "traditional": "不對，我早上十點才有課。",
+                  "simplified": "不对，我早上十点才有课。",
+                  "pinyin": "Bú duì, wǒ zǎoshàng shí diǎn cái yǒu kè.",
+                  "english": "That's wrong. I don't have class until ten in the morning."
+                }
+              },
+              {
+                "id": "b2l2g9-3",
+                "source": "p.57 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "A"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你明天晚上要不要跟我一起去看籃球比賽？",
+                        "simplified": "你明天晚上要不要跟我一起去看篮球比赛？"
+                      }
+                    ]
+                  },
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "不好意思，我明天沒空，",
+                        "simplified": "不好意思，我明天没空，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "後天"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "才"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "有空"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "後天",
+                    "simplified": "后天",
+                    "pinyin": "hòutiān"
+                  },
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  },
+                  {
+                    "traditional": "有空",
+                    "pinyin": "yǒukòng"
+                  },
+                  {
+                    "traditional": "昨天",
+                    "pinyin": "zuótiān"
+                  },
+                  {
+                    "traditional": "沒空",
+                    "simplified": "没空",
+                    "pinyin": "méi kòng"
+                  },
+                  {
+                    "traditional": "再",
+                    "pinyin": "zài"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "昨天"
+                    ],
+                    "mark": [
+                      "昨天"
+                    ],
+                    "note": "B is talking about when B will be free, which is still to come: 後天."
+                  },
+                  {
+                    "placed": [
+                      "沒空"
+                    ],
+                    "mark": [
+                      "沒空"
+                    ],
+                    "note": "B is not free tomorrow, and is free only the day after: 才有空."
+                  },
+                  {
+                    "placed": [
+                      "再"
+                    ],
+                    "mark": [
+                      "再"
+                    ],
+                    "note": "Here the day after tomorrow is later than A hoped, which takes 才."
+                  }
+                ],
+                "fallbackRepair": "The time first, then 才, then what happens: 後天才有空.",
+                "result": {
+                  "traditional": "不好意思，我明天沒空，後天才有空。",
+                  "simplified": "不好意思，我明天没空，后天才有空。",
+                  "pinyin": "Bùhǎoyìsi, wǒ míngtiān méi kòng, hòutiān cái yǒukòng.",
+                  "english": "Sorry, I'm not free tomorrow; I won't be free until the day after tomorrow."
+                }
+              }
+            ]
+          },
           "summary": [
             "Put 才 before the verb to say something happens later than expected, which the speaker sees as late.",
             "The time comes first, then 才, then the verb: 十一點才起來."
@@ -12071,6 +15119,651 @@
           "explanationEnglish": "This pattern is the combination of “S（+Neg）+把+N+V+Complement” (see the first grammar after the dialogue in this lesson) and “V在” (see the first grammar after the text in Lesson One) and “V到”. It indicates the location or place of the Object after the action is over.",
           "questions": [],
           "sourceExplanationEnglish": "This pattern is the combination of “S（+Neg）+把+N+V+Complement” (see the first grammar after the dialogue in this lesson) and “V在” (see the first grammar after the text in Lesson One) and “V到”. It indicates the location or place of the Object after the action is over.",
+          "practice": {
+            "bookPage": 62,
+            "title": "Complete the sentences.",
+            "allowWords": [
+              "課本",
+              "警察",
+              "受傷",
+              "室友"
+            ],
+            "items": [
+              {
+                "id": "b2l2g10-1",
+                "source": "p.62 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "為什麼你把我的手錶",
+                        "simplified": "为什么你把我的手表"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "戴"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "在"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "你的手上？"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "戴",
+                    "pinyin": "dài"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "穿",
+                    "pinyin": "chuān"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "穿"
+                    ],
+                    "mark": [
+                      "穿"
+                    ],
+                    "note": "穿 is for clothes and shoes. A watch is worn with 戴."
+                  },
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. Where the watch ends up takes 在."
+                  },
+                  {
+                    "placed": [
+                      "對"
+                    ],
+                    "mark": [
+                      "對"
+                    ],
+                    "note": "對 marks whom something is aimed at. Where the watch ends up takes 在."
+                  }
+                ],
+                "fallbackRepair": "The verb, then 在 before the place: 戴在你的手上.",
+                "result": {
+                  "traditional": "為什麼你把我的手錶戴在你的手上？",
+                  "simplified": "为什么你把我的手表戴在你的手上？",
+                  "pinyin": "Wèishénme nǐ bǎ wǒ de shǒubiǎo dài zài nǐ de shǒu shàng?",
+                  "english": "Why are you wearing my watch on your wrist?"
+                }
+              },
+              {
+                "id": "b2l2g10-2",
+                "source": "p.62 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "那個學生把課本",
+                        "simplified": "那个学生把课本"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "放"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "在"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "教室裡"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，忘了帶回家了。",
+                        "simplified": "，忘了带回家了。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "放",
+                    "pinyin": "fàng"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "教室裡",
+                    "simplified": "教室里",
+                    "pinyin": "jiàoshì lǐ"
+                  },
+                  {
+                    "traditional": "家裡",
+                    "simplified": "家里",
+                    "pinyin": "jiā lǐ"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "帶",
+                    "simplified": "带",
+                    "pinyin": "dài"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "家裡"
+                    ],
+                    "mark": [
+                      "家裡"
+                    ],
+                    "note": "The student forgot to take it home, so the textbook is not at home."
+                  },
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. Where the textbook was left takes 在."
+                  },
+                  {
+                    "placed": [
+                      "帶"
+                    ],
+                    "mark": [
+                      "帶"
+                    ],
+                    "note": "帶 is carrying something along. Leaving it somewhere is 放在."
+                  }
+                ],
+                "fallbackRepair": "The verb, then 在, then the place: 放在教室裡.",
+                "result": {
+                  "traditional": "那個學生把課本放在教室裡，忘了帶回家了。",
+                  "simplified": "那个学生把课本放在教室里，忘了带回家了。",
+                  "pinyin": "Nàge xuéshēng bǎ kèběn fàng zài jiàoshì lǐ, wàngle dài huí jiā le.",
+                  "english": "That student left the textbook in the classroom and forgot to take it home."
+                }
+              },
+              {
+                "id": "b2l2g10-3",
+                "source": "p.62 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "室友常常"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "髒衣服"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "丟在"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "地上，所以房間的味道真不好。",
+                        "simplified": "地上，所以房间的味道真不好。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "髒衣服",
+                    "simplified": "脏衣服",
+                    "pinyin": "zāng yīfu"
+                  },
+                  {
+                    "traditional": "丟在",
+                    "simplified": "丢在",
+                    "pinyin": "diū zài"
+                  },
+                  {
+                    "traditional": "新衣服",
+                    "pinyin": "xīn yīfu"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "新衣服"
+                    ],
+                    "mark": [
+                      "新衣服"
+                    ],
+                    "note": "The room smells bad, so what lies on the floor is dirty clothes."
+                  },
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. The thing that is dealt with comes after 把."
+                  },
+                  {
+                    "placed": [
+                      "對"
+                    ],
+                    "mark": [
+                      "對"
+                    ],
+                    "note": "對 marks whom something is aimed at. The thing that is dealt with comes after 把."
+                  }
+                ],
+                "fallbackRepair": "把, then the thing, then 丟在 before the place.",
+                "result": {
+                  "traditional": "室友常常把髒衣服丟在地上，所以房間的味道真不好。",
+                  "simplified": "室友常常把脏衣服丢在地上，所以房间的味道真不好。",
+                  "pinyin": "Shìyǒu chángcháng bǎ zāng yīfu diū zài dì shàng, suǒyǐ fángjiān de wèidào zhēn bù hǎo.",
+                  "english": "My roommate often throws dirty clothes on the floor, so the room smells really bad."
+                }
+              },
+              {
+                "id": "b2l2g10-4",
+                "source": "p.62 #4",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "考試的時候，不可以把手機放在桌子上，請你",
+                        "simplified": "考试的时候，不可以把手机放在桌子上，请你"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "把"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "手機",
+                        "simplified": "手机"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "放"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "到"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "袋子裡。",
+                        "simplified": "袋子里。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "把",
+                    "pinyin": "bǎ"
+                  },
+                  {
+                    "traditional": "放",
+                    "pinyin": "fàng"
+                  },
+                  {
+                    "traditional": "到",
+                    "pinyin": "dào"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "寫",
+                    "simplified": "写",
+                    "pinyin": "xiě"
+                  },
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. The thing to move comes after 把."
+                  },
+                  {
+                    "placed": [
+                      "寫"
+                    ],
+                    "mark": [
+                      "寫"
+                    ],
+                    "note": "A phone is put somewhere, not written: 放."
+                  },
+                  {
+                    "placed": [
+                      "對"
+                    ],
+                    "mark": [
+                      "對"
+                    ],
+                    "note": "對 marks whom something is aimed at. The thing to move comes after 把."
+                  }
+                ],
+                "fallbackRepair": "把 before the thing, then the verb, then 到 before where it goes.",
+                "result": {
+                  "traditional": "考試的時候，不可以把手機放在桌子上，請你把手機放到袋子裡。",
+                  "simplified": "考试的时候，不可以把手机放在桌子上，请你把手机放到袋子里。",
+                  "pinyin": "Kǎoshì de shíhòu, bù kěyǐ bǎ shǒujī fàng zài zhuōzi shàng, qǐng nǐ bǎ shǒujī fàng dào dàizi lǐ.",
+                  "english": "During the exam you may not leave your phone on the desk; please put it in your bag."
+                }
+              },
+              {
+                "id": "b2l2g10-5",
+                "source": "p.62 #5",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "警察把那個受傷的人",
+                        "simplified": "警察把那个受伤的人"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "送"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "到"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "醫院"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "送",
+                    "pinyin": "sòng"
+                  },
+                  {
+                    "traditional": "到",
+                    "pinyin": "dào"
+                  },
+                  {
+                    "traditional": "醫院",
+                    "simplified": "医院",
+                    "pinyin": "yīyuàn"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "銀行",
+                    "simplified": "银行",
+                    "pinyin": "yínháng"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "送給 gives something to a person. Taking someone to a place is 送到."
+                  },
+                  {
+                    "placed": [
+                      "在"
+                    ],
+                    "mark": [
+                      "在"
+                    ],
+                    "note": "The person is moved to a new place, and movement to a place takes 到."
+                  },
+                  {
+                    "placed": [
+                      "銀行"
+                    ],
+                    "mark": [
+                      "銀行"
+                    ],
+                    "note": "An injured person is taken to a hospital, not to a bank."
+                  }
+                ],
+                "fallbackRepair": "The verb, then 到, then the place: 送到醫院.",
+                "result": {
+                  "traditional": "警察把那個受傷的人送到醫院。",
+                  "simplified": "警察把那个受伤的人送到医院。",
+                  "pinyin": "Jǐngchá bǎ nàge shòushāng de rén sòng dào yīyuàn.",
+                  "english": "The police took the injured person to the hospital."
+                }
+              },
+              {
+                "id": "b2l2g10-6",
+                "source": "p.62 #6",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你不可以把飲料",
+                        "simplified": "你不可以把饮料"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "帶"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "到"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "圖書館裡"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "帶",
+                    "simplified": "带",
+                    "pinyin": "dài"
+                  },
+                  {
+                    "traditional": "到",
+                    "pinyin": "dào"
+                  },
+                  {
+                    "traditional": "圖書館裡",
+                    "simplified": "图书馆里",
+                    "pinyin": "túshūguǎn lǐ"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "給",
+                    "simplified": "给",
+                    "pinyin": "gěi"
+                  },
+                  {
+                    "traditional": "喝",
+                    "pinyin": "hē"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "在"
+                    ],
+                    "mark": [
+                      "在"
+                    ],
+                    "note": "The drink is carried into a new place, and movement to a place takes 到."
+                  },
+                  {
+                    "placed": [
+                      "給"
+                    ],
+                    "mark": [
+                      "給"
+                    ],
+                    "note": "給 marks the one who receives something. Where the drink is carried takes 到."
+                  },
+                  {
+                    "placed": [
+                      "喝"
+                    ],
+                    "mark": [
+                      "喝"
+                    ],
+                    "note": "What moves the drink into the library is carrying it: 帶到."
+                  }
+                ],
+                "fallbackRepair": "The verb, then 到, then the place: 帶到圖書館裡.",
+                "result": {
+                  "traditional": "你不可以把飲料帶到圖書館裡。",
+                  "simplified": "你不可以把饮料带到图书馆里。",
+                  "pinyin": "Nǐ bù kěyǐ bǎ yǐnliào dài dào túshūguǎn lǐ.",
+                  "english": "You may not bring drinks into the library."
+                }
+              }
+            ]
+          },
           "summary": [
             "Put 在 or 到 and the place after the verb in a 把 sentence, not before it: 丟在浴室裡.",
             "在 marks where the object stays after the action. 到 marks the place it reaches.",
@@ -12537,6 +16230,329 @@
           "explanationEnglish": "In this pattern, the adverb “才” in the second clause is used to show consequences when the conditions and causes in the first clause are fulfilled. Thus, “得 (have to)”, “要 (need to)”, “為了 (in order to)”, and “因為 (because)” are often used in the first clause of this pattern.",
           "questions": [],
           "sourceExplanationEnglish": "In this pattern, the adverb “才” in the second clause is used to show consequences when the conditions and causes in the first clause are fulfilled. Thus, “得 (have to)”, “要 (need to)”, “為了 (in order to)”, and “因為 (because)” are often used in the first clause of this pattern.",
+          "practice": {
+            "bookPage": 63,
+            "title": "Complete the sentences.",
+            "items": [
+              {
+                "id": "b2l2g11-1",
+                "source": "p.63 #1",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你得先買票，",
+                        "simplified": "你得先买票，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "才"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "可以"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "進去"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  },
+                  {
+                    "traditional": "可以",
+                    "pinyin": "kěyǐ"
+                  },
+                  {
+                    "traditional": "進去",
+                    "simplified": "进去",
+                    "pinyin": "jìnqù"
+                  },
+                  {
+                    "traditional": "再",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "不可以",
+                    "pinyin": "bù kěyǐ"
+                  },
+                  {
+                    "traditional": "也",
+                    "pinyin": "yě"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "再"
+                    ],
+                    "mark": [
+                      "再"
+                    ],
+                    "note": "再 puts one action after another. What becomes possible only after the ticket takes 才."
+                  },
+                  {
+                    "placed": [
+                      "不可以"
+                    ],
+                    "mark": [
+                      "不可以"
+                    ],
+                    "note": "Buying the ticket is what lets you in: 才可以進去."
+                  },
+                  {
+                    "placed": [
+                      "也"
+                    ],
+                    "mark": [
+                      "也"
+                    ],
+                    "note": "Going in depends on the ticket, and a result that depends on a condition takes 才."
+                  }
+                ],
+                "fallbackRepair": "才 first, then 可以, then the action: 才可以進去.",
+                "result": {
+                  "traditional": "你得先買票，才可以進去。",
+                  "simplified": "你得先买票，才可以进去。",
+                  "pinyin": "Nǐ děi xiān mǎi piào, cái kěyǐ jìnqù.",
+                  "english": "You have to buy a ticket first; only then can you go in."
+                }
+              },
+              {
+                "id": "b2l2g11-2",
+                "source": "p.63 #2",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你應該早一點兒睡覺，明天",
+                        "simplified": "你应该早一点儿睡觉，明天"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "才"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "不會"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "遲到"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "才",
+                    "pinyin": "cái"
+                  },
+                  {
+                    "traditional": "不會",
+                    "simplified": "不会",
+                    "pinyin": "bú huì"
+                  },
+                  {
+                    "traditional": "遲到",
+                    "simplified": "迟到",
+                    "pinyin": "chídào"
+                  },
+                  {
+                    "traditional": "會",
+                    "simplified": "会",
+                    "pinyin": "huì"
+                  },
+                  {
+                    "traditional": "再",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "也",
+                    "pinyin": "yě"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "會"
+                    ],
+                    "mark": [
+                      "會"
+                    ],
+                    "note": "Going to bed earlier is so that you will not be late: 才不會遲到."
+                  },
+                  {
+                    "placed": [
+                      "再"
+                    ],
+                    "mark": [
+                      "再"
+                    ],
+                    "note": "再 puts one action after another. A result that depends on a condition takes 才."
+                  },
+                  {
+                    "placed": [
+                      "也"
+                    ],
+                    "mark": [
+                      "也"
+                    ],
+                    "note": "Not being late depends on sleeping early, and such a result takes 才."
+                  }
+                ],
+                "fallbackRepair": "才 first, then 不會, then the verb: 才不會遲到.",
+                "result": {
+                  "traditional": "你應該早一點兒睡覺，明天才不會遲到。",
+                  "simplified": "你应该早一点儿睡觉，明天才不会迟到。",
+                  "pinyin": "Nǐ yīnggāi zǎo yìdiǎnr shuìjiào, míngtiān cái bú huì chídào.",
+                  "english": "You should go to bed a little earlier; only then will you not be late tomorrow."
+                }
+              },
+              {
+                "id": "b2l2g11-3",
+                "source": "p.63 #3",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "是"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "因為"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "沒有錢"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，才沒買禮物給你的。",
+                        "simplified": "，才没买礼物给你的。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "是",
+                    "pinyin": "shì"
+                  },
+                  {
+                    "traditional": "因為",
+                    "simplified": "因为",
+                    "pinyin": "yīnwèi"
+                  },
+                  {
+                    "traditional": "沒有錢",
+                    "simplified": "没有钱",
+                    "pinyin": "méiyǒu qián"
+                  },
+                  {
+                    "traditional": "所以",
+                    "pinyin": "suǒyǐ"
+                  },
+                  {
+                    "traditional": "很有錢",
+                    "simplified": "很有钱",
+                    "pinyin": "hěn yǒu qián"
+                  },
+                  {
+                    "traditional": "雖然",
+                    "simplified": "虽然",
+                    "pinyin": "suīrán"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "所以"
+                    ],
+                    "mark": [
+                      "所以"
+                    ],
+                    "note": "所以 starts a result. Here the result already has 才, and the reason opens with 是因為."
+                  },
+                  {
+                    "placed": [
+                      "很有錢"
+                    ],
+                    "mark": [
+                      "很有錢"
+                    ],
+                    "note": "Having plenty of money is no reason for not buying a gift."
+                  },
+                  {
+                    "placed": [
+                      "雖然"
+                    ],
+                    "mark": [
+                      "雖然"
+                    ],
+                    "note": "雖然 needs a turn with 可是 after it. The reason before 才 opens with 是因為."
+                  }
+                ],
+                "fallbackRepair": "是 first, then 因為, then the reason: 是因為沒有錢，才….",
+                "result": {
+                  "traditional": "我是因為沒有錢，才沒買禮物給你的。",
+                  "simplified": "我是因为没有钱，才没买礼物给你的。",
+                  "pinyin": "Wǒ shì yīnwèi méiyǒu qián, cái méi mǎi lǐwù gěi nǐ de.",
+                  "english": "It was because I had no money that I didn't buy you a gift."
+                }
+              }
+            ]
+          },
           "summary": [
             "才 goes in the second part and says the result happens only after the earlier condition or reason is true.",
             "Put 才 right before the result: 才不會覺得冷.",
@@ -86812,8 +90828,8 @@
                     "pinyin": "ma"
                   },
                   {
-                    "traditional": "可是",
-                    "pinyin": "kěshì"
+                    "traditional": "可能",
+                    "pinyin": "kěnéng"
                   }
                 ],
                 "repairs": [
@@ -86824,7 +90840,7 @@
                     "mark": [
                       "可以"
                     ],
-                    "note": "可以 means \"may\" or \"can\". The single word that adds force before a quality is 可."
+                    "note": "可以 means \"may\" or \"can\". Here the word that adds force before the quality is 可."
                   },
                   {
                     "placed": [
@@ -86837,12 +90853,12 @@
                   },
                   {
                     "placed": [
-                      "可是"
+                      "可能"
                     ],
                     "mark": [
-                      "可是"
+                      "可能"
                     ],
-                    "note": "可是 means \"but\". The single word that adds force before a quality is 可."
+                    "note": "可能 means \"maybe\". B is sure, so the word that adds force before the quality is 可."
                   }
                 ],
                 "fallbackRepair": "可 before the quality, and 呢 at the very end: 可好吃呢！",
@@ -87062,7 +91078,7 @@
                     "mark": [
                       "可以"
                     ],
-                    "note": "可以 means \"may\" or \"can\". The single word that adds force before a quality is 可."
+                    "note": "可以 means \"may\" or \"can\". Here the word that adds force before the quality is 可."
                   },
                   {
                     "placed": [
@@ -87829,7 +91845,7 @@
                     "mark": [
                       "聽"
                     ],
-                    "note": "The teacher is the one who explains. The student listens: 我再說一遍."
+                    "note": "The teacher is the one who explains, so the teacher says it once more: 我再說一遍."
                   }
                 ],
                 "fallbackRepair": "The verb, then 一 + the counting word: 說一遍.",
@@ -88187,11 +92203,11 @@
                   {
                     "traditional": "上來",
                     "simplified": "上来",
-                    "pinyin": "shàng lái"
+                    "pinyin": "shànglái"
                   },
                   {
                     "traditional": "下去",
-                    "pinyin": "xià qù"
+                    "pinyin": "xiàqù"
                   },
                   {
                     "traditional": "寫",
@@ -90800,8 +94816,9 @@
                     "pinyin": "xiāng"
                   },
                   {
-                    "traditional": "的",
-                    "pinyin": "de"
+                    "traditional": "極",
+                    "simplified": "极",
+                    "pinyin": "jí"
                   },
                   {
                     "traditional": "非常",
@@ -90820,12 +94837,12 @@
                   },
                   {
                     "placed": [
-                      "的"
+                      "極"
                     ],
                     "mark": [
-                      "的"
+                      "極"
                     ],
-                    "note": "After a quality, \"extremely\" is written with 得: 臭得很."
+                    "note": "極 needs 了 after it (忙極了). This page's pattern is the quality + 得很."
                   },
                   {
                     "placed": [
@@ -90918,12 +94935,13 @@
                     "pinyin": "yǒukòng"
                   },
                   {
-                    "traditional": "的",
-                    "pinyin": "de"
+                    "traditional": "極",
+                    "simplified": "极",
+                    "pinyin": "jí"
                   },
                   {
                     "traditional": "地",
-                    "pinyin": "dì"
+                    "pinyin": "de"
                   }
                 ],
                 "repairs": [
@@ -90938,12 +94956,12 @@
                   },
                   {
                     "placed": [
-                      "的"
+                      "極"
                     ],
                     "mark": [
-                      "的"
+                      "極"
                     ],
-                    "note": "After a quality, \"extremely\" is written with 得: 忙得很."
+                    "note": "極 needs 了 after it (忙極了). This page's pattern is the quality + 得很."
                   },
                   {
                     "placed": [
@@ -91041,8 +95059,9 @@
                     "pinyin": "sǐ"
                   },
                   {
-                    "traditional": "的",
-                    "pinyin": "de"
+                    "traditional": "極",
+                    "simplified": "极",
+                    "pinyin": "jí"
                   }
                 ],
                 "repairs": [
@@ -91066,12 +95085,12 @@
                   },
                   {
                     "placed": [
-                      "的"
+                      "極"
                     ],
                     "mark": [
-                      "的"
+                      "極"
                     ],
-                    "note": "After a quality, \"extremely\" is written with 得: 聰明得很."
+                    "note": "極 needs 了 after it (忙極了). This page's pattern is the quality + 得很."
                   }
                 ],
                 "fallbackRepair": "The quality first, then 得, then 很: 聰明得很.",
@@ -91852,8 +95871,9 @@
                     "pinyin": "shénme"
                   },
                   {
-                    "traditional": "笛子",
-                    "pinyin": "dízi"
+                    "traditional": "什麼的",
+                    "simplified": "什么的",
+                    "pinyin": "shénme de"
                   },
                   {
                     "traditional": "嗎",
@@ -91868,12 +95888,12 @@
                 "repairs": [
                   {
                     "placed": [
-                      "笛子"
+                      "什麼的"
                     ],
                     "mark": [
-                      "笛子"
+                      "什麼的"
                     ],
-                    "note": "After 得看 comes something still open, as a question: 什麼."
+                    "note": "什麼的 closes a list of examples. Here the open question is 什麼."
                   },
                   {
                     "placed": [
@@ -93362,7 +97382,7 @@
                     "mark": [
                       "游"
                     ],
-                    "note": "The children are not in water. What leads to a fight is pushing each other: 推."
+                    "note": "Swimming about does not lead to a fight. What does is pushing each other: 推."
                   }
                 ],
                 "fallbackRepair": "The verb + 來, then the same verb + 去: 推來推去.",
@@ -93466,7 +97486,7 @@
                   "traditional": "老鼠半夜在廚房裡跑來跑去，趁沒人的時候把食物偷走了。",
                   "simplified": "老鼠半夜在厨房里跑来跑去，趁没人的时候把食物偷走了。",
                   "pinyin": "Lǎoshǔ bànyè zài chúfáng lǐ pǎo lái pǎo qù, chèn méi rén de shíhòu bǎ shíwù tōuzǒu le.",
-                  "english": "Mice run back and forth in the kitchen in the middle of the night and steal the food when no one is around."
+                  "english": "The mice ran back and forth in the kitchen in the middle of the night and stole the food while no one was around."
                 }
               }
             ]
@@ -94291,7 +98311,7 @@
                 "result": {
                   "traditional": "中國人認為最偉大的老師是孔子，沒有人比得上他。",
                   "simplified": "中国人认为最伟大的老师是孔子，没有人比得上他。",
-                  "pinyin": "Zhōngguó rén rènwéi zuì wěidà de lǎoshī shì Kǒngzǐ, méi yǒu rén bǐdeshàng tā.",
+                  "pinyin": "Zhōngguó rén rènwéi zuì wěidà de lǎoshī shì Kǒngzǐ, méiyǒu rén bǐdeshàng tā.",
                   "english": "Chinese people consider Confucius the greatest teacher; nobody can match him."
                 }
               },
@@ -94311,7 +98331,7 @@
                         "type": "slot",
                         "id": "s1",
                         "answers": [
-                          "誰"
+                          "別的國家的人"
                         ]
                       },
                       {
@@ -94329,6 +98349,13 @@
                         ]
                       },
                       {
+                        "type": "slot",
+                        "id": "s4",
+                        "answers": [
+                          "他們"
+                        ]
+                      },
+                      {
                         "type": "text",
                         "traditional": "。"
                       }
@@ -94337,9 +98364,9 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "誰",
-                    "simplified": "谁",
-                    "pinyin": "shéi"
+                    "traditional": "別的國家的人",
+                    "simplified": "别的国家的人",
+                    "pinyin": "biéde guójiā de rén"
                   },
                   {
                     "traditional": "都",
@@ -94348,6 +98375,11 @@
                   {
                     "traditional": "比不上",
                     "pinyin": "bǐbúshàng"
+                  },
+                  {
+                    "traditional": "他們",
+                    "simplified": "他们",
+                    "pinyin": "tāmen"
                   },
                   {
                     "traditional": "比得上",
@@ -94366,7 +98398,7 @@
                     "mark": [
                       "比得上"
                     ],
-                    "note": "She thinks they are the best, so nobody matches them: 比不上."
+                    "note": "She thinks they are the best, so the others cannot match them: 比不上."
                   },
                   {
                     "placed": [
@@ -94375,15 +98407,15 @@
                     "mark": [
                       "才"
                     ],
-                    "note": "After 誰, \"nobody\" takes 都: 誰都比不上."
+                    "note": "This says nobody else matches them, so it takes 都, not 才."
                   }
                 ],
-                "fallbackRepair": "誰 first, then 都, then 比不上.",
+                "fallbackRepair": "The others first, then 都, then 比不上, then the ones they are compared with.",
                 "result": {
-                  "traditional": "李小姐覺得非洲人跳舞跳得最棒，誰都比不上。",
-                  "simplified": "李小姐觉得非洲人跳舞跳得最棒，谁都比不上。",
-                  "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, shéi dōu bǐbúshàng.",
-                  "english": "Miss Li thinks Africans are the best dancers; nobody can match them."
+                  "traditional": "李小姐覺得非洲人跳舞跳得最棒，別的國家的人都比不上他們。",
+                  "simplified": "李小姐觉得非洲人跳舞跳得最棒，别的国家的人都比不上他们。",
+                  "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, biéde guójiā de rén dōu bǐbúshàng tāmen.",
+                  "english": "Miss Li thinks Africans are the best dancers; people from other countries can't match them."
                 }
               }
             ]
@@ -95215,8 +99247,8 @@
                     "pinyin": "bù nǔlì"
                   },
                   {
-                    "traditional": "只是",
-                    "pinyin": "zhǐ shì"
+                    "traditional": "只好",
+                    "pinyin": "zhǐhǎo"
                   }
                 ],
                 "repairs": [
@@ -95240,12 +99272,12 @@
                   },
                   {
                     "placed": [
-                      "只是"
+                      "只好"
                     ],
                     "mark": [
-                      "只是"
+                      "只好"
                     ],
-                    "note": "只是 means \"only\" or \"just\". The one condition for a result opens with 只有."
+                    "note": "只好 means having no other choice. The one condition for a result opens with 只有."
                   }
                 ],
                 "fallbackRepair": "只有 before the one condition, 才 before the result.",

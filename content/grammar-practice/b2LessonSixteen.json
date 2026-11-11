@@ -81,8 +81,9 @@
             "pinyin": "xiāng"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "極",
+            "simplified": "极",
+            "pinyin": "jí"
           },
           {
             "traditional": "非常",
@@ -101,12 +102,12 @@
           },
           {
             "placed": [
-              "的"
+              "極"
             ],
             "mark": [
-              "的"
+              "極"
             ],
-            "note": "After a quality, \"extremely\" is written with 得: 臭得很."
+            "note": "極 needs 了 after it (忙極了). This page's pattern is the quality + 得很."
           },
           {
             "placed": [
@@ -199,12 +200,13 @@
             "pinyin": "yǒukòng"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "極",
+            "simplified": "极",
+            "pinyin": "jí"
           },
           {
             "traditional": "地",
-            "pinyin": "dì"
+            "pinyin": "de"
           }
         ],
         "repairs": [
@@ -219,12 +221,12 @@
           },
           {
             "placed": [
-              "的"
+              "極"
             ],
             "mark": [
-              "的"
+              "極"
             ],
-            "note": "After a quality, \"extremely\" is written with 得: 忙得很."
+            "note": "極 needs 了 after it (忙極了). This page's pattern is the quality + 得很."
           },
           {
             "placed": [
@@ -322,8 +324,9 @@
             "pinyin": "sǐ"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "極",
+            "simplified": "极",
+            "pinyin": "jí"
           }
         ],
         "repairs": [
@@ -347,12 +350,12 @@
           },
           {
             "placed": [
-              "的"
+              "極"
             ],
             "mark": [
-              "的"
+              "極"
             ],
-            "note": "After a quality, \"extremely\" is written with 得: 聰明得很."
+            "note": "極 needs 了 after it (忙極了). This page's pattern is the quality + 得很."
           }
         ],
         "fallbackRepair": "The quality first, then 得, then 很: 聰明得很.",
@@ -645,8 +648,9 @@
             "pinyin": "shénme"
           },
           {
-            "traditional": "笛子",
-            "pinyin": "dízi"
+            "traditional": "什麼的",
+            "simplified": "什么的",
+            "pinyin": "shénme de"
           },
           {
             "traditional": "嗎",
@@ -661,12 +665,12 @@
         "repairs": [
           {
             "placed": [
-              "笛子"
+              "什麼的"
             ],
             "mark": [
-              "笛子"
+              "什麼的"
             ],
-            "note": "After 得看 comes something still open, as a question: 什麼."
+            "note": "什麼的 closes a list of examples. Here the open question is 什麼."
           },
           {
             "placed": [
@@ -1390,7 +1394,7 @@
             "mark": [
               "游"
             ],
-            "note": "The children are not in water. What leads to a fight is pushing each other: 推."
+            "note": "Swimming about does not lead to a fight. What does is pushing each other: 推."
           }
         ],
         "fallbackRepair": "The verb + 來, then the same verb + 去: 推來推去.",
@@ -1494,7 +1498,7 @@
           "traditional": "老鼠半夜在廚房裡跑來跑去，趁沒人的時候把食物偷走了。",
           "simplified": "老鼠半夜在厨房里跑来跑去，趁没人的时候把食物偷走了。",
           "pinyin": "Lǎoshǔ bànyè zài chúfáng lǐ pǎo lái pǎo qù, chèn méi rén de shíhòu bǎ shíwù tōuzǒu le.",
-          "english": "Mice run back and forth in the kitchen in the middle of the night and steal the food when no one is around."
+          "english": "The mice ran back and forth in the kitchen in the middle of the night and stole the food while no one was around."
         }
       }
     ]
@@ -1707,7 +1711,7 @@
         "result": {
           "traditional": "中國人認為最偉大的老師是孔子，沒有人比得上他。",
           "simplified": "中国人认为最伟大的老师是孔子，没有人比得上他。",
-          "pinyin": "Zhōngguó rén rènwéi zuì wěidà de lǎoshī shì Kǒngzǐ, méi yǒu rén bǐdeshàng tā.",
+          "pinyin": "Zhōngguó rén rènwéi zuì wěidà de lǎoshī shì Kǒngzǐ, méiyǒu rén bǐdeshàng tā.",
           "english": "Chinese people consider Confucius the greatest teacher; nobody can match him."
         }
       },
@@ -1727,7 +1731,7 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "誰"
+                  "別的國家的人"
                 ]
               },
               {
@@ -1745,6 +1749,13 @@
                 ]
               },
               {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "他們"
+                ]
+              },
+              {
                 "type": "text",
                 "traditional": "。"
               }
@@ -1753,9 +1764,9 @@
         ],
         "tiles": [
           {
-            "traditional": "誰",
-            "simplified": "谁",
-            "pinyin": "shéi"
+            "traditional": "別的國家的人",
+            "simplified": "别的国家的人",
+            "pinyin": "biéde guójiā de rén"
           },
           {
             "traditional": "都",
@@ -1764,6 +1775,11 @@
           {
             "traditional": "比不上",
             "pinyin": "bǐbúshàng"
+          },
+          {
+            "traditional": "他們",
+            "simplified": "他们",
+            "pinyin": "tāmen"
           },
           {
             "traditional": "比得上",
@@ -1782,7 +1798,7 @@
             "mark": [
               "比得上"
             ],
-            "note": "She thinks they are the best, so nobody matches them: 比不上."
+            "note": "She thinks they are the best, so the others cannot match them: 比不上."
           },
           {
             "placed": [
@@ -1791,15 +1807,15 @@
             "mark": [
               "才"
             ],
-            "note": "After 誰, \"nobody\" takes 都: 誰都比不上."
+            "note": "This says nobody else matches them, so it takes 都, not 才."
           }
         ],
-        "fallbackRepair": "誰 first, then 都, then 比不上.",
+        "fallbackRepair": "The others first, then 都, then 比不上, then the ones they are compared with.",
         "result": {
-          "traditional": "李小姐覺得非洲人跳舞跳得最棒，誰都比不上。",
-          "simplified": "李小姐觉得非洲人跳舞跳得最棒，谁都比不上。",
-          "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, shéi dōu bǐbúshàng.",
-          "english": "Miss Li thinks Africans are the best dancers; nobody can match them."
+          "traditional": "李小姐覺得非洲人跳舞跳得最棒，別的國家的人都比不上他們。",
+          "simplified": "李小姐觉得非洲人跳舞跳得最棒，别的国家的人都比不上他们。",
+          "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, biéde guójiā de rén dōu bǐbúshàng tāmen.",
+          "english": "Miss Li thinks Africans are the best dancers; people from other countries can't match them."
         }
       }
     ]
@@ -2121,8 +2137,8 @@
             "pinyin": "bù nǔlì"
           },
           {
-            "traditional": "只是",
-            "pinyin": "zhǐ shì"
+            "traditional": "只好",
+            "pinyin": "zhǐhǎo"
           }
         ],
         "repairs": [
@@ -2146,12 +2162,12 @@
           },
           {
             "placed": [
-              "只是"
+              "只好"
             ],
             "mark": [
-              "只是"
+              "只好"
             ],
-            "note": "只是 means \"only\" or \"just\". The one condition for a result opens with 只有."
+            "note": "只好 means having no other choice. The one condition for a result opens with 只有."
           }
         ],
         "fallbackRepair": "只有 before the one condition, 才 before the result.",

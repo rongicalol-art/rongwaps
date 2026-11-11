@@ -84,8 +84,8 @@
             "pinyin": "ma"
           },
           {
-            "traditional": "可是",
-            "pinyin": "kěshì"
+            "traditional": "可能",
+            "pinyin": "kěnéng"
           }
         ],
         "repairs": [
@@ -96,7 +96,7 @@
             "mark": [
               "可以"
             ],
-            "note": "可以 means \"may\" or \"can\". The single word that adds force before a quality is 可."
+            "note": "可以 means \"may\" or \"can\". Here the word that adds force before the quality is 可."
           },
           {
             "placed": [
@@ -109,12 +109,12 @@
           },
           {
             "placed": [
-              "可是"
+              "可能"
             ],
             "mark": [
-              "可是"
+              "可能"
             ],
-            "note": "可是 means \"but\". The single word that adds force before a quality is 可."
+            "note": "可能 means \"maybe\". B is sure, so the word that adds force before the quality is 可."
           }
         ],
         "fallbackRepair": "可 before the quality, and 呢 at the very end: 可好吃呢！",
@@ -334,7 +334,7 @@
             "mark": [
               "可以"
             ],
-            "note": "可以 means \"may\" or \"can\". The single word that adds force before a quality is 可."
+            "note": "可以 means \"may\" or \"can\". Here the word that adds force before the quality is 可."
           },
           {
             "placed": [
@@ -667,7 +667,7 @@
             "mark": [
               "聽"
             ],
-            "note": "The teacher is the one who explains. The student listens: 我再說一遍."
+            "note": "The teacher is the one who explains, so the teacher says it once more: 我再說一遍."
           }
         ],
         "fallbackRepair": "The verb, then 一 + the counting word: 說一遍.",
@@ -730,11 +730,11 @@
           {
             "traditional": "上來",
             "simplified": "上来",
-            "pinyin": "shàng lái"
+            "pinyin": "shànglái"
           },
           {
             "traditional": "下去",
-            "pinyin": "xià qù"
+            "pinyin": "xiàqù"
           },
           {
             "traditional": "寫",
