@@ -1,6 +1,6 @@
 # Ron's Mandarin Docs Index
 
-Single routing table. Read only the row that matches the task. `../AGENTS.md` (core rules) and `../.claude/rules/` (path-scoped rules) load automatically.
+Single routing table. Read only the row that matches the task. `../AGENTS.md` (core rules) loads automatically; `../.claude/rules/` (path-scoped rules) load automatically for Claude, and Codex reads the one matching its task.
 
 ## Task Routing
 
@@ -29,7 +29,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 ## Active Docs
 
 - `../README.md` — project overview and local development.
-- `../.claude/OWNER_PREFERENCES.md` — the owner's taste, learning rules and working style; tool-neutral brief for any AI.
+- `../.claude/OWNER_PREFERENCES.md` — the owner's taste and learning rules; the one home for design corrections, for any AI.
 - `DECISIONS.md` — recent architectural, interaction and design decisions that must stay stable.
 - `WIDGETS.md` — public shared widget catalog mirroring `src/lib/widgets/index.ts`.
 - `ARCHITECTURE.md` — source layout, module boundaries, ESLint import restrictions, component ownership.

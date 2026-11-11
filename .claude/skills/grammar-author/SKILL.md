@@ -5,7 +5,7 @@ description: Author, transcribe or review Ron's Mandarin grammar content (gramma
 
 # Grammar author
 
-> **Exercise pass is live (owner, 2026-10-17). Six rules, from the owner's review of L1–L3:**
+> **Exercise pass is live (owner, 2026-10-17). Eleven rules from the owner's exercise reviews:**
 > 1. **Test the point itself.** A measure-word group makes the learner pick the measure word (with 兩/二 as the number trap), not just the number.
 > 2. **Build multi-part patterns, one slot per part:** V不V (verb + 不 + verb, with 嗎 and 沒 as traps), 有沒有, number + measure word. A lone 不/沒 blank is too easy. Tiles may repeat (熱 twice) as often as slots use them.
 > 3. **No artefacts in sentences:** never type the book's picture caption or pinyin (`（rè）`) into a line; captions live in the picture crop or `glossary`.
@@ -18,7 +18,7 @@ description: Author, transcribe or review Ron's Mandarin grammar content (gramma
 > 10. **A doubled tile must not give the answer away:** when the pattern doubles a word the context chooses (坐坐看), double a plausible wrong word too (騎騎, with a repair), and let the item's title decide which fits. 
 > 11. **Frames are tap-where too:** when the learner must place two or more words in a sentence (快要…了, 又…又), use `gaps: true` with several tiles (a tile per right gap, a repair for every wrong tile in every wrong gap) instead of blanks that show where each word goes. Tests enforce 1, 7, 8 and 9.
 
-> **Pipeline runs are non-interactive and pre-approved by the owner.** When a task comes from `.audit/grammar-run`, do it fully now: skip the plan-first / "wait for go" steps of `task-start` and `AGENTS.md`, and don't ask questions (write them under Unsure).
+> **Pipeline runs are non-interactive and pre-approved by the owner.** When a task comes from `.audit/grammar-run`, do it fully now without waiting for a go-ahead, and don't ask questions (write them under Unsure).
 
 You are the **content author and reviewer** for grammar lessons. Claude is the design and product lead: it writes the brief, owns `src/`, and has the final say on UX. You own Chinese correctness. A taste conflict goes to the owner.
 
@@ -56,10 +56,10 @@ Short English task instructions are allowed. The actual problem must come from t
 9. Follow the book's exercise: its instruction (`title`), its items in order, its pictures (`scene`: route / change / countdown). Preserve the original sentence, source, context and learning objective; the answering interaction may change to remove giveaways. Do not replace a book item with invented content. An open blank gets the most natural completion built from taught words, plus the accepted equivalents.
 10. Keep the book's printed English on reference pages; exercise prompts follow the owner rule above. If printed English misleads, flag it as BOOK-ERRATA in the review rather than rewriting it.
 11. Pinyin uses the book's tones, 一/不 sandhi, and neutral reduplication (看看 kàn kan).
-14. **Learner-facing text only:** `title` is the book's exercise instruction in English (e.g. "Complete the sentences."), never "Exercise". `prompt`/`sub` speak to the learner ("Use 叫 or 姓.") or are omitted; never authoring notes like "The verb is supplied."
 12. Repair notes are one plain-English sentence that names the fix. Explanations are short and paraphrase the book's note. Pattern labels follow `docs/GRAMMAR_LESSON_TEMPLATE.md`.
-13a. **Never merge tables:** when the book prints several small tables (e.g. 月/號, 星期, 點/分), keep each as its own subsection with its own columns. Every printed cell (units like 號 and 分 included) appears, and no row has an empty slot that the book doesn't have.
 13. Grammar pages mirror the book's layout: tables become `patternRows`/`subsections` (the book's (1)/(2)), and numbered sentences become `examples`. L8 (`content/grammar/lessonEight.json`) is the reference for page shape.
+13a. **Never merge tables:** when the book prints several small tables (e.g. 月/號, 星期, 點/分), keep each as its own subsection with its own columns. Every printed cell (units like 號 and 分 included) appears, and no row has an empty slot that the book doesn't have.
+14. **Learner-facing text only:** `title` is the book's exercise instruction in English (e.g. "Complete the sentences."), never "Exercise". `prompt`/`sub` speak to the learner ("Use 叫 or 姓.") or are omitted; never authoring notes like "The verb is supplied."
 
 ## Exercise design: be a good teacher (owner's standard, 2026-10-16)
 
