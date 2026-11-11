@@ -2985,33 +2985,40 @@
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "自己的名字"
+                  "自己的"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "寫"
+                  "名字"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "得"
+                  "寫"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s5",
                 "answers": [
-                  "那麼"
+                  "得"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s6",
+                "answers": [
+                  "那麼"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s7",
                 "answers": [
                   "難看"
                 ]
@@ -3029,8 +3036,12 @@
             "pinyin": "bǎ"
           },
           {
-            "traditional": "自己的名字",
-            "pinyin": "zìjǐ de míngzi"
+            "traditional": "自己的",
+            "pinyin": "zìjǐ de"
+          },
+          {
+            "traditional": "名字",
+            "pinyin": "míngzi"
           },
           {
             "traditional": "寫",
@@ -3098,26 +3109,40 @@
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "新家的客廳"
+                  "新家"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "弄"
+                  "的"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "得"
+                  "客廳"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s5",
+                "answers": [
+                  "弄"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s6",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s7",
                 "answers": [
                   "很漂亮"
                 ]
@@ -3135,9 +3160,17 @@
             "pinyin": "bǎ"
           },
           {
-            "traditional": "新家的客廳",
-            "simplified": "新家的客厅",
-            "pinyin": "xīn jiā de kètīng"
+            "traditional": "新家",
+            "pinyin": "xīn jiā"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "客廳",
+            "simplified": "客厅",
+            "pinyin": "kètīng"
           },
           {
             "traditional": "弄",
@@ -3152,23 +3185,17 @@
             "pinyin": "hěn piàoliàng"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
             "traditional": "了",
             "pinyin": "le"
           }
         ],
         "repairs": [
           {
-            "placed": [
+            "before": [
+              "得",
               "的"
             ],
-            "mark": [
-              "的"
-            ],
-            "note": "Between a verb and how it turned out, the particle is 得, not 的: 弄得很漂亮."
+            "note": "的 links 新家 to 客廳; 得 links the verb to how it turned out: 新家的客廳弄得很漂亮."
           },
           {
             "placed": [

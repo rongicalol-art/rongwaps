@@ -1627,14 +1627,14 @@
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "我考試考得"
+                  "我考試"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "不好"
+                  "考得不好"
                 ]
               },
               {
@@ -1670,13 +1670,13 @@
             "pinyin": "dāng"
           },
           {
-            "traditional": "我考試考得",
-            "simplified": "我考试考得",
-            "pinyin": "wǒ kǎoshì kǎo de"
+            "traditional": "我考試",
+            "simplified": "我考试",
+            "pinyin": "wǒ kǎoshì"
           },
           {
-            "traditional": "不好",
-            "pinyin": "bù hǎo"
+            "traditional": "考得不好",
+            "pinyin": "kǎo de bù hǎo"
           },
           {
             "traditional": "的時候",
@@ -1688,8 +1688,8 @@
             "pinyin": "jiù"
           },
           {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
+            "traditional": "考得很好",
+            "pinyin": "kǎo de hěn hǎo"
           },
           {
             "traditional": "從",
@@ -1705,10 +1705,10 @@
         "repairs": [
           {
             "placed": [
-              "很好"
+              "考得很好"
             ],
             "mark": [
-              "很好"
+              "考得很好"
             ],
             "note": "A good result does not make a person sad. A bad one does: 考得不好."
           },

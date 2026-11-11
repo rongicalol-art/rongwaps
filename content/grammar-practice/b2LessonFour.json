@@ -173,8 +173,12 @@
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "那本中文書的"
+                  "那本中文書"
                 ]
+              },
+              {
+                "type": "text",
+                "traditional": "的"
               },
               {
                 "type": "slot",
@@ -200,9 +204,9 @@
             "pinyin": "zài"
           },
           {
-            "traditional": "那本中文書的",
-            "simplified": "那本中文书的",
-            "pinyin": "nà běn Zhōngwén shū de"
+            "traditional": "那本中文書",
+            "simplified": "那本中文书",
+            "pinyin": "nà běn Zhōngwén shū"
           },
           {
             "traditional": "旁邊",
@@ -3332,22 +3336,20 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s3",
-                "answers": [
-                  "學中文"
-                ]
+                "type": "text",
+                "traditional": "學中文",
+                "simplified": "学中文"
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "越來越"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s5",
+                "id": "s4",
                 "answers": [
                   "有興趣"
                 ]
@@ -3368,11 +3370,6 @@
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
-          },
-          {
-            "traditional": "學中文",
-            "simplified": "学中文",
-            "pinyin": "xué Zhōngwén"
           },
           {
             "traditional": "越來越",
@@ -3428,7 +3425,7 @@
             "note": "跟 means \"with\". What someone is interested in comes after 對."
           }
         ],
-        "fallbackRepair": "The person first, then 對 + the activity, then 越來越, then 有興趣.",
+        "fallbackRepair": "The person first, then 對 before the activity; after it 越來越, then 有興趣.",
         "result": {
           "traditional": "山本良介對學中文越來越有興趣。",
           "simplified": "山本良介对学中文越来越有兴趣。",

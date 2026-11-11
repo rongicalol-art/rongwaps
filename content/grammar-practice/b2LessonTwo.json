@@ -845,21 +845,21 @@
         "repairs": [
           {
             "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "把價錢查了 is also good Chinese, but this exercise practises verb + 一 + verb: 把價錢查一查."
+          },
+          {
+            "placed": [
               "不"
             ],
             "mark": [
               "不"
             ],
             "note": "This is a plan, not a question. A softened action repeats the verb around 一: 查一查."
-          },
-          {
-            "placed": [
-              "了"
-            ],
-            "mark": [
-              "了"
-            ],
-            "note": "The speaker describes what comes before buying, not something already done: 查一查."
           }
         ],
         "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把價錢查一查.",
@@ -965,21 +965,21 @@
         "repairs": [
           {
             "placed": [
+              "完"
+            ],
+            "mark": [
+              "完"
+            ],
+            "note": "把功課寫完 is also good Chinese, but this exercise practises verb + 一 + verb: 把功課寫一寫."
+          },
+          {
+            "placed": [
               "不"
             ],
             "mark": [
               "不"
             ],
             "note": "This is an instruction, not a question. A softened action repeats the verb around 一: 寫一寫."
-          },
-          {
-            "placed": [
-              "完"
-            ],
-            "mark": [
-              "完"
-            ],
-            "note": "The teacher softens the instruction by repeating the verb around 一: 寫一寫."
           }
         ],
         "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把功課寫一寫.",

@@ -339,15 +339,12 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s2",
-                "answers": [
-                  "在家"
-                ]
+                "type": "text",
+                "traditional": "在家"
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "休息"
                 ]
@@ -363,10 +360,6 @@
           {
             "traditional": "最好",
             "pinyin": "zuìhǎo"
-          },
-          {
-            "traditional": "在家",
-            "pinyin": "zài jiā"
           },
           {
             "traditional": "休息",
@@ -407,8 +400,7 @@
           "traditional": "那你最好在家休息。",
           "pinyin": "Nà nǐ zuìhǎo zài jiā xiūxí.",
           "english": "Then you had better rest at home."
-        },
-        "free": true
+        }
       },
       {
         "id": "b2l1g2-2",
@@ -2485,7 +2477,7 @@
             "traditional": "這個房子雖然很小，可是很便宜。",
             "simplified": "这个房子虽然很小，可是很便宜。",
             "pinyin": "Zhège fángzi suīrán hěn xiǎo, kěshì hěn piányí.",
-            "english": "Although this house is small, it is very cheap."
+            "english": "Although this house is small, it is cheap."
           }
         ],
         "free": true

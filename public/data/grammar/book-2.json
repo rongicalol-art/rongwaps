@@ -1200,15 +1200,12 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s2",
-                        "answers": [
-                          "在家"
-                        ]
+                        "type": "text",
+                        "traditional": "在家"
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "休息"
                         ]
@@ -1224,10 +1221,6 @@
                   {
                     "traditional": "最好",
                     "pinyin": "zuìhǎo"
-                  },
-                  {
-                    "traditional": "在家",
-                    "pinyin": "zài jiā"
                   },
                   {
                     "traditional": "休息",
@@ -1268,8 +1261,7 @@
                   "traditional": "那你最好在家休息。",
                   "pinyin": "Nà nǐ zuìhǎo zài jiā xiūxí.",
                   "english": "Then you had better rest at home."
-                },
-                "free": true
+                }
               },
               {
                 "id": "b2l1g2-2",
@@ -6044,7 +6036,7 @@
                     "traditional": "這個房子雖然很小，可是很便宜。",
                     "simplified": "这个房子虽然很小，可是很便宜。",
                     "pinyin": "Zhège fángzi suīrán hěn xiǎo, kěshì hěn piányí.",
-                    "english": "Although this house is small, it is very cheap."
+                    "english": "Although this house is small, it is cheap."
                   }
                 ],
                 "free": true
@@ -9368,21 +9360,21 @@
                 "repairs": [
                   {
                     "placed": [
+                      "了"
+                    ],
+                    "mark": [
+                      "了"
+                    ],
+                    "note": "把價錢查了 is also good Chinese, but this exercise practises verb + 一 + verb: 把價錢查一查."
+                  },
+                  {
+                    "placed": [
                       "不"
                     ],
                     "mark": [
                       "不"
                     ],
                     "note": "This is a plan, not a question. A softened action repeats the verb around 一: 查一查."
-                  },
-                  {
-                    "placed": [
-                      "了"
-                    ],
-                    "mark": [
-                      "了"
-                    ],
-                    "note": "The speaker describes what comes before buying, not something already done: 查一查."
                   }
                 ],
                 "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把價錢查一查.",
@@ -9488,21 +9480,21 @@
                 "repairs": [
                   {
                     "placed": [
+                      "完"
+                    ],
+                    "mark": [
+                      "完"
+                    ],
+                    "note": "把功課寫完 is also good Chinese, but this exercise practises verb + 一 + verb: 把功課寫一寫."
+                  },
+                  {
+                    "placed": [
                       "不"
                     ],
                     "mark": [
                       "不"
                     ],
                     "note": "This is an instruction, not a question. A softened action repeats the verb around 一: 寫一寫."
-                  },
-                  {
-                    "placed": [
-                      "完"
-                    ],
-                    "mark": [
-                      "完"
-                    ],
-                    "note": "The teacher softens the instruction by repeating the verb around 一: 寫一寫."
                   }
                 ],
                 "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把功課寫一寫.",
@@ -24567,33 +24559,40 @@
                         "type": "slot",
                         "id": "s2",
                         "answers": [
-                          "自己的名字"
+                          "自己的"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s3",
                         "answers": [
-                          "寫"
+                          "名字"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s4",
                         "answers": [
-                          "得"
+                          "寫"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s5",
                         "answers": [
-                          "那麼"
+                          "得"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s6",
+                        "answers": [
+                          "那麼"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s7",
                         "answers": [
                           "難看"
                         ]
@@ -24611,8 +24610,12 @@
                     "pinyin": "bǎ"
                   },
                   {
-                    "traditional": "自己的名字",
-                    "pinyin": "zìjǐ de míngzi"
+                    "traditional": "自己的",
+                    "pinyin": "zìjǐ de"
+                  },
+                  {
+                    "traditional": "名字",
+                    "pinyin": "míngzi"
                   },
                   {
                     "traditional": "寫",
@@ -24680,26 +24683,40 @@
                         "type": "slot",
                         "id": "s2",
                         "answers": [
-                          "新家的客廳"
+                          "新家"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s3",
                         "answers": [
-                          "弄"
+                          "的"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s4",
                         "answers": [
-                          "得"
+                          "客廳"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s5",
+                        "answers": [
+                          "弄"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s6",
+                        "answers": [
+                          "得"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s7",
                         "answers": [
                           "很漂亮"
                         ]
@@ -24717,9 +24734,17 @@
                     "pinyin": "bǎ"
                   },
                   {
-                    "traditional": "新家的客廳",
-                    "simplified": "新家的客厅",
-                    "pinyin": "xīn jiā de kètīng"
+                    "traditional": "新家",
+                    "pinyin": "xīn jiā"
+                  },
+                  {
+                    "traditional": "的",
+                    "pinyin": "de"
+                  },
+                  {
+                    "traditional": "客廳",
+                    "simplified": "客厅",
+                    "pinyin": "kètīng"
                   },
                   {
                     "traditional": "弄",
@@ -24734,23 +24759,17 @@
                     "pinyin": "hěn piàoliàng"
                   },
                   {
-                    "traditional": "的",
-                    "pinyin": "de"
-                  },
-                  {
                     "traditional": "了",
                     "pinyin": "le"
                   }
                 ],
                 "repairs": [
                   {
-                    "placed": [
+                    "before": [
+                      "得",
                       "的"
                     ],
-                    "mark": [
-                      "的"
-                    ],
-                    "note": "Between a verb and how it turned out, the particle is 得, not 的: 弄得很漂亮."
+                    "note": "的 links 新家 to 客廳; 得 links the verb to how it turned out: 新家的客廳弄得很漂亮."
                   },
                   {
                     "placed": [
@@ -25756,8 +25775,12 @@
                         "type": "slot",
                         "id": "s3",
                         "answers": [
-                          "那本中文書的"
+                          "那本中文書"
                         ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "的"
                       },
                       {
                         "type": "slot",
@@ -25783,9 +25806,9 @@
                     "pinyin": "zài"
                   },
                   {
-                    "traditional": "那本中文書的",
-                    "simplified": "那本中文书的",
-                    "pinyin": "nà běn Zhōngwén shū de"
+                    "traditional": "那本中文書",
+                    "simplified": "那本中文书",
+                    "pinyin": "nà běn Zhōngwén shū"
                   },
                   {
                     "traditional": "旁邊",
@@ -32433,22 +32456,20 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s3",
-                        "answers": [
-                          "學中文"
-                        ]
+                        "type": "text",
+                        "traditional": "學中文",
+                        "simplified": "学中文"
                       },
                       {
                         "type": "slot",
-                        "id": "s4",
+                        "id": "s3",
                         "answers": [
                           "越來越"
                         ]
                       },
                       {
                         "type": "slot",
-                        "id": "s5",
+                        "id": "s4",
                         "answers": [
                           "有興趣"
                         ]
@@ -32469,11 +32490,6 @@
                     "traditional": "對",
                     "simplified": "对",
                     "pinyin": "duì"
-                  },
-                  {
-                    "traditional": "學中文",
-                    "simplified": "学中文",
-                    "pinyin": "xué Zhōngwén"
                   },
                   {
                     "traditional": "越來越",
@@ -32529,7 +32545,7 @@
                     "note": "跟 means \"with\". What someone is interested in comes after 對."
                   }
                 ],
-                "fallbackRepair": "The person first, then 對 + the activity, then 越來越, then 有興趣.",
+                "fallbackRepair": "The person first, then 對 before the activity; after it 越來越, then 有興趣.",
                 "result": {
                   "traditional": "山本良介對學中文越來越有興趣。",
                   "simplified": "山本良介对学中文越来越有兴趣。",
@@ -37639,11 +37655,14 @@
                         ]
                       },
                       {
+                        "type": "text",
+                        "traditional": "在草地上"
+                      },
+                      {
                         "type": "slot",
                         "id": "s2",
                         "answers": [
-                          "在草地上野餐",
-                          "去球場打球"
+                          "野餐"
                         ]
                       },
                       {
@@ -37658,11 +37677,15 @@
                         ]
                       },
                       {
+                        "type": "text",
+                        "traditional": "去球場",
+                        "simplified": "去球场"
+                      },
+                      {
                         "type": "slot",
                         "id": "s4",
                         "answers": [
-                          "去球場打球",
-                          "在草地上野餐"
+                          "打球"
                         ]
                       },
                       {
@@ -37684,18 +37707,16 @@
                     "pinyin": "yǒushíhòu"
                   },
                   {
-                    "traditional": "在草地上野餐",
-                    "pinyin": "zài cǎodì shàng yěcān"
+                    "traditional": "野餐",
+                    "pinyin": "yěcān"
                   },
                   {
-                    "traditional": "去球場打球",
-                    "simplified": "去球场打球",
-                    "pinyin": "qù qiúchǎng dǎqiú"
+                    "traditional": "打球",
+                    "pinyin": "dǎqiú"
                   },
                   {
-                    "traditional": "去球場游泳",
-                    "simplified": "去球场游泳",
-                    "pinyin": "qù qiúchǎng yóuyǒng"
+                    "traditional": "游泳",
+                    "pinyin": "yóuyǒng"
                   },
                   {
                     "traditional": "一邊",
@@ -37706,10 +37727,10 @@
                 "repairs": [
                   {
                     "placed": [
-                      "去球場游泳"
+                      "游泳"
                     ],
                     "mark": [
-                      "去球場游泳"
+                      "游泳"
                     ],
                     "note": "People swim in a pool (游泳池), not on a lawn or a ball court."
                   },
@@ -37723,22 +37744,13 @@
                     "note": "一邊 comes in pairs and means two things done at the same moment. Things done at different times take 有時候…，有時候…."
                   }
                 ],
-                "fallbackRepair": "有時候 before each of the two activities.",
+                "fallbackRepair": "有時候 before each place; a picnic goes with the lawn, and ball games with the ball court.",
                 "result": {
                   "traditional": "他們有時候在草地上野餐，有時候去球場打球。",
                   "simplified": "他们有时候在草地上野餐，有时候去球场打球。",
                   "pinyin": "Tāmen yǒushíhòu zài cǎodì shàng yěcān, yǒushíhòu qù qiúchǎng dǎqiú.",
                   "english": "Sometimes they have picnics on the lawn, and sometimes they go to the ball court to play ball."
-                },
-                "alternatives": [
-                  {
-                    "traditional": "他們有時候去球場打球，有時候在草地上野餐。",
-                    "simplified": "他们有时候去球场打球，有时候在草地上野餐。",
-                    "pinyin": "Tāmen yǒushíhòu qù qiúchǎng dǎqiú, yǒushíhòu zài cǎodì shàng yěcān.",
-                    "english": "Sometimes they go to the ball court to play ball, and sometimes they have picnics on the lawn."
-                  }
-                ],
-                "free": true
+                }
               }
             ]
           },
@@ -40065,7 +40077,16 @@
                         "type": "slot",
                         "id": "s4",
                         "answers": [
-                          "一次網球"
+                          "一次",
+                          "網球"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s5",
+                        "answers": [
+                          "網球",
+                          "一次"
                         ]
                       },
                       {
@@ -40090,9 +40111,13 @@
                     "pinyin": "dǎ"
                   },
                   {
-                    "traditional": "一次網球",
-                    "simplified": "一次网球",
-                    "pinyin": "yí cì wǎngqiú"
+                    "traditional": "一次",
+                    "pinyin": "yí cì"
+                  },
+                  {
+                    "traditional": "網球",
+                    "simplified": "网球",
+                    "pinyin": "wǎngqiú"
                   },
                   {
                     "traditional": "第",
@@ -40130,6 +40155,14 @@
                   "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ yí cì wǎngqiú.",
                   "english": "Mr. Zhang plays tennis once every week."
                 },
+                "alternatives": [
+                  {
+                    "traditional": "張先生每一個禮拜打網球一次。",
+                    "simplified": "张先生每一个礼拜打网球一次。",
+                    "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ wǎngqiú yí cì.",
+                    "english": "Mr. Zhang plays tennis once every week."
+                  }
+                ],
                 "free": true
               },
               {
@@ -99518,14 +99551,14 @@
                         "type": "slot",
                         "id": "s2",
                         "answers": [
-                          "我考試考得"
+                          "我考試"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s3",
                         "answers": [
-                          "不好"
+                          "考得不好"
                         ]
                       },
                       {
@@ -99561,13 +99594,13 @@
                     "pinyin": "dāng"
                   },
                   {
-                    "traditional": "我考試考得",
-                    "simplified": "我考试考得",
-                    "pinyin": "wǒ kǎoshì kǎo de"
+                    "traditional": "我考試",
+                    "simplified": "我考试",
+                    "pinyin": "wǒ kǎoshì"
                   },
                   {
-                    "traditional": "不好",
-                    "pinyin": "bù hǎo"
+                    "traditional": "考得不好",
+                    "pinyin": "kǎo de bù hǎo"
                   },
                   {
                     "traditional": "的時候",
@@ -99579,8 +99612,8 @@
                     "pinyin": "jiù"
                   },
                   {
-                    "traditional": "很好",
-                    "pinyin": "hěn hǎo"
+                    "traditional": "考得很好",
+                    "pinyin": "kǎo de hěn hǎo"
                   },
                   {
                     "traditional": "從",
@@ -99596,10 +99629,10 @@
                 "repairs": [
                   {
                     "placed": [
-                      "很好"
+                      "考得很好"
                     ],
                     "mark": [
-                      "很好"
+                      "考得很好"
                     ],
                     "note": "A good result does not make a person sad. A bad one does: 考得不好."
                   },

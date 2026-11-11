@@ -1758,11 +1758,14 @@
                 ]
               },
               {
+                "type": "text",
+                "traditional": "在草地上"
+              },
+              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "在草地上野餐",
-                  "去球場打球"
+                  "野餐"
                 ]
               },
               {
@@ -1777,11 +1780,15 @@
                 ]
               },
               {
+                "type": "text",
+                "traditional": "去球場",
+                "simplified": "去球场"
+              },
+              {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "去球場打球",
-                  "在草地上野餐"
+                  "打球"
                 ]
               },
               {
@@ -1803,18 +1810,16 @@
             "pinyin": "yǒushíhòu"
           },
           {
-            "traditional": "在草地上野餐",
-            "pinyin": "zài cǎodì shàng yěcān"
+            "traditional": "野餐",
+            "pinyin": "yěcān"
           },
           {
-            "traditional": "去球場打球",
-            "simplified": "去球场打球",
-            "pinyin": "qù qiúchǎng dǎqiú"
+            "traditional": "打球",
+            "pinyin": "dǎqiú"
           },
           {
-            "traditional": "去球場游泳",
-            "simplified": "去球场游泳",
-            "pinyin": "qù qiúchǎng yóuyǒng"
+            "traditional": "游泳",
+            "pinyin": "yóuyǒng"
           },
           {
             "traditional": "一邊",
@@ -1825,10 +1830,10 @@
         "repairs": [
           {
             "placed": [
-              "去球場游泳"
+              "游泳"
             ],
             "mark": [
-              "去球場游泳"
+              "游泳"
             ],
             "note": "People swim in a pool (游泳池), not on a lawn or a ball court."
           },
@@ -1842,22 +1847,13 @@
             "note": "一邊 comes in pairs and means two things done at the same moment. Things done at different times take 有時候…，有時候…."
           }
         ],
-        "fallbackRepair": "有時候 before each of the two activities.",
+        "fallbackRepair": "有時候 before each place; a picnic goes with the lawn, and ball games with the ball court.",
         "result": {
           "traditional": "他們有時候在草地上野餐，有時候去球場打球。",
           "simplified": "他们有时候在草地上野餐，有时候去球场打球。",
           "pinyin": "Tāmen yǒushíhòu zài cǎodì shàng yěcān, yǒushíhòu qù qiúchǎng dǎqiú.",
           "english": "Sometimes they have picnics on the lawn, and sometimes they go to the ball court to play ball."
-        },
-        "alternatives": [
-          {
-            "traditional": "他們有時候去球場打球，有時候在草地上野餐。",
-            "simplified": "他们有时候去球场打球，有时候在草地上野餐。",
-            "pinyin": "Tāmen yǒushíhòu qù qiúchǎng dǎqiú, yǒushíhòu zài cǎodì shàng yěcān.",
-            "english": "Sometimes they go to the ball court to play ball, and sometimes they have picnics on the lawn."
-          }
-        ],
-        "free": true
+        }
       }
     ]
   },
@@ -2629,7 +2625,16 @@
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "一次網球"
+                  "一次",
+                  "網球"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "網球",
+                  "一次"
                 ]
               },
               {
@@ -2654,9 +2659,13 @@
             "pinyin": "dǎ"
           },
           {
-            "traditional": "一次網球",
-            "simplified": "一次网球",
-            "pinyin": "yí cì wǎngqiú"
+            "traditional": "一次",
+            "pinyin": "yí cì"
+          },
+          {
+            "traditional": "網球",
+            "simplified": "网球",
+            "pinyin": "wǎngqiú"
           },
           {
             "traditional": "第",
@@ -2694,6 +2703,14 @@
           "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ yí cì wǎngqiú.",
           "english": "Mr. Zhang plays tennis once every week."
         },
+        "alternatives": [
+          {
+            "traditional": "張先生每一個禮拜打網球一次。",
+            "simplified": "张先生每一个礼拜打网球一次。",
+            "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ wǎngqiú yí cì.",
+            "english": "Mr. Zhang plays tennis once every week."
+          }
+        ],
         "free": true
       },
       {
