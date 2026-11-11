@@ -56,6 +56,8 @@ export const ExerciseItem = memo(function ExerciseItem({
   const editable = answering && state.status === 'idle';
   const nextSlot = editable ? slots.find((slot) => state.placed[slot.id] === undefined)?.id : undefined;
   const dialogue = item.lines.some((line) => line.speaker);
+  // The speaker column fits the longest label and its colon: A and B, or a role the book prints (先生, 大學生).
+  const speakerEms = Math.max(2, ...item.lines.map((line) => (line.speaker ? [...textIn(line.speaker, script)].length + 1 : 0)));
   const used = new Set(Object.values(state.placed));
   const bank = item.tiles.map((_, tile) => tile).filter((tile) => !used.has(tile));
   const textOf = (tile: number) => textIn(item.tiles[tile], script);
@@ -133,12 +135,12 @@ export const ExerciseItem = memo(function ExerciseItem({
       <motion.div animate={state.status === 'wrong' && !reduceMotion ? SHAKE : { x: 0 }} className={cn('min-w-0', layout.body)}>
         {item.lines.map((line, at) => (
           <p key={at} className={cn('flex items-baseline font-chinese font-semibold text-ui-ink-strong', LINE_SIZE, 'leading-[1.75]')}>
-            {line.speaker && <span className="w-[2em] shrink-0 font-sans text-[0.75em] font-black text-ui-muted">{textIn(line.speaker, script)}:</span>}
+            {line.speaker && <span style={{ width: `${speakerEms}em` }} className="shrink-0 whitespace-nowrap font-sans text-[0.75em] font-black text-ui-muted">{textIn(line.speaker, script)}:</span>}
             <span className="min-w-0">{renderLine(line)}</span>
           </p>
         ))}
         {(state.note || state.sentence) && (
-          <div className={cn(dialogue && 'pl-[1.5em]', LINE_SIZE)}>
+          <div style={dialogue ? { paddingLeft: `${speakerEms * 0.75}em` } : undefined} className={LINE_SIZE}>
             {state.note && (
               <p className={cn('mt-1 text-base font-extrabold leading-snug sm:text-lg', state.status === 'revealed' ? 'text-ui-ink' : 'text-feedback-danger-text')}>{state.note}</p>
             )}

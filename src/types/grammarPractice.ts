@@ -86,8 +86,8 @@ export type PracticeScene =
   | { type: 'moment'; moment: PracticeMoment }
   /** The book's month calendar; `highlight` are day numbers. */
   | { type: 'month'; year: number; month: number; highlight: number[] }
-  /** A crop of the printed book page (book 1); `box` = left, top, width, height as 0–1 fractions. */
-  | { type: 'picture'; page: number; box: [number, number, number, number]; alt: string }
+  /** A crop of the printed book page; `box` = left, top, width, height as 0–1 fractions. `book` is left out for Book 1. */
+  | { type: 'picture'; book?: number; page: number; box: [number, number, number, number]; alt: string }
   /** Several pictures side by side, each captioned as printed; the learner reads across them. */
   | { type: 'cast'; page: number; alt: string; people: PracticeCastMember[] };
 

@@ -5,7 +5,8 @@ import type { LessonValidationIssue } from './validateInteractiveLessons';
 
 const HAN = /\p{Script=Han}/u;
 const MAX_TILES = 6;
-const MAX_TILE_HAN = 4;
+/** Book 1 tiles are single words; later books also take short phrases (their exercises ask for whole clauses). */
+const maxTileHan = (bookId: number) => (bookId === 1 ? 4 : 8);
 /** A clip is one clause or sentence, not a speech: long ones are hard to hold in the head while building. */
 const MAX_CLIP_SECONDS = 6;
 const PUNCTUATION = /[\s，。！？、：；「」『』（）\u3000]/gu;
@@ -22,7 +23,7 @@ const sentenceIssues = (sentence: PracticeSentence | undefined, where: string): 
   return problems;
 };
 
-function itemIssues(item: PracticeItem): string[] {
+function itemIssues(item: PracticeItem, bookId: number): string[] {
   const problems: string[] = [];
   if (!item.source?.trim()) problems.push('source missing: the book item ("p.81 #3") or "own".');
   const tileNames = 'tiles' in item ? item.tiles.map((tile) => tile.traditional) : [];
@@ -38,7 +39,7 @@ function itemIssues(item: PracticeItem): string[] {
     new Set(tileNames).forEach((name) => { if (tileNames.filter((other) => other === name).length > Math.max(needed(name), pair)) problems.push(`tile ${name} repeats.`); });
     // Simplicity: short tiles, a small dock, and at least one tile that is wrong.
     if (item.tiles.length > MAX_TILES) problems.push(`${item.tiles.length} tiles; keep the dock to ${MAX_TILES}.`);
-    tileNames.forEach((tile) => { if (hanCount(tile) > MAX_TILE_HAN) problems.push(`tile ${tile} is longer than ${MAX_TILE_HAN} characters.`); });
+    tileNames.forEach((tile) => { if (hanCount(tile) > maxTileHan(bookId)) problems.push(`tile ${tile} is longer than ${maxTileHan(bookId)} characters.`); });
     const right = new Set(item.kind === 'slot-build'
       ? practiceSlots(item).flatMap((slot) => slot.answers)
       : item.kind === 'spot-fix'
@@ -211,7 +212,7 @@ function choiceIssues(item: MatchPairsItem | SortGroupsItem | StoryOrderItem): s
   return problems;
 }
 
-export function validateGrammarPractice(practice: GrammarPractice, location: string): LessonValidationIssue[] {
+export function validateGrammarPractice(practice: GrammarPractice, location: string, bookId = 1): LessonValidationIssue[] {
   const issues: LessonValidationIssue[] = [];
   if (!practice.title.trim() || practice.bookPage <= 0) {
     issues.push({ location, message: 'Practice needs a title and its book page.' });
@@ -221,7 +222,7 @@ export function validateGrammarPractice(practice: GrammarPractice, location: str
   practice.items.forEach((item) => {
     if (ids.has(item.id)) issues.push({ location, message: `Duplicate practice item ${item.id}.` });
     ids.add(item.id);
-    itemIssues(item).forEach((message) => issues.push({ location: `${location} ${item.id}`, message }));
+    itemIssues(item, bookId).forEach((message) => issues.push({ location: `${location} ${item.id}`, message }));
   });
   return issues;
 }

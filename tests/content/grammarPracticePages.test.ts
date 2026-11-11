@@ -4,24 +4,29 @@ import path from 'node:path';
 import test from 'node:test';
 import type { GrammarPractice, InteractiveGrammarPart, SlotBuildItem } from '../../src/types/models';
 import { practiceSlots, slotBuildSolutions, slotBuildText } from '../../src/utils/grammar/grammarPracticeCheck';
+import { NUMERAL_CHARACTERS } from '../../src/utils/lesson/lessonScope';
 import { readJson } from '../acceptance_helpers';
 
 /**
- * Book 1 exercise pages (docs/grammar/briefs/B1-exercise-pages.md): one scrolling page per grammar point,
- * fill-the-blank items only, at least four plausible words, every wrong word explained, nothing given away.
- * `BOOK1_LESSON=lessonTwo` checks one lesson file while it is being authored.
+ * Exercise pages of Book 1 and Book 2 (docs/grammar/briefs/B1-exercise-pages.md and B2-exercise-pages.md):
+ * one scrolling page per grammar point, fill-the-blank items only, at least four plausible words, every
+ * wrong word explained, nothing given away. Book 2 differs in one rule: a tile may be a short phrase.
+ * `PRACTICE_LESSON=b2LessonTwo` (or `BOOK1_LESSON=lessonTwo`) checks one lesson file while it is being authored.
  */
 const dir = path.resolve('content/grammar-practice');
-const only = process.env.BOOK1_LESSON;
+const only = process.env.PRACTICE_LESSON ?? process.env.BOOK1_LESSON;
+const bookOf = (key: string) => Number(/^B(\d+)L/.exec(key)?.[1]);
+/** Book 1 tiles are single words; Book 2 exercises ask for whole clauses, so a tile may be a short phrase. */
+const MAX_TILE = { 1: 4, 2: 8 } as Record<number, number>;
 const files = fs.readdirSync(dir).filter((file) => file.endsWith('.json') && (!only || file === `${only}.json`));
 const pages = files.flatMap((file) => Object.entries(JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')) as Record<string, GrammarPractice>)
-  .filter(([key]) => key.startsWith('B1L'))
+  .filter(([key]) => bookOf(key) in MAX_TILE)
   .map(([key, page]) => ({ key, page })));
 const slotItems = pages.flatMap(({ key, page }) => page.items.flatMap((item) => (item.kind === 'slot-build' ? [{ key, item }] : [])));
 const bare = (text: string) => text.replace(/[\s，。！？、：；,.!?]/gu, '');
 const lineText = (item: SlotBuildItem) => item.lines.flatMap((line) => line.segments.map((segment) => (segment.type === 'text' ? segment.traditional : ''))).join('');
 
-test('a Book 1 page is fill-the-blank items only, with no per-item titles or glosses', () => {
+test('a page is fill-the-blank items only, with no per-item titles or glosses', () => {
   const found = pages.flatMap(({ key, page }) => page.items.flatMap((item) => {
     if (item.kind !== 'slot-build') return [`${key} ${item.id}: kind ${item.kind}`];
     const extra = (['prompt', 'quiet', 'sub', 'glossary', 'gaps', 'successNote'] as const).filter((field) => item[field] !== undefined);
@@ -39,9 +44,10 @@ test('book items come first, in book order, with at most two own items after the
     if (firstOwn >= 0 && sources.slice(firstOwn).some((source) => source !== 'own')) problems.push(`${key}: a book item after an own item`);
     if (sources.filter((source) => source === 'own').length > 2) problems.push(`${key}: more than two own items`);
     const book = sources.filter((source) => source !== 'own');
-    if (book.some((source) => !/^p\.\d+ #\d+$/.test(source))) problems.push(`${key}: source must be "p.<page> #<n>"`);
-    const order = book.map((source) => source.match(/\d+/g)!.map(Number));
-    if (order.some(([pageNo, n], index) => index > 0 && (pageNo < order[index - 1][0] || (pageNo === order[index - 1][0] && n <= order[index - 1][1])))) problems.push(`${key}: book items out of order`);
+    // "p.189 #3", or "p.189 (2) #1" for the second exercise box of that point on the same page.
+    if (book.some((source) => !/^p\.\d+(?: \(\d+\))? #\d+$/.test(source))) problems.push(`${key}: source must be "p.<page> #<n>" or "p.<page> (<box>) #<n>"`);
+    const order = book.map((source) => { const [, pageNo, box, n] = /^p\.(\d+)(?: \((\d+)\))? #(\d+)$/.exec(source) ?? []; return Number(pageNo) * 10000 + Number(box ?? 1) * 100 + Number(n); });
+    if (order.some((at, index) => index > 0 && at <= order[index - 1])) problems.push(`${key}: book items out of order`);
     return problems;
   });
   assert.deepEqual(found, []);
@@ -57,7 +63,7 @@ test('every item offers at least four words, more than its blanks, and at most s
 });
 
 test('tiles are short', () => {
-  const found = slotItems.flatMap(({ key, item }) => item.tiles.filter((tile) => [...tile.traditional].length > 4).map((tile) => `${key} ${item.id}: ${tile.traditional}`));
+  const found = slotItems.flatMap(({ key, item }) => item.tiles.filter((tile) => [...tile.traditional].length > MAX_TILE[bookOf(key)]).map((tile) => `${key} ${item.id}: ${tile.traditional}`));
   assert.deepEqual(found, []);
 });
 
@@ -116,10 +122,12 @@ test('item ids are unique', () => {
 });
 
 // Taught scope: reads the grammar pack only for lesson parts and book examples, which authors don't change.
-const vocab = readJson<{ items: Array<{ id: string; traditional: string }> }>('public/data/vocabulary/book-1.json').items;
-const grammar = readJson<{ items: InteractiveGrammarPart[] }>('public/data/grammar/book-1.json').items;
-const pageInfo = new Map(grammar.flatMap((part) => part.grammarPages.map((page) => [page.id, { lesson: part.lessonId, part: part.partId }] as const)));
-const orderOf = (id: string) => { const match = /^B1L(\d+)-(\d+)/.exec(id); return match ? Number(match[1]) * 10 + Number(match[2]) : Infinity; };
+// A later book starts from everything the books before it taught.
+const BOOKS = Object.keys(MAX_TILE).map(Number);
+const vocab = BOOKS.flatMap((book) => readJson<{ items: Array<{ id: string; traditional: string; simplified?: string }> }>(`public/data/vocabulary/book-${book}.json`).items);
+const grammar = BOOKS.flatMap((book) => readJson<{ items: InteractiveGrammarPart[] }>(`public/data/grammar/book-${book}.json`).items);
+const pageInfo = new Map(grammar.flatMap((part) => part.grammarPages.map((page) => [page.id, part.bookId * 1000 + part.lessonId * 10 + part.partId] as const)));
+const orderOf = (id: string) => { const match = /^B(\d+)L(\d+)-(\d+)/.exec(id); return match ? Number(match[1]) * 1000 + Number(match[2]) * 10 + Number(match[3]) : Infinity; };
 const forms = (entry: string) => entry.split(/[/／]/).flatMap((form) => {
   let variants = [form];
   for (const optional of form.match(/（[^）]*）/g) ?? []) variants = variants.flatMap((variant) => [variant.replace(optional, ''), variant.replace(optional, optional.slice(1, -1))]);
@@ -128,9 +136,8 @@ const forms = (entry: string) => entry.split(/[/／]/).flatMap((form) => {
 
 // Characters whose simplified form differs, learned from the vocabulary pack's paired forms.
 const changes = new Set(vocab.flatMap((word) => {
-  const simplified = (word as { simplified?: string }).simplified;
   const t = [...word.traditional];
-  const s = [...(simplified ?? '')];
+  const s = [...(word.simplified ?? '')];
   return t.length === s.length ? t.filter((char, index) => char !== s[index]) : [];
 }));
 
@@ -150,14 +157,15 @@ test('Chinese whose simplified form differs carries it, so simplified learners n
 
 test('only taught words', () => {
   const found = pages.flatMap(({ key, page }) => {
-    const info = pageInfo.get(key);
-    if (!info) return [`${key}: not a Book 1 grammar page`];
-    const through = info.lesson * 10 + info.part;
+    const through = pageInfo.get(key);
+    if (!through) return [`${key}: not a grammar page`];
     const taught = new Set([
       ...vocab.filter((word) => orderOf(word.id) <= through).flatMap((word) => forms(word.traditional)),
-      ...grammar.filter((part) => part.lessonId * 10 + part.partId <= through).flatMap((part) => part.grammarPages)
+      ...grammar.filter((part) => part.bookId * 1000 + part.lessonId * 10 + part.partId <= through).flatMap((part) => part.grammarPages)
         .flatMap((other) => other.examples.flatMap((example) => example.text.words ?? [])).map((word) => word.traditional),
       ...(page.allowWords ?? []),
+      // Book 1 teaches the numerals; later books count freely.
+      ...(bookOf(key) > 1 ? NUMERAL_CHARACTERS : []),
     ]);
     const texts = page.items.flatMap((item) => (item.kind === 'slot-build'
       ? [...item.lines.flatMap((line) => line.segments.flatMap((segment) => (segment.type === 'text' ? [segment.traditional] : []))), ...item.tiles.map((tile) => tile.traditional), item.result.traditional, ...(item.alternatives ?? []).map((sentence) => sentence.traditional)]

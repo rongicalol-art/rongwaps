@@ -3,17 +3,19 @@ import { fetchContentBlobUrl } from '../../../services/staticContentService';
 import type { PracticeCastMember } from '../../../types/models';
 import wangThinking from '../../../assets/images/grammar-practice/wang-thinking.webp';
 import { bookPagePath } from '../../../utils/grammar/bookPagePath';
-import { generatedPictureAssets } from './generatedPictureAssets';
+import { generatedPictureAssets, pictureArtKey } from './generatedPictureAssets';
 
 interface PictureSceneProps {
+  /** The book the page is from; Book 1 when left out. */
+  book?: number;
   page: number;
   /** left, top, width, height as 0–1 fractions of the page. */
   box: [number, number, number, number];
   alt: string;
 }
 
-/** Loads one scan of the printed book 1 page (gated, so it goes through the content fetch). */
-export function usePageImage(page: number) {
+/** Loads one scan of the printed book page (gated, so it goes through the content fetch). */
+export function usePageImage(page: number, book = 1) {
   const [src, setSrc] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -22,12 +24,12 @@ export function usePageImage(page: number) {
     const controller = new AbortController();
     setSrc(null);
     setFailed(false);
-    fetchContentBlobUrl(bookPagePath(1, page), controller.signal).then(
+    fetchContentBlobUrl(bookPagePath(book, page), controller.signal).then(
       (url) => { if (live) setSrc(url); },
       () => { if (live) setFailed(true); },
     );
     return () => { live = false; controller.abort(); };
-  }, [page, attempt]);
+  }, [book, page, attempt]);
   return { src, failed, retry: () => setAttempt((value) => value + 1), onError: () => setFailed(true) };
 }
 
@@ -59,7 +61,7 @@ export function PageCrop({ src, box, alt, onLoad, onError }: {
 
 /** Generated scenes share their presentation with the slot-build layout check. */
 export function sceneFirstPicture(props: PictureSceneProps) {
-  const art = generatedPictureAssets[`${props.page}:${props.box.join(',')}`];
+  const art = generatedPictureAssets[pictureArtKey(props)];
   if (!art) return null;
   return <IllustratedPicture key={art.src} {...props} src={art.src} alt={art.alt ?? props.alt} caption={art.caption} />;
 }
@@ -68,7 +70,7 @@ export function sceneFirstPicture(props: PictureSceneProps) {
 export function PictureScene(props: PictureSceneProps) {
   const reviewed = sceneFirstPicture(props);
   if (reviewed) return reviewed;
-  if (props.page === 45 && props.box.join(',') === '0.68,0.762,0.167,0.136') {
+  if (!props.book && props.page === 45 && props.box.join(',') === '0.68,0.762,0.167,0.136') {
     return <img src={wangThinking} alt={props.alt} draggable={false} className="mx-auto block h-auto max-h-[230px] w-full max-w-[285px] select-none object-contain sm:max-h-[300px]" />;
   }
   return <BookPictureScene {...props} />;
@@ -85,9 +87,9 @@ export function IllustratedPicture({ src, caption, ...props }: PictureSceneProps
   );
 }
 
-/** A crop of the printed book 1 page, shown as the picture an exercise is about. */
-function BookPictureScene({ page, box, alt }: PictureSceneProps) {
-  const { src, failed, retry, onError } = usePageImage(page);
+/** A crop of the printed book page, shown as the picture an exercise is about. */
+function BookPictureScene({ book, page, box, alt }: PictureSceneProps) {
+  const { src, failed, retry, onError } = usePageImage(page, book);
   /** Page width / height; a typical page until the scan loads. */
   const [pageRatio, setPageRatio] = useState(0.75);
   const [, , width, height] = box;

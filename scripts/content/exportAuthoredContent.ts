@@ -160,7 +160,7 @@ async function loadSourceGrammarParts(bookId: number): Promise<InteractiveGramma
     }
   }
   parts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
-  if (bookId !== 2) await attachGrammarPractice(parts, bookId);
+  await attachGrammarPractice(parts, bookId);
   await attachGrammarSummaries(parts, bookId);
   await attachSentenceAudio(parts);
   return parts;
@@ -209,9 +209,8 @@ async function attachGrammarPractice(parts: InteractiveGrammarPart[], bookId: nu
   const practiceDir = resolve(ROOT, 'content/grammar-practice');
   const pages = new Map(parts.flatMap((part) => part.grammarPages.map((page) => [page.id, page] as const)));
   for (const file of (await readdir(practiceDir)).filter((name) => name.endsWith('.json'))) {
-    const isB3File = file.startsWith('b3');
-    if (bookId === 1 && isB3File) continue;
-    if (bookId === 3 && !isB3File) continue;
+    // lessonNine.json is Book 1; b2LessonNine.json is Book 2.
+    if (Number(/^b(\d+)/.exec(file)?.[1] ?? 1) !== bookId) continue;
     const content = JSON.parse(await readFile(resolve(practiceDir, file), 'utf8')) as Record<string, GrammarPractice>;
     for (const [pageId, practice] of Object.entries(content)) {
       const page = pages.get(pageId);

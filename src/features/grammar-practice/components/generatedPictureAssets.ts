@@ -131,6 +131,12 @@ import art124 from '../../../assets/images/grammar-practice/generated/l10-glasse
 import art125 from '../../../assets/images/grammar-practice/generated/l10-beef-noodles-v1.webp';
 import art126 from '../../../assets/images/grammar-practice/generated/l11-hungry-then-milk-v1.webp';
 import art127 from '../../../assets/images/grammar-practice/generated/l12-writes-chinese-not-english-v1.webp';
+import art128 from '../../../assets/images/grammar-practice/generated/b2l01-girl-on-chair-v1.webp';
+import art129 from '../../../assets/images/grammar-practice/generated/b2l01-students-shop-front-v1.webp';
+import art130 from '../../../assets/images/grammar-practice/generated/b2l01-writing-phone-number-v1.webp';
+import art131 from '../../../assets/images/grammar-practice/generated/b2l01-driving-music-v1.webp';
+import art132 from '../../../assets/images/grammar-practice/generated/b2l01-eating-watching-tv-v1.webp';
+import art133 from '../../../assets/images/grammar-practice/generated/b2l01-coffee-chat-v1.webp';
 
 /** Illustrations for a clock time, a calendar day or the book's people row, keyed by what they show (`sceneArtKey`). */
 export const generatedSceneAssets: Record<string, { src: string; alt: string }> = {
@@ -154,8 +160,19 @@ export function sceneArtKey(scene: PracticeScene): string | null {
   return null;
 }
 
-/** Reviewed illustrations keyed by the exact Book 1 source crop. */
+/** `207:0.16,0.222,0.235,0.142` for Book 1, `b2:38:…` for a later book: the printed page and the exact crop. */
+export function pictureArtKey(scene: { book?: number; page: number; box: number[] }): string {
+  return `${scene.book && scene.book !== 1 ? `b${scene.book}:` : ''}${scene.page}:${scene.box.join(',')}`;
+}
+
+/** Reviewed illustrations keyed by the exact source crop (`pictureArtKey`). */
 export const generatedPictureAssets: Record<string, { src: string; caption?: string; alt?: string }> = {
+  'b2:38:0.142,0.53,0.145,0.16': { src: art128, alt: "A little girl sitting on a wooden chair." },
+  'b2:38:0.36,0.53,0.23,0.16': { src: art129, alt: "Two students standing in front of a convenience store." },
+  'b2:38:0.672,0.535,0.205,0.158': { src: art130, alt: "A man writing the phone number 02-3000 on a sheet of paper." },
+  'b2:39:0.148,0.8,0.22,0.142': { src: art131, alt: "A man driving a red car with music notes around him." },
+  'b2:39:0.408,0.79,0.222,0.155': { src: art132, alt: "A boy eating from a bowl while watching television." },
+  'b2:39:0.675,0.8,0.222,0.145': { src: art133, alt: "A man and a woman chatting over coffee at a café table." },
   '272:0.182,0.24,0.24,0.125': { src: art127, alt: "He writes Chinese well (a red circle) but not English (a red cross)." },
   '228:0.714,0.648,0.1,0.076': { src: art125, alt: "A steaming bowl of beef noodle soup." },
   '228:0.37,0.641,0.112,0.085': { src: art124, alt: "A young man in stylish glasses and a fur-collar jacket." },

@@ -67,7 +67,7 @@ export function validateInteractiveLessons(
       const pageIds = new Map<string, string>();
 
       checkSimplified(page, pageLocation, issues);
-      if (page.practice) issues.push(...validateGrammarPractice(page.practice, `${pageLocation} practice`));
+      if (page.practice) issues.push(...validateGrammarPractice(page.practice, `${pageLocation} practice`, page.bookId));
       if (page.bookId !== part.bookId || page.lessonId !== part.lessonId || page.partId !== part.partId) {
         issues.push({ location: pageLocation, message: 'Page identity does not match its parent part.' });
       }
