@@ -1,6 +1,6 @@
 import type { GrammarPractice, PracticeScene } from '../../types/models';
 import { preloadImages } from '../../utils/browser/preloadAssets';
-import { generatedPictureAssets, generatedSceneAssets, sceneArtKey } from './components/generatedPictureAssets';
+import { generatedPictureAssets, generatedSceneAssets, pictureArtKey, sceneArtKey } from './components/generatedPictureAssets';
 
 const SCENE_TYPES = new Set<string>(['route', 'change', 'countdown', 'moment', 'month', 'picture', 'cast']);
 /** The first screenful; later pictures load while the learner works. */
@@ -16,7 +16,7 @@ export function practicePictureUrls(practice: GrammarPractice): string[] {
     if (typeof record.type === 'string' && SCENE_TYPES.has(record.type)) {
       const scene = record as unknown as PracticeScene;
       const art = scene.type === 'picture'
-        ? generatedPictureAssets[`${scene.page}:${scene.box.join(',')}`]
+        ? generatedPictureAssets[pictureArtKey(scene)]
         : generatedSceneAssets[sceneArtKey(scene) ?? ''];
       if (art) urls.push(art.src);
     }

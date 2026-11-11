@@ -3,7 +3,7 @@ import { useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, ContextualChineseText } from '../../lib/widgets';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 import type { GrammarPractice, GrammarWordToken, SlotBuildItem } from '../../types/models';
-import { checkSlotBuild, practiceSlots, slotBuildResult, slotBuildSolutions } from '../../utils/grammar/grammarPracticeCheck';
+import { checkSlotBuild, practiceRuns, practiceSlots, slotBuildResult, slotBuildSolutions } from '../../utils/grammar/grammarPracticeCheck';
 import { shuffleItems } from '../../utils/srs/sessionOrder';
 import { ExerciseItem, type ExerciseItemState } from './components/ExerciseItem';
 import { textIn, type PracticeScript } from './practiceTypes';
@@ -21,6 +21,8 @@ export interface ExercisePageProps {
   onBack?: () => void;
   /** A panel (book page, dictionary, notes) is open on top: ignore key shortcuts. */
   shortcutsDisabled?: boolean;
+  /** The learner flags a finished item as wrong: the text names the item and the answer shown. */
+  onReport?: (context: string) => void;
 }
 
 /** How long a result shows before the page moves on (ms). */
@@ -31,11 +33,11 @@ const done = (state: ExerciseItemState) => state.status === 'correct' || state.s
 const sameText = (a: { traditional: string }, b: { traditional: string }) => a.traditional === b.traditional;
 
 /**
- * A Book 1 exercise page: the book's instruction once, then every item in book order on one scroll.
- * The learner taps words into the blanks; an item checks itself when it is full.
+ * A book exercise page: the book's instruction once, then every item in book order on one scroll.
+ * The learner taps words into the blanks (or onto a build line, in order); an item checks itself when it is full.
  * Wrong: the why, wrong words go back, one retry. Wrong again: the answer fills in and the page moves on.
  */
-export function ExercisePage({ practice, script, showPinyin, contextTokens, onOpenWord, onComplete, onBack, shortcutsDisabled = false }: ExercisePageProps) {
+export function ExercisePage({ practice, script, showPinyin, contextTokens, onOpenWord, onComplete, onBack, shortcutsDisabled = false, onReport }: ExercisePageProps) {
   const reduceMotion = useReducedMotion();
   // One picture for every item (the book's people row) shows once under the title, as the book prints it.
   const shared = useMemo(() => {
@@ -99,8 +101,12 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
       return;
     }
     const wrongSlots = practiceSlots(item).filter((slot) => !slot.answers.includes(answer[slot.id] ?? '')).map((slot) => slot.id);
+    // A build line is written in order: everything from its first wrong word goes back, so the line never has a hole.
+    const fromFirstWrong = item.free
+      ? practiceRuns(item).flatMap((run) => { const first = run.findIndex((slotId) => wrongSlots.includes(slotId)); return first < 0 ? [] : run.slice(first); })
+      : wrongSlots;
     // Right words in a wrong combination: every word goes back.
-    const back = wrongSlots.length ? wrongSlots : Object.keys(state.placed);
+    const back = fromFirstWrong.length ? fromFirstWrong : Object.keys(state.placed);
     commit(index, { ...state, status: 'wrong', tries: state.tries + 1, note: verdict.note, wrong: back });
     later(PAUSE.retry, () => {
       const latest = statesRef.current[index];
@@ -138,8 +144,22 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
     if (state.status !== 'idle') return;
     const placed = { ...state.placed };
     delete placed[slotId];
+    const item = items[index];
+    if (item.free) {
+      // The words after the one taken back close the gap.
+      practiceRuns(item).forEach((run) => {
+        const kept = run.flatMap((id) => (placed[id] === undefined ? [] : [placed[id]]));
+        run.forEach((id, at) => { if (at < kept.length) placed[id] = kept[at]; else delete placed[id]; });
+      });
+    }
     commit(index, { ...state, placed });
-  }, [commit]);
+  }, [commit, items]);
+
+  const report = useCallback((index: number) => {
+    const item = items[index];
+    const state = statesRef.current[index];
+    onReport?.(`Exercise ${item.source} · ${item.id} · ${state.status === 'correct' ? 'answered right' : 'answer shown'}\n${state.sentence ? textIn(state.sentence, script) : ''}`);
+  }, [items, onReport, script]);
 
   const select = useCallback((index: number) => {
     if (!done(statesRef.current[index]) && index !== activeRef.current) activate(index);
@@ -187,6 +207,7 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
             onActivate={select}
             onPlace={place}
             onTakeBack={takeBack}
+            onReport={onReport ? report : undefined}
           />
         ))}
       </ol>

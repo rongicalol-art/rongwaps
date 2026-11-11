@@ -15,6 +15,7 @@ import { GrammarLessonHeader } from './components/GrammarLessonHeader';
 import type { GrammarExplanationView } from './components/GrammarStudyPage';
 import { GrammarContinueFooter } from './components/GrammarContinueFooter';
 import { GrammarBookPageViewer } from './components/GrammarBookPageViewer';
+import { FeedbackDrawer } from '../../app/components/FeedbackDrawer';
 import { useGrammarLessonPage } from './hooks/useGrammarLessonPage';
 import { useGrammarFooterVisibility } from './hooks/useGrammarFooterVisibility';
 import { isHanziChar } from '../../utils/characters/hanzi';
@@ -61,6 +62,8 @@ export function GrammarLessonScreen({
   const bookPageButtonRef = useRef<HTMLButtonElement>(null);
 
   const [isBookOpen, setIsBookOpen] = useState(false);
+  // An exercise item the learner flagged as wrong: opens the feedback form with the item named.
+  const [report, setReport] = useState<{ context: string; open: boolean } | null>(null);
   const isSocialPanelOpen = useAppStore((state) => state.socialPanel !== null);
 
   // False until the lazy study-page chunk has mounted at least once, so the
@@ -228,7 +231,8 @@ export function GrammarLessonScreen({
                             onOpenWord={setDictionaryWord}
                             onComplete={finishPractice}
                             onBack={goBackToPreviousGrammar}
-                            shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord)}
+                            shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord) || Boolean(report?.open)}
+                            onReport={(context) => setReport({ context, open: true })}
                           />
                         ) : (
                         <practice.GrammarPracticeView
@@ -287,6 +291,7 @@ export function GrammarLessonScreen({
           onClose={closeBookViewer}
         />
       )}
+      {report && <FeedbackDrawer isOpen={report.open} context={report.context} onClose={() => setReport((current) => current && { ...current, open: false })} />}
     </WorkspaceWindow>
   );
 }

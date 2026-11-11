@@ -30,6 +30,16 @@ export function practiceSlots(item: SlotBuildItem) {
   return item.lines.flatMap((line) => line.segments.flatMap((segment) => (segment.type === 'slot' ? [segment] : [])));
 }
 
+/** The blanks that stand next to each other on a line, as groups of slot ids: a build line (`free`) shows each group as one line. */
+export function practiceRuns(item: SlotBuildItem): string[][] {
+  return item.lines.flatMap((line) => line.segments.reduce<string[][]>((runs, segment, at) => {
+    if (segment.type !== 'slot') return runs;
+    if (at > 0 && line.segments[at - 1].type === 'slot') runs[runs.length - 1].push(segment.id);
+    else runs.push([segment.id]);
+    return runs;
+  }, []));
+}
+
 interface RepairContext {
   order: string[];
   slots?: Record<string, string | undefined>;

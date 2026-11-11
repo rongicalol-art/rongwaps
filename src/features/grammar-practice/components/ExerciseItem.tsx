@@ -1,6 +1,6 @@
 import { memo, type Ref } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ContextualChineseText } from '../../../lib/widgets';
+import { AppIcon, ContextualChineseText, IconActionButton } from '../../../lib/widgets';
 import type { GrammarWordToken, PracticeLine, PracticeSentence, SlotBuildItem } from '../../../types/models';
 import { practiceSlots } from '../../../utils/grammar/grammarPracticeCheck';
 import { cn } from '../../../utils/cn';
@@ -35,6 +35,8 @@ interface ExerciseItemProps {
   onActivate: (index: number) => void;
   onPlace: (index: number, tile: number) => void;
   onTakeBack: (index: number, slotId: string) => void;
+  /** Tell the owner something is wrong with this item; shown once the item is done. */
+  onReport?: (index: number) => void;
 }
 
 /** Chinese line size; the badge and feedback indents are measured in it. */
@@ -46,7 +48,7 @@ const SHAKE = { x: [0, -6, 5, -4, 2, 0], transition: { duration: 0.36, ease: 'ea
  * Memoised: answering one item re-renders only that item.
  */
 export const ExerciseItem = memo(function ExerciseItem({
-  ref, item, index, state, active, script, showPinyin, contextTokens, onOpenWord, onActivate, onPlace, onTakeBack,
+  ref, item, index, state, active, script, showPinyin, contextTokens, onOpenWord, onActivate, onPlace, onTakeBack, onReport,
 }: ExerciseItemProps) {
   const number = index + 1;
   const reduceMotion = useReducedMotion();
@@ -56,6 +58,8 @@ export const ExerciseItem = memo(function ExerciseItem({
   const editable = answering && state.status === 'idle';
   const nextSlot = editable ? slots.find((slot) => state.placed[slot.id] === undefined)?.id : undefined;
   const dialogue = item.lines.some((line) => line.speaker);
+  // The speaker column fits the longest label and its colon: A and B, or a role the book prints (先生, 大學生).
+  const speakerEms = Math.max(2, ...item.lines.map((line) => (line.speaker ? [...textIn(line.speaker, script)].length + 1 : 0)));
   const used = new Set(Object.values(state.placed));
   const bank = item.tiles.map((_, tile) => tile).filter((tile) => !used.has(tile));
   const textOf = (tile: number) => textIn(item.tiles[tile], script);
@@ -91,7 +95,12 @@ export const ExerciseItem = memo(function ExerciseItem({
       return text && <ContextualChineseText key={at} wordClassName="font-chinese font-semibold" text={text} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
     }
     const tile = state.placed[segment.id];
-    const next = line.segments[at + 1];
+    // A build line: the words placed so far, then one long blank for the rest of its blanks.
+    const before = line.segments[at - 1];
+    if (item.free && tile === undefined && before?.type === 'slot' && state.placed[before.id] === undefined) return null;
+    let end = at;
+    if (item.free && tile === undefined) while (line.segments[end + 1]?.type === 'slot') end += 1;
+    const next = line.segments[end + 1];
     const closing = next?.type === 'text' ? textIn(next, script).match(LEADING_CLOSING)?.[0] : undefined;
     const blank = (
       <BookBlank
@@ -99,6 +108,7 @@ export const ExerciseItem = memo(function ExerciseItem({
         state={blankState(segment.id)}
         quiet={!answering}
         narrow={slots.length >= 4}
+        long={item.free && tile === undefined && (end > at || before?.type === 'slot') ? end - at + 1 : undefined}
         word={tile === undefined ? undefined : { text: textOf(tile), onTakeBack: editable ? () => onTakeBack(index, segment.id) : undefined }}
       />
     );
@@ -133,12 +143,12 @@ export const ExerciseItem = memo(function ExerciseItem({
       <motion.div animate={state.status === 'wrong' && !reduceMotion ? SHAKE : { x: 0 }} className={cn('min-w-0', layout.body)}>
         {item.lines.map((line, at) => (
           <p key={at} className={cn('flex items-baseline font-chinese font-semibold text-ui-ink-strong', LINE_SIZE, 'leading-[1.75]')}>
-            {line.speaker && <span className="w-[2em] shrink-0 font-sans text-[0.75em] font-black text-ui-muted">{textIn(line.speaker, script)}:</span>}
+            {line.speaker && <span style={{ width: `${speakerEms}em` }} className="shrink-0 whitespace-nowrap font-sans text-[0.75em] font-black text-ui-muted">{textIn(line.speaker, script)}:</span>}
             <span className="min-w-0">{renderLine(line)}</span>
           </p>
         ))}
         {(state.note || state.sentence) && (
-          <div className={cn(dialogue && 'pl-[1.5em]', LINE_SIZE)}>
+          <div style={dialogue ? { paddingLeft: `${speakerEms * 0.75}em` } : undefined} className={LINE_SIZE}>
             {state.note && (
               <p className={cn('mt-1 text-base font-extrabold leading-snug sm:text-lg', state.status === 'revealed' ? 'text-ui-ink' : 'text-feedback-danger-text')}>{state.note}</p>
             )}
@@ -148,6 +158,16 @@ export const ExerciseItem = memo(function ExerciseItem({
                 <div className="mt-1 flex items-start gap-2">
                   <p className="min-w-0 text-base font-bold leading-snug text-ui-muted-strong sm:text-lg">{state.sentence.english}</p>
                   <SentencePlayButton sentence={state.sentence} script={script} />
+                  {onReport && finished && (
+                    <IconActionButton
+                      onClick={() => onReport(index)}
+                      size="sm"
+                      variant="quiet"
+                      icon={<AppIcon name="report" size={18} />}
+                      label="Something wrong with this item?"
+                      className="-my-1 shrink-0 text-ui-muted hover:text-ui-ink"
+                    />
+                  )}
                 </div>
               </div>
             )}

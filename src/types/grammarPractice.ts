@@ -86,8 +86,8 @@ export type PracticeScene =
   | { type: 'moment'; moment: PracticeMoment }
   /** The book's month calendar; `highlight` are day numbers. */
   | { type: 'month'; year: number; month: number; highlight: number[] }
-  /** A crop of the printed book page (book 1); `box` = left, top, width, height as 0–1 fractions. */
-  | { type: 'picture'; page: number; box: [number, number, number, number]; alt: string }
+  /** A crop of the printed book page; `box` = left, top, width, height as 0–1 fractions. `book` is left out for Book 1. */
+  | { type: 'picture'; book?: number; page: number; box: [number, number, number, number]; alt: string }
   /** Several pictures side by side, each captioned as printed; the learner reads across them. */
   | { type: 'cast'; page: number; alt: string; people: PracticeCastMember[] };
 
@@ -160,6 +160,12 @@ export interface SlotBuildItem extends PracticeItemBase {
    * One tile for a lone particle (吧), several for a frame (快要 and 了, 又 … 又).
    */
   gaps?: boolean;
+  /**
+   * Build line: blanks that stand next to each other are one free line (the book's long blank) with a
+   * small dot for each word still to place. The words go on in order. Book 2 and later, where
+   * the book asks for a clause or a whole sentence; a blank on its own stays one word.
+   */
+  free?: boolean;
   successNote?: string;
 }
 
