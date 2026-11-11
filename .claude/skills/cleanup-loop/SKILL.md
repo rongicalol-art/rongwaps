@@ -34,7 +34,7 @@ State lives in `.audit/cleanup-loop/` (gitignored scratch, the loop's memory bet
 3. **Reuse existing widgets/utils**: hand-rolled buttons, headers, modals, empty/loading states, formatters replaced by `src/lib/widgets/` or existing utils (this also fixes UI inconsistency — two wins).
 4. **Over-engineering removed**: wrappers that only forward props, one-caller abstractions inlined, needless `useMemo`/`useCallback`/`useEffect` (derived state computed inline), redundant types re-declaring inferred ones, defensive checks the types already guarantee, verbose class strings that a token/utility class replaces.
 5. **Simpler idioms**: long imperative loops → array methods, nested ternaries → early returns or maps, repeated try/catch boilerplate → existing helper.
-6. **Architecture fixes that also shrink code** (duplicated business rule → single owner, rule 5; ad-hoc fetch → existing service).
+6. **Architecture fixes that also shrink code** (duplicated business rule → single owner; ad-hoc fetch → existing service).
 
 Never shrink by: cramming multiple statements per line, removing a11y labels, deleting error/loading/empty states, removing tests that cover live code, minifying names, or disabling lint rules.
 
@@ -59,7 +59,7 @@ Load `.claude/rules/ui.md` and `docs/WIDGETS.md` first. Look for:
 - Same visual pattern implemented differently on 2+ screens (card, header, empty state, loading state)
 
 ### B. UI browser scan (one or two screens per pass, round-robin; record which in LEDGER)
-- `preview_start` with `{name: "dev"}`. Visit the screen at 390×844 and 1440×1000 (`resize_window`), screenshot both.
+- `preview_start` with `{name: "dev"}`. Visit the screen at 390×844 and 1440×900 (`resize_window`), screenshot both.
 - Check: clipping/overflow, horizontal scroll, inconsistent spacing/header vs sibling screens, tactile depth misuse, pure-white page backgrounds, nav covered by window on desktop, empty/loading states, console errors (`read_console_messages`).
 - Reset viewport with preset `desktop` when finished.
 - Screen list: build it once from the router in `src/App.tsx` / `src/app/` and store it in LEDGER.
@@ -69,16 +69,16 @@ Load `.claude/rules/ui.md` and `docs/WIDGETS.md` first. Look for:
 - Dead code candidates: `npx -y knip@5 --config .claude/skills/cleanup-loop/knip.json --no-progress --no-exit-code` (read-only; confirm each with grep before deleting).
 - Duplicate blocks: `npx -y jscpd src server --min-lines 8 --reporters console --silent` (read-only).
 - Components with > 6 `useState` or > 3 `useEffect`, effects that sync derived state, nested ternaries 3+ deep in JSX, functions > 60 lines.
-- `grep -rn "supabase\|fetch(" src --include=*.ts* | grep -v src/services/` (rule 6).
+- `grep -rn "supabase\|fetch(" src --include=*.ts* | grep -v src/services/` (`.claude/rules/code.md`).
 - Same business rule in 2+ places (grep distinctive constants, regexes, thresholds).
 - `any`, `as unknown as`, `eslint-disable`, `@ts-ignore`, dead exports (exported symbol with no importer), unused files.
 - Cross-feature imports that bypass a feature's public surface; `server/` importing from `src/` (non-types).
 
 ### D. File-architecture scan
 Read `docs/ARCHITECTURE.md` first. Look for:
-- Shared UI used by 2+ features not in `src/lib/widgets/` (rule 10), or widgets used by only one feature.
+- Shared UI used by 2+ features not in `src/lib/widgets/` (`docs/ARCHITECTURE.md`), or widgets used by only one feature.
 - Feature-only components sitting in `src/screens/` or vice versa; hooks/utilities in the wrong layer.
-- Cross-screen state not in `src/store/slices/` (rule 1); `*PackService` that should be `createPackLoader` (rule 2).
+- Cross-screen state not in `src/store/slices/` (`.claude/rules/code.md`); `*PackService` that should be `createPackLoader` (`.claude/rules/code.md`).
 - Directories with mixed concerns or inconsistent naming (`components/` vs flat, `useX.ts` vs `x.hook.ts`).
 
 ## 3. Fix
@@ -95,8 +95,8 @@ new dependency · Supabase schema/RPC change · `public/data/` packs or pack gen
 
 ## 4. Verify (every iteration, scoped)
 
-Use the `verify-change` skill table. Minimum for any `src/`/`server/` change: `npm run typecheck && npm run lint && npm test && npm run jev:lint`.
-UI changes: also screenshot the affected screen at 390×844 and 1440×1000 and compare with the pre-fix screenshot.
+Minimum for any `src/`/`server/` change: `npm run typecheck && npm run lint && npm test && npm run jev:lint` (the full `npm run gate` runs before the PR).
+UI changes: also screenshot the affected screen at 390×844 and 1440×900 and compare with the pre-fix screenshot.
 
 - Green → commit.
 - Red → fix once. Still red → `git restore` + `git clean` only the files this iteration touched (never others), mark the item `failed(1|2)`, move on.
@@ -138,7 +138,7 @@ baseline LOC: X · now: X · removed so far: 0
 
 ## Guardrails
 
-- Never read or print secrets (`AGENTS.md` hard rules). Never edit `public/data/`.
+- Never read or print secrets (`AGENTS.md`, Facts that bite). Never edit `public/data/`.
 - Do not "improve" code you are not fixing in this iteration — log it as a new backlog item.
 - Do not create new abstractions with one caller; prefer deleting to restructuring. Name the duplication (2+ real call sites) before extracting.
 - Keep replies terse; the report is the deliverable.
