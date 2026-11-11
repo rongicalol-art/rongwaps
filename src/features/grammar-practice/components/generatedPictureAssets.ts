@@ -5,28 +5,28 @@ import scene2 from '../../../assets/images/grammar-practice/generated/l02-calend
 import scene3 from '../../../assets/images/grammar-practice/generated/l02-calendar-2019-05-19-v1.webp';
 import scene4 from '../../../assets/images/grammar-practice/generated/l02-calendar-2019-12-07-v1.webp';
 import scene5 from '../../../assets/images/grammar-practice/generated/l02-calendar-july-10-trip-v1.webp';
-import scene6 from '../../../assets/images/grammar-practice/generated/l01-classmates-flags-v1.webp';
-import art0 from '../../../assets/images/grammar-practice/generated/l04-pencil-v1.webp';
-import art2 from '../../../assets/images/grammar-practice/generated/l04-exhausted-worker-v1.webp';
+import scene6 from '../../../assets/images/grammar-practice/generated/l01-classmates-flags-v2.webp';
+import art0 from '../../../assets/images/grammar-practice/generated/l04-pencil-v2.webp';
+import art2 from '../../../assets/images/grammar-practice/generated/l04-exhausted-worker-v2.webp';
 import art4 from '../../../assets/images/grammar-practice/generated/l04-fifteen-people-v1.webp';
-import art5 from '../../../assets/images/grammar-practice/generated/l04-two-teas-180-v1.webp';
-import art6 from '../../../assets/images/grammar-practice/generated/l04-jacket-2200-v1.webp';
+import art5 from '../../../assets/images/grammar-practice/generated/l04-two-teas-180-v2.webp';
+import art6 from '../../../assets/images/grammar-practice/generated/l04-jacket-2200-v2.webp';
 import art7 from '../../../assets/images/grammar-practice/generated/l04-clock-eleven-ten-v1.webp';
-import art8 from '../../../assets/images/grammar-practice/generated/l05-library-shared-v1.webp';
-import art9 from '../../../assets/images/grammar-practice/generated/l05-bedroom-reading-shared-v1.webp';
-import art10 from '../../../assets/images/grammar-practice/generated/l05-classroom-nine-generated-clock-v3.webp';
-import art11 from '../../../assets/images/grammar-practice/generated/l05-two-pens-prices-v1.webp';
-import art12 from '../../../assets/images/grammar-practice/generated/l05-hot-coffee-v1.webp';
-import art13 from '../../../assets/images/grammar-practice/generated/l05-food-counter-v3.webp';
-import art14 from '../../../assets/images/grammar-practice/generated/l05-book-on-table-v1.webp';
-import art15 from '../../../assets/images/grammar-practice/generated/l05-brothers-beside-v2.webp';
-import art16 from '../../../assets/images/grammar-practice/generated/l06-drinking-quantity-v2.webp';
-import art17 from '../../../assets/images/grammar-practice/generated/l06-eating-quantity-v1.webp';
+import art8 from '../../../assets/images/grammar-practice/generated/l05-library-shared-v2.webp';
+import art9 from '../../../assets/images/grammar-practice/generated/l05-bedroom-reading-shared-v2.webp';
+import art10 from '../../../assets/images/grammar-practice/generated/l05-classroom-nine-generated-clock-v4.webp';
+import art11 from '../../../assets/images/grammar-practice/generated/l05-two-pens-prices-v2.webp';
+import art12 from '../../../assets/images/grammar-practice/generated/l05-hot-coffee-v2.webp';
+import art13 from '../../../assets/images/grammar-practice/generated/l05-food-counter-v4.webp';
+import art14 from '../../../assets/images/grammar-practice/generated/l05-book-on-table-v2.webp';
+import art15 from '../../../assets/images/grammar-practice/generated/l05-brothers-beside-v3.webp';
+import art16 from '../../../assets/images/grammar-practice/generated/l06-drinking-quantity-v3.webp';
+import art17 from '../../../assets/images/grammar-practice/generated/l06-eating-quantity-v2.webp';
 import art18 from '../../../assets/images/grammar-practice/generated/l06-restless-night-v1.webp';
-import art19 from '../../../assets/images/grammar-practice/generated/l06-reading-menu-v1.webp';
-import art20 from '../../../assets/images/grammar-practice/generated/l06-television-home-v1.webp';
-import art21 from '../../../assets/images/grammar-practice/generated/l06-cinema-entrance-v3.webp';
-import art22 from '../../../assets/images/grammar-practice/generated/l06-library-permission-v2.webp';
+import art19 from '../../../assets/images/grammar-practice/generated/l06-reading-menu-v2.webp';
+import art20 from '../../../assets/images/grammar-practice/generated/l06-television-home-v2.webp';
+import art21 from '../../../assets/images/grammar-practice/generated/l06-cinema-entrance-v4.webp';
+import art22 from '../../../assets/images/grammar-practice/generated/l06-library-permission-v3.webp';
 import art23 from '../../../assets/images/grammar-practice/generated/l07-usa-to-taiwan-v1.webp';
 import art24 from '../../../assets/images/grammar-practice/generated/l07-home-to-school-v1.webp';
 import art25 from '../../../assets/images/grammar-practice/generated/l07-restaurant-to-library-v1.webp';
@@ -45,11 +45,11 @@ import art37 from '../../../assets/images/grammar-practice/generated/l09-l9g2-p3
 import art38 from '../../../assets/images/grammar-practice/generated/l09-l9g3-p1-art-class-then-tennis-v1.webp';
 import art39 from '../../../assets/images/grammar-practice/generated/l09-l9g3-p2-library-then-mountains-v1.webp';
 import art40 from '../../../assets/images/grammar-practice/generated/l09-l9g3-p3-swim-then-dinner-v1.webp';
-import art41 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p1-sore-throat-v1.webp';
+import art41 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p1-sore-throat-v2.webp';
 import art42 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p2-crutches-cast-v1.webp';
-import art43 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p3-coffee-cup-two-cookies-v1.webp';
+import art43 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p3-coffee-cup-two-cookies-v2.webp';
 import art44 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p4-car-borrow-request-v1.webp';
-import art45 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p5-library-quiet-rule-v1.webp';
+import art45 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p5-library-quiet-rule-v2.webp';
 import art46 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p6-upstairs-table-downstairs-sleeping-v1.webp';
 import art47 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p7-homework-at-2100-v1.webp';
 import art48 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p9-post-office-letter-v2.webp';
@@ -105,32 +105,32 @@ import art98 from '../../../assets/images/grammar-practice/generated/l15-l15g1-p
 import art99 from '../../../assets/images/grammar-practice/generated/l15-l15g2-p1-zhongming-watching-tv-v1.webp';
 import art100 from '../../../assets/images/grammar-practice/generated/l15-l15g2-p2-guoan-cycling-fast-v1.webp';
 import art101 from '../../../assets/images/grammar-practice/generated/l15-l15g2-p3-yiwen-music-coffee-v1.webp';
-import art102 from '../../../assets/images/grammar-practice/generated/l01-busy-worker-v1.webp';
-import art103 from '../../../assets/images/grammar-practice/generated/l01-tired-and-zhongming-v1.webp';
+import art102 from '../../../assets/images/grammar-practice/generated/l01-busy-worker-v2.webp';
+import art103 from '../../../assets/images/grammar-practice/generated/l01-tired-and-zhongming-v2.webp';
 import art104 from '../../../assets/images/grammar-practice/generated/l01-youmei-japan-v1.webp';
-import art105 from '../../../assets/images/grammar-practice/generated/l01-cute-girl-v1.webp';
-import art106 from '../../../assets/images/grammar-practice/generated/l01-jiale-book-v1.webp';
+import art105 from '../../../assets/images/grammar-practice/generated/l01-cute-girl-v2.webp';
+import art106 from '../../../assets/images/grammar-practice/generated/l01-jiale-book-v2.webp';
 import art107 from '../../../assets/images/grammar-practice/generated/l02-phone-v1.webp';
 import art108 from '../../../assets/images/grammar-practice/generated/l02-hot-day-v1.webp';
-import art109 from '../../../assets/images/grammar-practice/generated/l01-youmei-pretty-v1.webp';
-import art110 from '../../../assets/images/grammar-practice/generated/l03-two-flowers-v1.webp';
-import art111 from '../../../assets/images/grammar-practice/generated/l03-dad-book-v1.webp';
-import art112 from '../../../assets/images/grammar-practice/generated/l03-cake-dream-v1.webp';
-import art113 from '../../../assets/images/grammar-practice/generated/l03-gift-jiale-v1.webp';
-import art114 from '../../../assets/images/grammar-practice/generated/l03-three-shirts-v1.webp';
-import art115 from '../../../assets/images/grammar-practice/generated/l03-four-flowers-v1.webp';
-import art116 from '../../../assets/images/grammar-practice/generated/l03-shop-things-v1.webp';
-import art117 from '../../../assets/images/grammar-practice/generated/l03-big-small-gift-v1.webp';
-import art118 from '../../../assets/images/grammar-practice/generated/l03-new-old-book-v1.webp';
-import art119 from '../../../assets/images/grammar-practice/generated/l03-plain-fancy-cake-v1.webp';
-import art120 from '../../../assets/images/grammar-practice/generated/l03-bitter-tea-v1.webp';
-import art121 from '../../../assets/images/grammar-practice/generated/l04-shirt-too-small-v1.webp';
-import art122 from '../../../assets/images/grammar-practice/generated/l04-baby-to-ten-v1.webp';
-import art123 from '../../../assets/images/grammar-practice/generated/l04-pens-and-rose-v1.webp';
-import art124 from '../../../assets/images/grammar-practice/generated/l10-glasses-fur-jacket-v1.webp';
-import art125 from '../../../assets/images/grammar-practice/generated/l10-beef-noodles-v1.webp';
-import art126 from '../../../assets/images/grammar-practice/generated/l11-hungry-then-milk-v1.webp';
-import art127 from '../../../assets/images/grammar-practice/generated/l12-writes-chinese-not-english-v1.webp';
+import art109 from '../../../assets/images/grammar-practice/generated/l01-youmei-pretty-v2.webp';
+import art110 from '../../../assets/images/grammar-practice/generated/l03-two-flowers-v2.webp';
+import art111 from '../../../assets/images/grammar-practice/generated/l03-dad-book-v2.webp';
+import art112 from '../../../assets/images/grammar-practice/generated/l03-cake-dream-v2.webp';
+import art113 from '../../../assets/images/grammar-practice/generated/l03-gift-jiale-v2.webp';
+import art114 from '../../../assets/images/grammar-practice/generated/l03-three-shirts-v2.webp';
+import art115 from '../../../assets/images/grammar-practice/generated/l03-four-flowers-v2.webp';
+import art116 from '../../../assets/images/grammar-practice/generated/l03-shop-things-v2.webp';
+import art117 from '../../../assets/images/grammar-practice/generated/l03-big-small-gift-v2.webp';
+import art118 from '../../../assets/images/grammar-practice/generated/l03-new-old-book-v2.webp';
+import art119 from '../../../assets/images/grammar-practice/generated/l03-plain-fancy-cake-v2.webp';
+import art120 from '../../../assets/images/grammar-practice/generated/l03-bitter-tea-v2.webp';
+import art121 from '../../../assets/images/grammar-practice/generated/l04-shirt-too-small-v2.webp';
+import art122 from '../../../assets/images/grammar-practice/generated/l04-baby-to-ten-v2.webp';
+import art123 from '../../../assets/images/grammar-practice/generated/l04-pens-and-rose-v2.webp';
+import art124 from '../../../assets/images/grammar-practice/generated/l10-glasses-fur-jacket-v2.webp';
+import art125 from '../../../assets/images/grammar-practice/generated/l10-beef-noodles-v2.webp';
+import art126 from '../../../assets/images/grammar-practice/generated/l11-hungry-then-milk-v2.webp';
+import art127 from '../../../assets/images/grammar-practice/generated/l12-writes-chinese-not-english-v2.webp';
 import art128 from '../../../assets/images/grammar-practice/generated/b2l01-girl-on-chair-v1.webp';
 import art129 from '../../../assets/images/grammar-practice/generated/b2l01-students-shop-front-v1.webp';
 import art130 from '../../../assets/images/grammar-practice/generated/b2l01-writing-phone-number-v1.webp';
@@ -197,7 +197,7 @@ export const generatedPictureAssets: Record<string, { src: string; caption?: str
   'b2:39:0.148,0.8,0.22,0.142': { src: art131, alt: "A man driving a red car with music notes around him." },
   'b2:39:0.408,0.79,0.222,0.155': { src: art132, alt: "A boy eating from a bowl while watching television." },
   'b2:39:0.675,0.8,0.222,0.145': { src: art133, alt: "A man and a woman chatting over coffee at a café table." },
-  '272:0.182,0.24,0.24,0.125': { src: art127, alt: "He writes Chinese well (a red circle) but not English (a red cross)." },
+  '272:0.182,0.24,0.24,0.125': { src: art127, alt: "He writes 你好嗎 neatly, marked with a red circle; his English attempt is crossed out, marked with a red cross." },
   '228:0.714,0.648,0.1,0.076': { src: art125, alt: "A steaming bowl of beef noodle soup." },
   '228:0.37,0.641,0.112,0.085': { src: art124, alt: "A young man in stylish glasses and a fur-collar jacket." },
   '107:0.68,0.29,0.16,0.11': { src: art123, caption: "US$8.45", alt: "Three pens and a red rose with a price tag." },
@@ -264,11 +264,11 @@ export const generatedPictureAssets: Record<string, { src: string; caption?: str
   '208:0.14,0.51,0.215,0.095': { src: art38 },
   '208:0.36,0.51,0.27,0.098': { src: art39 },
   '208:0.65,0.51,0.22,0.098': { src: art40 },
-  '213:0.2,0.465,0.16,0.112': { src: art41 },
+  '213:0.2,0.465,0.16,0.112': { src: art41, alt: "A young man with a cold, in a scarf with hot tea, points at his mouth beside a crossed-out speech bubble: he has lost his voice." },
   '213:0.43,0.462,0.13,0.118': { src: art42 },
   '213:0.67,0.465,0.17,0.103': { src: art43 },
   '214:0.125,0.445,0.735,0.2': { src: art44 },
-  '214:0.39,0.46,0.235,0.155': { src: art45 },
+  '214:0.39,0.46,0.235,0.155': { src: art45, alt: "A quiet library: students reading at their tables while one girl hushes her friend." },
   '214:0.62,0.46,0.24,0.165': { src: art46 },
   '215:0.19,0.455,0.22,0.135': { src: art47 },
   '215:0.634,0.455,0.225,0.148': { src: art48 },
