@@ -208,7 +208,7 @@
           "traditional": "「你過來！」",
           "simplified": "「你过来！」",
           "pinyin": "“Nǐ guòlái!”",
-          "english": "Mom says, \"Come over here!\""
+          "english": "Come over here!"
         }
       },
       {
@@ -539,7 +539,8 @@
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "出來"
+                  "出來",
+                  "出去"
                 ]
               },
               {
@@ -581,15 +582,6 @@
         "repairs": [
           {
             "placed": [
-              "出去"
-            ],
-            "mark": [
-              "出去"
-            ],
-            "note": "We see him from outside the shop, and he moves toward us: 來."
-          },
-          {
-            "placed": [
               "進來"
             ],
             "mark": [
@@ -622,7 +614,15 @@
           "simplified": "那位先生从便利商店走出来。",
           "pinyin": "Nà wèi xiānshēng cóng biànlì shāngdiàn zǒu chūlái.",
           "english": "That gentleman walks out of the convenience store."
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "那位先生從便利商店走出去。",
+            "simplified": "那位先生从便利商店走出去。",
+            "pinyin": "Nà wèi xiānshēng cóng biànlì shāngdiàn zǒu chūqù.",
+            "english": "That gentleman walks out of the convenience store."
+          }
+        ]
       },
       {
         "id": "b2l3g2-3",
@@ -899,11 +899,25 @@
             "pinyin": "qù"
           },
           {
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái"
+          },
+          {
             "traditional": "在",
             "pinyin": "zài"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "來"
+            ],
+            "mark": [
+              "來"
+            ],
+            "note": "The speaker is not at home yet, so the fruit moves away from here: 去."
+          },
           {
             "placed": [
               "在"
@@ -1021,7 +1035,7 @@
           "traditional": "樓下的那張沙發，我要搬上樓去。",
           "simplified": "楼下的那张沙发，我要搬上楼去。",
           "pinyin": "Lóuxià de nà zhāng shāfā, wǒ yào bān shànglóu qù.",
-          "english": "I am going to move that sofa from downstairs up to the upper floor."
+          "english": "I'm going to move that downstairs sofa upstairs."
         }
       },
       {
@@ -1223,19 +1237,19 @@
             "pinyin": "qù"
           },
           {
-            "traditional": "在",
-            "pinyin": "zài"
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "在"
+              "不"
             ],
             "mark": [
-              "在"
+              "不"
             ],
-            "note": "在 says where something is. The thing moved comes after 把, and the direction after the verb."
+            "note": "This is about yesterday. Something that did not happen in the past is negated with 沒, before 把."
           }
         ],
         "fallbackRepair": "沒 goes before 把; then the verb, the direction 回, the place, and 去 last.",
@@ -1511,8 +1525,9 @@
             "pinyin": "xiūxí"
           },
           {
-            "traditional": "了",
-            "pinyin": "le"
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
           }
         ],
         "repairs": [
@@ -1527,12 +1542,12 @@
           },
           {
             "placed": [
-              "了"
+              "一點兒"
             ],
             "mark": [
-              "了"
+              "一點兒"
             ],
-            "note": "The doubled verb is for something still to be done, so there is no 了 inside it: 認識認識."
+            "note": "一點兒 does not go with this verb. Doing something in a light, casual way is said by doubling the verb: 認識認識."
           }
         ],
         "fallbackRepair": "The whole two-character verb is said twice: 認識認識.",
@@ -1596,8 +1611,9 @@
             "pinyin": "liànxí"
           },
           {
-            "traditional": "了",
-            "pinyin": "le"
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
           }
         ],
         "repairs": [
@@ -1612,12 +1628,12 @@
           },
           {
             "placed": [
-              "了"
+              "一點兒"
             ],
             "mark": [
-              "了"
+              "一點兒"
             ],
-            "note": "The doubled verb is for something still to be done, so there is no 了 inside it: 休息休息."
+            "note": "一點兒 does not go after 休息 like this. A short, casual rest is said by doubling the verb: 休息休息."
           }
         ],
         "fallbackRepair": "The whole two-character verb is said twice: 休息休息.",
@@ -1683,8 +1699,9 @@
             "pinyin": "huānyíng"
           },
           {
-            "traditional": "了",
-            "pinyin": "le"
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
           }
         ],
         "repairs": [
@@ -1699,12 +1716,12 @@
           },
           {
             "placed": [
-              "了"
+              "一點兒"
             ],
             "mark": [
-              "了"
+              "一點兒"
             ],
-            "note": "The doubled verb is for something still to be done, so there is no 了 inside it: 慶祝慶祝."
+            "note": "一點兒 does not go with this verb. Doing something in a light, casual way is said by doubling the verb: 慶祝慶祝."
           }
         ],
         "fallbackRepair": "The whole two-character verb is said twice: 慶祝慶祝.",
@@ -1836,7 +1853,7 @@
         "result": {
           "traditional": "可是喝起來不好喝。",
           "simplified": "可是喝起来不好喝。",
-          "pinyin": "Kěshì hē qǐlái bù hǎohē.",
+          "pinyin": "Kěshì hēqǐlái bù hǎohē.",
           "english": "But it doesn't taste good."
         }
       },
@@ -2074,7 +2091,7 @@
         "result": {
           "traditional": "可是我們有四個孩子，住起來太小了。",
           "simplified": "可是我们有四个孩子，住起来太小了。",
-          "pinyin": "Kěshì wǒmen yǒu sì ge háizi, zhù qǐlái tài xiǎo le.",
+          "pinyin": "Kěshì wǒmen yǒu sì ge háizi, zhùqǐlái tài xiǎo le.",
           "english": "But we have four children; it would be too small to live in."
         }
       }
@@ -2486,8 +2503,8 @@
               },
               {
                 "type": "text",
-                "traditional": "書店。",
-                "simplified": "书店。"
+                "traditional": "銀行。",
+                "simplified": "银行。"
               }
             ]
           }
@@ -2528,7 +2545,7 @@
             "mark": [
               "都"
             ],
-            "note": "都 sums up what comes before it. Adding one more thing after 除了 takes 還."
+            "note": "都 does not add anything new. After 除了, one more thing is added with 還."
           },
           {
             "placed": [
@@ -2551,10 +2568,10 @@
         ],
         "fallbackRepair": "除了 before the first thing, then 還 + 有 before the one added.",
         "result": {
-          "traditional": "有，除了便利商店，還有書店。",
-          "simplified": "有，除了便利商店，还有书店。",
-          "pinyin": "Yǒu, chúle biànlì shāngdiàn, hái yǒu shūdiàn.",
-          "english": "Yes. Besides a convenience store, there is also a bookstore."
+          "traditional": "有，除了便利商店，還有銀行。",
+          "simplified": "有，除了便利商店，还有银行。",
+          "pinyin": "Yǒu, chúle biànlì shāngdiàn, hái yǒu yínháng.",
+          "english": "Yes. Besides a convenience store, there is also a bank."
         }
       },
       {
@@ -2773,7 +2790,7 @@
             "mark": [
               "都"
             ],
-            "note": "都 sums up what comes before it. Adding a second problem takes 還."
+            "note": "都 does not add anything new. After 除了, a second problem is added with 還."
           }
         ],
         "fallbackRepair": "除了 before the first problem, then 還 before the second.",
@@ -2891,7 +2908,7 @@
           "traditional": "妹妹昨天把臥室打掃得很乾淨。",
           "simplified": "妹妹昨天把卧室打扫得很干净。",
           "pinyin": "Mèimei zuótiān bǎ wòshì dǎsǎo de hěn gānjìng.",
-          "english": "My younger sister cleaned the bedroom very clean yesterday."
+          "english": "My younger sister got the bedroom really clean yesterday."
         }
       },
       {

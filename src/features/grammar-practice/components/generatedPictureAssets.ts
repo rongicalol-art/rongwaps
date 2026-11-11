@@ -139,6 +139,16 @@ import art132 from '../../../assets/images/grammar-practice/generated/b2l01-eati
 import art133 from '../../../assets/images/grammar-practice/generated/b2l01-coffee-chat-v1.webp';
 import art134 from '../../../assets/images/grammar-practice/generated/b2l11-living-room-v1.webp';
 import art135 from '../../../assets/images/grammar-practice/generated/b2l11-street-shops-v1.webp';
+import art136 from '../../../assets/images/grammar-practice/generated/b2l03-woman-going-out-v1.webp';
+import art137 from '../../../assets/images/grammar-practice/generated/b2l03-mother-beckons-v1.webp';
+import art138 from '../../../assets/images/grammar-practice/generated/b2l03-boy-runs-downstairs-v1.webp';
+import art139 from '../../../assets/images/grammar-practice/generated/b2l03-man-leaves-shop-v1.webp';
+import art140 from '../../../assets/images/grammar-practice/generated/b2l04-hot-day-v1.webp';
+import art141 from '../../../assets/images/grammar-practice/generated/b2l04-expensive-shoes-v1.webp';
+import art142 from '../../../assets/images/grammar-practice/generated/b2l04-tasty-drink-v1.webp';
+import art143 from '../../../assets/images/grammar-practice/generated/b2l04-singer-v1.webp';
+import art144 from '../../../assets/images/grammar-practice/generated/b2l04-boring-movie-v1.webp';
+import art145 from '../../../assets/images/grammar-practice/generated/b2l04-basketball-shot-v1.webp';
 
 /** Illustrations for a clock time, a calendar day or the book's people row, keyed by what they show (`sceneArtKey`). */
 export const generatedSceneAssets: Record<string, { src: string; alt: string }> = {
@@ -169,6 +179,16 @@ export function pictureArtKey(scene: { book?: number; page: number; box: number[
 
 /** Reviewed illustrations keyed by the exact source crop (`pictureArtKey`). */
 export const generatedPictureAssets: Record<string, { src: string; caption?: string; alt?: string }> = {
+  'b2:109:0.16,0.4125,0.205,0.153': { src: art140, alt: "A blazing sun; a man wipes the sweat from his face." },
+  'b2:109:0.424,0.44,0.254,0.095': { src: art141, alt: "A pair of leather shoes on a display stand with a high price tag." },
+  'b2:109:0.705,0.4175,0.132,0.148': { src: art142, alt: "A man happily drinking a cup of bubble tea." },
+  'b2:110:0.125,0.4,0.245,0.16': { src: art143, alt: "A woman sings into a microphone while three listeners smile and clap." },
+  'b2:110:0.392,0.4,0.24,0.16': { src: art144, alt: "In a cinema, a man and a woman are fast asleep in their seats." },
+  'b2:110:0.655,0.4,0.225,0.165': { src: art145, alt: "A basketball player shoots and the ball drops through the hoop." },
+  'b2:77:0.179,0.339,0.262,0.187': { src: art136, alt: "A woman opens a door and steps out of a room." },
+  'b2:77:0.584,0.372,0.268,0.156': { src: art137, alt: "A mother raises her hand and beckons a boy with a backpack toward her." },
+  'b2:78:0.167,0.43,0.289,0.195': { src: art138, alt: "A boy with a backpack runs down the stairs from the second floor." },
+  'b2:78:0.552,0.439,0.305,0.177': { src: art139, alt: "A man walks out of a convenience store toward the street." },
   'b2:251:0.174,0.285,0.56,0.285': { src: art134, alt: "A living room: two people sit on a sofa, a flower in a vase and two plates stand on the coffee table, four pictures hang on the wall, and a dog sleeps on the floor." },
   'b2:251:0.175,0.5815,0.528,0.305': { src: art135, alt: "A street with a convenience store, a restaurant and a bookstore: a scooter is parked in front of the convenience store, a car in front of the restaurant, and two students stand in front of the bookstore." },
   'b2:38:0.142,0.53,0.145,0.16': { src: art128, alt: "A little girl sitting on a wooden chair." },
