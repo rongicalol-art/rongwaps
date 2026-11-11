@@ -98,7 +98,8 @@
           "simplified": "这里有多少钱，你可以帮我算一下吗？",
           "pinyin": "Zhèlǐ yǒu duōshǎo qián, nǐ kěyǐ bāng wǒ suàn yíxià ma?",
           "english": "How much money is here? Could you count it for me?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g1-2",
@@ -194,7 +195,8 @@
           "simplified": "你可以来一下我的办公室吗？",
           "pinyin": "Nǐ kěyǐ lái yíxià wǒ de bàngōngshì ma?",
           "english": "Could you come to my office for a moment?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g1-3",
@@ -294,7 +296,8 @@
           "traditional": "我想一下。",
           "pinyin": "Wǒ xiǎng yíxià.",
           "english": "Let me think for a moment."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -336,12 +339,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "在家"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "在家"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "休息"
                 ]
@@ -357,6 +363,10 @@
           {
             "traditional": "最好",
             "pinyin": "zuìhǎo"
+          },
+          {
+            "traditional": "在家",
+            "pinyin": "zài jiā"
           },
           {
             "traditional": "休息",
@@ -397,7 +407,8 @@
           "traditional": "那你最好在家休息。",
           "pinyin": "Nà nǐ zuìhǎo zài jiā xiūxí.",
           "english": "Then you had better rest at home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g2-2",
@@ -494,7 +505,8 @@
           "simplified": "你明天最好早一点儿来。",
           "pinyin": "Nǐ míngtiān zuìhǎo zǎo yìdiǎnr lái.",
           "english": "You had better come a little earlier tomorrow."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g2-3",
@@ -587,7 +599,8 @@
           "simplified": "那天人很多，你最好不要开车去。",
           "pinyin": "Nà tiān rén hěn duō, nǐ zuìhǎo búyào kāichē qù.",
           "english": "It will be very crowded that day. You had better not drive there."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -712,7 +725,8 @@
             "pinyin": "Wǒ mǎi de zhè jiàn yīfu búdàn bú guì, yě hǎokàn.",
             "english": "This piece of clothing I bought is not only inexpensive but also good-looking."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l1g3-2",
@@ -825,7 +839,8 @@
             "pinyin": "Wǒ de Yìnní péngyǒu búdàn Fǎwén hěn hǎo, Yīngwén yě hěn hǎo.",
             "english": "My Indonesian friend is not only good at French but also good at English."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l1g3-3",
@@ -936,7 +951,8 @@
           "simplified": "因为我不但要上课，也要工作，所以比较忙。",
           "pinyin": "Yīnwèi wǒ búdàn yào shàngkè, yě yào gōngzuò, suǒyǐ bǐjiào máng.",
           "english": "Because I not only have classes but also have to work, so I am rather busy."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1023,7 +1039,8 @@
           "simplified": "这家店的面包很好吃，每天下午三点以前就卖完了。",
           "pinyin": "Zhè jiā diàn de miànbāo hěn hǎochī, měitiān xiàwǔ sān diǎn yǐqián jiù màiwán le.",
           "english": "This shop's bread is delicious; it is sold out before three every afternoon."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g4-2",
@@ -1114,7 +1131,8 @@
           "simplified": "王先生早上吃完早饭，就去上班了。",
           "pinyin": "Wáng xiānshēng zǎoshàng chīwán zǎofàn, jiù qù shàngbān le.",
           "english": "Mr. Wang finished breakfast this morning and then went to work."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g4-3",
@@ -1234,7 +1252,8 @@
           "simplified": "昨天买的牛奶还没喝完，明天再买吧！",
           "pinyin": "Zuótiān mǎi de niúnǎi háiméi hēwán, míngtiān zài mǎi ba!",
           "english": "We haven't finished the milk we bought yesterday. Let's buy more tomorrow!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1340,7 +1359,8 @@
           "traditional": "孩子坐在椅子上。",
           "pinyin": "Háizi zuò zài yǐzi shàng.",
           "english": "The child is sitting on the chair."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g5-2",
@@ -1443,7 +1463,8 @@
           "simplified": "有两个学生站在商店前面。",
           "pinyin": "Yǒu liǎng ge xuéshēng zhàn zài shāngdiàn qiánmiàn.",
           "english": "Two students are standing in front of the shop."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g5-3",
@@ -1548,7 +1569,8 @@
           "simplified": "他的电话号码写在纸上。",
           "pinyin": "Tā de diànhuà hàomǎ xiě zài zhǐ shàng.",
           "english": "His phone number is written on the paper."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1733,7 +1755,8 @@
           "simplified": "这些漂亮的铅笔，你打算送给谁？",
           "pinyin": "Zhèxiē piàoliàng de qiānbǐ, nǐ dǎsuàn sòng gěi shéi?",
           "english": "Who do you plan to give these pretty pencils to?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g6-3",
@@ -1825,7 +1848,8 @@
           "simplified": "这张卡片是我朋友写给我的。",
           "pinyin": "Zhè zhāng kǎpiàn shì wǒ péngyǒu xiě gěi wǒ de.",
           "english": "This card was written to me by my friend."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1961,7 +1985,8 @@
             "pinyin": "Hěn duō rén chángcháng yìbiān tīng yīnyuè, yìbiān kāichē.",
             "english": "Many people often drive while listening to music."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l1g7-2",
@@ -2089,7 +2114,8 @@
             "pinyin": "Māma bù xīwàng háizi biān kàn diànshì biān chīfàn.",
             "english": "Mom doesn't want her child to eat while watching television."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l1g7-3",
@@ -2218,7 +2244,8 @@
             "pinyin": "Tā xǐhuān gēn péngyǒu zài kāfēitīng yìbiān liáotiān, yìbiān hē kāfēi.",
             "english": "He likes to drink coffee while chatting with friends at the café."
           }
-        ]
+        ],
+        "free": true
       }
     ]
   },
@@ -2349,17 +2376,21 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "雖然"
+                  "雖然",
+                  "這個房子"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "這個房子",
-                "simplified": "这个房子"
               },
               {
                 "type": "slot",
                 "id": "s2",
+                "answers": [
+                  "這個房子",
+                  "雖然"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
                 "answers": [
                   "很小"
                 ]
@@ -2370,14 +2401,14 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "可是"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s5",
                 "answers": [
                   "很便宜"
                 ]
@@ -2394,6 +2425,11 @@
             "traditional": "雖然",
             "simplified": "虽然",
             "pinyin": "suīrán"
+          },
+          {
+            "traditional": "這個房子",
+            "simplified": "这个房子",
+            "pinyin": "zhège fángzi"
           },
           {
             "traditional": "很小",
@@ -2443,7 +2479,16 @@
           "simplified": "虽然这个房子很小，可是很便宜。",
           "pinyin": "Suīrán zhège fángzi hěn xiǎo, kěshì hěn piányí.",
           "english": "Although this house is small, it is cheap."
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "這個房子雖然很小，可是很便宜。",
+            "simplified": "这个房子虽然很小，可是很便宜。",
+            "pinyin": "Zhège fángzi suīrán hěn xiǎo, kěshì hěn piányí.",
+            "english": "Although this house is small, it is very cheap."
+          }
+        ],
+        "free": true
       },
       {
         "id": "b2l1g8-3",
@@ -2683,7 +2728,8 @@
           "simplified": "他在睡觉呢！你等一下再来找他吧。",
           "pinyin": "Tā zài shuìjiào ne! Nǐ děng yíxià zài lái zhǎo tā ba.",
           "english": "He is sleeping! Come back for him a bit later."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g9-2",
@@ -2803,7 +2849,8 @@
           "simplified": "我没空，我还有很多功课呢！",
           "pinyin": "Wǒ méi kòng, wǒ hái yǒu hěn duō gōngkè ne!",
           "english": "I'm not free. I still have a lot of homework!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l1g9-3",
@@ -2920,7 +2967,8 @@
           "simplified": "珍珠奶茶又便宜又好喝，所以我一天喝两杯呢！",
           "pinyin": "Zhēnzhū nǎichá yòu piányí yòu hǎohē, suǒyǐ wǒ yì tiān hē liǎng bēi ne!",
           "english": "Bubble tea is cheap and tasty, so I drink two cups a day!"
-        }
+        },
+        "free": true
       }
     ]
   }

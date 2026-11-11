@@ -123,7 +123,8 @@
           "simplified": "我妈妈做的年糕和萝卜糕可好吃呢！",
           "pinyin": "Wǒ māma zuò de niángāo hé luóbogāo kě hǎochī ne!",
           "english": "The rice cake and radish cake my mom makes are really delicious!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g1-2",
@@ -242,7 +243,8 @@
           "simplified": "是下星期一，你可要记得！",
           "pinyin": "Shì xià xīngqíyī, nǐ kě yào jìde!",
           "english": "It's next Monday. Be sure to remember!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g1-3",
@@ -361,7 +363,8 @@
           "simplified": "他学得可好了！",
           "pinyin": "Tā xué de kě hǎo le!",
           "english": "He has learned it really well!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -462,7 +465,8 @@
           "simplified": "弟弟不喜欢念书，看了一眼就跑出去玩了。",
           "pinyin": "Dìdi bù xǐhuān niànshū, kàn le yì yǎn jiù pǎo chūqù wán le.",
           "english": "My younger brother doesn't like studying; he took one look and ran out to play."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g2-2",
@@ -565,7 +569,8 @@
           "simplified": "这个烤鱿鱼又咸又辣，我吃了一口就不吃了。",
           "pinyin": "Zhège kǎo yóuyú yòu xián yòu là, wǒ chī le yì kǒu jiù bù chī le.",
           "english": "This grilled squid is both salty and spicy; I took one bite and stopped eating."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g2-3",
@@ -676,7 +681,8 @@
           "simplified": "没关系，我再说一遍，你就懂了。",
           "pinyin": "Méiguānxi, wǒ zài shuō yí biàn, nǐ jiù dǒng le.",
           "english": "It's all right. I'll say it once more, and then you'll understand."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -777,7 +783,8 @@
           "simplified": "我在楼下叫了弟弟好几次，他才从楼上慢慢地走下来。",
           "pinyin": "Wǒ zài lóuxià jiào le dìdi hǎojǐ cì, tā cái cóng lóushàng mànmàn de zǒu xiàlái.",
           "english": "I called my younger brother several times from downstairs before he slowly walked down."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g3-2",
@@ -872,7 +879,8 @@
           "simplified": "开会的时候，员工们都把老板说的话写下来了。",
           "pinyin": "Kāihuì de shíhòu, yuángōngmen dōu bǎ lǎobǎn shuō de huà xiě xiàlái le.",
           "english": "During the meeting, the staff all wrote down what the boss said."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g3-3",
@@ -966,7 +974,8 @@
           "simplified": "这个公寓又便宜又干净，我们租下来吧！",
           "pinyin": "Zhège gōngyù yòu piányí yòu gānjìng, wǒmen zū xiàlái ba!",
           "english": "This apartment is both cheap and clean. Let's take it!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1077,7 +1086,8 @@
           "simplified": "今天的天气很奇怪，说下雨就下雨。",
           "pinyin": "Jīntiān de tiānqì hěn qíguài, shuō xiàyǔ jiù xiàyǔ.",
           "english": "The weather is strange today; it rains without any warning."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g4-2",
@@ -1186,7 +1196,8 @@
           "simplified": "好吧，那别等爸爸了，我们说吃就吃吧。",
           "pinyin": "Hǎo ba, nà bié děng bàba le, wǒmen shuō chī jiù chī ba.",
           "english": "All right, let's not wait for Dad then. Let's eat right now."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g4-3",
@@ -1295,7 +1306,8 @@
           "simplified": "今天大家都有空，说去就去吧。",
           "pinyin": "Jīntiān dàjiā dōu yǒukòng, shuō qù jiù qù ba.",
           "english": "Everyone is free today, so let's just go."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1338,20 +1350,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "房間",
-                "simplified": "房间"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "房間"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "這麼"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "髒"
                 ]
@@ -1368,6 +1382,11 @@
             "traditional": "誰知道",
             "simplified": "谁知道",
             "pinyin": "shéi zhīdào"
+          },
+          {
+            "traditional": "房間",
+            "simplified": "房间",
+            "pinyin": "fángjiān"
           },
           {
             "traditional": "這麼",
@@ -1428,7 +1447,8 @@
           "simplified": "我以为很快就可以把房间打扫好，谁知道房间这么脏。",
           "pinyin": "Wǒ yǐwéi hěn kuài jiù kěyǐ bǎ fángjiān dǎsǎo hǎo, shéi zhīdào fángjiān zhème zāng.",
           "english": "I thought I could get the room cleaned quickly; who knew the room was this dirty."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g5-2",
@@ -1465,27 +1485,36 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "我租的房子"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "什麼家具"
+                  "我租的房子"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
+                  "什麼家具"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
                   "都"
                 ]
               },
               {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "沒有"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "沒有。",
-                "simplified": "没有。"
+                "traditional": "。"
               }
             ]
           }
@@ -1497,6 +1526,10 @@
             "pinyin": "shéi zhīdào"
           },
           {
+            "traditional": "我租的房子",
+            "pinyin": "wǒ zū de fángzi"
+          },
+          {
             "traditional": "什麼家具",
             "simplified": "什么家具",
             "pinyin": "shénme jiājù"
@@ -1504,6 +1537,11 @@
           {
             "traditional": "都",
             "pinyin": "dōu"
+          },
+          {
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méiyǒu"
           },
           {
             "traditional": "難怪",
@@ -1555,7 +1593,8 @@
           "simplified": "我也以为有，谁知道我租的房子什么家具都没有。",
           "pinyin": "Wǒ yě yǐwéi yǒu, shéi zhīdào wǒ zū de fángzi shénme jiājù dōu méiyǒu.",
           "english": "I thought so too; who knew the place I rented would have no furniture at all."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l15g5-3",
@@ -1678,7 +1717,8 @@
           "simplified": "我十天前就上网订过票了，谁知道早就卖光了。",
           "pinyin": "Wǒ shí tiān qián jiù shàngwǎng dìngguo piào le, shéi zhīdào zǎojiù màiguāng le.",
           "english": "I went online to book ten days ago; who knew they had long been sold out."
-        }
+        },
+        "free": true
       }
     ]
   }

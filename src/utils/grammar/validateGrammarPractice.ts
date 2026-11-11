@@ -56,7 +56,6 @@ function itemIssues(item: PracticeItem, bookId: number): string[] {
       const slots = practiceSlots(item);
       if (slots.length === 0) problems.push('no slots.');
       if (item.free && item.gaps) problems.push('free and gaps cannot be combined.');
-      if (item.free && item.lines.some((line) => practiceRuns({ ...item, lines: [line] }).length > 1)) problems.push('a build line keeps its blanks together: no words between them.');
       if (item.free && !practiceRuns(item).some((run) => run.length > 1)) problems.push('a build line needs at least two words in a row.');
       slots.forEach((slot) => slot.answers.forEach((answer) => {
         if (!tileNames.includes(answer)) problems.push(`slot ${slot.id} answer ${answer} is not a tile.`);

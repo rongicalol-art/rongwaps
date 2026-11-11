@@ -43,13 +43,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "那輛",
-                "simplified": "那辆"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "那輛"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "紅色的英國車"
                 ]
@@ -69,6 +71,11 @@
           {
             "traditional": "是",
             "pinyin": "shì"
+          },
+          {
+            "traditional": "那輛",
+            "simplified": "那辆",
+            "pinyin": "nà liàng"
           },
           {
             "traditional": "紅色的英國車",
@@ -123,7 +130,8 @@
           "simplified": "就是那辆红色的英国车。",
           "pinyin": "Jiùshì nà liàng hóngsè de Yīngguó chē.",
           "english": "It's that red British car right there."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g1-2",
@@ -162,13 +170,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "那本中文書的",
-                "simplified": "那本中文书的"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "那本中文書的"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "旁邊"
                 ]
@@ -188,6 +198,11 @@
           {
             "traditional": "在",
             "pinyin": "zài"
+          },
+          {
+            "traditional": "那本中文書的",
+            "simplified": "那本中文书的",
+            "pinyin": "nà běn Zhōngwén shū de"
           },
           {
             "traditional": "旁邊",
@@ -242,7 +257,8 @@
           "simplified": "就在那本中文书的旁边。",
           "pinyin": "Jiù zài nà běn Zhōngwén shū de pángbiān.",
           "english": "They are right beside that Chinese book."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g1-3",
@@ -281,19 +297,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "那位"
-              },
-              {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "長頭髮"
+                  "那位"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "長頭髮的小姐"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "的小姐。"
+                "traditional": "。"
               }
             ]
           }
@@ -308,9 +327,13 @@
             "pinyin": "shì"
           },
           {
-            "traditional": "長頭髮",
-            "simplified": "长头发",
-            "pinyin": "cháng tóufǎ"
+            "traditional": "那位",
+            "pinyin": "nà wèi"
+          },
+          {
+            "traditional": "長頭髮的小姐",
+            "simplified": "长头发的小姐",
+            "pinyin": "cháng tóufǎ de xiǎojiě"
           },
           {
             "traditional": "在",
@@ -360,7 +383,8 @@
           "simplified": "就是那位长头发的小姐。",
           "pinyin": "Jiùshì nà wèi cháng tóufǎ de xiǎojiě.",
           "english": "She is that young lady with long hair right there."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -475,7 +499,8 @@
           "simplified": "现在上网买东西很方便，什么东西都买得到。",
           "pinyin": "Xiànzài shàngwǎng mǎi dōngxi hěn fāngbiàn, shénme dōngxi dōu mǎidedào.",
           "english": "Shopping online is very convenient now; you can get anything."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g2-2",
@@ -577,7 +602,8 @@
           "traditional": "前面的人太高了，我看不到黑板上的字。",
           "pinyin": "Qiánmiàn de rén tài gāo le, wǒ kànbúdào hēibǎn shàng de zì.",
           "english": "The person in front is too tall; I can't see the words on the blackboard."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g2-3",
@@ -680,7 +706,8 @@
           "simplified": "那张画挂在墙上，小孩子拿不到。",
           "pinyin": "Nà zhāng huà guà zài qiángshàng, xiǎo háizi nábúdào.",
           "english": "That painting hangs on the wall; a small child can't reach it."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -793,7 +820,8 @@
           "simplified": "我没学过日文，当然听不懂日文歌。",
           "pinyin": "Wǒ méi xué guò Rìwén, dāngrán tīngbùdǒng Rìwén gē.",
           "english": "I've never learned Japanese, so of course I can't understand Japanese songs."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g3-2",
@@ -897,7 +925,8 @@
           "simplified": "这本英文书不难，我们都看得懂。",
           "pinyin": "Zhè běn Yīngwén shū bù nán, wǒmen dōu kàndedǒng.",
           "english": "This English book isn't hard; we can all understand it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g3-3",
@@ -1002,7 +1031,8 @@
           "simplified": "那个学生很聪明，老师上课说的话，他都听懂了。",
           "pinyin": "Nàge xuéshēng hěn cōngmíng, lǎoshī shàngkè shuō de huà, tā dōu tīngdǒng le.",
           "english": "That student is very bright; he understood everything the teacher said in class."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1129,7 +1159,8 @@
           "simplified": "今天热得不得了。",
           "pinyin": "Jīntiān rè de bùdéliǎo.",
           "english": "It is terribly hot today."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-2",
@@ -1247,7 +1278,8 @@
           "simplified": "这双鞋贵得不得了。",
           "pinyin": "Zhè shuāng xié guì de bùdéliǎo.",
           "english": "These shoes are terribly expensive."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-3",
@@ -1359,7 +1391,8 @@
           "traditional": "好喝得不得了。",
           "pinyin": "Hǎohē de bùdéliǎo.",
           "english": "It is incredibly tasty."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-4",
@@ -1487,7 +1520,8 @@
           "simplified": "好听极了。",
           "pinyin": "Hǎotīng jíle.",
           "english": "It sounds absolutely wonderful."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-5",
@@ -1619,7 +1653,8 @@
           "simplified": "他们觉得无聊极了。",
           "pinyin": "Tāmen juéde wúliáo jíle.",
           "english": "They think it is extremely boring."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-6",
@@ -1749,7 +1784,8 @@
           "simplified": "他打得好极了。",
           "pinyin": "Tā dǎ de hǎo jíle.",
           "english": "He plays extremely well."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-7",
@@ -1856,7 +1892,8 @@
           "simplified": "他聪明得不得了！",
           "pinyin": "Tā cōngmíng de bùdéliǎo!",
           "english": "He is incredibly clever!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-8",
@@ -1957,7 +1994,8 @@
           "simplified": "台湾夏天的天气热极了！",
           "pinyin": "Táiwān xiàtiān de tiānqì rè jíle!",
           "english": "Summer weather in Taiwan is extremely hot!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g4-9",
@@ -2065,7 +2103,8 @@
           "simplified": "他的房间干净极了！",
           "pinyin": "Tā de fángjiān gānjìng jíle!",
           "english": "His room is extremely clean!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2182,7 +2221,8 @@
           "simplified": "冬天到了，天气越来越冷了。",
           "pinyin": "Dōngtiān dào le, tiānqì yuèláiyuè lěng le.",
           "english": "Winter is here, and the weather is getting colder and colder."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g5-2",
@@ -2287,7 +2327,8 @@
           "simplified": "中国字越来越难写了。",
           "pinyin": "Zhōngguó zì yuèláiyuè nán xiě le.",
           "english": "Chinese characters are getting harder and harder to write."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g5-3",
@@ -2389,7 +2430,8 @@
           "simplified": "那个日本人越来越敢说中文了。",
           "pinyin": "Nàge Rìběn rén yuèláiyuè gǎn shuō Zhōngwén le.",
           "english": "That Japanese person is more and more willing to speak Chinese."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2497,7 +2539,8 @@
           "simplified": "那个牌子的表太贵了，我买不起。",
           "pinyin": "Nàge páizi de biǎo tài guì le, wǒ mǎibùqǐ.",
           "english": "Watches of that brand are too expensive; I can't afford one."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g6-2",
@@ -2601,7 +2644,8 @@
           "simplified": "那碗牛肉面只卖四十块钱，谁都吃得起。",
           "pinyin": "Nà wǎn niúròu miàn zhǐ mài sìshí kuài qián, shéi dōu chīdeqǐ.",
           "english": "That bowl of beef noodles is only forty dollars; anyone can afford to eat it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g6-3",
@@ -2814,7 +2858,8 @@
           "simplified": "这么贵，我怎么租得起？",
           "pinyin": "Zhème guì, wǒ zěnme zūdeqǐ?",
           "english": "It's so expensive. How could I afford to rent it?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2927,7 +2972,8 @@
           "simplified": "这些菜太少了，哥哥吃不饱。",
           "pinyin": "Zhèxiē cài tài shǎo le, gēge chībùbǎo.",
           "english": "There is too little food; my older brother won't get full."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g7-2",
@@ -3030,7 +3076,8 @@
           "simplified": "你晚餐只吃了一点儿水果，吃饱了吗？",
           "pinyin": "Nǐ wǎncān zhǐ chī le yìdiǎnr shuǐguǒ, chībǎo le ma?",
           "english": "You only had a little fruit for dinner. Are you full?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g7-3",
@@ -3135,7 +3182,8 @@
           "simplified": "他昨晚睡了十个钟头，当然睡饱了。",
           "pinyin": "Tā zuówǎn shuì le shí ge zhōngtóu, dāngrán shuìbǎo le.",
           "english": "He slept ten hours last night; of course he got enough sleep."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -3158,31 +3206,36 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "陳先生",
-                "simplified": "陈先生"
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "陳先生"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s1",
+                "id": "s2",
                 "answers": [
                   "對"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "做家事"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "做家事"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s4",
                 "answers": [
                   "有一點兒"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "興趣"
                 ]
@@ -3196,9 +3249,18 @@
         ],
         "tiles": [
           {
+            "traditional": "陳先生",
+            "simplified": "陈先生",
+            "pinyin": "Chén xiānshēng"
+          },
+          {
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
+          },
+          {
+            "traditional": "做家事",
+            "pinyin": "zuò jiāshì"
           },
           {
             "traditional": "有一點兒",
@@ -3239,13 +3301,14 @@
             "note": "興趣 is a thing you have, so it cannot follow 很 directly. It is 有…興趣."
           }
         ],
-        "fallbackRepair": "對 before the activity, then 有一點兒, then 興趣.",
+        "fallbackRepair": "The person first, then 對 + the activity, then 有一點兒, then 興趣.",
         "result": {
           "traditional": "陳先生對做家事有一點兒興趣。",
           "simplified": "陈先生对做家事有一点儿兴趣。",
           "pinyin": "Chén xiānshēng duì zuò jiāshì yǒu yìdiǎnr xìngqù.",
           "english": "Mr. Chen has a little interest in doing housework."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g8-2",
@@ -3255,31 +3318,36 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "山本良介"
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "山本良介"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s1",
+                "id": "s2",
                 "answers": [
                   "對"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "學中文",
-                "simplified": "学中文"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "學中文"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s4",
                 "answers": [
                   "越來越"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "有興趣"
                 ]
@@ -3293,9 +3361,18 @@
         ],
         "tiles": [
           {
+            "traditional": "山本良介",
+            "pinyin": "Shānběn Liángjiè"
+          },
+          {
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
+          },
+          {
+            "traditional": "學中文",
+            "simplified": "学中文",
+            "pinyin": "xué Zhōngwén"
           },
           {
             "traditional": "越來越",
@@ -3351,13 +3428,14 @@
             "note": "跟 means \"with\". What someone is interested in comes after 對."
           }
         ],
-        "fallbackRepair": "對 before the activity, then 越來越, then 有興趣.",
+        "fallbackRepair": "The person first, then 對 + the activity, then 越來越, then 有興趣.",
         "result": {
           "traditional": "山本良介對學中文越來越有興趣。",
           "simplified": "山本良介对学中文越来越有兴趣。",
           "pinyin": "Shānběn Liángjiè duì xué Zhōngwén yuèláiyuè yǒu xìngqù.",
           "english": "Yamamoto Ryosuke is more and more interested in learning Chinese."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g8-3",
@@ -3469,7 +3547,8 @@
           "simplified": "白小姐对逛哪个夜市都有兴趣。",
           "pinyin": "Bái xiǎojiě duì guàng nǎ ge yèshì dōu yǒu xìngqù.",
           "english": "Miss Bai is interested in strolling around any night market."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l4g8-4",
@@ -3578,7 +3657,8 @@
           "simplified": "那个学生不但对历史有兴趣，也对科学有兴趣。",
           "pinyin": "Nàge xuéshēng búdàn duì lìshǐ yǒu xìngqù, yě duì kēxué yǒu xìngqù.",
           "english": "That student is interested not only in history but also in science."
-        }
+        },
+        "free": true
       }
     ]
   }

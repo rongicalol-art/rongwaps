@@ -119,7 +119,8 @@
             "pinyin": "Zhège páizi de huàzhuāngpǐn búdàn hěn yǒumíng, érqiě hěn piányí.",
             "english": "This brand of cosmetics is not only famous but also cheap."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l10g1-2",
@@ -358,7 +359,8 @@
           "simplified": "我不但要上课，而且还要准备考试。",
           "pinyin": "Wǒ búdàn yào shàngkè, érqiě hái yào zhǔnbèi kǎoshì.",
           "english": "I not only have classes, I also have to prepare for exams."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -468,7 +470,8 @@
           "simplified": "为了准备今天的考试，我昨天晚上都没睡觉，现在累死了。",
           "pinyin": "Wèile zhǔnbèi jīntiān de kǎoshì, wǒ zuótiān wǎnshàng dōu méi shuìjiào, xiànzài lèisǐ le.",
           "english": "To prepare for today's exam I didn't sleep at all last night; now I'm dead tired."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g2-2",
@@ -573,7 +576,8 @@
           "simplified": "很多人搭捷运上班，车上挤死了，连站的地方都没有。",
           "pinyin": "Hěn duō rén dā jiéyùn shàngbān, chē shàng jǐsǐ le, lián zhàn de dìfāng dōu méiyǒu.",
           "english": "So many people take the MRT to work that the train is packed to death; there isn't even room to stand."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g2-3",
@@ -677,7 +681,8 @@
           "simplified": "已经十二点了，妹妹还没回家，妈妈担心死了。",
           "pinyin": "Yǐjīng shí'èr diǎn le, mèimei háiméi huí jiā, māma dānxīnsǐ le.",
           "english": "It's already twelve o'clock and my younger sister still isn't home; Mom is worried to death."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -805,7 +810,8 @@
           "simplified": "因为法文越学越难，所以不想学了。",
           "pinyin": "Yīnwèi Fǎwén yuè xué yuè nán, suǒyǐ bù xiǎng xué le.",
           "english": "French got harder the more he studied it, so he doesn't want to study it anymore."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g3-2",
@@ -926,7 +932,8 @@
           "simplified": "因为越练习，唱得越好。",
           "pinyin": "Yīnwèi yuè liànxí, chàng de yuè hǎo.",
           "english": "Because the more we practice, the better we sing."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g3-3",
@@ -1042,7 +1049,8 @@
             "pinyin": "Nǐ chángcháng chī zhàjī, shǔtiáo, dāngrán huì yuè lái yuè pàng a!",
             "english": "You often eat fried chicken and fries, so of course you get fatter and fatter!"
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l10g3-4",
@@ -1158,7 +1166,8 @@
           "simplified": "蛋糕太甜了！为了健康，甜的东西吃得越少越好。",
           "pinyin": "Dàngāo tài tián le! Wèile jiànkāng, tián de dōngxi chī de yuè shǎo yuè hǎo.",
           "english": "Cake is too sweet! For my health, the less sweet food I eat the better."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1179,23 +1188,35 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "聽說高小姐歌唱得很好，可是誰都沒聽過，我們都不知道她",
-                "simplified": "听说高小姐歌唱得很好，可是谁都没听过，我们都不知道她"
+                "traditional": "聽說高小姐歌唱得很好，可是誰都沒聽過，我們都不知道",
+                "simplified": "听说高小姐歌唱得很好，可是谁都没听过，我们都不知道"
               },
               {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
+                  "她",
                   "到底"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "唱得"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "到底",
+                  "她"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
+                "answers": [
+                  "唱得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
                 "answers": [
                   "好不好"
                 ]
@@ -1209,8 +1230,16 @@
         ],
         "tiles": [
           {
+            "traditional": "她",
+            "pinyin": "tā"
+          },
+          {
             "traditional": "到底",
             "pinyin": "dàodǐ"
+          },
+          {
+            "traditional": "唱得",
+            "pinyin": "chàng de"
           },
           {
             "traditional": "好不好",
@@ -1265,7 +1294,16 @@
           "simplified": "听说高小姐歌唱得很好，可是谁都没听过，我们都不知道她到底唱得好不好。",
           "pinyin": "Tīngshuō Gāo xiǎojiě gē chàng de hěn hǎo, kěshì shéi dōu méi tīng guò, wǒmen dōu bù zhīdào tā dàodǐ chàng de hǎo bù hǎo.",
           "english": "I hear Miss Gao sings very well, but nobody has heard her, so none of us know whether she can actually sing well or not."
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "聽說高小姐歌唱得很好，可是誰都沒聽過，我們都不知道到底她唱得好不好。",
+            "simplified": "听说高小姐歌唱得很好，可是谁都没听过，我们都不知道到底她唱得好不好。",
+            "pinyin": "Tīngshuō Gāo xiǎojiě gē chàng de hěn hǎo, kěshì shéi dōu méi tīng guò, wǒmen dōu bù zhīdào dàodǐ tā chàng de hǎo bù hǎo.",
+            "english": "I hear Miss Gao sings very well, but nobody has heard her; none of us knows whether she really sings well or not."
+          }
+        ],
+        "free": true
       },
       {
         "id": "b2l10g4-2",
@@ -1276,23 +1314,35 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "張爸爸想住在地鐵站附近，張媽媽想找附近有公園的公寓，他們",
-                "simplified": "张爸爸想住在地铁站附近，张妈妈想找附近有公园的公寓，他们"
+                "traditional": "張爸爸想住在地鐵站附近，張媽媽想找附近有公園的公寓，",
+                "simplified": "张爸爸想住在地铁站附近，张妈妈想找附近有公园的公寓，"
               },
               {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
+                  "他們",
                   "到底"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "要住在"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "到底",
+                  "他們"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
+                "answers": [
+                  "要住在"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
                 "answers": [
                   "哪裡"
                 ]
@@ -1306,8 +1356,17 @@
         ],
         "tiles": [
           {
+            "traditional": "他們",
+            "simplified": "他们",
+            "pinyin": "tāmen"
+          },
+          {
             "traditional": "到底",
             "pinyin": "dàodǐ"
+          },
+          {
+            "traditional": "要住在",
+            "pinyin": "yào zhù zài"
           },
           {
             "traditional": "哪裡",
@@ -1365,7 +1424,16 @@
           "simplified": "张爸爸想住在地铁站附近，张妈妈想找附近有公园的公寓，他们到底要住在哪里？",
           "pinyin": "Zhāng bàba xiǎng zhù zài dìtiě zhàn fùjìn, Zhāng māma xiǎng zhǎo fùjìn yǒu gōngyuán de gōngyù, tāmen dàodǐ yào zhù zài nǎlǐ?",
           "english": "Mr. Zhang wants to live near a subway station and Mrs. Zhang wants an apartment near a park. Where on earth are they going to live?"
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "張爸爸想住在地鐵站附近，張媽媽想找附近有公園的公寓，到底他們要住在哪裡？",
+            "simplified": "张爸爸想住在地铁站附近，张妈妈想找附近有公园的公寓，到底他们要住在哪里？",
+            "pinyin": "Zhāng bàba xiǎng zhù zài dìtiě zhàn fùjìn, Zhāng māma xiǎng zhǎo fùjìn yǒu gōngyuán de gōngyù, dàodǐ tāmen yào zhù zài nǎlǐ?",
+            "english": "Mr. Zhang wants to live near a subway station and Mrs. Zhang wants an apartment near a park. Where on earth are they going to live?"
+          }
+        ],
+        "free": true
       },
       {
         "id": "b2l10g4-3",
@@ -1376,23 +1444,35 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你一下子想上作文課，一下子要修文法課，你",
-                "simplified": "你一下子想上作文课，一下子要修文法课，你"
+                "traditional": "你一下子想上作文課，一下子要修文法課，",
+                "simplified": "你一下子想上作文课，一下子要修文法课，"
               },
               {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
+                  "你",
                   "到底"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "要上"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "到底",
+                  "你"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
+                "answers": [
+                  "要上"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
                 "answers": [
                   "哪一門"
                 ]
@@ -1407,8 +1487,16 @@
         ],
         "tiles": [
           {
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
             "traditional": "到底",
             "pinyin": "dàodǐ"
+          },
+          {
+            "traditional": "要上",
+            "pinyin": "yào shàng"
           },
           {
             "traditional": "哪一門",
@@ -1465,7 +1553,16 @@
           "simplified": "你一下子想上作文课，一下子要修文法课，你到底要上哪一门课？",
           "pinyin": "Nǐ yíxiàzi xiǎng shàng zuòwén kè, yíxiàzi yào xiū wénfǎ kè, nǐ dàodǐ yào shàng nǎ yì mén kè?",
           "english": "One minute you want to take composition, the next you want to take grammar. So which course do you actually want to take?"
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "你一下子想上作文課，一下子要修文法課，到底你要上哪一門課？",
+            "simplified": "你一下子想上作文课，一下子要修文法课，到底你要上哪一门课？",
+            "pinyin": "Nǐ yíxiàzi xiǎng shàng zuòwén kè, yíxiàzi yào xiū wénfǎ kè, dàodǐ nǐ yào shàng nǎ yì mén kè?",
+            "english": "One moment you want the composition class, the next you want to take grammar. Which class on earth are you going to take?"
+          }
+        ],
+        "free": true
       }
     ]
   },
@@ -1578,7 +1675,8 @@
           "simplified": "对健身教练来说，汉堡、薯条都是垃圾食物。",
           "pinyin": "Duì jiànshēn jiàoliàn lái shuō, hànbǎo, shǔtiáo dōu shì lèsè shíwù.",
           "english": "To a fitness coach, hamburgers and fries are all junk food."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g5-2",
@@ -1808,7 +1906,8 @@
           "simplified": "对学生来说，太贵了。",
           "pinyin": "Duì xuéshēng lái shuō, tài guì le.",
           "english": "For a student, it's too expensive."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1842,23 +1941,28 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "要是"
+                  "要是",
+                  "你"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "你"
               },
               {
                 "type": "slot",
                 "id": "s2",
+                "answers": [
+                  "你",
+                  "要是"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
                 "answers": [
                   "不運動"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "的話"
                 ]
@@ -1875,6 +1979,10 @@
           {
             "traditional": "要是",
             "pinyin": "yàoshì"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
           },
           {
             "traditional": "不運動",
@@ -1936,7 +2044,16 @@
           "simplified": "要是你不运动的话，就会越来越胖喔！",
           "pinyin": "Yàoshì nǐ bú yùndòng dehuà, jiù huì yuè lái yuè pàng o!",
           "english": "If you don't exercise, you'll get fatter and fatter!"
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "你要是不運動的話，就會越來越胖喔！",
+            "simplified": "你要是不运动的话，就会越来越胖喔！",
+            "pinyin": "Nǐ yàoshì bú yùndòng dehuà, jiù huì yuè lái yuè pàng o!",
+            "english": "If you don't exercise, you'll get fatter and fatter!"
+          }
+        ],
+        "free": true
       },
       {
         "id": "b2l10g6-2",
@@ -2045,7 +2162,8 @@
           "simplified": "房租便宜的话，我就搬。",
           "pinyin": "Fángzū piányí dehuà, wǒ jiù bān.",
           "english": "If the rent is cheap, I'll move."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g6-3",
@@ -2171,7 +2289,8 @@
           "simplified": "我不念书的话，明天的考试就会考不好。",
           "pinyin": "Wǒ bú niànshū dehuà, míngtiān de kǎoshì jiù huì kǎobùhǎo.",
           "english": "If I don't study, I'll do badly on tomorrow's exam."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2202,31 +2321,36 @@
             },
             "segments": [
               {
-                "type": "text",
-                "traditional": "跟外國朋友聊天",
-                "simplified": "跟外国朋友聊天"
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "跟外國朋友聊天"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s1",
+                "id": "s2",
                 "answers": [
                   "對"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "我的中文"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "我的中文"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s4",
                 "answers": [
                   "有"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "幫助"
                 ]
@@ -2241,9 +2365,18 @@
         ],
         "tiles": [
           {
+            "traditional": "跟外國朋友聊天",
+            "simplified": "跟外国朋友聊天",
+            "pinyin": "gēn wàiguó péngyǒu liáotiān"
+          },
+          {
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
+          },
+          {
+            "traditional": "我的中文",
+            "pinyin": "wǒ de Zhōngwén"
           },
           {
             "traditional": "有",
@@ -2305,7 +2438,8 @@
           "simplified": "跟外国朋友聊天对我的中文有帮助，所以我想认识外国朋友。",
           "pinyin": "Gēn wàiguó péngyǒu liáotiān duì wǒ de Zhōngwén yǒu bāngzhù, suǒyǐ wǒ xiǎng rènshì wàiguó péngyǒu.",
           "english": "Chatting with foreign friends helps my Chinese, so I want to make foreign friends."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g7-2",
@@ -2330,30 +2464,39 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "不好意思，去那麼久",
-                "simplified": "不好意思，去那么久"
+                "traditional": "不好意思，"
               },
               {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "對"
+                  "去那麼久"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "我的工作"
               },
               {
                 "type": "slot",
                 "id": "s2",
+                "answers": [
+                  "對"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "我的工作"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
                 "answers": [
                   "有"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "影響"
                 ]
@@ -2367,9 +2510,18 @@
         ],
         "tiles": [
           {
+            "traditional": "去那麼久",
+            "simplified": "去那么久",
+            "pinyin": "qù nàme jiǔ"
+          },
+          {
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
+          },
+          {
+            "traditional": "我的工作",
+            "pinyin": "wǒ de gōngzuò"
           },
           {
             "traditional": "有",
@@ -2430,7 +2582,8 @@
           "simplified": "不好意思，去那么久对我的工作有影响。",
           "pinyin": "Bùhǎoyìsi, qù nàme jiǔ duì wǒ de gōngzuò yǒu yǐngxiǎng.",
           "english": "Sorry, being away that long would affect my job."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l10g7-3",
@@ -2467,20 +2620,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "身體",
-                "simplified": "身体"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "身體"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "沒有"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "好處"
                 ]
@@ -2498,6 +2653,11 @@
             "traditional": "對",
             "simplified": "对",
             "pinyin": "duì"
+          },
+          {
+            "traditional": "身體",
+            "simplified": "身体",
+            "pinyin": "shēntǐ"
           },
           {
             "traditional": "沒有",
@@ -2559,7 +2719,8 @@
           "simplified": "不可以，吃太多对身体没有好处，只有坏处。",
           "pinyin": "Bù kěyǐ, chī tài duō duì shēntǐ méiyǒu hǎochù, zhǐyǒu huàichù.",
           "english": "No. Eating too much does your body no good, only harm."
-        }
+        },
+        "free": true
       }
     ]
   }

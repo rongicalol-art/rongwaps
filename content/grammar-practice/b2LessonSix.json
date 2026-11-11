@@ -94,7 +94,8 @@
           "simplified": "网路装好了，我可以上网玩游戏了。",
           "pinyin": "Wǎnglù zhuānghǎo le, wǒ kěyǐ shàngwǎng wán yóuxì le.",
           "english": "The internet is set up, so I can go online and play games now."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g1-2",
@@ -175,7 +176,8 @@
           "simplified": "明天开会要用的资料，我还没准备好，怎么办？",
           "pinyin": "Míngtiān kāihuì yào yòng de zīliào, wǒ háiméi zhǔnbèihǎo, zěnmebàn?",
           "english": "I haven't got the materials for tomorrow's meeting ready yet. What should I do?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g1-3",
@@ -267,7 +269,8 @@
           "simplified": "听说学中文不容易，一年学得好吗？",
           "pinyin": "Tīngshuō xué Zhōngwén bù róngyì, yì nián xuédehǎo ma?",
           "english": "I hear learning Chinese isn't easy. Can you learn it well in a year?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g1-4",
@@ -357,7 +360,8 @@
           "simplified": "他第一次唱这首歌，所以还唱不好。",
           "pinyin": "Tā dì yī cì chàng zhè shǒu gē, suǒyǐ hái chàngbùhǎo.",
           "english": "It's his first time singing this song, so he can't sing it well yet."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -457,7 +461,8 @@
           "simplified": "这是99公车，不是299公车，你看错了。",
           "pinyin": "Zhè shì 99 gōngchē, búshì 299 gōngchē, nǐ kàncuò le.",
           "english": "This is bus 99, not bus 299. You read it wrong."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g2-2",
@@ -549,7 +554,8 @@
           "simplified": "这张地图不清楚，要是你看着地图走，可能会走错路。",
           "pinyin": "Zhè zhāng dìtú bù qīngchǔ, yàoshì nǐ kàn zhe dìtú zǒu, kěnéng huì zǒucuò lù.",
           "english": "This map isn't clear; if you follow it, you might go the wrong way."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g2-3",
@@ -678,7 +684,8 @@
           "simplified": "这封信的地址写错了，所以邮局的人就送错了地方。",
           "pinyin": "Zhè fēng xìn de dìzhǐ xiěcuò le, suǒyǐ yóujú de rén jiù sòngcuò le dìfāng.",
           "english": "The address on this letter was written wrong, so the post office delivered it to the wrong place."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g2-4",
@@ -789,7 +796,8 @@
           "simplified": "我出门的时候带错了钥匙，进不去，还好你回来了。",
           "pinyin": "Wǒ chūmén de shíhòu dàicuò le yàoshi, jìnbúqù, háihǎo nǐ huílái le.",
           "english": "I took the wrong keys when I left, so I can't get in. Luckily you're back."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g2-5",
@@ -899,7 +907,8 @@
           "simplified": "我不去，我怕唱错会被你们笑。",
           "pinyin": "Wǒ bú qù, wǒ pà chàngcuò huì bèi nǐmen xiào.",
           "english": "I'm not going. I'm afraid you'll laugh at me if I sing it wrong."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g2-6",
@@ -1008,7 +1017,8 @@
           "simplified": "你是不是穿错衣服了？今天热得不得了！",
           "pinyin": "Nǐ shì búshì chuāncuò yīfu le? Jīntiān rè de bùdéliǎo!",
           "english": "Did you put on the wrong clothes? It's terribly hot today!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1106,7 +1116,8 @@
           "simplified": "这个舞好难，我学了两天，还是学不会。",
           "pinyin": "Zhège wǔ hǎo nán, wǒ xué le liǎng tiān, háishì xuébúhuì.",
           "english": "This dance is so hard. I've been learning it for two days and still can't get it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g3-2",
@@ -1202,7 +1213,8 @@
           "simplified": "上课的第一天，老师就教会我怎么写自己的中文名字了。",
           "pinyin": "Shàngkè de dì yī tiān, lǎoshī jiù jiāohuì wǒ zěnme xiě zìjǐ de Zhōngwén míngzi le.",
           "english": "On the very first day of class, the teacher taught me how to write my own Chinese name."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g3-3",
@@ -1307,7 +1319,8 @@
           "simplified": "没有人教你踢足球，你自己学得会吗？",
           "pinyin": "Méiyǒu rén jiāo nǐ tī zúqiú, nǐ zìjǐ xuédehuì ma?",
           "english": "Nobody is teaching you soccer. Can you learn it on your own?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g3-4",
@@ -1430,7 +1443,8 @@
           "simplified": "我想请你教我开车，一个月学得会吗？要是你每天练习，也许两个星期就学会了。",
           "pinyin": "Wǒ xiǎng qǐng nǐ jiāo wǒ kāichē, yí ge yuè xuédehuì ma? Yàoshì nǐ měitiān liànxí, yěxǔ liǎng ge xīngqí jiù xuéhuì le.",
           "english": "I'd like you to teach me to drive. Can I learn it in a month? / If you practice every day, you might learn it in just two weeks."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1540,7 +1554,8 @@
           "simplified": "明天不用上班，想什么时候起床就什么时候起床。",
           "pinyin": "Míngtiān búyòng shàngbān, xiǎng shénme shíhòu qǐchuáng jiù shénme shíhòu qǐchuáng.",
           "english": "I don't have to work tomorrow, so I can get up whenever I want."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g4-2",
@@ -1586,12 +1601,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "喝"
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "喝"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s5",
                 "answers": [
                   "哪一種"
                 ]
@@ -1621,6 +1639,10 @@
           {
             "traditional": "就",
             "pinyin": "jiù"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
           },
           {
             "traditional": "這一種",
@@ -1658,7 +1680,8 @@
           "simplified": "哪一种好喝就喝哪一种，只要不太甜的就好。",
           "pinyin": "Nǎ yì zhǒng hǎohē jiù hē nǎ yì zhǒng, zhǐyào bú tài tián de jiù hǎo.",
           "english": "I'll drink whichever one tastes good, as long as it isn't too sweet."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g4-3",
@@ -1771,7 +1794,8 @@
           "simplified": "哪一个漂亮就买哪一个。",
           "pinyin": "Nǎ yí ge piàoliàng jiù mǎi nǎ yí ge.",
           "english": "I'll buy whichever one is pretty."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g4-4",
@@ -1887,7 +1911,8 @@
           "simplified": "你想怎么做就怎么做。",
           "pinyin": "Nǐ xiǎng zěnme zuò jiù zěnme zuò.",
           "english": "Cook it however you like."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g4-5",
@@ -1996,7 +2021,8 @@
           "traditional": "哪一班便宜就搭哪一班。",
           "pinyin": "Nǎ yì bān piányí jiù dā nǎ yì bān.",
           "english": "I'll take whichever flight is cheap."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2105,7 +2131,8 @@
           "simplified": "那个停车场没有安全人员，你的车停在那里会被偷的。",
           "pinyin": "Nàge tíngchēchǎng méiyǒu ānquán rényuán, nǐ de chē tíng zài nàlǐ huì bèi tōu de.",
           "english": "That parking lot has no security guards; your car will get stolen if you park it there."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g5-2",
@@ -2226,7 +2253,8 @@
           "simplified": "听说周末是晴天，不会下雨的。",
           "pinyin": "Tīngshuō zhōumò shì qíngtiān, búhuì xiàyǔ de.",
           "english": "I hear the weekend will be sunny. It won't rain."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g5-3",
@@ -2345,7 +2373,8 @@
           "simplified": "她那么爱你，一定会喜欢的。",
           "pinyin": "Tā nàme ài nǐ, yídìng huì xǐhuān de.",
           "english": "She loves you so much; she's sure to like it."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2445,7 +2474,8 @@
             "pinyin": "Háizi tài è le, bù děng bàba huílái, jiù xiān chī qǐ fàn lái le.",
             "english": "The child was too hungry and started eating without waiting for Dad to come back."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l6g6-2",
@@ -2553,7 +2583,8 @@
           "simplified": "等买好票，就可以上车了。",
           "pinyin": "Děng mǎihǎo piào, jiù kěyǐ shàngchē le.",
           "english": "Once we've bought the tickets, we can get on."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g6-3",
@@ -2674,7 +2705,8 @@
           "simplified": "等考完试，学校就会给你们奖学金。",
           "pinyin": "Děng kǎowán shì, xuéxiào jiù huì gěi nǐmen jiǎngxuéjīn.",
           "english": "Once the exams are over, the school will give you your scholarships."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2785,7 +2817,8 @@
           "simplified": "我才去过一次。",
           "pinyin": "Wǒ cái qùguo yí cì.",
           "english": "I've only been once."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g7-2",
@@ -2894,7 +2927,8 @@
           "simplified": "不贵啊！才五百块钱。",
           "pinyin": "Bú guì a! Cái wǔbǎi kuài qián.",
           "english": "It isn't expensive! Only five hundred dollars."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g7-3",
@@ -2997,7 +3031,8 @@
           "traditional": "不多，才喝了一杯。",
           "pinyin": "Bù duō, cái hē le yì bēi.",
           "english": "Not much. I only had one glass."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -3118,7 +3153,8 @@
           "simplified": "我已经两个星期没倒垃圾了，让妈妈很生气。",
           "pinyin": "Wǒ yǐjīng liǎng ge xīngqí méi dào lèsè le, ràng māma hěn shēngqì.",
           "english": "I haven't taken out the trash for two weeks, which has made Mom very angry."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g8-2",
@@ -3233,7 +3269,8 @@
           "simplified": "想到明天要去旅行，让我很兴奋，所以睡不着。",
           "pinyin": "Xiǎngdào míngtiān yào qù lǚxíng, ràng wǒ hěn xīngfèn, suǒyǐ shuìbùzháo.",
           "english": "Thinking about tomorrow's trip has me so excited that I can't sleep."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l6g8-3",
@@ -3348,7 +3385,8 @@
           "simplified": "我不喜欢坐飞机，坐飞机让我紧张得不得了。",
           "pinyin": "Wǒ bù xǐhuān zuò fēijī, zuò fēijī ràng wǒ jǐnzhāng de bùdéliǎo.",
           "english": "I don't like flying; flying makes me terribly nervous."
-        }
+        },
+        "free": true
       }
     ]
   }

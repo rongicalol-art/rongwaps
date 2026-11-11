@@ -62,13 +62,11 @@ test('every item offers at least four words, more than its blanks, and at most s
   assert.deepEqual(found, []);
 });
 
-test('a build line keeps its blanks together and is not used in Book 1', () => {
+test('Book 1 is one word per blank; from Book 2 on, blanks in a row are a build line', () => {
   const found = slotItems.flatMap(({ key, item }) => {
-    if (!item.free) return [];
-    const problems: string[] = [];
-    if (bookOf(key) === 1) problems.push(`${key} ${item.id}: Book 1 pages are one word per blank`);
-    if (item.lines.some((line) => practiceRuns({ ...item, lines: [line] }).length > 1)) problems.push(`${key} ${item.id}: words between the blanks of a build line`);
-    return problems;
+    const row = practiceRuns(item).some((run) => run.length > 1);
+    if (bookOf(key) === 1) return item.free ? [`${key} ${item.id}: Book 1 pages are one word per blank`] : [];
+    return Boolean(item.free) === row ? [] : [`${key} ${item.id}: free should be ${row}`];
   });
   assert.deepEqual(found, []);
 });

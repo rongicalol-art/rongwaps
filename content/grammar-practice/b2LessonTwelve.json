@@ -106,7 +106,8 @@
           "simplified": "除了中文，我对其他外语都没兴趣。",
           "pinyin": "Chúle Zhōngwén, wǒ duì qítā wàiyǔ dōu méi xìngqù.",
           "english": "Apart from Chinese, I have no interest in any other foreign language."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g1-2",
@@ -229,7 +230,8 @@
           "simplified": "除了史努比，我什么卡通人物都不喜欢。",
           "pinyin": "Chúle Shǐnǔbǐ, wǒ shénme kǎtōng rénwù dōu bù xǐhuān.",
           "english": "Apart from Snoopy, I don't like any cartoon character."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g1-3",
@@ -348,7 +350,8 @@
           "simplified": "除了做饭，我什么都可以帮他们做。",
           "pinyin": "Chúle zuòfàn, wǒ shénme dōu kěyǐ bāng tāmen zuò.",
           "english": "Apart from cooking, I can do anything for them."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -375,30 +378,36 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "我"
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s1",
+                "id": "s2",
                 "answers": [
                   "不像"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "哥哥"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "哥哥"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s4",
                 "answers": [
                   "那麼"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "高"
                 ]
@@ -412,8 +421,16 @@
         ],
         "tiles": [
           {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
             "traditional": "不像",
             "pinyin": "bú xiàng"
+          },
+          {
+            "traditional": "哥哥",
+            "pinyin": "gēge"
           },
           {
             "traditional": "那麼",
@@ -429,15 +446,18 @@
             "pinyin": "xiàng"
           },
           {
-            "traditional": "矮",
-            "pinyin": "ǎi"
-          },
-          {
             "traditional": "很",
             "pinyin": "hěn"
           }
         ],
         "repairs": [
+          {
+            "before": [
+              "哥哥",
+              "我"
+            ],
+            "note": "The brother is the taller one, so the sentence starts from the speaker: 我不像哥哥那麼高."
+          },
           {
             "placed": [
               "像"
@@ -449,15 +469,6 @@
           },
           {
             "placed": [
-              "矮"
-            ],
-            "mark": [
-              "矮"
-            ],
-            "note": "The brother is the tall one. The speaker is not as tall as him: 那麼高."
-          },
-          {
-            "placed": [
               "很"
             ],
             "mark": [
@@ -466,13 +477,14 @@
             "note": "After the person compared with comes 那麼, not 很: 不像哥哥那麼高."
           }
         ],
-        "fallbackRepair": "不像 + the other person + 那麼 + the quality: 不像哥哥那麼高.",
+        "fallbackRepair": "The speaker first, then 不像 + the other person + 那麼 + the quality: 我不像哥哥那麼高.",
         "result": {
           "traditional": "我不像哥哥那麼高。",
           "simplified": "我不像哥哥那么高。",
           "pinyin": "Wǒ bú xiàng gēge nàme gāo.",
           "english": "I am not as tall as my older brother."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g2-2",
@@ -490,31 +502,37 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "高雄的夏天"
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "高雄的夏天"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s1",
+                "id": "s2",
                 "answers": [
                   "不像",
                   "像"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "台北的"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "台北的"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s4",
                 "answers": [
                   "那麼"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "熱"
                 ]
@@ -528,12 +546,20 @@
         ],
         "tiles": [
           {
+            "traditional": "高雄的夏天",
+            "pinyin": "Gāoxióng de xiàtiān"
+          },
+          {
             "traditional": "不像",
             "pinyin": "bú xiàng"
           },
           {
             "traditional": "像",
             "pinyin": "xiàng"
+          },
+          {
+            "traditional": "台北的",
+            "pinyin": "Táiběi de"
           },
           {
             "traditional": "那麼",
@@ -556,6 +582,13 @@
         ],
         "repairs": [
           {
+            "before": [
+              "台北的",
+              "高雄的夏天"
+            ],
+            "note": "Start with 高雄的夏天. 台北的 (short for 台北的夏天) comes after 像 or 不像."
+          },
+          {
             "placed": [
               "冷"
             ],
@@ -574,7 +607,7 @@
             "note": "After the thing compared with comes 那麼, not 很."
           }
         ],
-        "fallbackRepair": "像 or 不像 + the other one + 那麼 + the quality.",
+        "fallbackRepair": "高雄的夏天 first, then 像 or 不像 + 台北的 + 那麼 + the quality.",
         "result": {
           "traditional": "高雄的夏天不像台北的那麼熱。",
           "simplified": "高雄的夏天不像台北的那么热。",
@@ -588,7 +621,8 @@
             "pinyin": "Gāoxióng de xiàtiān xiàng Táiběi de nàme rè.",
             "english": "Summer in Kaohsiung is as hot as in Taipei."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l12g2-3",
@@ -607,30 +641,36 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "我"
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s1",
+                "id": "s2",
                 "answers": [
                   "不像"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "他"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "他"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s4",
                 "answers": [
                   "那麼"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "忙"
                 ]
@@ -644,8 +684,16 @@
         ],
         "tiles": [
           {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
             "traditional": "不像",
             "pinyin": "bú xiàng"
+          },
+          {
+            "traditional": "他",
+            "pinyin": "tā"
           },
           {
             "traditional": "那麼",
@@ -661,16 +709,18 @@
             "pinyin": "xiàng"
           },
           {
-            "traditional": "輕鬆",
-            "simplified": "轻松",
-            "pinyin": "qīngsōng"
-          },
-          {
             "traditional": "很",
             "pinyin": "hěn"
           }
         ],
         "repairs": [
+          {
+            "before": [
+              "他",
+              "我"
+            ],
+            "note": "He is the busier one, so the sentence starts from the speaker: 我不像他那麼忙."
+          },
           {
             "placed": [
               "像"
@@ -682,15 +732,6 @@
           },
           {
             "placed": [
-              "輕鬆"
-            ],
-            "mark": [
-              "輕鬆"
-            ],
-            "note": "He is the one who works until ten. The speaker is not as busy as him: 那麼忙."
-          },
-          {
-            "placed": [
               "很"
             ],
             "mark": [
@@ -699,13 +740,14 @@
             "note": "After the person compared with comes 那麼, not 很: 不像他那麼忙."
           }
         ],
-        "fallbackRepair": "不像 + the other person + 那麼 + the quality: 不像他那麼忙.",
+        "fallbackRepair": "The speaker first, then 不像 + the other person + 那麼 + the quality: 我不像他那麼忙.",
         "result": {
           "traditional": "我不像他那麼忙。",
           "simplified": "我不像他那么忙。",
           "pinyin": "Wǒ bú xiàng tā nàme máng.",
           "english": "I am not as busy as he is."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -822,7 +864,8 @@
           "simplified": "那个孩子很勇敢，从六岁起，就敢一个人走路去上学了。",
           "pinyin": "Nàge háizi hěn yǒnggǎn, cóng liù suì qǐ, jiù gǎn yígerén zǒulù qù shàngxué le.",
           "english": "That child is very brave; since the age of six, the child has dared to walk to school alone."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g3-2",
@@ -833,19 +876,15 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我找到工作了，下個月五號",
-                "simplified": "我找到工作了，下个月五号"
+                "traditional": "我找到工作了，下個月五號起，",
+                "simplified": "我找到工作了，下个月五号起，"
               },
               {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "起"
+                  "我"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "，我"
               },
               {
                 "type": "slot",
@@ -855,12 +894,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "要"
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "要"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "上班"
                 ]
@@ -874,20 +916,20 @@
         ],
         "tiles": [
           {
-            "traditional": "起",
-            "pinyin": "qǐ"
+            "traditional": "我",
+            "pinyin": "wǒ"
           },
           {
             "traditional": "就",
             "pinyin": "jiù"
           },
           {
-            "traditional": "上班",
-            "pinyin": "shàngbān"
+            "traditional": "要",
+            "pinyin": "yào"
           },
           {
-            "traditional": "到",
-            "pinyin": "dào"
+            "traditional": "上班",
+            "pinyin": "shàngbān"
           },
           {
             "traditional": "才",
@@ -899,15 +941,6 @@
           }
         ],
         "repairs": [
-          {
-            "placed": [
-              "到"
-            ],
-            "mark": [
-              "到"
-            ],
-            "note": "到 marks where a stretch ends. A starting date is followed by 起."
-          },
           {
             "placed": [
               "才"
@@ -933,7 +966,8 @@
           "simplified": "我找到工作了，下个月五号起，我就要上班了。",
           "pinyin": "Wǒ zhǎodào gōngzuò le, xià ge yuè wǔ hào qǐ, wǒ jiù yào shàngbān le.",
           "english": "I found a job; starting from the fifth of next month, I'll be going to work."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g3-3",
@@ -1161,7 +1195,8 @@
           "simplified": "我上课迟到了，应该向老师说对不起。",
           "pinyin": "Wǒ shàngkè chídào le, yīnggāi xiàng lǎoshī shuō duìbùqǐ.",
           "english": "I was late for class; I should say sorry to the teacher."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g4-2",
@@ -1269,7 +1304,8 @@
           "simplified": "他为了买房子，向银行借了很多钱。",
           "pinyin": "Tā wèile mǎi fángzi, xiàng yínháng jiè le hěn duō qián.",
           "english": "In order to buy a house, he borrowed a lot of money from the bank."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g4-3",
@@ -1391,7 +1427,8 @@
           "simplified": "我会送她玫瑰花，向她表达我的爱。",
           "pinyin": "Wǒ huì sòng tā méiguihuā, xiàng tā biǎodá wǒ de ài.",
           "english": "I would give her roses and express my love to her."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1544,12 +1581,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "你每天都在"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "你"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
+                "answers": [
+                  "每天都在"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
                 "answers": [
                   "練習"
                 ]
@@ -1567,6 +1614,14 @@
             "traditional": "難怪",
             "simplified": "难怪",
             "pinyin": "nánguài"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "每天都在",
+            "pinyin": "měitiān dōu zài"
           },
           {
             "traditional": "練習",
@@ -1635,7 +1690,8 @@
           "simplified": "难怪你每天都在练习，周末也不休息。",
           "pinyin": "Nánguài nǐ měitiān dōu zài liànxí, zhōumò yě bù xiūxí.",
           "english": "No wonder you practice every day and don't even rest on weekends."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g5-3",
@@ -1757,7 +1813,8 @@
           "simplified": "难怪学生都喜欢上他的课。",
           "pinyin": "Nánguài xuéshēng dōu xǐhuān shàng tā de kè.",
           "english": "No wonder the students all like taking his classes."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1859,7 +1916,8 @@
           "simplified": "你不运动，三餐又吃得那么多，体重当然减不了。",
           "pinyin": "Nǐ bú yùndòng, sāncān yòu chī de nàme duō, tǐzhòng dāngrán jiǎnbùliǎo.",
           "english": "You don't exercise and you eat so much at every meal; of course you can't lose weight."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g6-2",
@@ -1950,7 +2008,8 @@
           "simplified": "从台湾坐飞机到越南去，两个小时到得了吗？",
           "pinyin": "Cóng Táiwān zuò fēijī dào Yuènán qù, liǎng ge xiǎoshí dàodeliǎo ma?",
           "english": "Flying from Taiwan to Vietnam, can you get there in two hours?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g6-3",
@@ -2053,7 +2112,8 @@
           "simplified": "王先生忘不了第一次跟女朋友约会的经验。",
           "pinyin": "Wáng xiānshēng wàngbùliǎo dì yī cì gēn nǚpéngyǒu yuēhuì de jīngyàn.",
           "english": "Mr. Wang can't forget his first date with his girlfriend."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2177,7 +2237,8 @@
           "simplified": "我们去公园散个步吧！",
           "pinyin": "Wǒmen qù gōngyuán sàn ge bù ba!",
           "english": "Let's go take a walk in the park!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g7-2",
@@ -2290,7 +2351,8 @@
           "simplified": "你先看个病再去上课吧。",
           "pinyin": "Nǐ xiān kàn ge bìng zài qù shàngkè ba.",
           "english": "See a doctor first and then go to class."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g7-3",
@@ -2397,7 +2459,8 @@
           "simplified": "吃个饭再走吧！",
           "pinyin": "Chī ge fàn zài zǒu ba!",
           "english": "Have a meal before you go!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2508,7 +2571,8 @@
           "simplified": "你不舒服，快去休息吧。晚餐我来做。",
           "pinyin": "Nǐ bù shūfu, kuài qù xiūxí ba. Wǎncān wǒ lái zuò.",
           "english": "You're not feeling well; go and rest. I'll make dinner."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g8-2",
@@ -2605,7 +2669,8 @@
           "simplified": "我来开门吧！",
           "pinyin": "Wǒ lái kāimén ba!",
           "english": "Let me open the door!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l12g8-3",
@@ -2719,7 +2784,8 @@
           "simplified": "没关系，我自己来。",
           "pinyin": "Méiguānxi, wǒ zìjǐ lái.",
           "english": "It's all right, I'll help myself."
-        }
+        },
+        "free": true
       }
     ]
   }

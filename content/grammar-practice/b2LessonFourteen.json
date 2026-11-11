@@ -96,7 +96,8 @@
           "simplified": "你想得起来你的第一支手机是在哪里买的吗？",
           "pinyin": "Nǐ xiǎngdeqǐlái nǐ de dì yī zhī shǒujī shì zài nǎlǐ mǎi de ma?",
           "english": "Can you remember where you bought your first cell phone?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g1-2",
@@ -201,7 +202,8 @@
           "simplified": "昨天口试的时候，那个问题应该怎么回答，我想不起来，让我很生气。",
           "pinyin": "Zuótiān kǒushì de shíhòu, nàge wèntí yīnggāi zěnme huídá, wǒ xiǎngbùqǐlái, ràng wǒ hěn shēngqì.",
           "english": "During yesterday's oral exam I couldn't remember how that question should be answered, which made me very angry."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g1-3",
@@ -321,7 +323,8 @@
           "simplified": "我想不起来了，大概是吧。",
           "pinyin": "Wǒ xiǎngbùqǐlái le, dàgài shì ba.",
           "english": "I can't remember anymore. Probably."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g1-4",
@@ -431,7 +434,8 @@
           "simplified": "还好我想起来了，所以昨天一下班就去买了。",
           "pinyin": "Háihǎo wǒ xiǎngqǐlái le, suǒyǐ zuótiān yí xiàbān jiù qù mǎi le.",
           "english": "Luckily I remembered, so I went and bought one yesterday right after work."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -548,7 +552,8 @@
           "simplified": "我从来不在网路上买东西，因为我怕买到有问题的商品。",
           "pinyin": "Wǒ cónglái bú zài wǎnglù shang mǎi dōngxi, yīnwèi wǒ pà mǎidào yǒu wèntí de shāngpǐn.",
           "english": "I never buy things online, because I'm afraid of getting faulty products."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g2-2",
@@ -667,7 +672,8 @@
           "simplified": "我一直住在家里，从来没租过房子，所以不知道。",
           "pinyin": "Wǒ yìzhí zhù zài jiā lǐ, cónglái méi zūguo fángzi, suǒyǐ bù zhīdào.",
           "english": "I've always lived at home and have never rented a place, so I don't know."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g2-3",
@@ -788,7 +794,8 @@
           "simplified": "因为我的课很多，也有很多考试，所以我从来没参加过社团。",
           "pinyin": "Yīnwèi wǒ de kè hěn duō, yě yǒu hěn duō kǎoshì, suǒyǐ wǒ cónglái méi cānjiāguo shètuán.",
           "english": "Because I had a lot of classes and a lot of exams, I never joined a club."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1496,12 +1503,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "我有空"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "我有空"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "的時候"
                 ]
@@ -1512,7 +1522,7 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "就"
                 ]
@@ -1530,6 +1540,10 @@
             "traditional": "當",
             "simplified": "当",
             "pinyin": "dāng"
+          },
+          {
+            "traditional": "我有空",
+            "pinyin": "wǒ yǒukòng"
           },
           {
             "traditional": "的時候",
@@ -1577,7 +1591,8 @@
           "simplified": "当我有空的时候，就会去健身。",
           "pinyin": "Dāng wǒ yǒukòng de shíhòu, jiù huì qù jiànshēn.",
           "english": "When I have free time, I'll go work out."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g4-2",
@@ -1609,25 +1624,33 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "我考試考得",
-                "simplified": "我考试考得"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "我考試考得"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "不好"
                 ]
               },
               {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "的時候"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "的時候，",
-                "simplified": "的时候，"
+                "traditional": "，"
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s5",
                 "answers": [
                   "就"
                 ]
@@ -1647,8 +1670,18 @@
             "pinyin": "dāng"
           },
           {
+            "traditional": "我考試考得",
+            "simplified": "我考试考得",
+            "pinyin": "wǒ kǎoshì kǎo de"
+          },
+          {
             "traditional": "不好",
             "pinyin": "bù hǎo"
+          },
+          {
+            "traditional": "的時候",
+            "simplified": "的时候",
+            "pinyin": "de shíhòu"
           },
           {
             "traditional": "就",
@@ -1704,7 +1737,8 @@
           "simplified": "当我考试考得不好的时候，就会很伤心。",
           "pinyin": "Dāng wǒ kǎoshì kǎo de bù hǎo de shíhòu, jiù huì hěn shāngxīn.",
           "english": "When I do badly on an exam, I get very sad."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g4-3",
@@ -1736,13 +1770,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "你有三十張貼紙",
-                "simplified": "你有三十张贴纸"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "你有三十張貼紙"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "的時候"
                 ]
@@ -1753,7 +1789,7 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "就"
                 ]
@@ -1771,6 +1807,11 @@
             "traditional": "當",
             "simplified": "当",
             "pinyin": "dāng"
+          },
+          {
+            "traditional": "你有三十張貼紙",
+            "simplified": "你有三十张贴纸",
+            "pinyin": "nǐ yǒu sānshí zhāng tiēzhǐ"
           },
           {
             "traditional": "的時候",
@@ -1832,7 +1873,8 @@
           "simplified": "当你有三十张贴纸的时候，就可以换了。",
           "pinyin": "Dāng nǐ yǒu sānshí zhāng tiēzhǐ de shíhòu, jiù kěyǐ huàn le.",
           "english": "When you have thirty stickers, you can exchange them for it."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1943,7 +1985,8 @@
           "simplified": "医生说那个病人得住院，不让他回家。",
           "pinyin": "Yīshēng shuō nàge bìngrén děi zhùyuàn, bú ràng tā huí jiā.",
           "english": "The doctor says that patient has to stay in the hospital and won't let him go home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-2",
@@ -2046,7 +2089,8 @@
           "simplified": "孩子长大了，要不要念研究所，让他自己决定。",
           "pinyin": "Háizi zhǎngdà le, yào búyào niàn yánjiùsuǒ, ràng tā zìjǐ juédìng.",
           "english": "The child has grown up; let him decide for himself whether to go to graduate school."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-3",
@@ -2154,7 +2198,8 @@
           "simplified": "爷爷说过年的时候要吃发糕，这样就能让我们发财。",
           "pinyin": "Yéye shuō guònián de shíhòu yào chī fāgāo, zhèyàng jiù néng ràng wǒmen fācái.",
           "english": "Grandpa says we should eat prosperity cake at New Year; that way it can make us prosper."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-4",
@@ -2260,7 +2305,8 @@
           "simplified": "那袋垃圾让狗给弄乱了，所以到处又脏又臭。",
           "pinyin": "Nà dài lèsè ràng gǒu gěi nòngluàn le, suǒyǐ dàochù yòu zāng yòu chòu.",
           "english": "That bag of trash was messed up by a dog, so it is dirty and smelly everywhere."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-5",
@@ -2367,7 +2413,8 @@
           "simplified": "听说中国新年要放鞭炮，是为了让怪兽害怕。",
           "pinyin": "Tīngshuō Zhōngguó xīnnián yào fàng biānpào, shì wèile ràng guàishòu hàipà.",
           "english": "I hear firecrackers are set off at Chinese New Year in order to frighten the monster."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-6",
@@ -2474,7 +2521,8 @@
           "simplified": "新年到高雄的高铁票都让人买光了，一张都不剩。",
           "pinyin": "Xīnnián dào Gāoxióng de gāotiě piào dōu ràng rén mǎiguāng le, yì zhāng dōu bú shèng.",
           "english": "The high-speed rail tickets to Kaohsiung for New Year have all been bought up; not one is left."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-7",
@@ -2580,7 +2628,8 @@
           "simplified": "教练说，每天运动、少吃垃圾食物，就会让身体更健康的。",
           "pinyin": "Jiàoliàn shuō, měitiān yùndòng, shǎo chī lèsè shíwù, jiù huì ràng shēntǐ gèng jiànkāng de.",
           "english": "The coach says that exercising every day and eating less junk food will make your body healthier."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-8",
@@ -2688,7 +2737,8 @@
           "simplified": "那家服装店的牛仔裤买一送一，让客人很高兴。",
           "pinyin": "Nà jiā fúzhuāng diàn de niúzǎikù mǎi yī sòng yī, ràng kèrén hěn gāoxìng.",
           "english": "That clothing store's jeans are buy one, get one free, which makes the customers very happy."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-9",
@@ -2794,7 +2844,8 @@
           "simplified": "将来要当个小职员还是大老板，让我想一想再告诉你吧。",
           "pinyin": "Jiānglái yào dāng ge xiǎo zhíyuán háishì dà lǎobǎn, ràng wǒ xiǎng yì xiǎng zài gàosu nǐ ba.",
           "english": "Whether to be a small clerk or a big boss in the future, let me think it over and then tell you."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g5-10",
@@ -2916,7 +2967,8 @@
           "simplified": "这些菜吃不完，可以让我带回家吗？",
           "pinyin": "Zhèxiē cài chībùwán, kěyǐ ràng wǒ dài huí jiā ma?",
           "english": "We can't finish these dishes. Could you let me take them home?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -3037,7 +3089,8 @@
           "simplified": "去哪里看都无所谓，只要有月饼可以吃就好了。",
           "pinyin": "Qù nǎlǐ kàn dōu wúsuǒwèi, zhǐyào yǒu yuèbǐng kěyǐ chī jiù hǎo le.",
           "english": "It doesn't matter where we go to see it, as long as there are mooncakes to eat."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g6-2",
@@ -3148,7 +3201,8 @@
           "simplified": "她觉得无所谓，因为她已经有新的男朋友了。",
           "pinyin": "Tā juéde wúsuǒwèi, yīnwèi tā yǐjīng yǒu xīn de nánpéngyǒu le.",
           "english": "She doesn't care, because she already has a new boyfriend."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g6-3",
@@ -3264,7 +3318,8 @@
           "simplified": "哪一家都无所谓。只要有保证书、可以免费修理，我就去那家。",
           "pinyin": "Nǎ yì jiā dōu wúsuǒwèi. Zhǐyào yǒu bǎozhèngshū, kěyǐ miǎnfèi xiūlǐ, wǒ jiù qù nà jiā.",
           "english": "Any shop will do. As long as there's a warranty and free repairs, I'll go to that one."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -3391,7 +3446,8 @@
           "simplified": "早上开会的时候经理带来的，他没带走。",
           "pinyin": "Zǎoshàng kāihuì de shíhòu jīnglǐ dàilái de, tā méi dàizǒu.",
           "english": "The manager brought it to the meeting this morning; he didn't take it away."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g7-2",
@@ -3508,7 +3564,8 @@
           "traditional": "弟弟拿走了。",
           "pinyin": "Dìdi názǒu le.",
           "english": "My younger brother took them away."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g7-3",
@@ -3547,19 +3604,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "老人"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "老人"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "嚇"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "走"
                 ]
@@ -3576,6 +3636,10 @@
             "traditional": "讓",
             "simplified": "让",
             "pinyin": "ràng"
+          },
+          {
+            "traditional": "老人",
+            "pinyin": "lǎorén"
           },
           {
             "traditional": "嚇",
@@ -3622,7 +3686,8 @@
           "simplified": "因为有一个老人用了几个方法以后，「年」就让老人吓走了！",
           "pinyin": "Yīnwèi yǒu yí ge lǎorén yòng le jǐ ge fāngfǎ yǐhòu, “nián” jiù ràng lǎorén xiàzǒu le!",
           "english": "Because after an old man tried a few methods, Nian was scared away by him!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g7-4",
@@ -3740,7 +3805,8 @@
           "simplified": "你的想像力太丰富了。人死了，什么都带不走。",
           "pinyin": "Nǐ de xiǎngxiànglì tài fēngfù le. Rén sǐ le, shénme dōu dàibùzǒu.",
           "english": "You have too much imagination. When a person dies, nothing can be taken along."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -3865,7 +3931,8 @@
           "simplified": "要不是房租很便宜，我就不会租了。",
           "pinyin": "Yàobúshì fángzū hěn piányí, wǒ jiù bú huì zū le.",
           "english": "If the rent weren't so cheap, I wouldn't have rented it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g8-2",
@@ -3986,7 +4053,8 @@
           "simplified": "要不是同学请我去帮忙，我就不会去。",
           "pinyin": "Yàobúshì tóngxué qǐng wǒ qù bāngmáng, wǒ jiù bú huì qù.",
           "english": "If my classmate hadn't asked me to go and help, I wouldn't have gone."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l14g8-3",

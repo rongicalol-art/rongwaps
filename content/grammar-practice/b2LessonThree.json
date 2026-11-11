@@ -502,7 +502,8 @@
             "pinyin": "Háizi cóng èr lóu pǎo xiàqù.",
             "english": "The child runs down from the second floor."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l3g2-2",
@@ -622,7 +623,8 @@
             "pinyin": "Nà wèi xiānshēng cóng biànlì shāngdiàn zǒu chūqù.",
             "english": "That gentleman walks out of the convenience store."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l3g2-3",
@@ -731,7 +733,8 @@
           "simplified": "跟老板说话的时候，请你站起来，不要坐着。",
           "pinyin": "Gēn lǎobǎn shuōhuà de shíhòu, qǐng nǐ zhàn qǐlái, búyào zuòzhe.",
           "english": "When you talk to the boss, please stand up; don't stay seated."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g2-4",
@@ -825,7 +828,8 @@
           "simplified": "这些垃圾很臭，请你拿出去。",
           "pinyin": "Zhèxiē lèsè hěn chòu, qǐng nǐ ná chūqù.",
           "english": "This trash smells terrible; please take it out."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -934,7 +938,8 @@
           "simplified": "这些水果，我要带回家去。",
           "pinyin": "Zhèxiē shuǐguǒ, wǒ yào dài huí jiā qù.",
           "english": "I am going to take this fruit home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g3-2",
@@ -1036,7 +1041,8 @@
           "simplified": "楼下的那张沙发，我要搬上楼去。",
           "pinyin": "Lóuxià de nà zhāng shāfā, wǒ yào bān shànglóu qù.",
           "english": "I'm going to move that downstairs sofa upstairs."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g3-3",
@@ -1140,7 +1146,8 @@
           "simplified": "我的钱包放在客厅，请你帮我拿进房间来。",
           "pinyin": "Wǒ de qiánbāo fàng zài kètīng, qǐng nǐ bāng wǒ ná jìn fángjiān lái.",
           "english": "My wallet is in the living room; please bring it into the room for me."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1177,31 +1184,36 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "書",
-                "simplified": "书"
-              },
-              {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "帶"
+                  "書"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "回"
+                  "帶"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "家"
               },
               {
                 "type": "slot",
                 "id": "s5",
+                "answers": [
+                  "回"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s6",
+                "answers": [
+                  "家"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s7",
                 "answers": [
                   "去"
                 ]
@@ -1224,6 +1236,11 @@
             "pinyin": "bǎ"
           },
           {
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū"
+          },
+          {
             "traditional": "帶",
             "simplified": "带",
             "pinyin": "dài"
@@ -1231,6 +1248,10 @@
           {
             "traditional": "回",
             "pinyin": "huí"
+          },
+          {
+            "traditional": "家",
+            "pinyin": "jiā"
           },
           {
             "traditional": "去",
@@ -1258,7 +1279,8 @@
           "simplified": "我昨天没把书带回家去。",
           "pinyin": "Wǒ zuótiān méi bǎ shū dài huí jiā qù.",
           "english": "I didn't take the books home yesterday."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g4-2",
@@ -1268,44 +1290,50 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "孩子"
-              },
-              {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "把"
+                  "孩子"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "垃圾"
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "丟"
+                  "把"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "進"
+                  "垃圾"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "袋子裡"
+                  "丟"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s5",
+                "answers": [
+                  "進"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s6",
+                "answers": [
+                  "袋子裡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s7",
                 "answers": [
                   "去"
                 ]
@@ -1319,8 +1347,16 @@
         ],
         "tiles": [
           {
+            "traditional": "孩子",
+            "pinyin": "háizi"
+          },
+          {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "垃圾",
+            "pinyin": "lèsè"
           },
           {
             "traditional": "丟",
@@ -1363,7 +1399,8 @@
           "simplified": "孩子把垃圾丢进袋子里去。",
           "pinyin": "Háizi bǎ lèsè diū jìn dàizi lǐ qù.",
           "english": "The child threw the trash into the bag."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g4-3",
@@ -1463,7 +1500,8 @@
           "simplified": "我要擦桌子，请你把杯子拿起来。",
           "pinyin": "Wǒ yào cā zhuōzi, qǐng nǐ bǎ bēizi ná qǐlái.",
           "english": "I'm going to wipe the table; please pick up the cups."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1556,7 +1594,8 @@
           "simplified": "外国学生希望有机会可以认识认识台湾朋友。",
           "pinyin": "Wàiguó xuéshēng xīwàng yǒu jīhuì kěyǐ rènshì rènshì Táiwān péngyǒu.",
           "english": "Foreign students hope to have a chance to get to know some Taiwanese friends."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g5-2",
@@ -1642,7 +1681,8 @@
           "simplified": "我一个人把家事都做完了，觉得有点儿累，要休息休息。",
           "pinyin": "Wǒ yígerén bǎ jiāshì dōu zuòwán le, juéde yǒudiǎnr lèi, yào xiūxí xiūxí.",
           "english": "I did all the housework by myself and feel a bit tired; I'm going to rest for a while."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g5-3",
@@ -1730,7 +1770,8 @@
           "simplified": "明天是妈妈的生日，我们要买蛋糕给她庆祝庆祝。",
           "pinyin": "Míngtiān shì māma de shēngrì, wǒmen yào mǎi dàngāo gěi tā qìngzhù qìngzhù.",
           "english": "Tomorrow is Mom's birthday; we're going to buy a cake to celebrate for her."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1855,7 +1896,8 @@
           "simplified": "可是喝起来不好喝。",
           "pinyin": "Kěshì hēqǐlái bù hǎohē.",
           "english": "But it doesn't taste good."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g6-2",
@@ -1972,7 +2014,8 @@
           "simplified": "听起来有点儿远。",
           "pinyin": "Tīngqǐlái yǒudiǎnr yuǎn.",
           "english": "That sounds a bit far."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g6-3",
@@ -2093,7 +2136,8 @@
           "simplified": "可是我们有四个孩子，住起来太小了。",
           "pinyin": "Kěshì wǒmen yǒu sì ge háizi, zhùqǐlái tài xiǎo le.",
           "english": "But we have four children; it would be too small to live in."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2216,7 +2260,8 @@
           "simplified": "没关系，我替你付。",
           "pinyin": "Méiguānxi, wǒ tì nǐ fù.",
           "english": "It's all right, I'll pay for you."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g7-2",
@@ -2335,7 +2380,8 @@
           "simplified": "我没做过你的工作，没办法替你上班。",
           "pinyin": "Wǒ méi zuòguo nǐ de gōngzuò, méibànfǎ tì nǐ shàngbān.",
           "english": "I've never done your job, so I can't go to work in your place."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g7-3",
@@ -2442,7 +2488,8 @@
           "simplified": "如果妈妈知道我替你写作业，她会打我们！",
           "pinyin": "Rúguǒ māma zhīdào wǒ tì nǐ xiě zuòyè, tā huì dǎ wǒmen!",
           "english": "If Mom finds out I did your homework for you, she'll spank us both!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2572,7 +2619,8 @@
           "simplified": "有，除了便利商店，还有银行。",
           "pinyin": "Yǒu, chúle biànlì shāngdiàn, hái yǒu yínháng.",
           "english": "Yes. Besides a convenience store, there is also a bank."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g8-2",
@@ -2676,7 +2724,8 @@
           "simplified": "除了房租很贵，还要自己装网路，所以我不要租。",
           "pinyin": "Chúle fángzū hěn guì, hái yào zìjǐ zhuāng wǎnglù, suǒyǐ wǒ búyào zū.",
           "english": "Besides the rent being expensive, I would also have to install the internet myself, so I don't want to rent it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g8-3",
@@ -2799,7 +2848,8 @@
           "simplified": "我跟室友除了生活习惯不一样，他还很吵，所以我要搬家。",
           "pinyin": "Wǒ gēn shìyǒu chúle shēnghuó xíguàn bù yíyàng, tā hái hěn chǎo, suǒyǐ wǒ yào bānjiā.",
           "english": "Besides my roommate and me having different living habits, he is also very noisy, so I want to move out."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2909,7 +2959,8 @@
           "simplified": "妹妹昨天把卧室打扫得很干净。",
           "pinyin": "Mèimei zuótiān bǎ wòshì dǎsǎo de hěn gānjìng.",
           "english": "My younger sister got the bedroom really clean yesterday."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g9-2",
@@ -2931,33 +2982,36 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "自己的名字"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "寫"
+                  "自己的名字"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "得"
+                  "寫"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "那麼"
+                  "得"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s5",
+                "answers": [
+                  "那麼"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s6",
                 "answers": [
                   "難看"
                 ]
@@ -2973,6 +3027,10 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "自己的名字",
+            "pinyin": "zìjǐ de míngzi"
           },
           {
             "traditional": "寫",
@@ -3015,7 +3073,8 @@
           "simplified": "你为什么把自己的名字写得那么难看？",
           "pinyin": "Nǐ wèishénme bǎ zìjǐ de míngzi xiě de nàme nánkàn?",
           "english": "Why did you write your own name so badly?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l3g9-3",
@@ -3036,27 +3095,29 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "新家的客廳",
-                "simplified": "新家的客厅"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "弄"
+                  "新家的客廳"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "得"
+                  "弄"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
                 "answers": [
                   "很漂亮"
                 ]
@@ -3072,6 +3133,11 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "新家的客廳",
+            "simplified": "新家的客厅",
+            "pinyin": "xīn jiā de kètīng"
           },
           {
             "traditional": "弄",
@@ -3120,7 +3186,8 @@
           "simplified": "林小姐把新家的客厅弄得很漂亮。",
           "pinyin": "Lín xiǎojiě bǎ xīn jiā de kètīng nòng de hěn piàoliàng.",
           "english": "Miss Lin has made the living room of her new home very pretty."
-        }
+        },
+        "free": true
       }
     ]
   }

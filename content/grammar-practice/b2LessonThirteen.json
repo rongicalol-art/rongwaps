@@ -33,13 +33,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "課",
-                "simplified": "课"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "課"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "多不多"
                 ]
@@ -50,7 +52,7 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "都"
                 ]
@@ -67,6 +69,11 @@
           {
             "traditional": "不管",
             "pinyin": "bùguǎn"
+          },
+          {
+            "traditional": "課",
+            "simplified": "课",
+            "pinyin": "kè"
           },
           {
             "traditional": "多不多",
@@ -125,7 +132,8 @@
           "simplified": "不管课多不多，我都要参加社团。",
           "pinyin": "Bùguǎn kè duō bù duō, wǒ dōu yào cānjiā shètuán.",
           "english": "No matter how many classes I have, I am going to join a club."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g1-2",
@@ -250,7 +258,8 @@
           "simplified": "只要付钱，不管有没有保证书，都可以修理。",
           "pinyin": "Zhǐyào fù qián, bùguǎn yǒu méiyǒu bǎozhèngshū, dōu kěyǐ xiūlǐ.",
           "english": "As long as you pay, it can be repaired whether or not you have the warranty."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g1-3",
@@ -278,16 +287,21 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "不管"
+                  "不管",
+                  "你"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "你"
               },
               {
                 "type": "slot",
                 "id": "s2",
+                "answers": [
+                  "你",
+                  "不管"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
                 "answers": [
                   "喜不喜歡"
                 ]
@@ -299,7 +313,7 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "都"
                 ]
@@ -316,6 +330,10 @@
           {
             "traditional": "不管",
             "pinyin": "bùguǎn"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
           },
           {
             "traditional": "喜不喜歡",
@@ -376,7 +394,16 @@
           "simplified": "不管你喜不喜欢，只要对身体好的食物都应该吃。",
           "pinyin": "Bùguǎn nǐ xǐ bù xǐhuān, zhǐyào duì shēntǐ hǎo de shíwù dōu yīnggāi chī.",
           "english": "Whether you like it or not, you should eat any food that is good for your body."
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "你不管喜不喜歡，只要對身體好的食物都應該吃。",
+            "simplified": "你不管喜不喜欢，只要对身体好的食物都应该吃。",
+            "pinyin": "Nǐ bùguǎn xǐ bù xǐhuān, zhǐyào duì shēntǐ hǎo de shíwù dōu yīnggāi chī.",
+            "english": "Whether you like it or not, you should eat any food that is good for your body."
+          }
+        ],
+        "free": true
       },
       {
         "id": "b2l13g1-4",
@@ -500,7 +527,8 @@
           "simplified": "可是我觉得不管胖还是瘦，都应该运动。",
           "pinyin": "Kěshì wǒ juéde bùguǎn pàng háishì shòu, dōu yīnggāi yùndòng.",
           "english": "But I think that whether you are fat or thin, you should exercise."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -620,7 +648,8 @@
           "simplified": "我觉得团体旅游比较麻烦，不如一个人去，又轻松又自由。",
           "pinyin": "Wǒ juéde tuántǐ lǚyóu bǐjiào máfán, bùrú yígerén qù, yòu qīngsōng yòu zìyóu.",
           "english": "I find group tours more of a bother; it's better to go alone, which is both relaxed and free."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g2-2",
@@ -740,7 +769,8 @@
           "simplified": "少吃东西不一定健康，不如多运动。",
           "pinyin": "Shǎo chī dōngxi bù yídìng jiànkāng, bùrú duō yùndòng.",
           "english": "Eating less isn't necessarily healthy; you'd do better to exercise more."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g2-3",
@@ -860,7 +890,8 @@
           "simplified": "可是乡下交通很不方便，不如住在都市。",
           "pinyin": "Kěshì xiāngxià jiāotōng hěn bù fāngbiàn, bùrú zhù zài dūshì.",
           "english": "But transportation in the countryside is very inconvenient; it would be better to live in the city."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -970,7 +1001,8 @@
           "simplified": "他的中文说得不错，可是慢了一点儿。",
           "pinyin": "Tā de Zhōngwén shuō de búcuò, kěshì màn le yìdiǎnr.",
           "english": "He speaks Chinese quite well, but a little too slowly."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g3-2",
@@ -1075,7 +1107,8 @@
           "simplified": "做爱心服务虽然很有意义，可是累了点儿。",
           "pinyin": "Zuò àixīn fúwù suīrán hěn yǒu yìyì, kěshì lèi le diǎnr.",
           "english": "Volunteer service is very meaningful, but it is a little tiring."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g3-3",
@@ -1180,7 +1213,8 @@
           "simplified": "在外国生活很有意思，可是东西贵了一点儿。",
           "pinyin": "Zài wàiguó shēnghuó hěn yǒuyìsi, kěshì dōngxi guì le yìdiǎnr.",
           "english": "Living abroad is very interesting, but things are a little expensive."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1588,7 +1622,8 @@
           "simplified": "可是我觉得吃肉比吃青菜好吃。",
           "pinyin": "Kěshì wǒ juéde chī ròu bǐ chī qīngcài hǎochī.",
           "english": "But I think eating meat tastes better than eating vegetables."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g4-5",
@@ -1701,7 +1736,8 @@
             "pinyin": "Gēn fāyīn bǐ, Hànzì bǐjiào nán.",
             "english": "Compared with pronunciation, characters are harder."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l13g4-6",
@@ -1808,7 +1844,8 @@
           "simplified": "我比较想参加吉他社。",
           "pinyin": "Wǒ bǐjiào xiǎng cānjiā jítā shè.",
           "english": "I would rather join the guitar club."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1923,7 +1960,8 @@
           "simplified": "李妈妈没把钱存到银行里，钱差一点儿就不见了。",
           "pinyin": "Lǐ māma méi bǎ qián cún dào yínháng lǐ, qián chàyìdiǎnr jiù bújiàn le.",
           "english": "Mrs. Li didn't put the money in the bank, and the money was nearly lost."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g5-2",
@@ -2028,7 +2066,8 @@
           "simplified": "今天早上我太晚起床，差一点儿就迟到了。",
           "pinyin": "Jīntiān zǎoshàng wǒ tài wǎn qǐchuáng, chàyìdiǎnr jiù chídào le.",
           "english": "I got up too late this morning and was nearly late."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g5-3",
@@ -2133,7 +2172,8 @@
           "simplified": "这部电影太无聊了，我差点儿就回家了。",
           "pinyin": "Zhè bù diànyǐng tài wúliáo le, wǒ chàdiǎnr jiù huí jiā le.",
           "english": "This movie was so boring that I nearly went home."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2243,7 +2283,8 @@
           "simplified": "我用电脑写报告，电脑忽然坏了，我白写了。",
           "pinyin": "Wǒ yòng diànnǎo xiě bàogào, diànnǎo hūrán huài le, wǒ bái xiě le.",
           "english": "I was writing a report on the computer when it suddenly broke down; I wrote it for nothing."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g6-2",
@@ -2347,7 +2388,8 @@
           "simplified": "我买了一盒豆浆给他，可是他不喝，我白买了。",
           "pinyin": "Wǒ mǎi le yì hé dòujiāng gěi tā, kěshì tā bù hē, wǒ bái mǎi le.",
           "english": "I bought him a carton of soy milk, but he won't drink it; I bought it for nothing."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l13g6-3",
@@ -2461,7 +2503,8 @@
           "traditional": "我做了好吃的晚餐，真是白做了。",
           "pinyin": "Wǒ zuò le hǎochī de wǎncān, zhēnshì bái zuò le.",
           "english": "I made a delicious dinner; I really made it for nothing."
-        }
+        },
+        "free": true
       }
     ]
   }

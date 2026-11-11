@@ -101,7 +101,8 @@
           "simplified": "我把旧的字典卖了。",
           "pinyin": "Wǒ bǎ jiù de zìdiǎn mài le.",
           "english": "I sold the old dictionary."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g1-2",
@@ -198,7 +199,8 @@
           "simplified": "谁把我买的蛋糕吃了？",
           "pinyin": "Shéi bǎ wǒ mǎi de dàngāo chī le?",
           "english": "Who ate the cake I bought?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g1-3",
@@ -208,33 +210,45 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "我昨天"
-              },
-              {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "把"
+                  "我",
+                  "昨天"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "不要的"
+                  "昨天",
+                  "我"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "小說"
+                  "把"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
+                "answers": [
+                  "不要的"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "小說"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s6",
                 "answers": [
                   "丟了"
                 ]
@@ -247,6 +261,14 @@
           }
         ],
         "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "昨天",
+            "pinyin": "zuótiān"
+          },
           {
             "traditional": "把",
             "pinyin": "bǎ"
@@ -301,7 +323,16 @@
           "simplified": "我昨天把不要的小说丢了。",
           "pinyin": "Wǒ zuótiān bǎ búyào de xiǎoshuō diū le.",
           "english": "Yesterday I threw away the novels I didn't want."
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "昨天我把不要的小說丟了。",
+            "simplified": "昨天我把不要的小说丢了。",
+            "pinyin": "Zuótiān wǒ bǎ búyào de xiǎoshuō diū le.",
+            "english": "Yesterday I threw away the novels I didn't want."
+          }
+        ],
+        "free": true
       }
     ]
   },
@@ -343,20 +374,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "書法",
-                "simplified": "书法"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "書法"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "寫"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "完"
                 ]
@@ -372,6 +405,11 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "書法",
+            "simplified": "书法",
+            "pinyin": "shūfǎ"
           },
           {
             "traditional": "寫",
@@ -431,7 +469,8 @@
           "simplified": "我把书法写完就去。",
           "pinyin": "Wǒ bǎ shūfǎ xiěwán jiù qù.",
           "english": "I'll go as soon as I finish my calligraphy."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g2-2",
@@ -467,20 +506,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "報紙",
-                "simplified": "报纸"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "報紙"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "看"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "完"
                 ]
@@ -496,6 +537,11 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "報紙",
+            "simplified": "报纸",
+            "pinyin": "bàozhǐ"
           },
           {
             "traditional": "看",
@@ -554,7 +600,8 @@
           "simplified": "等我把报纸看完再洗。",
           "pinyin": "Děng wǒ bǎ bàozhǐ kànwán zài xǐ.",
           "english": "I'll wash them once I've finished reading the newspaper."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g2-3",
@@ -579,28 +626,36 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "晚飯",
-                "simplified": "晚饭"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "吃完"
+                  "晚飯"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
+                  "吃完"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
                   "再"
                 ]
               },
               {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "看電視"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "看電視。",
-                "simplified": "看电视。"
+                "traditional": "。"
               }
             ]
           },
@@ -623,12 +678,22 @@
             "pinyin": "bǎ"
           },
           {
+            "traditional": "晚飯",
+            "simplified": "晚饭",
+            "pinyin": "wǎnfàn"
+          },
+          {
             "traditional": "吃完",
             "pinyin": "chīwán"
           },
           {
             "traditional": "再",
             "pinyin": "zài"
+          },
+          {
+            "traditional": "看電視",
+            "simplified": "看电视",
+            "pinyin": "kàn diànshì"
           },
           {
             "traditional": "給",
@@ -679,7 +744,8 @@
           "simplified": "你把晚饭吃完再看电视。",
           "pinyin": "Nǐ bǎ wǎnfàn chīwán zài kàn diànshì.",
           "english": "Finish your dinner first, then watch television."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -710,27 +776,29 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "價錢",
-                "simplified": "价钱"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "查"
+                  "價錢"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "一"
+                  "查"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
+                "answers": [
+                  "一"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
                 "answers": [
                   "查"
                 ]
@@ -747,6 +815,11 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "價錢",
+            "simplified": "价钱",
+            "pinyin": "jiàqián"
           },
           {
             "traditional": "查",
@@ -795,7 +868,8 @@
           "simplified": "买手机以前，我先上网把价钱查一查再去买。",
           "pinyin": "Mǎi shǒujī yǐqián, wǒ xiān shàngwǎng bǎ jiàqián chá yì chá zài qù mǎi.",
           "english": "Before buying a cell phone, I first check the prices online and then go buy it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g3-2",
@@ -821,27 +895,29 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "功課",
-                "simplified": "功课"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "寫"
+                  "功課"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "一"
+                  "寫"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
+                "answers": [
+                  "一"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
                 "answers": [
                   "寫"
                 ]
@@ -857,6 +933,11 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "功課",
+            "simplified": "功课",
+            "pinyin": "gōngkè"
           },
           {
             "traditional": "寫",
@@ -907,7 +988,8 @@
           "simplified": "「你们把功课写一写就可以回家了。」",
           "pinyin": "“Nǐmen bǎ gōngkè xiě yì xiě jiù kěyǐ huí jiā le.”",
           "english": "Get your homework done and then you can go home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g3-3",
@@ -1030,7 +1112,8 @@
           "simplified": "你可以帮我把桌子擦一擦吗？",
           "pinyin": "Nǐ kěyǐ bāng wǒ bǎ zhuōzi cā yì cā ma?",
           "english": "Could you give the table a wipe for me?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1143,7 +1226,8 @@
           "simplified": "我昨天就把礼物送给张小姐了。",
           "pinyin": "Wǒ zuótiān jiù bǎ lǐwù sòng gěi Zhāng xiǎojiě le.",
           "english": "I already gave the gift to Miss Zhang yesterday."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g4-2",
@@ -1245,7 +1329,8 @@
           "simplified": "哥哥是不是没把生日卡片寄给妈妈？",
           "pinyin": "Gēge shì búshì méi bǎ shēngrì kǎpiàn jì gěi māma?",
           "english": "Did my older brother not send the birthday card to Mom?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g4-3",
@@ -1266,26 +1351,29 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "那首中文歌"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "唱給"
+                  "那首中文歌"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "我"
+                  "唱給"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
+                "answers": [
+                  "我"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
                 "answers": [
                   "聽"
                 ]
@@ -1302,6 +1390,10 @@
           {
             "traditional": "把",
             "pinyin": "bǎ"
+          },
+          {
+            "traditional": "那首中文歌",
+            "pinyin": "nà shǒu Zhōngwén gē"
           },
           {
             "traditional": "唱給",
@@ -1353,7 +1445,8 @@
           "simplified": "你可以把那首中文歌唱给我听吗？",
           "pinyin": "Nǐ kěyǐ bǎ nà shǒu Zhōngwén gē chàng gěi wǒ tīng ma?",
           "english": "Could you sing that Chinese song for me?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1482,7 +1575,8 @@
           "traditional": "你妹妹多大？",
           "pinyin": "Nǐ mèimei duō dà?",
           "english": "How old is your younger sister?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g5-2",
@@ -1601,7 +1695,8 @@
           "simplified": "听说那场演唱会的票很贵，有多贵？",
           "pinyin": "Tīngshuō nà chǎng yǎnchànghuì de piào hěn guì, yǒu duō guì?",
           "english": "I hear the tickets for that concert are expensive. How expensive?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g5-3",
@@ -1722,7 +1817,8 @@
           "simplified": "你现在多重？",
           "pinyin": "Nǐ xiànzài duō zhòng?",
           "english": "How much do you weigh now?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1836,7 +1932,8 @@
           "simplified": "你的头发好脏！你多久没洗头了？",
           "pinyin": "Nǐ de tóufǎ hǎo zāng! Nǐ duōjiǔ méi xǐ tóu le?",
           "english": "Your hair is so dirty! How long has it been since you washed it?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g6-2",
@@ -1957,7 +2054,8 @@
           "simplified": "对啊，我想他能三天不说话。",
           "pinyin": "Duì a, wǒ xiǎng tā néng sān tiān bù shuōhuà.",
           "english": "Right, I think he could go three days without talking."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g6-3",
@@ -2076,7 +2174,8 @@
           "simplified": "因为我已经一个星期没运动了。",
           "pinyin": "Yīnwèi wǒ yǐjīng yí ge xīngqí méi yùndòng le.",
           "english": "Because I haven't exercised for a week already."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2198,7 +2297,8 @@
           "simplified": "什么时候都可以。",
           "pinyin": "Shénme shíhòu dōu kěyǐ.",
           "english": "Any time is fine."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g7-2",
@@ -2315,7 +2415,8 @@
           "traditional": "你穿哪一件都好看。",
           "pinyin": "Nǐ chuān nǎ yí jiàn dōu hǎokàn.",
           "english": "You look good in any of them."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g7-3",
@@ -2435,7 +2536,8 @@
           "simplified": "我哪里都想去。",
           "pinyin": "Wǒ nǎlǐ dōu xiǎng qù.",
           "english": "I want to go everywhere."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2519,7 +2621,8 @@
           "simplified": "姐姐上个礼拜买了新衣服，昨天又买了一件。",
           "pinyin": "Jiějie shàng ge lǐbài mǎi le xīn yīfu, zuótiān yòu mǎi le yí jiàn.",
           "english": "My older sister bought new clothes last week, and yesterday she bought another one."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g8-2",
@@ -2610,7 +2713,8 @@
           "simplified": "他去年来台湾学了半年的中文，今年又来了。",
           "pinyin": "Tā qùnián lái Táiwān xué le bànnián de Zhōngwén, jīnnián yòu lái le.",
           "english": "Last year he came to Taiwan and studied Chinese for half a year, and this year he has come again."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g8-3",
@@ -2703,7 +2807,8 @@
           "simplified": "那个学生前天没写功课，昨天又没写，老师很不高兴。",
           "pinyin": "Nàge xuéshēng qiántiān méi xiě gōngkè, zuótiān yòu méi xiě, lǎoshī hěn bù gāoxìng.",
           "english": "That student didn't do the homework the day before yesterday and again didn't do it yesterday; the teacher is very unhappy."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2829,7 +2934,8 @@
           "simplified": "不是，我下个周末才去。",
           "pinyin": "Búshì, wǒ xià ge zhōumò cái qù.",
           "english": "No, I'm not going until next weekend."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g9-2",
@@ -2951,7 +3057,8 @@
           "simplified": "不对，我早上十点才有课。",
           "pinyin": "Bú duì, wǒ zǎoshàng shí diǎn cái yǒu kè.",
           "english": "No, I don't have class until ten in the morning."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g9-3",
@@ -3071,7 +3178,8 @@
           "simplified": "不好意思，我明天没空，后天才有空。",
           "pinyin": "Bùhǎoyìsi, wǒ míngtiān méi kòng, hòutiān cái yǒukòng.",
           "english": "Sorry, I'm not free tomorrow; I won't be free until the day after tomorrow."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -3177,7 +3285,8 @@
           "simplified": "为什么你把我的手表戴在你的手上？",
           "pinyin": "Wèishénme nǐ bǎ wǒ de shǒubiǎo dài zài nǐ de shǒu shàng?",
           "english": "Why are you wearing my watch on your wrist?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g10-2",
@@ -3285,7 +3394,8 @@
           "simplified": "那个学生把课本放在教室里，忘了带回家了。",
           "pinyin": "Nàge xuéshēng bǎ kèběn fàng zài jiàoshì lǐ, wàng le dài huí jiā le.",
           "english": "That student left the textbook in the classroom and forgot to take it home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g10-3",
@@ -3389,7 +3499,8 @@
           "simplified": "室友常常把脏衣服丢在地上，所以房间的味道真不好。",
           "pinyin": "Shìyǒu chángcháng bǎ zāng yīfu diū zài dì shàng, suǒyǐ fángjiān de wèidào zhēn bù hǎo.",
           "english": "My roommate often throws dirty clothes on the floor, so the room smells really bad."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g10-4",
@@ -3411,28 +3522,36 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "手機",
-                "simplified": "手机"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "放"
+                  "手機"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
+                  "放"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
                   "到"
                 ]
               },
               {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "袋子裡"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "袋子裡。",
-                "simplified": "袋子里。"
+                "traditional": "。"
               }
             ]
           }
@@ -3443,12 +3562,22 @@
             "pinyin": "bǎ"
           },
           {
+            "traditional": "手機",
+            "simplified": "手机",
+            "pinyin": "shǒujī"
+          },
+          {
             "traditional": "放",
             "pinyin": "fàng"
           },
           {
             "traditional": "到",
             "pinyin": "dào"
+          },
+          {
+            "traditional": "袋子裡",
+            "simplified": "袋子里",
+            "pinyin": "dàizi lǐ"
           },
           {
             "traditional": "給",
@@ -3501,7 +3630,8 @@
           "simplified": "考试的时候，不可以把手机放在桌子上，请你把手机放到袋子里。",
           "pinyin": "Kǎoshì de shíhòu, bù kěyǐ bǎ shǒujī fàng zài zhuōzi shàng, qǐng nǐ bǎ shǒujī fàng dào dàizi lǐ.",
           "english": "During the exam you may not leave your phone on the desk; please put it in your bag."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g10-5",
@@ -3607,7 +3737,8 @@
           "simplified": "警察把那个受伤的人送到医院。",
           "pinyin": "Jǐngchá bǎ nàge shòushāng de rén sòng dào yīyuàn.",
           "english": "The police took the injured person to the hospital."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g10-6",
@@ -3713,7 +3844,8 @@
           "simplified": "你不可以把饮料带到图书馆里。",
           "pinyin": "Nǐ bù kěyǐ bǎ yǐnliào dài dào túshūguǎn lǐ.",
           "english": "You may not bring drinks into the library."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -3823,7 +3955,8 @@
           "simplified": "你得先买票，才可以进去。",
           "pinyin": "Nǐ děi xiān mǎi piào, cái kěyǐ jìnqù.",
           "english": "You have to buy a ticket first; only then can you go in."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g11-2",
@@ -3929,7 +4062,8 @@
           "simplified": "你应该早一点儿睡觉，明天才不会迟到。",
           "pinyin": "Nǐ yīnggāi zǎo yìdiǎnr shuìjiào, míngtiān cái bú huì chídào.",
           "english": "You should go to bed a little earlier; only then will you not be late tomorrow."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l2g11-3",
@@ -4036,7 +4170,8 @@
           "simplified": "我是因为没有钱，才没买礼物给你的。",
           "pinyin": "Wǒ shì yīnwèi méiyǒu qián, cái méi mǎi lǐwù gěi nǐ de.",
           "english": "It was because I had no money that I didn't buy you a gift."
-        }
+        },
+        "free": true
       }
     ]
   }

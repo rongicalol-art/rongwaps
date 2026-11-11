@@ -118,7 +118,8 @@
             "pinyin": "Dā Tàilǔgé Hào qù Huālián, búdàn hěn shūfu, hái hěn kuài.",
             "english": "Taking the Taroko Express to Hualien is not only comfortable but also fast."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l7g1-2",
@@ -353,7 +354,8 @@
           "simplified": "台湾的 KTV 不但可以唱歌，还可以吃饭呢！",
           "pinyin": "Táiwān de KTV búdàn kěyǐ chànggē, hái kěyǐ chīfàn ne!",
           "english": "At a KTV in Taiwan you can not only sing, you can even have a meal!"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -465,7 +467,8 @@
           "simplified": "那家餐厅客满了，一个位子也没有。",
           "pinyin": "Nà jiā cāntīng kèmǎn le, yí ge wèizi yě méiyǒu.",
           "english": "That restaurant is full; there isn't even one seat."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g2-2",
@@ -571,7 +574,8 @@
           "simplified": "住在这里真不方便，一家便利商店都没有。",
           "pinyin": "Zhù zài zhèlǐ zhēn bù fāngbiàn, yì jiā biànlì shāngdiàn dōu méiyǒu.",
           "english": "Living here is really inconvenient; there isn't even one convenience store."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g2-3",
@@ -599,27 +603,30 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "歌"
-              },
-              {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "都"
+                  "歌"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "不會"
+                  "都"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "不會唱"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "唱，為什麼要跟我們來 KTV 呢？",
-                "simplified": "唱，为什么要跟我们来 KTV 呢？"
+                "traditional": "，為什麼要跟我們來 KTV 呢？",
+                "simplified": "，为什么要跟我们来 KTV 呢？"
               }
             ]
           }
@@ -634,18 +641,22 @@
             "pinyin": "shǒu"
           },
           {
+            "traditional": "歌",
+            "pinyin": "gē"
+          },
+          {
             "traditional": "都",
             "pinyin": "dōu"
           },
           {
-            "traditional": "不會",
-            "simplified": "不会",
-            "pinyin": "bú huì"
+            "traditional": "不會唱",
+            "simplified": "不会唱",
+            "pinyin": "bú huì chàng"
           },
           {
-            "traditional": "會",
-            "simplified": "会",
-            "pinyin": "huì"
+            "traditional": "會唱",
+            "simplified": "会唱",
+            "pinyin": "huì chàng"
           },
           {
             "traditional": "個",
@@ -656,10 +667,10 @@
         "repairs": [
           {
             "placed": [
-              "會"
+              "會唱"
             ],
             "mark": [
-              "會"
+              "會唱"
             ],
             "note": "This pattern is a strong \"not even one\", so the verb must be negative: 不會."
           },
@@ -679,7 +690,8 @@
           "simplified": "你一首歌都不会唱，为什么要跟我们来 KTV 呢？",
           "pinyin": "Nǐ yì shǒu gē dōu bú huì chàng, wèishénme yào gēn wǒmen lái KTV ne?",
           "english": "You can't sing even one song, so why do you want to come to KTV with us?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g2-4",
@@ -772,7 +784,8 @@
           "simplified": "那栋公寓的房租很便宜，可是里面没有家具，一张桌子也没有。",
           "pinyin": "Nà dòng gōngyù de fángzū hěn piányí, kěshì lǐmiàn méiyǒu jiājù, yì zhāng zhuōzi yě méiyǒu.",
           "english": "The rent for that apartment is cheap, but there is no furniture inside, not even one table."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -913,7 +926,8 @@
           "simplified": "这个月我买了不少书，钱都用完了，可以让我下个月再付吗？没办法，你让父母帮你，这样就可以付了。",
           "pinyin": "Zhège yuè wǒ mǎi le bùshǎo shū, qián dōu yòngwán le, kěyǐ ràng wǒ xià ge yuè zài fù ma? Méibànfǎ, nǐ ràng fùmǔ bāng nǐ, zhèyàng jiù kěyǐ fù le.",
           "english": "I bought quite a few books this month and my money is all gone. Could you let me pay next month? — No way. Have your parents help you; then you can pay."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g3-2",
@@ -1034,7 +1048,8 @@
           "simplified": "我们才认识三天，让我想一想，再告诉你。",
           "pinyin": "Wǒmen cái rènshì sān tiān, ràng wǒ xiǎng yì xiǎng, zài gàosu nǐ.",
           "english": "We have only known each other for three days. Let me think about it, and then I'll tell you."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g3-3",
@@ -1140,7 +1155,8 @@
           "simplified": "我已经二十岁了，要不要出国留学，让我自己决定。",
           "pinyin": "Wǒ yǐjīng èrshí suì le, yào búyào chūguó liúxué, ràng wǒ zìjǐ juédìng.",
           "english": "I'm already twenty. Let me decide for myself whether to study abroad or not."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g3-4",
@@ -1258,7 +1274,8 @@
           "simplified": "等你把这个药吃了，就让你回家。",
           "pinyin": "Děng nǐ bǎ zhège yào chī le, jiù ràng nǐ huí jiā.",
           "english": "Once you have taken this medicine, I'll let you go home."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1383,7 +1400,8 @@
           "simplified": "我是有点儿累，所以现在要回家了。",
           "pinyin": "Wǒ shì yǒudiǎnr lèi, suǒyǐ xiànzài yào huí jiā le.",
           "english": "I am a little tired, so I'm going home now."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g4-2",
@@ -1488,7 +1506,8 @@
           "simplified": "中文是很重要，想到中国去工作的外国人一定得学。",
           "pinyin": "Zhōngwén shì hěn zhòngyào, xiǎng dào Zhōngguó qù gōngzuò de wàiguórén yídìng děi xué.",
           "english": "Chinese is indeed important; foreigners who want to work in China definitely have to learn it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g4-3",
@@ -1603,7 +1622,8 @@
           "simplified": "是很贵，可是这个牌子很有名，我一定要买。",
           "pinyin": "Shì hěn guì, kěshì zhège páizi hěn yǒumíng, wǒ yídìng yào mǎi.",
           "english": "It is expensive, true, but this brand is famous; I must buy it."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1699,7 +1719,8 @@
           "simplified": "这个捷运站有免费的地图，可是已经被拿光了。",
           "pinyin": "Zhège jiéyùn zhàn yǒu miǎnfèi de dìtú, kěshì yǐjīng bèi náguāng le.",
           "english": "This MRT station has free maps, but they have already all been taken."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g5-2",
@@ -1789,7 +1810,8 @@
           "simplified": "妈妈做的饺子太好吃了，我不到十分钟就吃光了。",
           "pinyin": "Māma zuò de jiǎozi tài hǎochī le, wǒ bú dào shí fēnzhōng jiù chīguāng le.",
           "english": "The dumplings Mom made were so delicious that I ate them all in less than ten minutes."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g5-3",
@@ -1869,7 +1891,8 @@
           "simplified": "你最好别一个人把这瓶酒喝光，这样对身体不好。",
           "pinyin": "Nǐ zuìhǎo bié yígerén bǎ zhè píng jiǔ hēguāng, zhèyàng duì shēntǐ bù hǎo.",
           "english": "You had better not finish this bottle of wine by yourself; that is bad for your health."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g5-4",
@@ -1949,7 +1972,8 @@
           "simplified": "今天的功课很多，我写了三个小时才写完。",
           "pinyin": "Jīntiān de gōngkè hěn duō, wǒ xiě le sān ge xiǎoshí cái xiěwán.",
           "english": "There was a lot of homework today; it took me three hours to finish it."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2063,7 +2087,8 @@
           "simplified": "我一点儿都不担心，他会自己做饭、打扫。",
           "pinyin": "Wǒ yìdiǎnr dōu bù dānxīn, tā huì zìjǐ zuòfàn, dǎsǎo.",
           "english": "I'm not worried at all; he can cook and clean by himself."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g6-2",
@@ -2183,7 +2208,8 @@
           "simplified": "日本菜一点儿也不辣，你吃吃看就知道了。",
           "pinyin": "Rìběn cài yìdiǎnr yě bú là, nǐ chī chī kàn jiù zhīdào le.",
           "english": "Japanese food is not spicy at all. Try it and you'll see."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g6-3",
@@ -2300,7 +2326,8 @@
           "simplified": "这碗汤一点儿都不好喝，我不要喝。",
           "pinyin": "Zhè wǎn tāng yìdiǎnr dōu bù hǎohē, wǒ búyào hē.",
           "english": "This bowl of soup doesn't taste good at all; I don't want to drink it."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2413,7 +2440,8 @@
           "simplified": "医生说刚吃饱就洗澡，这样对身体不好。",
           "pinyin": "Yīshēng shuō gāng chībǎo jiù xǐzǎo, zhèyàng duì shēntǐ bù hǎo.",
           "english": "The doctor says that taking a bath right after a full meal is bad for your health."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g7-2",
@@ -2518,7 +2546,8 @@
           "simplified": "陈先生刚喝酒就开车，这样太危险了。",
           "pinyin": "Chén xiānshēng gāng hē jiǔ jiù kāichē, zhèyàng tài wéixiǎn le.",
           "english": "Mr. Chen drives right after drinking; that is too dangerous."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g7-3",
@@ -2626,7 +2655,8 @@
           "simplified": "考试刚结束，学生就回家了。",
           "pinyin": "Kǎoshì gāng jiéshù, xuéshēng jiù huí jiā le.",
           "english": "The exam had just ended, and the students went home right away."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2716,7 +2746,8 @@
           "simplified": "有学生趁着老师不在，看手机、玩游戏。",
           "pinyin": "Yǒu xuéshēng chènzhe lǎoshī bú zài, kàn shǒujī, wán yóuxì.",
           "english": "Some students take advantage of the teacher being away to look at their phones and play games."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l7g8-2",
@@ -2909,7 +2940,8 @@
           "simplified": "你应该趁年轻，多去旅行。",
           "pinyin": "Nǐ yīnggāi chèn niánqīng, duō qù lǚxíng.",
           "english": "You should travel more while you are young."
-        }
+        },
+        "free": true
       }
     ]
   }

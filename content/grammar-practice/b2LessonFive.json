@@ -22,35 +22,31 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "我的果汁"
-              },
-              {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "被"
+                  "我的果汁"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "室友"
+                  "被"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "喝"
+                  "室友"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "了"
+                  "喝了"
                 ]
               },
               {
@@ -62,6 +58,10 @@
         ],
         "tiles": [
           {
+            "traditional": "我的果汁",
+            "pinyin": "wǒ de guǒzhī"
+          },
+          {
             "traditional": "被",
             "pinyin": "bèi"
           },
@@ -70,20 +70,12 @@
             "pinyin": "shìyǒu"
           },
           {
-            "traditional": "喝",
-            "pinyin": "hē"
-          },
-          {
-            "traditional": "了",
-            "pinyin": "le"
+            "traditional": "喝了",
+            "pinyin": "hē le"
           },
           {
             "traditional": "把",
             "pinyin": "bǎ"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
           }
         ],
         "repairs": [
@@ -94,24 +86,23 @@
             "mark": [
               "把"
             ],
-            "note": "把 marks the thing that is acted on. Here the thing acted on comes first, and the doer follows 被."
+            "note": "The first sentence already uses 把. With 被, the thing that something happens to comes first, then 被 and the one who did it."
           },
           {
-            "placed": [
-              "我"
+            "before": [
+              "室友",
+              "被"
             ],
-            "mark": [
-              "我"
-            ],
-            "note": "The first sentence says who drank it: the roommate."
+            "note": "With 被, the thing that something happens to comes first; the one who did it comes after 被."
           }
         ],
-        "fallbackRepair": "被, then the one who did it, then the verb, then 了: 被室友喝了.",
+        "fallbackRepair": "The juice first, then 被, then who drank it, then the verb: 我的果汁被室友喝了.",
         "result": {
           "traditional": "我的果汁被室友喝了。",
           "pinyin": "Wǒ de guǒzhī bèi shìyǒu hē le.",
           "english": "My juice was drunk by my roommate."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g1-2",
@@ -224,7 +215,8 @@
           "simplified": "弟弟不写功课，在玩游戏，被妈妈看见了。",
           "pinyin": "Dìdi bù xiě gōngkè, zài wán yóuxì, bèi māma kànjiàn le.",
           "english": "My younger brother wasn't doing his homework and was playing games, and Mom saw him."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g1-3",
@@ -243,36 +235,31 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "我剛洗乾淨的鞋子",
-                "simplified": "我刚洗干净的鞋子"
-              },
-              {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "被"
+                  "我剛洗乾淨的鞋子"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "小狗"
+                  "被"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "弄髒"
+                  "小狗"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "了"
+                  "弄髒了"
                 ]
               },
               {
@@ -284,6 +271,11 @@
         ],
         "tiles": [
           {
+            "traditional": "我剛洗乾淨的鞋子",
+            "simplified": "我刚洗干净的鞋子",
+            "pinyin": "wǒ gāng xǐ gānjìng de xiézi"
+          },
+          {
             "traditional": "被",
             "pinyin": "bèi"
           },
@@ -292,21 +284,13 @@
             "pinyin": "xiǎogǒu"
           },
           {
-            "traditional": "弄髒",
-            "simplified": "弄脏",
-            "pinyin": "nòngzāng"
-          },
-          {
-            "traditional": "了",
-            "pinyin": "le"
+            "traditional": "弄髒了",
+            "simplified": "弄脏了",
+            "pinyin": "nòngzāng le"
           },
           {
             "traditional": "把",
             "pinyin": "bǎ"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "wǒ"
           }
         ],
         "repairs": [
@@ -317,25 +301,24 @@
             "mark": [
               "把"
             ],
-            "note": "把 marks the thing that is acted on. Here the thing acted on comes first, and the doer follows 被."
+            "note": "把 puts the one who did it first. With 被, the thing that something happens to comes first, then 被 and the one who did it."
           },
           {
-            "placed": [
-              "我"
+            "before": [
+              "小狗",
+              "被"
             ],
-            "mark": [
-              "我"
-            ],
-            "note": "The first sentence says who got the shoes dirty: the puppy."
+            "note": "With 被, the thing that something happens to comes first; the one who did it comes after 被."
           }
         ],
-        "fallbackRepair": "被, then the one who did it, then the verb, then 了: 被小狗弄髒了.",
+        "fallbackRepair": "The shoes first, then 被, then who did it, then the verb: 我剛洗乾淨的鞋子被小狗弄髒了.",
         "result": {
           "traditional": "我剛洗乾淨的鞋子被小狗弄髒了。",
           "simplified": "我刚洗干净的鞋子被小狗弄脏了。",
           "pinyin": "Wǒ gāng xǐ gānjìng de xiézi bèi xiǎogǒu nòngzāng le.",
           "english": "The shoes I had just washed clean were dirtied by the puppy."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g1-4",
@@ -438,7 +421,8 @@
           "simplified": "弟弟把巧克力都吃完了，可是没被妈妈发现。",
           "pinyin": "Dìdi bǎ qiǎokèlì dōu chīwán le, kěshì méi bèi māma fāxiàn.",
           "english": "My younger brother ate up all the chocolate, but Mom didn't find out."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g1-5",
@@ -544,7 +528,8 @@
           "simplified": "你的车停在公园旁边，没被偷啊！",
           "pinyin": "Nǐ de chē tíng zài gōngyuán pángbiān, méi bèi tōu a!",
           "english": "Your car is parked beside the park; it hasn't been stolen!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g1-6",
@@ -666,7 +651,8 @@
           "simplified": "我朋友昨天被球打到，头很疼，所以今天没去上课。那你去打球的时候得小心一点，不要被打到。",
           "pinyin": "Wǒ péngyǒu zuótiān bèi qiú dǎdào, tóu hěn téng, suǒyǐ jīntiān méi qù shàngkè. Nà nǐ qù dǎqiú de shíhòu děi xiǎoxīn yìdiǎn, búyào bèi dǎdào.",
           "english": "My friend was hit by a ball yesterday and has a headache, so he didn't go to class today. / Then be careful when you go to play ball; don't get hit."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -788,7 +774,8 @@
           "simplified": "妹妹在公车上听音乐，听着听着就到家了。",
           "pinyin": "Mèimei zài gōngchē shàng tīng yīnyuè, tīngzhe tīngzhe jiù dào jiā le.",
           "english": "My younger sister was listening to music on the bus, and before she knew it she was home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g2-2",
@@ -903,7 +890,8 @@
           "simplified": "他走路去图书馆，走着走着就下雨了。",
           "pinyin": "Tā zǒulù qù túshūguǎn, zǒuzhe zǒuzhe jiù xià yǔ le.",
           "english": "He was walking to the library, and as he walked it started to rain."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g2-3",
@@ -1021,7 +1009,8 @@
           "simplified": "妈妈说故事给孩子听，说着说着，孩子就睡着了。",
           "pinyin": "Māma shuō gùshì gěi háizi tīng, shuōzhe shuōzhe, háizi jiù shuìzháo le.",
           "english": "Mom was telling the child a story, and as she talked the child fell asleep."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1144,7 +1133,8 @@
           "simplified": "没关系，只要多练习就可以了。",
           "pinyin": "Méiguānxi, zhǐyào duō liànxí jiù kěyǐ le.",
           "english": "It's all right. As long as you practice more, it will be fine."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g3-2",
@@ -1314,35 +1304,46 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "只要"
+                  "只要",
+                  "草地上"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "草地上"
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "沒有"
+                  "草地上",
+                  "只要"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "垃圾和蟲子，",
-                "simplified": "垃圾和虫子，"
               },
               {
                 "type": "slot",
                 "id": "s3",
+                "answers": [
+                  "沒有"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "垃圾和蟲子"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，"
+              },
+              {
+                "type": "slot",
+                "id": "s5",
                 "answers": [
                   "就"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s6",
                 "answers": [
                   "可以"
                 ]
@@ -1360,9 +1361,18 @@
             "pinyin": "zhǐyào"
           },
           {
+            "traditional": "草地上",
+            "pinyin": "cǎodì shàng"
+          },
+          {
             "traditional": "沒有",
             "simplified": "没有",
             "pinyin": "méiyǒu"
+          },
+          {
+            "traditional": "垃圾和蟲子",
+            "simplified": "垃圾和虫子",
+            "pinyin": "lèsè hé chóngzi"
           },
           {
             "traditional": "就",
@@ -1401,13 +1411,22 @@
             "note": "只要 gives one easy condition, and its result takes 就."
           }
         ],
-        "fallbackRepair": "只要 opens the condition; 就 comes before 可以.",
+        "fallbackRepair": "只要 opens the condition (no trash and no bugs on the grass); 就 comes before 可以.",
         "result": {
           "traditional": "只要草地上沒有垃圾和蟲子，就可以。",
           "simplified": "只要草地上没有垃圾和虫子，就可以。",
           "pinyin": "Zhǐyào cǎodì shàng méiyǒu lèsè hé chóngzi, jiù kěyǐ.",
           "english": "As long as there is no trash and there are no bugs on the grass, you can."
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "草地上只要沒有垃圾和蟲子，就可以。",
+            "simplified": "草地上只要没有垃圾和虫子，就可以。",
+            "pinyin": "Cǎodì shàng zhǐyào méiyǒu lèsè hé chóngzi, jiù kěyǐ.",
+            "english": "As long as there is no trash and there are no bugs on the grass, you can."
+          }
+        ],
+        "free": true
       }
     ]
   },
@@ -1543,7 +1562,8 @@
             "pinyin": "Yǒushíhòu shàngwǎng, yǒushíhòu kàn diànshì.",
             "english": "Sometimes I go online, and sometimes I watch television."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l5g4-2",
@@ -1579,13 +1599,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "買",
-                "simplified": "买"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "買"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "紅色的",
                   "白色的"
@@ -1597,19 +1619,21 @@
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "有時候"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "買",
-                "simplified": "买"
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "買"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s6",
                 "answers": [
                   "白色的",
                   "紅色的"
@@ -1632,6 +1656,16 @@
             "traditional": "有時候",
             "simplified": "有时候",
             "pinyin": "yǒushíhòu"
+          },
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          },
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
           },
           {
             "traditional": "紅色的",
@@ -1686,7 +1720,8 @@
             "pinyin": "Tā yǒushíhòu mǎi báisè de, yǒushíhòu mǎi hóngsè de.",
             "english": "Sometimes she buys white ones, and sometimes she buys red ones."
           }
-        ]
+        ],
+        "free": true
       },
       {
         "id": "b2l5g4-3",
@@ -1723,14 +1758,11 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "在草地上"
-              },
-              {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "野餐"
+                  "在草地上野餐",
+                  "去球場打球"
                 ]
               },
               {
@@ -1745,15 +1777,11 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "去球場",
-                "simplified": "去球场"
-              },
-              {
                 "type": "slot",
                 "id": "s4",
                 "answers": [
-                  "打球"
+                  "去球場打球",
+                  "在草地上野餐"
                 ]
               },
               {
@@ -1775,16 +1803,18 @@
             "pinyin": "yǒushíhòu"
           },
           {
-            "traditional": "野餐",
-            "pinyin": "yěcān"
+            "traditional": "在草地上野餐",
+            "pinyin": "zài cǎodì shàng yěcān"
           },
           {
-            "traditional": "打球",
-            "pinyin": "dǎqiú"
+            "traditional": "去球場打球",
+            "simplified": "去球场打球",
+            "pinyin": "qù qiúchǎng dǎqiú"
           },
           {
-            "traditional": "游泳",
-            "pinyin": "yóuyǒng"
+            "traditional": "去球場游泳",
+            "simplified": "去球场游泳",
+            "pinyin": "qù qiúchǎng yóuyǒng"
           },
           {
             "traditional": "一邊",
@@ -1795,10 +1825,10 @@
         "repairs": [
           {
             "placed": [
-              "游泳"
+              "去球場游泳"
             ],
             "mark": [
-              "游泳"
+              "去球場游泳"
             ],
             "note": "People swim in a pool (游泳池), not on a lawn or a ball court."
           },
@@ -1812,13 +1842,22 @@
             "note": "一邊 comes in pairs and means two things done at the same moment. Things done at different times take 有時候…，有時候…."
           }
         ],
-        "fallbackRepair": "有時候 before each place; a picnic goes with the lawn, and ball games with the ball court.",
+        "fallbackRepair": "有時候 before each of the two activities.",
         "result": {
           "traditional": "他們有時候在草地上野餐，有時候去球場打球。",
           "simplified": "他们有时候在草地上野餐，有时候去球场打球。",
           "pinyin": "Tāmen yǒushíhòu zài cǎodì shàng yěcān, yǒushíhòu qù qiúchǎng dǎqiú.",
           "english": "Sometimes they have picnics on the lawn, and sometimes they go to the ball court to play ball."
-        }
+        },
+        "alternatives": [
+          {
+            "traditional": "他們有時候去球場打球，有時候在草地上野餐。",
+            "simplified": "他们有时候去球场打球，有时候在草地上野餐。",
+            "pinyin": "Tāmen yǒushíhòu qù qiúchǎng dǎqiú, yǒushíhòu zài cǎodì shàng yěcān.",
+            "english": "Sometimes they go to the ball court to play ball, and sometimes they have picnics on the lawn."
+          }
+        ],
+        "free": true
       }
     ]
   },
@@ -1923,7 +1962,8 @@
           "simplified": "山本良介害羞的时候，脸就红起来了。",
           "pinyin": "Shānběn Liángjiè hàixiū de shíhòu, liǎn jiù hóng qǐlái le.",
           "english": "When Yamamoto Ryosuke feels shy, his face turns red."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g5-2",
@@ -2028,7 +2068,8 @@
           "simplified": "还不到中午吃饭的时间，你怎么吃起饭来了？",
           "pinyin": "Hái bú dào zhōngwǔ chīfàn de shíjiān, nǐ zěnme chī qǐ fàn lái le?",
           "english": "It isn't even lunchtime yet. How come you have started eating?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g5-3",
@@ -2146,7 +2187,8 @@
           "simplified": "是啊！早上天气不错，没想到下午就下起雨来了。",
           "pinyin": "Shì a! Zǎoshàng tiānqì búcuò, méixiǎngdào xiàwǔ jiù xià qǐ yǔ lái le.",
           "english": "Yes! The weather was nice in the morning; I didn't expect it to start raining in the afternoon."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2404,7 +2446,8 @@
           "simplified": "还好有安全人员，要不然小偷会来偷东西。",
           "pinyin": "Háihǎo yǒu ānquán rényuán, yàobùrán xiǎotōu huì lái tōu dōngxi.",
           "english": "Luckily there are security guards; otherwise thieves would come and steal things."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g6-3",
@@ -2527,7 +2570,8 @@
           "simplified": "还好房租不贵，要不然就不够了。",
           "pinyin": "Háihǎo fángzū bú guì, yàobùrán jiù búgòu le.",
           "english": "Luckily the rent isn't expensive; otherwise it wouldn't be enough."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2575,20 +2619,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "打"
-              },
-              {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "一次"
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "一次網球"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "網球。",
-                "simplified": "网球。"
+                "traditional": "。"
               }
             ]
           }
@@ -2604,8 +2650,13 @@
             "pinyin": "yí ge lǐbài"
           },
           {
-            "traditional": "一次",
-            "pinyin": "yí cì"
+            "traditional": "打",
+            "pinyin": "dǎ"
+          },
+          {
+            "traditional": "一次網球",
+            "simplified": "一次网球",
+            "pinyin": "yí cì wǎngqiú"
           },
           {
             "traditional": "第",
@@ -2636,13 +2687,14 @@
             "note": "The first sentence says once a week, not once a day."
           }
         ],
-        "fallbackRepair": "每 before the length of time; how many times goes after the verb.",
+        "fallbackRepair": "每 before the length of time, then the verb, then how many times: 每一個禮拜打一次網球.",
         "result": {
           "traditional": "張先生每一個禮拜打一次網球。",
           "simplified": "张先生每一个礼拜打一次网球。",
           "pinyin": "Zhāng xiānshēng měi yí ge lǐbài dǎ yí cì wǎngqiú.",
           "english": "Mr. Zhang plays tennis once every week."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g7-2",
@@ -2752,7 +2804,8 @@
           "simplified": "他家的浴室很干净，因为每两天就打扫一次。",
           "pinyin": "Tā jiā de yùshì hěn gānjìng, yīnwèi měi liǎng tiān jiù dǎsǎo yí cì.",
           "english": "His bathroom is very clean, because it gets cleaned once every two days."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g7-3",
@@ -2856,7 +2909,8 @@
           "simplified": "医生说，每看三十分钟的书，就应该休息一下。",
           "pinyin": "Yīshēng shuō, měi kàn sānshí fēnzhōng de shū, jiù yīnggāi xiūxí yíxià.",
           "english": "The doctor says that after every thirty minutes of reading, you should take a break."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2957,7 +3011,8 @@
           "simplified": "台湾的月饼像月亮一样圆。",
           "pinyin": "Táiwān de yuèbǐng xiàng yuèliàng yíyàng yuán.",
           "english": "Taiwan's moon cakes are as round as the moon."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g8-2",
@@ -3059,7 +3114,8 @@
           "simplified": "这种饮料的味道不错，像果汁一样甜。",
           "pinyin": "Zhè zhǒng yǐnliào de wèidào búcuò, xiàng guǒzhī yíyàng tián.",
           "english": "This kind of drink tastes good, as sweet as juice."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g8-3",
@@ -3162,7 +3218,8 @@
           "simplified": "林小姐说话的声音很温柔，像唱歌一样好听。",
           "pinyin": "Lín xiǎojiě shuōhuà de shēngyīn hěn wēnróu, xiàng chànggē yíyàng hǎotīng.",
           "english": "Miss Lin's speaking voice is very gentle, as pleasant as singing."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l5g8-4",
@@ -3257,7 +3314,8 @@
           "simplified": "我的同学觉得露营像野餐一样好玩。",
           "pinyin": "Wǒ de tóngxué juéde lùyíng xiàng yěcān yíyàng hǎowán.",
           "english": "My classmate thinks camping is as much fun as a picnic."
-        }
+        },
+        "free": true
       }
     ]
   }

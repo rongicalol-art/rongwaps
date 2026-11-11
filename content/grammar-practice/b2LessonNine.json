@@ -121,7 +121,8 @@
           "simplified": "姐姐，我想吃的冰淇淋蛋糕，你没买吗？",
           "pinyin": "Jiějie, wǒ xiǎng chī de bīngqílín dàngāo, nǐ méi mǎi ma?",
           "english": "Sis, the ice cream cake I wanted, didn't you buy it?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g1-2",
@@ -243,7 +244,8 @@
           "simplified": "我教过你好几次了，你还没学会吗？",
           "pinyin": "Wǒ jiāo guò nǐ hǎo jǐ cì le, nǐ háiméi xuéhuì ma?",
           "english": "I've taught you several times. Haven't you learned it yet?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g1-3",
@@ -361,7 +363,8 @@
           "simplified": "你不知道？我没告诉你吗？",
           "pinyin": "Nǐ bù zhīdào? Wǒ méi gàosu nǐ ma?",
           "english": "You don't know? Didn't I tell you?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -473,7 +476,8 @@
           "simplified": "快一点儿去写作业。",
           "pinyin": "Kuài yìdiǎnr qù xiě zuòyè.",
           "english": "Hurry up and go do your homework."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g2-2",
@@ -592,7 +596,8 @@
           "simplified": "别看了，快点儿去念书。",
           "pinyin": "Bié kàn le, kuài diǎnr qù niànshū.",
           "english": "Stop watching. Hurry up and go study."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g2-3",
@@ -711,7 +716,8 @@
           "simplified": "良介，你慢一点儿走，先写一下资料。",
           "pinyin": "Liángjiè, nǐ màn yìdiǎnr zǒu, xiān xiě yíxià zīliào.",
           "english": "Ryosuke, don't leave just yet. Fill in this form first."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -824,7 +830,8 @@
           "simplified": "你可以搭蓝线，搭到台北车站。",
           "pinyin": "Nǐ kěyǐ dā lán xiàn, dā dào Táiběi chēzhàn.",
           "english": "You can take the Blue Line and ride to Taipei Main Station."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g3-2",
@@ -939,7 +946,8 @@
           "traditional": "我打算搬到新家去。",
           "pinyin": "Wǒ dǎsuàn bān dào xīn jiā qù.",
           "english": "I plan to move them to my new home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g3-3",
@@ -1056,7 +1064,8 @@
           "traditional": "我打算租到明年六月。",
           "pinyin": "Wǒ dǎsuàn zū dào míngnián liù yuè.",
           "english": "I plan to rent it until June next year."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1183,7 +1192,8 @@
           "simplified": "看起来好像很辣，其实不怎么辣。",
           "pinyin": "Kànqǐlái hǎoxiàng hěn là, qíshí bù zěnme là.",
           "english": "It looks very spicy, but actually it isn't particularly spicy."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g4-2",
@@ -1219,19 +1229,22 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "打算"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "打算"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "去"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "哪裡"
                 ]
@@ -1248,6 +1261,10 @@
           {
             "traditional": "不",
             "pinyin": "bù"
+          },
+          {
+            "traditional": "打算",
+            "pinyin": "dǎsuàn"
           },
           {
             "traditional": "去",
@@ -1295,7 +1312,8 @@
           "simplified": "快要期末考了，我不打算去哪里，要在家用功读书。",
           "pinyin": "Kuàiyào qímòkǎo le, wǒ bù dǎsuàn qù nǎlǐ, yào zài jiā yònggōng dúshū.",
           "english": "Finals are coming up. I'm not planning to go anywhere in particular; I have to study hard at home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g4-3",
@@ -1410,7 +1428,8 @@
           "simplified": "没花多少钱，才一百块。",
           "pinyin": "Méi huā duōshǎo qián, cái yìbǎi kuài.",
           "english": "I didn't spend much, only a hundred dollars."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g4-4",
@@ -1529,7 +1548,8 @@
           "simplified": "没几个，只有两个。",
           "pinyin": "Méi jǐ ge, zhǐyǒu liǎng ge.",
           "english": "Not many, only two."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g4-5",
@@ -1651,7 +1671,8 @@
           "simplified": "我没跟谁一起去，我是一个人去的。",
           "pinyin": "Wǒ méi gēn shéi yìqǐ qù, wǒ shì yígerén qù de.",
           "english": "I didn't go with anyone; I went by myself."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1781,7 +1802,8 @@
           "simplified": "你哥哥怎么这么健康？",
           "pinyin": "Nǐ gēge zěnme zhème jiànkāng?",
           "english": "How come your older brother is so healthy?"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g5-2",
@@ -1903,7 +1925,8 @@
           "simplified": "这篇怎么这么难翻！",
           "pinyin": "Zhè piān zěnme zhème nán fān!",
           "english": "How can this piece be so hard to translate!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g5-3",
@@ -2023,7 +2046,8 @@
           "simplified": "珍珠奶茶怎么这么甜？",
           "pinyin": "Zhēnzhū nǎichá zěnme zhème tián?",
           "english": "How come the bubble tea is so sweet?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2151,7 +2175,8 @@
           "simplified": "谢谢，我刚吃了半只烤鸡，现在吃不下了。",
           "pinyin": "Xièxie, wǒ gāng chī le bàn zhī kǎo jī, xiànzài chībúxià le.",
           "english": "Thanks, but I just ate half a roast chicken; I can't eat any more now."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g6-2",
@@ -2271,7 +2296,8 @@
           "simplified": "我的车很小，坐不下五个人。",
           "pinyin": "Wǒ de chē hěn xiǎo, zuòbúxià wǔ ge rén.",
           "english": "My car is small; it can't seat five people."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g6-3",
@@ -2389,7 +2415,8 @@
           "simplified": "明信片那么小，写得下吗？",
           "pinyin": "Míngxìnpiàn nàme xiǎo, xiědexià ma?",
           "english": "A postcard is so small. Will it all fit?"
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2495,7 +2522,8 @@
           "simplified": "你的手脏脏的，快去洗一洗。",
           "pinyin": "Nǐ de shǒu zāngzāng de, kuài qù xǐ yì xǐ.",
           "english": "Your hands are all dirty; go wash them quickly."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g7-2",
@@ -2588,7 +2616,8 @@
           "simplified": "那件漂漂亮亮的毛衣，很多人都想买。",
           "pinyin": "Nà jiàn piàopiàoliàngliàng de máoyī, hěn duō rén dōu xiǎng mǎi.",
           "english": "Many people want to buy that very pretty sweater."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g7-3",
@@ -2681,7 +2710,8 @@
           "simplified": "这间公寓又大又干净，我跟室友住得舒舒服服的。",
           "pinyin": "Zhè jiān gōngyù yòu dà yòu gānjìng, wǒ gēn shìyǒu zhù de shūshūfúfú de.",
           "english": "This apartment is big and clean; my roommate and I live very comfortably."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l9g7-4",
@@ -2776,7 +2806,8 @@
           "simplified": "我们开开心心地庆祝他的生日。",
           "pinyin": "Wǒmen kāikāixīnxīn de qìngzhù tā de shēngrì.",
           "english": "We happily celebrated his birthday."
-        }
+        },
+        "free": true
       }
     ]
   }

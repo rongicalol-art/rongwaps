@@ -125,7 +125,8 @@
           "simplified": "可是我觉得臭得很！你最好别买。",
           "pinyin": "Kěshì wǒ juéde chòu de hěn! Nǐ zuìhǎo bié mǎi.",
           "english": "But I think it stinks! You'd better not buy it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g1-2",
@@ -244,7 +245,8 @@
           "simplified": "这个周末我忙得很，我不想去！",
           "pinyin": "Zhège zhōumò wǒ máng de hěn, wǒ bù xiǎng qù!",
           "english": "I'm extremely busy this weekend; I don't want to go!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g1-3",
@@ -364,7 +366,8 @@
           "simplified": "是吗？我觉得他聪明得很，而且做事做得又快又好。",
           "pinyin": "Shì ma? Wǒ juéde tā cōngmíng de hěn, érqiě zuòshì zuò de yòu kuài yòu hǎo.",
           "english": "Really? I think he is very clever, and he works both fast and well."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -402,13 +405,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "天氣",
-                "simplified": "天气"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "天氣"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "好不好"
                 ]
@@ -424,6 +429,11 @@
           {
             "traditional": "得看",
             "pinyin": "děi kàn"
+          },
+          {
+            "traditional": "天氣",
+            "simplified": "天气",
+            "pinyin": "tiānqì"
           },
           {
             "traditional": "好不好",
@@ -478,7 +488,8 @@
           "simplified": "得看天气好不好。",
           "pinyin": "Děi kàn tiānqì hǎo bù hǎo.",
           "english": "It depends on whether the weather is good."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g2-2",
@@ -514,12 +525,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "要去"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "要去"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "多久"
                 ]
@@ -535,6 +549,10 @@
           {
             "traditional": "要看",
             "pinyin": "yào kàn"
+          },
+          {
+            "traditional": "要去",
+            "pinyin": "yào qù"
           },
           {
             "traditional": "多久",
@@ -588,7 +606,8 @@
           "traditional": "那要看要去多久。",
           "pinyin": "Nà yào kàn yào qù duōjiǔ.",
           "english": "That depends on how long I would have to go for."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g2-3",
@@ -620,12 +639,15 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "要表演"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "要表演"
+                ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "什麼"
                 ]
@@ -641,6 +663,10 @@
           {
             "traditional": "得看",
             "pinyin": "děi kàn"
+          },
+          {
+            "traditional": "要表演",
+            "pinyin": "yào biǎoyǎn"
           },
           {
             "traditional": "什麼",
@@ -697,7 +723,8 @@
           "simplified": "得看要表演什么。",
           "pinyin": "Děi kàn yào biǎoyǎn shénme.",
           "english": "It depends on what we would perform."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -817,7 +844,8 @@
           "simplified": "他很喜欢吃水果，像西瓜、香蕉、橘子什么的。",
           "pinyin": "Tā hěn xǐhuān chī shuǐguǒ, xiàng xīguā, xiāngjiāo, júzi shénme de.",
           "english": "He loves eating fruit, like watermelon, bananas, tangerines and so on."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g3-2",
@@ -1120,7 +1148,8 @@
           "simplified": "小鱼在大海里游来游去，好自由喔！",
           "pinyin": "Xiǎo yú zài dàhǎi lǐ yóu lái yóu qù, hǎo zìyóu ō!",
           "english": "The little fish swim back and forth in the sea, so free!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g4-2",
@@ -1213,7 +1242,8 @@
           "simplified": "动物园的蛇在草地上爬来爬去，好可怕！",
           "pinyin": "Dòngwùyuán de shé zài cǎodì shàng pá lái pá qù, hǎo kěpà!",
           "english": "The snakes at the zoo crawl back and forth on the grass, how scary!"
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g4-3",
@@ -1309,7 +1339,8 @@
           "simplified": "那个门被你用力地拉来拉去，一下子就坏了。",
           "pinyin": "Nàge mén bèi nǐ yònglì de lā lái lā qù, yíxiàzi jiù huài le.",
           "english": "You pulled that door back and forth so hard that it broke in no time."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g4-4",
@@ -1403,7 +1434,8 @@
           "simplified": "一开始那几个孩子边玩边开玩笑，后来推来推去，不久就打起来了。",
           "pinyin": "Yìkāishǐ nà jǐ ge háizi biān wán biān kāiwánxiào, hòulái tuī lái tuī qù, bùjiǔ jiù dǎ qǐlái le.",
           "english": "At first those children were playing and joking, then they started pushing each other back and forth, and soon they were fighting."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g4-5",
@@ -1499,7 +1531,8 @@
           "simplified": "老鼠半夜在厨房里跑来跑去，趁没人的时候把食物偷走了。",
           "pinyin": "Lǎoshǔ bànyè zài chúfáng lǐ pǎo lái pǎo qù, chèn méi rén de shíhòu bǎ shíwù tōuzǒu le.",
           "english": "The mice ran back and forth in the kitchen in the middle of the night and stole the food while no one was around."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1612,7 +1645,8 @@
           "simplified": "我妈妈很会做菜，她做的牛肉面谁都比不上。",
           "pinyin": "Wǒ māma hěn huì zuò cài, tā zuò de niúròu miàn shéi dōu bǐbúshàng.",
           "english": "My mom is a great cook; nobody can match the beef noodles she makes."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g5-2",
@@ -1713,7 +1747,8 @@
           "simplified": "中国人认为最伟大的老师是孔子，没有人比得上他。",
           "pinyin": "Zhōngguó rén rènwéi zuì wěidà de lǎoshī shì Kǒngzǐ, méiyǒu rén bǐdeshàng tā.",
           "english": "Chinese people consider Confucius the greatest teacher; nobody can match him."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g5-3",
@@ -1816,7 +1851,8 @@
           "simplified": "李小姐觉得非洲人跳舞跳得最棒，别的国家的人都比不上他们。",
           "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, biéde guójiā de rén dōu bǐbúshàng tāmen.",
           "english": "Miss Li thinks Africans are the best dancers; people from other countries can't match them."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2053,7 +2089,8 @@
           "simplified": "只有在百货公司才买得到。",
           "pinyin": "Zhǐyǒu zài bǎihuò gōngsī cái mǎidedào.",
           "english": "You can only get it in department stores."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l16g6-3",

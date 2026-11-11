@@ -118,7 +118,8 @@
           "simplified": "满十八岁就可以开车。",
           "pinyin": "Mǎn shíbā suì jiù kěyǐ kāichē.",
           "english": "Once you turn eighteen, you can drive."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g1-2",
@@ -221,7 +222,8 @@
           "simplified": "买满十包，就算你便宜一点儿。",
           "pinyin": "Mǎi mǎn shí bāo, jiù suàn nǐ piányí yìdiǎnr.",
           "english": "Buy a full ten packs and I'll give you a better price."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g1-3",
@@ -330,7 +332,8 @@
           "simplified": "他们结婚已经满二十年了。",
           "pinyin": "Tāmen jiéhūn yǐjīng mǎn èrshí nián le.",
           "english": "They have already been married a full twenty years."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -451,7 +454,8 @@
           "simplified": "这个字很难写，连老师都不会写。",
           "pinyin": "Zhège zì hěn nán xiě, lián lǎoshī dōu bú huì xiě.",
           "english": "This character is very hard to write; even the teacher can't write it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g2-2",
@@ -541,7 +545,8 @@
           "simplified": "他喝了太多酒，连自己的名字都忘了。",
           "pinyin": "Tā hē le tài duō jiǔ, lián zìjǐ de míngzi dōu wàng le.",
           "english": "He drank too much; he even forgot his own name."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g2-3",
@@ -646,7 +651,8 @@
           "simplified": "台湾的豆浆很好喝，连外国人都喜欢喝。",
           "pinyin": "Táiwān de dòujiāng hěn hǎohē, lián wàiguórén dōu xǐhuān hē.",
           "english": "Soy milk in Taiwan is delicious; even foreigners like to drink it."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g2-4",
@@ -748,7 +754,8 @@
           "simplified": "金先生不爱花钱，连早餐都不吃。",
           "pinyin": "Jīn xiānshēng bú ài huā qián, lián zǎocān dōu bù chī.",
           "english": "Mr. Jin doesn't like spending money; he doesn't even eat breakfast."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g2-5",
@@ -858,7 +865,8 @@
           "simplified": "那家餐厅已经客满了，连一个位子都没有。",
           "pinyin": "Nà jiā cāntīng yǐjīng kèmǎn le, lián yí ge wèizi dōu méiyǒu.",
           "english": "That restaurant is already full; there isn't even one seat."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g2-6",
@@ -966,7 +974,8 @@
           "simplified": "住在这个社区真不方便，附近连一家商店也没有。",
           "pinyin": "Zhù zài zhège shèqū zhēn bù fāngbiàn, fùjìn lián yì jiā shāngdiàn yě méiyǒu.",
           "english": "Living in this neighborhood is really inconvenient; there isn't even one shop nearby."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g2-7",
@@ -1069,7 +1078,8 @@
           "simplified": "星期天不用上班，公司连一个人都没有。",
           "pinyin": "Xīngqítiān búyòng shàngbān, gōngsī lián yí ge rén dōu méiyǒu.",
           "english": "Nobody has to work on Sunday; there isn't even one person at the company."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1089,19 +1099,14 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "在夜市，"
+                "traditional": "在夜市，像"
               },
               {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "像"
+                  "雞排"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "雞排",
-                "simplified": "鸡排"
               },
               {
                 "type": "slot",
@@ -1134,8 +1139,9 @@
         ],
         "tiles": [
           {
-            "traditional": "像",
-            "pinyin": "xiàng"
+            "traditional": "雞排",
+            "simplified": "鸡排",
+            "pinyin": "jīpái"
           },
           {
             "traditional": "那樣",
@@ -1186,7 +1192,8 @@
           "simplified": "在夜市，像鸡排那样的小吃，我都喜欢吃。",
           "pinyin": "Zài yèshì, xiàng jīpái nàyàng de xiǎochī, wǒ dōu xǐhuān chī.",
           "english": "At the night market, I like to eat all the snacks like fried chicken cutlet."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g3-2",
@@ -1291,7 +1298,8 @@
           "simplified": "你得满十八岁，才可以做像喝酒这样的事。",
           "pinyin": "Nǐ děi mǎn shíbā suì, cái kěyǐ zuò xiàng hē jiǔ zhèyàng de shì.",
           "english": "You have to be at least eighteen before you can do things like drinking alcohol."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g3-3",
@@ -1302,20 +1310,15 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "週末的時候，莫以凡常去",
-                "simplified": "周末的时候，莫以凡常去"
+                "traditional": "週末的時候，莫以凡常去像",
+                "simplified": "周末的时候，莫以凡常去像"
               },
               {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "像"
+                  "博物館"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "博物館",
-                "simplified": "博物馆"
               },
               {
                 "type": "slot",
@@ -1348,8 +1351,9 @@
         ],
         "tiles": [
           {
-            "traditional": "像",
-            "pinyin": "xiàng"
+            "traditional": "博物館",
+            "simplified": "博物馆",
+            "pinyin": "bówùguǎn"
           },
           {
             "traditional": "那樣",
@@ -1401,7 +1405,8 @@
           "simplified": "周末的时候，莫以凡常去像博物馆那样的地方参观。",
           "pinyin": "Zhōumò de shíhòu, Mò Yǐfán cháng qù xiàng bówùguǎn nàyàng de dìfāng cānguān.",
           "english": "On weekends, Mo Yifan often goes to visit places like museums."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1513,7 +1518,8 @@
           "simplified": "下雨了，我只好在家吃饭。",
           "pinyin": "Xià yǔ le, wǒ zhǐhǎo zài jiā chīfàn.",
           "english": "It's raining, so I have no choice but to eat at home."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g4-2",
@@ -1621,7 +1627,8 @@
           "simplified": "这家餐厅已经没有位子了，我们只好去别的餐厅。",
           "pinyin": "Zhè jiā cāntīng yǐjīng méiyǒu wèizi le, wǒmen zhǐhǎo qù biéde cāntīng.",
           "english": "This restaurant has no seats left, so we have no choice but to go to another restaurant."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g4-3",
@@ -1728,7 +1735,8 @@
           "simplified": "我发现脚踏车不能骑了，只好走路去。",
           "pinyin": "Wǒ fāxiàn jiǎotàchē bù néng qí le, zhǐhǎo zǒulù qù.",
           "english": "I found that my bicycle can't be ridden, so I have no choice but to walk."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -1828,7 +1836,8 @@
           "simplified": "为了参加卡拉 OK 比赛，我要好好地练习。",
           "pinyin": "Wèile cānjiā kǎlā OK bǐsài, wǒ yào hǎohǎo de liànxí.",
           "english": "In order to take part in the karaoke contest, I am going to practice hard."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g5-2",
@@ -1919,7 +1928,8 @@
           "simplified": "为了订到火车票，我要早一点儿上网订票。",
           "pinyin": "Wèile dìngdào huǒchēpiào, wǒ yào zǎo yìdiǎnr shàngwǎng dìngpiào.",
           "english": "In order to get train tickets, I am going to book online a little earlier."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g5-3",
@@ -1929,22 +1939,23 @@
           {
             "segments": [
               {
+                "type": "text",
+                "traditional": "為了",
+                "simplified": "为了"
+              },
+              {
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "為了"
+                  "讓"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "讓"
+                  "女朋友"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "女朋友"
               },
               {
                 "type": "slot",
@@ -1963,14 +1974,13 @@
         ],
         "tiles": [
           {
-            "traditional": "為了",
-            "simplified": "为了",
-            "pinyin": "wèile"
-          },
-          {
             "traditional": "讓",
             "simplified": "让",
             "pinyin": "ràng"
+          },
+          {
+            "traditional": "女朋友",
+            "pinyin": "nǚpéngyǒu"
           },
           {
             "traditional": "高興",
@@ -2028,7 +2038,8 @@
           "simplified": "为了让女朋友高兴，弟弟买了一束玫瑰花。",
           "pinyin": "Wèile ràng nǚpéngyǒu gāoxìng, dìdi mǎi le yí shù méiguihuā.",
           "english": "To make his girlfriend happy, my younger brother bought a bunch of roses."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2502,7 +2513,8 @@
           "simplified": "因为他喜欢上张小姐了。",
           "pinyin": "Yīnwèi tā xǐhuānshàng Zhāng xiǎojiě le.",
           "english": "Because he has taken a liking to Miss Zhang."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g6-6",
@@ -2610,7 +2622,8 @@
           "simplified": "请在这里写上你的名字。",
           "pinyin": "Qǐng zài zhèlǐ xiěshàng nǐ de míngzi.",
           "english": "Please write your name here."
-        }
+        },
+        "free": true
       }
     ]
   },
@@ -2734,7 +2747,8 @@
           "simplified": "因为工作的关系，我得学中文。",
           "pinyin": "Yīnwèi gōngzuò de guānxì, wǒ děi xué Zhōngwén.",
           "english": "Because of work, I have to learn Chinese."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g7-2",
@@ -2843,7 +2857,8 @@
           "simplified": "我们常去那家餐厅是因为朋友的关系，老板是我朋友。",
           "pinyin": "Wǒmen cháng qù nà jiā cāntīng shì yīnwèi péngyǒu de guānxì, lǎobǎn shì wǒ péngyǒu.",
           "english": "We often go to that restaurant because of a friend; the owner is my friend."
-        }
+        },
+        "free": true
       },
       {
         "id": "b2l8g7-3",
@@ -2966,7 +2981,8 @@
           "simplified": "环境是不错，可是因为房租的关系，我还要再想一想。",
           "pinyin": "Huánjìng shì búcuò, kěshì yīnwèi fángzū de guānxì, wǒ hái yào zài xiǎng yì xiǎng.",
           "english": "The surroundings are nice, true, but because of the rent, I still need to think it over."
-        }
+        },
+        "free": true
       }
     ]
   }
