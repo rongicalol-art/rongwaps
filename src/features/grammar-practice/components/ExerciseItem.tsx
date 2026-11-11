@@ -1,6 +1,6 @@
 import { memo, type Ref } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ContextualChineseText } from '../../../lib/widgets';
+import { AppIcon, ContextualChineseText, IconActionButton } from '../../../lib/widgets';
 import type { GrammarWordToken, PracticeLine, PracticeSentence, SlotBuildItem } from '../../../types/models';
 import { practiceSlots } from '../../../utils/grammar/grammarPracticeCheck';
 import { cn } from '../../../utils/cn';
@@ -35,6 +35,8 @@ interface ExerciseItemProps {
   onActivate: (index: number) => void;
   onPlace: (index: number, tile: number) => void;
   onTakeBack: (index: number, slotId: string) => void;
+  /** Tell the owner something is wrong with this item; shown once the item is done. */
+  onReport?: (index: number) => void;
 }
 
 /** Chinese line size; the badge and feedback indents are measured in it. */
@@ -46,7 +48,7 @@ const SHAKE = { x: [0, -6, 5, -4, 2, 0], transition: { duration: 0.36, ease: 'ea
  * Memoised: answering one item re-renders only that item.
  */
 export const ExerciseItem = memo(function ExerciseItem({
-  ref, item, index, state, active, script, showPinyin, contextTokens, onOpenWord, onActivate, onPlace, onTakeBack,
+  ref, item, index, state, active, script, showPinyin, contextTokens, onOpenWord, onActivate, onPlace, onTakeBack, onReport,
 }: ExerciseItemProps) {
   const number = index + 1;
   const reduceMotion = useReducedMotion();
@@ -156,6 +158,16 @@ export const ExerciseItem = memo(function ExerciseItem({
                 <div className="mt-1 flex items-start gap-2">
                   <p className="min-w-0 text-base font-bold leading-snug text-ui-muted-strong sm:text-lg">{state.sentence.english}</p>
                   <SentencePlayButton sentence={state.sentence} script={script} />
+                  {onReport && finished && (
+                    <IconActionButton
+                      onClick={() => onReport(index)}
+                      size="sm"
+                      variant="quiet"
+                      icon={<AppIcon name="report" size={18} />}
+                      label="Something wrong with this item?"
+                      className="-my-1 shrink-0 text-ui-muted hover:text-ui-ink"
+                    />
+                  )}
                 </div>
               </div>
             )}

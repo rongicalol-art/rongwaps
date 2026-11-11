@@ -21,6 +21,8 @@ export interface ExercisePageProps {
   onBack?: () => void;
   /** A panel (book page, dictionary, notes) is open on top: ignore key shortcuts. */
   shortcutsDisabled?: boolean;
+  /** The learner flags a finished item as wrong: the text names the item and the answer shown. */
+  onReport?: (context: string) => void;
 }
 
 /** How long a result shows before the page moves on (ms). */
@@ -35,7 +37,7 @@ const sameText = (a: { traditional: string }, b: { traditional: string }) => a.t
  * The learner taps words into the blanks (or onto a build line, in order); an item checks itself when it is full.
  * Wrong: the why, wrong words go back, one retry. Wrong again: the answer fills in and the page moves on.
  */
-export function ExercisePage({ practice, script, showPinyin, contextTokens, onOpenWord, onComplete, onBack, shortcutsDisabled = false }: ExercisePageProps) {
+export function ExercisePage({ practice, script, showPinyin, contextTokens, onOpenWord, onComplete, onBack, shortcutsDisabled = false, onReport }: ExercisePageProps) {
   const reduceMotion = useReducedMotion();
   // One picture for every item (the book's people row) shows once under the title, as the book prints it.
   const shared = useMemo(() => {
@@ -153,6 +155,12 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
     commit(index, { ...state, placed });
   }, [commit, items]);
 
+  const report = useCallback((index: number) => {
+    const item = items[index];
+    const state = statesRef.current[index];
+    onReport?.(`Exercise ${item.source} · ${item.id} · ${state.status === 'correct' ? 'answered right' : 'answer shown'}\n${state.sentence ? textIn(state.sentence, script) : ''}`);
+  }, [items, onReport, script]);
+
   const select = useCallback((index: number) => {
     if (!done(statesRef.current[index]) && index !== activeRef.current) activate(index);
   }, [activate]);
@@ -199,6 +207,7 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
             onActivate={select}
             onPlace={place}
             onTakeBack={takeBack}
+            onReport={onReport ? report : undefined}
           />
         ))}
       </ol>
