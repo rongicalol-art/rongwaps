@@ -37,6 +37,8 @@ Pinyin follows the app's word cards (Taiwan readings: 休息 xiūxí, 認識 rè
 - A trap that is right after all: `沒擔心`, `是不容易` (a concession), `很多歌都不會唱`. A near-synonym is never a trap (`完` beside `光`, `才` or `再` after `等…`).
 - A note that is false elsewhere in the language ("feelings are negated with 不", "比較 compares two things"). Explain from this dialogue instead.
 - The order copied from the other line (`每天都` printed in A's question), or a blank only one tile can fill.
+- A printed word missing because the typed transcript dropped it (three 的 in Lesson 9). The scan decides, never the transcript.
+- A time or place tile that slips in front of the verb and makes a new right sentence (`明天搬到新家`).
 - A silly trap no learner would pick (`趁老`, `上個月付`). A context trap must be something a learner could believe.
 
 ## Review (a fresh reviewer per lesson)

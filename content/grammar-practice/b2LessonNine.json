@@ -15,7 +15,7 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "姐姐，我想吃冰淇淋蛋糕，你"
+                "traditional": "姐姐，我想吃的冰淇淋蛋糕，你"
               },
               {
                 "type": "slot",
@@ -80,9 +80,22 @@
           {
             "traditional": "吃",
             "pinyin": "chī"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "The older sister says 又忘了買: it is about something that did not happen, so it takes 沒: 你沒買嗎？"
+          },
           {
             "placed": [
               "呢"
@@ -104,10 +117,10 @@
         ],
         "fallbackRepair": "沒 before the verb, and 嗎 at the very end: 你沒買嗎？",
         "result": {
-          "traditional": "姐姐，我想吃冰淇淋蛋糕，你沒買嗎？",
-          "simplified": "姐姐，我想吃冰淇淋蛋糕，你没买吗？",
-          "pinyin": "Jiějie, wǒ xiǎng chī bīngqílín dàngāo, nǐ méi mǎi ma?",
-          "english": "Sis, I want ice cream cake. Didn't you buy any?"
+          "traditional": "姐姐，我想吃的冰淇淋蛋糕，你沒買嗎？",
+          "simplified": "姐姐，我想吃的冰淇淋蛋糕，你没买吗？",
+          "pinyin": "Jiějie, wǒ xiǎng chī de bīngqílín dàngāo, nǐ méi mǎi ma?",
+          "english": "Sis, the ice cream cake I wanted, didn't you buy it?"
         }
       },
       {
@@ -896,8 +909,9 @@
             "pinyin": "zài"
           },
           {
-            "traditional": "明天",
-            "pinyin": "míngtiān"
+            "traditional": "從",
+            "simplified": "从",
+            "pinyin": "cóng"
           }
         ],
         "repairs": [
@@ -912,19 +926,19 @@
           },
           {
             "placed": [
-              "明天"
+              "從"
             ],
             "mark": [
-              "明天"
+              "從"
             ],
-            "note": "A asks 搬到哪裡去, so the answer is a place, not a time."
+            "note": "從 marks where things start. A asks where they go, which takes 到: 搬到新家去."
           }
         ],
         "fallbackRepair": "The verb, then 到, then the place, and 去 at the end: 搬到新家去.",
         "result": {
           "traditional": "我打算搬到新家去。",
           "pinyin": "Wǒ dǎsuàn bān dào xīn jiā qù.",
-          "english": "I plan to move it to my new home."
+          "english": "I plan to move them to my new home."
         }
       },
       {
@@ -1125,9 +1139,9 @@
             "pinyin": "méi"
           },
           {
-            "traditional": "什麼",
-            "simplified": "什么",
-            "pinyin": "shénme"
+            "traditional": "哪裡",
+            "simplified": "哪里",
+            "pinyin": "nǎlǐ"
           },
           {
             "traditional": "多少",
@@ -1142,16 +1156,16 @@
             "mark": [
               "沒"
             ],
-            "note": "A quality like 辣 is negated with 不: 不怎麼辣."
+            "note": "沒怎麼 goes before an action that did not happen much (沒怎麼吃). Before a quality like 辣 it is 不怎麼."
           },
           {
             "placed": [
-              "什麼"
+              "哪裡"
             ],
             "mark": [
-              "什麼"
+              "哪裡"
             ],
-            "note": "什麼 stands for a thing. \"Not particularly\" before a quality is 不怎麼."
+            "note": "哪裡 stands for a place. \"Not particularly\" before a quality is 不怎麼."
           },
           {
             "placed": [
@@ -1205,22 +1219,19 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s2",
-                "answers": [
-                  "打算"
-                ]
+                "type": "text",
+                "traditional": "打算"
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "去"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s4",
+                "id": "s3",
                 "answers": [
                   "哪裡"
                 ]
@@ -1237,10 +1248,6 @@
           {
             "traditional": "不",
             "pinyin": "bù"
-          },
-          {
-            "traditional": "打算",
-            "pinyin": "dǎsuàn"
           },
           {
             "traditional": "去",
@@ -1282,7 +1289,7 @@
             "note": "After 去 comes a place, so the question word is 哪裡. 誰 stands for a person."
           }
         ],
-        "fallbackRepair": "不 first, then 打算, then 去 and the question word: 不打算去哪裡.",
+        "fallbackRepair": "不 before 打算, then 去 and the question word: 不打算去哪裡.",
         "result": {
           "traditional": "快要期末考了，我不打算去哪裡，要在家用功讀書。",
           "simplified": "快要期末考了，我不打算去哪里，要在家用功读书。",
@@ -1302,8 +1309,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你剛買這個皮包多少錢？",
-                "simplified": "你刚买这个皮包多少钱？"
+                "traditional": "你剛買的這個皮包多少錢？",
+                "simplified": "你刚买的这个皮包多少钱？"
               }
             ]
           },
@@ -1323,12 +1330,19 @@
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "多少"
+                  "花"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
+                "answers": [
+                  "多少"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
                 "answers": [
                   "錢"
                 ]
@@ -1346,6 +1360,10 @@
             "traditional": "沒",
             "simplified": "没",
             "pinyin": "méi"
+          },
+          {
+            "traditional": "花",
+            "pinyin": "huā"
           },
           {
             "traditional": "多少",
@@ -1374,7 +1392,7 @@
             "mark": [
               "不"
             ],
-            "note": "An amount of money is \"had\" or \"not had\", so the negative is 沒: 沒多少錢."
+            "note": "The bag is already bought, and something that did not happen takes 沒: 沒花多少錢."
           },
           {
             "placed": [
@@ -1383,15 +1401,15 @@
             "mark": [
               "幾"
             ],
-            "note": "幾 needs a measure word after it (幾塊錢). Straight before 錢, \"not much\" is 沒多少."
+            "note": "幾 needs a measure word after it (幾塊錢). Straight before 錢, \"not much\" is 沒…多少."
           }
         ],
-        "fallbackRepair": "沒 first, then 多少, then 錢: 沒多少錢.",
+        "fallbackRepair": "沒 first, then the verb, then 多少, then 錢: 沒花多少錢.",
         "result": {
-          "traditional": "沒多少錢，才一百塊。",
-          "simplified": "没多少钱，才一百块。",
-          "pinyin": "Méi duōshǎo qián, cái yìbǎi kuài.",
-          "english": "Not much, only a hundred dollars."
+          "traditional": "沒花多少錢，才一百塊。",
+          "simplified": "没花多少钱，才一百块。",
+          "pinyin": "Méi huā duōshǎo qián, cái yìbǎi kuài.",
+          "english": "I didn't spend much, only a hundred dollars."
         }
       },
       {
@@ -2159,8 +2177,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我車很小，",
-                "simplified": "我车很小，"
+                "traditional": "我的車很小，",
+                "simplified": "我的车很小，"
               },
               {
                 "type": "slot",
@@ -2249,9 +2267,9 @@
         ],
         "fallbackRepair": "The verb, then 不, then 下: 坐不下.",
         "result": {
-          "traditional": "我車很小，坐不下五個人。",
-          "simplified": "我车很小，坐不下五个人。",
-          "pinyin": "Wǒ chē hěn xiǎo, zuòbúxià wǔ ge rén.",
+          "traditional": "我的車很小，坐不下五個人。",
+          "simplified": "我的车很小，坐不下五个人。",
+          "pinyin": "Wǒ de chē hěn xiǎo, zuòbúxià wǔ ge rén.",
           "english": "My car is small; it can't seat five people."
         }
       },
@@ -2353,7 +2371,7 @@
             "mark": [
               "不"
             ],
-            "note": "B doubts that it will fit and asks with 得: 寫得下嗎？ With 不 the question would doubt the opposite."
+            "note": "寫不下嗎？ would ask whether it will not fit. B doubts that it fits, so the question is 寫得下嗎？"
           },
           {
             "placed": [
@@ -2380,7 +2398,8 @@
     "title": "Complete the sentences with the words in the box.",
     "allowWords": [
       "漂漂亮亮",
-      "舒舒服服"
+      "舒舒服服",
+      "高高興興"
     ],
     "items": [
       {
@@ -2529,9 +2548,9 @@
             "pinyin": "de"
           },
           {
-            "traditional": "髒髒",
-            "simplified": "脏脏",
-            "pinyin": "zāngzāng"
+            "traditional": "高高興興",
+            "simplified": "高高兴兴",
+            "pinyin": "gāogāoxìngxìng"
           }
         ],
         "repairs": [
@@ -2555,12 +2574,12 @@
           },
           {
             "placed": [
-              "髒髒"
+              "高高興興"
             ],
             "mark": [
-              "髒髒"
+              "高高興興"
             ],
-            "note": "Many people want to buy the sweater, so it is pretty, not dirty."
+            "note": "高高興興 describes how a person feels, not a sweater."
           }
         ],
         "fallbackRepair": "The doubled word, then 的, then the noun: 漂漂亮亮的毛衣.",
