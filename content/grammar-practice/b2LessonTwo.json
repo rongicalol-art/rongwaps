@@ -761,25 +761,32 @@
             "pinyin": "yī"
           },
           {
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi"
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi"
+            "traditional": "了",
+            "pinyin": "le"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "買"
+              "不"
             ],
             "mark": [
-              "買"
+              "不"
             ],
-            "note": "Before buying, the speaker checks the prices online: 查一查."
+            "note": "This is a plan, not a question. A softened action repeats the verb around 一: 查一查."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "The speaker describes what comes before buying, not something already done: 查一查."
           }
         ],
         "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把價錢查一查.",
@@ -866,23 +873,32 @@
             "pinyin": "yī"
           },
           {
-            "traditional": "擦",
-            "pinyin": "cā"
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
-            "traditional": "擦",
-            "pinyin": "cā"
+            "traditional": "完",
+            "pinyin": "wán"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "擦"
+              "不"
             ],
             "mark": [
-              "擦"
+              "不"
             ],
-            "note": "擦 is wiping something clean. Homework is written: 寫一寫."
+            "note": "This is an instruction, not a question. A softened action repeats the verb around 一: 寫一寫."
+          },
+          {
+            "placed": [
+              "完"
+            ],
+            "mark": [
+              "完"
+            ],
+            "note": "The teacher softens the instruction by repeating the verb around 一: 寫一寫."
           }
         ],
         "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把功課寫一寫.",
@@ -890,7 +906,7 @@
           "traditional": "「你們把功課寫一寫就可以回家了。」",
           "simplified": "「你们把功课写一写就可以回家了。」",
           "pinyin": "“Nǐmen bǎ gōngkè xiě yì xiě jiù kěyǐ huí jiā le.”",
-          "english": "The teacher said, \"Get your homework done and then you can go home.\""
+          "english": "Get your homework done and then you can go home."
         }
       },
       {
@@ -906,26 +922,37 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你可以幫我把桌子",
-                "simplified": "你可以帮我把桌子"
+                "traditional": "你可以幫我",
+                "simplified": "你可以帮我"
               },
               {
                 "type": "slot",
                 "id": "s1",
+                "answers": [
+                  "把"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "桌子"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
                 "answers": [
                   "擦"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s2",
+                "id": "s3",
                 "answers": [
                   "一"
                 ]
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s4",
                 "answers": [
                   "擦"
                 ]
@@ -952,6 +979,10 @@
         ],
         "tiles": [
           {
+            "traditional": "把",
+            "pinyin": "bǎ"
+          },
+          {
             "traditional": "擦",
             "pinyin": "cā"
           },
@@ -964,12 +995,9 @@
             "pinyin": "yī"
           },
           {
-            "traditional": "洗",
-            "pinyin": "xǐ"
-          },
-          {
-            "traditional": "洗",
-            "pinyin": "xǐ"
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi"
           },
           {
             "traditional": "不",
@@ -979,12 +1007,12 @@
         "repairs": [
           {
             "placed": [
-              "洗"
+              "給"
             ],
             "mark": [
-              "洗"
+              "給"
             ],
-            "note": "The child answers 再擦, so Mom asked for the table to be wiped: 擦一擦."
+            "note": "給 marks the person who receives something. The table that is wiped comes after 把."
           },
           {
             "placed": [
@@ -996,7 +1024,7 @@
             "note": "A gentle request repeats the verb around 一, not 不: 擦一擦."
           }
         ],
-        "fallbackRepair": "Verb + 一 + the same verb: 擦一擦.",
+        "fallbackRepair": "把 before the thing, then verb + 一 + the same verb: 把桌子擦一擦.",
         "result": {
           "traditional": "你可以幫我把桌子擦一擦嗎？",
           "simplified": "你可以帮我把桌子擦一擦吗？",
@@ -2174,7 +2202,7 @@
       },
       {
         "id": "b2l2g7-2",
-        "source": "p.56 #2",
+        "source": "p.55 #2",
         "kind": "slot-build",
         "lines": [
           {
@@ -2240,9 +2268,9 @@
             "pinyin": "hǎokàn"
           },
           {
-            "traditional": "這一件",
-            "simplified": "这一件",
-            "pinyin": "zhè yí jiàn"
+            "traditional": "哪裡",
+            "simplified": "哪里",
+            "pinyin": "nǎlǐ"
           },
           {
             "traditional": "才",
@@ -2256,12 +2284,12 @@
         "repairs": [
           {
             "placed": [
-              "這一件"
+              "哪裡"
             ],
             "mark": [
-              "這一件"
+              "哪裡"
             ],
-            "note": "\"Every one\" is the question word + 都: 哪一件都…."
+            "note": "A asks which piece of clothing, so the answer keeps 哪一件."
           },
           {
             "placed": [
@@ -2490,7 +2518,7 @@
           "traditional": "姐姐上個禮拜買了新衣服，昨天又買了一件。",
           "simplified": "姐姐上个礼拜买了新衣服，昨天又买了一件。",
           "pinyin": "Jiějie shàng ge lǐbài mǎi le xīn yīfu, zuótiān yòu mǎi le yí jiàn.",
-          "english": "My older sister bought new clothes last week, and yesterday she bought another piece."
+          "english": "My older sister bought new clothes last week, and yesterday she bought another one."
         }
       },
       {
@@ -2922,7 +2950,7 @@
           "traditional": "不對，我早上十點才有課。",
           "simplified": "不对，我早上十点才有课。",
           "pinyin": "Bú duì, wǒ zǎoshàng shí diǎn cái yǒu kè.",
-          "english": "That's wrong. I don't have class until ten in the morning."
+          "english": "No, I don't have class until ten in the morning."
         }
       },
       {
@@ -3255,7 +3283,7 @@
         "result": {
           "traditional": "那個學生把課本放在教室裡，忘了帶回家了。",
           "simplified": "那个学生把课本放在教室里，忘了带回家了。",
-          "pinyin": "Nàge xuéshēng bǎ kèběn fàng zài jiàoshì lǐ, wàngle dài huí jiā le.",
+          "pinyin": "Nàge xuéshēng bǎ kèběn fàng zài jiàoshì lǐ, wàng le dài huí jiā le.",
           "english": "That student left the textbook in the classroom and forgot to take it home."
         }
       },
@@ -3288,7 +3316,14 @@
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "丟在"
+                  "丟"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "在"
                 ]
               },
               {
@@ -3310,9 +3345,13 @@
             "pinyin": "zāng yīfu"
           },
           {
-            "traditional": "丟在",
-            "simplified": "丢在",
-            "pinyin": "diū zài"
+            "traditional": "丟",
+            "simplified": "丢",
+            "pinyin": "diū"
+          },
+          {
+            "traditional": "在",
+            "pinyin": "zài"
           },
           {
             "traditional": "新衣服",
@@ -3322,11 +3361,6 @@
             "traditional": "給",
             "simplified": "给",
             "pinyin": "gěi"
-          },
-          {
-            "traditional": "對",
-            "simplified": "对",
-            "pinyin": "duì"
           }
         ],
         "repairs": [
@@ -3346,19 +3380,10 @@
             "mark": [
               "給"
             ],
-            "note": "給 marks the one who receives something. The thing that is dealt with comes after 把."
-          },
-          {
-            "placed": [
-              "對"
-            ],
-            "mark": [
-              "對"
-            ],
-            "note": "對 marks whom something is aimed at. The thing that is dealt with comes after 把."
+            "note": "給 marks the person who receives something. Where the clothes end up takes 在."
           }
         ],
-        "fallbackRepair": "把, then the thing, then 丟在 before the place.",
+        "fallbackRepair": "把, then the thing, then the verb, then 在 before the place.",
         "result": {
           "traditional": "室友常常把髒衣服丟在地上，所以房間的味道真不好。",
           "simplified": "室友常常把脏衣服丢在地上，所以房间的味道真不好。",
@@ -3771,7 +3796,7 @@
             "mark": [
               "再"
             ],
-            "note": "再 puts one action after another. What becomes possible only after the ticket takes 才."
+            "note": "Here 再 would only put one action after another. Going in is possible only after buying the ticket: 才可以進去."
           },
           {
             "placed": [
@@ -3789,7 +3814,7 @@
             "mark": [
               "也"
             ],
-            "note": "Going in depends on the ticket, and a result that depends on a condition takes 才."
+            "note": "Only after buying the ticket can you go in: 才可以進去."
           }
         ],
         "fallbackRepair": "才 first, then 可以, then the action: 才可以進去.",
@@ -3886,7 +3911,7 @@
             "mark": [
               "再"
             ],
-            "note": "再 puts one action after another. A result that depends on a condition takes 才."
+            "note": "Here 再 would only put one action after another. Sleeping early is what keeps you from being late: 才不會遲到."
           },
           {
             "placed": [
@@ -3895,7 +3920,7 @@
             "mark": [
               "也"
             ],
-            "note": "Not being late depends on sleeping early, and such a result takes 才."
+            "note": "Sleeping early is the only way not to be late, and \"only then\" is 才."
           }
         ],
         "fallbackRepair": "才 first, then 不會, then the verb: 才不會遲到.",
