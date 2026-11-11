@@ -49,7 +49,7 @@ import art41 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p1
 import art42 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p2-crutches-cast-v1.webp';
 import art43 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p3-coffee-cup-two-cookies-v1.webp';
 import art44 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p4-car-borrow-request-v1.webp';
-import art45 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p5-library-quiet-rule-v1.webp';
+import art45 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p5-library-quiet-rule-v2.webp';
 import art46 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p6-upstairs-table-downstairs-sleeping-v1.webp';
 import art47 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p7-homework-at-2100-v1.webp';
 import art48 from '../../../assets/images/grammar-practice/generated/l09-l9g4-p9-post-office-letter-v2.webp';
@@ -130,7 +130,7 @@ import art123 from '../../../assets/images/grammar-practice/generated/l04-pens-a
 import art124 from '../../../assets/images/grammar-practice/generated/l10-glasses-fur-jacket-v1.webp';
 import art125 from '../../../assets/images/grammar-practice/generated/l10-beef-noodles-v1.webp';
 import art126 from '../../../assets/images/grammar-practice/generated/l11-hungry-then-milk-v1.webp';
-import art127 from '../../../assets/images/grammar-practice/generated/l12-writes-chinese-not-english-v1.webp';
+import art127 from '../../../assets/images/grammar-practice/generated/l12-writes-chinese-not-english-v2.webp';
 
 /** Illustrations for a clock time, a calendar day or the book's people row, keyed by what they show (`sceneArtKey`). */
 export const generatedSceneAssets: Record<string, { src: string; alt: string }> = {
@@ -156,7 +156,7 @@ export function sceneArtKey(scene: PracticeScene): string | null {
 
 /** Reviewed illustrations keyed by the exact Book 1 source crop. */
 export const generatedPictureAssets: Record<string, { src: string; caption?: string; alt?: string }> = {
-  '272:0.182,0.24,0.24,0.125': { src: art127, alt: "He writes Chinese well (a red circle) but not English (a red cross)." },
+  '272:0.182,0.24,0.24,0.125': { src: art127, alt: "He writes 你好嗎 neatly, marked with a red circle; his English attempt is crossed out, marked with a red cross." },
   '228:0.714,0.648,0.1,0.076': { src: art125, alt: "A steaming bowl of beef noodle soup." },
   '228:0.37,0.641,0.112,0.085': { src: art124, alt: "A young man in stylish glasses and a fur-collar jacket." },
   '107:0.68,0.29,0.16,0.11': { src: art123, caption: "US$8.45", alt: "Three pens and a red rose with a price tag." },
@@ -227,7 +227,7 @@ export const generatedPictureAssets: Record<string, { src: string; caption?: str
   '213:0.43,0.462,0.13,0.118': { src: art42 },
   '213:0.67,0.465,0.17,0.103': { src: art43 },
   '214:0.125,0.445,0.735,0.2': { src: art44 },
-  '214:0.39,0.46,0.235,0.155': { src: art45 },
+  '214:0.39,0.46,0.235,0.155': { src: art45, alt: "A quiet library: students reading at their tables while one girl hushes her friend." },
   '214:0.62,0.46,0.24,0.165': { src: art46 },
   '215:0.19,0.455,0.22,0.135': { src: art47 },
   '215:0.634,0.455,0.225,0.148': { src: art48 },
