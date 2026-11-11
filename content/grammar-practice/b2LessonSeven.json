@@ -1437,15 +1437,12 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s2",
-                "answers": [
-                  "很"
-                ]
+                "type": "text",
+                "traditional": "很"
               },
               {
                 "type": "slot",
-                "id": "s3",
+                "id": "s2",
                 "answers": [
                   "重要"
                 ]
@@ -1462,10 +1459,6 @@
           {
             "traditional": "是",
             "pinyin": "shì"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
           },
           {
             "traditional": "重要",
@@ -1500,14 +1493,13 @@
             "note": "To agree that something really is so, put 是 before 很 + the quality, not 有."
           }
         ],
-        "fallbackRepair": "是 first, then 很, then the quality: 是很重要.",
+        "fallbackRepair": "是 goes before 很 + the quality: 是很重要.",
         "result": {
           "traditional": "中文是很重要，想到中國去工作的外國人一定得學。",
           "simplified": "中文是很重要，想到中国去工作的外国人一定得学。",
           "pinyin": "Zhōngwén shì hěn zhòngyào, xiǎng dào Zhōngguó qù gōngzuò de wàiguórén yídìng děi xué.",
           "english": "Chinese is indeed important; foreigners who want to work in China definitely have to learn it."
-        },
-        "free": true
+        }
       },
       {
         "id": "b2l7g4-3",
@@ -1579,10 +1571,6 @@
             "pinyin": "piányí"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
             "traditional": "有名",
             "pinyin": "yǒumíng"
           }
@@ -1596,15 +1584,6 @@
               "便宜"
             ],
             "note": "B goes on with 可是, so B first agrees with A that it is expensive: 貴."
-          },
-          {
-            "placed": [
-              "不"
-            ],
-            "mark": [
-              "不"
-            ],
-            "note": "B goes on with 可是, so B first agrees with A: 是很貴."
           },
           {
             "placed": [
@@ -2477,16 +2456,9 @@
                 ]
               },
               {
-                "type": "slot",
-                "id": "s4",
-                "answers": [
-                  "開車"
-                ]
-              },
-              {
                 "type": "text",
-                "traditional": "，這樣太危險了。",
-                "simplified": "，这样太危险了。"
+                "traditional": "開車，這樣太危險了。",
+                "simplified": "开车，这样太危险了。"
               }
             ]
           }
@@ -2506,41 +2478,36 @@
             "pinyin": "jiù"
           },
           {
-            "traditional": "開車",
-            "simplified": "开车",
-            "pinyin": "kāichē"
+            "traditional": "也",
+            "pinyin": "yě"
           },
           {
-            "traditional": "先",
-            "pinyin": "xiān"
-          },
-          {
-            "traditional": "還",
-            "simplified": "还",
-            "pinyin": "hái"
+            "traditional": "吃飯",
+            "simplified": "吃饭",
+            "pinyin": "chīfàn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "先"
+              "也"
             ],
             "mark": [
-              "先"
+              "也"
             ],
-            "note": "先 is answered by 再 (先…再…). Right after one thing comes another: 剛…就…."
+            "note": "也 adds something to what was said before. One action right after another is 剛…就…."
           },
           {
             "placed": [
-              "還"
+              "吃飯"
             ],
             "mark": [
-              "還"
+              "吃飯"
             ],
-            "note": "還 adds one more thing. One action right after another is 剛…就…."
+            "note": "Driving after a meal is not dangerous. The danger is driving right after drinking: 喝酒."
           }
         ],
-        "fallbackRepair": "He drinks first and then drives, and driving after drinking is the danger: 剛喝酒就開車.",
+        "fallbackRepair": "剛 before the first action, then 就 before 開車: 剛喝酒就開車.",
         "result": {
           "traditional": "陳先生剛喝酒就開車，這樣太危險了。",
           "simplified": "陈先生刚喝酒就开车，这样太危险了。",

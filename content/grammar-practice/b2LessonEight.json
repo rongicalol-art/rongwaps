@@ -829,26 +829,12 @@
             "pinyin": "dōu"
           },
           {
-            "traditional": "兩",
-            "simplified": "两",
-            "pinyin": "liǎng"
-          },
-          {
             "traditional": "張",
             "simplified": "张",
             "pinyin": "zhāng"
           }
         ],
         "repairs": [
-          {
-            "placed": [
-              "兩"
-            ],
-            "mark": [
-              "兩"
-            ],
-            "note": "\"Not even one\" always starts from 一: 連一個位子都沒有."
-          },
           {
             "placed": [
               "張"
@@ -2036,7 +2022,7 @@
         "result": {
           "traditional": "為了讓女朋友高興，弟弟買了一束玫瑰花。",
           "simplified": "为了让女朋友高兴，弟弟买了一束玫瑰花。",
-          "pinyin": "Wèile ràng nǚpéngyǒu gāoxìng, dìdi mǎi le yí shù méiguihuā.",
+          "pinyin": "Wèile ràng nǚpéngyǒu gāoxìng, dìdi mǎi le yí shù méiguīhuā.",
           "english": "To make his girlfriend happy, my younger brother bought a bunch of roses."
         },
         "free": true

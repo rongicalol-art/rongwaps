@@ -2683,21 +2683,24 @@
                         "type": "slot",
                         "id": "s1",
                         "answers": [
-                          "吃"
+                          "吃",
+                          "早飯"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s2",
                         "answers": [
-                          "完"
+                          "完",
+                          "吃"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s3",
                         "answers": [
-                          "早飯"
+                          "早飯",
+                          "完"
                         ]
                       },
                       {
@@ -2758,6 +2761,14 @@
                   "pinyin": "Wáng xiānshēng zǎoshàng chīwán zǎofàn, jiù qù shàngbān le.",
                   "english": "Mr. Wang finished breakfast this morning and then went to work."
                 },
+                "alternatives": [
+                  {
+                    "traditional": "王先生早上早飯吃完，就去上班了。",
+                    "simplified": "王先生早上早饭吃完，就去上班了。",
+                    "pinyin": "Wáng xiānshēng zǎoshàng zǎofàn chīwán, jiù qù shàngbān le.",
+                    "english": "Mr. Wang finished breakfast this morning and then went to work."
+                  }
+                ],
                 "free": true
               },
               {
@@ -11141,10 +11152,6 @@
                     "pinyin": "guì"
                   },
                   {
-                    "traditional": "是",
-                    "pinyin": "shì"
-                  },
-                  {
                     "traditional": "多少",
                     "pinyin": "duōshǎo"
                   },
@@ -11154,15 +11161,6 @@
                   }
                 ],
                 "repairs": [
-                  {
-                    "placed": [
-                      "是"
-                    ],
-                    "mark": [
-                      "是"
-                    ],
-                    "note": "The degree question is 有 + 多 + the quality, not 是."
-                  },
                   {
                     "placed": [
                       "多少"
@@ -11754,21 +11752,24 @@
                         "type": "slot",
                         "id": "s1",
                         "answers": [
-                          "多久"
+                          "多久",
+                          "沒"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s2",
                         "answers": [
-                          "沒"
+                          "沒",
+                          "洗頭"
                         ]
                       },
                       {
                         "type": "slot",
                         "id": "s3",
                         "answers": [
-                          "洗頭"
+                          "洗頭",
+                          "多久"
                         ]
                       },
                       {
@@ -11841,6 +11842,14 @@
                   "pinyin": "Nǐ de tóufǎ hǎo zāng! Nǐ duōjiǔ méi xǐ tóu le?",
                   "english": "Your hair is so dirty! How long has it been since you washed it?"
                 },
+                "alternatives": [
+                  {
+                    "traditional": "你的頭髮好髒！你沒洗頭多久了？",
+                    "simplified": "你的头发好脏！你没洗头多久了？",
+                    "pinyin": "Nǐ de tóufǎ hǎo zāng! Nǐ méi xǐ tóu duōjiǔ le?",
+                    "english": "Your hair is so dirty! How long has it been since you washed it?"
+                  }
+                ],
                 "free": true
               },
               {
@@ -13579,10 +13588,6 @@
                   {
                     "traditional": "再",
                     "pinyin": "zài"
-                  },
-                  {
-                    "traditional": "去",
-                    "pinyin": "qù"
                   }
                 ],
                 "repairs": [
@@ -13594,15 +13599,6 @@
                       "再"
                     ],
                     "note": "再 is for doing something again later. Something that already happened again takes 又."
-                  },
-                  {
-                    "placed": [
-                      "去"
-                    ],
-                    "mark": [
-                      "去"
-                    ],
-                    "note": "The sentence says 來台灣, so this year he has come again: 來."
                   }
                 ],
                 "fallbackRepair": "又 before the verb, and 了 after it: 又來了.",
@@ -22000,8 +21996,8 @@
                     "pinyin": "hěn jìn"
                   },
                   {
-                    "traditional": "看",
-                    "pinyin": "kàn"
+                    "traditional": "住",
+                    "pinyin": "zhù"
                   },
                   {
                     "traditional": "出來",
@@ -22012,21 +22008,21 @@
                 "repairs": [
                   {
                     "placed": [
+                      "住"
+                    ],
+                    "mark": [
+                      "住"
+                    ],
+                    "note": "B is not talking about living there. B is reacting to what A said: 聽起來."
+                  },
+                  {
+                    "placed": [
                       "很近"
                     ],
                     "mark": [
                       "很近"
                     ],
                     "note": "Twenty minutes on foot is not close."
-                  },
-                  {
-                    "placed": [
-                      "看"
-                    ],
-                    "mark": [
-                      "看"
-                    ],
-                    "note": "B has not seen the station. B is reacting to what A said: 聽起來."
                   },
                   {
                     "placed": [
@@ -30190,7 +30186,7 @@
                   "traditional": "那個日本人越來越敢說中文了。",
                   "simplified": "那个日本人越来越敢说中文了。",
                   "pinyin": "Nàge Rìběn rén yuèláiyuè gǎn shuō Zhōngwén le.",
-                  "english": "That Japanese person is more and more willing to speak Chinese."
+                  "english": "That Japanese person is becoming more and more confident about speaking Chinese."
                 },
                 "free": true
               }
@@ -54201,15 +54197,12 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s2",
-                        "answers": [
-                          "很"
-                        ]
+                        "type": "text",
+                        "traditional": "很"
                       },
                       {
                         "type": "slot",
-                        "id": "s3",
+                        "id": "s2",
                         "answers": [
                           "重要"
                         ]
@@ -54226,10 +54219,6 @@
                   {
                     "traditional": "是",
                     "pinyin": "shì"
-                  },
-                  {
-                    "traditional": "很",
-                    "pinyin": "hěn"
                   },
                   {
                     "traditional": "重要",
@@ -54264,14 +54253,13 @@
                     "note": "To agree that something really is so, put 是 before 很 + the quality, not 有."
                   }
                 ],
-                "fallbackRepair": "是 first, then 很, then the quality: 是很重要.",
+                "fallbackRepair": "是 goes before 很 + the quality: 是很重要.",
                 "result": {
                   "traditional": "中文是很重要，想到中國去工作的外國人一定得學。",
                   "simplified": "中文是很重要，想到中国去工作的外国人一定得学。",
                   "pinyin": "Zhōngwén shì hěn zhòngyào, xiǎng dào Zhōngguó qù gōngzuò de wàiguórén yídìng děi xué.",
                   "english": "Chinese is indeed important; foreigners who want to work in China definitely have to learn it."
-                },
-                "free": true
+                }
               },
               {
                 "id": "b2l7g4-3",
@@ -54343,10 +54331,6 @@
                     "pinyin": "piányí"
                   },
                   {
-                    "traditional": "不",
-                    "pinyin": "bù"
-                  },
-                  {
                     "traditional": "有名",
                     "pinyin": "yǒumíng"
                   }
@@ -54360,15 +54344,6 @@
                       "便宜"
                     ],
                     "note": "B goes on with 可是, so B first agrees with A that it is expensive: 貴."
-                  },
-                  {
-                    "placed": [
-                      "不"
-                    ],
-                    "mark": [
-                      "不"
-                    ],
-                    "note": "B goes on with 可是, so B first agrees with A: 是很貴."
                   },
                   {
                     "placed": [
@@ -56302,16 +56277,9 @@
                         ]
                       },
                       {
-                        "type": "slot",
-                        "id": "s4",
-                        "answers": [
-                          "開車"
-                        ]
-                      },
-                      {
                         "type": "text",
-                        "traditional": "，這樣太危險了。",
-                        "simplified": "，这样太危险了。"
+                        "traditional": "開車，這樣太危險了。",
+                        "simplified": "开车，这样太危险了。"
                       }
                     ]
                   }
@@ -56331,41 +56299,36 @@
                     "pinyin": "jiù"
                   },
                   {
-                    "traditional": "開車",
-                    "simplified": "开车",
-                    "pinyin": "kāichē"
+                    "traditional": "也",
+                    "pinyin": "yě"
                   },
                   {
-                    "traditional": "先",
-                    "pinyin": "xiān"
-                  },
-                  {
-                    "traditional": "還",
-                    "simplified": "还",
-                    "pinyin": "hái"
+                    "traditional": "吃飯",
+                    "simplified": "吃饭",
+                    "pinyin": "chīfàn"
                   }
                 ],
                 "repairs": [
                   {
                     "placed": [
-                      "先"
+                      "也"
                     ],
                     "mark": [
-                      "先"
+                      "也"
                     ],
-                    "note": "先 is answered by 再 (先…再…). Right after one thing comes another: 剛…就…."
+                    "note": "也 adds something to what was said before. One action right after another is 剛…就…."
                   },
                   {
                     "placed": [
-                      "還"
+                      "吃飯"
                     ],
                     "mark": [
-                      "還"
+                      "吃飯"
                     ],
-                    "note": "還 adds one more thing. One action right after another is 剛…就…."
+                    "note": "Driving after a meal is not dangerous. The danger is driving right after drinking: 喝酒."
                   }
                 ],
-                "fallbackRepair": "He drinks first and then drives, and driving after drinking is the danger: 剛喝酒就開車.",
+                "fallbackRepair": "剛 before the first action, then 就 before 開車: 剛喝酒就開車.",
                 "result": {
                   "traditional": "陳先生剛喝酒就開車，這樣太危險了。",
                   "simplified": "陈先生刚喝酒就开车，这样太危险了。",
@@ -59119,26 +59082,12 @@
                     "pinyin": "dōu"
                   },
                   {
-                    "traditional": "兩",
-                    "simplified": "两",
-                    "pinyin": "liǎng"
-                  },
-                  {
                     "traditional": "張",
                     "simplified": "张",
                     "pinyin": "zhāng"
                   }
                 ],
                 "repairs": [
-                  {
-                    "placed": [
-                      "兩"
-                    ],
-                    "mark": [
-                      "兩"
-                    ],
-                    "note": "\"Not even one\" always starts from 一: 連一個位子都沒有."
-                  },
                   {
                     "placed": [
                       "張"
@@ -61438,7 +61387,7 @@
                 "result": {
                   "traditional": "為了讓女朋友高興，弟弟買了一束玫瑰花。",
                   "simplified": "为了让女朋友高兴，弟弟买了一束玫瑰花。",
-                  "pinyin": "Wèile ràng nǚpéngyǒu gāoxìng, dìdi mǎi le yí shù méiguihuā.",
+                  "pinyin": "Wèile ràng nǚpéngyǒu gāoxìng, dìdi mǎi le yí shù méiguīhuā.",
                   "english": "To make his girlfriend happy, my younger brother bought a bunch of roses."
                 },
                 "free": true
@@ -76856,6 +76805,13 @@
                 ],
                 "repairs": [
                   {
+                    "before": [
+                      "我的中文",
+                      "跟外國朋友聊天"
+                    ],
+                    "note": "Chatting is what helps the Chinese, not the other way round: 跟外國朋友聊天對我的中文有幫助."
+                  },
+                  {
                     "placed": [
                       "給"
                     ],
@@ -80300,7 +80256,7 @@
                 "result": {
                   "traditional": "我聞出來了，是玫瑰花的味道。",
                   "simplified": "我闻出来了，是玫瑰花的味道。",
-                  "pinyin": "Wǒ wénchūlái le, shì méiguihuā de wèidào.",
+                  "pinyin": "Wǒ wénchūlái le, shì méiguīhuā de wèidào.",
                   "english": "I can tell: it's the scent of roses."
                 },
                 "free": true
@@ -86842,7 +86798,7 @@
                 "result": {
                   "traditional": "我會送她玫瑰花，向她表達我的愛。",
                   "simplified": "我会送她玫瑰花，向她表达我的爱。",
-                  "pinyin": "Wǒ huì sòng tā méiguihuā, xiàng tā biǎodá wǒ de ài.",
+                  "pinyin": "Wǒ huì sòng tā méiguīhuā, xiàng tā biǎodá wǒ de ài.",
                   "english": "I would give her roses and express my love to her."
                 },
                 "free": true
@@ -88040,10 +87996,6 @@
                   {
                     "traditional": "完",
                     "pinyin": "wán"
-                  },
-                  {
-                    "traditional": "下",
-                    "pinyin": "xià"
                   }
                 ],
                 "repairs": [
@@ -88064,15 +88016,6 @@
                       "完"
                     ],
                     "note": "V不完 is not being able to finish all of something. Not being able to do it at all is V不了."
-                  },
-                  {
-                    "placed": [
-                      "下"
-                    ],
-                    "mark": [
-                      "下"
-                    ],
-                    "note": "V不下 is about not having enough room. Weight that cannot come down is 減不了."
                   }
                 ],
                 "fallbackRepair": "After the verb comes 不, then 了: 減不了.",
@@ -97432,10 +97375,6 @@
                   {
                     "traditional": "很少",
                     "pinyin": "hěn shǎo"
-                  },
-                  {
-                    "traditional": "常常",
-                    "pinyin": "chángcháng"
                   }
                 ],
                 "repairs": [
@@ -97456,15 +97395,6 @@
                       "很少"
                     ],
                     "note": "很少不 would mean B almost always shops online, but B is afraid of bad products: 從來不."
-                  },
-                  {
-                    "placed": [
-                      "常常"
-                    ],
-                    "mark": [
-                      "常常"
-                    ],
-                    "note": "B is afraid of bad products, so this is not about how often. It is never: 從來不."
                   }
                 ],
                 "fallbackRepair": "從來 first, then 不 before the action: 從來不在網路上買東西.",
@@ -112676,7 +112606,7 @@
                         "type": "slot",
                         "id": "s1",
                         "answers": [
-                          "別的國家的人"
+                          "別的地方的人"
                         ]
                       },
                       {
@@ -112709,9 +112639,9 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "別的國家的人",
-                    "simplified": "别的国家的人",
-                    "pinyin": "biéde guójiā de rén"
+                    "traditional": "別的地方的人",
+                    "simplified": "别的地方的人",
+                    "pinyin": "biéde dìfāng de rén"
                   },
                   {
                     "traditional": "都",
@@ -112757,10 +112687,10 @@
                 ],
                 "fallbackRepair": "The others first, then 都, then 比不上, then the ones they are compared with.",
                 "result": {
-                  "traditional": "李小姐覺得非洲人跳舞跳得最棒，別的國家的人都比不上他們。",
-                  "simplified": "李小姐觉得非洲人跳舞跳得最棒，别的国家的人都比不上他们。",
-                  "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, biéde guójiā de rén dōu bǐbúshàng tāmen.",
-                  "english": "Miss Li thinks Africans are the best dancers; people from other countries can't match them."
+                  "traditional": "李小姐覺得非洲人跳舞跳得最棒，別的地方的人都比不上他們。",
+                  "simplified": "李小姐觉得非洲人跳舞跳得最棒，别的地方的人都比不上他们。",
+                  "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, biéde dìfāng de rén dōu bǐbúshàng tāmen.",
+                  "english": "Miss Li thinks Africans are the best dancers; people from other places can't match them."
                 },
                 "free": true
               }

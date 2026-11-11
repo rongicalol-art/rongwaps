@@ -1049,21 +1049,24 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "吃"
+                  "吃",
+                  "早飯"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "完"
+                  "完",
+                  "吃"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "早飯"
+                  "早飯",
+                  "完"
                 ]
               },
               {
@@ -1124,6 +1127,14 @@
           "pinyin": "Wáng xiānshēng zǎoshàng chīwán zǎofàn, jiù qù shàngbān le.",
           "english": "Mr. Wang finished breakfast this morning and then went to work."
         },
+        "alternatives": [
+          {
+            "traditional": "王先生早上早飯吃完，就去上班了。",
+            "simplified": "王先生早上早饭吃完，就去上班了。",
+            "pinyin": "Wáng xiānshēng zǎoshàng zǎofàn chīwán, jiù qù shàngbān le.",
+            "english": "Mr. Wang finished breakfast this morning and then went to work."
+          }
+        ],
         "free": true
       },
       {

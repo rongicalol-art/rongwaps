@@ -1425,7 +1425,7 @@
         "result": {
           "traditional": "我會送她玫瑰花，向她表達我的愛。",
           "simplified": "我会送她玫瑰花，向她表达我的爱。",
-          "pinyin": "Wǒ huì sòng tā méiguihuā, xiàng tā biǎodá wǒ de ài.",
+          "pinyin": "Wǒ huì sòng tā méiguīhuā, xiàng tā biǎodá wǒ de ài.",
           "english": "I would give her roses and express my love to her."
         },
         "free": true
@@ -1875,10 +1875,6 @@
           {
             "traditional": "完",
             "pinyin": "wán"
-          },
-          {
-            "traditional": "下",
-            "pinyin": "xià"
           }
         ],
         "repairs": [
@@ -1899,15 +1895,6 @@
               "完"
             ],
             "note": "V不完 is not being able to finish all of something. Not being able to do it at all is V不了."
-          },
-          {
-            "placed": [
-              "下"
-            ],
-            "mark": [
-              "下"
-            ],
-            "note": "V不下 is about not having enough room. Weight that cannot come down is 減不了."
           }
         ],
         "fallbackRepair": "After the verb comes 不, then 了: 減不了.",

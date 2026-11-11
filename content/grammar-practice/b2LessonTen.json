@@ -2405,6 +2405,13 @@
         ],
         "repairs": [
           {
+            "before": [
+              "我的中文",
+              "跟外國朋友聊天"
+            ],
+            "note": "Chatting is what helps the Chinese, not the other way round: 跟外國朋友聊天對我的中文有幫助."
+          },
+          {
             "placed": [
               "給"
             ],

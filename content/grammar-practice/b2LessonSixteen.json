@@ -1766,7 +1766,7 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "別的國家的人"
+                  "別的地方的人"
                 ]
               },
               {
@@ -1799,9 +1799,9 @@
         ],
         "tiles": [
           {
-            "traditional": "別的國家的人",
-            "simplified": "别的国家的人",
-            "pinyin": "biéde guójiā de rén"
+            "traditional": "別的地方的人",
+            "simplified": "别的地方的人",
+            "pinyin": "biéde dìfāng de rén"
           },
           {
             "traditional": "都",
@@ -1847,10 +1847,10 @@
         ],
         "fallbackRepair": "The others first, then 都, then 比不上, then the ones they are compared with.",
         "result": {
-          "traditional": "李小姐覺得非洲人跳舞跳得最棒，別的國家的人都比不上他們。",
-          "simplified": "李小姐觉得非洲人跳舞跳得最棒，别的国家的人都比不上他们。",
-          "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, biéde guójiā de rén dōu bǐbúshàng tāmen.",
-          "english": "Miss Li thinks Africans are the best dancers; people from other countries can't match them."
+          "traditional": "李小姐覺得非洲人跳舞跳得最棒，別的地方的人都比不上他們。",
+          "simplified": "李小姐觉得非洲人跳舞跳得最棒，别的地方的人都比不上他们。",
+          "pinyin": "Lǐ xiǎojiě juéde Fēizhōu rén tiàowǔ tiào de zuì bàng, biéde dìfāng de rén dōu bǐbúshàng tāmen.",
+          "english": "Miss Li thinks Africans are the best dancers; people from other places can't match them."
         },
         "free": true
       }

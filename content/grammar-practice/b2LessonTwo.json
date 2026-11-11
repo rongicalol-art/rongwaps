@@ -1648,10 +1648,6 @@
             "pinyin": "guì"
           },
           {
-            "traditional": "是",
-            "pinyin": "shì"
-          },
-          {
             "traditional": "多少",
             "pinyin": "duōshǎo"
           },
@@ -1661,15 +1657,6 @@
           }
         ],
         "repairs": [
-          {
-            "placed": [
-              "是"
-            ],
-            "mark": [
-              "是"
-            ],
-            "note": "The degree question is 有 + 多 + the quality, not 是."
-          },
           {
             "placed": [
               "多少"
@@ -1846,21 +1833,24 @@
                 "type": "slot",
                 "id": "s1",
                 "answers": [
-                  "多久"
+                  "多久",
+                  "沒"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s2",
                 "answers": [
-                  "沒"
+                  "沒",
+                  "洗頭"
                 ]
               },
               {
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "洗頭"
+                  "洗頭",
+                  "多久"
                 ]
               },
               {
@@ -1933,6 +1923,14 @@
           "pinyin": "Nǐ de tóufǎ hǎo zāng! Nǐ duōjiǔ méi xǐ tóu le?",
           "english": "Your hair is so dirty! How long has it been since you washed it?"
         },
+        "alternatives": [
+          {
+            "traditional": "你的頭髮好髒！你沒洗頭多久了？",
+            "simplified": "你的头发好脏！你没洗头多久了？",
+            "pinyin": "Nǐ de tóufǎ hǎo zāng! Nǐ méi xǐ tóu duōjiǔ le?",
+            "english": "Your hair is so dirty! How long has it been since you washed it?"
+          }
+        ],
         "free": true
       },
       {
@@ -2681,10 +2679,6 @@
           {
             "traditional": "再",
             "pinyin": "zài"
-          },
-          {
-            "traditional": "去",
-            "pinyin": "qù"
           }
         ],
         "repairs": [
@@ -2696,15 +2690,6 @@
               "再"
             ],
             "note": "再 is for doing something again later. Something that already happened again takes 又."
-          },
-          {
-            "placed": [
-              "去"
-            ],
-            "mark": [
-              "去"
-            ],
-            "note": "The sentence says 來台灣, so this year he has come again: 來."
           }
         ],
         "fallbackRepair": "又 before the verb, and 了 after it: 又來了.",

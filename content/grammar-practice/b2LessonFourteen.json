@@ -511,10 +511,6 @@
           {
             "traditional": "很少",
             "pinyin": "hěn shǎo"
-          },
-          {
-            "traditional": "常常",
-            "pinyin": "chángcháng"
           }
         ],
         "repairs": [
@@ -535,15 +531,6 @@
               "很少"
             ],
             "note": "很少不 would mean B almost always shops online, but B is afraid of bad products: 從來不."
-          },
-          {
-            "placed": [
-              "常常"
-            ],
-            "mark": [
-              "常常"
-            ],
-            "note": "B is afraid of bad products, so this is not about how often. It is never: 從來不."
           }
         ],
         "fallbackRepair": "從來 first, then 不 before the action: 從來不在網路上買東西.",

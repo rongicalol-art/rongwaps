@@ -1970,8 +1970,8 @@
             "pinyin": "hěn jìn"
           },
           {
-            "traditional": "看",
-            "pinyin": "kàn"
+            "traditional": "住",
+            "pinyin": "zhù"
           },
           {
             "traditional": "出來",
@@ -1982,21 +1982,21 @@
         "repairs": [
           {
             "placed": [
+              "住"
+            ],
+            "mark": [
+              "住"
+            ],
+            "note": "B is not talking about living there. B is reacting to what A said: 聽起來."
+          },
+          {
+            "placed": [
               "很近"
             ],
             "mark": [
               "很近"
             ],
             "note": "Twenty minutes on foot is not close."
-          },
-          {
-            "placed": [
-              "看"
-            ],
-            "mark": [
-              "看"
-            ],
-            "note": "B has not seen the station. B is reacting to what A said: 聽起來."
           },
           {
             "placed": [
