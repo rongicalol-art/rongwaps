@@ -3,7 +3,7 @@ Verdict: PASS after fixes
 
 ## What was done
 - Codex read every item of all 16 lessons (430) as a Taiwan teacher marking a paper: is each accepted sentence natural, is any rejected filling actually right, are pinyin and English right. It read the item text only (no scans, no pictures).
-- It raised 62 points. Claude checked each one against the item, its picture and the book's grammar note.
+- It raised 60 points. Claude checked each one against the item, its picture and the book's grammar note.
 
 ## Real problems (all fixed)
 - `b2l7g4-3` — `是不便宜，可是…` was a second right answer; the 不 tile is gone.
