@@ -10,11 +10,11 @@ The owner's taste lives in one file: `.claude/OWNER_PREFERENCES.md`. Read it now
 ## How a design task runs
 
 1. Say the screen's main job for the learner in one sentence, and its one primary action.
-2. Look at the live screen before changing it. The DEV window (Ctrl+Shift+0 → UI Previews) is the quickest way in; the owner's account is fine when a flow needs real data.
+2. Look at the live screen before changing it; the DEV window's UI Previews are the quickest way in.
 3. Find the one idea (see "What good looks like"). Propose something better than the literal ask when you see it, and say why.
 4. Polish, a new state of an existing screen, pictures, spacing: build it in the app and show real screenshots. A mock's fonts and spacing differ from the app's.
 5. A new screen or a big redesign: publish a clickable HTML prototype first, with the app's real tokens, phone (390) and desktop (1440) inside a mock app shell with the side nav, and 2-3 named, clearly different directions with one recommended. Iterate on the same link. Keep text off images in a prototype: the owner's viewer drew such overlays as solid blue boxes. Build after the owner's pick, and match the prototype exactly.
-6. Look at the result yourself at the sizes and themes the change can affect: states (hover, pressed, empty, loading, long Chinese words), motion, reduced motion.
+6. Look at the result yourself (Checks in `AGENTS.md`), including its states (hover, pressed, empty, loading, long Chinese words), motion and reduced motion.
 
 ## Before calling it done
 
