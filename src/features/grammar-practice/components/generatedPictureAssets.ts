@@ -137,6 +137,8 @@ import art130 from '../../../assets/images/grammar-practice/generated/b2l01-writ
 import art131 from '../../../assets/images/grammar-practice/generated/b2l01-driving-music-v1.webp';
 import art132 from '../../../assets/images/grammar-practice/generated/b2l01-eating-watching-tv-v1.webp';
 import art133 from '../../../assets/images/grammar-practice/generated/b2l01-coffee-chat-v1.webp';
+import art134 from '../../../assets/images/grammar-practice/generated/b2l11-living-room-v1.webp';
+import art135 from '../../../assets/images/grammar-practice/generated/b2l11-street-shops-v1.webp';
 
 /** Illustrations for a clock time, a calendar day or the book's people row, keyed by what they show (`sceneArtKey`). */
 export const generatedSceneAssets: Record<string, { src: string; alt: string }> = {
@@ -167,6 +169,8 @@ export function pictureArtKey(scene: { book?: number; page: number; box: number[
 
 /** Reviewed illustrations keyed by the exact source crop (`pictureArtKey`). */
 export const generatedPictureAssets: Record<string, { src: string; caption?: string; alt?: string }> = {
+  'b2:251:0.174,0.285,0.56,0.285': { src: art134, alt: "A living room: two people sit on a sofa, a flower in a vase and two plates stand on the coffee table, four pictures hang on the wall, and a dog sleeps on the floor." },
+  'b2:251:0.175,0.5815,0.528,0.305': { src: art135, alt: "A street with a convenience store, a restaurant and a bookstore: a scooter is parked in front of the convenience store, a car in front of the restaurant, and two students stand in front of the bookstore." },
   'b2:38:0.142,0.53,0.145,0.16': { src: art128, alt: "A little girl sitting on a wooden chair." },
   'b2:38:0.36,0.53,0.23,0.16': { src: art129, alt: "Two students standing in front of a convenience store." },
   'b2:38:0.672,0.535,0.205,0.158': { src: art130, alt: "A man writing the phone number 02-3000 on a sheet of paper." },

@@ -1,0 +1,2468 @@
+{
+  "B2L13-G01-P293": {
+    "bookPage": 293,
+    "title": "Complete the dialogues.",
+    "items": [
+      {
+        "id": "b2l13g1-1",
+        "source": "p.293 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你的課很多，還有時間參加學校的社團嗎？",
+                "simplified": "你的课很多，还有时间参加学校的社团吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不管"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "課",
+                "simplified": "课"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "多不多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "要參加社團。",
+                "simplified": "要参加社团。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不管",
+            "pinyin": "bùguǎn"
+          },
+          {
+            "traditional": "多不多",
+            "pinyin": "duō bù duō"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "很多",
+            "pinyin": "hěn duō"
+          },
+          {
+            "traditional": "雖然",
+            "simplified": "虽然",
+            "pinyin": "suīrán"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很多"
+            ],
+            "mark": [
+              "很多"
+            ],
+            "note": "After 不管 comes a question form that covers every case: 多不多."
+          },
+          {
+            "placed": [
+              "雖然"
+            ],
+            "mark": [
+              "雖然"
+            ],
+            "note": "雖然 accepts one fact and needs a turn after it. \"Whatever the case\" is 不管…，都…."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "Here 才 would say it happens late. After 不管, what stays the same takes 都."
+          }
+        ],
+        "fallbackRepair": "不管 + a question form, then 都 + what stays the same: 不管課多不多，我都要參加社團.",
+        "result": {
+          "traditional": "不管課多不多，我都要參加社團。",
+          "simplified": "不管课多不多，我都要参加社团。",
+          "pinyin": "Bùguǎn kè duō bù duō, wǒ dōu yào cānjiā shètuán.",
+          "english": "No matter how many classes I have, I am going to join a club."
+        }
+      },
+      {
+        "id": "b2l13g1-2",
+        "source": "p.293 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我找不到電腦的保證書，恐怕不能在這家店修理了。",
+                "simplified": "我找不到电脑的保证书，恐怕不能在这家店修理了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "只要付錢，",
+                "simplified": "只要付钱，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不管"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "有沒有"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "保證書，",
+                "simplified": "保证书，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "可以修理。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不管",
+            "pinyin": "bùguǎn"
+          },
+          {
+            "traditional": "有沒有",
+            "simplified": "有没有",
+            "pinyin": "yǒu méiyǒu"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méiyǒu"
+          },
+          {
+            "traditional": "如果",
+            "pinyin": "rúguǒ"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒有"
+            ],
+            "mark": [
+              "沒有"
+            ],
+            "note": "After 不管 comes a question form that covers every case: 有沒有."
+          },
+          {
+            "placed": [
+              "如果"
+            ],
+            "mark": [
+              "如果"
+            ],
+            "note": "如果 sets up one case. B means it makes no difference either way: 不管…，都…."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "Here 才 would say it happens late. After 不管, what stays the same takes 都."
+          }
+        ],
+        "fallbackRepair": "不管 + a question form, then 都 + what stays the same: 不管有沒有保證書，都可以修理.",
+        "result": {
+          "traditional": "只要付錢，不管有沒有保證書，都可以修理。",
+          "simplified": "只要付钱，不管有没有保证书，都可以修理。",
+          "pinyin": "Zhǐyào fù qián, bùguǎn yǒu méiyǒu bǎozhèngshū, dōu kěyǐ xiūlǐ.",
+          "english": "As long as you pay, it can be repaired whether or not you have the warranty."
+        }
+      },
+      {
+        "id": "b2l13g1-3",
+        "source": "p.293 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "孩子"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這種青菜很難吃，我不要吃。",
+                "simplified": "这种青菜很难吃，我不要吃。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "爸爸"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不管"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "喜不喜歡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，只要對身體好的食物",
+                "simplified": "，只要对身体好的食物"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "應該吃。",
+                "simplified": "应该吃。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不管",
+            "pinyin": "bùguǎn"
+          },
+          {
+            "traditional": "喜不喜歡",
+            "simplified": "喜不喜欢",
+            "pinyin": "xǐ bù xǐhuān"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "不喜歡",
+            "simplified": "不喜欢",
+            "pinyin": "bù xǐhuān"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不喜歡"
+            ],
+            "mark": [
+              "不喜歡"
+            ],
+            "note": "After 不管 comes a question form that covers every case: 喜不喜歡."
+          },
+          {
+            "placed": [
+              "因為"
+            ],
+            "mark": [
+              "因為"
+            ],
+            "note": "Dad is not giving a reason. He means liking it or not makes no difference: 不管."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "Here 才 would say it happens late. Every healthy food takes 都."
+          }
+        ],
+        "fallbackRepair": "不管 + a question form, then 都 + what stays the same.",
+        "result": {
+          "traditional": "不管你喜不喜歡，只要對身體好的食物都應該吃。",
+          "simplified": "不管你喜不喜欢，只要对身体好的食物都应该吃。",
+          "pinyin": "Bùguǎn nǐ xǐ bù xǐhuān, zhǐyào duì shēntǐ hǎo de shíwù dōu yīnggāi chī.",
+          "english": "Whether you like it or not, you should eat any food that is good for your body."
+        }
+      },
+      {
+        "id": "b2l13g1-4",
+        "source": "p.293 #4",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我已經很瘦了，不用去運動了吧！",
+                "simplified": "我已经很瘦了，不用去运动了吧！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "可是我覺得",
+                "simplified": "可是我觉得"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不管"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "胖還是瘦"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "應該運動。",
+                "simplified": "应该运动。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不管",
+            "pinyin": "bùguǎn"
+          },
+          {
+            "traditional": "胖還是瘦",
+            "simplified": "胖还是瘦",
+            "pinyin": "pàng háishì shòu"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "胖和瘦",
+            "pinyin": "pàng hé shòu"
+          },
+          {
+            "traditional": "很瘦",
+            "pinyin": "hěn shòu"
+          },
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "胖和瘦"
+            ],
+            "mark": [
+              "胖和瘦"
+            ],
+            "note": "After 不管 comes a choice with 還是, not a pair joined by 和: 胖還是瘦."
+          },
+          {
+            "placed": [
+              "很瘦"
+            ],
+            "mark": [
+              "很瘦"
+            ],
+            "note": "After 不管 comes a question form that covers every case: 胖還是瘦."
+          },
+          {
+            "placed": [
+              "就"
+            ],
+            "mark": [
+              "就"
+            ],
+            "note": "After 不管, what stays the same takes 都, not 就."
+          }
+        ],
+        "fallbackRepair": "不管 + a choice with 還是, then 都 + what stays the same.",
+        "result": {
+          "traditional": "可是我覺得不管胖還是瘦，都應該運動。",
+          "simplified": "可是我觉得不管胖还是瘦，都应该运动。",
+          "pinyin": "Kěshì wǒ juéde bùguǎn pàng háishì shòu, dōu yīnggāi yùndòng.",
+          "english": "But I think that whether you are fat or thin, you should exercise."
+        }
+      }
+    ]
+  },
+  "B2L13-G02-P294": {
+    "bookPage": 294,
+    "title": "Complete the dialogues.",
+    "allowWords": [
+      "麻煩"
+    ],
+    "items": [
+      {
+        "id": "b2l13g2-1",
+        "source": "p.294 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說你計畫一個人去印尼旅行，為什麼不參加團體旅遊呢？",
+                "simplified": "听说你计划一个人去印尼旅行，为什么不参加团体旅游呢？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我覺得團體旅遊比較麻煩，",
+                "simplified": "我觉得团体旅游比较麻烦，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不如"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "一個人去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，又輕鬆又自由。",
+                "simplified": "，又轻松又自由。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不如",
+            "pinyin": "bùrú"
+          },
+          {
+            "traditional": "一個人去",
+            "simplified": "一个人去",
+            "pinyin": "yígerén qù"
+          },
+          {
+            "traditional": "跟團體去",
+            "simplified": "跟团体去",
+            "pinyin": "gēn tuántǐ qù"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "不好",
+            "pinyin": "bù hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "跟團體去"
+            ],
+            "mark": [
+              "跟團體去"
+            ],
+            "note": "B has just said group tours are a bother, so the better choice is going alone."
+          },
+          {
+            "placed": [
+              "比較"
+            ],
+            "mark": [
+              "比較"
+            ],
+            "note": "比較 goes before a quality (比較麻煩). The better choice comes after 不如."
+          },
+          {
+            "placed": [
+              "不好"
+            ],
+            "mark": [
+              "不好"
+            ],
+            "note": "不好 says something is bad. Pointing to a better choice is 不如."
+          }
+        ],
+        "fallbackRepair": "不如 first, then the better choice: 不如一個人去.",
+        "result": {
+          "traditional": "我覺得團體旅遊比較麻煩，不如一個人去，又輕鬆又自由。",
+          "simplified": "我觉得团体旅游比较麻烦，不如一个人去，又轻松又自由。",
+          "pinyin": "Wǒ juéde tuántǐ lǚyóu bǐjiào máfán, bùrú yígerén qù, yòu qīngsōng yòu zìyóu.",
+          "english": "I find group tours more of a bother; it's better to go alone, which is both relaxed and free."
+        }
+      },
+      {
+        "id": "b2l13g2-2",
+        "source": "p.294 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我已經少吃飯、少吃肉了，為什麼還是很胖？",
+                "simplified": "我已经少吃饭、少吃肉了，为什么还是很胖？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "少吃東西不一定健康，",
+                "simplified": "少吃东西不一定健康，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不如"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "多"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "運動"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不如",
+            "pinyin": "bùrú"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "運動",
+            "simplified": "运动",
+            "pinyin": "yùndòng"
+          },
+          {
+            "traditional": "少",
+            "pinyin": "shǎo"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "不但",
+            "pinyin": "búdàn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "少"
+            ],
+            "mark": [
+              "少"
+            ],
+            "note": "B is offering something better than eating less: more exercise, not less."
+          },
+          {
+            "placed": [
+              "比較"
+            ],
+            "mark": [
+              "比較"
+            ],
+            "note": "比較 goes before a quality (比較健康). The better choice comes after 不如."
+          },
+          {
+            "placed": [
+              "不但"
+            ],
+            "mark": [
+              "不但"
+            ],
+            "note": "不但 starts a \"not only… but also\" pair. Pointing to a better choice is 不如."
+          }
+        ],
+        "fallbackRepair": "不如 first, then the better choice: 不如多運動.",
+        "result": {
+          "traditional": "少吃東西不一定健康，不如多運動。",
+          "simplified": "少吃东西不一定健康，不如多运动。",
+          "pinyin": "Shǎo chī dōngxi bù yídìng jiànkāng, bùrú duō yùndòng.",
+          "english": "Eating less isn't necessarily healthy; you'd do better to exercise more."
+        }
+      },
+      {
+        "id": "b2l13g2-3",
+        "source": "p.294 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我老了以後要住在鄉下，空氣好、風景美。",
+                "simplified": "我老了以后要住在乡下，空气好、风景美。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "可是鄉下交通很不方便，",
+                "simplified": "可是乡下交通很不方便，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不如"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "住在"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "都市"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不如",
+            "pinyin": "bùrú"
+          },
+          {
+            "traditional": "住在",
+            "pinyin": "zhù zài"
+          },
+          {
+            "traditional": "都市",
+            "pinyin": "dūshì"
+          },
+          {
+            "traditional": "鄉下",
+            "simplified": "乡下",
+            "pinyin": "xiāngxià"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "不但",
+            "pinyin": "búdàn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "鄉下"
+            ],
+            "mark": [
+              "鄉下"
+            ],
+            "note": "B has just said the countryside is inconvenient, so the better choice is the city."
+          },
+          {
+            "placed": [
+              "比較"
+            ],
+            "mark": [
+              "比較"
+            ],
+            "note": "比較 goes before a quality (比較方便). The better choice comes after 不如."
+          },
+          {
+            "placed": [
+              "不但"
+            ],
+            "mark": [
+              "不但"
+            ],
+            "note": "不但 starts a \"not only… but also\" pair. Pointing to a better choice is 不如."
+          }
+        ],
+        "fallbackRepair": "不如 first, then the better choice: 不如住在都市.",
+        "result": {
+          "traditional": "可是鄉下交通很不方便，不如住在都市。",
+          "simplified": "可是乡下交通很不方便，不如住在都市。",
+          "pinyin": "Kěshì xiāngxià jiāotōng hěn bù fāngbiàn, bùrú zhù zài dūshì.",
+          "english": "But transportation in the countryside is very inconvenient; it would be better to live in the city."
+        }
+      }
+    ]
+  },
+  "B2L13-G03-P294": {
+    "bookPage": 295,
+    "title": "Complete the sentences.",
+    "items": [
+      {
+        "id": "b2l13g3-1",
+        "source": "p.295 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他的中文說得不錯，可是",
+                "simplified": "他的中文说得不错，可是"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "慢"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "一點兒"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "慢",
+            "pinyin": "màn"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "好"
+            ],
+            "mark": [
+              "好"
+            ],
+            "note": "After 可是 comes the small weak point, not another good point."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "A small weak point is the quality + 了 + 一點兒: 慢了一點兒."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes before a quality. \"A little too…\" puts 了一點兒 after it: 慢了一點兒."
+          }
+        ],
+        "fallbackRepair": "The quality first, then 了, then 一點兒: 慢了一點兒.",
+        "result": {
+          "traditional": "他的中文說得不錯，可是慢了一點兒。",
+          "simplified": "他的中文说得不错，可是慢了一点儿。",
+          "pinyin": "Tā de Zhōngwén shuō de búcuò, kěshì màn le yìdiǎnr.",
+          "english": "He speaks Chinese quite well, but a little too slowly."
+        }
+      },
+      {
+        "id": "b2l13g3-2",
+        "source": "p.295 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "做愛心服務雖然很有意義，可是",
+                "simplified": "做爱心服务虽然很有意义，可是"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "累"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "點兒"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "累",
+            "pinyin": "lèi"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "點兒",
+            "simplified": "点儿",
+            "pinyin": "diǎnr"
+          },
+          {
+            "traditional": "輕鬆",
+            "simplified": "轻松",
+            "pinyin": "qīngsōng"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "一下",
+            "pinyin": "yíxià"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "輕鬆"
+            ],
+            "mark": [
+              "輕鬆"
+            ],
+            "note": "After 雖然…可是 comes the small weak point: tiring, not relaxing."
+          },
+          {
+            "placed": [
+              "得"
+            ],
+            "mark": [
+              "得"
+            ],
+            "note": "A small weak point is the quality + 了 + 點兒, with nothing in between: 累了點兒."
+          },
+          {
+            "placed": [
+              "一下"
+            ],
+            "mark": [
+              "一下"
+            ],
+            "note": "一下 goes after an action (等一下). After a quality, \"a little too…\" is 了點兒: 累了點兒."
+          }
+        ],
+        "fallbackRepair": "The quality first, then 了, then 點兒: 累了點兒.",
+        "result": {
+          "traditional": "做愛心服務雖然很有意義，可是累了點兒。",
+          "simplified": "做爱心服务虽然很有意义，可是累了点儿。",
+          "pinyin": "Zuò àixīn fúwù suīrán hěn yǒu yìyì, kěshì lèi le diǎnr.",
+          "english": "Volunteer service is very meaningful, but it is a little tiring."
+        }
+      },
+      {
+        "id": "b2l13g3-3",
+        "source": "p.295 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "在外國生活很有意思，可是東西",
+                "simplified": "在外国生活很有意思，可是东西"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "貴"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "一點兒"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "貴",
+            "simplified": "贵",
+            "pinyin": "guì"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "便宜",
+            "pinyin": "piányí"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "一下",
+            "pinyin": "yíxià"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "便宜"
+            ],
+            "mark": [
+              "便宜"
+            ],
+            "note": "After 可是 comes the small weak point: expensive, not cheap."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "A small weak point is the quality + 了 + 一點兒, with no 的: 貴了一點兒."
+          },
+          {
+            "placed": [
+              "一下"
+            ],
+            "mark": [
+              "一下"
+            ],
+            "note": "一下 goes after an action (等一下). After a quality, \"a little too…\" is 了一點兒."
+          }
+        ],
+        "fallbackRepair": "The quality first, then 了, then 一點兒: 貴了一點兒.",
+        "result": {
+          "traditional": "在外國生活很有意思，可是東西貴了一點兒。",
+          "simplified": "在外国生活很有意思，可是东西贵了一点儿。",
+          "pinyin": "Zài wàiguó shēnghuó hěn yǒuyìsi, kěshì dōngxi guì le yìdiǎnr.",
+          "english": "Living abroad is very interesting, but things are a little expensive."
+        }
+      }
+    ]
+  },
+  "B2L13-G04-P301": {
+    "bookPage": 301,
+    "title": "Complete the sentences and dialogues with 比 / 比較 / 比起來.",
+    "allowWords": [
+      "鋼琴社",
+      "吉他社",
+      "發音"
+    ],
+    "items": [
+      {
+        "id": "b2l13g4-1",
+        "source": "p.301 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "跟他做的菜"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "比起來",
+                  "比"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我做的"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "比較"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "好吃。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "比起來",
+            "simplified": "比起来",
+            "pinyin": "bǐ qǐlái"
+          },
+          {
+            "traditional": "最",
+            "pinyin": "zuì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "最"
+            ],
+            "mark": [
+              "最"
+            ],
+            "note": "最 picks the top of three or more. Between two, the quality takes 比較."
+          }
+        ],
+        "fallbackRepair": "跟… is closed by 比起來 (or 比), and 比較 goes before the quality.",
+        "result": {
+          "traditional": "跟他做的菜比起來，我做的比較好吃。",
+          "simplified": "跟他做的菜比起来，我做的比较好吃。",
+          "pinyin": "Gēn tā zuò de cài bǐ qǐlái, wǒ zuò de bǐjiào hǎochī.",
+          "english": "Compared with the food he makes, mine tastes better."
+        },
+        "alternatives": [
+          {
+            "traditional": "跟他做的菜比，我做的比較好吃。",
+            "simplified": "跟他做的菜比，我做的比较好吃。",
+            "pinyin": "Gēn tā zuò de cài bǐ, wǒ zuò de bǐjiào hǎochī.",
+            "english": "Compared with the food he makes, mine tastes better."
+          }
+        ]
+      },
+      {
+        "id": "b2l13g4-2",
+        "source": "p.302 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "跟台灣",
+                "simplified": "跟台湾"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "比起來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我的國家",
+                "simplified": "，我的国家"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "比"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "台灣熱多了。",
+                "simplified": "台湾热多了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "比起來",
+            "simplified": "比起来",
+            "pinyin": "bǐ qǐlái"
+          },
+          {
+            "traditional": "最",
+            "pinyin": "zuì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "比較"
+            ],
+            "mark": [
+              "比較"
+            ],
+            "note": "比較 goes straight before a quality (比較熱). Before the thing compared with (台灣), it is 比."
+          },
+          {
+            "placed": [
+              "最"
+            ],
+            "mark": [
+              "最"
+            ],
+            "note": "最 picks the top of three or more. Between two countries, it is A比B…."
+          }
+        ],
+        "fallbackRepair": "跟… is closed by 比起來, and 比 goes before the thing compared with.",
+        "result": {
+          "traditional": "跟台灣比起來，我的國家比台灣熱多了。",
+          "simplified": "跟台湾比起来，我的国家比台湾热多了。",
+          "pinyin": "Gēn Táiwān bǐ qǐlái, wǒ de guójiā bǐ Táiwān rè duō le.",
+          "english": "Compared with Taiwan, my country is much hotter than Taiwan."
+        }
+      },
+      {
+        "id": "b2l13g4-3",
+        "source": "p.302 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "跟中文"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "比起來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，英文"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "比較"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "有用，可是在台灣，說中文的人",
+                "simplified": "有用，可是在台湾，说中文的人"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "比"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "說英文的多得多，所以我",
+                "simplified": "说英文的多得多，所以我"
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "比較"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "想學中文。",
+                "simplified": "想学中文。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "比起來",
+            "simplified": "比起来",
+            "pinyin": "bǐ qǐlái"
+          },
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "跟"
+            ],
+            "mark": [
+              "跟"
+            ],
+            "note": "跟 already opens the phrase (跟中文…). The blanks here take 比起來, 比較 or 比."
+          }
+        ],
+        "fallbackRepair": "跟… is closed by 比起來; 比較 goes before a quality or a wish; 比 goes before the thing compared with.",
+        "result": {
+          "traditional": "跟中文比起來，英文比較有用，可是在台灣，說中文的人比說英文的多得多，所以我比較想學中文。",
+          "simplified": "跟中文比起来，英文比较有用，可是在台湾，说中文的人比说英文的多得多，所以我比较想学中文。",
+          "pinyin": "Gēn Zhōngwén bǐ qǐlái, Yīngwén bǐjiào yǒuyòng, kěshì zài Táiwān, shuō Zhōngwén de rén bǐ shuō Yīngwén de duō de duō, suǒyǐ wǒ bǐjiào xiǎng xué Zhōngwén.",
+          "english": "Compared with Chinese, English is more useful, but in Taiwan far more people speak Chinese than English, so I would rather learn Chinese."
+        }
+      },
+      {
+        "id": "b2l13g4-4",
+        "source": "p.302 (2) #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "有人說吃青菜比吃肉健康，你覺得呢？",
+                "simplified": "有人说吃青菜比吃肉健康，你觉得呢？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "可是我覺得吃肉",
+                "simplified": "可是我觉得吃肉"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "比"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "吃青菜"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "好吃"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "吃青菜",
+            "pinyin": "chī qīngcài"
+          },
+          {
+            "traditional": "好吃",
+            "pinyin": "hǎochī"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "比起來",
+            "simplified": "比起来",
+            "pinyin": "bǐ qǐlái"
+          },
+          {
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "比較"
+            ],
+            "mark": [
+              "比較"
+            ],
+            "note": "比較 goes straight before a quality. Between the two things compared, it is 比."
+          },
+          {
+            "placed": [
+              "比起來"
+            ],
+            "mark": [
+              "比起來"
+            ],
+            "note": "比起來 closes a 跟… phrase. Between the two things compared, it is 比."
+          },
+          {
+            "placed": [
+              "一樣"
+            ],
+            "mark": [
+              "一樣"
+            ],
+            "note": "一樣 goes with 跟 (跟…一樣). After 比 comes the quality itself: 好吃."
+          }
+        ],
+        "fallbackRepair": "比, then the thing compared with, then the quality: 比吃青菜好吃.",
+        "result": {
+          "traditional": "可是我覺得吃肉比吃青菜好吃。",
+          "simplified": "可是我觉得吃肉比吃青菜好吃。",
+          "pinyin": "Kěshì wǒ juéde chī ròu bǐ chī qīngcài hǎochī.",
+          "english": "But I think eating meat tastes better than eating vegetables."
+        }
+      },
+      {
+        "id": "b2l13g4-5",
+        "source": "p.302 (2) #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "中文的發音跟漢字，你覺得哪個難？",
+                "simplified": "中文的发音跟汉字，你觉得哪个难？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "跟發音",
+                "simplified": "跟发音"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "比起來",
+                  "比"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，漢字",
+                "simplified": "，汉字"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "比較"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "難"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比起來",
+            "simplified": "比起来",
+            "pinyin": "bǐ qǐlái"
+          },
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "難",
+            "simplified": "难",
+            "pinyin": "nán"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "最",
+            "pinyin": "zuì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "最"
+            ],
+            "mark": [
+              "最"
+            ],
+            "note": "最 picks the top of three or more. Between two, the quality takes 比較."
+          }
+        ],
+        "fallbackRepair": "跟… is closed by 比起來 (or 比), and 比較 goes before the quality.",
+        "result": {
+          "traditional": "跟發音比起來，漢字比較難。",
+          "simplified": "跟发音比起来，汉字比较难。",
+          "pinyin": "Gēn fāyīn bǐ qǐlái, Hànzì bǐjiào nán.",
+          "english": "Compared with pronunciation, characters are harder."
+        },
+        "alternatives": [
+          {
+            "traditional": "跟發音比，漢字比較難。",
+            "simplified": "跟发音比，汉字比较难。",
+            "pinyin": "Gēn fāyīn bǐ, Hànzì bǐjiào nán.",
+            "english": "Compared with pronunciation, characters are harder."
+          }
+        ]
+      },
+      {
+        "id": "b2l13g4-6",
+        "source": "p.302 (2) #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "如果一定要選一個社團，你想參加鋼琴社還是吉他社？",
+                "simplified": "如果一定要选一个社团，你想参加钢琴社还是吉他社？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "比較"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "想"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "參加"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "吉他社。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比較",
+            "simplified": "比较",
+            "pinyin": "bǐjiào"
+          },
+          {
+            "traditional": "想",
+            "pinyin": "xiǎng"
+          },
+          {
+            "traditional": "參加",
+            "simplified": "参加",
+            "pinyin": "cānjiā"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "比起來",
+            "simplified": "比起来",
+            "pinyin": "bǐ qǐlái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "比"
+            ],
+            "mark": [
+              "比"
+            ],
+            "note": "比 needs the thing compared with right after it. Before 想, \"would rather\" is 比較."
+          },
+          {
+            "placed": [
+              "比起來"
+            ],
+            "mark": [
+              "比起來"
+            ],
+            "note": "比起來 closes a 跟… phrase. Before 想, \"would rather\" is 比較."
+          }
+        ],
+        "fallbackRepair": "比較 before 想, then the action: 比較想參加吉他社.",
+        "result": {
+          "traditional": "我比較想參加吉他社。",
+          "simplified": "我比较想参加吉他社。",
+          "pinyin": "Wǒ bǐjiào xiǎng cānjiā jítā shè.",
+          "english": "I would rather join the guitar club."
+        }
+      }
+    ]
+  },
+  "B2L13-G05-P302": {
+    "bookPage": 303,
+    "title": "Complete the sentences.",
+    "allowWords": [
+      "李"
+    ],
+    "items": [
+      {
+        "id": "b2l13g5-1",
+        "source": "p.303 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "李媽媽沒把錢存到銀行裡，錢",
+                "simplified": "李妈妈没把钱存到银行里，钱"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "差一點兒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "就"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "不見了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "差一點兒",
+            "simplified": "差一点儿",
+            "pinyin": "chàyìdiǎnr"
+          },
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "不見了",
+            "simplified": "不见了",
+            "pinyin": "bújiàn le"
+          },
+          {
+            "traditional": "有一點兒",
+            "simplified": "有一点儿",
+            "pinyin": "yǒu yìdiǎnr"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "找到了",
+            "pinyin": "zhǎodào le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "有一點兒"
+            ],
+            "mark": [
+              "有一點兒"
+            ],
+            "note": "有一點兒 goes before a feeling or quality. Something bad that nearly happened is 差一點兒."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "After 差一點兒, the thing that nearly happened takes 就, not 才."
+          },
+          {
+            "placed": [
+              "找到了"
+            ],
+            "mark": [
+              "找到了"
+            ],
+            "note": "She did not put the money in the bank, so the danger was losing it, not finding it."
+          }
+        ],
+        "fallbackRepair": "差一點兒 first, then 就, then what nearly happened: 差一點兒就不見了.",
+        "result": {
+          "traditional": "李媽媽沒把錢存到銀行裡，錢差一點兒就不見了。",
+          "simplified": "李妈妈没把钱存到银行里，钱差一点儿就不见了。",
+          "pinyin": "Lǐ māma méi bǎ qián cún dào yínháng lǐ, qián chàyìdiǎnr jiù bújiàn le.",
+          "english": "Mrs. Li didn't put the money in the bank, and the money was nearly lost."
+        }
+      },
+      {
+        "id": "b2l13g5-2",
+        "source": "p.303 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天早上我太晚起床，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "差一點兒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "就"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "遲到"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "差一點兒",
+            "simplified": "差一点儿",
+            "pinyin": "chàyìdiǎnr"
+          },
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "遲到",
+            "simplified": "迟到",
+            "pinyin": "chídào"
+          },
+          {
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "早到",
+            "pinyin": "zǎo dào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一點兒"
+            ],
+            "mark": [
+              "一點兒"
+            ],
+            "note": "一點兒 alone is \"a little\". \"Nearly\" is 差一點兒."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "After 差一點兒, the thing that nearly happened takes 就, not 才."
+          },
+          {
+            "placed": [
+              "早到"
+            ],
+            "mark": [
+              "早到"
+            ],
+            "note": "Getting up too late nearly makes a person late, not early."
+          }
+        ],
+        "fallbackRepair": "差一點兒 first, then 就, then what nearly happened: 差一點兒就遲到了.",
+        "result": {
+          "traditional": "今天早上我太晚起床，差一點兒就遲到了。",
+          "simplified": "今天早上我太晚起床，差一点儿就迟到了。",
+          "pinyin": "Jīntiān zǎoshàng wǒ tài wǎn qǐchuáng, chàyìdiǎnr jiù chídào le.",
+          "english": "I got up too late this morning and was nearly late."
+        }
+      },
+      {
+        "id": "b2l13g5-3",
+        "source": "p.303 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這部電影太無聊了，我",
+                "simplified": "这部电影太无聊了，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "差點兒"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "就"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "回家"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "差點兒",
+            "simplified": "差点儿",
+            "pinyin": "chàdiǎnr"
+          },
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "回家",
+            "pinyin": "huí jiā"
+          },
+          {
+            "traditional": "有點兒",
+            "simplified": "有点儿",
+            "pinyin": "yǒudiǎnr"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "再",
+            "pinyin": "zài"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "有點兒"
+            ],
+            "mark": [
+              "有點兒"
+            ],
+            "note": "有點兒 goes before a feeling or quality (有點兒無聊). \"Nearly\" is 差點兒."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "After 差點兒, the thing that nearly happened takes 就, not 才."
+          },
+          {
+            "placed": [
+              "再"
+            ],
+            "mark": [
+              "再"
+            ],
+            "note": "再 puts an action off until later. After 差點兒, what nearly happened takes 就."
+          }
+        ],
+        "fallbackRepair": "差點兒 first, then 就, then what nearly happened: 差點兒就回家了.",
+        "result": {
+          "traditional": "這部電影太無聊了，我差點兒就回家了。",
+          "simplified": "这部电影太无聊了，我差点儿就回家了。",
+          "pinyin": "Zhè bù diànyǐng tài wúliáo le, wǒ chàdiǎnr jiù huí jiā le.",
+          "english": "This movie was so boring that I nearly went home."
+        }
+      }
+    ]
+  },
+  "B2L13-G06-P303": {
+    "bookPage": 303,
+    "title": "Complete the sentences with the given words.",
+    "items": [
+      {
+        "id": "b2l13g6-1",
+        "source": "p.303 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我用電腦寫報告，電腦忽然壞了，我",
+                "simplified": "我用电脑写报告，电脑忽然坏了，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "白"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "寫"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "白",
+            "pinyin": "bái"
+          },
+          {
+            "traditional": "寫",
+            "simplified": "写",
+            "pinyin": "xiě"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "再",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "修",
+            "pinyin": "xiū"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "再"
+            ],
+            "mark": [
+              "再"
+            ],
+            "note": "再 is doing something again later. Work that came to nothing is 白 + verb + 了."
+          },
+          {
+            "placed": [
+              "修"
+            ],
+            "mark": [
+              "修"
+            ],
+            "note": "What came to nothing is the writing of the report: 白寫了."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "Here 才 would say it happens late. Work that came to nothing is 白 + verb + 了."
+          }
+        ],
+        "fallbackRepair": "白 before the verb, and 了 after it: 白寫了.",
+        "result": {
+          "traditional": "我用電腦寫報告，電腦忽然壞了，我白寫了。",
+          "simplified": "我用电脑写报告，电脑忽然坏了，我白写了。",
+          "pinyin": "Wǒ yòng diànnǎo xiě bàogào, diànnǎo hūrán huài le, wǒ bái xiě le.",
+          "english": "I was writing a report on the computer when it suddenly broke down; I wrote it for nothing."
+        }
+      },
+      {
+        "id": "b2l13g6-2",
+        "source": "p.303 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我買了一盒豆漿給他，可是他不喝，我",
+                "simplified": "我买了一盒豆浆给他，可是他不喝，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "白"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "買"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "白",
+            "pinyin": "bái"
+          },
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "再",
+            "pinyin": "zài"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "喝"
+            ],
+            "mark": [
+              "喝"
+            ],
+            "note": "He did not drink it. What came to nothing is the buying: 白買了."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "The pattern closes with 了: 白買了."
+          },
+          {
+            "placed": [
+              "再"
+            ],
+            "mark": [
+              "再"
+            ],
+            "note": "再 is doing something again later. Something done for nothing is 白 + verb + 了."
+          }
+        ],
+        "fallbackRepair": "白 before the verb, and 了 after it: 白買了.",
+        "result": {
+          "traditional": "我買了一盒豆漿給他，可是他不喝，我白買了。",
+          "simplified": "我买了一盒豆浆给他，可是他不喝，我白买了。",
+          "pinyin": "Wǒ mǎi le yì hé dòujiāng gěi tā, kěshì tā bù hē, wǒ bái mǎi le.",
+          "english": "I bought him a carton of soy milk, but he won't drink it; I bought it for nothing."
+        }
+      },
+      {
+        "id": "b2l13g6-3",
+        "source": "p.303 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "先生"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "朋友剛剛請我到餐廳去吃飯，現在一點兒也不餓。",
+                "simplified": "朋友刚刚请我到餐厅去吃饭，现在一点儿也不饿。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "太太"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我做了好吃的晚餐，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "真是"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "白"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "做"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "真是",
+            "pinyin": "zhēnshì"
+          },
+          {
+            "traditional": "白",
+            "pinyin": "bái"
+          },
+          {
+            "traditional": "做",
+            "pinyin": "zuò"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "吃"
+            ],
+            "mark": [
+              "吃"
+            ],
+            "note": "Nobody will eat the dinner. What came to nothing is her cooking: 白做了."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "mark": [
+              "才"
+            ],
+            "note": "Here 才 would say it happens late. Work that came to nothing is 白 + verb + 了."
+          }
+        ],
+        "fallbackRepair": "真是 first, then 白 before the verb, and 了 after it: 真是白做了.",
+        "result": {
+          "traditional": "我做了好吃的晚餐，真是白做了。",
+          "pinyin": "Wǒ zuò le hǎochī de wǎncān, zhēnshì bái zuò le.",
+          "english": "I made a delicious dinner; I really made it for nothing."
+        }
+      }
+    ]
+  }
+}

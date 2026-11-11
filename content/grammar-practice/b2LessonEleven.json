@@ -210,7 +210,7 @@
             "mark": [
               "站"
             ],
-            "note": "A car is parked, not standing like a person: 停."
+            "note": "Look at the picture: in front of the restaurant a car is parked (停). Nobody is standing there."
           },
           {
             "placed": [
@@ -280,7 +280,7 @@
                 "type": "slot",
                 "id": "s3",
                 "answers": [
-                  "一朵花"
+                  "兩個盤子"
                 ]
               },
               {
@@ -300,8 +300,9 @@
             "pinyin": "le"
           },
           {
-            "traditional": "一朵花",
-            "pinyin": "yì duǒ huā"
+            "traditional": "兩個盤子",
+            "simplified": "两个盘子",
+            "pinyin": "liǎng ge pánzi"
           },
           {
             "traditional": "在",
@@ -344,132 +345,15 @@
             "mark": [
               "一隻狗"
             ],
-            "note": "Look at the picture: the dog is on the floor. On the table there is a flower."
+            "note": "Look at the picture: the dog is on the floor. On the table there are two plates."
           }
         ],
-        "fallbackRepair": "The place first, then verb + 了, then what is there: 桌子上放了一朵花.",
+        "fallbackRepair": "The place first, then verb + 了, then what is there: 桌子上放了兩個盤子.",
         "result": {
-          "traditional": "桌子上放了一朵花。",
-          "pinyin": "Zhuōzi shàng fàng le yì duǒ huā.",
-          "english": "There is a flower on the table."
-        }
-      },
-      {
-        "id": "b2l11g1-4",
-        "source": "own",
-        "kind": "slot-build",
-        "scene": {
-          "type": "picture",
-          "book": 2,
-          "page": 251,
-          "box": [
-            0.175,
-            0.5815,
-            0.528,
-            0.305
-          ],
-          "alt": "A street with a convenience store, a restaurant and a bookstore: a car is parked in front of the restaurant, a scooter in front of the convenience store, and two students stand in front of the bookstore."
-        },
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "書店前面",
-                "simplified": "书店前面"
-              },
-              {
-                "type": "slot",
-                "id": "s1",
-                "answers": [
-                  "站"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s2",
-                "answers": [
-                  "著"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "s3",
-                "answers": [
-                  "兩個學生"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ]
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "站",
-            "pinyin": "zhàn"
-          },
-          {
-            "traditional": "著",
-            "simplified": "着",
-            "pinyin": "zhe"
-          },
-          {
-            "traditional": "兩個學生",
-            "simplified": "两个学生",
-            "pinyin": "liǎng ge xuéshēng"
-          },
-          {
-            "traditional": "坐",
-            "pinyin": "zuò"
-          },
-          {
-            "traditional": "停",
-            "pinyin": "tíng"
-          },
-          {
-            "traditional": "三個學生",
-            "simplified": "三个学生",
-            "pinyin": "sān ge xuéshēng"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "坐"
-            ],
-            "mark": [
-              "坐"
-            ],
-            "note": "Look at the picture: the students are standing, not sitting."
-          },
-          {
-            "placed": [
-              "停"
-            ],
-            "mark": [
-              "停"
-            ],
-            "note": "停 is for cars and scooters. People stand: 站."
-          },
-          {
-            "placed": [
-              "三個學生"
-            ],
-            "mark": [
-              "三個學生"
-            ],
-            "note": "Look at the picture: there are two students in front of the bookstore."
-          }
-        ],
-        "fallbackRepair": "The place first, then verb + 著, then who is there: 書店前面站著兩個學生.",
-        "result": {
-          "traditional": "書店前面站著兩個學生。",
-          "simplified": "书店前面站着两个学生。",
-          "pinyin": "Shūdiàn qiánmiàn zhànzhe liǎng ge xuéshēng.",
-          "english": "Two students are standing in front of the bookstore."
+          "traditional": "桌子上放了兩個盤子。",
+          "simplified": "桌子上放了两个盘子。",
+          "pinyin": "Zhuōzi shàng fàng le liǎng ge pánzi.",
+          "english": "There are two plates on the table."
         }
       }
     ]
@@ -491,8 +375,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我很喜歡看電影，",
-                "simplified": "我很喜欢看电影，"
+                "traditional": "我很喜歡看電影，所以",
+                "simplified": "我很喜欢看电影，所以"
               },
               {
                 "type": "slot",
@@ -564,7 +448,7 @@
             "mark": [
               "不"
             ],
-            "note": "The speaker loves movies, so the speaker is interested."
+            "note": "The speaker loves movies, and 所以 gives the result: the speaker is interested."
           },
           {
             "placed": [
@@ -587,10 +471,10 @@
         ],
         "fallbackRepair": "對 before the thing, then 很, then 感興趣.",
         "result": {
-          "traditional": "我很喜歡看電影，對中國功夫電影很感興趣。",
-          "simplified": "我很喜欢看电影，对中国功夫电影很感兴趣。",
-          "pinyin": "Wǒ hěn xǐhuān kàn diànyǐng, duì Zhōngguó gōngfu diànyǐng hěn gǎnxìngqù.",
-          "english": "I love watching movies, and I am very interested in Chinese kung fu films."
+          "traditional": "我很喜歡看電影，所以對中國功夫電影很感興趣。",
+          "simplified": "我很喜欢看电影，所以对中国功夫电影很感兴趣。",
+          "pinyin": "Wǒ hěn xǐhuān kàn diànyǐng, suǒyǐ duì Zhōngguó gōngfu diànyǐng hěn gǎnxìngqù.",
+          "english": "I love watching movies, so I am very interested in Chinese kung fu films."
         }
       },
       {
@@ -899,7 +783,7 @@
             "mark": [
               "有意思"
             ],
-            "note": "有意思 describes the thing itself (這個很有意思). A person 對…感興趣."
+            "note": "Here 有意思 would describe the thing itself (這個很有意思). A person 對…感興趣."
           },
           {
             "placed": [
@@ -908,7 +792,7 @@
             "mark": [
               "喜歡"
             ],
-            "note": "喜歡 takes its object straight after it (喜歡吃喝玩樂), not after 對."
+            "note": "Here 喜歡 would take its object straight after it (喜歡吃喝玩樂). After 對… the word is 感興趣."
           },
           {
             "placed": [
@@ -924,7 +808,7 @@
         "result": {
           "traditional": "弟弟不愛念書，只對到很多地方吃喝玩樂感興趣。",
           "simplified": "弟弟不爱念书，只对到很多地方吃喝玩乐感兴趣。",
-          "pinyin": "Dìdi bú ài niànshū, zhǐ duì dào hěn duō dìfāng chī hē wán lè gǎnxìngqù.",
+          "pinyin": "Dìdi bú ài niànshū, zhǐ duì dào hěn duō dìfāng chīhēwánlè gǎnxìngqù.",
           "english": "My younger brother doesn't like studying; he is only interested in going places to eat, drink and have fun."
         }
       },
@@ -1028,7 +912,7 @@
             "mark": [
               "喜歡"
             ],
-            "note": "喜歡 takes its object straight after it, not after 對. With 對 it is 感興趣."
+            "note": "Here 喜歡 would take its object straight after it. After 對… the word is 感興趣."
           }
         ],
         "fallbackRepair": "對 before the thing, then 非常, then 感興趣.",
@@ -1138,7 +1022,7 @@
             "mark": [
               "有意思"
             ],
-            "note": "有意思 describes the thing itself. A person 對…感興趣."
+            "note": "Here 有意思 would describe the thing itself. A person 對…感興趣."
           }
         ],
         "fallbackRepair": "對 before the thing, then 感興趣, and 嗎 at the very end.",
@@ -1604,7 +1488,7 @@
         "result": {
           "traditional": "我看不出來，你告訴我吧。",
           "simplified": "我看不出来，你告诉我吧。",
-          "pinyin": "Wǒ kànbùchūlái, nǐ gàosù wǒ ba.",
+          "pinyin": "Wǒ kànbùchūlái, nǐ gàosu wǒ ba.",
           "english": "I can't tell by looking. You tell me."
         }
       },
@@ -2233,8 +2117,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我想參加吉他社團，",
-                "simplified": "我想参加吉他社团，"
+                "traditional": "我只想參加吉他社團，",
+                "simplified": "我只想参加吉他社团，"
               },
               {
                 "type": "slot",
@@ -2292,9 +2176,23 @@
             "traditional": "吉他社團",
             "simplified": "吉他社团",
             "pinyin": "jítā shètuán"
+          },
+          {
+            "traditional": "很有興趣",
+            "simplified": "很有兴趣",
+            "pinyin": "hěn yǒu xìngqù"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "很有興趣"
+            ],
+            "mark": [
+              "很有興趣"
+            ],
+            "note": "B only wants to join the guitar club (只想), so B has no interest in this one."
+          },
           {
             "placed": [
               "嗎"
@@ -2316,10 +2214,10 @@
         ],
         "fallbackRepair": "The other club, then 嘛 for the pause, then what B thinks of it.",
         "result": {
-          "traditional": "我想參加吉他社團，功夫社團嘛……我沒興趣。",
-          "simplified": "我想参加吉他社团，功夫社团嘛……我没兴趣。",
-          "pinyin": "Wǒ xiǎng cānjiā jítā shètuán, gōngfu shètuán ma…… wǒ méi xìngqù.",
-          "english": "I want to join the guitar club. The kung fu club, well… I'm not interested."
+          "traditional": "我只想參加吉他社團，功夫社團嘛……我沒興趣。",
+          "simplified": "我只想参加吉他社团，功夫社团嘛……我没兴趣。",
+          "pinyin": "Wǒ zhǐ xiǎng cānjiā jítā shètuán, gōngfu shètuán ma…… wǒ méi xìngqù.",
+          "english": "I only want to join the guitar club. The kung fu club, well… I'm not interested."
         }
       }
     ]
@@ -2494,8 +2392,7 @@
               },
               {
                 "type": "text",
-                "traditional": "老師。",
-                "simplified": "老师。"
+                "traditional": "。"
               }
             ]
           }
@@ -2523,8 +2420,8 @@
             "pinyin": "yàng"
           },
           {
-            "traditional": "也",
-            "pinyin": "yě"
+            "traditional": "本",
+            "pinyin": "běn"
           }
         ],
         "repairs": [
@@ -2548,19 +2445,19 @@
           },
           {
             "placed": [
-              "也"
+              "本"
             ],
             "mark": [
-              "也"
+              "本"
             ],
-            "note": "也 is in the two short sentences. In one sentence, \"the same\" is 同一位."
+            "note": "本 counts books. A teacher takes 位."
           }
         ],
         "fallbackRepair": "同 first, then 一, then the measure word: 同一位.",
         "result": {
-          "traditional": "我跟莫以凡的中文老師是同一位老師。",
-          "simplified": "我跟莫以凡的中文老师是同一位老师。",
-          "pinyin": "Wǒ gēn Mò Yǐfán de Zhōngwén lǎoshī shì tóng yí wèi lǎoshī.",
+          "traditional": "我跟莫以凡的中文老師是同一位。",
+          "simplified": "我跟莫以凡的中文老师是同一位。",
+          "pinyin": "Wǒ gēn Mò Yǐfán de Zhōngwén lǎoshī shì tóng yí wèi.",
           "english": "Mo Yifan and I have the same Chinese teacher."
         }
       },
@@ -2865,8 +2762,9 @@
             "pinyin": "ge"
           },
           {
-            "traditional": "四",
-            "pinyin": "sì"
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng"
           },
           {
             "traditional": "位",
@@ -2880,12 +2778,12 @@
         "repairs": [
           {
             "placed": [
-              "四"
+              "兩"
             ],
             "mark": [
-              "四"
+              "兩"
             ],
-            "note": "B lists three countries, and the number after 等 is their total: 三."
+            "note": "B names three countries, so the total after 等 cannot be two."
           },
           {
             "placed": [
@@ -2981,9 +2879,8 @@
             "pinyin": "hé"
           },
           {
-            "traditional": "還是",
-            "simplified": "还是",
-            "pinyin": "háishì"
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
             "traditional": "才",
@@ -3002,12 +2899,12 @@
           },
           {
             "placed": [
-              "還是"
+              "不"
             ],
             "mark": [
-              "還是"
+              "不"
             ],
-            "note": "還是 means \"or\" in a question, or \"still\". All the things listed take 都."
+            "note": "A asks what to bring, so B lists what is needed: 都要準備, not 不要準備."
           },
           {
             "placed": [
@@ -3016,7 +2913,7 @@
             "mark": [
               "才"
             ],
-            "note": "才 says something happens late. Everything on the list takes 都."
+            "note": "Here 才 would say it happens late. Everything on the list takes 都."
           }
         ],
         "fallbackRepair": "等 closes the list, and 都 sums it up: …等，都要準備.",
@@ -3151,7 +3048,7 @@
           "traditional": "老師可以從考試的成績中知道學生學得怎麼樣。",
           "simplified": "老师可以从考试的成绩中知道学生学得怎么样。",
           "pinyin": "Lǎoshī kěyǐ cóng kǎoshì de chéngjī zhōng zhīdào xuéshēng xué de zěnmeyàng.",
-          "english": "From the exam results, the teacher can know how well the students are learning."
+          "english": "From the exam results, the teacher can tell how well the students are learning."
         }
       },
       {
@@ -3350,9 +3247,9 @@
             "pinyin": "xuǎn le jǐ ge"
           },
           {
-            "traditional": "中間",
-            "simplified": "中间",
-            "pinyin": "zhōngjiān"
+            "traditional": "對",
+            "simplified": "对",
+            "pinyin": "duì"
           },
           {
             "traditional": "到",
@@ -3367,12 +3264,12 @@
         "repairs": [
           {
             "placed": [
-              "中間"
+              "對"
             ],
             "mark": [
-              "中間"
+              "對"
             ],
-            "note": "中間 is the middle of a place. Picking some out of a group is 從…中."
+            "note": "對 marks whom something affects. The group the teacher picks from takes 從…中."
           },
           {
             "placed": [
