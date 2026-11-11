@@ -46,7 +46,7 @@ export function PracticeScene({ scene, arrived, renderChinese, reelPlace }: Prac
   }
   if (scene.type === 'month') return <MonthScene year={scene.year} month={scene.month} highlight={scene.highlight} renderChinese={renderChinese} />;
   if (scene.type === 'cast') return <CastScene page={scene.page} people={scene.people} alt={scene.alt} />;
-  if (scene.type === 'picture') return <PictureScene page={scene.page} box={scene.box} alt={scene.alt} />;
+  if (scene.type === 'picture') return <PictureScene book={scene.book} page={scene.page} box={scene.box} alt={scene.alt} />;
   const resolve = (pin?: PracticeRoutePin) => (!pin ? null : 'reel' in pin ? reelPlace?.(pin.reel) ?? null : pin);
   return (
     <RouteScene

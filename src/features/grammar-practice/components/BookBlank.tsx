@@ -8,6 +8,8 @@ interface BookBlankProps {
   quiet: boolean;
   /** A build line with many blanks: narrower boxes. */
   narrow?: boolean;
+  /** The open end of a build line: one long blank, as the book prints it, with a dot for each word still to place. */
+  long?: number;
   /** The word placed in this blank; tapping it takes it back while the item is open. */
   word?: { text: string; onTakeBack?: () => void };
 }
@@ -22,13 +24,13 @@ const FILL: Record<BookBlankState, string> = {
 };
 
 /** A blank on a Book 1 exercise page: an underline on the text line, holding the word placed in it. */
-export function BookBlank({ state, quiet, narrow, word }: BookBlankProps) {
+export function BookBlank({ state, quiet, narrow, long, word }: BookBlankProps) {
   const fill = state === 'empty' ? (quiet ? 'border-ui-border' : 'border-ui-muted') : FILL[state];
   return (
     <span
       className={cn(
         'mx-[0.1em] inline-block h-[1.4em] border-b-[3px] px-[0.15em] text-center align-baseline leading-[1.3em]',
-        narrow ? 'min-w-[1.5em]' : 'min-w-[1.7em]',
+        long ? 'relative min-w-[5.5em]' : narrow ? 'min-w-[1.5em]' : 'min-w-[1.7em]',
         fill,
       )}
     >
@@ -44,7 +46,14 @@ export function BookBlank({ state, quiet, narrow, word }: BookBlankProps) {
         </button>
       ) : (
         // Zero-width text keeps the empty box on the same baseline as its neighbours.
-        <span aria-hidden="true">{'​'}</span>
+        <>
+          <span aria-hidden="true">{'​'}</span>
+          {long ? (
+            <span role="img" aria-label={`${long} more ${long === 1 ? 'word' : 'words'}`} className="absolute inset-0 flex items-center justify-center gap-[0.32em]">
+              {Array.from({ length: long }, (_, dot) => <span key={dot} className={cn('size-[0.2em] rounded-full', state === 'next' ? 'bg-brand-primary' : 'bg-ui-muted')} />)}
+            </span>
+          ) : null}
+        </>
       )}
     </span>
   );

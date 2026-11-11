@@ -60,7 +60,7 @@ Pictures (owner 2026-11-01: no hand-drawn SVG scenes; pictures are the book's ow
 | Rearrange | One blank per book word, all book words as tiles + 1–2 trap tiles (a real confusion, e.g. 不 next to 沒). |
 | Describe the picture / rewrite with a pattern | The book's picture or source sentence as context, then a build line for the target pattern. |
 
-## Quality rules (enforced by `tests/content/grammarPracticeBookOne.test.ts` where testable)
+## Quality rules (enforced by `tests/content/grammarPracticePages.test.ts` where testable)
 
 1. **Every book item, in book order, nothing dropped.** `source` = `p.<page> #<n>` exactly as printed. Own items (≤2 per page) come after the book items and test a mistake the book items don't.
 2. **One right answer, decided by context.** If two fills are grammatical and natural, accept both (`answers` per slot + `alternatives`), or change the context so only one fits. Every accepted combination must be a listed sentence (the test builds every combination).
@@ -91,7 +91,7 @@ Pictures (owner 2026-11-01: no hand-drawn SVG scenes; pictures are the book's ow
 3. Start from the current `content/grammar-practice/lessonX.json`: keep page keys, `bookPage`, `title`, good sentences, correct crops, accurate pinyin and English. Convert every item.
 4. Per item, name the mistake it tests, then make the context decide one answer and pick 3+ wrong tiles learners really confuse at this point.
 5. Verify every new or changed picture crop by cropping the scan (python3 + PIL) and looking at it.
-6. Gate: `BOOK1_LESSON=lessonX npx tsx --test tests/content/grammarPracticeBookOne.test.ts`. Never run `content:export` while other agents work.
+6. Gate: `BOOK1_LESSON=lessonX npx tsx --test tests/content/grammarPracticePages.test.ts`. Never run `content:export` while other agents work.
 7. Self-review as a learner: could I answer without knowing the grammar? Is a wrong tile also right? Fix.
 8. Notes in `docs/grammar/reviews/B1-LXX-pages.md`: per page the book items covered, own items and their mistake, deviations from print and why, crops, unsure points.
 
@@ -103,4 +103,4 @@ Check every item against the scan and as a learner: book item present and in ord
 
 1. Pilot L1 + L2: author agents, then Claude judges on screen and tightens this brief.
 2. L3–L16: one author agent per lesson, then a fresh reviewer agent per lesson (book scan vs content, learner's view), fixes, Claude judges every page on screen at 390 and 1440.
-3. Gates: `BOOK1_LESSON=<file> npx tsx --test tests/content/grammarPracticeBookOne.test.ts` per lesson; at the end `npm run content:export`, `content:validate`, typecheck, lint, test.
+3. Gates: `BOOK1_LESSON=<file> npx tsx --test tests/content/grammarPracticePages.test.ts` per lesson; at the end `npm run content:export`, `content:validate`, typecheck, lint, test.
