@@ -42054,7 +42054,7 @@
                 "result": {
                   "traditional": "明天開會要用的資料，我還沒準備好，怎麼辦？",
                   "simplified": "明天开会要用的资料，我还没准备好，怎么办？",
-                  "pinyin": "Míngtiān kāihuì yào yòng de zīliào, wǒ háiméi zhǔnbèi hǎo, zěnmebàn?",
+                  "pinyin": "Míngtiān kāihuì yào yòng de zīliào, wǒ háiméi zhǔnbèihǎo, zěnmebàn?",
                   "english": "I haven't got the materials for tomorrow's meeting ready yet. What should I do?"
                 }
               },
@@ -44763,8 +44763,9 @@
                     "pinyin": "jiāo"
                   },
                   {
-                    "traditional": "的",
-                    "pinyin": "de"
+                    "traditional": "過",
+                    "simplified": "过",
+                    "pinyin": "guò"
                   }
                 ],
                 "repairs": [
@@ -44779,12 +44780,12 @@
                   },
                   {
                     "placed": [
-                      "的"
+                      "過"
                     ],
                     "mark": [
-                      "的"
+                      "過"
                     ],
-                    "note": "Between a verb and 好 or 會, \"can\" is written with 得, not 的."
+                    "note": "過 says you did it before. The question is whether you are able to learn it alone: 學得會."
                   }
                 ],
                 "fallbackRepair": "The verb, then 得, then 會, and 嗎 at the very end: 學得會嗎？",
@@ -48869,7 +48870,7 @@
                     "mark": [
                       "都"
                     ],
-                    "note": "都 sums up everything before it. A small number, fewer than expected, takes 才."
+                    "note": "都 before a number means \"already that many\" and makes it sound large. A small number, fewer than expected, takes 才."
                   }
                 ],
                 "fallbackRepair": "才 before the verb, and the number of times last: 才去過一次.",
@@ -48978,7 +48979,7 @@
                     "mark": [
                       "都"
                     ],
-                    "note": "都 sums up everything before it. A small number, fewer than expected, takes 才."
+                    "note": "都 before a number means \"already that many\" and makes it sound large. A small number, fewer than expected, takes 才."
                   }
                 ],
                 "fallbackRepair": "才 right before the amount: 才五百塊錢.",
@@ -49082,7 +49083,7 @@
                     "mark": [
                       "都"
                     ],
-                    "note": "都 sums up everything before it. A small number, fewer than expected, takes 才."
+                    "note": "都 before a number means \"already that many\" and makes it sound large. A small number, fewer than expected, takes 才."
                   }
                 ],
                 "fallbackRepair": "才 before the verb, and the amount last: 才喝了一杯.",
@@ -49872,7 +49873,7 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "明天要去旅行，"
+                        "traditional": "想到明天要去旅行，"
                       },
                       {
                         "type": "slot",
@@ -49963,10 +49964,10 @@
                 ],
                 "fallbackRepair": "讓, then the person, then the feeling: 讓我很興奮.",
                 "result": {
-                  "traditional": "明天要去旅行，讓我很興奮，所以睡不著。",
-                  "simplified": "明天要去旅行，让我很兴奋，所以睡不着。",
-                  "pinyin": "Míngtiān yào qù lǚxíng, ràng wǒ hěn xīngfèn, suǒyǐ shuìbùzháo.",
-                  "english": "Going on a trip tomorrow has me so excited that I can't sleep."
+                  "traditional": "想到明天要去旅行，讓我很興奮，所以睡不著。",
+                  "simplified": "想到明天要去旅行，让我很兴奋，所以睡不着。",
+                  "pinyin": "Xiǎngdào míngtiān yào qù lǚxíng, ràng wǒ hěn xīngfèn, suǒyǐ shuìbùzháo.",
+                  "english": "Thinking about tomorrow's trip has me so excited that I can't sleep."
                 }
               },
               {

@@ -1,6 +1,6 @@
 # Book 2 exercise pages: brief
 
-Status (2026-11-11): pilot. Lessons 1 and 7 are written and reviewed (`docs/grammar/reviews/B2-L01-pages.md`, `B2-L07-pages.md`); lessons 2–6 and 8–16 follow once the owner has tried the pilot.
+Status (2026-11-11): all 16 lessons are written, each reviewed against the scans by an independent reviewer and fixed (`docs/grammar/reviews/B2-L01-pages.md` … `B2-L16-pages.md`). Waiting on the owner's try-out.
 
 Book 2 pages are the Book 1 page (`B1-exercise-pages.md`: one scrolling page per grammar point, `slot-build` items only, the learner drags or taps words into blanks, each item checks itself, one retry then the answer). Everything in that brief holds unless this one says otherwise. Owner decisions for Book 2 (2026-11-11): the Book 1 page with phrase tiles; all 16 lessons written fresh (the October draft on `draft/book2-exercises-l1-7` is only a source of sentences); pictures only where the book prints one; pilot on lessons 1 and 7 first.
 
