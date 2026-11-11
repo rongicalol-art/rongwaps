@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAccountActions } from '../../app/hooks/useAccountActions';
 import { useAuth } from '../../hooks/useAuth';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { ActionButton, BrandWordmark } from '../../lib/widgets';
 import { authService } from '../../services/authService';
 import { debugLogger } from '../../utils/debug/debugLogger';
+import { dismissPrerender } from '../../utils/browser/prerender';
 import { DeskScene } from './DeskScene';
 import { SignInConsent } from './SignInParts';
 import { setSignInNotice, takeSignInNotice } from './signInNotice';
@@ -29,6 +30,8 @@ export function AgeCheck({ preview = false }: { preview?: boolean }) {
   const { currentUser, logout } = useAuth();
   const { deleteAccount } = useAccountActions();
   useCharacterFont();
+  // Back from Google the page still shows the prerendered landing over the app (no saved session yet when it loaded).
+  useEffect(dismissPrerender, []);
   const [busy, setBusy] = useState<'yes' | 'no' | 'switch' | null>(null);
   const [error, setError] = useState<string | null>(null);
   const name = firstName(currentUser?.user_metadata?.full_name ?? currentUser?.user_metadata?.name);
