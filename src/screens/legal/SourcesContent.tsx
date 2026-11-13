@@ -88,6 +88,12 @@ export function SourcesContent() {
               notices ship with it, and the derivation tooling is available on request.
             </>,
             <>
+              Sound parts (the part of a character that gives its sound) draw on the{' '}
+              <Ext href="https://github.com/peterolson/chinese-lexicon">Chinese Lexicon</Ext> by Peter Olson, the data
+              behind <Ext href="https://www.dong-chinese.com/wiki">Dong Chinese</Ext> (ISC license, as stated in the
+              project's package file), and on the analysis file of the CJKVI IDS project above.
+            </>,
+            <>
               Stroke order animation: <Ext href="https://hanziwriter.org">Hanzi Writer</Ext> by David Chanin (MIT).
               Its stroke data comes from Make Me a Hanzi and the Arphic PL fonts, under the{' '}
               <Ext href="https://github.com/chanind/hanzi-writer-data/blob/master/ARPHICPL.TXT">Arphic Public License</Ext>.
