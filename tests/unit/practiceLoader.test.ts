@@ -176,7 +176,7 @@ test('cancelled study preparation cannot begin fetching or preparing recordings'
 });
 
 test('lesson preparation fills the card cache before revealing study and prepares only a bounded recording window', async (t) => {
-  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => { assert.ok(String(input).endsWith('/api/dictionary/lookup')); return Response.json({}); });
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => { assert.ok(String(input).startsWith('/data/dictionary/')); return Response.json(String(input).includes('manifest') ? { shards: [] } : { schemaVersion: 2, items: [] }); });
   const files: (string | undefined)[][] = [];
   t.mock.method(audioService, 'preload', async (names: (string | undefined)[]) => { files.push(names); });
   const primed: (string | undefined)[] = [];
@@ -194,7 +194,7 @@ test('lesson preparation fills the card cache before revealing study and prepare
 });
 
 test('a recording that fails to download never blocks studying', async (t) => {
-  t.mock.method(globalThis, 'fetch', async () => Response.json({}));
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => Response.json(String(input).includes('manifest') ? { shards: [] } : { schemaVersion: 2, items: [] }));
   const cards: Flashcard[] = [{ id: 'fixture-retry', front: 'fixture-retry', back: '', bookId: 0, lessonId: 0, audio: 'fixture-retry.mp3' }];
   let calls = 0;
   t.mock.method(audioService, 'preload', async (...[, , progress]: Parameters<typeof audioService.preload>) => { calls += 1; progress?.({ ready: 0, total: 1, failed: 1 }); });

@@ -1,11 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { webcrypto } from 'node:crypto';
-import type express from 'express';
 import { isLocallyVerifiable, schoolAccessFromClaims, unverifiedClaims, verifyAccessToken } from '../../shared/accessToken';
 
-process.env.NODE_ENV = 'test';
-const { requireAuth } = await import('../../server/index');
+import { requireUser, resetAuthState } from '../../server/auth';
+import type { Context } from '../../server/env';
 
 const SUPABASE = 'https://claims-fixture.supabase.co';
 const b64 = (value: string | ArrayBuffer) => Buffer.from(value as ArrayBuffer).toString('base64url');
@@ -33,12 +32,16 @@ test('stamped school claims are read only when both are present and well formed'
   assert.equal(isLocallyVerifiable(`${b64(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))}.e30.sig`), false, 'shared-secret tokens go to Supabase');
 });
 
-test('Express trusts a verified school token without calling Supabase, and refuses a forged one outright', async (context) => {
-  const previous = { url: process.env.VITE_SUPABASE_URL, key: process.env.VITE_SUPABASE_ANON_KEY };
-  process.env.VITE_SUPABASE_URL = SUPABASE;
-  process.env.VITE_SUPABASE_ANON_KEY = 'fixture-key';
+const context = (url: string): Context => ({ env: { SUPABASE_URL: url, SUPABASE_ANON_KEY: 'fixture-key' }, report: () => {} });
+async function authorize(url: string, value: string) {
+  const result = await requireUser(context(url), new Request('https://app.test/data/vocabulary/book-1.json', { headers: { Authorization: `Bearer ${value}` } }), 'content');
+  return result instanceof Response ? { status: result.status, userId: undefined } : { status: 200, userId: result.userId };
+}
+
+test('the server trusts a verified school token without calling Supabase, and refuses a forged one outright', async (t) => {
+  resetAuthState();
   const calls: string[] = [];
-  context.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => {
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => {
     const url = new URL(String(input));
     assert.equal(url.origin, SUPABASE);
     calls.push(url.pathname);
@@ -47,41 +50,29 @@ test('Express trusts a verified school token without calling Supabase, and refus
     assert.equal(url.pathname, '/rest/v1/rpc/has_beta_access');
     return Response.json(true);
   });
-  const authorize = async (value: string) => {
-    const state = { status: 200, locals: {} as Record<string, unknown>, continued: false };
-    const response = { locals: state.locals, status(code: number) { state.status = code; return response; }, json() { return response; } };
-    await requireAuth({ headers: { authorization: `Bearer ${value}` } } as express.Request, response as unknown as express.Response, () => { state.continued = true; });
-    return state;
-  };
-  try {
-    const stamped = await authorize(await token({ school_beta: true, full_course: false }));
-    assert.equal(stamped.continued, true);
-    assert.equal(stamped.locals.userId, 'student-1');
-    assert.deepEqual(calls, ['/auth/v1/.well-known/jwks.json'], 'only the signing keys are fetched');
+  const stamped = await authorize(SUPABASE, await token({ school_beta: true, full_course: false }));
+  assert.equal(stamped.userId, 'student-1');
+  assert.deepEqual(calls, ['/auth/v1/.well-known/jwks.json'], 'only the signing keys are fetched');
 
-    const genuine = await token({ school_beta: true, full_course: true });
-    const [head, body, signature] = genuine.split('.');
-    const forged = `${head}.${b64(JSON.stringify({ ...JSON.parse(Buffer.from(body, 'base64url').toString()), sub: 'someone-else' }))}.${signature}`;
-    calls.length = 0;
-    assert.equal((await authorize(forged)).status, 401);
-    assert.equal((await authorize(await token({ school_beta: true, full_course: true, exp: 1 }))).status, 401, 'expired');
-    assert.equal((await authorize(await token({ school_beta: true, full_course: true, iss: 'https://other.supabase.co/auth/v1' }))).status, 401, 'other project');
-    assert.deepEqual(calls, [], 'forged, expired and foreign tokens cost no Supabase calls');
+  const genuine = await token({ school_beta: true, full_course: true });
+  const [head, body, signature] = genuine.split('.');
+  const forged = `${head}.${b64(JSON.stringify({ ...JSON.parse(Buffer.from(body, 'base64url').toString()), sub: 'someone-else' }))}.${signature}`;
+  calls.length = 0;
+  assert.equal((await authorize(SUPABASE, forged)).status, 401);
+  assert.equal((await authorize(SUPABASE, await token({ school_beta: true, full_course: true, exp: 1 }))).status, 401, 'expired');
+  assert.equal((await authorize(SUPABASE, await token({ school_beta: true, full_course: true, iss: 'https://other.supabase.co/auth/v1' }))).status, 401, 'other project');
+  assert.deepEqual(calls, [], 'forged, expired and foreign tokens cost no Supabase calls');
 
-    const unstamped = await authorize(await token({}));
-    assert.equal(unstamped.continued, true, 'tokens issued before the hook stamped claims still work');
-    assert.deepEqual(calls.sort(), ['/auth/v1/user', '/rest/v1/rpc/has_beta_access'], '...through the previous database check');
-  } finally {
-    process.env.VITE_SUPABASE_URL = previous.url;
-    process.env.VITE_SUPABASE_ANON_KEY = previous.key;
-  }
+  const unstamped = await authorize(SUPABASE, await token({}));
+  assert.equal(unstamped.userId, 'student-1', 'tokens issued before the hook stamped claims still work');
+  assert.deepEqual(calls.sort(), ['/auth/v1/user', '/rest/v1/rpc/has_beta_access'], '...through the previous database check');
 });
 
-test('a signing-key outage falls back to the database check instead of locking learners out', async (context) => {
-  process.env.VITE_SUPABASE_URL = 'https://outage-fixture.supabase.co';
-  process.env.VITE_SUPABASE_ANON_KEY = 'fixture-key';
+test('a signing-key outage falls back to the database check instead of locking learners out', async (t) => {
+  resetAuthState();
+  const OUTAGE = 'https://outage-fixture.supabase.co';
   const calls: string[] = [];
-  context.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => {
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => {
     const url = new URL(String(input));
     calls.push(url.pathname);
     if (url.pathname.endsWith('/jwks.json')) return new Response('down', { status: 503 });
@@ -89,11 +80,8 @@ test('a signing-key outage falls back to the database check instead of locking l
     return Response.json(true);
   });
   const head = b64(JSON.stringify({ alg: 'ES256', kid: 'fixture-key', typ: 'JWT' }));
-  const body = b64(JSON.stringify({ sub: 'student-1', role: 'authenticated', aud: 'authenticated', iss: 'https://outage-fixture.supabase.co/auth/v1', exp: Math.floor(Date.now() / 1000) + 600, school_beta: true, full_course: false }));
-  await assert.rejects(verifyAccessToken(`Bearer ${head}.${body}.c2ln`, 'https://outage-fixture.supabase.co'), /Signing keys unavailable/);
-  const state = { continued: false, status: 200 };
-  const response = { locals: {}, status(code: number) { state.status = code; return response; }, json() { return response; } };
-  await requireAuth({ headers: { authorization: `Bearer ${head}.${body}.c2ln` } } as express.Request, response as unknown as express.Response, () => { state.continued = true; });
-  assert.equal(state.continued, true);
+  const body = b64(JSON.stringify({ sub: 'student-1', role: 'authenticated', aud: 'authenticated', iss: `${OUTAGE}/auth/v1`, exp: Math.floor(Date.now() / 1000) + 600, school_beta: true, full_course: false }));
+  await assert.rejects(verifyAccessToken(`Bearer ${head}.${body}.c2ln`, OUTAGE), /Signing keys unavailable/);
+  assert.equal((await authorize(OUTAGE, `${head}.${body}.c2ln`)).userId, 'student-1');
   assert.ok(calls.includes('/auth/v1/user') && calls.includes('/rest/v1/rpc/has_beta_access'));
 });
