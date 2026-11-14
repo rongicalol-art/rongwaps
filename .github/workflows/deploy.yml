@@ -80,6 +80,8 @@ jobs:
           APP_COMMIT: ${{ env.SHA }}
           VITE_SUPABASE_URL: https://${{ env.STAGING_REF }}.supabase.co
           VITE_SUPABASE_ANON_KEY: ${{ vars.STAGING_SUPABASE_ANON_KEY }}
+          # Sign-in returns to staging, not to the live site (the app's default).
+          VITE_AUTH_REDIRECT_URL: ${{ vars.STAGING_URL }}/
           CARRY_OVER_FROM: ${{ vars.STAGING_URL }}
         run: |
           if [ -z "$VITE_SUPABASE_ANON_KEY" ]; then echo "::error::Repository variable STAGING_SUPABASE_ANON_KEY is not set (docs/RELEASING.md → Remaining one-time setup)"; exit 1; fi
