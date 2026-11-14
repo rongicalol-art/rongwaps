@@ -10,6 +10,20 @@ function shiftDay(date: Date, offset: number): Date {
   return next;
 }
 
+/**
+ * Days the app could not be opened (first and last day, in the learner's own calendar). A streak passes over
+ * them: a learner who could not study does not lose it, and the days are not counted as studied either.
+ * 2026-11-14: the host suspended the site; `to` is the day it came back, so that day costs nobody a streak.
+ */
+const DOWNTIME: Array<{ from: [number, number, number]; to: [number, number, number] }> = [
+  { from: [2026, 11, 14], to: [2026, 11, 16] },
+];
+const downDays = new Set<string>();
+for (const { from, to } of DOWNTIME) {
+  const last = new Date(to[0], to[1] - 1, to[2]);
+  for (let day = new Date(from[0], from[1] - 1, from[2]); day <= last; day = shiftDay(day, 1)) downDays.add(localDay(day));
+}
+
 /** Calendar arithmetic (rather than 24h offsets) also handles DST boundaries. */
 export function computeStreak(events: Pick<ReviewEvent, 'reviewedAt'>[], now: number | Date) {
   const today = new Date(now);
@@ -18,8 +32,10 @@ export function computeStreak(events: Pick<ReviewEvent, 'reviewedAt'>[], now: nu
   const studiedToday = days.has(localDay(today));
   let cursor = shiftDay(today, studiedToday ? 0 : -1);
   let streak = 0;
-  while (days.has(localDay(cursor))) {
-    streak++;
+  for (;;) {
+    const day = localDay(cursor);
+    if (days.has(day)) streak++;
+    else if (!downDays.has(day)) break;
     cursor = shiftDay(cursor, -1);
   }
   const todayIndex = (today.getDay() + 6) % 7;
