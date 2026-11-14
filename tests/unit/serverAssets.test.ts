@@ -57,13 +57,13 @@ test('staging runs the same server settings as the live site, apart from its own
 test('the header rules for files Cloudflare serves match the server, and staging stays out of search engines', () => {
   const production = headersFile('production');
   assert.match(production, /^\/\*\n( {2}.+\n)* {2}X-Content-Type-Options: nosniff\n/m);
-  assert.match(production, /^\/assets\/\*\n {2}Cache-Control: public, max-age=31536000, immutable$/m);
+  assert.ok(!/^\/assets\//m.test(production) && !production.includes('immutable'), 'a rule would also mark a missing file as cacheable for a year');
   for (const name of REVALIDATED_FILES) assert.match(production, new RegExp(`^/${name.replace('.', '\\.')}\\n  Cache-Control: no-cache$`, 'm'));
   const everything = production.slice(production.indexOf('/*'), production.indexOf('\n\n', production.indexOf('/*')));
   assert.ok(!everything.includes('X-Robots-Tag'), 'the live site is indexable');
   assert.match(production, /workers\.dev\/\*\n {2}X-Robots-Tag: noindex/);
   const stagingRules = headersFile('staging');
-  assert.match(stagingRules.slice(0, stagingRules.indexOf('/assets/*')), /X-Robots-Tag: noindex, nofollow, noarchive/);
+  assert.match(stagingRules.slice(0, stagingRules.indexOf('/index.html')), /X-Robots-Tag: noindex, nofollow, noarchive/);
   assert.ok(production.split('\n').every(line => line.length < 2000) && (production.match(/^\S.*$/gm) ?? []).length < 100, "within Cloudflare's limits");
   assert.ok(ASSETS_IGNORE.includes('*.gz') && ASSETS_IGNORE.includes('/audio/') && !/^\*?\.br$/m.test(ASSETS_IGNORE), 'the Brotli copies are uploaded');
 });
