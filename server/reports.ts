@@ -1,6 +1,7 @@
-import type { Request, Response } from 'express';
-import { createUserSupabaseClient } from './supabase.js';
-import { sendOwnerEmail } from './ownerEmail.js';
+import type { Context, Env } from './env';
+import { json, PRIVATE, readJson } from './respond';
+import { rpc } from './supabase';
+import { sendOwnerEmail } from './ownerEmail';
 
 export const REPORT_REASONS = ['spam', 'rude', 'unsafe', 'other'] as const;
 export const REPORT_PLACES = ['profile', 'chat', 'party'] as const;
@@ -32,8 +33,8 @@ export function parseReport(body: unknown): ReportInput | null {
 }
 
 /** "Not safe" reports reach the owner at once (Privacy §4); the rest wait for the daily Health note. */
-export function notifyUrgentReport(id: number, input: ReportInput, reporter: string): Promise<boolean> {
-  return sendOwnerEmail("Ron's Mandarin: urgent report", [
+export function notifyUrgentReport(env: Env, id: number, input: ReportInput, reporter: string): Promise<boolean> {
+  return sendOwnerEmail(env, "Ron's Mandarin: urgent report", [
     `Report ${id}: "Not safe", in ${input.place}.`,
     input.message ? `Reported line: ${input.message}` : 'No message (a profile or photo report).',
     `Reported learner: ${input.name ?? '(no name)'} · ${input.target}`,
@@ -44,28 +45,26 @@ export function notifyUrgentReport(id: number, input: ReportInput, reporter: str
   ].filter(line => line !== '').join('\n'), `report/${id}`);
 }
 
-export async function submitReport(req: Request, res: Response) {
-  res.setHeader('Cache-Control', 'private, no-store');
-  res.vary('Authorization');
-  const input = parseReport(req.body);
-  if (!input) { res.status(400).json({ error: 'Invalid report.' }); return; }
+export async function submitReport({ env }: Context, request: Request, user: { userId: string; token: string }): Promise<Response> {
+  const failed = (status: number, message = 'Could not send the report.') => json({ error: message }, status, PRIVATE);
+  const input = parseReport(await readJson(request));
+  if (!input) return json({ error: 'Invalid report.' }, 400, PRIVATE);
   try {
-    const { data: id, error } = await createUserSupabaseClient(req.headers.authorization!.slice(7)).rpc('submit_report', {
+    const { data: id, error } = await rpc<number>(env, user.token, 'submit_report', {
       p_target: input.target, p_reason: input.reason, p_place: input.place, p_message: input.message ?? null,
       p_message_id: input.messageId ?? null, p_name: input.name ?? null, p_photo: input.photo ?? null,
     });
     if (error) {
       const limited = error.code === '54000';
-      res.status(limited ? 429 : error.code === '22023' ? 400 : 503).json({ error: limited ? error.message : 'Could not send the report.' });
-      return;
+      return failed(limited ? 429 : error.code === '22023' ? 400 : 503, limited && error.message ? error.message : undefined);
     }
-    if (typeof id !== 'number') { res.status(503).json({ error: 'Could not send the report.' }); return; }
-    if (input.reason === 'unsafe' && !await notifyUrgentReport(id, input, String(res.locals.userId))) {
+    if (typeof id !== 'number') return failed(503);
+    if (input.reason === 'unsafe' && !await notifyUrgentReport(env, id, input, user.userId)) {
       // Only the id: report text and account details stay out of server logs.
       console.warn('Report saved; urgent email unavailable:', id);
     }
-    res.status(200).json({ ok: true });
+    return json({ ok: true }, 200, PRIVATE);
   } catch {
-    res.status(503).json({ error: 'Could not send the report.' });
+    return failed(503);
   }
 }

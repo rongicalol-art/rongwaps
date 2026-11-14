@@ -1,27 +1,97 @@
 import type { Flashcard } from '../data/flashcards';
 import type { WordExample } from '../types/models';
 import { fetchContent } from './staticContentService';
+import { createDictionaryEngine, type DictionaryEngine } from './dictionaryEngine';
+import type { DictionaryJob } from './dictionary.worker';
 import type { SearchResult } from '../utils/vocabulary/dictionarySearch';
 import type { DBDictionaryRow } from '../types/database';
 
-async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const controller = new AbortController();
-  const cancel = () => controller.abort();
-  init.signal?.throwIfAborted();
-  init.signal?.addEventListener('abort', cancel, { once: true });
-  const deadline = setTimeout(cancel, 25_000);
-  try {
-    const response = await fetchContent(`/api/dictionary/${path}`, { ...init, signal: controller.signal });
-    if (!response.ok) throw new Error(`Dictionary request failed (${response.status})`);
-    return await response.json() as T;
-  } finally { clearTimeout(deadline); init.signal?.removeEventListener('abort', cancel); }
+/**
+ * The dictionary runs on this device (dictionaryEngine.ts in a worker): no server answers these calls.
+ * The worker asks the page for each content pack it needs, because the page holds the session.
+ */
+const REQUEST_MS = 45_000; // The first search downloads the search index (about 4 MB).
+const IDLE_MS = 5 * 60_000;
+type Pending = { resolve: (result: unknown) => void; reject: (error: Error) => void };
+let worker: Worker | null = null;
+let local: DictionaryEngine | null = null;
+let idleTimer: ReturnType<typeof setTimeout> | undefined;
+let sequence = 0;
+const pending = new Map<number, Pending>();
+
+/** Stops the worker and frees its memory; the next request starts a fresh one. */
+export function closeDictionary(error = new Error('Dictionary closed')) {
+  clearTimeout(idleTimer);
+  worker?.terminate();
+  worker = null;
+  for (const job of pending.values()) job.reject(error);
+  pending.clear();
 }
-export const searchDictionaryApi = (query: string, limit = 30) => request<SearchResult[]>(`search?q=${encodeURIComponent(query)}&limit=${limit}`);
+
+async function loadPack(path: string): Promise<Response> {
+  const response = await fetchContent(path);
+  if (!response.ok) throw new Error(`${path} returned ${response.status}`);
+  return response;
+}
+
+function startWorker(): Worker {
+  const instance = new Worker(new URL('./dictionary.worker.ts', import.meta.url), { type: 'module' });
+  instance.onerror = () => { if (worker === instance) closeDictionary(new Error('Dictionary worker failed')); };
+  instance.onmessage = ({ data }: MessageEvent<{ id?: number; result?: unknown; error?: string; load?: number; path?: string }>) => {
+    if (worker !== instance) return;
+    if (data.load !== undefined) {
+      const loaded = data.load;
+      loadPack(data.path!).then(response => response.arrayBuffer()).then(
+        buffer => instance.postMessage({ loaded, buffer }, [buffer]),
+        (error: unknown) => instance.postMessage({ loaded, error: error instanceof Error ? error.message : 'Dictionary file unavailable' }),
+      );
+      return;
+    }
+    const job = pending.get(data.id!);
+    if (!job) return;
+    pending.delete(data.id!);
+    if (data.error) job.reject(new Error(data.error)); else job.resolve(data.result);
+    if (!pending.size) idleTimer = setTimeout(() => closeDictionary(), IDLE_MS);
+  };
+  return instance;
+}
+
+async function runLocally<T>(job: DictionaryJob): Promise<T> {
+  // No worker support (tests, prerender): the same engine on this thread.
+  local ??= createDictionaryEngine(async <P>(path: string) => await (await loadPack(path)).json() as P);
+  const result = job.kind === 'search' ? local.search(job.query, job.limit)
+    : job.kind === 'lookup' ? local.lookup(job.words)
+    : job.kind === 'course' ? local.course(job.words)
+    : local.examples(job.query, job.limit);
+  return await result as T;
+}
+
+async function request<T>(job: DictionaryJob, signal?: AbortSignal): Promise<T> {
+  signal?.throwIfAborted();
+  return new Promise<T>((resolve, reject) => {
+    let id = 0;
+    const finish = () => { clearTimeout(deadline); signal?.removeEventListener('abort', abort); pending.delete(id); };
+    const fail = (error: Error) => { finish(); reject(error); };
+    const abort = () => fail(new DOMException('Aborted', 'AbortError'));
+    const deadline = setTimeout(() => fail(new Error('Dictionary request timed out')), REQUEST_MS);
+    signal?.addEventListener('abort', abort, { once: true });
+    if (typeof Worker === 'undefined') {
+      runLocally<T>(job).then(result => { finish(); resolve(result); }, fail);
+      return;
+    }
+    clearTimeout(idleTimer);
+    worker ??= startWorker();
+    id = ++sequence;
+    pending.set(id, { resolve: result => { finish(); resolve(result as T); }, reject: fail });
+    worker.postMessage({ ...job, id });
+  });
+}
+export const searchDictionaryApi = (query: string, limit = 30) => request<SearchResult[]>({ kind: 'search', query, limit });
 async function fetchLookupBatches(words: string[], signal?: AbortSignal): Promise<Map<string, DBDictionaryRow[]>> {
   const result = new Map<string, DBDictionaryRow[]>();
   for (let start = 0; start < words.length; start += 64) {
     signal?.throwIfAborted();
-    const batch = await request<Record<string, DBDictionaryRow[]>>('lookup', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ words: words.slice(start, start + 64) }), signal });
+    const batch = await request<Record<string, DBDictionaryRow[]>>({ kind: 'lookup', words: words.slice(start, start + 64) }, signal);
     for (const [word, rows] of Object.entries(batch)) result.set(word, rows);
   }
   return result;
@@ -65,9 +135,7 @@ export async function lookupCourseCardsApi(words: string[]): Promise<Flashcard[]
         try {
           const all = [...queued];
           const cards: Flashcard[] = [];
-          for (let start = 0; start < all.length; start += 64) cards.push(...await request<Flashcard[]>('course', {
-            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ words: all.slice(start, start + 64) }),
-          }));
+          for (let start = 0; start < all.length; start += 64) cards.push(...await request<Flashcard[]>({ kind: 'course', words: all.slice(start, start + 64) }));
           resolve(cards);
         } catch (error) { reject(error); }
       });
@@ -77,4 +145,4 @@ export async function lookupCourseCardsApi(words: string[]): Promise<Flashcard[]
   for (const word of words) courseTick.words.add(word);
   return courseTick.promise;
 }
-export const lookupExamplesApi = (word: string, limit: number) => request<WordExample[]>(`examples?word=${encodeURIComponent(word)}&limit=${limit}`);
+export const lookupExamplesApi = (word: string, limit: number) => request<WordExample[]>({ kind: 'examples', query: word, limit });

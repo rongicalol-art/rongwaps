@@ -43,8 +43,7 @@ function getClient(): SupabaseClient<Database> {
 }
 
 // Proxy-based export: defers actual client creation to first use,
-// which is after dotenv.config() has run in server/index.ts or Vite has
-// injected env vars in the browser.
+// which is after Vite has injected env vars in the browser.
 export const supabase: SupabaseClient<Database> = new Proxy({} as SupabaseClient<Database>, {
   get(_target, prop) {
     return Reflect.get(getClient(), prop);

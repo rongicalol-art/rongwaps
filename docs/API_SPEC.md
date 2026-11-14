@@ -1,4 +1,4 @@
-# 🔌 Express API Specification
+# 🔌 Server API Specification
 
 ## Reports
 
@@ -12,15 +12,14 @@ idempotency key. A failed email never fails a saved report. Errors: 400 invalid,
 
 `POST /api/feedback` requires a verified school-beta session and accepts
 `{ id: UUID-v4, message: string, path: string }`. Messages are trimmed and limited
-to 2,000 characters; paths exclude query strings and fragments. Express adds a
-bounded browser user agent and deployment version (`RENDER_GIT_COMMIT`, then npm
-package version). `public.submit_feedback` saves into the non-API
+to 2,000 characters; paths exclude query strings and fragments. The server adds a
+bounded browser user agent and the deployed commit. `public.submit_feedback` saves into the non-API
 `private.feedback` inbox, bound to the authenticated account. No client role can
 read the inbox. Account deletion cascades to its feedback.
 
 Repeated ids with identical messages and paths succeed without another row;
 changed payloads for an existing id fail. Limits: three requests per user per
-minute in Express and five new submissions per account per hour in Postgres.
+minute on the server and five new submissions per account per hour in Postgres.
 Invalid payloads return 400, unauthenticated/unauthorized sessions 401/403,
 throttling 429, and unavailable storage 503. A 200 confirms storage, independently
 of email delivery. All responses from the handler use `private, no-store`.
@@ -31,11 +30,11 @@ timeout and submission-id idempotency key. Failed/unconfigured notifications log
 only the submission id. A user retry attempts notification again; there is no
 background email retry worker. Messages remain available in the database.
 
-The backend (`server/index.ts`) runs under Node.js + Express and serves protected lesson content. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. Card audio may also be a complete HTTPS URL, including a temporary signed link. Playback does not require CDN CORS headers; background offline caching is best-effort and does. In development it also mounts the Vite dev-server middleware; in production it serves the built `dist/` directory and falls back to `index.html` for app routes.
+The backend is a Cloudflare Worker (`server/worker.ts`; all routes in `server/app.ts`). Cloudflare serves the public files of the built site itself; the Worker serves the protected lesson content, this API and addresses that are not files. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. Card audio may also be a complete HTTPS URL, including a temporary signed link. Playback does not require CDN CORS headers; background offline caching is best-effort and does. In development (`server/index.ts`) Vite serves the app and the content packs and the same API code answers `/api`; in production the Worker falls back to `index.html` for app routes.
 
 There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 404 without authenticating or calling a provider. Jev content-review scripts remain development tooling.
 
-Protected lesson-content requests require a school-beta session. A token signed with the project's asymmetric keys is verified locally against the cached signing keys (`shared/accessToken.ts`); when it carries the `school_beta` claim stamped by the database's sign-in hook, no Supabase call is made, and a forged, expired or foreign token is refused with 401 at once. Other tokens (issued before the hook stamped claims, legacy shared-secret tokens, or during a signing-key outage) are checked as before: a valid Supabase user and `has_beta_access() = true` from a request-scoped database client. Unauthorized school-beta accounts receive 403; an access-verification outage returns 503. The database owns the student/owner rule; Express does not duplicate it or trust editable user metadata.
+Protected lesson-content requests require a school-beta session. A token signed with the project's asymmetric keys is verified locally against the cached signing keys (`shared/accessToken.ts`); when it carries the `school_beta` claim stamped by the database's sign-in hook, no Supabase call is made, and a forged, expired or foreign token is refused with 401 at once. Other tokens (issued before the hook stamped claims, legacy shared-secret tokens, or during a signing-key outage) are checked as before: a valid Supabase user and `has_beta_access() = true`, asked with the learner's own token. Unauthorized school-beta accounts receive 403; an access-verification outage returns 503. The database owns the student/owner rule; Express does not duplicate it or trust editable user metadata.
 
 ## Study together bootstrap
 
@@ -46,8 +45,8 @@ The games Worker verifies Supabase access tokens itself (JWKS), so the app serve
 ## 🚦 Rate limits
 
 Cold or unverified requests are limited per client IP; verified tokens bypass that shared-IP counter. Authenticated requests also have a separate per-user quota. Exceeding a limit
-returns `429` with `{ "error": "Too many requests. Try again later." }` and standard `RateLimit-*`
-headers.
+returns `429` with `{ "error": "Too many requests. Try again later." }` and `Retry-After`. Limits are
+Cloudflare rate limiting bindings (`server/wrangler.jsonc`), counted per Cloudflare location.
 
 | Request | Limiter | Window | Limit |
 | --- | --- | --- | --- |
@@ -121,10 +120,10 @@ flowchart TD
 
 ## Dictionary and lesson preparation
 
-`GET /api/dictionary/search?q=…&limit=30` returns at most 50 ranked results. Queries are capped at 128 characters and four wildcards. `POST /api/dictionary/lookup` accepts `{ "words": ["你好"] }` (at most 64 words) and returns a word-to-dictionary-rows object. `POST /api/dictionary/course` accepts the same body and returns matching course cards, including reading-specific recordings. `GET /api/dictionary/examples?word=…&limit=3` returns up to 30 examples. These endpoints require the same verified school session as lesson content, use `private, no-store` and `Vary: Authorization`, and share the 300/IP/minute cold-token limiter with protected content; dictionary calls also have a 180/user/minute limit. Invalid requests return 400; unavailable search returns 503 and the client exposes a retryable error.
+The dictionary has no server API: it runs on the device (`src/services/dictionaryEngine.ts`, in the worker `dictionary.worker.ts`, called through `dictionaryApi.ts`) over the protected content packs, so it costs the host nothing per search and works from the browser's saved copies. Four operations: search (at most 50 ranked results), exact rows for up to 64 words, matching course cards, and example sentences. `/api/dictionary/*` returns 404.
 
-The server keeps one lazy dictionary worker per process. Character/Latin postings narrow candidates before the shared ranking engine runs; typo and segmentation fallback retain the original corpus semantics. The worker isolates parsing and searching from HTTP/authentication. Its exact-shard cache holds eight shards and its result cache 96 queries. At most 32 jobs queue; startup (90 s, because a small shared CPU needs far more than 20 s to read the index; cancelling earlier restarts from zero) and query deadlines return errors instead of leaving a permanent spinner. Canceled worker startups reject promptly, and late events from a retired worker cannot terminate its replacement. Global search requires a connection; warm lesson definitions remain available in memory. While the request runs, the browser publishes matches from `/data/search/common-words.json` (the 20,000 most common entries, derived at build time and served through the same authenticated `/data` gate), searched in a worker with the same engine; the server's page replaces them.
+Each part loads on first use. Exact rows read one dictionary shard by its content-addressed address (kept by the browser without asking again); twelve stay in memory. Search loads `/data/search/dictionary-search-index.json` (about 4 MB compressed, once per index version) and the character-parts pack; character/Latin postings narrow candidates before the shared ranking engine runs; typo and segmentation fallback retain the original corpus semantics. Its result cache holds 96 queries. The worker asks the page for each pack (the page holds the session) and is closed after five idle minutes. A pack that fails to load is asked for again on the next request; requests time out after 45 s with a retryable error, and late messages from a closed worker are ignored. Warm lesson definitions remain available in memory without it. While a search runs, the browser publishes matches from `/data/search/common-words.json` (the 20,000 most common entries, derived at build time and served through the same authenticated `/data` gate), searched in a worker with the same engine; the server's page replaces them.
 
-The Vite build derives `/data/study/manifest.json` and hashed lesson-part JSON bundles from the canonical vocabulary, flashcard-extras and dictionary packs. Each bundle contains its cards, full precomputed examples/hooks, matching dictionary rows plus bounded reference targets, and existing audio references. Repeated example sentences share a table. Brotli/gzip sidecars are generated once at build time and negotiated by Express **after** authentication; shared caches remain disabled. No authored data or audio is transcoded. Development generates equivalent temporary artifacts under `.vite/study`; production reads only `dist/`.
+The Vite build derives `/data/study/manifest.json` and hashed lesson-part JSON bundles from the canonical vocabulary, flashcard-extras and dictionary packs. Each bundle contains its cards, full precomputed examples/hooks, matching dictionary rows plus bounded reference targets, and existing audio references. Repeated example sentences share a table. Brotli sidecars are generated once at build time and sent by the server **after** authentication (browsers without Brotli get the plain file, compressed by Cloudflare); shared caches remain disabled. No authored data or audio is transcoded. Development generates equivalent temporary artifacts under `.vite/study`; production reads only `dist/`.
 
 Normal lesson selection loads only selected part bundles. Large selections first use the book's thin vocabulary pack, then prepare an initial 128-card working set. The existing preparation screen waits for examples, local definitions, four initial recordings and the first playable recording; cancel, timeout and retry remain available. It does not preload the full dictionary index or all-book vocabulary; only the search screen loads the common-words slice. Eight decoded bundles remain resident when idle; a mounted session pins its working parts until close. Dictionary popovers use bundled examples immediately; other words request a small server response. `npm run perf:check` enforces the existing shell budgets, absence of a browser worker for the full dictionary index, a 700 kB Brotli ceiling for the common-words slice, and a 250 kB Brotli ceiling per study part.

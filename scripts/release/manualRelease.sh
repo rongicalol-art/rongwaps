@@ -3,7 +3,6 @@
 # migrate.yml + deploy.yml, run by the OWNER from their Mac with their own keys. Asks before every live change.
 #
 #   export PRODUCTION_DATABASE_URL='…'   # Supabase → production project → Connect → Session pooler URI
-#   export RENDER_API_KEY='…'            # Render → Account settings → API keys
 #   scripts/release/manualRelease.sh
 #
 # Needs: brew install postgresql@17 age (then PATH="$(brew --prefix postgresql@17)/bin:$PATH"), Docker running,
@@ -15,7 +14,8 @@
 #                 the owner's age key)
 #   2. migrations dry run → you type yes → apply → every migration recorded
 #   3. Study together server (wrangler)
-#   4. app        Render deploys the exact commit → live-site check → automatic rollback if the check fails
+#   4. app        builds the exact commit, uploads it to Cloudflare → live-site check → automatic rollback
+#                 if the check fails
 #   5. tag        GitHub release with notes, like deploy.yml
 set -euo pipefail
 
@@ -27,7 +27,6 @@ SITE=https://ronsmandarin.com
 # ENV_FILE=<path to .env>: read the keys from that file instead of the shell (values are never printed).
 if [[ -n "${ENV_FILE:-}" ]]; then set -a; . "$ENV_FILE"; set +a; fi
 : "${PRODUCTION_DATABASE_URL:?export PRODUCTION_DATABASE_URL first (Supabase → production project → Connect → Session pooler URI)}"
-: "${RENDER_API_KEY:?export RENDER_API_KEY first (Render → Account settings → API keys)}"
 for tool in pg_dump psql age docker supabase gh node npm; do
   command -v "$tool" > /dev/null || { echo "Missing $tool. Install: brew install postgresql@17 age, then: export PATH=\"\$(brew --prefix postgresql@17)/bin:\$PATH\""; exit 1; }
 done
@@ -47,7 +46,8 @@ ask() {
 
 git fetch -q origin production
 SHA=$(git rev-parse origin/production)
-SERVICE=$(gh variable get PRODUCTION_SERVICE_ID --repo "$REPO")
+ANON_KEY=$(gh variable get PRODUCTION_SUPABASE_ANON_KEY --repo "$REPO")
+SENTRY_DSN=$(gh variable get SENTRY_DSN --repo "$REPO" 2> /dev/null || true)
 RECIPIENT=$(gh variable get BACKUP_AGE_RECIPIENT --repo "$REPO")
 REPO_ROOT=$(git rev-parse --show-toplevel)
 WT=$(mktemp -d)/release
@@ -103,13 +103,16 @@ echo
 
 echo "== 4/5 App"
 ask "Deploy ${SHA:0:8} to $SITE?"
-GITHUB_OUTPUT="$work/render.out" node scripts/release/render.ts deploy "$SERVICE" "$SHA"
-previous=$(sed -n 's/^previous_deploy=//p' "$work/render.out" | tail -1)
-current=$(sed -n 's/^deploy=//p' "$work/render.out" | tail -1)
+# The same build the Deploy workflow makes (public values only; source maps are uploaded by the workflow alone).
+APP_ENV=production APP_COMMIT="$SHA" VITE_SUPABASE_URL="https://$PRODUCTION_REF.supabase.co" VITE_SUPABASE_ANON_KEY="$ANON_KEY" \
+  VITE_AUDIO_BASE_URL=https://audio.ronsmandarin.com VITE_SENTRY_DSN="$SENTRY_DSN" CARRY_OVER_FROM="$SITE" npm run build
+GITHUB_OUTPUT="$work/deploy.out" SUPABASE_ANON_KEY="$ANON_KEY" node scripts/release/cloudflare.ts deploy server/wrangler.jsonc "$SHA"
+previous=$(sed -n 's/^previous_version=//p' "$work/deploy.out" | tail -1)
+current=$(sed -n 's/^version=//p' "$work/deploy.out" | tail -1)
 if ! node scripts/release/smoke.ts "$SITE" --env production --commit "$SHA" --supabase-ref "$PRODUCTION_REF" --forbid-ref "$STAGING_REF"; then
   if [[ -n "$previous" && "$previous" != "$current" ]]; then
     echo "The live-site check failed: rolling back to the previous release."
-    node scripts/release/render.ts rollback "$SERVICE" "$previous"
+    node scripts/release/cloudflare.ts rollback server/wrangler.jsonc "$previous"
     node scripts/release/smoke.ts "$SITE" --env production --supabase-ref "$PRODUCTION_REF" --forbid-ref "$STAGING_REF"
   fi
   exit 1

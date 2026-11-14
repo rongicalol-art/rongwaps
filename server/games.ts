@@ -1,12 +1,14 @@
-import type { Request, Response } from 'express';
+import type { Env } from './env';
+import { json } from './respond';
 
 /** Public origin of the games Worker (realtime lobby + quiz race rooms), or null when unset. */
-export function gameConfiguration(_req: Request, res: Response) {
-  res.setHeader('Cache-Control', 'no-store');
-  const value = process.env.GAMES_SERVER_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:8787' : undefined);
+export function gameConfiguration(env: Env): Response {
+  const development = env.APP_ENV === 'development';
+  const value = env.GAMES_SERVER_URL || (development ? 'http://localhost:8787' : undefined);
+  let origin: string | null = null;
   try {
     const url = value ? new URL(value) : null;
-    const allowed = url?.protocol === 'https:' || (process.env.NODE_ENV === 'development' && url?.protocol === 'http:');
-    res.json({ url: allowed ? url!.origin : null });
-  } catch { res.json({ url: null }); }
+    if (url?.protocol === 'https:' || (development && url?.protocol === 'http:')) origin = url.origin;
+  } catch { /* unset or malformed: no games server */ }
+  return json({ url: origin }, 200, { 'Cache-Control': 'no-store' });
 }

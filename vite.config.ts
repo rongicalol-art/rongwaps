@@ -179,8 +179,8 @@ const pwaPlugin = VitePWA({
   },
 });
 
-// Sentry release = the deployed commit (Render sets RENDER_GIT_COMMIT at build).
-process.env.VITE_APP_RELEASE ||= process.env.RENDER_GIT_COMMIT ?? '';
+// Sentry release = the deployed commit (the Deploy workflow sets APP_COMMIT for the build).
+process.env.VITE_APP_RELEASE ||= process.env.APP_COMMIT ?? '';
 
 export default defineConfig(() => {
   return {

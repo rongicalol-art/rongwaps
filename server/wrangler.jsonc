@@ -1,0 +1,44 @@
+{
+  // The live site. Released by .github/workflows/deploy.yml (docs/RELEASING.md); `npm start` runs it locally.
+  // ronsmandarin.com is attached to this Worker in the Cloudflare dashboard (Settings → Domains & Routes),
+  // so the release token needs no access to the domain itself.
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "rons-mandarin",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none",
+    // The server runs first for every address EXCEPT the public files listed here, which Cloudflare serves
+    // on its own (free and unlimited). Lesson content (/data) is never on this list: an address that matches
+    // nothing below reaches the server, which checks the school account. tests/unit/serverAssets.test.ts
+    // keeps this list in step with the files the build produces.
+    "run_worker_first": [
+      "/*",
+      "!/", "!/index.html", "!/about", "!/privacy", "!/terms", "!/sources",
+      "!/assets/*", "!/fonts/*", "!/icons/*", "!/videos/*",
+      "!/sw.js", "!/workbox-*.js", "!/manifest.json", "!/asset-manifest.json",
+      "!/robots.txt", "!/sitemap.xml", "!/share.png", "!/share-square.png"
+    ]
+  },
+  // Public values. COMMIT and SUPABASE_ANON_KEY arrive with each deploy (--var); the email and Sentry
+  // settings are Worker secrets (docs/RELEASING.md → Remaining one-time setup).
+  "vars": {
+    "APP_ENV": "production",
+    "SUPABASE_URL": "https://ylpzxpqyfaayavkvhikw.supabase.co",
+    "GAMES_SERVER_URL": "https://rons-mandarin-games.ronm222007.workers.dev"
+  },
+  // Counted per Cloudflare location, a minute at a time (server/auth.ts).
+  "ratelimits": [
+    { "name": "IP_LIMIT", "namespace_id": "1001", "simple": { "limit": 300, "period": 60 } },
+    { "name": "CONTENT_LIMIT", "namespace_id": "1002", "simple": { "limit": 1200, "period": 60 } },
+    { "name": "FEEDBACK_LIMIT", "namespace_id": "1003", "simple": { "limit": 3, "period": 60 } },
+    { "name": "REPORT_LIMIT", "namespace_id": "1004", "simple": { "limit": 10, "period": 60 } }
+  ],
+  "observability": { "enabled": true, "head_sampling_rate": 0.1 }
+}

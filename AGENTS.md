@@ -1,6 +1,6 @@
 # Ron's Mandarin (repo: rongwaps)
 
-Chinese-learning PWA for Shu-Te University students (18+), built on the *Modern Chinese* textbooks. React 19 + Vite + Zustand + Tailwind 4, Express (`server/`), Supabase, a Cloudflare Worker (`games/`). Live: https://ronsmandarin.com. This file is the shared rulebook for every AI (Claude, Codex).
+Chinese-learning PWA for Shu-Te University students (18+), built on the *Modern Chinese* textbooks. React 19 + Vite + Zustand + Tailwind 4, Supabase, two Cloudflare Workers: the site and its server (`server/`) and Study together (`games/`). Live: https://ronsmandarin.com. This file is the shared rulebook for every AI (Claude, Codex).
 
 ## Working with the owner
 

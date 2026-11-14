@@ -29,9 +29,12 @@ test('lesson bundles keep lesson examples (capped tail) and every definition whi
   t.after(() => { if (original) Object.defineProperty(globalThis, 'window', original); else Reflect.deleteProperty(globalThis, 'window'); });
   t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => {
     const path = String(input); paths.push(path);
-    if (path.startsWith('/api/')) return dictionaryAvailable
-      ? Response.json([{ id: 987654, traditional: '同學', definitions: ['successful global search'] }])
-      : Response.json({}, { status: 503 });
+    // Global search runs on the device over these packs; studying a lesson must never ask for them.
+    if (/^\/data\/(search\/(dictionary-search-index|course-lookup)|relations\/parts|dictionary(-pos)?\/(manifest|shard-\d+))\.json(\?v=[a-f0-9]+)?$/.test(path)) {
+      if (!dictionaryAvailable) return Response.json({}, { status: 503 });
+      const file = path.replace(/\?.*$/, '');
+      return new Response(new Uint8Array(assets.get(file) ?? await readFile(`public${file}`)), { headers: { 'Content-Type': 'application/json' } });
+    }
     const bytes = assets.get(path); assert.ok(bytes, `unexpected broad download: ${path}`);
     return new Response(new Uint8Array(bytes), { headers: { 'Content-Type': 'application/json' } });
   });
@@ -50,17 +53,16 @@ test('lesson bundles keep lesson examples (capped tail) and every definition whi
   const before = paths.length;
   assert.ok((await fetchExamples(card.front)).length);
   assert.equal(paths.length, before, 'examples resolve without fetching other books');
+  assert.ok(paths.every(path => path.startsWith('/data/study/')), 'studying downloads lesson bundles only');
   const partial: unknown[][] = [];
   await assert.rejects(executeRemoteSearch(card.front, rows => partial.push(rows)), /503/);
-  assert.ok(partial[0]?.length, 'warm exact results publish before the global request fails');
+  assert.ok(partial[0]?.length, 'warm exact results publish before the global search fails');
   dictionaryAvailable = true;
-  const requestsBeforeRetry = paths.length;
-  const recovered = await executeRemoteSearch(card.front) as Array<{ id: number }>;
-  assert.equal(recovered[0].id, 987654, 'retry must replace local rows with the full global response');
-  assert.equal(paths.length, requestsBeforeRetry + 1, 'a failed search never caches its partial rows as a successful response');
+  const recovered = await executeRemoteSearch(card.front) as Array<{ traditional: string; match_type?: string }>;
+  assert.ok(recovered.some(row => row.traditional === card.front && row.match_type === 'exact'), 'retry answers with the full dictionary');
+  const requestsAfterRetry = paths.length;
   await executeRemoteSearch(card.front);
-  assert.equal(paths.length, requestsBeforeRetry + 1, 'only the completed global response is cached');
-  assert.ok(paths.filter(path => path.startsWith('/data/')).every(path => path.startsWith('/data/study/')));
+  assert.equal(paths.length, requestsAfterRetry, 'the completed search is cached');
   const oldBytes = brotliCompressSync(await readFile('public/data/search/dictionary-search-index.json'), { params: { [constants.BROTLI_PARAM_QUALITY]: 6 } }).length;
   const newBytes = parts.reduce((sum, part) => sum + assets.get(part.path + '.br')!.length, 0);
   assert.ok(newBytes < oldBytes / 20, `expected >20x less data than the search index alone: ${newBytes}/${oldBytes}`);

@@ -34,7 +34,7 @@ GitHub Actions minutes are limited (a private repo's free plan), so the full sui
 | --- | --- | --- |
 | `npm run gate` (local) | before every PR | every CI check; browser journeys and the backup self-test when the change needs them (`-- --all` forces them). Paste `output/gate/summary.md` into the PR. |
 | CI `pr` | PRs into `main` | secret scan, migration safety |
-| CI `merge` | push to `main` | migration safety, typecheck, unit tests, build (staging deploys after it) |
+| CI `merge` | push to `main` | migration safety, typecheck, unit tests (the staging deploy after it builds the site) |
 | CI `full` | Release PRs, push to `production`, weekly on `main`, manual runs, PRs labelled `full-ci` | everything, journeys and backup self-test included |
 
 Draft PRs run nothing. A session without Docker (cloud or phone) labels its PR `full-ci` instead of running the gate.
@@ -60,6 +60,7 @@ tests/
 - `static_data` — `content/dialogueAlignment.json` and `content/grammar/*.json` are valid and loadable.
 - `code_quality` — line caps (`App.tsx` < 250, `audioService.ts` < 400, `models.ts` < 300), widgets import nothing from services/store, no Node built-ins in `src/`.
 - `server`, `build_runtime` — `server/index.ts` layout and script targets; build and dev entry points.
+- `npm run server:test` (`tests/server/runtime.mjs`) — the site server in Cloudflare's local runtime with the real routing rules: lesson content locked under every spelling of its address, compressed packs, cache rules, limits. `npm run server:check` proves it bundles for Cloudflare. Unit tests of the same code: `tests/unit/serverAuth.test.ts`, `accessToken`, `feedback`, `reports`.
 - `memory_hooks` — pack manifest hash/count, emphasis on every hook, word hooks name characters in order, character hooks follow breakdown order (`tests/fixtures/memory-hook-decomposition-trees.json`, regenerate with `hooks snapshot-order`), retired phrasings stay gone.
 - `tier1_features` (happy-path contracts), `tier2_boundaries` (empty/zero/metacharacter/limit cases, POS and pinyin normalization), `tier3_cross_feature` (audio + reader sync, SRS + cloud sync queue, widgets in containers), `tier4_real_world` (reading with synced audio, multi-card SRS session with debounced sync, hanzi writing restart, offline recovery).
 
@@ -195,16 +196,13 @@ Check cancellation, a failed preparation followed by retry, a warm reopen and a 
 
 Staging uses the Free Supabase project `zpljyjcbqkrelpdzvmqz` and the separate
 `rons-mandarin-games-staging` Worker, configured in `games/wrangler.staging.jsonc`.
-Its app address is `https://ronsmandarin-staging.onrender.com`.
+Its app address is `https://rons-mandarin-staging.ronm222007.workers.dev`.
 Use synthetic accounts and progress only. Never restore a production backup here.
 
-The Render staging service uses manual deployments, `/healthz`, Node 22,
-`npm ci --include=dev && npm run build`, and `npm run start`. Its variables are
-`APP_ENV=staging`, `NODE_ENV=production`, `NODE_VERSION=22`, `TRUST_PROXY=1`,
-`VITE_SUPABASE_URL=https://zpljyjcbqkrelpdzvmqz.supabase.co`, the **staging publishable**
-key in `VITE_SUPABASE_ANON_KEY`,
-`VITE_AUTH_REDIRECT_URL=https://ronsmandarin-staging.onrender.com/`,
-`GAMES_SERVER_URL=https://rons-mandarin-games-staging.ronm222007.workers.dev`, and
+The staging site is the Worker `rons-mandarin-staging` (`server/wrangler.staging.jsonc`: `APP_ENV=staging`,
+the staging Supabase address and `GAMES_SERVER_URL=https://rons-mandarin-games-staging.ronm222007.workers.dev`).
+The Deploy workflow builds it with `VITE_SUPABASE_URL=https://zpljyjcbqkrelpdzvmqz.supabase.co`, the **staging
+publishable** key (repository variable `STAGING_SUPABASE_ANON_KEY`) and
 `VITE_AUDIO_BASE_URL=https://audio.ronsmandarin.com` for public audio reads.
 It receives no production write keys, SMTP credentials or monitoring DSNs.
 Staging responses include `X-Robots-Tag: noindex, nofollow, noarchive`.
@@ -227,5 +225,5 @@ origin. Record the tested commit and demonstrate an app rollback to the previous
 staging artifact without resetting the database. A green build alone does not
 complete these checks. Production release still needs the owner's approval.
 
-Render Free services share workspace hours and build minutes. Let staging idle
-between tests; do not add a keepalive monitor. Check usage before a test batch.
+Staging and the live site share Cloudflare's free 100,000 server requests a day
+(docs/RELEASING.md → Free-tier limits). Do not point a load test at staging.

@@ -35,7 +35,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 - `ARCHITECTURE.md` — source layout, module boundaries, ESLint import restrictions, component ownership.
 - `DATABASE_SCHEMA.md` — Supabase schema, tables, RPCs, RLS, pack-first fetch paths.
 - `DESIGN_TOKENS.md` — semantic design tokens (radius, tactile depth, shadows, focus rings, colors).
-- `API_SPEC.md` — Express API: protected lesson content, CDN media, retired grading endpoint.
+- `API_SPEC.md` — server API (Cloudflare Worker): protected lesson content, CDN media, the on-device dictionary, retired endpoints.
 - `GRAMMAR_LESSON_TEMPLATE.md` — interactive grammar lesson spec and data contracts.
 - `../content/lesson-tests/README.md` — TOCFL-style lesson tests: how a test runs, item kinds, content rules, pictures and audio pipeline.
 - `COURSE_EXAMPLES.md` — course example sentence packs, runtime matching, OCR export workflow, coverage audit.

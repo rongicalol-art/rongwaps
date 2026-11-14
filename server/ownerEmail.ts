@@ -1,12 +1,12 @@
+import type { Env } from './env';
+
 /**
- * One email to the owner through Resend (RESEND_API_KEY, FEEDBACK_EMAIL_FROM, FEEDBACK_EMAIL_TO on the web
- * service). False when it isn't configured or fails: callers never turn a saved submission into a failure.
+ * One email to the owner through Resend (RESEND_API_KEY, FEEDBACK_EMAIL_FROM, FEEDBACK_EMAIL_TO as Worker
+ * secrets). False when it isn't configured or fails: callers never turn a saved submission into a failure.
  * `key` makes retries send at most one email.
  */
-export async function sendOwnerEmail(subject: string, text: string, key: string): Promise<boolean> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.FEEDBACK_EMAIL_FROM;
-  const to = process.env.FEEDBACK_EMAIL_TO;
+export async function sendOwnerEmail(env: Env, subject: string, text: string, key: string): Promise<boolean> {
+  const { RESEND_API_KEY: apiKey, FEEDBACK_EMAIL_FROM: from, FEEDBACK_EMAIL_TO: to } = env;
   if (!apiKey || !from || !to) return false;
   try {
     const response = await fetch('https://api.resend.com/emails', {

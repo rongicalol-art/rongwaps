@@ -1,12 +1,12 @@
 name: CI
 
-# `verify` is the gate: Render deploys staging (main) and the live site
-# (production) only after every check on that commit passes.
+# `verify` is the gate: the Deploy workflow ships staging (main) and the live
+# site (production) only after every check on that commit passes.
 #
 # How much runs (Actions minutes are limited; docs/TESTING.md "Where checks run"):
 #   full  - the whole suite: Release PRs and pushes to production, the weekly run, manual runs,
 #           and PRs labelled `full-ci` (e.g. from a phone session without Docker)
-#   merge - push to main: typecheck, tests and build, enough for the staging deploy
+#   merge - push to main: typecheck and tests (the staging deploy that follows builds the site itself)
 #   pr    - PRs into main: secret scan and migration safety only; the author runs `npm run gate`
 #           locally and pastes its summary into the PR
 # Draft PRs run nothing.
@@ -84,7 +84,7 @@ jobs:
         run: npm run content:validate
       - if: steps.depth.outputs.mode == 'full'
         run: npm run jev:lint
-      - if: steps.depth.outputs.mode != 'pr'
+      - if: steps.depth.outputs.mode == 'full'
         run: npm run build
         env:
           # Placeholders so the client bundle builds; never real keys.
@@ -93,6 +93,9 @@ jobs:
       - name: Size budgets
         if: steps.depth.outputs.mode == 'full'
         run: npm run perf:check
+      - name: The site server bundles for Cloudflare, and keeps lesson content locked in its local runtime
+        if: steps.depth.outputs.mode == 'full'
+        run: npm run server:check && npm run server:test
 
   # Learner journeys in real browsers against a throwaway local Supabase stack.
   # Always on the way to production (deploy.yml waits for this workflow), weekly
