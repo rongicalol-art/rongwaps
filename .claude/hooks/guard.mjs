@@ -7,11 +7,18 @@
  * deny: never done by an AI session (the owner does these by hand if needed).
  * ask:  runs only after the owner approves the prompt.
  *
+ * It also keeps sessions out of each other's way and out of generated or
+ * secret files: no commits on main/production, the owner is asked before the
+ * shared folder's branch or files are changed under other sessions, and
+ * `public/data/` packs and key files are not edited by hand.
+ *
  * A guardrail against mistakes, not a sandbox: the hard gates are elsewhere
  * (Render deploys only commits whose CI passed on main/production, and only
  * the owner merges into production). See docs/RELEASING.md → Guards.
  */
+import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const PRODUCTION_DB_REF = 'ylpzxpqyfaayavkvhikw';
 
@@ -34,7 +41,13 @@ const isLocalDb = (s) => /\bdocker\s+exec\b|localhost|127\.0\.0\.1|\[?::1\]?|\/v
 // Conversation on a PR (comments, replies, resolving threads) is not a release action.
 const prConversation = (s) => /\/(?:issues|pulls)\/\d+\/comments\b|\/pulls\/comments\/\d+\/replies\b|\b(?:resolveReviewThread|addPullRequestReviewThreadReply|addComment)\b/.test(s);
 
+// Key files. `.env.example` is a committed template, not a secret.
+const SECRET_FILE = /(?:^|[\s/=<])(?:\.env(?!\.example\b)(?:\.[\w.*-]+|\*)?|\.batch_key_env|\.openrouter_key|scripts\/\.config\.json)(?=[\s)`]|$)/;
+// At the start of a command (or a subshell), so the words inside a commit message or PR title never match.
+const PRINTS = /(?:^|[(`]\s*|\bsudo\s+|\bxargs\s+(?:-\S+\s+)*)(?:cat|head|tail|less|more|bat|nl|tac|grep|egrep|rg|sed|awk|cut|strings|xxd|od|hexdump|base64|sort|diff|jq)\s/;
+
 const DENY = [
+  [(s) => PRINTS.test(s) && SECRET_FILE.test(s), 'Printing a secrets file is blocked. Keys stay out of the conversation; the owner handles them.'],
   [(s) => isPush(s) && /(?:\s|:|refs\/heads\/)(?:main|production)(?=\s|$)/.test(s), 'Pushing to main or production is blocked. Push a feature branch and open a PR.'],
   [(s) => isPush(s) && /\s(?:--force(?:-with-lease|-if-includes)?\b|-(?!-)[A-Za-z]*f[A-Za-z]*(?=\s|$)|\+\S)/.test(s), 'Force push is blocked. Make a new commit instead.'],
   [(s) => isPush(s) && /\s--no-verify\b/.test(s), 'Skipping the pre-push guard is blocked.'],
@@ -63,10 +76,67 @@ const ASK = [
   [(s) => /\bapi\.cloudflare\.com\b/.test(s) && mutates(s), 'Cloudflare API change. Owner approval needed.'],
 ];
 
-export function decide(command) {
+/** Git facts about a folder; null when it is not inside a repository. */
+function repo(dir) {
+  const run = spawnSync('git', ['-C', dir, 'rev-parse', '--path-format=absolute', '--git-common-dir', '--git-dir', '--abbrev-ref', 'HEAD'], { encoding: 'utf8' });
+  if (run.status !== 0) return null;
+  const [common, gitDir, branch] = run.stdout.trim().split('\n');
+  return { common, branch, main: common === gitDir };
+}
+
+/** The main checkout while other sessions have worktrees off it: the folder they all share. */
+function isSharedFolder(info) {
+  if (!info?.main) return false;
+  const list = spawnSync('git', ['--git-dir', info.common, 'worktree', 'list', '--porcelain'], { encoding: 'utf8' });
+  return (list.stdout.match(/^worktree /gm) ?? []).length > 1;
+}
+
+const SHARED = 'This changes the shared folder that other sessions are working in. Use your own worktree; owner approval needed here.';
+const disturbsSharedFolder = (sub, rest) =>
+  sub === 'switch' || sub === 'rebase'
+  || (sub === 'checkout' && !/\s--(?:\s|$)/.test(rest))
+  || (sub === 'stash' && !/^\s+(?:list|show)\b/.test(rest))
+  || (sub === 'clean' && !/\s(?:-[A-Za-z]*n[A-Za-z]*|--dry-run)(?:\s|$)/.test(rest))
+  || (sub === 'reset' && /\s--hard\b/.test(rest))
+  || ((sub === 'merge' || sub === 'pull') && !/\s--ff-only\b/.test(rest));
+
+/** Rules that depend on where a git command runs: `cd` and `git -C` are followed. */
+function decideGit(parts, cwd, projectDir) {
+  const project = repo(projectDir);
+  if (!project) return null;
+  let dir = cwd;
+  for (const s of parts) {
+    const cd = s.match(/^\(?\s*cd\s+(\S+)/);
+    if (cd) { dir = resolve(dir, cd[1].replace(/^~(?=\/|$)/, process.env.HOME ?? '~')); continue; }
+    const git = s.match(/^\(?\s*(?:\w+=\S*\s+)*git((?:\s+-[cC]\s+\S+|\s+--\S+)*)\s+([a-z][\w-]*)(.*)$/);
+    if (!git) continue;
+    const [, options, sub, rest] = git;
+    const target = options.match(/\s-C\s+(\S+)/);
+    const info = repo(target ? resolve(dir, target[1].replace(/^~(?=\/|$)/, process.env.HOME ?? '~')) : dir);
+    if (!info || info.common !== project.common) continue;
+    if (sub === 'commit' && /^(?:main|production)$/.test(info.branch)) {
+      return ['deny', `Committing on ${info.branch} is blocked. Work on a branch in your own worktree and open a PR.`];
+    }
+    if (disturbsSharedFolder(sub, rest) && isSharedFolder(info)) return ['ask', SHARED];
+  }
+  return null;
+}
+
+export function decide(command, cwd = process.cwd(), projectDir = process.env.CLAUDE_PROJECT_DIR || cwd) {
   const parts = segments(command);
   for (const [test, reason] of DENY) if (parts.some(test)) return ['deny', reason];
+  const git = decideGit(parts, cwd, projectDir);
+  if (git?.[0] === 'deny') return git;
   for (const [test, reason] of ASK) if (parts.some(test)) return ['ask', reason];
+  return git;
+}
+
+/** Hand edits (Edit/Write tools) to files that are generated or hold keys. */
+export function decideEdit(file) {
+  if (/(?:^|\/)public\/data\//.test(file)) {
+    return ['deny', 'public/data/ packs are generated. Change the source and run its npm script, then commit the manifest with the pack.'];
+  }
+  if (SECRET_FILE.test(` ${file}`)) return ['deny', 'Key files are edited by the owner only.'];
   return null;
 }
 
@@ -76,10 +146,13 @@ try {
 } catch {
   process.exit(0);
 }
-const command = input?.tool_input?.command;
-if (typeof command !== 'string') process.exit(0);
+const { command, file_path: file, notebook_path: notebook } = input?.tool_input ?? {};
+const cwd = typeof input?.cwd === 'string' ? input.cwd : process.cwd();
 
-const verdict = decide(command);
+let verdict = null;
+if (input?.tool_name === 'Bash' && typeof command === 'string') verdict = decide(command, cwd);
+else if (typeof (file ?? notebook) === 'string') verdict = decideEdit(resolve(cwd, file ?? notebook));
+
 if (verdict) {
   process.stdout.write(JSON.stringify({
     hookSpecificOutput: {

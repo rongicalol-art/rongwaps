@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import express from 'express';
-import type { AddressInfo } from 'node:net';
+import type { Context } from '../../server/env';
 import { parseFeedback, submitFeedback } from '../../server/feedback';
 
 const input = { id: '3f9b431e-a058-478b-bd3e-c49d06101ac1', message: '  Audio stopped  ', path: '/library' };
@@ -19,20 +18,16 @@ test('Feedback validates message, id and path at the API boundary', () => {
 
 test('Feedback saves before notifying; save failure, retry, and notification outage remain safe', async (t) => {
   t.mock.method(console, 'warn', () => {});
-  const values = { VITE_SUPABASE_URL: 'https://feedback-test.supabase.co',
-    VITE_SUPABASE_ANON_KEY: 'test-anon', RESEND_API_KEY: 'test-mail-key',
+  const values = { SUPABASE_URL: 'https://feedback-test.supabase.co',
+    SUPABASE_ANON_KEY: 'test-anon', RESEND_API_KEY: 'test-mail-key',
     FEEDBACK_EMAIL_FROM: 'Feedback <feedback@example.com>', FEEDBACK_EMAIL_TO: 'owner@example.com' };
-  const previous = new Map(Object.keys(values).map(key => [key, process.env[key]]));
-  Object.assign(process.env, values);
-  t.after(() => { for (const [key, value] of previous) { if (value === undefined) delete process.env[key]; else process.env[key] = value; } });
-  const originalFetch = globalThis.fetch;
+  const env: Context['env'] = { ...values };
   let dbError: object | null = null;
   let created = true;
   let mailStatus = 200;
   const calls: string[] = [];
   t.mock.method(globalThis, 'fetch', async (url: string | URL | Request, options?: RequestInit) => {
     const address = String(url);
-    if (address.startsWith('http://127.0.0.1')) return originalFetch(url, options);
     if (address.includes('/rpc/submit_feedback')) {
       calls.push('save');
       const saved = JSON.parse(String(options?.body));
@@ -50,15 +45,8 @@ test('Feedback saves before notifying; save failure, retry, and notification out
     assert.ok(mail.text.includes('Audio stopped'));
     return new Response('{}', { status: mailStatus });
   });
-  const app = express();
-  app.use(express.json());
-  app.post('/api/feedback', (req, res) => { res.locals.userId = 'test-user'; void submitFeedback(req, res); });
-  const server = app.listen(0, '127.0.0.1');
-  await new Promise<void>(resolve => server.once('listening', resolve));
-  t.after(() => new Promise<void>((resolve, reject) => server.close(error => error ? reject(error) : resolve())));
-  const endpoint = `http://127.0.0.1:${(server.address() as AddressInfo).port}/api/feedback`;
-  const send = (body: object = input) => fetch(endpoint, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer test-session' }, body: JSON.stringify(body) });
+  const send = (body: object = input) => submitFeedback({ env, report: () => {} }, new Request('https://app.test/api/feedback', { method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer test-session' }, body: JSON.stringify(body) }), { userId: 'test-user', token: 'test-session' });
 
   assert.equal((await send({ ...input, message: '' })).status, 400);
   assert.deepEqual(calls, []);
@@ -79,7 +67,7 @@ test('Feedback saves before notifying; save failure, retry, and notification out
   mailStatus = 200;
   assert.equal((await send()).status, 200);
   assert.deepEqual(calls.splice(0), ['save', 'email']);
-  delete process.env.RESEND_API_KEY;
+  delete env.RESEND_API_KEY;
   assert.equal((await send()).status, 200);
   assert.deepEqual(calls.splice(0), ['save']);
 });

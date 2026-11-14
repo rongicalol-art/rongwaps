@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import express from 'express';
-import type { AddressInfo } from 'node:net';
+import type { Context } from '../../server/env';
 import { parseReport, submitReport } from '../../server/reports';
 
 const target = '3f9b431e-a058-478b-bd3e-c49d06101ac1';
@@ -19,17 +18,13 @@ test('Report input is bounded, and a signed photo link loses its query string', 
 
 test('Reports save first; only "Not safe" emails the owner, and the daily limit reads as itself', async (t) => {
   t.mock.method(console, 'warn', () => {});
-  const values = { VITE_SUPABASE_URL: 'https://report-test.supabase.co', VITE_SUPABASE_ANON_KEY: 'test-anon',
+  const values = { SUPABASE_URL: 'https://report-test.supabase.co', SUPABASE_ANON_KEY: 'test-anon',
     RESEND_API_KEY: 'test-mail-key', FEEDBACK_EMAIL_FROM: 'App <app@example.com>', FEEDBACK_EMAIL_TO: 'owner@example.com' };
-  const previous = new Map(Object.keys(values).map(key => [key, process.env[key]]));
-  Object.assign(process.env, values);
-  t.after(() => { for (const [key, value] of previous) { if (value === undefined) delete process.env[key]; else process.env[key] = value; } });
-  const originalFetch = globalThis.fetch;
+  const env: Context['env'] = { ...values };
   let dbError: object | null = null;
   const calls: string[] = [];
   t.mock.method(globalThis, 'fetch', async (url: string | URL | Request, options?: RequestInit) => {
     const address = String(url);
-    if (address.startsWith('http://127.0.0.1')) return originalFetch(url, options);
     if (address.includes('/rpc/submit_report')) {
       calls.push('save');
       const saved = JSON.parse(String(options?.body));
@@ -45,15 +40,8 @@ test('Reports save first; only "Not safe" emails the owner, and the daily limit 
     assert.ok(mail.text.includes('Reporter: reporter-1'));
     return new Response('{}', { status: 200 });
   });
-  const app = express();
-  app.use(express.json());
-  app.post('/api/reports', (req, res) => { res.locals.userId = 'reporter-1'; void submitReport(req, res); });
-  const server = app.listen(0, '127.0.0.1');
-  await new Promise<void>(resolve => server.once('listening', resolve));
-  t.after(() => new Promise<void>((resolve, reject) => server.close(error => error ? reject(error) : resolve())));
-  const endpoint = `http://127.0.0.1:${(server.address() as AddressInfo).port}/api/reports`;
-  const send = (body: object) => fetch(endpoint, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer test-session' }, body: JSON.stringify(body) });
+  const send = (body: object) => submitReport({ env, report: () => {} }, new Request('https://app.test/api/reports', { method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer test-session' }, body: JSON.stringify(body) }), { userId: 'reporter-1', token: 'test-session' });
 
   assert.equal((await send({ target, reason: 'bad', place: 'chat' })).status, 400);
   assert.deepEqual(calls.splice(0), []);

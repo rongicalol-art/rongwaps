@@ -1,6 +1,6 @@
 # Ron's Mandarin Docs Index
 
-Single routing table. Read only the row that matches the task. `../AGENTS.md` (core rules) and `../.claude/rules/` (path-scoped rules) load automatically.
+Single routing table. Read only the row that matches the task. `../AGENTS.md` (core rules) loads automatically; `../.claude/rules/` (path-scoped rules) load automatically for Claude, and Codex reads the one matching its task.
 
 ## Task Routing
 
@@ -29,13 +29,13 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 ## Active Docs
 
 - `../README.md` — project overview and local development.
-- `../.claude/OWNER_PREFERENCES.md` — the owner's taste, learning rules and working style; tool-neutral brief for any AI.
+- `../.claude/OWNER_PREFERENCES.md` — the owner's taste and learning rules; the one home for design corrections, for any AI.
 - `DECISIONS.md` — recent architectural, interaction and design decisions that must stay stable.
 - `WIDGETS.md` — public shared widget catalog mirroring `src/lib/widgets/index.ts`.
 - `ARCHITECTURE.md` — source layout, module boundaries, ESLint import restrictions, component ownership.
 - `DATABASE_SCHEMA.md` — Supabase schema, tables, RPCs, RLS, pack-first fetch paths.
 - `DESIGN_TOKENS.md` — semantic design tokens (radius, tactile depth, shadows, focus rings, colors).
-- `API_SPEC.md` — Express API: protected lesson content, CDN media, retired grading endpoint.
+- `API_SPEC.md` — server API (Cloudflare Worker): protected lesson content, CDN media, the on-device dictionary, retired endpoints.
 - `GRAMMAR_LESSON_TEMPLATE.md` — interactive grammar lesson spec and data contracts.
 - `../content/lesson-tests/README.md` — TOCFL-style lesson tests: how a test runs, item kinds, content rules, pictures and audio pipeline.
 - `COURSE_EXAMPLES.md` — course example sentence packs, runtime matching, OCR export workflow, coverage audit.

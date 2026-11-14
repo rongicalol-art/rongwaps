@@ -7,7 +7,7 @@ For the night it happens, on a phone. Ordinary outages: `docs/RELEASING.md` → 
 Free-plan logs disappear within a day.
 
 - Supabase → Logs: Auth, API (PostgREST) and Postgres for the hours around it → download or screenshot.
-- Render → ronsmandarin → Logs and Events → screenshot.
+- Cloudflare → Workers → rons-mandarin → Logs and Deployments → screenshot.
 - Cloudflare → Workers → rons-mandarin-games → Logs → screenshot.
 - Sentry → issues for the same hours.
 - Write down: when you noticed, what you saw, who told you. Keep it in your notes app, not in GitHub.
@@ -67,15 +67,14 @@ Keep a record of every breach, even small ones: date, what, who, what you did.
 
 | Secret | Lives in | Replace |
 | --- | --- | --- |
-| Supabase `service_role` / secret API keys | Supabase → Project Settings → API Keys; Render env (if used); local `.env` | Create a new key, update Render, revoke the old one |
+| Supabase `service_role` / secret API keys | Supabase → Project Settings → API Keys; local `.env` (the site server holds none) | Create a new key, update each place, revoke the old one |
 | Supabase JWT signing key | Supabase → JWT Keys | Rotate (signs everyone out) |
 | Database password (`PRODUCTION_DATABASE_URL`, `STAGING_DATABASE_URL`) | Supabase → Database settings; GitHub secrets | Reset in Supabase, update both GitHub secrets |
 | Google sign-in client secret | Google Cloud → Credentials; Supabase → Authentication → Providers → Google | New secret in Google Cloud, paste into Supabase, delete the old one |
-| `RENDER_API_KEY` | Render → Account → API keys; GitHub secret | Create new, update GitHub, delete old |
 | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ANALYTICS_TOKEN` | Cloudflare → My Profile → API Tokens; GitHub secrets | Roll the token, update GitHub |
-| R2 keys (`R2_ACCESS_KEY_ID`/`R2_SECRET_ACCESS_KEY`, `BACKUP_R2_*`, materials token) | Cloudflare → R2 → API tokens; Render env; GitHub secrets; Mac `.env` | New token, update each place, delete old |
-| `RESEND_API_KEY` | Resend → API Keys; Render env | New key, update Render, delete old |
-| Sentry `SENTRY_AUTH_TOKEN`, DSN | Sentry → Auth tokens / Client keys; Render env | New token or key, update Render, revoke old |
+| R2 keys (`R2_ACCESS_KEY_ID`/`R2_SECRET_ACCESS_KEY`, `BACKUP_R2_*`, materials token) | Cloudflare → R2 → API tokens; GitHub secrets; Mac `.env` | New token, update each place, delete old |
+| `RESEND_API_KEY` | Resend → API Keys; Worker secret on `rons-mandarin` | New key, update the Worker secret, delete old |
+| Sentry `SENTRY_AUTH_TOKEN`, DSN | Sentry → Auth tokens / Client keys; GitHub secret `SENTRY_AUTH_TOKEN`, variable and Worker secret `SENTRY_DSN` | New token or key, update each place, revoke old |
 | `CLAUDE_CODE_OAUTH_TOKEN` | GitHub secret | Regenerate with `claude setup-token`, update GitHub |
 | Backup private key | Password manager; Mac `~/Library/Application Support/RonsMandarin/backup-key/` | Never rotate in a hurry: old backups need the old key. Ask Claude for a planned rotation |
 

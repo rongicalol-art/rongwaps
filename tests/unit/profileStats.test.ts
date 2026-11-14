@@ -11,6 +11,17 @@ test('streak stays alive yesterday, deduplicates days and uses Monday week', () 
   assert.equal(computeStreak([...events, { reviewedAt: local(15, 0) }], local(15)).streak, 4);
   assert.equal(computeStreak([], local(15)).streak, 0);
 });
+test('days the app was down (14 to 16 Nov 2026) do not break a streak, and are not counted', () => {
+  const november = (day: number) => ({ reviewedAt: +new Date(2026, 10, day, 12) });
+  const before = [11, 12, 13].map(november);
+  assert.equal(computeStreak(before, +new Date(2026, 10, 15, 12)).streak, 3, 'still alive during the outage');
+  assert.equal(computeStreak(before, +new Date(2026, 10, 17, 12)).streak, 3, 'the first day back is theirs to study');
+  assert.equal(computeStreak([...before, november(17)], +new Date(2026, 10, 17, 12)).streak, 4, 'continues, without the missed days');
+  assert.equal(computeStreak([...before, november(15), november(17)], +new Date(2026, 10, 17, 12)).streak, 5, 'studying offline that day still counts');
+  assert.equal(computeStreak(before, +new Date(2026, 10, 18, 12)).streak, 0, 'a missed day after the app was back ends it');
+  assert.equal(computeStreak([10, 11].map(november), +new Date(2026, 10, 17, 12)).streak, 0, 'a streak already broken before the outage stays broken');
+  assert.equal(computeStreak([], +new Date(2026, 10, 15, 12)).streak, 0);
+});
 test('future events excluded and Sunday belongs to the ending week', () => {
   const result = computeStreak([{ reviewedAt: local(18, 0) }, { reviewedAt: local(19) }], local(18));
   assert.equal(result.streak, 1);

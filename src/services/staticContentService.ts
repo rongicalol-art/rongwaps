@@ -49,9 +49,9 @@ export function contentUrl(path: string): string {
   return path.startsWith('/data/') ? `${CONTENT_BASE_URL}${path.slice('/data'.length)}` : path;
 }
 
-/** All content packs require a school session; keep in sync with server/index.ts. */
+/** All content packs require a school session; keep in sync with server/content.ts. */
 
-/** The app server sleeps after 15 idle minutes (Render free plan) and takes about a minute to wake: wait that long. */
+/** Longest wait for one content file on a slow connection before the request counts as failed. */
 const SERVER_WAKE_MS = 75_000;
 /** The browser's saved copy of a file answers within this; slower means nothing is saved and the request went to the server. */
 const SAVED_COPY_READ_MS = 1_000;
@@ -114,8 +114,8 @@ async function revalidateOrSavedCopy(path: string, signal: AbortSignal): Promise
 /** `fetch` for `/data/...` content; sends the session token for the gated lesson packs (same-origin only). */
 export async function fetchContent(path: string, init: RequestInit = {}): Promise<Response> {
   const headers = new Headers(init.headers);
-  if (PROTECTED_CONTENT.test(path) || path.startsWith('/api/dictionary/')) {
-    // A public content CDN would bypass Express's school-account check.
+  if (PROTECTED_CONTENT.test(path)) {
+    // A public content CDN would bypass the server's school-account check.
     if (!CONTENT_BASE_URL.startsWith('/') || CONTENT_BASE_URL.startsWith('//')) {
       throw new Error('Protected content must use the authenticated app origin');
     }
@@ -123,8 +123,8 @@ export async function fetchContent(path: string, init: RequestInit = {}): Promis
       const { data } = await supabase.auth.getSession();
       if (data.session) headers.set('Authorization', `Bearer ${data.session.access_token}`);
     }
-    // Packs use the browser's private HTTP cache (server sets the policy); API answers never do.
-    const request = () => fetch(contentUrl(path), { ...init, cache: path.startsWith('/api/') ? 'no-store' : init.cache, headers });
+    // Packs use the browser's private HTTP cache (the server sets the policy).
+    const request = () => fetch(contentUrl(path), { ...init, headers });
     const response = await request();
     if (response.status !== 429 || init.signal?.aborted) return response;
     // One quiet retry after the server's suggested wait (capped) before surfacing an error.

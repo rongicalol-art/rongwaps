@@ -28,7 +28,7 @@ function removeMaps(dir: string): number {
 }
 
 const { SENTRY_AUTH_TOKEN, SENTRY_ORG, SENTRY_PROJECT } = process.env;
-const release = process.env.RENDER_GIT_COMMIT;
+const release = process.env.APP_COMMIT;
 if (SENTRY_AUTH_TOKEN && SENTRY_ORG && SENTRY_PROJECT && release) {
   const cli = path.resolve('node_modules/.bin/sentry-cli');
   const assets = path.join(dist, 'assets');

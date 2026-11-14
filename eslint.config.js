@@ -109,6 +109,7 @@ export default [
     ignores: [
       'games/worker-configuration.d.ts',
       '.vite/**/*',
+      '**/.wrangler/**/*',
       'dist/**/*',
       'node_modules/**/*',
       'output/**/*',

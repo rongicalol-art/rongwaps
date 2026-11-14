@@ -4,8 +4,8 @@
  * not loaded yet, its old chunk is still on the server. Without this the
  * chunk 404s and staleBuildRecovery reloads the page mid-lesson.
  *
- * Runs last in `npm run build`. On Render it reads the live build's
- * /asset-manifest.json (RENDER_EXTERNAL_URL, or CARRY_OVER_FROM) and copies in
+ * Runs in `npm run build`. A release build reads the live build's
+ * /asset-manifest.json (CARRY_OVER_FROM, set by the Deploy workflow) and copies in
  * every asset a build served within the last 7 days. Anywhere else, or if the
  * live site is unreachable, it only writes this build's manifest. It never
  * fails the build. New service workers never precache carried files.
@@ -40,7 +40,7 @@ export async function carryOver(dist: string, origin: string | undefined, now = 
   const assetsDir = path.join(dist, 'assets');
   const own = new Set(readdirSync(assetsDir));
   const manifest: AssetManifest = {
-    commit: process.env.RENDER_GIT_COMMIT ?? null,
+    commit: process.env.APP_COMMIT ?? null,
     builtAt: now.toISOString(),
     assets: Object.fromEntries([...own].map((name) => [name, now.toISOString()])),
   };
@@ -48,8 +48,7 @@ export async function carryOver(dist: string, origin: string | undefined, now = 
   let bytes = 0;
   if (origin) {
     try {
-      // The live service may be asleep (Render Free): allow a cold start.
-      const response = await fetchWithTimeout(`${origin.replace(/\/+$/, '')}/asset-manifest.json`, 120_000);
+      const response = await fetchWithTimeout(`${origin.replace(/\/+$/, '')}/asset-manifest.json`, 30_000);
       if (!response.ok) throw new Error(`manifest ${response.status}`);
       const wanted = assetsToCarry(await response.json() as AssetManifest, own, now);
       const names = Object.keys(wanted);
@@ -83,7 +82,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.warn('carry-over: no dist/assets, nothing to do');
     process.exit(0);
   }
-  const origin = process.env.CARRY_OVER_FROM ?? process.env.RENDER_EXTERNAL_URL;
+  const origin = process.env.CARRY_OVER_FROM;
   const { carried, bytes } = await carryOver(dist, origin);
   const own = Object.keys(JSON.parse(readFileSync(path.join(dist, 'asset-manifest.json'), 'utf8')).assets).length - carried;
   console.log(`carry-over: ${own} own assets, ${carried} carried from ${origin ?? 'nowhere'} (${(bytes / 1048576).toFixed(1)} MB)`);

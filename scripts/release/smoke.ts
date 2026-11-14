@@ -4,7 +4,7 @@
  * right database, and still locks lesson content. Never signs in or writes.
  *
  *   tsx scripts/release/smoke.ts <baseUrl> --env production|staging
- *     [--commit <sha>]          wait (cold start + rollout) until /healthz reports it
+ *     [--commit <sha>]          wait (rollout) until /healthz reports it
  *     [--supabase-ref <ref>]    the entry bundle must use this Supabase project
  *     [--forbid-ref <ref>]      ...and never this one (staging must not reach production)
  */
@@ -36,8 +36,8 @@ async function get(url: string, init: RequestInit = {}): Promise<Response> {
   return fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(90_000), ...init, headers: { 'User-Agent': 'rongwaps-release-smoke', ...init.headers } });
 }
 
-/** Render Free sleeps; a rollout can take minutes. Wait for the expected build to answer. */
-async function waitForBuild(options: Options, minutes = 25): Promise<void> {
+/** A new version reaches every Cloudflare location within seconds; allow a few minutes. */
+async function waitForBuild(options: Options, minutes = 5): Promise<void> {
   const deadline = Date.now() + minutes * 60_000;
   let seen = '';
   while (Date.now() < deadline) {
@@ -48,8 +48,8 @@ async function waitForBuild(options: Options, minutes = 25): Promise<void> {
         seen = body.commit ?? 'unknown';
         if (body.ok && (!options.commit || body.commit === options.commit)) return;
       }
-    } catch { /* waking up */ }
-    await sleep(15_000);
+    } catch { /* not answering yet */ }
+    await sleep(5_000);
   }
   throw new Error(`/healthz did not report ${options.commit ?? 'ok'} within ${minutes} minutes (last seen ${seen || 'nothing'})`);
 }
@@ -98,6 +98,11 @@ export function checks(options: Options): Check[] {
       for (const path of ['/data/vocabulary/book-1.json', '/data/dictionary/manifest.json', '/%64ata/grammar/book-1.json', '//data/grammar/book-1.json']) {
         const response = await get(url(path));
         expect(response.status === 401, `${path}: ${response.status} (expected 401)`);
+      }
+      // Other spellings may be refused or simply not exist; they must never hand over a file.
+      for (const path of ['/data/vocabulary/book-1.json.br', '/assets/..%2fdata/vocabulary/book-1.json', '/assets/..%5Cdata/vocabulary/book-1.json', '/fonts/%2e%2e%2fdata%2fvocabulary%2fbook-1.json']) {
+        const response = await get(url(path));
+        expect(response.status === 401 || response.status === 404, `${path}: ${response.status} (expected 401 or 404)`);
       }
     }],
     ['service worker revalidates', async () => {

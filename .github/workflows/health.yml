@@ -2,13 +2,11 @@ name: Health
 
 # Every morning, a read-only look at production: database size against the free
 # 500 MB, public sign-ups against the cap, new reports and feedback since the
-# last good run, and (with CLOUDFLARE_ANALYTICS_TOKEN) Study together's Worker
-# requests against the free 100,000 a day. When something needs the owner, it
+# last good run, and (with CLOUDFLARE_ANALYTICS_TOKEN) the account's Worker
+# requests (the site server and Study together) against the free 100,000 a day. When something needs the owner, it
 # opens one "Health check" issue (or comments on the open one), so the GitHub
 # app on the phone notifies. Mondays add a sign-up summary. Quiet days do nothing.
 # "Not safe" reports don't wait for this: the server emails them at once.
-# Render's API doesn't report free-plan instance hours or build minutes, so those
-# come only from Render's own usage emails (docs/RELEASING.md → Free-tier limits).
 
 on:
   schedule:
@@ -74,7 +72,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Database ${size_mb} MB · sign-ups since ${SINCE}: ${signups} · public ${public}/${cap} (open: ${open}) · reports ${reports} (${unsafe} not safe) · feedback ${feedback}"
 
-      - name: Read Study together usage (Cloudflare, optional)
+      - name: Read Worker usage (Cloudflare, optional)
         id: cloudflare
         env:
           CLOUDFLARE_ANALYTICS_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_TOKEN }}
@@ -121,9 +119,9 @@ jobs:
             add "**${FEEDBACK} new feedback message(s).** Read them: \`select f.created_at, u.email, f.path, f.message from private.feedback f join auth.users u on u.id = f.user_id where f.created_at > '${SINCE}' order by f.created_at desc;\` (reply from your email)."
           fi
           if [ "$REQUESTS" = "unknown" ]; then
-            add "Couldn't read Study together usage from Cloudflare: check the CLOUDFLARE_ANALYTICS_TOKEN secret (Account Analytics: Read)."
+            add "Couldn't read Worker usage from Cloudflare: check the CLOUDFLARE_ANALYTICS_TOKEN secret (Account Analytics: Read)."
           elif [ -n "$REQUESTS" ] && [ "$REQUESTS" -ge 70000 ]; then
-            add "**Study together used ${REQUESTS} Worker requests** in the last day (free plan: 100,000 a day; past it, requests fail until 00:00 UTC). Options in docs/RELEASING.md → Free-tier limits."
+            add "**The site and Study together used ${REQUESTS} Worker requests** in the last day (free plan: 100,000 a day; past it, lessons stop loading until 00:00 UTC). Options in docs/RELEASING.md → Free-tier limits."
           fi
           if [ "$(date -u +%u)" = 1 ]; then
             add "Weekly: ${WEEK} new account(s) in 7 days; public accounts ${PUBLIC} of ${CAP} (sign-up open: ${OPEN})."

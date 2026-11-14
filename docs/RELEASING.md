@@ -11,18 +11,18 @@ feature branch ──PR──▶ main ──Release PR──▶ production
 
 | Step | What runs by itself |
 | --- | --- |
-| PR into `main` | CI: secret scan, migration safety, typecheck, lint, Worker checks, unit/content tests, build, size budgets; browser journeys when saving, sign-in, server or database change; backup self-test when migrations change |
-| Merge into `main` | CI again → **Deploy**: new migrations applied to staging, the staging Study together server and that exact commit deployed to staging, staging checked (right build, staging database only, content gated, noindex). **Release PR** updated |
-| Merge the Release PR | CI + browser journeys on `production` → **Deploy**: refuses if a migration isn't applied yet, deploys the Study together server, then the exact app commit, checks the live site, **rolls back automatically** and opens an issue if a check fails, tags the release with notes |
+| PR into `main` | CI: secret scan, migration safety, typecheck, lint, Worker checks (Study together and the site server), unit/content tests, build, size budgets; browser journeys when saving, sign-in, server or database change; backup self-test when migrations change |
+| Merge into `main` | CI again → **Deploy**: new migrations applied to staging, the staging Study together server deployed, that exact commit built and uploaded to staging, staging checked (right build, staging database only, content gated, noindex). **Release PR** updated |
+| Merge the Release PR | CI + browser journeys on `production` → **Deploy**: refuses if a migration isn't applied yet, deploys the Study together server, builds and uploads the exact app commit, checks the live site, **rolls back automatically** and opens an issue if a check fails, tags the release with notes |
 | Every night | **Backup** (02:30 Taiwan) with a restore proof; CI and journeys on `main` (03:00) |
-| Every morning | **Health** (09:30 Taiwan, read-only): opens or comments on one "Health check" issue when the database passes 400 MB, public sign-ups reach 90% of the cap, reports or feedback arrived since the last good run, or Study together passes 70,000 Worker requests a day (with `CLOUDFLARE_ANALYTICS_TOKEN`); Mondays add a sign-up summary. Run it by hand with *test* ticked to check it reaches your phone |
+| Every morning | **Health** (09:30 Taiwan, read-only): opens or comments on one "Health check" issue when the database passes 400 MB, public sign-ups reach 90% of the cap, reports or feedback arrived since the last good run, or the site and Study together pass 70,000 Worker requests a day (with `CLOUDFLARE_ANALYTICS_TOKEN`); Mondays add a sign-up summary. Run it by hand with *test* ticked to check it reaches your phone |
 | At once | **"Not safe" reports** are emailed to the owner by the server (Resend, the feedback settings) |
 
-Render auto-deploy stays off on both services: the Deploy workflow is the only deployer, so a rollback is never undone by an automatic redeploy.
+The site runs on Cloudflare Workers (`server/`, since 2026-11-14; before that Render, whose free plan suspended both sites mid-month). The Deploy workflow is the only deployer: nothing rebuilds on its own, so a rollback is never undone by an automatic redeploy. Each upload is a Worker *version* (the server code, the built site and its settings together), and a rollback puts an earlier version back.
 
 ## Release (phone)
 
-1. **Merge work into staging.** In the GitHub app, open the PR, check CI is green, merge. Staging updates in about 10 minutes: https://ronsmandarin-staging.onrender.com (first load can take ~1 minute while it wakes).
+1. **Merge work into staging.** In the GitHub app, open the PR, check CI is green, merge. Staging updates in about 10 minutes: https://rons-mandarin-staging.ronm222007.workers.dev
 2. **Try it on staging** with your account.
 3. **Database changes?** The Release PR says so. Then first: Actions → **Migrate production** → Run workflow (`ref` = `main`, type `production`). It takes a fresh backup, proves it restores, shows a dry run, applies, verifies.
 4. **Release:** merge the **Release PR** (`main` → `production`). Updates batch naturally: one Release PR carries everything merged since the last one. Learners get the new version on their next app open; open tabs keep working (previous week's code files stay on the server).
@@ -30,21 +30,22 @@ Render auto-deploy stays off on both services: the Deploy workflow is the only d
 
 The Release PR's **Staging** check stays yellow until Deploy has run that exact commit on staging (docs- or test-only changes reuse the running staging build). Don't merge it yellow.
 
-**Merged before migrating?** Deploy refuses ("Not applied: …") and the live site stays as it was. Run **Migrate production**, then Actions → the failed **Deploy** run → *Re-run failed jobs*. If Actions can't run at all, Render → ronsmandarin → *Manual Deploy* → *Deploy latest commit* after the migration.
+**Merged before migrating?** Deploy refuses ("Not applied: …") and the live site stays as it was. Run **Migrate production**, then Actions → the failed **Deploy** run → *Re-run failed jobs*. If Actions can't run at all, `scripts/release/manualRelease.sh` on the Mac does the same steps after the migration.
 
 Rules that keep this safe: migrations follow expand → migrate → contract (the previous client must keep working; CI blocks drops/renames without `-- migration-safety: contract <reason>`); never release on a red CI; one release at a time.
 
 ## Undo a release
 
 - **Automatic:** a failed live check after deploy restores the previous build and opens an issue.
-- **By hand:** Actions → **Roll back** → Run workflow (`production`, `previous`). About 1–2 minutes, then the same live checks. Render's dashboard (Deploys → Rollback) works too.
+- **By hand:** Actions → **Roll back** → Run workflow (`production`, `previous`). Under a minute, then the same live checks. Cloudflare's dashboard works too: Workers → rons-mandarin → Deployments → the earlier version → Rollback.
 - Rollback restores code only. The database stays as it is, which is safe because migrations are backward compatible.
-- Render's rollback works even when GitHub Actions can't run.
+- Cloudflare's rollback works even when GitHub Actions can't run. Cloudflare keeps the last 100 versions.
 - **After sign-up opened (6 Nov):** a build from before then has no age step and the old Terms. Roll back only to a release from 5 Nov (8c66d279) or later. If there is none, pause new sign-ups first (`public_cap = 0`, Public accounts below) and fix forward.
 - **Study together only:** `npx wrangler rollback --config games/wrangler.jsonc` on the Mac restores the previous Worker version (it asks which); the app keeps working with either.
+- **A learner on an app version from before 14 Nov** (an open tab that never reloaded) has no dictionary search until they reload: that version asked the old server to search, and search now runs on the device. Lessons and saved progress are unaffected.
 - Then fix forward: branch → PR into `main` → staging → Release PR.
 - **Hotfix** (staging holds unreleased work you don't want live): branch from `production`, PR into `production` (CI and journeys run), merge. Release PR opens a back-merge into `main` automatically from a `back-merge/production-…` copy; merge it.
-- **Never merge a PR whose head is `production`.** "Automatically delete head branches" deletes the head branch on merge, so that deletes the live branch and every later release and Migrate production fails (PR #74, 2026-11-04). If it happens: open the merged PR → **Restore branch**, or `git push origin <last production sha>:refs/heads/production` from the Mac (owner-typed; the guard blocks AI pushes to it), then set the Render production service's Branch back to `production` (Render falls back to `main` when its branch disappears). Keep that repo setting off: Settings → General → Pull Requests.
+- **Never merge a PR whose head is `production`.** "Automatically delete head branches" deletes the head branch on merge, so that deletes the live branch and every later release and Migrate production fails (PR #74, 2026-11-04). If it happens: open the merged PR → **Restore branch**, or `git push origin <last production sha>:refs/heads/production` from the Mac (owner-typed; the guard blocks AI pushes to it). Keep that repo setting off: Settings → General → Pull Requests.
 
 ## Restore data
 
@@ -71,7 +72,7 @@ Not in these backups: profile photo files (only their records), Study together c
 
 | Symptom | First place |
 | --- | --- |
-| Site down or slow | Render → ronsmandarin → Logs / Metrics / Events; Deploy run history |
+| Site down or slow | Cloudflare → Workers → rons-mandarin → Logs / Metrics / Deployments; Deploy run history. "Error 1027" on lessons means the free 100,000 Worker requests a day ran out (Free-tier limits below) |
 | Errors on learners' devices or the server | Sentry (filter by release = the commit) |
 | Sign-in or saving | Supabase → ChineseApp → Logs (auth, PostgREST) |
 | Study together | Cloudflare → Workers → rons-mandarin-games → Logs |
@@ -89,7 +90,7 @@ GitHub cannot lock branches on a free private repo, so the lock lives here:
 | --- | --- |
 | `.githooks/pre-push` (installed by `npm ci`) | pushes to `main` or `production` from any tool on a machine |
 | `.githooks/pre-commit` | commits containing credentials |
-| `.claude/hooks/guard.mjs` | AI sessions: protected/force pushes, hook bypass (denied); merges, hosted migrations, production DB commands, live Worker deploys, Render/Cloudflare/GitHub API changes (ask the owner) |
+| `.claude/hooks/guard.mjs` | AI sessions: protected/force pushes, hook bypass, commits on `main`/`production`, hand edits to `public/data/` or key files, printing key files (denied); merges, hosted migrations, production DB commands, live Worker deploys, Render/Cloudflare/GitHub API changes, and branch switches, stashes, cleans or non-fast-forward merges in the shared folder while other sessions have worktrees (ask the owner) |
 | Codex rules (`~/.codex/rules/default.rules`) | the same pushes (forbidden), merges and migrations (prompt) |
 | Deploy workflow | anything whose CI or journeys failed; production commits with unapplied migrations |
 
@@ -99,11 +100,11 @@ Owner-only emergency override for a direct push: `ALLOW_PROTECTED_PUSH=1 git pus
 
 | | Production | Staging |
 | --- | --- | --- |
-| Site | https://ronsmandarin.com | https://ronsmandarin-staging.onrender.com (noindex) |
+| Site | https://ronsmandarin.com | https://rons-mandarin-staging.ronm222007.workers.dev (noindex) |
 | Branch | `production` | `main` |
-| Render | `ronsmandarin` | `ronsmandarin-staging` |
+| Site Worker (`server/`) | `rons-mandarin` (`server/wrangler.jsonc`) | `rons-mandarin-staging` (`server/wrangler.staging.jsonc`) |
 | Supabase | ChineseApp `ylpzxpqyfaayavkvhikw` (Mumbai) | `zpljyjcbqkrelpdzvmqz`, synthetic accounts only |
-| Worker | `rons-mandarin-games` | `rons-mandarin-games-staging` |
+| Study together Worker (`games/`) | `rons-mandarin-games` | `rons-mandarin-games-staging` |
 | Sentry | on | off |
 
 Never copy production data or keys into staging.
@@ -116,49 +117,55 @@ Never copy production data or keys into staging.
 
 ## Free-tier limits to watch
 
-Figures from each provider's pricing page, checked 2026-11-05 (pre-launch review). Recheck before relying on them.
+Figures from each provider's pricing page, checked 2026-11-05 (pre-launch review); Cloudflare Workers rechecked 2026-11-14. Recheck before relying on them.
 
 | Service | Free limit | What learners see when it runs out | Watch |
 | --- | --- | --- | --- |
-| Render Free (both sites share it) | 750 instance hours, 5 GB outgoing bandwidth and 500 build minutes a month; sleeps after 15 min idle (≈1 min wake) | Without a card on file, both sites stop until the 1st. Out of build minutes: no fix can ship until the 1st | Render's usage emails (the API doesn't report these). Staging builds only when app code changed. A card with a spend limit turns overage into about $0.15/GB instead of an outage |
+| Cloudflare Workers Free: the site (`server/`) | Public files (the app's code, fonts, pictures, public pages): free and unlimited, no sleeping. **100,000 server requests a day** for the whole account, shared with Study together: each lesson-content file a browser has not saved yet, each feedback or report, and each screen address opened directly counts as one. 20,000 files and 25 MB a file per build (a build has about 3,700) | Past 100,000: lessons stop loading for everyone until 00:00 UTC (08:00 Taiwan); the landing page still opens | Health with `CLOUDFLARE_ANALYTICS_TOKEN` (alerts at 70,000). The free plan has no usage notifications. The fix is Workers Paid ($5 a month, 10 million requests) |
 | Supabase Free | 500 MB database, 1 GB file storage, 5 GB egress a month, 50,000 monthly active users; pauses after a week idle | Past a limit the project is restricted: saving progress and sign-in fail for everyone | Health (database size). Review history and photos are capped per account (20261106120000) |
-| Cloudflare Workers Free (Study together) | 100,000 requests a day, Durable Objects included in the free allowance | Study together stops until 00:00 UTC; lessons keep working | Health with `CLOUDFLARE_ANALYTICS_TOKEN`. The free plan has no usage notifications |
+| Cloudflare Workers Free: Study together (`games/`) | Its own 100,000 Durable Object requests a day, plus its share of the server requests above | Study together stops until 00:00 UTC; lessons keep working | Same Health check |
 | Cloudflare R2 | 10 GB storage | Uploads of audio or backups fail | Audio + backups (90 days) + scans |
-| GitHub Actions (private repo) | 2,000 minutes a month, then the budget set in Billing | Nothing ships, backs up or alerts (happened 2026-11-04) | `npm run gate` runs checks locally; set an Actions budget with alert emails |
+| GitHub Actions (private repo) | 2,000 minutes a month, then the budget set in Billing. Every staging and production deploy now builds the site here (several minutes each) | Nothing ships, backs up or alerts (happened 2026-11-04) | `npm run gate` runs checks locally; staging builds only when app code changed; set an Actions budget with alert emails. `scripts/release/manualRelease.sh` releases from the Mac when Actions can't |
 | Sentry Developer | 5,000 errors a month, 1 cron monitor | New crash reports are dropped silently | 5% of performance notes are sent; set a client-key rate limit and spike protection |
 
 ## Remaining one-time setup
 
 - [ ] Repository private (guards above replace GitHub's branch lock)
-- [ ] `production` branch at the live commit; Render production tracks `production`, staging tracks `main`; both auto-deploy off; health check `/healthz`
-- [ ] GitHub secrets: `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit), `RENDER_API_KEY`, `PRODUCTION_DATABASE_URL`, `STAGING_DATABASE_URL`, `BACKUP_R2_ACCESS_KEY_ID`, `BACKUP_R2_SECRET_ACCESS_KEY`, `CLAUDE_CODE_OAUTH_TOKEN`
-- [ ] GitHub variables: `PRODUCTION_SERVICE_ID`, `STAGING_SERVICE_ID`, `STAGING_URL`, `R2_ACCOUNT_ID`, `BACKUP_BUCKET`, `BACKUP_AGE_RECIPIENT`, `SENTRY_BACKUP_CRON_URL`; Actions allowed to create pull requests
+- [ ] `production` branch at the live commit
+- [ ] Cloudflare: `ronsmandarin.com` attached to the Worker `rons-mandarin` (Workers → rons-mandarin → Settings → Domains & Routes → Add → Route `ronsmandarin.com/*`), and a redirect rule sending `www.ronsmandarin.com` to it. The domain is attached in the dashboard, not in `server/wrangler.jsonc`, so the release token needs no access to the domain
+- [ ] Worker secrets on `rons-mandarin` (Settings → Variables and Secrets, type *Secret*): `RESEND_API_KEY`, `FEEDBACK_EMAIL_FROM`, `FEEDBACK_EMAIL_TO`, `SENTRY_DSN`. The first three also on `rons-mandarin-staging` if staging should send email. Deploys keep secrets
+- [ ] GitHub secrets: `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit), `SENTRY_AUTH_TOKEN` (source maps, optional), `PRODUCTION_DATABASE_URL`, `STAGING_DATABASE_URL`, `BACKUP_R2_ACCESS_KEY_ID`, `BACKUP_R2_SECRET_ACCESS_KEY`, `CLAUDE_CODE_OAUTH_TOKEN`
+- [ ] GitHub variables: `PRODUCTION_SUPABASE_ANON_KEY`, `STAGING_SUPABASE_ANON_KEY` (the public keys the builds use), `SENTRY_DSN`, `SENTRY_ORG`, `SENTRY_PROJECT`, `STAGING_URL`, `R2_ACCOUNT_ID`, `BACKUP_BUCKET`, `BACKUP_AGE_RECIPIENT`, `SENTRY_BACKUP_CRON_URL`; Actions allowed to create pull requests
 - [ ] R2 buckets `rongwaps-backups` (lifecycle + 7-day lock) and `rongwaps-materials`
-- [ ] Render production build secrets `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`; Sentry alert on new issues; backup cron monitor
+- [ ] Sentry alert on new issues; backup cron monitor
+- [ ] Supabase → staging project → Authentication → URL Configuration: the staging site address above in Site URL and Redirect URLs
+- [ ] Render: delete both web services once the Cloudflare site has run a week (they are suspended and unused)
 - [ ] Staging Google sign-in client; owner email in staging `private.beta_owner_emails`
 - [ ] First restore drill into a new project, timed
 - [ ] `scripts/release/backup/verify-key.sh` for the Mac and password-manager keys
 - [ ] Optional GitHub secret `CLOUDFLARE_ANALYTICS_TOKEN` (Account Analytics: Read) for the Health usage check
-- [x] Repo Settings → General: "Automatically delete head branches" off (it deleted `production` once, and Render then switched the production service to `main`; turned off 2026-11-08)
+- [x] Repo Settings → General: "Automatically delete head branches" off (it deleted `production` once; turned off 2026-11-08)
 
 # Configuration reference
 
 ## Build and start
 
-- Build: `npm ci && npm run build` (outputs `dist/` and `dist-server/server.js`; carries the previous week's code files when `RENDER_EXTERNAL_URL` is set)
-- Start: `npm start`
+- Build: `npm ci && npm run build` (outputs `dist/`: the site, the Brotli copies of every content pack, and Cloudflare's `_headers`; carries the previous week's code files when `CARRY_OVER_FROM` names the live site). `APP_ENV` (`production` or `staging`) and `APP_COMMIT` are set by the Deploy workflow
+- Run the built site as Cloudflare does: `npm start` (http://localhost:3000, `wrangler dev` with `server/wrangler.jsonc`)
+- Upload: `node scripts/release/cloudflare.ts deploy <config> <commit>` (the Deploy workflow; `manualRelease.sh` on the Mac)
 - Node version: `.nvmrc`
 
 ## Beta content trim and login gate
 
 - Full course packs and scans are bundled in `dist/data` so accounts with full-course grants can access all books and lessons, while the client and database gate non-granted accounts. `scripts/build/trimBetaContent.ts` can still be run manually if an asset-trimmed beta bundle is specifically desired.
-- The server (`server/index.ts`) serves those lesson packs and scans only with a valid Supabase bearer token (`Cache-Control: private`, 600/min per user); `staticContentService.fetchContent` sends the token and the book-page viewer loads scans as blobs. Keep the gated folder list in sync between the two files.
+- The server (`server/content.ts`) serves those lesson packs and scans only with a valid Supabase bearer token (`Cache-Control: private`, 1,200/min per learner); `staticContentService.fetchContent` sends the token and the book-page viewer loads scans as blobs. Keep the gated folder list in sync between the two files.
+- Cloudflare serves a file without running the server only when its address is on the public list in `server/wrangler.jsonc` (`run_worker_first`). `/data` is never on it, and an address that matches nothing on the list reaches the server, so the lock fails closed. `npm run server:test` runs the real rules in Cloudflare's local runtime; `tests/unit/serverAssets.test.ts` keeps the list in step with the build.
 - Probe after deploy: `curl -i https://<host>/data/vocabulary/book-1.json` must return 401; `/data/dictionary/manifest.json` must also return 401 without a token. Every `/data` pack is gated, dictionary included.
-- Use `curl --path-as-is` to check encoded mount names (`/%64ata/grammar/book-1.json`) and duplicate slashes (`//data/grammar/book-1.json`) also return 401 without a token. The gate normalizes the full request path before static-file serving.
+- Use `curl --path-as-is` to check encoded mount names (`/%64ata/grammar/book-1.json`) and duplicate slashes (`//data/grammar/book-1.json`) also return 401 without a token. The gate normalizes the full request path before serving any file.
 
 ## Decomposition runtime pack (V3 character breakdowns)
 
-- `public/data/decomposition-runtime/` ships with the app and is served only through the same authenticated `/data` gate (`server/index.ts` gates the whole directory). The published runtime pack is the default; set `VITE_DECOMPOSITION_RUNTIME=legacy` to roll the breakdowns back to the legacy service.
+- `public/data/decomposition-runtime/` ships with the app and is served only through the same authenticated `/data` gate (`server/content.ts` gates the whole directory). The published runtime pack is the default; set `VITE_DECOMPOSITION_RUNTIME=legacy` to roll the breakdowns back to the legacy service.
 - Produce the pack in two scripted steps; never hand-edit it: `npm run decomposition:pack:promote` verifies every shard against the candidate manifest checksums and requires cleared license reviews in `content/character-decomposition/license-reviews.json`; `npm run decomposition:pack:publish` copies the promoted pack into `public/data`.
 - The published manifest must read `"publishable": true`, `"distribution": "production"`, and a `licenseGate` with `"status": "approved"` and no open blockers. `RuntimePackLoader` refuses anything else in production, so a bad pack degrades to legacy instead of serving a candidate.
 - License: the pack derives from CHISE/CJKVI IDS (GPL-2.0-or-later), Make Me a Hanzi dictionary data (LGPL-3.0-or-later) and CNS11643 open data (OGDL 1.0), and is distributed under GPL-3.0-or-later. `NOTICE.txt` and `licenses/` ship inside the pack; the Terms page carries the user-facing credits. Keep both in sync when sources change.
@@ -168,13 +175,11 @@ Figures from each provider's pricing page, checked 2026-11-05 (pre-launch review
 
 Client (build-time, public): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`; optional `VITE_CONTENT_BASE_URL`, `VITE_AUDIO_BASE_URL`, `VITE_SENTRY_DSN`, `VITE_DECOMPOSITION_RUNTIME` (`legacy` rolls the breakdowns back; the published runtime pack is the default), `VITE_DECOMPOSITION_RUNTIME_PACK_BASE_PATH` (defaults to `/data/decomposition-runtime` in production builds).
 
-Server (secret): `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`.
+Server (`server/env.ts`): public values in `server/wrangler*.jsonc` (`APP_ENV`, `SUPABASE_URL`, `GAMES_SERVER_URL`); `COMMIT` and `SUPABASE_ANON_KEY` passed with each deploy; Worker secrets `RESEND_API_KEY`, `FEEDBACK_EMAIL_FROM`, `FEEDBACK_EMAIL_TO`, `SENTRY_DSN`. `npm run dev` reads the same names from `.env` (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` for the two Supabase values).
 
-Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see real IPs).
+Error tracking: the server reports to the same Sentry project as the browser (`SENTRY_DSN`; never on staging), tagged with the release (the commit). Build-time secrets `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` (production only) upload hidden source maps for readable stack traces; `scripts/build/uploadSourceMaps.ts` then deletes every map from `dist`.
 
-Error tracking: the server reports to the same Sentry project as the browser (`SENTRY_DSN`, falling back to `VITE_SENTRY_DSN`; never on staging), tagged with the release (`RENDER_GIT_COMMIT`). Build-time secrets `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` (production only) upload hidden source maps for readable stack traces; `scripts/build/uploadSourceMaps.ts` then deletes every map from `dist`.
-
-`TYPESAFE_API_KEY` is used only by local/CI Jev content-review tools, not the deployed app server. Azure Speech credentials are not used. Remove obsolete `TYPESAFE_API_KEY`, `JEV_DAILY_LIMIT`, `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` settings from existing web-service environments; removing them from the Blueprint does not confirm deletion from an existing service.
+`TYPESAFE_API_KEY` is used only by local/CI Jev content-review tools, not the deployed app server. Azure Speech credentials are not used. 
 
 ## Supabase dashboard
 
@@ -201,7 +206,7 @@ Owner steps to open sign-up, in order (the release with #77 and #79 and the `202
 2. Supabase production → Authentication → Hooks: *Before User Created* `private.before_school_beta_signup` and *Custom Access Token* `private.school_beta_access_token_hook` both on; Sign In / Providers: Email off.
 3. Production SQL editor: `update private.signup_settings set public_open = true, updated_at = now();`
 4. Sign up with a personal Gmail on ronsmandarin.com (a private window): the age step, then the app. Then `select private.public_account_count();` should say 1.
-5. On or after 6 Nov, redeploy production once (Render → ronsmandarin → Manual Deploy → Deploy latest commit) so the prebuilt landing and About pages carry the new wording for search engines; again on or after 14 Nov is optional.
+5. On or after 6 Nov, redeploy production once (a release, or Actions → Deploy → re-run) so the prebuilt landing and About pages carry the new wording for search engines; again on or after 14 Nov is optional.
 6. Each morning: the Health issue. Raise `public_cap` (300) in steps as it suggests.
 
 **Launch week checklist** (owner; updated 2026-11-05 for opening on 6 Nov):
@@ -210,7 +215,7 @@ Owner steps to open sign-up, in order (the release with #77 and #79 and the `202
 | --- | --- |
 | Thu 5 Nov, night | Release #77 + #79: migration `20261106120000` on production (Migrate production, or the SQL editor), the Study together server, then the app. Steps 1–4 above. Repo Settings → General: untick "Automatically delete head branches". GitHub Billing when you can |
 | Fri 6 Nov | Promote. Watch the Health issue and "Not safe" emails. Redeploy once (step 5) |
-| 7–13 Nov | Render → Billing: hours, bandwidth (5 GB a month), build minutes; usage emails reach your phone. Sentry: client-key rate limit (about 100 an hour) and spike protection. Render env: the three feedback email settings exist; send one test feedback. `verify-key.sh` for both key copies, then fetch and restore-check one backup. Run Health once with *test* ticked. Supabase JWT expiry 900 s with a higher token-refresh rate limit, set together |
+| 7–13 Nov | Cloudflare → Workers → Overview: requests a day against 100,000. Sentry: client-key rate limit (about 100 an hour) and spike protection. Worker secrets: the three feedback email settings exist; send one test feedback. `verify-key.sh` for both key copies, then fetch and restore-check one backup. Run Health once with *test* ticked. Supabase JWT expiry 900 s with a higher token-refresh rate limit, set together |
 | Sat 14 Nov | The new Terms and Privacy bind accounts made before 6 Nov. Morning: Health issue |
 
 Once open, accounts refused for not being Google or not verified see "Sign in with a Google account whose email is verified" (`google_only:`). `school_beta_only:` reads "Use your s…@stu.edu.tw account" before 6 Nov and "closed to new sign-ins for now" after it (the emergency stop). Reports older than 12 months are deleted daily at 03:10 Taiwan (`delete-old-reports` cron job).
@@ -263,7 +268,7 @@ Grant an owner exception only after the owner explicitly supplies the exact Goog
 
 Local security tests: use a disposable Supabase Postgres container, clone its initialized `postgres` database into `school_beta_test`, copy the three migrations into the container, then run `tests/database/schoolBetaAccess.test.sql` with psql's `migration`, `course_migration` and `claims_migration` variables pointing to `20261016015445`, `20261018154836` and `20261101120000`. Where creating a database is impossible (some sandboxes), run a copy against the throwaway container's own `postgres` database and delete the container afterwards. The fixture refuses other database names and never uses real user progress.
 
-After `npm run build`, run `python3 tests/production/schoolBetaSmoke.py` to exercise the real Express gate with canonical, encoded, duplicate-slash and traversal paths using both GET and HEAD. It starts a temporary server and does not sign in or write progress.
+`npm run server:test` exercises the gate in Cloudflare's local runtime with canonical, encoded, duplicate-slash and traversal paths using both GET and HEAD, over a small made-up site with synthetic accounts. To check a real build: `npm run build`, `npm start`, then `node scripts/release/smoke.ts http://127.0.0.1:3000 --env production` (signed out; it never writes).
 
 Remaining content exposure: every `/data` pack (lesson, grammar, readings, scans, dictionary, decomposition, memory hooks and other reference packs) requires a school session. Recorded audio remains on the public R2 CDN. School-only authentication does not make those R2 URLs private, nor revoke files previously downloaded. Their protection is a separate content-delivery task.
 
@@ -326,7 +331,8 @@ Before publication, run `HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scri
 ## Performance notes
 
 - Lesson packs (`/data/...`) are `private` browser-cached: hashed names for a year, others revalidate. Never `public` (Cloudflare must not store gated content).
-- A sleeping Render Free server takes about a minute to answer. While a learner is signed in, manifests read the browser's saved copy first, then ask the server for a newer one; after 4 s without a full answer the saved copy is used and the server's reply refreshes it for next time (`revalidateOrSavedCopy` in `src/services/staticContentService.ts`); a refetch after a deploy removed a listed part always asks the server. So a returning learner's home screen opens in about 5 s while the server wakes. Content requests wait up to 75 s before failing, and the Books skeleton says "Waking up. This can take a minute." after 5 s. First-time visitors still wait for the wake.
+- The server never sleeps (Cloudflare Workers), but a learner's connection can be slow. While a learner is signed in, manifests read the browser's saved copy first, then ask the server for a newer one; after 4 s without a full answer the saved copy is used and the server's reply refreshes it for next time (`revalidateOrSavedCopy` in `src/services/staticContentService.ts`); a refetch after a deploy removed a listed part always asks the server. Content requests wait up to 75 s before failing, and the Books skeleton says "Still loading. The connection is slow." after 5 s.
+- The dictionary runs on the device (`src/services/dictionaryEngine.ts` in a worker): no server searches. Tapping a word reads one small dictionary shard; the first search downloads the search index (about 4 MB, kept by the browser until the index changes), while the common-words pack answers at once. An idle dictionary worker is closed after 5 minutes to free memory.
 - Study packs ship same-lesson examples only; other-lesson examples load via "Show more" from `flashcard-extras`. `npm run perf:check` enforces size budgets (study part ≤ 30 kB Brotli, book page ≤ 250 kB).
 - Book pages: `npm run book-pages:recompress` (1100px, q72; needs `cwebp`/`dwebp`, skips already-small pages).
 - Audio CDN (optional): put the `vocabulary-audio` bucket behind a CDN/Cloudflare R2 custom domain and set `VITE_AUDIO_BASE_URL` to its origin at build time. Files already have content-hashed names, so use long immutable caching.
@@ -340,7 +346,7 @@ Signed-in students see who is studying each lesson (faces on Books tiles, "N her
 ## Ownership and transport
 
 - `shared/lobby.ts` owns validated Lobby frames; `shared/quizRace.ts` owns selection, seats, rounds, progress and expiry. A room has at most six players. Starting requires at least two players and every reserved seat to be connected. Between rounds the host can remove a player: their socket closes with code 4003, their seat is freed, and `room.removed` stops them rejoining that room.
-- `shared/accessToken.ts` (shared with Express) verifies Supabase JWT signatures, issuer, audience, authenticated role, anonymous status and expiry against project JWKS. Concurrent key fetches coalesce; imported keys are cached for 10 minutes and unknown key IDs can refresh at most once per minute. Signing-key outages return retryable 503 responses. The school token hook remains the beta-access authority; user-editable metadata is not authorization.
+- `shared/accessToken.ts` (shared with the site server) verifies Supabase JWT signatures, issuer, audience, authenticated role, anonymous status and expiry against project JWKS. Concurrent key fetches coalesce; imported keys are cached for 10 minutes and unknown key IDs can refresh at most once per minute. Signing-key outages return retryable 503 responses. The school token hook remains the beta-access authority; user-editable metadata is not authorization.
 - `games/lobby.ts` is one hibernating SQLite Durable Object (`main`). Presence lives in socket attachments and starts hidden until the privacy preference arrives; an in-memory index (by account and by chat channel) is rebuilt from them after each wake and by every maintenance alarm, so a chat line reaches only its channel's subscribers and a mention, cheer, invite or card only its recipients. Presence changes go out at most once every 2 seconds (a trailing timer, not a billed alarm); unchanged frames are suppressed per socket. Everyone receives compact lesson counts and four global face samples, ordered longest-present first; each lesson list carries its first 30 people (the count stays exact). The Online list is a snapshot of at most 100 people (this lesson first, then the most recently active), sent when the social panel opens and on request (`roster`, at most every 3 seconds), never streamed. Open-room listings (newest 20, reused for 30 seconds unless a listing changes) go only to open panels for current clients (`sub` with `v: 2`) and to every subscribed socket for older ones. Maintenance (stale sockets, expired rows) runs every 5 minutes while anyone is connected. Lobby tickets are rate-limited inside the Lobby (30 burst, one per 2 seconds), saving the account-object request. The lobby admits 2,000 active connections (`LOBBY_CAPACITY`, measured in `docs/reports/scale-audit.md`).
 - Global chat uses channel `0`; lesson channels use their existing lesson keys. Chat shows the last 50 messages **per channel** for 24 hours. Expired chat, tickets and listings are removed by alarms, including after everybody leaves. Reports deduplicate per reporter/message and retain at most 1,000 rows for 30 days. With no connections, cleanup runs hourly. Chat requires a subscription to its channel. Text is capped at 300 Unicode characters, controls/bidi overrides are stripped, and markup renders as plain text. Chat limits persist by account across reconnects: one message/second, five/10 seconds, and no identical repeat within 30 seconds. Other limits: one cheer/3 seconds, ten invite batches/minute, plus a socket token bucket. Muting is a local notification preference.
 - Mentions use selected account IDs rather than typed names. The server checks visible classmates or recent channel authors, and active room members for party chat. A bounded 30-item inbox and message snapshots live for 24 hours; read state and delivery deduplication survive reconnects. Party delivery uses a room outbox with five-second retries; room membership is checked before private previews are replayed. Opening a lesson mention follows its chat without changing study presence. Party mentions open the current room or an authorized message snapshot; unavailable rooms show a fallback. Mute suppresses live alerts.
@@ -361,13 +367,13 @@ Signed-in students see who is studying each lesson (faces on Books tiles, "N her
 
 ## Setup status
 
-The Worker needs a redeploy for this version (new `LOBBY` binding, migration `v2`, `SUPABASE_URL` var). Render's `GAMES_SERVER_URL` stays the same. Persisted rooms from the previous game are rejected and reclaimed rather than interpreted as quiz races. A two-account production check remains a launch step.
+The Worker needs a redeploy for this version (new `LOBBY` binding, migration `v2`, `SUPABASE_URL` var). The site server's `GAMES_SERVER_URL` stays the same. Persisted rooms from the previous game are rejected and reclaimed rather than interpreted as quiz races. A two-account production check remains a launch step.
 
 For a fresh checkout:
 
 1. Inspect `wrangler --help`, `wrangler types --help`, `wrangler dev --help` and `wrangler deploy --help` through the project-local binary. Verify script flags against that version.
 2. Run `npm run games:types`, then `npm run games:check`. Generated binding declarations are ignored; regenerate them for every fresh checkout and binding change.
-3. For local development, run the normal app on localhost:3000 and the Worker on localhost:8787. Override the Worker's `APP_ORIGIN` to exactly `http://localhost:3000` using the installed CLI's documented variable override. The Express development configuration defaults `GAMES_SERVER_URL` to localhost:8787. Signed-out dev mode has no token, so study together stays off there.
+3. For local development, run the normal app on localhost:3000 and the Worker on localhost:8787. Override the Worker's `APP_ORIGIN` to exactly `http://localhost:3000` using the installed CLI's documented variable override. The development server defaults `GAMES_SERVER_URL` to localhost:8787. Signed-out dev mode has no token, so study together stays off there.
 4. For production, keep `APP_ORIGIN=https://ronsmandarin.com`, verify the authenticated member's Workers deployment role, then `npm run games:deploy`. The client obtains the public origin from `/api/games/config`; no rebuild or custom game domain is required.
 
 Without `GAMES_SERVER_URL` (or when the Worker is down) every social element stays hidden and lessons keep working.
