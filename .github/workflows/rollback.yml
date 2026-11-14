@@ -1,7 +1,7 @@
 name: Roll back
 
-# Owner-run undo button (Actions → Roll back → Run workflow). Restores the
-# previous Render build in about a minute; the database is untouched, so this
+# Owner-run undo button (Actions → Roll back → Run workflow). Puts the
+# previous Cloudflare version back within seconds; the database is untouched, so this
 # is safe whenever the release's migrations were backward compatible (CI
 # enforces that). Data recovery is a different procedure: docs/RELEASING.md.
 on:
@@ -12,8 +12,8 @@ on:
         type: choice
         options: [production, staging]
         default: production
-      deploy:
-        description: 'Render deploy id to restore, or "previous"'
+      version:
+        description: 'Cloudflare version id to restore, or "previous"'
         required: true
         default: previous
 
@@ -26,18 +26,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.R2_ACCOUNT_ID }}
       GH_TOKEN: ${{ github.token }}
-      SERVICE: ${{ inputs.target == 'production' && vars.PRODUCTION_SERVICE_ID || vars.STAGING_SERVICE_ID }}
+      CONFIG: ${{ inputs.target == 'production' && 'server/wrangler.jsonc' || 'server/wrangler.staging.jsonc' }}
       SITE: ${{ inputs.target == 'production' && 'https://ronsmandarin.com' || vars.STAGING_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+      - run: npm ci --ignore-scripts
       - name: Roll back
         id: rollback
-        run: node scripts/release/render.ts rollback "$SERVICE" "${{ inputs.deploy }}"
+        run: node scripts/release/cloudflare.ts rollback "$CONFIG" "${{ inputs.version }}"
       - name: Check the site
         run: |
           if [ "${{ inputs.target }}" = production ]; then

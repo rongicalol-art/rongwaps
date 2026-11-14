@@ -49,7 +49,7 @@ export function CurriculumSkeleton({ hasStarterLesson = false }: CurriculumSkele
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="w-full overflow-hidden"
           >
-            <p className="pb-4 text-center text-sm font-bold text-ui-muted-strong">Waking up. This can take a minute.</p>
+            <p className="pb-4 text-center text-sm font-bold text-ui-muted-strong">Still loading. The connection is slow.</p>
           </motion.div>
         )}
       </AnimatePresence>

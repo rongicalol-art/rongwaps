@@ -25,7 +25,7 @@ export function headersFile(appEnv: string | undefined): string {
     // The shell files are checked on every visit so a release reaches open browsers.
     ...[...REVALIDATED_FILES].map((name) => rule(`/${name}`, { 'Cache-Control': 'no-cache' })),
     // The Cloudflare address of the live site is for release checks only; search engines get the real one.
-    ...(appEnv === 'production' ? [rule('https://:worker.workers.dev/*', { 'X-Robots-Tag': 'noindex' })] : []),
+    ...(appEnv === 'production' ? [rule('https://:worker.:account.workers.dev/*', { 'X-Robots-Tag': 'noindex' })] : []),
   ].join('\n\n') + '\n';
 }
 

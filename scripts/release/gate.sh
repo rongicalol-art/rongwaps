@@ -47,6 +47,8 @@ check jev-lint npm run jev:lint
 # Placeholders so the client bundle builds, as in CI; never real keys.
 check build env VITE_SUPABASE_URL=https://placeholder.supabase.co VITE_SUPABASE_ANON_KEY=placeholder-anon-key npm run build
 check perf npm run perf:check
+check server-check npm run server:check
+check server-test npm run server:test
 
 journeys='^(src/services|src/store|src/hooks|src/utils/sync|src/screens/auth|server|supabase|tests/e2e)/|^(playwright\.config\.ts|package-lock\.json)$'
 backup='^(supabase|scripts/release/backup)/|^\.github/workflows/backup\.yml$'

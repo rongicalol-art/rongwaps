@@ -10,6 +10,17 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-14 — The site runs on Cloudflare Workers; the dictionary runs on the device
+
+- Chosen:
+  - The backend is one Cloudflare Worker (`server/worker.ts`) in front of the built site as static assets. Cloudflare serves the public files itself (free, unlimited, never asleep); the Worker runs for lesson content under `/data` (school accounts only), the small API (feedback, reports, games config, `/healthz`) and addresses that are not files. Express, the Node server and `render.yaml` are gone.
+  - Every route is one function from `Request` to `Response` (`server/app.ts`) with its settings passed in (`server/env.ts`), so the Worker, `npm run dev` and the tests run the same code.
+  - Public files are an explicit list (`run_worker_first` in `server/wrangler.jsonc`: everything goes to the Worker except the listed public paths). `/data` is never listed, and an address that matches nothing reaches the Worker, which normalizes it before the gate. `npm run server:test` proves it in Cloudflare's local runtime.
+  - Dictionary search, exact rows, course cards and examples run in a browser worker (`src/services/dictionaryEngine.ts`) over the same content packs. There is no `/api/dictionary`.
+  - The Deploy workflow builds the site and uploads it (`scripts/release/cloudflare.ts`); a rollback restores an earlier Worker version. The live domain is attached to the Worker in the dashboard, not in the config, so the release token needs no access to the domain.
+- Reason: Render's free plan suspended both sites on 2026-11-14 until the end of the month, and the owner has no budget. Cloudflare's free plan has no traffic cap for files and no sleeping, and the project already used it (domain, audio, Study together). Its limits shaped the rest: about 10 ms of CPU and 128 MB per request rule out holding an 11 MB search index on the server, and 100,000 Worker requests a day (shared with Study together) is the number to watch. Moving search to the device costs the learner one download of about 4 MB on their first search and nothing after it.
+- Affects: `server/`, `src/services/{dictionaryApi,dictionaryEngine,dictionary.worker}.ts`, `scripts/build/siteHeaders.ts`, `scripts/release/{cloudflare,smoke}.ts`, `scripts/release/manualRelease.sh`, `.github/workflows/{deploy,rollback,ci,health}.yml`, `tests/server/runtime.mjs`, `docs/{RELEASING,API_SPEC,TESTING}.md`.
+
 ### 2026-11-06 — Dictionary meanings carry word types (learner words)
 
 - Chosen: every CC-CEDICT sense of the learner words (book words plus TBCL/HSK level words, ~17k readings) gets one word type from the book's set (N, Name, V, Vs, Vaux, Adv, M, Det, Num, Prep, Conj, Ptc, Ph); the text is never rewritten. Codex tags them with Wiktionary (kaikki.org) and the book's tags as evidence; `scripts/dictionary/checkPos.ts` flags disagreements, a stronger Codex pass reviews flags plus a sample, and the owner spot-checks before shipping. The reviewed source is `content/dictionary/posTags.json`; `npm run dictionary:pos:build` ships `public/data/dictionary-pos/` (64 shards by word hash). Each entry holds a checksum of its senses, so a dictionary update switches stale tags off. The word page groups senses by type (joining the book's group of the same type); search rows show the first sense's type, from the server only (the phone slice stays under its budget).
