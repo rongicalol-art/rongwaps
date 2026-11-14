@@ -22,14 +22,28 @@ const REPO = 'rongicalol-art/rongwaps';
 const STAGING_URL = 'https://rons-mandarin-staging.ronm222007.workers.dev';
 const WRANGLER = fileURLToPath(new URL('../../node_modules/.bin/wrangler', import.meta.url));
 
-if (process.env.ENV_FILE) {
-  for (const line of readFileSync(process.env.ENV_FILE, 'utf8').split('\n')) {
-    const match = /^\s*(?:export\s+)?RENDER_API_KEY\s*=\s*(.*)$/.exec(line);
-    if (match) process.env.RENDER_API_KEY = match[1].trim().replace(/^(['"])(.*)\1$/, '$2');
-  }
+// The key may sit in the file under a slightly different name; only names are ever reported, never values.
+let renderNames: string[] = [];
+if (process.env.ENV_FILE && !process.env.RENDER_API_KEY) {
+  const entries = readFileSync(process.env.ENV_FILE, 'utf8').split('\n')
+    .map((line) => /^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/.exec(line))
+    .filter((match): match is RegExpExecArray => Boolean(match))
+    .map((match) => [match[1], match[2].trim().replace(/^(['"])(.*)\1$/, '$2')] as const);
+  renderNames = entries.filter(([name]) => /render/i.test(name)).map(([name]) => name);
+  const found = entries.find(([name, value]) => name === 'RENDER_API_KEY' && value) ?? entries.find(([, value]) => /^rnd_[A-Za-z0-9]{20,}$/.test(value));
+  if (found) process.env.RENDER_API_KEY = found[1];
 }
 const renderKey = process.env.RENDER_API_KEY;
-if (!renderKey) throw new Error('RENDER_API_KEY is not set (Render → Account settings → API keys), or pass ENV_FILE=<path to .env>');
+if (!renderKey) {
+  console.error([
+    'No Render API key found.',
+    process.env.ENV_FILE ? `Names mentioning Render in ${process.env.ENV_FILE}: ${renderNames.join(', ') || 'none'}.` : '',
+    'Make one at Render → Account Settings → API Keys → Create API Key, then run:',
+    '  read -s RENDER_API_KEY && export RENDER_API_KEY && node scripts/release/moveSettingsFromRender.ts',
+    '(paste the key and press Enter; nothing shows while you paste).',
+  ].filter(Boolean).join('\n'));
+  process.exit(1);
+}
 
 const gh = (args: string[], input?: string) => execFileSync('gh', [...args, '--repo', REPO], { encoding: 'utf8', input, stdio: [input === undefined ? 'ignore' : 'pipe', 'pipe', 'inherit'] }).trim();
 
