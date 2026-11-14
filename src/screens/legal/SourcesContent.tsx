@@ -10,6 +10,17 @@ const SUMMARY = [
   '權利人如有疑慮，請來信聯絡，我們會儘速處理。',
 ];
 
+/**
+ * The ISC license asks that its notice travel with the material. The Chinese
+ * Lexicon repository has no license file: its package file names the ISC
+ * license and Peter Olson as author, so the standard notice carries that name.
+ */
+const CHINESE_LEXICON_NOTICE = [
+  'Copyright (c) Peter Olson',
+  'Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.',
+  'THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.',
+];
+
 function Ext({ href, children }: { href: string; children: ReactNode }) {
   return (
     <a href={href} className={legalLinkClass} target="_blank" rel="noreferrer">
@@ -86,6 +97,20 @@ export function SourcesContent() {
               Unihan © Unicode, Inc. and CJKlib). The generated pack is distributed under{' '}
               <Ext href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-or-later</Ext>; full license texts and
               notices ship with it, and the derivation tooling is available on request.
+            </>,
+            <>
+              Sound parts (the part of a character that gives its sound) draw on the{' '}
+              <Ext href="https://github.com/peterolson/chinese-lexicon">Chinese Lexicon</Ext> by Peter Olson, the data
+              behind <Ext href="https://www.dong-chinese.com/wiki">Dong Chinese</Ext> (ISC license, as stated in the
+              project's package file), and on the analysis file of the CJKVI IDS project above.
+              <details className="mt-2">
+                <summary className={`${legalLinkClass} w-fit cursor-pointer text-sm`}>ISC license notice</summary>
+                <div className="mt-2 flex flex-col gap-2 text-sm font-semibold leading-relaxed text-ui-muted-strong">
+                  {CHINESE_LEXICON_NOTICE.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
+              </details>
             </>,
             <>
               Stroke order animation: <Ext href="https://hanziwriter.org">Hanzi Writer</Ext> by David Chanin (MIT).
