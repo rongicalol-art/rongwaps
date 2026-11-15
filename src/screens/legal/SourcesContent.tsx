@@ -99,7 +99,7 @@ export function SourcesContent() {
               notices ship with it, and the derivation tooling is available on request.
             </>,
             <>
-              Sound parts (the part of a character that gives its sound) draw on the{' '}
+              Sound parts (the part of a character that gives its sound) and the pieces named in memory hooks draw on the{' '}
               <Ext href="https://github.com/peterolson/chinese-lexicon">Chinese Lexicon</Ext> by Peter Olson, the data
               behind <Ext href="https://www.dong-chinese.com/wiki">Dong Chinese</Ext> (ISC license, as stated in the
               project's package file), and on the analysis file of the CJKVI IDS project above.
