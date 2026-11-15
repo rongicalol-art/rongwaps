@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "23ed4fca583c2dda",
+  "totalCount": 2945,
+  "shardCount": 1,
+  "shards": [
+    {
+      "shard": 0,
+      "count": 2945,
+      "path": "/data/word-hooks/words.json",
+      "sha256": "23ed4fca583c2dda1af632ae2c1c889be9e4e7458e9632ef1e7b47b7be71c31e",
+      "bytes": 536076
+    }
+  ]
+}

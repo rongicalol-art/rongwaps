@@ -9,7 +9,7 @@ import { DBCharacterBreakdown } from '../../../types/database';
 import { BreakdownComponentCard } from './breakdown/BreakdownComponentCard';
 import { ExtendedDefinitions } from './ExtendedDefinitions';
 import { SummaryQuickActions } from './SummaryQuickActions';
-import { V3MemoryHook } from './v3/V3MemoryHook';
+import { TeachHookCard, useTeachHook } from '../../character-memory-hooks';
 import { UsedAsComponentSection } from './breakdown/UsedAsComponentSection';
 import { RelatedWordsSection } from './breakdown/RelatedWordsSection';
 import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
@@ -73,6 +73,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
     ? dictDef
     : (charData?.definition || charCardsInfo?.[0]?.back || dictDef);
   const characterPreference = useAppStore((state) => state.characterPreference);
+  const { hook: teachHook } = useTeachHook(activeChar);
   const meaning = rawMeaning
     ? sanitizeDictionaryDefinitions(rawMeaning, { preferredScript: characterPreference }).definitions[0] || rawMeaning
     : undefined;
@@ -142,7 +143,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
       </section>
 
       {/* Same hook card the new breakdown and the dictionary word view use (its own data, not the decomposition pack). */}
-      <V3MemoryHook character={activeChar} pinyin={pinyin} />
+      {teachHook && <TeachHookCard hook={teachHook} />}
 
       {/* Component Breakdown Section */}
       {components.length > 0 && (

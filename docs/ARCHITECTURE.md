@@ -101,7 +101,7 @@ Application-wide routing, navigation, and layout belong in `App.tsx` and, after 
 - Hooks coordinate UI lifecycle and service/store access. Complex logic should not be lifted into `App.tsx`.
 - Services in `src/services/` own Supabase, API, authentication, audio, dictionary, vocabulary, and other external access. `server/` must not import browser application infrastructure (enforced by ESLint); it owns `server/supabase.ts`.
 - Static curriculum and authored lesson content belongs in `src/data/`. Database/API contracts belong in `src/types/database.ts`; application models belong in `src/types/models.ts`.
-- Content and domain models needed by two features belong in the lowest layer both can reach — types in `src/types/` (domain splits such as `memoryHooks.ts`), fetching and mapping in `src/services/`. Example: `vocabularyService.fetchExamples` owns the word-example query for the dictionary and breakdown features, so neither package has to import the other.
+- Content and domain models needed by two features belong in the lowest layer both can reach — types in `src/types/` (domain splits such as `hookPieces.ts`), fetching and mapping in `src/services/`. Example: `vocabularyService.fetchExamples` owns the word-example query for the dictionary and breakdown features, so neither package has to import the other.
 - Pure transformations and caches belong in `src/utils/`.
 
 ## UI foundations

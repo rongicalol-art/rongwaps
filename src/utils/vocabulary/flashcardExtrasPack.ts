@@ -6,7 +6,6 @@ export const FLASHCARD_EXTRAS_SHARDS = 512;
 export const FLASHCARD_EXTRAS_CACHE_LIMIT = 128;
 export interface FlashcardExtras {
   examples: RankedExample[];
-  wordHook: string | null;
   /** Other-lesson examples not included here; load them on request. */
   more?: number;
 }
@@ -28,7 +27,7 @@ export const lessonExamples = <T extends { rank: number }>(examples: readonly T[
 export function lessonExtras(row: FlashcardExtras): FlashcardExtras {
   const examples = lessonExamples(row.examples);
   const more = row.examples.length - examples.length;
-  return { wordHook: row.wordHook, examples, ...(more ? { more } : {}) };
+  return { examples, ...(more ? { more } : {}) };
 }
 export function flashcardExtrasShard(key: string): number {
   let hash = 0;
@@ -51,7 +50,7 @@ function isValidSentenceAudio(value: unknown): boolean {
 export function isValidFlashcardExtrasRow(value: unknown): value is FlashcardExtrasRow {
   if (!value || typeof value !== 'object') return false;
   const row = value as Partial<FlashcardExtrasRow>;
-  return typeof row.key === 'string' && (row.wordHook === null || typeof row.wordHook === 'string')
+  return typeof row.key === 'string'
     && Array.isArray(row.examples) && row.examples.every((example) => example && typeof example.chinese === 'string'
       && typeof example.pinyin === 'string' && typeof example.english === 'string'
       && typeof example.sourceCardId === 'string' && typeof example.sourceFront === 'string'

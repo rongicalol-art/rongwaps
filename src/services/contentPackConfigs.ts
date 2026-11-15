@@ -1,15 +1,15 @@
 import { validStudyPack, decodeStudyPack, type StudyPack } from '../utils/vocabulary/studyPack';
 import { FLASHCARD_EXTRAS_SHARDS, flashcardExtrasShard, isValidFlashcardExtrasRow, type FlashcardExtrasRow } from '../utils/vocabulary/flashcardExtrasPack';
 import type { DBCharacterBreakdown } from '../types/database';
+import type { HookPack, TeachHook, WordHook } from '../types/hookPieces';
+import { isValidTeachHookPack, isValidWordHookPack, teachHookPackToIndex, wordHookPackToIndex } from '../utils/characters/hookPieces';
 import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
 import {
   type ContentPackKind,
   type PackConfig,
-  type MemoryHookPack,
   getBookParts,
   getBreakdownShard,
   getShardParts,
-  isValidMemoryHookPack,
   isValidReadingsPack,
   isValidGrammarPack,
   isValidDialogueAlignmentPack,
@@ -29,7 +29,6 @@ import {
   type PronunciationPack,
   levelPackToIndex,
   type LevelPack,
-  packItemsToMnemonicMap,
 } from '../utils/packValidators';
 
 export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>> = {
@@ -56,7 +55,7 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
         && new Set(p.items.map((row) => row?.key)).size === part.count
         && p.items.every((row) => isValidFlashcardExtrasRow(row) && flashcardExtrasShard(row.key) === part.key);
     },
-    transform: (pack) => new Map((pack as { items: FlashcardExtrasRow[] }).items.map(({ key, examples, wordHook }) => [key, { wordHook, examples }])),
+    transform: (pack) => new Map((pack as { items: FlashcardExtrasRow[] }).items.map(({ key, examples }) => [key, { examples }])),
   },
   vocabulary: {
     namespace: 'vocabulary',
@@ -147,17 +146,29 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
     },
     transform: (pack) => (pack as { records: unknown }).records,
   },
-  'memory-hooks': {
-    namespace: 'memory-hooks',
-    manifestPath: '/data/memory-hooks/manifest.json',
-    manifestLabel: 'memory hook manifest',
-    partPathPrefix: '/data/memory-hooks/',
-    partCacheKeyKind: 'book',
-    partLabel: (bookId) => `memory hook pack book ${bookId}`,
-    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && (m.totalCount ?? 0) > 0 && Array.isArray(m.books) && m.books.reduce((t, b) => t + b.count, 0) === m.totalCount,
-    getParts: getBookParts,
-    validatePack: (pack, part) => isValidMemoryHookPack(pack, part.key, part.count),
-    transform: (pack) => packItemsToMnemonicMap((pack as MemoryHookPack).items),
+  'hook-pieces': {
+    namespace: 'hook-pieces',
+    manifestPath: '/data/hook-pieces/manifest.json',
+    manifestLabel: 'Character hooks manifest',
+    partPathPrefix: '/data/hook-pieces/',
+    partCacheKeyKind: 'shard',
+    partLabel: () => 'Character hooks pack',
+    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && (m.shards?.length ?? 0) === 1,
+    getParts: getShardParts,
+    validatePack: (pack, part) => isValidTeachHookPack(pack, part.count),
+    transform: (pack) => teachHookPackToIndex(pack as HookPack<TeachHook>),
+  },
+  'word-hooks': {
+    namespace: 'word-hooks',
+    manifestPath: '/data/word-hooks/manifest.json',
+    manifestLabel: 'Word hooks manifest',
+    partPathPrefix: '/data/word-hooks/',
+    partCacheKeyKind: 'shard',
+    partLabel: () => 'Word hooks pack',
+    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && (m.shards?.length ?? 0) === 1,
+    getParts: getShardParts,
+    validatePack: (pack, part) => isValidWordHookPack(pack, part.count),
+    transform: (pack) => wordHookPackToIndex(pack as HookPack<WordHook>),
   },
   readings: {
     namespace: 'readings',

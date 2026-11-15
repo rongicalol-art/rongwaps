@@ -156,7 +156,7 @@ Client code never talks to the database for reference content — it goes throug
 - character breakdowns → `public/data/breakdowns/` shards
 - course vocabulary → `public/data/vocabulary/` book packs
 - course examples → `public/data/course-examples/`
-- memory hooks → `public/data/memory-hooks/` book packs
+- memory hooks → `public/data/hook-pieces/` (one per character: pieces by stroke range + one sentence) and `public/data/word-hooks/` (one per word: its characters added up, or a plain explanation), built from `content/memory-hooks/` by `npm run hooks:packs`
 - parts index (breakdown "Sound family" + "Appears in" cards) → `public/data/relations/parts.json`, `parents` (part → characters built from it, sound-alikes first with `=` `~` `≈` grade marks) + `phonetic` (character → its sound part); learner pool = course ∪ levels, no pinyin/meaning/level in the pack — `npm run relations:build`
 - character pronunciation (Taiwan-first readings: course reading, then CC-CEDICT "Taiwan pr.", variants `~`, other readings with an example word) → `public/data/pronunciation/pronunciation.json` (`npm run pronunciation:build`; then `relations:build`, whose sound grades use every reading)
 - TOCFL character/word levels (TBCL 1–7 scale; HSK gap fill) → `public/data/levels/levels.json`, schema v2 (`npm run levels:build`)

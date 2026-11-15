@@ -112,7 +112,7 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
       const signature = flashcardExtrasKey({ ...card, front });
       const row = extras.get(signature);
       if (!row) throw new Error(`Regenerate flashcard extras before building: ${card.id}`);
-      pack.extras.push({ key: signature, wordHook: row.wordHook, more: row.examples.length - lessonExamples(row.examples).length || undefined, examples: lessonExamples(row.examples).map(({ rank, ...sentence }) => {
+      pack.extras.push({ key: signature, more: row.examples.length - lessonExamples(row.examples).length || undefined, examples: lessonExamples(row.examples).map(({ rank, ...sentence }) => {
         const text = JSON.stringify(sentence);
         let id = sentenceIds.get(text);
         if (id === undefined) { id = pack.sentences.length; sentenceIds.set(text, id); pack.sentences.push(sentence); }

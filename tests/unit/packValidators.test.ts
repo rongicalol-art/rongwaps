@@ -1,53 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  isValidMemoryHookItem,
-  isValidMemoryHookPack,
   isValidPartsPack,
   partsPackToIndex,
   isValidReadingsPack,
   isValidGrammarPack,
   isValidDialogueAlignmentPack,
-  packItemsToMnemonicMap,
-  resolveMnemonicFromMap,
   getBreakdownShard,
   recordsToExampleCards,
 } from '../../src/utils/packValidators';
-
-test('isValidMemoryHookItem & isValidMemoryHookPack: validates structure and content_type', () => {
-  const validItem = {
-    id: '媽',
-    character: '媽',
-    mnemonic: 'A mother gives birth.',
-    content_type: 'character',
-  };
-  assert.equal(isValidMemoryHookItem(validItem), true);
-  assert.equal(isValidMemoryHookItem({ ...validItem, content_type: 'invalid' }), false);
-
-  const validPack = {
-    schemaVersion: 1,
-    bookId: 1,
-    count: 1,
-    items: [validItem],
-  };
-  assert.equal(isValidMemoryHookPack(validPack, 1, 1), true);
-  assert.equal(isValidMemoryHookPack(validPack, 2, 1), false);
-  assert.equal(isValidMemoryHookPack(validPack, 1, 2), false);
-
-  const mnemonicMap = packItemsToMnemonicMap([validItem]);
-  assert.equal(mnemonicMap.get('媽'), 'A mother gives birth.');
-});
-
-test('resolveMnemonicFromMap: resolves with word_ prefix fallback', () => {
-  const map = new Map<string, string>([
-    ['word_你好', 'Hello mnemonic'],
-    ['媽', 'Mother mnemonic'],
-  ]);
-
-  assert.equal(resolveMnemonicFromMap(map, 'word_你好'), 'Hello mnemonic');
-  assert.equal(resolveMnemonicFromMap(map, 'word_媽'), 'Mother mnemonic');
-  assert.equal(resolveMnemonicFromMap(map, '你好'), null);
-});
 
 test('isValidPartsPack & partsPackToIndex: validates counts and converts marks to grades', () => {
   const pack = {

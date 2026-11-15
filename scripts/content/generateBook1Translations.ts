@@ -8,7 +8,7 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { resolveProvider, generateJson } from '../memory-hooks/provider';
+import { resolveProvider, generateJson } from '../lib/modelProvider';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const RAW_SENTENCES_PATH = resolve(ROOT, 'output/book-1-vocab-sentences-raw.json');

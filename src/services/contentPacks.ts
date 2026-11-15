@@ -13,12 +13,12 @@ import {
   type GenericContentManifest,
   getBreakdownShard,
   recordsToExampleCards,
-  resolveMnemonicFromMap,
   type LevelIndex,
   type SenseExampleRow,
   type WordUsage,
 } from '../utils/packValidators';
 import type { PartsIndex } from '../utils/characters/parts';
+import type { TeachHookIndex, WordHookIndex } from '../types/hookPieces';
 import type { ReadingsIndex } from '../utils/pinyin/pronunciation';
 import { PACK_CONFIGS } from './contentPackConfigs';
 import { getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
@@ -238,30 +238,28 @@ export async function fetchCourseExampleCards(searchTerms: string[], pos?: strin
   return recordsToExampleCards(await fetchCourseExampleRecords(), searchTerms, pos);
 }
 
-let hookMapPromise: Promise<Map<string, string>> | null = null;
+let teachHooksPromise: Promise<TeachHookIndex | null> | null = null;
 
-export async function fetchMemoryHooksMap(): Promise<Map<string, string> | null> {
-  try {
-    hookMapPromise ??= (async () => {
-      const parts = await loadAllParts<Map<string, string>>('memory-hooks');
-      const map = new Map<string, string>();
-      for (const part of parts) {
-        for (const [key, value] of part) map.set(key, value);
-      }
-      return map;
-    })();
-    return await hookMapPromise;
-  } catch (error) {
-    debugLogger.warn('Cache', 'Static memory hook pack unavailable.', error);
-    hookMapPromise = null;
+/** Character memory hooks (pieces by stroke + one explanation), by character; null when unavailable. */
+export async function fetchTeachHookIndex(): Promise<TeachHookIndex | null> {
+  teachHooksPromise ??= loadPack<TeachHookIndex>('hook-pieces', 0).catch((error) => {
+    debugLogger.warn('Cache', 'Character hooks pack unavailable.', error);
+    teachHooksPromise = null;
     return null;
-  }
+  });
+  return teachHooksPromise;
 }
 
-export async function lookupPackMnemonic(cacheKey: string): Promise<string | null> {
-  const map = await fetchMemoryHooksMap();
-  if (!map) return null;
-  return resolveMnemonicFromMap(map, cacheKey);
+let wordHooksPromise: Promise<WordHookIndex | null> | null = null;
+
+/** Word hooks (the characters added up, or a plain explanation), by word; null when unavailable. */
+export async function fetchWordHookIndex(): Promise<WordHookIndex | null> {
+  wordHooksPromise ??= loadPack<WordHookIndex>('word-hooks', 0).catch((error) => {
+    debugLogger.warn('Cache', 'Word hooks pack unavailable.', error);
+    wordHooksPromise = null;
+    return null;
+  });
+  return wordHooksPromise;
 }
 
 let levelIndexPromise: Promise<LevelIndex | null> | null = null;
