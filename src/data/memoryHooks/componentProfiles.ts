@@ -55,7 +55,3 @@ export function buildComponentProfile(metadata: RawComponentMetadata): Component
     sourceRefs: ['legacy-breakdown-metadata'],
   };
 }
-
-export function getApprovedDefaultMeaningLabel(glyph: string): string | null {
-  return APPROVED_DEFAULT_MEANING_LABELS[glyph] ?? null;
-}

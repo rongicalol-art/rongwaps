@@ -38,19 +38,41 @@ export async function getCourseVocabLookupMap(): Promise<Map<string, Flashcard>>
 
 const NO_CARDS: Flashcard[] = [];
 const remoteCourse = new Map<string, Flashcard[]>();
+let remoteCourseVersion = 0;
+let cachedWarmLookup: { cardsCount: number; remoteVersion: number; map: Map<string, Flashcard> } | null = null;
+
+function getWarmLookupMap(): Map<string, Flashcard> {
+  const studyCards = getLoadedStudyCards();
+  if (
+    cachedWarmLookup &&
+    cachedWarmLookup.cardsCount === studyCards.length &&
+    cachedWarmLookup.remoteVersion === remoteCourseVersion
+  ) {
+    return cachedWarmLookup.map;
+  }
+  const remoteCards: Flashcard[] = [];
+  for (const cards of remoteCourse.values()) {
+    for (const card of cards) remoteCards.push(card);
+  }
+  const map = buildCourseVocabLookupMap(remoteCards.concat(studyCards));
+  cachedWarmLookup = { cardsCount: studyCards.length, remoteVersion: remoteCourseVersion, map };
+  return map;
+}
+
 export async function getCourseVocabForWords(words: string[]): Promise<Map<string, Flashcard>> {
   if (courseVocabByWordMap) return courseVocabByWordMap;
-  const warm = buildCourseVocabLookupMap(getLoadedStudyCards());
+  const warm = getWarmLookupMap();
   const missing = [...new Set(words.map(word => word.trim()).filter(word => word && !warm.has(word) && !remoteCourse.has(word)))];
-  if (missing.length) {
-    const cards = await lookupCourseCardsApi(missing);
-    for (const word of missing) {
-      const matched = cards.filter(card => [card.front, card.traditional, card.simplified].includes(word));
-      remoteCourse.set(word, matched.length ? matched : NO_CARDS);
-    }
-    while (remoteCourse.size > 2048) remoteCourse.delete(remoteCourse.keys().next().value!);
+  if (!missing.length) return warm;
+
+  const cards = await lookupCourseCardsApi(missing);
+  for (const word of missing) {
+    const matched = cards.filter(card => [card.front, card.traditional, card.simplified].includes(word));
+    remoteCourse.set(word, matched.length ? matched : NO_CARDS);
   }
-  return buildCourseVocabLookupMap([...remoteCourse.values()].flat().concat(getLoadedStudyCards()));
+  while (remoteCourse.size > 2048) remoteCourse.delete(remoteCourse.keys().next().value!);
+  remoteCourseVersion += 1;
+  return getWarmLookupMap();
 }
 
 /** Audio reuse requires the intended reading, not just a spelling match. */

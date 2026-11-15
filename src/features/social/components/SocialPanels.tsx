@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ActionButton, AppIcon, AvatarStack, Drawer, DropdownMenu, DropdownMenuItem, IconActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import type { SocialPanel } from '../../../store/slices/socialSlice';
@@ -27,8 +27,13 @@ function MoreNote({ count, where }: { count: number; where: string }) {
 
 function useOthers(list: Person[], hideRoom = false) {
   const me = useAppStore((state) => state.socialMe);
-  const race = useAppStore(state => state.race);
-  return list.filter((person) => person.u !== me && (!hideRoom || !race?.players.some(player => player.id === person.u && !player.left)));
+  const players = useAppStore(state => state.race?.players);
+  return useMemo(() => {
+    const activeRoomIds = hideRoom && players?.length
+      ? new Set(players.filter(player => !player.left).map(player => player.id))
+      : null;
+    return list.filter((person) => person.u !== me && (!activeRoomIds || !activeRoomIds.has(person.u)));
+  }, [list, me, hideRoom, players]);
 }
 
 const close = () => useAppStore.getState().setSocial({ socialPanel: null, socialMentionTarget: null });

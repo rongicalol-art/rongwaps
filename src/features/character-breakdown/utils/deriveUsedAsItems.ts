@@ -28,26 +28,37 @@ export function deriveUsedAsItems(usedAsComponents: string[]): {
 
   const uniqueMap = new Map<string, Flashcard>();
   loadedList.forEach(c => uniqueMap.set(c.id, c));
-  const allVocabs = Array.from(uniqueMap.values());
+
+  // Single-pass index over loaded vocabulary so we avoid O(|components| * |allVocabs|) scans and sorts.
+  const componentSet = new Set(usedAsComponents);
+  const exactByChar = new Map<string, Flashcard>();
+  const bestContainingByChar = new Map<string, Flashcard>();
+
+  for (const card of uniqueMap.values()) {
+    if (componentSet.has(card.front) && !exactByChar.has(card.front)) {
+      exactByChar.set(card.front, card);
+    }
+    const seenChars = new Set<string>();
+    for (const ch of card.front) {
+      if (seenChars.has(ch)) continue;
+      seenChars.add(ch);
+      if (!componentSet.has(ch) || card.front === ch) continue;
+      const prev = bestContainingByChar.get(ch);
+      if (
+        !prev ||
+        card.bookId < prev.bookId ||
+        (card.bookId === prev.bookId && card.lessonId < prev.lessonId)
+      ) {
+        bestContainingByChar.set(ch, card);
+      }
+    }
+  }
 
   const items = usedAsComponents.map(c => {
-    const exact = allVocabs.find(card => card.front === c);
-    const containing = allVocabs.filter(card => card.front.includes(c) && card.front !== c);
-
-    let badgeInfo = null;
-    if (exact) {
-      badgeInfo = { bookId: exact.bookId, lessonId: exact.lessonId };
-    } else if (containing.length > 0) {
-      const sortedContaining = [...containing].sort((a, b) => {
-        if (a.bookId !== b.bookId) return a.bookId - b.bookId;
-        return a.lessonId - b.lessonId;
-      });
-      badgeInfo = { bookId: sortedContaining[0].bookId, lessonId: sortedContaining[0].lessonId };
-    }
-
+    const match = exactByChar.get(c) ?? bestContainingByChar.get(c);
     return {
       char: c,
-      badgeInfo,
+      badgeInfo: match ? { bookId: match.bookId, lessonId: match.lessonId } : null,
     };
   });
 

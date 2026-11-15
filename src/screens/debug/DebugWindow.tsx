@@ -17,7 +17,7 @@ import { QuizPreview } from '../quiz';
 import { TonePreview } from '../tones';
 import { SentencesPreview } from '../sentences';
 import { PinyinPreview } from '../pinyin';
-import { GrammarPracticePreview } from '../../features/grammar-practice';
+import { GrammarPracticePreview } from './GrammarPracticePreview';
 
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
 

@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import { useMemo, type HTMLAttributes } from 'react';
 import type { GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { ContextualChineseText } from '../../../lib/widgets';
@@ -25,6 +25,16 @@ export function GrammarFocusText({
   onOpenWord,
   ...props
 }: GrammarFocusTextProps) {
+  const termsKey = terms.filter(Boolean).join('\0');
+  const { focusSet, parts } = useMemo(() => {
+    if (!termsKey) return { focusSet: null, parts: null };
+    const uniqueTerms = [...new Set(termsKey.split('\0'))].sort((a, b) => b.length - a.length);
+    return {
+      focusSet: new Set(uniqueTerms),
+      parts: text.split(new RegExp(`(${uniqueTerms.map(escapeRegExp).join('|')})`, 'g')),
+    };
+  }, [text, termsKey]);
+
   if (onOpenWord) {
     return (
       <ContextualChineseText
@@ -38,11 +48,7 @@ export function GrammarFocusText({
       />
     );
   }
-  const uniqueTerms = [...new Set(terms.filter(Boolean))].sort((a, b) => b.length - a.length);
-  if (uniqueTerms.length === 0) return <span className={className} {...props}>{text}</span>;
-
-  const focusSet = new Set(uniqueTerms);
-  const parts = text.split(new RegExp(`(${uniqueTerms.map(escapeRegExp).join('|')})`, 'g'));
+  if (!focusSet || !parts) return <span className={className} {...props}>{text}</span>;
 
   return (
     <span className={className} {...props}>

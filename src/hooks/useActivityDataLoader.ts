@@ -133,16 +133,18 @@ export function useActivityDataLoader(
       setError(null);
       if (effectiveLibraryDeck && libraryActiveFolder !== 'starred') {
         if (currentUserId) {
+          let snapshotSeq = 0;
           const subHolder: { current?: () => void } = {};
           subHolder.current = flashcardService.subscribeToUserFlashcards(currentUserId, (customCards) => {
             if (!isMounted) {
               subHolder.current?.();
               return;
             }
+            const seq = ++snapshotSeq;
             void getCourseVocabLookupMap()
               .catch(() => new Map<string, Flashcard>())
               .then((vocabMap) => {
-                if (!isMounted) return;
+                if (!isMounted || seq !== snapshotSeq) return;
                 const { cards: results, knownIds } = mapCustomCardsToFlashcards(customCards, vocabMap, libraryActiveFolder);
                 knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
                 setCachedActivityDeck(deckExclusionKey, { cards: results, knownIds });
