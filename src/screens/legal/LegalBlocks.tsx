@@ -1,30 +1,7 @@
-import type { ReactNode } from 'react';
+import { DocList, DocParagraph, DocSection, docLinkClass } from '../public-doc';
 import { LEGAL_CONTACT_EMAIL } from './legalMeta';
 
-/** Typography primitives shared by the Privacy Policy and Terms of Service. */
-
-export function LegalSection({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section className="flex scroll-mt-24 flex-col gap-3">
-      <h2 className="text-lg font-extrabold tracking-tight text-ui-ink-strong sm:text-xl">{title}</h2>
-      {children}
-    </section>
-  );
-}
-
-export function LegalParagraph({ children }: { children: ReactNode }) {
-  return <p className="text-base font-semibold leading-relaxed text-ui-ink">{children}</p>;
-}
-
-export function LegalList({ items }: { items: ReactNode[] }) {
-  return (
-    <ul className="flex list-disc flex-col gap-2 pl-5 text-base font-semibold leading-relaxed text-ui-ink marker:text-ui-muted">
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
-  );
-}
+export { DocSection as LegalSection, DocParagraph as LegalParagraph, DocList as LegalList, docLinkClass as legalLinkClass };
 
 /** Traditional Chinese summary at the top of a legal page; the English text below controls. */
 export function LegalSummary({ points }: { points: string[] }) {
@@ -41,11 +18,9 @@ export function LegalSummary({ points }: { points: string[] }) {
   );
 }
 
-export const legalLinkClass = 'rounded-xs font-extrabold text-brand-primary-text hover:underline focus-ring-inline';
-
 export function ContactLink() {
   return (
-    <a href={`mailto:${LEGAL_CONTACT_EMAIL}`} className={legalLinkClass}>
+    <a href={`mailto:${LEGAL_CONTACT_EMAIL}`} className={docLinkClass}>
       {LEGAL_CONTACT_EMAIL}
     </a>
   );

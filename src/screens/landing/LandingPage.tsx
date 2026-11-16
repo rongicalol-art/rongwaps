@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { ActionButton, BrandWordmark } from '../../lib/widgets';
-import { LEGAL_ROUTES } from '../../app/routes';
+import { GUIDE_ROUTES, LEGAL_ROUTES } from '../../app/routes';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { usePageMeta } from '../../hooks/usePageMeta';
 import { dismissPrerender } from '../../utils/browser/prerender';
@@ -36,7 +36,11 @@ export function LandingPage() {
       <header className={`sticky top-0 z-40 border-b-2 bg-ui-canvas transition-colors duration-200 ${scrolled ? 'border-ui-divider' : 'border-transparent'}`}>
         <div className="mx-auto flex w-full max-w-[90rem] items-center gap-3 px-5 py-3 lg:px-26">
           <BrandWordmark className="mr-auto" />
-          <Link to={LEGAL_ROUTES.about} className="hidden rounded-xs px-2 py-1 text-sm font-extrabold text-ui-muted-strong hover:text-ui-ink focus-ring-inline lg:block">About</Link>
+          <nav aria-label="Public guides" className="hidden items-center gap-4 lg:flex">
+            {([['Books', GUIDE_ROUTES.books], ['Grammar', GUIDE_ROUTES.grammar], ['TOCFL', GUIDE_ROUTES.tocfl], ['About', LEGAL_ROUTES.about]] as const).map(([label, to]) => (
+              <Link key={to} to={to} className="rounded-xs px-2 py-1 text-sm font-extrabold text-ui-muted-strong hover:text-ui-ink focus-ring-inline">{label}</Link>
+            ))}
+          </nav>
           <ActionButton variant="secondary" size="sm" onClick={start} className="normal-case tracking-normal text-sm px-3.5">Sign in</ActionButton>
         </div>
       </header>
@@ -50,7 +54,7 @@ export function LandingPage() {
                 Practice <span className="whitespace-nowrap font-chinese text-brand-primary-text">時代華語</span> one lesson at a time
               </h1>
               <p className="mt-8 text-lg font-bold leading-relaxed text-ui-muted-strong lg:mt-10 text-balance lg:text-xl">
-                Read-along audio, memory hooks, flashcards and TOCFL mock tests for the Taiwan textbook.
+                Read-along lessons, grammar, book exercises, flashcards and TOCFL mock tests for the Taiwan textbook.
               </p>
               <GoogleSignInButton onClick={start} busy={isBusy} className="mt-10 lg:mt-14" />
               {error && <SignInMessageNote message={error} className="mt-3" />}
@@ -115,7 +119,15 @@ export function LandingPage() {
         <footer className="mt-16 flex flex-col gap-3 border-t border-ui-divider py-6 text-sm font-bold text-ui-muted-strong lg:mt-30 lg:flex-row lg:justify-between">
           <span>Independent project. Not affiliated with Tamkang University or Cheng Chung Book Co.</span>
           <nav className="flex flex-wrap gap-4">
-            {([['About', LEGAL_ROUTES.about], ['Sources', LEGAL_ROUTES.sources], ['Terms', LEGAL_ROUTES.terms], ['Privacy', LEGAL_ROUTES.privacy]] as const).map(([label, to]) => (
+            {([
+              ['Books', GUIDE_ROUTES.books],
+              ['Grammar', GUIDE_ROUTES.grammar],
+              ['TOCFL', GUIDE_ROUTES.tocfl],
+              ['About', LEGAL_ROUTES.about],
+              ['Sources', LEGAL_ROUTES.sources],
+              ['Terms', LEGAL_ROUTES.terms],
+              ['Privacy', LEGAL_ROUTES.privacy],
+            ] as const).map(([label, to]) => (
               <Link key={to} to={to} className="rounded-xs font-extrabold text-ui-muted-strong hover:text-ui-ink focus-ring-inline">{label}</Link>
             ))}
           </nav>

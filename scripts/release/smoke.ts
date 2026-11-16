@@ -89,7 +89,7 @@ export function checks(options: Options): Check[] {
       }
     }],
     ['public pages', async () => {
-      for (const path of ['/privacy', '/terms', '/about']) {
+      for (const path of ['/books', '/grammar', '/tocfl', '/privacy', '/terms', '/about']) {
         const response = await get(url(path));
         expect(response.status === 200 && (response.headers.get('content-type') ?? '').includes('text/html'), `${path}: ${response.status}`);
       }

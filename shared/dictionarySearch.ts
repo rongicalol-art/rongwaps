@@ -21,8 +21,8 @@ export interface SearchResult {
   total_score: number;
 }
 
-// Compact tuple: [id, simplified, traditional (if diff else ''), pinyin_accented, pinyin_flat, definitions[], freq]
-export type CompactSearchEntry = [number, string, string, string, string, string[], number];
+// Compact tuple: [id, simplified, traditional (if diff else ''), pinyin_accented, pinyin_flat, definitions[], freq, word type of the first sense?]
+export type CompactSearchEntry = [number, string, string, string, string, string[], number, string?];
 
 const flatPinyin = (pinyin: string | null | undefined) => (pinyin ?? '').normalize('NFC').toLowerCase().replace(/[\s'’·]/g, '');
 

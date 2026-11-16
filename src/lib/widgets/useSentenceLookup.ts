@@ -6,7 +6,7 @@ import { sentenceSegments, sentenceCandidates, validatedSentenceSegments } from 
 export interface SentenceLookupHandlers {
   lookupWord?: (word: string, context?: SentenceWordContext) => Promise<SentenceWordLookupResult | null>;
   validateWords?: (words: string[]) => Promise<Set<string> | Map<string, unknown>>;
-  segmentText?: (text: string, authoredWords?: string[]) => Promise<SentenceSegment[]>;
+  segmentText?: (text: string, authoredWords?: readonly string[]) => Promise<SentenceSegment[]>;
   playAudio?: (word: string, pinyin?: string) => Promise<void> | void;
   renderActions?: (state: HoveredWordState) => ReactNode;
 }
@@ -16,7 +16,7 @@ export function registerSentenceLookupHandlers(handlers: SentenceLookupHandlers)
   Object.assign(sentenceLookupHandlers, handlers);
 }
 
-const NO_WORDS: string[] = [];
+const NO_WORDS: readonly string[] = [];
 export function useSentenceSegments(text: string, authoredWords = NO_WORDS, validateWords?: SentenceLookupHandlers['validateWords']) {
   const initial = useMemo(() => sentenceSegments(text, authoredWords), [text, authoredWords]);
   const safe = useMemo(() => validatedSentenceSegments(initial, new Set(authoredWords)), [initial, authoredWords]);

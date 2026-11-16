@@ -5,6 +5,7 @@ import { cn } from '../../utils/cn';
 import { useSentenceSegments, useSentenceWordHover, sentenceLookupHandlers, type HoveredWordState } from './useSentenceLookup';
 import type { SentenceWordContext, SentenceWordLookupResult } from '../../types/sentenceLookup';
 export { registerSentenceLookupHandlers } from './useSentenceLookup';
+export { useSentenceSegments, useSentenceWordHover, sentenceLookupHandlers } from './useSentenceLookup';
 export type { HoveredWordState } from './useSentenceLookup';
 import { calculateTooltipPlacement, type TooltipPlacement } from '../../utils/browser/tooltipPosition';
 import { AppIcon } from './AppIcon';

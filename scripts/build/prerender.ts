@@ -35,6 +35,8 @@ function mapAssetUrls(html: string, manifest: Record<string, { file: string }>):
   });
 }
 
+const PAGE_JSON_LD = /<script type="application\/ld\+json" id="page-jsonld">[\s\S]*?<\/script>/;
+
 function pageHtml(template: string, page: PrerenderedPage): string {
   const url = `${SITE_ORIGIN}${page.path}`;
   const title = escapeAttr(page.title);
@@ -51,7 +53,8 @@ function pageHtml(template: string, page: PrerenderedPage): string {
   html = setTag(html, /<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`);
   html = setTag(html, /<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`);
   if (page.jsonLd) {
-    html = html.replace('</head>', `<script type="application/ld+json">${JSON.stringify(page.jsonLd).replace(/</g, '\\u003c')}</script>\n</head>`);
+    const script = `<script type="application/ld+json" id="page-jsonld">${JSON.stringify(page.jsonLd).replace(/</g, '\\u003c')}</script>`;
+    html = PAGE_JSON_LD.test(html) ? setTag(html, PAGE_JSON_LD, script) : html.replace('</head>', `${script}\n</head>`);
   }
   // A cached shell (service worker fallback) may serve this file for another path: show it only where it belongs.
   const guard = `<script>(function(){var p=document.getElementById('prerender');var here=location.pathname.replace(/\\/+$/,'')||'/';if(p&&p.getAttribute('data-path')!==here)document.documentElement.classList.remove('prerendered');})();</script>`;

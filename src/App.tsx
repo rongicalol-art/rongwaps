@@ -2,11 +2,12 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate, useParams } from 'react-router';
 import { LoadingScreen } from './lib/widgets/LoadingScreen';
 import { useAuth } from './hooks/useAuth';
-import { legalPageFromPathname } from './app/routes';
+import { guidePageFromPathname, legalPageFromPathname } from './app/routes';
 import { LazyLandingPage } from './screens/landing/LazyLandingPage';
 import { takeFolderReturn } from './utils/browser/shareLink';
 
 const AppShell = lazy(() => import('./app/AppShell'));
+const GuideScreen = lazy(() => import('./screens/guides').then((m) => ({ default: m.GuideScreen })));
 const LegalScreen = lazy(() => import('./screens/legal').then((m) => ({ default: m.LegalScreen })));
 const AgeCheck = lazy(() => import('./screens/auth').then((m) => ({ default: m.AgeCheck })));
 const JoinFolderSignIn = lazy(() => import('./screens/join-folder/JoinFolderSignIn').then((m) => ({ default: m.JoinFolderSignIn })));
@@ -39,6 +40,8 @@ function JoinFolderEntry() {
 }
 
 function RegularApp({ pathname }: { pathname: string }) {
+  const guidePage = guidePageFromPathname(pathname);
+  if (guidePage) return <GuideScreen page={guidePage} />;
   const legalPage = legalPageFromPathname(pathname);
   return legalPage ? <LegalScreen page={legalPage} /> : <AuthenticatedWorkspace />;
 }

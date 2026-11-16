@@ -12,9 +12,11 @@ import { readCourseCards, readDictionaryRows, readLevelWords } from './learnerDa
  * English Wiktionary's Chinese entries via kaikki.org (Wiktextract, Ylonen 2022), CC BY-SA 4.0.
  * Output: output/wiktionary/learner.json — for every learner word (book + TBCL/HSK levels) its
  * standard-Mandarin entries: word type, readings and non-dialect glosses. Never shipped.
+ * `--all` covers every dictionary word and writes output/wiktionary/all.json.
  */
 const INPUT = resolve(process.cwd(), 'output/wiktionary/kaikki.org-dictionary-Chinese.jsonl.gz');
-const OUTPUT = resolve(process.cwd(), 'output/wiktionary/learner.json');
+const ALL = process.argv.includes('--all');
+const OUTPUT = resolve(process.cwd(), `output/wiktionary/${ALL ? 'all' : 'learner'}.json`);
 
 /** Pinyin tags of standard Mandarin (Taiwan or Mainland); any place or dialect tag rules a reading out. */
 const STANDARD_SOUND_TAGS = new Set(['Mandarin', 'Pinyin', 'Standard', 'Standard-Chinese', 'Taiwan', 'Mainland-China', 'variant', 'standard', 'Hanyu-Pinyin', 'erhua-ed']);
@@ -27,7 +29,7 @@ export interface WiktionaryEvidence { pos: string; readings: string[]; senses: A
 
 async function main() {
   const { byWord } = await readDictionaryRows();
-  const learner = new Set([...(await readCourseCards()).keys(), ...(await readLevelWords()).keys()].filter((word) => byWord.has(word)));
+  const learner = new Set(ALL ? byWord.keys() : [...(await readCourseCards()).keys(), ...(await readLevelWords()).keys()].filter((word) => byWord.has(word)));
   const out: Record<string, WiktionaryEvidence[]> = {};
   let lines = 0;
   let kept = 0;
@@ -51,7 +53,7 @@ async function main() {
   }
   await mkdir(resolve(OUTPUT, '..'), { recursive: true });
   await writeFile(OUTPUT, `${JSON.stringify(out)}\n`, 'utf8');
-  console.log(`Wiktionary: ${lines} lines read, ${kept} Mandarin entries for ${Object.keys(out).length} of ${learner.size} learner words.`);
+  console.log(`Wiktionary: ${lines} lines read, ${kept} Mandarin entries for ${Object.keys(out).length} of ${learner.size} ${ALL ? 'dictionary' : 'learner'} words.`);
 }
 
 main().catch((error) => {

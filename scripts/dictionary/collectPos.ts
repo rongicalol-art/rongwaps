@@ -7,10 +7,11 @@ import { readingKey } from '../../src/utils/vocabulary/wordEntry';
 import { readDictionaryRows } from './learnerData';
 
 /**
- * `npx tsx scripts/dictionary/collectPos.ts` — dev-only. Merges Codex's word-type tags with the
- * review's corrections into content/dictionary/posTags.json, the reviewed source that
+ * `npx tsx scripts/dictionary/collectPos.ts [--merge]` — dev-only. Merges the word-type tags with
+ * the review's corrections into content/dictionary/posTags.json, the reviewed source that
  * `npm run dictionary:pos:build` ships. Lists every review change in
  * output/dictionary-pos/review-changes.json for a human read.
+ * `--merge` keeps the readings already in posTags.json (a `posBatches.ts --all` run holds only the rest).
  */
 const OUT = resolve(process.cwd(), 'output/dictionary-pos');
 const CONTENT = resolve(process.cwd(), 'content/dictionary/posTags.json');
@@ -40,7 +41,9 @@ async function main() {
     }
   }
 
-  const entries: Record<string, string> = {};
+  const entries: Record<string, string> = process.argv.includes('--merge') && existsSync(CONTENT)
+    ? { ...(JSON.parse(await readFile(CONTENT, 'utf8')) as { entries: Record<string, string> }).entries }
+    : {};
   const changes: Array<{ word: string; key: string; sense: string; from: string; to: string; note?: string }> = [];
   let missing = 0;
   for (const record of records) {
@@ -66,7 +69,7 @@ async function main() {
   const sorted = Object.fromEntries(Object.entries(entries).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)));
   await writeFile(CONTENT, `${JSON.stringify({
     schemaVersion: 1,
-    source: 'Word types for CC-CEDICT senses (CC BY-SA 4.0): tagged with Codex, checked against English Wiktionary via kaikki.org (CC BY-SA 4.0) and the course word lists, then reviewed.',
+    source: 'Word types for CC-CEDICT senses (CC BY-SA 4.0): tagged with Codex and Claude, checked against English Wiktionary via kaikki.org (CC BY-SA 4.0) and the course word lists, then reviewed.',
     format: '"<word>|<reading key>": "<sense checksum>|<one tag per sense, empty for pointer senses>"',
     count: Object.keys(sorted).length,
     entries: sorted,

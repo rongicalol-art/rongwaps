@@ -2,8 +2,8 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { PlayfulNavIcon } from '../../../lib/widgets';
 import { PracticeChoiceButton } from '../../../features/practice';
 import { DEMOS, type DemoId } from '../landingContent';
-// Every demo loads only once the panel nears the viewport, so first paint skips their code.
-const CardsDemo = lazy(() => import('../demos/CardsDemo').then((m) => ({ default: m.CardsDemo })));
+import { CardsDemo } from '../demos/CardsDemo';
+// Secondary demos load once the panel nears the viewport, while Cards renders in SSR and first paint.
 const QuizDemo = lazy(() => import('../demos/QuizDemo').then((m) => ({ default: m.QuizDemo })));
 const TonesDemo = lazy(() => import('../demos/TonesDemo').then((m) => ({ default: m.TonesDemo })));
 const DictionaryDemo = lazy(() => import('../demos/DictionaryDemo').then((m) => ({ default: m.DictionaryDemo })));
@@ -48,8 +48,8 @@ export function TryIt() {
       <div className="relative mx-auto mt-4 max-w-3xl rounded-modal border-[8px] border-ui-ink-strong bg-ui-ink-strong lg:mt-6 lg:border-[12px]">
         <span aria-hidden="true" className="absolute left-1/2 top-[-5px] size-1.5 -translate-x-1/2 rounded-full bg-ui-muted lg:top-[-7px]" />
         <div ref={panelRef} role="tabpanel" aria-label={demo.title} className="relative flex min-h-[28rem] flex-col items-center justify-center overflow-hidden rounded-feature bg-ui-practice-canvas px-4 py-8 lg:min-h-[32rem] lg:px-10 lg:py-10">
-          <Suspense fallback={<div />}>
-            {near && <View key={active} />}
+          <Suspense fallback={<CardsDemo />}>
+            {(near || active === 'cards') && <View key={active} />}
           </Suspense>
         </div>
       </div>
