@@ -22,6 +22,11 @@ const LINK = 'rounded-xs text-sm font-extrabold text-brand-primary-text hover:un
 /** Shown clearly; the lines and words after these fade out so the rest waits in the lesson. */
 const CLEAR_LINES = 3;
 const CLEAR_WORDS = 5;
+/** Inline: a one-off fade is not worth a rule in the critical CSS. */
+function fade(from: string, to: string) {
+  const image = `linear-gradient(to bottom, black ${from}, transparent ${to})`;
+  return { maskImage: image, WebkitMaskImage: image };
+}
 
 /**
  * Public page for one lesson: a few words to hear, the start of a short conversation and the
@@ -72,7 +77,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
         </header>
 
         <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 pb-10 pt-2 lg:gap-12 lg:px-10 lg:pb-16 lg:pt-4">
-          <section className="flex flex-col gap-5 lg:grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
+          <section className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
             {art && <img src={art} alt="" width={640} height={360} className="aspect-video w-full rounded-feature object-cover" />}
             <div className="flex min-w-0 flex-col gap-5">
               <div className="flex flex-col gap-1">
@@ -98,10 +103,11 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
                   return (
                     <p
                       key={lineIndex}
+                      style={clear ? undefined : fade('0%', '78%')}
                       className={cn(
-                        'max-w-[92%] border-2 border-ui-border px-3 py-2 font-chinese text-2xl font-semibold leading-normal text-ui-ink-strong',
+                        'max-w-[90%] border-2 border-ui-border px-3 py-2 font-chinese text-2xl font-semibold leading-normal text-ui-ink-strong',
                         right ? 'self-end rounded-feature rounded-br-xs bg-ui-hover' : 'self-start rounded-feature rounded-bl-xs bg-ui-surface',
-                        !clear && 'pointer-events-none select-none [mask-image:linear-gradient(to_bottom,black,transparent_78%)]',
+                        !clear && 'pointer-events-none select-none',
                       )}
                     >
                       {line.map((token, tokenIndex) => {
@@ -115,7 +121,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
                             onClick={() => { setPicked(token); hear(token, 'picked'); }}
                             aria-label={`${token[0]}, ${token[1]}, ${token[2]}`}
                             className={cn(
-                              'rounded-t-xs border-b-[3px] px-0.5 focus-ring-inline',
+                              'rounded-t-xs border-b-2 px-0.5 focus-ring-inline',
                               picked === token ? 'border-brand-primary bg-brand-primary-soft' : 'border-transparent hover:bg-ui-hover',
                             )}
                           >
@@ -141,7 +147,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
 
             <section aria-labelledby="lesson-words" className="flex min-w-0 flex-col gap-3">
               <h2 id="lesson-words" className={SECTION_TITLE}>Words</h2>
-              <ul className="flex flex-col gap-2 [mask-image:linear-gradient(to_bottom,black_64%,transparent_98%)]">
+              <ul className="flex flex-col gap-2" style={fade('64%', '98%')}>
                 {page.words.map((word, index) => {
                   const clear = index < CLEAR_WORDS;
                   const key = `word-${index}`;
@@ -168,7 +174,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
             <h2 id="lesson-grammar" className={SECTION_TITLE}>Grammar in this lesson</h2>
             <ul className="divide-y-2 divide-ui-divider">
               {page.grammar.map(([title, pattern]) => (
-                <li key={title} className="flex flex-col gap-0.5 py-3.5 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-baseline lg:gap-6">
+                <li key={title} className="flex flex-col gap-0.5 py-3.5 lg:grid lg:grid-cols-2 lg:items-baseline lg:gap-6">
                   <span className="text-base font-black text-ui-ink-strong">{title}</span>
                   <span lang="zh-Hant" className="font-chinese text-lg font-semibold text-ui-muted-strong">{pattern}</span>
                 </li>
@@ -185,7 +191,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
         </main>
       </div>
 
-      <div className="flex flex-col gap-2 bg-ui-canvas px-5 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 lg:hidden">
+      <div className="flex flex-col gap-2 bg-ui-canvas px-5 pb-3 pt-2 lg:hidden">
         {error && <SignInMessageNote message={error} />}
         {studyButton}
       </div>
