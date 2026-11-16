@@ -103,7 +103,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
             </div>
           </section>
 
-          <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
+          <div className="flex flex-col gap-10 border-t-2 border-ui-divider pt-8 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
             <section aria-labelledby="lesson-read" className="flex min-w-0 flex-col gap-3">
               <h2 id="lesson-read" className={SECTION_TITLE}>Read along</h2>
               <div lang="zh-Hant" className="flex flex-col gap-2.5">
@@ -180,7 +180,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
             </section>
           </div>
 
-          <section aria-labelledby="lesson-grammar" className="flex flex-col gap-1">
+          <section aria-labelledby="lesson-grammar" className="flex flex-col gap-1 border-t-2 border-ui-divider pt-8">
             <h2 id="lesson-grammar" className={SECTION_TITLE}>Grammar in this lesson</h2>
             <ul className="divide-y-2 divide-ui-divider">
               {page.grammar.map(([title, pattern]) => (
@@ -192,7 +192,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
             </ul>
           </section>
 
-          <nav aria-label="More lessons" className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <nav aria-label="More lessons" className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t-2 border-ui-divider pt-8">
             {lessonId > 1 && <Link to={lessonPagePath(lessonId - 1)} className={LINK}>← Lesson {lessonId - 1}</Link>}
             {lessonId < LESSON_PAGE_LESSONS && <Link to={lessonPagePath(lessonId + 1)} className={LINK}>Lesson {lessonId + 1} →</Link>}
             <Link to={GUIDE_ROUTES.books} className={LINK}>All lessons</Link>
