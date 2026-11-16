@@ -32,6 +32,9 @@ export interface LearningState {
    */
   progressResetSeen: Record<string, string>;
   setProgressResetSeen: (userId: string, resetAt: string) => void;
+  /** The local day (`localDay`) the streak moment last played on this device, so it plays once a day. */
+  streakCelebratedDay: string | null;
+  setStreakCelebratedDay: (day: string) => void;
   /** Words the learner mixed up, both ways (card id -> up to 3 recent card ids): the quiz offers them as wrong choices. */
   wordConfusions: Record<string, string[]>;
   recordConfusion: (cardId: string, confusedWithId: string) => void;
@@ -82,6 +85,7 @@ interface LearningSetState {
   dailyReviewPlan: DailyReviewPlan | null;
   srsData: Record<string, SRSData>;
   progressResetSeen: Record<string, string>;
+  streakCelebratedDay: string | null;
   wordConfusions: Record<string, string[]>;
   learnedCards: string[];
   sessionProgress: SessionProgress;
@@ -142,6 +146,8 @@ export function createLearningSlice(set: SetState): LearningState {
         ? {}
         : { progressResetSeen: { ...s.progressResetSeen, [userId]: resetAt } }
     )),
+    streakCelebratedDay: null,
+    setStreakCelebratedDay: (day) => set({ streakCelebratedDay: day }),
     wordConfusions: {},
     recordConfusion: (cardId, confusedWithId) => set((s) => {
       if (cardId === confusedWithId) return {};
@@ -249,6 +255,7 @@ export const LEARNING_PERSISTED_KEYS = [
   'sessionCardOrder',
   'deckExclusions',
   'progressResetSeen',
+  'streakCelebratedDay',
   'wordConfusions',
 ] as const;
 
@@ -266,5 +273,6 @@ export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
   lastActivity: null,
   // Deck curation is user-scoped content: it must not leak across accounts.
   deckExclusions: {},
+  streakCelebratedDay: null,
   wordConfusions: {},
 };

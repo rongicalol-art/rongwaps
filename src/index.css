@@ -90,6 +90,11 @@
 @theme {
   --color-streak: #ef8f3c;
   --color-streak-edge: #d2732a;
+  /* The streak moment's fire (gold inside, pale core) and the streak number as text. */
+  --color-streak-glow: #f7c64f;
+  --color-streak-core: #fdebb3;
+  --color-streak-text: var(--color-streak-edge);
+  --color-streak-shine: rgba(255, 255, 255, .85);
 
   --font-sans: "Nunito", "RW-Pinyin", "RW-Extras", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-chinese-sans: "Nunito", "RW-Pinyin", "PingFang TC", "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
@@ -751,6 +756,10 @@ body {
    than its face so tactile buttons still read; text on accent fills is dark ink. */
 :root[data-theme="dark"] {
   color-scheme: dark;
+  --color-streak-glow: #f7c64f;
+  --color-streak-core: #fdebb3;
+  --color-streak-text: var(--color-streak);
+  --color-streak-shine: rgba(255, 255, 255, .14);
   --color-ui-canvas: #241e18;
   --color-ui-practice-canvas: #241e18;
   --color-ui-surface: #2c251e;

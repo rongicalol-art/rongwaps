@@ -1,7 +1,7 @@
 import type { DBVocabularyRow } from '../../types/database';
 import type { ReviewEvent } from './reviewEvents';
 
-function localDay(date: Date): string {
+export function localDay(date: Date): string {
   return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 }
 function shiftDay(date: Date, offset: number): Date {
@@ -41,6 +41,16 @@ export function computeStreak(events: Pick<ReviewEvent, 'reviewedAt'>[], now: nu
   const todayIndex = (today.getDay() + 6) % 7;
   const monday = shiftDay(today, -todayIndex);
   return { streak, studiedToday, todayIndex, week: Array.from({ length: 7 }, (_, i) => days.has(localDay(shiftDay(monday, i)))) };
+}
+
+/**
+ * The streak moment: today's first study raised the streak and the learner has not been shown it yet.
+ * `celebratedDay` is the `localDay` it was last shown on. Null when there is nothing to celebrate.
+ */
+export function streakMomentDue(events: Pick<ReviewEvent, 'reviewedAt'>[], celebratedDay: string | null, now: number | Date) {
+  const { streak, studiedToday, todayIndex, week } = computeStreak(events, now);
+  if (!studiedToday || celebratedDay === localDay(new Date(now))) return null;
+  return { streak, todayIndex, week };
 }
 
 /** The earliest review that already happened (ms), or null for a new learner. */

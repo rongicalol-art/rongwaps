@@ -2,6 +2,9 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type 
 import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import { ActionButton, AppIcon, LottiePlayer, type AppIconName } from '../../../lib/widgets';
+import { useAppStore } from '../../../store/useAppStore';
+import { localDay, streakMomentDue } from '../../../utils/srs/profileStats';
+import { StreakMoment } from './StreakMoment';
 
 // Module-level so the player keeps one stable loader identity. Exported for other end screens (lesson test results).
 export const loadBird = () => import('../../../assets/animations/deck-complete-bird.json').then((m) => m.default);
@@ -49,6 +52,8 @@ export interface SessionCompleteProps {
   missedCount?: number;
   /** Start the complete deck again. */
   onStudyAllAgain?: () => void;
+  /** Real sessions only: Continue first plays the streak moment when today's study raised the streak (once a day). */
+  celebrateStreak?: boolean;
 }
 
 export interface StatTileProps {
@@ -81,7 +86,7 @@ export function StatTile({ label, icon, shown, format, frameClass, inkClass, bod
 }
 
 /** Shared session end screen with a clear Continue action and optional review/restart choices. */
-export function SessionComplete({ headline: customHeadline, reviewLabel = 'Review missed', words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain }: SessionCompleteProps) {
+export function SessionComplete({ headline: customHeadline, reviewLabel = 'Review missed', words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain, celebrateStreak = false }: SessionCompleteProps) {
   const reduceMotion = Boolean(useReducedMotion());
   const isPerfect = pct >= 100;
   const total = words.length;
@@ -102,8 +107,27 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
   const buttonRef = useRef<HTMLDivElement>(null);
   const wordsBodyRef = useRef<HTMLSpanElement>(null);
   const skipRef = useRef<() => void>(() => {});
-  const continueRef = useRef(onContinue);
-  continueRef.current = onContinue;
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [streakGain] = useState(() => {
+    if (!celebrateStreak) return null;
+    const { reviewEvents, streakCelebratedDay } = useAppStore.getState();
+    return streakMomentDue(reviewEvents, streakCelebratedDay, Date.now());
+  });
+  const [showStreak, setShowStreak] = useState(false);
+  const leavingRef = useRef(false);
+  /** Continue goes on, or on the day's first finished session hands over to the streak moment first. */
+  const handleContinue = () => {
+    if (leavingRef.current) return;
+    if (!streakGain) { onContinue(); return; }
+    leavingRef.current = true;
+    useAppStore.getState().setStreakCelebratedDay(localDay(new Date()));
+    const content = contentRef.current;
+    if (reduceMotion || !content) { setShowStreak(true); return; }
+    content.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-10px) scale(.98)' }], { duration: 190, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' })
+      .finished.then(() => setShowStreak(true), () => setShowStreak(true));
+  };
+  const continueRef = useRef(handleContinue);
+  continueRef.current = handleContinue;
 
   useLayoutEffect(() => {
     if (reduceMotion) return undefined;
@@ -277,13 +301,15 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  if (showStreak && streakGain) return <StreakMoment streak={streakGain.streak} week={streakGain.week} todayIndex={streakGain.todayIndex} onContinue={onContinue} />;
+
   return (
     <div
       ref={rootRef}
       onPointerDown={(event) => { if (!(event.target as HTMLElement).closest('button')) skipRef.current(); }}
       className="absolute inset-0 flex flex-col items-center overflow-y-auto overscroll-contain px-4 pb-sheet-safe md:pb-14"
     >
-      <div className="my-auto flex w-full shrink-0 flex-col items-center">
+      <div ref={contentRef} className="my-auto flex w-full shrink-0 flex-col items-center">
       {/* The bird scales with the viewport height so short desktop windows keep Continue in view. */}
       <div
         className="relative mt-[clamp(12px,2.5dvh,24px)] h-[var(--bb)] w-full shrink-0"
@@ -336,7 +362,7 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
 
       <div aria-hidden className="h-8 shrink-0 md:h-10" />
       <div ref={buttonRef} className="w-full max-w-md md:max-w-[340px]">
-        <ActionButton size="lg" fullWidth onClick={onContinue}>
+        <ActionButton size="lg" fullWidth onClick={handleContinue}>
           <span>Continue</span>
         </ActionButton>
         <div className="mt-2 flex w-full flex-col gap-1">
