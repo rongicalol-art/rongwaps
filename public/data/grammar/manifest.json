@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "version": "a49cb907fe583ba4",
-  "generatedAt": "2026-11-16T15:19:53.228Z",
+  "generatedAt": "2026-11-16T16:02:52.811Z",
   "totalCount": 97,
   "books": [
     {
       "bookId": 1,
       "count": 33,
       "path": "/data/grammar/book-1.json",
-      "sha256": "4c18a7c3b75caa3c433d364b41837e55b4d79e68b4d266784bbb409fe870289d",
-      "bytes": 5431482
+      "sha256": "1c93b515ac7959c55e4772399dda4ff1037c5048e8b4c3762affb3a92f1331b8",
+      "bytes": 5431748
     },
     {
       "bookId": 2,

@@ -23,6 +23,7 @@ import tempfile
 from pathlib import Path
 
 import opencc
+from pypinyin import lazy_pinyin
 from mlx_audio.stt.utils import load_model
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -36,7 +37,6 @@ SILENCE_FILTER = "silencedetect=noise=-40dB:d=0.3"
 MAX_RUN = 8  # Pieces in one sentence (an A/B dialogue has several pauses).
 MIN_SPAN_RATIO = 0.9  # Run's words vs the sentence.
 MIN_CLIP_RATIO = 0.9  # The cut clip, transcribed alone, vs the sentence.
-MIN_SWAP_RATIO = 0.8  # Same length, a character or two misheard (星期 heard as 新奇): kept, marked for listening.
 MAX_EXTRA = 1  # The cut may hear at most this many characters more than the sentence (an ASR slip, not a word).
 LEAD, TAIL = 0.10, 0.15  # Silence kept before and after, as the aligner does.
 MIN_KEY = 4  # Shorter text only when it already has a voice (a number row like 五十萬); diagram words stay silent.
@@ -76,6 +76,7 @@ def number_words(match):
 
 def norm(text):
     text = LABEL.sub(r"\1", text)
+    text = re.sub(r"台北\s*101", "台北一零一", text)
     text = re.sub(r"\d+(?=年)", lambda m: "".join(DIGITS[d] for d in m.group()), text)  # Years digit by digit.
     text = re.sub(r"\d[\d,]*", number_words, text)
     text = T2S.convert(text)
@@ -84,7 +85,17 @@ def norm(text):
 
 def variants(text):
     """The sentence as the book may read it: with optional (parenthesized) words, and without them."""
-    return {norm(text), norm(PAREN.sub("", text)), norm(PAREN.sub(r"\1", text))} - {""}
+    forms = {text}
+    alternative = re.search(r"([\u4e00-\u9fff])[/／]([\u4e00-\u9fff])", text)  # 號/日: the book reads one of them.
+    if alternative:
+        forms = {text.replace(alternative.group(), alternative.group(1)), text.replace(alternative.group(), alternative.group(2))}
+    return {v for f in forms for v in (norm(f), norm(PAREN.sub("", f)), norm(PAREN.sub(r"\1", f)))} - {""}
+
+
+def sounds(text):
+    """Tone-free syllables: the recognizer may write a same-sounding character, never another syllable."""
+    text = re.sub(r"[儿兒]", "", text)  # 一點兒 and 一點 are the same words; the recognizer writes either.
+    return " ".join(lazy_pinyin(text)).replace(" ya", " a").replace(" wa", " a")  # 啊 written 呀/哇.
 
 
 def ratio(a, b):
@@ -132,8 +143,9 @@ def transcribe_pieces(model, tracks):
     return cache
 
 
-def pack_items():
-    """Every grammar-page sentence, table row and exercise sentence of Book 1 that has no book clip yet."""
+def pack_items(own):
+    """Every grammar-page sentence, table row and exercise sentence of Book 1 without a book clip from another source
+    (`own`: this pass's earlier clips, which are checked again)."""
     pack = json.loads(PACK.read_text())
     items = {}
 
@@ -157,7 +169,7 @@ def pack_items():
         elif all(isinstance(node.get(k), list) for k in ("subject", "grammar", "complement")) and not node.get("exampleId"):
             text = row_text(node)
         voice = (node.get("audio") or {}).get("voice")
-        if text and voice != "book" and (len(han(text)) >= MIN_KEY or (voice and len(han(text)) >= 2)):
+        if text and (voice != "book" or han(text) in own) and (len(han(text)) >= MIN_KEY or (voice and len(han(text)) >= 2)):
             items.setdefault(han(text), {"key": han(text), "text": text, "lesson": lesson, "page": page, "where": where})
         for key, value in node.items():
             if key == "dialogue":
@@ -209,13 +221,14 @@ def main():
         by_lesson.setdefault(lesson, []).append((track.name, pieces[track.name]))
 
     previous = json.loads(OUT_FILE.read_text()) if OUT_FILE.exists() else {}
+    if args.lessons:
+        raise SystemExit("--lessons would drop the other lessons' clips from the output; run all lessons.")
     clips, report = {}, []
-    items = [i for i in pack_items() if not args.lessons or i["lesson"] in args.lessons]
+    items = pack_items(set(previous))
     for index, item in enumerate(items, 1):
         run = find_run(item, by_lesson.get(item["lesson"], []))
         record = {**item, "result": "not on track", "run": run}
-        swap = bool(run and run["score"] >= MIN_SWAP_RATIO and len(run["heard"]) == len(run["target"]))
-        if run and (run["score"] >= MIN_SPAN_RATIO or swap):
+        if run and run["score"] >= MIN_SPAN_RATIO:
             track = audio_dir / run["track"]
             start = round(max(0.0, run["start"] - LEAD), 2)
             end = round(run["end"] + TAIL, 2)
@@ -226,13 +239,14 @@ def main():
             clip_score, best_target = max((ratio(t, heard_norm), t) for t in variants(item["text"]))
             extra = len(heard_norm) - len(best_target)
             record.update({"clipHeard": heard, "clipScore": round(clip_score, 3), "extra": extra})
-            if (clip_score >= MIN_CLIP_RATIO or (swap and len(heard_norm) == len(best_target))) and extra <= MAX_EXTRA:
+            # Same syllables, tones aside: a one-word difference (星期一 for 星期四, 中文 for 英文) is another
+            # sentence, not a recognizer slip, even when the rest matches (owner caught seven, 2026-11-16).
+            same_sound = any(sounds(heard_norm) == sounds(t) for t in variants(item["text"]))
+            if clip_score >= MIN_CLIP_RATIO and extra <= MAX_EXTRA and same_sound:
                 record["result"] = "clip"
                 clips[item["key"]] = {"file": run["track"], "start": start, "end": end, "page": item["page"],
                                       "where": item["where"], "spanScore": run["score"], "clipScore": round(clip_score, 3),
                                       "heard": heard, "method": "asr-span"}
-                if clip_score < MIN_CLIP_RATIO:
-                    clips[item["key"]]["listen"] = "the recognizer misheard a character; checked by ear"
                 if item["key"] in previous and previous[item["key"]].get("approved"):
                     clips[item["key"]]["approved"] = previous[item["key"]]["approved"]
             else:

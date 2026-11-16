@@ -36,10 +36,20 @@ PACK = ROOT / "public/data/grammar/book-1.json"
 OUT = ROOT / "output/grammar-audio/b1-yating"
 FILE_PREFIX = "grammar-studio/v1/"
 MIN_KEY = 4  # Shorter text only when it already had a (Qwen) voice; diagram words stay silent.
-SPEAKER = "F"  # Every target is one sentence (no A/B dialogue is left without a book clip): 雅婷.
+SPEAKER = "F"  # A single sentence: 雅婷.
+# A dialogue's speaker labels (A：/B：, 孩子：/媽媽：) at the start of a turn. 說：「…」 is a quote, not a turn.
+TURN = re.compile(r"(?:^|(?<=[。？！」\s]))\s*(A|B|孩子|媽媽|老師|學生)[：:]\s*")
+FEMALE_LABELS = {"A", "媽媽", "老師"}  # 雅婷; the other speaker is 家豪, as in the lesson tests.
+TURN_SILENCE = 0.6  # Seconds between turns, as the Qwen dialogues.
 # Numbers the voice would read as an amount: years and the 101 tower are read digit by digit.
 SPOKEN = [(re.compile(r"(\d{4})(?=年)"), lambda m: "".join("零一二三四五六七八九"[int(d)] for d in m.group(1))),
-          (re.compile(r"台北101"), lambda m: "台北一零一")]
+          (re.compile(r"台北101"), lambda m: "台北一零一"),
+          # The voice reads 兒 as a separate "er" syllable; Taiwan speech says 一點 (owner, 2026-11-16).
+          (re.compile(r"點兒"), lambda m: "點"),
+          # Owner flagged 姊姊 (2026-11-16): the common 姐姐 is read jiějie too, and more cleanly.
+          (re.compile(r"姊"), lambda m: "姐"),
+          # The voice said 晚餐 for 晚飯 at the slower takes; a space keeps the word (checked by ASR).
+          (re.compile(r"晚飯"), lambda m: "晚 飯")]
 
 
 def spoken_form(text):
@@ -48,6 +58,18 @@ def spoken_form(text):
     for pattern, replace in SPOKEN:
         text = pattern.sub(replace, text)
     return text.strip()
+
+
+def turns(text):
+    """[(speaker, spoken text)]: one turn per label, or the whole sentence for 雅婷."""
+    labels = list(TURN.finditer(text))
+    if not labels or text[:labels[0].start()].strip():
+        return [(SPEAKER, spoken_form(text))]
+    out = []
+    for index, label in enumerate(labels):
+        end = labels[index + 1].start() if index + 1 < len(labels) else len(text)
+        out.append(("F" if label.group(1) in FEMALE_LABELS else "M", spoken_form(text[label.end():end])))
+    return out
 
 
 def targets(lessons):
@@ -83,27 +105,36 @@ def targets(lessons):
             walk(part, part["lessonId"], "page")
     out = []
     for item in found.values():
-        speed, pauses = yating_pace(1, item["lesson"], SPEAKER)
-        out.append({**item, "spoken": spoken_form(item["text"]), "speaker": SPEAKER, "voice": yating_label(SPEAKER, speed, pauses),
-                    "model": YATING_VOICES[SPEAKER], "speed": speed, "pauses": pauses, "pitch": YATING_PITCH[SPEAKER]})
+        parts = []
+        for speaker, spoken in turns(item["text"]):
+            speed, pauses = yating_pace(1, item["lesson"], speaker)
+            parts.append({"speaker": speaker, "text": spoken, "voice": yating_label(speaker, speed, pauses),
+                          "model": YATING_VOICES[speaker], "speed": speed, "pauses": pauses, "pitch": YATING_PITCH[speaker]})
+        out.append({**item, "turns": parts, "spoken": " ".join(p["text"] for p in parts),
+                    "voice": " + ".join(dict.fromkeys(p["voice"] for p in parts))})
     return out
 
 
 def render(target, rejected, np, sf):
     """Try the takes (speed nudged a little each time) until one passes the duration, pace, fade and drag checks."""
-    request = {**target, "text": target["spoken"]}
     errors = []
     for take in range(len(YATING_SPEED_STEPS)):
         if str(take) in rejected.get(target["key"], []):
             continue
-        floor = MIN_VOICED_PACE / max(1.0, yating_request(request, take)[2])
+        floor = MIN_VOICED_PACE / max(1.0, min(yating_request(t, take)[2] for t in target["turns"]))
         master = OUT / "masters" / f"{target['key'][:16]}-{take}.mp3"
         try:
-            audio, rate = synthesize_yating(request, take, np, sf)
-            duration = validate_duration(audio, rate, target["spoken"])
-            pace = syllables(target["spoken"]) / duration
-            if pace > MAX_PACE[SPEAKER]:
-                raise ValueError(f"too fast ({pace:.2f}/s)")
+            pieces, rate = [], None
+            for turn in target["turns"]:
+                audio, rate = synthesize_yating(turn, take, np, sf)
+                duration = validate_duration(audio, rate, turn["text"])
+                pace = syllables(turn["text"]) / duration
+                if pace > MAX_PACE[turn["speaker"]]:
+                    raise ValueError(f"too fast ({pace:.2f}/s)")
+                if pieces:
+                    pieces.append(np.zeros(round(rate * TURN_SILENCE), dtype=np.float32))
+                pieces.append(audio)
+            audio = np.concatenate(pieces)
             wav = master.with_suffix(".tmp.wav")
             sf.write(wav, audio, rate, subtype="FLOAT")
             master_recording(wav, master)
@@ -118,7 +149,7 @@ def render(target, rejected, np, sf):
                 "lesson": target["lesson"], "where": target["where"],
                 "file": FILE_PREFIX + published.name, "local": published.relative_to(ROOT).as_posix(),
                 "sha256": digest, "duration": round(probe_audio(published)[0], 3),
-                "model": yating_model(request, take), "instruct": "", "seed": take, "take": "",
+                "model": " + ".join(dict.fromkeys(yating_model(t, take) for t in target["turns"])), "instruct": "", "seed": take, "take": "",
                 "deliveryBitrate": DELIVERY_BITRATE, "minVoicedPace": floor, "quality": measure_quality(published),
             }
         except Exception as error:  # noqa: BLE001 - any failure means "try the next take"
@@ -153,8 +184,9 @@ def main():
     from yatingTts import synthesize as yating
 
     def first_take(target):  # Fetch first takes 3 at a time (Yating's limit); render() then reads the cache.
-        text, model, speed, ssml, pitch = yating_request({**target, "text": target["spoken"]})
-        return yating(text, model, speed=speed, pitch=pitch, ssml=ssml)
+        for turn in target["turns"]:
+            text, model, speed, ssml, pitch = yating_request(turn)
+            yating(text, model, speed=speed, pitch=pitch, ssml=ssml)
 
     with ThreadPoolExecutor(3) as pool:
         list(pool.map(first_take, pending))

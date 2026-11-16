@@ -21,18 +21,6 @@
     "heard": "一百一十五。",
     "method": "asr-span"
   },
-  "一百多塊錢": {
-    "file": "B1-04-2-3.mp3",
-    "start": 80.29,
-    "end": 82.3,
-    "page": "B1L04-G05-P105",
-    "where": "exercise",
-    "spanScore": 0.8,
-    "clipScore": 0.8,
-    "heard": "五百多块钱。",
-    "method": "asr-span",
-    "listen": "the recognizer misheard a character; checked by ear"
-  },
   "一百多枝鉛筆": {
     "file": "B1-04-2-3.mp3",
     "start": 63.92,
@@ -143,17 +131,6 @@
     "heard": "上班以前，你吃早饭吗？不吃，我没有时间吃。",
     "method": "asr-span"
   },
-  "上班的休息時間我常跟同事一起喝喝咖啡聊聊天": {
-    "file": "B1-13-1-3.mp3",
-    "start": 43.73,
-    "end": 52.8,
-    "page": "B1L13-G01-P295",
-    "where": "page",
-    "spanScore": 1.0,
-    "clipScore": 0.977,
-    "heard": "四。上班的休息时间，我常跟同事一起喝喝咖啡，聊聊天。",
-    "method": "asr-span"
-  },
   "不好意思請您再等兩分鐘李先生很快就來了": {
     "file": "B1-13-2-3.mp3",
     "start": 66.53,
@@ -244,13 +221,13 @@
   },
   "五月十六號日": {
     "file": "B1-02-1-3.mp3",
-    "start": 10.5,
-    "end": 12.44,
+    "start": 7.06,
+    "end": 9.15,
     "page": "B1L02-G01-P54",
     "where": "page",
-    "spanScore": 0.909,
-    "clipScore": 0.909,
-    "heard": "五月十六日。",
+    "spanScore": 1.0,
+    "clipScore": 1.0,
+    "heard": "五月十六号。",
     "method": "asr-span"
   },
   "今天中午以前我都會在家": {
@@ -275,30 +252,6 @@
     "heard": "今天十二月七号。",
     "method": "asr-span"
   },
-  "今天星期四": {
-    "file": "B1-02-1-3.mp3",
-    "start": 35.95,
-    "end": 38.26,
-    "page": "B1L02-G01-P54",
-    "where": "exercise",
-    "spanScore": 0.8,
-    "clipScore": 0.8,
-    "heard": "今天星期一。",
-    "method": "asr-span",
-    "listen": "the recognizer misheard a character; checked by ear"
-  },
-  "今天星期天": {
-    "file": "B1-02-1-3.mp3",
-    "start": 35.95,
-    "end": 38.26,
-    "page": "B1L02-G01-P54",
-    "where": "exercise",
-    "spanScore": 0.8,
-    "clipScore": 0.8,
-    "heard": "今天星期一。",
-    "method": "asr-span",
-    "listen": "the recognizer misheard a character; checked by ear"
-  },
   "今天是幾月幾號今天是十二月七號": {
     "file": "B1-02-1-3.mp3",
     "start": 41.8,
@@ -308,17 +261,6 @@
     "spanScore": 1.0,
     "clipScore": 1.0,
     "heard": "今天几月几号？今天十二月七号。",
-    "method": "asr-span"
-  },
-  "今天是星期幾今天是星期一": {
-    "file": "B1-02-1-3.mp3",
-    "start": 32.22,
-    "end": 38.26,
-    "page": "B1L02-G01-P54",
-    "where": "page",
-    "spanScore": 0.8,
-    "clipScore": 1.0,
-    "heard": "今天星期几？今天星期一。",
     "method": "asr-span"
   },
   "今天晚上我要跟朋友吃飯": {
@@ -530,18 +472,6 @@
     "heard": "他又会唱歌，又会画画。",
     "method": "asr-span"
   },
-  "他吃得好多": {
-    "file": "B1-06-1-3.mp3",
-    "start": 169.84,
-    "end": 171.55,
-    "page": "B1L06-G02-P136",
-    "where": "exercise",
-    "spanScore": 0.8,
-    "clipScore": 0.8,
-    "heard": "他吃的很多。",
-    "method": "asr-span",
-    "listen": "the recognizer misheard a character; checked by ear"
-  },
   "他唱歌唱得跟你一樣好": {
     "file": "B1-15-1-3.mp3",
     "start": 56.63,
@@ -564,18 +494,6 @@
     "heard": "他唱歌跟你唱的一样好。",
     "method": "asr-span"
   },
-  "他喝得很多": {
-    "file": "B1-06-1-3.mp3",
-    "start": 169.84,
-    "end": 171.55,
-    "page": "B1L06-G02-P136",
-    "where": "exercise",
-    "spanScore": 0.8,
-    "clipScore": 0.8,
-    "heard": "他吃的很多。",
-    "method": "asr-span",
-    "listen": "the recognizer misheard a character; checked by ear"
-  },
   "他在房間裡睡覺": {
     "file": "B1-05-2-3.mp3",
     "start": 72.53,
@@ -596,17 +514,6 @@
     "spanScore": 1.0,
     "clipScore": 1.0,
     "heard": "他写的这几个字。",
-    "method": "asr-span"
-  },
-  "他對我很好常常幫我忙": {
-    "file": "B1-12-2-3.mp3",
-    "start": 50.67,
-    "end": 54.36,
-    "page": "B1L12-G03-P281",
-    "where": "page",
-    "spanScore": 0.952,
-    "clipScore": 0.952,
-    "heard": "他对我很好，常常帮我的忙。",
     "method": "asr-span"
   },
   "他小的時候在美國學了一年的中文": {
@@ -1203,18 +1110,6 @@
     "heard": "你有几个台湾朋友？我有三个台湾朋友。",
     "method": "asr-span"
   },
-  "你有幾本英文書": {
-    "file": "B1-03-1-3.mp3",
-    "start": 28.77,
-    "end": 31.7,
-    "page": "B1L03-G01-P73",
-    "where": "exercise",
-    "spanScore": 0.857,
-    "clipScore": 0.857,
-    "heard": "你有几本中文书？",
-    "method": "asr-span",
-    "listen": "the recognizer misheard a character; checked by ear"
-  },
   "你每天做晚飯做兩個小時不覺得累嗎有時候覺得累但是我喜歡吃自己做的所以沒關係": {
     "file": "B1-13-2-3.mp3",
     "start": 108.53,
@@ -1485,8 +1380,8 @@
     "end": 222.42,
     "page": "B1L14-G02-P322",
     "where": "page",
-    "spanScore": 0.98,
-    "clipScore": 0.98,
+    "spanScore": 1.0,
+    "clipScore": 1.0,
     "heard": "台北一零一真远，我们已经坐了一个小时的公车了，还没到。",
     "method": "asr-span"
   },
@@ -1567,28 +1462,6 @@
     "heard": "图书馆旁边没有咖啡厅。",
     "method": "asr-span"
   },
-  "坐捷運很方便": {
-    "file": "B1-07-2-3.mp3",
-    "start": 6.26,
-    "end": 9.29,
-    "page": "B1L07-G04-P170",
-    "where": "page",
-    "spanScore": 0.833,
-    "clipScore": 1.0,
-    "heard": "坐捷运很方便。",
-    "method": "asr-span"
-  },
-  "坐飛機比坐火車快多了得多": {
-    "file": "B1-14-2-3.mp3",
-    "start": 20.68,
-    "end": 24.3,
-    "page": "B1L14-G03-P331",
-    "where": "page",
-    "spanScore": 0.909,
-    "clipScore": 0.909,
-    "heard": "坐飞机比坐火车快得多。",
-    "method": "asr-span"
-  },
   "坐飛機比較舒服還是坐車比較舒服我覺得坐飛機比較舒服": {
     "file": "B1-09-2-3.mp3",
     "start": 126.94,
@@ -1630,17 +1503,6 @@
     "where": "page",
     "spanScore": 1.0,
     "clipScore": 1.0,
-    "heard": "天气有一点儿冷。",
-    "method": "asr-span"
-  },
-  "天氣有點兒冷": {
-    "file": "B1-06-2-3.mp3",
-    "start": 15.01,
-    "end": 17.61,
-    "page": "B1L06-G03-P146",
-    "where": "page",
-    "spanScore": 0.923,
-    "clipScore": 0.923,
     "heard": "天气有一点儿冷。",
     "method": "asr-span"
   },
@@ -1796,17 +1658,6 @@
     "spanScore": 1.0,
     "clipScore": 1.0,
     "heard": "妈妈送我一个礼物。",
-    "method": "asr-span"
-  },
-  "孩子媽妳要幫我買襪子嗎媽媽我今天會去百貨公司幫你買": {
-    "file": "B1-10-2-3.mp3",
-    "start": 22.32,
-    "end": 29.97,
-    "page": "B1L10-G04-P236",
-    "where": "page",
-    "spanScore": 0.976,
-    "clipScore": 0.976,
-    "heard": "你要帮我买袜子吗？我今天会去百货公司帮你买。",
     "method": "asr-span"
   },
   "孩子都累了我們一起休息吧": {
@@ -2161,17 +2012,6 @@
     "heard": "我们从学校走十分钟，就可以到那家银行了。",
     "method": "asr-span"
   },
-  "我們昨天唱了三個小時歌": {
-    "file": "B1-14-1-3.mp3",
-    "start": 93.93,
-    "end": 97.65,
-    "page": "B1L14-G01-P319",
-    "where": "page",
-    "spanScore": 0.957,
-    "clipScore": 0.957,
-    "heard": "我们昨天唱了三个小时的歌。",
-    "method": "asr-span"
-  },
   "我們昨天見面了": {
     "file": "B1-11-1-3.mp3",
     "start": 10.83,
@@ -2182,18 +2022,6 @@
     "clipScore": 1.0,
     "heard": "我们昨天见面了。",
     "method": "asr-span"
-  },
-  "我們是上網認識的": {
-    "file": "B1-11-1-3.mp3",
-    "start": 203.89,
-    "end": 206.26,
-    "page": "B1L11-G03-P251",
-    "where": "page",
-    "spanScore": 0.875,
-    "clipScore": 0.875,
-    "heard": "我是上网认识他的。",
-    "method": "asr-span",
-    "listen": "the recognizer misheard a character; checked by ear"
   },
   "我們是兩年以前在日本認識的": {
     "file": "B1-12-1-3.mp3",
@@ -2325,17 +2153,6 @@
     "spanScore": 1.0,
     "clipScore": 1.0,
     "heard": "我已经喝了两杯咖啡了。",
-    "method": "asr-span"
-  },
-  "我已經學了十年英文了": {
-    "file": "B1-14-1-3.mp3",
-    "start": 192.32,
-    "end": 195.61,
-    "page": "B1L14-G02-P322",
-    "where": "page",
-    "spanScore": 0.952,
-    "clipScore": 0.952,
-    "heard": "我已经学了十年的英文了。",
     "method": "asr-span"
   },
   "我已經學了四百多個中國字了": {
@@ -2635,17 +2452,6 @@
     "heard": "我要买一个小蛋糕。",
     "method": "asr-span"
   },
-  "我覺得你中文進步了真的嗎可能是因為最近我常常用中文跟朋友聊天": {
-    "file": "B1-12-1-3.mp3",
-    "start": 36.42,
-    "end": 46.75,
-    "page": "B1L12-G01-P271",
-    "where": "page",
-    "spanScore": 0.984,
-    "clipScore": 0.984,
-    "heard": "我觉得你的中文进步了。真的吗？可能是因为最近我常常用中文跟朋友聊天。",
-    "method": "asr-span"
-  },
   "我覺得學中文比學科學容易多了": {
     "file": "B1-14-2-3.mp3",
     "start": 44.58,
@@ -2754,17 +2560,6 @@
     "spanScore": 1.0,
     "clipScore": 1.0,
     "heard": "昨天本来天气很好，后来下雨了。",
-    "method": "asr-span"
-  },
-  "書筆我都有": {
-    "file": "B1-04-1-3.mp3",
-    "start": 9.49,
-    "end": 12.9,
-    "page": "B1L04-G01-P95",
-    "where": "page",
-    "spanScore": 0.8,
-    "clipScore": 1.0,
-    "heard": "书、笔，我都有。",
     "method": "asr-span"
   },
   "會做飯的孩子": {
@@ -3282,17 +3077,6 @@
     "spanScore": 1.0,
     "clipScore": 1.0,
     "heard": "那家餐厅不在学校旁边。",
-    "method": "asr-span"
-  },
-  "那家餐廳在你家旁邊嗎不在我家旁邊在我家後面": {
-    "file": "B1-05-2-3.mp3",
-    "start": 17.04,
-    "end": 26.93,
-    "page": "B1L05-G04-P124",
-    "where": "page",
-    "spanScore": 0.905,
-    "clipScore": 0.905,
-    "heard": "那家商店在你家旁边吗？不，在我家旁边，在我家后面。",
     "method": "asr-span"
   },
   "銀行下午三點半休息所以三點以前我一定要到銀行": {
