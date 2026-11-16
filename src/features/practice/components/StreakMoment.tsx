@@ -10,8 +10,9 @@ const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 const DAY_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const POP: Keyframe[] = [{ opacity: 0, transform: 'translateY(14px) scale(.7)' }, { opacity: 1, transform: 'none' }];
 const PRESS: Keyframe[] = [{ transform: 'none' }, { transform: 'translateY(3px)' }, { transform: 'none' }];
-const DROP_SVG = `<svg viewBox="${FIRE_DROP.viewBox}" class="absolute -left-[9px] -top-5 h-7 w-[18px] overflow-visible" aria-hidden="true"><path class="fill-streak" d="${FIRE_DROP.body}"/><path class="fill-streak-glow" d="${FIRE_DROP.gold}"/></svg>`;
-const BIT = 'pointer-events-none absolute left-0 top-0 h-0 w-0 opacity-0';
+const DROP_SVG = `<svg viewBox="${FIRE_DROP.viewBox}" style="position:absolute;left:-9px;top:-20px;width:18px;height:28px;overflow:visible" aria-hidden="true"><path class="fill-streak" d="${FIRE_DROP.body}"/><path class="fill-streak-glow" d="${FIRE_DROP.gold}"/></svg>`;
+const BIT = 'pointer-events-none absolute left-0 top-0 opacity-0';
+const dot = (size: number, fill: string, radius = '50%') => `<i class="${fill}" style="position:absolute;width:${size}px;height:${size}px;margin:${-size / 2}px;border-radius:${radius}"></i>`;
 const EMBER_FILLS = ['bg-streak', 'bg-streak-glow', 'bg-streak-core', 'bg-streak-edge'];
 const hash = (n: number) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
 const round1 = (value: number) => Math.round(value * 10) / 10;
@@ -110,7 +111,7 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
     draw();
 
     // A spark at the base, and the fire jumps up out of it.
-    A(bit('<i class="absolute -left-[7px] -top-[7px] h-3.5 w-3.5 rounded-full bg-streak-core"></i>'), [
+    A(bit(dot(14, 'bg-streak-core')), [
       { opacity: 0, transform: `translate(${ox}px, ${oy - 4}px) scale(0)` },
       { opacity: 1, transform: `translate(${ox}px, ${oy - 6}px) scale(1.5)`, offset: 0.4 },
       { opacity: 0, transform: `translate(${ox}px, ${oy - 14}px) scale(.2)` },
@@ -146,7 +147,7 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
       opacity: p.u < 0.06 || p.u > 0.97 ? 0 : 1,
       transform: `translate(${round1(p.x)}px, ${round1(p.y)}px) rotate(${p.a.toFixed(3)}rad) scale(${round1(p.u < 0.2 ? 0.5 + 3.5 * p.u : 1.2 - (0.45 * (p.u - 0.2)) / 0.8)})`,
     })), { delay: release, duration: flyMs, easing: 'linear' });
-    [0.62, 0.44, 0.3].forEach((size, k) => A(bit('<i class="absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-streak"></i>'), path.map((p) => ({
+    [0.62, 0.44, 0.3].forEach((size, k) => A(bit(dot(12, 'bg-streak')), path.map((p) => ({
       offset: p.u,
       opacity: p.u < 0.06 || p.u > 0.94 ? 0 : 0.85 - k * 0.2,
       transform: `translate(${round1(p.x)}px, ${round1(p.y)}px) scale(${round1(size * (1 - 0.4 * p.u))})`,
@@ -175,7 +176,7 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
     A(title, PRESS, { delay: landed + 60, duration: 180, easing: 'ease-out', fill: 'none' });
 
     // The roar: a glow, pieces of fire thrown outward, embers lifting off.
-    const halo = bit('<i class="absolute -left-[110px] -top-[110px] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-streak)_46%,transparent),transparent_66%)]"></i>', glow);
+    const halo = bit('<i style="position:absolute;left:-110px;top:-110px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--color-streak) 46%,transparent),transparent 66%)"></i>', glow);
     const cy = oy - FIRE.H * 0.5 * unit;
     A(halo, [
       { opacity: 0, transform: `translate(${ox}px, ${cy}px) scale(.5)` },
@@ -192,7 +193,7 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
     const top = oy - FIRE.H * 0.8 * unit;
     for (let i = 0; i < 12; i++) {
       const size = 5 + ((i * 7) % 5);
-      const ember = bit(`<i class="absolute ${EMBER_FILLS[i % 4]} ${i % 3 ? 'rounded-full' : 'rounded-[2px]'}" style="width:${size}px;height:${size}px;margin:${-size / 2}px"></i>`);
+      const ember = bit(dot(size, EMBER_FILLS[i % 4], i % 3 ? '50%' : '2px'));
       const x0 = ox + ((i * 37) % 60) - 30, drift = ((i * 53) % 56) - 28, rise = 74 + ((i * 29) % 70);
       A(ember, [
         { opacity: 0, transform: `translate(${x0}px, ${top}px) scale(.4)` },
@@ -247,7 +248,8 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
             viewBox={FIRE.VIEW_BOX.join(' ')}
             preserveAspectRatio="xMidYMax meet"
             aria-hidden
-            className="relative z-[2] block h-[calc(var(--bb)*.56)] w-[calc(var(--bb)*.49)] shrink-0 overflow-visible"
+            className="relative block shrink-0 overflow-visible"
+            style={{ zIndex: 2, width: 'calc(var(--bb) * .49)', height: 'calc(var(--bb) * .56)' }}
           >
             <path className="fill-streak" /><path className="fill-streak-glow" /><path className="fill-streak-core" />
           </svg>
@@ -255,7 +257,8 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
             ref={numRef}
             role="status"
             aria-label={`${streak} day streak`}
-            className="relative z-[3] -mt-0.5 inline-flex text-[calc(var(--bb)*.36)] font-black leading-[1.16] tabular-nums text-streak-text"
+            className="relative -mt-0.5 inline-flex font-black tabular-nums text-streak-text"
+            style={{ zIndex: 3, fontSize: 'calc(var(--bb) * .36)', lineHeight: 1.16 }}
           >
             {Array.from(next).map((digit, i) => {
               const old = prev[i];
@@ -265,7 +268,8 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
                   key={i}
                   data-roll={rolls ? '' : undefined}
                   data-grow={rolls && old === ' ' ? '' : undefined}
-                  className="relative block h-[1.16em] w-[.64em] shrink-0 overflow-hidden text-center"
+                  className="relative block shrink-0 overflow-hidden text-center"
+                  style={{ width: '.64em', height: '1.16em' }}
                 >
                   {rolls ? (
                     <>
@@ -285,7 +289,8 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
 
         <div
           ref={weekRef}
-          className="relative z-10 mt-7 grid min-h-[85px] w-full max-w-[360px] grid-cols-7 items-center gap-1.5 overflow-hidden rounded-control border-2 border-ui-divider bg-ui-surface p-2.5 md:mt-8 md:min-h-[89px] md:max-w-[440px]"
+          className="relative z-10 mt-7 grid w-full max-w-[360px] grid-cols-7 items-center gap-1.5 overflow-hidden rounded-control border-2 border-ui-divider bg-ui-surface p-2.5 md:mt-8 md:max-w-[440px]"
+          style={{ '--bb': 'clamp(190px,25dvh,260px)', minHeight: 'calc(var(--bb) * .4)' } as CSSProperties}
         >
           {DAYS.map((letter, i) => {
             const isToday = i === todayIndex;
@@ -300,10 +305,10 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
                 aria-label={`${DAY_NAMES[i]}${studied ? ', studied' : ''}${isToday ? ', today' : ''}`}
                 className={`flex flex-col items-center gap-1.5 text-xs font-black leading-4 ${isToday ? 'text-streak-text' : 'text-ui-muted'}`}
               >
-                <span data-dot className={`relative grid h-[30px] w-[30px] place-items-center rounded-full bg-ui-hover md:h-[34px] md:w-[34px] ${isToday ? 'outline outline-2 outline-offset-[3px] outline-streak' : ''}`}>
+                <span data-dot className={`relative grid place-items-center rounded-full bg-ui-hover ${isToday ? 'outline outline-2 outline-streak' : ''}`} style={{ width: 'calc(var(--bb) * .145)', height: 'calc(var(--bb) * .145)', outlineOffset: 3 }}>
                   {studied && <span data-fill className="absolute inset-0 rounded-full bg-streak" style={rest} />}
                   {studied && <span data-check className="relative grid place-items-center text-ui-on-solid" style={reduceMotion ? undefined : { opacity: 0 }}><AppIcon name="check" size={16} /></span>}
-                  {isToday && <span data-pulse className="absolute -inset-[5px] rounded-full border-2 border-streak opacity-0" />}
+                  {isToday && <span data-pulse className="absolute rounded-full border-2 border-streak opacity-0" style={{ inset: -5 }} />}
                 </span>
                 {letter}
               </div>
@@ -312,7 +317,8 @@ export function StreakMoment({ streak, week, todayIndex, onContinue }: StreakMom
           <span
             data-shine
             aria-hidden
-            className="pointer-events-none absolute inset-0 -translate-x-[120%] bg-[linear-gradient(100deg,transparent_30%,var(--color-streak-shine)_50%,transparent_70%)]"
+            className="pointer-events-none absolute inset-0 -translate-x-[120%]"
+            style={{ background: 'linear-gradient(100deg, transparent 30%, var(--color-streak-shine) 50%, transparent 70%)' }}
           />
         </div>
 
