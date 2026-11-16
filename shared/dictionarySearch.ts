@@ -709,6 +709,24 @@ export function searchInIndex(
   }).slice(0, resultLimit);
 }
 
+const byWordCache = new WeakMap<CompactSearchEntry[], Map<string, CompactSearchEntry>>();
+
+function getByWordMap(index: CompactSearchEntry[]): Map<string, CompactSearchEntry> {
+  const cached = byWordCache.get(index);
+  if (cached) return cached;
+  const byWord = new Map<string, CompactSearchEntry>();
+  for (const entry of index) {
+    const [, s, t, , , , freq] = entry;
+    const trad = t || s;
+    const prevS = byWord.get(s);
+    if (!prevS || freq > prevS[6]) byWord.set(s, entry);
+    const prevT = byWord.get(trad);
+    if (!prevT || freq > prevT[6]) byWord.set(trad, entry);
+  }
+  byWordCache.set(index, byWord);
+  return byWord;
+}
+
 /**
  * Pleco-style Chinese phrase/sentence segmentation fallback:
  * When a user pastes or types a multi-character Chinese phrase not in the dictionary
@@ -723,15 +741,7 @@ export function segmentChineseQuery(
   const hanziChars = Array.from(query).filter((ch) => HANZI_REGEX.test(ch));
   if (hanziChars.length < 2) return [];
 
-  const byWord = new Map<string, CompactSearchEntry>();
-  for (const entry of index) {
-    const [, s, t, , , , freq] = entry;
-    const trad = t || s;
-    const prevS = byWord.get(s);
-    if (!prevS || freq > prevS[6]) byWord.set(s, entry);
-    const prevT = byWord.get(trad);
-    if (!prevT || freq > prevT[6]) byWord.set(trad, entry);
-  }
+  const byWord = getByWordMap(index);
 
   // Greedy longest-prefix match (up to 4 chars) across the query
   const results: SearchResult[] = [];

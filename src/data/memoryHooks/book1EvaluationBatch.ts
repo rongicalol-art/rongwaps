@@ -63,6 +63,3 @@ export const BOOK_ONE_EVALUATION_BATCH_47 = {
   },
 } as const;
 
-export const BOOK_ONE_EVALUATION_BATCH_CHARACTERS = BOOK_ONE_EVALUATION_BATCH_47.groups
-  .flatMap((group) => group.characters);
-

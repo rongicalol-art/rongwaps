@@ -39,6 +39,7 @@ export function useAddCard(onClose: () => void) {
   // UI State
   const [isFocused, setIsFocused] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const savingRef = useRef(false);
   const frontInputRef = useRef<HTMLInputElement>(null);
   const meaningInputRef = useRef<HTMLTextAreaElement>(null);
   
@@ -118,6 +119,7 @@ export function useAddCard(onClose: () => void) {
 
   const handleSave = async () => {
     if (!canEditFolder(targetFolder)) { setSaveError('You can only view this folder.'); return; }
+    if (savingRef.current) return;
     if (cardData.meaning.trim() && cardData.front.trim()) {
       const newCard = {
         id: crypto.randomUUID(),
@@ -131,20 +133,24 @@ export function useAddCard(onClose: () => void) {
         createdAt: Date.now()
       };
 
-      // Close the screen first so the exit transition starts instantly
-      onClose();
-
-      // Defer the state write until the transition is complete
-      setTimeout(async () => {
+      setSaveError(null);
+      if (currentUser) {
+        savingRef.current = true;
         try {
-          if (currentUser) {
-            await flashcardService.createFlashcard(newCard);
-          } else {
-            addLocalFlashcard(newCard);
-          }
+          await flashcardService.createFlashcard(newCard);
+          onClose();
         } catch (e) {
-          debugLogger.error('Supabase', "Failed to save flashcard asynchronously:", e);
+          debugLogger.error('Supabase', 'Failed to save flashcard:', e);
+          setSaveError('Failed to save card. Please try again.');
+        } finally {
+          savingRef.current = false;
         }
+        return;
+      }
+
+      onClose();
+      setTimeout(() => {
+        addLocalFlashcard(newCard);
       }, 350);
     }
   };

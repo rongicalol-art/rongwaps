@@ -129,6 +129,7 @@ export function useQuizAudioPreparation(questions: readonly QuizBeat[], roundKey
     };
     const deadline = window.setTimeout(() => { controller.abort(); fail(); }, 15_000);
     void prepareQuizAudio(questions.slice(0, 2), signal, () => {}, question => {
+      if (signal.aborted) return;
       setPrepared(state => ({
         ...state, round: roundKey,
         decoded: new Set([...(state.round === roundKey ? state.decoded : []), question]),

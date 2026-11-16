@@ -1,7 +1,5 @@
 import type { ComponentLexiconEntry } from '../../types/memoryHooks';
 
-export const COMPONENT_LEXICON_VERSION = 'book1-pilot-v1';
-
 function entry(
   glyph: string,
   label: string,
