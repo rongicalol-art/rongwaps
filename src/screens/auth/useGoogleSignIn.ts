@@ -65,5 +65,6 @@ export function useGoogleSignIn() {
     }
   }, [loginWithGoogle]);
 
-  return { signIn, error, isBusy: isSigningIn || isLoading, isSigningIn };
+  const clientLoading = typeof document !== 'undefined' && isLoading;
+  return { signIn, error, isBusy: isSigningIn || clientLoading, isSigningIn };
 }

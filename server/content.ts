@@ -14,7 +14,7 @@ const HASHED_FILE = /[-/][a-f0-9]{12,16}\.json$/;
 /** Checked with the server on every visit, so a release reaches browsers that are already open. */
 export const REVALIDATED_FILES = new Set(['index.html', 'sw.js', 'registerSW.js', 'manifest.json', 'manifest.webmanifest', 'asset-manifest.json']);
 /** Screens of the app, and public pages prerendered at build time (scripts/build/prerender.ts). */
-const KNOWN_ROUTES = new Set(['', 'path', 'search', 'library', 'profile', 'join', 'about', 'sources', 'privacy', 'terms']);
+const KNOWN_ROUTES = new Set(['', 'path', 'search', 'library', 'profile', 'join', 'books', 'grammar', 'tocfl', 'about', 'sources', 'privacy', 'terms']);
 
 /**
  * The one spelling of a request path: decoded, backslashes as slashes, no empty or dot segments. Encoded
