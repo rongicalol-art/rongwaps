@@ -1,7 +1,9 @@
 import { speechKey, type SpeechVoice } from '../../../shared/speechKey';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import { authService } from '../authService';
 import { isSupabaseConfigured } from '../supabaseClient';
-import { isUsableAudioBlob, readCachedAudioBlob, storeAudioBlob } from './audioCache';
+import { audioBlobCachedAt, cacheObjectUrl, getCachedObjectUrl, isUsableAudioBlob, readCachedAudioBlob, storeAudioBlob } from './audioCache';
+import { playHtmlAudio } from './playbackEngine';
 
 /**
  * The cloud voice (`POST /api/speech`): a natural Taiwan voice for Chinese text that has no recording. The
@@ -46,6 +48,39 @@ export async function fetchCloudSpeech({ text, voice = 'female', reading }: Clou
     storeAudioBlob(fileName, blob);
     return { fileName, blob };
   } catch { return null; }
+}
+
+/**
+ * Chinese without a recording: the cloud voice says it (made once, then a stored file). `otherwise` runs when
+ * the voice can't provide this text now (signed out, offline, allowance used up, too long).
+ */
+export function startCloudSpeech(
+  request: CloudSpeechRequest,
+  audio: HTMLAudioElement | null,
+  objectUrls: Map<string, string>,
+  rate: number,
+  isCurrent: () => boolean,
+  setCleanup: (cleanup: () => void) => void,
+  finish: () => void,
+  otherwise: () => void,
+): void {
+  if (!audio || !cloudSpeechAvailable(request.text)) { otherwise(); return; }
+  void fetchCloudSpeech(request).then((speech) => {
+    if (!isCurrent()) return;
+    if (!speech) { otherwise(); return; }
+    let url = getCachedObjectUrl(objectUrls, speech.fileName);
+    if (!url) {
+      url = URL.createObjectURL(speech.blob);
+      cacheObjectUrl(objectUrls, speech.fileName, url, speech.blob.size, audioBlobCachedAt(speech.blob));
+    }
+    let failed = false;
+    setCleanup(playHtmlAudio(audio, url, rate, finish, () => {
+      if (failed || !isCurrent()) return;
+      failed = true;
+      try { audio.pause(); } catch (e) { debugLogger.warn('Audio', 'Pause on cloud speech failure failed', e); }
+      otherwise();
+    }, 0));
+  });
 }
 
 /** Tests start from a voice that has not been refused. */

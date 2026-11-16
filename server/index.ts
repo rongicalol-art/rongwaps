@@ -1,6 +1,6 @@
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { Readable } from 'node:stream';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import { handle } from './app';
 import type { Context } from './env';
 
@@ -9,7 +9,6 @@ import type { Context } from './env';
  * code as the deployed server (server/app.ts). The deployed entry point is server/worker.ts; to run the
  * built site exactly as Cloudflare does, use `npm run build && npm start`.
  */
-dotenv.config();
 const PORT = Number(process.env.PORT) || 3000;
 
 const context: Context = {

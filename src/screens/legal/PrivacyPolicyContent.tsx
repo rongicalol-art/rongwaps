@@ -155,8 +155,11 @@ export function PrivacyPolicyContent() {
               performance tracing.
             </>,
             <>
-              <strong>Your browser&apos;s speech voices</strong> read text that has no recording. How that works
-              depends on your browser and operating system.
+              <strong>Microsoft</strong> text-to-speech and <strong>your browser&apos;s speech voices</strong> read
+              Chinese text that has no recording. When the cloud voice is used, the word or sentence (up to 80
+              characters) is sent from our server to Microsoft to be turned into speech; your name, email and account
+              ID are not sent, and the audio is cached for reuse. Otherwise your device&apos;s own voices are used,
+              which depends on your browser and operating system.
             </>,
             <>
               <strong>Public CDNs</strong> (jsDelivr, with unpkg and GitHub as backups) serve the stroke data for

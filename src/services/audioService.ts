@@ -1,29 +1,12 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 export { AUDIO_BUCKET } from './audio/audioCache';
 import {
-  cacheObjectUrl,
-  invalidateCachedAudio,
-  audioBlobCachedAt,
-  getCachedObjectUrl,
-  fetchAudioBlob,
-  preloadAudioFiles,
-  publicAudioUrl,
-  readCachedAudioBlob,
-  MAX_AUDIO_MEMORY_BYTES,
-  type AudioPreloadProgress,
+  cacheObjectUrl, invalidateCachedAudio, audioBlobCachedAt, getCachedObjectUrl, fetchAudioBlob,
+  preloadAudioFiles, publicAudioUrl, readCachedAudioBlob, MAX_AUDIO_MEMORY_BYTES, type AudioPreloadProgress,
 } from './audio/audioCache';
+import { speakUtterance, releaseSpeechUtterance, wait } from './audio/speechEngine';
 import {
-  speakUtterance,
-  releaseSpeechUtterance,
-  wait,
-} from './audio/speechEngine';
-import {
-  afterPaint,
-  playHtmlAudio,
-  prepareAudioElement,
-  playRangeOnAudioElement,
-  silenceAudio,
-  type PlayRangeOptions,
+  afterPaint, playHtmlAudio, prepareAudioElement, playRangeOnAudioElement, silenceAudio, type PlayRangeOptions,
 } from './audio/playbackEngine';
 import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
@@ -31,7 +14,7 @@ import { ShortAudioClips } from './audio/shortAudioClips';
 import { reportAudioFailure } from './errorReporting';
 import { isRecordingFile } from './audio/recordingFile';
 import { playbackWaiting } from './audio/playbackWaiting';
-import { cloudSpeechAvailable, fetchCloudSpeech, type CloudSpeechRequest } from './audio/cloudSpeech';
+import { startCloudSpeech, type CloudSpeechRequest } from './audio/cloudSpeech';
 import { wordBopomofo } from '../utils/pinyin/bopomofo';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
@@ -138,29 +121,11 @@ export class AudioService {
       preferAnyChineseVoice,
     );
   }
-  /**
-   * Chinese without a recording: the cloud voice says it (made once, then a stored file). `otherwise` runs when
-   * the voice can't provide this text now (signed out, offline, allowance used up, too long).
-   */
   private playCloudSpeech(request: CloudSpeechRequest, rate: number, finish: () => void, otherwise: () => void): void {
-    const audio = this.globalAudio;
-    if (!audio || !cloudSpeechAvailable(request.text)) { otherwise(); return; }
-    void fetchCloudSpeech(request).then((speech) => {
-      if (this.activePlaybackFinish !== finish) return;
-      if (!speech) { otherwise(); return; }
-      let url = getCachedObjectUrl(this.objectUrls, speech.fileName);
-      if (!url) {
-        url = URL.createObjectURL(speech.blob);
-        cacheObjectUrl(this.objectUrls, speech.fileName, url, speech.blob.size, audioBlobCachedAt(speech.blob));
-      }
-      let failed = false;
-      this.activePlaybackCleanup = playHtmlAudio(audio, url, rate, finish, () => {
-        if (failed || this.activePlaybackFinish !== finish) return;
-        failed = true;
-        try { audio.pause(); } catch (e) { debugLogger.warn('Audio', 'Pause on cloud speech failure failed', e); }
-        otherwise();
-      }, 0);
-    });
+    startCloudSpeech(
+      request, this.globalAudio, this.objectUrls, rate, () => this.activePlaybackFinish === finish,
+      (cleanup) => { this.activePlaybackCleanup = cleanup; }, finish, otherwise,
+    );
   }
   public speakTTS(text: string, rate?: number): Promise<void> {
     return this.speakText(text, 'zh-CN', rate, true);
