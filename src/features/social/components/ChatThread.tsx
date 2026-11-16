@@ -91,13 +91,22 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
   const rate = useRef<ChatRate | null>(null);
   const targetLine = target && (party ? target.room && target.room === useAppStore.getState().race?.code : !target.room && target.channel === useAppStore.getState().socialChat?.lesson) ? target.message : null;
   const blocks = useAppStore(state => state.socialBlocks);
-  const all = targetLine && chat && !chat.some(line => line.id === targetLine.id) ? [targetLine, ...chat] : chat ?? [];
-  // The Lobby already leaves blocked people out; this also covers party rooms and the moment before it catches up.
-  const visible = blocks?.length ? all.filter(line => !blocks.some(person => person.u === line.u)) : all;
+  const blockedIds = useMemo(() => (blocks?.length ? new Set(blocks.map(person => person.u)) : null), [blocks]);
+  const visible = useMemo(() => {
+    const all = targetLine && chat && !chat.some(line => line.id === targetLine.id) ? [targetLine, ...chat] : chat ?? [];
+    // The Lobby already leaves blocked people out; this also covers party rooms and the moment before it catches up.
+    return blockedIds ? all.filter(line => !blockedIds.has(line.u)) : all;
+  }, [targetLine, chat, blockedIds]);
   const prefix = draft.slice(0, caret);
   const match = /(?:^|\s)@([^@\s]*)$/.exec(prefix);
-  const people = new Map(candidates.map(person => [person.u, person]));
-  const suggestions = match && !dismissed && !composing.current ? [...people.values()].filter(person => person.u !== me && person.n.toLocaleLowerCase().includes(match[1].toLocaleLowerCase())).slice(0, 8) : [];
+  const mentionQuery = match?.[1]?.toLocaleLowerCase() ?? null;
+  const people = useMemo(() => new Map(candidates.map(person => [person.u, person])), [candidates]);
+  const suggestions = useMemo(
+    () => (mentionQuery !== null && !dismissed && !composing.current
+      ? [...people.values()].filter(person => person.u !== me && person.n.toLocaleLowerCase().includes(mentionQuery)).slice(0, 8)
+      : []),
+    [mentionQuery, dismissed, people, me],
+  );
   const select = (person: Person) => {
     if (!match) return;
     const start = caret - match[1].length - 1;

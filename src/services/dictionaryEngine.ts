@@ -111,7 +111,7 @@ export function createDictionaryEngine(json: DictionaryLoader): DictionaryEngine
       list.push(card);
       byWord.set(word, list);
     }
-    return { byKey, byRow, byWord };
+    return { cards: pack.cards, byKey, byRow, byWord };
   });
 
   async function course(words: string[]) {
@@ -122,23 +122,32 @@ export function createDictionaryEngine(json: DictionaryLoader): DictionaryEngine
   }
 
   const studyParts = once(async () => (await json<{ parts: StudyPart[] }>('/data/study/manifest.json')).parts);
-  const studyCache = new Map<string, StudyPack>();
+  const studyCache = new Map<string, { pack: StudyPack; extrasByCardId: Map<string, StudyPack['extras'][number]> }>();
   const corpus = once(async () => {
     const manifest = await json<{ books: Array<{ path: string }> }>('/data/course-examples/manifest.json');
     return (await Promise.all(manifest.books.map(book => json<{ records: CourseExampleRecord[] }>(book.path)))).flatMap(pack => pack.records);
   });
 
   async function examples(word: string, limit: number): Promise<WordExample[]> {
-    const { byKey } = await courseData();
+    const { cards, byKey } = await courseData();
     const card = byKey.get(word);
     if (card) {
       const part = (await studyParts()).find(part => part.ids.includes(card.id));
       if (part) {
-        let pack = studyCache.get(part.path);
-        if (!pack) { pack = await json<StudyPack>(part.path); studyCache.set(part.path, pack); }
+        let cached = studyCache.get(part.path);
+        if (!cached) {
+          const pack = await json<StudyPack>(part.path);
+          const extrasByCardId = new Map<string, StudyPack['extras'][number]>();
+          for (const row of pack.extras) {
+            const cardId = (JSON.parse(row.key) as [string])[0];
+            if (cardId && !extrasByCardId.has(cardId)) extrasByCardId.set(cardId, row);
+          }
+          cached = { pack, extrasByCardId };
+          studyCache.set(part.path, cached);
+        }
         if (studyCache.size > 4) studyCache.delete(studyCache.keys().next().value!);
-        const extras = pack.extras.find(row => JSON.parse(row.key)[0] === card.id);
-        const sentences = extras?.examples.map(([id]) => pack!.sentences[id]).filter(example => example.chinese.includes(word)) ?? [];
+        const extras = cached.extrasByCardId.get(card.id);
+        const sentences = extras?.examples.map(([id]) => cached!.pack.sentences[id]).filter(example => example.chinese.includes(word)) ?? [];
         // Study packs hold same-lesson examples only; a short list tops up from the full corpus below.
         if (sentences.length >= limit) return [...sentences.filter(sentence => sentence.audio), ...sentences.filter(sentence => !sentence.audio)].slice(0, limit);
       }
@@ -150,7 +159,7 @@ export function createDictionaryEngine(json: DictionaryLoader): DictionaryEngine
         chinese: record.traditional, pinyin: record.pinyin, english: record.english, audio: record.audio,
         sourceCardId: record.sourceCardId, sourceFront: record.sourceFront, sourceBookId: record.bookId, sourceLessonId: record.lessonId,
       }));
-    for (const source of new Map([...byKey.values()].map(card => [card.id, card])).values()) for (const example of source.examples ?? []) {
+    for (const source of cards) for (const example of source.examples ?? []) {
       if (sentenceMatchesForms(example.chinese, forms, card?.pos)) sentences.push({ ...example,
         sourceCardId: source.id, sourceFront: source.front, sourceBookId: source.bookId, sourceLessonId: source.lessonId,
       });

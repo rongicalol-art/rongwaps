@@ -1786,18 +1786,6 @@ export function getInteractiveGrammarManifestForLesson(
   );
 }
 
-export function findNeighbourGrammarPartId(
-  partId: string,
-  direction: 'next' | 'previous',
-  hasFullCourseAccess = false,
-): string | null {
-  const index = INTERACTIVE_GRAMMAR_MANIFEST.findIndex((p) => p.id === partId);
-  if (index === -1) return null;
-  const nextIndex = direction === 'next' ? index + 1 : index - 1;
-  const neighbour = INTERACTIVE_GRAMMAR_MANIFEST[nextIndex];
-  return neighbour && !isLessonLocked(neighbour.bookId, neighbour.lessonId, hasFullCourseAccess) ? neighbour.id : null;
-}
-
 export function findGrammarManifestPartForReading(reading: { bookId: number; lessonId: number; dialogueNumber?: number }): GrammarManifestPart | null {
   return INTERACTIVE_GRAMMAR_MANIFEST.find(
     (p) => p.bookId === reading.bookId && p.lessonId === reading.lessonId && p.partId === reading.dialogueNumber,
