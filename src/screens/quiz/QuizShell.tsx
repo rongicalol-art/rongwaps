@@ -282,6 +282,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
         missedCount={tricky.length}
         onStudyAllAgain={restart}
+        celebrateStreak
       />
     );
   }

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { computeStreak, countKnownCharacters, lessonProgress, topConfusionPairs } from '../../src/utils/srs/profileStats';
+import { computeStreak, countKnownCharacters, lessonProgress, localDay, streakMomentDue, topConfusionPairs } from '../../src/utils/srs/profileStats';
 const local = (day: number, hour = 12) => +new Date(2026, 9, day, hour);
 test('streak stays alive yesterday, deduplicates days and uses Monday week', () => {
   const events = [12, 13, 14, 14].map((day) => ({ reviewedAt: local(day) }));
@@ -41,4 +41,13 @@ test('lesson progress excludes introduction and unknown ids and deduplicates row
 test('confusions deduplicate mirrored pairs, skip self pairs and respect limit', () => {
   assert.deepEqual(topConfusionPairs({ a: ['b'], b: ['a'], c: ['c', 'd', 'e'], d: ['c'] }), [['d', 'c'], ['c', 'e'], ['b', 'a']]);
   assert.deepEqual(topConfusionPairs({ a: ['b'] }, 0), []);
+});
+test('the streak moment is due once, on the day study raised the streak', () => {
+  const events = [12, 13, 14].map((day) => ({ reviewedAt: local(day) }));
+  assert.equal(streakMomentDue(events, null, local(15)), null, 'not studied today yet');
+  const today = [...events, { reviewedAt: local(15, 9) }];
+  assert.deepEqual(streakMomentDue(today, null, local(15)), { streak: 4, todayIndex: 3, week: [true, true, true, true, false, false, false] });
+  assert.equal(streakMomentDue(today, localDay(new Date(local(15))), local(15, 20)), null, 'already shown today');
+  assert.equal(streakMomentDue(today, localDay(new Date(local(14))), local(15))?.streak, 4, 'shown yesterday, due again today');
+  assert.equal(streakMomentDue([{ reviewedAt: local(15, 9) }], null, local(15))?.streak, 1, 'first day');
 });

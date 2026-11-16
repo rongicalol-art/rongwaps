@@ -176,5 +176,7 @@ Initial avatars reuse honey/jade/plum cover washes with
 `--color-avatar-blue-bg` (`#e4edf3`) / `--color-avatar-blue-ink` (`#2c6385`),
 equivalent to the default book's primary wash/edge. Ink uses UI strong ink/surface.
 `--color-streak` (`#ef8f3c`) / `--color-streak-edge` (`#d2732a`) own the flame,
-week marks and streak number. Topic progress and editor selection use the active
+week marks and streak number. The streak moment's fire adds `--color-streak-glow`
+(`#f7c64f`) and `--color-streak-core` (`#fdebb3`), the same in both themes like the
+app's pictures; `--color-streak-text` is the number as text (edge in light, `--color-streak` in dark). Topic progress and editor selection use the active
 book's brand tokens.

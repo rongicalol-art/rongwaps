@@ -328,6 +328,7 @@ export function FlashcardScreen({
         onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
         missedCount={tricky.length}
         onStudyAllAgain={studyAllAgain}
+        celebrateStreak
       />
     );
   }
