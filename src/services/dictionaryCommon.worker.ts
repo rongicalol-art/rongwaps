@@ -4,7 +4,6 @@ import type { CompactSearchEntry, CourseFields } from '../../shared/dictionarySe
 // Same ranking engine as the server, over the most common words only.
 let index: ReturnType<typeof createDictionaryIndex> | null = null;
 let course = new Map<number, CourseFields>();
-let pos = new Map<number, string | undefined>();
 self.onmessage = ({ data }: MessageEvent<{ id: number; buffer?: ArrayBuffer; query?: string; limit?: number }>) => {
   try {
     if (data.buffer) {
@@ -12,11 +11,10 @@ self.onmessage = ({ data }: MessageEvent<{ id: number; buffer?: ArrayBuffer; que
       if (!Array.isArray(pack.items)) throw new Error('Invalid common words pack');
       index = createDictionaryIndex(pack.items);
       course = new Map(pack.course);
-      pos = new Map(pack.items.map(item => [item[0], item[7]]));
       self.postMessage({ id: data.id, result: [] });
       return;
     }
     const rows = index?.search(data.query ?? '', data.limit ?? 30) ?? [];
-    self.postMessage({ id: data.id, result: rows.map(row => ({ ...row, ...(pos.get(row.id) ? { pos: pos.get(row.id) } : {}), ...course.get(row.id) })) });
+    self.postMessage({ id: data.id, result: rows.map(row => ({ ...row, ...course.get(row.id) })) });
   } catch { self.postMessage({ id: data.id, error: 'Common words search failed' }); }
 };

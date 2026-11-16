@@ -10,6 +10,12 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-16 — Every dictionary entry carries word types
+
+- Chosen: the word types cover all 116,509 readings, not only the learner words. No open dataset has Pleco-level word types (Pleco's are licensed), so open data does the easy part and AI the rest: proper names (capitalised pinyin) are tagged Name and words Wiktionary lists only as a noun are tagged N by rule, then a Sonnet helper scans those for exceptions; every other reading is tagged by Sonnet helpers from plain-text batches (`posBatches.ts --all`, answers checked by `tagPos.ts --answers`). `checkPos.ts` flags disagreements, Opus helpers review the flags plus a 2% sample (`reviewPos.ts --prepare` / `--answers`), and `collectPos.ts --merge` keeps the readings reviewed earlier. Four-character idioms are Ph whatever their role in a sentence; languages, weekdays, festivals, religions and currencies are N, not Name. Search rows read their word type from the search index (an eighth tuple element), so a search loads no word-type shards; only rows the index leaves out fall back to the pack. The phone's common-words slice drops that element to stay under its budget.
+- Reason: the owner wanted every word to show its word types, efficiently and at high quality. Against the owner's reviewed tags Sonnet matched about as often as Opus (about 95%) and the noun rule matched 96.5%; the review changed 0.6% of the random sample. With the pack six times larger, one shard per search row would have cost a phone's first searches about 2 MB.
+- Affects: `scripts/dictionary/{extractWiktionary,posBatches,tagPos,reviewPos,collectPos,buildSearchIndex}.ts`, `shared/dictionarySearch.ts`, `src/services/dictionaryEngine.ts`, `scripts/performance/studyPacks.ts`, `content/dictionary/posTags.json`, `public/data/{dictionary-pos,search}/`.
+
 ### 2026-11-14 — The site runs on Cloudflare Workers; the dictionary runs on the device
 
 - Chosen:
