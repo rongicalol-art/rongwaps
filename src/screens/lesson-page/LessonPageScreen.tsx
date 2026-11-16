@@ -59,16 +59,17 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
 
   const hear = (word: SampleWord, key: string) => { playWord(word); setPlaying(key); };
   const study = () => (currentUser ? navigate(TAB_ROUTES.path) : void signIn());
-  // One confident button: tall, big label, an arrow that says "go". Wide enough to hold its own beside the title.
-  const studyButton = (fullWidth: boolean) => (
+  // One confident button: tall, big label, an arrow that says "go". It fills its column, so its edges line up with the blocks below.
+  const studyButton = (
+
     <ActionButton
       size="lg"
-      fullWidth={fullWidth}
+      fullWidth
       onClick={study}
       loading={isBusy && !currentUser}
       loadingLabel="Opening Google"
       className="normal-case tracking-normal text-xl"
-      frontClassName={fullWidth ? 'min-h-14' : 'min-h-16 px-14'}
+      frontClassName="min-h-14 lg:min-h-16"
     >
       Study
       <AppIcon name="forward" size={22} />
@@ -87,18 +88,17 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
         </header>
 
         <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 pb-10 pt-2 lg:gap-12 lg:px-10 lg:pb-16 lg:pt-4">
-          <section className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
+          <section className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-10">
             {art && <img src={art} alt="" width={640} height={360} className="aspect-video w-full rounded-feature object-cover" />}
-            <div className="flex min-w-0 flex-col gap-5">
+            <div className="flex min-w-0 flex-col gap-5 lg:justify-between lg:py-1">
               <div className="flex flex-col gap-1">
                 <p className="text-sm font-extrabold text-ui-muted-strong">Modern Chinese {LESSON_PAGE_BOOK} · Lesson {lessonId}</p>
                 <h1 className="text-3xl font-black leading-tight tracking-tight text-ui-ink-strong text-balance lg:text-4xl">{en}</h1>
                 <p lang="zh-Hant" className="font-chinese text-xl font-semibold text-ui-muted-strong lg:text-2xl">{zh}</p>
               </div>
-              <div className="hidden flex-col items-start gap-3 lg:flex">
-                {studyButton(false)}
+              <div className="hidden flex-col gap-3 lg:flex">
+                {studyButton}
                 {error && <SignInMessageNote message={error} />}
-                {!currentUser && <SignInConsent className="!text-sm" />}
               </div>
             </div>
           </section>
@@ -197,13 +197,13 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
             {lessonId < LESSON_PAGE_LESSONS && <Link to={lessonPagePath(lessonId + 1)} className={LINK}>Lesson {lessonId + 1} →</Link>}
             <Link to={GUIDE_ROUTES.books} className={LINK}>All lessons</Link>
           </nav>
-          {!currentUser && <SignInConsent className="!text-sm lg:hidden" />}
+          {!currentUser && <SignInConsent className="!text-sm !font-semibold !text-ui-muted" />}
         </main>
       </div>
 
       <div className="flex flex-col gap-2 bg-ui-canvas px-5 pb-3 pt-2 lg:hidden">
         {error && <SignInMessageNote message={error} />}
-        {studyButton(true)}
+        {studyButton}
       </div>
     </div>
   );
