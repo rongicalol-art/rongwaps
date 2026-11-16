@@ -5331,9 +5331,9 @@
             "id": "b2l02g11-ex1",
             "number": 1,
             "text": {
-              "traditional": "他昨天是因為生病才沒來上課。",
-              "simplified": "他昨天是因为生病才没来上课。",
-              "pinyin": "Tā zuótiān shì yīnwèi shēngbìng cái méi lái shàngkè.",
+              "traditional": "他昨天是因為生病才沒來上課的。",
+              "simplified": "他昨天是因为生病才没来上课的。",
+              "pinyin": "Tā zuótiān shì yīnwèi shēngbìng cái méi lái shàngkè de.",
               "english": "Yesterday he missed class only because he was sick.",
               "words": [
                 {
@@ -5397,6 +5397,13 @@
                   "traditional": "上課",
                   "simplified": "上课",
                   "pinyin": "shàngkè",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l02g11-ex1-w10",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
                   "meaning": "",
                   "suffix": "。"
                 }
