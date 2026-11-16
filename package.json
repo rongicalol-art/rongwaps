@@ -11,6 +11,7 @@
     "dev": "NODE_ENV=development tsx server/index.ts",
     "dev:book2-audio": "VITE_BOOK2_AUDIO_LOCAL=true npm run dev",
     "materials": "tsx scripts/dev/materials.ts",
+    "lesson-pages:export": "tsx scripts/content/exportLessonPages.ts",
     "fonts:split": "python3 scripts/fonts/split-chinese-fonts.py",
     "build:site-headers": "tsx scripts/build/siteHeaders.ts",
     "build:precompress": "tsx scripts/build/precompressData.ts",

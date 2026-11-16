@@ -53,3 +53,21 @@ export function legalPageFromPathname(pathname: string): LegalPage | null {
   const match = (Object.keys(LEGAL_ROUTES) as LegalPage[]).find((page) => LEGAL_ROUTES[page] === normalized);
   return match ?? null;
 }
+
+/**
+ * Public lesson pages (`/books/1/lesson-4`): a taste of one lesson for search engines and
+ * signed-out visitors. Only lessons with a page resolve; anything else falls through to the app.
+ */
+export const LESSON_PAGE_BOOK = 1;
+export const LESSON_PAGE_LESSONS = 16;
+
+export function lessonPagePath(lessonId: number): string {
+  return `${GUIDE_ROUTES.books}/${LESSON_PAGE_BOOK}/lesson-${lessonId}`;
+}
+
+export function lessonPageFromPathname(pathname: string): number | null {
+  const match = /^\/books\/(\d)\/lesson-(\d{1,2})\/*$/.exec(pathname);
+  if (!match || Number(match[1]) !== LESSON_PAGE_BOOK || match[2].startsWith('0')) return null;
+  const lessonId = Number(match[2]);
+  return lessonId >= 1 && lessonId <= LESSON_PAGE_LESSONS ? lessonId : null;
+}
