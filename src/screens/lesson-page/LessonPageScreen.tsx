@@ -8,7 +8,7 @@ import { usePageMeta } from '../../hooks/usePageMeta';
 import { ActionButton, AppIcon, BrandWordmark, SpeakerIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import { dismissPrerender } from '../../utils/browser/prerender';
-import { GoogleSignInButton, SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
+import { SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
 import { playWord } from '../landing/demos/demoUtils';
 import type { SampleWord } from '../landing/sampleWords';
 import { LESSON_PAGES } from './lessonPageData';
@@ -59,15 +59,21 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
 
   const hear = (word: SampleWord, key: string) => { playWord(word); setPlaying(key); };
   const study = () => (currentUser ? navigate(TAB_ROUTES.path) : void signIn());
-  // Signed out, Study is the landing page's Google button: the tile says what the tap does.
-  const studyButton = (fullWidth: boolean) => (currentUser ? (
-    <ActionButton size="lg" fullWidth={fullWidth} onClick={study} className="normal-case tracking-normal text-lg" frontClassName="px-8">
+  // One confident button: tall, big label, an arrow that says "go". Wide enough to hold its own beside the title.
+  const studyButton = (fullWidth: boolean) => (
+    <ActionButton
+      size="lg"
+      fullWidth={fullWidth}
+      onClick={study}
+      loading={isBusy && !currentUser}
+      loadingLabel="Opening Google"
+      className="normal-case tracking-normal text-xl"
+      frontClassName={fullWidth ? 'min-h-14' : 'min-h-16 px-14'}
+    >
       Study
-      <AppIcon name="forward" size={20} />
+      <AppIcon name="forward" size={22} />
     </ActionButton>
-  ) : (
-    <GoogleSignInButton onClick={study} busy={isBusy} label="Study" fullWidth={fullWidth} />
-  ));
+  );
   const art = artFor(lessonId);
 
   return (
