@@ -8,6 +8,24 @@ is kept without its query string). It saves through `public.submit_report` as th
 returns 429 with its message) and, for `unsafe`, emails the owner at once through Resend with the report ID as the
 idempotency key. A failed email never fails a saved report. Errors: 400 invalid, 429 limit, 503 otherwise.
 
+## Cloud voice
+
+`POST /api/speech` requires a verified session and accepts `{ text, voice?, reading? }`: Chinese text of at most
+80 characters (it must contain a character; letters, digits and punctuation may come with it), `voice` `female`
+(default, `zh-TW-HsiaoChenNeural`) or `male` (`zh-TW-YunJheNeural`), and an optional `reading` in Bopomofo, one
+space-separated syllable per character, allowed only when the text is characters alone. It answers `audio/mpeg`
+(24 kHz, 48 kbps mono) with `X-Speech-Source: stored | new`.
+
+Each text is made once by Azure Speech (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`) and kept under
+`speech/v1/<voice>-<hash of text and reading>.mp3` (`shared/speechKey.ts`) in the `SPEECH_AUDIO` bucket binding;
+later requests are served from there. Without the binding the audio is made on every request. A reading is sent
+as `<phoneme alphabet="sapi">`, so the voice says the reading the card shows instead of choosing one. Limits: 40
+requests per learner per minute. Errors: 400 nothing to speak, 401/403 session, 429 limit, 503 the voice is not
+set up or its monthly allowance is used up, 502 any other failure. Nothing is stored on a failure.
+
+The app (`src/services/audio/cloudSpeech.ts`) asks only for Chinese text without a recording, keeps what it
+played in the device's audio cache under the same name, and stops asking for five minutes after a 503, 429 or 404.
+
 ## Feedback
 
 `POST /api/feedback` requires a verified school-beta session and accepts
@@ -85,8 +103,8 @@ Vocabulary packs reference verified, hash-named copies under `vocabulary-trimmed
 Supabase credentials are read by the server-owned client in `server/supabase.ts`; the server never
 imports browser application code.
 
-Recorded clips remain the primary audio source. Text without an eligible recording uses the browser's `speechSynthesis`: `zh-TW` for traditional characters and `zh-CN` for simplified characters.
-Unverified dictionary readings keep the no-guess rule.
+Recorded clips remain the primary audio source. Chinese text without an eligible recording is said by the cloud voice (above); when that is unavailable (signed out, offline, text over 80 characters, allowance used up) the browser's `speechSynthesis` reads it: `zh-TW` for traditional characters and `zh-CN` for simplified characters. English always uses the browser's voice.
+Dictionary cards keep the no-guess rule: a character plays its syllable recording, a longer word is said by the cloud voice with the card's pinyin sent as its reading, and a word whose pinyin does not give one syllable per character (erhua, letters) stays silent. They never use the browser's voice.
 
 
 ## Audio lifecycle and operational limits
@@ -97,8 +115,11 @@ flowchart TD
   B -->|yes| C[Memory object URL or persistent recording cache]
   C -->|miss| D[Stream directly from audio CDN]
   D -->|completed playback| E[Best-effort offline download]
-  B -->|no, text fallback allowed| F[Browser speech synthesis]
-  B -->|unverified dictionary reading| J[Report unavailable; no guessed reading]
+  B -->|no, text fallback allowed| G[Cloud voice: device cache, then POST /api/speech]
+  G -->|unavailable| F[Browser speech synthesis]
+  B -->|dictionary word with a reading| K[Cloud voice with the reading spelled out]
+  K -->|unavailable| J
+  B -->|dictionary word, reading not spellable| J[Report unavailable; no guessed reading]
 ```
 
 - Recorded downloads deduplicate at the shared transport. Each caller owns its cancellation; only the last canceled subscriber aborts the HTTP request. A fresh request can start immediately without inheriting a canceled promise. Lookahead remains sequential to keep foreground streaming responsive. Skipping quiz preparation cancels that preparation queue immediately.

@@ -6,6 +6,12 @@ export interface AssetFetcher { fetch(input: Request | URL | string, init?: Requ
 /** Cloudflare's rate limiting binding; `memoryLimiter` stands in where there is none. */
 export interface RateLimiter { limit(options: { key: string }): Promise<{ success: boolean }> }
 
+/** The part of Cloudflare's R2 bucket binding the cloud voice uses. */
+export interface AudioStore {
+  get(key: string): Promise<{ body: ReadableStream } | null>;
+  put(key: string, value: ArrayBuffer, options?: { httpMetadata?: { contentType?: string; cacheControl?: string } }): Promise<unknown>;
+}
+
 export interface Env {
   /** The built site (dist/). Absent in `npm run dev`, where Vite serves the files. */
   ASSETS?: AssetFetcher;
@@ -19,12 +25,18 @@ export interface Env {
   FEEDBACK_EMAIL_FROM?: string;
   FEEDBACK_EMAIL_TO?: string;
   SENTRY_DSN?: string;
+  /** Azure Speech, the cloud voice (server/speech.ts). Without the key, text without a recording uses the device voice. */
+  AZURE_SPEECH_KEY?: string;
+  AZURE_SPEECH_REGION?: string;
+  /** Where made audio is kept. Absent in `npm run dev`: every request is then made again. */
+  SPEECH_AUDIO?: AudioStore;
   /** Requests without a verified session, per IP. */
   IP_LIMIT?: RateLimiter;
   /** Per learner. */
   CONTENT_LIMIT?: RateLimiter;
   FEEDBACK_LIMIT?: RateLimiter;
   REPORT_LIMIT?: RateLimiter;
+  SPEECH_LIMIT?: RateLimiter;
 }
 
 export interface Context {

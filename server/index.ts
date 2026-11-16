@@ -22,6 +22,8 @@ const context: Context = {
     RESEND_API_KEY: process.env.RESEND_API_KEY,
     FEEDBACK_EMAIL_FROM: process.env.FEEDBACK_EMAIL_FROM,
     FEEDBACK_EMAIL_TO: process.env.FEEDBACK_EMAIL_TO,
+    AZURE_SPEECH_KEY: process.env.AZURE_SPEECH_KEY,
+    AZURE_SPEECH_REGION: process.env.AZURE_SPEECH_REGION ?? 'japaneast',
   },
   report: () => {},
 };

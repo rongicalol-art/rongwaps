@@ -5,6 +5,7 @@ import { submitFeedback } from './feedback';
 import { gameConfiguration } from './games';
 import { submitReport } from './reports';
 import { json, securityHeaders } from './respond';
+import { speak } from './speech';
 
 /**
  * The whole backend as one function from request to response. Cloudflare runs it (server/worker.ts);
@@ -26,6 +27,10 @@ async function route(context: Context, request: Request, url: URL): Promise<Resp
     if (pathname === '/api/reports' && request.method === 'POST') {
       const user = await requireUser(context, request, 'report');
       return user instanceof Response ? user : submitReport(context, request, user);
+    }
+    if (pathname === '/api/speech' && request.method === 'POST') {
+      const user = await requireUser(context, request, 'speech');
+      return user instanceof Response ? user : speak(context, request);
     }
     return json({ error: 'Not found' }, 404);
   }
