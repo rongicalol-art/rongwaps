@@ -57,6 +57,7 @@ ${TAG_RULES}
 - English glosses worded as adjectives (medieval, man-made, lifelong, sparkling) are Vs; glosses worded as adverbs (overnight, in many ways) are Adv.
 - Units of measure used after a number (公克 gram, 分鐘 minute, 公里 kilometre) are M.
 - Name is for specific people, places, organisations, brands, dynasties and titles of works. Languages, weekdays and months, festivals, religions and currencies are N.
+- Four-character idioms (成語) and other fixed expressions are Ph, even when they work like a verb or an adverb in a sentence (一乾二淨, 不翼而飛, 愛不釋手). An ordinary four-character compound noun or verb (衛星圖像 satellite photo) is not an idiom.
 - Decide every sense on its own: one word often has senses of different types.
 - Evidence can be wrong or incomplete; the sense text decides.
 
@@ -111,13 +112,18 @@ async function tagBatch(name: string): Promise<'done' | 'failed'> {
 }
 
 /** Tags per entry from a helper's answer file; in a scan batch (`base` given) unlisted entries keep theirs. */
-export function parseAnswers(entries: ReadonlyArray<Pick<PosBatchEntry, 'id' | 'senses'>>, text: string, base?: Record<string, string[]>): { tags: Record<string, string[]>; problems: string[] } {
+export function parseAnswers(entries: ReadonlyArray<Pick<PosBatchEntry, 'id' | 'senses'>>, text: string, base?: Record<string, string[]>): { tags: Record<string, string[]>; notes: Record<string, string>; problems: string[] } {
   const problems: string[] = [];
   const lines = new Map<number, string[]>();
+  const notes: Record<string, string> = {};
   for (const line of text.split('\n').map((item) => item.trim()).filter(Boolean)) {
-    const match = /^#?(\d+)\s*[:：]\s*([A-Za-z]+(?:\s*,\s*[A-Za-z]+)*)$/.exec(line);
-    if (match) lines.set(Number(match[1]), match[2].split(',').map((tag) => tag.trim()));
-    else if (line !== 'checked') problems.push(`unreadable line "${line.slice(0, 40)}"`);
+    // "#3: N,V" with an optional " | why" (the review's note).
+    const match = /^#?(\d+)\s*[:：]\s*([A-Za-z]+(?:\s*,\s*[A-Za-z]+)*)\s*(?:\|\s*(.*))?$/.exec(line);
+    if (match) {
+      lines.set(Number(match[1]), match[2].split(',').map((tag) => tag.trim()));
+      const entry = entries[Number(match[1]) - 1];
+      if (entry && match[3]) notes[entry.id] = match[3];
+    } else if (line !== 'checked') problems.push(`unreadable line "${line.slice(0, 40)}"`);
   }
   if (base && !/^checked$/m.test(text)) problems.push('no "checked" line');
   const tags: Record<string, string[]> = {};
@@ -130,7 +136,7 @@ export function parseAnswers(entries: ReadonlyArray<Pick<PosBatchEntry, 'id' | '
     tags[entry.id] = answer;
   });
   for (const number of lines.keys()) if (number < 1 || number > entries.length) problems.push(`#${number}: no such entry`);
-  return { tags, problems };
+  return { tags, notes, problems };
 }
 
 /** `--answers`: answer files → tags files, with a status line per kind. */
