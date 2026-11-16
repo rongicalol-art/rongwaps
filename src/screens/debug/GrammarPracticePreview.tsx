@@ -3,9 +3,7 @@ import { createPortal } from 'react-dom';
 import type { GrammarPractice, PracticeScene, SlotBuildItem } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { AppIcon, IconActionButton, WorkspaceWindow } from '../../lib/widgets';
-import { REPLY_PICK_PREVIEW } from './replyPickPreview';
-import { GrammarPracticeView } from './GrammarPracticeView';
-import { ExercisePage } from './ExercisePage';
+import { ExercisePage, GrammarPracticeView, REPLY_PICK_PREVIEW } from '../../features/grammar-practice';
 import { isExercisePage } from '../../utils/grammar/grammarPracticeCheck';
 
 /** Every authored book exercise, straight from content/grammar-practice (DEV gallery only). */
