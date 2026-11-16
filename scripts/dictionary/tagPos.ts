@@ -5,6 +5,10 @@ import { askCodex, eachLimited, replyArray } from './codexRun';
 import type { PosBatchEntry } from './posBatches';
 
 /**
+ * `npx tsx scripts/dictionary/tagPos.ts --answers [--model name] [--only kind] [--batches a,b]` — no AI:
+ * turns helpers' answer files (output/dictionary-pos/answers/<batch>.txt, format in HELPER_BRIEF) into
+ * tags files, lists every answer file with a problem and prints what is still to do.
+ *
  * `npx tsx scripts/dictionary/tagPos.ts [--only single|multi] [--batches a,b] [--limit N] [--concurrency N]`
  *
  * Dev-only, resumable: asks Codex for one word-type tag per dictionary sense of each batch from
@@ -42,6 +46,24 @@ const RULES = `You assign a word type to each English sense of Chinese dictionar
 For every entry give exactly one tag per listed sense, in the listed order.
 ${TAG_RULES}
 Answer with JSON only, no prose: [{"id":"<id>","tags":["N","V",…]},…], one object per entry, in input order.`;
+
+/** What a helper (a subagent working from files) is told. */
+export const HELPER_BRIEF = `You assign a word type to each English sense of Chinese dictionary entries, for Taiwanese learners of Mandarin (textbook: Modern Chinese 時代華語).
+
+Input: output/dictionary-pos/agent/<batch>.txt. Each entry starts "#<n> <word> <pinyin>", then its numbered senses, then evidence lines when there are any ("book:" the textbook's own tag, "wiktionary:" Wiktionary's word type and glosses).
+Output: output/dictionary-pos/answers/<batch>.txt, written with the Write tool. One line per entry, in order: "#<n>: TAG,TAG" with exactly one tag per sense, in sense order. No other text.
+
+${TAG_RULES}
+- English glosses worded as adjectives (medieval, man-made, lifelong, sparkling) are Vs; glosses worded as adverbs (overnight, in many ways) are Adv.
+- Units of measure used after a number (公克 gram, 分鐘 minute, 公里 kilometre) are M.
+- Name is for specific people, places, organisations, brands, dynasties and titles of works. Languages, weekdays and months, festivals, religions and currencies are N.
+- Four-character idioms (成語) and other fixed expressions are Ph, even when they work like a verb or an adverb in a sentence (一乾二淨, 不翼而飛, 愛不釋手). An ordinary four-character compound noun or verb (衛星圖像 satellite photo) is not an idiom.
+- Decide every sense on its own: one word often has senses of different types.
+- Evidence can be wrong or incomplete; the sense text decides.
+
+Scan batches (names-NNN, nouns-NNN) are different: every sense there already has the tag named in the file's first line. Write "#<n>: TAG,TAG" only for entries where at least one sense needs another tag (give all tags of that entry), and start the answer file with the line "checked". A file with only "checked" means every tag stands.
+
+Read each batch file fully, think about each entry, then write its answer file before you open the next batch. Do not write scripts to produce answers, and do not touch any other file.`;
 
 interface TagAnswer { id: string; tags: string[] }
 
@@ -89,9 +111,74 @@ async function tagBatch(name: string): Promise<'done' | 'failed'> {
   return 'failed';
 }
 
+/** Tags per entry from a helper's answer file; in a scan batch (`base` given) unlisted entries keep theirs. */
+export function parseAnswers(entries: ReadonlyArray<Pick<PosBatchEntry, 'id' | 'senses'>>, text: string, base?: Record<string, string[]>): { tags: Record<string, string[]>; notes: Record<string, string>; problems: string[] } {
+  const problems: string[] = [];
+  const lines = new Map<number, string[]>();
+  const notes: Record<string, string> = {};
+  for (const line of text.split('\n').map((item) => item.trim()).filter(Boolean)) {
+    // "#3: N,V" with an optional " | why" (the review's note).
+    const match = /^#?(\d+)\s*[:：]\s*([A-Za-z]+(?:\s*,\s*[A-Za-z]+)*)\s*(?:\|\s*(.*))?$/.exec(line);
+    if (match) {
+      lines.set(Number(match[1]), match[2].split(',').map((tag) => tag.trim()));
+      const entry = entries[Number(match[1]) - 1];
+      if (entry && match[3]) notes[entry.id] = match[3];
+    } else if (line !== 'checked') problems.push(`unreadable line "${line.slice(0, 40)}"`);
+  }
+  if (base && !/^checked$/m.test(text)) problems.push('no "checked" line');
+  const tags: Record<string, string[]> = {};
+  entries.forEach((entry, index) => {
+    const answer = lines.get(index + 1) ?? base?.[entry.id];
+    if (!answer) { problems.push(`#${index + 1}: missing`); return; }
+    if (answer.length !== entry.senses.length) problems.push(`#${index + 1}: ${answer.length} tags for ${entry.senses.length} senses`);
+    const unknown = answer.filter((tag) => !(POS_TAGS as readonly string[]).includes(tag));
+    if (unknown.length) problems.push(`#${index + 1}: unknown tags ${unknown.join(', ')}`);
+    tags[entry.id] = answer;
+  });
+  for (const number of lines.keys()) if (number < 1 || number > entries.length) problems.push(`#${number}: no such entry`);
+  return { tags, notes, problems };
+}
+
+/** `--answers`: answer files → tags files, with a status line per kind. */
+async function collectAnswers(model: string, wanted: (name: string) => boolean) {
+  const all = (await readdir(resolve(OUT, 'batches'))).map((file) => file.replace(/\.json$/, '')).sort();
+  const status = new Map<string, { total: number; done: number }>();
+  const bad: string[] = [];
+  for (const name of all) {
+    const kind = name.replace(/-\d+$/, '');
+    const rule = kind === 'names' || kind === 'nouns';
+    const row = status.get(kind) ?? { total: 0, done: 0 };
+    row.total += 1;
+    status.set(kind, row);
+    const tagFile = resolve(OUT, 'tags', `${name}.json`);
+    const answerFile = resolve(OUT, 'answers', `${name}.txt`);
+    const current = existsSync(tagFile) ? (JSON.parse(await readFile(tagFile, 'utf8')) as { model: string; tags: Record<string, string[]> }) : null;
+    const settled = current && !(rule && current.model === 'rule');
+    if (wanted(name) && existsSync(answerFile) && !settled) {
+      const entries = JSON.parse(await readFile(resolve(OUT, 'batches', `${name}.json`), 'utf8')) as PosBatchEntry[];
+      const { tags, problems } = parseAnswers(entries, await readFile(answerFile, 'utf8'), rule ? current?.tags : undefined);
+      if (problems.length === 0) {
+        await writeFile(tagFile, JSON.stringify({ model: rule ? `rule+${model}` : model, tags }), 'utf8');
+        row.done += 1;
+      } else bad.push(`${name}: ${problems.slice(0, 6).join('; ')}${problems.length > 6 ? ` (+${problems.length - 6} more)` : ''}`);
+    } else if (settled) row.done += 1;
+  }
+  for (const [kind, row] of status) console.log(`${kind}: ${row.done}/${row.total} batches done`);
+  if (bad.length) {
+    console.log(`\n${bad.length} answer files need fixing (rewrite the whole file):`);
+    for (const line of bad) console.log(`  ${line}`);
+    process.exitCode = 1;
+  }
+}
+
 async function main() {
   const { only, batches, limit, concurrency } = parseArgs();
   await mkdir(resolve(OUT, 'tags'), { recursive: true });
+  if (process.argv.includes('--answers')) {
+    const model = process.argv[process.argv.indexOf('--model') + 1];
+    await collectAnswers(process.argv.includes('--model') && model ? model : 'claude', (name) => (batches ? batches.includes(name) : !only || name.startsWith(only)));
+    return;
+  }
   const all = (await readdir(resolve(OUT, 'batches'))).map((file) => file.replace(/\.json$/, '')).sort();
   const todo = all
     .filter((name) => (batches ? batches.includes(name) : !only || name.startsWith(only)))

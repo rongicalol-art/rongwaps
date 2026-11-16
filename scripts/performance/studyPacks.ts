@@ -93,7 +93,8 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
     rows: [...courseByRow].map(([rowId, card]) => [rowId, cardIds.get(card)]),
   })));
   // The search index is sorted most common first; course tags match the server's (same links, same rule).
-  const common = (await json<{ items: CompactSearchEntry[] }>('/data/search/dictionary-search-index.json')).items.slice(0, COMMON_WORD_COUNT);
+  // Without the rows' word types: the full dictionary's answer brings them, and the slice stays under its budget.
+  const common = (await json<{ items: CompactSearchEntry[] }>('/data/search/dictionary-search-index.json')).items.slice(0, COMMON_WORD_COUNT).map(item => item.slice(0, 7) as CompactSearchEntry);
   const commonCourse = common.flatMap(([id, , , pinyin_accented]) => {
     const card = courseByRow.get(id);
     if (!card) return [];
