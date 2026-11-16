@@ -46,7 +46,7 @@ export function createDictionaryEngine(json: DictionaryLoader): DictionaryEngine
   const posPaths = shardPaths('dictionary-pos');
 
   const shards = new Map<number, Promise<DictionaryShard>>();
-  /** Word types of dictionary senses (all 64 shards stay cached: ~1 MB). */
+  /** Word types of rows the search index leaves out (it carries the others' itself); loaded shards stay cached. */
   const posShards = new Map<number, Promise<Record<string, string>>>();
   async function wordTypeOf(row: Pick<SearchResult, 'traditional' | 'pinyin_accented'>): Promise<string | undefined> {
     const shard = getDictionaryShard(row.traditional);
@@ -169,7 +169,7 @@ export function createDictionaryEngine(json: DictionaryLoader): DictionaryEngine
       json<{ parents: Record<string, string>; phonetic: Record<string, string> }>('/data/relations/parts.json'),
     ]);
     const parts: PartsIndex = { parents: new Map(Object.entries(pack.parents).map(([key, value]) => [key, parseMembers(value)])), phonetic: new Map(Object.entries(pack.phonetic)) };
-    return { items, parts, index: createDictionaryIndex(items), scoreById: new Map(items.map(item => [item[0], item[6]])) };
+    return { items, parts, index: createDictionaryIndex(items), scoreById: new Map(items.map(item => [item[0], item[6]])), posById: new Map(items.map(item => [item[0], item[7]])) };
   });
   const cache = new Map<string, SearchResult[]>();
 
@@ -177,7 +177,7 @@ export function createDictionaryEngine(json: DictionaryLoader): DictionaryEngine
     const key = `${query}:${limit}`;
     const cached = cache.get(key);
     if (cached) return cached;
-    const [{ items, parts, index, scoreById }, { byRow }] = await Promise.all([searchData(), courseData()]);
+    const [{ items, parts, index, scoreById, posById }, { byRow }] = await Promise.all([searchData(), courseData()]);
     let results = searchByCharacterComponents(items, parts, query, limit);
     if (!results.length) results = index.search(query, limit);
     if (!results.length) results = /\p{Script=Han}/u.test(query) ? segmentChineseQuery(items, query, limit) : segmentPinyinQuery(items, query, limit);
@@ -199,7 +199,7 @@ export function createDictionaryEngine(json: DictionaryLoader): DictionaryEngine
     results = await Promise.all(results.map(async row => {
       const card = byRow.get(row.id);
       if (card) return { ...row, ...courseFields(row, card) };
-      const pos = await wordTypeOf(row);
+      const pos = posById.has(row.id) ? posById.get(row.id) : await wordTypeOf(row);
       return pos ? { ...row, pos } : row;
     }));
     cache.set(key, results);

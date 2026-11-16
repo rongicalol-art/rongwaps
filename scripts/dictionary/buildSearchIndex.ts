@@ -3,13 +3,14 @@ import { resolve } from 'node:path';
 import { stripPinyinTones } from '../../src/utils/pinyin/pinyinNormalize';
 import { linkCourseReadings, orderReadingKeys, readingKey } from '../../src/utils/vocabulary/wordEntry';
 import { isReferenceOnlyDefinitions, REFERENCE_SENSE_RE } from '../../shared/dictionaryDefinitions';
+import { firstPosTag, posTagsKey } from '../../shared/dictionarySearch';
 import { readCourseCards, readDictionaryRows, readLevelWords, readTaiwanReadings } from './learnerData';
 
 const SEARCH_DIR = resolve(process.cwd(), 'public/data/search');
 const SEARCH_INDEX_PATH = resolve(SEARCH_DIR, 'dictionary-search-index.json');
 const FREQ_MAP_PATH = resolve(process.cwd(), 'output/dictionary-frequency-map.json');
 
-type CompactSearchTuple = [number, string, string, string, string, string[], number];
+type CompactSearchTuple = [number, string, string, string, string, string[], number, string?];
 
 /** A character's secondary readings rank lower: 嗎 má "what?" below 嗎 ma, the question particle. */
 const READING_RANK_FACTOR = 0.5;
@@ -62,6 +63,9 @@ async function main(): Promise<void> {
       readingRank.set(row.id, Math.max(0, order.indexOf(key)));
     }
   }
+
+  // The word type a search row shows: its reading's first tagged sense (content/dictionary/posTags.json).
+  const posTags = (JSON.parse(await readFile(resolve(process.cwd(), 'content/dictionary/posTags.json'), 'utf8')) as { entries: Record<string, string> }).entries;
 
   // 4. Filter and build scored entries
   const items: CompactSearchTuple[] = [];
@@ -146,6 +150,8 @@ async function main(): Promise<void> {
       nonStubDefs.length > 0 ? nonStubDefs : defs,
       score,
     ]);
+    const pos = firstPosTag(posTags[posTagsKey(traditional, pinyinAccented)]);
+    if (pos) items[items.length - 1].push(pos);
   }
 
   // Sort by score descending, then character length ascending, then id ascending
