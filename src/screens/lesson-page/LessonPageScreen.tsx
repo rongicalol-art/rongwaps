@@ -90,7 +90,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
         <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 pb-10 pt-2 lg:gap-12 lg:px-10 lg:pb-16 lg:pt-4">
           <section className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-10">
             {art && <img src={art} alt="" width={640} height={360} className="aspect-video w-full rounded-feature object-cover" />}
-            <div className="flex min-w-0 flex-col gap-5 lg:justify-between lg:py-1">
+            <div className="flex min-w-0 flex-col gap-5 lg:justify-center lg:gap-7">
               <div className="flex flex-col gap-1">
                 <p className="text-sm font-extrabold text-ui-muted-strong">Modern Chinese {LESSON_PAGE_BOOK} · Lesson {lessonId}</p>
                 <h1 className="text-3xl font-black leading-tight tracking-tight text-ui-ink-strong text-balance lg:text-4xl">{en}</h1>
