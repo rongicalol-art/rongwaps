@@ -5,10 +5,10 @@ import { PracticeChoiceButton } from '../../features/practice';
 import { useAuth } from '../../hooks/useAuth';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { usePageMeta } from '../../hooks/usePageMeta';
-import { ActionButton, BrandWordmark, SpeakerIcon } from '../../lib/widgets';
+import { ActionButton, AppIcon, BrandWordmark, SpeakerIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import { dismissPrerender } from '../../utils/browser/prerender';
-import { SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
+import { GoogleSignInButton, SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
 import { playWord } from '../landing/demos/demoUtils';
 import type { SampleWord } from '../landing/sampleWords';
 import { LESSON_PAGES } from './lessonPageData';
@@ -59,11 +59,15 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
 
   const hear = (word: SampleWord, key: string) => { playWord(word); setPlaying(key); };
   const study = () => (currentUser ? navigate(TAB_ROUTES.path) : void signIn());
-  const studyButton = (
-    <ActionButton size="lg" fullWidth onClick={study} loading={isBusy && !currentUser} loadingLabel="Study" className="normal-case tracking-normal">
+  // Signed out, Study is the landing page's Google button: the tile says what the tap does.
+  const studyButton = (fullWidth: boolean) => (currentUser ? (
+    <ActionButton size="lg" fullWidth={fullWidth} onClick={study} className="normal-case tracking-normal text-lg" frontClassName="px-8">
       Study
+      <AppIcon name="forward" size={20} />
     </ActionButton>
-  );
+  ) : (
+    <GoogleSignInButton onClick={study} busy={isBusy} label="Study" fullWidth={fullWidth} />
+  ));
   const art = artFor(lessonId);
 
   return (
@@ -85,8 +89,8 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
                 <h1 className="text-3xl font-black leading-tight tracking-tight text-ui-ink-strong text-balance lg:text-4xl">{en}</h1>
                 <p lang="zh-Hant" className="font-chinese text-xl font-semibold text-ui-muted-strong lg:text-2xl">{zh}</p>
               </div>
-              <div className="hidden flex-col gap-3 lg:flex">
-                {studyButton}
+              <div className="hidden flex-col items-start gap-3 lg:flex">
+                {studyButton(false)}
                 {error && <SignInMessageNote message={error} />}
                 {!currentUser && <SignInConsent className="!text-sm" />}
               </div>
@@ -193,7 +197,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
 
       <div className="flex flex-col gap-2 bg-ui-canvas px-5 pb-3 pt-2 lg:hidden">
         {error && <SignInMessageNote message={error} />}
-        {studyButton}
+        {studyButton(true)}
       </div>
     </div>
   );
