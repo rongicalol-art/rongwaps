@@ -1,11 +1,12 @@
 import { memo, useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { AppIcon, TranslationLines } from '../../../lib/widgets';
+import { AppIcon, SentenceWordTooltipPortal, TranslationLines, sentenceLookupHandlers, useSentenceSegments, useSentenceWordHover } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { splitDialogueTurns } from '../../../utils/lesson/dialogueTurns';
 import { cn } from '../../../utils/cn';
+import type { SentenceSegment } from '../../../types/sentenceLookup';
 import { sentenceText, type SentenceSession } from '../hooks/useSentenceSession';
 import type { LessonSentence } from '../hooks/useLessonSentences';
 
@@ -27,6 +28,17 @@ function highlightMask(text: string, terms: readonly string[]): boolean[] {
   return mask;
 }
 
+/** Before the words are known (or on a card that isn't read yet) every character is its own piece. */
+function characterSegments(text: string): SentenceSegment[] {
+  const result: SentenceSegment[] = [];
+  let index = 0;
+  for (const char of text) {
+    result.push({ segment: char, index, input: text, isWordLike: HAN.test(char) });
+    index += char.length;
+  }
+  return result;
+}
+
 interface SentenceCardProps {
   sentence: LessonSentence;
   text: string;
@@ -38,11 +50,11 @@ interface SentenceCardProps {
   hard: boolean;
   onTap: () => void;
   onToggleHard: () => void;
-  onCharTap: (char: string) => void;
+  onWordTap: (word: string) => void;
 }
 
 const SentenceCard = memo(function SentenceCard({
-  sentence, text, highlightTerms, focused, distance, open, hard, onTap, onToggleHard, onCharTap,
+  sentence, text, highlightTerms, focused, distance, open, hard, onTap, onToggleHard, onWordTap,
 }: SentenceCardProps) {
   const reduceMotion = useReducedMotion();
   const { record } = sentence;
@@ -69,6 +81,12 @@ const SentenceCard = memo(function SentenceCard({
   const peekTimerRef = useRef<number | null>(null);
   /** A press that peeked must not also count as a tap when it lifts. */
   const peekedRef = useRef(false);
+  /** The same word reading the rest of the app uses: the segmenter plus the dictionary, so 電腦 is one word, not 電 and 腦. Only cards being read pay for it. */
+  const wordSource = focused || open ? text : '';
+  const wordSegments = useSentenceSegments(wordSource, highlightTerms, sentenceLookupHandlers.validateWords);
+  const segments = useMemo(() => (wordSegments.length ? wordSegments : characterSegments(text)), [wordSegments, text]);
+  const { hoveredWord, activeWordKey, enter, leave, keepOpen, closeTooltip } = useSentenceWordHover();
+  useEffect(() => { if (!open) closeTooltip(); }, [open, closeTooltip]);
 
   const endPress = () => {
     if (peekTimerRef.current !== null) window.clearTimeout(peekTimerRef.current);
@@ -105,8 +123,6 @@ const SentenceCard = memo(function SentenceCard({
       )}
       <p lang="zh" className={cn('font-chinese text-[24px] text-ui-ink-strong sm:text-[30px]', stacked ? 'leading-[2.1]' : 'leading-[1.75]')}>
         {(turns ?? [{ speaker: null, start: 0, end: text.length }]).map((turn) => {
-          const fromIdx = codeUnitToCharIndex.get(turn.start) ?? 0;
-          const toIdx = codeUnitToCharIndex.get(turn.end) ?? chars.length;
           const wideLabel = (turn.speaker?.length ?? 0) > 1;
           return (
             <span
@@ -126,39 +142,53 @@ const SentenceCard = memo(function SentenceCard({
                   <span className="text-[0.6em] font-black text-ui-muted">{turn.speaker}</span>
                 </span>
               )}
-              {chars.slice(fromIdx, toIdx).map((char, offset) => {
-                const index = fromIdx + offset;
-                const isHan = HAN.test(char);
+              {segments.filter((part) => part.index >= turn.start && part.index < turn.end).map((part) => {
+                const startChar = codeUnitToCharIndex.get(part.index) ?? 0;
+                const wordKey = `${part.index}-${part.segment}`;
+                const isWord = open && Boolean(part.isWordLike) && HAN.test(part.segment);
                 return (
                   <span
-                    key={index}
-                    onPointerDown={isHan ? startPress(index) : undefined}
-                    onPointerUp={endPress}
-                    onPointerLeave={endPress}
-                    onPointerCancel={endPress}
-                    onContextMenu={(event) => event.preventDefault()}
-                    onClick={open && isHan ? (event) => {
+                    key={wordKey}
+                    onPointerEnter={isWord ? (event) => { if (event.pointerType !== 'touch') enter(event.currentTarget, part.segment, wordKey); } : undefined}
+                    onPointerLeave={isWord ? leave : undefined}
+                    onClick={isWord ? (event) => {
                       event.stopPropagation();
                       if (peekedRef.current) { peekedRef.current = false; return; }
-                      onCharTap(char);
+                      closeTooltip();
+                      onWordTap(part.segment);
                     } : undefined}
                     className={cn(
-                      'relative',
-                      highlighted[index] && 'text-brand-primary-text',
-                      open && isHan && 'rounded-xs transition-colors hover:bg-brand-primary/10',
+                      isWord && 'rounded-xs transition-colors',
+                      isWord && (activeWordKey === wordKey ? 'bg-brand-primary/10' : 'hover:bg-brand-primary/10'),
                     )}
                   >
-                    {stacked && isHan ? (
-                      <ruby className="[ruby-align:center]">
-                        {char}
-                        <rt className="pb-0.5 font-sans text-[11px] font-semibold tracking-normal text-ui-ink sm:text-[13px]">{syllables?.[index]?.text}</rt>
-                      </ruby>
-                    ) : char}
-                    {peek === index && syllables?.[index] && (
-                      <span className="pointer-events-none absolute bottom-full left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xs bg-ui-surface px-1 font-sans text-sm font-semibold leading-tight text-ui-ink">
-                        {syllables[index]?.text}
-                      </span>
-                    )}
+                    {Array.from(part.segment).map((char, offset) => {
+                      const index = startChar + offset;
+                      const isHan = HAN.test(char);
+                      return (
+                        <span
+                          key={index}
+                          onPointerDown={isHan ? startPress(index) : undefined}
+                          onPointerUp={endPress}
+                          onPointerLeave={endPress}
+                          onPointerCancel={endPress}
+                          onContextMenu={(event) => event.preventDefault()}
+                          className={cn('relative', highlighted[index] && 'text-brand-primary-text')}
+                        >
+                          {stacked && isHan ? (
+                            <ruby className="[ruby-align:center]">
+                              {char}
+                              <rt className="pb-0.5 font-sans text-[11px] font-semibold tracking-normal text-ui-ink sm:text-[13px]">{syllables?.[index]?.text}</rt>
+                            </ruby>
+                          ) : char}
+                          {peek === index && syllables?.[index] && (
+                            <span className="pointer-events-none absolute bottom-full left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xs bg-ui-surface px-1 font-sans text-sm font-semibold leading-tight text-ui-ink">
+                              {syllables[index]?.text}
+                            </span>
+                          )}
+                        </span>
+                      );
+                    })}
                   </span>
                 );
               })}
@@ -166,6 +196,16 @@ const SentenceCard = memo(function SentenceCard({
           );
         })}
       </p>
+
+      {hoveredWord && (
+        <SentenceWordTooltipPortal
+          data={hoveredWord}
+          reduceMotion={Boolean(reduceMotion)}
+          onMouseEnter={keepOpen}
+          onMouseLeave={leave}
+          onPlayAudio={sentenceLookupHandlers.playAudio ? () => void sentenceLookupHandlers.playAudio?.(hoveredWord.word, hoveredWord.info?.pinyin) : undefined}
+        />
+      )}
 
       <AnimatePresence initial={false}>
         {open && (
@@ -211,8 +251,8 @@ const SentenceCard = memo(function SentenceCard({
 interface SentenceFeedProps {
   session: SentenceSession;
   highlightTerms: readonly string[];
-  /** Tap a character on an open card. */
-  onOpenCharacter: (char: string) => void;
+  /** Tap a word (or a lone character) on an open card. */
+  onOpenWord: (word: string) => void;
   /** Keys and Flow pause while an overlay (the breakdown) is on top. */
   isOverlayOpen?: boolean;
 }
@@ -221,7 +261,7 @@ interface SentenceFeedProps {
  * The sentence feed: one card in focus, its neighbours faded. Native scroll snapping moves it on
  * swipe, wheel and touchpad; keys and Flow scroll it programmatically.
  */
-export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverlayOpen = false }: SentenceFeedProps) {
+export function SentenceFeed({ session, highlightTerms, onOpenWord, isOverlayOpen = false }: SentenceFeedProps) {
   const { deck, current, currentIndex, openIds, hardIds, goTo, next, play, toggleOpen, toggleHard, pauseFlow } = session;
   const characterPreference = useAppStore((state) => state.characterPreference);
   const reduceMotion = useReducedMotion();
@@ -324,7 +364,7 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
               hard={hardIds.has(sentence.record.id)}
               onTap={index === currentIndex ? toggleOpen : () => goTo(index)}
               onToggleHard={() => toggleHard(sentence.record.id)}
-              onCharTap={onOpenCharacter}
+              onWordTap={onOpenWord}
             />
           </div>
         ))}

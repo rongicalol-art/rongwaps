@@ -40,7 +40,7 @@ export async function lookupSentenceWord(
   return task;
 }
 
-export async function segmentSentenceText(text: string, authoredWords: string[] = []) {
+export async function segmentSentenceText(text: string, authoredWords: readonly string[] = []) {
   const segments = sentenceSegments(text, authoredWords);
   const candidates = sentenceCandidates(segments.filter(part => !authoredWords.includes(part.segment)));
   const valid = await validateSentenceWords(candidates);

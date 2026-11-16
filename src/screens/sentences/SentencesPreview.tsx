@@ -32,7 +32,7 @@ export function SentencesPreview() {
         ) : (
           <div className="flex h-full flex-col">
             <div className="min-h-0 flex-1">
-              <SentenceFeed session={session} highlightTerms={highlightTerms} onOpenCharacter={() => {}} />
+              <SentenceFeed session={session} highlightTerms={highlightTerms} onOpenWord={() => {}} />
             </div>
             <SentenceDock session={session} />
           </div>

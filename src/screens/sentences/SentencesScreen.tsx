@@ -28,6 +28,7 @@ export function SentencesScreen({
 }: SentencesScreenProps) {
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const sessionKey = `${getDeckIdentityKey({
     activeBookId, selectedLessons, selectedLessonParts, libraryActiveFolder, isReviewDeck, isLibraryDeck,
   })}:sentences`;
@@ -76,7 +77,13 @@ export function SentencesScreen({
         <SentenceFeed
           session={session}
           highlightTerms={highlightTerms}
-          onOpenCharacter={(char) => { session.pauseFlow(); session.stopAudio(); setBreakdown(char); }}
+          onOpenWord={(word) => {
+            session.pauseFlow();
+            session.stopAudio();
+            // One character opens its breakdown; a word opens the dictionary entry, as everywhere else.
+            if (Array.from(word).length > 1) setDictionaryWord(word);
+            else setBreakdown(word);
+          }}
           isOverlayOpen={Boolean(breakdown)}
         />
       </div>
