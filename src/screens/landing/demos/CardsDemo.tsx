@@ -10,7 +10,7 @@ const FACE = 'absolute inset-0 flex flex-col items-center justify-center gap-2 r
 
 /** The lesson deck: tap to flip, grade to deal the next card. Nothing is saved. */
 export function CardsDemo() {
-  const [deck, setDeck] = useState(() => shuffle(SAMPLE_WORDS));
+  const [deck, setDeck] = useState<readonly (typeof SAMPLE_WORDS)[number][]>(SAMPLE_WORDS);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [hanzi, pinyin, meaning] = deck[index];

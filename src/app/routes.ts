@@ -17,6 +17,24 @@ export function tabFromPathname(pathname: string): TabRoute | null {
 }
 
 /**
+ * Public study guides (Books & Lessons, Grammar & Exercises, TOCFL Prep).
+ * Rendered outside the workspace shell without sign-in or sync.
+ */
+export const GUIDE_ROUTES = {
+  books: '/books',
+  grammar: '/grammar',
+  tocfl: '/tocfl',
+} as const;
+
+export type GuidePage = keyof typeof GUIDE_ROUTES;
+
+export function guidePageFromPathname(pathname: string): GuidePage | null {
+  const normalized = pathname.replace(/\/+$/, '');
+  const match = (Object.keys(GUIDE_ROUTES) as GuidePage[]).find((page) => GUIDE_ROUTES[page] === normalized);
+  return match ?? null;
+}
+
+/**
  * Public pages (About, Sources & Licenses, legal). They render outside the workspace shell (no sign-in, no
  * sync, no side nav) so they can be linked from the sign-in window and read by
  * anyone, including people who have not created an account.

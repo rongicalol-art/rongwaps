@@ -3,10 +3,10 @@
  * pattern rows (Book 1, Lessons 1–2); hooks and parts come from public/data/memory-hooks.
  */
 export const LANDING_META = {
-  title: "Ron's Mandarin · 時代華語 Modern Chinese Flashcards",
-  description: 'Free traditional Chinese flashcards, read-along audio, memory hooks and TOCFL mock tests for the Taiwan textbook 時代華語 Modern Chinese, one lesson at a time.',
+  title: "時代華語 Modern Chinese Study App · Ron's Mandarin",
+  description: 'Free companion for 時代華語 Modern Chinese: read-along lessons, grammar, book exercises, flashcards, memory hooks & TOCFL mock tests.',
   /** Shorter text for link-preview cards, which cut off around 125 characters. */
-  socialDescription: 'Read-along audio, memory hooks, flashcards and TOCFL mock tests for 時代華語 Modern Chinese. Free.',
+  socialDescription: 'Read-along lessons, grammar, book exercises, flashcards and TOCFL mock tests for 時代華語 Modern Chinese. Free.',
 };
 
 export type DemoId = 'cards' | 'quiz' | 'tones' | 'dictionary' | 'grammar' | 'party' | 'characters';
@@ -57,8 +57,8 @@ export const FAQ: { q: string; a: string }[] = [
   { q: 'Is there a test after each lesson?', a: 'Yes, a TOCFL-style mock test with listening and reading. Book 1 and the first lessons of Book 3 have one now, with more on the way. Words you miss go back into your reviews.' },
   { q: 'Can I study with other people?', a: 'Yes. Study together shows who else is studying and lets you race each other in quick quizzes.' },
   { q: 'Does it have Chinese flashcards?', a: 'Yes. Traditional Chinese flashcards with Taiwan audio for every lesson, plus quizzes, tones and grammar.' },
-  { q: 'Which books does it cover?', a: '時代華語 Modern Chinese Books 1 to 4, from TOCFL A1 to B2. Books 1 to 3 are open in the beta.' },
-  { q: 'Can I use it for TOCFL?', a: 'Yes. The books run from TOCFL A1 to B2, so each lesson builds the vocabulary and grammar those levels test.' },
+  { q: 'Which books does it cover?', a: '時代華語 Modern Chinese. Books 1 to 3 are open in the beta, with Book 4 coming when ready.' },
+  { q: 'Can I use it for TOCFL?', a: 'Yes. Each lesson builds the Traditional Chinese vocabulary, grammar, and listening skills that TOCFL tests across Band A and Band B.' },
   { q: 'Traditional or simplified?', a: 'Traditional, as in the book, with Taiwan pronunciation.' },
   { q: 'Does it work on my phone?', a: 'Yes, in any browser. Add it to your home screen like an app.' },
 ];
