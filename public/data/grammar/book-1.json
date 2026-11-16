@@ -127,8 +127,10 @@
               ],
               "english": "Whose surname is Li?",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/0d2d8d0930f7.mp3"
+                "voice": "book",
+                "file": "B1-01-1-3.mp3",
+                "start": 13.45,
+                "end": 15.32
               }
             },
             {
@@ -1678,8 +1680,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5e670a1ce952.mp3"
+                  "voice": "book",
+                  "file": "B1-01-1-3.mp3",
+                  "start": 67.57,
+                  "end": 70.28
                 }
               }
             },
@@ -3752,6 +3756,12 @@
                   "id": "l1g4-ct1-ma",
                   "traditional": "嗎",
                   "simplified": "吗"
+                },
+                "audio": {
+                  "voice": "book",
+                  "file": "B1-01-1-3.mp3",
+                  "start": 93.6,
+                  "end": 95.6
                 }
               },
               {
@@ -3765,6 +3775,12 @@
                 "particle": {
                   "id": "l1g4-ct2-ne",
                   "traditional": "呢"
+                },
+                "audio": {
+                  "voice": "book",
+                  "file": "B1-01-2-3.mp3",
+                  "start": 20.54,
+                  "end": 24.33
                 }
               }
             ],
@@ -4583,8 +4599,10 @@
               ],
               "english": "I (don't) like him.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/5b302357f7b3.mp3"
+                "voice": "book",
+                "file": "B1-01-2-3.mp3",
+                "start": 55.28,
+                "end": 57.09
               }
             }
           ],
@@ -5463,7 +5481,13 @@
               "traditional": "我是日本人，你呢？",
               "simplified": "我是日本人，你呢？",
               "pinyin": "Wǒ shì Rìběn rén, nǐ ne?",
-              "english": "I am from Japan. How about you?"
+              "english": "I am from Japan. How about you?",
+              "audio": {
+                "voice": "book",
+                "file": "B1-01-2-3.mp3",
+                "start": 20.54,
+                "end": 24.33
+              }
             }
           },
           {
@@ -5759,8 +5783,10 @@
                   ],
                   "english": "16th, May",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/c40fd87b4222.mp3"
+                    "voice": "book",
+                    "file": "B1-02-1-3.mp3",
+                    "start": 10.5,
+                    "end": 12.44
                   }
                 }
               ],
@@ -5880,8 +5906,10 @@
                   ],
                   "english": "9:20",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/7e8c7dd6797b.mp3"
+                    "voice": "book",
+                    "file": "B1-02-1-3.mp3",
+                    "start": 16.69,
+                    "end": 18.99
                   }
                 }
               ],
@@ -5989,8 +6017,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/53099f30754a.mp3"
+                  "voice": "book",
+                  "file": "B1-02-1-3.mp3",
+                  "start": 22.71,
+                  "end": 28.87
                 }
               }
             },
@@ -6061,8 +6091,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0252781b91d7.mp3"
+                  "voice": "book",
+                  "file": "B1-02-1-3.mp3",
+                  "start": 32.22,
+                  "end": 38.26
                 }
               }
             },
@@ -6160,8 +6192,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5732bede75b1.mp3"
+                  "voice": "book",
+                  "file": "B1-02-1-3.mp3",
+                  "start": 41.8,
+                  "end": 48.59
                 }
               }
             }
@@ -6490,8 +6524,10 @@
                   "pinyin": "Xiànzài shí diǎn shíwǔ fēn.",
                   "english": "It’s 10:15 now.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/0eb63b6e68f7.mp3"
+                    "voice": "book",
+                    "file": "B1-02-1-3.mp3",
+                    "start": 26.03,
+                    "end": 28.87
                   }
                 }
               },
@@ -6622,8 +6658,10 @@
                   "pinyin": "Jīntiān xīngqí sì.",
                   "english": "Today is Thursday.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/f61cd2895154.mp3"
+                    "voice": "book",
+                    "file": "B1-02-1-3.mp3",
+                    "start": 35.95,
+                    "end": 38.26
                   }
                 }
               },
@@ -6752,8 +6790,10 @@
                   "pinyin": "Jīntiān shí'èr yuè qī hào.",
                   "english": "Today is December 7.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/88693df55d20.mp3"
+                    "voice": "book",
+                    "file": "B1-02-1-3.mp3",
+                    "start": 45.69,
+                    "end": 48.59
                   }
                 }
               },
@@ -6971,8 +7011,10 @@
                   "pinyin": "Jīntiān xīngqítiān.",
                   "english": "Today is Sunday.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/022d3b39a8a0.mp3"
+                    "voice": "book",
+                    "file": "B1-02-1-3.mp3",
+                    "start": 35.95,
+                    "end": 38.26
                   }
                 }
               }
@@ -7207,8 +7249,10 @@
               ],
               "english": "He goes home at 8 o’clock.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/087302786de8.mp3"
+                "voice": "book",
+                "file": "B1-02-1-3.mp3",
+                "start": 53.91,
+                "end": 56.27
               }
             }
           ],
@@ -7245,8 +7289,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7d9eb6fc6feb.mp3"
+                  "voice": "book",
+                  "file": "B1-02-1-3.mp3",
+                  "start": 59.8,
+                  "end": 62.96
                 }
               }
             },
@@ -7333,8 +7379,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f730f54a5bac.mp3"
+                  "voice": "book",
+                  "file": "B1-02-1-3.mp3",
+                  "start": 72.63,
+                  "end": 75.4
                 }
               }
             }
@@ -8045,8 +8093,10 @@
                   "pinyin": "Nǐ jǐ diǎn qù túshūguǎn?",
                   "english": "What time are you going to the library?",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/f730f54a5bac.mp3"
+                    "voice": "book",
+                    "file": "B1-02-1-3.mp3",
+                    "start": 72.63,
+                    "end": 75.4
                   }
                 }
               }
@@ -8479,8 +8529,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c825b97da87d.mp3"
+                  "voice": "book",
+                  "file": "B1-02-1-3.mp3",
+                  "start": 106.72,
+                  "end": 112.93
                 }
               }
             }
@@ -11664,8 +11716,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/8495b44f9bc9.mp3"
+                  "voice": "book",
+                  "file": "B1-02-2-3.mp3",
+                  "start": 96.89,
+                  "end": 99.73
                 }
               }
             }
@@ -12810,8 +12864,10 @@
               ],
               "english": "a cake",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/099564f7e2be.mp3"
+                "voice": "book",
+                "file": "B1-03-1-3.mp3",
+                "start": 5.92,
+                "end": 7.76
               }
             },
             {
@@ -12967,8 +13023,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0a8e3a2e3e75.mp3"
+                  "voice": "book",
+                  "file": "B1-03-1-3.mp3",
+                  "start": 17.26,
+                  "end": 25.3
                 }
               }
             },
@@ -13686,8 +13744,10 @@
                   "pinyin": "Nǐ yǒu jǐ běn Yīngwén shū?",
                   "english": "How many English books do you have?",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/4fead8e122cb.mp3"
+                    "voice": "book",
+                    "file": "B1-03-1-3.mp3",
+                    "start": 28.77,
+                    "end": 31.7
                   }
                 }
               }
@@ -14128,8 +14188,10 @@
               ],
               "english": "Mom gave me a gift.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/27499566f1c5.mp3"
+                "voice": "book",
+                "file": "B1-03-1-3.mp3",
+                "start": 54.29,
+                "end": 57.31
               }
             },
             {
@@ -14451,8 +14513,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6c5050a81d46.mp3"
+                  "voice": "book",
+                  "file": "B1-03-1-3.mp3",
+                  "start": 83.59,
+                  "end": 91.01
                 }
               }
             }
@@ -16298,8 +16362,10 @@
               ],
               "english": "this kind of pen",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/80d10624e4ca.mp3"
+                "voice": "book",
+                "file": "B1-03-2-3.mp3",
+                "start": 14.07,
+                "end": 16.37
               }
             },
             {
@@ -16345,8 +16411,10 @@
               ],
               "english": "those two books",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/d5dea6b7b8ca.mp3"
+                "voice": "book",
+                "file": "B1-03-2-3.mp3",
+                "start": 17.73,
+                "end": 20.07
               }
             },
             {
@@ -16392,8 +16460,10 @@
               ],
               "english": "which ten people?",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/c6e9e71cd97c.mp3"
+                "voice": "book",
+                "file": "B1-03-2-3.mp3",
+                "start": 21.43,
+                "end": 23.68
               }
             }
           ],
@@ -16544,8 +16614,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4840e9c0b259.mp3"
+                  "voice": "book",
+                  "file": "B1-03-2-3.mp3",
+                  "start": 37.76,
+                  "end": 44.66
                 }
               }
             },
@@ -18080,8 +18152,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7ec83558ec08.mp3"
+                  "voice": "book",
+                  "file": "B1-03-2-3.mp3",
+                  "start": 69.23,
+                  "end": 72.55
                 }
               }
             },
@@ -18136,8 +18210,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ff6268b79488.mp3"
+                  "voice": "book",
+                  "file": "B1-03-2-3.mp3",
+                  "start": 75.86,
+                  "end": 80.01
                 }
               }
             },
@@ -18294,8 +18370,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/56c1965048e1.mp3"
+                  "voice": "book",
+                  "file": "B1-03-2-3.mp3",
+                  "start": 103.59,
+                  "end": 106.66
                 }
               }
             },
@@ -19173,8 +19251,10 @@
                   ],
                   "english": "cheap things",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/b4c19643ef4c.mp3"
+                    "voice": "book",
+                    "file": "B1-03-2-3.mp3",
+                    "start": 63.81,
+                    "end": 65.93
                   }
                 }
               ],
@@ -19224,8 +19304,10 @@
                   ],
                   "english": "new books",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/4dbba9a9284d.mp3"
+                    "voice": "book",
+                    "file": "B1-03-2-3.mp3",
+                    "start": 92.37,
+                    "end": 93.7
                   }
                 }
               ],
@@ -19277,8 +19359,10 @@
                   ],
                   "english": "big cakes",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/8ce625910fd3.mp3"
+                    "voice": "book",
+                    "file": "B1-03-2-3.mp3",
+                    "start": 119.88,
+                    "end": 120.81
                   }
                 }
               ],
@@ -22958,8 +23042,10 @@
                   ],
                   "english": "The book and the pen, I have them both.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/2b27eff7b571.mp3"
+                    "voice": "book",
+                    "file": "B1-04-1-3.mp3",
+                    "start": 9.49,
+                    "end": 12.9
                   }
                 }
               ],
@@ -24966,8 +25052,10 @@
                   ],
                   "english": "This pen is very cheap, and that pen is very cheap as well.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/c130b62cb3a7.mp3"
+                    "voice": "book",
+                    "file": "B1-04-1-3.mp3",
+                    "start": 76.15,
+                    "end": 83.56
                   }
                 }
               ],
@@ -28609,8 +28697,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1fe2eef03c7f.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 6.25,
+                  "end": 7.91
                 }
               }
             },
@@ -28631,8 +28721,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/92a1c77cb87c.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 9.26,
+                  "end": 11.2
                 }
               }
             },
@@ -28653,8 +28745,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a6061db4d3c8.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 12.58,
+                  "end": 14.5
                 }
               }
             },
@@ -28676,8 +28770,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c9238e1b6956.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 18.62,
+                  "end": 20.5
                 }
               }
             },
@@ -28698,8 +28794,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/44bd5d62615a.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 21.96,
+                  "end": 23.88
                 }
               }
             },
@@ -28721,8 +28819,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9e9ccf5be99d.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 28.06,
+                  "end": 30.11
                 }
               }
             },
@@ -28744,8 +28844,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b1bcb834d555.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 34.43,
+                  "end": 36.64
                 }
               }
             },
@@ -28767,8 +28869,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/d0655167dc39.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 37.98,
+                  "end": 39.41
                 }
               }
             },
@@ -28790,8 +28894,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/bf94e5a4dcd4.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 40.75,
+                  "end": 42.99
                 }
               }
             },
@@ -28813,8 +28919,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6119f333c143.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 44.38,
+                  "end": 45.89
                 }
               }
             },
@@ -28836,8 +28944,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e5fee783018a.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 47.25,
+                  "end": 49.53
                 }
               }
             }
@@ -30870,8 +30980,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7c63a24d9328.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 60.54,
+                  "end": 62.53
                 }
               }
             },
@@ -30911,8 +31023,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f4558b6e3e2e.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 63.92,
+                  "end": 66.03
                 }
               },
               "teachingNote": null
@@ -30953,8 +31067,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b3982e550c0a.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 67.47,
+                  "end": 69.54
                 }
               }
             },
@@ -30996,8 +31112,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6b4f322ea887.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 70.92,
+                  "end": 72.96
                 }
               },
               "teachingNote": null
@@ -31050,8 +31168,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1e8e0c241bb8.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 76.48,
+                  "end": 82.3
                 }
               },
               "teachingNote": null
@@ -31111,8 +31231,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a4a1cef9683b.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 85.69,
+                  "end": 91.29
                 }
               },
               "teachingNote": null
@@ -31153,8 +31275,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b4917d5927b7.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 94.79,
+                  "end": 100.37
                 }
               },
               "teachingNote": null
@@ -31196,8 +31320,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/21b069046762.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 115.3,
+                  "end": 117.19
                 }
               }
             },
@@ -31237,8 +31363,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f05a023722ad.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 118.61,
+                  "end": 120.08
                 }
               },
               "teachingNote": null
@@ -31273,8 +31401,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f03014483ce1.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 121.46,
+                  "end": 122.99
                 }
               },
               "teachingNote": null
@@ -31318,8 +31448,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/64b7aefc6ae2.mp3"
+                  "voice": "book",
+                  "file": "B1-04-2-3.mp3",
+                  "start": 124.3,
+                  "end": 125.83
                 }
               },
               "teachingNote": null
@@ -31747,8 +31879,10 @@
                   ],
                   "english": "more than ten cakes (10–11)",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/6995dd7f7942.mp3"
+                    "voice": "book",
+                    "file": "B1-04-2-3.mp3",
+                    "start": 106.56,
+                    "end": 108.01
                   }
                 },
                 {
@@ -31796,8 +31930,10 @@
                   ],
                   "english": "more than five dollars (5–6)",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/91bcf8c1e990.mp3"
+                    "voice": "book",
+                    "file": "B1-04-2-3.mp3",
+                    "start": 109.42,
+                    "end": 110.88
                   }
                 },
                 {
@@ -31841,8 +31977,10 @@
                   ],
                   "english": "After 11:00 (11:00–12:00)",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/7cad4e164190.mp3"
+                    "voice": "book",
+                    "file": "B1-04-2-3.mp3",
+                    "start": 112.21,
+                    "end": 113.91
                   }
                 }
               ],
@@ -32115,8 +32253,10 @@
                   "pinyin": "Yìbǎi duō kuài qián.",
                   "english": "Over a hundred dollars.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/1a8bafd3e651.mp3"
+                    "voice": "book",
+                    "file": "B1-04-2-3.mp3",
+                    "start": 80.29,
+                    "end": 82.3
                   }
                 }
               },
@@ -32378,8 +32518,10 @@
                   "pinyin": "Shíyī diǎn duō.",
                   "english": "A little after eleven.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/7cad4e164190.mp3"
+                    "voice": "book",
+                    "file": "B1-04-2-3.mp3",
+                    "start": 112.21,
+                    "end": 113.91
                   }
                 }
               },
@@ -37329,8 +37471,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7461f6192c33.mp3"
+                  "voice": "book",
+                  "file": "B1-05-1-3.mp3",
+                  "start": 112.59,
+                  "end": 125.27
                 }
               }
             },
@@ -37424,8 +37568,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/54a0ae17a69c.mp3"
+                  "voice": "book",
+                  "file": "B1-05-1-3.mp3",
+                  "start": 128.41,
+                  "end": 136.16
                 }
               }
             }
@@ -39245,8 +39391,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6f740e79e771.mp3"
+                  "voice": "book",
+                  "file": "B1-05-2-3.mp3",
+                  "start": 17.04,
+                  "end": 26.93
                 }
               }
             },
@@ -39453,8 +39601,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ac7aff7e4992.mp3"
+                  "voice": "book",
+                  "file": "B1-05-2-3.mp3",
+                  "start": 42.36,
+                  "end": 53.3
                 }
               }
             },
@@ -39503,8 +39653,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a3d9ddedd4b0.mp3"
+                  "voice": "book",
+                  "file": "B1-05-2-3.mp3",
+                  "start": 72.53,
+                  "end": 75.13
                 }
               },
               "teachingNote": null
@@ -39909,8 +40061,10 @@
                   ],
                   "english": "That restaurant is not next to the school.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/8e63449d0562.mp3"
+                    "voice": "book",
+                    "file": "B1-05-2-3.mp3",
+                    "start": 9.74,
+                    "end": 13.61
                   }
                 }
               ],
@@ -40046,8 +40200,10 @@
                   ],
                   "english": "They are hanging out in front of the school.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/3b54d32ef840.mp3"
+                    "voice": "book",
+                    "file": "B1-05-2-3.mp3",
+                    "start": 65.79,
+                    "end": 69.02
                   }
                 }
               ],
@@ -41315,8 +41471,10 @@
               ],
               "english": "There is a lot of delicious food in Taiwan.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/1537411d306b.mp3"
+                "voice": "book",
+                "file": "B1-05-2-3.mp3",
+                "start": 97.82,
+                "end": 101.4
               }
             },
             {
@@ -41358,8 +41516,10 @@
               ],
               "english": "There is no café next to the library.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/b776d3e33ec6.mp3"
+                "voice": "book",
+                "file": "B1-05-2-3.mp3",
+                "start": 102.72,
+                "end": 106.48
               }
             },
             {
@@ -41404,8 +41564,10 @@
               ],
               "english": "There are a lot of things on the table.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/698376237347.mp3"
+                "voice": "book",
+                "file": "B1-05-2-3.mp3",
+                "start": 107.85,
+                "end": 111.59
               }
             }
           ],
@@ -41510,8 +41672,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/40c7b2f5be82.mp3"
+                  "voice": "book",
+                  "file": "B1-05-2-3.mp3",
+                  "start": 115.13,
+                  "end": 126.33
                 }
               }
             },
@@ -41597,8 +41761,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/40284a95edbf.mp3"
+                  "voice": "book",
+                  "file": "B1-05-2-3.mp3",
+                  "start": 129.83,
+                  "end": 139.33
                 }
               }
             },
@@ -41703,8 +41869,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/28d3a6226fa8.mp3"
+                  "voice": "book",
+                  "file": "B1-05-2-3.mp3",
+                  "start": 142.81,
+                  "end": 155.5
                 }
               }
             }
@@ -43218,8 +43386,10 @@
               ],
               "english": "I cannot play baseball.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/fc96a9ad3e5c.mp3"
+                "voice": "book",
+                "file": "B1-06-1-3.mp3",
+                "start": 10.8,
+                "end": 13.63
               }
             }
           ],
@@ -43278,8 +43448,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/2dc27b7612da.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 16.81,
+                  "end": 22.11
                 }
               }
             },
@@ -44717,8 +44889,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/480e2bae1441.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 61.07,
+                  "end": 66.35
                 }
               }
             },
@@ -44929,8 +45103,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/05db2fa1b0f9.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 99.56,
+                  "end": 106.15
                 }
               },
               "teachingNote": null
@@ -45179,8 +45355,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ed1eb59afc07.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 144.29,
+                  "end": 150.71
                 }
               },
               "teachingNote": null
@@ -45263,8 +45441,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ae7610db4581.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 153.7,
+                  "end": 160.13
                 }
               }
             },
@@ -45370,8 +45550,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/13465b366fc9.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 163.46,
+                  "end": 171.55
                 }
               },
               "teachingNote": null
@@ -45518,8 +45700,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/62832f7d73c5.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 198.93,
+                  "end": 206.66
                 }
               },
               "teachingNote": null
@@ -45598,8 +45782,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9a0472a63087.mp3"
+                  "voice": "book",
+                  "file": "B1-06-1-3.mp3",
+                  "start": 209.88,
+                  "end": 217.21
                 }
               },
               "teachingNote": null
@@ -46192,8 +46378,10 @@
                   ],
                   "english": "He runs very fast.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/2927c70110f4.mp3"
+                    "voice": "book",
+                    "file": "B1-06-1-3.mp3",
+                    "start": 52.58,
+                    "end": 54.65
                   }
                 },
                 {
@@ -46791,8 +46979,10 @@
                   "pinyin": "Tā hē de hěn duō.",
                   "english": "He drinks a lot.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/86e11a1c5209.mp3"
+                    "voice": "book",
+                    "file": "B1-06-1-3.mp3",
+                    "start": 169.84,
+                    "end": 171.55
                   }
                 }
               },
@@ -46920,8 +47110,10 @@
                   "pinyin": "Tā chī de hǎo duō.",
                   "english": "He eats so much.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/22217ba3930a.mp3"
+                    "voice": "book",
+                    "file": "B1-06-1-3.mp3",
+                    "start": 169.84,
+                    "end": 171.55
                   }
                 }
               },
@@ -49094,6 +49286,12 @@
                   "id": "g3-c1-p",
                   "traditional": "有點兒",
                   "simplified": "有点儿"
+                },
+                "audio": {
+                  "voice": "book",
+                  "file": "B1-06-2-3.mp3",
+                  "start": 15.01,
+                  "end": 17.61
                 }
               },
               {
@@ -49144,8 +49342,10 @@
               ],
               "english": "The weather is a little cold.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/88f165d6d9a2.mp3"
+                "voice": "book",
+                "file": "B1-06-2-3.mp3",
+                "start": 15.01,
+                "end": 17.61
               }
             },
             {
@@ -49179,8 +49379,10 @@
               ],
               "english": "I am a little hungry.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/b1cec18eaa41.mp3"
+                "voice": "book",
+                "file": "B1-06-2-3.mp3",
+                "start": 18.81,
+                "end": 20.87
               }
             }
           ],
@@ -49311,8 +49513,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/51eeb212b9b4.mp3"
+                  "voice": "book",
+                  "file": "B1-06-2-3.mp3",
+                  "start": 23.85,
+                  "end": 37.99
                 }
               }
             },
@@ -49407,8 +49611,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ef3f916af8a7.mp3"
+                  "voice": "book",
+                  "file": "B1-06-2-3.mp3",
+                  "start": 40.95,
+                  "end": 50.92
                 }
               }
             },
@@ -49550,8 +49756,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ce43bdfe9727.mp3"
+                  "voice": "book",
+                  "file": "B1-06-2-3.mp3",
+                  "start": 54.12,
+                  "end": 67.51
                 }
               }
             }
@@ -50547,6 +50755,12 @@
                 "particle": {
                   "id": "g4-c2-p",
                   "traditional": "可以"
+                },
+                "audio": {
+                  "voice": "book",
+                  "file": "B1-06-2-3.mp3",
+                  "start": 118.73,
+                  "end": 121.22
                 }
               }
             ]
@@ -50633,8 +50847,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c3bf794054a4.mp3"
+                  "voice": "book",
+                  "file": "B1-06-2-3.mp3",
+                  "start": 76.82,
+                  "end": 85.59
                 }
               }
             },
@@ -50836,8 +51052,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a806e871cc1f.mp3"
+                  "voice": "book",
+                  "file": "B1-06-2-3.mp3",
+                  "start": 100.53,
+                  "end": 109.02
                 }
               },
               "teachingNote": null
@@ -53130,8 +53348,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/db82d91a44b8.mp3"
+                  "voice": "book",
+                  "file": "B1-07-1-3.mp3",
+                  "start": 27.09,
+                  "end": 32.67
                 }
               }
             },
@@ -53310,8 +53530,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/50ead8a0a76e.mp3"
+                  "voice": "book",
+                  "file": "B1-07-1-3.mp3",
+                  "start": 58.02,
+                  "end": 61.68
                 }
               }
             },
@@ -53383,8 +53605,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/33f014147295.mp3"
+                  "voice": "book",
+                  "file": "B1-07-1-3.mp3",
+                  "start": 64.81,
+                  "end": 70.13
                 }
               },
               "teachingNote": null
@@ -55650,8 +55874,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/66307b925a51.mp3"
+                  "voice": "book",
+                  "file": "B1-07-1-3.mp3",
+                  "start": 131.39,
+                  "end": 135.51
                 }
               },
               "teachingNote": null
@@ -55718,8 +55944,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9595a220340f.mp3"
+                  "voice": "book",
+                  "file": "B1-07-1-3.mp3",
+                  "start": 138.61,
+                  "end": 142.72
                 }
               },
               "teachingNote": null
@@ -55857,8 +56085,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b583daa78fef.mp3"
+                  "voice": "book",
+                  "file": "B1-07-1-3.mp3",
+                  "start": 166.24,
+                  "end": 170.44
                 }
               },
               "teachingNote": null
@@ -57692,8 +57922,10 @@
               ],
               "english": "Taking the MRT is very convenient.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/af0690606766.mp3"
+                "voice": "book",
+                "file": "B1-07-2-3.mp3",
+                "start": 6.26,
+                "end": 9.29
               }
             },
             {
@@ -58638,8 +58870,10 @@
                 ]
               ],
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/7f72298ff294.mp3"
+                "voice": "book",
+                "file": "B1-07-2-3.mp3",
+                "start": 43.87,
+                "end": 48.31
               }
             },
             {
@@ -58697,8 +58931,10 @@
                 ]
               ],
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/1ea317219220.mp3"
+                "voice": "book",
+                "file": "B1-07-2-3.mp3",
+                "start": 49.45,
+                "end": 53.48
               }
             }
           ],
@@ -58750,8 +58986,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/17b0cbfffc93.mp3"
+                  "voice": "book",
+                  "file": "B1-07-2-3.mp3",
+                  "start": 56.48,
+                  "end": 61.21
                 }
               },
               "teachingNote": null
@@ -58854,8 +59092,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1fe8490b727a.mp3"
+                  "voice": "book",
+                  "file": "B1-07-2-3.mp3",
+                  "start": 64.06,
+                  "end": 71.1
                 }
               },
               "teachingNote": null
@@ -60213,8 +60453,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/200f5258f37c.mp3"
+                  "voice": "book",
+                  "file": "B1-08-1-3.mp3",
+                  "start": 14.87,
+                  "end": 20.7
                 }
               }
             },
@@ -60759,8 +61001,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/451b3db84d05.mp3"
+                  "voice": "book",
+                  "file": "B1-08-1-3.mp3",
+                  "start": 91.68,
+                  "end": 97.56
                 }
               }
             },
@@ -61739,8 +61983,10 @@
                   "simplified": "好吃"
                 },
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/200f5258f37c.mp3"
+                  "voice": "book",
+                  "file": "B1-08-1-3.mp3",
+                  "start": 14.87,
+                  "end": 20.7
                 }
               },
               {
@@ -62990,8 +63236,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/77f96e54500e.mp3"
+                  "voice": "book",
+                  "file": "B1-08-1-3.mp3",
+                  "start": 155.97,
+                  "end": 169.21
                 }
               }
             }
@@ -63424,7 +63672,13 @@
               "traditional": "因為這個牌子很有名，衣服也很好看",
               "simplified": "因为这个牌子很有名，衣服也很好看",
               "pinyin": "yīnwèi zhè ge páizi hěn yǒumíng, yīfu yě hěn hǎokàn",
-              "english": "because this is a famous brand and its clothes are beautiful"
+              "english": "because this is a famous brand and its clothes are beautiful",
+              "audio": {
+                "voice": "book",
+                "file": "B1-08-1-3.mp3",
+                "start": 117.93,
+                "end": 123.76
+              }
             },
             "verb": {
               "role": "所以",
@@ -65029,8 +65283,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/48cd2c8f761b.mp3"
+                  "voice": "book",
+                  "file": "B1-08-2-3.mp3",
+                  "start": 11.92,
+                  "end": 20.93
                 }
               }
             },
@@ -65340,8 +65596,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e1ddce135189.mp3"
+                  "voice": "book",
+                  "file": "B1-08-2-3.mp3",
+                  "start": 35.28,
+                  "end": 47.19
                 }
               }
             }
@@ -65754,8 +66012,10 @@
                   "simplified": "吧"
                 },
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/48cd2c8f761b.mp3"
+                  "voice": "book",
+                  "file": "B1-08-2-3.mp3",
+                  "start": 11.92,
+                  "end": 20.93
                 }
               },
               {
@@ -67576,8 +67836,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6d38663d6c7a.mp3"
+                  "voice": "book",
+                  "file": "B1-08-2-3.mp3",
+                  "start": 105.07,
+                  "end": 109.24
                 }
               }
             },
@@ -67643,8 +67905,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f9fee326aa9e.mp3"
+                  "voice": "book",
+                  "file": "B1-08-2-3.mp3",
+                  "start": 112.59,
+                  "end": 118.16
                 }
               }
             }
@@ -67923,8 +68187,10 @@
                   "simplified": "快要"
                 },
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6d38663d6c7a.mp3"
+                  "voice": "book",
+                  "file": "B1-08-2-3.mp3",
+                  "start": 105.07,
+                  "end": 109.24
                 }
               }
             ]
@@ -70314,8 +70580,10 @@
               ],
               "english": "They are playing basketball.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/3fd7833d5f91.mp3"
+                "voice": "book",
+                "file": "B1-09-1-3.mp3",
+                "start": 8.14,
+                "end": 10.63
               }
             }
           ],
@@ -70436,8 +70704,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/2461edb935ae.mp3"
+                  "voice": "book",
+                  "file": "B1-09-1-3.mp3",
+                  "start": 21.69,
+                  "end": 27.56
                 }
               }
             },
@@ -70907,8 +71177,10 @@
                   "pinyin": "Tāmen zài zuò shénme?",
                   "english": "What are they doing?",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/db0532931503.mp3"
+                    "voice": "book",
+                    "file": "B1-09-1-3.mp3",
+                    "start": 21.69,
+                    "end": 23.7
                   }
                 }
               },
@@ -72314,8 +72586,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6ba0a63ce4a0.mp3"
+                  "voice": "book",
+                  "file": "B1-09-1-3.mp3",
+                  "start": 46.96,
+                  "end": 51.25
                 }
               }
             },
@@ -72424,8 +72698,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4842bf1f868d.mp3"
+                  "voice": "book",
+                  "file": "B1-09-1-3.mp3",
+                  "start": 54.43,
+                  "end": 63.16
                 }
               }
             },
@@ -72591,8 +72867,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4d0e117b1ab4.mp3"
+                  "voice": "book",
+                  "file": "B1-09-1-3.mp3",
+                  "start": 66.29,
+                  "end": 79.02
                 }
               }
             }
@@ -74557,8 +74835,10 @@
               ],
               "english": "Elder sister sings first, then younger sister sings.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/a5d8adc966ec.mp3"
+                "voice": "book",
+                "file": "B1-09-1-3.mp3",
+                "start": 87.99,
+                "end": 91.92
               }
             },
             {
@@ -74828,8 +75108,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/726faf852722.mp3"
+                  "voice": "book",
+                  "file": "B1-09-1-3.mp3",
+                  "start": 110.12,
+                  "end": 118.39
                 }
               }
             },
@@ -74930,8 +75212,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/cd9f0ffdf50e.mp3"
+                  "voice": "book",
+                  "file": "B1-09-1-3.mp3",
+                  "start": 120.81,
+                  "end": 130.36
                 }
               }
             }
@@ -77614,8 +77898,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7bb82191078e.mp3"
+                  "voice": "book",
+                  "file": "B1-09-2-3.mp3",
+                  "start": 22.18,
+                  "end": 27.43
                 }
               }
             },
@@ -78162,8 +78448,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1463a4239543.mp3"
+                  "voice": "book",
+                  "file": "B1-09-2-3.mp3",
+                  "start": 90.36,
+                  "end": 100.37
                 }
               }
             }
@@ -81033,8 +81321,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5c0115807961.mp3"
+                  "voice": "book",
+                  "file": "B1-09-2-3.mp3",
+                  "start": 117.29,
+                  "end": 123.99
                 }
               }
             },
@@ -81152,8 +81442,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0d93b4c26e60.mp3"
+                  "voice": "book",
+                  "file": "B1-09-2-3.mp3",
+                  "start": 126.94,
+                  "end": 137.43
                 }
               }
             },
@@ -81265,8 +81557,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/38648d957959.mp3"
+                  "voice": "book",
+                  "file": "B1-09-2-3.mp3",
+                  "start": 140.58,
+                  "end": 150.05
                 }
               }
             }
@@ -82884,8 +83178,10 @@
                 ],
                 "simplified": "今天晚上我要跟朋友吃饭。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a0f5281356be.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 16.28,
+                  "end": 20.22
                 }
               }
             },
@@ -82951,8 +83247,10 @@
                 ],
                 "simplified": "我常常跟他一起去百货公司买东西。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e72a6abb2473.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 23.51,
+                  "end": 28.3
                 }
               }
             },
@@ -83114,8 +83412,10 @@
                 ],
                 "simplified": "计程车司机跟我说：「去机场1,200块钱。」",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ff11fa579b65.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 44.86,
+                  "end": 52.23
                 }
               }
             },
@@ -83341,8 +83641,10 @@
                 ],
                 "simplified": "他二十岁了，不跟爸妈要钱了。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f5c6af491167.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 76.19,
+                  "end": 80.49
                 }
               }
             },
@@ -83434,8 +83736,10 @@
                 ],
                 "simplified": "我不想跟朋友买旧车，我想买新车。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/878774a26fa9.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 83.75,
+                  "end": 88.57
                 }
               }
             }
@@ -85715,8 +86019,10 @@
                   ],
                   "english": "The character I wrote",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/7a23101c70e4.mp3"
+                    "voice": "book",
+                    "file": "B1-10-1-3.mp3",
+                    "start": 95.15,
+                    "end": 96.78
                   }
                 },
                 {
@@ -85777,8 +86083,10 @@
                   ],
                   "english": "The apple my mom gave me",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/e534bf37a029.mp3"
+                    "voice": "book",
+                    "file": "B1-10-1-3.mp3",
+                    "start": 97.99,
+                    "end": 100.57
                   }
                 }
               ],
@@ -85848,8 +86156,10 @@
                   ],
                   "english": "The person who has a cold",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/36e34282bbb8.mp3"
+                    "voice": "book",
+                    "file": "B1-10-1-3.mp3",
+                    "start": 127.14,
+                    "end": 128.59
                   }
                 },
                 {
@@ -85918,8 +86228,10 @@
                   ],
                   "english": "The child who knows how to cook",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/2c5c5ffba2eb.mp3"
+                    "voice": "book",
+                    "file": "B1-10-1-3.mp3",
+                    "start": 129.8,
+                    "end": 131.73
                   }
                 },
                 {
@@ -85986,8 +86298,10 @@
                   ],
                   "english": "The old gentleman who exercises often",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/985d2f847a2f.mp3"
+                    "voice": "book",
+                    "file": "B1-10-1-3.mp3",
+                    "start": 132.93,
+                    "end": 135.6
                   }
                 }
               ],
@@ -86075,8 +86389,10 @@
                   ],
                   "english": "These few characters he wrote",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/e119d230afdc.mp3"
+                    "voice": "book",
+                    "file": "B1-10-1-3.mp3",
+                    "start": 162.73,
+                    "end": 164.98
                   }
                 },
                 {
@@ -86144,8 +86460,10 @@
                   ],
                   "english": "This doctor wearing a mask",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/362899246769.mp3"
+                    "voice": "book",
+                    "file": "B1-10-1-3.mp3",
+                    "start": 166.19,
+                    "end": 168.65
                   }
                 }
               ],
@@ -87319,8 +87637,10 @@
             "pinyin": "Nǐ yīnggāi duō yùndòng, shǎo hē yìdiǎnr jiǔ.",
             "english": "You should exercise more and drink a little less alcohol.",
             "audio": {
-              "voice": "studio",
-              "file": "grammar-studio/v1/789043ad7aed.mp3"
+              "voice": "book",
+              "file": "B1-10-1-3.mp3",
+              "start": 207.32,
+              "end": 212.14
             }
           },
           "focusTerms": [
@@ -87529,8 +87849,10 @@
               ],
               "english": "Exercise more.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/ba3eb903c232.mp3"
+                "voice": "book",
+                "file": "B1-10-1-3.mp3",
+                "start": 199.19,
+                "end": 200.6
               }
             },
             {
@@ -87576,8 +87898,10 @@
               ],
               "english": "Use cell phones less.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/a45d53bb6b37.mp3"
+                "voice": "book",
+                "file": "B1-10-1-3.mp3",
+                "start": 201.94,
+                "end": 203.88
               }
             }
           ],
@@ -87651,8 +87975,10 @@
                 ],
                 "simplified": "你应该多运动，少喝一点儿酒。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/789043ad7aed.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 207.32,
+                  "end": 212.14
                 }
               },
               "teachingNote": "One action goes up, one goes down."
@@ -87775,8 +88101,10 @@
                 ],
                 "simplified": "我发烧了，医生跟我说要多喝水、多休息、少看手机。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e25c9a24af1c.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 215.26,
+                  "end": 224.68
                 }
               },
               "teachingNote": "The source health advice."
@@ -87909,8 +88237,10 @@
                 ],
                 "simplified": "我们学习语言，平常应该要多听、多说、多写、多练习。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/7815bf156d88.mp3"
+                  "voice": "book",
+                  "file": "B1-10-1-3.mp3",
+                  "start": 228.08,
+                  "end": 237.03
                 }
               },
               "teachingNote": "The advice repeats with several actions."
@@ -89294,7 +89624,13 @@
             "traditional": "我今天會去百貨公司幫你買。",
             "simplified": "我今天会去百货公司帮你买。",
             "pinyin": "Wǒ jīntiān huì qù bǎihuò gōngsī bāng nǐ mǎi.",
-            "english": "I will go to the department store and buy them for you today."
+            "english": "I will go to the department store and buy them for you today.",
+            "audio": {
+              "voice": "book",
+              "file": "B1-10-2-3.mp3",
+              "start": 25.84,
+              "end": 29.97
+            }
           },
           "focusTerms": [
             "會"
@@ -89687,8 +90023,10 @@
                 ],
                 "simplified": "老师：你明天要记得带毛笔来学校。学生：好，我会带毛笔来。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b1e1a24ca985.mp3"
+                  "voice": "book",
+                  "file": "B1-10-2-3.mp3",
+                  "start": 9.64,
+                  "end": 18.3
                 }
               }
             },
@@ -89847,8 +90185,10 @@
                 ],
                 "simplified": "孩子：妈，你要帮我买袜子吗？妈妈：我今天会去百货公司帮你买。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/395996a6ec86.mp3"
+                  "voice": "book",
+                  "file": "B1-10-2-3.mp3",
+                  "start": 22.32,
+                  "end": 29.97
                 }
               }
             },
@@ -90039,8 +90379,10 @@
                 ],
                 "simplified": "宜文：国安生病了，明天会来学校考试吗？元真：我也不知道。今天下午我们一起去看他吧！",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/bfa35e07ac45.mp3"
+                  "voice": "book",
+                  "file": "B1-10-2-3.mp3",
+                  "start": 33.2,
+                  "end": 45.12
                 }
               }
             }
@@ -91010,8 +91352,10 @@
               ],
               "english": "If you want to eat it, then eat a bit more!",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/279bc6af5e7d.mp3"
+                "voice": "book",
+                "file": "B1-10-2-3.mp3",
+                "start": 64,
+                "end": 68.24
               }
             }
           ],
@@ -91315,8 +91659,10 @@
                 ],
                 "simplified": "如果明天要来的人很多，我就多买一点儿饮料跟蛋糕。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/3c3f96f1513e.mp3"
+                  "voice": "book",
+                  "file": "B1-10-2-3.mp3",
+                  "start": 87.26,
+                  "end": 94.01
                 }
               }
             }
@@ -93815,8 +94161,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6bcb4069c5b1.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 48.78,
+                  "end": 52.49
                 }
               },
               "teachingNote": "Printed as 1a."
@@ -93879,8 +94227,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/328d1767cd02.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 53.01,
+                  "end": 56.55
                 }
               },
               "teachingNote": "Printed as 1b."
@@ -93937,8 +94287,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1782dd753c09.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 59.6,
+                  "end": 63
                 }
               },
               "teachingNote": "Printed as 2a."
@@ -94029,8 +94381,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/34300059ea20.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 63.61,
+                  "end": 68.54
                 }
               },
               "teachingNote": "Printed as 2b."
@@ -94085,8 +94439,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e458dcfd0a1d.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 71.71,
+                  "end": 75.3
                 }
               },
               "teachingNote": "Printed as 3a."
@@ -94182,8 +94538,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9ec3a8aff87a.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 75.82,
+                  "end": 81.12
                 }
               },
               "teachingNote": "Printed as 3b."
@@ -94371,8 +94729,10 @@
                   ],
                   "english": "He has already arrived.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/0fcd6c570233.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 7.6,
+                    "end": 9.6
                   }
                 },
                 {
@@ -94419,8 +94779,10 @@
                   ],
                   "english": "We have met yesterday.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/fc2ea31c5543.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 10.83,
+                    "end": 13.22
                   }
                 }
               ],
@@ -94504,8 +94866,10 @@
                   ],
                   "english": "I drank two cups of coffee yesterday.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/0f4e486107f9.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 37.92,
+                    "end": 41.12
                   }
                 }
               ],
@@ -94599,8 +94963,10 @@
                   ],
                   "english": "I have already drunk two cups of coffee.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/d718c3e8c64f.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 42.38,
+                    "end": 45.65
                   }
                 }
               ],
@@ -96346,8 +96712,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/cafc78b5a751.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 119.45,
+                  "end": 124.35
                 }
               }
             },
@@ -97004,8 +97372,10 @@
                   ],
                   "english": "He did not drink coffee.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/120068a63e26.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 90.15,
+                    "end": 92.11
                   }
                 }
               ],
@@ -97072,8 +97442,10 @@
                   ],
                   "english": "Did you have breakfast?",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/f4c3edb70685.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 93.32,
+                    "end": 95.2
                   }
                 },
                 {
@@ -97120,8 +97492,10 @@
                   ],
                   "english": "Did you do your homework?",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/1dcc44e0bc5b.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 96.36,
+                    "end": 98.65
                   }
                 }
               ],
@@ -97175,8 +97549,10 @@
                   ],
                   "english": "I have not had breakfast yet.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/c775329c046b.mp3"
+                    "voice": "book",
+                    "file": "B1-11-1-3.mp3",
+                    "start": 130.96,
+                    "end": 133.09
                   }
                 }
               ],
@@ -97932,7 +98308,13 @@
             "traditional": "我們是上網認識的。",
             "simplified": "我们是上网认识的。",
             "pinyin": "Wǒmen shì shàngwǎng rènshi de.",
-            "english": "We met online."
+            "english": "We met online.",
+            "audio": {
+              "voice": "book",
+              "file": "B1-11-1-3.mp3",
+              "start": 203.89,
+              "end": 206.26
+            }
           },
           "focusTerms": [
             "是",
@@ -98855,8 +99237,10 @@
               ],
               "english": "When did they go back to their countries?",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/13a194e020a6.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 176.91,
+                "end": 179.78
               }
             },
             {
@@ -98911,8 +99295,10 @@
               ],
               "english": "It was yesterday they went back to their countries.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/9c82b4bf9696.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 180.95,
+                "end": 183.89
               }
             },
             {
@@ -98967,8 +99353,10 @@
               ],
               "english": "Where did you come from?",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/a0f418dd34a6.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 185.18,
+                "end": 187.45
               }
             },
             {
@@ -99023,8 +99411,10 @@
               ],
               "english": "It was school where I came from.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/0fd89c8224a1.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 188.71,
+                "end": 191.13
               }
             },
             {
@@ -99078,8 +99468,10 @@
               ],
               "english": "Whom did you go shopping with?",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/352eb412f4ec.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 192.35,
+                "end": 195.23
               }
             },
             {
@@ -99134,8 +99526,10 @@
               ],
               "english": "It was my classmate whom I went shopping with.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/cbdf2ebf3cf3.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 196.44,
+                "end": 199.01
               }
             },
             {
@@ -99190,8 +99584,10 @@
               ],
               "english": "How did you meet him?",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/bf539b9258d6.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 200.26,
+                "end": 202.58
               }
             },
             {
@@ -99246,8 +99642,10 @@
               ],
               "english": "It was through the internet that I met him.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/139ac49a6950.mp3"
+                "voice": "book",
+                "file": "B1-11-1-3.mp3",
+                "start": 203.89,
+                "end": 206.26
               }
             }
           ],
@@ -99363,8 +99761,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/fbd1e11485bd.mp3"
+                  "voice": "book",
+                  "file": "B1-11-1-3.mp3",
+                  "start": 209.39,
+                  "end": 217.31
                 }
               }
             },
@@ -102205,8 +102605,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/35bae0f6aad2.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 20,
+                  "end": 25.85
                 }
               }
             },
@@ -102309,8 +102711,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5ca5a629f91a.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 29,
+                  "end": 37.95
                 }
               }
             },
@@ -102435,8 +102839,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e78c6163b007.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 41.12,
+                  "end": 49.17
                 }
               }
             },
@@ -102667,8 +103073,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c011ce4c4383.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 71.4,
+                  "end": 78.91
                 }
               }
             },
@@ -102823,8 +103231,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/e63eca28f435.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 82.34,
+                  "end": 92.45
                 }
               }
             },
@@ -102988,8 +103398,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/79d3bcc84ce5.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 116.51,
+                  "end": 126.97
                 }
               }
             },
@@ -103136,8 +103548,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/d897dfb7e608.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 130.03,
+                  "end": 139.56
                 }
               }
             },
@@ -103269,8 +103683,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6d3d66123ef4.mp3"
+                  "voice": "book",
+                  "file": "B1-11-2-3.mp3",
+                  "start": 142.84,
+                  "end": 152.9
                 }
               }
             }
@@ -103462,8 +103878,10 @@
                   ],
                   "english": "I am running out of time; I will let you know tomorrow then.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/2301dbbf5b66.mp3"
+                    "voice": "book",
+                    "file": "B1-11-2-3.mp3",
+                    "start": 12.3,
+                    "end": 16.69
                   }
                 }
               ],
@@ -103638,8 +104056,10 @@
                   ],
                   "english": "You practice first, and when the teacher arrives, you will have class then.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/3f42273b357d.mp3"
+                    "voice": "book",
+                    "file": "B1-11-2-3.mp3",
+                    "start": 99.02,
+                    "end": 104.47
                   }
                 },
                 {
@@ -103719,8 +104139,10 @@
                   ],
                   "english": "You do homework first, and when Dad is back home, we will have dinner together then.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/22efa0bd144b.mp3"
+                    "voice": "book",
+                    "file": "B1-11-2-3.mp3",
+                    "start": 105.85,
+                    "end": 113.28
                   }
                 }
               ],
@@ -105307,8 +105729,10 @@
               ],
               "english": "I am thinking of writing a letter to her.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/121b6a5911c7.mp3"
+                "voice": "book",
+                "file": "B1-11-2-3.mp3",
+                "start": 159.91,
+                "end": 162.08
               }
             },
             {
@@ -105363,8 +105787,10 @@
               ],
               "english": "My older brother did not make a phone call to me.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/ddb46e078449.mp3"
+                "voice": "book",
+                "file": "B1-11-2-3.mp3",
+                "start": 163.36,
+                "end": 166.03
               }
             }
           ],
@@ -107004,8 +107430,10 @@
             "pinyin": "Wǒ xǐhuān yòng Zhōngwén xiě xìn.",
             "english": "I like to write letters in Chinese.",
             "audio": {
-              "voice": "studio",
-              "file": "grammar-studio/v1/3d993abe1267.mp3"
+              "voice": "book",
+              "file": "B1-12-1-3.mp3",
+              "start": 6.57,
+              "end": 9.5
             }
           },
           "focusTerms": [
@@ -107301,8 +107729,10 @@
               ],
               "english": "I like to write letters in Chinese.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/3d993abe1267.mp3"
+                "voice": "book",
+                "file": "B1-12-1-3.mp3",
+                "start": 6.57,
+                "end": 9.5
               }
             },
             {
@@ -107812,8 +108242,10 @@
                 ],
                 "simplified": "A：我觉得你中文进步了。B：真的吗？可能是因为最近我常常用中文跟朋友聊天。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a8e909fca89a.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 36.42,
+                  "end": 46.75
                 }
               }
             }
@@ -108480,8 +108912,10 @@
             "pinyin": "Wǒ yǐqián hěn pàng, xiànzài shòu le jǐ gōngjīn.",
             "english": "I was fat before; now I have lost several kilograms.",
             "audio": {
-              "voice": "studio",
-              "file": "grammar-studio/v1/d79e79020b29.mp3"
+              "voice": "book",
+              "file": "B1-12-1-3.mp3",
+              "start": 58.35,
+              "end": 62.92
             }
           },
           "focusTerms": [
@@ -109030,8 +109464,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/d79e79020b29.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 58.35,
+                  "end": 62.92
                 }
               }
             },
@@ -109095,8 +109531,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6f561fe832a5.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 65.97,
+                  "end": 72.14
                 }
               }
             },
@@ -109204,8 +109642,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/47f75f06cf50.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 101.69,
+                  "end": 105.57
                 }
               }
             },
@@ -109250,8 +109690,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4f1bbf98253d.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 108.73,
+                  "end": 114.13
                 }
               }
             },
@@ -109308,8 +109750,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5824e42ce6b4.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 117.37,
+                  "end": 125.06
                 }
               }
             },
@@ -109358,8 +109802,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/cd7bf3986e20.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 137.99,
+                  "end": 141.61
                 }
               },
               "teachingNote": null
@@ -109410,8 +109856,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0b6f26e6df60.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 144.63,
+                  "end": 150.04
                 }
               },
               "teachingNote": null
@@ -109466,8 +109914,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0623da803708.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 153.27,
+                  "end": 157.15
                 }
               },
               "teachingNote": null
@@ -109515,8 +109965,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/670bb230aca8.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 175.93,
+                  "end": 182.95
                 }
               }
             },
@@ -109572,8 +110024,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/aad6cc59a1a0.mp3"
+                  "voice": "book",
+                  "file": "B1-12-1-3.mp3",
+                  "start": 185.98,
+                  "end": 197.87
                 }
               }
             },
@@ -110020,8 +110474,10 @@
                   ],
                   "english": "I will be back before 3 o’clock.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/d29c8ec0025c.mp3"
+                    "voice": "book",
+                    "file": "B1-12-1-3.mp3",
+                    "start": 91.15,
+                    "end": 94.17
                   }
                 },
                 {
@@ -110084,8 +110540,10 @@
                   ],
                   "english": "I will definitely be at home after 6 o’clock.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/96117ce1448f.mp3"
+                    "voice": "book",
+                    "file": "B1-12-1-3.mp3",
+                    "start": 95.39,
+                    "end": 98.62
                   }
                 }
               ],
@@ -110166,8 +110624,10 @@
                   ],
                   "english": "I could not speak Chinese three months ago.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/c7974956862e.mp3"
+                    "voice": "book",
+                    "file": "B1-12-1-3.mp3",
+                    "start": 126.29,
+                    "end": 129.99
                   }
                 },
                 {
@@ -110230,8 +110690,10 @@
                   ],
                   "english": "I will go to work in France after half a year.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/e7df6db235ca.mp3"
+                    "voice": "book",
+                    "file": "B1-12-1-3.mp3",
+                    "start": 131.19,
+                    "end": 135.01
                   }
                 }
               ],
@@ -110310,8 +110772,10 @@
                   ],
                   "english": "Before I go back to the dormitory, I want to buy a cup of coffee.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/5dd8006937f4.mp3"
+                    "voice": "book",
+                    "file": "B1-12-1-3.mp3",
+                    "start": 163.69,
+                    "end": 167.89
                   }
                 },
                 {
@@ -110374,8 +110838,10 @@
                   ],
                   "english": "After swimming, I often feel hungry.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/aeea12ea5963.mp3"
+                    "voice": "book",
+                    "file": "B1-12-1-3.mp3",
+                    "start": 169.1,
+                    "end": 172.8
                   }
                 }
               ],
@@ -111668,8 +112134,10 @@
             "pinyin": "Tā duì wǒ hěn hǎo, chángcháng bāng wǒ máng.",
             "english": "He treats me very well and often helps me.",
             "audio": {
-              "voice": "studio",
-              "file": "grammar-studio/v1/cf18a36fafe7.mp3"
+              "voice": "book",
+              "file": "B1-12-2-3.mp3",
+              "start": 50.67,
+              "end": 54.36
             }
           },
           "focusTerms": [
@@ -112050,8 +112518,10 @@
                 ],
                 "simplified": "他常对我说：「我们应该要多运动、多喝水。」",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/db62111fc634.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 9.91,
+                  "end": 15.9
                 }
               }
             },
@@ -112156,8 +112626,10 @@
                 ],
                 "simplified": "这件事我只对你说，你不要告诉别人。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/feed63315403.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 18.77,
+                  "end": 23.6
                 }
               }
             },
@@ -112211,8 +112683,10 @@
                 ],
                 "simplified": "常用手机对眼睛不好。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ccc8dc6caa44.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 31.87,
+                  "end": 34.93
                 }
               }
             },
@@ -112293,8 +112767,10 @@
                 ],
                 "simplified": "这本书对我不难，我可以学学看。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/82eba23d1d9d.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 37.78,
+                  "end": 42.37
                 }
               }
             },
@@ -112366,8 +112842,10 @@
                 ],
                 "simplified": "他对我很好，常常帮我忙。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/cf18a36fafe7.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 50.67,
+                  "end": 54.36
                 }
               }
             },
@@ -112518,8 +112996,10 @@
                 ],
                 "simplified": "A：老板对你们怎么样？B：他对我们很不错，常常要我们多注意身体健康。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c33056f3166a.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 57.24,
+                  "end": 66.37
                 }
               }
             }
@@ -112891,8 +113371,10 @@
                   ],
                   "english": "He often says to me: “We should exercise more and drink more water.”",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/db62111fc634.mp3"
+                    "voice": "book",
+                    "file": "B1-12-2-3.mp3",
+                    "start": 9.91,
+                    "end": 15.9
                   }
                 },
                 {
@@ -113040,8 +113522,10 @@
                   ],
                   "english": "I am telling this only to you; do not tell anyone else.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/feed63315403.mp3"
+                    "voice": "book",
+                    "file": "B1-12-2-3.mp3",
+                    "start": 18.77,
+                    "end": 23.6
                   }
                 }
               ],
@@ -113152,8 +113636,10 @@
                   ],
                   "english": "Using a phone often is bad for the eyes.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/ccc8dc6caa44.mp3"
+                    "voice": "book",
+                    "file": "B1-12-2-3.mp3",
+                    "start": 31.87,
+                    "end": 34.93
                   }
                 },
                 {
@@ -113270,8 +113756,10 @@
                   ],
                   "english": "This book is not difficult for me; I can try studying it.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/82eba23d1d9d.mp3"
+                    "voice": "book",
+                    "file": "B1-12-2-3.mp3",
+                    "start": 37.78,
+                    "end": 42.37
                   }
                 }
               ],
@@ -113381,8 +113869,10 @@
                   ],
                   "english": "He treats me very well and often helps me.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/cf18a36fafe7.mp3"
+                    "voice": "book",
+                    "file": "B1-12-2-3.mp3",
+                    "start": 50.67,
+                    "end": 54.36
                   }
                 }
               ],
@@ -114729,8 +115219,10 @@
             "pinyin": "Wǒ kànguo zhè bù diànyǐng.",
             "english": "I have seen this film.",
             "audio": {
-              "voice": "studio",
-              "file": "grammar-studio/v1/6a64c9eb0c4b.mp3"
+              "voice": "book",
+              "file": "B1-12-2-3.mp3",
+              "start": 73.25,
+              "end": 75.66
             }
           },
           "focusTerms": [
@@ -115404,8 +115896,10 @@
                 ],
                 "simplified": "A：你吃过臭豆腐吗？B：我还没吃过，听说很特别。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/34c2241f8a18.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 97.98,
+                  "end": 104.27
                 }
               }
             },
@@ -115546,8 +116040,10 @@
                 ],
                 "simplified": "A：你要跟我们一起吃午饭吗？B：我吃过了，你们去吃吧！",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/83ac40338b54.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 117.27,
+                  "end": 123.82
                 }
               }
             },
@@ -115902,8 +116398,10 @@
                 ],
                 "simplified": "A：他给大家写了一张卡片，你们都看过了吗？B：我看过了。C：我还没看。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/cff20c3754d7.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 138.54,
+                  "end": 147.25
                 }
               }
             }
@@ -116226,8 +116724,10 @@
                   ],
                   "english": "I have seen this film.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/6a64c9eb0c4b.mp3"
+                    "voice": "book",
+                    "file": "B1-12-2-3.mp3",
+                    "start": 73.25,
+                    "end": 75.66
                   }
                 }
               ],
@@ -116324,8 +116824,10 @@
                   ],
                   "english": "I have eaten breakfast.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/3217dd5ffff9.mp3"
+                    "voice": "book",
+                    "file": "B1-12-2-3.mp3",
+                    "start": 112.11,
+                    "end": 114.22
                   }
                 }
               ],
@@ -117706,8 +118208,10 @@
                 ],
                 "simplified": "我心情不好的时候，都会听音乐、跟朋友聊天。",
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4e3c5e30a261.mp3"
+                  "voice": "book",
+                  "file": "B1-12-2-3.mp3",
+                  "start": 177.3,
+                  "end": 182.84
                 }
               }
             }
@@ -120765,8 +121269,10 @@
               ],
               "english": "I don’t want to go out today. I just want to listen to music at home.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/499cabe1c554.mp3"
+                "voice": "book",
+                "file": "B1-13-1-3.mp3",
+                "start": 4.87,
+                "end": 10.47
               }
             },
             {
@@ -120811,8 +121317,10 @@
               ],
               "english": "I’ve heard that his new house is very pretty. I want to have a look.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/ab5da5e4170a.mp3"
+                "voice": "book",
+                "file": "B1-13-1-3.mp3",
+                "start": 11.64,
+                "end": 17.64
               }
             }
           ],
@@ -121178,8 +121686,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1419a64d06cb.mp3"
+                  "voice": "book",
+                  "file": "B1-13-1-3.mp3",
+                  "start": 43.73,
+                  "end": 52.8
                 }
               }
             }
@@ -123207,8 +123717,10 @@
               ],
               "english": "to write from the left to the right",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/6eff879f45bb.mp3"
+                "voice": "book",
+                "file": "B1-13-1-3.mp3",
+                "start": 62.25,
+                "end": 64.84
               }
             },
             {
@@ -123262,8 +123774,10 @@
               ],
               "english": "to look from here to the doorway",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/2adfe2544dbd.mp3"
+                "voice": "book",
+                "file": "B1-13-1-3.mp3",
+                "start": 66.02,
+                "end": 68.93
               }
             }
           ],
@@ -123571,8 +124085,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/d921bd2b570f.mp3"
+                  "voice": "book",
+                  "file": "B1-13-1-3.mp3",
+                  "start": 89.76,
+                  "end": 96.94
                 }
               }
             }
@@ -125623,8 +126139,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ca9b148a5a92.mp3"
+                  "voice": "book",
+                  "file": "B1-13-1-3.mp3",
+                  "start": 113.48,
+                  "end": 116.89
                 }
               },
               "teachingNote": "Printed cue: 早."
@@ -128778,8 +129296,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5a9e2f51456c.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 15.64,
+                  "end": 21.91
                 }
               }
             },
@@ -130967,8 +131487,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4ab7b715675f.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 50.71,
+                  "end": 54.62
                 }
               }
             },
@@ -131061,8 +131583,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/f49512c86912.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 57.71,
+                  "end": 63.31
                 }
               }
             },
@@ -131164,8 +131688,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/cf1dc29bbad0.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 66.53,
+                  "end": 73.45
                 }
               }
             },
@@ -131276,8 +131802,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0f9b0c1e0b72.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 86.49,
+                  "end": 94.82
                 }
               }
             },
@@ -131368,8 +131896,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/6f79c48a5c91.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 97.84,
+                  "end": 105.32
                 }
               }
             },
@@ -131554,8 +132084,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/4960406bb4bd.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 108.53,
+                  "end": 121.89
                 }
               }
             },
@@ -131752,8 +132284,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1ca16dab647a.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 129.66,
+                  "end": 141.27
                 }
               }
             },
@@ -131909,8 +132443,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/67317dfba7c0.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 144.28,
+                  "end": 155.56
                 }
               }
             },
@@ -132100,8 +132636,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9b06648238a2.mp3"
+                  "voice": "book",
+                  "file": "B1-13-2-3.mp3",
+                  "start": 158.66,
+                  "end": 172.47
                 }
               }
             }
@@ -132289,8 +132827,10 @@
                   ],
                   "english": "I work for eight hours every day.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/b3e299570600.mp3"
+                    "voice": "book",
+                    "file": "B1-13-2-3.mp3",
+                    "start": 44.57,
+                    "end": 47.65
                   }
                 }
               ],
@@ -132365,8 +132905,10 @@
                   ],
                   "english": "I sleep for seven hours every day.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/7a47fabd4061.mp3"
+                    "voice": "book",
+                    "file": "B1-13-2-3.mp3",
+                    "start": 79.97,
+                    "end": 83.46
                   }
                 }
               ],
@@ -132451,8 +132993,10 @@
                   ],
                   "english": "I sleep for seven hours every day.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/5832f3b6f4ab.mp3"
+                    "voice": "book",
+                    "file": "B1-13-2-3.mp3",
+                    "start": 123.06,
+                    "end": 126.58
                   }
                 }
               ],
@@ -134789,8 +135333,10 @@
             "pinyin": "Qùnián wǒ zài Rìběn zhù le bànnián.",
             "english": "Last year I lived in Japan for half a year.",
             "audio": {
-              "voice": "studio",
-              "file": "grammar-studio/v1/882eca0ae936.mp3"
+              "voice": "book",
+              "file": "B1-14-1-3.mp3",
+              "start": 13.2,
+              "end": 16.81
             }
           },
           "focusTerms": [
@@ -135236,8 +135782,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/882eca0ae936.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 13.2,
+                  "end": 16.81
                 }
               }
             },
@@ -135329,8 +135877,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/47fb6a4d004c.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 19.8,
+                  "end": 30.14
                 }
               }
             },
@@ -135418,8 +135968,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/da57f8f16a3f.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 33.27,
+                  "end": 44.05
                 }
               }
             },
@@ -135481,8 +136033,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/72dc2e497567.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 61.48,
+                  "end": 69.02
                 }
               },
               "teachingNote": null
@@ -135551,8 +136105,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b0ef5e7e4011.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 72.03,
+                  "end": 77.86
                 }
               },
               "teachingNote": null
@@ -135625,8 +136181,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5a3f2b80e1af.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 80.99,
+                  "end": 87.37
                 }
               },
               "teachingNote": null
@@ -135681,8 +136239,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/34ce9e9aa9b3.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 100.75,
+                  "end": 104.39
                 }
               },
               "teachingNote": null
@@ -135732,8 +136292,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/851c5e6e2b52.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 107.38,
+                  "end": 111.89
                 }
               },
               "teachingNote": null
@@ -135798,8 +136360,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/3a572fc8c7c5.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 114.92,
+                  "end": 120.8
                 }
               },
               "teachingNote": null
@@ -135998,8 +136562,10 @@
                   ],
                   "english": "I rested for ten minutes.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/78fd1ebd3ba8.mp3"
+                    "voice": "book",
+                    "file": "B1-14-1-3.mp3",
+                    "start": 7.75,
+                    "end": 10.22
                   }
                 }
               ],
@@ -136105,8 +136671,10 @@
                   ],
                   "english": "He attended class for five hours yesterday.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/1ce23ecdca4f.mp3"
+                    "voice": "book",
+                    "file": "B1-14-1-3.mp3",
+                    "start": 50.48,
+                    "end": 54.21
                   }
                 },
                 {
@@ -136177,8 +136745,10 @@
                   ],
                   "english": "I studied Chinese for three years.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/fca1d593fdfe.mp3"
+                    "voice": "book",
+                    "file": "B1-14-1-3.mp3",
+                    "start": 55.35,
+                    "end": 58.53
                   }
                 }
               ],
@@ -136275,8 +136845,10 @@
                   ],
                   "english": "We sang for three hours yesterday.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/e3cb66c4d281.mp3"
+                    "voice": "book",
+                    "file": "B1-14-1-3.mp3",
+                    "start": 93.93,
+                    "end": 97.65
                   }
                 }
               ],
@@ -137927,8 +138499,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/5b508316ad47.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 146.54,
+                  "end": 151.48
                 }
               },
               "teachingNote": null
@@ -138061,8 +138635,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9c193fa15866.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 172.54,
+                  "end": 177.51
                 }
               },
               "teachingNote": null
@@ -138206,8 +138782,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/c7c5ce9baad3.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 198.53,
+                  "end": 203.85
                 }
               }
             },
@@ -138269,8 +138847,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/b47f75c8775b.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 206.67,
+                  "end": 211.75
                 }
               },
               "teachingNote": null
@@ -138349,8 +138929,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/3dc005a16b3a.mp3"
+                  "voice": "book",
+                  "file": "B1-14-1-3.mp3",
+                  "start": 214.85,
+                  "end": 222.42
                 }
               },
               "teachingNote": null
@@ -138567,8 +139149,10 @@
                   ],
                   "english": "I have been resting for ten minutes.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/d95dea7dbf04.mp3"
+                    "voice": "book",
+                    "file": "B1-14-1-3.mp3",
+                    "start": 127.21,
+                    "end": 129.77
                   }
                 }
               ],
@@ -138693,8 +139277,10 @@
                   ],
                   "english": "He has been in class for five hours.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/2df5733d5e33.mp3"
+                    "voice": "book",
+                    "file": "B1-14-1-3.mp3",
+                    "start": 157.99,
+                    "end": 161.61
                   }
                 }
               ],
@@ -138810,8 +139396,10 @@
                   ],
                   "english": "I have been studying English for ten years.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/250e2211cac4.mp3"
+                    "voice": "book",
+                    "file": "B1-14-1-3.mp3",
+                    "start": 192.32,
+                    "end": 195.61
                   }
                 }
               ],
@@ -141231,8 +141819,10 @@
             "pinyin": "Jīntiān bǐ zuótiān lěng.",
             "english": "Today is colder than yesterday.",
             "audio": {
-              "voice": "studio",
-              "file": "grammar-studio/v1/29aa6f89473e.mp3"
+              "voice": "book",
+              "file": "B1-14-2-3.mp3",
+              "start": 7.21,
+              "end": 9.48
             }
           },
           "focusTerms": [
@@ -141651,8 +142241,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/70466dc2d505.mp3"
+                  "voice": "book",
+                  "file": "B1-14-2-3.mp3",
+                  "start": 30.85,
+                  "end": 37.68
                 }
               }
             },
@@ -141707,8 +142299,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/3d1d87b98dca.mp3"
+                  "voice": "book",
+                  "file": "B1-14-2-3.mp3",
+                  "start": 44.58,
+                  "end": 48.72
                 }
               },
               "teachingNote": null
@@ -142148,8 +142742,10 @@
                   ],
                   "english": "Today is colder than yesterday.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/29aa6f89473e.mp3"
+                    "voice": "book",
+                    "file": "B1-14-2-3.mp3",
+                    "start": 7.21,
+                    "end": 9.48
                   }
                 },
                 {
@@ -142212,8 +142808,10 @@
                   ],
                   "english": "This piece of clothing is a little longer than that one.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/b4335123b46d.mp3"
+                    "voice": "book",
+                    "file": "B1-14-2-3.mp3",
+                    "start": 10.68,
+                    "end": 14.59
                   }
                 },
                 {
@@ -142276,8 +142874,10 @@
                   ],
                   "english": "It is much faster to fly than to take a train.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/cdb6edb3f6a1.mp3"
+                    "voice": "book",
+                    "file": "B1-14-2-3.mp3",
+                    "start": 20.68,
+                    "end": 24.3
                   }
                 },
                 {
@@ -142414,8 +143014,10 @@
                   ],
                   "english": "You came earlier than me.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/a05dd6603405.mp3"
+                    "voice": "book",
+                    "file": "B1-14-2-3.mp3",
+                    "start": 67.68,
+                    "end": 69.56
                   }
                 },
                 {
@@ -142536,8 +143138,10 @@
                   ],
                   "english": "The elder sister sings better than the younger sister.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/5b8e5641e18f.mp3"
+                    "voice": "book",
+                    "file": "B1-14-2-3.mp3",
+                    "start": 73.82,
+                    "end": 76.91
                   }
                 },
                 {
@@ -142600,8 +143204,10 @@
                   ],
                   "english": "My father drives better than my older brother.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/a1fae4ff56ce.mp3"
+                    "voice": "book",
+                    "file": "B1-14-2-3.mp3",
+                    "start": 78.07,
+                    "end": 81.01
                   }
                 }
               ],
@@ -145478,8 +146084,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/095c275a063a.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 31.48,
+                  "end": 34.67
                 }
               }
             },
@@ -145539,8 +146147,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a9b778570dc8.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 37.66,
+                  "end": 42.07
                 }
               }
             },
@@ -145628,8 +146238,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/fb279eb8a821.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 45.19,
+                  "end": 50.02
                 }
               }
             },
@@ -145687,8 +146299,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/a8ff158d863b.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 67.33,
+                  "end": 71.41
                 }
               }
             },
@@ -145754,8 +146368,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/0c4a83b18167.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 74.46,
+                  "end": 78.61
                 }
               }
             },
@@ -145836,8 +146452,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/80091b8e6f40.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 81.9,
+                  "end": 87.41
                 }
               }
             }
@@ -146024,8 +146642,10 @@
                   ],
                   "english": "My cell phone is the same as yours.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/1774484fd3ed.mp3"
+                    "voice": "book",
+                    "file": "B1-15-1-3.mp3",
+                    "start": 13.88,
+                    "end": 17.84
                   }
                 },
                 {
@@ -146073,8 +146693,10 @@
                   ],
                   "english": "Are the Vietnamese zodiac animals different from the Chinese ones?",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/4146f2563421.mp3"
+                    "voice": "book",
+                    "file": "B1-15-1-3.mp3",
+                    "start": 19.02,
+                    "end": 23.86
                   }
                 },
                 {
@@ -146127,8 +146749,10 @@
                   ],
                   "english": "The younger brother is as clever as his elder brother is.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/777da0ce8b8d.mp3"
+                    "voice": "book",
+                    "file": "B1-15-1-3.mp3",
+                    "start": 24.98,
+                    "end": 28.47
                   }
                 }
               ],
@@ -146204,8 +146828,10 @@
                   ],
                   "english": "He sings as well as you do.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/3a2d52f486eb.mp3"
+                    "voice": "book",
+                    "file": "B1-15-1-3.mp3",
+                    "start": 56.63,
+                    "end": 59.67
                   }
                 },
                 {
@@ -146259,8 +146885,10 @@
                   ],
                   "english": "He sings as well as you do.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/bfac5dd0044c.mp3"
+                    "voice": "book",
+                    "file": "B1-15-1-3.mp3",
+                    "start": 60.92,
+                    "end": 64.31
                   }
                 }
               ],
@@ -147626,8 +148254,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/1a012c4c83e5.mp3"
+                  "voice": "book",
+                  "file": "B1-15-2-3.mp3",
+                  "start": 13.51,
+                  "end": 18.22
                 }
               }
             },
@@ -148288,8 +148918,10 @@
                   ],
                   "english": "She is looking at the scenery outside the window.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/43df3d96d4aa.mp3"
+                    "voice": "book",
+                    "file": "B1-15-2-3.mp3",
+                    "start": 6.95,
+                    "end": 10.41
                   }
                 }
               ],
@@ -148354,8 +148986,10 @@
                   ],
                   "english": "Everyone, look at me; do not read your book.",
                   "audio": {
-                    "voice": "studio",
-                    "file": "grammar-studio/v1/6065b8f07a80.mp3"
+                    "voice": "book",
+                    "file": "B1-15-2-3.mp3",
+                    "start": 36.12,
+                    "end": 37.73
                   }
                 }
               ],
@@ -149624,8 +150258,10 @@
               ],
               "english": "Whenever he has a question, he asks the teacher.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/c8bff69bb5b3.mp3"
+                "voice": "book",
+                "file": "B1-15-1-3.mp3",
+                "start": 95.95,
+                "end": 99.55
               }
             },
             {
@@ -149686,8 +150322,10 @@
               ],
               "english": "As soon as you said it, I understood it.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/7b5636a0da37.mp3"
+                "voice": "book",
+                "file": "B1-15-1-3.mp3",
+                "start": 100.72,
+                "end": 103.38
               }
             }
           ],
@@ -149748,8 +150386,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/9a365ed95184.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 106.42,
+                  "end": 109.4
                 }
               }
             },
@@ -149829,8 +150469,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/029316a3b7a3.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 112.38,
+                  "end": 117.04
                 }
               }
             },
@@ -149920,8 +150562,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ab3547a45f7a.mp3"
+                  "voice": "book",
+                  "file": "B1-15-1-3.mp3",
+                  "start": 120.19,
+                  "end": 125.78
                 }
               }
             }
@@ -150782,8 +151426,10 @@
               ],
               "english": "My home is very far from the company.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/0d387a317c8c.mp3"
+                "voice": "book",
+                "file": "B1-16-1-3.mp3",
+                "start": 129.84,
+                "end": 132.44
               }
             },
             {
@@ -151031,8 +151677,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/080acf39fadb.mp3"
+                  "voice": "book",
+                  "file": "B1-16-1-3.mp3",
+                  "start": 135.58,
+                  "end": 146.94
                 }
               },
               "teachingNote": null
@@ -151114,8 +151762,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/2efa776501d0.mp3"
+                  "voice": "book",
+                  "file": "B1-16-1-3.mp3",
+                  "start": 150.1,
+                  "end": 158.86
                 }
               },
               "teachingNote": null
@@ -152866,8 +153516,10 @@
               ],
               "english": "At first he had no car; later he bought one.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/322c1298a3ac.mp3"
+                "voice": "book",
+                "file": "B1-16-2-3.mp3",
+                "start": 13.98,
+                "end": 18.45
               }
             },
             {
@@ -153011,8 +153663,10 @@
               ],
               "english": "We first had three dogs; later we gave one to a friend.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/34aca38d8a9f.mp3"
+                "voice": "book",
+                "file": "B1-16-2-3.mp3",
+                "start": 36.37,
+                "end": 42.15
               }
             }
           ],
@@ -153063,8 +153717,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/42c41de28be7.mp3"
+                  "voice": "book",
+                  "file": "B1-16-2-3.mp3",
+                  "start": 25.75,
+                  "end": 30.28
                 }
               },
               "teachingNote": null
@@ -153894,8 +154550,10 @@
               ],
               "english": "Today is even colder than yesterday.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/54bdb2878a25.mp3"
+                "voice": "book",
+                "file": "B1-16-2-3.mp3",
+                "start": 82,
+                "end": 84.92
               }
             },
             {
@@ -154148,8 +154806,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/ddf7f3fc2a5b.mp3"
+                  "voice": "book",
+                  "file": "B1-16-2-3.mp3",
+                  "start": 88.03,
+                  "end": 96.39
                 }
               },
               "teachingNote": null
@@ -154921,8 +155581,10 @@
               ],
               "english": "Last night after taking a shower, I went right to sleep.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/953da7676cd2.mp3"
+                "voice": "book",
+                "file": "B1-16-2-3.mp3",
+                "start": 125.96,
+                "end": 130.36
               }
             },
             {
@@ -154983,8 +155645,10 @@
               ],
               "english": "Every night after taking a shower, I go right to sleep.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/0ae2c5293ce8.mp3"
+                "voice": "book",
+                "file": "B1-16-2-3.mp3",
+                "start": 131.53,
+                "end": 135.69
               }
             },
             {
@@ -155097,8 +155761,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/953da7676cd2.mp3"
+                  "voice": "book",
+                  "file": "B1-16-2-3.mp3",
+                  "start": 125.96,
+                  "end": 130.36
                 }
               },
               "teachingNote": null
@@ -155969,8 +156635,10 @@
               ],
               "english": "He introduced his country extremely well.",
               "audio": {
-                "voice": "studio",
-                "file": "grammar-studio/v1/005cedfe6bd3.mp3"
+                "voice": "book",
+                "file": "B1-16-1-3.mp3",
+                "start": 97.86,
+                "end": 101.85
               }
             }
           ],
@@ -156075,8 +156743,10 @@
                   }
                 ],
                 "audio": {
-                  "voice": "studio",
-                  "file": "grammar-studio/v1/8f7aea79072e.mp3"
+                  "voice": "book",
+                  "file": "B1-16-1-3.mp3",
+                  "start": 97.86,
+                  "end": 107.68
                 }
               },
               "teachingNote": null

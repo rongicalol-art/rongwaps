@@ -169,7 +169,8 @@ async function loadSourceGrammarParts(bookId: number): Promise<InteractiveGramma
 /**
  * Every grammar sentence (page text or exercise sentence: anything with `traditional` and `english`)
  * and every pattern-table row without an example under it uses the book's grammar track first (an
- * owner-approved near miss counts), then a dialogue clip, then an approved studio recording. Keys
+ * owner-approved near miss counts), then a dialogue clip, then a grammar-track clip found by speech
+ * recognition (scripts/audio/recoverGrammarClipsAsr.py), then an approved studio recording. Keys
  * are the sentence's Chinese characters.
  */
 async function attachSentenceAudio(parts: InteractiveGrammarPart[]) {
@@ -177,11 +178,12 @@ async function attachSentenceAudio(parts: InteractiveGrammarPart[]) {
   const grammarTrack = await read('content/audio/grammar_track_clips.json');
   const approved = await read('content/audio/grammar_track_approved.json');
   const dialogue = await read('content/audio/grammar_book_clips.json');
+  const recognized = await read('content/audio/grammar_track_asr_clips.json');
   const studio = await read('content/audio/grammar_studio_audio.json');
   const han = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
   const audioFor = (text: string): SentenceAudio | undefined => {
     const key = han(text);
-    const clip = approved[key] ?? grammarTrack[key] ?? dialogue[key];
+    const clip = approved[key] ?? grammarTrack[key] ?? dialogue[key] ?? recognized[key];
     if (clip) return { voice: 'book', file: clip.file, start: clip.start, end: clip.end };
     return studio[key] ? { voice: 'studio', file: studio[key].file } : undefined;
   };
