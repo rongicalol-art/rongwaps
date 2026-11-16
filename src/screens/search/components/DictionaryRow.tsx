@@ -6,7 +6,7 @@ interface DictionaryRowProps {
   pinyin?: string | null;
   meaning?: string;
   pos?: string | null;
-  /** Level / lesson chip, placed right after the meaning. */
+  /** Level / lesson chip, placed right after the meaning and before the word type, so the type column stays at the right edge whether or not a row has a chip. */
   trailing?: ReactNode;
   /** Far-right control, such as the save button. */
   action?: ReactNode;
@@ -42,8 +42,8 @@ export function DictionaryRow({ glyph, pinyin, meaning, pos, trailing, action, o
           <span className="line-clamp-2 text-base font-extrabold leading-snug text-ui-ink-strong sm:line-clamp-1">{meaning || ' '}</span>
         </span>
       </button>
+      {trailing && <span className="flex shrink-0 sm:w-21 sm:justify-end">{trailing}</span>}
       {posLabel && <span className="hidden w-36 shrink-0 text-right text-xs font-black uppercase leading-tight tracking-widest text-ui-muted-strong sm:line-clamp-2">{posLabel}</span>}
-      {trailing && <span className="flex shrink-0 sm:w-21 sm:justify-center">{trailing}</span>}
       {action && <span className="hidden shrink-0 items-center sm:flex">{action}</span>}
     </div>
   );
