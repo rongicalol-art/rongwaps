@@ -24577,7 +24577,7 @@
                     "mark": [
                       "所以"
                     ],
-                    "note": "The bookstore is not a result of the convenience store. It is one more shop: 還有."
+                    "note": "The bank is not a result of the convenience store. It is one more place: 還有."
                   }
                 ],
                 "fallbackRepair": "除了 before the first thing, then 還 + 有 before the one added.",
@@ -80279,7 +80279,8 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "你"
+                        "traditional": "我很少去便利商店，所以",
+                        "simplified": "我很少去便利商店，所以"
                       },
                       {
                         "type": "slot",
@@ -80297,113 +80298,6 @@
                         "type": "slot",
                         "id": "s2",
                         "answers": [
-                          "感興趣"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s3",
-                        "answers": [
-                          "嗎"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "？"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "對",
-                    "simplified": "对",
-                    "pinyin": "duì"
-                  },
-                  {
-                    "traditional": "感興趣",
-                    "simplified": "感兴趣",
-                    "pinyin": "gǎnxìngqù"
-                  },
-                  {
-                    "traditional": "嗎",
-                    "simplified": "吗",
-                    "pinyin": "ma"
-                  },
-                  {
-                    "traditional": "呢",
-                    "pinyin": "ne"
-                  },
-                  {
-                    "traditional": "跟",
-                    "pinyin": "gēn"
-                  },
-                  {
-                    "traditional": "有意思",
-                    "pinyin": "yǒuyìsi"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "placed": [
-                      "呢"
-                    ],
-                    "mark": [
-                      "呢"
-                    ],
-                    "note": "A yes/no question ends in 嗎."
-                  },
-                  {
-                    "placed": [
-                      "跟"
-                    ],
-                    "mark": [
-                      "跟"
-                    ],
-                    "note": "跟 means \"with\". What you are interested in takes 對."
-                  },
-                  {
-                    "placed": [
-                      "有意思"
-                    ],
-                    "mark": [
-                      "有意思"
-                    ],
-                    "note": "Here 有意思 would describe the thing itself. A person 對…感興趣."
-                  }
-                ],
-                "fallbackRepair": "對 before the thing, then 感興趣, and 嗎 at the very end.",
-                "result": {
-                  "traditional": "你對便利商店辦的新活動感興趣嗎？",
-                  "simplified": "你对便利商店办的新活动感兴趣吗？",
-                  "pinyin": "Nǐ duì biànlì shāngdiàn bàn de xīn huódòng gǎnxìngqù ma?",
-                  "english": "Are you interested in the new event the convenience store is running?"
-                },
-                "free": true
-              },
-              {
-                "id": "b2l11g2-7",
-                "source": "p.252 #7",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你對坐火車到花蓮去旅行",
-                        "simplified": "你对坐火车到花莲去旅行"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s1",
-                        "answers": [
-                          "感"
-                        ]
-                      },
-                      {
-                        "type": "slot",
-                        "id": "s2",
-                        "answers": [
                           "不"
                         ]
                       },
@@ -80416,15 +80310,16 @@
                       },
                       {
                         "type": "text",
-                        "traditional": "？"
+                        "traditional": "。"
                       }
                     ]
                   }
                 ],
                 "tiles": [
                   {
-                    "traditional": "感",
-                    "pinyin": "gǎn"
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
                   },
                   {
                     "traditional": "不",
@@ -80436,54 +80331,165 @@
                     "pinyin": "gǎnxìngqù"
                   },
                   {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  },
+                  {
                     "traditional": "沒",
                     "simplified": "没",
                     "pinyin": "méi"
                   },
                   {
-                    "traditional": "有",
-                    "pinyin": "yǒu"
-                  },
-                  {
-                    "traditional": "很",
-                    "pinyin": "hěn"
+                    "traditional": "跟",
+                    "pinyin": "gēn"
                   }
                 ],
                 "repairs": [
                   {
                     "placed": [
-                      "沒"
-                    ],
-                    "mark": [
-                      "沒"
-                    ],
-                    "note": "The choice question is made with 不: 感不感興趣."
-                  },
-                  {
-                    "placed": [
-                      "有"
-                    ],
-                    "mark": [
-                      "有"
-                    ],
-                    "note": "有 goes with 興趣 (有沒有興趣). With 感興趣 the choice question is 感不感興趣."
-                  },
-                  {
-                    "placed": [
                       "很"
                     ],
                     "mark": [
                       "很"
                     ],
-                    "note": "A choice question has no 很: 感不感興趣."
+                    "note": "The speaker seldom goes to convenience stores, so 所以 gives the result: not interested."
+                  },
+                  {
+                    "placed": [
+                      "沒"
+                    ],
+                    "mark": [
+                      "沒"
+                    ],
+                    "note": "感興趣 is negated with 不: 不感興趣."
+                  },
+                  {
+                    "placed": [
+                      "跟"
+                    ],
+                    "mark": [
+                      "跟"
+                    ],
+                    "note": "跟 means \"with\". What you are interested in takes 對."
                   }
                 ],
-                "fallbackRepair": "The first character, then 不, then the whole word: 感不感興趣.",
+                "fallbackRepair": "對 before the thing, then 不, then 感興趣.",
                 "result": {
-                  "traditional": "你對坐火車到花蓮去旅行感不感興趣？",
-                  "simplified": "你对坐火车到花莲去旅行感不感兴趣？",
-                  "pinyin": "Nǐ duì zuò huǒchē dào Huālián qù lǚxíng gǎn bù gǎnxìngqù?",
-                  "english": "Are you interested or not in traveling to Hualien by train?"
+                  "traditional": "我很少去便利商店，所以對便利商店辦的新活動不感興趣。",
+                  "simplified": "我很少去便利商店，所以对便利商店办的新活动不感兴趣。",
+                  "pinyin": "Wǒ hěn shǎo qù biànlì shāngdiàn, suǒyǐ duì biànlì shāngdiàn bàn de xīn huódòng bù gǎnxìngqù.",
+                  "english": "I rarely go to convenience stores, so I'm not interested in the new events they run."
+                },
+                "free": true
+              },
+              {
+                "id": "b2l11g2-7",
+                "source": "p.252 #7",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我很喜歡看風景，所以",
+                        "simplified": "我很喜欢看风景，所以"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "對"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "坐火車到花蓮去旅行",
+                        "simplified": "坐火车到花莲去旅行"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s2",
+                        "answers": [
+                          "很"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s3",
+                        "answers": [
+                          "感興趣"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "對",
+                    "simplified": "对",
+                    "pinyin": "duì"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  },
+                  {
+                    "traditional": "感興趣",
+                    "simplified": "感兴趣",
+                    "pinyin": "gǎnxìngqù"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "跟",
+                    "pinyin": "gēn"
+                  },
+                  {
+                    "traditional": "有",
+                    "pinyin": "yǒu"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "不"
+                    ],
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "The speaker loves scenery, and 所以 gives the result: the speaker is interested."
+                  },
+                  {
+                    "placed": [
+                      "跟"
+                    ],
+                    "mark": [
+                      "跟"
+                    ],
+                    "note": "跟 means \"with\". What you are interested in takes 對."
+                  },
+                  {
+                    "placed": [
+                      "有"
+                    ],
+                    "mark": [
+                      "有"
+                    ],
+                    "note": "有 goes with 興趣 (有興趣). With 感興趣, say 很感興趣."
+                  }
+                ],
+                "fallbackRepair": "對 before the thing, then 很, then 感興趣.",
+                "result": {
+                  "traditional": "我很喜歡看風景，所以對坐火車到花蓮去旅行很感興趣。",
+                  "simplified": "我很喜欢看风景，所以对坐火车到花莲去旅行很感兴趣。",
+                  "pinyin": "Wǒ hěn xǐhuān kàn fēngjǐng, suǒyǐ duì zuò huǒchē dào Huālián qù lǚxíng hěn gǎnxìngqù.",
+                  "english": "I love looking at scenery, so I'm very interested in traveling to Hualien by train."
                 },
                 "free": true
               },
