@@ -4,7 +4,7 @@ export const HAN_CHARACTER = /\p{Script=Han}/u;
 let segmenter: Intl.Segmenter | undefined;
 
 /** Authored word boundaries win; highlighting never changes lookup boundaries. */
-export function sentenceSegments(text: string, authoredWords: string[] = []): SentenceSegment[] {
+export function sentenceSegments(text: string, authoredWords: readonly string[] = []): SentenceSegment[] {
   const words = [...new Set(authoredWords.filter(Boolean))].sort((a, b) => b.length - a.length);
   const result: SentenceSegment[] = [];
   let index = 0;
