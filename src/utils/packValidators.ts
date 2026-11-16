@@ -16,20 +16,6 @@ export interface GenericContentManifest {
   shards?: Array<{ shard: number; count: number; path: string; sha256?: string; bytes?: number }>;
 }
 
-export interface MemoryHookPackItem {
-  id: string;
-  character: string;
-  mnemonic: string;
-  content_type: string;
-}
-
-export interface MemoryHookPack {
-  schemaVersion: number;
-  bookId: number;
-  count: number;
-  items: MemoryHookPackItem[];
-}
-
 export type ContentPackKind =
   | 'study'
   | 'flashcard-extras'
@@ -37,7 +23,8 @@ export type ContentPackKind =
   | 'breakdowns'
   | 'dictionary'
   | 'course-examples'
-  | 'memory-hooks'
+  | 'hook-pieces'
+  | 'word-hooks'
   | 'readings'
   | 'grammar'
   | 'dialogue-alignment'
@@ -48,49 +35,6 @@ export type ContentPackKind =
   | 'dictionary-examples'
   | 'dictionary-usage'
   | 'lesson-tests';
-
-const VALID_CONTENT_TYPES = new Set(['character', 'word', 'story']);
-
-export function isValidMemoryHookItem(item: unknown): item is MemoryHookPackItem {
-  if (!item || typeof item !== 'object') return false;
-  const candidate = item as Record<string, unknown>;
-  return typeof candidate.id === 'string'
-    && candidate.id.length > 0
-    && typeof candidate.character === 'string'
-    && typeof candidate.mnemonic === 'string'
-    && candidate.mnemonic.length > 0
-    && typeof candidate.content_type === 'string'
-    && VALID_CONTENT_TYPES.has(candidate.content_type);
-}
-
-export function isValidMemoryHookPack(pack: unknown, bookId: number, expectedCount: number): pack is MemoryHookPack {
-  if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as Partial<MemoryHookPack>;
-  return candidate.schemaVersion === 1
-    && candidate.bookId === bookId
-    && candidate.count === expectedCount
-    && Array.isArray(candidate.items)
-    && candidate.items.length === candidate.count
-    && candidate.items.every(isValidMemoryHookItem);
-}
-
-export function packItemsToMnemonicMap(items: MemoryHookPackItem[]): Map<string, string> {
-  const map = new Map<string, string>();
-  for (const item of items) map.set(item.id, item.mnemonic);
-  return map;
-}
-
-export function resolveMnemonicFromMap(map: Map<string, string>, cacheKey: string): string | null {
-  const direct = map.get(cacheKey);
-  if (direct) return direct;
-  if (cacheKey.startsWith('word_')) {
-    const stripped = cacheKey.slice(5);
-    if ([...stripped].length === 1) return map.get(stripped) ?? null;
-  } else if ([...cacheKey].length === 1) {
-    return map.get(`word_${cacheKey}`) ?? null;
-  }
-  return null;
-}
 
 export function isValidReadingRecord(item: unknown): item is ReadingRecord {
   if (!item || typeof item !== 'object') return false;

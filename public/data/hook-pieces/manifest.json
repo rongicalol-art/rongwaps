@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "41f1636fd3b2016e",
+  "totalCount": 1674,
+  "shardCount": 1,
+  "shards": [
+    {
+      "shard": 0,
+      "count": 1674,
+      "path": "/data/hook-pieces/pieces.json",
+      "sha256": "41f1636fd3b2016e009e1045692b6d6f3fdf9a82d6753c6a422a9bd2811b235f",
+      "bytes": 617137
+    }
+  ]
+}

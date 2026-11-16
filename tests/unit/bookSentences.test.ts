@@ -35,7 +35,7 @@ test('only a word\'s own examples become sentences', () => {
   const example = (sourceCardId: string, chinese: string) => ({
     chinese, pinyin: 'p', english: 'e', sourceCardId, sourceFront: '', sourceBookId: 3, sourceLessonId: 1, sourcePartId: 1, rank: 1,
   });
-  const extras = { wordHook: null, examples: [example('B3L01-1-01', '我的夢想。'), example('B3L02-1-05', '別的。')] } as unknown as FlashcardExtras;
+  const extras = { examples: [example('B3L01-1-01', '我的夢想。'), example('B3L02-1-05', '別的。')] } as unknown as FlashcardExtras;
   const records = exampleSentenceRecords([card], [extras]);
   assert.deepEqual(records.map((record) => [record.id, record.traditional, record.partId]), [['B3L01-1-01-E01', '我的夢想。', 1]]);
 });

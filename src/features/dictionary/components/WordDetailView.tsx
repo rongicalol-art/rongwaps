@@ -10,7 +10,7 @@ import { readingHeadline, taiwanReadingOf } from '../../../utils/vocabulary/word
 import type { DBDictionaryEntry } from '../../../types/database';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { AlsoReadings, BreakdownTabs, EntryLayout, EntrySenses, useEntryLead, type BreakdownTab } from '../../character-breakdown';
-import { MemoryHookBlock } from '../../character-memory-hooks';
+import { WordHookCard, useWordHook } from '../../character-memory-hooks';
 import { WordExamplesSection } from './WordExamplesSection';
 import { WordDecompositionStrip } from './WordDecompositionStrip';
 import { WordHero } from './WordHero';
@@ -63,6 +63,7 @@ export function WordDetailView({
   const [fallbackWords, setFallbackWords] = useState<Array<{ word: string; entries: DBDictionaryEntry[] }> | null>(null);
   const { examples, relatedWords, examplesLoading, relatedLoading } = useWordExtras(word);
   const level = useLevel(entry?.word ?? word);
+  const { hook: wordHook } = useWordHook(entry?.word ?? word);
 
   useEffect(() => {
     setFallbackWords(null);
@@ -153,7 +154,7 @@ export function WordDetailView({
                 )}
                 intro={<>
                   <WordDecompositionStrip word={entry.word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
-                  <MemoryHookBlock cacheKey={`word_${entry.word}`} word={entry.word} pinyin={lead.pinyin || undefined} />
+                  {wordHook && <WordHookCard hook={wordHook} />}
                 </>}
                 senses={<EntrySenses entry={entry} leadKey={lead.key} onSelectReading={selectReading} onOpenWord={pushCharacter} />}
                 aside={<>

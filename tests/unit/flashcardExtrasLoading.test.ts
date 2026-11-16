@@ -24,9 +24,7 @@ test('course and saved-word lookups fetch only their derivative shards, not sour
   try {
     const packed = await fetchPackedFlashcardExtras(card);
     assert.deepEqual(packed, lessonExtras(course));
-    const hook = await fetchPackedFlashcardExtras(saved);
-    assert.ok(hook?.wordHook);
-    assert.deepEqual(hook.examples, []);
+    assert.equal(await fetchPackedFlashcardExtras(saved), null, 'a saved word has no generated row');
     await fetchPackedFlashcardExtras(card);
     const allowed = new Set(['/data/flashcard-extras/manifest.json', ...[card, saved].map((item) => `/data/flashcard-extras/shard-${flashcardExtrasShard(flashcardExtrasKey(item))}.json`)]);
     assert.deepEqual(new Set(requests), allowed);
@@ -41,8 +39,8 @@ test('course and saved-word lookups fetch only their derivative shards, not sour
 
 test('corrupt derivative rows are rejected before reaching sentence rendering', () => {
   assert.ok(!isValidFlashcardExtrasRow(null));
-  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{}], wordHook: null }));
-  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [], wordHook: {} }));
+  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{}] }));
+  assert.ok(!isValidFlashcardExtrasRow({ key: 'x' }));
 });
 
 test('optional example audio must have a usable source and a valid range', () => {
@@ -52,8 +50,8 @@ test('optional example audio must have a usable source and a valid range', () =>
     sourcePartId: 1, rank: 1,
   };
   const audio = { voice: 'book', file: 'https://drive.usercontent.google.com/audio.mp3', start: 1.2, end: 2.4, cache: false };
-  assert.ok(isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio }], wordHook: null }));
-  assert.ok(isValidFlashcardExtrasRow({ key: 'x', examples: [example], wordHook: null }));
-  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio: { ...audio, end: 1 } }], wordHook: null }));
-  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio: { ...audio, file: '' } }], wordHook: null }));
+  assert.ok(isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio }] }));
+  assert.ok(isValidFlashcardExtrasRow({ key: 'x', examples: [example] }));
+  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio: { ...audio, end: 1 } }] }));
+  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio: { ...audio, file: '' } }] }));
 });

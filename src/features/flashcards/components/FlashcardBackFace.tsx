@@ -1,16 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import type { Flashcard } from "../../../data/flashcards";
-import {
-  MemoryHookCharacter,
-  renderHookText,
-} from "../../character-memory-hooks";
+import { MemoryHookCharacter, TeachHookCard, WordHookCard } from "../../character-memory-hooks";
+import type { TeachHook, WordHook } from "../../../types/hookPieces";
 import {
   groupRankedExamples,
   type RankedExample,
 } from "../../../utils/vocabulary/courseExamples";
 import { extractWordVariants } from "../../../utils/vocabulary/wordForms";
 import { isHanziChar } from "../../../utils/characters/hanzi";
-import { ActionButton, AppIcon, PosBadge } from "../../../lib/widgets";
+import { ActionButton, PosBadge } from "../../../lib/widgets";
 import { formatPosLabel } from "../../../utils/vocabulary/posLabels";
 import { FlashcardExamples } from "./FlashcardExamples";
 import { alignWordSyllables } from "../../../utils/pinyin/pinyinTones";
@@ -49,8 +47,8 @@ export interface FlashcardBackFaceProps {
   onScroll?: () => void;
   scrollRef?: React.RefObject<HTMLDivElement | null>;
   showHook?: boolean;
-  hook?: string | null;
-  hookLoaded?: boolean;
+  /** The word's hook, or the character's when the word is one character. */
+  hook?: { word: WordHook | null; char: TeachHook | null } | null;
   /** Word in plain ink; flipping it off eases the word into its tone colour. */
   wordInk?: boolean;
 }
@@ -69,7 +67,6 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
   scrollRef,
   showHook = false,
   hook,
-  hookLoaded = false,
   wordInk = false,
 }: FlashcardBackFaceProps) {
   const storeSimpleDefinitions = useAppStore((state) => state.simpleDefinitions);
@@ -350,23 +347,9 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
             </div>
           )}
 
-          {showHook && hookLoaded && hook && (
+          {showHook && hook && (
             <div className="rw-rise rw-rise-3 w-full max-w-md sm:max-w-lg pt-2 sm:pt-2.5 pb-0.5 flex flex-col items-center">
-              <div className="relative w-full rounded-feature border-2 border-feedback-warning-edge border-b-[length:var(--depth-md)] bg-feedback-warning-surface px-3.5 py-3 sm:px-4.5 sm:py-3.5 text-left shadow-ambient-sm">
-                <div className="flex items-center gap-1.5 mb-1.5">
-                  <AppIcon
-                    name="sparkles"
-                    size={12}
-                    className="text-feedback-warning-text"
-                  />
-                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-feedback-warning-text">
-                    Memory hook
-                  </span>
-                </div>
-                <p className="text-[13px] sm:text-[14px] md:text-[15px] font-bold leading-snug sm:leading-relaxed text-ui-ink">
-                  {renderHookText(hook)}
-                </p>
-              </div>
+              {hook.word ? <WordHookCard hook={hook.word} compact /> : hook.char ? <TeachHookCard hook={hook.char} compact /> : null}
             </div>
           )}
           {(resolvedLoading || primaryExamples.length > 0) && (

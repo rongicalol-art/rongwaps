@@ -3,7 +3,8 @@ import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/reac
 import { cn } from '../../utils/cn';
 import { CharacterHoverCard } from './CharacterHoverCard';
 import { useCharacterParts } from './useCharacterParts';
-import { useMemoryHook } from './useMemoryHook';
+import { plainHookText } from '../../utils/characters/hookPieces';
+import { useTeachHook } from './useHooks';
 
 /**
  * A single Chinese character that plays a subtle magnetic hover game and
@@ -68,7 +69,9 @@ export function MemoryHookCharacter({
   const [showTooltip, setShowTooltip] = useState(false);
   const [tooltipAbove, setTooltipAbove] = useState(true);
   const [tooltipAnchor, setTooltipAnchor] = useState<{ x: number; top: number; bottom: number } | null>(null);
-  const { hook, loaded: hookLoaded } = useMemoryHook(char, armed && !tooltipDisabled);
+  const teach = useTeachHook(char, armed && !tooltipDisabled);
+  const hookLoaded = teach.loaded;
+  const hook = teach.hook ? plainHookText(teach.hook.hook) : null;
   const partsData = useCharacterParts(char, armed && !tooltipDisabled);
 
   const magnetX = useMotionValue(0);

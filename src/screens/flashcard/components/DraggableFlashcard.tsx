@@ -1,12 +1,12 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { motion, useIsPresent, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
-import { shouldShowWordHook } from '../../../features/character-memory-hooks';
+import { useCardHook } from '../../../features/character-memory-hooks';
 import { AppIcon, DropdownMenu, DropdownMenuItem, IconActionButton } from '../../../lib/widgets';
 import type { RankedExample } from '../../../utils/vocabulary/courseExamples';
 import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/characters/hanzi';
-import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
+import { FlashcardBackFace } from '../../../features/flashcards';
 import { useIsWordSaved } from '../../../features/library';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCardSwipe } from '../hooks/useCardSwipe';
@@ -107,9 +107,8 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
 
   const isInteractive = isPresent && !isSwiped;
 
-  const showWordHookChip = shouldShowWordHook(card.front);
-  const { extras } = useFlashcardExtras(card);
-  const wordHook = extras.wordHook;
+  const cardHook = useCardHook(card.front);
+  const hasHook = Boolean(cardHook.word || cardHook.char);
   const [internalShowHook, setInternalShowHook] = useState(false);
   const showHook = controlledShowHook !== undefined ? controlledShowHook : internalShowHook;
   // The hint only belongs to the answer side. Hide it synchronously on the
@@ -165,7 +164,6 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
 
   // One quiet menu replaces the icon row: it sits top-right and the question side stays clean.
   const renderCardActions = () => {
-    const hasHook = showWordHookChip && Boolean(wordHook);
     const canWrite = Boolean(onOpenWriting) && Array.from(card.front).some(isHanziChar);
     const run = (action: () => void) => () => {
       setIsMenuOpen(false);
@@ -398,8 +396,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
               isDragging={isDragging}
               scrollRef={backScrollRef}
               showHook={isHookOpen}
-              hook={wordHook}
-              hookLoaded
+              hook={cardHook}
               wordInk={!isFlipped}
             />
           </div>

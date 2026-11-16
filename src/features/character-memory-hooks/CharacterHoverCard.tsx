@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, useReducedMotion, type MotionValue } from 'motion/react';
 import { AppIcon, CharacterGlyph } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
-import { renderHookText } from './hookText';
+import { HanText } from './HanText';
 import type { CharacterPartsState } from './useCharacterParts';
 
 const CARD_WIDTH_DEFAULT = 296;
@@ -249,7 +249,7 @@ export function CharacterHoverCard({
         ) : hook ? (
           <span className="flex items-start gap-2 rounded-control border-2 border-feedback-warning-edge/50 bg-feedback-warning-surface px-2.5 py-2">
             <AppIcon name="sparkles" size={14} className="mt-0.5 shrink-0 text-feedback-warning-text" />
-            <span className="text-[13px] font-bold leading-snug text-ui-ink">{renderHookText(hook)}</span>
+            <span className="text-[13px] font-bold leading-snug text-ui-ink"><HanText text={hook} /></span>
           </span>
         ) : null}
       </span>

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { Flashcard } from '../../../../data/flashcards';
 import type { DBCharacterBreakdown } from '../../../../types/database';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
@@ -26,6 +27,7 @@ export function V3CharacterSummary({
   entry,
   lead,
   onSelectReading,
+  heroPanel,
 }: {
   character: string;
   data: DBCharacterBreakdown | null;
@@ -35,6 +37,8 @@ export function V3CharacterSummary({
   entry?: WordEntry | null;
   lead?: EntryReading;
   onSelectReading?: (key: string) => void;
+  /** Replaces the stroke-order box, for a character painted by its pieces. */
+  heroPanel?: ReactNode;
 }) {
   const isReferenceDefinition = Boolean(
     data?.definition &&
@@ -76,7 +80,7 @@ export function V3CharacterSummary({
   return (
     <header className="min-w-0">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 sm:gap-6">
-        <CharacterHeroPanel character={character} accentHex={accentHex} />
+        {heroPanel ?? <CharacterHeroPanel character={character} accentHex={accentHex} />}
         <div className="flex min-w-0 max-w-full flex-col items-start gap-1.5 text-left">
           <div className="flex min-w-0 flex-wrap items-center gap-1.5">
             {pinyin && <span className="truncate text-2xl font-black sm:text-[26px] leading-tight text-brand-primary-text">{numberToToneMarks(pinyin)}</span>}

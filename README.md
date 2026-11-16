@@ -40,7 +40,7 @@ VITE_SUPABASE_URL=https://your-project-id.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key # Server-side use only (KEEP SECRET)
 
-# Optional: local, approval-gated memory-hook pilot generation
+# Optional: local model access for content tooling
 OPENROUTER_API_KEY=your_openrouter_key
 ```
 
@@ -75,7 +75,7 @@ OPENROUTER_API_KEY=your_openrouter_key
 ```
 rongwaps/
 ├── docs/                       # Architecture, database schema, and roadmap docs
-├── scripts/                    # Automation, mnemonic batch generation, and DB hooks
+├── scripts/                    # Automation, content pack builders, and DB hooks
 ├── src/
 │   ├── assets/                 # Lottie animations and images
 │   ├── data/                   # Static curriculums and themes

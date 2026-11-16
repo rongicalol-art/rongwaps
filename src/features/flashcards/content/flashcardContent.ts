@@ -6,7 +6,7 @@ import { getIdPosition } from '../../../utils/lesson/curriculumPosition';
 import { debugLogger } from '../../../utils/debug/debugLogger';
 
 export type { FlashcardExtras };
-const EMPTY: FlashcardExtras = { examples: [], wordHook: null };
+const EMPTY: FlashcardExtras = { examples: [] };
 const LOADING = { extras: EMPTY, isLoading: true };
 const IDLE = { extras: EMPTY, isLoading: false };
 const cache = new Map<string, typeof IDLE>();

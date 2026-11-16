@@ -17,6 +17,6 @@ paths:
 - Grammar is source-first and reading-centred: the source Reading is stored once and grammar points are grouped in the same Part. Read `docs/GRAMMAR_LESSON_TEMPLATE.md` and `docs/DECISIONS.md` before changing grammar screens or data; authoring rules are in the `grammar-author` skill.
 - Lessons aim to be creative, interactive and easier than the book while faithful to it; beginners first; varied per lesson, not one repeated template.
 - Audio and karaoke: `docs/reference/OFFICIAL_AUDIO_SOURCES.md`.
-- Mnemonics use pre-cached static and database data; learner-facing generation is disabled (`docs/DATABASE_SCHEMA.md`, `src/services/mnemonicCache.ts`).
+- Memory hooks are authored in `content/memory-hooks/` (`characters/` and `words/`, one file per book) and built into packs with `npm run hooks:packs`, which checks every character entry against the stroke data. Nothing is generated for learners at run time. The hook rules (history first, a drawing stays one drawing, a made-up link is labelled a memory trick, words add up or are explained plainly) are the owner's: `scripts/memory-hooks/README.md`.
 - Scripts read secrets from env and config files and never print them.
 - Simple definitions (`content/vocabulary/simpleDefinitions.json`) have their own rules: `.claude/rules/simple-definitions.md`.

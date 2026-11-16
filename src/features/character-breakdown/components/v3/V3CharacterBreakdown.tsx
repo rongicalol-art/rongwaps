@@ -4,7 +4,8 @@ import type { DBCharacterBreakdown } from '../../../../types/database';
 import type { Flashcard } from '../../../../data/flashcards';
 import type { SAMPLE_BOOKS } from '../../../../data/books';
 import { V3CharacterSummary } from './V3CharacterSummary';
-import { V3MemoryHook } from './V3MemoryHook';
+import { TeachHookCard, TeachPieces, useTeachHook } from '../../../character-memory-hooks';
+import { PieceHero } from './PieceHero';
 import { V3ExampleSentences } from './V3ExampleSentences';
 import { V3RuntimeTree } from './V3RuntimeTree';
 import { V3WordsList } from './V3WordsList';
@@ -13,7 +14,6 @@ import { AppearsInCard } from './AppearsInCard';
 import { BreakdownTabs, type BreakdownTab } from './BreakdownTabs';
 import type { BuiltWithMember, RankedSoundFamily } from '../../utils/rankBuiltWith';
 import type { ResolvedSoundClue } from '../../hooks/useSoundClue';
-import { usePrimaryReading } from '../../../../hooks/usePronunciation';
 import { useCharExampleSentences } from '../../hooks/useCharExampleSentences';
 import { useWordEntry } from '../../../../hooks/useWordEntry';
 import { useEntryLead } from '../../hooks/useEntryLead';
@@ -44,7 +44,7 @@ export function V3CharacterBreakdown({
   const { entry } = useWordEntry(activeChar);
   const topRef = useRef<HTMLDivElement>(null);
   const { lead, selectReading } = useEntryLead(entry, activeChar, reading, topRef);
-  const primaryPinyin = usePrimaryReading(activeChar, lead?.pinyin || charData?.pinyin?.[0]);
+  const teach = useTeachHook(activeChar);
   const { sentences, isLoading: sentencesLoading } = useCharExampleSentences(activeChar);
   const reduceMotion = useReducedMotion();
 
@@ -61,11 +61,13 @@ export function V3CharacterBreakdown({
   return (
     <EntryLayout
       topRef={topRef}
-      hero={<V3CharacterSummary character={activeChar} data={charData} courseCards={charCardsInfo} accentHex={activeBook.accentHex} entry={entry} lead={lead} onSelectReading={selectReading} />}
-      intro={<>
+      hero={<V3CharacterSummary character={activeChar} data={charData} courseCards={charCardsInfo} accentHex={activeBook.accentHex} entry={entry} lead={lead} onSelectReading={selectReading} heroPanel={teach.hook ? <PieceHero key={activeChar} teach={teach.hook} accentHex={activeBook.accentHex} /> : undefined} />}
+      intro={teach.hook ? <>
+        <TeachPieces hook={teach.hook} onOpen={setDictionaryWord} />
+        <TeachHookCard hook={teach.hook} />
+      </> : teach.loaded ? (
         <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" showHeading={false} onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
-        <V3MemoryHook character={activeChar} pinyin={primaryPinyin} />
-      </>}
+      ) : null}
       senses={entry && lead ? <EntrySenses entry={entry} leadKey={lead.key} onSelectReading={selectReading} onOpenWord={setDictionaryWord} /> : null}
       aside={<>
       {active && (
