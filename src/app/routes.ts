@@ -55,19 +55,27 @@ export function legalPageFromPathname(pathname: string): LegalPage | null {
 }
 
 /**
- * Public lesson pages (`/books/1/lesson-4`): a taste of one lesson for search engines and
+ * Public lesson pages (`/books/2/lesson-4`): a taste of one lesson for search engines and
  * signed-out visitors. Only lessons with a page resolve; anything else falls through to the app.
+ * Book 4 joins when it opens.
  */
-export const LESSON_PAGE_BOOK = 1;
+export const LESSON_PAGE_BOOKS = [1, 2, 3] as const;
 export const LESSON_PAGE_LESSONS = 16;
 
-export function lessonPagePath(lessonId: number): string {
-  return `${GUIDE_ROUTES.books}/${LESSON_PAGE_BOOK}/lesson-${lessonId}`;
+export interface LessonPageRef { bookId: number; lessonId: number }
+
+export function isLessonPage(bookId: number, lessonId: number): boolean {
+  return (LESSON_PAGE_BOOKS as readonly number[]).includes(bookId)
+    && Number.isInteger(lessonId) && lessonId >= 1 && lessonId <= LESSON_PAGE_LESSONS;
 }
 
-export function lessonPageFromPathname(pathname: string): number | null {
+export function lessonPagePath(bookId: number, lessonId: number): string {
+  return `${GUIDE_ROUTES.books}/${bookId}/lesson-${lessonId}`;
+}
+
+export function lessonPageFromPathname(pathname: string): LessonPageRef | null {
   const match = /^\/books\/(\d)\/lesson-(\d{1,2})\/*$/.exec(pathname);
-  if (!match || Number(match[1]) !== LESSON_PAGE_BOOK || match[2].startsWith('0')) return null;
-  const lessonId = Number(match[2]);
-  return lessonId >= 1 && lessonId <= LESSON_PAGE_LESSONS ? lessonId : null;
+  if (!match || match[2].startsWith('0')) return null;
+  const ref = { bookId: Number(match[1]), lessonId: Number(match[2]) };
+  return isLessonPage(ref.bookId, ref.lessonId) ? ref : null;
 }
