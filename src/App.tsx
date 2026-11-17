@@ -2,8 +2,9 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate, useParams } from 'react-router';
 import { LoadingScreen } from './lib/widgets/LoadingScreen';
 import { useAuth } from './hooks/useAuth';
-import { guidePageFromPathname, legalPageFromPathname, lessonPageFromPathname } from './app/routes';
+import { TAB_ROUTES, guidePageFromPathname, legalPageFromPathname, lessonPageFromPathname } from './app/routes';
 import { LazyLandingPage } from './screens/landing/LazyLandingPage';
+import { hasLessonReturn } from './utils/browser/lessonReturn';
 import { takeFolderReturn } from './utils/browser/shareLink';
 
 const AppShell = lazy(() => import('./app/AppShell'));
@@ -22,6 +23,9 @@ export default function App() {
     if (!currentUser) return;
     const path = takeFolderReturn();
     if (path) navigate(path, { replace: true });
+    // Back from sign-in started on a lesson page: Learn opens that lesson (CurriculumLibrary).
+    else if (location.pathname === '/' && hasLessonReturn()) navigate(TAB_ROUTES.path, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- once per sign-in, not on every navigation
   }, [currentUser, navigate]);
 
   return <Suspense fallback={<LoadingScreen message="Loading Ron's Mandarin…" fullScreen />}>

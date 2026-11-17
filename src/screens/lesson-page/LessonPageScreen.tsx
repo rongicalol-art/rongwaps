@@ -7,6 +7,7 @@ import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { usePageMeta } from '../../hooks/usePageMeta';
 import { ActionButton, AppIcon, BrandWordmark, SpeakerIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
+import { rememberLessonReturn } from '../../utils/browser/lessonReturn';
 import { dismissPrerender } from '../../utils/browser/prerender';
 import { SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
 import { playWord } from '../landing/demos/demoUtils';
@@ -58,7 +59,11 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
   }, [playing]);
 
   const hear = (word: SampleWord, key: string) => { playWord(word); setPlaying(key); };
-  const study = () => (currentUser ? navigate(TAB_ROUTES.path) : void signIn());
+  // Sign-in returns to the home address, so the lesson is remembered and opened from there.
+  const study = () => {
+    rememberLessonReturn(lessonId);
+    if (currentUser) navigate(TAB_ROUTES.path); else void signIn();
+  };
   // One confident button: tall, big label, an arrow that says "go". It fills its column, so its edges line up with the blocks below.
   const studyButton = (
 
