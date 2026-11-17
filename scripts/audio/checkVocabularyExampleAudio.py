@@ -8,6 +8,10 @@ again. A clip that still differs keeps its range only when a person listened and
 content/audio/vocabulary_example_reviewed.json ({exampleId: {"heard": transcript, "note": ...}}); otherwise --write
 removes it (the card then has no book clip) and records what the recording says.
 
+The aligner can also miss a sentence the recording does say (it looked in the wrong window, or the clip ran into the
+next word). A person or search that found it lists the range in content/audio/vocabulary_example_located.json
+({exampleId: {"file", "start", "end", "heard"}}); it is checked here like any other clip.
+
 Run: output/qwen-pilot-venv/bin/python scripts/audio/checkVocabularyExampleAudio.py --book 2 [--write]
 Writes output/audio/vocabulary-example-audio/check-book<N>.json (the listening list) and, with --write,
 content/audio/vocabulary_example_audio.json; then run `npm run vocab:examples`.
@@ -27,6 +31,7 @@ from mlx_audio.stt.utils import load_model  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / "content/audio/vocabulary_example_audio.json"
 REVIEWED = ROOT / "content/audio/vocabulary_example_reviewed.json"
+LOCATED = ROOT / "content/audio/vocabulary_example_located.json"
 OUT_DIR = ROOT / "output/audio/vocabulary-example-audio"
 AUDIO_DIRS = {1: "output/official-audio/book1", 2: "output/official-audio/book2/originals", 3: "output/official-audio/book3"}
 # Words the recognizer writes another way although the speaker says them right (Taiwan 垃圾 lèsè, 網路 heard as 網絡).
@@ -66,6 +71,14 @@ def main():
     args = parser.parse_args()
     manifest = json.loads(CONTENT.read_text(encoding="utf-8"))
     reviewed = json.loads(REVIEWED.read_text(encoding="utf-8")) if REVIEWED.exists() else {}
+    located = json.loads(LOCATED.read_text(encoding="utf-8")) if LOCATED.exists() else {}
+    for example_id, found in located.items():
+        entry = manifest["examples"][example_id]
+        if entry["bookId"] != args.book or (entry.get("audio") or {}).get("voice") == "book":
+            continue
+        entry["audio"] = {"voice": "book", "file": found["file"], "start": found["start"], "end": found["end"]}
+        entry["alignment"]["locatedBy"] = "asr"
+        entry.pop("issue", None)
     audio_dir = ROOT / AUDIO_DIRS[args.book]
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     cache_path = OUT_DIR / f"asr-book{args.book}.json"

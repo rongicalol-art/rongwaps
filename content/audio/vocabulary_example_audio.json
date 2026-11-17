@@ -31529,7 +31529,12 @@
       "partId": 1,
       "sourceCardId": "B2L02-1-14",
       "traditional": "這些碗筷、刀叉我都還沒擦乾，不可以給客人用。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-02-1-2.mp3",
+        "start": 91.96,
+        "end": 99.25
+      },
       "alignment": {
         "score": 0.003,
         "pinyinSource": "textbook",
@@ -31537,9 +31542,9 @@
         "syllableCount": 19,
         "track": "B2-02-1-2.mp3",
         "trackSha256": "93d32b3f0300138317bf802b6227a4c588241f0b38d29cb72d2ec17e46bfd92f",
-        "driveFileId": "1iI_dGtP9TuWycBHBL_tWbUadapAeNxO4"
-      },
-      "issue": "alignment confidence 0.003 is below 0.64"
+        "driveFileId": "1iI_dGtP9TuWycBHBL_tWbUadapAeNxO4",
+        "locatedBy": "asr"
+      }
     },
     "B2L02-1-15-E01": {
       "bookId": 2,
@@ -36747,7 +36752,12 @@
       "partId": 1,
       "sourceCardId": "B2L09-1-07",
       "traditional": "下星期一有課堂小考和口試，我得好好準備。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-09-1-2.mp3",
+        "start": 63.27,
+        "end": 69.96
+      },
       "alignment": {
         "score": 0.957,
         "pinyinSource": "textbook",
@@ -36755,9 +36765,9 @@
         "syllableCount": 18,
         "track": "B2-09-1-2.mp3",
         "trackSha256": "b4d7a5eee18691b984f8088b784866bf4ab9f6e412a969928476b879cee92317",
-        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh"
-      },
-      "issue": "sentence alignment bleeds past following vocabulary headword"
+        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh",
+        "locatedBy": "asr"
+      }
     },
     "B2L09-1-09-E01": {
       "bookId": 2,
@@ -36787,7 +36797,12 @@
       "partId": 1,
       "sourceCardId": "B2L09-1-10",
       "traditional": "這個週末我得寫一篇五百字的作文。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-09-1-2.mp3",
+        "start": 90.05,
+        "end": 94.72
+      },
       "alignment": {
         "score": 0.719,
         "pinyinSource": "textbook",
@@ -36795,9 +36810,9 @@
         "syllableCount": 15,
         "track": "B2-09-1-2.mp3",
         "trackSha256": "b4d7a5eee18691b984f8088b784866bf4ab9f6e412a969928476b879cee92317",
-        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh"
-      },
-      "issue": "sentence alignment bleeds past following vocabulary headword"
+        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh",
+        "locatedBy": "asr"
+      }
     },
     "B2L09-1-11-E01": {
       "bookId": 2,
@@ -36907,7 +36922,12 @@
       "partId": 1,
       "sourceCardId": "B2L09-1-16",
       "traditional": "如果你希望有豐富的知識，就應該用功讀書。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-09-1-2.mp3",
+        "start": 157.44,
+        "end": 162.81
+      },
       "alignment": {
         "score": 0.987,
         "pinyinSource": "textbook",
@@ -36915,9 +36935,9 @@
         "syllableCount": 18,
         "track": "B2-09-1-2.mp3",
         "trackSha256": "b4d7a5eee18691b984f8088b784866bf4ab9f6e412a969928476b879cee92317",
-        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh"
-      },
-      "issue": "sentence alignment bleeds past following vocabulary headword"
+        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh",
+        "locatedBy": "asr"
+      }
     },
     "B2L09-1-17-E01": {
       "bookId": 2,
@@ -37080,7 +37100,12 @@
       "partId": 1,
       "sourceCardId": "B2L09-1-26",
       "traditional": "這篇文章的中文翻譯翻得很好。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-09-1-2.mp3",
+        "start": 263.42,
+        "end": 267.5
+      },
       "alignment": {
         "score": 0.964,
         "pinyinSource": "textbook",
@@ -37088,9 +37113,9 @@
         "syllableCount": 13,
         "track": "B2-09-1-2.mp3",
         "trackSha256": "b4d7a5eee18691b984f8088b784866bf4ab9f6e412a969928476b879cee92317",
-        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh"
-      },
-      "issue": "sentence alignment bleeds past following vocabulary headword"
+        "driveFileId": "1jqXHjrZGX8QMKbu-j_Y9qsqkvnJCBdMh",
+        "locatedBy": "asr"
+      }
     },
     "B2L09-1-27-E01": {
       "bookId": 2,
@@ -37340,7 +37365,12 @@
       "partId": 2,
       "sourceCardId": "B2L09-2-07",
       "traditional": "老師把這個生字清楚地寫在黑板上。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-09-2-2.mp3",
+        "start": 57.1,
+        "end": 61.09
+      },
       "alignment": {
         "score": 0.975,
         "pinyinSource": "textbook",
@@ -37348,9 +37378,9 @@
         "syllableCount": 15,
         "track": "B2-09-2-2.mp3",
         "trackSha256": "c97bdc256ef5ae07894a313e818e52a914997f22b6da1f58a5e52a3a6d5a835f",
-        "driveFileId": "12URLZC-bOVst9QVYpGNt-vPN1ktf_5lp"
-      },
-      "issue": "sentence alignment bleeds past following vocabulary headword"
+        "driveFileId": "12URLZC-bOVst9QVYpGNt-vPN1ktf_5lp",
+        "locatedBy": "asr"
+      }
     },
     "B2L09-2-08-E01": {
       "bookId": 2,
@@ -38262,7 +38292,12 @@
       "partId": 1,
       "sourceCardId": "B2L10-1-49",
       "traditional": "那隻老虎生病了，三天沒吃東西也沒喝水，好像快死了。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-10-1-2.mp3",
+        "start": 134.01,
+        "end": 140.2
+      },
       "alignment": {
         "score": 0.025,
         "pinyinSource": "textbook",
@@ -38270,9 +38305,9 @@
         "syllableCount": 22,
         "track": "B2-10-1-2.mp3",
         "trackSha256": "ced8ff922cffc326692cdd0bd3ac77864401b752745f8b358367e66f2737b2a3",
-        "driveFileId": "1Eqx-YwP3JzPUIsZnsuteaIKSKrKYR0Gn"
-      },
-      "issue": "alignment confidence 0.025 is below 0.64"
+        "driveFileId": "1Eqx-YwP3JzPUIsZnsuteaIKSKrKYR0Gn",
+        "locatedBy": "asr"
+      }
     },
     "B2L10-2-01-E01": {
       "bookId": 2,
@@ -38390,7 +38425,12 @@
       "partId": 2,
       "sourceCardId": "B2L10-2-06",
       "traditional": "小孩子的手比較沒有力，沒辦法拿很重的東西。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-10-2-2.mp3",
+        "start": 46.42,
+        "end": 52.77
+      },
       "alignment": {
         "score": 0.993,
         "pinyinSource": "textbook",
@@ -38398,9 +38438,9 @@
         "syllableCount": 19,
         "track": "B2-10-2-2.mp3",
         "trackSha256": "28a0f926b43224905d92f2e71c1d478c47db98b89b6f1027ecef54a76dc34f77",
-        "driveFileId": "1YCfdkDgecAdFab8G1ptltIJVwVroJFAR"
-      },
-      "issue": "sentence alignment starts before vocabulary headword window"
+        "driveFileId": "1YCfdkDgecAdFab8G1ptltIJVwVroJFAR",
+        "locatedBy": "asr"
+      }
     },
     "B2L10-2-07-E01": {
       "bookId": 2,
@@ -38576,7 +38616,12 @@
       "partId": 2,
       "sourceCardId": "B2L10-2-15",
       "traditional": "醫生建議這個病人每天游泳游三十分鐘，這樣體力、精神就會越來越好的。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-10-2-2.mp3",
+        "start": 129.03,
+        "end": 140.13
+      },
       "alignment": {
         "score": 0.928,
         "pinyinSource": "textbook",
@@ -38584,9 +38629,9 @@
         "syllableCount": 30,
         "track": "B2-10-2-2.mp3",
         "trackSha256": "28a0f926b43224905d92f2e71c1d478c47db98b89b6f1027ecef54a76dc34f77",
-        "driveFileId": "1YCfdkDgecAdFab8G1ptltIJVwVroJFAR"
-      },
-      "issue": "sentence alignment starts before vocabulary headword window"
+        "driveFileId": "1YCfdkDgecAdFab8G1ptltIJVwVroJFAR",
+        "locatedBy": "asr"
+      }
     },
     "B2L10-2-16-E01": {
       "bookId": 2,
@@ -38594,7 +38639,12 @@
       "partId": 2,
       "sourceCardId": "B2L10-2-16",
       "traditional": "醫生建議這個病人每天游泳游三十分鐘，這樣體力、精神就會越來越好的。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-10-2-2.mp3",
+        "start": 129.03,
+        "end": 140.13
+      },
       "alignment": {
         "score": 0.268,
         "pinyinSource": "textbook",
@@ -38602,9 +38652,9 @@
         "syllableCount": 30,
         "track": "B2-10-2-2.mp3",
         "trackSha256": "28a0f926b43224905d92f2e71c1d478c47db98b89b6f1027ecef54a76dc34f77",
-        "driveFileId": "1YCfdkDgecAdFab8G1ptltIJVwVroJFAR"
-      },
-      "issue": "alignment confidence 0.268 is below 0.64"
+        "driveFileId": "1YCfdkDgecAdFab8G1ptltIJVwVroJFAR",
+        "locatedBy": "asr"
+      }
     },
     "B2L10-2-17-E01": {
       "bookId": 2,
@@ -40116,7 +40166,12 @@
       "partId": 1,
       "sourceCardId": "B2L13-1-12",
       "traditional": "不管大人還是小孩，大多數的人都喜歡流行的東西。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-13-1-2.mp3",
+        "start": 93.54,
+        "end": 101.34
+      },
       "alignment": {
         "score": 0.99,
         "pinyinSource": "textbook",
@@ -40124,9 +40179,9 @@
         "syllableCount": 21,
         "track": "B2-13-1-2.mp3",
         "trackSha256": "4c4f7b23b67521f043650e5750157eae2aa704eef55a59d29f0a2bcc17f69c1e",
-        "driveFileId": "1olbbEsjoOveCZem4K0oU5ZCipu85PLw5"
-      },
-      "issue": "sentence alignment starts before vocabulary headword window"
+        "driveFileId": "1olbbEsjoOveCZem4K0oU5ZCipu85PLw5",
+        "locatedBy": "asr"
+      }
     },
     "B2L13-1-13-E01": {
       "bookId": 2,
@@ -41473,7 +41528,12 @@
       "partId": 1,
       "sourceCardId": "B2L14-1-41",
       "traditional": "我從來沒去過美術館，因為我對藝術不感興趣。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-14-1-2.mp3",
+        "start": 71.0,
+        "end": 76.36
+      },
       "alignment": {
         "score": 0.065,
         "pinyinSource": "textbook",
@@ -41481,9 +41541,9 @@
         "syllableCount": 19,
         "track": "B2-14-1-2.mp3",
         "trackSha256": "ff652d7517d5ed12934dae49565fee174e8f4a5f70824ab6752f03c15f07abe8",
-        "driveFileId": "18wS41O_JVM3beH_jIgv6ZXnWvY9E0Cw8"
-      },
-      "issue": "alignment confidence 0.065 is below 0.64"
+        "driveFileId": "18wS41O_JVM3beH_jIgv6ZXnWvY9E0Cw8",
+        "locatedBy": "asr"
+      }
     },
     "B2L14-2-01-E01": {
       "bookId": 2,

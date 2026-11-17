@@ -25,6 +25,7 @@ type AudioEntry = {
     track: string;
     trackSha256: string;
     driveFileId: string;
+    locatedBy?: 'asr';
   };
 };
 
@@ -75,8 +76,11 @@ test('Books 1, 2 and 3 have complete example coverage and only verified recorded
         assert.equal(entry.audio.voice, 'book', `${sourceCardId} recording source`);
         assert.ok(Number.isFinite(entry.audio.start) && entry.audio.start >= 0, `${sourceCardId} start`);
         assert.ok(Number.isFinite(entry.audio.end) && entry.audio.end > entry.audio.start, `${sourceCardId} end`);
-        assert.ok(entry.alignment.score >= 0.64, `${sourceCardId} alignment confidence`);
-        assert.equal(entry.alignment.alignedSyllables, entry.alignment.syllableCount, `${sourceCardId} aligned syllables`);
+        // A clip the aligner missed but a transcript search found (vocabulary_example_located.json) has no aligner score.
+        if (entry.alignment.locatedBy !== 'asr') {
+          assert.ok(entry.alignment.score >= 0.64, `${sourceCardId} alignment confidence`);
+          assert.equal(entry.alignment.alignedSyllables, entry.alignment.syllableCount, `${sourceCardId} aligned syllables`);
+        }
         assert.ok(
           entry.audio.end <= audioManifest.tracks[entry.alignment.track].durationSec,
           `${sourceCardId} range is within its source track`,
