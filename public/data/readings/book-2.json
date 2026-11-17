@@ -227,7 +227,13 @@
           "traditional": "現在你的背好一點兒了嗎？",
           "simplified": "现在你的背好一点儿了吗？",
           "pinyin": "Xiànzài nǐ de bèi hǎo yìdiǎnr le ma?",
-          "english": "Is your back a bit better now?"
+          "english": "Is your back a bit better now?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 135.89,
+            "end": 138.49
+          }
         },
         {
           "id": "b2l01d1-l17",
@@ -595,7 +601,13 @@
           "traditional": "哈哈哈！",
           "simplified": "哈哈哈！",
           "pinyin": "Hāhāhā!",
-          "english": "Hahaha!"
+          "english": "Hahaha!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 163.85,
+            "end": 164.88
+          }
         }
       ],
       "setting": ""
@@ -1996,7 +2008,13 @@
           "traditional": "哈哈哈！",
           "simplified": "哈哈哈！",
           "pinyin": "Hāhāhā!",
-          "english": "Hahaha! (laughing)"
+          "english": "Hahaha! (laughing)",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 180.96,
+            "end": 181.95
+          }
         },
         {
           "id": "b2l06d1-l19",
@@ -3021,7 +3039,13 @@
           "simplified": "我小时候也很怕考试，有时候一紧张就吃不下饭，现在好多了。",
           "pinyin": "Wǒ xiǎoshíhòu yě hěn pà kǎoshì, yǒushíhòu yì jǐnzhāng jiù chī bú xià fàn, xiànzài hǎo duō le.",
           "english": "When I was little, I was afraid of taking exams, too. Sometimes I was so stressed that I couldn't eat, but it's much better now.",
-          "id": "b2l09d1-l11"
+          "id": "b2l09d1-l11",
+          "audio": {
+            "voice": "book",
+            "file": "B2-09-1-1.mp3",
+            "start": 111.3,
+            "end": 118.97
+          }
         },
         {
           "speaker": "可欣",
@@ -3274,7 +3298,13 @@
           "simplified": "可是有一次老师要我们跑一千五百公尺，跑到一半，我就觉得好像快死了，老师赶快叫救护车把我送到医院，才救了我一命呢！",
           "pinyin": "Kěshì yǒu yí cì lǎoshī yào wǒmen pǎo yìqiānwǔbǎi gōngchǐ, pǎo dào yíbàn, wǒ jiù juéde hǎoxiàng kuài sǐ le, lǎoshī gǎnkuài jiào jiùhùchē bǎ wǒ sòng dào yīyuàn, cái jiù le wǒ yí mìng ne!",
           "english": "But once, the teacher asked us to run 1500 meters. Having run half of it, I felt like I was about to die. The teacher quickly called an ambulance to take me to the hospital, which saved my life!",
-          "id": "b2l10d1-l10"
+          "id": "b2l10d1-l10",
+          "audio": {
+            "voice": "book",
+            "file": "B2-10-1-1.mp3",
+            "start": 71.13,
+            "end": 87.67
+          }
         },
         {
           "speaker": "可欣",
@@ -3394,7 +3424,13 @@
           "simplified": "这个我知道！比如说，多吃新鲜的青菜、水果，少吃汉堡、薯条、饼干。",
           "pinyin": "Zhège wǒ zhīdào! Bǐrú shuō, duō chī xīnxiān de qīngcài, shuǐguǒ, shǎo chī hànbǎo, shǔtiáo, bǐnggān.",
           "english": "I know that! For example, they eat more fresh vegetables and fruits, and eat less hamburgers, French fries and cookies.",
-          "id": "b2l10d1-l19"
+          "id": "b2l10d1-l19",
+          "audio": {
+            "voice": "book",
+            "file": "B2-10-1-1.mp3",
+            "start": 160.8,
+            "end": 170.41
+          }
         },
         {
           "speaker": "良介",
@@ -3458,7 +3494,13 @@
           "simplified": "要啊！等感冒好了就去，希望我们都可以健健康康地活到一百岁喔！哈哈哈！",
           "pinyin": "Yào a! Děng gǎnmào hǎo le jiù qù, xīwàng wǒmen dōu kěyǐ jiàn jiànkāng kāng de huó dào yìbǎi suì o! Hāhāhā!",
           "english": "I will – when my cold gets better. I hope all of us can all live a healthy life until we are 100 years old! Hahaha!",
-          "id": "b2l10d1-l24"
+          "id": "b2l10d1-l24",
+          "audio": {
+            "voice": "book",
+            "file": "B2-10-1-1.mp3",
+            "start": 215.44,
+            "end": 225.27
+          }
         },
         {
           "speaker": "良介",
@@ -4250,7 +4292,13 @@
           "traditional": "5 月 21 日",
           "simplified": "5 月 21 日",
           "pinyin": "5 yuè 21 rì",
-          "english": "May 21st"
+          "english": "May 21st",
+          "audio": {
+            "voice": "book",
+            "file": "B2-12-2-1.mp3",
+            "start": 135.2,
+            "end": 136.95
+          }
         }
       ]
     },
@@ -4400,7 +4448,13 @@
           "traditional": "這樣啊，不過三萬六千塊貴了一點兒，恐怕我買不起。我改天再來看看，謝謝。",
           "simplified": "这样啊，不过三万六千块贵了一点儿，恐怕我买不起。我改天再来看看，谢谢。",
           "pinyin": "Zhèyàng a, búguò sānwànliùqiān kuài guì le yìdiǎnr, kǒngpà wǒ mǎi bù qǐ. Wǒ gǎitiān zài lái kànkan, xièxie.",
-          "english": "I see. But a computer costing 36,000 dollars is a little expensive. I’m afraid I can’t afford it. I’ll come again another day, thank you."
+          "english": "I see. But a computer costing 36,000 dollars is a little expensive. I’m afraid I can’t afford it. I’ll come again another day, thank you.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-13-1-1.mp3",
+            "start": 104.01,
+            "end": 114.37
+          }
         },
         {
           "id": "b2l13d1-l11",
@@ -4416,7 +4470,13 @@
           "traditional": "你的意思是打折以後要是超過三萬元，還可以再便宜三千塊嗎？",
           "simplified": "你的意思是打折以后要是超过三万元，还可以再便宜三千块吗？",
           "pinyin": "Nǐ de yìsi shì dǎzhé yǐhòu yàoshì chāoguò sānwàn yuán, hái kěyǐ zài piányí sānqiān kuài ma?",
-          "english": "Do you mean that if the price of the product after the discount exceeds 30,000 dollars, it can be another 3,000 dollars cheaper?"
+          "english": "Do you mean that if the price of the product after the discount exceeds 30,000 dollars, it can be another 3,000 dollars cheaper?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-13-1-1.mp3",
+            "start": 125.67,
+            "end": 133.25
+          }
         },
         {
           "id": "b2l13d1-l13",
@@ -4480,7 +4540,13 @@
           "traditional": "好的。打折後是兩萬七千六百元，再送您一個真皮的背包。",
           "simplified": "好的。打折后是两万七千六百元，再送您一个真皮的背包。",
           "pinyin": "Hǎo de. Dǎzhé hòu shì liǎngwànqīqiānliùbǎi yuán, zài sòng nín yíge zhēnpí de bēibāo.",
-          "english": "Alright. That would be 27,600 dollars with the discount. I’ll give you a backpack made of genuine leather as a gift."
+          "english": "Alright. That would be 27,600 dollars with the discount. I’ll give you a backpack made of genuine leather as a gift.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-13-1-1.mp3",
+            "start": 157.92,
+            "end": 164.11
+          }
         },
         {
           "id": "b2l13d1-l18",
@@ -4725,7 +4791,13 @@
           "traditional": "（美心接著說）除夕那天下午，我們回到爺爺、奶奶家以後，要先拜拜；等拜完了祖先，家人就聚在一起吃「年夜飯」。",
           "simplified": "（美心接着说）除夕那天下午，我们回到爷爷、奶奶家以后，要先拜拜；等拜完了祖先，家人就聚在一起吃「年夜饭」。",
           "pinyin": "(Měixīn jiēzhe shuō) Chúxī nà tiān xiàwǔ, wǒmen huí dào yéye, nǎinai jiā yǐhòu, yào xiān bàibài; děng bài wán le zǔxiān, jiārén jiù jù zài yìqǐ chī “niányèfàn”.",
-          "english": "(Continues to speak.) On the afternoon of Chinese New Year’s Eve, after we return to grandpa and grandma’s house, we worship together first. After worshiping the ancestors, the whole family gathers to eat “family reunion dinner” together."
+          "english": "(Continues to speak.) On the afternoon of Chinese New Year’s Eve, after we return to grandpa and grandma’s house, we worship together first. After worshiping the ancestors, the whole family gathers to eat “family reunion dinner” together.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-14-1-1.mp3",
+            "start": 77.04,
+            "end": 88.35
+          }
         },
         {
           "id": "b2l14d1-l11",
@@ -4937,7 +5009,13 @@
           "traditional": "十二生肖？",
           "simplified": "十二生肖？",
           "pinyin": "Shí'èr shēngxiào?",
-          "english": "Zodiac?"
+          "english": "Zodiac?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-14-1-1.mp3",
+            "start": 194.49,
+            "end": 195.76
+          }
         },
         {
           "id": "b2l14d1-l27",
@@ -5001,7 +5079,13 @@
           "traditional": "哈哈哈……",
           "simplified": "哈哈哈……",
           "pinyin": "Hāhāhā…",
-          "english": "Hahaha..."
+          "english": "Hahaha...",
+          "audio": {
+            "voice": "book",
+            "file": "B2-14-1-1.mp3",
+            "start": 227.25,
+            "end": 228.99
+          }
         }
       ]
     },
@@ -5332,7 +5416,13 @@
           "traditional": "（有禮貌地）老先生，請您聽聽看，到底誰對誰錯。",
           "simplified": "（有礼貌地）老先生，请您听听看，到底谁对谁错。",
           "pinyin": "(Yǒu lǐmào de) Lǎo xiānshēng, qǐng nín tīng tīng kàn, dàodǐ shéi duì shéi cuò.",
-          "english": "(Politely) Sir, please listen and tell us who is right and who is wrong."
+          "english": "(Politely) Sir, please listen and tell us who is right and who is wrong.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-15-1-1.mp3",
+            "start": 111.48,
+            "end": 117.02
+          }
         },
         {
           "id": "b2l15d1-l18",

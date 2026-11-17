@@ -21229,8 +21229,8 @@
           "index": 15,
           "speaker": "美心",
           "text": "現在你的背好一點兒了嗎？",
-          "start": 136.06,
-          "end": 138.4,
+          "start": 135.89,
+          "end": 138.49,
           "score": 0.55,
           "chars": [
             {
@@ -21312,7 +21312,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 16,
@@ -24274,8 +24275,8 @@
           "index": 18,
           "speaker": "良介",
           "text": "哈哈哈！",
-          "start": 163.12,
-          "end": 164.59,
+          "start": 163.85,
+          "end": 164.88,
           "score": 0,
           "chars": [
             {
@@ -24301,7 +24302,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         }
       ],
       "trimSec": 0
@@ -38080,8 +38082,8 @@
           "index": 17,
           "speaker": "美心、明生",
           "text": "哈哈哈！",
-          "start": 181.18,
-          "end": 181.84,
+          "start": 180.96,
+          "end": 181.95,
           "score": 0.001,
           "chars": [
             {
@@ -38107,7 +38109,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 18,
@@ -48985,8 +48988,8 @@
           "index": 10,
           "speaker": "美心",
           "text": "我小時候也很怕考試，有時候一緊張就吃不下飯，現在好多了。",
-          "start": 111.43,
-          "end": 118.92,
+          "start": 111.3,
+          "end": 118.97,
           "score": 0.78,
           "chars": [
             {
@@ -49166,7 +49169,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 11,
@@ -53263,8 +53267,8 @@
           "index": 9,
           "speaker": "美心",
           "text": "可是有一次老師要我們跑一千五百公尺，跑到一半，我就覺得好像快死了，老師趕快叫救護車把我送到醫院，才救了我一命呢！",
-          "start": 71.25,
-          "end": 87.59,
+          "start": 71.13,
+          "end": 87.67,
           "score": 0.752,
           "chars": [
             {
@@ -53626,7 +53630,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 10,
@@ -55142,8 +55147,8 @@
           "index": 18,
           "speaker": "美心",
           "text": "這個我知道！比如說，多吃新鮮的青菜、水果，少吃漢堡、薯條、餅乾。",
-          "start": 160.92,
-          "end": 170.29,
+          "start": 160.8,
+          "end": 170.41,
           "score": 0.559,
           "chars": [
             {
@@ -55323,7 +55328,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 19,
@@ -56238,8 +56244,8 @@
           "index": 23,
           "speaker": "美心",
           "text": "要啊！等感冒好了就去，希望我們都可以健健康康地活到一百歲喔！哈哈哈！",
-          "start": 215.64,
-          "end": 225.25,
+          "start": 215.44,
+          "end": 225.27,
           "score": 0.805,
           "chars": [
             {
@@ -56454,7 +56460,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 24,
@@ -70539,8 +70546,8 @@
           "index": 6,
           "speaker": "旁白",
           "text": "5 月 21 日",
-          "start": 135.3,
-          "end": 136.86,
+          "start": 135.2,
+          "end": 136.95,
           "score": 0.417,
           "chars": [
             {
@@ -70587,7 +70594,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         }
       ],
       "trimSec": 0
@@ -72543,8 +72551,8 @@
           "index": 9,
           "speaker": "良介",
           "text": "這樣啊，不過三萬六千塊貴了一點兒，恐怕我買不起。我改天再來看看，謝謝。",
-          "start": 103.72,
-          "end": 113.81,
+          "start": 104.01,
+          "end": 114.37,
           "score": 0.802,
           "chars": [
             {
@@ -72759,7 +72767,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 10,
@@ -73015,8 +73024,8 @@
           "index": 11,
           "speaker": "良介",
           "text": "你的意思是打折以後要是超過三萬元，還可以再便宜三千塊嗎？",
-          "start": 125.37,
-          "end": 132.67,
+          "start": 125.67,
+          "end": 133.25,
           "score": 0.831,
           "chars": [
             {
@@ -73203,7 +73212,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 12,
@@ -73754,8 +73764,8 @@
           "index": 16,
           "speaker": "店員",
           "text": "好的。打折後是兩萬七千六百元，再送您一個真皮的背包。",
-          "start": 157.45,
-          "end": 163.45,
+          "start": 157.92,
+          "end": 164.11,
           "score": 0.759,
           "chars": [
             {
@@ -73921,7 +73931,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 17,
@@ -78336,8 +78347,8 @@
           "index": 9,
           "speaker": "美心",
           "text": "（美心接著說）除夕那天下午，我們回到爺爺、奶奶家以後，要先拜拜；等拜完了祖先，家人就聚在一起吃「年夜飯」。",
-          "start": 77.17,
-          "end": 88.3,
+          "start": 77.04,
+          "end": 88.35,
           "score": 0.757,
           "chars": [
             {
@@ -78608,7 +78619,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 10,
@@ -80949,8 +80961,8 @@
           "index": 25,
           "speaker": "以凡",
           "text": "十二生肖？",
-          "start": 194.65,
-          "end": 195.73,
+          "start": 194.49,
+          "end": 195.76,
           "score": 0.689,
           "chars": [
             {
@@ -80983,7 +80995,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 26,
@@ -81492,8 +81505,8 @@
           "index": 30,
           "speaker": "大家",
           "text": "哈哈哈……",
-          "start": 228.22,
-          "end": 228.9,
+          "start": 227.25,
+          "end": 228.99,
           "score": 0,
           "chars": [
             {
@@ -81519,7 +81532,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         }
       ],
       "trimSec": 0
@@ -86373,8 +86387,8 @@
           "index": 16,
           "speaker": "小孩B",
           "text": "（有禮貌地）老先生，請您聽聽看，到底誰對誰錯。",
-          "start": 111.62,
-          "end": 116.79,
+          "start": 111.48,
+          "end": 117.02,
           "score": 0.421,
           "chars": [
             {
@@ -86477,7 +86491,8 @@
             }
           ],
           "words": [],
-          "unmatched": true
+          "unmatched": false,
+          "recoveredBy": "asr-span"
         },
         {
           "index": 17,
