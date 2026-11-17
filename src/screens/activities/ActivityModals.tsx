@@ -12,7 +12,8 @@ import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
-import { PracticeDockSlotProvider, type SessionStats } from '../../features/practice';
+import { PracticeDockSlotProvider, StreakMoment, type SessionStats } from '../../features/practice';
+import { localDay, streakMomentDue } from '../../utils/srs/profileStats';
 import { ActivityScreens } from './components/ActivityScreens';
 import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
@@ -141,6 +142,8 @@ export function ActivityModals({
   // Cards done's shuffled top card and the round's stats; live only while the quiz they lead into is the activity.
   const [quizTypes, setQuizTypes] = useState<QuizTypeId[] | null>(null);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
+  /** Leaving early on the day study raised the streak: the streak moment plays first, then the window closes. */
+  const [streakExit, setStreakExit] = useState<ReturnType<typeof streakMomentDue>>(null);
   // Continue on a saved quiz arrives with the types it was left in (skips the picker).
   if (!quizTypes && activeActivity === 'quiz') {
     const resumed = peekQuizTypes();
@@ -197,6 +200,14 @@ export function ActivityModals({
     : `${activities.find((activity) => activity.id === resolvedActivity)?.label ?? 'Study'} practice`;
 
   const handleClose = () => {
+    const store = useAppStore.getState();
+    const streak = streakExit || race ? null : streakMomentDue(store.reviewEvents, store.streakCelebratedDay, Date.now());
+    if (streak) {
+      store.setStreakCelebratedDay(localDay(new Date()));
+      setStreakExit(streak);
+      return;
+    }
+    setStreakExit(null);
     previousActivityRef.current = null;
     setActiveActivity(null);
     if (isReviewMode) {
@@ -312,6 +323,12 @@ export function ActivityModals({
                   )}
                 </AnimatePresence>
               </PracticeDockSlotProvider>
+              </div>
+            )}
+
+            {streakExit && (
+              <div className="absolute inset-0 z-activity bg-ui-practice-canvas animate-in fade-in duration-200">
+                <StreakMoment streak={streakExit.streak} week={streakExit.week} todayIndex={streakExit.todayIndex} onContinue={handleClose} />
               </div>
             )}
 

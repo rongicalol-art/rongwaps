@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from
 import { createPortal } from 'react-dom';
 import type { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar, SessionComplete } from '../../features/practice';
+import { FeedbackBottomBar, SessionComplete, StreakMoment } from '../../features/practice';
 import { buildMeasureWordChoices, buildWordTiles, createQuizRng, parseMeasureWord } from '../../utils/vocabulary/quizDirector';
 import { cn } from '../../utils/cn';
 import { MeasureWordFollowUp } from './formats/MeasureWordFollowUp';
@@ -36,7 +36,7 @@ const WORDS = [
 const [TEACHER, STUDENT, PRETTY, FRIEND, BOOK, CHINA, TAIWAN, EVERYONE] = WORDS;
 const SESSION_WORDS = ['新', '同學', '她', '誰', '叫', '漂亮', '英國', '中國', '臺灣', '什麼', '名字', '姓', '老師', '你好', '我', '你', '他', '是', '很'];
 
-type PreviewKey = 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'resume-cards' | 'resume-review' | 'resume-quiz';
+type PreviewKey = 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'streak-1' | 'streak-6' | 'streak-100' | 'resume-cards' | 'resume-review' | 'resume-quiz';
 const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
   { key: 'audio-loading', label: 'Audio: downloading' },
   { key: 'audio-error', label: 'Audio: failed → retry' },
@@ -54,6 +54,9 @@ const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
   { key: 'match-miss', label: 'Bar: match missed' },
   { key: 'end-perfect', label: 'End: perfect' },
   { key: 'end-missed', label: 'End: 95%' },
+  { key: 'streak-1', label: 'Streak: first day' },
+  { key: 'streak-6', label: 'Streak: 5 → 6' },
+  { key: 'streak-100', label: 'Streak: 99 → 100' },
   { key: 'resume-cards', label: 'Resume: cards' },
   { key: 'resume-review', label: 'Resume: review' },
   { key: 'resume-quiz', label: 'Resume: quiz' },
@@ -87,6 +90,11 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
       : { kind: previewKey === 'resume-quiz' ? 'quiz' : 'cards', mode: previewKey === 'resume-quiz' ? 'quiz' : 'flashcards', position: 12, keys: [] };
     const copy = resumeCopy(state);
     return <ResumeDialog title={copy.title} detail={resumeDetail(state, 19)} continueLabel={copy.continueLabel} startOverLabel={state.mode === 'quiz' ? 'Restart quiz' : 'Study again'} icon={RESUME_ICON[state.kind]} tone={state.kind === 'review' ? 'review' : undefined} progress={resumeProgress(state, 19)} onContinue={noop} onStartOver={noop} onClose={noop} zIndexClassName="z-devtools" />;
+  }
+
+  if (previewKey.startsWith('streak-')) {
+    const streak = Number(previewKey.slice(7));
+    return <StreakMoment streak={streak} week={[0, 1, 2, 3, 4].map((day) => streak > 4 - day)} todayIndex={4} onContinue={noop} />;
   }
 
   if (previewKey === 'end-perfect' || previewKey === 'end-missed') {

@@ -8,17 +8,22 @@
  * Usage:
  *   R2_ACCOUNT_ID=... R2_ACCESS_KEY_ID=... R2_SECRET_ACCESS_KEY=... \
  *   R2_BUCKET_NAME=... VITE_AUDIO_BASE_URL=... \
- *     node scripts/audio/uploadOfficialAudio.mjs [--book 3] [--dry-run]
+ *     node scripts/audio/uploadOfficialAudio.mjs [--book 2|3] [--lessons 9-16] [--dry-run]
  *
  * Source files: output/official-audio/book1/*.mp3 (see downloadOfficialAudio.mjs), or
- * output/official-audio/book3-r2/*.mp3 (downloadBook3VocabularyTracks.mjs [--dialogue], then reencodeBook3Audio.mjs).
+ * output/official-audio/book3-r2/*.mp3 (downloadBook3VocabularyTracks.mjs [--dialogue], then reencodeBook3Audio.mjs), or
+ * output/official-audio/book2/originals/*.mp3 (the publisher's files, uploaded as they are, like Lessons 1-8).
+ * --lessons limits the upload to a lesson range; a file already in the bucket at the same size is skipped.
  */
-import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { HeadObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const BOOK = process.argv.includes('--book') ? Number(process.argv[process.argv.indexOf('--book') + 1]) : 1;
-const SOURCE_DIR = BOOK === 3 ? 'output/official-audio/book3-r2' : `output/official-audio/book${BOOK}`;
+const SOURCE_DIR = BOOK === 3 ? 'output/official-audio/book3-r2'
+  : BOOK === 2 ? 'output/official-audio/book2/originals' : `output/official-audio/book${BOOK}`;
+const LESSONS = process.argv.includes('--lessons')
+  ? process.argv[process.argv.indexOf('--lessons') + 1].split('-').map(Number) : null;
 const CONCURRENCY = 4;
 const DRY_RUN = process.argv.includes('--dry-run');
 
@@ -38,7 +43,12 @@ const s3 = new S3Client({
   credentials: { accessKeyId: R2_ACCESS_KEY_ID, secretAccessKey: R2_SECRET_ACCESS_KEY },
 });
 
-const files = (await readdir(SOURCE_DIR)).filter((name) => name.endsWith('.mp3')).sort();
+const inRange = (name) => {
+  if (!LESSONS) return true;
+  const lesson = Number(/^B\d-(\d{2})-/.exec(name)?.[1]);
+  return lesson >= LESSONS[0] && lesson <= (LESSONS[1] ?? LESSONS[0]);
+};
+const files = (await readdir(SOURCE_DIR)).filter((name) => name.endsWith('.mp3') && inRange(name)).sort();
 if (files.length === 0) {
   console.error(`No mp3 files in ${SOURCE_DIR} — run scripts/audio/downloadOfficialAudio.mjs first.`);
   process.exit(1);
@@ -65,6 +75,12 @@ async function worker() {
     }
 
     try {
+      const existing = await s3.send(new HeadObjectCommand({ Bucket: BUCKET, Key: file })).catch(() => null);
+      if (existing?.ContentLength === size) {
+        uploaded += 1;
+        console.log(`have ${file} (${size} bytes)`);
+        continue;
+      }
       await s3.send(new PutObjectCommand({
         Bucket: BUCKET, Key: file, Body: body, ContentType: 'audio/mpeg',
       }));

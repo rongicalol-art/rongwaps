@@ -1025,7 +1025,7 @@
               "traditional": "客人：老闆，這個橘子甜不甜？我怕酸。老闆：我賣的橘子都很甜。你可以吃一口，不酸再買。",
               "simplified": "客人：老板，这个橘子甜不甜？我怕酸。老板：我卖的橘子都很甜。你可以吃一口，不酸再买。",
               "pinyin": "Kèrén: Lǎobǎn, zhège júzi tián bù tián? Wǒ pà suān. Lǎobǎn: Wǒ mài de júzi dōu hěn tián. Nǐ kěyǐ chī yì kǒu, bù suān zài mǎi.",
-              "english": "Customer: Boss, is this orange sweet? I’m afraid it’ll be sour. Owner: The oranges I sell are all sweet. You can take a bite; if it isn’t sour, buy it.",
+              "english": "Customer: Boss, is this orange sweet? I’m afraid it’ll be sour. Boss: The oranges I sell are all sweet. You can take a bite; if it isn’t sour, then buy it.",
               "words": [
                 {
                   "id": "b2l15-g02-p342-ex3-w1",
@@ -1977,9 +1977,9 @@
             "id": "b2l15-g05-p351-ex1",
             "number": 1,
             "text": {
-              "traditional": "A：你不是早就出門了嗎？為什麼遲到了？B：我七點就出門了，誰知道路上車那麼多！",
-              "simplified": "A：你不是早就出门了吗？为什么迟到了？B：我七点就出门了，谁知道路上车那么多！",
-              "pinyin": "A: Nǐ búshì zǎojiù chūmén le ma? Wèishénme chídào le? B: Wǒ qī diǎn jiù chūmén le, shéi zhīdào lùshang chē nàme duō!",
+              "traditional": "A：你不是很早就出門了嗎？為什麼遲到了？B：我七點就出門了，誰知道路上車那麼多！",
+              "simplified": "A：你不是很早就出门了吗？为什么迟到了？B：我七点就出门了，谁知道路上车那么多！",
+              "pinyin": "A: Nǐ búshì hěn zǎo jiù chūmén le ma? Wèishénme chídào le? B: Wǒ qī diǎn jiù chūmén le, shéi zhīdào lùshang chē nàme duō!",
               "english": "A: Didn’t you leave early? Why were you late? B: I left at seven. Who knew there would be so much traffic!",
               "words": [
                 {
@@ -1999,27 +1999,34 @@
                 },
                 {
                   "id": "b2l15-g05-p351-ex1-w3",
-                  "traditional": "早就",
-                  "simplified": "早就",
-                  "pinyin": "zǎojiù",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
                   "meaning": ""
                 },
                 {
                   "id": "b2l15-g05-p351-ex1-w4",
+                  "traditional": "早就",
+                  "simplified": "早就",
+                  "pinyin": "zǎo jiù",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l15-g05-p351-ex1-w5",
                   "traditional": "出門",
                   "simplified": "出门",
                   "pinyin": "chūmén",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w5",
+                  "id": "b2l15-g05-p351-ex1-w6",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w6",
+                  "id": "b2l15-g05-p351-ex1-w7",
                   "traditional": "嗎",
                   "simplified": "吗",
                   "pinyin": "ma",
@@ -2027,21 +2034,21 @@
                   "suffix": "？"
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w7",
+                  "id": "b2l15-g05-p351-ex1-w8",
                   "traditional": "為什麼",
                   "simplified": "为什么",
                   "pinyin": "wèishénme",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w8",
+                  "id": "b2l15-g05-p351-ex1-w9",
                   "traditional": "遲到",
                   "simplified": "迟到",
                   "pinyin": "chídào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w9",
+                  "id": "b2l15-g05-p351-ex1-w10",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -2049,7 +2056,7 @@
                   "suffix": "？"
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w10",
+                  "id": "b2l15-g05-p351-ex1-w11",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
@@ -2057,35 +2064,35 @@
                   "prefix": "B："
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w11",
+                  "id": "b2l15-g05-p351-ex1-w12",
                   "traditional": "七",
                   "simplified": "七",
                   "pinyin": "qī",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w12",
+                  "id": "b2l15-g05-p351-ex1-w13",
                   "traditional": "點",
                   "simplified": "点",
                   "pinyin": "diǎn",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w13",
+                  "id": "b2l15-g05-p351-ex1-w14",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w14",
+                  "id": "b2l15-g05-p351-ex1-w15",
                   "traditional": "出門",
                   "simplified": "出门",
                   "pinyin": "chūmén",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w15",
+                  "id": "b2l15-g05-p351-ex1-w16",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -2093,42 +2100,42 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w16",
+                  "id": "b2l15-g05-p351-ex1-w17",
                   "traditional": "誰",
                   "simplified": "谁",
                   "pinyin": "shéi",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w17",
+                  "id": "b2l15-g05-p351-ex1-w18",
                   "traditional": "知道",
                   "simplified": "知道",
                   "pinyin": "zhīdào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w18",
+                  "id": "b2l15-g05-p351-ex1-w19",
                   "traditional": "路上",
                   "simplified": "路上",
                   "pinyin": "lùshang",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w19",
+                  "id": "b2l15-g05-p351-ex1-w20",
                   "traditional": "車",
                   "simplified": "车",
                   "pinyin": "chē",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w20",
+                  "id": "b2l15-g05-p351-ex1-w21",
                   "traditional": "那麼",
                   "simplified": "那么",
                   "pinyin": "nàme",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l15-g05-p351-ex1-w21",
+                  "id": "b2l15-g05-p351-ex1-w22",
                   "traditional": "多",
                   "simplified": "多",
                   "pinyin": "duō",

@@ -1,29 +1,12 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 export { AUDIO_BUCKET } from './audio/audioCache';
 import {
-  cacheObjectUrl,
-  invalidateCachedAudio,
-  audioBlobCachedAt,
-  getCachedObjectUrl,
-  fetchAudioBlob,
-  preloadAudioFiles,
-  publicAudioUrl,
-  readCachedAudioBlob,
-  MAX_AUDIO_MEMORY_BYTES,
-  type AudioPreloadProgress,
+  cacheObjectUrl, invalidateCachedAudio, audioBlobCachedAt, getCachedObjectUrl, fetchAudioBlob,
+  preloadAudioFiles, publicAudioUrl, readCachedAudioBlob, MAX_AUDIO_MEMORY_BYTES, type AudioPreloadProgress,
 } from './audio/audioCache';
+import { speakUtterance, releaseSpeechUtterance, wait } from './audio/speechEngine';
 import {
-  speakUtterance,
-  releaseSpeechUtterance,
-  wait,
-} from './audio/speechEngine';
-import {
-  afterPaint,
-  playHtmlAudio,
-  prepareAudioElement,
-  playRangeOnAudioElement,
-  silenceAudio,
-  type PlayRangeOptions,
+  afterPaint, playHtmlAudio, prepareAudioElement, playRangeOnAudioElement, silenceAudio, type PlayRangeOptions,
 } from './audio/playbackEngine';
 import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
@@ -31,6 +14,8 @@ import { ShortAudioClips } from './audio/shortAudioClips';
 import { reportAudioFailure } from './errorReporting';
 import { isRecordingFile } from './audio/recordingFile';
 import { playbackWaiting } from './audio/playbackWaiting';
+import { startCloudSpeech, type CloudSpeechRequest } from './audio/cloudSpeech';
+import { wordBopomofo } from '../utils/pinyin/bopomofo';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
 export class AudioService {
@@ -136,20 +121,23 @@ export class AudioService {
       preferAnyChineseVoice,
     );
   }
-  public speakTTS(text: string, rate?: number): Promise<void> {
-    const effectiveRate = rate ?? this.defaultRate;
-    this.stop();
-    return new Promise((resolve) => {
-      const finish = this.trackPlayback(resolve);
-      void this.startSpeech(text, 'zh-CN', effectiveRate, finish, true);
-    });
+  private playCloudSpeech(request: CloudSpeechRequest, rate: number, finish: () => void, otherwise: () => void): void {
+    startCloudSpeech(
+      request, this.globalAudio, this.objectUrls, rate, () => this.activePlaybackFinish === finish,
+      (cleanup) => { this.activePlaybackCleanup = cleanup; }, finish, otherwise,
+    );
   }
-  public speakText(text: string, language = 'zh-CN', rate?: number): Promise<void> {
+  public speakTTS(text: string, rate?: number): Promise<void> {
+    return this.speakText(text, 'zh-CN', rate, true);
+  }
+  public speakText(text: string, language = 'zh-CN', rate?: number, preferAnyChineseVoice = false): Promise<void> {
     const effectiveRate = rate ?? this.defaultRate;
     this.stop();
     return new Promise((resolve) => {
       const finish = this.trackPlayback(resolve);
-      void this.startSpeech(text, language, effectiveRate, finish);
+      const deviceVoice = () => { void this.startSpeech(text, language, effectiveRate, finish, preferAnyChineseVoice); };
+      if (language.toLowerCase().startsWith('zh')) this.playCloudSpeech({ text }, effectiveRate, finish, deviceVoice);
+      else deviceVoice();
     });
   }
   // With `overlap`, a playing clip rings out on its element while the new one uses the spare.
@@ -243,7 +231,9 @@ export class AudioService {
           finish();
           return;
         }
-        void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * effectiveRate, finish, true);
+        const deviceVoice = () => { void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * effectiveRate, finish, true); };
+        if (fallbackLanguage.toLowerCase().startsWith('zh')) this.playCloudSpeech({ text: textToSpeak }, effectiveRate, finish, deviceVoice);
+        else deviceVoice();
       };
 
       if (!audioFileName || !this.isAudioFileName(audioFileName) || !this.globalAudio) {
@@ -291,7 +281,10 @@ export class AudioService {
     });
   }
 
-  /** Reading-checked dictionary/custom cards must never guess their reading with TTS. */
+  /**
+   * Reading-checked dictionary/custom cards must never guess their reading: a character plays its syllable
+   * recording, and a longer word is said by the cloud voice with the card's own reading spelled out for it.
+   */
   public playCard(card: Pick<Flashcard, 'audio' | 'front' | 'source'> & { pinyin?: string }, rate?: number, options?: PlayOptions): Promise<void> {
     const effectiveRate = rate ?? this.defaultRate;
     if (card.source === 'dictionary' && !this.isAudioFileName(card.audio) && /^[\u3400-\u9fff]$/u.test(card.front) && card.pinyin) {
@@ -304,6 +297,14 @@ export class AudioService {
           playbackWaiting.carryOwner();
           void this.play(audio, effectiveRate, undefined, undefined, 0, { ...options, fallback: 'none' }).then(finish, finish);
         }, () => { if (this.activePlaybackFinish === finish) { options?.onUnavailable?.(); finish(); } });
+      });
+    }
+    const reading = card.source === 'dictionary' && !this.isAudioFileName(card.audio) ? wordBopomofo(card.front, card.pinyin) : null;
+    if (reading) {
+      this.beginPlayback(options?.overlap === true);
+      return new Promise((resolve) => {
+        const finish = this.trackPlayback(resolve);
+        this.playCloudSpeech({ text: card.front, reading }, effectiveRate, finish, () => { options?.onUnavailable?.(); finish(); });
       });
     }
     return this.play(card.audio, effectiveRate, card.front, undefined, 0, {

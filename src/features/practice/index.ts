@@ -8,6 +8,7 @@ export { FeedbackBottomBar } from './components/FeedbackBottomBar';
 export { PracticeEmptyState } from './components/PracticeEmptyState';
 export { LessonComplete } from './components/LessonComplete';
 export { SessionComplete, StatTile, loadBird, BIRD_LAST_FRAME, formatTime } from './components/SessionComplete';
+export { StreakMoment } from './components/StreakMoment';
 export { ResumeLaunch } from './components/ResumeLaunch';
 export { PracticeChoiceButton, getPracticeChoiceState } from './components/PracticeChoiceButton';
 export { PracticeFormatMenu } from './components/PracticeFormatMenu';

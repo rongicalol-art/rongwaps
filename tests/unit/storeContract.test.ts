@@ -28,6 +28,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'sessionCardOrder',
   'deckExclusions',
   'progressResetSeen',
+  'streakCelebratedDay',
   'wordConfusions',
   'syncCheckpoint',
   'activeTab',
@@ -117,6 +118,7 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'sessionProgressIndex',
   'sessionCardOrder',
   'deckExclusions',
+  'streakCelebratedDay',
   'wordConfusions',
   'selectedLessonParts',
   'lastOpenedLessons',
@@ -174,6 +176,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     sessionProgress: { startTime: 1, cardsReviewed: 5, cardsLearned: 2 },
     sessionProgressIndex: { key: 3 },
     deckExclusions: { 'vocab-1-2': ['card_x'] },
+    streakCelebratedDay: '2026-10-15',
     selectedLessonParts: { '1:2': [1] },
     selectedBooks: [1],
     activeActivity: 'quiz',
@@ -213,6 +216,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.deepEqual(state.sessionProgress, createEmptySessionProgress());
   assert.deepEqual(state.sessionProgressIndex, {});
   assert.deepEqual(state.deckExclusions, {});
+  assert.equal(state.streakCelebratedDay, null);
   assert.deepEqual(state.selectedLessonParts, {});
   assert.deepEqual(state.selectedBooks, []);
   assert.equal(state.activeActivity, null);

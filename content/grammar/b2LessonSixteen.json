@@ -26,9 +26,8 @@
         "audioReference": "16-1",
         "pattern": "Vs + 得 + 很",
         "patternColumns": [
-          "Phrase",
-          "Pinyin",
-          "English"
+          "Subject",
+          "Vs得很"
         ],
         "patternRows": [
           {
@@ -36,23 +35,118 @@
             "columns": [
               [
                 {
-                  "id": "b2l16-g01-p361-r1-c1",
-                  "traditional": "Vs",
-                  "simplified": "Vs",
-                  "pinyin": "",
-                  "meaning": "state verb"
+                  "id": "b2l16-g01-p361-r1-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r1-c1-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r1-c1-w3",
+                  "traditional": "個性",
+                  "simplified": "个性",
+                  "pinyin": "gèxìng",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b2l16-g01-p361-r1-c2-w1",
+                  "traditional": "活潑",
+                  "simplified": "活泼",
+                  "pinyin": "huópō",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r1-c2-w2",
                   "traditional": "得",
                   "simplified": "得",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g01-p361-r1-c2-w2",
+                  "id": "b2l16-g01-p361-r1-c2-w3",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g01-p361-r2",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g01-p361-r2-c1-w1",
+                  "traditional": "臭豆腐",
+                  "simplified": "臭豆腐",
+                  "pinyin": "chòu dòufǔ",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g01-p361-r2-c2-w1",
+                  "traditional": "好吃",
+                  "simplified": "好吃",
+                  "pinyin": "hǎochī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r2-c2-w2",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r2-c2-w3",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g01-p361-r3",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g01-p361-r3-c1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g01-p361-r3-c2-w1",
+                  "traditional": "緊張",
+                  "simplified": "紧张",
+                  "pinyin": "jǐnzhāng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r3-c2-w2",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g01-p361-r3-c2-w3",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
@@ -540,9 +634,8 @@
         "audioReference": "16-1",
         "pattern": "得看／要看 + condition",
         "patternColumns": [
-          "Depends",
-          "Factor",
-          "Meaning"
+          "得看 / 要看",
+          "Factor"
         ],
         "patternRows": [
           {
@@ -561,18 +654,47 @@
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
-                  "meaning": "",
-                  "suffix": "／"
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g02-p362-r1-c2-w1",
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "lǎobǎn",
+                  "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-r1-c1-w3",
+                  "id": "b2l16-g02-p362-r1-c2-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r1-c2-w3",
+                  "traditional": "決定",
+                  "simplified": "决定",
+                  "pinyin": "juédìng",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g02-p362-r2",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g02-p362-r2-c1-w1",
                   "traditional": "要",
                   "simplified": "要",
                   "pinyin": "yào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g02-p362-r1-c1-w4",
+                  "id": "b2l16-g02-p362-r2-c1-w2",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
@@ -581,20 +703,90 @@
               ],
               [
                 {
-                  "id": "b2l16-g02-p362-r1-c2",
-                  "traditional": "什麼 / A不A / 高低",
-                  "simplified": "什么 / A不A / 高低",
-                  "pinyin": "",
-                  "meaning": "possible condition forms"
+                  "id": "b2l16-g02-p362-r2-c2-w1",
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r2-c2-w2",
+                  "traditional": "哪",
+                  "simplified": "哪",
+                  "pinyin": "nǎ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r2-c2-w3",
+                  "traditional": "一種",
+                  "simplified": "一种",
+                  "pinyin": "yìzhǒng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r2-c2-w4",
+                  "traditional": "口味",
+                  "simplified": "口味",
+                  "pinyin": "kǒuwèi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r2-c2-w5",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g02-p362-r3",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g02-p362-r3-c1-w1",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "děi",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r3-c1-w2",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "kàn",
+                  "meaning": ""
                 }
               ],
               [
                 {
-                  "id": "b2l16-g02-p362-r1-c3",
-                  "traditional": "the answer changes with it",
-                  "simplified": "the answer changes with it",
-                  "pinyin": "",
-                  "meaning": "resulting choice"
+                  "id": "b2l16-g02-p362-r3-c2-w1",
+                  "traditional": "機票",
+                  "simplified": "机票",
+                  "pinyin": "jīpiào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r3-c2-w2",
+                  "traditional": "價格",
+                  "simplified": "价格",
+                  "pinyin": "jiàgé",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r3-c2-w3",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g02-p362-r3-c2-w4",
+                  "traditional": "高低",
+                  "simplified": "高低",
+                  "pinyin": "gāodī",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1024,9 +1216,9 @@
         "audioReference": "16-1",
         "pattern": "像 + 2–3 examples + 什麼的",
         "patternColumns": [
-          "Like",
+          "像",
           "Examples",
-          "Etc."
+          "什麼的"
         ],
         "patternRows": [
           {
@@ -1043,11 +1235,27 @@
               ],
               [
                 {
-                  "id": "b2l16-g03-p363-r1-c1",
-                  "traditional": "2–3 examples",
-                  "simplified": "2–3 examples",
-                  "pinyin": "",
-                  "meaning": "examples"
+                  "id": "b2l16-g03-p363-r1-c2-w1",
+                  "traditional": "鋼琴",
+                  "simplified": "钢琴",
+                  "pinyin": "gāngqín",
+                  "meaning": "",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b2l16-g03-p363-r1-c2-w2",
+                  "traditional": "吉他",
+                  "simplified": "吉他",
+                  "pinyin": "jítā",
+                  "meaning": "",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b2l16-g03-p363-r1-c2-w3",
+                  "traditional": "笛子",
+                  "simplified": "笛子",
+                  "pinyin": "dízi",
+                  "meaning": ""
                 }
               ],
               [
@@ -1060,6 +1268,61 @@
                 },
                 {
                   "id": "b2l16-g03-p363-r1-c3-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g03-p363-r2",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g03-p363-r2-c1-w1",
+                  "traditional": "像",
+                  "simplified": "像",
+                  "pinyin": "xiàng",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g03-p363-r2-c2-w1",
+                  "traditional": "蘿蔔糕",
+                  "simplified": "萝卜糕",
+                  "pinyin": "luóbogāo",
+                  "meaning": "",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b2l16-g03-p363-r2-c2-w2",
+                  "traditional": "水餃",
+                  "simplified": "水饺",
+                  "pinyin": "shuǐjiǎo",
+                  "meaning": "",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b2l16-g03-p363-r2-c2-w3",
+                  "traditional": "烤鴨",
+                  "simplified": "烤鸭",
+                  "pinyin": "kǎoyā",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g03-p363-r2-c3-w1",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g03-p363-r2-c3-w2",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
@@ -1441,9 +1704,8 @@
         "audioReference": "16-1",
         "pattern": "V + 來 + V + 去",
         "patternColumns": [
-          "Verb",
-          "來",
-          "Verb + 去"
+          "Subject",
+          "V來V去"
         ],
         "patternRows": [
           {
@@ -1451,29 +1713,129 @@
             "columns": [
               [
                 {
-                  "id": "b2l16-g04-p364-r1-c1",
-                  "traditional": "V",
-                  "simplified": "V",
-                  "pinyin": "",
-                  "meaning": "same action"
-                }
-              ],
-              [
-                {
-                  "id": "b2l16-g04-p364-r1-c2-w1",
-                  "traditional": "來",
-                  "simplified": "来",
-                  "pinyin": "lái",
+                  "id": "b2l16-g04-p364-r1-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
                   "meaning": ""
                 }
               ],
               [
                 {
-                  "id": "b2l16-g04-p364-r1-c3",
-                  "traditional": "V + 去",
-                  "simplified": "V + 去",
+                  "id": "b2l16-g04-p364-r1-c2-w1",
+                  "traditional": "走",
+                  "simplified": "走",
+                  "pinyin": "zǒu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r1-c2-w2",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r1-c2-w3",
+                  "traditional": "走",
+                  "simplified": "走",
+                  "pinyin": "zǒu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r1-c2-w4",
+                  "traditional": "去",
+                  "simplified": "去",
                   "pinyin": "qù",
-                  "meaning": "repeated action"
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g04-p364-r2",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g04-p364-r2-c1-w1",
+                  "traditional": "那",
+                  "simplified": "那",
+                  "pinyin": "nà",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r2-c1-w2",
+                  "traditional": "三",
+                  "simplified": "三",
+                  "pinyin": "sān",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r2-c1-w3",
+                  "traditional": "隻",
+                  "simplified": "只",
+                  "pinyin": "zhī",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r2-c1-w4",
+                  "traditional": "小狗",
+                  "simplified": "小狗",
+                  "pinyin": "xiǎogǒu",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g04-p364-r2-c2-w1",
+                  "traditional": "跑來跑去",
+                  "simplified": "跑来跑去",
+                  "pinyin": "pǎoláipǎoqù",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g04-p364-r3",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g04-p364-r3-c1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g04-p364-r3-c2-w1",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "kàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r3-c2-w2",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r3-c2-w3",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "kàn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g04-p364-r3-c2-w4",
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": ""
                 }
               ]
             ]
@@ -1998,9 +2360,8 @@
         "audioReference": "16-3",
         "pattern": "A + 比得上／比不上 + B",
         "patternColumns": [
-          "A",
-          "Comparison",
-          "B"
+          "Subject",
+          "Can compare"
         ],
         "patternRows": [
           {
@@ -2008,51 +2369,136 @@
             "columns": [
               [
                 {
-                  "id": "b2l16-g05-p370-r1-c1",
-                  "traditional": "A",
-                  "simplified": "A",
-                  "pinyin": "",
-                  "meaning": "thing being compared"
+                  "id": "b2l16-g05-p370-r1-c1-w1",
+                  "traditional": "哪裡",
+                  "simplified": "哪里",
+                  "pinyin": "nǎlǐ",
+                  "meaning": ""
                 }
               ],
               [
                 {
                   "id": "b2l16-g05-p370-r1-c2-w1",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g05-p370-r1-c2-w2",
+                  "traditional": "比不上",
+                  "simplified": "比不上",
+                  "pinyin": "bǐbúshàng",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g05-p370-r2",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g05-p370-r2-c1-w1",
+                  "traditional": "只有",
+                  "simplified": "只有",
+                  "pinyin": "zhǐyǒu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g05-p370-r2-c1-w2",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g05-p370-r2-c1-w3",
+                  "traditional": "奶奶",
+                  "simplified": "奶奶",
+                  "pinyin": "nǎinai",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g05-p370-r2-c1-w4",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g05-p370-r2-c1-w5",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g05-p370-r2-c1-w6",
+                  "traditional": "甜點",
+                  "simplified": "甜点",
+                  "pinyin": "tiándiǎn",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g05-p370-r2-c2-w1",
                   "traditional": "比",
                   "simplified": "比",
                   "pinyin": "bǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g05-p370-r1-c2-w2",
+                  "id": "b2l16-g05-p370-r2-c2-w2",
                   "traditional": "得",
                   "simplified": "得",
                   "pinyin": "de",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l16-g05-p370-r1-c2-w3",
+                  "id": "b2l16-g05-p370-r2-c2-w3",
                   "traditional": "上",
                   "simplified": "上",
                   "pinyin": "shàng",
-                  "meaning": "",
-                  "suffix": "／"
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g05-p370-r3",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g05-p370-r3-c1-w1",
+                  "traditional": "其他",
+                  "simplified": "其他",
+                  "pinyin": "qítā",
+                  "meaning": ""
                 },
                 {
-                  "id": "b2l16-g05-p370-r1-c2-w4",
-                  "traditional": "比不上",
-                  "simplified": "比不上",
-                  "pinyin": "bǐbúshàng",
+                  "id": "b2l16-g05-p370-r3-c1-w2",
+                  "traditional": "小吃",
+                  "simplified": "小吃",
+                  "pinyin": "xiǎochī",
                   "meaning": ""
                 }
               ],
               [
                 {
-                  "id": "b2l16-g05-p370-r1-c3",
-                  "traditional": "B",
-                  "simplified": "B",
-                  "pinyin": "",
-                  "meaning": "standard of comparison"
+                  "id": "b2l16-g05-p370-r3-c2-w1",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g05-p370-r3-c2-w2",
+                  "traditional": "比不上",
+                  "simplified": "比不上",
+                  "pinyin": "bǐbúshàng",
+                  "meaning": ""
                 }
               ]
             ]
@@ -2388,9 +2834,8 @@
         "audioReference": "16-3",
         "pattern": "只有 + necessary condition，才 + result",
         "patternColumns": [
-          "Only if…",
-          "才",
-          "Then…"
+          "Only if",
+          "才 + Result"
         ],
         "patternRows": [
           {
@@ -2398,29 +2843,162 @@
             "columns": [
               [
                 {
-                  "id": "b2l16-g06-p371-r1-c1",
-                  "traditional": "只有 + the one requirement",
-                  "simplified": "只有 + the one requirement",
+                  "id": "b2l16-g06-p371-r1-c1-w1",
+                  "traditional": "只有",
+                  "simplified": "只有",
                   "pinyin": "zhǐyǒu",
-                  "meaning": "necessary condition"
-                }
-              ],
-              [
+                  "meaning": ""
+                },
                 {
-                  "id": "b2l16-g06-p371-r1-c2-w1",
-                  "traditional": "才",
-                  "simplified": "才",
-                  "pinyin": "cái",
+                  "id": "b2l16-g06-p371-r1-c1-w2",
+                  "traditional": "滿",
+                  "simplified": "满",
+                  "pinyin": "mǎn",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r1-c1-w3",
+                  "traditional": "七十九",
+                  "simplified": "七十九",
+                  "pinyin": "qīshíjiǔ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r1-c1-w4",
+                  "traditional": "元",
+                  "simplified": "元",
+                  "pinyin": "yuán",
                   "meaning": ""
                 }
               ],
               [
                 {
-                  "id": "b2l16-g06-p371-r1-c3",
-                  "traditional": "it can happen",
-                  "simplified": "it can happen",
-                  "pinyin": "",
-                  "meaning": "achievable outcome"
+                  "id": "b2l16-g06-p371-r1-c2-w1",
+                  "traditional": "才能",
+                  "simplified": "才能",
+                  "pinyin": "cáinéng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r1-c2-w2",
+                  "traditional": "得到",
+                  "simplified": "得到",
+                  "pinyin": "dédào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r1-c2-w3",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "yì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r1-c2-w4",
+                  "traditional": "張",
+                  "simplified": "张",
+                  "pinyin": "zhāng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r1-c2-w5",
+                  "traditional": "貼紙",
+                  "simplified": "贴纸",
+                  "pinyin": "tiēzhǐ",
+                  "meaning": ""
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b2l16-g06-p371-r2",
+            "columns": [
+              [
+                {
+                  "id": "b2l16-g06-p371-r2-c1-w1",
+                  "traditional": "只有",
+                  "simplified": "只有",
+                  "pinyin": "zhǐyǒu",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c1-w2",
+                  "traditional": "報名",
+                  "simplified": "报名",
+                  "pinyin": "bàomíng",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c1-w3",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c1-w4",
+                  "traditional": "學生",
+                  "simplified": "学生",
+                  "pinyin": "xuéshēng",
+                  "meaning": ""
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w1",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w2",
+                  "traditional": "可以",
+                  "simplified": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w3",
+                  "traditional": "參加",
+                  "simplified": "参加",
+                  "pinyin": "cānjiā",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w4",
+                  "traditional": "這個",
+                  "simplified": "这个",
+                  "pinyin": "zhège",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w5",
+                  "traditional": "文化",
+                  "simplified": "文化",
+                  "pinyin": "wénhuà",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w6",
+                  "traditional": "日",
+                  "simplified": "日",
+                  "pinyin": "rì",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w7",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l16-g06-p371-r2-c2-w8",
+                  "traditional": "活動",
+                  "simplified": "活动",
+                  "pinyin": "huódòng",
+                  "meaning": ""
                 }
               ]
             ]

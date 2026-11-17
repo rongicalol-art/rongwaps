@@ -5,10 +5,12 @@ import { ActionButton } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 
 /** Primary Google sign-in button with the multicolour "G" tile. */
-export function GoogleSignInButton({ onClick, busy, label = 'Sign in with Google', className }: {
+export function GoogleSignInButton({ onClick, busy, label = 'Sign in with Google', fullWidth, className }: {
   onClick: () => void;
   busy: boolean;
   label?: string;
+  /** Fill the row (bottom docks). */
+  fullWidth?: boolean;
   className?: string;
 }) {
   // ActionButton puts className on its moving face, so outer spacing lives on a wrapper.
@@ -17,6 +19,7 @@ export function GoogleSignInButton({ onClick, busy, label = 'Sign in with Google
       <ActionButton
         variant="primary"
         size="lg"
+        fullWidth={fullWidth}
         onClick={onClick}
         loading={busy}
         loadingLabel="Opening Google"
