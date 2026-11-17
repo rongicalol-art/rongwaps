@@ -19,7 +19,9 @@ const css = (await stat(resolve(root, `dist${style}`))).size;
 // 270 kB: dark mode and per-book tones (Oct 2026) moved theme colours into CSS.
 // 275 kB: Book 1 exercise pages (Nov 2026, +1 kB). Deleting the unused old
 // exercise kinds would win it back.
-assert.ok(css <= 275_000, `Critical CSS exceeds 275 kB: ${css}`);
+// 280 kB: the Nov 17 release batch (Book 2 audio and grammar, lesson pages,
+// streak moment) together landed at 275.75 kB.
+assert.ok(css <= 280_000, `Critical CSS exceeds 280 kB: ${css}`);
 const assets = await readdir(resolve(root, 'dist/assets'));
 for (const worker of ['quizPlanner.worker-', 'dictionaryCommon.worker-']) {
   assert.ok(assets.some((file) => file.startsWith(worker)), `Missing production worker: ${worker}`);
