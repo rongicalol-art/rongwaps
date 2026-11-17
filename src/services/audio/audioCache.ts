@@ -226,6 +226,17 @@ export async function readCachedAudioBlob(fileName: string, allowStale = true): 
   try { return await Promise.race([read, deadline]); } finally { clearTimeout(timer!); }
 }
 
+/** Keeps a downloaded recording for later sessions; best-effort, never awaited by playback. */
+export function storeAudioBlob(fileName: string, blob: Blob): void {
+  blobCachedAt.set(blob, Date.now());
+  void getAudioFileCache().then((cache) => {
+    if (!cache) return;
+    return cache.put(audioFileCacheRequest(fileName), new Response(blob, { headers: {
+      'Content-Type': blob.type || 'audio/mpeg', 'Content-Length': String(blob.size), 'X-Audio-Cached-At': String(Date.now()),
+    } })).then(() => touchAudioMeta(fileName, blob.size)).then(schedulePruneAudioCache);
+  }).catch(() => {});
+}
+
 export async function fetchAudioBlob(fileName: string, signal?: AbortSignal): Promise<Blob> {
   if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
   let flight = inFlightBlobFetches.get(fileName);
@@ -267,13 +278,7 @@ export async function fetchAudioBlob(fileName: string, signal?: AbortSignal): Pr
       }
       if (!downloaded) throw new Error('Audio download failed');
       const blob = downloaded;
-      blobCachedAt.set(blob, Date.now());
-      void getAudioFileCache().then((cache) => {
-        if (!cache) return;
-        return cache.put(audioFileCacheRequest(fileName), new Response(blob, { headers: {
-          'Content-Type': blob.type || 'audio/mpeg', 'Content-Length': String(blob.size), 'X-Audio-Cached-At': String(Date.now()),
-        } })).then(() => touchAudioMeta(fileName, blob.size)).then(schedulePruneAudioCache);
-      }).catch(() => {});
+      storeAudioBlob(fileName, blob);
       return blob;
     })();
     const promise = Promise.race([work, aborted]);

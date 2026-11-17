@@ -74,7 +74,7 @@ async function allowed(bound: RateLimiter, key: string): Promise<boolean> {
   try { return (await bound.limit({ key })).success; } catch { return true; }
 }
 
-export const USER_LIMITS = { content: 1200, feedback: 3, report: 10 } as const;
+export const USER_LIMITS = { content: 1200, feedback: 3, report: 10, speech: 40 } as const;
 
 /**
  * Requires a valid Supabase session with school access, then applies the learner's own limit for `use`.
@@ -101,7 +101,7 @@ export async function requireUser(context: Context, request: Request, use: keyof
       if (value.until <= now || key !== token) verifiedTokens.delete(key);
     }
   }
-  const bound = use === 'content' ? env.CONTENT_LIMIT : use === 'feedback' ? env.FEEDBACK_LIMIT : env.REPORT_LIMIT;
+  const bound = { content: env.CONTENT_LIMIT, feedback: env.FEEDBACK_LIMIT, report: env.REPORT_LIMIT, speech: env.SPEECH_LIMIT }[use];
   if (!await allowed(limiter(bound, use, USER_LIMITS[use]), entry.userId)) return tooManyRequests(PRIVATE);
   return { userId: entry.userId, token: token! };
 }

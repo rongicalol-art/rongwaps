@@ -25,7 +25,7 @@ import {
   type SystemOneResult,
 } from '@typesafe-ai/sdk';
 
-dotenv.config({ path: resolve(import.meta.dirname, '../../.env'), quiet: true });
+dotenv.config({ path: process.env.DOTENV_CONFIG_PATH ?? resolve(import.meta.dirname, '../../.env'), quiet: true });
 
 export const JEV_PINNED_MODEL = 'jev-1.13.0';
 export const JEV_DEFAULT_MODEL = process.env.JEV_MODEL ?? process.env.MEMORY_HOOK_JEV_MODEL ?? JEV_PINNED_MODEL;
