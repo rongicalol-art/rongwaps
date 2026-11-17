@@ -664,9 +664,9 @@
             "id": "b2l09-g03-p209-ex2",
             "number": 2,
             "text": {
-              "traditional": "已經八點了，你快（一）點兒起床，要不然上班會遲到！",
+              "traditional": "已經八點了，你快（一）點兒起床，要不然上班會遲到的！",
               "english": "It’s already eight. Get up quickly, or you’ll be late for work!",
-              "simplified": "已经八点了，你快（一）点儿起床，要不然上班会迟到！",
+              "simplified": "已经八点了，你快（一）点儿起床，要不然上班会迟到的！",
               "words": [
                 {
                   "id": "b2l09-g03-p209-ex2-w1",
@@ -761,11 +761,18 @@
                   "traditional": "遲到",
                   "simplified": "迟到",
                   "pinyin": "chídào",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l09-g03-p209-ex2-w14",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
                   "meaning": "",
                   "suffix": "！"
                 }
               ],
-              "pinyin": "Yǐjīng bā diǎn le, nǐ kuài (yì) diǎnr qǐchuáng, yàobùrán shàngbān huì chídào!"
+              "pinyin": "Yǐjīng bā diǎn le, nǐ kuài (yì) diǎnr qǐchuáng, yàobùrán shàngbān huì chídào de!"
             }
           },
           {
@@ -1533,9 +1540,9 @@
             "id": "b2l09-g04-p209-ex7",
             "number": 7,
             "text": {
-              "traditional": "昨天歷史課，教授教到第一百六十頁了。",
+              "traditional": "昨天的歷史課，教授教到第一百六十頁了。",
               "english": "In history class yesterday, the professor taught up to page 160.",
-              "simplified": "昨天历史课，教授教到第一百六十页了。",
+              "simplified": "昨天的历史课，教授教到第一百六十页了。",
               "words": [
                 {
                   "id": "b2l09-g04-p209-ex7-w1",
@@ -1546,13 +1553,20 @@
                 },
                 {
                   "id": "b2l09-g04-p209-ex7-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l09-g04-p209-ex7-w3",
                   "traditional": "歷史",
                   "simplified": "历史",
                   "pinyin": "lìshǐ",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w3",
+                  "id": "b2l09-g04-p209-ex7-w4",
                   "traditional": "課",
                   "simplified": "课",
                   "pinyin": "kè",
@@ -1560,49 +1574,49 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w4",
+                  "id": "b2l09-g04-p209-ex7-w5",
                   "traditional": "教授",
                   "simplified": "教授",
                   "pinyin": "jiàoshòu",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w5",
+                  "id": "b2l09-g04-p209-ex7-w6",
                   "traditional": "教",
                   "simplified": "教",
                   "pinyin": "jiāo",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w6",
+                  "id": "b2l09-g04-p209-ex7-w7",
                   "traditional": "到",
                   "simplified": "到",
                   "pinyin": "dào",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w7",
+                  "id": "b2l09-g04-p209-ex7-w8",
                   "traditional": "第",
                   "simplified": "第",
                   "pinyin": "dì",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w8",
+                  "id": "b2l09-g04-p209-ex7-w9",
                   "traditional": "一百六十",
                   "simplified": "一百六十",
                   "pinyin": "yìbǎiliùshí",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w9",
+                  "id": "b2l09-g04-p209-ex7-w10",
                   "traditional": "頁",
                   "simplified": "页",
                   "pinyin": "yè",
                   "meaning": ""
                 },
                 {
-                  "id": "b2l09-g04-p209-ex7-w10",
+                  "id": "b2l09-g04-p209-ex7-w11",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
@@ -1610,7 +1624,7 @@
                   "suffix": "。"
                 }
               ],
-              "pinyin": "Zuótiān lìshǐ kè, jiàoshòu jiāo dào dì yìbǎiliùshí yè le."
+              "pinyin": "Zuótiān de lìshǐ kè, jiàoshòu jiāo dào dì yìbǎiliùshí yè le."
             }
           },
           {
@@ -1907,7 +1921,7 @@
             "id": "b2l09-g04-p209-s1",
             "sectionNumber": 1,
             "title": "Place destination",
-            "titleTraditional": "V 到 + Place + 來／去",
+            "titleTraditional": "V 到 + 地方 + 來／去",
             "explanation": "到 marks the place reached by the action.",
             "pattern": "V 到 + 地方 + 來／去",
             "exampleIds": [
@@ -1920,7 +1934,7 @@
             "id": "b2l09-g04-p209-s2",
             "sectionNumber": 2,
             "title": "Time endpoint",
-            "titleTraditional": "V 到 + Time",
+            "titleTraditional": "V 到 + 時間",
             "explanation": "到 marks the endpoint in time.",
             "pattern": "V 到 + 時間",
             "exampleIds": [
@@ -1933,7 +1947,7 @@
             "id": "b2l09-g04-p209-s3",
             "sectionNumber": 3,
             "title": "Range or quantity",
-            "titleTraditional": "V 到 + Range／Quantity",
+            "titleTraditional": "V 到 + 範圍／數量",
             "explanation": "到 marks the endpoint of a range or a reached quantity.",
             "pattern": "V 到 + 範圍／數量",
             "exampleIds": [
@@ -2425,9 +2439,9 @@
             "id": "b2l09-g05-p211-ex5",
             "number": 5,
             "text": {
-              "traditional": "A：你想去便利商店買什麼？B：我不想買什麼，只想看看新活動海報。",
+              "traditional": "A：你想去便利商店買什麼？B：我不想買什麼，只想看看新活動的海報。",
               "english": "A: What do you want to buy at the convenience store? B: I don’t want to buy anything; I just want to look at the new event poster.",
-              "simplified": "A：你想去便利商店买什么？B：我不想买什么，只想看看新活动海报。",
+              "simplified": "A：你想去便利商店买什么？B：我不想买什么，只想看看新活动的海报。",
               "words": [
                 {
                   "id": "b2l09-g05-p211-ex5-w1",
@@ -2540,6 +2554,13 @@
                 },
                 {
                   "id": "b2l09-g05-p211-ex5-w16",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": ""
+                },
+                {
+                  "id": "b2l09-g05-p211-ex5-w17",
                   "traditional": "海報",
                   "simplified": "海报",
                   "pinyin": "hǎibào",
@@ -2547,7 +2568,7 @@
                   "suffix": "。"
                 }
               ],
-              "pinyin": "A: Nǐ xiǎng qù biànlì shāngdiàn mǎi shénme? B: Wǒ bù xiǎng mǎi shénme, zhǐ xiǎng kànkan xīn huódòng hǎibào."
+              "pinyin": "A: Nǐ xiǎng qù biànlì shāngdiàn mǎi shénme? B: Wǒ bù xiǎng mǎi shénme, zhǐ xiǎng kànkan xīn huódòng de hǎibào."
             }
           },
           {
