@@ -9,8 +9,9 @@ import { LandingPage, LANDING_META } from '../../src/screens/landing';
 import { FAQ } from '../../src/screens/landing/landingContent';
 import { GuideScreen, guidePageMeta, TOCFL_FAQ } from '../../src/screens/guides';
 import { LegalScreen, legalPageMeta } from '../../src/screens/legal';
+import { LessonPageScreen, lessonPageMeta, lessonPageTitle } from '../../src/screens/lesson-page';
 import { SAMPLE_BOOKS } from '../../src/data/books';
-import type { GuidePage, LegalPage } from '../../src/app/routes';
+import { GUIDE_ROUTES, LESSON_PAGE_LESSONS, type GuidePage, type LegalPage } from '../../src/app/routes';
 
 const SITE_ORIGIN = 'https://ronsmandarin.com';
 
@@ -160,6 +161,34 @@ function guideJsonLd(page: GuidePage, title: string, description: string, path: 
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
+function lessonJsonLd(lessonId: number, title: string, description: string, path: string): object {
+  const { en, zh } = lessonPageTitle(lessonId);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      webPageNode(title, description, path),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: "Ron's Mandarin", item: `${SITE_ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: 'Books & Lessons', item: `${SITE_ORIGIN}${GUIDE_ROUTES.books}` },
+          { '@type': 'ListItem', position: 3, name: `Lesson ${lessonId}: ${en}`, item: `${SITE_ORIGIN}${path}` },
+        ],
+      },
+      {
+        '@type': 'LearningResource',
+        name: `Modern Chinese 1 Lesson ${lessonId}: ${en} (${zh})`,
+        description,
+        learningResourceType: 'Vocabulary and grammar lesson',
+        educationalLevel: 'TOCFL A1',
+        isAccessibleForFree: true,
+        inLanguage: ['en', 'zh-Hant'],
+        url: `${SITE_ORIGIN}${path}`,
+      },
+    ],
+  };
+}
+
 export function renderPages(): PrerenderedPage[] {
   const guides: GuidePage[] = ['books', 'grammar', 'tocfl'];
   const legal: LegalPage[] = ['about', 'sources', 'privacy', 'terms'];
@@ -176,6 +205,15 @@ export function renderPages(): PrerenderedPage[] {
         ...meta,
         html: render(meta.path, <GuideScreen page={page} />),
         jsonLd: guideJsonLd(page, meta.title, meta.description, meta.path),
+      };
+    }),
+    ...Array.from({ length: LESSON_PAGE_LESSONS }, (_, index) => {
+      const lessonId = index + 1;
+      const meta = lessonPageMeta(lessonId);
+      return {
+        ...meta,
+        html: render(meta.path, <LessonPageScreen lessonId={lessonId} />),
+        jsonLd: lessonJsonLd(lessonId, meta.title, meta.description, meta.path),
       };
     }),
     ...legal.map((page) => {

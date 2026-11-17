@@ -1,11 +1,11 @@
 /**
- * After `vite build`: renders the public pages (landing, About, Sources, Privacy, Terms) to
+ * After `vite build`: renders the public pages (landing, guides, lesson pages, About, Sources, Privacy, Terms) to
  * static HTML so search engines and link previews see real content and per-page tags.
  *
  * Writes dist/index.html (landing) and dist/<page>.html; server/index.ts serves those for
  * their paths. The app removes `#prerender` once it has rendered (src/utils/browser/prerender.ts).
  */
-import { readFile, rm, writeFile } from 'fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'fs/promises';
 import path from 'path';
 import { pathToFileURL } from 'url';
 import { build } from 'vite';
@@ -84,6 +84,7 @@ async function main() {
     for (const rendered of renderPages()) {
       const page = { ...rendered, html: mapAssetUrls(rendered.html, manifest) };
       const file = page.path === '/' ? 'index.html' : `${page.path.slice(1)}.html`;
+      await mkdir(path.dirname(path.join(DIST, file)), { recursive: true });
       await writeFile(path.join(DIST, file), pageHtml(template, page));
       console.log(`prerender: ${page.path} -> dist/${file} (${Math.round(page.html.length / 1024)} kB)`);
     }
