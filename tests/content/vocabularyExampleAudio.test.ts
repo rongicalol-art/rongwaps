@@ -31,7 +31,7 @@ type AudioEntry = {
 const json = <T>(path: string): T => JSON.parse(readFileSync(path, 'utf8')) as T;
 const hanOnly = (sentence: string) => [...sentence].filter((char) => /\p{Script=Han}/u.test(char)).join('');
 
-test('Books 1 and 3 have complete example coverage and only verified recorded ranges', () => {
+test('Books 1, 2 and 3 have complete example coverage and only verified recorded ranges', () => {
   const audioManifest = json<{
     examples: Record<string, AudioEntry>;
     tracks: Record<string, { sha256: string; durationSec: number }>;
@@ -41,14 +41,18 @@ test('Books 1 and 3 have complete example coverage and only verified recorded ra
   const book1Manifest = json<{ files: Array<{ file: string; sha256: string; durationSec: number }> }>(
     'content/audio/audio_manifest_book1.json',
   );
+  const book2Index = json<{ vocabularyTracks: Array<{ file: string; id: string }> }>(
+    'content/audio/audio_index_book2.json',
+  );
   const book3Index = json<{ vocabularyTracks: Array<{ file: string; id: string }> }>(
     'content/audio/audio_index_book3.json',
   );
   const book1Tracks = new Map(book1Manifest.files.map((track) => [track.file, track]));
+  const book2Tracks = new Map(book2Index.vocabularyTracks.map((track) => [track.file, track]));
   const book3Tracks = new Map(book3Index.vocabularyTracks.map((track) => [track.file, track]));
   let expectedCount = 0;
 
-  for (const bookId of [1, 3]) {
+  for (const bookId of [1, 2, 3]) {
     const source = json<Record<string, SourceExample>>(`content/vocabulary/book-${bookId}-examples.json`);
     const pack = json<{ items: Array<{ id: string; examples: string | null }> }>(
       `public/data/vocabulary/book-${bookId}.json`,
@@ -86,11 +90,11 @@ test('Books 1 and 3 have complete example coverage and only verified recorded ra
           assert.ok(entry.audio.end <= track.durationSec, `${sourceCardId} Book 1 range is within track`);
           assert.equal(entry.audio.cache, undefined, `${sourceCardId} Book 1 cache policy`);
         } else {
-          const track = book3Tracks.get(entry.alignment.track);
-          assert.ok(track, `${sourceCardId} Book 3 track exists`);
-          assert.equal(entry.alignment.driveFileId, track.id, `${sourceCardId} Book 3 provenance`);
-          assert.equal(entry.audio.file, entry.alignment.track, `${sourceCardId} Book 3 playback path`);
-          assert.equal(entry.audio.cache, undefined, `${sourceCardId} Book 3 cache policy`);
+          const track = (bookId === 2 ? book2Tracks : book3Tracks).get(entry.alignment.track);
+          assert.ok(track, `${sourceCardId} Book ${bookId} track exists`);
+          assert.equal(entry.alignment.driveFileId, track.id, `${sourceCardId} Book ${bookId} provenance`);
+          assert.equal(entry.audio.file, entry.alignment.track, `${sourceCardId} Book ${bookId} playback path`);
+          assert.equal(entry.audio.cache, undefined, `${sourceCardId} Book ${bookId} cache policy`);
         }
       } else {
         assert.ok(entry.issue, `${sourceCardId} rejected range is documented for speech fallback`);
@@ -138,7 +142,7 @@ test('Books 1 and 3 have complete example coverage and only verified recorded ra
     }
   }
 
-  assert.equal(expectedCount, 1344, 'primary vocabulary source corpus size');
+  assert.equal(expectedCount, 1961, 'primary vocabulary source corpus size');
   assert.equal(
     Object.keys(audioManifest.examples).length,
     expectedCount + extraCourseExamples.length,
