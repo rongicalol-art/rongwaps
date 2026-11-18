@@ -211,6 +211,16 @@ the MRT runs until 2:00 on 1/1) (B1 L14, L16).
 | 元真, 國安, 老師 | see the book from B1 L7 on | 元真 writes to a sick Guo'an and brings apples 明天, as in B1L10-R01 (B1 L10 note); the calligraphy teacher (teacher.webp, a woman) teaches 2:00–4:00 (B1 L9 test); 元真 buys only a pair of socks at a department store (the skirts are too expensive) and suggests the bookstore with 宜文 that weekend (B1 L12 note) |
 | The B1 L5 room reading | B1L05-R03 is a girl's room (the art shows a girl and a cat) | never make its narrator Zhongming |
 
+Book 2's cast keeps its own facts the same way (the book's readings first; `npx tsx scripts/content/lessonTestBrief.ts`
+lists each lesson's):
+
+| Character | From the book | Added by the tests |
+| --- | --- | --- |
+| 山本良介 Ryosuke | Japanese, lives in the school dorm, was shy before Taiwan; met a girl online, invited her and her friends to the school dance (B2 L1) | writes 美心 a message after the dance: the girl came with her friends, they walked on campus afterwards, he asks where to take her next; the girl dances well and loves to joke (B2 L1 test) |
+| 美心 | studies in the Italian department; shares a dorm room with 可欣 (B2 L9) | going to the library one Tuesday afternoon, where 可欣's note asks her to return two books and borrow a Japanese history book (B2 L9 test) |
+| 可欣 | takes a Japanese history course with quizzes, an oral exam and a composition (B2 L9) | has class until 8 p.m. that Tuesday (B2 L9 test) |
+| 以凡 | starts at the Chinese Language Center next month in B2 L16 | never an unnamed exchange student at the center before L16 |
+
 Two teachers surnamed 王 already appear (a man in B1 L1, a Taiwanese woman in B1 L2): avoid 王老師 in new tests. Where the book disagrees with itself (Yiwen swims 不太好 in B1L06-R01 but 不錯 in R03; Guo'an's 4:00 class vs his 4–6 bakery job; 元真's apples 明天 vs 今天), never test that fact.
 
 How the book characters look in the B1 L11–16 reading art (keep new picture briefs consistent):
@@ -278,8 +288,9 @@ The script's default engine is the older local Qwen studio voices (Vivian, Dylan
 1. Generate: `<venv>/bin/python scripts/audio/generateLessonTestAudio.py --engine yating --lessons b2l01 b2l09`
    (`<venv>` = `output/qwen-pilot-venv` in the main checkout; keys space-separated). The batch holds only the
    lessons named, which is enough: publishing adds them to the receipt and keeps every other test's clips, and
-   the A–D letters are the published ones. Within one batch, name every lesson it has voiced so far (its
-   manifest is rewritten from the list).
+   the A–D letters are the published ones, and a line another test already published in the same voice and pace
+   keeps that recording (so it is never re-voiced or paid for twice). Within one batch, name every lesson it has
+   voiced so far (its manifest is rewritten from the list).
 2. Check: `checkStudioBatch.py output/lesson-test-audio` (independent ASR must hear the whole line; endings
    must fade; lines the owner listened to and accepted are listed in the batch's `asr-reviewed.json`).
    Rejected takes are re-voiced by running step 1 again, at a speed nudged by at most 0.05.

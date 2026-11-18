@@ -258,6 +258,10 @@ def main():
                         help="qwen: the local MLX voices; yating: the Yating API voices (YATING_API_KEY in .env).")
     args = parser.parse_args()
 
+    # A line another test already published in the same voice and pace keeps that recording (the receipt has it), so
+    # a shared narrator line sounds the same in every test and is never paid for twice.
+    receipt = ROOT / "content/audio/lesson_test_audio.json"
+    published = json.loads(receipt.read_text(encoding="utf-8")) if args.engine == "yating" and receipt.exists() else {}
     targets = {}
     lesson_voices = {}  # Yating: which voice label each test uses per role (its pace), for the receipt.
     for key in args.lessons:
@@ -270,6 +274,8 @@ def main():
             if args.engine == "yating":
                 speed, pauses = yating_pace(book, number, speaker)
                 voice = yating_label(speaker, speed, pauses)
+                if clip_key(voice, text) in published.get("clips", {}):
+                    continue
                 targets[clip_key(voice, text)] = {"key": clip_key(voice, text), "text": text, "voice": voice,
                                                   "speaker": speaker, "instruct": "", "lang": LANG_CODE, "engine": "yating",
                                                   "model": YATING_VOICES[speaker], "speed": speed, "pauses": pauses,
@@ -282,9 +288,7 @@ def main():
                 targets[clip_key(voice, text)] = {"key": clip_key(voice, text), "text": text, "voice": voice,
                                                   "speaker": speaker, "instruct": instruct, "lang": LANG_CODE}
     # The letters are the published English clips (owner's choice); a Yating batch reuses them from the receipt.
-    receipt = ROOT / "content/audio/lesson_test_audio.json"
-    published_letters = (json.loads(receipt.read_text(encoding="utf-8")).get("sounds", {}).get("letters")
-                         if args.engine == "yating" and receipt.exists() else None)
+    published_letters = published.get("sounds", {}).get("letters")
     if not published_letters:
         for letter in LETTERS:
             targets[clip_key(VOICES["N"], letter)] = {"key": clip_key(VOICES["N"], letter), "text": letter, "voice": VOICES["N"],

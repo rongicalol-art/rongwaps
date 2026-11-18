@@ -109,6 +109,16 @@
       "F": "zh_en_female_1@1.05",
       "M": "zh_en_male_1@0.9-pitch1.3",
       "N": "zh_en_female_2@1.2"
+    },
+    "b2l01": {
+      "F": "zh_en_female_1@1.05",
+      "M": "zh_en_male_1@0.9-pitch1.3",
+      "N": "zh_en_female_2@1.2"
+    },
+    "b2l09": {
+      "F": "zh_en_female_1@1.05",
+      "M": "zh_en_male_1@0.9-pitch1.3",
+      "N": "zh_en_female_2@1.2"
     }
   },
   "clips": {
@@ -147,6 +157,11 @@
       "sha256": "f9ec3f651a18b10b2c6fa1ad6d2311db45be1d8dae63beb2342df84cb6e51ef9",
       "duration": 6.17
     },
+    "zh_en_female_1@1.05|不好意思，我剛剛出了捷運站，可是不知道博物館在哪裡。我要往哪邊走？": {
+      "file": "lesson-test-studio/v1/7249c70e9f58.mp3",
+      "sha256": "7249c70e9f586e51994ac7abec6775352e198e3507b20f55463cf1783e484e2c",
+      "duration": 8.039
+    },
     "zh_en_female_1@1.05|不是，銀行的工作是不錯，可是我從小的夢想是設計衣服。上個月我在網路上開了一家小店，賣自己設計的衣服。": {
       "file": "lesson-test-studio/v1/bb5d39b7e1ad.mp3",
       "sha256": "bb5d39b7e1ad7e364aac200c10ed8723e7b301a7af0addd0d6fad1699d002791",
@@ -157,15 +172,35 @@
       "sha256": "f49269e8e7a6e07c4ff81d5f6d8e84e31b7497ee9fc1d8753988d68330e56e82",
       "duration": 8.732
     },
+    "zh_en_female_1@1.05|不是啊，很多大學生也很喜歡去呢！": {
+      "file": "lesson-test-studio/v1/5422649cf59c.mp3",
+      "sha256": "5422649cf59c1017799dca327a27700e9d8c48054a57755aa32326cf6073bd17",
+      "duration": 4.102
+    },
     "zh_en_female_1@1.05|不用了，我吃過了。算了，傘也先別買了，新聞說明天就不下雨了，下次要用再買吧。": {
       "file": "lesson-test-studio/v1/0015b9a37c81.mp3",
       "sha256": "0015b9a37c81721d8814ca93b3b1e8cbee8de9db8af81a25ab317430a73fed23",
       "duration": 10.074
     },
+    "zh_en_female_1@1.05|不累啊！我還想再跳一個小時呢！": {
+      "file": "lesson-test-studio/v1/fca418cbd2c7.mp3",
+      "sha256": "fca418cbd2c79669dcc03445531daaa17a488003b18a4972efd9691cc3cf2547",
+      "duration": 3.626
+    },
+    "zh_en_female_1@1.05|也許他跟大家還不熟，你可以多找他聊天。": {
+      "file": "lesson-test-studio/v1/41a0a85539f6.mp3",
+      "sha256": "41a0a85539f6eab3726d633781a53afa9cdae4b58c761e4fad0cf105dba4c577",
+      "duration": 4.594
+    },
     "zh_en_female_1@1.05|二樓的洋裝專櫃，每一件都打折；在三樓買一雙皮鞋，就送一條皮帶。": {
       "file": "lesson-test-studio/v1/23f49e4e9209.mp3",
       "sha256": "23f49e4e92099b20c10ee6acdf8d3e0b73801c356ec7eb8da9559f814fc5267f",
       "duration": 8.204
+    },
+    "zh_en_female_1@1.05|今天是星期天，辦公室沒有人啊。": {
+      "file": "lesson-test-studio/v1/28a145fa0d02.mp3",
+      "sha256": "28a145fa0d02b8509f46d8968022e5387be1078b3f5b6632b6aebd22504cc7a1",
+      "duration": 3.994
     },
     "zh_en_female_1@1.05|你上次說想找的那種醬料，找到了嗎？": {
       "file": "lesson-test-studio/v1/7d4744e222e8.mp3",
@@ -177,10 +212,20 @@
       "sha256": "174e663e05a1ecdba036d26006f2f1e2920749d58a889c00255d7eb833db86e6",
       "duration": 8.351
     },
+    "zh_en_female_1@1.05|你今天怎麼戴口罩？感冒了嗎？": {
+      "file": "lesson-test-studio/v1/f2aa9ee549bb.mp3",
+      "sha256": "f2aa9ee549bba76758bc2433e3ebe59421b748242cd9f76fb70fbc3ca074b438",
+      "duration": 3.151
+    },
     "zh_en_female_1@1.05|你們怎麼這麼晚才回來？不是只去樓下超商買個晚飯嗎？": {
       "file": "lesson-test-studio/v1/ece45b9f1c91.mp3",
       "sha256": "ece45b9f1c919a1a584c591c77bc3b17b06aeee6320b09e5456d494b6560426b",
       "duration": 6.437
+    },
+    "zh_en_female_1@1.05|你們班新來的那個同學怎麼樣？": {
+      "file": "lesson-test-studio/v1/3b6bea46e34c.mp3",
+      "sha256": "3b6bea46e34cd37ac3b5a3f703547a5d91337d04cb178e91d74163dcfb60645a",
+      "duration": 3.183
     },
     "zh_en_female_1@1.05|你們班那位男同學，怎麼每次考試都考第一名？": {
       "file": "lesson-test-studio/v1/54db49689102.mp3",
@@ -207,6 +252,11 @@
       "sha256": "144b9110aa0e8e9f25b61ab1746ed27534be5c0c97f382386b8911138b22ef36",
       "duration": 3.229
     },
+    "zh_en_female_1@1.05|你好，我是你們的文法老師。你今天沒來上課，所以我打電話告訴你明天小考的事。": {
+      "file": "lesson-test-studio/v1/6e797b2fe2c6.mp3",
+      "sha256": "6e797b2fe2c64545f962b8b15679b568fd1c037f864bad41884877d5396d8701",
+      "duration": 9.135
+    },
     "zh_en_female_1@1.05|你好，我是房東。昨天的颱風把屋頂上的一些設備吹壞了，工人明天要來修理，所以這棟樓明天早上九點到下午五點都會停水。我會在樓下放一些水給大家用，你不用自己準備。": {
       "file": "lesson-test-studio/v1/a3fddd3c8411.mp3",
       "sha256": "a3fddd3c84110afebbf908769e3455d893b02d06aaf7573528483a09b4531bc1",
@@ -232,6 +282,16 @@
       "sha256": "3a53cdf8ffb45b5a1036b570b2daeb4fa011e179da191361918b7fa27b8db82c",
       "duration": 6.964
     },
+    "zh_en_female_1@1.05|你念了那麼多，一定沒問題的。不吃東西，考試的時候肚子餓了怎麼辦？": {
+      "file": "lesson-test-studio/v1/6e6e12020369.mp3",
+      "sha256": "6e6e120203693550f9b68b4ea7302c8a6b568bac212b8d75b80c8f6a50b151cd",
+      "duration": 7.476
+    },
+    "zh_en_female_1@1.05|你怎麼了？背還是很疼嗎？": {
+      "file": "lesson-test-studio/v1/ddd5ed3d31dc.mp3",
+      "sha256": "ddd5ed3d31dc0d0153d53679453c38b0dedab50c0841d8a3cd1875e346918a37",
+      "duration": 2.86
+    },
     "zh_en_female_1@1.05|你怎麼又買了一雙球鞋？門口已經有七、八雙了，有的你一次都還沒穿過呢。": {
       "file": "lesson-test-studio/v1/0ab67d7fd976.mp3",
       "sha256": "0ab67d7fd9766a38293f308f20ede0bd9f550ed071418dbc7e6b0f6bbd4e9366",
@@ -241,6 +301,16 @@
       "file": "lesson-test-studio/v1/6468138e031e.mp3",
       "sha256": "6468138e031eba8bd7d3313cbef3040a5caaaf4f869d43d2d0b449c2c3961b68",
       "duration": 4.892
+    },
+    "zh_en_female_1@1.05|你怎麼還在看韓劇？明天下午不是要考口試嗎？": {
+      "file": "lesson-test-studio/v1/4951c03f0bcc.mp3",
+      "sha256": "4951c03f0bcc1c3f86e55d0c7fa4e7caa6f0be231246e68b53d5905556c1b8b5",
+      "duration": 5.484
+    },
+    "zh_en_female_1@1.05|你每天都騎腳踏車來上課，是想多運動嗎？": {
+      "file": "lesson-test-studio/v1/bda78336da73.mp3",
+      "sha256": "bda78336da734c222e7fa4f2694e11a1299dc103b3f25282d31af92e156b77f2",
+      "duration": 4.718
     },
     "zh_en_female_1@1.05|你每次都這麼說。別再買球鞋了！你下個月要開始去銀行上班，連一雙皮鞋都沒有，那才是你應該買的。": {
       "file": "lesson-test-studio/v1/c8d5df6944eb.mp3",
@@ -281,6 +351,11 @@
       "file": "lesson-test-studio/v1/8d06badf898f.mp3",
       "sha256": "8d06badf898fe8d1fb2138f6c63f92d480587d6584aa0532a0a5e8c090044bd1",
       "duration": 7.222
+    },
+    "zh_en_female_1@1.05|你跟你女朋友是怎麼認識的？": {
+      "file": "lesson-test-studio/v1/c4af4b8bd2c1.mp3",
+      "sha256": "c4af4b8bd2c1e56d4fba1a8122fded9adc84340f5eb091d576359ad99eae177d",
+      "duration": 2.798
     },
     "zh_en_female_1@1.05|先生，這件洋裝是我上個星期在這裡買的。大小很合適，樣子我也很喜歡，可是回家才發現口袋旁邊破了，可以換一件新的嗎？": {
       "file": "lesson-test-studio/v1/6a659f17f028.mp3",
@@ -337,6 +412,11 @@
       "sha256": "4f4aec0f27c3f10d94ab8d9fd9ec78710f6efd4d93a75fdd1a9f782a76d956c4",
       "duration": 6.609
     },
+    "zh_en_female_1@1.05|可是我的作業還沒寫完。我先去圖書館寫作業，寫完了再打電話給你。": {
+      "file": "lesson-test-studio/v1/8a97020c55c3.mp3",
+      "sha256": "8a97020c55c3edb556a10ac903f6fce30a9da3e7ce25332be18a0ac2c094f61e",
+      "duration": 7.917
+    },
     "zh_en_female_1@1.05|可是新聞說星期六有颱風。山區一下大雨，路就可能不通，萬一被困在山上怎麼辦？": {
       "file": "lesson-test-studio/v1/aa33b0d8e1d4.mp3",
       "sha256": "aa33b0d8e1d44b93a24f5c14af8c2b8769878f00434bf2f7894d3e77d8a51d96",
@@ -352,6 +432,11 @@
       "sha256": "d11efc887895569bd97a24ae54efcb0d85a8aafa29158d9010450fb90d8680c4",
       "duration": 4.49
     },
+    "zh_en_female_1@1.05|報告下個星期五才要交，這個週末我想先跟朋友去看電影，下個星期一再開始寫。": {
+      "file": "lesson-test-studio/v1/f87a099b67fb.mp3",
+      "sha256": "f87a099b67fb7423779cdf549d1b959b1813a0a60ae8c3bc21de6ff34caf0bb4",
+      "duration": 8.848
+    },
     "zh_en_female_1@1.05|她今天還不錯，只是奶喝得比較少。平常在家，她一不舒服就哭，要人抱著才不哭。": {
       "file": "lesson-test-studio/v1/f6b8641a6c4b.mp3",
       "sha256": "f6b8641a6c4bfb36c050cbef2eb683d3a37c2e4fd32e5a86a40924203019f8b6",
@@ -366,6 +451,16 @@
       "file": "lesson-test-studio/v1/7eeb799edd2f.mp3",
       "sha256": "7eeb799edd2ff410014b21408f79987d01f65e13e41474961351ef199d5289d4",
       "duration": 4.119
+    },
+    "zh_en_female_1@1.05|好，我馬上到！": {
+      "file": "lesson-test-studio/v1/21c5d971f450.mp3",
+      "sha256": "21c5d971f4503a4ee34d3eb6a11a39a2dec318b640e78b2f69c552d25184b767",
+      "duration": 1.909
+    },
+    "zh_en_female_1@1.05|好，沒問題。": {
+      "file": "lesson-test-studio/v1/065857914499.mp3",
+      "sha256": "065857914499f8ef00a6d1c34c9b0e68ced5447717af368dcf0c316bc3d6d49b",
+      "duration": 1.745
     },
     "zh_en_female_1@1.05|好吧，不過別逛太久，我們六點半還要跟朋友吃飯。": {
       "file": "lesson-test-studio/v1/dcb0d1aaca9a.mp3",
@@ -387,10 +482,25 @@
       "sha256": "43c150ab27f93dcd017b332eb397b01fe38f3f36662b1f0eea8273ae3dad667c",
       "duration": 3.252
     },
+    "zh_en_female_1@1.05|好啊，那這個週末你教我吧！": {
+      "file": "lesson-test-studio/v1/898dd65908ac.mp3",
+      "sha256": "898dd65908ac51a5e2fdd4b4844ad963136d24770b07574e1ca3a1397d662e49",
+      "duration": 3.106
+    },
+    "zh_en_female_1@1.05|好啊。那這個週末我們去看電影？": {
+      "file": "lesson-test-studio/v1/fbf98129a07b.mp3",
+      "sha256": "fbf98129a07bdebcb1985581b1d6ba2bc8ecba9ae47fe6490a6b574b2f78ebcd",
+      "duration": 3.729
+    },
     "zh_en_female_1@1.05|好體貼的外公啊！他們結婚多久了？": {
       "file": "lesson-test-studio/v1/3f1fc9d5770a.mp3",
       "sha256": "3f1fc9d5770aaa4d015a369f3ead2ada9a667103135d9da1ece351284cede54d",
       "duration": 3.65
+    },
+    "zh_en_female_1@1.05|學校對面那家餐廳怎麼樣？那裡的菜不但好吃，也很便宜。": {
+      "file": "lesson-test-studio/v1/e6fcb8277217.mp3",
+      "sha256": "e6fcb827721710e7ebd451dcd44584c431b69d0589b024c4879c5e38dc0a9d72",
+      "duration": 6.547
     },
     "zh_en_female_1@1.05|學校旁邊那家小咖啡店，最近每天都有很多人排隊。": {
       "file": "lesson-test-studio/v1/b61b175c7041.mp3",
@@ -406,6 +516,16 @@
       "file": "lesson-test-studio/v1/877d3ca3bc03.mp3",
       "sha256": "877d3ca3bc03c1ec42670a4867b209221e331cdfca000e832dc3f9f94e35abfe",
       "duration": 6.107
+    },
+    "zh_en_female_1@1.05|小教室只坐得下六個人。你們去系上的大教室吧，我明天打電話去系辦公室問問。": {
+      "file": "lesson-test-studio/v1/59d7f4d96271.mp3",
+      "sha256": "59d7f4d9627193fe5e161c350d15df3ac9aac6e3d9aa1ce0a2821f9cda520746",
+      "duration": 8.941
+    },
+    "zh_en_female_1@1.05|小考要從第三課考到第五課，第六課下次再考。因為我們的教室明天有別的課，所以要到三樓的大教室考。": {
+      "file": "lesson-test-studio/v1/4de909bc70fd.mp3",
+      "sha256": "4de909bc70fd74f123b00039079b881241c1566f909d5e9ea3b94cd860da06ba",
+      "duration": 11.757
     },
     "zh_en_female_1@1.05|小華，是媽媽。你上次說這個月工作很忙，所以我們就比較少打電話給你。": {
       "file": "lesson-test-studio/v1/274e3461fb00.mp3",
@@ -427,10 +547,20 @@
       "sha256": "222ebf1a3ceddd07efd36a66fa1af748ab2cfc1f7498e44f5652d40288e96af2",
       "duration": 8.394
     },
+    "zh_en_female_1@1.05|已經七點半了，你快點起來！八點的筆試你忘了嗎？": {
+      "file": "lesson-test-studio/v1/f4d5351e2c50.mp3",
+      "sha256": "f4d5351e2c5036c6f15693b6a2b84c3d7a4d273916e2efa0ec3a954b80c1dcf5",
+      "duration": 5.54
+    },
     "zh_en_female_1@1.05|帶了。不過我買的時候有打折，換新的要再付錢嗎？": {
       "file": "lesson-test-studio/v1/12aa134f4d6b.mp3",
       "sha256": "12aa134f4d6b8205be55162ba5b01fd5288aa0243b99c7347cd6cd6f7ad11746",
       "duration": 6.076
+    },
+    "zh_en_female_1@1.05|從這裡到火車站，搭公車比坐捷運快嗎？": {
+      "file": "lesson-test-studio/v1/e443b85af1a3.mp3",
+      "sha256": "e443b85af1a3e43636f2d5ccb0c8ded2bcba272b3a3765c53390102dfdb3c27b",
+      "duration": 4.858
     },
     "zh_en_female_1@1.05|怎麼樣？你都躺了五分鐘了。": {
       "file": "lesson-test-studio/v1/68482c4cc618.mp3",
@@ -441,6 +571,16 @@
       "file": "lesson-test-studio/v1/14798164756e.mp3",
       "sha256": "14798164756e6adb68d06b689e7c0826ad5e962dde84d878d8cd2550b4861b60",
       "duration": 11.714
+    },
+    "zh_en_female_1@1.05|我不太會跳舞，去了也只能坐在旁邊看。": {
+      "file": "lesson-test-studio/v1/3b9092394d7e.mp3",
+      "sha256": "3b9092394d7eb30f6d22935a772c236aa514be52993f3ed1025fb87bc1966104",
+      "duration": 4.144
+    },
+    "zh_en_female_1@1.05|我也想騎，可是不太敢在大馬路上騎。": {
+      "file": "lesson-test-studio/v1/c1c29fe69d35.mp3",
+      "sha256": "c1c29fe69d35a6fe5a470f1a919557d6b23bec0294dcfb169d14db46a16165c9",
+      "duration": 4.698
     },
     "zh_en_female_1@1.05|我今天才發現，學校旁邊那家超商可以用手機付錢，真方便！": {
       "file": "lesson-test-studio/v1/9b2fb986bac9.mp3",
@@ -467,6 +607,11 @@
       "sha256": "7235491bc3bfe227173c3b3f1feda1dfc4e96e60e93a072544c2dbadcd7321cb",
       "duration": 11.003
     },
+    "zh_en_female_1@1.05|我在網路上認識了一個男生，他想這個週末跟我見面。": {
+      "file": "lesson-test-studio/v1/6e891f669f61.mp3",
+      "sha256": "6e891f669f61542dd67ac14da7ecc2f4df87d325ed69cdf135994ac27dc366ed",
+      "duration": 5.539
+    },
     "zh_en_female_1@1.05|我妹妹下個月搬家，需要一台冰箱。我想把我們家的舊冰箱給她，我們自己買一台新的。": {
       "file": "lesson-test-studio/v1/c1f6cc572180.mp3",
       "sha256": "c1f6cc572180b7e7a70998a8afddd107657d3bc1c26854cb5dacf8d0cef07a53",
@@ -476,6 +621,11 @@
       "file": "lesson-test-studio/v1/8b2d8a7f9263.mp3",
       "sha256": "8b2d8a7f926395aab88bacf86f817d9456aac6451fa67c4526f98d7014734d22",
       "duration": 9.968
+    },
+    "zh_en_female_1@1.05|我打過了，星期六已經客滿了，只好星期五晚上去。": {
+      "file": "lesson-test-studio/v1/c13809b0ad4d.mp3",
+      "sha256": "c13809b0ad4d9a64c6d0136fe17978272d5fad56ac59c80380bc3aa1a5c0b16e",
+      "duration": 6.15
     },
     "zh_en_female_1@1.05|我早上就打過電話了，可是他們說今天要去的地方太多，最快明天中午以後才能來。": {
       "file": "lesson-test-studio/v1/ed2ccdbc3ff0.mp3",
@@ -487,20 +637,40 @@
       "sha256": "48ff9988a84a28dfc53cf08c5f825b84ee327c3ce6dbdadfbd2be80ea247501c",
       "duration": 5.656
     },
+    "zh_en_female_1@1.05|我有那本小說，這個週末就看完了，下個星期一帶來給你吧。": {
+      "file": "lesson-test-studio/v1/1e43486418ae.mp3",
+      "sha256": "1e43486418aed1b818983be25051bf3b86af5a3746e3da67868eb5a12a473e01",
+      "duration": 6.61
+    },
     "zh_en_female_1@1.05|我沒有要買的。不過，你能順便幫我把這個盒子寄給我媽媽嗎？錢我已經在網路上付了。": {
       "file": "lesson-test-studio/v1/f8b9ba4876ec.mp3",
       "sha256": "f8b9ba4876ec4c373377943e2a8bbb6e872a640795fb33b61e1a2c1e6f7399c6",
       "duration": 9.126
+    },
+    "zh_en_female_1@1.05|我沒買什麼，那裡的名產都太甜了，我不太喜歡。": {
+      "file": "lesson-test-studio/v1/1dd4ca1ce1c1.mp3",
+      "sha256": "1dd4ca1ce1c1a4988bcd1d80b1f61b5c11e142334de1cb87dd2ebe7d149594eb",
+      "duration": 5.174
     },
     "zh_en_female_1@1.05|我要下樓去拿大家訂的午飯，十分鐘就回來。": {
       "file": "lesson-test-studio/v1/e42f6ec8eb4b.mp3",
       "sha256": "e42f6ec8eb4b2d9791b762ca414455714bce8b6db8192d1dbee4df5c7dcf9277",
       "duration": 5.094
     },
+    "zh_en_female_1@1.05|我覺得你最好先去藥房問問，要是吃了藥還是很疼，再去看醫生。": {
+      "file": "lesson-test-studio/v1/c3997567b883.mp3",
+      "sha256": "c3997567b88374407f7192ac8e99d06eafdef42189a7a05d963cdb1aadc14efd",
+      "duration": 7.052
+    },
     "zh_en_female_1@1.05|才差五十塊，別再比了！而且貴的那家還送一個背包，就買那家的吧。": {
       "file": "lesson-test-studio/v1/eb4168693555.mp3",
       "sha256": "eb416869355501955d07c29d4a786728a85b83febdabd573e0e2cb6e5b402e9a",
       "duration": 7.422
+    },
+    "zh_en_female_1@1.05|放假的時候，你去花蓮了嗎？": {
+      "file": "lesson-test-studio/v1/80528ba54c5a.mp3",
+      "sha256": "80528ba54c5aca9da806d22f4b88470e8ac5e62d1ebd09d40bdbcee4e66a08f0",
+      "duration": 3.187
     },
     "zh_en_female_1@1.05|教授上課的時候不是說了嗎？報告下個星期才要交，明天是口試。": {
       "file": "lesson-test-studio/v1/0df0f070d051.mp3",
@@ -532,6 +702,11 @@
       "sha256": "be460d0c8317c6fbb4133600583f0a5b6aa6aa25b0444f429e29a00ed991bfc7",
       "duration": 5.384
     },
+    "zh_en_female_1@1.05|是嗎？那你先吃點東西吧，我買了兩個包子。": {
+      "file": "lesson-test-studio/v1/d18911a5c924.mp3",
+      "sha256": "d18911a5c924ee6c5dc48d5e1aeb2c5517e8de648fabc5a2c2d6fd59194ac8ff",
+      "duration": 4.858
+    },
     "zh_en_female_1@1.05|是嗎？那我今天晚上再試試看。": {
       "file": "lesson-test-studio/v1/65a0ddb7f671.mp3",
       "sha256": "65a0ddb7f6719e36fba94e582506e04719418b28881bf1ce213dc50d27dcbeaa",
@@ -557,6 +732,11 @@
       "sha256": "cf9170ed9682804bdc06f31831befb657db9e05647c904221e2fa70a533b445b",
       "duration": 8.095
     },
+    "zh_en_female_1@1.05|沒花多少錢。我住在朋友家，他每天帶我去吃小吃，都是他請客。": {
+      "file": "lesson-test-studio/v1/3985376da748.mp3",
+      "sha256": "3985376da7481672d046cfb320e89855b16642364a5a4c126863444df85ded8d",
+      "duration": 7.807
+    },
     "zh_en_female_1@1.05|看了。有一些地方的路到現在都還不通，甚至有人被困在屋頂上，等了一天才被救出來。": {
       "file": "lesson-test-studio/v1/3a8931c86873.mp3",
       "sha256": "3a8931c8687342001bffa3bb2d47ddd58abfcec3441803f676d1a309f3f26ce5",
@@ -566,6 +746,11 @@
       "file": "lesson-test-studio/v1/02bd820e44b0.mp3",
       "sha256": "02bd820e44b0b8c4fae7252e8ce54b272992bf75fbe403bb9a2e058dcbd73041",
       "duration": 14.701
+    },
+    "zh_en_female_1@1.05|真的嗎？那我得趕快寫了，電影下次再看吧。": {
+      "file": "lesson-test-studio/v1/681550c73b2d.mp3",
+      "sha256": "681550c73b2d9e70b54b7400b268a496141feab7eb50f1bef1b1fc6ab9feb2ac",
+      "duration": 4.956
     },
     "zh_en_female_1@1.05|真的嗎？難怪你最近看起來瘦了。": {
       "file": "lesson-test-studio/v1/fe82837c16a9.mp3",
@@ -592,6 +777,11 @@
       "sha256": "9c13754b46d5e068693a9338ce91c2cf9705a510fa09c41da9b7bea06d95c7d4",
       "duration": 8.892
     },
+    "zh_en_female_1@1.05|考完以後，請把上次的報告交給我，作文下個星期再交就可以了。": {
+      "file": "lesson-test-studio/v1/4a888787050f.mp3",
+      "sha256": "4a888787050f730c3050414e42467f87100919d0dddf481c7c20f7a889a962d6",
+      "duration": 7.115
+    },
     "zh_en_female_1@1.05|聽說你女兒要去國外學跳舞？她才十八歲，你不擔心嗎？": {
       "file": "lesson-test-studio/v1/22891921e8af.mp3",
       "sha256": "22891921e8afa1d9df2305a24081ea2e4f8bd7a22fbc35bbfb0fd45ee55a6751",
@@ -606,6 +796,11 @@
       "file": "lesson-test-studio/v1/df7ad8245e8a.mp3",
       "sha256": "df7ad8245e8a8fce1f9ede247e93e1dd4bce893ac9af825c0b097579ad6dcc72",
       "duration": 4.756
+    },
+    "zh_en_female_1@1.05|聽說你這學期修了一門文法課，那位教授怎麼樣？": {
+      "file": "lesson-test-studio/v1/d5f1513bf5ec.mp3",
+      "sha256": "d5f1513bf5ec2f1cc95eee186e6872d039949adcef21a487c932b260ecee5344",
+      "duration": 5.126
     },
     "zh_en_female_1@1.05|聽說那位明星今天下午在百貨公司幫戲迷簽名，可是要排隊排很久。他週末還會再來一次，你要不要週末再去？": {
       "file": "lesson-test-studio/v1/b085c54ce7d5.mp3",
@@ -626,6 +821,26 @@
       "file": "lesson-test-studio/v1/7684908f20c1.mp3",
       "sha256": "7684908f20c18eb68a3065bc7fafdb0fe2fed205779ca8a0e54a2bf76ddccb81",
       "duration": 5.742
+    },
+    "zh_en_female_1@1.05|謝謝你，可是我想先問問我姐姐有沒有空。": {
+      "file": "lesson-test-studio/v1/6edda069b924.mp3",
+      "sha256": "6edda069b924eeb3783fddc6adca8485776752ade1882e754fb004fcc24242c0",
+      "duration": 4.72
+    },
+    "zh_en_female_1@1.05|這個星期六我們去KTV唱歌吧！我已經學會那首新歌了。": {
+      "file": "lesson-test-studio/v1/439a65cc1c84.mp3",
+      "sha256": "439a65cc1c847facb4b7452b06d247bd2a74272ef458315697668594e74ef92e",
+      "duration": 5.978
+    },
+    "zh_en_female_1@1.05|這個週末我們去動物園，好不好？": {
+      "file": "lesson-test-studio/v1/750e120d4854.mp3",
+      "sha256": "750e120d4854f7132a3ea5014629f6ba022a7c78b90deda879afc8566052add0",
+      "duration": 3.651
+    },
+    "zh_en_female_1@1.05|這個週末我們去看那場演唱會，好不好？": {
+      "file": "lesson-test-studio/v1/8d547579ece5.mp3",
+      "sha256": "8d547579ece5a5652e766a55295c5d22313ba086680610bcd82ef010af6fede9",
+      "duration": 4.281
     },
     "zh_en_female_1@1.05|這個週末社區舉辦的文化日，你報名了沒有？": {
       "file": "lesson-test-studio/v1/127d33d8f695.mp3",
@@ -702,10 +917,40 @@
       "sha256": "3a3a984ec29bfc3d1caad7f3c301f5af7cb561a9bab19f15fe38eacfe0e32ea1",
       "duration": 6.775
     },
+    "zh_en_female_1@1.05|那作文你寫完了嗎？": {
+      "file": "lesson-test-studio/v1/0e8ac135c55f.mp3",
+      "sha256": "0e8ac135c55fa0f7694e264d2380dbe9c0bca0e23da139503cc1a9b11a1dfe5d",
+      "duration": 2.179
+    },
+    "zh_en_female_1@1.05|那你們常常一起出去玩嗎？": {
+      "file": "lesson-test-studio/v1/2652812e3a77.mp3",
+      "sha256": "2652812e3a77e348a137193bb8db7a6e2190f9f05c991a198d43d236150766d5",
+      "duration": 2.799
+    },
+    "zh_en_female_1@1.05|那你們第一次是在哪裡見面的？": {
+      "file": "lesson-test-studio/v1/7bd8c8706f59.mp3",
+      "sha256": "7bd8c8706f59d2aae623e701eb12b741867c29b974574ec0cc679171dee8d13e",
+      "duration": 3.321
+    },
     "zh_en_female_1@1.05|那你們這幾天一定很忙吧？": {
       "file": "lesson-test-studio/v1/12f9f9d3e29f.mp3",
       "sha256": "12f9f9d3e29f1782482aaebbee57d0aa2f038faf6579d4c6b7e75e093e85beef",
       "duration": 2.554
+    },
+    "zh_en_female_1@1.05|那你怎麼辦？": {
+      "file": "lesson-test-studio/v1/50ee21562fb2.mp3",
+      "sha256": "50ee21562fb2b3834d3c4aa66af25987987491979325854c6d32090bef9218c6",
+      "duration": 1.333
+    },
+    "zh_en_female_1@1.05|那你為什麼還要修這門課？": {
+      "file": "lesson-test-studio/v1/88da0fd18d95.mp3",
+      "sha256": "88da0fd18d956d056e4796862ede4cb35b7b516834a2e10f12b0ccbd37b2748c",
+      "duration": 2.727
+    },
+    "zh_en_female_1@1.05|那去公園旁邊的咖啡廳吧。那裡不但很安靜，晚上回宿舍的路也很安全。": {
+      "file": "lesson-test-studio/v1/b2440a531c90.mp3",
+      "sha256": "b2440a531c90e37701e232a7a9b077b00f60ca2cb4acea1ebf8785ec95c576ed",
+      "duration": 7.592
     },
     "zh_en_female_1@1.05|那可能是垃圾的問題。你還是每天晚上把垃圾拿出去丟吧。": {
       "file": "lesson-test-studio/v1/39c6e4f8a59e.mp3",
@@ -721,6 +966,11 @@
       "file": "lesson-test-studio/v1/34d91060b560.mp3",
       "sha256": "34d91060b560fddb99f43c2df4280d839cfa9599d03641e43cfeddae5e0dd6ea",
       "duration": 3.799
+    },
+    "zh_en_female_1@1.05|那我們坐捷運吧。": {
+      "file": "lesson-test-studio/v1/348ab6bbcb5c.mp3",
+      "sha256": "348ab6bbcb5c6f0968ff62b4c3a122ed3e3da623a059bfee2410e4104c499cbb",
+      "duration": 1.881
     },
     "zh_en_female_1@1.05|那我們這個週末再來看一次吧。": {
       "file": "lesson-test-studio/v1/3f21f63588b6.mp3",
@@ -762,6 +1012,11 @@
       "sha256": "c81f215d19b969f49c544dd90f5456eb6608784c8ead80aec08d3b2745a51787",
       "duration": 8.639
     },
+    "zh_en_female_1@1.05|雖然我很想去，可是那天晚上要幫我爸爸過生日。": {
+      "file": "lesson-test-studio/v1/b27f02b7ead7.mp3",
+      "sha256": "b27f02b7ead7175f89581f2bef371215a6768d0dc08e9f594fab4da3e1610b05",
+      "duration": 5.588
+    },
     "zh_en_female_1@1.05|難怪！我還以為是那裡的咖啡特別好喝呢。": {
       "file": "lesson-test-studio/v1/1407ef64c55e.mp3",
       "sha256": "1407ef64c55e9b5c04b874b1346565c5cb1eb8392cf51b0d0b5b410d2d709f17",
@@ -791,6 +1046,11 @@
       "file": "lesson-test-studio/v1/cbfa4dc7eb49.mp3",
       "sha256": "cbfa4dc7eb498e49375db30964b625bd15cb614189704658ec4df57b9bb967eb",
       "duration": 14.206
+    },
+    "zh_en_female_1@1.05|高雄好玩嗎？": {
+      "file": "lesson-test-studio/v1/702ba379152f.mp3",
+      "sha256": "702ba379152fddd4bd8b9b0621d6cd10459645f8ff6207b99133698a21ea00ca",
+      "duration": 1.538
     },
     "zh_en_female_1@1.05p|不一樣，我屬蛇，她屬龍。": {
       "file": "lesson-test-studio/v1/f316a5ca719d.mp3",
@@ -1907,6 +2167,11 @@
       "sha256": "627e55ac163e21bee983fe1c5b5bae5fb29780531dce7f00f412f6f8c59ffda8",
       "duration": 3.973
     },
+    "zh_en_female_2@1.2|一個月以後": {
+      "file": "lesson-test-studio/v1/260400c98c77.mp3",
+      "sha256": "260400c98c77d9699363f0183fd9aae04e85b28e291d628d29a4bf89b37b0afe",
+      "duration": 1.403
+    },
     "zh_en_female_2@1.2|一天": {
       "file": "lesson-test-studio/v1/fb4cb4c5a3b6.mp3",
       "sha256": "fb4cb4c5a3b6f6c4ce860cce0b6dd454caed84643bd3f0ac3a8bff1b453d61a6",
@@ -1947,10 +2212,20 @@
       "sha256": "112e03b732e0814e20b911e19fc96f8a36672eed0d5f19b3bd73cc2c8f0641f9",
       "duration": 2.338
     },
+    "zh_en_female_2@1.2|三十分鐘。": {
+      "file": "lesson-test-studio/v1/196793c4b541.mp3",
+      "sha256": "196793c4b541ca0e38ee85a5df97fe452571aabbbcb04d38787e9af53c9d73f4",
+      "duration": 1.635
+    },
     "zh_en_female_2@1.2|三天": {
       "file": "lesson-test-studio/v1/15475fd49c41.mp3",
       "sha256": "15475fd49c4131c259359f1d6d111bd1702a0c688faa2b198fdff5c1850a2553",
       "duration": 1.031
+    },
+    "zh_en_female_2@1.2|三課": {
+      "file": "lesson-test-studio/v1/aabafef43d83.mp3",
+      "sha256": "aabafef43d8351ed078613c51f1686ea6836052f0e081945b48c8f40268e1b23",
+      "duration": 1.023
     },
     "zh_en_female_2@1.2|上個星期才結束的": {
       "file": "lesson-test-studio/v1/49447c937db6.mp3",
@@ -1962,15 +2237,45 @@
       "sha256": "6d1c457e3d3dcbed633ce1c4c5830458638103939f14ea049af343fd04deaa21",
       "duration": 2.474
     },
+    "zh_en_female_2@1.2|上課有點無聊": {
+      "file": "lesson-test-studio/v1/5449738b508a.mp3",
+      "sha256": "5449738b508a0af4d91b5ad86a3f9eddfa4f106f1827e9c15c34cdcfe0e92080",
+      "duration": 2.092
+    },
+    "zh_en_female_2@1.2|下個星期一": {
+      "file": "lesson-test-studio/v1/5507a4252866.mp3",
+      "sha256": "5507a4252866d50ba329bee37fbe37a7864a3ea909ed261e91ec33133d96bbbe",
+      "duration": 1.774
+    },
+    "zh_en_female_2@1.2|下個星期五": {
+      "file": "lesson-test-studio/v1/c6335e8ab79e.mp3",
+      "sha256": "c6335e8ab79ee4433e4e80774a0551d2b901384fc7370ea0fb721e1781a67def",
+      "duration": 1.613
+    },
+    "zh_en_female_2@1.2|下個星期六，圖書館開到幾點？": {
+      "file": "lesson-test-studio/v1/44e2453d6968.mp3",
+      "sha256": "44e2453d69688fb6e5db6b9d6cb4cd7de07426cb9ba52b10fe0f91194b077435",
+      "duration": 3.849
+    },
     "zh_en_female_2@1.2|下個星期再來換": {
       "file": "lesson-test-studio/v1/8aebe1e65c1e.mp3",
       "sha256": "8aebe1e65c1e94f710ef86c35debb6d7ce250c351dc1813d20b2e14c13103dc3",
       "duration": 2.234
     },
+    "zh_en_female_2@1.2|下個月。": {
+      "file": "lesson-test-studio/v1/462659b81927.mp3",
+      "sha256": "462659b819278c907ebf3446e02ca14501d39432e23ef525e33d05e2a3820173",
+      "duration": 1.14
+    },
     "zh_en_female_2@1.2|下個月去參加比賽": {
       "file": "lesson-test-studio/v1/0b535ef6ab6c.mp3",
       "sha256": "0b535ef6ab6cdcba632425260228acf8aa25b773416dd9d30fbb60a23e30184f",
       "duration": 2.413
+    },
+    "zh_en_female_2@1.2|下個週末。": {
+      "file": "lesson-test-studio/v1/fe7ae53e4e8b.mp3",
+      "sha256": "fe7ae53e4e8bb3288516b24c24a38fc423ff50d16303196123838e255c8c7e43",
+      "duration": 1.434
     },
     "zh_en_female_2@1.2|下星期一來店裡": {
       "file": "lesson-test-studio/v1/63a0c667af4d.mp3",
@@ -2012,10 +2317,30 @@
       "sha256": "414a83ad28e26335a536a462e7c0b9a728d09a1f5156359039ad8e2cc6331db0",
       "duration": 3.177
     },
+    "zh_en_female_2@1.2|五課": {
+      "file": "lesson-test-studio/v1/f7d22ae2531c.mp3",
+      "sha256": "f7d22ae2531c9c0a16c0802be4b5cbc318c9151b94a2271fda862f29605cd7a4",
+      "duration": 0.822
+    },
+    "zh_en_female_2@1.2|交以前寫好的報告": {
+      "file": "lesson-test-studio/v1/2ec03fe02003.mp3",
+      "sha256": "2ec03fe02003746a81be6dbde7ccdacb3743cb3ab748f02c2ef502268448917a",
+      "duration": 2.191
+    },
     "zh_en_female_2@1.2|交報告": {
       "file": "lesson-test-studio/v1/f7f76c53e145.mp3",
       "sha256": "f7f76c53e1453257d9dc199e3942e2f29cad6192a8b4e9984692181b8fa99966",
       "duration": 0.986
+    },
+    "zh_en_female_2@1.2|交這個星期的作文": {
+      "file": "lesson-test-studio/v1/5ede68be7c9f.mp3",
+      "sha256": "5ede68be7c9fa299e19bce1fe493ca5ed15a7ebb7f6d8d9bf23cb8a66ad719b3",
+      "duration": 2.149
+    },
+    "zh_en_female_2@1.2|人多又熱鬧": {
+      "file": "lesson-test-studio/v1/2260c543a95f.mp3",
+      "sha256": "2260c543a95f20c78086463e8bdd81302a387c4f805c21e2cb50894264065fe2",
+      "duration": 1.548
     },
     "zh_en_female_2@1.2|今天一個人去排隊": {
       "file": "lesson-test-studio/v1/dd58822cca8b.mp3",
@@ -2052,6 +2377,11 @@
       "sha256": "d0de7161a2604ed371bdceede6d6528b93e85fae44179b42f0bbe9dfc461a8be",
       "duration": 2.143
     },
+    "zh_en_female_2@1.2|今天晚上": {
+      "file": "lesson-test-studio/v1/d51bd94f8806.mp3",
+      "sha256": "d51bd94f880651d3c5121be7fb5ab18b6773b5145dd20ec8b9d1db32da065fec",
+      "duration": 1.335
+    },
     "zh_en_female_2@1.2|今天晚上就去拿": {
       "file": "lesson-test-studio/v1/d27a542ab348.mp3",
       "sha256": "d27a542ab348d82eda41713c5736be40b00fae9808d9f1537d384424113e12d0",
@@ -2077,6 +2407,11 @@
       "sha256": "37f9f621ebb6e14342a200888286d586336dd2fe9a5d1e4b33dfe654d3de93f3",
       "duration": 2.768
     },
+    "zh_en_female_2@1.2|他們什麼時候去看演唱會？": {
+      "file": "lesson-test-studio/v1/5d4594e589b4.mp3",
+      "sha256": "5d4594e589b4ebba0f66e94e6b128956c2d13ada63d9bc591468e87f32c23a9c",
+      "duration": 2.892
+    },
     "zh_en_female_2@1.2|他們最後選了誰想的名字？": {
       "file": "lesson-test-studio/v1/97161a258cee.mp3",
       "sha256": "97161a258cee39ad684d097e5e824e30501f9a6d85f59a474c412aed5c9b1fc4",
@@ -2086,6 +2421,26 @@
       "file": "lesson-test-studio/v1/06a2fb474db2.mp3",
       "sha256": "06a2fb474db23052b7de4ad70c9c2afe12cfe0aa9ea29302d5c6c93710290ee8",
       "duration": 2.463
+    },
+    "zh_en_female_2@1.2|他們坐在哪裡？": {
+      "file": "lesson-test-studio/v1/97e692b59e16.mp3",
+      "sha256": "97e692b59e162d698e13c614b72a6e6eb2293800617e30a432d508a3f280ea71",
+      "duration": 1.734
+    },
+    "zh_en_female_2@1.2|他們坐在大樓外面的公車站。": {
+      "file": "lesson-test-studio/v1/40c46c9f8403.mp3",
+      "sha256": "40c46c9f8403ab15467f88f44d0929fe050565c1902aac9c23c1f0e3a3799bf4",
+      "duration": 3.235
+    },
+    "zh_en_female_2@1.2|他們坐在大樓外面的椅子上。": {
+      "file": "lesson-test-studio/v1/ff060f9c1917.mp3",
+      "sha256": "ff060f9c191786245aef3112d4b3d113e94c053ee02960e2f42d3c5bbe759f85",
+      "duration": 3.016
+    },
+    "zh_en_female_2@1.2|他們坐在大樓裡面的教室裡。": {
+      "file": "lesson-test-studio/v1/92c211810705.mp3",
+      "sha256": "92c2118107051007db40eb4f84655ebcdc100fbfbce258990450b2cfa400a38c",
+      "duration": 3.034
     },
     "zh_en_female_2@1.2|他們家的舊冰箱會怎麼樣？": {
       "file": "lesson-test-studio/v1/8b71e25ea0c1.mp3",
@@ -2107,10 +2462,25 @@
       "sha256": "445d7b9df6086a6c6ca904138db2f2e186c676d1df3cac3d0372609532c9de5a",
       "duration": 2.778
     },
+    "zh_en_female_2@1.2|他們的人太多了": {
+      "file": "lesson-test-studio/v1/dd1f786b30b7.mp3",
+      "sha256": "dd1f786b30b7821c8ffe4ba3ee9f72d479ed8d509d5adc33a03d2eaca4e05c0c",
+      "duration": 1.839
+    },
+    "zh_en_female_2@1.2|他們第一次在哪裡見面？": {
+      "file": "lesson-test-studio/v1/ddb91f1434a0.mp3",
+      "sha256": "ddb91f1434a0835361560b579807fa5a9798cfeeccb50021de6f67a3c1211b3e",
+      "duration": 2.755
+    },
     "zh_en_female_2@1.2|他最近才開始不喝汽水": {
       "file": "lesson-test-studio/v1/a47572f77528.mp3",
       "sha256": "a47572f77528ed74a4a6649415454ad8ee8d3c95263828417ea24d32fb95abbe",
       "duration": 2.824
+    },
+    "zh_en_female_2@1.2|他坐在電腦前面工作。": {
+      "file": "lesson-test-studio/v1/b6fbc9df44b9.mp3",
+      "sha256": "b6fbc9df44b9d641fb90aebcd23efeb483283f0ef329fdcf2556a68b3c00a76b",
+      "duration": 2.601
     },
     "zh_en_female_2@1.2|他家裡停電了": {
       "file": "lesson-test-studio/v1/c6682aa6e425.mp3",
@@ -2122,6 +2492,11 @@
       "sha256": "693caa098b3ae6c568bdf73b8852ce055ad47efff68bd8447792437db5267ebb",
       "duration": 2.072
     },
+    "zh_en_female_2@1.2|他已經吃飽了": {
+      "file": "lesson-test-studio/v1/d69e42ee4558.mp3",
+      "sha256": "d69e42ee45582fcd7cabbe1adb6e1f436ff8637630f204435119027088b96a04",
+      "duration": 1.591
+    },
     "zh_en_female_2@1.2|他已經很久沒喝汽水了": {
       "file": "lesson-test-studio/v1/309e92e4e8d8.mp3",
       "sha256": "309e92e4e8d86fefb578efcd868ca0242259a45cfc76d1bad444f055fd9358cb",
@@ -2131,6 +2506,21 @@
       "file": "lesson-test-studio/v1/20b5eba666ed.mp3",
       "sha256": "20b5eba666eda627c43965907d29343d1f671c08fd3de9b00d818171c2a9afed",
       "duration": 2.967
+    },
+    "zh_en_female_2@1.2|他心裡非常緊張": {
+      "file": "lesson-test-studio/v1/aadd8e30c18b.mp3",
+      "sha256": "aadd8e30c18bdb494155d04deef6157b4f23c826fe77af9db309eb1ed8ad4d96",
+      "duration": 2.34
+    },
+    "zh_en_female_2@1.2|他想考完再吃": {
+      "file": "lesson-test-studio/v1/761121ce8248.mp3",
+      "sha256": "761121ce8248ffc6b70093f70a761a79d2e1ae92afd62cbabc18e3b74c1e1313",
+      "duration": 1.985
+    },
+    "zh_en_female_2@1.2|他感冒了。": {
+      "file": "lesson-test-studio/v1/46f08bfd708d.mp3",
+      "sha256": "46f08bfd708daef487a70abea4467a55d18269b46973f60627380eb86f7c42cb",
+      "duration": 1.114
     },
     "zh_en_female_2@1.2|他應該穿球鞋去上班": {
       "file": "lesson-test-studio/v1/d825b6cd5c04.mp3",
@@ -2152,6 +2542,11 @@
       "sha256": "d57f904c900cd3cc42d880c286ddb320f4dbcd7896240634f81c460bb7cd4604",
       "duration": 3.057
     },
+    "zh_en_female_2@1.2|他拿著兩本書。": {
+      "file": "lesson-test-studio/v1/9d9f0b579833.mp3",
+      "sha256": "9d9f0b5798337bd3e96a2cf55615967b0851a85067863f98751dd048d6ee254f",
+      "duration": 1.935
+    },
     "zh_en_female_2@1.2|他昨天也用冷水洗澡": {
       "file": "lesson-test-studio/v1/19306ba8d542.mp3",
       "sha256": "19306ba8d5426991a0be076194e277d1319f7f1b957c3d34c4a3f9cbb6759d77",
@@ -2166,6 +2561,11 @@
       "file": "lesson-test-studio/v1/d57ad3724939.mp3",
       "sha256": "d57ad37249394058661413831caef514d1d8bb66166791036eb4d374c3be9b49",
       "duration": 2.864
+    },
+    "zh_en_female_2@1.2|他沒時間吃東西": {
+      "file": "lesson-test-studio/v1/b70610aa0470.mp3",
+      "sha256": "b70610aa047020b8e573272d3c2c52784ae0121418343431a5c615a4d26bbd67",
+      "duration": 2.062
     },
     "zh_en_female_2@1.2|他演老人演得最好": {
       "file": "lesson-test-studio/v1/840ba20eee5f.mp3",
@@ -2187,6 +2587,11 @@
       "sha256": "3459d6c0a95d50292192e092978ba6c0996f6ee6dab997c07774ad6a94189165",
       "duration": 2.781
     },
+    "zh_en_female_2@1.2|他發燒了。": {
+      "file": "lesson-test-studio/v1/50bc11198d88.mp3",
+      "sha256": "50bc11198d8804604523c3a4dc71abdd4e8ad559ed2278d6dd224e28c7aec9a1",
+      "duration": 1.288
+    },
     "zh_en_female_2@1.2|他的下一部戲會更好看": {
       "file": "lesson-test-studio/v1/851718d1f93d.mp3",
       "sha256": "851718d1f93d7763751405568bdb2ee2b6db0621c9a347efe7f4ed15af32a5d1",
@@ -2197,10 +2602,25 @@
       "sha256": "da547b1fc620c9c6122376b1540fb23b73360a981470f546494962b182952767",
       "duration": 1.843
     },
+    "zh_en_female_2@1.2|他站著看一本打開的書。": {
+      "file": "lesson-test-studio/v1/03c832bf0163.mp3",
+      "sha256": "03c832bf0163dcc8856e12a21dca36c4663356047f076940b3fa2dd9a5eca45d",
+      "duration": 2.73
+    },
+    "zh_en_female_2@1.2|他請假了。": {
+      "file": "lesson-test-studio/v1/8b556549dbff.mp3",
+      "sha256": "8b556549dbff16d083949257a9303b09d1a87716cf31cf0fca4d2fc2ad0d26f5",
+      "duration": 1.243
+    },
     "zh_en_female_2@1.2|付大學的學費": {
       "file": "lesson-test-studio/v1/f0cc0d57c04f.mp3",
       "sha256": "f0cc0d57c04fd1b4aad2ceee9e8d15f78017608dda746cbf0930847a4119648c",
       "duration": 1.877
+    },
+    "zh_en_female_2@1.2|住的地方花了不少錢": {
+      "file": "lesson-test-studio/v1/da010cbaa969.mp3",
+      "sha256": "da010cbaa9696723445f00ddcabfb49237b728097fea5c30c893c114037b4c65",
+      "duration": 2.578
     },
     "zh_en_female_2@1.2|便宜兩千塊": {
       "file": "lesson-test-studio/v1/e2d8f691debc.mp3",
@@ -2247,6 +2667,11 @@
       "sha256": "1b7b82a3f3b0373cf4050a69305006069dce3aed1dba12a11b92fd4021f6eb17",
       "duration": 2.04
     },
+    "zh_en_female_2@1.2|先上網訂好位子": {
+      "file": "lesson-test-studio/v1/e5baaa007792.mp3",
+      "sha256": "e5baaa007792002e86197a2de43720881890e5a0e831427c5d2651868dff0a6d",
+      "duration": 2.148
+    },
     "zh_en_female_2@1.2|先去上一次不用錢的課": {
       "file": "lesson-test-studio/v1/6ffdaa95b5de.mp3",
       "sha256": "6ffdaa95b5def42ed2a8f1e07950ee7b90297e093cb92cc0f6e67a8a6a8f1789",
@@ -2261,6 +2686,11 @@
       "file": "lesson-test-studio/v1/299dd05bece9.mp3",
       "sha256": "299dd05bece926d016bb105a1d6ba6389a9b2956a41860b310d98300082f6647",
       "duration": 2.597
+    },
+    "zh_en_female_2@1.2|先把借的書還了": {
+      "file": "lesson-test-studio/v1/1cb61f8f670d.mp3",
+      "sha256": "1cb61f8f670da8cfc08110ccb4b5c3d464adeed3bc0ee79dce235ad20df64e25",
+      "duration": 2.019
     },
     "zh_en_female_2@1.2|先準備好要用的水": {
       "file": "lesson-test-studio/v1/22858adab182.mp3",
@@ -2292,10 +2722,20 @@
       "sha256": "a8c2506c7179f406fafce28a0539c95b9716899da1d7a5e41a0f8ca4e8a84ceb",
       "duration": 2.378
     },
+    "zh_en_female_2@1.2|兩個星期以後": {
+      "file": "lesson-test-studio/v1/8f6ace967a73.mp3",
+      "sha256": "8f6ace967a73a727139af6efb6085e902dae290e93fccc8fdab2f0bab5dfdb93",
+      "duration": 1.934
+    },
     "zh_en_female_2@1.2|兩天": {
       "file": "lesson-test-studio/v1/16f681cf74b0.mp3",
       "sha256": "16f681cf74b0c4a149cd0faf5ee781061bf3ec3671c6cfde1f4a3e9cbd778f14",
       "duration": 0.962
+    },
+    "zh_en_female_2@1.2|兩課": {
+      "file": "lesson-test-studio/v1/40b3e04eef1f.mp3",
+      "sha256": "40b3e04eef1f1144135fe3dbdefdc133237d98a4bf6b792f54842d109bcb0cd3",
+      "duration": 0.876
     },
     "zh_en_female_2@1.2|八點": {
       "file": "lesson-test-studio/v1/23b48dae7295.mp3",
@@ -2352,10 +2792,35 @@
       "sha256": "4430af0ba2a39ab506de37a7f2ddd277239021134e5347476ae6afd6abf1505e",
       "duration": 2.085
     },
+    "zh_en_female_2@1.2|十分鐘。": {
+      "file": "lesson-test-studio/v1/6431a19ffd35.mp3",
+      "sha256": "6431a19ffd35e47b2722480cd20e01627d661a1ec6bbe0ede46dd219da192f49",
+      "duration": 1.409
+    },
     "zh_en_female_2@1.2|十點再來買熱狗": {
       "file": "lesson-test-studio/v1/5de5d41a0e27.mp3",
       "sha256": "5de5d41a0e271c4ad51863f422fab208c7c8239e1c27d395a9fd10052d6df306",
       "duration": 2.083
+    },
+    "zh_en_female_2@1.2|半夜十二點": {
+      "file": "lesson-test-studio/v1/51a31acd0977.mp3",
+      "sha256": "51a31acd0977f11ca957587ebe125ad4b5db712311704fd42edd97328ba25d8a",
+      "duration": 1.564
+    },
+    "zh_en_female_2@1.2|去三樓的教室上課": {
+      "file": "lesson-test-studio/v1/115b2bb25118.mp3",
+      "sha256": "115b2bb25118eb45a13941ad53b3921ea43c0367b6efbee2df6ef213dd48d49d",
+      "duration": 2.394
+    },
+    "zh_en_female_2@1.2|去了花蓮。": {
+      "file": "lesson-test-studio/v1/a856d8c4e9d8.mp3",
+      "sha256": "a856d8c4e9d89bc472366b742678a77ea6fc0c546f4d1b4e4d7a07b48f93aac9",
+      "duration": 1.405
+    },
+    "zh_en_female_2@1.2|去了高雄。": {
+      "file": "lesson-test-studio/v1/49ad532e276d.mp3",
+      "sha256": "49ad532e276d26529f961fcb2599ff595e4cfd4bbe3c0adb7e6114c205388436",
+      "duration": 1.507
     },
     "zh_en_female_2@1.2|去公司工作": {
       "file": "lesson-test-studio/v1/5ec1bd8a6af5.mp3",
@@ -2367,6 +2832,11 @@
       "sha256": "998211ab8e77e0b38679631219ec9024387f04923b6938f2f7601b621a2921b9",
       "duration": 2.059
     },
+    "zh_en_female_2@1.2|去圖書館。": {
+      "file": "lesson-test-studio/v1/2dfac2abbdbe.mp3",
+      "sha256": "2dfac2abbdbe0b12cc166b899293707bb911f0e40288aacb69b1b72d6004a3ea",
+      "duration": 1.351
+    },
     "zh_en_female_2@1.2|去圖書館借書": {
       "file": "lesson-test-studio/v1/ef7c9cdc9d3e.mp3",
       "sha256": "ef7c9cdc9d3e794ed2af96efadb156e3cefbe709d0a5048d4bba9ede33059e7d",
@@ -2376,6 +2846,16 @@
       "file": "lesson-test-studio/v1/8113bbf58184.mp3",
       "sha256": "8113bbf58184beeb1e80d9f33ffb36d2340055d29d0ddbc8822e30e0d9f1bdef",
       "duration": 1.814
+    },
+    "zh_en_female_2@1.2|去給醫生看看。": {
+      "file": "lesson-test-studio/v1/877e70b8fbf4.mp3",
+      "sha256": "877e70b8fbf419bf8d467a670eea4aa0937751935988f9f1839872f7f605f0dd",
+      "duration": 1.831
+    },
+    "zh_en_female_2@1.2|去藥房問一問。": {
+      "file": "lesson-test-studio/v1/36a0c28236d6.mp3",
+      "sha256": "36a0c28236d6ef236dd87cf6dfe566795412d5d4712c858b52db76d74ca145cc",
+      "duration": 1.778
     },
     "zh_en_female_2@1.2|去買明天的早飯": {
       "file": "lesson-test-studio/v1/197b27262865.mp3",
@@ -2402,15 +2882,35 @@
       "sha256": "bbcce33b7f3dc437f1cc50283896c4b3f64f0dbae577b63d2731c3088e4ef6bf",
       "duration": 2.114
     },
+    "zh_en_female_2@1.2|去電影院。": {
+      "file": "lesson-test-studio/v1/d1fef12124dc.mp3",
+      "sha256": "d1fef12124dcf16ab3446a69bd3f2f0774960ac3052fdf4f6dbc35cd0fbdcb78",
+      "duration": 1.362
+    },
     "zh_en_female_2@1.2|去高雄看一場戲": {
       "file": "lesson-test-studio/v1/8399872f0f00.mp3",
       "sha256": "8399872f0f006c4f88bb30ee649bbab0e8d024d93713e820f2795ce9c5f3b90b",
       "duration": 2.239
     },
+    "zh_en_female_2@1.2|只有小學生喜歡去動物園。": {
+      "file": "lesson-test-studio/v1/4d25d14900c9.mp3",
+      "sha256": "4d25d14900c975629bc9d7612997d999157fb976a80784b517ed4208471dd31b",
+      "duration": 3.196
+    },
     "zh_en_female_2@1.2|只有朋友買她的衣服": {
       "file": "lesson-test-studio/v1/d55e35410ddb.mp3",
       "sha256": "d55e35410ddb214e57e266a768f84efa6b25ee1ec51800223c8bf6e1556efae7",
       "duration": 2.367
+    },
+    "zh_en_female_2@1.2|可以早一點到": {
+      "file": "lesson-test-studio/v1/f43998a8ea81.mp3",
+      "sha256": "f43998a8ea810cb00494efa75cc4e966ffff27751ca0eb5ed54aadaf9fc0e7a5",
+      "duration": 1.68
+    },
+    "zh_en_female_2@1.2|吃小吃花了很多錢": {
+      "file": "lesson-test-studio/v1/a6fe05056319.mp3",
+      "sha256": "a6fe05056319964307470647f8cebfd6ad4084e216273dc6d3759f632a0bd674",
+      "duration": 2.398
     },
     "zh_en_female_2@1.2|告訴老闆他不去了": {
       "file": "lesson-test-studio/v1/90779f9a9275.mp3",
@@ -2442,15 +2942,40 @@
       "sha256": "a9aafb022e63f6a89a49361f6db035303c612371e529bd59a7a3da2b1f602582",
       "duration": 2.106
     },
+    "zh_en_female_2@1.2|四十分鐘。": {
+      "file": "lesson-test-studio/v1/7924cf60ccbd.mp3",
+      "sha256": "7924cf60ccbd04c1f91fcc6b196aec7739071d5ece1ae6d383285e240531cd15",
+      "duration": 1.679
+    },
     "zh_en_female_2@1.2|四天": {
       "file": "lesson-test-studio/v1/542faf45564f.mp3",
       "sha256": "542faf45564f790d8724a9735c1d7e1a2f1b3554279ca1f998d2360363abfb6c",
       "duration": 1.045
     },
+    "zh_en_female_2@1.2|四課": {
+      "file": "lesson-test-studio/v1/fa5f469c1b5d.mp3",
+      "sha256": "fa5f469c1b5d6fe314c4892f2d69269fd2b413a180e8684a8861a63b911dd188",
+      "duration": 0.972
+    },
+    "zh_en_female_2@1.2|回宿舍。": {
+      "file": "lesson-test-studio/v1/17d7b21ce67d.mp3",
+      "sha256": "17d7b21ce67d218145bb5b73ae7b8ab6abfb3a6c01f27b80a02c339977d853d3",
+      "duration": 1.175
+    },
+    "zh_en_female_2@1.2|回宿舍休息一下。": {
+      "file": "lesson-test-studio/v1/9a6ed26bf342.mp3",
+      "sha256": "9a6ed26bf342a84a23f6c41381c5de31753249a91ea52f08dc451fb2f5537f0d",
+      "duration": 2.033
+    },
     "zh_en_female_2@1.2|回宿舍討論報告": {
       "file": "lesson-test-studio/v1/8bd13b0ef5a8.mp3",
       "sha256": "8bd13b0ef5a8b66748e885a830dc708f9481cc8a4e225b8d4368edfe79a27383",
       "duration": 2.071
+    },
+    "zh_en_female_2@1.2|在一家咖啡廳": {
+      "file": "lesson-test-studio/v1/90743bf30ec3.mp3",
+      "sha256": "90743bf30ec34a4ab06aebf2fb6f7c6315b84a150d8e1c6508c0e68d20e08e4f",
+      "duration": 1.852
     },
     "zh_en_female_2@1.2|在一樓買三千塊的東西": {
       "file": "lesson-test-studio/v1/703204b78a9a.mp3",
@@ -2487,6 +3012,11 @@
       "sha256": "4e2a1f475af19e83fd2074e2ab00b7da088c10c6481fad8b880576dca7f05104",
       "duration": 1.555
     },
+    "zh_en_female_2@1.2|在女的大學": {
+      "file": "lesson-test-studio/v1/20ebf261d4be.mp3",
+      "sha256": "20ebf261d4be7e3993409c3c8db760ce3fcddaeb02ffc957e01bf77a4a5f3022",
+      "duration": 1.631
+    },
     "zh_en_female_2@1.2|在家整理房子": {
       "file": "lesson-test-studio/v1/2dbca5b557db.mp3",
       "sha256": "2dbca5b557db5df426220ff4a714f69c5c0a550a46dbba9c46cfa916037a5061",
@@ -2501,6 +3031,16 @@
       "file": "lesson-test-studio/v1/b7b3c1bd51ec.mp3",
       "sha256": "b7b3c1bd51ec62bf63fbb9394de140ec37351f22e117832df7bfd56d88b7126a",
       "duration": 2.234
+    },
+    "zh_en_female_2@1.2|在男的學校的圖書館": {
+      "file": "lesson-test-studio/v1/720c6b622966.mp3",
+      "sha256": "720c6b6229664735809f53ace7b2a99d45478233e87a6357c227703bb5986c89",
+      "duration": 2.437
+    },
+    "zh_en_female_2@1.2|在網路上": {
+      "file": "lesson-test-studio/v1/0abc5dbfd7f6.mp3",
+      "sha256": "0abc5dbfd7f6114816f71f6198108baa8b236820b0710c156a85a151c7629179",
+      "duration": 1.361
     },
     "zh_en_female_2@1.2|在網路上再買一雙": {
       "file": "lesson-test-studio/v1/f873c0d2da81.mp3",
@@ -2527,10 +3067,25 @@
       "sha256": "c45c5bdfe68f0cd4d82931cbce33b7a57573e8db95f65f81c64d18b8e66759cf",
       "duration": 2.149
     },
+    "zh_en_female_2@1.2|坐在旁邊看人跳舞": {
+      "file": "lesson-test-studio/v1/c19841cc7359.mp3",
+      "sha256": "c19841cc7359fdaba8769a0805f14293d8d188ef01bc38724b06a726501a9b4c",
+      "duration": 2.334
+    },
+    "zh_en_female_2@1.2|坐捷運到火車站要多久？": {
+      "file": "lesson-test-studio/v1/58dd679b201b.mp3",
+      "sha256": "58dd679b201b21ecfdaf92103ebac53bd7ab9a37b93887d54d58124de16b9347",
+      "duration": 2.589
+    },
     "zh_en_female_2@1.2|坐火車去看家人": {
       "file": "lesson-test-studio/v1/22d31606efe2.mp3",
       "sha256": "22d31606efe2f061aeb13e77564f00da2921f6720e7edada2c25a4a5d361f5cd",
       "duration": 2.178
+    },
+    "zh_en_female_2@1.2|報告什麼時候要交？": {
+      "file": "lesson-test-studio/v1/eb6f9551ab55.mp3",
+      "sha256": "eb6f9551ab55ada9cff4bd4e5cfffd550be6cf2b04e7338c749048b6596a6a90",
+      "duration": 2.091
     },
     "zh_en_female_2@1.2|多打電話回家": {
       "file": "lesson-test-studio/v1/dbf48a2b6949.mp3",
@@ -2551,6 +3106,11 @@
       "file": "lesson-test-studio/v1/c22283dfd8e8.mp3",
       "sha256": "c22283dfd8e8edf7b653e9b599016c2222f6817c33137da3b0a857c1f09a84c3",
       "duration": 3.227
+    },
+    "zh_en_female_2@1.2|大教室常常有人用": {
+      "file": "lesson-test-studio/v1/e7ceaf9c490e.mp3",
+      "sha256": "e7ceaf9c490e59a75f5db36907faab041d9ce6b460f0679253e38914a17e584a",
+      "duration": 2.345
     },
     "zh_en_female_2@1.2|天氣很少變，晚上不冷": {
       "file": "lesson-test-studio/v1/3f7b33d9b3c0.mp3",
@@ -2602,10 +3162,30 @@
       "sha256": "17a6ac60b97912b29eb6291e23c59ffd59b31d48835e868c3e2ac9285118eb30",
       "duration": 2.514
     },
+    "zh_en_female_2@1.2|女的不要去見那個男生。": {
+      "file": "lesson-test-studio/v1/c73c82525a64.mp3",
+      "sha256": "c73c82525a64924d7db78f11cce38cf2930fbab1483281f9de0551580f72ecbf",
+      "duration": 2.693
+    },
+    "zh_en_female_2@1.2|女的什麼時候會打電話？": {
+      "file": "lesson-test-studio/v1/0a074f36b13e.mp3",
+      "sha256": "0a074f36b13e02409c16622730ab2bddcfab9790c4281964a7bc9d5f6ca7ed2c",
+      "duration": 2.605
+    },
+    "zh_en_female_2@1.2|女的最好帶姐姐去。": {
+      "file": "lesson-test-studio/v1/6e2efacb6e27.mp3",
+      "sha256": "6e2efacb6e27e19dd495d95e07e9ae83fdb5509d1796e0eb8b1e070fe6187624",
+      "duration": 2.381
+    },
     "zh_en_female_2@1.2|女的最後決定怎麼做？": {
       "file": "lesson-test-studio/v1/03e3b05b24a0.mp3",
       "sha256": "03e3b05b24a09b85b32158c8ab8a762f191d554ad9473a3aca930cf41594208f",
       "duration": 2.426
+    },
+    "zh_en_female_2@1.2|女的吃完飯要先去哪裡？": {
+      "file": "lesson-test-studio/v1/743c1864206b.mp3",
+      "sha256": "743c1864206b4be9597748df258b64537e75878a83c66b2203667ce84f657c13",
+      "duration": 2.714
     },
     "zh_en_female_2@1.2|女的建議他們送什麼？": {
       "file": "lesson-test-studio/v1/80f606971120.mp3",
@@ -2616,6 +3196,11 @@
       "file": "lesson-test-studio/v1/2c21182c9e2a.mp3",
       "sha256": "2c21182c9e2a423029815709024c91b1883db6a475663c03478ab8e6f33f933c",
       "duration": 2.174
+    },
+    "zh_en_female_2@1.2|女的應該怎麼走？": {
+      "file": "lesson-test-studio/v1/d949cd861531.mp3",
+      "sha256": "d949cd861531e01a29e14444d3c521109ee47ce9f7c2dddd121023176c80884b",
+      "duration": 1.736
     },
     "zh_en_female_2@1.2|女的打算怎麼做？": {
       "file": "lesson-test-studio/v1/3ee34e69c71e.mp3",
@@ -2637,10 +3222,20 @@
       "sha256": "75734f48d0137a168ad210a370fed3406595b43ad1dcc35b61fda564fe548e1a",
       "duration": 1.764
     },
+    "zh_en_female_2@1.2|女的本來以為男的明天下午要做什麼？": {
+      "file": "lesson-test-studio/v1/d295702257ea.mp3",
+      "sha256": "d295702257ea8e23d1de0fae6bf1939b771c6596f0dd18d1f5c6151249817599",
+      "duration": 4.13
+    },
     "zh_en_female_2@1.2|女的本來以為颱風幾天就會走？": {
       "file": "lesson-test-studio/v1/8d33fccef3a8.mp3",
       "sha256": "8d33fccef3a82c1908732867494704bd6248ea942270955dc5004badd51ba013",
       "duration": 3.657
+    },
+    "zh_en_female_2@1.2|女的為什麼要男的快點起來？": {
+      "file": "lesson-test-studio/v1/9a056605a4a7.mp3",
+      "sha256": "9a056605a4a797acbd433818ca36b490b9561606564668e31e3f1cc11b82bd65",
+      "duration": 3.012
     },
     "zh_en_female_2@1.2|女的為什麼說不用男的送她？": {
       "file": "lesson-test-studio/v1/a1c5f559578b.mp3",
@@ -2662,10 +3257,20 @@
       "sha256": "49b9e484a337fca46191709a905b97bd9dd8b1d4dce705985a19b6673546ece9",
       "duration": 1.927
     },
+    "zh_en_female_2@1.2|女的覺得公園旁邊的咖啡廳怎麼樣？": {
+      "file": "lesson-test-studio/v1/d104a420e2b6.mp3",
+      "sha256": "d104a420e2b6f10e36c8f7f6c4f07c2c2115fb99d2bd6d764b83cd11e1aae077",
+      "duration": 3.722
+    },
     "zh_en_female_2@1.2|女的覺得應該怎麼做？": {
       "file": "lesson-test-studio/v1/8536908f11de.mp3",
       "sha256": "8536908f11debdf490cbbe017dd48945261f66146a995c458c55dc2ac22359e3",
       "duration": 2.27
+    },
+    "zh_en_female_2@1.2|女的覺得男的應該先做什麼？": {
+      "file": "lesson-test-studio/v1/b8bb7ddbdc10.mp3",
+      "sha256": "b8bb7ddbdc1049505ddcf1ac4bc00b29eb76bc4c30f92d4db1ff81aabb353f64",
+      "duration": 2.933
     },
     "zh_en_female_2@1.2|女的覺得第三家店怎麼樣？": {
       "file": "lesson-test-studio/v1/ee33a4edb412.mp3",
@@ -2692,6 +3297,31 @@
       "sha256": "6b8fa696f51eceb3ccda7f0a03ba012ebcbe5b77554250a9df77dd736ecf55cc",
       "duration": 2.009
     },
+    "zh_en_female_2@1.2|女的這個禮拜六晚上要做什麼？": {
+      "file": "lesson-test-studio/v1/196794d6f534.mp3",
+      "sha256": "196794d6f534ad9ca25f8254319da6133b3f20f150a4fced3c9995dc84533c8d",
+      "duration": 3.149
+    },
+    "zh_en_female_2@1.2|女的這次去高雄玩，哪一個是對的？": {
+      "file": "lesson-test-studio/v1/314faf6ba0de.mp3",
+      "sha256": "314faf6ba0dea2751b8ce367eb17ec023fdd1531528db3bfb4962076ba1c4fc4",
+      "duration": 4.215
+    },
+    "zh_en_female_2@1.2|她一邊說話，一邊拉著男生的手。": {
+      "file": "lesson-test-studio/v1/38a2b05af5ff.mp3",
+      "sha256": "38a2b05af5ff8991db8707aabee320bf9b964fd87efd397e85015df6a2b58a2a",
+      "duration": 3.846
+    },
+    "zh_en_female_2@1.2|她一邊說話，一邊摸自己的背。": {
+      "file": "lesson-test-studio/v1/813c081761fe.mp3",
+      "sha256": "813c081761fec273d767072d64ad0a57e1bb770a3aecd48f931f8455386c75bb",
+      "duration": 3.459
+    },
+    "zh_en_female_2@1.2|她一邊說話，一邊看著男生。": {
+      "file": "lesson-test-studio/v1/dbb6c1c37667.mp3",
+      "sha256": "dbb6c1c3766711f5878255945d7dffb862b122be6ec65357632e80939d93c019",
+      "duration": 3.619
+    },
     "zh_en_female_2@1.2|她上星期跟男的說過": {
       "file": "lesson-test-studio/v1/de5f6c2c5e63.mp3",
       "sha256": "de5f6c2c5e639634b4fc4642b3bae2a7c83c5575900b58f5b8040b44e253dec9",
@@ -2712,6 +3342,26 @@
       "sha256": "266b0c737062936961408b953343cd4bd2eb2b22532fe859321e54a6ce643ad9",
       "duration": 2.087
     },
+    "zh_en_female_2@1.2|她以為筆試七點半開始": {
+      "file": "lesson-test-studio/v1/26cffcf70744.mp3",
+      "sha256": "26cffcf7074486b57a5939bd5be3138061a0adfd388e53fcc0ebd7fbac5bf2ad",
+      "duration": 2.941
+    },
+    "zh_en_female_2@1.2|她以為筆試九點半開始": {
+      "file": "lesson-test-studio/v1/b886b84471ed.mp3",
+      "sha256": "b886b84471ed887159b03258a5df781ade66ff49373cb806a7530f8e3b54c3cc",
+      "duration": 2.991
+    },
+    "zh_en_female_2@1.2|她以為筆試八點開始": {
+      "file": "lesson-test-studio/v1/0d4867da90b4.mp3",
+      "sha256": "0d4867da90b416766f40453e26b44aba4217b78262510ba0d54f5648e5c4403b",
+      "duration": 2.49
+    },
+    "zh_en_female_2@1.2|她以為筆試十點開始": {
+      "file": "lesson-test-studio/v1/c11a4efe4906.mp3",
+      "sha256": "c11a4efe4906c74b1c78a4f00575b05550e19d07830100577cc217fa98d86281",
+      "duration": 2.678
+    },
     "zh_en_female_2@1.2|她剛生了孩子": {
       "file": "lesson-test-studio/v1/87754437c5bf.mp3",
       "sha256": "87754437c5bfe118f2f5f5aedeb25f87f624443cb59a8038b5070002d6072f72",
@@ -2727,10 +3377,20 @@
       "sha256": "d07223a4bf66fd438bcb4f345271f3ea60ffd88ef2e183c9b86fa48cfae90196",
       "duration": 2.307
     },
+    "zh_en_female_2@1.2|她在書桌前吃三明治。": {
+      "file": "lesson-test-studio/v1/774fdd9ec975.mp3",
+      "sha256": "774fdd9ec975da56f5fc24dbd06eddbea1e8d2367544ea8f3ed3f9b00b444eb2",
+      "duration": 2.771
+    },
     "zh_en_female_2@1.2|她在網路上賣東西": {
       "file": "lesson-test-studio/v1/1bea3e63427d.mp3",
       "sha256": "1bea3e63427d16ac06e9ad608b659ef2fd4ca2be23e08884106d7921902cd4d7",
       "duration": 2.254
+    },
+    "zh_en_female_2@1.2|她坐在床上看書。": {
+      "file": "lesson-test-studio/v1/c3ace4d9ae1b.mp3",
+      "sha256": "c3ace4d9ae1bde0934fadb903c708426cd48bf589abea3bf9d1561e68b9e133b",
+      "duration": 2.344
     },
     "zh_en_female_2@1.2|她妹妹在超商買好了": {
       "file": "lesson-test-studio/v1/412f0e22421f.mp3",
@@ -2742,10 +3402,20 @@
       "sha256": "cb92a214356d8d7066838e60007ee6e154c246deb365862dd4f06ac329ac8f72",
       "duration": 2.518
     },
+    "zh_en_female_2@1.2|她已經跳得很累了。": {
+      "file": "lesson-test-studio/v1/13fedcde3093.mp3",
+      "sha256": "13fedcde30933c5836b6c4309dd0c4b4dadee3ea171fca26d0e7d3a9088d34dd",
+      "duration": 2.037
+    },
     "zh_en_female_2@1.2|她快要辦婚禮了": {
       "file": "lesson-test-studio/v1/a7db14585228.mp3",
       "sha256": "a7db145852282720a42937cefccb2069f829de746c0a88a8eccb9664be2ea7ae",
       "duration": 1.772
+    },
+    "zh_en_female_2@1.2|她想去外面散步。": {
+      "file": "lesson-test-studio/v1/603e508302f3.mp3",
+      "sha256": "603e508302f356e1cac0fac3e82ba3c166b9a63ff7f143d454e0ad8dfa9377b6",
+      "duration": 2.165
     },
     "zh_en_female_2@1.2|她想去網路公司上班": {
       "file": "lesson-test-studio/v1/be23afb1f0e8.mp3",
@@ -2766,6 +3436,16 @@
       "file": "lesson-test-studio/v1/bcbd477f97ad.mp3",
       "sha256": "bcbd477f97adbcc79556717c9f6c6bd028dc4a20eb6cb64bb7a941e0c2754613",
       "duration": 2.61
+    },
+    "zh_en_female_2@1.2|她現在還不想走。": {
+      "file": "lesson-test-studio/v1/0f4ce6c1f397.mp3",
+      "sha256": "0f4ce6c1f3973c75a31a10e181859939661663a2ab5c906e82fced08e22b8c05",
+      "duration": 2.042
+    },
+    "zh_en_female_2@1.2|她用手指著牆上的鐘。": {
+      "file": "lesson-test-studio/v1/2af90f9e1246.mp3",
+      "sha256": "2af90f9e124687ac22a038f19bcba122992f20d233efc5a8cd1f8624d6575e85",
+      "duration": 2.686
     },
     "zh_en_female_2@1.2|她的家人會陪她回家": {
       "file": "lesson-test-studio/v1/62b7f01da928.mp3",
@@ -2827,6 +3507,21 @@
       "sha256": "7aeac82fa37784f715462ba67965bee0a56113c5310a164043774087708eaf84",
       "duration": 1.764
     },
+    "zh_en_female_2@1.2|學校後面車很少": {
+      "file": "lesson-test-studio/v1/23936ecc1dc9.mp3",
+      "sha256": "23936ecc1dc9ce422c970367ad4fbbcb9fa565d81f054e5b1f5ecc2a4608c8e9",
+      "duration": 2.135
+    },
+    "zh_en_female_2@1.2|客氣，可是不太聰明": {
+      "file": "lesson-test-studio/v1/a2e262d98f93.mp3",
+      "sha256": "a2e262d98f939b0845ea8ff75428fd3b6bbd5aaa9342ac8b7a74064e20a3bfd5",
+      "duration": 3.009
+    },
+    "zh_en_female_2@1.2|害羞，也很愛開玩笑": {
+      "file": "lesson-test-studio/v1/015f2e5db680.mp3",
+      "sha256": "015f2e5db6809b742a88d5dacd945b4c3d97a169db8b612db104740e1281a91c",
+      "duration": 3.04
+    },
     "zh_en_female_2@1.2|宿舍現在有熱水了": {
       "file": "lesson-test-studio/v1/ceabbc81c047.mp3",
       "sha256": "ceabbc81c047b2a4ed4061fd6b0e2ac2d6fafff33cf9cf85c863a62b26ec58fa",
@@ -2866,6 +3561,11 @@
       "file": "lesson-test-studio/v1/bc4cb0fd9bb7.mp3",
       "sha256": "bc4cb0fd9bb74ebb5da71f30a5a3f64ae0d2e41b96a24ac06db01b11b392fefc",
       "duration": 2.193
+    },
+    "zh_en_female_2@1.2|小教室星期天不開": {
+      "file": "lesson-test-studio/v1/c13fa7acdc49.mp3",
+      "sha256": "c13fa7acdc49574b5dcd87a56c2ac9518b8cfc271be22abf7cc0fbf0c2488099",
+      "duration": 2.406
     },
     "zh_en_female_2@1.2|山上的天氣怎麼樣？": {
       "file": "lesson-test-studio/v1/d44de67139e7.mp3",
@@ -2982,6 +3682,11 @@
       "sha256": "bc90847fe2507b273b32554720e5121a2a0b9f622fe8606dbcc2fae077c556f0",
       "duration": 2.247
     },
+    "zh_en_female_2@1.2|平日晚上再來": {
+      "file": "lesson-test-studio/v1/8d25a6b54e79.mp3",
+      "sha256": "8d25a6b54e79b70536872bcf3c6d607d6da64f57fe5bc454022020616b166825",
+      "duration": 1.893
+    },
     "zh_en_female_2@1.2|店出現在明星的廣告裡": {
       "file": "lesson-test-studio/v1/70534a6e7c87.mp3",
       "sha256": "70534a6e7c8742c2816b9a2728e0cc7a1d8aa22c8d0be42c6a3e434f35340563",
@@ -3022,6 +3727,26 @@
       "sha256": "1363dbb27feabc35431892b5738e722cfef1907ea532867516e5480ab2af89bf",
       "duration": 3.627
     },
+    "zh_en_female_2@1.2|往右走，過一個路口": {
+      "file": "lesson-test-studio/v1/e1e273cc55c4.mp3",
+      "sha256": "e1e273cc55c4e7200314744424594ea9782784d26b65f24f44745d8210b9acf5",
+      "duration": 2.522
+    },
+    "zh_en_female_2@1.2|往右走，過兩個路口": {
+      "file": "lesson-test-studio/v1/f1bb96523553.mp3",
+      "sha256": "f1bb965235539ab661aa1854cba94222304bdb881456edfbf608b7779cc864d8",
+      "duration": 2.679
+    },
+    "zh_en_female_2@1.2|往左走，過一個路口": {
+      "file": "lesson-test-studio/v1/4ec764c3bd63.mp3",
+      "sha256": "4ec764c3bd63c9ba4121837bc7f89a0d594876acda0fc0c36fcd00253e57cb94",
+      "duration": 2.566
+    },
+    "zh_en_female_2@1.2|往左走，過兩個路口": {
+      "file": "lesson-test-studio/v1/ada5ead79681.mp3",
+      "sha256": "ada5ead79681244707ade3006f7f85ee7963cce358ed30545feca1ec04863c12",
+      "duration": 2.718
+    },
     "zh_en_female_2@1.2|很便宜，買了不吃虧": {
       "file": "lesson-test-studio/v1/be00c16bb2c2.mp3",
       "sha256": "be00c16bb2c2bb3c81ca9f0a688bd734b96513fdb68790de665bbadd5a5d7fcf",
@@ -3037,10 +3762,25 @@
       "sha256": "95d032140e41cf0867f6b9808ae2372c3049361681a72ea552f89ebbc2cd540b",
       "duration": 1.887
     },
+    "zh_en_female_2@1.2|很喜歡那裡的名產": {
+      "file": "lesson-test-studio/v1/9c44758df723.mp3",
+      "sha256": "9c44758df7234d591442fc1b692de707c777d748a5023352e9dd8f0e195252b2",
+      "duration": 2.117
+    },
+    "zh_en_female_2@1.2|很多大學生愛去動物園。": {
+      "file": "lesson-test-studio/v1/c3f13a29fd89.mp3",
+      "sha256": "c3f13a29fd89c0591405326ab5c6309927f68e72431d7c3db0d8c4a137961bb0",
+      "duration": 3.042
+    },
     "zh_en_female_2@1.2|很多客人希望有": {
       "file": "lesson-test-studio/v1/c66c9c0a0258.mp3",
       "sha256": "c66c9c0a0258a3eca9b357da4b81d99cf67632178ab39dd021452e56ca01d598",
       "duration": 1.958
+    },
+    "zh_en_female_2@1.2|很安靜，回去也安全": {
+      "file": "lesson-test-studio/v1/298caacf7471.mp3",
+      "sha256": "298caacf74717cbe13ce60a45a740d3d57e8f827078d68cb203e7919c272509b",
+      "duration": 3.198
     },
     "zh_en_female_2@1.2|很年輕就很會拍電影": {
       "file": "lesson-test-studio/v1/1cc6449d493f.mp3",
@@ -3097,6 +3837,11 @@
       "sha256": "bbc2927fe1534e02e6fb8ff1d164c1b3b610ed4f578602a7bccda55742286791",
       "duration": 2.587
     },
+    "zh_en_female_2@1.2|想多做一點運動": {
+      "file": "lesson-test-studio/v1/95cc1516c2a1.mp3",
+      "sha256": "95cc1516c2a1588fc7f5af5874b60b5f0b82cd81d60a99146f4d217907f65874",
+      "duration": 2.111
+    },
     "zh_en_female_2@1.2|想拍自己寫的劇本": {
       "file": "lesson-test-studio/v1/676fa174dcfb.mp3",
       "sha256": "676fa174dcfb3df95a53e4f2de12565279b424a38da37f7b053fc634774b6229",
@@ -3112,6 +3857,11 @@
       "sha256": "bfd6feeb8563672f3be7398cf0bf971e6f68a7466c89bd58e6816e4bdaf41edb",
       "duration": 2.179
     },
+    "zh_en_female_2@1.2|想用三樓的小教室，要怎麼做？": {
+      "file": "lesson-test-studio/v1/596167c83e32.mp3",
+      "sha256": "596167c83e32bc45e7b92cd3e4ef0bde0f29e405e4c44db85603a3b61f51b38a",
+      "duration": 3.904
+    },
     "zh_en_female_2@1.2|想讓客人多買東西": {
       "file": "lesson-test-studio/v1/5809e25939a0.mp3",
       "sha256": "5809e25939a087264b47745f96b3369045e391c72c92c13afd447e0a810de410",
@@ -3121,6 +3871,11 @@
       "file": "lesson-test-studio/v1/43d72f7e69df.mp3",
       "sha256": "43d72f7e69dff1237cc29ebfe2c71b3ba068965f429ba862763ea98a4df5f6c5",
       "duration": 2.576
+    },
+    "zh_en_female_2@1.2|戴眼鏡的女生在做什麼？": {
+      "file": "lesson-test-studio/v1/775a918ed7af.mp3",
+      "sha256": "775a918ed7afc96f454ddd429ea4ac0e4ba945626919447d8908124e2bfe8cb4",
+      "duration": 2.609
     },
     "zh_en_female_2@1.2|房東要聽留言的人今天晚上做什麼？": {
       "file": "lesson-test-studio/v1/d0cbf6b50b98.mp3",
@@ -3152,6 +3907,11 @@
       "sha256": "4cfc883d15125a39a189f049511924b8b2bf6875ef56e667fc3b1a6005a3cd1b",
       "duration": 2.172
     },
+    "zh_en_female_2@1.2|打電話給文法老師": {
+      "file": "lesson-test-studio/v1/b9ed447563c9.mp3",
+      "sha256": "b9ed447563c923bc5d1b99c73c7a02309ba79e7794e07f4f88dc99cfa33de971",
+      "duration": 2.45
+    },
     "zh_en_female_2@1.2|打電話給樓下經理": {
       "file": "lesson-test-studio/v1/53ad15f38c71.mp3",
       "sha256": "53ad15f38c71873bb885fc0e9b0b27627579734e9a8b59f1969a25a0942f2d7b",
@@ -3161,6 +3921,11 @@
       "file": "lesson-test-studio/v1/855733e17d63.mp3",
       "sha256": "855733e17d63b2bd4e47c67e11885cb63a2e9d98781dfdc359efb93b07cc99bf",
       "duration": 2.077
+    },
+    "zh_en_female_2@1.2|找到六個同學": {
+      "file": "lesson-test-studio/v1/6ea64a3ef812.mp3",
+      "sha256": "6ea64a3ef8122fffe60f767a14c8a71c60d7b90eeb9f21f4054a0a63037b1e12",
+      "duration": 1.891
     },
     "zh_en_female_2@1.2|找的演員演得很好": {
       "file": "lesson-test-studio/v1/6fa9e9040c77.mp3",
@@ -3247,6 +4012,21 @@
       "sha256": "b5ca56d7c259fb475e3bda06223a1093e9a4993b976f93b2f97dc00c98b738f6",
       "duration": 2.028
     },
+    "zh_en_female_2@1.2|教授常常打瞌睡": {
+      "file": "lesson-test-studio/v1/48d76603f26f.mp3",
+      "sha256": "48d76603f26f0fc97c62b0eecb4630cdcca0905c525392cc1fbee96b643d15f9",
+      "duration": 2.31
+    },
+    "zh_en_female_2@1.2|教授的話不好懂": {
+      "file": "lesson-test-studio/v1/bcf3be048bc1.mp3",
+      "sha256": "bcf3be048bc12a43ecc7ef7bc7bfa4f62321dfcca6a67b07612c77d5a34f6127",
+      "duration": 1.896
+    },
+    "zh_en_female_2@1.2|教授知道的不多": {
+      "file": "lesson-test-studio/v1/246d1bc58d2b.mp3",
+      "sha256": "246d1bc58d2bd2c421655a4d6f0965f07f1b6e7b63b5097ce7248370c65e2807",
+      "duration": 2.042
+    },
     "zh_en_female_2@1.2|早上買一個三明治": {
       "file": "lesson-test-studio/v1/a4413a49555f.mp3",
       "sha256": "a4413a49555fab8beee6cb6bb84a06375a3aff1f0b0016ac0e74b7f046f23a23",
@@ -3277,6 +4057,16 @@
       "sha256": "a3621c8d3b4d1cd4b4375ec2e811829a5cab999286663465eac321d286a76142",
       "duration": 1.36
     },
+    "zh_en_female_2@1.2|明天早上上課以前": {
+      "file": "lesson-test-studio/v1/79c06ea372fc.mp3",
+      "sha256": "79c06ea372fca33cb9a6a14430645c7c94f7f95930353e6b43f6d93eb39f492d",
+      "duration": 2.573
+    },
+    "zh_en_female_2@1.2|明天早上下課以後": {
+      "file": "lesson-test-studio/v1/6bfd2d0e892c.mp3",
+      "sha256": "6bfd2d0e892c8cb06df600c5ff7832e8884bcf1302160d843bcc4a8e9bc6a698",
+      "duration": 2.282
+    },
     "zh_en_female_2@1.2|明天早上八點以前": {
       "file": "lesson-test-studio/v1/7e9d1ea2d54c.mp3",
       "sha256": "7e9d1ea2d54c8443c6ad96361748854da14e8f45d04257fd2e82d80e6ab28e5d",
@@ -3286,6 +4076,11 @@
       "file": "lesson-test-studio/v1/624517b5e076.mp3",
       "sha256": "624517b5e076e555304a7ab7291dcd763f650540ed0a999f47a391c5100624c8",
       "duration": 2.221
+    },
+    "zh_en_female_2@1.2|明天的小考一共考幾課？": {
+      "file": "lesson-test-studio/v1/e6ed0292d6c4.mp3",
+      "sha256": "e6ed0292d6c4f3f72db2c5b914ce22266bbd8bd4b29acabc489b981a7a4f38d2",
+      "duration": 2.786
     },
     "zh_en_female_2@1.2|明天跟他去店裡用用看": {
       "file": "lesson-test-studio/v1/54be54e90137.mp3",
@@ -3302,6 +4097,16 @@
       "sha256": "ad603ae84bbfcb9a351d588e37f8ee88a9c4ec1b2e56d7b0e3772faa951170ec",
       "duration": 2.393
     },
+    "zh_en_female_2@1.2|星期五下午": {
+      "file": "lesson-test-studio/v1/900dd3320ad1.mp3",
+      "sha256": "900dd3320ad17cfd6ccb6d9c29044b975b060275cb16e9e57558ce1e0ba25775",
+      "duration": 1.652
+    },
+    "zh_en_female_2@1.2|星期五九點以後": {
+      "file": "lesson-test-studio/v1/4be0e0466a14.mp3",
+      "sha256": "4be0e0466a14e692e5abaa1a4f9e1d7765b420a144e059f093359935db55250f",
+      "duration": 2.195
+    },
     "zh_en_female_2@1.2|星期五晚上": {
       "file": "lesson-test-studio/v1/c96d7b38aeec.mp3",
       "sha256": "c96d7b38aeece48e71dea8004d9a928b07dae898b992f5797b52b1b3fa2d4686",
@@ -3311,6 +4116,16 @@
       "file": "lesson-test-studio/v1/d4a5ab3d0462.mp3",
       "sha256": "d4a5ab3d046286f8908de338d05e63730ac8a08d8921bce78d36221a422d0f79",
       "duration": 1.622
+    },
+    "zh_en_female_2@1.2|星期六九點以後": {
+      "file": "lesson-test-studio/v1/2578ac123f21.mp3",
+      "sha256": "2578ac123f2143e1f1ed0a981df21baebc4cf7f47e69322f878e34b39a697dcd",
+      "duration": 2.114
+    },
+    "zh_en_female_2@1.2|星期六晚上": {
+      "file": "lesson-test-studio/v1/4a8694716589.mp3",
+      "sha256": "4a8694716589624b0e5729f614c4479990ce158e54372de8f16d1b839ecb7398",
+      "duration": 1.682
     },
     "zh_en_female_2@1.2|星期天下午": {
       "file": "lesson-test-studio/v1/f786d27d2015.mp3",
@@ -3331,6 +4146,21 @@
       "file": "lesson-test-studio/v1/13fd77ea41f9.mp3",
       "sha256": "13fd77ea41f9131532d9a56cab3449db0ac260561038fd19a271f6ef76dd3607",
       "duration": 2.68
+    },
+    "zh_en_female_2@1.2|晚上九點": {
+      "file": "lesson-test-studio/v1/4858ef6617ea.mp3",
+      "sha256": "4858ef6617eabdfab5a6a344497b7d69eee46cf597b9a1381473019805137451",
+      "duration": 1.374
+    },
+    "zh_en_female_2@1.2|晚上十一點": {
+      "file": "lesson-test-studio/v1/9930ce5ae951.mp3",
+      "sha256": "9930ce5ae9511e515cb6861a2b4f5e97fab9615f29f5f2fc46d6ee458b3f0889",
+      "duration": 1.579
+    },
+    "zh_en_female_2@1.2|晚上十點": {
+      "file": "lesson-test-studio/v1/b36bb2aabdef.mp3",
+      "sha256": "b36bb2aabdefa6ffde67d127e96beb8dfa4d52b384546c81df21210e55e2c986",
+      "duration": 1.391
     },
     "zh_en_female_2@1.2|替他去開下午的會": {
       "file": "lesson-test-studio/v1/443246157138.mp3",
@@ -3392,6 +4222,11 @@
       "sha256": "2d34cc8eecb948845d052a8dd52d4b862dddb8a3f5304374de0356fc1c196760",
       "duration": 2.361
     },
+    "zh_en_female_2@1.2|比坐公車安全": {
+      "file": "lesson-test-studio/v1/d7aeb3d316eb.mp3",
+      "sha256": "d7aeb3d316eb456f8f00b7c548ea3c75eddc33b98e388fe46e16828b3fcd05b3",
+      "duration": 2.011
+    },
     "zh_en_female_2@1.2|水果的味道不夠香": {
       "file": "lesson-test-studio/v1/910cca3c6641.mp3",
       "sha256": "910cca3c664118947b6339eea6dd3baad009ae3b61bb6a5c4de402df4d54340d",
@@ -3401,6 +4236,11 @@
       "file": "lesson-test-studio/v1/ae546bf7ee2b.mp3",
       "sha256": "ae546bf7ee2b0ae154c9c1ec82f740a0b9460f4384c25ff4ec62ed71c982b61d",
       "duration": 0.925
+    },
+    "zh_en_female_2@1.2|沒去旅行。": {
+      "file": "lesson-test-studio/v1/b7c9b1071f25.mp3",
+      "sha256": "b7c9b1071f2567e2c68b0dda25d086f9e8b7ec59daa5d3bbcb4339f776ea0d76",
+      "duration": 1.531
     },
     "zh_en_female_2@1.2|沒時間做自己的事": {
       "file": "lesson-test-studio/v1/8b4a2b36a93f.mp3",
@@ -3451,6 +4291,11 @@
       "file": "lesson-test-studio/v1/4a938323cee1.mp3",
       "sha256": "4a938323cee17f2a7e8b561a7497ffcaf733427f8c0437b0fbf7a5ac075c0bfb",
       "duration": 3.16
+    },
+    "zh_en_female_2@1.2|為什麼他們不在圖書館的小教室念書？": {
+      "file": "lesson-test-studio/v1/0d0c6dad0843.mp3",
+      "sha256": "0d0c6dad0843c46c9cd5f33666eccaa623b3b5243cbbf664312da3541f588448",
+      "duration": 4.247
     },
     "zh_en_female_2@1.2|照顧孩子、做家事": {
       "file": "lesson-test-studio/v1/cc5e5ad71e2d.mp3",
@@ -3512,6 +4357,21 @@
       "sha256": "6bcaaa66a7f62f337164fc8916b88899e437cdde55bcf87e9ec09ac6d6e2d951",
       "duration": 2.129
     },
+    "zh_en_female_2@1.2|現在馬上": {
+      "file": "lesson-test-studio/v1/f964ed7975c9.mp3",
+      "sha256": "f964ed7975c90c41dcd267e228823a29a45f6a2682806393e4e2ea76a4b94260",
+      "duration": 1.47
+    },
+    "zh_en_female_2@1.2|男的一開始為什麼不吃包子？": {
+      "file": "lesson-test-studio/v1/8649e058c3eb.mp3",
+      "sha256": "8649e058c3eb26558e9a9556ea64fbcf14c324712840b4c42c153652d7afd97f",
+      "duration": 3.108
+    },
+    "zh_en_female_2@1.2|男的什麼時候會到KTV？": {
+      "file": "lesson-test-studio/v1/ebe0c22a238b.mp3",
+      "sha256": "ebe0c22a238bec10de68cda7632e6b74b40ebce19da3f6c02f24a1d1212be1f4",
+      "duration": 2.876
+    },
     "zh_en_female_2@1.2|男的做的是什麼工作？": {
       "file": "lesson-test-studio/v1/26c7455607a4.mp3",
       "sha256": "26c7455607a4b8fe31cca224bab156b7568b6775400851a16fd0a9827e94c6b3",
@@ -3522,10 +4382,20 @@
       "sha256": "cf896f8903019e3d59a686480db9741a5edeaa55f15f442be567340cbb9a8e8e",
       "duration": 2.5
     },
+    "zh_en_female_2@1.2|男的最快什麼時候可以看到這本小說？": {
+      "file": "lesson-test-studio/v1/bb612a8181ce.mp3",
+      "sha256": "bb612a8181ce89bd056f6e98b2d7b2ce73043bbfdd85a651c843bfc794f305c9",
+      "duration": 4.138
+    },
     "zh_en_female_2@1.2|男的剛來臺灣的時候，以為這裡的地震怎麼樣？": {
       "file": "lesson-test-studio/v1/bc9f5b30bd9b.mp3",
       "sha256": "bc9f5b30bd9b151b4e1c72549b48b52d8542b7177bcbfc4831e78c8c479ce47d",
       "duration": 4.929
+    },
+    "zh_en_female_2@1.2|男的可以跟女的一起去。": {
+      "file": "lesson-test-studio/v1/3646e12aa6ed.mp3",
+      "sha256": "3646e12aa6ed49e56cd7f98fcfcf6d9343dff3acc41c7e1e603439ff9dbc8e2c",
+      "duration": 2.54
     },
     "zh_en_female_2@1.2|男的建議女的怎麼做？": {
       "file": "lesson-test-studio/v1/ee28b0999d56.mp3",
@@ -3557,6 +4427,11 @@
       "sha256": "57517937869d1def0a0d475b79c5d81b04f329c2fd60c9a55811fa172b63832c",
       "duration": 3.372
     },
+    "zh_en_female_2@1.2|男的放假去了哪裡？": {
+      "file": "lesson-test-studio/v1/a4d7ca8ad2bc.mp3",
+      "sha256": "a4d7ca8ad2bc7ee287dc811aa3e0d428d1d40f9c708c76ae86737133d5626d78",
+      "duration": 2.189
+    },
     "zh_en_female_2@1.2|男的星期五晚上要做什麼？": {
       "file": "lesson-test-studio/v1/2570431a3209.mp3",
       "sha256": "2570431a320926d1b7d288898aaa420734fcbb004742fc22cabeb65b0a7fa5ed",
@@ -3582,10 +4457,25 @@
       "sha256": "83d02b0a9901ad9c3470a66ef30314d82f01bda957a6669a04bc4689cf0b36e7",
       "duration": 2.904
     },
+    "zh_en_female_2@1.2|男的為什麼騎腳踏車來上課？": {
+      "file": "lesson-test-studio/v1/e89335e0fcf1.mp3",
+      "sha256": "e89335e0fcf1fd3c3b00476a345286b1c09e89091ad88009a9a9f1d3996f4e88",
+      "duration": 3.243
+    },
+    "zh_en_female_2@1.2|男的現在怎麼了？": {
+      "file": "lesson-test-studio/v1/0f3547be418a.mp3",
+      "sha256": "0f3547be418ad11e385bfa6dd1b1dbc55863fd7db0e8f6fe018e43547f086b81",
+      "duration": 1.82
+    },
     "zh_en_female_2@1.2|男的覺得地攤的襪子怎麼樣？": {
       "file": "lesson-test-studio/v1/501e9ed4d2db.mp3",
       "sha256": "501e9ed4d2dbfbb50852952b8e01e3d1e7692e6c4214dfcf69390fc5a8bf8388",
       "duration": 2.926
+    },
+    "zh_en_female_2@1.2|男的覺得新同學怎麼樣？": {
+      "file": "lesson-test-studio/v1/5fbaa54b7c22.mp3",
+      "sha256": "5fbaa54b7c22f15b458d8b3d17cc7d9ec2587286c4767233a044bf7b702a54f6",
+      "duration": 2.573
     },
     "zh_en_female_2@1.2|男的覺得現在的年輕媽媽坐月子怎麼樣？": {
       "file": "lesson-test-studio/v1/68af4490235d.mp3",
@@ -3606,6 +4496,11 @@
       "file": "lesson-test-studio/v1/eccd6ef149d1.mp3",
       "sha256": "eccd6ef149d17d3c86ff2ea28829bb1d8aa42704f6e6faef464c0866708b5ff5",
       "duration": 2.81
+    },
+    "zh_en_female_2@1.2|男的覺得這門文法課怎麼樣？": {
+      "file": "lesson-test-studio/v1/13eb7b7251b2.mp3",
+      "sha256": "13eb7b7251b2d9682259cd5fd88e1cece71fd14f01f6cbc384270d003cdce832",
+      "duration": 3.056
     },
     "zh_en_female_2@1.2|男的覺得這雙球鞋有什麼問題？": {
       "file": "lesson-test-studio/v1/2bbdc7edc303.mp3",
@@ -3717,6 +4612,11 @@
       "sha256": "b2ca76ef0baa79013707b15c685f2cccfa9fc9440d77522dd23a2a918c29d566",
       "duration": 5.841
     },
+    "zh_en_female_2@1.2|穿綠色外套的男生在做什麼？": {
+      "file": "lesson-test-studio/v1/bc967bb80b0d.mp3",
+      "sha256": "bc967bb80b0d19cb6da29bbbbe2acc2bc418701b67b02c2a45a62d692efe6c28",
+      "duration": 3.252
+    },
     "zh_en_female_2@1.2|等人少一點再來領": {
       "file": "lesson-test-studio/v1/11f327247b8f.mp3",
       "sha256": "11f327247b8f4e0d2b3698d3db4c22332c2a0032e2041d93d4a68fc69cc43c2f",
@@ -3762,10 +4662,25 @@
       "sha256": "312bc430a96c8492711de41176100ff7dcabe5de1e84a1e02ff627a4e942daff",
       "duration": 1.171
     },
+    "zh_en_female_2@1.2|考完小考，這個學生要做什麼？": {
+      "file": "lesson-test-studio/v1/194dadbde993.mp3",
+      "sha256": "194dadbde99329603c4ff0f852956937a847300c5ebd9667e899d49497137d47",
+      "duration": 3.415
+    },
     "zh_en_female_2@1.2|考筆試": {
       "file": "lesson-test-studio/v1/8ae96de70e7c.mp3",
       "sha256": "8ae96de70e7ce95c48ed3bcc6a9f37d834b90c9d21a85f68fa5fb1d3520a6b2f",
       "duration": 1.094
+    },
+    "zh_en_female_2@1.2|聰明，可是不太客氣": {
+      "file": "lesson-test-studio/v1/c963c374ec10.mp3",
+      "sha256": "c963c374ec10f0a6d23c29b686a7293a731fa7b13426dfa224c2b4a0b5533c50",
+      "duration": 3.021
+    },
+    "zh_en_female_2@1.2|聰明，可是有點害羞": {
+      "file": "lesson-test-studio/v1/9820d4a05f32.mp3",
+      "sha256": "9820d4a05f32eb81c7a6d5352c4f10f6258d8aecc448269ee79e5bf6bdad6b8d",
+      "duration": 3.098
     },
     "zh_en_female_2@1.2|能讓孩子很快樂": {
       "file": "lesson-test-studio/v1/deba7176e508.mp3",
@@ -3797,6 +4712,11 @@
       "sha256": "0c31da92761ae279bb497129523750b35e593651000b8465d0aae5609997122a",
       "duration": 2.095
     },
+    "zh_en_female_2@1.2|菜好吃又便宜": {
+      "file": "lesson-test-studio/v1/c0b12cfe2782.mp3",
+      "sha256": "c0b12cfe2782f645e7b89c66272ccb01f4f9ec354855d330319d96cbf5b202f4",
+      "duration": 2.066
+    },
     "zh_en_female_2@1.2|衣服都賣不出去": {
       "file": "lesson-test-studio/v1/4dbfabcc5024.mp3",
       "sha256": "4dbfabcc502434deb1aaef0ad37b66246df02619f5971c8883541a1156a03ebc",
@@ -3812,20 +4732,45 @@
       "sha256": "de7365e5d61ed308c105d6140341bc6e231530ade852a7d439fd21966bf623cf",
       "duration": 2.306
     },
+    "zh_en_female_2@1.2|要交一篇作文": {
+      "file": "lesson-test-studio/v1/2b996890ed82.mp3",
+      "sha256": "2b996890ed82a5712571c7f00a1b736889680c45bb68cfe284664e87564198df",
+      "duration": 1.79
+    },
     "zh_en_female_2@1.2|要到下個月才開始": {
       "file": "lesson-test-studio/v1/b0e9c67021aa.mp3",
       "sha256": "b0e9c67021aac02f61f74b5a7ca0c439a568ceebf7819e9ac1e3e9beb2fcb64a",
       "duration": 2.373
+    },
+    "zh_en_female_2@1.2|要去教室上課": {
+      "file": "lesson-test-studio/v1/ecb4b541c6ce.mp3",
+      "sha256": "ecb4b541c6cecf7d20ff08c0beb534c45678c32195b3484c4b48f9cf75197f0d",
+      "duration": 1.815
+    },
+    "zh_en_female_2@1.2|要把作文寫完": {
+      "file": "lesson-test-studio/v1/7794bc2b95a0.mp3",
+      "sha256": "7794bc2b95a0b8c0d0ffa7cc07497ca2e09ebbcdcb21cddfba8af4fb718cf603",
+      "duration": 1.842
     },
     "zh_en_female_2@1.2|要放送洗的衣服": {
       "file": "lesson-test-studio/v1/501c49a152dc.mp3",
       "sha256": "501c49a152dc57c4e6a2eac5d657cfeabb32bf7c54b1f5e2025130bec43f1d70",
       "duration": 2.265
     },
+    "zh_en_female_2@1.2|要考口試": {
+      "file": "lesson-test-studio/v1/bbf48458ee6b.mp3",
+      "sha256": "bbf48458ee6b55405a34ff1f160c832e40fbe5563337b69777b329f7d0d9a4f4",
+      "duration": 1.39
+    },
     "zh_en_female_2@1.2|認識她的人幫了忙": {
       "file": "lesson-test-studio/v1/9cfa6ce6b7f1.mp3",
       "sha256": "9cfa6ce6b7f127127ba7f2f4fe9da2b1598aaf79b713530757c2eb3dcfe254a5",
       "duration": 2.198
+    },
+    "zh_en_female_2@1.2|認識男的朋友": {
+      "file": "lesson-test-studio/v1/2b289cd3d336.mp3",
+      "sha256": "2b289cd3d3366c51bc330a20901133365af99309dfc576dd2f416020080ff3c0",
+      "duration": 1.685
     },
     "zh_en_female_2@1.2|請女的問星期天的課": {
       "file": "lesson-test-studio/v1/ed77f443c1f5.mp3",
@@ -3881,6 +4826,11 @@
       "file": "lesson-test-studio/v1/a7a8f6afc35d.mp3",
       "sha256": "a7a8f6afc35d8655912e8f19d6456dbb9b052ad963b0d062102581cfc9453e27",
       "duration": 4.842
+    },
+    "zh_en_female_2@1.2|請聽一段話，然後回答兩個問題。": {
+      "file": "lesson-test-studio/v1/8be523a7ecc3.mp3",
+      "sha256": "8be523a7ecc3c354c3eefb496fcbc9218e5693feecd51027c6e62cb7991f270b",
+      "duration": 4.307
     },
     "zh_en_female_2@1.2|請聽一段通知，然後回答兩個問題。": {
       "file": "lesson-test-studio/v1/e8fe999949a5.mp3",
@@ -3957,6 +4907,11 @@
       "sha256": "fe3390bc981e53aa64301941c5865a8d970024a23036717f3aaaaec8919a423d",
       "duration": 1.988
     },
+    "zh_en_female_2@1.2|跟家人一起慶祝": {
+      "file": "lesson-test-studio/v1/ea9317564274.mp3",
+      "sha256": "ea93175642741313f781dc05a6403836c4401b903c6a848c68fc11c19387678c",
+      "duration": 2.165
+    },
     "zh_en_female_2@1.2|跟家人去高雄": {
       "file": "lesson-test-studio/v1/a57de40a3eb0.mp3",
       "sha256": "a57de40a3eb0f1c9dcae0d2b85564ac0dbd63331f509b35303d4c221a7d2a1b7",
@@ -3966,6 +4921,11 @@
       "file": "lesson-test-studio/v1/bdb08f4218bf.mp3",
       "sha256": "bdb08f4218bfaf7e00589c58838e097b136e66f9f0c032a880314dc1cc5d450a",
       "duration": 2.755
+    },
+    "zh_en_female_2@1.2|跟男的去跳舞": {
+      "file": "lesson-test-studio/v1/0f5870853456.mp3",
+      "sha256": "0f58708534567979af74f073e18192932e532c52e5129afc262e971f40455727",
+      "duration": 1.722
     },
     "zh_en_female_2@1.2|跟社團去災區": {
       "file": "lesson-test-studio/v1/fa223cd7701e.mp3",
@@ -4001,6 +4961,11 @@
       "file": "lesson-test-studio/v1/3bc8b8c83130.mp3",
       "sha256": "3bc8b8c831308314f17498570d64cae011998634d1b3458af2600fe6525e0321",
       "duration": 3.45
+    },
+    "zh_en_female_2@1.2|辦公室今天沒有人": {
+      "file": "lesson-test-studio/v1/d6a36ea1e87b.mp3",
+      "sha256": "d6a36ea1e87ba00b83801415eecf1be85cd5c26e8e6d833b54bbe1d0b78fc0a1",
+      "duration": 2.335
     },
     "zh_en_female_2@1.2|送東西去給經理": {
       "file": "lesson-test-studio/v1/32f120fe32b5.mp3",
@@ -4082,6 +5047,11 @@
       "sha256": "a1f980bbb37ef4c7019e9f265ee879179b38fa993e4441b53988e70a7183e4f9",
       "duration": 3.039
     },
+    "zh_en_female_2@1.2|這個星期五": {
+      "file": "lesson-test-studio/v1/e96230c57060.mp3",
+      "sha256": "e96230c57060080119ed675a400537be0e76d72720779783ad311b0e5a8ab09d",
+      "duration": 1.391
+    },
     "zh_en_female_2@1.2|這個星期的練習改到什麼時候？": {
       "file": "lesson-test-studio/v1/41d8c560231c.mp3",
       "sha256": "41d8c560231c0c87bad426c723a2671056667ca2791f3d571d45e91a1db55d8a",
@@ -4096,6 +5066,21 @@
       "file": "lesson-test-studio/v1/7bb5e6eea499.mp3",
       "sha256": "7bb5e6eea4997007d49bc08919980bbe6a726fe605f5c9b55d0f986fac1d4f59",
       "duration": 3.629
+    },
+    "zh_en_female_2@1.2|這個週末": {
+      "file": "lesson-test-studio/v1/dfaba2861a3c.mp3",
+      "sha256": "dfaba2861a3c4c968e231de9f5758d56ec4bf7bbe61d27cb5a1eab5ba601e9d0",
+      "duration": 1.207
+    },
+    "zh_en_female_2@1.2|這個週末。": {
+      "file": "lesson-test-studio/v1/cb92f3ca2a16.mp3",
+      "sha256": "cb92f3ca2a16e2bc959e7ad8c4a51541067e47e63a5cd98de4f7157fc81f4fc6",
+      "duration": 1.202
+    },
+    "zh_en_female_2@1.2|這個週末動物園人很多。": {
+      "file": "lesson-test-studio/v1/da5614d77b6b.mp3",
+      "sha256": "da5614d77b6bdcba9f1585dd604c967be17103e1f85958c74d14773d7b0410e3",
+      "duration": 2.795
     },
     "zh_en_female_2@1.2|這個週末買新的": {
       "file": "lesson-test-studio/v1/b2dcd342fbe6.mp3",
@@ -4152,6 +5137,11 @@
       "sha256": "449bf0e7c798e17dbd805c719130df08cc6dccd41f2b07655bb5c36f670b43ef",
       "duration": 3.156
     },
+    "zh_en_female_2@1.2|那裡的名產買得不多": {
+      "file": "lesson-test-studio/v1/6af18fd06017.mp3",
+      "sha256": "6af18fd060177d6a9fb62bac30c29349e9172f9cd1e9ee8fd97129d59d048367",
+      "duration": 2.225
+    },
     "zh_en_female_2@1.2|銀行的工作太忙了": {
       "file": "lesson-test-studio/v1/12abe9af42d5.mp3",
       "sha256": "12abe9af42d5190a6ec18e1ac1f3de7a8f91cb83f3d411e875080313611ee21e",
@@ -4176,6 +5166,11 @@
       "file": "lesson-test-studio/v1/07856d2aad74.mp3",
       "sha256": "07856d2aad74541ed72911c2f506e6738ab9889718d21c1f4185b4e425ec045c",
       "duration": 2.515
+    },
+    "zh_en_female_2@1.2|離學校很近": {
+      "file": "lesson-test-studio/v1/fffe421ae4c2.mp3",
+      "sha256": "fffe421ae4c28984cef4d70eb8f566b3d79c1d568f9f8ae211cfc18d94ca7fdb",
+      "duration": 1.709
     },
     "zh_en_female_2@1.2|颱風明天早上會在哪裡？": {
       "file": "lesson-test-studio/v1/67a7aefa283b.mp3",
@@ -7807,6 +8802,16 @@
       "sha256": "87748ca7f83d183055d109577fbb0fba633d54814c03d963d0c24922040f2014",
       "duration": 7.596
     },
+    "zh_en_male_1@0.9-pitch1.3|不，搭公車要四十分鐘，坐捷運比搭公車快十分鐘。": {
+      "file": "lesson-test-studio/v1/582fe383fcad.mp3",
+      "sha256": "582fe383fcadefad33ca01678d62306e4a5f0fec2c2e90ec05d89ccf12122eed",
+      "duration": 5.974
+    },
+    "zh_en_male_1@0.9-pitch1.3|不是。雖然騎車有點危險，可是比坐公車快。": {
+      "file": "lesson-test-studio/v1/5dc2024160a0.mp3",
+      "sha256": "5dc2024160a077648bceac5e6ba79c24fec4ab15b695d5dfa3960f87372cf4da",
+      "duration": 5.549
+    },
     "zh_en_male_1@0.9-pitch1.3|不用。可是這種淺色的已經賣完了，只剩下深藍色的，您要不要試穿看看？": {
       "file": "lesson-test-studio/v1/946bb46765f5.mp3",
       "sha256": "946bb46765f53c69d9da7954b7f85ef2c971d3e5eb74c4c5d37b57f1028be4da",
@@ -7837,6 +8842,11 @@
       "sha256": "7d45c0205f8f3469f3531c0742ef7ad20dcc6d44d444575fdd2ca852dd841250",
       "duration": 4.814
     },
+    "zh_en_male_1@0.9-pitch1.3|他是從美國來的，不但很聰明，對人也很客氣。": {
+      "file": "lesson-test-studio/v1/c8d54f550c97.mp3",
+      "sha256": "c8d54f550c975f31130e79c7acedd83d930226caa8d5549d71bcbba4901ee494",
+      "duration": 5.673
+    },
     "zh_en_male_1@0.9-pitch1.3|他本來要買，我跟他說喝牛奶或是豆漿才長得高，可是他都不肯喝，最後自己去拿了一瓶果汁。": {
       "file": "lesson-test-studio/v1/1943c7783a3e.mp3",
       "sha256": "1943c7783a3e9f1c0e66e460db0be93c9d7a1bb15fbba8afde555ea8264e8e05",
@@ -7847,15 +8857,30 @@
       "sha256": "678a937c3384a405820c07caed0fb5d32d23227b2855d665b236c10e8aa47831",
       "duration": 10.118
     },
+    "zh_en_male_1@0.9-pitch1.3|他的知識很豐富，說話也很清楚，可是上課不怎麼有意思，常常有同學打瞌睡。": {
+      "file": "lesson-test-studio/v1/e8ed45938601.mp3",
+      "sha256": "e8ed4593860129be7a4c0b629dceaaa9bb9e26445c3fa47764f4932cdbc7b590",
+      "duration": 9.035
+    },
     "zh_en_male_1@0.9-pitch1.3|以前我常常加班，週末也常跟朋友去打籃球。有了兒子以後，我媽媽說要從日本來幫忙，可是我想自己照顧他。現在每天除了上班、做飯以外，就是在家陪他，連打球的時間都沒有了。": {
       "file": "lesson-test-studio/v1/af2e6ec46ceb.mp3",
       "sha256": "af2e6ec46ceb16b359b2a960c07d6cb5926be984638e06ffc70c1839ff49fb80",
       "duration": 20.667
     },
+    "zh_en_male_1@0.9-pitch1.3|你們還不熟，妳最好不要一個人去。那天我剛好有空，可以跟妳一起去。": {
+      "file": "lesson-test-studio/v1/68b969a32c83.mp3",
+      "sha256": "68b969a32c83d16435dc94a2874761de29a2c83eb8e591af60ee0ab7903d6f37",
+      "duration": 7.979
+    },
     "zh_en_male_1@0.9-pitch1.3|便宜有什麼用？穿不了幾次就得扔掉，錢都白花了。": {
       "file": "lesson-test-studio/v1/f61465589be5.mp3",
       "sha256": "f61465589be5e80afe7de362dab1f3d09daa808da2efc915c3ab824654d74f62",
       "duration": 5.94
+    },
+    "zh_en_male_1@0.9-pitch1.3|假日的KTV常常客滿，我們最好先打電話訂位。": {
+      "file": "lesson-test-studio/v1/0f155e562a38.mp3",
+      "sha256": "0f155e562a3839edb2509b7deac32460641615f7ed847b84395ccbea126aacf2",
+      "duration": 5.074
     },
     "zh_en_male_1@0.9-pitch1.3|傘現在放在店裡。我明天早上八點到下午四點上班，請您那個時候來拿。有問題的話，也可以打這個電話找我。謝謝！": {
       "file": "lesson-test-studio/v1/60bdf57fb33e.mp3",
@@ -7882,6 +8907,11 @@
       "sha256": "d012fc6fe66c0444f9356733fb3f947c939cd240051054d34067bb33e0ef6900",
       "duration": 9.188
     },
+    "zh_en_male_1@0.9-pitch1.3|動物園？那是小學生去的地方吧！": {
+      "file": "lesson-test-studio/v1/503a3966cedb.mp3",
+      "sha256": "503a3966cedbc2cb730db6cff0e20b9057bbd614f6a6ddd13345ee0724b076dd",
+      "duration": 3.744
+    },
     "zh_en_male_1@0.9-pitch1.3|原來是這樣！恭喜妳！你們的婚禮我一定要去。": {
       "file": "lesson-test-studio/v1/ba250dcd7c3f.mp3",
       "sha256": "ba250dcd7c3f6c1be91ae5ece864543a96280b5f2cd950c738d642fcb833f599",
@@ -7907,6 +8937,16 @@
       "sha256": "774c98ea997e6b2fa73e8b2a4d054e5fa3cba50fc9aa3e14200e77f140a31f90",
       "duration": 7.515
     },
+    "zh_en_male_1@0.9-pitch1.3|各位同學，期末考快到了。圖書館平日本來開到晚上十點，從下個星期一開始，平日會開到半夜十二點，週末還是開到晚上九點。": {
+      "file": "lesson-test-studio/v1/6535ea181422.mp3",
+      "sha256": "6535ea181422655f63d9655d064b1b3eb790caa5dd1e92d2696bba5826417ed1",
+      "duration": 14.768
+    },
+    "zh_en_male_1@0.9-pitch1.3|喂，我已經到博物館門口了，妳到了嗎？": {
+      "file": "lesson-test-studio/v1/e33d233cd0a6.mp3",
+      "sha256": "e33d233cd0a6f67f6dbea8f62da9905be8039c6e0c5559a865525dd6101f97a2",
+      "duration": 4.48
+    },
     "zh_en_male_1@0.9-pitch1.3|喂，是我。妳上次說想買一台新的筆電，今天我經過學校附近那家電腦店，看到他們在打折，就進去看了看。": {
       "file": "lesson-test-studio/v1/9508175aa5e6.mp3",
       "sha256": "9508175aa5e63bd35178144eff52c0228cf6be60bff5594471ae6b87510f471d",
@@ -7916,6 +8956,16 @@
       "file": "lesson-test-studio/v1/0b01f42ba329.mp3",
       "sha256": "0b01f42ba329961552beb6883e8a7c73d0563941e9cb27840fef78b88ef9eea0",
       "duration": 7.998
+    },
+    "zh_en_male_1@0.9-pitch1.3|因為下個學期我想修他的翻譯課，得先修這門。": {
+      "file": "lesson-test-studio/v1/dbea0b299594.mp3",
+      "sha256": "dbea0b2995949e1408161b903b916ef46363c7160cdc1508cd07777617e98ea3",
+      "duration": 4.826
+    },
+    "zh_en_male_1@0.9-pitch1.3|報告不是這個星期五就要交嗎？教授上課的時候說了好幾次，妳沒聽到嗎？": {
+      "file": "lesson-test-studio/v1/1b2a55526e3a.mp3",
+      "sha256": "1b2a55526e3a884f058eb464e69c7d639fda6e007642fbe050ff586eeaf61057",
+      "duration": 7.971
     },
     "zh_en_male_1@0.9-pitch1.3|外面風這麼大，可是我還得去打工，騎車十分鐘就到了。": {
       "file": "lesson-test-studio/v1/403e266125bf.mp3",
@@ -7932,10 +8982,20 @@
       "sha256": "443f88cb7761fc9f9fa9d2be7334ddce1658647cce2a4cf7041f329d8cc6666d",
       "duration": 14.042
     },
+    "zh_en_male_1@0.9-pitch1.3|大教室常常有人用，妳快點打吧！": {
+      "file": "lesson-test-studio/v1/9379c4cc1ac7.mp3",
+      "sha256": "9379c4cc1ac7b900e2a79ccede2a1cc44ba9beb33939143610c5e756fd5ca2a8",
+      "duration": 3.919
+    },
     "zh_en_male_1@0.9-pitch1.3|她媽媽問我工作的事，問個不停；她爸爸一直把菜放到我碗裡，我說吃飽了，他還是一直放。": {
       "file": "lesson-test-studio/v1/accbd0d95210.mp3",
       "sha256": "accbd0d95210e023e0961f9c4ae29e6bca0211153ddea55ca765b950f1e42c15",
       "duration": 10.479
+    },
+    "zh_en_male_1@0.9-pitch1.3|好，那我先回宿舍，等妳的電話。": {
+      "file": "lesson-test-studio/v1/63591dec77aa.mp3",
+      "sha256": "63591dec77aa3d77bbbd62a0eee22fd0c0a520f44ca81f1032c2b5a1baee56ac",
+      "duration": 4.082
     },
     "zh_en_male_1@0.9-pitch1.3|好，那我很快就回來。": {
       "file": "lesson-test-studio/v1/f07a3db69133.mp3",
@@ -7957,6 +9017,11 @@
       "sha256": "525675ff2d8a7351ec78627f29060c4657b6d420b272186e9088de4936c98a07",
       "duration": 5.138
     },
+    "zh_en_male_1@0.9-pitch1.3|好吧，那我吃一個。": {
+      "file": "lesson-test-studio/v1/d652b7744a22.mp3",
+      "sha256": "d652b7744a2268d746b074610e4fbd532e5fdf1da7b04c15631e3e7d2da60360",
+      "duration": 2.243
+    },
     "zh_en_male_1@0.9-pitch1.3|好吧，那我明天先拿去店裡問問看。": {
       "file": "lesson-test-studio/v1/a3efd18d7c35.mp3",
       "sha256": "a3efd18d7c35d5fb2e1436c910879a9dfb0283f32edb84b5acd83d0cde0e4410",
@@ -7972,6 +9037,11 @@
       "sha256": "771e07b1a56d0f8176f0fc5be71e57c2d6d61793c57fc56bde10390d0e7d52c9",
       "duration": 10.902
     },
+    "zh_en_male_1@0.9-pitch1.3|妳上個週末去高雄玩，花了多少錢？": {
+      "file": "lesson-test-studio/v1/b26657621bf8.mp3",
+      "sha256": "b26657621bf8bb367c9127aa4849cae6c34e71df511a4ddb29ec82876ddacb24",
+      "duration": 4.306
+    },
     "zh_en_male_1@0.9-pitch1.3|妳在這家店看了一個下午，決定買哪一輛腳踏車了嗎？": {
       "file": "lesson-test-studio/v1/a18b27ba6a33.mp3",
       "sha256": "a18b27ba6a3323c099c90a003d10d1b7be174de4566adb2fbb894a3c4b4d1e37",
@@ -7981,6 +9051,11 @@
       "file": "lesson-test-studio/v1/e1e1aaa5d50c.mp3",
       "sha256": "e1e1aaa5d50cf3520e8eaa2128c811de08a124460dc9ba1a054487cf04a115fc",
       "duration": 6.864
+    },
+    "zh_en_male_1@0.9-pitch1.3|妳從捷運站往右走，過了第二個路口，博物館就在左邊。": {
+      "file": "lesson-test-studio/v1/e978f74f1e48.mp3",
+      "sha256": "e978f74f1e48ae683de1fb2c2bf98ee4c25c5e1421c4f777b8a17cd537c5b48f",
+      "duration": 6.318
     },
     "zh_en_male_1@0.9-pitch1.3|妳怎麼買了這麼多泡麵和水？家裡要開店嗎？": {
       "file": "lesson-test-studio/v1/013173d73343.mp3",
@@ -8012,15 +9087,30 @@
       "sha256": "5107e79dea0d07fd71131cd281e9ac337558929a8000abd960b78a9f431c4070",
       "duration": 7.355
     },
+    "zh_en_male_1@0.9-pitch1.3|妳記錯了，口試是星期五。明天下午沒有課，我只要把作文交給老師就好了。": {
+      "file": "lesson-test-studio/v1/a42d93b71e30.mp3",
+      "sha256": "a42d93b71e30d9ac0b5a95cb14f96ed1e101d81f442c405514e65c6f2c7d7d32",
+      "duration": 8.89
+    },
     "zh_en_male_1@0.9-pitch1.3|妳說得也對，讓我再想一想。": {
       "file": "lesson-test-studio/v1/dcfcfbd2b783.mp3",
       "sha256": "dcfcfbd2b783bcee68ea1b6e81557865351e69732bf11ad56a59a6de333c8533",
       "duration": 3.042
     },
+    "zh_en_male_1@0.9-pitch1.3|學校後面那條路車很少，妳可以先在那裡練習。": {
+      "file": "lesson-test-studio/v1/f0315073df4e.mp3",
+      "sha256": "f0315073df4ef031c4be2d20d4a06a59d37dcb3ff26593b4b2bfd97644181877",
+      "duration": 5.309
+    },
     "zh_en_male_1@0.9-pitch1.3|對，一個月少一萬塊。我原來打算明年再換，可是設計遊戲是我從小的夢想，就算錢少一點，我也要去。下個月就開始上班了。": {
       "file": "lesson-test-studio/v1/243c3f0452a8.mp3",
       "sha256": "243c3f0452a8a859563218bc167d73721a0bf9aa07d5d7129a5e3a132cd1bed0",
       "duration": 14.599
+    },
+    "zh_en_male_1@0.9-pitch1.3|對，下午的課我不想去了，想在宿舍休息一下。": {
+      "file": "lesson-test-studio/v1/991c30ea22b2.mp3",
+      "sha256": "991c30ea22b28c0b25b35074a9adaa66ff3b2dee702d7b572c6420e5b3200f4e",
+      "duration": 5.543
     },
     "zh_en_male_1@0.9-pitch1.3|對，不過連他也覺得我爸爸的比較好。": {
       "file": "lesson-test-studio/v1/df917c32c370.mp3",
@@ -8032,10 +9122,20 @@
       "sha256": "82a19406ddbdbcc6a16a608eeac1efa9db6f39ad7befef433c5f004a2a481096",
       "duration": 7.875
     },
+    "zh_en_male_1@0.9-pitch1.3|對，從昨天晚上就開始咳嗽了。要是明天發燒，我就請假去看醫生。": {
+      "file": "lesson-test-studio/v1/271bf6336704.mp3",
+      "sha256": "271bf6336704219d0ebbcb3ff12129f01d7aaa7ee6eafe20a9b647c53491ce1f",
+      "duration": 8.319
+    },
     "zh_en_male_1@0.9-pitch1.3|對啊。當模特兒可以認識很多做設計的人，對我以後的工作有幫助。再說，給的錢也不少。我媽媽要我拿這些錢去買車，可是我想先存一年，以後去國外念書。": {
       "file": "lesson-test-studio/v1/f628d1de7671.mp3",
       "sha256": "f628d1de767161dd52e61ca7551be053ede6a1a626b597b6578c64fe608ecbbb",
       "duration": 17.863
+    },
+    "zh_en_male_1@0.9-pitch1.3|對喔，那妳明天早上一下課就打，問到了就告訴我。": {
+      "file": "lesson-test-studio/v1/b32a8f830fac.mp3",
+      "sha256": "b32a8f830fac471caf24bd8b6ae32299446db3393fb0cff90da33e5809fe8c09",
+      "duration": 5.664
     },
     "zh_en_male_1@0.9-pitch1.3|小姐，您好，我是學校對面那家超商的店員。您昨天晚上在我們店裡吃東西的時候，把傘留在桌子上了，是一把黑色的。": {
       "file": "lesson-test-studio/v1/4791e506fe99.mp3",
@@ -8061,6 +9161,16 @@
       "file": "lesson-test-studio/v1/cb84194012d9.mp3",
       "sha256": "cb84194012d9058b628bfcfe4c8965ebad1f0c478689eb659725a7896f7129d3",
       "duration": 7.856
+    },
+    "zh_en_male_1@0.9-pitch1.3|平日三樓的小教室可以用到晚上十一點，坐得下六個人。想跟同學一起念書的，請先在網路上訂位。": {
+      "file": "lesson-test-studio/v1/81d2e7190b13.mp3",
+      "sha256": "81d2e7190b13978ff4da0c3861c905d8cf19a02b0dc4809434bfe310b9895a91",
+      "duration": 10.72
+    },
+    "zh_en_male_1@0.9-pitch1.3|很好玩，我還吃了很多好吃的東西。": {
+      "file": "lesson-test-studio/v1/bbf62f66762d.mp3",
+      "sha256": "bbf62f66762dac2cce072070e6fd913b05d3d9e81abca089577102cb7ae3dfa7",
+      "duration": 3.983
     },
     "zh_en_male_1@0.9-pitch1.3|快五十年了。我外婆說，這五十年來，他從來沒忘記過她的生日。": {
       "file": "lesson-test-studio/v1/51396d398797.mp3",
@@ -8097,6 +9207,16 @@
       "sha256": "5dd58de2a85bfbdf7e0b9abb60b92c553d281dcb7ba52fe059c8cdefc441fff4",
       "duration": 7.569
     },
+    "zh_en_male_1@0.9-pitch1.3|我們吃完飯去看電影，好不好？": {
+      "file": "lesson-test-studio/v1/b7017338032a.mp3",
+      "sha256": "b7017338032aac793282aac6cf1fe0c5efa3e8409de8db5fed73c69baf4d6f5e",
+      "duration": 3.497
+    },
+    "zh_en_male_1@0.9-pitch1.3|我們是在網路上認識的。她是別的大學的學生，看了我寫的文章，給我留言。": {
+      "file": "lesson-test-studio/v1/9c2685fbaf4f.mp3",
+      "sha256": "9c2685fbaf4fa85688ebcc6fecb3033b3df02d3d8dc061473b19f9026688d357",
+      "duration": 8.418
+    },
     "zh_en_male_1@0.9-pitch1.3|我們的中文老師下個月要退休了，班上的同學想送她禮物。有人說送花，有人說送書，大家想來想去，還是決定不了。": {
       "file": "lesson-test-studio/v1/86f09863cab5.mp3",
       "sha256": "86f09863cab5cd66b0019acdb751f4d05ab3f67bef4759ec042679bc956fbad7",
@@ -8107,10 +9227,20 @@
       "sha256": "8382c9db0d98b83e9609c87e7986022b521b4f3db1f59715516b4910e688ddab",
       "duration": 6.592
     },
+    "zh_en_male_1@0.9-pitch1.3|我剛剛上網看了，這個週末的票已經賣完了。下個月還有一場，我們看那場吧。": {
+      "file": "lesson-test-studio/v1/7a62ed4ad426.mp3",
+      "sha256": "7a62ed4ad4267346d763314aa66f718de7be1a0f3f00ac58cf8fac5c802eba80",
+      "duration": 8.423
+    },
     "zh_en_male_1@0.9-pitch1.3|我剛才打了，可是他們今天休息。算了，我明天下課再過來拿吧。": {
       "file": "lesson-test-studio/v1/1e40747d5b95.mp3",
       "sha256": "1e40747d5b955443970cd35c611118096c8118753c0bf36c5ac9e93e087f4665",
       "duration": 7.617
+    },
+    "zh_en_male_1@0.9-pitch1.3|我只好先去圖書館借，可是圖書館說要等一個月才借得到。": {
+      "file": "lesson-test-studio/v1/574293fee9b7.mp3",
+      "sha256": "574293fee9b71a59b5ce97f703944f4bfd3e54b5c431bde55328e25eb93df824",
+      "duration": 6.195
     },
     "zh_en_male_1@0.9-pitch1.3|我在一家做卡通的公司上班。我不畫卡通，也不寫故事，卡通人物說的話很多都是我錄的。": {
       "file": "lesson-test-studio/v1/8b80c68c2aa8.mp3",
@@ -8131,6 +9261,11 @@
       "file": "lesson-test-studio/v1/562286462ed4.mp3",
       "sha256": "562286462ed411c9720669ff392aa61dd4ff4ca856b971ab69fbd78bbc9cb5f0",
       "duration": 8.911
+    },
+    "zh_en_male_1@0.9-pitch1.3|我昨天去書店買那本小說，店員說已經賣光了，要兩個星期以後才有。": {
+      "file": "lesson-test-studio/v1/79c86eee8b6e.mp3",
+      "sha256": "79c86eee8b6ea7e59824c81f66e7714917f86e5cb9aef357a479cf44068521e5",
+      "duration": 7.466
     },
     "zh_en_male_1@0.9-pitch1.3|我昨天在路上遇到一位導演，他說我身高夠高，想請我去拍廣告。可是我從來沒拍過，有點害怕，就說不要了。": {
       "file": "lesson-test-studio/v1/6de9b96ac730.mp3",
@@ -8167,6 +9302,11 @@
       "sha256": "bdfd84c09da4d7db82dfdde2aa6b1143031ab6750ab6ac6c317102e559252779",
       "duration": 7.123
     },
+    "zh_en_male_1@0.9-pitch1.3|早就寫完了，昨天晚上寫到兩點呢！": {
+      "file": "lesson-test-studio/v1/d79bb85bdf7f.mp3",
+      "sha256": "d79bb85bdf7fd3823e5e5db726634ddc825bef14f6962ce1a859445c272cc124",
+      "duration": 4.04
+    },
     "zh_en_male_1@0.9-pitch1.3|明天去爬山的東西都準備好了嗎？": {
       "file": "lesson-test-studio/v1/53b7c1c054d5.mp3",
       "sha256": "53b7c1c054d5b391f69b4867abd971cdfad76c5d1f5e203ba34246904943152a",
@@ -8177,15 +9317,35 @@
       "sha256": "e5e1ba9bddccf6a7c6857aa2fff387f33c1b0ab14f084729024fc72bb4494876",
       "duration": 4.447
     },
+    "zh_en_male_1@0.9-pitch1.3|星期五我上課上到九點，等我下了課，就去找妳。": {
+      "file": "lesson-test-studio/v1/db92a8031c1d.mp3",
+      "sha256": "db92a8031c1dbe8dad4b1e48b3250bd96d13e6abadfd29aca42b9d384489cf77",
+      "duration": 5.844
+    },
     "zh_en_male_1@0.9-pitch1.3|是啊，他的下一部戲我一定去看。": {
       "file": "lesson-test-studio/v1/e7ad4aaa22df.mp3",
       "sha256": "e7ad4aaa22df61ba1921d167d42b6e541c6b73234da726fea0f0e70264494d62",
       "duration": 3.537
     },
+    "zh_en_male_1@0.9-pitch1.3|期末考快到了，我們八個同學想找地方一起念書，圖書館的小教室坐得下嗎？": {
+      "file": "lesson-test-studio/v1/2da5049142b1.mp3",
+      "sha256": "2da5049142b16f3c9b231463c75944093b98c37317f77cd66e0ae59427dc8986",
+      "duration": 8.292
+    },
     "zh_en_male_1@0.9-pitch1.3|本來想在家裡請，可是我家太小了；朋友開的餐廳又太遠。我跟我太太找來找去，終於找到一家離我家很近的。": {
       "file": "lesson-test-studio/v1/dc078f18fce3.mp3",
       "sha256": "dc078f18fce330387d4b9532425747d049c9267995fd1a96af9edd39600eded0",
       "duration": 12.197
+    },
+    "zh_en_male_1@0.9-pitch1.3|本來想約在我們學校的圖書館，後來約在學校附近的一家咖啡廳。": {
+      "file": "lesson-test-studio/v1/840e6bffc07f.mp3",
+      "sha256": "840e6bffc07f8ce6393e09503fcaea70d5f3c27536c353f9c882c08bf990162b",
+      "duration": 6.578
+    },
+    "zh_en_male_1@0.9-pitch1.3|本來要去花蓮，後來聽說那幾天會下大雨，就去了高雄。": {
+      "file": "lesson-test-studio/v1/f155eb9463cb.mp3",
+      "sha256": "f155eb9463cb9e20f55b325236d96241e997553fee2dd3c1a7cfdbd02e54fc3e",
+      "duration": 6.659
     },
     "zh_en_male_1@0.9-pitch1.3|樓下的經理剛才打電話來，說要看這些資料。妳能順便拿給他嗎？": {
       "file": "lesson-test-studio/v1/1f97691e080b.mp3",
@@ -8206,6 +9366,11 @@
       "file": "lesson-test-studio/v1/3e7fb074592f.mp3",
       "sha256": "3e7fb074592f42b6404bb145c551087a061f66288610693dd6b5cbdaf2560152",
       "duration": 5.3
+    },
+    "zh_en_male_1@0.9-pitch1.3|沒關係，我也跳得不好，大家都是去玩的。": {
+      "file": "lesson-test-studio/v1/b6fc76089a6c.mp3",
+      "sha256": "b6fc76089a6c071aa81545dfb221ee1b5d449b847ec28dd73bdadbb9ab4a1389",
+      "duration": 4.946
     },
     "zh_en_male_1@0.9-pitch1.3|沒關係，我可以在火車上念書。": {
       "file": "lesson-test-studio/v1/baca0ea5e0b2.mp3",
@@ -8232,6 +9397,11 @@
       "sha256": "a7220c7dc008b2ad273bcfb24f041fdb8a816a1f2043ede5c9e3c8b04c8067d4",
       "duration": 12.55
     },
+    "zh_en_male_1@0.9-pitch1.3|真好！那妳買了什麼名產回來？": {
+      "file": "lesson-test-studio/v1/f3bfb9fb5f10.mp3",
+      "sha256": "f3bfb9fb5f10ee9e1b67b4b16bdaadc186a6d03a2e34b647df324c34e3d9848a",
+      "duration": 3.464
+    },
     "zh_en_male_1@0.9-pitch1.3|真的嗎？妳怎麼沒跟我說？我也想去啊！": {
       "file": "lesson-test-studio/v1/31fdb211843a.mp3",
       "sha256": "31fdb211843a45c8f43eef0cd715136f7756a89dd553e20b1f0c8bc25e1ce215",
@@ -8251,6 +9421,11 @@
       "file": "lesson-test-studio/v1/64dc5b2f95d0.mp3",
       "sha256": "64dc5b2f95d07495f5103591c2c2b07f4f8be7b7c1678d1f75a1d631f64b6fcb",
       "duration": 9.904
+    },
+    "zh_en_male_1@0.9-pitch1.3|筆試十點才開始，教授昨天晚上在網路上說的，九點半到教室就可以了。": {
+      "file": "lesson-test-studio/v1/e86985369d28.mp3",
+      "sha256": "e86985369d28a6a80534d02b9dd159b8d92aabcbb03f218ef3475e1a216ddc5d",
+      "duration": 8.092
     },
     "zh_en_male_1@0.9-pitch1.3|等一下，先試躺看看。床一定要躺過才知道適合不適合自己。": {
       "file": "lesson-test-studio/v1/897ed8c7bbff.mp3",
@@ -8282,6 +9457,16 @@
       "sha256": "2d3874c6ba89a04376df12892ef054203512751289ba02cc14ded7ff36eee8da",
       "duration": 13.639
     },
+    "zh_en_male_1@0.9-pitch1.3|舞會快結束了，我們去外面散步，好不好？妳跳了一個晚上，一定很累了吧？": {
+      "file": "lesson-test-studio/v1/f61561f9ddee.mp3",
+      "sha256": "f61561f9ddee9cdd5ec3a2daa83711de71a72e25a65f3b639b739ebecfa2feda",
+      "duration": 8.849
+    },
+    "zh_en_male_1@0.9-pitch1.3|謝謝，可是我現在太緊張了，一點東西都吃不下。": {
+      "file": "lesson-test-studio/v1/7ef77096f113.mp3",
+      "sha256": "7ef77096f113ca56556896b8b8b35efedb05414b39eba49c9938615680ed1d9c",
+      "duration": 5.739
+    },
     "zh_en_male_1@0.9-pitch1.3|躺起來很舒服，床也夠長，腳不會跑到外面。可是我一動，床就有聲音，晚上會吵到妳。我們再去看看別張吧。": {
       "file": "lesson-test-studio/v1/f55c82057a18.mp3",
       "sha256": "f55c82057a18568136458dc79a3f8be8bc9b97b91bcc284ea7f617b1e419d494",
@@ -8297,6 +9482,11 @@
       "sha256": "fc3e010c488cf1e3ef067b4a8af3a2830835c87d470381f9fb4317972eb69d37",
       "duration": 7.107
     },
+    "zh_en_male_1@0.9-pitch1.3|這個禮拜六學校有舞會，妳要不要一起去？": {
+      "file": "lesson-test-studio/v1/ffe7013deb2a.mp3",
+      "sha256": "ffe7013deb2acc4757f3e7da64c498716dcb87fcaaed25d983ddd0ad249cf101",
+      "duration": 4.494
+    },
     "zh_en_male_1@0.9-pitch1.3|這個課程一共八個星期。前四個星期，我們學怎麼寫劇本；後四個星期，每個人要跟兩位同學一起，拍出一部十分鐘的電影。": {
       "file": "lesson-test-studio/v1/1c6a01ff120c.mp3",
       "sha256": "1c6a01ff120c237bc393eab2a173b6e1411ea22defbc7dae220016fd466cda20",
@@ -8311,6 +9501,16 @@
       "file": "lesson-test-studio/v1/e3bde1e76268.mp3",
       "sha256": "e3bde1e762682266f124f62fd0c081a7d9e05ae0e0cfa27ae65688204bc48dee",
       "duration": 5.224
+    },
+    "zh_en_male_1@0.9-pitch1.3|這個週末我想約我喜歡的那個女生出去吃飯，妳覺得去哪裡好？": {
+      "file": "lesson-test-studio/v1/752cf419f1a8.mp3",
+      "sha256": "752cf419f1a88858aee43a0cc5534889f23a1778501e0bab1abade335f39eec3",
+      "duration": 6.109
+    },
+    "zh_en_male_1@0.9-pitch1.3|這個週末我要在家做功課，下個週末再去看電影吧。": {
+      "file": "lesson-test-studio/v1/e3744ca3347e.mp3",
+      "sha256": "e3744ca3347ebfdd1a1e84f7bec19a3b000d90ec2e12a87c6ac9041183f4caff",
+      "duration": 5.502
     },
     "zh_en_male_1@0.9-pitch1.3|這兩家賣的完全一樣，一家兩千三，一家兩千兩百五。我想再找找更便宜的。": {
       "file": "lesson-test-studio/v1/5897322d07ad.mp3",
@@ -8352,6 +9552,11 @@
       "sha256": "bd2acc91c5a3a5fada5fcb13153bda6711c2be630ab542eeb86cad0dfbd643c7",
       "duration": 10.979
     },
+    "zh_en_male_1@0.9-pitch1.3|還有，借了書的同學，請在學期結束以前把書還回來，要不然下個學期就不能再借書了。謝謝大家！": {
+      "file": "lesson-test-studio/v1/dbae9eb76039.mp3",
+      "sha256": "dbae9eb7603954b5c90db90dac717a0225b763fe5f3f9839f9fc87814a34bec8",
+      "duration": 11.818
+    },
     "zh_en_male_1@0.9-pitch1.3|還有，颱風可能會造成停電，請大家先準備好收音機和電池，家裡也要有兩三天的水和食物。萬一淹水了，得離開家，請打開收音機聽我們的廣播，我們會告訴大家，哪個學校可以讓大家去住。": {
       "file": "lesson-test-studio/v1/409eb42a33d8.mp3",
       "sha256": "409eb42a33d87487e2e6f4e88d5a7ae17965984b3f74cbf244c64a6dd38c1ae5",
@@ -8361,6 +9566,11 @@
       "file": "lesson-test-studio/v1/746928effffa.mp3",
       "sha256": "746928effffa211f9c035017682d4d02f8c2be27018569221344e97974cc525b",
       "duration": 7.307
+    },
+    "zh_en_male_1@0.9-pitch1.3|還沒有。他有點害羞，下了課就一個人回宿舍。": {
+      "file": "lesson-test-studio/v1/b91165ed38df.mp3",
+      "sha256": "b91165ed38df226b4f5962a9bf5026caf9381f508ced037993cabffe7a9b3051",
+      "duration": 5.683
     },
     "zh_en_male_1@0.9-pitch1.3|那個地攤的襪子，我以後不再買了。上個月買的那幾雙，大小是剛好，可是洗了兩、三次就破了。": {
       "file": "lesson-test-studio/v1/b61b75582b86.mp3",
@@ -8407,6 +9617,11 @@
       "sha256": "48c03d6bdd81085cfe5705667c77c2c10abc6317fde6d92cdb751b33cc4c0c63",
       "duration": 2.117
     },
+    "zh_en_male_1@0.9-pitch1.3|那我們下次再一起去吧，我也想介紹我的朋友給妳認識。": {
+      "file": "lesson-test-studio/v1/1af549706b2e.mp3",
+      "sha256": "1af549706b2e258f73d1176c6e50ec00db85d6a49ce75326a9653ecd46284896",
+      "duration": 5.496
+    },
     "zh_en_male_1@0.9-pitch1.3|那我們去看看那輛輕一點的吧。": {
       "file": "lesson-test-studio/v1/a7c9caf4390b.mp3",
       "sha256": "a7c9caf4390bd6691820d3b45c180a6a23bef5d06ff413224c89aaa5826985f2",
@@ -8421,6 +9636,11 @@
       "file": "lesson-test-studio/v1/67a0b83425c0.mp3",
       "sha256": "67a0b83425c0c3544c4a5e06af598e4a773ad18634d56daae7d69f56145663a7",
       "duration": 4.586
+    },
+    "zh_en_male_1@0.9-pitch1.3|那裡人太多了，不能好好聊天。": {
+      "file": "lesson-test-studio/v1/6f56db492855.mp3",
+      "sha256": "6f56db492855a3e63d32297a88207d8fbbffdb48a2bec52a03cf7f71c004e7a4",
+      "duration": 3.614
     },
     "zh_en_male_1@0.9-pitch1.3|那這兩天妳要出門，就只好走路了。": {
       "file": "lesson-test-studio/v1/f1fe232c613a.mp3",
