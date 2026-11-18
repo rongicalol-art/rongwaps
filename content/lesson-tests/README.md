@@ -270,6 +270,10 @@ python3 scripts/assets/lesson-test-art/cut.py b1l04-drinks:strip b1l04-menu:sing
    (the lesson's words, grammar points, dialogues, reading pictures and what earlier lessons taught).
 2. Draft the lesson to the slot plan above, then check it until it is clean:
    `npx tsx scripts/content/checkLessonTest.ts <draft.json> --no-pictures` (same rules as the content tests).
+   The checker only sees characters, so also read the review list from
+   `npx tsx scripts/content/lessonTestScopeScan.ts <draft.json>`: words built from taught pieces that are not
+   taught themselves (各位, 過生日) and grammar the book teaches later (早就, V下來). Reword any that is more than
+   the sum of its pieces.
 3. Blind review: `npx tsx scripts/content/lessonTestSheet.ts <draft.json> --mode learner --out sheet.md`
    (and `--mode choices`) gives reviewers the test without its keys. Two solvers answer it blind, one only
    from the choices, and a language reviewer reads the full draft; every disagreement is fixed or justified.
