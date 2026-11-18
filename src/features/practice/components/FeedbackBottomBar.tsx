@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../store/useAppStore';
-import { ActionButton, AppIcon, IconActionButton, KeyChip } from '../../../lib/widgets';
+import { ActionButton, AppIcon, IconActionButton, KeyChip, type AppIconName } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { isTappedFocus, watchTaps } from '../../../utils/browser/tappedFocus';
 import { usePracticeDockSlot } from './PracticeDockSlot';
@@ -43,6 +43,8 @@ export interface FeedbackBottomBarProps {
   layout?: 'auto' | 'stacked' | 'wide';
   /** The bar's box, so a screen can keep its content clear of it (its height changes with the result). */
   barRef?: React.Ref<HTMLDivElement>;
+  /** A second action beside Continue once the answer shows (lesson tests: open the Script). */
+  secondaryAction?: { label: string; icon: AppIconName; onPress: () => void };
 }
 
 export function FeedbackBottomBar({ 
@@ -64,6 +66,7 @@ export function FeedbackBottomBar({
   onRetry,
   layout = 'auto',
   barRef,
+  secondaryAction,
 }: FeedbackBottomBarProps) {
   
   const reduceMotion = useReducedMotion();
@@ -239,7 +242,20 @@ export function FeedbackBottomBar({
 
 
               {(showSkipAction || showContinueAction || showCheckAction || showRetryAction) && (
-                <div className={cn('flex w-full items-center gap-3', isChecked && layout !== 'stacked' && 'lg:w-72 lg:shrink-0')}>
+                <div className={cn('flex w-full items-center gap-3', isChecked && layout !== 'stacked' && (secondaryAction ? 'lg:w-auto lg:min-w-[22rem] lg:shrink-0' : 'lg:w-72 lg:shrink-0'))}>
+                {isChecked && secondaryAction && (
+                  <ActionButton
+                    onClick={secondaryAction.onPress}
+                    variant="secondary"
+                    size="lg"
+                    className="shrink-0 uppercase tracking-wider text-base font-black btn-touch-primary md:text-[17px]"
+                  >
+                    <span className="flex items-center gap-2">
+                      <AppIcon name={secondaryAction.icon} size={20} />
+                      {secondaryAction.label}
+                    </span>
+                  </ActionButton>
+                )}
                 {showSkipAction ? (
                   <ActionButton
                     onClick={onSkip}

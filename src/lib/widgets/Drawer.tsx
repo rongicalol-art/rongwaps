@@ -52,6 +52,8 @@ export interface DrawerContentProps {
   dragToDismiss?: boolean;
   /** md+ presentation: centered `card` (default) or a right-docked `side` panel. */
   mdPlacement?: 'card' | 'side';
+  /** With `mdPlacement="side"`: below md a bottom sheet (`heightClassName`, drag to dismiss) instead of a full-height panel. */
+  phoneSheet?: boolean;
   ariaLabel?: string;
   className?: string;
   children: ReactNode;
@@ -120,6 +122,7 @@ export function DrawerContent({
   heightClassName = 'max-h-[85vh]',
   dragToDismiss = true,
   mdPlacement = 'card',
+  phoneSheet = false,
   ariaLabel,
   className,
   children,
@@ -127,6 +130,7 @@ export function DrawerContent({
   const { open, onClose, dragControls, titleId, tone, workspaceBound } = useDrawerContext();
   const isCard = useMediaQuery('(min-width: 768px)');
   const isSide = mdPlacement === 'side';
+  const sheetBelowMd = isSide && phoneSheet;
   const drawerRef = useRef<HTMLDivElement>(null);
   const modalFocus = useModalFocus({ containerRef: drawerRef, isActive: open, onEscape: onClose });
 
@@ -146,7 +150,7 @@ export function DrawerContent({
         aria-labelledby={titleId}
         tabIndex={-1}
         onKeyDown={modalFocus.onKeyDown}
-        drag={dragToDismiss && !isCard && !isSide ? 'y' : false}
+        drag={dragToDismiss && !isCard && (!isSide || sheetBelowMd) ? 'y' : false}
         dragListener={false}
         dragControls={dragControls}
         dragConstraints={{ top: 0 }}
@@ -157,7 +161,9 @@ export function DrawerContent({
         className={cn(
           'absolute bottom-0 left-0 right-0 shadow-ambient-lg flex flex-col pointer-events-auto overflow-hidden',
           DRAWER_TONE_BG_CLASSES[tone],
-          isSide
+          sheetBelowMd
+            ? cn(DRAWER_TONE_CONTAINER_CLASSES[tone], heightClassName, 'md:top-auto md:h-full md:max-h-full md:w-[26rem] md:max-w-full md:mx-0 md:rounded-none')
+            : isSide
             ? 'top-0 h-full max-h-full rounded-none md:top-auto md:h-full md:max-h-full md:w-[26rem] md:max-w-full md:mx-0'
             : cn(DRAWER_TONE_CONTAINER_CLASSES[tone], DRAWER_SIZE_CLASSES[size], heightClassName, 'md:relative md:inset-auto md:h-auto md:max-h-[80vh] md:w-full md:rounded-modal'),
           'md:relative md:inset-auto md:border-0',
@@ -256,6 +262,7 @@ export interface DrawerProps {
   size?: DrawerSize;
   heightClassName?: string;
   mdPlacement?: DrawerContentProps['mdPlacement'];
+  phoneSheet?: boolean;
   closeLabel?: string;
   showCloseButton?: boolean;
   dragToDismiss?: boolean;
@@ -284,6 +291,7 @@ export function Drawer({
   size = 'md',
   heightClassName = 'max-h-[85vh]',
   mdPlacement,
+  phoneSheet = false,
   closeLabel = 'Close drawer',
   showCloseButton = true,
   dragToDismiss = true,
@@ -306,6 +314,7 @@ export function Drawer({
         size={size}
         heightClassName={heightClassName}
         mdPlacement={mdPlacement}
+        phoneSheet={phoneSheet}
         dragToDismiss={dragToDismiss}
         ariaLabel={title ? undefined : (ariaLabel ?? 'Drawer')}
         className={className}
@@ -317,7 +326,7 @@ export function Drawer({
         )}
 
         <>
-          {mdPlacement !== 'side' && <DrawerHandle className="pt-4 pb-2" />}
+          {(mdPlacement !== 'side' || phoneSheet) && <DrawerHandle className="pt-4 pb-2" />}
           {hasHeader && (
             <div className="flex items-center justify-between px-6 pb-4 pt-4 md:pt-6">
               {title &&

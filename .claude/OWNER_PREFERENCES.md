@@ -16,7 +16,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - Use the fewest zones that do the job. When a screen feels empty, fix the composition (size, alignment, centring) before adding anything.
 - An element belongs if it tells the learner something they need right now. Rejected again and again because they only repeated what the screen already showed: description lines, "what you'll learn" lists, word-chip previews, stats lines, breadcrumbs ("Lesson 1 · Part 1 vocabulary"), status pills ("Review · 1 of 2", "Missed", "Done"), counts next to buttons, floating helper text.
 - A bordered box inside a bordered container (a tile inside a card inside a bar) reads as messy. Inside a container, use plain text with hierarchy: size, weight, ink colour.
-- Helper content that isn't the main task (hints, examples) sits behind a quiet toggle. Settings are plain label-and-control pairs.
+- Helper content that isn't the main task (hints, examples) sits behind a quiet toggle. Settings are plain label-and-control pairs. Longer study extras open from a button into a sheet (side panel on desktop) rather than unfolding into the screen: the owner picked the lesson test's Script sheet over a speaker that opens in place.
 - A button that can't be used is clutter: if a mode has no content, leave the action out instead of showing it disabled.
 
 **Tactile, not flat.**

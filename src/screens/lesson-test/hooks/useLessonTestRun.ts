@@ -12,7 +12,8 @@ import {
 } from '../../../utils/lesson/lessonTestPlan';
 import type { LessonTestAttempt } from '../../../store/slices/lessonTestSlice';
 
-export type TestStage = 'intro' | 'question' | 'results' | 'fix' | 'done';
+/** `all`: See all, every question again in order with the test's answers checked (after the Fix round). */
+export type TestStage = 'intro' | 'question' | 'results' | 'fix' | 'done' | 'all';
 
 /** A fresh run, or the saved one for this lesson (closing the app mid-test resumes it). */
 function startAttempt(lesson: LessonTestLesson): LessonTestAttempt {
@@ -42,7 +43,8 @@ function reviewMissedWords(missed: LessonTestQuestion[], sessionId: string): boo
 
 /**
  * The test's flow: part intro → questions (no right or wrong, no going back) → results → Fix round over
- * every miss (answers checked, with the reason) → done. The run is saved after every answer.
+ * every miss (answers checked, with the reason) → done, and from there See all (every question, checked). The run
+ * is saved after every answer.
  */
 export function useLessonTestRun(lesson: LessonTestLesson) {
   const [attempt, setAttempt] = useState(() => startAttempt(lesson));
@@ -52,6 +54,7 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
   const [fixIndex, setFixIndex] = useState(0);
   const [fixAnswers, setFixAnswers] = useState<Record<string, number>>({});
   const [checked, setChecked] = useState(false);
+  const [allIndex, setAllIndex] = useState(0);
 
   const save = useCallback((next: LessonTestAttempt) => {
     setAttempt(next);
@@ -106,6 +109,17 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
     setStage(fixScreens.length ? 'fix' : 'done');
   }, [fixScreens.length]);
 
+  /** See all: from the first question, each shown with the answer given in the test; it ends where the Fix round does. */
+  const startAll = useCallback(() => {
+    setAllIndex(0);
+    setStage('all');
+  }, []);
+
+  const continueAll = useCallback(() => {
+    if (allIndex + 1 >= screens.length) setStage('done');
+    else setAllIndex(allIndex + 1);
+  }, [allIndex, screens.length]);
+
   const continueFix = useCallback(() => {
     setChecked(false);
     if (fixIndex + 1 >= fixScreens.length) setStage('done');
@@ -138,5 +152,9 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
     check: () => setChecked(true),
     startFix,
     continueFix,
+    allScreen: screens[allIndex] as LessonTestScreen | undefined,
+    allIndex,
+    startAll,
+    continueAll,
   };
 }

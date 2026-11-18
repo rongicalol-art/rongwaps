@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import type { LessonTestItem, LessonTestQuestion, LessonTestSounds, TestText } from '../../../types/lessonTest';
 import type { PlannedItem } from '../../../utils/lesson/lessonTestPlan';
@@ -6,12 +6,14 @@ import { cn } from '../../../utils/cn';
 import { useTestAudio } from '../hooks/useTestAudio';
 import { listeningSteps } from '../testAudioSequence';
 import { testPicture } from '../testPictures';
+import { testScript } from '../testScript';
 import { ChineseText } from './ChineseText';
 import { ChoiceList, type Script } from './ChoiceList';
 import { GroupQuestions } from './GroupQuestions';
 import { GapSentence } from './GapSentence';
 import { ParagraphBlanks } from './ParagraphBlanks';
 import { PictureChoices } from './PictureChoices';
+import { ScriptSheet } from './ScriptSheet';
 import { TestSpeaker } from './TestSpeaker';
 
 /** The instruction above each question, by kind (TOCFL prints one per part; ours stays short). */
@@ -127,22 +129,25 @@ export interface QuestionBodyProps {
   answers: Record<string, number>;
   /** Fix round, after Check: right and wrong show. */
   checked: boolean;
-  /** `exam`: recordings play twice on their own; `replay`: once, with a replay button (Fix round). */
-  mode: 'exam' | 'replay';
+  /** `exam`: recordings play on their own; `replay`: once, with a replay button (Fix round); `review`: on a tap (See all). */
+  mode: 'exam' | 'replay' | 'review';
   sounds: LessonTestSounds;
   script: Script;
   /** This screen's recordings are downloaded (or can stream): the audio starts then, never part-way late. */
   audioReady: boolean;
-  /** Question number of the screen's first question (paragraph blanks show it). */
+  /** Question number of the item's first question on the test (paragraph blanks and question groups show numbers). */
   firstNumber: number;
   onAnswer: (questionId: string, choice: number | undefined) => void;
+  /** The Script sheet (Fix round and See all, after Check). */
+  scriptOpen?: boolean;
+  onCloseScript?: () => void;
 }
 
 /**
  * One screen of the test, one column at every size like TOCFL's computer test: the instruction, then the
  * recording, picture or text, then the answers, all one width so their edges line up.
  */
-export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, audioReady, firstNumber, onAnswer }: QuestionBodyProps) {
+export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, audioReady, firstNumber, onAnswer, scriptOpen = false, onCloseScript }: QuestionBodyProps) {
   const screenKey = questionIds.join(',');
   // The screen's questions: one, or every question of a recording (the Fix round keeps only the missed ones).
   const questions = useMemo(() => {
@@ -154,6 +159,18 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   const steps = useMemo(() => listeningSteps(item, questions, planned.orders, sounds, script), [item, questions, planned.orders, sounds, script]);
   const audio = useTestAudio(steps, `${mode}:${item.id}:${screenKey}`, mode, audioReady, item.kind === 'dialogue' && item.plays === 1 ? 1 : 2);
   const reduceMotion = useReducedMotion();
+  // A question's number on the test (the Fix round may show only the missed one of a recording's questions).
+  const numberOf = useCallback(
+    (entry: LessonTestQuestion) => firstNumber + Math.max(0, item.questions.findIndex((other) => other.id === entry.id)),
+    [firstNumber, item],
+  );
+  const scriptContent = useMemo(
+    () => (checked ? testScript(item, questions, planned.orders, numberOf) : null),
+    [checked, item, questions, planned.orders, numberOf],
+  );
+  const { stop, finish } = audio;
+  // Opening the Script ends the screen's own play (it won't start again behind the sheet), so only one thing plays.
+  useEffect(() => { if (scriptOpen) finish(); }, [scriptOpen, finish]);
   const selected = answers[question.id];
   const pick = (choice: number) => onAnswer(question.id, choice);
   // Picture questions have no speaker (the answer being read presses in instead), unless a clip failed: then it offers a retry.
@@ -210,7 +227,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
           checked={checked}
           spoken={!item.printed}
           script={script}
-          firstNumber={firstNumber}
+          numbers={questions.map(numberOf)}
           asked={audio.asked}
           mark={audio.mark}
           markQuestion={audio.markQuestion}
@@ -263,6 +280,15 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       <h1 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong">{titleFor(item, question)}</h1>
       {stimulus && <div className="flex w-full flex-col items-center gap-5">{stimulus}</div>}
       <div className="flex w-full flex-col items-center gap-5">{answersPart}</div>
+      {scriptContent && (
+        <ScriptSheet
+          open={scriptOpen}
+          onClose={() => onCloseScript?.()}
+          script={scriptContent}
+          scriptPreference={script}
+          audio={{ line: audio.line, playing: audio.playing, say: (step) => { void audio.say(step); }, playThrough: (steps) => { void audio.playThrough(steps); }, stop }}
+        />
+      )}
     </div>
   );
 }

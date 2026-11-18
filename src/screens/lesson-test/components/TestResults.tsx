@@ -118,11 +118,13 @@ interface TestResultsProps {
   seconds: number;
   passed: boolean;
   onFix: () => void;
+  /** See all: every question again with its answer, the reason and the Script (offered here after a perfect test). */
+  onSeeAll: () => void;
   onLater: () => void;
 }
 
 /** After the test: how it went per part, what to fix, then the Fix round (or later). */
-export function TestResults({ lessonId, score, seconds, passed, onFix, onLater }: TestResultsProps) {
+export function TestResults({ lessonId, score, seconds, passed, onFix, onSeeAll, onLater }: TestResultsProps) {
   const [rows] = useState(() => focusRows(score, lessonId));
   const misses = score.missed.length;
   const percent = Math.round((score.correct / score.total) * 100);
@@ -133,7 +135,7 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onLater }
       success={passed}
       dock={misses > 0
         ? <TestDock label={`Fix ${misses} mistake${misses === 1 ? '' : 's'}`} onPress={onFix} secondary={{ label: 'Later', onPress: onLater }} />
-        : <TestDock label="Continue" onPress={onLater} />}
+        : <TestDock label="Continue" onPress={onLater} secondary={{ label: 'See all questions', onPress: onSeeAll }} />}
     >
       <div data-tiles className="grid w-full max-w-90 grid-cols-3 gap-3 md:max-w-110 md:gap-4">
         <StatTile
@@ -166,13 +168,13 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onLater }
   );
 }
 
-/** After the Fix round. */
-export function TestDone({ lessonId, passed, rescheduled, onClose }: { lessonId: number; passed: boolean; rescheduled: boolean; onClose: () => void }) {
+/** After the Fix round (or See all): back to the lesson, or See all, every question again. */
+export function TestDone({ lessonId, passed, rescheduled, onSeeAll, onClose }: { lessonId: number; passed: boolean; rescheduled: boolean; onSeeAll: () => void; onClose: () => void }) {
   return (
     <Celebration
       headline={passed ? ['Lesson', String(lessonId), 'passed!'] : ['Mistakes', 'fixed!']}
       success={passed}
-      dock={<TestDock label="Back to lesson" onPress={onClose} />}
+      dock={<TestDock label="Back to lesson" onPress={onClose} secondary={{ label: 'See all questions', onPress: onSeeAll }} />}
     >
       {rescheduled && <p className="text-center text-base font-bold text-ui-muted-strong">Missed words come back in your next review.</p>}
     </Celebration>
