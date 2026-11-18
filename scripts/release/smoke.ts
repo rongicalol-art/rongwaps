@@ -128,13 +128,26 @@ export function checks(options: Options): Check[] {
   ];
 }
 
+/** Static assets (served outside the Worker) can trail /healthz by a few seconds at the edge. */
+async function runCheck(run: () => Promise<void>, attempts = 4, delayMs = 3_000): Promise<void> {
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      await run();
+      return;
+    } catch (error) {
+      if (attempt >= attempts) throw error;
+      await sleep(delayMs);
+    }
+  }
+}
+
 async function main() {
   const options = parse(process.argv.slice(2));
   await waitForBuild(options);
   let failed = 0;
   for (const [name, run] of checks(options)) {
     try {
-      await run();
+      await runCheck(run);
       console.log(`ok   ${name}`);
     } catch (error) {
       failed += 1;
