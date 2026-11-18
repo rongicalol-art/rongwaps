@@ -11,7 +11,9 @@
 
 --engine yating voices the sentences with the owner-picked Yating API voices (雅婷 F, 家豪 M, 意晴 N; key
 YATING_API_KEY in .env) at each test's pace (YATING_PACE, after the textbook's recordings), and writes voices.json
-(each test's voice per role) for the receipt. The A/B/C/D letters stay the English Serena clips.
+(each test's voice per role) for the receipt. The A/B/C/D letters stay the English Serena clips already in the
+receipt (content/audio/lesson_test_audio.json), so they are not rendered again. A batch can hold only the tests to
+voice now: publishLessonTestAudio.ts adds them to the receipt and keeps the rest.
 
 Voices (TOCFL recordings use two dialogue voices and a separate narrator):
 - F: Vivian, the owner-approved studio voice;
@@ -279,9 +281,14 @@ def main():
                 instruct = NARRATOR_INSTRUCT if speaker == "N" else DIALOGUE_INSTRUCT
                 targets[clip_key(voice, text)] = {"key": clip_key(voice, text), "text": text, "voice": voice,
                                                   "speaker": speaker, "instruct": instruct, "lang": LANG_CODE}
-    for letter in LETTERS:
-        targets[clip_key(VOICES["N"], letter)] = {"key": clip_key(VOICES["N"], letter), "text": letter, "voice": VOICES["N"],
-                                                  "speaker": "N", "instruct": LETTER_INSTRUCT, "lang": "English"}
+    # The letters are the published English clips (owner's choice); a Yating batch reuses them from the receipt.
+    receipt = ROOT / "content/audio/lesson_test_audio.json"
+    published_letters = (json.loads(receipt.read_text(encoding="utf-8")).get("sounds", {}).get("letters")
+                         if args.engine == "yating" and receipt.exists() else None)
+    if not published_letters:
+        for letter in LETTERS:
+            targets[clip_key(VOICES["N"], letter)] = {"key": clip_key(VOICES["N"], letter), "text": letter, "voice": VOICES["N"],
+                                                      "speaker": "N", "instruct": LETTER_INSTRUCT, "lang": "English"}
 
     OUT.mkdir(parents=True, exist_ok=True)
     manifest_path = OUT / "manifest.json"

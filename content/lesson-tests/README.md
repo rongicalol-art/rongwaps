@@ -275,13 +275,15 @@ its own pace per voice (`YATING_PACE`: near natural speed, evened out between th
 short pause at commas). The ding is a recorded small bell (`scripts/audio/sounds/lesson-test-ding.mp3`, CC0).
 The script's default engine is the older local Qwen studio voices (Vivian, Dylan, Serena).
 
-1. Generate: `<venv>/bin/python scripts/audio/generateLessonTestAudio.py --engine yating --lessons b1l01 … b1l16`
-   (`<venv>` = `output/qwen-pilot-venv` in the main checkout; keys space-separated). Name every lesson
-   already voiced: the manifest is rewritten with only the named lessons.
+1. Generate: `<venv>/bin/python scripts/audio/generateLessonTestAudio.py --engine yating --lessons b2l01 b2l09`
+   (`<venv>` = `output/qwen-pilot-venv` in the main checkout; keys space-separated). The batch holds only the
+   lessons named, which is enough: publishing adds them to the receipt and keeps every other test's clips, and
+   the A–D letters are the published ones. Within one batch, name every lesson it has voiced so far (its
+   manifest is rewritten from the list).
 2. Check: `checkStudioBatch.py output/lesson-test-audio` (independent ASR must hear the whole line; endings
    must fade; lines the owner listened to and accepted are listed in the batch's `asr-reviewed.json`).
    Rejected takes are re-voiced by running step 1 again, at a speed nudged by at most 0.05.
 3. Publish: `node --env-file=<.env> --import tsx scripts/audio/publishLessonTestAudio.ts --upload`
-   (uploads to R2 under `lesson-test-studio/v1/`, writes the receipt with each test's voices).
+   (uploads to R2 under `lesson-test-studio/v1/`, merges the batch's clips and voices into the receipt).
 4. Export: `npm run lesson-tests:export -- --strict` (fails if a spoken line has no recording), then commit
    the content, receipt and pack together.
