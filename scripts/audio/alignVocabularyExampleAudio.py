@@ -10,9 +10,11 @@ audio.
 Usage:
   output/align-venv/bin/python scripts/audio/alignVocabularyExampleAudio.py --preview
   output/align-venv/bin/python scripts/audio/alignVocabularyExampleAudio.py --apply
+  output/align-venv/bin/python scripts/audio/alignVocabularyExampleAudio.py --book 2 --apply
 
+--apply with --book replaces only that book's examples and keeps the others.
 Requires the existing audio alignment environment, ffmpeg, and downloaded
-Book 1 / Book 3 tracks. The first run downloads torchaudio's MMS_FA checkpoint
+Book 1 / 2 / 3 tracks (Book 2: npm run audio:book2:download). The first run downloads torchaudio's MMS_FA checkpoint
 to the user's normal Torch cache (not the repository).
 """
 import argparse
@@ -36,12 +38,16 @@ ROOT = Path(__file__).resolve().parents[2]
 VOCAB_ROOT = ROOT / 'public/data/vocabulary'
 WORD_AUDIO_ROOT = ROOT / 'output/audio/vocabulary-trim-v1/originals'
 BOOK1_AUDIO_ROOT = ROOT / 'output/official-audio/book1'
+BOOK2_AUDIO_ROOT = ROOT / 'output/official-audio/book2/originals'
 BOOK3_AUDIO_ROOT = ROOT / 'output/official-audio/book3'
 BOOK1_INDEX = ROOT / 'content/audio/audio_index_book1.json'
+BOOK2_INDEX = ROOT / 'content/audio/audio_index_book2.json'
 BOOK3_INDEX = ROOT / 'content/audio/audio_index_book3.json'
 BOOK1_COURSE_EXAMPLES = ROOT / 'public/data/course-examples/book-1.json'
 BOOK1_MANIFEST = ROOT / 'content/audio/audio_manifest_book1.json'
+BOOK2_MANIFEST = ROOT / 'output/official-audio/book2/manifest.json'
 BOOK3_MANIFEST = BOOK3_AUDIO_ROOT / 'vocabulary-manifest.json'
+BOOKS = (1, 2, 3)
 REPORT_PATH = ROOT / 'output/audio/vocabulary-example-audio/alignment-report.json'
 DRAFT_PATH = ROOT / 'output/audio/vocabulary-example-audio/draft.json'
 CONTENT_PATH = ROOT / 'content/audio/vocabulary_example_audio.json'
@@ -289,7 +295,7 @@ def get_book_items(book_id):
     data = json.loads((VOCAB_ROOT / f'book-{book_id}.json').read_text())
     groups = {}
     for item in data['items']:
-        match = re.fullmatch(r'B([13])L(\d{2})-(\d)-(\d+)', item.get('id', ''))
+        match = re.fullmatch(r'B([123])L(\d{2})-(\d)-(\d+)', item.get('id', ''))
         if not match or int(match.group(1)) != book_id or int(match.group(2)) == 0:
             continue
         lesson_id, part_id, sequence = int(match.group(2)), int(match.group(3)), int(match.group(4))
@@ -314,13 +320,14 @@ def load_book1_candidates():
     return result
 
 
-def load_book3_tracks():
-    index = json.loads(BOOK3_INDEX.read_text())
-    return {
-        (int(re.search(r'B3-(\d{2})-(\d)-2\.mp3', entry['file']).group(1)),
-         int(re.search(r'B3-(\d{2})-(\d)-2\.mp3', entry['file']).group(2))): entry
-        for entry in index['vocabularyTracks']
-    }
+def load_vocabulary_tracks(index_path):
+    """Books 2 and 3 index one vocabulary track per lesson part, named B<book>-LL-P-2.mp3."""
+    index = json.loads(index_path.read_text())
+    tracks = {}
+    for entry in index['vocabularyTracks']:
+        match = re.fullmatch(r'B[23]-(\d{2})-(\d)-2\.mp3', entry['file'])
+        tracks[(int(match.group(1)), int(match.group(2)))] = entry
+    return tracks
 
 
 def source_template(item, cache):
@@ -930,12 +937,6 @@ def retry_unreliable_segments(model, waveform, device, emission, ratio, aligner,
             previous_window_example[win_key] = (seg_han, float(segment['end']))
 
 
-def track_reference(book_id, track, book3_track_index):
-    if book_id == 1:
-        return track['file'], track['id']
-    return track['file'], track['id']
-
-
 def reuse_exact_sentence_ranges(entries):
     """Share a verified recording when identical text occurs on multiple vocab cards."""
     ranges_by_sentence = {}
@@ -1032,7 +1033,7 @@ def make_audio_entry(book_id, file, score, word_segment, example_segment, next_s
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apply', action='store_true', help='write the reviewed full result to content/audio/')
-    parser.add_argument('--book', type=int, choices=[1, 3])
+    parser.add_argument('--book', type=int, choices=list(BOOKS))
     parser.add_argument('--lesson', type=int)
     parser.add_argument('--part', type=int)
     parser.add_argument('--device', choices=['auto', 'cpu', 'mps'], default='auto')
@@ -1041,17 +1042,17 @@ def parse_args():
 
 def main():
     args = parse_args()
-    filters = args.book is not None or args.lesson is not None or args.part is not None
-    if args.apply and filters:
-        raise ValueError('--apply requires the complete Books 1 and 3 corpus; filters are preview-only.')
+    if args.apply and (args.lesson is not None or args.part is not None):
+        raise ValueError('--apply needs whole books; --lesson and --part are preview-only.')
 
-    groups = {1: get_book_items(1), 3: get_book_items(3)}
-    book1_course_records = load_book1_course_examples() if args.book != 3 else []
+    books = (args.book,) if args.book is not None else BOOKS
+    groups = {book_id: get_book_items(book_id) for book_id in books}
+    book1_course_records = load_book1_course_examples() if 1 in books else []
     book1_candidates = load_book1_candidates()
-    book3_tracks = load_book3_tracks()
-    book3_index = json.loads(BOOK3_INDEX.read_text())
-    book1_manifest_files = manifest_files(BOOK1_MANIFEST)
-    book3_manifest_files = manifest_files(BOOK3_MANIFEST)
+    vocabulary_tracks = {2: load_vocabulary_tracks(BOOK2_INDEX), 3: load_vocabulary_tracks(BOOK3_INDEX)}
+    audio_roots = {1: BOOK1_AUDIO_ROOT, 2: BOOK2_AUDIO_ROOT, 3: BOOK3_AUDIO_ROOT}
+    source_manifests = {1: manifest_files(BOOK1_MANIFEST), 2: manifest_files(BOOK2_MANIFEST),
+                        3: manifest_files(BOOK3_MANIFEST)}
     word_cache = {}
     signal_cache = {}
     track_hashes = {}
@@ -1060,10 +1061,8 @@ def main():
     selected_groups = []
     total_assignments = 0
 
-    for book_id in (1, 3):
+    for book_id in books:
         for (lesson_id, part_id), items in sorted(groups[book_id].items()):
-            if args.book is not None and book_id != args.book:
-                continue
             if args.lesson is not None and lesson_id != args.lesson:
                 continue
             if args.part is not None and part_id != args.part:
@@ -1077,11 +1076,10 @@ def main():
             total_assignments += len(examples) + len(course_extras)
             if book_id == 1:
                 candidates = book1_candidates.get((lesson_id, part_id), [])
-                audio_root = BOOK1_AUDIO_ROOT
             else:
-                track = book3_tracks.get((lesson_id, part_id))
+                track = vocabulary_tracks[book_id].get((lesson_id, part_id))
                 candidates = [track] if track else []
-                audio_root = BOOK3_AUDIO_ROOT
+            audio_root = audio_roots[book_id]
             if not candidates:
                 candidate_report.append({
                     'bookId': book_id, 'lessonId': lesson_id, 'partId': part_id,
@@ -1089,7 +1087,7 @@ def main():
                 })
                 continue
             try:
-                source_manifest = book1_manifest_files if book_id == 1 else book3_manifest_files
+                source_manifest = source_manifests[book_id]
                 valid_candidates = []
                 candidate_hashes = {}
                 candidate_warnings = []
@@ -1227,7 +1225,7 @@ def main():
                         break
                     if next_segment is None and win_end is not None:
                         next_segment = {'start': win_end}
-                file, drive_id = track_reference(book_id, track, book3_index)
+                file, drive_id = track['file'], track['id']
                 audio, issue = make_audio_entry(
                     book_id, file, segment['score'], word_segment,
                     segment, next_segment, track_duration,
@@ -1315,12 +1313,12 @@ def main():
     draft = {
         'schemaVersion': 1,
         'generatedBy': 'scripts/audio/alignVocabularyExampleAudio.py',
-        'source': 'Official TKU CLC Book 1 and Book 3 vocabulary audio; streamed by original track range.',
+        'source': 'Official TKU CLC Book 1, 2 and 3 vocabulary audio; streamed by original track range.',
         'model': 'torchaudio.pipelines.MMS_FA',
         'tracks': {
             filename: {
                 'sha256': sha,
-                'source': 'book1-r2' if filename.startswith('B1-') else 'book3-r2',
+                'source': f'book{filename[1]}-r2',
                 'durationSec': track_durations[filename],
             }
             for filename, sha in sorted(track_hashes.items())
@@ -1340,6 +1338,15 @@ def main():
             raise ValueError('Cannot apply: every expected example needs an alignment result.')
         if report['coverage'] < 0.90:
             raise ValueError(f"Cannot apply: only {report['coverage']:.1%} of examples have verified recordings (90% required).")
+        if args.book is not None:
+            # One book re-aligned: keep every other book's reviewed clips as they are.
+            current = json.loads(CONTENT_PATH.read_text())
+            prefix = f'B{args.book}-'
+            draft['tracks'] = {**{name: track for name, track in current['tracks'].items()
+                                  if not name.startswith(prefix)}, **draft['tracks']}
+            draft['examples'] = {**{key: entry for key, entry in current['examples'].items()
+                                    if entry['bookId'] != args.book}, **draft['examples']}
+            draft['coverage'] = current.get('coverage')
         CONTENT_PATH.write_text(json.dumps(draft, ensure_ascii=False, indent=2) + '\n')
         print(f'Applied complete manifest with {valid_count}/{total_assignments} verified recorded ranges: {CONTENT_PATH}')
     elif valid_count != total_assignments:

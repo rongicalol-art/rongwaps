@@ -20,7 +20,7 @@ import { CurriculumSkeleton } from './components/CurriculumSkeleton';
 import { useCourseDashboard } from './hooks/useCourseDashboard';
 import { LessonWindow, type LessonWindowTarget } from './lesson-window/LessonWindow';
 import { prepareLessonWindow } from './lesson-window/prepareLessonWindow';
-import { LESSON_PAGE_BOOK } from '../../app/routes';
+import type { LessonPageRef } from '../../app/routes';
 import { takeLessonReturn } from '../../utils/browser/lessonReturn';
 import { useReadyAction } from '../../hooks/useReadyAction';
 import { preparePracticeLaunch } from '../activities';
@@ -116,13 +116,13 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   }, [activeBookId, openWhenReady, progress.lessons, setLastOpenedLesson]);
   const handleCloseLesson = useCallback(() => setLessonWindow(null), []);
   // A public lesson page's Study button remembers its lesson; open it once the course has loaded.
-  const pendingLessonRef = useRef<number | null>(null);
+  const pendingLessonRef = useRef<LessonPageRef | null>(null);
   useEffect(() => {
     if (isLoading || error || hasActiveActivity) return;
     pendingLessonRef.current ??= takeLessonReturn();
-    const lessonId = pendingLessonRef.current;
-    if (lessonId === null) return;
-    if (activeBookId !== LESSON_PAGE_BOOK) { onActiveBookChange(LESSON_PAGE_BOOK); return; }
+    if (pendingLessonRef.current === null) return;
+    const { bookId, lessonId } = pendingLessonRef.current;
+    if (activeBookId !== bookId) { onActiveBookChange(bookId); return; }
     pendingLessonRef.current = null;
     if (progress.lessons.some((lesson) => lesson.id === lessonId && lesson.state !== 'locked')) handleOpenLesson(lessonId);
   }, [activeBookId, error, handleOpenLesson, hasActiveActivity, isLoading, onActiveBookChange, progress.lessons]);

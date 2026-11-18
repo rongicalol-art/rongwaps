@@ -1,24 +1,25 @@
-import { lessonPagePath } from '../../app/routes';
-import { SAMPLE_LESSONS } from '../../data/books';
+import { lessonPagePath, type LessonPageRef } from '../../app/routes';
 import type { PageMeta } from '../../hooks/usePageMeta';
-import { LESSON_PAGES } from './lessonPageData';
+import { lessonPageData } from './lessonPageData';
 
 export interface LessonPageTitle { en: string; zh: string }
 
-export function lessonPageTitle(lessonId: number): LessonPageTitle {
-  const [en, zh = ''] = (SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.title ?? '').split(' · ');
+export function lessonPageTitle(ref: LessonPageRef): LessonPageTitle {
+  const [en, zh] = lessonPageData(ref).title;
   return { en, zh };
 }
 
 /** Search title leads with what people type: the book, the lesson number, "vocabulary". */
-export function lessonPageMeta(lessonId: number): PageMeta {
-  const { zh } = lessonPageTitle(lessonId);
-  const { wordCount, grammar } = LESSON_PAGES[lessonId];
-  const description = `時代華語 1 第${lessonId}課 ${zh}: hear the words, tap through a short conversation and see the ${grammar.length} grammar points. Study all ${wordCount} words free.`;
+export function lessonPageMeta(ref: LessonPageRef): PageMeta {
+  const { bookId, lessonId } = ref;
+  const { title: [, zh], wordCount, grammar } = lessonPageData(ref);
+  const lead = `時代華語 ${bookId} 第${lessonId}課 ${zh}: hear the words, tap through a short conversation and see the ${grammar.length} grammar points.`;
+  const close = ` Study all ${wordCount} words free.`;
   return {
-    title: `Modern Chinese 1 Lesson ${lessonId} Vocabulary & Grammar · Ron's Mandarin`,
-    description,
-    socialDescription: `Words with Taiwan audio, a tappable conversation and grammar for 時代華語 1 Lesson ${lessonId}. Free.`,
-    path: lessonPagePath(lessonId),
+    title: `Modern Chinese ${bookId} Lesson ${lessonId} Vocabulary & Grammar · Ron's Mandarin`,
+    // A long Chinese title would push the description past what search results show.
+    description: lead.length + close.length <= 155 ? lead + close : lead,
+    socialDescription: `Words with Taiwan audio, a tappable conversation and grammar for 時代華語 ${bookId} Lesson ${lessonId}. Free.`,
+    path: lessonPagePath(bookId, lessonId),
   };
 }

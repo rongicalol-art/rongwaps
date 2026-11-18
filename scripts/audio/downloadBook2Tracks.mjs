@@ -1,5 +1,5 @@
 /**
- * Download the provided official Book 2 tracks for local alignment.
+ * Download the official Book 2 tracks (dialogue, reading and vocabulary) for local alignment.
  * Originals and a verification manifest stay under ignored output/.
  * Run `npm run audio:book2:download -- --serve`, then `npm run dev:book2-audio`
  * to copy verified originals into ignored public/audio/book2 and opt into local DEV playback.
@@ -21,9 +21,10 @@ const SERVE_LOCALLY = process.argv.includes('--serve');
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/126.0 Safari/537.36';
 
 const index = JSON.parse(await readFile(INDEX_PATH, 'utf8'));
-const tracks = [...index.dialogueTracks, ...index.readingTracks];
-if (index.book !== 2 || index.dialogueTracks.length !== 16 || index.readingTracks.length !== 16) {
-  throw new Error('Expected 16 dialogue and 16 reading tracks for Book 2.');
+const tracks = [...index.dialogueTracks, ...index.readingTracks, ...index.vocabularyTracks];
+if (index.book !== 2 || index.dialogueTracks.length !== 16 || index.readingTracks.length !== 16
+  || index.vocabularyTracks.length !== 32) {
+  throw new Error('Expected 16 dialogue, 16 reading and 32 vocabulary tracks for Book 2.');
 }
 
 await mkdir(OUT_DIR, { recursive: true });

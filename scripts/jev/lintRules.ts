@@ -254,7 +254,9 @@ export function collectDiffs(
       mode: `files:${options.files.length}`,
     };
   }
-  const args = options.staged ? ['diff', '--cached'] : options.range ? ['diff', options.range] : ['diff', 'HEAD'];
+  const base = options.staged ? ['diff', '--cached'] : options.range ? ['diff', options.range] : ['diff', 'HEAD'];
+  // Generated packs are no code to lint, and a full rebuild of them outgrows any diff buffer.
+  const args = [...base, '--', '.', ':(exclude)public/data'];
   return {
     files: parseFileDiffs(runGit(args)),
     mode: options.range ?? (options.staged ? 'staged' : 'worktree'),
