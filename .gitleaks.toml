@@ -1,0 +1,12 @@
+# Secret scan settings (CI runs gitleaks on the lines a PR adds).
+# Owner approved this exception on 2026-11-18 (PR #148).
+[extend]
+useDefault = true
+
+# Vocabulary rows put an English gloss next to a recording name, so a word like
+# 密碼 "password" followed by "B3L13-1-07-4008bd730121.mp3" reads as a key.
+# Only the recording name itself is allowed; everything else is still scanned.
+[[allowlists]]
+description = "Vocabulary recording file names"
+regexTarget = "secret"
+regexes = ['''^B\dL\d{2}(-[0-9A-Za-z]+)+(\.mp3)?$''']
