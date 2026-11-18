@@ -245,10 +245,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "早就寫完了，昨天晚上寫到兩點呢！",
-              "simplified": "早就写完了，昨天晚上写到两点呢！",
-              "pinyin": "Zǎo jiù xiě wán le, zuótiān wǎnshàng xiě dào liǎng diǎn ne!",
-              "english": "Long ago. I wrote until two last night!"
+              "traditional": "昨天就寫完了，我寫到半夜兩點呢！",
+              "simplified": "昨天就写完了，我写到半夜两点呢！",
+              "pinyin": "Zuótiān jiù xiě wán le, wǒ xiě dào bànyè liǎng diǎn ne!",
+              "english": "I finished it yesterday. I wrote until two in the morning!"
             }
           ],
           "answerLine": 0,
@@ -1072,24 +1072,24 @@
           "lines": [
             {
               "speaker": "F",
-              "traditional": "你好，我是你們的文法老師。你今天沒來上課，所以我打電話告訴你明天小考的事。",
-              "simplified": "你好，我是你们的文法老师。你今天没来上课，所以我打电话告诉你明天小考的事。",
-              "pinyin": "Nǐ hǎo, wǒ shì nǐmen de wénfǎ lǎoshī. Nǐ jīntiān méi lái shàngkè, suǒyǐ wǒ dǎ diànhuà gàosu nǐ míngtiān xiǎokǎo de shì.",
-              "english": "Hello, this is your grammar teacher. You weren't in class today, so I'm calling to tell you about tomorrow's quiz."
+              "traditional": "你好，我是你們的文法老師。你今天沒來上課，所以我打電話告訴你明天考試的事。",
+              "simplified": "你好，我是你们的文法老师。你今天没来上课，所以我打电话告诉你明天考试的事。",
+              "pinyin": "Nǐ hǎo, wǒ shì nǐmen de wénfǎ lǎoshī. Nǐ jīntiān méi lái shàngkè, suǒyǐ wǒ dǎ diànhuà gàosu nǐ míngtiān kǎoshì de shì.",
+              "english": "Hello, this is your grammar teacher. You weren't in class today, so I'm calling to tell you about tomorrow's test."
             },
             {
               "speaker": "F",
-              "traditional": "小考要從第三課考到第五課，第六課下次再考。因為我們的教室明天有別的課，所以要到三樓的大教室考。",
-              "simplified": "小考要从第三课考到第五课，第六课下次再考。因为我们的教室明天有别的课，所以要到三楼的大教室考。",
-              "pinyin": "Xiǎokǎo yào cóng dì sān kè kǎo dào dì wǔ kè, dì liù kè xià cì zài kǎo. Yīnwèi wǒmen de jiàoshì míngtiān yǒu bié de kè, suǒyǐ yào dào sān lóu de dà jiàoshì kǎo.",
-              "english": "The quiz covers Lessons 3 to 5; Lesson 6 will be tested next time. Because our room has another class tomorrow, we'll take it in the big classroom on the third floor."
+              "traditional": "這次考試要從第三課考到第五課，第六課下次再考。因為我們的教室明天有別的課，所以要到三樓的大教室考。",
+              "simplified": "这次考试要从第三课考到第五课，第六课下次再考。因为我们的教室明天有别的课，所以要到三楼的大教室考。",
+              "pinyin": "Zhè cì kǎoshì yào cóng dì sān kè kǎo dào dì wǔ kè, dì liù kè xià cì zài kǎo. Yīnwèi wǒmen de jiàoshì míngtiān yǒu bié de kè, suǒyǐ yào dào sān lóu de dà jiàoshì kǎo.",
+              "english": "This test covers Lessons 3 to 5; Lesson 6 will be tested next time. Because our room has another class tomorrow, we'll take it in the big classroom on the third floor."
             },
             {
               "speaker": "F",
               "traditional": "考完以後，請把上次的報告交給我，作文下個星期再交就可以了。",
               "simplified": "考完以后，请把上次的报告交给我，作文下个星期再交就可以了。",
               "pinyin": "Kǎo wán yǐhòu, qǐng bǎ shàng cì de bàogào jiāo gěi wǒ, zuòwén xià ge xīngqí zài jiāo jiù kěyǐ le.",
-              "english": "After the quiz, please hand me last time's report; the composition can wait until next week."
+              "english": "After the test, please hand me last time's report; the composition can wait until next week."
             }
           ],
           "answerLine": 1,
@@ -1100,10 +1100,10 @@
               "id": "b2l09-talk-1-1",
               "prompt": {
                 "speaker": "N",
-                "traditional": "明天的小考一共考幾課？",
-                "simplified": "明天的小考一共考几课？",
-                "pinyin": "Míngtiān de xiǎokǎo yígòng kǎo jǐ kè?",
-                "english": "How many lessons does tomorrow's quiz cover?"
+                "traditional": "明天的考試一共考幾課？",
+                "simplified": "明天的考试一共考几课？",
+                "pinyin": "Míngtiān de kǎoshì yígòng kǎo jǐ kè?",
+                "english": "How many lessons does tomorrow's test cover?"
               },
               "choices": [
                 {
@@ -1155,10 +1155,10 @@
               "id": "b2l09-talk-1-2",
               "prompt": {
                 "speaker": "N",
-                "traditional": "考完小考，這個學生要做什麼？",
-                "simplified": "考完小考，这个学生要做什么？",
-                "pinyin": "Kǎo wán xiǎokǎo, zhège xuéshēng yào zuò shénme?",
-                "english": "What must this student do after the quiz?"
+                "traditional": "考完試，這個學生要做什麼？",
+                "simplified": "考完试，这个学生要做什么？",
+                "pinyin": "Kǎo wán shì, zhège xuéshēng yào zuò shénme?",
+                "english": "What must this student do after the test?"
               },
               "choices": [
                 {
@@ -1191,7 +1191,7 @@
                 }
               ],
               "key": 1,
-              "why": "請把上次的報告交給我: after the quiz the student hands in the earlier report. The composition can wait until next week, and the third-floor room is where the quiz itself is.",
+              "why": "請把上次的報告交給我: after the test the student hands in the earlier report. The composition can wait until next week, and the third-floor room is where the test itself is.",
               "focus": {
                 "zh": "交報告",
                 "en": "hand in a report"
@@ -1219,10 +1219,10 @@
           "lines": [
             {
               "speaker": "M",
-              "traditional": "各位同學，期末考快到了。圖書館平日本來開到晚上十點，從下個星期一開始，平日會開到半夜十二點，週末還是開到晚上九點。",
-              "simplified": "各位同学，期末考快到了。图书馆平日本来开到晚上十点，从下个星期一开始，平日会开到半夜十二点，周末还是开到晚上九点。",
-              "pinyin": "Gè wèi tóngxué, qímòkǎo kuài dào le. Túshūguǎn píngrì běnlái kāi dào wǎnshàng shí diǎn, cóng xià ge xīngqíyī kāishǐ, píngrì huì kāi dào bànyè shí'èr diǎn, zhōumò háishì kāi dào wǎnshàng jiǔ diǎn.",
-              "english": "Students, finals are coming. On weekdays the library has closed at ten p.m.; from next Monday it will stay open until midnight on weekdays, and at weekends it still closes at nine p.m."
+              "traditional": "大家好，期末考快到了。圖書館平日本來開到晚上十點，從下個星期一開始，平日會開到半夜十二點，週末還是開到晚上九點。",
+              "simplified": "大家好，期末考快到了。图书馆平日本来开到晚上十点，从下个星期一开始，平日会开到半夜十二点，周末还是开到晚上九点。",
+              "pinyin": "Dàjiā hǎo, qímòkǎo kuài dào le. Túshūguǎn píngrì běnlái kāi dào wǎnshàng shí diǎn, cóng xià ge xīngqíyī kāishǐ, píngrì huì kāi dào bànyè shí'èr diǎn, zhōumò háishì kāi dào wǎnshàng jiǔ diǎn.",
+              "english": "Hello, everyone. Finals are coming. On weekdays the library has closed at ten p.m.; from next Monday it will stay open until midnight on weekdays, and at weekends it still closes at nine p.m."
             },
             {
               "speaker": "M",
@@ -1371,10 +1371,10 @@
             "english": "Chinese Language Center: Language Exchange"
           },
           "text": {
-            "traditional": "想多練習說中文嗎？想交台灣朋友嗎？\n時間：12月每個星期三 18:30–20:30\n教室：華語文中心2樓（坐得下30個人）\n怎麼做：一個外國學生跟一個台灣學生一起聊天，第一個小時說中文，第二個小時說外國學生自己的語言。\n費用：免費\n參加：請先上網留言，寫下你的名字和電話。教室坐滿了就不能再參加\n華語文中心 11/20",
-            "simplified": "想多练习说中文吗？想交台湾朋友吗？\n时间：12月每个星期三 18:30–20:30\n教室：华语文中心2楼（坐得下30个人）\n怎么做：一个外国学生跟一个台湾学生一起聊天，第一个小时说中文，第二个小时说外国学生自己的语言。\n费用：免费\n参加：请先上网留言，写下你的名字和电话。教室坐满了就不能再参加\n华语文中心 11/20",
-            "pinyin": "Xiǎng duō liànxí shuō Zhōngwén ma? Xiǎng jiāo Táiwān péngyǒu ma?\nShíjiān: Shí'èr yuè měi ge xīngqísān shíbā diǎn sānshí dào èrshí diǎn sānshí\nJiàoshì: Huáyǔwén zhōngxīn èr lóu (zuò de xià sānshí ge rén)\nZěnme zuò: Yí ge wàiguó xuéshēng gēn yí ge Táiwān xuéshēng yìqǐ liáotiān, dì yī ge xiǎoshí shuō Zhōngwén, dì èr ge xiǎoshí shuō wàiguó xuéshēng zìjǐ de yǔyán.\nFèiyòng: Miǎnfèi\nCānjiā: Qǐng xiān shàngwǎng liúyán, xiě xià nǐ de míngzi hé diànhuà. Jiàoshì zuò mǎn le jiù bù néng zài cānjiā\nHuáyǔwén zhōngxīn 11/20",
-            "english": "Want more practice speaking Chinese? Want to make Taiwanese friends?\nTime: every Wednesday in December, 6:30–8:30 p.m.\nRoom: Chinese Language Center, 2nd floor (seats 30)\nHow it works: a foreign student and a Taiwanese student chat together, speaking Chinese in the first hour and the foreign student's own language in the second.\nFee: free\nTo join: leave a message online first with your name and phone number. Once the room is full, no one else can join\nChinese Language Center, 11/20"
+            "traditional": "想多練習說中文嗎？想交台灣朋友嗎？\n時間：12月每個星期三 18:30–20:30\n教室：華語文中心2樓（坐得下30個人）\n怎麼做：一個外國學生跟一個台灣學生一起聊天，第一個小時說中文，第二個小時說外國學生自己的語言。\n費用：免費\n參加：請先上網留言，告訴我們你的名字和電話。教室坐滿了就不能再參加\n華語文中心 11/20",
+            "simplified": "想多练习说中文吗？想交台湾朋友吗？\n时间：12月每个星期三 18:30–20:30\n教室：华语文中心2楼（坐得下30个人）\n怎么做：一个外国学生跟一个台湾学生一起聊天，第一个小时说中文，第二个小时说外国学生自己的语言。\n费用：免费\n参加：请先上网留言，告诉我们你的名字和电话。教室坐满了就不能再参加\n华语文中心 11/20",
+            "pinyin": "Xiǎng duō liànxí shuō Zhōngwén ma? Xiǎng jiāo Táiwān péngyǒu ma?\nShíjiān: Shí'èr yuè měi ge xīngqísān shíbā diǎn sānshí dào èrshí diǎn sānshí\nJiàoshì: Huáyǔwén zhōngxīn èr lóu (zuò de xià sānshí ge rén)\nZěnme zuò: Yí ge wàiguó xuéshēng gēn yí ge Táiwān xuéshēng yìqǐ liáotiān, dì yī ge xiǎoshí shuō Zhōngwén, dì èr ge xiǎoshí shuō wàiguó xuéshēng zìjǐ de yǔyán.\nFèiyòng: Miǎnfèi\nCānjiā: Qǐng xiān shàngwǎng liúyán, gàosu wǒmen nǐ de míngzi hé diànhuà. Jiàoshì zuò mǎn le jiù bù néng zài cānjiā\nHuáyǔwén zhōngxīn 11/20",
+            "english": "Want more practice speaking Chinese? Want to make Taiwanese friends?\nTime: every Wednesday in December, 6:30–8:30 p.m.\nRoom: Chinese Language Center, 2nd floor (seats 30)\nHow it works: a foreign student and a Taiwanese student chat together, speaking Chinese in the first hour and the foreign student's own language in the second.\nFee: free\nTo join: leave a message online first and tell us your name and phone number. Once the room is full, no one else can join\nChinese Language Center, 11/20"
           },
           "questions": [
             {
@@ -2154,10 +2154,10 @@
           "kind": "reading",
           "format": "passage",
           "text": {
-            "traditional": "上個學期我修了一門台灣歷史課。教授人很好，教法也很有意思，可是我那時候愛上了韓劇，每天晚上都看到半夜兩三點，上課的時候常常打瞌睡，教授說的話也沒記下來多少。有問題的時候，我只上網查一查。期末筆試的時候，有好幾題我都不會寫，就被當了。這學期我再修一次這門課。這次我每次上課都坐在最前面，把教授說的話好好地記下來，有不懂的地方就去辦公室問教授。有一天，教授說：「你最近上課很認真，跟上個學期不一樣了！」我想，這次我一定不會再被當了。",
-            "simplified": "上个学期我修了一门台湾历史课。教授人很好，教法也很有意思，可是我那时候爱上了韩剧，每天晚上都看到半夜两三点，上课的时候常常打瞌睡，教授说的话也没记下来多少。有问题的时候，我只上网查一查。期末笔试的时候，有好几题我都不会写，就被当了。这学期我再修一次这门课。这次我每次上课都坐在最前面，把教授说的话好好地记下来，有不懂的地方就去办公室问教授。有一天，教授说：「你最近上课很认真，跟上个学期不一样了！」我想，这次我一定不会再被当了。",
-            "pinyin": "Shàng ge xuéqí wǒ xiū le yì mén Táiwān lìshǐ kè. Jiàoshòu rén hěn hǎo, jiàofǎ yě hěn yǒu yìsi, kěshì wǒ nà shíhòu ài shàng le hánjù, měi tiān wǎnshàng dōu kàn dào bànyè liǎng sān diǎn, shàngkè de shíhòu chángcháng dǎ kēshuì, jiàoshòu shuō de huà yě méi jì xiàlái duōshǎo. Yǒu wèntí de shíhòu, wǒ zhǐ shàngwǎng chá yì chá. Qímò bǐshì de shíhòu, yǒu hǎojǐ tí wǒ dōu bú huì xiě, jiù bèi dàng le. Zhè xuéqí wǒ zài xiū yí cì zhè mén kè. Zhè cì wǒ měi cì shàngkè dōu zuò zài zuì qiánmiàn, bǎ jiàoshòu shuō de huà hǎohǎo de jì xiàlái, yǒu bù dǒng de dìfāng jiù qù bàngōngshì wèn jiàoshòu. Yǒu yì tiān, jiàoshòu shuō: “Nǐ zuìjìn shàngkè hěn rènzhēn, gēn shàng ge xuéqí bù yíyàng le!” Wǒ xiǎng, zhè cì wǒ yídìng bú huì zài bèi dàng le.",
-            "english": "Last semester I took a course on Taiwanese history. The professor was nice and taught in an interesting way, but I was hooked on Korean dramas then and watched until two or three every night. I often dozed off in class and didn't write down much of what the professor said. When I had questions, I only looked them up online. In the written final there were several questions I couldn't answer, and I failed. This semester I'm taking the course once more. This time I sit at the very front in every class, write down what the professor says properly, and go to the professor's office whenever I don't understand something. One day the professor said, “You've been very serious in class lately. You're different from last semester!” I think this time I surely won't fail again."
+            "traditional": "上個學期我修了一門台灣歷史課。教授人很好，教法也很有意思，可是我那時候愛上了韓劇，每天晚上都看到半夜兩三點，上課的時候常常打瞌睡，教授說的話也沒聽到多少。有問題的時候，我只上網查一查。期末筆試的時候，有好幾題我都不會寫，就被當了。這學期我再修一次這門課。這次我每次上課都坐在最前面，認真地聽教授說的話，有不懂的地方就去辦公室問教授。有一天，教授說：「你最近上課很認真，跟上個學期不一樣了！」我想，這次我一定不會再被當了。",
+            "simplified": "上个学期我修了一门台湾历史课。教授人很好，教法也很有意思，可是我那时候爱上了韩剧，每天晚上都看到半夜两三点，上课的时候常常打瞌睡，教授说的话也没听到多少。有问题的时候，我只上网查一查。期末笔试的时候，有好几题我都不会写，就被当了。这学期我再修一次这门课。这次我每次上课都坐在最前面，认真地听教授说的话，有不懂的地方就去办公室问教授。有一天，教授说：「你最近上课很认真，跟上个学期不一样了！」我想，这次我一定不会再被当了。",
+            "pinyin": "Shàng ge xuéqí wǒ xiū le yì mén Táiwān lìshǐ kè. Jiàoshòu rén hěn hǎo, jiàofǎ yě hěn yǒu yìsi, kěshì wǒ nà shíhòu ài shàng le hánjù, měi tiān wǎnshàng dōu kàn dào bànyè liǎng sān diǎn, shàngkè de shíhòu chángcháng dǎ kēshuì, jiàoshòu shuō de huà yě méi tīng dào duōshǎo. Yǒu wèntí de shíhòu, wǒ zhǐ shàngwǎng chá yì chá. Qímò bǐshì de shíhòu, yǒu hǎojǐ tí wǒ dōu bú huì xiě, jiù bèi dàng le. Zhè xuéqí wǒ zài xiū yí cì zhè mén kè. Zhè cì wǒ měi cì shàngkè dōu zuò zài zuì qiánmiàn, rènzhēn de tīng jiàoshòu shuō de huà, yǒu bù dǒng de dìfāng jiù qù bàngōngshì wèn jiàoshòu. Yǒu yì tiān, jiàoshòu shuō: “Nǐ zuìjìn shàngkè hěn rènzhēn, gēn shàng ge xuéqí bù yíyàng le!” Wǒ xiǎng, zhè cì wǒ yídìng bú huì zài bèi dàng le.",
+            "english": "Last semester I took a course on Taiwanese history. The professor was nice and taught in an interesting way, but I was hooked on Korean dramas then and watched until two or three every night. I often dozed off in class and didn't hear much of what the professor said. When I had questions, I only looked them up online. In the written final there were several questions I couldn't answer, and I failed. This semester I'm taking the course once more. This time I sit at the very front in every class, listen carefully to what the professor says, and go to the professor's office whenever I don't understand something. One day the professor said, “You've been very serious in class lately. You're different from last semester!” I think this time I surely won't fail again."
           },
           "questions": [
             {
@@ -2188,14 +2188,14 @@
                   "english": "Watched Korean dramas in class."
                 },
                 {
-                  "traditional": "每次都記很多",
-                  "simplified": "每次都记很多",
-                  "pinyin": "Měi cì dōu jì hěn duō.",
-                  "english": "Took lots of notes every time."
+                  "traditional": "上課聽得很認真",
+                  "simplified": "上课听得很认真",
+                  "pinyin": "Shàngkè tīng de hěn rènzhēn.",
+                  "english": "Listened carefully in class."
                 }
               ],
               "key": 1,
-              "why": "Watching dramas until two or three, the writer 常常打瞌睡 in class last semester. The dramas were watched at night, not in class, sitting at the front is this semester, and 沒記下來多少 means few notes, not many.",
+              "why": "Watching dramas until two or three, the writer 常常打瞌睡 in class last semester. The dramas were watched at night, not in class, and sitting at the front and listening carefully are this semester.",
               "focus": {
                 "zh": "打瞌睡",
                 "en": "to nod off"
@@ -2500,9 +2500,9 @@
                   "english": "The food was too expensive to afford."
                 },
                 {
-                  "traditional": "沒多久錢就用完了",
-                  "simplified": "没多久钱就用完了",
-                  "pinyin": "Méi duō jiǔ qián jiù yòng wán le.",
+                  "traditional": "錢很快就用完了",
+                  "simplified": "钱很快就用完了",
+                  "pinyin": "Qián hěn kuài jiù yòng wán le.",
                   "english": "Their money was soon used up."
                 },
                 {

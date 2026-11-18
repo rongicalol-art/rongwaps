@@ -257,6 +257,11 @@
       "sha256": "6e797b2fe2c64545f962b8b15679b568fd1c037f864bad41884877d5396d8701",
       "duration": 9.135
     },
+    "zh_en_female_1@1.05|你好，我是你們的文法老師。你今天沒來上課，所以我打電話告訴你明天考試的事。": {
+      "file": "lesson-test-studio/v1/8aa7795ea008.mp3",
+      "sha256": "8aa7795ea0088991a427e6f12327d87e920db9aa8397e81ee5c8f0d02fbc32b5",
+      "duration": 9.188
+    },
     "zh_en_female_1@1.05|你好，我是房東。昨天的颱風把屋頂上的一些設備吹壞了，工人明天要來修理，所以這棟樓明天早上九點到下午五點都會停水。我會在樓下放一些水給大家用，你不用自己準備。": {
       "file": "lesson-test-studio/v1/a3fddd3c8411.mp3",
       "sha256": "a3fddd3c84110afebbf908769e3455d893b02d06aaf7573528483a09b4531bc1",
@@ -867,6 +872,11 @@
       "sha256": "deb81f80d67d634c05eda757853c5cf9585c27a50edaf34d79d292f06641c51f",
       "duration": 5.767
     },
+    "zh_en_female_1@1.05|這次考試要從第三課考到第五課，第六課下次再考。因為我們的教室明天有別的課，所以要到三樓的大教室考。": {
+      "file": "lesson-test-studio/v1/ba21f182704a.mp3",
+      "sha256": "ba21f182704a76f8a3203381cebf05ca8e48db8cd29bcac672cadbfa8e60aeb8",
+      "duration": 12.159
+    },
     "zh_en_female_1@1.05|這種天氣，坐公車也不安全。你還是打個電話跟老闆說一聲，今天別去了吧。": {
       "file": "lesson-test-studio/v1/b2d9d6fa69b9.mp3",
       "sha256": "b2d9d6fa69b92da1ce52cf46e4276df213d67b2a0fd49a4baa036d0e8ad19d39",
@@ -1011,6 +1021,11 @@
       "file": "lesson-test-studio/v1/c81f215d19b9.mp3",
       "sha256": "c81f215d19b969f49c544dd90f5456eb6608784c8ead80aec08d3b2745a51787",
       "duration": 8.639
+    },
+    "zh_en_female_1@1.05|雖然我很想去，可是那天是我爸爸的生日，晚上我們家要一起去餐廳吃飯。": {
+      "file": "lesson-test-studio/v1/11bd78781640.mp3",
+      "sha256": "11bd78781640913b03b487da5459faca227159d615f7b4ac947b957d1053a086",
+      "duration": 7.994
     },
     "zh_en_female_1@1.05|雖然我很想去，可是那天晚上要幫我爸爸過生日。": {
       "file": "lesson-test-studio/v1/b27f02b7ead7.mp3",
@@ -4082,6 +4097,11 @@
       "sha256": "e6ed0292d6c4f3f72db2c5b914ce22266bbd8bd4b29acabc489b981a7a4f38d2",
       "duration": 2.786
     },
+    "zh_en_female_2@1.2|明天的考試一共考幾課？": {
+      "file": "lesson-test-studio/v1/10a6bfc7177e.mp3",
+      "sha256": "10a6bfc7177efc3cab3a2c2fc980ac14c2c178d1a4259df4b67bfb5a7c42d041",
+      "duration": 2.748
+    },
     "zh_en_female_2@1.2|明天跟他去店裡用用看": {
       "file": "lesson-test-studio/v1/54be54e90137.mp3",
       "sha256": "54be54e901376befed5523b47ab2575197a8c9794db7f2cee474d35c46974562",
@@ -4666,6 +4686,11 @@
       "file": "lesson-test-studio/v1/194dadbde993.mp3",
       "sha256": "194dadbde99329603c4ff0f852956937a847300c5ebd9667e899d49497137d47",
       "duration": 3.415
+    },
+    "zh_en_female_2@1.2|考完試，這個學生要做什麼？": {
+      "file": "lesson-test-studio/v1/bf25d36ec42f.mp3",
+      "sha256": "bf25d36ec42fc243dff7f90ee80b3607e55d334fac96b7cd5b8b3e457a0565af",
+      "duration": 3.263
     },
     "zh_en_female_2@1.2|考筆試": {
       "file": "lesson-test-studio/v1/8ae96de70e7c.mp3",
@@ -8982,6 +9007,11 @@
       "sha256": "443f88cb7761fc9f9fa9d2be7334ddce1658647cce2a4cf7041f329d8cc6666d",
       "duration": 14.042
     },
+    "zh_en_male_1@0.9-pitch1.3|大家好，期末考快到了。圖書館平日本來開到晚上十點，從下個星期一開始，平日會開到半夜十二點，週末還是開到晚上九點。": {
+      "file": "lesson-test-studio/v1/ae6704ebde5f.mp3",
+      "sha256": "ae6704ebde5f48f674e073d5f30a210a153ed02441bd924fe3b4cbe980678caf",
+      "duration": 14.525
+    },
     "zh_en_male_1@0.9-pitch1.3|大教室常常有人用，妳快點打吧！": {
       "file": "lesson-test-studio/v1/9379c4cc1ac7.mp3",
       "sha256": "9379c4cc1ac7b900e2a79ccede2a1cc44ba9beb33939143610c5e756fd5ca2a8",
@@ -9322,6 +9352,11 @@
       "sha256": "db92a8031c1dbe8dad4b1e48b3250bd96d13e6abadfd29aca42b9d384489cf77",
       "duration": 5.844
     },
+    "zh_en_male_1@0.9-pitch1.3|昨天就寫完了，我寫到半夜兩點呢！": {
+      "file": "lesson-test-studio/v1/a937f69d67f0.mp3",
+      "sha256": "a937f69d67f022a26753c4ab42ac6d5b5a4c135ae73f567440979a4d3f7ec1e7",
+      "duration": 3.97
+    },
     "zh_en_male_1@0.9-pitch1.3|是啊，他的下一部戲我一定去看。": {
       "file": "lesson-test-studio/v1/e7ad4aaa22df.mp3",
       "sha256": "e7ad4aaa22df61ba1921d167d42b6e541c6b73234da726fea0f0e70264494d62",
@@ -9641,6 +9676,11 @@
       "file": "lesson-test-studio/v1/6f56db492855.mp3",
       "sha256": "6f56db492855a3e63d32297a88207d8fbbffdb48a2bec52a03cf7f71c004e7a4",
       "duration": 3.614
+    },
+    "zh_en_male_1@0.9-pitch1.3|那裡人太多了，我想去人少一點的地方。": {
+      "file": "lesson-test-studio/v1/c8b25e3a2c64.mp3",
+      "sha256": "c8b25e3a2c648b75b95856b289deba7e057f1dccbee4b7dcd47cd26c3d84d840",
+      "duration": 4.431
     },
     "zh_en_male_1@0.9-pitch1.3|那這兩天妳要出門，就只好走路了。": {
       "file": "lesson-test-studio/v1/f1fe232c613a.mp3",

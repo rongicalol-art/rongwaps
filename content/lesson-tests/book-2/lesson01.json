@@ -649,10 +649,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "那裡人太多了，不能好好聊天。",
-              "simplified": "那里人太多了，不能好好聊天。",
-              "pinyin": "Nàlǐ rén tài duō le, bù néng hǎohǎo liáotiān.",
-              "english": "There are too many people there; we couldn't have a proper chat."
+              "traditional": "那裡人太多了，我想去人少一點的地方。",
+              "simplified": "那里人太多了，我想去人少一点的地方。",
+              "pinyin": "Nàlǐ rén tài duō le, wǒ xiǎng qù rén shǎo yìdiǎn de dìfāng.",
+              "english": "There are too many people there. I'd like to go somewhere with fewer people."
             },
             {
               "speaker": "F",
@@ -859,10 +859,10 @@
             },
             {
               "speaker": "F",
-              "traditional": "雖然我很想去，可是那天晚上要幫我爸爸過生日。",
-              "simplified": "虽然我很想去，可是那天晚上要帮我爸爸过生日。",
-              "pinyin": "Suīrán wǒ hěn xiǎng qù, kěshì nà tiān wǎnshàng yào bāng wǒ bàba guò shēngrì.",
-              "english": "Although I really want to go, that evening I'm celebrating my dad's birthday."
+              "traditional": "雖然我很想去，可是那天是我爸爸的生日，晚上我們家要一起去餐廳吃飯。",
+              "simplified": "虽然我很想去，可是那天是我爸爸的生日，晚上我们家要一起去餐厅吃饭。",
+              "pinyin": "Suīrán wǒ hěn xiǎng qù, kěshì nà tiān shì wǒ bàba de shēngrì, wǎnshàng wǒmen jiā yào yìqǐ qù cāntīng chīfàn.",
+              "english": "Although I really want to go, that day is my dad's birthday, and my family is going out to a restaurant together that evening."
             },
             {
               "speaker": "M",
@@ -916,7 +916,7 @@
                 }
               ],
               "key": 2,
-              "why": "雖然我很想去，可是那天晚上要幫我爸爸過生日: she celebrates her father's birthday, so she is not at the dance at all. Meeting his friends is only for next time.",
+              "why": "那天是我爸爸的生日，晚上我們家要一起去餐廳吃飯: her family has a birthday dinner for her father, so she is not at the dance at all. Meeting his friends is only for next time.",
               "focus": {
                 "zh": "雖然……，可是……",
                 "en": "although … (but) …"
