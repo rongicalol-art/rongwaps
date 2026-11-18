@@ -55,20 +55,64 @@ Fix round), `focus: { zh, en }` (the "to fix" row), `lesson` (the lesson it prac
 (vocabulary card ids it tests; missed ones go back to review) and optional `grammarIds`. Chinese text is
 always `{ traditional, simplified, pinyin, english }` with tone-mark pinyin.
 
-### Books 1–2: TOCFL Novice / Band A (3 choices)
+### Books 1–2: TOCFL Novice / Band A (3 choices; 4 where Band A prints them)
 
 | Slot kind | TOCFL part | What the learner does | Notes |
 | --- | --- | --- | --- |
 | `hear-pick-picture` | Novice 聽力 1 · Band A 問答理解 | hears a sentence, picks one of 3 pictures | `lines` (usually one); a picture trio |
-| `picture-hear` | Novice 聽力 2 · Band A 看圖回答 | sees one picture, hears 3 sentences | answers are spoken (`speaker: "N"`), shown as sound bars |
-| `dialogue` | Novice 聽力 3 · Band A 對話理解 | short dialogue, ding, question, spoken answers | `lines` (F/M), `answerLine`; `printed: true` also prints the answers the narrator reads (Band B) |
+| `picture-hear` | Novice 聽力 2 · Band A 看圖回答 | sees one picture, hears 3 sentences | answers are spoken (`speaker: "N"`), shown as sound bars; Book 2 adds the narrator's question (`prompt`, speaker N) |
+| `dialogue` | Novice 聽力 3 · Band A 對話理解 | short dialogue, ding, question, spoken answers | `lines` (F/M), `answerLine`; `printed: true` prints 4 answers the narrator reads and plays once (`plays: 1`; Band A 對話, Band B) |
 | `read-pick-picture` | 單句理解 | reads a sentence, picks a picture | the sentence is the question's `prompt` |
 | `realia` | 看圖釋義 | a menu, receipt or notice; which statement is true | `transcript` = the exact writing in the picture |
 | `scene-gap` | 選詞填空 | one scene picture, gap sentences (＿＿) | each question has `answer` (the full sentence); a reply line follows `——` |
 | `paragraph-bank` | 完成段落 | paragraph with `{1}`…`{n}`, a word bank with one extra | `bank.length = blanks + 1`; each word used once |
-| `reading` | 閱讀理解 | a message, notice or short passage, one question | `format`: `message` (last line is the signature), `notice`, `passage` |
+| `reading` | 看圖釋義 · 閱讀理解 | a notice card, message or short passage, one question | `format`: `message` (last line is the signature), `notice`, `table`, `passage`; 3 choices on a notice card, 4 on a text |
 
 Book 1 has about 7 picture questions out of 20; Book 2 is text and audio with no new pictures.
+
+### Book 2: from the top of Band A into Band B
+
+Book 2 is A2 heading into B1 (`docs/reference/TOCFL.md`), so its tests grow up through the book and meet Book 3's shape
+at Lesson 16. No new drawings: Book 2's reading art is an older style, so a picture question uses one of the lesson's
+two reading pictures (`reading:<id>`), and timetables, ads, notices and messages are `reading` cards the app draws.
+Questions are pitched at the real exam: about a third need reasoning (a plan that changes, what someone means, what
+happens next), and every wrong answer is something the recording or text really says that is wrong here.
+
+**Lessons 1–8 (`band: "A"`, the top of Band A)**: 15 slots, 20 questions per run.
+
+| # | Slot | Kind | Questions | Versions | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | picture question | `picture-hear` | 1 | 2, sharing one picture | Reading 1's picture; the narrator asks a question about it (`prompt`, speaker N), then reads 3 answers; plays twice (Band A 看圖回答) |
+| 2–4 | three short dialogues | `dialogue` | 1 each | 2–3 | 2–4 lines, 3 spoken answers, plays twice (Band A 問答理解, 對話理解) |
+| 5–6 | two longer dialogues | `dialogue`, `printed: true`, `plays: 1` | 1 each | 2–3 | 4–6 lines (60–100 characters), 4 printed choices the narrator reads (Band A 對話) |
+| 7 | review dialogue | `dialogue`, `review: true` | 1 | 2–3 | like slots 2–4 |
+| 8 | review dialogue | `dialogue`, `printed: true`, `plays: 1`, `review: true` | 1 | 2–3 | like slots 5–6 |
+| 9–10 | two notice cards | `reading` (`notice`, `table` or `message`) | 1 each | 2 | 3 choices (Band A 看圖釋義: a timetable, an ad, a rental notice, a message) |
+| 11 | scene gaps | `scene-gap` | 3 | 2, sharing one picture | Reading 2's picture; 3 choices per gap (Band A 選詞填空) |
+| 12 | paragraph | `paragraph-bank` | 4 | 2 | about 110 characters, 4 blanks and a 5-word bank (Band A 完成段落) |
+| 13–14 | two short texts | `reading` (`message`, `notice` or `passage`) | 1 each | 2 | 80–130 characters, 4 choices (Band A 閱讀理解) |
+| 15 | review text | `reading`, `review: true` | 1 | 2 | like slots 13–14 |
+
+Review share: slots 7, 8 and 15 (3 of 20, 15%), plus review blanks or questions elsewhere to stay inside 15–45%.
+Lesson 1 reviews Book 1 Lessons 9–16 (`"book": 1`).
+
+**Lessons 9–16 (`band: "B"`, into Band B)**: 10 slots, 20 questions per run. Everything plays once with 4 printed
+choices read aloud, except the opening picture question, the last Band A question.
+
+| # | Slot | Kind | Questions | Versions | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | picture question | `picture-hear` | 1 | 2 | one of the lesson's reading pictures; spoken question, 3 spoken answers, plays twice |
+| 2–3 | two dialogues | `dialogue` | 1 each | 2–3 | 40–100 characters |
+| 4 | review dialogue | `dialogue`, `review: true` | 1 | 2–3 | 40–100 characters |
+| 5 | dialogue, two questions | `dialogue` with `intro` | 2 | 2 | 100–150 characters; each question's `answerLine` |
+| 6 | talk, two questions | `dialogue` with `intro`, one voice | 2 | 2 | an announcement, voicemail or self-introduction, 100–150 characters |
+| 7 | notice card, two questions | `reading` (`notice`, `table` or `message`) | 2 | 2 | |
+| 8 | cloze passage | `cloze` | 5 | 2 | 120–150 characters, 5 numbered blanks with 4 choices each: words and linking words |
+| 9 | passage | `reading` (`passage` or `message`) | 2 | 2 | 150–250 characters |
+| 10 | review passage | `reading` (`passage`), `review: true` | 3 | 2 | 150–250 characters |
+
+Review share: slots 4 and 10 (4 of 20, 20%). Band B's item-writing rules below apply from Lesson 9 on; the Band A
+lessons follow them wherever they print 4 choices.
 
 ### Books 3–4: TOCFL Band B (4 choices, no pictures)
 

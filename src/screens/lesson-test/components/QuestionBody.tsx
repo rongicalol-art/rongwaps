@@ -18,7 +18,7 @@ import { TestSpeaker } from './TestSpeaker';
 function titleFor(item: LessonTestItem, question: LessonTestQuestion): string {
   switch (item.kind) {
     case 'hear-pick-picture': return 'Listen and pick the picture';
-    case 'picture-hear': return 'Which sentence matches the picture?';
+    case 'picture-hear': return question.prompt ? 'Listen, then answer' : 'Which sentence matches the picture?';
     case 'dialogue': return 'Listen, then answer';
     case 'read-pick-picture': return 'Pick the picture';
     case 'realia': return question.prompt ? 'Read and answer' : 'Which sentence is true?';
@@ -198,7 +198,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       stimulus = speaker; answersPart = pictures;
       break;
     case 'picture-hear':
-      stimulus = <>{speaker}<StimulusPicture name={item.picture.picture} alt={item.picture.alt} /></>; answersPart = choiceList(true);
+      stimulus = <>{speaker}<StimulusPicture name={item.picture.picture} alt={item.picture.alt} /></>; answersPart = <>{askedPrompt}{choiceList(true)}</>;
       break;
     case 'dialogue':
       stimulus = speaker;

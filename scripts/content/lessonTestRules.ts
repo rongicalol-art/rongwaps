@@ -56,6 +56,19 @@ export function lessonGrammarIds(ctx: LessonTestContext, bookId: number, lessonI
 
 const LISTENING_KINDS = new Set(['hear-pick-picture', 'picture-hear', 'dialogue']);
 const PICTURE_CHOICE_KINDS = new Set(['hear-pick-picture', 'read-pick-picture']);
+
+/**
+ * How many choices an item's questions offer. TOCFL Band A has 3, but its last parts already print 4 (a printed
+ * dialogue, a reading text); a Band A notice card may keep 3 (看圖釋義). Band B has 4, except a picture with spoken
+ * answers, which keeps Band A's 3 (Book 2 Lessons 9–16 open with one).
+ */
+export function choiceCounts(band: LessonTestLesson['band'], item: LessonTestItem): number[] {
+  if (item.kind === 'picture-hear' || PICTURE_CHOICE_KINDS.has(item.kind)) return [3];
+  if (band === 'B' || item.kind === 'cloze') return [4];
+  if (item.kind === 'dialogue') return [item.printed ? 4 : 3];
+  if (item.kind === 'reading') return [3, 4];
+  return [3];
+}
 export const LESSON_TEST_PICTURES = 'src/assets/images/lesson-tests';
 
 const allItems = (lesson: LessonTestLesson) => lesson.slots.flatMap((slot) => slot.versions);
@@ -78,11 +91,14 @@ export function scopeProblems(lesson: LessonTestLesson, ctx: LessonTestContext):
 export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestContext): string[] {
   const problems: string[] = [];
   const ids = new Set<string>();
-  const choiceCount = lesson.band === 'A' ? 3 : 4;
   for (const slot of lesson.slots) {
     if (slot.versions.length < 2) problems.push(`${slot.id}: needs at least two versions for retakes`);
     const counts = new Set(slot.versions.map((item) => item.questions.length));
     if (counts.size > 1) problems.push(`${slot.id}: every version must ask the same number of questions`);
+    const kinds = new Set(slot.versions.map((item) => `${item.kind}${item.kind === 'dialogue' && item.printed ? ' printed' : ''}`));
+    if (kinds.size > 1) problems.push(`${slot.id}: every version is the same kind (${[...kinds].join(', ')})`);
+    const sizes = new Set(slot.versions.flatMap((item) => item.questions.map((question) => question.choices?.length ?? 0)));
+    if (sizes.size > 1) problems.push(`${slot.id}: every version offers the same number of choices`);
     for (const item of slot.versions) {
       if (ids.has(item.id)) problems.push(`${item.id}: duplicate id`);
       ids.add(item.id);
@@ -97,6 +113,8 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
         if (!inRange(item.answerLine)) problems.push(`${item.id}: answerLine out of range`);
         if (lesson.band === 'B' && !item.printed) problems.push(`${item.id}: Band B prints its choices (printed: true)`);
         if (lesson.band === 'B' && item.plays !== 1) problems.push(`${item.id}: Band B plays each recording once (plays: 1)`);
+        // TOCFL Band A's last listening part already prints its 4 choices and plays once.
+        if (item.printed && item.plays !== 1) problems.push(`${item.id}: printed choices go with one play (plays: 1)`);
         if (item.questions.length > 1 && !item.intro) problems.push(`${item.id}: a recording with several questions opens with the narrator's intro`);
         if (item.intro && item.intro.speaker !== 'N') problems.push(`${item.id}: the intro is the narrator's (speaker N)`);
         for (const question of item.questions) {
@@ -104,6 +122,9 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
           if (question.choices?.some((choice) => choice.speaker !== 'N')) problems.push(`${question.id}: the narrator reads every choice (speaker N)`);
           if (!question.prompt || question.prompt.speaker !== 'N') problems.push(`${question.id}: the narrator asks the question (prompt with speaker N)`);
         }
+      }
+      if (item.kind === 'picture-hear' && item.questions.some((question) => question.prompt && question.prompt.speaker !== 'N')) {
+        problems.push(`${item.id}: the narrator asks a picture question (prompt with speaker N)`);
       }
       if (item.kind === 'reading' && item.format === 'table') {
         const widths = new Set(item.text.traditional.split('\n').map((row) => row.split('｜').length));
@@ -120,7 +141,8 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
         ids.add(question.id);
         const size = question.choices?.length ?? (item.kind === 'paragraph-bank' ? item.bank.length : 0);
         if (question.key < 0 || question.key >= size) problems.push(`${question.id}: key out of range`);
-        if (question.choices && question.choices.length !== choiceCount) problems.push(`${question.id}: Band ${lesson.band} questions have ${choiceCount} choices`);
+        const allowed = choiceCounts(lesson.band, item);
+        if (question.choices && !allowed.includes(question.choices.length)) problems.push(`${question.id}: a Band ${lesson.band} ${item.kind} question has ${allowed.join(' or ')} choices`);
         const labels = question.choices?.map((choice) => choice.picture ?? choice.traditional) ?? [];
         if (new Set(labels).size !== labels.length) problems.push(`${question.id}: duplicate choices`);
         if (PICTURE_CHOICE_KINDS.has(item.kind) && question.choices?.some((choice) => !choice.picture)) problems.push(`${question.id}: picture questions choose between pictures`);
@@ -128,9 +150,9 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
         if (item.kind === 'scene-gap' && !question.answer) problems.push(`${question.id}: a gap question shows its full answer sentence`);
         if (question.book !== undefined && question.book >= lesson.bookId) problems.push(`${question.id}: book is only for an earlier book's lesson`);
         if (question.book === undefined && question.lesson > lesson.lessonId) problems.push(`${question.id}: tests lesson ${question.lesson}, after this one`);
-        // SC-TOP's item-writing rule: Band B choices stay short (about 15 characters at most).
+        // SC-TOP's item-writing rule: 4 choices (Band B, and Band A's printed parts) stay short (about 15 characters at most).
         for (const choice of question.choices ?? []) {
-          if (lesson.band === 'B' && [...(choice.traditional ?? '').replace(/[，。、？！：；「」\s]/g, '')].length > 15) problems.push(`${question.id}: choice "${choice.traditional}" is longer than 15 characters`);
+          if ((lesson.band === 'B' || question.choices?.length === 4) && [...(choice.traditional ?? '').replace(/[，。、？！：；「」\s]/g, '')].length > 15) problems.push(`${question.id}: choice "${choice.traditional}" is longer than 15 characters`);
         }
         for (const id of question.wordIds) {
           if (!ctx.vocabIds.has(id)) problems.push(`${question.id}: unknown word id ${id}`);

@@ -79,3 +79,25 @@ test("a later book's Lesson 1 counts the book before as review", () => {
   assert.match(runProblems(lesson(slots(0)), ctx)[0], /reviews 0% earlier lessons/);
   assert.ok(structureProblems(lesson([[dialogue('r', [question('r-q', { book: 3 })])]]), ctx).includes('r-q: book is only for an earlier book\'s lesson'));
 });
+
+test('Book 2 mixes Band A and Band B: 3 spoken choices, 4 printed ones played once, 3 for a picture in Band B', () => {
+  const spoken = (id: string) => dialogue(id, [question(`${id}-q`, { choices: question('x').choices!.slice(0, 3) })], { printed: undefined, plays: undefined });
+  const bandA: LessonTestLesson = { ...lesson([[spoken('a1'), dialogue('a2', [question('a2-q')])], [dialogue('a3', [question('a3-q')], { plays: 2 }), dialogue('a4', [question('a4-q')])]]), key: 'b2l01', bookId: 2, band: 'A' };
+  const problems = structureProblems(bandA, ctx);
+  assert.ok(problems.includes('s0: every version is the same kind (dialogue, dialogue printed)'));
+  assert.ok(problems.includes('s0: every version offers the same number of choices'));
+  assert.ok(problems.includes('a3: printed choices go with one play (plays: 1)'));
+  assert.ok(!problems.some((problem) => problem.includes('choices') && problem.startsWith('a2-q')), 'a printed Band A dialogue has 4 choices');
+  assert.ok(!problems.some((problem) => problem.includes('choices') && problem.startsWith('a1-q')), 'a spoken Band A dialogue has 3 choices');
+
+  const picture = (id: string, count: number) => ({
+    id,
+    kind: 'picture-hear' as const,
+    picture: { picture: 'reading:B2L09-R01', alt: '' },
+    questions: [question(`${id}-q`, { choices: question('x').choices!.slice(0, count), prompt: say('F', '他們在哪裡？') })],
+  });
+  const bandB: LessonTestLesson = { ...lesson([]), key: 'b2l09', bookId: 2, lessonId: 9, slots: [{ id: 'pic', part: 'listening', versions: [picture('p1', 3), picture('p2', 4)] }] };
+  const pictureProblems = structureProblems(bandB, ctx);
+  assert.ok(pictureProblems.includes('p2-q: a Band B picture-hear question has 3 choices'));
+  assert.ok(pictureProblems.includes('p1: the narrator asks a picture question (prompt with speaker N)'));
+});

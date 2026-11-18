@@ -30,7 +30,8 @@ const BETWEEN_QUESTIONS_MS = 2000;
 
 /**
  * What a listening screen plays, in TOCFL order: the narrator's opening line (Band B), the dialogue, a ding and a
- * pause, then each question the narrator asks with its answers read as "A … B … C …" in the order they are shown.
+ * pause, then each question the narrator asks with its answers read as "A … B … C …" in the order they are shown. A
+ * picture question asks its question (if it has one) and reads its answers.
  * Printed answers are read too, as on the exam. A recording with several questions plays once, then asks them one
  * after another (`question` is the index of the one being asked or read).
  */
@@ -77,7 +78,15 @@ export function listeningSteps(
       readChoices(question, index);
     });
   }
-  if (item.kind === 'picture-hear') readChoices(questions[0], 0);
+  // TOCFL Band A 看圖回答: the narrator asks about the picture, then reads the answers (Book 1 only reads the answers).
+  if (item.kind === 'picture-hear') {
+    const [question] = questions;
+    if (question.prompt) {
+      say(question.prompt, 'question', 0);
+      steps.push({ pauseMs: BEFORE_CHOICES_MS, question: 0 });
+    }
+    readChoices(question, 0);
+  }
   return steps;
 }
 
