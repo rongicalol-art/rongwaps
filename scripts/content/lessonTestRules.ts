@@ -126,6 +126,10 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
       if (item.kind === 'picture-hear' && item.questions.some((question) => question.prompt && question.prompt.speaker !== 'N')) {
         problems.push(`${item.id}: the narrator asks a picture question (prompt with speaker N)`);
       }
+      // Read items are never voiced: a speaker on their question or choices would record clips nobody hears.
+      if (!LISTENING_KINDS.has(item.kind) && item.questions.some((question) => question.prompt?.speaker || question.choices?.some((choice) => choice.speaker))) {
+        problems.push(`${item.id}: a reading question is read, not heard (no speaker on its prompt or choices)`);
+      }
       if (item.kind === 'reading' && item.format === 'table') {
         const widths = new Set(item.text.traditional.split('\n').map((row) => row.split('｜').length));
         if (widths.size !== 1) problems.push(`${item.id}: every table row has the same number of ｜ cells`);
