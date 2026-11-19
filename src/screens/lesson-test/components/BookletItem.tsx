@@ -129,10 +129,12 @@ function PlayAll({ id, clips, view }: { id: string; clips: BookletClip[]; view: 
   const playing = view.audio.all === id;
   if (!clips.some((clip) => clip.audio)) return null;
   return (
-    <ActionButton size="sm" className="self-start" onClick={() => (playing ? view.audio.stop() : void view.audio.playAll(id, clips))}>
-      <SpeakerIcon status={playing ? 'playing' : null} size={18} />
-      {playing ? 'Stop' : 'Play all'}
-    </ActionButton>
+    <div className="self-start">
+      <ActionButton size="sm" onClick={() => (playing ? view.audio.stop() : void view.audio.playAll(id, clips))}>
+        <SpeakerIcon status={playing ? 'playing' : null} size={18} />
+        {playing ? 'Stop' : 'Play all'}
+      </ActionButton>
+    </div>
   );
 }
 
@@ -155,7 +157,8 @@ function Choices({ question, order, picked, view }: { question: LessonTestQuesti
               <span className={cn('font-chinese text-[17px]', right ? 'text-ui-ink-strong' : wrong ? 'text-feedback-danger-text line-through decoration-2' : 'text-ui-ink')}>
                 <PinyinText text={choiceText(choice, view.script)} pinyin={choice.pinyin} show={view.pinyin} />
               </span>
-              {view.english && choice.english && <span className="ml-2 text-sm font-bold text-ui-muted">{choice.english}</span>}
+              {/* Beside short Chinese; under it once pinyin makes the lines tall. */}
+              {view.english && choice.english && <span className={cn('text-sm font-bold text-ui-muted', view.pinyin ? 'block leading-snug' : 'ml-2')}>{choice.english}</span>}
             </span>
           </div>
         );
@@ -470,7 +473,7 @@ export function BookletItem({ item, planned, answers, firstNumber, view }: Bookl
   }
 
   return (
-    <section className={cn('grid gap-5 border-t-2 border-ui-divider py-6 first:border-t-0', side && 'lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start lg:gap-x-10')}>
+    <section className={cn('grid gap-5 border-t-2 border-ui-divider py-6 [h3+&]:border-t-0', side && 'lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start lg:gap-x-10')}>
       {side && <div className="flex min-w-0 flex-col gap-3">{side}</div>}
       <div className={cn('flex min-w-0 flex-col gap-6', side && 'lg:sticky lg:top-20')}>{questions}</div>
     </section>
