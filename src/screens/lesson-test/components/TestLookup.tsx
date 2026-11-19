@@ -82,7 +82,8 @@ function LookupWord({ word, lookup, children }: { word: string; lookup: Lookup; 
       aria-label={`Open ${word} in the dictionary`}
       onPointerEnter={(event) => { if (event.pointerType !== 'touch') lookup.enter(event.currentTarget, word); }}
       onPointerLeave={lookup.leave}
-      onFocus={(event) => lookup.enter(event.currentTarget, word)}
+      // Keyboard focus only: focus coming back from the dictionary (or a tap) mustn't pop the meaning up again.
+      onFocus={(event) => { if (event.currentTarget.matches(':focus-visible')) lookup.enter(event.currentTarget, word); }}
       onBlur={lookup.leave}
       onClick={(event) => {
         event.stopPropagation();
