@@ -46,13 +46,12 @@ export function useSocialLifecycle() {
   const presence = useAppStore(useShallow((state) => {
     const { lesson, a } = presenceFor(state);
     const panel = state.socialPanel;
-    const chat = panel?.kind === 'people' && panel.tab === 'chat' ? panel.chatScope === 'global' ? GLOBAL_CHAT : panel.chatLesson ?? lesson ?? GLOBAL_CHAT : lesson;
-    return { lesson, a, show: state.showOnline, online: panel?.kind === 'people' || panel?.kind === 'challenge', chat };
+    return { lesson, a, show: state.showOnline, online: panel?.kind === 'people' || panel?.kind === 'challenge' };
   }));
   useEffect(() => {
     lobby.here(presence.lesson, presence.a, presence.show, identity.image);
-    // The current lesson's chat is followed so the unread dot and room cards arrive; Online only while open.
-    lobby.subscribe(presence.online, presence.chat);
+    // Everyone follows the class chat, so the new-message count is live on every screen; Online only while open.
+    lobby.subscribe(presence.online, GLOBAL_CHAT);
   }, [presence, identity.image]);
 
   // The Online list is a snapshot: opening the panel brings one; switching to a list inside it asks again.

@@ -2,23 +2,23 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, Avatar, AvatarStack } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import { countedIn } from '../../../store/slices/socialSlice';
+import { countedIn, unreadTotal } from '../../../store/slices/socialSlice';
 import { CHEER_PHRASES, type ChatMessage } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 import { lobby } from '../lobbyController';
 import { MuteButton, PersonRow } from './SocialBits';
-import { GlobalPresenceButton } from './Presence';
+import { GlobalPresenceButton, UnreadBadge } from './Presence';
 
 const EMPTY: ChatMessage[] = [];
 
 /**
  * Practice header (flashcards and friends): faces of who's in this lesson. The popover sends a cheer,
- * 一起考試？ opens a room with them, and Open chat jumps to the lesson chat. When alone, the global roster stays available.
+ * 一起考試？ opens a room with them, and the Chat row opens the class chat. When alone, the faces button stays available.
  */
 export function PracticeFaces() {
   const people = useAppStore((state) => state.socialPeople);
   const me = useAppStore((state) => state.socialMe);
-  const unread = useAppStore((state) => state.socialUnread || (!state.socialMuted && state.socialMentions.some(item => !item.read)));
+  const unread = useAppStore(unreadTotal);
   const chat = useAppStore((state) => state.socialChat?.messages ?? EMPTY);
   const race = useAppStore((state) => state.race);
   const reduce = useReducedMotion();
@@ -63,16 +63,16 @@ export function PracticeFaces() {
   const openChat = () => { setOpen(false); useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'chat' } }); };
   return (
     <div ref={root} className="relative mr-1">
-      {/* Quiet like the other header controls: faces only, the book-colour dot for new messages. */}
+      {/* Quiet like the other header controls: faces, and the count of new messages (still while studying). */}
       <button
         type="button"
-        aria-label={`${others.length} studying with you`}
+        aria-label={`${others.length} studying with you${unread > 0 ? `, ${unread} new ${unread === 1 ? 'message' : 'messages'}` : ''}`}
         aria-expanded={open}
         onClick={() => setOpen(!open)}
         className={`relative flex h-11 items-center rounded-control px-1.5 outline-none transition-colors hover:bg-ui-hover focus-ring ${open ? 'bg-ui-hover' : ''}`}
       >
         <AvatarStack people={others.map((person) => ({ name: person.n, color: person.c, src: person.i }))} total={others.length} max={3} size="md" />
-        {unread && <span aria-label="New messages" className="absolute right-0.5 top-1 h-2.5 w-2.5 rounded-full bg-brand-primary ring-2 ring-ui-practice-canvas" />}
+        {unread > 0 && <UnreadBadge count={unread} className="ml-1.5" />}
       </button>
       <AnimatePresence>
         {open && (
@@ -105,7 +105,7 @@ export function PracticeFaces() {
                 </ActionButton>
               ))}
             </div>
-            {/* One chat entry: the latest line, opening the lesson chat (its title switches to Everyone). */}
+            {/* One chat entry: the latest line, opening the class chat. */}
             <button
               type="button"
               onClick={openChat}
@@ -114,7 +114,7 @@ export function PracticeFaces() {
               {lastLine ? <Avatar name={lastLine.n} color={lastLine.c} size="md" src={lastLine.i} /> : <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ui-hover text-ui-muted-strong"><AppIcon name="chat" size={20} /></span>}
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-1.5 text-sm font-black text-ui-ink-strong">
-                  Chat{unread && <span className="h-2 w-2 rounded-full bg-ui-ink-strong" aria-label="New messages" />}
+                  Chat{unread > 0 && <UnreadBadge count={unread} />}
                 </span>
                 <span className="block truncate font-chinese text-sm font-bold text-ui-muted-strong">
                   {lastLine ? <><span className="font-black text-ui-ink">{lastLine.n}</span> {lastLine.t}</> : 'Say hi to everyone'}

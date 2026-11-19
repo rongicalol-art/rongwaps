@@ -26,31 +26,37 @@ function dayLabel(ts: number) {
   return new Date(ts).toLocaleDateString([], { month: 'short', day: 'numeric' });
 }
 
-/** Consecutive lines from one person share one face and name; a new day gets its own label. */
-function groups(messages: ChatMessage[]) {
-  const out: Array<{ key: string | number; u: string; n: string; c: ChatMessage['c']; i?: string; lines: ChatMessage[] } | { key: number; room: ChatMessage } | { key: string; day: string }> = [];
+/** Where a writer was: "Lesson 3", with the book when it isn't the reader's ("Book 1 · Lesson 14"). */
+function whereTag(lesson: number, myBook: number) {
+  const book = Math.floor(lesson / 100);
+  const label = lesson % 100 === 0 ? 'Introduction' : `Lesson ${lesson % 100}`;
+  return book === myBook ? label : `Book ${book} · ${label}`;
+}
+
+/** Consecutive lines from one person share one face and name; a new day gets its own label; `newFrom` gets the New line. */
+function groups(messages: ChatMessage[], newFrom: number | null | undefined) {
+  const out: Array<{ key: string | number; u: string; n: string; c: ChatMessage['c']; i?: string; w?: number; lines: ChatMessage[] } | { key: number; room: ChatMessage } | { key: string; day: string } | { key: string; fresh: true }> = [];
   let lastDay = '';
   for (const message of messages) {
+    if (message.id === newFrom) out.push({ key: 'new', fresh: true });
     const day = dayLabel(message.ts);
     if (day !== lastDay) { out.push({ key: `day-${message.id}`, day }); lastDay = day; }
     if (message.r) { out.push({ key: message.id, room: message }); continue; }
     const last = out[out.length - 1];
     if (last && 'lines' in last && last.u === message.u) last.lines.push(message);
-    else out.push({ key: message.id, u: message.u, n: message.n, c: message.c, i: message.i, lines: [message] });
+    else out.push({ key: message.id, u: message.u, n: message.n, c: message.c, i: message.i, w: message.w, lines: [message] });
   }
   return out;
 }
 
-/** The same bounded message UI serves lesson, global and private party chat. */
-export function ChatThread({ lesson }: { lesson: number }) {
-  const chat = useAppStore(state => state.socialChat?.lesson === lesson ? state.socialChat.messages : null);
+/** The same bounded message UI serves the class chat and private party chat. */
+export function ChatThread() {
+  const chat = useAppStore(state => state.socialChat?.lesson === GLOBAL_CHAT ? state.socialChat.messages : null);
   const ready = useAppStore(state => state.socialStatus === 'live');
-  useEffect(() => { useAppStore.getState().setSocial({ socialUnread: false }); }, [chat?.length]);
-  // Only people online now: anyone in Everyone, only this lesson's people in a lesson chat.
+  // @mentions reach people online now.
   const current = useCurrentLesson();
   const { classmates } = useClassmates(useAppStore(state => state.socialPeople), useAppStore(state => state.socialOnline), current, useLessonTotal(current));
-  const candidates = useMemo(() => classmates.filter(person => lesson === GLOBAL_CHAT || person.l === lesson), [classmates, lesson]);
-  return <MessageThread chat={chat} ready={ready} candidates={candidates} send={(text, mentions) => lobby.say(lesson, text, mentions)} report={id => { lobby.report(id); }} />;
+  return <MessageThread chat={chat} ready={ready} candidates={classmates} send={(text, mentions) => lobby.say(GLOBAL_CHAT, text, mentions)} report={id => { lobby.report(id); }} />;
 }
 
 export function PartyChatThread() {
@@ -63,6 +69,7 @@ export function PartyChatThread() {
 
 function MessageThread({ chat, ready, candidates, party = false, send, report }: { chat: ChatMessage[] | null; ready: boolean; candidates: Person[]; party?: boolean; send: (text: string, mentions: string[]) => boolean; report: (id: number) => void }) {
   const me = useAppStore((state) => state.socialMe);
+  const myBook = useAppStore((state) => state.activeBookId);
   const racePending = useAppStore((state) => state.racePending);
   const identity = useSocialIdentity();
   const target = useAppStore(state => state.socialMentionTarget);
@@ -97,6 +104,22 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
     // The Lobby already leaves blocked people out; this also covers party rooms and the moment before it catches up.
     return blockedIds ? all.filter(line => !blockedIds.has(line.u)) : all;
   }, [targetLine, chat, blockedIds]);
+  // Class chat: the New line sits before the first line from someone else that arrived after the last visit.
+  const [newFrom, setNewFrom] = useState<number | null | undefined>(undefined);
+  useLayoutEffect(() => {
+    if (party || newFrom !== undefined || !chat) return;
+    const read = useAppStore.getState().socialChatRead;
+    setNewFrom(chat.find(line => line.id > read && line.u !== me && (line.t || line.r))?.id ?? null);
+  }, [party, newFrom, chat, me]);
+  // Seen while on screen: the count clears and the Lobby keeps the spot for every device.
+  const lastId = chat?.[chat.length - 1]?.id;
+  useEffect(() => {
+    if (party || newFrom === undefined || lastId === undefined) return;
+    const mark = () => { if (document.visibilityState === 'visible') lobby.markChatRead(lastId); };
+    mark();
+    document.addEventListener('visibilitychange', mark);
+    return () => document.removeEventListener('visibilitychange', mark);
+  }, [party, newFrom, lastId]);
   const prefix = draft.slice(0, caret);
   const match = /(?:^|\s)@([^@\s]*)$/.exec(prefix);
   const mentionQuery = match?.[1]?.toLocaleLowerCase() ?? null;
@@ -133,13 +156,26 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
     if (person) useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', visit: person } });
   };
 
+  // Opens at the New line (or the bottom); afterwards new lines scroll into view only while the reader is at the bottom.
+  const pinned = useRef(true);
+  const placedNew = useRef(false);
   useLayoutEffect(() => {
     const el = scroller.current;
-    if (el && targetLine && target && scrolledTarget.current !== target.key) {
+    if (!el) return;
+    if (targetLine && target && scrolledTarget.current !== target.key) {
       el.querySelector(`[data-message-id="${targetLine.id}"]`)?.scrollIntoView({ block: 'center' });
       scrolledTarget.current = target.key;
-    } else if (el && !targetLine) { scrolledTarget.current = null; el.scrollTop = el.scrollHeight; }
-  }, [visible.length, targetLine, target]);
+      return;
+    }
+    if (targetLine) return;
+    scrolledTarget.current = null;
+    const line = newFrom && !placedNew.current ? el.querySelector('[data-new-line]') : null;
+    if (line) {
+      placedNew.current = true;
+      el.scrollTop += line.getBoundingClientRect().top - el.getBoundingClientRect().top - 12;
+      pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    } else if (pinned.current || visible[visible.length - 1]?.u === me) el.scrollTop = el.scrollHeight;
+  }, [visible, targetLine, target, newFrom, me]);
 
   const checkMentions = () => {
     const el = scroller.current;
@@ -190,10 +226,14 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
           </ActionButton>
         </div>
       )}
-      <div ref={scroller} onScroll={checkMentions} className="min-h-0 flex-1 flex flex-col overflow-y-auto overscroll-contain pb-3 pr-2 pt-4 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_1rem)]">
+      <div ref={scroller} onScroll={() => { const el = scroller.current; if (el) pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80; checkMentions(); }} className="min-h-0 flex-1 flex flex-col overflow-y-auto overscroll-contain pb-3 pr-2 pt-4 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_1rem)]">
         {chat === null ? <EmptyNote>Loading messages…</EmptyNote> : visible.length === 0 ? <EmptyNote>Say hi to everyone.</EmptyNote> : (
           <div className="mt-auto flex flex-col gap-4">
-            {groups(visible).map((group) => 'day' in group ? (
+            {groups(visible, newFrom).map((group) => 'fresh' in group ? (
+              <div key={group.key} data-new-line className="flex items-center gap-3 text-xs font-black text-brand-primary-text">
+                <span aria-hidden className="h-0.5 flex-1 rounded-full bg-brand-primary-soft-edge" />New<span aria-hidden className="h-0.5 flex-1 rounded-full bg-brand-primary-soft-edge" />
+              </div>
+            ) : 'day' in group ? (
               <p key={group.key} className="self-center text-xs font-extrabold text-ui-muted">{group.day}</p>
             ) : 'room' in group ? (
               <div key={group.key} className="flex items-center gap-3 rounded-feature border-2 border-brand-primary-soft-edge bg-brand-primary-soft py-3 pl-3.5 pr-3">
@@ -208,7 +248,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
               </div>
             ) : (
               <div key={group.key} className={`flex flex-col gap-0.5 ${group.u === me ? 'items-end' : 'items-start'}`}>
-                {group.u !== me && <span className="mb-0.5 ml-14 max-w-[80%] truncate text-xs font-extrabold text-ui-muted-strong">{group.n}</span>}
+                {group.u !== me && <span className="mb-0.5 ml-14 max-w-[80%] truncate text-xs font-extrabold text-ui-muted-strong">{group.n}{group.w !== undefined && <span className="font-bold text-ui-muted"> · {whereTag(group.w, myBook)}</span>}</span>}
                 {group.lines.map((line, index) => {
                   const mine = line.u === me;
                   const isOpen = open === line.id;

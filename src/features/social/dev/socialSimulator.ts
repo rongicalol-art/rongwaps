@@ -4,7 +4,7 @@
  * Lobby/room code paths (`deliver`, `onState`); nothing reaches a server or your study progress.
  */
 import { useAppStore } from '../../../store/useAppStore';
-import { COVER_PRESETS, type Activity, type ChatMessage, type LessonCount, type LobbyClientMessage, type Person } from '../../../../shared/lobby';
+import { COVER_PRESETS, GLOBAL_CHAT, type Activity, type ChatMessage, type LessonCount, type LobbyClientMessage, type Person } from '../../../../shared/lobby';
 import { applyRaceAction, enterRace, newRaceRoom, summarizeRoom, type RaceAction, type RaceRoomState, type RaceRoomSummary, type RaceSnapshot, type SocialColor } from '../../../../shared/quizRace';
 import type { connectRace } from '../../../services/socialService';
 import { deliver, setLobbyTransport } from '../lobbyController';
@@ -32,6 +32,8 @@ let users: Person[] = [];
 let me = { l: null as number | null, a: null as Activity | null, show: true };
 let sub = { online: false, chat: null as number | null };
 const chats = new Map<number, ChatMessage[]>();
+/** My class chat read spot, like the Lobby keeps per account. */
+let readSpot = 0;
 let rooms: RaceRoomSummary[] = [];
 let nextId = 1;
 const timers = new Set<ReturnType<typeof setTimeout>>();
@@ -74,7 +76,8 @@ function roster() {
   deliver({ t: 'online', v: [...everyone].sort((a, b) => Number(b.l === me.l) - Number(a.l === me.l)).slice(0, 100) });
 }
 
-function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary) {
+/** Class chat lines carry the writer's lesson (a room card: the room's lesson). */
+function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary, where = from.l) {
   const message: ChatMessage = {
     id: nextId++,
     l: lesson,
@@ -85,6 +88,7 @@ function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary
     ts: Date.now(),
     ...(room ? { r: room } : {}),
     ...(from.i ? { i: from.i } : {}),
+    ...(lesson === GLOBAL_CHAT && where !== null ? { w: where } : {}),
   };
   const list = [...(chats.get(lesson) ?? []), message].slice(-50);
   chats.set(lesson, list);
@@ -109,6 +113,7 @@ function seedHistory(lesson: number) {
       t: pick(LINES),
       ts: Date.now() - (12 - index) * 60_000,
       ...(from.i ? { i: from.i } : {}),
+      ...(lesson === GLOBAL_CHAT && from.l !== null ? { w: from.l } : {}),
     };
   });
   chats.set(lesson, [...earlier, ...(chats.get(lesson) ?? [])].slice(-50));
@@ -145,16 +150,23 @@ function handle(message: LobbyClientMessage) {
     const changed = message.chat !== sub.chat;
     const opened = message.online && !sub.online;
     sub = { online: message.online, chat: message.chat };
-    if (changed && sub.chat !== null) { seedHistory(sub.chat); deliver({ t: 'history', l: sub.chat, v: chats.get(sub.chat) ?? [] }); }
+    if (changed && sub.chat !== null) {
+      seedHistory(sub.chat);
+      const lines = chats.get(sub.chat) ?? [];
+      deliver(sub.chat === GLOBAL_CHAT
+        ? { t: 'history', l: sub.chat, v: lines, r: readSpot, n: lines.filter(line => line.id > readSpot && line.u !== ME && line.t).length }
+        : { t: 'history', l: sub.chat, v: lines });
+    }
     if (opened) roster();
     return;
   }
   if (message.t === 'roster') { roster(); return; }
   if (message.t === 'say') {
     post(meAsPerson(), message.l, message.text);
-    later(() => post(someoneIn(message.l), message.l, pick(REPLIES)), between(1500, 3500));
+    later(() => post(message.l === GLOBAL_CHAT ? pick(users) : someoneIn(message.l), message.l, pick(REPLIES)), between(1500, 3500));
     return;
   }
+  if (message.t === 'read') { readSpot = Math.max(readSpot, message.id); return; }
   if (message.t === 'mention-read') { deliver({ t: 'mention-read', key: message.key }); return; }
   if (message.t === 'card-ask') {
     const index = users.findIndex((user) => user.u === message.u);
@@ -241,7 +253,7 @@ const connectSim: typeof connectRace = async (_identity, target, handlers) => {
     enterRace(room, ME, myName(), useAppStore.getState().avatarColor, now, useAppStore.getState().currentUser?.avatarUrl);
     if (room.open) {
       rooms = [summarizeRoom(room), ...rooms];
-      if (me.l !== null) post(meAsPerson(), me.l, '', summarizeRoom(room));
+      if (me.l !== null) post(meAsPerson(), GLOBAL_CHAT, '', summarizeRoom(room), me.l);
       later(() => { if (race?.room.code === code) joinMyRoom(someoneIn(me.l ?? 101)); }, between(3000, 7000));
     }
   }
@@ -285,11 +297,8 @@ export function startSimulator() {
     }
     emit();
   }, 1800, 3200);
-  // Chat in the lesson you're in (and elsewhere, kept for when you arrive).
-  every(() => {
-    const lesson = sub.chat !== null && Math.random() < 0.75 ? sub.chat : pick(LESSONS);
-    post(someoneIn(lesson), lesson, pick(LINES));
-  }, 2500, 6500);
+  // The class chat: a line every few seconds, from anyone.
+  every(() => { post(pick(users), GLOBAL_CHAT, pick(LINES)); }, 6000, 14_000);
   every(() => { if (me.l !== null && othersIn(me.l).length) deliver({ t: 'cheer', from: pick(othersIn(me.l)), p: pick([0, 1]) }); }, 30_000, 50_000);
   every(() => {
     if (useAppStore.getState().race) return;
@@ -303,7 +312,7 @@ export function startSimulator() {
     const host = someoneIn(me.l);
     const room = simRoom(host, me.l);
     rooms = [room, ...rooms].slice(0, 6);
-    post(host, me.l, '', room);
+    post(host, GLOBAL_CHAT, '', room, me.l);
   }, 40_000, 70_000);
 }
 
@@ -328,11 +337,10 @@ export const simulate = {
   },
   cheer() { deliver({ t: 'cheer', from: me.l !== null && othersIn(me.l).length ? pick(othersIn(me.l)) : pick(users), p: pick([0, 1, 3]) }); },
   mention() {
-    const lesson = sub.chat ?? 101;
     later(() => {
-      const message = post(someoneIn(lesson), lesson, '@You 加油！');
-      deliver({ t: 'mention', v: { key: `sim:${message.id}`, channel: lesson, message, read: false } });
+      const message = post(pick(users), GLOBAL_CHAT, `@${myName()} 加油！`);
+      deliver({ t: 'mention', v: { key: `sim:${message.id}`, channel: GLOBAL_CHAT, message, read: false } });
     }, 2000);
   },
-  chatBurst() { const lesson = sub.chat ?? 101; for (let index = 0; index < 8; index++) later(() => post(someoneIn(lesson), lesson, pick(LINES)), index * 350); },
+  chatBurst() { for (let index = 0; index < 8; index++) later(() => post(pick(users), GLOBAL_CHAT, pick(LINES)), index * 350); },
 };
