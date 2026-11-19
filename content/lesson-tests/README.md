@@ -22,13 +22,16 @@ contract; the code that enforces it is named in each section.
   **Pass at 80%** (`LESSON_TEST_PASS`): the Test tab gets a crown and the card shows the best score. The
   test never locks anything; retakes are unlimited.
 - **Fix round** (review honey tone): each missed screen again, answers checked, the reason shown; after Check, the
-  **Script** sheet lists the recording's lines (tap one to hear it) or the text's pinyin and English.
+  **Script** sheet lists the recording's lines (each with its own play button) or the text's pinyin and English.
 - **Scripts & answers** (`TestBooklet`): one page, in test order, like the answer booklet after a TOCFL: every
   recording's script (each line with its own play button, Play all for the whole recording) or text, then each
   question with the answer given, the right one and why; missed questions have red numbers. It opens with the
   Chinese only; **Pinyin** puts pinyin over the characters (as in the Reader) and **English** adds the meanings.
   It rises over the results and the done screen, and the Test tab offers it for the last finished test
   (`lessonTestLast`, kept on the device while its questions are still in the pack).
+- **Word lookup** (`TestLookup`): in the Script sheet, Scripts & answers and a Fix round screen after Check, every
+  Chinese word works like the app's other sentences: hover or focus shows its meaning, a tap opens it in the
+  dictionary. Never during the test or before Check (it would give answers away); choices stay plain buttons.
 - **Review deck**: a missed word the learner has studied comes back in the next review (the `lapse`
   option of `markCardReviewed`, owned by `src/utils/srs/reviewProgress.ts`); an unstudied word is only
   logged, never marked learned.
