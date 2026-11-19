@@ -15,7 +15,7 @@ import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
 import { useTestAudioDownload } from './hooks/useTestAudioDownload';
 import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
-import { testRecordings } from './testAudioSequence';
+import { testRecordings, turnGapMs } from './testAudioSequence';
 import { itemPictureUrls } from './testPictures';
 
 interface LessonTestScreenProps {
@@ -158,7 +158,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             checked={isFix && run.checked}
             mode={isFix ? 'replay' : 'exam'}
             sounds={sounds}
-            band={lesson.band}
+            turnGap={turnGapMs(lesson)}
             audioReady={audioReady}
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}

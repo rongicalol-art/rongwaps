@@ -82,6 +82,14 @@ YATING_PITCH = {"F": 1.0, "M": 1.3, "N": 1.0}
 # its man Yating's second male voice, both livelier (energy 1.3). {book: {role: (model, pitch, energy)}}; the
 # narrator and every other book keep the voices above.
 YATING_BOOK_VOICES = {2: {"F": ("zh_en_female_2", 1.0, 1.3), "M": ("zh_en_male_2", 1.0, 1.3)}}
+# Books whose dialogue voices (F, M) are published as Yating made them (owner's pick by ear, 2026-11-19: "native
+# sounds better"): no trimming, no padding and no MASTERING, whose upward compressor lifted the quiet comma pauses
+# into audible breath and hiss. Only a plain volume change to NATIVE_LUFS under a peak limiter, encoded once at
+# NATIVE_BITRATE. Each clip keeps Yating's own ≈ 0.35 s of silence at its end, so the app adds no gap between these
+# turns (src/screens/lesson-test/testAudioSequence.ts).
+YATING_NATIVE_BOOKS = {2}
+NATIVE_LUFS = -14.5
+NATIVE_BITRATE = "96k"
 
 
 def yating_voice(book, speaker):
@@ -215,22 +223,53 @@ def yating_model(target, take):
 
 
 def synthesize_yating(target, take, np, sf):
-    """One Yating take (cached by request), trimmed and padded like the Qwen takes."""
+    """One Yating take (cached by request), trimmed and padded like the Qwen takes; a native take stays as it came."""
     import io
     from yatingTts import synthesize as yating
     text, model, speed, ssml, pitch = yating_request(target, take)
     audio, rate = sf.read(io.BytesIO(yating(text, model, speed=speed, pitch=pitch, energy=yating_energy(target), ssml=ssml)), dtype="float32")
-    audio = trim_to_active(np.asarray(audio, dtype=np.float32).reshape(-1), np)
+    audio = np.asarray(audio, dtype=np.float32).reshape(-1)
+    trimmed = trim_to_active(audio, np)  # Also rejects silent or broken audio.
+    if target.get("native"):
+        return audio, rate
     pad = np.zeros(round(rate * TRIM_PADDING), dtype=np.float32)
-    return np.concatenate([pad, audio, pad]), rate
+    return np.concatenate([pad, trimmed, pad]), rate
+
+
+def master_native(source, destination):
+    """A native take: turned to NATIVE_LUFS under a limiter and encoded once, with its true peak at most -1 dBFS."""
+    gain = NATIVE_LUFS - measure_quality(source)["integratedLufs"]
+    limit = 0.84
+    for _ in range(4):
+        subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(source),
+                        "-af", f"volume={gain:.2f}dB,alimiter=limit={limit:.3f}:level=0", "-map_metadata", "-1",
+                        "-vn", "-ac", "1", "-codec:a", "libmp3lame", "-b:a", NATIVE_BITRATE, str(destination)], check=True)
+        peak = measure_quality(destination)["truePeakDbfs"]
+        if peak <= -1.0:
+            return
+        limit *= 10 ** (-(peak + 1.2) / 20)
+    raise ValueError(f"Encoded peaks remain unsafe: {destination.name}")
+
+
+def publish_native(master, folder):
+    """A native take is published as its master (already encoded once), named by its content hash."""
+    folder.mkdir(parents=True, exist_ok=True)
+    digest = file_sha256(master)
+    destination = folder / f"{digest[:12]}.mp3"
+    shutil.copyfile(master, destination)
+    return destination, digest
 
 
 def render(model, target, rejected, masters, mx, np, sf):
     """Try takes until one passes duration, pace, fade and drag checks; return its manifest entry."""
     key, text, voice, instruct, lang = target["key"], target["text"], target["voice"], target["instruct"], target["lang"]
     yating = target.get("engine") == "yating"
+    native = yating and target.get("native")
     errors = []
-    for seed, style in (YATING_TAKES if yating else TAKES):
+    takes = YATING_TAKES if yating else TAKES
+    if "seedFirst" in target:  # A line re-mastered as native tries the take that passed before first.
+        takes = sorted(takes, key=lambda take: take[0] != target["seedFirst"])
+    for seed, style in takes:
         if attempt_id(seed, style) in rejected.get(key, []):
             continue
         master = masters / f"{abs(hash((key, seed, style))) % 10**12:012d}.mp3"
@@ -248,14 +287,14 @@ def render(model, target, rejected, masters, mx, np, sf):
                     raise ValueError(f"too fast ({pace:.2f}/s)")
             wav = master.with_suffix(".tmp.wav")
             sf.write(wav, audio, rate, subtype="FLOAT")
-            master_recording(wav, master)
+            (master_native if native else master_recording)(wav, master)
             wav.unlink(missing_ok=True)
             if lang == LANG_CODE:
                 if ending_ratio(master) > ENDING_MAX and not target.get("endingReviewed"):
                     raise ValueError("ends abruptly")
                 if syllables(text) >= 4 and voiced_pace(master, text) < floor:
                     raise ValueError("drags")
-            published, digest = deliver(master, OUT / "studio")
+            published, digest = publish_native(master, OUT / "studio") if native else deliver(master, OUT / "studio")
             duration, _ = probe_audio(published)
             return {
                 "key": key, "text": text, "spoken": text, "voice": voice, "speaker": target["speaker"],
@@ -263,7 +302,8 @@ def render(model, target, rejected, masters, mx, np, sf):
                 "master": master.relative_to(ROOT).as_posix(), "sha256": digest, "duration": round(duration, 3),
                 "model": yating_model(target, seed) if yating else MODEL,
                 "instruct": "" if yating else instruct + (SLOWER if style else ""), "seed": seed, "take": style,
-                "deliveryBitrate": DELIVERY_BITRATE, "minVoicedPace": floor,
+                "deliveryBitrate": NATIVE_BITRATE if native else DELIVERY_BITRATE, "minVoicedPace": floor,
+                **({"native": True} if native else {}),
                 "quality": measure_quality(published),
             }
         except Exception as error:  # noqa: BLE001 - every failure means "try the next seed"
@@ -309,12 +349,13 @@ def main():
                 speed, pauses = yating_pace(book, number, speaker)
                 voice = yating_label(speaker, speed, pauses, book)
                 model, pitch, energy = yating_voice(book, speaker)
-                if clip_key(voice, text) in published.get("clips", {}):
+                native = book in YATING_NATIVE_BOOKS and speaker != "N"
+                if clip_key(voice, text) in published.get("clips", {}) and not native:
                     continue
                 targets[clip_key(voice, text)] = {"key": clip_key(voice, text), "text": text, "voice": voice,
                                                   "speaker": speaker, "instruct": "", "lang": LANG_CODE, "engine": "yating",
                                                   "model": model, "speed": speed, "pauses": pauses,
-                                                  "pitch": pitch, "energy": energy,
+                                                  "pitch": pitch, "energy": energy, "native": native,
                                                   "maxPace": max_pace(book, number, speaker),
                                                   "endingReviewed": bool(reviewed.get(clip_key(voice, text), {}).get("ending"))}
                 continue
@@ -342,6 +383,9 @@ def main():
         previous = old.get(key)
         if previous and target.get("engine") == "yating" and previous.get("model") != yating_model(target, previous["seed"]):
             previous = None  # Rendered at another speed (an older retake rule): render it again at this one.
+        if previous and bool(previous.get("native")) != bool(target.get("native")):
+            target = {**target, "seedFirst": previous["seed"]}  # Re-master the same take the other way.
+            previous = None
         if previous and (ROOT / previous["local"]).is_file() and attempt_id(previous["seed"], previous.get("take", "")) not in rejected.get(key, []):
             if previous["quality"]["truePeakDbfs"] > -1.0 and (ROOT / previous["master"]).is_file():
                 # Published before deliver() checked peaks: re-deliver from its master; the checker runs on it again.
