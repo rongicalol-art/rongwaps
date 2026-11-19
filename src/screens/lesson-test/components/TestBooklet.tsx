@@ -7,6 +7,7 @@ import { LESSON_TEST_PARTS, lessonItemIndex, type LessonTestPlan } from '../../.
 import { useBookletAudio } from '../hooks/useBookletAudio';
 import { BookletItem, type BookletView } from './BookletItem';
 import { TestWords } from './ChineseText';
+import { TestLookup } from './TestLookup';
 
 interface TestBookletProps {
   lesson: LessonTestLesson;
@@ -42,7 +43,8 @@ function Switch({ label, on, onToggle }: { label: string; on: boolean; onToggle:
  * Scripts & answers: the whole test on one page, in test order, like the answer booklet after a real TOCFL. Each
  * recording's script (tap a line, or its play button, to hear it; Play all for the whole recording) or text, then
  * its questions with the answer given, the right one and why; missed questions have red numbers. It opens with the
- * Chinese only: Pinyin puts the pinyin over the characters (as in the Reader) and English adds the meanings.
+ * Chinese only: Pinyin puts the pinyin over the characters (as in the Reader) and English adds the meanings. Every
+ * Chinese word can be looked up (hover for its meaning, tap to open it in the dictionary).
  */
 export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = false }: TestBookletProps) {
   const reduceMotion = useReducedMotion();
@@ -91,6 +93,7 @@ export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = fal
       className="absolute inset-0 z-50 flex flex-col bg-ui-practice-canvas"
     >
       <TestWords value={lesson.allowWords ?? NO_WORDS}>
+      <TestLookup onOpen={audio.stop}>
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain custom-scrollbar">
         <div className="sticky top-0 z-10 grid grid-cols-[auto_1fr_auto] items-center sm:grid-cols-[1fr_auto_1fr] gap-2 bg-gradient-to-b from-ui-practice-canvas from-70% to-transparent px-3 pb-5 pt-3 sm:px-6">
           <IconActionButton ref={closeRef} variant="quiet" icon={<AppIcon name="dropdown" size={24} />} label="Close scripts and answers" onClick={close} className="justify-self-start" />
@@ -113,6 +116,7 @@ export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = fal
           {footer && <div className="mx-auto w-full max-w-md pt-4">{footer}</div>}
         </div>
       </div>
+      </TestLookup>
       </TestWords>
     </motion.div>
   );

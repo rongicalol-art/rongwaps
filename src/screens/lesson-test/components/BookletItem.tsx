@@ -6,6 +6,7 @@ import { cn } from '../../../utils/cn';
 import type { BookletAudio, BookletClip } from '../hooks/useBookletAudio';
 import { testPicture } from '../testPictures';
 import { ChineseText } from './ChineseText';
+import { LinePlay } from './LinePlay';
 import { choiceText, type Script } from './ChoiceList';
 import { testRubyItems } from '../testPinyin';
 import { PinyinText, RubyRun } from './PinyinText';
@@ -71,7 +72,7 @@ interface LineProps {
   number?: number;
 }
 
-/** One spoken line: who says it, the Chinese with a small play button at its end, its meaning. A tap anywhere plays it. */
+/** One spoken line: who says it, the Chinese with a small play button at its end, its meaning. A tap on a word looks it up; anywhere else plays the line. */
 function Line({ clip, value, badge, view, tone, number }: LineProps) {
   const speaking = view.audio.line === clip.key;
   const zh = zhOf(value, view.script);
@@ -99,19 +100,7 @@ function Line({ clip, value, badge, view, tone, number }: LineProps) {
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
         <span className={cn('text-pretty font-chinese text-[19px] text-ui-ink-strong', view.pinyin ? 'leading-[1.8]' : 'leading-snug', tone === 'wrong' && 'text-feedback-danger-text line-through decoration-2')}>
           <PinyinText text={zh} pinyin={value.pinyin} show={view.pinyin} />
-          {clip.audio && (
-            <button
-              type="button"
-              aria-label={`${speaking ? 'Stop' : 'Play'}: ${zh}`}
-              onClick={(event) => { event.stopPropagation(); play(); }}
-              className={cn(
-                'ml-1.5 -mt-1 inline-grid h-6.5 w-7 place-items-center rounded-xs align-middle transition-colors duration-200 focus-ring',
-                speaking ? 'bg-brand-primary text-brand-on-primary' : tone ? 'bg-ui-surface text-brand-primary-deep' : 'bg-brand-primary-wash text-brand-primary-deep',
-              )}
-            >
-              <SpeakerIcon status={speaking ? 'playing' : null} size={16} />
-            </button>
-          )}
+          {clip.audio && <LinePlay text={zh} speaking={speaking} tinted={Boolean(tone)} onPress={play} />}
         </span>
         {view.english && value.english && <span className="text-[15px] font-bold leading-snug text-ui-muted">{value.english}</span>}
       </span>
@@ -179,7 +168,7 @@ function WordChips({ words, order, right, picked, view }: { words: TestChoice[];
             index === right ? 'bg-feedback-success-surface text-feedback-success-text' : index === picked ? 'bg-feedback-danger-surface text-feedback-danger-text line-through decoration-2' : 'border-2 border-ui-divider text-ui-muted-strong',
           )}
         >
-          {index === right ? <PinyinText text={choiceText(words[index], view.script)} pinyin={words[index].pinyin} show={view.pinyin} /> : choiceText(words[index], view.script)}
+          {index === right ? <PinyinText text={choiceText(words[index], view.script)} pinyin={words[index].pinyin} show={view.pinyin} /> : <ChineseText text={choiceText(words[index], view.script)} />}
         </span>
       ))}
     </span>
@@ -258,7 +247,7 @@ function FilledPassage({ item, answers, firstNumber, view }: { item: ClozeItem |
           return (
             <span key={index} className={cn('mx-0.5 rounded-xs px-1.5 py-px', wrong ? 'bg-feedback-danger-surface' : 'bg-feedback-success-surface')}>
               <b className={cn('mr-1 font-sans text-[11px] font-black', wrong ? 'text-feedback-danger-text' : 'text-ui-muted-strong')}>{firstNumber + position}</b>
-              {wrong && picked !== undefined && <s className="mr-1 text-feedback-danger-text decoration-2">{choiceText(list[picked], view.script)}</s>}
+              {wrong && picked !== undefined && <s className="mr-1 text-feedback-danger-text decoration-2"><ChineseText text={choiceText(list[picked], view.script)} /></s>}
               <span className="text-feedback-success-text">{piece(rightWord)}</span>
             </span>
           );
@@ -297,8 +286,8 @@ function FilledGap({ question, picked, view }: { question: LessonTestQuestion; p
     <p className="text-pretty font-chinese text-lg leading-loose text-ui-ink-strong">
       <ChineseText text={before} />
       <span className={cn('mx-0.5 rounded-xs px-1.5 py-px', wrong ? 'bg-feedback-danger-surface' : 'bg-feedback-success-surface')}>
-        {wrong && picked !== undefined && <s className="mr-1 text-feedback-danger-text decoration-2">{choiceText(choices[picked], view.script)}</s>}
-        <span className="text-feedback-success-text">{choiceText(choices[question.key], view.script)}</span>
+        {wrong && picked !== undefined && <s className="mr-1 text-feedback-danger-text decoration-2"><ChineseText text={choiceText(choices[picked], view.script)} /></s>}
+        <span className="text-feedback-success-text"><ChineseText text={choiceText(choices[question.key], view.script)} /></span>
       </span>
       <ChineseText text={after} />
     </p>

@@ -14,6 +14,7 @@ import { PartIntro } from './components/PartIntro';
 import { TestBooklet } from './components/TestBooklet';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
+import { TestLookup } from './components/TestLookup';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
 import { useTestAudioDownload } from './hooks/useTestAudioDownload';
 import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
@@ -43,6 +44,7 @@ function questionNumbers(screens: TestScreen[]) {
 export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenProps) {
   const run = useLessonTestRun(lesson);
   const script = useAppStore((state) => state.characterPreference);
+  const lookingUp = useAppStore((state) => state.dictionaryWord !== null);
   const reduceMotion = useReducedMotion();
   const items = useMemo(() => lessonItemIndex(lesson), [lesson]);
   const planned = useMemo(() => new Map(run.plan.items.map((entry) => [entry.itemId, entry])), [run.plan]);
@@ -174,6 +176,8 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
 
   return (
     <TestWords value={lesson.allowWords ?? NO_WORDS}>
+      {/* Once a Fix round answer is checked, its words can be looked up (never during the test: that would give answers away). */}
+      <TestLookup on={checked}>
       {/* One header for the part intros and the questions, so the progress bar never rebuilds (and refills) between them. */}
       <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
@@ -212,6 +216,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
           onCheck={run.check}
           isCheckDisabled={!ready}
           onContinue={run.continueFix}
+          keyboardShortcutDisabled={scriptOpen || lookingUp}
           layout="wide"
           barRef={barRef}
           secondaryAction={checked && hasTestScript(item) ? { label: 'Script', icon: 'script', onPress: openScript } : undefined}
@@ -232,6 +237,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
           />
         )}
       </AnimatePresence>
+      </TestLookup>
     </TestWords>
   );
 }

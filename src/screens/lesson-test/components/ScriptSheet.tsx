@@ -1,9 +1,12 @@
 import { Drawer, SpeakerIcon } from '../../../lib/widgets';
+import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 import type { AudioStep } from '../testAudioSequence';
 import type { ScriptRow, TestScript } from '../testScript';
 import { ChineseText } from './ChineseText';
 import type { Script } from './ChoiceList';
+import { LinePlay } from './LinePlay';
+import { TestLookup } from './TestLookup';
 import { TestSpeaker } from './TestSpeaker';
 
 /** The pause between two lines when the whole script plays (the test's turn gap). */
@@ -48,7 +51,10 @@ function LineRow({ row, index, scriptPreference, speaking, onPlay }: { row: Scri
         {speaking ? <SpeakerIcon status="playing" size={16} /> : row.badge}
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className="text-pretty font-chinese text-[19px] leading-snug text-ui-ink-strong"><ChineseText text={zh} /></span>
+        <span className="text-pretty font-chinese text-[19px] leading-snug text-ui-ink-strong">
+          <ChineseText text={zh} />
+          {row.audio && <LinePlay text={zh} speaking={speaking} tinted={Boolean(row.answer)} onPress={() => onPlay(index)} />}
+        </span>
         {row.text.pinyin && <span className="text-[15px] font-bold leading-snug text-ui-muted-strong">{row.text.pinyin}</span>}
         {row.text.english && <span className="text-[15px] font-bold leading-snug text-ui-muted">{row.text.english}</span>}
       </span>
@@ -59,23 +65,29 @@ function LineRow({ row, index, scriptPreference, speaking, onPlay }: { row: Scri
       )}
     </>
   );
-  const rowClass = cn(
-    'flex w-full gap-3 rounded-control px-3 py-2.5 text-left transition-colors duration-200',
-    row.answer ? 'bg-feedback-success-surface' : speaking ? 'bg-brand-primary-wash' : '',
-  );
-  return row.audio ? (
-    <button type="button" onClick={() => onPlay(index)} aria-label={`Play: ${zh}`} className={cn(rowClass, !row.answer && !speaking && 'hover:bg-ui-hover', 'focus-ring')}>
+  // A tap on a word looks it up; anywhere else on the row plays the line (its play button too).
+  return (
+    <div
+      onClick={row.audio ? () => onPlay(index) : undefined}
+      className={cn(
+        'flex w-full gap-3 rounded-control px-3 py-2.5 text-left transition-colors duration-200',
+        row.answer ? 'bg-feedback-success-surface' : speaking ? 'bg-brand-primary-wash' : row.audio && 'hover:bg-ui-hover',
+        row.audio && 'cursor-pointer',
+      )}
+    >
       {content}
-    </button>
-  ) : <div className={rowClass}>{content}</div>;
+    </div>
+  );
 }
 
 /**
  * The Fix round's Script: a sheet from the bottom on phones, a panel from the side on bigger screens. A recording
- * lists every line with its pinyin and English, the line that holds the answer marked; tap a line to hear it again,
- * or the speaker to hear them all, each lit as it is spoken. A text gives its pinyin and English.
+ * lists every line with its pinyin and English, the line that holds the answer marked; tap a line's play button (or its row) to hear it again,
+ * or the speaker to hear them all, each lit as it is spoken. A text gives its pinyin and English. Its words can be
+ * looked up; the sheet steps aside while the dictionary is open and comes back after.
  */
 export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: ScriptSheetProps) {
+  const lookingUp = useAppStore((state) => state.dictionaryWord !== null);
   const close = () => {
     audio.stop();
     onClose();
@@ -88,7 +100,7 @@ export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: 
   };
   return (
     <Drawer
-      isOpen={open}
+      isOpen={open && !lookingUp}
       onClose={close}
       title="Script"
       closeLabel="Close the script"
@@ -98,6 +110,7 @@ export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: 
       heightClassName="max-h-[85dvh]"
       contentClassName="px-3 pb-6 md:px-4"
     >
+      <TestLookup onOpen={audio.stop}>
       {script.kind === 'lines' ? (
         <div className="flex flex-col gap-3">
           <div className="flex justify-center pb-1">
@@ -134,6 +147,7 @@ export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: 
           </div>
         </div>
       )}
+      </TestLookup>
     </Drawer>
   );
 }
