@@ -28,7 +28,9 @@ export function GapSentence({ question, order, selected, checked, script, onSele
 
   return (
     <div className="flex w-full flex-col items-center gap-5">
-      <p className="text-balance text-center font-chinese text-2xl leading-loose text-ui-ink-strong md:text-3xl">
+      {/* Full width, not sized to its text: Safari measures words kept whole beside the inline blank as one
+          unbreakable run, so a shrink-to-fit sentence stayed on one line and ran off both edges on iPhones. */}
+      <p className="w-full text-balance text-center font-chinese text-2xl leading-loose text-ui-ink-strong md:text-3xl">
         <ChineseText text={before} />
         {/* Punctuation right after the blank stays on its line (a line never starts with 「，」). */}
         <span className="whitespace-nowrap">
