@@ -1,5 +1,5 @@
 import type { SentenceAudio } from '../../types/grammarPractice';
-import type { LessonTestItem, LessonTestQuestion, LessonTestSounds } from '../../types/lessonTest';
+import type { LessonTestBand, LessonTestItem, LessonTestQuestion, LessonTestSounds } from '../../types/lessonTest';
 
 /** One step of what a listening question says: a clip, or a pause. `mark` lights up the choice being read. */
 export interface AudioStep {
@@ -15,6 +15,11 @@ export interface AudioStep {
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const TURN_GAP_MS = 450;
+/**
+ * Band B (Book 2 Lessons 9–16, Books 3–4): speakers answer each other quickly, as on the TOCFL recordings (owner's
+ * pick). Each clip already keeps 0.1 s of silence at both ends, so turns are about 0.3 s apart instead of 0.65 s.
+ */
+const BAND_B_TURN_GAP_MS = 100;
 /** After a dialogue: a beat of silence, the ding, then a pause before the question, so nothing blurs together. */
 const BEFORE_DING_MS = 2000;
 const AFTER_DING_MS = 800;
@@ -41,8 +46,10 @@ export function listeningSteps(
   orders: Record<string, number[]> | undefined,
   sounds: LessonTestSounds,
   script: 'traditional' | 'simplified',
+  band: LessonTestBand = 'A',
 ): AudioStep[] {
   const steps: AudioStep[] = [];
+  const turnGap = band === 'B' ? BAND_B_TURN_GAP_MS : TURN_GAP_MS;
   const say = (line: { audio?: SentenceAudio; traditional?: string; simplified?: string }, cue: AudioStep['cue'], question?: number) => {
     steps.push({ audio: line.audio, text: line[script] ?? line.traditional, cue, question });
   };
@@ -63,7 +70,7 @@ export function listeningSteps(
   }
   if (item.kind === 'hear-pick-picture' || item.kind === 'dialogue') {
     item.lines.forEach((line, index) => {
-      if (index > 0) steps.push({ pauseMs: TURN_GAP_MS });
+      if (index > 0) steps.push({ pauseMs: turnGap });
       say(line, 'voice');
     });
   }

@@ -158,6 +158,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             checked={isFix && run.checked}
             mode={isFix ? 'replay' : 'exam'}
             sounds={sounds}
+            band={lesson.band}
             audioReady={audioReady}
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}

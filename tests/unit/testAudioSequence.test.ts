@@ -82,3 +82,8 @@ test('a picture question asks its question first (TOCFL Band A 看圖回答), th
   // Book 1's picture questions have no spoken question: only the answers.
   assert.deepEqual(describe(listeningSteps(picture(), picture().questions, undefined, sounds, 'traditional')).slice(0, 3), ['A', '800ms', '咖啡']);
 });
+
+test('a Band B dialogue answers turn to turn quickly; the pauses around the ding and the answers stay', () => {
+  const steps = describe(listeningSteps(item, item.questions, undefined, sounds, 'traditional', 'B'));
+  assert.deepEqual(steps.slice(0, 5), ['你要喝咖啡還是茶？', '100ms', '我要一杯綠茶。', '2000ms', 'ding']);
+});
