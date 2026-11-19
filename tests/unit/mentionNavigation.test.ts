@@ -10,6 +10,7 @@ const notice = (id: number, channel: number): MentionNotice => ({ key: `l:${id}`
 
 let state: Record<string, unknown> = {};
 const sent: unknown[] = [];
+let loads = 0;
 
 /** The real lobby controller, bundled against a plain object store and a fake socket. */
 async function loadController(initial: Record<string, unknown>) {
@@ -18,7 +19,8 @@ async function loadController(initial: Record<string, unknown>) {
   state.setSocial = (patch: object) => { state = { ...state, ...patch }; };
   state.showFeedbackToast = () => {};
   Object.assign(globalThis, { __mentionTest: { store: { getState: () => state }, sent }, document: { visibilityState: 'visible' } });
-  const bundle = await build({ entryPoints: ['src/features/social/lobbyController.ts'], bundle: true, platform: 'node', format: 'esm', write: false,
+  // A unique banner gives every test its own module instance (the controller keeps module-level state).
+  const bundle = await build({ entryPoints: ['src/features/social/lobbyController.ts'], bundle: true, platform: 'node', format: 'esm', write: false, banner: { js: `// ${++loads}` },
     plugins: [{ name: 'social-fixture', setup(plugin) {
       plugin.onResolve({ filter: /services\/socialService|store\/useAppStore/ }, args => ({ path: args.path, namespace: 'fixture' }));
       plugin.onLoad({ filter: /.*/, namespace: 'fixture' }, args => ({ contents: args.path.includes('useAppStore') ? 'export const useAppStore=globalThis.__mentionTest.store;' : 'export const connectLobby=(_identity,handlers)=>{globalThis.__mentionTest.open=handlers.onOpen;return {send:message=>{globalThis.__mentionTest.sent.push(message);return true},close:()=>{}}};' }));
@@ -87,5 +89,23 @@ test('class chat: history brings the count, new lines add to it, seeing them cle
   state.socialPanel = null;
   api.deliver({ t: 'history', l: 0, v: [line(5, 'friend'), line(11, 'friend'), line(12, 'friend')], r: 5, n: 3 });
   assert.equal(state.socialChatUnread, 1);
+  api.stopLobby();
+});
+
+test('@everyone lines become one card from the chat itself, never a mention-read for the Lobby', async () => {
+  const api = await loadController({ socialMentions: [], socialMuted: false, socialPanel: null, socialMe: 'me', socialChatRead: 0, socialChatUnread: 0, socialMentionToast: null, race: null });
+  api.lobby.subscribe(false, 0);
+  api.deliver({ t: 'history', l: 0, v: [{ ...line(2, 'friend', '@everyone old'), a: 1 }, line(3, 'friend'), { ...line(4, 'friend', '@everyone quiz tomorrow'), a: 1 }], r: 2, n: 2 });
+  assert.equal((state.socialMentionToast as MentionNotice).message.id, 4, 'the newest unread @everyone gets the card');
+  assert.deepEqual((state.socialMentions as MentionNotice[]).map(item => item.key), ['a:4'], 'lines already read are left out');
+  api.deliver({ t: 'msg', m: { ...line(5, 'friend', '@everyone room open'), a: 1 } });
+  assert.equal((state.socialMentionToast as MentionNotice).message.id, 5);
+  api.deliver({ t: 'history', l: 0, v: [{ ...line(4, 'friend', '@everyone quiz tomorrow'), a: 1 }], r: 2, n: 1 });
+  assert.equal((state.socialMentions as MentionNotice[]).length, 2, 'a repeated history adds no duplicate');
+  state.socialPanel = { kind: 'people', tab: 'chat' };
+  api.lobby.markChatRead(5);
+  assert.ok((state.socialMentions as MentionNotice[]).every(item => item.read));
+  await new Promise(resolve => setTimeout(resolve, 400));
+  assert.ok(!sent.some(frame => (frame as { t: string }).t === 'mention-read'), 'the Lobby has no copy to mark');
   api.stopLobby();
 });

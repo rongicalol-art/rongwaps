@@ -14,6 +14,8 @@ import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 
 const HAN = /\p{Script=Han}/u;
+/** The @everyone choice in the class chat's mention list (its token id is never an account). */
+const EVERYONE: Person = { u: '*', n: 'everyone', c: 'ink', l: null, a: null };
 /** A message of only a few emoji shows large, without a bubble. */
 const EMOJI_ONLY = /^(?:\p{Extended_Pictographic}|\p{Emoji_Modifier}|\uFE0F|\u200D){1,8}$/u;
 
@@ -56,7 +58,7 @@ export function ChatThread() {
   // @mentions reach people online now.
   const current = useCurrentLesson();
   const { classmates } = useClassmates(useAppStore(state => state.socialPeople), useAppStore(state => state.socialOnline), current, useLessonTotal(current));
-  return <MessageThread chat={chat} ready={ready} candidates={classmates} send={(text, mentions) => lobby.say(GLOBAL_CHAT, text, mentions)} report={id => { lobby.report(id); }} />;
+  return <MessageThread chat={chat} ready={ready} candidates={classmates} everyone send={(text, mentions, all) => lobby.say(GLOBAL_CHAT, text, mentions, all)} report={id => { lobby.report(id); }} />;
 }
 
 export function PartyChatThread() {
@@ -67,7 +69,7 @@ export function PartyChatThread() {
   return <MessageThread chat={chat} ready={ready} candidates={candidates} party send={(text, mentions) => partySend({ type: 'chat', text, mentions })} report={id => { partySend({ type: 'chat-report', id }); }} />;
 }
 
-function MessageThread({ chat, ready, candidates, party = false, send, report }: { chat: ChatMessage[] | null; ready: boolean; candidates: Person[]; party?: boolean; send: (text: string, mentions: string[]) => boolean; report: (id: number) => void }) {
+function MessageThread({ chat, ready, candidates, party = false, everyone = false, send, report }: { chat: ChatMessage[] | null; ready: boolean; candidates: Person[]; party?: boolean; everyone?: boolean; send: (text: string, mentions: string[], all: boolean) => boolean; report: (id: number) => void }) {
   const me = useAppStore((state) => state.socialMe);
   const myBook = useAppStore((state) => state.activeBookId);
   const racePending = useAppStore((state) => state.racePending);
@@ -126,9 +128,9 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
   const people = useMemo(() => new Map(candidates.map(person => [person.u, person])), [candidates]);
   const suggestions = useMemo(
     () => (mentionQuery !== null && !dismissed && !composing.current
-      ? [...people.values()].filter(person => person.u !== me && person.n.toLocaleLowerCase().includes(mentionQuery)).slice(0, 8)
+      ? [...(everyone && EVERYONE.n.startsWith(mentionQuery) ? [EVERYONE] : []), ...[...people.values()].filter(person => person.u !== me && person.n.toLocaleLowerCase().includes(mentionQuery))].slice(0, 8)
       : []),
-    [mentionQuery, dismissed, people, me],
+    [mentionQuery, dismissed, people, me, everyone],
   );
   const select = (person: Person) => {
     if (!match) return;
@@ -210,8 +212,8 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
     if (!value || !ready) return;
     const next = nextChatRate(rate.current, value, Date.now());
     if (!next) { useAppStore.getState().showFeedbackToast('Please wait before sending another message.'); return; }
-    const mentions = [...new Set(tokens.filter(token => draft.slice(token.start, token.end) === token.text).map(token => token.id))];
-    if (!send(value, mentions)) { useAppStore.getState().showFeedbackToast('Reconnecting. Try again in a moment.'); return; }
+    const picked = [...new Set(tokens.filter(token => draft.slice(token.start, token.end) === token.text).map(token => token.id))];
+    if (!send(value, picked.filter(id => id !== EVERYONE.u), picked.includes(EVERYONE.u))) { useAppStore.getState().showFeedbackToast('Reconnecting. Try again in a moment.'); return; }
     rate.current = next;
     setDraft(''); setTokens([]); setCaret(0); setDismissed(false);
   };
@@ -295,7 +297,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
       </div>
       <div className="relative flex flex-col gap-1.5 pt-2">
         {suggestions.length > 0 && <div role="listbox" ref={picker} id="mention-suggestions" aria-label="Mention someone" className="absolute bottom-full left-0 right-0 z-popover mb-2 max-h-60 overflow-y-auto rounded-control border-2 border-ui-border bg-ui-surface p-1">
-          {suggestions.map((person, index) => <button key={person.u} id={`mention-option-${index}`} type="button" role="option" aria-selected={index === choice % suggestions.length} onMouseDown={event => event.preventDefault()} onClick={() => select(person)} className={`flex w-full items-center gap-2 rounded-control px-3 py-2 text-left font-bold text-ui-ink-strong ${index === choice % suggestions.length ? 'bg-brand-primary-soft' : 'hover:bg-ui-canvas'}`}><Avatar name={person.n} color={person.c} size="sm" src={person.i} /><span>{person.n}</span>{suggestions.filter(other => other.n === person.n).length > 1 && <span className="text-xs text-ui-muted">Classmate {suggestions.filter(other => other.n === person.n).findIndex(other => other.u === person.u) + 1}</span>}</button>)}
+          {suggestions.map((person, index) => <button key={person.u} id={`mention-option-${index}`} type="button" role="option" aria-selected={index === choice % suggestions.length} onMouseDown={event => event.preventDefault()} onClick={() => select(person)} className={`flex w-full items-center gap-2 rounded-control px-3 py-2 text-left font-bold text-ui-ink-strong ${index === choice % suggestions.length ? 'bg-brand-primary-soft' : 'hover:bg-ui-canvas'}`}>{person === EVERYONE ? <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ui-hover text-ui-muted-strong"><AppIcon name="family" size={16} /></span> : <Avatar name={person.n} color={person.c} size="sm" src={person.i} />}<span>{person.n}</span>{person === EVERYONE && <span className="text-xs text-ui-muted">The whole class</span>}{suggestions.filter(other => other.n === person.n).length > 1 && <span className="text-xs text-ui-muted">Classmate {suggestions.filter(other => other.n === person.n).findIndex(other => other.u === person.u) + 1}</span>}</button>)}
         </div>}
         {!ready && <p role="status" className="text-center text-xs font-bold text-ui-muted-strong">Reconnecting…</p>}
         <form className="flex items-center gap-2 rounded-control border-2 border-ui-border bg-ui-surface py-1 pl-4 pr-1 focus-within:border-brand-primary" onSubmit={(event) => { event.preventDefault(); if (!composing.current && Date.now() - compositionEndedAt.current > 100) say(draft); }}>

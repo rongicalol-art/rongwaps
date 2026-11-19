@@ -1,7 +1,7 @@
 import { connectLobby, type Identity } from '../../services/socialService';
 import { NAME_NOT_ALLOWED, NAME_RESERVED } from '../../../shared/nameFilter';
 import { useAppStore } from '../../store/useAppStore';
-import { GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
+import { GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type ChatMessage, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
 /**
  * The single Lobby connection. Presence/subscription frames are deduped here and re-sent after a reconnect,
@@ -40,11 +40,28 @@ function chatOnScreen(state: ReturnType<typeof useAppStore.getState>) {
   return state.socialPanel?.kind === 'people' && state.socialPanel.tab === 'chat' && document.visibilityState === 'visible';
 }
 
+/** @everyone lines become notices here, from the chat itself; the Lobby keeps no copy per account. */
+const EVERYONE_KEY = 'a:';
+const everyoneNotice = (message: ChatMessage): MentionNotice => ({ key: `${EVERYONE_KEY}${message.id}`, channel: GLOBAL_CHAT, message, read: false });
+
+/** New @everyone lines join the notices; the newest gets the card unless the chat is on screen or muted. */
+function noticeEveryone(lines: ChatMessage[]) {
+  const store = useAppStore.getState();
+  const fresh = lines.filter(line => line.a && line.u !== store.socialMe && line.id > store.socialChatRead && !store.socialMentions.some(item => item.key === `${EVERYONE_KEY}${line.id}`));
+  if (!fresh.length) return;
+  const notices = fresh.map(everyoneNotice);
+  const newest = notices[notices.length - 1];
+  store.setSocial({
+    socialMentions: [...notices.reverse(), ...store.socialMentions].slice(0, 30),
+    ...(!chatOnScreen(store) && !store.socialMuted ? { socialMentionToast: newest } : {}),
+  });
+}
+
 /** Everything up to `id` has been seen: the count clears, @mentions in it count as read, and the Lobby is told. */
 function markChatRead(id: number) {
   const store = useAppStore.getState();
   const seen = store.socialMentions.filter(item => !item.room && !item.read && item.message.id <= id);
-  for (const item of seen) lobby.readMention(item.key);
+  for (const item of seen) if (!item.key.startsWith(EVERYONE_KEY)) lobby.readMention(item.key);
   if (id > store.socialChatRead || store.socialChatUnread || seen.length || store.socialMentionToast) {
     store.setSocial({
       socialChatRead: Math.max(store.socialChatRead, id), socialChatUnread: 0,
@@ -101,6 +118,7 @@ function receive(message: LobbyServerMessage) {
       const unread = read > message.r ? message.v.filter(line => line.id > read && line.u !== store.socialMe && line.t).length : message.n ?? 0;
       set({ socialChat: { lesson: message.l, messages: message.v }, socialChatRead: read, socialChatUnread: unread });
       flushChatRead();
+      noticeEveryone(message.v);
       break;
     }
     case 'msg': {
@@ -113,6 +131,7 @@ function receive(message: LobbyServerMessage) {
         ...(counts ? { socialChatUnread: Math.min(UNREAD_CAP, store.socialChatUnread + 1) } : {}),
       });
       if (reading) markChatRead(message.m.id);
+      else if (message.m.a) noticeEveryone([message.m]);
       break;
     }
     case 'mentions': {
@@ -249,7 +268,7 @@ export const lobby = {
     if (wait <= 0) ask();
     else rosterTimer = setTimeout(ask, wait);
   },
-  say: (l: number, text: string, mentions?: string[]) => send({ t: 'say', l, text, mentions }),
+  say: (l: number, text: string, mentions?: string[], all = false) => send({ t: 'say', l, text, mentions, ...(all ? { all: true as const } : {}) }),
   cheer: (to: string[], p: number) => { if (to.length) send({ t: 'cheer', to, p }); },
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),
   readMention: (key: string) => { pendingReads.add(key); flushReads(); },
@@ -264,7 +283,7 @@ export const lobby = {
 /** Opening a notification changes only the chat channel, never study presence or room membership. */
 export function openMention(notice: MentionNotice) {
   const store = useAppStore.getState();
-  lobby.readMention(notice.key);
+  if (!notice.key.startsWith(EVERYONE_KEY)) lobby.readMention(notice.key);
   store.setSocial({ socialMentions: store.socialMentions.map(item => item.key === notice.key ? { ...item, read: true } : item), socialMentionToast: null });
   pendingOpen = null;
   if (notice.room) {

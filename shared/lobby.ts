@@ -29,9 +29,10 @@ export function chatText(value: unknown): string {
   return Array.from(clean).slice(0, CHAT_MAX).join('');
 }
 
-/** Per account per day (UTC): chat lines (lesson, global and party chat each), cheers, party invites. */
-export const DAILY_LIMITS = { chat: 300, cheer: 200, invite: 60 } as const;
+/** Per account per day (UTC): chat lines (lesson, global and party chat each), cheers, party invites, @everyone. */
+export const DAILY_LIMITS = { chat: 300, cheer: 200, invite: 60, everyone: 3 } as const;
 export const DAILY_LIMIT_ERROR = 'You\u2019ve reached today\u2019s limit. Try again tomorrow.';
+export const EVERYONE_LIMIT_ERROR = `@everyone works ${DAILY_LIMITS.everyone} times a day. Try again tomorrow.`;
 /** Most blocked accounts (the database caps the list at the same size); 100 IDs fit in one 4 KB frame. */
 export const BLOCK_MAX = 100;
 export const utcDay = (now: number) => Math.floor(now / 86_400_000);
@@ -82,9 +83,9 @@ export function parseProfileCard(value: unknown): ProfileCard | null {
 }
 /**
  * `r` turns the line into a room card (an open room announced in the chat). `w`: the lesson the sender was in when
- * writing (class chat only, never for people hidden from Online).
+ * writing (class chat only, never for people hidden from Online). `a`: an @everyone line (class chat only).
  */
-export interface ChatMessage { id: number; l: number; u: string; n: string; c: SocialColor; t: string; ts: number; r?: RaceRoomSummary; i?: string; w?: number }
+export interface ChatMessage { id: number; l: number; u: string; n: string; c: SocialColor; t: string; ts: number; r?: RaceRoomSummary; i?: string; w?: number; a?: 1 }
 export interface MentionNotice { key: string; channel: number; room?: string; message: ChatMessage; read: boolean }
 export interface LessonCount { n: number; f: Person[] }
 
@@ -94,7 +95,8 @@ export type LobbyClientMessage =
   | { t: 'sub'; online: boolean; chat: number | null; v?: 2 | 3 }
   /** A fresh Online snapshot (people in this lesson first, then the most recently active; capped). */
   | { t: 'roster' }
-  | { t: 'say'; l: number; text: string; mentions?: string[] }
+  /** `all`: @everyone (class chat only, a few times a day). */
+  | { t: 'say'; l: number; text: string; mentions?: string[]; all?: true }
   | { t: 'cheer'; to: string[]; p: number }
   | { t: 'invite'; to: string[]; code: string }
   | { t: 'report'; id: number }
@@ -149,7 +151,7 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {
     const text = maskChat(chatText(data.text));
     const mentions = mentionIds(data.mentions);
-    if (text) return { t: 'say', l: Number(data.l), text, ...(mentions.length ? { mentions } : {}) };
+    if (text) return { t: 'say', l: Number(data.l), text, ...(mentions.length ? { mentions } : {}), ...(data.all === true && Number(data.l) === GLOBAL_CHAT ? { all: true as const } : {}) };
   }
   if (data.t === 'cheer' && Array.isArray(data.to) && Number.isInteger(data.p) && Number(data.p) >= 0 && Number(data.p) < CHEER_PHRASES.length) {
     const to = data.to.filter((id): id is string => typeof id === 'string' && id.length <= 64).slice(0, 8);

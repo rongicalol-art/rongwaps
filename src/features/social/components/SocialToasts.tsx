@@ -105,7 +105,7 @@ export function CheerToast() {
   );
 }
 
-/** An @mention: one quiet card for 6 s. While practising, a test or a race it waits and shows once that ends. */
+/** An @mention (or @everyone): one quiet card for 6 s. While practising, a test or a race it waits and shows once that ends. */
 export function MentionToast() {
   const notice = useAppStore(state => state.socialMentionToast);
   const panelOpen = useAppStore(state => state.socialPanel !== null);
@@ -119,6 +119,6 @@ export function MentionToast() {
   if (!notice || waiting) return null;
   return <div role="status"><button type="button" onClick={() => openMention(notice)} className={`${noticeCard(panelOpen)} outline-none focus-ring`}>
     <Avatar name={notice.message.n} color={notice.message.c} size="sm" src={notice.message.i} />
-    <span className="min-w-0"><span className="block font-black text-ui-ink-strong">{notice.message.n} mentioned you</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{notice.room ? `Party · ${notice.message.t}` : notice.message.t}</span></span>
+    <span className="min-w-0"><span className="block font-black text-ui-ink-strong">{notice.message.n} {notice.message.a ? 'wrote to everyone' : 'mentioned you'}</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{notice.room ? `Party · ${notice.message.t}` : notice.message.t}</span></span>
   </button></div>;
 }

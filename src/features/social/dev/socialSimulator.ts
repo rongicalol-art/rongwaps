@@ -77,7 +77,7 @@ function roster() {
 }
 
 /** Class chat lines carry the writer's lesson (a room card: the room's lesson). */
-function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary, where = from.l) {
+function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary, where = from.l, all = false) {
   const message: ChatMessage = {
     id: nextId++,
     l: lesson,
@@ -89,6 +89,7 @@ function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary
     ...(room ? { r: room } : {}),
     ...(from.i ? { i: from.i } : {}),
     ...(lesson === GLOBAL_CHAT && where !== null ? { w: where } : {}),
+    ...(lesson === GLOBAL_CHAT && all ? { a: 1 as const } : {}),
   };
   const list = [...(chats.get(lesson) ?? []), message].slice(-50);
   chats.set(lesson, list);
@@ -162,7 +163,7 @@ function handle(message: LobbyClientMessage) {
   }
   if (message.t === 'roster') { roster(); return; }
   if (message.t === 'say') {
-    post(meAsPerson(), message.l, message.text);
+    post(meAsPerson(), message.l, message.text, undefined, me.l, !!message.all);
     later(() => post(message.l === GLOBAL_CHAT ? pick(users) : someoneIn(message.l), message.l, pick(REPLIES)), between(1500, 3500));
     return;
   }
@@ -342,5 +343,6 @@ export const simulate = {
       deliver({ t: 'mention', v: { key: `sim:${message.id}`, channel: GLOBAL_CHAT, message, read: false } });
     }, 2000);
   },
+  everyone() { later(() => post(pick(users), GLOBAL_CHAT, '@everyone 明天有小考，記得複習！', undefined, undefined, true), 2000); },
   chatBurst() { for (let index = 0; index < 8; index++) later(() => post(pick(users), GLOBAL_CHAT, pick(LINES)), index * 350); },
 };

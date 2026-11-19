@@ -256,6 +256,21 @@ try {
   await delay(100);
   classChat = await reopenClassChat();
   assert.equal(classChat.r, tagged.id, 'the read spot only moves forward');
+  // @everyone marks the line for every reader, a few times a day per account.
+  const herald = await open('/lobby/socket', 'lobby', (await post('/lobby', 'herald')).ticket);
+  send(herald, { t: 'sub', online: false, chat: 0 });
+  await until(() => last(herald, 'history')?.l === 0);
+  for (const n of [1, 2, 3]) {
+    send(herald, { t: 'say', l: 0, text: `@everyone hello ${n}`, all: true });
+    await until(() => last(alice, 'msg')?.m.t === `@everyone hello ${n}`);
+    assert.equal(last(alice, 'msg').m.a, 1);
+    await delay(1100);
+  }
+  send(herald, { t: 'say', l: 0, text: '@everyone hello 4', all: true });
+  await until(() => last(herald, 'error')?.message.startsWith('@everyone works 3 times'));
+  await delay(150);
+  assert.notEqual(last(alice, 'msg').m.t, '@everyone hello 4', 'the fourth @everyone is refused');
+  herald.socket.close();
   send(alice, { t: 'sub', online: true, chat: 101 });
   send(bob, { t: 'sub', online: false, chat: 101 });
 
