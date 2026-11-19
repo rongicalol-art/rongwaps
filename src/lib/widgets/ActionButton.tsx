@@ -73,6 +73,22 @@ const sizeConfig: Record<ActionButtonSize, {
   },
 };
 
+/**
+ * Classes that place the button in its parent (outer spacing, max width, self-alignment, grid placement) or hide
+ * it go on the whole button. On the moving face they would slide or hide the face but not its fixed edge, which
+ * then shows as a grey slab above or beside it.
+ */
+const PLACEMENT = /^(?:-?m[trblxyse]?-|max-w-|self-|justify-self-|place-self-|order-|col-|row-|hidden$|invisible$|visible$)/;
+function splitPlacement(className?: string) {
+  const placement: string[] = [];
+  const surface: string[] = [];
+  for (const token of className?.split(/\s+/).filter(Boolean) ?? []) {
+    const utility = token.slice(token.lastIndexOf(':') + 1).replace(/^!/, '');
+    (PLACEMENT.test(utility) ? placement : surface).push(token);
+  }
+  return { placement: placement.join(' '), surface: surface.join(' ') };
+}
+
 export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(function ActionButton({
   variant = 'primary',
   size = 'md',
@@ -132,6 +148,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
 
   const isFullWidth = fullWidth || className?.includes('w-full');
   const isAutoWidth = className?.includes('w-auto');
+  const { placement, surface } = splitPlacement(className);
 
   return (
     <button
@@ -145,6 +162,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
         'disabled:pointer-events-none disabled:cursor-not-allowed',
         outerRadiusClass,
         isFullWidth ? 'w-full' : isAutoWidth ? 'w-auto' : undefined,
+        placement,
       )}
       {...props}
     >
@@ -167,7 +185,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
           'transition-[transform,background-color,border-color,color,filter] duration-150 ease-out',
           sizeSpec.marginClass,
           sizeSpec.innerPadding,
-          className,
+          surface,
           disabled
             ? '!bg-brand-disabled !border-none !text-white !shadow-none cursor-not-allowed pointer-events-none'
             : cn(
