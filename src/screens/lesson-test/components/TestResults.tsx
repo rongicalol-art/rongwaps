@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import { BIRD_LAST_FRAME, StatTile, formatTime, loadBird } from '../../../features/practice';
-import { LottiePlayer } from '../../../lib/widgets';
+import { AppIcon, IconActionButton, LottiePlayer } from '../../../lib/widgets';
 import type { LessonTestScore } from '../../../utils/lesson/lessonTestPlan';
 import { TestDock } from './TestDock';
 
@@ -27,10 +27,14 @@ interface CelebrationProps {
   success: boolean;
   children?: React.ReactNode;
   dock: React.ReactNode;
+  /** A close button in the corner (the results: "later"). */
+  onClose?: () => void;
+  /** The booklet is open over it: nothing here takes focus or keys. */
+  covered?: boolean;
 }
 
 /** The mascot drops in, the headline pops word by word, then the rest rises. A tap skips to the end. */
-function Celebration({ headline, success, children, dock }: CelebrationProps) {
+function Celebration({ headline, success, children, dock, onClose, covered = false }: CelebrationProps) {
   const reduceMotion = Boolean(useReducedMotion());
   const birdRef = useRef<LottieRefCurrentProps>(null);
   const birdWrapRef = useRef<HTMLDivElement>(null);
@@ -80,7 +84,10 @@ function Celebration({ headline, success, children, dock }: CelebrationProps) {
   }, []);
 
   return (
-    <>
+    <div inert={covered} className="contents">
+      {onClose && (
+        <IconActionButton variant="quiet" icon={<AppIcon name="close" size={22} />} label="Close the test" onClick={onClose} className="absolute left-3 top-3 z-50 sm:left-5" />
+      )}
       <div
         onPointerDown={(event) => { if (!(event.target as HTMLElement).closest('button')) skipRef.current(); }}
         className="absolute inset-0 flex flex-col items-center overflow-y-auto overscroll-contain px-5 pb-48"
@@ -108,7 +115,7 @@ function Celebration({ headline, success, children, dock }: CelebrationProps) {
         </div>
       </div>
       {dock}
-    </>
+    </div>
   );
 }
 
@@ -118,13 +125,14 @@ interface TestResultsProps {
   seconds: number;
   passed: boolean;
   onFix: () => void;
-  /** See all: every question again with its answer, the reason and the Script (offered here after a perfect test). */
-  onSeeAll: () => void;
+  /** Scripts & answers: the booklet of the whole test, with its scripts and every answer. */
+  onScripts: () => void;
   onLater: () => void;
+  covered?: boolean;
 }
 
-/** After the test: how it went per part, what to fix, then the Fix round (or later). */
-export function TestResults({ lessonId, score, seconds, passed, onFix, onSeeAll, onLater }: TestResultsProps) {
+/** After the test: how it went per part, what to fix, then the Fix round, Scripts & answers, or later (the corner's close). */
+export function TestResults({ lessonId, score, seconds, passed, onFix, onScripts, onLater, covered = false }: TestResultsProps) {
   const [rows] = useState(() => focusRows(score, lessonId));
   const misses = score.missed.length;
   const percent = Math.round((score.correct / score.total) * 100);
@@ -133,9 +141,11 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onSeeAll,
     <Celebration
       headline={headline}
       success={passed}
+      onClose={misses > 0 ? onLater : undefined}
+      covered={covered}
       dock={misses > 0
-        ? <TestDock label={`Fix ${misses} mistake${misses === 1 ? '' : 's'}`} onPress={onFix} secondary={{ label: 'Later', onPress: onLater }} />
-        : <TestDock label="Continue" onPress={onLater} secondary={{ label: 'See all questions', onPress: onSeeAll }} />}
+        ? <TestDock label={`Fix ${misses} mistake${misses === 1 ? '' : 's'}`} onPress={onFix} secondary={{ label: 'Scripts & answers', onPress: onScripts }} paused={covered} />
+        : <TestDock label="Continue" onPress={onLater} secondary={{ label: 'Scripts & answers', onPress: onScripts }} paused={covered} />}
     >
       <div data-tiles className="grid w-full max-w-90 grid-cols-3 gap-3 md:max-w-110 md:gap-4">
         <StatTile
@@ -168,13 +178,23 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onSeeAll,
   );
 }
 
-/** After the Fix round (or See all): back to the lesson, or See all, every question again. */
-export function TestDone({ lessonId, passed, rescheduled, onSeeAll, onClose }: { lessonId: number; passed: boolean; rescheduled: boolean; onSeeAll: () => void; onClose: () => void }) {
+interface TestDoneProps {
+  lessonId: number;
+  passed: boolean;
+  rescheduled: boolean;
+  onScripts: () => void;
+  onClose: () => void;
+  covered?: boolean;
+}
+
+/** After the Fix round: back to the lesson, or Scripts & answers. */
+export function TestDone({ lessonId, passed, rescheduled, onScripts, onClose, covered = false }: TestDoneProps) {
   return (
     <Celebration
       headline={passed ? ['Lesson', String(lessonId), 'passed!'] : ['Mistakes', 'fixed!']}
       success={passed}
-      dock={<TestDock label="Back to lesson" onPress={onClose} secondary={{ label: 'See all questions', onPress: onSeeAll }} />}
+      covered={covered}
+      dock={<TestDock label="Back to lesson" onPress={onClose} secondary={{ label: 'Scripts & answers', onPress: onScripts }} paused={covered} />}
     >
       {rescheduled && <p className="text-center text-base font-bold text-ui-muted-strong">Missed words come back in your next review.</p>}
     </Celebration>

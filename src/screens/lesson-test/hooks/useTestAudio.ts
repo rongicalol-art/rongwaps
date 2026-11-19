@@ -34,12 +34,12 @@ function playClip(step: AudioStep): Promise<boolean> {
 
 /**
  * Plays a screen's audio steps at normal speed. In the test (`exam`) it plays on its own, `examPlays` times (twice at
- * Band A, once at Band B), and can't be replayed; in the Fix round it plays once and `replay` plays it again; in See
- * all (`review`) it waits for the learner to press it. It starts once the screen's recordings
+ * Band A, once at Band B), and can't be replayed; in the Fix round it plays once and `replay` plays it again. It
+ * starts once the screen's recordings
  * are `ready` (downloaded ahead), so no clip starts late. A clip that can't play stops the play without using it
  * up: the key shows `retry`, and `retry()` plays it again.
  */
-export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 'replay' | 'review', ready: boolean, examPlays: 1 | 2 = EXAM_PLAYS) {
+export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 'replay', ready: boolean, examPlays: 1 | 2 = EXAM_PLAYS) {
   const [playing, setPlaying] = useState(false);
   const [plays, setPlays] = useState(0);
   const [mark, setMark] = useState<number | null>(null);
@@ -164,7 +164,6 @@ export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 're
   }, [key, mode, examPlays]);
 
   useEffect(() => {
-    if (mode === 'review') return stop;
     if (!ready || stepsRef.current.length === 0) return undefined;
     const timer = window.setTimeout(() => { void start(); }, 450);
     return () => { window.clearTimeout(timer); stop(); };

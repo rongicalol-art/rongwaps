@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { FeedbackBottomBar } from '../../features/practice';
+import { ActionButton } from '../../lib/widgets';
 import { ScreenHeader } from '../../lib/widgets';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
@@ -10,6 +11,7 @@ import { AnswerDetail } from './components/AnswerDetail';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
 import { PartIntro } from './components/PartIntro';
+import { TestBooklet } from './components/TestBooklet';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
@@ -26,7 +28,6 @@ interface LessonTestScreenProps {
 }
 
 const NO_WORDS: string[] = [];
-const NO_ANSWER = () => {};
 
 /** Number of the first question on each screen (a paragraph screen covers several). */
 function questionNumbers(screens: TestScreen[]) {
@@ -36,8 +37,8 @@ function questionNumbers(screens: TestScreen[]) {
 
 /**
  * The lesson test: 聽力 then 閱讀 with no right or wrong shown, the results, then a Fix round (in the
- * review honey tone) over every miss, with the answer, the reason and the Script; See all then goes through
- * every question the same way, with the test's own answers.
+ * review honey tone) over every miss, with the answer, the reason and the Script. Scripts & answers (the booklet
+ * of the whole test, with the test's own answers) rises over the results and the done screen.
  */
 export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenProps) {
   const run = useLessonTestRun(lesson);
@@ -48,24 +49,24 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const numbers = useMemo(() => questionNumbers(run.screens), [run.screens]);
   const total = numbers.length ? numbers[numbers.length - 1] + run.screens[run.screens.length - 1].questionIds.length : 0;
   const isFix = run.stage === 'fix';
-  const isAll = run.stage === 'all';
-  useReviewTone(isFix || isAll);
+  useReviewTone(isFix);
+  const [bookletOpen, setBookletOpen] = useState(false);
 
-  const screen = isFix ? run.fixScreen : isAll ? run.allScreen : run.screen;
+  const screen = isFix ? run.fixScreen : run.screen;
   const item = screen ? items.get(screen.itemId) : undefined;
   const plannedItem = screen ? planned.get(screen.itemId) : undefined;
   const answers = isFix ? run.fixAnswers : run.answers;
   const ready = Boolean(screen?.questionIds.every((id) => answers[id] !== undefined));
 
   // The next screen's pictures load while this one is answered.
-  const nextScreen = isFix ? run.fixScreens[run.fixIndex + 1] : run.screens[(isAll ? run.allIndex : run.screenIndex) + 1];
+  const nextScreen = isFix ? run.fixScreens[run.fixIndex + 1] : run.screens[run.screenIndex + 1];
   useEffect(() => {
     const nextItem = nextScreen && items.get(nextScreen.itemId);
     if (nextItem) for (const url of itemPictureUrls(nextItem)) new Image().src = url;
   }, [items, nextScreen]);
 
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const position = isFix ? run.fixIndex : isAll ? run.allIndex : run.screenIndex;
+  const position = isFix ? run.fixIndex : run.screenIndex;
   const screenKey = `${run.stage}:${position}`;
   // The Script sheet (after Check) closes when the screen changes.
   const [scriptOpen, setScriptOpen] = useState(false);
@@ -82,13 +83,13 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const recordings = isFix ? fixRecordings : examRecordings;
   const testFiles = useMemo(() => [...new Set(examRecordings.flat())], [examRecordings]);
   const download = useTestAudioDownload(testFiles);
-  const downloading = !isFix && !isAll && !download.ready && (examRecordings[run.screenIndex]?.length ?? 0) > 0;
+  const downloading = !isFix && !download.ready && (examRecordings[run.screenIndex]?.length ?? 0) > 0;
   const audioReady = useTestAudioPreparation(recordings, position, screenKey);
   useEffect(() => { scrollerRef.current?.scrollTo({ top: 0 }); }, [screenKey]);
   // The Fix round's bar grows with its explanation. The question keeps clear of it (--cover), and once
   // checked it scrolls up with the bar, so the checked answers stay in view right above it.
   const checkedRef = useRef(false);
-  checkedRef.current = (isFix && run.checked) || isAll;
+  checkedRef.current = isFix && run.checked;
   const barRef = useCallback((bar: HTMLDivElement | null) => {
     const scroller = scrollerRef.current;
     if (!bar || !scroller) return undefined;
@@ -106,26 +107,49 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const openScript = () => setScriptOpen(true);
   const closeScript = () => setScriptOpen(false);
 
-  if (run.stage === 'results' && run.result) {
+  if ((run.stage === 'results' || run.stage === 'done') && run.result) {
+    const misses = run.result.score.missed.length;
+    const openBooklet = () => setBookletOpen(true);
     return (
-      <TestResults
-        lessonId={lesson.lessonId}
-        score={run.result.score}
-        seconds={run.result.seconds}
-        passed={run.result.passed}
-        onFix={run.startFix}
-        onSeeAll={run.startAll}
-        onLater={onClose}
-      />
+      <>
+        {run.stage === 'results' ? (
+          <TestResults
+            lessonId={lesson.lessonId}
+            score={run.result.score}
+            seconds={run.result.seconds}
+            passed={run.result.passed}
+            onFix={run.startFix}
+            onScripts={openBooklet}
+            onLater={onClose}
+            covered={bookletOpen}
+          />
+        ) : (
+          <TestDone lessonId={lesson.lessonId} passed={run.result.passed} rescheduled={run.result.rescheduled} onScripts={openBooklet} onClose={onClose} covered={bookletOpen} />
+        )}
+        <AnimatePresence>
+          {bookletOpen && (
+            <TestBooklet
+              key="booklet"
+              lesson={lesson}
+              plan={run.plan}
+              answers={run.answers}
+              rise
+              onClose={() => setBookletOpen(false)}
+              footer={run.stage === 'results' && misses > 0 && (
+                <ActionButton size="lg" fullWidth className="text-base tracking-wider md:text-lg" onClick={() => { setBookletOpen(false); run.startFix(); }}>
+                  Fix {misses} mistake{misses === 1 ? '' : 's'}
+                </ActionButton>
+              )}
+            />
+          )}
+        </AnimatePresence>
+      </>
     );
   }
-  if (run.stage === 'done') {
-    return <TestDone lessonId={lesson.lessonId} passed={Boolean(run.result?.passed)} rescheduled={Boolean(run.result?.rescheduled)} onSeeAll={run.startAll} onClose={onClose} />;
-  }
 
-  const shownIndex = isFix ? run.fixIndex : isAll ? run.allIndex : numbers[run.screenIndex] ?? 0;
-  const shownTotal = isFix ? run.fixScreens.length : isAll ? run.screens.length : total;
-  const done = isFix ? run.fixIndex + (run.checked ? 1 : 0) : isAll ? run.allIndex + 1 : run.stage === 'intro' ? shownIndex : shownIndex + (screen?.questionIds.length ?? 1) * (ready ? 1 : 0);
+  const shownIndex = isFix ? run.fixIndex : numbers[run.screenIndex] ?? 0;
+  const shownTotal = isFix ? run.fixScreens.length : total;
+  const done = isFix ? run.fixIndex + (run.checked ? 1 : 0) : run.stage === 'intro' ? shownIndex : shownIndex + (screen?.questionIds.length ?? 1) * (ready ? 1 : 0);
   const header = (
     <ScreenHeader
       variant="window"
@@ -145,10 +169,8 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const fixQuestions = item.questions.filter((question) => screen.questionIds.includes(question.id));
   const correct = fixQuestions.every((question) => answers[question.id] === question.key);
   const last = run.screenIndex + 1 >= run.screens.length;
-  const review = isFix || isAll;
-  // See all shows every screen checked, with the answers given in the test.
-  const checked = (isFix && run.checked) || isAll;
-  const barShown = isAll || (isFix && (run.checked || ready));
+  const checked = isFix && run.checked;
+  const barShown = isFix && (run.checked || ready);
 
   return (
     <TestWords value={lesson.allowWords ?? NO_WORDS}>
@@ -171,25 +193,25 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             planned={plannedItem}
             answers={answers}
             checked={checked}
-            mode={isAll ? 'review' : isFix ? 'replay' : 'exam'}
+            mode={isFix ? 'replay' : 'exam'}
             sounds={sounds}
             audioReady={audioReady}
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}
-            onAnswer={isAll ? NO_ANSWER : isFix ? run.answerFix : run.answer}
+            onAnswer={isFix ? run.answerFix : run.answer}
             scriptOpen={scriptOpen}
             onCloseScript={closeScript}
           />
         </motion.div>
         )}
       </div>
-      {introShown ? null : review ? (
+      {introShown ? null : isFix ? (
         <FeedbackBottomBar
           status={checked ? (correct ? 'correct' : 'wrong') : 'idle'}
           detail={checked ? <AnswerDetail item={item} questions={fixQuestions} script={script} /> : undefined}
           onCheck={run.check}
           isCheckDisabled={!ready}
-          onContinue={isAll ? run.continueAll : run.continueFix}
+          onContinue={run.continueFix}
           layout="wide"
           barRef={barRef}
           secondaryAction={checked && hasTestScript(item) ? { label: 'Script', icon: 'script', onPress: openScript } : undefined}

@@ -320,6 +320,7 @@ const PERSISTED_RECORD_KEYS = [
   'progressResetSeen',
   'wordConfusions',
   'lessonTests',
+  'lessonTestLast',
   'lessonDoneMarks',
 ] as const;
 

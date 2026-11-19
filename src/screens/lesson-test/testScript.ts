@@ -25,7 +25,7 @@ const VOICE: Record<string, string> = { F: '女', M: '男' };
 const paragraphs = (text: string | undefined) => (text ?? '').split('\n').map((line) => line.trim()).filter(Boolean);
 
 /**
- * The script of a question's recording or text, for the Fix round and See all. Recordings list every line (a
+ * The script of a question's recording or text, for the Fix round's Script sheet. Recordings list every line (a
  * dialogue or talk, or a picture question's question and answers, in the order shown); texts give their pinyin and
  * English. Gap sentences and picture choices have none: the answer bar already shows their whole sentence.
  * `numberOf` names a question's number on the test (a recording with several questions tags the line each answers).
