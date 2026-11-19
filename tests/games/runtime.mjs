@@ -51,6 +51,9 @@ export class Lobby extends BaseLobby {
   runAlarm() { return this.alarm(); }
   async failListings(enabled) { await this.ctx.storage.put('fixture-listing-outage', enabled); }
   async failMentions(enabled) { await this.ctx.storage.put('fixture-mention-outage', enabled); }
+  /** Turns the privacy update on before its date (kept in SQLite so it survives a wake). */
+  async openSocialUpdate() { this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS fixture_social_open (x)'); this.fixtureOpenFlag = true; }
+  updateOpen(now) { return (this.fixtureOpenFlag ??= this.ctx.storage.sql.exec("SELECT 1 FROM sqlite_master WHERE name='fixture_social_open'").toArray().length > 0) || super.updateOpen(now); }
   async partyMention(uid, notice) {
     if (await this.ctx.storage.get('fixture-mention-outage')) throw new Error('Synthetic mention outage');
     return super.partyMention(uid, notice);
@@ -76,6 +79,7 @@ export default { async fetch(request, env, ctx) {
     else if (action === 'recover') await stub.failListings(false);
     else if (action === 'mentionfail') await stub.failMentions(true);
     else if (action === 'mentionrecover') await stub.failMentions(false);
+    else if (action === 'socialopen') await stub.openSocialUpdate();
     else await stub.runAlarm();
     return Response.json({ok:true});
   }
@@ -625,6 +629,39 @@ try {
   const revision = otherHost.state.revision;
   otherHost.socket.send('ping'); await delay(100);
   assert.equal(otherHost.state.revision, revision);
+
+  // The privacy update: private-message pings, the long class chat loaded 50 at a time, and forgetting an account.
+  const fran = await open('/lobby/socket', 'lobby', (await post('/lobby', 'fran')).ticket);
+  let gus = await open('/lobby/socket', 'lobby', (await post('/lobby', 'gus')).ticket);
+  await until(() => last(fran, 'me') && last(gus, 'me'));
+  send(fran, { t: 'sub', online: false, chat: 0, v: 3 }); send(gus, { t: 'sub', online: false, chat: 0, v: 3 });
+  await until(() => last(fran, 'history')?.l === 0 && last(gus, 'history')?.l === 0);
+  send(fran, { t: 'dm', to: 'gus' }); send(gus, { t: 'older', before: 1e9 });
+  await delay(150);
+  assert.ok(!last(gus, 'dm') && !last(gus, 'older'), 'nothing new before the privacy update');
+  await control('/__test/lobby/main/socialopen');
+  send(fran, { t: 'dm', to: 'gus' });
+  await until(() => last(gus, 'dm')?.from === 'fran');
+  send(fran, { t: 'dm', to: 'fran' });
+  await delay(150);
+  assert.ok(!last(fran, 'dm'), 'no ping to yourself');
+  await lobbySql.exec("WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<120) INSERT INTO chat(lesson,uid,name,color,text,ts) SELECT 0,'seed','Seed','blue','page ' || x,? FROM n", Date.now());
+  gus.socket.close(1000, 'reopen');
+  gus = await open('/lobby/socket', 'lobby', (await post('/lobby', 'gus')).ticket);
+  send(gus, { t: 'sub', online: false, chat: 0, v: 3 });
+  await until(() => last(gus, 'history')?.l === 0);
+  const newest = last(gus, 'history');
+  assert.equal(newest.v.length, 50); assert.equal(newest.more, true, 'the class chat keeps more than 50 lines');
+  send(gus, { t: 'older', before: newest.v[0].id });
+  await until(() => last(gus, 'older'));
+  assert.equal(last(gus, 'older').v.length, 50);
+  assert.ok(last(gus, 'older').v.at(-1).id < newest.v[0].id && last(gus, 'older').more);
+  send(fran, { t: 'say', l: 0, text: 'remember me' });
+  await until(() => last(gus, 'msg')?.m.t === 'remember me');
+  send(fran, { t: 'forget' });
+  await until(() => fran.closed !== null);
+  assert.equal((await lobbySql.exec("SELECT COUNT(*) AS n FROM chat WHERE uid='fran'"))[0].n, 0, 'a deleted account’s lines are gone');
+  gus.socket.close(1000, 'done');
 
   // Presence loss, expired auth leases, and data retention are cleaned without client cooperation.
   await control('/__test/lobby/main/age');
