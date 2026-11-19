@@ -12,7 +12,9 @@ Passing clips get `quality.contentChecked`; failures go to <batch>/rejected.json
 which the generator reads to render those sentences again with another take. Transcripts are cached
 by file hash in <batch>/asr.json. A transcript that differs only where ASR can't match the text (names,
 numbers written in digits, sound-alikes such as 的/得 or 她/他) passes once a person has reviewed that
-transcript and listed it in <batch>/asr-reviewed.json ({key: {"heard": [transcript, ...], "note": ...}}). This is automated QA, not a listening review.
+transcript and listed it in <batch>/asr-reviewed.json ({key: {"heard": [transcript, ...], "note": ...}}); an
+"ending" note there passes a crisp ending that was shown to be complete (the raw take ends in silence and ASR hears
+the last word). This is automated QA, not a listening review.
 """
 import json
 import sys
@@ -56,7 +58,7 @@ def main():
         review = reviewed.get(entry["key"])
         if heard != expected and not (review and heard in {pinyinize(text) for text in review["heard"]}):
             problems.append(f"heard {cached!r}")
-        if ratio > ENDING_MAX:
+        if ratio > ENDING_MAX and not (review and review.get("ending")):
             problems.append(f"ends abruptly ({ratio:.2f})")
         pace = voiced_pace(path, entry["spoken"])
         # Pace says nothing about a one- or two-word answer (十點, 綠茶): only sentences can drag.
