@@ -97,6 +97,7 @@ import {
   PiBellSimpleBold,
   PiBellSimpleSlashBold,
   PiChatCircleDotsBold,
+  PiChatCircleFill,
 } from 'react-icons/pi';
 
 /** Every icon the app draws; the names come from the ICONS table below. */
@@ -314,6 +315,7 @@ const ICONS = {
   bell: PiBellSimpleBold,
   bellOff: PiBellSimpleSlashBold,
   chat: PiChatCircleDotsBold,
+  chatFill: PiChatCircleFill,
   answerYes: AnswerYesIcon,
   answerNo: AnswerNoIcon,
   statusCheck: DuoStatusCheckIcon,

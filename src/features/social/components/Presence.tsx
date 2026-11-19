@@ -9,14 +9,25 @@ import { isStudying } from '../presence';
 const NO_LINES: ChatMessage[] = [];
 const SETTLE = [0.22, 1, 0.36, 1] as const;
 
-/** The small square count on a face stack (the same family as the 1/2/3 answer badges). */
-export function UnreadBadge({ count, className = '' }: { count: number; className?: string }) {
-  return <span className={`inline-grid h-5 min-w-5 place-items-center rounded-xs bg-brand-primary px-1 text-[11px] font-black leading-none tabular-nums text-brand-on-primary ${className}`}>{count > 9 ? '9+' : count}</span>;
+/**
+ * New messages: the app's chat bubble, filled, with the count inside. On a face stack it sits on the corner like
+ * an app-icon badge, so it never reads as the online number beside it. `edge`: the colour behind it, drawn as an
+ * outline that follows the bubble so it stands clear of the faces.
+ */
+export function UnreadBadge({ count, edge, className = '' }: { count: number; edge?: string; className?: string }) {
+  return (
+    <span className={`relative inline-grid h-6 w-6 shrink-0 place-items-center ${className}`}>
+      <AppIcon name="chatFill" size={24} className="absolute inset-0 text-brand-primary"
+        style={edge ? { stroke: edge, strokeWidth: 26, paintOrder: 'stroke' } : undefined} />
+      <span className="relative text-[10px] font-black leading-none tabular-nums text-brand-on-primary">{count > 9 ? '9+' : count}</span>
+    </span>
+  );
 }
 
 /**
- * The faces in the top bar are the chat button. Whoever wrote since you last looked moves to the front, and the
- * number counts the new lines; with nothing new it shows who's online. While studying the faces stay still.
+ * The faces in the top bar are the chat button. The number beside them is always who's online; new lines get a
+ * chat bubble with the count on the faces' corner, and whoever wrote since you last looked moves to the front. While studying
+ * the faces stay still.
  */
 export function GlobalPresenceButton() {
   const samples = useAppStore(state => state.socialFaces);
@@ -38,6 +49,7 @@ export function GlobalPresenceButton() {
   return <button type="button" aria-label={label}
     onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'chat' } })}
     className="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-control px-1 text-ui-muted-strong outline-none transition-colors hover:bg-ui-hover focus-ring-inline">
+    <span className="relative flex">
     {faces.length && (total > 0 || unread > 0) ? (
       <span className="flex">
         <AnimatePresence initial={false} mode="popLayout">
@@ -52,9 +64,13 @@ export function GlobalPresenceButton() {
         </AnimatePresence>
       </span>
     ) : <AppIcon name="family" size={22} />}
-    {unread > 0
-      ? <motion.span key={unread} initial={animate ? { scale: 0.6 } : false} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 520, damping: 18, delay: animate ? 0.12 : 0 }} className="flex"><UnreadBadge count={unread} /></motion.span>
-      : total > 0 && <span className="text-xs font-black tabular-nums">{total > 99 ? '99+' : total}</span>}
+      {unread > 0 && (
+        <motion.span key={unread} initial={animate ? { scale: 0.6 } : false} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 520, damping: 18, delay: animate ? 0.12 : 0 }} className="absolute -right-3 -top-2.5 z-10 flex">
+          <UnreadBadge count={unread} edge="var(--color-ui-canvas)" />
+        </motion.span>
+      )}
+    </span>
+    {total > 0 && <span className={`text-xs font-black tabular-nums ${unread > 0 ? 'ml-3.5' : ''}`}>{total > 99 ? '99+' : total}</span>}
   </button>;
 }
 

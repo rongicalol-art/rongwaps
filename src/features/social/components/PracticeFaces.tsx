@@ -63,16 +63,18 @@ export function PracticeFaces() {
   const openChat = () => { setOpen(false); useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'chat' } }); };
   return (
     <div ref={root} className="relative mr-1">
-      {/* Quiet like the other header controls: faces, and the count of new messages (still while studying). */}
+      {/* Quiet like the other header controls: faces, with the new-message chat bubble on their corner (still while studying). */}
       <button
         type="button"
         aria-label={`${others.length} studying with you${unread > 0 ? `, ${unread} new ${unread === 1 ? 'message' : 'messages'}` : ''}`}
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        className={`relative flex h-11 items-center rounded-control px-1.5 outline-none transition-colors hover:bg-ui-hover focus-ring ${open ? 'bg-ui-hover' : ''}`}
+        className={`relative flex h-11 items-center rounded-control pl-1.5 outline-none transition-colors hover:bg-ui-hover focus-ring ${unread > 0 ? 'pr-3.5' : 'pr-1.5'} ${open ? 'bg-ui-hover' : ''}`}
       >
-        <AvatarStack people={others.map((person) => ({ name: person.n, color: person.c, src: person.i }))} total={others.length} max={3} size="md" />
-        {unread > 0 && <UnreadBadge count={unread} className="ml-1.5" />}
+        <span className="relative flex">
+          <AvatarStack people={others.map((person) => ({ name: person.n, color: person.c, src: person.i }))} total={others.length} max={3} size="md" />
+          {unread > 0 && <span className="absolute -right-3 -top-2.5 z-10 flex"><UnreadBadge count={unread} edge="var(--color-ui-practice-canvas)" /></span>}
+        </span>
       </button>
       <AnimatePresence>
         {open && (
