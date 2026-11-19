@@ -228,6 +228,34 @@ try {
   send(alice, { t: 'sub', online: true, chat: 0 });
   await until(() => last(alice, 'history')?.l === 0);
   assert.ok(last(alice, 'history').v.some(line => line.t === 'Global hello'));
+
+  // Class chat: a visible writer's lines carry their lesson, a hidden writer's don't. History brings the reader's
+  // read spot and how many lines from others came after it; `read` moves it forward, never past the newest line.
+  assert.equal(last(alice, 'history').v.find(line => line.t === 'Global hello').w, undefined, 'hidden writers get no lesson tag');
+  await delay(1100);
+  send(alice, { t: 'say', l: 0, text: 'Tagged hello' });
+  await until(() => last(bob, 'msg')?.m.t === 'Tagged hello');
+  const tagged = last(bob, 'msg').m;
+  assert.equal(tagged.w, 101, 'a visible writer’s line carries their lesson');
+  const reopenClassChat = async () => {
+    bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
+    send(bob, { t: 'sub', online: false, chat: 0 });
+    await until(() => last(bob, 'history')?.l === 0);
+    return last(bob, 'history');
+  };
+  let classChat = await reopenClassChat();
+  assert.equal(classChat.r, 0, 'no read spot yet');
+  assert.equal(classChat.n, classChat.v.filter(line => line.u !== 'bob' && line.t).length, 'unread counts only others’ lines');
+  assert.ok(classChat.n >= 1);
+  send(bob, { t: 'read', id: tagged.id + 1000 });
+  await delay(100);
+  classChat = await reopenClassChat();
+  assert.equal(classChat.r, tagged.id, 'the read spot stops at the newest line');
+  assert.equal(classChat.n, 0);
+  send(bob, { t: 'read', id: 1 });
+  await delay(100);
+  classChat = await reopenClassChat();
+  assert.equal(classChat.r, tagged.id, 'the read spot only moves forward');
   send(alice, { t: 'sub', online: true, chat: 101 });
   send(bob, { t: 'sub', online: false, chat: 101 });
 
@@ -280,8 +308,12 @@ try {
   await until(() => host.state);
   assert.deepEqual(host.state.selection, { book: 1, lessons: { 1: [1, 2] }, types: ['meaning'] });
   await until(() => last(bob, 'rooms')?.v.some(room => room.code === created.code));
+  // The announcement goes to the class chat, tagged with the room's lesson.
+  send(bob, { t: 'sub', online: false, chat: 0 });
+  const roomCard = () => bob.frames.flatMap(frame => frame.t === 'msg' ? [frame.m] : frame.t === 'history' && frame.l === 0 ? frame.v : []).find(line => line.r?.code === created.code);
+  await until(roomCard);
+  assert.equal(roomCard().w, 101);
   send(bob, { t: 'sub', online: false, chat: 101 });
-  await until(() => [...bob.frames].some(frame => frame.t === 'msg' && frame.m.r?.code === created.code));
   send(alice, { t: 'invite', to: ['bob'], code: created.code });
   await until(() => last(alice, 'error')?.message.includes('offline'));
   assert.ok(!last(bob, 'invite'), 'hidden users get no invites and look offline');
