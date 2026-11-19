@@ -43,3 +43,26 @@ export function whereLabel(lesson: number | null, activity: Activity | null, sam
   const where = `${book > 1 ? `Book ${book} · ` : ''}${id === 0 ? 'Intro' : `Lesson ${id}`}`;
   return activity && activity !== 'lesson' ? `${where} · ${activityLabel(activity)}` : where;
 }
+
+const MINUTE = 60_000;
+/** "Seen 12 min ago", "Seen 3 h ago", "Seen yesterday", "Seen 4 days ago", "Seen Nov 2" (an offline classmate). */
+export function seenLabel(at: number | null | undefined, now = Date.now()): string {
+  if (!at) return 'Not online';
+  const gap = Math.max(0, now - at);
+  if (gap < 5 * MINUTE) return 'Seen just now';
+  if (gap < 60 * MINUTE) return `Seen ${Math.round(gap / MINUTE)} min ago`;
+  if (gap < 24 * 60 * MINUTE) return `Seen ${Math.round(gap / (60 * MINUTE))} h ago`;
+  const days = Math.round(gap / (24 * 60 * MINUTE));
+  if (days < 2) return 'Seen yesterday';
+  if (days < 7) return `Seen ${days} days ago`;
+  return `Seen ${new Date(at).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`;
+}
+
+/** A conversation's time in the Chats list: "9:41 PM" today, else "Yesterday" or "Nov 2". */
+export function listTime(at: number, now = Date.now()): string {
+  const day = new Date(at).setHours(0, 0, 0, 0);
+  const today = new Date(now).setHours(0, 0, 0, 0);
+  if (day === today) return new Date(at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  if (today - day <= 86_400_000 * 1.5) return 'Yesterday';
+  return new Date(at).toLocaleDateString('en', { month: 'short', day: 'numeric' });
+}

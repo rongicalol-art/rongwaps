@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { authService } from '../../services/authService';
 import { removeAllProfileMedia } from '../../services/profileMedia';
 import { userService } from '../../services/userService';
+import { forgetStudyTogether } from '../../features/social';
 import { useAppStore } from '../../store/useAppStore';
 import { downloadJsonFile } from '../../utils/browser/downloadFile';
 import { debugLogger } from '../../utils/debug/debugLogger';
@@ -32,6 +33,8 @@ export function useAccountActions() {
       // Never block deletion on photos; scripts/dev/purgeOrphanProfileMedia.ts sweeps leftovers.
       await removeAllProfileMedia(userId).catch((error) => debugLogger.warn('Auth', 'Profile photo removal failed:', error));
     }
+    // Study together keeps class chat lines outside the database: remove them first (never blocks deletion).
+    await forgetStudyTogether().catch(() => {});
     await userService.deleteMyAccount();
 
     try {

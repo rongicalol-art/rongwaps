@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Avatar, coverStyle, ProfileCoverGlyphs } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, coverStyle, ProfileCoverGlyphs } from '../../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { useAppStore } from '../../../store/useAppStore';
-import type { Person } from '../../../../shared/lobby';
+import type { Person, ProfileCard } from '../../../../shared/lobby';
 import { lobby } from '../lobbyController';
-import { whereLabel } from '../socialText';
+import { seenLabel, whereLabel } from '../socialText';
+import { addFriend, loadSaved, removeFriend } from '../friendsController';
+import { updateOpen } from '../socialUpdate';
 
 const wordsArt = new URL('../../../assets/icons/flat/profile-words.svg', import.meta.url).href;
 const charactersArt = new URL('../../../assets/icons/flat/profile-characters.svg', import.meta.url).href;
@@ -13,10 +15,32 @@ const flameArt = new URL('../../../assets/icons/flat/flame.svg', import.meta.url
 /** A classmate who doesn't answer in this time is shown without their card. */
 const CARD_WAIT_MS = 6000;
 
-/** A classmate's profile inside the people panel: cover, face, where they are, and their card's stats when shared. */
+/** Add friend, Accept, Request sent, or Friends (Remove friend is in the ⋯ menu). */
+function FriendButton({ person }: { person: Person }) {
+  const entry = useAppStore((state) => state.socialFriends?.find((item) => item.u === person.u));
+  if (entry?.iAdded && entry.addedMe) return <p className="inline-flex items-center gap-1.5 text-sm font-black text-ui-muted-strong"><AppIcon name="check" size={16} />Friends</p>;
+  if (entry?.addedMe) return (
+    <div className="flex items-center gap-3">
+      <ActionButton size="sm" onClick={() => { void addFriend(person); }}><AppIcon name="addFriend" size={18} />Accept friend</ActionButton>
+      <button type="button" onClick={() => { void removeFriend(person.u); }} className="rounded-xs text-sm font-black text-ui-muted outline-none hover:text-ui-ink focus-ring-inline">Not now</button>
+    </div>
+  );
+  if (entry?.iAdded) return (
+    <p className="text-sm font-bold text-ui-muted">Request sent · <button type="button" onClick={() => { void removeFriend(person.u); }} className="rounded-xs font-black outline-none hover:text-ui-ink focus-ring-inline">Cancel</button></p>
+  );
+  return <ActionButton size="sm" variant="secondary" onClick={() => { void addFriend(person); }}><AppIcon name="addFriend" size={18} />Add friend</ActionButton>;
+}
+
+/**
+ * A classmate's profile inside the people panel: cover, face, where they are, and their card's stats when shared.
+ * After the privacy update it also works offline (the card they last saved, "Seen 2 h ago") and has the friend button.
+ */
 export function VisitProfile({ person, lesson, online }: { person: Person; lesson: number | null; online: boolean }) {
   const card = useAppStore((state) => state.socialCards[person.u]);
   const form = useAppStore((state) => state.characterPreference);
+  const me = useAppStore((state) => state.socialMe);
+  const inbox = updateOpen();
+  const saved = useAppStore((state) => state.socialSaved[person.u]);
   const [waited, setWaited] = useState(false);
   useEffect(() => {
     setWaited(false);
@@ -24,14 +48,16 @@ export function VisitProfile({ person, lesson, online }: { person: Person; lesso
     const timer = setTimeout(() => setWaited(true), CARD_WAIT_MS);
     return () => clearTimeout(timer);
   }, [person.u]);
+  useEffect(() => { if (inbox && !online) void loadSaved([person.u]); }, [inbox, online, person.u]);
 
-  const loading = card === undefined && !waited;
-  const shared = card ?? null;
+  const stored = saved?.card && saved.card.cv && saved.card.b ? saved.card as ProfileCard : null;
+  const loading = card === undefined && !stored && (online ? !waited : inbox && saved === undefined);
+  const shared = card ?? stored;
   const preset = shared?.cv ?? 'plain';
   const book = SAMPLE_BOOKS.find((item) => item.id === shared?.b);
   const since = shared?.s ? new Date(shared.s).toLocaleDateString('en', { month: 'short', year: 'numeric' }) : null;
   const where = whereLabel(person.l, person.a, person.l === lesson);
-  const status = !online ? 'Not online right now' : where === 'Online' ? 'Online' : `Online · ${where}`;
+  const status = !online ? (inbox ? seenLabel(saved?.seen) : 'Not online right now') : where === 'Online' ? 'Online' : `Online · ${where}`;
   const stats = [
     { art: wordsArt, value: shared?.w, label: 'Words known' },
     { art: charactersArt, value: shared?.k, label: 'Characters' },
@@ -43,13 +69,14 @@ export function VisitProfile({ person, lesson, online }: { person: Person; lesso
       <div className="relative h-[120px] overflow-hidden rounded-feature bg-cover bg-center" style={coverStyle(preset, shared?.ci)}>
         {!shared?.ci && preset !== 'plain' && <ProfileCoverGlyphs form={form} className="px-5 py-2 text-4xl tracking-[0.45em]" />}
       </div>
-      <Avatar name={person.n} color={person.c} src={person.i} size="xl" className="-mt-[46px] ml-4 h-[92px] w-[92px] text-4xl ring-[5px] ring-ui-practice-canvas" />
+      <Avatar name={person.n} color={person.c} src={person.i ?? saved?.card?.i} size="xl" className="-mt-[46px] ml-4 h-[92px] w-[92px] text-4xl ring-[5px] ring-ui-practice-canvas" />
       <h3 className="mt-2.5 break-words text-2xl font-black leading-tight text-ui-ink-strong">{person.n}</h3>
       <p className="mt-1.5 flex items-center gap-2 text-sm font-extrabold text-ui-muted-strong">
         {online && <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-feedback-success" />}
         {status}
       </p>
       {since && <p className="mt-1 text-sm font-extrabold text-ui-muted">Learning since {since}</p>}
+      {inbox && person.u !== me && <div className="mt-3 flex"><FriendButton person={person} /></div>}
       {book && (
         <span className="mt-3.5 inline-flex items-center gap-2 whitespace-nowrap rounded-sm border-2 border-ui-divider py-1 pl-1.5 pr-2.5 text-[13px] font-black text-ui-ink-strong">
           <i aria-hidden className="h-[21px] w-4 rounded-xs bg-brand-primary shadow-[inset_-3px_0_0_var(--color-brand-primary-edge)]" />

@@ -38,7 +38,7 @@ test('inbox replay preserves live notices and opening one leaves study presence 
   assert.deepEqual((state.socialMentions as MentionNotice[]).map(item => item.key), ['l:2', 'l:1']);
   api.openMention(notice(2, 0));
   assert.equal(state.socialViewingLesson, 101);
-  assert.deepEqual(state.socialPanel, { kind: 'people', tab: 'chat' });
+  assert.deepEqual(state.socialPanel, { kind: 'people', tab: 'chat', thread: 'class' });
   assert.equal((state.socialMentions as MentionNotice[])[0].read, true);
   assert.equal((state.socialMentionTarget as MentionNotice).message.id, 2);
   api.lobby.subscribe(false, 0);

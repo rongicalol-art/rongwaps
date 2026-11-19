@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, Avatar, AvatarStack, PlayfulNavIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { countedIn, unreadTotal } from '../../../store/slices/socialSlice';
+import { updateOpen } from '../socialUpdate';
 import type { ChatMessage } from '../../../../shared/lobby';
 import { isStudying } from '../presence';
 
@@ -22,6 +23,13 @@ export function UnreadBadge({ count, edge, className = '' }: { count: number; ed
       <span className="relative text-[10px] font-black leading-none tabular-nums text-brand-on-primary">{count > 9 ? '9+' : count}</span>
     </span>
   );
+}
+
+/** Chats; straight into the class chat while there's nothing else in the list (no friends or requests yet). */
+function openChats() {
+  const state = useAppStore.getState();
+  const listed = updateOpen() && (state.socialInbox.length > 0 || (state.socialFriends?.length ?? 0) > 0);
+  state.setSocial({ socialPanel: { kind: 'people', tab: 'chat', ...(listed ? {} : { thread: 'class' }) } });
 }
 
 /**
@@ -47,7 +55,7 @@ export function GlobalPresenceButton() {
   }, [lines, read, me, samples, unread]);
   const label = unread > 0 ? `${unread} new ${unread === 1 ? 'message' : 'messages'}. Open chat.` : total === 0 ? 'Study together. Open chat.' : `${total} people online. Open chat.`;
   return <button type="button" aria-label={label}
-    onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'chat' } })}
+    onClick={openChats}
     className="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-control px-1 text-ui-muted-strong outline-none transition-colors hover:bg-ui-hover focus-ring-inline">
     <span className="relative flex">
     {faces.length && (total > 0 || unread > 0) ? (

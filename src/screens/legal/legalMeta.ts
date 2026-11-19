@@ -2,7 +2,7 @@
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
 /** ISO date the current Terms and Privacy Policy take effect. */
-export const LEGAL_EFFECTIVE_DATE = '2026-11-14';
+export const LEGAL_EFFECTIVE_DATE = '2026-12-01';
 
 export interface LegalUpdate {
   /** The changed pages; Read opens the first, and each links the others. */
@@ -20,9 +20,9 @@ export interface LegalUpdate {
  * takes effect. Keep null when nothing meaningful changed.
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
-  pages: ['privacy', 'terms'],
-  summary: 'From November 6, anyone 18 or older can join, and learners outside Shu-Te can see your name, photo and lesson in Study together (to hide: Settings → Show me online). Shu-Te learners still see each other first. You can report or block anyone.',
-  acceptedFrom: '2026-11-06',
+  pages: ['privacy'],
+  summary: 'From December 1 in Study together: friends and private messages, profiles you can visit while someone is offline (with when they were last online), and a class chat that keeps its last 1,000 messages. To keep your profile or last-seen time private: Settings → Show my profile, Show me online.',
+  acceptedFrom: '2026-12-01',
 };
 
 /** Shown beside the effective date: accounts made since sign-up opened are bound from sign-up. */

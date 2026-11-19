@@ -119,6 +119,6 @@ export function MentionToast() {
   if (!notice || waiting) return null;
   return <div role="status"><button type="button" onClick={() => openMention(notice)} className={`${noticeCard(panelOpen)} outline-none focus-ring`}>
     <Avatar name={notice.message.n} color={notice.message.c} size="sm" src={notice.message.i} />
-    <span className="min-w-0"><span className="block font-black text-ui-ink-strong">{notice.message.n} {notice.message.a ? 'wrote to everyone' : 'mentioned you'}</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{notice.room ? `Party · ${notice.message.t}` : notice.message.t}</span></span>
+    <span className="min-w-0"><span className="block font-black text-ui-ink-strong">{notice.key.startsWith('d:') ? notice.message.n : `${notice.message.n} ${notice.message.a ? 'wrote to everyone' : 'mentioned you'}`}</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{notice.room ? `Party · ${notice.message.t}` : notice.message.t}</span></span>
   </button></div>;
 }

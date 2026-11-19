@@ -1,7 +1,7 @@
 import { connectLobby, type Identity } from '../../services/socialService';
 import { NAME_NOT_ALLOWED, NAME_RESERVED } from '../../../shared/nameFilter';
 import { useAppStore } from '../../store/useAppStore';
-import { GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type ChatMessage, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
+import { CLASS_CHAT_KEEP, GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type ChatMessage, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
 /**
  * The single Lobby connection. Presence/subscription frames are deduped here and re-sent after a reconnect,
@@ -12,7 +12,12 @@ let identityKey = '';
 let generation = 0;
 let here: Extract<LobbyClientMessage, { t: 'here' }> = { t: 'here', l: null, a: null, show: true };
 let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 3 };
-const CHAT_CAP = 50;
+const CHAT_CAP = CLASS_CHAT_KEEP;
+/** Notices made in the app (not the Lobby's inbox): @everyone lines and private messages; never sent as mention-read. */
+const localNotice = (key: string) => key.startsWith('a:') || key.startsWith('d:');
+/** Friends and messages live in friendsController (loaded on demand). */
+const friends = () => import('./friendsController');
+let olderAsked = 0;
 const pendingReads = new Set<string>();
 let readOwner: string | null = null;
 let readTimer: ReturnType<typeof setTimeout> | undefined;
@@ -61,7 +66,7 @@ function noticeEveryone(lines: ChatMessage[]) {
 function markChatRead(id: number) {
   const store = useAppStore.getState();
   const seen = store.socialMentions.filter(item => !item.room && !item.read && item.message.id <= id);
-  for (const item of seen) if (!item.key.startsWith(EVERYONE_KEY)) lobby.readMention(item.key);
+  for (const item of seen) if (!localNotice(item.key)) lobby.readMention(item.key);
   if (id > store.socialChatRead || store.socialChatUnread || seen.length || store.socialMentionToast) {
     store.setSocial({
       socialChatRead: Math.max(store.socialChatRead, id), socialChatUnread: 0,
@@ -112,11 +117,13 @@ function receive(message: LobbyServerMessage) {
     case 'history': {
       if (message.l !== sub.chat) break;
       if (message.l !== GLOBAL_CHAT || message.r === undefined) { set({ socialChat: { lesson: message.l, messages: message.v } }); break; }
+      // Each connect: friends, requests and conversations may have changed while away.
+      void friends().then(module => Promise.all([module.loadFriends(), module.loadInbox()]));
       // A read sent just before reconnecting may not have reached the Lobby yet: then count from the loaded lines.
       const read = Math.max(store.socialChatRead, chatReadWanted, message.r);
       chatReadSent = Math.max(chatReadSent, message.r);
       const unread = read > message.r ? message.v.filter(line => line.id > read && line.u !== store.socialMe && line.t).length : message.n ?? 0;
-      set({ socialChat: { lesson: message.l, messages: message.v }, socialChatRead: read, socialChatUnread: unread });
+      set({ socialChat: { lesson: message.l, messages: message.v, more: !!message.more }, socialChatRead: read, socialChatUnread: unread });
       flushChatRead();
       noticeEveryone(message.v);
       break;
@@ -127,7 +134,7 @@ function receive(message: LobbyServerMessage) {
       const reading = chatOnScreen(store);
       const counts = message.m.l === GLOBAL_CHAT && !reading && !!message.m.t && message.m.u !== store.socialMe;
       set({
-        socialChat: { lesson: chat.lesson, messages: [...chat.messages, message.m].slice(-CHAT_CAP) },
+        socialChat: { ...chat, messages: [...chat.messages, message.m].slice(-CHAT_CAP) },
         ...(counts ? { socialChatUnread: Math.min(UNREAD_CAP, store.socialChatUnread + 1) } : {}),
       });
       if (reading) markChatRead(message.m.id);
@@ -150,6 +157,15 @@ function receive(message: LobbyServerMessage) {
       break;
     }
     case 'mention-read': pendingReads.delete(message.key); readInFlight = false; flushReads(); break;
+    case 'older': {
+      olderAsked = 0;
+      const chat = store.socialChat;
+      if (!chat || chat.lesson !== GLOBAL_CHAT) break;
+      const known = new Set(chat.messages.map(line => line.id));
+      set({ socialChat: { ...chat, messages: [...message.v.filter(line => !known.has(line.id)), ...chat.messages].slice(-CHAT_CAP), more: message.more } });
+      break;
+    }
+    case 'dm': void friends().then(module => module.onPing(message.from)); break;
     case 'mention-open': {
       if (pendingOpen?.key !== message.key) break;
       const originalPanel = pendingOpen.panel;
@@ -273,6 +289,18 @@ export const lobby = {
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),
   readMention: (key: string) => { pendingReads.add(key); flushReads(); },
   markChatRead,
+  /** The 50 class chat lines before the loaded ones (one request at a time). */
+  older: () => {
+    const chat = useAppStore.getState().socialChat;
+    const first = chat?.messages[0]?.id;
+    if (!chat?.more || !first || Date.now() - olderAsked < 5000) return;
+    olderAsked = Date.now();
+    send({ t: 'older', before: first });
+  },
+  /** Ping a friend: a private message or friend request is waiting in the database. */
+  dm: (to: string) => { send({ t: 'dm', to }); },
+  /** Before the account is deleted: the Lobby removes its lines, notices and read spot. */
+  forget: () => send({ t: 'forget' }),
   report: (id: number) => send({ t: 'report', id }),
   /** This account's whole block list; sent now and on every reconnect. */
   setBlocks: (ids: string[]) => { blocks = { t: 'blocks', v: ids }; send(blocks); },
@@ -283,7 +311,7 @@ export const lobby = {
 /** Opening a notification changes only the chat channel, never study presence or room membership. */
 export function openMention(notice: MentionNotice) {
   const store = useAppStore.getState();
-  if (!notice.key.startsWith(EVERYONE_KEY)) lobby.readMention(notice.key);
+  if (!localNotice(notice.key)) lobby.readMention(notice.key);
   store.setSocial({ socialMentions: store.socialMentions.map(item => item.key === notice.key ? { ...item, read: true } : item), socialMentionToast: null });
   pendingOpen = null;
   if (notice.room) {
@@ -291,6 +319,7 @@ export function openMention(notice: MentionNotice) {
     if (!send({ t: 'mention-open', key: notice.key })) { pendingOpen = null; store.showFeedbackToast('Reconnecting. Try again in a moment.'); }
 
   } else {
-    store.setSocial({ socialPanel: { kind: 'people', tab: 'chat' }, socialMentionTarget: notice });
+    const direct = notice.key.startsWith('d:');
+    store.setSocial({ socialPanel: { kind: 'people', tab: 'chat', thread: direct ? notice.message.u : 'class' }, socialMentionTarget: direct ? null : notice });
   }
 }

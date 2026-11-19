@@ -8,6 +8,8 @@ import { COVER_PRESETS, GLOBAL_CHAT, type Activity, type ChatMessage, type Lesso
 import { applyRaceAction, enterRace, newRaceRoom, summarizeRoom, type RaceAction, type RaceRoomState, type RaceRoomSummary, type RaceSnapshot, type SocialColor } from '../../../../shared/quizRace';
 import type { connectRace } from '../../../services/socialService';
 import { deliver, setLobbyTransport } from '../lobbyController';
+import { setFriendsBackend, type DirectMessage, type FriendsBackend, type SavedProfile } from '../../../services/friendsService';
+import { forceUpdateOpen } from '../socialUpdate';
 import { setRaceTransport } from '../raceController';
 
 const NAMES = ['Mei', 'Jun', 'Ana', 'Kai', 'Lin', 'Wei', 'Sara', 'Leo', 'Yuki', 'Minh', 'Hana', 'Tomas', 'Ines', 'Arjun', 'Nadia', 'Ken', 'Lucas',
@@ -280,14 +282,72 @@ const connectSim: typeof connectRace = async (_identity, target, handlers) => {
 
 // ---- lifecycle -----------------------------------------------------------------------------------------------------
 
+/** Friends and private messages without the database: a few friends, one request, two conversations. */
+let adds = new Map<string, { iAdded: boolean; addedMe: boolean }>();
+let dms: DirectMessage[] = [];
+const reads = new Map<string, number>();
+let dmId = 1;
+const OFFLINE = ['Ravi', 'Lena', 'Yuna', 'Theo', 'Iko', 'Sven'].map((name, index) => ({ u: `sim-off-${index}`, n: name, c: COLORS[(index + 2) % COLORS.length], seen: Date.now() - (index + 1) * 47 * 60_000 }));
+const person = (u: string) => users.find(user => user.u === u) ?? OFFLINE.find(user => user.u === u);
+const savedOf = (u: string): SavedProfile | null => {
+  const who = person(u);
+  if (!who) return null;
+  const index = Number(u.replace(/\D/g, '')) || 0;
+  return { u, seen: 'seen' in who ? who.seen : Date.now(), card: { n: who.n, c: who.c, cv: COVER_PRESETS[index % COVER_PRESETS.length], b: 1 + (index % 2), w: 40 + index * 17, k: 30 + index * 9, st: index % 15, ...('i' in who && who.i ? { i: who.i } : {}) } };
+};
+function dm(from: string, text: string, to = ME) {
+  const line = { id: dmId++, from, to, t: text, ts: Date.now() };
+  dms.push(line);
+  if (from !== ME) deliver({ t: 'dm', from });
+  return line;
+}
+const friendsBackend: FriendsBackend = {
+  async people() {
+    return [...adds].map(([u, flags]) => { const who = person(u)!; return { u, n: who.n, c: who.c, ...flags }; });
+  },
+  async add(u) {
+    const flags = adds.get(u) ?? { iAdded: false, addedMe: false };
+    adds.set(u, { ...flags, iAdded: true });
+    // They accept a few seconds later.
+    if (!flags.addedMe) later(() => { const now = adds.get(u); if (now?.iAdded) { adds.set(u, { ...now, addedMe: true }); deliver({ t: 'dm', from: u }); } }, between(3000, 6000));
+    return flags.addedMe ? 'friends' : 'requested';
+  },
+  async remove(u) { adds.delete(u); },
+  async inbox() {
+    const others = [...new Set(dms.map(line => (line.from === ME ? line.to : line.from)))];
+    return others.map(u => {
+      const lines = dms.filter(line => line.from === u || line.to === u);
+      const last = lines[lines.length - 1];
+      return { u, lastId: last.id, lastFrom: last.from, last: last.t, at: last.ts, unread: lines.filter(line => line.from === u && line.id > (reads.get(u) ?? 0)).length };
+    }).sort((a, b) => b.lastId - a.lastId);
+  },
+  async thread(u, _me, before) { return dms.filter(line => (line.from === u || line.to === u) && (!before || line.id < before)).slice(-50); },
+  async send(u, text) {
+    const line = dm(ME, text, u);
+    later(() => dm(u, pick(REPLIES)), between(2000, 4000));
+    return line;
+  },
+  async read(u, id) { reads.set(u, Math.max(reads.get(u) ?? 0, id)); },
+  async saveCard() {},
+  async profiles(us) { return us.map(savedOf).filter((row): row is SavedProfile => !!row); },
+  async recent(limit) { return OFFLINE.map(user => savedOf(user.u)!).slice(0, limit); },
+};
+
 export function startSimulator() {
   if (running) return;
   running = true;
+  adds = new Map([[`sim-0`, { iAdded: true, addedMe: true }], [`sim-1`, { iAdded: true, addedMe: true }], [`sim-2`, { iAdded: true, addedMe: true }], ['sim-off-0', { iAdded: true, addedMe: true }], [`sim-5`, { iAdded: false, addedMe: true }]]);
+  dms = []; reads.clear(); dmId = 1;
+  forceUpdateOpen(true);
+  setFriendsBackend(friendsBackend);
   users = NAMES.map((name, index) => ({ u: `sim-${index}`, n: name, c: COLORS[index % COLORS.length], l: LESSONS[index % LESSONS.length], a: pick(ACTIVITIES), i: FAKE_AVATAR(index) }));
   rooms = [simRoom(users[3], 104), simRoom(users[7], 205), simRoom(users[12], 109)];
   setRaceTransport(connectSim);
   setLobbyTransport({ send: handle, close: () => {} });
   deliver({ t: 'me', u: ME });
+  dm('sim-1', '謝謝你的筆記 🙏'); reads.set('sim-1', dmId - 1);
+  dm('sim-0', '明天一起考試嗎？'); dm(ME, '好啊！', 'sim-0'); reads.set('sim-0', dmId - 1);
+  later(() => dm('sim-0', '你在嗎？'), 4000);
   emit();
   // People wander between lessons and activities.
   every(() => {
@@ -324,6 +384,8 @@ export function stopSimulator() {
   race = null;
   setRaceTransport(null);
   setLobbyTransport(null);
+  setFriendsBackend(null);
+  forceUpdateOpen(false);
 }
 
 export const isSimulating = () => running;
@@ -343,6 +405,8 @@ export const simulate = {
       deliver({ t: 'mention', v: { key: `sim:${message.id}`, channel: GLOBAL_CHAT, message, read: false } });
     }, 2000);
   },
+  dm() { dm('sim-0', pick(['你在嗎？', '可以教我第三課的語法嗎？', '我們一起考試吧！'])); },
+  friendRequest() { const user = users[8]; adds.set(user.u, { iAdded: false, addedMe: true }); deliver({ t: 'dm', from: user.u }); },
   everyone() { later(() => post(pick(users), GLOBAL_CHAT, '@everyone 明天有小考，記得複習！', undefined, undefined, true), 2000); },
   chatBurst() { for (let index = 0; index < 8; index++) later(() => post(pick(users), GLOBAL_CHAT, pick(LINES)), index * 350); },
 };
