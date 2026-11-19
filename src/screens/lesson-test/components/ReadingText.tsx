@@ -18,7 +18,8 @@ function LabelledLine({ label, value, line, pinyin }: { label: string; value: st
     <div>
       <p className={cn('flex gap-3 font-chinese text-lg text-ui-ink-strong', items ? 'leading-[1.9]' : 'leading-7')}>
         <span className="shrink-0 text-ui-muted-strong">{items ? <RubyRun items={items.slice(0, label.length)} /> : label}</span>
-        <span>{items ? <RubyRun items={items.slice(cut)} /> : <ChineseText text={value} />}</span>
+        {/* min-w-0: Safari sizes a run of looked-up words as one unbreakable piece, so the value wouldn't wrap. */}
+        <span className="min-w-0">{items ? <RubyRun items={items.slice(cut)} /> : <ChineseText text={value} />}</span>
       </p>
       {/* Pinyin that doesn't fit the characters (numbers spelled out) reads on its own line. */}
       {pinyin && !items && <p className="font-sans text-[15px] font-bold leading-snug text-ui-muted-strong">{pinyin}</p>}
