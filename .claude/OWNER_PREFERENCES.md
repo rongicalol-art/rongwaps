@@ -50,6 +50,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - The app's illustrations are the picture style: warm, colourful flat art (sunny rooms, wooden desks, plants; coral, navy and gold), rounded shapes, tiny expressive faces. Anything drawn for an exercise (clocks, calendars, objects) matches it. Pictures are generated illustrations in that style, not hand-drawn SVG scenes.
 - Pictures keep their own colours in dark mode. Native ratio (reading art is 16:9), never cropped, no text laid over a picture; text that belongs to the drawn object, like a calendar's month, is fine.
 - Navigation and modes use the flat colourful icon set; controls use Phosphor. Grammar = book, reading = dialogue, quiz = ?, in one dark ink colour.
+- A count that means something new rides on the real icon for it: new messages are the app's chat bubble (filled) with the number inside, on the corner of the faces. A hand-built shape (a square with a rotated-square tail) read as a map pin. A number keeps the meaning learners already learned: the one beside the faces is always "online".
 - A celebration shows the mascot, a lottie (trophy) or the content itself, never a generic action icon as the hero.
 - Drawn shapes stay simple and friendly; the richness goes into how they move and what happens around them. The streak fire is one clean flame: extra tongues read as "too many hairs", while the burst, glow and embers around it were liked. A hero and the number under it need clear air between them.
 
