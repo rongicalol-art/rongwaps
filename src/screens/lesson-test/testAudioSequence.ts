@@ -11,6 +11,8 @@ export interface AudioStep {
   cue?: 'voice' | 'ding' | 'question';
   /** Which of the screen's questions this step asks or reads (a recording with several questions). */
   question?: number;
+  /** The recording's line this clip speaks (the Fix round's script lights it). */
+  line?: number;
 }
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
@@ -78,12 +80,7 @@ export function listeningSteps(
     say(item.intro, 'voice');
     steps.push({ pauseMs: TURN_GAP_MS });
   }
-  if (item.kind === 'hear-pick-picture' || item.kind === 'dialogue') {
-    item.lines.forEach((line, index) => {
-      if (index > 0 && turnGap > 0) steps.push({ pauseMs: turnGap });
-      say(line, 'voice');
-    });
-  }
+  if (item.kind === 'hear-pick-picture' || item.kind === 'dialogue') steps.push(...lineSteps(item, script, turnGap));
   if (item.kind === 'dialogue') {
     steps.push({ pauseMs: BEFORE_DING_MS });
     if (sounds.ding) steps.push({ audio: sounds.ding, cue: 'ding' });
@@ -105,6 +102,15 @@ export function listeningSteps(
     readChoices(question, 0);
   }
   return steps;
+}
+
+/** A recording's lines alone, with the short gap between turns: what the Fix round's script plays as a whole. */
+export function lineSteps(item: LessonTestItem, script: 'traditional' | 'simplified', turnGap: number = TURN_GAP_MS): AudioStep[] {
+  if (item.kind !== 'hear-pick-picture' && item.kind !== 'dialogue') return [];
+  return item.lines.flatMap((line, index) => [
+    ...(index > 0 && turnGap > 0 ? [{ pauseMs: turnGap }] : []),
+    { audio: line.audio, text: line[script] ?? line.traditional, cue: 'voice' as const, line: index },
+  ]);
 }
 
 /** Every recording a screen plays (its own clips, the ding and the letters), for downloading ahead. */

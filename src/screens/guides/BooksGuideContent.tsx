@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { GUIDE_ROUTES, LESSON_PAGE_BOOK, lessonPagePath } from '../../app/routes';
+import { GUIDE_ROUTES, isLessonPage, lessonPagePath } from '../../app/routes';
 import { LOCKED_BOOK_LESSON_TITLES, SAMPLE_BOOKS, SAMPLE_LESSONS } from '../../data/books';
 import { SAMPLE_HOOKS } from '../landing';
 import { DocList, DocParagraph, DocSection, docLinkClass } from '../public-doc';
@@ -53,8 +53,8 @@ export function BooksGuideContent() {
                     L{String(lesson.id).padStart(2, '0')}
                   </span>
                   <div className="min-w-0">
-                    {book.id === LESSON_PAGE_BOOK
-                      ? <Link to={lessonPagePath(lesson.id)} className={`block text-sm leading-snug ${docLinkClass}`}>{lesson.en}</Link>
+                    {isLessonPage(book.id, lesson.id)
+                      ? <Link to={lessonPagePath(book.id, lesson.id)} className={`block text-sm leading-snug ${docLinkClass}`}>{lesson.en}</Link>
                       : <span className="block text-sm font-extrabold leading-snug text-ui-ink-strong">{lesson.en}</span>}
                     {lesson.zh && (
                       <span className="font-chinese text-sm font-semibold text-ui-muted-strong">{lesson.zh}</span>

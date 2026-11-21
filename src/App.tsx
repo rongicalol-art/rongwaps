@@ -48,7 +48,7 @@ function RegularApp({ pathname }: { pathname: string }) {
   const guidePage = guidePageFromPathname(pathname);
   if (guidePage) return <GuideScreen page={guidePage} />;
   const lessonPage = lessonPageFromPathname(pathname);
-  if (lessonPage) return <LessonPageScreen lessonId={lessonPage} />;
+  if (lessonPage) return <LessonPageScreen {...lessonPage} />;
   const legalPage = legalPageFromPathname(pathname);
   return legalPage ? <LegalScreen page={legalPage} /> : <AuthenticatedWorkspace />;
 }

@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { FeedbackBottomBar } from '../../features/practice';
+import { ActionButton } from '../../lib/widgets';
 import { ScreenHeader } from '../../lib/widgets';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
@@ -10,13 +11,16 @@ import { AnswerDetail } from './components/AnswerDetail';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
 import { PartIntro } from './components/PartIntro';
+import { TestBooklet } from './components/TestBooklet';
 import { TestDock } from './components/TestDock';
 import { TestDone, TestResults } from './components/TestResults';
+import { TestLookup } from './components/TestLookup';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
 import { useTestAudioDownload } from './hooks/useTestAudioDownload';
 import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
 import { testRecordings, turnGapMs } from './testAudioSequence';
 import { itemPictureUrls } from './testPictures';
+import { hasTestScript } from './testScript';
 
 interface LessonTestScreenProps {
   lesson: LessonTestLesson;
@@ -34,11 +38,13 @@ function questionNumbers(screens: TestScreen[]) {
 
 /**
  * The lesson test: 聽力 then 閱讀 with no right or wrong shown, the results, then a Fix round (in the
- * review honey tone) over every miss, with the answer and the reason.
+ * review honey tone) over every miss, with the answer, the reason and the Script. Scripts & answers (the booklet
+ * of the whole test, with the test's own answers) rises over the results and the done screen.
  */
 export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenProps) {
   const run = useLessonTestRun(lesson);
   const script = useAppStore((state) => state.characterPreference);
+  const lookingUp = useAppStore((state) => state.dictionaryWord !== null);
   const reduceMotion = useReducedMotion();
   const items = useMemo(() => lessonItemIndex(lesson), [lesson]);
   const planned = useMemo(() => new Map(run.plan.items.map((entry) => [entry.itemId, entry])), [run.plan]);
@@ -46,6 +52,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const total = numbers.length ? numbers[numbers.length - 1] + run.screens[run.screens.length - 1].questionIds.length : 0;
   const isFix = run.stage === 'fix';
   useReviewTone(isFix);
+  const [bookletOpen, setBookletOpen] = useState(false);
 
   const screen = isFix ? run.fixScreen : run.screen;
   const item = screen ? items.get(screen.itemId) : undefined;
@@ -61,7 +68,11 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   }, [items, nextScreen]);
 
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const screenKey = `${run.stage}:${isFix ? run.fixIndex : run.screenIndex}`;
+  const position = isFix ? run.fixIndex : run.screenIndex;
+  const screenKey = `${run.stage}:${position}`;
+  // The Script sheet (after Check) closes when the screen changes.
+  const [scriptOpen, setScriptOpen] = useState(false);
+  useEffect(() => { setScriptOpen(false); }, [screenKey]);
   // Every recording downloads before the listening part (the quiz's "Getting audio ready" screen); then each
   // screen's clips are prepared as it comes up, so audio starts on time and never late.
   const recordingsOf = useCallback((list: TestScreen[]) => list.map((entry) => {
@@ -75,7 +86,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const testFiles = useMemo(() => [...new Set(examRecordings.flat())], [examRecordings]);
   const download = useTestAudioDownload(testFiles);
   const downloading = !isFix && !download.ready && (examRecordings[run.screenIndex]?.length ?? 0) > 0;
-  const audioReady = useTestAudioPreparation(recordings, isFix ? run.fixIndex : run.screenIndex, `${isFix ? 'fix' : 'test'}:${isFix ? run.fixIndex : run.screenIndex}`);
+  const audioReady = useTestAudioPreparation(recordings, position, screenKey);
   useEffect(() => { scrollerRef.current?.scrollTo({ top: 0 }); }, [screenKey]);
   // The Fix round's bar grows with its explanation. The question keeps clear of it (--cover), and once
   // checked it scrolls up with the bar, so the checked answers stay in view right above it.
@@ -95,20 +106,47 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
     };
   }, []);
 
-  if (run.stage === 'results' && run.result) {
+  const openScript = () => setScriptOpen(true);
+  const closeScript = () => setScriptOpen(false);
+
+  if ((run.stage === 'results' || run.stage === 'done') && run.result) {
+    const misses = run.result.score.missed.length;
+    const openBooklet = () => setBookletOpen(true);
     return (
-      <TestResults
-        lessonId={lesson.lessonId}
-        score={run.result.score}
-        seconds={run.result.seconds}
-        passed={run.result.passed}
-        onFix={run.startFix}
-        onLater={onClose}
-      />
+      <>
+        {run.stage === 'results' ? (
+          <TestResults
+            lessonId={lesson.lessonId}
+            score={run.result.score}
+            seconds={run.result.seconds}
+            passed={run.result.passed}
+            onFix={run.startFix}
+            onScripts={openBooklet}
+            onLater={onClose}
+            covered={bookletOpen}
+          />
+        ) : (
+          <TestDone lessonId={lesson.lessonId} passed={run.result.passed} rescheduled={run.result.rescheduled} onScripts={openBooklet} onClose={onClose} covered={bookletOpen} />
+        )}
+        <AnimatePresence>
+          {bookletOpen && (
+            <TestBooklet
+              key="booklet"
+              lesson={lesson}
+              plan={run.plan}
+              answers={run.answers}
+              rise
+              onClose={() => setBookletOpen(false)}
+              footer={run.stage === 'results' && misses > 0 && (
+                <ActionButton size="lg" fullWidth className="text-base tracking-wider md:text-lg" onClick={() => { setBookletOpen(false); run.startFix(); }}>
+                  Fix {misses} mistake{misses === 1 ? '' : 's'}
+                </ActionButton>
+              )}
+            />
+          )}
+        </AnimatePresence>
+      </>
     );
-  }
-  if (run.stage === 'done') {
-    return <TestDone lessonId={lesson.lessonId} passed={Boolean(run.result?.passed)} rescheduled={Boolean(run.result?.rescheduled)} onClose={onClose} />;
   }
 
   const shownIndex = isFix ? run.fixIndex : numbers[run.screenIndex] ?? 0;
@@ -131,12 +169,15 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const intro = run.stage === 'intro';
   const introShown = intro || downloading;
   const fixQuestions = item.questions.filter((question) => screen.questionIds.includes(question.id));
-  const correct = fixQuestions.every((question) => run.fixAnswers[question.id] === question.key);
+  const correct = fixQuestions.every((question) => answers[question.id] === question.key);
   const last = run.screenIndex + 1 >= run.screens.length;
+  const checked = isFix && run.checked;
   const barShown = isFix && (run.checked || ready);
 
   return (
     <TestWords value={lesson.allowWords ?? NO_WORDS}>
+      {/* Once a Fix round answer is checked, its words can be looked up (never during the test: that would give answers away). */}
+      <TestLookup on={checked}>
       {/* One header for the part intros and the questions, so the progress bar never rebuilds (and refills) between them. */}
       <div ref={scrollerRef} className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain custom-scrollbar">
         {header}
@@ -155,7 +196,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             questionIds={screen.questionIds}
             planned={plannedItem}
             answers={answers}
-            checked={isFix && run.checked}
+            checked={checked}
             mode={isFix ? 'replay' : 'exam'}
             sounds={sounds}
             turnGap={turnGapMs(lesson)}
@@ -163,19 +204,23 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}
             onAnswer={isFix ? run.answerFix : run.answer}
+            scriptOpen={scriptOpen}
+            onCloseScript={closeScript}
           />
         </motion.div>
         )}
       </div>
       {introShown ? null : isFix ? (
         <FeedbackBottomBar
-          status={run.checked ? (correct ? 'correct' : 'wrong') : 'idle'}
-          detail={run.checked ? <AnswerDetail item={item} questions={fixQuestions} script={script} /> : undefined}
+          status={checked ? (correct ? 'correct' : 'wrong') : 'idle'}
+          detail={checked ? <AnswerDetail item={item} questions={fixQuestions} script={script} /> : undefined}
           onCheck={run.check}
           isCheckDisabled={!ready}
           onContinue={run.continueFix}
+          keyboardShortcutDisabled={scriptOpen || lookingUp}
           layout="wide"
           barRef={barRef}
+          secondaryAction={checked && hasTestScript(item) ? { label: 'Script', icon: 'script', onPress: openScript } : undefined}
         />
       ) : ready && (
         <TestDock key={screenKey} label={last ? 'Finish' : 'Next'} onPress={run.next} riseKey={screenKey} />
@@ -193,6 +238,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
           />
         )}
       </AnimatePresence>
+      </TestLookup>
     </TestWords>
   );
 }

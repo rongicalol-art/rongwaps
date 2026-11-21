@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { use, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { GUIDE_ROUTES, LESSON_PAGE_BOOK, LESSON_PAGE_LESSONS, TAB_ROUTES, lessonPagePath } from '../../app/routes';
+import { GUIDE_ROUTES, LESSON_PAGE_LESSONS, TAB_ROUTES, lessonPagePath, type LessonPageRef } from '../../app/routes';
 import { PracticeChoiceButton } from '../../features/practice';
 import { useAuth } from '../../hooks/useAuth';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
@@ -12,17 +12,21 @@ import { dismissPrerender } from '../../utils/browser/prerender';
 import { SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
 import { playWord } from '../landing/demos/demoUtils';
 import type { SampleWord } from '../landing/sampleWords';
-import { LESSON_PAGES } from './lessonPageData';
+import { loadLessonPageBook, loadedLessonPageBook } from './lessonPageData';
 import { lessonPageMeta, lessonPageTitle } from './lessonPageMeta';
+import type { LessonPageLine } from './lessonPageTypes';
 
-const ART = import.meta.glob<string>('../../assets/images/landing/shelf/b1l*.webp', { eager: true, query: '?url', import: 'default' });
-const artFor = (lessonId: number) => ART[`../../assets/images/landing/shelf/b${LESSON_PAGE_BOOK}l${String(lessonId).padStart(2, '0')}.webp`];
+const ART = import.meta.glob<string>('../../assets/images/landing/shelf/b[123]l*.webp', { eager: true, query: '?url', import: 'default' });
+const artFor = ({ bookId, lessonId }: LessonPageRef) => ART[`../../assets/images/landing/shelf/b${bookId}l${String(lessonId).padStart(2, '0')}.webp`];
 
 const SECTION_TITLE = 'text-xl font-black tracking-tight text-ui-ink-strong';
 const LINK = 'rounded-xs text-sm font-extrabold text-brand-primary-text hover:underline focus-ring-inline';
 /** Shown clearly; the lines and words after these fade out so the rest waits in the lesson. */
 const CLEAR_LINES = 3;
 const CLEAR_WORDS = 5;
+const PUNCTUATION = /^[，。！？、]+$/;
+const attachesToWord = (line: LessonPageLine, index: number) => index > 0 && typeof line[index - 1] !== 'string' && PUNCTUATION.test(line[index] as string);
+const trailingPunctuation = (line: LessonPageLine, index: number) => (index + 1 < line.length && attachesToWord(line, index + 1) ? line[index + 1] as string : '');
 /** Inline: a one-off fade is not worth a rule in the critical CSS. */
 function fade(from: string, to: string) {
   const image = `linear-gradient(to bottom, black ${from}, transparent ${to})`;
@@ -34,14 +38,16 @@ function fade(from: string, to: string) {
  * grammar point names, ending in one button. A taste, so search visitors open the lesson for
  * the rest. Prerendered at build time (scripts/build/prerender.ts).
  */
-export function LessonPageScreen({ lessonId }: { lessonId: number }) {
-  const page = LESSON_PAGES[lessonId];
-  const { en, zh } = lessonPageTitle(lessonId);
+export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
+  const ref = { bookId, lessonId };
+  // Suspends once per book while its sample downloads; the prerendered page stays up meanwhile.
+  const page = (loadedLessonPageBook(bookId) ?? use(loadLessonPageBook(bookId)))[lessonId];
+  const { en, zh } = lessonPageTitle(ref);
   const { signIn, error, isBusy } = useGoogleSignIn();
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   useCharacterFont();
-  usePageMeta(lessonPageMeta(lessonId));
+  usePageMeta(lessonPageMeta(ref));
   useEffect(dismissPrerender, []);
 
   // The longest word of the question line: usually the lesson's key word.
@@ -61,7 +67,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
   const hear = (word: SampleWord, key: string) => { playWord(word); setPlaying(key); };
   // Sign-in returns to the home address, so the lesson is remembered and opened from there.
   const study = () => {
-    rememberLessonReturn(lessonId);
+    rememberLessonReturn(ref);
     if (currentUser) navigate(TAB_ROUTES.path); else void signIn();
   };
   // One confident button: tall, big label, an arrow that says "go". It fills its column, so its edges line up with the blocks below.
@@ -80,7 +86,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
       <AppIcon name="forward" size={22} />
     </ActionButton>
   );
-  const art = artFor(lessonId);
+  const art = artFor(ref);
 
   return (
     <div className="flex h-[100dvh] w-full flex-col bg-ui-canvas font-sans text-ui-ink">
@@ -97,7 +103,7 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
             {art && <img src={art} alt="" width={640} height={360} className="aspect-video w-full rounded-feature object-cover" />}
             <div className="flex min-w-0 flex-col gap-5 lg:justify-center lg:gap-7">
               <div className="flex flex-col gap-1">
-                <p className="text-sm font-extrabold text-ui-muted-strong">Modern Chinese {LESSON_PAGE_BOOK} · Lesson {lessonId}</p>
+                <p className="text-sm font-extrabold text-ui-muted-strong">Modern Chinese {bookId} · Lesson {lessonId}</p>
                 <h1 className="text-3xl font-black leading-tight tracking-tight text-ui-ink-strong text-balance lg:text-4xl">{en}</h1>
                 <p lang="zh-Hant" className="font-chinese text-xl font-semibold text-ui-muted-strong lg:text-2xl">{zh}</p>
               </div>
@@ -126,22 +132,25 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
                       )}
                     >
                       {line.map((token, tokenIndex) => {
-                        if (typeof token === 'string') return token;
-                        if (!clear) return token[0];
+                        if (typeof token === 'string') return attachesToWord(line, tokenIndex) ? null : token;
+                        if (!clear) return token[0] + trailingPunctuation(line, tokenIndex);
                         const key = `line-${lineIndex}-${tokenIndex}`;
+                        // The word and the mark after it wrap together, so a line never starts with ？ or ，.
                         return (
-                          <button
-                            key={key}
-                            type="button"
-                            onClick={() => { setPicked(token); hear(token, 'picked'); }}
-                            aria-label={`${token[0]}, ${token[1]}, ${token[2]}`}
-                            className={cn(
-                              'rounded-t-xs border-b-2 px-0.5 focus-ring-inline',
-                              picked === token ? 'border-brand-primary bg-brand-primary-soft' : 'border-transparent hover:bg-ui-hover',
-                            )}
-                          >
-                            {token[0]}
-                          </button>
+                          <span key={key} className="whitespace-nowrap">
+                            <button
+                              type="button"
+                              onClick={() => { setPicked(token); hear(token, 'picked'); }}
+                              aria-label={`${token[0]}, ${token[1]}, ${token[2]}`}
+                              className={cn(
+                                'rounded-t-xs border-b-2 px-0.5 focus-ring-inline',
+                                picked === token ? 'border-brand-primary bg-brand-primary-soft' : 'border-transparent hover:bg-ui-hover',
+                              )}
+                            >
+                              {token[0]}
+                            </button>
+                            {trailingPunctuation(line, tokenIndex)}
+                          </span>
                         );
                       })}
                     </p>
@@ -198,8 +207,8 @@ export function LessonPageScreen({ lessonId }: { lessonId: number }) {
           </section>
 
           <nav aria-label="More lessons" className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t-2 border-ui-divider pt-8">
-            {lessonId > 1 && <Link to={lessonPagePath(lessonId - 1)} className={LINK}>← Lesson {lessonId - 1}</Link>}
-            {lessonId < LESSON_PAGE_LESSONS && <Link to={lessonPagePath(lessonId + 1)} className={LINK}>Lesson {lessonId + 1} →</Link>}
+            {lessonId > 1 && <Link to={lessonPagePath(bookId, lessonId - 1)} className={LINK}>← Lesson {lessonId - 1}</Link>}
+            {lessonId < LESSON_PAGE_LESSONS && <Link to={lessonPagePath(bookId, lessonId + 1)} className={LINK}>Lesson {lessonId + 1} →</Link>}
             <Link to={GUIDE_ROUTES.books} className={LINK}>All lessons</Link>
           </nav>
           {!currentUser && <SignInConsent className="!text-sm !font-semibold !text-ui-muted" />}

@@ -9,11 +9,17 @@ import { LandingPage, LANDING_META } from '../../src/screens/landing';
 import { FAQ } from '../../src/screens/landing/landingContent';
 import { GuideScreen, guidePageMeta, TOCFL_FAQ } from '../../src/screens/guides';
 import { LegalScreen, legalPageMeta } from '../../src/screens/legal';
-import { LessonPageScreen, lessonPageMeta, lessonPageTitle } from '../../src/screens/lesson-page';
+import { LessonPageScreen, lessonPageMeta, lessonPageTitle, provideLessonPageBook } from '../../src/screens/lesson-page';
+import { PAGES as BOOK_1_PAGES } from '../../src/screens/lesson-page/data/book-1';
+import { PAGES as BOOK_2_PAGES } from '../../src/screens/lesson-page/data/book-2';
+import { PAGES as BOOK_3_PAGES } from '../../src/screens/lesson-page/data/book-3';
 import { SAMPLE_BOOKS } from '../../src/data/books';
-import { GUIDE_ROUTES, LESSON_PAGE_LESSONS, type GuidePage, type LegalPage } from '../../src/app/routes';
+import { GUIDE_ROUTES, LESSON_PAGE_BOOKS, LESSON_PAGE_LESSONS, type GuidePage, type LegalPage, type LessonPageRef } from '../../src/app/routes';
 
 const SITE_ORIGIN = 'https://ronsmandarin.com';
+
+// Rendering is synchronous, so every book's lesson-page sample is handed over before it starts.
+[BOOK_1_PAGES, BOOK_2_PAGES, BOOK_3_PAGES].forEach((pages, index) => provideLessonPageBook(index + 1, pages));
 
 export interface PrerenderedPage {
   path: string;
@@ -161,8 +167,10 @@ function guideJsonLd(page: GuidePage, title: string, description: string, path: 
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
-function lessonJsonLd(lessonId: number, title: string, description: string, path: string): object {
-  const { en, zh } = lessonPageTitle(lessonId);
+function lessonJsonLd(ref: LessonPageRef, title: string, description: string, path: string): object {
+  const { bookId, lessonId } = ref;
+  const { en, zh } = lessonPageTitle(ref);
+  const level = SAMPLE_BOOKS.find((book) => book.id === bookId)?.level;
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -172,15 +180,15 @@ function lessonJsonLd(lessonId: number, title: string, description: string, path
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: "Ron's Mandarin", item: `${SITE_ORIGIN}/` },
           { '@type': 'ListItem', position: 2, name: 'Books & Lessons', item: `${SITE_ORIGIN}${GUIDE_ROUTES.books}` },
-          { '@type': 'ListItem', position: 3, name: `Lesson ${lessonId}: ${en}`, item: `${SITE_ORIGIN}${path}` },
+          { '@type': 'ListItem', position: 3, name: `Book ${bookId} Lesson ${lessonId}: ${en}`, item: `${SITE_ORIGIN}${path}` },
         ],
       },
       {
         '@type': 'LearningResource',
-        name: `Modern Chinese 1 Lesson ${lessonId}: ${en} (${zh})`,
+        name: `Modern Chinese ${bookId} Lesson ${lessonId}: ${en} (${zh})`,
         description,
         learningResourceType: 'Vocabulary and grammar lesson',
-        educationalLevel: 'TOCFL A1',
+        educationalLevel: `TOCFL ${level}`,
         isAccessibleForFree: true,
         inLanguage: ['en', 'zh-Hant'],
         url: `${SITE_ORIGIN}${path}`,
@@ -207,15 +215,15 @@ export function renderPages(): PrerenderedPage[] {
         jsonLd: guideJsonLd(page, meta.title, meta.description, meta.path),
       };
     }),
-    ...Array.from({ length: LESSON_PAGE_LESSONS }, (_, index) => {
-      const lessonId = index + 1;
-      const meta = lessonPageMeta(lessonId);
+    ...LESSON_PAGE_BOOKS.flatMap((bookId) => Array.from({ length: LESSON_PAGE_LESSONS }, (_, index) => {
+      const ref = { bookId, lessonId: index + 1 };
+      const meta = lessonPageMeta(ref);
       return {
         ...meta,
-        html: render(meta.path, <LessonPageScreen lessonId={lessonId} />),
-        jsonLd: lessonJsonLd(lessonId, meta.title, meta.description, meta.path),
+        html: render(meta.path, <LessonPageScreen {...ref} />),
+        jsonLd: lessonJsonLd(ref, meta.title, meta.description, meta.path),
       };
-    }),
+    })),
     ...legal.map((page) => {
       const meta = legalPageMeta(page);
       return {

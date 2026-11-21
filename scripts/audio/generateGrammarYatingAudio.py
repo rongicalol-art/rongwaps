@@ -12,6 +12,9 @@ generateLessonTestAudio.py: Lessons 1-8 slower, 9-16 a little quicker, 400 ms at
   node --import dotenv/config --import tsx scripts/audio/publishGrammarStudioAudio.ts \
     --manifest output/grammar-audio/b1-yating/manifest.json --approved "owner <date> (...)" --upload
 
+--card-examples voices instead the book's flashcard example sentences that have no book clip
+(content/audio/vocabulary_example_audio.json), into output/grammar-audio/b<N>-examples-yating/.
+
 Writes <worktree>/output/grammar-audio/b1-yating/: manifest.json (publishGrammarStudioAudio.ts format), masters/,
 delivery/ (the 48 kbps copies named by hash, published as grammar-studio/v1/<hash>.mp3).
 """
@@ -85,6 +88,30 @@ def turns(text):
     return out
 
 
+def example_targets(book, lessons):
+    """The book's card examples the book recording does not say (no book clip), as grammar-page targets."""
+    manifest = json.loads((ROOT / "content/audio/vocabulary_example_audio.json").read_text(encoding="utf-8"))
+    found = {}
+    for entry in manifest["examples"].values():
+        if entry["bookId"] == book and entry["lessonId"] in lessons and not entry.get("audio"):
+            found.setdefault(han(entry["traditional"]), {"key": han(entry["traditional"]), "text": entry["traditional"],
+                                                         "lesson": entry["lessonId"], "where": "card"})
+    return list(found.values())
+
+
+def voiced(items, book):
+    out = []
+    for item in items:
+        parts = []
+        for speaker, spoken in turns(item["text"]):
+            speed, pauses = yating_pace(book, item["lesson"], speaker)
+            parts.append({"speaker": speaker, "text": spoken, "voice": yating_label(speaker, speed, pauses),
+                          "model": YATING_VOICES[speaker], "speed": speed, "pauses": pauses, "pitch": YATING_PITCH[speaker]})
+        out.append({**item, "turns": parts, "spoken": " ".join(p["text"] for p in parts),
+                    "voice": " + ".join(dict.fromkeys(p["voice"] for p in parts))})
+    return out
+
+
 def targets(book, lessons):
     pack = json.loads(Path(str(PACK).format(book=book)).read_text(encoding="utf-8"))
     found = {}
@@ -116,16 +143,7 @@ def targets(book, lessons):
     for part in pack["items"]:
         if part["lessonId"] in lessons:
             walk(part, part["lessonId"], "page")
-    out = []
-    for item in found.values():
-        parts = []
-        for speaker, spoken in turns(item["text"]):
-            speed, pauses = yating_pace(book, item["lesson"], speaker)
-            parts.append({"speaker": speaker, "text": spoken, "voice": yating_label(speaker, speed, pauses),
-                          "model": YATING_VOICES[speaker], "speed": speed, "pauses": pauses, "pitch": YATING_PITCH[speaker]})
-        out.append({**item, "turns": parts, "spoken": " ".join(p["text"] for p in parts),
-                    "voice": " + ".join(dict.fromkeys(p["voice"] for p in parts))})
-    return out
+    return voiced(found.values(), book)
 
 
 def synthesize_with_tail(turn, take, np, sf):
@@ -191,11 +209,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--book", type=int, default=1)
     parser.add_argument("--lessons", default="1-15", help="Lesson range, e.g. 1-15 (Book 1 Lesson 16 waits for its rebuild).")
+    parser.add_argument("--card-examples", action="store_true", help="Voice card examples without a book clip.")
     args = parser.parse_args()
     global OUT
-    OUT = Path(str(OUT).format(book=args.book))
+    OUT = Path(str(OUT).format(book=f"{args.book}-examples" if args.card_examples else args.book))
     first, last = (int(v) for v in args.lessons.split("-"))
-    todo = targets(args.book, range(first, last + 1))
+    lessons = range(first, last + 1)
+    todo = voiced(example_targets(args.book, lessons), args.book) if args.card_examples else targets(args.book, lessons)
     # A sentence another book already has a Yating clip for keeps it: clips are keyed by text, not by book.
     published = {k for k, v in json.loads(RECEIPT.read_text(encoding="utf-8")).items() if "yating" in v.get("model", "")}
     shared = [t for t in todo if t["key"] in published]
