@@ -5,9 +5,7 @@ import {
   preloadAudioFiles, publicAudioUrl, readCachedAudioBlob, MAX_AUDIO_MEMORY_BYTES, type AudioPreloadProgress,
 } from './audio/audioCache';
 import { speakUtterance, releaseSpeechUtterance, wait } from './audio/speechEngine';
-import {
-  afterPaint, playHtmlAudio, prepareAudioElement, playRangeOnAudioElement, silenceAudio, type PlayRangeOptions,
-} from './audio/playbackEngine';
+import { afterPaint, playHtmlAudio, prepareAudioElement, playRangeOnAudioElement, silenceAudio, type PlayRangeOptions } from './audio/playbackEngine';
 import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
 import { ShortAudioClips } from './audio/shortAudioClips';
