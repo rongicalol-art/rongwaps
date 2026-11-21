@@ -11,7 +11,7 @@ import {
   normalizePronunciationRate,
 } from '../../features/practice';
 import { SettingsAccountSection } from './SettingsAccountSection';
-import { BlockedPeople, UsernameSetting, setFindable } from '../../features/social';
+import { BlockedPeople, StudyTogetherSettings } from '../../features/social';
 import { setToneOrigin } from '../../hooks/useReviewTone';
 
 export interface AppSettingsDrawerProps {
@@ -28,11 +28,6 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
   const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
-  const showOnline = useAppStore((state) => state.showOnline);
-  const setShowOnline = useAppStore((state) => state.setShowOnline);
-  const username = useAppStore((state) => state.socialUsername);
-  const showProfile = useAppStore((state) => state.showProfile);
-  const setShowProfile = useAppStore((state) => state.setShowProfile);
   const [isConfirmResetOpen, setIsConfirmResetOpen] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const [resetError, setResetError] = useState<string | null>(null);
@@ -113,12 +108,7 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
               </SettingsPageSection>
 
               <SettingsPageSection title="Study together">
-                <SettingsToggleRow checked={showOnline} onClick={() => setShowOnline(!showOnline)} label="Show me online" />
-                <SettingsToggleRow checked={showProfile} onClick={() => setShowProfile(!showProfile)} label="Show my profile" className={username ? undefined : 'border-b-0'} />
-                {username && <>
-                  <UsernameSetting />
-                  <SettingsToggleRow checked={username.findable} onClick={() => { void setFindable(!username.findable); }} label="Let classmates find me" description="By your name or @username in Add friends" className="border-b-0" />
-                </>}
+                <StudyTogetherSettings />
                 <BlockedPeople />
               </SettingsPageSection>
 

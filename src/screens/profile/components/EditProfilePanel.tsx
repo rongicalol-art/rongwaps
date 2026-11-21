@@ -4,6 +4,7 @@ import { AVATAR_COLORS, COVER_PRESETS } from '../../../store/slices/profileSlice
 import type { ProfileImageCrop } from '../../../services/profileMedia';
 import type { useProfileEditor } from '../hooks/useProfileEditor';
 import { ProfileImageCropper } from './ProfileImageCropper';
+import { StudyTogetherSettings } from '../../../features/social';
 import { avatarStyle, CoverGlyphs, coverStyle, ProfileAvatar } from './ProfileAppearance';
 
 type Editor = ReturnType<typeof useProfileEditor>;
@@ -78,6 +79,7 @@ export function EditProfilePanel({ editor, name, canUpload, googleAvatar }: {
             {editor.hasCoverUpload && cropFiles.cover && <button type="button" onClick={() => chooseImage('cover', cropFiles.cover)} className="focus-ring mt-2 p-2 text-sm font-black text-ui-muted-strong">Adjust crop</button>}
             </section>
             <section><label htmlFor="profile-name" className="profile-field-label">Name</label><input id="profile-name" className="profile-name-input" value={draft.settings.displayName} maxLength={30} autoComplete="off" onChange={(e) => editor.change({ displayName: e.target.value })} /></section>
+            <section><h3>Who can see me</h3><StudyTogetherSettings /></section>
             {editor.error && <p role="alert" className="text-sm text-feedback-danger-text">{editor.error}</p>}
           </fieldset></Drawer.Body>
           <div className="profile-panel-footer">{editor.busy ? <p role="status" className="py-3 text-center font-black">Saving image…</p> : <ActionButton fullWidth className="normal-case tracking-normal text-base" onClick={() => void editor.save()}>Save</ActionButton>}</div>
