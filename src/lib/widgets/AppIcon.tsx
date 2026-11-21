@@ -99,6 +99,8 @@ import {
   PiBellSimpleSlashBold,
   PiChatCircleDotsBold,
   PiChatCircleFill,
+  PiUserPlusBold,
+  PiUserMinusBold,
 } from 'react-icons/pi';
 
 /** Every icon the app draws; the names come from the ICONS table below. */
@@ -317,6 +319,8 @@ const ICONS = {
   bellOff: PiBellSimpleSlashBold,
   chat: PiChatCircleDotsBold,
   chatFill: PiChatCircleFill,
+  addFriend: PiUserPlusBold,
+  removeFriend: PiUserMinusBold,
   /** A recording's or text's script (the lesson test's Fix round). */
   script: PiFileTextBold,
   answerYes: AnswerYesIcon,

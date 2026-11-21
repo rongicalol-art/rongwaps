@@ -21,7 +21,11 @@ const MIGRATIONS_DIR = resolve(process.cwd(), 'supabase', 'migrations');
 
 /** Tables the migrations leave in `public` (post-drops). Keep in sync with the migrations. */
 const EXPECTED_TABLES = [
+  'direct_messages',
+  'direct_reads',
   'folder_members',
+  'friend_adds',
+  'profile_cards',
   'user_blocks',
   'user_card_progress',
   'user_flashcards',
@@ -39,6 +43,7 @@ const EXPECTED_FUNCTIONS = [
   'set_folder_member_role',
   'remove_folder_member', 'list_folder_members',
   'report_user', 'submit_report',
+  'friend_people', 'add_friend', 'remove_friend', 'direct_inbox', 'send_direct_message', 'mark_direct_read', 'save_profile_card',
   'append_review_events',
   'block_user',
   'confirm_age',

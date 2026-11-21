@@ -58,6 +58,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 **Layout.**
 - Desktop keeps the side nav. Windows open beside it, never as a full-bleed takeover or a centred pop-up for a primary screen. Side panels over square modals.
 - Mobile gets its own hierarchy, not a stacked desktop.
+- A profile's action (Add friend, Accept) sits on the right of the picture, just under the cover, the way familiar profile pages do it, not on its own row under the name.
 - Bottom docks share one standard (padding, position, size) across the app. The feedback bar must not cover content on a 900px-tall desktop window.
 
 ## 3. Motion (the owner cares most here)

@@ -4,7 +4,7 @@ import { rpc } from './supabase';
 import { sendOwnerEmail } from './ownerEmail';
 
 export const REPORT_REASONS = ['spam', 'rude', 'unsafe', 'other'] as const;
-export const REPORT_PLACES = ['profile', 'chat', 'party'] as const;
+export const REPORT_PLACES = ['profile', 'chat', 'party', 'message'] as const;
 type ReportInput = {
   target: string; reason: typeof REPORT_REASONS[number]; place: typeof REPORT_PLACES[number];
   message?: string; messageId?: number; name?: string; photo?: string;

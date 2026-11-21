@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, CLASS_CHAT_KEEP, CLASS_CHAT_MAX_AGE_MS, socialUpdateOpen, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
 
@@ -126,6 +126,11 @@ export class Lobby extends DurableObject<Env> {
     await this.ensureAlarm();
   }
 
+  /** After the privacy update; the test harness overrides it. */
+  protected updateOpen(now: number) { return socialUpdateOpen(now); }
+  /** How long a channel keeps its lines: the class chat 180 days after the privacy update, everything else 24 hours. */
+  private chatTtl(lesson: number, now: number) { return lesson === GLOBAL_CHAT && this.updateOpen(now) ? CLASS_CHAT_MAX_AGE_MS : CHAT_TTL_MS; }
+
   /** Live sockets and their state; rebuilt from attachments after a wake (and by every maintenance alarm). */
   private index(): Map<WebSocket, Att> {
     if (this.live) return this.live;
@@ -200,8 +205,8 @@ export class Lobby extends DurableObject<Env> {
     for (const a of ids) for (const b of ids) if (a !== b && this.apart(a, b)) pairs.push(`${a}|${b}`);
     return pairs;
   }
-  /** Counts one cheer or invite toward today's allowance; false once it is used up. */
-  private allowDaily(uid: string, kind: 'cheer' | 'invite' | 'everyone', now: number): boolean {
+  /** Counts one cheer, invite, @everyone or private-message ping toward today's allowance; false once it is used up. */
+  private allowDaily(uid: string, kind: Exclude<keyof typeof DAILY_LIMITS, 'chat'>, now: number): boolean {
     const day = utcDay(now);
     const row = this.ctx.storage.sql.exec<{ day: number; n: number }>('SELECT day,n FROM daily WHERE uid=? AND kind=?', uid, kind).toArray()[0];
     const used = row?.day === day ? row.n : 0;
@@ -344,6 +349,21 @@ export class Lobby extends DurableObject<Env> {
       // Never past the newest line, so a stray id can't hide future messages.
       this.ctx.storage.sql.exec("INSERT INTO reads (uid,last,ts) VALUES (?, MIN(?, (SELECT COALESCE(MAX(id),0) FROM chat WHERE lesson=?)), ?) ON CONFLICT(uid) DO UPDATE SET last=MAX(last, excluded.last), ts=excluded.ts", att.u, message.id, GLOBAL_CHAT, now);
       await this.ensureAlarm();
+    } else if (message.t === 'older') {
+      if (att.ch !== GLOBAL_CHAT || !this.updateOpen(now)) return;
+      const page = this.page(GLOBAL_CHAT, now, att.u, message.before);
+      this.send(socket, { t: 'older', v: page.v, more: page.more });
+    } else if (message.t === 'dm') {
+      // Only a nudge: the message itself is in the database, readable by the two friends only. The Lobby can't
+      // tell friends apart, so a daily allowance stops anyone from making a classmate's app reload all day.
+      if (!this.updateOpen(now) || message.to === att.u || this.apart(att.u, message.to) || !this.allowDaily(att.u, 'dm', now)) return;
+      this.index();
+      const target = this.byUser.get(message.to);
+      if (target) this.send(target, { t: 'dm', from: att.u });
+    } else if (message.t === 'forget') {
+      this.forgetAccount(att.u);
+      this.close(socket, 1000, 'Account deleted.');
+      this.scheduleFlush();
     } else if (message.t === 'report') {
       const row = this.ctx.storage.sql.exec<{ uid: string; text: string }>('SELECT uid,text FROM chat WHERE id=? AND lesson=?', message.id, att.ch ?? -1).toArray()[0];
       if (!row) return;
@@ -390,8 +410,13 @@ export class Lobby extends DurableObject<Env> {
     const a = lesson === GLOBAL_CHAT && all ? 1 : null;
     const { line, notices } = this.ctx.storage.transactionSync(() => {
       const id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO chat (lesson,uid,name,color,text,room,ts,w,a) VALUES (?,?,?,?,?,?,?,?,?) RETURNING id', lesson, att.u, att.n, att.c, text, room, now, w, a).one().id;
-      // IDs are global, so pruning is scoped to one channel.
-      this.ctx.storage.sql.exec('DELETE FROM chat WHERE lesson=? AND (ts<? OR id NOT IN (SELECT id FROM chat WHERE lesson=? ORDER BY id DESC LIMIT ?))', lesson, now - CHAT_TTL_MS, lesson, CHAT_KEEP);
+      // IDs are global, so pruning is scoped to one channel. The long class chat is trimmed every 25 lines.
+      if (lesson === GLOBAL_CHAT && this.updateOpen(now)) {
+        if (id % 25 === 0) {
+          const oldest = this.ctx.storage.sql.exec<{ id: number }>('SELECT id FROM chat WHERE lesson=? ORDER BY id DESC LIMIT 1 OFFSET ?', lesson, CLASS_CHAT_KEEP - 1).toArray()[0]?.id ?? 0;
+          this.ctx.storage.sql.exec('DELETE FROM chat WHERE lesson=? AND (ts<? OR id<?)', lesson, now - CLASS_CHAT_MAX_AGE_MS, oldest);
+        }
+      } else this.ctx.storage.sql.exec('DELETE FROM chat WHERE lesson=? AND (ts<? OR id NOT IN (SELECT id FROM chat WHERE lesson=? ORDER BY id DESC LIMIT ?))', lesson, now - CHAT_TTL_MS, lesson, CHAT_KEEP);
       const line = this.message({ id, lesson, uid: att.u, name: att.n, color: att.c, text, room, ts: now, w, a }, att.i);
       const notices = recipients.filter(uid => !this.apart(uid, att.u)).map(uid => ({ uid, notice: { key: `l:${id}`, channel: lesson, message: line, read: false } }));
       for (const { uid, notice } of notices) this.saveMention(uid, notice);
@@ -452,21 +477,41 @@ export class Lobby extends DurableObject<Env> {
 
   /** History for one channel; the class chat adds the viewer's read spot and how many lines from others came after it. */
   private historyFrame(lesson: number, now: number, viewer: string): LobbyServerMessage {
-    const v = this.history(lesson, now, viewer);
+    const { v, more } = this.page(lesson, now, viewer);
     if (lesson !== GLOBAL_CHAT) return { t: 'history', l: lesson, v };
-    const since = now - CHAT_TTL_MS;
+    const since = now - this.chatTtl(lesson, now);
     const r = this.ctx.storage.sql.exec<{ last: number }>('SELECT last FROM reads WHERE uid=? AND ts>=?', viewer, since).toArray()[0]?.last ?? 0;
-    const hide = this.hidden(viewer);
-    const n = this.ctx.storage.sql.exec<{ uid: string }>("SELECT uid FROM chat WHERE lesson=? AND id>? AND ts>=? AND text!='' ORDER BY id LIMIT ?", GLOBAL_CHAT, r, since, UNREAD_CAP + 1)
-      .toArray().filter(row => row.uid !== viewer && !hide.has(row.uid)).length;
-    return { t: 'history', l: lesson, v, r, n: Math.min(n, UNREAD_CAP) };
+    // Own lines and lines from a block pair are left out before counting, so they can't use up the cap.
+    const apart = this.hidden(viewer).size > 0;
+    const n = this.ctx.storage.sql.exec<{ n: number }>(
+      `SELECT COUNT(*) AS n FROM (SELECT 1 FROM chat c WHERE lesson=? AND id>? AND ts>=? AND text!='' AND uid!=?${apart ? ' AND NOT EXISTS (SELECT 1 FROM blocks b WHERE (b.uid=? AND b.other=c.uid) OR (b.uid=c.uid AND b.other=?))' : ''} LIMIT ?)`,
+      GLOBAL_CHAT, r, since, viewer, ...(apart ? [viewer, viewer] : []), UNREAD_CAP + 1).one().n;
+    return { t: 'history', l: lesson, v, r, n: Math.min(n, UNREAD_CAP), ...(more ? { more } : {}) };
   }
-  private history(lesson: number, now: number, viewer: string) {
+  /** The newest 50 lines of a channel (or the 50 before `before`), oldest first, and whether older ones exist. */
+  private page(lesson: number, now: number, viewer: string, before = Number.MAX_SAFE_INTEGER) {
     const live = this.index();
     const hide = this.hidden(viewer);
+    const since = now - this.chatTtl(lesson, now);
     const image = (uid: string) => { const socket = this.byUser.get(uid); return socket ? live.get(socket)?.i : undefined; };
-    return this.ctx.storage.sql.exec<ChatRow>('SELECT * FROM chat WHERE lesson=? AND ts>=? ORDER BY id DESC LIMIT ?', lesson, now - CHAT_TTL_MS, CHAT_KEEP)
-      .toArray().reverse().filter(row => !hide.has(row.uid)).map(row => this.message(row, image(row.uid))).filter(message => message.t || message.r);
+    const rows = this.ctx.storage.sql.exec<ChatRow>('SELECT * FROM chat WHERE lesson=? AND ts>=? AND id<? ORDER BY id DESC LIMIT ?', lesson, since, before, CHAT_KEEP).toArray();
+    const more = rows.length === CHAT_KEEP && this.ctx.storage.sql.exec('SELECT 1 FROM chat WHERE lesson=? AND ts>=? AND id<? LIMIT 1', lesson, since, rows[rows.length - 1].id).toArray().length > 0;
+    return { v: rows.reverse().filter(row => !hide.has(row.uid)).map(row => this.message(row, image(row.uid))).filter(message => message.t || message.r), more };
+  }
+  /**
+   * An account being deleted: its lines, its notices in others' inboxes, its read spot and the blocks it made.
+   * Anyone can send this, so it touches only the sender's own data: blocks others made on them stay, and the
+   * daily limits stay too (they are gone by tomorrow), so forgetting can't reset @everyone or the chat limit.
+   */
+  private forgetAccount(uid: string) {
+    this.ctx.storage.transactionSync(() => {
+      const sql = this.ctx.storage.sql;
+      sql.exec('DELETE FROM chat WHERE uid=?', uid);
+      sql.exec("DELETE FROM mentions WHERE uid=? OR json_extract(data,'$.message.u')=?", uid, uid);
+      sql.exec('DELETE FROM reads WHERE uid=?', uid);
+      sql.exec('DELETE FROM blocks WHERE uid=?', uid);
+    });
+    this.blockedAny = null; this.hiddenCache.clear();
   }
   /**
    * Open, joinable rooms, newest first; reused for 30 s unless a listing changes. Someone in a block pair gets
@@ -563,10 +608,10 @@ export class Lobby extends DurableObject<Env> {
     this.live = null;
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires<=?', now);
     this.ctx.storage.sql.exec('DELETE FROM rooms WHERE updated<?', now - ROOM_TTL_MS);
-    this.ctx.storage.sql.exec('DELETE FROM chat WHERE ts<?', now - CHAT_TTL_MS);
+    this.ctx.storage.sql.exec('DELETE FROM chat WHERE ts<? AND (lesson!=? OR ts<?)', now - CHAT_TTL_MS, GLOBAL_CHAT, now - this.chatTtl(GLOBAL_CHAT, now));
     this.ctx.storage.sql.exec('DELETE FROM chat_rate WHERE updated<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM mentions WHERE ts<?', now - CHAT_TTL_MS);
-    this.ctx.storage.sql.exec('DELETE FROM reads WHERE ts<?', now - CHAT_TTL_MS);
+    this.ctx.storage.sql.exec('DELETE FROM reads WHERE ts<?', now - this.chatTtl(GLOBAL_CHAT, now));
     this.ctx.storage.sql.exec('DELETE FROM daily WHERE day<?', utcDay(now));
     this.ctx.storage.sql.exec('DELETE FROM reports WHERE ts<? OR id NOT IN (SELECT id FROM reports ORDER BY id DESC LIMIT 1000)', now - 30 * CHAT_TTL_MS);
     this.roomsCache = null;

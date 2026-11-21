@@ -6,12 +6,14 @@ import type { ChatMessage, LessonCount, Person, MentionNotice, ProfileCard } fro
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
 import type { SocialStatus } from '../../services/socialService';
 import type { BlockedPerson, ReportPlace } from '../../services/safetyService';
+import type { Conversation, DirectMessage, FriendPerson, SavedProfile } from '../../services/friendsService';
 
 /** The open report or block sheet; `report-done` offers to block after a report. */
 export interface SafetyPrompt { kind: 'report' | 'report-done' | 'block'; person: BlockedPerson; place: ReportPlace; message?: string; messageId?: number; photo?: string }
 
 export type SocialPanel =
-  | { kind: 'people'; tab: 'online' | 'chat'; visit?: Person }
+  /** `thread`: an open conversation in Chats, 'class' or a friend's account id (after the privacy update). */
+  | { kind: 'people'; tab: 'online' | 'chat'; thread?: string; visit?: Person }
   | { kind: 'challenge'; tab: 'online' | 'rooms' }
   | { kind: 'partyChat' }
   | { kind: 'partyMention' }
@@ -35,13 +37,24 @@ export interface SocialState {
   socialPeople: Person[];
   socialOnline: Person[];
   socialRooms: RaceRoomSummary[];
-  socialChat: { lesson: number; messages: ChatMessage[] } | null;
+  /** `more`: the Lobby has older class chat lines than these (after the privacy update). */
+  socialChat: { lesson: number; messages: ChatMessage[]; more?: boolean } | null;
   /** Ephemeral private room messages; cleared when leaving or switching accounts. */
   socialPartyChat: { code: string; messages: ChatMessage[] } | null;
   /** The last class chat line this account has seen (the Lobby keeps it per account; 0 = none). */
   socialChatRead: number;
   /** Class chat lines from others after the read spot, including ones not loaded yet. */
   socialChatUnread: number;
+  /** Friends and friend requests (null until loaded; after the privacy update only). */
+  socialFriends: FriendPerson[] | null;
+  /** One row per private conversation, newest first. */
+  socialInbox: Conversation[];
+  /** Loaded private conversations by friend, oldest first; `more`: older lines exist. */
+  socialThreads: Record<string, { messages: DirectMessage[]; more: boolean }>;
+  /** Profiles classmates last shared, for visits while they're offline (null = none saved). */
+  socialSaved: Record<string, SavedProfile | null>;
+  /** Classmates seen recently, newest first (Online → Recently here). */
+  socialRecent: SavedProfile[];
   socialMentions: MentionNotice[];
   socialMentionToast: MentionNotice | null;
   socialMentionTarget: MentionNotice | null;
@@ -85,6 +98,11 @@ const LIVE_DEFAULTS = {
   socialPartyChat: null,
   socialChatRead: 0,
   socialChatUnread: 0,
+  socialFriends: null,
+  socialInbox: [],
+  socialThreads: {},
+  socialSaved: {},
+  socialRecent: [],
   socialMentions: [],
   socialMentionToast: null,
   socialMentionTarget: null,
@@ -132,10 +150,18 @@ export function countedIn(state: Pick<SocialState, 'socialHere' | 'socialPeople'
     || (state.socialHere === lesson && state.socialPeople.some(person => person.l === lesson));
 }
 
-/** The number on the faces button: new class chat lines plus unread party mentions; none while muted. */
-export function unreadTotal(state: Pick<SocialState, 'socialMuted' | 'socialChatUnread' | 'socialMentions'>): number {
+/** Friend requests waiting for my answer. */
+export const friendRequests = (state: Pick<SocialState, 'socialFriends'>) => (state.socialFriends ?? []).filter(person => person.addedMe && !person.iAdded);
+/** New private messages across conversations. */
+export const directUnread = (state: Pick<SocialState, 'socialInbox'>) => state.socialInbox.reduce((sum, row) => sum + row.unread, 0);
+
+/**
+ * The number on the faces' chat bubble: new class chat lines, unread party mentions, new private messages and
+ * friend requests; none while muted.
+ */
+export function unreadTotal(state: Pick<SocialState, 'socialMuted' | 'socialChatUnread' | 'socialMentions' | 'socialInbox' | 'socialFriends'>): number {
   if (state.socialMuted) return 0;
-  return state.socialChatUnread + state.socialMentions.filter(item => item.room && !item.read).length;
+  return state.socialChatUnread + state.socialMentions.filter(item => item.room && !item.read).length + directUnread(state) + friendRequests(state).length;
 }
 
 /** The lesson key the Lobby uses: book 1 lesson 4 → 104. */

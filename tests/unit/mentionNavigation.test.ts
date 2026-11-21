@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
-import type { ChatMessage, MentionNotice } from '../../shared/lobby';
+import { SOCIAL_UPDATE_FROM, type ChatMessage, type MentionNotice } from '../../shared/lobby';
 
 // One fixed clock: `Date.now()` per call can tick between notices and flip their order.
 const NOW = Date.now();
@@ -38,7 +38,7 @@ test('inbox replay preserves live notices and opening one leaves study presence 
   assert.deepEqual((state.socialMentions as MentionNotice[]).map(item => item.key), ['l:2', 'l:1']);
   api.openMention(notice(2, 0));
   assert.equal(state.socialViewingLesson, 101);
-  assert.deepEqual(state.socialPanel, { kind: 'people', tab: 'chat' });
+  assert.deepEqual(state.socialPanel, { kind: 'people', tab: 'chat', thread: 'class' });
   assert.equal((state.socialMentions as MentionNotice[])[0].read, true);
   assert.equal((state.socialMentionTarget as MentionNotice).message.id, 2);
   api.lobby.subscribe(false, 0);
@@ -89,6 +89,21 @@ test('class chat: history brings the count, new lines add to it, seeing them cle
   state.socialPanel = null;
   api.deliver({ t: 'history', l: 0, v: [line(5, 'friend'), line(11, 'friend'), line(12, 'friend')], r: 5, n: 3 });
   assert.equal(state.socialChatUnread, 1);
+
+  // After the privacy update the Chat tab can be the Chats list or a friend's conversation: class lines there wait.
+  const realNow = Date.now;
+  Date.now = () => SOCIAL_UPDATE_FROM + 1000;
+  try {
+    state.socialPanel = { kind: 'people', tab: 'chat' };
+    api.deliver({ t: 'msg', m: line(13, 'friend') });
+    state.socialPanel = { kind: 'people', tab: 'chat', thread: 'friend' };
+    api.deliver({ t: 'msg', m: line(14, 'friend') });
+    assert.equal(state.socialChatUnread, 3, 'the Chats list and a private conversation are not the class chat');
+    assert.equal(state.socialChatRead, 11);
+    state.socialPanel = { kind: 'people', tab: 'chat', thread: 'class' };
+    api.deliver({ t: 'msg', m: line(15, 'friend') });
+    assert.equal(state.socialChatRead, 15);
+  } finally { Date.now = realNow; }
   api.stopLobby();
 });
 
