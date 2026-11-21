@@ -23,13 +23,14 @@ test('grammar page addresses have one shape, and only listed pages have a link',
 
 test('every grammar page has a rule, two examples, a different sentence to build, and search tags within length', async () => {
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  assert.ok(GRAMMAR_PAGES.length >= 5);
+  assert.ok(GRAMMAR_PAGES.length >= 76, 'every Book 1 grammar point has a page');
   for (const link of GRAMMAR_PAGES) {
     const [slug, bookId, lessonId, title] = link;
     const page = (await loadGrammarPageBook(bookId))[slug];
     assert.ok(page, `${slug} has no page`);
     assert.deepEqual([page.slug, page.bookId, page.lessonId, page.title], [slug, bookId, lessonId, title]);
-    assert.ok(page.rule.length >= 40 && page.pattern.length >= 2, `${slug} rule and pattern`);
+    // Most patterns are parts in order; a few (reading large numbers) are one instruction.
+    assert.ok(page.rule.length >= 40 && page.pattern.length >= 1, `${slug} rule and pattern`);
     assert.equal(page.examples.length, 2, `${slug} examples`);
     for (const sentence of [...page.examples, page.exercise]) {
       assert.ok(/[。？！]$/.test(text(sentence)), `${slug}: "${text(sentence)}" needs its end mark`);
