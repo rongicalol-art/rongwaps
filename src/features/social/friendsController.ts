@@ -233,16 +233,17 @@ const GOOGLE_PHOTO = /^https:\/\/lh3\.googleusercontent\.com\//;
 export async function saveMyProfile(identity: Pick<Person, 'n' | 'c' | 'i'>, buildCard: () => Promise<ProfileCard | null>) {
   const store = useAppStore.getState();
   if (!ready() || document.visibilityState !== 'visible') return;
-  const key = `${me()}|${store.showProfile}|${store.showOnline}|${identity.n}|${identity.c}|${identity.i ?? ''}`;
+  const key = `${me()}|${store.showProfile}|${store.showOnline}|${identity.n}|${identity.c}|${identity.i && GOOGLE_PHOTO.test(identity.i) ? identity.i : identity.i ? 'uploaded' : ''}`;
   const now = Date.now();
   if (key === savedKey && now - mineSavedAt < SAVE_EVERY_MS) return;
   savedKey = key; mineSavedAt = now;
-  const who: StoredCard = { n: identity.n, c: identity.c, ...(identity.i && GOOGLE_PHOTO.test(identity.i) ? { i: identity.i } : {}) };
+  // A Google photo is a lasting address; an uploaded one is marked, and classmates get their own fresh link to it.
+  const photo = identity.i ? (GOOGLE_PHOTO.test(identity.i) ? { i: identity.i } : { ia: 1 as const }) : {};
+  const who: StoredCard = { n: identity.n, c: identity.c, ...photo };
   try {
     const card = store.showProfile ? await buildCard() : null;
-    const { ci: _cover, ...shared } = card ?? {};
-    void _cover;
-    const stored: StoredCard | null = card ? { ...shared, ...who } : store.showOnline ? who : null;
+    const { ci: cover, ...shared } = card ?? {};
+    const stored: StoredCard | null = card ? { ...shared, ...who, ...(cover ? { ca: 1 as const } : {}) } : store.showOnline ? who : null;
     await friendsService.saveCard(stored, store.showOnline);
   } catch { savedKey = ''; }
 }

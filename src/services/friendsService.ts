@@ -9,7 +9,8 @@ export interface DirectMessage { id: number; from: string; to: string; t: string
 /** One conversation in the Chats list: its newest line and how many from the friend came after my read spot. */
 export interface Conversation { u: string; lastId: number; lastFrom: string; last: string; at: number; unread: number }
 /** The card a classmate last shared, for their profile while they're offline; `n`/`c`/`i` say who it is. */
-export type StoredCard = Partial<ProfileCard> & { n?: string; c?: SocialColor; i?: string };
+/** `ia`/`ca`: they uploaded a photo / cover, which others load by a fresh link (never stored, links expire). */
+export type StoredCard = Partial<ProfileCard> & { n?: string; c?: SocialColor; i?: string; ia?: 1; ca?: 1 };
 /** `h`: their @username, when they can be found ("Let classmates find me"). */
 export interface SavedProfile { u: string; card: StoredCard | null; seen: number | null; h?: string }
 /** This learner's own @username and "Let classmates find me"; `chosenAt` is null while it is the automatic one. */
@@ -45,8 +46,27 @@ const toProfile = (row: { user_id: string; card: unknown; last_seen: string | nu
   ({ u: row.user_id, card: row.card && typeof row.card === 'object' ? row.card as StoredCard : null, seen: time(row.last_seen) });
 
 /** Adds each @username; row security leaves out anyone who can't be found, and a failed lookup just shows none. */
+const MEDIA_BUCKET = 'profile-media';
+const MEDIA_LINK_SECONDS = 3600;
+/**
+ * Uploaded photos and covers of saved profiles, as one-hour links made in one request; the storage rule lets anyone
+ * signed in read them while the profile is shared (20261121140000). A file that can't be read just stays initials.
+ */
+async function withMedia(rows: SavedProfile[]): Promise<SavedProfile[]> {
+  const paths = rows.flatMap(row => [...(row.card?.ia ? [`${row.u}/avatar.webp`] : []), ...(row.card?.ca ? [`${row.u}/cover.webp`] : [])]);
+  if (!paths.length) return rows;
+  const { data } = await supabase.storage.from(MEDIA_BUCKET).createSignedUrls(paths, MEDIA_LINK_SECONDS);
+  const links = new Map((data ?? []).filter(item => item.signedUrl && !item.error).map(item => [item.path, item.signedUrl]));
+  return rows.map(row => {
+    const photo = links.get(`${row.u}/avatar.webp`);
+    const cover = links.get(`${row.u}/cover.webp`);
+    return photo || cover ? { ...row, card: { ...row.card, ...(photo ? { i: photo } : {}), ...(cover ? { ci: cover } : {}) } } : row;
+  });
+}
+
 async function withHandles(rows: SavedProfile[]): Promise<SavedProfile[]> {
   if (!rows.length) return rows;
+  rows = await withMedia(rows);
   const { data } = await supabase.from('usernames').select('user_id, username').in('user_id', rows.map(row => row.u));
   const handles = new Map((data ?? []).map(row => [row.user_id, row.username]));
   return rows.map(row => (handles.has(row.u) ? { ...row, h: handles.get(row.u) } : row));
@@ -114,7 +134,7 @@ const database: FriendsBackend = {
   async search(text) {
     const { data, error } = await supabase.rpc('find_classmates', { p_text: text.slice(0, 40) });
     if (error) throw error;
-    return (data ?? []).map(row => ({ ...toProfile(row), h: row.username }));
+    return withMedia((data ?? []).map(row => ({ ...toProfile(row), h: row.username })));
   },
   async myUsername(me) {
     if (!UUID.test(me)) return null;

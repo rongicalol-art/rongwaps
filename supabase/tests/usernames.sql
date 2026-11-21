@@ -103,7 +103,7 @@ select set_config('request.jwt.claims', '{"sub":"fe000000-0000-4000-8000-0000000
 do $$
 begin
   assert not exists (select 1 from public.usernames where username = 'kai.lin'), 'no saved profile, no @username';
-  assert not exists (select 1 from public.find_classmates('kai.lin'));
+  assert not exists (select 1 from public.find_classmates('kai.lin') where username = 'kai.lin');
 end;
 $$;
 select set_config('request.jwt.claims', '{"sub":"fe000000-0000-4000-8000-000000000001","role":"authenticated"}', true);

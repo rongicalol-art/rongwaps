@@ -68,7 +68,7 @@ export function PrivacyPolicyContent() {
               profile also sees your cover, book, the month you started and your words known, characters known and
               day streak; turn this off with Settings → Show my profile. Both choices are saved on each device, so
               set them on every device you use. So classmates can see your profile while you are offline, we keep the
-              profile you last shared (your name, colour, Google photo, cover choice, book and those numbers) while
+              profile you last shared (your name, colour, photo, cover, book and those numbers) while
               Show my profile is on, and when you were last online while Show me online is on; turning a switch off
               removes that part. Class chat messages are visible to every signed-in learner, with the lesson you were
               on when you wrote (not while you are hidden); a message to @everyone reaches all of them. Quiz room chat
