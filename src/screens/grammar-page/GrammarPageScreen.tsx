@@ -163,7 +163,8 @@ function GrammarPage({ link, page }: { link: GrammarPageLink; page: GrammarPageD
                 </span>
               ))}
             </button>
-            <div className="flex flex-wrap justify-center gap-2">
+            {/* Once checked, the emptied tile row gives its place to the answer note, so no hole is left. */}
+            <div className={cn('flex flex-wrap justify-center gap-2', result !== null && 'hidden')}>
               {tiles.map((tile, index) => (
                 <PracticeChoiceButton
                   key={index}
