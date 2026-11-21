@@ -21,8 +21,8 @@ function FriendButton({ person }: { person: Person }) {
   if (entry?.iAdded && entry.addedMe) return <p className="inline-flex items-center gap-1.5 text-sm font-black text-ui-muted-strong"><AppIcon name="check" size={16} />Friends</p>;
   if (entry?.addedMe) return (
     <div className="flex items-center gap-3">
-      <ActionButton size="sm" onClick={() => { void addFriend(person); }}><AppIcon name="addFriend" size={18} />Accept friend</ActionButton>
-      <button type="button" onClick={() => { void removeFriend(person.u); }} className="rounded-xs text-sm font-black text-ui-muted outline-none hover:text-ui-ink focus-ring-inline">Not now</button>
+      <ActionButton size="sm" onClick={() => { void addFriend(person); }}><AppIcon name="addFriend" size={18} />Accept</ActionButton>
+      <button type="button" onClick={() => { void removeFriend(person.u); }} className="whitespace-nowrap rounded-xs text-sm font-black text-ui-muted outline-none hover:text-ui-ink focus-ring-inline">Not now</button>
     </div>
   );
   if (entry?.iAdded) return (
@@ -69,14 +69,17 @@ export function VisitProfile({ person, lesson, online }: { person: Person; lesso
       <div className="relative h-[120px] overflow-hidden rounded-feature bg-cover bg-center" style={coverStyle(preset, shared?.ci)}>
         {!shared?.ci && preset !== 'plain' && <ProfileCoverGlyphs form={form} className="px-5 py-2 text-4xl tracking-[0.45em]" />}
       </div>
-      <Avatar name={person.n} color={person.c} src={person.i ?? saved?.card?.i} size="xl" className="-mt-[46px] ml-4 h-[92px] w-[92px] text-4xl ring-[5px] ring-ui-practice-canvas" />
+      {/* The friend action sits on the right of the face, just under the cover, like most profile pages. */}
+      <div className="flex items-start justify-between gap-3">
+        <Avatar name={person.n} color={person.c} src={person.i ?? saved?.card?.i} size="xl" className="-mt-[46px] ml-4 h-[92px] w-[92px] shrink-0 text-4xl ring-[5px] ring-ui-practice-canvas" />
+        {inbox && person.u !== me && <div className="flex shrink-0 justify-end whitespace-nowrap pt-3"><FriendButton person={person} /></div>}
+      </div>
       <h3 className="mt-2.5 break-words text-2xl font-black leading-tight text-ui-ink-strong">{person.n}</h3>
       <p className="mt-1.5 flex items-center gap-2 text-sm font-extrabold text-ui-muted-strong">
         {online && <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-feedback-success" />}
         {status}
       </p>
       {since && <p className="mt-1 text-sm font-extrabold text-ui-muted">Learning since {since}</p>}
-      {inbox && person.u !== me && <div className="mt-3 flex"><FriendButton person={person} /></div>}
       {book && (
         <span className="mt-3.5 inline-flex items-center gap-2 whitespace-nowrap rounded-sm border-2 border-ui-divider py-1 pl-1.5 pr-2.5 text-[13px] font-black text-ui-ink-strong">
           <i aria-hidden className="h-[21px] w-4 rounded-xs bg-brand-primary shadow-[inset_-3px_0_0_var(--color-brand-primary-edge)]" />
