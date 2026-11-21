@@ -5,7 +5,7 @@ import { PracticeChoiceButton } from '../../features/practice';
 import { useAuth } from '../../hooks/useAuth';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { usePageMeta } from '../../hooks/usePageMeta';
-import { ActionButton, AppIcon } from '../../lib/widgets';
+import { ActionButton, AppIcon, SearchField } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import { dismissPrerender } from '../../utils/browser/prerender';
 import { readKnownWords, rememberWordListReturn, saveKnownWords, wordKey } from '../../utils/browser/wordListReturn';
@@ -14,15 +14,17 @@ import { PublicPageHeader } from '../public-doc';
 import { loadWordList, loadedWordList } from './wordListData';
 import { wordListInfo, wordListMeta, wordListPart, wordListPartKey, wordListRange } from './wordListMeta';
 import type { ListWord } from './wordListTypes';
+import { WordSearchResults } from './WordSearchResults';
 
 const LINK = 'rounded-xs text-sm font-extrabold text-brand-primary-text hover:underline focus-ring-inline';
 const NO_WORDS: ReadonlySet<string> = new Set();
 
 /** One word: tap it to say "I know this one". */
-const WordTile = memo(function WordTile({ word, known, onToggle }: { word: ListWord; known: boolean; onToggle: (key: string) => void }) {
+const WordTile = memo(function WordTile({ word, known, found, onToggle }: { word: ListWord; known: boolean; found: boolean; onToggle: (key: string) => void }) {
   const [hanzi, pinyin, meaning] = word;
   return (
-    <li className="flex">
+    // `found` rings the word a search just led here for.
+    <li data-found={found || undefined} className={cn('flex rounded-control', found && 'outline outline-4 outline-offset-2 outline-brand-primary')}>
       <PracticeChoiceButton
         compact
         state={known ? 'selected' : 'idle'}
@@ -96,6 +98,17 @@ function WordListPage({ entry, part, level: allWords }: WordListRef & { level: r
     });
   }, [storageKey]);
 
+  // Search looks through every level. Picking a result opens its page with that word ringed.
+  const [query, setQuery] = useState('');
+  const searching = query.trim() !== '';
+  const [found, setFound] = useState<string | null>(null);
+  useEffect(() => {
+    if (!found || searching) return;
+    document.querySelector('[data-found]')?.scrollIntoView({ block: 'center' });
+    const timer = window.setTimeout(() => setFound(null), 4000);
+    return () => window.clearTimeout(timer);
+  }, [found, searching, words]);
+
   const left = words.length - known.size;
   const knowsAll = left === 0;
   // Sign-in returns to the home address, so the list is remembered and saved from there (Library).
@@ -124,6 +137,12 @@ function WordListPage({ entry, part, level: allWords }: WordListRef & { level: r
             </div>
             <h1 className="text-3xl font-black leading-tight tracking-tight text-ui-ink-strong text-balance lg:text-4xl">TOCFL {info.label} Word List</h1>
           </div>
+
+          <SearchField value={query} onChange={setQuery} placeholder="Find a word in any level" label="Find a word in any TOCFL level" />
+          {searching && <WordSearchResults query={query} onPick={(hit) => { setFound(wordKey(hit.word[0], hit.word[1])); setQuery(''); }} />}
+
+          {/* The list stays in the page while a search covers it. */}
+          <div className={cn('flex flex-col gap-6 lg:gap-8', searching && 'hidden')}>
 
             <nav ref={levelTabs} aria-label="Levels" className="-mx-5 flex gap-2 overflow-x-auto px-5 lg:mx-0 lg:px-0">
               {WORD_LIST_LEVELS.map((item) => {
@@ -167,7 +186,7 @@ function WordListPage({ entry, part, level: allWords }: WordListRef & { level: r
           <ul className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
             {words.map((word) => {
               const key = wordKey(word[0], word[1]);
-              return <WordTile key={key} word={word} known={known.has(key)} onToggle={toggle} />;
+              return <WordTile key={key} word={word} known={known.has(key)} found={found === key} onToggle={toggle} />;
             })}
           </ul>
 
@@ -187,6 +206,7 @@ function WordListPage({ entry, part, level: allWords }: WordListRef & { level: r
             <Link to={GUIDE_ROUTES.books} className={LINK}>Books &amp; lessons</Link>
             <Link to={LEGAL_ROUTES.sources} className={LINK}>Sources</Link>
           </nav>
+          </div>
           {!currentUser && <SignInConsent className="!text-sm !font-semibold !text-ui-muted" />}
         </main>
       </div>
