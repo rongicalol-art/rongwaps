@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import { ActionButton, AppIcon, Avatar, PlayfulNavIcon, SearchField } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, avatarStyle, PlayfulNavIcon, SearchField } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { friendRequests } from '../../../store/slices/socialSlice';
 import { GLOBAL_CHAT, type ChatMessage } from '../../../../shared/lobby';
@@ -37,6 +37,33 @@ function Row({ face, name, line, fresh, side, onOpen, action }: { face: ReactNod
 const face = (person: { n: string; c: SocialColor; i?: string }, live: boolean) => <Avatar name={person.n} color={person.c} src={person.i} size="lg" live={live} />;
 
 /**
+ * Everyone's picture, like a group photo: the last people who wrote there, up to four, in one circle
+ * (two side by side, three as one tall and two small, four as a square). Before anyone writes, the globe.
+ */
+function GroupFace({ lines }: { lines: ChatMessage[] }) {
+  const writers: ChatMessage[] = [];
+  for (let index = lines.length - 1; index >= 0 && writers.length < 4; index--) {
+    const line = lines[index];
+    if (line.t && !writers.some(writer => writer.u === line.u)) writers.push(line);
+  }
+  if (writers.length < 2) {
+    return <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-primary-soft"><PlayfulNavIcon name="global" className="h-6 w-6" /></span>;
+  }
+  const cell = (writer: ChatMessage, place: string) => (
+    <span key={writer.u} className={`relative grid place-items-center overflow-hidden text-[11px] font-black ${place}`} style={avatarStyle(writer.c)}>
+      <span aria-hidden>{(writer.n.trim()[0] || '?').toUpperCase()}</span>
+      {writer.i && <img src={writer.i} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" onError={event => { event.currentTarget.style.display = 'none'; }} />}
+    </span>
+  );
+  const layout = writers.length === 2 ? 'grid-cols-2' : 'grid-cols-2 grid-rows-2';
+  return (
+    <span aria-hidden className={`grid h-10 w-10 shrink-0 gap-px overflow-hidden rounded-full bg-ui-practice-canvas ${layout}`}>
+      {writers.map((writer, index) => cell(writer, writers.length === 3 && index === 0 ? 'row-span-2' : ''))}
+    </span>
+  );
+}
+
+/**
  * Chats (like LINE): the class chat pinned on top, friend requests, then one row per conversation, newest first,
  * and friends you haven't written to yet. Each opens in the same panel.
  */
@@ -68,7 +95,7 @@ export function ChatList() {
         <ActionButton fullWidth size="sm" variant="secondary" onClick={() => open('add')}><AppIcon name="addFriend" size={18} />Add friends</ActionButton>
       </div>
       <Row onOpen={() => open('class')} fresh={classUnread > 0}
-        face={<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-primary-soft"><PlayfulNavIcon name="global" className="h-6 w-6" /></span>}
+        face={<GroupFace lines={lines} />}
         name="Everyone"
         line={last ? <><span className="font-black">{last.u === me ? 'You' : last.n}:</span> <span className="font-chinese">{last.t}</span></> : 'Say hi to everyone'}
         side={<>{last && <span>{listTime(last.ts)}</span>}{classUnread > 0 && <UnreadBadge count={classUnread} />}</>} />
