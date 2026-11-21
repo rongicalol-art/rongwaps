@@ -38,7 +38,8 @@ export function chatText(value: unknown): string {
 }
 
 /** Per account per day (UTC): chat lines (lesson, global and party chat each), cheers, party invites, @everyone. */
-export const DAILY_LIMITS = { chat: 300, cheer: 200, invite: 60, everyone: 3 } as const;
+/** `dm`: private-message pings (a message, a friend request or answer); the database itself allows 300 messages a day. */
+export const DAILY_LIMITS = { chat: 300, cheer: 200, invite: 60, everyone: 3, dm: 500 } as const;
 export const DAILY_LIMIT_ERROR = 'You\u2019ve reached today\u2019s limit. Try again tomorrow.';
 export const EVERYONE_LIMIT_ERROR = `@everyone works ${DAILY_LIMITS.everyone} times a day. Try again tomorrow.`;
 /** Most blocked accounts (the database caps the list at the same size); 100 IDs fit in one 4 KB frame. */

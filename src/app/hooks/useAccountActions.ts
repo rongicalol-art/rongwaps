@@ -33,9 +33,10 @@ export function useAccountActions() {
       // Never block deletion on photos; scripts/dev/purgeOrphanProfileMedia.ts sweeps leftovers.
       await removeAllProfileMedia(userId).catch((error) => debugLogger.warn('Auth', 'Profile photo removal failed:', error));
     }
-    // Study together keeps class chat lines outside the database: remove them first (never blocks deletion).
-    await forgetStudyTogether().catch(() => {});
     await userService.deleteMyAccount();
+    // Study together keeps class chat lines outside the database. Only after the deletion worked (a failed one keeps
+    // everything), over the connection that is still open; never blocks the rest.
+    await forgetStudyTogether().catch(() => {});
 
     try {
       // The user no longer exists server-side; only the local session is left to drop.

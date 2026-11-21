@@ -1,11 +1,10 @@
 import { useAppStore } from '../../store/useAppStore';
 import { friendsService, type DirectMessage, type FriendPerson, type SavedProfile, type StoredCard } from '../../services/friendsService';
 import type { MentionNotice, Person, ProfileCard } from '../../../shared/lobby';
-import { lobby } from './lobbyController';
+import { DIRECT_KEY, isDirectNotice, lobby } from './lobbyController';
 import { updateOpen } from './socialUpdate';
 
 const RECENT = 30;
-const NOTICE = 'd:';
 /** The Lobby's account id is the same as the signed-in user's (the DEV simulator has only the Lobby's). */
 const me = () => useAppStore.getState().currentUser?.id ?? useAppStore.getState().socialMe;
 const errorText = (error: unknown) => (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string' ? error.message : 'Something went wrong. Try again.');
@@ -34,15 +33,29 @@ export async function loadInbox(notify = false) {
   const fresh = inbox.find(row => row.unread > 0 && row.lastFrom === row.u && row.lastId > (before.get(row.u)?.lastId ?? 0) && !threadOnScreen(row.u));
   const friend = fresh && store.socialFriends?.find(person => person.u === fresh.u);
   if (!fresh || !friend) return;
-  const notice: MentionNotice = { key: `${NOTICE}${fresh.lastId}`, channel: -1, read: false, message: { id: fresh.lastId, l: -1, u: friend.u, n: friend.n, c: friend.c, t: fresh.last, ts: fresh.at } };
+  const notice: MentionNotice = { key: `${DIRECT_KEY}${fresh.lastId}`, channel: -1, read: false, message: { id: fresh.lastId, l: -1, u: friend.u, n: friend.n, c: friend.c, t: fresh.last, ts: fresh.at } };
   store.setSocial({ socialMentionToast: notice });
 }
-export const isDirectNotice = (notice: MentionNotice) => notice.key.startsWith(NOTICE);
+
+const pinged = new Set<string>();
+let reloading = false;
+/** Pings that arrive while one reload runs share the next one, at most one a second. */
+const PING_GAP_MS = 1000;
 
 /** Someone changed something between us (a message, a request, an answer): reload what it could touch. */
 export async function onPing(from: string) {
-  await Promise.all([loadFriends(), loadInbox(true)]);
-  if (threadOnScreen(from)) await loadThread(from);
+  pinged.add(from);
+  if (reloading) return;
+  reloading = true;
+  try {
+    while (pinged.size) {
+      const froms = [...pinged];
+      pinged.clear();
+      await Promise.all([loadFriends(), loadInbox(true)]);
+      for (const u of froms) if (threadOnScreen(u)) await loadThread(u);
+      await new Promise(resolve => setTimeout(resolve, PING_GAP_MS));
+    }
+  } finally { reloading = false; }
 }
 
 /** The newest 50 lines of a conversation (or the 50 before the loaded ones), then marks them read if on screen. */
@@ -112,15 +125,22 @@ export async function removeFriend(u: string) {
   try { await friendsService.remove(u); lobby.dm(u); } catch (error) { store.showFeedbackToast(errorText(error)); void loadFriends(); }
 }
 
+/** When each saved profile was fetched: it is asked for again after a while, since they may have been online since. */
+const savedAt = new Map<string, number>();
+const SAVED_FRESH_MS = 2 * 60_000;
+
 /** Saved profiles for people who may be offline (their visit card and when they were last online). */
 export async function loadSaved(us: string[]) {
-  const store = useAppStore.getState();
-  const missing = [...new Set(us)].filter(u => !(u in store.socialSaved));
-  if (!ready() || !missing.length) return;
-  let rows: SavedProfile[];
-  try { rows = await friendsService.profiles(missing); } catch { return; }
+  const now = Date.now();
+  const known = useAppStore.getState().socialSaved;
+  const stale = [...new Set(us)].filter(u => !(u in known) || now - (savedAt.get(u) ?? 0) >= SAVED_FRESH_MS);
+  if (!ready() || !stale.length) return;
+  for (const u of stale) savedAt.set(u, now);
+  let rows: SavedProfile[] | null = null;
+  try { rows = await friendsService.profiles(stale); } catch { for (const u of stale) savedAt.delete(u); }
   const saved = { ...useAppStore.getState().socialSaved };
-  for (const u of missing) saved[u] = rows.find(row => row.u === u) ?? null;
+  // If the request failed, someone never fetched shows without a card instead of loading forever; the next visit asks again.
+  for (const u of stale) if (rows) saved[u] = rows.find(row => row.u === u) ?? null; else if (!(u in saved)) saved[u] = null;
   useAppStore.getState().setSocial({ socialSaved: saved });
 }
 
@@ -129,12 +149,14 @@ export async function loadRecent() {
   try {
     const rows = await friendsService.recent(RECENT);
     const store = useAppStore.getState();
+    const now = Date.now();
+    for (const row of rows) savedAt.set(row.u, now);
     store.setSocial({ socialRecent: rows, socialSaved: { ...store.socialSaved, ...Object.fromEntries(rows.map(row => [row.u, row])) } });
   } catch { /* Keeps the last list. */ }
 }
 
 let savedKey = '';
-let savedAt = 0;
+let mineSavedAt = 0;
 const SAVE_EVERY_MS = 10 * 60_000;
 /** Only a Google photo is a lasting address; profile photo links are signed (a password that expires). */
 const GOOGLE_PHOTO = /^https:\/\/lh3\.googleusercontent\.com\//;
@@ -147,8 +169,8 @@ export async function saveMyProfile(identity: Pick<Person, 'n' | 'c' | 'i'>, bui
   if (!ready() || document.visibilityState !== 'visible') return;
   const key = `${me()}|${store.showProfile}|${store.showOnline}|${identity.n}|${identity.c}|${identity.i ?? ''}`;
   const now = Date.now();
-  if (key === savedKey && now - savedAt < SAVE_EVERY_MS) return;
-  savedKey = key; savedAt = now;
+  if (key === savedKey && now - mineSavedAt < SAVE_EVERY_MS) return;
+  savedKey = key; mineSavedAt = now;
   const who: StoredCard = { n: identity.n, c: identity.c, ...(identity.i && GOOGLE_PHOTO.test(identity.i) ? { i: identity.i } : {}) };
   try {
     const card = store.showProfile ? await buildCard() : null;

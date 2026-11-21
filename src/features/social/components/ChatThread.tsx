@@ -85,7 +85,7 @@ export function DirectThread({ friend }: { friend: { u: string; n: string; c: So
     const mine = line.from === self;
     return { id: line.id, l: -1, u: line.from, n: mine ? identity.name : friend.n, c: mine ? socialColor(identity.color) : friend.c, t: line.t, ts: line.ts, ...(!mine && friend.i ? { i: friend.i } : {}) };
   }) : null, [thread, self, identity.name, identity.color, friend.n, friend.c, friend.i]);
-  return <MessageThread chat={chat} ready place="message" candidates={[]} send={text => { void sendDirect(friend.u, maskChat(text)); return true; }} report={() => {}}
+  return <MessageThread chat={chat} ready place="message" candidates={[]} send={text => sendDirect(friend.u, maskChat(text))} report={() => {}}
     onTop={thread?.more ? () => { void loadThread(friend.u, true); } : undefined} empty={`You and ${friend.n} are friends. Say hi.`} />;
 }
 
@@ -100,7 +100,8 @@ export function PartyChatThread() {
 /** `place`: the class chat ('chat'), a private conversation ('message') or a party; `onTop`: load older lines. */
 function MessageThread({ chat, ready, candidates, place = 'chat', everyone = false, send, report, onTop, empty = 'Say hi to everyone.' }: {
   chat: ChatMessage[] | null; ready: boolean; candidates: Person[]; place?: Exclude<ReportPlace, 'profile'>; everyone?: boolean;
-  send: (text: string, mentions: string[], all: boolean) => boolean; report: (id: number) => void; onTop?: () => void; empty?: string;
+  /** false: not connected (nothing sent). A private message answers later; if it's refused the text comes back. */
+  send: (text: string, mentions: string[], all: boolean) => boolean | Promise<boolean>; report: (id: number) => void; onTop?: () => void; empty?: string;
 }) {
   const party = place === 'party';
   const classChat = place === 'chat';
@@ -258,9 +259,11 @@ function MessageThread({ chat, ready, candidates, place = 'chat', everyone = fal
     const next = nextChatRate(rate.current, value, Date.now());
     if (!next) { useAppStore.getState().showFeedbackToast('Please wait before sending another message.'); return; }
     const picked = [...new Set(tokens.filter(token => draft.slice(token.start, token.end) === token.text).map(token => token.id))];
-    if (!send(value, picked.filter(id => id !== EVERYONE.u), picked.includes(EVERYONE.u))) { useAppStore.getState().showFeedbackToast('Reconnecting. Try again in a moment.'); return; }
+    const sent = send(value, picked.filter(id => id !== EVERYONE.u), picked.includes(EVERYONE.u));
+    if (sent === false) { useAppStore.getState().showFeedbackToast('Reconnecting. Try again in a moment.'); return; }
     rate.current = next;
     setDraft(''); setTokens([]); setCaret(0); setDismissed(false);
+    if (sent !== true) void sent.then(ok => { if (!ok) setDraft(current => current || value); });
   };
 
   return (

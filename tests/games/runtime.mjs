@@ -656,11 +656,27 @@ try {
   await until(() => last(gus, 'older'));
   assert.equal(last(gus, 'older').v.length, 50);
   assert.ok(last(gus, 'older').v.at(-1).id < newest.v[0].id && last(gus, 'older').more);
+  // Lines from someone you blocked don't use up the unread count: 120 hidden lines, then 3 from a classmate.
+  send(gus, { t: 'read', id: (await lobbySql.exec("SELECT MIN(id) AS id FROM chat WHERE uid='seed'"))[0].id - 1 }); await delay(150);
+  send(gus, { t: 'blocks', v: ['seed'] });
+  await until(() => last(gus, 'history')?.v.length === 0);
+  await lobbySql.exec("WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<3) INSERT INTO chat(lesson,uid,name,color,text,ts) SELECT 0,'kim','Kim','blue','hi ' || x,? FROM n", Date.now());
+  gus.socket.close(1000, 'reopen');
+  gus = await open('/lobby/socket', 'lobby', (await post('/lobby', 'gus')).ticket);
+  send(gus, { t: 'blocks', v: ['seed'] }); send(gus, { t: 'sub', online: false, chat: 0, v: 3 });
+  await until(() => last(gus, 'history')?.l === 0 && last(gus, 'history').v.length === 3);
+  assert.equal(last(gus, 'history').n, 3, 'blocked lines are skipped before the unread cap');
   send(fran, { t: 'say', l: 0, text: 'remember me' });
   await until(() => last(gus, 'msg')?.m.t === 'remember me');
+  // Forgetting removes only the sender's own data: a block someone made on them stays, and so do today's limits.
+  send(fran, { t: 'blocks', v: ['hal'] }); send(gus, { t: 'blocks', v: ['seed', 'fran'] });
+  for (let i = 0; i < 50 && (await lobbySql.exec("SELECT COUNT(*) AS n FROM blocks WHERE other='fran' OR uid='fran'"))[0].n < 2; i++) await delay(20);
   send(fran, { t: 'forget' });
   await until(() => fran.closed !== null);
   assert.equal((await lobbySql.exec("SELECT COUNT(*) AS n FROM chat WHERE uid='fran'"))[0].n, 0, 'a deleted account’s lines are gone');
+  assert.equal((await lobbySql.exec("SELECT COUNT(*) AS n FROM blocks WHERE uid='fran'"))[0].n, 0, 'its own blocks are gone');
+  assert.equal((await lobbySql.exec("SELECT COUNT(*) AS n FROM blocks WHERE uid='gus' AND other='fran'"))[0].n, 1, 'a block on it stays');
+  assert.ok((await lobbySql.exec("SELECT COUNT(*) AS n FROM daily WHERE uid='fran'"))[0].n > 0, 'its limits for today stay');
   gus.socket.close(1000, 'done');
 
   // Presence loss, expired auth leases, and data retention are cleaned without client cooperation.

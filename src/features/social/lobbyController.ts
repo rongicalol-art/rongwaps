@@ -1,6 +1,8 @@
 import { connectLobby, type Identity } from '../../services/socialService';
 import { NAME_NOT_ALLOWED, NAME_RESERVED } from '../../../shared/nameFilter';
 import { useAppStore } from '../../store/useAppStore';
+import type { SocialPanel } from '../../store/slices/socialSlice';
+import { updateOpen } from './socialUpdate';
 import { CLASS_CHAT_KEEP, GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type ChatMessage, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
 /**
@@ -14,7 +16,10 @@ let here: Extract<LobbyClientMessage, { t: 'here' }> = { t: 'here', l: null, a: 
 let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 3 };
 const CHAT_CAP = CLASS_CHAT_KEEP;
 /** Notices made in the app (not the Lobby's inbox): @everyone lines and private messages; never sent as mention-read. */
-const localNotice = (key: string) => key.startsWith('a:') || key.startsWith('d:');
+const EVERYONE_KEY = 'a:';
+export const DIRECT_KEY = 'd:';
+export const isDirectNotice = (notice: Pick<MentionNotice, 'key'>) => notice.key.startsWith(DIRECT_KEY);
+const localNotice = (key: string) => key.startsWith(EVERYONE_KEY) || key.startsWith(DIRECT_KEY);
 /** Friends and messages live in friendsController (loaded on demand). */
 const friends = () => import('./friendsController');
 let olderAsked = 0;
@@ -40,13 +45,14 @@ function flushChatRead() {
   }, 1000);
 }
 
+/** The people panel shows the class chat itself (after the privacy update its Chat tab can also be the Chats list or a friend). */
+export const showsClassChat = (panel: SocialPanel) => panel?.kind === 'people' && panel.tab === 'chat' && (!updateOpen() || panel.thread === 'class');
 /** The class chat is on screen right now, so new lines are seen as they arrive. */
 function chatOnScreen(state: ReturnType<typeof useAppStore.getState>) {
-  return state.socialPanel?.kind === 'people' && state.socialPanel.tab === 'chat' && document.visibilityState === 'visible';
+  return showsClassChat(state.socialPanel) && document.visibilityState === 'visible';
 }
 
 /** @everyone lines become notices here, from the chat itself; the Lobby keeps no copy per account. */
-const EVERYONE_KEY = 'a:';
 const everyoneNotice = (message: ChatMessage): MentionNotice => ({ key: `${EVERYONE_KEY}${message.id}`, channel: GLOBAL_CHAT, message, read: false });
 
 /** New @everyone lines join the notices; the newest gets the card unless the chat is on screen or muted. */
@@ -151,7 +157,7 @@ function receive(message: LobbyServerMessage) {
     case 'mention': {
       if (store.socialMentions.some(item => item.key === message.v.key)) break;
       const panel = store.socialPanel;
-      const reading = document.visibilityState === 'visible' && (message.v.room ? (panel?.kind === 'partyChat' && store.race?.code === message.v.room || !panel && store.socialReadingParty === message.v.room) : panel?.kind === 'people' && panel.tab === 'chat' && sub.chat === message.v.channel);
+      const reading = document.visibilityState === 'visible' && (message.v.room ? (panel?.kind === 'partyChat' && store.race?.code === message.v.room || !panel && store.socialReadingParty === message.v.room) : showsClassChat(panel) && sub.chat === message.v.channel);
       if (reading) lobby.readMention(message.v.key);
       set({ socialMentions: [{ ...message.v, read: reading }, ...store.socialMentions].slice(0, 30), ...(!reading && !store.socialMuted ? { socialMentionToast: message.v } : {}) });
       break;
@@ -319,7 +325,7 @@ export function openMention(notice: MentionNotice) {
     if (!send({ t: 'mention-open', key: notice.key })) { pendingOpen = null; store.showFeedbackToast('Reconnecting. Try again in a moment.'); }
 
   } else {
-    const direct = notice.key.startsWith('d:');
+    const direct = isDirectNotice(notice);
     store.setSocial({ socialPanel: { kind: 'people', tab: 'chat', thread: direct ? notice.message.u : 'class' }, socialMentionTarget: direct ? null : notice });
   }
 }

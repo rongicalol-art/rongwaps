@@ -318,7 +318,7 @@ begin
 end;
 $$;
 
--- The account export includes friends, private messages and the shared card -----
+-- The account export includes friends, private messages, read spots and the shared card
 
 do $export$
 declare
@@ -328,6 +328,7 @@ begin
   body := replace(body, '''blocked_people''',
     '''friend_adds'', COALESCE((SELECT jsonb_agg(to_jsonb(f) ORDER BY f.created_at) FROM public.friend_adds f WHERE f.adder = uid OR f.added = uid), ''[]''::jsonb),
         ''direct_messages'', COALESCE((SELECT jsonb_agg(to_jsonb(m) ORDER BY m.id) FROM public.direct_messages m WHERE m.sender = uid OR m.recipient = uid), ''[]''::jsonb),
+        ''direct_reads'', COALESCE((SELECT jsonb_agg(to_jsonb(r) ORDER BY r.other) FROM public.direct_reads r WHERE r.reader = uid), ''[]''::jsonb),
         ''profile_card'', (SELECT to_jsonb(c) FROM public.profile_cards c WHERE c.user_id = uid),
         ''blocked_people''');
   execute body;

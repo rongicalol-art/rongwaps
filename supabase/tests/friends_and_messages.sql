@@ -190,7 +190,7 @@ begin
     raise exception 'added someone who blocked you';
   exception when invalid_parameter_value then null;
   end;
-  assert (select (public.export_my_data()) ?& array['friend_adds', 'direct_messages', 'profile_card']);
+  assert (select (public.export_my_data()) ?& array['friend_adds', 'direct_messages', 'direct_reads', 'profile_card']);
   perform public.save_profile_card(null, false);
   assert not exists (select 1 from public.profile_cards where user_id = 'fd000000-0000-4000-8000-000000000001'), 'both switches off removes the card';
 end;
