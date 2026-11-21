@@ -32,8 +32,14 @@ function parse(argv: string[]): Options {
   return { base: base.replace(/\/+$/, ''), env, commit: flag('commit'), supabaseRef: flag('supabase-ref'), forbidRef: flag('forbid-ref') };
 }
 
+const REQUEST_TIMEOUT_MS = 15_000;
+const CHECK_DEADLINE_MS = 30_000;
+const SMOKE_DEADLINE_MS = 120_000;
+
+class NonRetryableSmokeError extends Error {}
+
 async function get(url: string, init: RequestInit = {}): Promise<Response> {
-  return fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(90_000), ...init, headers: { 'User-Agent': 'rongwaps-release-smoke', ...init.headers } });
+  return fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS), ...init, headers: { 'User-Agent': 'rongwaps-release-smoke', ...init.headers } });
 }
 
 /** A new version reaches every Cloudflare location within seconds; allow a few minutes. */
@@ -67,9 +73,10 @@ export function checks(options: Options): Check[] {
     ['health', async () => {
       const response = await get(url('/healthz'));
       expect(response.status === 200, `status ${response.status}`);
-      const body = await response.json() as { ok: boolean; env?: string };
+      const body = await response.json() as { ok: boolean; env?: string; commit?: string | null };
       expect(body.ok === true, 'ok is not true');
       expect(!body.env || body.env === options.env, `reports env ${body.env}`);
+      expect(!options.commit || body.commit === options.commit, `reports commit ${body.commit ?? 'none'} (expected ${options.commit})`);
     }],
     ['home page and its code load', async () => {
       const response = await get(url('/'));
@@ -97,11 +104,13 @@ export function checks(options: Options): Check[] {
     ['lesson content needs sign-in', async () => {
       for (const path of ['/data/vocabulary/book-1.json', '/data/dictionary/manifest.json', '/%64ata/grammar/book-1.json', '//data/grammar/book-1.json']) {
         const response = await get(url(path));
+        if (response.status >= 200 && response.status < 300) throw new NonRetryableSmokeError(`${path}: ${response.status} (unauthenticated content exposed)`);
         expect(response.status === 401, `${path}: ${response.status} (expected 401)`);
       }
       // Other spellings may be refused or simply not exist; they must never hand over a file.
       for (const path of ['/data/vocabulary/book-1.json.br', '/assets/..%2fdata/vocabulary/book-1.json', '/assets/..%5Cdata/vocabulary/book-1.json', '/fonts/%2e%2e%2fdata%2fvocabulary%2fbook-1.json']) {
         const response = await get(url(path));
+        if (response.status >= 200 && response.status < 300) throw new NonRetryableSmokeError(`${path}: ${response.status} (unauthenticated content exposed)`);
         expect(response.status === 401 || response.status === 404, `${path}: ${response.status} (expected 401 or 404)`);
       }
     }],
@@ -128,13 +137,39 @@ export function checks(options: Options): Check[] {
   ];
 }
 
+/** Static assets (served outside the Worker) can trail /healthz by a few seconds at the edge. */
+async function runCheck(
+  name: string,
+  run: () => Promise<void>,
+  verifyCommit: (() => Promise<void>) | undefined,
+  suiteDeadline: number,
+  attempts = 4,
+  delayMs = 3_000,
+): Promise<void> {
+  const checkDeadline = Math.min(suiteDeadline, Date.now() + CHECK_DEADLINE_MS);
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      if (attempt > 1 && verifyCommit) await verifyCommit();
+      await run();
+      return;
+    } catch (error) {
+      if (error instanceof NonRetryableSmokeError || attempt >= attempts || Date.now() + delayMs >= checkDeadline) throw error;
+      console.warn(`retry ${name} (${attempt}/${attempts}): ${error instanceof Error ? error.message : String(error)}`);
+      await sleep(delayMs);
+    }
+  }
+}
+
 async function main() {
   const options = parse(process.argv.slice(2));
   await waitForBuild(options);
+  const suiteDeadline = Date.now() + SMOKE_DEADLINE_MS;
+  const allChecks = checks(options);
+  const healthRun = allChecks.find(([checkName]) => checkName === 'health')?.[1];
   let failed = 0;
-  for (const [name, run] of checks(options)) {
+  for (const [name, run] of allChecks) {
     try {
-      await run();
+      await runCheck(name, run, name === 'health' ? undefined : healthRun, suiteDeadline);
       console.log(`ok   ${name}`);
     } catch (error) {
       failed += 1;
