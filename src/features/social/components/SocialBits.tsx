@@ -81,7 +81,7 @@ export function PanelTabs<T extends string>({ tabs, value, onChange, label }: {
           >
             <span className="truncate">{tab.label}</span>
             {tab.count !== undefined && <span className="text-sm font-extrabold text-ui-muted">{tab.count}</span>}
-            {tab.dot && <span aria-label="New messages" className="absolute right-3 top-3 h-2 w-2 rounded-full bg-brand-primary" />}
+            {tab.dot && <span aria-label="New messages" className="h-2 w-2 shrink-0 rounded-full bg-brand-primary" />}
           </button>
         );
       })}

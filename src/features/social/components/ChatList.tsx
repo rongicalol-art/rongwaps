@@ -37,6 +37,26 @@ function Row({ face, name, line, fresh, side, onOpen, action }: { face: ReactNod
 const face = (person: { n: string; c: SocialColor; i?: string }, live: boolean) => <Avatar name={person.n} color={person.c} src={person.i} size="lg" live={live} />;
 
 /**
+ * Everyone's picture: the two people who wrote there last, overlapping in the same space as one face (newest in
+ * front). Before two people have written, the globe.
+ */
+function GroupFace({ lines }: { lines: ChatMessage[] }) {
+  const writers: ChatMessage[] = [];
+  for (let index = lines.length - 1; index >= 0 && writers.length < 2; index--) {
+    const line = lines[index];
+    if (line.t && !writers.some(writer => writer.u === line.u)) writers.push(line);
+  }
+  if (writers.length < 2) return <span className="grid h-10 w-10 shrink-0 place-items-center"><PlayfulNavIcon name="global" className="h-8 w-8" /></span>;
+  const [newest, before] = writers;
+  return (
+    <span aria-hidden className="relative h-10 w-10 shrink-0">
+      <span className="absolute left-0 top-0 flex"><Avatar name={before.n} color={before.c} src={before.i} size="md" /></span>
+      <span className="absolute bottom-0 right-0 flex"><Avatar name={newest.n} color={newest.c} src={newest.i} size="md" className="ring-ui-practice-canvas" /></span>
+    </span>
+  );
+}
+
+/**
  * Chats (like LINE): the class chat pinned on top, friend requests, then one row per conversation, newest first,
  * and friends you haven't written to yet. Each opens in the same panel.
  */
@@ -68,7 +88,7 @@ export function ChatList() {
         <ActionButton fullWidth size="sm" variant="secondary" onClick={() => open('add')}><AppIcon name="addFriend" size={18} />Add friends</ActionButton>
       </div>
       <Row onOpen={() => open('class')} fresh={classUnread > 0}
-        face={<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-primary-soft"><PlayfulNavIcon name="global" className="h-6 w-6" /></span>}
+        face={<GroupFace lines={lines} />}
         name="Everyone"
         line={last ? <><span className="font-black">{last.u === me ? 'You' : last.n}:</span> <span className="font-chinese">{last.t}</span></> : 'Say hi to everyone'}
         side={<>{last && <span>{listTime(last.ts)}</span>}{classUnread > 0 && <UnreadBadge count={classUnread} />}</>} />
