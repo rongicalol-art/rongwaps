@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer, IconActionButton, SegmentedControl } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer, IconActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import type { SocialPanel } from '../../../store/slices/socialSlice';
+import { unreadTotal, type SocialPanel } from '../../../store/slices/socialSlice';
 import type { Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
@@ -48,6 +48,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const people = useOthers(useAppStore(state => state.socialPeople));
   const online = useOthers(useAppStore(state => state.socialOnline));
   const onlineTotal = useOnlineTotal();
+  const unread = useAppStore(unreadTotal);
   const identity = useSocialIdentity();
   const pending = useAppStore(state => state.racePending);
   const hasRoom = useAppStore(state => !!state.race);
@@ -118,8 +119,10 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
           </div>
         : !selected
         ? <div className="mr-1 flex min-w-0 flex-1 items-center gap-2">
-            <SegmentedControl ariaLabel="Chats or who’s online" value={panel.tab} onChange={tab => setPanel({ kind: 'people', tab })}
-              options={[{ value: 'chat', label: inbox ? 'Chats' : 'Chat' }, { value: 'online', label: 'Online' }]} className="min-w-0 flex-1" />
+            <div className="min-w-0 flex-1">
+              <PanelTabs label="Chats or who’s online" value={panel.tab} onChange={tab => setPanel({ kind: 'people', tab })}
+                tabs={[{ id: 'chat', label: inbox ? 'Chats' : 'Chat', dot: panel.tab !== 'chat' && unread > 0 }, { id: 'online', label: 'Online', ...(onlineTotal ? { count: onlineTotal } : {}) }]} />
+            </div>
             <MuteButton />
           </div>
         : <div className="flex flex-1 items-center justify-between gap-2">
