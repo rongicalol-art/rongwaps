@@ -48,10 +48,7 @@ const toProfile = (row: { user_id: string; card: unknown; last_seen: string | nu
 /** Adds each @username; row security leaves out anyone who can't be found, and a failed lookup just shows none. */
 const MEDIA_BUCKET = 'profile-media';
 const MEDIA_LINK_SECONDS = 3600;
-/**
- * Links made earlier are reused while they have this long left: a new link is a new address, which the browser
- * downloads again, so the face showed initials for a moment each time a list refreshed.
- */
+/** Links are reused until 15 minutes are left: a new link is a new address, so the photo downloads again. */
 const MEDIA_LINK_REUSE_MS = 15 * 60_000;
 const mediaLinks = new Map<string, { url: string; until: number }>();
 /**
@@ -62,15 +59,15 @@ async function withMedia(rows: SavedProfile[]): Promise<SavedProfile[]> {
   const paths = rows.flatMap(row => [...(row.card?.ia ? [`${row.u}/avatar.webp`] : []), ...(row.card?.ca ? [`${row.u}/cover.webp`] : [])]);
   if (!paths.length) return rows;
   const now = Date.now();
-  const missing = paths.filter(path => (mediaLinks.get(path)?.until ?? 0) - now < MEDIA_LINK_REUSE_MS);
-  if (missing.length) {
-    const { data } = await supabase.storage.from(MEDIA_BUCKET).createSignedUrls(missing, MEDIA_LINK_SECONDS);
+  const stale = paths.filter(path => (mediaLinks.get(path)?.until ?? 0) - now < MEDIA_LINK_REUSE_MS);
+  if (stale.length) {
+    const { data } = await supabase.storage.from(MEDIA_BUCKET).createSignedUrls(stale, MEDIA_LINK_SECONDS);
     for (const item of data ?? []) if (item.path && item.signedUrl && !item.error) mediaLinks.set(item.path, { url: item.signedUrl, until: now + MEDIA_LINK_SECONDS * 1000 });
   }
-  const links = new Map(paths.flatMap(path => { const link = mediaLinks.get(path); return link && link.until > now ? [[path, link.url] as const] : []; }));
+  const link = (path: string) => { const saved = mediaLinks.get(path); return saved && saved.until > now ? saved.url : undefined; };
   return rows.map(row => {
-    const photo = links.get(`${row.u}/avatar.webp`);
-    const cover = links.get(`${row.u}/cover.webp`);
+    const photo = link(`${row.u}/avatar.webp`);
+    const cover = link(`${row.u}/cover.webp`);
     return photo || cover ? { ...row, card: { ...row.card, ...(photo ? { i: photo } : {}), ...(cover ? { ci: cover } : {}) } } : row;
   });
 }

@@ -144,8 +144,8 @@ function MessageThread({ chat, ready, candidates, place = 'chat', everyone = fal
     // The Lobby already leaves blocked people out; this also covers party rooms and the moment before it catches up.
     return blockedIds ? all.filter(line => !blockedIds.has(line.u)) : all;
   }, [targetLine, chat, blockedIds]);
-  const offlineWriters = useMemo(() => [...new Set(visible.filter(line => !line.i && line.u !== me).map(line => line.u))].sort().join(','), [visible, me]);
-  useEffect(() => { if (classChat && offlineWriters) void loadSaved(offlineWriters.split(',')); }, [classChat, offlineWriters]);
+  // loadSaved skips anyone fetched in the last 2 minutes, so a new line costs nothing.
+  useEffect(() => { if (classChat) void loadSaved(visible.filter(line => !line.i && line.u !== me).map(line => line.u)); }, [classChat, visible, me]);
   // Class chat: the New line sits before the first line from someone else that arrived after the last visit.
   const [newFrom, setNewFrom] = useState<number | null | undefined>(undefined);
   useLayoutEffect(() => {
@@ -196,7 +196,7 @@ function MessageThread({ chat, ready, candidates, place = 'chat', everyone = fal
   // Online people open with where they are; after the privacy update anyone in the chat opens, offline too.
   const visit = (u: string) => {
     const line = visible.find(item => item.u === u);
-    const person = people.get(u) ?? (line && updateOpen() ? { u, n: line.n, c: line.c, l: null, a: null, ...(photo(u, line.i) ? { i: photo(u, line.i) } : {}) } : undefined);
+    const person = people.get(u) ?? (line && updateOpen() ? { u, n: line.n, c: line.c, l: null, a: null, ...(line.i ? { i: line.i } : {}) } : undefined);
     if (person) useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', visit: person } });
   };
 
