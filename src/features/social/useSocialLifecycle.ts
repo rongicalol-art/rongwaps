@@ -65,6 +65,14 @@ export function useSocialLifecycle() {
   useEffect(() => {
     if (userId && updateOpen()) void import('./friendsController').then(friends => friends.ensureUsername(identity.name));
   }, [userId, identity.name]);
+  // "24 today" by the faces: once now, then every 10 minutes (one count, no rows).
+  useEffect(() => {
+    if (!userId || !updateOpen()) return;
+    const load = () => { void import('./friendsController').then(friends => friends.loadToday()); };
+    load();
+    const timer = setInterval(load, 10 * 60_000);
+    return () => clearInterval(timer);
+  }, [userId]);
 
   // Presence: only lesson and activity changes, never per card.
   const presence = useAppStore(useShallow((state) => {
