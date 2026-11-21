@@ -29,7 +29,7 @@ export async function deviceFor(browser: Browser, session: Session, options: Par
 /** Opens the home page and gets past one-time notices. */
 export async function openHome(page: Page): Promise<void> {
   await page.goto('/');
-  const later = page.getByRole('button', { name: 'Later' });
+  const later = page.getByRole('button', { name: /^(Later|Got it)$/ });
   await later.click({ timeout: 8_000 }).catch(() => { /* no notice this time */ });
 }
 

@@ -39,7 +39,7 @@ export function GrammarGuideContent() {
       <DocSection title="Grammar made practical">
         <DocParagraph>
           Textbook grammar tables are hard to review passively. Ron’s Mandarin turns each grammar point in{' '}
-          <strong>時代華語 Modern Chinese</strong> into an interactive lesson with plain-English explanations,
+          <strong>Modern Chinese</strong> (時代華語) into an interactive lesson with plain-English explanations,
           recorded Taiwan audio examples, and links back to where the pattern appears in your reading texts.
         </DocParagraph>
         <DocList

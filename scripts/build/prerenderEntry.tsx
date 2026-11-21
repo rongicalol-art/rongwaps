@@ -68,7 +68,7 @@ function landingJsonLd() {
         '@type': 'WebSite',
         '@id': `${SITE_ORIGIN}/#website`,
         name: "Ron's Mandarin",
-        alternateName: ['時代華語 Modern Chinese Study App', 'ronsmandarin.com'],
+        alternateName: ['Rons Mandarin', 'Modern Chinese Study App', 'ronsmandarin.com'],
         url: `${SITE_ORIGIN}/`,
         inLanguage: ['en', 'zh-Hant'],
         publisher: { '@id': `${SITE_ORIGIN}/#org` },
@@ -112,7 +112,7 @@ function landingJsonLd() {
       },
       {
         '@type': 'Course',
-        name: '時代華語 Modern Chinese Study Companion',
+        name: 'Modern Chinese (時代華語) Study Companion',
         description: LANDING_META.description,
         provider: { '@id': `${SITE_ORIGIN}/#org` },
         isAccessibleForFree: true,
@@ -140,7 +140,7 @@ function guideJsonLd(page: GuidePage, title: string, description: string, path: 
   if (page === 'books') {
     graph.push({
       '@type': 'ItemList',
-      name: '時代華語 Modern Chinese Books',
+      name: 'Modern Chinese (時代華語) Books',
       itemListElement: SAMPLE_BOOKS.map((book, index) => ({
         '@type': 'ListItem',
         position: index + 1,
