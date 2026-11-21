@@ -2,12 +2,12 @@
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
 /** ISO date the current Terms and Privacy Policy take effect. */
-export const LEGAL_EFFECTIVE_DATE = '2026-11-14';
+export const LEGAL_EFFECTIVE_DATE = '2026-12-01';
 
 export interface LegalUpdate {
   /** The changed pages; Read opens the first, and each links the others. */
   pages: readonly ('terms' | 'privacy')[];
-  /** One or two plain sentences: what changes for the user. */
+  /** Two short sentences at most (the full text is one tap away): what changes, and what the learner controls. */
   summary: string;
   /** Accounts created from this ISO date accepted the new text at sign-up, so they never see the notice. */
   acceptedFrom?: string;
@@ -20,9 +20,9 @@ export interface LegalUpdate {
  * takes effect. Keep null when nothing meaningful changed.
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
-  pages: ['privacy', 'terms'],
-  summary: 'From November 6, anyone 18 or older can join, and learners outside Shu-Te can see your name, photo and lesson in Study together (to hide: Settings → Show me online). Shu-Te learners still see each other first. You can report or block anyone.',
-  acceptedFrom: '2026-11-06',
+  pages: ['privacy'],
+  summary: 'Study together adds friends and private messages. You choose what others see in Settings.',
+  acceptedFrom: '2026-12-01',
 };
 
 /** Shown beside the effective date: accounts made since sign-up opened are bound from sign-up. */
@@ -42,6 +42,11 @@ export function isLegalUpdateCurrent(effectiveIso: string, now = Date.now(), acc
 /** "Takes effect November 14, 2026." before the date, "Took effect …" from it. */
 export function legalEffectivePhrase(effectiveIso: string, now = Date.now()): string {
   return `${now < effectiveAt(effectiveIso) ? 'Takes' : 'Took'} effect ${formatLegalDate(effectiveIso)}.`;
+}
+
+/** "Dec 1": the date in the notice's title. */
+export function shortLegalDate(iso: string): string {
+  return new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 }
 
 /** "October 23, 2026" — the date is a Taiwan calendar date, so no time zone shift. */

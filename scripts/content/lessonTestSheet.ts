@@ -26,7 +26,7 @@ const LETTERS = 'ABCD';
 const WHO: Record<TestLine['speaker'], string> = { F: 'Woman', M: 'Man', N: 'Narrator' };
 const KIND: Record<LessonTestItem['kind'], string> = {
   'hear-pick-picture': 'Listening: hear, then pick the picture',
-  'picture-hear': 'Listening: look at the picture, hear three sentences, pick the one that matches it',
+  'picture-hear': 'Listening: look at the picture, hear the question (if there is one) and three spoken answers, pick the right one',
   dialogue: 'Listening: a dialogue or talk, then its question(s); the narrator reads each choice',
   'read-pick-picture': 'Reading: read the sentence, pick the picture',
   realia: 'Reading: look at the picture with writing in it, then answer',

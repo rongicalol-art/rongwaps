@@ -16,7 +16,8 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - Use the fewest zones that do the job. When a screen feels empty, fix the composition (size, alignment, centring) before adding anything.
 - An element belongs if it tells the learner something they need right now. Rejected again and again because they only repeated what the screen already showed: description lines, "what you'll learn" lists, word-chip previews, stats lines, breadcrumbs ("Lesson 1 · Part 1 vocabulary"), status pills ("Review · 1 of 2", "Missed", "Done"), counts next to buttons, floating helper text.
 - A bordered box inside a bordered container (a tile inside a card inside a bar) reads as messy. Inside a container, use plain text with hierarchy: size, weight, ink colour.
-- Helper content that isn't the main task (hints, examples) sits behind a quiet toggle. Settings are plain label-and-control pairs.
+- Helper content that isn't the main task (hints, examples) sits behind a quiet toggle. Settings are plain label-and-control pairs. Longer study extras open from a button into a sheet (side panel on desktop) rather than unfolding into the screen: the owner picked the lesson test's Script sheet over a speaker that opens in place.
+- On a long review page (the test's Scripts & answers), pinyin and English start hidden behind Pinyin and English buttons. Pinyin goes over the characters as in the Reader, never on a line of its own, and a line's play button sits at the end of its text, not in a column of its own: both pushed the text onto extra lines ("too much space").
 - A button that can't be used is clutter: if a mode has no content, leave the action out instead of showing it disabled.
 
 **Tactile, not flat.**
@@ -50,12 +51,14 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - The app's illustrations are the picture style: warm, colourful flat art (sunny rooms, wooden desks, plants; coral, navy and gold), rounded shapes, tiny expressive faces. Anything drawn for an exercise (clocks, calendars, objects) matches it. Pictures are generated illustrations in that style, not hand-drawn SVG scenes.
 - Pictures keep their own colours in dark mode. Native ratio (reading art is 16:9), never cropped, no text laid over a picture; text that belongs to the drawn object, like a calendar's month, is fine.
 - Navigation and modes use the flat colourful icon set; controls use Phosphor. Grammar = book, reading = dialogue, quiz = ?, in one dark ink colour.
+- A count that means something new rides on the real icon for it: new messages are the app's chat bubble (filled) with the number inside, on the corner of the faces. A hand-built shape (a square with a rotated-square tail) read as a map pin. A number keeps the meaning learners already learned: the one beside the faces is always "online".
 - A celebration shows the mascot, a lottie (trophy) or the content itself, never a generic action icon as the hero.
 - Drawn shapes stay simple and friendly; the richness goes into how they move and what happens around them. The streak fire is one clean flame: extra tongues read as "too many hairs", while the burst, glow and embers around it were liked. A hero and the number under it need clear air between them.
 
 **Layout.**
 - Desktop keeps the side nav. Windows open beside it, never as a full-bleed takeover or a centred pop-up for a primary screen. Side panels over square modals.
 - Mobile gets its own hierarchy, not a stacked desktop.
+- A profile's action (Add friend, Accept) sits on the right of the picture, just under the cover, the way familiar profile pages do it, not on its own row under the name.
 - Bottom docks share one standard (padding, position, size) across the app. The feedback bar must not cover content on a 900px-tall desktop window.
 
 ## 3. Motion (the owner cares most here)

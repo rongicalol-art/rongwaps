@@ -1,0 +1,2616 @@
+{
+  "schemaVersion": 1,
+  "key": "b2l14",
+  "bookId": 2,
+  "lessonId": 14,
+  "band": "B",
+  "allowWords": [
+    "段",
+    "台南",
+    "台東"
+  ],
+  "slots": [
+    {
+      "id": "picture",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b2l14-picture-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B2L14-R01",
+            "alt": "A bright school canteen with big windows, green trees outside and other students eating at tables in the back. Three young people sit side by side at a wooden table, each with a bowl of food on a blue tray. In the middle, a young man with wavy brown hair, a dark red shirt and a mustard-yellow sweater vest rests his cheek on one hand and looks down at a phone in the other hand; his eyebrows are raised and his mouth turns down, so he looks sad and worried. The dark blue bowl of noodles in front of him is untouched. On the left, a girl with short wavy dark hair, round glasses, a white collared shirt, a dark purple sweater vest and olive trousers puts one hand on his shoulder and holds the other hand out, smiling and talking to him. On the right, a girl with long wavy black hair, gold hoop earrings, a blue jacket over an orange top and white trousers smiles at him and holds out an open hand. Chopsticks lie on the left tray."
+          },
+          "questions": [
+            {
+              "id": "b2l14-picture-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "坐在中間的男生在做什麼？",
+                "simplified": "坐在中间的男生在做什么？",
+                "pinyin": "Zuò zài zhōngjiān de nánshēng zài zuò shénme?",
+                "english": "What is the young man sitting in the middle doing?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他在吃碗裡的麵。",
+                  "simplified": "他在吃碗里的面。",
+                  "pinyin": "Tā zài chī wǎn lǐ de miàn.",
+                  "english": "He is eating the noodles in his bowl."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他跟女生一起笑。",
+                  "simplified": "他跟女生一起笑。",
+                  "pinyin": "Tā gēn nǚshēng yìqǐ xiào.",
+                  "english": "He is laughing with the girls."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他正在看手機。",
+                  "simplified": "他正在看手机。",
+                  "pinyin": "Tā zhèngzài kàn shǒujī.",
+                  "english": "He is looking at his phone."
+                }
+              ],
+              "key": 2,
+              "why": "He looks down at the phone in his hand. His bowl of noodles is untouched, and it is the two girls who are smiling; he looks sad.",
+              "focus": {
+                "zh": "看手機",
+                "en": "to look at a phone"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B1L06-2-10",
+                "B2L07-1-13",
+                "B1L04-1-17"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-picture-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B2L14-R02",
+            "alt": "Daytime outside an old house with a grey tiled roof and stone walls, under a blue sky with a few clouds. In the red wooden doorway stand an old man with grey hair in a bun, a white beard and a dark brown robe, one hand on the door frame, and an old woman with grey hair in a bun and a red robe, her hands pressed together in front of her chest; both are laughing and looking toward the monster. A red lantern hangs from the roof. Red firecrackers with gold bands lie on the stone steps and the ground and are going off with bright yellow sparks; bits of red paper fly through the air. On the right, a big furry teal-and-cream monster with one golden horn, a red-orange mane, wide frightened eyes and an open mouth full of fangs leaps away from the house with its paws in the air. Snow lies on the roofs in the background."
+          },
+          "questions": [
+            {
+              "id": "b2l14-picture-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "怪獸怎麼了？",
+                "simplified": "怪兽怎么了？",
+                "pinyin": "Guàishòu zěnme le?",
+                "english": "What is happening to the monster?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "它在門口找東西吃。",
+                  "simplified": "它在门口找东西吃。",
+                  "pinyin": "Tā zài ménkǒu zhǎo dōngxi chī.",
+                  "english": "It is looking for food at the door."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "它把兩個老人嚇走了。",
+                  "simplified": "它把两个老人吓走了。",
+                  "pinyin": "Tā bǎ liǎng ge lǎorén xià zǒu le.",
+                  "english": "It has scared the two old people away."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "它很害怕地跑走了。",
+                  "simplified": "它很害怕地跑走了。",
+                  "pinyin": "Tā hěn hàipà de pǎo zǒu le.",
+                  "english": "It is running away in fright."
+                }
+              ],
+              "key": 2,
+              "why": "The monster leaps away from the house with frightened eyes while firecrackers go off around it (跑走). The old couple are still in the doorway, laughing, and the monster is nowhere near the door.",
+              "focus": {
+                "zh": "跑走",
+                "en": "to run away"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-02",
+                "B2L01-1-18",
+                "B2L10-1-29"
+              ],
+              "grammarIds": [
+                "B2L14-G07-P328"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-remember",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b2l14-dialogue-remember-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你不是說今天下午要陪我去買年糕嗎？怎麼看起來這麼著急？",
+              "simplified": "你不是说今天下午要陪我去买年糕吗？怎么看起来这么着急？",
+              "pinyin": "Nǐ bú shì shuō jīntiān xiàwǔ yào péi wǒ qù mǎi niángāo ma? Zěnme kànqǐlái zhème zhāojí?",
+              "english": "Didn't you say you'd come with me to buy New Year cakes this afternoon? Why do you look so worried?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我剛剛忽然想起來，教授要我們把上個月交的報告修改好，今天五點以前寄給他。",
+              "simplified": "我刚刚忽然想起来，教授要我们把上个月交的报告修改好，今天五点以前寄给他。",
+              "pinyin": "Wǒ gānggāng hūrán xiǎng qǐlái, jiàoshòu yào wǒmen bǎ shàng ge yuè jiāo de bàogào xiūgǎi hǎo, jīntiān wǔ diǎn yǐqián jì gěi tā.",
+              "english": "I just suddenly remembered: the professor wants us to revise the report we handed in last month and send it to him by five today."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你不是昨天就把期末報告交了嗎？",
+              "simplified": "你不是昨天就把期末报告交了吗？",
+              "pinyin": "Nǐ bú shì zuótiān jiù bǎ qímò bàogào jiāo le ma?",
+              "english": "Didn't you hand in your final report yesterday?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "那是期末報告。上個月那份有幾個地方不清楚，得再改一下。",
+              "simplified": "那是期末报告。上个月那份有几个地方不清楚，得再改一下。",
+              "pinyin": "Nà shì qímò bàogào. Shàng ge yuè nà fèn yǒu jǐ ge dìfāng bù qīngchǔ, děi zài gǎi yíxià.",
+              "english": "That was the final report. Last month's has a few unclear parts and needs another revision."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-dialogue-remember-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的為什麼看起來很著急？",
+                "simplified": "男的为什么看起来很着急？",
+                "pinyin": "Nán de wèishénme kànqǐlái hěn zhāojí?",
+                "english": "Why does the man look worried?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "期末報告還沒寫完",
+                  "simplified": "期末报告还没写完",
+                  "pinyin": "Qímò bàogào hái méi xiě wán.",
+                  "english": "He hasn't finished his final report."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "以前的作業得再改",
+                  "simplified": "以前的作业得再改",
+                  "pinyin": "Yǐqián de zuòyè děi zài gǎi.",
+                  "english": "Some earlier work has to be revised again."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五點得去見教授",
+                  "simplified": "五点得去见教授",
+                  "pinyin": "Wǔ diǎn děi qù jiàn jiàoshòu.",
+                  "english": "He has to see the professor at five."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下午得去買年糕",
+                  "simplified": "下午得去买年糕",
+                  "pinyin": "Xiàwǔ děi qù mǎi niángāo.",
+                  "english": "He has to go and buy New Year cakes this afternoon."
+                }
+              ],
+              "key": 1,
+              "why": "忽然想起來: he has just remembered that last month's report must be revised and sent by five. The final report went in yesterday, five o'clock is a deadline, not a meeting, and the shopping is only her plan.",
+              "focus": {
+                "zh": "想起來",
+                "en": "to suddenly remember"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-03",
+                "B2L09-1-23",
+                "B1L09-1-15",
+                "B2L02-1-17"
+              ],
+              "grammarIds": [
+                "B2L14-G01-P316"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-dialogue-remember-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "媽媽要我們買的東西都買好了嗎？年糕、橘子、蘋果……",
+              "simplified": "妈妈要我们买的东西都买好了吗？年糕、橘子、苹果……",
+              "pinyin": "Māma yào wǒmen mǎi de dōngxi dōu mǎi hǎo le ma? Niángāo, júzi, píngguǒ……",
+              "english": "Have we bought everything Mom asked for? New Year cakes, tangerines, apples..."
+            },
+            {
+              "speaker": "M",
+              "traditional": "都買了。可是我覺得好像還有一個東西沒買，一下子想不起來。",
+              "simplified": "都买了。可是我觉得好像还有一个东西没买，一下子想不起来。",
+              "pinyin": "Dōu mǎi le. Kěshì wǒ juéde hǎoxiàng hái yǒu yí ge dōngxi méi mǎi, yíxiàzi xiǎng bù qǐlái.",
+              "english": "We have. But I feel there's still one thing we haven't bought, and I can't think what."
+            },
+            {
+              "speaker": "F",
+              "traditional": "是不是春聯？家裡去年的已經舊了。",
+              "simplified": "是不是春联？家里去年的已经旧了。",
+              "pinyin": "Shì bú shì chūnlián? Jiā lǐ qùnián de yǐjīng jiù le.",
+              "english": "Is it the spring couplets? The ones at home from last year are old now."
+            },
+            {
+              "speaker": "M",
+              "traditional": "不是，春聯爸爸會自己寫。啊，我想起來了！媽媽說家裡的米快吃完了，要我們買一包。",
+              "simplified": "不是，春联爸爸会自己写。啊，我想起来了！妈妈说家里的米快吃完了，要我们买一包。",
+              "pinyin": "Bú shì, chūnlián bàba huì zìjǐ xiě. À, wǒ xiǎng qǐlái le! Māma shuō jiā lǐ de mǐ kuài chī wán le, yào wǒmen mǎi yì bāo.",
+              "english": "No, Dad writes the couplets himself. Oh, I remember now! Mom said the rice at home has almost run out and asked us to buy a bag."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-dialogue-remember-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他們還得買什麼？",
+                "simplified": "他们还得买什么？",
+                "pinyin": "Tāmen hái děi mǎi shénme?",
+                "english": "What do they still have to buy?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一張新春聯",
+                  "simplified": "一张新春联",
+                  "pinyin": "Yì zhāng xīn chūnlián.",
+                  "english": "A new spring couplet."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一大包米",
+                  "simplified": "一大包米",
+                  "pinyin": "Yí dà bāo mǐ.",
+                  "english": "A big bag of rice."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一盒年糕",
+                  "simplified": "一盒年糕",
+                  "pinyin": "Yì hé niángāo.",
+                  "english": "A box of New Year cakes."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "幾個蘋果",
+                  "simplified": "几个苹果",
+                  "pinyin": "Jǐ ge píngguǒ.",
+                  "english": "A few apples."
+                }
+              ],
+              "key": 1,
+              "why": "想不起來 → 想起來了: after a moment he remembers that Mom asked for a bag of rice. Dad writes the couplets himself, and the New Year cakes and apples are already bought.",
+              "focus": {
+                "zh": "想起來了",
+                "en": "now I remember"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-10",
+                "B2L14-2-25",
+                "B2L14-1-34"
+              ],
+              "grammarIds": [
+                "B2L14-G01-P316"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-mind",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b2l14-dialogue-mind-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這個寒假我們去日本玩吧！可是除夕要吃年夜飯，得在那天以前回來。",
+              "simplified": "这个寒假我们去日本玩吧！可是除夕要吃年夜饭，得在那天以前回来。",
+              "pinyin": "Zhège hánjià wǒmen qù Rìběn wán ba! Kěshì chúxī yào chī niányèfàn, děi zài nà tiān yǐqián huílái.",
+              "english": "Let's go to Japan this winter break! But there's New Year's Eve dinner, so we have to be back before then."
+            },
+            {
+              "speaker": "F",
+              "traditional": "什麼時候回來都無所謂，今年爺爺奶奶去美國了，我們不用回去吃年夜飯。可是一定要去有雪的地方，我很想看看下雪的樣子！",
+              "simplified": "什么时候回来都无所谓，今年爷爷奶奶去美国了，我们不用回去吃年夜饭。可是一定要去有雪的地方，我很想看看下雪的样子！",
+              "pinyin": "Shénme shíhòu huílái dōu wúsuǒwèi, jīnnián yéye nǎinai qù Měiguó le, wǒmen búyòng huíqù chī niányèfàn. Kěshì yídìng yào qù yǒu xuě de dìfāng, wǒ hěn xiǎng kànkan xiàxuě de yàngzi!",
+              "english": "When we come back doesn't matter to me: my grandparents have gone to America this year, so we don't have to go back for New Year's Eve dinner. But we must go somewhere with snow. I really want to see snow falling!"
+            },
+            {
+              "speaker": "M",
+              "traditional": "沒問題，一月的日本，很多地方都在下雪。",
+              "simplified": "没问题，一月的日本，很多地方都在下雪。",
+              "pinyin": "Méi wèntí, yī yuè de Rìběn, hěn duō dìfāng dōu zài xiàxuě.",
+              "english": "No problem. In January it's snowing in lots of places in Japan."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-dialogue-mind-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這個寒假，女的覺得什麼最重要？",
+                "simplified": "这个寒假，女的觉得什么最重要？",
+                "pinyin": "Zhège hánjià, nǚ de juéde shénme zuì zhòngyào?",
+                "english": "This winter break, what matters most to the woman?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "除夕以前回到台灣",
+                  "simplified": "除夕以前回到台湾",
+                  "pinyin": "Chúxī yǐqián huí dào Táiwān.",
+                  "english": "Being back in Taiwan before New Year's Eve."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟家人吃年夜飯",
+                  "simplified": "跟家人吃年夜饭",
+                  "pinyin": "Gēn jiārén chī niányèfàn.",
+                  "english": "Having New Year's Eve dinner with her family."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去美國看爺爺奶奶",
+                  "simplified": "去美国看爷爷奶奶",
+                  "pinyin": "Qù Měiguó kàn yéye nǎinai.",
+                  "english": "Visiting her grandparents in America."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "能去看一次雪",
+                  "simplified": "能去看一次雪",
+                  "pinyin": "Néng qù kàn yí cì xuě.",
+                  "english": "Getting to see snow."
+                }
+              ],
+              "key": 3,
+              "why": "什麼時候回來都無所謂: the date doesn't matter to her, because she doesn't have to go back for New Year's Eve dinner this year. What she insists on (一定要) is going somewhere with snow. Being back for the dinner is the man's concern, and it is her grandparents who went to America.",
+              "focus": {
+                "zh": "無所謂",
+                "en": "doesn't matter"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-09",
+                "B2L14-1-07",
+                "B2L14-1-05",
+                "B2L14-1-33",
+                "B1L16-1-21"
+              ],
+              "grammarIds": [
+                "B2L14-G06-P327"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-dialogue-mind-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "過年要穿新衣服，我們下午一起去買吧！你想買什麼？",
+              "simplified": "过年要穿新衣服，我们下午一起去买吧！你想买什么？",
+              "pinyin": "Guònián yào chuān xīn yīfu, wǒmen xiàwǔ yìqǐ qù mǎi ba! Nǐ xiǎng mǎi shénme?",
+              "english": "You wear new clothes at New Year. Let's go shopping this afternoon! What do you want to buy?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我想買一件外套。什麼顏色都無所謂，可是不能太重，太重的外套穿久了，我的背會疼。",
+              "simplified": "我想买一件外套。什么颜色都无所谓，可是不能太重，太重的外套穿久了，我的背会疼。",
+              "pinyin": "Wǒ xiǎng mǎi yí jiàn wàitào. Shénme yánsè dōu wúsuǒwèi, kěshì bù néng tài zhòng, tài zhòng de wàitào chuān jiǔ le, wǒ de bèi huì téng.",
+              "english": "A jacket. Any colour is fine, but it can't be too heavy: if I wear a heavy jacket for long, my back hurts."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我上次看到一件紅色的，又長又暖和，過年穿一定很好看。",
+              "simplified": "我上次看到一件红色的，又长又暖和，过年穿一定很好看。",
+              "pinyin": "Wǒ shàng cì kàn dào yí jiàn hóngsè de, yòu cháng yòu nuǎnhuo, guònián chuān yídìng hěn hǎokàn.",
+              "english": "Last time I saw a red one, long and warm. It would look great at New Year."
+            },
+            {
+              "speaker": "M",
+              "traditional": "紅色的也可以，只要夠輕就好。",
+              "simplified": "红色的也可以，只要够轻就好。",
+              "pinyin": "Hóngsè de yě kěyǐ, zhǐyào gòu qīng jiù hǎo.",
+              "english": "Red is fine too, as long as it's light enough."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-dialogue-mind-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的買外套，覺得什麼最重要？",
+                "simplified": "男的买外套，觉得什么最重要？",
+                "pinyin": "Nán de mǎi wàitào, juéde shénme zuì zhòngyào?",
+                "english": "Buying a jacket, what matters most to the man?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "要紅色的",
+                  "simplified": "要红色的",
+                  "pinyin": "Yào hóngsè de.",
+                  "english": "A red one."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "要長一點的",
+                  "simplified": "要长一点的",
+                  "pinyin": "Yào cháng yìdiǎn de.",
+                  "english": "A longer one."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "要暖和一點的",
+                  "simplified": "要暖和一点的",
+                  "pinyin": "Yào nuǎnhuo yìdiǎn de.",
+                  "english": "A warmer one."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "要輕一點的",
+                  "simplified": "要轻一点的",
+                  "pinyin": "Yào qīng yìdiǎn de.",
+                  "english": "A lighter one."
+                }
+              ],
+              "key": 3,
+              "why": "什麼顏色都無所謂: colour doesn't matter to him, and long and warm are the woman's words for the jacket she saw. What he insists on is a jacket that isn't heavy (不能太重, 只要夠輕就好), because heavy ones hurt his back.",
+              "focus": {
+                "zh": "無所謂",
+                "en": "doesn't matter"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-09",
+                "B2L14-1-06",
+                "B2L13-1-07",
+                "B2L07-2-06",
+                "B2L01-1-03"
+              ],
+              "grammarIds": [
+                "B2L14-G06-P327"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-dialogue",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b2l14-review-dialogue-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這台筆電打折以後只要一萬八，可是網路上很多人抱怨它的電池。",
+              "simplified": "这台笔电打折以后只要一万八，可是网路上很多人抱怨它的电池。",
+              "pinyin": "Zhè tái bǐdiàn dǎzhé yǐhòu zhǐ yào yí wàn bā, kěshì wǎnglù shàng hěn duō rén bàoyuàn tā de diànchí.",
+              "english": "This laptop is only 18,000 after the discount, but lots of people online complain about its battery."
+            },
+            {
+              "speaker": "F",
+              "traditional": "電池不好的話，買了也是白買。你不如多花三千塊，買旁邊那台。",
+              "simplified": "电池不好的话，买了也是白买。你不如多花三千块，买旁边那台。",
+              "pinyin": "Diànchí bù hǎo dehuà, mǎi le yě shì bái mǎi. Nǐ bùrú duō huā sānqiān kuài, mǎi pángbiān nà tái.",
+              "english": "If the battery's bad, buying it is money wasted. You'd do better to spend 3,000 more on the one next to it."
+            },
+            {
+              "speaker": "M",
+              "traditional": "可是那台比較重……好吧，我聽妳的。",
+              "simplified": "可是那台比较重……好吧，我听你的。",
+              "pinyin": "Kěshì nà tái bǐjiào zhòng……hǎo ba, wǒ tīng nǐ de.",
+              "english": "But that one's heavier... Oh, all right, I'll do as you say."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-review-dialogue-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的最後可能會花多少錢買筆電？",
+                "simplified": "男的最后可能会花多少钱买笔电？",
+                "pinyin": "Nán de zuìhòu kěnéng huì huā duōshǎo qián mǎi bǐdiàn?",
+                "english": "How much will the man probably spend on a laptop in the end?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "三千塊",
+                  "simplified": "三千块",
+                  "pinyin": "Sānqiān kuài.",
+                  "english": "3,000 dollars."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一萬五千塊",
+                  "simplified": "一万五千块",
+                  "pinyin": "Yí wàn wǔqiān kuài.",
+                  "english": "15,000 dollars."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一萬八千塊",
+                  "simplified": "一万八千块",
+                  "pinyin": "Yí wàn bāqiān kuài.",
+                  "english": "18,000 dollars."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩萬一千塊",
+                  "simplified": "两万一千块",
+                  "pinyin": "Liǎng wàn yìqiān kuài.",
+                  "english": "21,000 dollars."
+                }
+              ],
+              "key": 3,
+              "why": "你不如多花三千塊，買旁邊那台: she says he would do better to spend 3,000 more on the other laptop, and he agrees (我聽妳的): 18,000 + 3,000 = 21,000.",
+              "focus": {
+                "zh": "不如",
+                "en": "you'd do better to"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B2L13-1-01",
+                "B2L13-1-25",
+                "B2L13-1-17",
+                "B2L13-1-09"
+              ],
+              "grammarIds": [
+                "B2L13-G02-P294"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-review-dialogue-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我想每天晚上去操場慢跑，妳要不要一起去？",
+              "simplified": "我想每天晚上去操场慢跑，你要不要一起去？",
+              "pinyin": "Wǒ xiǎng měi tiān wǎnshàng qù cāochǎng mànpǎo, nǐ yào bú yào yìqǐ qù?",
+              "english": "I want to go jogging on the sports field every evening. Do you want to come?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "對我來說，晚上跑步太累了。我比較喜歡早上起來跑，跑完再吃早飯。",
+              "simplified": "对我来说，晚上跑步太累了。我比较喜欢早上起来跑，跑完再吃早饭。",
+              "pinyin": "Duì wǒ lái shuō, wǎnshàng pǎobù tài lèi le. Wǒ bǐjiào xǐhuān zǎoshàng qǐlái pǎo, pǎo wán zài chī zǎofàn.",
+              "english": "For me, running in the evening is too tiring. I prefer to run when I get up in the morning, then have breakfast."
+            },
+            {
+              "speaker": "M",
+              "traditional": "可是我早上常常來不及吃早飯就去上課了……",
+              "simplified": "可是我早上常常来不及吃早饭就去上课了……",
+              "pinyin": "Kěshì wǒ zǎoshàng chángcháng láibùjí chī zǎofàn jiù qù shàngkè le……",
+              "english": "But in the morning I often don't even have time for breakfast before class..."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那我們週末早上一起跑吧，你就不用趕了。",
+              "simplified": "那我们周末早上一起跑吧，你就不用赶了。",
+              "pinyin": "Nà wǒmen zhōumò zǎoshàng yìqǐ pǎo ba, nǐ jiù búyòng gǎn le.",
+              "english": "Then let's run together on weekend mornings. You won't have to rush."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-review-dialogue-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的建議什麼時候一起跑步？",
+                "simplified": "女的建议什么时候一起跑步？",
+                "pinyin": "Nǚ de jiànyì shénme shíhòu yìqǐ pǎobù?",
+                "english": "When does the woman suggest they run together?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "每天晚上",
+                  "simplified": "每天晚上",
+                  "pinyin": "Měi tiān wǎnshàng.",
+                  "english": "Every evening."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "週末的早上",
+                  "simplified": "周末的早上",
+                  "pinyin": "Zhōumò de zǎoshàng.",
+                  "english": "On weekend mornings."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "每天早上",
+                  "simplified": "每天早上",
+                  "pinyin": "Měi tiān zǎoshàng.",
+                  "english": "Every morning."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "吃完早飯以後",
+                  "simplified": "吃完早饭以后",
+                  "pinyin": "Chī wán zǎofàn yǐhòu.",
+                  "english": "After breakfast."
+                }
+              ],
+              "key": 1,
+              "why": "She finds evening runs too tiring, and he has no time on weekday mornings, so she suggests weekend mornings, when he won't have to rush. Every evening is his idea, and she runs before breakfast, not after.",
+              "focus": {
+                "zh": "建議",
+                "en": "to suggest"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L10-2-14",
+                "B2L10-1-47",
+                "B2L10-1-39"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-two",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b2l14-dialogue-two-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳知道嗎？今年除夕的年夜飯是我爺爺做的。",
+              "simplified": "你知道吗？今年除夕的年夜饭是我爷爷做的。",
+              "pinyin": "Nǐ zhīdào ma? Jīnnián chúxī de niányèfàn shì wǒ yéye zuò de.",
+              "english": "Guess what? This year's New Year's Eve dinner was cooked by my grandpa."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你爺爺會做菜啊？我以為都是你奶奶做的。",
+              "simplified": "你爷爷会做菜啊？我以为都是你奶奶做的。",
+              "pinyin": "Nǐ yéye huì zuò cài a? Wǒ yǐwéi dōu shì nǐ nǎinai zuò de.",
+              "english": "Your grandpa can cook? I thought your grandma did all the cooking."
+            },
+            {
+              "speaker": "M",
+              "traditional": "以前是。爺爺以前從來不進廚房，可是奶奶上個月腳受傷了，他只好自己學。",
+              "simplified": "以前是。爷爷以前从来不进厨房，可是奶奶上个月脚受伤了，他只好自己学。",
+              "pinyin": "Yǐqián shì. Yéye yǐqián cónglái bú jìn chúfáng, kěshì nǎinai shàng ge yuè jiǎo shòushāng le, tā zhǐhǎo zìjǐ xué.",
+              "english": "She used to. Grandpa never used to set foot in the kitchen, but Grandma hurt her foot last month, so he had to learn."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那他做得怎麼樣？",
+              "simplified": "那他做得怎么样？",
+              "pinyin": "Nà tā zuò de zěnmeyàng?",
+              "english": "So how did he do?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "魚煎得有一點黑，米粉炒得還不錯。要不是我媽媽下午去幫他煮水餃，我們晚上就吃不到水餃了。",
+              "simplified": "鱼煎得有一点黑，米粉炒得还不错。要不是我妈妈下午去帮他煮水饺，我们晚上就吃不到水饺了。",
+              "pinyin": "Yú jiān de yǒu yìdiǎn hēi, mǐfěn chǎo de hái búcuò. Yàobúshì wǒ māma xiàwǔ qù bāng tā zhǔ shuǐjiǎo, wǒmen wǎnshàng jiù chī bú dào shuǐjiǎo le.",
+              "english": "The fish came out a bit burnt, but the fried rice noodles were pretty good. If my mom hadn't gone over in the afternoon to help him boil the dumplings, we'd have had no dumplings that night."
+            },
+            {
+              "speaker": "F",
+              "traditional": "聽起來很豐富啊！明年也讓你爺爺做吧！",
+              "simplified": "听起来很丰富啊！明年也让你爷爷做吧！",
+              "pinyin": "Tīngqǐlái hěn fēngfù a! Míngnián yě ràng nǐ yéye zuò ba!",
+              "english": "Sounds like a feast! Let your grandpa cook next year too!"
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-dialogue-two-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "爺爺以前怎麼樣？",
+                "simplified": "爷爷以前怎么样？",
+                "pinyin": "Yéye yǐqián zěnmeyàng?",
+                "english": "What was Grandpa like before?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "常常幫奶奶做菜",
+                  "simplified": "常常帮奶奶做菜",
+                  "pinyin": "Chángcháng bāng nǎinai zuò cài.",
+                  "english": "He often helped Grandma cook."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "每年做一次年夜飯",
+                  "simplified": "每年做一次年夜饭",
+                  "pinyin": "Měi nián zuò yí cì niányèfàn.",
+                  "english": "He cooked New Year's Eve dinner once a year."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "做菜的事都交給奶奶",
+                  "simplified": "做菜的事都交给奶奶",
+                  "pinyin": "Zuò cài de shì dōu jiāo gěi nǎinai.",
+                  "english": "He left all the cooking to Grandma."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "常常炒米粉給家人吃",
+                  "simplified": "常常炒米粉给家人吃",
+                  "pinyin": "Chángcháng chǎo mǐfěn gěi jiārén chī.",
+                  "english": "He often fried rice noodles for the family."
+                }
+              ],
+              "key": 2,
+              "why": "從來不進廚房: Grandpa never even went into the kitchen; Grandma did the cooking. He only learned this year, after she hurt her foot.",
+              "focus": {
+                "zh": "從來不",
+                "en": "never"
+              },
+              "lesson": 14,
+              "answerLine": 2,
+              "wordIds": [
+                "B2L14-1-41",
+                "B2L14-1-09",
+                "B2L14-1-10"
+              ],
+              "grammarIds": [
+                "B2L14-G02-P317"
+              ]
+            },
+            {
+              "id": "b2l14-dialogue-two-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "下面哪一個是對的？",
+                "simplified": "下面哪一个是对的？",
+                "pinyin": "Xiàmiàn nǎ yí ge shì duì de?",
+                "english": "Which of these is true?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "魚煎得非常好吃",
+                  "simplified": "鱼煎得非常好吃",
+                  "pinyin": "Yú jiān de fēicháng hǎochī.",
+                  "english": "The fish was fried perfectly."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "媽媽下午幫了爺爺",
+                  "simplified": "妈妈下午帮了爷爷",
+                  "pinyin": "Māma xiàwǔ bāng le yéye.",
+                  "english": "Mom helped Grandpa in the afternoon."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "晚上沒吃到水餃",
+                  "simplified": "晚上没吃到水饺",
+                  "pinyin": "Wǎnshàng méi chī dào shuǐjiǎo.",
+                  "english": "They had no dumplings that night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "奶奶上星期受傷了",
+                  "simplified": "奶奶上星期受伤了",
+                  "pinyin": "Nǎinai shàng xīngqí shòushāng le.",
+                  "english": "Grandma got hurt last week."
+                }
+              ],
+              "key": 1,
+              "why": "要不是我媽媽…，我們就吃不到水餃了 says what would have happened without her: she did go and help him with the dumplings, so they had them. The fish was a bit burnt, and Grandma hurt her foot last month.",
+              "focus": {
+                "zh": "要不是",
+                "en": "if it were not for"
+              },
+              "lesson": 14,
+              "answerLine": 4,
+              "wordIds": [
+                "B2L14-2-22",
+                "B2L14-1-17",
+                "B2L14-1-16",
+                "B2L14-1-20"
+              ],
+              "grammarIds": [
+                "B2L14-G08-P329"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-dialogue-two-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "寒假過得怎麼樣？你回台南過年了嗎？",
+              "simplified": "寒假过得怎么样？你回台南过年了吗？",
+              "pinyin": "Hánjià guò de zěnmeyàng? Nǐ huí Táinán guònián le ma?",
+              "english": "How was your winter break? Did you go home to Tainan for New Year?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "回去了。高鐵票我一張都沒買到，本來想坐朋友的車，可是他的車坐滿了。要不是我哥哥開車來台北帶我回去，我今年就得一個人在台北過年了。",
+              "simplified": "回去了。高铁票我一张都没买到，本来想坐朋友的车，可是他的车坐满了。要不是我哥哥开车来台北带我回去，我今年就得一个人在台北过年了。",
+              "pinyin": "Huíqù le. Gāotiě piào wǒ yì zhāng dōu méi mǎi dào, běnlái xiǎng zuò péngyǒu de chē, kěshì tā de chē zuò mǎn le. Yàobúshì wǒ gēge kāichē lái Táiběi dài wǒ huíqù, wǒ jīnnián jiù děi yí ge rén zài Táiběi guònián le.",
+              "english": "I did. I couldn't get a single high-speed rail ticket, and I'd hoped to ride with a friend, but his car was full. If my brother hadn't driven up to Taipei to take me home, I'd have spent New Year alone in Taipei."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你哥哥真好！你們家除夕都做什麼？",
+              "simplified": "你哥哥真好！你们家除夕都做什么？",
+              "pinyin": "Nǐ gēge zhēn hǎo! Nǐmen jiā chúxī dōu zuò shénme?",
+              "english": "Your brother's so nice! What does your family do on New Year's Eve?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "拜完祖先就吃年夜飯，接著大家一起聊天，還在門口放鞭炮。",
+              "simplified": "拜完祖先就吃年夜饭，接着大家一起聊天，还在门口放鞭炮。",
+              "pinyin": "Bài wán zǔxiān jiù chī niányèfàn, jiēzhe dàjiā yìqǐ liáotiān, hái zài ménkǒu fàng biānpào.",
+              "english": "After worshipping the ancestors we have the New Year's Eve dinner, then everyone chats, and we set off firecrackers at the door."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們家從來不放鞭炮，我爸爸說聲音太大，會嚇到鄰居的小孩。",
+              "simplified": "我们家从来不放鞭炮，我爸爸说声音太大，会吓到邻居的小孩。",
+              "pinyin": "Wǒmen jiā cónglái bú fàng biānpào, wǒ bàba shuō shēngyīn tài dà, huì xià dào línjū de xiǎohái.",
+              "english": "My family never sets off firecrackers. My dad says they're too loud and would frighten the neighbours' children."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-dialogue-two-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "今年過年，男的怎麼樣？",
+                "simplified": "今年过年，男的怎么样？",
+                "pinyin": "Jīnnián guònián, nán de zěnmeyàng?",
+                "english": "What did the man do this New Year?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "坐高鐵回台南",
+                  "simplified": "坐高铁回台南",
+                  "pinyin": "Zuò gāotiě huí Táinán.",
+                  "english": "He took the high-speed rail home to Tainan."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟朋友一起回去",
+                  "simplified": "跟朋友一起回去",
+                  "pinyin": "Gēn péngyǒu yìqǐ huíqù.",
+                  "english": "He went home with a friend."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "哥哥送他回家",
+                  "simplified": "哥哥送他回家",
+                  "pinyin": "Gēge sòng tā huí jiā.",
+                  "english": "His brother drove him home."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一個人留在台北",
+                  "simplified": "一个人留在台北",
+                  "pinyin": "Yí ge rén liú zài Táiběi.",
+                  "english": "He stayed in Taipei alone."
+                }
+              ],
+              "key": 2,
+              "why": "要不是我哥哥開車來台北帶我回去: his brother did drive up and take him home. He got no high-speed rail ticket, his friend's car was full, and New Year alone in Taipei is only what would have happened otherwise.",
+              "focus": {
+                "zh": "要不是",
+                "en": "if it were not for"
+              },
+              "lesson": 14,
+              "answerLine": 1,
+              "wordIds": [
+                "B2L14-2-22",
+                "B2L14-1-06",
+                "B1L16-2-15"
+              ],
+              "grammarIds": [
+                "B2L14-G08-P329"
+              ]
+            },
+            {
+              "id": "b2l14-dialogue-two-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的家過年的時候怎麼樣？",
+                "simplified": "女的家过年的时候怎么样？",
+                "pinyin": "Nǚ de jiā guònián de shíhòu zěnmeyàng?",
+                "english": "What is the woman's family like at New Year?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "爸爸負責放鞭炮",
+                  "simplified": "爸爸负责放鞭炮",
+                  "pinyin": "Bàba fùzé fàng biānpào.",
+                  "english": "Her father is the one who sets off the firecrackers."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟鄰居一起放鞭炮",
+                  "simplified": "跟邻居一起放鞭炮",
+                  "pinyin": "Gēn línjū yìqǐ fàng biānpào.",
+                  "english": "They set off firecrackers with the neighbours."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "沒有放鞭炮的習慣",
+                  "simplified": "没有放鞭炮的习惯",
+                  "pinyin": "Méiyǒu fàng biānpào de xíguàn.",
+                  "english": "Setting off firecrackers isn't their custom."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "常常嚇到鄰居小孩",
+                  "simplified": "常常吓到邻居小孩",
+                  "pinyin": "Chángcháng xià dào línjū xiǎohái.",
+                  "english": "They often frighten the neighbours' children."
+                }
+              ],
+              "key": 2,
+              "why": "從來不放鞭炮: her family never sets off firecrackers, because her father thinks they would frighten the neighbours' children. Firecrackers at the door are what the man's family does.",
+              "focus": {
+                "zh": "從來不",
+                "en": "never"
+              },
+              "lesson": 14,
+              "answerLine": 4,
+              "wordIds": [
+                "B2L14-1-41",
+                "B2L14-2-24",
+                "B2L14-2-23",
+                "B2L14-2-20"
+              ],
+              "grammarIds": [
+                "B2L14-G02-P317"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talk",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b2l14-talk-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段留言，然後回答兩個問題。",
+            "simplified": "请听一段留言，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn liúyán, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a voice message, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "喂，是我。今天下午你開車幫我搬家，真是太感謝你了！",
+              "simplified": "喂，是我。今天下午你开车帮我搬家，真是太感谢你了！",
+              "pinyin": "Wéi, shì wǒ. Jīntiān xiàwǔ nǐ kāichē bāng wǒ bānjiā, zhēn shì tài gǎnxiè nǐ le!",
+              "english": "Hello, it's me. Thank you so much for driving over to help me move this afternoon!"
+            },
+            {
+              "speaker": "F",
+              "traditional": "可是當我到了新家，打開行李的時候，就發現少了一個藍色的袋子，裡面是我要帶回家過年的年糕。",
+              "simplified": "可是当我到了新家，打开行李的时候，就发现少了一个蓝色的袋子，里面是我要带回家过年的年糕。",
+              "pinyin": "Kěshì dāng wǒ dào le xīn jiā, dǎkāi xínglǐ de shíhòu, jiù fāxiàn shǎo le yí ge lánsè de dàizi, lǐmiàn shì wǒ yào dài huí jiā guònián de niángāo.",
+              "english": "But when I got to the new place and opened my bags, I found a blue bag was missing, the one with the New Year cakes I'm taking home for New Year."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我想起來了，我把它放在舊房子的冰箱裡，忘了拿走。房東說明天下午就要把冰箱搬走了，你明天早上可以幫我去拿嗎？鑰匙還在你那裡。",
+              "simplified": "我想起来了，我把它放在旧房子的冰箱里，忘了拿走。房东说明天下午就要把冰箱搬走了，你明天早上可以帮我去拿吗？钥匙还在你那里。",
+              "pinyin": "Wǒ xiǎng qǐlái le, wǒ bǎ tā fàng zài jiù fángzi de bīngxiāng lǐ, wàng le ná zǒu. Fángdōng shuō míngtiān xiàwǔ jiù yào bǎ bīngxiāng bān zǒu le, nǐ míngtiān zǎoshàng kěyǐ bāng wǒ qù ná ma? Yàoshi hái zài nǐ nàlǐ.",
+              "english": "Now I remember: I put it in the fridge at the old house and forgot to take it. The landlord says he's moving the fridge out tomorrow afternoon. Could you go and get it for me tomorrow morning? You still have the key."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-talk-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這位小姐是什麼時候發現少了東西的？",
+                "simplified": "这位小姐是什么时候发现少了东西的？",
+                "pinyin": "Zhè wèi xiǎojiě shì shénme shíhòu fāxiàn shǎo le dōngxi de?",
+                "english": "When did the woman find that something was missing?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "還在舊房子的時候",
+                  "simplified": "还在旧房子的时候",
+                  "pinyin": "Hái zài jiù fángzi de shíhòu.",
+                  "english": "While she was still at the old house."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "打開冰箱的時候",
+                  "simplified": "打开冰箱的时候",
+                  "pinyin": "Dǎkāi bīngxiāng de shíhòu.",
+                  "english": "When she opened the fridge."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "到新家的時候",
+                  "simplified": "到新家的时候",
+                  "pinyin": "Dào xīn jiā de shíhòu.",
+                  "english": "When she got to the new place."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "房東告訴她的時候",
+                  "simplified": "房东告诉她的时候",
+                  "pinyin": "Fángdōng gàosu tā de shíhòu.",
+                  "english": "When the landlord told her."
+                }
+              ],
+              "key": 2,
+              "why": "當我到了新家，打開行李的時候，就發現…: she noticed as soon as she unpacked at the new place. The fridge is only where she left the bag, and the landlord only told her he is moving the fridge.",
+              "focus": {
+                "zh": "當……的時候，就……",
+                "en": "when …, (right then) …"
+              },
+              "lesson": 14,
+              "answerLine": 1,
+              "wordIds": [
+                "B2L14-2-03",
+                "B2L07-2-07",
+                "B2L03-2-16",
+                "B2L14-1-32"
+              ],
+              "grammarIds": [
+                "B2L14-G04-P325"
+              ]
+            },
+            {
+              "id": "b2l14-talk-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "那個藍色的袋子現在在哪裡？",
+                "simplified": "那个蓝色的袋子现在在哪里？",
+                "pinyin": "Nàge lánsè de dàizi xiànzài zài nǎlǐ?",
+                "english": "Where is the blue bag now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "讓房東搬走了",
+                  "simplified": "让房东搬走了",
+                  "pinyin": "Ràng fángdōng bān zǒu le.",
+                  "english": "The landlord has taken it away."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在以前的家裡",
+                  "simplified": "在以前的家里",
+                  "pinyin": "Zài yǐqián de jiā lǐ.",
+                  "english": "At her old home."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在新家的冰箱裡",
+                  "simplified": "在新家的冰箱里",
+                  "pinyin": "Zài xīn jiā de bīngxiāng lǐ.",
+                  "english": "In the fridge at the new place."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在朋友的車上",
+                  "simplified": "在朋友的车上",
+                  "pinyin": "Zài péngyǒu de chē shàng.",
+                  "english": "In her friend's car."
+                }
+              ],
+              "key": 1,
+              "why": "忘了拿走: she forgot to take it, so it is still in the fridge at her old place. The landlord moves the fridge only tomorrow afternoon, and the bag never reached the car or the new place.",
+              "focus": {
+                "zh": "V走 (拿走)",
+                "en": "to take away"
+              },
+              "lesson": 14,
+              "answerLine": 2,
+              "wordIds": [
+                "B2L03-1-03",
+                "B2L03-1-47",
+                "B2L03-1-15",
+                "B2L02-2-03"
+              ],
+              "grammarIds": [
+                "B2L14-G07-P328"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-talk-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段話，然後回答兩個問題。",
+            "simplified": "请听一段话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn huà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a short talk, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "大家好，春節快到了，這個星期六上午，社區要打掃環境，歡迎大家一起來幫忙。",
+              "simplified": "大家好，春节快到了，这个星期六上午，社区要打扫环境，欢迎大家一起来帮忙。",
+              "pinyin": "Dàjiā hǎo, chūnjié kuài dào le, zhège xīngqíliù shàngwǔ, shèqū yào dǎsǎo huánjìng, huānyíng dàjiā yìqǐ lái bāngmáng.",
+              "english": "Hello, everyone. The Spring Festival is coming, and this Saturday morning the community is cleaning up the grounds. Everyone is welcome to come and help."
+            },
+            {
+              "speaker": "M",
+              "traditional": "家裡不要的舊家具，請在星期五晚上以前放到停車場旁邊，星期六早上會有人來搬走。可是像床、衣櫃這樣的大東西太重了，他們搬不走，請大家自己想辦法。",
+              "simplified": "家里不要的旧家具，请在星期五晚上以前放到停车场旁边，星期六早上会有人来搬走。可是像床、衣柜这样的大东西太重了，他们搬不走，请大家自己想办法。",
+              "pinyin": "Jiā lǐ bú yào de jiù jiājù, qǐng zài xīngqíwǔ wǎnshàng yǐqián fàng dào tíngchēchǎng pángbiān, xīngqíliù zǎoshàng huì yǒu rén lái bān zǒu. Kěshì xiàng chuáng, yīguì zhèyàng de dà dōngxi tài zhòng le, tāmen bān bù zǒu, qǐng dàjiā zìjǐ xiǎng bànfǎ.",
+              "english": "Please put old furniture you don't want next to the car park before Friday night; people will come on Saturday morning to take it away. But big things like beds and wardrobes are too heavy for them to take, so please make your own arrangements."
+            },
+            {
+              "speaker": "M",
+              "traditional": "星期六下午兩點，書法老師會在大門口寫春聯，當老師寫好一百張的時候，就會開始送給大家，一家一張。",
+              "simplified": "星期六下午两点，书法老师会在大门口写春联，当老师写好一百张的时候，就会开始送给大家，一家一张。",
+              "pinyin": "Xīngqíliù xiàwǔ liǎng diǎn, shūfǎ lǎoshī huì zài dàmén kǒu xiě chūnlián, dāng lǎoshī xiě hǎo yìbǎi zhāng de shíhòu, jiù huì kāishǐ sòng gěi dàjiā, yì jiā yì zhāng.",
+              "english": "At two on Saturday afternoon a calligraphy teacher will write spring couplets at the main gate. Once the teacher has written a hundred, they will be given out, one per household."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b2l14-talk-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "像衣櫃這樣的大東西，要怎麼辦？",
+                "simplified": "像衣柜这样的大东西，要怎么办？",
+                "pinyin": "Xiàng yīguì zhèyàng de dà dōngxi, yào zěnme bàn?",
+                "english": "What should people do with big things like wardrobes?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期六有人來搬",
+                  "simplified": "星期六有人来搬",
+                  "pinyin": "Xīngqíliù yǒu rén lái bān.",
+                  "english": "Someone will come for them on Saturday."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "放到停車場旁邊",
+                  "simplified": "放到停车场旁边",
+                  "pinyin": "Fàng dào tíngchēchǎng pángbiān.",
+                  "english": "Put them next to the car park."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "大家得自己處理",
+                  "simplified": "大家得自己处理",
+                  "pinyin": "Dàjiā děi zìjǐ chǔlǐ.",
+                  "english": "People must deal with them themselves."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "放在大門口旁邊",
+                  "simplified": "放在大门口旁边",
+                  "pinyin": "Fàng zài dàmén kǒu pángbiān.",
+                  "english": "Leave them by the main gate."
+                }
+              ],
+              "key": 2,
+              "why": "他們搬不走: the people collecting furniture can't take beds or wardrobes away, so everyone must deal with them themselves. Only smaller furniture goes beside the car park for the Saturday pick-up.",
+              "focus": {
+                "zh": "V不走 (搬不走)",
+                "en": "can't take away"
+              },
+              "lesson": 14,
+              "answerLine": 1,
+              "wordIds": [
+                "B2L03-1-13",
+                "B2L05-2-16",
+                "B2L11-2-11",
+                "B2L03-1-47"
+              ],
+              "grammarIds": [
+                "B2L14-G07-P328"
+              ]
+            },
+            {
+              "id": "b2l14-talk-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "大家什麼時候可以拿到春聯？",
+                "simplified": "大家什么时候可以拿到春联？",
+                "pinyin": "Dàjiā shénme shíhòu kěyǐ ná dào chūnlián?",
+                "english": "When can people get a spring couplet?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期六下午兩點",
+                  "simplified": "星期六下午两点",
+                  "pinyin": "Xīngqíliù xiàwǔ liǎng diǎn.",
+                  "english": "At two on Saturday afternoon."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "上午打掃的時候",
+                  "simplified": "上午打扫的时候",
+                  "pinyin": "Shàngwǔ dǎsǎo de shíhòu.",
+                  "english": "During the morning clean-up."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期五晚上以前",
+                  "simplified": "星期五晚上以前",
+                  "pinyin": "Xīngqíwǔ wǎnshàng yǐqián.",
+                  "english": "Before Friday night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一百張寫好以後",
+                  "simplified": "一百张写好以后",
+                  "pinyin": "Yìbǎi zhāng xiě hǎo yǐhòu.",
+                  "english": "Once a hundred have been written."
+                }
+              ],
+              "key": 3,
+              "why": "當老師寫好一百張的時候，就會開始送: the couplets are handed out only once the teacher has finished a hundred. Two o'clock is when the writing starts, and the clean-up is in the morning.",
+              "focus": {
+                "zh": "當……的時候，就……",
+                "en": "when …, (right then) …"
+              },
+              "lesson": 14,
+              "answerLine": 2,
+              "wordIds": [
+                "B2L14-2-25",
+                "B2L14-1-01",
+                "B1L09-1-11",
+                "B2L05-1-08"
+              ],
+              "grammarIds": [
+                "B2L14-G04-P325"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b2l14-reading-card-1",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "春節放假",
+            "simplified": "春节放假",
+            "pinyin": "Chūnjié fàngjià",
+            "english": "Spring Festival holiday"
+          },
+          "text": {
+            "traditional": "除夕：早上八點到下午兩點\n春節：休息三天\n春節以後：早上八點到晚上八點\n過年要吃的年糕、蘿蔔糕，請在除夕前三天打電話來訂。去年很多客人來晚了，蘿蔔糕都讓別人買光了。\n電話：2345-6789\n好吃水餃店",
+            "simplified": "除夕：早上八点到下午两点\n春节：休息三天\n春节以后：早上八点到晚上八点\n过年要吃的年糕、萝卜糕，请在除夕前三天打电话来订。去年很多客人来晚了，萝卜糕都让别人买光了。\n电话：2345-6789\n好吃水饺店",
+            "pinyin": "Chúxī: zǎoshàng bā diǎn dào xiàwǔ liǎng diǎn\nChūnjié: xiūxí sān tiān\nChūnjié yǐhòu: zǎoshàng bā diǎn dào wǎnshàng bā diǎn\nGuònián yào chī de niángāo, luóbogāo, qǐng zài chúxī qián sān tiān dǎ diànhuà lái dìng. Qùnián hěn duō kèrén lái wǎn le, luóbogāo dōu ràng biérén mǎi guāng le.\nDiànhuà: 2345-6789\nHǎochī shuǐjiǎo diàn",
+            "english": "New Year's Eve: 8 a.m. to 2 p.m.\nSpring Festival: closed for three days\nAfter the Spring Festival: 8 a.m. to 8 p.m.\nTo have New Year cakes or radish cakes for New Year, please phone in your order three days before New Year's Eve. Last year many customers came too late, and the radish cakes had all been bought up by others.\nPhone: 2345-6789\nHaochi Dumpling Shop"
+          },
+          "questions": [
+            {
+              "id": "b2l14-reading-card-1-1",
+              "prompt": {
+                "traditional": "除夕下午三點去這家店，會怎麼樣？",
+                "simplified": "除夕下午三点去这家店，会怎么样？",
+                "pinyin": "Chúxī xiàwǔ sān diǎn qù zhè jiā diàn, huì zěnmeyàng?",
+                "english": "What happens if you go to this shop at 3 p.m. on New Year's Eve?"
+              },
+              "choices": [
+                {
+                  "traditional": "店已經關了",
+                  "simplified": "店已经关了",
+                  "pinyin": "Diàn yǐjīng guān le.",
+                  "english": "The shop has already closed."
+                },
+                {
+                  "traditional": "可以買到水餃",
+                  "simplified": "可以买到水饺",
+                  "pinyin": "Kěyǐ mǎi dào shuǐjiǎo.",
+                  "english": "You can buy dumplings."
+                },
+                {
+                  "traditional": "還能訂蘿蔔糕",
+                  "simplified": "还能订萝卜糕",
+                  "pinyin": "Hái néng dìng luóbogāo.",
+                  "english": "You can still order radish cake."
+                },
+                {
+                  "traditional": "店開到晚上八點",
+                  "simplified": "店开到晚上八点",
+                  "pinyin": "Diàn kāi dào wǎnshàng bā diǎn.",
+                  "english": "The shop is open until 8 p.m."
+                }
+              ],
+              "key": 0,
+              "why": "On New Year's Eve the shop is open only from eight to two, so by three it has closed. Eight in the evening is the closing time after the Spring Festival, and orders had to be phoned in three days earlier.",
+              "focus": {
+                "zh": "除夕",
+                "en": "New Year's Eve"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-07",
+                "B2L14-1-01",
+                "B2L14-1-17"
+              ]
+            },
+            {
+              "id": "b2l14-reading-card-1-2",
+              "prompt": {
+                "traditional": "去年來晚的客人怎麼了？",
+                "simplified": "去年来晚的客人怎么了？",
+                "pinyin": "Qùnián lái wǎn de kèrén zěnme le?",
+                "english": "What happened to the customers who came late last year?"
+              },
+              "choices": [
+                {
+                  "traditional": "只買到最後幾盒",
+                  "simplified": "只买到最后几盒",
+                  "pinyin": "Zhǐ mǎi dào zuìhòu jǐ hé.",
+                  "english": "They got only the last few boxes."
+                },
+                {
+                  "traditional": "讓別人先去買了",
+                  "simplified": "让别人先去买了",
+                  "pinyin": "Ràng biérén xiān qù mǎi le.",
+                  "english": "They let others buy first."
+                },
+                {
+                  "traditional": "來的時候賣完了",
+                  "simplified": "来的时候卖完了",
+                  "pinyin": "Lái de shíhòu mài wán le.",
+                  "english": "Everything was sold out when they came."
+                },
+                {
+                  "traditional": "打電話訂了年糕",
+                  "simplified": "打电话订了年糕",
+                  "pinyin": "Dǎ diànhuà dìng le niángāo.",
+                  "english": "They phoned in an order for New Year cakes."
+                }
+              ],
+              "key": 2,
+              "why": "蘿蔔糕都讓別人買光了 is passive (讓 = 被): the radish cakes had all been bought up by others before the latecomers arrived, so there were none left, not even the last few boxes. Nobody let anyone go first.",
+              "focus": {
+                "zh": "讓 (= 被)",
+                "en": "passive 讓: by"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-08",
+                "B2L14-1-36",
+                "B2L07-1-19"
+              ],
+              "grammarIds": [
+                "B2L14-G05-P325"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-reading-card-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "妹妹：\n爸爸媽媽跟我先去奶奶家幫忙準備年夜飯了。我們本來要帶去的那盒蘿蔔糕，昨天晚上讓家裡的狗給吃了一半，所以請妳來奶奶家以前，先去市場再買一盒。年糕跟橘子已經放在車上了，不用帶。妳下午五點以前到就可以，我們六點拜祖先，拜完就吃年夜飯。\n姐姐 除夕早上",
+            "simplified": "妹妹：\n爸爸妈妈跟我先去奶奶家帮忙准备年夜饭了。我们本来要带去的那盒萝卜糕，昨天晚上让家里的狗给吃了一半，所以请你来奶奶家以前，先去市场再买一盒。年糕跟橘子已经放在车上了，不用带。你下午五点以前到就可以，我们六点拜祖先，拜完就吃年夜饭。\n姐姐 除夕早上",
+            "pinyin": "Mèimei:\nBàba māma gēn wǒ xiān qù nǎinai jiā bāngmáng zhǔnbèi niányèfàn le. Wǒmen běnlái yào dài qù de nà hé luóbogāo, zuótiān wǎnshàng ràng jiā lǐ de gǒu gěi chī le yíbàn, suǒyǐ qǐng nǐ lái nǎinai jiā yǐqián, xiān qù shìchǎng zài mǎi yì hé. Niángāo gēn júzi yǐjīng fàng zài chē shàng le, búyòng dài. Nǐ xiàwǔ wǔ diǎn yǐqián dào jiù kěyǐ, wǒmen liù diǎn bài zǔxiān, bài wán jiù chī niányèfàn.\nJiějie, chúxī zǎoshàng",
+            "english": "Little sister,\nMom, Dad and I have gone ahead to Grandma's to help get the New Year's Eve dinner ready. The box of radish cake we were going to take was half eaten by the dog last night, so before you come to Grandma's, please go to the market and buy another box. The New Year cakes and the tangerines are already in the car, so you don't need to bring them. You just need to arrive before five this afternoon; we worship the ancestors at six and have dinner right after.\nYour big sister, New Year's Eve morning"
+          },
+          "questions": [
+            {
+              "id": "b2l14-reading-card-2-1",
+              "prompt": {
+                "traditional": "那盒蘿蔔糕怎麼了？",
+                "simplified": "那盒萝卜糕怎么了？",
+                "pinyin": "Nà hé luóbogāo zěnme le?",
+                "english": "What happened to the box of radish cake?"
+              },
+              "choices": [
+                {
+                  "traditional": "跟年糕一起在車上",
+                  "simplified": "跟年糕一起在车上",
+                  "pinyin": "Gēn niángāo yìqǐ zài chē shàng.",
+                  "english": "It's in the car with the New Year cakes."
+                },
+                {
+                  "traditional": "讓妹妹吃了一半",
+                  "simplified": "让妹妹吃了一半",
+                  "pinyin": "Ràng mèimei chī le yíbàn.",
+                  "english": "The younger sister ate half of it."
+                },
+                {
+                  "traditional": "只剩下一半了",
+                  "simplified": "只剩下一半了",
+                  "pinyin": "Zhǐ shèngxià yíbàn le.",
+                  "english": "Only half of it is left."
+                },
+                {
+                  "traditional": "姐姐帶去奶奶家了",
+                  "simplified": "姐姐带去奶奶家了",
+                  "pinyin": "Jiějie dài qù nǎinai jiā le.",
+                  "english": "The older sister took it to Grandma's."
+                }
+              ],
+              "key": 2,
+              "why": "讓家裡的狗給吃了一半 is passive (讓 = 被): the dog ate half, so only half is left and the sister must buy another box. The car holds the New Year cakes and tangerines, not the radish cake.",
+              "focus": {
+                "zh": "讓……給 V了",
+                "en": "passive 讓: by"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-08",
+                "B2L14-1-36",
+                "B2L03-2-12"
+              ],
+              "grammarIds": [
+                "B2L14-G05-P325"
+              ]
+            },
+            {
+              "id": "b2l14-reading-card-2-2",
+              "prompt": {
+                "traditional": "妹妹最晚什麼時候要到奶奶家？",
+                "simplified": "妹妹最晚什么时候要到奶奶家？",
+                "pinyin": "Mèimei zuì wǎn shénme shíhòu yào dào nǎinai jiā?",
+                "english": "By when at the latest must the younger sister get to Grandma's?"
+              },
+              "choices": [
+                {
+                  "traditional": "除夕早上",
+                  "simplified": "除夕早上",
+                  "pinyin": "Chúxī zǎoshàng.",
+                  "english": "On New Year's Eve morning."
+                },
+                {
+                  "traditional": "下午五點",
+                  "simplified": "下午五点",
+                  "pinyin": "Xiàwǔ wǔ diǎn.",
+                  "english": "Five in the afternoon."
+                },
+                {
+                  "traditional": "晚上六點",
+                  "simplified": "晚上六点",
+                  "pinyin": "Wǎnshàng liù diǎn.",
+                  "english": "Six in the evening."
+                },
+                {
+                  "traditional": "拜完祖先以後",
+                  "simplified": "拜完祖先以后",
+                  "pinyin": "Bài wán zǔxiān yǐhòu.",
+                  "english": "After the family has worshipped the ancestors."
+                }
+              ],
+              "key": 1,
+              "why": "妳下午五點以前到就可以: five is her deadline. Six is when the family worships the ancestors, and the morning is when the note was written.",
+              "focus": {
+                "zh": "拜祖先",
+                "en": "to worship the ancestors"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-14",
+                "B2L14-1-13",
+                "B2L14-1-10"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloze",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b2l14-cloze-1",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "今年除夕，我跟爸爸媽媽回到鄉下的爺爺奶奶家過年。奶奶準備了年糕、發糕、蘿蔔糕{1}。我們拜完祖先，就聚在一起吃年夜飯。{2}外面的鞭炮一響，我的小妹妹就嚇得哭了。第二天下午，姐姐要回台北了，她把奶奶做的年糕帶{3}了一半。我想跟門上的春聯照相，才發現春聯已經{4}鄰居的小孩弄髒了。{5}爺爺又寫了一張，我們家今年就只能貼髒的春聯了。",
+            "simplified": "今年除夕，我跟爸爸妈妈回到乡下的爷爷奶奶家过年。奶奶准备了年糕、发糕、萝卜糕{1}。我们拜完祖先，就聚在一起吃年夜饭。{2}外面的鞭炮一响，我的小妹妹就吓得哭了。第二天下午，姐姐要回台北了，她把奶奶做的年糕带{3}了一半。我想跟门上的春联照相，才发现春联已经{4}邻居的小孩弄脏了。{5}爷爷又写了一张，我们家今年就只能贴脏的春联了。",
+            "pinyin": "Jīnnián chúxī, wǒ gēn bàba māma huí dào xiāngxià de yéye nǎinai jiā guònián. Nǎinai zhǔnbèi le niángāo, fāgāo, luóbogāo děngděng. Wǒmen bài wán zǔxiān, jiù jù zài yìqǐ chī niányèfàn. Dāng wàimiàn de biānpào yì xiǎng, wǒ de xiǎo mèimei jiù xià de kū le. Dì èr tiān xiàwǔ, jiějie yào huí Táiběi le, tā bǎ nǎinai zuò de niángāo dài zǒu le yíbàn. Wǒ xiǎng gēn mén shàng de chūnlián zhàoxiàng, cái fāxiàn chūnlián yǐjīng ràng línjū de xiǎohái nòng zāng le. Yàobúshì yéye yòu xiě le yì zhāng, wǒmen jiā jīnnián jiù zhǐ néng tiē zāng de chūnlián le.",
+            "english": "This New Year's Eve my parents and I went back to my grandparents' home in the countryside for New Year. Grandma had made New Year cakes, sponge cakes, radish cakes and so on. After we had worshipped the ancestors, we all gathered for the New Year's Eve dinner. As soon as the firecrackers went off outside, my little sister got so scared she cried. The next afternoon my older sister was going back to Taipei, and she took away half of the New Year cakes Grandma had made. I wanted a photo with the spring couplet on the door, and only then found that the neighbours' children had got it dirty. If Grandpa hadn't written another one, our home would have had to put up a dirty couplet this year."
+          },
+          "questions": [
+            {
+              "id": "b2l14-cloze-1-1",
+              "choices": [
+                {
+                  "traditional": "一些",
+                  "simplified": "一些",
+                  "pinyin": "yìxiē",
+                  "english": "some"
+                },
+                {
+                  "traditional": "還有",
+                  "simplified": "还有",
+                  "pinyin": "háiyǒu",
+                  "english": "and also"
+                },
+                {
+                  "traditional": "等等",
+                  "simplified": "等等",
+                  "pinyin": "děngděng",
+                  "english": "and so on"
+                },
+                {
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "english": "what"
+                }
+              ],
+              "key": 2,
+              "why": "Examples + 等等 closes a list that could go on: 年糕、發糕、蘿蔔糕等等. 一些 would have to come before the nouns, and 還有 and 什麼 cannot end a list.",
+              "focus": {
+                "zh": "等等",
+                "en": "and so on"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-22",
+                "B2L14-1-35",
+                "B2L14-1-34"
+              ],
+              "grammarIds": [
+                "B2L14-G03-P317"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-1-2",
+              "choices": [
+                {
+                  "traditional": "從",
+                  "simplified": "从",
+                  "pinyin": "cóng",
+                  "english": "from"
+                },
+                {
+                  "traditional": "當",
+                  "simplified": "当",
+                  "pinyin": "dāng",
+                  "english": "when"
+                },
+                {
+                  "traditional": "對",
+                  "simplified": "对",
+                  "pinyin": "duì",
+                  "english": "to"
+                },
+                {
+                  "traditional": "向",
+                  "simplified": "向",
+                  "pinyin": "xiàng",
+                  "english": "toward"
+                }
+              ],
+              "key": 1,
+              "why": "當 + what happens (鞭炮一響), 就 + what follows at once (小妹妹就嚇得哭了). 從, 對 and 向 cannot open a \"when\" clause.",
+              "focus": {
+                "zh": "當……，就……",
+                "en": "when …, (right then) …"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-03",
+                "B2L14-1-26",
+                "B2L14-2-24",
+                "B2L14-2-20"
+              ],
+              "grammarIds": [
+                "B2L14-G04-P325"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-1-3",
+              "choices": [
+                {
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "english": "to"
+                },
+                {
+                  "traditional": "起",
+                  "simplified": "起",
+                  "pinyin": "qǐ",
+                  "english": "up"
+                },
+                {
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "guò",
+                  "english": "across"
+                },
+                {
+                  "traditional": "走",
+                  "simplified": "走",
+                  "pinyin": "zǒu",
+                  "english": "away"
+                }
+              ],
+              "key": 3,
+              "why": "帶走 = take away with her: the older sister left with half of the cakes. 帶到 needs a place after it, and 帶起 and 帶過 do not fit.",
+              "focus": {
+                "zh": "V走 (帶走)",
+                "en": "to take away"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-34"
+              ],
+              "grammarIds": [
+                "B2L14-G07-P328"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-1-4",
+              "choices": [
+                {
+                  "traditional": "讓",
+                  "simplified": "让",
+                  "pinyin": "ràng",
+                  "english": "by"
+                },
+                {
+                  "traditional": "跟",
+                  "simplified": "跟",
+                  "pinyin": "gēn",
+                  "english": "with"
+                },
+                {
+                  "traditional": "替",
+                  "simplified": "替",
+                  "pinyin": "tì",
+                  "english": "for"
+                },
+                {
+                  "traditional": "對",
+                  "simplified": "对",
+                  "pinyin": "duì",
+                  "english": "to"
+                }
+              ],
+              "key": 0,
+              "why": "S + 讓 + the doer + V了 is a passive like 被: the couplet had been dirtied by the neighbours' children. 跟, 替 and 對 do not mark who did it.",
+              "focus": {
+                "zh": "讓 (= 被)",
+                "en": "passive 讓: by"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-08",
+                "B2L14-2-25",
+                "B2L02-1-18",
+                "B2L02-2-18"
+              ],
+              "grammarIds": [
+                "B2L14-G05-P325"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-1-5",
+              "choices": [
+                {
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                },
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                },
+                {
+                  "traditional": "要不是",
+                  "simplified": "要不是",
+                  "pinyin": "yàobúshì",
+                  "english": "if not for"
+                },
+                {
+                  "traditional": "不管",
+                  "simplified": "不管",
+                  "pinyin": "bùguǎn",
+                  "english": "no matter"
+                }
+              ],
+              "key": 2,
+              "why": "要不是 + what really happened (Grandpa wrote a new one), then what would have happened without it (a dirty couplet). 雖然, 只要 and 不管 do not fit 就只能…了.",
+              "focus": {
+                "zh": "要不是",
+                "en": "if it were not for"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-22",
+                "B2L14-1-09"
+              ],
+              "grammarIds": [
+                "B2L14-G08-P329"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-cloze-2",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "這個學期的期末報告，老師的要求特別多。同學們上個星期就交了，我修改了好幾次，昨天{1}完成。我從來{2}這麼努力地寫過報告！寫完以後，我開始打掃房間，準備回家過年。我把不要的舊書、舊衣服{3}，都放進一個大袋子裡，請室友出門的時候幫我帶{4}。她走了以後，我忽然想起來，袋子裡有一件紅色的毛衣，是媽媽送我的。我趕快跑出去，{5}室友還在等電梯，那件毛衣就被丟了。",
+            "simplified": "这个学期的期末报告，老师的要求特别多。同学们上个星期就交了，我修改了好几次，昨天{1}完成。我从来{2}这么努力地写过报告！写完以后，我开始打扫房间，准备回家过年。我把不要的旧书、旧衣服{3}，都放进一个大袋子里，请室友出门的时候帮我带{4}。她走了以后，我忽然想起来，袋子里有一件红色的毛衣，是妈妈送我的。我赶快跑出去，{5}室友还在等电梯，那件毛衣就被丢了。",
+            "pinyin": "Zhège xuéqí de qímò bàogào, lǎoshī de yāoqiú tèbié duō. Tóngxuémen shàng ge xīngqí jiù jiāo le, wǒ xiūgǎi le hǎojǐ cì, zuótiān cái wánchéng. Wǒ cónglái méi zhème nǔlì de xiě guo bàogào! Xiě wán yǐhòu, wǒ kāishǐ dǎsǎo fángjiān, zhǔnbèi huí jiā guònián. Wǒ bǎ bú yào de jiù shū, jiù yīfu děngděng, dōu fàng jìn yí ge dà dàizi lǐ, qǐng shìyǒu chūmén de shíhòu bāng wǒ dài zǒu. Tā zǒu le yǐhòu, wǒ hūrán xiǎng qǐlái, dàizi lǐ yǒu yí jiàn hóngsè de máoyī, shì māma sòng wǒ de. Wǒ gǎnkuài pǎo chūqù, yàobúshì shìyǒu hái zài děng diàntī, nà jiàn máoyī jiù bèi diū le.",
+            "english": "This semester's final report: the teacher had especially many requirements. My classmates handed theirs in last week; I revised mine several times and only finished it yesterday. I have never worked so hard on a report! When it was done, I started cleaning my room to get ready to go home for New Year. I put the old books, old clothes and so on that I didn't want into a big bag and asked my roommate to take it away when she went out. After she left, I suddenly remembered there was a red sweater in the bag, a present from Mom. I rushed out. If my roommate hadn't still been waiting for the lift, that sweater would have been thrown away."
+          },
+          "questions": [
+            {
+              "id": "b2l14-cloze-2-1",
+              "choices": [
+                {
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "english": "all"
+                },
+                {
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "english": "not until"
+                },
+                {
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "english": "again"
+                },
+                {
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "english": "again"
+                }
+              ],
+              "key": 1,
+              "why": "Time + 才 + V: the classmates handed theirs in last week, and after many revisions she finished only yesterday (昨天才完成). 就 would mean \"early\" and needs 了; 再 and 又 do not fit.",
+              "focus": {
+                "zh": "time + 才 + V",
+                "en": "not until"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B2L02-1-26",
+                "B2L14-1-04",
+                "B2L14-1-03"
+              ],
+              "grammarIds": [
+                "B2L02-G09-P56"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-2-2",
+              "choices": [
+                {
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bù",
+                  "english": "not"
+                },
+                {
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "english": "then"
+                },
+                {
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "english": "again"
+                },
+                {
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "english": "not"
+                }
+              ],
+              "key": 3,
+              "why": "從來沒 + V過 = have never: 從來沒這麼努力地寫過. 從來不 is for habits and does not take 過.",
+              "focus": {
+                "zh": "從來沒……過",
+                "en": "have never"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-41",
+                "B2L09-1-29"
+              ],
+              "grammarIds": [
+                "B2L14-G02-P317"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-2-3",
+              "choices": [
+                {
+                  "traditional": "等等",
+                  "simplified": "等等",
+                  "pinyin": "děngděng",
+                  "english": "and so on"
+                },
+                {
+                  "traditional": "一些",
+                  "simplified": "一些",
+                  "pinyin": "yìxiē",
+                  "english": "some"
+                },
+                {
+                  "traditional": "還有",
+                  "simplified": "还有",
+                  "pinyin": "háiyǒu",
+                  "english": "and also"
+                },
+                {
+                  "traditional": "很多",
+                  "simplified": "很多",
+                  "pinyin": "hěn duō",
+                  "english": "many"
+                }
+              ],
+              "key": 0,
+              "why": "Examples + 等等 closes a list that could go on: 舊書、舊衣服等等. 一些 would have to come before the nouns, and 還有 and 什麼 cannot end a list.",
+              "focus": {
+                "zh": "等等",
+                "en": "and so on"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-22"
+              ],
+              "grammarIds": [
+                "B2L14-G03-P317"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-2-4",
+              "choices": [
+                {
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "dào",
+                  "english": "to"
+                },
+                {
+                  "traditional": "走",
+                  "simplified": "走",
+                  "pinyin": "zǒu",
+                  "english": "away"
+                },
+                {
+                  "traditional": "完",
+                  "simplified": "完",
+                  "pinyin": "wán",
+                  "english": "finish"
+                },
+                {
+                  "traditional": "起",
+                  "simplified": "起",
+                  "pinyin": "qǐ",
+                  "english": "up"
+                }
+              ],
+              "key": 1,
+              "why": "帶走 = take it away (out of the flat). 帶到 needs a place after it, and 帶完 and 帶起 do not fit.",
+              "focus": {
+                "zh": "V走 (帶走)",
+                "en": "to take away"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L03-2-01",
+                "B2L02-2-03"
+              ],
+              "grammarIds": [
+                "B2L14-G07-P328"
+              ]
+            },
+            {
+              "id": "b2l14-cloze-2-5",
+              "choices": [
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                },
+                {
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                },
+                {
+                  "traditional": "不管",
+                  "simplified": "不管",
+                  "pinyin": "bùguǎn",
+                  "english": "no matter"
+                },
+                {
+                  "traditional": "要不是",
+                  "simplified": "要不是",
+                  "pinyin": "yàobúshì",
+                  "english": "if not for"
+                }
+              ],
+              "key": 3,
+              "why": "要不是 + what really happened (the roommate was still waiting for the lift), then what would have happened otherwise (the sweater thrown out). 只要, 雖然 and 不管 do not fit.",
+              "focus": {
+                "zh": "要不是",
+                "en": "if it were not for"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-22",
+                "B1L08-2-19"
+              ],
+              "grammarIds": [
+                "B2L14-G08-P329"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passage",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b2l14-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "今年是我第一次去男朋友家過年。出發以前，我很緊張，不知道要帶什麼禮物。男朋友說帶什麼都無所謂，可是我媽媽說，最好帶一些橘子，因為橘子有「大吉大利」的意思。除夕晚上，他的爺爺、奶奶、哥哥、姐姐都在家。吃飯的時候，我不太敢說話，還差一點把碗掉到地上。奶奶煎的魚好吃極了，我吃了一塊又一塊，最後把魚都吃完了。這時候，大家都看著我。男朋友告訴我，年夜飯的魚不能吃完，要剩下一些，才會「年年有餘」。我的臉一下子就紅了。可是奶奶笑著說：「沒關係，明年妳再來，我煎兩條！」",
+            "simplified": "今年是我第一次去男朋友家过年。出发以前，我很紧张，不知道要带什么礼物。男朋友说带什么都无所谓，可是我妈妈说，最好带一些橘子，因为橘子有「大吉大利」的意思。除夕晚上，他的爷爷、奶奶、哥哥、姐姐都在家。吃饭的时候，我不太敢说话，还差一点把碗掉到地上。奶奶煎的鱼好吃极了，我吃了一块又一块，最后把鱼都吃完了。这时候，大家都看着我。男朋友告诉我，年夜饭的鱼不能吃完，要剩下一些，才会「年年有余」。我的脸一下子就红了。可是奶奶笑着说：「没关系，明年你再来，我煎两条！」",
+            "pinyin": "Jīnnián shì wǒ dì yī cì qù nánpéngyǒu jiā guònián. Chūfā yǐqián, wǒ hěn jǐnzhāng, bù zhīdào yào dài shénme lǐwù. Nánpéngyǒu shuō dài shénme dōu wúsuǒwèi, kěshì wǒ māma shuō, zuìhǎo dài yìxiē júzi, yīnwèi júzi yǒu “dàjídàlì” de yìsi. Chúxī wǎnshàng, tā de yéye, nǎinai, gēge, jiějie dōu zài jiā. Chī fàn de shíhòu, wǒ bú tài gǎn shuōhuà, hái chà yìdiǎn bǎ wǎn diào dào dì shàng. Nǎinai jiān de yú hǎochī jí le, wǒ chī le yí kuài yòu yí kuài, zuìhòu bǎ yú dōu chī wán le. Zhè shíhòu, dàjiā dōu kànzhe wǒ. Nánpéngyǒu gàosu wǒ, niányèfàn de yú bù néng chī wán, yào shèngxià yìxiē, cái huì “niánnián yǒuyú”. Wǒ de liǎn yíxiàzi jiù hóng le. Kěshì nǎinai xiàozhe shuō: “Méiguānxi, míngnián nǐ zài lái, wǒ jiān liǎng tiáo!”",
+            "english": "This year was the first time I spent New Year at my boyfriend's home. Before we set off I was nervous and didn't know what to bring as a gift. My boyfriend said anything would do, but my mother said tangerines were best, because they mean 'great luck and fortune'. On New Year's Eve his grandparents, brother and sister were all at home. At dinner I hardly dared to talk, and I almost dropped my bowl on the floor. Grandma's fried fish was delicious; I ate piece after piece until I had finished the whole fish. Just then, everyone looked at me. My boyfriend told me the fish at New Year's Eve dinner mustn't be finished: some has to be left over for 'plenty every year'. My face went red at once. But Grandma laughed: 'Never mind. Come again next year and I'll fry two!'"
+          },
+          "questions": [
+            {
+              "id": "b2l14-passage-1-1",
+              "prompt": {
+                "traditional": "是誰要她帶橘子去的？",
+                "simplified": "是谁要她带橘子去的？",
+                "pinyin": "Shì shéi yào tā dài júzi qù de?",
+                "english": "Who told her to bring tangerines?"
+              },
+              "choices": [
+                {
+                  "traditional": "她的男朋友",
+                  "simplified": "她的男朋友",
+                  "pinyin": "Tā de nánpéngyǒu.",
+                  "english": "Her boyfriend."
+                },
+                {
+                  "traditional": "她的媽媽",
+                  "simplified": "她的妈妈",
+                  "pinyin": "Tā de māma.",
+                  "english": "Her mother."
+                },
+                {
+                  "traditional": "男朋友的奶奶",
+                  "simplified": "男朋友的奶奶",
+                  "pinyin": "Nánpéngyǒu de nǎinai.",
+                  "english": "Her boyfriend's grandmother."
+                },
+                {
+                  "traditional": "男朋友的姐姐",
+                  "simplified": "男朋友的姐姐",
+                  "pinyin": "Nánpéngyǒu de jiějie.",
+                  "english": "Her boyfriend's sister."
+                }
+              ],
+              "key": 1,
+              "why": "Her boyfriend said 帶什麼都無所謂 (anything would do); it was her mother who said tangerines were best, for their 大吉大利 meaning.",
+              "focus": {
+                "zh": "無所謂",
+                "en": "doesn't matter"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-09",
+                "B2L14-1-24",
+                "B2L14-1-40"
+              ],
+              "grammarIds": [
+                "B2L14-G06-P327"
+              ]
+            },
+            {
+              "id": "b2l14-passage-1-2",
+              "prompt": {
+                "traditional": "大家為什麼都看著她？",
+                "simplified": "大家为什么都看着她？",
+                "pinyin": "Dàjiā wèishénme dōu kànzhe tā?",
+                "english": "Why was everyone looking at her?"
+              },
+              "choices": [
+                {
+                  "traditional": "她把碗掉到地上了",
+                  "simplified": "她把碗掉到地上了",
+                  "pinyin": "Tā bǎ wǎn diào dào dì shàng le.",
+                  "english": "She had dropped her bowl on the floor."
+                },
+                {
+                  "traditional": "她一直不說話",
+                  "simplified": "她一直不说话",
+                  "pinyin": "Tā yìzhí bù shuōhuà.",
+                  "english": "She kept quiet the whole time."
+                },
+                {
+                  "traditional": "她吃了最後一塊魚",
+                  "simplified": "她吃了最后一块鱼",
+                  "pinyin": "Tā chī le zuìhòu yí kuài yú.",
+                  "english": "She had eaten the last piece of fish."
+                },
+                {
+                  "traditional": "她的臉一下子紅了",
+                  "simplified": "她的脸一下子红了",
+                  "pinyin": "Tā de liǎn yíxiàzi hóng le.",
+                  "english": "Her face had suddenly gone red."
+                }
+              ],
+              "key": 2,
+              "why": "Everyone looks at her right after she finishes the whole fish, which must not be eaten up at New Year's Eve dinner (年年有餘). She only almost dropped her bowl (差一點), and her face went red afterwards.",
+              "focus": {
+                "zh": "年年有餘",
+                "en": "plenty every year"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-37",
+                "B2L14-1-20",
+                "B2L14-1-33"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "元宵節那天晚上，我帶妹妹去看燈會。我們本來想坐公車，可是來了三班都坐滿了，只好坐捷運去。燈會熱鬧極了，有很多畫著十二生肖的燈籠。妹妹屬虎，她說報紙上有一個很大的老虎燈籠，一定要去看。可是我們找了一個多小時都沒找到，後來問了工作人員才知道，那個燈籠壞了，下午就讓人搬走了。妹妹很難過，我只好買了一個小老虎燈籠送她。她說她從來沒收過這麼可愛的禮物，一下子就笑了。",
+            "simplified": "元宵节那天晚上，我带妹妹去看灯会。我们本来想坐公车，可是来了三班都坐满了，只好坐捷运去。灯会热闹极了，有很多画着十二生肖的灯笼。妹妹属虎，她说报纸上有一个很大的老虎灯笼，一定要去看。可是我们找了一个多小时都没找到，后来问了工作人员才知道，那个灯笼坏了，下午就让人搬走了。妹妹很难过，我只好买了一个小老虎灯笼送她。她说她从来没收过这么可爱的礼物，一下子就笑了。",
+            "pinyin": "Yuánxiāojié nà tiān wǎnshàng, wǒ dài mèimei qù kàn dēnghuì. Wǒmen běnlái xiǎng zuò gōngchē, kěshì lái le sān bān dōu zuò mǎn le, zhǐhǎo zuò jiéyùn qù. Dēnghuì rènao jí le, yǒu hěn duō huàzhe shí'èr shēngxiào de dēnglóng. Mèimei shǔ hǔ, tā shuō bàozhǐ shàng yǒu yí ge hěn dà de lǎohǔ dēnglóng, yídìng yào qù kàn. Kěshì wǒmen zhǎo le yí ge duō xiǎoshí dōu méi zhǎo dào, hòulái wèn le gōngzuò rényuán cái zhīdào, nàge dēnglóng huài le, xiàwǔ jiù ràng rén bān zǒu le. Mèimei hěn nánguò, wǒ zhǐhǎo mǎi le yí ge xiǎo lǎohǔ dēnglóng sòng tā. Tā shuō tā cónglái méi shōu guo zhème kě'ài de lǐwù, yíxiàzi jiù xiào le.",
+            "english": "On the evening of the Lantern Festival I took my little sister to the lantern show. We meant to take the bus, but three came and all were full, so we had to take the MRT. The show was very lively, with lots of lanterns painted with the twelve zodiac animals. My sister was born in the year of the tiger, and she said the newspaper mentioned a huge tiger lantern she had to see. But we searched for over an hour without finding it. Then we asked the staff and learned that the lantern had broken and had been taken away that afternoon. My sister was very sad, so I bought her a little tiger lantern. She said she had never received such a cute present, and at once she was smiling."
+          },
+          "questions": [
+            {
+              "id": "b2l14-passage-2-1",
+              "prompt": {
+                "traditional": "那個很大的老虎燈籠怎麼了？",
+                "simplified": "那个很大的老虎灯笼怎么了？",
+                "pinyin": "Nàge hěn dà de lǎohǔ dēnglóng zěnme le?",
+                "english": "What happened to the huge tiger lantern?"
+              },
+              "choices": [
+                {
+                  "traditional": "讓妹妹買回家了",
+                  "simplified": "让妹妹买回家了",
+                  "pinyin": "Ràng mèimei mǎi huí jiā le.",
+                  "english": "The little sister bought it and took it home."
+                },
+                {
+                  "traditional": "已經不在燈會了",
+                  "simplified": "已经不在灯会了",
+                  "pinyin": "Yǐjīng bú zài dēnghuì le.",
+                  "english": "It was no longer at the show."
+                },
+                {
+                  "traditional": "放在捷運站裡",
+                  "simplified": "放在捷运站里",
+                  "pinyin": "Fàng zài jiéyùn zhàn lǐ.",
+                  "english": "It had been put in the MRT station."
+                },
+                {
+                  "traditional": "晚上才會出來",
+                  "simplified": "晚上才会出来",
+                  "pinyin": "Wǎnshàng cái huì chūlái.",
+                  "english": "It would only come out later that night."
+                }
+              ],
+              "key": 1,
+              "why": "那個燈籠壞了，下午就讓人搬走了 is passive (讓 = 被) with 搬走: the broken lantern had been taken away that afternoon, so it was no longer there. The sister got only a small tiger lantern.",
+              "focus": {
+                "zh": "讓人搬走了",
+                "en": "was taken away (passive 讓)"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-2-08",
+                "B1L15-2-02",
+                "B1L15-2-09"
+              ],
+              "grammarIds": [
+                "B2L14-G05-P325",
+                "B2L14-G07-P328"
+              ]
+            },
+            {
+              "id": "b2l14-passage-2-2",
+              "prompt": {
+                "traditional": "妹妹最後為什麼笑了？",
+                "simplified": "妹妹最后为什么笑了？",
+                "pinyin": "Mèimei zuìhòu wèishénme xiào le?",
+                "english": "Why did the little sister smile in the end?"
+              },
+              "choices": [
+                {
+                  "traditional": "找到了大老虎燈籠",
+                  "simplified": "找到了大老虎灯笼",
+                  "pinyin": "Zhǎo dào le dà lǎohǔ dēnglóng.",
+                  "english": "She found the big tiger lantern."
+                },
+                {
+                  "traditional": "得到一個小燈籠",
+                  "simplified": "得到一个小灯笼",
+                  "pinyin": "Dédào yí ge xiǎo dēnglóng.",
+                  "english": "She was given a little lantern."
+                },
+                {
+                  "traditional": "看到很多生肖燈籠",
+                  "simplified": "看到很多生肖灯笼",
+                  "pinyin": "Kàn dào hěn duō shēngxiào dēnglóng.",
+                  "english": "She saw lots of zodiac lanterns."
+                },
+                {
+                  "traditional": "工作人員送她禮物",
+                  "simplified": "工作人员送她礼物",
+                  "pinyin": "Gōngzuò rényuán sòng tā lǐwù.",
+                  "english": "The staff gave her a present."
+                }
+              ],
+              "key": 1,
+              "why": "She smiled after receiving the little tiger lantern bought for her (從來沒收過這麼可愛的禮物). They never found the big one, and the staff only explained what had happened to it.",
+              "focus": {
+                "zh": "從來沒……過",
+                "en": "have never"
+              },
+              "lesson": 14,
+              "wordIds": [
+                "B2L14-1-41",
+                "B2L08-1-13",
+                "B1L15-1-01"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-passage",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b2l14-review-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "很多同學參加社團是為了交朋友，我參加吉他社，是因為我從小就對音樂很感興趣。社員每個星期三晚上一起練習，有時候也去安養院表演，陪老人聊天。去年，吉他社的老師退休了，大家都希望我來免費教新社員。我一開始不想答應，因為除了上課，我還在咖啡店打工，每天都很忙。後來我想，教別人能讓我學到很多，對將來找工作也有好處，就答應了。從那時候起，我每個星期就得多花六個小時準備，忙得不得了。雖然很累，可是我學到了很多在課堂上學不到的東西。",
+            "simplified": "很多同学参加社团是为了交朋友，我参加吉他社，是因为我从小就对音乐很感兴趣。社员每个星期三晚上一起练习，有时候也去安养院表演，陪老人聊天。去年，吉他社的老师退休了，大家都希望我来免费教新社员。我一开始不想答应，因为除了上课，我还在咖啡店打工，每天都很忙。后来我想，教别人能让我学到很多，对将来找工作也有好处，就答应了。从那时候起，我每个星期就得多花六个小时准备，忙得不得了。虽然很累，可是我学到了很多在课堂上学不到的东西。",
+            "pinyin": "Hěn duō tóngxué cānjiā shètuán shì wèile jiāo péngyǒu, wǒ cānjiā jítā shè, shì yīnwèi wǒ cóngxiǎo jiù duì yīnyuè hěn gǎn xìngqù. Shèyuán měi ge xīngqísān wǎnshàng yìqǐ liànxí, yǒu shíhòu yě qù ānyǎngyuàn biǎoyǎn, péi lǎorén liáotiān. Qùnián, jítā shè de lǎoshī tuìxiū le, dàjiā dōu xīwàng wǒ lái miǎnfèi jiāo xīn shèyuán. Wǒ yìkāishǐ bù xiǎng dāyìng, yīnwèi chúle shàngkè, wǒ hái zài kāfēi diàn dǎgōng, měi tiān dōu hěn máng. Hòulái wǒ xiǎng, jiāo biérén néng ràng wǒ xué dào hěn duō, duì jiānglái zhǎo gōngzuò yě yǒu hǎochù, jiù dāyìng le. Cóng nà shíhòu qǐ, wǒ měi ge xīngqí jiù děi duō huā liù ge xiǎoshí zhǔnbèi, máng de bùdéliǎo. Suīrán hěn lèi, kěshì wǒ xué dào le hěn duō zài kètáng shàng xué bú dào de dōngxi.",
+            "english": "Many students join clubs to make friends; I joined the guitar club because I've loved music since I was little. The members practise together every Wednesday evening and sometimes play at a nursing home and chat with the old people there. Last year the club's teacher retired, and everyone hoped I would teach the new members for free. At first I didn't want to agree, because besides classes I work part-time at a café and am busy every day. Then I thought that teaching others would teach me a lot and would also help me find a job later, so I agreed. Since then I have had to spend six more hours a week preparing, and I'm incredibly busy. It's tiring, but I've learned a lot that you can't learn in class."
+          },
+          "questions": [
+            {
+              "id": "b2l14-review-passage-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人為什麼參加吉他社？",
+                "simplified": "写这篇文章的人为什么参加吉他社？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme cānjiā jítā shè?",
+                "english": "Why did the writer join the guitar club?"
+              },
+              "choices": [
+                {
+                  "traditional": "想多交一些朋友",
+                  "simplified": "想多交一些朋友",
+                  "pinyin": "Xiǎng duō jiāo yìxiē péngyǒu.",
+                  "english": "To make more friends."
+                },
+                {
+                  "traditional": "一直很喜歡音樂",
+                  "simplified": "一直很喜欢音乐",
+                  "pinyin": "Yìzhí hěn xǐhuān yīnyuè.",
+                  "english": "The writer has always loved music."
+                },
+                {
+                  "traditional": "想學怎麼教別人",
+                  "simplified": "想学怎么教别人",
+                  "pinyin": "Xiǎng xué zěnme jiāo biérén.",
+                  "english": "To learn how to teach others."
+                },
+                {
+                  "traditional": "想去安養院表演",
+                  "simplified": "想去安养院表演",
+                  "pinyin": "Xiǎng qù ānyǎngyuàn biǎoyǎn.",
+                  "english": "To play at a nursing home."
+                }
+              ],
+              "key": 1,
+              "why": "從小就對音樂很感興趣: music has interested the writer since childhood. Making friends is why many other students join clubs, and the nursing-home shows and the teaching came with the club.",
+              "focus": {
+                "zh": "對……感興趣",
+                "en": "to be interested in"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B2L11-1-11",
+                "B2L11-1-17",
+                "B2L11-1-01"
+              ],
+              "grammarIds": [
+                "B2L11-G02-P252"
+              ]
+            },
+            {
+              "id": "b2l14-review-passage-1-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人後來為什麼答應了？",
+                "simplified": "写这篇文章的人后来为什么答应了？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén hòulái wèishénme dāyìng le?",
+                "english": "Why did the writer agree in the end?"
+              },
+              "choices": [
+                {
+                  "traditional": "咖啡店的工作不忙了",
+                  "simplified": "咖啡店的工作不忙了",
+                  "pinyin": "Kāfēi diàn de gōngzuò bù máng le.",
+                  "english": "The café job was no longer busy."
+                },
+                {
+                  "traditional": "教吉他比打工輕鬆",
+                  "simplified": "教吉他比打工轻松",
+                  "pinyin": "Jiāo jítā bǐ dǎgōng qīngsōng.",
+                  "english": "Teaching guitar is easier than the part-time job."
+                },
+                {
+                  "traditional": "可以多存一點錢",
+                  "simplified": "可以多存一点钱",
+                  "pinyin": "Kěyǐ duō cún yìdiǎn qián.",
+                  "english": "It would let the writer save more money."
+                },
+                {
+                  "traditional": "對以後找工作有幫助",
+                  "simplified": "对以后找工作有帮助",
+                  "pinyin": "Duì yǐhòu zhǎo gōngzuò yǒu bāngzhù.",
+                  "english": "It will help in finding a job later."
+                }
+              ],
+              "key": 3,
+              "why": "對將來找工作也有好處: teaching would teach the writer a lot and help with a job later. The teaching is unpaid (免費), nothing says the café got less busy, and it made the writer busier.",
+              "focus": {
+                "zh": "對……有好處",
+                "en": "to be good for"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L10-2-01",
+                "B2L10-2-08",
+                "B2L09-1-31"
+              ],
+              "grammarIds": [
+                "B2L10-G03-P241"
+              ]
+            },
+            {
+              "id": "b2l14-review-passage-1-3",
+              "prompt": {
+                "traditional": "寫這篇文章的人從什麼時候起教新社員？",
+                "simplified": "写这篇文章的人从什么时候起教新社员？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén cóng shénme shíhòu qǐ jiāo xīn shèyuán?",
+                "english": "Since when has the writer been teaching the new members?"
+              },
+              "choices": [
+                {
+                  "traditional": "從小就開始了",
+                  "simplified": "从小就开始了",
+                  "pinyin": "Cóngxiǎo jiù kāishǐ le.",
+                  "english": "Since childhood."
+                },
+                {
+                  "traditional": "剛上大學的時候",
+                  "simplified": "刚上大学的时候",
+                  "pinyin": "Gāng shàng dàxué de shíhòu.",
+                  "english": "Since just starting university."
+                },
+                {
+                  "traditional": "每個星期三晚上",
+                  "simplified": "每个星期三晚上",
+                  "pinyin": "Měi ge xīngqísān wǎnshàng.",
+                  "english": "Every Wednesday evening."
+                },
+                {
+                  "traditional": "老師退休以後",
+                  "simplified": "老师退休以后",
+                  "pinyin": "Lǎoshī tuìxiū yǐhòu.",
+                  "english": "Since the teacher retired."
+                }
+              ],
+              "key": 3,
+              "why": "去年…老師退休了 … 從那時候起: the writer began teaching after the club teacher retired last year. Childhood is when the love of music began, university is when the writer joined, and Wednesday evenings are practice.",
+              "focus": {
+                "zh": "從……起",
+                "en": "from … on"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B2L12-1-18",
+                "B2L12-1-31",
+                "B2L11-1-05"
+              ],
+              "grammarIds": [
+                "B2L12-G03-P273"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2l14-review-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "上個月，我跟一位室友一起在學校附近租了一間公寓。房租一個月一萬，我的房間比較大，付六千。水費包括在房租裡，電費我們自己付。我的室友什麼都好，房租從來不晚付，晚上也很安靜，就是不愛做家事。她常常把髒衣服丟在地上，好幾天都不洗，有時候還有蟲子。我們討論了很久，最後決定：我負責洗碗、倒垃圾，她負責掃地、洗衣服。不管是誰沒做好，都要請客。上個星期，我忘了倒垃圾，房間裡臭死了，只好請她吃牛排。",
+            "simplified": "上个月，我跟一位室友一起在学校附近租了一间公寓。房租一个月一万，我的房间比较大，付六千。水费包括在房租里，电费我们自己付。我的室友什么都好，房租从来不晚付，晚上也很安静，就是不爱做家事。她常常把脏衣服丢在地上，好几天都不洗，有时候还有虫子。我们讨论了很久，最后决定：我负责洗碗、倒垃圾，她负责扫地、洗衣服。不管是谁没做好，都要请客。上个星期，我忘了倒垃圾，房间里臭死了，只好请她吃牛排。",
+            "pinyin": "Shàng ge yuè, wǒ gēn yí wèi shìyǒu yìqǐ zài xuéxiào fùjìn zū le yì jiān gōngyù. Fángzū yí ge yuè yí wàn, wǒ de fángjiān bǐjiào dà, fù liùqiān. Shuǐfèi bāokuò zài fángzū lǐ, diànfèi wǒmen zìjǐ fù. Wǒ de shìyǒu shénme dōu hǎo, fángzū cónglái bù wǎn fù, wǎnshàng yě hěn ānjìng, jiù shì bú ài zuò jiāshì. Tā chángcháng bǎ zāng yīfu diū zài dì shàng, hǎojǐ tiān dōu bù xǐ, yǒu shíhòu hái yǒu chóngzi. Wǒmen tǎolùn le hěn jiǔ, zuìhòu juédìng: wǒ fùzé xǐ wǎn, dào lèsè, tā fùzé sǎodì, xǐ yīfu. Bùguǎn shì shéi méi zuò hǎo, dōu yào qǐngkè. Shàng ge xīngqí, wǒ wàng le dào lèsè, fángjiān lǐ chòu sǐ le, zhǐhǎo qǐng tā chī niúpái.",
+            "english": "Last month a roommate and I rented a flat together near school. The rent is 10,000 a month; my room is bigger, so I pay 6,000. Water is included in the rent, and we pay for electricity ourselves. My roommate is great in every way: she never pays her rent late and she's quiet at night. She just doesn't like housework. She often drops her dirty clothes on the floor and leaves them unwashed for days, and sometimes there are bugs. We talked it over for a long time and finally decided: I wash the dishes and take out the rubbish, and she sweeps the floor and does the laundry. Whoever doesn't do their job has to treat the other to a meal. Last week I forgot to take out the rubbish, it stank in the room, and I had to treat her to a steak."
+          },
+          "questions": [
+            {
+              "id": "b2l14-review-passage-2-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人每個月付多少房租？",
+                "simplified": "写这篇文章的人每个月付多少房租？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén měi ge yuè fù duōshǎo fángzū?",
+                "english": "How much rent does the writer pay a month?"
+              },
+              "choices": [
+                {
+                  "traditional": "四千塊",
+                  "simplified": "四千块",
+                  "pinyin": "Sìqiān kuài.",
+                  "english": "4,000 dollars."
+                },
+                {
+                  "traditional": "五千塊",
+                  "simplified": "五千块",
+                  "pinyin": "Wǔqiān kuài.",
+                  "english": "5,000 dollars."
+                },
+                {
+                  "traditional": "六千塊",
+                  "simplified": "六千块",
+                  "pinyin": "Liùqiān kuài.",
+                  "english": "6,000 dollars."
+                },
+                {
+                  "traditional": "一萬塊",
+                  "simplified": "一万块",
+                  "pinyin": "Yí wàn kuài.",
+                  "english": "10,000 dollars."
+                }
+              ],
+              "key": 2,
+              "why": "The rent is 10,000 a month, but the writer has the bigger room and pays 6,000; the roommate pays 4,000, so it is not split in half. Water is included; electricity is paid separately.",
+              "focus": {
+                "zh": "房租",
+                "en": "rent"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B2L03-1-26",
+                "B2L03-1-27",
+                "B2L03-1-28"
+              ]
+            },
+            {
+              "id": "b2l14-review-passage-2-2",
+              "prompt": {
+                "traditional": "室友有什麼不好的習慣？",
+                "simplified": "室友有什么不好的习惯？",
+                "pinyin": "Shìyǒu yǒu shénme bù hǎo de xíguàn?",
+                "english": "What bad habit does the roommate have?"
+              },
+              "choices": [
+                {
+                  "traditional": "晚上常常很吵",
+                  "simplified": "晚上常常很吵",
+                  "pinyin": "Wǎnshàng chángcháng hěn chǎo.",
+                  "english": "She is often noisy at night."
+                },
+                {
+                  "traditional": "常常晚付房租",
+                  "simplified": "常常晚付房租",
+                  "pinyin": "Chángcháng wǎn fù fángzū.",
+                  "english": "She often pays the rent late."
+                },
+                {
+                  "traditional": "髒衣服到處丟",
+                  "simplified": "脏衣服到处丢",
+                  "pinyin": "Zāng yīfu dàochù diū.",
+                  "english": "She leaves dirty clothes lying around."
+                },
+                {
+                  "traditional": "常常忘了倒垃圾",
+                  "simplified": "常常忘了倒垃圾",
+                  "pinyin": "Chángcháng wàng le dào lèsè.",
+                  "english": "She often forgets to take out the rubbish."
+                }
+              ],
+              "key": 2,
+              "why": "常常把髒衣服丟在地上，好幾天都不洗: she drops dirty clothes on the floor and leaves them for days. She is quiet at night and never pays late, and the rubbish is the writer's job (the writer forgot it once).",
+              "focus": {
+                "zh": "把……丟在",
+                "en": "to drop … on"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B2L02-1-16",
+                "B2L02-1-18",
+                "B2L02-2-13",
+                "B2L03-2-07"
+              ],
+              "grammarIds": [
+                "B2L02-G10-P62"
+              ]
+            },
+            {
+              "id": "b2l14-review-passage-2-3",
+              "prompt": {
+                "traditional": "要是室友忘了掃地，會怎麼樣？",
+                "simplified": "要是室友忘了扫地，会怎么样？",
+                "pinyin": "Yàoshì shìyǒu wàng le sǎodì, huì zěnmeyàng?",
+                "english": "What happens if the roommate forgets to sweep the floor?"
+              },
+              "choices": [
+                {
+                  "traditional": "她得多付房租",
+                  "simplified": "她得多付房租",
+                  "pinyin": "Tā děi duō fù fángzū.",
+                  "english": "She has to pay more rent."
+                },
+                {
+                  "traditional": "她得去倒垃圾",
+                  "simplified": "她得去倒垃圾",
+                  "pinyin": "Tā děi qù dào lèsè.",
+                  "english": "She has to take out the rubbish."
+                },
+                {
+                  "traditional": "她得請客吃飯",
+                  "simplified": "她得请客吃饭",
+                  "pinyin": "Tā děi qǐngkè chī fàn.",
+                  "english": "She has to treat the writer to a meal."
+                },
+                {
+                  "traditional": "她得多付電費",
+                  "simplified": "她得多付电费",
+                  "pinyin": "Tā děi duō fù diànfèi.",
+                  "english": "She has to pay more of the electricity."
+                }
+              ],
+              "key": 2,
+              "why": "不管是誰沒做好，都要請客: whoever skips a chore pays for a meal, the roommate included. Last week the rule caught the writer, who forgot the rubbish and paid for the steak.",
+              "focus": {
+                "zh": "不管……，都……",
+                "en": "no matter …"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B2L13-1-12",
+                "B2L05-1-28",
+                "B2L02-1-23"
+              ],
+              "grammarIds": [
+                "B2L13-G01-P293"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

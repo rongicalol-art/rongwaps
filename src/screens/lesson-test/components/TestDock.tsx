@@ -12,13 +12,16 @@ interface TestDockProps {
   secondary?: { label: string; onPress: () => void };
   /** Re-runs the rise when it changes (each new screen). */
   riseKey?: string;
+  /** Covered (the booklet is open over it): Space is not this dock's. */
+  paused?: boolean;
   className?: string;
 }
 
 /** The test's bottom action: one big button on the canvas fade, like the practice docks. */
-export function TestDock({ label, onPress, secondary, riseKey, className }: TestDockProps) {
+export function TestDock({ label, onPress, secondary, riseKey, paused = false, className }: TestDockProps) {
   const reduceMotion = useReducedMotion();
   useEffect(() => {
+    if (paused) return undefined;
     watchTaps();
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== ' ' || event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
@@ -31,7 +34,7 @@ export function TestDock({ label, onPress, secondary, riseKey, className }: Test
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onPress]);
+  }, [onPress, paused]);
 
   return (
     <div className={cn('pointer-events-none absolute inset-x-0 bottom-0 z-40 bg-gradient-to-t from-ui-practice-canvas from-70% to-transparent px-4 pb-sheet-safe pt-6', className)}>

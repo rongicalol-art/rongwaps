@@ -1,5 +1,5 @@
 /**
- * Lobby protocol (presence, lesson chat, cheers, invites). Short keys keep frames small.
+ * Lobby protocol (presence, chat, cheers, invites). Short keys keep frames small.
  * A lesson key is `bookId * 100 + lessonId`.
  */
 import { MAX_SOCIAL_IMAGE_LENGTH, stripControl, type RaceRoomSummary, type SocialColor } from './quizRace';
@@ -10,9 +10,20 @@ export const CHEER_PHRASES = ['加油！', '好棒！', '一起考試？', '等�
 export const ACTIVITIES = ['lesson', 'cards', 'quiz', 'grammar', 'reading', 'writing', 'race', 'test'] as const;
 export type Activity = typeof ACTIVITIES[number];
 export const CHAT_MAX = 300;
+/** The one class chat. Lesson channels (a lesson key) still work for apps from before November 2026. */
 export const GLOBAL_CHAT = 0;
+/** Unread counts stop here; the app shows 9+ long before. */
+export const UNREAD_CAP = 99;
 export const CHAT_KEEP = 50;
 export const CHAT_TTL_MS = 24 * 3_600_000;
+/**
+ * The privacy update (2026-12-01, Taiwan time): from then on the class chat keeps its newest 1,000 lines for at
+ * most 180 days (loaded 50 at a time), and friends, private messages and offline profiles turn on.
+ */
+export const SOCIAL_UPDATE_FROM = Date.parse('2026-12-01T00:00:00+08:00');
+export const socialUpdateOpen = (now: number) => now >= SOCIAL_UPDATE_FROM;
+export const CLASS_CHAT_KEEP = 1000;
+export const CLASS_CHAT_MAX_AGE_MS = 180 * 24 * 3_600_000;
 export const SOCIAL_FRAME_BYTES = 4096;
 /** The Lobby lists at most this many open rooms (newest first); a full list may not include every open room. */
 export const ROOM_LIST_CAP = 20;
@@ -26,9 +37,11 @@ export function chatText(value: unknown): string {
   return Array.from(clean).slice(0, CHAT_MAX).join('');
 }
 
-/** Per account per day (UTC): chat lines (lesson, global and party chat each), cheers, party invites. */
-export const DAILY_LIMITS = { chat: 300, cheer: 200, invite: 60 } as const;
+/** Per account per day (UTC): chat lines (lesson, global and party chat each), cheers, party invites, @everyone. */
+/** `dm`: private-message pings (a message, a friend request or answer); the database itself allows 300 messages a day. */
+export const DAILY_LIMITS = { chat: 300, cheer: 200, invite: 60, everyone: 3, dm: 500 } as const;
 export const DAILY_LIMIT_ERROR = 'You\u2019ve reached today\u2019s limit. Try again tomorrow.';
+export const EVERYONE_LIMIT_ERROR = `@everyone works ${DAILY_LIMITS.everyone} times a day. Try again tomorrow.`;
 /** Most blocked accounts (the database caps the list at the same size); 100 IDs fit in one 4 KB frame. */
 export const BLOCK_MAX = 100;
 export const utcDay = (now: number) => Math.floor(now / 86_400_000);
@@ -77,8 +90,11 @@ export function parseProfileCard(value: unknown): ProfileCard | null {
   const ci = typeof data.ci === 'string' && data.ci.length <= MAX_SOCIAL_IMAGE_LENGTH ? data.ci : null;
   return { cv, b, w, st, ...(k !== null ? { k } : {}), ...(s !== null ? { s } : {}), ...(ci ? { ci } : {}) };
 }
-/** `r` turns the line into a room card (an open room announced in this lesson). */
-export interface ChatMessage { id: number; l: number; u: string; n: string; c: SocialColor; t: string; ts: number; r?: RaceRoomSummary; i?: string }
+/**
+ * `r` turns the line into a room card (an open room announced in the chat). `w`: the lesson the sender was in when
+ * writing (class chat only, never for people hidden from Online). `a`: an @everyone line (class chat only).
+ */
+export interface ChatMessage { id: number; l: number; u: string; n: string; c: SocialColor; t: string; ts: number; r?: RaceRoomSummary; i?: string; w?: number; a?: 1 }
 export interface MentionNotice { key: string; channel: number; room?: string; message: ChatMessage; read: boolean }
 export interface LessonCount { n: number; f: Person[] }
 
@@ -88,12 +104,21 @@ export type LobbyClientMessage =
   | { t: 'sub'; online: boolean; chat: number | null; v?: 2 | 3 }
   /** A fresh Online snapshot (people in this lesson first, then the most recently active; capped). */
   | { t: 'roster' }
-  | { t: 'say'; l: number; text: string; mentions?: string[] }
+  /** `all`: @everyone (class chat only, a few times a day). */
+  | { t: 'say'; l: number; text: string; mentions?: string[]; all?: true }
   | { t: 'cheer'; to: string[]; p: number }
   | { t: 'invite'; to: string[]; code: string }
   | { t: 'report'; id: number }
   | { t: 'mention-read'; key: string }
   | { t: 'mention-open'; key: string }
+  /** The class chat was seen up to this message (the account's read spot only moves forward). */
+  | { t: 'read'; id: number }
+  /** The class chat lines before `before` (after the privacy update). */
+  | { t: 'older'; before: number }
+  /** I just sent `to` a private message (stored in the database): ping them to load it. */
+  | { t: 'dm'; to: string }
+  /** This account is being deleted: remove its lines and notices from the Lobby. */
+  | { t: 'forget' }
   | { t: 'card-ask'; u: string }
   | { t: 'card'; to: string; v: ProfileCard | null }
   /** The sender's whole block list (account IDs); the Lobby hides both sides of each pair from each other. */
@@ -105,7 +130,11 @@ export type LobbyServerMessage =
   | { t: 'counts'; v: Record<string, LessonCount>; n?: number; f?: Person[] }
   | { t: 'people'; l: number | null; v: Person[] }
   | { t: 'online'; v: Person[] }
-  | { t: 'history'; l: number; v: ChatMessage[] }
+  /** Class chat only: `r` this account's read spot (0 = none), `n` lines from others after it (capped), `more` older lines exist. */
+  | { t: 'history'; l: number; v: ChatMessage[]; r?: number; n?: number; more?: boolean }
+  | { t: 'older'; v: ChatMessage[]; more: boolean }
+  /** A friend sent me a private message. */
+  | { t: 'dm'; from: string }
   | { t: 'msg'; m: ChatMessage }
   | { t: 'cheer'; from: Person; p: number }
   | { t: 'invite'; from: Person; room: RaceRoomSummary }
@@ -140,7 +169,7 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {
     const text = maskChat(chatText(data.text));
     const mentions = mentionIds(data.mentions);
-    if (text) return { t: 'say', l: Number(data.l), text, ...(mentions.length ? { mentions } : {}) };
+    if (text) return { t: 'say', l: Number(data.l), text, ...(mentions.length ? { mentions } : {}), ...(data.all === true && Number(data.l) === GLOBAL_CHAT ? { all: true as const } : {}) };
   }
   if (data.t === 'cheer' && Array.isArray(data.to) && Number.isInteger(data.p) && Number(data.p) >= 0 && Number(data.p) < CHEER_PHRASES.length) {
     const to = data.to.filter((id): id is string => typeof id === 'string' && id.length <= 64).slice(0, 8);
@@ -153,8 +182,12 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   if (data.t === 'mention-open' && typeof data.key === 'string' && data.key.length <= 100) return { t: 'mention-open', key: data.key };
   if (data.t === 'mention-read' && typeof data.key === 'string' && data.key.length <= 100) return { t: 'mention-read', key: data.key };
   if (data.t === 'report' && Number.isInteger(data.id) && Number(data.id) > 0) return { t: 'report', id: Number(data.id) };
+  if (data.t === 'read' && Number.isSafeInteger(data.id) && Number(data.id) > 0) return { t: 'read', id: Number(data.id) };
+  if (data.t === 'older' && Number.isSafeInteger(data.before) && Number(data.before) > 0) return { t: 'older', before: Number(data.before) };
+  if (data.t === 'forget') return { t: 'forget' };
   const accountId = (id: unknown): id is string => typeof id === 'string' && id.length > 0 && id.length <= 64;
   if (data.t === 'card-ask' && accountId(data.u)) return { t: 'card-ask', u: data.u };
+  if (data.t === 'dm' && accountId(data.to)) return { t: 'dm', to: data.to };
   if (data.t === 'card' && accountId(data.to)) return { t: 'card', to: data.to, v: parseProfileCard(data.v) };
   if (data.t === 'blocks' && Array.isArray(data.v) && data.v.length <= BLOCK_MAX) return { t: 'blocks', v: [...new Set(data.v.filter(accountId))] };
   throw new Error('Invalid message.');

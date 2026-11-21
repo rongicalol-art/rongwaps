@@ -1,4 +1,4 @@
-import { Fragment, Suspense, lazy, useEffect, useRef, useState } from 'react';
+import { Fragment, Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence } from 'motion/react';
 import { ActionButton, AppIcon, Drawer, PlayfulNavIcon, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
@@ -15,9 +15,10 @@ import { TestPictureFan } from './TestPictureFan';
 import { PartTabs } from './PartTabs';
 import { LessonTestTitle } from './LessonTestSummary';
 import { useLessonTestData } from '../../../hooks/useLessonTestData';
-import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
+import { ChallengeCard, GlobalPresenceButton, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
 import { isLessonTestPassed } from '../../../utils/lesson/lessonCompletion';
+import { planFitsLesson } from '../../../utils/lesson/lessonTestPlan';
 import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
 import {
   getAggregatedPart,
@@ -56,6 +57,8 @@ type BodyProps = Omit<LessonWindowProps, 'lesson' | 'isHidden'> & {
   lesson: CourseLessonProgress;
   isDesktop: boolean;
   onOpenTest: () => void;
+  /** Scripts & answers of the last finished test. */
+  onOpenTestReview: () => void;
   /** Mode picked per part; lives above the body so it survives a practice round. */
   modes: Record<number, PartModeKey>;
   onModeChange: (partId: number, mode: PartModeKey) => void;
@@ -207,12 +210,16 @@ function LessonBody({
   onOpenGrammarPart,
   onOpenReadingPart,
   onOpenTest,
+  onOpenTestReview,
 }: BodyProps) {
   const { parts, illustrationsByPart, fallbackImageSrc, fallbackIsIllustration } = useLessonWindowParts(bookId, lesson);
   // The Test tab, per lesson (a part tab or another lesson leaves it).
   const [testFor, setTestFor] = useState<number | null>(null);
   const { data: testData } = useLessonTestData(bookId, lesson.id);
   const testRecord = useAppStore((state) => (testData ? state.lessonTests[testData.lesson.key] : undefined));
+  const lastTest = useAppStore((state) => (testData ? state.lessonTestLast[testData.lesson.key] : undefined));
+  // The last finished test can be read back while its questions are still in the pack.
+  const canReviewTest = useMemo(() => Boolean(testData && lastTest && planFitsLesson(testData.lesson, lastTest.plan)), [testData, lastTest]);
   const isTest = Boolean(testData) && testFor === lesson.id;
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
@@ -323,8 +330,20 @@ function LessonBody({
   );
   const actions = isTest ? (
     // The review tone turns the start button honey: the test is the lesson's one gold action.
-    <div data-tone="review">
+    <div data-tone="review" className="flex flex-col gap-2">
       <LessonActions label="Start mock test" onStart={onOpenTest} onStartIntent={() => { void loadLessonTest().catch(() => {}); }} />
+      {canReviewTest && (
+        <ActionButton
+          variant="secondary"
+          size="lg"
+          fullWidth
+          className="whitespace-nowrap text-lg tracking-normal"
+          onClick={onOpenTestReview}
+          onPointerEnter={() => { void loadLessonTest().catch(() => {}); }}
+        >
+          Scripts &amp; answers
+        </ActionButton>
+      )}
     </div>
   ) : (
     <LessonActions
@@ -385,8 +404,9 @@ function LessonBody({
             {picture('rounded-modal')}
             {partTabs('mt-3.5')}
           </div>
-          {/* The Test tab has the Part tabs' shape: its title block stands where they list their modes. */}
-          <div className="mt-12 flex flex-col">
+          {/* The Test tab has the Part tabs' shape: its title block stands where they list their modes. The faces (chat) sit in the back button's row, so the title still lines up with the picture. */}
+          <div className="flex flex-col">
+            <div className="flex h-12 items-start justify-end"><GlobalPresenceButton /></div>
             {title(true)}
             <HereButton lesson={lessonKey(bookId, lesson.id)} />
             {modeButtons && <div className="mt-6">{modeButtons}</div>}
@@ -403,7 +423,7 @@ function LessonBody({
       <div className="min-h-0 flex-1 overflow-y-auto custom-scrollbar">
         <div className="mx-auto w-full max-w-xl">
           <div className="px-4 pt-3">
-            {backButton}
+            <div className="flex items-start justify-between">{backButton}<GlobalPresenceButton /></div>
             {picture('max-h-[38vh] rounded-modal', true)}
           </div>
           {partTabs('mx-4 mt-2')}
@@ -459,6 +479,8 @@ export function LessonWindow({ lesson, isHidden, onClose, ...bodyProps }: Lesson
   });
 
   const [testLesson, setTestLesson] = useState<number | null>(null);
+  /** The test window opens on Scripts & answers instead of a new test. */
+  const [testReview, setTestReview] = useState(false);
   const isOpen = Boolean(lesson) && !isHidden;
   const viewing = lesson ? lessonKey(bodyProps.bookId, lesson.id) : null;
   useEffect(() => {
@@ -473,7 +495,8 @@ export function LessonWindow({ lesson, isHidden, onClose, ...bodyProps }: Lesson
       modes={modes}
       onModeChange={onModeChange}
       onClose={onClose}
-      onOpenTest={() => setTestLesson(lesson.id)}
+      onOpenTest={() => { setTestReview(false); setTestLesson(lesson.id); }}
+      onOpenTestReview={() => { setTestReview(true); setTestLesson(lesson.id); }}
       {...bodyProps}
     />
   );
@@ -483,7 +506,7 @@ export function LessonWindow({ lesson, isHidden, onClose, ...bodyProps }: Lesson
       {isOpen && <LessonFrame key="lesson-window" ariaLabel={ariaLabel} onClose={onClose}>{body}</LessonFrame>}
       {isOpen && testLesson !== null && testLesson === lessonId && (
         <Suspense key="lesson-test" fallback={null}>
-          <LessonTestWindow bookId={bodyProps.bookId} lessonId={testLesson} onClose={() => setTestLesson(null)} />
+          <LessonTestWindow bookId={bodyProps.bookId} lessonId={testLesson} review={testReview} onClose={() => setTestLesson(null)} />
         </Suspense>
       )}
     </AnimatePresence>,

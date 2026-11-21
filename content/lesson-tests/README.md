@@ -2,7 +2,8 @@
 
 Every lesson ends with a **Lesson test**: a 12–15 minute mini TOCFL built from this lesson and earlier ones.
 Learners take it like the exam (no right or wrong until the end), see their results, then a **Fix round**
-goes through every miss with the answer, pinyin, English and one line on why. This doc is the authoring
+goes through every miss with the answer, pinyin, English and one line on why, and **Scripts & answers** shows the
+whole test with its scripts and every answer. This doc is the authoring
 contract; the code that enforces it is named in each section.
 
 ## How a test runs
@@ -20,7 +21,17 @@ contract; the code that enforces it is named in each section.
 - **Results**: Listening and Reading tiles, time, and up to four "to fix" points (earlier lessons named).
   **Pass at 80%** (`LESSON_TEST_PASS`): the Test tab gets a crown and the card shows the best score. The
   test never locks anything; retakes are unlimited.
-- **Fix round** (review honey tone): each missed screen again, answers checked, the reason shown.
+- **Fix round** (review honey tone): each missed screen again, answers checked, the reason shown; after Check, the
+  **Script** sheet lists the recording's lines (each with its own play button) or the text's pinyin and English.
+- **Scripts & answers** (`TestBooklet`): one page, in test order, like the answer booklet after a TOCFL: every
+  recording's script (each line with its own play button, Play all for the whole recording) or text, then each
+  question with the answer given, the right one and why; missed questions have red numbers. It opens with the
+  Chinese only; **Pinyin** puts pinyin over the characters (as in the Reader) and **English** adds the meanings.
+  It rises over the results and the done screen, and the Test tab offers it for the last finished test
+  (`lessonTestLast`, kept on the device while its questions are still in the pack).
+- **Word lookup** (`TestLookup`): in the Script sheet, Scripts & answers and a Fix round screen after Check, every
+  Chinese word works like the app's other sentences: hover or focus shows its meaning, a tap opens it in the
+  dictionary. Never during the test or before Check (it would give answers away); choices stay plain buttons.
 - **Review deck**: a missed word the learner has studied comes back in the next review (the `lapse`
   option of `markCardReviewed`, owned by `src/utils/srs/reviewProgress.ts`); an unstudied word is only
   logged, never marked learned.
@@ -55,20 +66,64 @@ Fix round), `focus: { zh, en }` (the "to fix" row), `lesson` (the lesson it prac
 (vocabulary card ids it tests; missed ones go back to review) and optional `grammarIds`. Chinese text is
 always `{ traditional, simplified, pinyin, english }` with tone-mark pinyin.
 
-### Books 1–2: TOCFL Novice / Band A (3 choices)
+### Books 1–2: TOCFL Novice / Band A (3 choices; 4 where Band A prints them)
 
 | Slot kind | TOCFL part | What the learner does | Notes |
 | --- | --- | --- | --- |
 | `hear-pick-picture` | Novice 聽力 1 · Band A 問答理解 | hears a sentence, picks one of 3 pictures | `lines` (usually one); a picture trio |
-| `picture-hear` | Novice 聽力 2 · Band A 看圖回答 | sees one picture, hears 3 sentences | answers are spoken (`speaker: "N"`), shown as sound bars |
-| `dialogue` | Novice 聽力 3 · Band A 對話理解 | short dialogue, ding, question, spoken answers | `lines` (F/M), `answerLine`; `printed: true` also prints the answers the narrator reads (Band B) |
+| `picture-hear` | Novice 聽力 2 · Band A 看圖回答 | sees one picture, hears 3 sentences | answers are spoken (`speaker: "N"`), shown as sound bars; Book 2 adds the narrator's question (`prompt`, speaker N) |
+| `dialogue` | Novice 聽力 3 · Band A 對話理解 | short dialogue, ding, question, spoken answers | `lines` (F/M), `answerLine`; `printed: true` prints 4 answers the narrator reads and plays once (`plays: 1`; Band A 對話, Band B) |
 | `read-pick-picture` | 單句理解 | reads a sentence, picks a picture | the sentence is the question's `prompt` |
 | `realia` | 看圖釋義 | a menu, receipt or notice; which statement is true | `transcript` = the exact writing in the picture |
 | `scene-gap` | 選詞填空 | one scene picture, gap sentences (＿＿) | each question has `answer` (the full sentence); a reply line follows `——` |
 | `paragraph-bank` | 完成段落 | paragraph with `{1}`…`{n}`, a word bank with one extra | `bank.length = blanks + 1`; each word used once |
-| `reading` | 閱讀理解 | a message, notice or short passage, one question | `format`: `message` (last line is the signature), `notice`, `passage` |
+| `reading` | 看圖釋義 · 閱讀理解 | a notice card, message or short passage, one question | `format`: `message` (last line is the signature), `notice`, `table`, `passage`; 3 choices on a notice card, 4 on a text |
 
 Book 1 has about 7 picture questions out of 20; Book 2 is text and audio with no new pictures.
+
+### Book 2: from the top of Band A into Band B
+
+Book 2 is A2 heading into B1 (`docs/reference/TOCFL.md`), so its tests grow up through the book and meet Book 3's shape
+at Lesson 16. No new drawings: Book 2's reading art is an older style, so a picture question uses one of the lesson's
+two reading pictures (`reading:<id>`), and timetables, ads, notices and messages are `reading` cards the app draws.
+Questions are pitched at the real exam: about a third need reasoning (a plan that changes, what someone means, what
+happens next), and every wrong answer is something the recording or text really says that is wrong here.
+
+**Lessons 1–8 (`band: "A"`, the top of Band A)**: 15 slots, 20 questions per run.
+
+| # | Slot | Kind | Questions | Versions | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | picture question | `picture-hear` | 1 | 2, sharing one picture | Reading 1's picture; the narrator asks a question about it (`prompt`, speaker N), then reads 3 answers; plays twice (Band A 看圖回答) |
+| 2–4 | three short dialogues | `dialogue` | 1 each | 2–3 | 2–4 lines, 3 spoken answers, plays twice (Band A 問答理解, 對話理解) |
+| 5–6 | two longer dialogues | `dialogue`, `printed: true`, `plays: 1` | 1 each | 2–3 | 4–6 lines (60–100 characters), 4 printed choices the narrator reads (Band A 對話) |
+| 7 | review dialogue | `dialogue`, `review: true` | 1 | 2–3 | like slots 2–4 |
+| 8 | review dialogue | `dialogue`, `printed: true`, `plays: 1`, `review: true` | 1 | 2–3 | like slots 5–6 |
+| 9–10 | two notice cards | `reading` (`notice`, `table` or `message`) | 1 each | 2 | 3 choices (Band A 看圖釋義: a timetable, an ad, a rental notice, a message) |
+| 11 | scene gaps | `scene-gap` | 3 | 2, sharing one picture | Reading 2's picture; 3 choices per gap (Band A 選詞填空) |
+| 12 | paragraph | `paragraph-bank` | 4 | 2 | about 110 characters, 4 blanks and a 5-word bank (Band A 完成段落) |
+| 13–14 | two short texts | `reading` (`message`, `notice` or `passage`) | 1 each | 2 | 80–130 characters, 4 choices (Band A 閱讀理解) |
+| 15 | review text | `reading`, `review: true` | 1 | 2 | like slots 13–14 |
+
+Review share: slots 7, 8 and 15 (3 of 20, 15%), plus review blanks or questions elsewhere to stay inside 15–45%.
+Lesson 1 reviews Book 1 Lessons 9–16 (`"book": 1`).
+
+**Lessons 9–16 (`band: "B"`, into Band B)**: 10 slots, 20 questions per run. Everything plays once with 4 printed
+choices read aloud, except the opening picture question, the last Band A question.
+
+| # | Slot | Kind | Questions | Versions | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | picture question | `picture-hear` | 1 | 2 | one of the lesson's reading pictures; spoken question, 3 spoken answers, plays twice |
+| 2–3 | two dialogues | `dialogue` | 1 each | 2–3 | 40–100 characters |
+| 4 | review dialogue | `dialogue`, `review: true` | 1 | 2–3 | 40–100 characters |
+| 5 | dialogue, two questions | `dialogue` with `intro` | 2 | 2 | 100–150 characters; each question's `answerLine` |
+| 6 | talk, two questions | `dialogue` with `intro`, one voice | 2 | 2 | an announcement, voicemail or self-introduction, 100–150 characters |
+| 7 | notice card, two questions | `reading` (`notice`, `table` or `message`) | 2 | 2 | |
+| 8 | cloze passage | `cloze` | 5 | 2 | 120–150 characters, 5 numbered blanks with 4 choices each: words and linking words |
+| 9 | passage | `reading` (`passage` or `message`) | 2 | 2 | 150–250 characters |
+| 10 | review passage | `reading` (`passage`), `review: true` | 3 | 2 | 150–250 characters |
+
+Review share: slots 4 and 10 (4 of 20, 20%). Band B's item-writing rules below apply from Lesson 9 on; the Band A
+lessons follow them wherever they print 4 choices.
 
 ### Books 3–4: TOCFL Band B (4 choices, no pictures)
 
@@ -167,6 +222,16 @@ the MRT runs until 2:00 on 1/1) (B1 L14, L16).
 | 元真, 國安, 老師 | see the book from B1 L7 on | 元真 writes to a sick Guo'an and brings apples 明天, as in B1L10-R01 (B1 L10 note); the calligraphy teacher (teacher.webp, a woman) teaches 2:00–4:00 (B1 L9 test); 元真 buys only a pair of socks at a department store (the skirts are too expensive) and suggests the bookstore with 宜文 that weekend (B1 L12 note) |
 | The B1 L5 room reading | B1L05-R03 is a girl's room (the art shows a girl and a cat) | never make its narrator Zhongming |
 
+Book 2's cast keeps its own facts the same way (the book's readings first; `npx tsx scripts/content/lessonTestBrief.ts`
+lists each lesson's):
+
+| Character | From the book | Added by the tests |
+| --- | --- | --- |
+| 山本良介 Ryosuke | Japanese, lives in the school dorm, was shy before Taiwan; met a girl online, invited her and her friends to the school dance (B2 L1) | writes 美心 a message after the dance: the girl came with her friends, they walked on campus afterwards, he asks where to take her next; the girl dances well and loves to joke (B2 L1 test) |
+| 美心 | studies in the Italian department; shares a dorm room with 可欣 (B2 L9) | going to the library one Tuesday afternoon, where 可欣's note asks her to return two books and borrow a Japanese history book (B2 L9 test) |
+| 可欣 | takes a Japanese history course with quizzes, an oral exam and a composition (B2 L9) | has class until 8 p.m. that Tuesday (B2 L9 test) |
+| 以凡 | starts at the Chinese Language Center next month in B2 L16 | never an unnamed exchange student at the center before L16 |
+
 Two teachers surnamed 王 already appear (a man in B1 L1, a Taiwanese woman in B1 L2): avoid 王老師 in new tests. Where the book disagrees with itself (Yiwen swims 不太好 in B1L06-R01 but 不錯 in R03; Guo'an's 4:00 class vs his 4–6 bakery job; 元真's apples 明天 vs 今天), never test that fact.
 
 How the book characters look in the B1 L11–16 reading art (keep new picture briefs consistent):
@@ -216,6 +281,10 @@ python3 scripts/assets/lesson-test-art/cut.py b1l04-drinks:strip b1l04-menu:sing
    (the lesson's words, grammar points, dialogues, reading pictures and what earlier lessons taught).
 2. Draft the lesson to the slot plan above, then check it until it is clean:
    `npx tsx scripts/content/checkLessonTest.ts <draft.json> --no-pictures` (same rules as the content tests).
+   The checker only sees characters, so also read the review list from
+   `npx tsx scripts/content/lessonTestScopeScan.ts <draft.json>`: words built from taught pieces that are not
+   taught themselves (各位, 過生日) and grammar the book teaches later (早就, V下來). Reword any that is more than
+   the sum of its pieces.
 3. Blind review: `npx tsx scripts/content/lessonTestSheet.ts <draft.json> --mode learner --out sheet.md`
    (and `--mode choices`) gives reviewers the test without its keys. Two solvers answer it blind, one only
    from the choices, and a language reviewer reads the full draft; every disagreement is fixed or justified.
@@ -231,13 +300,16 @@ its own pace per voice (`YATING_PACE`: near natural speed, evened out between th
 short pause at commas). The ding is a recorded small bell (`scripts/audio/sounds/lesson-test-ding.mp3`, CC0).
 The script's default engine is the older local Qwen studio voices (Vivian, Dylan, Serena).
 
-1. Generate: `<venv>/bin/python scripts/audio/generateLessonTestAudio.py --engine yating --lessons b1l01 … b1l16`
-   (`<venv>` = `output/qwen-pilot-venv` in the main checkout; keys space-separated). Name every lesson
-   already voiced: the manifest is rewritten with only the named lessons.
+1. Generate: `<venv>/bin/python scripts/audio/generateLessonTestAudio.py --engine yating --lessons b2l01 b2l09`
+   (`<venv>` = `output/qwen-pilot-venv` in the main checkout; keys space-separated). The batch holds only the
+   lessons named, which is enough: publishing adds them to the receipt and keeps every other test's clips, and
+   the A–D letters are the published ones, and a line another test already published in the same voice and pace
+   keeps that recording (so it is never re-voiced or paid for twice). Within one batch, name every lesson it has
+   voiced so far (its manifest is rewritten from the list).
 2. Check: `checkStudioBatch.py output/lesson-test-audio` (independent ASR must hear the whole line; endings
    must fade; lines the owner listened to and accepted are listed in the batch's `asr-reviewed.json`).
    Rejected takes are re-voiced by running step 1 again, at a speed nudged by at most 0.05.
 3. Publish: `node --env-file=<.env> --import tsx scripts/audio/publishLessonTestAudio.ts --upload`
-   (uploads to R2 under `lesson-test-studio/v1/`, writes the receipt with each test's voices).
+   (uploads to R2 under `lesson-test-studio/v1/`, merges the batch's clips and voices into the receipt).
 4. Export: `npm run lesson-tests:export -- --strict` (fails if a spoken line has no recording), then commit
    the content, receipt and pack together.

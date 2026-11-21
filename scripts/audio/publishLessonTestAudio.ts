@@ -10,7 +10,9 @@
  * uploaded once to its immutable hashed key and verified before the receipt is written. `--male` picks the
  * male dialogue voice the owner chose by ear (Qwen batches). A Yating batch (generateLessonTestAudio.py
  * --engine yating) also writes voices.json, each test's voice per role, copied into the receipt as
- * `lessonVoices`. R2 settings come from the environment and are never printed.
+ * `lessonVoices`. A batch may hold only some tests (new ones, or re-voiced ones): its clips, voices and sounds are
+ * added to the receipt and replace what they name, and everything else in the receipt stays. R2 settings come from
+ * the environment and are never printed.
  */
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -28,6 +30,13 @@ interface Clip {
   quality?: { integratedLufs: number; truePeakDbfs: number; contentChecked?: boolean };
 }
 
+interface Receipt {
+  voices: Record<'F' | 'M' | 'N', string>;
+  lessonVoices?: Record<string, Record<'F' | 'M' | 'N', string>>;
+  clips: Record<string, { file: string; sha256: string; duration?: number }>;
+  sounds: { ding: { file: string; sha256: string }; letters: Record<string, { file: string; sha256: string }> };
+}
+
 const ROOT = process.cwd();
 const BATCH = path.join(ROOT, 'output/lesson-test-audio');
 const RECEIPT = path.join(ROOT, 'content/audio/lesson_test_audio.json');
@@ -40,8 +49,9 @@ async function main() {
   const male = MALE[process.argv.includes('--male') ? maleArg : 'dylan'];
   if (!male) throw new Error('--male must be dylan or uncle_fu');
   const entries = JSON.parse(await readFile(path.join(BATCH, 'manifest.json'), 'utf8')) as Clip[];
-  const sounds = JSON.parse(await readFile(path.join(BATCH, 'sounds.json'), 'utf8')) as { ding: Clip; letters: Record<string, Clip> };
-  const files: Clip[] = [...entries, sounds.ding, ...Object.values(sounds.letters)];
+  const sounds = JSON.parse(await readFile(path.join(BATCH, 'sounds.json'), 'utf8')) as { ding: Clip; letters?: Record<string, Clip> };
+  const letters = sounds.letters ?? {};
+  const files: Clip[] = [...entries, sounds.ding, ...Object.values(letters)];
   for (const entry of entries) {
     const q = entry.quality;
     if (!q || q.integratedLufs < -17 || q.integratedLufs > -9 || q.truePeakDbfs > -1 || !q.contentChecked) {
@@ -90,14 +100,21 @@ async function main() {
   const lessonVoices = await readFile(path.join(BATCH, 'voices.json'), 'utf8')
     .then((text) => JSON.parse(text) as Record<string, Record<'F' | 'M' | 'N', string>>)
     .catch(() => undefined);
-  const receipt = {
+  // The receipt keeps every test this batch doesn't hold (a batch can be only the new tests).
+  const previous = await readFile(RECEIPT, 'utf8').then((text) => JSON.parse(text) as Receipt).catch(() => undefined);
+  const clips: Receipt['clips'] = { ...previous?.clips };
+  for (const entry of entries) clips[entry.key] = { file: entry.file, sha256: entry.sha256, duration: entry.duration };
+  const mergedVoices = { ...previous?.lessonVoices, ...lessonVoices };
+  const receipt: Receipt = {
     voices: { F: 'Vivian', M: male, N: 'Serena' },
-    ...(lessonVoices ? { lessonVoices } : {}),
-    clips: Object.fromEntries([...entries].sort((a, b) => a.key.localeCompare(b.key))
-      .map((entry) => [entry.key, { file: entry.file, sha256: entry.sha256, duration: entry.duration }])),
+    ...(Object.keys(mergedVoices).length ? { lessonVoices: mergedVoices } : {}),
+    clips: Object.fromEntries(Object.entries(clips).sort(([a], [b]) => a.localeCompare(b))),
     sounds: {
       ding: { file: sounds.ding.file, sha256: sounds.ding.sha256 },
-      letters: Object.fromEntries(Object.entries(sounds.letters).map(([letter, clip]) => [letter, { file: clip.file, sha256: clip.sha256 }])),
+      // A Yating batch reuses the published A–D letters instead of rendering them again.
+      letters: Object.keys(letters).length
+        ? Object.fromEntries(Object.entries(letters).map(([letter, clip]) => [letter, { file: clip.file, sha256: clip.sha256 }]))
+        : previous?.sounds.letters ?? {},
     },
   };
   await writeFile(RECEIPT, `${JSON.stringify(receipt, null, 2)}\n`);

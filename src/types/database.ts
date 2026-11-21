@@ -82,6 +82,34 @@ export type ProfileSettings = { [key: string]: Json | undefined };
 export interface Database {
   public: {
     Tables: {
+      /** Study together friends: adds go through add_friend/remove_friend (20261119170000). */
+      friend_adds: {
+        Row: { adder: string; added: string; created_at: string };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
+      /** Private messages between two friends; written only by send_direct_message. */
+      direct_messages: {
+        Row: { id: number; sender: string; recipient: string; body: string; created_at: string };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
+      /** Each reader's read spot per private conversation (mark_direct_read). */
+      direct_reads: {
+        Row: { reader: string; other: string; last_id: number };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
+      /** The visit card a learner last shared and when they were last online (save_profile_card). */
+      profile_cards: {
+        Row: { user_id: string; card: Json | null; last_seen: string | null; updated_at: string };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
       user_blocks: {
         Row: { blocker: string; blocked: string; blocked_name: string; blocked_color: string; created_at: string };
         Insert: { blocker?: string; blocked: string; blocked_name?: string; blocked_color?: string; created_at?: string };
@@ -275,6 +303,13 @@ export interface Database {
       };
       block_user: { Args: { p_user: string; p_name?: string; p_color?: string }; Returns: boolean };
       report_user: { Args: { p_target: string; p_reason: string; p_place: string; p_message?: string | null }; Returns: boolean };
+      friend_people: { Args: Record<PropertyKey, never>; Returns: { user_id: string; name: string; color: string; i_added: boolean; added_me: boolean }[] };
+      add_friend: { Args: { p_user: string }; Returns: string };
+      remove_friend: { Args: { p_user: string }; Returns: undefined };
+      direct_inbox: { Args: Record<PropertyKey, never>; Returns: { other: string; last_id: number; last_sender: string; last_body: string; last_at: string; unread: number }[] };
+      send_direct_message: { Args: { p_to: string; p_body: string }; Returns: { id: number; sender: string; recipient: string; body: string; created_at: string } };
+      mark_direct_read: { Args: { p_other: string; p_id: number }; Returns: undefined };
+      save_profile_card: { Args: { p_card: Json | null; p_seen: boolean }; Returns: undefined };
       submit_report: { Args: { p_target: string; p_reason: string; p_place: string; p_message?: string | null; p_message_id?: number | null; p_name?: string | null; p_photo?: string | null }; Returns: number };
       /** The caller's own "I'm 18 or older"; returns the first confirmation time. */
       confirm_age: {

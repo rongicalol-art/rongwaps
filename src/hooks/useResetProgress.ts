@@ -66,6 +66,7 @@ export function useResetProgress({
       lessonDoneMarks: appState.lessonDoneMarks,
       lessonTests: appState.lessonTests,
       lessonTestAttempt: appState.lessonTestAttempt,
+      lessonTestLast: appState.lessonTestLast,
     };
 
     appState.resetProgress();

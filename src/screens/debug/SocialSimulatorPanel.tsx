@@ -15,7 +15,7 @@ export function SocialSimulatorPanel() {
     if (sim.isSimulating()) sim.stopSimulator(); else sim.startSimulator();
     setOn(sim.isSimulating());
   };
-  const run = (key: 'invite' | 'cheer' | 'chatBurst' | 'mention') => () => { void load().then((sim) => { if (sim.isSimulating()) sim.simulate[key](); }); };
+  const run = (key: 'invite' | 'cheer' | 'chatBurst' | 'mention' | 'everyone' | 'dm' | 'friendRequest') => () => { void load().then((sim) => { if (sim.isSimulating()) sim.simulate[key](); }); };
   return (
     <section className="max-w-xl space-y-4 rounded-feature border-2 border-ui-divider p-5">
       <div>
@@ -35,6 +35,9 @@ export function SocialSimulatorPanel() {
           <ActionButton size="sm" variant="secondary" onClick={run('cheer')}>Cheer me</ActionButton>
           <ActionButton size="sm" variant="secondary" onClick={run('chatBurst')}>Chat burst</ActionButton>
           <ActionButton size="sm" variant="secondary" onClick={run('mention')}>Mention me</ActionButton>
+          <ActionButton size="sm" variant="secondary" onClick={run('everyone')}>@everyone</ActionButton>
+          <ActionButton size="sm" variant="secondary" onClick={run('dm')}>Message me</ActionButton>
+          <ActionButton size="sm" variant="secondary" onClick={run('friendRequest')}>Friend request</ActionButton>
         </div>
       )}
     </section>

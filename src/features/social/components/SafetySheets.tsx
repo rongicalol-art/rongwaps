@@ -12,13 +12,15 @@ const REASONS: Array<[ReportReason, string]> = [
   ['other', 'Something else'],
 ];
 
-/** The ⋯ on a classmate's profile: Report and Block, out of the way of friendly visits. */
+/** The ⋯ on a classmate's profile: Remove friend, Report and Block, out of the way of friendly visits. */
 export function ProfileSafetyMenu({ person }: { person: Person }) {
   const [open, setOpen] = useState(false);
   const target = { u: person.u, n: person.n, c: person.c };
+  const friend = useAppStore(state => !!state.socialFriends?.some(item => item.u === person.u && item.iAdded && item.addedMe));
   return (
     <DropdownMenu label={`More options for ${person.n}`} open={open} onOpenChange={setOpen} widthClassName="w-56"
       renderTrigger={(props) => <IconActionButton {...props} size="md" label={`More options for ${person.n}`} icon={<AppIcon name="more" size={20} />} />}>
+      {friend && <DropdownMenuItem icon={<AppIcon name="removeFriend" size={18} />} onClick={() => { setOpen(false); void import('../friendsController').then(module => module.removeFriend(person.u)); }}>Remove friend</DropdownMenuItem>}
       <DropdownMenuItem icon={<AppIcon name="report" size={18} />} onClick={() => { setOpen(false); openSafety({ kind: 'report', person: target, place: 'profile', photo: person.i }); }}>Report {person.n}</DropdownMenuItem>
       <DropdownMenuItem icon={<AppIcon name="block" size={18} />} className="text-feedback-danger-text" onClick={() => { setOpen(false); openSafety({ kind: 'block', person: target, place: 'profile' }); }}>Block {person.n}</DropdownMenuItem>
     </DropdownMenu>

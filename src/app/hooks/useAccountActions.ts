@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { authService } from '../../services/authService';
 import { removeAllProfileMedia } from '../../services/profileMedia';
 import { userService } from '../../services/userService';
+import { forgetStudyTogether } from '../../features/social';
 import { useAppStore } from '../../store/useAppStore';
 import { downloadJsonFile } from '../../utils/browser/downloadFile';
 import { debugLogger } from '../../utils/debug/debugLogger';
@@ -33,6 +34,9 @@ export function useAccountActions() {
       await removeAllProfileMedia(userId).catch((error) => debugLogger.warn('Auth', 'Profile photo removal failed:', error));
     }
     await userService.deleteMyAccount();
+    // Study together keeps class chat lines outside the database. Only after the deletion worked (a failed one keeps
+    // everything), over the connection that is still open; never blocks the rest.
+    await forgetStudyTogether().catch(() => {});
 
     try {
       // The user no longer exists server-side; only the local session is left to drop.

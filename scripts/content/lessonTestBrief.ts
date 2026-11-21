@@ -34,8 +34,14 @@ const readings = (book: number) => {
   return readingsByBook.get(book)!;
 };
 const lessonOf = (id: string) => Math.floor(vocabOrder(id) / 10);
-/** Reading speakers that are not characters (Book 3 essays are read by 旁白). */
-const NARRATORS = new Set(['narrator', '旁白']);
+/** Reading speakers that are not characters (Book 3 essays are read by 旁白) or are roles, not names. */
+const NARRATORS = new Set(['narrator', '旁白', '店員', '同學', '大家', '小孩A', '小孩B']);
+/** Band A to Book 2 Lesson 8, then Band B (content/lesson-tests/README.md). */
+const bandOf = (book: number, lesson: number) => (book === 1 || (book === 2 && lesson <= 8) ? 'A' : 'B');
+const BAND_NOTE = {
+  A: 'A (3 choices; printed dialogues and reading texts 4; Book 1 uses pictures)',
+  B: 'B (4 choices; a picture with spoken answers keeps 3)',
+};
 const wordRow = (word: VocabEntry) => `| ${word.id} | ${word.traditional} | ${word.simplified ?? ''} | ${word.pinyin ?? ''} | ${word.simple ?? word.meaning ?? ''} | ${word.pos ?? ''} |`;
 
 function brief(key: string): string {
@@ -48,7 +54,7 @@ function brief(key: string): string {
   const out: string[] = [];
   out.push(`# Brief: Book ${book} Lesson ${lesson} — ${title}`);
   out.push('');
-  out.push(`- Key: \`${key}\` · band ${book <= 2 ? 'A (3 choices; Book 1 uses pictures)' : 'B (4 choices, text only)'} · file: \`content/lesson-tests/book-${book}/lesson${String(lesson).padStart(2, '0')}.json\``);
+  out.push(`- Key: \`${key}\` · band ${BAND_NOTE[bandOf(book, lesson)]} · file: \`content/lesson-tests/book-${book}/lesson${String(lesson).padStart(2, '0')}.json\``);
   out.push(`- Ids start with \`${key}-\`. Grammar ids every run must test: ${pages.map((page) => `\`${page.id}\``).join(', ') || 'none'}.`);
   out.push('- Taught = the words below for this lesson and every earlier lesson (and earlier books), plus words in this book\'s grammar examples up to this lesson, numerals, and `allowWords`.');
   out.push('');
@@ -87,7 +93,9 @@ function brief(key: string): string {
   }
   const names = new Set<string>();
   for (const reading of readings(book).filter((entry) => entry.lessonId <= lesson)) {
-    for (const line of reading.paragraphs) if (line.speaker && !NARRATORS.has(line.speaker)) names.add(line.speaker);
+    for (const line of reading.paragraphs) {
+      for (const name of line.speaker?.split('、') ?? []) if (!NARRATORS.has(name)) names.add(name);
+    }
   }
   out.push('');
   out.push(`## Names from the book so far (add the ones you use to \`allowWords\`)`);

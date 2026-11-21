@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ActionButton, AppIcon, AvatarStack, Drawer, DropdownMenu, DropdownMenuItem, IconActionButton } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer, IconActionButton, SegmentedControl } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import type { SocialPanel } from '../../../store/slices/socialSlice';
-import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
+import type { Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
-import { defaultSelection, describeSelection } from '../socialText';
-import { ChatThread } from './ChatThread';
+import { defaultSelection, describeSelection, seenLabel } from '../socialText';
+import { ChatThread, DirectThread } from './ChatThread';
+import { ChatList } from './ChatList';
+import { updateOpen } from '../socialUpdate';
+import { loadRecent } from '../friendsController';
 import { EmptyNote, MuteButton, PanelTabs, PanelTitle, PersonRow, lessonHeading } from './SocialBits';
 import { VisitProfile } from './VisitProfile';
 import { ProfileSafetyMenu } from './SafetySheets';
@@ -39,10 +42,9 @@ function useOthers(list: Person[], hideRoom = false) {
 const close = () => useAppStore.getState().setSocial({ socialPanel: null, socialMentionTarget: null });
 const setPanel = (socialPanel: SocialPanel) => useAppStore.getState().setSocial({ socialPanel });
 
-/** Classmates drawer: who is online (current lesson first, then other lessons) and the chat thread. */
+/** Classmates drawer: the class chat, and who is online (current lesson first, then other lessons). */
 export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'people' }> }) {
-  const currentLesson = useCurrentLesson();
-  const lesson = panel.chatLesson ?? currentLesson;
+  const lesson = useCurrentLesson();
   const people = useOthers(useAppStore(state => state.socialPeople));
   const online = useOthers(useAppStore(state => state.socialOnline));
   const onlineTotal = useOnlineTotal();
@@ -52,19 +54,44 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const roomPlayers = useAppStore(state => state.race?.players);
   const inMyRoom = (person: Person) => !!roomPlayers?.some(player => player.id === person.u && !player.left);
   const rooms = useAppStore(state => state.socialRooms);
-  const [roomMenuOpen, setRoomMenuOpen] = useState(false);
   const lessonTotal = useLessonTotal(lesson);
   const { classmates, here, others } = useClassmates(people, online, lesson, lessonTotal);
   const moreHere = Math.max(0, lessonTotal - here.length);
   const moreOnline = Math.max(0, onlineTotal - classmates.length - moreHere);
-  const crowd = classmates.slice(0, 4).map(person => ({ name: person.n, color: person.c, src: person.i }));
   const visit = panel.tab === 'online' ? panel.visit : undefined;
   const selected = visit ? classmates.find(person => person.u === visit.u) ?? visit : null;
   // Mention and Invite only reach people online now.
   const selectedOnline = !!selected && classmates.some(person => person.u === selected.u);
   const setProfile = (person: Person | null) => setPanel({ ...panel, visit: person ?? undefined });
-  const mention = (person: Person) => useAppStore.getState().setSocial({ socialMentionDraft: person, socialPanel: { kind: 'people', tab: 'chat', chatScope: 'global' } });
-  const scope = lesson === null ? 'global' : panel.chatScope ?? 'lesson';
+  const mention = (person: Person) => useAppStore.getState().setSocial({ socialMentionDraft: person, socialPanel: { kind: 'people', tab: 'chat', thread: 'class' } });
+  // After the privacy update: Chats (class chat, requests, conversations), friends, offline profiles.
+  const inbox = updateOpen();
+  const friends = useAppStore(state => state.socialFriends);
+  const saved = useAppStore(state => state.socialSaved);
+  const recentRows = useAppStore(state => state.socialRecent);
+  const me = useAppStore(state => state.socialMe);
+  const thread = inbox && panel.tab === 'chat' ? panel.thread : undefined;
+  const friendOf = (u: string) => friends?.find(person => person.u === u && person.iAdded && person.addedMe);
+  const photoOf = (u: string) => classmates.find(person => person.u === u)?.i ?? saved[u]?.card?.i;
+  const threadFriend = thread && thread !== 'class' ? friendOf(thread) : undefined;
+  const threadPerson: Person | null = threadFriend ? { u: threadFriend.u, n: threadFriend.n, c: threadFriend.c, l: null, a: null, ...(photoOf(threadFriend.u) ? { i: photoOf(threadFriend.u) } : {}) } : null;
+  const onlineNow = new Set(classmates.map(person => person.u));
+  const recent = recentRows.filter(row => row.card?.n && row.u !== me && !onlineNow.has(row.u))
+    .map(row => ({ person: { u: row.u, n: row.card!.n!, c: socialColor(row.card!.c ?? 'blue'), l: null, a: null, ...(row.card?.i ? { i: row.card.i } : {}) } as Person, seen: row.seen }));
+  useEffect(() => { if (inbox && panel.tab === 'online' && !selected) void loadRecent(); }, [inbox, panel.tab, selected]);
+  const openThread = (u: string) => setPanel({ kind: 'people', tab: 'chat', thread: u });
+  const footer = () => {
+    if (pending) return <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton>;
+    if (!selected) return panel.tab === 'online' ? <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton> : null;
+    const friend = inbox && friendOf(selected.u);
+    if (!selectedOnline) return friend ? <ActionButton fullWidth size="lg" onClick={() => openThread(selected.u)}><AppIcon name="chat" size={20} />Message</ActionButton> : null;
+    const talk = friend
+      ? <ActionButton size="lg" variant="secondary" aria-label="Message" onClick={() => openThread(selected.u)}><AppIcon name="chat" size={20} /><span className="hidden sm:inline">Message</span></ActionButton>
+      : <ActionButton size="lg" variant="secondary" aria-label="Mention" onClick={() => mention(selected)}><AppIcon name="at" size={20} /><span className="hidden sm:inline">Mention</span></ActionButton>;
+    if (inMyRoom(selected)) return <div className="flex">{talk}</div>;
+    return <div className="flex gap-2.5">{talk}<div className="min-w-0 flex-1"><ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton></div></div>;
+  };
+  const footerContent = footer();
   const invite = (person: Person) => { void createRace(identity, defaultSelection(person.l ?? lesson), true, [person.u]); };
   const heading = (key: number | null) => {
     if (key === null) return 'Browsing the course';
@@ -74,56 +101,44 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   };
   return (
     <Drawer isOpen onClose={close}
-      title={panel.tab === 'chat'
+      title={thread && !selected
         ? <div className="mr-1 flex min-w-0 flex-1 items-center gap-2">
-            <div className="min-w-0 flex-1">
-              <DropdownMenu label="Choose chat" open={roomMenuOpen} onOpenChange={setRoomMenuOpen} align="start" gapClassName="mt-1" widthClassName="w-64"
-                renderTrigger={(triggerProps) => (
-                  <button {...triggerProps} type="button" className="flex max-w-full items-center gap-1.5 rounded-control py-1 pr-1.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring">
-                    <h2 className="min-w-0 truncate text-xl font-black text-ui-ink-strong">{scope === 'global' ? 'Everyone' : lessonHeading(lesson).eyebrow ?? 'Lesson chat'}</h2>
-                    <AppIcon name="dropdown" size={16} className="shrink-0 text-ui-muted-strong" />
-                  </button>
-                )}>
-                {lesson !== null && <>
-                  <DropdownMenuItem active={scope === 'lesson'} onClick={() => { setRoomMenuOpen(false); useAppStore.getState().setSocial({ socialMentionTarget: null }); setPanel({ ...panel, chatScope: 'lesson', chatLesson: undefined }); }}>{lessonHeading(lesson).eyebrow}</DropdownMenuItem>
-                  <DropdownMenuItem active={scope === 'global'} onClick={() => { setRoomMenuOpen(false); useAppStore.getState().setSocial({ socialMentionTarget: null }); setPanel({ ...panel, chatScope: 'global', chatLesson: undefined }); }}>Everyone</DropdownMenuItem>
-                </>}
-                <DropdownMenuItem onClick={() => { setRoomMenuOpen(false); setPanel({ kind: 'people', tab: 'online' }); }}>Who’s online</DropdownMenuItem>
-              </DropdownMenu>
-              {(scope === 'global' ? onlineTotal : lessonTotal) > 0 && (
-                <button type="button" onClick={() => setPanel({ kind: 'people', tab: 'online' })} className="flex items-center gap-1.5 rounded-xs text-xs font-bold text-ui-muted outline-none hover:text-ui-ink focus-ring-inline">
-                  <AvatarStack people={(scope === 'global' ? classmates : here).slice(0, 3).map(person => ({ name: person.n, color: person.c, src: person.i }))} size="sm" />
-                  {scope === 'global' ? `${onlineTotal} online` : `${lessonTotal} in this lesson`}
-                </button>
-              )}
-            </div>
+            <IconActionButton size="md" label="Back to chats" icon={<AppIcon name="back" size={20} />} onClick={() => setPanel({ kind: 'people', tab: 'chat' })} />
+            {thread === 'class' || !threadPerson
+              ? <h2 className="min-w-0 flex-1 truncate text-xl font-black text-ui-ink-strong">Class chat</h2>
+              : <button type="button" onClick={() => setPanel({ kind: 'people', tab: 'online', visit: threadPerson })} className="flex min-w-0 flex-1 items-center gap-2.5 rounded-control py-1 pr-2 text-left outline-none hover:bg-ui-hover focus-ring">
+                  <Avatar name={threadPerson.n} color={threadPerson.c} src={threadPerson.i} size="md" live={onlineNow.has(threadPerson.u)} />
+                  <span className="min-w-0">
+                    <span className="block truncate text-lg font-black leading-tight text-ui-ink-strong">{threadPerson.n}</span>
+                    <span className="block truncate text-xs font-bold text-ui-muted">{onlineNow.has(threadPerson.u) ? 'Online' : seenLabel(saved[threadPerson.u]?.seen)}</span>
+                  </span>
+                </button>}
+          </div>
+        : !selected
+        ? <div className="mr-1 flex min-w-0 flex-1 items-center gap-2">
+            <SegmentedControl ariaLabel="Chats or who’s online" value={panel.tab} onChange={tab => setPanel({ kind: 'people', tab })}
+              options={[{ value: 'chat', label: inbox ? 'Chats' : 'Chat' }, { value: 'online', label: 'Online' }]} className="min-w-0 flex-1" />
             <MuteButton />
           </div>
-        : selected ? <div className="flex flex-1 items-center justify-between gap-2">
+        : <div className="flex flex-1 items-center justify-between gap-2">
             <IconActionButton size="md" label="Back to everyone online" icon={<AppIcon name="back" size={20} />} onClick={() => setProfile(null)} />
             <ProfileSafetyMenu person={selected} />
-          </div> : `Online${onlineTotal || classmates.length ? ` ${onlineTotal || classmates.length}` : ''}`}
+          </div>}
       tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"
       className="top-auto h-[80dvh] max-h-[80dvh] rounded-t-3xl md:h-full md:max-h-full md:rounded-none"
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">
-      {panel.tab === 'chat' ? <>
-        <ChatThread key={`${scope}:${lesson}`} lesson={scope === 'global' ? GLOBAL_CHAT : lesson ?? GLOBAL_CHAT} />
-      </> : <>
+      {panel.tab === 'chat' ? (!inbox || thread === 'class' ? <ChatThread /> : threadPerson ? <DirectThread key={threadPerson.u} friend={threadPerson} /> : <ChatList />) : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
-          {!selected && (
-            <button type="button" onClick={() => setPanel({ ...panel, tab: 'chat', chatScope: 'global', chatLesson: undefined })} className="flex w-full items-center gap-3 border-b-2 border-ui-divider py-3 text-left outline-none hover:bg-ui-hover focus-ring-inline">
-              {crowd.length > 0 ? <AvatarStack people={crowd} total={onlineTotal || classmates.length} max={4} size="lg" /> : <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-primary text-sm font-black text-brand-on-primary">{onlineTotal || classmates.length}</span>}
-              <span className="min-w-0 flex-1"><span className="block text-base font-black text-ui-ink-strong">Everyone</span><span className="block truncate text-sm font-bold text-ui-muted">{onlineTotal || classmates.length} online</span></span>
-              <AppIcon name="next" size={18} className="text-ui-muted" />
-            </button>
-          )}
           {!selected && rooms.map(room => <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-4 last:border-b-0">
             <AvatarStack people={room.players.map(player => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="sm" />
             <span className="min-w-0 flex-1"><span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span><span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span></span>
             <ActionButton size="sm" loading={pending} loadingLabel="Join" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
           </div>)}
           {selected ? <VisitProfile key={selected.u} person={selected} lesson={lesson} online={selectedOnline} />
-          : classmates.length === 0 ? <EmptyNote>Nobody else is online.</EmptyNote> : <>
+          : classmates.length === 0 ? <>
+            <EmptyNote>Nobody else is online.</EmptyNote>
+            {recent.length > 0 && <RecentlyHere rows={recent} open={setProfile} />}
+          </> : <>
             {lesson !== null && here.length > 0 && (
                 <>
                   <h3 className="pb-1 pt-3 text-xs font-black text-ui-muted-strong">In this lesson</h3>
@@ -140,12 +155,29 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
               </div>
             ))}
             <MoreNote count={moreOnline} where="online" />
+            {recent.length > 0 && <RecentlyHere rows={recent} open={setProfile} />}
           </>}
         </div>
-        {(pending || (selected ? selectedOnline : panel.tab === 'online')) && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? inMyRoom(selected) ? <ActionButton fullWidth size="lg" variant="secondary" onClick={() => mention(selected)}><AppIcon name="at" size={20} />Mention</ActionButton> : <div className="flex gap-2.5"><ActionButton size="lg" variant="secondary" aria-label="Mention" onClick={() => mention(selected)}><AppIcon name="at" size={20} /><span className="hidden sm:inline">Mention</span></ActionButton><div className="min-w-0 flex-1"><ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton></div></div> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
+        {footerContent && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{footerContent}</div>}
       </>}
     </Drawer>
   );
+}
+
+/** Online → Recently here: classmates who were online lately (their saved profile), newest first. */
+function RecentlyHere({ rows, open }: { rows: Array<{ person: Person; seen: number | null }>; open: (person: Person) => void }) {
+  return <>
+    <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Recently here</h3>
+    {rows.map(({ person, seen }) => (
+      <button key={person.u} type="button" onClick={() => open(person)} className="flex w-full items-center gap-3 border-b-2 border-ui-divider py-3 text-left outline-none last:border-b-0 hover:bg-ui-hover focus-ring-inline">
+        <Avatar name={person.n} color={person.c} size="lg" src={person.i} />
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-base font-black text-ui-ink-strong">{person.n}</span>
+          <span className="block truncate text-sm font-bold text-ui-muted">{seenLabel(seen)}</span>
+        </span>
+      </button>
+    ))}
+  </>;
 }
 
 /** Practice hub → Challenge: pick people (this lesson or anyone online) or join an open room. */

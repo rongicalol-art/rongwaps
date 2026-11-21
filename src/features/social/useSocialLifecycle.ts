@@ -6,6 +6,8 @@ import { GLOBAL_CHAT } from '../../../shared/lobby';
 import { isNameAllowed } from '../../../shared/nameFilter';
 import { lobby, startLobby, stopLobby } from './lobbyController';
 import { presenceFor } from './presence';
+import { updateOpen } from './socialUpdate';
+import { socialColor } from '../../../shared/quizRace';
 import { loadBlocks } from './safety';
 
 const HIDDEN_CLOSE_MS = 30_000;
@@ -42,17 +44,31 @@ export function useSocialLifecycle() {
   // The block list loads once per account; the Lobby gets it on every connect.
   useEffect(() => { if (userId) void loadBlocks(userId); }, [userId]);
 
+  // After the privacy update: keep this learner's saved profile (offline visits, "Seen 2 h ago") current while
+  // they're connected; the switches in Settings decide what it holds.
+  const live = useAppStore(state => state.socialStatus === 'live');
+  const sharing = useAppStore(useShallow(state => [state.showProfile, state.showOnline]));
+  useEffect(() => {
+    if (!userId || !live || !updateOpen()) return;
+    const save = () => {
+      void Promise.all([import('./friendsController'), import('./profileCard')]).then(([friends, profile]) =>
+        friends.saveMyProfile({ n: identity.name, c: socialColor(identity.color), ...(identity.image ? { i: identity.image } : {}) }, profile.buildProfileCard));
+    };
+    save();
+    const timer = setInterval(save, 10 * 60_000);
+    return () => clearInterval(timer);
+  }, [userId, live, sharing, identity.name, identity.color, identity.image]);
+
   // Presence: only lesson and activity changes, never per card.
   const presence = useAppStore(useShallow((state) => {
     const { lesson, a } = presenceFor(state);
     const panel = state.socialPanel;
-    const chat = panel?.kind === 'people' && panel.tab === 'chat' ? panel.chatScope === 'global' ? GLOBAL_CHAT : panel.chatLesson ?? lesson ?? GLOBAL_CHAT : lesson;
-    return { lesson, a, show: state.showOnline, online: panel?.kind === 'people' || panel?.kind === 'challenge', chat };
+    return { lesson, a, show: state.showOnline, online: panel?.kind === 'people' || panel?.kind === 'challenge' };
   }));
   useEffect(() => {
     lobby.here(presence.lesson, presence.a, presence.show, identity.image);
-    // The current lesson's chat is followed so the unread dot and room cards arrive; Online only while open.
-    lobby.subscribe(presence.online, presence.chat);
+    // Everyone follows the class chat, so the new-message count is live on every screen; Online only while open.
+    lobby.subscribe(presence.online, GLOBAL_CHAT);
   }, [presence, identity.image]);
 
   // The Online list is a snapshot: opening the panel brings one; switching to a list inside it asks again.

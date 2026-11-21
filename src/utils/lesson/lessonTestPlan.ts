@@ -126,6 +126,22 @@ export function lessonItemIndex(lesson: LessonTestLesson): Map<string, LessonTes
 }
 
 /**
+ * Whether a saved plan still matches the lesson's questions: every item is there, and every saved choice order
+ * points at choices that exist (a pack update can drop a choice). The last test can be read back only then.
+ */
+export function planFitsLesson(lesson: LessonTestLesson, plan: { items?: unknown } | undefined): plan is LessonTestPlan {
+  if (!plan || !Array.isArray(plan.items)) return false;
+  const byId = lessonItemIndex(lesson);
+  const fits = (order: unknown, size: number) => Array.isArray(order) && order.length === size && order.every((index) => Number.isInteger(index) && index >= 0 && index < size);
+  return (plan.items as PlannedItem[]).every((planned) => {
+    const item = byId.get(planned?.itemId);
+    if (!item) return false;
+    if (item.kind === 'paragraph-bank' && planned.bankOrder && !fits(planned.bankOrder, item.bank.length)) return false;
+    return item.questions.every((question) => !question.choices?.length || fits(planned.orders?.[question.id], question.choices.length));
+  });
+}
+
+/**
  * Screens in order: paragraphs, cloze passages and a recording's questions (it plays once, so all of them are on
  * screen while it plays, as in the TOCFL booklet) are one screen; other items show one question each.
  */

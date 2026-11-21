@@ -66,13 +66,21 @@ export function PrivacyPolicyContent() {
               outside Shu-Te, can see your display name, your photo (or your initials and colour) and which lesson
               and activity you are on. You can hide yourself with Settings → Show me online. A learner who opens your
               profile also sees your cover, book, the month you started and your words known, characters known and
-              day streak, sent straight from your device and not stored; turn this off with Settings → Show my
-              profile. Both choices are saved on each device, so set them on every device you use. Chat messages are
-              visible to everyone in that chat (Everyone, a lesson, or a quiz room). A quiz room you open is listed,
-              with your name and photo, to everyone online until it starts. If you block someone, we keep your block
-              list so the two of you stay hidden from each other. If you report someone, we keep the report: the
-              reason, where it happened, the message or photo you reported, the reported learner&apos;s display name, and
-              who sent the report. The person you report is not told.
+              day streak; turn this off with Settings → Show my profile. Both choices are saved on each device, so
+              set them on every device you use. So classmates can see your profile while you are offline, we keep the
+              profile you last shared (your name, colour, Google photo, cover choice, book and those numbers) while
+              Show my profile is on, and when you were last online while Show me online is on; turning a switch off
+              removes that part. Class chat messages are visible to every signed-in learner, with the lesson you were
+              on when you wrote (not while you are hidden); a message to @everyone reaches all of them. Quiz room chat
+              is visible to the people in that room. A quiz room you open is listed, with your name and photo, to
+              everyone online until it starts. You can add a classmate as a friend; once they add you back, the two
+              of you can send each other private messages that only you two can read. We keep your friends list,
+              your private messages and where you stopped reading, so they work on every device. If you block
+              someone, we keep your block list so the two of you stay hidden from each other, and any friendship
+              between you ends. If you report someone, we keep the report: the reason, where it happened, the message
+              or photo you reported, the reported learner&apos;s display name, and who sent the report; a report from a
+              private conversation also keeps a copy of its last 50 messages, which we read only to check the report.
+              The person you report is not told.
             </>,
             <>
               <strong>Account safety:</strong> if we close an account for breaking our{' '}
@@ -128,9 +136,9 @@ export function PrivacyPolicyContent() {
         <LegalList
           items={[
             <>
-              <strong>Supabase</strong> hosts your account, learning data and uploaded photos in India (Mumbai,
-              ap-south-1). Each account can read only its own data, apart from what you choose to share (folders and
-              Study together).
+              <strong>Supabase</strong> hosts your account, learning data, uploaded photos, friends list, private
+              messages and saved Study together profile in India (Mumbai, ap-south-1). Each account can read only its
+              own data, apart from what you choose to share (folders and Study together).
             </>,
             <>
               <strong>Google</strong> handles sign-in.
@@ -145,7 +153,7 @@ export function PrivacyPolicyContent() {
             </>,
             <>
               <strong>Cloudflare Workers</strong> run Study together: who is online (kept only while you are
-              connected), chat, quiz rooms, chat reports and your block list.
+              connected), the class chat and where you stopped reading it, quiz rooms, chat reports and your block list.
             </>,
             <>
               <strong>Our web host</strong> serves the app and may keep standard server logs.
@@ -186,10 +194,10 @@ export function PrivacyPolicyContent() {
         <LegalList
           items={[
             'Account, learning data and your content: until you delete your account, or until your account has had no sign-in for 12 months, whichever comes first.',
-            'Deleting your account removes your profile, photos, progress, folders and cards from our database right away. Our encrypted backups are kept for up to 90 days and are used only to recover from a fault, so deleted data can stay in them until then.',
+            'Deleting your account removes your profile, photos, progress, folders and cards, your friends list, private messages and saved Study together profile from our database right away, and your class chat messages from Study together. A private conversation is removed for both people when either of them deletes their account. Our encrypted backups are kept for up to 90 days and are used only to recover from a fault, so deleted data can stay in them until then.',
             'A new account that does not answer the age question within 7 days is deleted.',
             'If we close an account for breaking the Terms, the one-way code described in section 2 is kept for 2 years.',
-            'Study together: who is online is kept only while you are connected. Lesson chat shows the last 50 messages per lesson for 24 hours; expired storage is cleaned hourly. Quiz rooms expire automatically and races have a ten-minute limit. We keep up to 1,000 recent chat reports for up to 30 days.',
+            'Study together: who is online is kept only while you are connected. The class chat keeps its newest 1,000 messages for up to 180 days, and where you stopped reading it for as long; quiz room chat keeps its last 50 messages until the room closes, at most 24 hours. Private messages: the newest 500 in each conversation. Your friends list and saved profile stay until you change them or delete your account. Quiz rooms expire automatically and races have a ten-minute limit. We keep up to 1,000 recent chat reports for up to 30 days.',
             'Reports you send, or that name you, are kept for 12 months and then deleted. Your block list is kept until you unblock or delete your account.',
             'In-app feedback is removed when you delete your account. Emails and feedback notifications are kept only as long as needed to handle your request.',
             'Anonymous statistics contain no personal data and may be kept.',

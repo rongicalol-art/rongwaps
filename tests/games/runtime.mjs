@@ -51,6 +51,9 @@ export class Lobby extends BaseLobby {
   runAlarm() { return this.alarm(); }
   async failListings(enabled) { await this.ctx.storage.put('fixture-listing-outage', enabled); }
   async failMentions(enabled) { await this.ctx.storage.put('fixture-mention-outage', enabled); }
+  /** Turns the privacy update on before its date (kept in SQLite so it survives a wake). */
+  async openSocialUpdate() { this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS fixture_social_open (x)'); this.fixtureOpenFlag = true; }
+  updateOpen(now) { return (this.fixtureOpenFlag ??= this.ctx.storage.sql.exec("SELECT 1 FROM sqlite_master WHERE name='fixture_social_open'").toArray().length > 0) || super.updateOpen(now); }
   async partyMention(uid, notice) {
     if (await this.ctx.storage.get('fixture-mention-outage')) throw new Error('Synthetic mention outage');
     return super.partyMention(uid, notice);
@@ -76,6 +79,7 @@ export default { async fetch(request, env, ctx) {
     else if (action === 'recover') await stub.failListings(false);
     else if (action === 'mentionfail') await stub.failMentions(true);
     else if (action === 'mentionrecover') await stub.failMentions(false);
+    else if (action === 'socialopen') await stub.openSocialUpdate();
     else await stub.runAlarm();
     return Response.json({ok:true});
   }
@@ -228,6 +232,49 @@ try {
   send(alice, { t: 'sub', online: true, chat: 0 });
   await until(() => last(alice, 'history')?.l === 0);
   assert.ok(last(alice, 'history').v.some(line => line.t === 'Global hello'));
+
+  // Class chat: a visible writer's lines carry their lesson, a hidden writer's don't. History brings the reader's
+  // read spot and how many lines from others came after it; `read` moves it forward, never past the newest line.
+  assert.equal(last(alice, 'history').v.find(line => line.t === 'Global hello').w, undefined, 'hidden writers get no lesson tag');
+  await delay(1100);
+  send(alice, { t: 'say', l: 0, text: 'Tagged hello' });
+  await until(() => last(bob, 'msg')?.m.t === 'Tagged hello');
+  const tagged = last(bob, 'msg').m;
+  assert.equal(tagged.w, 101, 'a visible writer’s line carries their lesson');
+  const reopenClassChat = async () => {
+    bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
+    send(bob, { t: 'sub', online: false, chat: 0 });
+    await until(() => last(bob, 'history')?.l === 0);
+    return last(bob, 'history');
+  };
+  let classChat = await reopenClassChat();
+  assert.equal(classChat.r, 0, 'no read spot yet');
+  assert.equal(classChat.n, classChat.v.filter(line => line.u !== 'bob' && line.t).length, 'unread counts only others’ lines');
+  assert.ok(classChat.n >= 1);
+  send(bob, { t: 'read', id: tagged.id + 1000 });
+  await delay(100);
+  classChat = await reopenClassChat();
+  assert.equal(classChat.r, tagged.id, 'the read spot stops at the newest line');
+  assert.equal(classChat.n, 0);
+  send(bob, { t: 'read', id: 1 });
+  await delay(100);
+  classChat = await reopenClassChat();
+  assert.equal(classChat.r, tagged.id, 'the read spot only moves forward');
+  // @everyone marks the line for every reader, a few times a day per account.
+  const herald = await open('/lobby/socket', 'lobby', (await post('/lobby', 'herald')).ticket);
+  send(herald, { t: 'sub', online: false, chat: 0 });
+  await until(() => last(herald, 'history')?.l === 0);
+  for (const n of [1, 2, 3]) {
+    send(herald, { t: 'say', l: 0, text: `@everyone hello ${n}`, all: true });
+    await until(() => last(alice, 'msg')?.m.t === `@everyone hello ${n}`);
+    assert.equal(last(alice, 'msg').m.a, 1);
+    await delay(1100);
+  }
+  send(herald, { t: 'say', l: 0, text: '@everyone hello 4', all: true });
+  await until(() => last(herald, 'error')?.message.startsWith('@everyone works 3 times'));
+  await delay(150);
+  assert.notEqual(last(alice, 'msg').m.t, '@everyone hello 4', 'the fourth @everyone is refused');
+  herald.socket.close();
   send(alice, { t: 'sub', online: true, chat: 101 });
   send(bob, { t: 'sub', online: false, chat: 101 });
 
@@ -280,8 +327,12 @@ try {
   await until(() => host.state);
   assert.deepEqual(host.state.selection, { book: 1, lessons: { 1: [1, 2] }, types: ['meaning'] });
   await until(() => last(bob, 'rooms')?.v.some(room => room.code === created.code));
+  // The announcement goes to the class chat, tagged with the room's lesson.
+  send(bob, { t: 'sub', online: false, chat: 0 });
+  const roomCard = () => bob.frames.flatMap(frame => frame.t === 'msg' ? [frame.m] : frame.t === 'history' && frame.l === 0 ? frame.v : []).find(line => line.r?.code === created.code);
+  await until(roomCard);
+  assert.equal(roomCard().w, 101);
   send(bob, { t: 'sub', online: false, chat: 101 });
-  await until(() => [...bob.frames].some(frame => frame.t === 'msg' && frame.m.r?.code === created.code));
   send(alice, { t: 'invite', to: ['bob'], code: created.code });
   await until(() => last(alice, 'error')?.message.includes('offline'));
   assert.ok(!last(bob, 'invite'), 'hidden users get no invites and look offline');
@@ -578,6 +629,55 @@ try {
   const revision = otherHost.state.revision;
   otherHost.socket.send('ping'); await delay(100);
   assert.equal(otherHost.state.revision, revision);
+
+  // The privacy update: private-message pings, the long class chat loaded 50 at a time, and forgetting an account.
+  const fran = await open('/lobby/socket', 'lobby', (await post('/lobby', 'fran')).ticket);
+  let gus = await open('/lobby/socket', 'lobby', (await post('/lobby', 'gus')).ticket);
+  await until(() => last(fran, 'me') && last(gus, 'me'));
+  send(fran, { t: 'sub', online: false, chat: 0, v: 3 }); send(gus, { t: 'sub', online: false, chat: 0, v: 3 });
+  await until(() => last(fran, 'history')?.l === 0 && last(gus, 'history')?.l === 0);
+  send(fran, { t: 'dm', to: 'gus' }); send(gus, { t: 'older', before: 1e9 });
+  await delay(150);
+  assert.ok(!last(gus, 'dm') && !last(gus, 'older'), 'nothing new before the privacy update');
+  await control('/__test/lobby/main/socialopen');
+  send(fran, { t: 'dm', to: 'gus' });
+  await until(() => last(gus, 'dm')?.from === 'fran');
+  send(fran, { t: 'dm', to: 'fran' });
+  await delay(150);
+  assert.ok(!last(fran, 'dm'), 'no ping to yourself');
+  await lobbySql.exec("WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<120) INSERT INTO chat(lesson,uid,name,color,text,ts) SELECT 0,'seed','Seed','blue','page ' || x,? FROM n", Date.now());
+  gus.socket.close(1000, 'reopen');
+  gus = await open('/lobby/socket', 'lobby', (await post('/lobby', 'gus')).ticket);
+  send(gus, { t: 'sub', online: false, chat: 0, v: 3 });
+  await until(() => last(gus, 'history')?.l === 0);
+  const newest = last(gus, 'history');
+  assert.equal(newest.v.length, 50); assert.equal(newest.more, true, 'the class chat keeps more than 50 lines');
+  send(gus, { t: 'older', before: newest.v[0].id });
+  await until(() => last(gus, 'older'));
+  assert.equal(last(gus, 'older').v.length, 50);
+  assert.ok(last(gus, 'older').v.at(-1).id < newest.v[0].id && last(gus, 'older').more);
+  // Lines from someone you blocked don't use up the unread count: 120 hidden lines, then 3 from a classmate.
+  send(gus, { t: 'read', id: (await lobbySql.exec("SELECT MIN(id) AS id FROM chat WHERE uid='seed'"))[0].id - 1 }); await delay(150);
+  send(gus, { t: 'blocks', v: ['seed'] });
+  await until(() => last(gus, 'history')?.v.length === 0);
+  await lobbySql.exec("WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<3) INSERT INTO chat(lesson,uid,name,color,text,ts) SELECT 0,'kim','Kim','blue','hi ' || x,? FROM n", Date.now());
+  gus.socket.close(1000, 'reopen');
+  gus = await open('/lobby/socket', 'lobby', (await post('/lobby', 'gus')).ticket);
+  send(gus, { t: 'blocks', v: ['seed'] }); send(gus, { t: 'sub', online: false, chat: 0, v: 3 });
+  await until(() => last(gus, 'history')?.l === 0 && last(gus, 'history').v.length === 3);
+  assert.equal(last(gus, 'history').n, 3, 'blocked lines are skipped before the unread cap');
+  send(fran, { t: 'say', l: 0, text: 'remember me' });
+  await until(() => last(gus, 'msg')?.m.t === 'remember me');
+  // Forgetting removes only the sender's own data: a block someone made on them stays, and so do today's limits.
+  send(fran, { t: 'blocks', v: ['hal'] }); send(gus, { t: 'blocks', v: ['seed', 'fran'] });
+  for (let i = 0; i < 50 && (await lobbySql.exec("SELECT COUNT(*) AS n FROM blocks WHERE other='fran' OR uid='fran'"))[0].n < 2; i++) await delay(20);
+  send(fran, { t: 'forget' });
+  await until(() => fran.closed !== null);
+  assert.equal((await lobbySql.exec("SELECT COUNT(*) AS n FROM chat WHERE uid='fran'"))[0].n, 0, 'a deleted account’s lines are gone');
+  assert.equal((await lobbySql.exec("SELECT COUNT(*) AS n FROM blocks WHERE uid='fran'"))[0].n, 0, 'its own blocks are gone');
+  assert.equal((await lobbySql.exec("SELECT COUNT(*) AS n FROM blocks WHERE uid='gus' AND other='fran'"))[0].n, 1, 'a block on it stays');
+  assert.ok((await lobbySql.exec("SELECT COUNT(*) AS n FROM daily WHERE uid='fran'"))[0].n > 0, 'its limits for today stay');
+  gus.socket.close(1000, 'done');
 
   // Presence loss, expired auth leases, and data retention are cleaned without client cooperation.
   await control('/__test/lobby/main/age');

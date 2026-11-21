@@ -4,10 +4,12 @@
  * Lobby/room code paths (`deliver`, `onState`); nothing reaches a server or your study progress.
  */
 import { useAppStore } from '../../../store/useAppStore';
-import { COVER_PRESETS, type Activity, type ChatMessage, type LessonCount, type LobbyClientMessage, type Person } from '../../../../shared/lobby';
+import { COVER_PRESETS, GLOBAL_CHAT, type Activity, type ChatMessage, type LessonCount, type LobbyClientMessage, type Person } from '../../../../shared/lobby';
 import { applyRaceAction, enterRace, newRaceRoom, summarizeRoom, type RaceAction, type RaceRoomState, type RaceRoomSummary, type RaceSnapshot, type SocialColor } from '../../../../shared/quizRace';
 import type { connectRace } from '../../../services/socialService';
 import { deliver, setLobbyTransport } from '../lobbyController';
+import { setFriendsBackend, type DirectMessage, type FriendsBackend, type SavedProfile } from '../../../services/friendsService';
+import { forceUpdateOpen } from '../socialUpdate';
 import { setRaceTransport } from '../raceController';
 
 const NAMES = ['Mei', 'Jun', 'Ana', 'Kai', 'Lin', 'Wei', 'Sara', 'Leo', 'Yuki', 'Minh', 'Hana', 'Tomas', 'Ines', 'Arjun', 'Nadia', 'Ken', 'Lucas',
@@ -32,6 +34,8 @@ let users: Person[] = [];
 let me = { l: null as number | null, a: null as Activity | null, show: true };
 let sub = { online: false, chat: null as number | null };
 const chats = new Map<number, ChatMessage[]>();
+/** My class chat read spot, like the Lobby keeps per account. */
+let readSpot = 0;
 let rooms: RaceRoomSummary[] = [];
 let nextId = 1;
 const timers = new Set<ReturnType<typeof setTimeout>>();
@@ -74,7 +78,8 @@ function roster() {
   deliver({ t: 'online', v: [...everyone].sort((a, b) => Number(b.l === me.l) - Number(a.l === me.l)).slice(0, 100) });
 }
 
-function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary) {
+/** Class chat lines carry the writer's lesson (a room card: the room's lesson). */
+function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary, where = from.l, all = false) {
   const message: ChatMessage = {
     id: nextId++,
     l: lesson,
@@ -85,6 +90,8 @@ function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary
     ts: Date.now(),
     ...(room ? { r: room } : {}),
     ...(from.i ? { i: from.i } : {}),
+    ...(lesson === GLOBAL_CHAT && where !== null ? { w: where } : {}),
+    ...(lesson === GLOBAL_CHAT && all ? { a: 1 as const } : {}),
   };
   const list = [...(chats.get(lesson) ?? []), message].slice(-50);
   chats.set(lesson, list);
@@ -109,6 +116,7 @@ function seedHistory(lesson: number) {
       t: pick(LINES),
       ts: Date.now() - (12 - index) * 60_000,
       ...(from.i ? { i: from.i } : {}),
+      ...(lesson === GLOBAL_CHAT && from.l !== null ? { w: from.l } : {}),
     };
   });
   chats.set(lesson, [...earlier, ...(chats.get(lesson) ?? [])].slice(-50));
@@ -145,16 +153,23 @@ function handle(message: LobbyClientMessage) {
     const changed = message.chat !== sub.chat;
     const opened = message.online && !sub.online;
     sub = { online: message.online, chat: message.chat };
-    if (changed && sub.chat !== null) { seedHistory(sub.chat); deliver({ t: 'history', l: sub.chat, v: chats.get(sub.chat) ?? [] }); }
+    if (changed && sub.chat !== null) {
+      seedHistory(sub.chat);
+      const lines = chats.get(sub.chat) ?? [];
+      deliver(sub.chat === GLOBAL_CHAT
+        ? { t: 'history', l: sub.chat, v: lines, r: readSpot, n: lines.filter(line => line.id > readSpot && line.u !== ME && line.t).length }
+        : { t: 'history', l: sub.chat, v: lines });
+    }
     if (opened) roster();
     return;
   }
   if (message.t === 'roster') { roster(); return; }
   if (message.t === 'say') {
-    post(meAsPerson(), message.l, message.text);
-    later(() => post(someoneIn(message.l), message.l, pick(REPLIES)), between(1500, 3500));
+    post(meAsPerson(), message.l, message.text, undefined, me.l, !!message.all);
+    later(() => post(message.l === GLOBAL_CHAT ? pick(users) : someoneIn(message.l), message.l, pick(REPLIES)), between(1500, 3500));
     return;
   }
+  if (message.t === 'read') { readSpot = Math.max(readSpot, message.id); return; }
   if (message.t === 'mention-read') { deliver({ t: 'mention-read', key: message.key }); return; }
   if (message.t === 'card-ask') {
     const index = users.findIndex((user) => user.u === message.u);
@@ -241,7 +256,7 @@ const connectSim: typeof connectRace = async (_identity, target, handlers) => {
     enterRace(room, ME, myName(), useAppStore.getState().avatarColor, now, useAppStore.getState().currentUser?.avatarUrl);
     if (room.open) {
       rooms = [summarizeRoom(room), ...rooms];
-      if (me.l !== null) post(meAsPerson(), me.l, '', summarizeRoom(room));
+      if (me.l !== null) post(meAsPerson(), GLOBAL_CHAT, '', summarizeRoom(room), me.l);
       later(() => { if (race?.room.code === code) joinMyRoom(someoneIn(me.l ?? 101)); }, between(3000, 7000));
     }
   }
@@ -267,14 +282,72 @@ const connectSim: typeof connectRace = async (_identity, target, handlers) => {
 
 // ---- lifecycle -----------------------------------------------------------------------------------------------------
 
+/** Friends and private messages without the database: a few friends, one request, two conversations. */
+let adds = new Map<string, { iAdded: boolean; addedMe: boolean }>();
+let dms: DirectMessage[] = [];
+const reads = new Map<string, number>();
+let dmId = 1;
+const OFFLINE = ['Ravi', 'Lena', 'Yuna', 'Theo', 'Iko', 'Sven'].map((name, index) => ({ u: `sim-off-${index}`, n: name, c: COLORS[(index + 2) % COLORS.length], seen: Date.now() - (index + 1) * 47 * 60_000 }));
+const person = (u: string) => users.find(user => user.u === u) ?? OFFLINE.find(user => user.u === u);
+const savedOf = (u: string): SavedProfile | null => {
+  const who = person(u);
+  if (!who) return null;
+  const index = Number(u.replace(/\D/g, '')) || 0;
+  return { u, seen: 'seen' in who ? who.seen : Date.now(), card: { n: who.n, c: who.c, cv: COVER_PRESETS[index % COVER_PRESETS.length], b: 1 + (index % 2), w: 40 + index * 17, k: 30 + index * 9, st: index % 15, ...('i' in who && who.i ? { i: who.i } : {}) } };
+};
+function dm(from: string, text: string, to = ME) {
+  const line = { id: dmId++, from, to, t: text, ts: Date.now() };
+  dms.push(line);
+  if (from !== ME) deliver({ t: 'dm', from });
+  return line;
+}
+const friendsBackend: FriendsBackend = {
+  async people() {
+    return [...adds].map(([u, flags]) => { const who = person(u)!; return { u, n: who.n, c: who.c, ...flags }; });
+  },
+  async add(u) {
+    const flags = adds.get(u) ?? { iAdded: false, addedMe: false };
+    adds.set(u, { ...flags, iAdded: true });
+    // They accept a few seconds later.
+    if (!flags.addedMe) later(() => { const now = adds.get(u); if (now?.iAdded) { adds.set(u, { ...now, addedMe: true }); deliver({ t: 'dm', from: u }); } }, between(3000, 6000));
+    return flags.addedMe ? 'friends' : 'requested';
+  },
+  async remove(u) { adds.delete(u); },
+  async inbox() {
+    const others = [...new Set(dms.map(line => (line.from === ME ? line.to : line.from)))];
+    return others.map(u => {
+      const lines = dms.filter(line => line.from === u || line.to === u);
+      const last = lines[lines.length - 1];
+      return { u, lastId: last.id, lastFrom: last.from, last: last.t, at: last.ts, unread: lines.filter(line => line.from === u && line.id > (reads.get(u) ?? 0)).length };
+    }).sort((a, b) => b.lastId - a.lastId);
+  },
+  async thread(u, _me, before) { return dms.filter(line => (line.from === u || line.to === u) && (!before || line.id < before)).slice(-50); },
+  async send(u, text) {
+    const line = dm(ME, text, u);
+    later(() => dm(u, pick(REPLIES)), between(2000, 4000));
+    return line;
+  },
+  async read(u, id) { reads.set(u, Math.max(reads.get(u) ?? 0, id)); },
+  async saveCard() {},
+  async profiles(us) { return us.map(savedOf).filter((row): row is SavedProfile => !!row); },
+  async recent(limit) { return OFFLINE.map(user => savedOf(user.u)!).slice(0, limit); },
+};
+
 export function startSimulator() {
   if (running) return;
   running = true;
+  adds = new Map([[`sim-0`, { iAdded: true, addedMe: true }], [`sim-1`, { iAdded: true, addedMe: true }], [`sim-2`, { iAdded: true, addedMe: true }], ['sim-off-0', { iAdded: true, addedMe: true }], [`sim-5`, { iAdded: false, addedMe: true }]]);
+  dms = []; reads.clear(); dmId = 1;
+  forceUpdateOpen(true);
+  setFriendsBackend(friendsBackend);
   users = NAMES.map((name, index) => ({ u: `sim-${index}`, n: name, c: COLORS[index % COLORS.length], l: LESSONS[index % LESSONS.length], a: pick(ACTIVITIES), i: FAKE_AVATAR(index) }));
   rooms = [simRoom(users[3], 104), simRoom(users[7], 205), simRoom(users[12], 109)];
   setRaceTransport(connectSim);
   setLobbyTransport({ send: handle, close: () => {} });
   deliver({ t: 'me', u: ME });
+  dm('sim-1', '謝謝你的筆記 🙏'); reads.set('sim-1', dmId - 1);
+  dm('sim-0', '明天一起考試嗎？'); dm(ME, '好啊！', 'sim-0'); reads.set('sim-0', dmId - 1);
+  later(() => dm('sim-0', '你在嗎？'), 4000);
   emit();
   // People wander between lessons and activities.
   every(() => {
@@ -285,11 +358,8 @@ export function startSimulator() {
     }
     emit();
   }, 1800, 3200);
-  // Chat in the lesson you're in (and elsewhere, kept for when you arrive).
-  every(() => {
-    const lesson = sub.chat !== null && Math.random() < 0.75 ? sub.chat : pick(LESSONS);
-    post(someoneIn(lesson), lesson, pick(LINES));
-  }, 2500, 6500);
+  // The class chat: a line every few seconds, from anyone.
+  every(() => { post(pick(users), GLOBAL_CHAT, pick(LINES)); }, 6000, 14_000);
   every(() => { if (me.l !== null && othersIn(me.l).length) deliver({ t: 'cheer', from: pick(othersIn(me.l)), p: pick([0, 1]) }); }, 30_000, 50_000);
   every(() => {
     if (useAppStore.getState().race) return;
@@ -303,7 +373,7 @@ export function startSimulator() {
     const host = someoneIn(me.l);
     const room = simRoom(host, me.l);
     rooms = [room, ...rooms].slice(0, 6);
-    post(host, me.l, '', room);
+    post(host, GLOBAL_CHAT, '', room, me.l);
   }, 40_000, 70_000);
 }
 
@@ -314,6 +384,8 @@ export function stopSimulator() {
   race = null;
   setRaceTransport(null);
   setLobbyTransport(null);
+  setFriendsBackend(null);
+  forceUpdateOpen(false);
 }
 
 export const isSimulating = () => running;
@@ -328,11 +400,13 @@ export const simulate = {
   },
   cheer() { deliver({ t: 'cheer', from: me.l !== null && othersIn(me.l).length ? pick(othersIn(me.l)) : pick(users), p: pick([0, 1, 3]) }); },
   mention() {
-    const lesson = sub.chat ?? 101;
     later(() => {
-      const message = post(someoneIn(lesson), lesson, '@You 加油！');
-      deliver({ t: 'mention', v: { key: `sim:${message.id}`, channel: lesson, message, read: false } });
+      const message = post(pick(users), GLOBAL_CHAT, `@${myName()} 加油！`);
+      deliver({ t: 'mention', v: { key: `sim:${message.id}`, channel: GLOBAL_CHAT, message, read: false } });
     }, 2000);
   },
-  chatBurst() { const lesson = sub.chat ?? 101; for (let index = 0; index < 8; index++) later(() => post(someoneIn(lesson), lesson, pick(LINES)), index * 350); },
+  dm() { dm('sim-0', pick(['你在嗎？', '可以教我第三課的語法嗎？', '我們一起考試吧！'])); },
+  friendRequest() { const user = users[8]; adds.set(user.u, { iAdded: false, addedMe: true }); deliver({ t: 'dm', from: user.u }); },
+  everyone() { later(() => post(pick(users), GLOBAL_CHAT, '@everyone 明天有小考，記得複習！', undefined, undefined, true), 2000); },
+  chatBurst() { for (let index = 0; index < 8; index++) later(() => post(pick(users), GLOBAL_CHAT, pick(LINES)), index * 350); },
 };

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { DialogueItem, LessonTestSounds } from '../../src/types/lessonTest';
-import { listeningSteps, testRecordings } from '../../src/screens/lesson-test/testAudioSequence';
+import type { DialogueItem, LessonTestSounds, TestLine } from '../../src/types/lessonTest';
+import { listeningSteps, testRecordings, turnGapMs } from '../../src/screens/lesson-test/testAudioSequence';
 
 /** What a listening question plays: dialogue, a long beat, the ding, the question, then the answers. */
 
@@ -67,4 +67,31 @@ test('a recording with two questions plays once, then asks each question and rea
   assert.deepEqual(asked, ['0:他要喝什麼？', '1:女的問什麼？']);
   const read = steps.filter((step) => step.mark !== undefined && step.audio && step.question === 1).map((step) => step.audio?.file);
   assert.deepEqual(read, ['A', '喝的', 'B', '吃的', 'C', '時間']);
+});
+
+test('a picture question asks its question first (TOCFL Band A 看圖回答), then reads the answers', () => {
+  const picture = (prompt?: TestLine) => ({
+    id: 'p1',
+    kind: 'picture-hear' as const,
+    picture: { picture: 'reading:B2L01-R01', alt: '' },
+    questions: [{ ...item.questions[0], prompt }],
+  });
+  assert.deepEqual(describe(listeningSteps(picture(line('N', '他們在哪裡？')), picture(line('N', '他們在哪裡？')).questions, undefined, sounds, 'traditional')), [
+    '他們在哪裡？', '1000ms', 'A', '800ms', '咖啡', '1300ms', 'B', '800ms', '綠茶', '1300ms', 'C', '800ms', '紅茶',
+  ]);
+  // Book 1's picture questions have no spoken question: only the answers.
+  assert.deepEqual(describe(listeningSteps(picture(), picture().questions, undefined, sounds, 'traditional')).slice(0, 3), ['A', '800ms', '咖啡']);
+});
+
+test('a Band B dialogue answers turn to turn quickly; the pauses around the ding and the answers stay', () => {
+  const steps = describe(listeningSteps(item, item.questions, undefined, sounds, 'traditional', turnGapMs({ bookId: 3, band: 'B' })));
+  assert.deepEqual(steps.slice(0, 5), ['你要喝咖啡還是茶？', '100ms', '我要一杯綠茶。', '2000ms', 'ding']);
+});
+
+test("Book 2's clips keep their own silence, so its turns follow with no added gap in either band", () => {
+  assert.equal(turnGapMs({ bookId: 1, band: 'A' }), 450);
+  for (const band of ['A', 'B'] as const) {
+    const steps = describe(listeningSteps(item, item.questions, undefined, sounds, 'traditional', turnGapMs({ bookId: 2, band })));
+    assert.deepEqual(steps.slice(0, 4), ['你要喝咖啡還是茶？', '我要一杯綠茶。', '2000ms', 'ding']);
+  }
 });

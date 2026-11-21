@@ -92,6 +92,7 @@ const EXPECTED_PERSISTED_KEYS = [
   // Lesson tests (local to this device for now)
   'lessonTests',
   'lessonTestAttempt',
+  'lessonTestLast',
 ].sort();
 
 test('persisted key set matches the declared slices contract exactly', () => {
@@ -150,10 +151,10 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'legacyDoneBooks',
   // Study together: live state and blocks belong to the signed-in account.
   'race', 'racePlaying', 'racePending', 'raceStatus', 'socialBlocks', 'socialSafety', 'socialOnlineTotal', 'socialChat', 'socialCards', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe', 'socialMentionDraft',
-  'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialUnread', 'socialViewingLesson', 'socialStudying', 'socialHere',
+  'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialChatRead', 'socialChatUnread', 'socialFriends', 'socialInbox', 'socialThreads', 'socialSaved', 'socialRecent', 'socialViewingLesson', 'socialStudying', 'socialHere',
   'socialMentions', 'socialMentionToast', 'socialMentionTarget', 'socialReadingParty',
   // Lesson test scores and the attempt in progress belong to the signed-in account.
-  'lessonTests', 'lessonTestAttempt',
+  'lessonTests', 'lessonTestAttempt', 'lessonTestLast',
 ].sort();
 
 test('account-switch defaults match the reset contract exactly', () => {

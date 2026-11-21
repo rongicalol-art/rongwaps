@@ -4,7 +4,8 @@ import { supabase } from './supabaseClient';
 /** Someone this learner blocked, with the name and colour they had then (the Settings list shows them). */
 export interface BlockedPerson { u: string; n: string; c: string }
 export type ReportReason = 'spam' | 'rude' | 'unsafe' | 'other';
-export type ReportPlace = 'profile' | 'chat' | 'party';
+/** `message`: a private conversation (the database keeps a copy of it with the report). */
+export type ReportPlace = 'profile' | 'chat' | 'party' | 'message';
 /** `message`/`messageId`: the reported line; `name`/`photo`: how the person looked when reported. */
 export interface ReportInput { target: string; reason: ReportReason; place: ReportPlace; message?: string; messageId?: number; name?: string; photo?: string }
 
