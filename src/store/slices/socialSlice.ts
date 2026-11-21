@@ -6,7 +6,7 @@ import type { ChatMessage, LessonCount, Person, MentionNotice, ProfileCard } fro
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
 import type { SocialStatus } from '../../services/socialService';
 import type { BlockedPerson, ReportPlace } from '../../services/safetyService';
-import type { Conversation, DirectMessage, FriendPerson, SavedProfile } from '../../services/friendsService';
+import type { Conversation, DirectMessage, FriendPerson, MyUsername, SavedProfile } from '../../services/friendsService';
 
 /** The open report or block sheet; `report-done` offers to block after a report. */
 export interface SafetyPrompt { kind: 'report' | 'report-done' | 'block'; person: BlockedPerson; place: ReportPlace; message?: string; messageId?: number; photo?: string }
@@ -55,6 +55,8 @@ export interface SocialState {
   socialSaved: Record<string, SavedProfile | null>;
   /** Classmates seen recently, newest first (Online → Recently here). */
   socialRecent: SavedProfile[];
+  /** This learner's @username and "Let classmates find me" (null until loaded). */
+  socialUsername: MyUsername | null;
   socialMentions: MentionNotice[];
   socialMentionToast: MentionNotice | null;
   socialMentionTarget: MentionNotice | null;
@@ -103,6 +105,7 @@ const LIVE_DEFAULTS = {
   socialThreads: {},
   socialSaved: {},
   socialRecent: [],
+  socialUsername: null,
   socialMentions: [],
   socialMentionToast: null,
   socialMentionTarget: null,

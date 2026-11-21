@@ -28,6 +28,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
   const media = useProfileMedia(currentUser?.id, profile.avatarPath, profile.coverPath, revision);
   const editor = useProfileEditor(currentUser?.id, () => setRevision((value) => value + 1));
   const emailPrefix = currentUser?.email?.split('@')[0];
+  const username = useAppStore((s) => s.socialUsername?.name);
   const fallbackName = userSnapshot?.fullName || userSnapshot?.name || emailPrefix || 'Learner';
   const shownProfile = editor.draft?.settings ?? profile;
   const name = shownProfile.displayName || fallbackName;
@@ -46,7 +47,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
     {isLoading ? <div className="mx-auto w-full max-w-6xl px-4 md:px-8"><ProfileSkeleton /></div> :
       <div className="profile-layout">
         <div className="profile-main">
-          <ProfileHeroCard profile={shownProfile} name={name} handle={emailPrefix ? `@${emailPrefix}` : undefined} firstReview={data.firstReview} bookTitle={book?.title || `Modern Chinese ${bookId}`} avatar={avatar} cover={cover} onEdit={() => editor.open({ ...profile, displayName: profile.displayName || fallbackName, googlePhoto: Boolean(shownGoogleAvatar) }, media.avatar || shownGoogleAvatar, media.cover)} />
+          <ProfileHeroCard profile={shownProfile} name={name} handle={username ? `@${username}` : undefined} firstReview={data.firstReview} bookTitle={book?.title || `Modern Chinese ${bookId}`} avatar={avatar} cover={cover} onEdit={() => editor.open({ ...profile, displayName: profile.displayName || fallbackName, googlePhoto: Boolean(shownGoogleAvatar) }, media.avatar || shownGoogleAvatar, media.cover)} />
           {(accountError || syncError) && <p role="alert" className="text-sm text-feedback-danger-text">{accountError || syncError}</p>}
           <div className="profile-mobile-streak"><ProfileStreak data={data} /></div>
           <ProfileStatistics data={data} />
