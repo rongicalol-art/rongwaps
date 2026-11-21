@@ -3799,6 +3799,27 @@
       "truePeakDbfs": -2.1
     }
   },
+  "他在台灣交了很多朋友每天都過得很開心": {
+    "file": "grammar-studio/v1/11ff296f5991.mp3",
+    "sha256": "11ff296f5991988582f60caa13eb1bd0389824bc6611989cdf89bbfc0f2285a5",
+    "duration": 4.662,
+    "spoken": "他在台灣交了很多朋友，每天都過得很開心。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.3,
+      "truePeakDbfs": -2.6,
+      "transcript": "他在台灣交了很多朋友，每天都過得很開心。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.361,
+      "voicedPace": 4.29,
+      "contentChecked": true
+    }
+  },
   "他在哥哥旁邊": {
     "file": "grammar-studio/v1/871c4ba943de.mp3",
     "sha256": "871c4ba943dee156c05bcc58acb07c5f2b905eec566983bf2778d7ac9ee7a151",
@@ -4052,6 +4073,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.113,
       "voicedPace": 4.21,
+      "contentChecked": true
+    }
+  },
+  "他家離公司不遠所以總是走路去上班": {
+    "file": "grammar-studio/v1/5c4a8eaf57e8.mp3",
+    "sha256": "5c4a8eaf57e80f14f15003851590b58541e4283b4e913744904e9fc7089f7bcb",
+    "duration": 4.689,
+    "spoken": "他家離公司不遠，所以總是走路去上班。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.1,
+      "truePeakDbfs": -1.1,
+      "transcript": "他家离公司不远，所以总是走路去上班。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.127,
+      "voicedPace": 3.81,
       "contentChecked": true
     }
   },
@@ -5158,6 +5200,27 @@
       "contentChecked": true
     }
   },
+  "他每天都去健身房健身所以身體很好": {
+    "file": "grammar-studio/v1/ab3c853f6baf.mp3",
+    "sha256": "ab3c853f6baf9048391b15ade236b6e20c13f2f21c805b499cadfe475a243fb6",
+    "duration": 4.653,
+    "spoken": "他每天都去健身房健身，所以身體很好。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.5,
+      "truePeakDbfs": -1.8,
+      "transcript": "他每天都去健身房健身，所以身体很好。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.111,
+      "voicedPace": 3.77,
+      "contentChecked": true
+    }
+  },
   "他每天都走半個鐘頭的路": {
     "file": "grammar-studio/v1/26d2cbcc3db9.mp3",
     "sha256": "26d2cbcc3db9afc3f6dd1b1f9f1a200d6761c467a2b9d0e69fbc0bbeaecf09a9",
@@ -5343,6 +5406,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.21,
       "voicedPace": 3.52,
+      "contentChecked": true
+    }
+  },
+  "他的工作很忙不但常常加班還要做市場研究": {
+    "file": "grammar-studio/v1/0987748b0c8b.mp3",
+    "sha256": "0987748b0c8ba5a316a7603020bc8ad9dbaa8e15a8c19eb3e1de1f95c2919ef7",
+    "duration": 5.848,
+    "spoken": "他的工作很忙，不但常常加班，還要做市場研究。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.8,
+      "truePeakDbfs": -1.8,
+      "transcript": "他的工作很忙，不但常常加班，还要做市场研究。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.15,
+      "voicedPace": 3.75,
       "contentChecked": true
     }
   },
@@ -5925,6 +6009,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.09,
       "voicedPace": 4.17,
+      "contentChecked": true
+    }
+  },
+  "他身體不好只跳了幾下就覺得好累": {
+    "file": "grammar-studio/v1/5f4b4b564364.mp3",
+    "sha256": "5f4b4b564364f6131dde8d5258857165c0cc6b0a600f9315cb5ae3c6b32a1add",
+    "duration": 4.082,
+    "spoken": "他身體不好，只跳了幾下就覺得好累。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.0",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 1,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.7,
+      "truePeakDbfs": -1.1,
+      "transcript": "他身體不好，只跳了几下，就覺得好累。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.258,
+      "voicedPace": 4.24,
       "contentChecked": true
     }
   },
@@ -8077,6 +8182,27 @@
       "contentChecked": true
     }
   },
+  "你打算用什麼方式來慶祝父親六十歲的生日": {
+    "file": "grammar-studio/v1/9e5ea1d8fa11.mp3",
+    "sha256": "9e5ea1d8fa112ead33640e5baa806edb866449924c4fc319369309d9b682717f",
+    "duration": 5.138,
+    "spoken": "你打算用什麼方式來慶祝父親六十歲的生日？",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.4,
+      "truePeakDbfs": -1.5,
+      "transcript": "你打算用什么方式来庆祝父亲六十岁的生日？",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.149,
+      "voicedPace": 3.85,
+      "contentChecked": true
+    }
+  },
   "你把晚飯吃完再看電視": {
     "file": "grammar-studio/v1/5cf2d144f1bf.mp3",
     "sha256": "5cf2d144f1bfefb4594805323fae2fcb12e473706fd076cdd82d14c623eae68d",
@@ -9137,6 +9263,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.198,
       "voicedPace": 4.23,
+      "contentChecked": true
+    }
+  },
+  "你老是批評別人誰想跟你做朋友呢": {
+    "file": "grammar-studio/v1/24d03d67b316.mp3",
+    "sha256": "24d03d67b31651ff62d9e19e3bdde60bba209dfbed9355fb1196dcb53abe32f3",
+    "duration": 4.669,
+    "spoken": "你老是批評別人，誰想跟你做朋友呢？",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.8,
+      "truePeakDbfs": -2,
+      "transcript": "你老是批评别人，谁想跟你做朋友呢？",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.069,
+      "voicedPace": 3.61,
       "contentChecked": true
     }
   },
@@ -10696,6 +10843,27 @@
     "quality": {
       "integratedLufs": -12.2,
       "truePeakDbfs": -2.1
+    }
+  },
+  "到國外生活以前得先找租房子的資料我覺得台灣的生活費不太高日本的比較高": {
+    "file": "grammar-studio/v1/0dc41013cebd.mp3",
+    "sha256": "0dc41013cebd2045b3871f174bcd3a9d0dbcbeb795c233ca8e9bfe26c8a44805",
+    "duration": 9.827,
+    "spoken": "到國外生活以前，得先找租房子的資料。我覺得台灣的生活費不太高，日本的比較高。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -14.5,
+      "truePeakDbfs": -1.1,
+      "transcript": "到国外生活以前，得先找租房子的资料。我觉得台湾的生活费不太高，日本的比较高。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.082,
+      "voicedPace": 4.01,
+      "contentChecked": true
     }
   },
   "到底是誰打電話給我的他的聲音你聽不出來嗎": {
@@ -16391,6 +16559,27 @@
       "contentChecked": true
     }
   },
+  "媽媽說可樂太甜了不讓我喝第二瓶": {
+    "file": "grammar-studio/v1/958ea0193fea.mp3",
+    "sha256": "958ea0193fea97d0adabaa010b5226bebdee71a11662d9d13679cfffa9785eb7",
+    "duration": 4.581,
+    "spoken": "媽媽說可樂太甜了，不讓我喝第二瓶。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.1",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 2,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.4,
+      "truePeakDbfs": -2.6,
+      "transcript": "妈妈说：“可乐太甜了，不让我喝第二瓶。”",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.343,
+      "voicedPace": 3.69,
+      "contentChecked": true
+    }
+  },
   "媽媽說故事給孩子聽說著說著孩子就睡著了": {
     "file": "grammar-studio/v1/764c078830e5.mp3",
     "sha256": "764c078830e54dc630bca413af7a1dd922c6aa3a3c6feec4f82c29c6fdecfad1",
@@ -18838,6 +19027,27 @@
       "contentChecked": true
     }
   },
+  "張先生的飲食習慣很好加上常運動所以身體很健康": {
+    "file": "grammar-studio/v1/bccf95e12d7e.mp3",
+    "sha256": "bccf95e12d7e15c8136044af46e65f45748ea93cc6bfd4e43bb61c8fef94c25d",
+    "duration": 7.307,
+    "spoken": "張先生的飲食習慣很好，加上常運動，所以身體很健康。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.1",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 2,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.1,
+      "truePeakDbfs": -1.4,
+      "transcript": "张先生的饮食习惯很好，加上常运动，所以身体很健康。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.122,
+      "voicedPace": 3.41,
+      "contentChecked": true
+    }
+  },
   "張先生趁著到花蓮旅行時買了一些當地的名產": {
     "file": "grammar-studio/v1/ff25dfefd1b2.mp3",
     "sha256": "ff25dfefd1b2b3e385779bf1b5e7cf7b35cc0f97caaf4416a41f1251046710cf",
@@ -20284,6 +20494,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.197,
       "voicedPace": 2.97,
+      "contentChecked": true
+    }
+  },
+  "我不知道我的書被誰拿走了": {
+    "file": "grammar-studio/v1/3d109b62b809.mp3",
+    "sha256": "3d109b62b809ea9b5466d12fe876cfe7f4b176fbf35fbbcd189413f661602f35",
+    "duration": 3.106,
+    "spoken": "我不知道我的書被誰拿走了。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.6,
+      "truePeakDbfs": -1.5,
+      "transcript": "我不知道我的書被誰拿走了。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.251,
+      "voicedPace": 4.17,
       "contentChecked": true
     }
   },
@@ -22676,6 +22907,27 @@
       "contentChecked": true
     }
   },
+  "我喜歡觀察小動物走來走去的樣子": {
+    "file": "grammar-studio/v1/e0a03e591b45.mp3",
+    "sha256": "e0a03e591b45eb88699e515491723cb1eb28c8444b05bd397e870101b145e2b4",
+    "duration": 3.993,
+    "spoken": "我喜歡觀察小動物走來走去的樣子。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.3,
+      "truePeakDbfs": -1.2,
+      "transcript": "我喜欢观察小动物走来走去的样子。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.071,
+      "voicedPace": 4.12,
+      "contentChecked": true
+    }
+  },
   "我喜歡買便宜的東西他也喜歡買": {
     "file": "grammar-studio/v1/70b8efaaf0a2.mp3",
     "sha256": "70b8efaaf0a2d8c96c86d6b523b8684c088939de1ad797cae192a2d7eb32e57f",
@@ -22917,6 +23169,27 @@
       "truePeakDbfs": -2.4
     }
   },
+  "我好渴想喝可樂或是冰奶茶那些飲料都太甜了不如喝水這樣比較健康": {
+    "file": "grammar-studio/v1/e17d30ee9dab.mp3",
+    "sha256": "e17d30ee9dabd97148c738b7a38ad03be8a81bddf4cd8285c77ca1df512944ec",
+    "duration": 10.178,
+    "spoken": "我好渴，想喝可樂或是冰奶茶。 那些飲料都太甜了，不如喝水，這樣比較健康。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05 + yating-tts-v2/zh_en_male_1/speed-0.9/pitch-1.3",
+    "voice": "zh_en_female_1@1.05 + zh_en_male_1@0.9-pitch1.3",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -14,
+      "truePeakDbfs": -1.2,
+      "transcript": "我好渴，想喝可乐或是冰奶茶。那些饮料都太甜了，不如喝水，这样比较健康。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.201,
+      "voicedPace": 3.76,
+      "contentChecked": true
+    }
+  },
   "我妹妹不但長得漂亮身高也夠高十六歲就有人找她演戲了": {
     "file": "grammar-studio/v1/f46986d29d66.mp3",
     "sha256": "8e8d80d08e2f67bd15d4c05d1c450627fd204190a023d530f35c49088130ad1e",
@@ -22951,6 +23224,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.115,
       "voicedPace": 4.57,
+      "contentChecked": true
+    }
+  },
+  "我姐姐跟她先生戀愛了七年才結婚現在他們的生活幸福極了": {
+    "file": "grammar-studio/v1/ce30fcb163b0.mp3",
+    "sha256": "ce30fcb163b01fb1851bde32110411bedd5981a803af804c9ee4e5812a91d1d6",
+    "duration": 7.178,
+    "spoken": "我姐姐跟她先生戀愛了七年才結婚，現在他們的生活幸福極了。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.5,
+      "truePeakDbfs": -2.4,
+      "transcript": "我姐姐跟她先生恋爱了七年，才结婚。现在他们的生活幸福极了。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.129,
+      "voicedPace": 3.94,
       "contentChecked": true
     }
   },
@@ -24495,6 +24789,27 @@
       "contentChecked": true
     }
   },
+  "我接到了健身中心的通知下個月就要去當健身教練了": {
+    "file": "grammar-studio/v1/e7ba80a8f128.mp3",
+    "sha256": "e7ba80a8f1282b1f38264c4ca144147d457dbaa96a3de7784d26b6ef2beeb776",
+    "duration": 6.163,
+    "spoken": "我接到了健身中心的通知，下個月就要去當健身教練了。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.5,
+      "truePeakDbfs": -1.4,
+      "transcript": "我接到了健身中心的通知，下个月就要去当健身教练了。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.242,
+      "voicedPace": 4.05,
+      "contentChecked": true
+    }
+  },
   "我教過你好幾次了你還沒學會嗎": {
     "file": "grammar-studio/v1/d7885af17ceb.mp3",
     "sha256": "d7885af17cebe672faf64d1d95677d287f4f2dc54469ca9f0d64a2f9aa598ba5",
@@ -25741,6 +26056,48 @@
       "truePeakDbfs": -2.2
     }
   },
+  "我父親的職業是大學教授母親是郵局的員工": {
+    "file": "grammar-studio/v1/69a636c03383.mp3",
+    "sha256": "69a636c033834054dd086600bba68f047de4cc0c2d4335c43e9192661d016849",
+    "duration": 5.605,
+    "spoken": "我父親的職業是大學教授，母親是郵局的員工。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.8,
+      "truePeakDbfs": -2.3,
+      "transcript": "我父亲的职业是大学教授，母亲是邮局的员工。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.383,
+      "voicedPace": 3.74,
+      "contentChecked": true
+    }
+  },
+  "我爺爺在鄉下有一塊地他有時間就去那裡種花": {
+    "file": "grammar-studio/v1/ea83fd261ae9.mp3",
+    "sha256": "ea83fd261ae9f8aed12f948f3de5a869e36be5931324e53bbd9f3ac4093ff44e",
+    "duration": 5.362,
+    "spoken": "我爺爺在鄉下有一塊地，他有時間就去那裡種花。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13,
+      "truePeakDbfs": -1.1,
+      "transcript": "我爷爷在乡下有一块地，他有时间就去那里种花。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.304,
+      "voicedPace": 4.17,
+      "contentChecked": true
+    }
+  },
   "我現在又餓又渴想喝一點兒茶吃一點兒飯": {
     "file": "grammar-studio/v1/1fe8490b727a.mp3",
     "sha256": "09997825669fa9d380ea85b81b5d7476ba18aa2efda6b7d6f0ce2358004c255d",
@@ -25785,6 +26142,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.187,
       "voicedPace": 3.85,
+      "contentChecked": true
+    }
+  },
+  "我現在還在上中文課十二點才結束": {
+    "file": "grammar-studio/v1/6772e4982075.mp3",
+    "sha256": "6772e49820758e9c6f29246e92078dd5d67be43f4f9b071f77f59ad33f41583c",
+    "duration": 4.278,
+    "spoken": "我現在還在上中文課，十二點才結束。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -14.1,
+      "truePeakDbfs": -2.1,
+      "transcript": "我现在还在上中文课，十二点才结束。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.116,
+      "voicedPace": 3.95,
       "contentChecked": true
     }
   },
@@ -27584,6 +27962,27 @@
       "contentChecked": true
     }
   },
+  "我這幾天背很疼看了兩次病了還是不舒服": {
+    "file": "grammar-studio/v1/e9d39546fb87.mp3",
+    "sha256": "e9d39546fb873dd82b7832393314e91124e49294ff8deafb9b4661368e5797f4",
+    "duration": 5.282,
+    "spoken": "我這幾天背很疼，看了兩次病了，還是不舒服。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.6,
+      "truePeakDbfs": -1.7,
+      "transcript": "我这几天背很疼，看了两次病了，还是不舒服。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.178,
+      "voicedPace": 4,
+      "contentChecked": true
+    }
+  },
   "我運動了半個小時": {
     "file": "grammar-studio/v1/5382a7a609b1.mp3",
     "sha256": "5382a7a609b178c8d3628e54d103946c586bbc6a1634cb6504f75093f0654d5f",
@@ -28123,6 +28522,27 @@
     "quality": {
       "integratedLufs": -12.6,
       "truePeakDbfs": -2.4
+    }
+  },
+  "教室很髒老師叫學生下課以後打掃一下": {
+    "file": "grammar-studio/v1/25b2183bc501.mp3",
+    "sha256": "25b2183bc50192e06bdb5e19268e8a771f522088d773dd8619e9ab004a77c0a4",
+    "duration": 4.878,
+    "spoken": "教室很髒，老師叫學生下課以後打掃一下。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.1,
+      "truePeakDbfs": -1.3,
+      "transcript": "教室很脏。老师叫學生下課以後打掃一下。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.174,
+      "voicedPace": 3.86,
+      "contentChecked": true
     }
   },
   "教授要我用中文報告在台灣的生活讓我緊張死了": {
@@ -28890,6 +29310,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.391,
       "voicedPace": 3.35,
+      "contentChecked": true
+    }
+  },
+  "昨天晚上我發燒到三十九度那種感覺非常不舒服": {
+    "file": "grammar-studio/v1/7e11fd7d50b3.mp3",
+    "sha256": "7e11fd7d50b3a39dcc65f2d4c6a800c5d63431fdfdcf08edf37e300b07cff473",
+    "duration": 5.726,
+    "spoken": "昨天晚上我發燒到三十九度，那種感覺非常不舒服。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.0",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 1,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.5,
+      "truePeakDbfs": -1.5,
+      "transcript": "昨天晚上我发烧到三十九度，那种感觉非常不舒服。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.072,
+      "voicedPace": 4.01,
       "contentChecked": true
     }
   },
@@ -30746,6 +31187,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.281,
       "voicedPace": 3.47,
+      "contentChecked": true
+    }
+  },
+  "沒有專業能力的人想找到好職業是很困難的": {
+    "file": "grammar-studio/v1/c992df4c59fc.mp3",
+    "sha256": "c992df4c59fc7936a480601e3786943db695167921cfa681ecdda640ff269525",
+    "duration": 5.553,
+    "spoken": "沒有專業能力的人，想找到好職業是很困難的。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.9,
+      "truePeakDbfs": -2.4,
+      "transcript": "没有专业能力的人，想找到好职业是很困难的。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.091,
+      "voicedPace": 3.8,
       "contentChecked": true
     }
   },
@@ -33129,6 +33591,27 @@
       "truePeakDbfs": -2.3
     }
   },
+  "第一次約會的時候林先生感覺到自己很緊張要是沒有安全人員我感覺住在這個社區很不安全": {
+    "file": "grammar-studio/v1/e332e31ee37f.mp3",
+    "sha256": "e332e31ee37f905cba7d7222dad7e230dbb12d827107beb0643a820231e01a91",
+    "duration": 11.575,
+    "spoken": "第一次約會的時候，林先生感覺到自己很緊張。要是沒有安全人員，我感覺住在這個社區很不安全。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.7,
+      "truePeakDbfs": -2.2,
+      "transcript": "第一次約會的時候，林先生感覺到自己很緊張。要是沒有安全人員，我感覺住在这个社區很不安全。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.337,
+      "voicedPace": 3.86,
+      "contentChecked": true
+    }
+  },
   "等你把這個藥吃了就讓你回家": {
     "file": "grammar-studio/v1/1db44e8596af.mp3",
     "sha256": "1db44e8596afc9b8a9967cdf221cd2d8cd8d34edb15742393b6fd1deae616c4a",
@@ -33587,6 +34070,27 @@
     "quality": {
       "integratedLufs": -11.3,
       "truePeakDbfs": -2.1
+    }
+  },
+  "老人也需要運動活動一下手跟腳": {
+    "file": "grammar-studio/v1/a4cea1b8edcb.mp3",
+    "sha256": "a4cea1b8edcb0bde7fcb099f4f76efba55f9d5660f2c0bc7b6853b724572a221",
+    "duration": 3.994,
+    "spoken": "老人也需要運動，活動一下手跟腳。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.8,
+      "truePeakDbfs": -1.6,
+      "transcript": "老人也需要运动，活动一下手跟脚。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.13,
+      "voicedPace": 4,
+      "contentChecked": true
     }
   },
   "老師你明天要記得帶毛筆來學校學生好我會帶毛筆來": {
@@ -34099,6 +34603,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.149,
       "voicedPace": 4.22,
+      "contentChecked": true
+    }
+  },
+  "聽說校長要親自帶學生去醫院照顧病人": {
+    "file": "grammar-studio/v1/357a9bd9d8e8.mp3",
+    "sha256": "357a9bd9d8e84b2a1ebad9f8db031cfbd96b3e4bf4699f605596edfac91f6d5c",
+    "duration": 4.821,
+    "spoken": "聽說校長要親自帶學生去醫院照顧病人。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.8,
+      "truePeakDbfs": -2,
+      "transcript": "听说校长要亲自带学生去医院照顾病人。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.259,
+      "voicedPace": 3.79,
       "contentChecked": true
     }
   },
@@ -34831,6 +35356,27 @@
     "quality": {
       "integratedLufs": -12.5,
       "truePeakDbfs": -1.9
+    }
+  },
+  "華語文中心的學生都很會跳舞其中跳得最好的是非洲學生": {
+    "file": "grammar-studio/v1/9314708c9e9c.mp3",
+    "sha256": "9314708c9e9c29d025fd11c4deaa773a2c753714a755a822a9cb5af9c2c707a2",
+    "duration": 6.857,
+    "spoken": "華語文中心的學生都很會跳舞，其中跳得最好的是非洲學生。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -12.8,
+      "truePeakDbfs": -1.7,
+      "transcript": "华语文中心的学生都很会跳舞，其中跳得最好的是非洲学生。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.144,
+      "voicedPace": 3.92,
+      "contentChecked": true
     }
   },
   "董事長親自出席頒獎典禮": {
@@ -37065,6 +37611,27 @@
       "contentChecked": true
     }
   },
+  "這個星期有很多工作每天下班後都得加三個小時的班": {
+    "file": "grammar-studio/v1/b472349ef599.mp3",
+    "sha256": "b472349ef599121bd587336fb87d8d22b9a1b8d3df312b1fc509f643c16d0ed1",
+    "duration": 6.194,
+    "spoken": "這個星期有很多工作，每天下班後都得加三個小時的班。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -15.3,
+      "truePeakDbfs": -3.1,
+      "transcript": "這個星期有很多工作，每天下班後都得加三個小時的班。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.243,
+      "voicedPace": 4.08,
+      "contentChecked": true
+    }
+  },
   "這個星期經理一連寫了三個推銷新產品的計畫每天都忙得不得了": {
     "file": "grammar-studio/v1/2f9d83e797bb.mp3",
     "sha256": "4ca8e69235e03eb6e04c23c5c5ba823174e40a213d721d463751a2fdce065565",
@@ -37617,6 +38184,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.081,
       "voicedPace": 3.69,
+      "contentChecked": true
+    }
+  },
+  "這家商店的產品平常不打折只有今天打九折": {
+    "file": "grammar-studio/v1/2687dc81aaac.mp3",
+    "sha256": "2687dc81aaac23420a7ebbcdcabe9afad95231e7348688a1c1a77be54ad92459",
+    "duration": 6.156,
+    "spoken": "這家商店的 3C 產品平常不打折，只有今天打九折。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.2,
+      "truePeakDbfs": -1.3,
+      "transcript": "這家商店的三C產品平常不打折，只有今天打九折。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.293,
+      "voicedPace": 3.61,
       "contentChecked": true
     }
   },
@@ -38479,6 +39067,27 @@
       "truePeakDbfs": -2.4
     }
   },
+  "這次旅行的費用很高因為車票很貴": {
+    "file": "grammar-studio/v1/d689262ca319.mp3",
+    "sha256": "d689262ca319cc902d23afd250295714f5e27b36ee45edb639e32b0ec64e53b0",
+    "duration": 4.501,
+    "spoken": "這次旅行的費用很高，因為車票很貴。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -14.7,
+      "truePeakDbfs": -1.5,
+      "transcript": "這次旅行的費用很高，因為車票很貴。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.198,
+      "voicedPace": 3.83,
+      "contentChecked": true
+    }
+  },
   "這次的水災不僅淹了整條街好幾家工廠也因為淹水沒辦法生產真是太糟了": {
     "file": "grammar-studio/v1/83911ae245a7.mp3",
     "sha256": "9ff18157483813d86fe93b4c6720ec79bc78b75b26eda4287403ff51872a98f5",
@@ -38927,6 +39536,27 @@
       "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
       "endingRatio": 0.316,
       "voicedPace": 4.27,
+      "contentChecked": true
+    }
+  },
+  "這門課很難我得用功一點兒要不然老師可能會當了我": {
+    "file": "grammar-studio/v1/a45b592081f0.mp3",
+    "sha256": "a45b592081f0391156d7446f8597ab1b48e2d070776d49d872ffaf00545922e9",
+    "duration": 6.229,
+    "spoken": "這門課很難，我得用功一點，要不然老師可能會當了我。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.3,
+      "truePeakDbfs": -1.1,
+      "transcript": "这门课很难，我得用功一点，要不然老师可能会当了我。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.125,
+      "voicedPace": 4.01,
       "contentChecked": true
     }
   },
@@ -41031,6 +41661,27 @@
       "truePeakDbfs": -2.3
     }
   },
+  "醫生建議這個病人每天跑步三十分鐘這樣體力精神就會越來越好的": {
+    "file": "grammar-studio/v1/e8f00b21a35a.mp3",
+    "sha256": "e8f00b21a35aefc9a2c1a54191b5d1391204c6034a8f56d2a91f1ec5d74f2171",
+    "duration": 7.546,
+    "spoken": "醫生建議這個病人每天跑步三十分鐘，這樣體力、精神就會越來越好的。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.05",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 0,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.5,
+      "truePeakDbfs": -2.4,
+      "transcript": "医生建議這個病人每天跑步三十分鐘，這樣體力精神就會越來越好的。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.357,
+      "voicedPace": 4.23,
+      "contentChecked": true
+    }
+  },
   "醫生從檢查報告中了解病人的情況": {
     "file": "grammar-studio/v1/86462fd01f26.mp3",
     "sha256": "86462fd01f26fa8aa0730dcb8158af27d891aabab8f847827194ea05314260fe",
@@ -41419,6 +42070,27 @@
       "voicedPace": 3.88,
       "contentChecked": true,
       "asrReview": "Owner listened on the Book 2 review page (Check first) and approved all, 2026-11-17: recognizer slip (垃圾 lèsè, boss, 網路/網絡, names, digits)."
+    }
+  },
+  "開會的時候老闆請大家把自己的想法說出來": {
+    "file": "grammar-studio/v1/7c193d0eb82b.mp3",
+    "sha256": "7c193d0eb82b5a1eabdf1db49e9d323c458417bcc81c8eb4a350d1442488caf4",
+    "duration": 4.685,
+    "spoken": "開會的時候，老闆請大家把自己的想法說出來。",
+    "model": "yating-tts-v2/zh_en_female_1/speed-1.0",
+    "voice": "zh_en_female_1@1.05",
+    "instruct": "",
+    "seed": 1,
+    "approved": "owner 2026-11-21 (Book 2 card examples, go after listening page)",
+    "deliveryBitrate": "48k",
+    "quality": {
+      "integratedLufs": -13.7,
+      "truePeakDbfs": -2.2,
+      "transcript": "开会的时候，老板请大家把自己的想法说出来。",
+      "asrModel": "mlx-community/Qwen3-ASR-0.6B-8bit",
+      "endingRatio": 0.114,
+      "voicedPace": 4.5,
+      "contentChecked": true
     }
   },
   "開會開個不停累死了": {
