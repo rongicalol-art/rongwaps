@@ -5,6 +5,7 @@ import { useLevels } from '../../../hooks/useLevels';
 import { resolveLevel } from '../../../utils/lesson/levels';
 import { FavoriteButton } from '../../../features/library';
 import { audioService } from '../../../services/audioService';
+import { canPlayCard } from '../../../services/audio/recordingFile';
 import type { DictionaryListEntry } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
 import { readingKey, searchRowMeaning } from '../../../utils/vocabulary/wordEntry';
@@ -36,7 +37,7 @@ export const DictionaryCard = memo(function DictionaryCard({
   const pinyin = entry.coursePinyin || entry.pinyin_accented;
   // A book recording, else the word said with this row's reading (a character's recorded syllable, or the cloud voice).
   const sound = { front: entry.traditional, pinyin: entry.pinyin_accented || undefined, audio: entry.audio ?? undefined, source: 'dictionary' as const };
-  const canPlayAudio = audioService.canPlayCard(sound);
+  const canPlayAudio = canPlayCard(sound);
 
   return (
     <DictionaryRow

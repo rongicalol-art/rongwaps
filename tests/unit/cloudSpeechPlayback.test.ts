@@ -51,6 +51,7 @@ after(() => {
 const { AudioService } = await import('../../src/services/audioService');
 const { authService } = await import('../../src/services/authService');
 const { resetCloudSpeech } = await import('../../src/services/audio/cloudSpeech');
+const { canPlayCard } = await import('../../src/services/audio/recordingFile');
 
 const settle = () => new Promise((resolve) => setTimeout(resolve, 20));
 type Asked = { url: string; body: { text: string; voice: string; reading?: string }; authorization: string | null };
@@ -95,13 +96,12 @@ test('a dictionary word stays silent when the voice is out or its reading cannot
 });
 
 test('a dictionary row shows a speaker only when it can play without guessing', () => {
-  const service = new AudioService();
-  assert.equal(service.canPlayCard({ front: '學生', audio: 'B1L01-1-01.mp3', source: 'dictionary' }), true);
-  assert.equal(service.canPlayCard({ front: '銀行', pinyin: 'yínháng', source: 'dictionary' }), true);
-  assert.equal(service.canPlayCard({ front: '長', pinyin: 'zhǎng', source: 'dictionary' }), true);
-  assert.equal(service.canPlayCard({ front: '一會兒', pinyin: 'yīhuìr', source: 'dictionary' }), false);
-  assert.equal(service.canPlayCard({ front: '銀行', source: 'dictionary' }), false);
-  assert.equal(service.canPlayCard({ front: '銀行', pinyin: 'yínháng' }), false, 'only reading-checked dictionary words use the voice');
+  assert.equal(canPlayCard({ front: '學生', audio: 'B1L01-1-01.mp3', source: 'dictionary' }), true);
+  assert.equal(canPlayCard({ front: '銀行', pinyin: 'yínháng', source: 'dictionary' }), true);
+  assert.equal(canPlayCard({ front: '長', pinyin: 'zhǎng', source: 'dictionary' }), true);
+  assert.equal(canPlayCard({ front: '一會兒', pinyin: 'yīhuìr', source: 'dictionary' }), false);
+  assert.equal(canPlayCard({ front: '銀行', source: 'dictionary' }), false);
+  assert.equal(canPlayCard({ front: '銀行', pinyin: 'yínháng' }), false, 'only reading-checked dictionary words use the voice');
 });
 
 test('speakReading says the text with the given reading', async (t) => {

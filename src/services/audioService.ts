@@ -303,12 +303,6 @@ export class AudioService {
       ...options, ...(card.source === 'dictionary' ? { fallback: 'none' as const } : {}),
     });
   }
-  /** Whether playCard has something to say without guessing: a recording, a character's syllable, or a word whose reading the cloud voice can be told. */
-  public canPlayCard(card: Pick<Flashcard, 'audio' | 'front' | 'source'> & { pinyin?: string }): boolean {
-    if (this.isAudioFileName(card.audio)) return true;
-    if (card.source !== 'dictionary' || !card.pinyin) return false;
-    return /^[\u3400-\u9fff]$/u.test(card.front) || wordBopomofo(card.front, card.pinyin) !== null;
-  }
   /** The cloud voice says `text` with this exact reading (Bopomofo, one syllable per character), made once and kept. */
   public speakReading(text: string, reading: string, rate?: number, options?: PlayOptions): Promise<void> {
     this.beginPlayback(options?.overlap === true);
