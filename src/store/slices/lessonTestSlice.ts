@@ -29,6 +29,14 @@ export interface LessonTestAttempt {
   startedAt: number;
 }
 
+/** The last finished run of a lesson's test, for Scripts & answers on the Test tab. */
+export interface LessonTestReview {
+  plan: LessonTestPlan;
+  /** Question id → original choice index, as answered in the test. */
+  answers: Record<string, number>;
+  at: string;
+}
+
 export interface LessonTestResult {
   key: string;
   correct: number;
@@ -37,11 +45,15 @@ export interface LessonTestResult {
   reading: [number, number];
   missedLessons: number[];
   shownVersionIds: string[];
+  /** The run itself, kept for Scripts & answers. */
+  review?: Omit<LessonTestReview, 'at'>;
 }
 
 export interface LessonTestState {
   lessonTests: Record<string, LessonTestRecord>;
   lessonTestAttempt: LessonTestAttempt | null;
+  /** Each lesson's last finished run (lesson key → run). */
+  lessonTestLast: Record<string, LessonTestReview>;
   saveLessonTestAttempt: (attempt: LessonTestAttempt | null) => void;
   recordLessonTestResult: (result: LessonTestResult) => void;
   resetLessonTests: () => void;
@@ -55,6 +67,7 @@ export function createLessonTestSlice(set: SetState): LessonTestState {
   return {
     lessonTests: {},
     lessonTestAttempt: null,
+    lessonTestLast: {},
     saveLessonTestAttempt: (attempt) => set({ lessonTestAttempt: attempt }),
     recordLessonTestResult: (result) => set((state) => {
       const previous = state.lessonTests[result.key];
@@ -70,16 +83,21 @@ export function createLessonTestSlice(set: SetState): LessonTestState {
         missedLessons: result.missedLessons,
         seen,
       };
-      return { lessonTests: { ...state.lessonTests, [result.key]: record }, lessonTestAttempt: null };
+      return {
+        lessonTests: { ...state.lessonTests, [result.key]: record },
+        lessonTestAttempt: null,
+        lessonTestLast: result.review ? { ...state.lessonTestLast, [result.key]: { ...result.review, at } } : state.lessonTestLast,
+      };
     }),
-    resetLessonTests: () => set({ lessonTests: {}, lessonTestAttempt: null }),
+    resetLessonTests: () => set({ lessonTests: {}, lessonTestAttempt: null, lessonTestLast: {} }),
   };
 }
 
-/** Local to this device for now (not cloud-synced yet): best scores and the attempt in progress. */
-export const LESSON_TEST_PERSISTED_KEYS = ['lessonTests', 'lessonTestAttempt'] as const;
+/** Local to this device for now (not cloud-synced yet): best scores, the attempt in progress and the last finished run. */
+export const LESSON_TEST_PERSISTED_KEYS = ['lessonTests', 'lessonTestAttempt', 'lessonTestLast'] as const;
 
 export const LESSON_TEST_ACCOUNT_SWITCH_DEFAULTS = {
   lessonTests: {},
   lessonTestAttempt: null,
+  lessonTestLast: {},
 };
