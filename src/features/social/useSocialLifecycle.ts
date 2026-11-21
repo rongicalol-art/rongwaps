@@ -51,8 +51,10 @@ export function useSocialLifecycle() {
   useEffect(() => {
     if (!userId || !live || !updateOpen()) return;
     const save = () => {
-      void Promise.all([import('./friendsController'), import('./profileCard')]).then(([friends, profile]) =>
-        friends.saveMyProfile({ n: identity.name, c: socialColor(identity.color), ...(identity.image ? { i: identity.image } : {}) }, profile.buildProfileCard));
+      void Promise.all([import('./friendsController'), import('./profileCard')]).then(([friends, profile]) => {
+        void friends.saveMyProfile({ n: identity.name, c: socialColor(identity.color), ...(identity.image ? { i: identity.image } : {}) }, profile.buildProfileCard);
+        void friends.ensureUsername(identity.name);
+      });
     };
     save();
     const timer = setInterval(save, 10 * 60_000);

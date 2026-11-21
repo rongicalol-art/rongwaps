@@ -11,7 +11,7 @@ import {
   normalizePronunciationRate,
 } from '../../features/practice';
 import { SettingsAccountSection } from './SettingsAccountSection';
-import { BlockedPeople } from '../../features/social';
+import { BlockedPeople, UsernameSetting, setFindable } from '../../features/social';
 import { setToneOrigin } from '../../hooks/useReviewTone';
 
 export interface AppSettingsDrawerProps {
@@ -30,6 +30,7 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
   const updatePreferences = useAppStore((state) => state.updatePreferences);
   const showOnline = useAppStore((state) => state.showOnline);
   const setShowOnline = useAppStore((state) => state.setShowOnline);
+  const username = useAppStore((state) => state.socialUsername);
   const showProfile = useAppStore((state) => state.showProfile);
   const setShowProfile = useAppStore((state) => state.setShowProfile);
   const [isConfirmResetOpen, setIsConfirmResetOpen] = useState(false);
@@ -113,7 +114,11 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
 
               <SettingsPageSection title="Study together">
                 <SettingsToggleRow checked={showOnline} onClick={() => setShowOnline(!showOnline)} label="Show me online" />
-                <SettingsToggleRow checked={showProfile} onClick={() => setShowProfile(!showProfile)} label="Show my profile" className="border-b-0" />
+                <SettingsToggleRow checked={showProfile} onClick={() => setShowProfile(!showProfile)} label="Show my profile" className={username ? undefined : 'border-b-0'} />
+                {username && <>
+                  <UsernameSetting />
+                  <SettingsToggleRow checked={username.findable} onClick={() => { void setFindable(!username.findable); }} label="Let classmates find me" description="By your name or @username in Add friends" className="border-b-0" />
+                </>}
                 <BlockedPeople />
               </SettingsPageSection>
 

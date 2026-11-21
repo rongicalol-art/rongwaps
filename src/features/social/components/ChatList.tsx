@@ -110,6 +110,7 @@ const SEARCH_PAUSE_MS = 250;
 export function AddFriends({ online, recent, lesson }: { online: Person[]; recent: Array<{ person: Person; seen: number | null }>; lesson: number | null }) {
   const friends = useAppStore(state => state.socialFriends);
   const mutual = useMemo(() => new Set((friends ?? []).filter(person => person.iAdded && person.addedMe).map(person => person.u)), [friends]);
+  const mine = useAppStore(state => state.socialUsername);
   const [query, setQuery] = useState('');
   const [found, setFound] = useState<{ text: string; rows: SavedProfile[] | null } | null>(null);
   const text = query.trim();
@@ -135,11 +136,16 @@ export function AddFriends({ online, recent, lesson }: { online: Person[]; recen
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="shrink-0 pb-2 pt-1">
-        <SearchField value={query} onChange={setQuery} placeholder="Search by name" label="Search classmates by name" />
+        <SearchField value={query} onChange={setQuery} placeholder="Name or @username" label="Search classmates by name or username" />
+        {mine && <p className="px-1 pt-2 text-sm font-bold text-ui-muted">You’re <span className="font-black text-ui-ink-strong">@{mine.name}</span>{!mine.findable && ' · hidden from search'}</p>}
       </div>
       <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar" aria-busy={waiting}>
         {text ? <>
-          {results?.map(saved => { const person = online.find(item => item.u === saved.u) ?? asPerson(saved); return row(person, liveIds.has(saved.u) ? 'Online' : seenLabel(saved.seen), liveIds.has(saved.u)); })}
+          {results?.map(saved => {
+            const person = online.find(item => item.u === saved.u) ?? asPerson(saved);
+            const status = liveIds.has(saved.u) ? 'Online' : seenLabel(saved.seen);
+            return row(person, saved.h ? `@${saved.h} · ${status}` : status, liveIds.has(saved.u));
+          })}
           {!waiting && results === null && <p className="py-6 text-center text-sm font-bold text-ui-muted">Couldn’t search right now. Try again.</p>}
           {!waiting && results?.length === 0 && <p className="py-6 text-center text-sm font-bold text-ui-muted">No classmate called “{text}” yet.</p>}
         </> : <>

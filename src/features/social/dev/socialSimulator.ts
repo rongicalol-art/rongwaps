@@ -8,7 +8,7 @@ import { COVER_PRESETS, GLOBAL_CHAT, type Activity, type ChatMessage, type Lesso
 import { applyRaceAction, enterRace, newRaceRoom, summarizeRoom, type RaceAction, type RaceRoomState, type RaceRoomSummary, type RaceSnapshot, type SocialColor } from '../../../../shared/quizRace';
 import type { connectRace } from '../../../services/socialService';
 import { deliver, setLobbyTransport } from '../lobbyController';
-import { setFriendsBackend, type DirectMessage, type FriendsBackend, type SavedProfile } from '../../../services/friendsService';
+import { setFriendsBackend, type DirectMessage, type FriendsBackend, type MyUsername, type SavedProfile } from '../../../services/friendsService';
 import { forceUpdateOpen } from '../socialUpdate';
 import { setRaceTransport } from '../raceController';
 
@@ -289,6 +289,9 @@ const reads = new Map<string, number>();
 let dmId = 1;
 const OFFLINE = ['Ravi', 'Lena', 'Yuna', 'Theo', 'Iko', 'Sven'].map((name, index) => ({ u: `sim-off-${index}`, n: name, c: COLORS[(index + 2) % COLORS.length], seen: Date.now() - (index + 1) * 47 * 60_000 }));
 const person = (u: string) => users.find(user => user.u === u) ?? OFFLINE.find(user => user.u === u);
+/** Fake @usernames: the name, lower case ("kai"), plus the account number so they stay unique. */
+const handleOf = (u: string) => `${(person(u)?.n ?? 'learner').toLowerCase()}${u.replace(/\D/g, '') || ''}`;
+let myHandle: MyUsername | null = null;
 const savedOf = (u: string): SavedProfile | null => {
   const who = person(u);
   if (!who) return null;
@@ -331,10 +334,20 @@ const friendsBackend: FriendsBackend = {
   async saveCard() {},
   async profiles(us) { return us.map(savedOf).filter((row): row is SavedProfile => !!row); },
   async recent(limit) { return OFFLINE.map(user => savedOf(user.u)!).slice(0, limit); },
-  async search(text, limit) {
-    const found = [...users, ...OFFLINE].filter(user => user.n.toLowerCase().includes(text.trim().toLowerCase()));
-    return found.map(user => savedOf(user.u)!).slice(0, limit);
+  async search(text) {
+    const wanted = text.trim().replace(/^@/, '').toLowerCase();
+    const found = [...users, ...OFFLINE].filter(user => user.n.toLowerCase().includes(wanted) || handleOf(user.u).includes(wanted));
+    return found.map(user => ({ ...savedOf(user.u)!, h: handleOf(user.u) })).slice(0, 21);
   },
+  async myUsername() { return myHandle; },
+  async claimUsername(base) { myHandle ??= { name: base, findable: true, chosenAt: null }; return myHandle.name; },
+  async setUsername(name) {
+    if (myHandle?.chosenAt && myHandle.chosenAt > Date.now() - 7 * 86_400_000) throw new Error('You can change your username again next week.');
+    if ([...users, ...OFFLINE].some(user => handleOf(user.u) === name)) throw new Error('That username is taken.');
+    myHandle = { findable: myHandle?.findable ?? true, name, chosenAt: Date.now() };
+    return name;
+  },
+  async setFindable(on) { if (myHandle) myHandle = { ...myHandle, findable: on }; },
 };
 
 export function startSimulator() {

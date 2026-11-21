@@ -10,7 +10,10 @@ export interface DirectMessage { id: number; from: string; to: string; t: string
 export interface Conversation { u: string; lastId: number; lastFrom: string; last: string; at: number; unread: number }
 /** The card a classmate last shared, for their profile while they're offline; `n`/`c`/`i` say who it is. */
 export type StoredCard = Partial<ProfileCard> & { n?: string; c?: SocialColor; i?: string };
-export interface SavedProfile { u: string; card: StoredCard | null; seen: number | null }
+/** `h`: their @username, when they can be found ("Let classmates find me"). */
+export interface SavedProfile { u: string; card: StoredCard | null; seen: number | null; h?: string }
+/** This learner's own @username and "Let classmates find me"; `chosenAt` is null while it is the automatic one. */
+export interface MyUsername { name: string; findable: boolean; chosenAt: number | null }
 
 /** Where the calls go: Supabase, or the DEV classmate simulator's stand-in. */
 export interface FriendsBackend {
@@ -24,8 +27,13 @@ export interface FriendsBackend {
   saveCard(card: StoredCard | null, seen: boolean): Promise<void>;
   profiles(us: string[]): Promise<SavedProfile[]>;
   recent(limit: number): Promise<SavedProfile[]>;
-  /** Saved profiles whose name contains `text`, most recently online first. */
-  search(text: string, limit: number): Promise<SavedProfile[]>;
+  /** Saved profiles whose name or @username contains `text`: an exact @username first, then the most recently online. */
+  search(text: string): Promise<SavedProfile[]>;
+  myUsername(me: string): Promise<MyUsername | null>;
+  /** Makes one from `base` (a slug of their name) if they have none; returns theirs. */
+  claimUsername(base: string): Promise<string>;
+  setUsername(name: string): Promise<string>;
+  setFindable(on: boolean): Promise<void>;
 }
 
 const PAGE = 50;
@@ -85,9 +93,14 @@ const database: FriendsBackend = {
   async profiles(us) {
     const ids = us.filter(u => UUID.test(u)).slice(0, 100);
     if (!ids.length) return [];
-    const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen').in('user_id', ids);
-    if (error) throw error;
-    return (data ?? []).map(toProfile);
+    // The @username comes from its own table; row security leaves out anyone who can't be found.
+    const [cards, names] = await Promise.all([
+      supabase.from('profile_cards').select('user_id, card, last_seen').in('user_id', ids),
+      supabase.from('usernames').select('user_id, username').in('user_id', ids),
+    ]);
+    if (cards.error) throw cards.error;
+    const handles = new Map((names.data ?? []).map(row => [row.user_id, row.username]));
+    return (cards.data ?? []).map(row => ({ ...toProfile(row), ...(handles.get(row.user_id) ? { h: handles.get(row.user_id) } : {}) }));
   },
   async recent(limit) {
     const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen')
@@ -95,15 +108,30 @@ const database: FriendsBackend = {
     if (error) throw error;
     return (data ?? []).map(toProfile);
   },
-  async search(text, limit) {
-    // A name search over the saved cards (the same rows as offline profiles, so blocked pairs stay hidden). A few
-    // hundred small rows: a plain scan is fast, no index needed. `*` is a wildcard to the API, and % _ \ to LIKE.
-    const pattern = text.replace(/\*/g, '').replace(/[\\%_]/g, char => `\\${char}`).trim();
-    if (!pattern) return [];
-    const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen')
-      .ilike('card->>n', `%${pattern}%`).order('last_seen', { ascending: false, nullsFirst: false }).limit(limit);
+  async search(text) {
+    const { data, error } = await supabase.rpc('find_classmates', { p_text: text.slice(0, 40) });
     if (error) throw error;
-    return (data ?? []).map(toProfile);
+    return (data ?? []).map(row => ({ ...toProfile(row), h: row.username }));
+  },
+  async myUsername(me) {
+    if (!UUID.test(me)) return null;
+    const { data, error } = await supabase.from('usernames').select('username, findable, chosen_at').eq('user_id', me).maybeSingle();
+    if (error) throw error;
+    return data ? { name: data.username, findable: data.findable, chosenAt: time(data.chosen_at) } : null;
+  },
+  async claimUsername(base) {
+    const { data, error } = await supabase.rpc('claim_username', { p_base: base });
+    if (error) throw error;
+    return data;
+  },
+  async setUsername(name) {
+    const { data, error } = await supabase.rpc('set_username', { p_name: name });
+    if (error) throw error;
+    return data;
+  },
+  async setFindable(on) {
+    const { error } = await supabase.rpc('set_findable', { p_on: on });
+    if (error) throw error;
   },
 };
 
@@ -122,5 +150,9 @@ export const friendsService: FriendsBackend = {
   saveCard: (card, seen) => backend.saveCard(card, seen),
   profiles: us => backend.profiles(us),
   recent: limit => backend.recent(limit),
-  search: (text, limit) => backend.search(text, limit),
+  search: text => backend.search(text),
+  myUsername: me => backend.myUsername(me),
+  claimUsername: base => backend.claimUsername(base),
+  setUsername: name => backend.setUsername(name),
+  setFindable: on => backend.setFindable(on),
 };
