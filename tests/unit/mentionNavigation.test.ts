@@ -14,7 +14,7 @@ let loads = 0;
 
 /** The real lobby controller, bundled against a plain object store and a fake socket. */
 async function loadController(initial: Record<string, unknown>) {
-  state = { ...initial };
+  state = { socialSaved: {}, ...initial };
   sent.length = 0;
   state.setSocial = (patch: object) => { state = { ...state, ...patch }; };
   state.showFeedbackToast = () => {};

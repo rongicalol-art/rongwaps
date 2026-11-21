@@ -3,13 +3,13 @@ import { ActionButton, AppIcon, Avatar, PlayfulNavIcon, SmartSentence } from '..
 import { useAppStore } from '../../../store/useAppStore';
 import { CHAT_MAX, chatText, nextChatRate, type ChatRate, type ChatMessage, type MentionNotice } from '../../../../shared/lobby';
 import { maskChat } from '../../../../shared/nameFilter';
-import { loadSaved, loadThread, markThreadRead, sendDirect } from '../friendsController';
+import { loadThread, markThreadRead, sendDirect } from '../friendsController';
 import { updateOpen } from '../socialUpdate';
 import type { ReportPlace } from '../../../services/safetyService';
 import { lobby } from '../lobbyController';
 import { joinRace, partySend } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
-import { describeSelection } from '../socialText';
+import { describeSelection, linePhoto } from '../socialText';
 import { EmptyNote } from './SocialBits';
 import { updateMentionTokens, type MentionToken } from '../mentionTokens';
 import { openSafety } from '../safety';
@@ -135,17 +135,13 @@ function MessageThread({ chat, ready, candidates, place = 'chat', everyone = fal
   const rate = useRef<ChatRate | null>(null);
   const targetLine = target && place !== 'message' && (party ? target.room && target.room === useAppStore.getState().race?.code : !target.room && target.channel === useAppStore.getState().socialChat?.lesson) ? target.message : null;
   const blocks = useAppStore(state => state.socialBlocks);
-  // A line carries its writer's photo only while they're connected; offline writers show their saved profile photo.
   const saved = useAppStore(state => state.socialSaved);
-  const photo = (u: string, live?: string) => live ?? saved[u]?.card?.i;
   const blockedIds = useMemo(() => (blocks?.length ? new Set(blocks.map(person => person.u)) : null), [blocks]);
   const visible = useMemo(() => {
     const all = targetLine && chat && !chat.some(line => line.id === targetLine.id) ? [targetLine, ...chat] : chat ?? [];
     // The Lobby already leaves blocked people out; this also covers party rooms and the moment before it catches up.
     return blockedIds ? all.filter(line => !blockedIds.has(line.u)) : all;
   }, [targetLine, chat, blockedIds]);
-  // loadSaved skips anyone fetched in the last 2 minutes, so a new line costs nothing.
-  useEffect(() => { if (classChat) void loadSaved(visible.filter(line => !line.i && line.u !== me).map(line => line.u)); }, [classChat, visible, me]);
   // Class chat: the New line sits before the first line from someone else that arrived after the last visit.
   const [newFrom, setNewFrom] = useState<number | null | undefined>(undefined);
   useLayoutEffect(() => {
@@ -315,8 +311,8 @@ function MessageThread({ chat, ready, candidates, place = 'chat', everyone = fal
                     : `${first ? '' : 'rounded-tl-xs'} ${last ? '' : 'rounded-bl-xs'}`;
                   // The face sits beside the run's last line, so opening a line's help never moves it.
                   const face = !last ? <span aria-hidden className="w-8 shrink-0" />
-                    : !classChat ? <Avatar name={group.n} color={group.c} size="md" src={photo(group.u, group.i)} />
-                    : <button type="button" onClick={() => visit(group.u)} aria-label={`Visit ${group.n}'s profile`} className="shrink-0 rounded-full outline-none focus-ring"><Avatar name={group.n} color={group.c} size="md" src={photo(group.u, group.i)} /></button>;
+                    : !classChat ? <Avatar name={group.n} color={group.c} size="md" src={linePhoto(group, saved)} />
+                    : <button type="button" onClick={() => visit(group.u)} aria-label={`Visit ${group.n}'s profile`} className="shrink-0 rounded-full outline-none focus-ring"><Avatar name={group.n} color={group.c} size="md" src={linePhoto(group, saved)} /></button>;
                   const emoji = EMOJI_ONLY.test(line.t.replace(/\s/g, ''));
                   const time = last && <span className="shrink-0 pb-1.5 text-xs font-bold text-ui-muted">{clock(line.ts)}</span>;
                   return (

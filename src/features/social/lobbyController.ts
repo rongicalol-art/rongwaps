@@ -22,6 +22,11 @@ export const isDirectNotice = (notice: Pick<MentionNotice, 'key'>) => notice.key
 const localNotice = (key: string) => key.startsWith(EVERYONE_KEY) || key.startsWith(DIRECT_KEY);
 /** Friends and messages live in friendsController (loaded on demand). */
 const friends = () => import('./friendsController');
+/** Saved profiles (and so photos) of class-chat writers who aren't connected, in one request. */
+const loadWriterPhotos = (lines: ChatMessage[]) => {
+  const offline = lines.filter(line => !line.i && line.t).map(line => line.u);
+  if (offline.length) void friends().then(module => module.loadSaved(offline));
+};
 let olderAsked = 0;
 const pendingReads = new Set<string>();
 let readOwner: string | null = null;
@@ -132,6 +137,7 @@ function receive(message: LobbyServerMessage) {
       set({ socialChat: { lesson: message.l, messages: message.v, more: !!message.more }, socialChatRead: read, socialChatUnread: unread });
       flushChatRead();
       noticeEveryone(message.v);
+      loadWriterPhotos(message.v);
       break;
     }
     case 'msg': {
@@ -169,6 +175,7 @@ function receive(message: LobbyServerMessage) {
       if (!chat || chat.lesson !== GLOBAL_CHAT) break;
       const known = new Set(chat.messages.map(line => line.id));
       set({ socialChat: { ...chat, messages: [...message.v.filter(line => !known.has(line.id)), ...chat.messages].slice(-CHAT_CAP), more: message.more } });
+      loadWriterPhotos(message.v);
       break;
     }
     case 'dm': void friends().then(module => module.onPing(message.from)); break;
