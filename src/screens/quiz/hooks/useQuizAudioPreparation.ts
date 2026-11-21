@@ -5,7 +5,7 @@ import { getCourseVocabLookupMap } from '../../../services/courseVocabLookup';
 import { getPronunciationAudioIndex } from '../../../services/pronunciationAudio';
 import { fetchPronunciationIndex } from '../../../services/contentPacks';
 import type { QuizBeat } from '../../../utils/vocabulary/quizDirector';
-import { resolveWordBuildTileAudio } from '../utils/wordBuildAudio';
+import { resolveWordBuildTileAudio, wordBuildTileSpeech } from '../utils/wordBuildAudio';
 
 async function recordingsFor(question: QuizBeat): Promise<(string | undefined)[]> {
   const files = new Set(question.cards.map((card) => card.audio));
@@ -14,7 +14,10 @@ async function recordingsFor(question: QuizBeat): Promise<(string | undefined)[]
       getCourseVocabLookupMap(), getPronunciationAudioIndex(), fetchPronunciationIndex(),
     ]);
     for (const char of new Set(question.tiles ?? [])) {
-      files.add(resolveWordBuildTileAudio(question.cards[0], char, recordings, sounds, readings));
+      const file = resolveWordBuildTileAudio(question.cards[0], char, recordings, sounds, readings);
+      const speech = file ? undefined : wordBuildTileSpeech(question.cards[0], char);
+      if (speech) audioService.prepareSpeech(speech.text, speech.reading); // Made once by the server, then kept here.
+      files.add(file);
     }
   }
   if ((question.format === 'listen-pick' || question.format === 'sound-match')

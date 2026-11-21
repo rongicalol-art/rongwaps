@@ -2,28 +2,35 @@ import type { Flashcard } from '../../../data/flashcards';
 import { audioService } from '../../../services/audioService';
 import { findReadingMatch, pronunciationKey } from '../../../utils/pinyin/pronunciationMatching';
 import { characterReadings } from '../../../utils/pinyin/characterReadings';
+import { wordBopomofo } from '../../../utils/pinyin/bopomofo';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { ReadingsIndex } from '../../../utils/pinyin/pronunciation';
 
-/** The tapped character's reading, independent of where the learner places it. */
+const SYLLABLE = /^[a-zü]+[1-5]$/;
+
+/**
+ * The tapped character's reading, independent of where the learner places it: the tone it has where it
+ * first appears in the word (the book's 一/不 tones as written, a third tone before a third tone said as
+ * a second, the first of two listed readings; erhua stays silent), so the tile sounds like the word it builds.
+ */
 export function wordBuildTileReading(card: Flashcard, char: string, index: ReadingsIndex | null = null): string | undefined {
-  if (!/^[\u3400-\u9fff]$/u.test(char) || /[一不]/.test(char)) return undefined;
-  const characters = Array.from(card.front);
-  const positions = characters.flatMap((value, i) => value === char ? [i] : []);
-  let readings: Array<string | undefined>;
-  if (positions.length) {
+  if (!/^[㐀-鿿]$/u.test(char)) return undefined;
+  if (Array.from(card.front).includes(char)) {
+    // Punctuation, digits and Latin letters (這還不容易？, 台北101) carry no reading; the characters line up alone.
     const aligned = characterReadings(card.front, card.pinyin, card.traditional);
-    if (!aligned || aligned.characters.join('') !== card.front) return undefined;
-    // An actual third-tone change needs the complete word, not a citation-tone clip.
-    if (positions.some((i) => aligned.readings[i].some((reading) => /3$/.test(reading))
-      && aligned.readings[i + 1]?.some((reading) => /3$/.test(reading)))) return undefined;
-    readings = positions.flatMap((i) => aligned.readings[i]);
-  } else {
-    // Distractors have no word context: only an unambiguous indexed reading is safe.
-    readings = (index?.get(char) ?? []).map((reading) => pronunciationKey(reading.pinyin) ?? undefined);
+    const han = Array.from(card.front).filter((value) => /^[\u3400-\u9fff]$/u.test(value)).join('');
+    if (!aligned || aligned.characters.join('') !== han) return undefined;
+    const at = aligned.characters.indexOf(char);
+    const reading = aligned.readings[at][0];
+    // Erhua (一點兒) is not a syllable of its own; it never plays as a standalone er.
+    if (!reading || !SYLLABLE.test(reading) || reading === 'r5') return undefined;
+    return /3$/.test(reading) && /3$/.test(aligned.readings[at + 1]?.[0] ?? '') ? reading.replace(/3$/, '2') : reading;
   }
-  const unique = new Set(readings);
-  const reading = readings[0];
-  return unique.size === 1 && reading && /^[a-zü]+[1-5]$/.test(reading) ? reading : undefined;
+  // Distractors have no word context: only an unambiguous indexed reading is safe, and 一/不 change tone.
+  if (/[一不]/.test(char)) return undefined;
+  const readings = new Set((index?.get(char) ?? []).map((reading) => pronunciationKey(reading.pinyin) ?? undefined));
+  const [reading] = readings;
+  return readings.size === 1 && reading && SYLLABLE.test(reading) ? reading : undefined;
 }
 
 /**
@@ -37,14 +44,14 @@ function courseCharacterReading(recordings: Map<string, Flashcard>, char: string
   for (const key of recordings.keys()) {
     if (!key.startsWith(prefix)) continue;
     const value = key.slice(prefix.length);
-    if (!/^[a-zü]+[1-5]$/.test(value)) continue;
+    if (!SYLLABLE.test(value)) continue;
     if (reading && reading !== value) return undefined;
     reading = value;
   }
   return reading;
 }
 
-/** No whole-word fallback on a tile tap: it could reveal the answer. */
+/** The book's own recording of the character, else the recorded syllable. No whole-word fallback on a tile tap: it could reveal the answer. */
 export function resolveWordBuildTileAudio(
   card: Flashcard,
   char: string,
@@ -56,5 +63,17 @@ export function resolveWordBuildTileAudio(
     ?? (!Array.from(card.front).includes(char) ? courseCharacterReading(recordings, char) : undefined);
   if (!reading) return undefined;
   const recording = findReadingMatch(recordings, [char], reading);
-  return recording?.audio && audioService.isAudioFileName(recording.audio) ? recording.audio : sounds?.get(reading);
+  return recording?.audio && audioService.isAudioFileName(recording.audio) ? recording.audio
+    : sounds?.get(reading);
+}
+
+/**
+ * A tile of the word whose sound no recording has (shuí in 水果, neutral xi in 東西): the cloud voice says the
+ * character with that exact reading, made once by the server and kept. Only after resolveWordBuildTileAudio found nothing.
+ */
+export function wordBuildTileSpeech(card: Flashcard, char: string): { text: string; reading: string } | undefined {
+  if (!Array.from(card.front).includes(char)) return undefined;
+  const reading = wordBuildTileReading(card, char);
+  const bopomofo = reading ? wordBopomofo(char, numberToToneMarks(reading)) : null;
+  return bopomofo ? { text: char, reading: bopomofo } : undefined;
 }

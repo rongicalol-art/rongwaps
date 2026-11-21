@@ -14,7 +14,7 @@ import { ShortAudioClips } from './audio/shortAudioClips';
 import { reportAudioFailure } from './errorReporting';
 import { isRecordingFile } from './audio/recordingFile';
 import { playbackWaiting } from './audio/playbackWaiting';
-import { startCloudSpeech, type CloudSpeechRequest } from './audio/cloudSpeech';
+import { cloudSpeechAvailable, fetchCloudSpeech, startCloudSpeech, type CloudSpeechRequest } from './audio/cloudSpeech';
 import { wordBopomofo } from '../utils/pinyin/bopomofo';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
@@ -300,16 +300,22 @@ export class AudioService {
       });
     }
     const reading = card.source === 'dictionary' && !this.isAudioFileName(card.audio) ? wordBopomofo(card.front, card.pinyin) : null;
-    if (reading) {
-      this.beginPlayback(options?.overlap === true);
-      return new Promise((resolve) => {
-        const finish = this.trackPlayback(resolve);
-        this.playCloudSpeech({ text: card.front, reading }, effectiveRate, finish, () => { options?.onUnavailable?.(); finish(); });
-      });
-    }
+    if (reading) return this.speakReading(card.front, reading, effectiveRate, options);
     return this.play(card.audio, effectiveRate, card.front, undefined, 0, {
       ...options, ...(card.source === 'dictionary' ? { fallback: 'none' as const } : {}),
     });
+  }
+  /** The cloud voice says `text` with this exact reading (Bopomofo, one syllable per character); never a guess. */
+  public speakReading(text: string, reading: string, rate?: number, options?: PlayOptions): Promise<void> {
+    this.beginPlayback(options?.overlap === true);
+    return new Promise((resolve) => {
+      const finish = this.trackPlayback(resolve);
+      this.playCloudSpeech({ text, reading }, rate ?? this.defaultRate, finish, () => { options?.onUnavailable?.(); finish(); });
+    });
+  }
+  /** Asks for the cloud voice's audio ahead of a tap so it plays at once; nothing plays. */
+  public prepareSpeech(text: string, reading: string): void {
+    if (cloudSpeechAvailable(text)) void fetchCloudSpeech({ text, reading });
   }
   public playRange(
     audioFileName: string,
