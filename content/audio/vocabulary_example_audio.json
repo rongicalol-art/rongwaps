@@ -41004,17 +41004,22 @@
       "partId": 1,
       "sourceCardId": "B2L14-1-05",
       "traditional": "當寒假一到，大家就準備要過年了。",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-14-2-2.mp3",
+        "start": 29.47,
+        "end": 33.59
+      },
       "alignment": {
         "score": 0.131,
         "pinyinSource": "textbook",
         "alignedSyllables": 14,
         "syllableCount": 14,
-        "track": "B2-14-1-2.mp3",
-        "trackSha256": "ff652d7517d5ed12934dae49565fee174e8f4a5f70824ab6752f03c15f07abe8",
-        "driveFileId": "18wS41O_JVM3beH_jIgv6ZXnWvY9E0Cw8"
-      },
-      "issue": "alignment confidence 0.131 is below 0.64"
+        "track": "B2-14-2-2.mp3",
+        "trackSha256": "feae253324a167b0972099e563c568e36b4f00de16fae23121eece2a81cd5518",
+        "driveFileId": "1SrxZToxWIR_ybhsCRMhmK6V5WxaErNfD",
+        "locatedBy": "asr"
+      }
     },
     "B2L14-1-06-E01": {
       "bookId": 2,
@@ -42343,7 +42348,12 @@
       "partId": 1,
       "sourceCardId": "B2L15-1-13",
       "traditional": "那個學生很有禮貌，一看見老師就說：「老師好！」",
-      "audio": null,
+      "audio": {
+        "voice": "book",
+        "file": "B2-15-1-2.mp3",
+        "start": 122.52,
+        "end": 128.26
+      },
       "alignment": {
         "score": 0.823,
         "pinyinSource": "textbook",
@@ -42351,9 +42361,9 @@
         "syllableCount": 18,
         "track": "B2-15-1-2.mp3",
         "trackSha256": "764bc4c8e488361a9aa0ac9ea56403de765d8e0893a96e6043d0a9bca7030e93",
-        "driveFileId": "1w7JSA0zlJm9n54aQI_8W83Fs1Pp0jGUG"
-      },
-      "issue": "the recording says other words: 那个学生很有礼貌，一看见老师就说。"
+        "driveFileId": "1w7JSA0zlJm9n54aQI_8W83Fs1Pp0jGUG",
+        "locatedBy": "asr"
+      }
     },
     "B2L15-1-14-E01": {
       "bookId": 2,

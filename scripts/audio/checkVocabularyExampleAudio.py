@@ -78,6 +78,11 @@ def main():
             continue
         entry["audio"] = {"voice": "book", "file": found["file"], "start": found["start"], "end": found["end"]}
         entry["alignment"]["locatedBy"] = "asr"
+        if entry["alignment"]["track"] != found["file"]:  # Said on another part's track.
+            index = json.loads((ROOT / f"content/audio/audio_index_book{args.book}.json").read_text(encoding="utf-8"))
+            entry["alignment"].update(track=found["file"], trackSha256=manifest["tracks"][found["file"]]["sha256"],
+                                      driveFileId=next(t["id"] for t in index["vocabularyTracks"]
+                                                       if t["file"] == found["file"]))
         entry.pop("issue", None)
     audio_dir = ROOT / AUDIO_DIRS[args.book]
     OUT_DIR.mkdir(parents=True, exist_ok=True)
