@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ActionButton, AppIcon, IconActionButton } from '../../../lib/widgets';
+import { AppIcon, IconActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import type { LessonTestLesson } from '../../../types/lessonTest';
 import { LESSON_TEST_PARTS, lessonItemIndex, type LessonTestPlan } from '../../../utils/lesson/lessonTestPlan';
@@ -8,6 +8,7 @@ import { useBookletAudio } from '../hooks/useBookletAudio';
 import { BookletItem, type BookletView } from './BookletItem';
 import { TestWords } from './ChineseText';
 import { TestLookup } from './TestLookup';
+import { ViewSwitch } from './ViewSwitch';
 
 interface TestBookletProps {
   lesson: LessonTestLesson;
@@ -22,22 +23,6 @@ interface TestBookletProps {
 }
 
 const NO_WORDS: string[] = [];
-
-/** A Pinyin or English switch: a real button that stays pressed (honey) while it's on. */
-function Switch({ label, on, onToggle }: { label: string; on: boolean; onToggle: () => void }) {
-  return (
-    <ActionButton
-      size="sm"
-      variant="secondary"
-      aria-pressed={on}
-      edgeColor={on ? 'var(--color-brand-primary-edge)' : undefined}
-      frontClassName={on ? '!border-brand-primary bg-brand-primary-wash !text-brand-primary-deep hover:bg-brand-primary-wash' : undefined}
-      onClick={onToggle}
-    >
-      {label}
-    </ActionButton>
-  );
-}
 
 /**
  * Scripts & answers: the whole test on one page, in test order, like the answer booklet after a real TOCFL. Each
@@ -100,8 +85,8 @@ export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = fal
           {/* The title gives way to the switches on phones. */}
           <h2 className="truncate text-center text-lg font-black text-ui-ink-strong max-sm:invisible">Lesson {lesson.lessonId} test</h2>
           <div className="flex justify-self-end gap-2">
-            <Switch label="Pinyin" on={pinyin} onToggle={() => setPinyin((on) => !on)} />
-            <Switch label="English" on={english} onToggle={() => setEnglish((on) => !on)} />
+            <ViewSwitch label="Pinyin" on={pinyin} onToggle={() => setPinyin((on) => !on)} />
+            <ViewSwitch label="English" on={english} onToggle={() => setEnglish((on) => !on)} />
           </div>
         </div>
         <div className="mx-auto w-full max-w-2xl px-4 pb-12 sm:px-6 lg:max-w-5xl lg:px-10">

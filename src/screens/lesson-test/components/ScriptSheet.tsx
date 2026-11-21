@@ -1,13 +1,15 @@
-import { Drawer, SpeakerIcon } from '../../../lib/widgets';
+import { useState } from 'react';
+import { Drawer, DrawerTitle, SpeakerIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 import type { AudioStep } from '../testAudioSequence';
 import type { ScriptRow, TestScript } from '../testScript';
-import { ChineseText } from './ChineseText';
 import type { Script } from './ChoiceList';
 import { LinePlay } from './LinePlay';
+import { PinyinText } from './PinyinText';
 import { TestLookup } from './TestLookup';
 import { TestSpeaker } from './TestSpeaker';
+import { ViewSwitch } from './ViewSwitch';
 
 /** The pause between two lines when the whole script plays (the test's turn gap). */
 const LINE_GAP_MS = 450;
@@ -37,7 +39,9 @@ function playAllSteps(rows: ScriptRow[], scriptPreference: Script): AudioStep[] 
     : [])).slice(1);
 }
 
-function LineRow({ row, index, scriptPreference, speaking, onPlay }: { row: ScriptRow; index: number; scriptPreference: Script; speaking: boolean; onPlay: (index: number) => void }) {
+interface Shown { pinyin: boolean; english: boolean }
+
+function LineRow({ row, index, scriptPreference, shown, speaking, onPlay }: { row: ScriptRow; index: number; scriptPreference: Script; shown: Shown; speaking: boolean; onPlay: (index: number) => void }) {
   const zh = row.text[scriptPreference] ?? row.text.traditional;
   const content = (
     <>
@@ -51,12 +55,11 @@ function LineRow({ row, index, scriptPreference, speaking, onPlay }: { row: Scri
         {speaking ? <SpeakerIcon status="playing" size={16} /> : row.badge}
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className="text-pretty font-chinese text-[19px] leading-snug text-ui-ink-strong">
-          <ChineseText text={zh} />
+        <span className={cn('text-pretty font-chinese text-[19px] text-ui-ink-strong', shown.pinyin ? 'leading-[1.8]' : 'leading-snug')}>
+          <PinyinText text={zh} pinyin={row.text.pinyin} show={shown.pinyin} />
           {row.audio && <LinePlay text={zh} speaking={speaking} tinted={Boolean(row.answer)} onPress={() => onPlay(index)} />}
         </span>
-        {row.text.pinyin && <span className="text-[15px] font-bold leading-snug text-ui-muted-strong">{row.text.pinyin}</span>}
-        {row.text.english && <span className="text-[15px] font-bold leading-snug text-ui-muted">{row.text.english}</span>}
+        {shown.english && row.text.english && <span className="text-[15px] font-bold leading-snug text-ui-muted">{row.text.english}</span>}
       </span>
       {row.number !== undefined && (
         <span className="grid h-6.5 min-w-6.5 shrink-0 place-items-center self-start rounded-xs bg-feedback-success px-1.5 text-[13px] font-black tabular-nums text-ui-on-solid">
@@ -82,12 +85,14 @@ function LineRow({ row, index, scriptPreference, speaking, onPlay }: { row: Scri
 
 /**
  * The Fix round's Script: a sheet from the bottom on phones, a panel from the side on bigger screens. A recording
- * lists every line with its pinyin and English, the line that holds the answer marked; tap a line's play button (or its row) to hear it again,
+ * lists every line (Chinese only to start; the Pinyin and English switches add the pinyin over it and its meaning), the line that holds the answer marked; tap a line's play button (or its row) to hear it again,
  * or the speaker to hear them all, each lit as it is spoken. A text gives its pinyin and English. Its words can be
  * looked up; the sheet steps aside while the dictionary is open and comes back after.
  */
 export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: ScriptSheetProps) {
   const lookingUp = useAppStore((state) => state.dictionaryWord !== null);
+  // Chinese only to start, as in Scripts & answers; the switches stay as set for the rest of the round.
+  const [shown, setShown] = useState<Shown>({ pinyin: false, english: false });
   const close = () => {
     audio.stop();
     onClose();
@@ -102,7 +107,17 @@ export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: 
     <Drawer
       isOpen={open && !lookingUp}
       onClose={close}
-      title="Script"
+      title={(
+        <div className="flex min-w-0 flex-1 items-center gap-2 pr-2">
+          <DrawerTitle>Script</DrawerTitle>
+          {script.kind === 'lines' && (
+            <div className="ml-auto flex gap-2">
+              <ViewSwitch label="Pinyin" on={shown.pinyin} onToggle={() => setShown((now) => ({ ...now, pinyin: !now.pinyin }))} />
+              <ViewSwitch label="English" on={shown.english} onToggle={() => setShown((now) => ({ ...now, english: !now.english }))} />
+            </div>
+          )}
+        </div>
+      )}
       closeLabel="Close the script"
       tone="surface"
       mdPlacement="side"
@@ -123,13 +138,13 @@ export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: 
             />
           </div>
           {script.intro && (
-            <p className="pl-[3.25rem] pr-3 font-chinese text-base text-ui-muted-strong">
-              <ChineseText text={script.intro[scriptPreference] ?? script.intro.traditional} />
+            <p className={cn('pl-[3.25rem] pr-3 font-chinese text-base text-ui-muted-strong', shown.pinyin && 'leading-[1.8]')}>
+              <PinyinText text={script.intro[scriptPreference] ?? script.intro.traditional} pinyin={script.intro.pinyin} show={shown.pinyin} />
             </p>
           )}
           <div className="flex flex-col gap-0.5">
             {script.rows.map((row, index) => (
-              <LineRow key={index} row={row} index={index} scriptPreference={scriptPreference} speaking={audio.line === index} onPlay={play} />
+              <LineRow key={index} row={row} index={index} scriptPreference={scriptPreference} shown={shown} speaking={audio.line === index} onPlay={play} />
             ))}
           </div>
         </div>
