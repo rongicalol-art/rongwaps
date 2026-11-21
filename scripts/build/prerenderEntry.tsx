@@ -14,12 +14,17 @@ import { PAGES as BOOK_1_PAGES } from '../../src/screens/lesson-page/data/book-1
 import { PAGES as BOOK_2_PAGES } from '../../src/screens/lesson-page/data/book-2';
 import { PAGES as BOOK_3_PAGES } from '../../src/screens/lesson-page/data/book-3';
 import { SAMPLE_BOOKS } from '../../src/data/books';
-import { GUIDE_ROUTES, LESSON_PAGE_BOOKS, LESSON_PAGE_LESSONS, type GuidePage, type LegalPage, type LessonPageRef } from '../../src/app/routes';
+import { WordListScreen, provideWordList, wordListInfo, wordListMeta } from '../../src/screens/word-list';
+import { WORDS as LEVEL_1_WORDS } from '../../src/screens/word-list/data/level-1';
+import { WORDS as LEVEL_2_WORDS } from '../../src/screens/word-list/data/level-2';
+import { WORDS as LEVEL_3_WORDS } from '../../src/screens/word-list/data/level-3';
+import { GUIDE_ROUTES, LESSON_PAGE_BOOKS, LESSON_PAGE_LESSONS, WORD_LIST_LEVELS, type GuidePage, type LegalPage, type LessonPageRef, type WordListLevel } from '../../src/app/routes';
 
 const SITE_ORIGIN = 'https://ronsmandarin.com';
 
 // Rendering is synchronous, so every book's lesson-page sample is handed over before it starts.
 [BOOK_1_PAGES, BOOK_2_PAGES, BOOK_3_PAGES].forEach((pages, index) => provideLessonPageBook(index + 1, pages));
+[LEVEL_1_WORDS, LEVEL_2_WORDS, LEVEL_3_WORDS].forEach((words, index) => provideWordList(index + 1, words));
 
 export interface PrerenderedPage {
   path: string;
@@ -197,6 +202,34 @@ function lessonJsonLd(ref: LessonPageRef, title: string, description: string, pa
   };
 }
 
+function wordListJsonLd(entry: WordListLevel, title: string, description: string, path: string): object {
+  const { label, count } = wordListInfo(entry);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      webPageNode(title, description, path),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: "Ron's Mandarin", item: `${SITE_ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: 'TOCFL Prep & Mock Tests', item: `${SITE_ORIGIN}${GUIDE_ROUTES.tocfl}` },
+          { '@type': 'ListItem', position: 3, name: `TOCFL ${label} Word List`, item: `${SITE_ORIGIN}${path}` },
+        ],
+      },
+      {
+        '@type': 'LearningResource',
+        name: `TOCFL ${label} Vocabulary List (${count} words)`,
+        description,
+        learningResourceType: 'Vocabulary list',
+        educationalLevel: `TOCFL ${label}`,
+        isAccessibleForFree: true,
+        inLanguage: ['en', 'zh-Hant'],
+        url: `${SITE_ORIGIN}${path}`,
+      },
+    ],
+  };
+}
+
 export function renderPages(): PrerenderedPage[] {
   const guides: GuidePage[] = ['books', 'grammar', 'tocfl'];
   const legal: LegalPage[] = ['about', 'sources', 'privacy', 'terms'];
@@ -224,6 +257,14 @@ export function renderPages(): PrerenderedPage[] {
         jsonLd: lessonJsonLd(ref, meta.title, meta.description, meta.path),
       };
     })),
+    ...WORD_LIST_LEVELS.map((entry) => {
+      const meta = wordListMeta(entry);
+      return {
+        ...meta,
+        html: render(meta.path, <WordListScreen {...entry} />),
+        jsonLd: wordListJsonLd(entry, meta.title, meta.description, meta.path),
+      };
+    }),
     ...legal.map((page) => {
       const meta = legalPageMeta(page);
       return {
