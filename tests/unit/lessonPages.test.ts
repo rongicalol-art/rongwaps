@@ -59,7 +59,8 @@ test('built lesson pages ship their own tags, the conversation and the Study but
   assert.ok(html.includes('"@type":"BreadcrumbList"') && html.includes('"@type":"LearningResource"'));
   assert.ok(!html.includes('"@type":"WebApplication"'));
   assert.ok(html.includes('Coffee or Tea?') && html.includes('咖啡') && html.includes('Study'));
-  assert.match(html, /All (?:<!-- -->)?\d+(?:<!-- -->)? words/);
+  assert.match(html, /Show all (?:<!-- -->)?\d+(?:<!-- -->)? words/);
+  assert.ok(html.includes('牛肉麵'), 'a word past the first five is in the page before the button is pressed');
   assert.ok(html.includes('data-path="/books/1/lesson-4"'));
   const later = readFileSync('dist/books/3/lesson-5.html', 'utf8');
   assert.ok(later.includes('<link rel="canonical" href="https://ronsmandarin.com/books/3/lesson-5" />'));

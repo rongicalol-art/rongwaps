@@ -23,7 +23,7 @@ const SECTION_TITLE = 'text-xl font-black tracking-tight text-ui-ink-strong';
 const LINK = 'rounded-xs text-sm font-extrabold text-brand-primary-text hover:underline focus-ring-inline';
 /** Shown clearly; the lines after these fade out so the rest waits in the lesson. */
 const CLEAR_LINES = 3;
-/** Words with a recording to hear; the whole list follows lower down, to read. */
+/** Words with a recording to hear; the rest of the list opens under them, to read. */
 const HEARD_WORDS = 5;
 const PUNCTUATION = /^[，。！？、]+$/;
 const attachesToWord = (line: LessonPageLine, index: number) => index > 0 && typeof line[index - 1] !== 'string' && PUNCTUATION.test(line[index] as string);
@@ -35,8 +35,8 @@ function fade(from: string, to: string) {
 }
 
 /**
- * Public page for one lesson: a few words to hear, the start of a short conversation, the grammar
- * point names and the lesson's whole word list, ending in one button. The recordings, exercises
+ * Public page for one lesson: the start of a short conversation, a few words to hear with the
+ * lesson's whole word list behind a button, and the grammar point names, ending in one button. The recordings, exercises
  * and tests stay in the lesson. Prerendered at build time (scripts/build/prerender.ts).
  */
 export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
@@ -56,8 +56,15 @@ export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
     const words = page.lines[CLEAR_LINES - 1].filter((token): token is SampleWord => typeof token !== 'string');
     return words.reduce((best, word) => (word[0].length > best[0].length ? word : best), words[0]);
   }, [page]);
+  const restOfWords = useMemo(() => {
+    const heard = new Set(page.words.slice(0, HEARD_WORDS).map((word) => word[0]));
+    return page.list.filter(([hanzi]) => !heard.has(hanzi));
+  }, [page]);
   const [picked, setPicked] = useState<SampleWord>(firstPick);
   const [playing, setPlaying] = useState<string | null>(null);
+  // Both start short so the page reads at a glance; every line and word is in the page either way.
+  const [wholeConversation, setWholeConversation] = useState(false);
+  const [allWords, setAllWords] = useState(false);
   useEffect(() => { setPicked(firstPick); }, [firstPick]);
   useEffect(() => {
     if (!playing) return;
@@ -120,7 +127,7 @@ export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
               <h2 id="lesson-read" className={SECTION_TITLE}>Read along</h2>
               <div lang="zh-Hant" className="flex flex-col gap-2.5">
                 {page.lines.map((line, lineIndex) => {
-                  const clear = lineIndex < CLEAR_LINES;
+                  const clear = wholeConversation || lineIndex < CLEAR_LINES;
                   const right = lineIndex % 2 === 1;
                   return (
                     <p
@@ -158,6 +165,9 @@ export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
                   );
                 })}
               </div>
+              {!wholeConversation && page.lines.length > CLEAR_LINES && (
+                <ActionButton variant="secondary" size="sm" onClick={() => setWholeConversation(true)} className="self-start normal-case tracking-normal text-sm px-3.5">Show the whole conversation</ActionButton>
+              )}
               <PracticeChoiceButton state="selected" onClick={() => hear(picked, 'picked')} aria-label={`Play ${picked[0]}`} idleClassName="" selectedClassName="!px-4 !py-3">
                 <span className="flex w-full items-center gap-4">
                   <span lang="zh-Hant" className="font-chinese text-3xl font-semibold text-ui-ink-strong">{picked[0]}</span>
@@ -190,7 +200,20 @@ export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
                     </li>
                   );
                 })}
+                {/* The rest of the lesson's words, to read: their recordings stay in the lesson. */}
+                {restOfWords.map(([hanzi, pinyin, meaning], index) => (
+                  <li key={`rest-${index}`} className={cn('flex items-baseline gap-4 border-b-2 border-ui-divider px-4 py-2.5', !allWords && 'hidden')}>
+                    <span lang="zh-Hant" className="min-w-16 shrink-0 font-chinese text-2xl font-semibold text-ui-ink-strong">{hanzi}</span>
+                    <span className="flex min-w-0 flex-1 flex-wrap gap-x-2.5 text-base">
+                      <span className="font-black text-ui-ink-strong">{pinyin}</span>
+                      <span className="font-bold text-ui-ink">{meaning}</span>
+                    </span>
+                  </li>
+                ))}
               </ul>
+              <ActionButton variant="secondary" size="sm" onClick={() => setAllWords(!allWords)} aria-expanded={allWords} className="self-start normal-case tracking-normal text-sm px-3.5">
+                {allWords ? 'Show fewer words' : `Show all ${page.list.length} words`}
+              </ActionButton>
             </section>
           </div>
 
@@ -201,21 +224,6 @@ export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
                 <li key={title} className="flex flex-col gap-0.5 py-3.5 lg:grid lg:grid-cols-2 lg:items-baseline lg:gap-6">
                   <span className="text-base font-black text-ui-ink-strong">{title}</span>
                   <span lang="zh-Hant" className="font-chinese text-lg font-semibold text-ui-muted-strong">{pattern}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section aria-labelledby="lesson-list" className="flex flex-col gap-3 border-t-2 border-ui-divider pt-8">
-            <h2 id="lesson-list" className={SECTION_TITLE}>All {page.list.length} words</h2>
-            <ul className="gap-x-10 sm:columns-2 lg:columns-3">
-              {page.list.map(([hanzi, pinyin, meaning], index) => (
-                <li key={index} className="flex break-inside-avoid items-baseline gap-3 border-b-2 border-ui-divider py-2.5">
-                  <span lang="zh-Hant" className="min-w-16 shrink-0 font-chinese text-xl font-semibold text-ui-ink-strong">{hanzi}</span>
-                  <span className="flex min-w-0 flex-1 flex-wrap gap-x-2.5 text-base">
-                    <span className="font-black text-ui-ink-strong">{pinyin}</span>
-                    <span className="font-bold text-ui-ink">{meaning}</span>
-                  </span>
                 </li>
               ))}
             </ul>
