@@ -9,7 +9,7 @@ import type { SocialColor } from '../../../../shared/quizRace';
 import type { Person } from '../../../../shared/lobby';
 import { addFriend, loadFriends, loadInbox, loadSaved, removeFriend, searchPeople } from '../friendsController';
 import type { SavedProfile } from '../../../services/friendsService';
-import { listTime, savedPerson, seenLabel, whereLabel } from '../socialText';
+import { linePhoto, listTime, savedPerson, seenLabel, whereLabel } from '../socialText';
 import { UnreadBadge } from './Presence';
 import { FriendButton } from './VisitProfile';
 
@@ -41,6 +41,7 @@ const face = (person: { n: string; c: SocialColor; i?: string }, live: boolean) 
  * front). Before two people have written, the globe.
  */
 function GroupFace({ lines }: { lines: ChatMessage[] }) {
+  const saved = useAppStore(state => state.socialSaved);
   const writers: ChatMessage[] = [];
   for (let index = lines.length - 1; index >= 0 && writers.length < 2; index--) {
     const line = lines[index];
@@ -50,8 +51,8 @@ function GroupFace({ lines }: { lines: ChatMessage[] }) {
   const [newest, before] = writers;
   return (
     <span aria-hidden className="relative h-10 w-10 shrink-0">
-      <span className="absolute left-0 top-0 flex"><Avatar name={before.n} color={before.c} src={before.i} size="md" /></span>
-      <span className="absolute bottom-0 right-0 flex"><Avatar name={newest.n} color={newest.c} src={newest.i} size="md" className="ring-ui-practice-canvas" /></span>
+      <span className="absolute left-0 top-0 flex"><Avatar name={before.n} color={before.c} src={linePhoto(before, saved)} size="md" /></span>
+      <span className="absolute bottom-0 right-0 flex"><Avatar name={newest.n} color={newest.c} src={linePhoto(newest, saved)} size="md" className="ring-ui-practice-canvas" /></span>
     </span>
   );
 }

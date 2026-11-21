@@ -134,10 +134,11 @@ const SAVED_FRESH_MS = 2 * 60_000;
 
 /** Saved profiles for people who may be offline (their visit card and when they were last online). */
 export async function loadSaved(us: string[]) {
+  if (!ready()) return;
   const now = Date.now();
   const known = useAppStore.getState().socialSaved;
   const stale = [...new Set(us)].filter(u => !(u in known) || now - (savedAt.get(u) ?? 0) >= SAVED_FRESH_MS);
-  if (!ready() || !stale.length) return;
+  if (!stale.length) return;
   for (const u of stale) savedAt.set(u, now);
   let rows: SavedProfile[] | null = null;
   try { rows = await friendsService.profiles(stale); } catch { for (const u of stale) savedAt.delete(u); }

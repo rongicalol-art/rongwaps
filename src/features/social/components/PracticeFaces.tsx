@@ -8,6 +8,7 @@ import { socialColor } from '../../../../shared/quizRace';
 import { lobby } from '../lobbyController';
 import { MuteButton, PersonRow } from './SocialBits';
 import { GlobalPresenceButton, UnreadBadge } from './Presence';
+import { linePhoto } from '../socialText';
 
 const EMPTY: ChatMessage[] = [];
 
@@ -20,6 +21,7 @@ export function PracticeFaces() {
   const me = useAppStore((state) => state.socialMe);
   const unread = useAppStore(unreadTotal);
   const chat = useAppStore((state) => state.socialChat?.messages ?? EMPTY);
+  const saved = useAppStore((state) => state.socialSaved);
   const race = useAppStore((state) => state.race);
   const reduce = useReducedMotion();
   const onlineTotal = useAppStore((state) => Math.max(0, state.socialOnlineTotal - (state.showOnline && state.socialStatus === 'live' ? 1 : 0)));
@@ -113,7 +115,7 @@ export function PracticeFaces() {
               onClick={openChat}
               className={`mt-3 flex w-full items-center gap-3 rounded-control border-2 px-3 py-2.5 text-left outline-none transition-colors focus-ring border-ui-divider hover:bg-ui-hover`}
             >
-              {lastLine ? <Avatar name={lastLine.n} color={lastLine.c} size="md" src={lastLine.i} /> : <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ui-hover text-ui-muted-strong"><AppIcon name="chat" size={20} /></span>}
+              {lastLine ? <Avatar name={lastLine.n} color={lastLine.c} size="md" src={linePhoto(lastLine, saved)} /> : <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ui-hover text-ui-muted-strong"><AppIcon name="chat" size={20} /></span>}
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-1.5 text-sm font-black text-ui-ink-strong">
                   Chat{unread > 0 && <UnreadBadge count={unread} />}

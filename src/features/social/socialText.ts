@@ -79,5 +79,8 @@ export function usernameBase(name: string): string {
 }
 
 /** A classmate from their saved profile (needs `card.n`), for lists and visits while they may be offline. */
+/** A chat line carries its writer's photo only while they're connected; otherwise their saved profile photo. */
+export const linePhoto = (line: { u: string; i?: string }, saved: Record<string, SavedProfile | null>) => line.i ?? saved[line.u]?.card?.i;
+
 export const savedPerson = (row: SavedProfile): Person =>
   ({ u: row.u, n: row.card!.n!, c: socialColor(row.card?.c ?? 'blue'), l: null, a: null, ...(row.card?.i ? { i: row.card.i } : {}) });
