@@ -85,7 +85,6 @@ export function lessonPageFromPathname(pathname: string): LessonPageRef | null {
  * engines and signed-out visitors. `level` is the TBCL level (1–7) the app's level badges use.
  * A long level is shown in parts (`/tocfl/vocabulary/b1/2`); how many is the list's own business
  * (src/screens/word-list), so the screen sends a part that does not exist back to part 1.
- * Higher levels join when their meanings are written.
  */
 export const WORD_LIST_LEVELS = [
   { slug: 'novice', level: 1 },
@@ -93,6 +92,8 @@ export const WORD_LIST_LEVELS = [
   { slug: 'a2', level: 3 },
   { slug: 'b1', level: 4 },
   { slug: 'b2', level: 5 },
+  { slug: 'c1', level: 6 },
+  { slug: 'c2', level: 7 },
 ] as const;
 
 export type WordListLevel = (typeof WORD_LIST_LEVELS)[number];

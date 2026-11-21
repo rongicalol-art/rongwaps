@@ -26,7 +26,7 @@ test('word list addresses resolve only for levels that have a list', () => {
   assert.equal(wordListPath('b1', 3), '/tocfl/vocabulary/b1/3');
   assert.equal(wordListPath('b1', 1), '/tocfl/vocabulary/b1');
   // Part 1 has one address, the level's own.
-  for (const path of ['/tocfl', '/tocfl/vocabulary', '/tocfl/vocabulary/c1', '/tocfl/vocabulary/A1', '/tocfl/vocabulary/a1/extra', '/tocfl/vocabulary/b1/1', '/tocfl/vocabulary/b1/0', '/tocfl/vocabulary/b1/03', '/books/vocabulary/a1']) {
+  for (const path of ['/tocfl', '/tocfl/vocabulary', '/tocfl/vocabulary/c3', '/tocfl/vocabulary/A1', '/tocfl/vocabulary/a1/extra', '/tocfl/vocabulary/b1/1', '/tocfl/vocabulary/b1/0', '/tocfl/vocabulary/b1/03', '/books/vocabulary/a1']) {
     assert.equal(wordListFromPathname(path), null, path);
   }
 });
