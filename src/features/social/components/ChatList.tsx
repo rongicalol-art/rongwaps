@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import { ActionButton, AppIcon, Avatar, avatarStyle, PlayfulNavIcon, SearchField } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, PlayfulNavIcon, SearchField } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { friendRequests } from '../../../store/slices/socialSlice';
 import { GLOBAL_CHAT, type ChatMessage } from '../../../../shared/lobby';
@@ -37,28 +37,21 @@ function Row({ face, name, line, fresh, side, onOpen, action }: { face: ReactNod
 const face = (person: { n: string; c: SocialColor; i?: string }, live: boolean) => <Avatar name={person.n} color={person.c} src={person.i} size="lg" live={live} />;
 
 /**
- * Everyone's picture, like a group photo: the last people who wrote there, up to four, in one circle
- * (two side by side, three as one tall and two small, four as a square). Before anyone writes, the globe.
+ * Everyone's picture: the two people who wrote there last, overlapping in the same space as one face (newest in
+ * front). Before two people have written, the globe.
  */
 function GroupFace({ lines }: { lines: ChatMessage[] }) {
   const writers: ChatMessage[] = [];
-  for (let index = lines.length - 1; index >= 0 && writers.length < 4; index--) {
+  for (let index = lines.length - 1; index >= 0 && writers.length < 2; index--) {
     const line = lines[index];
     if (line.t && !writers.some(writer => writer.u === line.u)) writers.push(line);
   }
-  if (writers.length < 2) {
-    return <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-primary-soft"><PlayfulNavIcon name="global" className="h-6 w-6" /></span>;
-  }
-  const cell = (writer: ChatMessage, place: string) => (
-    <span key={writer.u} className={`relative grid place-items-center overflow-hidden text-[11px] font-black ${place}`} style={avatarStyle(writer.c)}>
-      <span aria-hidden>{(writer.n.trim()[0] || '?').toUpperCase()}</span>
-      {writer.i && <img src={writer.i} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" onError={event => { event.currentTarget.style.display = 'none'; }} />}
-    </span>
-  );
-  const layout = writers.length === 2 ? 'grid-cols-2' : 'grid-cols-2 grid-rows-2';
+  if (writers.length < 2) return <span className="grid h-10 w-10 shrink-0 place-items-center"><PlayfulNavIcon name="global" className="h-8 w-8" /></span>;
+  const [newest, before] = writers;
   return (
-    <span aria-hidden className={`grid h-10 w-10 shrink-0 gap-px overflow-hidden rounded-full bg-ui-practice-canvas ${layout}`}>
-      {writers.map((writer, index) => cell(writer, writers.length === 3 && index === 0 ? 'row-span-2' : ''))}
+    <span aria-hidden className="relative h-10 w-10 shrink-0">
+      <span className="absolute left-0 top-0 flex"><Avatar name={before.n} color={before.c} src={before.i} size="md" /></span>
+      <span className="absolute bottom-0 right-0 flex"><Avatar name={newest.n} color={newest.c} src={newest.i} size="md" className="ring-ui-practice-canvas" /></span>
     </span>
   );
 }
