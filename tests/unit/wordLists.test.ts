@@ -4,7 +4,7 @@ import test from 'node:test';
 import { WORD_LIST_LEVELS, wordListFromPathname, wordListPath } from '../../src/app/routes';
 import { WORD_COUNTS } from '../../src/screens/word-list/data/counts';
 import { loadWordList } from '../../src/screens/word-list/wordListData';
-import { wordListInfo, wordListMeta } from '../../src/screens/word-list/wordListMeta';
+import { wordListInfo, wordListMeta, wordListPart, wordListPartKey, wordListRange } from '../../src/screens/word-list/wordListMeta';
 import { hasWordListReturn, readKnownWords, rememberWordListReturn, saveKnownWords, takeWordListReturn, wordKey } from '../../src/utils/browser/wordListReturn';
 
 function fakeStorage(): Storage {
@@ -20,9 +20,13 @@ function fakeStorage(): Storage {
 }
 
 test('word list addresses resolve only for levels that have a list', () => {
-  for (const entry of WORD_LIST_LEVELS) assert.deepEqual(wordListFromPathname(wordListPath(entry.slug)), entry);
-  assert.equal(wordListFromPathname('/tocfl/vocabulary/a1/')?.slug, 'a1');
-  for (const path of ['/tocfl', '/tocfl/vocabulary', '/tocfl/vocabulary/b1', '/tocfl/vocabulary/A1', '/tocfl/vocabulary/a1/extra', '/books/vocabulary/a1']) {
+  for (const entry of WORD_LIST_LEVELS) assert.deepEqual(wordListFromPathname(wordListPath(entry.slug)), { entry, part: 1 });
+  assert.equal(wordListFromPathname('/tocfl/vocabulary/a1/')?.entry.slug, 'a1');
+  assert.deepEqual(wordListFromPathname('/tocfl/vocabulary/b1/3'), { entry: WORD_LIST_LEVELS.find((entry) => entry.slug === 'b1'), part: 3 });
+  assert.equal(wordListPath('b1', 3), '/tocfl/vocabulary/b1/3');
+  assert.equal(wordListPath('b1', 1), '/tocfl/vocabulary/b1');
+  // Part 1 has one address, the level's own.
+  for (const path of ['/tocfl', '/tocfl/vocabulary', '/tocfl/vocabulary/c1', '/tocfl/vocabulary/A1', '/tocfl/vocabulary/a1/extra', '/tocfl/vocabulary/b1/1', '/tocfl/vocabulary/b1/0', '/tocfl/vocabulary/b1/03', '/books/vocabulary/a1']) {
     assert.equal(wordListFromPathname(path), null, path);
   }
 });
@@ -44,12 +48,23 @@ test('every word list is a whole level with short meanings of our own and search
       assert.ok(!/[/[\]]|\bsth\b|\bsb\b|CL:/.test(meaning.replace(/\(bus\/train\)|\(used\/things\)|\(hat\/etc\)/, '')), `${entry.slug} ${hanzi} meaning "${meaning}" looks like a raw dictionary gloss`);
       assert.ok(simplified === undefined || (simplified !== hanzi && simplified.length > 0), `${entry.slug} ${hanzi} simplified`);
     }
-    const meta = wordListMeta(entry);
-    assert.ok(meta.title.length <= 65, `${meta.path} title too long (${meta.title.length})`);
-    assert.ok(meta.description.length <= 155, `${meta.path} description too long (${meta.description.length})`);
-    assert.ok((meta.socialDescription ?? '').length <= 125, `${meta.path} socialDescription too long`);
-    assert.ok(meta.title.includes(String(info.count)) && meta.title.includes(info.label));
-    assert.ok(sitemap.includes(`<loc>https://ronsmandarin.com${meta.path}</loc>`), `sitemap.xml is missing ${meta.path}`);
+    // A long level is shown in parts that together are the whole list, each small enough for one folder.
+    const parts = Array.from({ length: info.parts }, (_, index) => wordListPart(words, index + 1, info.parts));
+    assert.deepEqual(parts.flat(), [...words], `${entry.slug} parts`);
+    assert.ok(parts.every((part) => part.length >= 300 && part.length <= 500), `${entry.slug} part sizes ${parts.map((part) => part.length).join(', ')}`);
+    assert.equal(info.parts > 1, words.length > 500, `${entry.slug} parts`);
+    for (const [index, part] of parts.entries()) {
+      assert.match(wordListRange(part), /^[A-Z](–[A-Z])?$/, `${entry.slug} part ${index + 1} range`);
+      assert.equal(wordListPartKey(entry.slug, index + 1, info.parts), info.parts > 1 ? `${entry.slug}/${index + 1}` : entry.slug);
+      const meta = wordListMeta(entry, index + 1);
+      assert.equal(meta.path, wordListPath(entry.slug, index + 1));
+      assert.ok(meta.title.length <= 65, `${meta.path} title too long (${meta.title.length})`);
+      assert.ok(meta.description.length <= 155, `${meta.path} description too long (${meta.description.length})`);
+      assert.ok((meta.socialDescription ?? '').length <= 125, `${meta.path} socialDescription too long`);
+      assert.ok(meta.title.includes(info.label));
+      assert.ok(sitemap.includes(`<loc>https://ronsmandarin.com${meta.path}</loc>`), `sitemap.xml is missing ${meta.path}`);
+    }
+    assert.ok(wordListMeta(entry).title.includes(info.count.toLocaleString('en-US')));
     assert.ok(existsSync(`public${info.pdfPath}`), `${info.pdfPath} is missing: npm run word-lists:pdf`);
   }
 });

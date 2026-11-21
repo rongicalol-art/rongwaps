@@ -83,23 +83,31 @@ export function lessonPageFromPathname(pathname: string): LessonPageRef | null {
 /**
  * Public TOCFL word lists (`/tocfl/vocabulary/a1`): the official list for one level, for search
  * engines and signed-out visitors. `level` is the TBCL level (1–7) the app's level badges use.
+ * A long level is shown in parts (`/tocfl/vocabulary/b1/2`); how many is the list's own business
+ * (src/screens/word-list), so the screen sends a part that does not exist back to part 1.
  * Higher levels join when their meanings are written.
  */
 export const WORD_LIST_LEVELS = [
   { slug: 'novice', level: 1 },
   { slug: 'a1', level: 2 },
   { slug: 'a2', level: 3 },
+  { slug: 'b1', level: 4 },
+  { slug: 'b2', level: 5 },
 ] as const;
 
 export type WordListLevel = (typeof WORD_LIST_LEVELS)[number];
 
-export function wordListPath(slug: WordListLevel['slug']): string {
-  return `${GUIDE_ROUTES.tocfl}/vocabulary/${slug}`;
+/** A level's list, or one part of it (parts count from 1; part 1 is the level's own address). */
+export interface WordListRef { entry: WordListLevel; part: number }
+
+export function wordListPath(slug: WordListLevel['slug'], part = 1): string {
+  return `${GUIDE_ROUTES.tocfl}/vocabulary/${slug}${part > 1 ? `/${part}` : ''}`;
 }
 
-export function wordListFromPathname(pathname: string): WordListLevel | null {
-  const match = /^\/tocfl\/vocabulary\/([a-z0-9]+)\/*$/.exec(pathname);
-  return WORD_LIST_LEVELS.find((entry) => entry.slug === match?.[1]) ?? null;
+export function wordListFromPathname(pathname: string): WordListRef | null {
+  const match = /^\/tocfl\/vocabulary\/([a-z0-9]+)(?:\/([2-9]|[1-9]\d))?\/*$/.exec(pathname);
+  const entry = WORD_LIST_LEVELS.find((item) => item.slug === match?.[1]);
+  return entry ? { entry, part: Number(match?.[2] ?? 1) } : null;
 }
 
 /**
