@@ -10,6 +10,12 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-21 — Word-build tiles sound as they do in the word
+
+- Chosen: a quiz word-build tile plays the character with the reading it has in the word it builds: 一/不 as the book writes them, a third tone before a third tone as a second (你 in 你好 is ní), a doubled character as its first place (媽媽 → mā), the first of two listed readings. The book's own recording of the character comes first, then the recorded syllable; the sounds no character is recorded with (shuí in 水果, neutral xi in 東西, 37 in the course) are said by the cloud voice with that exact reading in Bopomofo. Erhua 兒 stays silent (never a standalone er); distractors keep the earlier rule (one unambiguous reading, 一/不 silent).
+- Reason: owner asked for a sound on every tile; 326 tiles of course words were silent because a citation tone could teach the wrong sound. Saying the tone the word uses fixes that and stays honest.
+- Affects: `src/screens/quiz/utils/wordBuildAudio.ts`, `src/screens/quiz/hooks/{useWordBuildAudio,useQuizAudioPreparation}.ts`, `audioService.speakReading`/`prepareSpeech`, `tests/unit/wordBuildAudio.test.ts`.
+
 ### 2026-11-16 — A cloud voice says Chinese that has no recording
 
 - Chosen: Chinese text without a recording is said by Azure Speech (Taiwan voices the owner picked by ear: HsiaoChen, and YunJhe as the male voice), through `POST /api/speech`. Each text is made once, on the first tap by any learner, stored, and served as a file after that; the device keeps what it played. The browser's own voice is now the fallback behind it, and still reads English. Dictionary words added to a folder, silent until now because a voice must not guess their reading, are said with the card's pinyin sent to the voice as Bopomofo; a word whose pinyin cannot be spelled that way stays silent. A recording always comes first, and a card that has a recording is still never swapped for a synthetic voice.
