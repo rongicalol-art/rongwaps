@@ -1,13 +1,14 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import { ActionButton, AppIcon, Avatar, PlayfulNavIcon } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, PlayfulNavIcon, SearchField } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { friendRequests } from '../../../store/slices/socialSlice';
 import { GLOBAL_CHAT, type ChatMessage } from '../../../../shared/lobby';
-import type { SocialColor } from '../../../../shared/quizRace';
+import { socialColor, type SocialColor } from '../../../../shared/quizRace';
 import type { Person } from '../../../../shared/lobby';
-import { addFriend, loadFriends, loadInbox, loadSaved, removeFriend } from '../friendsController';
+import { addFriend, loadFriends, loadInbox, loadSaved, removeFriend, searchPeople } from '../friendsController';
+import type { SavedProfile } from '../../../services/friendsService';
 import { listTime, seenLabel, whereLabel } from '../socialText';
 import { UnreadBadge } from './Presence';
 import { FriendButton } from './VisitProfile';
@@ -68,7 +69,7 @@ export function ChatList() {
       </div>
       <Row onOpen={() => open('class')} fresh={classUnread > 0}
         face={<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-primary-soft"><PlayfulNavIcon name="global" className="h-6 w-6" /></span>}
-        name="Class chat"
+        name="Everyone"
         line={last ? <><span className="font-black">{last.u === me ? 'You' : last.n}:</span> <span className="font-chinese">{last.t}</span></> : 'Say hi to everyone'}
         side={<>{last && <span>{listTime(last.ts)}</span>}{classUnread > 0 && <UnreadBadge count={classUnread} />}</>} />
       {requests.length > 0 && <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Friend requests</h3>}
@@ -98,27 +99,57 @@ export function ChatList() {
   );
 }
 
+/** How long typing pauses before a search goes out, so a name costs one request, not one per letter. */
+const SEARCH_PAUSE_MS = 250;
+
 /**
- * Chats → Add friends: everyone online now, then classmates who were here lately, each with Add (or Accept, Sent).
- * Friends already made are left out; a tap on the row opens the profile.
+ * Chats → Add friends. Search finds anyone by name, online or not (their saved profile); with no search it shows
+ * everyone online now and classmates who were here lately. Each row has Add (or Accept, Sent, Friends); a tap opens
+ * the profile. Friends already made are left out of the suggestions but found by search.
  */
 export function AddFriends({ online, recent, lesson }: { online: Person[]; recent: Array<{ person: Person; seen: number | null }>; lesson: number | null }) {
   const friends = useAppStore(state => state.socialFriends);
   const mutual = useMemo(() => new Set((friends ?? []).filter(person => person.iAdded && person.addedMe).map(person => person.u)), [friends]);
+  const [query, setQuery] = useState('');
+  const [found, setFound] = useState<{ text: string; rows: SavedProfile[] | null } | null>(null);
+  const text = query.trim();
   useEffect(() => { void loadFriends(); }, []);
+  useEffect(() => {
+    if (!text) return;
+    let current = true;
+    const timer = setTimeout(() => { void searchPeople(text).then(rows => { if (current) setFound({ text, rows }); }); }, SEARCH_PAUSE_MS);
+    return () => { current = false; clearTimeout(timer); };
+  }, [text]);
+  const liveIds = useMemo(() => new Set(online.map(person => person.u)), [online]);
   const visit = (person: Person) => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', visit: person } });
-  const here = online.filter(person => !mutual.has(person.u));
-  const lately = recent.filter(row => !mutual.has(row.person.u));
   const row = (person: Person, line: string, live: boolean) => (
     <Row key={person.u} onOpen={() => visit(person)} face={face(person, live)} name={person.n} line={line} action={<FriendButton person={person} compact />} />
   );
+  const here = online.filter(person => !mutual.has(person.u));
+  const lately = recent.filter(row => !mutual.has(row.person.u));
+  // The last answer stays on screen while the next one is on its way, so the list doesn't flash empty per letter.
+  const results = text ? found?.rows : undefined;
+  const waiting = !!text && found?.text !== text;
+  const asPerson = (saved: SavedProfile): Person => ({ u: saved.u, n: saved.card!.n!, c: socialColor(saved.card?.c ?? 'blue'), l: null, a: null, ...(saved.card?.i ? { i: saved.card.i } : {}) });
+
   return (
-    <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
-      {here.length > 0 && <h3 className="pb-1 pt-1 text-xs font-black text-ui-muted-strong">Online now</h3>}
-      {here.map(person => row(person, whereLabel(person.l, person.a, person.l === lesson), true))}
-      {lately.length > 0 && <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Recently here</h3>}
-      {lately.map(({ person, seen }) => row(person, seenLabel(seen), false))}
-      {!here.length && !lately.length && <p className="py-6 text-center text-sm font-bold text-ui-muted">Nobody to add right now. Classmates show up here when they’re online.</p>}
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="shrink-0 pb-2 pt-1">
+        <SearchField value={query} onChange={setQuery} placeholder="Search by name" label="Search classmates by name" />
+      </div>
+      <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar" aria-busy={waiting}>
+        {text ? <>
+          {results?.map(saved => { const person = online.find(item => item.u === saved.u) ?? asPerson(saved); return row(person, liveIds.has(saved.u) ? 'Online' : seenLabel(saved.seen), liveIds.has(saved.u)); })}
+          {!waiting && results === null && <p className="py-6 text-center text-sm font-bold text-ui-muted">Couldn’t search right now. Try again.</p>}
+          {!waiting && results?.length === 0 && <p className="py-6 text-center text-sm font-bold text-ui-muted">No classmate called “{text}” yet.</p>}
+        </> : <>
+          {here.length > 0 && <h3 className="pb-1 pt-1 text-xs font-black text-ui-muted-strong">Online now</h3>}
+          {here.map(person => row(person, whereLabel(person.l, person.a, person.l === lesson), true))}
+          {lately.length > 0 && <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Recently here</h3>}
+          {lately.map(({ person, seen }) => row(person, seenLabel(seen), false))}
+          {!here.length && !lately.length && <p className="py-6 text-center text-sm font-bold text-ui-muted">Search for a classmate by name.</p>}
+        </>}
+      </div>
     </div>
   );
 }

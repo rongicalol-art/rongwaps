@@ -105,7 +105,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
         ? <div className="mr-1 flex min-w-0 flex-1 items-center gap-2">
             <IconActionButton size="md" label="Back to chats" icon={<AppIcon name="back" size={20} />} onClick={() => setPanel({ kind: 'people', tab: 'chat' })} />
             {thread === 'class' || !threadPerson
-              ? <h2 className="min-w-0 flex-1 truncate text-xl font-black text-ui-ink-strong">{thread === 'add' ? 'Add friends' : 'Class chat'}</h2>
+              ? <h2 className="min-w-0 flex-1 truncate text-xl font-black text-ui-ink-strong">{thread === 'add' ? 'Add friends' : 'Everyone'}</h2>
               : <button type="button" onClick={() => setPanel({ kind: 'people', tab: 'online', visit: threadPerson })} className="flex min-w-0 flex-1 items-center gap-2.5 rounded-control py-1 pr-2 text-left outline-none hover:bg-ui-hover focus-ring">
                   <Avatar name={threadPerson.n} color={threadPerson.c} src={threadPerson.i} size="md" live={onlineNow.has(threadPerson.u)} />
                   <span className="min-w-0">

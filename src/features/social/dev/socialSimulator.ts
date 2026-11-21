@@ -331,6 +331,10 @@ const friendsBackend: FriendsBackend = {
   async saveCard() {},
   async profiles(us) { return us.map(savedOf).filter((row): row is SavedProfile => !!row); },
   async recent(limit) { return OFFLINE.map(user => savedOf(user.u)!).slice(0, limit); },
+  async search(text, limit) {
+    const found = [...users, ...OFFLINE].filter(user => user.n.toLowerCase().includes(text.trim().toLowerCase()));
+    return found.map(user => savedOf(user.u)!).slice(0, limit);
+  },
 };
 
 export function startSimulator() {

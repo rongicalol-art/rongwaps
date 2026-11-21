@@ -144,6 +144,24 @@ export async function loadSaved(us: string[]) {
   useAppStore.getState().setSocial({ socialSaved: saved });
 }
 
+const SEARCH_LIMIT = 20;
+/**
+ * Classmates whose name contains `text`, online or not: anyone who has opened Study together with Show me online or
+ * Show my profile on (their saved card). null when the search failed. The cards found also fill the profile cache.
+ */
+export async function searchPeople(text: string): Promise<SavedProfile[] | null> {
+  const self = me();
+  if (!ready() || !self) return [];
+  let rows: SavedProfile[];
+  try { rows = await friendsService.search(text, SEARCH_LIMIT + 1); } catch { return null; }
+  rows = rows.filter(row => row.u !== self && row.card?.n).slice(0, SEARCH_LIMIT);
+  const now = Date.now();
+  for (const row of rows) savedAt.set(row.u, now);
+  const store = useAppStore.getState();
+  store.setSocial({ socialSaved: { ...store.socialSaved, ...Object.fromEntries(rows.map(row => [row.u, row])) } });
+  return rows;
+}
+
 export async function loadRecent() {
   if (!ready()) return;
   try {

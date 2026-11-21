@@ -24,6 +24,8 @@ export interface FriendsBackend {
   saveCard(card: StoredCard | null, seen: boolean): Promise<void>;
   profiles(us: string[]): Promise<SavedProfile[]>;
   recent(limit: number): Promise<SavedProfile[]>;
+  /** Saved profiles whose name contains `text`, most recently online first. */
+  search(text: string, limit: number): Promise<SavedProfile[]>;
 }
 
 const PAGE = 50;
@@ -93,6 +95,16 @@ const database: FriendsBackend = {
     if (error) throw error;
     return (data ?? []).map(toProfile);
   },
+  async search(text, limit) {
+    // A name search over the saved cards (the same rows as offline profiles, so blocked pairs stay hidden). A few
+    // hundred small rows: a plain scan is fast, no index needed. `*` is a wildcard to the API, and % _ \ to LIKE.
+    const pattern = text.replace(/\*/g, '').replace(/[\\%_]/g, char => `\\${char}`).trim();
+    if (!pattern) return [];
+    const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen')
+      .ilike('card->>n', `%${pattern}%`).order('last_seen', { ascending: false, nullsFirst: false }).limit(limit);
+    if (error) throw error;
+    return (data ?? []).map(toProfile);
+  },
 };
 
 let backend: FriendsBackend = database;
@@ -110,4 +122,5 @@ export const friendsService: FriendsBackend = {
   saveCard: (card, seen) => backend.saveCard(card, seen),
   profiles: us => backend.profiles(us),
   recent: limit => backend.recent(limit),
+  search: (text, limit) => backend.search(text, limit),
 };
