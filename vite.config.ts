@@ -131,7 +131,8 @@ const pwaPlugin = VitePWA({
       '**/workbox-*.js',
     ],
     navigateFallback: '/index.html',
-    navigateFallbackDenylist: [/^\/api\//],
+    // A PDF opened from a search result is a file, not a screen of the app.
+    navigateFallbackDenylist: [/^\/api\//, /^\/downloads\//],
     runtimeCaching: [
       {
         urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith('/assets/'),

@@ -1,7 +1,8 @@
 import { Link } from 'react-router';
-import { GUIDE_ROUTES } from '../../app/routes';
+import { GUIDE_ROUTES, grammarPagePath } from '../../app/routes';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { INTERACTIVE_GRAMMAR_MANIFEST } from '../../data/interactiveGrammarManifest';
+import { GRAMMAR_PAGES } from '../grammar-page/data';
 import { GRAMMAR_ROUNDS } from '../landing';
 import { DocList, DocParagraph, DocSection, docLinkClass } from '../public-doc';
 
@@ -31,6 +32,17 @@ function grammarSummaryByBook() {
     });
 }
 
+/** The public grammar pages, one group per lesson in lesson order. */
+function grammarPagesByLesson() {
+  const groups: { bookId: number; lessonId: number; pages: (typeof GRAMMAR_PAGES)[number][] }[] = [];
+  for (const page of GRAMMAR_PAGES) {
+    const last = groups.at(-1);
+    if (last && last.bookId === page[1] && last.lessonId === page[2]) last.pages.push(page);
+    else groups.push({ bookId: page[1], lessonId: page[2], pages: [page] });
+  }
+  return groups;
+}
+
 export function GrammarGuideContent() {
   const coverage = grammarSummaryByBook();
 
@@ -39,7 +51,7 @@ export function GrammarGuideContent() {
       <DocSection title="Grammar made practical">
         <DocParagraph>
           Textbook grammar tables are hard to review passively. Ron’s Mandarin turns each grammar point in{' '}
-          <strong>時代華語 Modern Chinese</strong> into an interactive lesson with plain-English explanations,
+          <strong>Modern Chinese</strong> (時代華語) into an interactive lesson with plain-English explanations,
           recorded Taiwan audio examples, and links back to where the pattern appears in your reading texts.
         </DocParagraph>
         <DocList
@@ -49,6 +61,23 @@ export function GrammarGuideContent() {
             <><strong>Connected to the reading:</strong> When you read a dialogue or story, the app flags which grammar patterns actually occur in that text.</>,
           ]}
         />
+      </DocSection>
+
+      <DocSection title="Grammar pages">
+        <DocParagraph>
+          One page per pattern: the rule in plain English, example sentences with pinyin, and one sentence to build
+          yourself.
+        </DocParagraph>
+        {grammarPagesByLesson().map(({ bookId, lessonId, pages }) => (
+          <div key={`${bookId}-${lessonId}`} className="flex flex-col gap-1.5 border-t border-ui-divider py-3">
+            <p className="text-sm font-black text-ui-muted-strong">Book {bookId} · Lesson {lessonId}</p>
+            <ul className="flex flex-col gap-1.5">
+              {pages.map(([slug, , , title]) => (
+                <li key={slug}><Link to={grammarPagePath(slug)} className={docLinkClass}>{title}</Link></li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </DocSection>
 
       <DocSection title="Book exercises, not just flashcards">

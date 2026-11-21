@@ -34,7 +34,7 @@ test('Cloudflare serves only listed public files on its own; lesson content alwa
     const expected = statSync(`public/${entry}`).isDirectory() ? `!/${entry}/*` : `!/${entry}`;
     assert.ok(publicPaths.includes(expected), `${expected} is missing from run_worker_first in server/wrangler.jsonc`);
   }
-  for (const built of ['!/', '!/index.html', '!/assets/*', '!/sw.js', '!/asset-manifest.json', '!/books', '!/books/*', '!/grammar', '!/tocfl', '!/about', '!/privacy', '!/terms', '!/sources']) {
+  for (const built of ['!/', '!/index.html', '!/assets/*', '!/sw.js', '!/asset-manifest.json', '!/books', '!/books/*', '!/grammar', '!/grammar/*', '!/tocfl', '!/tocfl/*', '!/about', '!/privacy', '!/terms', '!/sources']) {
     assert.ok(publicPaths.includes(built), `${built} is missing from run_worker_first`);
   }
 });

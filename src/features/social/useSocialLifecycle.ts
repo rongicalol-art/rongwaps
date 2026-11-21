@@ -51,13 +51,20 @@ export function useSocialLifecycle() {
   useEffect(() => {
     if (!userId || !live || !updateOpen()) return;
     const save = () => {
-      void Promise.all([import('./friendsController'), import('./profileCard')]).then(([friends, profile]) =>
-        friends.saveMyProfile({ n: identity.name, c: socialColor(identity.color), ...(identity.image ? { i: identity.image } : {}) }, profile.buildProfileCard));
+      void Promise.all([import('./friendsController'), import('./profileCard')]).then(([friends, profile]) => {
+        void friends.saveMyProfile({ n: identity.name, c: socialColor(identity.color), ...(identity.image ? { i: identity.image } : {}) }, profile.buildProfileCard);
+      });
     };
     save();
     const timer = setInterval(save, 10 * 60_000);
     return () => clearInterval(timer);
   }, [userId, live, sharing, identity.name, identity.color, identity.image]);
+
+  // The @username and "Let classmates find me" come from the database, so Settings and the profile show them even
+  // when the Study together connection can't open.
+  useEffect(() => {
+    if (userId && updateOpen()) void import('./friendsController').then(friends => friends.ensureUsername(identity.name));
+  }, [userId, identity.name]);
 
   // Presence: only lesson and activity changes, never per card.
   const presence = useAppStore(useShallow((state) => {

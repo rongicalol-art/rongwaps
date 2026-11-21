@@ -6,9 +6,9 @@ import type { Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
-import { defaultSelection, describeSelection, seenLabel } from '../socialText';
+import { defaultSelection, describeSelection, savedPerson, seenLabel } from '../socialText';
 import { ChatThread, DirectThread } from './ChatThread';
-import { ChatList } from './ChatList';
+import { AddFriends, ChatList } from './ChatList';
 import { updateOpen } from '../socialUpdate';
 import { loadRecent } from '../friendsController';
 import { EmptyNote, MuteButton, PanelTabs, PanelTitle, PersonRow, lessonHeading } from './SocialBits';
@@ -77,8 +77,8 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const threadPerson: Person | null = threadFriend ? { u: threadFriend.u, n: threadFriend.n, c: threadFriend.c, l: null, a: null, ...(photoOf(threadFriend.u) ? { i: photoOf(threadFriend.u) } : {}) } : null;
   const onlineNow = new Set(classmates.map(person => person.u));
   const recent = recentRows.filter(row => row.card?.n && row.u !== me && !onlineNow.has(row.u))
-    .map(row => ({ person: { u: row.u, n: row.card!.n!, c: socialColor(row.card!.c ?? 'blue'), l: null, a: null, ...(row.card?.i ? { i: row.card.i } : {}) } as Person, seen: row.seen }));
-  useEffect(() => { if (inbox && panel.tab === 'online' && !selected) void loadRecent(); }, [inbox, panel.tab, selected]);
+    .map(row => ({ person: savedPerson(row), seen: row.seen }));
+  useEffect(() => { if (inbox && (panel.tab === 'online' ? !selected : thread === 'add')) void loadRecent(); }, [inbox, panel.tab, selected, thread]);
   const openThread = (u: string) => setPanel({ kind: 'people', tab: 'chat', thread: u });
   const footer = () => {
     if (pending) return <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton>;
@@ -105,7 +105,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
         ? <div className="mr-1 flex min-w-0 flex-1 items-center gap-2">
             <IconActionButton size="md" label="Back to chats" icon={<AppIcon name="back" size={20} />} onClick={() => setPanel({ kind: 'people', tab: 'chat' })} />
             {thread === 'class' || !threadPerson
-              ? <h2 className="min-w-0 flex-1 truncate text-xl font-black text-ui-ink-strong">Class chat</h2>
+              ? <h2 className="min-w-0 flex-1 truncate text-xl font-black text-ui-ink-strong">{thread === 'add' ? 'Add friends' : 'Everyone'}</h2>
               : <button type="button" onClick={() => setPanel({ kind: 'people', tab: 'online', visit: threadPerson })} className="flex min-w-0 flex-1 items-center gap-2.5 rounded-control py-1 pr-2 text-left outline-none hover:bg-ui-hover focus-ring">
                   <Avatar name={threadPerson.n} color={threadPerson.c} src={threadPerson.i} size="md" live={onlineNow.has(threadPerson.u)} />
                   <span className="min-w-0">
@@ -127,7 +127,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
       tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"
       className="top-auto h-[80dvh] max-h-[80dvh] rounded-t-3xl md:h-full md:max-h-full md:rounded-none"
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">
-      {panel.tab === 'chat' ? (!inbox || thread === 'class' ? <ChatThread /> : threadPerson ? <DirectThread key={threadPerson.u} friend={threadPerson} /> : <ChatList />) : <>
+      {panel.tab === 'chat' ? (!inbox || thread === 'class' ? <ChatThread /> : thread === 'add' ? <AddFriends online={classmates.filter(person => person.u !== me)} recent={recent} lesson={lesson} /> : threadPerson ? <DirectThread key={threadPerson.u} friend={threadPerson} /> : <ChatList />) : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
           {!selected && rooms.map(room => <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-4 last:border-b-0">
             <AvatarStack people={room.players.map(player => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="sm" />

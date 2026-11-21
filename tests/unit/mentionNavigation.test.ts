@@ -73,7 +73,7 @@ test('class chat: history brings the count, new lines add to it, seeing them cle
   api.deliver({ t: 'msg', m: line(10, 'friend', '') });
   assert.equal(state.socialChatUnread, 4, 'own lines and room cards do not count');
 
-  state.socialPanel = { kind: 'people', tab: 'chat' };
+  state.socialPanel = { kind: 'people', tab: 'chat', thread: 'class' };
   api.lobby.markChatRead(10);
   assert.equal(state.socialChatUnread, 0);
   assert.equal(state.socialChatRead, 10);
@@ -117,7 +117,7 @@ test('@everyone lines become one card from the chat itself, never a mention-read
   assert.equal((state.socialMentionToast as MentionNotice).message.id, 5);
   api.deliver({ t: 'history', l: 0, v: [{ ...line(4, 'friend', '@everyone quiz tomorrow'), a: 1 }], r: 2, n: 1 });
   assert.equal((state.socialMentions as MentionNotice[]).length, 2, 'a repeated history adds no duplicate');
-  state.socialPanel = { kind: 'people', tab: 'chat' };
+  state.socialPanel = { kind: 'people', tab: 'chat', thread: 'class' };
   api.lobby.markChatRead(5);
   assert.ok((state.socialMentions as MentionNotice[]).every(item => item.read));
   await new Promise(resolve => setTimeout(resolve, 400));

@@ -14,12 +14,22 @@ import { PAGES as BOOK_1_PAGES } from '../../src/screens/lesson-page/data/book-1
 import { PAGES as BOOK_2_PAGES } from '../../src/screens/lesson-page/data/book-2';
 import { PAGES as BOOK_3_PAGES } from '../../src/screens/lesson-page/data/book-3';
 import { SAMPLE_BOOKS } from '../../src/data/books';
-import { GUIDE_ROUTES, LESSON_PAGE_BOOKS, LESSON_PAGE_LESSONS, type GuidePage, type LegalPage, type LessonPageRef } from '../../src/app/routes';
+import { GRAMMAR_PAGES, GrammarPageScreen, grammarPageMeta, provideGrammarPageBook } from '../../src/screens/grammar-page';
+import { PAGES as GRAMMAR_BOOK_1 } from '../../src/screens/grammar-page/data/book-1';
+import { PAGES as GRAMMAR_BOOK_2 } from '../../src/screens/grammar-page/data/book-2';
+import { PAGES as GRAMMAR_BOOK_3 } from '../../src/screens/grammar-page/data/book-3';
+import { WordListScreen, provideWordList, wordListInfo, wordListMeta } from '../../src/screens/word-list';
+import { WORDS as LEVEL_1_WORDS } from '../../src/screens/word-list/data/level-1';
+import { WORDS as LEVEL_2_WORDS } from '../../src/screens/word-list/data/level-2';
+import { WORDS as LEVEL_3_WORDS } from '../../src/screens/word-list/data/level-3';
+import { GUIDE_ROUTES, LESSON_PAGE_BOOKS, LESSON_PAGE_LESSONS, WORD_LIST_LEVELS, type GuidePage, type LegalPage, type LessonPageRef, type WordListLevel } from '../../src/app/routes';
 
 const SITE_ORIGIN = 'https://ronsmandarin.com';
 
 // Rendering is synchronous, so every book's lesson-page sample is handed over before it starts.
 [BOOK_1_PAGES, BOOK_2_PAGES, BOOK_3_PAGES].forEach((pages, index) => provideLessonPageBook(index + 1, pages));
+[LEVEL_1_WORDS, LEVEL_2_WORDS, LEVEL_3_WORDS].forEach((words, index) => provideWordList(index + 1, words));
+[GRAMMAR_BOOK_1, GRAMMAR_BOOK_2, GRAMMAR_BOOK_3].forEach((pages, index) => provideGrammarPageBook(index + 1, pages));
 
 export interface PrerenderedPage {
   path: string;
@@ -63,7 +73,7 @@ function landingJsonLd() {
         '@type': 'WebSite',
         '@id': `${SITE_ORIGIN}/#website`,
         name: "Ron's Mandarin",
-        alternateName: ['時代華語 Modern Chinese Study App', 'ronsmandarin.com'],
+        alternateName: ['Rons Mandarin', 'Modern Chinese Study App', 'ronsmandarin.com'],
         url: `${SITE_ORIGIN}/`,
         inLanguage: ['en', 'zh-Hant'],
         publisher: { '@id': `${SITE_ORIGIN}/#org` },
@@ -107,7 +117,7 @@ function landingJsonLd() {
       },
       {
         '@type': 'Course',
-        name: '時代華語 Modern Chinese Study Companion',
+        name: 'Modern Chinese (時代華語) Study Companion',
         description: LANDING_META.description,
         provider: { '@id': `${SITE_ORIGIN}/#org` },
         isAccessibleForFree: true,
@@ -135,7 +145,7 @@ function guideJsonLd(page: GuidePage, title: string, description: string, path: 
   if (page === 'books') {
     graph.push({
       '@type': 'ItemList',
-      name: '時代華語 Modern Chinese Books',
+      name: 'Modern Chinese (時代華語) Books',
       itemListElement: SAMPLE_BOOKS.map((book, index) => ({
         '@type': 'ListItem',
         position: index + 1,
@@ -197,6 +207,63 @@ function lessonJsonLd(ref: LessonPageRef, title: string, description: string, pa
   };
 }
 
+function grammarPageJsonLd(link: (typeof GRAMMAR_PAGES)[number], title: string, description: string, path: string): object {
+  const [, bookId, , name] = link;
+  const level = SAMPLE_BOOKS.find((book) => book.id === bookId)?.level;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      webPageNode(title, description, path),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: "Ron's Mandarin", item: `${SITE_ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: 'Grammar & Exercises', item: `${SITE_ORIGIN}${GUIDE_ROUTES.grammar}` },
+          { '@type': 'ListItem', position: 3, name, item: `${SITE_ORIGIN}${path}` },
+        ],
+      },
+      {
+        '@type': 'LearningResource',
+        name,
+        description,
+        learningResourceType: 'Grammar explanation with practice',
+        educationalLevel: `TOCFL ${level}`,
+        isAccessibleForFree: true,
+        inLanguage: ['en', 'zh-Hant'],
+        url: `${SITE_ORIGIN}${path}`,
+      },
+    ],
+  };
+}
+
+function wordListJsonLd(entry: WordListLevel, title: string, description: string, path: string): object {
+  const { label, count } = wordListInfo(entry);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      webPageNode(title, description, path),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: "Ron's Mandarin", item: `${SITE_ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: 'TOCFL Prep & Mock Tests', item: `${SITE_ORIGIN}${GUIDE_ROUTES.tocfl}` },
+          { '@type': 'ListItem', position: 3, name: `TOCFL ${label} Word List`, item: `${SITE_ORIGIN}${path}` },
+        ],
+      },
+      {
+        '@type': 'LearningResource',
+        name: `TOCFL ${label} Vocabulary List (${count} words)`,
+        description,
+        learningResourceType: 'Vocabulary list',
+        educationalLevel: `TOCFL ${label}`,
+        isAccessibleForFree: true,
+        inLanguage: ['en', 'zh-Hant'],
+        url: `${SITE_ORIGIN}${path}`,
+      },
+    ],
+  };
+}
+
 export function renderPages(): PrerenderedPage[] {
   const guides: GuidePage[] = ['books', 'grammar', 'tocfl'];
   const legal: LegalPage[] = ['about', 'sources', 'privacy', 'terms'];
@@ -224,6 +291,22 @@ export function renderPages(): PrerenderedPage[] {
         jsonLd: lessonJsonLd(ref, meta.title, meta.description, meta.path),
       };
     })),
+    ...GRAMMAR_PAGES.map((link) => {
+      const meta = grammarPageMeta(link);
+      return {
+        ...meta,
+        html: render(meta.path, <GrammarPageScreen slug={link[0]} />),
+        jsonLd: grammarPageJsonLd(link, meta.title, meta.description, meta.path),
+      };
+    }),
+    ...WORD_LIST_LEVELS.map((entry) => {
+      const meta = wordListMeta(entry);
+      return {
+        ...meta,
+        html: render(meta.path, <WordListScreen {...entry} />),
+        jsonLd: wordListJsonLd(entry, meta.title, meta.description, meta.path),
+      };
+    }),
     ...legal.map((page) => {
       const meta = legalPageMeta(page);
       return {

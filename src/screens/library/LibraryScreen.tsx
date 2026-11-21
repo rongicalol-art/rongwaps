@@ -17,6 +17,7 @@ import { FolderShareDrawer } from './components/FolderShareDrawer';
 import { useFolderCollaboration } from './hooks/useFolderCollaboration';
 import { isFolderOwner, canEditFolder, memberAvatarColor } from '../../utils/vocabulary/folderCollaboration';
 import { useLibrary } from './hooks/useLibrary';
+import { useWordListImport } from './hooks/useWordListImport';
 import { ReviewHubCard } from './components/ReviewHubCard';
 import { useReviewOverview } from './hooks/useReviewOverview';
 import { useTocflReadiness } from '../../hooks/useTocflReadiness';
@@ -45,6 +46,7 @@ interface LibraryScreenProps {
 }
 
 export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle }: LibraryScreenProps) {
+  useWordListImport();
   const {
     toggleFavorite,
     setDictionaryWord,

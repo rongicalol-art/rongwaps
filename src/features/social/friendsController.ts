@@ -1,5 +1,8 @@
 import { useAppStore } from '../../store/useAppStore';
 import { friendsService, type DirectMessage, type FriendPerson, type SavedProfile, type StoredCard } from '../../services/friendsService';
+import { nameProblem } from '../../../shared/nameFilter';
+import { USERNAME_FORMAT_HINT, usernameFormatOk } from '../../../shared/username';
+import { usernameBase } from './socialText';
 import type { MentionNotice, Person, ProfileCard } from '../../../shared/lobby';
 import { DIRECT_KEY, isDirectNotice, lobby } from './lobbyController';
 import { updateOpen } from './socialUpdate';
@@ -144,6 +147,69 @@ export async function loadSaved(us: string[]) {
   useAppStore.getState().setSocial({ socialSaved: saved });
 }
 
+/** Fresh rows (each with its current @username, or none) replace the cached ones. */
+const withSaved = (known: Record<string, SavedProfile | null>, rows: SavedProfile[]) =>
+  ({ ...known, ...Object.fromEntries(rows.map(row => [row.u, row])) });
+
+/**
+ * Classmates whose name or @username contains `text`, online or not: anyone with a saved profile and "Let classmates
+ * find me" on. null when the search failed. The cards found also fill the profile cache.
+ */
+export async function searchPeople(text: string): Promise<SavedProfile[] | null> {
+  const self = me();
+  if (!ready() || !self) return [];
+  let rows: SavedProfile[];
+  try { rows = await friendsService.search(text); } catch { return null; }
+  rows = rows.filter(row => row.u !== self && row.card?.n);
+  const now = Date.now();
+  for (const row of rows) savedAt.set(row.u, now);
+  const store = useAppStore.getState();
+  store.setSocial({ socialSaved: withSaved(store.socialSaved, rows) });
+  return rows;
+}
+
+let usernameFor = '';
+/** This learner's @username and "Let classmates find me": loaded once per account, made from their name the first time. */
+export async function ensureUsername(displayName: string) {
+  const self = me();
+  if (!ready() || !self || usernameFor === self) return;
+  usernameFor = self;
+  try {
+    let mine = await friendsService.myUsername(self);
+    if (!mine) {
+      await friendsService.claimUsername(usernameBase(displayName));
+      mine = await friendsService.myUsername(self);
+    }
+    if (me() === self) useAppStore.getState().setSocial({ socialUsername: mine });
+  } catch { usernameFor = ''; }
+}
+
+/** Settings → Username: the words to show when it can't be saved, or null when it was. */
+export async function changeUsername(name: string): Promise<string | null> {
+  const value = name.trim().replace(/^@/, '').toLowerCase();
+  if (!usernameFormatOk(value)) return USERNAME_FORMAT_HINT;
+  const problem = nameProblem(value);
+  if (problem) return problem;
+  try {
+    const saved = await friendsService.setUsername(value);
+    const current = useAppStore.getState().socialUsername;
+    useAppStore.getState().setSocial({ socialUsername: { findable: current?.findable ?? true, name: saved, chosenAt: Date.now() } });
+    return null;
+  } catch (error) { return errorText(error); }
+}
+
+/** Settings → Let classmates find me. */
+export async function setFindable(on: boolean) {
+  const store = useAppStore.getState();
+  const current = store.socialUsername;
+  if (!current) return;
+  store.setSocial({ socialUsername: { ...current, findable: on } });
+  try { await friendsService.setFindable(on); } catch (error) {
+    useAppStore.getState().setSocial({ socialUsername: current });
+    useAppStore.getState().showFeedbackToast(errorText(error));
+  }
+}
+
 export async function loadRecent() {
   if (!ready()) return;
   try {
@@ -151,7 +217,7 @@ export async function loadRecent() {
     const store = useAppStore.getState();
     const now = Date.now();
     for (const row of rows) savedAt.set(row.u, now);
-    store.setSocial({ socialRecent: rows, socialSaved: { ...store.socialSaved, ...Object.fromEntries(rows.map(row => [row.u, row])) } });
+    store.setSocial({ socialRecent: rows, socialSaved: withSaved(store.socialSaved, rows) });
   } catch { /* Keeps the last list. */ }
 }
 

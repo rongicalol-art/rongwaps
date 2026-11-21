@@ -19,7 +19,7 @@ export function BooksGuideContent() {
     <>
       <DocSection title="How each lesson works">
         <DocParagraph>
-          Ron’s Mandarin mirrors the exact lesson order of <strong>時代華語 Modern Chinese</strong> so you can review
+          Ron’s Mandarin mirrors the exact lesson order of <strong>Modern Chinese</strong> (時代華語) so you can review
           what you studied in class or preview tomorrow’s chapter on your phone.
         </DocParagraph>
         <DocList

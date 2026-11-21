@@ -1,0 +1,610 @@
+{
+  "B1L01-G01-P38": {
+    "slug": "jiao-xing-shi-introduce-someone",
+    "examples": [
+      { "zh": "她 姓 王|Wáng|Wang ， 叫 王小美|Wáng_Xiǎoměi|Wang_Xiaomei 。", "en": "Her surname is Wang. Her name is Wang Xiaomei." },
+      { "zh": "他 不|bú|not 是 老師 ， 他 是 學生 。", "en": "He is not a teacher. He is a student." }
+    ],
+    "exercise": { "zh": "我 是 臺灣 人 。", "en": "I am Taiwanese." }
+  },
+  "B1L01-G02-P39": {
+    "slug": "hen-bu-describe-someone",
+    "examples": [
+      { "zh": "老師 很 漂亮 。", "en": "The teacher is pretty." },
+      { "zh": "我 不|bú|not 累|lèi|tired 。", "en": "I am not tired." }
+    ],
+    "exercise": { "zh": "新 同學 很 可愛 。", "en": "The new classmate is cute." }
+  },
+  "B1L01-G03-P40": {
+    "slug": "ma-yes-no-question",
+    "examples": [
+      { "zh": "你 是 學生 嗎 ？", "en": "Are you a student?" },
+      { "zh": "她 喜歡 珍珠奶茶 嗎 ？", "en": "Does she like bubble milk tea?" }
+    ],
+    "exercise": { "zh": "你們 喝 茶 嗎 ？", "en": "Do you all drink tea?" }
+  },
+  "B1L01-G04-P44": {
+    "slug": "ne-and-you",
+    "examples": [
+      { "zh": "我 喝 茶 ， 妳 呢 ？", "en": "I'm having tea. And you?" },
+      { "zh": "他 姓 王|Wáng|Wang ， 老師 呢 ？", "en": "His surname is Wang. What about the teacher?" }
+    ],
+    "exercise": { "zh": "我 是 學生 ， 你 呢 ？", "en": "I am a student. And you?" }
+  },
+  "B1L01-G05-P45": {
+    "slug": "subject-verb-object",
+    "examples": [
+      { "zh": "我 愛 水果 。", "en": "I love fruit." },
+      { "zh": "她 不|bù|not 喝 奶茶 。", "en": "She doesn't drink milk tea." }
+    ],
+    "exercise": { "zh": "我們 喜歡 新 老師 。", "en": "We like the new teacher." }
+  },
+  "B1L02-G01-P54": {
+    "slug": "yue-hao-dates-and-times",
+    "examples": [
+      { "zh": "我 的 生日 是 十|shí|ten 月 三|sān|three 號 。", "en": "My birthday is October 3." },
+      { "zh": "現在 三|sān|three 點 十五|shíwǔ|fifteen 分 。", "en": "It's 3:15 now." }
+    ],
+    "exercise": { "zh": "明天 是 星期 五|wǔ|five 。", "en": "Tomorrow is Friday." }
+  },
+  "B1L02-G02-P55": {
+    "slug": "time-before-the-verb",
+    "examples": [
+      { "zh": "我 早上 七|qī|seven 點 起床 。", "en": "I get up at seven in the morning." },
+      { "zh": "媽媽 晚上 做飯 。", "en": "Mom cooks in the evening." }
+    ],
+    "exercise": { "zh": "他們 明天 去 學校 。", "en": "They are going to school tomorrow." }
+  },
+  "B1L02-G03-P56": {
+    "slug": "you-meiyou-have-or-not",
+    "examples": [
+      { "zh": "我 今天 有 課 。", "en": "I have class today." },
+      { "zh": "他 星期天 沒有|méiyǒu|not_have 課 。", "en": "He doesn't have class on Sunday." }
+    ],
+    "exercise": { "zh": "老師 沒有|méiyǒu|not_have 問題 。", "en": "The teacher has no questions." }
+  },
+  "B1L02-G04-P60": {
+    "slug": "de-owner-and-thing",
+    "examples": [
+      { "zh": "老師 的 孩子 很 可愛 。", "en": "The teacher's child is cute." },
+      { "zh": "今天 是 媽媽 的 生日 。", "en": "Today is Mom's birthday." }
+    ],
+    "exercise": { "zh": "我 的 朋友 是 日本 人 。", "en": "My friend is Japanese." }
+  },
+  "B1L02-G05-P61": {
+    "slug": "yao-xihuan-before-a-verb",
+    "examples": [
+      { "zh": "我 要 回 家 。", "en": "I want to go home." },
+      { "zh": "她 很 喜歡 睡覺 。", "en": "She really likes to sleep." }
+    ],
+    "exercise": { "zh": "你們 要 吃 晚飯 嗎 ？", "en": "Do you all want to eat dinner?" }
+  },
+  "B1L02-G06-P62": {
+    "slug": "bu-mei-positive-negative-question",
+    "examples": [
+      { "zh": "你 今天 忙 不|bù|not 忙 ？", "en": "Are you busy today?" },
+      { "zh": "你 週末 有 沒 有 課 ？", "en": "Do you have class on the weekend?" }
+    ],
+    "exercise": { "zh": "你 要 不|bú|not 要 喝 茶 ？", "en": "Do you want some tea?" }
+  },
+  "B1L03-G01-P73": {
+    "slug": "ji-measure-words",
+    "examples": [
+      { "zh": "你 要 買 幾 本 書 ？", "en": "How many books do you want to buy?" },
+      { "zh": "我 要 兩 枝 筆 。", "en": "I want two pens." }
+    ],
+    "exercise": { "zh": "她 有 三|sān|three 個 孩子 。", "en": "She has three children." }
+  },
+  "B1L03-G02-P74": {
+    "slug": "song-give-a-gift",
+    "examples": [
+      { "zh": "我 送 媽媽 一些 花 。", "en": "I'm giving Mom some flowers." },
+      { "zh": "朋友 送 他 一|yì|one 本 中文 書 。", "en": "His friend is giving him a Chinese book." }
+    ],
+    "exercise": { "zh": "爸爸 送 我 蛋糕 。", "en": "Dad is giving me a cake." }
+  },
+  "B1L03-G03-P81": {
+    "slug": "zhe-na-this-that-which",
+    "examples": [
+      { "zh": "這 兩 本 書 很 貴 。", "en": "These two books are expensive." },
+      { "zh": "你 喜歡 哪 個 顏色 ？", "en": "Which color do you like?" }
+    ],
+    "exercise": { "zh": "那 件 衣服 很 便宜 。", "en": "That piece of clothing is cheap." }
+  },
+  "B1L03-G04-P82": {
+    "slug": "de-describe-a-noun",
+    "examples": [
+      { "zh": "我 喜歡 紅色 的 花 。", "en": "I like red flowers." },
+      { "zh": "我 要 白色 的 。", "en": "I want the white one." }
+    ],
+    "exercise": { "zh": "我 要 買 好看 的 衣服 。", "en": "I want to buy good-looking clothes." }
+  },
+  "B1L03-G05-P84": {
+    "slug": "dou-both-and-all",
+    "examples": [
+      { "zh": "我們 都 喜歡 吃 蛋糕 。", "en": "We all like eating cake." },
+      { "zh": "這 兩 枝 筆 都 很 便宜 。", "en": "Both of these pens are cheap." }
+    ],
+    "exercise": { "zh": "他們 都 是 學生 。", "en": "They are all students." }
+  },
+  "B1L04-G01-P95": {
+    "slug": "dou-topic-first",
+    "examples": [
+      { "zh": "咖啡 ， 我 不|bù|not 喝 。", "en": "Coffee? I don't drink it." },
+      { "zh": "紅茶 、 綠茶 ， 我 都 喜歡 。", "en": "Black tea and green tea, I like them both." }
+    ],
+    "exercise": { "zh": "牛肉麵 ， 他 很 喜歡 。", "en": "Beef noodles, he really likes them." }
+  },
+  "B1L04-G02-P97": {
+    "slug": "ye-also-too",
+    "examples": [
+      { "zh": "我 很 餓 ， 也 很 渴 。", "en": "I'm hungry, and thirsty too." },
+      { "zh": "他 喝 咖啡 ， 我 也 喝 咖啡 。", "en": "He drinks coffee, and I drink coffee too." }
+    ],
+    "exercise": { "zh": "我 也 喜歡 夏天 。", "en": "I like summer too." }
+  },
+  "B1L04-G03-P98": {
+    "slug": "tai-le-so-or-too",
+    "examples": [
+      { "zh": "今天 太 熱 了 ！", "en": "It's so hot today!" },
+      { "zh": "這 碗 麵 太 貴 了 。", "en": "This bowl of noodles is too expensive." }
+    ],
+    "exercise": { "zh": "牛肉麵 太 好吃 了 ！", "en": "The beef noodles are so delicious!" }
+  },
+  "B1L04-G04-P104": {
+    "slug": "large-numbers-place-value",
+    "examples": [
+      { "zh": "這 杯 咖啡 一|yì|one 百 二十|èrshí|twenty 塊 。", "en": "This cup of coffee is 120 dollars." },
+      { "zh": "一共 兩 千 零 五|wǔ|five 塊 。", "en": "That's 2,005 dollars altogether." }
+    ],
+    "exercise": { "zh": "我 有 一|yí|one 萬 塊 。", "en": "I have ten thousand dollars." }
+  },
+  "B1L04-G05-P105": {
+    "slug": "duo-a-little-over",
+    "examples": [
+      { "zh": "這 本 書 兩 百 多|duō|over 塊 。", "en": "This book costs over 200 dollars." },
+      { "zh": "現在 三|sān|three 點|diǎn|o'clock 多|duō|over 。", "en": "It's a little after three now." }
+    ],
+    "exercise": { "zh": "他 有 二十|èrshí|twenty 多|duō|over 本 書 。", "en": "He has over twenty books." }
+  },
+  "B1L05-G01-P116": {
+    "slug": "zai-where-someone-is",
+    "examples": [
+      { "zh": "我 的 錢包 在 哪裡 ？", "en": "Where is my wallet?" },
+      { "zh": "媽媽 不|bú|not 在 家|jiā|home 。", "en": "Mom isn't home." }
+    ],
+    "exercise": { "zh": "哥哥 在 圖書館 。", "en": "My older brother is at the library." }
+  },
+  "B1L05-G02-P117": {
+    "slug": "zai-place-before-action",
+    "examples": [
+      { "zh": "我們 在 咖啡廳 喝 下午茶 。", "en": "We have afternoon tea at the café." },
+      { "zh": "姐姐 在 家|jiā|home 聽 音樂 。", "en": "My older sister listens to music at home." }
+    ],
+    "exercise": { "zh": "弟弟 在 學校 吃 午飯 。", "en": "My younger brother eats lunch at school." }
+  },
+  "B1L05-G03-P118": {
+    "slug": "ba-make-a-suggestion",
+    "examples": [
+      { "zh": "我們 去 咖啡廳 吧 。", "en": "Let's go to the café." },
+      { "zh": "天氣 很 熱 ， 我們 吃 冰淇淋 吧 。", "en": "It's hot. Let's have some ice cream." }
+    ],
+    "exercise": { "zh": "我們 一起 看 書 吧 。", "en": "Let's read together." }
+  },
+  "B1L05-G04-P124": {
+    "slug": "zai-exact-location",
+    "examples": [
+      { "zh": "錢包 在 桌子 上面|shàngmiàn|on_top 。", "en": "The wallet is on the table." },
+      { "zh": "咖啡廳 在 學校 旁邊 。", "en": "The café is next to the school." }
+    ],
+    "exercise": { "zh": "狗 在 椅子 下面|xiàmiàn|under 。", "en": "The dog is under the chair." }
+  },
+  "B1L05-G05-P126": {
+    "slug": "you-meiyou-there-is",
+    "examples": [
+      { "zh": "客廳 有 一|yì|one 張 沙發 。", "en": "There is a sofa in the living room." },
+      { "zh": "廚房 沒有|méiyǒu|there_is_no 桌子 。", "en": "There is no table in the kitchen." }
+    ],
+    "exercise": { "zh": "我 家|jiā|home 有 兩 隻 貓 。", "en": "There are two cats in my home." }
+  },
+  "B1L06-G01-P135": {
+    "slug": "hui-learned-skill",
+    "examples": [
+      { "zh": "妹妹 會 打 網球 。", "en": "My younger sister can play tennis." },
+      { "zh": "爸爸 不|bú|not 會 跳舞 。", "en": "Dad can't dance." }
+    ],
+    "exercise": { "zh": "你 會 說 中文 嗎 ？", "en": "Can you speak Chinese?" }
+  },
+  "B1L06-G02-P136": {
+    "slug": "de-how-well",
+    "examples": [
+      { "zh": "老師 說話 說 得 很 慢 。", "en": "The teacher speaks slowly." },
+      { "zh": "他 籃球 打 得 不錯 。", "en": "He plays basketball pretty well." }
+    ],
+    "exercise": { "zh": "你 說 得 很 快 。", "en": "You speak very fast." }
+  },
+  "B1L06-G03-P146": {
+    "slug": "youyidian-a-little",
+    "examples": [
+      { "zh": "今天 有|yǒu|have 一點|yìdiǎn|a_little 冷 。", "en": "It's a little cold today." },
+      { "zh": "我 有|yǒu|have 一點|yìdiǎn|a_little 累 。", "en": "I'm a little tired." }
+    ],
+    "exercise": { "zh": "那 家 餐廳 有|yǒu|have 一點|yìdiǎn|a_little 貴 。", "en": "That restaurant is a bit expensive." }
+  },
+  "B1L06-G04-P147": {
+    "slug": "keyi-ask-permission",
+    "examples": [
+      { "zh": "我 可以 看 你 的 書 嗎 ？", "en": "May I read your book?" },
+      { "zh": "你 可以 騎 腳踏車 去 。", "en": "You can ride a bike there." }
+    ],
+    "exercise": { "zh": "這裡 不|bù|not 可以 吃 東西 。", "en": "You can't eat here." }
+  },
+  "B1L07-G01-P158": {
+    "slug": "cong-dao-from-and-to",
+    "examples": [
+      { "zh": "我 從 日本 來 。", "en": "I come from Japan." },
+      { "zh": "他 明天 到 美國 去 。", "en": "He's going to the US tomorrow." }
+    ],
+    "exercise": { "zh": "妳 從 哪裡 來 ？", "en": "Where are you from?" }
+  },
+  "B1L07-G02-P160": {
+    "slug": "zenme-how-you-get-there",
+    "examples": [
+      { "zh": "你 怎麼 去 學校 ？", "en": "How do you get to school?" },
+      { "zh": "我 坐 捷運 去 。", "en": "I take the MRT." }
+    ],
+    "exercise": { "zh": "他 走路 來 學校 。", "en": "He walks to school." }
+  },
+  "B1L07-G03-P162": {
+    "slug": "le-something-changed",
+    "examples": [
+      { "zh": "天氣 冷 了 。", "en": "It's gotten cold." },
+      { "zh": "我 現在 不|bù|not 喝 咖啡 了 。", "en": "I don't drink coffee anymore." }
+    ],
+    "exercise": { "zh": "我 弟弟 會 開車 了 。", "en": "My younger brother can drive now." }
+  },
+  "B1L07-G04-P170": {
+    "slug": "activity-then-comment",
+    "examples": [
+      { "zh": "坐 捷運 很 方便 。", "en": "Taking the MRT is convenient." },
+      { "zh": "坐 計程車 很 舒服 ， 可是 很 貴 。", "en": "Taking a taxi is comfortable, but expensive." }
+    ],
+    "exercise": { "zh": "開車 去 機場 很 快 。", "en": "Driving to the airport is fast." }
+  },
+  "B1L07-G05-P172": {
+    "slug": "you-you-two-qualities",
+    "examples": [
+      { "zh": "這 家 飯店 又 舒服 又 便宜 。", "en": "This hotel is comfortable and cheap." },
+      { "zh": "那 家 餐廳 的 牛肉麵 又 便宜 又 好吃 。", "en": "That restaurant's beef noodles are cheap and tasty." }
+    ],
+    "exercise": { "zh": "計程車 又 快 又 舒服 。", "en": "Taxis are fast and comfortable." }
+  },
+  "B1L08-G01-P185": {
+    "slug": "hao-nan-easy-or-hard",
+    "examples": [
+      { "zh": "中文 很 難 學 。", "en": "Chinese is hard to learn." },
+      { "zh": "這 雙 鞋子 很 好看 。", "en": "These shoes look nice." }
+    ],
+    "exercise": { "zh": "這 種 腳踏車 很 難 騎 。", "en": "This kind of bike is hard to ride." }
+  },
+  "B1L08-G02-P186": {
+    "slug": "yinwei-suoyi-because-so",
+    "examples": [
+      { "zh": "因為 那 個 牌子 很 有名 ， 所以 很 貴 。", "en": "That brand is famous, so it's expensive." },
+      { "zh": "因為 天氣 很 熱 ， 所以 他 喝 很 多 水 。", "en": "Because it's hot, he drinks a lot of water." }
+    ],
+    "exercise": { "zh": "因為 很 忙 ， 所以 很 累 。", "en": "I'm tired because I'm busy." }
+  },
+  "B1L08-G03-P193": {
+    "slug": "ba-check-a-guess",
+    "examples": [
+      { "zh": "你 是 美國 人 吧 ？", "en": "You're American, right?" },
+      { "zh": "這 條 褲子 很 貴 吧 ？", "en": "These pants are expensive, aren't they?" }
+    ],
+    "exercise": { "zh": "你 很 累 吧 ？", "en": "You must be tired, right?" }
+  },
+  "B1L08-G04-P194": {
+    "slug": "kan-try-and-see",
+    "examples": [
+      { "zh": "你 聽 聽 看|kàn|and_see 這 首 歌 。", "en": "Have a listen to this song." },
+      { "zh": "這 雙 鞋子 很 舒服 ， 你 穿 穿 看|kàn|and_see 。", "en": "These shoes are comfortable. Try them on." }
+    ],
+    "exercise": { "zh": "你 喝 喝 看|kàn|and_see 綠茶 。", "en": "Try the green tea." }
+  },
+  "B1L08-G05-P195": {
+    "slug": "kuaiyao-le-about-to-happen",
+    "examples": [
+      { "zh": "我們 快要 下課 了 。", "en": "Our class is almost over." },
+      { "zh": "飛機 要|yào|about_to 起飛 了 。", "en": "The plane is about to take off." }
+    ],
+    "exercise": { "zh": "百貨公司 快要 關 了 。", "en": "The department store is about to close." }
+  },
+  "B1L09-G01-P205": {
+    "slug": "zai-action-in-progress",
+    "examples": [
+      { "zh": "哥哥 在 寫 書法 。", "en": "My older brother is doing calligraphy." },
+      { "zh": "你 在 看 什麼 ？", "en": "What are you reading?" }
+    ],
+    "exercise": { "zh": "我 在 練習 寫 字 。", "en": "I'm practicing writing characters." }
+  },
+  "B1L09-G02-P206": {
+    "slug": "cong-dao-time-range",
+    "examples": [
+      { "zh": "我們 從 星期 一|yī|one 到 星期 五|wǔ|five 都 要 上課 。", "en": "We have class from Monday to Friday." },
+      { "zh": "他 從 早上 到 晚上 都 很 忙 。", "en": "He is busy from morning to night." }
+    ],
+    "exercise": { "zh": "我們 從 上午 到 下午 上課 。", "en": "We have class from morning to afternoon." }
+  },
+  "B1L09-G03-P207": {
+    "slug": "xian-zai-first-then",
+    "examples": [
+      { "zh": "我們 先 吃 飯 ， 再 去 看 電影 。", "en": "We'll eat first, then go see a movie." },
+      { "zh": "我 先 去 郵局 寄 信 ， 再 去 超市 。", "en": "I'll mail a letter at the post office first, then go to the supermarket." }
+    ],
+    "exercise": { "zh": "先 讀書 ， 再 玩 。", "en": "Study first, then play." }
+  },
+  "B1L09-G04-P213": {
+    "slug": "neng-able-or-allowed",
+    "examples": [
+      { "zh": "我 明天 有|yǒu|have 考試 ， 不能|bùnéng|cannot 去 。", "en": "I have an exam tomorrow, so I can't go." },
+      { "zh": "你 能 教 我 寫 書法 嗎 ？", "en": "Can you teach me calligraphy?" }
+    ],
+    "exercise": { "zh": "你 明天 能 來 嗎 ？", "en": "Can you come tomorrow?" }
+  },
+  "B1L09-G05-P216": {
+    "slug": "bijiao-comparatively",
+    "examples": [
+      { "zh": "我 覺得 日文 比較 容易 。", "en": "I think Japanese is easier." },
+      { "zh": "哥哥 字 寫 得 比較 好看 。", "en": "My older brother's handwriting is nicer." }
+    ],
+    "exercise": { "zh": "這 家 比較 便宜 。", "en": "This shop is cheaper." }
+  },
+  "B1L10-G01-P226": {
+    "slug": "gen-with-or-to-someone",
+    "examples": [
+      { "zh": "我 要 跟 老師 請假 。", "en": "I need to ask the teacher for leave." },
+      { "zh": "他 跟|gēn|with 朋友 一起 去 醫院 。", "en": "He is going to the hospital with a friend." }
+    ],
+    "exercise": { "zh": "我 跟|gēn|from 姐姐 學 中文 。", "en": "I learn Chinese from my older sister." }
+  },
+  "B1L10-G02-P228": {
+    "slug": "de-clause-before-noun",
+    "examples": [
+      { "zh": "戴 口罩 的 人 是 我 哥哥 。", "en": "The person wearing a mask is my older brother." },
+      { "zh": "媽媽 買 的 蘋果 很 甜 。", "en": "The apples Mom bought are sweet." }
+    ],
+    "exercise": { "zh": "這 是 醫生 給 的 藥 。", "en": "This is the medicine the doctor gave." }
+  },
+  "B1L10-G03-P231": {
+    "slug": "duo-shao-more-or-less",
+    "examples": [
+      { "zh": "多 喝 水 ， 多 休息 。", "en": "Drink more water and rest more." },
+      { "zh": "我 最近 要 多 運動 。", "en": "I need to exercise more these days." }
+    ],
+    "exercise": { "zh": "你 應該 少 吃 甜點 。", "en": "You should eat fewer desserts." }
+  },
+  "B1L10-G04-P236": {
+    "slug": "hui-will-happen",
+    "examples": [
+      { "zh": "明天 會 很 冷 。", "en": "It will be cold tomorrow." },
+      { "zh": "下 星期 老師 會 告訴 我們 。", "en": "The teacher will tell us next week." }
+    ],
+    "exercise": { "zh": "明天 我 會 去 醫院 。", "en": "Tomorrow I will go to the hospital." }
+  },
+  "B1L10-G05-P237": {
+    "slug": "ruguo-jiu-if-then",
+    "examples": [
+      { "zh": "如果 你 不舒服 ， 就 回 家|jiā|home 休息 。", "en": "If you don't feel well, go home and rest." },
+      { "zh": "要是 我 明天 發燒 ， 就 去 醫院 。", "en": "If I have a fever tomorrow, I'll go to the hospital." }
+    ],
+    "exercise": { "zh": "要是 你 忙 ， 就 不要 來 。", "en": "If you're busy, don't come." }
+  },
+  "B1L11-G01-P247": {
+    "slug": "le-completed-action",
+    "examples": [
+      { "zh": "我 昨天 認識 了 一|yí|one 個 新 朋友 。", "en": "I met a new friend yesterday." },
+      { "zh": "他 已經 回 家|jiā|home 了 。", "en": "He has already gone home." }
+    ],
+    "exercise": { "zh": "我們 已經 點菜 了 。", "en": "We have already ordered." }
+  },
+  "B1L11-G02-P249": {
+    "slug": "mei-haimei-not-yet",
+    "examples": [
+      { "zh": "我 昨天 沒 去 上課 。", "en": "I didn't go to class yesterday." },
+      { "zh": "他 還沒 吃 午飯 。", "en": "He hasn't had lunch yet." }
+    ],
+    "exercise": { "zh": "我 還沒 決定 。", "en": "I haven't decided yet." }
+  },
+  "B1L11-G03-P251": {
+    "slug": "shi-de-past-detail",
+    "examples": [
+      { "zh": "你 是 怎麼 來 的 ？", "en": "How did you get here?" },
+      { "zh": "他 是 昨天 來 的 。", "en": "He came yesterday." }
+    ],
+    "exercise": { "zh": "我 是 坐 捷運 來 的 。", "en": "I came by MRT." }
+  },
+  "B1L11-G04-P257": {
+    "slug": "xian-deng-zai-wait-until",
+    "examples": [
+      { "zh": "我 先 做 功課 ， 等 媽媽 回 家|jiā|home ， 再 吃 晚飯 。", "en": "I'll do my homework first, and when Mom gets home, we'll have dinner." },
+      { "zh": "等 你 有空 ， 我們 再 聊 。", "en": "When you're free, we'll chat." }
+    ],
+    "exercise": { "zh": "等 你 下課 ， 我們 再 去 。", "en": "We'll go after your class ends." }
+  },
+  "B1L11-G05-P259": {
+    "slug": "gei-for-someone",
+    "examples": [
+      { "zh": "我 給 朋友 寫 了 一|yì|one 張 卡片 。", "en": "I wrote a card for my friend." },
+      { "zh": "他 沒 給 我 打電話 。", "en": "He didn't call me." }
+    ],
+    "exercise": { "zh": "我 給 你 照相 。", "en": "I'll take a photo of you." }
+  },
+  "B1L12-G01-P271": {
+    "slug": "yong-with-a-tool",
+    "examples": [
+      { "zh": "我 用 手機 上網 。", "en": "I go online on my phone." },
+      { "zh": "你 可以 用 中文 回答 。", "en": "You can answer in Chinese." }
+    ],
+    "exercise": { "zh": "她 用 電腦 工作 。", "en": "She works on a computer." }
+  },
+  "B1L12-G02-P272": {
+    "slug": "yiqian-yihou-before-after",
+    "examples": [
+      { "zh": "畢業 以後 ， 我 要 當 護理師 。", "en": "After I graduate, I'm going to be a nurse." },
+      { "zh": "上班 以前 ， 他 喝 一|yì|one 杯 咖啡 。", "en": "He has a cup of coffee before work." }
+    ],
+    "exercise": { "zh": "我 以前 是 老師 。", "en": "I used to be a teacher." }
+  },
+  "B1L12-G03-P281": {
+    "slug": "dui-toward-someone",
+    "examples": [
+      { "zh": "我 對 他 說 謝謝 。", "en": "I said thank you to him." },
+      { "zh": "運動 對 身體 很 重要 。", "en": "Exercise is important for your body." }
+    ],
+    "exercise": { "zh": "老師 對 學生 很 好|hǎo|good 。", "en": "The teacher is good to the students." }
+  },
+  "B1L12-G04-P282": {
+    "slug": "guo-past-experience",
+    "examples": [
+      { "zh": "我 去 過 日本 。", "en": "I have been to Japan." },
+      { "zh": "他 沒 吃 過 牛肉麵 。", "en": "He has never had beef noodles." }
+    ],
+    "exercise": { "zh": "你 去 過 美國 嗎 ？", "en": "Have you been to the US?" }
+  },
+  "B1L12-G05-P284": {
+    "slug": "deshihou-at-that-moment",
+    "examples": [
+      { "zh": "上班 的時候|de_shíhòu|when ， 我 很 忙 。", "en": "When I'm at work, I'm busy." },
+      { "zh": "吃 飯 的時候|de_shíhòu|when ， 不要 看 手機 。", "en": "Don't look at your phone while you eat." }
+    ],
+    "exercise": { "zh": "他 工作 的時候|de_shíhòu|when 不|bù|not 說話 。", "en": "He doesn't talk when he works." }
+  },
+  "B1L13-G01-P295": {
+    "slug": "yi-repeat-a-verb",
+    "examples": [
+      { "zh": "你 看 一|yí|one 看 這 張 圖片 。", "en": "Take a look at this picture." },
+      { "zh": "請 你 說 說 你 的 經驗 。", "en": "Please tell us a little about your experience." }
+    ],
+    "exercise": { "zh": "我 看 看 地圖 。", "en": "Let me take a look at the map." }
+  },
+  "B1L13-G02-P296": {
+    "slug": "cong-wang-toward-a-direction",
+    "examples": [
+      { "zh": "從 博物館 往 左|zuǒ|left 轉 。", "en": "Turn left at the museum." },
+      { "zh": "我們 從 這裡 往 前|qián|forward 走 。", "en": "We walk straight ahead from here." }
+    ],
+    "exercise": { "zh": "從 路口 往 右|yòu|right 走 。", "en": "Go right from the intersection." }
+  },
+  "B1L13-G03-P297": {
+    "slug": "jiu-early-or-easy",
+    "examples": [
+      { "zh": "他 每 天 早上 六|liù|six 點|diǎn|o'clock 就 起床 。", "en": "He gets up as early as six every morning." },
+      { "zh": "你 過 馬路 ， 就 可以 看到 博物館 了 。", "en": "Cross the road and you'll see the museum." }
+    ],
+    "exercise": { "zh": "她 很 早 就 起床 了 。", "en": "She got up very early." }
+  },
+  "B1L13-G04-P303": {
+    "slug": "jiuyao-le-very-soon",
+    "examples": [
+      { "zh": "我們 明天 就要 考試 了 。", "en": "We have an exam tomorrow." },
+      { "zh": "電影 馬上 就要 開始 了 。", "en": "The movie is about to start." }
+    ],
+    "exercise": { "zh": "他 下 星期 就要 結婚 了 。", "en": "He is getting married next week." }
+  },
+  "B1L13-G05-P304": {
+    "slug": "how-long-an-action-lasts",
+    "examples": [
+      { "zh": "他 每 天 工作 十|shí|ten 個 小時 。", "en": "He works ten hours every day." },
+      { "zh": "我 打 籃球 打 了 一|yí|one 個 小時 。", "en": "I played basketball for an hour." }
+    ],
+    "exercise": { "zh": "我 每 天 走路 二十|èrshí|twenty 分鐘 。", "en": "I walk for twenty minutes every day." }
+  },
+  "B1L14-G01-P319": {
+    "slug": "le-how-long-it-took",
+    "examples": [
+      { "zh": "昨天 的 演唱會 ， 我們 站 了 三|sān|three 個 小時 。", "en": "At yesterday's concert, we stood for three hours." },
+      { "zh": "他 去年 學 了 一|yì|one 年 中文 。", "en": "He studied Chinese for a year last year." }
+    ],
+    "exercise": { "zh": "我們 坐 了 很 久 。", "en": "We sat for a long time." }
+  },
+  "B1L14-G02-P322": {
+    "slug": "le-le-up-to-now",
+    "examples": [
+      { "zh": "我 學 華語 學 了 兩 年 了 。", "en": "I have been studying Chinese for two years." },
+      { "zh": "我 等 了 半 個 小時 了 。", "en": "I have been waiting for half an hour." }
+    ],
+    "exercise": { "zh": "我們 站 了 很 久 了 。", "en": "We have been standing for a long time." }
+  },
+  "B1L14-G03-P331": {
+    "slug": "bi-compare-two-things",
+    "examples": [
+      { "zh": "今天 比 昨天 冷 。", "en": "Today is colder than yesterday." },
+      { "zh": "我 的 包子 比 你 的 大 。", "en": "My baozi is bigger than yours." }
+    ],
+    "exercise": { "zh": "這 棵 樹 比 我 高 。", "en": "This tree is taller than me." }
+  },
+  "B1L15-G01": {
+    "slug": "gen-yiyang-same-or-different",
+    "examples": [
+      { "zh": "我 跟|gēn|and 你 一樣 高 。", "en": "I am as tall as you." },
+      { "zh": "華語 跟|gēn|and 日文 不|bù|not 一樣 。", "en": "Chinese and Japanese are different." }
+    ],
+    "exercise": { "zh": "他 跟|gēn|and 哥哥 一樣 聰明 。", "en": "He is as smart as his older brother." }
+  },
+  "B1L15-G02": {
+    "slug": "zhe-ongoing-state",
+    "examples": [
+      { "zh": "爸爸 穿 著 黑色 的 衣服 。", "en": "Dad is wearing black clothes." },
+      { "zh": "她 戴 著 眼鏡 。", "en": "She is wearing glasses." }
+    ],
+    "exercise": { "zh": "小孩 拿 著 燈籠 。", "en": "The child is holding a lantern." }
+  },
+  "B1L15-G03": {
+    "slug": "yi-jiu-as-soon-as",
+    "examples": [
+      { "zh": "我 一|yí|as_soon_as 下課 ， 就 去 吃 飯 。", "en": "As soon as class ends, I go eat." },
+      { "zh": "他 一|yì|as_soon_as 喝 酒 ， 臉 就 紅 。", "en": "As soon as he drinks, his face turns red." }
+    ],
+    "exercise": { "zh": "我 一|yì|as_soon_as 回 家|jiā|home ， 就 睡覺 。", "en": "As soon as I get home, I go to sleep." }
+  },
+  "B1L16-G01": {
+    "slug": "li-near-or-far",
+    "examples": [
+      { "zh": "我 家|jiā|home 離 學校 很 近 。", "en": "My home is close to school." },
+      { "zh": "高雄 離 台北 很 遠 。", "en": "Kaohsiung is far from Taipei." }
+    ],
+    "exercise": { "zh": "夜市 離 這裡 不|bù|not 遠 。", "en": "The night market isn't far from here." }
+  },
+  "B1L16-G02": {
+    "slug": "benlai-houlai-what-changed",
+    "examples": [
+      { "zh": "我 原來 要 搭 火車 ， 後來 搭 了 高鐵 。", "en": "I was going to take the train, but in the end I took the high-speed rail." },
+      { "zh": "我們 本來 要 去 海邊 ， 後來 下雨 了 。", "en": "We were going to the beach, but then it rained." }
+    ],
+    "exercise": { "zh": "本來 要 去 ， 後來 沒 去 。", "en": "I was going to go, but in the end I didn't." }
+  },
+  "B1L16-G03": {
+    "slug": "bi-geng-even-more",
+    "examples": [
+      { "zh": "高鐵 比 火車 更 貴 。", "en": "The high-speed rail is even more expensive than the train." },
+      { "zh": "夜市 比 餐廳 更 熱鬧 。", "en": "The night market is even livelier than a restaurant." }
+    ],
+    "exercise": { "zh": "花蓮 比 台北 更 安靜 。", "en": "Hualien is even quieter than Taipei." }
+  },
+  "B1L16-G04": {
+    "slug": "le-jiu-right-after",
+    "examples": [
+      { "zh": "我 吃 了 早飯 就 去 上學 。", "en": "After breakfast, I go straight to school." },
+      { "zh": "她 買 了 票 就 進去 了 。", "en": "She bought a ticket and went right in." }
+    ],
+    "exercise": { "zh": "我 付 了 錢 就 走 。", "en": "I'll leave as soon as I've paid." }
+  },
+  "B1L16-G05": {
+    "slug": "de-how-it-turned-out",
+    "examples": [
+      { "zh": "我們 玩 得 非常 高興 。", "en": "We had a really great time." },
+      { "zh": "風 很 大 ， 他 走 得 很 慢 。", "en": "The wind is strong, so he walks slowly." }
+    ],
+    "exercise": { "zh": "大家 笑 得 很 大聲 。", "en": "Everyone laughed loudly." }
+  }
+}

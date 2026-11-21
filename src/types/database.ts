@@ -110,6 +110,12 @@ export interface Database {
         Update: never;
         Relationships: [];
       };
+      usernames: {
+        Row: { user_id: string; username: string; findable: boolean; chosen_at: string | null };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
       user_blocks: {
         Row: { blocker: string; blocked: string; blocked_name: string; blocked_color: string; created_at: string };
         Insert: { blocker?: string; blocked: string; blocked_name?: string; blocked_color?: string; created_at?: string };
@@ -310,6 +316,10 @@ export interface Database {
       send_direct_message: { Args: { p_to: string; p_body: string }; Returns: { id: number; sender: string; recipient: string; body: string; created_at: string } };
       mark_direct_read: { Args: { p_other: string; p_id: number }; Returns: undefined };
       save_profile_card: { Args: { p_card: Json | null; p_seen: boolean }; Returns: undefined };
+      claim_username: { Args: { p_base: string }; Returns: string };
+      set_username: { Args: { p_name: string }; Returns: string };
+      set_findable: { Args: { p_on: boolean }; Returns: undefined };
+      find_classmates: { Args: { p_text: string }; Returns: { user_id: string; username: string; card: Json | null; last_seen: string | null }[] };
       submit_report: { Args: { p_target: string; p_reason: string; p_place: string; p_message?: string | null; p_message_id?: number | null; p_name?: string | null; p_photo?: string | null }; Returns: number };
       /** The caller's own "I'm 18 or older"; returns the first confirmation time. */
       confirm_age: {

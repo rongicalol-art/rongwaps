@@ -10,7 +10,10 @@ export interface DirectMessage { id: number; from: string; to: string; t: string
 export interface Conversation { u: string; lastId: number; lastFrom: string; last: string; at: number; unread: number }
 /** The card a classmate last shared, for their profile while they're offline; `n`/`c`/`i` say who it is. */
 export type StoredCard = Partial<ProfileCard> & { n?: string; c?: SocialColor; i?: string };
-export interface SavedProfile { u: string; card: StoredCard | null; seen: number | null }
+/** `h`: their @username, when they can be found ("Let classmates find me"). */
+export interface SavedProfile { u: string; card: StoredCard | null; seen: number | null; h?: string }
+/** This learner's own @username and "Let classmates find me"; `chosenAt` is null while it is the automatic one. */
+export interface MyUsername { name: string; findable: boolean; chosenAt: number | null }
 
 /** Where the calls go: Supabase, or the DEV classmate simulator's stand-in. */
 export interface FriendsBackend {
@@ -24,6 +27,13 @@ export interface FriendsBackend {
   saveCard(card: StoredCard | null, seen: boolean): Promise<void>;
   profiles(us: string[]): Promise<SavedProfile[]>;
   recent(limit: number): Promise<SavedProfile[]>;
+  /** Saved profiles whose name or @username contains `text`: an exact @username first, then the most recently online. */
+  search(text: string): Promise<SavedProfile[]>;
+  myUsername(me: string): Promise<MyUsername | null>;
+  /** Makes one from `base` (a slug of their name) if they have none; returns theirs. */
+  claimUsername(base: string): Promise<string>;
+  setUsername(name: string): Promise<string>;
+  setFindable(on: boolean): Promise<void>;
 }
 
 const PAGE = 50;
@@ -33,6 +43,14 @@ const toMessage = (row: { id: number; sender: string; recipient: string; body: s
   ({ id: Number(row.id), from: row.sender, to: row.recipient, t: row.body, ts: Date.parse(row.created_at) });
 const toProfile = (row: { user_id: string; card: unknown; last_seen: string | null }): SavedProfile =>
   ({ u: row.user_id, card: row.card && typeof row.card === 'object' ? row.card as StoredCard : null, seen: time(row.last_seen) });
+
+/** Adds each @username; row security leaves out anyone who can't be found, and a failed lookup just shows none. */
+async function withHandles(rows: SavedProfile[]): Promise<SavedProfile[]> {
+  if (!rows.length) return rows;
+  const { data } = await supabase.from('usernames').select('user_id, username').in('user_id', rows.map(row => row.u));
+  const handles = new Map((data ?? []).map(row => [row.user_id, row.username]));
+  return rows.map(row => (handles.has(row.u) ? { ...row, h: handles.get(row.u) } : row));
+}
 
 /** Friends, private messages and saved profiles (supabase/migrations/20261119170000_friends_and_messages.sql). */
 const database: FriendsBackend = {
@@ -85,13 +103,38 @@ const database: FriendsBackend = {
     if (!ids.length) return [];
     const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen').in('user_id', ids);
     if (error) throw error;
-    return (data ?? []).map(toProfile);
+    return withHandles((data ?? []).map(toProfile));
   },
   async recent(limit) {
     const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen')
       .not('last_seen', 'is', null).order('last_seen', { ascending: false }).limit(limit);
     if (error) throw error;
-    return (data ?? []).map(toProfile);
+    return withHandles((data ?? []).map(toProfile));
+  },
+  async search(text) {
+    const { data, error } = await supabase.rpc('find_classmates', { p_text: text.slice(0, 40) });
+    if (error) throw error;
+    return (data ?? []).map(row => ({ ...toProfile(row), h: row.username }));
+  },
+  async myUsername(me) {
+    if (!UUID.test(me)) return null;
+    const { data, error } = await supabase.from('usernames').select('username, findable, chosen_at').eq('user_id', me).maybeSingle();
+    if (error) throw error;
+    return data ? { name: data.username, findable: data.findable, chosenAt: time(data.chosen_at) } : null;
+  },
+  async claimUsername(base) {
+    const { data, error } = await supabase.rpc('claim_username', { p_base: base });
+    if (error) throw error;
+    return data;
+  },
+  async setUsername(name) {
+    const { data, error } = await supabase.rpc('set_username', { p_name: name });
+    if (error) throw error;
+    return data;
+  },
+  async setFindable(on) {
+    const { error } = await supabase.rpc('set_findable', { p_on: on });
+    if (error) throw error;
   },
 };
 
@@ -110,4 +153,9 @@ export const friendsService: FriendsBackend = {
   saveCard: (card, seen) => backend.saveCard(card, seen),
   profiles: us => backend.profiles(us),
   recent: limit => backend.recent(limit),
+  search: text => backend.search(text),
+  myUsername: me => backend.myUsername(me),
+  claimUsername: base => backend.claimUsername(base),
+  setUsername: name => backend.setUsername(name),
+  setFindable: on => backend.setFindable(on),
 };

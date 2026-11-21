@@ -1,6 +1,10 @@
 import type { Activity } from '../../../shared/lobby';
 import type { RaceSelection, RaceType } from '../../../shared/quizRace';
 import { RACE_BOOKS } from '../../../shared/courseAccess';
+import { isNameAllowed } from '../../../shared/nameFilter';
+import { socialColor } from '../../../shared/quizRace';
+import type { Person } from '../../../shared/lobby';
+import type { SavedProfile } from '../../services/friendsService';
 
 const TYPE_LABEL: Record<RaceType, string> = {
   meaning: 'Pick meaning', listen: 'Listen', hanzi: 'Pick character', match: 'Pair match', 'true-false': 'True or false', build: 'Build the word',
@@ -66,3 +70,14 @@ export function listTime(at: number, now = Date.now()): string {
   if (today - day <= 86_400_000 * 1.5) return 'Yesterday';
   return new Date(at).toLocaleDateString('en', { month: 'short', day: 'numeric' });
 }
+
+/** "Kai Lin" → "kai.lin": what the database makes an automatic @username from (it cleans it again). */
+export function usernameBase(name: string): string {
+  const base = name.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[\s-]+/g, '.')
+    .replace(/[^a-z0-9_.]/g, '').replace(/\.{2,}/g, '.').replace(/^\.+|\.+$/g, '').slice(0, 16).replace(/\.+$/, '');
+  return base.length >= 3 && isNameAllowed(base) ? base : 'learner';
+}
+
+/** A classmate from their saved profile (needs `card.n`), for lists and visits while they may be offline. */
+export const savedPerson = (row: SavedProfile): Person =>
+  ({ u: row.u, n: row.card!.n!, c: socialColor(row.card?.c ?? 'blue'), l: null, a: null, ...(row.card?.i ? { i: row.card.i } : {}) });

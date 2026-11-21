@@ -4,8 +4,8 @@ import { ContactLink, LegalList, LegalParagraph, LegalSection, LegalSummary, leg
 
 const SUMMARY = [
   '個人資料蒐集者：個人開發者 Ron（台灣）。依《個人資料保護法》第 8 條告知如下。',
-  '蒐集項目：Google 電子郵件、帳號名稱與頭像、年齡確認紀錄、學習紀錄、您設定的個人檔案（名稱、顏色、上傳的照片與封面）、您建立的資料夾與字卡、封鎖名單與檢舉紀錄，以及基本技術資料。',
-  '「一起學習」中，其他已登入的學習者（包括樹德以外的人）會看到您的顯示名稱、照片或姓名縮寫，以及您正在學的課；可在 Settings → Show me online 關閉（每台裝置分別設定）。',
+  '蒐集項目：Google 電子郵件、帳號名稱與頭像、年齡確認紀錄、學習紀錄、您設定的個人檔案（名稱、顏色、上傳的照片與封面）、您建立的資料夾與字卡、封鎖名單與檢舉紀錄、好友名單與私人訊息、用戶名與離線時顯示的個人檔案，以及基本技術資料。',
+  '「一起學習」中，其他已登入的學習者（包括樹德以外的人）會看到您的顯示名稱、照片或姓名縮寫，以及您正在學的課；可在 Settings → Show me online 關閉（每台裝置分別設定）。您會有一個依名稱產生的用戶名（每週可修改一次）；同學可在 Add friends 以名稱或用戶名搜尋到您，可在 Settings → Let classmates find me 關閉。',
   '目的：提供與同步學習服務、帳號管理、防止濫用、改善教材（僅使用匿名統計）。',
   '期間與地區：保存至您刪除帳號，或連續 12 個月未登入為止；加密備份最多保留 90 天；7 天內未完成年齡確認的新帳號會被刪除；因違規停權的帳號，其 Google 帳號的單向代碼保存 2 年。資料存放於印度（Supabase），並由下列服務商處理。',
   '我們不販售資料、不投放廣告，未經您同意不會將個人資料提供給學校或老師。',
@@ -73,7 +73,10 @@ export function PrivacyPolicyContent() {
               removes that part. Class chat messages are visible to every signed-in learner, with the lesson you were
               on when you wrote (not while you are hidden); a message to @everyone reaches all of them. Quiz room chat
               is visible to the people in that room. A quiz room you open is listed, with your name and photo, to
-              everyone online until it starts. You can add a classmate as a friend; once they add you back, the two
+              everyone online until it starts. You get a username made from your name, which you can change once a
+              week (Settings → Username); other learners can find you by your name or username in Add friends and see
+              your username on your profile, unless you turn off Settings → Let classmates find me. You can add a
+              classmate as a friend; once they add you back, the two
               of you can send each other private messages that only you two can read. We keep your friends list,
               your private messages and where you stopped reading, so they work on every device. If you block
               someone, we keep your block list so the two of you stay hidden from each other, and any friendship
@@ -194,10 +197,10 @@ export function PrivacyPolicyContent() {
         <LegalList
           items={[
             'Account, learning data and your content: until you delete your account, or until your account has had no sign-in for 12 months, whichever comes first.',
-            'Deleting your account removes your profile, photos, progress, folders and cards, your friends list, private messages and saved Study together profile from our database right away, and your class chat messages from Study together. A private conversation is removed for both people when either of them deletes their account. Our encrypted backups are kept for up to 90 days and are used only to recover from a fault, so deleted data can stay in them until then.',
+            'Deleting your account removes your profile, photos, progress, folders and cards, your username, friends list, private messages and saved Study together profile from our database right away, and your class chat messages from Study together. A private conversation is removed for both people when either of them deletes their account. Our encrypted backups are kept for up to 90 days and are used only to recover from a fault, so deleted data can stay in them until then.',
             'A new account that does not answer the age question within 7 days is deleted.',
             'If we close an account for breaking the Terms, the one-way code described in section 2 is kept for 2 years.',
-            'Study together: who is online is kept only while you are connected. The class chat keeps its newest 1,000 messages for up to 180 days, and where you stopped reading it for as long; quiz room chat keeps its last 50 messages until the room closes, at most 24 hours. Private messages: the newest 500 in each conversation. Your friends list and saved profile stay until you change them or delete your account. Quiz rooms expire automatically and races have a ten-minute limit. We keep up to 1,000 recent chat reports for up to 30 days.',
+            'Study together: who is online is kept only while you are connected. The class chat keeps its newest 1,000 messages for up to 180 days, and where you stopped reading it for as long; quiz room chat keeps its last 50 messages until the room closes, at most 24 hours. Private messages: the newest 500 in each conversation. Your username, friends list and saved profile stay until you change them or delete your account; a username you give up stays reserved for you for 7 days. Quiz rooms expire automatically and races have a ten-minute limit. We keep up to 1,000 recent chat reports for up to 30 days.',
             'Reports you send, or that name you, are kept for 12 months and then deleted. Your block list is kept until you unblock or delete your account.',
             'In-app feedback is removed when you delete your account. Emails and feedback notifications are kept only as long as needed to handle your request.',
             'Anonymous statistics contain no personal data and may be kept.',

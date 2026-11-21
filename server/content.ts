@@ -102,7 +102,7 @@ export async function serveSite(context: Context, request: Request, url: URL): P
   const shell = await assets.fetch(assetRequest(request, '/'));
   if (shell.status !== 200 && shell.status !== 304) return notFound();
   // Unknown paths still get the shell (it shows the landing or app) but answer 404 so search engines drop them.
-  // Under /books only the lesson pages exist, and Cloudflare serves those files itself.
-  const known = KNOWN_ROUTES.has(path.split('/')[1] ?? '') && !path.startsWith('/books/');
+  // Under /books, /grammar and /tocfl only the lesson pages, grammar pages and word lists exist, and Cloudflare serves those files itself.
+  const known = KNOWN_ROUTES.has(path.split('/')[1] ?? '') && !/^\/(books|grammar|tocfl)\//.test(path);
   return withHeaders(shell, { 'Cache-Control': 'no-cache', ...(known ? {} : { 'X-Robots-Tag': 'noindex' }) }, known ? {} : { status: shell.status === 304 ? 304 : 404 });
 }

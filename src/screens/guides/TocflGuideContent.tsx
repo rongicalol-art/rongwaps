@@ -1,7 +1,8 @@
 import { Link } from 'react-router';
-import { GUIDE_ROUTES } from '../../app/routes';
+import { GUIDE_ROUTES, WORD_LIST_LEVELS, wordListPath } from '../../app/routes';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { TOCFL_FAQ } from './guideContent';
+import { wordListInfo } from '../word-list/wordListMeta';
 import { DocList, DocParagraph, DocSection, docLinkClass } from '../public-doc';
 
 export function TocflGuideContent() {
@@ -24,6 +25,24 @@ export function TocflGuideContent() {
               </span>
             </li>
           ))}
+        </ul>
+      </DocSection>
+
+      <DocSection title="Free TOCFL word lists">
+        <DocParagraph>
+          The official word list for each level, with pinyin, a short English meaning and a PDF to print. Tap the
+          words you already know and study the rest.
+        </DocParagraph>
+        <ul className="divide-y divide-ui-divider">
+          {WORD_LIST_LEVELS.map((entry) => {
+            const { label, count } = wordListInfo(entry);
+            return (
+              <li key={entry.slug} className="flex flex-wrap items-baseline justify-between gap-2 py-2.5">
+                <Link to={wordListPath(entry.slug)} className={docLinkClass}>TOCFL {label} word list</Link>
+                <span className="text-sm font-black tabular-nums text-ui-muted-strong">{count} words</span>
+              </li>
+            );
+          })}
         </ul>
       </DocSection>
 

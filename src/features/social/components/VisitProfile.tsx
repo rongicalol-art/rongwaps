@@ -15,10 +15,18 @@ const flameArt = new URL('../../../assets/icons/flat/flame.svg', import.meta.url
 /** A classmate who doesn't answer in this time is shown without their card. */
 const CARD_WAIT_MS = 6000;
 
-/** Add friend, Accept, Request sent, or Friends (Remove friend is in the ⋯ menu). */
-function FriendButton({ person }: { person: Person }) {
+/**
+ * Add friend, Accept, Request sent, or Friends (Remove friend is in the ⋯ menu). `compact`: the short form for a
+ * list row (Add, Accept, Sent, Friends); Not now and Cancel stay on the profile.
+ */
+export function FriendButton({ person, compact }: { person: Pick<Person, 'u' | 'n' | 'c'>; compact?: boolean }) {
   const entry = useAppStore((state) => state.socialFriends?.find((item) => item.u === person.u));
   if (entry?.iAdded && entry.addedMe) return <p className="inline-flex items-center gap-1.5 text-sm font-black text-ui-muted-strong"><AppIcon name="check" size={16} />Friends</p>;
+  if (compact) {
+    if (entry?.addedMe) return <ActionButton size="sm" onClick={() => { void addFriend(person); }}>Accept</ActionButton>;
+    if (entry?.iAdded) return <p className="text-sm font-black text-ui-muted">Sent</p>;
+    return <ActionButton size="sm" variant="secondary" onClick={() => { void addFriend(person); }} aria-label={`Add ${person.n} as a friend`}><AppIcon name="addFriend" size={18} />Add</ActionButton>;
+  }
   if (entry?.addedMe) return (
     <div className="flex items-center gap-3">
       <ActionButton size="sm" onClick={() => { void addFriend(person); }}><AppIcon name="addFriend" size={18} />Accept</ActionButton>
@@ -48,7 +56,8 @@ export function VisitProfile({ person, lesson, online }: { person: Person; lesso
     const timer = setTimeout(() => setWaited(true), CARD_WAIT_MS);
     return () => clearTimeout(timer);
   }, [person.u]);
-  useEffect(() => { if (inbox && !online) void loadSaved([person.u]); }, [inbox, online, person.u]);
+  // The saved profile carries their @username, and stands in for the card while they're offline.
+  useEffect(() => { if (inbox) void loadSaved([person.u]); }, [inbox, person.u]);
 
   const stored = saved?.card && saved.card.cv && saved.card.b ? saved.card as ProfileCard : null;
   const loading = card === undefined && !stored && (online ? !waited : inbox && saved === undefined);
@@ -75,6 +84,7 @@ export function VisitProfile({ person, lesson, online }: { person: Person; lesso
         {inbox && person.u !== me && <div className="flex shrink-0 justify-end whitespace-nowrap pt-3"><FriendButton person={person} /></div>}
       </div>
       <h3 className="mt-2.5 break-words text-2xl font-black leading-tight text-ui-ink-strong">{person.n}</h3>
+      {saved?.h && <p className="mt-0.5 truncate text-sm font-extrabold text-ui-muted-strong">@{saved.h}</p>}
       <p className="mt-1.5 flex items-center gap-2 text-sm font-extrabold text-ui-muted-strong">
         {online && <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-feedback-success" />}
         {status}

@@ -79,3 +79,38 @@ export function lessonPageFromPathname(pathname: string): LessonPageRef | null {
   const ref = { bookId: Number(match[1]), lessonId: Number(match[2]) };
   return isLessonPage(ref.bookId, ref.lessonId) ? ref : null;
 }
+
+/**
+ * Public TOCFL word lists (`/tocfl/vocabulary/a1`): the official list for one level, for search
+ * engines and signed-out visitors. `level` is the TBCL level (1–7) the app's level badges use.
+ * Higher levels join when their meanings are written.
+ */
+export const WORD_LIST_LEVELS = [
+  { slug: 'novice', level: 1 },
+  { slug: 'a1', level: 2 },
+  { slug: 'a2', level: 3 },
+] as const;
+
+export type WordListLevel = (typeof WORD_LIST_LEVELS)[number];
+
+export function wordListPath(slug: WordListLevel['slug']): string {
+  return `${GUIDE_ROUTES.tocfl}/vocabulary/${slug}`;
+}
+
+export function wordListFromPathname(pathname: string): WordListLevel | null {
+  const match = /^\/tocfl\/vocabulary\/([a-z0-9]+)\/*$/.exec(pathname);
+  return WORD_LIST_LEVELS.find((entry) => entry.slug === match?.[1]) ?? null;
+}
+
+/**
+ * Public grammar pages (`/grammar/ne-and-you`): one grammar pattern each, for search engines and
+ * signed-out visitors. The address list lives with the pages (src/screens/grammar-page/data), so
+ * this only recognises the shape; the screen sends an unknown address back to the grammar guide.
+ */
+export function grammarPagePath(slug: string): string {
+  return `${GUIDE_ROUTES.grammar}/${slug}`;
+}
+
+export function grammarPageSlugFromPathname(pathname: string): string | null {
+  return /^\/grammar\/([a-z0-9]+(?:-[a-z0-9]+)*)\/*$/.exec(pathname)?.[1] ?? null;
+}
