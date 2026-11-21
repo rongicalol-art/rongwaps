@@ -1,4 +1,5 @@
 import { supabase } from './supabaseClient';
+import { getProfileMediaUrls } from './profileMedia';
 import { socialColor, type SocialColor } from '../../shared/quizRace';
 import type { ProfileCard } from '../../shared/lobby';
 import type { Json } from '../types/database';
@@ -46,11 +47,6 @@ const toProfile = (row: { user_id: string; card: unknown; last_seen: string | nu
   ({ u: row.user_id, card: row.card && typeof row.card === 'object' ? row.card as StoredCard : null, seen: time(row.last_seen) });
 
 /** Adds each @username; row security leaves out anyone who can't be found, and a failed lookup just shows none. */
-const MEDIA_BUCKET = 'profile-media';
-const MEDIA_LINK_SECONDS = 3600;
-/** Links are reused until 15 minutes are left: a new link is a new address, so the photo downloads again. */
-const MEDIA_LINK_REUSE_MS = 15 * 60_000;
-const mediaLinks = new Map<string, { url: string; until: number }>();
 /**
  * Uploaded photos and covers of saved profiles, as one-hour links made in one request; the storage rule lets anyone
  * signed in read them while the profile is shared (20261121140000). A file that can't be read just stays initials.
@@ -58,16 +54,10 @@ const mediaLinks = new Map<string, { url: string; until: number }>();
 async function withMedia(rows: SavedProfile[]): Promise<SavedProfile[]> {
   const paths = rows.flatMap(row => [...(row.card?.ia ? [`${row.u}/avatar.webp`] : []), ...(row.card?.ca ? [`${row.u}/cover.webp`] : [])]);
   if (!paths.length) return rows;
-  const now = Date.now();
-  const stale = paths.filter(path => (mediaLinks.get(path)?.until ?? 0) - now < MEDIA_LINK_REUSE_MS);
-  if (stale.length) {
-    const { data } = await supabase.storage.from(MEDIA_BUCKET).createSignedUrls(stale, MEDIA_LINK_SECONDS);
-    for (const item of data ?? []) if (item.path && item.signedUrl && !item.error) mediaLinks.set(item.path, { url: item.signedUrl, until: now + MEDIA_LINK_SECONDS * 1000 });
-  }
-  const link = (path: string) => { const saved = mediaLinks.get(path); return saved && saved.until > now ? saved.url : undefined; };
+  const links = await getProfileMediaUrls(paths);
   return rows.map(row => {
-    const photo = link(`${row.u}/avatar.webp`);
-    const cover = link(`${row.u}/cover.webp`);
+    const photo = links.get(`${row.u}/avatar.webp`);
+    const cover = links.get(`${row.u}/cover.webp`);
     return photo || cover ? { ...row, card: { ...row.card, ...(photo ? { i: photo } : {}), ...(cover ? { ci: cover } : {}) } } : row;
   });
 }
