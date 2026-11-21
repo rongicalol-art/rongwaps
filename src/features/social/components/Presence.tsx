@@ -3,7 +3,6 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, Avatar, AvatarStack, PlayfulNavIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { countedIn, unreadTotal } from '../../../store/slices/socialSlice';
-import { updateOpen } from '../socialUpdate';
 import type { ChatMessage } from '../../../../shared/lobby';
 import { isStudying } from '../presence';
 
@@ -25,11 +24,9 @@ export function UnreadBadge({ count, edge, className = '' }: { count: number; ed
   );
 }
 
-/** Chats; straight into the class chat while there's nothing else in the list (no friends or requests yet). */
+/** Always the Chats list first (Everyone, Add friends, requests, conversations), even before any friends. */
 function openChats() {
-  const state = useAppStore.getState();
-  const listed = updateOpen() && (state.socialInbox.length > 0 || (state.socialFriends?.length ?? 0) > 0);
-  state.setSocial({ socialPanel: { kind: 'people', tab: 'chat', ...(listed ? {} : { thread: 'class' }) } });
+  useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'chat' } });
 }
 
 /**
