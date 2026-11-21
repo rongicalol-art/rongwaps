@@ -24,4 +24,4 @@ export interface GrammarPageData {
 }
 
 /** What other pages need to link here without downloading the page (data/index.ts). */
-export type GrammarPageLink = readonly [slug: string, bookId: number, lessonId: number, title: string];
+export type GrammarPageLink = readonly [slug: string, bookId: number, lessonId: number, title: string, keyWord?: string];
