@@ -64,13 +64,17 @@ test('ambiguous pinyin, misalignment, missing recordings and placeholders stay s
   assert.equal(resolveWordBuildTileAudio(card('大家', 'dàjiā'), '大', invalid), undefined);
 });
 
-test('distractors may play a single verified indexed reading, never a guessed polyphonic reading', () => {
+test('a wrong-answer tile says the main reading of the character: course reading first, 一/不 and neutral as said alone', () => {
   const index: ReadingsIndex = new Map([
     ['女', [{ pinyin: 'nǚ', kind: 'primary' }]],
     ['行', [{ pinyin: 'xíng', kind: 'primary' }, { pinyin: 'háng', kind: 'other' }]],
+    ['子', [{ pinyin: 'zi', kind: 'primary' }, { pinyin: 'zǐ', kind: 'other' }]],
+    ['不', [{ pinyin: 'bù', kind: 'primary' }]],
   ]);
   assert.equal(resolveWordBuildTileAudio(card('大家', 'dàjiā'), '女', recordings, undefined, index), '女.mp3');
-  assert.equal(wordBuildTileReading(card('大家', 'dàjiā'), '行', index), undefined);
+  assert.equal(wordBuildTileReading(card('大家', 'dàjiā'), '行', index), 'xing2');
+  assert.equal(wordBuildTileReading(card('大家', 'dàjiā'), '子', index), 'zi3');
+  assert.equal(wordBuildTileReading(card('大家', 'dàjiā'), '不', index), 'bu4');
   assert.equal(wordBuildTileReading(card('大家', 'dàjiā'), 'X', index), undefined);
 });
 
