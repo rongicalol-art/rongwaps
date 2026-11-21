@@ -189,11 +189,25 @@ function GrammarPage({ link, page }: { link: GrammarPageLink; page: GrammarPageD
             </p>
           </section>
 
-          <nav aria-label="More grammar" className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t-2 border-ui-divider pt-8">
-            {previous && <Link to={grammarPagePath(previous[0])} className={LINK}>← {previous[3]}</Link>}
-            {following && <Link to={grammarPagePath(following[0])} className={LINK}>{following[3]} →</Link>}
-            {isLessonPage(bookId, lessonId) && <Link to={lessonPagePath(bookId, lessonId)} className={LINK}>Lesson {lessonId} words</Link>}
-            <Link to={GUIDE_ROUTES.grammar} className={LINK}>All grammar</Link>
+          <nav aria-label="More grammar" className="flex flex-col gap-5 border-t-2 border-ui-divider pt-8">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {previous && (
+                <Link to={grammarPagePath(previous[0])} className="flex flex-col gap-0.5 rounded-xs focus-ring-inline">
+                  <span className="text-sm font-extrabold text-ui-muted-strong">← Previous</span>
+                  <span className="text-base font-black text-brand-primary-text">{previous[3]}</span>
+                </Link>
+              )}
+              {following && (
+                <Link to={grammarPagePath(following[0])} className={cn('flex flex-col gap-0.5 rounded-xs focus-ring-inline sm:items-end sm:text-right', !previous && 'sm:col-start-2')}>
+                  <span className="text-sm font-extrabold text-ui-muted-strong">Next →</span>
+                  <span className="text-base font-black text-brand-primary-text">{following[3]}</span>
+                </Link>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {isLessonPage(bookId, lessonId) && <Link to={lessonPagePath(bookId, lessonId)} className={LINK}>Lesson {lessonId} words</Link>}
+              <Link to={GUIDE_ROUTES.grammar} className={LINK}>All grammar</Link>
+            </div>
           </nav>
           {!currentUser && <SignInConsent className="!text-sm !font-semibold !text-ui-muted" />}
         </main>
