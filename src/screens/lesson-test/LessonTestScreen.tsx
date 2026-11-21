@@ -18,7 +18,7 @@ import { TestLookup } from './components/TestLookup';
 import { useLessonTestRun } from './hooks/useLessonTestRun';
 import { useTestAudioDownload } from './hooks/useTestAudioDownload';
 import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
-import { testRecordings } from './testAudioSequence';
+import { testRecordings, turnGapMs } from './testAudioSequence';
 import { itemPictureUrls } from './testPictures';
 import { hasTestScript } from './testScript';
 
@@ -199,6 +199,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             checked={checked}
             mode={isFix ? 'replay' : 'exam'}
             sounds={sounds}
+            turnGap={turnGapMs(lesson)}
             audioReady={audioReady}
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}

@@ -22,7 +22,7 @@ import { TestSpeaker } from './TestSpeaker';
 function titleFor(item: LessonTestItem, question: LessonTestQuestion): string {
   switch (item.kind) {
     case 'hear-pick-picture': return 'Listen and pick the picture';
-    case 'picture-hear': return 'Which sentence matches the picture?';
+    case 'picture-hear': return question.prompt ? 'Listen, then answer' : 'Which sentence matches the picture?';
     case 'dialogue': return 'Listen, then answer';
     case 'read-pick-picture': return 'Pick the picture';
     case 'realia': return question.prompt ? 'Read and answer' : 'Which sentence is true?';
@@ -64,6 +64,8 @@ export interface QuestionBodyProps {
   /** `exam`: recordings play on their own; `replay`: once, with a replay button (Fix round). */
   mode: 'exam' | 'replay';
   sounds: LessonTestSounds;
+  /** The silence between two speakers' turns (`turnGapMs`): shorter in Band B, none where clips keep their own. */
+  turnGap?: number;
   script: Script;
   /** This screen's recordings are downloaded (or can stream): the audio starts then, never part-way late. */
   audioReady: boolean;
@@ -79,7 +81,7 @@ export interface QuestionBodyProps {
  * One screen of the test, one column at every size like TOCFL's computer test: the instruction, then the
  * recording, picture or text, then the answers, all one width so their edges line up.
  */
-export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, script, audioReady, firstNumber, onAnswer, scriptOpen = false, onCloseScript }: QuestionBodyProps) {
+export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, turnGap, script, audioReady, firstNumber, onAnswer, scriptOpen = false, onCloseScript }: QuestionBodyProps) {
   const screenKey = questionIds.join(',');
   // The screen's questions: one, or every question of a recording (the Fix round keeps only the missed ones).
   const questions = useMemo(() => {
@@ -88,7 +90,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   }, [item, screenKey]);
   const question = questions[0];
   const order = planned.orders[question.id] ?? (question.choices ?? []).map((_, index) => index);
-  const steps = useMemo(() => listeningSteps(item, questions, planned.orders, sounds, script), [item, questions, planned.orders, sounds, script]);
+  const steps = useMemo(() => listeningSteps(item, questions, planned.orders, sounds, script, turnGap), [item, questions, planned.orders, sounds, script, turnGap]);
   const audio = useTestAudio(steps, `${mode}:${item.id}:${screenKey}`, mode, audioReady, item.kind === 'dialogue' && item.plays === 1 ? 1 : 2);
   const reduceMotion = useReducedMotion();
   // A question's number on the test (the Fix round may show only the missed one of a recording's questions).
@@ -150,7 +152,7 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       stimulus = speaker; answersPart = pictures;
       break;
     case 'picture-hear':
-      stimulus = <>{speaker}<StimulusPicture name={item.picture.picture} alt={item.picture.alt} /></>; answersPart = choiceList(true);
+      stimulus = <>{speaker}<StimulusPicture name={item.picture.picture} alt={item.picture.alt} /></>; answersPart = <>{askedPrompt}{choiceList(true)}</>;
       break;
     case 'dialogue':
       stimulus = speaker;
