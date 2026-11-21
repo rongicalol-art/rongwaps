@@ -18,7 +18,7 @@
     // keeps this list in step with the files the build produces.
     "run_worker_first": [
       "/*",
-      "!/", "!/index.html", "!/books", "!/books/*", "!/grammar", "!/tocfl", "!/tocfl/*", "!/about", "!/privacy", "!/terms", "!/sources",
+      "!/", "!/index.html", "!/books", "!/books/*", "!/grammar", "!/grammar/*", "!/tocfl", "!/tocfl/*", "!/about", "!/privacy", "!/terms", "!/sources",
       "!/assets/*", "!/downloads/*", "!/fonts/*", "!/icons/*", "!/videos/*",
       "!/sw.js", "!/workbox-*.js", "!/manifest.json", "!/asset-manifest.json",
       "!/robots.txt", "!/sitemap.xml", "!/llms.txt", "!/favicon.ico", "!/share.png", "!/share-square.png"

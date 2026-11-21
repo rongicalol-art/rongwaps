@@ -14,6 +14,8 @@ import { PAGES as BOOK_1_PAGES } from '../../src/screens/lesson-page/data/book-1
 import { PAGES as BOOK_2_PAGES } from '../../src/screens/lesson-page/data/book-2';
 import { PAGES as BOOK_3_PAGES } from '../../src/screens/lesson-page/data/book-3';
 import { SAMPLE_BOOKS } from '../../src/data/books';
+import { GRAMMAR_PAGES, GrammarPageScreen, grammarPageMeta, provideGrammarPageBook } from '../../src/screens/grammar-page';
+import { PAGES as GRAMMAR_BOOK_1 } from '../../src/screens/grammar-page/data/book-1';
 import { WordListScreen, provideWordList, wordListInfo, wordListMeta } from '../../src/screens/word-list';
 import { WORDS as LEVEL_1_WORDS } from '../../src/screens/word-list/data/level-1';
 import { WORDS as LEVEL_2_WORDS } from '../../src/screens/word-list/data/level-2';
@@ -25,6 +27,7 @@ const SITE_ORIGIN = 'https://ronsmandarin.com';
 // Rendering is synchronous, so every book's lesson-page sample is handed over before it starts.
 [BOOK_1_PAGES, BOOK_2_PAGES, BOOK_3_PAGES].forEach((pages, index) => provideLessonPageBook(index + 1, pages));
 [LEVEL_1_WORDS, LEVEL_2_WORDS, LEVEL_3_WORDS].forEach((words, index) => provideWordList(index + 1, words));
+provideGrammarPageBook(1, GRAMMAR_BOOK_1);
 
 export interface PrerenderedPage {
   path: string;
@@ -202,6 +205,35 @@ function lessonJsonLd(ref: LessonPageRef, title: string, description: string, pa
   };
 }
 
+function grammarPageJsonLd(link: (typeof GRAMMAR_PAGES)[number], title: string, description: string, path: string): object {
+  const [, bookId, , name] = link;
+  const level = SAMPLE_BOOKS.find((book) => book.id === bookId)?.level;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      webPageNode(title, description, path),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: "Ron's Mandarin", item: `${SITE_ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: 'Grammar & Exercises', item: `${SITE_ORIGIN}${GUIDE_ROUTES.grammar}` },
+          { '@type': 'ListItem', position: 3, name, item: `${SITE_ORIGIN}${path}` },
+        ],
+      },
+      {
+        '@type': 'LearningResource',
+        name,
+        description,
+        learningResourceType: 'Grammar explanation with practice',
+        educationalLevel: `TOCFL ${level}`,
+        isAccessibleForFree: true,
+        inLanguage: ['en', 'zh-Hant'],
+        url: `${SITE_ORIGIN}${path}`,
+      },
+    ],
+  };
+}
+
 function wordListJsonLd(entry: WordListLevel, title: string, description: string, path: string): object {
   const { label, count } = wordListInfo(entry);
   return {
@@ -257,6 +289,14 @@ export function renderPages(): PrerenderedPage[] {
         jsonLd: lessonJsonLd(ref, meta.title, meta.description, meta.path),
       };
     })),
+    ...GRAMMAR_PAGES.map((link) => {
+      const meta = grammarPageMeta(link);
+      return {
+        ...meta,
+        html: render(meta.path, <GrammarPageScreen slug={link[0]} />),
+        jsonLd: grammarPageJsonLd(link, meta.title, meta.description, meta.path),
+      };
+    }),
     ...WORD_LIST_LEVELS.map((entry) => {
       const meta = wordListMeta(entry);
       return {

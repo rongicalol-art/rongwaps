@@ -1,0 +1,42 @@
+{
+  "B1L01-G01-P38": {
+    "slug": "jiao-xing-shi-introduce-someone",
+    "examples": [
+      { "zh": "她 姓 王|Wáng|Wang ， 叫 王小美|Wáng_Xiǎoměi|Wang_Xiaomei 。", "en": "Her surname is Wang. Her name is Wang Xiaomei." },
+      { "zh": "他 不|bú|not 是 老師 ， 他 是 學生 。", "en": "He is not a teacher. He is a student." }
+    ],
+    "exercise": { "zh": "我 是 臺灣 人 。", "en": "I am Taiwanese." }
+  },
+  "B1L01-G02-P39": {
+    "slug": "hen-bu-describe-someone",
+    "examples": [
+      { "zh": "老師 很 漂亮 。", "en": "The teacher is pretty." },
+      { "zh": "我 不|bú|not 累|lèi|tired 。", "en": "I am not tired." }
+    ],
+    "exercise": { "zh": "新 同學 很 可愛 。", "en": "The new classmate is cute." }
+  },
+  "B1L01-G03-P40": {
+    "slug": "ma-yes-no-question",
+    "examples": [
+      { "zh": "你 是 學生 嗎 ？", "en": "Are you a student?" },
+      { "zh": "她 喜歡 珍珠奶茶 嗎 ？", "en": "Does she like bubble milk tea?" }
+    ],
+    "exercise": { "zh": "你們 喝 茶 嗎 ？", "en": "Do you all drink tea?" }
+  },
+  "B1L01-G04-P44": {
+    "slug": "ne-and-you",
+    "examples": [
+      { "zh": "我 喝 茶 ， 妳 呢 ？", "en": "I'm having tea. And you?" },
+      { "zh": "他 姓 王|Wáng|Wang ， 老師 呢 ？", "en": "His surname is Wang. What about the teacher?" }
+    ],
+    "exercise": { "zh": "我 是 學生 ， 你 呢 ？", "en": "I am a student. And you?" }
+  },
+  "B1L01-G05-P45": {
+    "slug": "subject-verb-object",
+    "examples": [
+      { "zh": "我 愛 水果 。", "en": "I love fruit." },
+      { "zh": "她 不|bù|not 喝 奶茶 。", "en": "She doesn't drink milk tea." }
+    ],
+    "exercise": { "zh": "我們 喜歡 新 老師 。", "en": "We like the new teacher." }
+  }
+}

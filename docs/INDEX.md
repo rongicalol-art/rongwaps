@@ -13,7 +13,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Grammar lessons | `GRAMMAR_LESSON_TEMPLATE.md`, `DECISIONS.md`, `src/screens/grammar-lesson/` |
 | Grammar book exercises (Practice) | `GRAMMAR_LESSON_TEMPLATE.md` → Book exercises, `content/grammar-practice/`, `src/features/grammar-practice/` |
 | Lesson tests (TOCFL-style end-of-lesson test) | `../content/lesson-tests/README.md`, `src/screens/lesson-test/`; the exam itself: `reference/TOCFL.md` |
-| Public pages for search (landing, guides, lesson pages, TOCFL word lists) | `scripts/build/prerender.ts`, `src/screens/lesson-page/` (`npm run lesson-pages:export`), `src/screens/word-list/` (`npm run word-lists:export`, then `word-lists:pdf`; meanings for words the books don't teach: `content/word-lists/glosses.json`), `public/sitemap.xml` |
+| Public pages for search (landing, guides, lesson pages, grammar pages, TOCFL word lists) | `scripts/build/prerender.ts`, `src/screens/lesson-page/` (`npm run lesson-pages:export`), `src/screens/grammar-page/` (`npm run grammar-pages:export`; sentences and rules for writing them: `content/grammar-pages/`), `src/screens/word-list/` (`npm run word-lists:export`, then `word-lists:pdf`; meanings for words the books don't teach: `content/word-lists/glosses.json`), `public/sitemap.xml` |
 | Data model or Supabase RPC | `DATABASE_SCHEMA.md`, `src/services/`, `src/types/database.ts` |
 | Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/contentPacks.ts` |
 | Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |

@@ -101,3 +101,16 @@ export function wordListFromPathname(pathname: string): WordListLevel | null {
   const match = /^\/tocfl\/vocabulary\/([a-z0-9]+)\/*$/.exec(pathname);
   return WORD_LIST_LEVELS.find((entry) => entry.slug === match?.[1]) ?? null;
 }
+
+/**
+ * Public grammar pages (`/grammar/ne-and-you`): one grammar pattern each, for search engines and
+ * signed-out visitors. The address list lives with the pages (src/screens/grammar-page/data), so
+ * this only recognises the shape; the screen sends an unknown address back to the grammar guide.
+ */
+export function grammarPagePath(slug: string): string {
+  return `${GUIDE_ROUTES.grammar}/${slug}`;
+}
+
+export function grammarPageSlugFromPathname(pathname: string): string | null {
+  return /^\/grammar\/([a-z0-9]+(?:-[a-z0-9]+)*)\/*$/.exec(pathname)?.[1] ?? null;
+}

@@ -1,7 +1,8 @@
 import { Link } from 'react-router';
-import { GUIDE_ROUTES } from '../../app/routes';
+import { GUIDE_ROUTES, grammarPagePath } from '../../app/routes';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { INTERACTIVE_GRAMMAR_MANIFEST } from '../../data/interactiveGrammarManifest';
+import { GRAMMAR_PAGES } from '../grammar-page/data';
 import { GRAMMAR_ROUNDS } from '../landing';
 import { DocList, DocParagraph, DocSection, docLinkClass } from '../public-doc';
 
@@ -49,6 +50,21 @@ export function GrammarGuideContent() {
             <><strong>Connected to the reading:</strong> When you read a dialogue or story, the app flags which grammar patterns actually occur in that text.</>,
           ]}
         />
+      </DocSection>
+
+      <DocSection title="Grammar pages">
+        <DocParagraph>
+          One page per pattern: the rule in plain English, example sentences with pinyin, and one sentence to build
+          yourself.
+        </DocParagraph>
+        <ul className="divide-y divide-ui-divider">
+          {GRAMMAR_PAGES.map(([slug, bookId, lessonId, title]) => (
+            <li key={slug} className="flex flex-wrap items-baseline justify-between gap-2 py-2.5">
+              <Link to={grammarPagePath(slug)} className={docLinkClass}>{title}</Link>
+              <span className="text-sm font-black tabular-nums text-ui-muted-strong">Book {bookId} · Lesson {lessonId}</span>
+            </li>
+          ))}
+        </ul>
       </DocSection>
 
       <DocSection title="Book exercises, not just flashcards">
