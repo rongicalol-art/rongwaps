@@ -15,7 +15,7 @@ import { TestPictureFan } from './TestPictureFan';
 import { PartTabs } from './PartTabs';
 import { LessonTestTitle } from './LessonTestSummary';
 import { useLessonTestData } from '../../../hooks/useLessonTestData';
-import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
+import { ChallengeCard, GlobalPresenceButton, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
 import { isLessonTestPassed } from '../../../utils/lesson/lessonCompletion';
 import { planFitsLesson } from '../../../utils/lesson/lessonTestPlan';
@@ -404,8 +404,9 @@ function LessonBody({
             {picture('rounded-modal')}
             {partTabs('mt-3.5')}
           </div>
-          {/* The Test tab has the Part tabs' shape: its title block stands where they list their modes. */}
-          <div className="mt-12 flex flex-col">
+          {/* The Test tab has the Part tabs' shape: its title block stands where they list their modes. The faces (chat) sit in the back button's row, so the title still lines up with the picture. */}
+          <div className="flex flex-col">
+            <div className="flex h-12 items-start justify-end"><GlobalPresenceButton /></div>
             {title(true)}
             <HereButton lesson={lessonKey(bookId, lesson.id)} />
             {modeButtons && <div className="mt-6">{modeButtons}</div>}
@@ -422,7 +423,7 @@ function LessonBody({
       <div className="min-h-0 flex-1 overflow-y-auto custom-scrollbar">
         <div className="mx-auto w-full max-w-xl">
           <div className="px-4 pt-3">
-            {backButton}
+            <div className="flex items-start justify-between">{backButton}<GlobalPresenceButton /></div>
             {picture('max-h-[38vh] rounded-modal', true)}
           </div>
           {partTabs('mx-4 mt-2')}

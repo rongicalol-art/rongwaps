@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ActionButton, AppIcon, AvatarStack, Drawer, DropdownMenu, DropdownMenuItem, IconActionButton } from '../../../lib/widgets';
+import { ActionButton, AppIcon, AvatarStack, Drawer, IconActionButton, SegmentedControl } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import type { SocialPanel } from '../../../store/slices/socialSlice';
-import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
+import type { Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
@@ -39,10 +39,9 @@ function useOthers(list: Person[], hideRoom = false) {
 const close = () => useAppStore.getState().setSocial({ socialPanel: null, socialMentionTarget: null });
 const setPanel = (socialPanel: SocialPanel) => useAppStore.getState().setSocial({ socialPanel });
 
-/** Classmates drawer: who is online (current lesson first, then other lessons) and the chat thread. */
+/** Classmates drawer: the class chat, and who is online (current lesson first, then other lessons). */
 export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'people' }> }) {
-  const currentLesson = useCurrentLesson();
-  const lesson = panel.chatLesson ?? currentLesson;
+  const lesson = useCurrentLesson();
   const people = useOthers(useAppStore(state => state.socialPeople));
   const online = useOthers(useAppStore(state => state.socialOnline));
   const onlineTotal = useOnlineTotal();
@@ -52,19 +51,16 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const roomPlayers = useAppStore(state => state.race?.players);
   const inMyRoom = (person: Person) => !!roomPlayers?.some(player => player.id === person.u && !player.left);
   const rooms = useAppStore(state => state.socialRooms);
-  const [roomMenuOpen, setRoomMenuOpen] = useState(false);
   const lessonTotal = useLessonTotal(lesson);
   const { classmates, here, others } = useClassmates(people, online, lesson, lessonTotal);
   const moreHere = Math.max(0, lessonTotal - here.length);
   const moreOnline = Math.max(0, onlineTotal - classmates.length - moreHere);
-  const crowd = classmates.slice(0, 4).map(person => ({ name: person.n, color: person.c, src: person.i }));
   const visit = panel.tab === 'online' ? panel.visit : undefined;
   const selected = visit ? classmates.find(person => person.u === visit.u) ?? visit : null;
   // Mention and Invite only reach people online now.
   const selectedOnline = !!selected && classmates.some(person => person.u === selected.u);
   const setProfile = (person: Person | null) => setPanel({ ...panel, visit: person ?? undefined });
-  const mention = (person: Person) => useAppStore.getState().setSocial({ socialMentionDraft: person, socialPanel: { kind: 'people', tab: 'chat', chatScope: 'global' } });
-  const scope = lesson === null ? 'global' : panel.chatScope ?? 'lesson';
+  const mention = (person: Person) => useAppStore.getState().setSocial({ socialMentionDraft: person, socialPanel: { kind: 'people', tab: 'chat' } });
   const invite = (person: Person) => { void createRace(identity, defaultSelection(person.l ?? lesson), true, [person.u]); };
   const heading = (key: number | null) => {
     if (key === null) return 'Browsing the course';
@@ -74,49 +70,21 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   };
   return (
     <Drawer isOpen onClose={close}
-      title={panel.tab === 'chat'
+      title={!selected
         ? <div className="mr-1 flex min-w-0 flex-1 items-center gap-2">
-            <div className="min-w-0 flex-1">
-              <DropdownMenu label="Choose chat" open={roomMenuOpen} onOpenChange={setRoomMenuOpen} align="start" gapClassName="mt-1" widthClassName="w-64"
-                renderTrigger={(triggerProps) => (
-                  <button {...triggerProps} type="button" className="flex max-w-full items-center gap-1.5 rounded-control py-1 pr-1.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring">
-                    <h2 className="min-w-0 truncate text-xl font-black text-ui-ink-strong">{scope === 'global' ? 'Everyone' : lessonHeading(lesson).eyebrow ?? 'Lesson chat'}</h2>
-                    <AppIcon name="dropdown" size={16} className="shrink-0 text-ui-muted-strong" />
-                  </button>
-                )}>
-                {lesson !== null && <>
-                  <DropdownMenuItem active={scope === 'lesson'} onClick={() => { setRoomMenuOpen(false); useAppStore.getState().setSocial({ socialMentionTarget: null }); setPanel({ ...panel, chatScope: 'lesson', chatLesson: undefined }); }}>{lessonHeading(lesson).eyebrow}</DropdownMenuItem>
-                  <DropdownMenuItem active={scope === 'global'} onClick={() => { setRoomMenuOpen(false); useAppStore.getState().setSocial({ socialMentionTarget: null }); setPanel({ ...panel, chatScope: 'global', chatLesson: undefined }); }}>Everyone</DropdownMenuItem>
-                </>}
-                <DropdownMenuItem onClick={() => { setRoomMenuOpen(false); setPanel({ kind: 'people', tab: 'online' }); }}>Who’s online</DropdownMenuItem>
-              </DropdownMenu>
-              {(scope === 'global' ? onlineTotal : lessonTotal) > 0 && (
-                <button type="button" onClick={() => setPanel({ kind: 'people', tab: 'online' })} className="flex items-center gap-1.5 rounded-xs text-xs font-bold text-ui-muted outline-none hover:text-ui-ink focus-ring-inline">
-                  <AvatarStack people={(scope === 'global' ? classmates : here).slice(0, 3).map(person => ({ name: person.n, color: person.c, src: person.i }))} size="sm" />
-                  {scope === 'global' ? `${onlineTotal} online` : `${lessonTotal} in this lesson`}
-                </button>
-              )}
-            </div>
+            <SegmentedControl ariaLabel="Chat or who’s online" value={panel.tab} onChange={tab => setPanel({ kind: 'people', tab })}
+              options={[{ value: 'chat', label: 'Chat' }, { value: 'online', label: 'Online' }]} className="min-w-0 flex-1" />
             <MuteButton />
           </div>
-        : selected ? <div className="flex flex-1 items-center justify-between gap-2">
+        : <div className="flex flex-1 items-center justify-between gap-2">
             <IconActionButton size="md" label="Back to everyone online" icon={<AppIcon name="back" size={20} />} onClick={() => setProfile(null)} />
             <ProfileSafetyMenu person={selected} />
-          </div> : `Online${onlineTotal || classmates.length ? ` ${onlineTotal || classmates.length}` : ''}`}
+          </div>}
       tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"
       className="top-auto h-[80dvh] max-h-[80dvh] rounded-t-3xl md:h-full md:max-h-full md:rounded-none"
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">
-      {panel.tab === 'chat' ? <>
-        <ChatThread key={`${scope}:${lesson}`} lesson={scope === 'global' ? GLOBAL_CHAT : lesson ?? GLOBAL_CHAT} />
-      </> : <>
+      {panel.tab === 'chat' ? <ChatThread /> : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
-          {!selected && (
-            <button type="button" onClick={() => setPanel({ ...panel, tab: 'chat', chatScope: 'global', chatLesson: undefined })} className="flex w-full items-center gap-3 border-b-2 border-ui-divider py-3 text-left outline-none hover:bg-ui-hover focus-ring-inline">
-              {crowd.length > 0 ? <AvatarStack people={crowd} total={onlineTotal || classmates.length} max={4} size="lg" /> : <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-primary text-sm font-black text-brand-on-primary">{onlineTotal || classmates.length}</span>}
-              <span className="min-w-0 flex-1"><span className="block text-base font-black text-ui-ink-strong">Everyone</span><span className="block truncate text-sm font-bold text-ui-muted">{onlineTotal || classmates.length} online</span></span>
-              <AppIcon name="next" size={18} className="text-ui-muted" />
-            </button>
-          )}
           {!selected && rooms.map(room => <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-4 last:border-b-0">
             <AvatarStack people={room.players.map(player => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="sm" />
             <span className="min-w-0 flex-1"><span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span><span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span></span>

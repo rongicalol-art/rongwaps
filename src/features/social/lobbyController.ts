@@ -1,7 +1,7 @@
 import { connectLobby, type Identity } from '../../services/socialService';
 import { NAME_NOT_ALLOWED, NAME_RESERVED } from '../../../shared/nameFilter';
 import { useAppStore } from '../../store/useAppStore';
-import { ROOM_LIST_CAP, ROSTER_GAP_MS, type Activity, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
+import { GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type ChatMessage, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
 /**
  * The single Lobby connection. Presence/subscription frames are deduped here and re-sent after a reconnect,
@@ -21,6 +21,58 @@ let readInFlight = false;
 let rosterAt = 0;
 let rosterTimer: ReturnType<typeof setTimeout> | undefined;
 let pendingOpen: { key: string; panel: ReturnType<typeof useAppStore.getState>['socialPanel'] } | null = null;
+/** Class chat read spot: the highest id the Lobby has been told, and the one waiting to be sent (at most once a second). */
+let chatReadSent = 0;
+let chatReadWanted = 0;
+let chatReadTimer: ReturnType<typeof setTimeout> | undefined;
+
+function flushChatRead() {
+  if (chatReadTimer || chatReadWanted <= chatReadSent) return;
+  chatReadTimer = setTimeout(() => {
+    chatReadTimer = undefined;
+    const id = chatReadWanted;
+    if (id > chatReadSent && send({ t: 'read', id })) chatReadSent = id;
+  }, 1000);
+}
+
+/** The class chat is on screen right now, so new lines are seen as they arrive. */
+function chatOnScreen(state: ReturnType<typeof useAppStore.getState>) {
+  return state.socialPanel?.kind === 'people' && state.socialPanel.tab === 'chat' && document.visibilityState === 'visible';
+}
+
+/** @everyone lines become notices here, from the chat itself; the Lobby keeps no copy per account. */
+const EVERYONE_KEY = 'a:';
+const everyoneNotice = (message: ChatMessage): MentionNotice => ({ key: `${EVERYONE_KEY}${message.id}`, channel: GLOBAL_CHAT, message, read: false });
+
+/** New @everyone lines join the notices; the newest gets the card unless the chat is on screen or muted. */
+function noticeEveryone(lines: ChatMessage[]) {
+  const store = useAppStore.getState();
+  const fresh = lines.filter(line => line.a && line.u !== store.socialMe && line.id > store.socialChatRead && !store.socialMentions.some(item => item.key === `${EVERYONE_KEY}${line.id}`));
+  if (!fresh.length) return;
+  const notices = fresh.map(everyoneNotice);
+  const newest = notices[notices.length - 1];
+  store.setSocial({
+    socialMentions: [...notices.reverse(), ...store.socialMentions].slice(0, 30),
+    ...(!chatOnScreen(store) && !store.socialMuted ? { socialMentionToast: newest } : {}),
+  });
+}
+
+/** Everything up to `id` has been seen: the count clears, @mentions in it count as read, and the Lobby is told. */
+function markChatRead(id: number) {
+  const store = useAppStore.getState();
+  const seen = store.socialMentions.filter(item => !item.room && !item.read && item.message.id <= id);
+  for (const item of seen) if (!item.key.startsWith(EVERYONE_KEY)) lobby.readMention(item.key);
+  if (id > store.socialChatRead || store.socialChatUnread || seen.length || store.socialMentionToast) {
+    store.setSocial({
+      socialChatRead: Math.max(store.socialChatRead, id), socialChatUnread: 0,
+      ...(seen.length ? { socialMentions: store.socialMentions.map(item => seen.includes(item) ? { ...item, read: true } : item) } : {}),
+      // A card waiting for a quiz to end is old news once its line has been seen.
+      ...(store.socialMentionToast && !store.socialMentionToast.room && store.socialMentionToast.message.id <= id ? { socialMentionToast: null } : {}),
+    });
+  }
+  chatReadWanted = Math.max(chatReadWanted, id);
+  flushChatRead();
+}
 
 function flushReads() {
   if (readInFlight || readTimer || !pendingReads.size) return;
@@ -57,23 +109,36 @@ function receive(message: LobbyServerMessage) {
         ? { ...line, r: rooms.get(line.r.code) ?? (complete ? { ...line.r, joinable: false } : line.r) } : line) } } : {}) });
       break;
     }
-    case 'history': if (message.l === sub.chat) set({ socialChat: { lesson: message.l, messages: message.v } }); break;
+    case 'history': {
+      if (message.l !== sub.chat) break;
+      if (message.l !== GLOBAL_CHAT || message.r === undefined) { set({ socialChat: { lesson: message.l, messages: message.v } }); break; }
+      // A read sent just before reconnecting may not have reached the Lobby yet: then count from the loaded lines.
+      const read = Math.max(store.socialChatRead, chatReadWanted, message.r);
+      chatReadSent = Math.max(chatReadSent, message.r);
+      const unread = read > message.r ? message.v.filter(line => line.id > read && line.u !== store.socialMe && line.t).length : message.n ?? 0;
+      set({ socialChat: { lesson: message.l, messages: message.v }, socialChatRead: read, socialChatUnread: unread });
+      flushChatRead();
+      noticeEveryone(message.v);
+      break;
+    }
     case 'msg': {
       const chat = store.socialChat;
       if (!chat || chat.lesson !== message.m.l || chat.messages.some(line => line.id === message.m.id)) break;
-      const reading = store.socialPanel?.kind === 'people' && store.socialPanel.tab === 'chat';
-      const mine = message.m.u === store.socialMe;
+      const reading = chatOnScreen(store);
+      const counts = message.m.l === GLOBAL_CHAT && !reading && !!message.m.t && message.m.u !== store.socialMe;
       set({
         socialChat: { lesson: chat.lesson, messages: [...chat.messages, message.m].slice(-CHAT_CAP) },
-        socialUnread: !store.socialMuted && (store.socialUnread || (!reading && !mine)),
+        ...(counts ? { socialChatUnread: Math.min(UNREAD_CAP, store.socialChatUnread + 1) } : {}),
       });
+      if (reading) markChatRead(message.m.id);
+      else if (message.m.a) noticeEveryone([message.m]);
       break;
     }
     case 'mentions': {
       const merged = new Map(message.v.map(item => [item.key, item]));
       for (const item of store.socialMentions) merged.set(item.key, { ...item, read: item.read || !!merged.get(item.key)?.read });
       const socialMentions = [...merged.values()].sort((a, b) => b.message.ts - a.message.ts).slice(0, 30);
-      set({ socialMentions, ...(!store.socialMuted && socialMentions.some(item => !item.read) ? { socialUnread: true } : {}) });
+      set({ socialMentions });
       break;
     }
     case 'mention': {
@@ -81,7 +146,7 @@ function receive(message: LobbyServerMessage) {
       const panel = store.socialPanel;
       const reading = document.visibilityState === 'visible' && (message.v.room ? (panel?.kind === 'partyChat' && store.race?.code === message.v.room || !panel && store.socialReadingParty === message.v.room) : panel?.kind === 'people' && panel.tab === 'chat' && sub.chat === message.v.channel);
       if (reading) lobby.readMention(message.v.key);
-      set({ socialMentions: [{ ...message.v, read: reading }, ...store.socialMentions].slice(0, 30), ...(!reading && !store.socialMuted ? { socialMentionToast: message.v, socialUnread: true } : {}) });
+      set({ socialMentions: [{ ...message.v, read: reading }, ...store.socialMentions].slice(0, 30), ...(!reading && !store.socialMuted ? { socialMentionToast: message.v } : {}) });
       break;
     }
     case 'mention-read': pendingReads.delete(message.key); readInFlight = false; flushReads(); break;
@@ -143,7 +208,10 @@ export function startLobby(identity: Identity) {
   lastIdentity = identity;
   if (transport) return;
   const owner = useAppStore.getState().currentUser?.id ?? null;
-  if (owner !== readOwner) { clearTimeout(readTimer); readTimer = undefined; pendingReads.clear(); readInFlight = false; readOwner = owner; blocks = null; }
+  if (owner !== readOwner) {
+    clearTimeout(readTimer); readTimer = undefined; pendingReads.clear(); readInFlight = false; readOwner = owner; blocks = null;
+    clearTimeout(chatReadTimer); chatReadTimer = undefined; chatReadSent = 0; chatReadWanted = 0;
+  }
   const key = `${owner}|${identity.name}|${identity.color}`;
   if (socket && key === identityKey) return;
   const version = ++generation;
@@ -156,7 +224,7 @@ export function startLobby(identity: Identity) {
       useAppStore.getState().setSocial({ socialStatus: status, ...(status !== 'live' ? { socialCounts: {}, socialFaces: [], socialPeople: [], socialOnline: [], socialRooms: [], socialOnlineTotal: 0 } : {}) });
       if (status === 'off') { socket = null; identityKey = ''; }
     },
-    onOpen: () => { if (version === generation) { readInFlight = false; send(here); send(sub); if (blocks) send(blocks); flushReads(); } },
+    onOpen: () => { if (version === generation) { readInFlight = false; send(here); send(sub); if (blocks) send(blocks); flushReads(); flushChatRead(); } },
     // Otherwise Study together would just turn off without saying why.
     onError: message => {
       if (version !== generation) return;
@@ -174,7 +242,7 @@ export function stopLobby() {
   socket = null;
   identityKey = '';
   const state = useAppStore.getState();
-  state.setSocial({ socialStatus: 'off', socialMe: state.race ? state.socialMe : null, socialCounts: {}, socialFaces: [], socialOnlineTotal: 0, socialPeople: [], socialOnline: [], socialRooms: [], socialChat: null, socialUnread: false, socialInvite: null, socialCheer: null });
+  state.setSocial({ socialStatus: 'off', socialMe: state.race ? state.socialMe : null, socialCounts: {}, socialFaces: [], socialOnlineTotal: 0, socialPeople: [], socialOnline: [], socialRooms: [], socialChat: null, socialInvite: null, socialCheer: null });
 }
 
 export const lobby = {
@@ -188,7 +256,7 @@ export const lobby = {
   },
   subscribe(online: boolean, chat: number | null) {
     if (sub.online === online && sub.chat === chat) return;
-    if (sub.chat !== chat) useAppStore.getState().setSocial({ socialChat: null, socialUnread: false });
+    if (sub.chat !== chat) useAppStore.getState().setSocial({ socialChat: null });
     sub = { t: 'sub', online, chat, v: 3 };
     send(sub);
   },
@@ -200,10 +268,11 @@ export const lobby = {
     if (wait <= 0) ask();
     else rosterTimer = setTimeout(ask, wait);
   },
-  say: (l: number, text: string, mentions?: string[]) => send({ t: 'say', l, text, mentions }),
+  say: (l: number, text: string, mentions?: string[], all = false) => send({ t: 'say', l, text, mentions, ...(all ? { all: true as const } : {}) }),
   cheer: (to: string[], p: number) => { if (to.length) send({ t: 'cheer', to, p }); },
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),
   readMention: (key: string) => { pendingReads.add(key); flushReads(); },
+  markChatRead,
   report: (id: number) => send({ t: 'report', id }),
   /** This account's whole block list; sent now and on every reconnect. */
   setBlocks: (ids: string[]) => { blocks = { t: 'blocks', v: ids }; send(blocks); },
@@ -214,14 +283,14 @@ export const lobby = {
 /** Opening a notification changes only the chat channel, never study presence or room membership. */
 export function openMention(notice: MentionNotice) {
   const store = useAppStore.getState();
-  lobby.readMention(notice.key);
-  store.setSocial({ socialMentions: store.socialMentions.map(item => item.key === notice.key ? { ...item, read: true } : item), socialMentionToast: null, socialUnread: store.socialMentions.some(item => item.key !== notice.key && !item.read) });
+  if (!notice.key.startsWith(EVERYONE_KEY)) lobby.readMention(notice.key);
+  store.setSocial({ socialMentions: store.socialMentions.map(item => item.key === notice.key ? { ...item, read: true } : item), socialMentionToast: null });
   pendingOpen = null;
   if (notice.room) {
     pendingOpen = { key: notice.key, panel: store.socialPanel };
     if (!send({ t: 'mention-open', key: notice.key })) { pendingOpen = null; store.showFeedbackToast('Reconnecting. Try again in a moment.'); }
 
   } else {
-    store.setSocial({ socialPanel: { kind: 'people', tab: 'chat', chatScope: notice.channel === 0 ? 'global' : 'lesson', ...(notice.channel ? { chatLesson: notice.channel } : {}) }, socialMentionTarget: notice });
+    store.setSocial({ socialPanel: { kind: 'people', tab: 'chat' }, socialMentionTarget: notice });
   }
 }

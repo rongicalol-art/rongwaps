@@ -14,6 +14,8 @@ import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 
 const HAN = /\p{Script=Han}/u;
+/** The @everyone choice in the class chat's mention list (its token id is never an account). */
+const EVERYONE: Person = { u: '*', n: 'everyone', c: 'ink', l: null, a: null };
 /** A message of only a few emoji shows large, without a bubble. */
 const EMOJI_ONLY = /^(?:\p{Extended_Pictographic}|\p{Emoji_Modifier}|\uFE0F|\u200D){1,8}$/u;
 
@@ -26,31 +28,37 @@ function dayLabel(ts: number) {
   return new Date(ts).toLocaleDateString([], { month: 'short', day: 'numeric' });
 }
 
-/** Consecutive lines from one person share one face and name; a new day gets its own label. */
-function groups(messages: ChatMessage[]) {
-  const out: Array<{ key: string | number; u: string; n: string; c: ChatMessage['c']; i?: string; lines: ChatMessage[] } | { key: number; room: ChatMessage } | { key: string; day: string }> = [];
+/** Where a writer was: "Lesson 3", with the book when it isn't the reader's ("Book 1 · Lesson 14"). */
+function whereTag(lesson: number, myBook: number) {
+  const book = Math.floor(lesson / 100);
+  const label = lesson % 100 === 0 ? 'Introduction' : `Lesson ${lesson % 100}`;
+  return book === myBook ? label : `Book ${book} · ${label}`;
+}
+
+/** Consecutive lines from one person share one face and name; a new day gets its own label; `newFrom` gets the New line. */
+function groups(messages: ChatMessage[], newFrom: number | null | undefined) {
+  const out: Array<{ key: string | number; u: string; n: string; c: ChatMessage['c']; i?: string; w?: number; lines: ChatMessage[] } | { key: number; room: ChatMessage } | { key: string; day: string } | { key: string; fresh: true }> = [];
   let lastDay = '';
   for (const message of messages) {
+    if (message.id === newFrom) out.push({ key: 'new', fresh: true });
     const day = dayLabel(message.ts);
     if (day !== lastDay) { out.push({ key: `day-${message.id}`, day }); lastDay = day; }
     if (message.r) { out.push({ key: message.id, room: message }); continue; }
     const last = out[out.length - 1];
     if (last && 'lines' in last && last.u === message.u) last.lines.push(message);
-    else out.push({ key: message.id, u: message.u, n: message.n, c: message.c, i: message.i, lines: [message] });
+    else out.push({ key: message.id, u: message.u, n: message.n, c: message.c, i: message.i, w: message.w, lines: [message] });
   }
   return out;
 }
 
-/** The same bounded message UI serves lesson, global and private party chat. */
-export function ChatThread({ lesson }: { lesson: number }) {
-  const chat = useAppStore(state => state.socialChat?.lesson === lesson ? state.socialChat.messages : null);
+/** The same bounded message UI serves the class chat and private party chat. */
+export function ChatThread() {
+  const chat = useAppStore(state => state.socialChat?.lesson === GLOBAL_CHAT ? state.socialChat.messages : null);
   const ready = useAppStore(state => state.socialStatus === 'live');
-  useEffect(() => { useAppStore.getState().setSocial({ socialUnread: false }); }, [chat?.length]);
-  // Only people online now: anyone in Everyone, only this lesson's people in a lesson chat.
+  // @mentions reach people online now.
   const current = useCurrentLesson();
   const { classmates } = useClassmates(useAppStore(state => state.socialPeople), useAppStore(state => state.socialOnline), current, useLessonTotal(current));
-  const candidates = useMemo(() => classmates.filter(person => lesson === GLOBAL_CHAT || person.l === lesson), [classmates, lesson]);
-  return <MessageThread chat={chat} ready={ready} candidates={candidates} send={(text, mentions) => lobby.say(lesson, text, mentions)} report={id => { lobby.report(id); }} />;
+  return <MessageThread chat={chat} ready={ready} candidates={classmates} everyone send={(text, mentions, all) => lobby.say(GLOBAL_CHAT, text, mentions, all)} report={id => { lobby.report(id); }} />;
 }
 
 export function PartyChatThread() {
@@ -61,8 +69,9 @@ export function PartyChatThread() {
   return <MessageThread chat={chat} ready={ready} candidates={candidates} party send={(text, mentions) => partySend({ type: 'chat', text, mentions })} report={id => { partySend({ type: 'chat-report', id }); }} />;
 }
 
-function MessageThread({ chat, ready, candidates, party = false, send, report }: { chat: ChatMessage[] | null; ready: boolean; candidates: Person[]; party?: boolean; send: (text: string, mentions: string[]) => boolean; report: (id: number) => void }) {
+function MessageThread({ chat, ready, candidates, party = false, everyone = false, send, report }: { chat: ChatMessage[] | null; ready: boolean; candidates: Person[]; party?: boolean; everyone?: boolean; send: (text: string, mentions: string[], all: boolean) => boolean; report: (id: number) => void }) {
   const me = useAppStore((state) => state.socialMe);
+  const myBook = useAppStore((state) => state.activeBookId);
   const racePending = useAppStore((state) => state.racePending);
   const identity = useSocialIdentity();
   const target = useAppStore(state => state.socialMentionTarget);
@@ -97,15 +106,31 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
     // The Lobby already leaves blocked people out; this also covers party rooms and the moment before it catches up.
     return blockedIds ? all.filter(line => !blockedIds.has(line.u)) : all;
   }, [targetLine, chat, blockedIds]);
+  // Class chat: the New line sits before the first line from someone else that arrived after the last visit.
+  const [newFrom, setNewFrom] = useState<number | null | undefined>(undefined);
+  useLayoutEffect(() => {
+    if (party || newFrom !== undefined || !chat) return;
+    const read = useAppStore.getState().socialChatRead;
+    setNewFrom(chat.find(line => line.id > read && line.u !== me && (line.t || line.r))?.id ?? null);
+  }, [party, newFrom, chat, me]);
+  // Seen while on screen: the count clears and the Lobby keeps the spot for every device.
+  const lastId = chat?.[chat.length - 1]?.id;
+  useEffect(() => {
+    if (party || newFrom === undefined || lastId === undefined) return;
+    const mark = () => { if (document.visibilityState === 'visible') lobby.markChatRead(lastId); };
+    mark();
+    document.addEventListener('visibilitychange', mark);
+    return () => document.removeEventListener('visibilitychange', mark);
+  }, [party, newFrom, lastId]);
   const prefix = draft.slice(0, caret);
   const match = /(?:^|\s)@([^@\s]*)$/.exec(prefix);
   const mentionQuery = match?.[1]?.toLocaleLowerCase() ?? null;
   const people = useMemo(() => new Map(candidates.map(person => [person.u, person])), [candidates]);
   const suggestions = useMemo(
     () => (mentionQuery !== null && !dismissed && !composing.current
-      ? [...people.values()].filter(person => person.u !== me && person.n.toLocaleLowerCase().includes(mentionQuery)).slice(0, 8)
+      ? [...(everyone && EVERYONE.n.startsWith(mentionQuery) ? [EVERYONE] : []), ...[...people.values()].filter(person => person.u !== me && person.n.toLocaleLowerCase().includes(mentionQuery))].slice(0, 8)
       : []),
-    [mentionQuery, dismissed, people, me],
+    [mentionQuery, dismissed, people, me, everyone],
   );
   const select = (person: Person) => {
     if (!match) return;
@@ -133,13 +158,26 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
     if (person) useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', visit: person } });
   };
 
+  // Opens at the New line (or the bottom); afterwards new lines scroll into view only while the reader is at the bottom.
+  const pinned = useRef(true);
+  const placedNew = useRef(false);
   useLayoutEffect(() => {
     const el = scroller.current;
-    if (el && targetLine && target && scrolledTarget.current !== target.key) {
+    if (!el) return;
+    if (targetLine && target && scrolledTarget.current !== target.key) {
       el.querySelector(`[data-message-id="${targetLine.id}"]`)?.scrollIntoView({ block: 'center' });
       scrolledTarget.current = target.key;
-    } else if (el && !targetLine) { scrolledTarget.current = null; el.scrollTop = el.scrollHeight; }
-  }, [visible.length, targetLine, target]);
+      return;
+    }
+    if (targetLine) return;
+    scrolledTarget.current = null;
+    const line = newFrom && !placedNew.current ? el.querySelector('[data-new-line]') : null;
+    if (line) {
+      placedNew.current = true;
+      el.scrollTop += line.getBoundingClientRect().top - el.getBoundingClientRect().top - 12;
+      pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    } else if (pinned.current || visible[visible.length - 1]?.u === me) el.scrollTop = el.scrollHeight;
+  }, [visible, targetLine, target, newFrom, me]);
 
   const checkMentions = () => {
     const el = scroller.current;
@@ -174,8 +212,8 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
     if (!value || !ready) return;
     const next = nextChatRate(rate.current, value, Date.now());
     if (!next) { useAppStore.getState().showFeedbackToast('Please wait before sending another message.'); return; }
-    const mentions = [...new Set(tokens.filter(token => draft.slice(token.start, token.end) === token.text).map(token => token.id))];
-    if (!send(value, mentions)) { useAppStore.getState().showFeedbackToast('Reconnecting. Try again in a moment.'); return; }
+    const picked = [...new Set(tokens.filter(token => draft.slice(token.start, token.end) === token.text).map(token => token.id))];
+    if (!send(value, picked.filter(id => id !== EVERYONE.u), picked.includes(EVERYONE.u))) { useAppStore.getState().showFeedbackToast('Reconnecting. Try again in a moment.'); return; }
     rate.current = next;
     setDraft(''); setTokens([]); setCaret(0); setDismissed(false);
   };
@@ -190,10 +228,14 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
           </ActionButton>
         </div>
       )}
-      <div ref={scroller} onScroll={checkMentions} className="min-h-0 flex-1 flex flex-col overflow-y-auto overscroll-contain pb-3 pr-2 pt-4 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_1rem)]">
+      <div ref={scroller} onScroll={() => { const el = scroller.current; if (el) pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80; checkMentions(); }} className="min-h-0 flex-1 flex flex-col overflow-y-auto overscroll-contain pb-3 pr-2 pt-4 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_1rem)]">
         {chat === null ? <EmptyNote>Loading messages…</EmptyNote> : visible.length === 0 ? <EmptyNote>Say hi to everyone.</EmptyNote> : (
           <div className="mt-auto flex flex-col gap-4">
-            {groups(visible).map((group) => 'day' in group ? (
+            {groups(visible, newFrom).map((group) => 'fresh' in group ? (
+              <div key={group.key} data-new-line className="flex items-center gap-3 text-xs font-black text-brand-primary-text">
+                <span aria-hidden className="h-0.5 flex-1 rounded-full bg-brand-primary-soft-edge" />New<span aria-hidden className="h-0.5 flex-1 rounded-full bg-brand-primary-soft-edge" />
+              </div>
+            ) : 'day' in group ? (
               <p key={group.key} className="self-center text-xs font-extrabold text-ui-muted">{group.day}</p>
             ) : 'room' in group ? (
               <div key={group.key} className="flex items-center gap-3 rounded-feature border-2 border-brand-primary-soft-edge bg-brand-primary-soft py-3 pl-3.5 pr-3">
@@ -208,7 +250,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
               </div>
             ) : (
               <div key={group.key} className={`flex flex-col gap-0.5 ${group.u === me ? 'items-end' : 'items-start'}`}>
-                {group.u !== me && <span className="mb-0.5 ml-14 max-w-[80%] truncate text-xs font-extrabold text-ui-muted-strong">{group.n}</span>}
+                {group.u !== me && <span className="mb-0.5 ml-14 max-w-[80%] truncate text-xs font-extrabold text-ui-muted-strong">{group.n}{group.w !== undefined && <span className="font-bold text-ui-muted"> · {whereTag(group.w, myBook)}</span>}</span>}
                 {group.lines.map((line, index) => {
                   const mine = line.u === me;
                   const isOpen = open === line.id;
@@ -255,7 +297,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
       </div>
       <div className="relative flex flex-col gap-1.5 pt-2">
         {suggestions.length > 0 && <div role="listbox" ref={picker} id="mention-suggestions" aria-label="Mention someone" className="absolute bottom-full left-0 right-0 z-popover mb-2 max-h-60 overflow-y-auto rounded-control border-2 border-ui-border bg-ui-surface p-1">
-          {suggestions.map((person, index) => <button key={person.u} id={`mention-option-${index}`} type="button" role="option" aria-selected={index === choice % suggestions.length} onMouseDown={event => event.preventDefault()} onClick={() => select(person)} className={`flex w-full items-center gap-2 rounded-control px-3 py-2 text-left font-bold text-ui-ink-strong ${index === choice % suggestions.length ? 'bg-brand-primary-soft' : 'hover:bg-ui-canvas'}`}><Avatar name={person.n} color={person.c} size="sm" src={person.i} /><span>{person.n}</span>{suggestions.filter(other => other.n === person.n).length > 1 && <span className="text-xs text-ui-muted">Classmate {suggestions.filter(other => other.n === person.n).findIndex(other => other.u === person.u) + 1}</span>}</button>)}
+          {suggestions.map((person, index) => <button key={person.u} id={`mention-option-${index}`} type="button" role="option" aria-selected={index === choice % suggestions.length} onMouseDown={event => event.preventDefault()} onClick={() => select(person)} className={`flex w-full items-center gap-2 rounded-control px-3 py-2 text-left font-bold text-ui-ink-strong ${index === choice % suggestions.length ? 'bg-brand-primary-soft' : 'hover:bg-ui-canvas'}`}>{person === EVERYONE ? <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ui-hover text-ui-muted-strong"><AppIcon name="family" size={16} /></span> : <Avatar name={person.n} color={person.c} size="sm" src={person.i} />}<span>{person.n}</span>{person === EVERYONE && <span className="text-xs text-ui-muted">The whole class</span>}{suggestions.filter(other => other.n === person.n).length > 1 && <span className="text-xs text-ui-muted">Classmate {suggestions.filter(other => other.n === person.n).findIndex(other => other.u === person.u) + 1}</span>}</button>)}
         </div>}
         {!ready && <p role="status" className="text-center text-xs font-bold text-ui-muted-strong">Reconnecting…</p>}
         <form className="flex items-center gap-2 rounded-control border-2 border-ui-border bg-ui-surface py-1 pl-4 pr-1 focus-within:border-brand-primary" onSubmit={(event) => { event.preventDefault(); if (!composing.current && Date.now() - compositionEndedAt.current > 100) say(draft); }}>

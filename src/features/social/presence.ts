@@ -20,3 +20,10 @@ export function presenceFor(state: PresenceState): { lesson: number | null; a: A
   if (state.socialStudying) return { lesson: state.socialStudying.lesson, a: state.socialStudying.a };
   return { lesson: state.socialViewingLesson, a: state.socialViewingLesson !== null ? 'lesson' : null };
 }
+
+const STUDY: ReadonlySet<NonNullable<ActivityType>> = new Set(['flashcards', 'flashcards-review', 'listening', 'quiz', 'writing', 'pinyin', 'tones', 'sentences']);
+
+/** Practising, taking a test or racing: the faces stay still and @mention cards wait until it ends. */
+export function isStudying(state: Pick<AppState, 'activeActivity' | 'racePlaying' | 'socialStudying'>): boolean {
+  return (state.activeActivity !== null && STUDY.has(state.activeActivity)) || state.racePlaying || state.socialStudying?.a === 'test';
+}

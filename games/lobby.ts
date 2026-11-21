@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMITS, DAILY_LIMIT_ERROR, ROOM_LIST_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
 
@@ -19,7 +19,7 @@ type Att = {
   /** Subscribed with v: 3, so it knows the 'test' activity; older clients see it as 'lesson'. */
   v3?: boolean;
 };
-type ChatRow = { id: number; lesson: number; uid: string; name: string; color: string; text: string; room: string | null; ts: number };
+type ChatRow = { id: number; lesson: number; uid: string; name: string; color: string; text: string; room: string | null; ts: number; w: number | null; a?: number | null };
 const FLUSH_MS = 2000;
 /** With sockets connected: stale sockets, expired rows and a safety flush; idle objects clean up hourly. */
 const MAINTENANCE_MS = 5 * 60_000;
@@ -39,7 +39,7 @@ const TICKET_REFILL_MS = 2000;
 export const TICKET_LIMIT_ERROR = 'Too many connection requests. Try again shortly.';
 
 /**
- * Presence, lesson and global chat, mentions, cheers and invites for everyone signed in. Hibernating; socket
+ * Presence, the class chat (and older apps' lesson chats), mentions, cheers and invites for everyone signed in. Hibernating; socket
  * attachments are the durable per-socket state, mirrored in memory (rebuilt on wake) so each event touches only
  * the sockets it concerns: a chat line reaches its channel's subscribers, a mention or cheer its recipients.
  * A flush (at most every 2 s, only after a change) sends lesson counts, each lesson's first people and, to open
@@ -77,6 +77,13 @@ export class Lobby extends DurableObject<Env> {
     if (!ticketColumns.includes('school')) sql.exec('ALTER TABLE tickets ADD COLUMN school INTEGER NOT NULL DEFAULT 1');
     sql.exec('CREATE TABLE IF NOT EXISTS chat (id INTEGER PRIMARY KEY AUTOINCREMENT, lesson INTEGER NOT NULL, uid TEXT NOT NULL, name TEXT NOT NULL, color TEXT NOT NULL, text TEXT NOT NULL, room TEXT, ts INTEGER NOT NULL)');
     sql.exec('CREATE INDEX IF NOT EXISTS chat_lesson ON chat (lesson, id)');
+    // The lesson the writer was in (class chat lines from people visible on Online).
+    const chatColumns = sql.exec<{ name: string }>('PRAGMA table_info(chat)').toArray().map(column => column.name);
+    if (!chatColumns.includes('w')) sql.exec('ALTER TABLE chat ADD COLUMN w INTEGER');
+    // 1 on an @everyone line.
+    if (!chatColumns.includes('a')) sql.exec('ALTER TABLE chat ADD COLUMN a INTEGER');
+    // Each account's class chat read spot (the last line it saw); kept no longer than the chat itself.
+    sql.exec('CREATE TABLE IF NOT EXISTS reads (uid TEXT PRIMARY KEY, last INTEGER NOT NULL, ts INTEGER NOT NULL)');
     sql.exec('CREATE TABLE IF NOT EXISTS chat_rate (uid TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
     sql.exec('CREATE TABLE IF NOT EXISTS mentions (uid TEXT NOT NULL, key TEXT NOT NULL, data TEXT NOT NULL, ts INTEGER NOT NULL, read INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(uid,key))');
     sql.exec('CREATE INDEX IF NOT EXISTS mentions_uid ON mentions(uid,ts)');
@@ -113,7 +120,7 @@ export class Lobby extends DurableObject<Env> {
     this.roomsCache = null;
     if (summary.open && summary.players.length && !this.ctx.storage.sql.exec('SELECT id FROM chat WHERE room=? LIMIT 1', summary.code).toArray().length) {
       const lesson = (summary.selection.book ?? 1) * 100 + Number(Object.keys(summary.selection.lessons)[0]);
-      this.post({ u: hostUid, n: summary.host, c: socialColor(summary.hostColor), i: summary.hostImage }, lesson, '', summary.code);
+      this.post({ u: hostUid, n: summary.host, c: socialColor(summary.hostColor), i: summary.hostImage }, GLOBAL_CHAT, '', summary.code, [], lesson);
     }
     this.scheduleFlush();
     await this.ensureAlarm();
@@ -194,7 +201,7 @@ export class Lobby extends DurableObject<Env> {
     return pairs;
   }
   /** Counts one cheer or invite toward today's allowance; false once it is used up. */
-  private allowDaily(uid: string, kind: 'cheer' | 'invite', now: number): boolean {
+  private allowDaily(uid: string, kind: 'cheer' | 'invite' | 'everyone', now: number): boolean {
     const day = utcDay(now);
     const row = this.ctx.storage.sql.exec<{ day: number; n: number }>('SELECT day,n FROM daily WHERE uid=? AND kind=?', uid, kind).toArray()[0];
     const used = row?.day === day ? row.n : 0;
@@ -275,7 +282,7 @@ export class Lobby extends DurableObject<Env> {
       att.on = message.online; att.v2 = message.v === 2 || message.v === 3; att.v3 = message.v === 3;
       this.moveChannel(socket, att, message.chat);
       socket.serializeAttachment(att);
-      if (chatChanged && att.ch !== null) this.send(socket, { t: 'history', l: att.ch, v: this.history(att.ch, now, att.u) });
+      if (chatChanged && att.ch !== null) this.send(socket, this.historyFrame(att.ch, now, att.u));
       if (panelOpened) this.sendRoster(socket, att, now);
       // Open panels (and older clients, which always follow listings) get the current list at once; deduped.
       if (att.on || !att.v2) this.send(socket, this.roomsFrame(att.u), 'rooms');
@@ -290,6 +297,7 @@ export class Lobby extends DurableObject<Env> {
         this.send(socket, { t: 'error', message: chatDailyFull(previous, now) ? DAILY_LIMIT_ERROR : 'Please wait before sending another message.' });
         return;
       }
+      if (message.all && !this.allowDaily(att.u, 'everyone', now)) { this.send(socket, { t: 'error', message: EVERYONE_LIMIT_ERROR }); return; }
       this.ctx.storage.sql.exec('INSERT OR REPLACE INTO chat_rate VALUES (?,?,?)', att.u, JSON.stringify(rate), now);
       // Mentions reach people visibly online in this channel, or who wrote in it recently.
       const recipients = (message.mentions ?? []).filter(id => {
@@ -298,7 +306,7 @@ export class Lobby extends DurableObject<Env> {
         if (target && (message.l === 0 || target.att.l === message.l)) return true;
         return this.ctx.storage.sql.exec('SELECT 1 FROM chat WHERE lesson=? AND uid=? AND ts>=? LIMIT 1', message.l, id, now - CHAT_TTL_MS).toArray().length > 0;
       });
-      this.post(att, message.l, message.text, null, recipients);
+      this.post(att, message.l, message.text, null, recipients, message.l === GLOBAL_CHAT && att.show ? att.l : null, !!message.all);
       await this.ensureAlarm();
     } else if (message.t === 'cheer') {
       if (now - att.cheer < 3000) return;
@@ -331,6 +339,11 @@ export class Lobby extends DurableObject<Env> {
     } else if (message.t === 'mention-read') {
       this.ctx.storage.sql.exec('UPDATE mentions SET read=1 WHERE uid=? AND key=?', att.u, message.key);
       this.send(socket, { t: 'mention-read', key: message.key });
+    } else if (message.t === 'read') {
+      if (att.ch !== GLOBAL_CHAT) return;
+      // Never past the newest line, so a stray id can't hide future messages.
+      this.ctx.storage.sql.exec("INSERT INTO reads (uid,last,ts) VALUES (?, MIN(?, (SELECT COALESCE(MAX(id),0) FROM chat WHERE lesson=?)), ?) ON CONFLICT(uid) DO UPDATE SET last=MAX(last, excluded.last), ts=excluded.ts", att.u, message.id, GLOBAL_CHAT, now);
+      await this.ensureAlarm();
     } else if (message.t === 'report') {
       const row = this.ctx.storage.sql.exec<{ uid: string; text: string }>('SELECT uid,text FROM chat WHERE id=? AND lesson=?', message.id, att.ch ?? -1).toArray()[0];
       if (!row) return;
@@ -342,7 +355,7 @@ export class Lobby extends DurableObject<Env> {
     } else if (message.t === 'blocks') {
       if (this.saveBlocks(att.u, message.v)) {
         // Faces and lists refilter on the next flush; an open chat is resent without the hidden lines.
-        if (att.ch !== null) this.send(socket, { t: 'history', l: att.ch, v: this.history(att.ch, now, att.u) });
+        if (att.ch !== null) this.send(socket, this.historyFrame(att.ch, now, att.u));
         this.scheduleFlush();
       }
     } else if (message.t === 'card-ask' || message.t === 'card') {
@@ -370,13 +383,16 @@ export class Lobby extends DurableObject<Env> {
     this.send(socket, { t: 'online', v: people }, 'online');
   }
 
-  private post(att: Pick<Att, 'u' | 'n' | 'c' | 'i'>, lesson: number, text: string, room: string | null, recipients: string[] = []) {
+  /** `where`: the lesson tag shown beside the writer's name; `all`: an @everyone line (both class chat only). */
+  private post(att: Pick<Att, 'u' | 'n' | 'c' | 'i'>, lesson: number, text: string, room: string | null, recipients: string[] = [], where: number | null = null, all = false) {
     const now = Date.now();
+    const w = lesson === GLOBAL_CHAT ? where : null;
+    const a = lesson === GLOBAL_CHAT && all ? 1 : null;
     const { line, notices } = this.ctx.storage.transactionSync(() => {
-      const id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO chat (lesson,uid,name,color,text,room,ts) VALUES (?,?,?,?,?,?,?) RETURNING id', lesson, att.u, att.n, att.c, text, room, now).one().id;
+      const id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO chat (lesson,uid,name,color,text,room,ts,w,a) VALUES (?,?,?,?,?,?,?,?,?) RETURNING id', lesson, att.u, att.n, att.c, text, room, now, w, a).one().id;
       // IDs are global, so pruning is scoped to one channel.
       this.ctx.storage.sql.exec('DELETE FROM chat WHERE lesson=? AND (ts<? OR id NOT IN (SELECT id FROM chat WHERE lesson=? ORDER BY id DESC LIMIT ?))', lesson, now - CHAT_TTL_MS, lesson, CHAT_KEEP);
-      const line = this.message({ id, lesson, uid: att.u, name: att.n, color: att.c, text, room, ts: now }, att.i);
+      const line = this.message({ id, lesson, uid: att.u, name: att.n, color: att.c, text, room, ts: now, w, a }, att.i);
       const notices = recipients.filter(uid => !this.apart(uid, att.u)).map(uid => ({ uid, notice: { key: `l:${id}`, channel: lesson, message: line, read: false } }));
       for (const { uid, notice } of notices) this.saveMention(uid, notice);
       return { line, notices };
@@ -424,7 +440,7 @@ export class Lobby extends DurableObject<Env> {
   }
 
   private message(row: ChatRow, image?: string): ChatMessage {
-    const base: ChatMessage = { id: row.id, l: row.lesson, u: row.uid, n: row.name, c: socialColor(row.color), t: row.text, ts: row.ts };
+    const base: ChatMessage = { id: row.id, l: row.lesson, u: row.uid, n: row.name, c: socialColor(row.color), t: row.text, ts: row.ts, ...(row.w !== null && row.w !== undefined ? { w: row.w } : {}), ...(row.a ? { a: 1 as const } : {}) };
     const avatar = socialImage(image, this.env.SUPABASE_URL);
     if (avatar) base.i = avatar;
     if (row.room) {
@@ -434,6 +450,17 @@ export class Lobby extends DurableObject<Env> {
     return base;
   }
 
+  /** History for one channel; the class chat adds the viewer's read spot and how many lines from others came after it. */
+  private historyFrame(lesson: number, now: number, viewer: string): LobbyServerMessage {
+    const v = this.history(lesson, now, viewer);
+    if (lesson !== GLOBAL_CHAT) return { t: 'history', l: lesson, v };
+    const since = now - CHAT_TTL_MS;
+    const r = this.ctx.storage.sql.exec<{ last: number }>('SELECT last FROM reads WHERE uid=? AND ts>=?', viewer, since).toArray()[0]?.last ?? 0;
+    const hide = this.hidden(viewer);
+    const n = this.ctx.storage.sql.exec<{ uid: string }>("SELECT uid FROM chat WHERE lesson=? AND id>? AND ts>=? AND text!='' ORDER BY id LIMIT ?", GLOBAL_CHAT, r, since, UNREAD_CAP + 1)
+      .toArray().filter(row => row.uid !== viewer && !hide.has(row.uid)).length;
+    return { t: 'history', l: lesson, v, r, n: Math.min(n, UNREAD_CAP) };
+  }
   private history(lesson: number, now: number, viewer: string) {
     const live = this.index();
     const hide = this.hidden(viewer);
@@ -539,6 +566,7 @@ export class Lobby extends DurableObject<Env> {
     this.ctx.storage.sql.exec('DELETE FROM chat WHERE ts<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM chat_rate WHERE updated<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM mentions WHERE ts<?', now - CHAT_TTL_MS);
+    this.ctx.storage.sql.exec('DELETE FROM reads WHERE ts<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM daily WHERE day<?', utcDay(now));
     this.ctx.storage.sql.exec('DELETE FROM reports WHERE ts<? OR id NOT IN (SELECT id FROM reports ORDER BY id DESC LIMIT 1000)', now - 30 * CHAT_TTL_MS);
     this.roomsCache = null;
