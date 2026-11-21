@@ -22,13 +22,17 @@ import { WordListScreen, provideWordList, wordListInfo, wordListMeta } from '../
 import { WORDS as LEVEL_1_WORDS } from '../../src/screens/word-list/data/level-1';
 import { WORDS as LEVEL_2_WORDS } from '../../src/screens/word-list/data/level-2';
 import { WORDS as LEVEL_3_WORDS } from '../../src/screens/word-list/data/level-3';
+import { WORDS as LEVEL_4_WORDS } from '../../src/screens/word-list/data/level-4';
+import { WORDS as LEVEL_5_WORDS } from '../../src/screens/word-list/data/level-5';
+import { WORDS as LEVEL_6_WORDS } from '../../src/screens/word-list/data/level-6';
+import { WORDS as LEVEL_7_WORDS } from '../../src/screens/word-list/data/level-7';
 import { GUIDE_ROUTES, LESSON_PAGE_BOOKS, LESSON_PAGE_LESSONS, WORD_LIST_LEVELS, type GuidePage, type LegalPage, type LessonPageRef, type WordListLevel } from '../../src/app/routes';
 
 const SITE_ORIGIN = 'https://ronsmandarin.com';
 
 // Rendering is synchronous, so every book's lesson-page sample is handed over before it starts.
 [BOOK_1_PAGES, BOOK_2_PAGES, BOOK_3_PAGES].forEach((pages, index) => provideLessonPageBook(index + 1, pages));
-[LEVEL_1_WORDS, LEVEL_2_WORDS, LEVEL_3_WORDS].forEach((words, index) => provideWordList(index + 1, words));
+[LEVEL_1_WORDS, LEVEL_2_WORDS, LEVEL_3_WORDS, LEVEL_4_WORDS, LEVEL_5_WORDS, LEVEL_6_WORDS, LEVEL_7_WORDS].forEach((words, index) => provideWordList(index + 1, words));
 [GRAMMAR_BOOK_1, GRAMMAR_BOOK_2, GRAMMAR_BOOK_3].forEach((pages, index) => provideGrammarPageBook(index + 1, pages));
 
 export interface PrerenderedPage {
@@ -299,14 +303,15 @@ export function renderPages(): PrerenderedPage[] {
         jsonLd: grammarPageJsonLd(link, meta.title, meta.description, meta.path),
       };
     }),
-    ...WORD_LIST_LEVELS.map((entry) => {
-      const meta = wordListMeta(entry);
+    ...WORD_LIST_LEVELS.flatMap((entry) => Array.from({ length: wordListInfo(entry).parts }, (_, index) => {
+      const part = index + 1;
+      const meta = wordListMeta(entry, part);
       return {
         ...meta,
-        html: render(meta.path, <WordListScreen {...entry} />),
+        html: render(meta.path, <WordListScreen entry={entry} part={part} />),
         jsonLd: wordListJsonLd(entry, meta.title, meta.description, meta.path),
       };
-    }),
+    })),
     ...legal.map((page) => {
       const meta = legalPageMeta(page);
       return {

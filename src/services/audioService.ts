@@ -5,9 +5,7 @@ import {
   preloadAudioFiles, publicAudioUrl, readCachedAudioBlob, MAX_AUDIO_MEMORY_BYTES, type AudioPreloadProgress,
 } from './audio/audioCache';
 import { speakUtterance, releaseSpeechUtterance, wait } from './audio/speechEngine';
-import {
-  afterPaint, playHtmlAudio, prepareAudioElement, playRangeOnAudioElement, silenceAudio, type PlayRangeOptions,
-} from './audio/playbackEngine';
+import { afterPaint, playHtmlAudio, prepareAudioElement, playRangeOnAudioElement, silenceAudio, type PlayRangeOptions } from './audio/playbackEngine';
 import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
 import { ShortAudioClips } from './audio/shortAudioClips';
@@ -300,15 +298,17 @@ export class AudioService {
       });
     }
     const reading = card.source === 'dictionary' && !this.isAudioFileName(card.audio) ? wordBopomofo(card.front, card.pinyin) : null;
-    if (reading) {
-      this.beginPlayback(options?.overlap === true);
-      return new Promise((resolve) => {
-        const finish = this.trackPlayback(resolve);
-        this.playCloudSpeech({ text: card.front, reading }, effectiveRate, finish, () => { options?.onUnavailable?.(); finish(); });
-      });
-    }
+    if (reading) return this.speakReading(card.front, reading, effectiveRate, options);
     return this.play(card.audio, effectiveRate, card.front, undefined, 0, {
       ...options, ...(card.source === 'dictionary' ? { fallback: 'none' as const } : {}),
+    });
+  }
+  /** The cloud voice says `text` with this exact reading (Bopomofo, one syllable per character), made once and kept. */
+  public speakReading(text: string, reading: string, rate?: number, options?: PlayOptions): Promise<void> {
+    this.beginPlayback(options?.overlap === true);
+    return new Promise((resolve) => {
+      const finish = this.trackPlayback(resolve);
+      this.playCloudSpeech({ text, reading }, rate ?? this.defaultRate, finish, () => { options?.onUnavailable?.(); finish(); });
     });
   }
   public playRange(

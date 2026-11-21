@@ -27,19 +27,33 @@ test('polyphonic tiles require the word reading; missing audio never reveals the
   assert.equal(resolveWordBuildTileAudio(card('重量', 'zhòngliàng'), '重', recordings), '重.mp3');
 });
 
-test('duplicate characters are safe only when every occurrence has the same usable reading', () => {
-  assert.equal(resolveWordBuildTileAudio(card('重重', 'zhòngchóng'), '重', recordings), undefined);
+test('a doubled character sounds like its first place in the word', () => {
+  const sounds = new Map([['ma1', 'ma1.mp3'], ['ma5', 'ma5.mp3']]);
+  assert.equal(resolveWordBuildTileAudio(card('媽媽', 'māma'), '媽', recordings, sounds), 'ma1.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('重重', 'zhòngchóng'), '重', recordings), '重.mp3');
   assert.equal(resolveWordBuildTileAudio(card('大家家', 'dàjiājiā'), '家', recordings), '家.mp3');
 });
 
-test('source-labelled neutral sounds play only their exact reading; sandhi remains conservative', () => {
-  const sounds = new Map([['ni3', 'ni3.mp3'], ['liang4', 'liang4.mp3'], ['liang5', 'liang5.mp3'], ['yi2', 'yi2.mp3'], ['bu2', 'bu2.mp3']]);
-  for (const [front, pinyin, char] of [['你好', 'nǐhǎo', '你'], ['一個', 'yíge', '一'], ['不是', 'búshì', '不']]) {
-    assert.equal(resolveWordBuildTileAudio(card(front, pinyin), char, recordings, sounds), undefined);
-  }
-  assert.equal(resolveWordBuildTileAudio(card('女王', 'nǚwáng'), '女', recordings), '女.mp3');
-  assert.equal(resolveWordBuildTileAudio(card('漂亮', 'piàoliang'), '亮', recordings), undefined);
-  assert.equal(resolveWordBuildTileAudio(card('漂亮', 'piàoliang'), '亮', recordings, sounds), 'liang5.mp3');
+test('a tile says the character itself: no tone changes from the word, neutral tones take the character tone', () => {
+  const sounds = new Map([['ni3', 'ni3.mp3'], ['ni2', 'ni2.mp3'], ['yi1', 'yi1.mp3'], ['bu4', 'bu4.mp3'], ['xi1', 'xi1.mp3'], ['er2', 'er2.mp3'], ['le5', 'le5.mp3'], ['liang4', 'liang4.mp3'], ['zhe4', 'zhe4.mp3']]);
+  const index: ReadingsIndex = new Map([
+    ['西', [{ pinyin: 'xī', kind: 'primary' }]],
+    ['了', [{ pinyin: 'le', kind: 'primary' }, { pinyin: 'liǎo', kind: 'other' }]],
+    ['亮', [{ pinyin: 'liàng', kind: 'primary' }]],
+  ]);
+  assert.equal(resolveWordBuildTileAudio(card('你好', 'nǐhǎo'), '你', recordings, sounds, index), 'ni3.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('一個', 'yíge'), '一', recordings, sounds, index), 'yi1.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('一些', 'yìxiē'), '一', recordings, sounds, index), 'yi1.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('不是', 'búshì'), '不', recordings, sounds, index), 'bu4.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('東西', 'dōngxi'), '西', recordings, sounds, index), 'xi1.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('漂亮', 'piàoliang'), '亮', recordings, sounds, index), '亮.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('一點兒', 'yìdiǎnr'), '兒', recordings, sounds, index), 'er2.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('好了', 'hǎole'), '了', recordings, sounds, index), 'le5.mp3');
+  assert.equal(resolveWordBuildTileAudio(card('這些', 'zhèxiē/zhèixiē'), '這', recordings, sounds, index), 'zhe4.mp3');
+  // A different reading of the character is kept: 行 in 銀行 is háng.
+  assert.equal(resolveWordBuildTileAudio(card('銀行', 'yínháng'), '行', recordings, new Map([['hang2', 'hang2.mp3']]), index), 'hang2.mp3');
+  // Without the index a neutral tone can't be resolved yet, so it waits instead of guessing.
+  assert.equal(wordBuildTileReading(card('東西', 'dōngxi'), '西'), undefined);
 });
 
 test('ambiguous pinyin, misalignment, missing recordings and placeholders stay silent', () => {

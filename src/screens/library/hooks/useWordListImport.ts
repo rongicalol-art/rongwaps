@@ -5,7 +5,7 @@ import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { takeWordListReturn, wordKey } from '../../../utils/browser/wordListReturn';
 import { debugLogger } from '../../../utils/debug/debugLogger';
-import { loadWordList, wordListInfo } from '../../word-list';
+import { loadWordList, wordListInfo, wordListPart, wordListRange } from '../../word-list';
 
 /**
  * Back from a public word list's Study button: saves the words the visitor did not mark as known
@@ -20,15 +20,22 @@ export function useWordListImport(): void {
   useEffect(() => {
     if (!userId || !foldersReady) return;
     const pending = takeWordListReturn();
-    const entry = WORD_LIST_LEVELS.find((item) => item.slug === pending?.slug);
+    // A level shown in parts is remembered as `b1/2`.
+    const [slug, partText] = (pending?.slug ?? '').split('/');
+    const entry = WORD_LIST_LEVELS.find((item) => item.slug === slug);
     if (!pending || !entry) return;
     void (async () => {
       try {
         const known = new Set(pending.known);
-        const words = (await loadWordList(entry.level))
+        const info = wordListInfo(entry);
+        const part = Math.min(Math.max(Number(partText) || 1, 1), info.parts);
+        const listed = wordListPart(await loadWordList(entry.level), part, info.parts);
+        // Each part gets its own folder, named by its letters, so no folder outgrows the card limit.
+        const folderName = info.parts > 1 ? `${info.folderName} ${wordListRange(listed)}` : info.folderName;
+        const words = listed
           .filter(([hanzi, pinyin]) => !known.has(wordKey(hanzi, pinyin)))
           .map(([traditional, pinyin, translation, simplified]) => ({ traditional, simplified: simplified ?? traditional, pinyin, translation }));
-        const folderId = await saveWordsToFolder(userId, wordListInfo(entry).folderName, words);
+        const folderId = await saveWordsToFolder(userId, folderName, words);
         const store = useAppStore.getState();
         if (store.currentUser?.id !== userId) return;
         store.setLibraryActiveFolder(folderId);

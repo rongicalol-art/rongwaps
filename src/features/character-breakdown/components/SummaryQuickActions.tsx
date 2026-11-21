@@ -8,6 +8,7 @@ import { findMatchingCourseRecording, findCharacterCourseContext } from '../../.
 import { usePrimaryReading } from '../../../hooks/usePronunciation';
 import { getCharacterAudio } from '../../../services/pronunciationAudio';
 import { useAppStore } from '../../../store/useAppStore';
+import { wordBopomofo } from '../../../utils/pinyin/bopomofo';
 
 const ICON_ACTION =
   'flex h-10 w-10 shrink-0 items-center justify-center rounded-compact transition-colors focus-ring';
@@ -64,9 +65,14 @@ export function SummaryQuickActions({
     return () => { counter.current++; };
   }, [headword, reading, recordingKey, showAudio]);
 
-  /** No recording: the browser voice reads the word, in the learner's preferred script. */
+  /**
+   * No recording: the cloud voice says the word in the learner's preferred script, told the reading shown on the
+   * page so it never guesses (長大 zhǎngdà, 銀行 yínháng). Only text it can't be told the reading of falls back to a guess.
+   */
   const speak = () => {
     const text = ttsText || (characterPreference === 'traditional' ? headword : primary?.simplified || headword);
+    const bopomofo = wordBopomofo(text, reading);
+    if (bopomofo) { void audioService.speakReading(text, bopomofo).catch(() => {}); return; }
     const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
     void audioService.speakText(text, language).catch(() => {});
   };

@@ -9,6 +9,7 @@ interface WranglerConfig {
   vars: Record<string, string>;
   ratelimits: Array<{ name: string; namespace_id: string; simple: { limit: number; period: number } }>;
   assets: { directory: string; binding: string; html_handling: string; not_found_handling: string; run_worker_first: string[] };
+  r2_buckets: { binding: string; bucket_name: string }[];
   [key: string]: unknown;
 }
 const read = (file: string) => JSON.parse(readFileSync(file, 'utf8').replace(/^\s*\/\/.*$/gm, '')) as WranglerConfig;
@@ -49,8 +50,12 @@ test('staging runs the same server settings as the live site, apart from its own
   assert.equal(staging.vars.APP_ENV, 'staging');
   assert.ok(staging.vars.GAMES_SERVER_URL.includes('staging') && !live.vars.GAMES_SERVER_URL.includes('staging'));
   assert.notEqual(staging.vars.SUPABASE_URL, live.vars.SUPABASE_URL);
+  // Each site keeps what the cloud voice makes in its own bucket, under the one name the server reads.
+  assert.deepEqual(staging.r2_buckets.map(({ binding }) => binding), live.r2_buckets.map(({ binding }) => binding));
+  const buckets = [...live.r2_buckets, ...staging.r2_buckets].map(({ bucket_name }) => bucket_name);
+  assert.equal(new Set(buckets).size, buckets.length, 'staging never writes into the live bucket');
   for (const key of Object.keys(live)) {
-    if (!['name', 'vars', 'ratelimits', 'assets'].includes(key)) assert.deepEqual(staging[key], live[key], key);
+    if (!['name', 'vars', 'ratelimits', 'assets', 'r2_buckets'].includes(key)) assert.deepEqual(staging[key], live[key], key);
   }
 });
 

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer, IconActionButton, SegmentedControl } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer, IconActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import type { SocialPanel } from '../../../store/slices/socialSlice';
+import { unreadTotal, type SocialPanel } from '../../../store/slices/socialSlice';
 import type { Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
@@ -48,6 +48,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const people = useOthers(useAppStore(state => state.socialPeople));
   const online = useOthers(useAppStore(state => state.socialOnline));
   const onlineTotal = useOnlineTotal();
+  const unread = useAppStore(unreadTotal);
   const identity = useSocialIdentity();
   const pending = useAppStore(state => state.racePending);
   const hasRoom = useAppStore(state => !!state.race);
@@ -78,6 +79,8 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const onlineNow = new Set(classmates.map(person => person.u));
   const recent = recentRows.filter(row => row.card?.n && row.u !== me && !onlineNow.has(row.u))
     .map(row => ({ person: savedPerson(row), seen: row.seen }));
+  // With people online, those seen in the last 3 hours follow them in the same list, so it never feels empty.
+  const lately = recent.filter(row => row.seen !== null && Date.now() - row.seen < RECENT_ROWS_MS);
   useEffect(() => { if (inbox && (panel.tab === 'online' ? !selected : thread === 'add')) void loadRecent(); }, [inbox, panel.tab, selected, thread]);
   const openThread = (u: string) => setPanel({ kind: 'people', tab: 'chat', thread: u });
   const footer = () => {
@@ -116,8 +119,10 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
           </div>
         : !selected
         ? <div className="mr-1 flex min-w-0 flex-1 items-center gap-2">
-            <SegmentedControl ariaLabel="Chats or who’s online" value={panel.tab} onChange={tab => setPanel({ kind: 'people', tab })}
-              options={[{ value: 'chat', label: inbox ? 'Chats' : 'Chat' }, { value: 'online', label: 'Online' }]} className="min-w-0 flex-1" />
+            <div className="min-w-0 flex-1">
+              <PanelTabs label="Chats or who’s online" value={panel.tab} onChange={tab => setPanel({ kind: 'people', tab })}
+                tabs={[{ id: 'chat', label: inbox ? 'Chats' : 'Chat', dot: panel.tab !== 'chat' && unread > 0 }, { id: 'online', label: 'Online', ...(onlineTotal ? { count: onlineTotal } : {}) }]} />
+            </div>
             <MuteButton />
           </div>
         : <div className="flex flex-1 items-center justify-between gap-2">
@@ -137,7 +142,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
           {selected ? <VisitProfile key={selected.u} person={selected} lesson={lesson} online={selectedOnline} />
           : classmates.length === 0 ? <>
             <EmptyNote>Nobody else is online.</EmptyNote>
-            {recent.length > 0 && <RecentlyHere rows={recent} open={setProfile} />}
+            <RecentRows rows={recent} open={setProfile} />
           </> : <>
             {lesson !== null && here.length > 0 && (
                 <>
@@ -155,7 +160,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
               </div>
             ))}
             <MoreNote count={moreOnline} where="online" />
-            {recent.length > 0 && <RecentlyHere rows={recent} open={setProfile} />}
+            <RecentRows rows={lately} open={setProfile} />
           </>}
         </div>
         {footerContent && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{footerContent}</div>}
@@ -164,10 +169,13 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   );
 }
 
-/** Online → Recently here: classmates who were online lately (their saved profile), newest first. */
-function RecentlyHere({ rows, open }: { rows: Array<{ person: Person; seen: number | null }>; open: (person: Person) => void }) {
-  return <>
-    <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Recently here</h3>
+const RECENT_ROWS_MS = 3 * 3_600_000;
+
+/** Online: classmates seen lately (their saved profile), newest first, as plain rows after the people online now. */
+function RecentRows({ rows, open }: { rows: Array<{ person: Person; seen: number | null }>; open: (person: Person) => void }) {
+  if (!rows.length) return null;
+  // A gap, not a heading, keeps them from reading as part of the last lesson group above.
+  return <div className="mt-3 border-t-2 border-ui-divider">
     {rows.map(({ person, seen }) => (
       <button key={person.u} type="button" onClick={() => open(person)} className="flex w-full items-center gap-3 border-b-2 border-ui-divider py-3 text-left outline-none last:border-b-0 hover:bg-ui-hover focus-ring-inline">
         <Avatar name={person.n} color={person.c} size="lg" src={person.i} />
@@ -177,7 +185,7 @@ function RecentlyHere({ rows, open }: { rows: Array<{ person: Person; seen: numb
         </span>
       </button>
     ))}
-  </>;
+  </div>;
 }
 
 /** Practice hub → Challenge: pick people (this lesson or anyone online) or join an open room. */

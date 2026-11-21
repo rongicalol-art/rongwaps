@@ -5,6 +5,7 @@ import { useLevels } from '../../../hooks/useLevels';
 import { resolveLevel } from '../../../utils/lesson/levels';
 import { FavoriteButton } from '../../../features/library';
 import { audioService } from '../../../services/audioService';
+import { canPlayCard } from '../../../services/audio/recordingFile';
 import type { DictionaryListEntry } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
 import { readingKey, searchRowMeaning } from '../../../utils/vocabulary/wordEntry';
@@ -34,7 +35,9 @@ export const DictionaryCard = memo(function DictionaryCard({
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
   const meaning = searchRowMeaning(entry, simpleDefinitions);
   const pinyin = entry.coursePinyin || entry.pinyin_accented;
-  const canPlayAudio = Boolean(entry.audio && audioService.isAudioFileName(entry.audio));
+  // A book recording, else the word said with this row's reading (a character's recorded syllable, or the cloud voice).
+  const sound = { front: entry.traditional, pinyin: entry.pinyin_accented || undefined, audio: entry.audio ?? undefined, source: 'dictionary' as const };
+  const canPlayAudio = canPlayCard(sound);
 
   return (
     <DictionaryRow
@@ -52,10 +55,9 @@ export const DictionaryCard = memo(function DictionaryCard({
               type="button"
               aria-label={`Hear pronunciation of ${entry.traditional}`}
               onClick={() => {
-                if (!entry.audio) return;
                 audioService.stop();
                 speaker.claim();
-                void audioService.play(entry.audio, undefined, undefined, undefined, 0, { fallback: 'none' }).catch(() => undefined);
+                void audioService.playCard(sound).catch(() => undefined);
               }}
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95 focus-ring"
             >
