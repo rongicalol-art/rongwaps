@@ -10,6 +10,12 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-11-21 — A word-build tile says the character itself
+
+- Chosen: a quiz word-build tile plays the character's own sound, not the tone changes that only happen inside the word: 你 nǐ in 你好, 一 yī, 不 bù, 西 xī in 東西, 服 fú in 衣服, 兒 ér in 一點兒; a particle that is only ever neutral (了 le) keeps it. The word decides only when the character has a different reading there (行 háng in 銀行, 長 zhǎng in 長大, 好 hào in 愛好). The book's recording of the character comes first, then the recorded syllable. Every tile of every course word (6,543 across Books 1–4) has a recording, so no tile needs a synthetic voice. Distractors keep the earlier rule.
+- Reason: owner, 2026-11-21: a tile is one character, so a changed tone on it is confusing; just say the character unless the pronunciation is different. 326 tiles were silent before because only a word-exact reading was allowed.
+- Affects: `src/screens/quiz/utils/wordBuildAudio.ts`, `tests/unit/wordBuildAudio.test.ts`.
+
 ### 2026-11-16 — A cloud voice says Chinese that has no recording
 
 - Chosen: Chinese text without a recording is said by Azure Speech (Taiwan voices the owner picked by ear: HsiaoChen, and YunJhe as the male voice), through `POST /api/speech`. Each text is made once, on the first tap by any learner, stored, and served as a file after that; the device keeps what it played. The browser's own voice is now the fallback behind it, and still reads English. Dictionary words added to a folder, silent until now because a voice must not guess their reading, are said with the card's pinyin sent to the voice as Bopomofo; a word whose pinyin cannot be spelled that way stays silent. A recording always comes first, and a card that has a recording is still never swapped for a synthetic voice.
