@@ -43,15 +43,16 @@ export function ReadingText({ item, script, pinyin = false }: { item: ReadingIte
       <div className="w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface">
         {title && <p className={cn('text-balance bg-brand-primary-wash px-5 py-3 text-center font-chinese text-xl text-ui-ink-strong', pinyin && 'leading-[1.9]')}>{titleText}</p>}
         {item.format === 'table' ? (
-          // Phones: smaller type and margins so five columns keep their headers and titles on one or two lines.
+          // Phones: smaller type and margins so five columns keep their headers and titles on one or two lines; the
+          // narrowest phones (320 wide) also tighten the cell padding so five columns still fit.
           <table className="mx-3 my-3 w-[calc(100%-1.5rem)] border-collapse font-chinese text-base text-ui-ink-strong sm:mx-5 sm:w-[calc(100%-2.5rem)] sm:text-lg">
             <thead>
-              <tr>{head.map((cell, index) => <th key={index} scope="col" className="border-b-2 border-ui-divider px-1 pb-2 text-left text-sm font-normal text-ui-muted-strong sm:px-1.5 sm:text-base"><ChineseText text={cell} /></th>)}</tr>
+              <tr>{head.map((cell, index) => <th key={index} scope="col" className="border-b-2 border-ui-divider px-1 pb-2 text-left max-[359px]:px-0.5 text-sm font-normal text-ui-muted-strong sm:px-1.5 sm:text-base"><ChineseText text={cell} /></th>)}</tr>
             </thead>
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="border-b-2 border-ui-divider last:border-b-0">
-                  {row.map((cell, column) => <td key={column} className="px-1 py-2 tabular-nums sm:px-1.5"><ChineseText text={cell} /></td>)}
+                  {row.map((cell, column) => <td key={column} className="px-1 py-2 tabular-nums max-[359px]:px-0.5 sm:px-1.5"><ChineseText text={cell} /></td>)}
                 </tr>
               ))}
             </tbody>
