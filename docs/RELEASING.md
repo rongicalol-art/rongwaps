@@ -136,7 +136,7 @@ Figures from each provider's pricing page, checked 2026-11-05 (pre-launch review
 - [ ] Worker secrets on `rons-mandarin` (Settings → Variables and Secrets, type *Secret*): `RESEND_API_KEY`, `FEEDBACK_EMAIL_FROM`, `FEEDBACK_EMAIL_TO`, `SENTRY_DSN`. The first three also on `rons-mandarin-staging` if staging should send email. Deploys keep secrets
 - [ ] GitHub secrets: `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit), `SENTRY_AUTH_TOKEN` (source maps, optional), `PRODUCTION_DATABASE_URL`, `STAGING_DATABASE_URL`, `BACKUP_R2_ACCESS_KEY_ID`, `BACKUP_R2_SECRET_ACCESS_KEY`, `CLAUDE_CODE_OAUTH_TOKEN`
 - [ ] GitHub variables: `PRODUCTION_SUPABASE_ANON_KEY`, `STAGING_SUPABASE_ANON_KEY` (the public keys the builds use), `SENTRY_DSN`, `SENTRY_ORG`, `SENTRY_PROJECT`, `STAGING_URL`, `R2_ACCOUNT_ID`, `BACKUP_BUCKET`, `BACKUP_AGE_RECIPIENT`, `SENTRY_BACKUP_CRON_URL`; Actions allowed to create pull requests
-- [ ] R2 buckets `rongwaps-backups` (lifecycle + 7-day lock) and `rongwaps-materials`
+- [ ] R2 buckets `rongwaps-backups` (lifecycle + 7-day lock), `rongwaps-materials`, and the cloud voice's store `rongwaps-speech` (live) / `rongwaps-speech-staging` (bound as `SPEECH_AUDIO` in `server/wrangler*.jsonc`)
 - [ ] Sentry alert on new issues; backup cron monitor
 - [ ] Supabase → staging project → Authentication → URL Configuration: the staging site address above in Site URL and Redirect URLs
 - [ ] Render: delete both web services once the Cloudflare site has run a week (they are suspended and unused)
@@ -175,7 +175,7 @@ Figures from each provider's pricing page, checked 2026-11-05 (pre-launch review
 
 Client (build-time, public): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`; optional `VITE_CONTENT_BASE_URL`, `VITE_AUDIO_BASE_URL`, `VITE_SENTRY_DSN`, `VITE_DECOMPOSITION_RUNTIME` (`legacy` rolls the breakdowns back; the published runtime pack is the default), `VITE_DECOMPOSITION_RUNTIME_PACK_BASE_PATH` (defaults to `/data/decomposition-runtime` in production builds).
 
-Server (`server/env.ts`): public values in `server/wrangler*.jsonc` (`APP_ENV`, `SUPABASE_URL`, `GAMES_SERVER_URL`); `COMMIT` and `SUPABASE_ANON_KEY` passed with each deploy; Worker secrets `RESEND_API_KEY`, `FEEDBACK_EMAIL_FROM`, `FEEDBACK_EMAIL_TO`, `SENTRY_DSN`, `AZURE_SPEECH_KEY` (the cloud voice; its region `AZURE_SPEECH_REGION` is a public value, and the R2 bucket binding `SPEECH_AUDIO` is where made audio is kept). `npm run dev` reads the same names from `.env` (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` for the two Supabase values).
+Server (`server/env.ts`): public values in `server/wrangler*.jsonc` (`APP_ENV`, `SUPABASE_URL`, `GAMES_SERVER_URL`); `COMMIT` and `SUPABASE_ANON_KEY` passed with each deploy; Worker secrets `RESEND_API_KEY`, `FEEDBACK_EMAIL_FROM`, `FEEDBACK_EMAIL_TO`, `SENTRY_DSN`, `AZURE_SPEECH_KEY` (the cloud voice; its region `AZURE_SPEECH_REGION` is a public value, and the R2 bucket binding `SPEECH_AUDIO` is where made audio is kept: `rongwaps-speech`, `rongwaps-speech-staging` on staging). `npm run dev` reads the same names from `.env` (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` for the two Supabase values).
 
 Error tracking: the server reports to the same Sentry project as the browser (`SENTRY_DSN`; never on staging), tagged with the release (the commit). Build-time secrets `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` (production only) upload hidden source maps for readable stack traces; `scripts/build/uploadSourceMaps.ts` then deletes every map from `dist`.
 
