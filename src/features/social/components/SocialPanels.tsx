@@ -48,6 +48,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const people = useOthers(useAppStore(state => state.socialPeople));
   const online = useOthers(useAppStore(state => state.socialOnline));
   const onlineTotal = useOnlineTotal();
+  const today = useAppStore(state => state.socialToday);
   const identity = useSocialIdentity();
   const pending = useAppStore(state => state.racePending);
   const hasRoom = useAppStore(state => !!state.race);
@@ -129,6 +130,9 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">
       {panel.tab === 'chat' ? (!inbox || thread === 'class' ? <ChatThread /> : thread === 'add' ? <AddFriends online={classmates.filter(person => person.u !== me)} recent={recent} lesson={lesson} /> : threadPerson ? <DirectThread key={threadPerson.u} friend={threadPerson} /> : <ChatList />) : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
+          {!selected && today !== null && today > onlineTotal && (
+            <p className="pb-1 pt-1 text-xs font-black text-ui-muted-strong sm:hidden">{onlineTotal > 0 ? `${onlineTotal} online now · ${today} today` : `${today} were here today`}</p>
+          )}
           {!selected && rooms.map(room => <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-4 last:border-b-0">
             <AvatarStack people={room.players.map(player => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="sm" />
             <span className="min-w-0 flex-1"><span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span><span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span></span>

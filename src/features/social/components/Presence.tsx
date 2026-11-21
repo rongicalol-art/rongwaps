@@ -83,10 +83,10 @@ export function GlobalPresenceButton() {
       )}
     </span>
     {(total > 0 || earlier) && (
-      <span aria-hidden className={`whitespace-nowrap text-xs font-black tabular-nums ${unread > 0 ? 'ml-3.5' : ''}`}>
+      <span aria-hidden className={`whitespace-nowrap text-xs font-black tabular-nums ${unread > 0 ? 'ml-3.5' : ''} ${total > 0 ? '' : 'hidden sm:inline'}`}>
         {total > 0 && (total > 99 ? '99+' : total)}
-        {/* A phone header has no room for both: there it shows only while nobody is online, when it matters most. */}
-        {earlier && <span className={`font-extrabold text-ui-muted ${total > 0 ? 'hidden sm:inline' : ''}`}>{total > 0 ? ' · ' : ''}{earlier > 999 ? '999+' : earlier} today</span>}
+        {/* Desktop only: a phone header has no room, so there it's at the top of the Online tab. */}
+        {earlier && <span className="hidden font-extrabold text-ui-muted sm:inline">{total > 0 ? ' · ' : ''}{earlier > 999 ? '999+' : earlier} today</span>}
       </span>
     )}
   </button>;
