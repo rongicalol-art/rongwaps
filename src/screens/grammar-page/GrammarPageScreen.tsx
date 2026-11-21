@@ -5,11 +5,12 @@ import { PracticeChoiceButton } from '../../features/practice';
 import { useAuth } from '../../hooks/useAuth';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { usePageMeta } from '../../hooks/usePageMeta';
-import { ActionButton, AppIcon, BrandWordmark } from '../../lib/widgets';
+import { ActionButton, AppIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import { rememberLessonReturn } from '../../utils/browser/lessonReturn';
 import { dismissPrerender } from '../../utils/browser/prerender';
 import { SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
+import { PublicPageHeader } from '../public-doc';
 import { GRAMMAR_PAGES } from './data';
 import { grammarPageLink, loadGrammarPageBook, loadedGrammarPageBook } from './grammarPageData';
 import { grammarPageMeta } from './grammarPageMeta';
@@ -103,12 +104,7 @@ function GrammarPage({ link, page }: { link: GrammarPageLink; page: GrammarPageD
   return (
     <div className="flex h-[100dvh] w-full flex-col bg-ui-canvas font-sans text-ui-ink">
       <div className="min-h-0 flex-1 overflow-y-auto">
-        <header className="mx-auto flex w-full max-w-3xl items-center gap-3 px-5 py-3 lg:px-10">
-          <Link to="/" aria-label="Ron's Mandarin home" className="mr-auto rounded-xs focus-ring-inline"><BrandWordmark /></Link>
-          {!currentUser && (
-            <ActionButton variant="secondary" size="sm" onClick={() => void signIn()} className="normal-case tracking-normal text-sm px-3.5">Sign in</ActionButton>
-          )}
-        </header>
+        <PublicPageHeader backTo={GUIDE_ROUTES.grammar} backLabel="All grammar" onSignIn={currentUser ? undefined : () => void signIn()} className="max-w-3xl" />
 
         <main className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-5 pb-10 pt-2 lg:px-10 lg:pb-16 lg:pt-4">
           <section className="flex flex-col gap-4">
