@@ -10,7 +10,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 
 interface VocabItem { id: string; traditional: string; pinyin: string; meaning: string; simple?: string }
-interface GrammarPoint { id: string; bookId: number; lessonId: number; grammarNumber: number; titleEnglish: string; titleTraditional: string; pattern: string; explanation: string }
+interface GrammarPoint { id: string; bookId: number; lessonId: number; grammarNumber: number; titleEnglish: string; titleTraditional: string; pattern: string; explanation: string; summary?: string[] }
 interface AuthoredSentence { zh: string; en: string }
 interface AuthoredPage { slug: string; examples: AuthoredSentence[]; exercise: AuthoredSentence }
 type Word = readonly [string, string, string] | readonly [string, string, string, 1];
@@ -55,7 +55,34 @@ function sentence(authored: AuthoredSentence, point: GrammarPoint, where: string
     if (typeof token === 'string') pinyin += PUNCTUATION[token] ?? token;
     else pinyin += `${pinyin && !pinyin.endsWith(' ') ? ' ' : ''}${token[1]}`;
   }
-  return { tokens, pinyin: pinyin.charAt(0).toUpperCase() + pinyin.slice(1), english: authored.en };
+  // A capital opens the line and each sentence inside it ("Zhè shì shénme zì? Wǒ kàn bù chūlái.").
+  const capitalized = pinyin.replace(/(^|[.?!] )(\p{Ll})/gu, (_, before: string, letter: string) => before + letter.toUpperCase());
+  return { tokens, pinyin: capitalized, english: authored.en };
+}
+
+/**
+ * The rule in our own plain English. Book 1's `explanation` is ours. From Book 2 on, `explanation`
+ * and `explanationEnglish` are the textbook's own wording (docs/GRAMMAR_LESSON_TEMPLATE.md), which
+ * a public page must not reprint, so those pages use the `summary` lines written for the app.
+ */
+const OWN_EXPLANATION_BOOKS = new Set([1]);
+function ruleOf(point: GrammarPoint): string {
+  if (OWN_EXPLANATION_BOOKS.has(point.bookId)) return point.explanation;
+  if (!point.summary?.length) throw new Error(`${point.id}: no summary to use as the rule`);
+  return point.summary.join(' ');
+}
+
+/** The pattern's parts, split at each `+` that is not inside brackets: `一 + M (+ N)` keeps `M (+ N)` whole. */
+function patternParts(pattern: string): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let part = '';
+  for (const char of pattern) {
+    if ('(（'.includes(char)) depth++;
+    if (')）'.includes(char)) depth = Math.max(0, depth - 1);
+    if (char === '+' && depth === 0) { parts.push(part); part = ''; } else part += char;
+  }
+  return [...parts, part];
 }
 
 const row = (value: unknown) => JSON.stringify(value);
@@ -88,7 +115,7 @@ for (const book of BOOKS) {
       slug: page.slug,
       // `Statement, + new topic + 呢` → Statement · new topic · 呢
       // The book's shorthand for "not" is spelled out for a reader who has not opened the book.
-      pattern: point.pattern.split('+').map((part) => part.trim().replace(/,$/, '').replace(/Neg/g, 'not')).filter(Boolean),
+      pattern: patternParts(point.pattern).map((part) => part.trim().replace(/,$/, '').replace(/\bNeg(?:ation)?\b/g, 'not')).filter(Boolean),
       examples: page.examples.map((example) => sentence(example, point, where)),
       exercise,
     };
@@ -100,7 +127,7 @@ for (const book of BOOKS) {
     `    title: ${row(point.titleEnglish)},`,
     `    focus: ${row(HAN.test(point.pattern) ? point.titleTraditional : '')},`,
     `    pattern: ${row(pattern)},`,
-    `    rule: ${row(point.explanation)},`,
+    `    rule: ${row(ruleOf(point))},`,
     `    examples: [\n${examples.map((example) => `      ${sentenceCode(example, '      ')},`).join('\n')}\n    ],`,
     `    exercise: ${sentenceCode(exercise, '    ')},`,
     '  },',

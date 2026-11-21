@@ -1,25 +1,25 @@
 # Ron's Mandarin
 
-> Free Taiwan Mandarin study app for the *時代華語 Modern Chinese* textbook series, built for adult learners (18+) including Shu-Te University students.
+> Free Taiwan Mandarin study app for the *Modern Chinese* (時代華語) textbook series, built for adult learners (18+) including Shu-Te University students.
 
-Ron's Mandarin helps learners study *時代華語 Modern Chinese* lesson by lesson with Traditional Chinese characters, Taiwan pronunciation audio, read-along dialogues and readings, interactive grammar lessons and book exercises, FSRS spaced-repetition flashcards, character decomposition memory hooks, stroke-order writing practice, TOCFL mock tests, and Study Together quiz races.
+Ron's Mandarin helps learners study *Modern Chinese* (時代華語) lesson by lesson with Traditional Chinese characters, Taiwan pronunciation audio, read-along dialogues and readings, interactive grammar lessons and book exercises, FSRS spaced-repetition flashcards, character decomposition memory hooks, stroke-order writing practice, TOCFL mock tests, and Study Together quiz races.
 
 ## Core Facts
 
 - **Canonical URL:** https://ronsmandarin.com/
 - **Price:** Free (no ads, no paid plan)
 - **Script & Pronunciation:** Traditional Chinese characters with Taiwan Mandarin pronunciation (notes mainland pronunciation differences where relevant)
-- **Curriculum Alignment:** Follows the *時代華語 Modern Chinese* textbooks (Books 1 to 3 open in beta) and Taiwan's TBCL / TOCFL proficiency framework
+- **Curriculum Alignment:** Follows the *Modern Chinese* (時代華語) textbooks (Books 1 to 3 open in beta) and Taiwan's TBCL / TOCFL proficiency framework
 - **Access:** Open to anyone 18 or older with a Google account; full lesson packs and audio require sign-in
 - **Independence:** Independent project, not affiliated with or endorsed by Tamkang University's Chinese Language Center or Cheng Chung Book Co.
 
 ## Public Pages
 
 - [Home & Interactive Demos](https://ronsmandarin.com/): App overview, live sample flashcards, grammar patterns, character memory hooks, lesson syllabus preview, and FAQ
-- [Books & Lesson Syllabus](https://ronsmandarin.com/books): Lesson-by-lesson syllabus for *時代華語 Modern Chinese* plus read-along audio and character memory hooks
+- [Books & Lesson Syllabus](https://ronsmandarin.com/books): Lesson-by-lesson syllabus for *Modern Chinese* (時代華語) plus read-along audio and character memory hooks
 - [Lesson pages](https://ronsmandarin.com/books/1/lesson-1): One page per lesson of Books 1 to 3 (`/books/1/lesson-1` to `/books/3/lesson-16`) with sample words and Taiwan audio, a short original conversation, and the lesson's grammar points
 - [Grammar & Book Exercises](https://ronsmandarin.com/grammar): Grammar explanations, interactive sentence-building patterns, and textbook exercise practice
-- [TOCFL Prep & Mock Tests](https://ronsmandarin.com/tocfl): Listening and reading mock tests aligned with *時代華語 Modern Chinese* and TOCFL bands
+- [TOCFL Prep & Mock Tests](https://ronsmandarin.com/tocfl): Listening and reading mock tests aligned with *Modern Chinese* (時代華語) and TOCFL bands
 - [Grammar pages](https://ronsmandarin.com/grammar/ne-and-you): One page per grammar pattern (`/grammar/<pattern>`) with the rule in plain English, example sentences with pinyin and one sentence to build
 - [TOCFL word lists](https://ronsmandarin.com/tocfl/vocabulary/a1): The official word list for TOCFL Novice, A1 and A2 (`/tocfl/vocabulary/novice`, `/a1`, `/a2`) with pinyin, short English meanings and a free PDF each
 - [About](https://ronsmandarin.com/about): Who builds Ron's Mandarin, teaching philosophy, and data privacy

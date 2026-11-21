@@ -670,7 +670,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     slug: "bijiao-comparatively", bookId: 1, lessonId: 9,
     title: "Implicit Comparison with 比較",
     focus: "比較",
-    pattern: ["S","(V","得)","比較","Vs"],
+    pattern: ["S","(V + 得)","比較","Vs"],
     rule: "Use 比較 before a quality when the other side is already known from context. For actions, use 得 to join the action to the quality: 跑得比較快.",
     examples: [
       { tokens: [["我","wǒ","I"], ["覺得","juéde","to feel; to think"], ["日文","Rìwén","Japanese"], ["比較","bǐjiào","relatively",1], ["容易","róngyì","easy"], "。"],
@@ -910,7 +910,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     slug: "yi-repeat-a-verb", bookId: 1, lessonId: 13,
     title: "Reduplicated Action V (一) V",
     focus: "動詞重疊 V（一）V",
-    pattern: ["Verb","(一)","Verb (","Object)"],
+    pattern: ["Verb","(一)","Verb (+ Object)"],
     rule: "Repeat the verb to soften the action: 看看 or 看一看. The 一 is optional and adds a light “have a look” feel.",
     examples: [
       { tokens: [["你","nǐ","you"], ["看","kàn","to read"], ["一","yí","one",1], ["看","kàn","to read"], ["這","zhè","this"], ["張","zhāng","measure word (tables, chairs)"], ["圖片","túpiàn","picture"], "。"],
@@ -1030,7 +1030,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     slug: "gen-yiyang-same-or-different", bookId: 1, lessonId: 15,
     title: "Compare Things with 跟…(不)一樣",
     focus: "……跟……（不）一樣",
-    pattern: ["A","跟","B","(不)一樣 (","Describing word)"],
+    pattern: ["A","跟","B","(不)一樣 (+ Describing word)"],
     rule: "Use 跟 between the two things and 一樣 for “the same”. Add 不 before 一樣 for “different”. A describing word can follow 一樣.",
     examples: [
       { tokens: [["我","wǒ","I"], ["跟","gēn","and",1], ["你","nǐ","you"], ["一樣","yíyàng","same",1], ["高","gāo","tall"], "。"],

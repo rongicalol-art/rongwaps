@@ -23,7 +23,8 @@ test('grammar page addresses have one shape, and only listed pages have a link',
 
 test('every grammar page has a rule, two examples, a different sentence to build, and search tags within length', async () => {
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  assert.ok(GRAMMAR_PAGES.length >= 76, 'every Book 1 grammar point has a page');
+  assert.ok(GRAMMAR_PAGES.length >= 296, 'every grammar point of Books 1 to 3 has a page');
+  assert.deepEqual([...new Set(GRAMMAR_PAGES.map((link) => link[1]))], [1, 2, 3]);
   for (const link of GRAMMAR_PAGES) {
     const [slug, bookId, lessonId, title] = link;
     const page = (await loadGrammarPageBook(bookId))[slug];

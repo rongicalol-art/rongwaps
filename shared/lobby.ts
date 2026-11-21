@@ -17,10 +17,10 @@ export const UNREAD_CAP = 99;
 export const CHAT_KEEP = 50;
 export const CHAT_TTL_MS = 24 * 3_600_000;
 /**
- * The privacy update (2026-12-01, Taiwan time): from then on the class chat keeps its newest 1,000 lines for at
+ * The privacy update (2026-11-21, Taiwan time; first set for 2026-12-01, moved up by the owner): from then on the class chat keeps its newest 1,000 lines for at
  * most 180 days (loaded 50 at a time), and friends, private messages and offline profiles turn on.
  */
-export const SOCIAL_UPDATE_FROM = Date.parse('2026-12-01T00:00:00+08:00');
+export const SOCIAL_UPDATE_FROM = Date.parse('2026-11-21T00:00:00+08:00');
 export const socialUpdateOpen = (now: number) => now >= SOCIAL_UPDATE_FROM;
 export const CLASS_CHAT_KEEP = 1000;
 export const CLASS_CHAT_MAX_AGE_MS = 180 * 24 * 3_600_000;

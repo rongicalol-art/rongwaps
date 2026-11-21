@@ -6,6 +6,8 @@ type Book = Readonly<Record<string, GrammarPageData>>;
 /** One chunk per book, so a grammar page downloads only its own book's pages. */
 const LOADERS: Record<number, () => Promise<{ PAGES: Book }>> = {
   1: () => import('./data/book-1'),
+  2: () => import('./data/book-2'),
+  3: () => import('./data/book-3'),
 };
 
 const loaded = new Map<number, Book>();

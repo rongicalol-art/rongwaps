@@ -12,10 +12,11 @@ export function grammarPageMeta([slug, bookId, lessonId, title, keyWord]: Gramma
   const what = `${title}: the rule in plain English, examples with pinyin and one sentence to build yourself.`;
   const where = ` Modern Chinese ${bookId}, Lesson ${lessonId}.`;
   return {
-    title: full.length <= 65 ? full : `${named}${BRAND}`.length <= 65 ? `${named}${BRAND}` : `${title}${BRAND}`,
+    title: [full, `${named}${BRAND}`, `${title}${BRAND}`, title].find((candidate) => candidate.length <= 65) ?? `${title.slice(0, 64).trimEnd()}…`,
     // A long pattern name leaves no room for the book and lesson.
     description: what.length + where.length <= 160 ? what + where : what,
-    socialDescription: `${title}: the rule, examples with pinyin and one sentence to build yourself. Free.`,
+    socialDescription: [`${title}: the rule, examples with pinyin and one sentence to build yourself. Free.`, `${title}: the rule, examples and practice. Free.`]
+      .find((candidate) => candidate.length <= 125) ?? title,
     path: grammarPagePath(slug),
   };
 }

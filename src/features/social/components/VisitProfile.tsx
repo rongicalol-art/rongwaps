@@ -15,10 +15,18 @@ const flameArt = new URL('../../../assets/icons/flat/flame.svg', import.meta.url
 /** A classmate who doesn't answer in this time is shown without their card. */
 const CARD_WAIT_MS = 6000;
 
-/** Add friend, Accept, Request sent, or Friends (Remove friend is in the ⋯ menu). */
-function FriendButton({ person }: { person: Person }) {
+/**
+ * Add friend, Accept, Request sent, or Friends (Remove friend is in the ⋯ menu). `compact`: the short form for a
+ * list row (Add, Accept, Sent, Friends); Not now and Cancel stay on the profile.
+ */
+export function FriendButton({ person, compact }: { person: Pick<Person, 'u' | 'n' | 'c'>; compact?: boolean }) {
   const entry = useAppStore((state) => state.socialFriends?.find((item) => item.u === person.u));
   if (entry?.iAdded && entry.addedMe) return <p className="inline-flex items-center gap-1.5 text-sm font-black text-ui-muted-strong"><AppIcon name="check" size={16} />Friends</p>;
+  if (compact) {
+    if (entry?.addedMe) return <ActionButton size="sm" onClick={() => { void addFriend(person); }}>Accept</ActionButton>;
+    if (entry?.iAdded) return <p className="text-sm font-black text-ui-muted">Sent</p>;
+    return <ActionButton size="sm" variant="secondary" onClick={() => { void addFriend(person); }} aria-label={`Add ${person.n} as a friend`}><AppIcon name="addFriend" size={18} />Add</ActionButton>;
+  }
   if (entry?.addedMe) return (
     <div className="flex items-center gap-3">
       <ActionButton size="sm" onClick={() => { void addFriend(person); }}><AppIcon name="addFriend" size={18} />Accept</ActionButton>

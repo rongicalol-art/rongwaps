@@ -46,6 +46,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - Nunito heavy for titles. Chinese text uses the study font (`font-chinese`), so the learner's chosen font applies everywhere.
 - Sibling blocks share exactly the same text styles; "text styles are inconsistent" is a recurring complaint. Short copy, no uppercase sentences.
 - App labels and titles are English. Chinese characters belong to the study content, not to buttons, tabs or screen titles.
+- The book's name in page titles and search text is English first: "Modern Chinese (時代華語)". Chinese first looked bad in Google results, which also dropped the space after it, and most people search the English name.
 
 **Pictures and icons.**
 - The app's illustrations are the picture style: warm, colourful flat art (sunny rooms, wooden desks, plants; coral, navy and gold), rounded shapes, tiny expressive faces. Anything drawn for an exercise (clocks, calendars, objects) matches it. Pictures are generated illustrations in that style, not hand-drawn SVG scenes.
