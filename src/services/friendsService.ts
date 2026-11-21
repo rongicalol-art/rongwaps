@@ -44,6 +44,14 @@ const toMessage = (row: { id: number; sender: string; recipient: string; body: s
 const toProfile = (row: { user_id: string; card: unknown; last_seen: string | null }): SavedProfile =>
   ({ u: row.user_id, card: row.card && typeof row.card === 'object' ? row.card as StoredCard : null, seen: time(row.last_seen) });
 
+/** Adds each @username; row security leaves out anyone who can't be found, and a failed lookup just shows none. */
+async function withHandles(rows: SavedProfile[]): Promise<SavedProfile[]> {
+  if (!rows.length) return rows;
+  const { data } = await supabase.from('usernames').select('user_id, username').in('user_id', rows.map(row => row.u));
+  const handles = new Map((data ?? []).map(row => [row.user_id, row.username]));
+  return rows.map(row => (handles.has(row.u) ? { ...row, h: handles.get(row.u) } : row));
+}
+
 /** Friends, private messages and saved profiles (supabase/migrations/20261119170000_friends_and_messages.sql). */
 const database: FriendsBackend = {
   async people() {
@@ -93,20 +101,15 @@ const database: FriendsBackend = {
   async profiles(us) {
     const ids = us.filter(u => UUID.test(u)).slice(0, 100);
     if (!ids.length) return [];
-    // The @username comes from its own table; row security leaves out anyone who can't be found.
-    const [cards, names] = await Promise.all([
-      supabase.from('profile_cards').select('user_id, card, last_seen').in('user_id', ids),
-      supabase.from('usernames').select('user_id, username').in('user_id', ids),
-    ]);
-    if (cards.error) throw cards.error;
-    const handles = new Map((names.data ?? []).map(row => [row.user_id, row.username]));
-    return (cards.data ?? []).map(row => ({ ...toProfile(row), ...(handles.get(row.user_id) ? { h: handles.get(row.user_id) } : {}) }));
+    const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen').in('user_id', ids);
+    if (error) throw error;
+    return withHandles((data ?? []).map(toProfile));
   },
   async recent(limit) {
     const { data, error } = await supabase.from('profile_cards').select('user_id, card, last_seen')
       .not('last_seen', 'is', null).order('last_seen', { ascending: false }).limit(limit);
     if (error) throw error;
-    return (data ?? []).map(toProfile);
+    return withHandles((data ?? []).map(toProfile));
   },
   async search(text) {
     const { data, error } = await supabase.rpc('find_classmates', { p_text: text.slice(0, 40) });

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { ActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
+import { USERNAME_CHANGE_DAYS } from '../../../../shared/username';
 
-const WEEK_MS = 7 * 24 * 3_600_000;
+const WEEK_MS = USERNAME_CHANGE_DAYS * 24 * 3_600_000;
 const friends = () => import('../friendsController');
 
 /**
@@ -60,7 +61,7 @@ export function UsernameSetting() {
         />
       </div>
       <p className={`mt-1.5 text-[13px] font-bold ${problem ? 'text-feedback-danger-text' : 'text-ui-muted-strong'}`} role={problem ? 'alert' : undefined}>
-        {problem ?? 'Letters, numbers, dots and underscores. You can change it once a week.'}
+        {problem ?? `Letters, numbers, dots and underscores. You can change it every ${USERNAME_CHANGE_DAYS} days.`}
       </p>
       <div className="mt-3 flex items-center justify-end gap-3">
         <button type="button" onClick={() => { setDraft(null); setProblem(null); }} className="rounded-xs text-sm font-black text-ui-muted outline-none hover:text-ui-ink focus-ring-inline">Cancel</button>

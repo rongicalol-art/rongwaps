@@ -6,7 +6,7 @@ import type { Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
-import { defaultSelection, describeSelection, seenLabel } from '../socialText';
+import { defaultSelection, describeSelection, savedPerson, seenLabel } from '../socialText';
 import { ChatThread, DirectThread } from './ChatThread';
 import { AddFriends, ChatList } from './ChatList';
 import { updateOpen } from '../socialUpdate';
@@ -77,7 +77,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const threadPerson: Person | null = threadFriend ? { u: threadFriend.u, n: threadFriend.n, c: threadFriend.c, l: null, a: null, ...(photoOf(threadFriend.u) ? { i: photoOf(threadFriend.u) } : {}) } : null;
   const onlineNow = new Set(classmates.map(person => person.u));
   const recent = recentRows.filter(row => row.card?.n && row.u !== me && !onlineNow.has(row.u))
-    .map(row => ({ person: { u: row.u, n: row.card!.n!, c: socialColor(row.card!.c ?? 'blue'), l: null, a: null, ...(row.card?.i ? { i: row.card.i } : {}) } as Person, seen: row.seen }));
+    .map(row => ({ person: savedPerson(row), seen: row.seen }));
   useEffect(() => { if (inbox && (panel.tab === 'online' ? !selected : thread === 'add')) void loadRecent(); }, [inbox, panel.tab, selected, thread]);
   const openThread = (u: string) => setPanel({ kind: 'people', tab: 'chat', thread: u });
   const footer = () => {

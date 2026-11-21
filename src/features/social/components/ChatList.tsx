@@ -5,11 +5,11 @@ import { ActionButton, AppIcon, Avatar, PlayfulNavIcon, SearchField } from '../.
 import { useAppStore } from '../../../store/useAppStore';
 import { friendRequests } from '../../../store/slices/socialSlice';
 import { GLOBAL_CHAT, type ChatMessage } from '../../../../shared/lobby';
-import { socialColor, type SocialColor } from '../../../../shared/quizRace';
+import type { SocialColor } from '../../../../shared/quizRace';
 import type { Person } from '../../../../shared/lobby';
 import { addFriend, loadFriends, loadInbox, loadSaved, removeFriend, searchPeople } from '../friendsController';
 import type { SavedProfile } from '../../../services/friendsService';
-import { listTime, seenLabel, whereLabel } from '../socialText';
+import { listTime, savedPerson, seenLabel, whereLabel } from '../socialText';
 import { UnreadBadge } from './Presence';
 import { FriendButton } from './VisitProfile';
 
@@ -131,7 +131,6 @@ export function AddFriends({ online, recent, lesson }: { online: Person[]; recen
   // The last answer stays on screen while the next one is on its way, so the list doesn't flash empty per letter.
   const results = text ? found?.rows : undefined;
   const waiting = !!text && found?.text !== text;
-  const asPerson = (saved: SavedProfile): Person => ({ u: saved.u, n: saved.card!.n!, c: socialColor(saved.card?.c ?? 'blue'), l: null, a: null, ...(saved.card?.i ? { i: saved.card.i } : {}) });
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -142,7 +141,7 @@ export function AddFriends({ online, recent, lesson }: { online: Person[]; recen
       <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar" aria-busy={waiting}>
         {text ? <>
           {results?.map(saved => {
-            const person = online.find(item => item.u === saved.u) ?? asPerson(saved);
+            const person = online.find(item => item.u === saved.u) ?? savedPerson(saved);
             const status = liveIds.has(saved.u) ? 'Online' : seenLabel(saved.seen);
             return row(person, saved.h ? `@${saved.h} · ${status}` : status, liveIds.has(saved.u));
           })}

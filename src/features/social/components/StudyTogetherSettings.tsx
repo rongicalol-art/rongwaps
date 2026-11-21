@@ -14,13 +14,16 @@ export function StudyTogetherSettings() {
   const showProfile = useAppStore((state) => state.showProfile);
   const setShowProfile = useAppStore((state) => state.setShowProfile);
   const username = useAppStore((state) => state.socialUsername);
+  // With both switches off nobody can find you, whatever this switch says.
+  const visible = showOnline || showProfile;
   return <>
     <SettingsToggleRow checked={showOnline} onClick={() => setShowOnline(!showOnline)} label="Show me online" />
     <SettingsToggleRow checked={showProfile} onClick={() => setShowProfile(!showProfile)} label="Show my profile" className={username ? undefined : 'border-b-0'} />
     {username && <>
       <UsernameSetting />
       <SettingsToggleRow checked={username.findable} onClick={() => { void friends().then((module) => module.setFindable(!username.findable)); }}
-        label="Let classmates find me" description="By your name or @username in Add friends" className="border-b-0" />
+        label="Let classmates find me" description={visible ? 'By your name or @username in Add friends' : 'Turn on Show me online or Show my profile first'}
+        disabled={!visible} className="border-b-0" />
     </>}
   </>;
 }

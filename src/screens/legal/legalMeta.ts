@@ -21,7 +21,7 @@ export interface LegalUpdate {
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
   pages: ['privacy'],
-  summary: 'Study together adds friends and private messages. You choose what others see in Settings.',
+  summary: 'Study together adds friends, private messages and @usernames. You choose what others see in Settings.',
   acceptedFrom: '2026-11-21',
 };
 

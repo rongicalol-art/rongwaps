@@ -3,7 +3,8 @@
 -- public.usernames: every learner's unique @username, made from their name the first time the app asks
 --   (claim_username) and changeable once a week (set_username; the automatic one can be changed at once). A name
 --   someone gives up stays held for them for 7 days, so nobody can take a friend's old @username to pose as them.
---   `findable` is "Let classmates find me" (on by default): off hides the @username and keeps them out of search.
+--   `findable` is "Let classmates find me" (on by default): off hides the @username and keeps them out of search;
+--   so does having no saved profile (Show me online and Show my profile both off).
 -- public.find_classmates(text): Add friends search, a name or @username, among learners who can be found.
 -- The rude-word check runs in the app (shared/nameFilter.ts), like display names; the database checks the format,
 -- that it is free, and the weekly limit. Everything cascades with the account and is in the data export.
@@ -20,8 +21,11 @@ create table public.usernames (
 alter table public.usernames enable row level security;
 revoke all on public.usernames from public, anon, authenticated;
 grant select on public.usernames to authenticated;
+-- Others see a @username only while it can be found: "Let classmates find me" on, and a saved profile (turning off
+-- both Show me online and Show my profile deletes that, and hides the @username with it).
 create policy usernames_visible on public.usernames for select to authenticated
-  using (user_id = (select auth.uid()) or (findable and not private.apart_from_me(user_id)));
+  using (user_id = (select auth.uid()) or (findable and not private.apart_from_me(user_id)
+    and exists (select 1 from public.profile_cards c where c.user_id = usernames.user_id)));
 create policy school_beta_access on public.usernames as restrictive for all to authenticated
   using ((select private.has_school_beta_access())) with check ((select private.has_school_beta_access()));
 
@@ -138,7 +142,7 @@ language sql stable security invoker set search_path = '' as $$
     and (strpos(u.username, q.t) > 0 or strpos(lower(coalesce(c.card->>'n', '')), q.t) > 0)
   order by (u.username = q.t) desc, (strpos(u.username, q.t) = 1 or strpos(lower(coalesce(c.card->>'n', '')), q.t) = 1) desc,
     c.last_seen desc nulls last
-  limit 21;
+  limit 20;
 $$;
 
 revoke all on function public.claim_username(text), public.set_username(text), public.set_findable(boolean), public.find_classmates(text) from public, anon;

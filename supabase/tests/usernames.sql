@@ -96,6 +96,19 @@ begin
 end;
 $$;
 
+-- With both Show switches off (no saved profile) the @username is hidden too.
+select set_config('request.jwt.claims', '{"sub":"fe000000-0000-4000-8000-000000000001","role":"authenticated"}', true);
+do $$ begin perform public.save_profile_card(null, false); end; $$;
+select set_config('request.jwt.claims', '{"sub":"fe000000-0000-4000-8000-000000000003","role":"authenticated"}', true);
+do $$
+begin
+  assert not exists (select 1 from public.usernames where username = 'kai.lin'), 'no saved profile, no @username';
+  assert not exists (select 1 from public.find_classmates('kai.lin'));
+end;
+$$;
+select set_config('request.jwt.claims', '{"sub":"fe000000-0000-4000-8000-000000000001","role":"authenticated"}', true);
+do $$ begin perform public.save_profile_card('{"n":"Kai Lin","c":"jade"}', true); end; $$;
+
 -- "Let classmates find me" off hides the @username and the search result; blocking hides both ways.
 select set_config('request.jwt.claims', '{"sub":"fe000000-0000-4000-8000-000000000002","role":"authenticated"}', true);
 do $$
@@ -109,6 +122,7 @@ do $$
 begin
   assert not exists (select 1 from public.find_classmates('mei'));
   assert not exists (select 1 from public.usernames where user_id = 'fe000000-0000-4000-8000-000000000002');
+  assert exists (select 1 from public.usernames where user_id = 'fe000000-0000-4000-8000-000000000003'), 'findable with a saved profile';
   assert public.block_user('fe000000-0000-4000-8000-000000000003', 'Ana', 'blue');
   assert not exists (select 1 from public.find_classmates('ana'));
 end;

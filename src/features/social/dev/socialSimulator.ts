@@ -8,6 +8,7 @@ import { COVER_PRESETS, GLOBAL_CHAT, type Activity, type ChatMessage, type Lesso
 import { applyRaceAction, enterRace, newRaceRoom, summarizeRoom, type RaceAction, type RaceRoomState, type RaceRoomSummary, type RaceSnapshot, type SocialColor } from '../../../../shared/quizRace';
 import type { connectRace } from '../../../services/socialService';
 import { deliver, setLobbyTransport } from '../lobbyController';
+import { USERNAME_CHANGE_DAYS, USERNAME_SEARCH_LIMIT } from '../../../../shared/username';
 import { setFriendsBackend, type DirectMessage, type FriendsBackend, type MyUsername, type SavedProfile } from '../../../services/friendsService';
 import { forceUpdateOpen } from '../socialUpdate';
 import { setRaceTransport } from '../raceController';
@@ -337,12 +338,12 @@ const friendsBackend: FriendsBackend = {
   async search(text) {
     const wanted = text.trim().replace(/^@/, '').toLowerCase();
     const found = [...users, ...OFFLINE].filter(user => user.n.toLowerCase().includes(wanted) || handleOf(user.u).includes(wanted));
-    return found.map(user => ({ ...savedOf(user.u)!, h: handleOf(user.u) })).slice(0, 21);
+    return found.map(user => ({ ...savedOf(user.u)!, h: handleOf(user.u) })).slice(0, USERNAME_SEARCH_LIMIT);
   },
   async myUsername() { return myHandle; },
   async claimUsername(base) { myHandle ??= { name: base, findable: true, chosenAt: null }; return myHandle.name; },
   async setUsername(name) {
-    if (myHandle?.chosenAt && myHandle.chosenAt > Date.now() - 7 * 86_400_000) throw new Error('You can change your username again next week.');
+    if (myHandle?.chosenAt && myHandle.chosenAt > Date.now() - USERNAME_CHANGE_DAYS * 86_400_000) throw new Error('You can change your username again next week.');
     if ([...users, ...OFFLINE].some(user => handleOf(user.u) === name)) throw new Error('That username is taken.');
     myHandle = { findable: myHandle?.findable ?? true, name, chosenAt: Date.now() };
     return name;

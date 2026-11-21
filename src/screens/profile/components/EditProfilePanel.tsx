@@ -79,7 +79,7 @@ export function EditProfilePanel({ editor, name, canUpload, googleAvatar }: {
             {editor.hasCoverUpload && cropFiles.cover && <button type="button" onClick={() => chooseImage('cover', cropFiles.cover)} className="focus-ring mt-2 p-2 text-sm font-black text-ui-muted-strong">Adjust crop</button>}
             </section>
             <section><label htmlFor="profile-name" className="profile-field-label">Name</label><input id="profile-name" className="profile-name-input" value={draft.settings.displayName} maxLength={30} autoComplete="off" onChange={(e) => editor.change({ displayName: e.target.value })} /></section>
-            <section><h3>Who can see me</h3><StudyTogetherSettings /></section>
+            <section><h3>Who can see me</h3><p className="-mt-1 pb-1 text-[13px] font-bold text-ui-muted-strong">These save right away.</p><StudyTogetherSettings /></section>
             {editor.error && <p role="alert" className="text-sm text-feedback-danger-text">{editor.error}</p>}
           </fieldset></Drawer.Body>
           <div className="profile-panel-footer">{editor.busy ? <p role="status" className="py-3 text-center font-black">Saving image…</p> : <ActionButton fullWidth className="normal-case tracking-normal text-base" onClick={() => void editor.save()}>Save</ActionButton>}</div>

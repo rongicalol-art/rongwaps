@@ -1,6 +1,7 @@
 import { useAppStore } from '../../store/useAppStore';
 import { friendsService, type DirectMessage, type FriendPerson, type SavedProfile, type StoredCard } from '../../services/friendsService';
 import { nameProblem } from '../../../shared/nameFilter';
+import { USERNAME_FORMAT_HINT, usernameFormatOk } from '../../../shared/username';
 import { usernameBase } from './socialText';
 import type { MentionNotice, Person, ProfileCard } from '../../../shared/lobby';
 import { DIRECT_KEY, isDirectNotice, lobby } from './lobbyController';
@@ -146,10 +147,9 @@ export async function loadSaved(us: string[]) {
   useAppStore.getState().setSocial({ socialSaved: saved });
 }
 
-const SEARCH_LIMIT = 20;
-/** Fresh rows replace the cached ones, but keep a @username the new row doesn't carry. */
+/** Fresh rows (each with its current @username, or none) replace the cached ones. */
 const withSaved = (known: Record<string, SavedProfile | null>, rows: SavedProfile[]) =>
-  ({ ...known, ...Object.fromEntries(rows.map(row => [row.u, { ...(known[row.u]?.h ? { h: known[row.u]!.h } : {}), ...row }])) });
+  ({ ...known, ...Object.fromEntries(rows.map(row => [row.u, row])) });
 
 /**
  * Classmates whose name or @username contains `text`, online or not: anyone with a saved profile and "Let classmates
@@ -160,7 +160,7 @@ export async function searchPeople(text: string): Promise<SavedProfile[] | null>
   if (!ready() || !self) return [];
   let rows: SavedProfile[];
   try { rows = await friendsService.search(text); } catch { return null; }
-  rows = rows.filter(row => row.u !== self && row.card?.n).slice(0, SEARCH_LIMIT);
+  rows = rows.filter(row => row.u !== self && row.card?.n);
   const now = Date.now();
   for (const row of rows) savedAt.set(row.u, now);
   const store = useAppStore.getState();
@@ -187,7 +187,7 @@ export async function ensureUsername(displayName: string) {
 /** Settings → Username: the words to show when it can't be saved, or null when it was. */
 export async function changeUsername(name: string): Promise<string | null> {
   const value = name.trim().replace(/^@/, '').toLowerCase();
-  if (!/^[a-z0-9_.]{3,20}$/.test(value) || /^\.|\.$|\.\./.test(value)) return 'Use 3 to 20 letters, numbers, dots or underscores.';
+  if (!usernameFormatOk(value)) return USERNAME_FORMAT_HINT;
   const problem = nameProblem(value);
   if (problem) return problem;
   try {
