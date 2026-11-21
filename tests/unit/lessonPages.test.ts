@@ -19,7 +19,7 @@ test('lesson page addresses resolve only for lessons that have a page', () => {
   }
 });
 
-test('every lesson page has a title, a sample that leaves most of the lesson out, and search tags within length', () => {
+test('every lesson page has a title, a few words to hear, the whole word list to read, and search tags within length', () => {
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
   for (const ref of refs) {
     const page = lessonPageData(ref);
@@ -28,7 +28,12 @@ test('every lesson page has a title, a sample that leaves most of the lesson out
     assert.ok(en && /[一-鿿]/.test(zh), `${label} title`);
     assert.equal(page.lines.length, 4, `${label} conversation`);
     assert.ok(page.lines.every((line) => line.some((token) => typeof token !== 'string')), `${label} lines have tappable words`);
-    assert.ok(page.words.length >= 6 && page.words.length <= 8 && page.words.length < page.wordCount / 3, `${label} shows a sample, not the list`);
+    assert.ok(page.words.length >= 6 && page.words.length <= 8 && page.words.length < page.wordCount / 3, `${label} plays a few words; the other recordings stay in the lesson`);
+    assert.equal(page.list.length, page.wordCount, `${label} lists every word`);
+    assert.ok(page.wordCount >= 20, `${label} word list is a whole lesson`);
+    for (const [hanzi, pinyin, meaning] of page.list) {
+      assert.ok(hanzi && pinyin && meaning && !meaning.includes('(M: '), `${label} ${hanzi} needs pinyin and a one-line meaning`);
+    }
     assert.ok(page.grammar.length >= 3, `${label} grammar`);
     const place = ref.bookId * 100 + ref.lessonId;
     for (const word of [...page.words, ...page.lines.flat().filter((token) => typeof token !== 'string')]) {
@@ -54,6 +59,7 @@ test('built lesson pages ship their own tags, the conversation and the Study but
   assert.ok(html.includes('"@type":"BreadcrumbList"') && html.includes('"@type":"LearningResource"'));
   assert.ok(!html.includes('"@type":"WebApplication"'));
   assert.ok(html.includes('Coffee or Tea?') && html.includes('咖啡') && html.includes('Study'));
+  assert.match(html, /All (?:<!-- -->)?\d+(?:<!-- -->)? words/);
   assert.ok(html.includes('data-path="/books/1/lesson-4"'));
   const later = readFileSync('dist/books/3/lesson-5.html', 'utf8');
   assert.ok(later.includes('<link rel="canonical" href="https://ronsmandarin.com/books/3/lesson-5" />'));

@@ -21,9 +21,10 @@ const artFor = ({ bookId, lessonId }: LessonPageRef) => ART[`../../assets/images
 
 const SECTION_TITLE = 'text-xl font-black tracking-tight text-ui-ink-strong';
 const LINK = 'rounded-xs text-sm font-extrabold text-brand-primary-text hover:underline focus-ring-inline';
-/** Shown clearly; the lines and words after these fade out so the rest waits in the lesson. */
+/** Shown clearly; the lines after these fade out so the rest waits in the lesson. */
 const CLEAR_LINES = 3;
-const CLEAR_WORDS = 5;
+/** Words with a recording to hear; the whole list follows lower down, to read. */
+const HEARD_WORDS = 5;
 const PUNCTUATION = /^[，。！？、]+$/;
 const attachesToWord = (line: LessonPageLine, index: number) => index > 0 && typeof line[index - 1] !== 'string' && PUNCTUATION.test(line[index] as string);
 const trailingPunctuation = (line: LessonPageLine, index: number) => (index + 1 < line.length && attachesToWord(line, index + 1) ? line[index + 1] as string : '');
@@ -34,9 +35,9 @@ function fade(from: string, to: string) {
 }
 
 /**
- * Public page for one lesson: a few words to hear, the start of a short conversation and the
- * grammar point names, ending in one button. A taste, so search visitors open the lesson for
- * the rest. Prerendered at build time (scripts/build/prerender.ts).
+ * Public page for one lesson: a few words to hear, the start of a short conversation, the grammar
+ * point names and the lesson's whole word list, ending in one button. The recordings, exercises
+ * and tests stay in the lesson. Prerendered at build time (scripts/build/prerender.ts).
  */
 export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
   const ref = { bookId, lessonId };
@@ -171,13 +172,12 @@ export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
 
             <section aria-labelledby="lesson-words" className="flex min-w-0 flex-col gap-3">
               <h2 id="lesson-words" className={SECTION_TITLE}>Words</h2>
-              <ul className="flex flex-col gap-2" style={fade('64%', '98%')}>
-                {page.words.map((word, index) => {
-                  const clear = index < CLEAR_WORDS;
+              <ul className="flex flex-col gap-2">
+                {page.words.slice(0, HEARD_WORDS).map((word, index) => {
                   const key = `word-${index}`;
                   return (
-                    <li key={word[3]} className={cn(!clear && 'pointer-events-none')}>
-                      <PracticeChoiceButton onClick={() => hear(word, key)} tabIndex={clear ? undefined : -1} aria-label={`Play ${word[0]}, ${word[1]}, ${word[2]}`} idleClassName="!px-4 !py-2.5">
+                    <li key={word[3]}>
+                      <PracticeChoiceButton onClick={() => hear(word, key)} aria-label={`Play ${word[0]}, ${word[1]}, ${word[2]}`} idleClassName="!px-4 !py-2.5">
                         <span className="flex w-full items-center gap-4">
                           <span lang="zh-Hant" className="min-w-16 font-chinese text-2xl font-semibold text-ui-ink-strong">{word[0]}</span>
                           <span className="flex min-w-0 flex-1 flex-wrap gap-x-2.5 text-base">
@@ -201,6 +201,21 @@ export function LessonPageScreen({ bookId, lessonId }: LessonPageRef) {
                 <li key={title} className="flex flex-col gap-0.5 py-3.5 lg:grid lg:grid-cols-2 lg:items-baseline lg:gap-6">
                   <span className="text-base font-black text-ui-ink-strong">{title}</span>
                   <span lang="zh-Hant" className="font-chinese text-lg font-semibold text-ui-muted-strong">{pattern}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section aria-labelledby="lesson-list" className="flex flex-col gap-3 border-t-2 border-ui-divider pt-8">
+            <h2 id="lesson-list" className={SECTION_TITLE}>All {page.list.length} words</h2>
+            <ul className="gap-x-10 sm:columns-2 lg:columns-3">
+              {page.list.map(([hanzi, pinyin, meaning], index) => (
+                <li key={index} className="flex break-inside-avoid items-baseline gap-3 border-b-2 border-ui-divider py-2.5">
+                  <span lang="zh-Hant" className="min-w-16 shrink-0 font-chinese text-xl font-semibold text-ui-ink-strong">{hanzi}</span>
+                  <span className="flex min-w-0 flex-1 flex-wrap gap-x-2.5 text-base">
+                    <span className="font-black text-ui-ink-strong">{pinyin}</span>
+                    <span className="font-bold text-ui-ink">{meaning}</span>
+                  </span>
                 </li>
               ))}
             </ul>
