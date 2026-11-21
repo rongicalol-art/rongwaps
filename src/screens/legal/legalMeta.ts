@@ -2,7 +2,7 @@
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
 /** ISO date the current Terms and Privacy Policy take effect. */
-export const LEGAL_EFFECTIVE_DATE = '2026-12-01';
+export const LEGAL_EFFECTIVE_DATE = '2026-11-21';
 
 export interface LegalUpdate {
   /** The changed pages; Read opens the first, and each links the others. */
@@ -22,7 +22,7 @@ export interface LegalUpdate {
 export const LEGAL_UPDATE: LegalUpdate | null = {
   pages: ['privacy'],
   summary: 'Study together adds friends and private messages. You choose what others see in Settings.',
-  acceptedFrom: '2026-12-01',
+  acceptedFrom: '2026-11-21',
 };
 
 /** Shown beside the effective date: accounts made since sign-up opened are bound from sign-up. */

@@ -53,7 +53,8 @@ export class Lobby extends BaseLobby {
   async failMentions(enabled) { await this.ctx.storage.put('fixture-mention-outage', enabled); }
   /** Turns the privacy update on before its date (kept in SQLite so it survives a wake). */
   async openSocialUpdate() { this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS fixture_social_open (x)'); this.fixtureOpenFlag = true; }
-  updateOpen(now) { return (this.fixtureOpenFlag ??= this.ctx.storage.sql.exec("SELECT 1 FROM sqlite_master WHERE name='fixture_social_open'").toArray().length > 0) || super.updateOpen(now); }
+  // The test decides when the privacy update starts, whatever today's date is.
+  updateOpen() { return (this.fixtureOpenFlag ??= this.ctx.storage.sql.exec("SELECT 1 FROM sqlite_master WHERE name='fixture_social_open'").toArray().length > 0); }
   async partyMention(uid, notice) {
     if (await this.ctx.storage.get('fixture-mention-outage')) throw new Error('Synthetic mention outage');
     return super.partyMention(uid, notice);

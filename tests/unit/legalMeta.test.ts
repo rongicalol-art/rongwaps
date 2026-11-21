@@ -42,8 +42,11 @@ test('Google photo: older accounts keep it, newer ones start with initials, a ch
 test('Study together turns friends, messages and the long class chat on exactly when the privacy update takes effect', async () => {
   const { LEGAL_EFFECTIVE_DATE } = await import('../../src/screens/legal/legalMeta');
   const { SOCIAL_UPDATE_FROM } = await import('../../shared/lobby');
-  const { readFileSync } = await import('node:fs');
+  const { readFileSync, readdirSync } = await import('node:fs');
   assert.equal(SOCIAL_UPDATE_FROM, Date.parse(`${LEGAL_EFFECTIVE_DATE}T00:00:00+08:00`));
-  const migration = readFileSync('supabase/migrations/20261119170000_friends_and_messages.sql', 'utf8');
-  assert.ok(migration.includes(`timestamptz '${LEGAL_EFFECTIVE_DATE} 00:00:00+08'`), 'the database waits for the same day');
+  // The newest migration that (re)defines the database's date wins.
+  const latest = readdirSync('supabase/migrations').sort().reverse()
+    .map(name => readFileSync(`supabase/migrations/${name}`, 'utf8'))
+    .find(text => /function private\.social_update_at\(\)/.test(text));
+  assert.ok(latest?.includes(`timestamptz '${LEGAL_EFFECTIVE_DATE} 00:00:00+08'`), 'the database starts on the same day');
 });
