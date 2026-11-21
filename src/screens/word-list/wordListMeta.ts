@@ -5,7 +5,7 @@ import { WORD_COUNTS } from './data/counts';
 import type { ListWord } from './wordListTypes';
 
 /** The exam's own Chinese name for each level, as test takers see it on the registration form. */
-const EXAM_NAME: Record<number, string> = { 1: '準備級', 2: '入門級', 3: '基礎級', 4: '進階級', 5: '高階級' };
+const EXAM_NAME: Record<number, string> = { 1: '準備級', 2: '入門級', 3: '基礎級', 4: '進階級', 5: '高階級', 6: '流利級', 7: '精通級' };
 /** A page a visitor can tap through and a folder they can study: longer levels are shown in parts of about this many words. */
 const PART_SIZE = 500;
 
