@@ -153,7 +153,9 @@ function GrammarPage({ link, page }: { link: GrammarPageLink; page: GrammarPageD
                   key={index}
                   lang="zh-Hant"
                   className={cn(
-                    'flex h-14 min-w-14 items-center justify-center rounded-control border-2 px-3 font-chinese text-2xl text-ui-ink-strong',
+                    'flex items-center justify-center rounded-control border-2 font-chinese text-2xl text-ui-ink-strong',
+                    // Six words still fit one row on a phone.
+                    answer.length > 5 ? 'h-12 min-w-12 px-2' : 'h-14 min-w-14 px-3',
                     picked[index] === undefined ? 'border-dashed border-ui-border'
                       : result === null ? 'border-ui-border bg-ui-surface'
                         : result ? 'border-feedback-success bg-feedback-success-surface' : 'border-feedback-danger bg-feedback-danger-surface',

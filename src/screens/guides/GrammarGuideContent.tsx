@@ -32,6 +32,17 @@ function grammarSummaryByBook() {
     });
 }
 
+/** The public grammar pages, one group per lesson in lesson order. */
+function grammarPagesByLesson() {
+  const groups: { bookId: number; lessonId: number; pages: (typeof GRAMMAR_PAGES)[number][] }[] = [];
+  for (const page of GRAMMAR_PAGES) {
+    const last = groups.at(-1);
+    if (last && last.bookId === page[1] && last.lessonId === page[2]) last.pages.push(page);
+    else groups.push({ bookId: page[1], lessonId: page[2], pages: [page] });
+  }
+  return groups;
+}
+
 export function GrammarGuideContent() {
   const coverage = grammarSummaryByBook();
 
@@ -57,14 +68,16 @@ export function GrammarGuideContent() {
           One page per pattern: the rule in plain English, example sentences with pinyin, and one sentence to build
           yourself.
         </DocParagraph>
-        <ul className="divide-y divide-ui-divider">
-          {GRAMMAR_PAGES.map(([slug, bookId, lessonId, title]) => (
-            <li key={slug} className="flex flex-wrap items-baseline justify-between gap-2 py-2.5">
-              <Link to={grammarPagePath(slug)} className={docLinkClass}>{title}</Link>
-              <span className="text-sm font-black tabular-nums text-ui-muted-strong">Book {bookId} · Lesson {lessonId}</span>
-            </li>
-          ))}
-        </ul>
+        {grammarPagesByLesson().map(({ bookId, lessonId, pages }) => (
+          <div key={`${bookId}-${lessonId}`} className="flex flex-col gap-1.5 border-t border-ui-divider py-3">
+            <p className="text-sm font-black text-ui-muted-strong">Book {bookId} · Lesson {lessonId}</p>
+            <ul className="flex flex-col gap-1.5">
+              {pages.map(([slug, , , title]) => (
+                <li key={slug}><Link to={grammarPagePath(slug)} className={docLinkClass}>{title}</Link></li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </DocSection>
 
       <DocSection title="Book exercises, not just flashcards">
