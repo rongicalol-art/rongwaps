@@ -46,6 +46,20 @@ export async function getProfileMediaUrl(userId: string, path: string): Promise<
   return data.signedUrl;
 }
 
+/**
+ * Links for many saved photos in one request, reusing each one until it is due (a new link is a new address, so the
+ * photo would download again and show initials meanwhile). A file that can't be read is left out.
+ */
+export async function getProfileMediaUrls(paths: string[]): Promise<Map<string, string>> {
+  const now = Date.now();
+  const due = paths.filter(path => !((signedUrls.get(path)?.expires ?? 0) > now));
+  if (due.length) {
+    const { data } = await supabase.storage.from(BUCKET).createSignedUrls(due, 3600);
+    for (const item of data ?? []) if (item.path && item.signedUrl && !item.error) signedUrls.set(item.path, { url: item.signedUrl, expires: now + PROFILE_MEDIA_REFRESH_MS });
+  }
+  return new Map(paths.flatMap(path => { const cached = signedUrls.get(path); return cached && cached.expires > now ? [[path, cached.url]] : []; }));
+}
+
 const WEBP_QUALITY = 0.85;
 
 /** Safari can't encode WebP from a canvas (it hands back PNG), so it falls back to a small WASM encoder loaded only then. */
