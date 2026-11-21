@@ -5,6 +5,8 @@ const LOADERS: Record<number, () => Promise<{ WORDS: readonly ListWord[] }>> = {
   1: () => import('./data/level-1'),
   2: () => import('./data/level-2'),
   3: () => import('./data/level-3'),
+  4: () => import('./data/level-4'),
+  5: () => import('./data/level-5'),
 };
 
 const loaded = new Map<number, readonly ListWord[]>();

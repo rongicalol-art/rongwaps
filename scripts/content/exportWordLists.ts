@@ -5,7 +5,7 @@
  * The words, levels and pinyin are the official list (TBCL, NAER) from output/levels/tbcl.csv, the
  * same file `npm run levels:build` reads. Its meanings and examples are NAER's and are not copied:
  * a meaning comes from our own vocabulary cards, or from content/word-lists/glosses.json for the
- * words the books do not teach. Fails when a word has neither.
+ * words the books do not teach (keys: `word`, `word pinyin`, or `word@level`). Fails when a word has neither.
  * Run: npm run word-lists:export
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'fs';
@@ -59,16 +59,21 @@ for (const { level } of WORD_LIST_LEVELS) {
     const forms = row[TRADITIONAL].split('/');
     const readings = row[PINYIN].split('/');
     // One spelling with two readings (和 hàn/hé) keeps both; several spellings show the first.
-    const pinyin = forms.length === 1 ? readings.join(' / ') : readings[0];
-    const word = forms[0];
-    const key = `${word} ${pinyin}`;
+    const spoken = forms.length === 1 ? readings.join(' / ') : readings[0];
+    const listed = forms[0];
+    // The official list brackets an optional part: 一邊(兒) is 一邊 in Taiwan, 沒(有)用 is 沒有用.
+    const whole = (text: string) => text.replace(/[(（][兒儿r][)）]/g, '').replace(/[()（）]/g, '');
+    const word = whole(listed);
+    const key = `${listed} ${spoken}`;
+    const pinyin = whole(spoken);
     const sameWord = forms.flatMap((form) => cards.get(form) ?? []);
     // The card read the same way; a word taught twice keeps its first meaning.
     const card = sameWord.find((item) => readings.some((reading) => plain(reading) === plain(item.pinyin)));
-    const gloss = glosses[key] ?? glosses[word] ?? (card ? cardGloss(card) : undefined);
+    // `道@5` is the meaning of 道 at level 5 only, where a lower level lists the same word and reading in another sense.
+    const gloss = glosses[`${listed}@${level}`] ?? glosses[key] ?? glosses[listed] ?? glosses[word] ?? (card ? cardGloss(card) : undefined);
     if (!gloss) missing.push(key);
     // The simplified spelling rides along only where it differs: a saved card needs it.
-    const simplified = row[SIMPLIFIED].split('/')[0];
+    const simplified = whole(row[SIMPLIFIED].split('/')[0]);
     return simplified && simplified !== word ? [word, pinyin, gloss ?? '', simplified] : [word, pinyin, gloss ?? ''];
   }).sort((a, b) => plain(a[1]).localeCompare(plain(b[1])) || a[1].localeCompare(b[1], 'zh-u-co-pinyin'));
   const body = words.map((word) => `  ${JSON.stringify(word)},`).join('\n');
