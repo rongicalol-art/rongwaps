@@ -12,7 +12,7 @@ Record choices that should remain stable across tasks. Keep each entry short.
 
 ### 2026-11-21 — A word-build tile says the character itself
 
-- Chosen: a quiz word-build tile plays the character's own sound, not the tone changes that only happen inside the word: 你 nǐ in 你好, 一 yī, 不 bù, 西 xī in 東西, 服 fú in 衣服, 兒 ér in 一點兒; a particle that is only ever neutral (了 le) keeps it. The word decides only when the character has a different reading there (行 háng in 銀行, 長 zhǎng in 長大, 好 hào in 愛好). The book's recording of the character comes first, then the recorded syllable. Every tile of every course word (6,543 across Books 1–4) has a recording, so no tile needs a synthetic voice. Distractors keep the earlier rule.
+- Chosen: a quiz word-build tile plays the character's own sound, not the tone changes that only happen inside the word: 你 nǐ in 你好, 一 yī, 不 bù, 西 xī in 東西, 服 fú in 衣服, 兒 ér in 一點兒; a particle that is only ever neutral (了 le) keeps it. The word decides only when the character has a different reading there (行 háng in 銀行, 長 zhǎng in 長大, 好 hào in 愛好). The book's recording of the character comes first, then the recorded syllable. Every tile of every course word (6,543 across Books 1–4) has a recording, so no tile needs a synthetic voice. A wrong-answer tile says the main reading of the character (中 zhōng, 長 cháng, 和 hé; the course reading first), so every tile in a word-build has a sound.
 - Reason: owner, 2026-11-21: a tile is one character, so a changed tone on it is confusing; just say the character unless the pronunciation is different. 326 tiles were silent before because only a word-exact reading was allowed.
 - Affects: `src/screens/quiz/utils/wordBuildAudio.ts`, `tests/unit/wordBuildAudio.test.ts`.
 
