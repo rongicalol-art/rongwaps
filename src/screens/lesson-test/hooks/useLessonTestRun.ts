@@ -42,7 +42,9 @@ function reviewMissedWords(missed: LessonTestQuestion[], sessionId: string): boo
 
 /**
  * The test's flow: part intro → questions (no right or wrong, no going back) → results → Fix round over
- * every miss (answers checked, with the reason) → done. The run is saved after every answer.
+ * every miss (answers checked, with the reason) → done. The results and done screens open Scripts & answers over
+ * themselves; the finished run (plan and answers) is kept for it, also for the Test tab later. The run is saved after
+ * every answer.
  */
 export function useLessonTestRun(lesson: LessonTestLesson) {
   const [attempt, setAttempt] = useState(() => startAttempt(lesson));
@@ -86,6 +88,7 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
       reading: score.reading,
       missedLessons: [...new Set(score.missed.map(({ question }) => question.lesson).filter((id) => id !== lesson.lessonId))],
       shownVersionIds: attempt.plan.items.map((item) => item.itemId),
+      review: { plan: attempt.plan, answers: attempt.answers },
     });
     setResult({ score, seconds, passed: score.correct / score.total >= LESSON_TEST_PASS, rescheduled });
     setStage('results');

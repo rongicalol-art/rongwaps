@@ -23,6 +23,7 @@ import {
   PiDeviceMobileBold,
   PiExportBold,
   PiXCircleFill,
+  PiFileTextBold,
   PiFireFill,
   PiFolderFill,
   PiGraduationCapFill,
@@ -316,6 +317,8 @@ const ICONS = {
   bellOff: PiBellSimpleSlashBold,
   chat: PiChatCircleDotsBold,
   chatFill: PiChatCircleFill,
+  /** A recording's or text's script (the lesson test's Fix round). */
+  script: PiFileTextBold,
   answerYes: AnswerYesIcon,
   answerNo: AnswerNoIcon,
   statusCheck: DuoStatusCheckIcon,

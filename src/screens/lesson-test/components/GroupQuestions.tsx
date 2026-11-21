@@ -14,8 +14,8 @@ interface GroupQuestionsProps {
   /** Choices only heard (Book 1) show as sound bars; Band B prints them. */
   spoken: boolean;
   script: Script;
-  /** Number of the first question, as in the TOCFL booklet. */
-  firstNumber: number;
+  /** Each question's number on the test, as in the TOCFL booklet (the Fix round may show only some of them). */
+  numbers: number[];
   /** How many questions the narrator has asked; which question's choice is being read. */
   asked: number;
   mark: number | null;
@@ -32,7 +32,7 @@ const text = (value: Pick<TestText, 'traditional' | 'simplified'>, script: Scrip
  * TOCFL booklet). The printed choices show from the start; each question appears as the narrator asks it, its number
  * lights while it is asked and read, and the screen glides down to it. Number keys answer the first open question.
  */
-export function GroupQuestions({ questions, orders, answers, checked, spoken, script, firstNumber, asked, mark, markQuestion, playing, say, onAnswer }: GroupQuestionsProps) {
+export function GroupQuestions({ questions, orders, answers, checked, spoken, script, numbers, asked, mark, markQuestion, playing, say, onAnswer }: GroupQuestionsProps) {
   const reduceMotion = useReducedMotion();
   const blocks = useRef<(HTMLDivElement | null)[]>([]);
   useEffect(() => {
@@ -54,7 +54,7 @@ export function GroupQuestions({ questions, orders, answers, checked, spoken, sc
                   playing && markQuestion === index && asked > index ? 'bg-brand-primary text-brand-on-primary' : 'bg-brand-primary-wash text-brand-primary-text',
                 )}
               >
-                {firstNumber + index}
+                {numbers[index]}
               </span>
               {question.prompt && (
                 <motion.p
