@@ -94,6 +94,27 @@ test('a dictionary word stays silent when the voice is out or its reading cannot
   assert.equal(spoken.length, 0);
 });
 
+test('a dictionary row shows a speaker only when it can play without guessing', () => {
+  const service = new AudioService();
+  assert.equal(service.canPlayCard({ front: '學生', audio: 'B1L01-1-01.mp3', source: 'dictionary' }), true);
+  assert.equal(service.canPlayCard({ front: '銀行', pinyin: 'yínháng', source: 'dictionary' }), true);
+  assert.equal(service.canPlayCard({ front: '長', pinyin: 'zhǎng', source: 'dictionary' }), true);
+  assert.equal(service.canPlayCard({ front: '一會兒', pinyin: 'yīhuìr', source: 'dictionary' }), false);
+  assert.equal(service.canPlayCard({ front: '銀行', source: 'dictionary' }), false);
+  assert.equal(service.canPlayCard({ front: '銀行', pinyin: 'yínháng' }), false, 'only reading-checked dictionary words use the voice');
+});
+
+test('speakReading says the text with the given reading', async (t) => {
+  const asked = server(t, mp3);
+  const service = new AudioService();
+  const audio = FakeAudio.last;
+  const playback = service.speakReading('长大', 'ㄓㄤˇ ㄉㄚˋ', 1);
+  await settle();
+  assert.deepEqual(asked[0].body, { text: '长大', voice: 'female', reading: 'ㄓㄤˇ ㄉㄚˋ' });
+  audio.onended?.();
+  await playback;
+});
+
 test('other Chinese text uses the cloud voice first and the device voice when it is out; English never asks', async (t) => {
   let status = 200;
   const asked = server(t, () => (status === 200 ? mp3() : Response.json({ error: 'out' }, { status })));
