@@ -16,25 +16,28 @@ export type AvatarSize = keyof typeof SIZE;
 export function Avatar({ name, color, size = 'md', live = false, src, className = '' }: {
   name: string; color: AvatarColor; size?: AvatarSize; live?: boolean; src?: string; className?: string;
 }) {
+  // The photo is clipped to the circle in an inner layer, so the online dot can sit on the rim instead of inside it.
   return (
     <span
-      className={`relative inline-grid shrink-0 place-items-center rounded-full font-black leading-none ring-2 ring-ui-surface overflow-hidden ${SIZE[size]} ${className}`}
+      className={`relative inline-grid shrink-0 place-items-center rounded-full font-black leading-none ring-2 ring-ui-surface ${SIZE[size]} ${className}`}
       style={avatarStyle(color)}
       title={name}
     >
       <span aria-hidden className="select-none">{(name.trim()[0] || '?').toUpperCase()}</span>
       {src && (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          loading="lazy"
-          decoding="async"
-          onError={(e) => { e.currentTarget.style.display = 'none'; }}
-          className="absolute inset-0 h-full w-full rounded-full object-cover"
-        />
+        <span className="absolute inset-0 overflow-hidden rounded-full">
+          <img
+            key={src}
+            src={src}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            className="h-full w-full object-cover"
+          />
+        </span>
       )}
-      {live && <span aria-hidden className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-feedback-success ring-2 ring-ui-surface z-10" />}
+      {live && <span aria-hidden className="absolute -bottom-0.5 -right-0.5 z-10 h-3 w-3 rounded-full bg-feedback-success ring-2 ring-ui-surface" />}
     </span>
   );
 }
