@@ -48,7 +48,6 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const people = useOthers(useAppStore(state => state.socialPeople));
   const online = useOthers(useAppStore(state => state.socialOnline));
   const onlineTotal = useOnlineTotal();
-  const today = useAppStore(state => state.socialToday);
   const identity = useSocialIdentity();
   const pending = useAppStore(state => state.racePending);
   const hasRoom = useAppStore(state => !!state.race);
@@ -79,6 +78,8 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const onlineNow = new Set(classmates.map(person => person.u));
   const recent = recentRows.filter(row => row.card?.n && row.u !== me && !onlineNow.has(row.u))
     .map(row => ({ person: savedPerson(row), seen: row.seen }));
+  // With people online, those seen in the last 3 hours ride in a strip on top, so it never feels empty.
+  const lately = recent.filter(row => row.seen !== null && Date.now() - row.seen < RECENT_STRIP_MS);
   useEffect(() => { if (inbox && (panel.tab === 'online' ? !selected : thread === 'add')) void loadRecent(); }, [inbox, panel.tab, selected, thread]);
   const openThread = (u: string) => setPanel({ kind: 'people', tab: 'chat', thread: u });
   const footer = () => {
@@ -130,9 +131,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">
       {panel.tab === 'chat' ? (!inbox || thread === 'class' ? <ChatThread /> : thread === 'add' ? <AddFriends online={classmates.filter(person => person.u !== me)} recent={recent} lesson={lesson} /> : threadPerson ? <DirectThread key={threadPerson.u} friend={threadPerson} /> : <ChatList />) : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
-          {!selected && today !== null && today > onlineTotal && (
-            <p className="pb-1 pt-1 text-xs font-black text-ui-muted-strong sm:hidden">{onlineTotal > 0 ? `${onlineTotal} online now · ${today} today` : `${today} were here today`}</p>
-          )}
+          {!selected && classmates.length > 0 && lately.length > 0 && <RecentStrip rows={lately} open={setProfile} />}
           {!selected && rooms.map(room => <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-4 last:border-b-0">
             <AvatarStack people={room.players.map(player => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="sm" />
             <span className="min-w-0 flex-1"><span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span><span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span></span>
@@ -159,7 +158,6 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
               </div>
             ))}
             <MoreNote count={moreOnline} where="online" />
-            {recent.length > 0 && <RecentlyHere rows={recent} open={setProfile} />}
           </>}
         </div>
         {footerContent && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{footerContent}</div>}
@@ -168,7 +166,28 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   );
 }
 
-/** Online → Recently here: classmates who were online lately (their saved profile), newest first. */
+const RECENT_STRIP_MS = 3 * 3_600_000;
+
+/** Online, top: faces of classmates seen in the last 3 hours, newest first; a tap opens their profile. */
+function RecentStrip({ rows, open }: { rows: Array<{ person: Person; seen: number | null }>; open: (person: Person) => void }) {
+  return (
+    <section className="pb-2 pt-1">
+      <h3 className="pb-1.5 text-xs font-black text-ui-muted-strong">Recently here</h3>
+      <div className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 custom-scrollbar">
+        {rows.map(({ person, seen }) => (
+          <button key={person.u} type="button" onClick={() => open(person)} aria-label={`${person.n}, ${seenLabel(seen).toLowerCase()}`}
+            className="flex w-[76px] shrink-0 flex-col items-center gap-1 rounded-compact py-1.5 outline-none hover:bg-ui-hover focus-ring-inline">
+            <Avatar name={person.n} color={person.c} size="lg" src={person.i} />
+            <span className="w-full truncate px-1 text-center text-xs font-black text-ui-ink-strong">{person.n}</span>
+            <span className="text-[11px] font-bold leading-none text-ui-muted">{seenLabel(seen).replace(/^Seen /, '')}</span>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** Online → Recently here when nobody is online: classmates who were online lately (their saved profile), newest first. */
 function RecentlyHere({ rows, open }: { rows: Array<{ person: Person; seen: number | null }>; open: (person: Person) => void }) {
   return <>
     <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Recently here</h3>

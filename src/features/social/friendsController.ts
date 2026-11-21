@@ -184,15 +184,6 @@ export async function ensureUsername(displayName: string) {
   } catch { usernameFor = ''; }
 }
 
-/** Midnight today in Taiwan, where the class is. */
-const startOfTaiwanDay = (now = Date.now()) => Date.parse(`${new Date(now + 8 * 3_600_000).toISOString().slice(0, 10)}T00:00:00+08:00`);
-
-/** "24 today" by the faces: learners online at some point today (it rides on their saved last seen). */
-export async function loadToday() {
-  if (!ready()) return;
-  try { useAppStore.getState().setSocial({ socialToday: await friendsService.seenSince(startOfTaiwanDay()) }); } catch { /* Keeps the last count. */ }
-}
-
 /** Settings → Username: the words to show when it can't be saved, or null when it was. */
 export async function changeUsername(name: string): Promise<string | null> {
   const value = name.trim().replace(/^@/, '').toLowerCase();

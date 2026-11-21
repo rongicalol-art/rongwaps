@@ -57,8 +57,6 @@ export interface SocialState {
   socialRecent: SavedProfile[];
   /** This learner's @username and "Let classmates find me" (null until loaded). */
   socialUsername: MyUsername | null;
-  /** Learners online at some point today (Taiwan time), me included; null until loaded. */
-  socialToday: number | null;
   socialMentions: MentionNotice[];
   socialMentionToast: MentionNotice | null;
   socialMentionTarget: MentionNotice | null;
@@ -108,7 +106,6 @@ const LIVE_DEFAULTS = {
   socialSaved: {},
   socialRecent: [],
   socialUsername: null,
-  socialToday: null,
   socialMentions: [],
   socialMentionToast: null,
   socialMentionTarget: null,

@@ -349,7 +349,6 @@ const friendsBackend: FriendsBackend = {
     return name;
   },
   async setFindable(on) { if (myHandle) myHandle = { ...myHandle, findable: on }; },
-  async seenSince() { return users.length + OFFLINE.length + 1; },
 };
 
 export function startSimulator() {

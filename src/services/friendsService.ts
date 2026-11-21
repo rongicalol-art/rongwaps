@@ -34,8 +34,6 @@ export interface FriendsBackend {
   claimUsername(base: string): Promise<string>;
   setUsername(name: string): Promise<string>;
   setFindable(on: boolean): Promise<void>;
-  /** How many learners were online since `since` (their saved "last seen"). */
-  seenSince(since: number): Promise<number>;
 }
 
 const PAGE = 50;
@@ -138,12 +136,6 @@ const database: FriendsBackend = {
     const { error } = await supabase.rpc('set_findable', { p_on: on });
     if (error) throw error;
   },
-  async seenSince(since) {
-    // A count only (no rows), on the last_seen index.
-    const { count, error } = await supabase.from('profile_cards').select('user_id', { count: 'exact', head: true }).gte('last_seen', new Date(since).toISOString());
-    if (error) throw error;
-    return count ?? 0;
-  },
 };
 
 let backend: FriendsBackend = database;
@@ -166,5 +158,4 @@ export const friendsService: FriendsBackend = {
   claimUsername: base => backend.claimUsername(base),
   setUsername: name => backend.setUsername(name),
   setFindable: on => backend.setFindable(on),
-  seenSince: since => backend.seenSince(since),
 };

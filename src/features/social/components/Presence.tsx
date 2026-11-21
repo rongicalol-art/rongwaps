@@ -42,9 +42,6 @@ export function GlobalPresenceButton() {
   const me = useAppStore(state => state.socialMe);
   const total = useAppStore(state => Math.max(0, state.socialOnlineTotal - (state.showOnline && state.socialStatus === 'live' ? 1 : 0)));
   const unread = useAppStore(unreadTotal);
-  // Learners on earlier today, shown only when it says more than the online number (it includes those online now).
-  const today = useAppStore(state => state.socialToday);
-  const earlier = today !== null && today > total + 1 ? today : null;
   const lines = useAppStore(state => state.socialChat?.messages ?? NO_LINES);
   const read = useAppStore(state => state.socialChatRead);
   const still = useAppStore(isStudying);
@@ -56,8 +53,7 @@ export function GlobalPresenceButton() {
     return [...writers.map(line => ({ id: line.u, name: line.n, color: line.c, src: line.i })), ...samples.filter(person => person.u !== me).map(person => ({ id: person.u, name: person.n, color: person.c, src: person.i }))]
       .filter(face => !seen.has(face.id) && seen.add(face.id)).slice(0, 3);
   }, [lines, read, me, samples, unread]);
-  const todayLabel = earlier ? ` ${earlier} here today.` : '';
-  const label = unread > 0 ? `${unread} new ${unread === 1 ? 'message' : 'messages'}. Open chat.` : total === 0 ? `Study together.${todayLabel} Open chat.` : `${total} people online.${todayLabel} Open chat.`;
+  const label = unread > 0 ? `${unread} new ${unread === 1 ? 'message' : 'messages'}. Open chat.` : total === 0 ? 'Study together. Open chat.' : `${total} people online. Open chat.`;
   return <button type="button" aria-label={label}
     onClick={openChats}
     className="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-control px-1 text-ui-muted-strong outline-none transition-colors hover:bg-ui-hover focus-ring-inline">
@@ -82,13 +78,7 @@ export function GlobalPresenceButton() {
         </motion.span>
       )}
     </span>
-    {(total > 0 || earlier) && (
-      <span aria-hidden className={`whitespace-nowrap text-xs font-black tabular-nums ${unread > 0 ? 'ml-3.5' : ''} ${total > 0 ? '' : 'hidden sm:inline'}`}>
-        {total > 0 && (total > 99 ? '99+' : total)}
-        {/* Desktop only: a phone header has no room, so there it's at the top of the Online tab. */}
-        {earlier && <span className="hidden font-extrabold text-ui-muted sm:inline">{total > 0 ? ' · ' : ''}{earlier > 999 ? '999+' : earlier} today</span>}
-      </span>
-    )}
+    {total > 0 && <span className={`text-xs font-black tabular-nums ${unread > 0 ? 'ml-3.5' : ''}`}>{total > 99 ? '99+' : total}</span>}
   </button>;
 }
 
