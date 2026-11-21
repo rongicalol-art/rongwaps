@@ -1,5 +1,5 @@
 import type { SentenceAudio } from '../../types/grammarPractice';
-import type { LessonTestItem, LessonTestQuestion, TestText } from '../../types/lessonTest';
+import type { DialogueItem, LessonTestItem, LessonTestQuestion, TestText } from '../../types/lessonTest';
 
 /** One line of a script: who says it (女, 男, the question's ?, or an answer's letter), its text, and its clip. */
 export interface ScriptRow {
@@ -8,8 +8,8 @@ export interface ScriptRow {
   audio?: SentenceAudio;
   /** The line that holds a question's answer. */
   answer: boolean;
-  /** A recording with several questions: the number of the question this line answers. */
-  number?: number;
+  /** A recording with several questions: the numbers of the questions this line answers ("7", or "7, 8"). */
+  number?: string;
 }
 
 /** What the Fix round's Script sheet shows: spoken lines to read and replay, or a text's reading and meaning. */
@@ -22,6 +22,20 @@ const LETTERS = 'ABCD';
 /** Whether a question has a script to show (gap sentences and picture choices don't: the answer bar holds it all). */
 export const hasTestScript = (item: LessonTestItem) => item.kind !== 'scene-gap' && item.kind !== 'read-pick-picture';
 const VOICE: Record<string, string> = { F: '女', M: '男' };
+/** A dialogue's answer lines: line index → the questions it answers (two questions can share a line). */
+export function dialogueAnswerLines(item: DialogueItem, questions: readonly LessonTestQuestion[]) {
+  const lines = new Map<number, LessonTestQuestion[]>();
+  for (const question of questions) {
+    const line = question.answerLine ?? item.answerLine;
+    lines.set(line, [...(lines.get(line) ?? []), question]);
+  }
+  return lines;
+}
+
+/** The question numbers a line shows when its recording has several questions. */
+export const answerLabel = (item: LessonTestItem, answered: LessonTestQuestion[] | undefined, numberOf: (question: LessonTestQuestion) => number) => (
+  answered && item.questions.length > 1 ? answered.map(numberOf).join(', ') : undefined);
+
 const paragraphs = (text: string | undefined) => (text ?? '').split('\n').map((line) => line.trim()).filter(Boolean);
 
 /**
@@ -38,7 +52,7 @@ export function testScript(
 ): TestScript | null {
   switch (item.kind) {
     case 'dialogue': {
-      const answers = new Map(questions.map((question) => [question.answerLine ?? item.answerLine, question]));
+      const answers = dialogueAnswerLines(item, questions);
       return {
         kind: 'lines',
         intro: item.intro,
@@ -47,7 +61,7 @@ export function testScript(
           text: line,
           audio: line.audio,
           answer: answers.has(index),
-          number: item.questions.length > 1 && answers.has(index) ? numberOf(answers.get(index)!) : undefined,
+          number: answerLabel(item, answers.get(index), numberOf),
         })),
       };
     }

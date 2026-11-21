@@ -9,6 +9,7 @@ import { ChineseText } from './ChineseText';
 import { LinePlay } from './LinePlay';
 import { choiceText, type Script } from './ChoiceList';
 import { testRubyItems } from '../testPinyin';
+import { answerLabel, dialogueAnswerLines } from '../testScript';
 import { PinyinText, RubyRun } from './PinyinText';
 import { ReadingText } from './ReadingText';
 
@@ -68,8 +69,8 @@ interface LineProps {
   view: BookletView;
   /** The line that holds a right answer, or a spoken answer that was picked wrongly. */
   tone?: 'right' | 'wrong';
-  /** A recording with several questions: the number of the question this line answers. */
-  number?: number;
+  /** A recording with several questions: the numbers of the questions this line answers. */
+  number?: string;
 }
 
 /** One spoken line: who says it, the Chinese with a small play button at its end, its meaning. A tap on a word looks it up; anywhere else plays the line. */
@@ -344,7 +345,7 @@ export function BookletItem({ item, planned, answers, firstNumber, view }: Bookl
   switch (item.kind) {
     case 'dialogue': {
       const clips = lineClips(item.lines);
-      const answerAt = new Map(item.questions.map((question) => [question.answerLine ?? item.answerLine, question]));
+      const answerAt = dialogueAnswerLines(item, item.questions);
       side = (
         <>
           <PlayAll id={item.id} clips={clips} view={view} />
@@ -360,7 +361,7 @@ export function BookletItem({ item, planned, answers, firstNumber, view }: Bookl
                   badge={VOICE[line.speaker] ?? ''}
                   view={view}
                   tone={answered ? 'right' : undefined}
-                  number={answered && item.questions.length > 1 ? numberOf(answered) : undefined}
+                  number={answerLabel(item, answered, numberOf)}
                 />
               );
             })}

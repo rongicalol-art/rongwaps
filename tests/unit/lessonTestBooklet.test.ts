@@ -31,3 +31,18 @@ test('a finished test keeps its run for Scripts & answers, and a reset clears it
   state.resetLessonTests();
   assert.deepEqual(state.lessonTestLast, {});
 });
+
+test('a saved test can be read back only while its questions and choices still match the pack', async () => {
+  const { planFitsLesson } = await import('../../src/utils/lesson/lessonTestPlan');
+  const choice = (traditional: string) => ({ traditional });
+  const lesson = {
+    key: 'b9l01', allowWords: [],
+    slots: [{ id: 's', part: 'reading', versions: [{ id: 'i', kind: 'read-pick', questions: [{ id: 'q', key: 0, choices: [choice('一'), choice('二'), choice('三')] }] }] }],
+  } as never;
+  const planned = (order: number[]) => ({ key: 'b9l01', seed: 'x', items: [{ slotId: 's', part: 'reading', itemId: 'i', orders: { q: order } }] });
+  assert.equal(planFitsLesson(lesson, planned([2, 0, 1])), true);
+  assert.equal(planFitsLesson(lesson, planned([3, 0, 1, 2])), false, 'a choice the pack no longer has');
+  assert.equal(planFitsLesson(lesson, { items: [{ itemId: 'gone', orders: {} }] }), false, 'an item the pack no longer has');
+  assert.equal(planFitsLesson(lesson, {}), false, 'a malformed saved plan');
+  assert.equal(planFitsLesson(lesson, undefined), false);
+});

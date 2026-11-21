@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import type { LessonTestItem, LessonTestQuestion, LessonTestSounds, TestText } from '../../../types/lessonTest';
+import { useAppStore } from '../../../store/useAppStore';
 import type { PlannedItem } from '../../../utils/lesson/lessonTestPlan';
 import { cn } from '../../../utils/cn';
 import { useTestAudio } from '../hooks/useTestAudio';
@@ -102,6 +103,9 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   const { stop, finish } = audio;
   // Opening the Script ends the screen's own play (it won't start again behind the sheet), so only one thing plays.
   useEffect(() => { if (scriptOpen) finish(); }, [scriptOpen, finish]);
+  // So does opening a word in the dictionary (a checked Fix round screen): nothing plays behind it.
+  const lookingUp = useAppStore((state) => state.dictionaryWord !== null);
+  useEffect(() => { if (checked && lookingUp) finish(); }, [checked, lookingUp, finish]);
   const selected = answers[question.id];
   const pick = (choice: number) => onAnswer(question.id, choice);
   // Picture questions have no speaker (the answer being read presses in instead), unless a clip failed: then it offers a retry.

@@ -18,7 +18,7 @@ import { useLessonTestData } from '../../../hooks/useLessonTestData';
 import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
 import { isLessonTestPassed } from '../../../utils/lesson/lessonCompletion';
-import { lessonItemIndex } from '../../../utils/lesson/lessonTestPlan';
+import { planFitsLesson } from '../../../utils/lesson/lessonTestPlan';
 import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
 import {
   getAggregatedPart,
@@ -219,11 +219,7 @@ function LessonBody({
   const testRecord = useAppStore((state) => (testData ? state.lessonTests[testData.lesson.key] : undefined));
   const lastTest = useAppStore((state) => (testData ? state.lessonTestLast[testData.lesson.key] : undefined));
   // The last finished test can be read back while its questions are still in the pack.
-  const canReviewTest = useMemo(() => {
-    if (!testData || !lastTest) return false;
-    const items = lessonItemIndex(testData.lesson);
-    return lastTest.plan.items.every((planned) => items.has(planned.itemId));
-  }, [testData, lastTest]);
+  const canReviewTest = useMemo(() => Boolean(testData && lastTest && planFitsLesson(testData.lesson, lastTest.plan)), [testData, lastTest]);
   const isTest = Boolean(testData) && testFor === lesson.id;
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);

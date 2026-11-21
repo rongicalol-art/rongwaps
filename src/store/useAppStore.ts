@@ -346,6 +346,16 @@ function sanitizePersistedState(state: Record<string, unknown>): Record<string, 
     debugLogger.warn('Sync', 'Persisted lesson test attempt was malformed; dropping it.', attempt);
     cleaned.lessonTestAttempt = null;
   }
+  // The last finished test per lesson: drop an entry that isn't a plan with items and its answers.
+  const last = cleaned.lessonTestLast as Record<string, { plan?: { items?: unknown }; answers?: unknown } | null> | undefined;
+  if (last && typeof last === 'object') {
+    for (const [key, entry] of Object.entries(last)) {
+      if (!entry || typeof entry !== 'object' || !Array.isArray(entry.plan?.items) || !entry.answers || typeof entry.answers !== 'object') {
+        debugLogger.warn('Sync', `Persisted last lesson test "${key}" was malformed; dropping it.`, entry);
+        cleaned.lessonTestLast = Object.fromEntries(Object.entries(cleaned.lessonTestLast as Record<string, unknown>).filter(([other]) => other !== key));
+      }
+    }
+  }
   return cleaned;
 }
 

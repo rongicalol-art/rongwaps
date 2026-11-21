@@ -37,11 +37,11 @@ test("a recording with two questions tags each answer line with its question's n
   const both = testScript(item, item.questions, {}, numberOf);
   assert.ok(both?.kind === 'lines');
   assert.equal(both.intro?.traditional, '請聽一段留言，然後回答兩個問題。');
-  assert.deepEqual(both.rows.map((row) => row.number), [7, 8, undefined]);
+  assert.deepEqual(both.rows.map((row) => row.number), ['7', '8', undefined]);
   // The Fix round shows only the missed question: its line keeps its own number.
   const missed = testScript(item, [item.questions[1]], {}, numberOf);
   assert.ok(missed?.kind === 'lines');
-  assert.deepEqual(missed.rows.map((row) => [row.answer, row.number]), [[false, undefined], [true, 8], [false, undefined]]);
+  assert.deepEqual(missed.rows.map((row) => [row.answer, row.number]), [[false, undefined], [true, '8'], [false, undefined]]);
 });
 
 test("a picture question's script is its question, then the answers in the order shown, the right one marked", () => {
@@ -73,4 +73,15 @@ test('a text gives its pinyin and English by paragraph, title first; gap sentenc
   });
   const gap: SceneGapItem = { id: 's', kind: 'scene-gap', picture: 'reading:B2L01-R02', alt: '', questions: [question('q1')] };
   assert.equal(testScript(gap, gap.questions, {}, numberOf), null);
+});
+
+test('two questions answered on the same line both show their numbers there', () => {
+  const item: DialogueItem = {
+    id: 't', kind: 'dialogue', answerLine: 1,
+    lines: [say('F', '你好。'), say('F', '我七點起床，八點上課。')],
+    questions: [question('q1'), question('q2')],
+  };
+  const script = testScript(item, item.questions, {}, numberOf);
+  assert.ok(script?.kind === 'lines');
+  assert.deepEqual(script.rows.map((row) => [row.answer, row.number]), [[false, undefined], [true, '7, 8']]);
 });

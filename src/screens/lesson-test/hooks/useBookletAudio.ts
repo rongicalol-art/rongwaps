@@ -49,7 +49,8 @@ export function useBookletAudio() {
   const playAll = useCallback(async (key: string, clips: BookletClip[]) => {
     const id = ++run.current;
     audioService.stop();
-    for (const [index, clip] of clips.entries()) {
+    // A line without a recording is skipped, not the end of the run.
+    for (const [index, clip] of clips.filter((each) => each.audio).entries()) {
       if (run.current !== id) return;
       if (index > 0) await wait(LINE_GAP_MS);
       if (run.current !== id) return;

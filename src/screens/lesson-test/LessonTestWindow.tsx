@@ -6,6 +6,7 @@ import { useModalFocus } from '../../hooks/useModalFocus';
 import { useLessonTestData } from '../../hooks/useLessonTestData';
 import { LessonTestScreen } from './LessonTestScreen';
 import { TestBooklet } from './components/TestBooklet';
+import { planFitsLesson } from '../../utils/lesson/lessonTestPlan';
 
 interface LessonTestWindowProps {
   bookId: number;
@@ -44,8 +45,18 @@ export function LessonTestWindow({ bookId, lessonId, review = false, onClose }: 
       <div className="relative flex min-h-0 flex-1 flex-col">
         {isLoading ? (
           <LoadingScreen tone="practice" message="Loading test" />
-        ) : data && review && last ? (
-          <TestBooklet lesson={data.lesson} plan={last.plan} answers={last.answers} onClose={onClose} />
+        ) : data && review ? (
+          last && planFitsLesson(data.lesson, last.plan) ? (
+            <TestBooklet lesson={data.lesson} plan={last.plan} answers={last.answers ?? {}} onClose={onClose} />
+          ) : (
+            // Never a new test from Scripts & answers: the saved one is gone or no longer matches the questions.
+            <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
+              <p className="text-lg font-black text-ui-ink-strong">This test’s answers aren’t available any more.</p>
+              <div className="w-full max-w-xs">
+                <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" onClick={onClose}>Back to lesson</ActionButton>
+              </div>
+            </div>
+          )
         ) : data ? (
           <LessonTestScreen key={data.lesson.key} lesson={data.lesson} sounds={data.sounds} onClose={onClose} />
         ) : (
