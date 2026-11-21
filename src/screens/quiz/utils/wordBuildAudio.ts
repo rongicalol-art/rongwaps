@@ -2,29 +2,37 @@ import type { Flashcard } from '../../../data/flashcards';
 import { audioService } from '../../../services/audioService';
 import { findReadingMatch, pronunciationKey } from '../../../utils/pinyin/pronunciationMatching';
 import { characterReadings } from '../../../utils/pinyin/characterReadings';
-import { wordBopomofo } from '../../../utils/pinyin/bopomofo';
-import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { ReadingsIndex } from '../../../utils/pinyin/pronunciation';
 
 const SYLLABLE = /^[a-zü]+[1-5]$/;
 
+/** The letters of a reading without its tone: xi5 -> xi. */
+const letters = (reading: string) => reading.slice(0, -1);
+
 /**
- * The tapped character's reading, independent of where the learner places it: the tone it has where it
- * first appears in the word (the book's 一/不 tones as written, a third tone before a third tone said as
- * a second, the first of two listed readings; erhua stays silent), so the tile sounds like the word it builds.
+ * The tapped character's own sound, independent of where the learner places it. A tile is the character on
+ * its own, so tone changes that only happen inside the word are left out (你 nǐ, 一 yī, 不 bù, 西 xī in 東西,
+ * 兒 ér in 一點兒; the book writes third tones as citation tones already). The word decides only when the
+ * character has a different reading there (行 háng in 銀行, 長 zhǎng in 長大, 好 hào in 愛好).
  */
 export function wordBuildTileReading(card: Flashcard, char: string, index: ReadingsIndex | null = null): string | undefined {
-  if (!/^[㐀-鿿]$/u.test(char)) return undefined;
+  if (!/^[\u3400-\u9fff]$/u.test(char)) return undefined;
   if (Array.from(card.front).includes(char)) {
     // Punctuation, digits and Latin letters (這還不容易？, 台北101) carry no reading; the characters line up alone.
     const aligned = characterReadings(card.front, card.pinyin, card.traditional);
     const han = Array.from(card.front).filter((value) => /^[\u3400-\u9fff]$/u.test(value)).join('');
     if (!aligned || aligned.characters.join('') !== han) return undefined;
-    const at = aligned.characters.indexOf(char);
-    const reading = aligned.readings[at][0];
-    // Erhua (一點兒) is not a syllable of its own; it never plays as a standalone er.
-    if (!reading || !SYLLABLE.test(reading) || reading === 'r5') return undefined;
-    return /3$/.test(reading) && /3$/.test(aligned.readings[at + 1]?.[0] ?? '') ? reading.replace(/3$/, '2') : reading;
+    const reading = aligned.readings[aligned.characters.indexOf(char)][0];
+    if (!reading || !SYLLABLE.test(reading)) return undefined;
+    if (char === '一') return 'yi1';
+    if (char === '不') return 'bu4';
+    if (reading === 'r5') return 'er2'; // Erhua: the character 兒 itself.
+    if (!/5$/.test(reading)) return reading;
+    // A neutral tone: the character's own tone with the same spelling (東西 xi -> xī); a particle that is only
+    // ever neutral (了 le, 嗎 ma) keeps it.
+    return (index?.get(char) ?? []).map((entry) => pronunciationKey(entry.pinyin))
+      .find((key): key is string => Boolean(key && SYLLABLE.test(key) && !/5$/.test(key) && letters(key) === letters(reading)))
+      ?? (index ? reading : undefined);
   }
   // Distractors have no word context: only an unambiguous indexed reading is safe, and 一/不 change tone.
   if (/[一不]/.test(char)) return undefined;
@@ -67,13 +75,3 @@ export function resolveWordBuildTileAudio(
     : sounds?.get(reading);
 }
 
-/**
- * A tile of the word whose sound no recording has (shuí in 水果, neutral xi in 東西): the cloud voice says the
- * character with that exact reading, made once by the server and kept. Only after resolveWordBuildTileAudio found nothing.
- */
-export function wordBuildTileSpeech(card: Flashcard, char: string): { text: string; reading: string } | undefined {
-  if (!Array.from(card.front).includes(char)) return undefined;
-  const reading = wordBuildTileReading(card, char);
-  const bopomofo = reading ? wordBopomofo(char, numberToToneMarks(reading)) : null;
-  return bopomofo ? { text: char, reading: bopomofo } : undefined;
-}
