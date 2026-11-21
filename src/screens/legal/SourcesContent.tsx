@@ -46,7 +46,7 @@ export function SourcesContent() {
 
       <LegalSection title="Textbook">
         <LegalParagraph>
-          Lessons follow <strong>時代華語 Modern Chinese</strong>, Books 1 to 4, edited by the Tamkang University
+          Lessons follow <strong>Modern Chinese</strong> (時代華語), Books 1 to 4, edited by the Tamkang University
           Chinese Language Center (淡江大學華語中心) and published by Cheng Chung Book Co. (正中書局). Lesson
           texts, vocabulary, grammar examples, page images and recordings from the book remain the property of
           their owners and are provided for study alongside your own copy of the book. Ron&apos;s Mandarin is not

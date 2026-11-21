@@ -17,7 +17,7 @@ export function AboutContent() {
 
       <LegalSection title="What it is">
         <LegalParagraph>
-          Ron&apos;s Mandarin is a free study app for the <strong>時代華語 Modern Chinese</strong> textbooks. It
+          Ron&apos;s Mandarin is a free study app for the <strong>Modern Chinese</strong> (時代華語) textbooks. It
           turns each lesson into practice you can do on your phone: listen and read, learn the characters, review
           the words, then test yourself the way TOCFL will.
         </LegalParagraph>
