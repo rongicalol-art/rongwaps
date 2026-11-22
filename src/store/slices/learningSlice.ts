@@ -1,4 +1,4 @@
-import { archiveOldReviews, EMPTY_REVIEW_ARCHIVE, mergeReviewEvents, REVIEW_KEEP_MS, type ReviewArchive, type ReviewContext, type ReviewEvent } from '../../utils/srs/reviewEvents';
+import { archiveFromSummary, archiveOldReviews, EMPTY_REVIEW_ARCHIVE, mergeReviewEvents, REVIEW_KEEP_MS, type ReviewArchive, type ReviewContext, type ReviewEvent } from '../../utils/srs/reviewEvents';
 import { type DailyReviewPlan } from '../../utils/srs/reviewSession';
 import type { SRSData, Quality } from '../../utils/srs/srsEngine';
 import { reviewSessionKey } from '../../utils/srs/sessionProgress';
@@ -25,9 +25,10 @@ export interface LearningState {
   /**
    * `after`: a reset happened then; drop everything before it. `full`: `events` is the server's whole history
    * (a first or full pull), so the archive is rebuilt from it; otherwise older answers in `events` are skipped,
-   * because this device cannot tell whether its archive already counts them.
+   * because this device cannot tell whether its archive already counts them. `older`: with a full pull, the
+   * server's summary of the answers it did not send one by one.
    */
-  mergeReviewHistory: (events: ReviewEvent[], after?: number, full?: boolean) => void;
+  mergeReviewHistory: (events: ReviewEvent[], after?: number, full?: boolean, older?: unknown) => void;
   acknowledgeReviewEvents: (ids: string[]) => void;
   dailyReviewPlan: DailyReviewPlan | null;
   setDailyReviewPlan: (plan: DailyReviewPlan | null) => void;
@@ -125,7 +126,7 @@ export function createLearningSlice(set: SetState): LearningState {
     reviewArchive: EMPTY_REVIEW_ARCHIVE,
     dailyReviewPlan: null,
     setDailyReviewPlan: (dailyReviewPlan) => set({ dailyReviewPlan }),
-    mergeReviewHistory: (events, after = 0, full = false) => set(s => {
+    mergeReviewHistory: (events, after = 0, full = false, older = null) => set(s => {
       // Most pulls bring nothing new (only the overlap window again): keep the same arrays, so nothing re-renders or is saved.
       if (after <= 0 && !full) {
         const known = new Set(s.reviewEvents.map(e => e.id));
@@ -134,7 +135,7 @@ export function createLearningSlice(set: SetState): LearningState {
       }
       const now = Date.now();
       const incoming = full || after > 0 ? events : events.filter(e => e.reviewedAt >= now - REVIEW_KEEP_MS);
-      const kept = archiveOldReviews(mergeReviewEvents(s.reviewEvents, incoming, after), full || after > 0 ? EMPTY_REVIEW_ARCHIVE : s.reviewArchive, now);
+      const kept = archiveOldReviews(mergeReviewEvents(s.reviewEvents, incoming, after), full ? archiveFromSummary(older) : after > 0 ? EMPTY_REVIEW_ARCHIVE : s.reviewArchive, now);
       return {
         reviewEvents: kept.events,
         reviewArchive: kept.archive,

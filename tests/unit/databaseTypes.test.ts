@@ -52,7 +52,7 @@ const EXPECTED_FUNCTIONS = [
   'delete_my_account',
   'enforce_user_flashcard_cap',
   'export_my_data',
-  'get_sync_state',
+  'get_sync_state', 'get_sync_state_recent',
   'handle_new_user',
   'has_beta_access',
   'has_full_course_access',

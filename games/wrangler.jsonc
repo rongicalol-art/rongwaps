@@ -7,5 +7,6 @@
   "vars": { "APP_ORIGIN": "https://ronsmandarin.com", "SUPABASE_URL": "https://ylpzxpqyfaayavkvhikw.supabase.co", "OWNER_EMAILS": "gwaporon311@gmail.com,s25113312@stu.edu.tw" },
   "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "GameRoom" }, { "name": "LOBBY", "class_name": "Lobby" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameRoom"] }, { "tag": "v2", "new_sqlite_classes": ["Lobby"] }],
-  "observability": { "enabled": true, "head_sampling_rate": 0.1, "traces": { "enabled": true, "head_sampling_rate": 0.1 } }
+  // Every log line is kept (volume is low, and a rare error is lost at one in ten); traces stay sampled.
+  "observability": { "enabled": true, "head_sampling_rate": 1, "traces": { "enabled": true, "head_sampling_rate": 0.1 } }
 }

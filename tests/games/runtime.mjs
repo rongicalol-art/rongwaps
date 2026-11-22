@@ -180,6 +180,22 @@ try {
   const alice = await open('/lobby/socket', 'lobby', (await post('/lobby', 'alice')).ticket);
   let bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
   await until(() => last(alice, 'me') && last(bob, 'me'));
+  // Renewing the sign-in over the open socket: the account's own fresh token keeps it connected; another
+  // account's token (or a forged one) ends it, like a failed ticket request would.
+  {
+    const renewer = await open('/lobby/socket', 'lobby', (await post('/lobby', 'renewer')).ticket);
+    await until(() => last(renewer, 'me'));
+    send(renewer, { t: 'auth', jwt: await token('renewer') });
+    send(renewer, { t: 'here', l: 777, a: 'cards', show: true });
+    await until(() => last(renewer, 'counts')?.v['777']?.n === 1);
+    assert.equal(renewer.closed, null, 'a valid renewal keeps the connection');
+    const thief = await open('/lobby/socket', 'lobby', (await post('/lobby', 'thief')).ticket);
+    await until(() => last(thief, 'me'));
+    send(thief, { t: 'auth', jwt: await token('renewer') });
+    await until(() => thief.closed === 4002);
+    renewer.socket.close(1000, 'done');
+    await until(() => renewer.closed !== null);
+  }
   send(alice, { t: 'here', l: 101, a: 'cards', show: true });
   send(bob, { t: 'here', l: 101, a: 'lesson', show: true });
   await until(() => last(bob, 'counts')?.v['101']?.n === 2 && last(bob, 'people')?.v.length === 2);

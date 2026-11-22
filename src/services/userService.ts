@@ -13,6 +13,8 @@ export type UserFolderRow = UserFolder;
 interface SyncStateWire {
   cards: CardProgressRow[] | null;
   review_events?: ReviewEvent[] | null;
+  /** Only on a full pull from a database with 20261122130000: a summary of the answers not sent one by one. */
+  older_reviews?: unknown;
   cursor: string | null;
   profile: {
     updated_at: string | null;
@@ -25,6 +27,8 @@ interface SyncStateWire {
 
 export interface UserSyncState {
   reviewEvents: ReviewEvent[];
+  /** The server's summary of older answers (full pulls only); undefined from an older database. */
+  olderReviews?: unknown;
   srsData: Record<string, SRSData>;
   learnedCards: string[];
   /** Synced preferences from `user_profiles.settings`; empty for a new account. */
@@ -53,6 +57,12 @@ export interface UserSyncState {
  * merge.
  */
 const PULL_OVERLAP_MS = 2_000;
+
+/**
+ * A full pull carries this many days of answers one by one; the device keeps 120 (REVIEW_KEEP_MS) and folds the
+ * few days between into its archive itself, so the server's summary and the device's never count the same answer.
+ */
+const FULL_PULL_RECENT_DAYS = 125;
 
 /** Largest array the card RPC accepts per call (enforced server-side). */
 const RPC_BATCH_SIZE = 500;
@@ -86,11 +96,18 @@ export const userService = {
   // only card rows at/after that ISO timestamp (bounded incremental pull);
   // omit for a full pull.
   getSyncState: async (options?: { since?: string; authorization?: string }): Promise<UserSyncState> => {
-    const request = supabase.rpc('get_sync_state', {
-      p_since: options?.since ? overlapWindowStart(options.since) : null,
-    });
-    if (options?.authorization) request.setHeader('Authorization', options.authorization);
-    const { data, error } = await request;
+    const run = (recent: boolean) => {
+      const p_since = options?.since ? overlapWindowStart(options.since) : null;
+      // A full pull asks for recent answers in full and a summary of the rest.
+      const request = recent
+        ? supabase.rpc('get_sync_state_recent', { p_since, p_recent_days: FULL_PULL_RECENT_DAYS })
+        : supabase.rpc('get_sync_state', { p_since });
+      if (options?.authorization) request.setHeader('Authorization', options.authorization);
+      return request;
+    };
+    let { data, error } = await run(!options?.since);
+    // A database from before 20261122130000 does not have that function: ask the old way (it returns everything).
+    if (error?.code === 'PGRST202' && !options?.since) ({ data, error } = await run(false));
     if (error) {
       debugLogger.error('Supabase', 'Error fetching sync state:', error);
       throw error;
@@ -104,6 +121,7 @@ export const userService = {
       srsData,
       learnedCards,
       reviewEvents: (wire.review_events ?? []).filter(validReviewEvent),
+      olderReviews: wire.older_reviews ?? undefined,
       settings: wire.profile?.settings ?? {},
       folders: wire.folders ?? [],
       lastUpdated: wire.profile?.updated_at ?? undefined,

@@ -216,3 +216,30 @@ test('old answers are folded into a small archive and the profile totals stay ex
   state.resetProgress();
   assert.equal(total(), 0);
 });
+
+test('a full pull with a server summary rebuilds the archive: totals and streak match the full history', async () => {
+  const { archiveFromSummary, studyTimes } = await import('../../src/utils/srs/reviewEvents');
+  const { computeStreak } = await import('../../src/utils/srs/profileStats');
+  const day = 86_400_000;
+  const now = Date.now();
+  // 300 days in a row, one answer a day at this moment's time of day.
+  const all: ReviewEvent[] = Array.from({ length: 300 }, (_, i) => ({ ...context(), cardId: `w${i}`, quality: 4 as const, scheduled: true, reviewedAt: now - (299 - i) * day }));
+  // What the server does: the last 125 days one by one, the rest as a count, a first time and day times.
+  const recent = all.filter(e => e.reviewedAt >= now - 125 * day);
+  const old = all.filter(e => e.reviewedAt < now - 125 * day);
+  const summary = { count: old.length, first_at: old[0].reviewedAt, times: old.flatMap(e => [e.reviewedAt, e.reviewedAt]) };
+  assert.equal(archiveFromSummary(summary).days.length, old.length);
+  assert.deepEqual(archiveFromSummary(null), { count: 0, firstAt: null, days: [] });
+  assert.deepEqual(archiveFromSummary({ count: 'x', times: [] }), { count: 0, firstAt: null, days: [] });
+
+  const state: ReturnType<typeof createLearningSlice> & { isReviewMode: boolean; activeReviewSessionCards: string[] | null; swipeFeedback: null } = {
+    ...createLearningSlice(update => { Object.assign(state, typeof update === 'function' ? update(state) : update); }),
+    isReviewMode: false, activeReviewSessionCards: null, swipeFeedback: null };
+  state.mergeReviewHistory(recent, 0, true, summary);
+  assert.equal(state.reviewArchive.count + state.reviewEvents.length, 300);
+  assert.equal(state.reviewArchive.firstAt, all[0].reviewedAt);
+  assert.equal(computeStreak(studyTimes(state.reviewEvents, state.reviewArchive), now).streak, computeStreak(all, now).streak);
+  // The same full pull again (a sign-in) gives the same totals.
+  state.mergeReviewHistory(recent, 0, true, summary);
+  assert.equal(state.reviewArchive.count + state.reviewEvents.length, 300);
+});

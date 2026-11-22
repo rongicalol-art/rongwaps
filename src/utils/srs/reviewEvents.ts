@@ -78,3 +78,22 @@ export function archiveOldReviews(events: ReviewEvent[], archive: ReviewArchive,
 export function studyTimes(events: readonly Pick<ReviewEvent, 'reviewedAt'>[], archive: ReviewArchive): Pick<ReviewEvent, 'reviewedAt'>[] {
   return archive.days.length ? [...archive.days.map(reviewedAt => ({ reviewedAt })), ...events] : events as Pick<ReviewEvent, 'reviewedAt'>[];
 }
+
+/** What a full pull returns for answers older than the ones it carries in full (see `get_sync_state`, 20261122130000). */
+export interface OlderReviews { count: number; first_at: number | null; times: number[] }
+
+/** The archive for a server summary: its count and first time, and one time for each of this device's calendar days. */
+export function archiveFromSummary(older: unknown): ReviewArchive {
+  if (!older || typeof older !== 'object') return EMPTY_REVIEW_ARCHIVE;
+  const { count, first_at: firstAt, times } = older as Partial<OlderReviews>;
+  if (!Number.isInteger(count) || !count || count < 0 || !Array.isArray(times)) return EMPTY_REVIEW_ARCHIVE;
+  const seen = new Set<string>();
+  const days: number[] = [];
+  for (const time of times) {
+    if (!Number.isFinite(time) || time <= 0) continue;
+    const day = localDay(new Date(time));
+    if (!seen.has(day)) { seen.add(day); days.push(time); }
+  }
+  days.sort((a, b) => a - b);
+  return { count, firstAt: typeof firstAt === 'number' && Number.isFinite(firstAt) ? firstAt : days[0] ?? null, days };
+}
