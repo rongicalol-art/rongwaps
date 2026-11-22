@@ -103,7 +103,6 @@ function makeFixture() {
   };
   files.set('/pack/manifest.json', manifest);
   const calls: string[] = [];
-  const prunes: string[] = [];
   const transport: RuntimePackTransport = {
     async fetchJson<T>(requested: string) {
       const path = requested.replace(/\?v=[a-f0-9]+$/, '');
@@ -112,9 +111,8 @@ function makeFixture() {
       if (data === undefined) throw new Error(`fixture missing ${path}`);
       return { data: data as T, source: 'network' as const };
     },
-    async prune(namespace, version) { prunes.push(`${namespace}:${version}`); },
   };
-  return { manifest, transport, calls, prunes };
+  return { manifest, transport, calls };
 }
 
 test('production rejects development-only/non-publishable packs', async () => {
@@ -179,7 +177,6 @@ test('lazy lookup loads only needed shards, marks 學 → 𦥯 expandable, and c
   assert.equal(fixture.calls.length, firstFetchCount);
   assert(loader.getMetrics().inMemoryHits > 0);
   assert(loader.getMetrics().networkFiles < 6, 'lookup must not download the full 193-file candidate pack');
-  assert.equal(fixture.prunes[0], 'decomposition-runtime:1:fixture-v1');
 });
 
 test('direct/reverse indexes and structure projections preserve semantics', async () => {
@@ -232,11 +229,10 @@ test('missing, leaf, cycles, and maximum depth are explicit states', async () =>
   assert.equal(expanded.status, 'found');
 });
 
-test('manifest version/schema changes trigger persistent-cache namespace invalidation', async () => {
+test('a manifest with another schema version is refused', async () => {
   const fixture = makeFixture();
   const loader = new RuntimePackLoader({ basePath: '/pack', environment: 'test', allowDevelopmentCandidate: true, transport: fixture.transport });
   await loader.getManifest();
-  assert.deepEqual(fixture.prunes, ['decomposition-runtime:1:fixture-v1']);
   const invalid = makeFixture();
   invalid.manifest.schemaVersion = 2;
   invalid.manifest.version = 'fixture-v2';
@@ -248,33 +244,14 @@ test('manifest version/schema changes trigger persistent-cache namespace invalid
   await assert.rejects(invalidLoader.getManifest(), RuntimePackSafetyError);
 });
 
-test('persistent shard reads stay in the shared versioned cache namespace', async () => {
-  const fixture = makeFixture();
-  const keys: string[] = [];
-  const transport: RuntimePackTransport = {
-    async fetchJson<T>(path: string, label: string, persistentKey: string) {
-      keys.push(persistentKey);
-      const result = await fixture.transport.fetchJson<T>(path, label, persistentKey);
-      return { data: result.data, source: path.endsWith('manifest.json') ? 'network' : 'persistent-cache' };
-    },
-    prune: fixture.transport.prune,
-  };
-  const loader = new RuntimePackLoader({ basePath: '/pack', environment: 'test', allowDevelopmentCandidate: true, transport });
-  await loader.getRecord('學');
-  assert.equal(loader.getMetrics().persistentCacheFiles, 1);
-  assert.equal(keys[0], '');
-  assert.ok(keys.some((key) => /^decomposition-runtime:1:fixture-v1:record:/u.test(key)));
-});
-
 test('hot course records answer without loading any shard, and a stale bundle is ignored', async () => {
   const fixture = makeFixture();
   const record = { r: 'U+5B78:alt-0:neutral', s: 0, t: ['g', '學', [['g', '子']]] } as never;
   const transportFor = (version: string): RuntimePackTransport => ({
-    async fetchJson<T>(path: string, label: string, persistentKey: string) {
+    async fetchJson<T>(path: string, label: string) {
       if (path.endsWith('hot.json')) return { data: { version, records: { 學: record } } as T, source: 'network' as const };
-      return fixture.transport.fetchJson<T>(path, label, persistentKey);
+      return fixture.transport.fetchJson<T>(path, label);
     },
-    prune: fixture.transport.prune,
   });
   const fresh = new RuntimePackLoader({ basePath: '/pack', environment: 'test', allowDevelopmentCandidate: true, transport: transportFor('fixture-v1') });
   assert.equal((await fresh.getRecord('學')).status, 'found');

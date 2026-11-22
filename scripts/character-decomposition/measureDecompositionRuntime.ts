@@ -26,7 +26,6 @@ function createFileTransport(): RuntimePackTransport {
         source: 'network' as const,
       };
     },
-    async prune() {},
   };
 }
 

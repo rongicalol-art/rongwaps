@@ -1,33 +1,30 @@
-import { del, get, keys, set } from 'idb-keyval';
+import { del, keys } from 'idb-keyval';
 import { timeDataRequest } from '../utils/debug/requestTiming';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { NetworkError, PackMissError } from './errors';
 import { isSupabaseConfigured, supabase } from './supabaseClient';
 
 interface StaticJsonOptions {
-  persistentKey?: string;
   revalidate?: boolean;
   /** With `revalidate`: only the server's answer will do (e.g. a deploy removed a listed file). */
   serverOnly?: boolean;
   /** Skip the browser's saved copy of this file and replace it (the saved copy failed validation). */
   reload?: boolean;
-  fallbackToPersistent?: boolean;
   validate?: (data: unknown) => boolean;
 }
 
 export interface StaticJsonFetchMetadata<T> {
   data: T;
-  source: 'persistent-cache' | 'network';
+  source: 'network';
 }
 
 const CACHE_PREFIX = 'rongwaps-content:';
-const prunedVersions = new Set<string>();
 let persistedContentPurge: Promise<void> | null = null;
 
 async function purgePersistedContentOnce(): Promise<void> {
-  if (!canUsePersistentCache()) return;
+  if (typeof indexedDB === 'undefined') return;
   persistedContentPurge ??= (async () => {
-    const prefix = toCacheKey('');
+    const prefix = CACHE_PREFIX;
     const storedKeys = await keys();
     await Promise.all(storedKeys
       .filter((key): key is string => typeof key === 'string' && key.startsWith(prefix))
@@ -197,37 +194,15 @@ export function fetchContentBlobUrl(path: string, signal?: AbortSignal): Promise
   return entry.promise;
 }
 
-function canUsePersistentCache(): boolean {
-  return typeof indexedDB !== 'undefined';
-}
-
-function toCacheKey(key: string): string {
-  return `${CACHE_PREFIX}${key}`;
-}
 
 export async function fetchStaticJsonWithMetadata<T>(
   path: string,
   label: string,
   options: StaticJsonOptions = {},
 ): Promise<StaticJsonFetchMetadata<T>> {
-  const protectedContent = PROTECTED_CONTENT.test(path);
-  if (protectedContent) await purgePersistedContentOnce();
-  // Protected packs stay in memory only; IndexedDB would make them available offline
-  // as full reusable JSON files on the user's device.
-  const cacheKey = !protectedContent && options.persistentKey ? toCacheKey(options.persistentKey) : null;
-  let fallback: T | undefined;
-  if (cacheKey && canUsePersistentCache()) {
-    try {
-      const cached = await get<T>(cacheKey);
-      if (cached !== undefined && (!options.validate || options.validate(cached))) {
-        if (!options.fallbackToPersistent) return { data: cached, source: 'persistent-cache' };
-        fallback = cached;
-      }
-    } catch (error) {
-      // Graceful degradation: IndexedDB blocked; network loading remains available
-      debugLogger.warn('Cache', `Persistent cache read failed for "${cacheKey}"`, error);
-    }
-  }
+  // Packs live in memory and in the browser's own saved copies. Older versions also kept them in IndexedDB:
+  // remove those once.
+  if (PROTECTED_CONTENT.test(path)) await purgePersistedContentOnce();
 
   if (typeof window === 'undefined') {
     try {
@@ -250,46 +225,23 @@ export async function fetchStaticJsonWithMetadata<T>(
   const controller = new AbortController();
   const deadline = setTimeout(() => controller.abort(), SERVER_WAKE_MS);
   try {
-  let response: Response;
-  try {
-    response = await timeDataRequest(label, () => {
-      const { signal } = controller;
-      if (options.reload) return fetchContent(path, { cache: 'reload', signal });
-      if (!options.revalidate) return fetchContent(path, { cache: 'default', signal });
-      return options.serverOnly ? fetchContent(path, { cache: 'no-cache', signal }) : revalidateOrSavedCopy(path, signal);
-    });
-  } catch (error) {
-    if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
-    throw error;
-  }
+  const response = await timeDataRequest(label, () => {
+    const { signal } = controller;
+    if (options.reload) return fetchContent(path, { cache: 'reload', signal });
+    if (!options.revalidate) return fetchContent(path, { cache: 'default', signal });
+    return options.serverOnly ? fetchContent(path, { cache: 'no-cache', signal }) : revalidateOrSavedCopy(path, signal);
+  });
   const contentType = response.headers.get('content-type');
 
   if (!response.ok) {
-    if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     if (response.status === 404) {
       throw new PackMissError(label, `${path} returned 404`);
     }
     throw new NetworkError(`${path} returned ${response.status}`, response.status);
   }
-  let data: T;
-  try {
-    if (!contentType?.includes('application/json')) throw new Error(`${path} did not return JSON`);
-    data = await response.json() as T;
-    if (options.validate && !options.validate(data)) throw new Error(`${path} failed validation`);
-  } catch (error) {
-    if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
-    throw error;
-  }
-
-  if (cacheKey && canUsePersistentCache()) {
-    try {
-      await set(cacheKey, data);
-    } catch (error) {
-      // Graceful degradation: cache writes are optional and must never block content delivery
-      debugLogger.warn('Cache', `Persistent cache write failed for "${cacheKey}"`, error);
-    }
-  }
-
+  if (!contentType?.includes('application/json')) throw new Error(`${path} did not return JSON`);
+  const data = await response.json() as T;
+  if (options.validate && !options.validate(data)) throw new Error(`${path} failed validation`);
   return { data, source: 'network' };
   } finally { clearTimeout(deadline); }
 }
@@ -300,37 +252,4 @@ export async function fetchStaticJson<T>(
   options: StaticJsonOptions = {},
 ): Promise<T> {
   return (await fetchStaticJsonWithMetadata<T>(path, label, options)).data;
-}
-
-export async function removeStaticJsonCache(key: string): Promise<void> {
-  if (!canUsePersistentCache()) return;
-  try {
-    await del(toCacheKey(key));
-  } catch (error) {
-    // Graceful degradation: persistent storage unavailable during cache deletion
-    debugLogger.warn('Cache', `Persistent cache delete failed for "${key}"`, error);
-  }
-}
-
-export async function pruneStaticJsonCache(namespace: string, activeVersion: string): Promise<void> {
-  if (!canUsePersistentCache()) return;
-
-  const pruneKey = `${namespace}:${activeVersion}`;
-  if (prunedVersions.has(pruneKey)) return;
-  prunedVersions.add(pruneKey);
-
-  try {
-    const namespacePrefix = toCacheKey(`${namespace}:`);
-    const activePrefix = toCacheKey(`${namespace}:${activeVersion}:`);
-    const staleKeys = (await keys()).filter((key) => (
-      typeof key === 'string'
-      && key.startsWith(namespacePrefix)
-      && !key.startsWith(activePrefix)
-    ));
-    await Promise.all(staleKeys.map((key) => del(key)));
-  } catch (error) {
-    // Graceful degradation: cache pruning failure resets tracking set
-    debugLogger.warn('Cache', `Persistent cache pruning failed for "${pruneKey}"`, error);
-    prunedVersions.delete(pruneKey);
-  }
 }
