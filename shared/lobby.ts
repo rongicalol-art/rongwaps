@@ -105,7 +105,7 @@ export type LobbyClientMessage =
   | { t: 'auth'; jwt: string }
   | { t: 'here'; l: number | null; a: Activity | null; show: boolean; i?: string }
   /** `online`: the social panel is open (rooms stream, one Online snapshot). `v: 2`: rooms stream only while it is. */
-  | { t: 'sub'; online: boolean; chat: number | null; v?: 2 | 3 }
+  | { t: 'sub'; online: boolean; chat: number | null; v?: 2 | 3 | 4 }
   /** A fresh Online snapshot (people in this lesson first, then the most recently active; capped). */
   | { t: 'roster' }
   /** `all`: @everyone (class chat only, a few times a day). */
@@ -132,6 +132,8 @@ export type LobbyServerMessage =
   | { t: 'error'; message: string }
   | { t: 'me'; u: string }
   | { t: 'counts'; v: Record<string, LessonCount>; n?: number; f?: Person[] }
+  /** v: 4 only. Photo addresses of the faces in `counts`, by account; `counts` then carries none, so a count change stays small. */
+  | { t: 'photos'; v: Record<string, string> }
   | { t: 'people'; l: number | null; v: Person[] }
   | { t: 'online'; v: Person[] }
   /** Class chat only: `r` this account's read spot (0 = none), `n` lines from others after it (capped), `more` older lines exist. */
@@ -168,7 +170,7 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
     const i = typeof data.i === 'string' && data.i.length <= MAX_SOCIAL_IMAGE_LENGTH ? data.i : undefined;
     return { t: 'here', l: lessonKey(data.l), a, show: data.show !== false, ...(i ? { i } : {}) };
   }
-  if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat), ...(data.v === 2 || data.v === 3 ? { v: data.v } : {}) };
+  if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat), ...(data.v === 2 || data.v === 3 || data.v === 4 ? { v: data.v } : {}) };
   if (data.t === 'auth' && typeof data.jwt === 'string' && data.jwt.length <= SOCIAL_FRAME_BYTES) return { t: 'auth', jwt: data.jwt };
   if (data.t === 'roster') return { t: 'roster' };
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {

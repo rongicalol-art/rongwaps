@@ -11,6 +11,8 @@ export interface SyncCheckpoint {
   userId: string;
   cursor: string | null;
   srs: Record<string, SRSData>;
+  /** Cards the server is known to hold as learned. Absent on checkpoints from older versions: the next save then sends every learned mark once. */
+  learned?: string[];
 }
 
 export interface SyncState {

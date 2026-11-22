@@ -21,6 +21,8 @@ type Att = {
   v2?: boolean;
   /** Subscribed with v: 3, so it knows the 'test' activity; older clients see it as 'lesson'. */
   v3?: boolean;
+  /** Subscribed with v: 4: face photos arrive in their own `photos` frame, not inside every `counts`. */
+  v4?: boolean;
 };
 type ChatRow = { id: number; lesson: number; uid: string; name: string; color: string; text: string; room: string | null; ts: number; w: number | null; a?: number | null };
 const FLUSH_MS = 2000;
@@ -312,11 +314,13 @@ export class Lobby extends DurableObject<Env> {
     } else if (message.t === 'sub') {
       const chatChanged = message.chat !== att.ch;
       const panelOpened = message.online && !att.on;
-      att.on = message.online; att.v2 = message.v === 2 || message.v === 3; att.v3 = message.v === 3;
+      att.on = message.online; const slimChanged = (message.v === 4) !== !!att.v4;
+      att.v4 = message.v === 4; att.v3 = message.v === 3 || att.v4; att.v2 = message.v === 2 || att.v3;
       this.moveChannel(socket, att, message.chat);
       socket.serializeAttachment(att);
       if (chatChanged && att.ch !== null) this.send(socket, this.historyFrame(att.ch, now, att.u));
       if (panelOpened) this.sendRoster(socket, att, now);
+      if (slimChanged) this.scheduleFlush();
       // Open panels (and older clients, which always follow listings) get the current list at once; deduped.
       if (att.on || !att.v2) this.send(socket, this.roomsFrame(att.u), 'rooms');
     } else if (message.t === 'roster') {
@@ -589,9 +593,23 @@ export class Lobby extends DurableObject<Env> {
     const byJoin = (a: Att, b: Att) => (a.j ?? 0) - (b.j ?? 0) || (a.u < b.u ? -1 : a.u > b.u ? 1 : 0);
     const shown = [...live.values()].filter(att => att.show);
     const total = shown.length;
-    const views = new Map<string, { visible: Att[]; byLesson: Map<number, Person[]>; countFrame: string; people: Map<number | null, string> }>();
-    const view = (school: boolean, legacy: boolean) => {
-      const key = `${school ? 'school' : 'all'}${legacy ? '-legacy' : ''}`;
+    type View = { visible: Att[]; byLesson: Map<number, Person[]>; countFrame: string; photoFrame: string | null; people: Map<number | null, string> };
+    const views = new Map<string, View>();
+    /** `slim` (v: 4): the faces in `counts` carry no photo address; those go in one `photos` frame that rarely changes. */
+    const countFrames = (byLesson: Map<number, Person[]>, faces: Person[], slim: boolean) => {
+      const photos: Record<string, string> = {};
+      const face = (person: Person): Person => {
+        if (!slim || !person.i) return person;
+        photos[person.u] = person.i;
+        const rest = { ...person };
+        delete rest.i;
+        return rest;
+      };
+      const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([lesson, people]) => [lesson, { n: people.length, f: people.slice(0, 3).map(face) }]));
+      return { counts: { t: 'counts', v: counts, n: total, f: faces.map(face) } satisfies LobbyServerMessage, photos: slim ? { t: 'photos', v: photos } satisfies LobbyServerMessage : null };
+    };
+    const view = (school: boolean, legacy: boolean, slim: boolean) => {
+      const key = `${school ? 'school' : 'all'}${legacy ? '-legacy' : ''}${slim ? '-slim' : ''}`;
       let built = views.get(key);
       if (built) return built;
       const visible = [...shown].sort((a, b) => (school ? schoolFirst({ s: true }, a, b) : 0) || byJoin(a, b));
@@ -602,23 +620,28 @@ export class Lobby extends DurableObject<Env> {
         if (faces.length < 4) faces.push(person);
         if (att.l !== null) { const group = byLesson.get(att.l); if (group) group.push(person); else byLesson.set(att.l, [person]); }
       }
-      const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([lesson, people]) => [lesson, { n: people.length, f: people.slice(0, 3) }]));
-      built = { visible, byLesson, countFrame: JSON.stringify({ t: 'counts', v: counts, n: total, f: faces } satisfies LobbyServerMessage), people: new Map() };
+      const frames = countFrames(byLesson, faces, slim);
+      built = { visible, byLesson, countFrame: JSON.stringify(frames.counts), photoFrame: frames.photos && JSON.stringify(frames.photos), people: new Map() };
       views.set(key, built);
       return built;
     };
     for (const [socket, att] of live) {
       if (att.on || att.v2 === false) this.send(socket, this.roomsFrame(att.u), 'rooms');
-      const { visible, byLesson, countFrame, people } = view(att.s !== false, !att.v3);
+      const { visible, byLesson, countFrame, photoFrame, people } = view(att.s !== false, !att.v3, !!att.v4);
       const hide = this.hidden(att.u);
       if (hide.size) {
         // Rare: someone in a block pair gets lists without the other person (counts stay exact).
         const keep = (person: Person) => !hide.has(person.u);
-        const own = Object.fromEntries([...byLesson].map(([lesson, group]) => [lesson, { n: group.length, f: group.filter(keep).slice(0, 3) }]));
-        this.send(socket, { t: 'counts', v: own, n: total, f: visible.map(other => this.person(other, !att.v3)).filter(keep).slice(0, 4) }, 'counts');
+        const own = new Map([...byLesson].map(([lesson, group]) => [lesson, group.filter(keep)]));
+        const frames = countFrames(own, visible.map(other => this.person(other, !att.v3)).filter(keep).slice(0, 4), !!att.v4);
+        for (const [lesson, group] of byLesson) frames.counts.v[lesson].n = group.length;
+        if (frames.photos) this.send(socket, frames.photos, 'photos');
+        this.send(socket, frames.counts, 'counts');
         this.send(socket, { t: 'people', l: att.l, v: att.l === null ? [] : (byLesson.get(att.l) ?? []).filter(keep).slice(0, PEOPLE_CAP) }, 'people');
         continue;
       }
+      // Photos first, so the faces that follow already have theirs.
+      if (photoFrame) this.send(socket, photoFrame, 'photos');
       this.send(socket, countFrame, 'counts');
       let frame = people.get(att.l);
       if (frame === undefined) {

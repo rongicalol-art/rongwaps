@@ -3,7 +3,7 @@ import { NAME_NOT_ALLOWED, NAME_RESERVED } from '../../../shared/nameFilter';
 import { useAppStore } from '../../store/useAppStore';
 import type { SocialPanel } from '../../store/slices/socialSlice';
 import { updateOpen } from './socialUpdate';
-import { CLASS_CHAT_KEEP, GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type ChatMessage, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
+import { CLASS_CHAT_KEEP, GLOBAL_CHAT, ROOM_LIST_CAP, ROSTER_GAP_MS, UNREAD_CAP, type Activity, type ChatMessage, type LobbyClientMessage, type LessonCount, type LobbyServerMessage, type MentionNotice, type Person } from '../../../shared/lobby';
 
 /**
  * The single Lobby connection. Presence/subscription frames are deduped here and re-sent after a reconnect,
@@ -13,7 +13,7 @@ let socket: ReturnType<typeof connectLobby> | null = null;
 let identityKey = '';
 let generation = 0;
 let here: Extract<LobbyClientMessage, { t: 'here' }> = { t: 'here', l: null, a: null, show: true };
-let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 3 };
+let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 4 };
 const CHAT_CAP = CLASS_CHAT_KEEP;
 /** Notices made in the app (not the Lobby's inbox): @everyone lines and private messages; never sent as mention-read. */
 const EVERYONE_KEY = 'a:';
@@ -26,6 +26,21 @@ const friends = () => import('./friendsController');
 const loadWriterPhotos = (lines: ChatMessage[]) => {
   const offline = lines.filter(line => !line.i && line.t).map(line => line.u);
   if (offline.length) void friends().then(module => module.loadSaved(offline));
+};
+/** Photo addresses of the faces in count updates (the Lobby sends them apart, so a count change stays small). */
+let facePhotos: Record<string, string> = {};
+/** A slim count update names faces without photos: add the one the Lobby sent. */
+const withPhoto = (person: Person): Person => {
+  const photo = facePhotos[person.u];
+  return photo && person.i !== photo ? { ...person, i: photo } : person;
+};
+/** A new photo list replaces what the faces had, including a photo that was removed. */
+const resetPhoto = (person: Person): Person => {
+  const photo = facePhotos[person.u];
+  if (person.i === photo) return person;
+  const rest = { ...person };
+  delete rest.i;
+  return photo ? { ...rest, i: photo } : rest;
 };
 let olderAsked = 0;
 const pendingReads = new Set<string>();
@@ -107,12 +122,22 @@ function receive(message: LobbyServerMessage) {
   switch (message.t) {
     case 'error': store.showFeedbackToast(message.message); break;
     case 'me': set({ socialMe: message.u }); break;
+    case 'photos': {
+      facePhotos = message.v;
+      const next: typeof store.socialCounts = {};
+      for (const [key, entry] of Object.entries(store.socialCounts)) next[key] = entry.f.every(person => person.i === facePhotos[person.u]) ? entry : { n: entry.n, f: entry.f.map(resetPhoto) };
+      set({ socialCounts: next, socialFaces: store.socialFaces.map(resetPhoto) });
+      break;
+    }
     case 'counts': {
       // Reuse unchanged lessons so only tiles whose faces changed re-render.
       const prev = store.socialCounts;
       const next: typeof prev = {};
-      for (const [key, entry] of Object.entries(message.v)) next[key] = prev[key] && JSON.stringify(prev[key]) === JSON.stringify(entry) ? prev[key] : entry;
-      set({ socialCounts: next, socialFaces: message.f ?? Object.values(next).flatMap(entry => entry.f).slice(0, 4), socialOnlineTotal: message.n ?? Object.values(next).reduce((sum, entry) => sum + entry.n, 0) });
+      for (const [key, raw] of Object.entries(message.v)) {
+        const entry: LessonCount = { n: raw.n, f: raw.f.map(withPhoto) };
+        next[key] = prev[key] && JSON.stringify(prev[key]) === JSON.stringify(entry) ? prev[key] : entry;
+      }
+      set({ socialCounts: next, socialFaces: (message.f ?? Object.values(next).flatMap(entry => entry.f).slice(0, 4)).map(withPhoto), socialOnlineTotal: message.n ?? Object.values(next).reduce((sum, entry) => sum + entry.n, 0) });
       break;
     }
     case 'people': if (message.l === here.l) set({ socialPeople: message.v }); break;
@@ -196,6 +221,9 @@ function receive(message: LobbyServerMessage) {
       break;
     case 'card-ask': {
       const asker = message.from;
+      // "Let classmates find me" off: only friends get the card (the saved copy follows the same rule in the database).
+      const hidden = store.socialUsername?.findable === false && !(store.socialFriends ?? []).some(person => person.u === asker && person.iAdded && person.addedMe);
+      if (hidden) { send({ t: 'card', to: asker, v: null }); break; }
       void import('./profileCard').then(({ buildProfileCard }) => buildProfileCard())
         .then(card => send({ t: 'card', to: asker, v: card }), () => send({ t: 'card', to: asker, v: null }));
       break;
@@ -286,7 +314,7 @@ export const lobby = {
   subscribe(online: boolean, chat: number | null) {
     if (sub.online === online && sub.chat === chat) return;
     if (sub.chat !== chat) useAppStore.getState().setSocial({ socialChat: null });
-    sub = { t: 'sub', online, chat, v: 3 };
+    sub = { t: 'sub', online, chat, v: 4 };
     send(sub);
   },
   /** A fresh Online snapshot; opening the panel already brings one. Calls inside the Lobby's gap collapse into one later request. */

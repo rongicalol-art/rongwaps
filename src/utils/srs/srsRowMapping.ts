@@ -71,6 +71,19 @@ export function srsDataToUpsert(
   };
 }
 
+/**
+ * A learned mark on its own: practice can pass a word without changing (or creating) its schedule, so no SRS
+ * record goes with it. The server adds the mark and leaves any schedule it holds untouched.
+ */
+export const learnedOnlyUpsert = (cardId: string, at = Date.now()): Pick<CardProgressUpsert, 'card_id' | 'learned_at'> =>
+  ({ card_id: cardId, learned_at: new Date(at).toISOString() });
+
+/** Learned cards the server has not been told about and that are not already part of this upload. */
+export function learnedOnlyDelta(learnedCards: readonly string[], known: readonly string[] | undefined, uploading: Record<string, unknown>): string[] {
+  const seen = new Set(known);
+  return learnedCards.filter(id => !seen.has(id) && !(id in uploading));
+}
+
 /** Split pulled rows into SRS state and the learned id list. */
 export function rowsToProgress(rows: CardProgressRow[]): {
   srsData: Record<string, SRSData>;

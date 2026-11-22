@@ -2,7 +2,7 @@ import { validReviewEvent, type ReviewEvent } from '../utils/srs/reviewEvents';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srs/srsEngine';
-import { rowsToProgress, srsDataToUpsert, type CardProgressRow } from '../utils/srs/srsRowMapping';
+import { rowsToProgress, srsDataToUpsert, learnedOnlyUpsert, type CardProgressRow } from '../utils/srs/srsRowMapping';
 import type { CloudMetadataPayload } from '../utils/sync/cloudSyncTransforms';
 import type { UserFolder } from '../types/models';
 import type { Json } from '../types/database';
@@ -135,11 +135,13 @@ export const userService = {
   // and last_updated from the JWT; last write wins by review time). Cards in
   // `learnedCards` carry `learned_at`. Errors propagate: the caller keeps the
   // changes dirty and retries.
-  syncCardProgress: async (srsData: Record<string, SRSData>, learnedCards: string[], authorization: string) => {
+  /** `learnedOnly`: cards whose learned mark changed without their schedule (see `learnedOnlyUpsert`). */
+  syncCardProgress: async (srsData: Record<string, SRSData>, learnedCards: string[], authorization: string, learnedOnly: string[] = []) => {
     const learned = new Set(learnedCards);
-    const upserts = Object.entries(srsData).map(
-      ([cardId, data]) => srsDataToUpsert(data, cardId, learned.has(cardId)),
-    );
+    const upserts = [
+      ...Object.entries(srsData).map(([cardId, data]) => srsDataToUpsert(data, cardId, learned.has(cardId))),
+      ...learnedOnly.map(cardId => learnedOnlyUpsert(cardId)),
+    ];
     for (let i = 0; i < upserts.length; i += RPC_BATCH_SIZE) {
       const { error } = await supabase.rpc('upsert_card_progress', {
         p_records: upserts.slice(i, i + RPC_BATCH_SIZE),
