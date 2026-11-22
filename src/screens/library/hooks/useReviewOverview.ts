@@ -1,5 +1,5 @@
 import { reviewDay, dailyReviewGoal } from '../../../utils/srs/reviewSession';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import { computeReviewOverview, isSrsDue, type ReviewOverview } from '../../../utils/srs/reviewOverview';
 
@@ -22,7 +22,11 @@ export function useReviewOverview(): ReviewOverview {
   const plan = useAppStore(state => state.activeActivity ? null : state.dailyReviewPlan);
   const stableOverviewRef = useRef<ReviewOverview | null>(null);
 
-  if (activeSrsData !== null && activeLearnedCards !== null) {
+  // Recomputed when its inputs change or a minute passes (cards fall due), not on every render: this hook's
+  // screen re-renders on each keystroke in Library search.
+  const minute = Math.floor(Date.now() / 60_000);
+  const fresh = useMemo(() => {
+    if (activeSrsData === null || activeLearnedCards === null) return null;
     const base = computeReviewOverview(activeSrsData, activeLearnedCards);
     const today = reviewDay();
     const goal = dailyReviewGoal(events ?? []);
@@ -32,12 +36,16 @@ export function useReviewOverview(): ReviewOverview {
     const extraDueCount = Object.entries(activeSrsData).filter(([id, srs]) => (
       isSrsDue(srs, now) && !reviewedToday.has(id)
     )).length;
-    stableOverviewRef.current = { ...base,
+    return { ...base,
       dailyCompleted: plan?.day === today ? plan.completed : goal.completed,
       dailyCount: plan?.day === today ? plan.cardIds.filter(id => !(id in plan.answers)).length
         : Math.min(base.dueCount, Math.max(0, goal.capacity - Object.keys(goal.answers).length)),
       extraDueCount,
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `minute` is the clock input
+  }, [activeSrsData, activeLearnedCards, events, plan, minute]);
+  if (fresh) {
+    stableOverviewRef.current = fresh;
   } else if (!stableOverviewRef.current) {
     const store = useAppStore.getState();
     stableOverviewRef.current = computeReviewOverview(store.srsData, store.learnedCards);

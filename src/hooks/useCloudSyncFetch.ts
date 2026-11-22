@@ -18,6 +18,7 @@ import {
   resolveGuestFolderMigration,
 } from '../utils/sync/cloudMetadata';
 import { mergeLessonProgress } from '../utils/lesson/lessonCompletion';
+import { mergeLessonTests } from '../store/slices/lessonTestSlice';
 
 export interface UseCloudSyncFetchOptions {
   currentUser: User | null;
@@ -153,6 +154,11 @@ export function useCloudSyncFetch({
         cloudLessonProgress && typeof cloudLessonProgress === 'object' ? cloudLessonProgress : {},
       );
       if (Object.keys(lessonPatch).length > 0) useAppStore.setState(lessonPatch);
+      const testPatch = mergeLessonTests(
+        useAppStore.getState().lessonTests,
+        cloudLessonProgress && typeof cloudLessonProgress === 'object' ? (cloudLessonProgress as { lessonTests?: unknown }).lessonTests : null,
+      );
+      if (testPatch.lessonTests) useAppStore.setState(testPatch);
 
       useAppStore.getState().mergeReviewHistory(
         cloudData.reviewEvents,

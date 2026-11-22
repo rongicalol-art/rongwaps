@@ -3,7 +3,7 @@ import test from 'node:test';
 import { handle } from '../../server/app';
 import { resetAuthState } from '../../server/auth';
 import type { AudioStore, Context } from '../../server/env';
-import { parseSpeechRequest, speak, speechMarkup } from '../../server/speech';
+import { MAX_NEW_CLIPS_A_DAY, parseSpeechRequest, speak, speechMarkup } from '../../server/speech';
 import { speechKey } from '../../shared/speechKey';
 import { wordBopomofo } from '../../src/utils/pinyin/bopomofo';
 
@@ -106,4 +106,18 @@ test('pinyin becomes one Bopomofo syllable per character, or nothing at all', ()
   for (const [word, pinyin] of [['一會兒', 'yīhuìr'], ['銀行', 'yín'], ['卡拉OK', 'kǎlā OK'], ['銀行', undefined], ['嗯', 'ǹg']] as const) {
     assert.equal(wordBopomofo(word, pinyin), null, word);
   }
+});
+
+test('one learner can have only so many new clips made in a day; stored clips stay free', async (t) => {
+  const store = memoryStore();
+  let made = 0;
+  t.mock.method(globalThis, 'fetch', async () => { made++; return new Response(new Uint8Array([1, 2, 3]), { headers: { 'Content-Type': 'audio/mpeg' } }); });
+  const day = new Date().toISOString().slice(0, 10);
+  assert.equal((await speak(context({ SPEECH_AUDIO: store }), ask({ text: '你好' }), 'learner-1')).status, 200);
+  assert.equal(new TextDecoder().decode(store.files.get(`limits/${day}/learner-1`)), '1');
+  store.files.set(`limits/${day}/learner-1`, new TextEncoder().encode(String(MAX_NEW_CLIPS_A_DAY)).buffer as ArrayBuffer);
+  assert.equal((await speak(context({ SPEECH_AUDIO: store }), ask({ text: '再見' }), 'learner-1')).status, 503, 'past the daily limit nothing new is made');
+  assert.equal(made, 1);
+  assert.equal((await speak(context({ SPEECH_AUDIO: store }), ask({ text: '你好' }), 'learner-1')).status, 200, 'a stored clip is still served');
+  assert.equal((await speak(context({ SPEECH_AUDIO: store }), ask({ text: '再見' }), 'learner-2')).status, 200, 'another learner is not affected');
 });

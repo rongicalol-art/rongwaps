@@ -161,6 +161,8 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
   },
   readings: {
     namespace: 'readings',
+    // Whole-book packs are large once parsed (a grammar book is about 15 MB of memory): keep the last two books.
+    maxCachedParts: 2,
     manifestPath: '/data/readings/manifest.json',
     manifestLabel: 'readings manifest',
     partPathPrefix: '/data/readings/',
@@ -173,6 +175,7 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
   },
   grammar: {
     namespace: 'grammar',
+    maxCachedParts: 2,
     manifestPath: '/data/grammar/manifest.json',
     manifestLabel: 'grammar manifest',
     partPathPrefix: '/data/grammar/',
@@ -185,6 +188,7 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
   },
   'dialogue-alignment': {
     namespace: 'dialogue-alignment',
+    maxCachedParts: 2,
     manifestPath: '/data/dialogue-alignment/manifest.json',
     manifestLabel: 'dialogue alignment manifest',
     partPathPrefix: '/data/dialogue-alignment/',
@@ -197,6 +201,7 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
   },
   'lesson-tests': {
     namespace: 'lesson-tests',
+    maxCachedParts: 2,
     manifestPath: '/data/lesson-tests/manifest.json',
     manifestLabel: 'lesson test manifest',
     partPathPrefix: '/data/lesson-tests/',
