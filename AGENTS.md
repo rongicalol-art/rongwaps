@@ -10,7 +10,7 @@ Chinese-learning PWA for Shu-Te University students (18+), built on the *Modern 
 - Requests are short, often a screenshot and "looks bad". Find the specific cause, name it in a line, fix that.
 - Tweaks, bugs and polish inside the existing look: build it, look at it, show screenshots. New screens and big redesigns: a clickable prototype with 2-3 directions and one recommendation, then build the owner's pick.
 - Any UI, motion or copy work: read `.claude/OWNER_PREFERENCES.md` first. It is the only home for the owner's taste; when the owner corrects a design, update the matching line there instead of adding a rule somewhere else.
-- Helpers (subagents, Codex) may write content batches and mechanical code from an exact plan you wrote, and you check the result. Design and UI styling stay with the lead, because a helper once restyled a screen nobody asked it to. Helpers spend the owner's usage: use one where one will do.
+- Helpers (subagents, Codex) may write content batches and mechanical code from an exact plan you wrote, and you check the result. Design and UI styling stay with the lead, because a helper once restyled a screen nobody asked it to. Helpers spend the owner's usage: use one where one will do. Who does what (Claude, Codex, Gemini) and the scheduled runs: `docs/reference/AUTOMATIONS.md`.
 - Done means you verified it: say what you checked and what you couldn't.
 
 ## Shipping (`docs/RELEASING.md`)

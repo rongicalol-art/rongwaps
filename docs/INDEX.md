@@ -25,6 +25,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Character/scene art prompts | `reference/VISUAL_PROMPTS.md` |
 | Architectural boundary changes | `ARCHITECTURE.md`, `../AGENTS.md`, `DECISIONS.md` |
 | Loading, CPU, memory and audio performance | `TESTING.md` → Performance regression checks, `src/services/audio/`, `scripts/performance/checkBudget.ts` |
+| The AI team, scheduled runs, learner report | `reference/AUTOMATIONS.md` |
 | Past decisions older than 2026-09-22 | `archive/DECISIONS_ARCHIVE.md` |
 
 ## Active Docs
