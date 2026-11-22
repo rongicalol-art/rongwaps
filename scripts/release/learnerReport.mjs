@@ -97,7 +97,7 @@ line();
 
 line('## Study together and friends');
 line(`- Seen in Study together: ${n(social.seen_in_study_together_24h)} in the last 24 hours, ${n(social.seen_in_study_together_week)} this week. ${n(social.usernames)} usernames picked.`);
-line(`- This week: ${n(social.friend_adds_week)} friend adds, ${n(social.messages_week)} private messages from ${n(social.messagers_week)} people, ${n(social.folder_saves_week)} shared folders saved.`);
+line(`- This week: ${n(social.friend_adds_week)} friend adds, ${n(social.messages_week)} private messages from ${n(social.messagers_week)} people.`);
 line(`- Feedback messages this week: ${n(r.feedback_week)}.`);
 
 process.stdout.write(`${out.join('\n')}\n`);
