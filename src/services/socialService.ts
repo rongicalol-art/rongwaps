@@ -1,10 +1,12 @@
 import { authService } from './authService';
-import { SOCIAL_FRAME_BYTES, type LobbyClientMessage, type LobbyServerMessage, type PartyChatClientMessage, type PartyChatServerMessage } from '../../shared/lobby';
+import { LOBBY_FULL_ERROR, SOCIAL_FRAME_BYTES, type LobbyClientMessage, type LobbyServerMessage, type PartyChatClientMessage, type PartyChatServerMessage } from '../../shared/lobby';
 import type { RaceFrame, RaceSelection, RaceSnapshot } from '../../shared/quizRace';
 
 export type SocialStatus = 'off' | 'connecting' | 'live' | 'reconnecting';
 export interface Identity { name: string; color: string; image?: string }
 interface Socket<T> { send: (message: T) => boolean | void; close: () => void }
+/** Well inside the Lobby's 15-minute limit, with room for one missed turn. */
+export const LOBBY_RENEW_MS = 6 * 60_000;
 class ConnectionError extends Error { constructor(message: string, readonly status: number) { super(message); } }
 
 let origin: Promise<string | null> | null = null;
@@ -49,6 +51,7 @@ function reconnecting<In, Out>(options: {
   let stopped = false;
   let attempts = 0;
   let opening = false;
+  let fullUntil = 0;
   let timer: ReturnType<typeof setTimeout> | undefined;
   let watchdog: ReturnType<typeof setTimeout> | undefined;
   let ping: ReturnType<typeof setInterval> | undefined;
@@ -61,11 +64,14 @@ function reconnecting<In, Out>(options: {
     document.removeEventListener('visibilitychange', wake);
     socket?.close(1000, 'Bye.'); options.onStatus('off');
   };
-  const retry = () => {
+  /** `full`: the server has no room. Ask again in 2 to 4 minutes, never every few seconds (each ask is a billed request). */
+  const retry = (full = false) => {
     if (stopped) return;
     clearTimeout(timer);
     options.onStatus('reconnecting');
-    const ms = Math.min(15_000, 1000 * 2 ** Math.min(attempts++, 4)) * (0.8 + Math.random() * 0.4);
+    const ms = full ? 120_000 + Math.random() * 120_000
+      : Math.min(15_000, 1000 * 2 ** Math.min(attempts++, 4)) * (0.8 + Math.random() * 0.4);
+    fullUntil = full ? Date.now() + ms : 0;
     timer = setTimeout(() => { void open(); }, ms);
   };
   const open = async () => {
@@ -110,10 +116,10 @@ function reconnecting<In, Out>(options: {
       if (error instanceof ConnectionError && [400, 401, 403, 404, 409, 410].includes(error.status)) {
         options.onError?.(error.message); stop(); return;
       }
-      retry();
+      retry(error instanceof ConnectionError && error.message === LOBBY_FULL_ERROR);
     } finally { opening = false; }
   };
-  const wake = () => { if (document.visibilityState === 'visible') { clearTimeout(timer); void open(); } };
+  const wake = () => { if (document.visibilityState === 'visible' && Date.now() >= fullUntil) { clearTimeout(timer); void open(); } };
   window.addEventListener('online', wake);
   document.addEventListener('visibilitychange', wake);
   options.onStatus('connecting'); void open();
@@ -135,9 +141,21 @@ export function connectLobby(identity: Identity, handlers: {
   /** Why the Lobby refused for good (a name, a pause, the 18+ step); it stops retrying. */
   onError?: (message: string) => void;
 }): Socket<LobbyClientMessage> {
-  return reconnecting<LobbyServerMessage, LobbyClientMessage>({
+  // The Lobby keeps a connection for 15 minutes per sign-in check. Renewing over the open socket (one small
+  // message) replaces a new ticket and socket (two server requests, and a reload of friends and inbox).
+  let renew: ReturnType<typeof setInterval> | undefined;
+  const socket = reconnecting<LobbyServerMessage, LobbyClientMessage>({
     path: () => '/lobby/socket', protocol: 'lobby', issue: signal => ticket('/lobby', { name: identity.name, color: identity.color }, signal), fatal: [4001, 1008], ...handlers,
+    onStatus: (status) => {
+      clearInterval(renew);
+      if (status === 'live') renew = setInterval(() => {
+        // A token too large for one frame is not sent (send refuses it); the connection then reconnects as before.
+        void authService.getAccessToken().then(jwt => { if (jwt) socket.send({ t: 'auth', jwt }); }).catch(() => {});
+      }, LOBBY_RENEW_MS);
+      handlers.onStatus(status);
+    },
   });
+  return { send: socket.send, close: () => { clearInterval(renew); socket.close(); } };
 }
 
 /** Idempotent authenticated fallback: leaving works even if the WebSocket closed before the leave frame arrived. */

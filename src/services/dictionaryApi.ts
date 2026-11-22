@@ -1,6 +1,6 @@
 import type { Flashcard } from '../data/flashcards';
 import type { WordExample } from '../types/models';
-import { fetchContent } from './staticContentService';
+import { fetchContentOrSavedCopy } from './staticContentService';
 import { createDictionaryEngine, type DictionaryEngine } from './dictionaryEngine';
 import type { DictionaryJob } from './dictionary.worker';
 import type { SearchResult } from '../utils/vocabulary/dictionarySearch';
@@ -29,7 +29,7 @@ export function closeDictionary(error = new Error('Dictionary closed')) {
 }
 
 async function loadPack(path: string): Promise<Response> {
-  const response = await fetchContent(path);
+  const response = await fetchContentOrSavedCopy(path);
   if (!response.ok) throw new Error(`${path} returned ${response.status}`);
   return response;
 }

@@ -122,6 +122,12 @@ export interface Database {
         Update: { blocker?: string; blocked?: string; blocked_name?: string; blocked_color?: string; created_at?: string };
         Relationships: [];
       };
+      user_review_days: {
+        Row: { user_id: string; day: string; count: number; first_at: string; last_at: string };
+        Insert: { user_id: string; day: string; count: number; first_at: string; last_at: string };
+        Update: { user_id?: string; day?: string; count?: number; first_at?: string; last_at?: string };
+        Relationships: [];
+      };
       user_review_events: {
         Row: { user_id: string; event_id: string; card_id: string; reviewed_at: string; created_at: string; payload: Json };
         Insert: { user_id: string; event_id: string; card_id: string; reviewed_at: string; created_at?: string; payload: Json };
@@ -333,6 +339,10 @@ export interface Database {
       };
       get_sync_state: {
         Args: { p_since?: string | null };
+        Returns: Json;
+      };
+      get_sync_state_recent: {
+        Args: { p_since?: string | null; p_recent_days?: number | null };
         Returns: Json;
       };
       reset_user_learning_progress: {

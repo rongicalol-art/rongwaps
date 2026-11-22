@@ -180,6 +180,22 @@ try {
   const alice = await open('/lobby/socket', 'lobby', (await post('/lobby', 'alice')).ticket);
   let bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
   await until(() => last(alice, 'me') && last(bob, 'me'));
+  // Renewing the sign-in over the open socket: the account's own fresh token keeps it connected; another
+  // account's token (or a forged one) ends it, like a failed ticket request would.
+  {
+    const renewer = await open('/lobby/socket', 'lobby', (await post('/lobby', 'renewer')).ticket);
+    await until(() => last(renewer, 'me'));
+    send(renewer, { t: 'auth', jwt: await token('renewer') });
+    send(renewer, { t: 'here', l: 777, a: 'cards', show: true });
+    await until(() => last(renewer, 'counts')?.v['777']?.n === 1);
+    assert.equal(renewer.closed, null, 'a valid renewal keeps the connection');
+    const thief = await open('/lobby/socket', 'lobby', (await post('/lobby', 'thief')).ticket);
+    await until(() => last(thief, 'me'));
+    send(thief, { t: 'auth', jwt: await token('renewer') });
+    await until(() => thief.closed === 4002);
+    renewer.socket.close(1000, 'done');
+    await until(() => renewer.closed !== null);
+  }
   send(alice, { t: 'here', l: 101, a: 'cards', show: true });
   send(bob, { t: 'here', l: 101, a: 'lesson', show: true });
   await until(() => last(bob, 'counts')?.v['101']?.n === 2 && last(bob, 'people')?.v.length === 2);
@@ -317,6 +333,20 @@ try {
   await until(() => last(modern, 'people')?.v.some(person => person.u === 'alice' && person.a === 'test'));
   await until(() => last(quiet, 'people')?.l === 101 && last(quiet, 'people').v.some(person => person.u === 'alice'));
   assert.equal(last(quiet, 'people').v.find(person => person.u === 'alice').a, 'lesson', 'an older client never gets an activity it cannot name');
+  // v: 4 clients get face photos in their own frame; count updates then carry none, and older clients keep theirs inline.
+  const slim = await open('/lobby/socket', 'lobby', (await post('/lobby', 'slim')).ticket);
+  send(slim, { t: 'sub', online: false, chat: null, v: 4 });
+  send(modern, { t: 'here', l: 101, a: 'lesson', show: true, i: 'https://lh3.googleusercontent.com/modern' });
+  await until(() => last(slim, 'photos')?.v.modern === 'https://lh3.googleusercontent.com/modern');
+  await until(() => last(slim, 'counts')?.v['101']?.f.some(person => person.u === 'modern'));
+  assert.ok(Object.values(last(slim, 'counts').v).every(entry => entry.f.every(person => !person.i)) && last(slim, 'counts').f.every(person => !person.i), 'slim count updates carry no photo address');
+  await until(() => last(modern, 'counts')?.v['101']?.f.find(person => person.u === 'modern')?.i === 'https://lh3.googleusercontent.com/modern');
+  assert.ok(!modern.frames.some(frame => frame.t === 'photos'), 'older clients get photos inside counts, as before');
+  const photoFrames = slim.frames.filter(frame => frame.t === 'photos').length;
+  send(slim, { t: 'here', l: 104, a: 'lesson', show: true });
+  await until(() => last(slim, 'counts')?.v['104']?.n === 1);
+  assert.equal(slim.frames.filter(frame => frame.t === 'photos').length, photoFrames, 'a count change does not resend the photos');
+  slim.socket.close(1000);
   modern.socket.close(1000);
   send(alice, { t: 'here', l: 101, a: 'cards', show: true });
   quiet.socket.close(1000);
@@ -844,10 +874,11 @@ try {
   assert.ok(chatHistory.some(message => message.i && message.u.startsWith('load-')), `chat history decorates online senders with their profile photos: ${JSON.stringify(chatHistory.slice(0, 2))}`);
   assert.equal((await lobbySql.exec('SELECT COUNT(*) AS n FROM chat WHERE lesson=101'))[0].n, Math.min(50, previousChatRows + userCount));
   {
-    const overflow = await post('/lobby', 'overflow');
-    const rejected = await mf.dispatchFetch('https://games.test/lobby/socket', { headers: { Origin: origin, Upgrade: 'websocket', 'Sec-WebSocket-Protocol': `lobby, ticket.${overflow.ticket}` } });
-    assert.equal(rejected.status, 503, 'the connection past capacity is rejected without disturbing existing users');
-    await rejected.text();
+    const rejected = await mf.dispatchFetch('https://games.test/lobby', { method: 'POST', headers: { Origin: origin, Authorization: 'Bearer ' + await token('overflow'), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: 'overflow', color: 'jade' }) });
+    assert.equal(rejected.status, 503, 'a learner past capacity is refused before a ticket is made, without disturbing existing users');
+    assert.equal((await rejected.json()).error, 'Study together is full. Try again shortly.');
+    assert.ok((await post('/lobby', students[0].id)).ticket, 'a learner who is already connected can still reconnect');
     console.log(JSON.stringify({ stage: 'capacity', admitted: userCount, rejectedStatus: rejected.status }));
   }
   const reconnectAt = performance.now();

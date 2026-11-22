@@ -4,12 +4,13 @@ import { useAppStore } from '../../../store/useAppStore';
 import { fetchAllVocabularyPacks } from '../../../services/contentPacks';
 import type { DBVocabularyRow } from '../../../types/database';
 import { characterForms, computeStreak, countKnownCharacters, firstReviewAt, lessonProgress } from '../../../utils/srs/profileStats';
+import { studyTimes } from '../../../utils/srs/reviewEvents';
 import { computeReviewOverview } from '../../../utils/srs/reviewOverview';
 
 export function useProfileData() {
   const state = useAppStore(useShallow((s) => ({
     activeBookId: s.activeBookId, characterPreference: s.characterPreference, learnedCards: s.learnedCards,
-    srsData: s.srsData, reviewEvents: s.reviewEvents, grammarPages: s.completedPageIds.length,
+    srsData: s.srsData, reviewEvents: s.reviewEvents, reviewArchive: s.reviewArchive, grammarPages: s.completedPageIds.length,
   })));
   const [vocabulary, setVocabulary] = useState<DBVocabularyRow[] | null>(null);
   const [failed, setFailed] = useState(false);
@@ -32,18 +33,21 @@ export function useProfileData() {
     const forms = characterForms(rows, state.characterPreference);
     const activeRows = rows.filter((row) => row.id.startsWith(`B${state.activeBookId}L`));
     const progress = lessonProgress(activeRows, state.learnedCards);
-    const firstReview = firstReviewAt(state.reviewEvents, now);
+    const times = studyTimes(state.reviewEvents, state.reviewArchive);
+    const firstReview = firstReviewAt(times, now);
     const recentWordIds: string[] = [];
-    for (const event of [...state.reviewEvents].sort((a, b) => b.reviewedAt - a.reviewedAt)) {
+    // Newest first: the history is kept in time order, so walk it from the end (no copy, no sort).
+    for (let index = state.reviewEvents.length - 1; index >= 0; index--) {
+      const event = state.reviewEvents[index];
       if (event.reviewedAt > now || event.reviewedAt <= 0 || recentWordIds.includes(event.cardId) || !vocabById.has(event.cardId)) continue;
       recentWordIds.push(event.cardId);
       if (recentWordIds.length === 3) break;
     }
     return {
-      ...computeStreak(state.reviewEvents, now), progress, activeBookId: state.activeBookId, vocabById, forms,
+      ...computeStreak(times, now), progress, activeBookId: state.activeBookId, vocabById, forms,
       known: computeReviewOverview(state.srsData, state.learnedCards, now).knownTotal,
       characters: countKnownCharacters(state.learnedCards, forms),
-      reviews: state.reviewEvents.length, grammarPages: state.grammarPages,
+      reviews: state.reviewArchive.count + state.reviewEvents.length, grammarPages: state.grammarPages,
       firstReview: firstReview === null ? null : new Date(firstReview).toLocaleDateString('en', { month: 'short', year: 'numeric' }),
       recentWordIds,
       loading: vocabulary === null && !failed, failed,

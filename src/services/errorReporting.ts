@@ -1,13 +1,15 @@
 import type { ErrorInfo } from 'react';
 
 const dsn = import.meta.env?.VITE_SENTRY_DSN;
-let sentryClient: Promise<typeof import('@sentry/react') | null> | null = null;
+/** Only what is used, imported by name: importing the whole library as one object ships all of it (447 kB). */
+type Reporter = Pick<typeof import('@sentry/react'), 'captureMessage' | 'reactErrorHandler'>;
+let sentryClient: Promise<Reporter | null> | null = null;
 
 export function initializeErrorReporting() {
   if (!import.meta.env?.PROD || !dsn) return;
 
-  sentryClient = import('@sentry/react').then((Sentry) => {
-    Sentry.init({
+  sentryClient = import('./sentryClient').then(({ init, captureMessage, reactErrorHandler }) => {
+    init({
       dsn,
       environment: 'production',
       release: import.meta.env.VITE_APP_RELEASE || undefined,
@@ -23,7 +25,7 @@ export function initializeErrorReporting() {
         return event;
       },
     });
-    return Sentry;
+    return { captureMessage, reactErrorHandler };
   }).catch(() => null);
 }
 

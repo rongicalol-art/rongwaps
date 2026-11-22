@@ -23,7 +23,7 @@ async function fixture() {
     define: { 'import.meta.url': JSON.stringify(import.meta.url) },
     plugins: [{ name: 'client-fixture', setup(plugin) {
       plugin.onResolve({ filter: /staticContentService$/ }, () => ({ path: 'content', namespace: 'fixture' }));
-      plugin.onLoad({ filter: /.*/, namespace: 'fixture' }, () => ({ contents: `export const fetchContent = (...args) => globalThis[${JSON.stringify(key)}].fetchContent(...args);` }));
+      plugin.onLoad({ filter: /.*/, namespace: 'fixture' }, () => ({ contents: `export const fetchContent = (...args) => globalThis[${JSON.stringify(key)}].fetchContent(...args); export const fetchContentOrSavedCopy = fetchContent;` }));
     } }],
   });
   const hadWorker = 'Worker' in globals;

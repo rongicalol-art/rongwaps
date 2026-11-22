@@ -17,6 +17,7 @@ export interface CloudSyncFingerprintState extends Partial<ProfileSettings> {
   completedPartIds?: string[];
   readReadingIds?: string[];
   lessonDoneMarks?: Record<string, unknown>;
+  lessonTests?: Record<string, unknown>;
 }
 
 interface FingerprintedSnapshot<T> {
@@ -44,7 +45,7 @@ export function createCloudSyncFingerprint(
     state.selectedBooks,
     state.displayName, state.avatarColor, state.coverPreset, state.avatarPath, state.coverPath, state.googlePhoto,
     state.startedPartIds ?? [], state.completedPageIds ?? [], state.completedPartIds ?? [],
-    state.readReadingIds ?? [], state.lessonDoneMarks ?? {},
+    state.readReadingIds ?? [], state.lessonDoneMarks ?? {}, state.lessonTests ?? {},
   ]);
 }
 

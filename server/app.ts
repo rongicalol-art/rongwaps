@@ -30,7 +30,7 @@ async function route(context: Context, request: Request, url: URL): Promise<Resp
     }
     if (pathname === '/api/speech' && request.method === 'POST') {
       const user = await requireUser(context, request, 'speech');
-      return user instanceof Response ? user : speak(context, request);
+      return user instanceof Response ? user : speak(context, request, user.userId);
     }
     return json({ error: 'Not found' }, 404);
   }

@@ -9,7 +9,7 @@ paths:
 ---
 # Content and pipeline rules
 
-- `public/data/` packs are generated: regenerate with the npm script and commit the manifest with them. Reference content is pack-first (`public/data/...` → IndexedDB via `staticContentService`) with database fallbacks.
+- `public/data/` packs are generated: regenerate with the npm script and commit the manifest with them. Reference content is pack-first (`public/data/...` through `staticContentService`, kept in memory and in the browser's own saved copies) with database fallbacks.
 - After lesson or grammar content changes: `npm run content:validate`. Content QA: `jev:qa:words`, `jev:qa:grammar`.
 - Course-example changes: `course-examples:preview`, then `jev:qa:course` (changed preview records by default), inspect its review queue against the OCR source and scans, regenerate with `course-examples:export`, then run the coverage and content tests (`docs/TESTING.md`, `docs/COURSE_EXAMPLES.md`).
 - Jev is a judge, not an author. A model verdict never generates missing pinyin, rewrites source content, sets a verification flag, or bypasses a source or future-content guard, because the printed book is the only proof. Pinyin that sounds plausible is not pinyin checked against the page. Without the evidence, the record stays unverified.

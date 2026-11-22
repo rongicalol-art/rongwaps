@@ -2,7 +2,7 @@ import { validReviewEvent, type ReviewEvent } from '../utils/srs/reviewEvents';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srs/srsEngine';
-import { rowsToProgress, srsDataToUpsert, type CardProgressRow } from '../utils/srs/srsRowMapping';
+import { rowsToProgress, srsDataToUpsert, learnedOnlyUpsert, type CardProgressRow } from '../utils/srs/srsRowMapping';
 import type { CloudMetadataPayload } from '../utils/sync/cloudSyncTransforms';
 import type { UserFolder } from '../types/models';
 import type { Json } from '../types/database';
@@ -13,6 +13,8 @@ export type UserFolderRow = UserFolder;
 interface SyncStateWire {
   cards: CardProgressRow[] | null;
   review_events?: ReviewEvent[] | null;
+  /** Only on a full pull from a database with 20261122130000: a summary of the answers not sent one by one. */
+  older_reviews?: unknown;
   cursor: string | null;
   profile: {
     updated_at: string | null;
@@ -25,6 +27,8 @@ interface SyncStateWire {
 
 export interface UserSyncState {
   reviewEvents: ReviewEvent[];
+  /** The server's summary of older answers (full pulls only); undefined from an older database. */
+  olderReviews?: unknown;
   srsData: Record<string, SRSData>;
   learnedCards: string[];
   /** Synced preferences from `user_profiles.settings`; empty for a new account. */
@@ -53,6 +57,12 @@ export interface UserSyncState {
  * merge.
  */
 const PULL_OVERLAP_MS = 2_000;
+
+/**
+ * A full pull carries this many days of answers one by one; the device keeps 120 (REVIEW_KEEP_MS) and folds the
+ * few days between into its archive itself, so the server's summary and the device's never count the same answer.
+ */
+const FULL_PULL_RECENT_DAYS = 125;
 
 /** Largest array the card RPC accepts per call (enforced server-side). */
 const RPC_BATCH_SIZE = 500;
@@ -86,11 +96,18 @@ export const userService = {
   // only card rows at/after that ISO timestamp (bounded incremental pull);
   // omit for a full pull.
   getSyncState: async (options?: { since?: string; authorization?: string }): Promise<UserSyncState> => {
-    const request = supabase.rpc('get_sync_state', {
-      p_since: options?.since ? overlapWindowStart(options.since) : null,
-    });
-    if (options?.authorization) request.setHeader('Authorization', options.authorization);
-    const { data, error } = await request;
+    const run = (recent: boolean) => {
+      const p_since = options?.since ? overlapWindowStart(options.since) : null;
+      // A full pull asks for recent answers in full and a summary of the rest.
+      const request = recent
+        ? supabase.rpc('get_sync_state_recent', { p_since, p_recent_days: FULL_PULL_RECENT_DAYS })
+        : supabase.rpc('get_sync_state', { p_since });
+      if (options?.authorization) request.setHeader('Authorization', options.authorization);
+      return request;
+    };
+    let { data, error } = await run(!options?.since);
+    // A database from before 20261122130000 does not have that function: ask the old way (it returns everything).
+    if (error?.code === 'PGRST202' && !options?.since) ({ data, error } = await run(false));
     if (error) {
       debugLogger.error('Supabase', 'Error fetching sync state:', error);
       throw error;
@@ -104,6 +121,7 @@ export const userService = {
       srsData,
       learnedCards,
       reviewEvents: (wire.review_events ?? []).filter(validReviewEvent),
+      olderReviews: wire.older_reviews ?? undefined,
       settings: wire.profile?.settings ?? {},
       folders: wire.folders ?? [],
       lastUpdated: wire.profile?.updated_at ?? undefined,
@@ -117,11 +135,13 @@ export const userService = {
   // and last_updated from the JWT; last write wins by review time). Cards in
   // `learnedCards` carry `learned_at`. Errors propagate: the caller keeps the
   // changes dirty and retries.
-  syncCardProgress: async (srsData: Record<string, SRSData>, learnedCards: string[], authorization: string) => {
+  /** `learnedOnly`: cards whose learned mark changed without their schedule (see `learnedOnlyUpsert`). */
+  syncCardProgress: async (srsData: Record<string, SRSData>, learnedCards: string[], authorization: string, learnedOnly: string[] = []) => {
     const learned = new Set(learnedCards);
-    const upserts = Object.entries(srsData).map(
-      ([cardId, data]) => srsDataToUpsert(data, cardId, learned.has(cardId)),
-    );
+    const upserts = [
+      ...Object.entries(srsData).map(([cardId, data]) => srsDataToUpsert(data, cardId, learned.has(cardId))),
+      ...learnedOnly.map(cardId => learnedOnlyUpsert(cardId)),
+    ];
     for (let i = 0; i < upserts.length; i += RPC_BATCH_SIZE) {
       const { error } = await supabase.rpc('upsert_card_progress', {
         p_records: upserts.slice(i, i + RPC_BATCH_SIZE),
@@ -178,6 +198,11 @@ export const userService = {
     const state = await userService.getSyncState({ since: PROFILE_ONLY_SINCE, authorization });
     return state.progressResetAt ?? null;
   },
+
+  // When the settings were last written from any device (profile-only pull). A save compares it with the
+  // copy this device last saw, so settings changed elsewhere are pulled and merged before they are overwritten.
+  getSettingsUpdatedAt: async (authorization: string): Promise<string | null> =>
+    (await userService.getSyncState({ since: PROFILE_ONLY_SINCE, authorization })).lastUpdated ?? null,
 
   // The server's current folder list (profile-only pull; no card rows).
   getFolders: async (): Promise<UserFolderRow[]> =>

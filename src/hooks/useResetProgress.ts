@@ -47,6 +47,7 @@ export function useResetProgress({
     const appSnapshot = {
       reviewEvents: appState.reviewEvents,
       pendingReviewEvents: appState.pendingReviewEvents,
+      reviewArchive: appState.reviewArchive,
       dailyReviewPlan: appState.dailyReviewPlan,
       learningBatches: appState.learningBatches,
       wordConfusions: appState.wordConfusions,
@@ -81,6 +82,9 @@ export function useResetProgress({
         const resetAt = await userService.resetLearningProgress(currentUser.id);
         if (!isCurrent()) return;
         if (resetAt) useAppStore.getState().setProgressResetSeen(currentUser.id, resetAt);
+        // The server no longer holds any learned mark, so each word learned again must be sent again.
+        const checkpoint = useAppStore.getState().syncCheckpoint;
+        if (checkpoint?.userId === currentUser.id) useAppStore.getState().setSyncCheckpoint({ ...checkpoint, learned: [] });
       }
       onActivityCleared();
       onGrammarCleared();

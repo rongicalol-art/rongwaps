@@ -43,8 +43,14 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const time = (value: string | null | undefined) => (value ? Date.parse(value) : null);
 const toMessage = (row: { id: number; sender: string; recipient: string; body: string; created_at: string }): DirectMessage =>
   ({ id: Number(row.id), from: row.sender, to: row.recipient, t: row.body, ts: Date.parse(row.created_at) });
-const toProfile = (row: { user_id: string; card: unknown; last_seen: string | null }): SavedProfile =>
-  ({ u: row.user_id, card: row.card && typeof row.card === 'object' ? row.card as StoredCard : null, seen: time(row.last_seen) });
+/** The only photo address a saved card may carry (the database keeps the same rule, 20261122120000). */
+const GOOGLE_PHOTO = /^https:\/\/lh3\.googleusercontent\.com\//;
+const toProfile = (row: { user_id: string; card: unknown; last_seen: string | null }): SavedProfile => {
+  const card = row.card && typeof row.card === 'object' ? { ...row.card as StoredCard } : null;
+  // Never load a picture from an address a classmate's card names unless it is a Google profile photo.
+  if (card && !(typeof card.i === 'string' && GOOGLE_PHOTO.test(card.i))) delete card.i;
+  return { u: row.user_id, card, seen: time(row.last_seen) };
+};
 
 /** Adds each @username; row security leaves out anyone who can't be found, and a failed lookup just shows none. */
 /**

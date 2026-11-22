@@ -2,6 +2,7 @@ import { useAppStore } from '../../store/useAppStore';
 import { fetchAllVocabularyPacks } from '../../services/contentPacks';
 import { getProfileMediaUrl } from '../../services/profileMedia';
 import { characterForms, computeStreak, countKnownCharacters, firstReviewAt } from '../../utils/srs/profileStats';
+import { studyTimes } from '../../utils/srs/reviewEvents';
 import { computeReviewOverview } from '../../utils/srs/reviewOverview';
 import type { ProfileCard } from '../../../shared/lobby';
 
@@ -22,12 +23,13 @@ export async function buildProfileCard(): Promise<ProfileCard | null> {
     fetchAllVocabularyPacks(),
     state.coverPath ? getProfileMediaUrl(user, state.coverPath).catch(() => undefined) : Promise.resolve(undefined),
   ]);
-  const since = firstReviewAt(state.reviewEvents, now);
+  const times = studyTimes(state.reviewEvents, state.reviewArchive);
+  const since = firstReviewAt(times, now);
   const card: ProfileCard = {
     cv: state.coverPreset,
     b: state.activeBookId,
     w: computeReviewOverview(state.srsData, state.learnedCards, now).knownTotal,
-    st: computeStreak(state.reviewEvents, now).streak,
+    st: computeStreak(times, now).streak,
     ...(rows ? { k: countKnownCharacters(state.learnedCards, characterForms(rows, state.characterPreference)) } : {}),
     ...(since !== null ? { s: since } : {}),
     ...(cover ? { ci: cover } : {}),

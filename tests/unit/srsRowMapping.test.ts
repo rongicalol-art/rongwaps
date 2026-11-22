@@ -210,3 +210,11 @@ test('learned state round-trips: upsert record -> row -> progress', () => {
   assert.deepEqual(learnedCards, [reviewed.cardId]);
   assert.deepEqual(srsData[reviewed.cardId], reviewed);
 });
+
+test('learned marks without a schedule change: only the ones the server has not seen', async () => {
+  const { learnedOnlyDelta, learnedOnlyUpsert } = await import('../../src/utils/srs/srsRowMapping');
+  assert.deepEqual(learnedOnlyDelta(['a', 'b', 'c'], ['a'], { b: {} }), ['c']);
+  // A checkpoint from an older version has no list: every mark goes once.
+  assert.deepEqual(learnedOnlyDelta(['a', 'b'], undefined, {}), ['a', 'b']);
+  assert.deepEqual(learnedOnlyUpsert('c', 0), { card_id: 'c', learned_at: '1970-01-01T00:00:00.000Z' });
+});

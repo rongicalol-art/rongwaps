@@ -237,8 +237,13 @@ export function storeAudioBlob(fileName: string, blob: Blob): void {
   }).catch(() => {});
 }
 
+/** Recordings found too large to keep in memory this session: asking again would only download their headers again. */
+const tooLargeToKeep = new Set<string>();
+const TOO_LARGE = 'Recording exceeds download limit';
+
 export async function fetchAudioBlob(fileName: string, signal?: AbortSignal): Promise<Blob> {
   if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+  if (tooLargeToKeep.has(fileName)) throw new Error(TOO_LARGE);
   let flight = inFlightBlobFetches.get(fileName);
   if (!flight) {
     const controller = new AbortController();
@@ -266,7 +271,11 @@ export async function fetchAudioBlob(fileName: string, signal?: AbortSignal): Pr
             continue;
           }
           if (!response.ok || response.status === 206) throw new Error(`Failed to fetch complete audio: ${response.status}`);
-          if (Number(response.headers.get('Content-Length')) > MAX_AUDIO_MEMORY_BYTES) throw new Error('Recording exceeds download limit');
+          if (Number(response.headers.get('Content-Length')) > MAX_AUDIO_MEMORY_BYTES) {
+            tooLargeToKeep.add(fileName);
+            void response.body?.cancel().catch(() => {});
+            throw new Error(TOO_LARGE);
+          }
           const blob = await response.blob();
           if (!isUsableAudioBlob(blob) || blob.size > MAX_AUDIO_MEMORY_BYTES) throw new Error('Invalid audio response');
           downloaded = blob;

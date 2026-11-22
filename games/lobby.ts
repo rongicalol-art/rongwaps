@@ -1,7 +1,8 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, CLASS_CHAT_KEEP, CLASS_CHAT_MAX_AGE_MS, socialUpdateOpen, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
+import { LOBBY_FULL_ERROR, CHAT_KEEP, CHAT_TTL_MS, CLASS_CHAT_KEEP, CLASS_CHAT_MAX_AGE_MS, socialUpdateOpen, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
-import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
+import { verifyAccessToken } from '../shared/accessToken';
+import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused, socialRefusal } from './access';
 
 type Att = {
   u: string; n: string; c: SocialColor; i?: string; show: boolean; l: number | null; a: Activity | null;
@@ -12,12 +13,16 @@ type Att = {
   on: boolean; ch: number | null; cheer: number; inv: number[];
   activeAt: number; tokens: number; updatedAt: number;
   authUntil: number;
+  /** When this socket last asked to renew (rate limit). */
+  renewedAt?: number;
   /** Accepted at (ms): orders faces and lesson lists the same way after every wake. */
   j?: number;
   /** Set by the first `sub`: true streams open rooms only while the social panel is open; false (older clients) streams every listing change. */
   v2?: boolean;
   /** Subscribed with v: 3, so it knows the 'test' activity; older clients see it as 'lesson'. */
   v3?: boolean;
+  /** Subscribed with v: 4: face photos arrive in their own `photos` frame, not inside every `counts`. */
+  v4?: boolean;
 };
 type ChatRow = { id: number; lesson: number; uid: string; name: string; color: string; text: string; room: string | null; ts: number; w: number | null; a?: number | null };
 const FLUSH_MS = 2000;
@@ -100,6 +105,9 @@ export class Lobby extends DurableObject<Env> {
 
   async issue(uid: string, name: string, color: string, authUntil: number, google?: string, school = true): Promise<{ ticket: string }> {
     const now = Date.now();
+    // Refused before a ticket exists, with its own answer: the app then waits minutes. A refusal at the socket
+    // looks like a dropped connection, which the app retries every few seconds.
+    if (this.index().size >= this.capacity && !this.byUser.has(uid)) throw new Error(LOBBY_FULL_ERROR);
     const bucket = this.ticketBuckets.get(uid);
     const tokens = Math.min(TICKET_BURST, (bucket?.tokens ?? TICKET_BURST) + (now - (bucket?.at ?? now)) / TICKET_REFILL_MS);
     if (tokens < 1) throw new Error(TICKET_LIMIT_ERROR);
@@ -245,7 +253,7 @@ export class Lobby extends DurableObject<Env> {
     const live = this.index();
     const old = this.byUser.get(entry.uid);
     if (old) this.close(old, 4001, 'Opened in another tab.');
-    if (live.size >= this.capacity) return new Response('Study together is full. Try again shortly.', { status: 503 });
+    if (live.size >= this.capacity) return new Response(LOBBY_FULL_ERROR, { status: 503 });
     const [client, server] = Object.values(new WebSocketPair());
     this.ctx.acceptWebSocket(server);
     // Hidden until the client's privacy preference arrives; never briefly disclose hidden users.
@@ -259,11 +267,33 @@ export class Lobby extends DurableObject<Env> {
     return new Response(null, { status: 101, webSocket: client, headers: { 'Sec-WebSocket-Protocol': 'lobby' } });
   }
 
+  /** The same checks a new ticket gets (index.ts): a valid token for this same account, still allowed in. */
+  private async renew(socket: WebSocket, att: Att, raw: string) {
+    const now = Date.now();
+    // At most one check a minute per socket: verifying a signature is the costly part.
+    if (now - (att.renewedAt ?? 0) < 60_000) return;
+    att.renewedAt = now; socket.serializeAttachment(att);
+    let auth: Awaited<ReturnType<typeof verifyAccessToken>> = null;
+    try {
+      const message = parseLobbyMessage(JSON.parse(raw));
+      if (message.t === 'auth') auth = await verifyAccessToken(`Bearer ${message.jwt}`, this.env.SUPABASE_URL);
+    } catch { return; } // Keys unavailable or a malformed frame: the current time limit simply stands.
+    if (socket.readyState !== 1) return;
+    if (!auth || auth.userId !== att.u) { this.close(socket, 4002, 'Refresh your sign-in.'); return; }
+    const refusal = socialRefusal(this.env, att.u, auth.claims);
+    if (refusal) { this.close(socket, 4004, refusal); return; }
+    att.authUntil = Math.min(auth.expiresAt, now + 15 * 60_000);
+    socket.serializeAttachment(att);
+  }
+
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer) {
     if (socket.readyState !== 1) return;
     if (typeof raw !== 'string' || raw.length > SOCIAL_FRAME_BYTES || new TextEncoder().encode(raw).byteLength > SOCIAL_FRAME_BYTES) { this.close(socket, 1008, 'Invalid message.'); return; }
     let att = this.index().get(socket);
     if (!att) { att = socket.deserializeAttachment() as Att; this.track(socket, att); }
+    // The app renews its place with a fresh sign-in token before the time limit, instead of a new ticket and
+    // socket every 15 minutes (two server requests each, for every connected learner, out of a shared daily quota).
+    if (raw.startsWith('{"t":"auth"')) { await this.renew(socket, att, raw); return; }
     if ((att.authUntil ?? 0) <= Date.now()) { this.close(socket, 4002, 'Refresh your sign-in.'); return; }
     if (socialPaused(this.env) || socialBanned(this.env, att.u)) { this.close(socket, 4004, socialPaused(this.env) ? SOCIAL_PAUSED_ERROR : SOCIAL_BANNED_ERROR); return; }
     const now = Date.now();
@@ -284,11 +314,13 @@ export class Lobby extends DurableObject<Env> {
     } else if (message.t === 'sub') {
       const chatChanged = message.chat !== att.ch;
       const panelOpened = message.online && !att.on;
-      att.on = message.online; att.v2 = message.v === 2 || message.v === 3; att.v3 = message.v === 3;
+      att.on = message.online; const slimChanged = (message.v === 4) !== !!att.v4;
+      att.v4 = message.v === 4; att.v3 = message.v === 3 || att.v4; att.v2 = message.v === 2 || att.v3;
       this.moveChannel(socket, att, message.chat);
       socket.serializeAttachment(att);
       if (chatChanged && att.ch !== null) this.send(socket, this.historyFrame(att.ch, now, att.u));
       if (panelOpened) this.sendRoster(socket, att, now);
+      if (slimChanged) this.scheduleFlush();
       // Open panels (and older clients, which always follow listings) get the current list at once; deduped.
       if (att.on || !att.v2) this.send(socket, this.roomsFrame(att.u), 'rooms');
     } else if (message.t === 'roster') {
@@ -561,9 +593,23 @@ export class Lobby extends DurableObject<Env> {
     const byJoin = (a: Att, b: Att) => (a.j ?? 0) - (b.j ?? 0) || (a.u < b.u ? -1 : a.u > b.u ? 1 : 0);
     const shown = [...live.values()].filter(att => att.show);
     const total = shown.length;
-    const views = new Map<string, { visible: Att[]; byLesson: Map<number, Person[]>; countFrame: string; people: Map<number | null, string> }>();
-    const view = (school: boolean, legacy: boolean) => {
-      const key = `${school ? 'school' : 'all'}${legacy ? '-legacy' : ''}`;
+    type View = { visible: Att[]; byLesson: Map<number, Person[]>; countFrame: string; photoFrame: string | null; people: Map<number | null, string> };
+    const views = new Map<string, View>();
+    /** `slim` (v: 4): the faces in `counts` carry no photo address; those go in one `photos` frame that rarely changes. */
+    const countFrames = (byLesson: Map<number, Person[]>, faces: Person[], slim: boolean) => {
+      const photos: Record<string, string> = {};
+      const face = (person: Person): Person => {
+        if (!slim || !person.i) return person;
+        photos[person.u] = person.i;
+        const rest = { ...person };
+        delete rest.i;
+        return rest;
+      };
+      const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([lesson, people]) => [lesson, { n: people.length, f: people.slice(0, 3).map(face) }]));
+      return { counts: { t: 'counts', v: counts, n: total, f: faces.map(face) } satisfies LobbyServerMessage, photos: slim ? { t: 'photos', v: photos } satisfies LobbyServerMessage : null };
+    };
+    const view = (school: boolean, legacy: boolean, slim: boolean) => {
+      const key = `${school ? 'school' : 'all'}${legacy ? '-legacy' : ''}${slim ? '-slim' : ''}`;
       let built = views.get(key);
       if (built) return built;
       const visible = [...shown].sort((a, b) => (school ? schoolFirst({ s: true }, a, b) : 0) || byJoin(a, b));
@@ -574,23 +620,28 @@ export class Lobby extends DurableObject<Env> {
         if (faces.length < 4) faces.push(person);
         if (att.l !== null) { const group = byLesson.get(att.l); if (group) group.push(person); else byLesson.set(att.l, [person]); }
       }
-      const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([lesson, people]) => [lesson, { n: people.length, f: people.slice(0, 3) }]));
-      built = { visible, byLesson, countFrame: JSON.stringify({ t: 'counts', v: counts, n: total, f: faces } satisfies LobbyServerMessage), people: new Map() };
+      const frames = countFrames(byLesson, faces, slim);
+      built = { visible, byLesson, countFrame: JSON.stringify(frames.counts), photoFrame: frames.photos && JSON.stringify(frames.photos), people: new Map() };
       views.set(key, built);
       return built;
     };
     for (const [socket, att] of live) {
       if (att.on || att.v2 === false) this.send(socket, this.roomsFrame(att.u), 'rooms');
-      const { visible, byLesson, countFrame, people } = view(att.s !== false, !att.v3);
+      const { visible, byLesson, countFrame, photoFrame, people } = view(att.s !== false, !att.v3, !!att.v4);
       const hide = this.hidden(att.u);
       if (hide.size) {
         // Rare: someone in a block pair gets lists without the other person (counts stay exact).
         const keep = (person: Person) => !hide.has(person.u);
-        const own = Object.fromEntries([...byLesson].map(([lesson, group]) => [lesson, { n: group.length, f: group.filter(keep).slice(0, 3) }]));
-        this.send(socket, { t: 'counts', v: own, n: total, f: visible.map(other => this.person(other, !att.v3)).filter(keep).slice(0, 4) }, 'counts');
+        const own = new Map([...byLesson].map(([lesson, group]) => [lesson, group.filter(keep)]));
+        const frames = countFrames(own, visible.map(other => this.person(other, !att.v3)).filter(keep).slice(0, 4), !!att.v4);
+        for (const [lesson, group] of byLesson) frames.counts.v[lesson].n = group.length;
+        if (frames.photos) this.send(socket, frames.photos, 'photos');
+        this.send(socket, frames.counts, 'counts');
         this.send(socket, { t: 'people', l: att.l, v: att.l === null ? [] : (byLesson.get(att.l) ?? []).filter(keep).slice(0, PEOPLE_CAP) }, 'people');
         continue;
       }
+      // Photos first, so the faces that follow already have theirs.
+      if (photoFrame) this.send(socket, photoFrame, 'photos');
       this.send(socket, countFrame, 'counts');
       let frame = people.get(att.l);
       if (frame === undefined) {

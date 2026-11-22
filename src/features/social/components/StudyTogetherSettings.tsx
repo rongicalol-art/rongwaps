@@ -22,7 +22,7 @@ export function StudyTogetherSettings() {
     {username && <>
       <UsernameSetting />
       <SettingsToggleRow checked={username.findable} onClick={() => { void friends().then((module) => module.setFindable(!username.findable)); }}
-        label="Let classmates find me" description={visible ? 'By your name or @username in Add friends' : 'Turn on Show me online or Show my profile first'}
+        label="Let classmates find me" description={!visible ? 'Turn on Show me online or Show my profile first' : username.findable ? 'By your name or @username in Add friends' : 'Only your friends can see your profile'}
         disabled={!visible} className="border-b-0" />
     </>}
   </>;

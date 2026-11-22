@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { grammarPagePath, grammarPageSlugFromPathname } from '../../src/app/routes';
 import { GRAMMAR_PAGES } from '../../src/screens/grammar-page/data';
@@ -54,8 +54,9 @@ test('every grammar page has a rule, two examples, a different sentence to build
 });
 
 test('built grammar pages ship the rule, the examples, the exercise and their own tags', (t) => {
-  if (!existsSync('dist/grammar/ne-and-you.html')) {
-    t.skip('dist not built yet');
+  // Only right after a build (`npm run test:built`): a leftover dist/ from an older build proves nothing.
+  if (process.env.BUILT_PAGES !== '1') {
+    t.skip('checked after the build: npm run test:built');
     return;
   }
   const html = readFileSync('dist/grammar/ne-and-you.html', 'utf8');

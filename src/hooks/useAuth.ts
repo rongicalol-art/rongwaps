@@ -2,6 +2,7 @@ import { useSyncExternalStore, useState, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { authService } from '../services/authService';
 import { useAppStore, UserSnapshot } from '../store/useAppStore';
+import { saveToCloudNow } from '../utils/sync/cloudSaveNow';
 
 let globalUser: User | null = null;
 let globalHasFullCourseAccess = false;
@@ -36,12 +37,18 @@ function subscribe(callback: () => void) {
   if (listeners.size === 1 && !unsubscribeAuth) {
     unsubscribeAuth = authService.onAuthStateChanged((user, hasFullCourseAccess, ageOk = true) => {
       clearTimeout(loadingTimeout);
-      globalUser = user;
+      const snapshot = userToSnapshot(user);
+      const previous = useAppStore.getState().currentUser;
+      // The sign-in library announces the same session again on every return to the tab and token refresh,
+      // each time as a new object. Keep the objects we have unless the account or what we show of it changed,
+      // so sync and the screens that depend on the user are not restarted for nothing.
+      const sameUser = Boolean(globalUser && snapshot && previous && globalUser.id === snapshot.id
+        && JSON.stringify(previous) === JSON.stringify(snapshot));
+      if (!sameUser) globalUser = user;
       globalHasFullCourseAccess = Boolean(user && hasFullCourseAccess);
       globalNeedsAgeCheck = Boolean(user && !ageOk);
       globalIsLoading = false;
-      const snapshot = userToSnapshot(user);
-      useAppStore.getState().setCurrentUser(snapshot);
+      if (!sameUser) useAppStore.getState().setCurrentUser(snapshot);
       listeners.forEach(listener => listener());
     });
   }
@@ -75,6 +82,7 @@ export function useAuth() {
   const logout = useCallback(async () => {
     setIsAuthActionLoading(true);
     try {
+      await saveToCloudNow();
       await authService.logout();
       // The next sign-in starts from a full pull; the baseline is not trusted across sessions.
       useAppStore.getState().setSyncCheckpoint(null);

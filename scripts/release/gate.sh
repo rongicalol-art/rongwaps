@@ -46,6 +46,8 @@ check content npm run content:validate
 check jev-lint npm run jev:lint
 # Placeholders so the client bundle builds, as in CI; never real keys.
 check build env VITE_SUPABASE_URL=https://placeholder.supabase.co VITE_SUPABASE_ANON_KEY=placeholder-anon-key npm run build
+# The public pages the build just made (these tests skip inside `npm test`, which runs before the build).
+check built-pages npm run test:built
 check perf npm run perf:check
 check server-check npm run server:check
 check server-test npm run server:test

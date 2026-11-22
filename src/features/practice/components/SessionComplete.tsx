@@ -4,6 +4,7 @@ import type { LottieRefCurrentProps } from 'lottie-react';
 import { ActionButton, AppIcon, LottiePlayer, type AppIconName } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { localDay, streakMomentDue } from '../../../utils/srs/profileStats';
+import { studyTimes } from '../../../utils/srs/reviewEvents';
 import { StreakMoment } from './StreakMoment';
 
 // Module-level so the player keeps one stable loader identity. Exported for other end screens (lesson test results).
@@ -110,8 +111,8 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
   const contentRef = useRef<HTMLDivElement>(null);
   const [streakGain] = useState(() => {
     if (!celebrateStreak) return null;
-    const { reviewEvents, streakCelebratedDay } = useAppStore.getState();
-    return streakMomentDue(reviewEvents, streakCelebratedDay, Date.now());
+    const { reviewEvents, reviewArchive, streakCelebratedDay } = useAppStore.getState();
+    return streakMomentDue(studyTimes(reviewEvents, reviewArchive), streakCelebratedDay, Date.now());
   });
   const [showStreak, setShowStreak] = useState(false);
   const leavingRef = useRef(false);

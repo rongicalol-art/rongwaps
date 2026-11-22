@@ -18,6 +18,7 @@ import {
   resolveGuestFolderMigration,
 } from '../utils/sync/cloudMetadata';
 import { mergeLessonProgress } from '../utils/lesson/lessonCompletion';
+import { mergeLessonTests } from '../store/slices/lessonTestSlice';
 
 export interface UseCloudSyncFetchOptions {
   currentUser: User | null;
@@ -123,8 +124,10 @@ export function useCloudSyncFetch({
             {
               activeBookId: local.activeBookId,
               selectedLessonParts: local.selectedLessonParts,
+              favorites: local.favorites,
             },
-            { isAccountSwitch },
+            // The last settings known to be on the server: words saved or removed here since then survive the pull.
+            { isAccountSwitch, base: lastSyncedSettingsRef.current },
           );
           if (Object.keys(patch).length > 0) {
             useAppStore.setState(patch);
@@ -153,10 +156,18 @@ export function useCloudSyncFetch({
         cloudLessonProgress && typeof cloudLessonProgress === 'object' ? cloudLessonProgress : {},
       );
       if (Object.keys(lessonPatch).length > 0) useAppStore.setState(lessonPatch);
+      const testPatch = mergeLessonTests(
+        useAppStore.getState().lessonTests,
+        cloudLessonProgress && typeof cloudLessonProgress === 'object' ? (cloudLessonProgress as { lessonTests?: unknown }).lessonTests : null,
+      );
+      if (testPatch.lessonTests) useAppStore.setState(testPatch);
 
       useAppStore.getState().mergeReviewHistory(
         cloudData.reviewEvents,
         epoch?.wiped && cloudData.progressResetAt ? new Date(cloudData.progressResetAt).getTime() : 0,
+        // No cursor (or a wipe, which refetches everything): the pull carried the whole history.
+        !lastCursor || Boolean(epoch?.wiped),
+        cloudData.olderReviews,
       );
       lastSyncedSettingsRef.current = cloudData.settings;
 
@@ -191,6 +202,9 @@ export function useCloudSyncFetch({
         userId: currentUser.id,
         cursor: cloudData.cursor ?? checkpoint?.cursor ?? null,
         srs: baselineAfterPull ?? checkpoint?.srs ?? {},
+        // A whole pull lists every learned card the server has; a partial one only adds to a list already kept.
+        ...(!lastCursor || epoch?.wiped ? { learned: cloudData.learnedCards }
+          : checkpoint?.learned ? { learned: [...new Set([...checkpoint.learned, ...cloudData.learnedCards])] } : {}),
       });
       setSyncStatus('success');
       setSyncError(null);

@@ -30,6 +30,7 @@
     "typecheck": "node --stack-size=6000 node_modules/typescript/lib/tsc.js --noEmit",
     "lint": "eslint src shared tests server scripts games vite.config.ts playwright.config.ts --max-warnings=0",
     "test": "ACCEPTANCE_STRICT=true tsx --test tests/*.test.ts tests/unit/*.test.ts tests/content/*.test.ts tests/pipeline/*.test.ts",
+    "test:built": "BUILT_PAGES=1 tsx --test tests/unit/seoPrerender.test.ts tests/unit/lessonPages.test.ts tests/unit/grammarPages.test.ts tests/unit/wordLists.test.ts",
     "test:e2e": "playwright test",
     "gate": "scripts/release/gate.sh",
     "content:export": "tsx scripts/content/exportAuthoredContent.ts",

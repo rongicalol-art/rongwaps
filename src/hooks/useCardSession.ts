@@ -62,9 +62,7 @@ export function useCardSession(
   const practiceOnlyRef = useRef(false);
   const [completed, setCompleted] = useState(false);
   const sessionIdRef = useRef(crypto.randomUUID());
-  const clock = useStudyClock(Boolean(completed || options.paused || activeCards.length === 0), daily ? ms => {
-    if (!practiceOnlyRef.current) useAppStore.getState().addDailyReviewTime(ms);
-  } : undefined);
+  const clock = useStudyClock(Boolean(completed || options.paused || activeCards.length === 0));
   const previousAnswerTime = useRef(0);
   /** The session reopened inside an unfinished flashcard review pass (activeCards is the missed list). */
   const [resumedReview, setResumedReview] = useState(false);

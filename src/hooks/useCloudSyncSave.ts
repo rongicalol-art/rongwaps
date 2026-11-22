@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
 import type { UserSnapshot } from '../store/slices/authSlice';
 import { debugLogger } from '../utils/debug/debugLogger';
+import { learnedOnlyDelta } from '../utils/srs/srsRowMapping';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import {
@@ -11,6 +12,7 @@ import {
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
 } from '../utils/sync/cloudSyncQueue';
+import { registerCloudSave } from '../utils/sync/cloudSaveNow';
 import { getSelectedLessonIds } from '../utils/lesson/lessonPartSelection';
 import {
   buildMetadataPayload,
@@ -29,6 +31,8 @@ export interface UseCloudSyncSaveOptions {
   persistedOwnerRef: MutableRefObject<string | null>;
   lastSyncedSettingsRef: MutableRefObject<Record<string, unknown> | null>;
   hasFetchedForUserRef: MutableRefObject<string | null>;
+  /** Pulls and merges the cloud copy; a save runs it first when another device changed the settings. */
+  pullRef: MutableRefObject<(() => Promise<boolean>) | null>;
 }
 
 export function useCloudSyncSave({
@@ -36,6 +40,7 @@ export function useCloudSyncSave({
   persistedOwnerRef,
   lastSyncedSettingsRef,
   hasFetchedForUserRef,
+  pullRef,
 }: UseCloudSyncSaveOptions) {
   const coordinatorRef = useRef<SaveCoordinator | null>(null);
   const performSaveRef = useRef<(snapshot: CloudSaveSnapshot, owner: UserSnapshot) => Promise<void>>(async () => {});
@@ -54,7 +59,8 @@ export function useCloudSyncSave({
     await userService.syncReviewEvents(store.pendingReviewEvents, authorization);
     if (!isCurrent()) return;
     useAppStore.getState().acknowledgeReviewEvents(store.pendingReviewEvents.map(event => event.id));
-    await userService.syncCardProgress(deltaSrsData, store.learnedCards, authorization);
+    const learnedOnly = learnedOnlyDelta(store.learnedCards, checkpointForUser(store.syncCheckpoint, userId)?.learned, deltaSrsData);
+    await userService.syncCardProgress(deltaSrsData, store.learnedCards, authorization, learnedOnly);
     if (!isCurrent()) return;
     // Re-read: a pull may have advanced the checkpoint while this save ran.
     const checkpoint = checkpointForUser(useAppStore.getState().syncCheckpoint, userId);
@@ -62,11 +68,23 @@ export function useCloudSyncSave({
       useAppStore.getState().setSyncCheckpoint({
         ...checkpoint,
         srs: { ...checkpoint.srs, ...deltaSrsData },
+        learned: [...new Set([...(checkpoint.learned ?? []), ...store.learnedCards])],
       });
     }
 
-    const settings = buildMetadataPayload(store);
+    let settings = buildMetadataPayload(store);
     if (hasMetadataChanged(lastSyncedSettingsRef.current, settings)) {
+      // Settings are stored as one object, so uploading a copy based on an old one would erase what another
+      // device saved since (its saved words, most of all). If the server's copy is newer than the one this
+      // device last saw, pull and merge it first, then upload the merged result.
+      const remoteAt = await userService.getSettingsUpdatedAt(authorization);
+      if (!isCurrent()) return;
+      const seenAt = useAppStore.getState().lastCloudUpdate;
+      if (remoteAt && (!seenAt || Date.parse(remoteAt) > Date.parse(seenAt))) {
+        if (!await pullRef.current?.() || !isCurrent()) throw new Error('Settings changed on another device; retrying after a pull.');
+        settings = buildMetadataPayload(useAppStore.getState());
+        if (!hasMetadataChanged(lastSyncedSettingsRef.current, settings)) return;
+      }
       const serverUpdatedAt = await userService.syncSettings(userId, settings, authorization);
       if (!isCurrent()) return;
       lastSyncedSettingsRef.current = settings;
@@ -74,7 +92,7 @@ export function useCloudSyncSave({
       // profile's (server-stamped) updated_at to decide whose settings are newer.
       if (serverUpdatedAt) useAppStore.getState().setLastCloudUpdate(serverUpdatedAt);
     }
-  }, [lastSyncedSettingsRef, persistedOwnerRef]);
+  }, [lastSyncedSettingsRef, persistedOwnerRef, pullRef]);
 
   performSaveRef.current = performSave;
 
@@ -147,6 +165,13 @@ export function useCloudSyncSave({
       throw error;
     }
   }, [currentUser, hasFetchedForUserRef]);
+
+  // Sign-out uploads unsaved changes first (useAuth): once signed out they could only wait on this device.
+  useEffect(() => {
+    if (!currentUser) return;
+    registerCloudSave(requestSave);
+    return () => registerCloudSave(null);
+  }, [currentUser, requestSave]);
 
   useEffect(() => {
     if (!currentUser) return;

@@ -1,14 +1,14 @@
 import { PackMissError } from './errors';
-import { fetchStaticJson, pruneStaticJsonCache, removeStaticJsonCache } from './staticContentService';
+import { fetchStaticJson } from './staticContentService';
 
 class PackValidationError extends Error { override name = 'PackValidationError'; }
 
 /**
  * Shared pack-loading mechanism for the pack-first content strategy.
  *
- * Owns HOW packs load: manifest lifecycle, persistent IndexedDB cache keys,
- * in-memory part cache, request deduplication, and validation-failure cache
- * eviction.
+ * Owns HOW packs load: manifest lifecycle, in-memory part cache, request
+ * deduplication, and one retry past the browser's saved copy when a part
+ * fails validation.
  *
  * Feature services own WHAT a pack contains: manifest/pack shapes, manifest
  * and item validation, and the fallback policy (this loader throws; callers
@@ -35,7 +35,7 @@ export interface PackLoader<TManifest, TLoaded> {
    * Loads one part. Resolves null only when the manifest does not define the
    * key or its path is outside `partPathPrefix`; every other failure throws.
    * Successful parts are cached in memory; concurrent requests share one
-   * fetch. A pack that fails validation has its persistent cache evicted.
+   * fetch.
    */
   loadPart: (key: number) => Promise<TLoaded | null>;
   loadAllParts: () => Promise<TLoaded[]>;
@@ -44,21 +44,17 @@ export interface PackLoader<TManifest, TLoaded> {
 }
 
 export interface PackLoaderOptions<TManifest, TPack, TLoaded> {
-  /** Namespace used for persistent cache keys and stale-version pruning. */
+  /** Short name of the pack, used in error messages. */
   namespace: string;
   manifestPath: string;
   manifestLabel: string;
-  /** Network-first manifest with last-known metadata available offline. Opt-in. */
-  persistManifest?: boolean;
   /** Feature-owned manifest schema gate. Return false to reject. */
   validateManifest: (manifest: TManifest) => boolean;
   /** Maps a validated manifest to its loadable parts. */
   getParts: (manifest: TManifest) => PackPart[];
   /** Parts must live under this path prefix (guards against manifest tampering). */
   partPathPrefix: string;
-  /** Segment used inside the persistent cache key, e.g. 'shard' or 'book'. */
-  partCacheKeyKind: string;
-  /** Feature-owned pack validation. Return false to reject (cache evicted). */
+  /** Feature-owned pack validation. Return false to reject. */
   validatePack: (pack: TPack, part: PackPart, manifest: TManifest) => boolean;
   /** Optional post-validation mapping (e.g. index items by key). */
   transform?: (pack: TPack) => TLoaded;
@@ -77,7 +73,6 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     validateManifest,
     getParts,
     partPathPrefix,
-    partCacheKeyKind,
     validatePack,
     transform = (pack) => pack as unknown as TLoaded,
     partLabel,
@@ -102,13 +97,11 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     manifestPromise = fetchStaticJson<TManifest>(
       manifestPath,
       manifestLabel,
-      { revalidate: true, serverOnly: fromServer, ...(options.persistManifest ? { persistentKey: `${namespace}-manifest`, fallbackToPersistent: true,
-        validate: (data: unknown) => validateManifest(data as TManifest) } : {}) },
+      { revalidate: true, serverOnly: fromServer },
     ).then((manifest) => {
       if (!validateManifest(manifest)) {
         throw new Error(`Unsupported ${namespace} manifest`);
       }
-      void pruneStaticJsonCache(namespace, (manifest as { version: string }).version);
       return manifest;
     }).catch((error) => {
       manifestPromise = null;
@@ -142,10 +135,13 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     const part = getParts(manifest).find((candidate) => candidate.key === key);
     if (!part || !part.path.startsWith(partPathPrefix)) return null;
 
-    const persistentKey = `${namespace}:${(manifest as { version: string }).version}:${partCacheKeyKind}:${key}`;
-    const pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key), { persistentKey });
+    let pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key));
+    // A versioned address is kept by the browser for a year. If a release switch stored the wrong bytes under
+    // it, only a fetch past the saved copy can recover: try that once before giving up.
     if (!validatePack(pack, part, manifest)) {
-      await removeStaticJsonCache(persistentKey);
+      pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key), { reload: true });
+    }
+    if (!validatePack(pack, part, manifest)) {
       throw new PackValidationError(`${partLabel(key)} failed validation`);
     }
 

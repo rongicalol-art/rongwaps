@@ -20,7 +20,7 @@ async function load(state: Record<string, unknown>, rows: unknown[] | null = [{ 
 const day = 86_400_000;
 const learner = (patch: Record<string, unknown> = {}) => ({
   currentUser: { id: 'u1' }, showProfile: true, coverPreset: 'jade', coverPath: null, activeBookId: 1, characterPreference: 'traditional',
-  srsData: {}, learnedCards: ['B1L1-1'], reviewEvents: [{ reviewedAt: Date.now() - 40 * day }, { reviewedAt: Date.now() }], ...patch,
+  srsData: {}, learnedCards: ['B1L1-1'], reviewEvents: [{ reviewedAt: Date.now() - 40 * day }, { reviewedAt: Date.now() }], reviewArchive: { count: 0, firstAt: null, days: [] }, ...patch,
 });
 
 test('a visit card carries cover, book, start, characters and streak', async () => {

@@ -56,7 +56,6 @@ function createTestLoader(overrides: Partial<Parameters<typeof createPackLoader<
     manifestPath: '/data/test/manifest.json',
     manifestLabel: 'test manifest',
     partPathPrefix: '/data/test/',
-    partCacheKeyKind: 'shard',
     partLabel: (key) => `test part ${key}`,
     validateManifest: (manifest) => manifest.schemaVersion === 1 && manifest.parts.length > 0,
     getParts: (manifest) => manifest.parts.map((part) => ({
@@ -169,6 +168,21 @@ test('pack loader rejects an invalid pack and allows retry after the fetch recov
     failNext = false;
     const recovered = await loader.loadPart(1);
     assert.deepEqual(recovered, ['item-1-a', 'item-1-b']);
+    // The failed load asked twice (the saved copy, then past it); the retry asked once.
+    assert.equal(calls.filter((call) => call.url.endsWith('part-1.json')).length, 3);
+  });
+});
+
+test('pack loader recovers on its own when only the browser\'s saved copy of a part is wrong', async () => {
+  let asked = 0;
+  const { calls, fetch } = createFetchStub(new Map<string, () => unknown>([
+    ['/data/test/manifest.json', () => validManifest],
+    ['/data/test/part-1.json', () => (asked++ === 0 ? { schemaVersion: 1, key: 1, count: 1, items: ['a', 'b'] } : packBody(1, 2)())],
+  ]));
+
+  await withFetch(fetch, async () => {
+    const loaded = await createTestLoader().loadPart(1);
+    assert.deepEqual(loaded, ['item-1-a', 'item-1-b']);
     assert.equal(calls.filter((call) => call.url.endsWith('part-1.json')).length, 2);
   });
 });
@@ -303,4 +317,24 @@ test('a missing part with an unchanged manifest still fails', async () => {
     await assert.rejects(createTestLoader().loadPart(1), { name: 'PackMissError' });
     assert.equal(manifestFetches, 2);
   });
+});
+
+test('a file that must be checked with the server falls back to the browser\'s saved copy when offline', async () => {
+  const { fetchContentOrSavedCopy } = await import('../../src/services/staticContentService');
+  const modes: (RequestCache | undefined)[] = [];
+  const offline = (async (_input: RequestInfo | URL, init?: RequestInit) => {
+    modes.push(init?.cache);
+    if (init?.cache !== 'force-cache') throw new TypeError('Failed to fetch');
+    return new Response('{"saved":true}', { status: 200, headers: { 'content-type': 'application/json' } });
+  }) as typeof fetch;
+  const real = globalThis.fetch;
+  try {
+    globalThis.fetch = offline;
+    const response = await fetchContentOrSavedCopy('/data/search/dictionary-search-index.json');
+    assert.deepEqual(await response.json(), { saved: true });
+    assert.deepEqual(modes, [undefined, 'force-cache'], 'the server is asked first; only a network failure uses the saved copy');
+    // A server answer, even an error, is never replaced by an old copy.
+    globalThis.fetch = (async () => new Response('{}', { status: 401 })) as typeof fetch;
+    assert.equal((await fetchContentOrSavedCopy('/data/search/x.json')).status, 401);
+  } finally { globalThis.fetch = real; }
 });
