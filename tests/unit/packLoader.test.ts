@@ -319,3 +319,23 @@ test('a missing part with an unchanged manifest still fails', async () => {
     assert.equal(manifestFetches, 2);
   });
 });
+
+test('a file that must be checked with the server falls back to the browser\'s saved copy when offline', async () => {
+  const { fetchContentOrSavedCopy } = await import('../../src/services/staticContentService');
+  const modes: (RequestCache | undefined)[] = [];
+  const offline = (async (_input: RequestInfo | URL, init?: RequestInit) => {
+    modes.push(init?.cache);
+    if (init?.cache !== 'force-cache') throw new TypeError('Failed to fetch');
+    return new Response('{"saved":true}', { status: 200, headers: { 'content-type': 'application/json' } });
+  }) as typeof fetch;
+  const real = globalThis.fetch;
+  try {
+    globalThis.fetch = offline;
+    const response = await fetchContentOrSavedCopy('/data/search/dictionary-search-index.json');
+    assert.deepEqual(await response.json(), { saved: true });
+    assert.deepEqual(modes, [undefined, 'force-cache'], 'the server is asked first; only a network failure uses the saved copy');
+    // A server answer, even an error, is never replaced by an old copy.
+    globalThis.fetch = (async () => new Response('{}', { status: 401 })) as typeof fetch;
+    assert.equal((await fetchContentOrSavedCopy('/data/search/x.json')).status, 401);
+  } finally { globalThis.fetch = real; }
+});

@@ -1,4 +1,4 @@
-import { fetchContent } from './staticContentService';
+import { fetchContentOrSavedCopy } from './staticContentService';
 import { debugLogger } from '../utils/debug/debugLogger';
 import type { SearchResult } from '../../shared/dictionarySearch';
 
@@ -47,7 +47,7 @@ function start(): Promise<void> {
     if (!pending.size) idleTimer = setTimeout(() => dispose(), IDLE_MS);
   };
   ready = (async () => {
-    const response = await fetchContent(PACK_PATH);
+    const response = await fetchContentOrSavedCopy(PACK_PATH);
     if (!response.ok) throw new Error(`Common words returned ${response.status}`);
     const buffer = await response.arrayBuffer();
     if (worker !== instance) throw new Error('Common words search closed');

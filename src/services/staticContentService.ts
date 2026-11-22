@@ -113,6 +113,21 @@ async function revalidateOrSavedCopy(path: string, signal: AbortSignal): Promise
   return saved;
 }
 
+/**
+ * `fetchContent`, falling back to the browser's saved copy when the network cannot be reached. Files without a
+ * version in their address must be checked with the server, so offline a plain request fails even though the
+ * browser still holds the file; this is what lets the dictionary work offline after one online use.
+ */
+export async function fetchContentOrSavedCopy(path: string, init: RequestInit = {}): Promise<Response> {
+  if (globalThis.navigator?.onLine === false) return fetchContent(path, { ...init, cache: 'force-cache' });
+  try {
+    return await fetchContent(path, init);
+  } catch (error) {
+    if (init.signal?.aborted || !(error instanceof TypeError)) throw error;
+    return fetchContent(path, { ...init, cache: 'force-cache' });
+  }
+}
+
 /** `fetch` for `/data/...` content; sends the session token for the gated lesson packs (same-origin only). */
 export async function fetchContent(path: string, init: RequestInit = {}): Promise<Response> {
   const headers = new Headers(init.headers);
