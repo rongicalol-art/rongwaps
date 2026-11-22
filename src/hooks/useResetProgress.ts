@@ -47,6 +47,7 @@ export function useResetProgress({
     const appSnapshot = {
       reviewEvents: appState.reviewEvents,
       pendingReviewEvents: appState.pendingReviewEvents,
+      reviewArchive: appState.reviewArchive,
       dailyReviewPlan: appState.dailyReviewPlan,
       learningBatches: appState.learningBatches,
       wordConfusions: appState.wordConfusions,

@@ -124,8 +124,10 @@ export function useCloudSyncFetch({
             {
               activeBookId: local.activeBookId,
               selectedLessonParts: local.selectedLessonParts,
+              favorites: local.favorites,
             },
-            { isAccountSwitch },
+            // The last settings known to be on the server: words saved or removed here since then survive the pull.
+            { isAccountSwitch, base: lastSyncedSettingsRef.current },
           );
           if (Object.keys(patch).length > 0) {
             useAppStore.setState(patch);
@@ -163,6 +165,8 @@ export function useCloudSyncFetch({
       useAppStore.getState().mergeReviewHistory(
         cloudData.reviewEvents,
         epoch?.wiped && cloudData.progressResetAt ? new Date(cloudData.progressResetAt).getTime() : 0,
+        // No cursor (or a wipe, which refetches everything): the pull carried the whole history.
+        !lastCursor || Boolean(epoch?.wiped),
       );
       lastSyncedSettingsRef.current = cloudData.settings;
 

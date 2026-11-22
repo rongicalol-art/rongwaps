@@ -37,10 +37,10 @@ function fixture(t: TestContext) {
   // Only the production domains exercised by these hooks are mounted.
   }) as unknown as AppState);
   store.getState().setCurrentUser({ id: 'A' });
-  const service: Pick<typeof userService, 'getSyncAuthorization' | 'getSyncState' | 'syncReviewEvents' | 'syncCardProgress' | 'syncSettings' | 'resetLearningProgress'> = {
+  const service: Pick<typeof userService, 'getSyncAuthorization' | 'getSyncState' | 'syncReviewEvents' | 'syncCardProgress' | 'syncSettings' | 'resetLearningProgress' | 'getSettingsUpdatedAt'> = {
     getSyncAuthorization: async (id) => `Bearer ${id}`,
     getSyncState: async () => cloud(), syncReviewEvents: async () => {}, syncCardProgress: async () => {},
-    syncSettings: async () => null, resetLearningProgress: async () => null,
+    syncSettings: async () => null, resetLearningProgress: async () => null, getSettingsUpdatedAt: async () => null,
   };
   const f = { store, service, user: user('A'), effects: [] as Array<() => void | (() => void)>, cleanups: [] as Array<() => void> };
   const previousWindow = globalThis.window;
@@ -79,7 +79,8 @@ function effects(f: ReturnType<typeof fixture>) {
 }
 function refs() {
   return { persistedOwnerRef: { current: 'A' as string | null }, lastSyncedSettingsRef: { current: null as Record<string, unknown> | null },
-    hasFetchedForUserRef: { current: 'A' as string | null }, activeUserIdRef: { current: null as string | null } };
+    hasFetchedForUserRef: { current: 'A' as string | null }, activeUserIdRef: { current: null as string | null },
+    pullRef: { current: null as (() => Promise<boolean>) | null } };
 }
 
 test('late pulls cannot contaminate another account, a sign-out, or a new session of the same account', async t => {
@@ -340,4 +341,25 @@ test('grammar completion from another device merges in, and a reset elsewhere cl
   assert.equal(await useCloudSyncFetch({ currentUser: user('A'), ...refs() }).fetchFromCloud(), true);
   assert.deepEqual(f.store.getState().completedPageIds, ['after-reset-page']);
   assert.deepEqual(f.store.getState().completedPartIds, []);
+});
+
+test('a settings save pulls and merges first when another device saved settings since', async t => {
+  const f = fixture(t);
+  const { useCloudSyncFetch } = await loadHook<typeof import('../../src/hooks/useCloudSyncFetch')>('../hooks/useCloudSyncFetch');
+  const { useCloudSyncSave } = await loadHook<typeof import('../../src/hooks/useCloudSyncSave')>('../hooks/useCloudSyncSave');
+  const r = refs();
+  // This device last saw the server's settings with one saved word, then saved another here.
+  r.lastSyncedSettingsRef.current = { favorites: ['old'] };
+  f.store.setState({ favorites: ['old', 'mine'], lastCloudUpdate: '2026-11-01T00:00:00Z' });
+  // Meanwhile another device saved a different word and removed nothing.
+  f.service.getSettingsUpdatedAt = async () => '2026-11-02T00:00:00Z';
+  f.service.getSyncState = async () => ({ ...cloud(), settings: { favorites: ['old', 'theirs'] }, lastUpdated: '2026-11-02T00:00:00Z' });
+  const uploaded: unknown[] = [];
+  f.service.syncSettings = async (_id, settings) => { uploaded.push(settings.favorites); return '2026-11-03T00:00:00Z'; };
+  r.pullRef.current = useCloudSyncFetch({ currentUser: f.user, ...r }).fetchFromCloud;
+  const hook = useCloudSyncSave({ currentUser: f.user, ...r });
+  f.cleanups.push(...f.effects.splice(0).map(run => run()).filter((stop): stop is () => void => typeof stop === 'function'));
+  await hook.requestSave();
+  assert.deepEqual(f.store.getState().favorites, ['old', 'theirs', 'mine'], 'both devices\' words are kept');
+  assert.deepEqual(uploaded, [['old', 'theirs', 'mine']], 'and the merged list is what gets uploaded');
 });

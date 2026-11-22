@@ -30,11 +30,15 @@ export function useCloudSync() {
     activeUserIdRef,
   });
 
+  const pullRef = useRef<(() => Promise<boolean>) | null>(null);
+  pullRef.current = fetchFromCloud;
+
   const { requestSave } = useCloudSyncSave({
     currentUser,
     persistedOwnerRef,
     lastSyncedSettingsRef,
     hasFetchedForUserRef,
+    pullRef,
   });
 
   useEffect(() => {

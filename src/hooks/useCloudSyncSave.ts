@@ -30,6 +30,8 @@ export interface UseCloudSyncSaveOptions {
   persistedOwnerRef: MutableRefObject<string | null>;
   lastSyncedSettingsRef: MutableRefObject<Record<string, unknown> | null>;
   hasFetchedForUserRef: MutableRefObject<string | null>;
+  /** Pulls and merges the cloud copy; a save runs it first when another device changed the settings. */
+  pullRef: MutableRefObject<(() => Promise<boolean>) | null>;
 }
 
 export function useCloudSyncSave({
@@ -37,6 +39,7 @@ export function useCloudSyncSave({
   persistedOwnerRef,
   lastSyncedSettingsRef,
   hasFetchedForUserRef,
+  pullRef,
 }: UseCloudSyncSaveOptions) {
   const coordinatorRef = useRef<SaveCoordinator | null>(null);
   const performSaveRef = useRef<(snapshot: CloudSaveSnapshot, owner: UserSnapshot) => Promise<void>>(async () => {});
@@ -66,8 +69,19 @@ export function useCloudSyncSave({
       });
     }
 
-    const settings = buildMetadataPayload(store);
+    let settings = buildMetadataPayload(store);
     if (hasMetadataChanged(lastSyncedSettingsRef.current, settings)) {
+      // Settings are stored as one object, so uploading a copy based on an old one would erase what another
+      // device saved since (its saved words, most of all). If the server's copy is newer than the one this
+      // device last saw, pull and merge it first, then upload the merged result.
+      const remoteAt = await userService.getSettingsUpdatedAt(authorization);
+      if (!isCurrent()) return;
+      const seenAt = useAppStore.getState().lastCloudUpdate;
+      if (remoteAt && (!seenAt || Date.parse(remoteAt) > Date.parse(seenAt))) {
+        if (!await pullRef.current?.() || !isCurrent()) throw new Error('Settings changed on another device; retrying after a pull.');
+        settings = buildMetadataPayload(useAppStore.getState());
+        if (!hasMetadataChanged(lastSyncedSettingsRef.current, settings)) return;
+      }
       const serverUpdatedAt = await userService.syncSettings(userId, settings, authorization);
       if (!isCurrent()) return;
       lastSyncedSettingsRef.current = settings;
@@ -75,7 +89,7 @@ export function useCloudSyncSave({
       // profile's (server-stamped) updated_at to decide whose settings are newer.
       if (serverUpdatedAt) useAppStore.getState().setLastCloudUpdate(serverUpdatedAt);
     }
-  }, [lastSyncedSettingsRef, persistedOwnerRef]);
+  }, [lastSyncedSettingsRef, persistedOwnerRef, pullRef]);
 
   performSaveRef.current = performSave;
 

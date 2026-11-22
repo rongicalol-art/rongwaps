@@ -179,6 +179,11 @@ export const userService = {
     return state.progressResetAt ?? null;
   },
 
+  // When the settings were last written from any device (profile-only pull). A save compares it with the
+  // copy this device last saw, so settings changed elsewhere are pulled and merged before they are overwritten.
+  getSettingsUpdatedAt: async (authorization: string): Promise<string | null> =>
+    (await userService.getSyncState({ since: PROFILE_ONLY_SINCE, authorization })).lastUpdated ?? null,
+
   // The server's current folder list (profile-only pull; no card rows).
   getFolders: async (): Promise<UserFolderRow[]> =>
     (await userService.getSyncState({ since: PROFILE_ONLY_SINCE })).folders,

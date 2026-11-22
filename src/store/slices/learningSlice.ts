@@ -1,4 +1,4 @@
-import { mergeReviewEvents, type ReviewContext, type ReviewEvent } from '../../utils/srs/reviewEvents';
+import { archiveOldReviews, EMPTY_REVIEW_ARCHIVE, mergeReviewEvents, REVIEW_KEEP_MS, type ReviewArchive, type ReviewContext, type ReviewEvent } from '../../utils/srs/reviewEvents';
 import { type DailyReviewPlan } from '../../utils/srs/reviewSession';
 import type { SRSData, Quality } from '../../utils/srs/srsEngine';
 import { reviewSessionKey } from '../../utils/srs/sessionProgress';
@@ -20,7 +20,14 @@ export interface LearningState {
   markCardReviewed: (cardId: string, quality: Quality, context?: ReviewContext, options?: ReviewOptions) => void;
   reviewEvents: ReviewEvent[];
   pendingReviewEvents: ReviewEvent[];
-  mergeReviewHistory: (events: ReviewEvent[], after?: number) => void;
+  /** Answers older than the keep window, as totals and study days (see `ReviewArchive`). */
+  reviewArchive: ReviewArchive;
+  /**
+   * `after`: a reset happened then; drop everything before it. `full`: `events` is the server's whole history
+   * (a first or full pull), so the archive is rebuilt from it; otherwise older answers in `events` are skipped,
+   * because this device cannot tell whether its archive already counts them.
+   */
+  mergeReviewHistory: (events: ReviewEvent[], after?: number, full?: boolean) => void;
   acknowledgeReviewEvents: (ids: string[]) => void;
   dailyReviewPlan: DailyReviewPlan | null;
   setDailyReviewPlan: (plan: DailyReviewPlan | null) => void;
@@ -81,6 +88,7 @@ interface LearningSetState {
   learningBatches: Record<string, string[]>;
   reviewEvents: ReviewEvent[];
   pendingReviewEvents: ReviewEvent[];
+  reviewArchive: ReviewArchive;
   dailyReviewPlan: DailyReviewPlan | null;
   srsData: Record<string, SRSData>;
   progressResetSeen: Record<string, string>;
@@ -114,19 +122,24 @@ export function createLearningSlice(set: SetState): LearningState {
     setSrsDataAndLearnedCards: (srs, learned) => set({ srsData: srs, learnedCards: learned }),
     reviewEvents: [],
     pendingReviewEvents: [],
+    reviewArchive: EMPTY_REVIEW_ARCHIVE,
     dailyReviewPlan: null,
     setDailyReviewPlan: (dailyReviewPlan) => set({ dailyReviewPlan }),
-    mergeReviewHistory: (events, after = 0) => set(s => {
+    mergeReviewHistory: (events, after = 0, full = false) => set(s => {
       // Most pulls bring nothing new (only the overlap window again): keep the same arrays, so nothing re-renders or is saved.
-      if (after <= 0) {
+      if (after <= 0 && !full) {
         const known = new Set(s.reviewEvents.map(e => e.id));
         const stillPending = new Set(s.pendingReviewEvents.map(e => e.id));
         if (events.every(e => known.has(e.id) && !stillPending.has(e.id))) return {};
       }
+      const now = Date.now();
+      const incoming = full || after > 0 ? events : events.filter(e => e.reviewedAt >= now - REVIEW_KEEP_MS);
+      const kept = archiveOldReviews(mergeReviewEvents(s.reviewEvents, incoming, after), full || after > 0 ? EMPTY_REVIEW_ARCHIVE : s.reviewArchive, now);
       return {
-      reviewEvents: mergeReviewEvents(s.reviewEvents, events, after),
-      pendingReviewEvents: s.pendingReviewEvents.filter(e => e.reviewedAt > after && !events.some(incoming => incoming.id === e.id)),
-      dailyReviewPlan: after > 0 ? null : s.dailyReviewPlan,
+        reviewEvents: kept.events,
+        reviewArchive: kept.archive,
+        pendingReviewEvents: s.pendingReviewEvents.filter(e => e.reviewedAt > after && !events.some(incoming => incoming.id === e.id)),
+        dailyReviewPlan: after > 0 ? null : s.dailyReviewPlan,
       };
     }),
     acknowledgeReviewEvents: (ids) => set(s => {
@@ -145,7 +158,10 @@ export function createLearningSlice(set: SetState): LearningState {
         ? { ...plan, activeMs: plan.activeMs + addedMs,
           answers: cardId in plan.answers ? plan.answers : { ...plan.answers, [cardId]: quality } }
         : plan;
+      // Fold answers that have aged out of the keep window into the archive (cheap check: the list is in time order).
+      const kept = result.reviewEvents ? archiveOldReviews(result.reviewEvents, state.reviewArchive) : null;
       return { ...result, dailyReviewPlan,
+        ...(kept && kept.events !== result.reviewEvents ? { reviewEvents: kept.events, reviewArchive: kept.archive } : {}),
         pendingReviewEvents: isNewEvent ? [...state.pendingReviewEvents, event] : state.pendingReviewEvents };
     }),
     progressResetSeen: {},
@@ -242,6 +258,7 @@ export function createLearningSlice(set: SetState): LearningState {
       wordConfusions: {},
       reviewEvents: [],
       pendingReviewEvents: [],
+      reviewArchive: EMPTY_REVIEW_ARCHIVE,
       dailyReviewPlan: null,
       lastActivity: null,
       isReviewMode: false,
@@ -257,6 +274,7 @@ export const LEARNING_PERSISTED_KEYS = [
   'learningBatches',
   'reviewEvents',
   'pendingReviewEvents',
+  'reviewArchive',
   'dailyReviewPlan',
   'learnedCards',
   'sessionProgressIndex',
@@ -272,6 +290,7 @@ export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
   learningBatches: {},
   reviewEvents: [],
   pendingReviewEvents: [],
+  reviewArchive: EMPTY_REVIEW_ARCHIVE,
   dailyReviewPlan: null,
   srsData: {},
   learnedCards: [],

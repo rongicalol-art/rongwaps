@@ -133,3 +133,11 @@ test('lesson test scores sync: better best score, newer last run, most-seen vers
   assert.deepEqual(mergeLessonTests(merged, cloud), {}, 'merging the same cloud copy again changes nothing');
   assert.deepEqual(mergeLessonTests(local, null), {});
 });
+
+test('saved words merge three ways: local adds and removals survive a newer cloud list', async () => {
+  const { mergeFavorites } = await import('../../src/utils/sync/cloudMetadata');
+  assert.deepEqual(mergeFavorites(['a', 'b'], ['a', 'b', 'mine'], ['a', 'b', 'theirs']), ['a', 'b', 'theirs', 'mine']);
+  assert.deepEqual(mergeFavorites(['a', 'b'], ['a'], ['a', 'b', 'theirs']), ['a', 'theirs'], 'a word removed here stays removed');
+  assert.deepEqual(mergeFavorites(['a', 'b'], ['a', 'b'], ['a']), ['a'], 'a word removed there is removed here');
+  assert.deepEqual(mergeFavorites(null, ['x'], ['a']), ['a'], 'with no common starting point the cloud list wins');
+});
