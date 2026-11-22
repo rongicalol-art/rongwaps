@@ -202,6 +202,9 @@ export function useCloudSyncFetch({
         userId: currentUser.id,
         cursor: cloudData.cursor ?? checkpoint?.cursor ?? null,
         srs: baselineAfterPull ?? checkpoint?.srs ?? {},
+        // A whole pull lists every learned card the server has; a partial one only adds to a list already kept.
+        ...(!lastCursor || epoch?.wiped ? { learned: cloudData.learnedCards }
+          : checkpoint?.learned ? { learned: [...new Set([...checkpoint.learned, ...cloudData.learnedCards])] } : {}),
       });
       setSyncStatus('success');
       setSyncError(null);

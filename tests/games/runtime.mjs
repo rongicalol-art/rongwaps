@@ -333,6 +333,20 @@ try {
   await until(() => last(modern, 'people')?.v.some(person => person.u === 'alice' && person.a === 'test'));
   await until(() => last(quiet, 'people')?.l === 101 && last(quiet, 'people').v.some(person => person.u === 'alice'));
   assert.equal(last(quiet, 'people').v.find(person => person.u === 'alice').a, 'lesson', 'an older client never gets an activity it cannot name');
+  // v: 4 clients get face photos in their own frame; count updates then carry none, and older clients keep theirs inline.
+  const slim = await open('/lobby/socket', 'lobby', (await post('/lobby', 'slim')).ticket);
+  send(slim, { t: 'sub', online: false, chat: null, v: 4 });
+  send(modern, { t: 'here', l: 101, a: 'lesson', show: true, i: 'https://lh3.googleusercontent.com/modern' });
+  await until(() => last(slim, 'photos')?.v.modern === 'https://lh3.googleusercontent.com/modern');
+  await until(() => last(slim, 'counts')?.v['101']?.f.some(person => person.u === 'modern'));
+  assert.ok(Object.values(last(slim, 'counts').v).every(entry => entry.f.every(person => !person.i)) && last(slim, 'counts').f.every(person => !person.i), 'slim count updates carry no photo address');
+  await until(() => last(modern, 'counts')?.v['101']?.f.find(person => person.u === 'modern')?.i === 'https://lh3.googleusercontent.com/modern');
+  assert.ok(!modern.frames.some(frame => frame.t === 'photos'), 'older clients get photos inside counts, as before');
+  const photoFrames = slim.frames.filter(frame => frame.t === 'photos').length;
+  send(slim, { t: 'here', l: 104, a: 'lesson', show: true });
+  await until(() => last(slim, 'counts')?.v['104']?.n === 1);
+  assert.equal(slim.frames.filter(frame => frame.t === 'photos').length, photoFrames, 'a count change does not resend the photos');
+  slim.socket.close(1000);
   modern.socket.close(1000);
   send(alice, { t: 'here', l: 101, a: 'cards', show: true });
   quiet.socket.close(1000);

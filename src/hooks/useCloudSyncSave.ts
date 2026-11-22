@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
 import type { UserSnapshot } from '../store/slices/authSlice';
 import { debugLogger } from '../utils/debug/debugLogger';
+import { learnedOnlyDelta } from '../utils/srs/srsRowMapping';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import {
@@ -58,7 +59,8 @@ export function useCloudSyncSave({
     await userService.syncReviewEvents(store.pendingReviewEvents, authorization);
     if (!isCurrent()) return;
     useAppStore.getState().acknowledgeReviewEvents(store.pendingReviewEvents.map(event => event.id));
-    await userService.syncCardProgress(deltaSrsData, store.learnedCards, authorization);
+    const learnedOnly = learnedOnlyDelta(store.learnedCards, checkpointForUser(store.syncCheckpoint, userId)?.learned, deltaSrsData);
+    await userService.syncCardProgress(deltaSrsData, store.learnedCards, authorization, learnedOnly);
     if (!isCurrent()) return;
     // Re-read: a pull may have advanced the checkpoint while this save ran.
     const checkpoint = checkpointForUser(useAppStore.getState().syncCheckpoint, userId);
@@ -66,6 +68,7 @@ export function useCloudSyncSave({
       useAppStore.getState().setSyncCheckpoint({
         ...checkpoint,
         srs: { ...checkpoint.srs, ...deltaSrsData },
+        learned: [...new Set([...(checkpoint.learned ?? []), ...store.learnedCards])],
       });
     }
 
