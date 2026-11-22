@@ -1,7 +1,8 @@
 import { DurableObject } from 'cloudflare:workers';
 import { LOBBY_FULL_ERROR, CHAT_KEEP, CHAT_TTL_MS, CLASS_CHAT_KEEP, CLASS_CHAT_MAX_AGE_MS, socialUpdateOpen, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
-import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
+import { verifyAccessToken } from '../shared/accessToken';
+import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused, socialRefusal } from './access';
 
 type Att = {
   u: string; n: string; c: SocialColor; i?: string; show: boolean; l: number | null; a: Activity | null;
@@ -12,6 +13,8 @@ type Att = {
   on: boolean; ch: number | null; cheer: number; inv: number[];
   activeAt: number; tokens: number; updatedAt: number;
   authUntil: number;
+  /** When this socket last asked to renew (rate limit). */
+  renewedAt?: number;
   /** Accepted at (ms): orders faces and lesson lists the same way after every wake. */
   j?: number;
   /** Set by the first `sub`: true streams open rooms only while the social panel is open; false (older clients) streams every listing change. */
@@ -262,11 +265,33 @@ export class Lobby extends DurableObject<Env> {
     return new Response(null, { status: 101, webSocket: client, headers: { 'Sec-WebSocket-Protocol': 'lobby' } });
   }
 
+  /** The same checks a new ticket gets (index.ts): a valid token for this same account, still allowed in. */
+  private async renew(socket: WebSocket, att: Att, raw: string) {
+    const now = Date.now();
+    // At most one check a minute per socket: verifying a signature is the costly part.
+    if (now - (att.renewedAt ?? 0) < 60_000) return;
+    att.renewedAt = now; socket.serializeAttachment(att);
+    let auth: Awaited<ReturnType<typeof verifyAccessToken>> = null;
+    try {
+      const message = parseLobbyMessage(JSON.parse(raw));
+      if (message.t === 'auth') auth = await verifyAccessToken(`Bearer ${message.jwt}`, this.env.SUPABASE_URL);
+    } catch { return; } // Keys unavailable or a malformed frame: the current time limit simply stands.
+    if (socket.readyState !== 1) return;
+    if (!auth || auth.userId !== att.u) { this.close(socket, 4002, 'Refresh your sign-in.'); return; }
+    const refusal = socialRefusal(this.env, att.u, auth.claims);
+    if (refusal) { this.close(socket, 4004, refusal); return; }
+    att.authUntil = Math.min(auth.expiresAt, now + 15 * 60_000);
+    socket.serializeAttachment(att);
+  }
+
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer) {
     if (socket.readyState !== 1) return;
     if (typeof raw !== 'string' || raw.length > SOCIAL_FRAME_BYTES || new TextEncoder().encode(raw).byteLength > SOCIAL_FRAME_BYTES) { this.close(socket, 1008, 'Invalid message.'); return; }
     let att = this.index().get(socket);
     if (!att) { att = socket.deserializeAttachment() as Att; this.track(socket, att); }
+    // The app renews its place with a fresh sign-in token before the time limit, instead of a new ticket and
+    // socket every 15 minutes (two server requests each, for every connected learner, out of a shared daily quota).
+    if (raw.startsWith('{"t":"auth"')) { await this.renew(socket, att, raw); return; }
     if ((att.authUntil ?? 0) <= Date.now()) { this.close(socket, 4002, 'Refresh your sign-in.'); return; }
     if (socialPaused(this.env) || socialBanned(this.env, att.u)) { this.close(socket, 4004, socialPaused(this.env) ? SOCIAL_PAUSED_ERROR : SOCIAL_BANNED_ERROR); return; }
     const now = Date.now();

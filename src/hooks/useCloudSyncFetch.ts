@@ -167,6 +167,7 @@ export function useCloudSyncFetch({
         epoch?.wiped && cloudData.progressResetAt ? new Date(cloudData.progressResetAt).getTime() : 0,
         // No cursor (or a wipe, which refetches everything): the pull carried the whole history.
         !lastCursor || Boolean(epoch?.wiped),
+        cloudData.olderReviews,
       );
       lastSyncedSettingsRef.current = cloudData.settings;
 

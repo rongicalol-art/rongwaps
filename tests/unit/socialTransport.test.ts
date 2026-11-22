@@ -89,6 +89,18 @@ test('temporary outages retry past six attempts; invalid credentials stop retrie
   t.mock.timers.tick(120000);await flush();assert.equal(attempts,finalAttempts);
 });
 
+test('a live Lobby connection renews its sign-in over the socket, and stops when closed',async t=>{
+  t.mock.timers.enable({apis:['setTimeout','setInterval','Date'],now:1000});
+  const h=await setup(t);const socket=h.connect();await flush();
+  const live=FakeSocket.instances[0];live.open();live.message('pong');
+  // The server keeps answering pings, as a live one does.
+  for(let passed=0;passed<=h.api.LOBBY_RENEW_MS;passed+=20_000){t.mock.timers.tick(20_000);live.message('pong');await flush();}
+  assert.deepEqual(live.sent.filter(frame=>frame.includes('"auth"')),['{"t":"auth","jwt":"synthetic-token"}']);
+  socket.close();
+  t.mock.timers.tick(h.api.LOBBY_RENEW_MS*3);await flush();
+  assert.equal(live.sent.filter(frame=>frame.includes('"auth"')).length,1);
+});
+
 test('a full Lobby is asked again after minutes, not seconds',async t=>{
   t.mock.timers.enable({apis:['setTimeout','setInterval','Date'],now:1000});
   let attempts=0;

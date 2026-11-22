@@ -335,6 +335,10 @@ export interface Database {
         Args: { p_since?: string | null };
         Returns: Json;
       };
+      get_sync_state_recent: {
+        Args: { p_since?: string | null; p_recent_days?: number | null };
+        Returns: Json;
+      };
       reset_user_learning_progress: {
         Args: Record<PropertyKey, never>;
         Returns: undefined;

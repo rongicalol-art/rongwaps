@@ -5,6 +5,8 @@ import type { RaceFrame, RaceSelection, RaceSnapshot } from '../../shared/quizRa
 export type SocialStatus = 'off' | 'connecting' | 'live' | 'reconnecting';
 export interface Identity { name: string; color: string; image?: string }
 interface Socket<T> { send: (message: T) => boolean | void; close: () => void }
+/** Well inside the Lobby's 15-minute limit, with room for one missed turn. */
+export const LOBBY_RENEW_MS = 6 * 60_000;
 class ConnectionError extends Error { constructor(message: string, readonly status: number) { super(message); } }
 
 let origin: Promise<string | null> | null = null;
@@ -139,9 +141,21 @@ export function connectLobby(identity: Identity, handlers: {
   /** Why the Lobby refused for good (a name, a pause, the 18+ step); it stops retrying. */
   onError?: (message: string) => void;
 }): Socket<LobbyClientMessage> {
-  return reconnecting<LobbyServerMessage, LobbyClientMessage>({
+  // The Lobby keeps a connection for 15 minutes per sign-in check. Renewing over the open socket (one small
+  // message) replaces a new ticket and socket (two server requests, and a reload of friends and inbox).
+  let renew: ReturnType<typeof setInterval> | undefined;
+  const socket = reconnecting<LobbyServerMessage, LobbyClientMessage>({
     path: () => '/lobby/socket', protocol: 'lobby', issue: signal => ticket('/lobby', { name: identity.name, color: identity.color }, signal), fatal: [4001, 1008], ...handlers,
+    onStatus: (status) => {
+      clearInterval(renew);
+      if (status === 'live') renew = setInterval(() => {
+        // A token too large for one frame is not sent (send refuses it); the connection then reconnects as before.
+        void authService.getAccessToken().then(jwt => { if (jwt) socket.send({ t: 'auth', jwt }); }).catch(() => {});
+      }, LOBBY_RENEW_MS);
+      handlers.onStatus(status);
+    },
   });
+  return { send: socket.send, close: () => { clearInterval(renew); socket.close(); } };
 }
 
 /** Idempotent authenticated fallback: leaving works even if the WebSocket closed before the leave frame arrived. */
