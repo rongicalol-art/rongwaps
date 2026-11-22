@@ -4,7 +4,13 @@
  * number of right answers; a blank paper scores 0. The official table differs a little for every paper, which is
  * why a mock score is shown as a range. Rebuilt by hand from the tables when new official papers appear.
  */
-export const BAND_SCORE_CURVES = {
+export interface ScoreCurve {
+  low: readonly number[];
+  mid: readonly number[];
+  high: readonly number[];
+}
+
+export const BAND_SCORE_CURVES: Readonly<Record<'N' | 'A' | 'B' | 'C', Record<'listening' | 'reading', ScoreCurve>>> = {
   N: {
     listening: {
       low: [0, 10, 17, 22, 26, 29, 32, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 60, 62, 65, 69, 74, 80, 80],
@@ -53,4 +59,4 @@ export const BAND_SCORE_CURVES = {
       high: [0, 12, 19, 24, 27, 29, 31, 33, 35, 36, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 69, 70, 72, 74, 76, 79, 80, 80, 80, 80],
     },
   },
-} as const;
+};
