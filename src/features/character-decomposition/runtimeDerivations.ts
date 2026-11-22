@@ -5,7 +5,6 @@ import type {
 import { runtimeNodeChildren } from './runtimePack';
 import {
   fetchStaticJsonWithMetadata,
-  pruneStaticJsonCache,
   type StaticJsonFetchMetadata,
 } from '../../services/staticContentService';
 
@@ -133,15 +132,13 @@ export interface RuntimeLoaderMetrics {
   manifestLoads: number;
   shardLoads: number;
   networkFiles: number;
-  persistentCacheFiles: number;
   inMemoryHits: number;
   bytesFetched: number;
   files: string[];
 }
 
 export interface RuntimePackTransport {
-  fetchJson<T>(path: string, label: string, persistentKey: string): Promise<StaticJsonFetchMetadata<T>>;
-  prune(namespace: string, activeVersion: string): Promise<void>;
+  fetchJson<T>(path: string, label: string): Promise<StaticJsonFetchMetadata<T>>;
 }
 
 export interface RuntimePackLoaderOptions {
@@ -282,9 +279,6 @@ export function toVisibleChildSync(
 
 export function defaultTransport(): RuntimePackTransport {
   return {
-    fetchJson: <T>(path: string, label: string, persistentKey: string) => (
-      fetchStaticJsonWithMetadata<T>(path, label, { persistentKey })
-    ),
-    prune: pruneStaticJsonCache,
+    fetchJson: <T>(path: string, label: string) => fetchStaticJsonWithMetadata<T>(path, label),
   };
 }

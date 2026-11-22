@@ -49,7 +49,6 @@ export class RuntimePackLoader {
     manifestLoads: 0,
     shardLoads: 0,
     networkFiles: 0,
-    persistentCacheFiles: 0,
     inMemoryHits: 0,
     bytesFetched: 0,
     files: [],
@@ -71,11 +70,9 @@ export class RuntimePackLoader {
       const result = await this.transport.fetchJson<RuntimePackManifest>(
         joinPath(this.basePath, 'manifest.json'),
         'decomposition runtime manifest',
-        '',
       );
       this.metrics.files.push('manifest.json');
-      if (result.source === 'network') this.metrics.networkFiles += 1;
-      else this.metrics.persistentCacheFiles += 1;
+      this.metrics.networkFiles += 1;
       validateManifest(result.data, this.expectedSchemaVersion);
       const candidate = !result.data.publishable
         || result.data.licenseGate?.publishable === false
@@ -85,10 +82,6 @@ export class RuntimePackLoader {
           'Refusing non-publishable/development-only decomposition runtime pack outside explicit development/test mode.',
         );
       }
-      await this.transport.prune(
-        'decomposition-runtime',
-        `${result.data.schemaVersion}:${result.data.version}`,
-      );
       return result.data;
     })().catch((error) => {
       this.manifestPromise = null;
@@ -103,7 +96,7 @@ export class RuntimePackLoader {
       try {
         const manifest = await this.getManifest();
         const { data } = await this.transport.fetchJson<{ version: string; records: Record<string, RuntimePackRecord> }>(
-          joinPath(this.basePath, 'hot.json'), 'decomposition hot records', '');
+          joinPath(this.basePath, 'hot.json'), 'decomposition hot records');
         this.metrics.files.push('hot.json');
         this.metrics.networkFiles += 1;
         return data.version === manifest.version ? data.records : null;
@@ -289,21 +282,16 @@ export class RuntimePackLoader {
     const result = await this.transport.fetchJson<T>(
       versionedPath(joinPath(this.basePath, relativePath), sha256),
       `decomposition runtime ${key}`,
-      `decomposition-runtime:${manifest.schemaVersion}:${manifest.version}:${key}`,
     );
     this.metrics.shardLoads += 1;
     this.metrics.files.push(relativePath);
-    if (result.source === 'network') {
-      this.metrics.networkFiles += 1;
-      const descriptor = [
-        ...manifest.recordShards,
-        ...manifest.indexes.direct.shards,
-        ...manifest.indexes.reverse.shards,
-      ].find((item) => item.path === relativePath);
-      this.metrics.bytesFetched += descriptor?.bytes ?? 0;
-    } else {
-      this.metrics.persistentCacheFiles += 1;
-    }
+    this.metrics.networkFiles += 1;
+    const descriptor = [
+      ...manifest.recordShards,
+      ...manifest.indexes.direct.shards,
+      ...manifest.indexes.reverse.shards,
+    ].find((item) => item.path === relativePath);
+    this.metrics.bytesFetched += descriptor?.bytes ?? 0;
     return result.data;
   }
 }

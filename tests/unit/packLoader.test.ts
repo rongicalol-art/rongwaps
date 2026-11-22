@@ -56,7 +56,6 @@ function createTestLoader(overrides: Partial<Parameters<typeof createPackLoader<
     manifestPath: '/data/test/manifest.json',
     manifestLabel: 'test manifest',
     partPathPrefix: '/data/test/',
-    partCacheKeyKind: 'shard',
     partLabel: (key) => `test part ${key}`,
     validateManifest: (manifest) => manifest.schemaVersion === 1 && manifest.parts.length > 0,
     getParts: (manifest) => manifest.parts.map((part) => ({

@@ -32,12 +32,10 @@ const loader = createPackLoader<AudioManifest, PronunciationAudioPack, Map<strin
   namespace: 'pronunciation-audio',
   manifestPath: '/data/pronunciation-audio/manifest.json',
   manifestLabel: 'pronunciation audio manifest',
-  persistManifest: true,
   validateManifest: (m) => m?.schemaVersion === 1 && /^[a-f0-9]{16}$/.test(m.version)
     && m.count > 0 && m.count <= 1500 && m.path === `/data/pronunciation-audio/${m.version}.json`,
   getParts: (m) => [{ key: 0, path: m.path, count: m.count }],
   partPathPrefix: '/data/pronunciation-audio/',
-  partCacheKeyKind: 'index',
   validatePack: (pack, part, manifest) => isPronunciationAudioPack(pack) && pack.count === part.count && pack.version === manifest.version,
   transform: (pack) => new Map([
     ...Object.entries(pack.items).map(([key, file]): [string, string] => [key, pack.prefix + file]),

@@ -274,13 +274,11 @@ export const getShardParts = (m: GenericContentManifest): PackPart[] => (m.shard
 }));
 
 export interface PackConfig<TPack, TLoaded> {
-  persistManifest?: boolean;
   maxCachedParts?: number;
   namespace: string;
   manifestPath: string;
   manifestLabel: string;
   partPathPrefix: string;
-  partCacheKeyKind: string;
   partLabel: (key: number) => string;
   validateManifest: (manifest: GenericContentManifest) => boolean;
   getParts: (manifest: GenericContentManifest) => PackPart[];
