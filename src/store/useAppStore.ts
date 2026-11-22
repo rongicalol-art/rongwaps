@@ -25,6 +25,7 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import { reportStorageFailure } from '../services/errorReporting';
 import { migrateLegacyLessonSelection } from '../utils/lesson/lessonPartSelection';
 import { migrateLegacyStores } from '../utils/sync/legacyStoreMigration';
+import { EMPTY_REVIEW_ARCHIVE, validReviewArchive } from '../utils/srs/reviewEvents';
 import {
   createAuthSlice,
   AUTH_PERSISTED_KEYS,
@@ -157,6 +158,26 @@ let pendingWrite: { name: string; value: unknown } | null = null;
 let pendingWriteLastValue: unknown | null = null;
 let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
+/**
+ * Two tabs (or the installed app and a browser tab) each hold their own copy of this store and save it whole,
+ * so without this the last one to save silently erased what the other had saved. Each save is announced; a tab
+ * that hears another tab's save loads that saved state, unless it has an unsaved change of its own (then its
+ * own save follows within a second and the other tab loads that).
+ */
+const tabChannel = typeof window !== 'undefined' && typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('rongwaps-storage') : null;
+(tabChannel as { unref?: () => void } | null)?.unref?.();
+let otherTabSaved = false;
+let adopting = false;
+
+function adoptOtherTabState(): void {
+  if (!otherTabSaved || adopting || (typeof document !== 'undefined' && document.visibilityState !== 'visible')) return;
+  otherTabSaved = false;
+  if (pendingWrite) return;
+  adopting = true;
+  void Promise.resolve(useAppStore.persist.rehydrate()).catch(() => {}).finally(() => { adopting = false; });
+}
+if (tabChannel) tabChannel.onmessage = () => { otherTabSaved = true; adoptOtherTabState(); };
+
 function flushPendingPersist(): void {
   if (persistTimer) {
     clearTimeout(persistTimer);
@@ -172,7 +193,7 @@ function flushPendingPersist(): void {
   // progress lives only in memory (localSaveFailed) until a write lands again.
   void Promise.resolve()
     .then(() => set(pending.name, pending.value))
-    .then(() => setLocalSaveFailed(false), (error: unknown) => {
+    .then(() => { tabChannel?.postMessage('saved'); setLocalSaveFailed(false); }, (error: unknown) => {
       // Forget the failed value so the next store change retries the write.
       if (pendingWriteLastValue === pending.value) pendingWriteLastValue = null;
       debugLogger.error('Sync', 'IndexedDB write failed; progress is only in memory', error);
@@ -191,6 +212,7 @@ if (typeof window !== 'undefined' && typeof window.addEventListener === 'functio
   if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') flushPendingPersist();
+      else adoptOtherTabState();
     });
   }
 }
@@ -233,6 +255,8 @@ const idbStorage: PersistStorage<Partial<AppState>> = {
       };
 
       type StoredVal = { state?: Record<string, unknown>; version?: number } | null | undefined;
+      // State just loaded from another tab's save is already on disk: remember it, don't write it back.
+      if (adopting) { pendingWriteLastValue = value; return; }
       if (isValueEqual(value, pendingWriteLastValue as StoredVal) && pendingWrite === null) return;
       if (isValueEqual(value, pendingWrite?.value as StoredVal)) return;
 
@@ -340,6 +364,10 @@ function sanitizePersistedState(state: Record<string, unknown>): Record<string, 
       debugLogger.warn('Sync', `Persisted "${key}" was not a record; using an empty record.`, value);
       cleaned[key] = {};
     }
+  }
+  if ('reviewArchive' in cleaned && !validReviewArchive(cleaned.reviewArchive)) {
+    debugLogger.warn('Sync', 'Persisted review archive was malformed; starting it empty.', cleaned.reviewArchive);
+    cleaned.reviewArchive = EMPTY_REVIEW_ARCHIVE;
   }
   const attempt = cleaned.lessonTestAttempt as { plan?: { items?: unknown } } | null | undefined;
   if (attempt !== undefined && attempt !== null && !Array.isArray(attempt?.plan?.items)) {

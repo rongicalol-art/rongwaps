@@ -14,6 +14,7 @@ import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeMode
 import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
 import { PracticeDockSlotProvider, StreakMoment, type SessionStats } from '../../features/practice';
 import { localDay, streakMomentDue } from '../../utils/srs/profileStats';
+import { studyTimes } from '../../utils/srs/reviewEvents';
 import { ActivityScreens } from './components/ActivityScreens';
 import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
@@ -201,7 +202,7 @@ export function ActivityModals({
 
   const handleClose = () => {
     const store = useAppStore.getState();
-    const streak = streakExit || race ? null : streakMomentDue(store.reviewEvents, store.streakCelebratedDay, Date.now());
+    const streak = streakExit || race ? null : streakMomentDue(studyTimes(store.reviewEvents, store.reviewArchive), store.streakCelebratedDay, Date.now());
     if (streak) {
       store.setStreakCelebratedDay(localDay(new Date()));
       setStreakExit(streak);

@@ -23,6 +23,25 @@ export type CharacterPreference = 'traditional' | 'simplified';
 export interface CloudMetadataLocalState {
   activeBookId: number;
   selectedLessonParts: LessonPartSelectionMap;
+  /** With `base`: saved words are merged, not replaced (see mergeFavorites). */
+  favorites?: string[];
+}
+
+/**
+ * Saved words from another device, merged with this device's unsaved changes. `base` is the list both started
+ * from (the last copy known to be on the server): words this device added since stay, words it removed stay
+ * removed, and everything else follows the cloud. Without a base the cloud list simply wins.
+ */
+export function mergeFavorites(base: string[] | null, local: string[] | undefined, cloud: string[]): string[] {
+  if (!base || !local) return cloud;
+  const before = new Set(base);
+  const mine = new Set(local);
+  const theirs = new Set(cloud);
+  const removedHere = base.filter((id) => !mine.has(id));
+  const addedHere = local.filter((id) => !before.has(id) && !theirs.has(id));
+  if (!removedHere.length && !addedHere.length) return cloud;
+  const gone = new Set(removedHere);
+  return [...cloud.filter((id) => !gone.has(id)), ...addedHere];
 }
 
 export interface CloudMetadataPatch extends Partial<ProfileSettings> {
@@ -61,7 +80,7 @@ function nextActiveBookId(
 export function resolveCloudMetadataPatch(
   metadata: Record<string, unknown>,
   local: CloudMetadataLocalState,
-  options: { isAccountSwitch: boolean },
+  options: { isAccountSwitch: boolean; base?: Record<string, unknown> | null },
 ): CloudMetadataPatch {
   const { isAccountSwitch } = options;
   const patch: CloudMetadataPatch = {};
@@ -72,7 +91,9 @@ export function resolveCloudMetadataPatch(
 
   const favorites = stringArray(metadata.favorites);
   if (favorites || isAccountSwitch) {
-    patch.favorites = favorites ?? [];
+    patch.favorites = favorites && !isAccountSwitch
+      ? mergeFavorites(options.base ? stringArray(options.base.favorites) : null, local.favorites, favorites)
+      : favorites ?? [];
   }
 
   const activeBookId = nextActiveBookId(metadata, local, isAccountSwitch);

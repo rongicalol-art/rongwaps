@@ -175,3 +175,44 @@ test('daily study time is added per answer, and a pull with nothing new changes 
   state.mergeReviewHistory([incoming]);
   assert.equal(state.reviewEvents.length, history.length + 1);
 });
+
+test('old answers are folded into a small archive and the profile totals stay exact', async () => {
+  const { archiveOldReviews, EMPTY_REVIEW_ARCHIVE, REVIEW_KEEP_MS, studyTimes } = await import('../../src/utils/srs/reviewEvents');
+  const { computeStreak, firstReviewAt } = await import('../../src/utils/srs/profileStats');
+  const now = +new Date(2027, 5, 15, 12);
+  const day = 86_400_000;
+  // 200 days in a row, two answers a day, the last one today.
+  const all: ReviewEvent[] = Array.from({ length: 400 }, (_, i) => ({
+    ...context(), cardId: `w${i}`, quality: 4 as const, scheduled: true, reviewedAt: now - (199 - Math.floor(i / 2)) * day - (i % 2) * 60_000,
+  })).sort((a, b) => a.reviewedAt - b.reviewedAt);
+  const before = { streak: computeStreak(all, now).streak, first: firstReviewAt(all, now), count: all.length };
+  const { events, archive } = archiveOldReviews(all, EMPTY_REVIEW_ARCHIVE, now);
+  assert.ok(events.length < all.length && events.every(e => e.reviewedAt >= now - REVIEW_KEEP_MS));
+  assert.equal(archive.count + events.length, before.count);
+  assert.ok(archive.days.length <= 81 && archive.days.length >= 79, `one time a day, got ${archive.days.length}`);
+  const times = studyTimes(events, archive);
+  assert.equal(computeStreak(times, now).streak, before.streak);
+  assert.equal(before.streak, 200);
+  assert.equal(firstReviewAt(times, now), before.first);
+  // Nothing old left: the same objects come back (nothing to save).
+  const again = archiveOldReviews(events, archive, now);
+  assert.equal(again.events, events);
+  assert.equal(again.archive, archive);
+
+  // In the store: a full pull rebuilds the archive (no double counting on a second full pull); a later
+  // incremental pull that repeats old answers does not count them again.
+  const state: ReturnType<typeof createLearningSlice> & { isReviewMode: boolean; activeReviewSessionCards: string[] | null; swipeFeedback: null } = {
+    ...createLearningSlice(update => { Object.assign(state, typeof update === 'function' ? update(state) : update); }),
+    isReviewMode: false, activeReviewSessionCards: null, swipeFeedback: null };
+  const recent = all.map(e => ({ ...e, reviewedAt: e.reviewedAt + (Date.now() - now) }));
+  state.mergeReviewHistory(recent, 0, true);
+  const total = () => state.reviewArchive.count + state.reviewEvents.length;
+  assert.equal(total(), 400);
+  assert.ok(state.reviewEvents.length < 400);
+  state.mergeReviewHistory(recent, 0, true);
+  assert.equal(total(), 400);
+  state.mergeReviewHistory(recent.slice(0, 10));
+  assert.equal(total(), 400);
+  state.resetProgress();
+  assert.equal(total(), 0);
+});
