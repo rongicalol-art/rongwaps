@@ -844,10 +844,11 @@ try {
   assert.ok(chatHistory.some(message => message.i && message.u.startsWith('load-')), `chat history decorates online senders with their profile photos: ${JSON.stringify(chatHistory.slice(0, 2))}`);
   assert.equal((await lobbySql.exec('SELECT COUNT(*) AS n FROM chat WHERE lesson=101'))[0].n, Math.min(50, previousChatRows + userCount));
   {
-    const overflow = await post('/lobby', 'overflow');
-    const rejected = await mf.dispatchFetch('https://games.test/lobby/socket', { headers: { Origin: origin, Upgrade: 'websocket', 'Sec-WebSocket-Protocol': `lobby, ticket.${overflow.ticket}` } });
-    assert.equal(rejected.status, 503, 'the connection past capacity is rejected without disturbing existing users');
-    await rejected.text();
+    const rejected = await mf.dispatchFetch('https://games.test/lobby', { method: 'POST', headers: { Origin: origin, Authorization: 'Bearer ' + await token('overflow'), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: 'overflow', color: 'jade' }) });
+    assert.equal(rejected.status, 503, 'a learner past capacity is refused before a ticket is made, without disturbing existing users');
+    assert.equal((await rejected.json()).error, 'Study together is full. Try again shortly.');
+    assert.ok((await post('/lobby', students[0].id)).ticket, 'a learner who is already connected can still reconnect');
     console.log(JSON.stringify({ stage: 'capacity', admitted: userCount, rejectedStatus: rejected.status }));
   }
   const reconnectAt = performance.now();

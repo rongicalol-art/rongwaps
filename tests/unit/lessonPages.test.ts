@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { LESSON_PAGE_BOOKS, LESSON_PAGE_LESSONS, lessonPageFromPathname, lessonPagePath } from '../../src/app/routes';
 import { loadLessonPageBook, lessonPageData } from '../../src/screens/lesson-page/lessonPageData';
@@ -45,8 +45,9 @@ test('every lesson page has a title, a sample that leaves most of the lesson out
 });
 
 test('built lesson pages ship their own tags, the conversation and the Study button', (t) => {
-  if (!existsSync('dist/books/1/lesson-4.html')) {
-    t.skip('dist not built yet');
+  // Only right after a build (`npm run test:built`): a leftover dist/ from an older build proves nothing.
+  if (process.env.BUILT_PAGES !== '1') {
+    t.skip('checked after the build: npm run test:built');
     return;
   }
   const html = readFileSync('dist/books/1/lesson-4.html', 'utf8');

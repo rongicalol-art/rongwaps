@@ -24,7 +24,6 @@ export interface LearningState {
   acknowledgeReviewEvents: (ids: string[]) => void;
   dailyReviewPlan: DailyReviewPlan | null;
   setDailyReviewPlan: (plan: DailyReviewPlan | null) => void;
-  addDailyReviewTime: (ms: number) => void;
   /**
    * Per-user reset epoch last applied on this device (user id -> ISO time of
    * `user_profiles.progress_reset_at`). Keyed by user so it survives account
@@ -117,14 +116,19 @@ export function createLearningSlice(set: SetState): LearningState {
     pendingReviewEvents: [],
     dailyReviewPlan: null,
     setDailyReviewPlan: (dailyReviewPlan) => set({ dailyReviewPlan }),
-    addDailyReviewTime: (ms) => set(s => ({
-      dailyReviewPlan: s.dailyReviewPlan ? { ...s.dailyReviewPlan, activeMs: s.dailyReviewPlan.activeMs + Math.max(0, ms) } : null,
-    })),
-    mergeReviewHistory: (events, after = 0) => set(s => ({
+    mergeReviewHistory: (events, after = 0) => set(s => {
+      // Most pulls bring nothing new (only the overlap window again): keep the same arrays, so nothing re-renders or is saved.
+      if (after <= 0) {
+        const known = new Set(s.reviewEvents.map(e => e.id));
+        const stillPending = new Set(s.pendingReviewEvents.map(e => e.id));
+        if (events.every(e => known.has(e.id) && !stillPending.has(e.id))) return {};
+      }
+      return {
       reviewEvents: mergeReviewEvents(s.reviewEvents, events, after),
       pendingReviewEvents: s.pendingReviewEvents.filter(e => e.reviewedAt > after && !events.some(incoming => incoming.id === e.id)),
       dailyReviewPlan: after > 0 ? null : s.dailyReviewPlan,
-    })),
+      };
+    }),
     acknowledgeReviewEvents: (ids) => set(s => {
       const uploaded = new Set(ids);
       return { pendingReviewEvents: s.pendingReviewEvents.filter(e => !uploaded.has(e.id)) };
@@ -134,8 +138,12 @@ export function createLearningSlice(set: SetState): LearningState {
       const event = result.reviewEvents?.at(-1);
       const isNewEvent = event && !state.reviewEvents.some(e => e.id === event.id);
       const plan = state.dailyReviewPlan;
-      const dailyReviewPlan = context?.source === 'daily' && plan && !(cardId in plan.answers)
-        ? { ...plan, answers: { ...plan.answers, [cardId]: quality } }
+      // Study time is added per answer (the same sum dailyReviewGoal makes from the events), never on a timer:
+      // a saved value that changes every second rewrites the whole saved state every second.
+      const addedMs = isNewEvent && !context?.practiceOnly ? Math.max(0, context?.durationMs ?? 0) : 0;
+      const dailyReviewPlan = context?.source === 'daily' && plan && (addedMs > 0 || !(cardId in plan.answers))
+        ? { ...plan, activeMs: plan.activeMs + addedMs,
+          answers: cardId in plan.answers ? plan.answers : { ...plan.answers, [cardId]: quality } }
         : plan;
       return { ...result, dailyReviewPlan,
         pendingReviewEvents: isNewEvent ? [...state.pendingReviewEvents, event] : state.pendingReviewEvents };

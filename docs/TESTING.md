@@ -7,6 +7,7 @@ Runner: Node native test runner (`node:test` + `node:assert/strict`) via `tsx`. 
 | Command | What it runs |
 | --- | --- |
 | `npm test` | `tests/unit`, `tests/content`, `tests/pipeline` and the acceptance runner, with `ACCEPTANCE_STRICT=true` (acceptance criteria fail instead of skipping). |
+| `npm run test:built` | The tests that read the built public pages in `dist/` (landing, lesson, grammar and word-list pages). They skip inside `npm test`, which runs before the build; the gate and CI run this right after `npm run build`. |
 | `npx tsx --test tests/acceptance/*.test.ts` | Acceptance suites directly. |
 | `npm run typecheck` / `lint` / `jev:lint` | `tsc --noEmit`, ESLint (0 warnings), Jev rules. |
 | `npm run content:validate` | Lesson/grammar content validation. |

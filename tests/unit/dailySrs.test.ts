@@ -144,3 +144,34 @@ test('lesson learning and its quiz retain the same small batch', async () => {
   assert.equal(next[0].id, 'lesson-5');
   assert.equal(next.length, 5);
 });
+
+test('daily study time is added per answer, and a pull with nothing new changes nothing', () => {
+  const state: ReturnType<typeof createLearningSlice> & { isReviewMode: boolean; activeReviewSessionCards: string[] | null; swipeFeedback: null } = {
+    ...createLearningSlice(update => { Object.assign(state, typeof update === 'function' ? update(state) : update); }),
+    isReviewMode: false, activeReviewSessionCards: null, swipeFeedback: null };
+  state.setDailyReviewPlan({ day: reviewDay(), cardIds: ['a', 'b'], answers: {}, activeMs: 0, completed: false });
+  const first = context();
+  state.markCardReviewed('a', 4, first);
+  assert.equal(state.dailyReviewPlan?.activeMs, 20_000);
+  assert.deepEqual(state.dailyReviewPlan?.answers, { a: 4 });
+  // The same answer delivered twice (a retried tap) counts once.
+  state.markCardReviewed('a', 4, first);
+  assert.equal(state.dailyReviewPlan?.activeMs, 20_000);
+  // Practice replays record the answer shown but add no study time.
+  state.markCardReviewed('b', 2, { ...context(), practiceOnly: true });
+  assert.equal(state.dailyReviewPlan?.activeMs, 20_000);
+  assert.deepEqual(state.dailyReviewPlan?.answers, { a: 4, b: 2 });
+  // The plan's time matches what another device would compute from the synced events.
+  assert.equal(dailyReviewGoal(state.reviewEvents).activeMs, state.dailyReviewPlan?.activeMs);
+
+  state.acknowledgeReviewEvents(state.pendingReviewEvents.map(event => event.id));
+  const history = state.reviewEvents;
+  const pending = state.pendingReviewEvents;
+  state.mergeReviewHistory([]);
+  state.mergeReviewHistory([history[0]]);
+  assert.equal(state.reviewEvents, history, 'known events keep the same list (nothing re-renders or is saved)');
+  assert.equal(state.pendingReviewEvents, pending);
+  const incoming: ReviewEvent = { ...history[0], id: crypto.randomUUID(), reviewedAt: history[0].reviewedAt + 1 };
+  state.mergeReviewHistory([incoming]);
+  assert.equal(state.reviewEvents.length, history.length + 1);
+});

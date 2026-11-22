@@ -1,7 +1,7 @@
 import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialImage, socialName } from '../shared/quizRace';
 import { verifyAccessToken } from '../shared/accessToken';
 import { newSeed } from './room';
-import { SOCIAL_FRAME_BYTES } from '../shared/lobby';
+import { LOBBY_FULL_ERROR, SOCIAL_FRAME_BYTES } from '../shared/lobby';
 import { NAME_NOT_ALLOWED, NAME_RESERVED, nameProblem } from '../shared/nameFilter';
 import { SOCIAL_PAUSED_ERROR, googlePhoto, isOwnerAccount, isSchoolAccount, socialRefusal } from './access';
 import { TICKET_LIMIT_ERROR } from './lobby';
@@ -36,6 +36,7 @@ const JOIN_ERRORS = new Set([
   'This room is full.',
   'Pick at least one lesson part.',
   TICKET_LIMIT_ERROR,
+  LOBBY_FULL_ERROR,
   NAME_NOT_ALLOWED,
   NAME_RESERVED,
 ]);
@@ -98,7 +99,7 @@ export default {
     } catch (error) {
       const message = error instanceof Error && JOIN_ERRORS.has(error.message) ? error.message : null;
       if (!message) console.error('games: join failed', error);
-      return reply({ error: message ?? 'Could not join. Check the code and your connection.' }, message && LIMIT_ERRORS.has(message) ? 429 : 400);
+      return reply({ error: message ?? 'Could not join. Check the code and your connection.' }, message === LOBBY_FULL_ERROR ? 503 : message && LIMIT_ERRORS.has(message) ? 429 : 400);
     }
   },
 } satisfies ExportedHandler<Env>;

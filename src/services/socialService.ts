@@ -1,5 +1,5 @@
 import { authService } from './authService';
-import { SOCIAL_FRAME_BYTES, type LobbyClientMessage, type LobbyServerMessage, type PartyChatClientMessage, type PartyChatServerMessage } from '../../shared/lobby';
+import { LOBBY_FULL_ERROR, SOCIAL_FRAME_BYTES, type LobbyClientMessage, type LobbyServerMessage, type PartyChatClientMessage, type PartyChatServerMessage } from '../../shared/lobby';
 import type { RaceFrame, RaceSelection, RaceSnapshot } from '../../shared/quizRace';
 
 export type SocialStatus = 'off' | 'connecting' | 'live' | 'reconnecting';
@@ -49,6 +49,7 @@ function reconnecting<In, Out>(options: {
   let stopped = false;
   let attempts = 0;
   let opening = false;
+  let fullUntil = 0;
   let timer: ReturnType<typeof setTimeout> | undefined;
   let watchdog: ReturnType<typeof setTimeout> | undefined;
   let ping: ReturnType<typeof setInterval> | undefined;
@@ -61,11 +62,14 @@ function reconnecting<In, Out>(options: {
     document.removeEventListener('visibilitychange', wake);
     socket?.close(1000, 'Bye.'); options.onStatus('off');
   };
-  const retry = () => {
+  /** `full`: the server has no room. Ask again in 2 to 4 minutes, never every few seconds (each ask is a billed request). */
+  const retry = (full = false) => {
     if (stopped) return;
     clearTimeout(timer);
     options.onStatus('reconnecting');
-    const ms = Math.min(15_000, 1000 * 2 ** Math.min(attempts++, 4)) * (0.8 + Math.random() * 0.4);
+    const ms = full ? 120_000 + Math.random() * 120_000
+      : Math.min(15_000, 1000 * 2 ** Math.min(attempts++, 4)) * (0.8 + Math.random() * 0.4);
+    fullUntil = full ? Date.now() + ms : 0;
     timer = setTimeout(() => { void open(); }, ms);
   };
   const open = async () => {
@@ -110,10 +114,10 @@ function reconnecting<In, Out>(options: {
       if (error instanceof ConnectionError && [400, 401, 403, 404, 409, 410].includes(error.status)) {
         options.onError?.(error.message); stop(); return;
       }
-      retry();
+      retry(error instanceof ConnectionError && error.message === LOBBY_FULL_ERROR);
     } finally { opening = false; }
   };
-  const wake = () => { if (document.visibilityState === 'visible') { clearTimeout(timer); void open(); } };
+  const wake = () => { if (document.visibilityState === 'visible' && Date.now() >= fullUntil) { clearTimeout(timer); void open(); } };
   window.addEventListener('online', wake);
   document.addEventListener('visibilitychange', wake);
   options.onStatus('connecting'); void open();
