@@ -1,13 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 /** Active foreground time only. Loading, hidden tabs and teaching overlays pause it. */
-export function useStudyClock(paused: boolean, onTick?: (ms: number) => void) {
+export function useStudyClock(paused: boolean) {
   const elapsed = useRef(0);
   const previous = useRef(Date.now());
   const pausedRef = useRef(paused);
-  const onTickRef = useRef(onTick);
   pausedRef.current = paused;
-  onTickRef.current = onTick;
 
   useEffect(() => {
     let active = !document.hidden && document.hasFocus();
@@ -15,10 +13,7 @@ export function useStudyClock(paused: boolean, onTick?: (ms: number) => void) {
       const now = Date.now();
       const ms = Math.max(0, Math.min(2_000, now - previous.current));
       previous.current = now;
-      if (active && !pausedRef.current) {
-        elapsed.current += ms;
-        onTickRef.current?.(ms);
-      }
+      if (active && !pausedRef.current) elapsed.current += ms;
     };
     const update = () => { tick(); active = !document.hidden && document.hasFocus(); };
     const timer = window.setInterval(tick, 1_000);

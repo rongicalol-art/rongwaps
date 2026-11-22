@@ -94,8 +94,9 @@ test('a Study tap is remembered for the trip through sign-in, once, and not for 
 });
 
 test('built word list pages ship every word, their own tags and the Study button', (t) => {
-  if (!existsSync('dist/tocfl/vocabulary/a1.html')) {
-    t.skip('dist not built yet');
+  // Only right after a build (`npm run test:built`): a leftover dist/ from an older build proves nothing.
+  if (process.env.BUILT_PAGES !== '1') {
+    t.skip('checked after the build: npm run test:built');
     return;
   }
   const html = readFileSync('dist/tocfl/vocabulary/a1.html', 'utf8');

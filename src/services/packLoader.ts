@@ -143,7 +143,12 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     if (!part || !part.path.startsWith(partPathPrefix)) return null;
 
     const persistentKey = `${namespace}:${(manifest as { version: string }).version}:${partCacheKeyKind}:${key}`;
-    const pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key), { persistentKey });
+    let pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key), { persistentKey });
+    // A versioned address is kept by the browser for a year. If a release switch stored the wrong bytes under
+    // it, only a fetch past the saved copy can recover: try that once before giving up.
+    if (!validatePack(pack, part, manifest)) {
+      pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key), { persistentKey, reload: true });
+    }
     if (!validatePack(pack, part, manifest)) {
       await removeStaticJsonCache(persistentKey);
       throw new PackValidationError(`${partLabel(key)} failed validation`);

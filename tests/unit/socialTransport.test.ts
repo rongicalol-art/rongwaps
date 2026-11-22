@@ -89,6 +89,21 @@ test('temporary outages retry past six attempts; invalid credentials stop retrie
   t.mock.timers.tick(120000);await flush();assert.equal(attempts,finalAttempts);
 });
 
+test('a full Lobby is asked again after minutes, not seconds',async t=>{
+  t.mock.timers.enable({apis:['setTimeout','setInterval','Date'],now:1000});
+  let attempts=0;
+  const h=await setup(t,async input=>{
+    if(String(input).includes('/config'))return Response.json({url:'https://games.test'});
+    attempts++;return Response.json({error:'Study together is full. Try again shortly.'},{status:503});
+  });
+  h.connect();await flush();
+  assert.equal(attempts,1);
+  for(let i=0;i<5;i++){t.mock.timers.tick(20000);await flush();}
+  assert.equal(attempts,1,'no retry within the first 100 seconds');
+  t.mock.timers.tick(150000);await flush();
+  assert.equal(attempts,2,'one retry within 2 to 4 minutes');
+});
+
 test('a congested socket reconnects instead of silently dropping the final race update',async t=>{
   t.mock.timers.enable({apis:['setTimeout','setInterval','Date'],now:1000});
   const h=await setup(t);const socket=h.connect();await flush();

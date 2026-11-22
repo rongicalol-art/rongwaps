@@ -169,6 +169,21 @@ test('pack loader rejects an invalid pack and allows retry after the fetch recov
     failNext = false;
     const recovered = await loader.loadPart(1);
     assert.deepEqual(recovered, ['item-1-a', 'item-1-b']);
+    // The failed load asked twice (the saved copy, then past it); the retry asked once.
+    assert.equal(calls.filter((call) => call.url.endsWith('part-1.json')).length, 3);
+  });
+});
+
+test('pack loader recovers on its own when only the browser\'s saved copy of a part is wrong', async () => {
+  let asked = 0;
+  const { calls, fetch } = createFetchStub(new Map<string, () => unknown>([
+    ['/data/test/manifest.json', () => validManifest],
+    ['/data/test/part-1.json', () => (asked++ === 0 ? { schemaVersion: 1, key: 1, count: 1, items: ['a', 'b'] } : packBody(1, 2)())],
+  ]));
+
+  await withFetch(fetch, async () => {
+    const loaded = await createTestLoader().loadPart(1);
+    assert.deepEqual(loaded, ['item-1-a', 'item-1-b']);
     assert.equal(calls.filter((call) => call.url.endsWith('part-1.json')).length, 2);
   });
 });

@@ -336,7 +336,9 @@ export class AudioService {
         this.activePlaybackCleanup = playRangeOnAudioElement(audio, src, startSec, endSec, rangeOptions, (ended) => {
           if (ended) {
             rangeOptions?.onComplete?.();
-            if (rangeOptions?.cacheOnComplete !== false && typeof caches !== 'undefined') {
+            // Keeping the track for offline is a second full download: not on Data Saver.
+            const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+            if (rangeOptions?.cacheOnComplete !== false && typeof caches !== 'undefined' && !saveData) {
               void this.getAudioObjectUrl(audioFileName).catch(() => {});
             }
           }

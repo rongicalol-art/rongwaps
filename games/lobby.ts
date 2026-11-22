@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, CLASS_CHAT_KEEP, CLASS_CHAT_MAX_AGE_MS, socialUpdateOpen, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
+import { LOBBY_FULL_ERROR, CHAT_KEEP, CHAT_TTL_MS, CLASS_CHAT_KEEP, CLASS_CHAT_MAX_AGE_MS, socialUpdateOpen, DAILY_LIMITS, DAILY_LIMIT_ERROR, EVERYONE_LIMIT_ERROR, GLOBAL_CHAT, ROOM_LIST_CAP, UNREAD_CAP, ROSTER_GAP_MS, SOCIAL_FRAME_BYTES, chatDailyFull, nextChatRate, utcDay, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
 
@@ -100,6 +100,9 @@ export class Lobby extends DurableObject<Env> {
 
   async issue(uid: string, name: string, color: string, authUntil: number, google?: string, school = true): Promise<{ ticket: string }> {
     const now = Date.now();
+    // Refused before a ticket exists, with its own answer: the app then waits minutes. A refusal at the socket
+    // looks like a dropped connection, which the app retries every few seconds.
+    if (this.index().size >= this.capacity && !this.byUser.has(uid)) throw new Error(LOBBY_FULL_ERROR);
     const bucket = this.ticketBuckets.get(uid);
     const tokens = Math.min(TICKET_BURST, (bucket?.tokens ?? TICKET_BURST) + (now - (bucket?.at ?? now)) / TICKET_REFILL_MS);
     if (tokens < 1) throw new Error(TICKET_LIMIT_ERROR);
@@ -245,7 +248,7 @@ export class Lobby extends DurableObject<Env> {
     const live = this.index();
     const old = this.byUser.get(entry.uid);
     if (old) this.close(old, 4001, 'Opened in another tab.');
-    if (live.size >= this.capacity) return new Response('Study together is full. Try again shortly.', { status: 503 });
+    if (live.size >= this.capacity) return new Response(LOBBY_FULL_ERROR, { status: 503 });
     const [client, server] = Object.values(new WebSocketPair());
     this.ctx.acceptWebSocket(server);
     // Hidden until the client's privacy preference arrives; never briefly disclose hidden users.

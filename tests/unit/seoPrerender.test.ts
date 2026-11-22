@@ -64,8 +64,9 @@ test('sitemap, robots, llms.txt and index.html expose all public routes and AI c
 });
 
 test('built prerendered pages ship full lesson titles, sample demo, Sign in CTA and per-page JSON-LD', (t) => {
-  if (!existsSync('dist/index.html')) {
-    t.skip('dist not built yet');
+  // Only right after a build (`npm run test:built`): a leftover dist/ from an older build proves nothing.
+  if (process.env.BUILT_PAGES !== '1') {
+    t.skip('checked after the build: npm run test:built');
     return;
   }
 

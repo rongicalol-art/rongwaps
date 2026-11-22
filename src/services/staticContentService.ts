@@ -9,6 +9,8 @@ interface StaticJsonOptions {
   revalidate?: boolean;
   /** With `revalidate`: only the server's answer will do (e.g. a deploy removed a listed file). */
   serverOnly?: boolean;
+  /** Skip the browser's saved copy of this file and replace it (the saved copy failed validation). */
+  reload?: boolean;
   fallbackToPersistent?: boolean;
   validate?: (data: unknown) => boolean;
 }
@@ -237,6 +239,7 @@ export async function fetchStaticJsonWithMetadata<T>(
   try {
     response = await timeDataRequest(label, () => {
       const { signal } = controller;
+      if (options.reload) return fetchContent(path, { cache: 'reload', signal });
       if (!options.revalidate) return fetchContent(path, { cache: 'default', signal });
       return options.serverOnly ? fetchContent(path, { cache: 'no-cache', signal }) : revalidateOrSavedCopy(path, signal);
     });
