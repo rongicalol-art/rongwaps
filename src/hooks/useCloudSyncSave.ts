@@ -11,6 +11,7 @@ import {
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
 } from '../utils/sync/cloudSyncQueue';
+import { registerCloudSave } from '../utils/sync/cloudSaveNow';
 import { getSelectedLessonIds } from '../utils/lesson/lessonPartSelection';
 import {
   buildMetadataPayload,
@@ -147,6 +148,13 @@ export function useCloudSyncSave({
       throw error;
     }
   }, [currentUser, hasFetchedForUserRef]);
+
+  // Sign-out uploads unsaved changes first (useAuth): once signed out they could only wait on this device.
+  useEffect(() => {
+    if (!currentUser) return;
+    registerCloudSave(requestSave);
+    return () => registerCloudSave(null);
+  }, [currentUser, requestSave]);
 
   useEffect(() => {
     if (!currentUser) return;

@@ -108,3 +108,28 @@ test('grammar completion syncs in settings and merges as a union', () => {
   assert.deepEqual(mergeGrammarProgress({ grammarProgress: { completedPageIds: ['page-a'] } }, source), {});
   assert.deepEqual(mergeGrammarProgress({}, source), {});
 });
+
+test('lesson test scores sync: better best score, newer last run, most-seen versions; bad cloud rows are ignored', async () => {
+  const { mergeLessonTests } = await import('../../src/store/slices/lessonTestSlice');
+  const record = (best: number, at: string, seen: Record<string, number> = {}) => ({
+    best, total: 20, bestAt: at, last: { correct: best, total: 20, at, listening: [5, 10] as [number, number], reading: [5, 10] as [number, number] },
+    missedLessons: [], seen,
+  });
+  const local = { b1l01: record(15, '2026-11-01T00:00:00.000Z', { v1: 2 }), b1l02: record(10, '2026-11-02T00:00:00.000Z') };
+  const cloud = {
+    b1l01: { ...record(18, '2026-10-01T00:00:00.000Z', { v1: 1, v2: 3 }) },   // better score, older run
+    b1l02: record(9, '2026-11-03T00:00:00.000Z'),                              // worse score, newer run
+    b1l03: record(12, '2026-11-04T00:00:00.000Z'),                             // taken only on the other device
+    b1l04: { best: 99, total: 0 }, b1l05: 'nonsense',
+  };
+  const merged = mergeLessonTests(local, cloud).lessonTests!;
+  assert.equal(merged.b1l01.best, 18);
+  assert.equal(merged.b1l01.last.at, '2026-11-01T00:00:00.000Z');
+  assert.deepEqual(merged.b1l01.seen, { v1: 2, v2: 3 });
+  assert.equal(merged.b1l02.best, 10);
+  assert.equal(merged.b1l02.last.correct, 9);
+  assert.equal(merged.b1l03.best, 12);
+  assert.deepEqual(Object.keys(merged).sort(), ['b1l01', 'b1l02', 'b1l03']);
+  assert.deepEqual(mergeLessonTests(merged, cloud), {}, 'merging the same cloud copy again changes nothing');
+  assert.deepEqual(mergeLessonTests(local, null), {});
+});

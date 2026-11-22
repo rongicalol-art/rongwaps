@@ -1,4 +1,4 @@
-import type { Context } from './env';
+import type { AudioStore, Context } from './env';
 import { normalizeSpeechText, speechKey, type SpeechVoice } from '../shared/speechKey';
 import { json, PRIVATE, readJson } from './respond';
 
@@ -45,7 +45,19 @@ const audio = (body: ArrayBuffer | ReadableStream, source: 'stored' | 'new') => 
   headers: { 'Content-Type': 'audio/mpeg', 'X-Speech-Source': source, ...PRIVATE },
 });
 
-export async function speak(context: Context, request: Request): Promise<Response> {
+/**
+ * New clips one learner may have made in a day (UTC). Stored clips are free and unlimited; only text nobody
+ * asked for before spends the monthly allowance, and without this one account could spend all of it in hours.
+ */
+export const MAX_NEW_CLIPS_A_DAY = 200;
+const madeTodayKey = (userId: string) => `limits/${new Date().toISOString().slice(0, 10)}/${userId}`;
+
+async function madeToday(store: AudioStore, userId: string): Promise<number> {
+  const saved = await store.get(madeTodayKey(userId));
+  return saved ? Number(await new Response(saved.body).text()) || 0 : 0;
+}
+
+export async function speak(context: Context, request: Request, userId?: string): Promise<Response> {
   const { env } = context;
   const wanted = parseSpeechRequest(await readJson(request, 2048));
   if (!wanted) return json({ error: 'Nothing to speak.' }, 400, PRIVATE);
@@ -56,9 +68,15 @@ export async function speak(context: Context, request: Request): Promise<Respons
   } catch (error: unknown) { context.report(error, 'speech-read'); }
 
   if (!env.AZURE_SPEECH_KEY || !env.AZURE_SPEECH_REGION) return json({ error: 'The voice is not set up.' }, 503, PRIVATE);
-  let made: Response;
+  // A count that cannot be read never locks the voice: the monthly allowance is still the outer limit.
+  let made = 0;
+  if (userId && env.SPEECH_AUDIO) {
+    try { made = await madeToday(env.SPEECH_AUDIO, userId); } catch (error: unknown) { context.report(error, 'speech-count'); }
+    if (made >= MAX_NEW_CLIPS_A_DAY) return json({ error: 'The voice is unavailable right now.' }, 503, PRIVATE);
+  }
+  let answer: Response;
   try {
-    made = await fetch(`https://${env.AZURE_SPEECH_REGION}.tts.speech.microsoft.com/cognitiveservices/v1`, {
+    answer = await fetch(`https://${env.AZURE_SPEECH_REGION}.tts.speech.microsoft.com/cognitiveservices/v1`, {
       method: 'POST',
       headers: {
         'Ocp-Apim-Subscription-Key': env.AZURE_SPEECH_KEY,
@@ -73,15 +91,16 @@ export async function speak(context: Context, request: Request): Promise<Respons
     context.report(error, 'speech-make');
     return json({ error: 'The voice is unavailable right now.' }, 502, PRIVATE);
   }
-  if (!made.ok) {
+  if (!answer.ok) {
     // 429 is the monthly allowance or the per-minute cap: expected, and the app falls back to the device voice.
-    if (made.status !== 429) context.report(new Error(`Azure Speech answered ${made.status}`), 'speech-make');
-    return json({ error: 'The voice is unavailable right now.' }, made.status === 429 ? 503 : 502, PRIVATE);
+    if (answer.status !== 429) context.report(new Error(`Azure Speech answered ${answer.status}`), 'speech-make');
+    return json({ error: 'The voice is unavailable right now.' }, answer.status === 429 ? 503 : 502, PRIVATE);
   }
-  const bytes = await made.arrayBuffer();
+  const bytes = await answer.arrayBuffer();
   if (!bytes.byteLength || bytes.byteLength > MAX_AUDIO_BYTES) return json({ error: 'The voice is unavailable right now.' }, 502, PRIVATE);
   try {
     await env.SPEECH_AUDIO?.put(key, bytes, { httpMetadata: { contentType: 'audio/mpeg', cacheControl: 'public, max-age=31536000, immutable' } });
+    if (userId) await env.SPEECH_AUDIO?.put(madeTodayKey(userId), new TextEncoder().encode(String(made + 1)).buffer as ArrayBuffer);
   } catch (error: unknown) { context.report(error, 'speech-store'); }
   return audio(bytes, 'new');
 }

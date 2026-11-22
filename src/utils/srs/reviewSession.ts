@@ -94,7 +94,9 @@ export function createDailyReviewPlan(
 /** Shared daily completion rule for the planner and Library, including synced attempts. */
 export function dailyReviewGoal(events: readonly import('./reviewEvents').ReviewEvent[], now = Date.now()) {
   const day = reviewDay(now);
-  const today = events.filter(e => e.source === 'daily' && !e.practiceOnly && reviewDay(e.reviewedAt) === day);
+  // Only the last day and a bit can be "today": skip the date maths for the rest of a long history.
+  const recent = now - 28 * 3_600_000;
+  const today = events.filter(e => e.reviewedAt >= recent && e.source === 'daily' && !e.practiceOnly && reviewDay(e.reviewedAt) === day);
   const answers: Record<string, number> = {};
   for (const event of today) if (!(event.cardId in answers)) answers[event.cardId] = event.quality;
   const activeMs = today.reduce((sum, event) => sum + event.durationMs, 0);

@@ -2,6 +2,7 @@ import { useSyncExternalStore, useState, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { authService } from '../services/authService';
 import { useAppStore, UserSnapshot } from '../store/useAppStore';
+import { saveToCloudNow } from '../utils/sync/cloudSaveNow';
 
 let globalUser: User | null = null;
 let globalHasFullCourseAccess = false;
@@ -81,6 +82,7 @@ export function useAuth() {
   const logout = useCallback(async () => {
     setIsAuthActionLoading(true);
     try {
+      await saveToCloudNow();
       await authService.logout();
       // The next sign-in starts from a full pull; the baseline is not trusted across sessions.
       useAppStore.getState().setSyncCheckpoint(null);

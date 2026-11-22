@@ -110,10 +110,9 @@ const pwaPlugin = VitePWA({
   workbox: {
     skipWaiting: true,
     clientsClaim: true,
-    // Precache only the app shell. Large authored data packs (public/data,
-    // public/videos) already load offline through IndexedDB
-    // (staticContentService) and the audio Cache Storage, and must not be
-    // precached here.
+    // Precache only the app shell. Lesson packs (public/data) are kept by the
+    // browser's own HTTP cache (the server marks versioned files as permanent)
+    // and recordings by the audio Cache Storage; neither is precached here.
     globPatterns: ['index.html', 'icons/*.{svg,png,ico}', 'assets/*.{js,css}'],
     manifestTransforms: [async (entries) => ({
       manifest: entries.filter((entry) => !/\.(js|css)$/.test(entry.url) || shellAssets.has(entry.url)),
@@ -135,11 +134,23 @@ const pwaPlugin = VitePWA({
     navigateFallbackDenylist: [/^\/api\//, /^\/downloads\//],
     runtimeCaching: [
       {
+        // Code for screens opened so far. A build has about 180 script and style files and old builds leave
+        // theirs behind, so this list must hold more than one build; pictures have their own list below,
+        // or browsing them would push out the screens a learner already opened (they then fail offline).
+        urlPattern: ({ url, sameOrigin }) => sameOrigin && /^\/assets\/.*\.(?:js|css|wasm)$/.test(url.pathname),
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'rongwaps-code',
+          expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 30 },
+          cacheableResponse: { statuses: [200] },
+        },
+      },
+      {
         urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith('/assets/'),
         handler: 'CacheFirst',
         options: {
           cacheName: 'rongwaps-assets',
-          expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 30 },
+          expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 30 },
           cacheableResponse: { statuses: [200] },
         },
       },
@@ -163,17 +174,6 @@ const pwaPlugin = VitePWA({
           cacheName: 'rongwaps-stroke-data',
           expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 365 },
           cacheableResponse: { statuses: [200] },
-        },
-      },
-      {
-        // LXGW WenKai TC (Chinese fallback behind the local TW-EduKai) is the
-        // only remaining remote font. Cache it stale-while-revalidate.
-        urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
-        handler: 'StaleWhileRevalidate',
-        options: {
-          cacheName: 'rongwaps-fonts',
-          expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 365 },
-          cacheableResponse: { statuses: [0, 200] },
         },
       },
     ],

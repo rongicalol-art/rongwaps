@@ -34,7 +34,9 @@ export function useProfileData() {
     const progress = lessonProgress(activeRows, state.learnedCards);
     const firstReview = firstReviewAt(state.reviewEvents, now);
     const recentWordIds: string[] = [];
-    for (const event of [...state.reviewEvents].sort((a, b) => b.reviewedAt - a.reviewedAt)) {
+    // Newest first: the history is kept in time order, so walk it from the end (no copy, no sort).
+    for (let index = state.reviewEvents.length - 1; index >= 0; index--) {
+      const event = state.reviewEvents[index];
       if (event.reviewedAt > now || event.reviewedAt <= 0 || recentWordIds.includes(event.cardId) || !vocabById.has(event.cardId)) continue;
       recentWordIds.push(event.cardId);
       if (recentWordIds.length === 3) break;
