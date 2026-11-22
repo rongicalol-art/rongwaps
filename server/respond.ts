@@ -8,6 +8,10 @@ export function securityHeaders(env: Pick<Env, 'APP_ENV'>): Record<string, strin
     'X-Frame-Options': 'DENY',
     ...(env.APP_ENV === 'staging' ? { 'X-Robots-Tag': 'noindex, nofollow, noarchive' } : {}),
     ...(env.APP_ENV === 'production' || env.APP_ENV === 'staging' ? { 'Strict-Transport-Security': 'max-age=31536000' } : {}),
+    // Pictures load only from the site itself, Google profile photos and the project's file storage. A classmate's
+    // saved card can then never make this app fetch a picture from anywhere else (see save_profile_card).
+    ...(env.APP_ENV === 'production' || env.APP_ENV === 'staging'
+      ? { 'Content-Security-Policy': "img-src 'self' data: blob: https://*.googleusercontent.com https://*.supabase.co" } : {}),
   };
 }
 
