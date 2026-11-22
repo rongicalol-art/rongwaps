@@ -32,6 +32,7 @@ const EXPECTED_TABLES = [
   'user_flashcards',
   'user_folders',
   'user_profiles',
+  'user_review_days',
   'user_review_events',
 ] as const;
 
