@@ -76,7 +76,6 @@ select jsonb_build_object(
     'usernames', (select count(*) from public.usernames),
     'friend_adds_week', (select count(*) from public.friend_adds where created_at > now() - interval '7 days'),
     'messages_week', (select count(*) from public.direct_messages where created_at > now() - interval '7 days'),
-    'messagers_week', (select count(distinct sender) from public.direct_messages where created_at > now() - interval '7 days'),
-    'folder_saves_week', (select count(*) from public.shared_folder_saves where created_at > now() - interval '7 days')),
+    'messagers_week', (select count(distinct sender) from public.direct_messages where created_at > now() - interval '7 days')),
   'feedback_week', (select count(*) from private.feedback where created_at > now() - interval '7 days')
 );
