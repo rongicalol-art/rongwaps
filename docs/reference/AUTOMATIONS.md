@@ -28,7 +28,7 @@ The lead gives a helper a brief with the files, the goal and what to check, then
 - **Suggest only, then wait for the owner's yes:** new features, anything learners would notice as a change, lesson or pack content (product decisions), anything costing money.
 - **Never:** merge, run *Migrate production*, write to a production database, change hosting, provider or secret settings, send email or messages, or edit `public/data/` by hand. A guard prompt during a run is a stop: write it down for the morning thread.
 - Check open PRs first (`gh pr list`) and don't redo work already in one.
-- At the end, write a few lines to `output/automations/<YYYY-MM-DD>-<run>.md` in the main folder: what was done, PR links, what's left. The morning thread reads them.
+- At the end, write a few lines to `output/automations/<YYYY-MM-DD>-<run>.md` in the main folder: what was done, each PR named in plain words with its link, what's left. The morning thread reads them.
 - Spend lightly: Haiku/Sonnet/Flash for reading and scouting, the lead model for fixing and judging, Opus subagents at medium effort.
 
 ## Schedule (Taiwan time; the Mac and T3 must be on and awake)
@@ -71,7 +71,7 @@ One new thread a day. It reads:
 - `output/automations/` notes since yesterday
 - open PRs and their checks (`gh pr list`), the open "Health check" issue, the error watch thread
 
-It writes, short and in plain words:
+It writes, short and in plain words. A PR or merge is always named by what it does in plain words ("the quiz screen crash fix"), with its link on the name, never by its number ("#202"):
 
 1. **Overnight**: what was done, with PR links, and which are ready to merge.
 2. **Waiting on you**: merges, decisions, owner steps.
