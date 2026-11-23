@@ -783,10 +783,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "舊手機沒辦法上網",
-                  "simplified": "旧手机没办法上网",
-                  "pinyin": "Jiù shǒujī méi bànfǎ shàngwǎng.",
-                  "english": "The old phone can't go online."
+                  "traditional": "舊手機已經壞了",
+                  "simplified": "旧手机已经坏了",
+                  "pinyin": "Jiù shǒujī yǐjīng huài le.",
+                  "english": "The old phone is already broken."
                 },
                 {
                   "speaker": "N",
@@ -797,7 +797,7 @@
                 }
               ],
               "key": 0,
-              "why": "She gives no reason herself; the man's reply supplies it: the old phone's print is too small for Grandma, so his lessons on it would be no use. Nobody calls the phone a birthday present, nobody says the old one cannot go online, and no day is set for his lessons.",
+              "why": "She gives no reason herself; the man's reply supplies it: the old phone's print is too small for Grandma, so his lessons on it would be no use. Nobody calls the phone a birthday present, nobody says the old one is broken, and no day is set for his lessons.",
               "focus": {
                 "zh": "兩句合起來；原因",
                 "en": "combining two turns; a reason"
@@ -1159,7 +1159,7 @@
               "speaker": "F",
               "traditional": "還沒看完的話，可以在還書前三天內上網再借一次；不過，要是有別人在等這本書，就不能再借了。",
               "simplified": "还没看完的话，可以在还书前三天内上网再借一次；不过，要是有别人在等这本书，就不能再借了。",
-              "pinyin": "Hái méi kàn wán de huà, kěyǐ zài huán shū qián sān tiān nèi shàngwǎng zài jiè yí cì; búguò, yàoshi yǒu biérén zài děng zhè běn shū, jiù bù néng zài jiè le.",
+              "pinyin": "Hái méi kàn wán de huà, kěyǐ zài huán shū qián sān tiān nèi shàngwǎng zài jiè yí cì; búguò, yàoshì yǒu biérén zài děng zhè běn shū, jiù bù néng zài jiè le.",
               "english": "If you haven't finished, you can borrow it once more online in the three days before it's due; but if someone else is waiting for the book, you can't."
             },
             {
@@ -1297,7 +1297,7 @@
                 "speaker": "N",
                 "traditional": "這段廣播主要是要告訴同學什麼？",
                 "simplified": "这段广播主要是要告诉同学什么？",
-                "pinyin": "Zhè duàn guǎngbò zhǔyào shì yào gàosù tóngxué shénme?",
+                "pinyin": "Zhè duàn guǎngbò zhǔyào shì yào gàosu tóngxué shénme?",
                 "english": "What is this announcement mainly telling students?"
               },
               "choices": [
@@ -1573,10 +1573,10 @@
           "id": "b3l13-cloze-1",
           "kind": "cloze",
           "passage": {
-            "traditional": "我們系主任以前很不習慣用電腦，連電子郵件都很少寄，更別說{1}了。去年颱風來，學校一連停了五天課，他想：「{2}學生的功課都得停下來了。」他只好請同學教他怎麼把教材放上雲端。{3}他發現很好用，現在每次上課前都會先把資料上傳，讓學生預習，請假的同學在家也能看。同學都說這個方法既省時間又有效果，{4}有人上課前就把問題都想好了。不過他也說，雲端{5}方便，學生還是應該來教室上課。{6}資料在雲端上都看得到，有的問題也還是得當面問，才能弄清楚。",
-            "simplified": "我们系主任以前很不习惯用电脑，连电子邮件都很少寄，更别说{1}了。去年台风来，学校一连停了五天课，他想：「{2}学生的功课都得停下来了。」他只好请同学教他怎么把教材放上云端。{3}他发现很好用，现在每次上课前都会先把资料上传，让学生预习，请假的同学在家也能看。同学都说这个方法既省时间又有效果，{4}有人上课前就把问题都想好了。不过他也说，云端{5}方便，学生还是应该来教室上课。{6}资料在云端上都看得到，有的问题也还是得当面问，才能弄清楚。",
-            "pinyin": "Wǒmen xì zhǔrèn yǐqián hěn bù xíguàn yòng diànnǎo, lián diànzǐ yóujiàn dōu hěn shǎo jì, gèng bié shuō zài wǎnglù shàng shàngkè le. Qùnián táifēng lái, xuéxiào yìlián tíng le wǔ tiān kè, tā xiǎng: \"Zhèxiàzi xuéshēng de gōngkè dōu děi tíng xiàlái le.\" Tā zhǐhǎo qǐng tóngxué jiāo tā zěnme bǎ jiàocái fàng shàng yúnduān. Jiéguǒ tā fāxiàn hěn hǎo yòng, xiànzài měi cì shàngkè qián dōu huì xiān bǎ zīliào shàngchuán, ràng xuéshēng yùxí, qǐngjià de tóngxué zài jiā yě néng kàn. Tóngxué dōu shuō zhège fāngfǎ jì shěng shíjiān yòu yǒu xiàoguǒ, shènzhì yǒu rén shàngkè qián jiù bǎ wèntí dōu xiǎng hǎo le. Búguò tā yě shuō, yúnduān jǐnguǎn fāngbiàn, xuéshēng háishì yīnggāi lái jiàoshì shàngkè. Jiùshì zīliào zài yúnduān shàng dōu kàn de dào, yǒu de wèntí yě háishì děi dāngmiàn wèn, cái néng nòng qīngchǔ.",
-            "english": "The head of our department used to be very uncomfortable with computers. He hardly even sent email, let alone taught online. Last year a typhoon closed the university for five days in a row, and he thought, \"Now the students' work will all come to a stop.\" He had no choice but to ask a student to show him how to put his teaching materials in the cloud. As a result, he found it very handy, and now he uploads the materials before every class, so students can preview them and those who miss class can read them at home. Students say the method both saves time and works, and some even have their questions ready before class. But he also says that, convenient as the cloud is, students should still come to class. Even if all the materials can be seen in the cloud, some questions still have to be asked face to face to get them clear."
+            "traditional": "我們系主任以前很不習慣用電腦，連電子郵件都很少寄，更別說{1}了。去年颱風來，學校一連停了兩天課，他想：「{2}學生的功課都得停下來了。」他只好請同學教他怎麼把教材放上雲端。{3}他發現很好用，現在每次上課前都會先把資料上傳，讓學生預習，請假的同學在家也能看。同學都說這個方法既省時間又有效果，{4}有人上課前就把問題都想好了。不過他也說，雲端{5}方便，學生還是應該來教室上課。{6}資料在雲端上都看得到，有的問題也還是得當面問，才能弄清楚。",
+            "simplified": "我们系主任以前很不习惯用电脑，连电子邮件都很少寄，更别说{1}了。去年台风来，学校一连停了两天课，他想：「{2}学生的功课都得停下来了。」他只好请同学教他怎么把教材放上云端。{3}他发现很好用，现在每次上课前都会先把资料上传，让学生预习，请假的同学在家也能看。同学都说这个方法既省时间又有效果，{4}有人上课前就把问题都想好了。不过他也说，云端{5}方便，学生还是应该来教室上课。{6}资料在云端上都看得到，有的问题也还是得当面问，才能弄清楚。",
+            "pinyin": "Wǒmen xì zhǔrèn yǐqián hěn bù xíguàn yòng diànnǎo, lián diànzǐ yóujiàn dōu hěn shǎo jì, gèng bié shuō zài wǎnglù shàng shàngkè le. Qùnián táifēng lái, xuéxiào yìlián tíng le liǎng tiān kè, tā xiǎng: \"Zhèxiàzi xuéshēng de gōngkè dōu děi tíng xiàlái le.\" Tā zhǐhǎo qǐng tóngxué jiāo tā zěnme bǎ jiàocái fàng shàng yúnduān. Jiéguǒ tā fāxiàn hěn hǎo yòng, xiànzài měi cì shàngkè qián dōu huì xiān bǎ zīliào shàngchuán, ràng xuéshēng yùxí, qǐngjià de tóngxué zài jiā yě néng kàn. Tóngxué dōu shuō zhège fāngfǎ jì shěng shíjiān yòu yǒu xiàoguǒ, shènzhì yǒu rén shàngkè qián jiù bǎ wèntí dōu xiǎng hǎo le. Búguò tā yě shuō, yúnduān jǐnguǎn fāngbiàn, xuéshēng háishì yīnggāi lái jiàoshì shàngkè. Jiùshì zīliào zài yúnduān shàng dōu kàn de dào, yǒu de wèntí yě háishì děi dāngmiàn wèn, cái néng nòng qīngchǔ.",
+            "english": "The head of our department used to be very uncomfortable with computers. He hardly even sent email, let alone taught online. Last year a typhoon closed the university for two days in a row, and he thought, \"Now the students' work will all come to a stop.\" He had no choice but to ask a student to show him how to put his teaching materials in the cloud. As a result, he found it very handy, and now he uploads the materials before every class, so students can preview them and those who miss class can read them at home. Students say the method both saves time and works, and some even have their questions ready before class. But he also says that, convenient as the cloud is, students should still come to class. Even if all the materials can be seen in the cloud, some questions still have to be asked face to face to get them clear."
           },
           "questions": [
             {
@@ -1724,7 +1724,7 @@
                 {
                   "traditional": "只不過",
                   "simplified": "只不过",
-                  "pinyin": "zhǐ búguò",
+                  "pinyin": "zhǐbúguò",
                   "english": "it's just that"
                 },
                 {
@@ -2455,7 +2455,7 @@
               "prompt": {
                 "traditional": "作者最想告訴讀者的是什麼？",
                 "simplified": "作者最想告诉读者的是什么？",
-                "pinyin": "Zuòzhě zuì xiǎng gàosù dúzhě de shì shénme?",
+                "pinyin": "Zuòzhě zuì xiǎng gàosu dúzhě de shì shénme?",
                 "english": "What does the writer most want to tell readers?"
               },
               "choices": [

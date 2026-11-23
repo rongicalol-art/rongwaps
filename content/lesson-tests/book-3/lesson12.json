@@ -56,10 +56,10 @@
             },
             {
               "speaker": "F",
-              "traditional": "我三點以前得先把這份報告看完。你先請他到會議室坐一下，給他一杯水。",
-              "simplified": "我三点以前得先把这份报告看完。你先请他到会议室坐一下，给他一杯水。",
-              "pinyin": "Wǒ sān diǎn yǐqián děi xiān bǎ zhè fèn bàogào kàn wán. Nǐ xiān qǐng tā dào huìyìshì zuò yíxià, gěi tā yì bēi shuǐ.",
-              "english": "I have to finish reading this report before three. First ask him to sit in the meeting room for a while, and give him a glass of water."
+              "traditional": "我三點以前得先把這份報告看完。你先請他到會議室坐一下，幫他倒杯水。",
+              "simplified": "我三点以前得先把这份报告看完。你先请他到会议室坐一下，帮他倒杯水。",
+              "pinyin": "Wǒ sān diǎn yǐqián děi xiān bǎ zhè fèn bàogào kàn wán. Nǐ xiān qǐng tā dào huìyìshì zuò yíxià, bāng tā dào bēi shuǐ.",
+              "english": "I have to finish reading this report before three. First ask him to sit in the meeting room for a while, and pour him a glass of water."
             },
             {
               "speaker": "M",
@@ -187,7 +187,7 @@
                 "speaker": "N",
                 "traditional": "女的告訴男的阿姨改了時間，是希望男的怎麼做？",
                 "simplified": "女的告诉男的阿姨改了时间，是希望男的怎么做？",
-                "pinyin": "Nǚ de gàosù nán de āyí gǎi le shíjiān, shì xīwàng nán de zěnme zuò?",
+                "pinyin": "Nǚ de gàosu nán de āyí gǎi le shíjiān, shì xīwàng nán de zěnme zuò?",
                 "english": "The woman tells the man his aunt has changed her plans. What does she want him to do?"
               },
               "choices": [
@@ -275,7 +275,7 @@
               "traditional": "儘管薪水比較多，可是離我家太遠了，坐車要一個半小時。",
               "simplified": "尽管薪水比较多，可是离我家太远了，坐车要一个半小时。",
               "pinyin": "Jǐnguǎn xīnshuǐ bǐjiào duō, kěshì lí wǒ jiā tài yuǎn le, zuò chē yào yí ge bàn xiǎoshí.",
-              "english": "Even though the pay is better, it's too far from home: an hour and a half each way."
+              "english": "Even though the pay is better, it's too far from home: an hour and a half to get there."
             },
             {
               "speaker": "F",
@@ -380,10 +380,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "對啊，最近任務特別多，主管每天都留我們到九點。",
-              "simplified": "对啊，最近任务特别多，主管每天都留我们到九点。",
-              "pinyin": "Duì a, zuìjìn rènwù tèbié duō, zhǔguǎn měi tiān dōu liú wǒmen dào jiǔ diǎn.",
-              "english": "Yes, our team has a lot of tasks lately, and the supervisor keeps us until nine every day."
+              "traditional": "對啊，最近工作特別多，主管每天都留我們到九點。",
+              "simplified": "对啊，最近工作特别多，主管每天都留我们到九点。",
+              "pinyin": "Duì a, zuìjìn gōngzuò tèbié duō, zhǔguǎn měi tiān dōu liú wǒmen dào jiǔ diǎn.",
+              "english": "Yes, there has been a lot of work lately, and the supervisor keeps us until nine every day."
             },
             {
               "speaker": "F",
@@ -422,10 +422,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "我知道，下個月任務做完就好了。",
-              "simplified": "我知道，下个月任务做完就好了。",
-              "pinyin": "Wǒ zhīdào, xià ge yuè rènwù zuò wán jiù hǎo le.",
-              "english": "I know. Once the tasks are done next month, it'll be fine."
+              "traditional": "我知道，下個月這些工作做完就好了。",
+              "simplified": "我知道，下个月这些工作做完就好了。",
+              "pinyin": "Wǒ zhīdào, xià ge yuè zhèxiē gōngzuò zuò wán jiù hǎo le.",
+              "english": "I know. Once this work is done next month, it'll be fine."
             }
           ],
           "answerLine": 5,
@@ -458,10 +458,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "給的任務太多，可是下個月會少一點",
-                  "simplified": "给的任务太多，可是下个月会少一点",
-                  "pinyin": "Gěi de rènwù tài duō, kěshì xià ge yuè huì shǎo yìdiǎn.",
-                  "english": "She gives too many tasks, but will give fewer next month."
+                  "traditional": "給的工作太多，可是下個月會少一點",
+                  "simplified": "给的工作太多，可是下个月会少一点",
+                  "pinyin": "Gěi de gōngzuò tài duō, kěshì xià ge yuè huì shǎo yìdiǎn.",
+                  "english": "She gives too much work, but will give less next month."
                 },
                 {
                   "speaker": "N",
@@ -1452,7 +1452,7 @@
               "speaker": "M",
               "traditional": "可是主管願意花時間批評你，往往是因為看得起你，希望你進步。",
               "simplified": "可是主管愿意花时间批评你，往往是因为看得起你，希望你进步。",
-              "pinyin": "Kěshì zhǔguǎn yuànyì huā shíjiān pīpíng nǐ, wǎngwǎng shì yīnwèi kàn de qǐ nǐ, xīwàng nǐ jìnbù.",
+              "pinyin": "Kěshì zhǔguǎn yuànyì huā shíjiān pīpíng nǐ, wǎngwǎng shì yīnwèi kàndeqǐ nǐ, xīwàng nǐ jìnbù.",
               "english": "But when a supervisor is willing to spend time criticizing you, it is often because they think well of you and want you to improve."
             },
             {
@@ -1654,7 +1654,7 @@
           "passage": {
             "traditional": "我在一家電腦公司負責賣電腦。{1}我在學校學過很多跟電腦有關的知識，剛開始跟客人說話的時候，還是常常緊張得說不出話來。主管發現以後，沒有批評我，{2}每天下班後陪我練習。她告訴我，跟客人說話的時候要{3}一點，別只說自己的產品有多好，要先聽聽客人需要什麼，{4}買東西的是客人。她還說，雖然也有客人當天就買，但是第一次見面的客人{5}不會馬上決定，別太著急；{6}以後會不會買，就要看我們的服務了。",
             "simplified": "我在一家电脑公司负责卖电脑。{1}我在学校学过很多跟电脑有关的知识，刚开始跟客人说话的时候，还是常常紧张得说不出话来。主管发现以后，没有批评我，{2}每天下班后陪我练习。她告诉我，跟客人说话的时候要{3}一点，别只说自己的产品有多好，要先听听客人需要什么，{4}买东西的是客人。她还说，虽然也有客人当天就买，但是第一次见面的客人{5}不会马上决定，别太着急；{6}以后会不会买，就要看我们的服务了。",
-            "pinyin": "Wǒ zài yì jiā diànnǎo gōngsī fùzé mài diànnǎo. Jǐnguǎn wǒ zài xuéxiào xué guo hěn duō gēn diànnǎo yǒuguān de zhīshì, gāng kāishǐ gēn kèrén shuōhuà de shíhòu, háishì chángcháng jǐnzhāng de shuō bù chū huà lái. Zhǔguǎn fāxiàn yǐhòu, méiyǒu pīpíng wǒ, fǎn'ér měi tiān xiàbān hòu péi wǒ liànxí. Tā gàosù wǒ, gēn kèrén shuōhuà de shíhòu yào qiānxū yìdiǎn, bié zhǐ shuō zìjǐ de chǎnpǐn yǒu duō hǎo, yào xiān tīng ting kèrén xūyào shénme, bìjìng mǎi dōngxi de shì kèrén. Tā hái shuō, suīrán yě yǒu kèrén dāngtiān jiù mǎi, dànshì dì yī cì jiànmiàn de kèrén wǎngwǎng bú huì mǎshàng juédìng, bié tài zhāojí; zhìyú yǐhòu huì bú huì mǎi, jiù yào kàn wǒmen de fúwù le.",
+            "pinyin": "Wǒ zài yì jiā diànnǎo gōngsī fùzé mài diànnǎo. Jǐnguǎn wǒ zài xuéxiào xué guo hěn duō gēn diànnǎo yǒuguān de zhīshì, gāng kāishǐ gēn kèrén shuōhuà de shíhòu, háishì chángcháng jǐnzhāng de shuō bù chū huà lái. Zhǔguǎn fāxiàn yǐhòu, méiyǒu pīpíng wǒ, fǎn'ér měi tiān xiàbān hòu péi wǒ liànxí. Tā gàosu wǒ, gēn kèrén shuōhuà de shíhòu yào qiānxū yìdiǎn, bié zhǐ shuō zìjǐ de chǎnpǐn yǒu duō hǎo, yào xiān tīng ting kèrén xūyào shénme, bìjìng mǎi dōngxi de shì kèrén. Tā hái shuō, suīrán yě yǒu kèrén dāngtiān jiù mǎi, dànshì dì yī cì jiànmiàn de kèrén wǎngwǎng bú huì mǎshàng juédìng, bié tài zhāojí; zhìyú yǐhòu huì bú huì mǎi, jiù yào kàn wǒmen de fúwù le.",
             "english": "My job at a computer company is selling computers. Even though I had learned a lot about computers at school, when I first started talking to customers I was still often too nervous to speak. When my supervisor noticed, she didn't criticize me; instead she practised with me every day after work. She told me to be a bit modest when talking to customers: don't just say how good our products are, first listen to what the customer needs, since after all it is the customer who buys. She also said that although some customers buy the same day, customers meeting us for the first time usually don't decide straight away, so don't be in a hurry; as for whether they buy later, that depends on our service."
           },
           "questions": [
@@ -2012,10 +2012,10 @@
               "id": "b3l12-cloze-2-3",
               "choices": [
                 {
-                  "traditional": "擠",
-                  "simplified": "挤",
-                  "pinyin": "jǐ",
-                  "english": "crowded"
+                  "traditional": "安靜",
+                  "simplified": "安静",
+                  "pinyin": "ānjìng",
+                  "english": "quiet"
                 },
                 {
                   "traditional": "吵",
@@ -2037,7 +2037,7 @@
                 }
               ],
               "key": 3,
-              "why": "The clause after it describes it: things everywhere, nobody can find anything. That is 混亂. 擠 is too many people, 吵 too much noise and 髒 dirt: none of them explains why nobody can find anything.",
+              "why": "The clause after it describes it: things everywhere, nobody can find anything. That is 混亂. 安靜 says nothing about the mess, 吵 is too much noise and 髒 dirt: none of them explains why nobody can find anything.",
               "focus": {
                 "zh": "混亂",
                 "en": "chaotic"
@@ -2264,7 +2264,7 @@
                 {
                   "traditional": "先打電話告訴王小姐",
                   "simplified": "先打电话告诉王小姐",
-                  "pinyin": "Xiān dǎ diànhuà gàosù Wáng xiǎojiě.",
+                  "pinyin": "Xiān dǎ diànhuà gàosu Wáng xiǎojiě.",
                   "english": "First phone Ms. Wang about it."
                 },
                 {
@@ -2437,7 +2437,7 @@
                 "traditional": "寫這篇文章的人為什麼聽完這件事就決定錄取那位小姐？",
                 "simplified": "写这篇文章的人为什么听完这件事就决定录取那位小姐？",
                 "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme tīng wán zhè jiàn shì jiù juédìng lùqǔ nà wèi xiǎojiě?",
-                "english": "Why did the writer decide to hire the young woman as soon as he heard this story?"
+                "english": "Why did the writer decide to hire the young woman as soon as they heard this story?"
               },
               "choices": [
                 {
@@ -2594,10 +2594,10 @@
             "english": "Working in Taiwan"
           },
           "text": {
-            "traditional": "我在臺灣一家公司上班兩年了。剛來的時候，有很多事讓我不習慣。在我的國家，下班時間到了，要是主管還沒走，大家往往不好意思先離開。可是在這裡，六點一到，同事們就說再見回家了。我本來以為他們不夠認真，後來才發現，他們上班的時候做事很快，也很專心。\n還有一件讓我驚訝的事，是開會的方式。有一次，經理問大家對新產品有什麼看法。我覺得自己是新人，應該謙虛一點，就什麼都沒說。會議結束以後，經理卻來找我，問我是不是對新產品有什麼不滿。我這才明白，在這家公司，開會時不說話不是謙虛，反而會讓別人誤會。\n從那次以後，不論我的想法對不對，我都會在會議上說出來。儘管有時候說錯了，同事們也不會笑我，還會跟我一起討論。現在我覺得，在溝通方面，我比兩年前進步了很多。",
-            "simplified": "我在台湾一家公司上班两年了。刚来的时候，有很多事让我不习惯。在我的国家，下班时间到了，要是主管还没走，大家往往不好意思先离开。可是在这里，六点一到，同事们就说再见回家了。我本来以为他们不够认真，后来才发现，他们上班的时候做事很快，也很专心。\n还有一件让我惊讶的事，是开会的方式。有一次，经理问大家对新产品有什么看法。我觉得自己是新人，应该谦虚一点，就什么都没说。会议结束以后，经理却来找我，问我是不是对新产品有什么不满。我这才明白，在这家公司，开会时不说话不是谦虚，反而会让别人误会。\n从那次以后，不论我的想法对不对，我都会在会议上说出来。尽管有时候说错了，同事们也不会笑我，还会跟我一起讨论。现在我觉得，在沟通方面，我比两年前进步了很多。",
-            "pinyin": "Wǒ zài Táiwān yì jiā gōngsī shàngbān liǎng nián le. Gāng lái de shíhòu, yǒu hěn duō shì ràng wǒ bù xíguàn. Zài wǒ de guójiā, xiàbān shíjiān dào le, yàoshì zhǔguǎn hái méi zǒu, dàjiā wǎngwǎng bù hǎoyìsi xiān líkāi. Kěshì zài zhèlǐ, liù diǎn yí dào, tóngshìmen jiù shuō zàijiàn huíjiā le. Wǒ běnlái yǐwéi tāmen bú gòu rènzhēn, hòulái cái fāxiàn, tāmen shàngbān de shíhòu zuòshì hěn kuài, yě hěn zhuānxīn. Hái yǒu yí jiàn ràng wǒ jīngyà de shì, shì kāihuì de fāngshì. Yǒu yí cì, jīnglǐ wèn dàjiā duì xīn chǎnpǐn yǒu shénme kànfǎ. Wǒ juéde zìjǐ shì xīnrén, yīnggāi qiānxū yìdiǎn, jiù shénme dōu méi shuō. Huìyì jiéshù yǐhòu, jīnglǐ què lái zhǎo wǒ, wèn wǒ shì bú shì duì xīn chǎnpǐn yǒu shénme bùmǎn. Wǒ zhè cái míngbái, zài zhè jiā gōngsī, kāihuì shí bù shuōhuà bú shì qiānxū, fǎn'ér huì ràng biérén wùhuì. Cóng nà cì yǐhòu, búlùn wǒ de xiǎngfǎ duì bú duì, wǒ dōu huì zài huìyì shàng shuō chūlái. Jǐnguǎn yǒu shíhòu shuō cuò le, tóngshìmen yě bú huì xiào wǒ, hái huì gēn wǒ yìqǐ tǎolùn. Xiànzài wǒ juéde, zài gōutōng fāngmiàn, wǒ bǐ liǎng nián qián jìnbù le hěn duō.",
-            "english": "I have worked for a company in Taiwan for two years. When I first came, many things felt strange. In my country, when it is time to go home but the supervisor hasn't left, people usually feel awkward about leaving first. But here, the moment it is six, colleagues say goodbye and go home. At first I thought they weren't serious enough about work; later I found they work fast and with focus during the day.\nAnother thing that surprised me was how meetings work. Once the manager asked everyone what they thought of a new product. I felt that as a newcomer I should be modest, so I said nothing. After the meeting, though, the manager came to ask whether I was unhappy about the new product. Only then did I understand that in this company, saying nothing in a meeting isn't modesty; instead it makes people misunderstand you.\nSince then, whether my ideas are right or not, I say them in meetings. Even though I am sometimes wrong, my colleagues don't laugh at me; they discuss it with me. I now feel that when it comes to communicating, I have improved a lot in two years."
+            "traditional": "我在臺灣一家公司上班兩年了。剛來的時候，有很多事讓我不習慣。在我的國家，下班時間到了，要是主管還沒走，大家往往不好意思先離開。可是在這家公司，六點一到，同事們就說再見回家了。我本來以為他們不夠認真，後來才發現，他們上班的時候做事很快，也很專心。\n還有一件讓我驚訝的事，是開會的方式。有一次，經理問大家對新產品有什麼看法。我覺得自己是新人，應該謙虛一點，就什麼都沒說。會議結束以後，經理卻來找我，問我是不是對新產品有什麼不滿。我這才明白，在這家公司，開會時不說話不是謙虛，反而會讓別人誤會。\n從那次以後，不論我的想法對不對，我都會在會議上說出來。儘管有時候說錯了，同事們也不會笑我，還會跟我一起討論。現在我覺得，在溝通方面，我比兩年前進步了很多。",
+            "simplified": "我在台湾一家公司上班两年了。刚来的时候，有很多事让我不习惯。在我的国家，下班时间到了，要是主管还没走，大家往往不好意思先离开。可是在这家公司，六点一到，同事们就说再见回家了。我本来以为他们不够认真，后来才发现，他们上班的时候做事很快，也很专心。\n还有一件让我惊讶的事，是开会的方式。有一次，经理问大家对新产品有什么看法。我觉得自己是新人，应该谦虚一点，就什么都没说。会议结束以后，经理却来找我，问我是不是对新产品有什么不满。我这才明白，在这家公司，开会时不说话不是谦虚，反而会让别人误会。\n从那次以后，不论我的想法对不对，我都会在会议上说出来。尽管有时候说错了，同事们也不会笑我，还会跟我一起讨论。现在我觉得，在沟通方面，我比两年前进步了很多。",
+            "pinyin": "Wǒ zài Táiwān yì jiā gōngsī shàngbān liǎng nián le. Gāng lái de shíhòu, yǒu hěn duō shì ràng wǒ bù xíguàn. Zài wǒ de guójiā, xiàbān shíjiān dào le, yàoshì zhǔguǎn hái méi zǒu, dàjiā wǎngwǎng bù hǎoyìsi xiān líkāi. Kěshì zài zhè jiā gōngsī, liù diǎn yí dào, tóngshìmen jiù shuō zàijiàn huíjiā le. Wǒ běnlái yǐwéi tāmen bú gòu rènzhēn, hòulái cái fāxiàn, tāmen shàngbān de shíhòu zuòshì hěn kuài, yě hěn zhuānxīn. Hái yǒu yí jiàn ràng wǒ jīngyà de shì, shì kāihuì de fāngshì. Yǒu yí cì, jīnglǐ wèn dàjiā duì xīn chǎnpǐn yǒu shénme kànfǎ. Wǒ juéde zìjǐ shì xīnrén, yīnggāi qiānxū yìdiǎn, jiù shénme dōu méi shuō. Huìyì jiéshù yǐhòu, jīnglǐ què lái zhǎo wǒ, wèn wǒ shì bú shì duì xīn chǎnpǐn yǒu shénme bùmǎn. Wǒ zhè cái míngbái, zài zhè jiā gōngsī, kāihuì shí bù shuōhuà bú shì qiānxū, fǎn'ér huì ràng biérén wùhuì. Cóng nà cì yǐhòu, búlùn wǒ de xiǎngfǎ duì bú duì, wǒ dōu huì zài huìyì shàng shuō chūlái. Jǐnguǎn yǒu shíhòu shuō cuò le, tóngshìmen yě bú huì xiào wǒ, hái huì gēn wǒ yìqǐ tǎolùn. Xiànzài wǒ juéde, zài gōutōng fāngmiàn, wǒ bǐ liǎng nián qián jìnbù le hěn duō.",
+            "english": "I have worked for a company in Taiwan for two years. When I first came, many things felt strange. In my country, when it is time to go home but the supervisor hasn't left, people usually feel awkward about leaving first. But at this company, the moment it is six, colleagues say goodbye and go home. At first I thought they weren't serious enough about work; later I found they work fast and with focus during the day.\nAnother thing that surprised me was how meetings work. Once the manager asked everyone what they thought of a new product. I felt that as a newcomer I should be modest, so I said nothing. After the meeting, though, the manager came to ask whether I was unhappy about the new product. Only then did I understand that in this company, saying nothing in a meeting isn't modesty; instead it makes people misunderstand you.\nSince then, whether my ideas are right or not, I say them in meetings. Even though I am sometimes wrong, my colleagues don't laugh at me; they discuss it with me. I now feel that when it comes to communicating, I have improved a lot in two years."
           },
           "questions": [
             {

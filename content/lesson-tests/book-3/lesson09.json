@@ -43,7 +43,7 @@
               "speaker": "M",
               "traditional": "客人倒是很生氣，我打了好幾次電話跟他道歉。可是主管不但沒罵我，反而讓我負責下個月的新產品活動。",
               "simplified": "客人倒是很生气，我打了好几次电话跟他道歉。可是主管不但没骂我，反而让我负责下个月的新产品活动。",
-              "pinyin": "Kèrén dào shì hěn shēngqì, wǒ dǎ le hǎojǐ cì diànhuà gēn tā dàoqiàn. Kěshì zhǔguǎn búdàn méi mà wǒ, fǎn'ér ràng wǒ fùzé xià ge yuè de xīn chǎnpǐn huódòng.",
+              "pinyin": "Kèrén dàoshì hěn shēngqì, wǒ dǎ le hǎojǐ cì diànhuà gēn tā dàoqiàn. Kěshì zhǔguǎn búdàn méi mà wǒ, fǎn'ér ràng wǒ fùzé xià ge yuè de xīn chǎnpǐn huódòng.",
               "english": "The customer was angry all right; I phoned him several times to apologise. But my supervisor didn't scold me at all; instead he put me in charge of next month's new product event."
             },
             {
@@ -490,10 +490,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "怕老師覺得他沒認真想過",
-                  "simplified": "怕老师觉得他没认真想过",
-                  "pinyin": "Pà lǎoshī juéde tā méi rènzhēn xiǎng guo.",
-                  "english": "He fears the teacher will think he hasn't thought hard."
+                  "traditional": "怕老師太忙，沒空回答他",
+                  "simplified": "怕老师太忙，没空回答他",
+                  "pinyin": "Pà lǎoshī tài máng, méi kòng huídá tā.",
+                  "english": "He fears the teacher is too busy to answer him."
                 },
                 {
                   "speaker": "N",
@@ -504,7 +504,7 @@
                 }
               ],
               "key": 3,
-              "why": "Asked 你怎麼不去請教老師，反而一個人在這裡想？, he says 我怕老師覺得我的問題太簡單了: a question that simple means he can't even do this. It is the teacher's view he fears (我怕老師覺得), not classmates'; he has thought for three days, so lack of effort is not his worry, and the free time at ten is what she tells him afterwards.",
+              "why": "Asked 你怎麼不去請教老師，反而一個人在這裡想？, he says 我怕老師覺得我的問題太簡單了: a question that simple means he can't even do this. It is the teacher's view he fears (我怕老師覺得), not classmates'; he never says the teacher is too busy, and the free time at ten is what she tells him afterwards.",
               "focus": {
                 "zh": "怎麼不……，反而……",
                 "en": "why not…, instead of…?"
@@ -999,7 +999,7 @@
               "speaker": "F",
               "traditional": "這都要謝謝我的語言交換朋友。我每次說錯，她都馬上告訴我，讓我再說一次。說了一個月，就習慣了。",
               "simplified": "这都要谢谢我的语言交换朋友。我每次说错，她都马上告诉我，让我再说一次。说了一个月，就习惯了。",
-              "pinyin": "Zhè dōu yào xièxie wǒ de yǔyán jiāohuàn péngyǒu. Wǒ měi cì shuō cuò, tā dōu mǎshàng gàosù wǒ, ràng wǒ zài shuō yí cì. Shuō le yí ge yuè, jiù xíguàn le.",
+              "pinyin": "Zhè dōu yào xièxie wǒ de yǔyán jiāohuàn péngyǒu. Wǒ měi cì shuō cuò, tā dōu mǎshàng gàosu wǒ, ràng wǒ zài shuō yí cì. Shuō le yí ge yuè, jiù xíguàn le.",
               "english": "I owe it to my language exchange friend. Every time I got it wrong she told me at once and had me say it again. After a month of that, it became a habit."
             },
             {
@@ -1063,7 +1063,7 @@
                   "speaker": "N",
                   "traditional": "男的一聽到她說錯就告訴她",
                   "simplified": "男的一听到她说错就告诉她",
-                  "pinyin": "Nán de yì tīngdào tā shuō cuò jiù gàosù tā.",
+                  "pinyin": "Nán de yì tīngdào tā shuō cuò jiù gàosu tā.",
                   "english": "The man tells her whenever he hears a mistake."
                 },
                 {
@@ -1485,7 +1485,7 @@
             "traditional": "我弟弟從國中起數學就不好。他其實很努力，每天都念到很晚，可是每次考試還是不{1}。爸媽以為多補習就會進步，就送他去補習班。{2}，他的成績不但沒變好，反而更討厭數學了。後來，新的數學老師發現他很喜歡打籃球，就用{3}上的例子教他，讓他覺得數學很有意思。老師常說，學數學不能只記答案，{4}是碰到不會的題目，更要自己多想。過了半年，弟弟才{5}過來，原來數學沒有他想的那麼難。現在他的數學進步了很多，班上同學碰到不會的題目，都會來{6}他。",
             "simplified": "我弟弟从国中起数学就不好。他其实很努力，每天都念到很晚，可是每次考试还是不{1}。爸妈以为多补习就会进步，就送他去补习班。{2}，他的成绩不但没变好，反而更讨厌数学了。后来，新的数学老师发现他很喜欢打篮球，就用{3}上的例子教他，让他觉得数学很有意思。老师常说，学数学不能只记答案，{4}是碰到不会的题目，更要自己多想。过了半年，弟弟才{5}过来，原来数学没有他想的那么难。现在他的数学进步了很多，班上同学碰到不会的题目，都会来{6}他。",
             "pinyin": "Wǒ dìdi cóng guózhōng qǐ shùxué jiù bù hǎo. Tā qíshí hěn nǔlì, měi tiān dōu niàn dào hěn wǎn, kěshì měi cì kǎoshì háishì bù jígé. Bàmā yǐwéi duō bǔxí jiù huì jìnbù, jiù sòng tā qù bǔxíbān. Méixiǎngdào, tā de chéngjī búdàn méi biàn hǎo, fǎn'ér gèng tǎoyàn shùxué le. Hòulái, xīn de shùxué lǎoshī fāxiàn tā hěn xǐhuān dǎ lánqiú, jiù yòng qiúchǎng shàng de lìzi jiāo tā, ràng tā juéde shùxué hěn yǒu yìsi. Lǎoshī cháng shuō, xué shùxué bù néng zhǐ jì dá'àn, yóuqí shì pèng dào bú huì de tímù, gèng yào zìjǐ duō xiǎng. Guò le bàn nián, dìdi cái míngbái guòlái, yuánlái shùxué méiyǒu tā xiǎng de nàme nán. Xiànzài tā de shùxué jìnbù le hěn duō, bān shàng tóngxué pèng dào bú huì de tímù, dōu huì lái qǐngjiào tā.",
-            "english": "My younger brother has been bad at maths since junior high. He actually works hard and studies late every night, but he still failed every test. My parents thought more tutoring would help, so they sent him to a cram school. To their surprise, instead of getting better, his grades stayed the same and he came to hate maths even more. Then his new maths teacher found out he loved basketball and taught him with examples from the court, which made maths interesting for him. The teacher often says that in maths you can't just memorise answers; especially when you meet a question you can't do, you have to think it through yourself. Six months later my brother finally saw it: maths wasn't as hard as he had thought. Now his maths has improved a lot, and classmates who get stuck on a question come to ask him."
+            "english": "My younger brother has been bad at maths since junior high. He actually works hard and studies late every night, but he still failed every test. My parents thought more tutoring would help, so they sent him to a cram school. To their surprise, instead of getting better, his grades didn't improve at all and he came to hate maths even more. Then his new maths teacher found out he loved basketball and taught him with examples from the court, which made maths interesting for him. The teacher often says that in maths you can't just memorise answers; especially when you meet a question you can't do, you have to think it through yourself. Six months later my brother finally saw it: maths wasn't as hard as he had thought. Now his maths has improved a lot, and classmates who get stuck on a question come to ask him."
           },
           "questions": [
             {
@@ -2493,7 +2493,7 @@
           "text": {
             "traditional": "我爸爸是一個不太講究穿著的人。他有一件深藍色的外套，已經穿了十幾年，有的地方都破了，他還是天天穿。媽媽買了好幾件新外套給他，可是他說新的穿不慣，穿了一次又把舊的拿出來。今年我哥哥結婚，媽媽說：「你再喜歡那件，也不能穿去婚禮。這次你非穿新的不可。」爸爸只好答應了。那天他穿上媽媽買的淺色外套，家人和朋友都說他看起來年輕了十歲。沒想到從那天起，他就不再穿那件舊外套了。媽媽問他為什麼，他笑著說：「新的穿了一天，就穿慣了。況且，大家都說我變帥了啊！」",
             "simplified": "我爸爸是一个不太讲究穿着的人。他有一件深蓝色的外套，已经穿了十几年，有的地方都破了，他还是天天穿。妈妈买了好几件新外套给他，可是他说新的穿不惯，穿了一次又把旧的拿出来。今年我哥哥结婚，妈妈说：「你再喜欢那件，也不能穿去婚礼。这次你非穿新的不可。」爸爸只好答应了。那天他穿上妈妈买的浅色外套，家人和朋友都说他看起来年轻了十岁。没想到从那天起，他就不再穿那件旧外套了。妈妈问他为什么，他笑着说：「新的穿了一天，就穿惯了。况且，大家都说我变帅了啊！」",
-            "pinyin": "Wǒ bàba shì yí ge bú tài jiǎngjiù chuānzhuó de rén. Tā yǒu yí jiàn shēn lánsè de wàitào, yǐjīng chuān le shí jǐ nián, yǒu de dìfāng dōu pò le, tā háishì tiāntiān chuān. Māma mǎi le hǎojǐ jiàn xīn wàitào gěi tā, kěshì tā shuō xīn de chuān bú guàn, chuān le yí cì yòu bǎ jiù de ná chūlái. Jīnnián wǒ gēge jiéhūn, māma shuō: “Nǐ zài xǐhuān nà jiàn, yě bù néng chuān qù hūnlǐ. Zhè cì nǐ fēi chuān xīn de bù kě.” Bàba zhǐhǎo dāyìng le. Nà tiān tā chuān shàng māma mǎi de qiǎn sè wàitào, jiārén hé péngyǒu dōu shuō tā kàn qǐlái niánqīng le shí suì. Méixiǎngdào cóng nà tiān qǐ, tā jiù bú zài chuān nà jiàn jiù wàitào le. Māma wèn tā wèishénme, tā xiào zhe shuō: “Xīn de chuān le yì tiān, jiù chuān guàn le. Kuàngqiě, dàjiā dōu shuō wǒ biàn shuài le a!”",
+            "pinyin": "Wǒ bàba shì yí ge bú tài jiǎngjiù chuānzhuó de rén. Tā yǒu yí jiàn shēn lánsè de wàitào, yǐjīng chuān le shí jǐ nián, yǒu de dìfāng dōu pò le, tā háishì tiāntiān chuān. Māma mǎi le hǎojǐ jiàn xīn wàitào gěi tā, kěshì tā shuō xīn de chuān bú guàn, chuān le yí cì yòu bǎ jiù de ná chūlái. Jīnnián wǒ gēge jiéhūn, māma shuō: “Nǐ zài xǐhuān nà jiàn, yě bù néng chuān qù hūnlǐ. Zhè cì nǐ fēi chuān xīn de bù kě.” Bàba zhǐhǎo dāyìng le. Nà tiān tā chuān shàng māma mǎi de qiǎnsè wàitào, jiārén hé péngyǒu dōu shuō tā kàn qǐlái niánqīng le shí suì. Méixiǎngdào cóng nà tiān qǐ, tā jiù bú zài chuān nà jiàn jiù wàitào le. Māma wèn tā wèishénme, tā xiào zhe shuō: “Xīn de chuān le yì tiān, jiù chuān guàn le. Kuàngqiě, dàjiā dōu shuō wǒ biàn shuài le a!”",
             "english": "My dad doesn't care much about clothes. He has a dark blue jacket he has worn for over ten years; it's worn through in places, but he still wears it every day. Mom bought him several new jackets, but he said he wasn't used to new ones, and after wearing one once he would get the old one out again. This year my brother got married, and Mom said, \"However much you love that one, you can't wear it to the wedding. This time you have to wear a new one.\" Dad had to agree. That day he wore the light-coloured jacket Mom had bought, and family and friends all said he looked ten years younger. To our surprise, from that day on he stopped wearing the old jacket. When Mom asked him why, he smiled and said, \"After a day in the new one, I got used to it. Besides, everyone says I've become handsome!\""
           },
           "questions": [
