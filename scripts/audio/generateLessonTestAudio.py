@@ -73,7 +73,12 @@ YATING_PACE = {
     (1, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, True),
     (2, 8): ({"F": 1.05, "M": 1.0, "N": 1.2}, False),  # Owner's pick by ear (2026-11-19): about 4.6 characters a second.
     (2, 16): ({"F": 0.96, "M": 0.92, "N": 1.2}, False),  # L9–16 a step faster, about 5.0 (owner: "faster is okay").
-    (3, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, False),
+    (3, 5): ({"F": 1.05, "M": 0.9, "N": 1.2}, False),
+    # Book 3 L6–16 take Book 2's cast (YATING_CAST_FROM) and its speeds: L6–9 (TOCFL Level 3) at Book 2 L1–8's
+    # ≈ 4.6 characters a second, L10–16 (Level 4) at Book 2 L9–16's ≈ 5.0. The official Band B mock's longer
+    # dialogues and talks measure ≈ 4.5–4.7 with its slower narrator mixed in (2026-11-23).
+    (3, 9): ({"F": 1.05, "M": 1.0, "N": 1.2}, False),
+    (3, 16): ({"F": 0.96, "M": 0.92, "N": 1.2}, False),
 }
 # Yating pitch per role (1.0 = the voice's own). 家豪 is raised to ≈ 141 Hz, near the TOCFL mock's man (≈ 145 Hz;
 # his own ≈ 118 Hz sounded heavy). Pitch does not change his speed.
@@ -88,6 +93,17 @@ YATING_BOOK_VOICES = {2: {"F": ("zh_en_female_2", 1.0, 1.3), "M": ("zh_en_male_2
 # NATIVE_BITRATE. Each clip keeps Yating's own ≈ 0.35 s of silence at its end, so the app adds no gap between these
 # turns (src/screens/lesson-test/testAudioSequence.ts).
 YATING_NATIVE_BOOKS = {2}
+# Later lessons voiced in another book's cast and delivery: {(book, first lesson): book whose cast it takes}. Book 3
+# L6–16 sound like Book 2 (owner, 2026-11-23: livelier sounds more natural); L1–5 keep the cast they were voiced in.
+YATING_CAST_FROM = {(3, 6): 2}
+
+
+def cast_book(book, lesson):
+    """The book whose dialogue cast and delivery a lesson's test uses."""
+    for (from_book, first), source in YATING_CAST_FROM.items():
+        if book == from_book and lesson >= first:
+            return source
+    return book
 NATIVE_LUFS = -14.5
 NATIVE_BITRATE = "96k"
 
@@ -102,7 +118,7 @@ YATING_SPEED_STEPS = (0.0, -0.05, 0.05, 0.1)
 # A faster test's dialogue gets a higher "too fast" cap than MAX_PACE: Book 2 aims at ≈ 4.6 (L1–8) and ≈ 5.0 (L9–16)
 # characters a second, so short lines run past 4.5. {(book, last lesson): characters a second}; the narrator keeps
 # MAX_PACE["N"].
-YATING_MAX_PACE = {(2, 8): 5.2, (2, 16): 5.6}
+YATING_MAX_PACE = {(2, 8): 5.2, (2, 16): 5.6, (3, 9): 5.2, (3, 16): 5.6}
 YATING_TAKES = [(take, "y") for take in range(len(YATING_SPEED_STEPS))]
 
 
@@ -343,13 +359,14 @@ def main():
         number = int(key[key.index('l') + 1:])
         lesson = json.loads((CONTENT / f"book-{book}" / f"lesson{number:02d}.json").read_text(encoding="utf-8"))
         if args.engine == "yating":
-            lesson_voices[key] = {s: yating_label(s, *yating_pace(book, number, s), book) for s in YATING_VOICES}
+            lesson_voices[key] = {s: yating_label(s, *yating_pace(book, number, s), cast_book(book, number)) for s in YATING_VOICES}
         for speaker, text in spoken_units(lesson):
             if args.engine == "yating":
                 speed, pauses = yating_pace(book, number, speaker)
-                voice = yating_label(speaker, speed, pauses, book)
-                model, pitch, energy = yating_voice(book, speaker)
-                native = book in YATING_NATIVE_BOOKS and speaker != "N"
+                cast = cast_book(book, number)
+                voice = yating_label(speaker, speed, pauses, cast)
+                model, pitch, energy = yating_voice(cast, speaker)
+                native = cast in YATING_NATIVE_BOOKS and speaker != "N"
                 if clip_key(voice, text) in published.get("clips", {}) and not native:
                     continue
                 targets[clip_key(voice, text)] = {"key": clip_key(voice, text), "text": text, "voice": voice,
