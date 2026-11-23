@@ -4,7 +4,6 @@ import { FloatingDock, PlayfulNavIcon, SegmentedControl } from '../../../lib/wid
 import { useDismiss } from '../../../hooks/useDismiss';
 import { useFloatingDockSleep } from '../../../hooks/useFloatingDockSleep';
 import { cn } from '../../../utils/cn';
-import type { QuizMode } from '../../../types/models';
 import { DockSubMenu, type DockSubMenuOption } from './DockSubMenu';
 import { DOCK_SWAP, PracticeDockSlotOutlet, usePracticeDockSlot } from '../../../features/practice';
 import type { PracticeDockLayout } from './practiceDockLayout';
@@ -15,7 +14,6 @@ export const PRACTICE_ACTIVITIES = [
   { id: 'flashcards', label: 'Flashcards', icon: 'flashcards' },
   { id: 'quiz', label: 'Quiz', icon: 'quiz' },
   { id: 'writing', label: 'Writing', icon: 'writing' },
-  { id: 'pinyin', label: 'Pinyin', icon: 'pinyinPractice' },
   { id: 'tones', label: 'Tones', icon: 'tones' },
   { id: 'sentences', label: 'Sentences', icon: 'reading' },
 ] as const;
@@ -30,26 +28,23 @@ export const DOCK_TABS = [
 
 export type DockTabId = (typeof DOCK_TABS)[number]['id'];
 
-export type PracticeHubOptionId = 'writing' | 'pinyin' | 'tones' | 'sentences';
+export type PracticeHubOptionId = 'writing' | 'tones' | 'sentences';
 
 const isPracticeHubOption = (value: string): value is PracticeHubOptionId => (
-  value === 'writing' || value === 'pinyin' || value === 'tones' || value === 'sentences'
+  value === 'writing' || value === 'tones' || value === 'sentences'
 );
 
 const PRACTICE_HUB_OPTIONS: ReadonlyArray<DockSubMenuOption<PracticeHubOptionId>> = [
   { value: 'writing', label: 'Writing', playfulIcon: 'writing' },
-  { value: 'pinyin', label: 'Pinyin', playfulIcon: 'pinyinPractice' },
   { value: 'tones', label: 'Tones', playfulIcon: 'tones' },
   { value: 'sentences', label: 'Sentences', playfulIcon: 'reading' },
 ];
 
 /** The single anchored sub-menu the dock can have open at a time. */
-type DockMenu = 'quiz' | 'practiceHub' | 'study';
+type DockMenu = 'practiceHub' | 'study';
 
 export interface PracticeModeDockProps {
   onChange: (activity: PracticeActivityId) => void;
-  onSelectQuizMode: (mode: QuizMode) => void;
-  quizMode?: QuizMode | null;
   value: PracticeActivityId;
   visible?: boolean;
   layout: PracticeDockLayout;
@@ -61,15 +56,8 @@ export interface PracticeModeDockProps {
   studyItems?: StudyMaterialItem[];
 }
 
-const QUIZ_MODES: ReadonlyArray<DockSubMenuOption<QuizMode>> = [
-  { value: 'choices', label: 'Choose', icon: 'choices' },
-  { value: 'typing', label: 'Type', icon: 'typeText' },
-] as const;
-
 export function PracticeModeDock({
   onChange,
-  onSelectQuizMode,
-  quizMode,
   value,
   visible = true,
   layout,
@@ -178,17 +166,6 @@ export function PracticeModeDock({
                 isVertical ? 'w-full' : 'dock-pill min-w-0 flex-1 w-full max-w-56',
               )}
             >
-              <DockSubMenu<QuizMode>
-                open={openMenu === 'quiz'}
-                onClose={() => setOpenMenu(null)}
-                modeKey="quiz"
-                side={side}
-                containerRef={modesContainerRef}
-                label="Choose quiz mode"
-                options={QUIZ_MODES}
-                selectedValue={quizMode}
-                onSelect={onSelectQuizMode}
-              />
               <DockSubMenu<PracticeHubOptionId>
                 open={openMenu === 'practiceHub'}
                 onClose={() => setOpenMenu(null)}
@@ -212,7 +189,7 @@ export function PracticeModeDock({
                 tooltipSide={side}
                 className={cn('w-full rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface shadow-ambient-sm', isVertical ? 'p-1.5' : 'h-full p-1.5 px-2')}
                 options={DOCK_TABS.map((tab) => {
-                  const isSubMenu = tab.id === 'quiz' || tab.id === 'practiceHub';
+                  const isSubMenu = tab.id === 'practiceHub';
                   const isMenuOpen = openMenu === tab.id;
                   return {
                     value: tab.id,
@@ -240,15 +217,6 @@ export function PracticeModeDock({
                 onChange={(tabId) => {
                   if (tabId === 'practiceHub') {
                     setOpenMenu((current) => (current === 'practiceHub' ? null : 'practiceHub'));
-                    return;
-                  }
-                  if (tabId === 'quiz') {
-                    if (value === 'quiz') {
-                      setOpenMenu((current) => (current === 'quiz' ? null : 'quiz'));
-                      return;
-                    }
-                    setOpenMenu(null);
-                    onChange('quiz');
                     return;
                   }
                   setOpenMenu(null);

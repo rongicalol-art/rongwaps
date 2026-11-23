@@ -20,7 +20,7 @@ import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
 import { usePracticeDataReady } from './hooks/usePracticeDataReady';
 import { useStudyMaterials } from './hooks/useStudyMaterials';
-import { useLessonNextStep, type ReadingTarget } from './hooks/useLessonNextStep';
+import { useLessonNextStep } from './hooks/useLessonNextStep';
 import type { Flashcard } from '../../data/flashcards';
 
 interface ActivityModalsProps {
@@ -37,8 +37,6 @@ interface ActivityModalsProps {
   isShellOverlayOpen: boolean;
   onOpenGrammarPart?: (partId: string | string[], pageId?: string) => void;
   onOpenLessonReadings?: (lessonIds: number[]) => void;
-  /** Opens one lesson part's reading (the end screen's "Read the dialogue"). */
-  onOpenReadingPart?: (target: ReadingTarget) => void;
   /** False when the lazy-load fallback window was already on screen, so the modal skips its own fade. */
   animateIn?: boolean;
 }
@@ -54,11 +52,11 @@ export function ActivityModals({
   isShellOverlayOpen,
   onOpenGrammarPart,
   onOpenLessonReadings,
-  onOpenReadingPart,
   animateIn = true,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
-  const race = useAppStore(state => state.racePlaying ? state.race?.selection : null);
+  // A race or a challenge link brings its own quiz: book, lessons and parts.
+  const race = useAppStore(state => state.racePlaying ? state.race?.selection : state.challengePlaying ? state.challenge?.selection : null);
   const activeBookId = race ? race.book ?? 1 : selectedBookId;
   const raceSelection = race;
   const selectedLessons = useMemo(() => raceSelection ? Object.keys(raceSelection.lessons).map(Number) : savedLessons, [raceSelection, savedLessons]);
@@ -160,8 +158,6 @@ export function ActivityModals({
   if (sessionStats && activeActivity !== 'quiz') setSessionStats(null);
   const dockAutoHide = useAppStore(state => state.dockAutoHide);
   const dockLayout = usePracticeDockLayout(useAppStore(state => state.dockStyle));
-  const activeQuizMode = useAppStore(state => state.activeQuizMode);
-  const setActiveQuizMode = useAppStore(state => state.setActiveQuizMode);
 
   const insetClassName = hasDock ? dockLayout.insetClassName : '';
   // The bottom dock publishes its measured height as `--dock-inset` on this body; the screens sit above it, so they centre in the free area.
@@ -201,7 +197,7 @@ export function ActivityModals({
     onOpenGrammarPart,
   });
 
-  // After a lesson quiz the end screen offers one fitting next step: the unread dialogue, or a practice mode.
+  // After a lesson quiz the end screen offers one fitting next step: Sentences, or another practice mode.
   const nextStep = useLessonNextStep({
     enabled: isLessonPartFocused && !race && Boolean(activeActivity),
     bookId: activeBookId,
@@ -209,10 +205,6 @@ export function ActivityModals({
     partIds: selectedStudyPartIds,
     cards: deckCards,
     onPractice: setActiveActivity,
-    onRead: useMemo(() => onOpenReadingPart && ((target: ReadingTarget) => {
-      setActiveActivity(null);
-      onOpenReadingPart(target);
-    }), [onOpenReadingPart, setActiveActivity]),
   });
 
   const activityLabel = activeActivity === 'create-card'
@@ -296,7 +288,6 @@ export function ActivityModals({
                   isReviewMode={isReviewSession}
                   isLibraryMode={effectiveLibraryMode}
                   isIndependentStudy={isIndependentStudy}
-                  activeQuizMode={race ? 'choices' : activeQuizMode}
                   direction={direction}
                   onClose={handleClose}
                   onWritingClose={handleWritingClose}
@@ -322,15 +313,10 @@ export function ActivityModals({
                   {showDock && (
                     <PracticeModeDock
                       value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
-                      quizMode={activeQuizMode}
                       layout={dockLayout}
                       insetRef={reservesDock ? bodyRef : undefined}
                       autoHide={dockAutoHide}
                       studyItems={studyItems}
-                      onSelectQuizMode={(mode) => {
-                        setActiveQuizMode(mode);
-                        setActiveActivity('quiz');
-                      }}
                       onChange={(nextActivity) => {
                         if (isReviewSession && nextActivity === 'flashcards') {
                           setActiveActivity('flashcards-review');

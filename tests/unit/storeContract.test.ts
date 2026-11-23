@@ -35,7 +35,6 @@ const EXPECTED_PERSISTED_KEYS = [
   'activeTab',
   'activeActivity',
   'practiceContext',
-  'activeQuizMode',
   'isReviewMode',
   'selectedBooks',
   'selectedLessonParts',
@@ -152,7 +151,7 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'lessonDoneMarks',
   'legacyDoneBooks',
   // Study together: live state and blocks belong to the signed-in account.
-  'race', 'racePlaying', 'racePending', 'raceStatus', 'socialBlocks', 'socialSafety', 'socialOnlineTotal', 'socialChat', 'socialCards', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe', 'socialMentionDraft',
+  'race', 'racePlaying', 'racePending', 'raceStatus', 'challenge', 'challengePlaying', 'challengeStartedAt', 'challengeKey', 'challengeDoneMs', 'socialBlocks', 'socialSafety', 'socialOnlineTotal', 'socialChat', 'socialCards', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe', 'socialMentionDraft',
   'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialChatRead', 'socialChatUnread', 'socialFriends', 'socialInbox', 'socialThreads', 'socialSaved', 'socialRecent', 'socialUsername', 'socialViewingLesson', 'socialStudying', 'socialHere',
   'socialMentions', 'socialMentionToast', 'socialMentionTarget', 'socialReadingParty',
   // Lesson test scores and the attempt in progress belong to the signed-in account.
@@ -254,4 +253,17 @@ test('persist version 3 migrates all older script choices to traditional without
     assert.equal(migrated?.characterFont, 'kai');
     assert.equal(migrated?.showPinyin, false);
   }
+});
+
+test('hydration retires the standalone Pinyin activity and keeps its quiz prompt preference', () => {
+  const { merge } = useAppStore.persist.getOptions();
+  const current = useAppStore.getState();
+  const restored = merge?.({
+    activeActivity: 'pinyin', lastActivity: 'pinyin', activeQuizMode: 'typing', practiceContext: 'lesson', typingPromptType: 'meaning',
+  }, current);
+  assert.equal(restored?.activeActivity, null);
+  assert.equal(restored?.practiceContext, null);
+  assert.equal(restored?.lastActivity, 'quiz');
+  assert.equal(restored?.typingPromptType, 'meaning');
+  assert.equal(Object.hasOwn(restored ?? {}, 'activeQuizMode'), false);
 });

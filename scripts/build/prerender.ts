@@ -5,7 +5,7 @@
  * Writes dist/index.html (landing) and dist/<page>.html; server/index.ts serves those for
  * their paths. The app removes `#prerender` once it has rendered (src/utils/browser/prerender.ts).
  */
-import { mkdir, readFile, rm, writeFile } from 'fs/promises';
+import { access, mkdir, readFile, rm, writeFile } from 'fs/promises';
 import path from 'path';
 import { pathToFileURL } from 'url';
 import { build } from 'vite';
@@ -36,6 +36,9 @@ function mapAssetUrls(html: string, manifest: Record<string, { file: string }>):
 }
 
 const PAGE_JSON_LD = /<script type="application\/ld\+json" id="page-jsonld">[\s\S]*?<\/script>/;
+/** The site's preview pictures in index.html: the wide card, the square fallback, and Twitter's. */
+const SHARE_IMAGES = /<meta property="og:image" content="[^"]*"\s*\/?>[\s\S]*?<meta name="twitter:image" content="[^"]*"\s*\/?>/;
+const ROBOTS = /<meta name="robots" content="[^"]*"\s*\/?>/;
 
 function pageHtml(template: string, page: PrerenderedPage): string {
   const url = `${SITE_ORIGIN}${page.path}`;
@@ -52,6 +55,18 @@ function pageHtml(template: string, page: PrerenderedPage): string {
   html = setTag(html, /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${socialDescription}" />`);
   html = setTag(html, /<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`);
   html = setTag(html, /<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`);
+  if (page.image) {
+    const image = `${SITE_ORIGIN}${page.image.path}`;
+    const alt = escapeAttr(page.image.alt);
+    html = setTag(html, SHARE_IMAGES, [
+      `<meta property="og:image" content="${image}" />`,
+      `<meta property="og:image:width" content="${page.image.width}" />`,
+      `<meta property="og:image:height" content="${page.image.height}" />`,
+      `<meta property="og:image:alt" content="${alt}" />`,
+      `<meta name="twitter:image" content="${image}" />`,
+    ].join('\n    '));
+  }
+  if (page.noindex) html = setTag(html, ROBOTS, '<meta name="robots" content="noindex" />');
   if (page.jsonLd) {
     const script = `<script type="application/ld+json" id="page-jsonld">${JSON.stringify(page.jsonLd).replace(/</g, '\\u003c')}</script>`;
     html = PAGE_JSON_LD.test(html) ? setTag(html, PAGE_JSON_LD, script) : html.replace('</head>', `${script}\n</head>`);
@@ -83,6 +98,8 @@ async function main() {
     const manifest = JSON.parse(await readFile(path.join(DIST, '.vite/manifest.json'), 'utf8')) as Record<string, { file: string }>;
     for (const rendered of renderPages()) {
       const page = { ...rendered, html: mapAssetUrls(rendered.html, manifest) };
+      // A preview naming a picture that isn't there would show a broken card (scripts/assets/makeShareCards.ts).
+      if (page.image) await access(path.join(ROOT, 'public', page.image.path)).catch(() => { throw new Error(`prerender: ${page.path} names a missing ${page.image?.path}`); });
       const file = page.path === '/' ? 'index.html' : `${page.path.slice(1)}.html`;
       await mkdir(path.dirname(path.join(DIST, file)), { recursive: true });
       await writeFile(path.join(DIST, file), pageHtml(template, page));

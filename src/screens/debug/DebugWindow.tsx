@@ -16,7 +16,6 @@ import { ProfileSkeleton } from '../profile';
 import { QuizPreview } from '../quiz';
 import { TonePreview } from '../tones';
 import { SentencesPreview } from '../sentences';
-import { PinyinPreview } from '../pinyin';
 import { GrammarPracticePreview } from './GrammarPracticePreview';
 
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
@@ -343,7 +342,6 @@ export const DebugWindow = () => {
             <GrammarPracticePreview />
             <TonePreview />
             <SentencesPreview />
-            <PinyinPreview />
             <LegalUpdatePreview />
             <section className="space-y-3 rounded-feature border-2 border-ui-divider p-4">
               <h2 className="text-xl font-black text-ui-ink-strong">Age step · safe preview (buttons do nothing)</h2>

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Turns the JSON from learner-report.sql into a short Markdown report for the owner.
-// Usage: node scripts/release/learnerReport.mjs <report.json> > learner-report.md
+// Usage: node scripts/release/learnerReport.mjs <report.json> [test-questions.json] > learner-report.md
 // Word ids become words from the generated vocabulary packs; nothing here identifies a learner.
 import { existsSync, readFileSync } from 'node:fs';
+import { MIN_ANSWERS, flagTestQuestions, loadTestQuestions } from './testQuestionStats.mjs';
 
 const file = process.argv[2];
 if (!file) {
@@ -10,6 +11,11 @@ if (!file) {
   process.exit(2);
 }
 const r = JSON.parse(readFileSync(file, 'utf8'));
+// Missing (the answer counts table isn't on this database yet): the section says so.
+const testRowsFile = process.argv[3];
+const testRows = (() => {
+  try { return testRowsFile ? JSON.parse(readFileSync(testRowsFile, 'utf8')) : null; } catch { return null; }
+})();
 
 const words = new Map();
 for (const book of [1, 2, 3, 4]) {
@@ -109,6 +115,26 @@ if (hard.length) {
   line('');
   line('These words could use a better memory hook, example or picture.');
 } else line('- Not enough answers yet (a word shows once 3+ learners answered it 8+ times).');
+line();
+
+line('## Test questions to check');
+line("Each learner's first run of a lesson test, counted anonymously; only each question's current wording.");
+if (!Array.isArray(testRows)) line('- No answer data yet (the anonymous counts start once the lesson_test_answers migration is on production).');
+else {
+  const flagged = flagTestQuestions(testRows, loadTestQuestions());
+  if (!testRows.length) line(`- Not enough answers yet (a question shows once it has ${MIN_ANSWERS}+ answers).`);
+  else if (!flagged.length) line(`- None: every question with ${MIN_ANSWERS}+ answers looks healthy.`);
+  else {
+    for (const f of flagged.slice(0, 15)) {
+      const wrong = f.topWrong ? `; most-picked wrong: ${f.topWrong.choice} (${Math.round(f.topWrong.share * 100)}%)` : '';
+      const disc = f.discrimination === null ? '' : `, discrimination ${f.discrimination.toFixed(2)}`;
+      line(`- ${f.lesson} \`${f.id}\`: ${f.prompt || '(cloze blank)'} Key: ${f.key}${wrong}. ${Math.round(f.right * 100)}% right of ${f.answers}${disc}. ${f.reasons.join('; ').replace(/^./, (c) => c.toUpperCase())}.`);
+    }
+    if (flagged.length > 15) line(`- …and ${flagged.length - 15} more.`);
+    line('');
+    line('Read each one against its dialogue or passage: a wrong key, two defensible answers, or a trap that catches strong learners.');
+  }
+}
 line();
 
 line('## Study together and friends');

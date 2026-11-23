@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, parseRaceAction, socialColor, summarizeRoom, type RaceRoomState, type RaceSnapshot } from '../shared/quizRace';
+import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, normalizeQuizTypes, parseRaceAction, socialColor, summarizeRoom, type RaceRoomState, type RaceSnapshot } from '../shared/quizRace';
 import { CHAT_KEEP, CHAT_TTL_MS, DAILY_LIMIT_ERROR, GLOBAL_CHAT, SOCIAL_FRAME_BYTES, chatDailyFull, chatText, nextChatRate, mentionIds, type ChatMessage, type ChatRate, type PartyChatServerMessage, type MentionNotice } from '../shared/lobby';
 import { maskChat } from '../shared/nameFilter';
 import { SOCIAL_BANNED_ERROR, SOCIAL_PAUSED_ERROR, socialBanned, socialPaused } from './access';
@@ -50,10 +50,11 @@ export class GameRoom extends DurableObject<Env> {
     if (!row) return null;
     const room = JSON.parse(row.data) as Partial<RaceRoomState>;
     // The previous Worker used this binding for a different game; do not reinterpret those rooms.
-    const valid = room.selection?.lessons && Array.isArray(room.selection.types) && Array.isArray(room.players)
-      && Number.isSafeInteger(room.round) && ['lobby', 'preparing', 'race', 'review', 'results'].includes(room.phase ?? '');
-    if (!valid) return null;
-    this.roomJson = row.data;
+    const selection = room.selection;
+    if (!selection?.lessons || !Array.isArray(selection.types) || !Array.isArray(room.players)
+      || !Number.isSafeInteger(room.round) || !['lobby', 'preparing', 'race', 'review', 'results'].includes(room.phase ?? '')) return null;
+    selection.types = normalizeQuizTypes(selection.types);
+    this.roomJson = JSON.stringify(room);
     return room as RaceRoomState;
   }
 

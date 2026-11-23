@@ -5,8 +5,15 @@
  */
 import { RACE_BOOKS } from './courseAccess';
 
-export const RACE_TYPES = ['meaning', 'listen', 'hanzi', 'match', 'true-false', 'build'] as const;
+export const RACE_TYPES = ['meaning', 'listen', 'hanzi', 'match', 'pinyin', 'build'] as const;
 export type RaceType = typeof RACE_TYPES[number];
+
+/** Old typing picks are Pinyin; retired True or false picks fall out (no remaining picks means Mixed). */
+export function normalizeQuizTypes(value: unknown): RaceType[] {
+  if (!Array.isArray(value)) return [];
+  const types = value.map((type: unknown) => type === 'typing' ? 'pinyin' : type);
+  return [...new Set(types.filter((type): type is RaceType => RACE_TYPES.some((id) => id === type)))];
+}
 /** Profile avatar palette keys a player may show; anything else becomes the first. */
 export const SOCIAL_COLORS = ['blue', 'honey', 'jade', 'plum', 'ink'] as const;
 export type SocialColor = typeof SOCIAL_COLORS[number];
@@ -104,10 +111,7 @@ export function parseSelection(value: unknown): RaceSelection {
     if (picked.length) lessons[String(lesson)] = picked;
   }
   if (!Object.keys(lessons).length) throw new Error('Pick at least one lesson part.');
-  const types = Array.isArray(data.types)
-    ? [...new Set(data.types.filter((type): type is RaceType => (RACE_TYPES as readonly unknown[]).includes(type)))]
-    : [];
-  return { book, lessons, types };
+  return { book, lessons, types: normalizeQuizTypes(data.types) };
 }
 
 export function parseRaceAction(value: unknown): RaceFrame {

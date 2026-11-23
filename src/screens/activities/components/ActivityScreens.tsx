@@ -15,8 +15,6 @@ function activityScreenKey(activity: ActivityType): string | null {
   return activity;
 }
 
-type QuizScreenProps = React.ComponentProps<NonNullable<ReturnType<typeof getPracticeScreen<'quiz'>>>>;
-
 interface ActivityScreensProps {
   activeActivity: ActivityType;
   activeBookId: number;
@@ -24,7 +22,6 @@ interface ActivityScreensProps {
   isReviewMode: boolean;
   isLibraryMode: boolean;
   isIndependentStudy?: boolean;
-  activeQuizMode: QuizScreenProps['mode'] | null;
   direction: number;
   onClose: () => void;
   onWritingClose: () => void;
@@ -58,7 +55,6 @@ export function ActivityScreens({
   isReviewMode,
   isLibraryMode,
   isIndependentStudy = false,
-  activeQuizMode,
   direction,
   onClose,
   onWritingClose,
@@ -77,7 +73,6 @@ export function ActivityScreens({
   const ListeningScreen = getPracticeScreen('listening');
   const QuizScreen = getPracticeScreen('quiz');
   const WritingScreen = getPracticeScreen('writing');
-  const PinyinScreen = getPracticeScreen('pinyin');
   const ToneScreen = getPracticeScreen('tones');
   const SentencesScreen = getPracticeScreen('sentences');
   // The activity the session opened with skips its entrance; once the user switches away it is
@@ -88,7 +83,7 @@ export function ActivityScreens({
 
   // The quiz picker brings its own entrance (from Cards done, or the dock's quiz button growing into it).
   const quizFormat = useAppStore((state) => state.quizFormat);
-  const picksQuiz = Boolean(quizTypes) || (quizFormat === 'mixed' && (activeQuizMode ?? 'choices') === 'choices');
+  const picksQuiz = Boolean(quizTypes) || quizFormat === 'mixed';
   const instant = picksQuiz && activeActivity === 'quiz';
   const deck = { activeBookId, selectedLessons, isReviewDeck: isReviewMode, isLibraryDeck: isLibraryMode };
   const next = { onContinue, continueLabel };
@@ -122,7 +117,6 @@ export function ActivityScreens({
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="quiz" direction={direction} instant={instant} className={edgeInsetClassName}>
           <QuizScreen
             {...deck}
-            mode={activeQuizMode ?? 'choices'}
             quizTypes={quizTypes}
             sessionDeck={sessionDeck}
             sessionStats={sessionStats}
@@ -142,12 +136,6 @@ export function ActivityScreens({
       {activeActivity === 'tones' && ToneScreen && (
         <AnimatedActivityScreen skipEnter={firstKey} activityKey="tones" direction={direction} className={edgeInsetClassName}>
           <ToneScreen {...deck} onClose={onClose} {...next} />
-        </AnimatedActivityScreen>
-      )}
-
-      {activeActivity === 'pinyin' && PinyinScreen && (
-        <AnimatedActivityScreen skipEnter={firstKey} activityKey="pinyin" direction={direction} className={edgeInsetClassName}>
-          <PinyinScreen {...deck} onClose={onClose} {...next} />
         </AnimatedActivityScreen>
       )}
 

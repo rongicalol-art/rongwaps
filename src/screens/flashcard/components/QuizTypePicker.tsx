@@ -13,7 +13,7 @@ const TYPES: ReadonlyArray<{ id: QuizTypeId; label: string }> = [
   { id: 'listen', label: 'Listen' },
   { id: 'hanzi', label: 'Characters' },
   { id: 'match', label: 'Match pairs' },
-  { id: 'true-false', label: 'True or false' },
+  { id: 'pinyin', label: 'Pinyin (typing)' },
   { id: 'build', label: 'Build the word' },
 ];
 
@@ -39,7 +39,7 @@ interface QuizTypePickerProps {
   entrance: QuizPickerEntrance;
   /** The quiz's words: only types at least one of them can take are offered, and Mixed's cards show one. */
   deck: readonly Flashcard[];
-  /** Start with the picked types; [] means Mixed (every type). */
+  /** Start with the picked types; [] means Mixed (tap formats). */
   onStart: (types: QuizTypeId[]) => void;
   /** Exposes Start to a parent that owns the keyboard (Cards done). */
   startRef?: MutableRefObject<() => void>;
@@ -105,11 +105,9 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef, summary }: Q
     setPlays((current) => ({ ...current, [id]: (current[id] ?? 0) + 1 }));
   };
 
-  const toggle = (id: QuizTypeId) => setPicked((current) => {
-    const next = current.includes(id) ? current.filter((type) => type !== id) : [...current, id];
-    // None, or every offered type, is just Mixed.
-    return next.length === types.length ? [] : next;
-  });
+  const toggle = (id: QuizTypeId) => setPicked((current) =>
+    current.includes(id) ? current.filter((type) => type !== id) : [...current, id],
+  );
 
   const start = () => {
     const root = rootRef.current;
@@ -134,6 +132,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef, summary }: Q
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== ' ' && event.key !== 'Enter') return;
+      if (event.target instanceof HTMLElement && event.target.closest('button')) return;
       event.preventDefault();
       if (!event.repeat) startNow.current();
     };

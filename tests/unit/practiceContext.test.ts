@@ -16,7 +16,7 @@ function navigation() {
   return actions;
 }
 
-const modes: ActivityType[] = ['pinyin', 'writing', 'sentences', 'tones', 'listening', 'flashcards', 'quiz'];
+const modes: ActivityType[] = ['writing', 'sentences', 'tones', 'listening', 'flashcards', 'quiz'];
 
 test('lesson launch context survives reload and mode switches without a lesson window', () => {
   for (const mode of modes) {
@@ -41,7 +41,7 @@ test('lesson launch context survives reload and mode switches without a lesson w
 
 test('independent launch stays independent even with one selected lesson and an open lesson window', () => {
   useAppStore.setState({ ...useAppStore.getInitialState(), activeBookId: 1, isLessonWindowOpen: true,
-    selectedLessonParts: { '1:2': [1] }, lastActivity: 'pinyin' });
+    selectedLessonParts: { '1:2': [1] }, lastActivity: 'tones' });
   navigation().startPathPractice();
   assert.equal(useAppStore.getState().practiceContext, 'independent');
   useAppStore.getState().setActiveActivity('writing');
@@ -50,11 +50,11 @@ test('independent launch stays independent even with one selected lesson and an 
 
 test('review, library, close and account switch cannot retain lesson context', () => {
   for (const destination of ['flashcards-library', 'flashcards-review', 'create-card', null] as const) {
-    useAppStore.getState().setActiveActivity('pinyin', 'lesson');
+    useAppStore.getState().setActiveActivity('tones', 'lesson');
     useAppStore.getState().setActiveActivity(destination);
     assert.notEqual(useAppStore.getState().practiceContext, 'lesson');
   }
-  useAppStore.getState().setActiveActivity('pinyin', 'lesson');
+  useAppStore.getState().setActiveActivity('tones', 'lesson');
   useAppStore.getState().resetAccountScopedState();
   assert.equal(useAppStore.getState().practiceContext, null);
 });

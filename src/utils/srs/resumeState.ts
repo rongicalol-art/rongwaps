@@ -1,4 +1,5 @@
 import { reviewSessionKey } from './sessionProgress';
+import { normalizeQuizTypes } from '../../../shared/quizRace';
 import type { QuizTypeId } from '../vocabulary/quizDirector';
 
 export type ResumeKind = 'cards' | 'review' | 'quiz';
@@ -36,26 +37,28 @@ export function getFlashcardResume(sessionKey: string, saved: Saved): ResumeStat
 /** The quiz's own saved place for a deck; the flashcards keep the plain deck key, so the two never overwrite each other. */
 export const quizSessionKey = (deckKey: string) => `${deckKey}|quiz`;
 
-/** What a quiz saved for this deck: its own key (Mixed / classic), a picked-types key, or the typing quiz. */
+/** What a quiz saved for this deck: its own key (Mixed / classic) or a picked-types key. */
 export function getQuizResume(sessionKey: string, saved: Saved): ResumeState | null {
   const typesPrefix = `${sessionKey}|types:`;
   // A left review round counts even on its first card (index 0); it wins over a plain position.
-  let best: { key: string; index: number; reviewLeft: number } | null = null;
+  let best: { index: number; reviewLeft: number; quizTypes: QuizTypeId[] } | null = null;
   const keys: string[] = [];
   for (const [key, index] of Object.entries(saved.sessionProgressIndex)) {
-    const mine = key === quizSessionKey(sessionKey) || key === `${sessionKey}:typing` || key.startsWith(typesPrefix);
+    const mine = key === quizSessionKey(sessionKey) || key.startsWith(typesPrefix);
     if (!mine || !Number.isSafeInteger(index) || index < 0) continue;
+    const picked = key.startsWith(typesPrefix) ? key.slice(typesPrefix.length).split('+') : [];
+    const quizTypes = normalizeQuizTypes(picked);
+    // A retired selection has no matching question order to resume under its new key.
+    if (picked.join('+') !== quizTypes.join('+')) continue;
     keys.push(key);
     const reviewIds = saved.sessionCardOrder[reviewSessionKey(key)];
     const reviewLeft = reviewIds?.length ? Math.max(1, reviewIds.length - index) : 0;
     // An explicit index 0 means the quiz was opened and saved on its first question.
     // An untouched quiz has no entry at all (the picker does not create a session).
-    if (!best || (reviewLeft && !best.reviewLeft) || (!reviewLeft === !best.reviewLeft && index > best.index)) best = { key, index, reviewLeft };
+    if (!best || (reviewLeft && !best.reviewLeft) || (!reviewLeft === !best.reviewLeft && index > best.index)) best = { index, reviewLeft, quizTypes };
   }
   if (!best) return null;
-  const quizTypes = best.key.startsWith(typesPrefix)
-    ? best.key.slice(typesPrefix.length).split('+').filter(Boolean) as QuizTypeId[]
-    : best.key === quizSessionKey(sessionKey) ? [] : undefined;
+  const { quizTypes } = best;
   if (best.reviewLeft) {
     return { kind: 'review', mode: 'quiz', position: best.index + 1, left: best.reviewLeft, keys, quizTypes };
   }
