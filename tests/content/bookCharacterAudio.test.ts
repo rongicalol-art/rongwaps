@@ -72,3 +72,12 @@ test('reviewed neutral readings use full-word context without substituting citat
   assert.equal(await findMatchingCourseRecording('玫瑰', 'méigui/méiguī'), undefined);
   assert.equal(await findMatchingCourseRecording('人家', 'rénjià'), undefined);
 });
+
+test('recordings that say a different syllable from their name stay out of the sound pack', async () => {
+  const manifest = JSON.parse(await readFile('public/data/pronunciation-audio/manifest.json', 'utf8'));
+  const bank = JSON.parse(await readFile(`public${manifest.path}`, 'utf8'));
+  const { excluded } = JSON.parse(await readFile('content/audio/cns_pronunciation_exclusions.json', 'utf8')) as { excluded: Record<string, string> };
+  assert.ok(Object.keys(excluded).length > 0);
+  for (const key of Object.keys(excluded)) assert.equal(bank.items[key], undefined, `${key} says a different syllable`);
+  for (const key of ['er2', 'er3', 'er4', 'lü2', 'lü3', 'lü4', 'nü3', 'nü4']) assert.ok(bank.items[key], `${key} is the file's real syllable and stays`);
+});

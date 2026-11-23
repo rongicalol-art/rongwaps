@@ -1,0 +1,18 @@
+{
+  "note": "CNS syllable recordings left out of the app's sound pack because the file says a different syllable from its name. Measured 2026-11-23 with Praat (formants over the voiced part) against the book's own teacher recordings, after the owner heard e as er. A character whose reading has no recording is said by the cloud voice with that exact reading.",
+  "excluded": {
+    "e1": "Says er: third formant about 2,100 Hz like er5; e in 鵝 é, 餓 è (book) and ge, de, he, ke sits at 2,600-3,500 Hz.",
+    "e2": "Same file as er2 in the source set; says er.",
+    "e3": "Same file as er3 in the source set; says er.",
+    "e4": "Same file as er4 in the source set; says er.",
+    "lu1": "Says lü: second formant about 2,000-2,300 Hz; u in 錄 lù (book), bu, wu falls to 600-1,000 Hz.",
+    "lu2": "Same file as lü2 in the source set; says lü.",
+    "lu3": "Same file as lü3 in the source set; says lü.",
+    "lu4": "Same file as lü4 in the source set; says lü.",
+    "nu2": "Says nü: second formant about 2,700 Hz.",
+    "nu3": "Same file as nü3 in the source set; says nü.",
+    "nu4": "Same file as nü4 in the source set; says nü.",
+    "luan2": "Starts with ü like yuan (second formant about 2,000-2,400 Hz); guan and duan start near 800-1,000 Hz.",
+    "luan3": "Starts with ü like yuan (second formant about 1,800-2,200 Hz); guan and duan start near 800-1,000 Hz."
+  }
+}
