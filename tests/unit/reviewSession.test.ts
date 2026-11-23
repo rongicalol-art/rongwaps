@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
-import { buildReviewSession, REVIEW_SESSION_CAP } from '../../src/utils/srs/reviewSession';
+import { buildReviewSession, isExtraDailyReview, REVIEW_SESSION_CAP } from '../../src/utils/srs/reviewSession';
 import type { SRSData } from '../../src/utils/srs/srsEngine';
 
 function card(id: string): Flashcard {
@@ -77,4 +77,15 @@ test('under the cap the full due pool is returned in priority order', () => {
 
 test('an empty due pool yields an empty session', () => {
   assert.deepEqual(buildReviewSession([], {}), []);
+});
+
+test('only "Review more" after a finished day is extra; every other review deck counts as the daily review', () => {
+
+  const plan = { day: '2026-11-23', cardIds: ['a', 'b'], answers: {}, activeMs: 0, completed: false };
+  assert.equal(isExtraDailyReview(null, null), false);
+  assert.equal(isExtraDailyReview(plan, ['c']), false, 'today not done yet: still the daily review');
+  const done = { ...plan, completed: true };
+  assert.equal(isExtraDailyReview(done, null), false);
+  assert.equal(isExtraDailyReview(done, ['a', 'b']), false, 'reopening today\'s own words');
+  assert.equal(isExtraDailyReview(done, ['c', 'd']), true);
 });
