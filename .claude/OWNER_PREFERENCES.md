@@ -19,6 +19,8 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - Helper content that isn't the main task (hints, examples) sits behind a quiet toggle. Settings are plain label-and-control pairs. Longer study extras open from a button into a sheet (side panel on desktop) rather than unfolding into the screen: the owner picked the lesson test's Script sheet over a speaker that opens in place. In the mock test's Fix round, the feedback bar shows the reason. The answer text, pinyin, and translation belong in Script.
 - On a long review page (the test's Scripts & answers), pinyin and English start hidden behind Pinyin and English buttons. Pinyin goes over the characters as in the Reader, never on a line of its own, and a line's play button sits at the end of its text, not in a column of its own: both pushed the text onto extra lines ("too much space").
 - A button that can't be used is clutter: if a mode has no content, leave the action out instead of showing it disabled.
+- An icon-only button hides what it does (phones have no hover): the lesson's Practice button carries its word. Beside the primary it stays plain white, so Start is plainly the one coloured action; a gold edge there competed with it.
+- End screens keep few buttons: one suggested next step, Continue, and Review missed only when words were missed. "Study all again" after a quiz was cut as one too many.
 
 **Tactile, not flat.**
 - Anything you can press looks like a real button: a border plus a solid, darker bottom edge that compresses when pressed. Selected = book accent border with a soft fill. A plain row reads as "not a button".

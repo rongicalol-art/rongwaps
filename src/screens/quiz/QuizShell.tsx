@@ -2,7 +2,7 @@ import React, { Fragment, useCallback, useEffect, useLayoutEffect, useMemo, useR
 import { SAMPLE_BOOKS } from '../../data/books';
 import { audioService } from '../../services/audioService';
 import type { Flashcard } from '../../data/flashcards';
-import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, type SessionStats } from '../../features/practice';
+import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, useSessionNextStep, type SessionStats } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
@@ -140,6 +140,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     activeCards, currentIndex, currentCard, completed, handleCheck, resumedReview, resetAll, reviewUnlearned, practiceCards, missedCards,
     unlearnedCount, learnedCount, isShuffled, toggleShuffle, answerAudioPlaying = false, resetNonce = 0,
   } = session;
+  const nextStep = useSessionNextStep();
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const quizFormat = useAppStore((state) => state.quizFormat);
@@ -290,7 +291,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         onContinue={onContinue ?? onEnd}
         onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
         missedCount={tricky.length}
-        onStudyAllAgain={restart}
+        nextStep={nextStep}
         celebrateStreak
       />
     );
