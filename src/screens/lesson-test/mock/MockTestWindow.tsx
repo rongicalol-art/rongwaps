@@ -22,10 +22,11 @@ export function MockTestWindow({ onClose }: { onClose: () => void }) {
   const last = useAppStore((state) => state.mockTests[0] ?? null);
   // Read when the start screen shows: a test in progress is saved as it goes.
   const saved = useMemo(() => (data && !attempt ? savedMockAttempt(data) : null), [attempt, data]);
-  const kinds = useMemo<MockKind[]>(() => (data ? ['adaptive', ...RECIPE_BANDS.filter((band) => bandOpen(data.pool, band))] : []), [data]);
+  const kinds = useMemo<MockKind[]>(() => (data?.pool.length ? ['adaptive', ...RECIPE_BANDS.filter((band) => bandOpen(data.pool, band))] : []), [data]);
   const start = (config: MockConfig) => {
     if (!data) return;
     const next = newMockAttempt(data, config);
+    if (!next) return;
     useAppStore.getState().saveMockTestAttempt(next);
     setAttempt(next);
   };
@@ -44,7 +45,7 @@ export function MockTestWindow({ onClose }: { onClose: () => void }) {
       <div className="relative flex min-h-0 flex-1 flex-col">
         {isLoading ? (
           <LoadingScreen tone="practice" message="Loading test" />
-        ) : !data ? (
+        ) : !data || kinds.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
             <p className="text-lg font-black text-ui-ink-strong">{error ? 'The test didn’t load.' : 'No test yet.'}</p>
             <div className="flex w-full max-w-xs flex-col gap-2">

@@ -145,8 +145,12 @@ function itemIndexOf(source: LessonTestLesson | TestItemIndex): TestItemIndex {
  * points at choices that exist (a pack update can drop a choice). The last test can be read back only then.
  */
 export function planFitsLesson(lesson: LessonTestLesson, plan: { items?: unknown } | undefined): plan is LessonTestPlan {
+  return planFitsItems(lessonItemIndex(lesson), plan);
+}
+
+/** The same check against any set of questions (a mock test's pool). */
+export function planFitsItems(byId: TestItemIndex, plan: { items?: unknown } | undefined): plan is LessonTestPlan {
   if (!plan || !Array.isArray(plan.items)) return false;
-  const byId = lessonItemIndex(lesson);
   const fits = (order: unknown, size: number) => Array.isArray(order) && order.length === size && order.every((index) => Number.isInteger(index) && index >= 0 && index < size);
   return (plan.items as PlannedItem[]).every((planned) => {
     const item = byId.get(planned?.itemId);

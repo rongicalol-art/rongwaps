@@ -93,3 +93,21 @@ test('the test stops at the limit, or early once the estimate is sure', () => {
   assert.equal(adaptiveTestDone(21, 0.2, settings), false);
   assert.equal(adaptiveTestDone(30, 0.5, settings), false);
 });
+
+test('a learner far below the easiest questions is not mistaken for a sure estimate', () => {
+  const answers = Array.from({ length: 22 }, () => ({ difficulty: -7.1, correct: false }));
+  const estimate = estimateAbility(answers, settings);
+  assert.ok(estimate.ability < -9, `ability ${estimate.ability.toFixed(2)}`);
+  assert.ok(estimate.error > 0.35, `error ${estimate.error.toFixed(2)}`);
+  assert.equal(adaptiveTestDone(22, estimate.error, settings), false);
+  const long = estimateAbility(Array.from({ length: 400 }, (_, i) => ({ difficulty: 0, correct: i % 2 === 0 })), settings);
+  assert.ok(Math.abs(long.ability) < 0.2 && long.error > 0);
+});
+
+test('equally close questions are picked evenly, one per family on the shortlist', () => {
+  const pool: AdaptiveCandidate[] = ['a', 'b', 'c', 'd', 'e'].flatMap((family) => [1, 2].map((version) => ({ id: `${family}-${version}`, difficulty: 0, questions: 1, family })));
+  const rng = createQuizRng('ties');
+  const families = new Set<string>();
+  for (let i = 0; i < 200; i += 1) families.add(pickAdaptiveNext(pool, new Set(), 0, { shortlist: 4 }, rng)!.family!);
+  assert.deepEqual([...families].sort(), ['a', 'b', 'c', 'd', 'e']);
+});

@@ -133,3 +133,42 @@ test('a start near the learner\'s level changes the first question, not the resu
   const low = startMockPlan(pool, config, {}, 'start', -5);
   assert.ok(byId.get(low.items[0].itemId)!.difficulty < byId.get(official.items[0].itemId)!.difficulty - 2);
 });
+
+test('an adaptive skill with no right answer scores 0 and earns no level, whatever the start', () => {
+  const config: MockConfig = { kind: 'adaptive', parts: ['listening'], length: 'quick' };
+  const plan = startMockPlan(pool, config, {}, 'blank', 2);
+  const result = scoreMockTest(pool, config, plan, {}, 2);
+  assert.deepEqual([result.skills.listening?.score, result.level], [0, null]);
+});
+
+test('an adaptive skill cut short owes its unasked questions', () => {
+  const config: MockConfig = { kind: 'adaptive', parts: ['reading'], length: 'full' };
+  let plan = startMockPlan(pool, config, {}, 'short');
+  const answers: Record<string, number> = {};
+  // A few right answers, then the clock runs out.
+  for (let step = 0; step < 3; step += 1) {
+    for (const planned of plan.items) for (const question of byId.get(planned.itemId)!.item.questions) answers[question.id] = question.key;
+    plan = extendAdaptivePlan(pool, config, plan, answers, {}).plan;
+  }
+  const cut = scoreMockTest(pool, config, plan, answers);
+  const asked = questions(plan);
+  assert.ok(asked < 22, `asked ${asked}`);
+  // All right so far, yet far below what the same answers would earn on their own.
+  assert.ok(cut.skills.reading!.score < 480, `score ${cut.skills.reading!.score}`);
+});
+
+test('a band opens on questions one test can really show, not on a slot\'s spare versions', () => {
+  const listening = pool.filter((entry) => entry.band === 'B' && entry.part === 'listening');
+  const reading = pool.filter((entry) => entry.band === 'B' && entry.part === 'reading');
+  // Sixteen slots of three versions each: 48 versions, 16 a test can show.
+  const thin = listening.filter((entry) => entry.item.questions.length === 1).slice(0, 16)
+    .flatMap((entry, slot) => [1, 2, 3, 4].map((version) => ({ ...entry, family: `slot-${slot}`, item: { ...entry.item, id: `${entry.item.id}-v${version}` } })));
+  assert.equal(bandOpen([...thin, ...reading], 'B'), false);
+  assert.equal(bandOpen([...listening, ...reading], 'B'), true);
+});
+
+test('the adaptive test opens with different kinds of question, not always the same one', () => {
+  const config: MockConfig = { kind: 'adaptive', parts: ['listening'], length: 'quick' };
+  const first = new Set(Array.from({ length: 40 }, (_, run) => byId.get(startMockPlan(pool, config, {}, `open-${run}`).items[0].itemId)!.family));
+  assert.ok(first.size >= 3, `${first.size} families`);
+});

@@ -65,7 +65,7 @@ export function extendAdaptivePlan(
     if (adaptiveTestDone(given.length, estimate.error, settings)) continue;
     const candidates = pool
       .filter((entry) => entry.part === part && !usedFamilies.has(entry.family))
-      .map((entry) => ({ id: entry.item.id, difficulty: entry.difficulty, questions: entry.item.questions.length, seen: seen[entry.item.id] }));
+      .map((entry) => ({ id: entry.item.id, difficulty: entry.difficulty, questions: entry.item.questions.length, seen: seen[entry.item.id], family: entry.family }));
     const rng = createQuizRng(`${plan.key}:${plan.seed}:${plan.items.length}`);
     const next = pickAdaptiveNext(candidates, new Set<string>(), estimate.ability, settings, rng);
     const entry = next && byId.get(next.id);
@@ -116,6 +116,7 @@ export function poolCeiling(pool: readonly PoolEntry[], parts: readonly LessonTe
  * A finished (or abandoned) run's result. A band test gives each skill out of 80 and its level by the pass score,
  * and both skills together by the certificate rule; the adaptive test gives 0 to 700 per skill and the lower skill's
  * level. A level above the pool's hardest questions cannot be told apart, so the level stops there and is marked.
+ * A skill with no right answer scores 0 and earns no level.
  */
 export function scoreMockTest(pool: readonly PoolEntry[], config: MockConfig, plan: LessonTestPlan, answers: Record<string, number>, startAbility?: number): MockResult {
   const byId = poolEntryIndex(pool);
@@ -125,8 +126,15 @@ export function scoreMockTest(pool: readonly PoolEntry[], config: MockConfig, pl
     const given = skillAnswers(byId, plan, answers, part);
     const counts = { correct: given.filter((answer) => answer.correct).length, total: given.length };
     if (config.kind === 'adaptive') {
-      const { score, low, high, level } = scoreAdaptiveSkill(part, estimateAbility(given, adaptiveSettings(config, part, startAbility)));
-      skills[part] = { ...counts, score, low, high, level };
+      const settings = adaptiveSettings(config, part, startAbility);
+      // A skill cut short (the clock ran out) owes questions: they count as asked at the level reached and missed,
+      // as a blank does. Otherwise a few answers and the starting guess would decide the score.
+      const owed = Math.max(0, settings.minQuestions - given.length);
+      const reached = estimateAbility(given, settings).ability;
+      const scored = owed ? [...given, ...Array.from({ length: owed }, () => ({ difficulty: reached, correct: false }))] : given;
+      const { score, low, high, level } = scoreAdaptiveSkill(part, estimateAbility(scored, settings));
+      // No right answer earns no level, as on a band test.
+      skills[part] = counts.correct ? { ...counts, score, low, high, level } : { ...counts, score: 0, low: 0, high: 0, level: null };
     } else {
       const { score, low, high, level } = scoreBandSkill(config.kind, part, given);
       skills[part] = { ...counts, score, low, high, level };

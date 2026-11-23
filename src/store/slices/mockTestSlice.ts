@@ -122,7 +122,12 @@ function validRecord(value: unknown): MockTestRecord | null {
 export function mergeMockTests(local: MockTestRecord[], cloud: unknown): { mockTests?: MockTestRecord[] } {
   if (!Array.isArray(cloud)) return {};
   const have = new Set(local.map((record) => record.at));
-  const theirs = cloud.map(validRecord).filter((record): record is MockTestRecord => record !== null && !have.has(record.at));
+  const theirs: MockTestRecord[] = [];
+  for (const record of cloud.map(validRecord)) {
+    if (!record || have.has(record.at)) continue;
+    have.add(record.at);
+    theirs.push(record);
+  }
   if (theirs.length === 0) return {};
   const merged = [...local, ...theirs].sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).slice(0, MOCK_TEST_HISTORY);
   // Only tests older than the whole local history came in: nothing changes here.

@@ -83,7 +83,10 @@ function draw(entries: readonly PoolEntry[], wanted: number, seen: Record<string
     const completes = (entry: PoolEntry) => {
       const rest = wanted - count - size(entry);
       if (rest === 0) return true;
-      return canSum(queues.flat().filter((other) => other.family !== entry.family && !taken.has(other.family)).map(size), rest);
+      // One size per family still free: a family's versions cannot both be taken.
+      const free = new Map<string, number>();
+      for (const other of queues.flat()) if (other.family !== entry.family && !taken.has(other.family)) free.set(other.family, Math.max(free.get(other.family) ?? 0, size(other)));
+      return canSum([...free.values()], rest);
     };
     const index = queue.findIndex((entry) => fits(entry) && (!exact || completes(entry)));
     if (index < 0) {

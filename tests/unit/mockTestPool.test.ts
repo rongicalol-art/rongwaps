@@ -71,3 +71,18 @@ test('the lesson test\'s screens and scorer run a pool plan as they run a lesson
   assert.deepEqual([score.correct, score.total, score.missed.length], [total, total, 0]);
   assert.equal(scoreLessonTest(byId, plan, {}).correct, 0);
 });
+
+test('a paper keeps its length when a slot\'s versions could fool the count', () => {
+  const group = pool.find((entry) => entry.item.questions.length >= 3)!;
+  const sized = (family: string, id: string, size: number): PoolEntry => ({
+    ...group, family, section: 'A:reading:sized', part: 'reading', level: 1,
+    item: { ...group.item, id, questions: group.item.questions.slice(0, size).map((question, index) => ({ ...question, id: `${id}-q${index}` })) },
+  });
+  // Two versions of one slot (2 + 2) must not be counted as a way to make 4.
+  const tricky = [sized('f1', 'a', 2), sized('f2', 'b1', 2), sized('f2', 'b2', 2), sized('f3', 'c', 3), sized('f4', 'd', 3)];
+  for (const seed of ['one', 'two', 'three', 'four', 'five', 'six']) {
+    const plan = planPoolTest(tricky, { key: 'tricky', band: 'A', lines: [{ section: 'A:reading:sized', questions: 6 }] }, ['reading'], {}, seed);
+    const byItem = new Map(tricky.map((entry) => [entry.item.id, entry]));
+    assert.equal(plan.items.reduce((sum, planned) => sum + byItem.get(planned.itemId)!.item.questions.length, 0), 6, seed);
+  }
+});

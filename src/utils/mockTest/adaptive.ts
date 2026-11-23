@@ -34,6 +34,8 @@ export interface AdaptiveCandidate {
   questions: number;
   /** Times this learner has seen it before; seen ones are held back while unseen ones fit. */
   seen?: number;
+  /** Candidates that stand in for each other (versions of one question): the shortlist holds one of them. */
+  family?: string;
 }
 
 export interface AbilityEstimate {
@@ -42,8 +44,10 @@ export interface AbilityEstimate {
   error: number;
 }
 
-const GRID_MIN = -8;
-const GRID_MAX = 8;
+/** Wide enough that the whole score scale (ability -10 to 4) has room on both sides: an estimate pressed against
+ * the grid's edge would look surer than it is. */
+const GRID_MIN = -13;
+const GRID_MAX = 9;
 const GRID_STEP = 0.05;
 /** How far (in difficulty units) one earlier showing pushes a question down the list. */
 const SEEN_PENALTY = 0.75;
@@ -57,18 +61,25 @@ export function estimateAbility(
   answers: readonly AdaptiveAnswer[],
   settings: Pick<AdaptiveSettings, 'priorMean' | 'priorSd'>,
 ): AbilityEstimate {
+  // Log weights, taken relative to the largest, so a long run of answers cannot underflow to zero.
+  const points: Array<[ability: number, log: number]> = [];
+  let top = -Infinity;
+  for (let ability = GRID_MIN; ability <= GRID_MAX + 1e-9; ability += GRID_STEP) {
+    const z = (ability - settings.priorMean) / settings.priorSd;
+    let log = -0.5 * z * z;
+    for (const answer of answers) {
+      // log of the chance of this answer, written so neither end overflows.
+      const gap = answer.correct ? answer.difficulty - ability : ability - answer.difficulty;
+      log -= gap > 30 ? gap : Math.log1p(Math.exp(gap));
+    }
+    points.push([ability, log]);
+    if (log > top) top = log;
+  }
   let total = 0;
   let mean = 0;
   let square = 0;
-  for (let ability = GRID_MIN; ability <= GRID_MAX + 1e-9; ability += GRID_STEP) {
-    const z = (ability - settings.priorMean) / settings.priorSd;
-    // Log weights, so a long run of answers cannot underflow to zero.
-    let log = -0.5 * z * z;
-    for (const answer of answers) {
-      const p = chanceRight(ability, answer.difficulty);
-      log += Math.log(answer.correct ? p : 1 - p);
-    }
-    const weight = Math.exp(log);
+  for (const [ability, log] of points) {
+    const weight = Math.exp(log - top);
     total += weight;
     mean += weight * ability;
     square += weight * ability * ability;
@@ -86,8 +97,9 @@ export function adaptiveTestDone(asked: number, error: number, settings: Adaptiv
 
 /**
  * The next thing to ask: among those not yet used in this run, one of the `shortlist` whose difficulty sits
- * closest to the current ability (a Rasch question tells the most there), unseen ones first. Null when the pool
- * has nothing left.
+ * closest to the current ability (a Rasch question tells the most there), unseen ones first. Equally close ones
+ * come in a random order and the shortlist holds one per family, so the choice is spread over the pool and not
+ * over one question's versions. Null when the pool has nothing left.
  */
 export function pickAdaptiveNext<T extends AdaptiveCandidate>(
   candidates: readonly T[],
@@ -98,9 +110,18 @@ export function pickAdaptiveNext<T extends AdaptiveCandidate>(
 ): T | null {
   const ranked = candidates
     .filter((candidate) => !used.has(candidate.id))
-    .map((candidate) => ({ candidate, distance: Math.abs(candidate.difficulty - ability) + SEEN_PENALTY * (candidate.seen ?? 0) }))
-    .sort((a, b) => a.distance - b.distance || (a.candidate.id < b.candidate.id ? -1 : 1));
-  if (!ranked.length) return null;
-  const shortlist = ranked.slice(0, Math.max(1, settings.shortlist));
-  return shortlist[Math.floor(rng() * shortlist.length)].candidate;
+    .map((candidate) => ({ candidate, distance: Math.abs(candidate.difficulty - ability) + SEEN_PENALTY * (candidate.seen ?? 0), tie: rng() }))
+    .sort((a, b) => a.distance - b.distance || a.tie - b.tie);
+  const size = Math.max(1, settings.shortlist);
+  const shortlist: T[] = [];
+  const families = new Set<string>();
+  for (const { candidate } of ranked) {
+    const family = candidate.family ?? candidate.id;
+    if (families.has(family)) continue;
+    families.add(family);
+    shortlist.push(candidate);
+    if (shortlist.length === size) break;
+  }
+  if (!shortlist.length) return null;
+  return shortlist[Math.floor(rng() * shortlist.length)];
 }

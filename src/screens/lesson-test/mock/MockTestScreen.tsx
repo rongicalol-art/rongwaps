@@ -122,9 +122,23 @@ export function MockTestScreen({ data, attempt, onClose }: MockTestScreenProps) 
   const [answerTime, setAnswerTime] = useState<{ key: string; at: number } | null>(null);
   const openAnswerTime = useCallback(() => setAnswerTime({ key: screenKey, at: Date.now() }), [screenKey]);
   const timer = listening && answerTime?.key === screenKey ? { startedAt: answerTime.at, durationMs: ANSWER_MS } : null;
-  const { next, back } = run;
-  const goNext = useCallback(() => next(clock.usedMs()), [clock, next]);
-  const goBack = useCallback(() => back(clock.usedMs()), [back, clock]);
+  const { next, back, answer, saveClock } = run;
+  const { usedMs } = clock;
+  const goNext = useCallback(() => next(usedMs()), [next, usedMs]);
+  const goBack = useCallback(() => back(usedMs()), [back, usedMs]);
+  const answerNow = useCallback((questionId: string, choice: number | undefined) => answer(questionId, choice, usedMs()), [answer, usedMs]);
+  // The reading clock is saved whenever the test is left (closed, hidden or the tab shut), so no time comes back.
+  useEffect(() => {
+    if (!reading) return undefined;
+    const flush = () => saveClock(usedMs());
+    window.addEventListener('pagehide', flush);
+    document.addEventListener('visibilitychange', flush);
+    return () => {
+      window.removeEventListener('pagehide', flush);
+      document.removeEventListener('visibilitychange', flush);
+      flush();
+    };
+  }, [reading, saveClock, usedMs]);
 
   if (run.stage === 'results' && run.finished) {
     const misses = run.finished.score.missed.length;
@@ -221,7 +235,7 @@ export function MockTestScreen({ data, attempt, onClose }: MockTestScreenProps) 
             audioReady={audioReady}
             script={script}
             firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}
-            onAnswer={isFix ? run.fix.answer : run.answer}
+            onAnswer={isFix ? run.fix.answer : answerNow}
             scriptOpen={scriptOpen}
             onCloseScript={() => setScriptOpen(false)}
             onAudioDone={listening ? openAnswerTime : undefined}

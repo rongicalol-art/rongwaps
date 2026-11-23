@@ -36,3 +36,8 @@ test('what is not a result is left out, and the history keeps its length', () =>
   assert.equal(merged.length, MOCK_TEST_HISTORY);
   assert.equal(merged[0].at, local[0].at);
 });
+
+test('a result listed twice by the other device comes in once', () => {
+  const twice = [record('2026-11-23T10:00:00.000Z'), record('2026-11-23T10:00:00.000Z')];
+  assert.equal(mergeMockTests([], twice).mockTests!.length, 1);
+});

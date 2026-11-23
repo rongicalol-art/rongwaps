@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * The reading part's clock. It runs only while `running` (a reading question is on screen), starts from the time
@@ -33,7 +33,7 @@ export function useReadingClock(running: boolean, startMs: number, limitMs: numb
     };
   }, [limitMs, running]);
 
-  return { leftMs, usedMs: () => used.current() };
+  return { leftMs, usedMs: useCallback(() => used.current(), []) };
 }
 
 /** "58:07". */

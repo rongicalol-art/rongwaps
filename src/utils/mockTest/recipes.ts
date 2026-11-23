@@ -54,7 +54,10 @@ export function recipeQuestions(recipe: MockRecipe, part: LessonTestPart): numbe
 export function bandOpen(pool: readonly PoolEntry[], band: RecipeBand): boolean {
   const full = mockRecipe(band, 'full');
   return (['listening', 'reading'] as const).every((part) => {
-    const have = pool.filter((entry) => entry.band === band && entry.part === part).reduce((sum, entry) => sum + entry.item.questions.length, 0);
+    // One test shows one version of a slot, so a family counts once.
+    const families = new Map<string, number>();
+    for (const entry of pool) if (entry.band === band && entry.part === part) families.set(entry.family, Math.max(families.get(entry.family) ?? 0, entry.item.questions.length));
+    const have = [...families.values()].reduce((sum, questions) => sum + questions, 0);
     return have >= recipeQuestions(full, part);
   });
 }
