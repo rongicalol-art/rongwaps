@@ -45,7 +45,8 @@ export const DailyReviewRow = memo(function DailyReviewRow({ overview, onStart }
               data-tone="review"
               onClick={onStart}
               aria-label={`Daily review, ${detail}`}
-              frontClassName="justify-start gap-3.5 bg-brand-primary-soft px-4 py-3 text-left normal-case tracking-normal hover:bg-brand-primary-wash"
+              // No bottom border on the face: the 5px base alone is the edge, the same thickness as the lesson cards.
+              frontClassName="justify-start gap-3.5 border-b-0 bg-brand-primary-soft px-4 py-3 text-left normal-case tracking-normal hover:bg-brand-primary-wash"
             >
               <img src={calendarIcon} alt="" aria-hidden="true" draggable={false} className="h-11 w-11 shrink-0" />
               <span className="min-w-0 flex-1">
