@@ -5,7 +5,7 @@ import { preloadImages } from '../../utils/browser/preloadAssets';
 export type PlayfulNavIconName =
   | 'learn' | 'dictionary' | 'library' | 'profile' | 'favorite' | 'practiceHub' | 'pinyinPractice'
   | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'studyBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings'
-  | 'meaning' | 'characters' | 'trueFalse' | 'build' | 'tonesPractice' | 'challenge' | 'dialogue';
+  | 'meaning' | 'characters' | 'build' | 'tonesPractice' | 'challenge' | 'dialogue';
 
 interface PlayfulNavIconProps extends ImgHTMLAttributes<HTMLImageElement> {
   name: PlayfulNavIconName;
@@ -41,7 +41,6 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   settings: new URL('../../assets/icons/flat/cog.svg?no-inline', import.meta.url).href,
   meaning: new URL('../../assets/icons/flat/tag.svg?no-inline', import.meta.url).href,
   characters: new URL('../../assets/icons/flat/profile-characters.svg?no-inline', import.meta.url).href,
-  trueFalse: new URL('../../assets/icons/flat/sign-check.svg?no-inline', import.meta.url).href,
   build: new URL('../../assets/icons/flat/brick.svg?no-inline', import.meta.url).href,
 };
 

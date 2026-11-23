@@ -45,7 +45,6 @@ const PRACTICE_ACTIVITIES = new Set([
   'listening',
   'quiz',
   'writing',
-  'pinyin',
   'tones',
   'sentences',
   'flashcards-review',

@@ -3,11 +3,9 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Flashcard } from '../../../data/flashcards';
 import { shuffleItems } from '../../../utils/srs/sessionOrder';
 import { useAppStore } from '../../../store/useAppStore';
-import { isPinyinAnswerAccepted } from '../../../utils/pinyin/pinyinAnswer';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/vocabulary/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
-import { audioService } from '../../../services/audioService';
 
 /**
  * Manages a multiple-choice quiz session.
@@ -112,89 +110,6 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string, review: Q
     isChecked,
     isCorrect,
     answerAudioPlaying,
-    handleCheck,
-    completed,
-    resumedReview: session.resumedReview,
-    resetAll: session.resetAll,
-    practiceCards: session.practiceCards,
-    missedCards: activeCards.filter((card) => session.sessionResults[card.id] === 1 || session.sessionResults[card.id] === 2),
-    reviewUnlearned: session.reviewUnlearned,
-    unlearnedCount: session.unlearnedCount,
-    learnedCount: session.learnedCount,
-    isShuffled: session.isShuffled,
-    toggleShuffle: session.toggleShuffle,
-    progressInfo: session.progressInfo,
-  };
-}
-
-/**
- * Manages a typing-based quiz session where users type the pinyin
- * for each flashcard.
- *
- * Matching ignores tone formatting, punctuation, and spacing. Optional
- * parenthesized syllables may be omitted, and slash-separated readings
- * are treated as alternatives.
- *
- * The check flow is two-phase:
- *   First click → check the answer and show correct/wrong feedback
- *   Second click → advance to the next card (or complete the session)
- */
-export function useQuizTyping(cards: Flashcard[], sessionKey: string, review: QuizReviewOptions = {}) {
-
-  const [input, setInput] = useState('');
-  const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
-  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
-
-  const session = useCardSession(cards, sessionKey, {
-    requeueMissed: false, daily: review.daily, source: review.daily ? 'daily' : undefined,
-    onSessionReset: () => {
-      audioService.stop();
-      setInput('');
-      setStatus('idle');
-    },
-    onAnswerStateReset: () => {
-      audioService.stop();
-      setInput('');
-      setStatus('idle');
-    },
-  });
-  const { activeCards, currentIndex, currentCard, completed } = session;
-
-  useAudioSessionLifecycle(completed);
-
-  const handleCheck = (answerValue = input) => {
-    if (!answerValue.trim()) return;
-
-    if (status !== 'idle') {
-      const outcome = session.advanceOrComplete();
-      if (outcome === 'advanced') {
-        session.clearGrading();
-        setInput('');
-        setStatus('idle');
-      }
-      return;
-    }
-
-    if (!currentCard) return;
-    if (!session.beginGrading()) return;
-
-    const isCorrect = isPinyinAnswerAccepted(answerValue, currentCard.pinyin);
-    if (isCorrect) {
-      void audioService.playCard(currentCard, pronunciationRate, { overlap: true });
-    }
-
-    setStatus(isCorrect ? 'correct' : 'wrong');
-    session.recordAnswer(currentCard, isCorrect ? 4 : 2);
-  };
-
-  return {
-    activeCards,
-    currentIndex,
-    currentCard,
-    input,
-    handleInputChange: setInput,
-    status,
-    answerAudioPlaying: false,
     handleCheck,
     completed,
     resumedReview: session.resumedReview,

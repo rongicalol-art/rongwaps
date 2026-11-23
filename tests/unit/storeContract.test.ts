@@ -35,7 +35,6 @@ const EXPECTED_PERSISTED_KEYS = [
   'activeTab',
   'activeActivity',
   'practiceContext',
-  'activeQuizMode',
   'isReviewMode',
   'selectedBooks',
   'selectedLessonParts',
@@ -254,4 +253,17 @@ test('persist version 3 migrates all older script choices to traditional without
     assert.equal(migrated?.characterFont, 'kai');
     assert.equal(migrated?.showPinyin, false);
   }
+});
+
+test('hydration retires the standalone Pinyin activity and keeps its quiz prompt preference', () => {
+  const { merge } = useAppStore.persist.getOptions();
+  const current = useAppStore.getState();
+  const restored = merge?.({
+    activeActivity: 'pinyin', lastActivity: 'pinyin', activeQuizMode: 'typing', practiceContext: 'lesson', typingPromptType: 'meaning',
+  }, current);
+  assert.equal(restored?.activeActivity, null);
+  assert.equal(restored?.practiceContext, null);
+  assert.equal(restored?.lastActivity, 'quiz');
+  assert.equal(restored?.typingPromptType, 'meaning');
+  assert.equal(Object.hasOwn(restored ?? {}, 'activeQuizMode'), false);
 });

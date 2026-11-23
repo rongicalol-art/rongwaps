@@ -1,15 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { QuizChoices } from './QuizChoices';
 import { cancelQuizLaunch } from './quizShuffle';
 import { QuizMixed } from './QuizMixed';
-import { QuizTyping } from './QuizTyping';
 import { useCountsAsDailyReview, useReviewDistractors } from '../../hooks/useDailyReview';
 import { useAppStore } from '../../store/useAppStore';
 import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import { quizSessionKey } from '../../utils/srs/resumeState';
-import type { QuizMode } from '../../types/models';
 import type { SessionStats } from '../../features/practice';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { QuizTypePicker, type QuizPickerEntrance } from '../flashcard';
@@ -25,7 +22,6 @@ interface QuizScreenProps {
   onClose?: () => void;
   onContinue?: () => void;
   continueLabel?: string;
-  mode?: QuizMode;
   /** Picked on Cards done ([] = Mixed): the mixed quiz plans only these types. Null when opened another way. */
   quizTypes?: readonly QuizTypeId[] | null;
   /** The flashcard round this quiz follows; Session complete merges it with the quiz result. */
@@ -48,7 +44,6 @@ export function QuizScreen({
   onClose,
   onContinue,
   continueLabel,
-  mode = 'choices',
   quizTypes = null,
   sessionStats = null,
   sessionDeck,
@@ -91,7 +86,7 @@ export function QuizScreen({
   // The quiz never shares the flashcards' saved place: its own key, and each pick keeps its own progress.
   const quizKey = quizSessionKey(sessionKey);
   const mixedKey = race ? race.sessionKey : picked?.length ? `${sessionKey}|types:${picked.join('+')}` : quizKey;
-  const mixed = mode === 'choices' && quizFormat === 'mixed';
+  const mixed = quizFormat === 'mixed';
 
 
   if (isLoading || reviewOptions === null) {
@@ -101,66 +96,46 @@ export function QuizScreen({
   return (
     <div className="absolute inset-0 z-content bg-transparent w-full flex flex-col overflow-hidden">
       <div className="flex-1 w-full mx-auto relative px-0 flex flex-col">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={mode}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.1 }}
-            className="absolute inset-0 z-content flex flex-col bg-transparent overflow-hidden"
-          >
-            {mode === 'choices' && picked ? (
-              <QuizMixed
-                activeBookId={activeBookId}
-                cards={cards}
-                sessionKey={mixedKey}
-                types={picked}
-                seed={race?.seed}
-                shareable={!race && !isLibraryDeck && !isReviewDeck}
-                {...review}
-                sessionStats={sessionStats}
-                onEnd={onClose || (() => {})}
-                onContinue={onContinue}
-                continueLabel={continueLabel}
-              />
-            ) : mixed ? (
-              <div className="absolute inset-0 pt-12">
-                <div className="relative h-full">
-                  <PickerHeader />
-                  <QuizTypePicker
-                    entrance={entrance}
-                    deck={cards}
-                    summary={selectedLessons.length > 1 ? `${selectedLessons.length} lessons · ${cards.length} words` : undefined}
-                    onStart={setPicked}
-                  />
-                </div>
+        <div className="absolute inset-0 z-content flex flex-col bg-transparent overflow-hidden">
+          {picked ? (
+            <QuizMixed
+              activeBookId={activeBookId}
+              cards={cards}
+              sessionKey={mixedKey}
+              types={picked}
+              seed={race?.seed}
+              shareable={!race && !isLibraryDeck && !isReviewDeck}
+              {...review}
+              sessionStats={sessionStats}
+              onEnd={onClose || (() => {})}
+              onContinue={onContinue}
+              continueLabel={continueLabel}
+            />
+          ) : mixed ? (
+            <div className="absolute inset-0 pt-12">
+              <div className="relative h-full">
+                <PickerHeader />
+                <QuizTypePicker
+                  entrance={entrance}
+                  deck={cards}
+                  summary={selectedLessons.length > 1 ? `${selectedLessons.length} lessons · ${cards.length} words` : undefined}
+                  onStart={setPicked}
+                />
               </div>
-            ) : mode === 'choices' ? (
-              <QuizChoices
-                activeBookId={activeBookId}
-                cards={cards}
-                {...review}
-                sessionKey={quizKey}
-                sessionStats={sessionStats}
-                onEnd={onClose || (() => {})}
-                onContinue={onContinue}
-                continueLabel={continueLabel}
-              />
-            ) : (
-              <QuizTyping
-                activeBookId={activeBookId}
-                cards={cards}
-                {...review}
-                sessionKey={`${sessionKey}:typing`}
-                sessionStats={sessionStats}
-                onEnd={onClose || (() => {})}
-                onContinue={onContinue}
-                continueLabel={continueLabel}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
+            </div>
+          ) : (
+            <QuizChoices
+              activeBookId={activeBookId}
+              cards={cards}
+              {...review}
+              sessionKey={quizKey}
+              sessionStats={sessionStats}
+              onEnd={onClose || (() => {})}
+              onContinue={onContinue}
+              continueLabel={continueLabel}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

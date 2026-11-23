@@ -4,9 +4,9 @@
  */
 export const LANDING_META = {
   title: "Modern Chinese (時代華語) Study App · Ron's Mandarin",
-  description: 'Free companion for Modern Chinese (時代華語): read-along lessons, grammar, book exercises, flashcards, memory hooks & TOCFL mock tests.',
+  description: 'Free companion for Modern Chinese (時代華語): read-along lessons, grammar, book exercises, flashcards, memory hooks & TOCFL-style mock tests.',
   /** Shorter text for link-preview cards, which cut off around 125 characters. */
-  socialDescription: 'Read-along lessons, grammar, book exercises, flashcards and TOCFL mock tests for Modern Chinese (時代華語). Free.',
+  socialDescription: 'Read-along lessons, grammar, book exercises, flashcards and TOCFL-style mock tests for Modern Chinese (時代華語). Free.',
 };
 
 export type DemoId = 'cards' | 'quiz' | 'tones' | 'dictionary' | 'grammar' | 'party' | 'characters';
@@ -54,7 +54,7 @@ export const FAQ: { q: string; a: string }[] = [
   { q: 'Is it free?', a: 'Yes. No ads, no paid plan.' },
   { q: 'Who can join?', a: 'Anyone 18 or older with a Google account.' },
   { q: 'Do I need the book?', a: 'It’s made to be used with your own copy of Modern Chinese (時代華語), so please buy it. The app adds audio, flashcards and practice around each lesson.' },
-  { q: 'Is there a test after each lesson?', a: 'Yes, a TOCFL-style mock test with listening and reading. Book 1 and the first lessons of Book 3 have one now, with more on the way. Words you miss go back into your reviews.' },
+  { q: 'Is there a test after each lesson?', a: 'Yes, a TOCFL-style mock test with listening and reading, for every lesson in Books 1 to 3. Words you miss go back into your reviews.' },
   { q: 'Can I study with other people?', a: 'Yes. Study together shows who else is studying and lets you race each other in quick quizzes.' },
   { q: 'Does it have Chinese flashcards?', a: 'Yes. Traditional Chinese flashcards with Taiwan audio for every lesson, plus quizzes, tones and grammar.' },
   { q: 'Which books does it cover?', a: 'Modern Chinese (時代華語). Books 1 to 3 are open in the beta, with Book 4 coming when ready.' },

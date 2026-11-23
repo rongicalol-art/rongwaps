@@ -56,6 +56,8 @@ test('the better score wins; the same score goes to the faster run', () => {
 test('a challenge card from the database is checked before it is played', () => {
   const card = { name: 'Mia', color: 'jade', selection: { book: 1, lessons: { 5: [1, 2, 3] }, types: ['meaning'] }, correct: 2, total: 3, run: [1, 2, 3], mine: false, friends: true };
   assert.deepEqual(parseChallengeLink('K7Q2MXAB', card), { code: 'K7Q2MXAB', ...card, selection: { book: 1, lessons: { 5: [1, 2, 3] }, types: ['meaning'] } });
+  const legacy = { ...card, selection: { ...card.selection, types: ['true-false', 'typing'] } };
+  assert.deepEqual(parseChallengeLink('K7Q2MXAB', legacy)?.selection.types, ['pinyin']);
   assert.equal(parseChallengeLink('K7Q2MXAB', null), null);
   assert.equal(parseChallengeLink('K7Q2MXAB', { ...card, run: [3, 2, 1] }), null);
   assert.equal(parseChallengeLink('K7Q2MXAB', { ...card, correct: 4 }), null);

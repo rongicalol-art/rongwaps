@@ -5,7 +5,6 @@ import type { QuizScreen } from '../quiz';
 import type { ToneScreen } from '../tones';
 import type { WritingScreen } from '../writing';
 import type { SentencesScreen } from '../sentences';
-import type { PinyinScreen } from '../pinyin';
 import type { ActivityType } from '../../types/models';
 
 /**
@@ -19,7 +18,6 @@ interface PracticeScreens {
   listening: typeof ListeningScreen;
   quiz: typeof QuizScreen;
   writing: typeof WritingScreen;
-  pinyin: typeof PinyinScreen;
   tones: typeof ToneScreen;
   sentences: typeof SentencesScreen;
 }
@@ -30,7 +28,6 @@ const loaders: { [K in PracticeScreenKey]: () => Promise<PracticeScreens[K]> } =
   listening: () => import('../listening').then((m) => m.ListeningScreen),
   quiz: () => import('../quiz').then((m) => m.QuizScreen),
   writing: () => import('../writing').then((m) => m.WritingScreen),
-  pinyin: () => import('../pinyin').then((m) => m.PinyinScreen),
   tones: () => import('../tones').then((m) => m.ToneScreen),
   sentences: () => import('../sentences').then((m) => m.SentencesScreen),
 };
@@ -40,7 +37,7 @@ const pending: Partial<Record<PracticeScreenKey, Promise<void>>> = {};
 
 export function practiceScreenKey(activity: ActivityType): PracticeScreenKey | null {
   if (activity === 'flashcards' || activity === 'flashcards-library' || activity === 'flashcards-review') return 'flashcards';
-  if (activity === 'listening' || activity === 'quiz' || activity === 'writing' || activity === 'pinyin' || activity === 'tones' || activity === 'sentences') return activity;
+  if (activity === 'listening' || activity === 'quiz' || activity === 'writing' || activity === 'tones' || activity === 'sentences') return activity;
   return null;
 }
 

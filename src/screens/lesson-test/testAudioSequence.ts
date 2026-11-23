@@ -26,10 +26,10 @@ const BAND_B_TURN_GAP_MS = 100;
  * Books whose dialogue clips are Yating's takes as they came (owner's pick by ear, 2026-11-19): each keeps its own
  * ≈ 0.35 s of silence at the end, so the next speaker follows with no added gap.
  */
-const NATIVE_EDGE_BOOKS = new Set([2]);
+const NATIVE_EDGE_BOOKS = new Set([2, 3]);
 
 /** The silence between two speakers' turns in one test. */
-export function turnGapMs(lesson: Pick<LessonTestLesson, 'bookId' | 'band'>): number {
+export function turnGapMs(lesson: Pick<LessonTestLesson, 'bookId' | 'band'> & { lessonId?: number }): number {
   if (NATIVE_EDGE_BOOKS.has(lesson.bookId)) return 0;
   return lesson.band === 'B' ? BAND_B_TURN_GAP_MS : TURN_GAP_MS;
 }

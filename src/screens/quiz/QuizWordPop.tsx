@@ -26,7 +26,7 @@ export const QuizWordPop: React.FC<{ word: QuizPopWord | null; nonce: string; cl
     setPoppedNonce(nonce);
     setShown({ word, nonce });
   }
-  // The feedback bar takes the same place (a wrong answer), so the pop leaves first.
+  // A visible feedback bar or Check button takes the same space.
   if (clear && shown) setShown(null);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export const QuizWordPop: React.FC<{ word: QuizPopWord | null; nonce: string; cl
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={reduceMotion ? { opacity: 0 } : { y: 24, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 420, damping: 30 }}
-            className="mb-4 flex w-full max-w-md items-center gap-3.5 rounded-feature border-2 border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface px-5 py-3.5 md:mb-0"
+            className="mb-4 flex w-full max-w-md items-center gap-3.5 rounded-feature border-2 border-b-[length:var(--depth-lg)] border-feedback-success-edge bg-ui-surface px-5 py-3.5 md:mb-0"
           >
             <AppIcon name="check" size={24} className="shrink-0 text-feedback-success-text" />
             <span className="font-chinese text-3xl font-bold leading-none text-ui-ink-strong">{shown.word.hanzi}</span>
