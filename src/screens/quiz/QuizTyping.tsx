@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
 import { useQuizTyping } from './hooks/useQuiz';
@@ -19,16 +19,13 @@ interface QuizTypingCardProps {
   onSubmit: () => void;
   onOpenBreakdown: (index: number) => void;
   promptType: TypingPromptType;
-  /** The word just answered: shown on the card and kept through the next one, so its meaning is readable without a pause. */
-  previous: Flashcard | null;
 }
 
 const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
-  currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown, promptType, previous
+  currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown, promptType
 }) => {
   const reduceMotion = useReducedMotion();
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
-  const meaningOf = (card: Flashcard) => (simpleDefinitions && card.simple) ? card.simple : card.back;
   return (
   <motion.div
     initial={reduceMotion ? false : { opacity: 0, y: 8 }}
@@ -39,7 +36,7 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
     {promptType === 'meaning' ? (
       <div className="flex w-full items-center justify-center pb-7 pt-8 px-4">
         <span className="text-2xl sm:text-3xl font-extrabold text-ui-ink text-center leading-snug">
-          {meaningOf(currentCard)}
+          {(simpleDefinitions && currentCard.simple) ? currentCard.simple : currentCard.back}
         </span>
       </div>
     ) : (
@@ -53,25 +50,9 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
       }}
       className="w-full px-2"
     >
-      {/* The last word rides in the label's line, so the input never moves. */}
-      <div className="mb-2 flex min-h-5 items-baseline justify-center gap-2 text-sm">
-        <label htmlFor="quiz-pinyin-answer" className={previous ? 'sr-only' : 'mr-auto font-extrabold text-ui-muted-strong'}>
-          Pinyin
-        </label>
-        {previous && (
-          <motion.p
-            key={previous.id}
-            initial={reduceMotion ? false : { opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.16, ease: 'easeOut' }}
-            className="min-w-0 truncate text-center text-ui-muted-strong"
-          >
-            <span className="font-chinese text-base text-ui-ink">{previous.front}</span>
-            {previous.pinyin && <span className="ml-2 font-extrabold text-ui-ink">{numberToToneMarks(previous.pinyin)}</span>}
-            <span className="ml-2 font-bold">{meaningOf(previous)}</span>
-          </motion.p>
-        )}
-      </div>
+      <label htmlFor="quiz-pinyin-answer" className="mb-2 block text-sm font-extrabold text-ui-muted-strong">
+        Pinyin
+      </label>
       <div className="relative">
         <AppIcon
           name="keyboard"
@@ -111,11 +92,6 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
 export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shell }) => {
   const session = useQuizTyping(cards, sessionKey);
   const { currentCard, input, handleInputChange, status, handleCheck } = session;
-  // Remember each answered word; once the next card is up it becomes the "previous" line.
-  const [answered, setAnswered] = useState<Flashcard | null>(null);
-  if (status !== 'idle' && currentCard && answered?.id !== currentCard.id) setAnswered(currentCard);
-  // A right answer shows its own word there at once (no wait), and it stays while the next card is typed.
-  const previous = status === 'correct' ? currentCard : answered && answered.id !== currentCard?.id ? answered : null;
   const typingPromptType = useAppStore((state) => state.typingPromptType);
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
   useNumberKeySelection({
@@ -140,6 +116,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
       correctAnswer={numberToToneMarks(currentCard?.pinyin || '')}
       word={currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: simpleDefinitions ? currentCard.simple : undefined } : undefined}
       isCheckDisabled={!input.trim()}
+      popWordOnAutoAdvance
     >
       {({ openBreakdown }) => (
         <QuizTypingCard
@@ -150,7 +127,6 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
           onSubmit={handleCheck}
           onOpenBreakdown={openBreakdown}
           promptType={typingPromptType}
-          previous={previous}
         />
       )}
     </QuizShell>
