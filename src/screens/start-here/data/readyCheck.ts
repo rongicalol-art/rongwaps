@@ -10,8 +10,8 @@ export const READY_CHECK_QUESTIONS: ReadyCheckQuestion[] = [
     feedback: { hanzi: '爸', pinyin: 'bà', meaning: 'dad. Tone 4 starts high and falls quickly.' },
   },
   {
-    id: 'low-tone', partId: 1, k: 'question', title: 'Rising or low?', audio: ['w:ma'],
-    contrast: ['ma2', 'w:ma'], layout: 'two',
+    id: 'low-tone', partId: 1, k: 'question', title: 'Rising or low?', audio: ['ma3'],
+    contrast: ['ma2', 'ma3'], layout: 'two',
     choices: [{ label: 'Rising', tone: 2, correct: false }, { label: 'Low', tone: 3, correct: true }],
     feedback: { hanzi: '馬', pinyin: 'mǎ', meaning: 'horse. Tone 3 goes down low.' },
   },
@@ -50,7 +50,7 @@ export const READY_CHECK_QUESTIONS: ReadyCheckQuestion[] = [
     id: 'w-spelling', partId: 4, k: 'question', title: 'Which sounds make up this final?', audio: ['wen4'],
     prompt: { pinyin: 'wèn' }, layout: 'three', isPinyinChoices: true,
     choices: [{ label: 'u + an', correct: false }, { label: 'u + ei', correct: false }, { label: 'u + en', correct: true }],
-    feedback: { hanzi: '問', pinyin: 'wèn', meaning: 'to ask. With an initial, this final is written un.' },
+    feedback: { hanzi: '問', pinyin: 'wèn', meaning: 'to ask. The final is u + en. After an initial it is written un.' },
   },
   {
     id: 'hidden-dots', partId: 4, k: 'question', title: 'Which pieces make up this syllable?', audio: ['xue2'],

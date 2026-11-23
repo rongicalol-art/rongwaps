@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
-import { ActionButton, AppIcon, SpeakerIcon } from '../../../lib/widgets';
+import { AppIcon, SpeakerIcon } from '../../../lib/widgets';
 import { fetchVocabulary } from '../../../services/vocabularyService';
 import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
@@ -57,7 +57,7 @@ export function CharPartsView({ items, onPlayAudio }: CharPartsViewProps) {
                 type="button"
                 onClick={() => handleSelect(idx)}
                 className={cn(
-                  'flex min-w-[78px] cursor-pointer flex-col items-center rounded-[14px] border-2 border-b-[5px] px-3 py-2 transition-[transform,border-color,background-color] duration-100 active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                  'flex min-w-[78px] cursor-pointer flex-col items-center rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3 py-2 transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                   isSel
                     ? 'border-brand-primary bg-brand-primary-soft'
                     : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
@@ -73,15 +73,15 @@ export function CharPartsView({ items, onPlayAudio }: CharPartsViewProps) {
         </div>
       )}
 
-      <div className="relative flex flex-col items-center gap-3 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-5 py-6">
+      <div className="relative flex flex-col items-center gap-3 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-5 py-6">
         <CornerSpeaker onClick={() => onPlayAudio(active.audio)} label={`Hear ${active.hanzi}`} />
 
         <div className="flex flex-col items-center text-center">
           <span className="font-chinese text-[78px] font-bold leading-none text-ui-ink-strong md:text-[88px]">
             {active.hanzi}
           </span>
-          <span className="mt-2 text-[26px] font-black text-ui-ink-strong">{active.pinyin}</span>
-          <span className="text-[17px] font-bold text-ui-muted-strong">{active.meaning}</span>
+          <span className="mt-2 text-2xl font-black text-ui-ink-strong">{active.pinyin}</span>
+          <span className="text-lg font-bold text-ui-muted-strong">{active.meaning}</span>
         </div>
 
         {active.highlightPart && (
@@ -97,12 +97,12 @@ export function CharPartsView({ items, onPlayAudio }: CharPartsViewProps) {
               return (
                 <div
                   key={`${piece.glyph}-${pIdx}`}
-                  className="flex items-center gap-3 rounded-[14px] border-2 border-ui-divider bg-ui-canvas px-3 py-2"
+                  className="flex items-center gap-3 rounded-compact border-2 border-ui-divider bg-ui-canvas px-3 py-2"
                 >
                   <span
                     style={roleMeta.style}
                     className={cn(
-                      'font-chinese flex size-11 shrink-0 items-center justify-center rounded-sm border-2 text-[26px] font-bold',
+                      'font-chinese flex size-11 shrink-0 items-center justify-center rounded-sm border-2 text-2xl font-bold',
                       piece.role === 'part' && 'border-ui-border bg-ui-surface text-ui-ink-strong',
                     )}
                   >
@@ -112,7 +112,7 @@ export function CharPartsView({ items, onPlayAudio }: CharPartsViewProps) {
                     <span className="block text-[11px] font-black uppercase tracking-wider text-ui-muted">
                       {roleMeta.label}
                     </span>
-                    <span className="block text-[15px] font-extrabold leading-snug text-ui-ink-strong">
+                    <span className="block text-base font-extrabold leading-snug text-ui-ink-strong">
                       {piece.hint}
                     </span>
                   </div>
@@ -188,8 +188,11 @@ export function SentenceBuildView({
 
   const addToken = (id: string) => {
     if (status === 'right' || pickedIds.includes(id)) return;
-    setStatus('idle');
-    setPickedIds((prev) => [...prev, id]);
+    const next = [...pickedIds, id];
+    setPickedIds(next);
+    // The sentence checks itself once every slot is filled (no separate Check button).
+    if (next.length === target.length) checkSentence(next);
+    else setStatus('idle');
   };
 
   const removeToken = (id: string) => {
@@ -198,8 +201,8 @@ export function SentenceBuildView({
     setPickedIds((prev) => prev.filter((item) => item !== id));
   };
 
-  const checkSentence = () => {
-    const attempt = pickedTokens.map((t) => t.hanzi).join('');
+  const checkSentence = (ids: string[]) => {
+    const attempt = ids.map((id) => bank.find((t) => t.id === id)?.hanzi ?? '').join('');
     const expected = target.map((t) => t.hanzi).join('');
     if (attempt === expected) {
       setStatus('right');
@@ -213,9 +216,9 @@ export function SentenceBuildView({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col items-center gap-2 rounded-control border-2 border-ui-divider bg-ui-surface px-4 py-4 text-center">
-        <span className="text-xs font-black uppercase tracking-[0.14em] text-ui-muted">Build this sentence</span>
-        <span className="text-[22px] font-black text-ui-ink-strong">“{english}”</span>
+      <div className="flex flex-col items-center gap-2 rounded-control border-2 border-ui-border bg-ui-surface px-4 py-4 text-center">
+        <span className="text-xs font-black uppercase tracking-widest text-ui-muted">Build this sentence</span>
+        <span className="text-2xl font-black text-ui-ink-strong">“{english}”</span>
         <CenterSpeaker onClick={() => onPlayAudio(audio)} label="Hear the sentence" />
       </div>
 
@@ -240,14 +243,14 @@ export function SentenceBuildView({
               disabled={status === 'right'}
               onClick={() => removeToken(token.id)}
               className={cn(
-                'flex flex-col items-center rounded-[14px] border-2 border-b-4 px-3 py-1.5 transition-colors focus-ring',
+                'flex flex-col items-center rounded-compact border-2 border-b-4 px-3 py-1.5 transition-colors focus-ring',
                 status === 'right'
                   ? 'border-feedback-success bg-ui-surface text-feedback-success-text'
                   : 'cursor-pointer border-brand-primary bg-brand-primary-soft text-ui-ink-strong',
               )}
             >
               <span className="text-xs font-extrabold text-ui-muted-strong">{token.pinyin}</span>
-              <span className="font-chinese text-[26px] font-bold leading-tight">{token.hanzi}</span>
+              <span className="font-chinese text-2xl font-bold leading-tight">{token.hanzi}</span>
             </button>
           ))
         )}
@@ -264,43 +267,29 @@ export function SentenceBuildView({
               disabled={used || status === 'right'}
               onClick={() => addToken(token.id)}
               className={cn(
-                'flex flex-col items-center rounded-[14px] border-2 border-b-[5px] px-3.5 py-2 transition-[transform,opacity] duration-100 focus-ring',
+                'flex flex-col items-center rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3.5 py-2 transition-[transform,opacity] duration-100 focus-ring',
                 used
                   ? 'cursor-default border-ui-divider bg-ui-divider/40 opacity-30'
-                  : 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover active:mb-[3px] active:translate-y-[3px] active:border-b-2',
+                  : 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2',
               )}
             >
               <span className="text-xs font-extrabold text-ui-muted-strong">{token.pinyin}</span>
-              <span className="font-chinese text-[26px] font-bold leading-tight">{token.hanzi}</span>
+              <span className="font-chinese text-2xl font-bold leading-tight">{token.hanzi}</span>
             </button>
           );
         })}
       </div>
 
-      {status === 'wrong' && (
-        <p className="m-0 text-center text-sm font-black text-feedback-danger-text" aria-live="polite">
-          Not quite in that order — tap words above to adjust.
-        </p>
-      )}
-
-      {status !== 'right' && (
-        <ActionButton
-          variant="primary"
-          size="md"
-          fullWidth
-          disabled={pickedIds.length === 0}
-          onClick={checkSentence}
-        >
-          Check sentence
-        </ActionButton>
-      )}
-
-      {status === 'right' && (
-        <div className="flex items-center justify-center gap-2 rounded-control border-2 border-feedback-success bg-feedback-success-surface px-4 py-2.5 text-center text-base font-black text-feedback-success-text">
-          <AppIcon name="check" className="size-5 shrink-0" />
-          <span>{target.map((t) => t.pinyin).join(' ')} — “{english}”</span>
-        </div>
-      )}
+      {/* One reserved line for the result, so nothing below the words moves. */}
+      <p className="m-0 flex min-h-7 items-center justify-center gap-2 text-center text-lg font-extrabold" aria-live="polite">
+        {status === 'wrong' && <span className="text-feedback-danger-text">Not quite. Tap a word in the tray to take it out.</span>}
+        {status === 'right' && (
+          <span className="inline-flex items-center gap-2 text-feedback-success-text">
+            <AppIcon name="check" className="size-5 shrink-0" />
+            {target.map((t) => t.pinyin).join(' ')}: “{english}”
+          </span>
+        )}
+      </p>
     </div>
   );
 }
@@ -373,7 +362,7 @@ export function VocabCardsView({ cardIds, caption, onPlayAudio, onAllHeard }: Vo
   return (
     <div className="flex flex-col gap-3">
       {caption && (
-        <p className="m-0 text-center text-[15px] font-bold text-ui-muted-strong">{caption}</p>
+        <p className="m-0 text-center text-base font-bold text-ui-muted-strong">{caption}</p>
       )}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {cardIds.map((id) => {
@@ -394,7 +383,7 @@ export function VocabCardsView({ cardIds, caption, onPlayAudio, onAllHeard }: Vo
               type="button"
               onClick={() => tapCard(id)}
               className={cn(
-                'flex cursor-pointer items-center justify-between gap-3 rounded-control border-2 border-b-[5px] px-4 py-3 text-left transition-[transform,border-color,background-color] duration-100 active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                'flex cursor-pointer items-center justify-between gap-3 rounded-control border-2 border-b-[length:var(--depth-lg)] px-4 py-3 text-left transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                 isPlaying || isHeard
                   ? 'border-brand-primary bg-brand-primary-soft'
                   : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
@@ -402,12 +391,12 @@ export function VocabCardsView({ cardIds, caption, onPlayAudio, onAllHeard }: Vo
             >
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline gap-2.5">
-                  <span className="font-chinese text-[34px] font-bold leading-none text-ui-ink-strong">
+                  <span className="font-chinese text-4xl font-bold leading-none text-ui-ink-strong">
                     {hanzi}
                   </span>
-                  <span className="text-[20px] font-black text-brand-primary-deep">{pinyin}</span>
+                  <span className="text-xl font-black text-brand-primary-deep">{pinyin}</span>
                 </div>
-                <span className="mt-1 block truncate text-[15px] font-extrabold text-ui-muted-strong">
+                <span className="mt-1 block truncate text-base font-extrabold text-ui-muted-strong">
                   {english}
                 </span>
               </div>

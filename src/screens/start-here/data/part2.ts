@@ -13,7 +13,7 @@ export const PART_2_LESSONS: StartHereLesson[] = [
         title: 'Hold your hand in front of your mouth',
         pinyin: 'pā',
         meaning: 'lie face down',
-        talk: [ 'Hand in front of your mouth,| and say it.| Feel the *puff*?' ],
+        talk: [ 'Hand in front of your mouth.| Say it.| Feel the *puff*?' ],
         audio: 'pa1'
       },
       {
@@ -29,7 +29,7 @@ export const PART_2_LESSONS: StartHereLesson[] = [
         title: 'Same lips, different air',
         talk: [
           'Both are made with the *lips*^b.',
-          'Watch the paper. [[m:b|b]] [[m:p|p]] Only the second one moves it.'
+          'Watch the paper strip. [[m:b|b]] [[m:p|p]] Only the second one moves it.'
         ],
         sounds: [ 'b', 'p' ],
         first: 'b'
@@ -118,7 +118,7 @@ export const PART_2_LESSONS: StartHereLesson[] = [
         k: 'mouth',
         title: 'Lips and teeth',
         talk: [
-          'These two use your lips and teeth.',
+          'These two start at your lips.',
           '[[m:m|m]] Close your *lips*^m,| and hum.',
           '[[m:f|f]] Top teeth on your *bottom*^f lip,| and blow.'
         ],
@@ -194,7 +194,7 @@ export const PART_2_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'pairs', title: 'Feel where the vowel ends', headers: ['Listen'],
-        talk: ['Hear the slide toward "ee" in these two. [[tai4|tài]] [[bei1|bēi]]',
+        talk: ['Both glide toward "ee".| The first starts wide.| The second starts small. [[tai4|tài]] [[bei1|bēi]]',
           'Now listen for the slide toward "oo". [[w:hao|hǎo]] [[w:kou|kǒu]]'],
         rows: [
           { label: 'ai', cells: [{ text: 'tài', audio: 'tai4' }] },
@@ -230,14 +230,14 @@ export const PART_2_LESSONS: StartHereLesson[] = [
     screens: [
       {
         k: 'mouth', title: 'Two ways to end with a hum', sounds: ['-n', '-ng'], first: '-n',
-        talk: ['[[m:-n|-n]] Touch your tongue tip behind your top teeth.',
-          '[[m:-ng|-ng]] Keep the tip down and lift the back.',
-          'Hum through your nose. There is no separate "g" sound.'],
+        talk: ['[[m:-n|-n]] Touch your tongue *tip*^n behind your top teeth.',
+          '[[m:-ng|-ng]] Keep the *tip*^tipdown down and lift the *back*^g.',
+          'Let it hum through your nose, and stop there.'],
       },
       {
         k: 'pairs', title: 'Freeze at the end', headers: ['-n', '-ng'],
         talk: ['Say each pair and freeze. Which part of your tongue touches?',
-          'In Taiwan these two endings can sound very close.'],
+          'In Taiwan, the last two pairs often sound almost the same.'],
         rows: [
           { label: 'an / ang', cells: [{ text: 'bān', audio: 'ban1' }, { text: 'bāng', audio: 'bang1' }] },
           { label: 'en / eng', cells: [{ text: 'fēn', audio: 'fen1' }, { text: 'fēng', audio: 'feng1' }] },

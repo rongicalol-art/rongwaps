@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import type { ToneMark } from '../data/types';
 import { CornerSpeaker } from './SpeakerControls';
@@ -16,13 +17,13 @@ interface ToneIntroViewProps {
 export function ToneIntroView({ tone, audio, pinyin, hanzi, meaning, onPlayAudio }: ToneIntroViewProps) {
 
   return (
-    <div className="relative flex flex-col items-center gap-3 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-4 py-6">
+    <div className="relative flex flex-col items-center gap-3 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-4 py-6">
       <CornerSpeaker onClick={() => onPlayAudio(audio)} label={`Play ${pinyin}`} />
-      <ToneContour tone={tone} strokeWidth={6} className="h-[108px] w-[168px]" />
+      <ToneContour tone={tone} strokeWidth={6} className="h-27 w-42" />
       <div className="flex flex-col items-center gap-0.5 text-center">
-        <span className="text-[34px] font-extrabold leading-tight text-ui-ink-strong">{pinyin}</span>
+        <span className="text-4xl font-extrabold leading-tight text-ui-ink-strong">{pinyin}</span>
         {hanzi && <span className="font-chinese text-[42px] font-bold leading-tight text-ui-ink-strong">{hanzi}</span>}
-        <span className="text-[19px] font-extrabold text-ui-muted-strong">{meaning}</span>
+        <span className="text-lg font-extrabold text-ui-muted-strong">{meaning}</span>
       </div>
     </div>
   );
@@ -136,7 +137,8 @@ export function TraceView({ tone, audio, doneText, onPlayAudio, onComplete }: Tr
   const dashOffset = Math.max(0, totalLen * (1 - progress));
 
   return (
-    <div className="relative flex flex-col items-center gap-3 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-4 py-5">
+    // One container: the card. The pad has no frame of its own, and the corner speaker sits above it, not on it.
+    <div className="relative flex flex-col items-center gap-2 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-4 pb-4 pt-11">
       <CornerSpeaker onClick={() => onPlayAudio(audio)} label={`Hear tone ${tone}`} />
       <svg
         ref={svgRef}
@@ -191,7 +193,7 @@ export function TraceView({ tone, audio, doneText, onPlayAudio, onComplete }: Tr
           draggingRef.current = false;
           downPtRef.current = null;
         }}
-        className="block w-full cursor-pointer touch-none rounded-[18px] border-2 border-ui-divider bg-ui-canvas focus-ring"
+        className="block w-full cursor-pointer touch-none rounded-2xl focus-ring"
       >
         <g className="stroke-ui-divider" strokeWidth={2} strokeDasharray="2 9" strokeLinecap="round">
           <line x1="24" y1="44" x2="276" y2="44" />
@@ -210,7 +212,7 @@ export function TraceView({ tone, audio, doneText, onPlayAudio, onComplete }: Tr
         <path
           d={TRACE_PATHS[tone]}
           fill="none"
-          stroke={done ? 'var(--color-feedback-success)' : 'var(--color-brand-primary)'}
+          stroke="var(--color-brand-primary)"
           strokeWidth={16}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -222,7 +224,7 @@ export function TraceView({ tone, audio, doneText, onPlayAudio, onComplete }: Tr
           cy={knobPos.y}
           r={13}
           fill="var(--color-ui-surface)"
-          stroke={done ? 'var(--color-feedback-success)' : 'var(--color-brand-primary)'}
+          stroke="var(--color-brand-primary)"
           strokeWidth={6}
           className={!done ? 'sh-pad-knob' : undefined}
         />
@@ -231,11 +233,12 @@ export function TraceView({ tone, audio, doneText, onPlayAudio, onComplete }: Tr
       <p
         aria-live="polite"
         className={cn(
-          'm-0 min-h-[28px] text-center text-[17px] font-extrabold transition-colors',
-          done ? 'text-feedback-success-text' : 'text-ui-muted-strong',
+          // Done is the accent colour (green is for answers only); the teacher already gave the instruction, so the
+          // line stays empty until then, with its height kept so the card does not jump.
+          'm-0 flex min-h-7 items-center justify-center gap-1.5 text-center text-lg font-extrabold text-brand-primary-deep',
         )}
       >
-        {done ? doneText : 'Drag along the line from the pulsing dot.'}
+        {done && <><AppIcon name="check" size={20} />{doneText}</>}
       </p>
     </div>
   );
@@ -247,7 +250,7 @@ interface MarkCompareViewProps {
 
 export function MarkCompareView({ tones }: MarkCompareViewProps) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-8 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-5 py-6">
+    <div className="flex flex-wrap items-center justify-center gap-8 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-5 py-6">
       {tones.map((t) => (
         <div key={t} className="flex flex-col items-center gap-2">
           <DecomposedSyllable
@@ -257,7 +260,7 @@ export function MarkCompareView({ tones }: MarkCompareViewProps) {
             litTone
             sizeClass="text-[76px] md:text-[84px]"
           />
-          <ToneContour tone={t} toneColored className="h-[60px] w-[96px]" />
+          <ToneContour tone={t} toneColored className="h-15 w-24" />
           <span className="text-sm font-black uppercase tracking-wider text-ui-muted-strong">{TONE_NAMES[t]}</span>
         </div>
       ))}

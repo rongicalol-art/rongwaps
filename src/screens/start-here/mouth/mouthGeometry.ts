@@ -122,6 +122,13 @@ const BASE: Array<[number, number, number]> = [
 
 export const IN_MATRIX = 'matrix(0.6 0 0 0.6 28.8 93.2)';
 
+/** Spots the ring can mark (outer picture coordinates), named in talk lines as `word^spot`; a sound's own name means
+ *  its usual spot. */
+const NAMED_SPOTS: Record<string, [number, number]> = { tipdown: [72.5, 284.6], mid: [90, 259], tipup: [86, 265], e: [126, 262], i: [88, 262] };
+export function ringSpot(name: string): [number, number] | null {
+  return NAMED_SPOTS[name] ?? MOUTH_SOUNDS[name as MouthSoundId]?.ring ?? null;
+}
+
 const f1 = (n: number) => n.toFixed(1);
 const M = (p: Pt) => `M${f1(p[0])} ${f1(p[1])}`;
 const L = (p: Pt) => `L${f1(p[0])} ${f1(p[1])}`;

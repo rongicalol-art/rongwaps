@@ -63,14 +63,14 @@ export function PinyinChartView({ chart, onPlayAudio, onComplete }: {
         <div className="max-h-[46dvh] overflow-auto rounded-control border border-ui-border bg-ui-surface" tabIndex={0} aria-label="Scrollable pinyin chart">
           <table className="min-w-full border-separate border-spacing-0 text-center text-sm">
             <thead className="sticky top-0 z-10 bg-ui-hover">
-              <tr><th className="sticky left-0 bg-ui-hover px-2" scope="col">Initial</th>
+              <tr><th className="sticky left-0 z-20 bg-ui-hover px-2" scope="col">Initial</th>
                 {chart.cols.map((final) => <th key={final} scope="col" className="px-2 py-2">{final}</th>)}
               </tr>
             </thead>
             <tbody>
               {chart.rows.map((initial) => (
                 <tr key={initial}>
-                  <th scope="row" className="sticky left-0 bg-ui-hover px-2">{initial || 'None'}</th>
+                  <th scope="row" className="sticky left-0 z-[5] bg-ui-hover px-2">{initial || 'None'}</th>
                   {chart.cols.map((final) => {
                     const joined = initial + final;
                     const syllable = chart.spellOverrides?.[joined] ?? (initial ? joined : standalone[final] ?? final);

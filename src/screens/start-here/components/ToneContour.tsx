@@ -205,8 +205,10 @@ export function DecomposedSyllable({
                         : undefined
                     }
                     style={{ color: litTone ? 'var(--sh-tone)' : undefined }}
+                    // Sits just above the vowel's x-height, the way a printed tone mark does (above the dots of ü).
                     className={cn(
-                      'relative z-10 -mb-[0.3em] block h-[0.16em] w-[0.34em] transition-colors duration-200',
+                      'relative z-10 block h-[0.16em] w-[0.34em] transition-colors duration-200',
+                      ch === 'ü' ? '-mb-[0.4em]' : '-mb-[0.52em]',
                       onTapPart && 'cursor-pointer',
                     )}
                   >

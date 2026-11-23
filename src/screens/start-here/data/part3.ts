@@ -7,8 +7,8 @@ export const PART_3_LESSONS: StartHereLesson[] = [
     screens: [
       {
         k: 'mouth', title: 'Keep your tongue forward', sounds: ['s', 'z', 'c'], first: 's',
-        talk: ['[[m:s|s]] Start with the "s" you know.',
-          '[[m:z|z]] Add a quick "t" before it, like in "cats".',
+        talk: ['[[m:s|s]] Start with a hiss, like a snake.',
+          '[[m:z|z]] Add a quick tap before it, like the end of "cats".',
           '[[m:c|c]] Same place, but let out a strong *puff* of air.'],
       },
       {
@@ -21,8 +21,8 @@ export const PART_3_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'word', title: 'This i sounds different', audio: 'si4', pinyin: 'sì', hanzi: '四', meaning: 'four',
-        talk: ['After these three initials, the letter "i" sounds different.',
-          'Keep your tongue where it is and add your voice. [[si4|sì]]',
+        talk: ['After these three, the vowel sounds different. It is a buzz.',
+          'Keep your tongue still, and just let your voice buzz. [[si4|sì]]',
           'Now hear the "ee" in this word. [[w:ni|nǐ]]'],
       },
       {
@@ -31,7 +31,7 @@ export const PART_3_LESSONS: StartHereLesson[] = [
         feedback: { hanzi: '次', pinyin: 'cì', meaning: 'occasion. The initial has a strong puff.' },
       },
       {
-        k: 'question', title: 'Which word ends with the “ee” sound?', audio: ['si4', 'w:ni'], layout: 'two',
+        k: 'question', title: 'Which word ends with the “ee” sound?', audio: ['si4', 'ni3'], layout: 'two',
         isPinyinChoices: true, choices: [{ label: 'sì', correct: false }, { label: 'nǐ', correct: true }],
         feedback: { hanzi: '你', pinyin: 'nǐ', meaning: 'you. Here i sounds like “ee”.' },
       },
@@ -48,7 +48,7 @@ export const PART_3_LESSONS: StartHereLesson[] = [
       {
         k: 'mouth', title: 'Lift the tip a little', sounds: ['s', 'sh'], first: 's',
         talk: ['[[m:s|s]] Start with your tongue forward.',
-          '[[m:sh|sh]] Pull the tip back a little and lift it.',
+          '[[m:sh|sh]] Pull the *tip*^sh back a little and lift it.',
           'A small lift is enough. Try both sounds yourself.'],
       },
       {
@@ -60,7 +60,7 @@ export const PART_3_LESSONS: StartHereLesson[] = [
       {
         k: 'tiles', title: 'Hear the initials in words',
         talk: ['Two letters can spell a single initial. [[zhe4|zhè]] [[cha2|chá]] [[shu1|shū]]',
-          'The special "i" is back. Keep your tongue in place. [[zhi1|zhī]] [[chi1|chī]] [[w:shi|shì]] [[ri4|rì]]'],
+          'The buzzing vowel is back. Keep your tongue in place. [[zhi1|zhī]] [[chi1|chī]] [[w:shi|shì]] [[ri4|rì]]'],
         items: [
           { pinyin: 'zhè', hanzi: '這', meaning: 'this', audio: 'zhe4' },
           { pinyin: 'chá', hanzi: '茶', meaning: 'tea', audio: 'cha2' },
@@ -78,12 +78,12 @@ export const PART_3_LESSONS: StartHereLesson[] = [
         feedback: { hanzi: '知', pinyin: 'zhī', meaning: 'to know. The initial has very little air.' },
       },
       {
-        k: 'question', title: 'Which initial do you hear?', audio: ['w:shi'], contrast: ['si4', 'w:shi'],
+        k: 'question', title: 'Which initial do you hear?', audio: ['shi4'], contrast: ['si4', 'shi4'],
         layout: 'two', isPinyinChoices: true, choices: [{ label: 's', correct: false }, { label: 'sh', correct: true }],
         feedback: { hanzi: '是', pinyin: 'shì', meaning: 'to be. The tongue tip is lifted back.' },
       },
       {
-        k: 'chart', title: 'Four tongue-tip-up rows', talk: ['Find a box and listen for its starting sound.'],
+        k: 'chart', title: 'Four tongue-tip-up rows', talk: ['Find a box and listen for its initial.'],
         rows: ['zh', 'ch', 'sh', 'r'], cols: ['a', 'e', 'i', 'u', 'ai', 'ao', 'en', 'eng'], fresh: ['zh', 'ch', 'sh', 'r'],
       },
     ],
@@ -101,7 +101,7 @@ export const PART_3_LESSONS: StartHereLesson[] = [
         pinyin: 'xī',
         hanzi: '西',
         meaning: 'west',
-        talk: [ 'A new sound.| Close to "sh",| but made in a different place.' ],
+        talk: [ 'A new sound.| It hisses like "shush",| from a different place.' ],
         audio: 'xi1'
       },
       {
@@ -183,8 +183,8 @@ export const PART_3_LESSONS: StartHereLesson[] = [
         droppedDots: true,
         caption: 'qù, to go',
         talk: [
-          'After these three,| this letter is really the one with two dots.',
-          "The dots just aren't written."
+          'After these three,| a plain "oo" never follows.',
+          'So the dots are not needed.| Say it rounded anyway.'
         ],
         audio: 'qu4'
       },
@@ -196,12 +196,12 @@ export const PART_3_LESSONS: StartHereLesson[] = [
         layout: 'two',
         isPinyinChoices: true,
         choices: [ { label: 'u', correct: false }, { label: 'ü', correct: true } ],
-        feedback: { hanzi: '去', pinyin: 'qù', meaning: 'to go' }
+        feedback: { hanzi: '去', pinyin: 'qù', meaning: 'to go. Only the rounded sound can follow q, so the dots are left off.' }
       },
       {
         k: 'chart',
         title: 'Three new rows on your chart',
-        talk: [ "Three new rows.| That's all twenty-one starting sounds." ],
+        talk: [ "Three new rows.| That's all twenty-one initials." ],
         rows: [ 'j', 'q', 'x' ],
         cols: [ 'i', 'ü' ],
         fresh: [ 'j', 'q', 'x' ],
@@ -216,12 +216,12 @@ export const PART_3_LESSONS: StartHereLesson[] = [
       {
         k: 'mouth', title: 'Three places for the tongue', sounds: ['s', 'sh', 'x'], first: 's',
         talk: ['[[m:s|s]] Tongue forward, near the top teeth.',
-          '[[m:sh|sh]] Tip lifted a little farther back.',
-          '[[m:x|x]] Tip behind the bottom teeth. Lift the middle and smile.'],
+          '[[m:sh|sh]] *Tip*^sh lifted a little farther back.',
+          '[[m:x|x]] *Tip*^tipdown behind the bottom teeth. Lift the *middle*^mid and smile.'],
       },
       {
         k: 'pairs', title: 'Listen across each row', headers: ['z, c, s', 'zh, ch, sh', 'j, q, x'],
-        talk: ['Listen across each row. Hear "ee" in the last sound.'],
+        talk: ['Listen across each row.| Only the last column has a real "ee".'],
         rows: [
           { label: 'Steady air', cells: [{ text: 'sī', audio: 'si1' }, { text: 'shī', audio: 'shi1' }, { text: 'xī', audio: 'xi1' }] },
           { label: 'Little air', cells: [{ text: 'zì', audio: 'zi4' }, { text: 'zhì', audio: 'zhi4' }, { text: 'jì', audio: 'ji4' }] },

@@ -33,9 +33,9 @@ export const PART_4_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'spelling', title: 'What changes when there is no initial?',
-        talk: ['At the start, the first vowel is often written with "y".',
-          'In the last two rows, keep the first vowel letter too.',
-          'With an initial, pinyin shortens "i-o-u" to "i-u". [[liu4|liù]]'],
+        talk: ['With nothing before it, watch the first letter change.',
+          'Two rows keep their first letter, and add one in front.',
+          'The middle row hides a sound that vanishes after an initial. [[liu4|liù]]'],
         rows: [
           { from: 'ie', to: 'ye', example: 'yě, also', audio: 'ye3' },
           { from: 'iao', to: 'yao', example: 'yào, to want', audio: 'yao4' },
@@ -84,8 +84,8 @@ export const PART_4_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'spelling', title: 'Long and short spellings',
-        talk: ['On their own, these finals start with "w".',
-          'The first two get a longer spelling with no initial.'],
+        talk: ['With nothing before it, watch the first letter change.',
+          'The first two rows hide a sound after an initial.'],
         rows: [
           { from: 'ui', to: 'wei', example: 'wèi, for', audio: 'wei4' },
           { from: 'un', to: 'wen', example: 'wèn, to ask', audio: 'wen4' },
@@ -126,7 +126,7 @@ export const PART_4_LESSONS: StartHereLesson[] = [
       {
         k: 'spelling', title: 'Find the missing dots',
         talk: ['Keep your tongue forward and your lips rounded. [[m:ü|ü]]',
-          'After "j", "q", "x" or "y", the two dots disappear. [[xue2|xué]] [[yue4|yuè]]',
+          'After these starting letters, the dots are left off. [[xue2|xué]] [[yue4|yuè]]',
           'In the first row, the second vowel sounds like "yes".'],
         rows: [
           { from: 'üe', to: 'yue', addedPrefix: 'y', droppedDots: true, example: 'yuè, month', audio: 'yue4' },
@@ -136,12 +136,12 @@ export const PART_4_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'pairs', title: 'Same rounded lips, different tongue', headers: ['u', 'ü'],
-        talk: ['After "n" or "l", the dots stay. [[w:nv|nǚ]] [[lü4|lǜ]]',
+        talk: ['Only two initials can take both, so there the dots stay. [[w:nv|nǚ]] [[lü4|lǜ]]',
           'Listen to the tongue shift forward in the right column.',
-          'In the top right, the middle vowel sounds like "pen".'],
+          'In the top right, the ending rhymes with "pen".'],
         rows: [
           { label: 'Long final', cells: [{ text: 'guān', audio: 'guan1', sub: 'to close' }, { text: 'quán', audio: 'quan2', sub: 'whole' }] },
-          { label: 'Single vowel', cells: [{ text: 'lù', audio: 'w:lu', sub: 'to record' }, { text: 'lǜ', audio: 'lü4', sub: 'green' }] },
+          { label: 'Single vowel', cells: [{ text: 'wú', audio: 'wu2', sub: 'without' }, { text: 'yú', audio: 'yu2', sub: 'fish' }] },
         ],
       },
       {
@@ -188,7 +188,7 @@ export const PART_4_LESSONS: StartHereLesson[] = [
           ...iFinals, ...uFinals, ...roundedFrontFinals, 'er'],
         fresh: ['er'], spellOverrides: { ...iSpellings, ...uSpellings, ...roundedFrontSpellings },
         talk: ['Find the tone mark, then look for the initial and final.',
-          'A vowel, "y" or "w" at the start uses the first row.',
+          'No starting sound? Use the blank first row.',
           'Pick a box, then switch to the tone you need.'],
         huntTargets: [
           { syllable: 'xue', tone: 2, audio: 'xue2', label: 'xué' },
@@ -199,7 +199,7 @@ export const PART_4_LESSONS: StartHereLesson[] = [
       },
       { k: 'split', title: 'Find the pieces in shēng', initial: 'sh', final: 'eng', tone: 1, audio: 'sheng1' },
       { k: 'split', title: 'Find the pieces in wǒ', initial: '', final: 'uo', tone: 3, audio: 'w:wo' },
-      { k: 'split', title: 'Find the pieces in xiǎo', initial: 'x', final: 'iao', tone: 3, audio: 'w:xiao' },
+      { k: 'split', title: 'Find the pieces in liù', initial: 'l', final: 'iu', tone: 4, audio: 'liu4' },
     ],
   },
 ];

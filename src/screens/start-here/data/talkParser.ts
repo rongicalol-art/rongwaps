@@ -13,6 +13,8 @@ export type TalkSegment =
       ssml: string;
       clipId: string;
       hasSpotCue: boolean;
+      /** Ring cues: the ring moves to `spot` as she says spoken word number `word` (counted like `spokenWords`). */
+      cues: { word: number; spot: string }[];
     }
   | {
       kind: 'clip';
@@ -108,8 +110,17 @@ function parseRuns(displayText: string): TalkTextRun[] {
   return runs;
 }
 
+/** Spoken words as the forced aligner counts them: lower case, letters and apostrophes only. */
+export function spokenWords(text: string): string[] {
+  return text.toLowerCase().replace(/’/g, "'").replace(/[^a-z' ]/g, ' ').split(/\s+/).filter(Boolean);
+}
+
 function buildTextSegment(raw: string): Extract<TalkSegment, { kind: 'text' }> {
   const hasSpotCue = /\^\w+/.test(raw);
+  const cues = [...raw.matchAll(/\^(\w+)/g)].map((m) => ({
+    word: spokenWords(raw.slice(0, m.index).replace(/\^\w+|[*|]/g, '')).length - 1,
+    spot: m[1],
+  }));
   const clean = raw.replace(/\^\w+/g, '');
   const display = clean.replace(/\|\|/g, '').replace(/\|/g, '').replace(/\s+/g, ' ').trim();
   const ssml = escapeXmlNoQuote(clean)
@@ -118,7 +129,7 @@ function buildTextSegment(raw: string): Extract<TalkSegment, { kind: 'text' }> {
     .replace(/\*([^*]+)\*/g, '<emphasis level="moderate">$1</emphasis>')
     .trim();
   const clipId = sha1Hex(TEACHER_VOICE + TEACHER_RATE + ssml).slice(0, 12);
-  return { kind: 'text', runs: parseRuns(display), ssml, clipId, hasSpotCue };
+  return { kind: 'text', runs: parseRuns(display), ssml, clipId, hasSpotCue, cues };
 }
 
 const CLIP_TOKEN_PATTERN = /\[\[([^|\]]+)\|([^\]]+)\]\]/g;
@@ -127,7 +138,7 @@ const CLIP_TOKEN_PATTERN = /\[\[([^|\]]+)\|([^\]]+)\]\]/g;
  * Parses one teacher speech line written in prototype talk syntax:
  * `*word*` = stressed/bold, `|` = 300ms pause, `||` = 500ms pause,
  * `[[key|label]]` = inline Chinese clip button (`m:<soundId>` animates the mouth),
- * `word^spot` = optional spot-hold marker (hidden visually, signals mouth to stay in pose).
+ * `word^spot` = the ring moves to that spot as she says the word (timings in cueTimes.ts); hidden in the text.
  */
 export function parseTalkLine(rawLine: string): TalkSegment[] {
   const segments: TalkSegment[] = [];

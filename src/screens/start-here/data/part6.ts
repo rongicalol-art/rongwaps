@@ -22,8 +22,8 @@ export const PART_6_LESSONS: StartHereLesson[] = [
       {
         k: 'charParts', title: 'Parts can hint at meaning and sound',
         talk: ['This part points to people. [[w:ren|亻]]',
-          'The character for door gives this word ending its sound. [[men2|門]]',
-          'The character for horse hints at the sound in mom. [[w:ma|馬]] [[ma1|媽]]'],
+          'The door part gives the plural mark its sound. [[men2|門]]',
+          'The horse part hints at the sound of mom. [[ma3|馬]] [[ma1|媽]]'],
         items: [
           { hanzi: '門', pinyin: 'mén', meaning: 'door', audio: 'men2' },
           { hanzi: '們', pinyin: 'men', meaning: 'plural ending', audio: 'men5', highlightPart: '門',
@@ -42,7 +42,7 @@ export const PART_6_LESSONS: StartHereLesson[] = [
           { hanzi: '學', pinyin: 'xué', meaning: 'to study', audio: 'xue2' },
           { hanzi: '生', pinyin: 'shēng', meaning: 'to be born', audio: 'sheng1' },
           { hanzi: '學生', pinyin: 'xuéshēng', meaning: 'student', audio: 'w:xuesheng',
-            breakdown: [{ glyph: '學', role: 'part', hint: 'study' }, { glyph: '生', role: 'part', hint: 'second character' }] },
+            breakdown: [{ glyph: '學', role: 'part', hint: 'study' }, { glyph: '生', role: 'part', hint: 'born, alive' }] },
         ],
       },
       {
@@ -74,7 +74,7 @@ export const PART_6_LESSONS: StartHereLesson[] = [
       {
         k: 'vocabCards', title: 'Meet the pronouns',
         talk: ['These three words refer to one person. [[w:wo|我]] [[w:ni|你]] [[w:ta|他]]',
-          'Add this light ending to refer to more than one. [[w:women|我們]]'],
+          'Add this light ending, and it means more than one. [[w:women|我們]]'],
         cardIds: ['B1L00-1-03', 'B1L00-1-04', 'B1L00-1-05', 'B1L00-1-07', 'B1L00-1-08', 'B1L00-1-09'],
       },
       {
@@ -106,13 +106,13 @@ export const PART_6_LESSONS: StartHereLesson[] = [
       {
         k: 'vocabCards', title: 'People you meet in class',
         talk: ['Listen for teacher and student. [[w:laoshi|老師]] [[w:xuesheng|學生]]',
-          'This word links a person to who they are. [[w:shi|是]]'],
+          'This little word means "am", "is" and "are". [[w:shi|是]]'],
         cardIds: ['B1L00-1-01', 'B1L00-1-02', 'B1L00-1-06', 'B1L00-1-10'],
       },
       {
         k: 'word', title: 'Say your first sentence', pinyin: 'Wǒ shì xuéshēng.', hanzi: '我是學生。',
         meaning: 'I am a student.', audio: 'w:wo+w:shi+w:xuesheng',
-        talk: ['Put "I" first, then "am", then "student".',
+        talk: ['Chinese leaves out "a" here. Just say: I, am, student.',
           'Change the first word to say he is a student. [[w:ta+w:shi+w:xuesheng|他是學生。]]'],
       },
       {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import type { ToneMark } from '../data/types';
 import { CenterSpeaker, CornerSpeaker } from './SpeakerControls';
@@ -42,21 +43,21 @@ function SlotBox({
       onClick={onClick}
       style={colorStyle}
       className={cn(
-        'flex flex-col items-center gap-0.5 rounded-[14px] border-2 border-b-4 bg-ui-surface px-1 py-2 transition-[transform,border-color,background-color] duration-150 focus-ring',
-        !lit && (open ? 'border-ui-border border-b-[5px]' : 'border-ui-divider'),
-        onClick && open && 'cursor-pointer active:mb-[3px] active:translate-y-[3px] active:border-b-2',
+        'flex flex-col items-center gap-0.5 rounded-compact border-2 border-b-4 bg-ui-surface px-1 py-2 transition-[transform,border-color,background-color] duration-150 focus-ring',
+        !lit && (open ? 'border-ui-border border-b-[length:var(--depth-lg)]' : 'border-ui-divider'),
+        onClick && open && 'cursor-pointer active:mb-0.75 active:translate-y-0.75 active:border-b-2',
         !onClick && 'cursor-default',
       )}
     >
       <span
         style={{ color: lit ? `var(--sh-${part})` : undefined }}
-        className={cn('flex h-[38px] items-center text-[28px] font-black', lit ? '' : open ? 'text-ui-ink-strong' : 'text-ui-divider')}
+        className={cn('flex h-[38px] items-center text-3xl font-black', lit ? '' : open ? 'text-ui-ink-strong' : 'text-ui-divider')}
       >
-        {part === 'tone' && toneValue ? <ToneMarkGlyph tone={toneValue} className="h-[17px] w-[34px]" /> : value || '—'}
+        {part === 'tone' && toneValue ? <ToneMarkGlyph tone={toneValue} className="h-[17px] w-8.5" /> : value || '—'}
       </span>
       <span
         style={{ color: lit ? `var(--sh-${part})` : undefined }}
-        className={cn('text-[12px] font-extrabold uppercase tracking-[0.12em]', !lit && 'text-ui-muted')}
+        className={cn('text-[12px] font-extrabold uppercase tracking-widest', !lit && 'text-ui-muted')}
       >
         {SLOT_LABELS[part]}
       </span>
@@ -91,7 +92,7 @@ export function PiecesView({ initial, finalPart, tone, audio, noAuto, lines, onP
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative flex flex-col items-center gap-4 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-4 py-6">
+      <div className="relative flex flex-col items-center gap-4 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-4 py-6">
         <CornerSpeaker onClick={() => onPlayAudio(audio)} label="Hear syllable" />
         <DecomposedSyllable
           initial={initial}
@@ -142,7 +143,7 @@ export function SplitView({ initial, finalPart, tone, audio, onPlayAudio, onComp
 
   return (
     <div className="flex flex-col gap-3">
-      <div className={cn('relative flex flex-col items-center gap-4 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-4 py-6', allFound && 'sh-pop')}>
+      <div className={cn('relative flex flex-col items-center gap-4 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-4 py-6', allFound && 'sh-pop')}>
         <CornerSpeaker onClick={() => onPlayAudio(audio)} label="Hear syllable" />
         <DecomposedSyllable
           initial={initial}
@@ -165,7 +166,7 @@ export function SplitView({ initial, finalPart, tone, audio, onPlayAudio, onComp
           />
         </div>
       </div>
-      <p className="m-0 min-h-[28px] text-center text-[18px] font-black text-ui-ink-strong" aria-live="polite">
+      <p className="m-0 min-h-7 text-center text-lg font-black text-ui-ink-strong" aria-live="polite">
         {allFound ? 'Split into initial, final, and tone.' : `Tap the 3 parts of the syllable (${found.size}/3).`}
       </p>
     </div>
@@ -245,11 +246,11 @@ export function BuildView({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className={cn('relative flex flex-col items-center gap-4 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-4 py-5', step === 3 && 'sh-pop')}>
+      <div className={cn('relative flex flex-col items-center gap-4 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-4 py-5', step === 3 && 'sh-pop')}>
         <CenterSpeaker onClick={() => onPlayAudio(audio)} label="Hear target syllable" />
 
         {step === 0 ? (
-          <div className="flex h-[108px] items-center justify-center text-[82px] font-extrabold text-ui-divider select-none">
+          <div className="flex h-27 items-center justify-center text-[82px] font-extrabold text-ui-divider select-none">
             ···
           </div>
         ) : (
@@ -278,7 +279,7 @@ export function BuildView({
         </div>
       </div>
 
-      <p className="m-0 min-h-[28px] text-center text-[19px] font-black text-ui-ink-strong" aria-live="polite">
+      <p className="m-0 min-h-7 text-center text-lg font-black text-ui-ink-strong" aria-live="polite">
         {step === 0 && (
           <>
             1. Pick the <span style={{ color: 'var(--sh-ini)' }}>initial</span>
@@ -294,11 +295,18 @@ export function BuildView({
             3. Pick the <span style={{ color: 'var(--sh-tone)' }}>tone</span>
           </>
         )}
-        {step === 3 && <span className="text-feedback-success-text">{doneText || finalDisplay}</span>}
+        {step === 3 && (
+          <span className="inline-flex items-center gap-1.5 text-brand-primary-deep">
+            <AppIcon name="check" size={20} />
+            {doneText || finalDisplay}
+          </span>
+        )}
       </p>
 
+      {/* The choices' row keeps its height after the last pick, so the card does not jump. */}
+      <div className="flex min-h-[63px] gap-2.5">
       {step < 3 && (
-        <div className="flex min-h-[63px] gap-2.5">
+        <>
           {step === 0 &&
             inis.map((val) => {
               const key = `ini-${val}`;
@@ -309,7 +317,7 @@ export function BuildView({
                   onClick={() => pickIni(val)}
                   aria-label={val || 'No initial'}
                   className={cn(
-                    'flex min-h-[58px] flex-1 cursor-pointer items-center justify-center rounded-[14px] border-2 border-b-[5px] bg-ui-surface text-[26px] font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 border-b-[length:var(--depth-lg)] bg-ui-surface text-2xl font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                     wrongKey === key ? 'sh-shake border-feedback-danger' : 'border-ui-border',
                   )}
                 >
@@ -327,7 +335,7 @@ export function BuildView({
                   type="button"
                   onClick={() => pickFin(val)}
                   className={cn(
-                    'flex min-h-[58px] flex-1 cursor-pointer items-center justify-center rounded-[14px] border-2 border-b-[5px] bg-ui-surface text-[26px] font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 border-b-[length:var(--depth-lg)] bg-ui-surface text-2xl font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                     wrongKey === key ? 'sh-shake border-feedback-danger' : 'border-ui-border',
                   )}
                 >
@@ -346,16 +354,17 @@ export function BuildView({
                   aria-label={`Tone ${t}`}
                   onClick={() => pickTone(t)}
                   className={cn(
-                    'flex min-h-[58px] flex-1 cursor-pointer items-center justify-center rounded-[14px] border-2 border-b-[5px] bg-ui-surface text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 border-b-[length:var(--depth-lg)] bg-ui-surface text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                     wrongKey === key ? 'sh-shake border-feedback-danger' : 'border-ui-border',
                   )}
                 >
-                  <ToneContour tone={t} showStaff={false} className="h-[24px] w-[44px]" />
+                  <ToneContour tone={t} showStaff={false} className="h-[24px] w-11" />
                 </button>
               );
             })}
-        </div>
+        </>
       )}
+      </div>
     </div>
   );
 }

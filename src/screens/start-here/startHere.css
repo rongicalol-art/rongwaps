@@ -1,8 +1,6 @@
-@reference "../../index.css";
-@source "./";
-@layer utilities {
-  @tailwind utilities source(none);
-}
+/* Start here's own tokens and keyframes. Its utility classes come from the main stylesheet: a second, lazily loaded
+   copy of Tailwind's utilities re-declared common classes (flex-col, w-full…) after the main ones and so overrode
+   the app's responsive variants (the shared answer bar lost its desktop row). */
 
 /* Start Here scope tokens & focused motion keyframes (imported lazily inside StartHereWindow). */
 .sh-root {
@@ -26,6 +24,21 @@
   --sh-pfp: #4a3b2f;
 }
 
+/* The teacher's speech bubble: a tail pointing left to her picture, drawn in the bubble's own border and fill. */
+.sh-bubble::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 18px;
+  width: 14px;
+  height: 14px;
+  background: var(--color-ui-surface);
+  border-left: 2px solid var(--color-ui-divider);
+  border-bottom: 2px solid var(--color-ui-divider);
+  border-bottom-left-radius: 3px;
+  transform: rotate(45deg);
+}
+
 .sh-progress-shine {
   position: relative;
   overflow: hidden;
@@ -43,8 +56,10 @@
   opacity: 0.3;
 }
 
+/* `backwards`, not `both`: a finished entrance must not keep its transform, or it stays the containing block for the
+   fixed answer bar below and squeezes it into this column. */
 .sh-step-enter {
-  animation: sh-rise 0.22s ease-out both;
+  animation: sh-rise 0.22s ease-out backwards;
 }
 
 .sh-shake {

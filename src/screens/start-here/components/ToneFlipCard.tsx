@@ -93,17 +93,17 @@ export function ToneFlipCard({ kind, need, onPlayAudio, onComplete }: ToneFlipCa
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex flex-col items-center gap-2 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-4 py-5">
+      <div className="flex flex-col items-center gap-2 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-4 py-5">
         <div className="flex min-h-[168px] items-end justify-center gap-4">
-          <div key={`${active?.id ?? 'base'}-${animKey}`} className="flex min-w-[100px] flex-col items-center">
+          <div key={`${active?.id ?? 'base'}-${animKey}`} className="flex min-w-25 flex-col items-center">
             <ToneContour
               tone={active ? active.firstTone : cfg.baseTone}
               toneColored={Boolean(active?.changed)}
-              className={cn('h-[48px] w-[76px]', active?.changed && 'sh-flip-in')}
+              className={cn('h-12 w-19', active?.changed && 'sh-flip-in')}
             />
             <span
               style={{ color: active?.changed ? 'var(--sh-tone)' : undefined }}
-              className={cn('text-[26px] font-black leading-[1.25]', !active?.changed && 'text-ui-ink-strong', active?.changed && 'sh-flip-in')}
+              className={cn('text-2xl font-black leading-tight', !active?.changed && 'text-ui-ink-strong', active?.changed && 'sh-flip-in')}
             >
               {active ? active.firstPinyin : cfg.basePinyin}
             </span>
@@ -112,24 +112,24 @@ export function ToneFlipCard({ kind, need, onPlayAudio, onComplete }: ToneFlipCa
             </span>
           </div>
 
-          <div className={cn('flex min-w-[100px] flex-col items-center', !active && 'text-ui-divider')}>
+          <div className={cn('flex min-w-25 flex-col items-center', !active && 'text-ui-divider')}>
             {active ? (
               <>
-                <ToneContour tone={active.secondTone} className="h-[48px] w-[76px]" />
-                <span className="text-[26px] font-black leading-[1.25] text-ui-ink-strong">{active.secondPinyin}</span>
+                <ToneContour tone={active.secondTone} className="h-12 w-19" />
+                <span className="text-2xl font-black leading-tight text-ui-ink-strong">{active.secondPinyin}</span>
                 <span className="font-chinese text-[68px] font-bold leading-[1.1] text-ui-ink-strong">{active.secondHanzi}</span>
               </>
             ) : (
               <>
-                <div className="h-[48px]" />
-                <span className="text-[26px] font-black leading-[1.25] text-ui-divider">?</span>
+                <div className="h-12" />
+                <span className="text-2xl font-black leading-tight text-ui-divider">?</span>
                 <span className="font-chinese text-[68px] font-bold leading-[1.1] text-ui-divider">□</span>
               </>
             )}
           </div>
         </div>
 
-        <p className="m-0 min-h-[26px] text-center text-[16px] font-extrabold text-ui-muted-strong">
+        <p className="m-0 min-h-[26px] text-center text-base font-extrabold text-ui-muted-strong">
           {active ? `${active.meaning} — ${active.note}` : cfg.hint}
         </p>
       </div>
@@ -143,7 +143,7 @@ export function ToneFlipCard({ kind, need, onPlayAudio, onComplete }: ToneFlipCa
               type="button"
               onClick={() => handleSelect(opt)}
               className={cn(
-                'flex cursor-pointer flex-col items-center rounded-[14px] border-2 border-b-[5px] px-1 pb-2 pt-1.5 transition-[transform,border-color,background-color] duration-100 active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                'flex cursor-pointer flex-col items-center rounded-compact border-2 border-b-[length:var(--depth-lg)] px-1 pb-2 pt-1.5 transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                 isOn
                   ? 'border-brand-primary bg-brand-primary-soft'
                   : triedIds.has(opt.id)
@@ -151,8 +151,8 @@ export function ToneFlipCard({ kind, need, onPlayAudio, onComplete }: ToneFlipCa
                     : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
               )}
             >
-              <span className="text-[15px] font-extrabold text-ui-muted-strong">{opt.chipPinyin}</span>
-              <span className="font-chinese text-[28px] font-bold leading-[1.15] text-ui-ink-strong">{opt.chipHanzi}</span>
+              <span className="text-base font-extrabold text-ui-muted-strong">{opt.chipPinyin}</span>
+              <span className="font-chinese text-3xl font-bold leading-[1.15] text-ui-ink-strong">{opt.chipHanzi}</span>
             </button>
           );
         })}

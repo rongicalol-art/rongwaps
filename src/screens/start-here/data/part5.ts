@@ -80,7 +80,7 @@ export const PART_5_LESSONS: StartHereLesson[] = [
         ],
       },
       {
-        k: 'question', title: 'How do you say this pair of low tones?', noAuto: true, audio: ['ni2+w:hao'],
+        k: 'question', title: 'How do you say this pair of low tones?', noAuto: true, audio: ['ni2+hao3'],
         prompt: { hanzi: '你好', pinyin: 'nǐ hǎo' }, layout: 'two',
         choices: [{ label: 'Low, then low', correct: false }, { label: 'Rising, then low', correct: true }],
         feedback: { hanzi: '你好', pinyin: 'nǐ hǎo', meaning: 'hello. Say it with a rise on the first syllable.' },
@@ -112,7 +112,7 @@ export const PART_5_LESSONS: StartHereLesson[] = [
       {
         k: 'flip',
         title: 'Put a word after 不',
-        talk: [ 'Tap a word to put after it.| Watch its tone.', 'Only two words change like this.' ],
+        talk: [ 'Tap a word to put after it.| Watch its tone.', 'Before a falling tone, it rises. Otherwise it falls.' ],
         kind: 'bu',
         need: 2
       },
@@ -140,7 +140,7 @@ export const PART_5_LESSONS: StartHereLesson[] = [
       {
         k: 'flip',
         title: 'Put a word after 一',
-        talk: [ 'Now put a word after it.| It changes too.' ],
+        talk: [ 'Now put a word after it.', 'Before a falling tone, it rises. Otherwise it falls.' ],
         kind: 'yi',
         need: 2
       },
@@ -162,7 +162,7 @@ export const PART_5_LESSONS: StartHereLesson[] = [
         pinyin: 'bú kèqì',
         hanzi: '不客氣',
         meaning: 'you are welcome',
-        talk: [ 'No need to work it out.| The app writes the tone you say.' ],
+        talk: [ "Don't work it out yourself.| The pinyin shows the tone you say." ],
         audio: 'w:bukeqi'
       },
     ],

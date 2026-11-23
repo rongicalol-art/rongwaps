@@ -34,7 +34,7 @@ function BinIcon({ icon }: { icon?: 'air' | 'noair' | 'none' }) {
   if (!icon || icon === 'none') return null;
   if (icon === 'air') {
     return (
-      <svg viewBox="0 0 36 22" fill="none" className="h-5 w-[30px] text-brand-primary" aria-hidden="true">
+      <svg viewBox="0 0 36 22" fill="none" className="h-5 w-7.5 text-brand-primary" aria-hidden="true">
         <path
           d="M2 8h22a4 4 0 1 0-4-4M2 14h28a4 4 0 1 1-4 4"
           stroke="currentColor"
@@ -45,7 +45,7 @@ function BinIcon({ icon }: { icon?: 'air' | 'noair' | 'none' }) {
     );
   }
   return (
-    <svg viewBox="0 0 36 22" fill="none" className="h-5 w-[30px] text-ui-muted" aria-hidden="true">
+    <svg viewBox="0 0 36 22" fill="none" className="h-5 w-7.5 text-ui-muted" aria-hidden="true">
       <path d="M8 11h20" stroke="currentColor" strokeWidth={3} strokeLinecap="round" />
     </svg>
   );
@@ -97,16 +97,18 @@ export function SortActivity({
 
   return (
     <div className="flex flex-col gap-4">
+      {/* One slot for the item to sort and, at the end, the result line: the bins below never move. */}
+      <div className="flex min-h-[104px] flex-col items-center justify-center">
       {!isDone && current && (
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-ui-muted">
+          <span className="text-xs font-black uppercase tracking-widest text-ui-muted">
             {cursor + 1} / {items.length}
           </span>
           {mode === 'text' ? (
             <button
               type="button"
               onClick={() => current.audio && onPlayAudio(current.audio)}
-              className="rounded-control border-2 border-b-[5px] border-ui-border bg-ui-surface px-6 py-3 text-[26px] font-black text-ui-ink-strong hover:bg-ui-hover focus-ring"
+              className="rounded-control border-2 border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface px-6 py-3 text-2xl font-black text-ui-ink-strong hover:bg-ui-hover focus-ring"
             >
               {current.label}
             </button>
@@ -120,13 +122,14 @@ export function SortActivity({
       )}
 
       {isDone && (
-        <div className="flex items-center justify-center gap-2 rounded-control border-2 border-feedback-success bg-feedback-success-surface px-4 py-3 text-center text-[17px] font-extrabold text-feedback-success-text">
+        <p className="m-0 flex items-center justify-center gap-2 text-center text-lg font-extrabold text-brand-primary-deep">
           <AppIcon name="check" className="size-5 shrink-0" />
           <span>
             <FormattedBoldText text={doneText} />
           </span>
-        </div>
+        </p>
       )}
+      </div>
 
       <div className={cn('grid gap-3', bins.length === 3 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-2')}>
         {bins.map((bin, idx) => (
@@ -136,13 +139,13 @@ export function SortActivity({
             disabled={isDone}
             onClick={() => handleBinTap(idx)}
             className={cn(
-              'flex min-h-[144px] flex-col items-center gap-2.5 rounded-[20px] border-2 border-b-[6px] bg-ui-surface px-2.5 py-3 transition-[transform,border-color,background-color] duration-100 focus-ring',
-              !isDone && 'cursor-pointer hover:bg-ui-hover active:mb-[4px] active:translate-y-[4px] active:border-b-2',
+              'flex min-h-[144px] flex-col items-center gap-2.5 rounded-[20px] border-2 border-b-[length:var(--depth-xl)] bg-ui-surface px-2.5 py-3 transition-[transform,border-color,background-color] duration-100 focus-ring',
+              !isDone && 'cursor-pointer hover:bg-ui-hover active:mb-1 active:translate-y-1 active:border-b-2',
               isDone && 'cursor-default border-ui-divider',
               nopeBin === idx ? 'sh-shake border-feedback-danger' : 'border-ui-border',
             )}
           >
-            <span className="flex items-center gap-2 text-[18px] font-black text-ui-ink-strong">
+            <span className="flex items-center gap-2 text-lg font-black text-ui-ink-strong">
               <BinIcon icon={bin.icon} />
               <span>{bin.label}</span>
             </span>
@@ -150,7 +153,7 @@ export function SortActivity({
               {(sortedPerBin[idx] ?? []).map((chip, cIdx) => (
                 <span
                   key={`${chip}-${cIdx}`}
-                  className="sh-chip-drop rounded-[10px] border-2 border-brand-primary-soft-edge bg-brand-primary-soft px-2.5 py-1 text-[17px] font-black text-ui-ink-strong"
+                  className="sh-chip-drop rounded-[10px] border-2 border-brand-primary-soft-edge bg-brand-primary-soft px-2.5 py-1 text-lg font-black text-ui-ink-strong"
                 >
                   {chip}
                 </span>

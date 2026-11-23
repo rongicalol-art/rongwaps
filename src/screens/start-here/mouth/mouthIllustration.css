@@ -200,12 +200,28 @@
   transition: opacity 0.35s ease-out;
 }
 
-/* Ring intentionally hidden in production UI per owner design decision */
+/* The gold ring marks the one spot the teacher is talking about. It appears on the word that names the spot, glides
+   to a new spot instead of jumping, and never blinks while a sound plays (owner, Nov 2026). */
 .m-ring {
-  display: none;
   fill: none;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.2s, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.m-hit .m-ring {
+  opacity: 1;
+}
+
+/* The picture's own colours (like the rest of the drawing), the same in both themes. */
+.m-ring-edge {
+  stroke: #7a3b2e;
+  stroke-width: 5;
+}
+
+.m-ring-gold {
+  stroke: #ffcf4d;
+  stroke-width: 3;
 }
 
 .m-air path,
@@ -434,5 +450,8 @@ svg[data-air='small'] .m-paper {
   svg[data-air='stream'] .a-main,
   svg[data-air='nose'] .m-airin {
     animation: none;
+  }
+  .m-ring {
+    transition: none;
   }
 }

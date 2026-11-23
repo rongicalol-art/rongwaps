@@ -1,3 +1,4 @@
+import { CUE_TIMES } from '../data/cueTimes';
 import { audioService } from '../../../services/audioService';
 import { getPronunciationAudioIndex } from '../../../services/pronunciationAudio';
 import { EXCLUDED_CNS_KEYS, WORD_AUDIO_MAP } from '../data/audioMap';
@@ -135,6 +136,8 @@ export function speakStartHereLines(rawLines: string[], opts: SpeakLinesOptions)
       opts.onLineChange?.(li);
       const segments = parsedLines[li];
       let missingNarration = false;
+      // A line that names one spot moves the ring there on that word; any other line has no ring.
+      if (!segments.some((seg) => seg.kind === 'text' && seg.cues.length)) opts.mouth?.mark(null);
 
       for (let si = 0; si < segments.length; si += 1) {
         if (token !== activeToken) return;
@@ -142,7 +145,16 @@ export function speakStartHereLines(rawLines: string[], opts: SpeakLinesOptions)
 
         if (seg.kind === 'text') {
           if (seg.ssml) {
-            if (!await playFileWithToken(resolveTeacherClipUrl(seg.clipId), token)) missingNarration = true;
+            const times = CUE_TIMES[seg.clipId] ?? [];
+            const cueTimers = seg.cues.map((cue, k) => window.setTimeout(() => {
+              if (token === activeToken) opts.mouth?.mark(cue.spot);
+            }, times[k] ?? 0));
+            if (!await playFileWithToken(resolveTeacherClipUrl(seg.clipId), token)) {
+              missingNarration = true;
+              // No recording: the ring still goes where the line says.
+              if (token === activeToken) seg.cues.forEach((cue) => opts.mouth?.mark(cue.spot));
+            }
+            cueTimers.forEach((id) => window.clearTimeout(id));
           }
           if (token !== activeToken) return;
           if (!seg.hasSpotCue && mouthHoldSound && opts.mouth) {

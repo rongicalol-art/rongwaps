@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ActionButton, AppIcon, KeyChip } from '../../../lib/widgets';
+import { FeedbackBottomBar } from '../../../features/practice';
 import { cn } from '../../../utils/cn';
 import type { QuestionChoice, QuestionScreen } from '../data/types';
 import { CenterSpeaker, CornerSpeaker } from './SpeakerControls';
@@ -60,10 +60,8 @@ export function QuestionView({
           e.preventDefault();
           onPlayAudio(question.audio);
         }
-      } else if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        onContinue();
       }
+      // After an answer, Space / Enter belong to the shared feedback bar's Continue.
     };
 
     window.addEventListener('keydown', onKeyDown);
@@ -81,7 +79,7 @@ export function QuestionView({
     <>
       <div className="flex flex-col gap-4">
         {question.prompt ? (
-          <div className="relative flex min-h-[140px] flex-col items-center justify-center gap-1 rounded-feature border-[3px] border-b-[6px] border-ui-divider bg-ui-surface px-5 py-4">
+          <div className="relative flex min-h-[140px] flex-col items-center justify-center gap-1 rounded-feature border-[3px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface px-5 py-4">
             {question.audio.length > 0 && (
               <CornerSpeaker onClick={() => onPlayAudio(question.audio)} label="Play question audio" />
             )}
@@ -97,7 +95,7 @@ export function QuestionView({
                 </span>
               )}
               {question.prompt.text && (
-                <span className="text-center text-[24px] font-black leading-snug text-ui-ink-strong">
+                <span className="text-center text-2xl font-black leading-snug text-ui-ink-strong">
                   {question.prompt.text}
                 </span>
               )}
@@ -126,9 +124,9 @@ export function QuestionView({
                 disabled={answered}
                 onClick={() => selectChoice(choice, idx)}
                 className={cn(
-                  'flex min-h-[60px] w-full items-center gap-2 rounded-control border-2 border-b-[6px] px-2 sm:gap-3 sm:px-4 py-3 text-left transition-[transform,border-color,background-color,opacity] duration-100 focus-ring',
-                  question.isPinyinChoices ? 'text-[24px] font-black' : 'text-[18px] font-extrabold',
-                  !answered && 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover active:mb-[4px] active:translate-y-[4px] active:border-b-2',
+                  'flex min-h-[60px] w-full items-center gap-2 rounded-control border-2 border-b-[length:var(--depth-xl)] px-2 sm:gap-3 sm:px-4 py-3 text-left transition-[transform,border-color,background-color,opacity] duration-100 focus-ring',
+                  question.isPinyinChoices ? 'text-2xl font-black' : 'text-lg font-extrabold',
+                  !answered && 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover active:mb-1 active:translate-y-1 active:border-b-2',
                   showRight && 'sh-pop border-feedback-success bg-feedback-success-surface text-feedback-success-text',
                   showWrong && 'sh-shake border-feedback-danger bg-feedback-danger-surface text-feedback-danger-text',
                   dimOther && 'border-ui-divider bg-ui-surface text-ui-muted-strong opacity-55',
@@ -136,7 +134,7 @@ export function QuestionView({
               >
                 <span
                   className={cn(
-                    'flex size-[22px] shrink-0 items-center justify-center rounded-xs border-2 text-xs font-black tabular-nums',
+                    'flex size-5.5 shrink-0 items-center justify-center rounded-xs border-2 text-xs font-black tabular-nums',
                     showRight
                       ? 'border-feedback-success text-feedback-success-text'
                       : showWrong
@@ -156,62 +154,21 @@ export function QuestionView({
         </div>
       </div>
 
-      {answered && (
-        <div
-          className={cn(
-            'sh-step-enter fixed inset-x-0 bottom-0 z-20 border-t-2 border-ui-divider px-4 py-4 md:left-[var(--workspace-nav-width)]',
-            isCorrect ? 'bg-feedback-success-surface' : 'bg-feedback-danger-surface',
-          )}
-          role="region"
-          aria-live="polite"
-        >
-          <div className="mx-auto flex max-w-[520px] flex-col gap-3 md:max-w-[860px] md:flex-row md:items-center md:gap-7">
-            <div className="flex flex-1 flex-col gap-1">
-              <div
-                className={cn(
-                  'flex items-center gap-2 text-[19px] font-black',
-                  isCorrect ? 'text-feedback-success-text' : 'text-feedback-danger-text',
-                )}
-              >
-                <AppIcon name={isCorrect ? 'check' : 'close'} className="size-[22px] shrink-0" />
-                <span>{isCorrect ? 'Nice!' : 'Listen closely'}</span>
-              </div>
-
-              {(question.feedback.hanzi || question.feedback.pinyin || question.feedback.meaning) && (
-                <div className="flex items-center gap-3.5 pt-0.5">
-                  {question.feedback.hanzi && (
-                    <span className="font-chinese text-[32px] font-bold leading-none text-ui-ink-strong">
-                      {question.feedback.hanzi}
-                    </span>
-                  )}
-                  <div className="min-w-0">
-                    <span className="block text-[18px] font-extrabold leading-tight text-ui-ink-strong">
-                      {question.feedback.pinyin}
-                    </span>
-                    <span className="block text-[15px] font-bold text-ui-muted-strong">
-                      {question.feedback.meaning}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div className="w-full md:ml-auto md:w-[260px]">
-              <ActionButton
-                variant={isCorrect ? 'success' : 'danger'}
-                size="lg"
-                fullWidth
-                onClick={onContinue}
-              >
-                <span className="relative">
-                  Continue
-                  <KeyChip>Enter</KeyChip>
-                </span>
-              </ActionButton>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* The app's own answer bar (quiz, listening, lesson tests): full width under the window, the word on a tile. */}
+      <FeedbackBottomBar
+        status={answered ? (isCorrect ? 'correct' : 'wrong') : 'idle'}
+        showCheck={false}
+        word={question.feedback.hanzi
+          ? { hanzi: question.feedback.hanzi, pinyin: question.feedback.pinyin, meaning: question.feedback.meaning }
+          : undefined}
+        detail={!question.feedback.hanzi && (
+          <p className="text-base font-bold leading-snug text-ui-muted-strong">
+            <span className="text-lg font-extrabold text-ui-ink-strong">{question.feedback.pinyin}</span>
+            {question.feedback.meaning && <> · {question.feedback.meaning}</>}
+          </p>
+        )}
+        onContinue={onContinue}
+      />
     </>
   );
 }

@@ -8,7 +8,8 @@ import {
 import { EXCLUDED_CNS_KEYS, WORD_AUDIO_MAP } from '../../src/screens/start-here/data/audioMap';
 import { countSpokenWords, parseTalkLine, sha1Hex } from '../../src/screens/start-here/data/talkParser';
 import type { QuestionScreen, StartHereScreen } from '../../src/screens/start-here/data/types';
-import { MOUTH_SOUNDS } from '../../src/screens/start-here/mouth/mouthGeometry';
+import { CUE_TIMES } from '../../src/screens/start-here/data/cueTimes';
+import { MOUTH_SOUNDS, ringSpot } from '../../src/screens/start-here/mouth/mouthGeometry';
 
 const { items: pronunciation } = JSON.parse(readFileSync(
   new URL('../../public/data/pronunciation-audio/518c0f846f3640c3.json', import.meta.url), 'utf8',
@@ -20,10 +21,8 @@ const { items: vocabulary } = JSON.parse(readFileSync(
 const lessonZero = vocabulary.filter(({ id }) => id.startsWith('B1L00-'));
 
 const migratedIds = new Set([1, 2, 3, 4, 5, 6, 7, 12, 20]);
-// The prototype already recorded these 13-word segments. Rewording them would invalidate the cache.
-const legacyLongClips = new Set([
-  '1f622ae71a04', '8c827f4db861', '15384f059c0c', '99aacf7c6c05', '551362170ac3', '3644be0503d5',
-]);
+// No 13-word clips remain: every line is 12 words or fewer.
+const legacyLongClips = new Set<string>();
 
 const lessonScreens = START_HERE_LESSONS.flatMap(({ id, screens }) =>
   screens.map((screen, index) => ({ id, screen, where: `Lesson ${id}, screen ${index + 1} (${screen.title})` })),
@@ -100,7 +99,7 @@ test('the Ready check uses audio introduced in the lessons', () => {
   }
 });
 
-test('teacher talk stays within the line and ASCII limits and preserves the 67 cached clips', () => {
+test('teacher talk stays within the line and ASCII limits and keeps the migrated clips', () => {
   const migratedClips = new Set<string>();
   const longClips = new Set<string>();
   for (const { id, screen, where } of lessonScreens) {
@@ -127,9 +126,9 @@ test('teacher talk stays within the line and ASCII limits and preserves the 67 c
     }
   }
   assert.deepEqual(longClips, legacyLongClips);
-  assert.equal(migratedClips.size, 67);
+  assert.equal(migratedClips.size, 68);
   const cachedClipDigest = createHash('sha1').update([...migratedClips].sort().join('\n')).digest('hex');
-  assert.equal(cachedClipDigest, '08fdd49ea44212baba134da5f20061557f2c8519');
+  assert.equal(cachedClipDigest, 'f69e4f36acd74ed2f5ada6d26b878d99b185b3ce');
 });
 
 test('mouth screens, questions, builds and sorts are internally consistent', () => {
@@ -192,5 +191,17 @@ test('lessons 22–24 cover the 13 Lesson 0 cards exactly once, without example 
 test('the teacher talk SHA-1 matches Node crypto for ASCII, UTF-8 and block boundaries', () => {
   for (const input of ['', 'abc', 'en-US-AvaMultilingualNeural-4%Hello.', '你 lǜ 🐴', 'a'.repeat(55), 'a'.repeat(56), 'a'.repeat(64), '中文'.repeat(100)]) {
     assert.equal(sha1Hex(input), createHash('sha1').update(input).digest('hex'));
+  }
+});
+
+test('every ring cue names a known spot and has the time its word is spoken', () => {
+  for (const lesson of START_HERE_LESSONS) for (const screen of lesson.screens) {
+    for (const line of 'talk' in screen ? screen.talk ?? [] : []) for (const seg of parseTalkLine(line)) {
+      if (seg.kind !== 'text' || seg.cues.length === 0) continue;
+      const where = `Lesson ${lesson.id} "${screen.title}": ${line}`;
+      for (const cue of seg.cues) assert.ok(ringSpot(cue.spot), `${where}: unknown spot ${cue.spot}`);
+      // Run scripts/audio/startHereCueTimes.ts after changing a line with a ring cue.
+      assert.equal(CUE_TIMES[seg.clipId]?.length, seg.cues.length, `${where}: no cue time`);
+    }
   }
 });

@@ -24,7 +24,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
         hanzi: '你',
         meaning: 'you',
         spotlight: 'zh',
-        talk: [ 'Each *character* is one beat of sound.' ],
+        talk: [ 'Each *character* is one beat of sound.', 'These are traditional characters, as used in Taiwan.' ],
         audio: 'w:ni'
       },
       {
@@ -91,7 +91,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
           { label: 'How loud to say it', correct: false },
           { label: 'Where the word ends', correct: false }
         ],
-        feedback: { pinyin: 'tā', meaning: 'the flat line means a high, flat voice' }
+        feedback: { pinyin: 'tā', meaning: 'The flat line means a high, flat voice' }
       },
     ],
   },
@@ -112,7 +112,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
         autoPlayAll: true,
         talk: [
           'Same letters,| but a different tune.',
-          'That tune is a *tone*.| A new tone makes a new word.'
+          'That tune is a *tone*.| A new tone, a new word.'
         ]
       },
       {
@@ -126,7 +126,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'trace',
-        title: 'Trace it while you say bā',
+        title: 'Trace it as you say bā: high and flat.',
         tone: 1,
         audio: 'ba1',
         doneText: 'High and flat'
@@ -142,7 +142,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'trace',
-        title: 'Trace it while you say bà',
+        title: 'Trace it as you say bà: high, then drop.',
         tone: 4,
         audio: 'ba4',
         doneText: 'High, then straight down'
@@ -206,7 +206,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
       },
       {
         k: 'trace',
-        title: 'Trace it while you say má',
+        title: 'Trace it as you say má: middle, then up.',
         tone: 2,
         audio: 'ma2',
         doneText: 'From the middle, up'
@@ -221,13 +221,13 @@ export const PART_1_LESSONS: StartHereLesson[] = [
         talk: [
           'Tone three is the *low* tone.',
           'Take your voice down low,| and stay there.',
-          'It may rise a bit at the end.| In speech,| it stays low.'
+          "Hold it low.| Don't swing back up at the end."
         ],
         audio: 'w:ma'
       },
       {
         k: 'trace',
-        title: 'Trace it while you say mǎ',
+        title: 'Trace it as you say mǎ: go low, and stay low.',
         tone: 3,
         audio: 'w:ma',
         doneText: 'Low, and stay low'
@@ -318,7 +318,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
           { pinyin: 'hē', meaning: 'to drink', audio: 'he1' }
         ],
         autoPlayAll: true,
-        talk: [ 'Listen to how each word ends.', 'The first sounds get their own lessons soon.' ]
+        talk: [ 'Listen to how each word ends.', 'The initials get their own lessons soon.' ]
       },
       {
         k: 'question',
@@ -410,7 +410,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
         talk: [
           'When a word starts with these,| pinyin adds a letter in front.',
           "The sounds don't change.| Only the spelling.",
-          'The last one keeps its rounded sound,| not "oo".| The dots just drop.'
+          "That front letter is only a helper.| Underneath, it's the rounded sound."
         ]
       },
       {
@@ -475,7 +475,7 @@ export const PART_1_LESSONS: StartHereLesson[] = [
       {
         k: 'chart',
         title: 'Your first row',
-        talk: [ 'Your first row of the pinyin chart.| Tap a box to hear it.' ],
+        talk: [ 'Your first chart row.| Tap a box to hear it.' ],
         rows: [ '' ],
         cols: [ 'a', 'o', 'e', 'i', 'u', 'ü' ],
         fresh: [ '' ]

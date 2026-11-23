@@ -73,13 +73,6 @@ export function StartHereOverview({
           <div className="aspect-video h-full max-h-[24dvh] w-full overflow-hidden md:h-auto md:max-h-none rounded-[22px] border-2 border-ui-divider bg-ui-hover">
             <img src={startHereHeroImg} alt="Start here overview illustration" className="h-full w-full object-contain" />
           </div>
-          <div className="mt-3 hidden md:flex md:items-center md:justify-between md:px-1">
-            <p className="m-0 text-sm font-extrabold text-ui-muted-strong">
-              {passed
-                ? 'Ready check passed — you can start Book 1 Lesson 1 anytime.'
-                : 'Short interactive steps for Mandarin sounds, tones, pinyin, and your first 13 words.'}
-            </p>
-          </div>
         </div>
 
         {/* Underline tabs: Parts 1-6 + Test */}
@@ -93,7 +86,7 @@ export function StartHereOverview({
                 type="button"
                 onClick={() => onSelectTab(part.id)}
                 className={cn(
-                  '-mb-[2px] shrink-0 cursor-pointer whitespace-nowrap border-b-[3px] py-2 text-[15px] font-extrabold transition-colors focus-ring',
+                  '-mb-0.5 shrink-0 cursor-pointer whitespace-nowrap border-b-[3px] py-2 text-sm font-extrabold transition-colors focus-ring md:text-base',
                   isActive
                     ? 'border-brand-primary text-brand-primary-deep'
                     : partDone
@@ -109,7 +102,7 @@ export function StartHereOverview({
             type="button"
             onClick={() => onSelectTab('test')}
             className={cn(
-              '-mb-[2px] shrink-0 cursor-pointer whitespace-nowrap border-b-[3px] py-2 text-[15px] font-extrabold transition-colors focus-ring',
+              '-mb-0.5 shrink-0 cursor-pointer whitespace-nowrap border-b-[3px] py-2 text-sm font-extrabold transition-colors focus-ring md:text-base',
               activeTab === 'test'
                 ? 'border-brand-primary text-brand-primary-deep'
                 : passed
@@ -125,14 +118,14 @@ export function StartHereOverview({
         <div className="pt-3.5">
           {activePart ? (
             <>
-              <h2 className="m-0 text-[24px] font-black leading-tight text-ui-ink-strong md:text-[30px]">
+              <h2 className="m-0 text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl">
                 {activePart.title}
               </h2>
               <p className="mt-1 text-sm font-bold text-ui-muted-strong">{activePart.subtitle}</p>
             </>
           ) : (
             <>
-              <h2 className="m-0 text-[24px] font-black leading-tight text-ui-ink-strong md:text-[30px]">
+              <h2 className="m-0 text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl">
                 Ready check
               </h2>
               <p className="mt-1 text-sm font-bold text-ui-muted-strong">
@@ -154,10 +147,10 @@ export function StartHereOverview({
                   type="button"
                   onClick={() => onStartLesson(lesson.id)}
                   className={cn(
-                    'flex min-h-[58px] shrink-0 cursor-pointer items-center gap-3.5 rounded-control border-2 border-b-[5px] px-3.5 py-2.5 text-left transition-[transform,border-color,background-color] duration-100 active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                    'flex min-h-14.5 shrink-0 cursor-pointer items-center gap-3.5 rounded-control border-2 border-b-[length:var(--depth-lg)] px-3.5 py-2.5 text-left transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                     isCurrent
                       ? 'border-brand-primary bg-brand-primary-soft'
-                      : 'border-ui-divider bg-ui-surface hover:bg-ui-hover',
+                      : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
                   )}
                 >
                   <span
@@ -174,19 +167,16 @@ export function StartHereOverview({
                   <div className="min-w-0 flex-1">
                     <span
                       className={cn(
-                        'block text-[16px] font-extrabold leading-snug',
+                        'block text-base font-extrabold leading-snug',
                         isCurrent || isDone ? 'text-ui-ink-strong' : 'text-ui-muted-strong',
                       )}
                     >
                       {lesson.title}
                     </span>
-                    <span className="block text-xs font-bold text-ui-muted">
-                      ~{lesson.minutes} min · {lesson.goal}
-                    </span>
                   </div>
 
                   {isDone ? (
-                    <AppIcon name="check" className="size-5 shrink-0 text-feedback-success-text" />
+                    <AppIcon name="check" className="size-5 shrink-0 text-ui-muted-strong" />
                   ) : (
                     <AppIcon
                       name="next"
@@ -197,19 +187,11 @@ export function StartHereOverview({
               );
             })
           ) : (
-            <div className="flex flex-col gap-3 rounded-control border-2 border-b-[5px] border-ui-divider bg-ui-surface p-4">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-base font-black text-ui-ink-strong">13 checks · ~3 min</span>
-                {passed && (
-                  <span className="rounded-sm bg-feedback-success-surface px-2.5 py-1 text-xs font-black uppercase tracking-wider text-feedback-success-text">
-                    Passed
-                  </span>
-                )}
-              </div>
-              <p className="m-0 text-sm font-bold leading-relaxed text-ui-muted-strong">
-                Missed items repeat once at the end so you know what to practice before Book 1 Lesson 1.
+            passed && (
+              <p className="m-0 px-1 text-base font-bold leading-relaxed text-ui-muted-strong">
+                Passed. You can start Book 1 Lesson 1.
               </p>
-            </div>
+            )
           )}
         </div>
 

@@ -8,6 +8,7 @@ import {
   lerpVec,
   MOUTH_SOUNDS,
   poseToVec,
+  ringSpot,
   type MouthPose,
 } from './mouthGeometry';
 import './mouthIllustration.css';
@@ -21,6 +22,8 @@ export interface MouthShowOptions {
 export interface MouthHandle {
   show: (id: MouthSoundId, opts?: MouthShowOptions) => void;
   rest: () => void;
+  /** Put the gold ring on a named spot (see `ringSpot`), or hide it with null. */
+  mark: (spot: string | null) => void;
 }
 
 interface MouthStageProps {
@@ -60,6 +63,8 @@ export const MouthStage = forwardRef<MouthHandle, MouthStageProps>(function Mout
   const upRimRef = useRef<SVGPathElement | null>(null);
   const upperRef = useRef<SVGPathElement | null>(null);
   const airRef = useRef<SVGGElement | null>(null);
+  const ringRef = useRef<SVGGElement | null>(null);
+  const ringAtRef = useRef<string | null>(null);
 
   const curVecRef = useRef<number[]>(poseToVec(CALM_POSE));
   const rafRef = useRef<number>(0);
@@ -208,6 +213,28 @@ export const MouthStage = forwardRef<MouthHandle, MouthStageProps>(function Mout
       clearTimers();
       airOff();
       animateTo(CALM_POSE, 400);
+    },
+    // Glides to a new spot; fades in only when it was hidden, so it never blinks.
+    mark(spot) {
+      const svg = svgRef.current, ring = ringRef.current;
+      const at = spot ? ringSpot(spot) : null;
+      if (!svg || !ring) return;
+      if (!at) {
+        svg.classList.remove('m-hit');
+        ringAtRef.current = null;
+        return;
+      }
+      const move = `translate(${at[0]}px, ${at[1]}px) scale(.52)`;
+      if (!ringAtRef.current) {
+        ring.style.transition = 'none';
+        ring.style.transform = move;
+        void ring.getBoundingClientRect();
+        ring.style.transition = '';
+        svg.classList.add('m-hit');
+      } else {
+        ring.style.transform = move;
+      }
+      ringAtRef.current = spot;
     },
   }));
 
@@ -379,6 +406,10 @@ export const MouthStage = forwardRef<MouthHandle, MouthStageProps>(function Mout
             </g>
           </g>
         </g>
+        <g ref={ringRef} className="m-ring">
+          <circle r="22" className="m-ring-edge" />
+          <circle r="22" className="m-ring-gold" />
+        </g>
       </svg>
     </div>
   );
@@ -422,6 +453,7 @@ export function MouthLabView({
     setSelected(id);
     setCaption(MOUTH_SOUNDS[id]?.cue ?? '');
     stageRef.current?.show(id);
+    stageRef.current?.mark(id);
   };
 
   return (
@@ -439,7 +471,7 @@ export function MouthLabView({
                     type="button"
                     onClick={() => handleChipClick(id)}
                     className={cn(
-                      'min-h-[52px] min-w-[58px] cursor-pointer rounded-[14px] border-2 border-b-[5px] px-3 text-[22px] font-black transition-[transform,border-color,background-color] duration-100 active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                      'min-h-13 min-w-14.5 cursor-pointer rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3 text-2xl font-black transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                       isSelected
                         ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep'
                         : 'border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover',
@@ -512,7 +544,7 @@ export function MouthQuizView({ ask, options, onPlayAudio, onAnsweredCorrect }: 
                   type="button"
                   onClick={() => handlePick(opt, idx)}
                   className={cn(
-                    'flex min-h-[54px] w-full cursor-pointer items-center gap-3 rounded-[14px] border-2 border-b-[5px] px-3 py-2 text-left text-[17px] font-extrabold transition-[transform,border-color,background-color] duration-100 active:mb-[3px] active:translate-y-[3px] active:border-b-2 focus-ring',
+                    'flex min-h-[54px] w-full cursor-pointer items-center gap-3 rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3 py-2 text-left text-lg font-extrabold transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
                     isRight
                       ? 'border-feedback-success bg-feedback-success-surface text-feedback-success-text'
                       : isWrong
@@ -522,7 +554,7 @@ export function MouthQuizView({ ask, options, onPlayAudio, onAnsweredCorrect }: 
                 >
                   <span
                     className={cn(
-                      'flex size-[22px] shrink-0 items-center justify-center rounded-[8px] border-2 text-xs font-black',
+                      'flex size-5.5 shrink-0 items-center justify-center rounded-[8px] border-2 text-xs font-black',
                       isRight
                         ? 'border-feedback-success text-feedback-success-text'
                         : isWrong
@@ -537,7 +569,7 @@ export function MouthQuizView({ ask, options, onPlayAudio, onAnsweredCorrect }: 
               );
             })}
           </div>
-          <p className="min-h-[3em] text-center text-[17px] font-extrabold text-ui-muted-strong md:text-left" aria-live="polite">
+          <p className="min-h-[3em] text-center text-lg font-extrabold text-ui-muted-strong md:text-left" aria-live="polite">
             {feedbackSay || 'Tap an answer.'}
           </p>
         </div>
