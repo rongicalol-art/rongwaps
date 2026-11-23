@@ -6,7 +6,7 @@ const nianCompositeShot = new URL('../../../assets/images/landing/phone-nian-com
 export const PHONE_SHOTS = [
   { src: new URL('../../../assets/images/landing/phone-read.webp', import.meta.url).href, label: 'Read along with the audio', alt: 'Book 1 Lesson 1 dialogue playing, with 同學 lit up as it is spoken' },
   { src: new URL('../../../assets/images/landing/phone-hook.webp', import.meta.url).href, label: 'Memory hooks', alt: 'Character breakdown of 明: its memory hook and its parts 日 (sun) and 月 (moon)' },
-  { src: new URL('../../../assets/images/landing/phone-test.webp', import.meta.url).href, label: 'TOCFL mock tests', alt: 'Lesson 1 mock test: TOCFL Band A, 20 questions' },
+  { src: new URL('../../../assets/images/landing/phone-test.webp', import.meta.url).href, label: 'TOCFL-style mock tests', alt: 'Lesson 1 mock test: TOCFL Band A, 20 questions' },
   { src: new URL('../../../assets/images/landing/phone-card.webp', import.meta.url).href, label: 'Flashcards', alt: 'Flashcard for 貼紙' },
 ];
 
