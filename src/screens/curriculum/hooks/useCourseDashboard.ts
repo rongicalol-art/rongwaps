@@ -80,10 +80,7 @@ export function useCourseDashboard({
     if (!cards.length && !bookIsLocked && !hasFullCourseAccess) return EMPTY_PROGRESS;
 
     const configuredLessons = activeBookId === 1
-      ? [
-        { id: 0, label: 'Introduction', title: 'Getting Started', status: 'available' },
-        ...SAMPLE_LESSONS.map((lesson) => ({ ...lesson, status: hasFullCourseAccess ? 'available' : lesson.status })),
-      ]
+      ? SAMPLE_LESSONS.map((lesson) => ({ ...lesson, status: hasFullCourseAccess ? 'available' : lesson.status }))
       : SAMPLE_LESSONS.map((lesson, index) => ({
         id: lesson.id,
         label: lesson.label,
@@ -110,7 +107,7 @@ export function useCourseDashboard({
     });
 
     const baseLessons = lessonDefinitions
-      // Introduction is hidden until the owner reopens it.
+      // Start here uses Lesson 0 vocabulary in its own window.
       .filter((lesson) => lesson.id !== 0)
       .map((lesson) => {
         const lessonCards = cardsByLesson.get(lesson.id) ?? [];

@@ -5,7 +5,7 @@ import {MotionConfig} from 'motion/react';
 import App from './App.tsx';
 import {ErrorBoundary} from './lib/widgets/ErrorBoundary';
 import { initializeErrorReporting, reportReactError } from './services/errorReporting';
-import './index.css';
+import './styles/app.css';
 import './styles/fonts.generated.css?family=Huninn';
 import { startLayoutShiftMonitor } from './utils/debug/layoutShiftMonitor';
 import { startStaleBuildRecovery } from './utils/browser/staleBuildRecovery';

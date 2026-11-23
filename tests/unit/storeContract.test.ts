@@ -48,10 +48,12 @@ const EXPECTED_PERSISTED_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
-  // Lesson progress (readings read, lessons marked done, old-rule check per book)
+  // Lesson progress (readings read, lessons marked done, old-rule check per book, Start Here)
   'readReadingIds',
   'lessonDoneMarks',
   'legacyDoneBooks',
+  'startHereCompletedLessons',
+  'startHerePassed',
   // Practice preferences
   'preset',
   'pace',
@@ -147,10 +149,12 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
-  // Readings read and lessons marked done are the account's too.
+  // Readings read, lessons marked done, and Start Here progress are the account's too.
   'readReadingIds',
   'lessonDoneMarks',
   'legacyDoneBooks',
+  'startHereCompletedLessons',
+  'startHerePassed',
   // Study together: live state and blocks belong to the signed-in account.
   'race', 'racePlaying', 'racePending', 'raceStatus', 'challenge', 'challengePlaying', 'challengeStartedAt', 'challengeKey', 'challengeDoneMs', 'socialBlocks', 'socialSafety', 'socialOnlineTotal', 'socialChat', 'socialCards', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe', 'socialMentionDraft',
   'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialChatRead', 'socialChatUnread', 'socialFriends', 'socialInbox', 'socialThreads', 'socialSaved', 'socialRecent', 'socialUsername', 'socialViewingLesson', 'socialStudying', 'socialHere',
@@ -195,6 +199,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     completedPartIds: ['b1-l1-p1'],
     readReadingIds: ['B1L01-R01'],
     lessonDoneMarks: { b1l01: { done: true, at: '2026-11-08T00:00:00.000Z' } },
+    startHereCompletedLessons: [1, 2],
+    startHerePassed: true,
     // Account-agnostic state that must survive the switch:
     activeTab: 'library',
     activeBookId: 1,
@@ -234,6 +240,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.deepEqual(state.completedPartIds, []);
   assert.deepEqual(state.readReadingIds, []);
   assert.deepEqual(state.lessonDoneMarks, {});
+  assert.deepEqual(state.startHereCompletedLessons, []);
+  assert.equal(state.startHerePassed, false);
 
   // Account-agnostic state survives.
   assert.equal(state.activeTab, 'library');

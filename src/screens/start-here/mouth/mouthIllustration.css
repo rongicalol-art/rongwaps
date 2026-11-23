@@ -1,0 +1,438 @@
+/* Mouth view (v19): anatomical colors stay consistent across light and dark themes. */
+.mouth {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.m-stage {
+  width: 100%;
+  max-width: 330px;
+  border-radius: 16px;
+  background: #e3eef5;
+  overflow: hidden;
+  line-height: 0;
+  border: 2px solid var(--color-ui-divider);
+}
+
+.m-stage svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Outer portrait fills */
+.m-skin {
+  fill: #f7caa2;
+}
+
+.m-jaw-shadow {
+  fill: #e3a97e;
+}
+
+.m-hair {
+  fill: #2a2c4b;
+}
+
+.m-ear {
+  fill: #f3bf95;
+}
+
+.m-ear-line {
+  fill: none;
+  stroke: #d99a70;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.m-nose-line {
+  fill: none;
+  stroke: #e0a67c;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.m-eye-white {
+  fill: #fffdf8;
+}
+
+.m-eye-iris {
+  fill: #2a2c4b;
+}
+
+.m-brow {
+  fill: none;
+  stroke: #2a2c4b;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.m-brow-top {
+  fill: none;
+  stroke: #2a2c4b;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+}
+
+.m-shirt {
+  fill: #e8705f;
+}
+
+.m-collar {
+  fill: none;
+  stroke: #fff6e8;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.m-stop-tg1 {
+  stop-color: #f7948c;
+}
+
+.m-stop-tg2 {
+  stop-color: #ec7479;
+}
+
+.m-stop-tg3 {
+  stop-color: #dd5c6b;
+}
+
+.m-stop-ng1 {
+  stop-color: #a56a7c;
+}
+
+.m-stop-ng2 {
+  stop-color: #4b2a48;
+}
+
+/* Cutaway anatomy */
+.m-flesh {
+  fill: #f5b09d;
+}
+
+.m-edge {
+  fill: none;
+  stroke: #e2917e;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.m-dark {
+  fill: #4b2a48;
+}
+
+.m-bone {
+  fill: #f8ccae;
+}
+
+.m-vel {
+  fill: #ee9184;
+  stroke: #b9585f;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.m-epi {
+  fill: #ee9184;
+  stroke: #c9705f;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.m-gum {
+  fill: #ee8f8a;
+}
+
+.m-gumline {
+  fill: none;
+  stroke: #e07f7c;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.m-tooth {
+  fill: #fffaf0;
+  stroke: #d6bfa9;
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+}
+
+.m-tline {
+  fill: none;
+  stroke: #b3404f;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.m-tshine {
+  fill: none;
+  stroke: #ffc2b8;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.26;
+}
+
+.m-under {
+  fill: #ee9f90;
+}
+
+.m-rim {
+  fill: none;
+  stroke: #f7caa2;
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.m-lip {
+  fill: #df5b56;
+}
+
+.m-airin {
+  fill: none;
+  stroke: #bfe3f2;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 3 7.8;
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+}
+
+/* Ring intentionally hidden in production UI per owner design decision */
+.m-ring {
+  display: none;
+  fill: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.m-air path,
+path.m-air {
+  fill: none;
+  stroke: #3a7ca5;
+  stroke-width: 6.5;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+}
+
+svg[data-air='puff'] .a-main,
+svg[data-air='puff'] .a-side {
+  stroke-dasharray: 30 23;
+  animation: m-puff 0.5s ease-out 2;
+}
+
+svg[data-air='small'] .a-main {
+  stroke-dasharray: 8 140;
+  animation: m-small 0.5s ease-out 1;
+}
+
+svg[data-air='stream'] .a-main {
+  stroke-dasharray: 7 13;
+  animation: m-flow 0.8s linear infinite;
+}
+
+svg[data-air='nose'] .m-airin {
+  animation: m-flow-in 0.55s linear infinite;
+}
+
+svg.air-on[data-air='stream'] .a-main,
+svg.air-on[data-air='nose'] .m-airin {
+  opacity: 1;
+}
+
+@keyframes m-puff {
+  0% {
+    stroke-dashoffset: 30;
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -56;
+    opacity: 0;
+  }
+}
+
+@keyframes m-small {
+  0% {
+    stroke-dashoffset: 8;
+    opacity: 0.7;
+  }
+  100% {
+    stroke-dashoffset: -10;
+    opacity: 0;
+  }
+}
+
+@keyframes m-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes m-flow-in {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -10.8;
+  }
+}
+
+.m-paper {
+  display: none;
+  transform-origin: -25px 236px;
+}
+
+svg[data-paper='1'] .m-paper {
+  display: block;
+}
+
+.m-paper path {
+  fill: #fffdf6;
+  stroke: #a98f7d;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.m-paper .m-clip {
+  fill: none;
+  stroke: #a98f7d;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+svg[data-air='puff'] .m-paper {
+  animation: m-swing 1.1s ease-out 1;
+}
+
+svg[data-air='small'] .m-paper {
+  animation: m-nudge 0.5s ease-out 1;
+}
+
+@keyframes m-swing {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(24deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+  72% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes m-nudge {
+  0% {
+    transform: rotate(0);
+  }
+  40% {
+    transform: rotate(2.5deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/* Lesson layout overrides matching Version C */
+.sh-mouth-wrap .mouth {
+  grid-template-columns: 1fr;
+  gap: 12px;
+  justify-items: center;
+}
+
+.sh-mouth-wrap .m-stage {
+  width: 100%;
+  max-width: 330px;
+}
+
+.sh-mouth-wrap .m-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+  align-items: center;
+}
+
+.sh-mouth-wrap .m-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  justify-content: center;
+}
+
+.sh-mouth-wrap .m-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .sh-mouth-wrap .mouth {
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .sh-mouth-wrap .m-stage {
+    max-width: 420px;
+  }
+
+  .sh-mouth-wrap .m-side {
+    align-items: flex-start;
+  }
+
+  .sh-mouth-wrap .m-chips {
+    justify-content: flex-start;
+  }
+
+  /* Under the teacher bubble the mouth is always centered with its sound chips below it. */
+  .sh-mouth-wrap .mouth.m-quiet {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+  }
+
+  .sh-mouth-wrap .mouth.m-quiet .m-stage {
+    max-width: 420px;
+  }
+
+  .sh-mouth-wrap .mouth.m-quiet .m-side {
+    align-items: center;
+  }
+
+  .sh-mouth-wrap .mouth.m-quiet .m-chips {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  svg[data-air] .m-paper {
+    animation: none;
+  }
+  svg[data-air='puff'] .a-main,
+  svg[data-air='puff'] .a-side,
+  svg[data-air='small'] .a-main {
+    animation: none;
+    opacity: 1;
+  }
+  svg[data-air='stream'] .a-main,
+  svg[data-air='nose'] .m-airin {
+    animation: none;
+  }
+}

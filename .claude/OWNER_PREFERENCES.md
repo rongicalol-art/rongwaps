@@ -86,6 +86,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - **The learner picks the quiz:** Mixed (default, recommended) or any set of single types, before every vocab quiz. Only types the deck can use are offered; words that fit none of the picked types are left out.
 - **Full coverage:** every word in the quiz is asked exactly once per pass. Misses come back in the review round, in the same picked types.
 - **Audio is the high-quality recording.** Avoid the robotic text-to-speech voice wherever a recording exists. Play the word after every answer.
+- A study card with visible content puts its speaker in the top-right corner. A listening-only prompt uses a centred speaker as the main control.
 - **Vocab quiz ≠ grammar quiz.** Sentence and grammar exercises come after grammar and reading, in a separate quiz.
 - **Content that needs authoring** (goes-with match, situation pick, tap the group) needs the owner's review before data or packs change.
 

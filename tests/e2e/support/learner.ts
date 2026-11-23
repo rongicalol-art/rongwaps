@@ -33,9 +33,11 @@ export async function openHome(page: Page): Promise<void> {
   await later.click({ timeout: 8_000 }).catch(() => { /* no notice this time */ });
 }
 
-/** Opens the Lesson 1 window from home (Lesson 1 is selected by default). */
+/** Opens the Lesson 1 window from home. */
 export async function openLessonOne(page: Page): Promise<void> {
   await openHome(page);
+  const firstLesson = page.getByRole('button', { name: /^Lesson 1:/ });
+  if (await firstLesson.getAttribute('aria-pressed') !== 'true') await firstLesson.click();
   await page.getByRole('button', { name: /^Start with/ }).click();
   await page.getByRole('dialog', { name: /^Lesson 1:/ }).waitFor();
 }

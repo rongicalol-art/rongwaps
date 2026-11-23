@@ -1,0 +1,178 @@
+@reference "../../index.css";
+@source "./";
+@layer utilities {
+  @tailwind utilities source(none);
+}
+
+/* Start Here scope tokens & focused motion keyframes (imported lazily inside StartHereWindow). */
+.sh-root {
+  --sh-ini: #2c6f9c;
+  --sh-ini-soft: #e3eef5;
+  --sh-fin: #a8650f;
+  --sh-fin-soft: #f8ecd6;
+  --sh-tone: #c2473f;
+  --sh-tone-soft: #f9e3e1;
+  --sh-pfp: #f3e4d3;
+}
+
+.dark .sh-root,
+:root[data-theme='dark'] .sh-root {
+  --sh-ini: #8fc3e6;
+  --sh-ini-soft: #24343f;
+  --sh-fin: #e6b566;
+  --sh-fin-soft: #3a2f1c;
+  --sh-tone: #f0958e;
+  --sh-tone-soft: #3b2422;
+  --sh-pfp: #4a3b2f;
+}
+
+.sh-progress-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.sh-progress-shine::after {
+  content: '';
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  top: 4px;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--color-ui-on-solid);
+  opacity: 0.3;
+}
+
+.sh-step-enter {
+  animation: sh-rise 0.22s ease-out both;
+}
+
+.sh-shake {
+  animation: sh-shake 0.3s ease-in-out both;
+}
+
+.sh-pop {
+  animation: sh-lift 0.35s ease-out both;
+}
+
+.sh-chip-drop {
+  animation: sh-drop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.sh-flip-in {
+  animation: sh-flip 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.sh-dots-fade {
+  animation: sh-dotsgo 1.6s ease-in 0.4s both;
+}
+
+.sh-spotlight-dim {
+  animation: sh-dimin 0.45s ease-out 0.1s both;
+}
+
+.sh-spotlight-label {
+  animation: sh-labin 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s both;
+}
+
+.sh-pad-knob {
+  animation: sh-knob 1.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes sh-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sh-shake {
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes sh-lift {
+  40% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes sh-drop {
+  from {
+    transform: translateY(-14px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes sh-flip {
+  0% {
+    transform: rotateX(90deg);
+  }
+  60% {
+    transform: rotateX(-12deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes sh-dotsgo {
+  0%,
+  40% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+}
+
+@keyframes sh-dimin {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.28;
+  }
+}
+
+@keyframes sh-labin {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+@keyframes sh-knob {
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sh-step-enter,
+  .sh-shake,
+  .sh-pop,
+  .sh-chip-drop,
+  .sh-flip-in,
+  .sh-dots-fade,
+  .sh-spotlight-dim,
+  .sh-spotlight-label,
+  .sh-pad-knob {
+    animation: none !important;
+  }
+}

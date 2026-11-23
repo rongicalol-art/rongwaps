@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, memo, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import {
@@ -15,7 +15,7 @@ import { BookCarousel } from './BookCarousel';
 import { LessonItem } from './LessonItem';
 import { SelectionDock } from './components/SelectionDock';
 import { useLessonSelection } from './hooks/useLessonSelection';
-import { StarterLesson } from './StarterLesson';
+import { StartHereEntryRow } from './StartHereEntryRow';
 import { CurriculumSkeleton } from './components/CurriculumSkeleton';
 import { useCourseDashboard } from './hooks/useCourseDashboard';
 import { LessonWindow, type LessonWindowTarget } from './lesson-window/LessonWindow';
@@ -31,6 +31,11 @@ import { useReviewOverview } from '../../hooks/useReviewOverview';
 import { useStudyStreak } from '../../hooks/useStudyStreak';
 import { DailyReviewRow } from './components/DailyReviewRow';
 import { HeaderStreak } from './components/HeaderStreak';
+
+const StartHereWindow = lazy(() => import('../start-here/StartHereWindow').then(
+  (module) => ({ default: module.StartHereWindow }),
+));
+const START_HERE_LESSON_COUNT = 24;
 
 interface CurriculumLibraryProps {
   activeBookId?: number;
@@ -75,9 +80,19 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     () => getSelectedLessonIds(selectedLessonParts, activeBookId),
     [activeBookId, selectedLessonParts],
   );
+  const [startHereOpen, setStartHereOpen] = useState(false);
+  const [startHerePick, setStartHerePick] = useState<boolean | null>(null);
+  const startHereCompleted = useAppStore((state) => state.startHereCompletedLessons.length);
+  const startHerePassed = useAppStore((state) => state.startHerePassed);
+  const hasStudyHistory = useAppStore((state) => state.learnedCards.length > 0
+    || Object.keys(state.srsData).length > 0 || Object.keys(state.lastOpenedLessons).length > 0
+    || Object.keys(state.lessonDoneMarks).length > 0 || state.completedPartIds.length > 0
+    || state.readReadingIds.length > 0 || state.completedPageIds.length > 0);
+  const startHereSelected = activeBookId === 1 && (startHerePick
+    ?? (!startHerePassed && selectedLessons.length === 0 && (startHereCompleted > 0 || !hasStudyHistory)));
   const [lessonWindow, setLessonWindow] = useState<LessonWindowTarget | null>(null);
   const setIsLessonWindowOpen = useAppStore((state) => state.setIsLessonWindowOpen);
-  const isLessonOpen = lessonWindow !== null;
+  const isLessonOpen = lessonWindow !== null || (activeBookId === 1 && startHereOpen);
   useEffect(() => {
     setIsLessonWindowOpen(isLessonOpen);
     return () => setIsLessonWindowOpen(false);
@@ -119,11 +134,13 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   const handleOpenLesson = useCallback((lessonId: number) => {
     const lesson = progress.lessons.find((item) => item.id === lessonId);
     void openWhenReady(() => (lesson ? prepareLessonWindow(activeBookId, lesson) : Promise.resolve()), () => {
+      setStartHerePick(false);
       setLessonWindow({ lessonId, partIds: null });
       setLastOpenedLesson(activeBookId, lessonId);
     });
   }, [activeBookId, openWhenReady, progress.lessons, setLastOpenedLesson]);
   const handleCloseLesson = useCallback(() => setLessonWindow(null), []);
+  const handleCloseStartHere = useCallback(() => setStartHereOpen(false), []);
   // A public lesson page's Study button remembers its lesson; open it once the course has loaded.
   const pendingLessonRef = useRef<LessonPageRef | null>(null);
   useEffect(() => {
@@ -160,6 +177,11 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
 
   const handleLessonClick = useCallback(
     (lessonId: number, event?: React.MouseEvent) => {
+      if (startHereSelected) {
+        setStartHerePick(false);
+        selection.enter(lessonId);
+        return;
+      }
       if (event?.shiftKey) {
         const anchor = anchorLessonIdRef.current ?? selection.selectedIds[0] ?? lessonId;
         anchorLessonIdRef.current = anchor;
@@ -180,7 +202,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         selection.enter(lessonId);
       }
     },
-    [selectableLessonIds, selection],
+    [selectableLessonIds, selection, startHereSelected],
   );
 
   const setLessonDoneMark = useAppStore((state) => state.setLessonDoneMark);
@@ -192,9 +214,14 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   const handleLongPress = useCallback(
     (lessonId: number) => {
       anchorLessonIdRef.current = lessonId;
+      if (startHereSelected) {
+        setStartHerePick(false);
+        selection.enter(lessonId);
+        return;
+      }
       selection.toggle(lessonId);
     },
-    [selection],
+    [selection, startHereSelected],
   );
 
   // Picking one lesson is intent to open it: get its window ready while the learner reaches for Start.
@@ -202,10 +229,14 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     ? progress.lessons.find((lesson) => lesson.id === selection.selectedIds[0]) ?? null
     : null;
   useEffect(() => {
-    if (pickedLesson) void prepareLessonWindow(activeBookId, pickedLesson).catch(() => {});
-  }, [activeBookId, pickedLesson]);
+    if (pickedLesson && !startHereSelected) void prepareLessonWindow(activeBookId, pickedLesson).catch(() => {});
+  }, [activeBookId, pickedLesson, startHereSelected]);
 
   const handleStartSelection = useCallback(() => {
+    if (startHereSelected) {
+      setStartHereOpen(true);
+      return;
+    }
     const ids = selection.selectedIds;
     if (ids.length === 1) {
       handleOpenLesson(ids[0]);
@@ -216,13 +247,12 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     if (!onStartPathPractice) return;
     void preparePracticeLaunch({ activeBookId, selectedLessons, activity: 'flashcards' }).catch(() => {});
     onStartPathPractice();
-  }, [activeBookId, handleOpenLesson, onStartPathPractice, selectedLessons, selection.selectedIds]);
+  }, [activeBookId, handleOpenLesson, onStartPathPractice, selectedLessons, selection.selectedIds, startHereSelected]);
   const handlePartChange = useCallback((partIds: number[]) => {
     setLessonWindow((current) => (current ? { ...current, partIds } : current));
   }, []);
 
-  const starterLesson = progress.lessons.find((lesson) => lesson.id === 0);
-  const regularLessons = progress.lessons.filter((lesson) => lesson.id !== 0);
+  const regularLessons = progress.lessons;
   const midIndex = Math.ceil(regularLessons.length / 2);
   const lessonColumns = [
     regularLessons.slice(0, midIndex),
@@ -233,7 +263,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [activeBookId]);
 
-  const isPicked = (lesson?: { id: number }) => Boolean(lesson && selection.selectedIds.includes(lesson.id));
+  const isPicked = (lesson?: { id: number }) => Boolean(!startHereSelected && lesson && selection.selectedIds.includes(lesson.id));
   const renderLessonList = (lessons: typeof regularLessons) => lessons.map((lesson, index) => (
     <div key={lesson.id}>
       <LessonItem
@@ -242,7 +272,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         onLongPress={handleLongPress}
         onMarkDone={handleMarkDone}
         onToggle={handleLessonClick}
-        isSelecting={selection.isMultiSelecting}
+        isSelecting={!startHereSelected && selection.isMultiSelecting}
         isSelected={isPicked(lesson)}
         isPrevSelected={isPicked(lessons[index - 1])}
         isNextSelected={isPicked(lessons[index + 1])}
@@ -299,17 +329,15 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                 className="flex w-full flex-col items-center"
               >
                 {onStartReview && <DailyReviewRow overview={reviewOverview} onStart={onStartReview} />}
-                {starterLesson && (
-                  <div className="w-full max-w-[400px]">
-                    <StarterLesson
-                      starterLesson={starterLesson}
-                      faces={<LessonFaces lesson={lessonKey(activeBookId, starterLesson.id)} />}
-                      activeBook={activeBook}
-                      onOpen={handleLessonClick}
-                      onLongPress={handleLongPress}
-                      onToggle={handleLessonClick}
-                      isSelecting={selection.isMultiSelecting}
-                      isSelected={isPicked(starterLesson)}
+                {activeBookId === 1 && (
+                  <div className="mb-4 w-full max-w-[400px]">
+                    <StartHereEntryRow
+                      completedCount={startHereCompleted}
+                      totalLessons={START_HERE_LESSON_COUNT}
+                      passed={startHerePassed}
+                      isSelected={startHereSelected}
+                      onSelect={() => setStartHerePick(true)}
+                      onOpen={() => setStartHereOpen(true)}
                     />
                   </div>
                 )}
@@ -330,14 +358,29 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
       </div>
 
       <SelectionDock
-        count={selection.selectedIds.length}
+        count={startHereSelected ? 1 : selection.selectedIds.length}
         accentBgClassName={activeBook.accentBg}
         edgeHex={activeBook.edgeHex}
         disabled={isLoading}
         loading={isOpeningLesson !== null}
         onStart={handleStartSelection}
-        onCancel={selection.exit}
+        onCancel={() => {
+          setStartHerePick(false);
+          selection.exit();
+        }}
       />
+
+      {activeBookId === 1 && startHereOpen && (
+        <Suspense fallback={null}>
+          <StartHereWindow
+            onClose={handleCloseStartHere}
+            onGoToLesson1={() => {
+              selection.enter(1);
+              handleOpenLesson(1);
+            }}
+          />
+        </Suspense>
+      )}
 
       <LessonWindow
         bookId={activeBookId}

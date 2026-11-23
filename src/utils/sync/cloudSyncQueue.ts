@@ -17,6 +17,8 @@ export interface CloudSyncFingerprintState extends Partial<ProfileSettings> {
   completedPartIds?: string[];
   readReadingIds?: string[];
   lessonDoneMarks?: Record<string, unknown>;
+  startHereCompletedLessons?: number[];
+  startHerePassed?: boolean;
   lessonTests?: Record<string, unknown>;
 }
 
@@ -45,7 +47,9 @@ export function createCloudSyncFingerprint(
     state.selectedBooks,
     state.displayName, state.avatarColor, state.coverPreset, state.avatarPath, state.coverPath, state.googlePhoto,
     state.startedPartIds ?? [], state.completedPageIds ?? [], state.completedPartIds ?? [],
-    state.readReadingIds ?? [], state.lessonDoneMarks ?? {}, state.lessonTests ?? {},
+    state.readReadingIds ?? [], state.lessonDoneMarks ?? {},
+    state.startHereCompletedLessons ?? [], Boolean(state.startHerePassed),
+    state.lessonTests ?? {},
   ]);
 }
 
