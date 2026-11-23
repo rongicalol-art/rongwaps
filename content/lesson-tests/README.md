@@ -22,7 +22,7 @@ contract; the code that enforces it is named in each section.
   **Pass at 80%** (`LESSON_TEST_PASS`): the Test tab gets a crown and the card shows the best score. The
   test never locks anything; retakes are unlimited.
 - **Fix round** (review honey tone): each missed screen again, answers checked, the reason shown; after Check, the
-  **Script** sheet lists the recording's lines (each with its own play button) or the text's pinyin and English.
+  bottom bar shows why. **Script** opens the recording's lines (each with its own play button) or the written answer details, including pinyin and English.
 - **Scripts & answers** (`TestBooklet`): one page, in test order, like the answer booklet after a TOCFL: every
   recording's script (each line with its own play button, Play all for the whole recording) or text, then each
   question with the answer given, the right one and why; missed questions have red numbers. It opens with the

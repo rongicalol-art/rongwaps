@@ -12,7 +12,7 @@ import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
-import { PracticeDockSlotProvider, StreakMoment, type SessionStats } from '../../features/practice';
+import { PracticeDockSlotProvider, SessionNextStepProvider, StreakMoment, type SessionStats } from '../../features/practice';
 import { localDay, streakMomentDue } from '../../utils/srs/profileStats';
 import { studyTimes } from '../../utils/srs/reviewEvents';
 import { ActivityScreens } from './components/ActivityScreens';
@@ -20,6 +20,7 @@ import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
 import { usePracticeDataReady } from './hooks/usePracticeDataReady';
 import { useStudyMaterials } from './hooks/useStudyMaterials';
+import { useLessonNextStep } from './hooks/useLessonNextStep';
 import type { Flashcard } from '../../data/flashcards';
 
 interface ActivityModalsProps {
@@ -54,7 +55,8 @@ export function ActivityModals({
   animateIn = true,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
-  const race = useAppStore(state => state.racePlaying ? state.race?.selection : null);
+  // A race or a challenge link brings its own quiz: book, lessons and parts.
+  const race = useAppStore(state => state.racePlaying ? state.race?.selection : state.challengePlaying ? state.challenge?.selection : null);
   const activeBookId = race ? race.book ?? 1 : selectedBookId;
   const raceSelection = race;
   const selectedLessons = useMemo(() => raceSelection ? Object.keys(raceSelection.lessons).map(Number) : savedLessons, [raceSelection, savedLessons]);
@@ -187,6 +189,7 @@ export function ActivityModals({
   const {
     onPartContinue,
     partContinueLabel,
+    selectedStudyPartIds,
   } = useActivityStudyParts({
     activeBookId,
     selectedLessons,
@@ -194,6 +197,16 @@ export function ActivityModals({
     isReviewMode: isReviewSession,
     activeActivity,
     onOpenGrammarPart,
+  });
+
+  // After a lesson quiz the end screen offers one fitting next step: Sentences, or another practice mode.
+  const nextStep = useLessonNextStep({
+    enabled: isLessonPartFocused && !race && Boolean(activeActivity),
+    bookId: activeBookId,
+    lessonId: selectedLessons[0] ?? null,
+    partIds: selectedStudyPartIds,
+    cards: deckCards,
+    onPractice: setActiveActivity,
   });
 
   const activityLabel = activeActivity === 'create-card'
@@ -256,6 +269,7 @@ export function ActivityModals({
                 data-dock-bottom={reservesDock ? '' : undefined}
                 className={cn('relative flex flex-1 flex-col overflow-hidden', hadLoader.current && 'animate-in fade-in duration-200', insetClassName)}
               >
+              <SessionNextStepProvider value={nextStep}>
               <PracticeDockSlotProvider isVertical={dockLayout.isVertical} laneRef={reservesDock ? bodyRef : undefined}>
                 <ActivityPracticeHeader
                   resolvedActivity={resolvedActivity}
@@ -324,6 +338,7 @@ export function ActivityModals({
                   )}
                 </AnimatePresence>
               </PracticeDockSlotProvider>
+              </SessionNextStepProvider>
               </div>
             )}
 

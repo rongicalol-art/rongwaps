@@ -5,6 +5,7 @@ import { QuizChoices } from './QuizChoices';
 import { cancelQuizLaunch } from './quizShuffle';
 import { QuizMixed } from './QuizMixed';
 import { QuizTyping } from './QuizTyping';
+import { useCountsAsDailyReview, useReviewDistractors } from '../../hooks/useDailyReview';
 import { useAppStore } from '../../store/useAppStore';
 import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import { quizSessionKey } from '../../utils/srs/resumeState';
@@ -13,7 +14,7 @@ import type { SessionStats } from '../../features/practice';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { QuizTypePicker, type QuizPickerEntrance } from '../flashcard';
 import type { Flashcard } from '../../data/flashcards';
-import { useRaceQuiz } from '../../features/social';
+import { useChallengeQuiz, useRaceQuiz } from '../../features/social';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 
 interface QuizScreenProps {
@@ -52,12 +53,19 @@ export function QuizScreen({
   sessionStats = null,
   sessionDeck,
 }: QuizScreenProps) {
-  const race = useRaceQuiz();
+  // A race or a challenge link plays a shared quiz: its own deck, types and seed.
+  const raceQuiz = useRaceQuiz();
+  const challengeQuiz = useChallengeQuiz();
+  const race = raceQuiz ?? challengeQuiz;
   const raceSelection = race?.selection;
   const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`${raceSelection.book ?? 1}:${lesson}`, parts])) : undefined, [raceSelection]);
   const { cards: loadedCards, deckCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, !race && isReviewDeck, !race && isLibraryDeck, true, raceParts);
   const cards = race ? deckCards : isReviewDeck && sessionDeck?.length ? sessionDeck : loadedCards;
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  // Today's review: answers count toward the daily goal, and wrong answers come from more than the few due words.
+  const daily = useCountsAsDailyReview(!race && isReviewDeck);
+  const reviewOptions = useReviewDistractors(!race && isReviewDeck, cards);
+  const review = { daily, extraCards: reviewOptions ?? undefined };
   const launchCleanup = useRef<number | undefined>(undefined);
   useEffect(() => {
     window.clearTimeout(launchCleanup.current);
@@ -86,7 +94,7 @@ export function QuizScreen({
   const mixed = mode === 'choices' && quizFormat === 'mixed';
 
 
-  if (isLoading) {
+  if (isLoading || reviewOptions === null) {
     return null;
   }
 
@@ -109,6 +117,8 @@ export function QuizScreen({
                 sessionKey={mixedKey}
                 types={picked}
                 seed={race?.seed}
+                shareable={!race && !isLibraryDeck && !isReviewDeck}
+                {...review}
                 sessionStats={sessionStats}
                 onEnd={onClose || (() => {})}
                 onContinue={onContinue}
@@ -130,6 +140,7 @@ export function QuizScreen({
               <QuizChoices
                 activeBookId={activeBookId}
                 cards={cards}
+                {...review}
                 sessionKey={quizKey}
                 sessionStats={sessionStats}
                 onEnd={onClose || (() => {})}
@@ -140,6 +151,7 @@ export function QuizScreen({
               <QuizTyping
                 activeBookId={activeBookId}
                 cards={cards}
+                {...review}
                 sessionKey={`${sessionKey}:typing`}
                 sessionStats={sessionStats}
                 onEnd={onClose || (() => {})}

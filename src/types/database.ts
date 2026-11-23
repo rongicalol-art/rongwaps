@@ -82,6 +82,16 @@ export type ProfileSettings = { [key: string]: Json | undefined };
 export interface Database {
   public: {
     Tables: {
+      /** Challenge links (20261123130000): only create_challenge, challenge_card and accept_challenge_friend touch it. */
+      challenges: {
+        Row: {
+          code: string; sender: string; sender_name: string; sender_color: string; selection: Json;
+          correct: number; total: number; run: number[]; friend_adds: number; created_at: string; expires_at: string;
+        };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
       /** Study together friends: adds go through add_friend/remove_friend (20261119170000). */
       friend_adds: {
         Row: { adder: string; added: string; created_at: string };
@@ -317,6 +327,10 @@ export interface Database {
       report_user: { Args: { p_target: string; p_reason: string; p_place: string; p_message?: string | null }; Returns: boolean };
       friend_people: { Args: Record<PropertyKey, never>; Returns: { user_id: string; name: string; color: string; i_added: boolean; added_me: boolean }[] };
       add_friend: { Args: { p_user: string }; Returns: string };
+      /** Challenge links (20261123130000): share a lesson quiz run, read it by code, befriend its sender in one tap. */
+      create_challenge: { Args: { p_code: string; p_selection: Json; p_correct: number; p_total: number; p_run: number[] }; Returns: undefined };
+      challenge_card: { Args: { p_code: string }; Returns: Json | null };
+      accept_challenge_friend: { Args: { p_code: string }; Returns: string };
       remove_friend: { Args: { p_user: string }; Returns: undefined };
       direct_inbox: { Args: Record<PropertyKey, never>; Returns: { other: string; last_id: number; last_sender: string; last_body: string; last_at: string; unread: number }[] };
       send_direct_message: { Args: { p_to: string; p_body: string }; Returns: { id: number; sender: string; recipient: string; body: string; created_at: string } };

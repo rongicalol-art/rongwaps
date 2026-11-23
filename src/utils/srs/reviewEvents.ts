@@ -1,7 +1,7 @@
 import type { Quality } from './srsEngine';
 import { localDay } from './profileStats';
 
-export type ReviewSource = 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'daily' | 'practice';
+export type ReviewSource = 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'pinyin' | 'daily' | 'practice';
 export interface ReviewContext {
   id: string;
   sessionId: string;
@@ -31,7 +31,7 @@ export function validReviewEvent(value: unknown): value is ReviewEvent {
   return typeof e.id === 'string' && /^[\da-f]{8}(-[\da-f]{4}){3}-[\da-f]{12}$/i.test(e.id)
     && typeof e.sessionId === 'string' && e.sessionId.length <= 200
     && typeof e.cardId === 'string' && e.cardId.length > 0 && e.cardId.length <= 500
-    && ['flashcards', 'quiz', 'listening', 'writing', 'tones', 'daily', 'practice'].includes(e.source)
+    && ['flashcards', 'quiz', 'listening', 'writing', 'tones', 'pinyin', 'daily', 'practice'].includes(e.source)
     && [0, 1, 2, 3, 4, 5].includes(e.quality) && typeof e.scheduled === 'boolean'
     && Number.isFinite(e.reviewedAt) && e.reviewedAt > 0
     && Number.isFinite(e.durationMs) && e.durationMs >= 0 && e.durationMs <= 300_000

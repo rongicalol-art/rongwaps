@@ -1,12 +1,12 @@
 import { ActionButton, AppIcon, BrandWordmark, WorkspaceWindow } from '../../lib/widgets';
-import { rememberFolderReturn } from '../../utils/browser/shareLink';
+import { rememberLinkReturn } from '../../utils/browser/shareLink';
 import { SignInConsent, SignInMessageNote, useGoogleSignIn } from '../auth';
 
 export function JoinFolderSignIn({ code }: { code: string }) {
   const { signIn, error, isBusy } = useGoogleSignIn();
 
   const startSignIn = () => {
-    rememberFolderReturn(`/join/${code}`);
+    rememberLinkReturn(`/join/${code}`);
     void signIn();
   };
 

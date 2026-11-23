@@ -2,7 +2,13 @@
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
 /** ISO date the current Terms and Privacy Policy take effect. */
-export const LEGAL_EFFECTIVE_DATE = '2026-11-21';
+export const LEGAL_EFFECTIVE_DATE = '2026-11-24';
+
+/**
+ * The day friends, private messages and the long class chat turned on (the 2026-11-21 privacy update). It stays put
+ * when later privacy updates move LEGAL_EFFECTIVE_DATE; shared/lobby.ts and the database keep the same day.
+ */
+export const SOCIAL_UPDATE_DATE = '2026-11-21';
 
 export interface LegalUpdate {
   /** The changed pages; Read opens the first, and each links the others. */
@@ -21,8 +27,8 @@ export interface LegalUpdate {
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
   pages: ['privacy'],
-  summary: 'Study together adds friends, private messages and @usernames. You choose what others see in Settings.',
-  acceptedFrom: '2026-11-21',
+  summary: 'You can share a quiz as a challenge link. Classmates with your link see your name and score and can add you as a friend.',
+  acceptedFrom: '2026-11-24',
 };
 
 /** Shown beside the effective date: accounts made since sign-up opened are bound from sign-up. */

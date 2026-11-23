@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { DialogueItem, LessonTestQuestion, PictureHearItem, ReadingItem, SceneGapItem, TestLine } from '../../src/types/lessonTest';
+import type { DialogueItem, LessonTestQuestion, PictureHearItem, ReadingItem, ReadPickPictureItem, SceneGapItem, TestLine } from '../../src/types/lessonTest';
 import { testScript } from '../../src/screens/lesson-test/testScript';
 
 /** The Fix round's Script sheet: every spoken line with its answer marked, or a text's pinyin and English. */
@@ -59,7 +59,7 @@ test("a picture question's script is its question, then the answers in the order
   ]);
 });
 
-test('a text gives its pinyin and English by paragraph, title first; gap sentences have no script', () => {
+test('a text gives its pinyin and English by paragraph, title first', () => {
   const item: ReadingItem = {
     id: 'r', kind: 'reading', format: 'notice',
     title: { traditional: '舞會', simplified: '舞会', pinyin: 'Wǔhuì', english: 'Dance party' },
@@ -70,9 +70,24 @@ test('a text gives its pinyin and English by paragraph, title first; gap sentenc
     kind: 'text',
     pinyin: ['Wǔhuì', 'Shíjiān: qī diǎn', 'Dìfāng: èr lóu'],
     english: ['Dance party', 'Time: 7:00', 'Place: 2nd floor'],
+    answers: [],
   });
-  const gap: SceneGapItem = { id: 's', kind: 'scene-gap', picture: 'reading:B2L01-R02', alt: '', questions: [question('q1')] };
-  assert.equal(testScript(gap, gap.questions, {}, numberOf), null);
+});
+
+test('the Script holds the completed gap sentence and the sentence matched to a picture', () => {
+  const line = { traditional: '我去圖書館。', simplified: '我去图书馆。', pinyin: 'Wǒ qù túshūguǎn.', english: 'I am going to the library.' };
+  const gap: SceneGapItem = {
+    id: 's', kind: 'scene-gap', picture: 'reading:B2L01-R02', alt: '',
+    questions: [question('q1', { answer: line })],
+  };
+  const picture: ReadPickPictureItem = {
+    id: 'p', kind: 'read-pick-picture', questions: [question('q1', { prompt: line })],
+  };
+  for (const item of [gap, picture]) {
+    const script = testScript(item, item.questions, {}, numberOf);
+    assert.ok(script.kind === 'text');
+    assert.deepEqual(script.answers.map((row) => row.text), [line]);
+  }
 });
 
 test('two questions answered on the same line both show their numbers there', () => {

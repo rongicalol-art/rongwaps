@@ -2,16 +2,20 @@ import React, { Fragment, useCallback, useEffect, useLayoutEffect, useMemo, useR
 import { SAMPLE_BOOKS } from '../../data/books';
 import { audioService } from '../../services/audioService';
 import type { Flashcard } from '../../data/flashcards';
-import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, type SessionStats } from '../../features/practice';
+import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, useSessionNextStep, type SessionStats } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
-import { useRaceReporter } from '../../features/social';
+import { ChallengeResult, challengeSelection, shareChallenge, useRaceReporter } from '../../features/social';
+import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
+import { CHALLENGE_MAX_MS, CHALLENGE_MAX_WORDS } from '../../../shared/challenge';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useReviewTone } from '../../hooks/useReviewTone';
+import { useCompleteDailyReview } from '../../hooks/useDailyReview';
 import { useAppStore } from '../../store/useAppStore';
 import { isHanziChar } from '../../utils/characters/hanzi';
 import { ReviewDealIntro } from '../flashcard';
+import { QuizWordPop } from './QuizWordPop';
 import { fadeOutGhost, landQuizLaunch, riseIn, type QuizHandoff } from './quizShuffle';
 
 export interface QuizModeProps {
@@ -23,6 +27,12 @@ export interface QuizModeProps {
   sessionKey: string;
   /** The flashcard round before this quiz (Cards done → quiz): Session complete reports the whole session. */
   sessionStats?: SessionStats | null;
+  /** A lesson quiz (not a library, review, race or challenge deck): its result can be shared as a challenge link. */
+  shareable?: boolean;
+  /** Today's daily review: answers count toward the daily goal, and Session complete says so. */
+  daily?: boolean;
+  /** More words to draw wrong-answer options from; they are never asked (a review can be one or two words). */
+  extraCards?: readonly Flashcard[];
 }
 
 /** What the shell needs from a quiz mode's session (choices and mixed both provide it). */
@@ -107,10 +117,14 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
   hideBreakdown?: boolean;
   /** Whether the current question is a tap-to-pair exercise. */
   isMatchPair?: boolean;
+  /** A right answer that auto-advances pops its word up where the bar lives (typing: the meaning is never on screen). */
+  popWordOnAutoAdvance?: boolean;
   /** Keep the feedback bar up (no auto-advance) while a follow-up is open. */
   holdAutoAdvance?: boolean;
   /** The mode lands the review intro's ghost card on its prompt (choices); otherwise the ghost just fades. */
   landsReviewGhost?: boolean;
+  /** A lesson quiz Session complete can share as a challenge link: its quiz types ([] = Mixed). Null: not shareable. */
+  challengeTypes?: readonly QuizTypeId[] | null;
   children: (ctx: {
     openBreakdown: (index: number) => void;
     breakdownOpen: boolean;
@@ -123,8 +137,8 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
 
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
-  session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, children,
-  activeBookId, onEnd, onContinue, sessionStats,
+  session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, popWordOnAutoAdvance, children,
+  activeBookId, onEnd, onContinue, sessionStats, daily = false, challengeTypes = null,
 }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
@@ -132,6 +146,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     activeCards, currentIndex, currentCard, completed, handleCheck, resumedReview, resetAll, reviewUnlearned, practiceCards, missedCards,
     unlearnedCount, learnedCount, isShuffled, toggleShuffle, answerAudioPlaying = false, resetNonce = 0,
   } = session;
+  const nextStep = useSessionNextStep();
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const quizFormat = useAppStore((state) => state.quizFormat);
@@ -163,8 +178,24 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   /** The intro handed over (ghost undefined with reduced motion): the review's first question enters. */
   const [entrance, setEntrance] = useState<{ ghost: QuizHandoff | null } | null>(null);
   const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
+  /**
+   * The first pass as a run: ms from the first question at which word 1, 2, … was done. A challenge link shares it,
+   * and a challenge being played compares against it. Only a pass played from its first word is a fair run.
+   */
+  const runRef = useRef<{ start: number | null; marks: number[]; valid: boolean }>({ start: null, marks: [], valid: false });
+  const challengeLink = useAppStore((state) => (state.challengePlaying ? state.challenge : null));
+  const signedIn = useAppStore((state) => Boolean(state.currentUser));
+  const markRun = useCallback((count: number, final = false) => {
+    const run = runRef.current;
+    if (run.start === null) return;
+    const at = Math.min(CHALLENGE_MAX_MS, Date.now() - run.start);
+    while (run.marks.length < count) run.marks.push(at);
+    const store = useAppStore.getState();
+    if (final && store.challengePlaying && store.challengeDoneMs === null) store.setSocial({ challengeDoneMs: run.marks[run.marks.length - 1] ?? at });
+  }, []);
   const isReviewPass = reviewPass > 0 || resumedReview;
   const isDone = completed && (session.practiceOnly || unlearnedCount === 0);
+  useCompleteDailyReview(daily, completed && unlearnedCount === 0);
 
   useEffect(() => {
     if (resumedReview) setReviewPass((pass) => pass || 1);
@@ -173,6 +204,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
 
   useLayoutEffect(() => {
     if (!completed || session.practiceOnly || unlearnedCount === 0) return;
+    if (!firstPassRef.current) markRun(activeCards.length, true);
     firstPassRef.current ??= { total: activeCards.length, correct: learnedCount, cards: activeCards, missedCards };
     reviewUnlearned();
     setReviewPass((pass) => pass + 1);
@@ -181,10 +213,12 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     setDealStarted(false);
     setEntrance(null);
     setIntroActive(true);
-  }, [activeCards, completed, learnedCount, missedCards, reviewUnlearned, unlearnedCount, session.practiceOnly]);
+  }, [activeCards, completed, learnedCount, missedCards, reviewUnlearned, unlearnedCount, session.practiceOnly, markRun]);
 
   const restart = useCallback(() => {
     firstPassRef.current = null;
+    runRef.current = { start: null, marks: [], valid: false };
+    if (useAppStore.getState().challengePlaying) useAppStore.getState().setSocial({ challengeStartedAt: null, challengeDoneMs: null });
     finishedAtRef.current = null;
     startedAtRef.current = Date.now();
     setReviewPass(0);
@@ -225,6 +259,27 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const questionRef = useRef<HTMLDivElement>(null);
   const risenFor = useRef<unknown>(null);
   const hasCard = Boolean(currentCard);
+  // The run's clock starts when the first question is on screen (after its recordings are ready).
+  // resetNonce: a restart on the first question changes nothing else, and must start a new clock.
+  useEffect(() => {
+    if (preparation || !hasCard || introActive || completed || runRef.current.start !== null) return;
+    runRef.current = { start: Date.now(), marks: [], valid: currentIndex === 0 && !isReviewPass };
+    const store = useAppStore.getState();
+    if (store.challengePlaying && store.challengeStartedAt === null) store.setSocial({ challengeStartedAt: runRef.current.start });
+  }, [preparation, hasCard, introActive, completed, currentIndex, isReviewPass, resetNonce]);
+  useEffect(() => {
+    // Once the pass is complete the count can drop back (a finished match round): the run is already whole.
+    if (completed || isReviewPass || introActive || runRef.current.start === null) return;
+    // Words are done one at a time (a match counts each pair); a jump or a step back (a resumed or shuffled
+    // deck) means this pass is not one fair run.
+    const step = shownIndex - runRef.current.marks.length;
+    if (step < 0 || step > 1) runRef.current.valid = false;
+    markRun(shownIndex);
+  }, [shownIndex, completed, isReviewPass, introActive, markRun]);
+  useLayoutEffect(() => {
+    // A pass with no misses ends here; one with misses already ended when its review began.
+    if (isDone && !firstPassRef.current) markRun(activeCards.length, true);
+  }, [isDone, activeCards.length, markRun]);
   const showContent = !introActive || Boolean(entrance);
   // Mixed rounds can reorder their beats: the actual first question leads the sheet.
   const reviewIntroCards = useMemo(() => introActive && currentCard
@@ -270,10 +325,27 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     const trickyIds = new Set(sessionStats?.trickyCardIds ?? []);
     const tricky = Array.from(new Map([...first.missedCards, ...first.cards.filter(card => trickyIds.has(card.id))].map(card => [card.id, card])).values());
     const words = sessionStats?.words ?? Array.from(new Set(first.cards.map((card) => card.front)));
+    const run = runRef.current;
+    // A pass with no misses ends on this render: its last words are done when the session finished.
+    if (run.start !== null) while (run.marks.length < first.total) run.marks.push(Math.min(CHALLENGE_MAX_MS, finishedAtRef.current - run.start));
+    const fullRun = run.valid && run.marks.length === first.total && first.total <= CHALLENGE_MAX_WORDS;
+    if (challengeLink && !session.practiceOnly) {
+      return (
+        <ChallengeResult
+          link={challengeLink}
+          me={{ correct: first.correct, total: first.total, ms: run.marks[run.marks.length - 1] ?? 0 }}
+          onContinue={onContinue ?? onEnd}
+          onTryAgain={restart}
+          onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
+          missedCount={tricky.length}
+        />
+      );
+    }
+    const selection = challengeTypes && signedIn && !challengeLink && !session.practiceOnly && fullRun ? challengeSelection(first.cards, challengeTypes) : null;
     return (
       <SessionComplete
         words={words}
-        headline={session.practiceOnly ? 'Practice complete' : undefined}
+        headline={session.practiceOnly ? 'Practice complete' : daily ? 'Today’s review complete' : undefined}
         reviewLabel="Review missed"
         pct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
         pctLabel="Quiz"
@@ -281,7 +353,8 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         onContinue={onContinue ?? onEnd}
         onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
         missedCount={tricky.length}
-        onStudyAllAgain={restart}
+        nextStep={nextStep}
+        onChallenge={selection ? () => void shareChallenge({ selection, correct: first.correct, total: first.total, run: [...run.marks] }) : undefined}
         celebrateStreak
       />
     );
@@ -324,6 +397,14 @@ export const QuizShell: React.FC<QuizShellProps> = ({
             onDone={() => setIntroActive(false)}
           />
         </div>
+      )}
+
+      {popWordOnAutoAdvance && (
+        <QuizWordPop
+          word={autoAdvance && word ? word : null}
+          nonce={`${reviewPass}:${currentIndex}:${resetNonce}`}
+          clear={status === 'wrong'}
+        />
       )}
 
       {!preparation && <FeedbackBottomBar

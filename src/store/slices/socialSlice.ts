@@ -1,9 +1,10 @@
 /**
- * Study together: presence, the class chat, invites and the quiz race. Everything live is ephemeral (rebuilt from the
+ * Study together: presence, the class chat, invites, the quiz race and challenge links. Everything live is ephemeral (rebuilt from the
  * games Worker on connect); only the learner's own choices (`showOnline`, `showProfile`, `socialMuted`) are persisted locally.
  */
 import type { ChatMessage, LessonCount, Person, MentionNotice, ProfileCard } from '../../../shared/lobby';
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
+import type { ChallengeLink } from '../../../shared/challenge';
 import type { SocialStatus } from '../../services/socialService';
 import type { BlockedPerson, ReportPlace } from '../../services/safetyService';
 import type { Conversation, DirectMessage, FriendPerson, MyUsername, SavedProfile } from '../../services/friendsService';
@@ -39,8 +40,8 @@ export interface SocialState {
   socialRooms: RaceRoomSummary[];
   /** `more`: the Lobby has older class chat lines than these (after the privacy update). */
   socialChat: { lesson: number; messages: ChatMessage[]; more?: boolean } | null;
-  /** Ephemeral private room messages; cleared when leaving or switching accounts. */
-  socialPartyChat: { code: string; messages: ChatMessage[] } | null;
+  /** Ephemeral private room messages and unread count; cleared when leaving or switching accounts. */
+  socialPartyChat: { code: string; messages: ChatMessage[]; read: number; unread: number } | null;
   /** The last class chat line this account has seen (the Lobby keeps it per account; 0 = none). */
   socialChatRead: number;
   /** Class chat lines from others after the read spot, including ones not loaded yet. */
@@ -79,6 +80,16 @@ export interface SocialState {
   racePlaying: boolean;
   raceStatus: SocialStatus;
   racePending: boolean;
+  /** A challenge link being played: the sender's run the ghost replays. Null when no challenge is open. */
+  challenge: ChallengeLink | null;
+  /** True while the challenge quiz is on screen. */
+  challengePlaying: boolean;
+  /** When the challenge's first question appeared: the ghost's clock starts here. */
+  challengeStartedAt: number | null;
+  /** The quiz session of this play: each opened challenge starts fresh, never resuming an earlier play. */
+  challengeKey: string | null;
+  /** Milliseconds this play's first pass took, once it is over (the ghost then steps aside). */
+  challengeDoneMs: number | null;
   /** People this account blocked (from the database; null until loaded). The Lobby hides each pair from each other. */
   socialBlocks: BlockedPerson[] | null;
   socialSafety: SafetyPrompt | null;
@@ -122,6 +133,11 @@ const LIVE_DEFAULTS = {
   racePlaying: false,
   raceStatus: 'off' as SocialStatus,
   racePending: false,
+  challenge: null,
+  challengePlaying: false,
+  challengeStartedAt: null,
+  challengeKey: null,
+  challengeDoneMs: null,
   socialBlocks: null,
   socialSafety: null,
 } satisfies Partial<SocialState>;
@@ -155,16 +171,26 @@ export function countedIn(state: Pick<SocialState, 'socialHere' | 'socialPeople'
 
 /** Friend requests waiting for my answer. */
 export const friendRequests = (state: Pick<SocialState, 'socialFriends'>) => (state.socialFriends ?? []).filter(person => person.addedMe && !person.iAdded);
-/** New private messages across conversations. */
-export const directUnread = (state: Pick<SocialState, 'socialInbox'>) => state.socialInbox.reduce((sum, row) => sum + row.unread, 0);
+/** New private messages across mutual-friend conversations shown in Chats. */
+export function directUnread(state: Pick<SocialState, 'socialInbox' | 'socialFriends'>): number {
+  if (!state.socialFriends) return 0;
+  const mutual = new Set(state.socialFriends.filter(person => person.iAdded && person.addedMe).map(person => person.u));
+  return state.socialInbox.reduce((sum, row) => sum + (mutual.has(row.u) ? row.unread : 0), 0);
+}
 
 /**
- * The number on the faces' chat bubble: new class chat lines, unread party mentions, new private messages and
- * friend requests; none while muted.
+ * The number on the faces' chat bubble: new class chat lines, new private messages and friend requests —
+ * strictly what appears inside Chats (party chat has its own badge in the room); none while muted.
  */
-export function unreadTotal(state: Pick<SocialState, 'socialMuted' | 'socialChatUnread' | 'socialMentions' | 'socialInbox' | 'socialFriends'>): number {
+export function unreadTotal(state: Pick<SocialState, 'socialMuted' | 'socialChatUnread' | 'socialInbox' | 'socialFriends'>): number {
   if (state.socialMuted) return 0;
-  return state.socialChatUnread + state.socialMentions.filter(item => item.room && !item.read).length + directUnread(state) + friendRequests(state).length;
+  return state.socialChatUnread + directUnread(state) + friendRequests(state).length;
+}
+
+/** Unread party chat lines in the current room; none while muted. */
+export function partyUnread(state: Pick<SocialState, 'socialMuted' | 'race' | 'socialPartyChat'>): number {
+  if (state.socialMuted || !state.race || state.socialPartyChat?.code !== state.race.code) return 0;
+  return state.socialPartyChat.unread;
 }
 
 /** The lesson key the Lobby uses: book 1 lesson 4 → 104. */

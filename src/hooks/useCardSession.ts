@@ -32,6 +32,8 @@ export interface UseCardSessionOptions {
   /** Re-queue a missed card inside the pass per the "repeat mistakes" setting (default). The quiz turns it off: its misses come back as a review round. */
   requeueMissed?: boolean;
   source?: ReviewSource;
+  /** Answers are recorded only (streak, history, learner report): they never schedule a card or mark it learned. */
+  observeOnly?: boolean;
   paused?: boolean;
   daily?: boolean;
 }
@@ -266,15 +268,16 @@ export function useCardSession(
     previousAnswerTime.current = clock.current;
     markCardReviewed(card.id, quality, {
       id: crypto.randomUUID(), sessionId: sessionIdRef.current, source, durationMs,
-      practiceOnly: practiceOnlyRef.current || wasMissed,
+      practiceOnly: practiceOnlyRef.current || wasMissed || options.observeOnly === true,
       ...(source === 'daily' ? { dailyTarget: useAppStore.getState().dailyReviewPlan?.cardIds.length } : {}),
-    });
+    }, options.observeOnly ? { observeOnly: true } : undefined);
     if (practiceOnlyRef.current) {
       setSessionResults(previous => ({ ...previous, [card.id]: quality }));
       return;
     }
     if (!wasMissed) setSessionResults(previous => ({ ...previous, [card.id]: quality }));
-    if (quality <= 2) {
+    // Below Got it (flashcards' Hard is 3) the card stays in this round.
+    if (quality <= 3) {
       firstAttemptMissedRef.current.add(card.id);
       if (repeatMistakes !== 'off') {
         const next = queueMissedItem(activeCardsRef.current, card, currentIndexRef.current, repeatMistakes);
@@ -282,7 +285,7 @@ export function useCardSession(
         setActiveCards(next);
       }
     }
-  }, [clock, markCardReviewed, options.source, repeatMistakes]);
+  }, [clock, markCardReviewed, options.observeOnly, options.source, repeatMistakes]);
 
   const advanceOrComplete = useCallback((): 'advanced' | 'completed' => {
     const current = currentIndexRef.current;
@@ -382,7 +385,7 @@ export function useCardSession(
     practiceOnlyRef.current = false;
     firstAttemptMissedRef.current.clear();
     const unlearnedIds = Object.entries(sessionResults)
-      .filter(([, quality]) => quality === 1 || quality === 2)
+      .filter(([, quality]) => quality <= 3)
       .map(([id]) => id);
 
     const unlearnedCards = cards.filter((card) => unlearnedIds.includes(card.id));
@@ -403,8 +406,8 @@ export function useCardSession(
     onAnswerStateResetRef.current();
   }, [bumpResetNonce, cards, resetAll, sessionResults]);
 
-  const unlearnedCount = Object.values(sessionResults).filter((quality) => quality === 1 || quality === 2).length;
-  const learnedCount = Object.values(sessionResults).filter((quality) => quality > 2).length;
+  const unlearnedCount = Object.values(sessionResults).filter((quality) => quality <= 3).length;
+  const learnedCount = Object.values(sessionResults).filter((quality) => quality > 3).length;
 
   const progressInfo = computeCardSessionProgress(
     currentIndex,

@@ -25,7 +25,7 @@ const trend = (now, before) => {
   return pct === 0 ? ' (same as the week before)' : ` (${pct > 0 ? '+' : ''}${pct}% vs the week before)`;
 };
 const pct = (part, whole) => (n(whole) ? `${Math.round((n(part) / n(whole)) * 100)}%` : '–');
-const SOURCE_NAMES = { daily: 'daily review', flashcards: 'flashcards', quiz: 'quizzes', listening: 'listening', writing: 'writing', tones: 'tones', practice: 'practice' };
+const SOURCE_NAMES = { daily: 'daily review', flashcards: 'flashcards', quiz: 'quizzes', listening: 'listening', writing: 'writing', tones: 'tones', pinyin: 'pinyin', practice: 'missed-word replays' };
 
 const a = r.active ?? {};
 const s = r.signups ?? {};
@@ -74,6 +74,22 @@ if (hours.some(Boolean)) {
   }
   line(`- Busiest hours (Taiwan): ${busiest.join(', ')}. Quietest 3 hours: ${quiet}:00-${(quiet + 3) % 24}:00, the safest time to release.`);
 }
+line();
+
+const rv = r.review ?? {};
+line('## Review (spaced repetition)');
+// Groups under 3 people could point at one person, like the lesson and word rows.
+if (n(rv.learners_with_due) >= 3) {
+  line(`- ${n(rv.learners_with_due)} of this week's ${n(a.week)} learners have words waiting now; half of them have ${Math.round(n(rv.median_due))}+ waiting, ${n(rv.learners_100_due)} have 100+.`);
+} else line('- Fewer than 3 learners have words waiting now.');
+if (n(rv.daily_learners) >= 3) {
+  line(`- Daily review: ${n(rv.daily_learners)} learners used it on ${n(rv.daily_days)} learner-days and finished the day's goal on ${n(rv.daily_finished)} (${pct(rv.daily_finished, rv.daily_days)}).`);
+} else line(`- Daily review: fewer than 3 learners used it this week.`);
+if (n(rv.came_back) >= 30) {
+  const gaps = (rv.came_back_by_gap ?? []).filter((g) => n(g.answers) >= 10).map((g) => `${g.gap} ${g.right_pct}% (${g.answers})`);
+  line(`- Remembered when due: ${rv.came_back_right_pct}% of ${n(rv.came_back)} answers to words seen again after a day or more (the scheduler aims for 90%).${gaps.length ? ` By gap: ${gaps.join(', ')}.` : ''}`);
+  line('- Well under 90% means words come back too late or were never really learned; well over means reviews could wait longer.');
+} else line('- Remembered when due: not enough returning words yet (needs 30+ answers).');
 line();
 
 const lessons = r.lessons ?? [];

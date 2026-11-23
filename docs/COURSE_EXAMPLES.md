@@ -23,7 +23,7 @@ English meaning, curriculum location, source card, and extraction provenance.
   by book with no headers (order carries the ranking). Sentence pinyin and the
   B·L meta carry the source book's accent too.
 
-- Practice hub → **Sentences** (`src/screens/sentences/`) is a sentence feed for the deck's
+- Practice → **Sentences** (`src/screens/sentences/`) is a sentence feed for the deck's
   parts: every record once, in book order (Dialogue, Reading, Examples), the part's words
   highlighted. One card sits in focus, neighbours faded; native scroll snapping moves it.
   Touch: scroll to move; one Play button in a bottom dock (answer-bar slot) plays the focused

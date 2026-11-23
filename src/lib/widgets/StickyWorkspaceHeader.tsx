@@ -13,8 +13,8 @@ export interface StickyWorkspaceHeaderProps {
   title: string;
   /** Horizontal alignment of the title block. Defaults to centered. */
   align?: 'left' | 'center';
-  /** Optional short uppercase label under the title (e.g. book label on Books home). */
-  subtitle?: string;
+  /** Optional short uppercase line under the title (e.g. the study streak on Learn). */
+  subtitle?: React.ReactNode;
   /** Tailwind token classes for the subtitle text (default: muted). Use accent/course tokens, never hardcoded hex. */
   subtitleClassName?: string;
   /** Optional icon shown next to the title (e.g. folder icon). */

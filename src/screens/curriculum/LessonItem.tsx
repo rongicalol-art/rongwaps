@@ -61,9 +61,10 @@ function LessonItemBase({
   const isLocked = lesson.state === 'locked';
   const isDone = lesson.isFullyCompleted;
   const englishTitle = getEnglishLessonTitle(lesson.title);
-  // The same ring as the lesson screen: shown once the lesson is started, a check once it is done.
+  // The same ring as the lesson screen while the lesson is under way; a finished lesson (or a passed test) wears the crown.
   const fraction = lessonFraction(lesson);
-  const showRing = !isLocked && fraction > 0;
+  const showCrown = !isLocked && (isDone || lesson.isTestPassed);
+  const showRing = !isLocked && fraction > 0 && !showCrown;
 
   const [shake, setShake] = useState(0);
   const [menuPoint, setMenuPoint] = useState<MenuPoint | null>(null);
@@ -152,8 +153,8 @@ function LessonItemBase({
             {englishTitle}
           </span>
         </span>
-        {!isLocked && lesson.isTestPassed && (
-          <AppIcon name="crown" size={20} className="shrink-0 text-feedback-warning" aria-label="Test passed" />
+        {showCrown && (
+          <AppIcon name="crown" size={20} className="shrink-0 text-feedback-warning" aria-label={lesson.isTestPassed ? 'Test passed' : 'Done'} />
         )}
         {showRing && <ActivityRing fraction={fraction} label={lesson.label} />}
         {!isLocked && faces}

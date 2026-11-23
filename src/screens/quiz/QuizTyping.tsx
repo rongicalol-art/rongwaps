@@ -90,7 +90,7 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
 };
 
 export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shell }) => {
-  const session = useQuizTyping(cards, sessionKey);
+  const session = useQuizTyping(cards, sessionKey, { daily: shell.daily });
   const { currentCard, input, handleInputChange, status, handleCheck } = session;
   const typingPromptType = useAppStore((state) => state.typingPromptType);
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
@@ -116,6 +116,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
       correctAnswer={numberToToneMarks(currentCard?.pinyin || '')}
       word={currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: simpleDefinitions ? currentCard.simple : undefined } : undefined}
       isCheckDisabled={!input.trim()}
+      popWordOnAutoAdvance
     >
       {({ openBreakdown }) => (
         <QuizTypingCard

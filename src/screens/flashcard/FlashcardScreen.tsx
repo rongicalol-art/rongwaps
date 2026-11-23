@@ -15,6 +15,7 @@ import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { ReviewDealIntro } from './components/ReviewDealIntro';
 import { cn } from '../../utils/cn';
 import { useReviewTone } from '../../hooks/useReviewTone';
+import { useCompleteDailyReview } from '../../hooks/useDailyReview';
 import { useAppStore } from '../../store/useAppStore';
 import { useFlashcardKeyboardShortcuts } from './hooks/useFlashcardKeyboardShortcuts';
 import { useFlashcardFlow } from './hooks/useFlashcardFlow';
@@ -146,10 +147,7 @@ export function FlashcardScreen({
     setIntroActive(true);
   }, [cards, completed, learnedCount, missedCards, missedCount, reviewUnlearned, trickyCards, practiceOnly]);
 
-  useEffect(() => {
-    if (!isReviewDeck || !completed || missedCount > 0 || !dailyPlan || dailyPlan.completed) return;
-    useAppStore.getState().setDailyReviewPlan({ ...dailyPlan, completed: true });
-  }, [completed, dailyPlan, isReviewDeck, missedCount]);
+  useCompleteDailyReview(isReviewDeck, completed && missedCount === 0);
 
   const resetAll = useCallback(() => {
     firstPassRef.current = null;

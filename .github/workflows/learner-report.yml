@@ -1,0 +1,46 @@
+name: Learner report
+
+# Anonymous, combined numbers about how learners use the app (scripts/release/learner-report.sql),
+# saved as the "learner-report" artifact and shown in the run's summary.
+# The 10:00 morning T3 thread starts this run itself and waits for it, because GitHub starts
+# scheduled runs hours late (docs/reference/AUTOMATIONS.md → Morning thread). The schedule is
+# only a fallback for days the morning thread doesn't run.
+# Read-only: it never writes to the database, comments or opens issues, so an extra run is
+# harmless. That is why the Claude guard lets an unattended run start it (.claude/hooks/guard.mjs).
+
+on:
+  schedule:
+    - cron: '30 1 * * *' # 09:30 Taiwan, often hours late
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: learner-report
+  cancel-in-progress: false
+
+jobs:
+  learners:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/release
+            public/data/vocabulary
+      - name: Build the learner report (read-only)
+        env:
+          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+        run: |
+          mkdir -p learner-report
+          psql "$DATABASE_URL" --no-psqlrc -q -v ON_ERROR_STOP=1 -At -c 'begin transaction read only' \
+            -f scripts/release/learner-report.sql -c 'commit' > learner-report/report.json
+          node scripts/release/learnerReport.mjs learner-report/report.json > learner-report/learner-report.md
+          cat learner-report/learner-report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: learner-report
+          path: learner-report/
+          retention-days: 35

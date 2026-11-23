@@ -32,6 +32,8 @@ export interface WordStageCounts {
 export interface ReviewOverview {
   dailyCompleted?: boolean;
   dailyCount?: number;
+  /** Words of today's daily review already answered (a review stopped halfway). */
+  dailyAnswered?: number;
   extraDueCount?: number;
   /** Words due for review right now (any word with an SRS record past its date). */
   dueCount: number;
