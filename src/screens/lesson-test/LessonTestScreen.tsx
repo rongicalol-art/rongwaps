@@ -184,9 +184,10 @@ export function LessonTestScreen({ lesson, sounds, mode = 'both', onClose }: Les
         {header}
         {/* The part intro is also the loading screen while the recordings download. */}
         {introShown ? null : (
-        /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it. */
+        /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it.
+           A reading's questions share one screen: the reading stays put and only the question changes. */
         <motion.div
-          key={screenKey}
+          key={item.kind === 'reading' ? `${run.stage}:${screen.itemId}` : screenKey}
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
           className={`flex flex-auto flex-col px-4 pt-[clamp(0.75rem,5vh,3.5rem)] sm:px-6 ${barShown ? '' : 'pb-36'}`}

@@ -78,8 +78,8 @@ export interface QuestionBodyProps {
 }
 
 /**
- * One screen of the test, one column at every size like TOCFL's computer test: the instruction, then the
- * recording, picture or text, then the answers, all one width so their edges line up.
+ * One screen of the test, one column like TOCFL's computer test: the instruction, then the recording, picture or
+ * text, then the answers, all one width so their edges line up. A reading on a wide window sits beside its question.
  */
 export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, turnGap, script, audioReady, firstNumber, onAnswer, scriptOpen = false, onCloseScript }: QuestionBodyProps) {
   const screenKey = questionIds.join(',');
@@ -129,8 +129,12 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
     <ChoiceList question={question} order={order} selected={selected} checked={checked} spoken={spoken} mark={audio.markQuestion === 0 ? audio.mark : null} script={script} onSelect={pick} onSay={sayChoice} />
   );
   const pictures = <PictureChoices question={question} order={order} selected={selected} checked={checked} onSelect={pick} />;
+  // A reading sits beside its question on wide windows (TOCFL's split), so the reading stays put while its questions change.
+  const split = item.kind === 'reading';
   const printedPrompt = question.prompt && (
-    <p className="text-balance text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl"><ChineseText text={text(question.prompt, script)} /></p>
+    <p className={cn('text-balance text-center font-chinese text-xl leading-snug text-ui-ink-strong md:text-2xl', split && '@4xl:w-full @4xl:text-pretty @4xl:text-left')}>
+      <ChineseText text={text(question.prompt, script)} />
+    </p>
   );
   // A dialogue's question appears when the narrator asks it, right after the ding (TOCFL order).
   const askedPrompt = question.prompt && (
@@ -206,17 +210,24 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       );
       break;
     case 'reading':
-      stimulus = <ReadingText item={item} script={script} />; answersPart = <>{printedPrompt}{choiceList(false)}</>;
+      stimulus = <ReadingText item={item} script={script} markable />; answersPart = <>{printedPrompt}{choiceList(false)}</>;
       break;
   }
 
   // Picture answers are compared at a glance, so they get a wider column on big screens.
   const pictureAnswers = item.kind === 'hear-pick-picture' || item.kind === 'read-pick-picture';
-  return (
-    <div className={cn('mx-auto flex w-full max-w-xl flex-col items-center gap-6', pictureAnswers && 'md:max-w-3xl')}>
-      <h1 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong">{titleFor(item, question)}</h1>
+  const body = (
+    <div
+      className={cn(
+        'mx-auto flex w-full max-w-xl flex-col items-center gap-6',
+        pictureAnswers && 'md:max-w-3xl',
+        // Wide enough for two columns: the reading on the left, the question and its answers on the right.
+        split && '@4xl:grid @4xl:max-w-none @4xl:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] @4xl:items-start @4xl:gap-x-11',
+      )}
+    >
+      <h1 className={cn('text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong', split && '@4xl:col-span-2')}>{titleFor(item, question)}</h1>
       {stimulus && <div className="flex w-full flex-col items-center gap-5">{stimulus}</div>}
-      <div className="flex w-full flex-col items-center gap-5">{answersPart}</div>
+      <div className={cn('flex w-full flex-col items-center gap-5', split && '@4xl:pt-1')}>{answersPart}</div>
       {scriptContent && (
         <ScriptSheet
           open={scriptOpen}
@@ -228,4 +239,5 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       )}
     </div>
   );
+  return split ? <div className="@container mx-auto w-full max-w-6xl">{body}</div> : body;
 }
