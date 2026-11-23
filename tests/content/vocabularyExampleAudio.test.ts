@@ -146,7 +146,7 @@ test('Books 1, 2 and 3 have complete example coverage and only verified recorded
     }
   }
 
-  assert.equal(expectedCount, 1961, 'primary vocabulary source corpus size');
+  assert.equal(expectedCount, 1964, 'primary vocabulary source corpus size');
   assert.equal(
     Object.keys(audioManifest.examples).length,
     expectedCount + extraCourseExamples.length,

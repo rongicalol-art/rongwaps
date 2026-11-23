@@ -6,6 +6,8 @@ name: Health
 # requests (the site server and Study together) against the free 100,000 a day. When something needs the owner, it
 # opens one "Health check" issue (or comments on the open one), so the GitHub
 # app on the phone notifies. Mondays add a sign-up summary. Quiet days do nothing.
+# The anonymous learner report has its own workflow (learner-report.yml), so the morning
+# thread can start it without touching this check's issue or its "since the last good run".
 # "Not safe" reports don't wait for this: the server emails them at once.
 
 on:

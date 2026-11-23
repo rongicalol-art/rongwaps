@@ -228,7 +228,7 @@ export const PAGES: Readonly<Record<number, LessonPageData>> = {
   },
   9: {
     title: ["Who Can Say that There Is No Future unless You are a College Graduate?","誰說得念大學才有未來？"],
-    wordCount: 61,
+    wordCount: 64,
     words: [
       ["得","dé","to get","B3L09-1-01-2f8eb21e050c.mp3"],
       ["安心","ānxīn","to feel at ease","B3L09-1-02-94c7b396b3ce.mp3"],

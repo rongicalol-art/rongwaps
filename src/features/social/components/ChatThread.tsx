@@ -7,7 +7,7 @@ import { loadThread, markThreadRead, sendDirect } from '../friendsController';
 import { updateOpen } from '../socialUpdate';
 import type { ReportPlace } from '../../../services/safetyService';
 import { lobby } from '../lobbyController';
-import { joinRace, partySend } from '../raceController';
+import { joinRace, markPartyChatRead, partySend } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
 import { describeSelection, linePhoto } from '../socialText';
 import { EmptyNote } from './SocialBits';
@@ -93,6 +93,14 @@ export function PartyChatThread() {
   const chat = useAppStore(state => state.socialPartyChat?.code === state.race?.code ? state.socialPartyChat?.messages ?? null : null);
   const ready = useAppStore(state => state.raceStatus === 'live');
   const race = useAppStore(state => state.race);
+  const lastId = chat?.[chat.length - 1]?.id;
+  useEffect(() => {
+    if (!race?.code) return;
+    const mark = () => { if (document.visibilityState === 'visible') markPartyChatRead(race.code); };
+    mark();
+    document.addEventListener('visibilitychange', mark);
+    return () => document.removeEventListener('visibilitychange', mark);
+  }, [race?.code, lastId]);
   const candidates: Person[] = (race?.players ?? []).filter(player => !player.left).map(player => ({ u: player.id, n: player.name, c: socialColor(player.color), l: null, a: null, i: player.image }));
   return <MessageThread chat={chat} ready={ready} candidates={candidates} place="party" send={(text, mentions) => partySend({ type: 'chat', text, mentions })} report={id => { partySend({ type: 'chat-report', id }); }} />;
 }
@@ -152,12 +160,16 @@ function MessageThread({ chat, ready, candidates, place = 'chat', everyone = fal
   // Seen while on screen: the count clears and the Lobby keeps the spot for every device.
   const lastId = chat?.[chat.length - 1]?.id;
   useEffect(() => {
-    if (!classChat || newFrom === undefined || lastId === undefined) return;
-    const mark = () => { if (document.visibilityState === 'visible') lobby.markChatRead(lastId); };
+    if (!classChat || newFrom === undefined || !chat) return;
+    const mark = () => {
+      if (document.visibilityState !== 'visible') return;
+      if (lastId !== undefined) lobby.markChatRead(lastId);
+      else if (useAppStore.getState().socialChatUnread > 0) useAppStore.getState().setSocial({ socialChatUnread: 0 });
+    };
     mark();
     document.addEventListener('visibilitychange', mark);
     return () => document.removeEventListener('visibilitychange', mark);
-  }, [classChat, newFrom, lastId]);
+  }, [classChat, newFrom, chat, lastId]);
   const prefix = draft.slice(0, caret);
   const match = /(?:^|\s)@([^@\s]*)$/.exec(prefix);
   const mentionQuery = match?.[1]?.toLocaleLowerCase() ?? null;

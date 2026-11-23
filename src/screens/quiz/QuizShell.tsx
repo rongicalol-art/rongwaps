@@ -2,16 +2,18 @@ import React, { Fragment, useCallback, useEffect, useLayoutEffect, useMemo, useR
 import { SAMPLE_BOOKS } from '../../data/books';
 import { audioService } from '../../services/audioService';
 import type { Flashcard } from '../../data/flashcards';
-import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, type SessionStats } from '../../features/practice';
+import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, useSessionNextStep, type SessionStats } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { useRaceReporter } from '../../features/social';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useReviewTone } from '../../hooks/useReviewTone';
+import { useCompleteDailyReview } from '../../hooks/useDailyReview';
 import { useAppStore } from '../../store/useAppStore';
 import { isHanziChar } from '../../utils/characters/hanzi';
 import { ReviewDealIntro } from '../flashcard';
+import { QuizWordPop } from './QuizWordPop';
 import { fadeOutGhost, landQuizLaunch, riseIn, type QuizHandoff } from './quizShuffle';
 
 export interface QuizModeProps {
@@ -23,6 +25,10 @@ export interface QuizModeProps {
   sessionKey: string;
   /** The flashcard round before this quiz (Cards done → quiz): Session complete reports the whole session. */
   sessionStats?: SessionStats | null;
+  /** Today's daily review: answers count toward the daily goal, and Session complete says so. */
+  daily?: boolean;
+  /** More words to draw wrong-answer options from; they are never asked (a review can be one or two words). */
+  extraCards?: readonly Flashcard[];
 }
 
 /** What the shell needs from a quiz mode's session (choices and mixed both provide it). */
@@ -107,6 +113,8 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
   hideBreakdown?: boolean;
   /** Whether the current question is a tap-to-pair exercise. */
   isMatchPair?: boolean;
+  /** A right answer that auto-advances pops its word up where the bar lives (typing: the meaning is never on screen). */
+  popWordOnAutoAdvance?: boolean;
   /** Keep the feedback bar up (no auto-advance) while a follow-up is open. */
   holdAutoAdvance?: boolean;
   /** The mode lands the review intro's ghost card on its prompt (choices); otherwise the ghost just fades. */
@@ -123,8 +131,8 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
 
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
-  session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, children,
-  activeBookId, onEnd, onContinue, sessionStats,
+  session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, popWordOnAutoAdvance, children,
+  activeBookId, onEnd, onContinue, sessionStats, daily = false,
 }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
@@ -132,6 +140,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     activeCards, currentIndex, currentCard, completed, handleCheck, resumedReview, resetAll, reviewUnlearned, practiceCards, missedCards,
     unlearnedCount, learnedCount, isShuffled, toggleShuffle, answerAudioPlaying = false, resetNonce = 0,
   } = session;
+  const nextStep = useSessionNextStep();
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const quizFormat = useAppStore((state) => state.quizFormat);
@@ -165,6 +174,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
   const isReviewPass = reviewPass > 0 || resumedReview;
   const isDone = completed && (session.practiceOnly || unlearnedCount === 0);
+  useCompleteDailyReview(daily, completed && unlearnedCount === 0);
 
   useEffect(() => {
     if (resumedReview) setReviewPass((pass) => pass || 1);
@@ -273,7 +283,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     return (
       <SessionComplete
         words={words}
-        headline={session.practiceOnly ? 'Practice complete' : undefined}
+        headline={session.practiceOnly ? 'Practice complete' : daily ? 'Today’s review complete' : undefined}
         reviewLabel="Review missed"
         pct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
         pctLabel="Quiz"
@@ -281,7 +291,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         onContinue={onContinue ?? onEnd}
         onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
         missedCount={tricky.length}
-        onStudyAllAgain={restart}
+        nextStep={nextStep}
         celebrateStreak
       />
     );
@@ -324,6 +334,14 @@ export const QuizShell: React.FC<QuizShellProps> = ({
             onDone={() => setIntroActive(false)}
           />
         </div>
+      )}
+
+      {popWordOnAutoAdvance && (
+        <QuizWordPop
+          word={autoAdvance && word ? word : null}
+          nonce={`${reviewPass}:${currentIndex}:${resetNonce}`}
+          clear={status === 'wrong'}
+        />
       )}
 
       {!preparation && <FeedbackBottomBar

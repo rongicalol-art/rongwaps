@@ -97,3 +97,15 @@ test('reset clears local SRS and session progress', () => {
     sessionCardOrder: {},
   });
 });
+
+test('an observe-only answer (Pinyin practice) is recorded but never schedules or marks a word learned', () => {
+  const context = { id: '0b6f2a4e-1c3d-4e5f-8a9b-0c1d2e3f4a5b', sessionId: 's', source: 'pinyin' as const, durationMs: 1000, practiceOnly: true };
+  const result = applyCardReview(createState(), 'new-word', 5, context, { observeOnly: true });
+
+  assert.equal(result.reviewEvents?.length, 1);
+  assert.equal(result.reviewEvents?.[0].source, 'pinyin');
+  assert.equal(result.reviewEvents?.[0].scheduled, false);
+  assert.deepEqual(result.srsData, {});
+  assert.deepEqual(result.learnedCards, []);
+  assert.equal(result.sessionProgress.cardsLearned, 0);
+});

@@ -45,7 +45,7 @@ function LineRow({ row, index, scriptPreference, shown, speaking, onPlay }: { ro
   const zh = row.text[scriptPreference] ?? row.text.traditional;
   const content = (
     <>
-      <span
+      {(row.badge || row.audio) && <span
         aria-hidden
         className={cn(
           'mt-0.5 grid size-7 shrink-0 place-items-center rounded-xs font-chinese text-base transition-colors duration-200',
@@ -53,9 +53,9 @@ function LineRow({ row, index, scriptPreference, shown, speaking, onPlay }: { ro
         )}
       >
         {speaking ? <SpeakerIcon status="playing" size={16} /> : row.badge}
-      </span>
+      </span>}
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className={cn('text-pretty font-chinese text-[19px] text-ui-ink-strong', shown.pinyin ? 'leading-[1.8]' : 'leading-snug')}>
+        <span className={cn('whitespace-pre-line text-pretty font-chinese text-[19px] text-ui-ink-strong', shown.pinyin ? 'leading-[1.8]' : 'leading-snug')}>
           <PinyinText text={zh} pinyin={row.text.pinyin} show={shown.pinyin} />
           {row.audio && <LinePlay text={zh} speaking={speaking} tinted={Boolean(row.answer)} onPress={() => onPlay(index)} />}
         </span>
@@ -149,17 +149,15 @@ export function ScriptSheet({ open, onClose, script, scriptPreference, audio }: 
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-5 px-3 pt-1">
-          <div className="flex flex-col gap-2">
-            {script.pinyin.map((paragraph, index) => (
-              <p key={index} className="text-base font-bold leading-relaxed text-ui-muted-strong">{paragraph}</p>
-            ))}
-          </div>
-          <div className="flex flex-col gap-2">
-            {script.english.map((paragraph, index) => (
-              <p key={index} className="text-base font-bold leading-relaxed text-ui-muted">{paragraph}</p>
-            ))}
-          </div>
+        <div className="flex flex-col gap-5">
+          {script.answers.map((row, index) => (
+            <LineRow key={index} row={row} index={index} scriptPreference={scriptPreference} shown={{ pinyin: true, english: true }} speaking={false} onPlay={play} />
+          ))}
+          {[script.pinyin, script.english].map((paragraphs, group) => paragraphs.length > 0 && (
+            <div key={group} className={cn('flex flex-col gap-2 px-3 text-base font-bold leading-relaxed', group === 0 ? 'text-ui-muted-strong' : 'text-ui-muted')}>
+              {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+            </div>
+          ))}
         </div>
       )}
       </TestLookup>

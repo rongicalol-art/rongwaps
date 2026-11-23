@@ -17,7 +17,13 @@ import { audioService } from '../../../services/audioService';
  *   First click → check the answer and show correct/wrong feedback
  *   Second click → advance to the next card (or complete the session)
  */
-export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
+/** Review quizzes: count toward today's daily review, and draw wrong answers from more words than the few asked. */
+export interface QuizReviewOptions {
+  daily?: boolean;
+  extraCards?: readonly Flashcard[];
+}
+
+export function useQuizChoices(cards: Flashcard[], sessionKey: string, review: QuizReviewOptions = {}) {
   const quizChoiceType = useAppStore((state) => state.quizChoiceType);
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
 
@@ -33,7 +39,12 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     setSelectedOption(null);
     setIsChecked(false);
   };
-  const session = useCardSession(cards, sessionKey, { requeueMissed: false, onSessionReset: resetAnswer, onAnswerStateReset: resetAnswer });
+  const session = useCardSession(cards, sessionKey, {
+    requeueMissed: false, daily: review.daily, source: review.daily ? 'daily' : undefined,
+    onSessionReset: resetAnswer, onAnswerStateReset: resetAnswer,
+  });
+  const { extraCards } = review;
+  const choicePool = useMemo(() => (extraCards?.length ? [...cards, ...extraCards] : cards), [cards, extraCards]);
   const { activeCards, currentIndex, currentCard, completed } = session;
 
   useAudioSessionLifecycle(completed);
@@ -52,10 +63,10 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     ) {
       return currentCardChoicesRef.current.options;
     }
-    const choices = shuffleItems(buildAttributeChoices(currentCard, shuffleItems(cards), quizChoiceType, 3, simpleDefinitions));
+    const choices = shuffleItems(buildAttributeChoices(currentCard, shuffleItems(choicePool), quizChoiceType, 3, simpleDefinitions));
     currentCardChoicesRef.current = { cardId: currentCard.id, choiceType: quizChoiceType, simpleDefinitions, options: choices };
     return choices;
-  }, [cards, currentCard, quizChoiceType, simpleDefinitions]);
+  }, [choicePool, currentCard, quizChoiceType, simpleDefinitions]);
 
   useEffect(() => {
     stopAnswerAudio();
@@ -128,14 +139,14 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
  *   First click → check the answer and show correct/wrong feedback
  *   Second click → advance to the next card (or complete the session)
  */
-export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
+export function useQuizTyping(cards: Flashcard[], sessionKey: string, review: QuizReviewOptions = {}) {
 
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
 
   const session = useCardSession(cards, sessionKey, {
-    requeueMissed: false,
+    requeueMissed: false, daily: review.daily, source: review.daily ? 'daily' : undefined,
     onSessionReset: () => {
       audioService.stop();
       setInput('');

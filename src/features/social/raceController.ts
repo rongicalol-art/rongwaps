@@ -1,8 +1,8 @@
 import { connectRace, leaveRaceRoom, type Identity } from '../../services/socialService';
 import { useAppStore } from '../../store/useAppStore';
 import { MAX_PLAYERS, ROOM_CODE, type RaceAction, type RaceFrame, type RaceSelection, type RaceSnapshot } from '../../../shared/quizRace';
-import { lobby } from './lobbyController';
-import { CHAT_KEEP, chatText, type PartyChatClientMessage } from '../../../shared/lobby';
+import { PARTY_CHAT_KEY, lobby, partyChatOnScreen } from './lobbyController';
+import { CHAT_KEEP, GLOBAL_CHAT, UNREAD_CAP, chatText, type PartyChatClientMessage } from '../../../shared/lobby';
 
 let room: Awaited<ReturnType<typeof connectRace>> | null = null;
 let connect: typeof connectRace = connectRace;
@@ -162,9 +162,35 @@ async function open(identity: Identity, target: Parameters<typeof connectRace>[1
           if (version !== generation) return;
           const store = useAppStore.getState();
           if (store.race?.code !== message.code) return;
-          const previous = store.socialPartyChat?.code === message.code ? store.socialPartyChat.messages : [];
-          const messages = message.type === 'chat-history' ? message.messages : previous.some(line => line.id === message.message.id) ? previous : [...previous, message.message];
-          store.setSocial({ socialPartyChat: { code: message.code, messages: messages.slice(-CHAT_KEEP) } });
+          const self = store.currentUser?.id ?? store.socialMe;
+          const blocked = store.socialBlocks?.length ? new Set(store.socialBlocks.map(person => person.u)) : null;
+          const prev = store.socialPartyChat?.code === message.code ? store.socialPartyChat : null;
+          const reading = partyChatOnScreen(store, message.code);
+          if (message.type === 'chat-history') {
+            const messages = message.messages.slice(-CHAT_KEEP);
+            const lastId = messages[messages.length - 1]?.id ?? 0;
+            const read = reading ? Math.max(prev?.read ?? 0, lastId) : (prev?.read ?? 0);
+            const unread = reading ? 0 : Math.min(UNREAD_CAP, messages.filter(line => line.id > read && line.u !== self && !!line.t && !blocked?.has(line.u)).length);
+            store.setSocial({ socialPartyChat: { code: message.code, messages, read, unread } });
+            if (reading) lobby.markPartyMentionsRead(message.code);
+            return;
+          }
+          const previous = prev?.messages ?? [];
+          if (previous.some(line => line.id === message.message.id)) return;
+          const messages = [...previous, message.message].slice(-CHAT_KEEP);
+          const mineOrBlocked = message.message.u === self || !!blocked?.has(message.message.u);
+          const counts = !reading && !mineOrBlocked && !!message.message.t;
+          const read = reading ? Math.max(prev?.read ?? 0, message.message.id) : (prev?.read ?? 0);
+          const unread = reading ? 0 : Math.min(UNREAD_CAP, (prev?.unread ?? 0) + (counts ? 1 : 0));
+          const sameToast = store.socialMentionToast?.room === message.code && store.socialMentionToast.message.id === message.message.id;
+          const toast = counts && !store.socialMuted && !sameToast
+            ? { key: `${PARTY_CHAT_KEY}${message.code}:${message.message.id}`, channel: GLOBAL_CHAT, room: message.code, read: false, message: message.message }
+            : undefined;
+          store.setSocial({
+            socialPartyChat: { code: message.code, messages, read, unread },
+            ...(toast ? { socialMentionToast: toast } : {}),
+          });
+          if (reading) lobby.markPartyMentionsRead(message.code);
         },
       }, controller.signal);
       if (version !== generation) {
@@ -234,6 +260,18 @@ export function partySend(message: PartyChatClientMessage): boolean {
   const frame = message.type === 'chat' ? { ...message, text: chatText(message.text) } : message;
   return !!room && room.send(frame) !== false;
 }
+/** Marks party chat lines and @mentions in `code` as seen (clears the badge and any waiting toast). */
+export function markPartyChatRead(code: string) {
+  const store = useAppStore.getState();
+  const chat = store.socialPartyChat;
+  if (chat?.code === code) {
+    const lastId = chat.messages[chat.messages.length - 1]?.id ?? chat.read;
+    if (chat.unread > 0 || lastId > chat.read) {
+      store.setSocial({ socialPartyChat: { ...chat, read: Math.max(chat.read, lastId), unread: 0 } });
+    }
+  }
+  lobby.markPartyMentionsRead(code);
+}
 export function reportRaceProgress(answered: number, total: number, correct: number, reviewComplete = false) {
   const race = useAppStore.getState().race;
   if (!race) return;
@@ -254,6 +292,11 @@ function clearRace(notifyServer: boolean) {
     if (notifyServer && connect === connectRace) leaving = leaveRaceRoom(previous.code).catch(() => {});
   }
   if (store.racePlaying) launcher?.stop();
-  store.setSocial({ race: null, racePlaying: false, racePending: false, raceStatus: 'off', socialPartyChat: null, ...(store.socialPanel?.kind === 'partyChat' ? { socialPanel: null } : {}) });
+  store.setSocial({
+    race: null, racePlaying: false, racePending: false, raceStatus: 'off', socialPartyChat: null,
+    ...(store.socialPanel?.kind === 'partyChat' ? { socialPanel: null } : {}),
+    ...(recentCode && store.socialReadingParty === recentCode ? { socialReadingParty: null } : {}),
+    ...(recentCode && store.socialMentionToast?.room === recentCode ? { socialMentionToast: null } : {}),
+  });
 }
 export function leaveRace() { clearRace(true); }

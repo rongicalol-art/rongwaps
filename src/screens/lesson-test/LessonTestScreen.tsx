@@ -7,7 +7,6 @@ import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
 import type { LessonTestLesson, LessonTestSounds } from '../../types/lessonTest';
 import { lessonItemIndex, type LessonTestScreen as TestScreen } from '../../utils/lesson/lessonTestPlan';
-import { AnswerDetail } from './components/AnswerDetail';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
 import { PartIntro } from './components/PartIntro';
@@ -20,7 +19,6 @@ import { useTestAudioDownload } from './hooks/useTestAudioDownload';
 import { useTestAudioPreparation } from './hooks/useTestAudioPreparation';
 import { testRecordings, turnGapMs } from './testAudioSequence';
 import { itemPictureUrls } from './testPictures';
-import { hasTestScript } from './testScript';
 
 interface LessonTestScreenProps {
   lesson: LessonTestLesson;
@@ -152,6 +150,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
   const shownIndex = isFix ? run.fixIndex : numbers[run.screenIndex] ?? 0;
   const shownTotal = isFix ? run.fixScreens.length : total;
   const done = isFix ? run.fixIndex + (run.checked ? 1 : 0) : run.stage === 'intro' ? shownIndex : shownIndex + (screen?.questionIds.length ?? 1) * (ready ? 1 : 0);
+  const firstNumber = (numbers[run.screens.findIndex((entry) => entry.itemId === screen?.itemId)] ?? 0) + 1;
   const header = (
     <ScreenHeader
       variant="window"
@@ -202,7 +201,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             turnGap={turnGapMs(lesson)}
             audioReady={audioReady}
             script={script}
-            firstNumber={(numbers[run.screens.findIndex((entry) => entry.itemId === screen.itemId)] ?? 0) + 1}
+            firstNumber={firstNumber}
             onAnswer={isFix ? run.answerFix : run.answer}
             scriptOpen={scriptOpen}
             onCloseScript={closeScript}
@@ -213,14 +212,20 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
       {introShown ? null : isFix ? (
         <FeedbackBottomBar
           status={checked ? (correct ? 'correct' : 'wrong') : 'idle'}
-          detail={checked ? <AnswerDetail item={item} questions={fixQuestions} script={script} /> : undefined}
+          showResultLabel={false}
+          detail={checked && fixQuestions.map((question) => (
+            <p key={question.id} className="text-base font-extrabold leading-snug text-ui-ink-strong">
+              {fixQuestions.length > 1 && `${firstNumber + item.questions.indexOf(question)}. `}
+              {question.why}
+            </p>
+          ))}
           onCheck={run.check}
           isCheckDisabled={!ready}
           onContinue={run.continueFix}
           keyboardShortcutDisabled={scriptOpen || lookingUp}
           layout="wide"
           barRef={barRef}
-          secondaryAction={checked && hasTestScript(item) ? { label: 'Script', icon: 'script', onPress: openScript } : undefined}
+          secondaryAction={checked ? { label: 'Script', icon: 'script', onPress: openScript } : undefined}
         />
       ) : ready && (
         <TestDock key={screenKey} label={last ? 'Finish' : 'Next'} onPress={run.next} riseKey={screenKey} />
