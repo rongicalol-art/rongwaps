@@ -28,6 +28,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - Anything you can press looks like a real button: a border plus a solid, darker bottom edge that compresses when pressed. Selected = book accent border with a soft fill. A plain row reads as "not a button".
 - Depth only ever means "press me", so docks, windows and stacks carry no drop shadows. No blur (it also costs CPU), glass, background textures (dots, grids) or busy gradients. The two exceptions that exist: the soft fade under the top header, and the brief glow and shine on a celebration.
 - Card borders are a little heavy (3px with a thick bottom edge) and the same thickness across a screen.
+- A card you only read (a test's reading text) stays flat: a solid colour band for its title and a thick bottom edge made it look "cheap", like a template banner on a big button. A printed look comes from large ink type and solid hairlines.
 
 **Quiet chrome.**
 - Headers and menu bars have no border or separator; header text is centred; numbers in top bars are the same size on phone and desktop.
