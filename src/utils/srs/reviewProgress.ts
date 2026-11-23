@@ -34,6 +34,8 @@ export function createEmptySessionProgress(): SessionProgress {
 export interface ReviewOptions {
   /** A miss in a lesson test: a learned word is rescheduled even when it isn't due yet (it comes back sooner). */
   lapse?: boolean;
+  /** Record the answer only (a practice mode such as Pinyin): it counts as study, but never schedules the card or marks it learned. */
+  observeOnly?: boolean;
 }
 
 export function applyCardReview(
@@ -50,14 +52,15 @@ export function applyCardReview(
   const alreadyInLearnedCards = state.learnedCards.includes(cardId);
   const wasPreviouslyLearned = alreadyInLearnedCards || (existingReview?.repetition ?? 0) > 0;
   const isSuccessfulReview = quality >= 3;
-  const isFirstSuccessfulReview = isSuccessfulReview && !wasPreviouslyLearned;
-  const shouldRepairLearnedCards = isSuccessfulReview && !alreadyInLearnedCards;
+  const observeOnly = options?.observeOnly === true;
+  const isFirstSuccessfulReview = isSuccessfulReview && !wasPreviouslyLearned && !observeOnly;
+  const shouldRepairLearnedCards = isSuccessfulReview && !alreadyInLearnedCards && !observeOnly;
 
   // Immediate follow-up quizzes/replays are observations, not another spaced
   // success. Only due cards (or genuinely new cards) advance the scheduler, plus a
   // lesson-test lapse: a learned word missed in a test comes back sooner.
   const lapse = options?.lapse === true && !isSuccessfulReview && Boolean(existingReview);
-  const scheduled = !context?.practiceOnly && (!existingReview || existingReview.nextReviewDate <= now || lapse);
+  const scheduled = !observeOnly && !context?.practiceOnly && (!existingReview || existingReview.nextReviewDate <= now || lapse);
   const after = scheduled ? calculateNextReview(existingReview, cardId, quality, now) : existingReview;
   const event: ReviewEvent | null = context ? {
     ...context, durationMs: Math.max(0, Math.min(300_000, context.durationMs)),

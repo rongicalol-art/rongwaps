@@ -7,7 +7,7 @@ import { audioService } from '../../../services/audioService';
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 import { getPinyinAnswerVariants, isPinyinAnswerAccepted } from '../../../utils/pinyin/pinyinAnswer';
 
-/** Typing practice for words with a usable pinyin reading. Answers stay local to this session. */
+/** Typing practice for words with a usable pinyin reading. Each first answer is recorded as study (streak, history) but never schedules a word or marks it learned. */
 export function usePinyin(activeBookId: number, selectedLessons: number[], isLibraryDeck = false, isReviewDeck = false) {
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
@@ -36,6 +36,8 @@ export function usePinyin(activeBookId: number, selectedLessons: number[], isLib
     },
     onAnswerStateReset: resetAnswer,
     requeueMissed: false,
+    source: 'pinyin',
+    observeOnly: true,
   });
   const { currentCard, currentIndex, completed, moveTo } = session;
 
@@ -48,8 +50,9 @@ export function usePinyin(activeBookId: number, selectedLessons: number[], isLib
       void audioService.playCard(currentCard, pronunciationRate, { overlap: true });
     }
     setStatus(correct ? 'correct' : 'wrong');
+    if (!(currentCard.id in results)) session.recordAnswer(currentCard, correct ? 4 : 2);
     setResults((current) => currentCard.id in current ? current : { ...current, [currentCard.id]: correct });
-  }, [currentCard, input, pronunciationRate, status]);
+  }, [currentCard, input, pronunciationRate, results, session, status]);
 
   const next = useCallback(() => {
     if (session.advanceOrComplete() === 'advanced') resetAnswer();
