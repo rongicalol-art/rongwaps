@@ -2,7 +2,7 @@
 -- The privacy policy allows "anonymous, combined statistics only", so this returns counts and
 -- never an account id, name or email. Per-lesson and per-word rows need at least 3 learners,
 -- so no row can point at one person. Days are Taiwan days; "week" is the last 7 full days.
--- Run by .github/workflows/health.yml inside a read-only transaction; output is one JSON object
+-- Run by .github/workflows/learner-report.yml inside a read-only transaction; output is one JSON object
 -- that scripts/release/learnerReport.mjs turns into the report.
 with
 t as (select (now() at time zone 'Asia/Taipei')::date as today),
