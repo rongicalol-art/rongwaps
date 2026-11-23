@@ -50,8 +50,10 @@ export function applyCardReview(
   const alreadyInLearnedCards = state.learnedCards.includes(cardId);
   const wasPreviouslyLearned = alreadyInLearnedCards || (existingReview?.repetition ?? 0) > 0;
   const isSuccessfulReview = quality >= 3;
-  const isFirstSuccessfulReview = isSuccessfulReview && !wasPreviouslyLearned;
-  const shouldRepairLearnedCards = isSuccessfulReview && !alreadyInLearnedCards;
+  // Hard (3) is remembered for the scheduler, but a word only becomes known on a clean answer (Got it, a right quiz answer).
+  const isCleanAnswer = quality >= 4;
+  const isFirstSuccessfulReview = isCleanAnswer && !wasPreviouslyLearned;
+  const shouldRepairLearnedCards = isCleanAnswer && !alreadyInLearnedCards;
 
   // Immediate follow-up quizzes/replays are observations, not another spaced
   // success. Only due cards (or genuinely new cards) advance the scheduler, plus a
