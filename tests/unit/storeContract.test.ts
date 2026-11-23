@@ -94,6 +94,11 @@ const EXPECTED_PERSISTED_KEYS = [
   'lessonTests',
   'lessonTestAttempt',
   'lessonTestLast',
+  // Mock tests: results sync with the account, the rest stays on this device
+  'mockTests',
+  'mockTestSeen',
+  'mockTestAttempt',
+  'mockTestLast',
 ].sort();
 
 test('persisted key set matches the declared slices contract exactly', () => {
@@ -157,6 +162,7 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'socialMentions', 'socialMentionToast', 'socialMentionTarget', 'socialReadingParty',
   // Lesson test scores and the attempt in progress belong to the signed-in account.
   'lessonTests', 'lessonTestAttempt', 'lessonTestLast',
+  'mockTests', 'mockTestSeen', 'mockTestAttempt', 'mockTestLast',
 ].sort();
 
 test('account-switch defaults match the reset contract exactly', () => {

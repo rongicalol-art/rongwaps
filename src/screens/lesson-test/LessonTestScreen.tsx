@@ -132,7 +132,9 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
           {bookletOpen && (
             <TestBooklet
               key="booklet"
-              lesson={lesson}
+              items={items}
+              title={`Lesson ${lesson.lessonId} test`}
+              words={lesson.allowWords}
               plan={run.plan}
               answers={run.answers}
               rise
@@ -232,7 +234,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
           <PartIntro
             key={screen.part}
             part={screen.part}
-            lessonId={lesson.lessonId}
+            title={`Lesson ${lesson.lessonId} test`}
             loading={downloading ? { progress: download.progress, error: download.error, onRetry: download.retry, onBack: onClose } : null}
             onDone={() => run.setStage('question')}
           />

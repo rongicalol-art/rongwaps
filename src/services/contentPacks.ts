@@ -360,6 +360,14 @@ export async function fetchLessonTestPack(bookId: number): Promise<LessonTestPac
   }
 }
 
+/** Every book's lesson tests, for the mock test's question pool. Throws when a pack can't load (a pool with holes would skew the test). */
+export async function fetchLessonTestPacks(): Promise<LessonTestPack[]> {
+  const manifest = await getPackManifest('lesson-tests');
+  const packs = await Promise.all((manifest.books ?? []).map((book) => loadPack<LessonTestPack>('lesson-tests', book.bookId)));
+  if (packs.some((pack) => !pack)) throw new Error('A lesson test pack is missing');
+  return packs.filter((pack): pack is LessonTestPack => pack !== null);
+}
+
 export async function fetchDialogueAlignmentPack(bookId: number): Promise<Record<string, DialogueAlignment> | null> {
   try {
     return await loadPack<Record<string, DialogueAlignment>>('dialogue-alignment', bookId);

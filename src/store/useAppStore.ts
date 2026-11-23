@@ -105,6 +105,12 @@ import {
   type LessonTestState,
 } from './slices/lessonTestSlice';
 import {
+  createMockTestSlice,
+  MOCK_TEST_PERSISTED_KEYS,
+  MOCK_TEST_ACCOUNT_SWITCH_DEFAULTS,
+  type MockTestState,
+} from './slices/mockTestSlice';
+import {
   createSocialSlice,
   SOCIAL_PERSISTED_KEYS,
   SOCIAL_ACCOUNT_SWITCH_DEFAULTS,
@@ -149,7 +155,8 @@ export type AppStoreData =
   & LessonProgressState
   & PracticePreferencesState
   & SocialState
-  & LessonTestState;
+  & LessonTestState
+  & MockTestState;
 
 export type AppState = AppStoreData & AppStoreActions;
 
@@ -300,6 +307,7 @@ export const PERSISTED_KEYS = [
   ...PRACTICE_PREFERENCES_PERSISTED_KEYS,
   ...SOCIAL_PERSISTED_KEYS,
   ...LESSON_TEST_PERSISTED_KEYS,
+  ...MOCK_TEST_PERSISTED_KEYS,
 ] as const;
 
 function derivePersistedState(state: AppState): Partial<AppState> {
@@ -329,6 +337,7 @@ const PERSISTED_ARRAY_KEYS = [
   'completedPageIds',
   'completedPartIds',
   'readReadingIds',
+  'mockTests',
   'legacyDoneBooks',
 ] as const;
 
@@ -346,6 +355,7 @@ const PERSISTED_RECORD_KEYS = [
   'lessonTests',
   'lessonTestLast',
   'lessonDoneMarks',
+  'mockTestSeen',
 ] as const;
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {
@@ -384,6 +394,13 @@ function sanitizePersistedState(state: Record<string, unknown>): Record<string, 
       }
     }
   }
+  for (const key of ['mockTestAttempt', 'mockTestLast'] as const) {
+    const run = cleaned[key] as { plan?: { items?: unknown }; answers?: unknown; config?: unknown } | null | undefined;
+    if (run !== undefined && run !== null && (!Array.isArray(run?.plan?.items) || !run.answers || typeof run.answers !== 'object' || !run.config || typeof run.config !== 'object')) {
+      debugLogger.warn('Sync', `Persisted "${key}" was malformed; dropping it.`, run);
+      cleaned[key] = null;
+    }
+  }
   return cleaned;
 }
 
@@ -400,6 +417,7 @@ export const ACCOUNT_SWITCH_DEFAULTS = {
   ...PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS,
   ...SOCIAL_ACCOUNT_SWITCH_DEFAULTS,
   ...LESSON_TEST_ACCOUNT_SWITCH_DEFAULTS,
+  ...MOCK_TEST_ACCOUNT_SWITCH_DEFAULTS,
 } as Partial<AppState>;
 
 export interface AppStoreActions {
@@ -422,6 +440,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
       ...createPracticePreferencesSlice(set),
       ...createSocialSlice(set),
       ...createLessonTestSlice(set),
+      ...createMockTestSlice(set),
       resetAccountScopedState: () => set({ ...ACCOUNT_SWITCH_DEFAULTS }),
     }),
     {

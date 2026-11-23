@@ -2,6 +2,7 @@ import { normalizeProfileSettings, PROFILE_PERSISTED_KEYS, type ProfileSettings 
 import { GRAMMAR_PROGRESS_PERSISTED_KEYS, type GrammarProgressState } from '../../store/slices/grammarProgressSlice';
 import { LESSON_PROGRESS_SYNCED_KEYS, type LessonProgressState } from '../../store/slices/lessonProgressSlice';
 import { LESSON_TEST_SYNCED_KEYS, type LessonTestState } from '../../store/slices/lessonTestSlice';
+import { MOCK_TEST_SYNCED_KEYS, type MockTestState } from '../../store/slices/mockTestSlice';
 /**
  * Pure transformations and payload builders for cloud synchronization.
  *
@@ -52,6 +53,8 @@ export type GrammarProgress = Pick<GrammarProgressState, (typeof GRAMMAR_PROGRES
 export type LessonProgress = Pick<LessonProgressState, (typeof LESSON_PROGRESS_SYNCED_KEYS)[number]>;
 /** Lesson test scores; same blob, so a progress reset clears them too (see mergeLessonTests). */
 export type LessonTestProgress = Pick<LessonTestState, (typeof LESSON_TEST_SYNCED_KEYS)[number]>;
+/** Mock test results; same blob again (see mergeMockTests). */
+export type MockTestProgress = Pick<MockTestState, (typeof MOCK_TEST_SYNCED_KEYS)[number]>;
 
 export type CloudMetadataPayload = ProfileSettings & {
   favorites: string[];
@@ -60,7 +63,7 @@ export type CloudMetadataPayload = ProfileSettings & {
   selectedLessons: number[];
   selectedBooks: number[];
   // Lesson progress rides in `grammarProgress`: the server's progress reset already clears that key.
-  grammarProgress: GrammarProgress & LessonProgress & Partial<LessonTestProgress>;
+  grammarProgress: GrammarProgress & LessonProgress & Partial<LessonTestProgress> & Partial<MockTestProgress>;
 };
 
 const METADATA_KEYS = [
@@ -73,7 +76,7 @@ const METADATA_KEYS = [
   'grammarProgress',
 ] as const satisfies readonly (keyof CloudMetadataPayload)[];
 
-export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarProgress & Partial<LessonProgress> & Partial<LessonTestProgress> & {
+export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarProgress & Partial<LessonProgress> & Partial<LessonTestProgress> & Partial<MockTestProgress> & {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
@@ -95,6 +98,7 @@ export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarPr
       lessonDoneMarks: store.lessonDoneMarks ?? {},
       // Left out while empty, so an account with no tests taken does not upload its settings just to add `{}`.
       ...(store.lessonTests && Object.keys(store.lessonTests).length > 0 ? { lessonTests: store.lessonTests } : {}),
+      ...(store.mockTests && store.mockTests.length > 0 ? { mockTests: store.mockTests } : {}),
     },
   };
 }
@@ -135,4 +139,5 @@ export const AUTO_SAVE_TRIGGER_SLICES = [
   ...GRAMMAR_PROGRESS_PERSISTED_KEYS,
   ...LESSON_PROGRESS_SYNCED_KEYS,
   ...LESSON_TEST_SYNCED_KEYS,
+  ...MOCK_TEST_SYNCED_KEYS,
 ] as const satisfies readonly (keyof AppStoreData)[];

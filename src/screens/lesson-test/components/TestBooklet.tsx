@@ -2,8 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import type { LessonTestLesson } from '../../../types/lessonTest';
-import { LESSON_TEST_PARTS, lessonItemIndex, type LessonTestPlan } from '../../../utils/lesson/lessonTestPlan';
+import { LESSON_TEST_PARTS, type LessonTestPlan, type TestItemIndex } from '../../../utils/lesson/lessonTestPlan';
 import { useBookletAudio } from '../hooks/useBookletAudio';
 import { BookletItem, type BookletView } from './BookletItem';
 import { TestWords } from './ChineseText';
@@ -11,7 +10,12 @@ import { TestLookup } from './TestLookup';
 import { ViewSwitch } from './ViewSwitch';
 
 interface TestBookletProps {
-  lesson: LessonTestLesson;
+  /** The test's questions by item id (a lesson's, or a mock test's pool). */
+  items: TestItemIndex;
+  /** The test's name, e.g. "Lesson 4 test". */
+  title: string;
+  /** Names and words to keep whole (`allowWords`). */
+  words?: string[];
   plan: LessonTestPlan;
   /** The answers given in the test (question id → original choice index). */
   answers: Record<string, number>;
@@ -31,7 +35,7 @@ const NO_WORDS: string[] = [];
  * Chinese only: Pinyin puts the pinyin over the characters (as in the Reader) and English adds the meanings. Every
  * Chinese word can be looked up (hover for its meaning, tap to open it in the dictionary).
  */
-export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = false }: TestBookletProps) {
+export function TestBooklet({ items, title, words = NO_WORDS, plan, answers, onClose, footer, rise = false }: TestBookletProps) {
   const reduceMotion = useReducedMotion();
   const script = useAppStore((state) => state.characterPreference);
   const [pinyin, setPinyin] = useState(false);
@@ -43,19 +47,18 @@ export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = fal
 
   // Each part's items with the number of their first question on the test.
   const parts = useMemo(() => {
-    const byId = lessonItemIndex(lesson);
     let next = 1;
     return LESSON_TEST_PARTS.map(({ part, label }) => ({
       label,
       entries: plan.items.filter((planned) => planned.part === part).flatMap((planned) => {
-        const item = byId.get(planned.itemId);
+        const item = items.get(planned.itemId);
         if (!item) return [];
         const first = next;
         next += item.questions.length;
         return [{ planned, item, first }];
       }),
     })).filter((entry) => entry.entries.length > 0);
-  }, [lesson, plan]);
+  }, [items, plan]);
 
   const close = () => {
     audio.stop();
@@ -66,7 +69,7 @@ export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = fal
     <motion.div
       data-tone="review"
       role="region"
-      aria-label={`Lesson ${lesson.lessonId} test: scripts and answers`}
+      aria-label={`${title}: scripts and answers`}
       initial={rise && !reduceMotion ? { y: '100%' } : false}
       animate={{ y: 0, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
       exit={reduceMotion ? { opacity: 0, transition: { duration: 0 } } : { y: '100%', transition: { duration: 0.32, ease: [0.4, 0, 1, 1] } }}
@@ -77,13 +80,13 @@ export function TestBooklet({ lesson, plan, answers, onClose, footer, rise = fal
       }}
       className="absolute inset-0 z-50 flex flex-col bg-ui-practice-canvas"
     >
-      <TestWords value={lesson.allowWords ?? NO_WORDS}>
+      <TestWords value={words}>
       <TestLookup onOpen={audio.stop}>
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain custom-scrollbar">
         <div className="sticky top-0 z-10 grid grid-cols-[auto_1fr_auto] items-center sm:grid-cols-[1fr_auto_1fr] gap-2 bg-gradient-to-b from-ui-practice-canvas from-70% to-transparent px-3 pb-5 pt-3 sm:px-6">
           <IconActionButton ref={closeRef} variant="quiet" icon={<AppIcon name="dropdown" size={24} />} label="Close scripts and answers" onClick={close} className="justify-self-start" />
           {/* The title gives way to the switches on phones. */}
-          <h2 className="truncate text-center text-lg font-black text-ui-ink-strong max-sm:invisible">Lesson {lesson.lessonId} test</h2>
+          <h2 className="truncate text-center text-lg font-black text-ui-ink-strong max-sm:invisible">{title}</h2>
           <div className="flex justify-self-end gap-2">
             <ViewSwitch label="Pinyin" on={pinyin} onToggle={() => setPinyin((on) => !on)} />
             <ViewSwitch label="English" on={english} onToggle={() => setEnglish((on) => !on)} />

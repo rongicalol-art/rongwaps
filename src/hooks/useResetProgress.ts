@@ -68,12 +68,17 @@ export function useResetProgress({
       lessonTests: appState.lessonTests,
       lessonTestAttempt: appState.lessonTestAttempt,
       lessonTestLast: appState.lessonTestLast,
+      mockTests: appState.mockTests,
+      mockTestSeen: appState.mockTestSeen,
+      mockTestAttempt: appState.mockTestAttempt,
+      mockTestLast: appState.mockTestLast,
     };
 
     appState.resetProgress();
     appState.resetGrammarProgress();
     appState.resetLessonProgress();
     appState.resetLessonTests();
+    appState.resetMockTests();
 
     try {
       if (currentUser) {

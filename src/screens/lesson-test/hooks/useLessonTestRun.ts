@@ -11,6 +11,7 @@ import {
   type LessonTestScreen,
 } from '../../../utils/lesson/lessonTestPlan';
 import type { LessonTestAttempt } from '../../../store/slices/lessonTestSlice';
+import { useFixRound } from './useFixRound';
 
 export type TestStage = 'intro' | 'question' | 'results' | 'fix' | 'done';
 
@@ -51,9 +52,8 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
   const screens = useMemo(() => lessonTestScreens(lesson, attempt.plan), [lesson, attempt.plan]);
   const [stage, setStage] = useState<TestStage>(() => (attempt.screen > 0 ? 'question' : 'intro'));
   const [result, setResult] = useState<{ score: LessonTestScore; seconds: number; passed: boolean; rescheduled: boolean } | null>(null);
-  const [fixIndex, setFixIndex] = useState(0);
-  const [fixAnswers, setFixAnswers] = useState<Record<string, number>>({});
-  const [checked, setChecked] = useState(false);
+  const missedIds = useMemo(() => (result ? result.score.missed.map(({ question }) => question.id) : null), [result]);
+  const fix = useFixRound(screens, missedIds);
 
   const save = useCallback((next: LessonTestAttempt) => {
     setAttempt(next);
@@ -61,14 +61,6 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
   }, []);
 
   const screen: LessonTestScreen | undefined = screens[attempt.screen];
-  const fixScreens = useMemo(() => {
-    if (!result) return [];
-    const missed = new Set(result.score.missed.map(({ question }) => question.id));
-    return screens
-      .map((entry) => ({ ...entry, questionIds: entry.questionIds.filter((id) => missed.has(id)) }))
-      .filter((entry) => entry.questionIds.length > 0);
-  }, [result, screens]);
-
   const answer = useCallback((questionId: string, choice: number | undefined) => {
     const answers = { ...attempt.answers };
     if (choice === undefined) delete answers[questionId];
@@ -102,18 +94,9 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
     setStage(screens[index].part !== screens[index - 1].part ? 'intro' : 'question');
   }, [attempt, finish, save, screens]);
 
-  const startFix = useCallback(() => {
-    setFixIndex(0);
-    setFixAnswers({});
-    setChecked(false);
-    setStage(fixScreens.length ? 'fix' : 'done');
-  }, [fixScreens.length]);
-
-  const continueFix = useCallback(() => {
-    setChecked(false);
-    if (fixIndex + 1 >= fixScreens.length) setStage('done');
-    else setFixIndex(fixIndex + 1);
-  }, [fixIndex, fixScreens.length]);
+  const { start: restartFix, advance: advanceFix } = fix;
+  const startFix = useCallback(() => setStage(restartFix() ? 'fix' : 'done'), [restartFix]);
+  const continueFix = useCallback(() => { if (!advanceFix()) setStage('done'); }, [advanceFix]);
 
   return {
     lesson,
@@ -127,18 +110,13 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
     answer,
     next,
     result,
-    fixScreens,
-    fixScreen: fixScreens[fixIndex] as LessonTestScreen | undefined,
-    fixIndex,
-    fixAnswers,
-    answerFix: (questionId: string, choice: number | undefined) => setFixAnswers((current) => {
-      const nextAnswers = { ...current };
-      if (choice === undefined) delete nextAnswers[questionId];
-      else nextAnswers[questionId] = choice;
-      return nextAnswers;
-    }),
-    checked,
-    check: () => setChecked(true),
+    fixScreens: fix.screens,
+    fixScreen: fix.screen,
+    fixIndex: fix.index,
+    fixAnswers: fix.answers,
+    answerFix: fix.answer,
+    checked: fix.checked,
+    check: fix.check,
     startFix,
     continueFix,
   };

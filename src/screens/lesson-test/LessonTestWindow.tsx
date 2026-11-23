@@ -6,7 +6,7 @@ import { useModalFocus } from '../../hooks/useModalFocus';
 import { useLessonTestData } from '../../hooks/useLessonTestData';
 import { LessonTestScreen } from './LessonTestScreen';
 import { TestBooklet } from './components/TestBooklet';
-import { planFitsLesson } from '../../utils/lesson/lessonTestPlan';
+import { lessonItemIndex, planFitsLesson } from '../../utils/lesson/lessonTestPlan';
 
 interface LessonTestWindowProps {
   bookId: number;
@@ -47,7 +47,7 @@ export function LessonTestWindow({ bookId, lessonId, review = false, onClose }: 
           <LoadingScreen tone="practice" message="Loading test" />
         ) : data && review ? (
           last && planFitsLesson(data.lesson, last.plan) ? (
-            <TestBooklet lesson={data.lesson} plan={last.plan} answers={last.answers ?? {}} onClose={onClose} />
+            <TestBooklet items={lessonItemIndex(data.lesson)} title={`Lesson ${lessonId} test`} words={data.lesson.allowWords} plan={last.plan} answers={last.answers ?? {}} onClose={onClose} />
           ) : (
             // Never a new test from Scripts & answers: the saved one is gone or no longer matches the questions.
             <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
