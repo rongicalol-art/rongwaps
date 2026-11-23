@@ -39,5 +39,21 @@
   {"word": "鼓勵", "pinyin": "gǔlì", "english": "to encourage", "taught": "B4L01", "from": "b3l09", "natural": "外國學生鼓勵他們上課發問", "used": "外國學生要他們上課也舉手"},
   {"word": "手藝", "pinyin": "shǒuyì", "english": "cooking skill, craftsmanship", "taught": null, "from": "b3l09", "natural": "大概是大家想試試看新老闆的手藝吧？", "used": "大概是大家想吃吃看新的味道吧？"},
   {"word": "親友", "pinyin": "qīnyǒu", "english": "relatives and friends", "taught": null, "from": "b3l09", "natural": "親友都說他看起來年輕了十歲。", "used": "家人和朋友都說他看起來年輕了十歲。"},
-  {"word": "各位", "pinyin": "gèwèi", "english": "everyone (polite address)", "taught": "B3L12", "from": "b3l09", "natural": "各位同學大家好，這裡是學校餐廳。", "used": "同學們大家好，這裡是學校餐廳。"}
+  {"word": "各位", "pinyin": "gèwèi", "english": "everyone (polite address)", "taught": "B3L12", "from": "b3l09", "natural": "各位同學大家好，這裡是學校餐廳。", "used": "同學們大家好，這裡是學校餐廳。"},
+  {"word": "未婚妻", "pinyin": "wèihūnqī", "english": "fiancée", "taught": null, "from": "b3l08", "natural": "你哥哥說，他未婚妻家的人對穿著都很講究。", "used": "你哥哥說，他女朋友家的人對穿著都很講究。"},
+  {"word": "規定", "pinyin": "guīdìng", "english": "rule; to stipulate", "taught": "B4L02", "from": "b3l08", "natural": "公司規定大家要穿得正式一點。", "used": "公司要大家穿得正式一點。"},
+  {"word": "急件", "pinyin": "jíjiàn", "english": "rush job", "taught": null, "from": "b3l08", "natural": "急件：褲子改短、衣服改大或改小，每件加收100元，隔天可取", "used": "想快一點拿的客人：褲子改短、衣服改大或改小，今天送來，每件加100元，明天就可以拿"},
+  {"word": "尊重", "pinyin": "zūnzhòng", "english": "respect (for others)", "taught": "B4L06", "from": "b3l08", "natural": "爺爺說，穿著跟有沒有錢無關，是對別人的尊重。", "used": "爺爺說，穿著跟有沒有錢無關，是對別人的禮貌。"},
+  {"word": "表示", "pinyin": "biǎoshì", "english": "to show; to indicate", "taught": "B3L10", "from": "b3l08", "natural": "穿得乾乾淨淨的，表示你重視這份工作。", "used": "穿得很乾淨，就看得出來你重視這份工作。"},
+  {"word": "親朋好友", "pinyin": "qīnpéng hǎoyǒu", "english": "friends and family", "taught": null, "from": "b3l08", "natural": "姊姊請親朋好友吃油飯和紅蛋", "used": "姊姊請家人和朋友吃油飯和紅蛋"},
+  {"word": "贊成", "pinyin": "zànchéng", "english": "to agree with; to approve", "taught": "B4L13", "from": "b3l08", "natural": "女的為什麼不贊成男的買新衣服？", "used": "女的為什麼覺得男的不必買新衣服？"},
+  {"word": "提醒", "pinyin": "tíxǐng", "english": "to remind", "taught": "B4L01", "from": "b3l08", "natural": "男的說「畢竟妳還是學生」，是想提醒她什麼？", "used": "男的說「畢竟妳還是學生」，是想告訴她什麼？"},
+  {"word": "反而", "pinyin": "fǎn'ér", "english": "instead; on the contrary", "taught": "B3L09", "from": "b3l08", "natural": "現在放假穿自己的衣服，反而覺得怪怪的。", "used": "現在放假穿自己的衣服，還覺得怪怪的呢。"},
+  {"word": "代替", "pinyin": "dàitì", "english": "to stand in for", "taught": "B3L09", "from": "b3l08", "natural": "報告不能請別人代替。", "used": "老師要每個人親自報告。"},
+  {"word": "外帶", "pinyin": "wàidài", "english": "to take away (food)", "taught": null, "from": "b3l08", "natural": "好吧，那也幫我外帶一碗。", "used": "好吧，那也幫我買一碗帶走。"},
+  {"word": "開不了機", "pinyin": "kāi bù liǎo jī", "english": "(a phone) won't turn on", "taught": null, "from": "b3l08", "natural": "我上個星期才買的手機，昨天就開不了機了。", "used": "我上個星期才買的手機，昨天就壞了。"},
+  {"word": "原廠", "pinyin": "yuánchǎng", "english": "the manufacturer", "taught": null, "from": "b3l08", "natural": "店員說得先送回原廠檢查。", "used": "店員說得先送回去檢查。"},
+  {"word": "服飾店", "pinyin": "fúshì diàn", "english": "clothing store", "taught": null, "from": "b3l08", "natural": "我在一家快時尚服飾店打工已經一年了。", "used": "我在一家賣快時尚衣服的店打工已經一年了。"},
+  {"word": "隔天", "pinyin": "gétiān", "english": "the next day", "taught": null, "from": "b3l08", "natural": "每件加100元，隔天就可以拿", "used": "今天送來，每件加100元，明天就可以拿"},
+  {"word": "薄", "pinyin": "báo", "english": "thin (cloth)", "taught": null, "from": "b3l08", "natural": "把衣服換成了比較薄、比較涼快的樣式", "used": "換了一種穿起來比較涼快的衣服"}
 ]

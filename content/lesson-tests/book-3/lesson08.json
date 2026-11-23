@@ -1,0 +1,2701 @@
+{
+  "schemaVersion": 1,
+  "key": "b3l08",
+  "bookId": 3,
+  "lessonId": 8,
+  "band": "B",
+  "allowWords": [
+    "臺北",
+    "臺東",
+    "美美",
+    "服裝設計社"
+  ],
+  "slots": [
+    {
+      "id": "dialogue-turn-into",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l08-dialogue-turn-into-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我昨天在捷運站叫了妳好幾聲，妳怎麼都沒看我？",
+              "simplified": "我昨天在捷运站叫了你好几声，你怎么都没看我？",
+              "pinyin": "Wǒ zuótiān zài jiéyùn zhàn jiào le nǐ hǎojǐ shēng, nǐ zěnme dōu méi kàn wǒ?",
+              "english": "Yesterday at the MRT station I called out to you several times. Why didn't you even look at me?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我昨天一整天都在家寫報告啊。你是不是把我妹妹看成我了？我們兩個長得很像。",
+              "simplified": "我昨天一整天都在家写报告啊。你是不是把我妹妹看成我了？我们两个长得很像。",
+              "pinyin": "Wǒ zuótiān yì zhěng tiān dōu zài jiā xiě bàogào a. Nǐ shì bú shì bǎ wǒ mèimei kàn chéng wǒ le? Wǒmen liǎng ge zhǎng de hěn xiàng.",
+              "english": "I was at home writing a report all day yesterday. Did you take my younger sister for me? We look a lot alike."
+            },
+            {
+              "speaker": "M",
+              "traditional": "難怪！那個人從頭到腳都是名牌，我還在想妳的穿著怎麼變了。",
+              "simplified": "难怪！那个人从头到脚都是名牌，我还在想你的穿着怎么变了。",
+              "pinyin": "Nánguài! Nàge rén cóng tóu dào jiǎo dōu shì míngpái, wǒ hái zài xiǎng nǐ de chuānzhuó zěnme biàn le.",
+              "english": "No wonder! That person was in brand names from head to toe. I was wondering why your clothes had changed."
+            },
+            {
+              "speaker": "F",
+              "traditional": "對，她天天穿名牌，我就沒那麼講究了。",
+              "simplified": "对，她天天穿名牌，我就没那么讲究了。",
+              "pinyin": "Duì, tā tiāntiān chuān míngpái, wǒ jiù méi nàme jiǎngjiù le.",
+              "english": "Right, she wears brand names every day; I'm not that fussy."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-turn-into-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的昨天在捷運站發生了什麼事？",
+                "simplified": "男的昨天在捷运站发生了什么事？",
+                "pinyin": "Nán de zuótiān zài jiéyùn zhàn fāshēng le shénme shì?",
+                "english": "What happened to the man at the MRT station yesterday?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "女的沒聽到他的聲音",
+                  "simplified": "女的没听到他的声音",
+                  "pinyin": "Nǚ de méi tīng dào tā de shēngyīn.",
+                  "english": "The woman didn't hear his voice."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的穿衣服的風格變了",
+                  "simplified": "女的穿衣服的风格变了",
+                  "pinyin": "Nǚ de chuān yīfu de fēnggé biàn le.",
+                  "english": "The woman's style of dress had changed."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的跟妹妹在一起",
+                  "simplified": "女的跟妹妹在一起",
+                  "pinyin": "Nǚ de gēn mèimei zài yìqǐ.",
+                  "english": "The woman was with her sister."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他叫的人不是女的",
+                  "simplified": "他叫的人不是女的",
+                  "pinyin": "Tā jiào de rén bú shì nǚ de.",
+                  "english": "The person he called was not the woman."
+                }
+              ],
+              "key": 3,
+              "why": "你是不是把我妹妹看成我了？ and his 難怪 confirm he took the sister for her: she was at home all day. Not hearing him was his first guess, and the changed style was what the sister's brand names made him think.",
+              "focus": {
+                "zh": "把 A 看成 B",
+                "en": "mistake A for B"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-04",
+                "B3L08-1-20",
+                "B3L08-1-11"
+              ],
+              "grammarIds": [
+                "B3L08-G01-P210"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-dialogue-turn-into-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你這個袋子好特別！在哪裡買的？",
+              "simplified": "你这个袋子好特别！在哪里买的？",
+              "pinyin": "Nǐ zhège dàizi hǎo tèbié! Zài nǎlǐ mǎi de?",
+              "english": "Your bag is so unusual! Where did you buy it?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不是買的，是我媽媽做的。她把我爸爸穿不下的舊牛仔褲改成了袋子。",
+              "simplified": "不是买的，是我妈妈做的。她把我爸爸穿不下的旧牛仔裤改成了袋子。",
+              "pinyin": "Bú shì mǎi de, shì wǒ māma zuò de. Tā bǎ wǒ bàba chuān bú xià de jiù niúzǎikù gǎi chéng le dàizi.",
+              "english": "It's not bought, my mom made it. She turned an old pair of my dad's jeans that he can't fit into any more into a bag."
+            },
+            {
+              "speaker": "F",
+              "traditional": "穿不下了，為什麼不丟掉呢？",
+              "simplified": "穿不下了，为什么不丢掉呢？",
+              "pinyin": "Chuān bú xià le, wèishénme bù diūdiào ne?",
+              "english": "If he can't fit into them, why not throw them away?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我媽媽本來也想丟掉，可是我爸爸說，那條褲子是他第一次跟我媽媽見面時穿的。她就上網看影片，學會了怎麼做。",
+              "simplified": "我妈妈本来也想丢掉，可是我爸爸说，那条裤子是他第一次跟我妈妈见面时穿的。她就上网看影片，学会了怎么做。",
+              "pinyin": "Wǒ māma běnlái yě xiǎng diūdiào, kěshì wǒ bàba shuō, nà tiáo kùzi shì tā dì yī cì gēn wǒ māma jiànmiàn shí chuān de. Tā jiù shàngwǎng kàn yǐngpiàn, xué huì le zěnme zuò.",
+              "english": "My mom wanted to throw them away too, but my dad said those were the jeans he wore when he first met her. So she watched videos online and learned how to do it."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-turn-into-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "媽媽為什麼把那條褲子改成袋子？",
+                "simplified": "妈妈为什么把那条裤子改成袋子？",
+                "pinyin": "Māma wèishénme bǎ nà tiáo kùzi gǎi chéng dàizi?",
+                "english": "Why did the mother turn those trousers into a bag?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "褲子對爸爸很有意義",
+                  "simplified": "裤子对爸爸很有意义",
+                  "pinyin": "Kùzi duì bàba hěn yǒu yìyì.",
+                  "english": "The trousers mean a lot to the father."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "店裡賣的袋子太貴了",
+                  "simplified": "店里卖的袋子太贵了",
+                  "pinyin": "Diàn lǐ mài de dàizi tài guì le.",
+                  "english": "Bags in the shops are too expensive."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "爸爸以後還想再穿",
+                  "simplified": "爸爸以后还想再穿",
+                  "pinyin": "Bàba yǐhòu hái xiǎng zài chuān.",
+                  "english": "The father wants to wear them again later."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "想試試影片裡的做法",
+                  "simplified": "想试试影片里的做法",
+                  "pinyin": "Xiǎng shìshi yǐngpiàn lǐ de zuòfǎ.",
+                  "english": "She wanted to try a method from a video."
+                }
+              ],
+              "key": 0,
+              "why": "She meant to throw the jeans out (本來也想丟掉), 可是 the father said he wore them when they first met, so she kept them as a bag. The videos are how she learned to do it, not why, and he can no longer fit into them (穿不下).",
+              "focus": {
+                "zh": "把 A 改成 B",
+                "en": "turn A into B"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B2L16-2-08",
+                "B2L10-2-21",
+                "B2L14-1-03"
+              ],
+              "grammarIds": [
+                "B3L08-G01-P210"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-used-to",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l08-dialogue-used-to-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你開始上班以後，每天都得穿襯衫、皮鞋嗎？",
+              "simplified": "你开始上班以后，每天都得穿衬衫、皮鞋吗？",
+              "pinyin": "Nǐ kāishǐ shàngbān yǐhòu, měi tiān dōu děi chuān chènshān, píxié ma?",
+              "english": "Since you started work, do you have to wear a shirt and leather shoes every day?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "對啊，公司要大家穿得正式一點。我以前天天穿球鞋，剛開始真的穿不慣，走一天路，腳痛得不得了。",
+              "simplified": "对啊，公司要大家穿得正式一点。我以前天天穿球鞋，刚开始真的穿不惯，走一天路，脚痛得不得了。",
+              "pinyin": "Duì a, gōngsī yào dàjiā chuān de zhèngshì yìdiǎn. Wǒ yǐqián tiāntiān chuān qiúxié, gāng kāishǐ zhēn de chuān bú guàn, zǒu yì tiān lù, jiǎo tòng de bùdéliǎo.",
+              "english": "Yes, the company wants everyone to dress a bit formally. I used to wear sneakers every day, so at first I really couldn't get used to them; after a day of walking my feet hurt terribly."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那你週末一定馬上換回球鞋吧？",
+              "simplified": "那你周末一定马上换回球鞋吧？",
+              "pinyin": "Nà nǐ zhōumò yídìng mǎshàng huàn huí qiúxié ba?",
+              "english": "Then at weekends you must switch straight back to sneakers, right?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "本來是這樣。可是三個月下來，皮鞋我已經穿慣了，現在週末也常穿。",
+              "simplified": "本来是这样。可是三个月下来，皮鞋我已经穿惯了，现在周末也常穿。",
+              "pinyin": "Běnlái shì zhèyàng. Kěshì sān ge yuè xiàlái, píxié wǒ yǐjīng chuān guàn le, xiànzài zhōumò yě cháng chuān.",
+              "english": "At first, yes. But after three months I'm used to leather shoes, and now I often wear them at weekends too."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-used-to-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "跟剛開始上班的時候比，男的現在怎麼樣？",
+                "simplified": "跟刚开始上班的时候比，男的现在怎么样？",
+                "pinyin": "Gēn gāng kāishǐ shàngbān de shíhòu bǐ, nán de xiànzài zěnmeyàng?",
+                "english": "Compared with when he first started work, how is the man now?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "上班穿皮鞋，週末就換回球鞋",
+                  "simplified": "上班穿皮鞋，周末就换回球鞋",
+                  "pinyin": "Shàngbān chuān píxié, zhōumò jiù huàn huí qiúxié.",
+                  "english": "He wears leather shoes for work and switches back to sneakers at weekends."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "走路還是會痛，只在上班時穿",
+                  "simplified": "走路还是会痛，只在上班时穿",
+                  "pinyin": "Zǒulù háishì huì tòng, zhǐ zài shàngbān shí chuān.",
+                  "english": "Walking still hurts, so he only wears them for work."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "以前穿不慣的皮鞋，現在週末也穿",
+                  "simplified": "以前穿不惯的皮鞋，现在周末也穿",
+                  "pinyin": "Yǐqián chuān bú guàn de píxié, xiànzài zhōumò yě chuān.",
+                  "english": "He now wears the shoes he once could not get used to, even at weekends."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "穿慣皮鞋以後，週末也不想穿球鞋",
+                  "simplified": "穿惯皮鞋以后，周末也不想穿球鞋",
+                  "pinyin": "Chuān guàn píxié yǐhòu, zhōumò yě bù xiǎng chuān qiúxié.",
+                  "english": "Now he's used to leather shoes, he doesn't want to wear sneakers any more."
+                }
+              ],
+              "key": 2,
+              "why": "剛開始真的穿不慣 was the first weeks; 三個月下來，皮鞋我已經穿慣了，現在週末也常穿 is now. Switching back at weekends was the woman's guess, which he answers with 本來是這樣 (that was only at first), and he never says he dislikes sneakers now.",
+              "focus": {
+                "zh": "V 不慣 → V 慣了",
+                "en": "not used to → used to"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-20",
+                "B3L03-1-08",
+                "B3L03-1-09"
+              ],
+              "grammarIds": [
+                "B3L08-G03-P213"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-dialogue-used-to-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我打算下個月搬出宿舍，在學校附近租房子。",
+              "simplified": "我打算下个月搬出宿舍，在学校附近租房子。",
+              "pinyin": "Wǒ dǎsuàn xià ge yuè bān chū sùshè, zài xuéxiào fùjìn zū fángzi.",
+              "english": "I'm planning to move out of the dorm next month and rent a place near school."
+            },
+            {
+              "speaker": "M",
+              "traditional": "是因為妳睡不慣宿舍的床嗎？妳上次說床太小，睡不好。",
+              "simplified": "是因为你睡不惯宿舍的床吗？你上次说床太小，睡不好。",
+              "pinyin": "Shì yīnwèi nǐ shuì bú guàn sùshè de chuáng ma? Nǐ shàng cì shuō chuáng tài xiǎo, shuì bù hǎo.",
+              "english": "Is it because you can't get used to the dorm bed? Last time you said the bed was too small and you couldn't sleep well."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那是剛搬進去的時候。現在那張床我已經睡得慣了。",
+              "simplified": "那是刚搬进去的时候。现在那张床我已经睡得惯了。",
+              "pinyin": "Nà shì gāng bān jìnqù de shíhòu. Xiànzài nà zhāng chuáng wǒ yǐjīng shuì de guàn le.",
+              "english": "That was when I first moved in. I'm used to sleeping in that bed now."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那是為什麼？",
+              "simplified": "那是为什么？",
+              "pinyin": "Nà shì wèishénme?",
+              "english": "Then why?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "她最近每天半夜都在講電話，一講就講到兩、三點。",
+              "simplified": "她最近每天半夜都在讲电话，一讲就讲到两、三点。",
+              "pinyin": "Tā zuìjìn měi tiān bànyè dōu zài jiǎng diànhuà, yì jiǎng jiù jiǎng dào liǎng, sān diǎn.",
+              "english": "Lately she's on the phone every night after midnight, and once she starts she goes on until two or three."
+            }
+          ],
+          "answerLine": 4,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-used-to-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的本來以為女的為什麼要搬出宿舍？",
+                "simplified": "男的本来以为女的为什么要搬出宿舍？",
+                "pinyin": "Nán de běnlái yǐwéi nǚ de wèishénme yào bān chū sùshè?",
+                "english": "Why did the man at first think the woman was moving out of the dorm?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "想住得離學校近一點",
+                  "simplified": "想住得离学校近一点",
+                  "pinyin": "Xiǎng zhù de lí xuéxiào jìn yìdiǎn.",
+                  "english": "She wants to live closer to school."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她還是睡不習慣宿舍的床",
+                  "simplified": "她还是睡不习惯宿舍的床",
+                  "pinyin": "Tā háishì shuì bù xíguàn sùshè de chuáng.",
+                  "english": "She still isn't used to the dorm bed."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "室友半夜常常講電話",
+                  "simplified": "室友半夜常常讲电话",
+                  "pinyin": "Shìyǒu bànyè chángcháng jiǎng diànhuà.",
+                  "english": "Her roommate is often on the phone at night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不習慣跟別人一起住",
+                  "simplified": "不习惯跟别人一起住",
+                  "pinyin": "Bù xíguàn gēn biérén yìqǐ zhù.",
+                  "english": "She isn't used to sharing a room."
+                }
+              ],
+              "key": 1,
+              "why": "He guessed the old problem (妳睡不慣宿舍的床嗎？), but she says that was only at first: 現在那張床我已經睡得慣了 (睡得慣 = can sleep there and is used to it). The phone calls are her real reason, not what he thought, and living near school is where she will move, not why.",
+              "focus": {
+                "zh": "V 慣了",
+                "en": "used to (V 慣)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B2L04-1-17",
+                "B1L05-3-01"
+              ],
+              "grammarIds": [
+                "B3L08-G03-P213"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-must",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l08-dialogue-must-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你發燒了，下午的課還是別去了吧。",
+              "simplified": "你发烧了，下午的课还是别去了吧。",
+              "pinyin": "Nǐ fāshāo le, xiàwǔ de kè háishì bié qù le ba.",
+              "english": "You've got a fever. You'd better not go to your afternoon class."
+            },
+            {
+              "speaker": "M",
+              "traditional": "別的課不去沒關係，可是下午那堂課要報告，我非去不可。",
+              "simplified": "别的课不去没关系，可是下午那堂课要报告，我非去不可。",
+              "pinyin": "Bié de kè bú qù méi guānxi, kěshì xiàwǔ nà táng kè yào bàogào, wǒ fēi qù bù kě.",
+              "english": "Missing other classes is fine, but this afternoon's class has a presentation. I have to go."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你把資料寄給同學，請他們替你報告，不行嗎？",
+              "simplified": "你把资料寄给同学，请他们替你报告，不行吗？",
+              "pinyin": "Nǐ bǎ zīliào jì gěi tóngxué, qǐng tāmen tì nǐ bàogào, bù xíng ma?",
+              "english": "Can't you send your material to your classmates and ask them to present for you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "老師說每個人都得自己報告，沒來的人這次就沒有成績。",
+              "simplified": "老师说每个人都得自己报告，没来的人这次就没有成绩。",
+              "pinyin": "Lǎoshī shuō měi ge rén dōu děi zìjǐ bàogào, méi lái de rén zhè cì jiù méiyǒu chéngjī.",
+              "english": "The teacher said everyone has to present in person; anyone who doesn't come gets no grade this time."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-must-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的建議請同學替他報告，男的為什麼說不行？",
+                "simplified": "女的建议请同学替他报告，男的为什么说不行？",
+                "pinyin": "Nǚ de jiànyì qǐng tóngxué tì tā bàogào, nán de wèishénme shuō bù xíng?",
+                "english": "The woman suggests classmates present for him. Why does the man say that won't work?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "那堂課要考試，不能請假",
+                  "simplified": "那堂课要考试，不能请假",
+                  "pinyin": "Nà táng kè yào kǎoshì, bù néng qǐngjià.",
+                  "english": "There's a test in that class, so he can't miss it."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "老師要每個人親自報告",
+                  "simplified": "老师要每个人亲自报告",
+                  "pinyin": "Lǎoshī yào měi ge rén qīnzì bàogào.",
+                  "english": "The teacher wants everyone to present in person."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "資料得當天親自交給老師",
+                  "simplified": "资料得当天亲自交给老师",
+                  "pinyin": "Zīliào děi dàngtiān qīnzì jiāo gěi lǎoshī.",
+                  "english": "The material must be handed to the teacher in person that day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "沒去的人得多寫一份報告",
+                  "simplified": "没去的人得多写一份报告",
+                  "pinyin": "Méi qù de rén děi duō xiě yí fèn bàogào.",
+                  "english": "Anyone absent must write an extra report."
+                }
+              ],
+              "key": 1,
+              "why": "She suggests classmates present for him, but 老師說每個人都得自己報告, so 非去不可. Absent students get no grade this time, not an extra report, and it is a presentation, not a test.",
+              "focus": {
+                "zh": "非……不可",
+                "en": "must, no other choice"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-18",
+                "B2L09-2-10",
+                "B2L16-2-11"
+              ],
+              "grammarIds": [
+                "B3L08-G05-P221"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-dialogue-must-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這家牛肉麵店要排一個小時，我們換一家吧？",
+              "simplified": "这家牛肉面店要排一个小时，我们换一家吧？",
+              "pinyin": "Zhè jiā niúròu miàn diàn yào pái yí ge xiǎoshí, wǒmen huàn yì jiā ba?",
+              "english": "There's an hour's queue at this beef noodle place. Shall we try another one?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不行，我朋友說來臺北非吃這家不可，我已經想了一個月了。",
+              "simplified": "不行，我朋友说来台北非吃这家不可，我已经想了一个月了。",
+              "pinyin": "Bù xíng, wǒ péngyǒu shuō lái Táiběi fēi chī zhè jiā bù kě, wǒ yǐjīng xiǎng le yí ge yuè le.",
+              "english": "No way. My friend said if you come to Taipei you absolutely have to eat here. I've been thinking about it for a month."
+            },
+            {
+              "speaker": "F",
+              "traditional": "可是我們的火車四點就開了，現在已經兩點半了。",
+              "simplified": "可是我们的火车四点就开了，现在已经两点半了。",
+              "pinyin": "Kěshì wǒmen de huǒchē sì diǎn jiù kāi le, xiànzài yǐjīng liǎng diǎn bàn le.",
+              "english": "But our train leaves at four, and it's already half past two."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那這樣吧，妳先去車站把票買好，我在這裡排隊，吃完馬上過去找妳。",
+              "simplified": "那这样吧，你先去车站把票买好，我在这里排队，吃完马上过去找你。",
+              "pinyin": "Nà zhèyàng ba, nǐ xiān qù chēzhàn bǎ piào mǎi hǎo, wǒ zài zhèlǐ páiduì, chī wán mǎshàng guòqù zhǎo nǐ.",
+              "english": "Then how about this: you go to the station first and buy the tickets, I'll queue here, and as soon as I've eaten I'll come and find you."
+            },
+            {
+              "speaker": "F",
+              "traditional": "好吧，那也幫我買一碗帶走。",
+              "simplified": "好吧，那也帮我买一碗带走。",
+              "pinyin": "Hǎo ba, nà yě bāng wǒ mǎi yì wǎn dài zǒu.",
+              "english": "All right. Then get me a bowl to take away as well."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-must-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的為什麼要女的先去車站？",
+                "simplified": "男的为什么要女的先去车站？",
+                "pinyin": "Nán de wèishénme yào nǚ de xiān qù chēzhàn?",
+                "english": "Why does the man want the woman to go to the station first?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "女的不想排隊，想先走",
+                  "simplified": "女的不想排队，想先走",
+                  "pinyin": "Nǚ de bù xiǎng páiduì, xiǎng xiān zǒu.",
+                  "english": "She doesn't want to queue and wants to leave first."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "車站的火車票可能快買不到了",
+                  "simplified": "车站的火车票可能快买不到了",
+                  "pinyin": "Chēzhàn de huǒchē piào kěnéng kuài mǎi bú dào le.",
+                  "english": "Train tickets may soon be sold out."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的想去車站吃別家",
+                  "simplified": "女的想去车站吃别家",
+                  "pinyin": "Nǚ de xiǎng qù chēzhàn chī bié jiā.",
+                  "english": "She wants to eat somewhere else at the station."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他不換店，一起排又怕來不及",
+                  "simplified": "他不换店，一起排又怕来不及",
+                  "pinyin": "Tā bú huàn diàn, yìqǐ pái yòu pà láibùjí.",
+                  "english": "He won't change places, but queuing together may make them late."
+                }
+              ],
+              "key": 3,
+              "why": "非吃這家不可 rules out another shop, and the hour-long queue against a four o'clock train means waiting together is too risky, so they split up. Changing shops was her first idea, not a plan for the station, and nobody says the tickets are selling out.",
+              "focus": {
+                "zh": "非……不可",
+                "en": "must, no other choice"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-18",
+                "B1L13-2-02",
+                "B1L10-1-19"
+              ],
+              "grammarIds": [
+                "B3L08-G05-P221"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-dialogue",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l08-review-dialogue-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我上個星期才買的手機，昨天就壞了。",
+              "simplified": "我上个星期才买的手机，昨天就坏了。",
+              "pinyin": "Wǒ shàng ge xīngqí cái mǎi de shǒujī, zuótiān jiù huài le.",
+              "english": "I only bought my phone last week, and yesterday it already broke."
+            },
+            {
+              "speaker": "M",
+              "traditional": "這麼說，妳可以拿回去換一支新的吧？",
+              "simplified": "这么说，你可以拿回去换一支新的吧？",
+              "pinyin": "Zhème shuō, nǐ kěyǐ ná huíqù huàn yì zhī xīn de ba?",
+              "english": "So you can take it back and swap it for a new one, right?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我也這麼以為，可是店員說得先送回去檢查，要是修不好，才能換新的。",
+              "simplified": "我也这么以为，可是店员说得先送回去检查，要是修不好，才能换新的。",
+              "pinyin": "Wǒ yě zhème yǐwéi, kěshì diànyuán shuō děi xiān sòng huíqù jiǎnchá, yàoshì xiū bù hǎo, cái néng huàn xīn de.",
+              "english": "That's what I thought, but the clerk said it first has to be sent back to be checked, and only if they can't fix it can I get a new one."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那要等多久？",
+              "simplified": "那要等多久？",
+              "pinyin": "Nà yào děng duō jiǔ?",
+              "english": "How long do you have to wait?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "大概兩個星期。這兩個星期，我只好先用我哥哥的舊手機了。",
+              "simplified": "大概两个星期。这两个星期，我只好先用我哥哥的旧手机了。",
+              "pinyin": "Dàgài liǎng ge xīngqí. Zhè liǎng ge xīngqí, wǒ zhǐhǎo xiān yòng wǒ gēge de jiù shǒujī le.",
+              "english": "About two weeks. For those two weeks I'll have to use my brother's old phone."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-review-dialogue-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這支手機，店員怎麼說？",
+                "simplified": "这支手机，店员怎么说？",
+                "pinyin": "Zhè zhī shǒujī, diànyuán zěnme shuō?",
+                "english": "What did the clerk say about this phone?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "得先把手機送去檢查",
+                  "simplified": "得先把手机送去检查",
+                  "pinyin": "Děi xiān bǎ shǒujī sòng qù jiǎnchá.",
+                  "english": "It has to be sent off to be checked first."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "可以拿去別家店修",
+                  "simplified": "可以拿去别家店修",
+                  "pinyin": "Kěyǐ ná qù bié jiā diàn xiū.",
+                  "english": "She can get it fixed at another shop."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "可以先用店裡的舊手機",
+                  "simplified": "可以先用店里的旧手机",
+                  "pinyin": "Kěyǐ xiān yòng diàn lǐ de jiù shǒujī.",
+                  "english": "She can use the shop's old phone for now."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "可以馬上換一支新的",
+                  "simplified": "可以马上换一支新的",
+                  "pinyin": "Kěyǐ mǎshàng huàn yì zhī xīn de.",
+                  "english": "She can swap it for a new one right away."
+                }
+              ],
+              "key": 0,
+              "why": "這麼說 leads to the man's guess (a new phone), but the clerk says 得先送回去檢查: a new one comes only if it cannot be fixed. The old phone she will use is her brother's, not the shop's.",
+              "focus": {
+                "zh": "這麼說，……",
+                "en": "so (drawing a conclusion)"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B2L11-2-10",
+                "B2L08-1-06"
+              ],
+              "grammarIds": [
+                "B3L07-G03-P187",
+                "B3L07-G01-P184"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-review-dialogue-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這個週末我們不是要去山上露營嗎？東西我都準備好了。",
+              "simplified": "这个周末我们不是要去山上露营吗？东西我都准备好了。",
+              "pinyin": "Zhège zhōumò wǒmen bú shì yào qù shān shàng lùyíng ma? Dōngxi wǒ dōu zhǔnbèi hǎo le.",
+              "english": "Aren't we going camping in the mountains this weekend? I've got everything ready."
+            },
+            {
+              "speaker": "F",
+              "traditional": "氣象預報說星期六會有颱風，我們還是改到下個星期六吧。",
+              "simplified": "气象预报说星期六会有台风，我们还是改到下个星期六吧。",
+              "pinyin": "Qìxiàng yùbào shuō xīngqíliù huì yǒu táifēng, wǒmen háishì gǎi dào xià ge xīngqíliù ba.",
+              "english": "The weather forecast says a typhoon is coming on Saturday. We'd better move it to next Saturday."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我以為這個颱風不會到北部，沒想到還是會來。那星期天去呢？",
+              "simplified": "我以为这个台风不会到北部，没想到还是会来。那星期天去呢？",
+              "pinyin": "Wǒ yǐwéi zhège táifēng bú huì dào běibù, méixiǎngdào háishì huì lái. Nà xīngqítiān qù ne?",
+              "english": "I thought this typhoon wouldn't reach the north, but it's coming after all. What about going on Sunday?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "預報說星期天雨還是很大，山路可能會很危險。",
+              "simplified": "预报说星期天雨还是很大，山路可能会很危险。",
+              "pinyin": "Yùbào shuō xīngqítiān yǔ háishì hěn dà, shānlù kěnéng huì hěn wéixiǎn.",
+              "english": "The forecast says it'll still be raining hard on Sunday. The mountain roads could be dangerous."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好吧，那就聽妳的。",
+              "simplified": "好吧，那就听你的。",
+              "pinyin": "Hǎo ba, nà jiù tīng nǐ de.",
+              "english": "All right, we'll do it your way."
+            }
+          ],
+          "answerLine": 4,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-review-dialogue-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他們決定什麼時候去露營？",
+                "simplified": "他们决定什么时候去露营？",
+                "pinyin": "Tāmen juédìng shénme shíhòu qù lùyíng?",
+                "english": "When do they decide to go camping?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這個星期五",
+                  "simplified": "这个星期五",
+                  "pinyin": "Zhège xīngqíwǔ.",
+                  "english": "This Friday."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個星期六",
+                  "simplified": "这个星期六",
+                  "pinyin": "Zhège xīngqíliù.",
+                  "english": "This Saturday."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下個週末",
+                  "simplified": "下个周末",
+                  "pinyin": "Xià ge zhōumò.",
+                  "english": "Next weekend."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這個星期天",
+                  "simplified": "这个星期天",
+                  "pinyin": "Zhège xīngqítiān.",
+                  "english": "This Sunday."
+                }
+              ],
+              "key": 2,
+              "why": "她說還是改到下個星期六吧, which is next weekend; his Sunday idea is ruled out by the rain, and 那就聽妳的 goes back to her plan. Saturday is the typhoon day.",
+              "focus": {
+                "zh": "……，還是……吧",
+                "en": "better to… (suggestion)"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-02",
+                "B2L05-1-14"
+              ],
+              "grammarIds": [
+                "B3L05-G04-P133",
+                "B3L05-G03-P132"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-two",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l08-dialogue-two-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你下個星期要去女朋友家見她爸媽，衣服準備好了嗎？",
+              "simplified": "你下个星期要去女朋友家见她爸妈，衣服准备好了吗？",
+              "pinyin": "Nǐ xià ge xīngqí yào qù nǚpéngyǒu jiā jiàn tā bàmā, yīfu zhǔnbèi hǎo le ma?",
+              "english": "Next week you're going to your girlfriend's home to meet her parents. Have you got your clothes ready?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "還沒。我想去百貨公司買一套名牌的，聽說她爸媽對穿著很講究。",
+              "simplified": "还没。我想去百货公司买一套名牌的，听说她爸妈对穿着很讲究。",
+              "pinyin": "Hái méi. Wǒ xiǎng qù bǎihuò gōngsī mǎi yí tào míngpái de, tīngshuō tā bàmā duì chuānzhuó hěn jiǎngjiù.",
+              "english": "Not yet. I want to buy a brand-name outfit at a department store. I hear her parents are very particular about clothes."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我覺得不必。她爸媽想認識的是你這個人，不是你的衣服。況且你上個月才買了一件深藍色的外套，穿那件就很好看了。",
+              "simplified": "我觉得不必。她爸妈想认识的是你这个人，不是你的衣服。况且你上个月才买了一件深蓝色的外套，穿那件就很好看了。",
+              "pinyin": "Wǒ juéde búbì. Tā bàmā xiǎng rènshì de shì nǐ zhège rén, bú shì nǐ de yīfu. Kuàngqiě nǐ shàng ge yuè cái mǎi le yí jiàn shēn lánsè de wàitào, chuān nà jiàn jiù hěn hǎokàn le.",
+              "english": "I don't think you need to. Her parents want to get to know you, not your clothes. Besides, you only bought a dark blue jacket last month; you look great in that."
+            },
+            {
+              "speaker": "M",
+              "traditional": "可是那件是平價的，不是名牌啊。",
+              "simplified": "可是那件是平价的，不是名牌啊。",
+              "pinyin": "Kěshì nà jiàn shì píngjià de, bú shì míngpái a.",
+              "english": "But that one's cheap, it's not a brand name."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那又怎麼樣？你平時不穿那麼正式的衣服，突然穿得太正式，自己也會不自在。",
+              "simplified": "那又怎么样？你平时不穿那么正式的衣服，突然穿得太正式，自己也会不自在。",
+              "pinyin": "Nà yòu zěnmeyàng? Nǐ píngshí bù chuān nàme zhèngshì de yīfu, túrán chuān de tài zhèngshì, zìjǐ yě huì bú zìzài.",
+              "english": "So what? You don't normally wear such formal clothes. If you suddenly dress too formally, you won't feel at ease yourself."
+            },
+            {
+              "speaker": "M",
+              "traditional": "也對。畢竟是第一次見面，讓他們看到平常的我，比穿名牌重要。",
+              "simplified": "也对。毕竟是第一次见面，让他们看到平常的我，比穿名牌重要。",
+              "pinyin": "Yě duì. Bìjìng shì dì yī cì jiànmiàn, ràng tāmen kàndào píngcháng de wǒ, bǐ chuān míngpái zhòngyào.",
+              "english": "True. After all, it's the first time we meet; letting them see me as I usually am matters more than wearing brand names."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-two-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的為什麼覺得男的不必買新衣服？",
+                "simplified": "女的为什么觉得男的不必买新衣服？",
+                "pinyin": "Nǚ de wèishénme juéde nán de búbì mǎi xīn yīfu?",
+                "english": "Why does the woman think the man doesn't need to buy new clothes?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他已經有一件合適的外套",
+                  "simplified": "他已经有一件合适的外套",
+                  "pinyin": "Tā yǐjīng yǒu yí jiàn héshì de wàitào.",
+                  "english": "He already has a suitable jacket."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "百貨公司的名牌太貴了",
+                  "simplified": "百货公司的名牌太贵了",
+                  "pinyin": "Bǎihuò gōngsī de míngpái tài guì le.",
+                  "english": "Brand names at department stores are too expensive."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女朋友的爸媽不喜歡名牌",
+                  "simplified": "女朋友的爸妈不喜欢名牌",
+                  "pinyin": "Nǚpéngyǒu de bàmā bù xǐhuān míngpái.",
+                  "english": "His girlfriend's parents don't like brand names."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他穿正式的衣服不好看",
+                  "simplified": "他穿正式的衣服不好看",
+                  "pinyin": "Tā chuān zhèngshì de yīfu bù hǎokàn.",
+                  "english": "He doesn't look good in formal clothes."
+                }
+              ],
+              "key": 0,
+              "why": "Her reasons are that the parents want to know him, not his clothes, and 況且 adds that last month's dark blue jacket already looks good. She never says the parents dislike brand names, and her worry about formal clothes is that he won't feel at ease, not that he looks bad.",
+              "focus": {
+                "zh": "況且",
+                "en": "besides (a further reason)"
+              },
+              "lesson": 8,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L08-2-16",
+                "B3L08-1-04",
+                "B3L08-1-11"
+              ],
+              "grammarIds": [
+                "B3L08-G04-P219"
+              ]
+            },
+            {
+              "id": "b3l08-dialogue-two-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "第一次見女朋友的爸媽，男的最後覺得什麼最重要？",
+                "simplified": "第一次见女朋友的爸妈，男的最后觉得什么最重要？",
+                "pinyin": "Dì yī cì jiàn nǚpéngyǒu de bàmā, nán de zuìhòu juéde shénme zuì zhòngyào?",
+                "english": "For the first meeting with his girlfriend's parents, what does the man finally think matters most?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "穿得夠正式，才有禮貌",
+                  "simplified": "穿得够正式，才有礼貌",
+                  "pinyin": "Chuān de gòu zhèngshì, cái yǒu lǐmào.",
+                  "english": "Dressing formally enough, to be polite."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "做自己，穿得自然就好",
+                  "simplified": "做自己，穿得自然就好",
+                  "pinyin": "Zuò zìjǐ, chuān de zìrán jiù hǎo.",
+                  "english": "Being himself and dressing naturally."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "穿得跟女朋友爸媽一樣講究",
+                  "simplified": "穿得跟女朋友爸妈一样讲究",
+                  "pinyin": "Chuān de gēn nǚpéngyǒu bàmā yíyàng jiǎngjiù.",
+                  "english": "Dressing as carefully as her parents do."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "先了解他們喜歡的風格",
+                  "simplified": "先了解他们喜欢的风格",
+                  "pinyin": "Xiān liǎojiě tāmen xǐhuān de fēnggé.",
+                  "english": "Finding out first what style they like."
+                }
+              ],
+              "key": 1,
+              "why": "畢竟是第一次見面 leads to his conclusion: letting them see 平常的我 (being himself, dressed as usual) matters more than brand names. Matching the parents' fussiness and dressing up were his worries before she talked him round, and nobody suggests asking about their taste.",
+              "focus": {
+                "zh": "畢竟",
+                "en": "after all (the key fact)"
+              },
+              "lesson": 8,
+              "answerLine": 5,
+              "wordIds": [
+                "B3L08-2-19",
+                "B3L08-2-11",
+                "B3L08-1-12"
+              ],
+              "grammarIds": [
+                "B3L08-G06-P222"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-dialogue-two-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答兩個問題。",
+            "simplified": "请听一段对话，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a conversation, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳又上網買衣服了？這個月已經第三次了吧。",
+              "simplified": "你又上网买衣服了？这个月已经第三次了吧。",
+              "pinyin": "Nǐ yòu shàngwǎng mǎi yīfu le? Zhège yuè yǐjīng dì sān cì le ba.",
+              "english": "Buying clothes online again? That's the third time this month, isn't it?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "這家的衣服很平價，一件才兩百塊，不買太可惜了。",
+              "simplified": "这家的衣服很平价，一件才两百块，不买太可惜了。",
+              "pinyin": "Zhè jiā de yīfu hěn píngjià, yí jiàn cái liǎngbǎi kuài, bù mǎi tài kěxí le.",
+              "english": "This shop's clothes are cheap, only two hundred each. It'd be a shame not to buy."
+            },
+            {
+              "speaker": "M",
+              "traditional": "可是妳的櫃子已經放不下了。況且上次買的那幾件，妳連一次都還沒穿過。",
+              "simplified": "可是你的柜子已经放不下了。况且上次买的那几件，你连一次都还没穿过。",
+              "pinyin": "Kěshì nǐ de guìzi yǐjīng fàng bú xià le. Kuàngqiě shàng cì mǎi de nà jǐ jiàn, nǐ lián yí cì dōu hái méi chuān guo.",
+              "english": "But your wardrobe is already full. Besides, you haven't worn the ones you bought last time even once."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那是因為天氣還不夠冷，那幾件都是毛衣啊。",
+              "simplified": "那是因为天气还不够冷，那几件都是毛衣啊。",
+              "pinyin": "Nà shì yīnwèi tiānqì hái bú gòu lěng, nà jǐ jiàn dōu shì máoyī a.",
+              "english": "That's because it isn't cold enough yet. They're all sweaters."
+            },
+            {
+              "speaker": "M",
+              "traditional": "等天氣冷了，又會有新的樣式出來，妳一定又想買新的。畢竟妳還是學生，錢要花在真正需要的地方。",
+              "simplified": "等天气冷了，又会有新的样式出来，你一定又想买新的。毕竟你还是学生，钱要花在真正需要的地方。",
+              "pinyin": "Děng tiānqì lěng le, yòu huì yǒu xīn de yàngshì chūlái, nǐ yídìng yòu xiǎng mǎi xīn de. Bìjìng nǐ hái shì xuéshēng, qián yào huā zài zhēnzhèng xūyào de dìfāng.",
+              "english": "When it gets cold, new styles will come out again and you'll want new ones. After all, you're still a student; money should go on what you really need."
+            },
+            {
+              "speaker": "F",
+              "traditional": "好吧，這件我先不買了。等我把那幾件毛衣穿過了，再決定要不要買。",
+              "simplified": "好吧，这件我先不买了。等我把那几件毛衣穿过了，再决定要不要买。",
+              "pinyin": "Hǎo ba, zhè jiàn wǒ xiān bù mǎi le. Děng wǒ bǎ nà jǐ jiàn máoyī chuān guo le, zài juédìng yào bú yào mǎi.",
+              "english": "All right, I won't buy this one for now. Once I've worn those sweaters, I'll decide whether to buy it."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-dialogue-two-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的提到上次買的那幾件衣服，是想說什麼？",
+                "simplified": "男的提到上次买的那几件衣服，是想说什么？",
+                "pinyin": "Nán de tí dào shàng cì mǎi de nà jǐ jiàn yīfu, shì xiǎng shuō shénme?",
+                "english": "What is the man getting at when he mentions the clothes she bought last time?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "那幾件的樣式已經不流行了",
+                  "simplified": "那几件的样式已经不流行了",
+                  "pinyin": "Nà jǐ jiàn de yàngshì yǐjīng bù liúxíng le.",
+                  "english": "Those clothes are already out of fashion."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那幾件跟這件很像",
+                  "simplified": "那几件跟这件很像",
+                  "pinyin": "Nà jǐ jiàn gēn zhè jiàn hěn xiàng.",
+                  "english": "Those clothes look a lot like this one."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那幾件天氣冷才能穿",
+                  "simplified": "那几件天气冷才能穿",
+                  "pinyin": "Nà jǐ jiàn tiānqì lěng cái néng chuān.",
+                  "english": "Those clothes can only be worn when it is cold."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的買了衣服也不一定穿",
+                  "simplified": "女的买了衣服也不一定穿",
+                  "pinyin": "Nǚ de mǎi le yīfu yě bù yídìng chuān.",
+                  "english": "Buying clothes doesn't mean she will wear them."
+                }
+              ],
+              "key": 3,
+              "why": "況且 adds a second reason to stop buying: even last time's clothes have not been worn once, so buying does not mean wearing. Needing cold weather is her excuse, not his point, and he does not compare them with this one or call them out of fashion.",
+              "focus": {
+                "zh": "況且",
+                "en": "besides (a further reason)"
+              },
+              "lesson": 8,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L08-2-16",
+                "B3L08-1-23",
+                "B2L08-2-10"
+              ],
+              "grammarIds": [
+                "B3L08-G04-P219"
+              ]
+            },
+            {
+              "id": "b3l08-dialogue-two-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的說「畢竟妳還是學生」，是想告訴她什麼？",
+                "simplified": "男的说「毕竟你还是学生」，是想告诉她什么？",
+                "pinyin": "Nán de shuō “bìjìng nǐ hái shì xuéshēng”, shì xiǎng gàosu tā shénme?",
+                "english": "When the man says \"after all, you're still a student\", what is he telling her?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "時間應該多花在念書上",
+                  "simplified": "时间应该多花在念书上",
+                  "pinyin": "Shíjiān yīnggāi duō huā zài niànshū shàng.",
+                  "english": "Her time should go more on studying."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "學生穿平價的衣服就夠了",
+                  "simplified": "学生穿平价的衣服就够了",
+                  "pinyin": "Xuéshēng chuān píngjià de yīfu jiù gòu le.",
+                  "english": "Cheap clothes are good enough for a student."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "別亂花錢，買需要的就好",
+                  "simplified": "别乱花钱，买需要的就好",
+                  "pinyin": "Bié luàn huā qián, mǎi xūyào de jiù hǎo.",
+                  "english": "Don't waste money; buy only what she needs."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "買東西以前應該先問爸媽",
+                  "simplified": "买东西以前应该先问爸妈",
+                  "pinyin": "Mǎi dōngxi yǐqián yīnggāi xiān wèn bàmā.",
+                  "english": "She should ask her parents before buying things."
+                }
+              ],
+              "key": 2,
+              "why": "畢竟 brings in the key fact: as a student, 錢要花在真正需要的地方. He is talking about money, not study time, and he never says cheap clothes are fine; her two-hundred-dollar clothes are what he wants her to stop buying.",
+              "focus": {
+                "zh": "畢竟",
+                "en": "after all (the key fact)"
+              },
+              "lesson": 8,
+              "answerLine": 4,
+              "wordIds": [
+                "B3L08-2-19",
+                "B3L08-2-06",
+                "B3L08-1-24"
+              ],
+              "grammarIds": [
+                "B3L08-G06-P222"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talk",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l08-talk-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段說明，然後回答兩個問題。",
+            "simplified": "请听一段说明，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn shuōmíng, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to an announcement, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "大家好，我們是服裝設計社。很多人的櫃子裡都有一次也沒穿過的衣服，丟掉覺得可惜，留著又沒地方放。",
+              "simplified": "大家好，我们是服装设计社。很多人的柜子里都有一次也没穿过的衣服，丢掉觉得可惜，留着又没地方放。",
+              "pinyin": "Dàjiā hǎo, wǒmen shì fúzhuāng shèjì shè. Hěn duō rén de guìzi lǐ dōu yǒu yí cì yě méi chuān guo de yīfu, diūdiào juéde kěxí, liú zhe yòu méi dìfāng fàng.",
+              "english": "Hello everyone, we're the fashion design club. Lots of people have clothes in their wardrobes they've never worn: throwing them out feels like a waste, but there's no room to keep them."
+            },
+            {
+              "speaker": "F",
+              "traditional": "這個星期五下午兩點到五點，我們在學生餐廳旁邊舉辦舊衣服交換活動。帶一件衣服來，就能換一件回去。衣服一定要洗乾淨，破的、髒的我們不收。",
+              "simplified": "这个星期五下午两点到五点，我们在学生餐厅旁边举办旧衣服交换活动。带一件衣服来，就能换一件回去。衣服一定要洗干净，破的、脏的我们不收。",
+              "pinyin": "Zhège xīngqíwǔ xiàwǔ liǎng diǎn dào wǔ diǎn, wǒmen zài xuéshēng cāntīng pángbiān jǔbàn jiù yīfu jiāohuàn huódòng. Dài yí jiàn yīfu lái, jiù néng huàn yí jiàn huíqù. Yīfu yídìng yào xǐ gānjìng, pò de, zāng de wǒmen bù shōu.",
+              "english": "This Friday from two to five p.m., we're holding a used-clothes swap next to the student cafeteria. Bring one piece and you can take one home. Clothes must be washed clean; we don't take torn or dirty ones."
+            },
+            {
+              "speaker": "F",
+              "traditional": "社團的同學也可以幫大家把舊衣服改成袋子或帽子，一件只要五十塊，下個星期就能拿。再好看的衣服，放在櫃子裡也沒有用。歡迎大家來看看！",
+              "simplified": "社团的同学也可以帮大家把旧衣服改成袋子或帽子，一件只要五十块，下个星期就能拿。再好看的衣服，放在柜子里也没有用。欢迎大家来看看！",
+              "pinyin": "Shètuán de tóngxué yě kěyǐ bāng dàjiā bǎ jiù yīfu gǎi chéng dàizi huò màozi, yí jiàn zhǐ yào wǔshí kuài, xià ge xīngqí jiù néng ná. Zài hǎokàn de yīfu, fàng zài guìzi lǐ yě méiyǒu yòng. Huānyíng dàjiā lái kànkan!",
+              "english": "Club members can also turn your old clothes into bags or hats, just fifty dollars a piece, ready next week. However nice a piece of clothing is, it's no use sitting in a wardrobe. Come and have a look!"
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-talk-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "一位同學星期五帶了兩件洗好的舊衣服去，一件換別人的衣服，一件改成袋子。她得付多少錢，什麼時候能拿到袋子？",
+                "simplified": "一位同学星期五带了两件洗好的旧衣服去，一件换别人的衣服，一件改成袋子。她得付多少钱，什么时候能拿到袋子？",
+                "pinyin": "Yí wèi tóngxué xīngqíwǔ dài le liǎng jiàn xǐ hǎo de jiù yīfu qù, yí jiàn huàn biérén de yīfu, yí jiàn gǎi chéng dàizi. Tā děi fù duōshǎo qián, shénme shíhòu néng ná dào dàizi?",
+                "english": "On Friday a student brings two washed old garments: one to swap, one to turn into a bag. How much does she pay, and when does she get the bag?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一百塊，下個星期拿袋子",
+                  "simplified": "一百块，下个星期拿袋子",
+                  "pinyin": "Yìbǎi kuài, xià ge xīngqí ná dàizi.",
+                  "english": "A hundred dollars; the bag is ready next week."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五十塊，下個星期拿袋子",
+                  "simplified": "五十块，下个星期拿袋子",
+                  "pinyin": "Wǔshí kuài, xià ge xīngqí ná dàizi.",
+                  "english": "Fifty dollars; the bag is ready next week."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五十塊，當天就能拿袋子",
+                  "simplified": "五十块，当天就能拿袋子",
+                  "pinyin": "Wǔshí kuài, dàngtiān jiù néng ná dàizi.",
+                  "english": "Fifty dollars; the bag is ready the same day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "不用錢，下個星期拿袋子",
+                  "simplified": "不用钱，下个星期拿袋子",
+                  "pinyin": "Bú yòng qián, xià ge xīngqí ná dàizi.",
+                  "english": "Nothing; the bag is ready next week."
+                }
+              ],
+              "key": 1,
+              "why": "The swap is free (帶一件來，就能換一件回去); only turning clothes into a bag costs 五十塊, and it is ready 下個星期. A hundred counts the swap as paid too, and the same day is when the swap happens, not the bag.",
+              "focus": {
+                "zh": "帶一件，換一件",
+                "en": "bring one, take one"
+              },
+              "lesson": 8,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L08-1-23",
+                "B2L09-2-01"
+              ],
+              "grammarIds": [
+                "B3L08-G01-P210"
+              ]
+            },
+            {
+              "id": "b3l08-talk-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "說話的人說「再好看的衣服，放在櫃子裡也沒有用」，是什麼意思？",
+                "simplified": "说话的人说「再好看的衣服，放在柜子里也没有用」，是什么意思？",
+                "pinyin": "Shuōhuà de rén shuō “zài hǎokàn de yīfu, fàng zài guìzi lǐ yě méiyǒu yòng”, shì shénme yìsi?",
+                "english": "What does the speaker mean by \"however nice a piece of clothing is, it's no use sitting in a wardrobe\"?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "好看的衣服應該留著慢慢穿",
+                  "simplified": "好看的衣服应该留着慢慢穿",
+                  "pinyin": "Hǎokàn de yīfu yīnggāi liú zhe mànmàn chuān.",
+                  "english": "Nice clothes should be kept and worn bit by bit."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "衣服不必好看，舒適最重要",
+                  "simplified": "衣服不必好看，舒适最重要",
+                  "pinyin": "Yīfu búbì hǎokàn, shūshì zuì zhòngyào.",
+                  "english": "Clothes needn't look nice; comfort matters most."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "好看的衣服要放好，才不會壞",
+                  "simplified": "好看的衣服要放好，才不会坏",
+                  "pinyin": "Hǎokàn de yīfu yào fàng hǎo, cái bú huì huài.",
+                  "english": "Nice clothes must be stored well so they last."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "衣服沒人穿，再好看也可惜",
+                  "simplified": "衣服没人穿，再好看也可惜",
+                  "pinyin": "Yīfu méi rén chuān, zài hǎokàn yě kěxí.",
+                  "english": "If nobody wears them, even nice clothes go to waste."
+                }
+              ],
+              "key": 3,
+              "why": "再 + 好看 + 也沒有用: however nice, clothes left unworn are wasted, which is why she asks people to swap them. Keeping them to wear later and storing them well are what the club wants people to stop doing, and she never puts comfort above looks.",
+              "focus": {
+                "zh": "再……也……",
+                "en": "no matter how…"
+              },
+              "lesson": 8,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L08-1-23",
+                "B2L11-2-26"
+              ],
+              "grammarIds": [
+                "B3L08-G02-P211"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-talk-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段留言，然後回答兩個問題。",
+            "simplified": "请听一段留言，然后回答两个问题。",
+            "pinyin": "Qǐng tīng yí duàn liúyán, ránhòu huídá liǎng ge wèntí.",
+            "english": "Listen to a voice message, then answer two questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "喂，我是媽媽。下個月十號你哥哥結婚，你再忙也要回來一趟。",
+              "simplified": "喂，我是妈妈。下个月十号你哥哥结婚，你再忙也要回来一趟。",
+              "pinyin": "Wéi, wǒ shì māma. Xià ge yuè shí hào nǐ gēge jiéhūn, nǐ zài máng yě yào huílái yí tàng.",
+              "english": "Hello, this is Mom. Your brother is getting married on the tenth of next month. However busy you are, you have to come home for it."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我知道你不喜歡穿得太正式，可是那天你非穿襯衫不可。你哥哥說，他女朋友家的人對穿著都很講究。",
+              "simplified": "我知道你不喜欢穿得太正式，可是那天你非穿衬衫不可。你哥哥说，他女朋友家的人对穿着都很讲究。",
+              "pinyin": "Wǒ zhīdào nǐ bù xǐhuān chuān de tài zhèngshì, kěshì nà tiān nǐ fēi chuān chènshān bù kě. Nǐ gēge shuō, tā nǚpéngyǒu jiā de rén duì chuānzhuó dōu hěn jiǎngjiù.",
+              "english": "I know you don't like dressing too formally, but that day you absolutely must wear a shirt. Your brother says his girlfriend's family are all very particular about clothes."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你那件白襯衫去年就穿不下了，這個星期六我陪你去買一件新的吧。要是你星期六得打工，就告訴我你穿幾號的，我自己去買。",
+              "simplified": "你那件白衬衫去年就穿不下了，这个星期六我陪你去买一件新的吧。要是你星期六得打工，就告诉我你穿几号的，我自己去买。",
+              "pinyin": "Nǐ nà jiàn bái chènshān qùnián jiù chuān bú xià le, zhège xīngqíliù wǒ péi nǐ qù mǎi yí jiàn xīn de ba. Yàoshì nǐ xīngqíliù děi dǎgōng, jiù gàosu wǒ nǐ chuān jǐ hào de, wǒ zìjǐ qù mǎi.",
+              "english": "Your white shirt stopped fitting you last year, so this Saturday I'll go with you to buy a new one. If you have to work on Saturday, tell me your size and I'll go and buy it myself."
+            }
+          ],
+          "answerLine": 0,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l08-talk-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "聽留言的人下個月要準備很多考試。照媽媽的意思，他十號應該怎麼做？",
+                "simplified": "听留言的人下个月要准备很多考试。照妈妈的意思，他十号应该怎么做？",
+                "pinyin": "Tīng liúyán de rén xià ge yuè yào zhǔnbèi hěn duō kǎoshì. Zhào māma de yìsi, tā shí hào yīnggāi zěnme zuò?",
+                "english": "The listener has many exams to prepare for next month. Going by what his mother says, what should he do on the tenth?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "考完試再回家看哥哥",
+                  "simplified": "考完试再回家看哥哥",
+                  "pinyin": "Kǎo wán shì zài huíjiā kàn gēge.",
+                  "english": "Go home to see his brother after his exams."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "先準備考試，婚禮晚一點再到",
+                  "simplified": "先准备考试，婚礼晚一点再到",
+                  "pinyin": "Xiān zhǔnbèi kǎoshì, hūnlǐ wǎn yìdiǎn zài dào.",
+                  "english": "Study for his exams first and arrive at the wedding late."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "還是得回家參加婚禮",
+                  "simplified": "还是得回家参加婚礼",
+                  "pinyin": "Háishì děi huíjiā cānjiā hūnlǐ.",
+                  "english": "Still go home for the wedding."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "打電話跟哥哥說一聲",
+                  "simplified": "打电话跟哥哥说一声",
+                  "pinyin": "Dǎ diànhuà gēn gēge shuō yì shēng.",
+                  "english": "Phone his brother to let him know."
+                }
+              ],
+              "key": 2,
+              "why": "你再忙也要回來一趟: 再 + 忙 + 也 means however busy he is, the plan stays, so exams do not change it. Going home after the exams mistakes 再 for \"then, later\"; she wants him at the wedding, not arriving late, and never suggests a call.",
+              "focus": {
+                "zh": "再……也……",
+                "en": "no matter how…"
+              },
+              "lesson": 8,
+              "answerLine": 0,
+              "wordIds": [
+                "B3L08-1-11",
+                "B3L03-1-03"
+              ],
+              "grammarIds": [
+                "B3L08-G02-P211"
+              ]
+            },
+            {
+              "id": "b3l08-talk-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "要是聽留言的人星期六得打工，他得先做什麼？",
+                "simplified": "要是听留言的人星期六得打工，他得先做什么？",
+                "pinyin": "Yàoshì tīng liúyán de rén xīngqíliù děi dǎgōng, tā děi xiān zuò shénme?",
+                "english": "If the listener has to work on Saturday, what must he do first?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "把自己襯衫的大小告訴媽媽",
+                  "simplified": "把自己衬衫的大小告诉妈妈",
+                  "pinyin": "Bǎ zìjǐ chènshān de dàxiǎo gàosu māma.",
+                  "english": "Tell his mother his shirt size."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "把那件白襯衫拿給媽媽看",
+                  "simplified": "把那件白衬衫拿给妈妈看",
+                  "pinyin": "Bǎ nà jiàn bái chènshān ná gěi māma kàn.",
+                  "english": "Show his mother the white shirt."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "先跟哥哥借一件襯衫",
+                  "simplified": "先跟哥哥借一件衬衫",
+                  "pinyin": "Xiān gēn gēge jiè yí jiàn chènshān.",
+                  "english": "Borrow a shirt from his brother first."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "自己下班以後去買襯衫",
+                  "simplified": "自己下班以后去买衬衫",
+                  "pinyin": "Zìjǐ xiàbān yǐhòu qù mǎi chènshān.",
+                  "english": "Buy a shirt himself after work."
+                }
+              ],
+              "key": 0,
+              "why": "If he works, 就告訴我你穿幾號的，我自己去買: she needs his size (幾號 = what size). The white shirt is no help because 去年就穿不下了, so its size is wrong, and she offers to buy it herself, so he need not shop or borrow.",
+              "focus": {
+                "zh": "要是……，就……",
+                "en": "if…, then…"
+              },
+              "lesson": 8,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L03-1-31",
+                "B2L12-2-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloze",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l08-cloze-1",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "以前我每個週末都去逛街，看到流行的衣服就買。去年搬家的時候，我才發現櫃子裡有很多衣服連一次也沒穿過。從那時候起，我就{1}亂買衣服了。現在買衣服以前，我會先想一想自己是不是真的需要。{2}便宜的衣服，買多了也要花不少錢。{3}衣服太多，每天早上選衣服也要花很多時間。我還學會了自己把舊衣服{4}成新的樣式，穿起來很有自己的風格。朋友都說，我比以前更有{5}了。我覺得衣服不必多，{6}穿得舒適、自在才是最重要的。",
+            "simplified": "以前我每个周末都去逛街，看到流行的衣服就买。去年搬家的时候，我才发现柜子里有很多衣服连一次也没穿过。从那时候起，我就{1}乱买衣服了。现在买衣服以前，我会先想一想自己是不是真的需要。{2}便宜的衣服，买多了也要花不少钱。{3}衣服太多，每天早上选衣服也要花很多时间。我还学会了自己把旧衣服{4}成新的样式，穿起来很有自己的风格。朋友都说，我比以前更有{5}了。我觉得衣服不必多，{6}穿得舒适、自在才是最重要的。",
+            "pinyin": "Yǐqián wǒ měi ge zhōumò dōu qù guàngjiē, kàndào liúxíng de yīfu jiù mǎi. Qùnián bānjiā de shíhòu, wǒ cái fāxiàn guìzi lǐ yǒu hěn duō yīfu lián yí cì yě méi chuān guo. Cóng nà shíhòu qǐ, wǒ jiù búzài luàn mǎi yīfu le. Xiànzài mǎi yīfu yǐqián, wǒ huì xiān xiǎng yì xiǎng zìjǐ shì bú shì zhēn de xūyào. Zài piányí de yīfu, mǎi duō le yě yào huā bù shǎo qián. Kuàngqiě yīfu tài duō, měi tiān zǎoshàng xuǎn yīfu yě yào huā hěn duō shíjiān. Wǒ hái xué huì le zìjǐ bǎ jiù yīfu gǎi chéng xīn de yàngshì, chuān qǐlái hěn yǒu zìjǐ de fēnggé. Péngyǒu dōu shuō, wǒ bǐ yǐqián gèng yǒu pǐnwèi le. Wǒ juéde yīfu búbì duō, bìjìng chuān de shūshì, zìzài cái shì zuì zhòngyào de.",
+            "english": "I used to go shopping every weekend and buy whatever clothes were in fashion. When I moved last year, I found lots of clothes in my wardrobe I had never worn once. From then on I stopped buying clothes on impulse. Now, before I buy anything, I first think about whether I really need it. However cheap clothes are, buy a lot and it still costs a fair bit. Besides, with too many clothes, choosing what to wear every morning takes ages. I have also learned to alter old clothes into new styles myself, and they look like my own style. My friends all say I have better taste than before. I think you don't need many clothes; after all, being comfortable and at ease in them is what matters most."
+          },
+          "questions": [
+            {
+              "id": "b3l08-cloze-1-1",
+              "choices": [
+                {
+                  "traditional": "一直",
+                  "simplified": "一直",
+                  "pinyin": "yìzhí",
+                  "english": "all along"
+                },
+                {
+                  "traditional": "不再",
+                  "simplified": "不再",
+                  "pinyin": "búzài",
+                  "english": "no longer"
+                },
+                {
+                  "traditional": "早就",
+                  "simplified": "早就",
+                  "pinyin": "zǎojiù",
+                  "english": "long ago"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                }
+              ],
+              "key": 1,
+              "why": "從那時候起，我就不再亂買衣服了: after finding clothes never worn, the writer stopped. 一直 and 早就 would mean the buying went on, the opposite of what follows (now the writer thinks before buying), and 終於 cannot go after 就 like this.",
+              "focus": {
+                "zh": "不再……了",
+                "en": "no longer"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B2L02-2-21",
+                "B2L04-2-09"
+              ],
+              "grammarIds": [
+                "B3L03-G04-P82"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-1-2",
+              "choices": [
+                {
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "english": "no matter how"
+                },
+                {
+                  "traditional": "越",
+                  "simplified": "越",
+                  "pinyin": "yuè",
+                  "english": "the more"
+                },
+                {
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "english": "only"
+                },
+                {
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "english": "again; also"
+                }
+              ],
+              "key": 0,
+              "why": "再便宜的衣服，買多了也要花不少錢: 再 + adjective … 也 means \"however cheap\". 越 needs a second 越, and 才 and 又 cannot stand before 便宜的衣服.",
+              "focus": {
+                "zh": "再……也……",
+                "en": "no matter how…"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-11"
+              ],
+              "grammarIds": [
+                "B3L08-G02-P211"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-1-3",
+              "choices": [
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "english": "so"
+                },
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as a result"
+                },
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "besides"
+                },
+                {
+                  "traditional": "可是",
+                  "simplified": "可是",
+                  "pinyin": "kěshì",
+                  "english": "but"
+                }
+              ],
+              "key": 2,
+              "why": "況且衣服太多，每天早上選衣服也要花很多時間: 況且 adds a second reason (time) to the first (money), with 也. 所以 and 結果 would make it follow from the money, and 可是 needs a contrast.",
+              "focus": {
+                "zh": "況且……也……",
+                "en": "besides (a further reason)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-16"
+              ],
+              "grammarIds": [
+                "B3L08-G04-P219"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-1-4",
+              "choices": [
+                {
+                  "traditional": "換",
+                  "simplified": "换",
+                  "pinyin": "huàn",
+                  "english": "to exchange"
+                },
+                {
+                  "traditional": "改",
+                  "simplified": "改",
+                  "pinyin": "gǎi",
+                  "english": "to alter"
+                },
+                {
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "kàn",
+                  "english": "to look at"
+                },
+                {
+                  "traditional": "當",
+                  "simplified": "当",
+                  "pinyin": "dàng",
+                  "english": "to treat as"
+                }
+              ],
+              "key": 1,
+              "why": "學會了自己把舊衣服改成新的樣式: something you learn to do yourself to old clothes is altering them (改成). 換成 would mean swapping them in a shop, which needs no skill; 看成 means mistaking one thing for another and 當成 treating it as something, and neither makes a new style you can wear.",
+              "focus": {
+                "zh": "把 A 改成 B",
+                "en": "turn A into B"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-06",
+                "B2L14-1-03"
+              ],
+              "grammarIds": [
+                "B3L08-G01-P210"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-1-5",
+              "choices": [
+                {
+                  "traditional": "品味",
+                  "simplified": "品味",
+                  "pinyin": "pǐnwèi",
+                  "english": "taste"
+                },
+                {
+                  "traditional": "地位",
+                  "simplified": "地位",
+                  "pinyin": "dìwèi",
+                  "english": "status"
+                },
+                {
+                  "traditional": "話題",
+                  "simplified": "话题",
+                  "pinyin": "huàtí",
+                  "english": "topic"
+                },
+                {
+                  "traditional": "現象",
+                  "simplified": "现象",
+                  "pinyin": "xiànxiàng",
+                  "english": "phenomenon"
+                }
+              ],
+              "key": 0,
+              "why": "The writer's clothes now have their own style, so friends say 我比以前更有品味了. 更有地位 is about social rank, not clothes the writer altered, and 話題 and 現象 do not go with 有 here.",
+              "focus": {
+                "zh": "有品味",
+                "en": "have good taste"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-02",
+                "B3L08-1-03"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-1-6",
+              "choices": [
+                {
+                  "traditional": "甚至",
+                  "simplified": "甚至",
+                  "pinyin": "shènzhì",
+                  "english": "even"
+                },
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as a result"
+                },
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "畢竟",
+                  "simplified": "毕竟",
+                  "pinyin": "bìjìng",
+                  "english": "after all"
+                }
+              ],
+              "key": 3,
+              "why": "衣服不必多，畢竟穿得舒適、自在才是最重要的: 畢竟 gives the key fact behind the writer’s view. 甚至 needs something stronger to add, 結果 a result, and 難怪 a surprise now explained.",
+              "focus": {
+                "zh": "畢竟",
+                "en": "after all (the key fact)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-19",
+                "B3L08-1-15",
+                "B3L08-1-27"
+              ],
+              "grammarIds": [
+                "B3L08-G06-P222"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-cloze-2",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "我在一家咖啡店打工。老闆說，店員上班時非穿店裡的衣服不可。剛開始我很不喜歡，因為那件衣服又厚又熱，夏天穿起來一點也不{1}，一直流汗。後來老闆聽了大家的意見，換了一種穿起來比較涼快的衣服，我也慢慢{2}了，現在放假穿自己的衣服，還覺得怪怪的呢。我覺得大家穿得一樣，客人一看就知道誰是店員，很方便。我的室友看法跟我剛好{3}，她覺得大家穿得一樣，就看不出每個人的風格，{4}那件衣服的顏色也不好看。我本來{5}她{6}不會來這種店工作，沒想到她上個月也來我們店打工了，還說這裡的衣服很好看。",
+            "simplified": "我在一家咖啡店打工。老板说，店员上班时非穿店里的衣服不可。刚开始我很不喜欢，因为那件衣服又厚又热，夏天穿起来一点也不{1}，一直流汗。后来老板听了大家的意见，换了一种穿起来比较凉快的衣服，我也慢慢{2}了，现在放假穿自己的衣服，还觉得怪怪的呢。我觉得大家穿得一样，客人一看就知道谁是店员，很方便。我的室友看法跟我刚好{3}，她觉得大家穿得一样，就看不出每个人的风格，{4}那件衣服的颜色也不好看。我本来{5}她{6}不会来这种店工作，没想到她上个月也来我们店打工了，还说这里的衣服很好看。",
+            "pinyin": "Wǒ zài yì jiā kāfēi diàn dǎgōng. Lǎobǎn shuō, diànyuán shàngbān shí fēi chuān diàn lǐ de yīfu bù kě. Gāng kāishǐ wǒ hěn bù xǐhuān, yīnwèi nà jiàn yīfu yòu hòu yòu rè, xiàtiān chuān qǐlái yìdiǎn yě bù shūshì, yìzhí liúhàn. Hòulái lǎobǎn tīng le dàjiā de yìjiàn, huàn le yì zhǒng chuān qǐlái bǐjiào liángkuai de yīfu, wǒ yě mànmàn xíguàn le, xiànzài fàngjià chuān zìjǐ de yīfu, hái juéde guàiguài de ne. Wǒ juéde dàjiā chuān de yíyàng, kèrén yí kàn jiù zhīdào shéi shì diànyuán, hěn fāngbiàn. Wǒ de shìyǒu kànfǎ gēn wǒ gānghǎo xiāngfǎn, tā juéde dàjiā chuān de yíyàng, jiù kàn bù chū měi ge rén de fēnggé, kuàngqiě nà jiàn yīfu de yánsè yě bù hǎokàn. Wǒ běnlái yǐwéi tā juéduì bú huì lái zhè zhǒng diàn gōngzuò, méixiǎngdào tā shàng ge yuè yě lái wǒmen diàn dǎgōng le, hái shuō zhèlǐ de yīfu hěn hǎokàn.",
+            "english": "I work part-time at a café. The boss says staff must wear the shop's clothes at work. At first I didn't like it at all, because the outfit was thick and hot, not at all comfortable in summer, and I was always sweating. Then the boss listened to everyone's views and switched to clothes that are cooler to wear, and I slowly got used to it; now when I wear my own clothes on days off, it feels a bit odd. I think when everyone dresses the same, customers can tell at a glance who works here, which is handy. My roommate's view is just the opposite of mine: she thinks that when everyone dresses the same, you can't see anyone's own style, and besides, she thinks the outfit's color is ugly. I thought she would never work in a shop like this, but last month she started working at ours too, and she even says the clothes here look good."
+          },
+          "questions": [
+            {
+              "id": "b3l08-cloze-2-1",
+              "choices": [
+                {
+                  "traditional": "舒適",
+                  "simplified": "舒适",
+                  "pinyin": "shūshì",
+                  "english": "comfortable"
+                },
+                {
+                  "traditional": "特別",
+                  "simplified": "特别",
+                  "pinyin": "tèbié",
+                  "english": "special"
+                },
+                {
+                  "traditional": "流行",
+                  "simplified": "流行",
+                  "pinyin": "liúxíng",
+                  "english": "fashionable"
+                },
+                {
+                  "traditional": "正式",
+                  "simplified": "正式",
+                  "pinyin": "zhèngshì",
+                  "english": "formal"
+                }
+              ],
+              "key": 0,
+              "why": "Thick, hot clothes that make you sweat all summer are 一點也不舒適. Being thick and hot says nothing about being special, fashionable or formal, so 特別, 流行 and 正式 do not follow from 因為 … 又厚又熱.",
+              "focus": {
+                "zh": "舒適",
+                "en": "comfortable"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-15",
+                "B3L06-1-20"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-2-2",
+              "choices": [
+                {
+                  "traditional": "了解",
+                  "simplified": "了解",
+                  "pinyin": "liǎojiě",
+                  "english": "to understand"
+                },
+                {
+                  "traditional": "忘記",
+                  "simplified": "忘记",
+                  "pinyin": "wàngjì",
+                  "english": "to forget"
+                },
+                {
+                  "traditional": "習慣",
+                  "simplified": "习惯",
+                  "pinyin": "xíguàn",
+                  "english": "used to it"
+                },
+                {
+                  "traditional": "同意",
+                  "simplified": "同意",
+                  "pinyin": "tóngyì",
+                  "english": "to agree"
+                }
+              ],
+              "key": 2,
+              "why": "我也慢慢習慣了: the writer gets used to the outfit, so much that their own clothes now feel odd (還覺得怪怪的). Understanding or agreeing with the rule would not make your own clothes feel odd, and 忘記 has nothing to forget here.",
+              "focus": {
+                "zh": "慢慢習慣",
+                "en": "gradually get used to"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B2L04-1-17",
+                "B2L15-1-21"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-2-3",
+              "choices": [
+                {
+                  "traditional": "相同",
+                  "simplified": "相同",
+                  "pinyin": "xiāngtóng",
+                  "english": "the same"
+                },
+                {
+                  "traditional": "有關",
+                  "simplified": "有关",
+                  "pinyin": "yǒuguān",
+                  "english": "related"
+                },
+                {
+                  "traditional": "無關",
+                  "simplified": "无关",
+                  "pinyin": "wúguān",
+                  "english": "unrelated"
+                },
+                {
+                  "traditional": "相反",
+                  "simplified": "相反",
+                  "pinyin": "xiāngfǎn",
+                  "english": "opposite"
+                }
+              ],
+              "key": 3,
+              "why": "The writer likes everyone dressing alike (customers can spot staff), and the roommate thinks it hides everyone's style: their views are 剛好相反. 相同 clashes with what each says, and 有關 and 無關 do not compare two views.",
+              "focus": {
+                "zh": "相反",
+                "en": "opposite"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-19",
+                "B3L08-1-05"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-2-4",
+              "choices": [
+                {
+                  "traditional": "不過",
+                  "simplified": "不过",
+                  "pinyin": "búguò",
+                  "english": "but"
+                },
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "besides"
+                },
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "english": "so"
+                }
+              ],
+              "key": 1,
+              "why": "況且那件衣服的顏色也不好看: 況且 adds a second reason against the outfit, with 也. 不過 needs a contrast, 所以 a result (the colour does not follow from the style point), and 難怪 something now explained.",
+              "focus": {
+                "zh": "況且……也……",
+                "en": "besides (a further reason)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-16",
+                "B1L03-2-14"
+              ],
+              "grammarIds": [
+                "B3L08-G04-P219"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-2-5",
+              "choices": [
+                {
+                  "traditional": "以為",
+                  "simplified": "以为",
+                  "pinyin": "yǐwéi",
+                  "english": "to think (wrongly)"
+                },
+                {
+                  "traditional": "決定",
+                  "simplified": "决定",
+                  "pinyin": "juédìng",
+                  "english": "to decide"
+                },
+                {
+                  "traditional": "打算",
+                  "simplified": "打算",
+                  "pinyin": "dǎsuàn",
+                  "english": "to plan"
+                },
+                {
+                  "traditional": "建議",
+                  "simplified": "建议",
+                  "pinyin": "jiànyì",
+                  "english": "to suggest"
+                }
+              ],
+              "key": 0,
+              "why": "我本來以為她絕對不會來……，沒想到她上個月也來了: 以為 … 沒想到 sets a wrong belief against what happened. You cannot decide, plan or suggest what someone else will never do.",
+              "focus": {
+                "zh": "以為……，沒想到……",
+                "en": "thought…, but unexpectedly…"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B2L08-2-03"
+              ],
+              "grammarIds": [
+                "B3L05-G03-P132"
+              ]
+            },
+            {
+              "id": "b3l08-cloze-2-6",
+              "choices": [
+                {
+                  "traditional": "已經",
+                  "simplified": "已经",
+                  "pinyin": "yǐjīng",
+                  "english": "already"
+                },
+                {
+                  "traditional": "曾經",
+                  "simplified": "曾经",
+                  "pinyin": "céngjīng",
+                  "english": "once (in the past)"
+                },
+                {
+                  "traditional": "絕對",
+                  "simplified": "绝对",
+                  "pinyin": "juéduì",
+                  "english": "absolutely"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                }
+              ],
+              "key": 2,
+              "why": "她絕對不會來這種店工作: after she called the outfit ugly, the writer was sure she would never come, which makes 沒想到 a real surprise. 已經, 曾經 and 終於 are about time and do not fit 不會 + a future.",
+              "focus": {
+                "zh": "絕對",
+                "en": "absolutely"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B3L07-1-32"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l08-reading-card-1",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "修改衣服",
+            "simplified": "修改衣服",
+            "pinyin": "Xiūgǎi yīfu",
+            "english": "Clothing Alterations"
+          },
+          "text": {
+            "traditional": "褲子改短：一條150元，三天後可以拿\n衣服改大或改小：一件300元起，一個星期後可以拿\n舊衣服改成袋子：一件500元，兩個星期後可以拿\n想快一點拿的客人：褲子改短、衣服改大或改小，今天送來，每件加100元，明天就可以拿\n時間：星期二到星期日 10:00–20:00（星期一休息）\n美美衣服修改店",
+            "simplified": "裤子改短：一条150元，三天后可以拿\n衣服改大或改小：一件300元起，一个星期后可以拿\n旧衣服改成袋子：一件500元，两个星期后可以拿\n想快一点拿的客人：裤子改短、衣服改大或改小，今天送来，每件加100元，明天就可以拿\n时间：星期二到星期日 10:00–20:00（星期一休息）\n美美衣服修改店",
+            "pinyin": "Kùzi gǎi duǎn: yì tiáo yìbǎi wǔshí yuán, sān tiān hòu kěyǐ ná. Yīfu gǎi dà huò gǎi xiǎo: yí jiàn sānbǎi yuán qǐ, yí ge xīngqí hòu kěyǐ ná. Jiù yīfu gǎi chéng dàizi: yí jiàn wǔbǎi yuán, liǎng ge xīngqí hòu kěyǐ ná. Xiǎng kuài yìdiǎn ná de kèrén: kùzi gǎi duǎn, yīfu gǎi dà huò gǎi xiǎo, jīntiān sòng lái, měi jiàn jiā yìbǎi yuán, míngtiān jiù kěyǐ ná. Shíjiān: xīngqí'èr dào xīngqírì shí diǎn dào èrshí diǎn (xīngqíyī xiūxí). Měiměi Yīfu Xiūgǎi Diàn",
+            "english": "Shortening trousers: NT$150 a pair, ready in three days\nTaking clothes in or letting them out: from NT$300 a piece, ready in a week\nTurning old clothes into bags: NT$500 a piece, ready in two weeks\nNeed it sooner? Shortening trousers or taking clothes in or out: bring it in today, add NT$100 a piece and collect it tomorrow\nHours: Tuesday to Sunday, 10:00–20:00 (closed Mondays)\nMeimei Clothing Alterations"
+          },
+          "questions": [
+            {
+              "id": "b3l08-reading-card-1-1",
+              "prompt": {
+                "traditional": "一位先生星期六早上送來兩條褲子要改短，星期天就要穿。他一共得付多少錢？",
+                "simplified": "一位先生星期六早上送来两条裤子要改短，星期天就要穿。他一共得付多少钱？",
+                "pinyin": "Yí wèi xiānshēng xīngqíliù zǎoshàng sòng lái liǎng tiáo kùzi yào gǎi duǎn, xīngqítiān jiù yào chuān. Tā yígòng děi fù duōshǎo qián?",
+                "english": "A man brings in two pairs of trousers to shorten on Saturday morning and needs them on Sunday. How much does he pay in all?"
+              },
+              "choices": [
+                {
+                  "traditional": "250元",
+                  "simplified": "250元",
+                  "pinyin": "Èrbǎi wǔshí yuán.",
+                  "english": "NT$250."
+                },
+                {
+                  "traditional": "300元",
+                  "simplified": "300元",
+                  "pinyin": "Sānbǎi yuán.",
+                  "english": "NT$300."
+                },
+                {
+                  "traditional": "400元",
+                  "simplified": "400元",
+                  "pinyin": "Sìbǎi yuán.",
+                  "english": "NT$400."
+                },
+                {
+                  "traditional": "500元",
+                  "simplified": "500元",
+                  "pinyin": "Wǔbǎi yuán.",
+                  "english": "NT$500."
+                }
+              ],
+              "key": 3,
+              "why": "Two pairs at 150 is 300, and needing them the next day means the faster service at 100 more a piece (每件), so 500. 300 forgets the faster service, 400 adds the 100 only once, and 250 is one pair with it.",
+              "focus": {
+                "zh": "每件加",
+                "en": "per piece extra"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B2L14-1-03",
+                "B1L08-1-09"
+              ],
+              "grammarIds": [
+                "B3L08-G01-P210"
+              ]
+            },
+            {
+              "id": "b3l08-reading-card-1-2",
+              "prompt": {
+                "traditional": "今天是星期三。下面哪一位客人星期四就能拿到改好的東西？",
+                "simplified": "今天是星期三。下面哪一位客人星期四就能拿到改好的东西？",
+                "pinyin": "Jīntiān shì xīngqísān. Xiàmiàn nǎ yí wèi kèrén xīngqísì jiù néng ná dào gǎi hǎo de dōngxi?",
+                "english": "Today is Wednesday. Which customer can collect the finished item on Thursday?"
+              },
+              "choices": [
+                {
+                  "traditional": "要把舊外套改成袋子，願意多付錢",
+                  "simplified": "要把旧外套改成袋子，愿意多付钱",
+                  "pinyin": "Yào bǎ jiù wàitào gǎi chéng dàizi, yuànyì duō fù qián.",
+                  "english": "One who wants an old jacket made into a bag and will pay extra."
+                },
+                {
+                  "traditional": "要把褲子改短，不想多付錢",
+                  "simplified": "要把裤子改短，不想多付钱",
+                  "pinyin": "Yào bǎ kùzi gǎi duǎn, bù xiǎng duō fù qián.",
+                  "english": "One who wants trousers shortened and won't pay extra."
+                },
+                {
+                  "traditional": "要把襯衫改小，願意多付錢",
+                  "simplified": "要把衬衫改小，愿意多付钱",
+                  "pinyin": "Yào bǎ chènshān gǎi xiǎo, yuànyì duō fù qián.",
+                  "english": "One who wants a shirt taken in and will pay extra."
+                },
+                {
+                  "traditional": "晚上九點才送褲子來，願意多付錢",
+                  "simplified": "晚上九点才送裤子来，愿意多付钱",
+                  "pinyin": "Wǎnshàng jiǔ diǎn cái sòng kùzi lái, yuànyì duō fù qián.",
+                  "english": "One who brings trousers at 9 tonight and will pay extra."
+                }
+              ],
+              "key": 2,
+              "why": "Paying 100 more gets size changes back 明天 (the day after you bring them in), so a shirt taken in on Wednesday is ready Thursday. The faster service does not cover bags, plain shortening takes three days, and at 9 p.m. the shop (open to 20:00) is already closed.",
+              "focus": {
+                "zh": "今天送來，明天拿；開店時間",
+                "en": "in today, out tomorrow; opening hours"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B2L02-2-03",
+                "B2L12-2-06"
+              ],
+              "grammarIds": [
+                "B3L08-G01-P210"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-reading-card-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "妹妹：\n下星期六我要去參加公司同事的婚禮，想跟妳借那件深藍色的洋裝。我的衣服不是太舊，就是太休閒，穿去婚禮不合適。況且那天老闆也會去，我可不想被大家看成不懂穿著的人。要是妳那天也要穿，就不用借我了，我星期五下班再去百貨公司看看。對了，妳上次說想要的那雙皮鞋，我這個週末幫妳買。\n姊姊",
+            "simplified": "妹妹：\n下星期六我要去参加公司同事的婚礼，想跟你借那件深蓝色的洋装。我的衣服不是太旧，就是太休闲，穿去婚礼不合适。况且那天老板也会去，我可不想被大家看成不懂穿着的人。要是你那天也要穿，就不用借我了，我星期五下班再去百货公司看看。对了，你上次说想要的那双皮鞋，我这个周末帮你买。\n姐姐",
+            "pinyin": "Mèimei: Xià xīngqíliù wǒ yào qù cānjiā gōngsī tóngshì de hūnlǐ, xiǎng gēn nǐ jiè nà jiàn shēn lánsè de yángzhuāng. Wǒ de yīfu bú shì tài jiù, jiù shì tài xiūxián, chuān qù hūnlǐ bù héshì. Kuàngqiě nà tiān lǎobǎn yě huì qù, wǒ kě bù xiǎng bèi dàjiā kàn chéng bù dǒng chuānzhuó de rén. Yàoshì nǐ nà tiān yě yào chuān, jiù búyòng jiè wǒ le, wǒ xīngqíwǔ xiàbān zài qù bǎihuò gōngsī kànkan. Duì le, nǐ shàng cì shuō xiǎng yào de nà shuāng píxié, wǒ zhège zhōumò bāng nǐ mǎi. Jiějie",
+            "english": "Sis,\nNext Saturday I'm going to a colleague's wedding and I'd like to borrow your dark blue dress. My own clothes are either too old or too casual, not right for a wedding. Besides, the boss will be there too, and I really don't want everyone to see me as someone who doesn't know how to dress. If you need to wear it that day, don't worry about lending it to me; I'll go to the department store after work on Friday and have a look. Oh, and the leather shoes you said you wanted last time, I'll buy them for you this weekend.\nYour big sister"
+          },
+          "questions": [
+            {
+              "id": "b3l08-reading-card-2-1",
+              "prompt": {
+                "traditional": "姊姊為什麼特別在意那天穿得好不好？",
+                "simplified": "姐姐为什么特别在意那天穿得好不好？",
+                "pinyin": "Jiějie wèishénme tèbié zàiyì nà tiān chuān de hǎo bù hǎo?",
+                "english": "Why does the older sister care so much about how she looks that day?"
+              },
+              "choices": [
+                {
+                  "traditional": "她沒時間去買新衣服",
+                  "simplified": "她没时间去买新衣服",
+                  "pinyin": "Tā méi shíjiān qù mǎi xīn yīfu.",
+                  "english": "She has no time to buy new clothes."
+                },
+                {
+                  "traditional": "她怕妹妹那天也要穿",
+                  "simplified": "她怕妹妹那天也要穿",
+                  "pinyin": "Tā pà mèimei nà tiān yě yào chuān.",
+                  "english": "She is afraid her sister needs the dress that day too."
+                },
+                {
+                  "traditional": "她很久沒見到公司同事了",
+                  "simplified": "她很久没见到公司同事了",
+                  "pinyin": "Tā hěn jiǔ méi jiàndào gōngsī tóngshì le.",
+                  "english": "She hasn't seen her colleagues for a long time."
+                },
+                {
+                  "traditional": "她怕老闆覺得她不會穿衣服",
+                  "simplified": "她怕老板觉得她不会穿衣服",
+                  "pinyin": "Tā pà lǎobǎn juéde tā bú huì chuān yīfu.",
+                  "english": "She is afraid her boss will think she can't dress."
+                }
+              ],
+              "key": 3,
+              "why": "況且那天老闆也會去 is the further reason: she does not want to be 看成不懂穿著的人 in front of the boss. She has time to shop on Friday, her sister needing the dress only changes where she gets one, and nothing says she has not seen her colleagues.",
+              "focus": {
+                "zh": "況且；把 A 看成 B",
+                "en": "besides; be seen as"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-16",
+                "B3L08-1-01",
+                "B3L03-1-13",
+                "B3L07-1-31"
+              ],
+              "grammarIds": [
+                "B3L08-G04-P219",
+                "B3L08-G01-P210"
+              ]
+            },
+            {
+              "id": "b3l08-reading-card-2-2",
+              "prompt": {
+                "traditional": "姊姊跟妹妹借洋裝的事，下面哪一個說法是對的？",
+                "simplified": "姐姐跟妹妹借洋装的事，下面哪一个说法是对的？",
+                "pinyin": "Jiějie gēn mèimei jiè yángzhuāng de shì, xiàmiàn nǎ yí ge shuōfǎ shì duì de?",
+                "english": "About borrowing the dress, which statement is right?"
+              },
+              "choices": [
+                {
+                  "traditional": "妹妹一定得把洋裝借給她",
+                  "simplified": "妹妹一定得把洋装借给她",
+                  "pinyin": "Mèimei yídìng děi bǎ yángzhuāng jiè gěi tā.",
+                  "english": "The younger sister must lend her the dress."
+                },
+                {
+                  "traditional": "妹妹要穿，她就自己想辦法",
+                  "simplified": "妹妹要穿，她就自己想办法",
+                  "pinyin": "Mèimei yào chuān, tā jiù zìjǐ xiǎng bànfǎ.",
+                  "english": "If the younger sister needs it, she will find another way."
+                },
+                {
+                  "traditional": "她想用皮鞋跟妹妹換洋裝",
+                  "simplified": "她想用皮鞋跟妹妹换洋装",
+                  "pinyin": "Tā xiǎng yòng píxié gēn mèimei huàn yángzhuāng.",
+                  "english": "She wants to trade shoes for the dress."
+                },
+                {
+                  "traditional": "她星期五要先去買新洋裝",
+                  "simplified": "她星期五要先去买新洋装",
+                  "pinyin": "Tā xīngqíwǔ yào xiān qù mǎi xīn yángzhuāng.",
+                  "english": "She will buy a new dress on Friday first."
+                }
+              ],
+              "key": 1,
+              "why": "要是妳那天也要穿，就不用借我了: the request is not a demand, and Friday shopping happens only if the sister needs the dress. The shoes are a favour mentioned with 對了, a new topic, not a trade.",
+              "focus": {
+                "zh": "要是……，就……",
+                "en": "if…, then…"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L08-1-12",
+                "B3L03-1-08"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passage",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l08-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "爺爺的襯衫",
+            "simplified": "爷爷的衬衫",
+            "pinyin": "Yéye de chènshān",
+            "english": "Grandpa's Shirts"
+          },
+          "text": {
+            "traditional": "我爺爺今年八十歲了，對穿著還是很講究。不管去哪裡，他一定穿襯衫和皮鞋，連去樓下買報紙也一樣。我小時候覺得很奇怪，問他為什麼不穿得輕鬆一點。他說，他年輕的時候家裡很窮，只有一件好襯衫，每次去找工作都穿那一件。有一次，一家公司的老闆對他說：「衣服舊沒關係，乾淨就好。穿得很乾淨，就看得出來你重視這份工作。」後來，他在那家公司工作了四十年。爺爺說，穿著跟有沒有錢無關，是對別人的禮貌。現在他的衣服都不是名牌，有的已經穿了二十年，可是每一件都洗得很乾淨。去年我大學畢業，第一次去找工作，爺爺送了我一條他最喜歡的皮帶，還說：「衣服再貴，人不認真也沒有用。」",
+            "simplified": "我爷爷今年八十岁了，对穿着还是很讲究。不管去哪里，他一定穿衬衫和皮鞋，连去楼下买报纸也一样。我小时候觉得很奇怪，问他为什么不穿得轻松一点。他说，他年轻的时候家里很穷，只有一件好衬衫，每次去找工作都穿那一件。有一次，一家公司的老板对他说：「衣服旧没关系，干净就好。穿得很干净，就看得出来你重视这份工作。」后来，他在那家公司工作了四十年。爷爷说，穿着跟有没有钱无关，是对别人的礼貌。现在他的衣服都不是名牌，有的已经穿了二十年，可是每一件都洗得很干净。去年我大学毕业，第一次去找工作，爷爷送了我一条他最喜欢的皮带，还说：「衣服再贵，人不认真也没有用。」",
+            "pinyin": "Wǒ yéye jīnnián bāshí suì le, duì chuānzhuó háishì hěn jiǎngjiù. Bùguǎn qù nǎlǐ, tā yídìng chuān chènshān hé píxié, lián qù lóuxià mǎi bàozhǐ yě yíyàng. Wǒ xiǎoshíhòu juéde hěn qíguài, wèn tā wèishénme bù chuān de qīngsōng yìdiǎn. Tā shuō, tā niánqīng de shíhòu jiālǐ hěn qióng, zhǐyǒu yí jiàn hǎo chènshān, měi cì qù zhǎo gōngzuò dōu chuān nà yí jiàn. Yǒu yí cì, yì jiā gōngsī de lǎobǎn duì tā shuō: “Yīfu jiù méi guānxi, gānjìng jiù hǎo. Chuān de hěn gānjìng, jiù kàn de chūlái nǐ zhòngshì zhè fèn gōngzuò.” Hòulái, tā zài nà jiā gōngsī gōngzuò le sìshí nián. Yéye shuō, chuānzhuó gēn yǒu méi yǒu qián wúguān, shì duì biérén de lǐmào. Xiànzài tā de yīfu dōu bú shì míngpái, yǒu de yǐjīng chuān le èrshí nián, kěshì měi yí jiàn dōu xǐ de hěn gānjìng. Qùnián wǒ dàxué bìyè, dì yī cì qù zhǎo gōngzuò, yéye sòng le wǒ yì tiáo tā zuì xǐhuān de pídài, hái shuō: “Yīfu zài guì, rén bú rènzhēn yě méiyǒu yòng.”",
+            "english": "My grandfather is eighty this year and is still very particular about clothes. Wherever he goes he wears a shirt and leather shoes, even to buy a newspaper downstairs. As a child I found this strange and asked him why he didn't dress more casually. He said that when he was young his family was poor; he had only one good shirt and wore it every time he went looking for work. Once, a company boss told him, \"It doesn't matter that your clothes are old, as long as they're clean. Dressed neatly and clean, anyone can see you take this job seriously.\" He went on to work at that company for forty years. Grandpa says dressing has nothing to do with money; it is courtesy towards others. None of his clothes are brand names, and some he has worn for twenty years, but every piece is washed spotless. Last year I graduated from university and went for my first job hunt. Grandpa gave me his favorite belt and said, \"However expensive your clothes, they're no use if you aren't serious.\""
+          },
+          "questions": [
+            {
+              "id": "b3l08-passage-1-1",
+              "prompt": {
+                "traditional": "那位老闆的話和爺爺送皮帶時說的話，有什麼一樣的意思？",
+                "simplified": "那位老板的话和爷爷送皮带时说的话，有什么一样的意思？",
+                "pinyin": "Nà wèi lǎobǎn de huà hé yéye sòng pídài shí shuō de huà, yǒu shénme yíyàng de yìsi?",
+                "english": "What do the boss's words and what Grandpa said with the belt have in common?"
+              },
+              "choices": [
+                {
+                  "traditional": "找工作一定要穿得正式",
+                  "simplified": "找工作一定要穿得正式",
+                  "pinyin": "Zhǎo gōngzuò yídìng yào chuān de zhèngshì.",
+                  "english": "You must dress formally to look for work."
+                },
+                {
+                  "traditional": "名牌衣服不適合穿去上班",
+                  "simplified": "名牌衣服不适合穿去上班",
+                  "pinyin": "Míngpái yīfu bú shìhé chuān qù shàngbān.",
+                  "english": "Brand-name clothes are wrong for work."
+                },
+                {
+                  "traditional": "認真的態度比穿什麼衣服重要",
+                  "simplified": "认真的态度比穿什么衣服重要",
+                  "pinyin": "Rènzhēn de tàidù bǐ chuān shénme yīfu zhòngyào.",
+                  "english": "A serious attitude matters more than what you wear."
+                },
+                {
+                  "traditional": "舊衣服比新衣服有意義",
+                  "simplified": "旧衣服比新衣服有意义",
+                  "pinyin": "Jiù yīfu bǐ xīn yīfu yǒu yìyì.",
+                  "english": "Old clothes mean more than new ones."
+                }
+              ],
+              "key": 2,
+              "why": "The boss: 衣服舊沒關係 … 看得出來你重視這份工作; Grandpa: 衣服再貴，人不認真也沒有用. Both put a serious attitude above the clothes themselves (old for the boss, expensive for Grandpa). Neither says formal clothes are a must or that brand names are wrong, and the belt is a gift, not a point about old clothes.",
+              "focus": {
+                "zh": "再……也……",
+                "en": "no matter how…"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-11",
+                "B3L08-1-01",
+                "B3L08-1-04",
+                "B3L02-2-24"
+              ],
+              "grammarIds": [
+                "B3L08-G02-P211"
+              ]
+            },
+            {
+              "id": "b3l08-passage-1-2",
+              "prompt": {
+                "traditional": "爺爺為什麼連去樓下買報紙也穿襯衫和皮鞋？",
+                "simplified": "爷爷为什么连去楼下买报纸也穿衬衫和皮鞋？",
+                "pinyin": "Yéye wèishénme lián qù lóuxià mǎi bàozhǐ yě chuān chènshān hé píxié?",
+                "english": "Why does Grandpa wear a shirt and leather shoes even to buy a newspaper downstairs?"
+              },
+              "choices": [
+                {
+                  "traditional": "想讓別人覺得他過得很好",
+                  "simplified": "想让别人觉得他过得很好",
+                  "pinyin": "Xiǎng ràng biérén juéde tā guò de hěn hǎo.",
+                  "english": "He wants people to think he is doing well."
+                },
+                {
+                  "traditional": "覺得穿得好是對別人有禮貌",
+                  "simplified": "觉得穿得好是对别人有礼貌",
+                  "pinyin": "Juéde chuān de hǎo shì duì biérén yǒu lǐmào.",
+                  "english": "He feels dressing well is being polite to others."
+                },
+                {
+                  "traditional": "以前的老闆說穿襯衫才有禮貌",
+                  "simplified": "以前的老板说穿衬衫才有礼貌",
+                  "pinyin": "Yǐqián de lǎobǎn shuō chuān chènshān cái yǒu lǐmào.",
+                  "english": "His old boss said only a shirt is polite."
+                },
+                {
+                  "traditional": "他只有那一件好襯衫可以穿",
+                  "simplified": "他只有那一件好衬衫可以穿",
+                  "pinyin": "Tā zhǐyǒu nà yí jiàn hǎo chènshān kěyǐ chuān.",
+                  "english": "That one good shirt is all he has to wear."
+                }
+              ],
+              "key": 1,
+              "why": "爺爺說，穿著跟有沒有錢無關，是對別人的禮貌: he dresses well out of courtesy to others. Showing he is doing well is what 跟有沒有錢無關 rules out, the boss only said clean clothes were enough and never spoke of politeness, and the one good shirt was when he was young and poor.",
+              "focus": {
+                "zh": "跟……無關",
+                "en": "nothing to do with"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-10",
+                "B3L08-1-01",
+                "B3L08-1-11",
+                "B2L15-1-12"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "店員的發現",
+            "simplified": "店员的发现",
+            "pinyin": "Diànyuán de fāxiàn",
+            "english": "What the Shop Assistant Noticed"
+          },
+          "text": {
+            "traditional": "我在一家賣快時尚衣服的店打工已經一年了。我們店裡每兩個星期就會換一次新樣式，衣服也很平價，所以很多年輕人一有空就來逛，一次買好幾件。剛開始我也跟他們一樣，打工的錢有一半都花在店裡的衣服上。後來我發現，很多客人買了衣服，過了幾個星期又來買新的，因為那件穿了一、兩次就不流行了。老闆說，這種現象在學生中最多。我開始想，流行變得這麼快，買再多也趕不上。現在我每次想買衣服，就會先問自己：「這件我非買不可嗎？」一個月下來，我只買了一雙襪子。同事開玩笑說，要是客人都像我一樣，老闆一定很頭痛。",
+            "simplified": "我在一家卖快时尚衣服的店打工已经一年了。我们店里每两个星期就会换一次新样式，衣服也很平价，所以很多年轻人一有空就来逛，一次买好几件。刚开始我也跟他们一样，打工的钱有一半都花在店里的衣服上。后来我发现，很多客人买了衣服，过了几个星期又来买新的，因为那件穿了一、两次就不流行了。老板说，这种现象在学生中最多。我开始想，流行变得这么快，买再多也赶不上。现在我每次想买衣服，就会先问自己：「这件我非买不可吗？」一个月下来，我只买了一双袜子。同事开玩笑说，要是客人都像我一样，老板一定很头痛。",
+            "pinyin": "Wǒ zài yì jiā mài kuàishíshàng yīfu de diàn dǎgōng yǐjīng yì nián le. Wǒmen diàn lǐ měi liǎng ge xīngqí jiù huì huàn yí cì xīn yàngshì, yīfu yě hěn píngjià, suǒyǐ hěn duō niánqīng rén yì yǒu kòng jiù lái guàng, yí cì mǎi hǎojǐ jiàn. Gāng kāishǐ wǒ yě gēn tāmen yíyàng, dǎgōng de qián yǒu yíbàn dōu huā zài diàn lǐ de yīfu shàng. Hòulái wǒ fāxiàn, hěn duō kèrén mǎi le yīfu, guò le jǐ ge xīngqí yòu lái mǎi xīn de, yīnwèi nà jiàn chuān le yì, liǎng cì jiù bù liúxíng le. Lǎobǎn shuō, zhè zhǒng xiànxiàng zài xuéshēng zhōng zuì duō. Wǒ kāishǐ xiǎng, liúxíng biàn de zhème kuài, mǎi zài duō yě gǎn bú shàng. Xiànzài wǒ měi cì xiǎng mǎi yīfu, jiù huì xiān wèn zìjǐ: “Zhè jiàn wǒ fēi mǎi bù kě ma?” Yí ge yuè xiàlái, wǒ zhǐ mǎi le yì shuāng wàzi. Tóngshì kāi wánxiào shuō, yàoshì kèrén dōu xiàng wǒ yíyàng, lǎobǎn yídìng hěn tóutòng.",
+            "english": "I've worked part-time at a fast-fashion clothing shop for a year. Our shop brings in new styles every two weeks, and the clothes are cheap, so lots of young people come browsing whenever they're free and buy several pieces at a time. At first I was just like them: half of what I earned went on clothes from the shop. Then I noticed many customers come back a few weeks after buying clothes to buy new ones, because what they bought is out of fashion after being worn once or twice. The boss says this happens most among students. I started to think: fashion changes so fast that however much you buy, you'll never keep up. Now whenever I want to buy something, I first ask myself, \"Do I absolutely have to buy this?\" After a month, I'd bought just one pair of socks. A coworker joked that if all customers were like me, the boss would have a real headache."
+          },
+          "questions": [
+            {
+              "id": "b3l08-passage-2-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人現在買衣服，跟以前有什麼不一樣？",
+                "simplified": "写这篇文章的人现在买衣服，跟以前有什么不一样？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén xiànzài mǎi yīfu, gēn yǐqián yǒu shénme bù yíyàng?",
+                "english": "How is the way the writer buys clothes now different from before?"
+              },
+              "choices": [
+                {
+                  "traditional": "買以前會先想自己是不是真的要買",
+                  "simplified": "买以前会先想自己是不是真的要买",
+                  "pinyin": "Mǎi yǐqián huì xiān xiǎng zìjǐ shì bú shì zhēn de yào mǎi.",
+                  "english": "Before buying, the writer first asks whether it is really needed."
+                },
+                {
+                  "traditional": "只買店裡最新的流行樣式",
+                  "simplified": "只买店里最新的流行样式",
+                  "pinyin": "Zhǐ mǎi diàn lǐ zuì xīn de liúxíng yàngshì.",
+                  "english": "The writer buys only the shop's newest styles."
+                },
+                {
+                  "traditional": "會叫客人別一次買那麼多",
+                  "simplified": "会叫客人别一次买那么多",
+                  "pinyin": "Huì jiào kèrén bié yí cì mǎi nàme duō.",
+                  "english": "The writer tells customers not to buy so much at once."
+                },
+                {
+                  "traditional": "買了也會先穿一、兩次再說",
+                  "simplified": "买了也会先穿一、两次再说",
+                  "pinyin": "Mǎi le yě huì xiān chuān yì, liǎng cì zài shuō.",
+                  "english": "The writer wears things once or twice before deciding."
+                }
+              ],
+              "key": 0,
+              "why": "流行變得這麼快，買再多也趕不上 led to the question 這件我非買不可嗎？ before every purchase. Telling customers what to do is only the coworker's joke about the boss, and wearing things once or twice is what the customers did.",
+              "focus": {
+                "zh": "再……也……；非……不可",
+                "en": "no matter how…; must"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-09",
+                "B3L08-2-01",
+                "B3L08-2-11",
+                "B3L08-2-18"
+              ],
+              "grammarIds": [
+                "B3L08-G02-P211",
+                "B3L08-G05-P221"
+              ]
+            },
+            {
+              "id": "b3l08-passage-2-2",
+              "prompt": {
+                "traditional": "老闆說的「這種現象」，指的是什麼？",
+                "simplified": "老板说的「这种现象」，指的是什么？",
+                "pinyin": "Lǎobǎn shuō de “zhè zhǒng xiànxiàng”, zhǐ de shì shénme?",
+                "english": "What does the boss mean by \"this kind of thing\"?"
+              },
+              "choices": [
+                {
+                  "traditional": "年輕人一有空就來逛",
+                  "simplified": "年轻人一有空就来逛",
+                  "pinyin": "Niánqīng rén yì yǒu kòng jiù lái guàng.",
+                  "english": "Young people come browsing whenever free."
+                },
+                {
+                  "traditional": "店裡常常換新樣式",
+                  "simplified": "店里常常换新样式",
+                  "pinyin": "Diàn lǐ chángcháng huàn xīn yàngshì.",
+                  "english": "The shop often brings in new styles."
+                },
+                {
+                  "traditional": "客人買了不久又想買新的",
+                  "simplified": "客人买了不久又想买新的",
+                  "pinyin": "Kèrén mǎi le bù jiǔ yòu xiǎng mǎi xīn de.",
+                  "english": "Customers want new things soon after buying."
+                },
+                {
+                  "traditional": "店員把錢花在衣服上",
+                  "simplified": "店员把钱花在衣服上",
+                  "pinyin": "Diànyuán bǎ qián huā zài yīfu shàng.",
+                  "english": "Staff spend their money on clothes."
+                }
+              ],
+              "key": 2,
+              "why": "這種現象 points back to the sentence just before it: customers come back a few weeks after buying to buy new things, because what they bought is already out of fashion. Browsing and new styles come earlier and are not what the boss is talking about.",
+              "focus": {
+                "zh": "這種現象",
+                "en": "this phenomenon (what it refers to)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-1-18",
+                "B3L08-2-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-passage",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l08-review-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "去年夏天，我一個人去臺東當背包客。出發以前，我在很多部落格上看了詳細的介紹，把每天要去的景點都安排好了。沒想到第二天，我就在一個偏僻的山區迷路了。那裡的手機訊號很弱，連地圖都打不開，我只好站在路邊等車。過了快一個小時，一位阿姨開車經過，不僅把我送到了車站，還請我吃了她自己做的包子。那天晚上，我把這件事寫進了日記。回來以後，我在部落格上寫：「旅行前做好準備當然重要，話說回來，旅行中最難忘的，常常是計畫以外的事。」",
+            "simplified": "去年夏天，我一个人去台东当背包客。出发以前，我在很多部落格上看了详细的介绍，把每天要去的景点都安排好了。没想到第二天，我就在一个偏僻的山区迷路了。那里的手机讯号很弱，连地图都打不开，我只好站在路边等车。过了快一个小时，一位阿姨开车经过，不仅把我送到了车站，还请我吃了她自己做的包子。那天晚上，我把这件事写进了日记。回来以后，我在部落格上写：「旅行前做好准备当然重要，话说回来，旅行中最难忘的，常常是计画以外的事。」",
+            "pinyin": "Qùnián xiàtiān, wǒ yí ge rén qù Táidōng dāng bēibāokè. Chūfā yǐqián, wǒ zài hěn duō bùluògé shàng kàn le xiángxì de jièshào, bǎ měi tiān yào qù de jǐngdiǎn dōu ānpái hǎo le. Méixiǎngdào dì èr tiān, wǒ jiù zài yí ge piānpì de shānqū mílù le. Nàlǐ de shǒujī xùnhào hěn ruò, lián dìtú dōu dǎ bù kāi, wǒ zhǐhǎo zhàn zài lùbiān děng chē. Guò le kuài yí ge xiǎoshí, yí wèi āyí kāichē jīngguò, bùjǐn bǎ wǒ sòng dào le chēzhàn, hái qǐng wǒ chī le tā zìjǐ zuò de bāozi. Nà tiān wǎnshàng, wǒ bǎ zhè jiàn shì xiě jìn le rìjì. Huílái yǐhòu, wǒ zài bùluògé shàng xiě: “Lǚxíng qián zuò hǎo zhǔnbèi dāngrán zhòngyào, huà shuō huílái, lǚxíng zhōng zuì nánwàng de, chángcháng shì jìhuà yǐwài de shì.”",
+            "english": "Last summer I went backpacking alone in Taitung. Before I left, I read detailed write-ups on lots of blogs and planned the sights for every day. But on the second day I got lost in a remote mountain area. The phone signal there was so weak that I couldn't even open a map, so I had to stand by the road and wait for a car. After almost an hour, a woman drove past; she not only took me to the station but also gave me some buns she had made herself. That night I wrote it all down in my diary. When I got back, I wrote on my blog: \"Preparing before a trip matters, of course. Then again, what you remember most from a trip is often what wasn't in the plan.\""
+          },
+          "questions": [
+            {
+              "id": "b3l08-review-passage-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人為什麼只好站在路邊等車？",
+                "simplified": "写这篇文章的人为什么只好站在路边等车？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme zhǐhǎo zhàn zài lùbiān děng chē?",
+                "english": "Why did the writer have no choice but to stand by the road and wait for a car?"
+              },
+              "choices": [
+                {
+                  "traditional": "跟阿姨約好在那裡見面",
+                  "simplified": "跟阿姨约好在那里见面",
+                  "pinyin": "Gēn āyí yuē hǎo zài nàlǐ jiànmiàn.",
+                  "english": "The writer had arranged to meet the woman there."
+                },
+                {
+                  "traditional": "找不到路，手機也查不了地圖",
+                  "simplified": "找不到路，手机也查不了地图",
+                  "pinyin": "Zhǎo bú dào lù, shǒujī yě chá bù liǎo dìtú.",
+                  "english": "The writer was lost and the phone could not show a map."
+                },
+                {
+                  "traditional": "部落格說在那裡等車最快",
+                  "simplified": "部落格说在那里等车最快",
+                  "pinyin": "Bùluògé shuō zài nàlǐ děng chē zuì kuài.",
+                  "english": "The blogs said waiting there was quickest."
+                },
+                {
+                  "traditional": "下一個景點就在那條路的旁邊",
+                  "simplified": "下一个景点就在那条路的旁边",
+                  "pinyin": "Xià yí ge jǐngdiǎn jiù zài nà tiáo lù de pángbiān.",
+                  "english": "The next sight was right beside that road."
+                }
+              ],
+              "key": 1,
+              "why": "Lost in a remote area, and 訊號很弱，連地圖都打不開, so 只好 wait for a car. The woman only happened to drive past an hour later (經過), and the blogs were for planning, not for this spot.",
+              "focus": {
+                "zh": "只好",
+                "en": "had no choice but to"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B3L07-1-24",
+                "B3L07-1-25",
+                "B3L07-1-27"
+              ]
+            },
+            {
+              "id": "b3l08-review-passage-1-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人最後想說的是什麼？",
+                "simplified": "写这篇文章的人最后想说的是什么？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén zuìhòu xiǎng shuō de shì shénme?",
+                "english": "What is the writer's point at the end?"
+              },
+              "choices": [
+                {
+                  "traditional": "準備得越詳細，旅行越順利",
+                  "simplified": "准备得越详细，旅行越顺利",
+                  "pinyin": "Zhǔnbèi de yuè xiángxì, lǚxíng yuè shùnlì.",
+                  "english": "The more detailed the preparation, the smoother the trip."
+                },
+                {
+                  "traditional": "遇到困難時，別怕請人幫忙",
+                  "simplified": "遇到困难时，别怕请人帮忙",
+                  "pinyin": "Yùdào kùnnán shí, bié pà qǐng rén bāngmáng.",
+                  "english": "When in trouble, don't be afraid to ask for help."
+                },
+                {
+                  "traditional": "一個人旅行，比較自在",
+                  "simplified": "一个人旅行，比较自在",
+                  "pinyin": "Yí ge rén lǚxíng, bǐjiào zìzài.",
+                  "english": "Travelling alone is more relaxed."
+                },
+                {
+                  "traditional": "行程外的事，也可能最難忘",
+                  "simplified": "行程外的事，也可能最难忘",
+                  "pinyin": "Xíngchéng wài de shì, yě kěnéng zuì nánwàng.",
+                  "english": "Things not in the plan can be the most memorable."
+                }
+              ],
+              "key": 3,
+              "why": "準備當然重要，話說回來，……最難忘的，常常是計畫以外的事: 話說回來 grants the first point (prepare) and then turns to the real one, the unplanned help. Preparation is only the point granted, and asking for help or travelling alone are never what the writer sums up.",
+              "focus": {
+                "zh": "話說回來",
+                "en": "then again"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B3L07-1-15",
+                "B3L07-1-05"
+              ],
+              "grammarIds": [
+                "B3L07-G02-P186"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l08-review-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "text": {
+            "traditional": "我姊姊上個月生了一對雙胞胎。我本來以為照顧孩子只要餵奶就好，沒想到兩個孩子常常是一個剛睡著，一個又開始哭，而且一哭就哭個不停。姊姊一連好幾天都沒睡好。後來我每天下課就去姊姊家幫忙，抱抱他們、陪他們玩，讓姊姊能休息一下。我還學會了怎麼幫他們洗澡。滿月那天，姊姊請家人和朋友吃油飯和紅蛋，大家都說兩個孩子長得太像了，看不出誰是哥哥、誰是弟弟，只有我一看就知道。姊姊開玩笑說：「這麼說，你比我這個做媽媽的還清楚呢！」",
+            "simplified": "我姐姐上个月生了一对双胞胎。我本来以为照顾孩子只要喂奶就好，没想到两个孩子常常是一个刚睡着，一个又开始哭，而且一哭就哭个不停。姐姐一连好几天都没睡好。后来我每天下课就去姐姐家帮忙，抱抱他们、陪他们玩，让姐姐能休息一下。我还学会了怎么帮他们洗澡。满月那天，姐姐请家人和朋友吃油饭和红蛋，大家都说两个孩子长得太像了，看不出谁是哥哥、谁是弟弟，只有我一看就知道。姐姐开玩笑说：「这么说，你比我这个做妈妈的还清楚呢！」",
+            "pinyin": "Wǒ jiějie shàng ge yuè shēng le yí duì shuāngbāotāi. Wǒ běnlái yǐwéi zhàogù háizi zhǐyào wèi nǎi jiù hǎo, méixiǎngdào liǎng ge háizi chángcháng shì yí ge gāng shuìzháo, yí ge yòu kāishǐ kū, érqiě yì kū jiù kū ge bù tíng. Jiějie yìlián hǎojǐ tiān dōu méi shuì hǎo. Hòulái wǒ měi tiān xiàkè jiù qù jiějie jiā bāngmáng, bàobao tāmen, péi tāmen wán, ràng jiějie néng xiūxí yíxià. Wǒ hái xué huì le zěnme bāng tāmen xǐzǎo. Mǎnyuè nà tiān, jiějie qǐng jiārén hé péngyǒu chī yóufàn hé hóngdàn, dàjiā dōu shuō liǎng ge háizi zhǎng de tài xiàng le, kàn bù chū shéi shì gēge, shéi shì dìdi, zhǐyǒu wǒ yí kàn jiù zhīdào. Jiějie kāi wánxiào shuō: “Zhème shuō, nǐ bǐ wǒ zhège zuò māma de hái qīngchǔ ne!”",
+            "english": "Last month my older sister had twins. I thought looking after babies was just a matter of feeding them, but often one would just fall asleep when the other started crying, and once they started they wouldn't stop. My sister didn't sleep well for days on end. So every day after class I went to her place to help: holding them and playing with them so she could rest a little. I even learned how to bathe them. At the full-month celebration, she treated family and friends to sticky rice and red eggs. Everyone said the two babies looked so alike they couldn't tell which was the older and which the younger; only I knew at a glance. My sister joked, \"So you know them better than I do, and I'm their mother!\""
+          },
+          "questions": [
+            {
+              "id": "b3l08-review-passage-2-1",
+              "prompt": {
+                "traditional": "姊姊為什麼一連好幾天都沒睡好？",
+                "simplified": "姐姐为什么一连好几天都没睡好？",
+                "pinyin": "Jiějie wèishénme yìlián hǎojǐ tiān dōu méi shuì hǎo?",
+                "english": "Why didn't the sister sleep well for days on end?"
+              },
+              "choices": [
+                {
+                  "traditional": "她每天都得很早起床上班",
+                  "simplified": "她每天都得很早起床上班",
+                  "pinyin": "Tā měi tiān dōu děi hěn zǎo qǐchuáng shàngbān.",
+                  "english": "She had to get up early for work every day."
+                },
+                {
+                  "traditional": "要準備滿月的東西",
+                  "simplified": "要准备满月的东西",
+                  "pinyin": "Yào zhǔnbèi mǎnyuè de dōngxi.",
+                  "english": "She had to prepare for the full-month party."
+                },
+                {
+                  "traditional": "兩個孩子都生病了",
+                  "simplified": "两个孩子都生病了",
+                  "pinyin": "Liǎng ge háizi dōu shēngbìng le.",
+                  "english": "Both babies were ill."
+                },
+                {
+                  "traditional": "兩個孩子很少一起睡著",
+                  "simplified": "两个孩子很少一起睡着",
+                  "pinyin": "Liǎng ge háizi hěn shǎo yìqǐ shuìzháo.",
+                  "english": "The two babies were rarely asleep together."
+                }
+              ],
+              "key": 3,
+              "why": "一個剛睡著，一個又開始哭，而且一哭就哭個不停: one was always awake and crying, so 一連好幾天 she could not sleep. Work and illness are not mentioned, and the full-month party came later.",
+              "focus": {
+                "zh": "一連",
+                "en": "in a row"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-1-35",
+                "B3L04-1-05"
+              ],
+              "grammarIds": [
+                "B3L05-G02-P130",
+                "B3L04-G04-P113"
+              ]
+            },
+            {
+              "id": "b3l08-review-passage-2-2",
+              "prompt": {
+                "traditional": "姊姊開的玩笑，說明了什麼？",
+                "simplified": "姐姐开的玩笑，说明了什么？",
+                "pinyin": "Jiějie kāi de wánxiào, shuōmíng le shénme?",
+                "english": "What does the sister's joke show?"
+              },
+              "choices": [
+                {
+                  "traditional": "寫文章的人常常陪著孩子",
+                  "simplified": "写文章的人常常陪着孩子",
+                  "pinyin": "Xiě wénzhāng de rén chángcháng péi zhe háizi.",
+                  "english": "The writer spends a lot of time with the babies."
+                },
+                {
+                  "traditional": "姊姊不太會照顧孩子",
+                  "simplified": "姐姐不太会照顾孩子",
+                  "pinyin": "Jiějie bú tài huì zhàogù háizi.",
+                  "english": "The sister isn't good at looking after babies."
+                },
+                {
+                  "traditional": "兩個孩子長得不太像",
+                  "simplified": "两个孩子长得不太像",
+                  "pinyin": "Liǎng ge háizi zhǎng de bú tài xiàng.",
+                  "english": "The two babies don't look much alike."
+                },
+                {
+                  "traditional": "寫文章的人比姊姊會餵奶",
+                  "simplified": "写文章的人比姐姐会喂奶",
+                  "pinyin": "Xiě wénzhāng de rén bǐ jiějie huì wèi nǎi.",
+                  "english": "The writer is better at feeding them than the sister."
+                }
+              ],
+              "key": 0,
+              "why": "這麼說 draws a conclusion from 只有我一看就知道: the writer, there every day after class, knows the twins best. It is a joke, not a sign the sister is bad at it, everyone else found them too alike, and feeding is never compared.",
+              "focus": {
+                "zh": "這麼說，……",
+                "en": "so (drawing a conclusion)"
+              },
+              "lesson": 7,
+              "wordIds": [
+                "B3L04-1-01",
+                "B3L04-1-19"
+              ],
+              "grammarIds": [
+                "B3L07-G03-P187"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
