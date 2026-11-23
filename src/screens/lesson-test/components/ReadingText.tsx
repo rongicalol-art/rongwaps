@@ -13,8 +13,8 @@ const LABELLED = /^(.{1,6})：(.+)$/;
 /** A notice's numbered rule (一、出去的時候……) hangs on its number. */
 const NUMBERED = /^([一二三四五六七八九十]{1,2}、)(.+)$/;
 
-/** The card every reading sits on: the heavy card edge, so it reads as the thing to study, not one more answer. */
-const CARD = 'w-full overflow-hidden rounded-feature border-3 border-b-[length:var(--depth-xl)]';
+/** The sheet every reading is printed on: flat, because depth means "press me" and only the answers are pressed. */
+const CARD = 'w-full overflow-hidden rounded-feature border-2';
 const LINE = 'font-chinese text-lg text-ui-ink-strong md:text-xl';
 /** A sign-off (中山路店 11月15日): the last line, short and not a sentence (歡迎帶朋友一起來參加！ is still the notice talking). */
 const signs = (lines: string[], index: number) => index === lines.length - 1 && lines.length > 2 && !/[。！？!?]$/.test(lines[index]);
@@ -61,8 +61,8 @@ function noticeBlocks(lines: string[]): Block[] {
 
 /**
  * A note, notice, timetable or passage, drawn by the app as the real thing it is (its writing is exact, and it
- * follows dark mode): a notice is a poster with its headline on the accent band, its facts (時間, 地方…) in one
- * ruled block and its sender signing it; a timetable has a tinted header row; a message is a note on warm paper,
+ * follows dark mode): a notice is a poster with a large printed headline, its facts (時間, 地方…) in one ruled
+ * block and its sender signing it; a timetable has a tinted header row; a message is a note on warm paper,
  * signed by its writer; a passage is a reader page. The booklet can show its pinyin over the characters
  * (`pinyin`; tables keep their cells plain). `markable`: a tap marks a table row, like running a finger along it.
  */
@@ -72,8 +72,9 @@ export function ReadingText({ item, script, pinyin = false, markable = false }: 
   const readings = pinyin ? item.text.pinyin.split('\n') : [];
   const leading = pinyin ? 'leading-[1.9]' : 'leading-relaxed';
   const title = item.title && text(item.title, script);
+  // A printed headline: large ink type carries it, no coloured band.
   const band = title && (
-    <p className={cn('text-balance bg-brand-band px-5 pb-3 pt-3.5 text-center font-chinese text-xl tracking-[0.12em] text-brand-on-band md:text-2xl', pinyin && 'leading-[1.9] tracking-normal')}>
+    <p className={cn('text-balance px-5 pb-1 pt-5 text-center font-chinese text-2xl leading-snug tracking-[0.04em] text-ui-ink-strong md:text-[1.75rem]', pinyin && 'leading-[1.9] tracking-normal')}>
       <PinyinText text={title} pinyin={item.title?.pinyin} show={pinyin} />
     </p>
   );
@@ -90,11 +91,11 @@ export function ReadingText({ item, script, pinyin = false, markable = false }: 
         {band}
         {/* Phones: smaller type and padding so five columns keep their headers and titles on one or two lines; the
             narrowest phones (320 wide) tighten the cells further. */}
-        <table className="w-full border-collapse font-chinese text-base text-ui-ink-strong sm:text-lg">
+        <table className={cn('w-full border-collapse font-chinese text-base text-ui-ink-strong sm:text-lg', title && 'mt-4')}>
           <thead>
             <tr className="bg-brand-primary-wash">
               {head.map((cell, index) => (
-                <th key={index} scope="col" className="px-2 py-2.5 text-left text-sm font-normal text-brand-primary-text max-[359px]:px-1 sm:px-3.5 sm:text-base">
+                <th key={index} scope="col" className="px-2 py-2.5 text-left text-sm font-normal text-brand-primary-text first:pl-4 last:pr-4 max-[359px]:px-1 sm:px-3.5 sm:text-base sm:first:pl-5 sm:last:pr-5">
                   <ChineseText text={cell} />
                 </th>
               ))}
@@ -111,7 +112,7 @@ export function ReadingText({ item, script, pinyin = false, markable = false }: 
                   <td
                     key={column}
                     className={cn(
-                      'border-t-2 border-ui-divider px-2 py-3 tabular-nums max-[359px]:px-1 sm:px-3.5',
+                      'border-t-2 border-ui-divider px-2 py-3 tabular-nums first:pl-4 last:pr-4 max-[359px]:px-1 sm:px-3.5 sm:first:pl-5 sm:last:pr-5',
                       column === 0 && marked.has(index) && 'shadow-[inset_4px_0_0_var(--color-brand-primary)]',
                     )}
                   >
@@ -137,7 +138,7 @@ export function ReadingText({ item, script, pinyin = false, markable = false }: 
                 <div key={block.rows[0].index} className={cn('grid grid-cols-[auto_1fr] border-y-2 border-ui-divider', LINE, leading)}>
                   {block.rows.map((row, at) => {
                     const [label, value] = splitLine({ ...row, pinyin: readings[row.index] });
-                    const rule = at > 0 && 'border-t-2 border-dashed border-ui-divider';
+                    const rule = at > 0 && 'border-t-2 border-ui-divider';
                     return [
                       <span key={`${row.index}k`} className={cn('whitespace-nowrap py-2.5 pr-4 text-brand-primary-text', rule)}>{label}</span>,
                       <span key={`${row.index}v`} className={cn('py-2.5', rule)}>{value}</span>,
@@ -185,7 +186,7 @@ export function ReadingText({ item, script, pinyin = false, markable = false }: 
               LINE,
               leading,
               index === to && 'border-b-2 border-brand-primary-soft-edge pb-2.5 text-xl',
-              index === from && "flex items-center gap-2.5 self-end text-ui-ink before:w-5 before:border-t-2 before:border-brand-primary-text before:content-['']",
+              index === from && 'text-right text-ui-ink',
             )}
           >
             <PinyinText text={line} pinyin={readings[index]} show={pinyin} />
