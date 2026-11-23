@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import type { PlayfulNavIconName } from '../../../lib/widgets';
 
-/** One fitting next activity the end screen offers above Continue (e.g. read the dialogue, practise tones). */
+/** One fitting next activity the end screen offers above Continue (e.g. practise sentences, practise tones). */
 export interface SessionNextStep {
   icon: PlayfulNavIconName;
   title: string;

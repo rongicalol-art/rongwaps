@@ -88,7 +88,6 @@ export default function AppShell() {
           isShellOverlayOpen: overlays.isOverlayActive,
           onOpenGrammarPart: grammar.onOpenPart,
           onOpenLessonReadings: activity.onOpenLessonReadings,
-          onOpenReadingPart: activity.onOpenReadingPart,
         }}
         routes={{
           activeTab: nav.activeTab,
