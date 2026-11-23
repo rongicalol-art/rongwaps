@@ -1,11 +1,12 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type Ref } from 'react';
 import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
-import { ActionButton, AppIcon, LottiePlayer, type AppIconName } from '../../../lib/widgets';
+import { ActionButton, AppIcon, LottiePlayer, PlayfulNavIcon, type AppIconName } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { localDay, streakMomentDue } from '../../../utils/srs/profileStats';
 import { studyTimes } from '../../../utils/srs/reviewEvents';
 import { StreakMoment } from './StreakMoment';
+import type { SessionNextStep } from './SessionNextStep';
 
 // Module-level so the player keeps one stable loader identity. Exported for other end screens (lesson test results).
 export const loadBird = () => import('../../../assets/animations/deck-complete-bird.json').then((m) => m.default);
@@ -57,6 +58,8 @@ export interface SessionCompleteProps {
   celebrateStreak?: boolean;
   /** A lesson quiz can be shared as a challenge link: a quiet action under the buttons. */
   onChallenge?: () => void;
+  /** One fitting next activity, offered as a card above Continue. */
+  nextStep?: SessionNextStep | null;
 }
 
 export interface StatTileProps {
@@ -89,7 +92,7 @@ export function StatTile({ label, icon, shown, format, frameClass, inkClass, bod
 }
 
 /** Shared session end screen with a clear Continue action and optional review/restart choices. */
-export function SessionComplete({ headline: customHeadline, reviewLabel = 'Review missed', words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain, celebrateStreak = false, onChallenge }: SessionCompleteProps) {
+export function SessionComplete({ headline: customHeadline, reviewLabel = 'Review missed', words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain, celebrateStreak = false, nextStep = null, onChallenge }: SessionCompleteProps) {
   const reduceMotion = Boolean(useReducedMotion());
   const isPerfect = pct >= 100;
   const total = words.length;
@@ -108,6 +111,7 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
   const titleRef = useRef<HTMLHeadingElement>(null);
   const tilesRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
   const wordsBodyRef = useRef<HTMLSpanElement>(null);
   const skipRef = useRef<() => void>(() => {});
   const contentRef = useRef<HTMLDivElement>(null);
@@ -118,17 +122,21 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
   });
   const [showStreak, setShowStreak] = useState(false);
   const leavingRef = useRef(false);
-  /** Continue goes on, or on the day's first finished session hands over to the streak moment first. */
-  const handleContinue = () => {
+  /** Where the streak moment goes once it is done: Continue, or the next step the learner picked. */
+  const afterStreakRef = useRef(onContinue);
+  /** Leaving goes on at once, or on the day's first finished session hands over to the streak moment first. */
+  const leave = (next: () => void) => {
     if (leavingRef.current) return;
-    if (!streakGain) { onContinue(); return; }
+    if (!streakGain) { next(); return; }
     leavingRef.current = true;
+    afterStreakRef.current = next;
     useAppStore.getState().setStreakCelebratedDay(localDay(new Date()));
     const content = contentRef.current;
     if (reduceMotion || !content) { setShowStreak(true); return; }
     content.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-10px) scale(.98)' }], { duration: 190, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' })
       .finished.then(() => setShowStreak(true), () => setShowStreak(true));
   };
+  const handleContinue = () => leave(onContinue);
   const continueRef = useRef(handleContinue);
   continueRef.current = handleContinue;
 
@@ -140,6 +148,7 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
     const chipEls = Array.from(chipsRef.current?.children ?? []) as HTMLElement[];
     const burstEls = Array.from(burstRef.current?.children ?? []) as HTMLElement[];
     const button = buttonRef.current;
+    const nextCard = nextRef.current;
     const birdWrap = birdWrapRef.current;
     const halo = haloRef.current;
     const wordsBody = wordsBodyRef.current;
@@ -270,7 +279,9 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
       [{ translate: '-120% 0' }, { translate: '120% 0' }],
       { delay: settled + i * 90, duration: 600, easing: 'ease-in-out' },
     ));
-    A(button, rise, { delay: settled, duration: 450, easing: RISE });
+    // The suggested next step rises first, Continue just after it.
+    if (nextCard) A(nextCard, rise, { delay: settled, duration: 450, easing: RISE });
+    A(button, rise, { delay: settled + (nextCard ? 60 : 0), duration: 450, easing: RISE });
 
     // A tap anywhere skips to the finished screen.
     skipRef.current = () => {
@@ -304,7 +315,7 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  if (showStreak && streakGain) return <StreakMoment streak={streakGain.streak} week={streakGain.week} todayIndex={streakGain.todayIndex} onContinue={onContinue} />;
+  if (showStreak && streakGain) return <StreakMoment streak={streakGain.streak} week={streakGain.week} todayIndex={streakGain.todayIndex} onContinue={() => afterStreakRef.current()} />;
 
   return (
     <div
@@ -364,6 +375,25 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
       </div>
 
       <div aria-hidden className="h-8 shrink-0 md:h-10" />
+      {nextStep && (
+        <div ref={nextRef} className="mb-4 w-full max-w-md md:max-w-[340px]">
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            fullWidth
+            edgeColor="var(--color-ui-border)"
+            onClick={() => leave(nextStep.onSelect)}
+            className="justify-start gap-3 !py-3 text-left normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+          >
+            <PlayfulNavIcon name={nextStep.icon} className="h-10 w-10 shrink-0" />
+            <span className="flex min-w-0 flex-1 flex-col">
+              <span className="text-[17px] font-black leading-tight">{nextStep.title}</span>
+              <span className="mt-0.5 truncate text-xs font-bold text-ui-muted">{nextStep.line}</span>
+            </span>
+            <AppIcon name="next" size={18} className="shrink-0 text-ui-muted-strong" />
+          </ActionButton>
+        </div>
+      )}
       <div ref={buttonRef} className="w-full max-w-md md:max-w-[340px]">
         <ActionButton size="lg" fullWidth onClick={handleContinue}>
           <span>Continue</span>

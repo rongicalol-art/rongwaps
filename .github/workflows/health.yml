@@ -6,7 +6,8 @@ name: Health
 # requests (the site server and Study together) against the free 100,000 a day. When something needs the owner, it
 # opens one "Health check" issue (or comments on the open one), so the GitHub
 # app on the phone notifies. Mondays add a sign-up summary. Quiet days do nothing.
-# The learners job saves the anonymous learner report as an artifact (docs/reference/AUTOMATIONS.md).
+# The anonymous learner report has its own workflow (learner-report.yml), so the morning
+# thread can start it without touching this check's issue or its "since the last good run".
 # "Not safe" reports don't wait for this: the server emails them at once.
 
 on:
@@ -33,33 +34,6 @@ env:
   GH_REPO: ${{ github.repository }}
 
 jobs:
-  learners:
-    # Anonymous, combined numbers about how learners use the app (scripts/release/learner-report.sql).
-    # Saved as the "learner-report" artifact; the morning T3 thread reads it (docs/reference/AUTOMATIONS.md).
-    # Its own job, so a failure here never stops the health check.
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            scripts/release
-            public/data/vocabulary
-      - name: Build the learner report (read-only)
-        env:
-          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
-        run: |
-          mkdir -p learner-report
-          psql "$DATABASE_URL" --no-psqlrc -q -v ON_ERROR_STOP=1 -At -c 'begin transaction read only' \
-            -f scripts/release/learner-report.sql -c 'commit' > learner-report/report.json
-          node scripts/release/learnerReport.mjs learner-report/report.json > learner-report/learner-report.md
-          cat learner-report/learner-report.md >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: learner-report
-          path: learner-report/
-          retention-days: 35
-
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 10

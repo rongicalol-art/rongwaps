@@ -19,7 +19,7 @@ import { isFolderOwner, canEditFolder, memberAvatarColor } from '../../utils/voc
 import { useLibrary } from './hooks/useLibrary';
 import { useWordListImport } from './hooks/useWordListImport';
 import { ReviewHubCard } from './components/ReviewHubCard';
-import { useReviewOverview } from './hooks/useReviewOverview';
+import { useReviewOverview } from '../../hooks/useReviewOverview';
 import { useTocflReadiness } from '../../hooks/useTocflReadiness';
 import { LibraryTocflProgressCard } from './components/LibraryTocflProgressCard';
 import { FolderModal } from './FolderModal';

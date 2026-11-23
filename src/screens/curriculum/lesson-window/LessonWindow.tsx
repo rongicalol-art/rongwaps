@@ -1,13 +1,13 @@
 import { Fragment, Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence } from 'motion/react';
-import { ActionButton, AppIcon, Drawer, PlayfulNavIcon, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Drawer, PlayfulNavIcon, WorkspaceWindow } from '../../../lib/widgets';
 import { prepareGrammarOpen, prepareReadingOpen } from '../../../app/studyLaunch';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import type { ActivityType, CourseLessonProgress } from '../../../types/models';
 import { getEnglishLessonTitle } from '../../../utils/lesson/lessonTitle';
-import { preloadPracticeChunks, prefetchPractice, preparePracticeLaunch, type PracticeIntent } from '../../activities';
+import { PRACTICE_MODE_ORDER, PRACTICE_MODES, preloadPracticeChunks, prefetchPractice, preparePracticeLaunch, type PracticeIntent, type PracticeModeId } from '../../activities';
 import { formatPartSelection, getLessonSelectionKey, normalizePartSelection } from '../../../utils/lesson/lessonPartSelection';
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
@@ -19,7 +19,7 @@ import { ChallengeCard, GlobalPresenceButton, HereButton, lessonKey } from '../.
 import { useAppStore } from '../../../store/useAppStore';
 import { isLessonTestPassed } from '../../../utils/lesson/lessonCompletion';
 import { planFitsLesson } from '../../../utils/lesson/lessonTestPlan';
-import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
+import { usePartHasSentences } from '../../../hooks/usePartHasSentences';
 import {
   getAggregatedPart,
   getDefaultMode,
@@ -100,39 +100,6 @@ function LessonTitle({
   );
 }
 
-/**
- * Whether these parts have sentences (Sentences is offered only then). Book 1 has course-example
- * records; a book without them (Book 3) reads its dialogues (dialogue n = part n) and its words'
- * own examples, so any part with words or a dialogue has some.
- */
-function useHasPartSentences(bookId: number, lessonId: number, partIds: number[], hasWords: boolean): boolean {
-  const [hasSentences, setHasSentences] = useState(false);
-  const partsKey = partIds.join(',');
-  useEffect(() => {
-    let current = true;
-    const parts = new Set(partsKey.split(',').map(Number));
-    void Promise.all([fetchCourseExampleRecords(), fetchReadingsPack(bookId)]).then(([records, readings]) => {
-      if (!current) return;
-      const hasCourseRecords = records.some((r) => r.bookId === bookId);
-      setHasSentences(hasCourseRecords
-        ? records.some((r) => r.bookId === bookId && r.lessonId === lessonId && parts.has(r.partId))
-        : hasWords || Boolean(readings?.some((r) => r.lessonId === lessonId && parts.has(r.dialogueNumber))));
-    });
-    return () => { current = false; };
-  }, [bookId, hasWords, lessonId, partsKey]);
-  return hasSentences;
-}
-
-type HubActivity = 'quiz' | 'writing' | 'pinyin' | 'tones' | 'sentences';
-
-const HUB_ROWS: { activity: HubActivity; icon: PlayfulNavIconName; label: string }[] = [
-  { activity: 'quiz', icon: 'quiz', label: 'Quiz' },
-  { activity: 'writing', icon: 'writing', label: 'Writing' },
-  { activity: 'pinyin', icon: 'pinyinPractice', label: 'Pinyin' },
-  { activity: 'tones', icon: 'tonesPractice', label: 'Tones' },
-  { activity: 'sentences', icon: 'reading', label: 'Sentences' },
-];
-
 function PracticeHubDrawer({
   canQuiz,
   canReadSentences,
@@ -144,9 +111,9 @@ function PracticeHubDrawer({
   onClose: () => void;
   canQuiz: boolean;
   canReadSentences: boolean;
-  onSelect: (activity: HubActivity) => void;
+  onSelect: (activity: PracticeModeId) => void;
 }) {
-  const rows = HUB_ROWS.filter(({ activity }) => (activity !== 'quiz' || canQuiz) && (activity !== 'sentences' || canReadSentences));
+  const rows = PRACTICE_MODE_ORDER.filter((activity) => (activity !== 'quiz' || canQuiz) && (activity !== 'sentences' || canReadSentences));
   return (
     <Drawer
       isOpen={isOpen}
@@ -154,7 +121,7 @@ function PracticeHubDrawer({
       title={
         <div className="flex items-center gap-2.5">
           <PlayfulNavIcon name="practiceHub" className="h-6 w-6" />
-          <Drawer.Title>Practice hub</Drawer.Title>
+          <Drawer.Title>Practice</Drawer.Title>
         </div>
       }
       tone="practice"
@@ -163,7 +130,8 @@ function PracticeHubDrawer({
       heightClassName="max-h-[60vh] md:max-h-full"
     >
       <div className="flex flex-col gap-3">
-        {rows.map(({ activity, icon, label }) => {
+        {rows.map((activity) => {
+          const { icon, label, line } = PRACTICE_MODES[activity];
           // Pointing at a row starts loading its screen, so the tap usually opens it at once.
           const warm = () => { void preloadPracticeChunks(activity).catch(() => {}); };
           return (
@@ -177,11 +145,14 @@ function PracticeHubDrawer({
                 onPointerEnter={warm}
                 onPointerDown={warm}
                 onFocus={warm}
-                className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+                className="justify-start gap-3 text-left normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
               >
-                <PlayfulNavIcon name={icon} className="h-8 w-8" />
-                <span>{label}</span>
-                {activity === 'quiz' && <AppIcon name="next" size={18} className="ml-auto text-ui-muted-strong" />}
+                <PlayfulNavIcon name={icon} className="h-9 w-9 shrink-0" />
+                <span className="flex min-w-0 flex-1 flex-col">
+                  <span className="text-[17px] font-black leading-tight">{label}</span>
+                  <span className="mt-0.5 truncate text-xs font-bold text-ui-muted">{line}</span>
+                </span>
+                {activity === 'quiz' && <AppIcon name="next" size={18} className="shrink-0 text-ui-muted-strong" />}
               </ActionButton>
               {activity === 'quiz' && (
                 <>
@@ -237,7 +208,7 @@ function LessonBody({
   const activeIndex = Math.max(0, parts.findIndex((p) => p.id === selectedPartIds[0]));
   const selectedParts = parts.filter((p) => selectedPartIds.includes(p.id));
   const activePart = selectedParts.length > 0 ? getAggregatedPart(selectedParts) : parts[activeIndex];
-  const hasSentences = useHasPartSentences(bookId, lesson.id, selectedPartIds.length > 0 ? selectedPartIds : activePart ? [activePart.id] : [], Boolean(activePart && activePart.vocab.total > 0));
+  const hasSentences = usePartHasSentences(bookId, lesson.id, selectedPartIds.length > 0 ? selectedPartIds : activePart ? [activePart.id] : [], Boolean(activePart && activePart.vocab.total > 0));
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {

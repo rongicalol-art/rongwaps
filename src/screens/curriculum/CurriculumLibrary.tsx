@@ -27,6 +27,10 @@ import { preparePracticeLaunch } from '../activities';
 import { GlobalPresenceButton, LessonFaces, lessonKey } from '../../features/social';
 import { lessonProgressKey } from '../../utils/lesson/lessonCompletion';
 import { lessonThumbnail } from '../../data/lessonThumbnails';
+import { useReviewOverview } from '../../hooks/useReviewOverview';
+import { useStudyStreak } from '../../hooks/useStudyStreak';
+import { DailyReviewRow } from './components/DailyReviewRow';
+import { HeaderStreak } from './components/HeaderStreak';
 
 interface CurriculumLibraryProps {
   activeBookId?: number;
@@ -39,6 +43,8 @@ interface CurriculumLibraryProps {
   onOpenGrammarPart?: (partId: string | string[], pageId?: string | null, onComplete?: () => void) => void;
   /** Opens the reader on a lesson part's dialogue. */
   onOpenReadingPart?: (target: { bookId: number; lessonId: number; partId: number | number[] }) => void;
+  /** Opens today's daily review (the row at the top of the lessons). */
+  onStartReview?: () => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Books home). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
 }
@@ -50,9 +56,12 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   onStartPathPractice,
   onOpenGrammarPart,
   onOpenReadingPart,
+  onStartReview,
   menuToggle,
 }: CurriculumLibraryProps) {
   const hasActiveActivity = useAppStore((state) => Boolean(state.activeActivity));
+  const reviewOverview = useReviewOverview();
+  const studyStreak = useStudyStreak();
   const { currentUser, hasFullCourseAccess } = useAuth();
   const activeLearnedCards = useAppStore((state) => (
     state.activeActivity ? null : state.learnedCards
@@ -252,6 +261,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
       <div className="flex w-full flex-col pb-12">
         <StickyWorkspaceHeader
           title={activeBook.title}
+          subtitle={studyStreak.streak > 0 ? <HeaderStreak {...studyStreak} /> : undefined}
           menuToggle={menuToggle}
           rightContent={<GlobalPresenceButton />}
         />
@@ -288,6 +298,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="flex w-full flex-col items-center"
               >
+                {onStartReview && <DailyReviewRow overview={reviewOverview} onStart={onStartReview} />}
                 {starterLesson && (
                   <div className="w-full max-w-[400px]">
                     <StarterLesson

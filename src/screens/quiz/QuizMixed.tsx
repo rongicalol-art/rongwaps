@@ -34,9 +34,9 @@ const PICK_SHAPE: Partial<Record<QuizFormat, { prompt: PickPrompt; choice: PickC
  * The mixed vocab quiz: every question type (or only the picked `types`) is open to every word; the director
  * varies them and covers each word once.
  */
-export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[] | null; seed?: string }> = ({ cards, sessionKey, types = null, seed, ...shell }) => {
+export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[] | null; seed?: string }> = ({ cards, sessionKey, types = null, seed, extraCards, ...shell }) => {
   const buildCheck = useRef<(() => void) | null>(null);
-  const session = useQuizMixed(cards, sessionKey, types ?? undefined, seed);
+  const session = useQuizMixed(cards, sessionKey, types ?? undefined, seed, { daily: shell.daily, extraCards });
   const { beat, currentCard, status, followUp, isReviewPass } = session;
   const activeBeatId = `${sessionKey}|${session.beatKey}|${currentCard?.id ?? ''}|${session.resetNonce ?? 0}`;
   const [readyBeatId, setReadyBeatId] = useState<string | null>(null);

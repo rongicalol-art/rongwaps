@@ -106,8 +106,8 @@ const CHOICE_TITLES: Record<QuizChoiceType, string> = {
   pinyin: 'Select the pinyin',
 };
 
-export const QuizChoices: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shell }) => {
-  const session = useQuizChoices(cards, sessionKey);
+export const QuizChoices: React.FC<QuizModeProps> = ({ cards, sessionKey, extraCards, ...shell }) => {
+  const session = useQuizChoices(cards, sessionKey, { daily: shell.daily, extraCards });
   const { currentCard, options, selectedOption, handleSelect, isChecked, isCorrect } = session;
   const quizQuestionType = useAppStore((state) => state.quizQuestionType);
   const quizChoiceType = useAppStore((state) => state.quizChoiceType);

@@ -103,3 +103,12 @@ export function dailyReviewGoal(events: readonly import('./reviewEvents').Review
   const capacity = today.find(event => event.dailyTarget)?.dailyTarget ?? dailyReviewCapacity(events);
   return { answers, activeMs, capacity, completed: activeMs >= DAILY_REVIEW_MS || Object.keys(answers).length >= capacity };
 }
+
+/**
+ * "Review more" after today's review is done: the pinned words differ from today's plan. Such a pass is extra practice
+ * and doesn't count toward the daily goal; any other review deck does.
+ */
+export function isExtraDailyReview(plan: DailyReviewPlan | null, pinnedIds: readonly string[] | null): boolean {
+  return Boolean(plan?.completed && pinnedIds?.length
+    && (pinnedIds.length !== plan.cardIds.length || pinnedIds.some((id, index) => id !== plan.cardIds[index])));
+}

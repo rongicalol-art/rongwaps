@@ -15,12 +15,10 @@ export interface ScriptRow {
 /** What the Fix round's Script sheet shows: spoken lines to read and replay, or a text's reading and meaning. */
 export type TestScript =
   | { kind: 'lines'; intro?: ScriptRow['text']; rows: ScriptRow[] }
-  | { kind: 'text'; pinyin: string[]; english: string[] };
+  | { kind: 'text'; pinyin: string[]; english: string[]; answers: ScriptRow[] };
 
 const LETTERS = 'ABCD';
 
-/** Whether a question has a script to show (gap sentences and picture choices don't: the answer bar holds it all). */
-export const hasTestScript = (item: LessonTestItem) => item.kind !== 'scene-gap' && item.kind !== 'read-pick-picture';
 const VOICE: Record<string, string> = { F: '女', M: '男' };
 /** A dialogue's answer lines: line index → the questions it answers (two questions can share a line). */
 export function dialogueAnswerLines(item: DialogueItem, questions: readonly LessonTestQuestion[]) {
@@ -41,7 +39,7 @@ const paragraphs = (text: string | undefined) => (text ?? '').split('\n').map((l
 /**
  * The script of a question's recording or text, for the Fix round's Script sheet. Recordings list every line (a
  * dialogue or talk, or a picture question's question and answers, in the order shown); texts give their pinyin and
- * English. Gap sentences and picture choices have none: the answer bar already shows their whole sentence.
+ * English, and include the answer text or the sentence the learner matched to a picture.
  * `numberOf` names a question's number on the test (a recording with several questions tags the line each answers).
  */
 export function testScript(
@@ -49,7 +47,29 @@ export function testScript(
   questions: LessonTestQuestion[],
   order: Record<string, number[]>,
   numberOf: (question: LessonTestQuestion) => number,
-): TestScript | null {
+): TestScript {
+  const textScript = (texts: Array<TestText | undefined>): TestScript => ({
+    kind: 'text',
+    pinyin: texts.flatMap((text) => paragraphs(text?.pinyin)),
+    english: texts.flatMap((text) => paragraphs(text?.english)),
+    answers: questions.flatMap((question) => {
+      const text = item.kind === 'scene-gap' ? question.answer
+        : item.kind === 'read-pick-picture' ? question.prompt
+        : item.kind === 'paragraph-bank' ? item.bank[question.key]
+        : question.choices?.[question.key];
+      if (!text?.traditional) return [];
+      return [{
+        badge: '',
+        text: {
+          ...text,
+          traditional: text.traditional.replace(/——/g, '\n'),
+          simplified: (text.simplified ?? text.traditional).replace(/——/g, '\n'),
+        },
+        answer: item.kind !== 'read-pick-picture',
+        number: item.questions.length > 1 ? String(numberOf(question)) : undefined,
+      }];
+    }),
+  });
   switch (item.kind) {
     case 'dialogue': {
       const answers = dialogueAnswerLines(item, questions);
@@ -88,18 +108,14 @@ export function testScript(
       return { kind: 'lines', rows };
     }
     case 'reading':
-      return {
-        kind: 'text',
-        pinyin: [...paragraphs(item.title?.pinyin), ...paragraphs(item.text.pinyin)],
-        english: [...paragraphs(item.title?.english), ...paragraphs(item.text.english)],
-      };
+      return textScript([item.title, item.text]);
     case 'cloze':
     case 'paragraph-bank':
-      return { kind: 'text', pinyin: paragraphs(item.passage.pinyin), english: paragraphs(item.passage.english) };
+      return textScript([item.passage]);
     case 'realia':
-      return { kind: 'text', pinyin: paragraphs(item.transcript.pinyin), english: paragraphs(item.transcript.english) };
+      return textScript([item.transcript]);
     case 'scene-gap':
     case 'read-pick-picture':
-      return null;
+      return textScript([]);
   }
 }

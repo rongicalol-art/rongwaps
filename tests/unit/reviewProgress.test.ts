@@ -97,3 +97,37 @@ test('reset clears local SRS and session progress', () => {
     sessionCardOrder: {},
   });
 });
+
+test('Hard is remembered with effort: no lapse, but the word is not known yet', async () => {
+  const { levelToQuality } = await import('../../src/screens/flashcard/hooks/useFlashcards');
+  assert.equal(levelToQuality(1), 1);
+  assert.equal(levelToQuality(2), 3);
+  assert.equal(levelToQuality(3), 4);
+
+  const now = Date.now();
+  const due = {
+    cardId: 'w', interval: 10, repetition: 3, efactor: 2.5, nextReviewDate: now - 1000, lastReviewedAt: now - 10 * 86_400_000,
+  };
+  const hard = applyCardReview(createState({ srsData: { w: due } }), 'w', 3);
+  const again = applyCardReview(createState({ srsData: { w: due } }), 'w', 1);
+  // Again sends the word back to minutes; Hard keeps it in days.
+  assert.ok(hard.srsData.w.nextReviewDate - now > 86_400_000 / 2, 'Hard keeps a day-scale interval');
+  assert.ok(again.srsData.w.nextReviewDate - now < 86_400_000 / 2, 'Again relearns within the day');
+  assert.ok((hard.srsData.w.fsrs?.stability ?? 0) > (again.srsData.w.fsrs?.stability ?? 0));
+
+  const first = applyCardReview(createState(), 'fresh', 3);
+  assert.deepEqual(first.learnedCards, []);
+  assert.equal(first.sessionProgress.cardsLearned, 0);
+});
+
+test('an observe-only answer (Pinyin practice) is recorded but never schedules or marks a word learned', () => {
+  const context = { id: '0b6f2a4e-1c3d-4e5f-8a9b-0c1d2e3f4a5b', sessionId: 's', source: 'pinyin' as const, durationMs: 1000, practiceOnly: true };
+  const result = applyCardReview(createState(), 'new-word', 5, context, { observeOnly: true });
+
+  assert.equal(result.reviewEvents?.length, 1);
+  assert.equal(result.reviewEvents?.[0].source, 'pinyin');
+  assert.equal(result.reviewEvents?.[0].scheduled, false);
+  assert.deepEqual(result.srsData, {});
+  assert.deepEqual(result.learnedCards, []);
+  assert.equal(result.sessionProgress.cardsLearned, 0);
+});

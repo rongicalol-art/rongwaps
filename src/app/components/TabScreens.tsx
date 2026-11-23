@@ -52,11 +52,12 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
     [onToggleNav],
   );
 
+  // The daily review opens as a quiz: it checks the answers, and asks by sound and meaning too. Flashcards stay one tap away in the dock.
   const handleStartReview = useCallback(() => {
     const store = useAppStore.getState();
     store.setIsReviewMode(true);
     store.setActiveReviewSessionCards(null);
-    setActiveActivity('flashcards-review');
+    setActiveActivity('quiz');
   }, [setActiveActivity]);
 
   const handleStartMoreReview = useCallback(() => {
@@ -65,7 +66,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
     const remainingDueIds = deriveLocalDueCardIds(store.srsData).filter(id => !answeredIds.has(id));
     store.setActiveReviewSessionCards(remainingDueIds);
     store.setIsReviewMode(true);
-    setActiveActivity('flashcards-review');
+    setActiveActivity('quiz');
   }, [setActiveActivity]);
 
   const handleAddCard = useCallback(() => {
@@ -95,6 +96,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
             onStartPathPractice={startPathPractice}
             onOpenGrammarPart={onOpenGrammarPart}
             onOpenReadingPart={onOpenReadingPart}
+            onStartReview={handleStartReview}
             menuToggle={menuToggle}
           />
         )}
