@@ -27,10 +27,14 @@ const BAND_B_TURN_GAP_MS = 100;
  * ≈ 0.35 s of silence at the end, so the next speaker follows with no added gap.
  */
 const NATIVE_EDGE_BOOKS = new Set([2]);
+/** Book 3 from this lesson on is voiced in Book 2's cast, as Yating made it (owner, 2026-11-23). */
+const NATIVE_EDGE_FROM: Record<number, number> = { 3: 6 };
 
 /** The silence between two speakers' turns in one test. */
-export function turnGapMs(lesson: Pick<LessonTestLesson, 'bookId' | 'band'>): number {
+export function turnGapMs(lesson: Pick<LessonTestLesson, 'bookId' | 'band'> & { lessonId?: number }): number {
   if (NATIVE_EDGE_BOOKS.has(lesson.bookId)) return 0;
+  const from = NATIVE_EDGE_FROM[lesson.bookId];
+  if (from !== undefined && (lesson.lessonId ?? 0) >= from) return 0;
   return lesson.band === 'B' ? BAND_B_TURN_GAP_MS : TURN_GAP_MS;
 }
 /** After a dialogue: a beat of silence, the ding, then a pause before the question, so nothing blurs together. */
