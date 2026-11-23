@@ -105,10 +105,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "人太多了，下次不想去了",
-                  "simplified": "人太多了，下次不想去了",
-                  "pinyin": "Rén tài duō le, xià cì bù xiǎng qù le.",
-                  "english": "It was too crowded; he doesn't want to go again."
+                  "traditional": "雖然人很多，可是一點也不累",
+                  "simplified": "虽然人很多，可是一点也不累",
+                  "pinyin": "Suīrán rén hěn duō, kěshì yìdiǎn yě bú lèi.",
+                  "english": "It was crowded, but he wasn't tired at all."
                 },
                 {
                   "speaker": "N",
@@ -126,14 +126,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "早上去的，所以不用排很久",
-                  "simplified": "早上去的，所以不用排很久",
-                  "pinyin": "Zǎoshàng qù de, suǒyǐ bú yòng pái hěn jiǔ.",
-                  "english": "He went in the morning, so he didn't queue long."
+                  "traditional": "雖然要排隊，可是排得不久",
+                  "simplified": "虽然要排队，可是排得不久",
+                  "pinyin": "Suīrán yào páiduì, kěshì pái de bù jiǔ.",
+                  "english": "There was a queue, but it wasn't long."
                 }
               ],
               "key": 1,
-              "why": "累是累，可是… turns from the queue to the paintings, 簡直像活的一樣 is high praise, and 排再久都值得 seals it. The crowd is only the first half of his answer, and \"before nine\" is advice for her next visit; he himself queued an hour.",
+              "why": "累是累，可是… turns from the queue to the paintings, 簡直像活的一樣 is high praise, and 排再久都值得 seals it. He says 累是累, so \"not tired at all\" is wrong; he queued a whole hour, so \"the queue wasn't long\" is wrong (\"before nine\" is advice for her visit); and he says the paintings were worth any queue.",
               "focus": {
                 "zh": "簡直；……是……，可是……",
                 "en": "practically; yes…, but…"
@@ -571,14 +571,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "報告要早一點寫完才安全",
-                  "simplified": "报告要早一点写完才安全",
-                  "pinyin": "Bàogào yào zǎo yìdiǎn xiě wán cái ānquán.",
-                  "english": "A report is only safe if it is finished earlier."
+                  "traditional": "報告應該每星期上傳一次",
+                  "simplified": "报告应该每星期上传一次",
+                  "pinyin": "Bàogào yīnggāi měi xīngqí shàngchuán yí cì.",
+                  "english": "A report should be uploaded once a week."
                 }
               ],
               "key": 2,
-              "why": "The cloud saved what was in it (幸虧…要不然…); she lost only the pages written since her last upload. So 這下子 and 對啊 mean she now sees the point of uploading automatically. \"Upload when finished\" is her OLD view (以前我總覺得), and the lost pages were never in the cloud, so the cloud did not fail.",
+              "why": "The cloud saved what was in it (幸虧…要不然…); she lost only the pages written since her last upload. So 這下子 and 對啊 mean she now sees the point of uploading automatically. Her last upload was a week old (上星期寫好的部分) and she still lost three pages, so once a week is exactly what failed her; \"upload when finished\" is her OLD view (以前我總覺得), and the cloud itself did not fail.",
               "focus": {
                 "zh": "這下子；幸虧……，要不然……",
                 "en": "now (after this); luckily…, otherwise…"
@@ -816,17 +816,17 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "老師說那裡最值得寫",
-                  "simplified": "老师说那里最值得写",
-                  "pinyin": "Lǎoshī shuō nàlǐ zuì zhídé xiě.",
-                  "english": "The teacher said it is the best place to write about."
+                  "traditional": "老師說牆上的圖畫值得寫",
+                  "simplified": "老师说墙上的图画值得写",
+                  "pinyin": "Lǎoshī shuō qiáng shàng de túhuà zhídé xiě.",
+                  "english": "The teacher said the wall pictures are worth writing about."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "她知道那裡剛剛修好",
-                  "simplified": "她知道那里刚刚修好",
-                  "pinyin": "Tā zhīdào nàlǐ gānggāng xiū hǎo.",
-                  "english": "She knows it has just been repaired."
+                  "traditional": "有人跟她說廟剛剛修好",
+                  "simplified": "有人跟她说庙刚刚修好",
+                  "pinyin": "Yǒu rén gēn tā shuō miào gānggāng xiū hǎo.",
+                  "english": "Someone told her the temple has just been repaired."
                 },
                 {
                   "speaker": "N",
@@ -837,7 +837,7 @@
                 }
               ],
               "key": 3,
-              "why": "聽說牆上的圖畫十分生動 means other people told her the wall pictures are worth seeing; she has not been herself, so \"she has been\" misses 聽說. The teacher only asked groups NOT to write the same place, and the repairs belong to the house by the station.",
+              "why": "聽說牆上的圖畫十分生動 means other people told her the wall pictures are worth seeing; she has not been herself, so \"she has been\" misses 聽說. What she heard is about the pictures, not repairs: the repairs belong to the house by the station, which is still closed. The teacher said nothing about the pictures, only asked groups NOT to write the same place.",
               "focus": {
                 "zh": "聽說；細節",
                 "en": "hearsay; a detail"
@@ -876,10 +876,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "爺爺住得近，問起來方便",
-                  "simplified": "爷爷住得近，问起来方便",
-                  "pinyin": "Yéye zhù de jìn, wèn qǐlái fāngbiàn.",
-                  "english": "His grandfather lives nearby, so it is easy to ask."
+                  "traditional": "能聽到書上已經寫過的歷史",
+                  "simplified": "能听到书上已经写过的历史",
+                  "pinyin": "Néng tīng dào shū shàng yǐjīng xiě guo de lìshǐ.",
+                  "english": "He can hear history that is already in books."
                 },
                 {
                   "speaker": "N",
@@ -890,7 +890,7 @@
                 }
               ],
               "key": 0,
-              "why": "His grandfather knows 不少以前的故事, and she adds 老人家口中的歷史，書上不一定有: what he tells may not be in any book. 從小住在這裡 says how long he has lived in the city, not that asking is convenient; the house is closed for repairs; and books are what she contrasts him with.",
+              "why": "His grandfather knows 不少以前的故事, and she adds 老人家口中的歷史，書上不一定有: what he tells may not be in any book. \"History already in books\" turns her point around (書上不一定有); the house is closed for repairs; and books are what she contrasts him with, not what he has read.",
               "focus": {
                 "zh": "說話人的看法；兩句合起來",
                 "en": "a speaker's view; combining two turns"
@@ -1101,17 +1101,17 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "平日的夕陽比較美",
-                  "simplified": "平日的夕阳比较美",
-                  "pinyin": "Píngrì de xīyáng bǐjiào měi.",
-                  "english": "The sunset is prettier on weekdays."
+                  "traditional": "選夕陽最美的時候去",
+                  "simplified": "选夕阳最美的时候去",
+                  "pinyin": "Xuǎn xīyáng zuì měi de shíhòu qù.",
+                  "english": "Pick the time when the sunset is prettiest."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "一家人最好一起去",
-                  "simplified": "一家人最好一起去",
-                  "pinyin": "Yì jiā rén zuìhǎo yìqǐ qù.",
-                  "english": "The family had better go together."
+                  "traditional": "選週末大家有空的時候去",
+                  "simplified": "选周末大家有空的时候去",
+                  "pinyin": "Xuǎn zhōumò dàjiā yǒu kòng de shíhòu qù.",
+                  "english": "Pick a weekend, when everyone is free."
                 },
                 {
                   "speaker": "N",
@@ -1122,7 +1122,7 @@
                 }
               ],
               "key": 3,
-              "why": "Both warnings are about crowds: the fort 下午人很多, so go in the morning, and the pier 週末人擠人, so go on a weekday. Early photos is only the fort's reason, the sunset is beautiful any day (the weekday advice is about crowds), and she actually splits the family up in the morning.",
+              "why": "Both warnings are about crowds: the fort 下午人很多, so go in the morning, and the pier 週末人擠人, so go on a weekday. Early photos is only the fort's reason, the sunset belongs only to the pier (and she says it is beautiful anyway), and the weekend is exactly when she says the pier is packed.",
               "focus": {
                 "zh": "兩句合起來；說話人的意思",
                 "en": "combining two turns; what the speaker means"
@@ -1389,17 +1389,17 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "廣場上每天下午的表演",
-                  "simplified": "广场上每天下午的表演",
-                  "pinyin": "Guǎngchǎng shàng měi tiān xiàwǔ de biǎoyǎn.",
-                  "english": "The daily afternoon show in the square."
+                  "traditional": "廣場表演和休息的地方",
+                  "simplified": "广场表演和休息的地方",
+                  "pinyin": "Guǎngchǎng biǎoyǎn hé xiūxí de dìfāng.",
+                  "english": "The square's show and where to rest."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "保護古蹟要注意的事",
-                  "simplified": "保护古迹要注意的事",
-                  "pinyin": "Bǎohù gǔjī yào zhùyì de shì.",
-                  "english": "What to watch out for to protect the site."
+                  "traditional": "隧道暫時不開放和修理的方法",
+                  "simplified": "隧道暂时不开放和修理的方法",
+                  "pinyin": "Suìdào zànshí bù kāifàng hé xiūlǐ de fāngfǎ.",
+                  "english": "The tunnel being closed for now and how it is repaired."
                 },
                 {
                   "speaker": "N",
@@ -1410,7 +1410,7 @@
                 }
               ],
               "key": 3,
-              "why": "重新開放 is the news, and the tour times, the family rule and the photo rule (同時 no touching) all tell visitors how to go in. The fort's age is only the welcome, the show is a last extra, and the protection rules are one part of the how-to, not the whole message.",
+              "why": "重新開放 is the news, and the tour times, the family rule and the photo rule (同時 no touching) all tell visitors how to go in. The tunnel is not closing: its two years of repair are over (修了兩年，從今天起重新開放), and nothing is said about how it was repaired. The fort's age is only the welcome, and the square is a last extra for after the visit.",
               "focus": {
                 "zh": "同時；主旨",
                 "en": "also; the main point"
@@ -1983,10 +1983,10 @@
               "id": "b3l15-cloze-2-2",
               "choices": [
                 {
-                  "traditional": "一再",
-                  "simplified": "一再",
-                  "pinyin": "yízài",
-                  "english": "repeatedly"
+                  "traditional": "從來",
+                  "simplified": "从来",
+                  "pinyin": "cónglái",
+                  "english": "ever (with 不/沒)"
                 },
                 {
                   "traditional": "同時",
@@ -2008,7 +2008,7 @@
                 }
               ],
               "key": 1,
-              "why": "一看到，就… is a single moment, and 我們兩個 are two people crying out at once: 同時. 一再 and 往往 describe things that happen many times, and 終於 needs a long wait, not a first glance.",
+              "why": "一看到，就… is a single moment, and 我們兩個 are two people crying out at once: 同時. 從來 only goes with 不 or 沒, 往往 describes things that happen many times, and 終於 needs a long wait, not a first glance.",
               "focus": {
                 "zh": "同時",
                 "en": "at the same time"
@@ -2481,10 +2481,10 @@
                   "english": "Young people found money for repairs."
                 },
                 {
-                  "traditional": "市場的屋頂已經修好了",
-                  "simplified": "市场的屋顶已经修好了",
-                  "pinyin": "Shìchǎng de wūdǐng yǐjīng xiū hǎo le.",
-                  "english": "The market roof had already been repaired."
+                  "traditional": "看到了市場現在熱鬧的樣子",
+                  "simplified": "看到了市场现在热闹的样子",
+                  "pinyin": "Kàn dào le shìchǎng xiànzài rènào de yàngzi.",
+                  "english": "They saw how lively the market is now."
                 },
                 {
                   "traditional": "看到了市場以前熱鬧的樣子",
@@ -2494,7 +2494,7 @@
                 }
               ],
               "key": 3,
-              "why": "我本來也這麼想，直到…看到一張五十年前的照片…那時候我才體會到: the photo of the packed, smiling market changed the writer's mind. The childhood visits come earlier and did not stop the writer agreeing with the car park, and the funding and the new roof come only after the change of mind.",
+              "why": "我本來也這麼想，直到…看到一張五十年前的照片…那時候我才體會到: the photo of the packed, smiling market of the PAST changed the writer's mind. The market is lively NOW only after it was saved, long after the change of mind; the childhood visits come earlier and did not stop the writer agreeing with the car park; and the funding comes later too.",
               "focus": {
                 "zh": "直到……才……；看法的改變",
                 "en": "not until…; a change of mind"
@@ -2524,10 +2524,10 @@
                   "english": "Besides buying vegetables, you can buy books and have coffee."
                 },
                 {
-                  "traditional": "一部分改成了停車場",
-                  "simplified": "一部分改成了停车场",
-                  "pinyin": "Yí bùfèn gǎi chéng le tíngchēchǎng.",
-                  "english": "Part of it has become a car park."
+                  "traditional": "除了買菜，也能在裡面停車",
+                  "simplified": "除了买菜，也能在里面停车",
+                  "pinyin": "Chúle mǎi cài, yě néng zài lǐmiàn tíngchē.",
+                  "english": "Besides buying vegetables, you can park inside."
                 },
                 {
                   "traditional": "屋頂修好了，攤位都沒變",
@@ -2536,14 +2536,14 @@
                   "english": "The roof is fixed, and the stalls are unchanged."
                 },
                 {
-                  "traditional": "老人們回來重新擺攤",
-                  "simplified": "老人们回来重新摆摊",
-                  "pinyin": "Lǎorénmen huílái chóngxīn bǎi tān.",
-                  "english": "Old people have come back to run stalls again."
+                  "traditional": "不再賣菜，全改成書店咖啡店",
+                  "simplified": "不再卖菜，全改成书店咖啡店",
+                  "pinyin": "Bú zài mài cài, quán gǎi chéng shūdiàn kāfēi diàn.",
+                  "english": "It no longer sells vegetables; it is all bookshops and cafés."
                 }
               ],
               "key": 0,
-              "why": "Some stalls became 書店及咖啡店 while 其他的攤位還是賣菜: shoppers can still buy vegetables and now also books and coffee. The car park was only the mayor's plan, the stalls did change, and the old people come back only to sit (坐坐).",
+              "why": "Only 一部分的攤位 became 書店及咖啡店, while 其他的攤位還是賣菜: shoppers can still buy vegetables and now also books and coffee. So \"no more vegetables\" misses 一部分; the car park was only the mayor's plan and was never built; and the stalls did change.",
               "focus": {
                 "zh": "及；細節",
                 "en": "and (formal); a detail"
@@ -2580,10 +2580,10 @@
                   "english": "An old place run in a new way can come alive again."
                 },
                 {
-                  "traditional": "年輕人比市長更會保護古蹟",
-                  "simplified": "年轻人比市长更会保护古迹",
-                  "pinyin": "Niánqīng rén bǐ shìzhǎng gèng huì bǎohù gǔjī.",
-                  "english": "Young people protect old sites better than mayors."
+                  "traditional": "老地方不改做法，也能熱鬧起來",
+                  "simplified": "老地方不改做法，也能热闹起来",
+                  "pinyin": "Lǎo dìfāng bù gǎi zuòfǎ, yě néng rènào qǐlái.",
+                  "english": "An old place can come alive again without changing."
                 },
                 {
                   "traditional": "老照片能讓人想起以前的生活",
@@ -2593,7 +2593,7 @@
                 }
               ],
               "key": 1,
-              "why": "The market was saved by repairs AND new shops, and now old and young use it together, so the grandmother 簡直不敢相信 it is the same place. Funding is only one step, the young people are never compared with the mayor, and the photo only explains why the writer changed their mind.",
+              "why": "The market was saved by repairs AND new shops, and now old and young use it together, so the grandmother 簡直不敢相信 it is the same place. It did change (stalls became 書店及咖啡店), so \"without changing\" is wrong; funding is only one step; and the photo only explains why the writer changed their mind.",
               "focus": {
                 "zh": "簡直；主旨",
                 "en": "practically; the main idea"
@@ -2737,16 +2737,16 @@
                   "english": "Old things at home may be part of a place's history."
                 },
                 {
-                  "traditional": "老人說的歷史比書上的可靠",
-                  "simplified": "老人说的历史比书上的可靠",
-                  "pinyin": "Lǎorén shuō de lìshǐ bǐ shū shàng de kěkào.",
-                  "english": "What old people say is more reliable than books."
+                  "traditional": "地方的歷史都寫在書上了",
+                  "simplified": "地方的历史都写在书上了",
+                  "pinyin": "Dìfāng de lìshǐ dōu xiě zài shū shàng le.",
+                  "english": "A place's history is all written in books."
                 },
                 {
-                  "traditional": "日記最好放在博物館裡",
-                  "simplified": "日记最好放在博物馆里",
-                  "pinyin": "Rìjì zuìhǎo fàng zài bówùguǎn lǐ.",
-                  "english": "Diaries are best kept in museums."
+                  "traditional": "家裡的舊東西都能賣很多錢",
+                  "simplified": "家里的旧东西都能卖很多钱",
+                  "pinyin": "Jiālǐ de jiù dōngxi dōu néng mài hěn duō qián.",
+                  "english": "Old things at home can all sell for a lot."
                 },
                 {
                   "traditional": "大家知道的歷史常常是錯的",
@@ -2756,7 +2756,7 @@
                 }
               ],
               "key": 0,
-              "why": "One family's box held a piece of the town's past (the bridge), which the professor used alongside old people's memories (同時去找當地的老人), and it now sits in the museum. The old people add to the diary rather than beat the books, the museum is where it ended up, and one wrong belief does not make history often wrong.",
+              "why": "One family's box held a piece of the town's past (the bridge), which the professor used alongside old people's memories (同時去找當地的老人), and it now sits in the museum. Its value is history, not money: the father says 也許賣不了多少錢; the diary holds things 連書上都沒寫過, so not all history is in books; and one wrong belief does not make history often wrong.",
               "focus": {
                 "zh": "同時；主旨",
                 "en": "at the same time; the main idea"

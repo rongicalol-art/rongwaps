@@ -119,21 +119,21 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "先點四個菜，魚等一下再點",
-                  "simplified": "先点四个菜，鱼等一下再点",
-                  "pinyin": "Xiān diǎn sì ge cài, yú děng yíxià zài diǎn.",
-                  "english": "Four dishes to start, fish later."
+                  "traditional": "先點六個菜，裡面要有魚",
+                  "simplified": "先点六个菜，里面要有鱼",
+                  "pinyin": "Xiān diǎn liù ge cài, lǐmiàn yào yǒu yú.",
+                  "english": "Six dishes to start, one of them fish."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "只點四個菜，裡面要有魚",
-                  "simplified": "只点四个菜，里面要有鱼",
-                  "pinyin": "Zhǐ diǎn sì ge cài, lǐmiàn yào yǒu yú.",
-                  "english": "Only four dishes, one of them fish."
+                  "traditional": "只點四個菜，不夠也不再加",
+                  "simplified": "只点四个菜，不够也不再加",
+                  "pinyin": "Zhǐ diǎn sì ge cài, bú gòu yě bú zài jiā.",
+                  "english": "Only four dishes, no more even if it is not enough."
                 }
               ],
               "key": 0,
-              "why": "He offers 先點四個，不夠再加 and her 好吧 accepts it with one condition: 至少要有一個是魚, a minimum inside those four. Taking leftovers home is her old idea, which he turned down after last time, the fish is one of the first four rather than an extra, and 不夠再加 makes four a start, not a limit.",
+              "why": "He offers 先點四個，不夠再加 and her 好吧 accepts it with one condition: 至少要有一個是魚, a minimum inside those four. Taking leftovers home is her old idea, which he turned down after last time; six was her first number, which he called too many; and 不夠再加 makes four a start, not a limit.",
               "focus": {
                 "zh": "至少（最低條件）；最後的決定",
                 "en": "at least (a minimum condition); the final plan"
@@ -780,10 +780,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "那天就拿不到送的水果",
-                  "simplified": "那天就拿不到送的水果",
-                  "pinyin": "Nà tiān jiù ná bú dào sòng de shuǐguǒ.",
-                  "english": "He gets no free fruit that day."
+                  "traditional": "下次來吃飯得多付十塊錢",
+                  "simplified": "下次来吃饭得多付十块钱",
+                  "pinyin": "Xià cì lái chīfàn děi duō fù shí kuài qián.",
+                  "english": "He pays ten dollars more the next time he eats there."
                 },
                 {
                   "speaker": "N",
@@ -808,7 +808,7 @@
                 }
               ],
               "key": 1,
-              "why": "Two lines meet: plates go back after the meal (吃完要把盤子拿回去), and 剩太多的人得多付十塊錢. The fruit goes to everyone, set portions are the old system, and nobody is made to finish their food.",
+              "why": "Two lines meet: plates go back after the meal (吃完要把盤子拿回去), and 剩太多的人得多付十塊錢. The extra ten is paid on the spot when the plate goes back, not next time; set portions are the old system; and nobody is made to finish their food.",
               "focus": {
                 "zh": "規定用在新的人身上",
                 "en": "applying a rule to a new case"
@@ -1075,10 +1075,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "打五折以後麵包還是剩下",
-                  "simplified": "打五折以后面包还是剩下",
-                  "pinyin": "Dǎ wǔ zhé yǐhòu miànbāo háishì shèngxià.",
-                  "english": "Even at half price the bread was left."
+                  "traditional": "老闆怕對面的店也跟著打折",
+                  "simplified": "老板怕对面的店也跟着打折",
+                  "pinyin": "Lǎobǎn pà duìmiàn de diàn yě gēnzhe dǎ zhé.",
+                  "english": "The boss feared the shop across the street would cut prices too."
                 },
                 {
                   "speaker": "N",
@@ -1096,7 +1096,7 @@
                 }
               ],
               "key": 0,
-              "why": "She suggested 打五折, but 他怕客人以後都等到八點才來買，不肯: the boss feared customers would hold off for the discount. He never says the price is too low, the discount never happened, so it cannot have failed, and the shop across the street is why bread was left in the first place.",
+              "why": "She suggested 打五折, but 他怕客人以後都等到八點才來買，不肯: the boss feared customers would hold off for the discount. He never says the price is too low or mentions what the other shop would do; the shop across the street is only why bread was left in the first place.",
               "focus": {
                 "zh": "前後的關係",
                 "en": "following the turns"
@@ -1377,10 +1377,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "青菜會便宜多少，什麼時候再買",
-                  "simplified": "青菜会便宜多少，什么时候再买",
-                  "pinyin": "Qīngcài huì piányí duōshǎo, shénme shíhòu zài mǎi.",
-                  "english": "How much cheaper greens will get, and when to buy."
+                  "traditional": "菜為什麼變貴，該多買肉和魚",
+                  "simplified": "菜为什么变贵，该多买肉和鱼",
+                  "pinyin": "Cài wèishénme biàn guì, gāi duō mǎi ròu hé yú.",
+                  "english": "Why greens cost more, and that people should buy more meat and fish."
                 },
                 {
                   "speaker": "N",
@@ -1391,7 +1391,7 @@
                 }
               ],
               "key": 0,
-              "why": "The first half explains the price rise and the second half tells listeners what to buy and how soon to eat it. Replanting is one line, the broadcast never says how much cheaper greens will get, and nothing has got cheaper: meat and fish simply stayed the same.",
+              "why": "The first half explains the price rise and the second half tells listeners what to buy and how soon to eat it. Replanting is one line; the advice is to buy corn and other vegetables that keep, not meat and fish, which only stayed the same price; and nothing has got cheaper.",
               "focus": {
                 "zh": "廣播的主要意思",
                 "en": "the main point"
@@ -1588,28 +1588,28 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "告訴他食物銀行不需要人幫忙了",
-                  "simplified": "告诉他食物银行不需要人帮忙了",
-                  "pinyin": "Gàosù tā shíwù yínháng bù xūyào rén bāngmáng le.",
-                  "english": "To tell him the food bank no longer needs helpers."
+                  "traditional": "請他星期五以前把東西送去",
+                  "simplified": "请他星期五以前把东西送去",
+                  "pinyin": "Qǐng tā xīngqíwǔ yǐqián bǎ dōngxi sòng qù.",
+                  "english": "To ask him to take the things over before Friday."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "把食物銀行的新安排告訴他",
-                  "simplified": "把食物银行的新安排告诉他",
-                  "pinyin": "Bǎ shíwù yínháng de xīn ānpái gàosù tā.",
-                  "english": "To pass on the food bank's new arrangements."
+                  "traditional": "告訴他能送什麼、哪天能去",
+                  "simplified": "告诉他能送什么、哪天能去",
+                  "pinyin": "Gàosù tā néng sòng shénme, nǎ tiān néng qù.",
+                  "english": "To tell him what they can bring and which day they can go."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "告訴他食物銀行現在不收東西了",
-                  "simplified": "告诉他食物银行现在不收东西了",
-                  "pinyin": "Gàosù tā shíwù yínháng xiànzài bù shōu dōngxi le.",
-                  "english": "To tell him the food bank no longer takes donations."
+                  "traditional": "告訴他星期六人不夠，請他們去",
+                  "simplified": "告诉他星期六人不够，请他们去",
+                  "pinyin": "Gàosù tā xīngqíliù rén bú gòu, qǐng tāmen qù.",
+                  "english": "To say Saturdays are short of people and ask them to come."
                 }
               ],
               "key": 2,
-              "why": "She reports what she found out: only unopened food, Wednesday instead of Saturday, at least five people, and call by Friday. Saturday is the old day; only Saturdays have too many helpers, so they still want his club on Wednesday; and they still take unopened food.",
+              "why": "She reports what she found out: only unopened food, Wednesday instead of Saturday, at least five people, and call by Friday. Saturday is the old day, and it has too many helpers, not too few; Friday is the deadline for calling her, not for taking things over.",
               "focus": {
                 "zh": "說話人的目的",
                 "en": "the speaker's purpose"
@@ -2533,10 +2533,10 @@
               },
               "choices": [
                 {
-                  "traditional": "作者在臺灣省了飯錢，才開始打包",
-                  "simplified": "作者在台湾省了饭钱，才开始打包",
-                  "pinyin": "Zuòzhě zài Táiwān shěng le fàn qián, cái kāishǐ dǎbāo.",
-                  "english": "The writer started taking leftovers home after saving on meals in Taiwan."
+                  "traditional": "作者教會了臺灣同學愛惜食物",
+                  "simplified": "作者教会了台湾同学爱惜食物",
+                  "pinyin": "Zuòzhě jiāo huì le Táiwān tóngxué àixí shíwù.",
+                  "english": "The writer taught Taiwanese classmates to cherish food."
                 },
                 {
                   "traditional": "作者改變了看法，可是朋友不接受",
@@ -2558,7 +2558,7 @@
                 }
               ],
               "key": 3,
-              "why": "The passage follows one person: from 一件讓人不好意思的事 to 是因為愛惜食物, and then 於是有幾個朋友也開始這麼做了. Friends who refuse misses that last line, the change happened in Taiwan, not after going home, and the saved meal was one moment, not the reason for the change.",
+              "why": "The passage follows one person: from 一件讓人不好意思的事 to 是因為愛惜食物, and then 於是有幾個朋友也開始這麼做了. Friends who refuse misses that last line; the change happened in Taiwan, not after going home; and it was the classmates who showed the writer, not the other way round.",
               "focus": {
                 "zh": "當作；於是；整篇的意思",
                 "en": "regard as; so; the main idea"
@@ -2603,10 +2603,10 @@
               },
               "choices": [
                 {
-                  "traditional": "大超市的東西越來越貴",
-                  "simplified": "大超市的东西越来越贵",
-                  "pinyin": "Dà chāoshì de dōngxi yuè lái yuè guì.",
-                  "english": "Things at the big supermarket kept getting dearer."
+                  "traditional": "算出一年在大超市花了一萬塊",
+                  "simplified": "算出一年在大超市花了一万块",
+                  "pinyin": "Suàn chū yì nián zài dà chāoshì huā le yíwàn kuài.",
+                  "english": "She worked out she spent NT$10,000 a year at the big supermarket."
                 },
                 {
                   "traditional": "算出一年丟掉的食物花了不少錢",
@@ -2628,7 +2628,7 @@
                 }
               ],
               "key": 1,
-              "why": "這件事讓她嚇了一跳，於是她決定改變: \"this\" is finding that a year of thrown-out food came to at least NT$10,000. The full fridge and the writer in the dorm are part of the old situation, and the supermarket's prices are never said to rise.",
+              "why": "這件事讓她嚇了一跳，於是她決定改變: \"this\" is finding that a year of thrown-out food came to at least NT$10,000. The NT$10,000 is what the wasted food cost, not her whole supermarket spending; the full fridge and the writer in the dorm are part of the old situation.",
               "focus": {
                 "zh": "於是；前後的關係",
                 "en": "so; linking cause and action"
@@ -2709,10 +2709,10 @@
                   "english": "She saves quite a lot each month."
                 },
                 {
-                  "traditional": "不用每天花時間煮飯",
-                  "simplified": "不用每天花时间煮饭",
-                  "pinyin": "Bú yòng měi tiān huā shíjiān zhǔ fàn.",
-                  "english": "She no longer has to cook every day."
+                  "traditional": "丟掉的食物比以前少一半",
+                  "simplified": "丢掉的食物比以前少一半",
+                  "pinyin": "Diū diào de shíwù bǐ yǐqián shǎo yíbàn.",
+                  "english": "She throws away half as much food as before."
                 },
                 {
                   "traditional": "買回來的食物都用到了",
@@ -2728,7 +2728,7 @@
                 }
               ],
               "key": 2,
-              "why": "得意地說 that 一樣都沒有白白丟掉: what she is proud of in her last words is that nothing goes to waste. Saving money each month is true, but she says it earlier, not in her last words; turning leftovers into lunch is still cooking; and fewer weekend trips are never her point.",
+              "why": "得意地說 that 一樣都沒有白白丟掉: what she is proud of in her last words is that nothing goes to waste. Saving money each month is true, but she says it earlier, not in her last words; she says nothing at all is wasted, not half as much; and fewer weekend trips are never her point.",
               "focus": {
                 "zh": "說話人的態度",
                 "en": "an attitude"

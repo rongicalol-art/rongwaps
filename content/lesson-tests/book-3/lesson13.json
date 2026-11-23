@@ -377,17 +377,17 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "字太小，看起來很累",
-                  "simplified": "字太小，看起来很累",
-                  "pinyin": "Zì tài xiǎo, kàn qǐlái hěn lèi.",
-                  "english": "The print is too small and tiring to read."
+                  "traditional": "方便是方便，可是字太小",
+                  "simplified": "方便是方便，可是字太小",
+                  "pinyin": "Fāngbiàn shì fāngbiàn, kěshì zì tài xiǎo.",
+                  "english": "They are convenient, but the print is too small."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "下載太麻煩，不想學",
-                  "simplified": "下载太麻烦，不想学",
-                  "pinyin": "Xiàzài tài máfán, bù xiǎng xué.",
-                  "english": "Downloading is too much trouble to learn."
+                  "traditional": "不方便，所以他不想用",
+                  "simplified": "不方便，所以他不想用",
+                  "pinyin": "Bù fāngbiàn, suǒyǐ tā bù xiǎng yòng.",
+                  "english": "They are not convenient, so he doesn't want to use them."
                 },
                 {
                   "speaker": "N",
@@ -405,7 +405,7 @@
                 }
               ],
               "key": 3,
-              "why": "就是再方便 grants that e-books are convenient, and 他也還是喜歡去圖書館 says that will not change his habit. Small print was only the man's guess and the print can be enlarged, the granddaughter did the downloading, and \"handier\" is only half his view: he still prefers the library.",
+              "why": "就是再方便 grants that e-books are convenient, and 他也還是喜歡去圖書館 says that will not change his habit. Small print was only the man's guess and the print can be enlarged, so it is not his \"but\"; he never calls them inconvenient (就是再方便 grants the opposite); and \"handier\" is only half his view: he still prefers the library.",
               "focus": {
                 "zh": "就是……也……；看法",
                 "en": "even if…; an opinion"
@@ -589,10 +589,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他其實真的很會做菜",
-                  "simplified": "他其实真的很会做菜",
-                  "pinyin": "Tā qíshí zhēn de hěn huì zuò cài.",
-                  "english": "He really is a good cook."
+                  "traditional": "他說的只有住臺北是真的",
+                  "simplified": "他说的只有住台北是真的",
+                  "pinyin": "Tā shuō de zhǐyǒu zhù Táiběi shì zhēn de.",
+                  "english": "Only his living in Taipei is true."
                 },
                 {
                   "speaker": "N",
@@ -603,7 +603,7 @@
                 }
               ],
               "key": 0,
-              "why": "The cooking was untrue (卻說他從來沒做過菜), the student part is true (倒是真的), and with 至於 the man sets Taipei apart as unknown: some of it is true and some is not. So not \"every word\" is false, the cooking claim fell apart, and the student claim was confirmed.",
+              "why": "The cooking was untrue (卻說他從來沒做過菜), the student part is true (倒是真的), and with 至於 the man sets Taipei apart as unknown: some of it is true and some is not. So not \"every word\" is false; Taipei is the one part the man cannot vouch for, while the student part is the one that was shown true; and the student claim was confirmed.",
               "focus": {
                 "zh": "卻；至於",
                 "en": "yet; as for"
@@ -1081,10 +1081,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "覺得在公司開會比在家好",
-                  "simplified": "觉得在公司开会比在家好",
-                  "pinyin": "Juéde zài gōngsī kāihuì bǐ zài jiā hǎo.",
-                  "english": "She thinks meeting at the office beats home."
+                  "traditional": "沒有別的辦法，可是很不高興",
+                  "simplified": "没有别的办法，可是很不高兴",
+                  "pinyin": "Méiyǒu bié de bànfǎ, kěshì hěn bù gāoxìng.",
+                  "english": "There's no other way, and she's very unhappy."
                 },
                 {
                   "speaker": "N",
@@ -1095,7 +1095,7 @@
                 }
               ],
               "key": 0,
-              "why": "也只能這樣了 says she has no better choice, and 沒什麼不一樣 shows she does not much mind. Not commuting is the man's gain, she calls the office \"no different\", not better, and her worry was about home, not the office.",
+              "why": "也只能這樣了 says she has no better choice, and 沒什麼不一樣 shows she does not much mind. Not commuting is the man's gain; she has no choice, but 其實沒什麼不一樣 shows she is not upset about it; and her worry was about home, not the office.",
               "focus": {
                 "zh": "態度",
                 "en": "an attitude"
@@ -1193,17 +1193,17 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "系統會自動讓他多看幾天",
-                  "simplified": "系统会自动让他多看几天",
-                  "pinyin": "Xìtǒng huì zìdòng ràng tā duō kàn jǐ tiān.",
-                  "english": "The system will give him a few more days by itself."
+                  "traditional": "有人在等，也能上網再借",
+                  "simplified": "有人在等，也能上网再借",
+                  "pinyin": "Yǒu rén zài děng, yě néng shàngwǎng zài jiè.",
+                  "english": "Even if someone is waiting, he can borrow it again online."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "得到圖書館去才能再借",
-                  "simplified": "得到图书馆去才能再借",
-                  "pinyin": "Děi dào túshūguǎn qù cái néng zài jiè.",
-                  "english": "He must go to the library to borrow it again."
+                  "traditional": "沒人在等，得去圖書館再借",
+                  "simplified": "没人在等，得去图书馆再借",
+                  "pinyin": "Méi rén zài děng, děi qù túshūguǎn zài jiè.",
+                  "english": "If no one is waiting, he must go to the library to borrow it again."
                 },
                 {
                   "speaker": "N",
@@ -1221,7 +1221,7 @@
                 }
               ],
               "key": 3,
-              "why": "Two days left is inside the three days before the due date, so he may borrow it again online, unless someone else is waiting for it. The system only returns books by itself, it never extends them; it is all done online; and three days is when he may borrow again, not how much longer he gets.",
+              "why": "Two days left is inside the three days before the due date, so he may borrow it again online, unless someone else is waiting for it. If someone is waiting he cannot borrow it again at all; borrowing again is done online, not at the library; and three days is when he may borrow again, not how much longer he gets.",
               "focus": {
                 "zh": "規定用在新情況",
                 "en": "applying a rule to a new case"
@@ -1267,14 +1267,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "想讓大家一次能多借幾本",
-                  "simplified": "想让大家一次能多借几本",
-                  "pinyin": "Xiǎng ràng dàjiā yí cì néng duō jiè jǐ běn.",
-                  "english": "It wants students to borrow more at a time."
+                  "traditional": "書放不下了，也想讓大家多借幾本",
+                  "simplified": "书放不下了，也想让大家多借几本",
+                  "pinyin": "Shū fàng bú xià le, yě xiǎng ràng dàjiā duō jiè jǐ běn.",
+                  "english": "It's out of room for books and wants students to borrow more."
                 }
               ],
               "key": 1,
-              "why": "The two 一方面 give two reasons: a lasting lack of space and reading anytime, anywhere. The reading room closing is separate, temporary news after 還有; automatic returns are how the system works, not why it came; and five books is a limit, not an increase.",
+              "why": "The two 一方面 give two reasons: a lasting lack of space and reading anytime, anywhere. The reading room closing is separate, temporary news after 還有; automatic returns are how the system works, not why it came; and the second reason is reading anytime, anywhere, not borrowing more: five books is a limit, not an increase.",
               "focus": {
                 "zh": "一方面……一方面……；長期和暫時",
                 "en": "on one hand… on the other…; lasting vs temporary"
@@ -1430,14 +1430,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "鄰居比家人更能幫上忙",
-                  "simplified": "邻居比家人更能帮上忙",
-                  "pinyin": "Línjū bǐ jiārén gèng néng bāng shàng máng.",
-                  "english": "Neighbours help more than family can."
+                  "traditional": "人不在家也能馬上回去幫忙",
+                  "simplified": "人不在家也能马上回去帮忙",
+                  "pinyin": "Rén bú zài jiā yě néng mǎshàng huíqù bāngmáng.",
+                  "english": "Even away from home you can rush back to help at once."
                 }
               ],
               "key": 1,
-              "why": "The story follows the point that a phone shows what family members are doing: the son saw the fall from work and sent the neighbour, so watching from afar brought help on the spot. It is not a warning about living alone, the uneasy feeling comes later after 不過, and the neighbour helped because the son called, not instead of him.",
+              "why": "The story follows the point that a phone shows what family members are doing: the son saw the fall from work and sent the neighbour, so watching from afar brought help on the spot. It is not a warning about living alone, the uneasy feeling comes later after 不過, and the son did not go back himself: he stayed at work and asked the neighbour to go.",
               "focus": {
                 "zh": "例子的作用",
                 "en": "what an example is for"
@@ -1469,10 +1469,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "要先問鄰居能不能幫忙",
-                  "simplified": "要先问邻居能不能帮忙",
-                  "pinyin": "Yào xiān wèn línjū néng bù néng bāngmáng.",
-                  "english": "You must first ask the neighbours to help."
+                  "traditional": "鄰居可能不想一直被看著",
+                  "simplified": "邻居可能不想一直被看着",
+                  "pinyin": "Línjū kěnéng bù xiǎng yìzhí bèi kànzhe.",
+                  "english": "The neighbours may not want to be watched all the time."
                 },
                 {
                   "speaker": "N",
@@ -1490,7 +1490,7 @@
                 }
               ],
               "key": 2,
-              "why": "The advice follows from the second 一方面: a camera can make an older person 不自在，好像一直有人在看著他, so ask first. Cameras are called cheap now, the neighbour came into the story only after the fall, and nothing is said about the family having to work the camera: the person at work does the watching.",
+              "why": "The advice follows from the second 一方面: a camera can make an older person 不自在，好像一直有人在看著他, so ask first. Cameras are called cheap now, the one who may feel watched is the older person at home, not the neighbour (who only came in after the fall), and nothing is said about the family having to work the camera: the person at work does the watching.",
               "focus": {
                 "zh": "一方面……一方面……；原因",
                 "en": "on one hand… on the other…; a reason"
@@ -1533,10 +1533,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "有好處，可惜價錢還是太貴",
-                  "simplified": "有好处，可惜价钱还是太贵",
-                  "pinyin": "Yǒu hǎochù, kěxí jiàqián háishì tài guì.",
-                  "english": "Helpful, but sadly still too expensive."
+                  "traditional": "有好處，可是得先讓鄰居同意",
+                  "simplified": "有好处，可是得先让邻居同意",
+                  "pinyin": "Yǒu hǎochù, kěshì děi xiān ràng línjū tóngyì.",
+                  "english": "Helpful, but the neighbours must agree first."
                 },
                 {
                   "speaker": "N",
@@ -1547,7 +1547,7 @@
                 }
               ],
               "key": 1,
-              "why": "He grants the good side with his friend's story and then makes the family's wishes the condition: talk it through and ask them first. He says not every place needs one, a thousand-odd dollars is called cheap (才), and being watched all the time is exactly what bothers older people.",
+              "why": "He grants the good side with his friend's story and then makes the family's wishes the condition: talk it through and ask them first. He says not every place needs one, it is the family, not the neighbours, he says to ask, and being watched all the time is exactly what bothers older people.",
               "focus": {
                 "zh": "說話人的看法",
                 "en": "the speaker's view"
@@ -1941,10 +1941,10 @@
                   "english": "since"
                 },
                 {
-                  "traditional": "一方面",
-                  "simplified": "一方面",
-                  "pinyin": "yìfāngmiàn",
-                  "english": "on one hand"
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
                 },
                 {
                   "traditional": "既",
@@ -1960,7 +1960,7 @@
                 }
               ],
               "key": 2,
-              "why": "…又能調整房間內的冷氣: two good things the system can do, joined by 又, so 既 opens the pair. 既然 gives a reason and needs 就 or a conclusion, 一方面 needs a second 一方面 rather than 又, and 只要 sets a condition and needs 就.",
+              "why": "…又能調整房間內的冷氣: two good things the system can do, joined by 又, so 既 opens the pair. 既然 gives a reason and needs 就 or a conclusion, 雖然 needs a 但是 or 可是 turn, not a second good thing with 又, and 只要 sets a condition and needs 就.",
               "focus": {
                 "zh": "既……又……",
                 "en": "both… and…"
@@ -2472,10 +2472,10 @@
                   "english": "The cloud is handy, and paid services are safer."
                 },
                 {
-                  "traditional": "雲端很方便，但得常常整理照片",
-                  "simplified": "云端很方便，但得常常整理照片",
-                  "pinyin": "Yúnduān hěn fāngbiàn, dàn děi chángcháng zhěnglǐ zhàopiàn.",
-                  "english": "The cloud is handy, but sort your photos often."
+                  "traditional": "雲端很方便，但最好存在隨身碟裡",
+                  "simplified": "云端很方便，但最好存在随身碟里",
+                  "pinyin": "Yúnduān hěn fāngbiàn, dàn zuìhǎo cún zài suíshēndié lǐ.",
+                  "english": "The cloud is handy, but USB drives are the best place."
                 },
                 {
                   "traditional": "雲端很方便，但不能只存一個地方",
@@ -2485,7 +2485,7 @@
                 }
               ],
               "key": 3,
-              "why": "He keeps using the cloud but now keeps a second copy on his own computer, because 再好的工具也不能完全依靠: the drive failed him once and the cloud once, each time because it held the only copy. Changing companies and paying are what his friends did, and his unsorted photos are a side remark.",
+              "why": "He keeps using the cloud but now keeps a second copy on his own computer, because 再好的工具也不能完全依靠: the drive failed him once and the cloud once, each time because it held the only copy. Changing companies and paying are what his friends did, and USB drives are no answer: he lost one and gave the rest away; his extra copy goes on his own computer.",
               "focus": {
                 "zh": "主旨",
                 "en": "the main idea"
@@ -2584,10 +2584,10 @@
                   "english": "Children got better with tablets than the grandparents."
                 },
                 {
-                  "traditional": "家長開始到學校教孩子",
-                  "simplified": "家长开始到学校教孩子",
-                  "pinyin": "Jiāzhǎng kāishǐ dào xuéxiào jiāo háizi.",
-                  "english": "Parents started teaching children at school."
+                  "traditional": "孩子會用了，還會教祖父母用",
+                  "simplified": "孩子会用了，还会教祖父母用",
+                  "pinyin": "Háizi huì yòng le, hái huì jiāo zǔfùmǔ yòng.",
+                  "english": "Children learned, and now teach the grandparents."
                 },
                 {
                   "traditional": "颱風停課的天數變少了",
@@ -2603,7 +2603,7 @@
                 }
               ],
               "key": 3,
-              "why": "The families came to be taught, and 情況才慢慢好起來: some grandparents now check homework online and even use the tablet better than the children (甚至比孩子還會用). That reverses the first choice; the parents came to learn, not to teach; and nothing changed the typhoons.",
+              "why": "The families came to be taught, and 情況才慢慢好起來: some grandparents now check homework online and even use the tablet better than the children (甚至比孩子還會用). That reverses the first choice; it was the school, not the children, that taught the families; and nothing changed the typhoons.",
               "focus": {
                 "zh": "兩句合起來；結果",
                 "en": "combining two sentences; a result"
@@ -2631,10 +2631,10 @@
                   "english": "The cloud frees mountain pupils from closures."
                 },
                 {
-                  "traditional": "學校跟企業合作才能進步",
-                  "simplified": "学校跟企业合作才能进步",
-                  "pinyin": "Xuéxiào gēn qìyè hézuò cái néng jìnbù.",
-                  "english": "Schools progress only with company help."
+                  "traditional": "有了設備，還得有好的網路",
+                  "simplified": "有了设备，还得有好的网路",
+                  "pinyin": "Yǒu le shèbèi, hái děi yǒu hǎo de wǎnglù.",
+                  "english": "Equipment needs a good internet line too."
                 },
                 {
                   "traditional": "有了設備，還得教會使用的人",
@@ -2650,7 +2650,7 @@
                 }
               ],
               "key": 2,
-              "why": "The text moves one way: tablets and the cloud arrived, the start was hard because families could not use them, things improved only after the school taught them, and the last line says the real problems began the day the tablets came. Beating closures is the plan, not the point; the company is one step; and grandparents outdoing children is one striking detail.",
+              "why": "The text moves one way: tablets and the cloud arrived, the start was hard because families could not use them, things improved only after the school taught them, and the last line says the real problems began the day the tablets came. Beating closures is the plan, not the point; the trouble was people who could not use the tablets, never the internet line; and grandparents outdoing children is one striking detail.",
               "focus": {
                 "zh": "主旨",
                 "en": "the main idea"

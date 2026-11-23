@@ -475,10 +475,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "覺得他十一點睡太晚了",
-                  "simplified": "觉得他十一点睡太晚了",
-                  "pinyin": "Juéde tā shíyī diǎn shuì tài wǎn le.",
-                  "english": "She thinks eleven is too late a bedtime."
+                  "traditional": "覺得改喝水也不一定好",
+                  "simplified": "觉得改喝水也不一定好",
+                  "pinyin": "Juéde gǎi hē shuǐ yě bù yídìng hǎo.",
+                  "english": "She thinks switching to water may not help either."
                 },
                 {
                   "speaker": "N",
@@ -489,7 +489,7 @@
                 }
               ],
               "key": 3,
-              "why": "She answers his 以茶代替咖啡 with 喝茶也會…: 也 means tea has the same problem, so the swap may not fix his sleep. Water after three is his reply (我知道，所以…), not her idea, and 也 says \"too\", not \"worse\".",
+              "why": "She answers his 以茶代替咖啡 with 喝茶也會…: 也 means tea has the same problem, so the swap may not fix his sleep. She is doubting the tea, not water: water after three is his own answer (我知道，所以…), not her idea, and 也 says \"too\", not \"worse\".",
               "focus": {
                 "zh": "以……代替……；說話人的意思",
                 "en": "use… in place of…; what someone means"
@@ -569,21 +569,21 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他妹妹是一位很好的牙醫",
-                  "simplified": "他妹妹是一位很好的牙医",
-                  "pinyin": "Tā mèimei shì yí wèi hěn hǎo de yáyī.",
-                  "english": "His sister is a very good dentist."
+                  "traditional": "越晚去，花的錢可能越少",
+                  "simplified": "越晚去，花的钱可能越少",
+                  "pinyin": "Yuè wǎn qù, huā de qián kěnéng yuè shǎo.",
+                  "english": "The longer she waits, the less it may cost."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "吃藥對牙痛完全沒有用",
-                  "simplified": "吃药对牙痛完全没有用",
-                  "pinyin": "Chī yào duì yá tòng wánquán méiyǒu yòng.",
-                  "english": "Medicine does nothing at all for toothache."
+                  "traditional": "越吃藥，問題可能越嚴重",
+                  "simplified": "越吃药，问题可能越严重",
+                  "pinyin": "Yuè chī yào, wèntí kěnéng yuè yánzhòng.",
+                  "english": "The more medicine she takes, the worse it may get."
                 }
               ],
               "key": 0,
-              "why": "He backs 非去不可 with his sister's story: she put it off, the pain grew until she couldn't eat, and it cost far more. That happened to the sister, not to the woman; the sister was the patient, not the dentist; and he never says medicine does nothing.",
+              "why": "He backs 非去不可 with his sister's story: she put it off, the pain grew until she couldn't eat, and it cost far more. That happened to the sister, not to the woman; waiting cost the sister more, not less; and it is putting it off, not the medicine, that he says made things worse.",
               "focus": {
                 "zh": "非……不可",
                 "en": "must (no other way)"
@@ -808,10 +808,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "陪爸爸去跟客人好好談一談",
-                  "simplified": "陪爸爸去跟客人好好谈一谈",
-                  "pinyin": "Péi bàba qù gēn kèrén hǎohǎo tán yì tán.",
-                  "english": "Go with Dad and talk things over with his clients."
+                  "traditional": "好好跟客人談，讓爸爸少喝酒",
+                  "simplified": "好好跟客人谈，让爸爸少喝酒",
+                  "pinyin": "Hǎohǎo gēn kèrén tán, ràng bàba shǎo hē jiǔ.",
+                  "english": "Talk it over with the clients so Dad drinks less."
                 },
                 {
                   "speaker": "N",
@@ -822,10 +822,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "每天看著爸爸好好吃藥",
-                  "simplified": "每天看着爸爸好好吃药",
-                  "pinyin": "Měi tiān kànzhe bàba hǎohǎo chī yào.",
-                  "english": "Make sure Dad takes his medicine every day."
+                  "traditional": "好好跟醫生談，讓爸爸多注意健康",
+                  "simplified": "好好跟医生谈，让爸爸多注意健康",
+                  "pinyin": "Hǎohǎo gēn yīshēng tán, ràng bàba duō zhùyì jiànkāng.",
+                  "english": "Talk it over with the doctor so Dad pays more attention to his health."
                 },
                 {
                   "speaker": "N",
@@ -836,7 +836,7 @@
                 }
               ],
               "key": 3,
-              "why": "身體比生意重要。你們全家要多跟他溝通: talk with him until he puts health before business. The clients are his worry, putting health first does not mean giving up his business, and the medicine is the doctor's point, not hers.",
+              "why": "身體比生意重要。你們全家要多跟他溝通: talk with him until he puts health before business. 跟他 is Dad himself, not the doctor or the clients (the clients are his worry), and putting health first does not mean giving up his business.",
               "focus": {
                 "zh": "說話人的意思",
                 "en": "what someone means"
@@ -1513,10 +1513,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "喝一點酒可以，週末多睡不行",
-                  "simplified": "喝一点酒可以，周末多睡不行",
-                  "pinyin": "Hē yìdiǎn jiǔ kěyǐ, zhōumò duō shuì bù xíng.",
-                  "english": "A little alcohol is fine; sleeping more at weekends is not."
+                  "traditional": "兩種都會讓人半夜容易醒",
+                  "simplified": "两种都会让人半夜容易醒",
+                  "pinyin": "Liǎng zhǒng dōu huì ràng rén bànyè róngyì xǐng.",
+                  "english": "Both make you wake up easily in the night."
                 },
                 {
                   "speaker": "N",
@@ -1534,7 +1534,7 @@
                 }
               ],
               "key": 2,
-              "why": "Each belief is followed by 其實: 其實這樣做，身體還是一樣累 for weekend sleep, and 其實酒會讓人半夜容易醒 for alcohol, so she rejects both. Keeping it up for a month belongs to her own tips, not to these two habits.",
+              "why": "Each belief is followed by 其實: 其實這樣做，身體還是一樣累 for weekend sleep, and 其實酒會讓人半夜容易醒 for alcohol, so she rejects both. Only alcohol is said to wake you in the night (weekend sleep leaves you just as tired), and keeping it up for a month belongs to her own tips, not to these two habits.",
               "focus": {
                 "zh": "說話人的看法（兩段合起來看）",
                 "en": "the speaker's view (combining two parts)"
@@ -2447,10 +2447,10 @@
               },
               "choices": [
                 {
-                  "traditional": "游泳比想的還要難學",
-                  "simplified": "游泳比想的还要难学",
-                  "pinyin": "Yóuyǒng bǐ xiǎng de hái yào nán xué.",
-                  "english": "Swimming is harder to learn than she thought."
+                  "traditional": "肯一直學下去是最不容易的",
+                  "simplified": "肯一直学下去是最不容易的",
+                  "pinyin": "Kěn yìzhí xué xiàqù shì zuì bù róngyì de.",
+                  "english": "Being willing to keep going is the hardest part."
                 },
                 {
                   "traditional": "肯開始做是最不容易的",
@@ -2459,10 +2459,10 @@
                   "english": "Being willing to start is the hardest part."
                 },
                 {
-                  "traditional": "游泳池離家還是太遠",
-                  "simplified": "游泳池离家还是太远",
-                  "pinyin": "Yóuyǒngchí lí jiā háishì tài yuǎn.",
-                  "english": "The pool is still too far from home."
+                  "traditional": "年紀大了，學什麼都不容易",
+                  "simplified": "年纪大了，学什么都不容易",
+                  "pinyin": "Niánjì dà le, xué shénme dōu bù róngyì.",
+                  "english": "When you are older, nothing is easy to learn."
                 },
                 {
                   "traditional": "下水的時候最容易出事",
@@ -2472,7 +2472,7 @@
                 }
               ],
               "key": 1,
-              "why": "學游泳不難，最難的是第一次走進游泳池: walking in that first time stands for deciding to begin, which took her years. She says learning is not hard, and the step is about fear, not distance or danger.",
+              "why": "學游泳不難，最難的是第一次走進游泳池: walking in that first time stands for deciding to begin, which took her years. She says 學游泳不難, so keeping on learning is not the hard part, and her age stopped mattering once she saw the women in their seventies.",
               "focus": {
                 "zh": "寫這篇文章的人的意思",
                 "en": "what the text means"
@@ -2613,16 +2613,16 @@
               },
               "choices": [
                 {
-                  "traditional": "外面的菜太油太鹹，要少吃",
-                  "simplified": "外面的菜太油太咸，要少吃",
-                  "pinyin": "Wàimiàn de cài tài yóu tài xián, yào shǎo chī.",
-                  "english": "Food outside is too oily and salty; eat less of it."
+                  "traditional": "煮飯讓他更省錢，也跟媽媽更有話聊",
+                  "simplified": "煮饭让他更省钱，也跟妈妈更有话聊",
+                  "pinyin": "Zhǔ fàn ràng tā gèng shěng qián, yě gēn māma gèng yǒu huà liáo.",
+                  "english": "Cooking saved him money and gave him more to talk about with his mom."
                 },
                 {
-                  "traditional": "學做菜很難，得有人一直教",
-                  "simplified": "学做菜很难，得有人一直教",
-                  "pinyin": "Xué zuò cài hěn nán, děi yǒu rén yìzhí jiāo.",
-                  "english": "Cooking is hard to learn; someone must keep teaching you."
+                  "traditional": "煮飯讓他更健康，也常常請同事吃",
+                  "simplified": "煮饭让他更健康，也常常请同事吃",
+                  "pinyin": "Zhǔ fàn ràng tā gèng jiànkāng, yě chángcháng qǐng tóngshì chī.",
+                  "english": "Cooking made him healthier, and he often treats his colleagues."
                 },
                 {
                   "traditional": "自己做的菜比餐廳的好吃",
@@ -2638,7 +2638,7 @@
                 }
               ],
               "key": 3,
-              "why": "The story runs from bad checkup numbers to better ones, and the last line names two gains: 身體變好了, and 跟媽媽多了很多可以聊的話題 (he lives alone, so the second gain is with his mom, not a family he cooks for). Oily, salty food is only the doctor's warning at the start, the hard first weeks are one stage, and the restaurant comparison is the colleagues' praise.",
+              "why": "The story runs from bad checkup numbers to better ones, and the last line names two gains: 身體變好了, and 跟媽媽多了很多可以聊的話題 (he lives alone, so the second gain is with his mom, not a family he cooks for). Money is never mentioned, the colleagues only praise his lunches and ask how he makes them (he brings his own, he does not treat them), and the restaurant comparison is their praise, not the point.",
               "focus": {
                 "zh": "主旨",
                 "en": "the main idea"
