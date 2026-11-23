@@ -158,8 +158,6 @@ export function ActivityModals({
   if (sessionStats && activeActivity !== 'quiz') setSessionStats(null);
   const dockAutoHide = useAppStore(state => state.dockAutoHide);
   const dockLayout = usePracticeDockLayout(useAppStore(state => state.dockStyle));
-  const activeQuizMode = useAppStore(state => state.activeQuizMode);
-  const setActiveQuizMode = useAppStore(state => state.setActiveQuizMode);
 
   const insetClassName = hasDock ? dockLayout.insetClassName : '';
   // The bottom dock publishes its measured height as `--dock-inset` on this body; the screens sit above it, so they centre in the free area.
@@ -290,7 +288,6 @@ export function ActivityModals({
                   isReviewMode={isReviewSession}
                   isLibraryMode={effectiveLibraryMode}
                   isIndependentStudy={isIndependentStudy}
-                  activeQuizMode={race ? 'choices' : activeQuizMode}
                   direction={direction}
                   onClose={handleClose}
                   onWritingClose={handleWritingClose}
@@ -316,15 +313,10 @@ export function ActivityModals({
                   {showDock && (
                     <PracticeModeDock
                       value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
-                      quizMode={activeQuizMode}
                       layout={dockLayout}
                       insetRef={reservesDock ? bodyRef : undefined}
                       autoHide={dockAutoHide}
                       studyItems={studyItems}
-                      onSelectQuizMode={(mode) => {
-                        setActiveQuizMode(mode);
-                        setActiveActivity('quiz');
-                      }}
                       onChange={(nextActivity) => {
                         if (isReviewSession && nextActivity === 'flashcards') {
                           setActiveActivity('flashcards-review');

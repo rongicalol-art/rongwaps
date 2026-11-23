@@ -19,6 +19,8 @@ test('race types stay in step with the quiz director', () => {
 test('selection keeps only beta lessons and real parts', () => {
   assert.deepEqual(parseSelection({ lessons: { 0: [1], 8: [3, 3, 2], 9: [1], 16: [1, 2, 3], 17: [1], x: [1], 2: [0, 4] }, types: ['build', 'bad'] }), { book: 1, lessons: { 0: [1], 8: [2, 3], 9: [1], 16: [1, 2, 3] }, types: ['build'] });
   assert.throws(() => parseSelection({ lessons: { 2: [] } }));
+  assert.deepEqual(parseSelection({ lessons: { 1: [1] }, types: ['true-false'] }).types, []);
+  assert.deepEqual(parseSelection({ lessons: { 1: [1] }, types: ['true-false', 'typing', 'pinyin', 'build'] }).types, ['pinyin', 'build']);
 });
 
 test('social profile images only allow Google avatars and signed profile avatar URLs', () => {

@@ -159,13 +159,18 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     handleCheck();
   }, [handleCheck, preparation]);
 
-  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && (!replayAudioAfterAnswer || mode === 'quiz-typing') && !onCheck;
+  const typingAdvance = mode === 'quiz-typing' && status === 'correct' && !preparation && !activeBreakdown;
+  const autoAdvance = typingAdvance || (!preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !replayAudioAfterAnswer && !onCheck);
+
+  useEffect(() => {
+    if (typingAdvance) advance();
+  }, [advance, typingAdvance]);
 
   usePracticeAnswerAutomation({
     status,
     onAdvance: () => advance(false),
     advanceWrong: false,
-    blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || (mode !== 'quiz-typing' && answerAudioPlaying),
+    blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || mode === 'quiz-typing' || answerAudioPlaying,
   });
   // Missed words come back together as a review round after the pass (the intro between), until a pass has no misses.
   const [reviewPass, setReviewPass] = useState(0);
@@ -399,13 +404,11 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         </div>
       )}
 
-      {popWordOnAutoAdvance && (
-        <QuizWordPop
-          word={autoAdvance && word ? word : null}
-          nonce={`${reviewPass}:${currentIndex}:${resetNonce}`}
-          clear={status === 'wrong'}
-        />
-      )}
+      <QuizWordPop
+        word={popWordOnAutoAdvance && autoAdvance && word ? word : null}
+        nonce={`${reviewPass}:${currentIndex}:${resetNonce}`}
+        clear={status === 'wrong'}
+      />
 
       {!preparation && <FeedbackBottomBar
         status={status}

@@ -1,4 +1,4 @@
-import type { ActivityType, LessonPartSelectionMap, QuizMode } from '../../types/models';
+import type { ActivityType, LessonPartSelectionMap } from '../../types/models';
 
 export type PracticeContext = 'lesson' | 'independent';
 
@@ -9,8 +9,6 @@ export interface NavigationState {
   setActiveActivity: (activity: ActivityType, context?: PracticeContext) => void;
   /** Launch origin survives reloads and switches between practice modes. */
   practiceContext: PracticeContext | null;
-  activeQuizMode: QuizMode | null;
-  setActiveQuizMode: (mode: QuizMode | null) => void;
   selectedBooks: number[];
   setSelectedBooks: (books: number[] | ((prev: number[]) => number[])) => void;
   selectedLessonParts: LessonPartSelectionMap;
@@ -36,8 +34,6 @@ export function createNavigationSlice(set: SetState): NavigationState {
         : activity === 'flashcards-library' || activity === 'flashcards-review' ? 'independent'
         : context ?? (state.activeActivity ? state.practiceContext : null) ?? 'independent',
     })),
-    activeQuizMode: null,
-    setActiveQuizMode: (mode) => set({ activeQuizMode: mode }),
     selectedBooks: [],
     setSelectedBooks: (books) => set((state) => ({
       selectedBooks: typeof books === 'function' ? books(state.selectedBooks) : books,
@@ -60,7 +56,6 @@ export const NAVIGATION_PERSISTED_KEYS = [
   'activeTab',
   'activeActivity',
   'practiceContext',
-  'activeQuizMode',
   'selectedBooks',
   'selectedLessonParts',
   'lastOpenedLessons',

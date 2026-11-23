@@ -350,8 +350,14 @@ const PERSISTED_RECORD_KEYS = [
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {
   const cleaned = { ...state };
-  // Retired social preference: discard saved blocks from older clients.
+  // Retired preferences and standalone Pinyin practice (now a quiz type): discard or redirect safely.
   delete cleaned.blockedUsers;
+  delete cleaned.activeQuizMode;
+  if (cleaned.activeActivity === 'pinyin') {
+    cleaned.activeActivity = null;
+    cleaned.practiceContext = null;
+  }
+  if (cleaned.lastActivity === 'pinyin') cleaned.lastActivity = 'quiz';
   for (const key of PERSISTED_ARRAY_KEYS) {
     if (key in cleaned && !Array.isArray(cleaned[key])) {
       debugLogger.warn('Sync', `Persisted "${key}" was not an array; using an empty list.`, cleaned[key]);

@@ -8,11 +8,12 @@ import { QuizShell, type QuizModeProps } from './QuizShell';
 import { MeasureWordFollowUp } from './formats/MeasureWordFollowUp';
 import { PairMatch } from './formats/PairMatch';
 import { PickOne, type PickChoice, type PickPrompt } from './formats/PickOne';
-import { TrueFalseFlip } from './formats/TrueFalseFlip';
+import { PinyinType } from './formats/PinyinType';
 import { WordBuild } from './formats/WordBuild';
 import { useQuizAudioPreparation } from './hooks/useQuizAudioPreparation';
 import { ActionButton, AudioPreparation, EmptyState, LoadingScreen } from '../../lib/widgets';
 import { useRaceQuiz, useRaceReady } from '../../features/social';
+import { numberToToneMarks } from '../../utils/pinyin/pinyin';
 
 const TITLES: Record<QuizFormat, string> = {
   'pair-match': 'Tap the pairs',
@@ -20,7 +21,7 @@ const TITLES: Record<QuizFormat, string> = {
   'pick-meaning': 'Select the meaning',
   'listen-pick': 'What did you hear?',
   'pick-hanzi': 'Select the character',
-  'true-false': 'True or false?',
+  'type-pinyin': 'Type the pinyin',
   'word-build': 'Build the Chinese word',
 };
 
@@ -35,13 +36,13 @@ const PICK_SHAPE: Partial<Record<QuizFormat, { prompt: PickPrompt; choice: PickC
  * varies them and covers each word once.
  */
 export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[] | null; seed?: string }> = ({ cards, sessionKey, types = null, seed, extraCards, ...shell }) => {
-  const buildCheck = useRef<(() => void) | null>(null);
+  const submitRef = useRef<(() => void) | null>(null);
   const session = useQuizMixed(cards, sessionKey, types ?? undefined, seed, { daily: shell.daily, extraCards });
   const { beat, currentCard, status, followUp, isReviewPass } = session;
   const activeBeatId = `${sessionKey}|${session.beatKey}|${currentCard?.id ?? ''}|${session.resetNonce ?? 0}`;
   const [readyBeatId, setReadyBeatId] = useState<string | null>(null);
-  const buildReady = readyBeatId === activeBeatId;
-  const onBuildReady = useCallback((ready: boolean) => {
+  const submitReady = readyBeatId === activeBeatId;
+  const onReadyChange = useCallback((ready: boolean) => {
     setReadyBeatId(ready ? activeBeatId : null);
   }, [activeBeatId]);
   const race = useRaceQuiz();
@@ -57,7 +58,6 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
         format: question.format,
         cards: question.cards.map(describeCard),
         options: question.options?.map(describeCard),
-        shown: question.shown ? describeCard(question.shown) : null,
         tiles: question.tiles ?? null,
       })),
     });
@@ -86,6 +86,8 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
 
   const single = beat && beat.cards.length === 1;
   const isBuild = Boolean(single && beat?.format === 'word-build' && beat.tiles);
+  const isPinyin = Boolean(single && beat?.format === 'type-pinyin');
+  const needsSubmit = isBuild || isPinyin;
   const matchCards = beat && beat.cards.length > 1 ? beat.cards : [];
   const isMatch = matchCards.length > 0;
   const missedFeedback = status === 'wrong' && isMatch;
@@ -104,27 +106,28 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
       {...shell}
       challengeTypes={shell.shareable && !seed ? types ?? [] : null}
       session={session}
-      mode="quiz-choices"
+      mode={isPinyin ? 'quiz-typing' : 'quiz-choices'}
       title={beatTitle}
       preparation={session.planning.pending ? <div className="flex flex-1 flex-col items-center justify-center"><LoadingScreen inline message="Preparing quiz…" tone="practice" /><ActionButton variant="secondary" onClick={shell.onEnd}>Cancel</ActionButton></div>
         : session.planning.error ? <EmptyState title="Quiz couldn’t load" action={<div className="flex gap-3"><ActionButton onClick={session.planning.retry}>Retry</ActionButton><ActionButton variant="secondary" onClick={shell.onEnd}>Back</ActionButton></div>} />
-        : !audio.ready ? <AudioPreparation progress={audio.progress} error={audio.error} onRetry={audio.retry} onBack={shell.onEnd} />
+        : !audio.ready && (!isPinyin || race?.phase === 'preparing') ? <AudioPreparation progress={audio.progress} error={audio.error} onRetry={audio.retry} onBack={shell.onEnd} />
         : seed && race?.phase === 'preparing' && racePlanDigest?.source === racePlanSource && racePlanDigest.error ? <EmptyState title="Quiz couldn’t sync" description="This browser couldn’t verify the shared quiz data. Leave this race and try an updated browser." action={<ActionButton variant="secondary" onClick={shell.onEnd}>Leave race</ActionButton>} />
         : seed && race?.phase === 'preparing' ? <div className="flex flex-1 flex-col items-center justify-center gap-4"><LoadingScreen inline message={`${planHash ? 'Waiting for everyone’s audio' : 'Checking the shared quiz'}… ${race.preparedCount}/${race.playerCount}`} tone="practice" /><ActionButton variant="secondary" onClick={shell.onEnd}>Leave race</ActionButton></div>
         : undefined}
       wide
       status={status}
-      correctAnswer={missedFeedback ? session.missedLabel : currentCard ? `${currentCard.front}  ${currentCard.back}` : ''}
-      pinyin={!missedFeedback && showPinyin ? currentCard?.pinyin : undefined}
+      correctAnswer={missedFeedback ? session.missedLabel : isPinyin ? numberToToneMarks(currentCard?.pinyin || '') : currentCard ? `${currentCard.front}  ${currentCard.back}` : ''}
+      pinyin={!missedFeedback && !isPinyin && showPinyin ? currentCard?.pinyin : undefined}
       word={single && currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: simpleDefinitions ? currentCard.simple : undefined } : undefined}
-      isCheckDisabled={isBuild ? !buildReady : status === 'idle'}
-      onCheck={isBuild && status === 'idle' ? () => buildCheck.current?.() : undefined}
+      isCheckDisabled={needsSubmit ? !submitReady : status === 'idle'}
+      onCheck={needsSubmit && status === 'idle' ? () => submitRef.current?.() : undefined}
+      popWordOnAutoAdvance={isPinyin}
       rise={Boolean(types)}
       hideBreakdown={isMatch}
       isMatchPair={isMatch}
       holdAutoAdvance={followUp === 'open'}
-      // Match and build questions have no single prompt card to land the review intro's card on: it fades.
-      landsReviewGhost={!beat || (beat.cards.length === 1 && beat.format !== 'word-build')}
+      // Match, build and typing questions have no single prompt card to land the review intro's card on: it fades.
+      landsReviewGhost={!beat || (beat.cards.length === 1 && beat.format !== 'word-build' && beat.format !== 'type-pinyin')}
     >
       {({ openBreakdown, breakdownOpen, reviewHandoff }) => {
         if (!beat || !currentCard) return null;
@@ -152,22 +155,21 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
               breakdownOpen={breakdownOpen}
               activeBook={activeBook}
               onAnswer={session.resolveSingle}
-              onReadyChange={onBuildReady}
-              checkRef={buildCheck}
+              onReadyChange={onReadyChange}
+              checkRef={submitRef}
             />
           );
         }
-        if (single && beat.format === 'true-false' && beat.shown) {
+        if (isPinyin) {
           return (
-            <TrueFalseFlip
+            <PinyinType
               card={currentCard}
-              shown={beat.shown}
-              isChecked={isChecked}
+              status={status}
               onAnswer={session.resolveSingle}
               onOpenBreakdown={openBreakdown}
               breakdownOpen={breakdownOpen}
-              activeBook={activeBook}
-              handoff={landing}
+              onReadyChange={onReadyChange}
+              checkRef={submitRef}
             />
           );
         }

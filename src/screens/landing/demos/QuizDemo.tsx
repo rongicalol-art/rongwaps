@@ -8,14 +8,13 @@ import { distractors, pick, playCharacter, playWord, shuffle } from './demoUtils
 type Question =
   | { kind: 'meaning'; word: SampleWord; options: SampleWord[] }
   | { kind: 'hanzi'; word: SampleWord; options: SampleWord[] }
-  | { kind: 'build'; word: SampleWord; tiles: string[] }
-  | { kind: 'trueFalse'; word: SampleWord; shown: SampleWord };
+  | { kind: 'build'; word: SampleWord; tiles: string[] };
 
 const TWO_CHAR = SAMPLE_WORDS.filter(([hanzi]) => Array.from(hanzi).length === 2);
 const ALL_CHARS = [...new Set(SAMPLE_WORDS.flatMap(([hanzi]) => Array.from(hanzi)))];
 
 function makeQuestion(): Question {
-  const kind = pick(['meaning', 'hanzi', 'build', 'trueFalse'] as const);
+  const kind = pick(['meaning', 'hanzi', 'build'] as const);
   if (kind === 'build') {
     const word = pick(TWO_CHAR);
     const chars = Array.from(word[0]);
@@ -23,13 +22,12 @@ function makeQuestion(): Question {
     return { kind, word, tiles: shuffle([...chars, ...extra]) };
   }
   const word = pick(SAMPLE_WORDS);
-  if (kind === 'trueFalse') return { kind, word, shown: Math.random() < 0.5 ? word : distractors(word, 1)[0] };
   return { kind, word, options: shuffle([word, ...distractors(word, 3)]) };
 }
 
-const PROMPT: Record<Question['kind'], string> = { meaning: 'What does it mean?', hanzi: 'Which word is it?', build: 'Build the word', trueFalse: 'True or false?' };
+const PROMPT: Record<Question['kind'], string> = { meaning: 'What does it mean?', hanzi: 'Which word is it?', build: 'Build the word' };
 
-/** Endless mixed quiz from the Lesson 1–2 words: meaning, word from meaning, build the word, true or false. */
+/** Endless mixed quiz from the Lesson 1–2 words: meaning, word from meaning, build the word. */
 export function QuizDemo({ onResult }: { onResult?: (correct: boolean) => void }) {
   const [question, setQuestion] = useState(makeQuestion);
   const [round, setRound] = useState(0);
@@ -42,10 +40,7 @@ export function QuizDemo({ onResult }: { onResult?: (correct: boolean) => void }
   const answer = (index: number) => {
     if (result !== null || question.kind === 'build') return;
     setPicked([index]);
-    const correct =
-      question.kind === 'meaning' || question.kind === 'hanzi'
-        ? question.options[index] === word
-        : (index === 1) === (question.shown === word);
+    const correct = question.options[index] === word;
     setResult(correct);
     playWord(word);
     onResult?.(correct);
@@ -71,25 +66,14 @@ export function QuizDemo({ onResult }: { onResult?: (correct: boolean) => void }
   return (
     <div className="flex w-full flex-col items-center gap-4 pb-24 sm:pb-28">
       <p className="ui-eyebrow text-ui-muted-strong">{PROMPT[question.kind]}</p>
-      {(question.kind === 'meaning' || question.kind === 'trueFalse') && <p className="font-chinese text-6xl font-semibold text-ui-ink-strong">{word[0]}</p>}
+      {question.kind === 'meaning' && <p className="font-chinese text-6xl font-semibold text-ui-ink-strong">{word[0]}</p>}
       {(question.kind === 'build' || question.kind === 'hanzi') && <p className="text-2xl font-black text-ui-ink-strong">{word[2]}</p>}
-      {question.kind === 'trueFalse' && <p className="text-2xl font-black text-ui-ink-strong">{question.shown[2]}</p>}
 
       {(question.kind === 'meaning' || question.kind === 'hanzi') && (
         <div className="grid w-full max-w-md grid-cols-1 gap-2 sm:grid-cols-2">
           {question.options.map((option, i) => (
             <PracticeChoiceButton key={option[0]} index={i} state={getPracticeChoiceState(picked[0] === i, result !== null, option === word)} onClick={() => answer(i)}>
               {question.kind === 'hanzi' ? <span className="font-chinese text-2xl font-semibold">{option[0]}</span> : option[2]}
-            </PracticeChoiceButton>
-          ))}
-        </div>
-      )}
-
-      {question.kind === 'trueFalse' && (
-        <div className="grid w-full max-w-xs grid-cols-2 gap-2">
-          {['No', 'Yes'].map((label, i) => (
-            <PracticeChoiceButton key={label} compact state={getPracticeChoiceState(picked[0] === i, result !== null, (i === 1) === (question.shown === word))} onClick={() => answer(i)}>
-              {label}
             </PracticeChoiceButton>
           ))}
         </div>

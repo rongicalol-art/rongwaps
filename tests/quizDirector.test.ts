@@ -69,12 +69,13 @@ test('planQuizRound: match beats hold 3-5 cards, others hold one', () => {
   }
 });
 
-test('planQuizRound: every format is open to every word (no stage gating)', () => {
+test('planQuizRound: every mixed format is open to every word; typing pinyin only runs when picked', () => {
   const seen = new Set<string>();
   for (let n = 0; n < 40; n += 1) plan({ seed: `f${n}` }).forEach((beat) => seen.add(beat.format));
-  for (const format of ['pair-match', 'sound-match', 'pick-meaning', 'listen-pick', 'pick-hanzi', 'true-false', 'word-build']) {
+  for (const format of ['pair-match', 'sound-match', 'pick-meaning', 'listen-pick', 'pick-hanzi', 'word-build']) {
     assert.ok(seen.has(format), `${format} never planned`);
   }
+  assert.ok(!seen.has('type-pinyin'), 'Mixed stays tap-only and meaning-focused');
 });
 
 test('planQuizRound: picked types limit the formats; words that fit none get pick-meaning', () => {
@@ -155,21 +156,26 @@ test('planQuizRound: a review pass keeps the picked types and covers every misse
   assert.ok(built.every((b) => b.format === 'word-build'), 'a short review pass still builds words from the loaded deck');
 });
 
-test('planQuizRound: true-false shows the right meaning about half the time', () => {
-  let tf = 0;
-  let truthy = 0;
-  for (let n = 0; n < 60; n += 1) {
-    for (const beat of plan({ seed: `t${n}` })) {
-      if (beat.format !== 'true-false') continue;
-      tf += 1;
-      assert.ok(beat.shown);
-      if (beat.shown.id === beat.cards[0].id) truthy += 1;
-      else assert.notEqual(beat.shown.back, beat.cards[0].back);
-    }
+test('Pinyin quizzes cover words with pinyin and keep the typing format in review', () => {
+  const withoutPinyin = { ...DECK[0], pinyin: '' };
+  const deck = [withoutPinyin, ...DECK.slice(1)];
+  const words = wordsForQuizTypes(deck, ['pinyin']);
+  assert.deepEqual(words, DECK.slice(1));
+  assert.equal(availableQuizTypes([withoutPinyin]).has('pinyin'), false);
+  for (const reviewPass of [false, true]) {
+    const beats = plan({ types: ['pinyin'], reviewPass }, words);
+    assert.deepEqual(allIds(beats).sort(), words.map(({ id }) => id).sort());
+    assert.ok(beats.every((beat) => beat.format === 'type-pinyin' && !beat.options));
   }
-  assert.ok(tf > 40);
-  const ratio = truthy / tf;
-  assert.ok(ratio > 0.35 && ratio < 0.65, `true ratio ${ratio}`);
+});
+
+test('an explicit Pinyin pick appears alongside other formats, even on a short deck', () => {
+  for (const seed of ['a', 'b', 'c']) {
+    const beats = plan({ seed, types: ['meaning', 'pinyin'], firstCardId: DECK[0].id }, DECK.slice(0, 2));
+    assert.deepEqual(beats.map(({ format }) => format), ['pick-meaning', 'type-pinyin']);
+    const soloWord = plan({ seed, types: ['meaning', 'pinyin'], firstCardId: DECK[0].id }, DECK.slice(0, 1));
+    assert.equal(soloWord[0].format, 'type-pinyin');
+  }
 });
 
 test('buildQuizDistractors: no duplicate meaning or hanzi, never the answer', () => {

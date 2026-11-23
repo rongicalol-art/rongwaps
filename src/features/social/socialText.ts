@@ -2,18 +2,18 @@ import type { Activity } from '../../../shared/lobby';
 import type { RaceSelection, RaceType } from '../../../shared/quizRace';
 import { RACE_BOOKS } from '../../../shared/courseAccess';
 import { isNameAllowed } from '../../../shared/nameFilter';
-import { socialColor } from '../../../shared/quizRace';
+import { normalizeQuizTypes, socialColor } from '../../../shared/quizRace';
 import type { Person } from '../../../shared/lobby';
 import type { SavedProfile } from '../../services/friendsService';
 
 const TYPE_LABEL: Record<RaceType, string> = {
-  meaning: 'Pick meaning', listen: 'Listen', hanzi: 'Pick character', match: 'Pair match', 'true-false': 'True or false', build: 'Build the word',
+  meaning: 'Pick meaning', listen: 'Listen', hanzi: 'Pick character', match: 'Pair match', pinyin: 'Pinyin', build: 'Build the word',
 };
 const ACTIVITY_LABEL: Record<Activity, string> = {
   lesson: 'Browsing', cards: 'Flashcards', quiz: 'Quiz', grammar: 'Grammar', reading: 'Reading', writing: 'Writing', race: 'Quiz race', test: 'Mock test',
 };
 
-export const typeLabel = (types: readonly RaceType[]) => (types.length === 0 ? 'Mixed' : types.map((type) => TYPE_LABEL[type]).join(', '));
+export const typeLabel = (types: readonly RaceType[]) => normalizeQuizTypes(types).map((type) => TYPE_LABEL[type]).join(', ') || 'Mixed';
 export const activityLabel = (activity: Activity | null) => (activity ? ACTIVITY_LABEL[activity] : 'Online');
 
 const lessonName = (lesson: number) => (lesson === 0 ? 'Intro' : `L${lesson}`);

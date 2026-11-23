@@ -106,7 +106,7 @@ interface LessonActionsProps {
   className?: string;
 }
 
-/** Start the selected lesson mode; Practice (beside it, plain white so Start stays the one coloured action) opens the practice sheet. */
+/** Start the selected lesson mode; Practice sits quietly underneath so Start owns the full primary row. */
 export function LessonActions({
   onStart,
   label = 'Start',
@@ -116,21 +116,7 @@ export function LessonActions({
   className,
 }: LessonActionsProps) {
   return (
-    <div className={cn('flex items-center gap-3', className)}>
-      {onOpenPracticeHub && (
-        <ActionButton
-          variant="secondary"
-          size="lg"
-          edgeColor={DIVIDER_EDGE}
-          aria-haspopup="dialog"
-          aria-expanded={isPracticeHubOpen}
-          onClick={onOpenPracticeHub}
-          className="shrink-0 gap-2 !px-4 text-lg tracking-normal !border-ui-divider !text-ui-ink-strong"
-        >
-          <PlayfulNavIcon name="practiceHub" className="h-7 w-7" />
-          <span>Practice</span>
-        </ActionButton>
-      )}
+    <div className={cn('flex flex-col items-center gap-1', className)}>
       <ActionButton
         size="lg"
         fullWidth
@@ -143,6 +129,20 @@ export function LessonActions({
         <AppIcon name="play" size={20} />
         <span>{label}</span>
       </ActionButton>
+      {onOpenPracticeHub && (
+        <ActionButton
+          variant="quiet"
+          size="sm"
+          aria-haspopup="dialog"
+          aria-expanded={isPracticeHubOpen}
+          onClick={onOpenPracticeHub}
+          className="mt-0.5 gap-1.5 text-sm normal-case tracking-normal"
+        >
+          <PlayfulNavIcon name="practiceHub" className="h-5 w-5" />
+          <span>Practice</span>
+          <AppIcon name="next" size={14} className="opacity-70" />
+        </ActionButton>
+      )}
     </div>
   );
 }
