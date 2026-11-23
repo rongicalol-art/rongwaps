@@ -132,6 +132,29 @@ test('lesson test scores sync: better best score, newer last run, most-seen vers
   assert.deepEqual(Object.keys(merged).sort(), ['b1l01', 'b1l02', 'b1l03']);
   assert.deepEqual(mergeLessonTests(merged, cloud), {}, 'merging the same cloud copy again changes nothing');
   assert.deepEqual(mergeLessonTests(local, null), {});
+
+  // Per-part bests merge by best ratio, and a real full test always beats a partsOnly record.
+  const partsOnlyLocal = {
+    b1l09: {
+      best: 0, total: 20, bestAt: '2026-11-05T00:00:00.000Z', partsOnly: true,
+      parts: { listening: { best: 7, total: 8, at: '2026-11-05T00:00:00.000Z' } },
+      last: { correct: 7, total: 8, at: '2026-11-05T00:00:00.000Z', listening: [7, 8] as [number, number], reading: [0, 0] as [number, number] },
+      missedLessons: [], seen: { l1: 1 },
+    },
+  };
+  const cloudWithFull = {
+    b1l09: {
+      best: 16, total: 20, bestAt: '2026-11-04T00:00:00.000Z',
+      parts: { listening: { best: 6, total: 8, at: '2026-11-04T00:00:00.000Z' }, reading: { best: 10, total: 12, at: '2026-11-04T00:00:00.000Z' } },
+      last: { correct: 16, total: 20, at: '2026-11-04T00:00:00.000Z', listening: [6, 8] as [number, number], reading: [10, 12] as [number, number] },
+      missedLessons: [], seen: { r1: 1 },
+    },
+  };
+  const mergedParts = mergeLessonTests(partsOnlyLocal, cloudWithFull).lessonTests!.b1l09;
+  assert.equal(mergedParts.best, 16);
+  assert.equal(mergedParts.partsOnly, undefined);
+  assert.equal(mergedParts.parts?.listening?.best, 7, 'kept better local listening best');
+  assert.equal(mergedParts.parts?.reading?.best, 10, 'took cloud reading best');
 });
 
 test('saved words merge three ways: local adds and removals survive a newer cloud list', async () => {

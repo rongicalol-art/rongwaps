@@ -3,6 +3,7 @@ import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import { BIRD_LAST_FRAME, StatTile, formatTime, loadBird } from '../../../features/practice';
 import { AppIcon, IconActionButton, LottiePlayer } from '../../../lib/widgets';
+import type { LessonTestMode } from '../../../types/lessonTest';
 import type { LessonTestScore } from '../../../utils/lesson/lessonTestPlan';
 import { TestDock } from './TestDock';
 
@@ -121,6 +122,7 @@ function Celebration({ headline, success, children, dock, onClose, covered = fal
 
 interface TestResultsProps {
   lessonId: number;
+  mode?: LessonTestMode;
   score: LessonTestScore;
   seconds: number;
   passed: boolean;
@@ -131,12 +133,29 @@ interface TestResultsProps {
   covered?: boolean;
 }
 
+function passedHeadline(lessonId: number, mode: LessonTestMode): string[] {
+  if (mode === 'listening') return ['Listening', 'passed!'];
+  if (mode === 'reading') return ['Reading', 'passed!'];
+  return ['Lesson', String(lessonId), 'passed!'];
+}
+
+function perfectHeadline(mode: LessonTestMode): string[] {
+  if (mode === 'listening') return ['Perfect', 'listening!'];
+  if (mode === 'reading') return ['Perfect', 'reading!'];
+  return ['Perfect', 'test!'];
+}
+
 /** After the test: how it went per part, what to fix, then the Fix round, Scripts & answers, or later (the corner's close). */
-export function TestResults({ lessonId, score, seconds, passed, onFix, onScripts, onLater, covered = false }: TestResultsProps) {
+export function TestResults({ lessonId, mode = 'both', score, seconds, passed, onFix, onScripts, onLater, covered = false }: TestResultsProps) {
   const [rows] = useState(() => focusRows(score, lessonId));
   const misses = score.missed.length;
   const percent = Math.round((score.correct / score.total) * 100);
-  const headline = misses === 0 ? ['Perfect', 'test!'] : passed ? ['Lesson', String(lessonId), 'passed!'] : ['Almost', 'there!'];
+  const headline = misses === 0 ? perfectHeadline(mode) : passed ? passedHeadline(lessonId, mode) : ['Almost', 'there!'];
+  const showListening = mode !== 'reading';
+  const showReading = mode !== 'listening';
+  const tileGrid = showListening && showReading
+    ? 'grid w-full max-w-90 grid-cols-3 gap-3 md:max-w-110 md:gap-4'
+    : 'grid w-full max-w-64 grid-cols-2 gap-3 md:max-w-76 md:gap-4';
   return (
     <Celebration
       headline={headline}
@@ -147,15 +166,19 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onScripts
         ? <TestDock label={`Fix ${misses} mistake${misses === 1 ? '' : 's'}`} onPress={onFix} secondary={{ label: 'Scripts & answers', onPress: onScripts }} paused={covered} />
         : <TestDock label="Continue" onPress={onLater} secondary={{ label: 'Scripts & answers', onPress: onScripts }} paused={covered} />}
     >
-      <div data-tiles className="grid w-full max-w-90 grid-cols-3 gap-3 md:max-w-110 md:gap-4">
-        <StatTile
-          label="Listening" icon="audio" shown={score.listening[0]} format={(value) => `${value}/${score.listening[1]}`}
-          frameClass="border-brand-primary-edge bg-brand-primary" inkClass="text-brand-primary-text"
-        />
-        <StatTile
-          label="Reading" icon="book" shown={score.reading[0]} format={(value) => `${value}/${score.reading[1]}`}
-          frameClass="border-brand-secondary-edge bg-brand-secondary" inkClass="text-brand-secondary-text"
-        />
+      <div data-tiles className={tileGrid}>
+        {showListening && (
+          <StatTile
+            label="Listening" icon="audio" shown={score.listening[0]} format={(value) => `${value}/${score.listening[1]}`}
+            frameClass="border-brand-primary-edge bg-brand-primary" inkClass="text-brand-primary-text"
+          />
+        )}
+        {showReading && (
+          <StatTile
+            label="Reading" icon="book" shown={score.reading[0]} format={(value) => `${value}/${score.reading[1]}`}
+            frameClass="border-brand-secondary-edge bg-brand-secondary" inkClass="text-brand-secondary-text"
+          />
+        )}
         <StatTile
           label="Time" icon="clock" shown={seconds} format={formatTime}
           frameClass="border-palette-purple-edge bg-palette-purple" inkClass="text-palette-purple-text"
@@ -180,6 +203,7 @@ export function TestResults({ lessonId, score, seconds, passed, onFix, onScripts
 
 interface TestDoneProps {
   lessonId: number;
+  mode?: LessonTestMode;
   passed: boolean;
   rescheduled: boolean;
   onScripts: () => void;
@@ -188,10 +212,10 @@ interface TestDoneProps {
 }
 
 /** After the Fix round: back to the lesson, or Scripts & answers. */
-export function TestDone({ lessonId, passed, rescheduled, onScripts, onClose, covered = false }: TestDoneProps) {
+export function TestDone({ lessonId, mode = 'both', passed, rescheduled, onScripts, onClose, covered = false }: TestDoneProps) {
   return (
     <Celebration
-      headline={passed ? ['Lesson', String(lessonId), 'passed!'] : ['Mistakes', 'fixed!']}
+      headline={passed ? passedHeadline(lessonId, mode) : ['Mistakes', 'fixed!']}
       success={passed}
       covered={covered}
       dock={<TestDock label="Back to lesson" onPress={onClose} secondary={{ label: 'Scripts & answers', onPress: onScripts }} paused={covered} />}

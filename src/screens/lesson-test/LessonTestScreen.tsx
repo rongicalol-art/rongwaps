@@ -5,7 +5,7 @@ import { ActionButton } from '../../lib/widgets';
 import { ScreenHeader } from '../../lib/widgets';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
-import type { LessonTestLesson, LessonTestSounds } from '../../types/lessonTest';
+import type { LessonTestLesson, LessonTestMode, LessonTestSounds } from '../../types/lessonTest';
 import { lessonItemIndex, type LessonTestScreen as TestScreen } from '../../utils/lesson/lessonTestPlan';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
@@ -23,6 +23,7 @@ import { itemPictureUrls } from './testPictures';
 interface LessonTestScreenProps {
   lesson: LessonTestLesson;
   sounds: LessonTestSounds;
+  mode?: LessonTestMode;
   onClose: () => void;
 }
 
@@ -39,8 +40,8 @@ function questionNumbers(screens: TestScreen[]) {
  * review honey tone) over every miss, with the answer, the reason and the Script. Scripts & answers (the booklet
  * of the whole test, with the test's own answers) rises over the results and the done screen.
  */
-export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenProps) {
-  const run = useLessonTestRun(lesson);
+export function LessonTestScreen({ lesson, sounds, mode = 'both', onClose }: LessonTestScreenProps) {
+  const run = useLessonTestRun(lesson, mode);
   const script = useAppStore((state) => state.characterPreference);
   const lookingUp = useAppStore((state) => state.dictionaryWord !== null);
   const reduceMotion = useReducedMotion();
@@ -115,6 +116,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
         {run.stage === 'results' ? (
           <TestResults
             lessonId={lesson.lessonId}
+            mode={run.mode}
             score={run.result.score}
             seconds={run.result.seconds}
             passed={run.result.passed}
@@ -124,7 +126,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             covered={bookletOpen}
           />
         ) : (
-          <TestDone lessonId={lesson.lessonId} passed={run.result.passed} rescheduled={run.result.rescheduled} onScripts={openBooklet} onClose={onClose} covered={bookletOpen} />
+          <TestDone lessonId={lesson.lessonId} mode={run.mode} passed={run.result.passed} rescheduled={run.result.rescheduled} onScripts={openBooklet} onClose={onClose} covered={bookletOpen} />
         )}
         <AnimatePresence>
           {bookletOpen && (

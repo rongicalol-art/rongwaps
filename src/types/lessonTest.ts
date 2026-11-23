@@ -7,6 +7,7 @@ import type { SentenceAudio } from './grammarPractice';
  */
 
 export type LessonTestPart = 'listening' | 'reading';
+export type LessonTestMode = 'both' | LessonTestPart;
 export type LessonTestBand = 'A' | 'B';
 
 /** Chinese text with its reading and meaning (shown after the test, in the Fix round). */

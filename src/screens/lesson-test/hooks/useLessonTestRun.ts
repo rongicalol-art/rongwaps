@@ -1,10 +1,12 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
-import type { LessonTestLesson, LessonTestQuestion } from '../../../types/lessonTest';
+import type { LessonTestLesson, LessonTestMode, LessonTestQuestion } from '../../../types/lessonTest';
 import {
   LESSON_TEST_PASS,
-  lessonItemIndex,
+  lessonTestPlanMode,
+  lessonTestQuestionCount,
   lessonTestScreens,
+  planFitsLesson,
   planLessonTest,
   scoreLessonTest,
   type LessonTestScore,
@@ -14,14 +16,14 @@ import type { LessonTestAttempt } from '../../../store/slices/lessonTestSlice';
 
 export type TestStage = 'intro' | 'question' | 'results' | 'fix' | 'done';
 
-/** A fresh run, or the saved one for this lesson (closing the app mid-test resumes it). */
-function startAttempt(lesson: LessonTestLesson): LessonTestAttempt {
+/** A fresh run, or the saved one for this lesson and mode (closing the app mid-test resumes it). */
+function startAttempt(lesson: LessonTestLesson, mode: LessonTestMode): LessonTestAttempt {
   const state = useAppStore.getState();
   const saved = state.lessonTestAttempt;
-  if (saved?.key === lesson.key && saved.plan.items.every((item) => lessonItemIndex(lesson).has(item.itemId))) return saved;
+  if (saved?.key === lesson.key && planFitsLesson(lesson, saved.plan) && lessonTestPlanMode(saved.plan) === mode) return saved;
   const record = state.lessonTests[lesson.key];
   const seed = `${Date.now().toString(36)}${Math.floor(Math.random() * 1e6).toString(36)}`;
-  const plan = planLessonTest(lesson, { seen: record?.seen, missedLessons: record?.missedLessons }, seed);
+  const plan = planLessonTest(lesson, { seen: record?.seen, missedLessons: record?.missedLessons }, seed, mode);
   return { key: lesson.key, plan, answers: {}, screen: 0, startedAt: Date.now() };
 }
 
@@ -46,8 +48,9 @@ function reviewMissedWords(missed: LessonTestQuestion[], sessionId: string): boo
  * themselves; the finished run (plan and answers) is kept for it, also for the Test tab later. The run is saved after
  * every answer.
  */
-export function useLessonTestRun(lesson: LessonTestLesson) {
-  const [attempt, setAttempt] = useState(() => startAttempt(lesson));
+export function useLessonTestRun(lesson: LessonTestLesson, mode: LessonTestMode = 'both') {
+  const [attempt, setAttempt] = useState(() => startAttempt(lesson, mode));
+  const runMode = useMemo(() => lessonTestPlanMode(attempt.plan), [attempt.plan]);
   const screens = useMemo(() => lessonTestScreens(lesson, attempt.plan), [lesson, attempt.plan]);
   const [stage, setStage] = useState<TestStage>(() => (attempt.screen > 0 ? 'question' : 'intro'));
   const [result, setResult] = useState<{ score: LessonTestScore; seconds: number; passed: boolean; rescheduled: boolean } | null>(null);
@@ -82,6 +85,8 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
     const rescheduled = reviewMissedWords(score.missed.map(({ question }) => question), attempt.plan.seed);
     useAppStore.getState().recordLessonTestResult({
       key: lesson.key,
+      mode: runMode,
+      fullTotal: lessonTestQuestionCount(lesson),
       correct: score.correct,
       total: score.total,
       listening: score.listening,
@@ -92,7 +97,7 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
     });
     setResult({ score, seconds, passed: score.correct / score.total >= LESSON_TEST_PASS, rescheduled });
     setStage('results');
-  }, [attempt, lesson]);
+  }, [attempt, lesson, runMode]);
 
   /** Next screen: the reading part starts with its own intro. */
   const next = useCallback(() => {
@@ -117,6 +122,7 @@ export function useLessonTestRun(lesson: LessonTestLesson) {
 
   return {
     lesson,
+    mode: runMode,
     plan: attempt.plan,
     stage,
     setStage,

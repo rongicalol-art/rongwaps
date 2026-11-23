@@ -66,9 +66,9 @@ export function summarizeLessonCompletion(input: {
   return { activityBars: lessonActivityBars(input), isDone: isComplete || isMarkedDone, isMarkedDone };
 }
 
-/** The lesson test counts as passed at the pass mark (its best score). */
-export const isLessonTestPassed = (record?: { best: number; total: number }) =>
-  Boolean(record && record.total > 0 && record.best / record.total >= LESSON_TEST_PASS);
+/** The lesson test counts as passed at the pass mark (its best full-test score). */
+export const isLessonTestPassed = (record?: { best: number; total: number; partsOnly?: boolean }) =>
+  Boolean(record && !record.partsOnly && record.total > 0 && record.best / record.total >= LESSON_TEST_PASS);
 
 /** Union of read readings; per lesson, the newer done mark wins. Returns only what changes locally. */
 export function mergeLessonProgress(
