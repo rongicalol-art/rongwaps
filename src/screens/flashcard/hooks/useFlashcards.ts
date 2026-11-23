@@ -6,13 +6,13 @@ import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 import { isExtraDailyReview } from '../../../utils/srs/reviewSession';
 
 /**
- * Again / Hard / Got it → SRS quality. Again and Hard both keep the card in the
- * review round (only Got it clears it), so both map below the success line;
- * the SRS "difficult" quality 3 stays unused by the UI, as before.
+ * Again / Hard / Got it → SRS quality. Hard is "remembered, with effort" (quality 3 = FSRS Hard), not a
+ * lapse: the word keeps most of its memory strength. In the session Hard still keeps the card in the
+ * review round (only Got it clears it), and the word only counts as known once it is a Got it.
  */
 export function levelToQuality(level: number): CardSessionQuality {
   if (level === 1) return 1;
-  if (level === 2) return 2;
+  if (level === 2) return 3;
   if (level === 3) return 4;
   return 5;
 }
@@ -111,10 +111,10 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     session.reviewUnlearned();
   }, [session]);
 
-  // Cards rated Again this round (SRS quality 1-2), for the round-done chips.
+  // Cards rated Again or Hard this round (SRS quality 1-3), for the round-done chips.
   const missedCards = Array.from(new Map(activeCards.filter((card) => {
     const quality = session.sessionResults[card.id];
-    return quality === 1 || quality === 2;
+    return quality !== undefined && quality <= 3;
   }).map((card) => [card.id, card])).values());
 
   return {

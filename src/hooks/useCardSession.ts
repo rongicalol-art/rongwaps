@@ -276,7 +276,8 @@ export function useCardSession(
       return;
     }
     if (!wasMissed) setSessionResults(previous => ({ ...previous, [card.id]: quality }));
-    if (quality <= 2) {
+    // Below Got it (flashcards' Hard is 3) the card stays in this round.
+    if (quality <= 3) {
       firstAttemptMissedRef.current.add(card.id);
       if (repeatMistakes !== 'off') {
         const next = queueMissedItem(activeCardsRef.current, card, currentIndexRef.current, repeatMistakes);
@@ -384,7 +385,7 @@ export function useCardSession(
     practiceOnlyRef.current = false;
     firstAttemptMissedRef.current.clear();
     const unlearnedIds = Object.entries(sessionResults)
-      .filter(([, quality]) => quality === 1 || quality === 2)
+      .filter(([, quality]) => quality <= 3)
       .map(([id]) => id);
 
     const unlearnedCards = cards.filter((card) => unlearnedIds.includes(card.id));
@@ -405,8 +406,8 @@ export function useCardSession(
     onAnswerStateResetRef.current();
   }, [bumpResetNonce, cards, resetAll, sessionResults]);
 
-  const unlearnedCount = Object.values(sessionResults).filter((quality) => quality === 1 || quality === 2).length;
-  const learnedCount = Object.values(sessionResults).filter((quality) => quality > 2).length;
+  const unlearnedCount = Object.values(sessionResults).filter((quality) => quality <= 3).length;
+  const learnedCount = Object.values(sessionResults).filter((quality) => quality > 3).length;
 
   const progressInfo = computeCardSessionProgress(
     currentIndex,
