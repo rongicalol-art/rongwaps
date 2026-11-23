@@ -3,7 +3,7 @@ import test from 'node:test';
 import { build } from 'esbuild';
 import { newRaceRoom, enterRace, type RaceSnapshot } from '../../shared/quizRace';
 
-type Handlers = { onState: (state: RaceSnapshot, userId: string) => void; onStatus: (status: string) => void; onError: (message: string) => void };
+type Handlers = { onState: (state: RaceSnapshot, userId: string) => void; onStatus: (status: string) => void; onError: (message: string) => void; onChat?: (message: import('../../shared/lobby').PartyChatServerMessage) => void };
 type Handle = { code: string; send: (frame: unknown) => boolean; close: () => void };
 const snapshot = (round = 1): RaceSnapshot => {
   const state = newRaceRoom('ABCDEF', { book: 1, lessons: { 1: [1] }, types: [] }, true, 's', Date.now());
@@ -12,28 +12,29 @@ const snapshot = (round = 1): RaceSnapshot => {
 };
 
 async function controller() {
-  let state: Record<string, unknown> = { currentUser: { id: 'me' }, race: null, racePlaying: false, socialStatus: 'live', raceStatus: 'off', racePending: false };
+  let state: Record<string, unknown> = { currentUser: { id: 'me' }, socialMe: 'me', race: null, racePlaying: false, socialStatus: 'live', raceStatus: 'off', racePending: false, socialMuted: false, socialPanel: null, socialReadingParty: null, socialPartyChat: null, socialMentionToast: null, socialBlocks: null };
   const listeners: Array<(state: Record<string, unknown>, previous: Record<string, unknown>) => void> = [];
   const calls: Array<{ handlers: Handlers; resolve: (handle: Handle) => void; reject: (error: Error) => void; signal: AbortSignal }> = [];
   const invited: unknown[] = [];
+  const markedRooms: string[] = [];
   const leaves: string[] = [];
   const errors: string[] = [];
   const update = (patch: object) => { const previous = state; state = { ...state, ...patch }; listeners.forEach(fn => fn(state, previous)); };
   state.setSocial = update; state.showFeedbackToast = (message: string) => errors.push(message);
   const store = { getState: () => state, subscribe: (fn: typeof listeners[number]) => { listeners.push(fn); } };
-  const harness = { store, connect: (_identity: unknown, _target: unknown, handlers: Handlers, signal: AbortSignal) => new Promise<Handle>((resolve, reject) => { calls.push({ handlers, resolve, reject, signal }); }), leaves, invited };
-  Object.assign(globalThis, { __socialTest: harness });
+  const harness = { store, connect: (_identity: unknown, _target: unknown, handlers: Handlers, signal: AbortSignal) => new Promise<Handle>((resolve, reject) => { calls.push({ handlers, resolve, reject, signal }); }), leaves, invited, markedRooms };
+  Object.assign(globalThis, { __socialTest: harness, document: { visibilityState: 'visible' } });
   const result = await build({ entryPoints: ['src/features/social/raceController.ts'], bundle: true, format: 'esm', platform: 'node', write: false,
     plugins: [{ name: 'synthetic-social', setup(plugin) {
       plugin.onResolve({ filter: /services\/socialService|store\/useAppStore|\.\/lobbyController/ }, args => ({ path: args.path, namespace: 'synthetic' }));
       plugin.onLoad({ filter: /.*/, namespace: 'synthetic' }, args => ({ contents: args.path.includes('socialService')
         ? 'export const connectRace=(...args)=>globalThis.__socialTest.connect(...args); export const leaveRaceRoom=async code=>{globalThis.__socialTest.leaves.push(code)};'
         : args.path.includes('useAppStore') ? 'export const useAppStore=globalThis.__socialTest.store;'
-          : 'export const lobby={invite:(to,code)=>{globalThis.__socialTest.invited.push({to,code});return true}};' }));
+          : 'export const PARTY_CHAT_KEY="pc:"; export const partyChatOnScreen=(s,code)=>document.visibilityState==="visible"&&s.race?.code===code&&(s.socialPanel?.kind==="partyChat"||(!s.socialPanel&&!s.racePlaying&&s.socialReadingParty===code)); export const lobby={invite:(to,code)=>{globalThis.__socialTest.invited.push({to,code});return true},markPartyMentionsRead:code=>{globalThis.__socialTest.markedRooms.push(code)}};' }));
     } }],
   });
   const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text + `\n// ${Math.random()}`).toString('base64')}`) as typeof import('../../src/features/social/raceController');
-  return { api, calls, invited, leaves, errors, state: () => state, update };
+  return { api, calls, invited, markedRooms, leaves, errors, state: () => state, update };
 }
 const identity = { name: 'Me', color: 'blue' };
 const selection = { book: 1, lessons: { 1: [1] }, types: [] };
@@ -152,4 +153,45 @@ test('Start is never blocked by a quiz choice the server does not echo, and a re
   h.calls[0].handlers.onError('Pick at least one lesson part.');
   assert.deepEqual((h.state().race as RaceSnapshot).selection,initial.selection);
   h.api.leaveRace();
+});
+
+test('party chat tracks unread lines, pops a toast when not reading, and clears on read or leave', async () => {
+  const h = await controller();
+  const opening = h.api.joinRace(identity, 'ABCDEF'); await flush();
+  h.calls[0].resolve({ code: 'ABCDEF', send: () => true, close: () => {} }); await opening;
+  h.calls[0].handlers.onStatus('live'); h.calls[0].handlers.onState(snapshot(), 'me');
+  const line = (id: number, u: string, t: string) => ({ id, l: 0, u, n: u, c: 'jade' as const, t, ts: Date.now() + id });
+
+  // History already in the room counts others' lines as unread without popping a toast.
+  h.calls[0].handlers.onChat?.({ type: 'chat-history', code: 'ABCDEF', messages: [line(1, 'friend', 'wait for me'), line(2, 'me', 'ok')] });
+  assert.equal((h.state().socialPartyChat as { unread: number }).unread, 1);
+  assert.equal(h.state().socialMentionToast, null);
+
+  // Incoming line while on Party tab increments unread and raises a party chat toast.
+  h.calls[0].handlers.onChat?.({ type: 'chat-message', code: 'ABCDEF', message: line(3, 'friend', 'ready?') });
+  assert.equal((h.state().socialPartyChat as { unread: number }).unread, 2);
+  assert.equal((h.state().socialMentionToast as { key: string; room?: string }).key, 'pc:ABCDEF:3');
+
+  // Opening Party chat clears unread and marks room mentions read.
+  h.update({ socialReadingParty: 'ABCDEF' });
+  h.api.markPartyChatRead('ABCDEF');
+  assert.equal((h.state().socialPartyChat as { unread: number; read: number }).unread, 0);
+  assert.equal((h.state().socialPartyChat as { unread: number; read: number }).read, 3);
+  assert.deepEqual(h.markedRooms, ['ABCDEF']);
+
+  // Lines arriving while viewing party chat stay read and raise no toast.
+  h.update({ socialMentionToast: null });
+  h.calls[0].handlers.onChat?.({ type: 'chat-message', code: 'ABCDEF', message: line(4, 'friend', 'go!') });
+  assert.equal((h.state().socialPartyChat as { unread: number; read: number }).unread, 0);
+  assert.equal((h.state().socialPartyChat as { unread: number; read: number }).read, 4);
+  assert.equal(h.state().socialMentionToast, null);
+
+  // Leaving clears party chat, reading state, and any toast for that room.
+  h.update({ socialReadingParty: null });
+  h.calls[0].handlers.onChat?.({ type: 'chat-message', code: 'ABCDEF', message: line(5, 'friend', 'gg') });
+  assert.ok(h.state().socialMentionToast);
+  h.api.leaveRace();
+  assert.equal(h.state().socialPartyChat, null);
+  assert.equal(h.state().socialReadingParty, null);
+  assert.equal(h.state().socialMentionToast, null);
 });

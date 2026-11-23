@@ -75,7 +75,8 @@ export function ChatList() {
   const online = useMemo(() => new Set(onlineIds), [onlineIds]);
   useEffect(() => { void loadFriends(); void loadInbox(); }, []);
   const mutual = useMemo(() => (friends ?? []).filter(person => person.iAdded && person.addedMe), [friends]);
-  const people = useMemo(() => new Map((friends ?? []).map(person => [person.u, person])), [friends]);
+  const people = useMemo(() => new Map(mutual.map(person => [person.u, person])), [mutual]);
+  const visibleInbox = useMemo(() => inbox.filter(row => people.has(row.u)), [inbox, people]);
   useEffect(() => { if (friends?.length) void loadSaved(friends.map(person => person.u)); }, [friends]);
   const photo = (u: string) => livePeople.find(person => person.u === u)?.i ?? saved[u]?.card?.i;
   const last = [...lines].reverse().find(line => line.t);
@@ -102,10 +103,9 @@ export function ChatList() {
             <ActionButton size="sm" onClick={() => { void addFriend(person); }}>Accept</ActionButton>
           </span>} />
       ))}
-      {(inbox.length > 0 || quiet.length > 0) && <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Friends</h3>}
-      {inbox.map(row => {
-        const person = people.get(row.u);
-        if (!person) return null;
+      {(visibleInbox.length > 0 || quiet.length > 0) && <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">Friends</h3>}
+      {visibleInbox.map(row => {
+        const person = people.get(row.u)!;
         const unread = muted ? 0 : row.unread;
         return <Row key={row.u} onOpen={() => open(row.u)} fresh={unread > 0}
           face={face({ ...person, i: photo(row.u) }, online.has(row.u))} name={person.n}
