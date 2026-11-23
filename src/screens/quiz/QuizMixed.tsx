@@ -121,7 +121,6 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
       word={single && currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: simpleDefinitions ? currentCard.simple : undefined } : undefined}
       isCheckDisabled={needsSubmit ? !submitReady : status === 'idle'}
       onCheck={needsSubmit && status === 'idle' ? () => submitRef.current?.() : undefined}
-      popWordOnAutoAdvance={isPinyin}
       rise={Boolean(types)}
       hideBreakdown={isMatch}
       isMatchPair={isMatch}

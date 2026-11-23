@@ -117,8 +117,6 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
   hideBreakdown?: boolean;
   /** Whether the current question is a tap-to-pair exercise. */
   isMatchPair?: boolean;
-  /** A right answer that auto-advances pops its word up where the bar lives (typing: the meaning is never on screen). */
-  popWordOnAutoAdvance?: boolean;
   /** Keep the feedback bar up (no auto-advance) while a follow-up is open. */
   holdAutoAdvance?: boolean;
   /** The mode lands the review intro's ghost card on its prompt (choices); otherwise the ghost just fades. */
@@ -137,7 +135,7 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
 
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
-  session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, popWordOnAutoAdvance, children,
+  session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, children,
   activeBookId, onEnd, onContinue, sessionStats, daily = false, challengeTypes = null,
 }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
@@ -405,9 +403,9 @@ export const QuizShell: React.FC<QuizShellProps> = ({
       )}
 
       <QuizWordPop
-        word={popWordOnAutoAdvance && autoAdvance && word ? word : null}
+        word={autoAdvance ? word ?? null : null}
         nonce={`${reviewPass}:${currentIndex}:${resetNonce}`}
-        clear={status === 'wrong'}
+        clear={(status !== 'idle' && !autoAdvance) || Boolean(onCheck && !isCheckDisabled)}
       />
 
       {!preparation && <FeedbackBottomBar

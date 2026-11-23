@@ -81,7 +81,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 
 - **Mixed quiz tests meaning through five tap formats.** Pick the meaning, listen and pick, pick the character, match pairs, and build the word. Pinyin typing replaces True or false in the picker and runs only when selected, on its own or alongside other types.
 - **Fair:** every question type is open to every word. Only the data limits it: listening needs audio, and build-the-word needs 2-4 characters.
-- **Fast modes never pause for feedback.** In a Pinyin quiz question a right answer moves on at once; its word and meaning pop up as a small tile where the feedback bar lives and slide away on their own. A hold before the next word broke the flow, and a quiet line carried over above the input looked out of place.
+- **Fast modes never pause for feedback.** Pinyin moves on at once. Whenever a correct single-word quiz answer skips the feedback bar, its word and meaning pop up in a small tile and slide away on their own. Pair matches already show the word and meaning on the matched tiles. A hold before the next word broke the flow, and a quiet line above the input looked out of place.
 - **The learner picks the quiz:** Mixed (default, recommended) or any set of single types, before every vocab quiz. Only types the deck can use are offered; words that fit none of the picked types are left out.
 - **Full coverage:** every word in the quiz is asked exactly once per pass. Misses come back in the review round, in the same picked types.
 - **Audio is the high-quality recording.** Avoid the robotic text-to-speech voice wherever a recording exists. Play the word after every answer.

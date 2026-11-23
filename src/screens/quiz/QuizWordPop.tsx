@@ -26,7 +26,7 @@ export const QuizWordPop: React.FC<{ word: QuizPopWord | null; nonce: string; cl
     setPoppedNonce(nonce);
     setShown({ word, nonce });
   }
-  // The feedback bar takes the same place (a wrong answer), so the pop leaves first.
+  // A visible feedback bar or Check button takes the same space.
   if (clear && shown) setShown(null);
 
   useEffect(() => {
