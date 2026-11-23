@@ -1,0 +1,8 @@
+{
+  "fixes": [],
+  "newCards": [
+    {"id": "B3L09-1-35", "after": "B3L09-1-06", "traditional": "解釋", "simplified": "解释", "pinyin": "jiěshì", "pos": "V", "meaning": "to explain", "reason": "book 9-1 entry 7 (p.231, scan page_215): printed in the Lesson 9 word list; no card."},
+    {"id": "B3L09-1-36", "after": "B3L09-1-08", "traditional": "但", "simplified": "但", "pinyin": "dàn", "pos": "Conj", "meaning": "however, yet, but", "reason": "book 9-1 entry 10 (p.232, scan page_216): printed in the Lesson 9 word list; no card (Book 1 has 但是, a different word)."},
+    {"id": "B3L09-1-37", "after": "B3L09-1-29", "traditional": "理想", "simplified": "理想", "pinyin": "lǐxiǎng", "pos": "Vs", "meaning": "ideal", "reason": "book 9-1 entry 32 (p.234, scan page_218): 理想 as Vs ('an ideal school'); Book 2 L15 has only the noun (B2L15-2-10)."}
+  ]
+}

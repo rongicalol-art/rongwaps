@@ -22464,7 +22464,7 @@
       "lessonId": 9,
       "partId": 1,
       "sourceCardId": "B3L09-1-29",
-      "traditional": "這個手錶你已經戴了快二十年了吧？他對你有甚麼特殊的意義呢？",
+      "traditional": "這個手錶你已經戴了快二十年了吧？它對你有什麼特殊的意義呢？",
       "audio": {
         "voice": "book",
         "file": "B3-09-1-2.mp3",
@@ -44145,6 +44145,75 @@
         "driveFileId": "1EreJjCS3xpAMFmXAj_Q4U66jz9EHXJjk"
       },
       "issue": "alignment confidence 0.154 is below 0.64"
+    },
+    "B3L09-1-35-E01": {
+      "bookId": 3,
+      "lessonId": 9,
+      "partId": 1,
+      "sourceCardId": "B3L09-1-35",
+      "traditional": "朋友跟我解釋了華人不能送傘、送鐘的原因後，我才明白在臺灣送禮是個很大的學問。",
+      "audio": {
+        "voice": "book",
+        "file": "B3-09-1-2.mp3",
+        "start": 96.17,
+        "end": 105.27
+      },
+      "alignment": {
+        "score": 0.051,
+        "pinyinSource": "textbook",
+        "alignedSyllables": 35,
+        "syllableCount": 35,
+        "track": "B3-09-1-2.mp3",
+        "trackSha256": "4fb7f74ae4dc855b791e8c9c74f616dc2540d1e9b6f217b30acba1be938eaf58",
+        "driveFileId": "1xfJsqjPeviFrUcNDR4GP5DDKN9yw9ba0",
+        "locatedBy": "asr"
+      }
+    },
+    "B3L09-1-36-E01": {
+      "bookId": 3,
+      "lessonId": 9,
+      "partId": 1,
+      "sourceCardId": "B3L09-1-36",
+      "traditional": "氣象預報說這次颱風的影響範圍不大，但民眾出門時還是得小心。",
+      "audio": {
+        "voice": "book",
+        "file": "B3-09-1-2.mp3",
+        "start": 137.76,
+        "end": 144.71
+      },
+      "alignment": {
+        "score": 0.22,
+        "pinyinSource": "textbook",
+        "alignedSyllables": 27,
+        "syllableCount": 27,
+        "track": "B3-09-1-2.mp3",
+        "trackSha256": "4fb7f74ae4dc855b791e8c9c74f616dc2540d1e9b6f217b30acba1be938eaf58",
+        "driveFileId": "1xfJsqjPeviFrUcNDR4GP5DDKN9yw9ba0",
+        "locatedBy": "asr"
+      }
+    },
+    "B3L09-1-37-E01": {
+      "bookId": 3,
+      "lessonId": 9,
+      "partId": 1,
+      "sourceCardId": "B3L09-1-37",
+      "traditional": "姐姐很認真地準備大學的升學考試，終於考上了理想的學校。",
+      "audio": {
+        "voice": "book",
+        "file": "B3-09-1-2.mp3",
+        "start": 411.79,
+        "end": 417.96
+      },
+      "alignment": {
+        "score": 0.13,
+        "pinyinSource": "textbook",
+        "alignedSyllables": 25,
+        "syllableCount": 25,
+        "track": "B3-09-1-2.mp3",
+        "trackSha256": "4fb7f74ae4dc855b791e8c9c74f616dc2540d1e9b6f217b30acba1be938eaf58",
+        "driveFileId": "1xfJsqjPeviFrUcNDR4GP5DDKN9yw9ba0",
+        "locatedBy": "asr"
+      }
     }
   }
 }

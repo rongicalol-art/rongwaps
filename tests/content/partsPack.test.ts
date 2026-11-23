@@ -90,7 +90,7 @@ test('Parts pack: scoped to the learner pool, ordered sound-alikes first then by
 
 test('Learner pool: course ∪ levels, course ranked first, no simplified spellings', () => {
   const pool = loadLearnerPool(process.cwd());
-  assert.equal([...pool.values()].filter((rank) => rank.tier === 'course').length, 1677);
+  assert.equal([...pool.values()].filter((rank) => rank.tier === 'course').length, 1678);
   // 从 and 于 are listed in levels.json (HSK gap fill) as-is, so they are in the pool by rule.
   for (const char of ['个', '们', '为']) assert.ok(!pool.has(char), `${char} must not be in the pool`);
   for (const char of ['駕', '欲', '致', '台']) assert.ok(pool.has(char), `${char} must be in the pool`);
