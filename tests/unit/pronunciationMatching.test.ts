@@ -51,7 +51,7 @@ test('custom and starred cards reject conflicting or missing pinyin', () => {
   assert.equal(cards[0].audio, '');
 });
 
-test('all 4,064 textbook cards retain recording names and explicit missing-audio markers', () => {
+test('all 4,067 textbook cards retain recording names and explicit missing-audio markers', () => {
   let count = 0;
   for (let book = 1; book <= 4; book++) {
     const pack = JSON.parse(readFileSync(`public/data/vocabulary/book-${book}.json`, 'utf8'));
@@ -61,5 +61,5 @@ test('all 4,064 textbook cards retain recording names and explicit missing-audio
       count++;
     }
   }
-  assert.equal(count, 4064);
+  assert.equal(count, 4067);
 });
