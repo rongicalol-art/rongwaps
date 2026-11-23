@@ -1,0 +1,2658 @@
+{
+  "schemaVersion": 1,
+  "key": "b3l10",
+  "bookId": 3,
+  "lessonId": 10,
+  "band": "B",
+  "allowWords": [
+    "臺北",
+    "小東",
+    "晚餐",
+    "午餐",
+    "全家",
+    "健檢",
+    "我媽",
+    "你媽",
+    "媽",
+    "牙醫",
+    "游"
+  ],
+  "slots": [
+    {
+      "id": "dialogue-just-that",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l10-dialogue-just-that-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "學校的游泳課下星期就開始了，你不是很想學嗎？報名了沒有？",
+              "simplified": "学校的游泳课下星期就开始了，你不是很想学吗？报名了没有？",
+              "pinyin": "Xuéxiào de yóuyǒng kè xià xīngqí jiù kāishǐ le, nǐ bú shì hěn xiǎng xué ma? Bàomíng le méiyǒu?",
+              "english": "The school swimming class starts next week. Didn't you really want to learn? Have you signed up?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我是很想學，只不過上課時間是早上七點，我每天打工到半夜，恐怕起不來。",
+              "simplified": "我是很想学，只不过上课时间是早上七点，我每天打工到半夜，恐怕起不来。",
+              "pinyin": "Wǒ shì hěn xiǎng xué, zhǐbúguò shàngkè shíjiān shì zǎoshàng qī diǎn, wǒ měi tiān dǎgōng dào bànyè, kǒngpà qǐ bù lái.",
+              "english": "I do want to learn; it's just that class is at seven in the morning, and I work until midnight every day. I'm afraid I couldn't get up."
+            },
+            {
+              "speaker": "F",
+              "traditional": "晚上不是也有一班嗎？",
+              "simplified": "晚上不是也有一班吗？",
+              "pinyin": "Wǎnshàng bú shì yě yǒu yì bān ma?",
+              "english": "Isn't there an evening class too?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我昨天去問了，晚上的班早就滿了。我想等下學期再說吧。",
+              "simplified": "我昨天去问了，晚上的班早就满了。我想等下学期再说吧。",
+              "pinyin": "Wǒ zuótiān qù wèn le, wǎnshàng de bān zǎo jiù mǎn le. Wǒ xiǎng děng xià xuéqí zài shuō ba.",
+              "english": "I went and asked yesterday. The evening class filled up long ago. I think I'll wait until next semester."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-dialogue-just-that-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的為什麼這個學期不上游泳課？",
+                "simplified": "男的为什么这个学期不上游泳课？",
+                "pinyin": "Nán de wèishénme zhège xuéqí bú shàng yóuyǒng kè?",
+                "english": "Why isn't the man taking the swimming class this semester?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "早上起不來，晚上的又滿了",
+                  "simplified": "早上起不来，晚上的又满了",
+                  "pinyin": "Zǎoshàng qǐ bù lái, wǎnshàng de yòu mǎn le.",
+                  "english": "He can't get up for the morning one, and the evening one is full."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "早上和晚上的班都滿了",
+                  "simplified": "早上和晚上的班都满了",
+                  "pinyin": "Zǎoshàng hé wǎnshàng de bān dōu mǎn le.",
+                  "english": "The morning and evening classes are both full."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "晚上的班要下學期才開",
+                  "simplified": "晚上的班要下学期才开",
+                  "pinyin": "Wǎnshàng de bān yào xià xuéqí cái kāi.",
+                  "english": "The evening class doesn't start until next semester."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他其實不太想學游泳",
+                  "simplified": "他其实不太想学游泳",
+                  "pinyin": "Tā qíshí bú tài xiǎng xué yóuyǒng.",
+                  "english": "He doesn't really want to learn to swim."
+                }
+              ],
+              "key": 0,
+              "why": "只不過 adds his problem with the morning class (he works until midnight, so 起不來), and his last turn says the evening class 早就滿了. Only the evening class is full, next semester is when he will try again, and 我是很想學 rules out the last.",
+              "focus": {
+                "zh": "只不過",
+                "en": "it's just that…"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L13-1-21",
+                "B3L09-2-14"
+              ],
+              "grammarIds": [
+                "B3L10-G02-P263"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-dialogue-just-that-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你上個月不是買了一台新的腳踏車嗎？怎麼還每天搭公車上班？",
+              "simplified": "你上个月不是买了一台新的脚踏车吗？怎么还每天搭公车上班？",
+              "pinyin": "Nǐ shàng ge yuè bú shì mǎi le yì tái xīn de jiǎotàchē ma? Zěnme hái měi tiān dā gōngchē shàngbān?",
+              "english": "Didn't you buy a new bike last month? Why are you still taking the bus to work every day?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "車騎起來很舒服，只不過我們公司附近沒有地方停，停在路邊又怕被偷。",
+              "simplified": "车骑起来很舒服，只不过我们公司附近没有地方停，停在路边又怕被偷。",
+              "pinyin": "Chē qí qǐlái hěn shūfú, zhǐbúguò wǒmen gōngsī fùjìn méiyǒu dìfāng tíng, tíng zài lùbiān yòu pà bèi tōu.",
+              "english": "It's very comfortable to ride; it's just that there's nowhere to park near my office, and if I leave it by the road I'm afraid it'll be stolen."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們公司樓下就可以停，一個月三百塊。你們公司就在對面，停我們這裡吧。",
+              "simplified": "我们公司楼下就可以停，一个月三百块。你们公司就在对面，停我们这里吧。",
+              "pinyin": "Wǒmen gōngsī lóuxià jiù kěyǐ tíng, yí ge yuè sānbǎi kuài. Nǐmen gōngsī jiù zài duìmiàn, tíng wǒmen zhèlǐ ba.",
+              "english": "You can park downstairs at our office for three hundred a month. Your office is just across the road, so park at ours."
+            },
+            {
+              "speaker": "M",
+              "traditional": "真的嗎？那我明天就騎車來，下班請妳喝咖啡。",
+              "simplified": "真的吗？那我明天就骑车来，下班请你喝咖啡。",
+              "pinyin": "Zhēn de ma? Nà wǒ míngtiān jiù qí chē lái, xiàbān qǐng nǐ hē kāfēi.",
+              "english": "Really? Then I'll ride in tomorrow, and buy you a coffee after work."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-dialogue-just-that-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的說完以後，男的為什麼決定明天騎車來？",
+                "simplified": "女的说完以后，男的为什么决定明天骑车来？",
+                "pinyin": "Nǚ de shuō wán yǐhòu, nán de wèishénme juédìng míngtiān qí chē lái?",
+                "english": "After the woman speaks, why does the man decide to ride in tomorrow?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他公司樓下可以停了",
+                  "simplified": "他公司楼下可以停了",
+                  "pinyin": "Tā gōngsī lóuxià kěyǐ tíng le.",
+                  "english": "He can now park under his own office."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的要幫他付三百塊",
+                  "simplified": "女的要帮他付三百块",
+                  "pinyin": "Nǚ de yào bāng tā fù sānbǎi kuài.",
+                  "english": "The woman will pay the three hundred for him."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的下班要請他喝咖啡",
+                  "simplified": "女的下班要请他喝咖啡",
+                  "pinyin": "Nǚ de xiàbān yào qǐng tā hē kāfēi.",
+                  "english": "The woman will buy him a coffee after work."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "可以把車停在女的公司樓下",
+                  "simplified": "可以把车停在女的公司楼下",
+                  "pinyin": "Kěyǐ bǎ chē tíng zài nǚ de gōngsī lóuxià.",
+                  "english": "He can park the bike downstairs at the woman's office."
+                }
+              ],
+              "key": 3,
+              "why": "After 只不過 comes his worry: nowhere to park near his office, and a bike by the road may be stolen. Her building across the road solves both, so he will ride. It is her building, not his; the 300 a month is the fee, and nothing says she pays it; and he is the one buying the coffee.",
+              "focus": {
+                "zh": "只不過；改變的計畫",
+                "en": "it's just that…; a changed plan"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L05-1-05",
+                "B1L06-2-15",
+                "B1L06-2-16",
+                "B2L05-2-17"
+              ],
+              "grammarIds": [
+                "B3L10-G02-P263"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-cause",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l10-dialogue-cause-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳昨天怎麼沒來上課？老師還問妳去哪裡了。",
+              "simplified": "你昨天怎么没来上课？老师还问你去哪里了。",
+              "pinyin": "Nǐ zuótiān zěnme méi lái shàngkè? Lǎoshī hái wèn nǐ qù nǎlǐ le.",
+              "english": "Why weren't you in class yesterday? The teacher even asked where you were."
+            },
+            {
+              "speaker": "F",
+              "traditional": "別提了。前天晚上我室友買了一大包炸雞回來，我吃了好幾塊，結果半夜肚子痛得不得了。",
+              "simplified": "别提了。前天晚上我室友买了一大包炸鸡回来，我吃了好几块，结果半夜肚子痛得不得了。",
+              "pinyin": "Bié tí le. Qiántiān wǎnshàng wǒ shìyǒu mǎi le yí dà bāo zhájī huílái, wǒ chī le hǎojǐ kuài, jiéguǒ bànyè dùzi tòng de bùdéliǎo.",
+              "english": "Don't ask. The night before last my roommate brought back a big bag of fried chicken. I ate several pieces, and in the middle of the night my stomach hurt terribly."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那妳室友呢？她也不舒服嗎？",
+              "simplified": "那你室友呢？她也不舒服吗？",
+              "pinyin": "Nà nǐ shìyǒu ne? Tā yě bù shūfú ma?",
+              "english": "And your roommate? Was she sick too?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "她說她最近不吃太油的東西，一塊都沒吃，都給我吃了。害我吃太多，痛了一整天，連下床都沒辦法。",
+              "simplified": "她说她最近不吃太油的东西，一块都没吃，都给我吃了。害我吃太多，痛了一整天，连下床都没办法。",
+              "pinyin": "Tā shuō tā zuìjìn bù chī tài yóu de dōngxi, yí kuài dōu méi chī, dōu gěi wǒ chī le. Hài wǒ chī tài duō, tòng le yì zhěng tiān, lián xià chuáng dōu méi bànfǎ.",
+              "english": "She says she's off oily food lately, so she didn't eat a single piece and gave it all to me. Because of her I ate too much, and I was in pain all day; I couldn't even get out of bed."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-dialogue-cause-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的為什麼沒去上課？",
+                "simplified": "女的为什么没去上课？",
+                "pinyin": "Nǚ de wèishénme méi qù shàngkè?",
+                "english": "Why did the woman miss class?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "室友病了，她得在家照顧",
+                  "simplified": "室友病了，她得在家照顾",
+                  "pinyin": "Shìyǒu bìng le, tā děi zài jiā zhàogù.",
+                  "english": "Her roommate was ill and she had to look after her."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟室友一起吃壞了肚子",
+                  "simplified": "跟室友一起吃坏了肚子",
+                  "pinyin": "Gēn shìyǒu yìqǐ chī huài le dùzi.",
+                  "english": "She and her roommate both got an upset stomach."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "吃了室友買的東西，身體不舒服",
+                  "simplified": "吃了室友买的东西，身体不舒服",
+                  "pinyin": "Chī le shìyǒu mǎi de dōngxi, shēntǐ bù shūfú.",
+                  "english": "She ate what her roommate bought and felt ill."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "半夜吃東西，早上起不來",
+                  "simplified": "半夜吃东西，早上起不来",
+                  "pinyin": "Bànyè chī dōngxi, zǎoshàng qǐ bù lái.",
+                  "english": "She ate at midnight and couldn't get up."
+                }
+              ],
+              "key": 2,
+              "why": "The fried chicken her roommate bought gave her the stomach ache, and 害我吃太多，痛了一整天 says the roommate left her eating it all, which kept her in bed all day. The roommate ate none (一塊都沒吃), so she was not ill, and the chicken came the evening before; the pain is what kept her home.",
+              "focus": {
+                "zh": "害",
+                "en": "to cause (something bad)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-1-18",
+                "B2L03-2-01",
+                "B2L10-1-35"
+              ],
+              "grammarIds": [
+                "B3L10-G03-P265"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-dialogue-cause-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你的眼睛怎麼這麼紅？昨天沒睡好嗎？",
+              "simplified": "你的眼睛怎么这么红？昨天没睡好吗？",
+              "pinyin": "Nǐ de yǎnjīng zěnme zhème hóng? Zuótiān méi shuì hǎo ma?",
+              "english": "Why are your eyes so red? Didn't you sleep well?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "樓上鄰居家的狗叫了一整夜，害我到早上都睡不著。",
+              "simplified": "楼上邻居家的狗叫了一整夜，害我到早上都睡不着。",
+              "pinyin": "Lóushàng línjū jiā de gǒu jiào le yì zhěng yè, hài wǒ dào zǎoshàng dōu shuì bù zháo.",
+              "english": "The dog upstairs at my neighbour's barked all night. It kept me awake till morning."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那隻狗平常很安靜啊。怎麼了？",
+              "simplified": "那只狗平常很安静啊。怎么了？",
+              "pinyin": "Nà zhī gǒu píngcháng hěn ānjìng a. Zěnme le?",
+              "english": "That dog is usually so quiet. What happened?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我早上去問了。鄰居說他昨天工作到半夜，狗自己在家很害怕，才一直叫。他說以後會早點回家。",
+              "simplified": "我早上去问了。邻居说他昨天工作到半夜，狗自己在家很害怕，才一直叫。他说以后会早点回家。",
+              "pinyin": "Wǒ zǎoshàng qù wèn le. Línjū shuō tā zuótiān gōngzuò dào bànyè, gǒu zìjǐ zài jiā hěn hàipà, cái yìzhí jiào. Tā shuō yǐhòu huì zǎo diǎn huíjiā.",
+              "english": "I went and asked this morning. My neighbour says he worked until midnight yesterday; the dog was scared at home alone, so it kept barking. He says he'll come home earlier from now on."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-dialogue-cause-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "鄰居為什麼說以後會早點回家？",
+                "simplified": "邻居为什么说以后会早点回家？",
+                "pinyin": "Línjū wèishénme shuō yǐhòu huì zǎo diǎn huíjiā?",
+                "english": "Why does the neighbour say he will come home earlier from now on?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他昨天回家時吵醒了男的",
+                  "simplified": "他昨天回家时吵醒了男的",
+                  "pinyin": "Tā zuótiān huíjiā shí chǎo xǐng le nán de.",
+                  "english": "He woke the man up when he came home yesterday."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "男的一再要他早點回家",
+                  "simplified": "男的一再要他早点回家",
+                  "pinyin": "Nán de yízài yào tā zǎo diǎn huíjiā.",
+                  "english": "The man kept asking him to come home earlier."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "狗自己在家時才會一直叫",
+                  "simplified": "狗自己在家时才会一直叫",
+                  "pinyin": "Gǒu zìjǐ zài jiā shí cái huì yìzhí jiào.",
+                  "english": "The dog only barks like that when it is home alone."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他的工作昨天就做完了",
+                  "simplified": "他的工作昨天就做完了",
+                  "pinyin": "Tā de gōngzuò zuótiān jiù zuò wán le.",
+                  "english": "He finished his work yesterday."
+                }
+              ],
+              "key": 2,
+              "why": "The barking that 害我到早上都睡不著 came because he worked until midnight and the dog, alone, was scared (才一直叫), so coming home earlier stops it. The dog, not the neighbour, kept the man awake; the man went to ask only once; and working until midnight means the work was not done early.",
+              "focus": {
+                "zh": "害；原因",
+                "en": "to cause (something bad); a reason"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-1-18",
+                "B2L02-2-18",
+                "B2L01-1-18",
+                "B2L15-1-06"
+              ],
+              "grammarIds": [
+                "B3L10-G03-P265"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-dialogue",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l10-review-dialogue-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你以前一天要喝三杯咖啡，現在怎麼都喝茶了？",
+              "simplified": "你以前一天要喝三杯咖啡，现在怎么都喝茶了？",
+              "pinyin": "Nǐ yǐqián yì tiān yào hē sān bēi kāfēi, xiànzài zěnme dōu hē chá le?",
+              "english": "You used to drink three cups of coffee a day. Why is it all tea now?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "上次健康檢查，醫生說我晚上睡不好，是因為咖啡喝太多了。所以我現在以茶代替咖啡。",
+              "simplified": "上次健康检查，医生说我晚上睡不好，是因为咖啡喝太多了。所以我现在以茶代替咖啡。",
+              "pinyin": "Shàng cì jiànkāng jiǎnchá, yīshēng shuō wǒ wǎnshàng shuì bù hǎo, shì yīnwèi kāfēi hē tài duō le. Suǒyǐ wǒ xiànzài yǐ chá dàitì kāfēi.",
+              "english": "At my last checkup the doctor said I slept badly because I drank too much coffee. So now I drink tea instead of coffee."
+            },
+            {
+              "speaker": "F",
+              "traditional": "可是喝茶也會讓人睡不著啊。",
+              "simplified": "可是喝茶也会让人睡不着啊。",
+              "pinyin": "Kěshì hē chá yě huì ràng rén shuì bù zháo a.",
+              "english": "But tea keeps you awake too."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我知道，所以下午三點以後，我就只喝水了。現在晚上十一點就睡得著。",
+              "simplified": "我知道，所以下午三点以后，我就只喝水了。现在晚上十一点就睡得着。",
+              "pinyin": "Wǒ zhīdào, suǒyǐ xiàwǔ sān diǎn yǐhòu, wǒ jiù zhǐ hē shuǐ le. Xiànzài wǎnshàng shíyī diǎn jiù shuì de zháo.",
+              "english": "I know, so after three in the afternoon I only drink water. Now I can fall asleep by eleven."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-review-dialogue-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的說「喝茶也會讓人睡不著」，是什麼意思？",
+                "simplified": "女的说「喝茶也会让人睡不着」，是什么意思？",
+                "pinyin": "Nǚ de shuō \"hē chá yě huì ràng rén shuì bù zháo\", shì shénme yìsi?",
+                "english": "What does the woman mean by \"tea keeps you awake too\"?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "建議他三點以後只喝水",
+                  "simplified": "建议他三点以后只喝水",
+                  "pinyin": "Jiànyì tā sān diǎn yǐhòu zhǐ hē shuǐ.",
+                  "english": "She suggests he drink only water after three."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "覺得喝茶比咖啡更糟",
+                  "simplified": "觉得喝茶比咖啡更糟",
+                  "pinyin": "Juéde hē chá bǐ kāfēi gèng zāo.",
+                  "english": "She thinks tea is worse than coffee."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "覺得他十一點睡太晚了",
+                  "simplified": "觉得他十一点睡太晚了",
+                  "pinyin": "Juéde tā shíyī diǎn shuì tài wǎn le.",
+                  "english": "She thinks eleven is too late a bedtime."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "覺得改喝茶也不一定好",
+                  "simplified": "觉得改喝茶也不一定好",
+                  "pinyin": "Juéde gǎi hē chá yě bù yídìng hǎo.",
+                  "english": "She thinks switching to tea may not help either."
+                }
+              ],
+              "key": 3,
+              "why": "She answers his 以茶代替咖啡 with 喝茶也會…: 也 means tea has the same problem, so the swap may not fix his sleep. Water after three is his reply (我知道，所以…), not her idea, and 也 says \"too\", not \"worse\".",
+              "focus": {
+                "zh": "以……代替……；說話人的意思",
+                "en": "use… in place of…; what someone means"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B3L09-2-25",
+                "B3L10-1-01"
+              ],
+              "grammarIds": [
+                "B3L09-G07-P250",
+                "B3L09-G06-P248"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-review-dialogue-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳牙痛了一個星期了，怎麼還不去看牙醫？",
+              "simplified": "你牙痛了一个星期了，怎么还不去看牙医？",
+              "pinyin": "Nǐ yá tòng le yí ge xīngqí le, zěnme hái bú qù kàn yáyī?",
+              "english": "Your tooth has hurt for a week. Why haven't you seen a dentist yet?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我最怕看牙醫了。再痛我也不想去，吃點藥就好了吧。",
+              "simplified": "我最怕看牙医了。再痛我也不想去，吃点药就好了吧。",
+              "pinyin": "Wǒ zuì pà kàn yáyī le. Zài tòng wǒ yě bù xiǎng qù, chī diǎn yào jiù hǎo le ba.",
+              "english": "I'm terrified of dentists. However much it hurts I don't want to go. Some medicine will do, won't it?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "這次妳非去不可。我妹妹以前也是一直不去，後來痛得連飯都吃不下，看牙醫花的錢也多了很多。",
+              "simplified": "这次你非去不可。我妹妹以前也是一直不去，后来痛得连饭都吃不下，看牙医花的钱也多了很多。",
+              "pinyin": "Zhè cì nǐ fēi qù bù kě. Wǒ mèimei yǐqián yě shì yìzhí bú qù, hòulái tòng de lián fàn dōu chī bú xià, kàn yáyī huā de qián yě duō le hěn duō.",
+              "english": "This time you have to go. My younger sister kept putting it off too; in the end it hurt so much she couldn't even eat, and the dentist cost her a lot more too."
+            },
+            {
+              "speaker": "F",
+              "traditional": "好吧，那你明天陪我去。",
+              "simplified": "好吧，那你明天陪我去。",
+              "pinyin": "Hǎo ba, nà nǐ míngtiān péi wǒ qù.",
+              "english": "All right. Then come with me tomorrow."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-review-dialogue-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的為什麼說女的非去看牙醫不可？",
+                "simplified": "男的为什么说女的非去看牙医不可？",
+                "pinyin": "Nán de wèishénme shuō nǚ de fēi qù kàn yáyī bù kě?",
+                "english": "Why does the man say the woman must see a dentist?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "越晚去，問題可能越嚴重",
+                  "simplified": "越晚去，问题可能越严重",
+                  "pinyin": "Yuè wǎn qù, wèntí kěnéng yuè yánzhòng.",
+                  "english": "The longer she waits, the worse it may get."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的已經痛得吃不下飯",
+                  "simplified": "女的已经痛得吃不下饭",
+                  "pinyin": "Nǚ de yǐjīng tòng de chī bú xià fàn.",
+                  "english": "She is already in too much pain to eat."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他妹妹是一位很好的牙醫",
+                  "simplified": "他妹妹是一位很好的牙医",
+                  "pinyin": "Tā mèimei shì yí wèi hěn hǎo de yáyī.",
+                  "english": "His sister is a very good dentist."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "吃藥對牙痛完全沒有用",
+                  "simplified": "吃药对牙痛完全没有用",
+                  "pinyin": "Chī yào duì yá tòng wánquán méiyǒu yòng.",
+                  "english": "Medicine does nothing at all for toothache."
+                }
+              ],
+              "key": 0,
+              "why": "He backs 非去不可 with his sister's story: she put it off, the pain grew until she couldn't eat, and it cost far more. That happened to the sister, not to the woman; the sister was the patient, not the dentist; and he never says medicine does nothing.",
+              "focus": {
+                "zh": "非……不可",
+                "en": "must (no other way)"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-18"
+              ],
+              "grammarIds": [
+                "B3L08-G05-P221",
+                "B3L08-G02-P211"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-three",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l10-dialogue-three-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答三個問題。",
+            "simplified": "请听一段对话，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a conversation, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "聽說你爸爸上個星期住院了？現在怎麼樣？",
+              "simplified": "听说你爸爸上个星期住院了？现在怎么样？",
+              "pinyin": "Tīngshuō nǐ bàba shàng ge xīngqí zhùyuàn le? Xiànzài zěnmeyàng?",
+              "english": "I hear your dad was in hospital last week. How is he now?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "已經回家了。他肚子不舒服了好幾個月，我們一再叫他去看醫生，他都說沒什麼。",
+              "simplified": "已经回家了。他肚子不舒服了好几个月，我们一再叫他去看医生，他都说没什么。",
+              "pinyin": "Yǐjīng huíjiā le. Tā dùzi bù shūfú le hǎojǐ ge yuè, wǒmen yízài jiào tā qù kàn yīshēng, tā dōu shuō méi shénme.",
+              "english": "He's home now. His stomach had been bad for months. We told him again and again to see a doctor, and he always said it was nothing."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那後來怎麼會去？",
+              "simplified": "那后来怎么会去？",
+              "pinyin": "Nà hòulái zěnme huì qù?",
+              "english": "So how did he end up going?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "直到上星期痛得站不起來，他才肯讓我們送他去醫院。",
+              "simplified": "直到上星期痛得站不起来，他才肯让我们送他去医院。",
+              "pinyin": "Zhídào shàng xīngqí tòng de zhàn bù qǐlái, tā cái kěn ràng wǒmen sòng tā qù yīyuàn.",
+              "english": "Not until last week, when it hurt so much he couldn't stand up, did he let us take him to hospital."
+            },
+            {
+              "speaker": "F",
+              "traditional": "醫生怎麼說？",
+              "simplified": "医生怎么说？",
+              "pinyin": "Yīshēng zěnme shuō?",
+              "english": "What did the doctor say?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "還好不算太嚴重。好好吃藥，一兩個月就會好，只不過以後一杯酒都不能喝了。",
+              "simplified": "还好不算太严重。好好吃药，一两个月就会好，只不过以后一杯酒都不能喝了。",
+              "pinyin": "Háihǎo bú suàn tài yánzhòng. Hǎohǎo chī yào, yì liǎng ge yuè jiù huì hǎo, zhǐbúguò yǐhòu yì bēi jiǔ dōu bù néng hē le.",
+              "english": "Luckily it's not too serious. If he takes his medicine he'll be fine in a month or two; it's just that he can never drink a drop of alcohol again."
+            },
+            {
+              "speaker": "F",
+              "traditional": "他做生意，常常要跟客人喝酒吧？",
+              "simplified": "他做生意，常常要跟客人喝酒吧？",
+              "pinyin": "Tā zuò shēngyì, chángcháng yào gēn kèrén hē jiǔ ba?",
+              "english": "He's in business. He has to drink with clients a lot, doesn't he?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "對啊。他說不能喝酒，以後怎麼跟客人談生意。",
+              "simplified": "对啊。他说不能喝酒，以后怎么跟客人谈生意。",
+              "pinyin": "Duì a. Tā shuō bù néng hē jiǔ, yǐhòu zěnme gēn kèrén tán shēngyì.",
+              "english": "Yes. He says if he can't drink, how is he supposed to do business with clients?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "身體比生意重要。你們全家要多跟他溝通。",
+              "simplified": "身体比生意重要。你们全家要多跟他沟通。",
+              "pinyin": "Shēntǐ bǐ shēngyì zhòngyào. Nǐmen quánjiā yào duō gēn tā gōutōng.",
+              "english": "His health matters more than business. Your whole family needs to talk it through with him."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-dialogue-three-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的爸爸後來為什麼去了醫院？",
+                "simplified": "男的爸爸后来为什么去了医院？",
+                "pinyin": "Nán de bàba hòulái wèishénme qù le yīyuàn?",
+                "english": "Why did the man's father finally go to hospital?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "家人一再叫他去看醫生",
+                  "simplified": "家人一再叫他去看医生",
+                  "pinyin": "Jiārén yízài jiào tā qù kàn yīshēng.",
+                  "english": "His family kept urging him to see a doctor."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "肚子痛得沒辦法走路了",
+                  "simplified": "肚子痛得没办法走路了",
+                  "pinyin": "Dùzi tòng de méi bànfǎ zǒulù le.",
+                  "english": "His stomach hurt too much to walk."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "公司要他做健康檢查",
+                  "simplified": "公司要他做健康检查",
+                  "pinyin": "Gōngsī yào tā zuò jiànkāng jiǎnchá.",
+                  "english": "His company made him have a checkup."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "客人陪他去看醫生",
+                  "simplified": "客人陪他去看医生",
+                  "pinyin": "Kèrén péi tā qù kàn yīshēng.",
+                  "english": "A client took him to see a doctor."
+                }
+              ],
+              "key": 1,
+              "why": "直到上星期痛得站不起來，他才肯…: the pain, not the family, got him there. 一再叫他去 is what had failed for months (他都說沒什麼), and no company checkup or client is mentioned.",
+              "focus": {
+                "zh": "直到……才……",
+                "en": "not until…"
+              },
+              "lesson": 10,
+              "answerLine": 3,
+              "wordIds": [
+                "B3L10-1-09",
+                "B3L10-2-21",
+                "B2L11-2-13"
+              ],
+              "grammarIds": [
+                "B3L10-G01-P262",
+                "B3L10-G05-P274"
+              ]
+            },
+            {
+              "id": "b3l10-dialogue-three-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的爸爸為什麼擔心以後的工作？",
+                "simplified": "男的爸爸为什么担心以后的工作？",
+                "pinyin": "Nán de bàba wèishénme dānxīn yǐhòu de gōngzuò?",
+                "english": "Why is the man's father worried about his work from now on?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "談生意常常得陪客人喝酒",
+                  "simplified": "谈生意常常得陪客人喝酒",
+                  "pinyin": "Tán shēngyì chángcháng děi péi kèrén hē jiǔ.",
+                  "english": "Doing business often means drinking with clients."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "還得在醫院住一兩個月",
+                  "simplified": "还得在医院住一两个月",
+                  "pinyin": "Hái děi zài yīyuàn zhù yì liǎng ge yuè.",
+                  "english": "He still has to stay in hospital a month or two."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "醫生要他少跟客人吃飯",
+                  "simplified": "医生要他少跟客人吃饭",
+                  "pinyin": "Yīshēng yào tā shǎo gēn kèrén chīfàn.",
+                  "english": "The doctor wants him to eat out with clients less."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "家人要他少做一點生意",
+                  "simplified": "家人要他少做一点生意",
+                  "pinyin": "Jiārén yào tā shǎo zuò yìdiǎn shēngyì.",
+                  "english": "His family wants him to do less business."
+                }
+              ],
+              "key": 0,
+              "why": "After 只不過 the doctor adds the lasting rule, no alcohol ever again, and the father asks how he can do business without drinking with clients. He is already home (一兩個月 is how long the medicine takes), the doctor said nothing about meals, and the family is only asked to talk with him.",
+              "focus": {
+                "zh": "只不過",
+                "en": "it's just that…"
+              },
+              "lesson": 10,
+              "answerLine": 5,
+              "wordIds": [
+                "B2L04-2-19",
+                "B2L03-1-05"
+              ],
+              "grammarIds": [
+                "B3L10-G02-P263"
+              ]
+            },
+            {
+              "id": "b3l10-dialogue-three-1-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的最後說的話是什麼意思？",
+                "simplified": "女的最后说的话是什么意思？",
+                "pinyin": "Nǚ de zuìhòu shuō de huà shì shénme yìsi?",
+                "english": "What does the woman mean by what she says last?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "陪爸爸去跟客人好好談一談",
+                  "simplified": "陪爸爸去跟客人好好谈一谈",
+                  "pinyin": "Péi bàba qù gēn kèrén hǎohǎo tán yì tán.",
+                  "english": "Go with Dad and talk things over with his clients."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "讓爸爸換一個不用喝酒的工作",
+                  "simplified": "让爸爸换一个不用喝酒的工作",
+                  "pinyin": "Ràng bàba huàn yí ge bú yòng hē jiǔ de gōngzuò.",
+                  "english": "Get Dad to change to a job without drinking."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "每天看著爸爸好好吃藥",
+                  "simplified": "每天看着爸爸好好吃药",
+                  "pinyin": "Měi tiān kànzhe bàba hǎohǎo chī yào.",
+                  "english": "Make sure Dad takes his medicine every day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "好好跟爸爸談，讓他多注意健康",
+                  "simplified": "好好跟爸爸谈，让他多注意健康",
+                  "pinyin": "Hǎohǎo gēn bàba tán, ràng tā duō zhùyì jiànkāng.",
+                  "english": "Talk it over with Dad properly so he pays more attention to his health."
+                }
+              ],
+              "key": 3,
+              "why": "身體比生意重要。你們全家要多跟他溝通: talk with him until he puts health before business. The clients are his worry, putting health first does not mean giving up his business, and the medicine is the doctor's point, not hers.",
+              "focus": {
+                "zh": "說話人的意思",
+                "en": "what someone means"
+              },
+              "lesson": 10,
+              "answerLine": 8,
+              "wordIds": [
+                "B3L10-1-16",
+                "B2L04-2-19",
+                "B1L12-3-11"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-dialogue-three-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答三個問題。",
+            "simplified": "请听一段对话，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a conversation, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你怎麼戴起眼鏡來了？你眼睛不是很好嗎？",
+              "simplified": "你怎么戴起眼镜来了？你眼睛不是很好吗？",
+              "pinyin": "Nǐ zěnme dài qǐ yǎnjìng lái le? Nǐ yǎnjīng bú shì hěn hǎo ma?",
+              "english": "Since when do you wear glasses? Aren't your eyes good?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "上個月開始，黑板上的字越來越看不清楚。我以為只是太累了，直到上星期去檢查，才知道眼睛真的變差了。",
+              "simplified": "上个月开始，黑板上的字越来越看不清楚。我以为只是太累了，直到上星期去检查，才知道眼睛真的变差了。",
+              "pinyin": "Shàng ge yuè kāishǐ, hēibǎn shàng de zì yuè lái yuè kàn bù qīngchǔ. Wǒ yǐwéi zhǐ shì tài lèi le, zhídào shàng xīngqí qù jiǎnchá, cái zhīdào yǎnjīng zhēn de biàn chà le.",
+              "english": "From last month the writing on the board got harder and harder to read. I thought I was just tired; not until I had my eyes checked last week did I find out they had really got worse."
+            },
+            {
+              "speaker": "F",
+              "traditional": "是不是手機看太多了？",
+              "simplified": "是不是手机看太多了？",
+              "pinyin": "Shì bú shì shǒujī kàn tài duō le?",
+              "english": "Is it from looking at your phone too much?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "醫生也這麼說。我每天躺在床上看影片，常常看到半夜兩三點。我媽一再說這樣對眼睛不好，我都沒聽。",
+              "simplified": "医生也这么说。我每天躺在床上看影片，常常看到半夜两三点。我妈一再说这样对眼睛不好，我都没听。",
+              "pinyin": "Yīshēng yě zhème shuō. Wǒ měi tiān tǎng zài chuáng shàng kàn yǐngpiàn, chángcháng kàn dào bànyè liǎng sān diǎn. Wǒ mā yízài shuō zhèyàng duì yǎnjīng bù hǎo, wǒ dōu méi tīng.",
+              "english": "That's what the doctor said too. Every day I lie in bed watching videos, often until two or three in the morning. My mom told me again and again it was bad for my eyes, and I never listened."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那你現在還看嗎？",
+              "simplified": "那你现在还看吗？",
+              "pinyin": "Nà nǐ xiànzài hái kàn ma?",
+              "english": "So do you still watch?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "醫生說要是不改，眼睛會越來越差。所以我現在十二點以前就把手機放到客廳去。",
+              "simplified": "医生说要是不改，眼睛会越来越差。所以我现在十二点以前就把手机放到客厅去。",
+              "pinyin": "Yīshēng shuō yàoshì bù gǎi, yǎnjīng huì yuè lái yuè chà. Suǒyǐ wǒ xiànzài shí'èr diǎn yǐqián jiù bǎ shǒujī fàng dào kètīng qù.",
+              "english": "The doctor said if I don't change, my eyes will keep getting worse. So now I put my phone in the living room before twelve."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你媽一定很高興吧？",
+              "simplified": "你妈一定很高兴吧？",
+              "pinyin": "Nǐ mā yídìng hěn gāoxìng ba?",
+              "english": "Your mom must be pleased."
+            },
+            {
+              "speaker": "M",
+              "traditional": "她說她講了三年都沒用，醫生才說一次就有用了。",
+              "simplified": "她说她讲了三年都没用，医生才说一次就有用了。",
+              "pinyin": "Tā shuō tā jiǎng le sān nián dōu méi yòng, yīshēng cái shuō yí cì jiù yǒu yòng le.",
+              "english": "She says she told me for three years and it did nothing, and the doctor said it just once and it worked."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-dialogue-three-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的是什麼時候知道眼睛真的變差的？",
+                "simplified": "男的是什么时候知道眼睛真的变差的？",
+                "pinyin": "Nán de shì shénme shíhòu zhīdào yǎnjīng zhēn de biàn chà de?",
+                "english": "When did the man find out his eyes had really got worse?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "上星期做了檢查以後",
+                  "simplified": "上星期做了检查以后",
+                  "pinyin": "Shàng xīngqí zuò le jiǎnchá yǐhòu.",
+                  "english": "After his eye check last week."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "上個月覺得很累的時候",
+                  "simplified": "上个月觉得很累的时候",
+                  "pinyin": "Shàng ge yuè juéde hěn lèi de shíhòu.",
+                  "english": "Last month, when he felt very tired."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看影片看到半夜的時候",
+                  "simplified": "看影片看到半夜的时候",
+                  "pinyin": "Kàn yǐngpiàn kàn dào bànyè de shíhòu.",
+                  "english": "When he watched videos until late at night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "開始看不清楚黑板的時候",
+                  "simplified": "开始看不清楚黑板的时候",
+                  "pinyin": "Kāishǐ kàn bù qīngchǔ hēibǎn de shíhòu.",
+                  "english": "When he first couldn't read the board."
+                }
+              ],
+              "key": 0,
+              "why": "我以為只是太累了，直到上星期去檢查，才知道…: when the board got blurry he blamed tiredness, and only the check last week showed the truth. The late-night videos are the cause, not the moment he learned it.",
+              "focus": {
+                "zh": "直到……才……",
+                "en": "not until…"
+              },
+              "lesson": 10,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L10-1-09",
+                "B3L10-1-02",
+                "B2L16-2-08"
+              ],
+              "grammarIds": [
+                "B3L10-G01-P262"
+              ]
+            },
+            {
+              "id": "b3l10-dialogue-three-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的為什麼把手機放到客廳去？",
+                "simplified": "男的为什么把手机放到客厅去？",
+                "pinyin": "Nán de wèishénme bǎ shǒujī fàng dào kètīng qù?",
+                "english": "Why does the man put his phone in the living room?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "才不會在床上看到半夜",
+                  "simplified": "才不会在床上看到半夜",
+                  "pinyin": "Cái bú huì zài chuáng shàng kàn dào bànyè.",
+                  "english": "So that he won't watch in bed until late at night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "女的叫他少看手機",
+                  "simplified": "女的叫他少看手机",
+                  "pinyin": "Nǚ de jiào tā shǎo kàn shǒujī.",
+                  "english": "The woman told him to use his phone less."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "醫生叫他把手機放在客廳",
+                  "simplified": "医生叫他把手机放在客厅",
+                  "pinyin": "Yīshēng jiào tā bǎ shǒujī fàng zài kètīng.",
+                  "english": "The doctor told him to keep his phone in the living room."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在客廳看影片眼睛比較不累",
+                  "simplified": "在客厅看影片眼睛比较不累",
+                  "pinyin": "Zài kètīng kàn yǐngpiàn yǎnjīng bǐjiào bú lèi.",
+                  "english": "Watching videos in the living room is easier on his eyes."
+                }
+              ],
+              "key": 0,
+              "why": "He used to lie in bed watching videos until two or three; once the doctor warned 要是不改…, he moved the phone out of the bedroom so he can't do that. The woman only asked a question, the doctor said to change but not where to put the phone, and he puts the phone away rather than watching in another room.",
+              "focus": {
+                "zh": "原因（兩句合起來看）",
+                "en": "a reason (combining two turns)"
+              },
+              "lesson": 10,
+              "answerLine": 5,
+              "wordIds": [
+                "B1L05-2-09",
+                "B2L05-1-16",
+                "B2L16-2-08"
+              ]
+            },
+            {
+              "id": "b3l10-dialogue-three-2-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的媽媽說的話是什麼意思？",
+                "simplified": "男的妈妈说的话是什么意思？",
+                "pinyin": "Nán de māma shuō de huà shì shénme yìsi?",
+                "english": "What does the man's mother mean?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她很感謝那位醫生",
+                  "simplified": "她很感谢那位医生",
+                  "pinyin": "Tā hěn gǎnxiè nà wèi yīshēng.",
+                  "english": "She is very grateful to the doctor."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兒子三年前眼睛就不好了",
+                  "simplified": "儿子三年前眼睛就不好了",
+                  "pinyin": "Érzi sān nián qián yǎnjīng jiù bù hǎo le.",
+                  "english": "Her son's eyes went bad three years ago."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她覺得醫生說得太嚴重",
+                  "simplified": "她觉得医生说得太严重",
+                  "pinyin": "Tā juéde yīshēng shuō de tài yánzhòng.",
+                  "english": "She thinks the doctor exaggerated."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兒子比較聽醫生的話",
+                  "simplified": "儿子比较听医生的话",
+                  "pinyin": "Érzi bǐjiào tīng yīshēng de huà.",
+                  "english": "Her son listens to the doctor more than to her."
+                }
+              ],
+              "key": 3,
+              "why": "She 一再 said it was bad for his eyes and he 都沒聽, so 她講了三年都沒用，醫生才說一次就有用了 is a half-joking complaint: he ignored her and obeyed the doctor at once. The three years are how long she nagged, not how long his eyes were bad, and she agrees with the doctor.",
+              "focus": {
+                "zh": "一再；說話人的意思",
+                "en": "again and again; what someone means"
+              },
+              "lesson": 10,
+              "answerLine": 7,
+              "wordIds": [
+                "B3L10-2-21"
+              ],
+              "grammarIds": [
+                "B3L10-G05-P274"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talk",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l10-talk-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段廣播，然後回答三個問題。",
+            "simplified": "请听一段广播，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn guǎngbò, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a broadcast, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "社區的各位朋友大家好，這裡是社區服務中心。",
+              "simplified": "社区的各位朋友大家好，这里是社区服务中心。",
+              "pinyin": "Shèqū de gèwèi péngyǒu dàjiā hǎo, zhèlǐ shì shèqū fúwù zhōngxīn.",
+              "english": "Hello, everyone in the community. This is the community service centre."
+            },
+            {
+              "speaker": "M",
+              "traditional": "上個星期我們說過，為了讓大家更了解自己的健康情況，社區這個月跟附近的醫院合作，舉辦基本健康檢查。",
+              "simplified": "上个星期我们说过，为了让大家更了解自己的健康情况，社区这个月跟附近的医院合作，举办基本健康检查。",
+              "pinyin": "Shàng ge xīngqí wǒmen shuō guo, wèile ràng dàjiā gèng liǎojiě zìjǐ de jiànkāng qíngkuàng, shèqū zhège yuè gēn fùjìn de yīyuàn hézuò, jǔbàn jīběn jiànkāng jiǎnchá.",
+              "english": "Last week we told you that, to help everyone know more about their health, the community is working with a nearby hospital this month to hold basic health checkups."
+            },
+            {
+              "speaker": "M",
+              "traditional": "因為醫院那天醫生不夠，所以檢查從二十號星期六，改到二十一號星期天。",
+              "simplified": "因为医院那天医生不够，所以检查从二十号星期六，改到二十一号星期天。",
+              "pinyin": "Yīnwèi yīyuàn nà tiān yīshēng bú gòu, suǒyǐ jiǎnchá cóng èrshí hào xīngqíliù, gǎi dào èrshíyī hào xīngqítiān.",
+              "english": "Because the hospital is short of doctors that day, the checkup is moving from Saturday the 20th to Sunday the 21st."
+            },
+            {
+              "speaker": "M",
+              "traditional": "時間一樣是上午八點到十一點，地點也一樣在一樓的活動中心。",
+              "simplified": "时间一样是上午八点到十一点，地点也一样在一楼的活动中心。",
+              "pinyin": "Shíjiān yíyàng shì shàngwǔ bā diǎn dào shíyī diǎn, dìdiǎn yě yíyàng zài yī lóu de huódòng zhōngxīn.",
+              "english": "The time is still 8 to 11 a.m., and the place is still the activity room on the ground floor."
+            },
+            {
+              "speaker": "M",
+              "traditional": "滿四十歲的人免費；不到四十歲的，一個人付三百塊就可以參加。",
+              "simplified": "满四十岁的人免费；不到四十岁的，一个人付三百块就可以参加。",
+              "pinyin": "Mǎn sìshí suì de rén miǎnfèi; bú dào sìshí suì de, yí ge rén fù sānbǎi kuài jiù kěyǐ cānjiā.",
+              "english": "It's free for those aged forty and over; those under forty can take part for three hundred dollars each."
+            },
+            {
+              "speaker": "M",
+              "traditional": "檢查前一天晚上十點以後，請不要再吃東西。",
+              "simplified": "检查前一天晚上十点以后，请不要再吃东西。",
+              "pinyin": "Jiǎnchá qián yì tiān wǎnshàng shí diǎn yǐhòu, qǐng bú yào zài chī dōngxi.",
+              "english": "Please don't eat anything after 10 p.m. the night before."
+            },
+            {
+              "speaker": "M",
+              "traditional": "假如星期天沒辦法來，請在十五號以前到服務中心填表，我們會幫您改到下個月。謝謝大家。",
+              "simplified": "假如星期天没办法来，请在十五号以前到服务中心填表，我们会帮您改到下个月。谢谢大家。",
+              "pinyin": "Jiǎrú xīngqítiān méi bànfǎ lái, qǐng zài shíwǔ hào yǐqián dào fúwù zhōngxīn tián biǎo, wǒmen huì bāng nín gǎi dào xià ge yuè. Xièxie dàjiā.",
+              "english": "If you can't come on Sunday, please fill in a form at the service centre by the 15th, and we'll move you to next month. Thank you."
+            }
+          ],
+          "answerLine": 6,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-talk-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "一位三十五歲的太太星期天要上班，她應該怎麼做？",
+                "simplified": "一位三十五岁的太太星期天要上班，她应该怎么做？",
+                "pinyin": "Yí wèi sānshíwǔ suì de tàitai xīngqítiān yào shàngbān, tā yīnggāi zěnme zuò?",
+                "english": "A 35-year-old woman works on Sunday. What should she do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "十五號前填表，下個月免費檢查",
+                  "simplified": "十五号前填表，下个月免费检查",
+                  "pinyin": "Shíwǔ hào qián tián biǎo, xià ge yuè miǎnfèi jiǎnchá.",
+                  "english": "Fill in the form by the 15th and have a free checkup next month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "二十號前填表，下個月付三百塊",
+                  "simplified": "二十号前填表，下个月付三百块",
+                  "pinyin": "Èrshí hào qián tián biǎo, xià ge yuè fù sānbǎi kuài.",
+                  "english": "Fill in the form by the 20th and pay three hundred next month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十五號前填表，下個月付三百塊",
+                  "simplified": "十五号前填表，下个月付三百块",
+                  "pinyin": "Shíwǔ hào qián tián biǎo, xià ge yuè fù sānbǎi kuài.",
+                  "english": "Fill in the form by the 15th and pay three hundred next month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "二十號那天付三百塊去檢查",
+                  "simplified": "二十号那天付三百块去检查",
+                  "pinyin": "Èrshí hào nà tiān fù sānbǎi kuài qù jiǎnchá.",
+                  "english": "Pay three hundred and go on the 20th."
+                }
+              ],
+              "key": 2,
+              "why": "Two rules apply to her: 假如星期天沒辦法來 means a form by the 15th and a checkup next month, and being under forty means she pays 三百塊. Free is only for forty and over, the 20th is the old date, and there is no checkup on the 20th now.",
+              "focus": {
+                "zh": "假如；兩個條件合起來",
+                "en": "if (written style); applying two conditions"
+              },
+              "lesson": 10,
+              "answerLine": 6,
+              "wordIds": [
+                "B3L10-2-22",
+                "B3L10-1-27",
+                "B3L10-1-28",
+                "B3L10-1-24"
+              ],
+              "grammarIds": [
+                "B3L10-G06-P275"
+              ]
+            },
+            {
+              "id": "b3l10-talk-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "要參加這次健檢的人，最晚什麼時候要吃完東西？",
+                "simplified": "要参加这次健检的人，最晚什么时候要吃完东西？",
+                "pinyin": "Yào cānjiā zhè cì jiànjiǎn de rén, zuì wǎn shénme shíhòu yào chī wán dōngxi?",
+                "english": "For people having this checkup, what is the latest they can finish eating?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期五晚上十點",
+                  "simplified": "星期五晚上十点",
+                  "pinyin": "Xīngqíwǔ wǎnshàng shí diǎn",
+                  "english": "Friday, 10 p.m."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期六晚上十點",
+                  "simplified": "星期六晚上十点",
+                  "pinyin": "Xīngqíliù wǎnshàng shí diǎn",
+                  "english": "Saturday, 10 p.m."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期六晚上十一點",
+                  "simplified": "星期六晚上十一点",
+                  "pinyin": "Xīngqíliù wǎnshàng shíyī diǎn",
+                  "english": "Saturday, 11 p.m."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期天早上八點",
+                  "simplified": "星期天早上八点",
+                  "pinyin": "Xīngqítiān zǎoshàng bā diǎn",
+                  "english": "Sunday, 8 a.m."
+                }
+              ],
+              "key": 1,
+              "why": "The checkup is now on Sunday, and 前一天晚上十點以後 means nothing after 10 p.m. on Saturday. Friday night belongs to the old Saturday date, and eleven and eight are the checkup's own hours.",
+              "focus": {
+                "zh": "時間（兩句合起來看）",
+                "en": "a time (combining two lines)"
+              },
+              "lesson": 10,
+              "answerLine": 5,
+              "wordIds": [
+                "B3L10-1-02",
+                "B3L10-1-01"
+              ]
+            },
+            {
+              "id": "b3l10-talk-1-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這段廣播主要是要告訴大家什麼？",
+                "simplified": "这段广播主要是要告诉大家什么？",
+                "pinyin": "Zhè duàn guǎngbò zhǔyào shì yào gàosù dàjiā shénme?",
+                "english": "What is this announcement mainly telling people?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "社區這個月要辦健檢",
+                  "simplified": "社区这个月要办健检",
+                  "pinyin": "Shèqū zhège yuè yào bàn jiànjiǎn.",
+                  "english": "The community is holding checkups this month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "沒空的人怎麼改時間",
+                  "simplified": "没空的人怎么改时间",
+                  "pinyin": "Méi kòng de rén zěnme gǎi shíjiān.",
+                  "english": "How people who are busy can change their time."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "醫院那天的醫生不夠",
+                  "simplified": "医院那天的医生不够",
+                  "pinyin": "Yīyuàn nà tiān de yīshēng bú gòu.",
+                  "english": "The hospital is short of doctors that day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這次健檢改成星期天",
+                  "simplified": "这次健检改成星期天",
+                  "pinyin": "Zhè cì jiànjiǎn gǎi chéng xīngqítiān.",
+                  "english": "This checkup has moved to Sunday."
+                }
+              ],
+              "key": 3,
+              "why": "上個星期我們說過 shows the checkup itself is old news; the new point is 從二十號星期六，改到二十一號星期天, and the rest repeats the details for the new day. The doctor shortage is only the reason for the change, and the form is a fallback for some people.",
+              "focus": {
+                "zh": "主旨",
+                "en": "the main point"
+              },
+              "lesson": 10,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L02-1-25",
+                "B2L16-1-01",
+                "B3L08-2-03"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-talk-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段廣播，然後回答三個問題。",
+            "simplified": "请听一段广播，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn guǎngbò, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a broadcast, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "聽眾朋友晚安，今天我們來談談怎麼睡好覺。",
+              "simplified": "听众朋友晚安，今天我们来谈谈怎么睡好觉。",
+              "pinyin": "Tīngzhòng péngyǒu wǎn'ān, jīntiān wǒmen lái tántan zěnme shuì hǎo jiào.",
+              "english": "Good evening, listeners. Today let's talk about how to sleep well."
+            },
+            {
+              "speaker": "F",
+              "traditional": "很多上班族為了趕完工作，每天睡不到六個小時。他們覺得平常睡得少沒關係，週末多睡一點就好了。",
+              "simplified": "很多上班族为了赶完工作，每天睡不到六个小时。他们觉得平常睡得少没关系，周末多睡一点就好了。",
+              "pinyin": "Hěn duō shàngbānzú wèile gǎn wán gōngzuò, měi tiān shuì bú dào liù ge xiǎoshí. Tāmen juéde píngcháng shuì de shǎo méi guānxi, zhōumò duō shuì yìdiǎn jiù hǎo le.",
+              "english": "To get their work done, many office workers sleep less than six hours a night. They think sleeping little on weekdays is fine as long as they catch up at the weekend."
+            },
+            {
+              "speaker": "F",
+              "traditional": "其實這樣做，身體還是一樣累。睡得不夠，白天不但沒精神，也比較容易生病。",
+              "simplified": "其实这样做，身体还是一样累。睡得不够，白天不但没精神，也比较容易生病。",
+              "pinyin": "Qíshí zhèyàng zuò, shēntǐ háishì yíyàng lèi. Shuì de bú gòu, báitiān búdàn méi jīngshén, yě bǐjiào róngyì shēngbìng.",
+              "english": "In fact, the body stays just as tired. Without enough sleep you have no energy in the day, and you also fall ill more easily."
+            },
+            {
+              "speaker": "F",
+              "traditional": "也有人以為睡前喝一點酒比較好睡，其實酒會讓人半夜容易醒，反而睡不好。",
+              "simplified": "也有人以为睡前喝一点酒比较好睡，其实酒会让人半夜容易醒，反而睡不好。",
+              "pinyin": "Yě yǒu rén yǐwéi shuì qián hē yìdiǎn jiǔ bǐjiào hǎo shuì, qíshí jiǔ huì ràng rén bànyè róngyì xǐng, fǎn'ér shuì bù hǎo.",
+              "english": "Some people also think a little alcohol before bed helps them sleep. In fact alcohol makes you wake up easily in the night, so you sleep worse."
+            },
+            {
+              "speaker": "F",
+              "traditional": "假如你晚上常常睡不著，可以試試這些方法：睡覺前一個小時別看手機，晚餐別吃得太飽，每天在差不多的時間上床。",
+              "simplified": "假如你晚上常常睡不着，可以试试这些方法：睡觉前一个小时别看手机，晚餐别吃得太饱，每天在差不多的时间上床。",
+              "pinyin": "Jiǎrú nǐ wǎnshàng chángcháng shuì bù zháo, kěyǐ shìshi zhèxiē fāngfǎ: shuìjiào qián yí ge xiǎoshí bié kàn shǒujī, wǎncān bié chī de tài bǎo, měi tiān zài chàbùduō de shíjiān shàngchuáng.",
+              "english": "If you often can't fall asleep at night, try these: no phone for an hour before bed, don't eat too much at dinner, and go to bed at about the same time every day."
+            },
+            {
+              "speaker": "F",
+              "traditional": "只要堅持一個月，你就會發覺，早上起床變得輕鬆多了，白天也更有精神。",
+              "simplified": "只要坚持一个月，你就会发觉，早上起床变得轻松多了，白天也更有精神。",
+              "pinyin": "Zhǐyào jiānchí yí ge yuè, nǐ jiù huì fājué, zǎoshàng qǐchuáng biàn de qīngsōng duō le, báitiān yě gèng yǒu jīngshén.",
+              "english": "Keep it up for just a month, and you'll find getting up in the morning has become much easier, and you have more energy in the day."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l10-talk-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "很多上班族為什麼睡得很少？",
+                "simplified": "很多上班族为什么睡得很少？",
+                "pinyin": "Hěn duō shàngbānzú wèishénme shuì de hěn shǎo?",
+                "english": "Why do many office workers sleep so little?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "想完成手上的工作",
+                  "simplified": "想完成手上的工作",
+                  "pinyin": "Xiǎng wánchéng shǒu shàng de gōngzuò.",
+                  "english": "They want to finish their work."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "晚上常常看手機",
+                  "simplified": "晚上常常看手机",
+                  "pinyin": "Wǎnshàng chángcháng kàn shǒujī.",
+                  "english": "They look at their phones at night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "晚餐吃得太飽了",
+                  "simplified": "晚餐吃得太饱了",
+                  "pinyin": "Wǎncān chī de tài bǎo le.",
+                  "english": "They eat too much at dinner."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "週末睡得太多了",
+                  "simplified": "周末睡得太多了",
+                  "pinyin": "Zhōumò shuì de tài duō le.",
+                  "english": "They sleep too much at weekends."
+                }
+              ],
+              "key": 0,
+              "why": "為了趕完工作，每天睡不到六個小時: 為了 gives the goal and the next part the action taken for it (in speech 而 is usually left out). The phone and the big dinner come from the tips for people who can't fall asleep, and weekend sleep is how they try to make up.",
+              "focus": {
+                "zh": "為了……而……",
+                "en": "in order to…"
+              },
+              "lesson": 10,
+              "answerLine": 1,
+              "wordIds": [
+                "B2L08-1-28",
+                "B2L13-1-32",
+                "B2L07-2-14"
+              ],
+              "grammarIds": [
+                "B3L10-G07-P276"
+              ]
+            },
+            {
+              "id": "b3l10-talk-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "小王每天十一點上床，睡前常常躺著看手機，結果睡不著。照說話的人的建議，他應該怎麼做？",
+                "simplified": "小王每天十一点上床，睡前常常躺着看手机，结果睡不着。照说话的人的建议，他应该怎么做？",
+                "pinyin": "Xiǎo Wáng měi tiān shíyī diǎn shàngchuáng, shuì qián chángcháng tǎngzhe kàn shǒujī, jiéguǒ shuì bù zháo. Zhào shuōhuà de rén de jiànyì, tā yīnggāi zěnme zuò?",
+                "english": "Xiao Wang goes to bed at eleven every night and often lies looking at his phone before sleeping, and then can't fall asleep. Following the speaker's advice, what should he do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "十一點上床以後就不看手機",
+                  "simplified": "十一点上床以后就不看手机",
+                  "pinyin": "Shíyī diǎn shàngchuáng yǐhòu jiù bú kàn shǒujī.",
+                  "english": "Stop looking at his phone once he is in bed at eleven."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "睡前喝一點酒，比較好睡",
+                  "simplified": "睡前喝一点酒，比较好睡",
+                  "pinyin": "Shuì qián hē yìdiǎn jiǔ, bǐjiào hǎo shuì.",
+                  "english": "Have a little alcohol before bed to sleep better."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十點以後就別再看手機",
+                  "simplified": "十点以后就别再看手机",
+                  "pinyin": "Shí diǎn yǐhòu jiù bié zài kàn shǒujī.",
+                  "english": "Stop looking at his phone after ten."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "平常少睡，週末再多睡",
+                  "simplified": "平常少睡，周末再多睡",
+                  "pinyin": "Píngcháng shǎo shuì, zhōumò zài duō shuì.",
+                  "english": "Sleep little on weekdays and more at weekends."
+                }
+              ],
+              "key": 2,
+              "why": "假如你晚上常常睡不著 opens the tips, and the first is 睡覺前一個小時別看手機: bed at eleven means no phone from ten. Putting it down only at eleven misses the hour; alcohol and weekend catch-up are the two beliefs she says are wrong (其實…).",
+              "focus": {
+                "zh": "假如；照建議做",
+                "en": "if (written style); applying advice"
+              },
+              "lesson": 10,
+              "answerLine": 4,
+              "wordIds": [
+                "B3L10-2-22",
+                "B2L10-2-14",
+                "B2L05-1-16",
+                "B2L10-1-20"
+              ],
+              "grammarIds": [
+                "B3L10-G06-P275"
+              ]
+            },
+            {
+              "id": "b3l10-talk-2-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "說話的人怎麼看「週末多睡一點」和「睡前喝一點酒」這兩種做法？",
+                "simplified": "说话的人怎么看「周末多睡一点」和「睡前喝一点酒」这两种做法？",
+                "pinyin": "Shuōhuà de rén zěnme kàn \"zhōumò duō shuì yìdiǎn\" hé \"shuì qián hē yìdiǎn jiǔ\" zhè liǎng zhǒng zuòfǎ?",
+                "english": "What does the speaker think of the two habits \"sleeping more at weekends\" and \"a little alcohol before bed\"?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "週末多睡可以，喝酒不行",
+                  "simplified": "周末多睡可以，喝酒不行",
+                  "pinyin": "Zhōumò duō shuì kěyǐ, hē jiǔ bù xíng.",
+                  "english": "Sleeping more at weekends is fine; alcohol is not."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "喝一點酒可以，週末多睡不行",
+                  "simplified": "喝一点酒可以，周末多睡不行",
+                  "pinyin": "Hē yìdiǎn jiǔ kěyǐ, zhōumò duō shuì bù xíng.",
+                  "english": "A little alcohol is fine; sleeping more at weekends is not."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩種都只是大家以為有用",
+                  "simplified": "两种都只是大家以为有用",
+                  "pinyin": "Liǎng zhǒng dōu zhǐ shì dàjiā yǐwéi yǒuyòng.",
+                  "english": "People only think both of them work."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩種都要堅持一個月才有用",
+                  "simplified": "两种都要坚持一个月才有用",
+                  "pinyin": "Liǎng zhǒng dōu yào jiānchí yí ge yuè cái yǒuyòng.",
+                  "english": "Both work only if kept up for a month."
+                }
+              ],
+              "key": 2,
+              "why": "Each belief is followed by 其實: 其實這樣做，身體還是一樣累 for weekend sleep, and 其實酒會讓人半夜容易醒 for alcohol, so she rejects both. Keeping it up for a month belongs to her own tips, not to these two habits.",
+              "focus": {
+                "zh": "說話人的看法（兩段合起來看）",
+                "en": "the speaker's view (combining two parts)"
+              },
+              "lesson": 10,
+              "answerLine": 2,
+              "wordIds": [
+                "B2L04-1-32",
+                "B2L08-2-03",
+                "B3L10-2-07",
+                "B2L04-2-11"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloze",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l10-cloze-1",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "我爸爸以前很少運動，下班就坐在沙發上看電視。醫生{1}提醒他要多運動，他每次都只說「好」，從來沒做到。直到今年他爬到三樓就累得要休息，才開始每天去公園跑步。剛開始，他跑十分鐘就想{2}，可是他說，{3}是自己決定的事，就要堅持到底。我媽也{4}讓他跑完就有飯吃，特地把晚餐時間改到八點。半年後，他的身體好了很多，{5}晚上睡得比以前好：以前常常睡不著，現在一躺下就睡著了。他常說，{6}他早幾年開始運動，身體就不會變得那麼差。",
+            "simplified": "我爸爸以前很少运动，下班就坐在沙发上看电视。医生{1}提醒他要多运动，他每次都只说「好」，从来没做到。直到今年他爬到三楼就累得要休息，才开始每天去公园跑步。刚开始，他跑十分钟就想{2}，可是他说，{3}是自己决定的事，就要坚持到底。我妈也{4}让他跑完就有饭吃，特地把晚餐时间改到八点。半年后，他的身体好了很多，{5}晚上睡得比以前好：以前常常睡不着，现在一躺下就睡着了。他常说，{6}他早几年开始运动，身体就不会变得那么差。",
+            "pinyin": "Wǒ bàba yǐqián hěn shǎo yùndòng, xiàbān jiù zuò zài shāfā shàng kàn diànshì. Yīshēng yízài tíxǐng tā yào duō yùndòng, tā měi cì dōu zhǐ shuō \"hǎo\", cónglái méi zuò dào. Zhídào jīnnián tā pá dào sān lóu jiù lèi de yào xiūxí, cái kāishǐ měi tiān qù gōngyuán pǎobù. Gāng kāishǐ, tā pǎo shí fēnzhōng jiù xiǎng tíng xiàlái xiūxí, kěshì tā shuō, jìrán shì zìjǐ juédìng de shì, jiù yào jiānchí dàodǐ. Wǒ mā yě wèile ràng tā pǎo wán jiù yǒu fàn chī, tèdì bǎ wǎncān shíjiān gǎi dào bā diǎn. Bàn nián hòu, tā de shēntǐ hǎo le hěn duō, yóuqí wǎnshàng shuì de bǐ yǐqián hǎo: yǐqián chángcháng shuì bù zháo, xiànzài yì tǎng xià jiù shuìzháo le. Tā cháng shuō, jiǎrú tā zǎo jǐ nián kāishǐ yùndòng, shēntǐ jiù bú huì biàn de nàme chà.",
+            "english": "My dad used to hardly exercise; after work he would just sit on the sofa watching TV. The doctor reminded him again and again to exercise more, and every time he just said \"OK\" and never did it. Not until this year, when climbing to the third floor left him needing a rest, did he start running in the park every day. At first he wanted to stop for a rest after ten minutes, but he said that since it was his own decision, he had to stick with it to the end. So that he would have dinner ready as soon as he finished running, my mom made a point of moving dinner to eight. Six months on, his health is much better, especially his sleep at night: he used to have trouble sleeping, and now he falls asleep as soon as he lies down. He often says that if he had started exercising a few years earlier, his health would never have got so bad."
+          },
+          "questions": [
+            {
+              "id": "b3l10-cloze-1-1",
+              "choices": [
+                {
+                  "traditional": "突然",
+                  "simplified": "突然",
+                  "pinyin": "túrán",
+                  "english": "suddenly"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                },
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had no choice but to"
+                },
+                {
+                  "traditional": "一再",
+                  "simplified": "一再",
+                  "pinyin": "yízài",
+                  "english": "again and again"
+                }
+              ],
+              "key": 3,
+              "why": "The next clause says 他每次都只說「好」，從來沒做到: many reminders, every one ignored, so 一再. 突然 and 終於 make it one reminder, and 終於 would also need him to act on it; 只好 needs a reason the doctor had no other choice.",
+              "focus": {
+                "zh": "一再",
+                "en": "again and again"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-21"
+              ],
+              "grammarIds": [
+                "B3L10-G05-P274"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-1-2",
+              "choices": [
+                {
+                  "traditional": "跑得快一點",
+                  "simplified": "跑得快一点",
+                  "pinyin": "pǎo de kuài yìdiǎn",
+                  "english": "to run a bit faster"
+                },
+                {
+                  "traditional": "停下來休息",
+                  "simplified": "停下来休息",
+                  "pinyin": "tíng xiàlái xiūxí",
+                  "english": "to stop for a rest"
+                },
+                {
+                  "traditional": "換一條路跑",
+                  "simplified": "换一条路跑",
+                  "pinyin": "huàn yì tiáo lù pǎo",
+                  "english": "to run a different way"
+                },
+                {
+                  "traditional": "找朋友陪他",
+                  "simplified": "找朋友陪他",
+                  "pinyin": "zhǎo péngyǒu péi tā",
+                  "english": "to find a friend to go with him"
+                }
+              ],
+              "key": 1,
+              "why": "The next part turns with 可是 to 就要堅持到底, keep going to the end, so what he wanted after ten minutes must be the opposite: to stop. Running faster, another route or a friend along all keep him running, so 可是 would have nothing to turn against.",
+              "focus": {
+                "zh": "前後的關係",
+                "en": "what fits the turn after 可是"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L04-1-05",
+                "B2L05-2-17",
+                "B1L06-2-07"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-1-3",
+              "choices": [
+                {
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "english": "although"
+                },
+                {
+                  "traditional": "不管",
+                  "simplified": "不管",
+                  "pinyin": "bùguǎn",
+                  "english": "no matter"
+                },
+                {
+                  "traditional": "就算",
+                  "simplified": "就算",
+                  "pinyin": "jiùsuàn",
+                  "english": "even if"
+                },
+                {
+                  "traditional": "既然",
+                  "simplified": "既然",
+                  "pinyin": "jìrán",
+                  "english": "since"
+                }
+              ],
+              "key": 3,
+              "why": "既然是自己決定的事，就要…: 既然 takes a fact both sides accept and pairs with 就. 雖然 needs 可是, 不管 needs 都 and a question word, and 就算 needs 也.",
+              "focus": {
+                "zh": "既然……就……",
+                "en": "since…, then…"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B3L06-1-39"
+              ],
+              "grammarIds": [
+                "B3L06-G04-P160"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-1-4",
+              "choices": [
+                {
+                  "traditional": "除了",
+                  "simplified": "除了",
+                  "pinyin": "chúle",
+                  "english": "apart from"
+                },
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                },
+                {
+                  "traditional": "為了",
+                  "simplified": "为了",
+                  "pinyin": "wèile",
+                  "english": "in order to"
+                },
+                {
+                  "traditional": "不但",
+                  "simplified": "不但",
+                  "pinyin": "búdàn",
+                  "english": "not only"
+                }
+              ],
+              "key": 2,
+              "why": "讓他跑完就有飯吃 is the goal Mom wants, and 特地把晚餐時間改到八點 is what she did for it: 為了 + goal (the written pattern adds 而 before the action). 除了 and 不但 need 還 or 也 after them, and 只要 needs 就.",
+              "focus": {
+                "zh": "為了（目的）",
+                "en": "in order to (a goal)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L08-1-28",
+                "B3L03-1-05"
+              ],
+              "grammarIds": [
+                "B3L10-G07-P276"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-1-5",
+              "choices": [
+                {
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "english": "instead"
+                },
+                {
+                  "traditional": "畢竟",
+                  "simplified": "毕竟",
+                  "pinyin": "bìjìng",
+                  "english": "after all"
+                },
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "moreover"
+                },
+                {
+                  "traditional": "尤其",
+                  "simplified": "尤其",
+                  "pinyin": "yóuqí",
+                  "english": "especially"
+                }
+              ],
+              "key": 3,
+              "why": "身體好了很多，尤其晚上睡得比以前好: 尤其 picks out the part that improved most, and the next sentence tells how. 反而 needs a result against what you expect, but better sleep goes with better health; 畢竟 and 況且 give reasons in an argument, and sleep is not a reason for his health.",
+              "focus": {
+                "zh": "尤其是",
+                "en": "especially"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B3L09-2-01"
+              ],
+              "grammarIds": [
+                "B3L09-G05-P247"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-1-6",
+              "choices": [
+                {
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "english": "because"
+                },
+                {
+                  "traditional": "假如",
+                  "simplified": "假如",
+                  "pinyin": "jiǎrú",
+                  "english": "if"
+                },
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "只有",
+                  "simplified": "只有",
+                  "pinyin": "zhǐyǒu",
+                  "english": "only if"
+                }
+              ],
+              "key": 1,
+              "why": "The passage says he did not start until this year (直到今年…才開始), so \"started a few years earlier\" never happened: only 假如 can introduce it, with 就 after. 因為 and 難怪 treat it as a fact, and 只有 needs 才, not 就.",
+              "focus": {
+                "zh": "假如",
+                "en": "if (written style)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-22",
+                "B2L10-1-22"
+              ],
+              "grammarIds": [
+                "B3L10-G06-P275"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-cloze-2",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "我姊姊在一家電腦公司上班，常常忙到晚上十點才吃晚餐，週末也在家工作。她也想早點下班，{1}老闆一直給她新的工作，她實在走不開。上個月她下班走到捷運站時，突然覺得頭很重，全身都不舒服，連路都走不動了。她本來以為只是沒睡好，{2}醫生說，這都是工作太累害的，要她馬上{3}生活作息。所以她跟老闆好好{4}了一次，現在每天六點就下班，晚上還會去公園走走。她說，以前她為了{5}而不管自己的身體，現在才知道，工作再重要，{6}沒有健康重要。",
+            "simplified": "我姐姐在一家电脑公司上班，常常忙到晚上十点才吃晚餐，周末也在家工作。她也想早点下班，{1}老板一直给她新的工作，她实在走不开。上个月她下班走到捷运站时，突然觉得头很重，全身都不舒服，连路都走不动了。她本来以为只是没睡好，{2}医生说，这都是工作太累害的，要她马上{3}生活作息。所以她跟老板好好{4}了一次，现在每天六点就下班，晚上还会去公园走走。她说，以前她为了{5}而不管自己的身体，现在才知道，工作再重要，{6}没有健康重要。",
+            "pinyin": "Wǒ jiějie zài yì jiā diànnǎo gōngsī shàngbān, chángcháng máng dào wǎnshàng shí diǎn cái chī wǎncān, zhōumò yě zài jiā gōngzuò. Tā yě xiǎng zǎo diǎn xiàbān, zhǐbúguò lǎobǎn yìzhí gěi tā xīn de gōngzuò, tā shízài zǒu bù kāi. Shàng ge yuè tā xiàbān zǒu dào jiéyùn zhàn shí, túrán juéde tóu hěn zhòng, quánshēn dōu bù shūfú, lián lù dōu zǒu bú dòng le. Tā běnlái yǐwéi zhǐ shì méi shuì hǎo, méixiǎngdào yīshēng shuō, zhè dōu shì gōngzuò tài lèi hài de, yào tā mǎshàng tiáozhěng shēnghuó zuòxí. Suǒyǐ tā gēn lǎobǎn hǎohǎo gōutōng le yí cì, xiànzài měi tiān liù diǎn jiù xiàbān, wǎnshàng hái huì qù gōngyuán zǒuzou. Tā shuō, yǐqián tā wèile bǎ gōngzuò zuò wán ér bù guǎn zìjǐ de shēntǐ, xiànzài cái zhīdào, gōngzuò zài zhòngyào, yě méiyǒu jiànkāng zhòngyào.",
+            "english": "My older sister works at a computer company. She is often so busy she doesn't eat dinner until ten at night, and she works at home at weekends too. She would like to leave work earlier too; it's just that her boss keeps giving her new work, and she really can't get away. Last month, walking to the MRT station after work, her head suddenly felt heavy, she felt ill all over, and she couldn't even walk. She thought she just hadn't slept well, but to her surprise the doctor said it was all caused by overwork and told her to adjust her daily schedule at once. So she had a proper talk with her boss, and now she leaves at six every day and goes for a walk in the park in the evening. She says that she used to ignore her health to get her work done, and now she knows that however important work is, it is not as important as health."
+          },
+          "questions": [
+            {
+              "id": "b3l10-cloze-2-1",
+              "choices": [
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "moreover"
+                },
+                {
+                  "traditional": "因此",
+                  "simplified": "因此",
+                  "pinyin": "yīncǐ",
+                  "english": "therefore"
+                },
+                {
+                  "traditional": "只不過",
+                  "simplified": "只不过",
+                  "pinyin": "zhǐbúguò",
+                  "english": "it's just that"
+                },
+                {
+                  "traditional": "甚至",
+                  "simplified": "甚至",
+                  "pinyin": "shènzhì",
+                  "english": "even"
+                }
+              ],
+              "key": 2,
+              "why": "她也想早點下班，只不過老闆一直給她新的工作: 只不過 adds the catch that stops her. 況且 and 甚至 would add to her wish instead of blocking it, and 因此 would make the boss's work a result of her wish.",
+              "focus": {
+                "zh": "只不過",
+                "en": "it's just that…"
+              },
+              "lesson": 10,
+              "wordIds": [],
+              "grammarIds": [
+                "B3L10-G02-P263"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-2-2",
+              "choices": [
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "沒想到",
+                  "simplified": "没想到",
+                  "pinyin": "méixiǎngdào",
+                  "english": "unexpectedly"
+                },
+                {
+                  "traditional": "再說",
+                  "simplified": "再说",
+                  "pinyin": "zàishuō",
+                  "english": "besides"
+                },
+                {
+                  "traditional": "因此",
+                  "simplified": "因此",
+                  "pinyin": "yīncǐ",
+                  "english": "therefore"
+                }
+              ],
+              "key": 1,
+              "why": "她本來以為只是沒睡好，沒想到醫生說…: 以為……沒想到 turns from what she thought to the surprise. 難怪 needs a cause told before, 再說 adds a reason, and 因此 a result.",
+              "focus": {
+                "zh": "以為……，沒想到……",
+                "en": "thought…; unexpectedly…"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B2L08-2-03",
+                "B1L16-2-01"
+              ],
+              "grammarIds": [
+                "B3L05-G03-P132"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-2-3",
+              "choices": [
+                {
+                  "traditional": "調整",
+                  "simplified": "调整",
+                  "pinyin": "tiáozhěng",
+                  "english": "to adjust"
+                },
+                {
+                  "traditional": "堅持",
+                  "simplified": "坚持",
+                  "pinyin": "jiānchí",
+                  "english": "to keep to"
+                },
+                {
+                  "traditional": "了解",
+                  "simplified": "了解",
+                  "pinyin": "liǎojiě",
+                  "english": "to understand"
+                },
+                {
+                  "traditional": "習慣",
+                  "simplified": "习惯",
+                  "pinyin": "xíguàn",
+                  "english": "to get used to"
+                }
+              ],
+              "key": 0,
+              "why": "Her schedule (work till ten, weekends at work) made her ill, and next she leaves at six: the doctor wants it changed, 調整生活作息. 堅持 and 習慣 would keep the schedule that made her ill, and 了解 changes nothing.",
+              "focus": {
+                "zh": "調整作息",
+                "en": "to adjust one's schedule"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-17",
+                "B3L10-2-18"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-2-4",
+              "choices": [
+                {
+                  "traditional": "道歉",
+                  "simplified": "道歉",
+                  "pinyin": "dàoqiàn",
+                  "english": "to apologise"
+                },
+                {
+                  "traditional": "合作",
+                  "simplified": "合作",
+                  "pinyin": "hézuò",
+                  "english": "to work together"
+                },
+                {
+                  "traditional": "學習",
+                  "simplified": "学习",
+                  "pinyin": "xuéxí",
+                  "english": "to learn"
+                },
+                {
+                  "traditional": "溝通",
+                  "simplified": "沟通",
+                  "pinyin": "gōutōng",
+                  "english": "to talk things through"
+                }
+              ],
+              "key": 3,
+              "why": "Her boss kept giving her new work, and after one talk with him she leaves at six: she had to talk the problem through with him, 溝通. 道歉 would mean she had done something wrong, and working or learning together with him would not get her home earlier.",
+              "focus": {
+                "zh": "溝通（用詞）",
+                "en": "choosing the right verb"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-1-16",
+                "B1L12-1-13"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-2-5",
+              "choices": [
+                {
+                  "traditional": "多接新的工作",
+                  "simplified": "多接新的工作",
+                  "pinyin": "duō jiē xīn de gōngzuò",
+                  "english": "to take on more new work"
+                },
+                {
+                  "traditional": "換到別的公司",
+                  "simplified": "换到别的公司",
+                  "pinyin": "huàn dào bié de gōngsī",
+                  "english": "to move to another company"
+                },
+                {
+                  "traditional": "把工作做完",
+                  "simplified": "把工作做完",
+                  "pinyin": "bǎ gōngzuò zuò wán",
+                  "english": "to get her work done"
+                },
+                {
+                  "traditional": "多拿一點加班費",
+                  "simplified": "多拿一点加班费",
+                  "pinyin": "duō ná yìdiǎn jiābān fèi",
+                  "english": "to get more overtime pay"
+                }
+              ],
+              "key": 2,
+              "why": "為了 needs the goal she gave up her health for: she worked till ten and at weekends to finish her work. The new work was the boss's doing, not something she went after; she still works at the same company; and she wanted to leave early (她也想早點下班), so it was not for overtime pay.",
+              "focus": {
+                "zh": "為了……而……",
+                "en": "in order to…"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L08-1-28",
+                "B3L01-2-02",
+                "B3L10-1-14"
+              ],
+              "grammarIds": [
+                "B3L10-G07-P276"
+              ]
+            },
+            {
+              "id": "b3l10-cloze-2-6",
+              "choices": [
+                {
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "english": "still"
+                },
+                {
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "english": "then"
+                },
+                {
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "english": "only then"
+                },
+                {
+                  "traditional": "而",
+                  "simplified": "而",
+                  "pinyin": "ér",
+                  "english": "and; yet"
+                }
+              ],
+              "key": 0,
+              "why": "工作再重要，也沒有健康重要: 再……也 means \"however… still\". 而 links two actions or states but cannot answer 再, and 就 and 才 would make work's importance a condition.",
+              "focus": {
+                "zh": "再……也……",
+                "en": "however…, still…"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B1L12-3-11"
+              ],
+              "grammarIds": [
+                "B3L08-G02-P211"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l10-reading-card-1",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "健康檢查簡介",
+            "simplified": "健康检查简介",
+            "pinyin": "Jiànkāng jiǎnchá jiǎnjiè",
+            "english": "Health Checkups: A Brief Guide"
+          },
+          "text": {
+            "traditional": "想做健康檢查的人，請上網填表。\n基本健檢：星期一到星期五上午，1,500元\n全身健檢：星期六上午，6,000元，約三個小時\n年齡滿四十歲：基本健檢免費，每三年一次\n檢查前一天晚上十二點以後，請不要吃東西\n假如需要改時間，請在檢查三天前打電話：(02)2345-6789",
+            "simplified": "想做健康检查的人，请上网填表。\n基本健检：星期一到星期五上午，1,500元\n全身健检：星期六上午，6,000元，约三个小时\n年龄满四十岁：基本健检免费，每三年一次\n检查前一天晚上十二点以后，请不要吃东西\n假如需要改时间，请在检查三天前打电话：(02)2345-6789",
+            "pinyin": "Xiǎng zuò jiànkāng jiǎnchá de rén, qǐng shàngwǎng tián biǎo. Jīběn jiànjiǎn: xīngqíyī dào xīngqíwǔ shàngwǔ, yìqiān wǔbǎi yuán. Quánshēn jiànjiǎn: xīngqíliù shàngwǔ, liùqiān yuán, yuē sān ge xiǎoshí. Niánlíng mǎn sìshí suì: jīběn jiànjiǎn miǎnfèi, měi sān nián yí cì. Jiǎnchá qián yì tiān wǎnshàng shí'èr diǎn yǐhòu, qǐng bú yào chī dōngxi. Jiǎrú xūyào gǎi shíjiān, qǐng zài jiǎnchá sān tiān qián dǎ diànhuà: líng èr èr sān sì wǔ liù qī bā jiǔ.",
+            "english": "To have a checkup, please fill in the form online.\nBasic checkup: Monday to Friday mornings, NT$1,500\nFull checkup: Saturday mornings, NT$6,000, about three hours\nAge 40 and over: basic checkup free, once every three years\nPlease eat nothing after midnight the night before your checkup\nTo change your time, please call three days before your checkup: (02)2345-6789"
+          },
+          "questions": [
+            {
+              "id": "b3l10-reading-card-1-1",
+              "prompt": {
+                "traditional": "一位四十五歲的先生只有星期六有空，他想在這家醫院做健檢，應該怎麼辦？",
+                "simplified": "一位四十五岁的先生只有星期六有空，他想在这家医院做健检，应该怎么办？",
+                "pinyin": "Yí wèi sìshíwǔ suì de xiānshēng zhǐyǒu xīngqíliù yǒu kòng, tā xiǎng zài zhè jiā yīyuàn zuò jiànjiǎn, yīnggāi zěnme bàn?",
+                "english": "A 45-year-old man is free only on Saturdays and wants a checkup here. What should he do?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期六免費做基本健檢",
+                  "simplified": "星期六免费做基本健检",
+                  "pinyin": "Xīngqíliù miǎnfèi zuò jīběn jiànjiǎn.",
+                  "english": "Have a free basic checkup on Saturday."
+                },
+                {
+                  "traditional": "付六千元做全身的檢查",
+                  "simplified": "付六千元做全身的检查",
+                  "pinyin": "Fù liùqiān yuán zuò quánshēn de jiǎnchá.",
+                  "english": "Pay NT$6,000 for a full checkup."
+                },
+                {
+                  "traditional": "付一千五做基本的檢查",
+                  "simplified": "付一千五做基本的检查",
+                  "pinyin": "Fù yìqiān wǔ zuò jīběn de jiǎnchá.",
+                  "english": "Pay NT$1,500 for a basic checkup."
+                },
+                {
+                  "traditional": "等三年以後再去檢查",
+                  "simplified": "等三年以后再去检查",
+                  "pinyin": "Děng sān nián yǐhòu zài qù jiǎnchá.",
+                  "english": "Wait three years, then go."
+                }
+              ],
+              "key": 1,
+              "why": "He is over forty, so the basic checkup would be free, but it runs only Monday to Friday. On Saturday the hospital offers only the full checkup, at NT$6,000. The basic one at 1,500 is also a weekday one.",
+              "focus": {
+                "zh": "兩行合起來看",
+                "en": "combining two lines"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-1-24",
+                "B3L10-1-10",
+                "B2L07-1-07",
+                "B3L10-1-22"
+              ]
+            },
+            {
+              "id": "b3l10-reading-card-1-2",
+              "prompt": {
+                "traditional": "一位太太約了下星期四上午做基本健檢，現在想改時間。她最晚星期幾要打電話？",
+                "simplified": "一位太太约了下星期四上午做基本健检，现在想改时间。她最晚星期几要打电话？",
+                "pinyin": "Yí wèi tàitai yuē le xià xīngqísì shàngwǔ zuò jīběn jiànjiǎn, xiànzài xiǎng gǎi shíjiān. Tā zuì wǎn xīngqí jǐ yào dǎ diànhuà?",
+                "english": "A woman booked a basic checkup for next Thursday morning and now wants to change it. By what day at the latest must she call?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期一",
+                  "simplified": "星期一",
+                  "pinyin": "Xīngqíyī",
+                  "english": "Monday"
+                },
+                {
+                  "traditional": "星期二",
+                  "simplified": "星期二",
+                  "pinyin": "Xīngqí'èr",
+                  "english": "Tuesday"
+                },
+                {
+                  "traditional": "星期三",
+                  "simplified": "星期三",
+                  "pinyin": "Xīngqísān",
+                  "english": "Wednesday"
+                },
+                {
+                  "traditional": "星期四",
+                  "simplified": "星期四",
+                  "pinyin": "Xīngqísì",
+                  "english": "Thursday"
+                }
+              ],
+              "key": 0,
+              "why": "The rule is 假如需要改時間，請在檢查三天前打電話, and three days before Thursday is Monday. Wednesday comes from the eating rule (前一天), which is about the night before, and Thursday is the checkup itself.",
+              "focus": {
+                "zh": "假如；兩行合起來看",
+                "en": "if; combining two lines"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-22",
+                "B3L10-1-22",
+                "B3L07-2-13"
+              ],
+              "grammarIds": [
+                "B3L10-G06-P275"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-reading-card-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "媽：\n醫院打電話來說，爸爸的檢查報告出來了，基本上沒什麼大問題，只不過要少吃鹹的，也要多運動。醫生希望爸爸下星期三上午再去一次，跟醫生談一談。\n我那天上午有考試，伯伯說他可以開車送爸爸去，所以妳不用請假了。假如伯伯那天有事，我考完試再陪爸爸去，醫生說下午去也可以。\n還有，爸爸一再說他身體很好，不必再去了，我跟他說了好幾次都沒用。請妳一定要好好跟他溝通。\n小東",
+            "simplified": "妈：\n医院打电话来说，爸爸的检查报告出来了，基本上没什么大问题，只不过要少吃咸的，也要多运动。医生希望爸爸下星期三上午再去一次，跟医生谈一谈。\n我那天上午有考试，伯伯说他可以开车送爸爸去，所以你不用请假了。假如伯伯那天有事，我考完试再陪爸爸去，医生说下午去也可以。\n还有，爸爸一再说他身体很好，不必再去了，我跟他说了好几次都没用。请你一定要好好跟他沟通。\n小东",
+            "pinyin": "Mā: Yīyuàn dǎ diànhuà lái shuō, bàba de jiǎnchá bàogào chūlái le, jīběn shàng méi shénme dà wèntí, zhǐbúguò yào shǎo chī xián de, yě yào duō yùndòng. Yīshēng xīwàng bàba xià xīngqísān shàngwǔ zài qù yí cì, gēn yīshēng tán yì tán. Wǒ nà tiān shàngwǔ yǒu kǎoshì, bóbo shuō tā kěyǐ kāichē sòng bàba qù, suǒyǐ nǐ bú yòng qǐngjià le. Jiǎrú bóbo nà tiān yǒu shì, wǒ kǎo wán shì zài péi bàba qù, yīshēng shuō xiàwǔ qù yě kěyǐ. Háiyǒu, bàba yízài shuō tā shēntǐ hěn hǎo, búbì zài qù le, wǒ gēn tā shuō le hǎojǐ cì dōu méi yòng. Qǐng nǐ yídìng yào hǎohǎo gēn tā gōutōng. Xiǎodōng",
+            "english": "Mom,\nThe hospital called: Dad's checkup report is out. Basically there's nothing seriously wrong; it's just that he needs to eat less salty food and exercise more. The doctor would like Dad to come in again next Wednesday morning for a talk.\nI have an exam that morning, but Uncle says he can drive Dad there, so you don't need to take time off. If Uncle can't make it that day, I'll take Dad after my exam; the doctor says the afternoon is fine too.\nAlso, Dad keeps saying he's perfectly healthy and doesn't need to go again. I've told him several times and it does no good. Please make sure you talk it over with him properly.\nXiaodong"
+          },
+          "questions": [
+            {
+              "id": "b3l10-reading-card-2-1",
+              "prompt": {
+                "traditional": "小東最希望媽媽幫忙做什麼？",
+                "simplified": "小东最希望妈妈帮忙做什么？",
+                "pinyin": "Xiǎodōng zuì xīwàng māma bāngmáng zuò shénme?",
+                "english": "What does Xiaodong most want Mom to help with?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期三請假陪爸爸去",
+                  "simplified": "星期三请假陪爸爸去",
+                  "pinyin": "Xīngqísān qǐngjià péi bàba qù.",
+                  "english": "Take Wednesday off and go with Dad."
+                },
+                {
+                  "traditional": "讓爸爸願意再去醫院",
+                  "simplified": "让爸爸愿意再去医院",
+                  "pinyin": "Ràng bàba yuànyì zài qù yīyuàn.",
+                  "english": "Get Dad willing to go back to the hospital."
+                },
+                {
+                  "traditional": "請伯伯開車送爸爸去",
+                  "simplified": "请伯伯开车送爸爸去",
+                  "pinyin": "Qǐng bóbo kāichē sòng bàba qù.",
+                  "english": "Ask Uncle to drive Dad there."
+                },
+                {
+                  "traditional": "叫爸爸少吃鹹的東西",
+                  "simplified": "叫爸爸少吃咸的东西",
+                  "pinyin": "Jiào bàba shǎo chī xián de dōngxi.",
+                  "english": "Tell Dad to eat less salty food."
+                }
+              ],
+              "key": 1,
+              "why": "The ride is settled (伯伯…可以開車送爸爸去，所以妳不用請假了); what is left is that Dad 一再 says he need not go and Xiaodong 說了好幾次都沒用, so 請妳一定要好好跟他溝通. Uncle has already offered, and the salt is the doctor's advice, not a request to Mom.",
+              "focus": {
+                "zh": "一再；寫信人的目的",
+                "en": "again and again; the writer's purpose"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-21",
+                "B3L10-1-16",
+                "B2L03-1-41"
+              ],
+              "grammarIds": [
+                "B3L10-G05-P274",
+                "B3L10-G02-P263"
+              ]
+            },
+            {
+              "id": "b3l10-reading-card-2-2",
+              "prompt": {
+                "traditional": "要是伯伯星期三那天有事，爸爸會怎麼去醫院？",
+                "simplified": "要是伯伯星期三那天有事，爸爸会怎么去医院？",
+                "pinyin": "Yàoshì bóbo xīngqísān nà tiān yǒu shì, bàba huì zěnme qù yīyuàn?",
+                "english": "If Uncle is busy on Wednesday, how will Dad get to the hospital?"
+              },
+              "choices": [
+                {
+                  "traditional": "小東上午陪他去",
+                  "simplified": "小东上午陪他去",
+                  "pinyin": "Xiǎodōng shàngwǔ péi tā qù.",
+                  "english": "Xiaodong will take him in the morning."
+                },
+                {
+                  "traditional": "媽媽上午陪他去",
+                  "simplified": "妈妈上午陪他去",
+                  "pinyin": "Māma shàngwǔ péi tā qù.",
+                  "english": "Mom will take him in the morning."
+                },
+                {
+                  "traditional": "小東下午陪他去",
+                  "simplified": "小东下午陪他去",
+                  "pinyin": "Xiǎodōng xiàwǔ péi tā qù.",
+                  "english": "Xiaodong will take him in the afternoon."
+                },
+                {
+                  "traditional": "改天有空再去",
+                  "simplified": "改天有空再去",
+                  "pinyin": "Gǎitiān yǒu kòng zài qù.",
+                  "english": "He will go another day when he is free."
+                }
+              ],
+              "key": 2,
+              "why": "假如伯伯那天有事，我考完試再陪爸爸去: the exam fills the morning, so it is the afternoon, which 醫生說下午去也可以 allows. Mom is told she need not take time off, and no other day is planned.",
+              "focus": {
+                "zh": "假如；兩句合起來看",
+                "en": "if; combining two lines"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-22",
+                "B3L10-2-01",
+                "B2L03-1-05"
+              ],
+              "grammarIds": [
+                "B3L10-G06-P275"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passage",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l10-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "媽媽學游泳",
+            "simplified": "妈妈学游泳",
+            "pinyin": "Māma xué yóuyǒng",
+            "english": "Mom Learns to Swim"
+          },
+          "text": {
+            "traditional": "我媽媽在市場賣菜，一天要站十幾個小時。去年她的腳常常痛，醫生說她得多運動，最好去游泳，因為游泳對腳的負擔比較小。可是媽媽小時候在河邊玩水，差一點出了意外，從那時候起就很怕水。我一再叫她去學，她都說：「我都五十幾歲了，還學什麼游泳？」後來，我發現社區的游泳池有一個給年紀比較大的人上的班，就陪她去看了一次。她看到班上有幾位七十幾歲的老太太游得很開心，才答應試試看。剛開始，她連把頭放進水裡都不敢，上了三次課就不想學了。老師對她說：「既然來了，就學到底吧！我也一定會一直教到妳會。」媽媽為了不讓老師白教，每個星期都去上兩次課，一次也沒請過假。半年以後，她已經能游五十公尺了，腳也不那麼痛了。現在她每天早上都去游泳，還交了好幾個新朋友。她常說，學游泳不難，最難的是第一次走進游泳池。",
+            "simplified": "我妈妈在市场卖菜，一天要站十几个小时。去年她的脚常常痛，医生说她得多运动，最好去游泳，因为游泳对脚的负担比较小。可是妈妈小时候在河边玩水，差一点出了意外，从那时候起就很怕水。我一再叫她去学，她都说：「我都五十几岁了，还学什么游泳？」后来，我发现社区的游泳池有一个给年纪比较大的人上的班，就陪她去看了一次。她看到班上有几位七十几岁的老太太游得很开心，才答应试试看。刚开始，她连把头放进水里都不敢，上了三次课就不想学了。老师对她说：「既然来了，就学到底吧！我也一定会一直教到你会。」妈妈为了不让老师白教，每个星期都去上两次课，一次也没请过假。半年以后，她已经能游五十公尺了，脚也不那么痛了。现在她每天早上都去游泳，还交了好几个新朋友。她常说，学游泳不难，最难的是第一次走进游泳池。",
+            "pinyin": "Wǒ māma zài shìchǎng mài cài, yì tiān yào zhàn shí jǐ ge xiǎoshí. Qùnián tā de jiǎo chángcháng tòng, yīshēng shuō tā děi duō yùndòng, zuì hǎo qù yóuyǒng, yīnwèi yóuyǒng duì jiǎo de fùdān bǐjiào xiǎo. Kěshì māma xiǎo shíhòu zài hébiān wán shuǐ, chàyìdiǎn chū le yìwài, cóng nà shíhòu qǐ jiù hěn pà shuǐ. Wǒ yízài jiào tā qù xué, tā dōu shuō: \"Wǒ dōu wǔshí jǐ suì le, hái xué shénme yóuyǒng?\" Hòulái, wǒ fāxiàn shèqū de yóuyǒngchí yǒu yí ge gěi niánjì bǐjiào dà de rén shàng de bān, jiù péi tā qù kàn le yí cì. Tā kàndào bān shàng yǒu jǐ wèi qīshí jǐ suì de lǎo tàitai yóu de hěn kāixīn, cái dāyìng shìshi kàn. Gāng kāishǐ, tā lián bǎ tóu fàng jìn shuǐ lǐ dōu bù gǎn, shàng le sān cì kè jiù bù xiǎng xué le. Lǎoshī duì tā shuō: \"Jìrán lái le, jiù xué dàodǐ ba! Wǒ yě yídìng huì yìzhí jiāo dào nǐ huì.\" Māma wèile bú ràng lǎoshī bái jiāo, měi ge xīngqí dōu qù shàng liǎng cì kè, yí cì yě méi qǐng guo jià. Bàn nián yǐhòu, tā yǐjīng néng yóu wǔshí gōngchǐ le, jiǎo yě bú nàme tòng le. Xiànzài tā měi tiān zǎoshàng dōu qù yóuyǒng, hái jiāo le hǎojǐ ge xīn péngyǒu. Tā cháng shuō, xué yóuyǒng bù nán, zuì nán de shì dì yī cì zǒu jìn yóuyǒngchí.",
+            "english": "My mother sells vegetables at the market and stands for over ten hours a day. Last year her feet often hurt. The doctor said she needed more exercise, ideally swimming, because swimming puts less strain on the feet. But when she was little she nearly had an accident playing in a river, and she has been afraid of water ever since. I told her to learn again and again, and she always said, \"I'm already in my fifties. Why would I learn to swim now?\" Later I found that the community pool had a class for older people, and I took her to have a look. When she saw several women in their seventies in the class swimming happily, she agreed to give it a try. At first she didn't even dare put her head under the water, and after three lessons she wanted to stop. The teacher told her, \"Since you've come, see it through! And I'll keep teaching you until you can do it.\" So that the teacher's work wouldn't be wasted, she went to two lessons every week and never once took a day off. Six months later she could swim fifty metres, and her feet didn't hurt so much. Now she swims every morning and has made several new friends. She often says learning to swim isn't hard; the hardest part is walking into the pool the first time."
+          },
+          "questions": [
+            {
+              "id": "b3l10-passage-1-1",
+              "prompt": {
+                "traditional": "醫生為什麼建議媽媽去游泳？",
+                "simplified": "医生为什么建议妈妈去游泳？",
+                "pinyin": "Yīshēng wèishénme jiànyì māma qù yóuyǒng?",
+                "english": "Why did the doctor suggest swimming?"
+              },
+              "choices": [
+                {
+                  "traditional": "游泳比較不會讓腳更痛",
+                  "simplified": "游泳比较不会让脚更痛",
+                  "pinyin": "Yóuyǒng bǐjiào bú huì ràng jiǎo gèng tòng.",
+                  "english": "Swimming is less likely to make her feet hurt more."
+                },
+                {
+                  "traditional": "她小時候常在河邊游泳",
+                  "simplified": "她小时候常在河边游泳",
+                  "pinyin": "Tā xiǎo shíhòu cháng zài hébiān yóuyǒng.",
+                  "english": "She often swam in the river as a child."
+                },
+                {
+                  "traditional": "社區有適合她的游泳班",
+                  "simplified": "社区有适合她的游泳班",
+                  "pinyin": "Shèqū yǒu shìhé tā de yóuyǒng bān.",
+                  "english": "The community had a class that suited her."
+                },
+                {
+                  "traditional": "游泳可以交到新朋友",
+                  "simplified": "游泳可以交到新朋友",
+                  "pinyin": "Yóuyǒng kěyǐ jiāo dào xīn péngyǒu.",
+                  "english": "Swimming is a way to make new friends."
+                }
+              ],
+              "key": 0,
+              "why": "因為游泳對腳的負擔比較小: her feet hurt from standing, and swimming spares them. The river is where she nearly had an accident, the class is what the writer found later, and the friends came at the end.",
+              "focus": {
+                "zh": "原因",
+                "en": "a reason"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L10-2-14",
+                "B3L09-2-24"
+              ]
+            },
+            {
+              "id": "b3l10-passage-1-2",
+              "prompt": {
+                "traditional": "老師說「既然來了，就學到底吧！」，是希望媽媽怎麼樣？",
+                "simplified": "老师说「既然来了，就学到底吧！」，是希望妈妈怎么样？",
+                "pinyin": "Lǎoshī shuō \"Jìrán lái le, jiù xué dàodǐ ba!\", shì xīwàng māma zěnmeyàng?",
+                "english": "What does the teacher want from Mom when she says \"Since you've come, see it through\"?"
+              },
+              "choices": [
+                {
+                  "traditional": "一個星期上兩次課",
+                  "simplified": "一个星期上两次课",
+                  "pinyin": "Yí ge xīngqí shàng liǎng cì kè.",
+                  "english": "To come to two lessons a week."
+                },
+                {
+                  "traditional": "先學會把頭放進水裡",
+                  "simplified": "先学会把头放进水里",
+                  "pinyin": "Xiān xuéhuì bǎ tóu fàng jìn shuǐ lǐ.",
+                  "english": "To learn to put her head under water first."
+                },
+                {
+                  "traditional": "別上了幾次就不學了",
+                  "simplified": "别上了几次就不学了",
+                  "pinyin": "Bié shàng le jǐ cì jiù bù xué le.",
+                  "english": "Not to give up after a few lessons."
+                },
+                {
+                  "traditional": "跟那些老太太一起上課",
+                  "simplified": "跟那些老太太一起上课",
+                  "pinyin": "Gēn nàxiē lǎo tàitai yìqǐ shàngkè.",
+                  "english": "To take the class with the older women."
+                }
+              ],
+              "key": 2,
+              "why": "She said it right after Mom, still afraid to put her head under, 上了三次課就不想學了: 學到底 means keep going to the end instead of quitting. Twice a week is what Mom then chose herself (為了不讓老師白教), and the older women are why she started, not what the teacher asked.",
+              "focus": {
+                "zh": "V 到底；說話人的目的",
+                "en": "see it through; what someone wants"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-08",
+                "B3L06-1-39"
+              ],
+              "grammarIds": [
+                "B3L10-G04-P272"
+              ]
+            },
+            {
+              "id": "b3l10-passage-1-3",
+              "prompt": {
+                "traditional": "媽媽最後說的話是什麼意思？",
+                "simplified": "妈妈最后说的话是什么意思？",
+                "pinyin": "Māma zuìhòu shuō de huà shì shénme yìsi?",
+                "english": "What does Mom's last remark mean?"
+              },
+              "choices": [
+                {
+                  "traditional": "游泳比想的還要難學",
+                  "simplified": "游泳比想的还要难学",
+                  "pinyin": "Yóuyǒng bǐ xiǎng de hái yào nán xué.",
+                  "english": "Swimming is harder to learn than she thought."
+                },
+                {
+                  "traditional": "肯開始做是最不容易的",
+                  "simplified": "肯开始做是最不容易的",
+                  "pinyin": "Kěn kāishǐ zuò shì zuì bù róngyì de.",
+                  "english": "Being willing to start is the hardest part."
+                },
+                {
+                  "traditional": "游泳池離家還是太遠",
+                  "simplified": "游泳池离家还是太远",
+                  "pinyin": "Yóuyǒngchí lí jiā háishì tài yuǎn.",
+                  "english": "The pool is still too far from home."
+                },
+                {
+                  "traditional": "下水的時候最容易出事",
+                  "simplified": "下水的时候最容易出事",
+                  "pinyin": "Xià shuǐ de shíhòu zuì róngyì chū shì.",
+                  "english": "Getting into the water is most dangerous."
+                }
+              ],
+              "key": 1,
+              "why": "學游泳不難，最難的是第一次走進游泳池: walking in that first time stands for deciding to begin, which took her years. She says learning is not hard, and the step is about fear, not distance or danger.",
+              "focus": {
+                "zh": "寫這篇文章的人的意思",
+                "en": "what the text means"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L01-2-21",
+                "B1L08-1-14"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l10-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "自己煮飯",
+            "simplified": "自己煮饭",
+            "pinyin": "Zìjǐ zhǔ fàn",
+            "english": "Cooking for Myself"
+          },
+          "text": {
+            "traditional": "我一個人在臺北工作，因為很忙，三餐都在外面吃，不是小吃就是泡麵。去年公司做健康檢查，報告上好幾個數字都不太好。醫生一再提醒我，外面的東西又油又鹹，假如不改變飲食習慣，以後毛病會越來越多。我這才決定自己煮飯。剛開始我什麼都不會，第一次煮的湯淡得沒有味道，第二次又鹹得沒辦法喝，我差一點就不想做了。我媽知道以後，每個星期天晚上都打電話來，很有耐心地教我做一道菜。她說：「學做菜跟做別的事一樣，要學就學到底。」三個月以後，我已經會做十幾道菜了。今年再去健檢，那些數字都好多了。現在我每天帶自己做的午餐上班，同事都說我的菜看起來比餐廳的還好吃，還常常問我是怎麼做的。對我來說，自己煮飯的好處不只是身體變好了，還讓我跟媽媽多了很多可以聊的話題。",
+            "simplified": "我一个人在台北工作，因为很忙，三餐都在外面吃，不是小吃就是泡面。去年公司做健康检查，报告上好几个数字都不太好。医生一再提醒我，外面的东西又油又咸，假如不改变饮食习惯，以后毛病会越来越多。我这才决定自己煮饭。刚开始我什么都不会，第一次煮的汤淡得没有味道，第二次又咸得没办法喝，我差一点就不想做了。我妈知道以后，每个星期天晚上都打电话来，很有耐心地教我做一道菜。她说：「学做菜跟做别的事一样，要学就学到底。」三个月以后，我已经会做十几道菜了。今年再去健检，那些数字都好多了。现在我每天带自己做的午餐上班，同事都说我的菜看起来比餐厅的还好吃，还常常问我是怎么做的。对我来说，自己煮饭的好处不只是身体变好了，还让我跟妈妈多了很多可以聊的话题。",
+            "pinyin": "Wǒ yí ge rén zài Táiběi gōngzuò, yīnwèi hěn máng, sān cān dōu zài wàimiàn chī, bú shì xiǎochī jiù shì pàomiàn. Qùnián gōngsī zuò jiànkāng jiǎnchá, bàogào shàng hǎojǐ ge shùzì dōu bú tài hǎo. Yīshēng yízài tíxǐng wǒ, wàimiàn de dōngxi yòu yóu yòu xián, jiǎrú bù gǎibiàn yǐnshí xíguàn, yǐhòu máobìng huì yuè lái yuè duō. Wǒ zhè cái juédìng zìjǐ zhǔ fàn. Gāng kāishǐ wǒ shénme dōu bú huì, dì yī cì zhǔ de tāng dàn de méiyǒu wèidào, dì èr cì yòu xián de méi bànfǎ hē, wǒ chàyìdiǎn jiù bù xiǎng zuò le. Wǒ mā zhīdào yǐhòu, měi ge xīngqítiān wǎnshàng dōu dǎ diànhuà lái, hěn yǒu nàixīn de jiāo wǒ zuò yí dào cài. Tā shuō: \"Xué zuò cài gēn zuò bié de shì yíyàng, yào xué jiù xué dàodǐ.\" Sān ge yuè yǐhòu, wǒ yǐjīng huì zuò shí jǐ dào cài le. Jīnnián zài qù jiànjiǎn, nàxiē shùzì dōu hǎo duō le. Xiànzài wǒ měi tiān dài zìjǐ zuò de wǔcān shàngbān, tóngshì dōu shuō wǒ de cài kàn qǐlái bǐ cāntīng de hái hǎochī, hái chángcháng wèn wǒ shì zěnme zuò de. Duì wǒ lái shuō, zìjǐ zhǔ fàn de hǎochù bù zhǐ shì shēntǐ biàn hǎo le, hái ràng wǒ gēn māma duō le hěn duō kěyǐ liáo de huàtí.",
+            "english": "I work in Taipei on my own. Because I'm busy, I eat all three meals out: if it's not street snacks, it's instant noodles. Last year my company held health checkups, and several numbers on my report weren't good. The doctor reminded me again and again that food outside is oily and salty, and that if I didn't change my eating habits I would have more and more health problems. Only then did I decide to cook for myself. At first I couldn't do anything: the first soup I made was so bland it had no taste, the second so salty I couldn't drink it, and I nearly gave up. When my mom found out, she started phoning every Sunday evening to teach me one dish, very patiently. She said, \"Learning to cook is like anything else: if you're going to learn, learn it properly to the end.\" Three months later I could cook over a dozen dishes. At this year's checkup those numbers were much better. Now I bring a lunch I made myself to work every day, and my colleagues say my food looks better than a restaurant's and often ask how I make it. For me, cooking for myself hasn't just made me healthier; it has also given me and my mom lots more to talk about."
+          },
+          "questions": [
+            {
+              "id": "b3l10-passage-2-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人為什麼開始自己煮飯？",
+                "simplified": "写这篇文章的人为什么开始自己煮饭？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme kāishǐ zìjǐ zhǔ fàn?",
+                "english": "Why did the writer start cooking?"
+              },
+              "choices": [
+                {
+                  "traditional": "外面的東西越來越貴",
+                  "simplified": "外面的东西越来越贵",
+                  "pinyin": "Wàimiàn de dōngxi yuè lái yuè guì.",
+                  "english": "Eating out got more and more expensive."
+                },
+                {
+                  "traditional": "健檢的結果讓醫生擔心",
+                  "simplified": "健检的结果让医生担心",
+                  "pinyin": "Jiànjiǎn de jiéguǒ ràng yīshēng dānxīn.",
+                  "english": "The checkup results worried the doctor."
+                },
+                {
+                  "traditional": "媽媽一再要他學做菜",
+                  "simplified": "妈妈一再要他学做菜",
+                  "pinyin": "Māma yízài yào tā xué zuò cài.",
+                  "english": "His mother kept telling him to learn."
+                },
+                {
+                  "traditional": "同事想吃他做的午餐",
+                  "simplified": "同事想吃他做的午餐",
+                  "pinyin": "Tóngshì xiǎng chī tā zuò de wǔcān.",
+                  "english": "His colleagues wanted his lunches."
+                }
+              ],
+              "key": 1,
+              "why": "Bad numbers on the report, then the doctor's repeated warning (一再提醒…假如不改變…), then 我這才決定自己煮飯. Mom only helped once he had started, and the colleagues came at the end.",
+              "focus": {
+                "zh": "一再；假如",
+                "en": "again and again; if"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-21",
+                "B3L10-2-22",
+                "B2L10-1-34"
+              ],
+              "grammarIds": [
+                "B3L10-G05-P274",
+                "B3L10-G06-P275"
+              ]
+            },
+            {
+              "id": "b3l10-passage-2-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人差一點不想做菜了，媽媽是怎麼幫他的？",
+                "simplified": "写这篇文章的人差一点不想做菜了，妈妈是怎么帮他的？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén chàyìdiǎn bù xiǎng zuò cài le, māma shì zěnme bāng tā de?",
+                "english": "The writer nearly gave up cooking. How did his mother help?"
+              },
+              "choices": [
+                {
+                  "traditional": "每個星期來臺北陪他做菜",
+                  "simplified": "每个星期来台北陪他做菜",
+                  "pinyin": "Měi ge xīngqí lái Táiběi péi tā zuò cài.",
+                  "english": "She came to Taipei every week to cook with him."
+                },
+                {
+                  "traditional": "每個星期打電話教他做菜",
+                  "simplified": "每个星期打电话教他做菜",
+                  "pinyin": "Měi ge xīngqí dǎ diànhuà jiāo tā zuò cài.",
+                  "english": "She phoned every week to teach him a dish."
+                },
+                {
+                  "traditional": "教他把湯煮得淡一點",
+                  "simplified": "教他把汤煮得淡一点",
+                  "pinyin": "Jiāo tā bǎ tāng zhǔ de dàn yìdiǎn.",
+                  "english": "She taught him to make his soup less strong."
+                },
+                {
+                  "traditional": "一再說外面的東西太鹹",
+                  "simplified": "一再说外面的东西太咸",
+                  "pinyin": "Yízài shuō wàimiàn de dōngxi tài xián.",
+                  "english": "She kept saying food outside is too salty."
+                }
+              ],
+              "key": 1,
+              "why": "After the bland soup and the salty soup, 我媽知道以後，每個星期天晚上都打電話來…教我做一道菜, and she told him 要學就學到底. She did it by phone from home, the first soup was already too bland, and 一再提醒 about salty food was the doctor.",
+              "focus": {
+                "zh": "V 到底",
+                "en": "see it through (V到底)"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-08",
+                "B3L05-2-28",
+                "B3L10-2-25"
+              ],
+              "grammarIds": [
+                "B3L10-G04-P272"
+              ]
+            },
+            {
+              "id": "b3l10-passage-2-3",
+              "prompt": {
+                "traditional": "這篇文章主要想說什麼？",
+                "simplified": "这篇文章主要想说什么？",
+                "pinyin": "Zhè piān wénzhāng zhǔyào xiǎng shuō shénme?",
+                "english": "What is this text mainly saying?"
+              },
+              "choices": [
+                {
+                  "traditional": "外面的菜太油太鹹，要少吃",
+                  "simplified": "外面的菜太油太咸，要少吃",
+                  "pinyin": "Wàimiàn de cài tài yóu tài xián, yào shǎo chī.",
+                  "english": "Food outside is too oily and salty; eat less of it."
+                },
+                {
+                  "traditional": "學做菜很難，得有人一直教",
+                  "simplified": "学做菜很难，得有人一直教",
+                  "pinyin": "Xué zuò cài hěn nán, děi yǒu rén yìzhí jiāo.",
+                  "english": "Cooking is hard to learn; someone must keep teaching you."
+                },
+                {
+                  "traditional": "自己做的菜比餐廳的好吃",
+                  "simplified": "自己做的菜比餐厅的好吃",
+                  "pinyin": "Zìjǐ zuò de cài bǐ cāntīng de hǎochī.",
+                  "english": "Home cooking tastes better than a restaurant's."
+                },
+                {
+                  "traditional": "煮飯讓他更健康，也跟媽媽更有話聊",
+                  "simplified": "煮饭让他更健康，也跟妈妈更有话聊",
+                  "pinyin": "Zhǔ fàn ràng tā gèng jiànkāng, yě gēn māma gèng yǒu huà liáo.",
+                  "english": "Cooking made him healthier and gave him more to talk about with his mom."
+                }
+              ],
+              "key": 3,
+              "why": "The story runs from bad checkup numbers to better ones, and the last line names two gains: 身體變好了, and 跟媽媽多了很多可以聊的話題 (he lives alone, so the second gain is with his mom, not a family he cooks for). Oily, salty food is only the doctor's warning at the start, the hard first weeks are one stage, and the restaurant comparison is the colleagues' praise.",
+              "focus": {
+                "zh": "主旨",
+                "en": "the main idea"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B2L10-2-01",
+                "B3L08-1-14",
+                "B3L02-1-25"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
