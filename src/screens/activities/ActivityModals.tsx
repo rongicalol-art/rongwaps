@@ -20,7 +20,7 @@ import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
 import { usePracticeDataReady } from './hooks/usePracticeDataReady';
 import { useStudyMaterials } from './hooks/useStudyMaterials';
-import { useLessonNextStep, type ReadingTarget } from './hooks/useLessonNextStep';
+import { useLessonNextStep } from './hooks/useLessonNextStep';
 import type { Flashcard } from '../../data/flashcards';
 
 interface ActivityModalsProps {
@@ -37,8 +37,6 @@ interface ActivityModalsProps {
   isShellOverlayOpen: boolean;
   onOpenGrammarPart?: (partId: string | string[], pageId?: string) => void;
   onOpenLessonReadings?: (lessonIds: number[]) => void;
-  /** Opens one lesson part's reading (the end screen's "Read the dialogue"). */
-  onOpenReadingPart?: (target: ReadingTarget) => void;
   /** False when the lazy-load fallback window was already on screen, so the modal skips its own fade. */
   animateIn?: boolean;
 }
@@ -54,7 +52,6 @@ export function ActivityModals({
   isShellOverlayOpen,
   onOpenGrammarPart,
   onOpenLessonReadings,
-  onOpenReadingPart,
   animateIn = true,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
@@ -202,7 +199,7 @@ export function ActivityModals({
     onOpenGrammarPart,
   });
 
-  // After a lesson quiz the end screen offers one fitting next step: the unread dialogue, or a practice mode.
+  // After a lesson quiz the end screen offers one fitting next step: Sentences, or another practice mode.
   const nextStep = useLessonNextStep({
     enabled: isLessonPartFocused && !race && Boolean(activeActivity),
     bookId: activeBookId,
@@ -210,10 +207,6 @@ export function ActivityModals({
     partIds: selectedStudyPartIds,
     cards: deckCards,
     onPractice: setActiveActivity,
-    onRead: useMemo(() => onOpenReadingPart && ((target: ReadingTarget) => {
-      setActiveActivity(null);
-      onOpenReadingPart(target);
-    }), [onOpenReadingPart, setActiveActivity]),
   });
 
   const activityLabel = activeActivity === 'create-card'

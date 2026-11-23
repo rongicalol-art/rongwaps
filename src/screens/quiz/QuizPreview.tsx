@@ -112,7 +112,7 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
         onContinue={noop}
         onReviewMissed={previewKey === 'end-missed' ? noop : undefined}
         nextStep={previewKey === 'end-perfect'
-          ? { icon: 'dialogue', title: 'Read the dialogue', line: 'See these words in use', onSelect: noop }
+          ? { icon: 'reading', title: 'Practice sentences', line: 'Hear and read the lesson’s sentences', onSelect: noop }
           : { icon: 'tonesPractice', title: 'Practice tones', line: 'Hear a word, draw its tones', onSelect: noop }}
         onChallenge={noop}
       />

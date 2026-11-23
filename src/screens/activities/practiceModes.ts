@@ -22,8 +22,8 @@ export const PRACTICE_MODE_ORDER: readonly PracticeModeId[] = ['quiz', 'writing'
 
 /** A practice mode counts as recently done for a week; then it is suggested again. */
 const RECENT_MS = 7 * 24 * 60 * 60 * 1000;
-/** After a meaning quiz: sound first, then characters, then the words in sentences. */
-const SUGGESTION_ORDER: readonly PracticeModeId[] = ['tones', 'writing', 'sentences', 'pinyin'];
+/** After a meaning quiz: Sentences when the part has them (owner's pick over the dialogue), then tones, writing, pinyin. */
+const SUGGESTION_ORDER: readonly PracticeModeId[] = ['sentences', 'tones', 'writing', 'pinyin'];
 
 /**
  * The practice mode to suggest after a lesson quiz: the first one not practised on these words this week.
