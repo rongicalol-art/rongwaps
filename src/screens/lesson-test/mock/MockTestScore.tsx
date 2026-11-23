@@ -34,7 +34,8 @@ export function MockTestScore({ config, result, misses, onFix, onAnswers, onClos
         <h2 className="text-center text-lg font-black text-ui-ink-strong">{kindLabel(config.kind)}</h2>
       </div>
       <div className="mx-auto my-auto flex w-full max-w-md shrink-0 flex-col gap-6 py-6">
-        <h1 className="text-balance text-center text-6xl font-black leading-none text-brand-primary-text">{levelText(result)}</h1>
+        {/* "Level 3" stands large; the longer "Below Level 1" and "Level 3 or above" step down to stay on two lines. */}
+        <h1 className={cn('text-balance text-center font-black leading-none text-brand-primary-text', result.level !== null && !result.atCeiling ? 'text-6xl' : 'text-5xl')}>{levelText(result)}</h1>
         <ol aria-label={`${levelText(result)}, on the ladder from Novice to Level 6`} className="grid grid-cols-7 gap-1.5">
           {STEPS.map((step, index) => (
             <li

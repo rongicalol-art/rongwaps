@@ -217,7 +217,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
             progressCard={(
               <LibraryTocflProgressCard
                 readiness={tocflReadiness}
-                onMockTest={currentUser ? () => setMockTestOpen(true) : undefined}
+                onMockTest={currentUser || import.meta.env.DEV ? () => setMockTestOpen(true) : undefined}
                 onMockTestIntent={() => { void loadMockTest().catch(() => {}); }}
               />
             )}
