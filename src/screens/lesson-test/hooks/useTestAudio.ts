@@ -6,22 +6,12 @@ const wait = (ms: number) => new Promise((resolve) => { window.setTimeout(resolv
 /** TOCFL Novice/Band A: every recording plays twice (the mocks leave ~5 s between; the app lets you answer meanwhile, so 3 s). */
 const EXAM_PLAYS = 2;
 const BETWEEN_PLAYS_MS = 3000;
-/** A pause this long (the 2 s beat before the ding, not the gaps between answers) shows as waiting dots on the speaker key. */
-const WAIT_MS = 1500;
-const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
 /**
- * What the speaker key shows: a voice, the long pause, the ding, the question or the letter being read; `loading`
- * while the screen's recordings download; `retry` when a recording couldn't play (tap to try again).
+ * What the speaker key shows: `voice` while playing (pressed state), `loading` while the screen's recordings
+ * download, or `retry` when a recording couldn't play (tap to try again).
  */
-export type TestFace = 'voice' | 'wait' | 'ding' | 'question' | 'loading' | 'retry' | (typeof LETTERS)[number];
-
-function faceOf(step: AudioStep, previous: TestFace | null): TestFace | null {
-  if (step.mark !== undefined) return LETTERS[step.mark];
-  if (step.cue) return step.cue;
-  if (step.pauseMs && step.pauseMs >= WAIT_MS) return 'wait';
-  return previous;
-}
+export type TestFace = 'voice' | 'loading' | 'retry';
 
 /** One recording, never the browser's voice in its place (a test reads only recordings): false if it couldn't play. */
 function playClip(step: AudioStep): Promise<boolean> {
@@ -60,15 +50,13 @@ export function useTestAudio(steps: AudioStep[], key: string, mode: 'exam' | 're
   stepsRef.current = steps;
 
   const playOnce = useCallback(async (id: number): Promise<'done' | 'stopped' | 'failed'> => {
-    let shown: TestFace | null = null;
+    setFace('voice');
     for (const step of stepsRef.current) {
       if (run.current !== id) return 'stopped';
       setMark(step.mark ?? null);
       setMarkQuestion(step.question ?? 0);
       if (step.line !== undefined) setLine(step.line);
       else if (!step.pauseMs) setLine(null);
-      shown = faceOf(step, shown) ?? 'voice';
-      setFace(shown);
       if (step.cue === 'question') setAsked((count) => Math.max(count, (step.question ?? 0) + 1));
       if (step.pauseMs) await wait(step.pauseMs);
       else if (!(await playClip(step))) return run.current === id ? 'failed' : 'stopped';
