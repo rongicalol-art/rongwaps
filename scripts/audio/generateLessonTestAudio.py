@@ -73,10 +73,9 @@ YATING_PACE = {
     (1, 16): ({"F": 1.05, "M": 0.9, "N": 1.2}, True),
     (2, 8): ({"F": 1.05, "M": 1.0, "N": 1.2}, False),  # Owner's pick by ear (2026-11-19): about 4.6 characters a second.
     (2, 16): ({"F": 0.96, "M": 0.92, "N": 1.2}, False),  # L9–16 a step faster, about 5.0 (owner: "faster is okay").
-    (3, 5): ({"F": 1.05, "M": 0.9, "N": 1.2}, False),
-    # Book 3 L6–16 take Book 2's cast (YATING_CAST_FROM) and its speeds: L6–9 (TOCFL Level 3) at Book 2 L1–8's
-    # ≈ 4.6 characters a second, L10–16 (Level 4) at Book 2 L9–16's ≈ 5.0. The official Band B mock's longer
-    # dialogues and talks measure ≈ 4.5–4.7 with its slower narrator mixed in (2026-11-23).
+    # Book 3 takes Book 2's cast (YATING_CAST_FROM): L1–9 (TOCFL Level 3) at Book 2 L9–16's speed, one step under
+    # L10–16 (Level 4). The official Band B mock's longer dialogues and talks measure ≈ 4.5–4.7 with its slower
+    # narrator mixed in (2026-11-23).
     (3, 9): ({"F": 0.96, "M": 0.92, "N": 1.2}, False),  # One step under L10–16: the first pilot's speed.
     # L10–16 about 10% quicker than Book 2 L9–16, narrator included (owner by ear, 2026-11-23: "TOCFL sounds faster").
     (3, 16): ({"F": 0.87, "M": 0.83, "N": 1.1}, False),
@@ -94,9 +93,9 @@ YATING_BOOK_VOICES = {2: {"F": ("zh_en_female_2", 1.0, 1.3), "M": ("zh_en_male_2
 # NATIVE_BITRATE. Each clip keeps Yating's own ≈ 0.35 s of silence at its end, so the app adds no gap between these
 # turns (src/screens/lesson-test/testAudioSequence.ts).
 YATING_NATIVE_BOOKS = {2}
-# Later lessons voiced in another book's cast and delivery: {(book, first lesson): book whose cast it takes}. Book 3
-# L6–16 sound like Book 2 (owner, 2026-11-23: livelier sounds more natural); L1–5 keep the cast they were voiced in.
-YATING_CAST_FROM = {(3, 6): 2}
+# Later lessons voiced in another book's cast and delivery: {(book, first lesson): book whose cast it takes}. All of
+# Book 3 sounds like Book 2 (owner, 2026-11-23: livelier sounds more natural).
+YATING_CAST_FROM = {(3, 1): 2}
 
 
 def cast_book(book, lesson):

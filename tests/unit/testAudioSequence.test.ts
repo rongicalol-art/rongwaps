@@ -84,13 +84,13 @@ test('a picture question asks its question first (TOCFL Band A 看圖回答), th
 });
 
 test('a Band B dialogue answers turn to turn quickly; the pauses around the ding and the answers stay', () => {
-  const steps = describe(listeningSteps(item, item.questions, undefined, sounds, 'traditional', turnGapMs({ bookId: 3, band: 'B' })));
+  const steps = describe(listeningSteps(item, item.questions, undefined, sounds, 'traditional', turnGapMs({ bookId: 4, band: 'B' })));
   assert.deepEqual(steps.slice(0, 5), ['你要喝咖啡還是茶？', '100ms', '我要一杯綠茶。', '2000ms', 'ding']);
 });
 
-test("Book 2's clips keep their own silence, so its turns follow with no added gap in either band", () => {
+test("Books 2 and 3's clips keep their own silence, so their turns follow with no added gap in either band", () => {
   assert.equal(turnGapMs({ bookId: 1, band: 'A' }), 450);
-  assert.equal(turnGapMs({ bookId: 3, band: 'B', lessonId: 5 }), 100);
+  assert.equal(turnGapMs({ bookId: 3, band: 'B', lessonId: 1 }), 0);
   assert.equal(turnGapMs({ bookId: 3, band: 'B', lessonId: 6 }), 0);
   for (const band of ['A', 'B'] as const) {
     const steps = describe(listeningSteps(item, item.questions, undefined, sounds, 'traditional', turnGapMs({ bookId: 2, band })));
