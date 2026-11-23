@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, Avatar, Drawer, IconActionButton, PlayfulNavIcon, SegmentedControl, ToggleSwitch, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
 import { LOCKED_BOOK_LESSON_TITLES, SAMPLE_LESSONS } from '../../../data/books';
 import { useAppStore } from '../../../store/useAppStore';
+import { partyUnread } from '../../../store/slices/socialSlice';
 import { useProfileAvatar } from '../../../hooks/useProfileAvatar';
 import { RACE_BOOKS } from '../../../../shared/courseAccess';
 import { MAX_PLAYERS, RACE_TYPES, socialColor, type RacePlayer, type RaceSelection, type RaceSnapshot, type RaceType } from '../../../../shared/quizRace';
@@ -172,12 +173,12 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
   const myPhoto = useProfileAvatar();
   const [sheet, setSheet] = useState<'words' | 'types' | null>(null);
   const [seat, setSeat] = useState<string | null>(null);
-  const [tab, setTab] = useState<'party' | 'chat'>('party');
-  useEffect(() => {
-    if (tab !== 'chat') return;
-    useAppStore.getState().setSocial({ socialReadingParty: race.code });
-    return () => { if (useAppStore.getState().socialReadingParty === race.code) useAppStore.getState().setSocial({ socialReadingParty: null }); };
-  }, [race.code, tab]);
+  const tab = useAppStore(state => state.socialReadingParty === race.code ? 'chat' : 'party');
+  const setTab = (next: 'party' | 'chat') => useAppStore.getState().setSocial({ socialReadingParty: next === 'chat' ? race.code : null });
+  const chatUnread = useAppStore(partyUnread);
+  useEffect(() => () => {
+    if (useAppStore.getState().socialReadingParty === race.code) useAppStore.getState().setSocial({ socialReadingParty: null });
+  }, [race.code]);
   const status = useAppStore(state => state.raceStatus);
   const live = status === 'live';
   const isHost = race.hostId === me;
@@ -207,7 +208,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
             <h1 className="min-w-0 flex-1 truncate text-2xl font-black text-ui-ink-strong">{isHost ? 'Your room' : `${host?.name ?? 'Quiz'}’s room`}</h1>
             <ActionButton size="sm" variant="secondary" onClick={copy} aria-label="Copy invite link" className="gap-1.5 tracking-widest"><AppIcon name="link" size={16} />{race.code}</ActionButton>
           </div>
-          <div className="mt-4 shrink-0"><PanelTabs label="Party" value={tab} onChange={setTab} tabs={[{ id: 'party', label: 'Party' }, { id: 'chat', label: 'Chat' }]} /></div>
+          <div className="mt-4 shrink-0"><PanelTabs label="Party" value={tab} onChange={setTab} tabs={[{ id: 'party', label: 'Party' }, { id: 'chat', label: 'Chat', badge: tab !== 'chat' && chatUnread > 0 ? chatUnread : undefined }]} /></div>
           {tab === 'chat' ? <PartyChatThread /> : <div className="flex min-h-0 flex-1 flex-col overflow-y-auto custom-scrollbar">
           {race.phase === 'lobby' ? (
             <>

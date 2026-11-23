@@ -15,11 +15,13 @@ let generation = 0;
 let here: Extract<LobbyClientMessage, { t: 'here' }> = { t: 'here', l: null, a: null, show: true };
 let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 4 };
 const CHAT_CAP = CLASS_CHAT_KEEP;
-/** Notices made in the app (not the Lobby's inbox): @everyone lines and private messages; never sent as mention-read. */
+/** Notices made in the app (not the Lobby's inbox): @everyone lines, private messages and party chat lines; never sent as mention-read. */
 const EVERYONE_KEY = 'a:';
 export const DIRECT_KEY = 'd:';
+export const PARTY_CHAT_KEY = 'pc:';
 export const isDirectNotice = (notice: Pick<MentionNotice, 'key'>) => notice.key.startsWith(DIRECT_KEY);
-const localNotice = (key: string) => key.startsWith(EVERYONE_KEY) || key.startsWith(DIRECT_KEY);
+export const isPartyChatNotice = (notice: Pick<MentionNotice, 'key'>) => notice.key.startsWith(PARTY_CHAT_KEY);
+const localNotice = (key: string) => key.startsWith(EVERYONE_KEY) || key.startsWith(DIRECT_KEY) || key.startsWith(PARTY_CHAT_KEY);
 /** Friends and messages live in friendsController (loaded on demand). */
 const friends = () => import('./friendsController');
 /** Saved profiles (and so photos) of class-chat writers who aren't connected, in one request. */
@@ -70,6 +72,31 @@ export const showsClassChat = (panel: SocialPanel) => panel?.kind === 'people' &
 /** The class chat is on screen right now, so new lines are seen as they arrive. */
 function chatOnScreen(state: ReturnType<typeof useAppStore.getState>) {
   return showsClassChat(state.socialPanel) && document.visibilityState === 'visible';
+}
+
+/** The party chat for `code` is on screen right now, so new lines and mentions are seen as they arrive. */
+export function partyChatOnScreen(
+  state: Pick<ReturnType<typeof useAppStore.getState>, 'race' | 'racePlaying' | 'socialPanel' | 'socialReadingParty'>,
+  code: string,
+) {
+  return document.visibilityState === 'visible' && state.race?.code === code && (
+    state.socialPanel?.kind === 'partyChat'
+    || (!state.socialPanel && !state.racePlaying && state.socialReadingParty === code)
+  );
+}
+
+/** Marks any unread party @mentions in `code` as read (locally and in the Lobby) and clears its waiting toast. */
+function markPartyMentionsRead(code: string) {
+  const store = useAppStore.getState();
+  const seen = store.socialMentions.filter(item => item.room === code && !item.read);
+  for (const item of seen) if (!localNotice(item.key)) lobby.readMention(item.key);
+  const dropToast = store.socialMentionToast?.room === code;
+  if (seen.length || dropToast) {
+    store.setSocial({
+      ...(seen.length ? { socialMentions: store.socialMentions.map(item => seen.includes(item) ? { ...item, read: true } : item) } : {}),
+      ...(dropToast ? { socialMentionToast: null } : {}),
+    });
+  }
 }
 
 /** @everyone lines become notices here, from the chat itself; the Lobby keeps no copy per account. */
@@ -188,7 +215,7 @@ function receive(message: LobbyServerMessage) {
     case 'mention': {
       if (store.socialMentions.some(item => item.key === message.v.key)) break;
       const panel = store.socialPanel;
-      const reading = document.visibilityState === 'visible' && (message.v.room ? (panel?.kind === 'partyChat' && store.race?.code === message.v.room || !panel && store.socialReadingParty === message.v.room) : showsClassChat(panel) && sub.chat === message.v.channel);
+      const reading = message.v.room ? partyChatOnScreen(store, message.v.room) : document.visibilityState === 'visible' && showsClassChat(panel) && sub.chat === message.v.channel;
       if (reading) lobby.readMention(message.v.key);
       set({ socialMentions: [{ ...message.v, read: reading }, ...store.socialMentions].slice(0, 30), ...(!reading && !store.socialMuted ? { socialMentionToast: message.v } : {}) });
       break;
@@ -210,7 +237,9 @@ function receive(message: LobbyServerMessage) {
       pendingOpen = null;
       if (store.socialPanel !== originalPanel) break;
       if (!message.v) { store.showFeedbackToast('This party chat is no longer available.'); break; }
-      set({ socialPanel: store.race?.code === message.v.room ? { kind: 'partyChat' } : { kind: 'partyMention' }, socialMentionTarget: message.v });
+      set(store.race?.code === message.v.room && !store.racePlaying
+        ? { socialPanel: null, socialReadingParty: message.v.room, socialMentionTarget: message.v }
+        : { socialPanel: store.race?.code === message.v.room ? { kind: 'partyChat' } : { kind: 'partyMention' }, socialMentionTarget: message.v });
       break;
     }
     case 'cheer':
@@ -330,6 +359,7 @@ export const lobby = {
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),
   readMention: (key: string) => { pendingReads.add(key); flushReads(); },
   markChatRead,
+  markPartyMentionsRead,
   /** The 50 class chat lines before the loaded ones (one request at a time). */
   older: () => {
     const chat = useAppStore.getState().socialChat;
@@ -356,6 +386,14 @@ export function openMention(notice: MentionNotice) {
   store.setSocial({ socialMentions: store.socialMentions.map(item => item.key === notice.key ? { ...item, read: true } : item), socialMentionToast: null });
   pendingOpen = null;
   if (notice.room) {
+    if (store.race?.code === notice.room) {
+      const target = isPartyChatNotice(notice) ? null : notice;
+      store.setSocial(store.racePlaying
+        ? { socialPanel: { kind: 'partyChat' }, socialMentionTarget: target }
+        : { socialPanel: null, socialReadingParty: notice.room, socialMentionTarget: target });
+      return;
+    }
+    if (isPartyChatNotice(notice)) return;
     pendingOpen = { key: notice.key, panel: store.socialPanel };
     if (!send({ t: 'mention-open', key: notice.key })) { pendingOpen = null; store.showFeedbackToast('Reconnecting. Try again in a moment.'); }
 

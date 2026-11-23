@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, Avatar, AvatarStack } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import { countedIn, unreadTotal } from '../../../store/slices/socialSlice';
+import { countedIn, partyUnread, unreadTotal } from '../../../store/slices/socialSlice';
 import { CHEER_PHRASES, type ChatMessage } from '../../../../shared/lobby';
 import { socialColor } from '../../../../shared/quizRace';
 import { lobby } from '../lobbyController';
@@ -20,6 +20,7 @@ export function PracticeFaces() {
   const people = useAppStore((state) => state.socialPeople);
   const me = useAppStore((state) => state.socialMe);
   const unread = useAppStore(unreadTotal);
+  const partyChatUnread = useAppStore(partyUnread);
   const chat = useAppStore((state) => state.socialChat?.messages ?? EMPTY);
   const saved = useAppStore((state) => state.socialSaved);
   const race = useAppStore((state) => state.race);
@@ -41,15 +42,18 @@ export function PracticeFaces() {
   }, [open]);
 
   if (race) {
-    // In a party the header shows who is in it: their faces, no chat styling. Tapping still opens the party panel.
+    // In a party the header shows who is in it; new party chat lines ride as the chat bubble on their corner.
     const party = race.players.filter((player) => !player.left && player.id !== me);
     return (
-      <button type="button" aria-label={party.length ? `${party.length} in your party. Open party.` : 'Open party'}
+      <button type="button" aria-label={`${party.length ? `${party.length} in your party` : 'Party'}${partyChatUnread > 0 ? `, ${partyChatUnread} new ${partyChatUnread === 1 ? 'message' : 'messages'}` : ''}. Open party chat.`}
         onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'partyChat' } })}
-        className="relative mr-1 flex h-11 items-center rounded-control px-1.5 outline-none transition-colors hover:bg-ui-hover focus-ring">
-        {party.length
-          ? <AvatarStack people={party.map((player) => ({ name: player.name, color: socialColor(player.color), src: player.image }))} total={party.length} max={3} size="md" />
-          : <AppIcon name="party" size={22} className="text-ui-muted-strong" />}
+        className={`relative mr-1 flex h-11 items-center rounded-control pl-1.5 outline-none transition-colors hover:bg-ui-hover focus-ring ${partyChatUnread > 0 ? 'pr-3.5' : 'pr-1.5'}`}>
+        <span className="relative flex">
+          {party.length
+            ? <AvatarStack people={party.map((player) => ({ name: player.name, color: socialColor(player.color), src: player.image }))} total={party.length} max={3} size="md" />
+            : <AppIcon name="party" size={22} className="text-ui-muted-strong" />}
+          {partyChatUnread > 0 && <span className="absolute -right-3 -top-2.5 z-10 flex"><UnreadBadge count={partyChatUnread} edge="var(--color-ui-practice-canvas)" /></span>}
+        </span>
       </button>
     );
   }
