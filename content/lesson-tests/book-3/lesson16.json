@@ -35,7 +35,9 @@
     "喜不喜歡",
     "桌上",
     "辛辛苦苦",
-    "上學期"
+    "上學期",
+    "林小姐",
+    "謝老闆"
   ],
   "slots": [
     {
@@ -1634,136 +1636,131 @@
           "id": "b3l16-cloze-1",
           "kind": "cloze",
           "passage": {
-            "traditional": "{1}我奶奶小時候家裡很窮，常常吃不飽，她從來不讓我們把飯菜剩下。有一次，我吃不完一碗飯，想拿去倒掉，被她看到了。她沒有罵我，{2}帶我去看她在院子裡種的菜，告訴我種菜有多辛苦。從那天起，我都先想好自己能吃多少再拿，{3}再也沒剩下過。現在很多超市晚上會把賣不完的食物打折，{4}被丟掉的食物少了不少。我聽朋友說了這件事，{5}常常下班後去買打折的麵包和水果。{6}，能吃的東西就不該被當作垃圾。",
-            "simplified": "{1}我奶奶小时候家里很穷，常常吃不饱，她从来不让我们把饭菜剩下。有一次，我吃不完一碗饭，想拿去倒掉，被她看到了。她没有骂我，{2}带我去看她在院子里种的菜，告诉我种菜有多辛苦。从那天起，我都先想好自己能吃多少再拿，{3}再也没剩下过。现在很多超市晚上会把卖不完的食物打折，{4}被丢掉的食物少了不少。我听朋友说了这件事，{5}常常下班后去买打折的面包和水果。{6}，能吃的东西就不该被当作垃圾。",
-            "pinyin": "Yóuyú wǒ nǎinai xiǎo shíhòu jiālǐ hěn qióng, chángcháng chī bù bǎo, tā cónglái bú ràng wǒmen bǎ fàncài shèngxià. Yǒu yí cì, wǒ chī bù wán yì wǎn fàn, xiǎng ná qù dào diào, bèi tā kàndào le. Tā méiyǒu mà wǒ, fǎn'ér dài wǒ qù kàn tā zài yuànzi lǐ zhòng de cài, gàosu wǒ zhòng cài yǒu duō xīnkǔ. Cóng nà tiān qǐ, wǒ dōu xiān xiǎng hǎo zìjǐ néng chī duōshǎo zài ná, jiéguǒ zài yě méi shèngxià guo. Xiànzài hěn duō chāoshì wǎnshàng huì bǎ mài bù wán de shíwù dǎzhé, shǐde bèi diū diào de shíwù shǎo le bù shǎo. Wǒ tīng péngyǒu shuō le zhè jiàn shì, yúshì chángcháng xiàbān hòu qù mǎi dǎzhé de miànbāo hé shuǐguǒ. Zǒngzhī, néng chī de dōngxi jiù bù gāi bèi dāngzuò lèsè.",
-            "english": "Because my grandma's family was poor when she was little and she often went hungry, she never lets us leave food. Once I couldn't finish a bowl of rice and was about to tip it out when she saw me. She didn't scold me; instead she took me to see the vegetables she grows in the yard and told me how hard growing them is. From that day on I always think about how much I can eat before I take food, and as a result I have never left any since. Now many supermarkets discount unsold food in the evening, which has cut the food thrown away by quite a lot. When a friend told me about this, I started going after work to buy discounted bread and fruit. In short, food that can be eaten should not be treated as garbage."
+            "traditional": "我哥哥是一位廚師，三年前跟朋友一起{1}了一家小餐廳。剛開始生意不太{2}，令他十分煩惱。他不斷改進菜的味道，{3}客人仍然不多，每天都有不少米飯和麵條被丟掉。{4}他決定晚上九點以後，把還沒賣完的食物便宜賣給附近的學生。這個做法很有效，{5}店裡的客人一天比一天多。現在一到晚上，溫暖的燈光下，每張餐桌都坐滿了人。哥哥得意地說，{6}生意多忙，他都不會再把能吃的食物當作垃圾了。",
+            "simplified": "我哥哥是一位厨师，三年前跟朋友一起{1}了一家小餐厅。刚开始生意不太{2}，令他十分烦恼。他不断改进菜的味道，{3}客人仍然不多，每天都有不少米饭和面条被丢掉。{4}他决定晚上九点以后，把还没卖完的食物便宜卖给附近的学生。这个做法很有效，{5}店里的客人一天比一天多。现在一到晚上，温暖的灯光下，每张餐桌都坐满了人。哥哥得意地说，{6}生意多忙，他都不会再把能吃的食物当作垃圾了。",
+            "pinyin": "Wǒ gēge shì yí wèi chúshī, sān nián qián gēn péngyǒu yìqǐ tóuzī le yì jiā xiǎo cāntīng. Gāng kāishǐ shēngyì bú tài wěndìng, lìng tā shífēn fánnǎo. Tā búduàn gǎijìn cài de wèidào, jiéguǒ kèrén réngrán bù duō, měi tiān dōu yǒu bù shǎo mǐfàn hé miàntiáo bèi diū diào. Yúshì tā juédìng wǎnshàng jiǔ diǎn yǐhòu, bǎ hái méi mài wán de shíwù piányí mài gěi fùjìn de xuéshēng. Zhège zuòfǎ hěn yǒuxiào, shǐde diàn lǐ de kèrén yì tiān bǐ yì tiān duō. Xiànzài yí dào wǎnshàng, wēnnuǎn de dēngguāng xià, měi zhāng cānzhuō dōu zuò mǎn le rén. Gēge déyì de shuō, búlùn shēngyì duō máng, tā dōu bú huì zài bǎ néng chī de shíwù dāngzuò lèsè le.",
+            "english": "My older brother is a chef. Three years ago he and a friend invested in a small restaurant. At first business was not very stable, which worried him a great deal. He kept improving the taste of his dishes, yet in the end there were still few customers, and every day a lot of rice and noodles were thrown away. So he decided that after nine in the evening he would sell the unsold food cheaply to students nearby. This worked well, and it made the customers in the restaurant grow day by day. Now, as soon as evening comes, every dining table is full under the warm lights. My brother says proudly that however busy business gets, he will never again treat food that can be eaten as garbage."
           },
           "questions": [
             {
               "id": "b3l16-cloze-1-1",
               "choices": [
                 {
-                  "traditional": "儘管",
-                  "simplified": "尽管",
-                  "pinyin": "jǐnguǎn",
-                  "english": "even though"
+                  "traditional": "發明",
+                  "simplified": "发明",
+                  "pinyin": "fāmíng",
+                  "english": "to invent"
                 },
                 {
-                  "traditional": "就算",
-                  "simplified": "就算",
-                  "pinyin": "jiùsuàn",
-                  "english": "even if"
+                  "traditional": "投資",
+                  "simplified": "投资",
+                  "pinyin": "tóuzī",
+                  "english": "to invest in"
                 },
                 {
-                  "traditional": "假如",
-                  "simplified": "假如",
-                  "pinyin": "jiǎrú",
-                  "english": "if"
+                  "traditional": "證明",
+                  "simplified": "证明",
+                  "pinyin": "zhèngmíng",
+                  "english": "to prove"
                 },
                 {
-                  "traditional": "由於",
-                  "simplified": "由于",
-                  "pinyin": "yóuyú",
-                  "english": "owing to"
+                  "traditional": "進行",
+                  "simplified": "进行",
+                  "pinyin": "jìnxíng",
+                  "english": "to carry out"
                 }
               ],
-              "key": 3,
-              "why": "Growing up hungry is the reason she never lets anyone leave food, so the blank opens a cause: 由於. 儘管 would make her rule happen in spite of her hunger, and 就算 and 假如 turn a real childhood into a supposition.",
+              "key": 1,
+              "why": "He and a friend put money into a restaurant, and the next sentence is about how its business went: 投資. You invent (發明) something new, prove (證明) a claim and carry out (進行) an activity; none of them takes a restaurant.",
               "focus": {
-                "zh": "由於（原因）",
-                "en": "owing to (a cause)"
+                "zh": "投資",
+                "en": "to invest in"
               },
               "lesson": 16,
               "wordIds": [
-                "B3L16-2-07",
-                "B2L13-2-09"
-              ],
-              "grammarIds": [
-                "B3L16-G03-P413"
+                "B3L16-2-03",
+                "B3L16-2-01"
               ]
             },
             {
               "id": "b3l16-cloze-1-2",
               "choices": [
                 {
-                  "traditional": "於是",
-                  "simplified": "于是",
-                  "pinyin": "yúshì",
-                  "english": "so"
+                  "traditional": "密切",
+                  "simplified": "密切",
+                  "pinyin": "mìqiè",
+                  "english": "close"
                 },
                 {
-                  "traditional": "反而",
-                  "simplified": "反而",
-                  "pinyin": "fǎn'ér",
-                  "english": "instead"
+                  "traditional": "普遍",
+                  "simplified": "普遍",
+                  "pinyin": "pǔbiàn",
+                  "english": "widespread"
                 },
                 {
-                  "traditional": "終於",
-                  "simplified": "终于",
-                  "pinyin": "zhōngyú",
-                  "english": "finally"
+                  "traditional": "有效",
+                  "simplified": "有效",
+                  "pinyin": "yǒuxiào",
+                  "english": "effective"
                 },
                 {
-                  "traditional": "總算",
-                  "simplified": "总算",
-                  "pinyin": "zǒngsuàn",
-                  "english": "at long last"
+                  "traditional": "穩定",
+                  "simplified": "稳定",
+                  "pinyin": "wěndìng",
+                  "english": "stable"
                 }
               ],
-              "key": 1,
-              "why": "She caught me about to tip out rice, so you expect a scolding; 沒有罵我，反而…… gives the unexpected opposite. Not scolding is no reason to act, so 於是 fails, and 終於 and 總算 need a long wait for something hoped for.",
+              "key": 3,
+              "why": "Business that worries him at the start is unsteady: 不太穩定. 密切 describes a relationship, 普遍 something found everywhere, and 有效 a method that works; none of them describes business going up and down.",
               "focus": {
-                "zh": "沒……，反而……",
-                "en": "not…; instead…"
+                "zh": "穩定；令",
+                "en": "stable; to make (someone feel)"
               },
-              "lesson": 9,
+              "lesson": 16,
               "wordIds": [
-                "B3L09-1-06",
-                "B3L09-1-05"
-              ],
-              "grammarIds": [
-                "B3L09-G03-P238"
+                "B3L16-1-13",
+                "B3L16-2-04"
               ]
             },
             {
               "id": "b3l16-cloze-1-3",
               "choices": [
                 {
-                  "traditional": "不過",
-                  "simplified": "不过",
-                  "pinyin": "búguò",
-                  "english": "but"
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "in the end"
                 },
                 {
                   "traditional": "只好",
                   "simplified": "只好",
                   "pinyin": "zhǐhǎo",
-                  "english": "had no choice but"
+                  "english": "to have no choice but to"
                 },
                 {
-                  "traditional": "結果",
-                  "simplified": "结果",
-                  "pinyin": "jiéguǒ",
-                  "english": "as a result"
+                  "traditional": "以免",
+                  "simplified": "以免",
+                  "pinyin": "yǐmiǎn",
+                  "english": "so as to avoid"
                 },
                 {
-                  "traditional": "要不然",
-                  "simplified": "要不然",
-                  "pinyin": "yàobùrán",
-                  "english": "otherwise"
+                  "traditional": "至少",
+                  "simplified": "至少",
+                  "pinyin": "zhìshǎo",
+                  "english": "at least"
                 }
               ],
-              "key": 2,
-              "why": "Planning how much she can eat leads to never leaving food again: a result, so 結果. 不過 would set the two against each other, 只好 means she was forced into it, and 要不然 (\"otherwise\") would make never leaving food the thing that happens if she does not plan.",
+              "key": 0,
+              "why": "He kept improving the food, and what came of it was not what he hoped: customers were still few. 結果 gives that outcome. 只好 needs a person forced to do something, 以免 would make few customers the thing he is avoiding, and 至少 sets a lowest amount.",
               "focus": {
-                "zh": "結果",
-                "en": "as a result"
+                "zh": "結果；仍然",
+                "en": "in the end; still"
               },
               "lesson": 5,
               "wordIds": [
                 "B3L05-2-09",
-                "B2L03-2-12"
+                "B3L16-2-08",
+                "B3L16-2-06"
               ],
               "grammarIds": [
                 "B3L05-G05-P141"
@@ -1773,59 +1770,16 @@
               "id": "b3l16-cloze-1-4",
               "choices": [
                 {
-                  "traditional": "使得",
-                  "simplified": "使得",
-                  "pinyin": "shǐde",
-                  "english": "which made"
-                },
-                {
-                  "traditional": "不過",
-                  "simplified": "不过",
-                  "pinyin": "búguò",
-                  "english": "but"
-                },
-                {
-                  "traditional": "以免",
-                  "simplified": "以免",
-                  "pinyin": "yǐmiǎn",
-                  "english": "so as not to"
+                  "traditional": "畢竟",
+                  "simplified": "毕竟",
+                  "pinyin": "bìjìng",
+                  "english": "after all"
                 },
                 {
                   "traditional": "況且",
                   "simplified": "况且",
                   "pinyin": "kuàngqiě",
-                  "english": "moreover"
-                }
-              ],
-              "key": 0,
-              "why": "Discounting unsold food is what cut the waste: the clause after it is its result, so 使得. 不過 would set the discount against less waste, 以免 would make less waste something to avoid, and 況且 adds a second reason when nothing is being argued.",
-              "focus": {
-                "zh": "使得（結果）",
-                "en": "to cause (a result)"
-              },
-              "lesson": 16,
-              "wordIds": [
-                "B3L16-2-13",
-                "B2L13-1-25"
-              ],
-              "grammarIds": [
-                "B3L16-G04-P415"
-              ]
-            },
-            {
-              "id": "b3l16-cloze-1-5",
-              "choices": [
-                {
-                  "traditional": "況且",
-                  "simplified": "况且",
-                  "pinyin": "kuàngqiě",
-                  "english": "moreover"
-                },
-                {
-                  "traditional": "不過",
-                  "simplified": "不过",
-                  "pinyin": "búguò",
-                  "english": "but"
+                  "english": "besides"
                 },
                 {
                   "traditional": "於是",
@@ -1834,14 +1788,14 @@
                   "english": "so"
                 },
                 {
-                  "traditional": "只要",
-                  "simplified": "只要",
-                  "pinyin": "zhǐyào",
-                  "english": "as long as"
+                  "traditional": "至於",
+                  "simplified": "至于",
+                  "pinyin": "zhìyú",
+                  "english": "as for"
                 }
               ],
               "key": 2,
-              "why": "Hearing about the discounts makes her act: she starts buying discounted bread, so 於是. 況且 adds a reason when nothing is being argued, 不過 would set her shopping against the good news, and 只要 would make buying bread a condition, which needs 就 and a result after it.",
+              "why": "Food was being thrown away every day, and because of that he acted: 於是他決定……. 畢竟 and 況且 give or add a reason, but what follows is a decision, and 至於 would turn to a new topic.",
               "focus": {
                 "zh": "於是（因此採取的行動）",
                 "en": "so (an action taken because of it)"
@@ -1849,53 +1803,97 @@
               "lesson": 16,
               "wordIds": [
                 "B3L16-2-14",
-                "B1L12-2-01"
+                "B3L16-2-15"
               ],
               "grammarIds": [
                 "B3L16-G05-P417"
               ]
             },
             {
+              "id": "b3l16-cloze-1-5",
+              "choices": [
+                {
+                  "traditional": "以免",
+                  "simplified": "以免",
+                  "pinyin": "yǐmiǎn",
+                  "english": "so as to avoid"
+                },
+                {
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "english": "to cause"
+                },
+                {
+                  "traditional": "不過",
+                  "simplified": "不过",
+                  "pinyin": "búguò",
+                  "english": "however"
+                },
+                {
+                  "traditional": "屬於",
+                  "simplified": "属于",
+                  "pinyin": "shǔyú",
+                  "english": "to belong to"
+                }
+              ],
+              "key": 1,
+              "why": "The plan worked, and more customers is its result: 使得 + what it brought about. 以免 would make more customers something to avoid, 不過 would set the two against each other, and 屬於 says who owns something.",
+              "focus": {
+                "zh": "使得（結果）；有效",
+                "en": "to cause (a result); effective"
+              },
+              "lesson": 16,
+              "wordIds": [
+                "B3L16-2-13",
+                "B3L16-1-23"
+              ],
+              "grammarIds": [
+                "B3L16-G04-P415"
+              ]
+            },
+            {
               "id": "b3l16-cloze-1-6",
               "choices": [
                 {
-                  "traditional": "其次",
-                  "simplified": "其次",
-                  "pinyin": "qícì",
-                  "english": "secondly"
+                  "traditional": "儘管",
+                  "simplified": "尽管",
+                  "pinyin": "jǐnguǎn",
+                  "english": "even though"
                 },
                 {
-                  "traditional": "例如",
-                  "simplified": "例如",
-                  "pinyin": "lìrú",
-                  "english": "for example"
+                  "traditional": "既然",
+                  "simplified": "既然",
+                  "pinyin": "jìrán",
+                  "english": "since"
                 },
                 {
-                  "traditional": "至於",
-                  "simplified": "至于",
-                  "pinyin": "zhìyú",
-                  "english": "as for"
+                  "traditional": "假如",
+                  "simplified": "假如",
+                  "pinyin": "jiǎrú",
+                  "english": "if"
                 },
                 {
-                  "traditional": "總之",
-                  "simplified": "总之",
-                  "pinyin": "zǒngzhī",
-                  "english": "in short"
+                  "traditional": "不論",
+                  "simplified": "不论",
+                  "pinyin": "búlùn",
+                  "english": "no matter"
                 }
               ],
               "key": 3,
-              "why": "The last sentence gathers grandma's lesson and the supermarket story into one conclusion, so 總之. Nothing was listed as a first point for 其次, it gives no example for 例如, and 至於 would open a new topic at the very end.",
+              "why": "多忙 leaves \"how busy\" open, and 都 says the result is the same every time: 不論……都……. 儘管, 既然 and 假如 each need one fixed situation after them, not an open \"how busy\".",
               "focus": {
-                "zh": "總之（整段的結論）",
-                "en": "in short (summing up)"
+                "zh": "不論……都……；當作",
+                "en": "no matter…, …; to treat as"
               },
-              "lesson": 15,
+              "lesson": 12,
               "wordIds": [
-                "B3L15-2-28",
-                "B2L02-2-05"
+                "B3L12-1-26",
+                "B3L16-1-05",
+                "B3L16-1-27"
               ],
               "grammarIds": [
-                "B3L15-G05-P395"
+                "B3L12-G06-P327"
               ]
             }
           ]
@@ -1904,69 +1902,102 @@
           "id": "b3l16-cloze-2",
           "kind": "cloze",
           "passage": {
-            "traditional": "我們學校餐廳每天晚上都會剩下不少飯菜，以前這些飯菜{1}到了第二天就被丟掉。上學期，幾個同學覺得太可惜，{2}去跟餐廳經理討論，希望把剩下的飯菜便宜賣給學生。經理擔心沒有人要買，說每天晚上{3}要有三十個人來買，才值得做。{4}經理對這個想法沒有信心，還是讓他們試了一個月。結果每天八點一到，就有很多同學來排隊，{5}經理改變了看法。現在這個活動{6}讓同學省了錢，也讓餐廳少丟了很多食物。",
-            "simplified": "我们学校餐厅每天晚上都会剩下不少饭菜，以前这些饭菜{1}到了第二天就被丢掉。上学期，几个同学觉得太可惜，{2}去跟餐厅经理讨论，希望把剩下的饭菜便宜卖给学生。经理担心没有人要买，说每天晚上{3}要有三十个人来买，才值得做。{4}经理对这个想法没有信心，还是让他们试了一个月。结果每天八点一到，就有很多同学来排队，{5}经理改变了看法。现在这个活动{6}让同学省了钱，也让餐厅少丢了很多食物。",
-            "pinyin": "Wǒmen xuéxiào cāntīng měi tiān wǎnshàng dōu huì shèngxià bù shǎo fàncài, yǐqián zhèxiē fàncài wǎngwǎng dào le dì èr tiān jiù bèi diū diào. Shàng xuéqí, jǐ ge tóngxué juéde tài kěxí, yúshì qù gēn cāntīng jīnglǐ tǎolùn, xīwàng bǎ shèngxià de fàncài piányí mài gěi xuéshēng. Jīnglǐ dānxīn méiyǒu rén yào mǎi, shuō měi tiān wǎnshàng zhìshǎo yào yǒu sānshí ge rén lái mǎi, cái zhídé zuò. Jǐnguǎn jīnglǐ duì zhège xiǎngfǎ méiyǒu xìnxīn, háishì ràng tāmen shì le yí ge yuè. Jiéguǒ měi tiān bā diǎn yí dào, jiù yǒu hěn duō tóngxué lái páiduì, shǐde jīnglǐ gǎibiàn le kànfǎ. Xiànzài zhège huódòng bùjǐn ràng tóngxué shěng le qián, yě ràng cāntīng shǎo diū le hěn duō shíwù.",
-            "english": "Our school cafeteria has quite a lot of food left every evening, and in the past it was usually thrown away the next day. Last semester a few students thought it was a shame, so they went to discuss it with the cafeteria manager, hoping to sell the leftovers cheaply to students. The manager was worried nobody would buy, and said at least thirty people would have to come each evening to make it worthwhile. Even though the manager had no confidence in the idea, he let them try for a month. As it turned out, as soon as it struck eight each evening, lots of students queued up, which changed the manager's mind. Now the project not only saves students money but also means the cafeteria throws away much less food."
+            "traditional": "我們社區門口有一個愛心冰箱，大家可以把吃不完的食物放進去，提供給需要的人。剛開始沒有人管，有人放了已經{1}的食物，{2}有人吃了肚子很不舒服，大家才發現問題。{3}社區的管理人員想了一個新辦法：放食物以前，要請他們當場檢查，以免同樣的事再發生。這個辦法{4}大家更放心，來拿食物的人越來越多，證明這樣做很{5}。{6}目前這樣的冰箱還不普遍，我仍然相信，將來每個社區至少都會有一個。",
+            "simplified": "我们社区门口有一个爱心冰箱，大家可以把吃不完的食物放进去，提供给需要的人。刚开始没有人管，有人放了已经{1}的食物，{2}有人吃了肚子很不舒服，大家才发现问题。{3}社区的管理人员想了一个新办法：放食物以前，要请他们当场检查，以免同样的事再发生。这个办法{4}大家更放心，来拿食物的人越来越多，证明这样做很{5}。{6}目前这样的冰箱还不普遍，我仍然相信，将来每个社区至少都会有一个。",
+            "pinyin": "Wǒmen shèqū ménkǒu yǒu yí ge àixīn bīngxiāng, dàjiā kěyǐ bǎ chī bù wán de shíwù fàng jìnqù, tígōng gěi xūyào de rén. Gāng kāishǐ méiyǒu rén guǎn, yǒu rén fàng le yǐjīng fǔbài de shíwù, zhídào yǒu rén chī le dùzi hěn bù shūfu, dàjiā cái fāxiàn wèntí. Yúshì shèqū de guǎnlǐ rényuán xiǎng le yí ge xīn bànfǎ: fàng shíwù yǐqián, yào qǐng tāmen dāngchǎng jiǎnchá, yǐmiǎn tóngyàng de shì zài fāshēng. Zhège bànfǎ shǐde dàjiā gèng fàngxīn, lái ná shíwù de rén yuè lái yuè duō, zhèngmíng zhèyàng zuò hěn yǒuxiào. Jǐnguǎn mùqián zhèyàng de bīngxiāng hái bù pǔbiàn, wǒ réngrán xiāngxìn, jiānglái měi ge shèqū zhìshǎo dōu huì yǒu yí ge.",
+            "english": "There is a community fridge at the entrance of our neighbourhood. Everyone can put food they cannot finish in it, for people who need it. At first nobody looked after it; someone put in food that had already gone rotten, and it was not until someone ate it and got a bad stomach that people noticed the problem. So the neighbourhood's management staff came up with a new method: before putting food in, you must ask them to check it on the spot, so that the same thing does not happen again. This method has made everyone feel more at ease, and more and more people come to take food, which proves that doing it this way works. Although fridges like this are not yet common, I still believe that one day every neighbourhood will have at least one."
           },
           "questions": [
             {
               "id": "b3l16-cloze-2-1",
               "choices": [
                 {
-                  "traditional": "往往",
-                  "simplified": "往往",
-                  "pinyin": "wǎngwǎng",
-                  "english": "usually"
+                  "traditional": "腐敗",
+                  "simplified": "腐败",
+                  "pinyin": "fǔbài",
+                  "english": "rotten"
                 },
                 {
-                  "traditional": "差點",
-                  "simplified": "差点",
-                  "pinyin": "chàdiǎn",
-                  "english": "nearly"
+                  "traditional": "穩定",
+                  "simplified": "稳定",
+                  "pinyin": "wěndìng",
+                  "english": "stable"
                 },
                 {
-                  "traditional": "總算",
-                  "simplified": "总算",
-                  "pinyin": "zǒngsuàn",
-                  "english": "at long last"
+                  "traditional": "密切",
+                  "simplified": "密切",
+                  "pinyin": "mìqiè",
+                  "english": "close"
                 },
                 {
-                  "traditional": "終於",
-                  "simplified": "终于",
-                  "pinyin": "zhōngyú",
-                  "english": "finally"
+                  "traditional": "相對",
+                  "simplified": "相对",
+                  "pinyin": "xiāngduì",
+                  "english": "opposite"
                 }
               ],
               "key": 0,
-              "why": "以前 and the students' 太可惜 show the food used to be thrown out as a rule: 往往, what usually happened. 差點 means it was not thrown out after all, and 總算 and 終於 would make throwing it out something long hoped for.",
+              "why": "Food that makes someone ill has gone bad: 已經腐敗的食物. 穩定 describes business or a situation, 密切 a relationship, and 相對 two things that are opposites.",
               "focus": {
-                "zh": "往往",
-                "en": "usually (as a pattern)"
+                "zh": "腐敗",
+                "en": "rotten"
               },
-              "lesson": 12,
+              "lesson": 16,
               "wordIds": [
-                "B3L12-1-15",
-                "B2L02-1-16"
-              ],
-              "grammarIds": [
-                "B3L12-G03-P316"
+                "B3L16-1-25"
               ]
             },
             {
               "id": "b3l16-cloze-2-2",
               "choices": [
                 {
-                  "traditional": "況且",
-                  "simplified": "况且",
-                  "pinyin": "kuàngqiě",
-                  "english": "moreover"
+                  "traditional": "自從",
+                  "simplified": "自从",
+                  "pinyin": "zìcóng",
+                  "english": "ever since"
                 },
                 {
-                  "traditional": "畢竟",
-                  "simplified": "毕竟",
-                  "pinyin": "bìjìng",
-                  "english": "after all"
+                  "traditional": "既然",
+                  "simplified": "既然",
+                  "pinyin": "jìrán",
+                  "english": "since"
+                },
+                {
+                  "traditional": "直到",
+                  "simplified": "直到",
+                  "pinyin": "zhídào",
+                  "english": "not until"
+                },
+                {
+                  "traditional": "假如",
+                  "simplified": "假如",
+                  "pinyin": "jiǎrú",
+                  "english": "if"
+                }
+              ],
+              "key": 2,
+              "why": "Nobody noticed at first; only when someone fell ill did they find out, and 才 marks that late moment: 直到……才……. 自從 starts something that goes on from then, and 既然 and 假如 pair with 就, not with 才.",
+              "focus": {
+                "zh": "直到……才……",
+                "en": "not until… did…"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-1-09",
+                "B2L13-2-09"
+              ],
+              "grammarIds": [
+                "B3L10-G01-P262"
+              ]
+            },
+            {
+              "id": "b3l16-cloze-2-3",
+              "choices": [
+                {
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "english": "otherwise"
                 },
                 {
                   "traditional": "於是",
@@ -1975,14 +2006,20 @@
                   "english": "so"
                 },
                 {
-                  "traditional": "要不然",
-                  "simplified": "要不然",
-                  "pinyin": "yàobùrán",
-                  "english": "otherwise"
+                  "traditional": "再說",
+                  "simplified": "再说",
+                  "pinyin": "zàishuō",
+                  "english": "besides"
+                },
+                {
+                  "traditional": "至於",
+                  "simplified": "至于",
+                  "pinyin": "zhìyú",
+                  "english": "as for"
                 }
               ],
-              "key": 2,
-              "why": "They thought it a shame and acted because of it: 於是去跟經理討論. 況且 and 畢竟 add or give a reason, but what follows is an action, and 要不然 (\"otherwise\") would make the visit what happens if they did not care.",
+              "key": 1,
+              "why": "People found the problem, and because of it the staff acted: 於是社區的管理人員想了一個新辦法. 要不然 says what happens if something is not done, 再說 adds one more reason, and 至於 would turn to a new topic.",
               "focus": {
                 "zh": "於是（因此採取的行動）",
                 "en": "so (an action taken because of it)"
@@ -1990,20 +2027,27 @@
               "lesson": 16,
               "wordIds": [
                 "B3L16-2-14",
-                "B2L03-1-32"
+                "B3L16-1-24",
+                "B3L16-1-26"
               ],
               "grammarIds": [
                 "B3L16-G05-P417"
               ]
             },
             {
-              "id": "b3l16-cloze-2-3",
+              "id": "b3l16-cloze-2-4",
               "choices": [
                 {
-                  "traditional": "最多",
-                  "simplified": "最多",
-                  "pinyin": "zuìduō",
-                  "english": "at most"
+                  "traditional": "以免",
+                  "simplified": "以免",
+                  "pinyin": "yǐmiǎn",
+                  "english": "so as to avoid"
+                },
+                {
+                  "traditional": "當作",
+                  "simplified": "当作",
+                  "pinyin": "dāngzuò",
+                  "english": "to treat as"
                 },
                 {
                   "traditional": "至少",
@@ -2012,47 +2056,75 @@
                   "english": "at least"
                 },
                 {
-                  "traditional": "只要",
-                  "simplified": "只要",
-                  "pinyin": "zhǐyào",
-                  "english": "as long as"
-                },
-                {
-                  "traditional": "反而",
-                  "simplified": "反而",
-                  "pinyin": "fǎn'ér",
-                  "english": "instead"
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "english": "to cause"
                 }
               ],
-              "key": 1,
-              "why": "He worries nobody will buy, so thirty buyers is the lowest number that makes it worth doing, and 才 confirms a minimum: 至少. 最多 sets a ceiling, which a worry about too few buyers cannot need; 只要 goes with 就, not 才; and nothing is reversed for 反而.",
+              "key": 3,
+              "why": "The new method is the cause and people feeling at ease is its result: 使得大家更放心. 以免 would make feeling at ease the thing to avoid, 當作 needs 把 A 當作 B, and 至少 sets a lowest amount.",
               "focus": {
-                "zh": "至少……才……",
-                "en": "at least… only then…"
+                "zh": "使得（結果）",
+                "en": "to cause (a result)"
               },
               "lesson": 16,
               "wordIds": [
-                "B3L16-1-09",
-                "B2L04-2-27"
+                "B3L16-2-13",
+                "B3L16-1-22"
               ],
               "grammarIds": [
-                "B3L16-G02-P406"
+                "B3L16-G04-P415"
               ]
             },
             {
-              "id": "b3l16-cloze-2-4",
+              "id": "b3l16-cloze-2-5",
+              "choices": [
+                {
+                  "traditional": "發達",
+                  "simplified": "发达",
+                  "pinyin": "fādá",
+                  "english": "developed"
+                },
+                {
+                  "traditional": "有效",
+                  "simplified": "有效",
+                  "pinyin": "yǒuxiào",
+                  "english": "effective"
+                },
+                {
+                  "traditional": "得意",
+                  "simplified": "得意",
+                  "pinyin": "déyì",
+                  "english": "proud of oneself"
+                },
+                {
+                  "traditional": "共同",
+                  "simplified": "共同",
+                  "pinyin": "gòngtóng",
+                  "english": "shared"
+                }
+              ],
+              "key": 1,
+              "why": "More people coming is the proof that it works: 這樣做很有效. 發達 describes industry or a country, 得意 a person who is pleased with themselves, and 共同 something people share.",
+              "focus": {
+                "zh": "有效；證明",
+                "en": "effective; to prove"
+              },
+              "lesson": 16,
+              "wordIds": [
+                "B3L16-1-23",
+                "B3L16-1-22"
+              ]
+            },
+            {
+              "id": "b3l16-cloze-2-6",
               "choices": [
                 {
                   "traditional": "由於",
                   "simplified": "由于",
                   "pinyin": "yóuyú",
                   "english": "owing to"
-                },
-                {
-                  "traditional": "既然",
-                  "simplified": "既然",
-                  "pinyin": "jìrán",
-                  "english": "since"
                 },
                 {
                   "traditional": "只要",
@@ -2065,107 +2137,28 @@
                   "simplified": "尽管",
                   "pinyin": "jǐnguǎn",
                   "english": "even though"
+                },
+                {
+                  "traditional": "萬一",
+                  "simplified": "万一",
+                  "pinyin": "wànyī",
+                  "english": "in case"
                 }
               ],
-              "key": 3,
-              "why": "He had no confidence in it, yet let them try, and 還是 marks that turn: 儘管. 由於 and 既然 would make his doubt the reason for saying yes, and 只要 makes it a condition.",
+              "key": 2,
+              "why": "The fridges are not common yet, but the writer believes in them all the same, and 仍然 marks that turn: 儘管……，仍然……. 由於 would make \"not common\" the reason for believing, 只要 makes it a condition, and 萬一 is for something that may or may not happen, not for a fact.",
               "focus": {
-                "zh": "儘管……，還是……",
-                "en": "even though…, still…"
+                "zh": "儘管……，仍然……；目前",
+                "en": "even though…, still…; at present"
               },
               "lesson": 12,
               "wordIds": [
                 "B3L12-2-05",
-                "B3L08-1-29"
+                "B3L16-2-08",
+                "B3L16-1-17"
               ],
               "grammarIds": [
                 "B3L12-G05-P325"
-              ]
-            },
-            {
-              "id": "b3l16-cloze-2-5",
-              "choices": [
-                {
-                  "traditional": "使得",
-                  "simplified": "使得",
-                  "pinyin": "shǐde",
-                  "english": "which made"
-                },
-                {
-                  "traditional": "以免",
-                  "simplified": "以免",
-                  "pinyin": "yǐmiǎn",
-                  "english": "so as not to"
-                },
-                {
-                  "traditional": "不過",
-                  "simplified": "不过",
-                  "pinyin": "búguò",
-                  "english": "but"
-                },
-                {
-                  "traditional": "雖然",
-                  "simplified": "虽然",
-                  "pinyin": "suīrán",
-                  "english": "although"
-                }
-              ],
-              "key": 0,
-              "why": "The queues are what changed his mind; the clause after the blank is their result, so 使得. 以免 would make his change of mind something to avoid, and 不過 and 雖然 set it against the queues when it follows from them.",
-              "focus": {
-                "zh": "使得（結果）",
-                "en": "to cause (a result)"
-              },
-              "lesson": 16,
-              "wordIds": [
-                "B3L16-2-13",
-                "B3L08-1-05"
-              ],
-              "grammarIds": [
-                "B3L16-G04-P415"
-              ]
-            },
-            {
-              "id": "b3l16-cloze-2-6",
-              "choices": [
-                {
-                  "traditional": "只是",
-                  "simplified": "只是",
-                  "pinyin": "zhǐshì",
-                  "english": "merely"
-                },
-                {
-                  "traditional": "不僅",
-                  "simplified": "不仅",
-                  "pinyin": "bùjǐn",
-                  "english": "not only"
-                },
-                {
-                  "traditional": "反而",
-                  "simplified": "反而",
-                  "pinyin": "fǎn'ér",
-                  "english": "instead"
-                },
-                {
-                  "traditional": "本來",
-                  "simplified": "本来",
-                  "pinyin": "běnlái",
-                  "english": "originally"
-                }
-              ],
-              "key": 1,
-              "why": "The project does two good things, and 也 later in the sentence adds the second: 不僅…也…. 只是 would limit it to one effect just before 也 adds another, 反而 needs an expectation to reverse, and 本來 points to the past when the sentence starts with 現在.",
-              "focus": {
-                "zh": "不僅……，也……",
-                "en": "not only…, but also…"
-              },
-              "lesson": 3,
-              "wordIds": [
-                "B3L03-2-03",
-                "B2L13-2-14"
-              ],
-              "grammarIds": [
-                "B3L03-G05-P88"
               ]
             }
           ]
@@ -2181,110 +2174,113 @@
           "kind": "reading",
           "format": "notice",
           "title": {
-            "traditional": "晚上的優惠",
-            "simplified": "晚上的优惠",
-            "pinyin": "Wǎnshàng de yōuhuì",
-            "english": "Evening Offers"
+            "traditional": "食物銀行：送食物請注意",
+            "simplified": "食物银行：送食物请注意",
+            "pinyin": "Shíwù yínháng: sòng shíwù qǐng zhùyì",
+            "english": "Food Bank: Please Read Before Giving Food"
           },
           "text": {
-            "traditional": "為了不讓食物白白丟掉，本超市每天晚上都有優惠：\n晚上八點以後：麵包、蛋糕打七折\n晚上九點以後：麵包、蛋糕打五折；水果打八折\n青菜、肉、魚：晚上九點以後打六折（星期天的肉和魚不打折）\n自己帶袋子來的客人，每次再減五元\n打折的商品，買了以後不能換\n本超市開到晚上十點",
-            "simplified": "为了不让食物白白丢掉，本超市每天晚上都有优惠：\n晚上八点以后：面包、蛋糕打七折\n晚上九点以后：面包、蛋糕打五折；水果打八折\n青菜、肉、鱼：晚上九点以后打六折（星期天的肉和鱼不打折）\n自己带袋子来的客人，每次再减五元\n打折的商品，买了以后不能换\n本超市开到晚上十点",
-            "pinyin": "Wèile bú ràng shíwù báibái diū diào, běn chāoshì měi tiān wǎnshàng dōu yǒu yōuhuì: Wǎnshàng bā diǎn yǐhòu: miànbāo, dàngāo dǎ qī zhé. Wǎnshàng jiǔ diǎn yǐhòu: miànbāo, dàngāo dǎ wǔ zhé; shuǐguǒ dǎ bā zhé. Qīngcài, ròu, yú: wǎnshàng jiǔ diǎn yǐhòu dǎ liù zhé (xīngqítiān de ròu hé yú bù dǎzhé). Zìjǐ dài dàizi lái de kèrén, měi cì zài jiǎn wǔ yuán. Dǎzhé de shāngpǐn, mǎi le yǐhòu bù néng huàn. Běn chāoshì kāi dào wǎnshàng shí diǎn.",
-            "english": "So that food isn't thrown away for nothing, we have evening offers every day:\nAfter 8 p.m.: bread and cakes 30% off\nAfter 9 p.m.: bread and cakes half price; fruit 20% off\nVegetables, meat, fish: 40% off after 9 p.m. (no discount on meat and fish on Sundays)\nCustomers who bring their own bags: a further NT$5 off each time\nDiscounted goods cannot be exchanged\nOpen until 10 p.m."
+            "traditional": "感謝您把食物送給需要的人。送來以前，請先看下面的說明：\n目前收的食物：米、麵條、玉米等，要沒打開過，有效日期至少還有三個月\n煮好的米飯和菜：只在星期六上午收，工作人員會當場檢查\n打開過或已經腐敗的食物，無論如何都不收，以免影響健康\n一次送十公斤以上的人，請先打電話，我們會開車去拿\n本月正在進行「一人一袋米」活動：送一袋米，就送您一個小禮物",
+            "simplified": "感谢您把食物送给需要的人。送来以前，请先看下面的说明：\n目前收的食物：米、面条、玉米等，要没打开过，有效日期至少还有三个月\n煮好的米饭和菜：只在星期六上午收，工作人员会当场检查\n打开过或已经腐败的食物，无论如何都不收，以免影响健康\n一次送十公斤以上的人，请先打电话，我们会开车去拿\n本月正在进行「一人一袋米」活动：送一袋米，就送您一个小礼物",
+            "pinyin": "Gǎnxiè nín bǎ shíwù sòng gěi xūyào de rén. Sòng lái yǐqián, qǐng xiān kàn xiàmiàn de shuōmíng: Mùqián shōu de shíwù: mǐ, miàntiáo, yùmǐ děng, yào méi dǎkāi guo, yǒuxiào rìqí zhìshǎo hái yǒu sān ge yuè. Zhǔ hǎo de mǐfàn hé cài: zhǐ zài xīngqíliù shàngwǔ shōu, gōngzuò rényuán huì dāngchǎng jiǎnchá. Dǎkāi guo huò yǐjīng fǔbài de shíwù, wúlùnrúhé dōu bù shōu, yǐmiǎn yǐngxiǎng jiànkāng. Yí cì sòng shí gōngjīn yǐshàng de rén, qǐng xiān dǎ diànhuà, wǒmen huì kāichē qù ná. Běn yuè zhèngzài jìnxíng \"yì rén yí dài mǐ\" huódòng: sòng yí dài mǐ, jiù sòng nín yí ge xiǎo lǐwù.",
+            "english": "Thank you for giving food to people who need it. Before you bring it, please read the notes below:\nFood we take at present: rice, noodles, corn and the like, unopened, with at least three months left before the use-by date\nCooked rice and dishes: only on Saturday mornings; staff will check them on the spot\nFood that has been opened or has gone rotten is not taken in any case, so that nobody's health is affected\nIf you are giving ten kilograms or more at once, please phone first and we will drive over to collect it\nThis month we are running the \"One Person, One Bag of Rice\" drive: give a bag of rice and we give you a small gift"
           },
           "questions": [
             {
               "id": "b3l16-reading-card-1-1",
               "prompt": {
-                "traditional": "星期天晚上九點半，一位太太去買麵包和魚。她買的麵包和魚各打幾折？",
-                "simplified": "星期天晚上九点半，一位太太去买面包和鱼。她买的面包和鱼各打几折？",
-                "pinyin": "Xīngqítiān wǎnshàng jiǔ diǎn bàn, yí wèi tàitai qù mǎi miànbāo hé yú. Tā mǎi de miànbāo hé yú gè dǎ jǐ zhé?",
-                "english": "At 9:30 on a Sunday evening a woman buys bread and fish. What discount does each get?"
+                "traditional": "一位太太星期三帶了一包沒打開過、有效日期還有半年的麵條，和一盒剛煮好的米飯去。食物銀行會收什麼？",
+                "simplified": "一位太太星期三带了一包没打开过、有效日期还有半年的面条，和一盒刚煮好的米饭去。食物银行会收什么？",
+                "pinyin": "Yí wèi tàitai xīngqísān dài le yì bāo méi dǎkāi guo, yǒuxiào rìqí hái yǒu bàn nián de miàntiáo, hé yì hé gāng zhǔ hǎo de mǐfàn qù. Shíwù yínháng huì shōu shénme?",
+                "english": "On Wednesday a woman brings a pack of unopened noodles with half a year left before the use-by date, and a box of freshly cooked rice. What will the food bank take?"
               },
               "choices": [
                 {
-                  "traditional": "麵包打五折，魚打六折",
-                  "simplified": "面包打五折，鱼打六折",
-                  "pinyin": "Miànbāo dǎ wǔ zhé, yú dǎ liù zhé.",
-                  "english": "Bread half price, fish 40% off."
+                  "traditional": "麵條和米飯都收",
+                  "simplified": "面条和米饭都收",
+                  "pinyin": "miàntiáo hé mǐfàn dōu shōu",
+                  "english": "both the noodles and the rice"
                 },
                 {
-                  "traditional": "麵包打五折，魚不打折",
-                  "simplified": "面包打五折，鱼不打折",
-                  "pinyin": "Miànbāo dǎ wǔ zhé, yú bù dǎzhé.",
-                  "english": "Bread half price, fish full price."
+                  "traditional": "只收米飯，不收麵條",
+                  "simplified": "只收米饭，不收面条",
+                  "pinyin": "zhǐ shōu mǐfàn, bù shōu miàntiáo",
+                  "english": "only the rice, not the noodles"
                 },
                 {
-                  "traditional": "麵包和魚都打五折",
-                  "simplified": "面包和鱼都打五折",
-                  "pinyin": "Miànbāo hé yú dōu dǎ wǔ zhé.",
-                  "english": "Both half price."
+                  "traditional": "只收麵條，不收米飯",
+                  "simplified": "只收面条，不收米饭",
+                  "pinyin": "zhǐ shōu miàntiáo, bù shōu mǐfàn",
+                  "english": "only the noodles, not the rice"
                 },
                 {
-                  "traditional": "麵包打七折，魚不打折",
-                  "simplified": "面包打七折，鱼不打折",
-                  "pinyin": "Miànbāo dǎ qī zhé, yú bù dǎzhé.",
-                  "english": "Bread 30% off, fish full price."
+                  "traditional": "麵條和米飯都不收",
+                  "simplified": "面条和米饭都不收",
+                  "pinyin": "miàntiáo hé mǐfàn dōu bù shōu",
+                  "english": "neither the noodles nor the rice"
                 }
               ],
-              "key": 1,
-              "why": "At 9:30 bread is on the nine o'clock line: half price. Fish would be 40% off after nine, but the note in brackets says meat and fish get no discount on Sundays. Fish at 40% off misses that note, half price is the bread rate, and 30% off is the eight o'clock rate.",
+              "key": 2,
+              "why": "Two lines: unopened noodles with half a year left pass the 至少還有三個月 rule, so they are taken. Cooked rice is only taken on Saturday mornings, and she comes on a Wednesday.",
               "focus": {
-                "zh": "三行合起來看",
-                "en": "combining three lines"
+                "zh": "至少；兩行合起來看",
+                "en": "at least; combining two lines"
               },
               "lesson": 16,
               "wordIds": [
-                "B1L02-1-15",
-                "B2L13-1-25",
-                "B1L12-2-01"
+                "B3L16-1-09",
+                "B3L16-1-23",
+                "B3L16-2-15"
+              ],
+              "grammarIds": [
+                "B3L16-G02-P406"
               ]
             },
             {
               "id": "b3l16-reading-card-1-2",
               "prompt": {
-                "traditional": "一位先生晚上九點半帶自己的袋子去，買了平常賣一百元的水果。他要付多少錢？",
-                "simplified": "一位先生晚上九点半带自己的袋子去，买了平常卖一百元的水果。他要付多少钱？",
-                "pinyin": "Yí wèi xiānshēng wǎnshàng jiǔ diǎn bàn dài zìjǐ de dàizi qù, mǎi le píngcháng mài yìbǎi yuán de shuǐguǒ. Tā yào fù duōshǎo qián?",
-                "english": "A man goes at 9:30 p.m. with his own bag and buys fruit with a list price of NT$100. How much does he pay?"
+                "traditional": "一位先生想送兩袋沒打開過的米，一共二十公斤，有效日期還有一年。照上面的說明，他應該怎麼做？",
+                "simplified": "一位先生想送两袋没打开过的米，一共二十公斤，有效日期还有一年。照上面的说明，他应该怎么做？",
+                "pinyin": "Yí wèi xiānshēng xiǎng sòng liǎng dài méi dǎkāi guo de mǐ, yígòng èrshí gōngjīn, yǒuxiào rìqí hái yǒu yì nián. Zhào shàngmiàn de shuōmíng, tā yīnggāi zěnme zuò?",
+                "english": "A man wants to give two unopened bags of rice, twenty kilograms in all, with a year left before the use-by date. According to the notes, what should he do?"
               },
               "choices": [
                 {
-                  "traditional": "四十五元",
-                  "simplified": "四十五元",
-                  "pinyin": "sìshíwǔ yuán",
-                  "english": "NT$45"
+                  "traditional": "星期六上午才能送過去",
+                  "simplified": "星期六上午才能送过去",
+                  "pinyin": "xīngqíliù shàngwǔ cái néng sòng guòqù",
+                  "english": "he can only take it on Saturday morning"
                 },
                 {
-                  "traditional": "七十五元",
-                  "simplified": "七十五元",
-                  "pinyin": "qīshíwǔ yuán",
-                  "english": "NT$75"
+                  "traditional": "先打電話，請他們開車來拿",
+                  "simplified": "先打电话，请他们开车来拿",
+                  "pinyin": "xiān dǎ diànhuà, qǐng tāmen kāichē lái ná",
+                  "english": "phone first and have them drive over for it"
                 },
                 {
-                  "traditional": "八十元",
-                  "simplified": "八十元",
-                  "pinyin": "bāshí yuán",
-                  "english": "NT$80"
+                  "traditional": "一次只能送十公斤",
+                  "simplified": "一次只能送十公斤",
+                  "pinyin": "yí cì zhǐ néng sòng shí gōngjīn",
+                  "english": "he can only give ten kilograms at a time"
                 },
                 {
-                  "traditional": "九十五元",
-                  "simplified": "九十五元",
-                  "pinyin": "jiǔshíwǔ yuán",
-                  "english": "NT$95"
+                  "traditional": "先請工作人員當場檢查",
+                  "simplified": "先请工作人员当场检查",
+                  "pinyin": "xiān qǐng gōngzuò rényuán dāngchǎng jiǎnchá",
+                  "english": "first ask the staff to check it on the spot"
                 }
               ],
               "key": 1,
-              "why": "After nine, fruit is 打八折: NT$80 for fruit priced at NT$100. His own bag takes off another NT$5 (再減五元), so 75. 80 forgets the bag, 95 forgets the discount, and 45 uses the bread price (half) instead of the fruit price.",
+              "why": "His rice is unopened with a year left, so the first line lets it in; twenty kilograms is 十公斤以上, so he phones first and they collect it. Saturday mornings and the on-the-spot check are for cooked food, and ten kilograms is where the phone call starts, not a limit.",
               "focus": {
-                "zh": "兩行合起來看",
-                "en": "combining two lines"
+                "zh": "目前；兩行合起來看",
+                "en": "at present; combining two lines"
               },
               "lesson": 16,
               "wordIds": [
-                "B1L01-3-05",
-                "B2L02-2-03",
-                "B2L13-1-25"
+                "B3L16-1-17",
+                "B3L16-1-02",
+                "B3L16-1-24"
               ]
             }
           ]
@@ -2294,95 +2290,48 @@
           "kind": "reading",
           "format": "message",
           "text": {
-            "traditional": "小美：\n冰箱壞了，房東說明天下午四點會有人來修，修好以前不能放東西。\n冰箱裡的麵包和蛋糕是我的，我今天晚上會吃完。\n那袋玉米是妳的吧？已經放了快兩個星期，我看了一下，有一半壞了，我丟了；好的我拿出來放在妳桌上。\n妳那盒水餃還沒打開過，我拿去樓下阿姨家，請她幫忙放在她的冰箱裡，等我們的冰箱可以用了，妳再去拿。\n房東說，冰箱修好以後，至少要等四個小時才能再放東西進去。要是到晚上十點還不能放，我們就等第二天早上再放吧。\n小文",
-            "simplified": "小美：\n冰箱坏了，房东说明天下午四点会有人来修，修好以前不能放东西。\n冰箱里的面包和蛋糕是我的，我今天晚上会吃完。\n那袋玉米是你的吧？已经放了快两个星期，我看了一下，有一半坏了，我丢了；好的我拿出来放在你桌上。\n你那盒水饺还没打开过，我拿去楼下阿姨家，请她帮忙放在她的冰箱里，等我们的冰箱可以用了，你再去拿。\n房东说，冰箱修好以后，至少要等四个小时才能再放东西进去。要是到晚上十点还不能放，我们就等第二天早上再放吧。\n小文",
-            "pinyin": "Xiǎo Měi: Bīngxiāng huài le, fángdōng shuō míngtiān xiàwǔ sì diǎn huì yǒu rén lái xiū, xiū hǎo yǐqián bù néng fàng dōngxi. Bīngxiāng lǐ de miànbāo hé dàngāo shì wǒ de, wǒ jīntiān wǎnshàng huì chī wán. Nà dài yùmǐ shì nǐ de ba? Yǐjīng fàng le kuài liǎng ge xīngqí, wǒ kàn le yíxià, yǒu yíbàn huài le, wǒ diū le; hǎo de wǒ ná chūlái fàng zài nǐ zhuō shàng. Nǐ nà hé shuǐjiǎo hái méi dǎkāi guo, wǒ ná qù lóuxià āyí jiā, qǐng tā bāngmáng fàng zài tā de bīngxiāng lǐ, děng wǒmen de bīngxiāng kěyǐ yòng le, nǐ zài qù ná. Fángdōng shuō, bīngxiāng xiū hǎo yǐhòu, zhìshǎo yào děng sì ge xiǎoshí cái néng zài fàng dōngxi jìnqù. Yàoshì dào wǎnshàng shí diǎn hái bù néng fàng, wǒmen jiù děng dì èr tiān zǎoshàng zài fàng ba. Xiǎo Wén",
-            "english": "Xiaomei,\nThe fridge has broken down. The landlord says someone is coming to fix it at 4 p.m. tomorrow, and nothing can go in it until it's fixed.\nThe bread and cake in the fridge are mine; I'll finish them tonight.\nThat bag of corn is yours, right? It's been there almost two weeks. I had a look: half had gone bad, so I threw it out; I put the good ones on your desk.\nYour box of dumplings hasn't been opened, so I took it to the lady downstairs and asked her to keep it in her fridge. Fetch it once our fridge can be used again.\nThe landlord says that once the fridge is fixed, we must wait at least four hours before putting anything back in. If it still can't be used by 10 p.m., let's wait and put things back the next morning.\nXiaowen"
+            "traditional": "各位同學：\n這學期的報告，我們這組決定訪問一位廚師謝老闆，請他談談「愛心冰箱」的概念。\n訪問目前訂在下星期三下午三點，在他的餐廳進行，至少需要一個小時。\n謝老闆說，那天要是客人太多，訪問就得改到晚上八點以後。他當天中午會打電話告訴我。\n小美負責準備問題，至少要十個，星期一以前傳給大家。我負責把訪問的經過錄下來。\n這是我們共同的報告，請大家都要到。無論如何，報告下下星期五就得交，訪問不能再改到別天了。\n小文",
+            "simplified": "各位同学：\n这学期的报告，我们这组决定访问一位厨师谢老板，请他谈谈「爱心冰箱」的概念。\n访问目前订在下星期三下午三点，在他的餐厅进行，至少需要一个小时。\n谢老板说，那天要是客人太多，访问就得改到晚上八点以后。他当天中午会打电话告诉我。\n小美负责准备问题，至少要十个，星期一以前传给大家。我负责把访问的经过录下来。\n这是我们共同的报告，请大家都要到。无论如何，报告下下星期五就得交，访问不能再改到别天了。\n小文",
+            "pinyin": "Gèwèi tóngxué: Zhè xuéqí de bàogào, wǒmen zhè zǔ juédìng fǎngwèn yí wèi chúshī Xiè lǎobǎn, qǐng tā tántán \"àixīn bīngxiāng\" de gàiniàn. Fǎngwèn mùqián dìng zài xià xīngqísān xiàwǔ sān diǎn, zài tā de cāntīng jìnxíng, zhìshǎo xūyào yí ge xiǎoshí. Xiè lǎobǎn shuō, nà tiān yàoshì kèrén tài duō, fǎngwèn jiù děi gǎi dào wǎnshàng bā diǎn yǐhòu. Tā dāngtiān zhōngwǔ huì dǎ diànhuà gàosu wǒ. Xiǎo Měi fùzé zhǔnbèi wèntí, zhìshǎo yào shí ge, xīngqíyī yǐqián chuán gěi dàjiā. Wǒ fùzé bǎ fǎngwèn de jīngguò lù xiàlái. Zhè shì wǒmen gòngtóng de bàogào, qǐng dàjiā dōu yào dào. Wúlùnrúhé, bàogào xià xià xīngqíwǔ jiù děi jiāo, fǎngwèn bù néng zài gǎi dào bié tiān le. Xiǎo Wén",
+            "english": "Dear classmates,\nFor this term's report, our group has decided to interview a chef, Mr. Xie, and ask him to talk about the idea behind his \"community fridge\".\nThe interview is at present set for 3 p.m. next Wednesday. It will be held at his restaurant and needs at least an hour.\nMr. Xie says that if there are too many customers that day, the interview will have to move to after 8 p.m. He will phone me at noon that day to tell me.\nXiaomei is in charge of preparing the questions, at least ten of them, and will send them to everyone by Monday. I am in charge of recording how the interview goes.\nThis is our shared report, so please all be there. Whatever happens, the report has to be handed in on the Friday after next, so the interview cannot be moved to another day.\nXiaowen"
           },
           "questions": [
             {
               "id": "b3l16-reading-card-2-1",
               "prompt": {
-                "traditional": "小美回家以後，她的東西在哪裡？",
-                "simplified": "小美回家以后，她的东西在哪里？",
-                "pinyin": "Xiǎo Měi huí jiā yǐhòu, tā de dōngxi zài nǎlǐ?",
-                "english": "When Xiaomei gets home, where are her things?"
+                "traditional": "如果星期三客人太多，訪問最早什麼時候會結束？",
+                "simplified": "如果星期三客人太多，访问最早什么时候会结束？",
+                "pinyin": "Rúguǒ xīngqísān kèrén tài duō, fǎngwèn zuì zǎo shénme shíhòu huì jiéshù?",
+                "english": "If there are too many customers on Wednesday, when is the earliest the interview will end?"
               },
               "choices": [
                 {
-                  "traditional": "整袋玉米在桌上，水餃在阿姨家",
-                  "simplified": "整袋玉米在桌上，水饺在阿姨家",
-                  "pinyin": "Zhěng dài yùmǐ zài zhuō shàng, shuǐjiǎo zài āyí jiā.",
-                  "english": "The whole bag of corn is on her desk; the dumplings are at the lady's."
+                  "traditional": "當天下午四點",
+                  "simplified": "当天下午四点",
+                  "pinyin": "dāngtiān xiàwǔ sì diǎn",
+                  "english": "4 p.m. that day"
                 },
-                {
-                  "traditional": "好玉米在桌上，水餃還在冰箱",
-                  "simplified": "好玉米在桌上，水饺还在冰箱",
-                  "pinyin": "Hǎo yùmǐ zài zhuō shàng, shuǐjiǎo hái zài bīngxiāng.",
-                  "english": "The good corn is on her desk; the dumplings are still in the fridge."
-                },
-                {
-                  "traditional": "好玉米在桌上，水餃在阿姨家",
-                  "simplified": "好玉米在桌上，水饺在阿姨家",
-                  "pinyin": "Hǎo yùmǐ zài zhuō shàng, shuǐjiǎo zài āyí jiā.",
-                  "english": "The good corn is on her desk; the dumplings are at the lady's."
-                },
-                {
-                  "traditional": "好玉米在阿姨家，水餃在桌上",
-                  "simplified": "好玉米在阿姨家，水饺在桌上",
-                  "pinyin": "Hǎo yùmǐ zài āyí jiā, shuǐjiǎo zài zhuō shàng.",
-                  "english": "The good corn is at the lady's; the dumplings are on her desk."
-                }
-              ],
-              "key": 2,
-              "why": "Two lines: the bad half of the corn was thrown out and the good half put on her desk, and the unopened dumplings went to the neighbour's fridge because nothing can go in theirs. The whole bag misses the half thrown away, \"still in the fridge\" misses the move, and the last choice swaps the two places.",
-              "focus": {
-                "zh": "兩行合起來看",
-                "en": "combining two lines"
-              },
-              "lesson": 16,
-              "wordIds": [
-                "B2L14-1-17",
-                "B3L06-1-32",
-                "B3L16-1-03"
-              ]
-            },
-            {
-              "id": "b3l16-reading-card-2-2",
-              "prompt": {
-                "traditional": "如果冰箱明天晚上六點半才修好，照小文說的，她們最早什麼時候會再放東西進去？",
-                "simplified": "如果冰箱明天晚上六点半才修好，照小文说的，她们最早什么时候会再放东西进去？",
-                "pinyin": "Rúguǒ bīngxiāng míngtiān wǎnshàng liù diǎn bàn cái xiū hǎo, zhào Xiǎo Wén shuō de, tāmen zuì zǎo shénme shíhòu huì zài fàng dōngxi jìnqù?",
-                "english": "If the fridge is only fixed at 6:30 p.m. tomorrow, going by Xiaowen's note, when is the earliest they will put things back in?"
-              },
-              "choices": [
                 {
                   "traditional": "當天晚上八點",
                   "simplified": "当天晚上八点",
-                  "pinyin": "dàngtiān wǎnshàng bā diǎn",
+                  "pinyin": "dāngtiān wǎnshàng bā diǎn",
                   "english": "8 p.m. that day"
                 },
                 {
-                  "traditional": "當天晚上六點半",
-                  "simplified": "当天晚上六点半",
-                  "pinyin": "dàngtiān wǎnshàng liù diǎn bàn",
-                  "english": "6:30 p.m. that day"
+                  "traditional": "當天晚上九點",
+                  "simplified": "当天晚上九点",
+                  "pinyin": "dāngtiān wǎnshàng jiǔ diǎn",
+                  "english": "9 p.m. that day"
                 },
                 {
-                  "traditional": "當天晚上十點半",
-                  "simplified": "当天晚上十点半",
-                  "pinyin": "dàngtiān wǎnshàng shí diǎn bàn",
-                  "english": "10:30 p.m. that day"
-                },
-                {
-                  "traditional": "第二天早上",
-                  "simplified": "第二天早上",
-                  "pinyin": "dì èr tiān zǎoshàng",
-                  "english": "the next morning"
+                  "traditional": "第二天中午",
+                  "simplified": "第二天中午",
+                  "pinyin": "dì èr tiān zhōngwǔ",
+                  "english": "noon the next day"
                 }
               ],
-              "key": 3,
-              "why": "修好以後，至少要等四個小時 puts the earliest time at 10:30 p.m., and that is past ten, so by Xiaowen's plan in the last line they wait until the next morning. 10:30 misses that line, eight counts from the 4 p.m. start, and 6:30 forgets the wait.",
+              "key": 2,
+              "why": "Three lines: with too many customers the interview starts after eight in the evening, it needs 至少一個小時, and it cannot move to another day, so nine that evening is the earliest it can end. Four is when the afternoon plan would end, and eight is when it starts.",
               "focus": {
                 "zh": "至少；三行合起來看",
                 "en": "at least; combining three lines"
@@ -2390,11 +2339,58 @@
               "lesson": 16,
               "wordIds": [
                 "B3L16-1-09",
-                "B2L09-1-14",
-                "B2L03-1-15"
+                "B3L16-1-10",
+                "B3L16-1-16"
               ],
               "grammarIds": [
                 "B3L16-G02-P406"
+              ]
+            },
+            {
+              "id": "b3l16-reading-card-2-2",
+              "prompt": {
+                "traditional": "小文最後說「無論如何」，主要是想讓同學知道什麼？",
+                "simplified": "小文最后说「无论如何」，主要是想让同学知道什么？",
+                "pinyin": "Xiǎo Wén zuìhòu shuō \"wúlùnrúhé\", zhǔyào shì xiǎng ràng tóngxué zhīdào shénme?",
+                "english": "When Xiaowen says \"whatever happens\" at the end, what does he mainly want his classmates to know?"
+              },
+              "choices": [
+                {
+                  "traditional": "謝老闆很忙，可能不接受訪問",
+                  "simplified": "谢老板很忙，可能不接受访问",
+                  "pinyin": "Xiè lǎobǎn hěn máng, kěnéng bù jiēshòu fǎngwèn",
+                  "english": "Mr. Xie is busy and may not agree to the interview"
+                },
+                {
+                  "traditional": "小美準備的問題還不夠多",
+                  "simplified": "小美准备的问题还不够多",
+                  "pinyin": "Xiǎo Měi zhǔnbèi de wèntí hái bú gòu duō",
+                  "english": "Xiaomei has not prepared enough questions"
+                },
+                {
+                  "traditional": "報告交了以後還要再訪問",
+                  "simplified": "报告交了以后还要再访问",
+                  "pinyin": "bàogào jiāo le yǐhòu hái yào zài fǎngwèn",
+                  "english": "there will be another interview after the report is handed in"
+                },
+                {
+                  "traditional": "時間不多了，訪問要照計畫完成",
+                  "simplified": "时间不多了，访问要照计划完成",
+                  "pinyin": "shíjiān bù duō le, fǎngwèn yào zhào jìhuà wánchéng",
+                  "english": "time is short, so the interview must be done as planned"
+                }
+              ],
+              "key": 3,
+              "why": "無論如何 opens the reason the day cannot change: the report is due the Friday after next, so the interview has to happen that Wednesday, afternoon or evening. Nothing says Mr. Xie might refuse, ten questions is the number asked for, not a shortfall, and no second interview is planned.",
+              "focus": {
+                "zh": "無論如何；寫的人的意思",
+                "en": "whatever happens; the writer's point"
+              },
+              "lesson": 16,
+              "wordIds": [
+                "B3L16-2-25",
+                "B3L16-2-20",
+                "B3L16-1-21"
               ]
             }
           ]
@@ -2410,168 +2406,160 @@
           "kind": "reading",
           "format": "passage",
           "title": {
-            "traditional": "打包",
-            "simplified": "打包",
-            "pinyin": "Dǎbāo",
-            "english": "Taking Leftovers Home"
+            "traditional": "食物真的不夠嗎？",
+            "simplified": "食物真的不够吗？",
+            "pinyin": "Shíwù zhēn de bú gòu ma?",
+            "english": "Is There Really Not Enough Food?"
           },
           "text": {
-            "traditional": "我剛來臺灣的時候，第一次跟同學去餐廳吃飯，看到他們把吃不完的菜打包帶回家，覺得很驚訝。在我的國家，很多人把在餐廳打包當作一件讓人不好意思的事，好像自己很窮，所以吃不完的菜往往就留在桌上。\n有一次，我們點了太多菜，剩下一大半。我正要走，一位同學就請服務生拿盒子來，把菜都裝進去，還給了我一盒，說：「明天的午餐有了。」我本來有點不好意思，可是第二天中午吃的時候，發現菜還是很好吃，又省了一頓飯錢。\n後來我發現，在臺灣，打包是很平常的事，就算在很貴的餐廳也一樣，服務生甚至會主動問客人要不要打包。由於大家都這麼做，因此誰也不會覺得奇怪。這使得我慢慢改變了看法：把吃不完的菜帶走，不是因為窮，是因為愛惜食物。\n現在回國的時候，我在餐廳吃不完，也會請服務生幫我打包。朋友們一開始覺得很奇怪，我就把在臺灣學到的道理告訴他們，於是有幾個朋友也開始這麼做了。",
-            "simplified": "我刚来台湾的时候，第一次跟同学去餐厅吃饭，看到他们把吃不完的菜打包带回家，觉得很惊讶。在我的国家，很多人把在餐厅打包当作一件让人不好意思的事，好像自己很穷，所以吃不完的菜往往就留在桌上。\n有一次，我们点了太多菜，剩下一大半。我正要走，一位同学就请服务生拿盒子来，把菜都装进去，还给了我一盒，说：「明天的午餐有了。」我本来有点不好意思，可是第二天中午吃的时候，发现菜还是很好吃，又省了一顿饭钱。\n后来我发现，在台湾，打包是很平常的事，就算在很贵的餐厅也一样，服务生甚至会主动问客人要不要打包。由于大家都这么做，因此谁也不会觉得奇怪。这使得我慢慢改变了看法：把吃不完的菜带走，不是因为穷，是因为爱惜食物。\n现在回国的时候，我在餐厅吃不完，也会请服务生帮我打包。朋友们一开始觉得很奇怪，我就把在台湾学到的道理告诉他们，于是有几个朋友也开始这么做了。",
-            "pinyin": "Wǒ gāng lái Táiwān de shíhòu, dì yī cì gēn tóngxué qù cāntīng chīfàn, kàndào tāmen bǎ chī bù wán de cài dǎbāo dài huí jiā, juéde hěn jīngyà. Zài wǒ de guójiā, hěn duō rén bǎ zài cāntīng dǎbāo dāngzuò yí jiàn ràng rén bù hǎoyìsi de shì, hǎoxiàng zìjǐ hěn qióng, suǒyǐ chī bù wán de cài wǎngwǎng jiù liú zài zhuō shàng. Yǒu yí cì, wǒmen diǎn le tài duō cài, shèngxià yí dà bàn. Wǒ zhèng yào zǒu, yí wèi tóngxué jiù qǐng fúwùshēng ná hézi lái, bǎ cài dōu zhuāng jìnqù, hái gěi le wǒ yì hé, shuō: \"Míngtiān de wǔcān yǒu le.\" Wǒ běnlái yǒudiǎn bù hǎoyìsi, kěshì dì èr tiān zhōngwǔ chī de shíhòu, fāxiàn cài háishì hěn hǎochī, yòu shěng le yí dùn fàn qián. Hòulái wǒ fāxiàn, zài Táiwān, dǎbāo shì hěn píngcháng de shì, jiùsuàn zài hěn guì de cāntīng yě yíyàng, fúwùshēng shènzhì huì zhǔdòng wèn kèrén yào bú yào dǎbāo. Yóuyú dàjiā dōu zhème zuò, yīncǐ shéi yě bú huì juéde qíguài. Zhè shǐde wǒ mànmàn gǎibiàn le kànfǎ: bǎ chī bù wán de cài dài zǒu, bú shì yīnwèi qióng, shì yīnwèi àixí shíwù. Xiànzài huíguó de shíhòu, wǒ zài cāntīng chī bù wán, yě huì qǐng fúwùshēng bāng wǒ dǎbāo. Péngyǒumen yì kāishǐ juéde hěn qíguài, wǒ jiù bǎ zài Táiwān xué dào de dàolǐ gàosu tāmen, yúshì yǒu jǐ ge péngyǒu yě kāishǐ zhème zuò le.",
-            "english": "When I first came to Taiwan and went to a restaurant with classmates for the first time, I was surprised to see them pack up the food they couldn't finish and take it home. In my country, many people treat taking leftovers from a restaurant as something embarrassing, as if you were poor, so unfinished food is usually just left on the table.\nOnce we ordered too much and more than half was left. I was about to leave when a classmate asked the waiter for boxes, packed all the food, and gave me one, saying, \"There's tomorrow's lunch.\" I felt a little awkward at first, but when I ate it the next day at noon, the food was still good, and it saved me the cost of a meal.\nLater I found that in Taiwan taking leftovers is completely normal, even in expensive restaurants; waiters will even ask customers whether they want them packed. Because everyone does it, nobody finds it strange. This slowly changed my mind: taking home what you can't finish isn't because you're poor; it's because you cherish food.\nNow when I go home and can't finish a meal at a restaurant, I ask the waiter to pack it too. At first my friends found it odd, so I told them what I learned in Taiwan, and a few of them started doing the same."
+            "traditional": "目前全球人口不斷增加，可以種田的土地面積卻越來越小，不少人擔心將來食物會不夠。為了解決這個問題，許多國家提供經費，讓科學家在農業領域進行研究。這幾十年來，他們發明了不少新方法，使得同樣大小的田能種出更多的米和玉米。\n不過，有一位研究人員從不同的角度來看這個問題。記者訪問他的時候，他表示，「食物不夠」只是理論上的說法，因為全世界每年生產的食物，其實夠所有的人吃。真正的問題是，在工業發達的國家，有三分之一的食物還沒吃就被丟掉了；在一些很窮的地區，卻有很多人連一天兩頓飯都吃不飽。\n他的觀點是，丟掉食物的行為在這些國家十分普遍，這跟社會的觀念有密切的關係：東西越容易買到，人們就越不愛惜。因此，只發明新方法仍然無法解決問題，更重要的是改變大家的觀念。他的研究也證明，只要每個人少丟一點，就能讓許多人有飯吃。既然如此，食物問題就不能只留給科學家去解決，這是所有人共同的責任。",
+            "simplified": "目前全球人口不断增加，可以种田的土地面积却越来越小，不少人担心将来食物会不够。为了解决这个问题，许多国家提供经费，让科学家在农业领域进行研究。这几十年来，他们发明了不少新方法，使得同样大小的田能种出更多的米和玉米。\n不过，有一位研究人员从不同的角度来看这个问题。记者访问他的时候，他表示，「食物不够」只是理论上的说法，因为全世界每年生产的食物，其实够所有的人吃。真正的问题是，在工业发达的国家，有三分之一的食物还没吃就被丢掉了；在一些很穷的地区，却有很多人连一天两顿饭都吃不饱。\n他的观点是，丢掉食物的行为在这些国家十分普遍，这跟社会的观念有密切的关系：东西越容易买到，人们就越不爱惜。因此，只发明新方法仍然无法解决问题，更重要的是改变大家的观念。他的研究也证明，只要每个人少丢一点，就能让许多人有饭吃。既然如此，食物问题就不能只留给科学家去解决，这是所有人共同的责任。",
+            "pinyin": "Mùqián quánqiú rénkǒu búduàn zēngjiā, kěyǐ zhòngtián de tǔdì miànjī què yuè lái yuè xiǎo, bù shǎo rén dānxīn jiānglái shíwù huì bú gòu. Wèile jiějué zhège wèntí, xǔduō guójiā tígōng jīngfèi, ràng kēxuéjiā zài nóngyè lǐngyù jìnxíng yánjiù. Zhè jǐ shí nián lái, tāmen fāmíng le bù shǎo xīn fāngfǎ, shǐde tóngyàng dàxiǎo de tián néng zhòng chū gèng duō de mǐ hé yùmǐ. Búguò, yǒu yí wèi yánjiù rényuán cóng bùtóng de jiǎodù lái kàn zhège wèntí. Jìzhě fǎngwèn tā de shíhòu, tā biǎoshi, \"shíwù bú gòu\" zhǐ shì lǐlùn shàng de shuōfǎ, yīnwèi quán shìjiè měi nián shēngchǎn de shíwù, qíshí gòu suǒyǒu de rén chī. Zhēnzhèng de wèntí shì, zài gōngyè fādá de guójiā, yǒu sān fēn zhī yī de shíwù hái méi chī jiù bèi diū diào le; zài yìxiē hěn qióng de dìqū, què yǒu hěn duō rén lián yì tiān liǎng dùn fàn dōu chī bù bǎo. Tā de guāndiǎn shì, diū diào shíwù de xíngwéi zài zhèxiē guójiā shífēn pǔbiàn, zhè gēn shèhuì de guānniàn yǒu mìqiè de guānxì: dōngxi yuè róngyì mǎi dào, rénmen jiù yuè bú àixí. Yīncǐ, zhǐ fāmíng xīn fāngfǎ réngrán wúfǎ jiějué wèntí, gèng zhòngyào de shì gǎibiàn dàjiā de guānniàn. Tā de yánjiù yě zhèngmíng, zhǐyào měi ge rén shǎo diū yìdiǎn, jiù néng ràng xǔduō rén yǒu fàn chī. Jìrán rúcǐ, shíwù wèntí jiù bù néng zhǐ liú gěi kēxuéjiā qù jiějué, zhè shì suǒyǒu rén gòngtóng de zérèn.",
+            "english": "At present the world's population keeps growing while the area of land that can be farmed gets smaller and smaller, and many people worry that one day there will not be enough food. To solve this problem, many countries provide funding for scientists to do research in the field of agriculture. Over the past few decades they have invented many new methods, which let a field of the same size grow more rice and corn.\nBut one researcher looks at the problem from a different angle. When a reporter interviewed him, he said that \"not enough food\" is only true in theory, because the food the whole world produces each year is in fact enough for everyone to eat. The real problem is that in industrially developed countries a third of the food is thrown away before it is eaten, while in some very poor regions many people cannot even get two full meals a day.\nHis view is that throwing food away is very common in these countries, and that this is closely tied to how a society thinks: the easier things are to buy, the less people cherish them. So inventing new methods alone still cannot solve the problem; what matters more is changing how everyone thinks. His research also proves that if each person throws away a little less, many people can have food to eat. Since that is so, the food problem cannot just be left for scientists to solve; it is a responsibility everyone shares."
           },
           "questions": [
             {
               "id": "b3l16-passage-1-1",
               "prompt": {
-                "traditional": "在作者的國家，很多人為什麼不在餐廳打包？",
-                "simplified": "在作者的国家，很多人为什么不在餐厅打包？",
-                "pinyin": "Zài zuòzhě de guójiā, hěn duō rén wèishénme bú zài cāntīng dǎbāo?",
-                "english": "In the writer's country, why do many people not take leftovers from restaurants?"
+                "traditional": "根據第一段，科學家的新方法帶來了什麼改變？",
+                "simplified": "根据第一段，科学家的新方法带来了什么改变？",
+                "pinyin": "Gēnjù dì yī duàn, kēxuéjiā de xīn fāngfǎ dài lái le shénme gǎibiàn?",
+                "english": "According to the first paragraph, what change have the scientists' new methods brought?"
               },
               "choices": [
                 {
-                  "traditional": "怕別人以為自己很窮",
-                  "simplified": "怕别人以为自己很穷",
-                  "pinyin": "Pà biérén yǐwéi zìjǐ hěn qióng.",
-                  "english": "They fear others will think they are poor."
+                  "traditional": "可以種田的土地變多了",
+                  "simplified": "可以种田的土地变多了",
+                  "pinyin": "kěyǐ zhòngtián de tǔdì biàn duō le",
+                  "english": "there is more land that can be farmed"
                 },
                 {
-                  "traditional": "覺得剩菜第二天就不好吃",
-                  "simplified": "觉得剩菜第二天就不好吃",
-                  "pinyin": "Juéde shèng cài dì èr tiān jiù bù hǎochī.",
-                  "english": "They think leftovers taste bad the next day."
+                  "traditional": "需要種田的人口變少了",
+                  "simplified": "需要种田的人口变少了",
+                  "pinyin": "xūyào zhòngtián de rénkǒu biàn shǎo le",
+                  "english": "fewer people need to farm"
                 },
                 {
-                  "traditional": "那裡的服務生不會主動問",
-                  "simplified": "那里的服务生不会主动问",
-                  "pinyin": "Nàlǐ de fúwùshēng bú huì zhǔdòng wèn.",
-                  "english": "Waiters there don't offer."
+                  "traditional": "同樣的土地能種出更多食物",
+                  "simplified": "同样的土地能种出更多食物",
+                  "pinyin": "tóngyàng de tǔdì néng zhòng chū gèng duō shíwù",
+                  "english": "the same land can grow more food"
                 },
                 {
-                  "traditional": "覺得帶剩菜回家很麻煩",
-                  "simplified": "觉得带剩菜回家很麻烦",
-                  "pinyin": "Juéde dài shèng cài huí jiā hěn máfán.",
-                  "english": "They find taking leftovers home a bother."
+                  "traditional": "同樣的食物能讓更多人吃飽",
+                  "simplified": "同样的食物能让更多人吃饱",
+                  "pinyin": "tóngyàng de shíwù néng ràng gèng duō rén chī bǎo",
+                  "english": "the same food can feed more people"
                 }
               ],
-              "key": 0,
-              "why": "很多人把在餐廳打包當作一件讓人不好意思的事，好像自己很窮: the worry is looking poor. Food still tasting good the next day is the writer's own later discovery, waiters offering is a Taiwan detail, and nobody calls it a bother.",
+              "key": 2,
+              "why": "使得同樣大小的田能種出更多的米和玉米: the methods are the cause, more from the same field the result. The land that can be farmed is shrinking, nothing is said about how many people farm, and feeding more people with the same food is the researcher's later point about waste, not what the methods did.",
               "focus": {
-                "zh": "當作；原因",
-                "en": "regard as; a reason"
+                "zh": "使得；發明",
+                "en": "to cause; to invent"
               },
               "lesson": 16,
               "wordIds": [
-                "B3L16-1-05",
-                "B3L04-1-32",
-                "B2L13-2-09"
+                "B3L16-2-13",
+                "B3L16-1-20",
+                "B3L16-1-08"
               ],
               "grammarIds": [
-                "B3L16-G01-P404"
+                "B3L16-G04-P415"
               ]
             },
             {
               "id": "b3l16-passage-1-2",
               "prompt": {
-                "traditional": "「這使得我慢慢改變了看法」，「這」指的是什麼？",
-                "simplified": "「这使得我慢慢改变了看法」，「这」指的是什么？",
-                "pinyin": "\"Zhè shǐde wǒ mànmàn gǎibiàn le kànfǎ\", \"zhè\" zhǐ de shì shénme?",
-                "english": "In \"This slowly changed my mind\", what does \"this\" refer to?"
+                "traditional": "那位研究人員為什麼認為「食物不夠」只是理論上的說法？",
+                "simplified": "那位研究人员为什么认为「食物不够」只是理论上的说法？",
+                "pinyin": "Nà wèi yánjiù rényuán wèishénme rènwéi \"shíwù bú gòu\" zhǐ shì lǐlùn shàng de shuōfǎ?",
+                "english": "Why does the researcher think \"not enough food\" is only true in theory?"
               },
               "choices": [
                 {
-                  "traditional": "第二天的菜還是很好吃",
-                  "simplified": "第二天的菜还是很好吃",
-                  "pinyin": "Dì èr tiān de cài háishì hěn hǎochī.",
-                  "english": "The food was still good the next day."
+                  "traditional": "生產的食物夠吃，可是很多被丟掉",
+                  "simplified": "生产的食物够吃，可是很多被丢掉",
+                  "pinyin": "shēngchǎn de shíwù gòu chī, kěshì hěn duō bèi diū diào",
+                  "english": "enough food is produced, but a lot of it is thrown away"
                 },
                 {
-                  "traditional": "同學送了他一盒剩菜",
-                  "simplified": "同学送了他一盒剩菜",
-                  "pinyin": "Tóngxué sòng le tā yì hé shèng cài.",
-                  "english": "A classmate gave him a box of leftovers."
+                  "traditional": "科學家已經發明了新的種田方法",
+                  "simplified": "科学家已经发明了新的种田方法",
+                  "pinyin": "kēxuéjiā yǐjīng fāmíng le xīn de zhòngtián fāngfǎ",
+                  "english": "scientists have already invented new farming methods"
                 },
                 {
-                  "traditional": "在臺灣大家都覺得打包很平常",
-                  "simplified": "在台湾大家都觉得打包很平常",
-                  "pinyin": "Zài Táiwān dàjiā dōu juéde dǎbāo hěn píngcháng.",
-                  "english": "In Taiwan people see taking leftovers as normal."
+                  "traditional": "可以種田的土地其實還很多",
+                  "simplified": "可以种田的土地其实还很多",
+                  "pinyin": "kěyǐ zhòngtián de tǔdì qíshí hái hěn duō",
+                  "english": "there is in fact still plenty of land to farm"
                 },
                 {
-                  "traditional": "國外的朋友覺得很奇怪",
-                  "simplified": "国外的朋友觉得很奇怪",
-                  "pinyin": "Guówài de péngyǒu juéde hěn qíguài.",
-                  "english": "His friends back home found it odd."
+                  "traditional": "工業發達的國家生產得太少",
+                  "simplified": "工业发达的国家生产得太少",
+                  "pinyin": "gōngyè fādá de guójiā shēngchǎn de tài shǎo",
+                  "english": "industrially developed countries produce too little"
                 }
               ],
-              "key": 2,
-              "why": "這 points back to the lines just before it: taking leftovers is 很平常的事, and 由於大家都這麼做，因此誰也不會覺得奇怪. The tasty lunch and the gift are from the earlier paragraph, before the change of mind, and his friends' surprise comes after it, when he has already changed.",
+              "key": 0,
+              "why": "He gives the reason himself with 因為: the world grows enough for everyone, and the real trouble (真正的問題是) is that a third is thrown away in rich countries. The new methods are the scientists' answer, not his reason; the farmland is shrinking, not plentiful; and his complaint about rich countries is that they throw food away, not that they grow too little.",
               "focus": {
-                "zh": "使得；由於……因此……",
-                "en": "to cause; owing to…, therefore…"
+                "zh": "理論上；工業發達",
+                "en": "in theory; industrially developed"
               },
               "lesson": 16,
               "wordIds": [
-                "B3L16-2-13",
-                "B3L16-2-07",
-                "B3L08-1-05"
-              ],
-              "grammarIds": [
-                "B3L16-G04-P415",
-                "B3L16-G03-P413"
+                "B3L16-2-21",
+                "B3L16-2-22",
+                "B3L16-2-23"
               ]
             },
             {
               "id": "b3l16-passage-1-3",
               "prompt": {
-                "traditional": "這篇文章主要在說什麼？",
-                "simplified": "这篇文章主要在说什么？",
-                "pinyin": "Zhè piān wénzhāng zhǔyào zài shuō shénme?",
-                "english": "What is this passage mainly about?"
+                "traditional": "那位研究人員對科學家發明的新方法有什麼看法？",
+                "simplified": "那位研究人员对科学家发明的新方法有什么看法？",
+                "pinyin": "Nà wèi yánjiù rényuán duì kēxuéjiā fāmíng de xīn fāngfǎ yǒu shénme kànfǎ?",
+                "english": "What does the researcher think of the new methods the scientists invented?"
               },
               "choices": [
                 {
-                  "traditional": "作者教會了臺灣同學愛惜食物",
-                  "simplified": "作者教会了台湾同学爱惜食物",
-                  "pinyin": "Zuòzhě jiāo huì le Táiwān tóngxué àixí shíwù.",
-                  "english": "The writer taught Taiwanese classmates to cherish food."
+                  "traditional": "有幫助，可是花的經費太多了",
+                  "simplified": "有帮助，可是花的经费太多了",
+                  "pinyin": "yǒu bāngzhù, kěshì huā de jīngfèi tài duō le",
+                  "english": "they help, but they cost too much funding"
                 },
                 {
-                  "traditional": "作者改變了看法，可是朋友不接受",
-                  "simplified": "作者改变了看法，可是朋友不接受",
-                  "pinyin": "Zuòzhě gǎibiàn le kànfǎ, kěshì péngyǒu bù jiēshòu.",
-                  "english": "The writer changed their view, but friends would not accept it."
+                  "traditional": "有幫助，可是只適合很窮的地區",
+                  "simplified": "有帮助，可是只适合很穷的地区",
+                  "pinyin": "yǒu bāngzhù, kěshì zhǐ shìhé hěn qióng de dìqū",
+                  "english": "they help, but only suit very poor regions"
                 },
                 {
-                  "traditional": "作者回國後才明白打包是愛惜食物",
-                  "simplified": "作者回国后才明白打包是爱惜食物",
-                  "pinyin": "Zuòzhě huíguó hòu cái míngbái dǎbāo shì àixí shíwù.",
-                  "english": "Only after going home did the writer see taking leftovers as cherishing food."
+                  "traditional": "有幫助，可是新方法還不夠多",
+                  "simplified": "有帮助，可是新方法还不够多",
+                  "pinyin": "yǒu bāngzhù, kěshì xīn fāngfǎ hái bú gòu duō",
+                  "english": "they help, but there are not yet enough of them"
                 },
                 {
-                  "traditional": "作者改變了看法，也影響了朋友",
-                  "simplified": "作者改变了看法，也影响了朋友",
-                  "pinyin": "Zuòzhě gǎibiàn le kànfǎ, yě yǐngxiǎng le péngyǒu.",
-                  "english": "The writer changed their view, and influenced friends too."
+                  "traditional": "有幫助，可是解決不了真正的問題",
+                  "simplified": "有帮助，可是解决不了真正的问题",
+                  "pinyin": "yǒu bāngzhù, kěshì jiějué bù liǎo zhēnzhèng de wèntí",
+                  "english": "they help, but cannot solve the real problem"
                 }
               ],
               "key": 3,
-              "why": "The passage follows one person: from 一件讓人不好意思的事 to 是因為愛惜食物, and then 於是有幾個朋友也開始這麼做了. Friends who refuse misses that last line; the change happened in Taiwan, not after going home; and it was the classmates who showed the writer, not the other way round.",
+              "why": "Two paragraphs together: the methods did raise harvests, but for him 真正的問題是 the food thrown away, and 只發明新方法仍然無法解決問題，更重要的是改變大家的觀念. He never complains about cost, never limits the methods to poor regions, and does not ask for more of them.",
               "focus": {
-                "zh": "當作；於是；整篇的意思",
-                "en": "regard as; so; the main idea"
+                "zh": "觀點；無法；兩段合起來看",
+                "en": "viewpoint; unable to; combining two paragraphs"
               },
               "lesson": 16,
               "wordIds": [
-                "B3L16-1-05",
-                "B3L16-2-14",
-                "B2L13-2-11"
-              ],
-              "grammarIds": [
-                "B3L16-G01-P404",
-                "B3L16-G05-P417"
+                "B3L16-2-19",
+                "B3L16-1-07",
+                "B3L16-2-08"
               ]
             }
           ]
@@ -2581,163 +2569,160 @@
           "kind": "reading",
           "format": "passage",
           "title": {
-            "traditional": "媽媽的冰箱",
-            "simplified": "妈妈的冰箱",
-            "pinyin": "Māma de bīngxiāng",
-            "english": "Mom's Fridge"
+            "traditional": "醜蔬菜",
+            "simplified": "丑蔬菜",
+            "pinyin": "Chǒu shūcài",
+            "english": "Ugly Vegetables"
           },
           "text": {
-            "traditional": "我媽媽以前很喜歡去一家很大的超市買東西，因為一次買得多，價錢比較便宜。每個週末，她都會買好幾大袋回來，把冰箱放得滿滿的。可是我們家只有三個人，爸爸常常加班，我又住在學校宿舍，很多東西還沒吃完就壞了，只好丟掉。\n去年十二月，媽媽整理冰箱的時候，發現裡面有一半以上的東西都放太久了。她算了一下，一年下來，被丟掉的食物至少有一萬塊錢。這件事讓她嚇了一跳，於是她決定改變買東西的習慣。\n現在她每次去買菜以前，都會先看看冰箱裡還有什麼，再寫下要買的東西，而且只買三天以內吃得完的。她說，雖然一次買得少，每樣東西都貴了一點，可是由於不必再把食物丟掉，因此一個月下來反而省了不少錢。\n她還把冰箱裡快要壞的青菜和肉拿來煮湯、炒飯，當作第二天的午餐。我回家的時候，她常常得意地說：「你看，冰箱裡的東西，一樣都沒有白白丟掉！」",
-            "simplified": "我妈妈以前很喜欢去一家很大的超市买东西，因为一次买得多，价钱比较便宜。每个周末，她都会买好几大袋回来，把冰箱放得满满的。可是我们家只有三个人，爸爸常常加班，我又住在学校宿舍，很多东西还没吃完就坏了，只好丢掉。\n去年十二月，妈妈整理冰箱的时候，发现里面有一半以上的东西都放太久了。她算了一下，一年下来，被丢掉的食物至少有一万块钱。这件事让她吓了一跳，于是她决定改变买东西的习惯。\n现在她每次去买菜以前，都会先看看冰箱里还有什么，再写下要买的东西，而且只买三天以内吃得完的。她说，虽然一次买得少，每样东西都贵了一点，可是由于不必再把食物丢掉，因此一个月下来反而省了不少钱。\n她还把冰箱里快要坏的青菜和肉拿来煮汤、炒饭，当作第二天的午餐。我回家的时候，她常常得意地说：「你看，冰箱里的东西，一样都没有白白丢掉！」",
-            "pinyin": "Wǒ māma yǐqián hěn xǐhuān qù yì jiā hěn dà de chāoshì mǎi dōngxi, yīnwèi yí cì mǎi de duō, jiàqián bǐjiào piányí. Měi ge zhōumò, tā dōu huì mǎi hǎojǐ dà dài huílái, bǎ bīngxiāng fàng de mǎnmǎn de. Kěshì wǒmen jiā zhǐ yǒu sān ge rén, bàba chángcháng jiābān, wǒ yòu zhù zài xuéxiào sùshè, hěn duō dōngxi hái méi chī wán jiù huài le, zhǐhǎo diū diào. Qùnián shí'èr yuè, māma zhěnglǐ bīngxiāng de shíhòu, fāxiàn lǐmiàn yǒu yíbàn yǐshàng de dōngxi dōu fàng tài jiǔ le. Tā suàn le yíxià, yì nián xiàlái, bèi diū diào de shíwù zhìshǎo yǒu yíwàn kuài qián. Zhè jiàn shì ràng tā xià le yí tiào, yúshì tā juédìng gǎibiàn mǎi dōngxi de xíguàn. Xiànzài tā měi cì qù mǎi cài yǐqián, dōu huì xiān kàn kan bīngxiāng lǐ hái yǒu shénme, zài xiě xià yào mǎi de dōngxi, érqiě zhǐ mǎi sān tiān yǐnèi chī de wán de. Tā shuō, suīrán yí cì mǎi de shǎo, měi yàng dōngxi dōu guì le yìdiǎn, kěshì yóuyú bú bì zài bǎ shíwù diū diào, yīncǐ yí ge yuè xiàlái fǎn'ér shěng le bù shǎo qián. Tā hái bǎ bīngxiāng lǐ kuài yào huài de qīngcài hé ròu ná lái zhǔ tāng, chǎofàn, dāngzuò dì èr tiān de wǔcān. Wǒ huí jiā de shíhòu, tā chángcháng déyì de shuō: \"Nǐ kàn, bīngxiāng lǐ de dōngxi, yí yàng dōu méiyǒu báibái diū diào!\"",
-            "english": "My mom used to love shopping at a huge supermarket, because buying a lot at once was cheaper. Every weekend she brought home several big bags and packed the fridge full. But there are only three of us; Dad often works late and I live in the school dorm, so a lot went bad before it was eaten and had to be thrown out.\nLast December, while tidying the fridge, Mom found that more than half of what was in it had been there too long. She worked it out: over a year, the food thrown away came to at least ten thousand dollars. That gave her a shock, so she decided to change how she shops.\nNow before she shops she checks what's still in the fridge, writes down what to buy, and buys only what can be eaten within three days. She says that although buying less at a time makes each item a bit dearer, because she no longer throws food away, she actually saves quite a lot each month.\nShe also turns vegetables and meat that are about to go off into soup or fried rice for the next day's lunch. When I come home she often says proudly, \"Look, not one thing in the fridge got thrown away for nothing!\""
+            "traditional": "林小姐本來在銀行上班。三年前，她回到家鄉，投資開了一家小公司，只賣樣子不好看的蔬菜和水果。\n在農業發達的今天，超市裡的蔬菜大小都差不多，樣子也很漂亮。可是很少人知道，田裡大約有三分之一的蔬菜，只因為長得醜，無法進超市，還沒離開田就被當作垃圾丟掉了。林小姐認為，從道德的角度來看，這樣的行為是不對的，因為這些蔬菜的營養和味道一點也不差。\n剛開始，公司的生意很不穩定，令她十分煩惱。客人普遍認為，醜的東西品質一定不好。可是她不願意就這樣結束，於是請了一位有名的廚師用這些蔬菜做菜，讓客人當場吃吃看。客人吃了都很驚訝，這證明了好不好吃跟樣子無關。\n目前，她的公司跟一百多位種菜的人合作，生意也穩定多了。記者訪問她的時候，問她最得意的是什麼。她說，不是公司賣了多少蔬菜，是越來越多人接受了她的觀點：一切能吃的食物都有價值。她還說，無論如何，她都會堅持到底。",
+            "simplified": "林小姐本来在银行上班。三年前，她回到家乡，投资开了一家小公司，只卖样子不好看的蔬菜和水果。\n在农业发达的今天，超市里的蔬菜大小都差不多，样子也很漂亮。可是很少人知道，田里大约有三分之一的蔬菜，只因为长得丑，无法进超市，还没离开田就被当作垃圾丢掉了。林小姐认为，从道德的角度来看，这样的行为是不对的，因为这些蔬菜的营养和味道一点也不差。\n刚开始，公司的生意很不稳定，令她十分烦恼。客人普遍认为，丑的东西品质一定不好。可是她不愿意就这样结束，于是请了一位有名的厨师用这些蔬菜做菜，让客人当场吃吃看。客人吃了都很惊讶，这证明了好不好吃跟样子无关。\n目前，她的公司跟一百多位种菜的人合作，生意也稳定多了。记者访问她的时候，问她最得意的是什么。她说，不是公司卖了多少蔬菜，是越来越多人接受了她的观点：一切能吃的食物都有价值。她还说，无论如何，她都会坚持到底。",
+            "pinyin": "Lín xiǎojiě běnlái zài yínháng shàngbān. Sān nián qián, tā huí dào jiāxiāng, tóuzī kāi le yì jiā xiǎo gōngsī, zhǐ mài yàngzi bù hǎokàn de shūcài hé shuǐguǒ. Zài nóngyè fādá de jīntiān, chāoshì lǐ de shūcài dàxiǎo dōu chàbùduō, yàngzi yě hěn piàoliàng. Kěshì hěn shǎo rén zhīdào, tián lǐ dàyuē yǒu sān fēn zhī yī de shūcài, zhǐ yīnwèi zhǎng de chǒu, wúfǎ jìn chāoshì, hái méi líkāi tián jiù bèi dāngzuò lèsè diū diào le. Lín xiǎojiě rènwéi, cóng dàodé de jiǎodù lái kàn, zhèyàng de xíngwéi shì bú duì de, yīnwèi zhèxiē shūcài de yíngyǎng hé wèidào yìdiǎn yě bú chà. Gāng kāishǐ, gōngsī de shēngyì hěn bù wěndìng, lìng tā shífēn fánnǎo. Kèrén pǔbiàn rènwéi, chǒu de dōngxi pǐnzhí yídìng bù hǎo. Kěshì tā bú yuànyì jiù zhèyàng jiéshù, yúshì qǐng le yí wèi yǒumíng de chúshī yòng zhèxiē shūcài zuò cài, ràng kèrén dāngchǎng chī chī kàn. Kèrén chī le dōu hěn jīngyà, zhè zhèngmíng le hǎo bù hǎochī gēn yàngzi wúguān. Mùqián, tā de gōngsī gēn yìbǎi duō wèi zhòng cài de rén hézuò, shēngyì yě wěndìng duō le. Jìzhě fǎngwèn tā de shíhòu, wèn tā zuì déyì de shì shénme. Tā shuō, bú shì gōngsī mài le duōshǎo shūcài, shì yuè lái yuè duō rén jiēshòu le tā de guāndiǎn: yíqiè néng chī de shíwù dōu yǒu jiàzhí. Tā hái shuō, wúlùnrúhé, tā dōu huì jiānchí dàodǐ.",
+            "english": "Ms. Lin used to work in a bank. Three years ago she went back to her hometown and invested in starting a small company that sells nothing but fruit and vegetables that do not look good.\nNow that farming is so advanced, the vegetables in a supermarket are all about the same size and look lovely. But few people know that about a third of the vegetables in the fields, just because they are ugly, cannot get into supermarkets and are thrown away as garbage before they even leave the field. Ms. Lin thinks that from a moral point of view this is wrong, because these vegetables are every bit as nutritious and tasty.\nAt first the company's business was very unstable, which worried her a great deal. Customers generally thought that ugly things must be poor in quality. But she was not willing to let it end like that, so she asked a well-known chef to cook with these vegetables and let customers taste the dishes on the spot. The customers were surprised when they ate them, and this proved that how something tastes has nothing to do with how it looks.\nAt present her company works with more than a hundred growers, and business is much steadier. When a reporter interviewed her and asked what she was proudest of, she said it was not how many vegetables the company had sold, but that more and more people had accepted her view: all food that can be eaten has value. She also said that whatever happens, she will see it through to the end."
           },
           "questions": [
             {
               "id": "b3l16-passage-2-1",
               "prompt": {
-                "traditional": "媽媽為什麼決定改變買東西的習慣？",
-                "simplified": "妈妈为什么决定改变买东西的习惯？",
-                "pinyin": "Māma wèishénme juédìng gǎibiàn mǎi dōngxi de xíguàn?",
-                "english": "Why did Mom decide to change how she shops?"
+                "traditional": "很多蔬菜為什麼還沒離開田就被丟掉了？",
+                "simplified": "很多蔬菜为什么还没离开田就被丢掉了？",
+                "pinyin": "Hěn duō shūcài wèishénme hái méi líkāi tián jiù bèi diū diào le?",
+                "english": "Why are many vegetables thrown away before they even leave the field?"
               },
               "choices": [
                 {
-                  "traditional": "算出一年在大超市花了一萬塊",
-                  "simplified": "算出一年在大超市花了一万块",
-                  "pinyin": "Suàn chū yì nián zài dà chāoshì huā le yíwàn kuài.",
-                  "english": "She worked out she spent NT$10,000 a year at the big supermarket."
+                  "traditional": "營養和味道比較差",
+                  "simplified": "营养和味道比较差",
+                  "pinyin": "yíngyǎng hé wèidào bǐjiào chà",
+                  "english": "they are less nutritious and tasty"
                 },
                 {
-                  "traditional": "算出一年丟掉的食物花了不少錢",
-                  "simplified": "算出一年丢掉的食物花了不少钱",
-                  "pinyin": "Suàn chū yì nián diū diào de shíwù huā le bù shǎo qián.",
-                  "english": "She worked out that a year's wasted food had cost a lot."
+                  "traditional": "樣子不好看，超市不收",
+                  "simplified": "样子不好看，超市不收",
+                  "pinyin": "yàngzi bù hǎokàn, chāoshì bù shōu",
+                  "english": "they do not look good, so supermarkets will not take them"
                 },
                 {
-                  "traditional": "冰箱太滿，東西放不下了",
-                  "simplified": "冰箱太满，东西放不下了",
-                  "pinyin": "Bīngxiāng tài mǎn, dōngxi fàng bú xià le.",
-                  "english": "The fridge was too full to hold more."
+                  "traditional": "田裡種得太多，賣不完",
+                  "simplified": "田里种得太多，卖不完",
+                  "pinyin": "tián lǐ zhòng de tài duō, mài bù wán",
+                  "english": "too many are grown to sell"
                 },
                 {
-                  "traditional": "作者搬到學校宿舍去住了",
-                  "simplified": "作者搬到学校宿舍去住了",
-                  "pinyin": "Zuòzhě bān dào xuéxiào sùshè qù zhù le.",
-                  "english": "The writer moved into the school dorm."
+                  "traditional": "放得太久，已經腐敗了",
+                  "simplified": "放得太久，已经腐败了",
+                  "pinyin": "fàng de tài jiǔ, yǐjīng fǔbài le",
+                  "english": "they have been kept too long and gone rotten"
                 }
               ],
               "key": 1,
-              "why": "這件事讓她嚇了一跳，於是她決定改變: \"this\" is finding that a year of thrown-out food came to at least NT$10,000. The NT$10,000 is what the wasted food cost, not her whole supermarket spending; the full fridge and the writer in the dorm are part of the old situation.",
+              "why": "只因為長得醜，無法進超市……就被當作垃圾丟掉了: looks alone keep them out of the shops. The passage says their nutrition and taste are no worse, and it never mentions growing too much or vegetables going bad.",
               "focus": {
-                "zh": "於是；前後的關係",
-                "en": "so; linking cause and action"
+                "zh": "無法；當作",
+                "en": "unable to; to treat as"
               },
               "lesson": 16,
               "wordIds": [
-                "B3L16-2-14",
-                "B2L04-1-17",
-                "B2L14-2-20"
+                "B3L16-1-07",
+                "B3L16-1-05",
+                "B3L16-1-11"
               ],
               "grammarIds": [
-                "B3L16-G05-P417"
+                "B3L16-G01-P404"
               ]
             },
             {
               "id": "b3l16-passage-2-2",
               "prompt": {
-                "traditional": "媽媽改了買東西的習慣以後，花錢方面有什麼改變？",
-                "simplified": "妈妈改了买东西的习惯以后，花钱方面有什么改变？",
-                "pinyin": "Māma gǎi le mǎi dōngxi de xíguàn yǐhòu, huā qián fāngmiàn yǒu shénme gǎibiàn?",
-                "english": "After Mom changed how she shops, what changed in her spending?"
+                "traditional": "林小姐請廚師用醜蔬菜做菜，是為了什麼？",
+                "simplified": "林小姐请厨师用丑蔬菜做菜，是为了什么？",
+                "pinyin": "Lín xiǎojiě qǐng chúshī yòng chǒu shūcài zuò cài, shì wèile shénme?",
+                "english": "Why did Ms. Lin ask a chef to cook with ugly vegetables?"
               },
               "choices": [
                 {
-                  "traditional": "每樣貴了一點，一個月反而省錢",
-                  "simplified": "每样贵了一点，一个月反而省钱",
-                  "pinyin": "Měi yàng guì le yìdiǎn, yí ge yuè fǎn'ér shěng qián.",
-                  "english": "Each item costs a bit more, but she saves each month."
+                  "traditional": "讓客人知道醜蔬菜比較營養",
+                  "simplified": "让客人知道丑蔬菜比较营养",
+                  "pinyin": "ràng kèrén zhīdào chǒu shūcài bǐjiào yíngyǎng",
+                  "english": "to let customers know ugly vegetables are more nutritious"
                 },
                 {
-                  "traditional": "一次買得少，要常去買，反而花得多",
-                  "simplified": "一次买得少，要常去买，反而花得多",
-                  "pinyin": "Yí cì mǎi de shǎo, yào cháng qù mǎi, fǎn'ér huā de duō.",
-                  "english": "Buying less each time means more trips and more spending."
+                  "traditional": "讓客人認識那位有名的廚師",
+                  "simplified": "让客人认识那位有名的厨师",
+                  "pinyin": "ràng kèrén rènshì nà wèi yǒumíng de chúshī",
+                  "english": "to let customers get to know the well-known chef"
                 },
                 {
-                  "traditional": "每樣便宜了，一年省下一萬塊",
-                  "simplified": "每样便宜了，一年省下一万块",
-                  "pinyin": "Měi yàng piányí le, yì nián shěng xià yíwàn kuài.",
-                  "english": "Items are cheaper, saving NT$10,000 a year."
+                  "traditional": "讓客人了解種菜的人很辛苦",
+                  "simplified": "让客人了解种菜的人很辛苦",
+                  "pinyin": "ràng kèrén liǎojiě zhòng cài de rén hěn xīnkǔ",
+                  "english": "to let customers understand how hard growers work"
                 },
                 {
-                  "traditional": "每樣便宜了一點，一個月也省錢",
-                  "simplified": "每样便宜了一点，一个月也省钱",
-                  "pinyin": "Měi yàng piányí le yìdiǎn, yí ge yuè yě shěng qián.",
-                  "english": "Items are a bit cheaper, and she saves each month too."
+                  "traditional": "讓客人自己發現味道沒有問題",
+                  "simplified": "让客人自己发现味道没有问题",
+                  "pinyin": "ràng kèrén zìjǐ fāxiàn wèidào méiyǒu wèntí",
+                  "english": "to let customers find out for themselves that the taste is fine"
                 }
               ],
-              "key": 0,
-              "why": "每樣東西都貴了一點，可是由於不必再把食物丟掉，因此…反而省了不少錢: dearer per item, cheaper overall. Cheaper items were the bulk-buying days, ten thousand is what a whole year of wasted food cost, and she never says more trips cost more.",
+              "key": 3,
+              "why": "Customers 普遍認為 ugly things are poor in quality; she had a chef cook them so people could taste on the spot, and that 證明了 taste has nothing to do with looks. The passage says the vegetables are no worse in nutrition, not better, and the chef and the growers are not what she wants customers to learn about.",
               "focus": {
-                "zh": "由於……，因此……；反而",
-                "en": "owing to…, therefore…; instead"
+                "zh": "普遍；當場；證明",
+                "en": "generally; on the spot; to prove"
               },
               "lesson": 16,
               "wordIds": [
-                "B3L16-2-07",
-                "B3L09-1-06",
-                "B2L04-1-17"
-              ],
-              "grammarIds": [
-                "B3L16-G03-P413"
+                "B3L16-2-18",
+                "B3L16-1-24",
+                "B3L16-1-22"
               ]
             },
             {
               "id": "b3l16-passage-2-3",
               "prompt": {
-                "traditional": "從媽媽最後說的話來看，她覺得新做法最成功的地方是什麼？",
-                "simplified": "从妈妈最后说的话来看，她觉得新做法最成功的地方是什么？",
-                "pinyin": "Cóng māma zuìhòu shuō de huà lái kàn, tā juéde xīn zuòfǎ zuì chénggōng de dìfāng shì shénme?",
-                "english": "Judging by Mom's last words, what does she see as the new way's real success?"
+                "traditional": "從林小姐回答記者的話來看，她最在意的是什麼？",
+                "simplified": "从林小姐回答记者的话来看，她最在意的是什么？",
+                "pinyin": "Cóng Lín xiǎojiě huídá jìzhě de huà lái kàn, tā zuì zàiyì de shì shénme?",
+                "english": "Judging from Ms. Lin's answer to the reporter, what does she care about most?"
               },
               "choices": [
                 {
-                  "traditional": "一個月下來省了不少錢",
-                  "simplified": "一个月下来省了不少钱",
-                  "pinyin": "Yí ge yuè xiàlái shěng le bù shǎo qián.",
-                  "english": "She saves quite a lot each month."
+                  "traditional": "大家對食物的看法有沒有改變",
+                  "simplified": "大家对食物的看法有没有改变",
+                  "pinyin": "dàjiā duì shíwù de kànfǎ yǒu méiyǒu gǎibiàn",
+                  "english": "whether people's view of food has changed"
                 },
                 {
-                  "traditional": "丟掉的食物比以前少一半",
-                  "simplified": "丢掉的食物比以前少一半",
-                  "pinyin": "Diū diào de shíwù bǐ yǐqián shǎo yíbàn.",
-                  "english": "She throws away half as much food as before."
+                  "traditional": "公司能不能賣出更多蔬菜",
+                  "simplified": "公司能不能卖出更多蔬菜",
+                  "pinyin": "gōngsī néng bù néng mài chū gèng duō shūcài",
+                  "english": "whether the company can sell more vegetables"
                 },
                 {
-                  "traditional": "買回來的食物都用到了",
-                  "simplified": "买回来的食物都用到了",
-                  "pinyin": "Mǎi huílái de shíwù dōu yòng dào le.",
-                  "english": "All the food she buys gets used."
+                  "traditional": "合作的人是不是越來越多",
+                  "simplified": "合作的人是不是越来越多",
+                  "pinyin": "hézuò de rén shì bú shì yuè lái yuè duō",
+                  "english": "whether more and more people work with her"
                 },
                 {
-                  "traditional": "不用每個週末去超市了",
-                  "simplified": "不用每个周末去超市了",
-                  "pinyin": "Bú yòng měi ge zhōumò qù chāoshì le.",
-                  "english": "She no longer has to go every weekend."
+                  "traditional": "公司的生意是不是夠穩定",
+                  "simplified": "公司的生意是不是够稳定",
+                  "pinyin": "gōngsī de shēngyì shì bú shì gòu wěndìng",
+                  "english": "whether the company's business is steady enough"
                 }
               ],
-              "key": 2,
-              "why": "得意地說 that 一樣都沒有白白丟掉: what she is proud of in her last words is that nothing goes to waste. Saving money each month is true, but she says it earlier, not in her last words; she says nothing at all is wasted, not half as much; and fewer weekend trips are never her point.",
+              "key": 0,
+              "why": "Asked what she is proudest of, she sets sales aside (不是公司賣了多少蔬菜) and names people accepting her view that all food that can be eaten has value: what matters to her is how people think. The growers and the steadier business are the reporter's background, not her answer.",
               "focus": {
-                "zh": "說話人的態度",
-                "en": "an attitude"
+                "zh": "得意；觀點；說話人的態度",
+                "en": "proud; viewpoint; an attitude"
               },
               "lesson": 16,
               "wordIds": [
                 "B3L16-1-27",
-                "B3L16-2-11",
-                "B2L07-2-23"
+                "B3L16-2-19",
+                "B3L16-2-24"
               ]
             }
           ]
