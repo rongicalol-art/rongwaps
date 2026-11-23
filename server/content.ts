@@ -1,6 +1,7 @@
 import type { Context } from './env';
 import { requireUser } from './auth';
 import { json } from './respond';
+import { parseChallengePath } from '../shared/challengePath';
 
 /**
  * Files of the built site that pass through the server: the lesson content under /data (school accounts only)
@@ -99,6 +100,13 @@ export async function serveSite(context: Context, request: Request, url: URL): P
   }
   // Only extensionless navigation gets the app shell; missing files 404.
   if (/\.[^/]+$/.test(path)) return notFound();
+  // A challenge link (/c/1-5/CODE): its lesson's preview page (picture and title for LINE), never indexed.
+  const challenge = parseChallengePath(path);
+  if (challenge) {
+    const page = await assets.fetch(assetRequest(request, challenge.page));
+    const served = page.status === 200 || page.status === 304 ? page : await assets.fetch(assetRequest(request, '/'));
+    if (served.status === 200 || served.status === 304) return withHeaders(served, { 'Cache-Control': 'no-cache', 'X-Robots-Tag': 'noindex' });
+  }
   const shell = await assets.fetch(assetRequest(request, '/'));
   if (shell.status !== 200 && shell.status !== 304) return notFound();
   // Unknown paths still get the shell (it shows the landing or app) but answer 404 so search engines drop them.

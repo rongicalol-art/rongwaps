@@ -102,6 +102,7 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   return (
     <QuizShell
       {...shell}
+      challengeTypes={shell.shareable && !seed ? types ?? [] : null}
       session={session}
       mode="quiz-choices"
       title={beatTitle}

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router';
+import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import { useAppStore } from '../../store/useAppStore';
 import type { ActivityType } from '../../types/models';
 import { InviteToast, CheerToast, MentionToast } from './components/SocialToasts';
@@ -11,6 +11,9 @@ import { Avatar, Drawer } from '../../lib/widgets';
 import { CHAT_TTL_MS } from '../../../shared/lobby';
 import { PartyChatThread } from './components/ChatThread';
 import { SafetySheet } from './components/SafetySheets';
+import { ChallengeWindow } from './components/ChallengeWindow';
+import { endChallenge, playChallenge } from './challenge';
+import { parseChallengePath, type ChallengeLink } from '../../../shared/challenge';
 
 /**
  * Study together, mounted by the app shell after first idle (its own chunk). Owns the Lobby lifecycle and the
@@ -60,6 +63,34 @@ export default function SocialRoot({ setActiveActivity, startRaceQuiz }: { setAc
     return () => { queueMicrotask(() => { if (version === owner.version) { leaveRace(); setRaceLauncher(null); } }); };
   }, [setActiveActivity, userId, identity, roomCode]);
 
+  // A challenge link (/c/1-5/CODE): its window opens over the app; Start plays it as the quiz.
+  const location = useLocation();
+  const navigate = useNavigate();
+  const challengeAddress = parseChallengePath(location.pathname);
+  const challengePlaying = useAppStore((state) => state.challengePlaying);
+  const closeChallenge = () => navigate('/', { replace: true });
+  // The quiz opens once the address is home again: the activity's own address sync must not write it onto the link.
+  const startOnHome = useRef(false);
+  const startChallenge = (link: ChallengeLink) => {
+    if (useAppStore.getState().race) leaveRace();
+    playChallenge(link);
+    startOnHome.current = true;
+    navigate('/', { replace: true });
+  };
+  const challengeCode = challengeAddress?.code ?? null;
+  useEffect(() => {
+    if (!startOnHome.current || challengeCode) return;
+    startOnHome.current = false;
+    startQuiz.current();
+  }, [challengeCode]);
+  // Closing the challenge quiz (or finishing it) ends the challenge, so the next quiz is the learner's own.
+  const sawChallengeQuiz = useRef(false);
+  useEffect(() => {
+    if (!challengePlaying) { sawChallengeQuiz.current = false; return; }
+    if (activity === 'quiz') sawChallengeQuiz.current = true;
+    else if (sawChallengeQuiz.current) endChallenge();
+  }, [challengePlaying, activity]);
+
   // Closing the quiz mid-race leaves the race (the others see "Left").
   const sawQuiz = useRef(false);
   useEffect(() => {
@@ -81,6 +112,7 @@ export default function SocialRoot({ setActiveActivity, startRaceQuiz }: { setAc
       <CheerToast />
       <MentionToast />
       {race && !racePlaying && <RoomWindow key={`${race.code}:${race.round}`} race={race} />}
+      {challengeAddress && <ChallengeWindow key={challengeAddress.code} code={challengeAddress.code} lesson={challengeAddress} onStart={startChallenge} onClose={closeChallenge} />}
       {panel?.kind === 'people' && <PeoplePanel panel={panel} />}
       {panel?.kind === 'challenge' && <ChallengePanel panel={panel} />}
       {panel?.kind === 'partyMention' && mentionTarget && <Drawer isOpen onClose={() => useAppStore.getState().setSocial({ socialPanel: null, socialMentionTarget: null })} title={<Drawer.Title>Party chat</Drawer.Title>} tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"><div className="flex items-end gap-2.5 py-4"><Avatar name={mentionTarget.message.n} color={mentionTarget.message.c} src={mentionTarget.message.i} size="md" /><div><p className="text-sm font-black text-ui-ink">{mentionTarget.message.n}</p><p className="rounded-control border-2 border-brand-primary bg-ui-surface px-3.5 py-2 font-chinese font-bold text-ui-ink-strong">{mentionTarget.message.t}</p></div></div></Drawer>}

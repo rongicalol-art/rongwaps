@@ -21,6 +21,8 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - A button that can't be used is clutter: if a mode has no content, leave the action out instead of showing it disabled.
 - An icon-only button hides what it does (phones have no hover): the lesson's Practice button carries its word. Beside the primary it stays plain white, so Start is plainly the one coloured action; a gold edge there competed with it.
 - End screens keep few buttons: one suggested next step, Continue, and Review missed only when words were missed. "Study all again" after a quiz was cut as one too many.
+- An optional, social extra on an end screen (Challenge a classmate on the quiz result) is a quiet accent text action under the buttons, never another boxed button: one more boxed button in the stack read as "too many buttons".
+- A landing page for one action says its message once: the picture, one headline, one quiet line, the button. A "Mia challenged you" row plus a headline plus a lesson line plus a two-line legal note read as "too messy"; the sender's face sits on the picture's edge instead.
 
 **Tactile, not flat.**
 - Anything you can press looks like a real button: a border plus a solid, darker bottom edge that compresses when pressed. Selected = book accent border with a soft fill. A plain row reads as "not a button".

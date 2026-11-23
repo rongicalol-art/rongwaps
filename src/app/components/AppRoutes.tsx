@@ -27,6 +27,8 @@ export function AppRoutes({ activeTab, ...tabScreenProps }: AppRoutesProps) {
   return (
     <Routes>
       <Route index element={<TabScreens activeTab={bootTab} {...tabScreenProps} />} />
+      {/* A challenge link opens its window over the home screen (features/social SocialRoot). */}
+      <Route path="c/:lesson/:code" element={<TabScreens activeTab={bootTab} {...tabScreenProps} />} />
       {(Object.keys(TAB_ROUTES) as TabRoute[]).map((tab) => (
         <Route
           key={tab}

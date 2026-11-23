@@ -21,7 +21,7 @@
       "!/", "!/index.html", "!/books", "!/books/*", "!/grammar", "!/grammar/*", "!/tocfl", "!/tocfl/*", "!/about", "!/privacy", "!/terms", "!/sources",
       "!/assets/*", "!/downloads/*", "!/fonts/*", "!/icons/*", "!/videos/*",
       "!/sw.js", "!/workbox-*.js", "!/manifest.json", "!/asset-manifest.json",
-      "!/robots.txt", "!/sitemap.xml", "!/llms.txt", "!/favicon.ico", "!/share.png", "!/share-square.png"
+      "!/robots.txt", "!/sitemap.xml", "!/llms.txt", "!/favicon.ico", "!/share.png", "!/share-square.png", "!/share/*"
     ]
   },
   // Public values. COMMIT and SUPABASE_ANON_KEY arrive with each deploy (--var); the email and Sentry

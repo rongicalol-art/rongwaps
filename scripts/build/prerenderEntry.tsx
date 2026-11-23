@@ -43,6 +43,10 @@ export interface PrerenderedPage {
   html: string;
   /** Structured data `@graph` for the page. */
   jsonLd: object;
+  /** Its own link-preview picture (a file under public/) instead of the site's card. */
+  image?: { path: string; width: number; height: number; alt: string };
+  /** Kept out of search results (a challenge link's preview page). */
+  noindex?: boolean;
 }
 
 const render = (path: string, page: ReactNode) => renderToString(<StaticRouter location={path}>{page}</StaticRouter>);
@@ -293,6 +297,18 @@ export function renderPages(): PrerenderedPage[] {
         ...meta,
         html: render(meta.path, <LessonPageScreen {...ref} />),
         jsonLd: lessonJsonLd(ref, meta.title, meta.description, meta.path),
+      };
+    })),
+    // A challenge link's preview (/c/1-5/CODE is served this page): the lesson's picture and the challenge.
+    ...LESSON_PAGE_BOOKS.flatMap((bookId) => Array.from({ length: LESSON_PAGE_LESSONS }, (_, index) => {
+      const ref = { bookId, lessonId: index + 1 };
+      const path = `/c/${bookId}-${ref.lessonId}`;
+      const title = `Book ${bookId} Lesson ${ref.lessonId} · Can you beat my score?`;
+      const description = `${lessonPageTitle(ref).en} · Play the same quiz on Ron's Mandarin`;
+      return {
+        path, title, description, html: '', noindex: true,
+        image: { path: `/share/b${bookId}l${String(ref.lessonId).padStart(2, '0')}.jpg`, width: 1200, height: 630, alt: `Modern Chinese ${bookId} Lesson ${ref.lessonId}: ${lessonPageTitle(ref).en}` },
+        jsonLd: { '@context': 'https://schema.org', '@graph': [webPageNode(title, description, path)] },
       };
     })),
     ...GRAMMAR_PAGES.map((link) => {
