@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { ActionButton, AppIcon, PlayfulNavIcon } from '../../../lib/widgets';
 import type { LessonTestLesson, LessonTestMode } from '../../../types/lessonTest';
 import { lessonTestBestForMode, type LessonTestRecord } from '../../../store/slices/lessonTestSlice';
@@ -134,41 +135,43 @@ export function LessonTestModeButtons({
         const fraction = best && best.total > 0 ? best.best / best.total : 0;
         const status = isSelected ? getTestModeStatus(test, mode, record) : '';
         return (
-          <ActionButton
-            key={mode}
-            variant="secondary"
-            size="lg"
-            fullWidth
-            aria-pressed={isSelected}
-            onClick={() => onSelect(mode)}
-            edgeColor={isSelected ? 'var(--color-brand-primary)' : DIVIDER_EDGE}
-            className={cn(
-              'justify-start gap-3 px-3 py-2.5 text-left normal-case tracking-normal !transition-transform',
-              large && 'gap-3.5 px-4 py-3',
-              isSelected
-                ? '!border-brand-primary !bg-brand-primary-soft hover:!bg-brand-primary-soft'
-                : '!border-ui-divider',
-            )}
-          >
-            <TestModeArtwork mode={mode} large={large} />
-            <span className="flex min-w-0 flex-1 flex-col justify-center">
-              <span className={cn('font-black text-ui-ink-strong leading-tight', large ? 'text-lg' : 'text-[17px]')}>
-                {label}
-              </span>
-              {status ? (
-                <span className="mt-0.5 truncate text-xs font-bold text-ui-muted-strong tabular-nums">
-                  {status}
+          <Fragment key={mode}>
+            <ActionButton
+              variant="secondary"
+              size="lg"
+              fullWidth
+              aria-pressed={isSelected}
+              onClick={() => onSelect(mode)}
+              edgeColor={isSelected ? 'var(--color-brand-primary)' : DIVIDER_EDGE}
+              className={cn(
+                'justify-start gap-3 px-3 py-2.5 text-left normal-case tracking-normal !transition-transform',
+                large && 'gap-3.5 px-4 py-3',
+                isSelected
+                  ? '!border-brand-primary !bg-brand-primary-soft hover:!bg-brand-primary-soft'
+                  : '!border-ui-divider',
+              )}
+            >
+              <TestModeArtwork mode={mode} large={large} />
+              <span className="flex min-w-0 flex-1 flex-col justify-center">
+                <span className={cn('font-black text-ui-ink-strong leading-tight', large ? 'text-lg' : 'text-[17px]')}>
+                  {label}
                 </span>
-              ) : null}
-            </span>
-            {mode === 'both' && fullPassed ? (
-              <span className="grid size-7 shrink-0 place-items-center">
-                <AppIcon name="crown" size={20} className="text-brand-primary" aria-label="Passed" />
+                {status ? (
+                  <span className="mt-0.5 truncate text-xs font-bold text-ui-muted-strong tabular-nums">
+                    {status}
+                  </span>
+                ) : null}
               </span>
-            ) : (
-              <ActivityRing fraction={fraction} label={label} />
-            )}
-          </ActionButton>
+              {mode === 'both' && fullPassed ? (
+                <span className="grid size-7 shrink-0 place-items-center">
+                  <AppIcon name="crown" size={20} className="text-brand-primary" aria-label="Passed" />
+                </span>
+              ) : (
+                <ActivityRing fraction={fraction} label={label} />
+              )}
+            </ActionButton>
+            {mode === 'both' && <div aria-hidden="true" className="my-0.5 border-t-2 border-ui-divider" />}
+          </Fragment>
         );
       })}
     </div>
