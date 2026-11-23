@@ -9,6 +9,7 @@ import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegi
 import { useRaceReporter } from '../../features/social';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useReviewTone } from '../../hooks/useReviewTone';
+import { useCompleteDailyReview } from '../../hooks/useDailyReview';
 import { useAppStore } from '../../store/useAppStore';
 import { isHanziChar } from '../../utils/characters/hanzi';
 import { ReviewDealIntro } from '../flashcard';
@@ -24,6 +25,10 @@ export interface QuizModeProps {
   sessionKey: string;
   /** The flashcard round before this quiz (Cards done → quiz): Session complete reports the whole session. */
   sessionStats?: SessionStats | null;
+  /** Today's daily review: answers count toward the daily goal, and Session complete says so. */
+  daily?: boolean;
+  /** More words to draw wrong-answer options from; they are never asked (a review can be one or two words). */
+  extraCards?: readonly Flashcard[];
 }
 
 /** What the shell needs from a quiz mode's session (choices and mixed both provide it). */
@@ -127,7 +132,7 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
   session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, popWordOnAutoAdvance, children,
-  activeBookId, onEnd, onContinue, sessionStats,
+  activeBookId, onEnd, onContinue, sessionStats, daily = false,
 }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
@@ -168,6 +173,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
   const isReviewPass = reviewPass > 0 || resumedReview;
   const isDone = completed && (session.practiceOnly || unlearnedCount === 0);
+  useCompleteDailyReview(daily, completed && unlearnedCount === 0);
 
   useEffect(() => {
     if (resumedReview) setReviewPass((pass) => pass || 1);
@@ -276,7 +282,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     return (
       <SessionComplete
         words={words}
-        headline={session.practiceOnly ? 'Practice complete' : undefined}
+        headline={session.practiceOnly ? 'Practice complete' : daily ? 'Today’s review complete' : undefined}
         reviewLabel="Review missed"
         pct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
         pctLabel="Quiz"
