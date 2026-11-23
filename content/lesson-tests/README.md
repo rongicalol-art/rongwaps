@@ -189,6 +189,12 @@ needed, keep every run at 15–45%. Lesson 1 has no earlier lessons: its review 
 - **Taught words only**: every character must belong to words taught by this lesson (earlier books, this
   book's lessons up to this one, grammar example words, numerals). Book names and the few needed extras go
   in `allowWords`.
+- **Obvious words are fine; new words are not** (owner, 2026-11-23). A word made only of taught characters
+  whose meaning is plainly the sum of its parts may be used though no word list has it: 晚餐 (晚 + the 餐 of
+  餐廳), 河邊, 大雪. A natural word that needs an untaught character, or whose meaning is not the sum (薪水,
+  放學, 塞車), stays out of the test: say it with taught words, and add the word to `everyday-words.json` here,
+  with the lesson and the sentence it would have gone in. That list is what a native speaker would say; how
+  learners get to see it is still to be decided.
 - **Every grammar point** of the lesson appears in every possible run; the review share is 15–45%.
 - **One right answer, decided by the context.** Wrong answers are real taught words or facts from the
   recording, text or picture that are wrong *here* (the next price on the menu, the drink she turned down).
