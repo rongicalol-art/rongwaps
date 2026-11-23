@@ -46,10 +46,15 @@ export const ADAPTIVE_QUICK: Readonly<Record<LessonTestPart, AdaptiveSettings>> 
   reading: { ...ADAPTIVE_FULL.reading, maxQuestions: 12, minQuestions: 12 },
 };
 
+/** "Novice 1", "Level 3": a level's name. */
+export function levelLabel(level: number): string {
+  return ADAPTIVE_LEVELS.find((entry) => entry.level === level)?.label ?? `Level ${level}`;
+}
+
 /** The highest level a score passes in one skill, or null below Novice 1. */
-export function adaptiveLevel(part: LessonTestPart, score: number, ceiling = Infinity): AdaptiveLevel | null {
-  let passed: AdaptiveLevel | null = null;
-  for (const level of ADAPTIVE_LEVELS) if (level.level <= ceiling && score >= level.pass[part]) passed = level;
+export function adaptiveLevel(part: LessonTestPart, score: number): number | null {
+  let passed: number | null = null;
+  for (const level of ADAPTIVE_LEVELS) if (score >= level.pass[part]) passed = level.level;
   return passed;
 }
 
@@ -58,44 +63,15 @@ export interface AdaptiveSkillScore {
   /** One standard error either side: the range the answers support. */
   low: number;
   high: number;
-  level: AdaptiveLevel | null;
-  /** True when the score reaches past the hardest questions the pool has: the level is "this or above". */
-  atCeiling: boolean;
+  level: number | null;
 }
 
-/**
- * One skill's result. `ceiling` is the highest level the pool has questions for; above it the test cannot tell
- * levels apart, so the level stops there and is marked.
- */
-export function scoreAdaptiveSkill(part: LessonTestPart, estimate: AbilityEstimate, ceiling = 6): AdaptiveSkillScore {
+export function scoreAdaptiveSkill(part: LessonTestPart, estimate: AbilityEstimate): AdaptiveSkillScore {
   const score = abilityToScale(estimate.ability);
-  const top = ADAPTIVE_LEVELS.find((level) => level.level === ceiling);
-  const next = ADAPTIVE_LEVELS.find((level) => level.level > ceiling);
   return {
     score,
     low: abilityToScale(estimate.ability - estimate.error),
     high: abilityToScale(estimate.ability + estimate.error),
-    level: adaptiveLevel(part, score, ceiling),
-    atCeiling: Boolean(top && next && score >= next.pass[part]),
+    level: adaptiveLevel(part, score),
   };
-}
-
-/** The overall level of a listening and reading pair: the lower of the two, as the official result gives it. */
-export function adaptiveOverallLevel(listening: AdaptiveLevel | null, reading: AdaptiveLevel | null): AdaptiveLevel | null {
-  if (!listening || !reading) return null;
-  return listening.level <= reading.level ? listening : reading;
-}
-
-/**
- * A question's place on the ability scale from its level label: `position` 0 to 1 runs from the level's pass
- * score to the next level's (the top level runs half a level past its own). The first guess for every question,
- * until real answers show how hard it is.
- */
-export function levelDifficulty(part: LessonTestPart, level: number, position = 0.5): number {
-  const index = ADAPTIVE_LEVELS.findIndex((entry) => entry.level === level);
-  if (index < 0) throw new Error(`Unknown TOCFL level ${level}`);
-  const from = scaleToAbility(ADAPTIVE_LEVELS[index].pass[part]);
-  const next = ADAPTIVE_LEVELS[index + 1];
-  const to = next ? scaleToAbility(next.pass[part]) : from + 1;
-  return from + (to - from) * Math.min(1, Math.max(0, position));
 }

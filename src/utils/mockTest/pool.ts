@@ -1,11 +1,11 @@
-import type { LessonTestItem, LessonTestPart } from '../../types/lessonTest';
-import { createItemPlanner, type LessonTestPlan, type PlannedItem } from '../lesson/lessonTestPlan';
+import type { LessonTestItem, LessonTestLesson, LessonTestPart } from '../../types/lessonTest';
+import { LESSON_TEST_PARTS, createItemPlanner, type LessonTestPlan, type PlannedItem } from '../lesson/lessonTestPlan';
 import { createQuizRng, type QuizRng } from '../vocabulary/quizDirector';
 
 /**
  * The mock test's question pool. Every question the app has (lesson tests and ones written for the mock test)
- * is one entry with three labels: its band, its section of the official paper and its level. A fixed test is a
- * recipe: so many questions from each section. Adding questions to the pool needs no code change.
+ * is one entry with its labels: its band, its section of the official paper, its level and its difficulty. A
+ * fixed test is a recipe: so many questions from each section. Adding questions to the pool needs no code change.
  */
 
 /** N = Novice (準備級), then the three official bands. */
@@ -15,12 +15,16 @@ export interface PoolEntry {
   item: LessonTestItem;
   part: LessonTestPart;
   band: MockBand;
-  /** The section of the official paper this question's shape belongs to, e.g. "A-L2" (Band A, listening part 2). */
+  /** Band, skill and shape, e.g. "A:listening:picture-hear": what a recipe line asks for. */
   section: string;
-  /** TOCFL level 0 (Novice) to 6. */
+  /** TOCFL level: 0.5 and 0.9 for Novice 1 and 2, then 1 to 6. */
   level: number;
-  /** Where it sits on the adaptive test's ability scale. */
+  /** Where it sits on the ability scale (the adaptive test's, shared by the band scores). */
   difficulty: number;
+  /** Questions that stand in for each other (a lesson test slot's versions): one test shows only one of them. */
+  family: string;
+  /** The lesson (or mock set) it comes from: its book decides the shared sounds and the pause between speakers. */
+  origin: Pick<LessonTestLesson, 'key' | 'bookId' | 'lessonId' | 'band' | 'allowWords'>;
 }
 
 export interface RecipeLine {
@@ -44,20 +48,54 @@ function shuffled<T>(values: readonly T[], rng: QuizRng): T[] {
   return out;
 }
 
+const questionsOf = (entries: readonly PoolEntry[]) => entries.reduce((sum, entry) => sum + entry.item.questions.length, 0);
+
+/** Whether some of these group sizes add up to exactly `target`. */
+function canSum(sizes: readonly number[], target: number): boolean {
+  const reach = new Uint8Array(target + 1);
+  reach[0] = 1;
+  for (const size of sizes) for (let sum = target; sum >= size; sum -= 1) if (reach[sum - size]) reach[sum] = 1;
+  return reach[target] === 1;
+}
+
 /**
- * Fills one recipe line: least-seen questions first, in a random order among equals, never past the line's
- * question count (a group that would overshoot is skipped for a smaller one).
+ * Draws up to `wanted` questions: the band's levels take turns so a paper mixes them, least-seen questions first
+ * within a level (a random order among equals), never two of one family, never past `wanted`. A recording or text
+ * with several questions is taken only if the rest can still add up exactly, so a paper keeps its length.
  */
-function drawSection(entries: readonly PoolEntry[], wanted: number, seen: Record<string, number>, rng: QuizRng): PoolEntry[] {
-  const order = shuffled(entries, rng).sort((a, b) => (seen[a.item.id] ?? 0) - (seen[b.item.id] ?? 0));
+function draw(entries: readonly PoolEntry[], wanted: number, seen: Record<string, number>, taken: Set<string>, rng: QuizRng): PoolEntry[] {
+  const byLevel = new Map<number, PoolEntry[]>();
+  for (const entry of shuffled(entries, rng).sort((a, b) => (seen[a.item.id] ?? 0) - (seen[b.item.id] ?? 0))) {
+    const list = byLevel.get(entry.level);
+    if (list) list.push(entry);
+    else byLevel.set(entry.level, [entry]);
+  }
+  const queues = [...byLevel.entries()].sort(([a], [b]) => a - b).map(([, list]) => list);
+  const size = (entry: PoolEntry) => entry.item.questions.length;
   const picked: PoolEntry[] = [];
   let count = 0;
-  for (const entry of order) {
-    const size = entry.item.questions.length;
-    if (count + size > wanted) continue;
+  /** Exact while the remaining questions can still be made up; once they can't, the closest fit will do. */
+  let exact = true;
+  let misses = 0;
+  for (let turn = 0; count < wanted && misses < queues.length; turn += 1) {
+    const queue = queues[turn % queues.length];
+    const fits = (entry: PoolEntry) => !taken.has(entry.family) && count + size(entry) <= wanted;
+    const completes = (entry: PoolEntry) => {
+      const rest = wanted - count - size(entry);
+      if (rest === 0) return true;
+      return canSum(queues.flat().filter((other) => other.family !== entry.family && !taken.has(other.family)).map(size), rest);
+    };
+    const index = queue.findIndex((entry) => fits(entry) && (!exact || completes(entry)));
+    if (index < 0) {
+      misses += 1;
+      if (misses === queues.length && exact) { exact = false; misses = 0; }
+      continue;
+    }
+    misses = 0;
+    const [entry] = queue.splice(index, 1);
     picked.push(entry);
-    count += size;
-    if (count === wanted) break;
+    taken.add(entry.family);
+    count += size(entry);
   }
   return picked;
 }
@@ -69,7 +107,8 @@ export interface PoolPlan extends LessonTestPlan {
 
 /**
  * One run of a fixed mock test: the recipe's sections in order, listening before reading, each filled from the
- * pool with the questions this learner has seen least.
+ * pool with the questions this learner has seen least. A section the pool cannot fill is reported in `short`, and
+ * the test keeps its length with other questions of the same band and skill.
  */
 export function planPoolTest(
   pool: readonly PoolEntry[],
@@ -80,28 +119,27 @@ export function planPoolTest(
 ): PoolPlan {
   const rng = createQuizRng(`${recipe.key}:${seed}`);
   const planItem = createItemPlanner(rng);
-  const bySection = new Map<string, PoolEntry[]>();
-  for (const entry of pool) {
-    if (!parts.includes(entry.part)) continue;
-    const list = bySection.get(entry.section);
-    if (list) list.push(entry);
-    else bySection.set(entry.section, [entry]);
-  }
   const items: PlannedItem[] = [];
   const short: PoolPlan['short'] = [];
-  for (const line of recipe.lines) {
-    const entries = bySection.get(line.section) ?? [];
-    if (!entries.length && !pool.some((entry) => entry.section === line.section)) {
-      short.push({ section: line.section, missing: line.questions });
-      continue;
+  const taken = new Set<string>();
+  for (const part of LESSON_TEST_PARTS.map((entry) => entry.part).filter((entry) => parts.includes(entry))) {
+    const prefix = `${recipe.band}:${part}:`;
+    const lines = recipe.lines.filter((line) => line.section.startsWith(prefix));
+    const drawn: Array<{ slot: string; entry: PoolEntry }> = [];
+    let missing = 0;
+    for (const line of lines) {
+      const picked = draw(pool.filter((entry) => entry.section === line.section), line.questions, seen, taken, rng);
+      const got = questionsOf(picked);
+      if (got < line.questions) short.push({ section: line.section, missing: line.questions - got });
+      missing += line.questions - got;
+      drawn.push(...picked.map((entry) => ({ slot: line.section, entry })));
     }
-    if (!entries.length) continue; // A section of a skill this run leaves out.
-    const drawn = drawSection(entries, line.questions, seen, rng);
-    const got = drawn.reduce((sum, entry) => sum + entry.item.questions.length, 0);
-    if (got < line.questions) short.push({ section: line.section, missing: line.questions - got });
-    for (const entry of drawn) items.push(planItem(line.section, entry.part, entry.item));
+    if (missing > 0) {
+      const rest = pool.filter((entry) => entry.band === recipe.band && entry.part === part);
+      drawn.push(...draw(rest, missing, seen, taken, rng).map((entry) => ({ slot: `${prefix}any`, entry })));
+    }
+    for (const { slot, entry } of drawn) items.push(planItem(slot, part, entry.item));
   }
-  items.sort((a, b) => (a.part === b.part ? 0 : a.part === 'listening' ? -1 : 1));
   return { key: recipe.key, seed, items, short };
 }
 

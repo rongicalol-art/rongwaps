@@ -9,7 +9,8 @@ import { planPoolTest, poolItemIndex, type MockRecipe, type PoolEntry } from '..
 
 const lessons = ['lesson03', 'lesson04', 'lesson05'].map((name) => readJson<LessonTestLesson>(`content/lesson-tests/book-1/${name}.json`));
 const pool: PoolEntry[] = lessons.flatMap((lesson) => lesson.slots.flatMap((slot) => slot.versions.map((item): PoolEntry => ({
-  item, part: slot.part, band: 'A', section: `A-${slot.part}-${item.kind}`, level: 1, difficulty: 0,
+  item, part: slot.part, band: 'A', section: `A:${slot.part}:${item.kind}`, level: lesson.lessonId === 3 ? 1 : 2, difficulty: 0,
+  family: `${lesson.key}:${slot.id}`, origin: lesson,
 }))));
 const sections = [...new Set(pool.map((entry) => entry.section))];
 const recipe: MockRecipe = { key: 'test-a', band: 'A', lines: sections.map((section) => ({ section, questions: 2 })) };
@@ -42,11 +43,22 @@ test('questions seen before are held back while unseen ones remain', () => {
   assert.ok(repeats < second.items.length / 2, `${repeats} of ${second.items.length} repeated`);
 });
 
-test('a section the pool cannot fill is reported, not silently dropped', () => {
-  const hungry: MockRecipe = { key: 'hungry', band: 'A', lines: [{ section: 'missing-section', questions: 5 }, { section: sections[0], questions: 9999 }] };
+test('a section the pool cannot fill is reported, and the test keeps its length from the same skill', () => {
+  const hungry: MockRecipe = { key: 'hungry', band: 'A', lines: [{ section: 'A:listening:missing', questions: 5 }] };
   const plan = planPoolTest(pool, hungry, both, {}, 'x');
-  assert.deepEqual(plan.short.map((entry) => entry.section), ['missing-section', sections[0]]);
-  assert.equal(plan.short[0].missing, 5);
+  assert.deepEqual(plan.short, [{ section: 'A:listening:missing', missing: 5 }]);
+  assert.equal(questionsOf(plan), 5);
+  assert.ok(plan.items.every((item) => item.part === 'listening'));
+});
+
+test('one test never shows two versions of the same slot, and mixes the band\'s levels', () => {
+  const greedy: MockRecipe = { key: 'greedy', band: 'A', lines: sections.map((section) => ({ section, questions: 6 })) };
+  const plan = planPoolTest(pool, greedy, both, {}, 'family');
+  const byId = new Map(pool.map((entry) => [entry.item.id, entry]));
+  const families = plan.items.map((item) => byId.get(item.itemId)!.family);
+  assert.equal(new Set(families).size, families.length);
+  const levels = new Set(plan.items.map((item) => byId.get(item.itemId)!.level));
+  assert.deepEqual([...levels].sort(), [1, 2]);
 });
 
 test('the lesson test\'s screens and scorer run a pool plan as they run a lesson', () => {
