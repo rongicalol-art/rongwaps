@@ -10,8 +10,6 @@ interface UsePracticeAnswerAutomationOptions {
   onCheck?: () => void;
   blocked?: boolean;
   advanceWrong?: boolean;
-  /** Shortest time a right answer stays up before auto-advance. */
-  minCorrectMs?: number;
 }
 
 export function usePracticeAnswerAutomation({
@@ -21,7 +19,6 @@ export function usePracticeAnswerAutomation({
   onCheck,
   blocked = false,
   advanceWrong = true,
-  minCorrectMs = 0,
 }: UsePracticeAnswerAutomationOptions) {
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const autoAdvanceWrong = useAppStore((state) => state.autoAdvanceWrong);
@@ -46,12 +43,12 @@ export function usePracticeAnswerAutomation({
   useEffect(() => {
     if (status !== 'correct' || blocked || !autoAdvanceCorrect) return;
     const elapsed = Date.now() - statusStartedAtRef.current;
-    const delay = Math.max(0, Math.max(minCorrectMs, correctDelayMs) + betweenCardsMs - elapsed);
+    const delay = Math.max(0, correctDelayMs + betweenCardsMs - elapsed);
     const timer = setTimeout(() => {
       onAdvanceRef.current();
     }, delay);
     return () => clearTimeout(timer);
-  }, [status, blocked, autoAdvanceCorrect, correctDelayMs, betweenCardsMs, minCorrectMs]);
+  }, [status, blocked, autoAdvanceCorrect, correctDelayMs, betweenCardsMs]);
 
   useEffect(() => {
     if (status !== 'wrong' || blocked || !autoAdvanceWrong || !advanceWrong) return;
