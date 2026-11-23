@@ -12,8 +12,9 @@ export interface FeedbackBottomBarProps {
   status: 'idle' | 'correct' | 'wrong';
   correctAnswer?: string;
   pinyin?: string;
-  /** Free-form result content (lesson tests: the sentence, its pinyin and English, and why), shown right or wrong. */
+  /** Free-form result content, shown right or wrong. */
   detail?: React.ReactNode;
+  showResultLabel?: boolean;
   /** The word just practised: shown on a tile after every answer, right or wrong (replaces `correctAnswer`). */
   word?: { hanzi: string; pinyin?: string; meaning: string; simple?: string };
   onContinue: () => void;
@@ -52,6 +53,7 @@ export function FeedbackBottomBar({
   correctAnswer, 
   pinyin,
   detail,
+  showResultLabel = true,
   word,
   onContinue, 
   continueLoading = false,
@@ -196,7 +198,7 @@ export function FeedbackBottomBar({
                     layout !== 'stacked' && 'lg:min-w-0 lg:flex-1 lg:flex-row lg:items-center lg:gap-5',
                   )}
                 >
-                  <div className={`flex shrink-0 items-center gap-2 text-[18px] font-extrabold sm:text-[20px] ${isCorrect ? 'text-feedback-success-text' : 'text-feedback-danger-text'}`}>
+                  {showResultLabel && <div className={`flex shrink-0 items-center gap-2 text-[18px] font-extrabold sm:text-[20px] ${isCorrect ? 'text-feedback-success-text' : 'text-feedback-danger-text'}`}>
                     <motion.span
                       initial={reduceMotion ? false : { scale: 0.4, rotate: isCorrect ? -12 : 12 }}
                       animate={{ scale: 1, rotate: 0 }}
@@ -206,9 +208,9 @@ export function FeedbackBottomBar({
                       <AppIcon name={isCorrect ? 'check' : 'close'} size={28} />
                     </motion.span>
                     {isCorrect ? 'Correct' : 'Not quite'}
-                  </div>
+                  </div>}
                   {detail ? (
-                    <div className={cn('mt-2 flex min-w-0 flex-col gap-0.5', layout !== 'stacked' && 'lg:mt-0 lg:flex-1 lg:border-l-2 lg:border-ui-divider lg:pl-5')}>
+                    <div className={cn('flex min-w-0 flex-col gap-0.5', showResultLabel && 'mt-2', layout !== 'stacked' && 'lg:mt-0 lg:flex-1', showResultLabel && layout !== 'stacked' && 'lg:border-l-2 lg:border-ui-divider lg:pl-5')}>
                       {detail}
                     </div>
                   ) : word ? (
