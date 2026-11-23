@@ -4,6 +4,7 @@ import { SAMPLE_LESSONS } from '../../../data/books';
 import { useAppStore } from '../../../store/useAppStore';
 import type { Person } from '../../../../shared/lobby';
 import { whereLabel } from '../socialText';
+import { UnreadBadge } from './Presence';
 
 /** Mutes cheer and invite pop-ups and the unread dot. */
 export function MuteButton() {
@@ -62,9 +63,9 @@ export function lessonHeading(lesson: number | null): { eyebrow?: string; title:
   return { eyebrow: `${book > 1 ? `Book ${book} · ` : ''}Lesson ${id}`, title: entry ? entry.title.split('·')[0].trim() : `Lesson ${id}` };
 }
 
-/** Underlined text tabs, same look as the lesson window's part tabs; a count or a new-message dot can ride after a label. */
+/** Underlined text tabs, same look as the lesson window's part tabs; a count, chat badge or new-message dot can ride after a label. */
 export function PanelTabs<T extends string>({ tabs, value, onChange, label }: {
-  tabs: ReadonlyArray<{ id: T; label: string; count?: number; dot?: boolean }>; value: T; onChange: (id: T) => void; label: string;
+  tabs: ReadonlyArray<{ id: T; label: string; count?: number; badge?: number; dot?: boolean }>; value: T; onChange: (id: T) => void; label: string;
 }) {
   return (
     <div role="tablist" aria-label={label} className="grid grid-flow-col auto-cols-fr border-b-2 border-ui-divider">
@@ -81,6 +82,7 @@ export function PanelTabs<T extends string>({ tabs, value, onChange, label }: {
           >
             <span className="truncate">{tab.label}</span>
             {tab.count !== undefined && <span className="text-sm font-extrabold text-ui-muted">{tab.count}</span>}
+            {tab.badge !== undefined && tab.badge > 0 && <UnreadBadge count={tab.badge} />}
             {tab.dot && <span aria-label="New messages" className="h-2 w-2 shrink-0 rounded-full bg-brand-primary" />}
           </button>
         );

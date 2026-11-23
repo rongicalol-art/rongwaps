@@ -6,7 +6,7 @@ import { CHEER_PHRASES } from '../../../../shared/lobby';
 import { joinRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
 import { describeSelection } from '../socialText';
-import { isDirectNotice, openMention } from '../lobbyController';
+import { isDirectNotice, isPartyChatNotice, openMention } from '../lobbyController';
 import { isStudying } from '../presence';
 
 const INVITE_MS = 20_000;
@@ -110,7 +110,7 @@ export function MentionToast() {
   const notice = useAppStore(state => state.socialMentionToast);
   const panelOpen = useAppStore(state => state.socialPanel !== null);
   const setSocial = useAppStore(state => state.setSocial);
-  const waiting = useAppStore(isStudying);
+  const waiting = useAppStore(state => isStudying(state) && !(state.race && !state.racePlaying));
   useEffect(() => {
     if (!notice || waiting) return;
     const timer = setTimeout(() => setSocial({ socialMentionToast: null }), 6000);
@@ -119,6 +119,6 @@ export function MentionToast() {
   if (!notice || waiting) return null;
   return <div role="status"><button type="button" onClick={() => openMention(notice)} className={`${noticeCard(panelOpen)} outline-none focus-ring`}>
     <Avatar name={notice.message.n} color={notice.message.c} size="sm" src={notice.message.i} />
-    <span className="min-w-0"><span className="block font-black text-ui-ink-strong">{isDirectNotice(notice) ? notice.message.n : `${notice.message.n} ${notice.message.a ? 'wrote to everyone' : 'mentioned you'}`}</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{notice.room ? `Party · ${notice.message.t}` : notice.message.t}</span></span>
+    <span className="min-w-0"><span className="block font-black text-ui-ink-strong">{isDirectNotice(notice) || isPartyChatNotice(notice) ? notice.message.n : `${notice.message.n} ${notice.message.a ? 'wrote to everyone' : 'mentioned you'}`}</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{notice.room ? `Party · ${notice.message.t}` : notice.message.t}</span></span>
   </button></div>;
 }

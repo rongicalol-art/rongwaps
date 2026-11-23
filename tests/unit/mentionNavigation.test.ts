@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
 import { SOCIAL_UPDATE_FROM, type ChatMessage, type MentionNotice } from '../../shared/lobby';
+import { directUnread, partyUnread, unreadTotal } from '../../src/store/slices/socialSlice';
 
 // One fixed clock: `Date.now()` per call can tick between notices and flip their order.
 const NOW = Date.now();
@@ -122,5 +123,70 @@ test('@everyone lines become one card from the chat itself, never a mention-read
   assert.ok((state.socialMentions as MentionNotice[]).every(item => item.read));
   await new Promise(resolve => setTimeout(resolve, 400));
   assert.ok(!sent.some(frame => (frame as { t: string }).t === 'mention-read'), 'the Lobby has no copy to mark');
+  api.stopLobby();
+});
+
+test('unreadTotal only counts what appears in Chats, never stale party mentions or unfriended DMs', () => {
+  const mutual = { u: 'friend', n: 'Friend', c: 'jade' as const, iAdded: true, addedMe: true };
+  const request = { u: 'req', n: 'Req', c: 'blue' as const, iAdded: false, addedMe: true };
+  const base = {
+    socialMuted: false,
+    socialChatUnread: 0,
+    socialFriends: [mutual, request],
+    socialInbox: [
+      { u: 'friend', lastId: 10, lastFrom: 'friend', last: 'hi', at: NOW, unread: 2 },
+      // Ex-friend still in direct_inbox() but hidden from ChatList must not create a phantom badge.
+      { u: 'ex-friend', lastId: 11, lastFrom: 'ex-friend', last: 'bye', at: NOW, unread: 6 },
+    ],
+  };
+  assert.equal(directUnread(base), 2);
+  assert.equal(unreadTotal(base), 3, '2 mutual-friend DMs + 1 friend request');
+  assert.equal(unreadTotal({ ...base, socialFriends: null }), 0, 'no phantom DM count before friends load');
+  assert.equal(unreadTotal({ ...base, socialMuted: true }), 0);
+
+  // Party chat has its own room-scoped badge.
+  const partyState = { socialMuted: false, race: { code: 'ROOM12' } as never, socialPartyChat: { code: 'ROOM12', messages: [], read: 0, unread: 4 } };
+  assert.equal(partyUnread(partyState), 4);
+  assert.equal(partyUnread({ ...partyState, socialMuted: true }), 0);
+  assert.equal(partyUnread({ ...partyState, race: null }), 0);
+});
+
+test('party mentions mark read when opening party chat, and tapping a party toast switches RoomWindow to Chat', async () => {
+  const partyNotice: MentionNotice = { key: 'p:ROOM12:1:1', channel: 0, room: 'ROOM12', read: false, message: { ...line(1, 'friend', '@Me ready?') } };
+  const otherRoomNotice: MentionNotice = { key: 'p:OTHER1:2:2', channel: 0, room: 'OTHER1', read: false, message: { ...line(2, 'friend', '@Me old') } };
+  const api = await loadController({
+    socialMentions: [partyNotice, otherRoomNotice],
+    socialMuted: false,
+    socialPanel: null,
+    socialMe: 'me',
+    socialChatRead: 0,
+    socialChatUnread: 0,
+    socialMentionToast: partyNotice,
+    socialReadingParty: null,
+    race: { code: 'ROOM12' },
+    racePlaying: false,
+  });
+
+  // Tapping a party chat toast while in RoomWindow switches directly to its Chat tab without mention-open.
+  const localPartyToast: MentionNotice = { key: 'pc:ROOM12:3', channel: 0, room: 'ROOM12', read: false, message: line(3, 'friend', 'lets go') };
+  api.openMention(localPartyToast);
+  assert.equal(state.socialReadingParty, 'ROOM12');
+  assert.equal(state.socialPanel, null);
+  assert.ok(!sent.some(frame => (frame as { t: string }).t === 'mention-open'));
+
+  // During a race quiz, tapping opens the partyChat drawer instead.
+  state.racePlaying = true;
+  api.openMention(localPartyToast);
+  assert.deepEqual(state.socialPanel, { kind: 'partyChat' });
+
+  // Reading party chat marks all unread mentions in that room read and notifies the Lobby.
+  state.socialMentionToast = partyNotice;
+  api.lobby.markPartyMentionsRead('ROOM12');
+  const mentions = state.socialMentions as MentionNotice[];
+  assert.equal(mentions.find(item => item.key === partyNotice.key)?.read, true);
+  assert.equal(mentions.find(item => item.key === otherRoomNotice.key)?.read, false);
+  assert.equal(state.socialMentionToast, null);
+  await new Promise(resolve => setTimeout(resolve, 300));
+  assert.deepEqual(sent.filter(frame => (frame as { t: string }).t === 'mention-read'), [{ t: 'mention-read', key: partyNotice.key }]);
   api.stopLobby();
 });

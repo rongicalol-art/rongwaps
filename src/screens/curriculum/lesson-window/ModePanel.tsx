@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ActionButton, PlayfulNavIcon } from '../../../lib/widgets';
+import { ActionButton, AppIcon, PlayfulNavIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { ActivityRing } from './ActivityRing';
 import { ModeIcon } from './ModeIcon';
@@ -106,7 +106,7 @@ interface LessonActionsProps {
   className?: string;
 }
 
-/** Start the selected lesson mode. Quiz lives in Practice hub. */
+/** Start the selected lesson mode; Practice (beside it, plain white so Start stays the one coloured action) opens the practice sheet. */
 export function LessonActions({
   onStart,
   label = 'Start',
@@ -118,27 +118,18 @@ export function LessonActions({
   return (
     <div className={cn('flex items-center gap-3', className)}>
       {onOpenPracticeHub && (
-        <div className="group relative shrink-0">
-          <ActionButton
-            variant="secondary"
-            size="lg"
-            edgeColor="var(--color-feedback-warning-edge)"
-            aria-label="Practice hub"
-            aria-haspopup="dialog"
-            aria-expanded={isPracticeHubOpen}
-            onClick={onOpenPracticeHub}
-            style={{ flexShrink: 0 }}
-            className="w-13 min-w-13 aspect-square shrink-0 !px-0 justify-center !border-feedback-warning-edge"
-          >
-            <PlayfulNavIcon name="practiceHub" className="h-7 w-7" />
-          </ActionButton>
-          <span
-            role="tooltip"
-            className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-3 hidden -translate-x-1/2 items-center whitespace-nowrap rounded-control border-b-2 border-ui-border bg-ui-surface px-3 py-1.5 text-xs font-black uppercase tracking-wider text-ui-ink-strong shadow-md group-hover:flex"
-          >
-            Practice hub
-          </span>
-        </div>
+        <ActionButton
+          variant="secondary"
+          size="lg"
+          edgeColor={DIVIDER_EDGE}
+          aria-haspopup="dialog"
+          aria-expanded={isPracticeHubOpen}
+          onClick={onOpenPracticeHub}
+          className="shrink-0 gap-2 !px-4 text-lg tracking-normal !border-ui-divider !text-ui-ink-strong"
+        >
+          <PlayfulNavIcon name="practiceHub" className="h-7 w-7" />
+          <span>Practice</span>
+        </ActionButton>
       )}
       <ActionButton
         size="lg"
@@ -149,6 +140,7 @@ export function LessonActions({
         onPointerDown={onStartIntent}
         onFocus={onStartIntent}
       >
+        <AppIcon name="play" size={20} />
         <span>{label}</span>
       </ActionButton>
     </div>

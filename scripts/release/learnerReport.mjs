@@ -25,7 +25,7 @@ const trend = (now, before) => {
   return pct === 0 ? ' (same as the week before)' : ` (${pct > 0 ? '+' : ''}${pct}% vs the week before)`;
 };
 const pct = (part, whole) => (n(whole) ? `${Math.round((n(part) / n(whole)) * 100)}%` : '–');
-const SOURCE_NAMES = { daily: 'daily review', flashcards: 'flashcards', quiz: 'quizzes', listening: 'listening', writing: 'writing', tones: 'tones', practice: 'practice' };
+const SOURCE_NAMES = { daily: 'daily review', flashcards: 'flashcards', quiz: 'quizzes', listening: 'listening', writing: 'writing', tones: 'tones', pinyin: 'pinyin', practice: 'missed-word replays' };
 
 const a = r.active ?? {};
 const s = r.signups ?? {};

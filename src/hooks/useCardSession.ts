@@ -32,6 +32,8 @@ export interface UseCardSessionOptions {
   /** Re-queue a missed card inside the pass per the "repeat mistakes" setting (default). The quiz turns it off: its misses come back as a review round. */
   requeueMissed?: boolean;
   source?: ReviewSource;
+  /** Answers are recorded only (streak, history, learner report): they never schedule a card or mark it learned. */
+  observeOnly?: boolean;
   paused?: boolean;
   daily?: boolean;
 }
@@ -266,9 +268,9 @@ export function useCardSession(
     previousAnswerTime.current = clock.current;
     markCardReviewed(card.id, quality, {
       id: crypto.randomUUID(), sessionId: sessionIdRef.current, source, durationMs,
-      practiceOnly: practiceOnlyRef.current || wasMissed,
+      practiceOnly: practiceOnlyRef.current || wasMissed || options.observeOnly === true,
       ...(source === 'daily' ? { dailyTarget: useAppStore.getState().dailyReviewPlan?.cardIds.length } : {}),
-    });
+    }, options.observeOnly ? { observeOnly: true } : undefined);
     if (practiceOnlyRef.current) {
       setSessionResults(previous => ({ ...previous, [card.id]: quality }));
       return;
@@ -283,7 +285,7 @@ export function useCardSession(
         setActiveCards(next);
       }
     }
-  }, [clock, markCardReviewed, options.source, repeatMistakes]);
+  }, [clock, markCardReviewed, options.observeOnly, options.source, repeatMistakes]);
 
   const advanceOrComplete = useCallback((): 'advanced' | 'completed' => {
     const current = currentIndexRef.current;

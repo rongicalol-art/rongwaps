@@ -75,15 +75,21 @@ export async function loadThread(u: string, older = false) {
   store.setSocial({ socialThreads: { ...store.socialThreads, [u]: { messages: merged, more: older ? page.length === 50 : (current?.more ?? page.length === 50) } } });
 }
 
+const markedRead = new Map<string, number>();
+
 export async function markThreadRead(u: string) {
+  const self = me();
   const store = useAppStore.getState();
   const last = store.socialThreads[u]?.messages.at(-1);
   const row = store.socialInbox.find(item => item.u === u);
-  if (!last || !ready()) return;
+  if (!last || !self || !ready()) return;
   if (row?.unread) store.setSocial({ socialInbox: store.socialInbox.map(item => item.u === u ? { ...item, unread: 0 } : item) });
   const toast = store.socialMentionToast;
   if (toast && isDirectNotice(toast) && toast.message.u === u) store.setSocial({ socialMentionToast: null });
-  if (row?.unread || (row && row.lastId > 0)) await friendsService.read(u, last.id).catch(() => {});
+  const key = `${self}|${u}`;
+  if (row?.unread || last.id > (markedRead.get(key) ?? 0)) {
+    try { await friendsService.read(u, last.id); markedRead.set(key, Math.max(markedRead.get(key) ?? 0, last.id)); } catch { /* Retries next visit. */ }
+  }
 }
 
 export async function sendDirect(u: string, text: string): Promise<boolean> {

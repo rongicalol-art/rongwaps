@@ -9,11 +9,13 @@ export { PracticeEmptyState } from './components/PracticeEmptyState';
 export { LessonComplete } from './components/LessonComplete';
 export { SessionComplete, StatTile, loadBird, BIRD_LAST_FRAME, formatTime } from './components/SessionComplete';
 export { StreakMoment } from './components/StreakMoment';
+export { SessionNextStepProvider, useSessionNextStep } from './components/SessionNextStep';
 export { ResumeLaunch } from './components/ResumeLaunch';
 export { PracticeChoiceButton, getPracticeChoiceState } from './components/PracticeChoiceButton';
 export { PracticeFormatMenu } from './components/PracticeFormatMenu';
 
 export type { SessionStats } from './components/SessionComplete';
+export type { SessionNextStep } from './components/SessionNextStep';
 export type { PracticeChoiceState } from './components/PracticeChoiceButton';
 
 export { beginQuizLaunch, cancelQuizLaunch } from './quizLaunch';

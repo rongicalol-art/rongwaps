@@ -3,6 +3,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { useCardSession, type CardSessionQuality } from '../../../hooks/useCardSession';
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
+import { isExtraDailyReview } from '../../../utils/srs/reviewSession';
 
 /**
  * Again / Hard / Got it → SRS quality. Hard is "remembered, with effort" (quality 3 = FSRS Hard), not a
@@ -26,11 +27,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const dailyPlan = useAppStore((state) => state.dailyReviewPlan);
   const activeReviewSessionCards = useAppStore((state) => state.activeReviewSessionCards);
-  const isExtraReview = Boolean(
-    isReviewDeck && dailyPlan?.completed && activeReviewSessionCards?.length
-      && (activeReviewSessionCards.length !== dailyPlan.cardIds.length
-        || activeReviewSessionCards.some((id, index) => id !== dailyPlan.cardIds[index])),
-  );
+  const isExtraReview = isReviewDeck && isExtraDailyReview(dailyPlan, activeReviewSessionCards);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const sessionKey = getDeckIdentityKey({
     activeBookId,

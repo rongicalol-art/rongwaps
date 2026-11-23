@@ -7,6 +7,7 @@ import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
 import { quizSnapshotKey } from '../../../utils/srs/resumeState';
 import { parseMeasureWord, wordsForQuizTypes, type QuizBeat, type QuizTypeId } from '../../../utils/vocabulary/quizDirector';
 import { useQuizPlan } from './useQuizPlan';
+import type { QuizReviewOptions } from './useQuiz';
 
 type BeatStatus = 'idle' | 'correct' | 'wrong';
 export type FollowUpState = 'closed' | 'open' | 'done';
@@ -36,7 +37,7 @@ function clearSnapshot(sessionKey: string) {
  * `useCardSession` still counts words, so a beat's words advance together.
  */
 /** `seed` (a quiz race) replaces the per-device round seed, so every player gets the same plan. */
-export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: readonly QuizTypeId[], seed?: string) {
+export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: readonly QuizTypeId[], seed?: string, review: QuizReviewOptions = {}) {
   const matchPairType = useAppStore((state) => state.matchPairType);
 
   const [status, setStatus] = useState<BeatStatus>('idle');
@@ -66,7 +67,7 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   // eslint-disable-next-line react-hooks/exhaustive-deps -- types is keyed by typesKey
   const quizCards = useMemo(() => wordsForQuizTypes(orderedCards, types ?? []), [orderedCards, typesKey]);
   const session = useCardSession(quizCards, sessionKey, {
-    requeueMissed: false,
+    requeueMissed: false, daily: review.daily, source: review.daily ? 'daily' : undefined,
     onSessionReset: () => {
       resetBeat();
       setPass(0);
@@ -86,7 +87,7 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   if (planConfigRef.current?.key !== planKey) planConfigRef.current = { key: planKey, matchPairType };
   const planning = useQuizPlan(activeCards, {
     seed: `${sessionKey}|${snapshotRef.current.value.nonce}|${pass}`,
-    reviewPass: isReviewPass, extraCards: orderedCards, confusions: seed ? {} : useAppStore.getState().wordConfusions,
+    reviewPass: isReviewPass, extraCards: review.extraCards?.length ? [...orderedCards, ...review.extraCards] : orderedCards, confusions: seed ? {} : useAppStore.getState().wordConfusions,
     types, matchPairType: seed ? 'mixed' : planConfigRef.current.matchPairType,
   }, planKey, !completed);
   const { beats } = planning;
