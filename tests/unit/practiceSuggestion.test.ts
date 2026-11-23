@@ -15,7 +15,7 @@ test('after a lesson quiz with sentences, Sentences is the suggestion', () => {
 test('without sentences, tones comes first and a mode practised this week is skipped', () => {
   assert.equal(pickPracticeSuggestion([event('quiz', 0)], cards, false, NOW), 'tones');
   assert.equal(pickPracticeSuggestion([event('tones', 1)], cards, false, NOW), 'writing');
-  assert.equal(pickPracticeSuggestion([event('tones', 0), event('writing', 0)], cards, false, NOW), 'pinyin');
+  assert.equal(pickPracticeSuggestion([event('tones', 0), event('writing', 0)], cards, false, NOW), 'tones');
 });
 
 test('practice older than a week, or on other words, does not count', () => {

@@ -314,6 +314,7 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== ' ' && event.key !== 'Enter') return;
+      if (event.target instanceof HTMLElement && event.target.closest('button')) return;
       event.preventDefault();
       event.stopPropagation();
       if (!event.repeat) startRef.current();

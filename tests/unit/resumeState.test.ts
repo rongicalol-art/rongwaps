@@ -22,13 +22,13 @@ test('flashcard resume prefers an unfinished review pass', () => {
   assert.equal(resumeDetail(r!), '2 words left to review');
 });
 
-test('quiz resume finds plain, picked-types and typing keys, and ignores other decks', () => {
+test('quiz resume finds current quiz keys and ignores retired or unrelated sessions', () => {
   assert.equal(getQuizResume('k', none), null);
   const plain = getQuizResume('k', { ...none, sessionProgressIndex: { 'k|quiz': 3 } });
   assert.equal(plain?.position, 4);
   assert.deepEqual(plain?.quizTypes, []);
-  assert.deepEqual(getQuizResume('k', { ...none, sessionProgressIndex: { 'k|types:a+b': 2 } })?.quizTypes, ['a', 'b']);
-  assert.equal(getQuizResume('k', { ...none, sessionProgressIndex: { 'k:typing': 2 } })?.quizTypes, undefined);
+  assert.deepEqual(getQuizResume('k', { ...none, sessionProgressIndex: { 'k|types:pinyin+build': 2 } })?.quizTypes, ['pinyin', 'build']);
+  assert.equal(getQuizResume('k', { ...none, sessionProgressIndex: { 'k:typing': 2, 'k|types:meaning+true-false': 4 } }), null);
   assert.equal(getQuizResume('k', { ...none, sessionProgressIndex: { other: 5 } }), null);
 });
 
@@ -67,7 +67,7 @@ test('a quiz review round left on its first card still resumes, and beats a plai
 });
 
 test('an explicitly saved first quiz question resumes across mixed, picked and typing modes', () => {
-  for (const key of ['k|quiz', 'k|types:listen', 'k:typing']) {
+  for (const key of ['k|quiz', 'k|types:listen', 'k|types:pinyin']) {
     const result = getQuizResume('k', { ...none, sessionProgressIndex: { [key]: 0 } });
     assert.equal(result?.kind, 'quiz');
     assert.equal(result?.mode, 'quiz');

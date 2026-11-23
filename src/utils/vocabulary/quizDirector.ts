@@ -1,9 +1,12 @@
+import { normalizeQuizTypes, type RaceType } from '../../../shared/quizRace';
 import type { Flashcard } from '../../data/flashcards';
+import { getPinyinAnswerVariants } from '../pinyin/pinyinAnswer';
 import { normalizeChoiceValue } from './meaningChoices';
 
 /**
- * Plans a mixed vocab quiz round. Every format links a word to its English meaning
- * (hanzi to meaning, audio to meaning, meaning to hanzi); nothing tests pinyin or hanzi alone.
+ * Plans a mixed vocab quiz round. Mixed uses the tap-only meaning formats
+ * (hanzi to meaning, audio to meaning, meaning to hanzi); typing pinyin runs
+ * only when the learner explicitly picks it.
  * Pure and seeded: the same session and deck always produce the same plan.
  */
 
@@ -13,33 +16,41 @@ export type QuizFormat =
   | 'pick-meaning'
   | 'listen-pick'
   | 'pick-hanzi'
-  | 'true-false'
+  | 'type-pinyin'
   | 'word-build';
 
-/** The quiz types a learner can pick before a quiz (Cards done); none picked means Mixed (every format). */
-export type QuizTypeId = 'meaning' | 'listen' | 'hanzi' | 'match' | 'true-false' | 'build';
+/** The quiz types a learner can pick before a quiz (Cards done); none picked means Mixed (every tap/meaning format). */
+export type QuizTypeId = RaceType;
 
 export const QUIZ_TYPE_FORMATS: Readonly<Record<QuizTypeId, readonly QuizFormat[]>> = {
   meaning: ['pick-meaning'],
   listen: ['listen-pick'],
   hanzi: ['pick-hanzi'],
   match: ['pair-match', 'sound-match'],
-  'true-false': ['true-false'],
+  pinyin: ['type-pinyin'],
   build: ['word-build'],
 };
 
+const hasPinyin = (card: Flashcard) => getPinyinAnswerVariants(card.pinyin ?? '').length > 0;
+
 /** Picked types keep only the words that fit one of them ([] = Mixed keeps every word). */
 export function wordsForQuizTypes(deck: readonly Flashcard[], types: readonly QuizTypeId[]): Flashcard[] {
-  if (types.length === 0 || types.some((type) => type !== 'listen' && type !== 'build')) return [...deck];
-  const characters = types.includes('build') ? deckCharacters(deck) : [];
-  return deck.filter((card) => (types.includes('listen') && card.audio) || (types.includes('build') && hasWordTiles(card, characters)));
+  const valid = normalizeQuizTypes(types);
+  if (valid.length === 0 || valid.some((type) => type !== 'listen' && type !== 'build' && type !== 'pinyin')) return [...deck];
+  const characters = valid.includes('build') ? deckCharacters(deck) : [];
+  return deck.filter((card) => (
+    (valid.includes('listen') && card.audio)
+    || (valid.includes('build') && hasWordTiles(card, characters))
+    || (valid.includes('pinyin') && hasPinyin(card))
+  ));
 }
 
 /** The picker offers only types at least one word can take. */
 export function availableQuizTypes(deck: readonly Flashcard[]): Set<QuizTypeId> {
   if (!deck.length) return new Set();
-  const types = new Set<QuizTypeId>(['meaning', 'hanzi', 'match', 'true-false']);
+  const types = new Set<QuizTypeId>(['meaning', 'hanzi', 'match']);
   if (deck.some((card) => card.audio)) types.add('listen');
+  if (deck.some(hasPinyin)) types.add('pinyin');
   const characters = deckCharacters(deck);
   if (deck.some((card) => hasWordTiles(card, characters))) types.add('build');
   return types;
@@ -51,8 +62,6 @@ export interface QuizBeat {
   cards: Flashcard[];
   /** Pick formats: the answer plus distractors, shuffled. Match formats: the cards in right-column order. */
   options?: Flashcard[];
-  /** true-false: the word whose meaning is shown (the card itself or a distractor). */
-  shown?: Flashcard;
   /** word-build: the answer's characters plus distractor characters, shuffled (repeats keep their own tile). */
   tiles?: string[];
 }
@@ -226,8 +235,9 @@ interface Draft {
 }
 
 const MATCH_FORMATS: ReadonlySet<QuizFormat> = new Set(['pair-match', 'sound-match']);
-const SINGLE_FORMATS: readonly QuizFormat[] = ['pick-meaning', 'listen-pick', 'pick-hanzi', 'true-false', 'word-build'];
+const SINGLE_FORMATS: readonly QuizFormat[] = ['pick-meaning', 'listen-pick', 'pick-hanzi', 'type-pinyin', 'word-build'];
 const ALL_FORMATS: readonly QuizFormat[] = ['pair-match', 'sound-match', ...SINGLE_FORMATS];
+const MIXED_FORMATS = ALL_FORMATS.filter((format) => format !== 'type-pinyin');
 
 /** Splits n (>= 3) cards into balanced chunks of 3-5. */
 function chunkSizes(n: number): number[] {
@@ -241,7 +251,8 @@ export function planQuizRound(
   cards: readonly Flashcard[],
   { seed, firstCardId, reviewPass, extraCards = [], confusions = {}, types = [], matchPairType = 'mixed' }: PlanOptions,
 ): QuizBeat[] {
-  const allowed = new Set<QuizFormat>(types.length ? types.flatMap((type) => QUIZ_TYPE_FORMATS[type]) : ALL_FORMATS);
+  const validTypes = normalizeQuizTypes(types);
+  const allowed = new Set<QuizFormat>(validTypes.length ? validTypes.flatMap((type) => QUIZ_TYPE_FORMATS[type]) : MIXED_FORMATS);
   if (matchPairType === 'characters') allowed.delete('sound-match');
   else if (matchPairType === 'audio') allowed.delete('pair-match');
   const rng = createQuizRng(`${seed}|${reviewPass ? 'review' : 'main'}|${cards.map((c) => c.id).join(',')}`);
@@ -251,10 +262,11 @@ export function planQuizRound(
   // Tile distractors may come from the whole loaded deck, so a short review pass can still build words.
   const characters = deckCharacters([...cards, ...others]);
   const tilesFor = (card: Flashcard) => wordTiles(card, characters, createQuizRng(`${seed}|build|${card.id}`));
-  /** Every format is open to every word; only the data decides (audio for listening, 2+ characters for building). */
+  /** Every format is open to every word; only the data decides (audio for listening, 2+ characters for building, pinyin for typing). */
   const canUse = (card: Flashcard, format: QuizFormat) => allowed.has(format) && (
     format === 'sound-match' || format === 'listen-pick' ? Boolean(card.audio)
-      : format === 'word-build' ? hasWordTiles(card, characters) : true);
+      : format === 'word-build' ? hasWordTiles(card, characters)
+      : format === 'type-pinyin' ? hasPinyin(card) : true);
   /** The preferred single format if this word can take it, else another picked one, else pick-meaning. */
   const singleFor = (card: Flashcard, preferred: QuizFormat) =>
     canUse(card, preferred) ? preferred : SINGLE_FORMATS.find((format) => canUse(card, format)) ?? 'pick-meaning';
@@ -262,7 +274,8 @@ export function planQuizRound(
   // A review pass uses the same picked types as the pass before it; only the handoff lead is first-pass only.
   const drafts: Draft[] = [];
   const found = !reviewPass && firstCardId ? cards.find((c) => c.id === firstCardId) : undefined;
-  const first = found && canUse(found, 'pick-meaning') ? found : undefined;
+  const first = found && canUse(found, 'pick-meaning') &&
+    (!canUse(found, 'type-pinyin') || cards.some((card) => card !== found && canUse(card, 'type-pinyin'))) ? found : undefined;
   if (first) drafts.push({ format: 'pick-meaning', cards: [first] });
 
   /** Cards that join a match chunk keep one per meaning (and sound), so the tiles are unambiguous. */
@@ -300,6 +313,20 @@ export function planQuizRound(
     if (pick === 'pair-match') pairPool.push(card);
     else if (pick === 'sound-match') soundPool.push(card);
     else drafts.push({ format: pick, cards: [card] });
+  }
+  // Keep an explicitly requested typing question even when the seeded picks all landed on another format.
+  if (allowed.has('type-pinyin') && !drafts.some((draft) => draft.format === 'type-pinyin')) {
+    const draft = drafts.find(({ cards: [card] }) => card !== first && canUse(card, 'type-pinyin'));
+    if (draft) {
+      draft.format = 'type-pinyin';
+    } else {
+      for (const pool of [pairPool, soundPool]) {
+        const index = pool.findIndex((card) => canUse(card, 'type-pinyin'));
+        if (index < 0) continue;
+        drafts.push({ format: 'type-pinyin', cards: pool.splice(index, 1) });
+        break;
+      }
+    }
   }
   pushMatches('pair-match', pairPool, 'pick-meaning');
   pushMatches('sound-match', soundPool, 'listen-pick');
@@ -348,7 +375,7 @@ export function planQuizRound(
       beat.options = seededShuffle(draft.cards, rng);
     } else if (format === 'word-build') {
       beat.tiles = tilesFor(draft.cards[0]) ?? undefined;
-    } else {
+    } else if (format !== 'type-pinyin') {
       const card = draft.cards[0];
       const avoidIds = new Set([...(answerOrder[i + 1] ?? []), ...(answerOrder[i + 2] ?? [])]);
       const distractors = buildQuizDistractors({
@@ -362,10 +389,6 @@ export function planQuizRound(
         rng,
       });
       beat.options = seededShuffle([card, ...distractors], rng);
-      if (format === 'true-false') {
-        const wrong = distractors[0];
-        beat.shown = wrong && rng() < 0.5 ? wrong : card;
-      }
     }
     return beat;
   });

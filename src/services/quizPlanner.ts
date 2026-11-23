@@ -1,10 +1,9 @@
 import type { Flashcard } from '../data/flashcards';
 import type { PlanOptions, QuizBeat } from '../utils/vocabulary/quizDirector';
 
-export interface PlannedBeat extends Omit<QuizBeat, 'cards' | 'options' | 'shown'> {
+export interface PlannedBeat extends Omit<QuizBeat, 'cards' | 'options'> {
   cards: string[];
   options?: string[];
-  shown?: string;
 }
 
 // Only quiz fields cross the worker boundary; examples, images and breakdowns stay on the UI thread.
@@ -51,7 +50,6 @@ export async function prepareQuizPlan(cards: readonly Flashcard[], options: Plan
         };
         finish(undefined, data.beats.map((beat) => ({
           ...beat, cards: beat.cards.map(cardFor), options: beat.options?.map(cardFor),
-          shown: beat.shown ? cardFor(beat.shown) : undefined,
         })));
       } catch (error) { finish(error instanceof Error ? error : new Error('Invalid quiz plan')); }
     };
