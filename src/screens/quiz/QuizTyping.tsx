@@ -19,13 +19,18 @@ interface QuizTypingCardProps {
   onSubmit: () => void;
   onOpenBreakdown: (index: number) => void;
   promptType: TypingPromptType;
+  /** The feedback bar stays hidden on a right answer, so the card shows what the prompt didn't. */
+  feedbackBarHidden: boolean;
 }
 
 const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
-  currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown, promptType
+  currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown, promptType, feedbackBarHidden
 }) => {
   const reduceMotion = useReducedMotion();
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
+  const meaning = (simpleDefinitions && currentCard.simple) ? currentCard.simple : currentCard.back;
+  // The revealed line takes the Pinyin label's place, so the input doesn't move.
+  const revealed = status === 'correct' && feedbackBarHidden;
   return (
   <motion.div
     initial={reduceMotion ? false : { opacity: 0, y: 8 }}
@@ -36,7 +41,7 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
     {promptType === 'meaning' ? (
       <div className="flex w-full items-center justify-center pb-7 pt-8 px-4">
         <span className="text-2xl sm:text-3xl font-extrabold text-ui-ink text-center leading-snug">
-          {(simpleDefinitions && currentCard.simple) ? currentCard.simple : currentCard.back}
+          {meaning}
         </span>
       </div>
     ) : (
@@ -50,9 +55,25 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
       }}
       className="w-full px-2"
     >
-      <label htmlFor="quiz-pinyin-answer" className="mb-2 block text-sm font-extrabold text-ui-muted-strong">
-        Pinyin
-      </label>
+      <div className="relative">
+        <label htmlFor="quiz-pinyin-answer" className={`mb-2 block text-sm font-extrabold text-ui-muted-strong ${revealed ? 'invisible' : ''}`}>
+          Pinyin
+        </label>
+        {revealed && (
+          <motion.p
+            initial={reduceMotion ? false : { opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.16, ease: 'easeOut' }}
+            className="absolute inset-x-0 bottom-2 text-center leading-snug"
+          >
+            {promptType === 'meaning' ? (
+              <span className="font-chinese text-3xl text-ui-ink-strong">{currentCard.front}</span>
+            ) : (
+              <span className="line-clamp-2 text-lg font-extrabold text-ui-ink-strong">{meaning}</span>
+            )}
+          </motion.p>
+        )}
+      </div>
       <div className="relative">
         <AppIcon
           name="keyboard"
@@ -117,7 +138,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
       word={currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: simpleDefinitions ? currentCard.simple : undefined } : undefined}
       isCheckDisabled={!input.trim()}
     >
-      {({ openBreakdown }) => (
+      {({ openBreakdown, feedbackBarHidden }) => (
         <QuizTypingCard
           currentCard={currentCard}
           input={input}
@@ -126,6 +147,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
           onSubmit={handleCheck}
           onOpenBreakdown={openBreakdown}
           promptType={typingPromptType}
+          feedbackBarHidden={feedbackBarHidden}
         />
       )}
     </QuizShell>

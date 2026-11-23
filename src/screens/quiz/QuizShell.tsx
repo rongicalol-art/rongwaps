@@ -118,8 +118,13 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
     reviewHandoff: QuizHandoff | null;
     /** True from the first review pass on (the first-pass handoff no longer applies). */
     isReviewPass: boolean;
+    /** A right answer moves on without the feedback bar, so the card itself shows the word's meaning. */
+    feedbackBarHidden: boolean;
   }) => React.ReactNode;
 }
+
+/** Base time a right typed answer stays up so its meaning can be read (pace adds to it). */
+const TYPING_READ_MS = 900;
 
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
@@ -135,6 +140,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const quizFormat = useAppStore((state) => state.quizFormat);
+  const correctDelayMs = useAppStore((state) => state.correctDelayMs);
   const advance = useCallback((explicit = false) => {
     if (preparation) return;
     // An explicit Continue interrupts audio, including a recording still loading.
@@ -149,6 +155,8 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   usePracticeAnswerAutomation({
     status,
     onAdvance: () => advance(false),
+    // Typing skips the feedback bar on a right answer: hold long enough to read the meaning on the card.
+    minCorrectMs: mode === 'quiz-typing' ? TYPING_READ_MS + 2 * correctDelayMs : 0,
     advanceWrong: false,
     blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || (mode !== 'quiz-typing' && answerAudioPlaying),
   });
@@ -304,7 +312,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
             </div>
 
             <Fragment key={`${currentIndex}:${currentCard.id}:${resetNonce}`}>
-              {children({ openBreakdown, breakdownOpen: Boolean(activeBreakdown), reviewHandoff, isReviewPass })}
+              {children({ openBreakdown, breakdownOpen: Boolean(activeBreakdown), reviewHandoff, isReviewPass, feedbackBarHidden: autoAdvance })}
             </Fragment>
           </div>
         )}
