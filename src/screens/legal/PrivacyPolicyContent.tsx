@@ -53,8 +53,8 @@ export function PrivacyPolicyContent() {
             </>,
             <>
               <strong>Learning data:</strong> which cards you have learned, their review schedule and review
-              history, and your synced settings (favorites, selected book and lessons, character style, profile
-              picture choice).
+              history, your best and latest lesson test scores, and your synced settings (favorites, selected book
+              and lessons, character style, profile picture choice).
             </>,
             <>
               <strong>Your content:</strong> the folders and custom flashcards you create. If you share a
@@ -107,7 +107,7 @@ export function PrivacyPolicyContent() {
           ]}
         />
         <LegalParagraph>
-          Lesson test scores and some display choices (such as Show me online) stay only on your device. We do not collect your
+          Some display choices (such as Show me online) stay only on your device. We do not collect your
           location, contacts, microphone recordings, or payment details. The app has no advertising, no ad
           trackers and no third-party analytics.
         </LegalParagraph>
