@@ -14,6 +14,7 @@ import { GroupQuestions } from './GroupQuestions';
 import { GapSentence } from './GapSentence';
 import { ParagraphBlanks } from './ParagraphBlanks';
 import { PictureChoices } from './PictureChoices';
+import { PosterPicture } from './PosterPicture';
 import { ReadingText } from './ReadingText';
 import { ScriptSheet } from './ScriptSheet';
 import { TestSpeaker } from './TestSpeaker';
@@ -210,7 +211,11 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
       );
       break;
     case 'reading':
-      stimulus = <ReadingText item={item} script={script} markable />; answersPart = <>{printedPrompt}{choiceList(false)}</>;
+      // A screen reader hears the poster's writing too, as with realia.
+      stimulus = item.picture
+        ? <PosterPicture name={item.picture} alt={`${item.alt ?? ''}: ${[text(item.title, script), text(item.text, script)].filter(Boolean).join('. ')}`} />
+        : <ReadingText item={item} script={script} markable />;
+      answersPart = <>{printedPrompt}{choiceList(false)}</>;
       break;
   }
 

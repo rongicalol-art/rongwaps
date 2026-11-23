@@ -173,7 +173,7 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
 export function lessonPictureNames(lesson: LessonTestLesson): string[] {
   const names = new Set<string>();
   for (const item of allItems(lesson)) {
-    if ('picture' in item) names.add(typeof item.picture === 'string' ? item.picture : item.picture.picture);
+    if ('picture' in item && item.picture) names.add(typeof item.picture === 'string' ? item.picture : item.picture.picture);
     for (const question of item.questions) for (const choice of question.choices ?? []) if (choice.picture) names.add(choice.picture);
   }
   return [...names];
