@@ -77,6 +77,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 
 - **Every quiz question tests meaning:** hanzi → meaning, audio → meaning, or meaning → hanzi. Never pinyin or hanzi alone.
 - **Fair:** every question type is open to every word. Only the data limits it: listening needs audio, and build-the-word needs 2-4 characters.
+- **Fast modes never pause for feedback.** In Type mode a right answer moves on at once; its word and meaning pop up as a small tile where the feedback bar lives and slide away on their own. A hold before the next word broke the flow, and a quiet line carried over above the input looked out of place.
 - **Quick true or false:** one tap (No / Yes), no follow-up question. The feedback bar shows the real meaning, and a wrong meaning that was shown is struck through.
 - **The learner picks the quiz:** Mixed (default, recommended) or any set of single types, before every vocab quiz. Only types the deck can use are offered; words that fit none of the picked types are left out.
 - **Full coverage:** every word in the quiz is asked exactly once per pass. Misses come back in the review round, in the same picked types.

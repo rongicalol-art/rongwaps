@@ -116,6 +116,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
       correctAnswer={numberToToneMarks(currentCard?.pinyin || '')}
       word={currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: simpleDefinitions ? currentCard.simple : undefined } : undefined}
       isCheckDisabled={!input.trim()}
+      popWordOnAutoAdvance
     >
       {({ openBreakdown }) => (
         <QuizTypingCard
