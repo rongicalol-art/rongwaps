@@ -244,7 +244,7 @@ export function FeedbackBottomBar({
 
 
               {(showSkipAction || showContinueAction || showCheckAction || showRetryAction) && (
-                <div className={cn('flex w-full items-center gap-3', isChecked && layout !== 'stacked' && (secondaryAction ? 'lg:w-auto lg:min-w-[22rem] lg:shrink-0' : 'lg:w-72 lg:shrink-0'))}>
+                <div className={cn('flex w-full items-center gap-3', isChecked && layout !== 'stacked' && (secondaryAction ? 'lg:w-auto lg:min-w-96 lg:shrink-0' : 'lg:w-72 lg:shrink-0'))}>
                 {isChecked && secondaryAction && (
                   <ActionButton
                     onClick={secondaryAction.onPress}
@@ -277,11 +277,11 @@ export function FeedbackBottomBar({
                     fullWidth
                     loading={continueLoading}
                     loadingLabel="Playing audio"
-                    className="uppercase tracking-wider text-base font-black btn-touch-primary md:text-[17px]"
+                    className="@container/shortcut uppercase tracking-wider text-base font-black btn-touch-primary md:text-[17px]"
                   >
                     <span className="relative">
                       {isCorrect ? 'Continue' : 'Got it'}
-                      <KeyChip className="border-ui-on-solid/40 text-ui-on-solid/80">Space</KeyChip>
+                      <KeyChip className="@max-[11.25rem]/shortcut:hidden! border-ui-on-solid/40 text-ui-on-solid/80">Space</KeyChip>
                     </span>
                   </ActionButton>
                 ) : showCheckAction ? (

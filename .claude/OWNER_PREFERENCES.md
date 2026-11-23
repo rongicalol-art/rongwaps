@@ -32,7 +32,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 
 **Plain over decorated.**
 - Pinyin in feedback and lists is plain ink, no tone colours there.
-- Small square badges are liked; the 1/2/3 badges on answer choices are the model. Key hints ("Space") look like them, hang just after the button label, and the label stays centred.
+- Small square badges are liked; the 1/2/3 badges on answer choices are the model. Key hints ("Space") look like them, hang just after the button label, and the label stays centred. Hide the hint when it would crowd the button edge.
 - Pills and chips are squarish. Fully rounded pills look bad to the owner. Part-of-speech badges are neutral. Favourite is a gold star with no circle behind it.
 
 **Colour has a job.**
