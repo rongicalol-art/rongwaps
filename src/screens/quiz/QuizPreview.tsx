@@ -106,7 +106,9 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
         seconds={previewKey === 'end-perfect' ? 108 : 952}
         onContinue={noop}
         onReviewMissed={previewKey === 'end-missed' ? noop : undefined}
-        onStudyAllAgain={noop}
+        nextStep={previewKey === 'end-perfect'
+          ? { icon: 'dialogue', title: 'Read the dialogue', line: 'See these words in use', onSelect: noop }
+          : { icon: 'tonesPractice', title: 'Practice tones', line: 'Hear a word, draw its tones', onSelect: noop }}
       />
     );
   }

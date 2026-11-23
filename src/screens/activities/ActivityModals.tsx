@@ -12,7 +12,7 @@ import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
-import { PracticeDockSlotProvider, StreakMoment, type SessionStats } from '../../features/practice';
+import { PracticeDockSlotProvider, SessionNextStepProvider, StreakMoment, type SessionStats } from '../../features/practice';
 import { localDay, streakMomentDue } from '../../utils/srs/profileStats';
 import { studyTimes } from '../../utils/srs/reviewEvents';
 import { ActivityScreens } from './components/ActivityScreens';
@@ -20,6 +20,7 @@ import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
 import { usePracticeDataReady } from './hooks/usePracticeDataReady';
 import { useStudyMaterials } from './hooks/useStudyMaterials';
+import { useLessonNextStep, type ReadingTarget } from './hooks/useLessonNextStep';
 import type { Flashcard } from '../../data/flashcards';
 
 interface ActivityModalsProps {
@@ -36,6 +37,8 @@ interface ActivityModalsProps {
   isShellOverlayOpen: boolean;
   onOpenGrammarPart?: (partId: string | string[], pageId?: string) => void;
   onOpenLessonReadings?: (lessonIds: number[]) => void;
+  /** Opens one lesson part's reading (the end screen's "Read the dialogue"). */
+  onOpenReadingPart?: (target: ReadingTarget) => void;
   /** False when the lazy-load fallback window was already on screen, so the modal skips its own fade. */
   animateIn?: boolean;
 }
@@ -51,6 +54,7 @@ export function ActivityModals({
   isShellOverlayOpen,
   onOpenGrammarPart,
   onOpenLessonReadings,
+  onOpenReadingPart,
   animateIn = true,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
@@ -187,6 +191,7 @@ export function ActivityModals({
   const {
     onPartContinue,
     partContinueLabel,
+    selectedStudyPartIds,
   } = useActivityStudyParts({
     activeBookId,
     selectedLessons,
@@ -194,6 +199,20 @@ export function ActivityModals({
     isReviewMode: isReviewSession,
     activeActivity,
     onOpenGrammarPart,
+  });
+
+  // After a lesson quiz the end screen offers one fitting next step: the unread dialogue, or a practice mode.
+  const nextStep = useLessonNextStep({
+    enabled: isLessonPartFocused && !race && Boolean(activeActivity),
+    bookId: activeBookId,
+    lessonId: selectedLessons[0] ?? null,
+    partIds: selectedStudyPartIds,
+    cards: deckCards,
+    onPractice: setActiveActivity,
+    onRead: useMemo(() => onOpenReadingPart && ((target: ReadingTarget) => {
+      setActiveActivity(null);
+      onOpenReadingPart(target);
+    }), [onOpenReadingPart, setActiveActivity]),
   });
 
   const activityLabel = activeActivity === 'create-card'
@@ -256,6 +275,7 @@ export function ActivityModals({
                 data-dock-bottom={reservesDock ? '' : undefined}
                 className={cn('relative flex flex-1 flex-col overflow-hidden', hadLoader.current && 'animate-in fade-in duration-200', insetClassName)}
               >
+              <SessionNextStepProvider value={nextStep}>
               <PracticeDockSlotProvider isVertical={dockLayout.isVertical} laneRef={reservesDock ? bodyRef : undefined}>
                 <ActivityPracticeHeader
                   resolvedActivity={resolvedActivity}
@@ -324,6 +344,7 @@ export function ActivityModals({
                   )}
                 </AnimatePresence>
               </PracticeDockSlotProvider>
+              </SessionNextStepProvider>
               </div>
             )}
 
