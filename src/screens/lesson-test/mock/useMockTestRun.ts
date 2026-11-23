@@ -80,7 +80,11 @@ export function useMockTestRun(data: MockTestPool, initial: MockTestAttempt) {
     save({ ...attempt, answers });
   }, [attempt, save]);
 
+  /** A test ends once: the clock, the answer bar and a tap can all ask for it at the same moment. */
+  const ended = useRef(false);
   const finish = useCallback((run: MockTestAttempt) => {
+    if (ended.current) return;
+    ended.current = true;
     const result = scoreMockTest(data.pool, run.config, run.plan, run.answers, run.startAbility);
     useAppStore.getState().recordMockTest({ config: run.config, plan: run.plan, answers: run.answers, result });
     setAttempt(run);
