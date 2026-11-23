@@ -128,5 +128,19 @@
   {"word": "結帳", "pinyin": "jiézhàng", "english": "to settle the bill; to check out", "taught": "B4L03", "from": "b3l13", "natural": "大家連房客是誰都查不出來，更別說幫他們結帳了。", "used": "大家連房客是誰都查不出來，更別說算出他們該付多少錢了。"},
   {"word": "進入", "pinyin": "jìnrù", "english": "to enter", "taught": "B4L15", "from": "b3l13", "natural": "兩點十五分以後不能進入。", "used": "兩點十五分以後就不能再進會議室了。"},
   {"word": "更新", "pinyin": "gēngxīn", "english": "to update (a system)", "taught": null, "from": "b3l13", "natural": "公司的雲端系統要更新，從星期五晚上十點到星期一早上八點暫停服務。", "used": "公司要把雲端系統換成新的，從星期五晚上十點到星期一早上八點，系統暫時不能使用。"},
-  {"word": "下廚", "pinyin": "xiàchú", "english": "to cook", "taught": null, "from": "b3l13", "natural": "見面的時候卻說他從來不下廚。", "used": "見面的時候卻說他從來沒做過菜。"}
+  {"word": "下廚", "pinyin": "xiàchú", "english": "to cook", "taught": null, "from": "b3l13", "natural": "見面的時候卻說他從來不下廚。", "used": "見面的時候卻說他從來沒做過菜。"},
+  {"word": "倍", "pinyin": "bèi", "english": "times (twice as much)", "taught": null, "from": "b3l16", "natural": "這幾天青菜的價錢比平常貴了一倍。", "used": "這幾天青菜比平常貴了很多。"},
+  {"word": "根", "pinyin": "gēn", "english": "measure word for ears of corn", "taught": null, "from": "b3l16", "natural": "至少帶幾根玉米吧。", "used": "玉米至少帶一半吧。"},
+  {"word": "夾菜", "pinyin": "jiā cài", "english": "to serve oneself food (with chopsticks or tongs)", "taught": null, "from": "b3l16", "natural": "現在不再一人一份，要自己夾菜。", "used": "現在不再一人一份，要自己拿菜。"},
+  {"word": "菜價", "pinyin": "càijià", "english": "vegetable prices", "taught": null, "from": "b3l16", "natural": "接下來關心最近的菜價。", "used": "接下來關心最近蔬菜的價格。"},
+  {"word": "專家", "pinyin": "zhuānjiā", "english": "expert", "taught": "B4L12", "from": "b3l16", "natural": "農業專家表示，菜價下週會逐漸回穩。", "used": "農業研究人員表示，……青菜下個星期就會慢慢變便宜。"},
+  {"word": "回穩", "pinyin": "huíwěn", "english": "to stabilise again (prices)", "taught": null, "from": "b3l16", "natural": "菜價預計下週逐漸回穩。", "used": "農業研究人員表示，……青菜下個星期就會慢慢變便宜。"},
+  {"word": "總比", "pinyin": "zǒng bǐ", "english": "anyway better than", "taught": null, "from": "b3l16", "natural": "覺得送人總比丟了好", "used": "沒有特別好，只是比丟掉好一點"},
+  {"word": "師傅", "pinyin": "shīfu", "english": "repair technician", "taught": null, "from": "b3l16", "natural": "房東說明天下午有師傅要來修。", "used": "房東說明天下午四點會有人來修。"},
+  {"word": "退換", "pinyin": "tuìhuàn", "english": "return or exchange", "taught": null, "from": "b3l16", "natural": "特價商品恕不退換", "used": "打折的商品，買了以後不能換"},
+  {"word": "丟臉", "pinyin": "diūliǎn", "english": "embarrassing, losing face", "taught": "B4L09", "from": "b3l16", "natural": "很多人把在餐廳打包當作一件很丟臉的事", "used": "很多人把在餐廳打包當作一件讓人不好意思的事"},
+  {"word": "看好", "pinyin": "kànhǎo", "english": "to be optimistic about", "taught": null, "from": "b3l16", "natural": "儘管經理不太看好，還是讓他們試了一個月。", "used": "儘管經理對這個想法沒有信心，還是讓他們試了一個月。"},
+  {"word": "拆封", "pinyin": "chāifēng", "english": "to unseal", "taught": null, "from": "b3l16", "natural": "現在只收沒拆封的東西", "used": "現在只收沒打開過的東西"},
+  {"word": "志工", "pinyin": "zhìgōng", "english": "volunteer", "taught": null, "from": "b3l16", "natural": "最近星期六去的志工太多了", "used": "最近星期六去幫忙的人太多了"},
+  {"word": "農田", "pinyin": "nóngtián", "english": "farmland", "taught": null, "from": "b3l16", "natural": "南部很多農田都淹水了", "used": "南部很多種菜的田都淹水了"}
 ]
