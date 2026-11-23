@@ -1,7 +1,7 @@
 /**
  * Challenge links ("race my run"): a learner shares a finished lesson quiz, and a classmate plays the same words
  * and quiz types against a replay of the sender's first pass. Shared by the app, the server (link previews) and
- * the build (preview pages). The database (20261123120000_challenges) keeps the same code and size rules.
+ * the build (preview pages). The database (20261123130000_challenges) keeps the same code and size rules.
  */
 import { parseSelection, socialColor, type RaceSelection, type SocialColor } from './quizRace';
 import { isNameAllowed } from './nameFilter';

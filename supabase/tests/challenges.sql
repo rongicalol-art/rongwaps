@@ -1,4 +1,4 @@
--- Run after 20261123120000. All synthetic fixtures roll back.
+-- Run after 20261123130000. All synthetic fixtures roll back.
 -- supabase db query --file supabase/tests/challenges.sql   (local or staging)
 begin;
 

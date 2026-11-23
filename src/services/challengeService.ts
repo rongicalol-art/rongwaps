@@ -3,7 +3,7 @@ import { parseChallengeLink, type ChallengeLink } from '../../shared/challenge';
 import type { RaceSelection } from '../../shared/quizRace';
 import type { Json } from '../types/database';
 
-/** Challenge links (supabase/migrations/20261123120000_challenges.sql). */
+/** Challenge links (supabase/migrations/20261123130000_challenges.sql). */
 
 /** Stores a finished run under `code`; the link is already on its way, so this only reports failure. */
 export async function saveChallenge(code: string, selection: RaceSelection, correct: number, total: number, run: number[]): Promise<void> {
