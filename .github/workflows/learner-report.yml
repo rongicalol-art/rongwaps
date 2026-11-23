@@ -30,6 +30,7 @@ jobs:
           sparse-checkout: |
             scripts/release
             public/data/vocabulary
+            public/data/lesson-tests
       - name: Build the learner report (read-only)
         env:
           DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
@@ -37,7 +38,14 @@ jobs:
           mkdir -p learner-report
           psql "$DATABASE_URL" --no-psqlrc -q -v ON_ERROR_STOP=1 -At -c 'begin transaction read only' \
             -f scripts/release/learner-report.sql -c 'commit' > learner-report/report.json
-          node scripts/release/learnerReport.mjs learner-report/report.json > learner-report/learner-report.md
+          # Test question counts: only once the 20261124120000 migration is on this database (until then the
+          # report says there is no data yet); any other failure fails the job. Kept out of the artifact.
+          questions="$RUNNER_TEMP/test-questions.json"
+          if [ "$(psql "$DATABASE_URL" --no-psqlrc -q -At -c "select to_regclass('private.lesson_test_question_stats') is not null")" = t ]; then
+            psql "$DATABASE_URL" --no-psqlrc -q -v ON_ERROR_STOP=1 -At -c 'begin transaction read only' \
+              -f scripts/release/test-questions.sql -c 'commit' > "$questions"
+          fi
+          node scripts/release/learnerReport.mjs learner-report/report.json "$questions" > learner-report/learner-report.md
           cat learner-report/learner-report.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         with:

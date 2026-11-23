@@ -122,7 +122,7 @@ export function PrivacyPolicyContent() {
             'to prevent abuse and keep the service secure (for example, usage limits per account);',
             'to keep Study together safe: blocks, reports, daily limits and, when needed, closing an account;',
             'to answer your messages and fix problems;',
-            'to improve the lessons using anonymous, combined statistics only, such as which words most learners find hard. These statistics never identify you and are never used to build a profile of you.',
+            'to improve the lessons using anonymous, combined statistics only, such as which words most learners find hard or which test questions most learners miss (your first finished run of each lesson test adds its answers to combined counts, without your account). These statistics never identify you and are never used to build a profile of you.',
           ]}
         />
         <LegalParagraph>

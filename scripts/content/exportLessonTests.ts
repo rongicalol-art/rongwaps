@@ -14,6 +14,7 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { LessonTestLesson, LessonTestPack, LessonTestSounds } from '../../src/types/lessonTest';
 import type { SentenceAudio } from '../../src/types/grammarPractice';
+import { lessonTestEdition } from './lessonTestEdition';
 
 const ROOT = process.cwd();
 const CONTENT = resolve(ROOT, 'content/lesson-tests');
@@ -66,6 +67,7 @@ async function main() {
     for (const file of files) {
       const lesson = JSON.parse(await readFile(resolve(CONTENT, folder, file), 'utf8')) as LessonTestLesson;
       if (lesson.bookId !== bookId) throw new Error(`${folder}/${file}: bookId ${lesson.bookId} is not ${bookId}`);
+      for (const slot of lesson.slots) for (const version of slot.versions) version.edition = lessonTestEdition(version);
       attachAudio(lesson.slots, receipt, receipt?.lessonVoices?.[lesson.key] ?? receipt?.voices, missing);
       lessons.push(lesson);
     }
