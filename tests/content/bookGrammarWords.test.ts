@@ -99,13 +99,21 @@ for (const book of BOOKS) {
     const problems: string[] = [];
     for (const page of pages(book)) {
       for (const example of page.examples) {
-        for (const word of example.text.words ?? []) {
+        const words = example.text.words ?? [];
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
           const readings = cards.get(word.traditional);
           if (!readings) continue;
           const got = syllables(word.pinyin, word.traditional).map(key);
           if (HOMOGRAPHS.get(word.traditional)?.includes(got.join(' '))) continue;
           const particle = PARTICLES.has(word.traditional) && got[0]?.endsWith('5');
-          if (!particle && !readings.some((reading) => reading.join() === got.join())) {
+          // A word ending in 不 takes 2nd-tone sandhi (bú) before a 4th-tone next word (e.g. 不能不去 bùnéngbú qù).
+          const next = words.slice(i + 1).find((candidate) => hanOf(candidate.traditional));
+          const nextStartsTone4 = next ? syllables(next.pinyin, next.traditional)[0] && key(syllables(next.pinyin, next.traditional)[0]).endsWith('4') : false;
+          const citation = word.traditional.endsWith('不') && got.at(-1) === 'bu2' && nextStartsTone4
+            ? [...got.slice(0, -1), 'bu4']
+            : got;
+          if (!particle && !readings.some((reading) => reading.join() === got.join() || reading.join() === citation.join())) {
             problems.push(`${example.id}: ${word.traditional} = ${word.pinyin}`);
           }
         }
