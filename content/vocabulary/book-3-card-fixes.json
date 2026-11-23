@@ -29,6 +29,30 @@
       "field": "pos",
       "value": "M",
       "reason": "book 12-1 entry 20 (p.311, scan page_295) prints 組 as M (第一組, 第二組)."
+    },
+    {
+      "id": "B3L13-1-08",
+      "field": "pos",
+      "value": "Vs/Adv",
+      "reason": "book 13-1 entry 8 (p.335, scan page_319) prints 自動 as Vs/Adv, 'automatic, automatically'."
+    },
+    {
+      "id": "B3L13-1-08",
+      "field": "meaning",
+      "value": "automatic, automatically",
+      "reason": "book 13-1 entry 8 (p.335): the adverb sense (會自動打開) is taught with it."
+    },
+    {
+      "id": "B3L14-1-36",
+      "field": "pinyin",
+      "value": "Qīxì",
+      "reason": "book 14-1 Names 1 (p.359, scan page_343) prints Qīxì (Taiwan reading)."
+    },
+    {
+      "id": "B3L15-1-30",
+      "field": "pinyin",
+      "value": "mǎtou",
+      "reason": "book 15-1 entry 30 (p.382, scan page_366) prints mǎtou, neutral tone on tou."
     }
   ],
   "newCards": [

@@ -1260,8 +1260,8 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     examples: [
       { tokens: [["他們","tāmen","they"], ["為什麼","wèishénme","why"], ["吵架","chǎojià","to argue"], "？", ["這","zhè","this",1], ["就要從","jiù yào cóng","must start from",1], ["去年","qùnián","last year"], ["說","shuō","to say",1], ["起了","qǐ le","from the start",1], "。"],
         pinyin: "Tāmen wèishénme chǎojià? Zhè jiù yào cóng qùnián shuō qǐ le.", english: "Why are they fighting? For that, we have to go back to last year." },
-      { tokens: [["七夕","Qīxī","Qixi Festival"], ["的","de","possessive particle"], ["故事","gùshì","story"], "，", ["就要從","jiù yào cóng","must start from",1], ["牛郎","Niúláng","Cowherd"], ["和","hé","and"], ["織女","Zhīnǚ","Weaving Maid"], ["說","shuō","to say",1], ["起了","qǐ le","from the start",1], "。"],
-        pinyin: "Qīxī de gùshì, jiù yào cóng Niúláng hé Zhīnǚ shuō qǐ le.", english: "The Qixi story has to start with the Cowherd and the Weaver Girl." },
+      { tokens: [["七夕","Qīxì","Qixi Festival"], ["的","de","possessive particle"], ["故事","gùshì","story"], "，", ["就要從","jiù yào cóng","must start from",1], ["牛郎","Niúláng","Cowherd"], ["和","hé","and"], ["織女","Zhīnǚ","Weaving Maid"], ["說","shuō","to say",1], ["起了","qǐ le","from the start",1], "。"],
+        pinyin: "Qīxì de gùshì, jiù yào cóng Niúláng hé Zhīnǚ shuō qǐ le.", english: "The Qixi story has to start with the Cowherd and the Weaver Girl." },
     ],
     exercise: { tokens: [["這","zhè","this",1], ["就要從","jiù yào cóng","must start from",1], ["我","wǒ","I"], ["小時候","xiǎoshíhòu","as a kid"], ["說","shuō","to say",1], ["起了","qǐ le","from the start",1], "。"],
       pinyin: "Zhè jiù yào cóng wǒ xiǎoshíhòu shuō qǐ le.", english: "For that, I have to start from my childhood." },
