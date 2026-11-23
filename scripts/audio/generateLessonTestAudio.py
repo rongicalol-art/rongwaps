@@ -77,7 +77,7 @@ YATING_PACE = {
     # Book 3 L6–16 take Book 2's cast (YATING_CAST_FROM) and its speeds: L6–9 (TOCFL Level 3) at Book 2 L1–8's
     # ≈ 4.6 characters a second, L10–16 (Level 4) at Book 2 L9–16's ≈ 5.0. The official Band B mock's longer
     # dialogues and talks measure ≈ 4.5–4.7 with its slower narrator mixed in (2026-11-23).
-    (3, 9): ({"F": 1.05, "M": 1.0, "N": 1.2}, False),
+    (3, 9): ({"F": 0.96, "M": 0.92, "N": 1.2}, False),  # One step under L10–16: the first pilot's speed.
     # L10–16 about 10% quicker than Book 2 L9–16, narrator included (owner by ear, 2026-11-23: "TOCFL sounds faster").
     (3, 16): ({"F": 0.87, "M": 0.83, "N": 1.1}, False),
 }
@@ -119,7 +119,7 @@ YATING_SPEED_STEPS = (0.0, -0.05, 0.05, 0.1)
 # A faster test's dialogue gets a higher "too fast" cap than MAX_PACE: Book 2 aims at ≈ 4.6 (L1–8) and ≈ 5.0 (L9–16)
 # characters a second, so short lines run past 4.5. {(book, last lesson): characters a second}; the narrator keeps
 # MAX_PACE["N"].
-YATING_MAX_PACE = {(2, 8): 5.2, (2, 16): 5.6, (3, 9): 5.2, (3, 16): 6.2}
+YATING_MAX_PACE = {(2, 8): 5.2, (2, 16): 5.6, (3, 9): 5.6, (3, 16): 6.2}
 # The narrator's "too fast" cap where a band speeds the narrator up too. {(book, last lesson): characters a second}
 YATING_MAX_PACE_N = {(3, 16): 4.7}
 YATING_TAKES = [(take, "y") for take in range(len(YATING_SPEED_STEPS))]
