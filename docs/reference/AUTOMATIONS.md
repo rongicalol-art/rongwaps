@@ -38,8 +38,8 @@ The lead gives a helper a brief with the files, the goal and what to check, then
 | Every 6 hours | Error watch |
 | 03:00 Mon-Sat | Nightly fixer, focus by day (below) |
 | 03:00 Sun | Weekly deep audit |
-| 09:30 (GitHub) | Health check and the learner report (`.github/workflows/health.yml`) |
-| 10:00 | Morning thread |
+| 09:30 (GitHub) | Health check (`.github/workflows/health.yml`); GitHub starts it 6-8 hours late, around 16:30 |
+| 10:00 | Morning thread; it starts a fresh learner report first (`.github/workflows/learner-report.yml`) |
 
 ### Error watch
 
@@ -67,7 +67,10 @@ The lead (Opus, high effort) audits bugs, speed, security and accessibility, one
 
 One new thread a day. It reads:
 
-- the newest `learner-report` artifact: `gh run list --workflow health.yml --limit 1 --json databaseId`, then `gh run download <id> -n learner-report -D output/automations/learner-report-<date>`
+- this morning's learner report. GitHub starts scheduled runs hours late, so make a fresh one:
+  1. `gh workflow run learner-report.yml`, typed exactly like that (the guard lets only that exact command through without asking). It prints the run's link; the number at the end is its id.
+  2. `gh run watch <id> --exit-status` (takes about a minute), then `gh run download <id> -n learner-report -D output/automations/learner-report-<date>`.
+  3. If the run fails, use the newest successful one (`gh run list --workflow learner-report.yml --status success --limit 1 --json databaseId,createdAt`) and say how old it is.
 - `output/automations/` notes since yesterday
 - open PRs and their checks (`gh pr list`), the open "Health check" issue, the error watch thread
 
@@ -84,7 +87,7 @@ The owner replies "do 1 and 3": the lead opens one task thread per pick, intervi
 
 ## Learner report
 
-`scripts/release/learner-report.sql` (read-only, inside a read-only transaction) → `scripts/release/learnerReport.mjs` → the `learner-report` artifact and the Health run's summary, every day at 09:30 Taiwan. It counts active learners (answered at least one card) by day, week and month; new accounts; who came back; study minutes and where (daily review, quizzes, flashcards…); busiest and quietest hours, so releases go out in the quietest hours; the most studied lessons; the hardest words; and Study together and friends activity.
+`scripts/release/learner-report.sql` (read-only, inside a read-only transaction) → `scripts/release/learnerReport.mjs` → the `learner-report` artifact and the run's summary (`.github/workflows/learner-report.yml`), made fresh by the morning thread at 10:00 Taiwan, with a daily schedule as a fallback. The run is read-only and posts nothing, so extra runs are harmless. It counts active learners (answered at least one card) by day, week and month; new accounts; who came back; study minutes and where (daily review, quizzes, flashcards…); busiest and quietest hours, so releases go out in the quietest hours; the most studied lessons; the hardest words; and Study together and friends activity.
 
 The privacy policy allows "anonymous, combined statistics only", so the report never shows an account id, name or email. A lesson, word or group row appears only once 3 or more learners are in it, so no row can point at one person. "Online" for the whole app isn't recorded; "seen in Study together" is the closest number.
 

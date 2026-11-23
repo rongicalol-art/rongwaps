@@ -46,6 +46,10 @@ const SECRET_FILE = /(?:^|[\s/=<])(?:\.env(?!\.example\b)(?:\.[\w.*-]+|\*)?|\.ba
 // At the start of a command (or a subshell), so the words inside a commit message or PR title never match.
 const PRINTS = /(?:^|[(`]\s*|\bsudo\s+|\bxargs\s+(?:-\S+\s+)*)(?:cat|head|tail|less|more|bat|nl|tac|grep|egrep|rg|sed|awk|cut|strings|xxd|od|hexdump|base64|sort|diff|jq)\s/;
 
+// The one workflow an unattended run may start: the read-only learner report the morning thread reads.
+// Exactly this command, no inputs or other ref, so it can't stand in for another workflow.
+const READ_ONLY_RUN = /^gh\s+workflow\s+run\s+learner-report\.yml$/;
+
 const DENY = [
   [(s) => PRINTS.test(s) && SECRET_FILE.test(s), 'Printing a secrets file is blocked. Keys stay out of the conversation; the owner handles them.'],
   [(s) => isPush(s) && /(?:\s|:|refs\/heads\/)(?:main|production)(?=\s|$)/.test(s), 'Pushing to main or production is blocked. Push a feature branch and open a PR.'],
@@ -62,7 +66,7 @@ const ASK = [
   [(s) => /\bgh\s+pr\s+merge\b/.test(s), 'Merging a PR changes staging or the live site. Owner approval needed.'],
   [(s) => /\bgh\s+repo\s+edit\b/.test(s), 'Repository settings change. Owner approval needed.'],
   [(s) => /\bgh\s+(?:secret|variable)\s+(?:set|delete|remove)\b/.test(s), 'GitHub secret/variable change. Owner approval needed.'],
-  [(s) => /\bgh\s+workflow\s+(?:run|enable|disable)\b/.test(s), 'Running or toggling a workflow (release, rollback, backup). Owner approval needed.'],
+  [(s) => /\bgh\s+workflow\s+(?:run|enable|disable)\b/.test(s) && !READ_ONLY_RUN.test(s), 'Running or toggling a workflow (release, rollback, backup). Owner approval needed.'],
   [(s) => (/\bgh\s+api\b/.test(s) || /\bapi\.github\.com\b/.test(s)) && mutates(s) && !prConversation(s) && !(/\bgraphql\b/.test(s) && !/\bmutation\b/.test(s)), 'GitHub API change (merges, settings). Owner approval needed.'],
   [(s) => /\bsupabase\s+db\s+push\b/.test(s) && !/\s--dry-run(?:\s|$)/.test(s), 'Applying migrations to a hosted database. Owner approval needed.'],
   [(s) => /\bsupabase\s+(?:link\b|db\s+(?:reset|dump)\b[^]*--linked|migration\s+repair\b[^]*--linked)/.test(s), 'Linked (production) database command. Owner approval needed.'],
