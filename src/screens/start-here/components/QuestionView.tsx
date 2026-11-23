@@ -124,9 +124,9 @@ export function QuestionView({
                 disabled={answered}
                 onClick={() => selectChoice(choice, idx)}
                 className={cn(
-                  'flex min-h-[60px] w-full items-center gap-2 rounded-control border-2 border-b-[length:var(--depth-xl)] px-2 sm:gap-3 sm:px-4 py-3 text-left transition-[transform,border-color,background-color,opacity] duration-100 focus-ring',
+                  'flex min-h-[60px] w-full items-center gap-2 rounded-control border-2 tactile [--tactile-depth:var(--depth-xl)] px-2 sm:gap-3 sm:px-4 py-3 text-left transition-[transform,border-color,background-color,opacity] duration-100 focus-ring',
                   question.isPinyinChoices ? 'text-2xl font-black' : 'text-lg font-extrabold',
-                  !answered && 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover active:mb-1 active:translate-y-1 active:border-b-2',
+                  !answered && 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover',
                   showRight && 'sh-pop border-feedback-success bg-feedback-success-surface text-feedback-success-text',
                   showWrong && 'sh-shake border-feedback-danger bg-feedback-danger-surface text-feedback-danger-text',
                   dimOther && 'border-ui-divider bg-ui-surface text-ui-muted-strong opacity-55',

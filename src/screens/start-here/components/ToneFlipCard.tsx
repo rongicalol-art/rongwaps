@@ -143,7 +143,7 @@ export function ToneFlipCard({ kind, need, onPlayAudio, onComplete }: ToneFlipCa
               type="button"
               onClick={() => handleSelect(opt)}
               className={cn(
-                'flex cursor-pointer flex-col items-center rounded-compact border-2 border-b-[length:var(--depth-lg)] px-1 pb-2 pt-1.5 transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                'flex cursor-pointer flex-col items-center rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] px-1 pb-2 pt-1.5 transition-[transform,border-color,background-color] duration-100 focus-ring',
                 isOn
                   ? 'border-brand-primary bg-brand-primary-soft'
                   : triedIds.has(opt.id)

@@ -139,8 +139,8 @@ export function SortActivity({
             disabled={isDone}
             onClick={() => handleBinTap(idx)}
             className={cn(
-              'flex min-h-[144px] flex-col items-center gap-2.5 rounded-[20px] border-2 border-b-[length:var(--depth-xl)] bg-ui-surface px-2.5 py-3 transition-[transform,border-color,background-color] duration-100 focus-ring',
-              !isDone && 'cursor-pointer hover:bg-ui-hover active:mb-1 active:translate-y-1 active:border-b-2',
+              'flex min-h-[144px] flex-col items-center gap-2.5 rounded-[20px] border-2 tactile [--tactile-depth:var(--depth-xl)] bg-ui-surface px-2.5 py-3 transition-[transform,border-color,background-color] duration-100 focus-ring',
+              !isDone && 'cursor-pointer hover:bg-ui-hover',
               isDone && 'cursor-default border-ui-divider',
               nopeBin === idx ? 'sh-shake border-feedback-danger' : 'border-ui-border',
             )}

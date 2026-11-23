@@ -410,6 +410,40 @@ body {
 [data-reveal='true'] .rw-rise-3 { transition-delay: 250ms; }
 @media (prefers-reduced-motion: reduce) { [data-reveal] .rw-rise { transition-duration: 1ms; transition-delay: 0ms; } }
 
+/* A pressable tile or chip that isn't an ActionButton. Its bottom edge is drawn by ::after in the tile's own
+   outline colour (so selected / right / wrong states need nothing extra), and a press moves only paint: the face
+   slides down onto the edge while the edge folds away. The box never changes size, so nothing around it moves.
+   Never make a press by changing border width, margin, padding or height (tests/acceptance forbids it).
+   Use with a 2px border (border-2); --tactile-depth sets the edge height (default --depth-md). */
+@utility tactile {
+  position: relative;
+  isolation: isolate;
+  margin-bottom: var(--tactile-depth, var(--depth-md));
+  transition-property: transform, background-color, border-color, color, opacity;
+  transition-duration: 100ms;
+  /* A full outline of the same shape behind the tile, reaching the edge depth lower: only the band below the tile
+     shows, so there is no seam between the tile's outline and its edge. */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px -2px calc(-2px - var(--tactile-depth, var(--depth-md))) -2px;
+    z-index: -1;
+    border: 2px solid;
+    border-bottom-width: calc(2px + var(--tactile-depth, var(--depth-md)));
+    border-color: inherit;
+    border-radius: inherit;
+    pointer-events: none;
+    transition: border-bottom-width 100ms, bottom 100ms;
+  }
+  &:active:not(:disabled) {
+    transform: translateY(var(--tactile-depth, var(--depth-md)));
+  }
+  &:active:not(:disabled)::after {
+    border-bottom-width: 2px;
+    bottom: -2px;
+  }
+}
+
 /* Side rails in two-column screens stick just below the sticky header, never behind it. */
 @utility sticky-rail {
   position: sticky;

@@ -66,7 +66,7 @@ export function TeacherHeader(props: NarrationProps | { prompt: string }) {
                       e.stopPropagation();
                       narration?.onPlayClip(seg.key, seg.isMouth, seg.isMouth ? (seg.key as MouthSoundId) : undefined);
                     }}
-                    className="mx-0.5 inline-flex h-[28px] cursor-pointer items-center gap-1 rounded-[9px] border-2 border-b-4 border-brand-primary-soft-edge bg-brand-primary-soft px-2 align-[2px] text-base font-black leading-none text-brand-primary-deep transition-transform duration-75 active:translate-y-[2px] active:border-b-2 focus-ring"
+                    className="mx-0.5 inline-flex h-[28px] cursor-pointer items-center gap-1 rounded-[9px] border-2 tactile border-brand-primary-soft-edge bg-brand-primary-soft px-2 align-[2px] text-base font-black leading-none text-brand-primary-deep transition-transform duration-75 focus-ring"
                   >
                     <SpeakerIcon className="size-4 shrink-0" />
                     <span>{seg.label}</span>

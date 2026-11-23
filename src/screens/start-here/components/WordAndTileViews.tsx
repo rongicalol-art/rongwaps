@@ -107,7 +107,7 @@ export function TilesView({ items, onPlayAudio }: TilesViewProps) {
               window.setTimeout(() => setPlayingIdx((cur) => (cur === idx ? null : cur)), 750);
             }}
             className={cn(
-              'flex cursor-pointer flex-col items-center gap-1 rounded-control border-2 border-b-[length:var(--depth-lg)] px-2 py-3 text-center transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+              'flex cursor-pointer flex-col items-center gap-1 rounded-control border-2 tactile [--tactile-depth:var(--depth-lg)] px-2 py-3 text-center transition-[transform,border-color,background-color] duration-100 focus-ring',
               active || wasHeard
                 ? 'border-brand-primary bg-brand-primary-soft'
                 : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
@@ -164,7 +164,7 @@ export function PairsView({ headers, rows, onPlayAudio }: PairsViewProps) {
                     onPlayAudio(cell.audio);
                   }}
                   className={cn(
-                    'flex min-h-[50px] cursor-pointer flex-col items-center justify-center rounded-compact border-2 border-b-[length:var(--depth-lg)] px-2 py-1 text-ui-ink-strong transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                    'flex min-h-[50px] cursor-pointer flex-col items-center justify-center rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] px-2 py-1 text-ui-ink-strong transition-[transform,border-color,background-color] duration-100 focus-ring',
                     hit ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
                   )}
                 >
@@ -202,7 +202,7 @@ export function SpellingView({ rows, onPlayAudio }: SpellingViewProps) {
               onPlayAudio(row.audio);
             }}
             className={cn(
-              'grid w-full cursor-pointer grid-cols-[48px_28px_1fr_auto] items-center gap-2 rounded-control border-2 border-b-[length:var(--depth-lg)] px-4 py-2 text-left transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+              'grid w-full cursor-pointer grid-cols-[48px_28px_1fr_auto] items-center gap-2 rounded-control border-2 tactile [--tactile-depth:var(--depth-lg)] px-4 py-2 text-left transition-[transform,border-color,background-color] duration-100 focus-ring',
               hit ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
             )}
           >

@@ -57,7 +57,7 @@ export function CharPartsView({ items, onPlayAudio }: CharPartsViewProps) {
                 type="button"
                 onClick={() => handleSelect(idx)}
                 className={cn(
-                  'flex min-w-[78px] cursor-pointer flex-col items-center rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3 py-2 transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                  'flex min-w-[78px] cursor-pointer flex-col items-center rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] px-3 py-2 transition-[transform,border-color,background-color] duration-100 focus-ring',
                   isSel
                     ? 'border-brand-primary bg-brand-primary-soft'
                     : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
@@ -267,10 +267,10 @@ export function SentenceBuildView({
               disabled={used || status === 'right'}
               onClick={() => addToken(token.id)}
               className={cn(
-                'flex flex-col items-center rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3.5 py-2 transition-[transform,opacity] duration-100 focus-ring',
+                'flex flex-col items-center rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] px-3.5 py-2 transition-[transform,opacity] duration-100 focus-ring',
                 used
                   ? 'cursor-default border-ui-divider bg-ui-divider/40 opacity-30'
-                  : 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2',
+                  : 'cursor-pointer border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover',
               )}
             >
               <span className="text-xs font-extrabold text-ui-muted-strong">{token.pinyin}</span>
@@ -383,7 +383,7 @@ export function VocabCardsView({ cardIds, caption, onPlayAudio, onAllHeard }: Vo
               type="button"
               onClick={() => tapCard(id)}
               className={cn(
-                'flex cursor-pointer items-center justify-between gap-3 rounded-control border-2 border-b-[length:var(--depth-lg)] px-4 py-3 text-left transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                'flex cursor-pointer items-center justify-between gap-3 rounded-control border-2 tactile [--tactile-depth:var(--depth-lg)] px-4 py-3 text-left transition-[transform,border-color,background-color] duration-100 focus-ring',
                 isPlaying || isHeard
                   ? 'border-brand-primary bg-brand-primary-soft'
                   : 'border-ui-border bg-ui-surface hover:bg-ui-hover',

@@ -44,8 +44,8 @@ function SlotBox({
       style={colorStyle}
       className={cn(
         'flex flex-col items-center gap-0.5 rounded-compact border-2 border-b-4 bg-ui-surface px-1 py-2 transition-[transform,border-color,background-color] duration-150 focus-ring',
-        !lit && (open ? 'border-ui-border border-b-[length:var(--depth-lg)]' : 'border-ui-divider'),
-        onClick && open && 'cursor-pointer active:mb-0.75 active:translate-y-0.75 active:border-b-2',
+        !lit && (open ? 'border-ui-border tactile [--tactile-depth:var(--depth-lg)]' : 'border-ui-divider'),
+        onClick && open && 'cursor-pointer',
         !onClick && 'cursor-default',
       )}
     >
@@ -317,7 +317,7 @@ export function BuildView({
                   onClick={() => pickIni(val)}
                   aria-label={val || 'No initial'}
                   className={cn(
-                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 border-b-[length:var(--depth-lg)] bg-ui-surface text-2xl font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] bg-ui-surface text-2xl font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover focus-ring',
                     wrongKey === key ? 'sh-shake border-feedback-danger' : 'border-ui-border',
                   )}
                 >
@@ -335,7 +335,7 @@ export function BuildView({
                   type="button"
                   onClick={() => pickFin(val)}
                   className={cn(
-                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 border-b-[length:var(--depth-lg)] bg-ui-surface text-2xl font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] bg-ui-surface text-2xl font-black text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover focus-ring',
                     wrongKey === key ? 'sh-shake border-feedback-danger' : 'border-ui-border',
                   )}
                 >
@@ -354,7 +354,7 @@ export function BuildView({
                   aria-label={`Tone ${t}`}
                   onClick={() => pickTone(t)}
                   className={cn(
-                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 border-b-[length:var(--depth-lg)] bg-ui-surface text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                    'flex min-h-14.5 flex-1 cursor-pointer items-center justify-center rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] bg-ui-surface text-ui-ink-strong transition-[transform,border-color] duration-100 hover:bg-ui-hover focus-ring',
                     wrongKey === key ? 'sh-shake border-feedback-danger' : 'border-ui-border',
                   )}
                 >

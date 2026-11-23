@@ -471,7 +471,7 @@ export function MouthLabView({
                     type="button"
                     onClick={() => handleChipClick(id)}
                     className={cn(
-                      'min-h-13 min-w-14.5 cursor-pointer rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3 text-2xl font-black transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                      'min-h-13 min-w-14.5 cursor-pointer rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] px-3 text-2xl font-black transition-[transform,border-color,background-color] duration-100 focus-ring',
                       isSelected
                         ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep'
                         : 'border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover',
@@ -544,7 +544,7 @@ export function MouthQuizView({ ask, options, onPlayAudio, onAnsweredCorrect }: 
                   type="button"
                   onClick={() => handlePick(opt, idx)}
                   className={cn(
-                    'flex min-h-[54px] w-full cursor-pointer items-center gap-3 rounded-compact border-2 border-b-[length:var(--depth-lg)] px-3 py-2 text-left text-lg font-extrabold transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                    'flex min-h-[54px] w-full cursor-pointer items-center gap-3 rounded-compact border-2 tactile [--tactile-depth:var(--depth-lg)] px-3 py-2 text-left text-lg font-extrabold transition-[transform,border-color,background-color] duration-100 focus-ring',
                     isRight
                       ? 'border-feedback-success bg-feedback-success-surface text-feedback-success-text'
                       : isWrong

@@ -44,7 +44,7 @@ export function CenterSpeaker({ onClick, label = 'Listen', active = false, class
       onClick={onClick}
       aria-label={label}
       className={cn(
-        'flex h-15 w-18 cursor-pointer items-center justify-center rounded-[18px] border-2 border-b-[length:var(--depth-lg)] transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+        'flex h-15 w-18 cursor-pointer items-center justify-center rounded-[18px] border-2 tactile [--tactile-depth:var(--depth-lg)] transition-[transform,border-color,background-color] duration-100 focus-ring',
         active
           ? 'border-brand-primary bg-brand-primary-soft text-brand-primary'
           : 'border-ui-border bg-ui-surface text-brand-primary hover:bg-ui-hover',

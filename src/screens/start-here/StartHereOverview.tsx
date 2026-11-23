@@ -147,7 +147,7 @@ export function StartHereOverview({
                   type="button"
                   onClick={() => onStartLesson(lesson.id)}
                   className={cn(
-                    'flex min-h-14.5 shrink-0 cursor-pointer items-center gap-3.5 rounded-control border-2 border-b-[length:var(--depth-lg)] px-3.5 py-2.5 text-left transition-[transform,border-color,background-color] duration-100 active:mb-0.75 active:translate-y-0.75 active:border-b-2 focus-ring',
+                    'flex min-h-14.5 shrink-0 cursor-pointer items-center gap-3.5 rounded-control border-2 tactile [--tactile-depth:var(--depth-lg)] px-3.5 py-2.5 text-left transition-[transform,border-color,background-color] duration-100 focus-ring',
                     isCurrent
                       ? 'border-brand-primary bg-brand-primary-soft'
                       : 'border-ui-border bg-ui-surface hover:bg-ui-hover',

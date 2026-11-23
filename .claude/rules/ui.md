@@ -16,7 +16,7 @@ How the look is built. The look itself (taste, motion, pictures) is `.claude/OWN
 - Colour only through tokens (`ui-*`, `brand-*`, `feedback-*`; text on fills: `brand-on-primary`, `ui-on-solid`, `ui-on-inverse`), because literals don't follow dark mode. A test rejects hex, `text-white` and `bg-white`; Tailwind palette classes (`bg-amber-500`) slip past it, so watch for them. A new token is defined in both the light and dark blocks of `src/index.css` (`docs/DESIGN_TOKENS.md` §5a).
 - Fonts: `font-sans` for UI, `font-chinese` for Chinese glyphs, so the learner's chosen font applies. No hardcoded families.
 - Use the spacing and radius scale. Arbitrary pixel values are for component geometry no token covers (card heights, tile sizes), not for colour, type or radius. Focus via `.focus-ring` / `.focus-ring-inline`.
-- Tactile depth is for primary and direct actions: a stationary base layer plus a moving front surface. Mutating `border-b` on active, or translating the whole container, makes neighbours jump. No tactile button inside a tactile container, no depth on plain page sections.
+- Tactile depth is for primary and direct actions: a stationary base layer plus a moving front surface. Mutating `border-b` on active, or translating the whole container, makes neighbours jump. No tactile button inside a tactile container, no depth on plain page sections. Buttons use `ActionButton`; any other pressable tile or chip uses the `tactile` utility (`src/index.css`), whose edge and press are paint only. A test fails on any press variant that changes border width, margin, padding or size.
 - Shared widgets own no fetching and no global state; feature components may use hooks and services.
 
 ## Motion

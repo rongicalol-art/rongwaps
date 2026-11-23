@@ -80,7 +80,7 @@ export function SearchFilterMenu({ levelOptions, bookOptions = [], lessonOptions
         aria-label={activeCount ? `Filter, ${activeCount} active` : 'Filter'}
         onClick={() => setIsOpen((open) => !open)}
         className={cn(
-          'flex items-center gap-1.5 rounded-control border-2 border-b-4 px-3 py-1.5 text-sm font-black transition-[transform,background-color,border-color] active:translate-y-0.5 active:border-b-2 focus-ring',
+          'flex items-center gap-1.5 rounded-control border-2 tactile px-3 py-1.5 text-sm font-black transition-[transform,background-color,border-color] focus-ring',
           activeCount > 0 || isOpen
             ? 'border-brand-primary border-b-brand-primary-edge bg-brand-primary-soft text-brand-primary-deep'
             : 'border-ui-divider bg-ui-surface text-ui-ink-strong',
