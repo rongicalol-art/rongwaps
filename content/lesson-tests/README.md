@@ -156,6 +156,26 @@ Questions move from facts to a speaker's intent or attitude and a text's main id
 | 10 | review passage, 180–290 characters | `reading` (`passage`), `review: true` | 2 | 2 |
 
 Review share: slots 4 and 10 (3 of 20, 15%), plus review blanks or questions elsewhere to stay inside 15–45%.
+Lesson 9 uses this plan too.
+
+**Book 3 Lessons 10–16 (Band B, TOCFL Level 4)**: 8 slots, 20 questions per run. Level 4 is harder by length
+and by groups, as the official Band B papers are: longer recordings and texts, three questions on one
+recording, and one long passage.
+
+| # | Slot | Kind | Questions | Versions | Length |
+| --- | --- | --- | --- | --- | --- |
+| 1–2 | two dialogues | `dialogue` | 1 each | 2–3 | 60–120 characters |
+| 3 | review dialogue | `dialogue`, `review: true` | 1 | 2–3 | 60–120 characters |
+| 4 | dialogue, three questions | `dialogue` with `intro` (請聽一段對話，然後回答三個問題。) | 3 | 2 | 150–180 characters, 6–10 turns |
+| 5 | talk, three questions | `dialogue` with `intro`, one voice | 3 | 2 | 160–200 characters: a broadcast, a talk, a voicemail |
+| 6 | cloze passage | `cloze` | 6 | 2 | 150–180 characters |
+| 7 | notice, message or timetable | `reading` (`notice`, `message` or `table`) | 2 | 2 | each question combines two lines or rows |
+| 8 | long passage | `reading` (`passage`) | 3 | 2 | 280–360 characters |
+
+Review share: slot 3 plus at least two review blanks or questions elsewhere (the cloze is the usual place), so
+every run stays inside 15–45%. In each three-question group, one question asks a detail, one a reason or
+condition, and one the speaker's or writer's intent, attitude or main idea.
+
 A later book's **Lesson 1 reviews the book before, Lessons 9–16**: its review questions set `"book"` (e.g. 2)
 with that book's `lesson`, and the results name them "Book 2 · Lesson 12".
 
