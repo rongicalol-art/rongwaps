@@ -178,10 +178,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "店家說買了以後就不能換",
-                  "simplified": "店家说买了以后就不能换",
-                  "pinyin": "Diànjiā shuō mǎi le yǐhòu jiù bù néng huàn.",
-                  "english": "The shop says it can't be exchanged once bought."
+                  "traditional": "店家說不能換，她只好春天穿",
+                  "simplified": "店家说不能换，她只好春天穿",
+                  "pinyin": "Diànjiā shuō bù néng huàn, tā zhǐhǎo chūntiān chuān.",
+                  "english": "The shop won't exchange it, so she'll wear it in spring."
                 },
                 {
                   "speaker": "N",
@@ -206,7 +206,7 @@
                 }
               ],
               "key": 1,
-              "why": "Two lines combine: the shop 說可以換，卻要我自己付寄回去的錢 (about half the jacket's price), and 春天的時候穿剛好. So exchanging costs too much and the thin jacket still has a use. The shop does allow exchanges, the jacket is 一點也不厚, and \"just right for spring\" is the opposite of too thick.",
+              "why": "Two lines combine: the shop 說可以換，卻要我自己付寄回去的錢 (about half the jacket's price), and 春天的時候穿剛好. So exchanging costs too much and the thin jacket still has a use. \"The shop won't exchange it\" gets the shop wrong: it does allow exchanges, only at her cost. The jacket is 一點也不厚, and \"just right for spring\" is the opposite of too thick.",
               "focus": {
                 "zh": "卻、算了",
                 "en": "yet; forget it"
@@ -310,14 +310,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "一直覺得他應該回學校念書",
-                  "simplified": "一直觉得他应该回学校念书",
-                  "pinyin": "Yìzhí juéde tā yīnggāi huí xuéxiào niàn shū.",
-                  "english": "They still think he should go back to school."
+                  "traditional": "本來看不起他，現在想去店裡打工",
+                  "simplified": "本来看不起他，现在想去店里打工",
+                  "pinyin": "Běnlái kànbùqǐ tā, xiànzài xiǎng qù diàn lǐ dǎgōng.",
+                  "english": "They looked down on him; now they want to work at his stall."
                 }
               ],
               "key": 2,
-              "why": "The neighbours 看不起他 at first, and now they want their own kids to work for him, so they think highly of him. Being angry was the parents' reaction, not the neighbours', and the turn goes from bad to good, not the other way.",
+              "why": "The neighbours 看不起他 at first, and now they want their own kids to work for him, so they think highly of him. It is their kids, not the neighbours themselves, who would work at the stall. Being angry was the parents' reaction, not the neighbours', and the turn goes from bad to good, not the other way.",
               "focus": {
                 "zh": "看不起",
                 "en": "to look down on"
@@ -504,10 +504,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "爸爸只是爬山爬得太累了",
-                  "simplified": "爸爸只是爬山爬得太累了",
-                  "pinyin": "Bàba zhǐshì páshān pá de tài lèi le.",
-                  "english": "Dad was just worn out from the hike."
+                  "traditional": "爸爸的問題跟他太累有關",
+                  "simplified": "爸爸的问题跟他太累有关",
+                  "pinyin": "Bàba de wèntí gēn tā tài lèi yǒuguān.",
+                  "english": "Dad's trouble has to do with being too tired."
                 },
                 {
                   "speaker": "N",
@@ -518,14 +518,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "爸爸身體出了很大的毛病",
-                  "simplified": "爸爸身体出了很大的毛病",
-                  "pinyin": "Bàba shēntǐ chū le hěn dà de máobìng.",
-                  "english": "Dad has a serious health problem."
+                  "traditional": "爸爸的問題跟他吃得太少有關",
+                  "simplified": "爸爸的问题跟他吃得太少有关",
+                  "pinyin": "Bàba de wèntí gēn tā chī de tài shǎo yǒuguān.",
+                  "english": "Dad's trouble has to do with eating too little."
                 }
               ],
               "key": 0,
-              "why": "Three people explain his collapse; the doctor's 只不過 sentence backs the brother: too much salty food is what is hurting him. Too tired was the mother's guess, and 沒什麼大毛病 rules out a serious illness without saying he is as fit as he claimed, since he has to change how he eats.",
+              "why": "Three people explain his collapse; the doctor's 只不過 sentence backs the brother: too much salty food is what is hurting him. Too tired was the mother's guess, which the doctor does not back; the doctor says he eats too much salty food, not too little; and he is not as fit as he claimed, since he has to change how he eats.",
               "focus": {
                 "zh": "只不過、直到……才",
                 "en": "it's only that; not until"
@@ -597,10 +597,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "只要換了教練，就一定學到底",
-                  "simplified": "只要换了教练，就一定学到底",
-                  "pinyin": "Zhǐyào huàn le jiàoliàn, jiù yídìng xué dàodǐ.",
-                  "english": "As long as she changes coach, she will see it through."
+                  "traditional": "願意再試，但要換一個男教練",
+                  "simplified": "愿意再试，但要换一个男教练",
+                  "pinyin": "Yuànyì zài shì, dàn yào huàn yí ge nán jiàoliàn.",
+                  "english": "Willing to try again, but with a male coach."
                 },
                 {
                   "speaker": "N",
@@ -625,7 +625,7 @@
                 }
               ],
               "key": 3,
-              "why": "She agrees to try a new coach (好吧), but 要是她也這樣 she will quit: whether she goes on depends on how the coach treats her. A woman coach is her choice, not her condition, since a woman who scolds her too ends it, and \"see it through for sure\" ignores that 要是.",
+              "why": "She agrees to try a new coach (好吧), but 要是她也這樣 she will quit: whether she goes on depends on how the coach treats her. She picks a 女教練, not a male one, and that choice is not her condition either, since a woman who scolds her too ends it.",
               "focus": {
                 "zh": "害、V到底",
                 "en": "to cause (something bad); see it through"
@@ -1042,10 +1042,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "不跟網友買了，要去買新的",
-                  "simplified": "不跟网友买了，要去买新的",
-                  "pinyin": "Bù gēn wǎngyǒu mǎi le, yào qù mǎi xīn de.",
-                  "english": "He won't buy from the seller; he'll buy a new one."
+                  "traditional": "想先約對方見面，可是對方不肯",
+                  "simplified": "想先约对方见面，可是对方不肯",
+                  "pinyin": "Xiǎng xiān yuē duìfāng jiànmiàn, kěshì duìfāng bù kěn.",
+                  "english": "He wants to meet the seller first, but the seller refuses."
                 },
                 {
                   "speaker": "N",
@@ -1063,7 +1063,7 @@
                 }
               ],
               "key": 3,
-              "why": "He drops paying tonight and will ask to meet at the MRT station, but 至於他肯不肯，我就不知道了: nothing is agreed yet. \"Already fixed\" misses that 至於 line, and the new-laptop price was only the woman's reason for doubt.",
+              "why": "He drops paying tonight and will ask to meet at the MRT station, but 至於他肯不肯，我就不知道了: nothing is agreed yet. \"Already fixed\" misses that 至於 line, and \"the seller refuses\" claims an answer he does not have yet (我就不知道了). The new-laptop price was only the woman's reason for doubt.",
               "focus": {
                 "zh": "至於",
                 "en": "as for (what is still unknown)"
@@ -1113,14 +1113,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他不肯見面的話，先付一半",
-                  "simplified": "他不肯见面的话，先付一半",
-                  "pinyin": "Tā bù kěn jiànmiàn dehuà, xiān fù yíbàn.",
-                  "english": "If he won't meet, pay half first."
+                  "traditional": "請他傳照片，看過沒問題再付錢",
+                  "simplified": "请他传照片，看过没问题再付钱",
+                  "pinyin": "Qǐng tā chuán zhàopiàn, kàn guo méi wèntí zài fù qián.",
+                  "english": "Ask for photos, then pay if they look fine."
                 }
               ],
               "key": 1,
-              "why": "Two of her lines combine: 當面看過東西，再把錢給他, and 要是他不肯見面，你就別買了. So meet, look, then pay. Paying on meeting gets the order wrong, and posting it or paying half both happen without a meeting, which she rules out.",
+              "why": "Two of her lines combine: 當面看過東西，再把錢給他, and 要是他不肯見面，你就別買了. So meet, look, then pay. Paying on meeting gets the order wrong, and posting it or checking photos both skip the meeting: she says 當面, and no meeting means 別買了.",
               "focus": {
                 "zh": "當面",
                 "en": "face to face"
@@ -1512,10 +1512,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "一天只有二十個客人來買",
-                  "simplified": "一天只有二十个客人来买",
-                  "pinyin": "Yì tiān zhǐyǒu èrshí ge kèrén lái mǎi.",
-                  "english": "Only twenty customers come a day."
+                  "traditional": "怕做太多，蛋糕就賣不出去",
+                  "simplified": "怕做太多，蛋糕就卖不出去",
+                  "pinyin": "Pà zuò tài duō, dàngāo jiù mài bù chūqù.",
+                  "english": "She fears she couldn't sell them all."
                 },
                 {
                   "speaker": "N",
@@ -1533,7 +1533,7 @@
                 }
               ],
               "key": 2,
-              "why": "做得太多，我就沒辦法每個都做得一樣好: more cakes would mean worse cakes. The fresh fruit explains the price, not the number; twenty is how many she makes, not how many customers come; and customers ask about the price yet still buy.",
+              "why": "做得太多，我就沒辦法每個都做得一樣好: more cakes would mean worse cakes. The fresh fruit explains the price, not the number; she never says the cakes wouldn't sell: her reason is that each one would not be made as well; and customers ask about the price yet still buy.",
               "focus": {
                 "zh": "品質",
                 "en": "quality"
@@ -1558,10 +1558,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "價錢要讓大家都買得起",
-                  "simplified": "价钱要让大家都买得起",
-                  "pinyin": "Jiàqián yào ràng dàjiā dōu mǎi de qǐ.",
-                  "english": "A price everyone can afford."
+                  "traditional": "用最新鮮的水果，做最便宜的蛋糕",
+                  "simplified": "用最新鲜的水果，做最便宜的蛋糕",
+                  "pinyin": "Yòng zuì xīnxiān de shuǐguǒ, zuò zuì piányí de dàngāo.",
+                  "english": "The freshest fruit for the cheapest cakes."
                 },
                 {
                   "speaker": "N",
@@ -1572,10 +1572,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "讓更多人在網路上看到蛋糕",
-                  "simplified": "让更多人在网路上看到蛋糕",
-                  "pinyin": "Ràng gèng duō rén zài wǎnglù shàng kàn dào dàngāo.",
-                  "english": "Getting more people to see her cakes online."
+                  "traditional": "讓每個想買的客人都買得到",
+                  "simplified": "让每个想买的客人都买得到",
+                  "pinyin": "Ràng měi ge xiǎng mǎi de kèrén dōu mǎi de dào.",
+                  "english": "Every customer who wants a cake can get one."
                 },
                 {
                   "speaker": "N",
@@ -1586,7 +1586,7 @@
                 }
               ],
               "key": 3,
-              "why": "客人願意相信我，我做的蛋糕就得對得起他們: the customers' trust is what her cakes must live up to, which is why she keeps the price and the numbers where they are. Her cakes cost more than others', a walk-in shop is still undecided, and the photos online were how it started, not her aim now.",
+              "why": "客人願意相信我，我做的蛋糕就得對得起他們: the customers' trust is what her cakes must live up to, which is why she keeps the price and the numbers where they are. Her fruit is the freshest but her cakes cost a hundred more, not less; she makes only twenty a day, so not every customer can get one; and a walk-in shop is still undecided.",
               "focus": {
                 "zh": "對得起",
                 "en": "to live up to"
@@ -2437,14 +2437,14 @@
                   "english": "Grandma did more than go online: she often went out to see friends."
                 },
                 {
-                  "traditional": "祖母不只交朋友，還被網友騙了錢",
-                  "simplified": "祖母不只交朋友，还被网友骗了钱",
-                  "pinyin": "Zǔmǔ bù zhǐ jiāo péngyǒu, hái bèi wǎngyǒu piàn le qián.",
-                  "english": "Grandma made friends and was cheated of money too."
+                  "traditional": "祖母不只看花，還交了鄉下的朋友",
+                  "simplified": "祖母不只看花，还交了乡下的朋友",
+                  "pinyin": "Zǔmǔ bù zhǐ kàn huā, hái jiāo le xiāngxià de péngyǒu.",
+                  "english": "Grandma did more than look: she made friends in her village."
                 }
               ],
               "key": 1,
-              "why": "本來只是想讓她看看別人種的花，沒想到她很快就交了不少網友, who swap photos daily and chat for hours: the writer meant her only to look, and she gained people to talk to. She grew flowers long before (每天除了種花), going out happened once, for the Taichung event, and being cheated was only Dad's fear.",
+              "why": "本來只是想讓她看看別人種的花，沒想到她很快就交了不少網友, who swap photos daily and chat for hours: the writer meant her only to look, and she gained people to talk to. She grew flowers long before (每天除了種花), going out happened once, for the Taichung event, and her new friends are 網友 met online, not people in her village, where she 很少出門.",
               "focus": {
                 "zh": "本來……沒想到",
                 "en": "what was intended vs what happened"
@@ -2468,10 +2468,10 @@
               },
               "choices": [
                 {
-                  "traditional": "怕她聊天聊太久",
-                  "simplified": "怕她聊天聊太久",
-                  "pinyin": "Pà tā liáotiān liáo tài jiǔ.",
-                  "english": "He feared she chatted too long."
+                  "traditional": "怕她上網太久，對身體不好",
+                  "simplified": "怕她上网太久，对身体不好",
+                  "pinyin": "Pà tā shàngwǎng tài jiǔ, duì shēntǐ bù hǎo.",
+                  "english": "He feared long hours online were bad for her health."
                 },
                 {
                   "traditional": "怕她把家裡的地址告訴網友",
@@ -2493,7 +2493,7 @@
                 }
               ],
               "key": 3,
-              "why": "He had seen news of old people 被網友騙錢 and feared she would 上當. Not giving her address is Grandma's answer to that fear, not the fear itself, the two-hour chats are a fact about her friends, not his worry, and the Taichung trip came later, when he went along.",
+              "why": "He had seen news of old people 被網友騙錢 and feared she would 上當. Not giving her address is Grandma's answer to that fear, not the fear itself, her health never comes up as his worry (it got better later), and the Taichung trip came later, when he went along.",
               "focus": {
                 "zh": "交友",
                 "en": "making friends"
@@ -2518,10 +2518,10 @@
               },
               "choices": [
                 {
-                  "traditional": "祖母身體變好，是因為去了臺中",
-                  "simplified": "祖母身体变好，是因为去了台中",
-                  "pinyin": "Zǔmǔ shēntǐ biàn hǎo, shì yīnwèi qù le Táizhōng.",
-                  "english": "Grandma is healthier because she went to Taichung."
+                  "traditional": "祖母常打電話給他，他都沒接",
+                  "simplified": "祖母常打电话给他，他都没接",
+                  "pinyin": "Zǔmǔ cháng dǎ diànhuà gěi tā, tā dōu méi jiē.",
+                  "english": "Grandma often phoned him, and he never picked up."
                 },
                 {
                   "traditional": "祖母需要人陪，他以前陪得太少",
@@ -2543,7 +2543,7 @@
                 }
               ],
               "key": 1,
-              "why": "Seeing how happy her friends make her, he says he was always busy and seldom phoned, 覺得很對不起她: she needed people around her, and he had not been one of them. Her health improved with her friendships, not from one trip, and on online friends he says where you meet doesn't matter, not that it is safer.",
+              "why": "Seeing how happy her friends make her, he says he was always busy and seldom phoned, 覺得很對不起她: she needed people around her, and he had not been one of them. It was he who seldom phoned her, not she who phoned and got no answer, and on online friends he says where you meet doesn't matter, not that it is safer.",
               "focus": {
                 "zh": "對不起",
                 "en": "to have let (someone) down"
@@ -2588,10 +2588,10 @@
               },
               "choices": [
                 {
-                  "traditional": "他想多陪家人說說話",
-                  "simplified": "他想多陪家人说说话",
-                  "pinyin": "Tā xiǎng duō péi jiārén shuōshuō huà.",
-                  "english": "He wanted more time talking with family."
+                  "traditional": "他吃飯時常把手機放在客廳",
+                  "simplified": "他吃饭时常把手机放在客厅",
+                  "pinyin": "Tā chīfàn shí cháng bǎ shǒujī fàng zài kètīng.",
+                  "english": "He often left his phone in the living room at dinner."
                 },
                 {
                   "traditional": "媽媽要回訊息，沒空洗",
@@ -2606,14 +2606,14 @@
                   "english": "He often picked up his phone first at dinner."
                 },
                 {
-                  "traditional": "他玩遊戲輸給了弟弟",
-                  "simplified": "他玩游戏输给了弟弟",
-                  "pinyin": "Tā wán yóuxì shū gěi le dìdi.",
-                  "english": "He lost a game to the brother."
+                  "traditional": "弟弟吃飯時常先拿起手機",
+                  "simplified": "弟弟吃饭时常先拿起手机",
+                  "pinyin": "Dìdi chīfàn shí cháng xiān ná qǐ shǒujī.",
+                  "english": "The brother often picked up his phone first at dinner."
                 }
               ],
               "key": 2,
-              "why": "The rule is 誰先拿起手機，誰就得洗碗, and Dad 最不習慣: so he was the one who kept reaching for his phone. Mom's messages and the games belong to the old dinners, before the rule.",
+              "why": "The rule is 誰先拿起手機，誰就得洗碗, and Dad 最不習慣: so he was the one who kept reaching for his phone. Leaving the phone in the living room is keeping the rule, which costs nothing; if the brother picked his up first, the brother would wash; and Mom's messages belong to the old dinners, before the rule.",
               "focus": {
                 "zh": "誰……誰就……",
                 "en": "whoever…"
@@ -2645,10 +2645,10 @@
                   "english": "The brother often fights at school."
                 },
                 {
-                  "traditional": "爸爸吃飯時不跟她說話",
-                  "simplified": "爸爸吃饭时不跟她说话",
-                  "pinyin": "Bàba chīfàn shí bù gēn tā shuōhuà.",
-                  "english": "Dad didn't talk to her at meals."
+                  "traditional": "發現自己對同事越來越冷淡",
+                  "simplified": "发现自己对同事越来越冷淡",
+                  "pinyin": "Fāxiàn zìjǐ duì tóngshì yuè lái yuè lěngdàn.",
+                  "english": "She found she was growing colder towards colleagues."
                 },
                 {
                   "traditional": "發現自己不知道孩子的事",
@@ -2658,7 +2658,7 @@
                 }
               ],
               "key": 3,
-              "why": "The brother was upset and 我們卻都沒發現; only the teacher's call (直到……才) told her, and she saw she was 對家人越來越冷淡. The teacher only phoned about the fight, and the fight happened once (有一次), not often.",
+              "why": "The brother was upset and 我們卻都沒發現; only the teacher's call (直到……才) told her, and she saw she was 對家人越來越冷淡. She keeps in touch with colleagues all day; it is her family she has grown cold to. The teacher only phoned about the fight, and the fight happened once (有一次), not often.",
               "focus": {
                 "zh": "卻、直到……才",
                 "en": "yet; not until"
@@ -2691,10 +2691,10 @@
                   "english": "Living together isn't enough; you must keep talking."
                 },
                 {
-                  "traditional": "家人都太忙，住在一起也沒有用",
-                  "simplified": "家人都太忙，住在一起也没有用",
-                  "pinyin": "Jiārén dōu tài máng, zhù zài yìqǐ yě méiyǒu yòng.",
-                  "english": "Families are too busy; living together is no use."
+                  "traditional": "只交流不夠，還要天天住在一起",
+                  "simplified": "只交流不够，还要天天住在一起",
+                  "pinyin": "Zhǐ jiāoliú bú gòu, hái yào tiāntiān zhù zài yìqǐ.",
+                  "english": "Talking isn't enough; you must live together every day."
                 },
                 {
                   "traditional": "住在一起，就不應該用手機",
@@ -2710,7 +2710,7 @@
                 }
               ],
               "key": 0,
-              "why": "The writer used to think living together meant everyone knew when someone was upset; her brother's fight proved otherwise, and now says 就算天天住在一起，要是不面對面說話，也不能真的了解對方. The dinners now are lively, so living together is not useless, phones after dinner are left to each person (至於……看每個人自己), and the rule is Mom's means, not what she learned.",
+              "why": "The writer used to think living together meant everyone knew when someone was upset; her brother's fight proved otherwise, and now says 就算天天住在一起，要是不面對面說話，也不能真的了解對方. \"Talking isn't enough, you must live together\" turns her lesson round: they already lived together, and talking was what was missing; phones after dinner are left to each person (至於……看每個人自己), and the rule is Mom's means, not what she learned.",
               "focus": {
                 "zh": "至於、就算……也",
                 "en": "as for; even if"

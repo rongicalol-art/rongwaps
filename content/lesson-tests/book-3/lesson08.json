@@ -64,10 +64,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "女的沒聽到他的聲音",
-                  "simplified": "女的没听到他的声音",
-                  "pinyin": "Nǚ de méi tīng dào tā de shēngyīn.",
-                  "english": "The woman didn't hear his voice."
+                  "traditional": "女的把他看成了別人",
+                  "simplified": "女的把他看成了别人",
+                  "pinyin": "Nǚ de bǎ tā kàn chéng le biérén.",
+                  "english": "The woman took him for someone else."
                 },
                 {
                   "speaker": "N",
@@ -78,10 +78,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "女的跟妹妹在一起",
-                  "simplified": "女的跟妹妹在一起",
-                  "pinyin": "Nǚ de gēn mèimei zài yìqǐ.",
-                  "english": "The woman was with her sister."
+                  "traditional": "他叫的人是她的姊姊",
+                  "simplified": "他叫的人是她的姐姐",
+                  "pinyin": "Tā jiào de rén shì tā de jiějie.",
+                  "english": "The person he called was her older sister."
                 },
                 {
                   "speaker": "N",
@@ -92,7 +92,7 @@
                 }
               ],
               "key": 3,
-              "why": "你是不是把我妹妹看成我了？ and his 難怪 confirm he took the sister for her: she was at home all day. Not hearing him was his first guess, and the changed style was what the sister's brand names made him think.",
+              "why": "你是不是把我妹妹看成我了？ and his 難怪 confirm he took the sister for her: she was at home all day. It was he who mistook someone, not she who mistook him, and the look-alike is her younger sister (妹妹), not an older one; the changed style was only what the sister's brand names made him think.",
               "focus": {
                 "zh": "把 A 看成 B",
                 "en": "mistake A for B"
@@ -265,10 +265,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "走路還是會痛，只在上班時穿",
-                  "simplified": "走路还是会痛，只在上班时穿",
-                  "pinyin": "Zǒulù háishì huì tòng, zhǐ zài shàngbān shí chuān.",
-                  "english": "Walking still hurts, so he only wears them for work."
+                  "traditional": "穿了一個月就穿慣了，週末也穿",
+                  "simplified": "穿了一个月就穿惯了，周末也穿",
+                  "pinyin": "Chuān le yí ge yuè jiù chuān guàn le, zhōumò yě chuān.",
+                  "english": "He got used to them within a month and wears them at weekends too."
                 },
                 {
                   "speaker": "N",
@@ -286,7 +286,7 @@
                 }
               ],
               "key": 2,
-              "why": "剛開始真的穿不慣 was the first weeks; 三個月下來，皮鞋我已經穿慣了，現在週末也常穿 is now. Switching back at weekends was the woman's guess, which he answers with 本來是這樣 (that was only at first), and he never says he dislikes sneakers now.",
+              "why": "剛開始真的穿不慣 was the first weeks; 三個月下來，皮鞋我已經穿慣了，現在週末也常穿 is now. It took three months (三個月下來), not one, to get used to them; switching back at weekends was the woman's guess, which he answers with 本來是這樣 (that was only at first), and he never says he dislikes sneakers now.",
               "focus": {
                 "zh": "V 不慣 → V 慣了",
                 "en": "not used to → used to"
@@ -1138,14 +1138,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "買東西以前應該先問爸媽",
-                  "simplified": "买东西以前应该先问爸妈",
-                  "pinyin": "Mǎi dōngxi yǐqián yīnggāi xiān wèn bàmā.",
-                  "english": "She should ask her parents before buying things."
+                  "traditional": "別買平價的，買好一點的",
+                  "simplified": "别买平价的，买好一点的",
+                  "pinyin": "Bié mǎi píngjià de, mǎi hǎo yìdiǎn de.",
+                  "english": "Skip the cheap ones; buy better ones."
                 }
               ],
               "key": 2,
-              "why": "畢竟 brings in the key fact: as a student, 錢要花在真正需要的地方. He is talking about money, not study time, and he never says cheap clothes are fine; her two-hundred-dollar clothes are what he wants her to stop buying.",
+              "why": "畢竟 brings in the key fact: as a student, 錢要花在真正需要的地方. He is talking about money, not study time. He never tells her to buy better, dearer clothes instead, nor says cheap clothes are fine: he wants her to stop buying what she does not need.",
               "focus": {
                 "zh": "畢竟",
                 "en": "after all (the key fact)"
@@ -1280,17 +1280,17 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "衣服不必好看，舒適最重要",
-                  "simplified": "衣服不必好看，舒适最重要",
-                  "pinyin": "Yīfu búbì hǎokàn, shūshì zuì zhòngyào.",
-                  "english": "Clothes needn't look nice; comfort matters most."
+                  "traditional": "衣服再舊，洗乾淨也能換",
+                  "simplified": "衣服再旧，洗干净也能换",
+                  "pinyin": "Yīfu zài jiù, xǐ gānjìng yě néng huàn.",
+                  "english": "However old, clothes can be swapped once washed."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "好看的衣服要放好，才不會壞",
-                  "simplified": "好看的衣服要放好，才不会坏",
-                  "pinyin": "Hǎokàn de yīfu yào fàng hǎo, cái bú huì huài.",
-                  "english": "Nice clothes must be stored well so they last."
+                  "traditional": "放不下的衣服，丟掉就好",
+                  "simplified": "放不下的衣服，丢掉就好",
+                  "pinyin": "Fàng bú xià de yīfu, diūdiào jiù hǎo.",
+                  "english": "Clothes there's no room for should just be thrown away."
                 },
                 {
                   "speaker": "N",
@@ -1301,7 +1301,7 @@
                 }
               ],
               "key": 3,
-              "why": "再 + 好看 + 也沒有用: however nice, clothes left unworn are wasted, which is why she asks people to swap them. Keeping them to wear later and storing them well are what the club wants people to stop doing, and she never puts comfort above looks.",
+              "why": "再 + 好看 + 也沒有用: however nice, clothes left unworn are wasted, which is why she asks people to swap them. Washing clothes clean is a swap rule, not what this sentence means; she says throwing clothes out 覺得可惜, so she is not telling people to throw them away, and keeping them to wear later is what the club wants people to stop doing.",
               "focus": {
                 "zh": "再……也……",
                 "en": "no matter how…"
@@ -2200,20 +2200,20 @@
                   "english": "If the younger sister needs it, she will find another way."
                 },
                 {
-                  "traditional": "她想用皮鞋跟妹妹換洋裝",
-                  "simplified": "她想用皮鞋跟妹妹换洋装",
-                  "pinyin": "Tā xiǎng yòng píxié gēn mèimei huàn yángzhuāng.",
-                  "english": "She wants to trade shoes for the dress."
+                  "traditional": "妹妹要穿，她就不去婚禮了",
+                  "simplified": "妹妹要穿，她就不去婚礼了",
+                  "pinyin": "Mèimei yào chuān, tā jiù bú qù hūnlǐ le.",
+                  "english": "If the younger sister needs it, she won't go to the wedding."
                 },
                 {
-                  "traditional": "她星期五要先去買新洋裝",
-                  "simplified": "她星期五要先去买新洋装",
-                  "pinyin": "Tā xīngqíwǔ yào xiān qù mǎi xīn yángzhuāng.",
-                  "english": "She will buy a new dress on Friday first."
+                  "traditional": "妹妹不穿，她就去百貨公司",
+                  "simplified": "妹妹不穿，她就去百货公司",
+                  "pinyin": "Mèimei bù chuān, tā jiù qù bǎihuò gōngsī.",
+                  "english": "If the younger sister isn't wearing it, she'll go to the department store."
                 }
               ],
               "key": 1,
-              "why": "要是妳那天也要穿，就不用借我了: the request is not a demand, and Friday shopping happens only if the sister needs the dress. The shoes are a favour mentioned with 對了, a new topic, not a trade.",
+              "why": "要是妳那天也要穿，就不用借我了，我星期五……再去百貨公司看看: the request is not a demand, and if the sister needs the dress she will find one herself. The department store is for when the sister does wear it, not when she does not, and she goes to the wedding either way.",
               "focus": {
                 "zh": "要是……，就……",
                 "en": "if…, then…"
@@ -2265,10 +2265,10 @@
                   "english": "You must dress formally to look for work."
                 },
                 {
-                  "traditional": "名牌衣服不適合穿去上班",
-                  "simplified": "名牌衣服不适合穿去上班",
-                  "pinyin": "Míngpái yīfu bú shìhé chuān qù shàngbān.",
-                  "english": "Brand-name clothes are wrong for work."
+                  "traditional": "好看的衣服比認真的態度重要",
+                  "simplified": "好看的衣服比认真的态度重要",
+                  "pinyin": "Hǎokàn de yīfu bǐ rènzhēn de tàidù zhòngyào.",
+                  "english": "Nice clothes matter more than a serious attitude."
                 },
                 {
                   "traditional": "認真的態度比穿什麼衣服重要",
@@ -2284,7 +2284,7 @@
                 }
               ],
               "key": 2,
-              "why": "The boss: 衣服舊沒關係 … 看得出來你重視這份工作; Grandpa: 衣服再貴，人不認真也沒有用. Both put a serious attitude above the clothes themselves (old for the boss, expensive for Grandpa). Neither says formal clothes are a must or that brand names are wrong, and the belt is a gift, not a point about old clothes.",
+              "why": "The boss: 衣服舊沒關係 … 看得出來你重視這份工作; Grandpa: 衣服再貴，人不認真也沒有用. Both put a serious attitude above the clothes themselves (old for the boss, expensive for Grandpa), not the other way round. Neither says formal clothes are a must, and the belt is a gift, not a point about old clothes.",
               "focus": {
                 "zh": "再……也……",
                 "en": "no matter how…"
@@ -2310,10 +2310,10 @@
               },
               "choices": [
                 {
-                  "traditional": "想讓別人覺得他過得很好",
-                  "simplified": "想让别人觉得他过得很好",
-                  "pinyin": "Xiǎng ràng biérén juéde tā guò de hěn hǎo.",
-                  "english": "He wants people to think he is doing well."
+                  "traditional": "覺得穿著跟有沒有錢有關",
+                  "simplified": "觉得穿着跟有没有钱有关",
+                  "pinyin": "Juéde chuānzhuó gēn yǒu méi yǒu qián yǒuguān.",
+                  "english": "He feels dressing has to do with money."
                 },
                 {
                   "traditional": "覺得穿得好是對別人有禮貌",
@@ -2322,10 +2322,10 @@
                   "english": "He feels dressing well is being polite to others."
                 },
                 {
-                  "traditional": "以前的老闆說穿襯衫才有禮貌",
-                  "simplified": "以前的老板说穿衬衫才有礼貌",
-                  "pinyin": "Yǐqián de lǎobǎn shuō chuān chènshān cái yǒu lǐmào.",
-                  "english": "His old boss said only a shirt is polite."
+                  "traditional": "覺得穿名牌是對別人有禮貌",
+                  "simplified": "觉得穿名牌是对别人有礼貌",
+                  "pinyin": "Juéde chuān míngpái shì duì biérén yǒu lǐmào.",
+                  "english": "He feels wearing brand names is polite to others."
                 },
                 {
                   "traditional": "他只有那一件好襯衫可以穿",
@@ -2335,7 +2335,7 @@
                 }
               ],
               "key": 1,
-              "why": "爺爺說，穿著跟有沒有錢無關，是對別人的禮貌: he dresses well out of courtesy to others. Showing he is doing well is what 跟有沒有錢無關 rules out, the boss only said clean clothes were enough and never spoke of politeness, and the one good shirt was when he was young and poor.",
+              "why": "爺爺說，穿著跟有沒有錢無關，是對別人的禮貌: he dresses well out of courtesy to others. He says dressing has nothing to do with money (無關), not that it does, his clothes are 都不是名牌, and the one good shirt was when he was young and poor.",
               "focus": {
                 "zh": "跟……無關",
                 "en": "nothing to do with"
@@ -2389,10 +2389,10 @@
                   "english": "The writer buys only the shop's newest styles."
                 },
                 {
-                  "traditional": "會叫客人別一次買那麼多",
-                  "simplified": "会叫客人别一次买那么多",
-                  "pinyin": "Huì jiào kèrén bié yí cì mǎi nàme duō.",
-                  "english": "The writer tells customers not to buy so much at once."
+                  "traditional": "買以前會先問同事是不是真的要買",
+                  "simplified": "买以前会先问同事是不是真的要买",
+                  "pinyin": "Mǎi yǐqián huì xiān wèn tóngshì shì bú shì zhēn de yào mǎi.",
+                  "english": "Before buying, the writer asks a coworker whether it is really needed."
                 },
                 {
                   "traditional": "買了也會先穿一、兩次再說",
@@ -2402,7 +2402,7 @@
                 }
               ],
               "key": 0,
-              "why": "流行變得這麼快，買再多也趕不上 led to the question 這件我非買不可嗎？ before every purchase. Telling customers what to do is only the coworker's joke about the boss, and wearing things once or twice is what the customers did.",
+              "why": "流行變得這麼快，買再多也趕不上 led to the question 這件我非買不可嗎？ before every purchase, a question the writer asks herself (先問自己), not a coworker, who only jokes about it. Wearing things once or twice is what the customers did.",
               "focus": {
                 "zh": "再……也……；非……不可",
                 "en": "no matter how…; must"
@@ -2447,14 +2447,14 @@
                   "english": "Customers want new things soon after buying."
                 },
                 {
-                  "traditional": "店員把錢花在衣服上",
-                  "simplified": "店员把钱花在衣服上",
-                  "pinyin": "Diànyuán bǎ qián huā zài yīfu shàng.",
-                  "english": "Staff spend their money on clothes."
+                  "traditional": "客人穿了很久才又買新的",
+                  "simplified": "客人穿了很久才又买新的",
+                  "pinyin": "Kèrén chuān le hěn jiǔ cái yòu mǎi xīn de.",
+                  "english": "Customers wear things a long time before buying new."
                 }
               ],
               "key": 2,
-              "why": "這種現象 points back to the sentence just before it: customers come back a few weeks after buying to buy new things, because what they bought is already out of fashion. Browsing and new styles come earlier and are not what the boss is talking about.",
+              "why": "這種現象 points back to the sentence just before it: customers come back a few weeks after buying to buy new things, because what they bought is already out of fashion. They come back after only a few weeks (過了幾個星期), having worn things once or twice, not after a long time; browsing and new styles come earlier and are not what the boss is talking about.",
               "focus": {
                 "zh": "這種現象",
                 "en": "this phenomenon (what it refers to)"
@@ -2542,10 +2542,10 @@
               },
               "choices": [
                 {
-                  "traditional": "準備得越詳細，旅行越順利",
-                  "simplified": "准备得越详细，旅行越顺利",
-                  "pinyin": "Zhǔnbèi de yuè xiángxì, lǚxíng yuè shùnlì.",
-                  "english": "The more detailed the preparation, the smoother the trip."
+                  "traditional": "準備得再詳細，也沒有用",
+                  "simplified": "准备得再详细，也没有用",
+                  "pinyin": "Zhǔnbèi de zài xiángxì, yě méiyǒu yòng.",
+                  "english": "However detailed the preparation, it is no use."
                 },
                 {
                   "traditional": "遇到困難時，別怕請人幫忙",
@@ -2554,10 +2554,10 @@
                   "english": "When in trouble, don't be afraid to ask for help."
                 },
                 {
-                  "traditional": "一個人旅行，比較自在",
-                  "simplified": "一个人旅行，比较自在",
-                  "pinyin": "Yí ge rén lǚxíng, bǐjiào zìzài.",
-                  "english": "Travelling alone is more relaxed."
+                  "traditional": "行程裡的景點，常常最難忘",
+                  "simplified": "行程里的景点，常常最难忘",
+                  "pinyin": "Xíngchéng lǐ de jǐngdiǎn, chángcháng zuì nánwàng.",
+                  "english": "The planned sights are often the most memorable."
                 },
                 {
                   "traditional": "行程外的事，也可能最難忘",
@@ -2567,7 +2567,7 @@
                 }
               ],
               "key": 3,
-              "why": "準備當然重要，話說回來，……最難忘的，常常是計畫以外的事: 話說回來 grants the first point (prepare) and then turns to the real one, the unplanned help. Preparation is only the point granted, and asking for help or travelling alone are never what the writer sums up.",
+              "why": "準備當然重要，話說回來，……最難忘的，常常是計畫以外的事: 話說回來 grants the first point (prepare) and then turns to the real one, the unplanned help. The writer says preparing 當然重要, so it is not useless; the memorable part is 計畫以外的事, not the planned sights, and asking for help is never what the writer sums up.",
               "focus": {
                 "zh": "話說回來",
                 "en": "then again"
