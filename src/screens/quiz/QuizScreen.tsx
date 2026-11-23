@@ -13,7 +13,7 @@ import type { SessionStats } from '../../features/practice';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { QuizTypePicker, type QuizPickerEntrance } from '../flashcard';
 import type { Flashcard } from '../../data/flashcards';
-import { useRaceQuiz } from '../../features/social';
+import { useChallengeQuiz, useRaceQuiz } from '../../features/social';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 
 interface QuizScreenProps {
@@ -52,7 +52,10 @@ export function QuizScreen({
   sessionStats = null,
   sessionDeck,
 }: QuizScreenProps) {
-  const race = useRaceQuiz();
+  // A race or a challenge link plays a shared quiz: its own deck, types and seed.
+  const raceQuiz = useRaceQuiz();
+  const challengeQuiz = useChallengeQuiz();
+  const race = raceQuiz ?? challengeQuiz;
   const raceSelection = race?.selection;
   const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`${raceSelection.book ?? 1}:${lesson}`, parts])) : undefined, [raceSelection]);
   const { cards: loadedCards, deckCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, !race && isReviewDeck, !race && isLibraryDeck, true, raceParts);
@@ -109,6 +112,7 @@ export function QuizScreen({
                 sessionKey={mixedKey}
                 types={picked}
                 seed={race?.seed}
+                shareable={!race && !isLibraryDeck && !isReviewDeck}
                 sessionStats={sessionStats}
                 onEnd={onClose || (() => {})}
                 onContinue={onContinue}

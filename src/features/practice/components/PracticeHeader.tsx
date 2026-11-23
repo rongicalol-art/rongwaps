@@ -12,7 +12,7 @@ import { PracticeSettingsScreen } from './PracticeSettingsScreen';
 import type { PracticeHeaderActions } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { PracticeFaces, RaceBar, useRaceFill } from '../../social';
+import { ChallengeGhost, PracticeFaces, RaceBar, useChallengeRide, useRaceFill } from '../../social';
 
 interface PracticeHeaderProps
   extends Omit<ScreenHeaderProps, 'rightAction' | 'variant' | 'tone'>,
@@ -74,7 +74,9 @@ export function PracticeHeader({
   };
 
   const racing = useRaceFill();
-  const hasSessionControls = !racing && Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
+  // A challenge replays the sender's run against the clock: no shuffle or restart mid-run.
+  const challenging = useChallengeRide();
+  const hasSessionControls = !racing && !challenging && Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
 
   const toggleSimpleDefinitions = () => {
     const next = !simpleDefinitions;
@@ -122,7 +124,7 @@ export function PracticeHeader({
         totalCount={totalCount}
         closeIconColor={iconColor}
         closeIconClassName={iconClassName}
-        progressOverlay={racing ? <RaceBar /> : undefined}
+        progressOverlay={racing ? <RaceBar /> : challenging ? <ChallengeGhost answered={currentIndex ?? 0} total={totalCount ?? 0} /> : undefined}
         {...(racing ? { accentBgClassName: 'bg-transparent' } : {})}
         rightAction={
           <div className="flex h-11 shrink-0 items-center pointer-events-auto">

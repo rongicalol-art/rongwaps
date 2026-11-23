@@ -39,14 +39,16 @@ test('Google photo: older accounts keep it, newer ones start with initials, a ch
   assert.equal(showsGooglePhoto(false, '2026-10-01T00:00:00Z'), false);
 });
 
-test('Study together turns friends, messages and the long class chat on exactly when the privacy update takes effect', async () => {
-  const { LEGAL_EFFECTIVE_DATE } = await import('../../src/screens/legal/legalMeta');
+test('Study together turns friends, messages and the long class chat on exactly when that privacy update took effect', async () => {
+  const { LEGAL_EFFECTIVE_DATE, SOCIAL_UPDATE_DATE } = await import('../../src/screens/legal/legalMeta');
   const { SOCIAL_UPDATE_FROM } = await import('../../shared/lobby');
   const { readFileSync, readdirSync } = await import('node:fs');
-  assert.equal(SOCIAL_UPDATE_FROM, Date.parse(`${LEGAL_EFFECTIVE_DATE}T00:00:00+08:00`));
+  assert.equal(SOCIAL_UPDATE_FROM, Date.parse(`${SOCIAL_UPDATE_DATE}T00:00:00+08:00`));
+  // A later privacy update (challenge links) moves the legal date on; the social one stays where it was.
+  assert.ok(LEGAL_EFFECTIVE_DATE >= SOCIAL_UPDATE_DATE);
   // The newest migration that (re)defines the database's date wins.
   const latest = readdirSync('supabase/migrations').sort().reverse()
     .map(name => readFileSync(`supabase/migrations/${name}`, 'utf8'))
     .find(text => /function private\.social_update_at\(\)/.test(text));
-  assert.ok(latest?.includes(`timestamptz '${LEGAL_EFFECTIVE_DATE} 00:00:00+08'`), 'the database starts on the same day');
+  assert.ok(latest?.includes(`timestamptz '${SOCIAL_UPDATE_DATE} 00:00:00+08'`), 'the database starts on the same day');
 });

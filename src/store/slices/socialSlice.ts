@@ -1,9 +1,10 @@
 /**
- * Study together: presence, the class chat, invites and the quiz race. Everything live is ephemeral (rebuilt from the
+ * Study together: presence, the class chat, invites, the quiz race and challenge links. Everything live is ephemeral (rebuilt from the
  * games Worker on connect); only the learner's own choices (`showOnline`, `showProfile`, `socialMuted`) are persisted locally.
  */
 import type { ChatMessage, LessonCount, Person, MentionNotice, ProfileCard } from '../../../shared/lobby';
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
+import type { ChallengeLink } from '../../../shared/challenge';
 import type { SocialStatus } from '../../services/socialService';
 import type { BlockedPerson, ReportPlace } from '../../services/safetyService';
 import type { Conversation, DirectMessage, FriendPerson, MyUsername, SavedProfile } from '../../services/friendsService';
@@ -79,6 +80,16 @@ export interface SocialState {
   racePlaying: boolean;
   raceStatus: SocialStatus;
   racePending: boolean;
+  /** A challenge link being played: the sender's run the ghost replays. Null when no challenge is open. */
+  challenge: ChallengeLink | null;
+  /** True while the challenge quiz is on screen. */
+  challengePlaying: boolean;
+  /** When the challenge's first question appeared: the ghost's clock starts here. */
+  challengeStartedAt: number | null;
+  /** The quiz session of this play: each opened challenge starts fresh, never resuming an earlier play. */
+  challengeKey: string | null;
+  /** Milliseconds this play's first pass took, once it is over (the ghost then steps aside). */
+  challengeDoneMs: number | null;
   /** People this account blocked (from the database; null until loaded). The Lobby hides each pair from each other. */
   socialBlocks: BlockedPerson[] | null;
   socialSafety: SafetyPrompt | null;
@@ -122,6 +133,11 @@ const LIVE_DEFAULTS = {
   racePlaying: false,
   raceStatus: 'off' as SocialStatus,
   racePending: false,
+  challenge: null,
+  challengePlaying: false,
+  challengeStartedAt: null,
+  challengeKey: null,
+  challengeDoneMs: null,
   socialBlocks: null,
   socialSafety: null,
 } satisfies Partial<SocialState>;
