@@ -106,7 +106,7 @@ interface LessonActionsProps {
   className?: string;
 }
 
-/** Start the selected lesson mode; Practice sits quietly underneath so Start owns the full primary row. */
+/** Start the selected lesson mode, with the Practice hub as a square logo button beside it. */
 export function LessonActions({
   onStart,
   label = 'Start',
@@ -116,7 +116,30 @@ export function LessonActions({
   className,
 }: LessonActionsProps) {
   return (
-    <div className={cn('flex flex-col items-center gap-1', className)}>
+    <div className={cn('flex items-center gap-3', className)}>
+      {onOpenPracticeHub && (
+        <div className="group relative shrink-0">
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            edgeColor="var(--color-feedback-warning-edge)"
+            aria-label="Practice hub"
+            aria-haspopup="dialog"
+            aria-expanded={isPracticeHubOpen}
+            onClick={onOpenPracticeHub}
+            style={{ flexShrink: 0 }}
+            className="w-13 min-w-13 aspect-square shrink-0 !px-0 justify-center !border-feedback-warning-edge"
+          >
+            <PlayfulNavIcon name="practiceHub" className="h-7 w-7" />
+          </ActionButton>
+          <span
+            role="tooltip"
+            className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-3 hidden -translate-x-1/2 items-center whitespace-nowrap rounded-control border-b-2 border-ui-border bg-ui-surface px-3 py-1.5 text-xs font-black uppercase tracking-wider text-ui-ink-strong shadow-md group-hover:flex"
+          >
+            Practice hub
+          </span>
+        </div>
+      )}
       <ActionButton
         size="lg"
         fullWidth
@@ -129,20 +152,6 @@ export function LessonActions({
         <AppIcon name="play" size={20} />
         <span>{label}</span>
       </ActionButton>
-      {onOpenPracticeHub && (
-        <ActionButton
-          variant="quiet"
-          size="sm"
-          aria-haspopup="dialog"
-          aria-expanded={isPracticeHubOpen}
-          onClick={onOpenPracticeHub}
-          className="mt-0.5 gap-1.5 text-sm normal-case tracking-normal"
-        >
-          <PlayfulNavIcon name="practiceHub" className="h-5 w-5" />
-          <span>Practice</span>
-          <AppIcon name="next" size={14} className="opacity-70" />
-        </ActionButton>
-      )}
     </div>
   );
 }
