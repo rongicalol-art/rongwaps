@@ -253,20 +253,22 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const risenFor = useRef<unknown>(null);
   const hasCard = Boolean(currentCard);
   // The run's clock starts when the first question is on screen (after its recordings are ready).
+  // resetNonce: a restart on the first question changes nothing else, and must start a new clock.
   useEffect(() => {
     if (preparation || !hasCard || introActive || completed || runRef.current.start !== null) return;
     runRef.current = { start: Date.now(), marks: [], valid: currentIndex === 0 && !isReviewPass };
     const store = useAppStore.getState();
     if (store.challengePlaying && store.challengeStartedAt === null) store.setSocial({ challengeStartedAt: runRef.current.start });
-  }, [preparation, hasCard, introActive, completed, currentIndex, isReviewPass]);
+  }, [preparation, hasCard, introActive, completed, currentIndex, isReviewPass, resetNonce]);
   useEffect(() => {
-    if (isReviewPass || introActive || runRef.current.start === null) return;
+    // Once the pass is complete the count can drop back (a finished match round): the run is already whole.
+    if (completed || isReviewPass || introActive || runRef.current.start === null) return;
     // Words are done one at a time (a match counts each pair); a jump or a step back (a resumed or shuffled
     // deck) means this pass is not one fair run.
     const step = shownIndex - runRef.current.marks.length;
     if (step < 0 || step > 1) runRef.current.valid = false;
     markRun(shownIndex);
-  }, [shownIndex, isReviewPass, introActive, markRun]);
+  }, [shownIndex, completed, isReviewPass, introActive, markRun]);
   useLayoutEffect(() => {
     // A pass with no misses ends here; one with misses already ended when its review began.
     if (isDone && !firstPassRef.current) markRun(activeCards.length, true);
@@ -317,6 +319,8 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     const tricky = Array.from(new Map([...first.missedCards, ...first.cards.filter(card => trickyIds.has(card.id))].map(card => [card.id, card])).values());
     const words = sessionStats?.words ?? Array.from(new Set(first.cards.map((card) => card.front)));
     const run = runRef.current;
+    // A pass with no misses ends on this render: its last words are done when the session finished.
+    if (run.start !== null) while (run.marks.length < first.total) run.marks.push(Math.min(CHALLENGE_MAX_MS, finishedAtRef.current - run.start));
     const fullRun = run.valid && run.marks.length === first.total && first.total <= CHALLENGE_MAX_WORDS;
     if (challengeLink && !session.practiceOnly) {
       return (

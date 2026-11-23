@@ -113,6 +113,26 @@ begin
 end;
 $$;
 
+-- Unfriended later, the old link's yes can't be used again: Add friend is only a request now.
+select set_config('request.jwt.claims', '{"sub":"fc000000-0000-4000-8000-000000000001","role":"authenticated"}', true);
+set local role authenticated;
+do $$ begin perform public.remove_friend('fc000000-0000-4000-8000-000000000002'); end; $$;
+select set_config('request.jwt.claims', '{"sub":"fc000000-0000-4000-8000-000000000002","role":"authenticated"}', true);
+do $$
+begin
+  assert public.accept_challenge_friend('MXAAAAA2') = 'requested', 'a used link does not befriend twice';
+  assert not (public.challenge_card('MXAAAAA2') ->> 'friends')::boolean;
+end;
+$$;
+reset role;
+do $$
+begin
+  assert (select friend_adds from public.challenges where code = 'MXAAAAA2') = 1, 'a second use is not counted';
+  assert not has_table_privilege('authenticated', 'private.challenge_redemptions', 'SELECT');
+end;
+$$;
+delete from public.friend_adds where adder = 'fc000000-0000-4000-8000-000000000002';
+
 -- A blocked pair sees nothing of each other's challenge.
 insert into public.user_blocks (blocker, blocked) values ('fc000000-0000-4000-8000-000000000001', 'fc000000-0000-4000-8000-000000000003');
 set local role authenticated;
@@ -162,6 +182,7 @@ declare
   exported jsonb := public.export_my_data();
 begin
   assert jsonb_array_length(exported -> 'challenges') = 1 and exported -> 'challenges' -> 0 ->> 'code' = 'MXAAAAA2';
+  assert exported -> 'challenge_links_used' = '[]'::jsonb, 'the sender used no one else''s link';
   assert not (exported -> 'challenges' -> 0) ? 'sender';
 end;
 $$;

@@ -26,6 +26,8 @@ export function useResumeLaunch(open: (activity: ActivityType, context?: Practic
   const intercept = useCallback((activity: ActivityType, context?: PracticeContext) => {
     const state = useAppStore.getState();
     if (!activity || state.activeActivity) return false;
+    // A race or a challenge link plays its own deck: the learner's saved place belongs to another deck.
+    if (state.racePlaying || state.challengePlaying) return false;
     const isFlashcards = activity === 'flashcards' || activity === 'flashcards-library' || activity === 'flashcards-review';
     if (!isFlashcards && activity !== 'quiz') return false;
     const deck = {

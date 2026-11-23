@@ -5,15 +5,17 @@
 --   total, and `run`: the milliseconds from the first question at which each word was answered, so a classmate
 --   can race a replay of it), the sender's display name and colour as they were when shared, and how many
 --   classmates became friends through it. It expires after 30 days and is deleted a day later.
--- Only the functions below read or write it. It cascades with the sender's account; export_my_data includes it.
+-- Only the functions below read or write it. It cascades with the sender's account; export_my_data includes it
+-- (and the links this account used to add a friend).
 --
 -- create_challenge: the sender stores one (at most 20 a day).
 -- challenge_card: a signed-in learner with the link sees the name, colour, quiz and run, never who the sender's
 --   account is (signed out, the invite shows only the lesson: every request needs a sign-in). Nothing for an
 --   expired code, a closed account, or a pair who blocked each other.
 -- accept_challenge_friend: one tap makes the classmate and the sender friends, because sharing the link was the
---   sender's yes. After 30 such friends from one link (a link forwarded around a big group), or when the
---   sender's list is full, the tap becomes an ordinary friend request.
+--   sender's yes. Each account can use a link's yes once (private.challenge_redemptions), so someone the sender
+--   later unfriends can't use the old link to come back. After 30 such friends from one link (a link forwarded
+--   around a big group), or when the sender's list is full, the tap becomes an ordinary friend request.
 
 begin;
 
@@ -32,6 +34,17 @@ create table public.challenges (
   check (total between 1 and 2000 and correct between 0 and total and cardinality(run) = total)
 );
 create index challenges_sender on public.challenges (sender, created_at desc);
+
+-- Who used a link's one-tap friend add (once per account and link); goes with the link or either account.
+create table private.challenge_redemptions (
+  code text not null references public.challenges (code) on delete cascade,
+  acceptor uuid not null references auth.users (id) on delete cascade,
+  created_at timestamptz not null default now(),
+  primary key (code, acceptor)
+);
+create index challenge_redemptions_acceptor on private.challenge_redemptions (acceptor);
+alter table private.challenge_redemptions enable row level security;
+revoke all on private.challenge_redemptions from public, anon, authenticated;
 create index challenges_expires on public.challenges (expires_at);
 alter table public.challenges enable row level security;
 revoke all on public.challenges from public, anon, authenticated;
@@ -108,11 +121,14 @@ begin
     raise exception using errcode = '54000', message = 'You''ve added the most friends allowed.';
   end if;
   insert into public.friend_adds (adder, added) values (me, found_challenge.sender) on conflict do nothing;
-  if found_challenge.friend_adds >= 30
+  -- The sender's yes: once per account and link, within the link's 30 and the sender's 300.
+  if exists (select 1 from private.challenge_redemptions r where r.code = found_challenge.code and r.acceptor = me)
+    or found_challenge.friend_adds >= 30
     or (not exists (select 1 from public.friend_adds f where f.adder = found_challenge.sender and f.added = me)
       and (select count(*) from public.friend_adds f where f.adder = found_challenge.sender) >= 300) then
     return case when private.friends(me, found_challenge.sender) then 'friends' else 'requested' end;
   end if;
+  insert into private.challenge_redemptions (code, acceptor) values (found_challenge.code, me);
   insert into public.friend_adds (adder, added) values (found_challenge.sender, me) on conflict do nothing;
   update public.challenges set friend_adds = friend_adds + 1 where code = found_challenge.code;
   return 'friends';
@@ -132,6 +148,7 @@ begin
   if position('''blocked_people''' in body) = 0 then raise exception 'export_my_data changed; update this migration'; end if;
   body := replace(body, '''blocked_people''',
     '''challenges'', COALESCE((SELECT jsonb_agg(to_jsonb(c) - ''sender'' ORDER BY c.created_at) FROM public.challenges c WHERE c.sender = uid), ''[]''::jsonb),
+        ''challenge_links_used'', COALESCE((SELECT jsonb_agg(jsonb_build_object(''code'', r.code, ''at'', r.created_at) ORDER BY r.created_at) FROM private.challenge_redemptions r WHERE r.acceptor = uid), ''[]''::jsonb),
         ''blocked_people''');
   execute body;
 end;
