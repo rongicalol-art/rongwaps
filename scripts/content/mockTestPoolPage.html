@@ -1,0 +1,320 @@
+<title>Mock Test Pool</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column. Totals, then what each paper needs against what the pool has, then the levels,
+   then every question behind filters. Colours and type are the app's own tokens. */
+:root {
+  --canvas: #f3f2f0; --surface: #fcfcfb; --ink-strong: #34312d; --ink: #4a4743; --muted: #6e6e6e;
+  --border: #cbc8c3; --divider: #dedbd6; --hover: #efedea;
+  --primary: #3a7ca5; --primary-text: #2c6385; --primary-wash: #e4edf3; --primary-track: #d3dbe0; --on-primary: #ffffff;
+  --ok: #3f8420; --ok-wash: #e1f0d4; --warn: #7a5600; --warn-wash: #fbf1d8; --bad: #b3413b; --bad-wash: #f8e1df;
+  --ui: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --han: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --canvas: #241e18; --surface: #2c251e; --ink-strong: #ede6dc; --ink: #ddd5ca; --muted: #bcae9f;
+  --border: #4a3e33; --divider: #3a3027; --hover: #302820;
+  --primary: #4b8bb9; --primary-text: #9cc6e4; --primary-wash: #233038; --primary-track: #2f3a42; --on-primary: #ffffff;
+  --ok: #8fc97a; --ok-wash: #1f2a19; --warn: #f2cf85; --warn-wash: #33290f; --bad: #eb9c97; --bad-wash: #301c1a;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --canvas: #241e18; --surface: #2c251e; --ink-strong: #ede6dc; --ink: #ddd5ca; --muted: #bcae9f;
+  --border: #4a3e33; --divider: #3a3027; --hover: #302820;
+  --primary: #4b8bb9; --primary-text: #9cc6e4; --primary-wash: #233038; --primary-track: #2f3a42; --on-primary: #ffffff;
+  --ok: #8fc97a; --ok-wash: #1f2a19; --warn: #f2cf85; --warn-wash: #33290f; --bad: #eb9c97; --bad-wash: #301c1a;
+  color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--canvas); color: var(--ink); font-family: var(--ui); font-size: 16px; line-height: 1.45; font-weight: 600;
+  padding-block: 24px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 860px; margin: 0 auto; display: grid; gap: 36px; }
+.wrap > * { min-width: 0; }
+h1 { margin: 0; font-size: 2.1rem; font-weight: 900; color: var(--ink-strong); line-height: 1.1; text-wrap: balance; }
+h2 { margin: 0; font-size: 1.3rem; font-weight: 900; color: var(--ink-strong); text-wrap: balance; }
+h3 { margin: 0; font-size: 1rem; font-weight: 900; color: var(--ink-strong); }
+p { margin: 0; }
+.lead { color: var(--muted); font-weight: 700; max-width: 62ch; }
+.section { display: grid; gap: 14px; }
+.totals { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.totals div { display: grid; }
+.totals b { font-size: 1.9rem; font-weight: 900; color: var(--ink-strong); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.totals span { color: var(--muted); font-weight: 800; font-size: .9rem; }
+button, select, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { background: var(--surface); border: 2px solid var(--border); border-bottom-width: 4px; border-radius: 10px; padding: 6px 14px; font-weight: 800; color: var(--muted); }
+.seg button[aria-pressed="true"] { border-color: var(--primary); background: var(--primary-wash); color: var(--ink-strong); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 9px 10px 9px 0; border-bottom: 2px solid var(--divider); vertical-align: middle; white-space: nowrap; }
+th { font-size: .82rem; font-weight: 900; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+td.num, th.num { text-align: right; }
+td.name { font-weight: 800; color: var(--ink-strong); white-space: normal; }
+td small { display: block; color: var(--muted); font-weight: 700; }
+.pill { display: inline-block; border-radius: 7px; padding: 2px 9px; font-weight: 900; font-size: .85rem; }
+.pill.ok { background: var(--ok-wash); color: var(--ok); }
+.pill.warn { background: var(--warn-wash); color: var(--warn); }
+.pill.bad { background: var(--bad-wash); color: var(--bad); }
+.levels { display: grid; gap: 8px; }
+.level { display: grid; grid-template-columns: 84px 1fr; gap: 12px; align-items: center; }
+.level > b { font-weight: 900; color: var(--ink-strong); }
+.bars { display: grid; gap: 4px; }
+.bar { display: grid; grid-template-columns: 1fr 96px; gap: 10px; align-items: center; }
+.bar i { display: block; height: 12px; border-radius: 6px; background: var(--primary-track); overflow: hidden; }
+.bar i u { display: block; height: 100%; border-radius: 6px; background: var(--primary); }
+.bar.read i u { background: var(--primary-text); }
+.bar span { font-size: .85rem; font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar span.none { color: var(--bad); }
+details > summary { cursor: pointer; font-weight: 900; color: var(--primary-text); }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.filters label { display: grid; gap: 3px; font-size: .82rem; font-weight: 900; color: var(--muted); }
+.filters select, .filters input { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 8px 10px; font-weight: 700; color: var(--ink-strong); width: 100%; min-width: 0; }
+.count { font-weight: 800; color: var(--muted); }
+.list { display: grid; gap: 12px; }
+.item { background: var(--surface); border: 2px solid var(--border); border-radius: 14px; padding: 14px 16px; display: grid; gap: 10px; min-width: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: .82rem; font-weight: 800; color: var(--muted); }
+.tags b { color: var(--primary-text); font-weight: 900; }
+.zh { font-family: var(--han); font-weight: 500; color: var(--ink-strong); font-size: 1.02rem; line-height: 1.7; overflow-wrap: anywhere; }
+.zh .who { font-family: var(--ui); font-weight: 900; color: var(--muted); font-size: .82rem; margin-right: 8px; }
+.pic { font-size: .88rem; font-weight: 700; color: var(--muted); }
+.q { display: grid; gap: 4px; padding-top: 8px; border-top: 2px solid var(--divider); }
+.q ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.q li { display: grid; grid-template-columns: 22px 1fr; gap: 6px; }
+.q li em { font-style: normal; font-family: var(--ui); font-weight: 900; color: var(--muted); font-size: .85rem; line-height: 1.95; }
+.q li.right { color: var(--ok); font-weight: 700; }
+.q li.right em { color: var(--ok); }
+.why { font-size: .88rem; font-weight: 700; color: var(--muted); }
+.more { justify-self: center; background: var(--surface); border: 2px solid var(--border); border-bottom-width: 5px; border-radius: 12px; padding: 10px 22px; font-weight: 900; color: var(--ink-strong); }
+.note { font-size: .88rem; font-weight: 700; color: var(--muted); max-width: 70ch; }
+@media (max-width: 520px) { h1 { font-size: 1.7rem; } th, td { padding-right: 8px; } td.name { font-size: .92rem; } .level { grid-template-columns: 70px 1fr; } .bar { grid-template-columns: 1fr 84px; } }
+</style>
+<div class="wrap">
+  <header class="section">
+    <h1>Mock Test Pool</h1>
+    <p class="lead" id="built">Every question the TOCFL mock test can ask today.</p>
+    <div class="totals" id="totals" aria-live="polite"></div>
+  </header>
+
+  <section class="section" aria-labelledby="h-papers">
+    <h2 id="h-papers">What a full paper needs</h2>
+    <p class="lead">A Full test takes 50 listening and 50 reading questions, in the official paper's mix. "Needs" is one paper's share, "Has" is what the pool holds, and "Papers" is how many different full papers that fills before questions repeat. The aim is 2.</p>
+    <div class="seg" id="bands" role="group" aria-label="Band"></div>
+    <div id="papers" class="section"></div>
+  </section>
+
+  <section class="section" aria-labelledby="h-levels">
+    <h2 id="h-levels">Questions per level</h2>
+    <p class="lead">The Adaptive test draws from every level. It can only tell levels apart where questions exist, so an empty level is its ceiling.</p>
+    <div class="levels" id="levels"></div>
+  </section>
+
+  <section class="section" aria-labelledby="h-sources">
+    <h2 id="h-sources">Where they come from</h2>
+    <details>
+      <summary id="sources-summary">Show every source</summary>
+      <div class="scroll" style="margin-top:12px"><table id="sources"></table></div>
+    </details>
+  </section>
+
+  <section class="section" aria-labelledby="h-list">
+    <h2 id="h-list">All questions</h2>
+    <div class="filters">
+      <label>Band<select id="f-band"><option value="">All</option></select></label>
+      <label>Skill<select id="f-part"><option value="">All</option><option value="listening">Listening</option><option value="reading">Reading</option></select></label>
+      <label>Level<select id="f-level"><option value="">All</option></select></label>
+      <label>Kind<select id="f-shape"><option value="">All</option></select></label>
+      <label>Source<select id="f-source"><option value="">All</option></select></label>
+      <label>Search<input id="f-text" type="search" placeholder="Chinese, English or id" autocomplete="off"></label>
+    </div>
+    <p class="count" id="count" aria-live="polite">Loading the questions…</p>
+    <div class="list" id="list"></div>
+    <button class="more" id="more" type="button" hidden>Show more</button>
+  </section>
+  <p class="note">Pictures are named, not shown. Answers and reasons are included, so keep this page to yourself and the people who write the questions.</p>
+</div>
+<script id="meta" type="application/json">__META__</script>
+<script>
+const META = JSON.parse(document.getElementById('meta').textContent);
+const BAND_NAMES = { N: 'Novice', A: 'Band A', B: 'Band B', C: 'Band C' };
+const LEVEL_NAMES = { 0.5: 'Novice 1', 0.9: 'Novice 2', 1: 'Level 1', 2: 'Level 2', 3: 'Level 3', 4: 'Level 4', 5: 'Level 5', 6: 'Level 6' };
+const SHAPE_NAMES = {
+  'picture-hear': 'Picture, spoken answers', 'hear-pick-picture': 'Hear, pick a picture', 'dialogue-spoken': 'Dialogue, spoken answers',
+  'dialogue-printed': 'Dialogue, printed answers', 'dialogue-group': 'Dialogue with several questions', talk: 'Talk, one question',
+  'talk-group': 'Talk with several questions', 'sentence-picture': 'Sentence, pick a picture', realia: 'Notice or menu',
+  'scene-gap': 'Scene with gaps', 'paragraph-bank': 'Paragraph with a word bank', cloze: 'Passage with blanks',
+  reading: 'Text, one question', 'reading-group': 'Text with several questions',
+};
+const LETTERS = 'ABCDEF';
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, text) => { const node = document.createElement(tag); if (cls) node.className = cls; if (text !== undefined) node.textContent = text; return node; };
+const num = (n) => n.toLocaleString('en-US');
+const sourceName = (r) => `Book ${r.book} · Lesson ${r.lesson}`;
+let pool = [];
+let band = 'A';
+let shown = 30;
+
+function totals() {
+  const questions = pool.reduce((sum, r) => sum + r.q.length, 0);
+  const box = $('totals');
+  for (const [value, label] of [[pool.length, 'recordings and texts'], [questions, 'scored questions'], [new Set(pool.map((r) => r.family)).size, 'slots (a slot has 2-3 versions)']]) {
+    const cell = el('div'); cell.append(el('b', '', num(value)), el('span', '', label)); box.append(cell);
+  }
+  $('built').textContent = `Every question the TOCFL mock test can ask today. Built ${META.built}.`;
+}
+
+function papers() {
+  const host = $('papers');
+  host.replaceChildren();
+  for (const part of ['listening', 'reading']) {
+    const lines = META.recipes[band][part];
+    const table = el('table');
+    const head = el('tr');
+    for (const [text, cls] of [[part === 'listening' ? 'Listening' : 'Reading', ''], ['Needs', 'num'], ['Has', 'num'], ['Papers', '']]) head.append(el('th', cls, text));
+    table.append(head);
+    let need = 0; let have = 0;
+    const row = (name, perPaper, inPool, families, detail) => {
+      const tr = el('tr');
+      const nameCell = el('td', 'name', name);
+      if (detail) nameCell.append(el('small', '', detail));
+      // One test shows one version of a slot, so a paper needs enough slots; versions add fresh papers.
+      const count = families >= perPaper ? Math.floor(inPool / perPaper) : 0;
+      const pill = el('span', `pill ${count >= 2 ? 'ok' : count === 1 ? 'warn' : 'bad'}`, count >= 2 ? `${count} papers` : count === 1 ? '1 paper' : `Short by ${perPaper - families}`);
+      const status = el('td'); status.append(pill);
+      tr.append(nameCell, el('td', 'num', num(perPaper)), el('td', 'num', num(inPool)), status);
+      return tr;
+    };
+    for (const [shape, perPaper] of lines) {
+      const rows = pool.filter((r) => r.band === band && r.part === part && r.shape === shape);
+      const inPool = rows.reduce((sum, r) => sum + r.q.length, 0);
+      const bySlot = new Map(); for (const r of rows) bySlot.set(r.family, Math.max(bySlot.get(r.family) || 0, r.q.length));
+      const families = [...bySlot.values()].reduce((sum, n) => sum + n, 0);
+      need += perPaper; have += inPool;
+      table.append(row(SHAPE_NAMES[shape] || shape, perPaper, inPool, families));
+    }
+    const listed = new Set(lines.map(([shape]) => shape));
+    const extra = pool.filter((r) => r.band === band && r.part === part && !listed.has(r.shape)).reduce((sum, r) => sum + r.q.length, 0);
+    const total = el('tr');
+    const totalName = el('td', 'name', 'Whole part');
+    if (extra) totalName.append(el('small', '', `plus ${num(extra)} of other kinds, used to top a paper up`));
+    total.append(totalName, el('td', 'num', num(need)), el('td', 'num', num(have + extra)), el('td'));
+    table.append(total);
+    const scroll = el('div', 'scroll'); scroll.append(table); host.append(scroll);
+  }
+  const levels = META.bandLevels[band].map((level) => `${LEVEL_NAMES[level]}: ${num(pool.filter((r) => r.band === band && r.level === level).reduce((sum, r) => sum + r.q.length, 0))} questions`);
+  host.append(el('p', 'note', `${BAND_NAMES[band]} by level. ${levels.join(' · ')}.`));
+}
+
+function bandButtons() {
+  const host = $('bands');
+  for (const key of Object.keys(META.recipes)) {
+    const button = el('button', '', BAND_NAMES[key]);
+    button.type = 'button';
+    button.setAttribute('aria-pressed', String(key === band));
+    button.addEventListener('click', () => { band = key; host.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === button))); papers(); });
+    host.append(button);
+  }
+}
+
+function levels() {
+  const host = $('levels');
+  const counts = Object.keys(LEVEL_NAMES).map(Number).sort((a, b) => a - b).map((level) => ({
+    level,
+    listening: pool.filter((r) => r.level === level && r.part === 'listening').reduce((sum, r) => sum + r.q.length, 0),
+    reading: pool.filter((r) => r.level === level && r.part === 'reading').reduce((sum, r) => sum + r.q.length, 0),
+  }));
+  const top = Math.max(1, ...counts.flatMap((c) => [c.listening, c.reading]));
+  for (const c of counts) {
+    const row = el('div', 'level'); row.append(el('b', '', LEVEL_NAMES[c.level]));
+    const bars = el('div', 'bars');
+    for (const [part, label] of [['listening', 'listening'], ['reading', 'reading']]) {
+      const bar = el('div', `bar ${part === 'reading' ? 'read' : ''}`);
+      const track = el('i'); const fill = el('u'); fill.style.width = `${(c[part] / top) * 100}%`; track.append(fill);
+      bar.append(track, el('span', c[part] ? '' : 'none', c[part] ? `${num(c[part])} ${label}` : `no ${label}`));
+      bars.append(bar);
+    }
+    row.append(bars); host.append(row);
+  }
+}
+
+function sources() {
+  const bySource = new Map();
+  for (const r of pool) {
+    const key = sourceName(r);
+    const entry = bySource.get(key) || { book: r.book, lesson: r.lesson, band: r.band, level: r.level, items: 0, listening: 0, reading: 0 };
+    entry.items += 1; entry[r.part] += r.q.length; bySource.set(key, entry);
+  }
+  const table = $('sources');
+  const head = el('tr');
+  for (const [text, cls] of [['Source', ''], ['Band', ''], ['Level', ''], ['Listening', 'num'], ['Reading', 'num']]) head.append(el('th', cls, text));
+  table.append(head);
+  for (const [name, s] of [...bySource].sort(([, a], [, b]) => a.book - b.book || a.lesson - b.lesson)) {
+    const tr = el('tr');
+    tr.append(el('td', 'name', `${name} test`), el('td', '', BAND_NAMES[s.band]), el('td', '', LEVEL_NAMES[s.level]), el('td', 'num', num(s.listening)), el('td', 'num', num(s.reading)));
+    table.append(tr);
+  }
+  $('sources-summary').textContent = `Show all ${bySource.size} sources`;
+}
+
+function fillFilters() {
+  const add = (id, values, label) => { for (const value of values) { const option = el('option', '', label(value)); option.value = String(value); $(id).append(option); } };
+  add('f-band', ['N', 'A', 'B', 'C'].filter((b) => pool.some((r) => r.band === b)), (b) => BAND_NAMES[b]);
+  add('f-level', [...new Set(pool.map((r) => r.level))].sort((a, b) => a - b), (l) => LEVEL_NAMES[l]);
+  add('f-shape', [...new Set(pool.map((r) => r.shape))].sort(), (s) => SHAPE_NAMES[s] || s);
+  const seen = new Map(); for (const r of pool) seen.set(sourceName(r), r);
+  add('f-source', [...seen].sort(([, a], [, b]) => a.book - b.book || a.lesson - b.lesson).map(([name]) => name), (name) => name);
+  for (const id of ['f-band', 'f-part', 'f-level', 'f-shape', 'f-source']) $(id).addEventListener('change', () => { shown = 30; list(); });
+  let timer; $('f-text').addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => { shown = 30; list(); }, 200); });
+  $('more').addEventListener('click', () => { shown += 30; list(); });
+}
+
+function card(r) {
+  const item = el('article', 'item');
+  const tags = el('div', 'tags');
+  tags.append(el('b', '', BAND_NAMES[r.band]), el('span', '', LEVEL_NAMES[r.level]), el('span', '', r.part === 'listening' ? 'Listening' : 'Reading'), el('span', '', SHAPE_NAMES[r.shape] || r.shape), el('span', '', sourceName(r)), el('span', '', r.id));
+  item.append(tags);
+  if (r.pic) item.append(el('p', 'pic', `Picture: ${r.pic}`));
+  if (r.lines) {
+    const block = el('div', 'zh'); block.lang = 'zh-Hant';
+    for (const [who, text] of r.lines) { const line = el('div'); line.append(el('span', 'who', who), document.createTextNode(text)); block.append(line); }
+    item.append(block);
+  }
+  if (r.text) { const text = el('p', 'zh', r.text); text.lang = 'zh-Hant'; text.style.whiteSpace = 'pre-line'; item.append(text); }
+  if (r.bank) { const bank = el('p', 'zh', `Word bank: ${r.bank.map((word, index) => `${LETTERS[index]} ${word}`).join('　')}`); bank.lang = 'zh-Hant'; item.append(bank); }
+  r.q.forEach((q, index) => {
+    const block = el('div', 'q');
+    if (q.p) { const prompt = el('p', 'zh', (r.q.length > 1 ? `${index + 1}. ` : '') + q.p); prompt.lang = 'zh-Hant'; block.append(prompt); }
+    if (q.c) {
+      const choices = el('ol');
+      q.c.forEach((choice, at) => {
+        const li = el('li', at === q.k ? 'zh right' : 'zh'); li.lang = 'zh-Hant';
+        li.append(el('em', '', LETTERS[at]), document.createTextNode(choice + (at === q.k ? '  ✓' : '')));
+        choices.append(li);
+      });
+      block.append(choices);
+    } else if (r.bank) {
+      const answer = el('p', 'zh', `Blank ${index + 1}: ${LETTERS[q.k]} ${r.bank[q.k]}`); answer.lang = 'zh-Hant'; block.append(answer);
+    }
+    if (q.why) block.append(el('p', 'why', q.why));
+    item.append(block);
+  });
+  return item;
+}
+
+function list() {
+  const f = { band: $('f-band').value, part: $('f-part').value, level: $('f-level').value, shape: $('f-shape').value, source: $('f-source').value, text: $('f-text').value.trim().toLowerCase() };
+  const rows = pool.filter((r) => (!f.band || r.band === f.band) && (!f.part || r.part === f.part) && (!f.level || String(r.level) === f.level)
+    && (!f.shape || r.shape === f.shape) && (!f.source || sourceName(r) === f.source) && (!f.text || r.search.includes(f.text)));
+  const questions = rows.reduce((sum, r) => sum + r.q.length, 0);
+  $('count').textContent = rows.length ? `${num(rows.length)} recordings and texts, ${num(questions)} questions` : 'Nothing matches these filters.';
+  $('list').replaceChildren(...rows.slice(0, shown).map(card));
+  $('more').hidden = rows.length <= shown;
+  if (!$('more').hidden) $('more').textContent = `Show more (${num(rows.length - shown)} left)`;
+}
+
+fetch('pool.json').then((response) => { if (!response.ok) throw new Error(String(response.status)); return response.json(); }).then((records) => {
+  pool = records.map((r) => ({ ...r, search: [r.id, r.text, r.pic, ...(r.lines || []).map((line) => line[1]), ...(r.bank || []), ...r.q.flatMap((q) => [q.p, q.why, ...(q.c || [])])].filter(Boolean).join(' ').toLowerCase() }));
+  if (!META.recipes[band]) band = Object.keys(META.recipes)[0];
+  totals(); bandButtons(); papers(); levels(); sources(); fillFilters(); list();
+}).catch(() => { $('count').textContent = 'The questions could not be loaded. Reload the page to try again.'; });
+</script>

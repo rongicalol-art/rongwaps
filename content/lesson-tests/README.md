@@ -326,4 +326,5 @@ exported for it: the app builds the pool from these packs when the mock test ope
 - **A slot's versions never meet**: one mock test shows at most one version of a slot.
 - **Adding questions** needs no code: a new lesson test joins the pool by itself. A band's fixed paper opens once the
   pool holds a full paper for it (`bandOpen`), and a paper's make-up is the table in `src/utils/mockTest/recipes.ts`.
-
+- **See the whole pool**: `npm run mock-test:pool` writes a page (`output/mock-test-pool/`) with the totals, what each band's
+  full paper needs against what the pool has, the questions per level and every question behind filters.
