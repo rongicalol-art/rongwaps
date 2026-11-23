@@ -1,0 +1,66 @@
+{
+  "fixes": [
+    {
+      "id": "B3L10-1-21",
+      "field": "pinyin",
+      "value": "biǎoshi",
+      "reason": "book 10-1 entry 20 (p.260, scan page_244) prints biǎoshi, neutral tone on shi."
+    },
+    {
+      "id": "B3L11-1-32",
+      "field": "pinyin",
+      "value": "xùnxí",
+      "reason": "book 11-1 entry 31 (p.288, scan page_272) prints xùnxí (Taiwan reading)."
+    },
+    {
+      "id": "B3L11-1-35",
+      "field": "pos",
+      "value": "N",
+      "reason": "book 11-1 Phrases 1 (p.288, scan page_272) prints 社群網站 with N."
+    },
+    {
+      "id": "B3L11-2-15",
+      "field": "pinyin",
+      "value": "yǒuyì",
+      "reason": "book 11-2 entry 14 (p.297, scan page_281) prints yǒuyì."
+    },
+    {
+      "id": "B3L12-1-21",
+      "field": "pos",
+      "value": "M",
+      "reason": "book 12-1 entry 20 (p.311, scan page_295) prints 組 as M (第一組, 第二組)."
+    }
+  ],
+  "newCards": [
+    {
+      "id": "B3L09-1-35",
+      "after": "B3L09-1-06",
+      "traditional": "解釋",
+      "simplified": "解释",
+      "pinyin": "jiěshì",
+      "pos": "V",
+      "meaning": "to explain",
+      "reason": "book 9-1 entry 7 (p.231, scan page_215): printed in the Lesson 9 word list; no card."
+    },
+    {
+      "id": "B3L09-1-36",
+      "after": "B3L09-1-08",
+      "traditional": "但",
+      "simplified": "但",
+      "pinyin": "dàn",
+      "pos": "Conj",
+      "meaning": "however, yet, but",
+      "reason": "book 9-1 entry 10 (p.232, scan page_216): printed in the Lesson 9 word list; no card (Book 1 has 但是, a different word)."
+    },
+    {
+      "id": "B3L09-1-37",
+      "after": "B3L09-1-29",
+      "traditional": "理想",
+      "simplified": "理想",
+      "pinyin": "lǐxiǎng",
+      "pos": "Vs",
+      "meaning": "ideal",
+      "reason": "book 9-1 entry 32 (p.234, scan page_218): 理想 as Vs ('an ideal school'); Book 2 L15 has only the noun (B2L15-2-10)."
+    }
+  ]
+}
