@@ -1,0 +1,2752 @@
+{
+  "schemaVersion": 1,
+  "key": "b3l12",
+  "bookId": 3,
+  "lessonId": 12,
+  "band": "B",
+  "allowWords": [
+    "會議室",
+    "小高",
+    "小方",
+    "李經理",
+    "東方",
+    "臺中",
+    "臺灣",
+    "我媽",
+    "旅行社",
+    "怪怪的",
+    "咖啡店",
+    "新同事",
+    "同事們",
+    "朋友們",
+    "王小姐",
+    "林先生",
+    "滿地",
+    "咖啡社"
+  ],
+  "slots": [
+    {
+      "id": "dialogue-right-away",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l12-dialogue-right-away-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "經理，三點來面試的那位先生已經到了，在門口等。",
+              "simplified": "经理，三点来面试的那位先生已经到了，在门口等。",
+              "pinyin": "Jīnglǐ, sān diǎn lái miànshì de nà wèi xiānshēng yǐjīng dào le, zài ménkǒu děng.",
+              "english": "Manager, the man coming for the three o'clock interview is already here, waiting at the door."
+            },
+            {
+              "speaker": "F",
+              "traditional": "這麼早？現在才兩點半。",
+              "simplified": "这么早？现在才两点半。",
+              "pinyin": "Zhème zǎo? Xiànzài cái liǎng diǎn bàn.",
+              "english": "So early? It's only half past two."
+            },
+            {
+              "speaker": "M",
+              "traditional": "他說他對這裡的路不熟，怕找不到，所以早一點出門。",
+              "simplified": "他说他对这里的路不熟，怕找不到，所以早一点出门。",
+              "pinyin": "Tā shuō tā duì zhèlǐ de lù bù shú, pà zhǎo bú dào, suǒyǐ zǎo yìdiǎn chūmén.",
+              "english": "He says he doesn't know the roads round here and was afraid he wouldn't find us, so he left early."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我三點以前得先把這份報告看完。你先請他到會議室坐一下，給他一杯水。",
+              "simplified": "我三点以前得先把这份报告看完。你先请他到会议室坐一下，给他一杯水。",
+              "pinyin": "Wǒ sān diǎn yǐqián děi xiān bǎ zhè fèn bàogào kàn wán. Nǐ xiān qǐng tā dào huìyìshì zuò yíxià, gěi tā yì bēi shuǐ.",
+              "english": "I have to finish reading this report before three. First ask him to sit in the meeting room for a while, and give him a glass of water."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好，我這就去。",
+              "simplified": "好，我这就去。",
+              "pinyin": "Hǎo, wǒ zhè jiù qù.",
+              "english": "OK, I'll go right now."
+            }
+          ],
+          "answerLine": 4,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-dialogue-right-away-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的說「我這就去」以後，那位先生等一下大概會怎麼樣？",
+                "simplified": "男的说「我这就去」以后，那位先生等一下大概会怎么样？",
+                "pinyin": "Nán de shuō \"wǒ zhè jiù qù\" yǐhòu, nà wèi xiānshēng děng yíxià dàgài huì zěnmeyàng?",
+                "english": "After the man says \"I'll go right now\", what will probably happen to the visitor?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "馬上被帶去跟經理見面",
+                  "simplified": "马上被带去跟经理见面",
+                  "pinyin": "Mǎshàng bèi dài qù gēn jīnglǐ jiànmiàn.",
+                  "english": "He will be taken straight in to meet the manager."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "先到別的地方走走，三點再來",
+                  "simplified": "先到别的地方走走，三点再来",
+                  "pinyin": "Xiān dào bié de dìfāng zǒu zou, sān diǎn zài lái.",
+                  "english": "He will go somewhere else and come back at three."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在會議室坐著，等經理看完報告",
+                  "simplified": "在会议室坐着，等经理看完报告",
+                  "pinyin": "Zài huìyìshì zuò zhe, děng jīnglǐ kàn wán bàogào.",
+                  "english": "He will sit in the meeting room until the manager has read her report."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在門口一直等到三點",
+                  "simplified": "在门口一直等到三点",
+                  "pinyin": "Zài ménkǒu yìzhí děng dào sān diǎn.",
+                  "english": "He will wait at the door until three."
+                }
+              ],
+              "key": 2,
+              "why": "我這就去 answers her request just before it: he takes the visitor to the meeting room now, while she still has to finish the report before three. 這就 is about the man acting at once, not the meeting; nobody sends the visitor away, and the door is where he waits only until the man comes.",
+              "focus": {
+                "zh": "這就……；兩句合起來",
+                "en": "right away; combining two turns"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-02",
+                "B3L12-1-05",
+                "B2L09-2-10"
+              ],
+              "grammarIds": [
+                "B3L12-G01-P313"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-dialogue-right-away-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你不是說今天要把房間整理好嗎？已經下午四點了。",
+              "simplified": "你不是说今天要把房间整理好吗？已经下午四点了。",
+              "pinyin": "Nǐ bú shì shuō jīntiān yào bǎ fángjiān zhěnglǐ hǎo ma? Yǐjīng xiàwǔ sì diǎn le.",
+              "english": "Didn't you say you'd tidy your room today? It's already four in the afternoon."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我在等同學把報告的資料傳給我，等一下再整理。",
+              "simplified": "我在等同学把报告的资料传给我，等一下再整理。",
+              "pinyin": "Wǒ zài děng tóngxué bǎ bàogào de zīliào chuán gěi wǒ, děng yíxià zài zhěnglǐ.",
+              "english": "I'm waiting for a classmate to send me the material for our report. I'll tidy up later."
+            },
+            {
+              "speaker": "F",
+              "traditional": "等資料跟整理房間有什麼關係？等的時候就可以先整理啊。你阿姨六點就到了。",
+              "simplified": "等资料跟整理房间有什么关系？等的时候就可以先整理啊。你阿姨六点就到了。",
+              "pinyin": "Děng zīliào gēn zhěnglǐ fángjiān yǒu shénme guānxi? Děng de shíhòu jiù kěyǐ xiān zhěnglǐ a. Nǐ āyí liù diǎn jiù dào le.",
+              "english": "What's waiting for material got to do with tidying your room? You can tidy while you wait. Your aunt arrives at six."
+            },
+            {
+              "speaker": "M",
+              "traditional": "阿姨不是明天才來嗎？",
+              "simplified": "阿姨不是明天才来吗？",
+              "pinyin": "Āyí bú shì míngtiān cái lái ma?",
+              "english": "Isn't Auntie only coming tomorrow?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "她改時間了，今天晚上就要睡你的房間。",
+              "simplified": "她改时间了，今天晚上就要睡你的房间。",
+              "pinyin": "Tā gǎi shíjiān le, jīntiān wǎnshàng jiù yào shuì nǐ de fángjiān.",
+              "english": "She changed the time. She's sleeping in your room tonight."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好，好，我這就去整理。",
+              "simplified": "好，好，我这就去整理。",
+              "pinyin": "Hǎo, hǎo, wǒ zhè jiù qù zhěnglǐ.",
+              "english": "OK, OK, I'll go and tidy it right now."
+            }
+          ],
+          "answerLine": 5,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-dialogue-right-away-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的告訴男的阿姨改了時間，是希望男的怎麼做？",
+                "simplified": "女的告诉男的阿姨改了时间，是希望男的怎么做？",
+                "pinyin": "Nǚ de gàosù nán de āyí gǎi le shíjiān, shì xīwàng nán de zěnme zuò?",
+                "english": "The woman tells the man his aunt has changed her plans. What does she want him to do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "先看完資料，六點再整理",
+                  "simplified": "先看完资料，六点再整理",
+                  "pinyin": "Xiān kàn wán zīliào, liù diǎn zài zhěnglǐ.",
+                  "english": "Read the material first and tidy up at six."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在就整理，不要等到資料傳來",
+                  "simplified": "现在就整理，不要等到资料传来",
+                  "pinyin": "Xiànzài jiù zhěnglǐ, bú yào děng dào zīliào chuán lái.",
+                  "english": "Tidy up now instead of waiting until the material arrives."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "明天阿姨來以前整理好",
+                  "simplified": "明天阿姨来以前整理好",
+                  "pinyin": "Míngtiān āyí lái yǐqián zhěnglǐ hǎo.",
+                  "english": "Have it tidy before his aunt comes tomorrow."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "請同學快一點把資料傳來",
+                  "simplified": "请同学快一点把资料传来",
+                  "pinyin": "Qǐng tóngxué kuài yìdiǎn bǎ zīliào chuán lái.",
+                  "english": "Ask his classmate to send the material sooner."
+                }
+              ],
+              "key": 1,
+              "why": "She brings up the change (the aunt comes today and sleeps in his room) to make him tidy now instead of after the material comes, and his 我這就去整理 shows it worked. Six is when the aunt arrives, not a time to start, and tomorrow was the old plan.",
+              "focus": {
+                "zh": "這就……；說話的目的",
+                "en": "right away; the speaker's purpose"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L05-1-23",
+                "B2L03-2-11",
+                "B3L11-2-14",
+                "B3L06-1-32"
+              ],
+              "grammarIds": [
+                "B3L12-G01-P313"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-even-though",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l12-dialogue-even-though-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "聽說那家公司要你下星期一去上班？",
+              "simplified": "听说那家公司要你下星期一去上班？",
+              "pinyin": "Tīngshuō nà jiā gōngsī yào nǐ xià xīngqíyī qù shàngbān?",
+              "english": "I hear that company wants you to start next Monday?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "對，可是我還在想要不要去。",
+              "simplified": "对，可是我还在想要不要去。",
+              "pinyin": "Duì, kěshì wǒ hái zài xiǎng yào bú yào qù.",
+              "english": "Yes, but I'm still thinking about whether to go."
+            },
+            {
+              "speaker": "F",
+              "traditional": "為什麼？薪水不是比現在多嗎？",
+              "simplified": "为什么？薪水不是比现在多吗？",
+              "pinyin": "Wèishénme? Xīnshuǐ bú shì bǐ xiànzài duō ma?",
+              "english": "Why? Isn't the pay better than now?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "儘管薪水比較多，可是離我家太遠了，坐車要一個半小時。",
+              "simplified": "尽管薪水比较多，可是离我家太远了，坐车要一个半小时。",
+              "pinyin": "Jǐnguǎn xīnshuǐ bǐjiào duō, kěshì lí wǒ jiā tài yuǎn le, zuò chē yào yí ge bàn xiǎoshí.",
+              "english": "Even though the pay is better, it's too far from home: an hour and a half each way."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那就搬到公司附近啊。",
+              "simplified": "那就搬到公司附近啊。",
+              "pinyin": "Nà jiù bān dào gōngsī fùjìn a.",
+              "english": "Then move near the company."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我跟我媽一起住，我搬走了，誰照顧她？",
+              "simplified": "我跟我妈一起住，我搬走了，谁照顾她？",
+              "pinyin": "Wǒ gēn wǒ mā yìqǐ zhù, wǒ bān zǒu le, shéi zhàogù tā?",
+              "english": "I live with my mom. If I move away, who will look after her?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "那請你媽媽跟你一起搬過去。",
+              "simplified": "那请你妈妈跟你一起搬过去。",
+              "pinyin": "Nà qǐng nǐ māma gēn nǐ yìqǐ bān guòqù.",
+              "english": "Then ask your mom to move there with you."
+            },
+            {
+              "speaker": "M",
+              "traditional": "她的朋友都在這裡，說什麼都不肯走。",
+              "simplified": "她的朋友都在这里，说什么都不肯走。",
+              "pinyin": "Tā de péngyǒu dōu zài zhèlǐ, shuō shénme dōu bù kěn zǒu.",
+              "english": "All her friends are here. She won't leave, whatever I say."
+            }
+          ],
+          "answerLine": 5,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-dialogue-even-though-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的現在還不能決定，主要是因為什麼？",
+                "simplified": "男的现在还不能决定，主要是因为什么？",
+                "pinyin": "Nán de xiànzài hái bù néng juédìng, zhǔyào shì yīnwèi shénme?",
+                "english": "What mainly keeps the man from deciding?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去了就很難照顧媽媽",
+                  "simplified": "去了就很难照顾妈妈",
+                  "pinyin": "Qù le jiù hěn nán zhàogù māma.",
+                  "english": "Taking the job would make it hard to look after his mom."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "媽媽不讓他搬出去住",
+                  "simplified": "妈妈不让他搬出去住",
+                  "pinyin": "Māma bú ràng tā bān chūqù zhù.",
+                  "english": "His mom won't let him move out."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他不想離開這裡的朋友",
+                  "simplified": "他不想离开这里的朋友",
+                  "pinyin": "Tā bù xiǎng líkāi zhèlǐ de péngyǒu.",
+                  "english": "He doesn't want to leave his friends here."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "新公司下星期一就得上班",
+                  "simplified": "新公司下星期一就得上班",
+                  "pinyin": "Xīn gōngsī xià xīngqíyī jiù děi shàngbān.",
+                  "english": "The new job starts as soon as next Monday."
+                }
+              ],
+              "key": 0,
+              "why": "儘管 sets the better pay aside: the office is too far, moving away would leave his mother alone, and she won't move with him. It is the MOTHER who refuses to move (she never stops him), and the friends who keep her here are hers, not his.",
+              "focus": {
+                "zh": "儘管……，可是……",
+                "en": "even though…, still…"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-2-05",
+                "B3L12-1-29",
+                "B2L11-2-06"
+              ],
+              "grammarIds": [
+                "B3L12-G05-P325"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-dialogue-even-though-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你看起來好累，又加班了？",
+              "simplified": "你看起来好累，又加班了？",
+              "pinyin": "Nǐ kàn qǐlái hǎo lèi, yòu jiābān le?",
+              "english": "You look exhausted. Working late again?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "對啊，最近任務特別多，主管每天都留我們到九點。",
+              "simplified": "对啊，最近任务特别多，主管每天都留我们到九点。",
+              "pinyin": "Duì a, zuìjìn rènwù tèbié duō, zhǔguǎn měi tiān dōu liú wǒmen dào jiǔ diǎn.",
+              "english": "Yes, our team has a lot of tasks lately, and the supervisor keeps us until nine every day."
+            },
+            {
+              "speaker": "F",
+              "traditional": "每天到九點？你怎麼不跟主管說說看？",
+              "simplified": "每天到九点？你怎么不跟主管说说看？",
+              "pinyin": "Měi tiān dào jiǔ diǎn? Nǐ zěnme bù gēn zhǔguǎn shuō shuo kàn?",
+              "english": "Until nine every day? Why don't you try talking to your supervisor?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "累是累，不過她常常教我怎麼跟客人溝通，我學到了很多。",
+              "simplified": "累是累，不过她常常教我怎么跟客人沟通，我学到了很多。",
+              "pinyin": "Lèi shì lèi, búguò tā chángcháng jiāo wǒ zěnme gēn kèrén gōutōng, wǒ xué dào le hěn duō.",
+              "english": "It is tiring, but she often teaches me how to deal with customers, and I've learned a lot."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你上次不是說她很愛批評人嗎？",
+              "simplified": "你上次不是说她很爱批评人吗？",
+              "pinyin": "Nǐ shàng cì bú shì shuō tā hěn ài pīpíng rén ma?",
+              "english": "Didn't you say last time that she loves criticizing people?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "儘管她說話不太客氣，可是說的都有道理。",
+              "simplified": "尽管她说话不太客气，可是说的都有道理。",
+              "pinyin": "Jǐnguǎn tā shuōhuà bú tài kèqi, kěshì shuō de dōu yǒu dàolǐ.",
+              "english": "Even though she isn't very polite when she talks, what she says always makes sense."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那也要注意身體啊。",
+              "simplified": "那也要注意身体啊。",
+              "pinyin": "Nà yě yào zhùyì shēntǐ a.",
+              "english": "You still need to look after yourself."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我知道，下個月任務做完就好了。",
+              "simplified": "我知道，下个月任务做完就好了。",
+              "pinyin": "Wǒ zhīdào, xià ge yuè rènwù zuò wán jiù hǎo le.",
+              "english": "I know. Once the tasks are done next month, it'll be fine."
+            }
+          ],
+          "answerLine": 5,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-dialogue-even-though-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的對他的主管有什麼看法？",
+                "simplified": "男的对他的主管有什么看法？",
+                "pinyin": "Nán de duì tā de zhǔguǎn yǒu shénme kànfǎ?",
+                "english": "What does the man think of his supervisor?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "很會教人，可是不顧大家的身體",
+                  "simplified": "很会教人，可是不顾大家的身体",
+                  "pinyin": "Hěn huì jiāo rén, kěshì bú gù dàjiā de shēntǐ.",
+                  "english": "She teaches well but doesn't care about people's health."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "愛批評人，所以他不敢跟她說",
+                  "simplified": "爱批评人，所以他不敢跟她说",
+                  "pinyin": "Ài pīpíng rén, suǒyǐ tā bù gǎn gēn tā shuō.",
+                  "english": "She loves to criticize, so he dare not speak to her."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "給的任務太多，可是下個月會少一點",
+                  "simplified": "给的任务太多，可是下个月会少一点",
+                  "pinyin": "Gěi de rènwù tài duō, kěshì xià ge yuè huì shǎo yìdiǎn.",
+                  "english": "She gives too many tasks, but will give fewer next month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "說話不好聽，可是說的都對",
+                  "simplified": "说话不好听，可是说的都对",
+                  "pinyin": "Shuōhuà bù hǎotīng, kěshì shuō de dōu duì.",
+                  "english": "She speaks harshly, but she is right."
+                }
+              ],
+              "key": 3,
+              "why": "Asked about her criticism, he says 儘管她說話不太客氣，可是說的都有道理: blunt but right. Worrying about his health is the woman's point, not a complaint he makes; he gives a reason for not complaining rather than fear; and next month the TASKS end, nobody says she will give fewer.",
+              "focus": {
+                "zh": "儘管……，可是……",
+                "en": "even though…, but…"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-2-05",
+                "B3L12-1-20",
+                "B3L12-1-22",
+                "B3L09-2-23",
+                "B2L01-1-12",
+                "B3L12-2-10"
+              ],
+              "grammarIds": [
+                "B3L12-G05-P325"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-dialogue",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l12-review-dialogue-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳不是跟網友約好今天見面嗎？怎麼這麼早就回來了？",
+              "simplified": "你不是跟网友约好今天见面吗？怎么这么早就回来了？",
+              "pinyin": "Nǐ bú shì gēn wǎngyǒu yuē hǎo jīntiān jiànmiàn ma? Zěnme zhème zǎo jiù huílái le?",
+              "english": "Weren't you meeting your online friend today? Why are you back so early?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們在網路上聊了三個月，他說他是大學生，今年二十歲。",
+              "simplified": "我们在网路上聊了三个月，他说他是大学生，今年二十岁。",
+              "pinyin": "Wǒmen zài wǎnglù shàng liáo le sān ge yuè, tā shuō tā shì dàxuéshēng, jīnnián èrshí suì.",
+              "english": "We chatted online for three months. He said he was a university student, twenty years old."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那今天見到他了嗎？",
+              "simplified": "那今天见到他了吗？",
+              "pinyin": "Nà jīntiān jiàn dào tā le ma?",
+              "english": "So did you meet him today?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "來的卻是一位四十多歲的先生，說他是那個大學生的哥哥，要先來看看我。",
+              "simplified": "来的却是一位四十多岁的先生，说他是那个大学生的哥哥，要先来看看我。",
+              "pinyin": "Lái de què shì yí wèi sìshí duō suì de xiānshēng, shuō tā shì nàge dàxuéshēng de gēge, yào xiān lái kàn kan wǒ.",
+              "english": "But the one who came was a man in his forties. He said he was the student's older brother and wanted to see me first."
+            },
+            {
+              "speaker": "M",
+              "traditional": "這樣子太奇怪了。",
+              "simplified": "这样子太奇怪了。",
+              "pinyin": "Zhè yàngzi tài qíguài le.",
+              "english": "That's very strange."
+            },
+            {
+              "speaker": "F",
+              "traditional": "對啊，我覺得不太對，喝了一杯咖啡就走了。",
+              "simplified": "对啊，我觉得不太对，喝了一杯咖啡就走了。",
+              "pinyin": "Duì a, wǒ juéde bú tài duì, hē le yì bēi kāfēi jiù zǒu le.",
+              "english": "Right. Something felt wrong, so I left after one coffee."
+            }
+          ],
+          "answerLine": 5,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-review-dialogue-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的為什麼很快就離開了？",
+                "simplified": "女的为什么很快就离开了？",
+                "pinyin": "Nǚ de wèishénme hěn kuài jiù líkāi le?",
+                "english": "Why did the woman leave so soon?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "網友的哥哥請她先回去",
+                  "simplified": "网友的哥哥请她先回去",
+                  "pinyin": "Wǎngyǒu de gēge qǐng tā xiān huíqù.",
+                  "english": "The friend's brother asked her to go home."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "網友今天沒空來見她",
+                  "simplified": "网友今天没空来见她",
+                  "pinyin": "Wǎngyǒu jīntiān méi kòng lái jiàn tā.",
+                  "english": "Her online friend had no time to meet today."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那位先生對她很冷淡",
+                  "simplified": "那位先生对她很冷淡",
+                  "pinyin": "Nà wèi xiānshēng duì tā hěn lěngdàn.",
+                  "english": "The man was cold towards her."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她覺得對方可能在騙她",
+                  "simplified": "她觉得对方可能在骗她",
+                  "pinyin": "Tā juéde duìfāng kěnéng zài piàn tā.",
+                  "english": "She felt the other person might be lying to her."
+                }
+              ],
+              "key": 3,
+              "why": "卻 marks the surprise: she expected a 20-year-old student, but a man in his forties came with a strange story, and 我覺得不太對 says she suspected a lie. Whether or not the student came, that is not why she left, and nobody asked her to go; the man was not said to be cold.",
+              "focus": {
+                "zh": "卻",
+                "en": "but, yet (contrary to expectation)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B3L11-1-03",
+                "B3L11-1-04",
+                "B3L11-1-11",
+                "B3L11-2-18",
+                "B3L11-2-22"
+              ],
+              "grammarIds": [
+                "B3L11-G04-P299"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-review-dialogue-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你的腳怎麼了？走路怎麼怪怪的？",
+              "simplified": "你的脚怎么了？走路怎么怪怪的？",
+              "pinyin": "Nǐ de jiǎo zěnme le? Zǒulù zěnme guàiguài de?",
+              "english": "What's wrong with your foot? Why are you walking so oddly?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "上星期打籃球受傷了。本來以為沒什麼，直到昨天晚上痛得睡不著，才去看醫生。",
+              "simplified": "上星期打篮球受伤了。本来以为没什么，直到昨天晚上痛得睡不着，才去看医生。",
+              "pinyin": "Shàng xīngqí dǎ lánqiú shòushāng le. Běnlái yǐwéi méi shénme, zhídào zuótiān wǎnshàng tòng de shuì bù zháo, cái qù kàn yīshēng.",
+              "english": "I hurt it playing basketball last week. I thought it was nothing, until last night it hurt so much I couldn't sleep, and only then did I see a doctor."
+            },
+            {
+              "speaker": "F",
+              "traditional": "醫生怎麼說？",
+              "simplified": "医生怎么说？",
+              "pinyin": "Yīshēng zěnme shuō?",
+              "english": "What did the doctor say?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "他說不嚴重，可是這兩個星期都不能打球。假如兩個星期以後還會痛，就得再去檢查。",
+              "simplified": "他说不严重，可是这两个星期都不能打球。假如两个星期以后还会痛，就得再去检查。",
+              "pinyin": "Tā shuō bù yánzhòng, kěshì zhè liǎng ge xīngqí dōu bù néng dǎ qiú. Jiǎrú liǎng ge xīngqí yǐhòu hái huì tòng, jiù děi zài qù jiǎnchá.",
+              "english": "He said it isn't serious, but no ball games for two weeks. If it still hurts after two weeks, I have to go back for a check."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那你這個星期六不是要代表系上打球嗎？",
+              "simplified": "那你这个星期六不是要代表系上打球吗？",
+              "pinyin": "Nà nǐ zhège xīngqíliù bú shì yào dàibiǎo xì shàng dǎ qiú ma?",
+              "english": "But aren't you playing for the department this Saturday?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "只好請別人代替我了。",
+              "simplified": "只好请别人代替我了。",
+              "pinyin": "Zhǐhǎo qǐng biérén dàitì wǒ le.",
+              "english": "I'll have to ask someone to take my place."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-review-dialogue-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "兩個星期以後，要是男的腳已經不痛了，會怎麼樣？",
+                "simplified": "两个星期以后，要是男的脚已经不痛了，会怎么样？",
+                "pinyin": "Liǎng ge xīngqí yǐhòu, yàoshì nán de jiǎo yǐjīng bú tòng le, huì zěnmeyàng?",
+                "english": "If the man's foot no longer hurts after two weeks, what then?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "得再檢查一次才能打球",
+                  "simplified": "得再检查一次才能打球",
+                  "pinyin": "Děi zài jiǎnchá yí cì cái néng dǎ qiú.",
+                  "english": "He needs one more check before playing."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "可以打球，不必再檢查",
+                  "simplified": "可以打球，不必再检查",
+                  "pinyin": "Kěyǐ dǎ qiú, búbì zài jiǎnchá.",
+                  "english": "He can play again, with no second check."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "還得再休息兩個星期",
+                  "simplified": "还得再休息两个星期",
+                  "pinyin": "Hái děi zài xiūxí liǎng ge xīngqí.",
+                  "english": "He must rest for two more weeks."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "還是得請別人代替他",
+                  "simplified": "还是得请别人代替他",
+                  "pinyin": "Háishì děi qǐng biérén dàitì tā.",
+                  "english": "He still has to ask someone to replace him."
+                }
+              ],
+              "key": 1,
+              "why": "Two lines combine: no ball games for these two weeks, and a second check only 假如 it still hurts after them. No pain means no check and he may play; asking someone to replace him was for this Saturday, inside the two weeks.",
+              "focus": {
+                "zh": "假如……，就……",
+                "en": "if…, then…"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L10-2-22",
+                "B3L10-1-02",
+                "B3L09-2-25"
+              ],
+              "grammarIds": [
+                "B3L10-G06-P275"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-three",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l12-dialogue-three-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答三個問題。",
+            "simplified": "请听一段对话，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a conversation, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你好，請坐。你想來我們店裡打工，以前做過這樣的工作嗎？",
+              "simplified": "你好，请坐。你想来我们店里打工，以前做过这样的工作吗？",
+              "pinyin": "Nǐ hǎo, qǐng zuò. Nǐ xiǎng lái wǒmen diàn lǐ dǎgōng, yǐqián zuò guo zhèyàng de gōngzuò ma?",
+              "english": "Hello, have a seat. You want a part-time job at our café. Have you done this kind of work before?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "沒有。不過在煮咖啡方面，我有一些經驗。我在學校的咖啡社學了一年，也常煮給同學喝。",
+              "simplified": "没有。不过在煮咖啡方面，我有一些经验。我在学校的咖啡社学了一年，也常煮给同学喝。",
+              "pinyin": "Méiyǒu. Búguò zài zhǔ kāfēi fāngmiàn, wǒ yǒu yìxiē jīngyàn. Wǒ zài xuéxiào de kāfēi shè xué le yì nián, yě cháng zhǔ gěi tóngxué hē.",
+              "english": "No. But when it comes to making coffee, I do have some experience. I learned for a year in the school coffee club, and I often make it for classmates."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們店週末客人特別多，往往忙不過來。你週末能來嗎？",
+              "simplified": "我们店周末客人特别多，往往忙不过来。你周末能来吗？",
+              "pinyin": "Wǒmen diàn zhōumò kèrén tèbié duō, wǎngwǎng máng bú guòlái. Nǐ zhōumò néng lái ma?",
+              "english": "We have lots of customers at weekends and often can't keep up. Can you come at weekends?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "星期六可以，星期天我得去補習班上英文課。",
+              "simplified": "星期六可以，星期天我得去补习班上英文课。",
+              "pinyin": "Xīngqíliù kěyǐ, xīngqítiān wǒ děi qù bǔxíbān shàng Yīngwén kè.",
+              "english": "Saturday is fine. On Sunday I have an English class at a cram school."
+            },
+            {
+              "speaker": "F",
+              "traditional": "這樣恐怕不太合適。我們最需要人的就是星期天。",
+              "simplified": "这样恐怕不太合适。我们最需要人的就是星期天。",
+              "pinyin": "Zhèyàng kǒngpà bú tài héshì. Wǒmen zuì xūyào rén de jiù shì xīngqítiān.",
+              "english": "Then I'm afraid it won't really work. Sunday is when we need people most."
+            },
+            {
+              "speaker": "M",
+              "traditional": "補習班的課我可以改到星期三晚上。不論星期六還是星期天，我都能來。",
+              "simplified": "补习班的课我可以改到星期三晚上。不论星期六还是星期天，我都能来。",
+              "pinyin": "Bǔxíbān de kè wǒ kěyǐ gǎi dào xīngqísān wǎnshàng. Búlùn xīngqíliù háishì xīngqítiān, wǒ dōu néng lái.",
+              "english": "I can move the class to Wednesday evening. Saturday or Sunday, I can come either way."
+            },
+            {
+              "speaker": "F",
+              "traditional": "好，那你這個星期六先來試試看吧。",
+              "simplified": "好，那你这个星期六先来试试看吧。",
+              "pinyin": "Hǎo, nà nǐ zhège xīngqíliù xiān lái shì shi kàn ba.",
+              "english": "All right, then come and give it a try this Saturday."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-dialogue-three-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的提到學校的咖啡社，是想讓女的知道什麼？",
+                "simplified": "男的提到学校的咖啡社，是想让女的知道什么？",
+                "pinyin": "Nán de tí dào xuéxiào de kāfēi shè, shì xiǎng ràng nǚ de zhīdào shénme?",
+                "english": "Why does the man mention the school coffee club?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他在學校的咖啡店做過一年",
+                  "simplified": "他在学校的咖啡店做过一年",
+                  "pinyin": "Tā zài xuéxiào de kāfēi diàn zuò guo yì nián.",
+                  "english": "He worked for a year at the school café."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他煮的咖啡比店裡的好喝",
+                  "simplified": "他煮的咖啡比店里的好喝",
+                  "pinyin": "Tā zhǔ de kāfēi bǐ diàn lǐ de hǎohē.",
+                  "english": "His coffee is better than the café's."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他沒做過這種工作，可是會煮咖啡",
+                  "simplified": "他没做过这种工作，可是会煮咖啡",
+                  "pinyin": "Tā méi zuò guo zhè zhǒng gōngzuò, kěshì huì zhǔ kāfēi.",
+                  "english": "He has never done this kind of work, but he can make coffee."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他還不太會煮，得再學一學",
+                  "simplified": "他还不太会煮，得再学一学",
+                  "pinyin": "Tā hái bú tài huì zhǔ, děi zài xué yi xué.",
+                  "english": "He can't really make it yet and needs to learn more."
+                }
+              ],
+              "key": 2,
+              "why": "沒有。不過在煮咖啡方面……: 不過 plus 在……方面 turns from the job he lacks to the one area where he does have experience, a year in the club. The year was spent learning in a club, not working; making it for classmates shows practice, not that it beats the café's; and he says he HAS experience.",
+              "focus": {
+                "zh": "在……方面；說話的目的",
+                "en": "in terms of…; the speaker's purpose"
+              },
+              "lesson": 12,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L12-1-07",
+                "B3L07-2-23",
+                "B2L14-1-16"
+              ],
+              "grammarIds": [
+                "B3L12-G02-P314"
+              ]
+            },
+            {
+              "id": "b3l12-dialogue-three-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的說「這樣恐怕不太合適」，是因為什麼？",
+                "simplified": "女的说「这样恐怕不太合适」，是因为什么？",
+                "pinyin": "Nǚ de shuō \"zhèyàng kǒngpà bú tài héshì\", shì yīnwèi shénme?",
+                "english": "Why does the woman say \"then I'm afraid it won't really work\"?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "店裡最忙的那天他不能來",
+                  "simplified": "店里最忙的那天他不能来",
+                  "pinyin": "Diàn lǐ zuì máng de nà tiān tā bù néng lái.",
+                  "english": "He can't come on the café's busiest day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他沒在咖啡店工作過",
+                  "simplified": "他没在咖啡店工作过",
+                  "pinyin": "Tā méi zài kāfēi diàn gōngzuò guo.",
+                  "english": "He has never worked in a café."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他星期六得去補習班",
+                  "simplified": "他星期六得去补习班",
+                  "pinyin": "Tā xīngqíliù děi qù bǔxíbān.",
+                  "english": "He has cram school on Saturdays."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "週末客人多，他忙不過來",
+                  "simplified": "周末客人多，他忙不过来",
+                  "pinyin": "Zhōumò kèrén duō, tā máng bú guòlái.",
+                  "english": "At weekends there are too many customers for him."
+                }
+              ],
+              "key": 0,
+              "why": "Two turns combine: he has class on Sunday, and 我們最需要人的就是星期天. His class is on Sunday, not Saturday; no café experience did not stop the interview; and 忙不過來 is said of the café, not of him.",
+              "focus": {
+                "zh": "往往；兩句合起來",
+                "en": "tend to; combining two turns"
+              },
+              "lesson": 12,
+              "answerLine": 4,
+              "wordIds": [
+                "B2L13-1-21",
+                "B3L03-1-04",
+                "B3L12-1-33",
+                "B3L12-1-15"
+              ],
+              "grammarIds": [
+                "B3L12-G03-P316"
+              ]
+            },
+            {
+              "id": "b3l12-dialogue-three-1-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的最後讓男的來試試看，主要是因為什麼？",
+                "simplified": "女的最后让男的来试试看，主要是因为什么？",
+                "pinyin": "Nǚ de zuìhòu ràng nán de lái shì shi kàn, zhǔyào shì yīnwèi shénme?",
+                "english": "Why does the woman finally let the man come for a try?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他煮的咖啡同學都喜歡",
+                  "simplified": "他煮的咖啡同学都喜欢",
+                  "pinyin": "Tā zhǔ de kāfēi tóngxué dōu xǐhuān.",
+                  "english": "His classmates all like his coffee."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他星期三晚上也能來",
+                  "simplified": "他星期三晚上也能来",
+                  "pinyin": "Tā xīngqísān wǎnshàng yě néng lái.",
+                  "english": "He can also come on Wednesday evenings."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他說可以先來試試看",
+                  "simplified": "他说可以先来试试看",
+                  "pinyin": "Tā shuō kěyǐ xiān lái shì shi kàn.",
+                  "english": "He offered to come for a trial first."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他願意改課，週末都能來",
+                  "simplified": "他愿意改课，周末都能来",
+                  "pinyin": "Tā yuànyì gǎi kè, zhōumò dōu néng lái.",
+                  "english": "He is willing to move his class and can come both weekend days."
+                }
+              ],
+              "key": 3,
+              "why": "Right after she says Sunday is the problem, he offers to move his class and adds 不論星期六還是星期天，我都能來, and only then she says 好. Wednesday evening is when he will be AT class, and the trial was her idea, not his offer.",
+              "focus": {
+                "zh": "不論……都……",
+                "en": "no matter…, still…"
+              },
+              "lesson": 12,
+              "answerLine": 5,
+              "wordIds": [
+                "B3L12-1-26",
+                "B1L02-2-03"
+              ],
+              "grammarIds": [
+                "B3L12-G06-P327"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-dialogue-three-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答三個問題。",
+            "simplified": "请听一段对话，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a conversation, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我們小組新來的那位同事，妳覺得怎麼樣？",
+              "simplified": "我们小组新来的那位同事，你觉得怎么样？",
+              "pinyin": "Wǒmen xiǎozǔ xīn lái de nà wèi tóngshì, nǐ juéde zěnmeyàng?",
+              "english": "What do you think of the new colleague on our team?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "他做事很細心，在電腦方面也懂得很多。上次我的電腦壞了，就是他修好的。",
+              "simplified": "他做事很细心，在电脑方面也懂得很多。上次我的电脑坏了，就是他修好的。",
+              "pinyin": "Tā zuòshì hěn xìxīn, zài diànnǎo fāngmiàn yě dǒng de hěn duō. Shàng cì wǒ de diànnǎo huài le, jiù shì tā xiū hǎo de.",
+              "english": "He's careful in his work, and he knows a lot about computers. When my computer broke last time, he was the one who fixed it."
+            },
+            {
+              "speaker": "M",
+              "traditional": "可是他好像不太愛說話，開會的時候從來不說自己的看法。",
+              "simplified": "可是他好像不太爱说话，开会的时候从来不说自己的看法。",
+              "pinyin": "Kěshì tā hǎoxiàng bú tài ài shuōhuà, kāihuì de shíhòu cónglái bù shuō zìjǐ de kànfǎ.",
+              "english": "But he doesn't seem to like talking. In meetings he never gives his own view."
+            },
+            {
+              "speaker": "F",
+              "traditional": "他才來兩個星期，跟大家還不熟嘛。",
+              "simplified": "他才来两个星期，跟大家还不熟嘛。",
+              "pinyin": "Tā cái lái liǎng ge xīngqí, gēn dàjiā hái bù shú ma.",
+              "english": "He's only been here two weeks; he doesn't know everyone yet."
+            },
+            {
+              "speaker": "M",
+              "traditional": "經理下個月要我們小組去南部見客人，我本來在想要不要帶他去。",
+              "simplified": "经理下个月要我们小组去南部见客人，我本来在想要不要带他去。",
+              "pinyin": "Jīnglǐ xià ge yuè yào wǒmen xiǎozǔ qù nánbù jiàn kèrén, wǒ běnlái zài xiǎng yào bú yào dài tā qù.",
+              "english": "Next month the manager wants our team to go south to see customers. I was wondering whether to take him."
+            },
+            {
+              "speaker": "F",
+              "traditional": "帶他去吧！不論是開車還是準備資料，他都能幫忙。多跟客人接觸，他也會比較敢說話。",
+              "simplified": "带他去吧！不论是开车还是准备资料，他都能帮忙。多跟客人接触，他也会比较敢说话。",
+              "pinyin": "Dài tā qù ba! Búlùn shì kāichē háishì zhǔnbèi zīliào, tā dōu néng bāngmáng. Duō gēn kèrén jiēchù, tā yě huì bǐjiào gǎn shuōhuà.",
+              "english": "Take him! Driving or preparing documents, he can help either way. And meeting more customers will make him bolder about speaking up."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好，那我這就去跟經理說。",
+              "simplified": "好，那我这就去跟经理说。",
+              "pinyin": "Hǎo, nà wǒ zhè jiù qù gēn jīnglǐ shuō.",
+              "english": "OK, I'll go and tell the manager right now."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-dialogue-three-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "照女的說的，下面哪一件事最適合請新同事幫忙？",
+                "simplified": "照女的说的，下面哪一件事最适合请新同事帮忙？",
+                "pinyin": "Zhào nǚ de shuō de, xiàmiàn nǎ yí jiàn shì zuì shìhé qǐng xīn tóngshì bāngmáng?",
+                "english": "Going by what the woman says, which job is it best to ask the new colleague to help with?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "跟客人說明產品的價錢",
+                  "simplified": "跟客人说明产品的价钱",
+                  "pinyin": "Gēn kèrén shuōmíng chǎnpǐn de jiàqián.",
+                  "english": "Explaining product prices to customers."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看看電腦出了什麼問題",
+                  "simplified": "看看电脑出了什么问题",
+                  "pinyin": "Kàn kan diànnǎo chū le shénme wèntí.",
+                  "english": "Finding out what is wrong with a computer."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在會議上說出小組的看法",
+                  "simplified": "在会议上说出小组的看法",
+                  "pinyin": "Zài huìyì shàng shuō chū xiǎozǔ de kànfǎ.",
+                  "english": "Giving the team's view in a meeting."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "安排小組去南部的行程",
+                  "simplified": "安排小组去南部的行程",
+                  "pinyin": "Ānpái xiǎozǔ qù nánbù de xíngchéng.",
+                  "english": "Planning the team's trip south."
+                }
+              ],
+              "key": 1,
+              "why": "She says 在電腦方面也懂得很多 and backs it with the computer he fixed, so a computer problem is his field. Talking to customers and speaking up in meetings are exactly what he is not yet bold about, and the trip is the manager's plan; he only helps with driving and documents.",
+              "focus": {
+                "zh": "在……方面；用在新的情況",
+                "en": "in terms of…; applying what was said"
+              },
+              "lesson": 12,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L12-1-07",
+                "B3L12-1-27"
+              ],
+              "grammarIds": [
+                "B3L12-G02-P314"
+              ]
+            },
+            {
+              "id": "b3l12-dialogue-three-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的說新同事開會不說話，女的怎麼看這件事？",
+                "simplified": "男的说新同事开会不说话，女的怎么看这件事？",
+                "pinyin": "Nán de shuō xīn tóngshì kāihuì bù shuōhuà, nǚ de zěnme kàn zhè jiàn shì?",
+                "english": "The man says the new colleague is silent in meetings. How does the woman see this?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他只是還不習慣，不用擔心",
+                  "simplified": "他只是还不习惯，不用担心",
+                  "pinyin": "Tā zhǐshì hái bù xíguàn, búyòng dānxīn.",
+                  "english": "He just isn't used to things yet; no need to worry."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他個性就這樣，不用逼他",
+                  "simplified": "他个性就这样，不用逼他",
+                  "pinyin": "Tā gèxìng jiù zhèyàng, búyòng bī tā.",
+                  "english": "That's just his nature; don't push him."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他不夠認真，該跟他說說",
+                  "simplified": "他不够认真，该跟他说说",
+                  "pinyin": "Tā bú gòu rènzhēn, gāi gēn tā shuō shuo.",
+                  "english": "He isn't serious enough; someone should talk to him."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他電腦好，不說話也沒關係",
+                  "simplified": "他电脑好，不说话也没关系",
+                  "pinyin": "Tā diànnǎo hǎo, bù shuōhuà yě méi guānxi.",
+                  "english": "He's good with computers, so silence doesn't matter."
+                }
+              ],
+              "key": 0,
+              "why": "他才來兩個星期，跟大家還不熟嘛: newness, which will pass. She doesn't call it his nature (that is closer to the man's view), and she does want him to speak more, since she hopes the trip makes him 比較敢說話.",
+              "focus": {
+                "zh": "才 + 時間；說話人的態度",
+                "en": "only (so short a time); attitude"
+              },
+              "lesson": 12,
+              "answerLine": 3,
+              "wordIds": [
+                "B2L04-1-17",
+                "B1L10-3-05"
+              ]
+            },
+            {
+              "id": "b3l12-dialogue-three-2-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的建議帶新同事去南部，是為什麼？",
+                "simplified": "女的建议带新同事去南部，是为什么？",
+                "pinyin": "Nǚ de jiànyì dài xīn tóngshì qù nánbù, shì wèishénme?",
+                "english": "Why does the woman suggest taking the new colleague south?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "經理要小組的人都去",
+                  "simplified": "经理要小组的人都去",
+                  "pinyin": "Jīnglǐ yào xiǎozǔ de rén dōu qù.",
+                  "english": "The manager wants everyone in the team to go."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他跟南部的客人比較熟",
+                  "simplified": "他跟南部的客人比较熟",
+                  "pinyin": "Tā gēn nánbù de kèrén bǐjiào shú.",
+                  "english": "He knows the southern customers better."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他能幫忙，也能多練習",
+                  "simplified": "他能帮忙，也能多练习",
+                  "pinyin": "Tā néng bāngmáng, yě néng duō liànxí.",
+                  "english": "He can be useful and also get practice."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他自己說想去見客人",
+                  "simplified": "他自己说想去见客人",
+                  "pinyin": "Tā zìjǐ shuō xiǎng qù jiàn kèrén.",
+                  "english": "He himself said he wants to meet customers."
+                }
+              ],
+              "key": 2,
+              "why": "She gives two reasons: 不論是開車還是準備資料，他都能幫忙, and meeting customers will make him bolder. The man is still deciding whether to take him, so not everyone must go; he is the one who is 不熟; and the idea is hers, not his.",
+              "focus": {
+                "zh": "不論……都……",
+                "en": "no matter…, still…"
+              },
+              "lesson": 12,
+              "answerLine": 5,
+              "wordIds": [
+                "B3L12-1-26",
+                "B3L11-2-12",
+                "B3L12-1-20"
+              ],
+              "grammarIds": [
+                "B3L12-G06-P327"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talk",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l12-talk-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段留言，然後回答三個問題。",
+            "simplified": "请听一段留言，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn liúyán, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a voicemail, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "您好，這裡是東方電腦公司，謝謝您上個星期來參加面試。",
+              "simplified": "您好，这里是东方电脑公司，谢谢您上个星期来参加面试。",
+              "pinyin": "Nín hǎo, zhèlǐ shì Dōngfāng Diànnǎo Gōngsī, xièxie nín shàng ge xīngqí lái cānjiā miànshì.",
+              "english": "Hello, this is Dongfang Computers. Thank you for coming to the interview last week."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們經理對您在銷售方面的經驗很滿意，想請您下星期三上午十點再來一趟，跟部門主管見面。",
+              "simplified": "我们经理对您在销售方面的经验很满意，想请您下星期三上午十点再来一趟，跟部门主管见面。",
+              "pinyin": "Wǒmen jīnglǐ duì nín zài xiāoshòu fāngmiàn de jīngyàn hěn mǎnyì, xiǎng qǐng nín xià xīngqísān shàngwǔ shí diǎn zài lái yí tàng, gēn bùmén zhǔguǎn jiànmiàn.",
+              "english": "Our manager was very pleased with your sales experience and would like you to come again next Wednesday at 10 a.m. to meet the head of the department."
+            },
+            {
+              "speaker": "F",
+              "traditional": "您說過您下個月才能開始上班，這一點沒有問題。",
+              "simplified": "您说过您下个月才能开始上班，这一点没有问题。",
+              "pinyin": "Nín shuō guo nín xià ge yuè cái néng kāishǐ shàngbān, zhè yì diǎn méiyǒu wèntí.",
+              "english": "You said you can only start next month; that is no problem."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我們主管面試的時候，往往會請對方用英文介紹自己，請您先準備一下。",
+              "simplified": "我们主管面试的时候，往往会请对方用英文介绍自己，请您先准备一下。",
+              "pinyin": "Wǒmen zhǔguǎn miànshì de shíhòu, wǎngwǎng huì qǐng duìfāng yòng Yīngwén jièshào zìjǐ, qǐng nín xiān zhǔnbèi yíxià.",
+              "english": "In interviews our department head usually asks people to introduce themselves in English, so please prepare for that."
+            },
+            {
+              "speaker": "F",
+              "traditional": "有關薪水和福利的問題，那天也會有人跟您詳細說明。",
+              "simplified": "有关薪水和福利的问题，那天也会有人跟您详细说明。",
+              "pinyin": "Yǒuguān xīnshuǐ hé fúlì de wèntí, nà tiān yě huì yǒu rén gēn nín xiángxì shuōmíng.",
+              "english": "As for pay and benefits, someone will explain them to you in detail that day as well."
+            },
+            {
+              "speaker": "F",
+              "traditional": "假如星期三上午不方便，請在這個星期五以前回電話給我們。謝謝！",
+              "simplified": "假如星期三上午不方便，请在这个星期五以前回电话给我们。谢谢！",
+              "pinyin": "Jiǎrú xīngqísān shàngwǔ bù fāngbiàn, qǐng zài zhège xīngqíwǔ yǐqián huí diànhuà gěi wǒmen. Xièxie!",
+              "english": "If Wednesday morning doesn't suit you, please call us back before this Friday. Thank you!"
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-talk-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "從這段留言可以知道什麼？",
+                "simplified": "从这段留言可以知道什么？",
+                "pinyin": "Cóng zhè duàn liúyán kěyǐ zhīdào shénme?",
+                "english": "What can we learn from this message?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "已經錄取，下個月上班",
+                  "simplified": "已经录取，下个月上班",
+                  "pinyin": "Yǐjīng lùqǔ, xià ge yuè shàngbān.",
+                  "english": "They are hired and start next month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "還得再通過一次面試",
+                  "simplified": "还得再通过一次面试",
+                  "pinyin": "Hái děi zài tōngguò yí cì miànshì.",
+                  "english": "There is one more interview to pass."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "得先回電話才能再面試",
+                  "simplified": "得先回电话才能再面试",
+                  "pinyin": "Děi xiān huí diànhuà cái néng zài miànshì.",
+                  "english": "They must call back before the next interview."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "第一次面試改到星期三",
+                  "simplified": "第一次面试改到星期三",
+                  "pinyin": "Dì yī cì miànshì gǎi dào xīngqísān.",
+                  "english": "The first interview has moved to Wednesday."
+                }
+              ],
+              "key": 1,
+              "why": "The first interview is over (謝謝您上星期來), and the manager being pleased leads only to 再來一趟，跟部門主管見面: a second round. Starting next month is accepted but not a hiring, and calling back is needed only if Wednesday doesn't suit.",
+              "focus": {
+                "zh": "再來一趟；整段的意思",
+                "en": "come once more; the whole message"
+              },
+              "lesson": 12,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L12-1-02",
+                "B3L09-2-19",
+                "B3L12-2-21"
+              ]
+            },
+            {
+              "id": "b3l12-talk-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "聽留言的人星期三上午得帶家人去醫院，他該怎麼做？",
+                "simplified": "听留言的人星期三上午得带家人去医院，他该怎么做？",
+                "pinyin": "Tīng liúyán de rén xīngqísān shàngwǔ děi dài jiārén qù yīyuàn, tā gāi zěnme zuò?",
+                "english": "The listener must take a relative to hospital on Wednesday morning. What should they do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期三下午再去公司",
+                  "simplified": "星期三下午再去公司",
+                  "pinyin": "Xīngqísān xiàwǔ zài qù gōngsī.",
+                  "english": "Go to the company on Wednesday afternoon."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期三早上打電話說明",
+                  "simplified": "星期三早上打电话说明",
+                  "pinyin": "Xīngqísān zǎoshàng dǎ diànhuà shuōmíng.",
+                  "english": "Phone to explain on Wednesday morning."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "等公司星期五再打來",
+                  "simplified": "等公司星期五再打来",
+                  "pinyin": "Děng gōngsī xīngqíwǔ zài dǎ lái.",
+                  "english": "Wait for the company to call on Friday."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這星期五以前打電話給公司",
+                  "simplified": "这星期五以前打电话给公司",
+                  "pinyin": "Zhège xīngqíwǔ yǐqián dǎ diànhuà gěi gōngsī.",
+                  "english": "Phone the company before this Friday."
+                }
+              ],
+              "key": 3,
+              "why": "假如星期三上午不方便，請在這個星期五以前回電話: this is that case, so they call by Friday. Nobody offers Wednesday afternoon, Wednesday morning is too late (Friday comes first), and it is the listener who must call.",
+              "focus": {
+                "zh": "假如……；用在新的情況",
+                "en": "if…; applying a condition"
+              },
+              "lesson": 12,
+              "answerLine": 5,
+              "wordIds": [
+                "B1L07-2-15",
+                "B1L10-1-06"
+              ]
+            },
+            {
+              "id": "b3l12-talk-1-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "公司還想再看看聽留言的人哪一方面？",
+                "simplified": "公司还想再看看听留言的人哪一方面？",
+                "pinyin": "Gōngsī hái xiǎng zài kàn kan tīng liúyán de rén nǎ yì fāngmiàn?",
+                "english": "What does the company still want to find out about the listener?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他能不能下個月上班",
+                  "simplified": "他能不能下个月上班",
+                  "pinyin": "Tā néng bù néng xià ge yuè shàngbān.",
+                  "english": "Whether they can start next month."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他在銷售方面的經驗",
+                  "simplified": "他在销售方面的经验",
+                  "pinyin": "Tā zài xiāoshòu fāngmiàn de jīngyàn.",
+                  "english": "Their sales experience."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他的英文說得怎麼樣",
+                  "simplified": "他的英文说得怎么样",
+                  "pinyin": "Tā de Yīngwén shuō de zěnmeyàng.",
+                  "english": "How well they speak English."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他對薪水有什麼要求",
+                  "simplified": "他对薪水有什么要求",
+                  "pinyin": "Tā duì xīnshuǐ yǒu shénme yāoqiú.",
+                  "english": "What pay they expect."
+                }
+              ],
+              "key": 2,
+              "why": "The start date is 沒有問題 and the sales experience already pleased the manager, but the head 往往會請對方用英文介紹自己: that is still to be seen. 有關薪水和福利 is something the company will explain, not ask.",
+              "focus": {
+                "zh": "往往；有關……",
+                "en": "tend to; regarding…"
+              },
+              "lesson": 12,
+              "answerLine": 3,
+              "wordIds": [
+                "B3L12-1-15",
+                "B3L12-1-31",
+                "B3L12-1-07"
+              ],
+              "grammarIds": [
+                "B3L12-G03-P316",
+                "B3L12-G04-P318"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-talk-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段廣播，然後回答三個問題。",
+            "simplified": "请听一段广播，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn guǎngbò, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a broadcast, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "各位聽眾晚安，今天我們來聊聊職場上的問題。",
+              "simplified": "各位听众晚安，今天我们来聊聊职场上的问题。",
+              "pinyin": "Gèwèi tīngzhòng wǎn'ān, jīntiān wǒmen lái liáo liao zhíchǎng shàng de wèntí.",
+              "english": "Good evening, listeners. Today let's talk about problems at work."
+            },
+            {
+              "speaker": "M",
+              "traditional": "上星期有一位聽眾打電話來說，他的主管每次看他的報告，都說他寫得太隨便。他很難過，想換工作。",
+              "simplified": "上星期有一位听众打电话来说，他的主管每次看他的报告，都说他写得太随便。他很难过，想换工作。",
+              "pinyin": "Shàng xīngqí yǒu yí wèi tīngzhòng dǎ diànhuà lái shuō, tā de zhǔguǎn měi cì kàn tā de bàogào, dōu shuō tā xiě de tài suíbiàn. Tā hěn nánguò, xiǎng huàn gōngzuò.",
+              "english": "Last week a listener phoned to say that every time his supervisor reads his reports, she says he writes them too carelessly. He feels bad and wants to change jobs."
+            },
+            {
+              "speaker": "M",
+              "traditional": "其實，剛開始上班的年輕人，往往會覺得主管對自己要求太高。",
+              "simplified": "其实，刚开始上班的年轻人，往往会觉得主管对自己要求太高。",
+              "pinyin": "Qíshí, gāng kāishǐ shàngbān de niánqīngrén, wǎngwǎng huì juéde zhǔguǎn duì zìjǐ yāoqiú tài gāo.",
+              "english": "In fact, young people who have just started work often feel their supervisors ask too much of them."
+            },
+            {
+              "speaker": "M",
+              "traditional": "可是主管願意花時間批評你，往往是因為看得起你，希望你進步。",
+              "simplified": "可是主管愿意花时间批评你，往往是因为看得起你，希望你进步。",
+              "pinyin": "Kěshì zhǔguǎn yuànyì huā shíjiān pīpíng nǐ, wǎngwǎng shì yīnwèi kàn de qǐ nǐ, xīwàng nǐ jìnbù.",
+              "english": "But when a supervisor is willing to spend time criticizing you, it is often because they think well of you and want you to improve."
+            },
+            {
+              "speaker": "M",
+              "traditional": "所以我的建議是，先別急著換工作，想一想主管說的有沒有道理。",
+              "simplified": "所以我的建议是，先别急着换工作，想一想主管说的有没有道理。",
+              "pinyin": "Suǒyǐ wǒ de jiànyì shì, xiān bié jízhe huàn gōngzuò, xiǎng yi xiǎng zhǔguǎn shuō de yǒu méiyǒu dàolǐ.",
+              "english": "So my advice is: don't rush to change jobs; first think about whether your supervisor has a point."
+            },
+            {
+              "speaker": "M",
+              "traditional": "有關怎麼跟主管溝通，下星期我們會請一位經理來，跟大家聊一聊。",
+              "simplified": "有关怎么跟主管沟通，下星期我们会请一位经理来，跟大家聊一聊。",
+              "pinyin": "Yǒuguān zěnme gēn zhǔguǎn gōutōng, xià xīngqí wǒmen huì qǐng yí wèi jīnglǐ lái, gēn dàjiā liáo yi liáo.",
+              "english": "As for how to talk with your supervisor, next week we'll invite a manager to chat with everyone about it."
+            }
+          ],
+          "answerLine": 1,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l12-talk-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "那位聽眾為什麼想換工作？",
+                "simplified": "那位听众为什么想换工作？",
+                "pinyin": "Nà wèi tīngzhòng wèishénme xiǎng huàn gōngzuò?",
+                "english": "Why does that listener want to change jobs?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他的報告常被主管批評",
+                  "simplified": "他的报告常被主管批评",
+                  "pinyin": "Tā de bàogào cháng bèi zhǔguǎn pīpíng.",
+                  "english": "His supervisor keeps criticizing his reports."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "主管常對他亂發脾氣",
+                  "simplified": "主管常对他乱发脾气",
+                  "pinyin": "Zhǔguǎn cháng duì tā luàn fā píqì.",
+                  "english": "His supervisor often loses her temper at him."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他跟主管不會溝通",
+                  "simplified": "他跟主管不会沟通",
+                  "pinyin": "Tā gēn zhǔguǎn bú huì gōutōng.",
+                  "english": "He can't talk things through with his supervisor."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他不喜歡寫報告",
+                  "simplified": "他不喜欢写报告",
+                  "pinyin": "Tā bù xǐhuān xiě bàogào.",
+                  "english": "He doesn't like writing reports."
+                }
+              ],
+              "key": 0,
+              "why": "主管每次看他的報告，都說他寫得太隨便, and that hurts. Pointing out faults is not losing her temper; talking with a supervisor is next week's topic, not his problem; and nobody says he dislikes reports.",
+              "focus": {
+                "zh": "隨便",
+                "en": "careless"
+              },
+              "lesson": 12,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L12-1-08",
+                "B2L09-2-10",
+                "B3L12-1-10"
+              ]
+            },
+            {
+              "id": "b3l12-talk-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "說話的人認為，主管批評新人往往是因為什麼？",
+                "simplified": "说话的人认为，主管批评新人往往是因为什么？",
+                "pinyin": "Shuōhuà de rén rènwéi, zhǔguǎn pīpíng xīnrén wǎngwǎng shì yīnwèi shénme?",
+                "english": "According to the speaker, why do supervisors often criticize new staff?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "新人做事往往太慢",
+                  "simplified": "新人做事往往太慢",
+                  "pinyin": "Xīnrén zuòshì wǎngwǎng tài màn.",
+                  "english": "New staff are often too slow."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "主管自己心情不好",
+                  "simplified": "主管自己心情不好",
+                  "pinyin": "Zhǔguǎn zìjǐ xīnqíng bù hǎo.",
+                  "english": "Supervisors are in a bad mood themselves."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "主管對年輕人要求太高",
+                  "simplified": "主管对年轻人要求太高",
+                  "pinyin": "Zhǔguǎn duì niánqīngrén yāoqiú tài gāo.",
+                  "english": "Supervisors ask too much of the young."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "覺得新人有能力",
+                  "simplified": "觉得新人有能力",
+                  "pinyin": "Juéde xīnrén yǒu nénglì.",
+                  "english": "They think the newcomer is capable."
+                }
+              ],
+              "key": 3,
+              "why": "看得起你，希望你進步: the supervisor thinks you are worth the time. \"Asking too much\" is how young people FEEL (往往會覺得), which the speaker answers with 可是; slowness and moods are never mentioned.",
+              "focus": {
+                "zh": "看得起；往往",
+                "en": "think well of; tend to"
+              },
+              "lesson": 11,
+              "answerLine": 3,
+              "wordIds": [
+                "B3L11-1-25",
+                "B3L12-1-15",
+                "B3L12-1-09"
+              ],
+              "grammarIds": [
+                "B3L11-G03-P292",
+                "B3L12-G03-P316"
+              ]
+            },
+            {
+              "id": "b3l12-talk-2-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "說話的人建議先別換工作，是因為他認為什麼？",
+                "simplified": "说话的人建议先别换工作，是因为他认为什么？",
+                "pinyin": "Shuōhuà de rén jiànyì xiān bié huàn gōngzuò, shì yīnwèi tā rènwéi shénme?",
+                "english": "The speaker advises not changing jobs yet. What does he believe?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "年輕人對工作的要求太高",
+                  "simplified": "年轻人对工作的要求太高",
+                  "pinyin": "Niánqīngrén duì gōngzuò de yāoqiú tài gāo.",
+                  "english": "Young people expect too much of their jobs."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "主管的意見也許是對的",
+                  "simplified": "主管的意见也许是对的",
+                  "pinyin": "Zhǔguǎn de yìjiàn yěxǔ shì duì de.",
+                  "english": "The supervisor's comments may be right."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下星期經理會幫他想辦法",
+                  "simplified": "下星期经理会帮他想办法",
+                  "pinyin": "Xià xīngqí jīnglǐ huì bāng tā xiǎng bànfǎ.",
+                  "english": "Next week a manager will help him out."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "那位聽眾太容易難過了",
+                  "simplified": "那位听众太容易难过了",
+                  "pinyin": "Nà wèi tīngzhòng tài róngyì nánguò le.",
+                  "english": "That listener gets upset too easily."
+                }
+              ],
+              "key": 1,
+              "why": "The advice rests on 想一想主管說的有沒有道理: the criticism may have a point. It is the supervisor who is FELT to ask too much of the young, not the young of their jobs; the manager comes on next week's show for everyone; and he never blames the listener.",
+              "focus": {
+                "zh": "有關……；建議的理由",
+                "en": "regarding…; the reason for advice"
+              },
+              "lesson": 12,
+              "answerLine": 4,
+              "wordIds": [
+                "B3L12-1-31",
+                "B2L09-2-12",
+                "B2L10-2-14"
+              ],
+              "grammarIds": [
+                "B3L12-G04-P318"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloze",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l12-cloze-1",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "我在一家電腦公司負責賣電腦。{1}我在學校學過很多跟電腦有關的知識，剛開始跟客人說話的時候，還是常常緊張得說不出話來。主管發現以後，沒有批評我，{2}每天下班後陪我練習。她告訴我，跟客人說話的時候要{3}一點，別只說自己的產品有多好，要先聽聽客人需要什麼，{4}買東西的是客人。她還說，雖然也有客人當天就買，但是第一次見面的客人{5}不會馬上決定，別太著急；{6}以後會不會買，就要看我們的服務了。",
+            "simplified": "我在一家电脑公司负责卖电脑。{1}我在学校学过很多跟电脑有关的知识，刚开始跟客人说话的时候，还是常常紧张得说不出话来。主管发现以后，没有批评我，{2}每天下班后陪我练习。她告诉我，跟客人说话的时候要{3}一点，别只说自己的产品有多好，要先听听客人需要什么，{4}买东西的是客人。她还说，虽然也有客人当天就买，但是第一次见面的客人{5}不会马上决定，别太着急；{6}以后会不会买，就要看我们的服务了。",
+            "pinyin": "Wǒ zài yì jiā diànnǎo gōngsī fùzé mài diànnǎo. Jǐnguǎn wǒ zài xuéxiào xué guo hěn duō gēn diànnǎo yǒuguān de zhīshì, gāng kāishǐ gēn kèrén shuōhuà de shíhòu, háishì chángcháng jǐnzhāng de shuō bù chū huà lái. Zhǔguǎn fāxiàn yǐhòu, méiyǒu pīpíng wǒ, fǎn'ér měi tiān xiàbān hòu péi wǒ liànxí. Tā gàosù wǒ, gēn kèrén shuōhuà de shíhòu yào qiānxū yìdiǎn, bié zhǐ shuō zìjǐ de chǎnpǐn yǒu duō hǎo, yào xiān tīng ting kèrén xūyào shénme, bìjìng mǎi dōngxi de shì kèrén. Tā hái shuō, suīrán yě yǒu kèrén dāngtiān jiù mǎi, dànshì dì yī cì jiànmiàn de kèrén wǎngwǎng bú huì mǎshàng juédìng, bié tài zhāojí; zhìyú yǐhòu huì bú huì mǎi, jiù yào kàn wǒmen de fúwù le.",
+            "english": "My job at a computer company is selling computers. Even though I had learned a lot about computers at school, when I first started talking to customers I was still often too nervous to speak. When my supervisor noticed, she didn't criticize me; instead she practised with me every day after work. She told me to be a bit modest when talking to customers: don't just say how good our products are, first listen to what the customer needs, since after all it is the customer who buys. She also said that although some customers buy the same day, customers meeting us for the first time usually don't decide straight away, so don't be in a hurry; as for whether they buy later, that depends on our service."
+          },
+          "questions": [
+            {
+              "id": "b3l12-cloze-1-1",
+              "choices": [
+                {
+                  "traditional": "既然",
+                  "simplified": "既然",
+                  "pinyin": "jìrán",
+                  "english": "since"
+                },
+                {
+                  "traditional": "儘管",
+                  "simplified": "尽管",
+                  "pinyin": "jǐnguǎn",
+                  "english": "even though"
+                },
+                {
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "english": "because"
+                },
+                {
+                  "traditional": "只要",
+                  "simplified": "只要",
+                  "pinyin": "zhǐyào",
+                  "english": "as long as"
+                }
+              ],
+              "key": 1,
+              "why": "He had learned a lot (a fact) and 還是 was nervous (the opposite of what you'd expect): 儘管. 既然 and 因為 would make the knowledge the reason for his nerves, and 只要 sets a condition, not a fact.",
+              "focus": {
+                "zh": "儘管……，還是……",
+                "en": "even though…, still…"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-2-05",
+                "B2L09-1-16"
+              ],
+              "grammarIds": [
+                "B3L12-G05-P325"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-1-2",
+              "choices": [
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                },
+                {
+                  "traditional": "一再",
+                  "simplified": "一再",
+                  "pinyin": "yízài",
+                  "english": "repeatedly"
+                },
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had no choice but"
+                },
+                {
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "english": "instead"
+                }
+              ],
+              "key": 3,
+              "why": "He expected criticism after being found out; she did the opposite: 沒有批評我，反而…… . 只好 would mean she was forced to help, 終於 needs a long wait, and 一再 clashes with 每天.",
+              "focus": {
+                "zh": "沒……，反而……",
+                "en": "not…; instead…"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B3L09-1-06",
+                "B3L12-1-09"
+              ],
+              "grammarIds": [
+                "B3L09-G03-P238"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-1-3",
+              "choices": [
+                {
+                  "traditional": "謙虛",
+                  "simplified": "谦虚",
+                  "pinyin": "qiānxū",
+                  "english": "modest"
+                },
+                {
+                  "traditional": "主動",
+                  "simplified": "主动",
+                  "pinyin": "zhǔdòng",
+                  "english": "proactive"
+                },
+                {
+                  "traditional": "輕鬆",
+                  "simplified": "轻松",
+                  "pinyin": "qīngsōng",
+                  "english": "relaxed"
+                },
+                {
+                  "traditional": "冷靜",
+                  "simplified": "冷静",
+                  "pinyin": "lěngjìng",
+                  "english": "calm"
+                }
+              ],
+              "key": 0,
+              "why": "The words after it explain how to talk: don't boast about the products, listen first. That is 謙虛. 主動 would mean talking first, the opposite; 輕鬆 and 冷靜 answer his nerves, but the advice that follows is about not boasting.",
+              "focus": {
+                "zh": "謙虛",
+                "en": "modest"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-12",
+                "B3L12-1-31"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-1-4",
+              "choices": [
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as a result"
+                },
+                {
+                  "traditional": "甚至",
+                  "simplified": "甚至",
+                  "pinyin": "shènzhì",
+                  "english": "even"
+                },
+                {
+                  "traditional": "畢竟",
+                  "simplified": "毕竟",
+                  "pinyin": "bìjìng",
+                  "english": "after all"
+                },
+                {
+                  "traditional": "原來",
+                  "simplified": "原来",
+                  "pinyin": "yuánlái",
+                  "english": "it turns out"
+                }
+              ],
+              "key": 2,
+              "why": "The last clause gives the plain reason for listening first: 畢竟 it is the customer who buys. 結果 reports what happened, 甚至 adds a stronger case, and 原來 tells a discovery, not advice.",
+              "focus": {
+                "zh": "畢竟",
+                "en": "after all"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-19"
+              ],
+              "grammarIds": [
+                "B3L08-G06-P222"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-1-5",
+              "choices": [
+                {
+                  "traditional": "從來",
+                  "simplified": "从来",
+                  "pinyin": "cónglái",
+                  "english": "ever (never)"
+                },
+                {
+                  "traditional": "往往",
+                  "simplified": "往往",
+                  "pinyin": "wǎngwǎng",
+                  "english": "tend to"
+                },
+                {
+                  "traditional": "一向",
+                  "simplified": "一向",
+                  "pinyin": "yíxiàng",
+                  "english": "always"
+                },
+                {
+                  "traditional": "一定",
+                  "simplified": "一定",
+                  "pinyin": "yídìng",
+                  "english": "surely"
+                }
+              ],
+              "key": 1,
+              "why": "She has just said some customers DO buy the same day, so the rule is a tendency, not a law: 往往不會. 從來不會, 一向不會 and 一定不會 all say it never happens, which the 雖然 clause rules out.",
+              "focus": {
+                "zh": "往往",
+                "en": "usually, tend to"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-15",
+                "B2L07-2-15"
+              ],
+              "grammarIds": [
+                "B3L12-G03-P316"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-1-6",
+              "choices": [
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "moreover"
+                },
+                {
+                  "traditional": "甚至",
+                  "simplified": "甚至",
+                  "pinyin": "shènzhì",
+                  "english": "even"
+                },
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as a result"
+                },
+                {
+                  "traditional": "至於",
+                  "simplified": "至于",
+                  "pinyin": "zhìyú",
+                  "english": "as for"
+                }
+              ],
+              "key": 3,
+              "why": "The sentence turns to a related topic, whether they buy later, and comments on it: 至於……，就要看…… . 況且 and 甚至 add more of the same, and 結果 reports what happened.",
+              "focus": {
+                "zh": "至於",
+                "en": "as for"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B3L11-2-33"
+              ],
+              "grammarIds": [
+                "B3L11-G06-P302"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-cloze-2",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "今年公司的運動會，是我們小組負責布置會場。大家討論了好幾次，{1}在活動前一天把東西都準備好了。沒想到那天早上突然下起大雨，我們{2}把所有的東西搬到室內。剛搬進去的時候，會場很{3}，東西放得滿地都是，誰也找不到要用的東西。時間很趕，大家{4}沒有發脾氣，還主動把工作分好，互相幫忙。活動結束以後，經理說，我們布置得不是最漂亮的，{5}合作得最好。{6}這次的經驗，大家學會了怎麼一起解決問題。",
+            "simplified": "今年公司的运动会，是我们小组负责布置会场。大家讨论了好几次，{1}在活动前一天把东西都准备好了。没想到那天早上突然下起大雨，我们{2}把所有的东西搬到室内。刚搬进去的时候，会场很{3}，东西放得满地都是，谁也找不到要用的东西。时间很赶，大家{4}没有发脾气，还主动把工作分好，互相帮忙。活动结束以后，经理说，我们布置得不是最漂亮的，{5}合作得最好。{6}这次的经验，大家学会了怎么一起解决问题。",
+            "pinyin": "Jīnnián gōngsī de yùndòng huì, shì wǒmen xiǎozǔ fùzé bùzhì huìchǎng. Dàjiā tǎolùn le hǎojǐ cì, zhōngyú zài huódòng qián yì tiān bǎ dōngxi dōu zhǔnbèi hǎo le. Méixiǎngdào nà tiān zǎoshàng tūrán xià qǐ dà yǔ, wǒmen bùdébù bǎ suǒyǒu de dōngxi bān dào shìnèi. Gāng bān jìnqù de shíhòu, huìchǎng hěn hùnluàn, dōngxi fàng de mǎndì dōu shì, shéi yě zhǎo bú dào yào yòng de dōngxi. Shíjiān hěn gǎn, dàjiā què méiyǒu fā píqì, hái zhǔdòng bǎ gōngzuò fēn hǎo, hùxiāng bāngmáng. Huódòng jiéshù yǐhòu, jīnglǐ shuō, wǒmen bùzhì de bú shì zuì piàoliang de, búguò hézuò de zuì hǎo. Tòuguò zhè cì de jīngyàn, dàjiā xué huì le zěnme yìqǐ jiějué wèntí.",
+            "english": "This year our team was in charge of setting up the venue for the company sports day. After several discussions, we finally had everything ready the day before. Unexpectedly, heavy rain started suddenly that morning, and we had no choice but to move everything indoors. Right after we moved in, the venue was chaotic: things were all over the floor and nobody could find what they needed. Time was tight, yet nobody lost their temper; we split up the jobs ourselves and helped each other. After the event the manager said our set-up wasn't the prettiest, but our teamwork was the best. Through this experience, we all learned how to solve problems together."
+          },
+          "questions": [
+            {
+              "id": "b3l12-cloze-2-1",
+              "choices": [
+                {
+                  "traditional": "往往",
+                  "simplified": "往往",
+                  "pinyin": "wǎngwǎng",
+                  "english": "tend to"
+                },
+                {
+                  "traditional": "一向",
+                  "simplified": "一向",
+                  "pinyin": "yíxiàng",
+                  "english": "always"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                },
+                {
+                  "traditional": "一再",
+                  "simplified": "一再",
+                  "pinyin": "yízài",
+                  "english": "repeatedly"
+                }
+              ],
+              "key": 2,
+              "why": "討論了好幾次 is the long effort, and one result came at last: 終於. 往往 and 一向 describe a habit, not one event, and 一再 would make them get ready again and again.",
+              "focus": {
+                "zh": "終於",
+                "en": "finally"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B3L04-1-23",
+                "B3L12-1-17"
+              ],
+              "grammarIds": [
+                "B3L04-G03-P105"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-2-2",
+              "choices": [
+                {
+                  "traditional": "不得不",
+                  "simplified": "不得不",
+                  "pinyin": "bùdébù",
+                  "english": "had to"
+                },
+                {
+                  "traditional": "來不及",
+                  "simplified": "来不及",
+                  "pinyin": "láibùjí",
+                  "english": "not have time to"
+                },
+                {
+                  "traditional": "沒辦法",
+                  "simplified": "没办法",
+                  "pinyin": "méi bànfǎ",
+                  "english": "be unable to"
+                },
+                {
+                  "traditional": "不應該",
+                  "simplified": "不应该",
+                  "pinyin": "bù yīnggāi",
+                  "english": "should not"
+                }
+              ],
+              "key": 0,
+              "why": "The sudden rain left no choice: 不得不 move everything inside, and the next sentence has them already indoors. 來不及 and 沒辦法 would mean they failed to move it, and 不應該 that they should not have, but 剛搬進去的時候 shows they did, because they had to.",
+              "focus": {
+                "zh": "不得不",
+                "en": "have no choice but to"
+              },
+              "lesson": 6,
+              "wordIds": [
+                "B3L06-2-10"
+              ],
+              "grammarIds": [
+                "B3L06-G06-P169"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-2-3",
+              "choices": [
+                {
+                  "traditional": "擠",
+                  "simplified": "挤",
+                  "pinyin": "jǐ",
+                  "english": "crowded"
+                },
+                {
+                  "traditional": "吵",
+                  "simplified": "吵",
+                  "pinyin": "chǎo",
+                  "english": "noisy"
+                },
+                {
+                  "traditional": "髒",
+                  "simplified": "脏",
+                  "pinyin": "zāng",
+                  "english": "dirty"
+                },
+                {
+                  "traditional": "混亂",
+                  "simplified": "混乱",
+                  "pinyin": "hùnluàn",
+                  "english": "chaotic"
+                }
+              ],
+              "key": 3,
+              "why": "The clause after it describes it: things everywhere, nobody can find anything. That is 混亂. 擠 is too many people, 吵 too much noise and 髒 dirt: none of them explains why nobody can find anything.",
+              "focus": {
+                "zh": "混亂",
+                "en": "chaotic"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-2-17",
+                "B2L16-1-29"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-2-4",
+              "choices": [
+                {
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "english": "then"
+                },
+                {
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "english": "yet"
+                },
+                {
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "english": "only then"
+                },
+                {
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "english": "again"
+                }
+              ],
+              "key": 1,
+              "why": "Tight time makes you expect tempers, but nobody lost theirs: 卻 marks the turn. 就 would make the tight time the cause, 才 needs a time or condition before it, and 又 says it happened again.",
+              "focus": {
+                "zh": "卻",
+                "en": "but, yet (contrary to expectation)"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B3L11-2-22",
+                "B3L12-1-10"
+              ],
+              "grammarIds": [
+                "B3L11-G04-P299"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-2-5",
+              "choices": [
+                {
+                  "traditional": "不過",
+                  "simplified": "不过",
+                  "pinyin": "búguò",
+                  "english": "but"
+                },
+                {
+                  "traditional": "而且",
+                  "simplified": "而且",
+                  "pinyin": "érqiě",
+                  "english": "and also"
+                },
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as a result"
+                },
+                {
+                  "traditional": "原來",
+                  "simplified": "原来",
+                  "pinyin": "yuánlái",
+                  "english": "it turns out"
+                }
+              ],
+              "key": 0,
+              "why": "The manager sets a weak point (not the prettiest) against a strong one (the best teamwork): 不過. 而且 adds a second point of the same kind, 結果 makes the plain set-up cause the good teamwork, and 原來 reports a discovery.",
+              "focus": {
+                "zh": "不過",
+                "en": "but (turning to a good point)"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L01-1-19",
+                "B3L08-2-03"
+              ]
+            },
+            {
+              "id": "b3l12-cloze-2-6",
+              "choices": [
+                {
+                  "traditional": "有關",
+                  "simplified": "有关",
+                  "pinyin": "yǒuguān",
+                  "english": "regarding"
+                },
+                {
+                  "traditional": "為了",
+                  "simplified": "为了",
+                  "pinyin": "wèile",
+                  "english": "in order to"
+                },
+                {
+                  "traditional": "透過",
+                  "simplified": "透过",
+                  "pinyin": "tòuguò",
+                  "english": "through"
+                },
+                {
+                  "traditional": "除了",
+                  "simplified": "除了",
+                  "pinyin": "chúle",
+                  "english": "besides"
+                }
+              ],
+              "key": 2,
+              "why": "The experience is how they learned: 透過這次的經驗. 有關 introduces a topic to explain, not a way of learning; 為了 makes the experience a goal; and 除了 needs 還 or 也 later.",
+              "focus": {
+                "zh": "透過",
+                "en": "through, by means of"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B3L11-1-02",
+                "B3L07-2-23"
+              ],
+              "grammarIds": [
+                "B3L11-G01-P289"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l12-reading-card-1",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "新同事訓練",
+            "simplified": "新同事训练",
+            "pinyin": "Xīn tóngshì xùnliàn",
+            "english": "Training for New Staff"
+          },
+          "text": {
+            "traditional": "各位新同事：歡迎加入本公司！\n時間：下星期一到星期五，每天上午九點到下午四點\n星期一、星期二：在三樓會議室，認識公司和產品\n星期三、星期四：到自己的部門，跟主管學習\n星期五：上午考試，下午經理說明每個人的工作任務\n每天請在九點以前抵達。一星期遲到兩次的人，下個月得再參加一次。\n有事不能來的人，請先打電話給王小姐。星期一、星期二沒來的，下個月再來上這兩天；星期三、星期四沒來的，請自己跟部門主管約時間。\n有關薪水、福利的問題，請在星期五下午問經理。\n東方電腦公司",
+            "simplified": "各位新同事：欢迎加入本公司！\n时间：下星期一到星期五，每天上午九点到下午四点\n星期一、星期二：在三楼会议室，认识公司和产品\n星期三、星期四：到自己的部门，跟主管学习\n星期五：上午考试，下午经理说明每个人的工作任务\n每天请在九点以前抵达。一星期迟到两次的人，下个月得再参加一次。\n有事不能来的人，请先打电话给王小姐。星期一、星期二没来的，下个月再来上这两天；星期三、星期四没来的，请自己跟部门主管约时间。\n有关薪水、福利的问题，请在星期五下午问经理。\n东方电脑公司",
+            "pinyin": "Gèwèi xīn tóngshì: Huānyíng jiārù běn gōngsī! Shíjiān: xià xīngqíyī dào xīngqíwǔ, měi tiān shàngwǔ jiǔ diǎn dào xiàwǔ sì diǎn. Xīngqíyī, xīngqí'èr: zài sān lóu huìyìshì, rènshì gōngsī hé chǎnpǐn. Xīngqísān, xīngqísì: dào zìjǐ de bùmén, gēn zhǔguǎn xuéxí. Xīngqíwǔ: shàngwǔ kǎoshì, xiàwǔ jīnglǐ shuōmíng měi ge rén de gōngzuò rènwù. Měi tiān qǐng zài jiǔ diǎn yǐqián dǐdá. Yì xīngqí chídào liǎng cì de rén, xià ge yuè děi zài cānjiā yí cì. Yǒu shì bù néng lái de rén, qǐng xiān dǎ diànhuà gěi Wáng xiǎojiě. Xīngqíyī, xīngqí'èr méi lái de, xià ge yuè zài lái shàng zhè liǎng tiān; xīngqísān, xīngqísì méi lái de, qǐng zìjǐ gēn bùmén zhǔguǎn yuē shíjiān. Yǒuguān xīnshuǐ, fúlì de wèntí, qǐng zài xīngqíwǔ xiàwǔ wèn jīnglǐ. Dōngfāng Diànnǎo Gōngsī",
+            "english": "To all new colleagues: welcome to the company!\nWhen: next Monday to Friday, 9 a.m. to 4 p.m. every day\nMonday, Tuesday: 3rd-floor meeting room, getting to know the company and its products\nWednesday, Thursday: in your own department, learning from your supervisor\nFriday: test in the morning; in the afternoon the manager explains each person's tasks\nPlease arrive before 9:00 every day. Anyone late twice in the week must attend again next month.\nIf you cannot come, first phone Ms. Wang. If you miss Monday or Tuesday, attend those two days next month; if you miss Wednesday or Thursday, arrange a time with your department supervisor yourself.\nQuestions about pay and benefits: please ask the manager on Friday afternoon.\nDongfang Computers"
+          },
+          "questions": [
+            {
+              "id": "b3l12-reading-card-1-1",
+              "prompt": {
+                "traditional": "張小姐星期四得去醫院，不能來，她該怎麼做？",
+                "simplified": "张小姐星期四得去医院，不能来，她该怎么做？",
+                "pinyin": "Zhāng xiǎojiě xīngqísì děi qù yīyuàn, bù néng lái, tā gāi zěnme zuò?",
+                "english": "Ms. Zhang has to go to hospital on Thursday and can't come. What should she do?"
+              },
+              "choices": [
+                {
+                  "traditional": "告訴王小姐，再跟主管約時間",
+                  "simplified": "告诉王小姐，再跟主管约时间",
+                  "pinyin": "Gàosù Wáng xiǎojiě, zài gēn zhǔguǎn yuē shíjiān.",
+                  "english": "Tell Ms. Wang, then arrange a time with her supervisor."
+                },
+                {
+                  "traditional": "告訴王小姐，下個月再來上課",
+                  "simplified": "告诉王小姐，下个月再来上课",
+                  "pinyin": "Gàosù Wáng xiǎojiě, xià ge yuè zài lái shàngkè.",
+                  "english": "Tell Ms. Wang, then attend that day next month."
+                },
+                {
+                  "traditional": "星期五下午去問經理怎麼辦",
+                  "simplified": "星期五下午去问经理怎么办",
+                  "pinyin": "Xīngqíwǔ xiàwǔ qù wèn jīnglǐ zěnme bàn.",
+                  "english": "Ask the manager on Friday afternoon what to do."
+                },
+                {
+                  "traditional": "自己跟經理約別的時間",
+                  "simplified": "自己跟经理约别的时间",
+                  "pinyin": "Zìjǐ gēn jīnglǐ yuē bié de shíjiān.",
+                  "english": "Arrange another time with the manager herself."
+                }
+              ],
+              "key": 0,
+              "why": "Two lines combine: anyone who can't come phones Ms. Wang first, and a missed Wednesday or Thursday is made up with the department supervisor. Coming back next month is the rule for Monday and Tuesday, and Friday afternoon with the manager is for pay questions.",
+              "focus": {
+                "zh": "兩條規定合起來",
+                "en": "combining two rules"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B1L10-1-06",
+                "B3L06-2-01",
+                "B3L09-2-23"
+              ]
+            },
+            {
+              "id": "b3l12-reading-card-1-2",
+              "prompt": {
+                "traditional": "林先生這星期只有星期五早上遲到了一次，他想問福利的事，應該怎麼做？",
+                "simplified": "林先生这星期只有星期五早上迟到了一次，他想问福利的事，应该怎么做？",
+                "pinyin": "Lín xiānshēng zhè xīngqí zhǐyǒu xīngqíwǔ zǎoshàng chídào le yí cì, tā xiǎng wèn fúlì de shì, yīnggāi zěnme zuò?",
+                "english": "Mr. Lin was late only once this week, on Friday morning. He wants to ask about benefits. What should he do?"
+              },
+              "choices": [
+                {
+                  "traditional": "下個月再參加一次才能問",
+                  "simplified": "下个月再参加一次才能问",
+                  "pinyin": "Xià ge yuè zài cānjiā yí cì cái néng wèn.",
+                  "english": "Attend again next month before asking."
+                },
+                {
+                  "traditional": "先打電話告訴王小姐",
+                  "simplified": "先打电话告诉王小姐",
+                  "pinyin": "Xiān dǎ diànhuà gàosù Wáng xiǎojiě.",
+                  "english": "First phone Ms. Wang about it."
+                },
+                {
+                  "traditional": "那天下午去問經理就好",
+                  "simplified": "那天下午去问经理就好",
+                  "pinyin": "Nà tiān xiàwǔ qù wèn jīnglǐ jiù hǎo.",
+                  "english": "Just ask the manager that afternoon."
+                },
+                {
+                  "traditional": "星期三去問部門主管",
+                  "simplified": "星期三去问部门主管",
+                  "pinyin": "Xīngqísān qù wèn bùmén zhǔguǎn.",
+                  "english": "Ask his department supervisor on Wednesday."
+                }
+              ],
+              "key": 2,
+              "why": "有關薪水、福利的問題，請在星期五下午問經理, and one late arrival is not the 兩次 that means attending again. Phoning Ms. Wang is for people who can't come, and Wednesday is for learning in the department.",
+              "focus": {
+                "zh": "有關……；套用規定",
+                "en": "regarding…; applying a rule"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-31",
+                "B3L12-1-30",
+                "B1L12-2-09"
+              ],
+              "grammarIds": [
+                "B3L12-G04-P318"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-reading-card-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "小高：\n我明天得去臺中開會，下午四點以後才回公司。\n明天上午十點，有客人要來公司看我們的新產品。請你九點半以前把會議室布置好，產品資料也準備十份。\n客人到了以後，請先介紹產品的功能。有關價錢的問題，你先別回答，跟他們說我回來以後會打電話詳細說明。\n要是他們想看工廠，請小方帶他們去。小方明天下午兩點以後才到公司，在那之前，請你先陪客人喝茶聊天。\n李經理",
+            "simplified": "小高：\n我明天得去台中开会，下午四点以后才回公司。\n明天上午十点，有客人要来公司看我们的新产品。请你九点半以前把会议室布置好，产品资料也准备十份。\n客人到了以后，请先介绍产品的功能。有关价钱的问题，你先别回答，跟他们说我回来以后会打电话详细说明。\n要是他们想看工厂，请小方带他们去。小方明天下午两点以后才到公司，在那之前，请你先陪客人喝茶聊天。\n李经理",
+            "pinyin": "Xiǎo Gāo: Wǒ míngtiān děi qù Táizhōng kāihuì, xiàwǔ sì diǎn yǐhòu cái huí gōngsī. Míngtiān shàngwǔ shí diǎn, yǒu kèrén yào lái gōngsī kàn wǒmen de xīn chǎnpǐn. Qǐng nǐ jiǔ diǎn bàn yǐqián bǎ huìyìshì bùzhì hǎo, chǎnpǐn zīliào yě zhǔnbèi shí fèn. Kèrén dào le yǐhòu, qǐng xiān jièshào chǎnpǐn de gōngnéng. Yǒuguān jiàqián de wèntí, nǐ xiān bié huídá, gēn tāmen shuō wǒ huílái yǐhòu huì dǎ diànhuà xiángxì shuōmíng. Yàoshì tāmen xiǎng kàn gōngchǎng, qǐng Xiǎo Fāng dài tāmen qù. Xiǎo Fāng míngtiān xiàwǔ liǎng diǎn yǐhòu cái dào gōngsī, zài nà zhīqián, qǐng nǐ xiān péi kèrén hē chá liáotiān. Lǐ jīnglǐ",
+            "english": "Xiao Gao,\nI have to go to Taichung for a meeting tomorrow and won't be back at the office until after 4 p.m.\nTomorrow at 10 a.m. some clients are coming to the office to see our new products. Please set up the meeting room by 9:30 and get ten copies of the product information ready.\nWhen the clients arrive, first introduce what the products do. If they ask about prices, don't answer yet; tell them I'll phone when I'm back and explain in detail.\nIf they want to see the factory, ask Xiao Fang to take them. Xiao Fang only gets in after 2 p.m. tomorrow; until then, please keep the clients company over tea.\nManager Li"
+          },
+          "questions": [
+            {
+              "id": "b3l12-reading-card-2-1",
+              "prompt": {
+                "traditional": "客人來了以後，下面哪一種做法跟李經理說的一樣？",
+                "simplified": "客人来了以后，下面哪一种做法跟李经理说的一样？",
+                "pinyin": "Kèrén lái le yǐhòu, xiàmiàn nǎ yì zhǒng zuòfǎ gēn Lǐ jīnglǐ shuō de yíyàng?",
+                "english": "Once the clients arrive, which way of handling it matches Manager Li's note?"
+              },
+              "choices": [
+                {
+                  "traditional": "小高說明價錢，不帶客人看工廠",
+                  "simplified": "小高说明价钱，不带客人看工厂",
+                  "pinyin": "Xiǎo Gāo shuōmíng jiàqián, bú dài kèrén kàn gōngchǎng.",
+                  "english": "Xiao Gao explains prices but skips the factory."
+                },
+                {
+                  "traditional": "小高介紹產品，也帶客人看工廠",
+                  "simplified": "小高介绍产品，也带客人看工厂",
+                  "pinyin": "Xiǎo Gāo jièshào chǎnpǐn, yě dài kèrén kàn gōngchǎng.",
+                  "english": "Xiao Gao presents the products and shows the factory too."
+                },
+                {
+                  "traditional": "小方介紹產品，也說明價錢",
+                  "simplified": "小方介绍产品，也说明价钱",
+                  "pinyin": "Xiǎo Fāng jièshào chǎnpǐn, yě shuōmíng jiàqián.",
+                  "english": "Xiao Fang presents the products and explains prices."
+                },
+                {
+                  "traditional": "小高介紹產品，先不談價錢",
+                  "simplified": "小高介绍产品，先不谈价钱",
+                  "pinyin": "Xiǎo Gāo jièshào chǎnpǐn, xiān bù tán jiàqián.",
+                  "english": "Xiao Gao presents the products and leaves prices for later."
+                }
+              ],
+              "key": 3,
+              "why": "Three lines combine: Xiao Gao introduces what the products do, 有關價錢的問題，你先別回答, and the factory is Xiao Fang's job. Every other choice gives prices or the factory to the wrong person.",
+              "focus": {
+                "zh": "有關……；誰負責什麼",
+                "en": "regarding…; who does what"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-31",
+                "B2L13-1-06",
+                "B2L05-1-06"
+              ],
+              "grammarIds": [
+                "B3L12-G04-P318"
+              ]
+            },
+            {
+              "id": "b3l12-reading-card-2-2",
+              "prompt": {
+                "traditional": "客人說他們下午一點就得離開，原來安排的哪一件事做不到？",
+                "simplified": "客人说他们下午一点就得离开，原来安排的哪一件事做不到？",
+                "pinyin": "Kèrén shuō tāmen xiàwǔ yì diǎn jiù děi líkāi, yuánlái ānpái de nǎ yí jiàn shì zuò bú dào?",
+                "english": "The clients say they must leave at 1 p.m. Which part of the plan can no longer happen?"
+              },
+              "choices": [
+                {
+                  "traditional": "跟小方去看工廠",
+                  "simplified": "跟小方去看工厂",
+                  "pinyin": "Gēn Xiǎo Fāng qù kàn gōngchǎng.",
+                  "english": "Touring the factory with Xiao Fang."
+                },
+                {
+                  "traditional": "聽經理打電話說明價錢",
+                  "simplified": "听经理打电话说明价钱",
+                  "pinyin": "Tīng jīnglǐ dǎ diànhuà shuōmíng jiàqián.",
+                  "english": "Hearing the manager explain prices by phone."
+                },
+                {
+                  "traditional": "在會議室聽產品介紹",
+                  "simplified": "在会议室听产品介绍",
+                  "pinyin": "Zài huìyìshì tīng chǎnpǐn jièshào.",
+                  "english": "Hearing the product talk in the meeting room."
+                },
+                {
+                  "traditional": "拿到準備好的產品資料",
+                  "simplified": "拿到准备好的产品资料",
+                  "pinyin": "Ná dào zhǔnbèi hǎo de chǎnpǐn zīliào.",
+                  "english": "Getting the prepared product papers."
+                }
+              ],
+              "key": 0,
+              "why": "Xiao Fang only arrives after two, and the factory tour is his, so it can't happen before one. The manager phones after he is back, which needs no visit, and the room and papers are ready by 9:30.",
+              "focus": {
+                "zh": "之前；時間的限制",
+                "en": "before; a time limit"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-25",
+                "B2L16-2-02",
+                "B2L14-2-07"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passage",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l12-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "我怎麼選新人",
+            "simplified": "我怎么选新人",
+            "pinyin": "Wǒ zěnme xuǎn xīnrén",
+            "english": "How I Choose New Staff"
+          },
+          "text": {
+            "traditional": "我在一家旅行社負責面試新人，已經做了十年。這十年來，我發現來面試的年輕人往往很緊張，怕說錯話，所以每個問題都回答得很短。其實，我不太在意他們說得好不好聽，我想知道的是他們怎麼想、怎麼做。\n去年有一位小姐來面試。她念的學校不是最好的，也沒有在旅行社工作過。我問她有沒有碰過什麼困難，她說大學的時候，她帶幾個外國朋友去環島，在東部碰到颱風，火車都停了。儘管那時候她也很著急，她還是冷靜地重新安排了行程，讓大家在山上的民宿多住了兩天，最後大家都玩得很開心。\n聽完以後，我就決定錄取她。她上班以後，不論客人有什麼要求，她都會想辦法處理，現在是我們公司客人最喜歡的人。\n所以，我常跟來面試的人說，別只想給我一個標準的答案。說說你真正碰過的事，讓我知道你在處理問題方面的能力，這比什麼都重要。",
+            "simplified": "我在一家旅行社负责面试新人，已经做了十年。这十年来，我发现来面试的年轻人往往很紧张，怕说错话，所以每个问题都回答得很短。其实，我不太在意他们说得好不好听，我想知道的是他们怎么想、怎么做。\n去年有一位小姐来面试。她念的学校不是最好的，也没有在旅行社工作过。我问她有没有碰过什么困难，她说大学的时候，她带几个外国朋友去环岛，在东部碰到台风，火车都停了。尽管那时候她也很着急，她还是冷静地重新安排了行程，让大家在山上的民宿多住了两天，最后大家都玩得很开心。\n听完以后，我就决定录取她。她上班以后，不论客人有什么要求，她都会想办法处理，现在是我们公司客人最喜欢的人。\n所以，我常跟来面试的人说，别只想给我一个标准的答案。说说你真正碰过的事，让我知道你在处理问题方面的能力，这比什么都重要。",
+            "pinyin": "Wǒ zài yì jiā lǚxíngshè fùzé miànshì xīnrén, yǐjīng zuò le shí nián. Zhè shí nián lái, wǒ fāxiàn lái miànshì de niánqīngrén wǎngwǎng hěn jǐnzhāng, pà shuō cuò huà, suǒyǐ měi ge wèntí dōu huídá de hěn duǎn. Qíshí, wǒ bú tài zàiyì tāmen shuō de hǎo bù hǎotīng, wǒ xiǎng zhīdào de shì tāmen zěnme xiǎng, zěnme zuò. Qùnián yǒu yí wèi xiǎojiě lái miànshì. Tā niàn de xuéxiào bú shì zuì hǎo de, yě méiyǒu zài lǚxíngshè gōngzuò guo. Wǒ wèn tā yǒu méiyǒu pèng guo shénme kùnnán, tā shuō dàxué de shíhòu, tā dài jǐ ge wàiguó péngyǒu qù huándǎo, zài dōngbù pèng dào táifēng, huǒchē dōu tíng le. Jǐnguǎn nà shíhòu tā yě hěn zhāojí, tā háishì lěngjìng de chóngxīn ānpái le xíngchéng, ràng dàjiā zài shān shàng de mínsù duō zhù le liǎng tiān, zuìhòu dàjiā dōu wán de hěn kāixīn. Tīng wán yǐhòu, wǒ jiù juédìng lùqǔ tā. Tā shàngbān yǐhòu, búlùn kèrén yǒu shénme yāoqiú, tā dōu huì xiǎng bànfǎ chǔlǐ, xiànzài shì wǒmen gōngsī kèrén zuì xǐhuān de rén. Suǒyǐ, wǒ cháng gēn lái miànshì de rén shuō, bié zhǐ xiǎng gěi wǒ yí ge biāozhǔn de dá'àn. Shuō shuo nǐ zhēnzhèng pèng guo de shì, ràng wǒ zhīdào nǐ zài chǔlǐ wèntí fāngmiàn de nénglì, zhè bǐ shénme dōu zhòngyào.",
+            "english": "I have been in charge of interviewing new staff at a travel agency for ten years. In that time I have found that young people who come for interviews are usually nervous and afraid of saying the wrong thing, so they answer every question briefly. In fact, I don't much care whether they speak nicely; what I want to know is how they think and act.\nLast year a young woman came for an interview. The school she went to wasn't the best, and she had never worked at a travel agency. I asked whether she had ever faced a difficulty. She said that at university she took some foreign friends round the island, and in the east they ran into a typhoon and all the trains stopped. Even though she was worried too, she calmly rearranged the trip so everyone stayed two more days at a guesthouse in the mountains, and in the end they all had a great time.\nAfter hearing that, I decided to hire her. Since she started, whatever customers ask for, she finds a way to handle it, and now she is the customers' favourite in our office.\nSo I often tell people who come for interviews: don't just try to give me a standard answer. Tell me what you have really been through, so I know what you can do when it comes to handling problems. That matters more than anything."
+          },
+          "questions": [
+            {
+              "id": "b3l12-passage-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人為什麼聽完這件事就決定錄取那位小姐？",
+                "simplified": "写这篇文章的人为什么听完这件事就决定录取那位小姐？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme tīng wán zhè jiàn shì jiù juédìng lùqǔ nà wèi xiǎojiě?",
+                "english": "Why did the writer decide to hire the young woman as soon as he heard this story?"
+              },
+              "choices": [
+                {
+                  "traditional": "她有帶外國朋友去旅行的經驗",
+                  "simplified": "她有带外国朋友去旅行的经验",
+                  "pinyin": "Tā yǒu dài wàiguó péngyǒu qù lǚxíng de jīngyàn.",
+                  "english": "She has experience taking foreign friends travelling."
+                },
+                {
+                  "traditional": "她著急的時候也能冷靜地想辦法",
+                  "simplified": "她着急的时候也能冷静地想办法",
+                  "pinyin": "Tā zhāojí de shíhòu yě néng lěngjìng de xiǎng bànfǎ.",
+                  "english": "Even when worried, she can calmly find a way out."
+                },
+                {
+                  "traditional": "她回答得很長，一點也不緊張",
+                  "simplified": "她回答得很长，一点也不紧张",
+                  "pinyin": "Tā huídá de hěn cháng, yìdiǎn yě bù jǐnzhāng.",
+                  "english": "She answered at length, not nervous at all."
+                },
+                {
+                  "traditional": "她讓朋友們在山上玩得很開心",
+                  "simplified": "她让朋友们在山上玩得很开心",
+                  "pinyin": "Tā ràng péngyǒumen zài shān shàng wán de hěn kāixīn.",
+                  "english": "She made sure her friends had fun in the mountains."
+                }
+              ],
+              "key": 1,
+              "why": "儘管那時候她也很著急，她還是冷靜地重新安排了行程, and he wants 你在處理問題方面的能力. The trip with foreigners, her long answer and her friends' good time are all in or near the story, but none is the problem-handling he says matters more than anything.",
+              "focus": {
+                "zh": "儘管……，還是……；作者的理由",
+                "en": "even though…, still…; the writer's reason"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-2-05",
+                "B3L06-2-04",
+                "B3L09-2-19"
+              ],
+              "grammarIds": [
+                "B3L12-G05-P325"
+              ]
+            },
+            {
+              "id": "b3l12-passage-1-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人怎麼看「標準的答案」？",
+                "simplified": "写这篇文章的人怎么看「标准的答案」？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén zěnme kàn \"biāozhǔn de dá'àn\"?",
+                "english": "What does the writer think of \"standard answers\"?"
+              },
+              "choices": [
+                {
+                  "traditional": "能讓緊張的人不說錯話",
+                  "simplified": "能让紧张的人不说错话",
+                  "pinyin": "Néng ràng jǐnzhāng de rén bù shuō cuò huà.",
+                  "english": "They keep nervous people from saying the wrong thing."
+                },
+                {
+                  "traditional": "說得好聽就能被錄取",
+                  "simplified": "说得好听就能被录取",
+                  "pinyin": "Shuō de hǎotīng jiù néng bèi lùqǔ.",
+                  "english": "Saying them nicely gets you hired."
+                },
+                {
+                  "traditional": "比念過什麼學校更能看出能力",
+                  "simplified": "比念过什么学校更能看出能力",
+                  "pinyin": "Bǐ niàn guo shénme xuéxiào gèng néng kàn chū nénglì.",
+                  "english": "They show ability better than where one studied."
+                },
+                {
+                  "traditional": "聽不出對方真正怎麼想",
+                  "simplified": "听不出对方真正怎么想",
+                  "pinyin": "Tīng bù chū duìfāng zhēnzhèng zěnme xiǎng.",
+                  "english": "They don't show how the person really thinks."
+                }
+              ],
+              "key": 3,
+              "why": "He doesn't care 說得好不好聽; 我想知道的是他們怎麼想、怎麼做, so he tells people 別只想給我一個標準的答案. Fear of saying the wrong thing is why nervous people answer briefly, not something he praises, and what outweighed her school was a real story, not a standard answer.",
+              "focus": {
+                "zh": "說話人的看法；往往",
+                "en": "the writer's view; tend to"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L10-2-09",
+                "B3L12-1-15",
+                "B3L11-1-11"
+              ],
+              "grammarIds": [
+                "B3L12-G03-P316"
+              ]
+            },
+            {
+              "id": "b3l12-passage-1-3",
+              "prompt": {
+                "traditional": "下面哪一位來面試的人，最可能讓寫這篇文章的人滿意？",
+                "simplified": "下面哪一位来面试的人，最可能让写这篇文章的人满意？",
+                "pinyin": "Xiàmiàn nǎ yí wèi lái miànshì de rén, zuì kěnéng ràng xiě zhè piān wénzhāng de rén mǎnyì?",
+                "english": "Which interviewee is most likely to satisfy the writer?"
+              },
+              "choices": [
+                {
+                  "traditional": "每個問題都回答得很好聽",
+                  "simplified": "每个问题都回答得很好听",
+                  "pinyin": "Měi ge wèntí dōu huídá de hěn hǎotīng.",
+                  "english": "One whose every answer sounds nice."
+                },
+                {
+                  "traditional": "說自己在旅行社打過工",
+                  "simplified": "说自己在旅行社打过工",
+                  "pinyin": "Shuō zìjǐ zài lǚxíngshè dǎ guo gōng.",
+                  "english": "One who says they have worked at a travel agency."
+                },
+                {
+                  "traditional": "說自己怎麼處理過一件麻煩事",
+                  "simplified": "说自己怎么处理过一件麻烦事",
+                  "pinyin": "Shuō zìjǐ zěnme chǔlǐ guo yí jiàn máfan shì.",
+                  "english": "One who explains how they once handled a problem."
+                },
+                {
+                  "traditional": "說自己念的是很好的學校",
+                  "simplified": "说自己念的是很好的学校",
+                  "pinyin": "Shuō zìjǐ niàn de shì hěn hǎo de xuéxiào.",
+                  "english": "One who says they studied at a very good school."
+                }
+              ],
+              "key": 2,
+              "why": "Apply his rule: 說說你真正碰過的事，讓我知道你在處理問題方面的能力. Nice-sounding answers are what he says he doesn't care about, and the woman he hired had neither the best school nor travel-agency work.",
+              "focus": {
+                "zh": "在……方面；套用標準",
+                "en": "in terms of…; applying the writer's rule"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-07",
+                "B2L11-2-11",
+                "B2L13-2-19"
+              ],
+              "grammarIds": [
+                "B3L12-G02-P314"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l12-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "在臺灣上班",
+            "simplified": "在台湾上班",
+            "pinyin": "Zài Táiwān shàngbān",
+            "english": "Working in Taiwan"
+          },
+          "text": {
+            "traditional": "我在臺灣一家公司上班兩年了。剛來的時候，有很多事讓我不習慣。在我的國家，下班時間到了，要是主管還沒走，大家往往不好意思先離開。可是在這裡，六點一到，同事們就說再見回家了。我本來以為他們不夠認真，後來才發現，他們上班的時候做事很快，也很專心。\n還有一件讓我驚訝的事，是開會的方式。有一次，經理問大家對新產品有什麼看法。我覺得自己是新人，應該謙虛一點，就什麼都沒說。會議結束以後，經理卻來找我，問我是不是對新產品有什麼不滿。我這才明白，在這家公司，開會時不說話不是謙虛，反而會讓別人誤會。\n從那次以後，不論我的想法對不對，我都會在會議上說出來。儘管有時候說錯了，同事們也不會笑我，還會跟我一起討論。現在我覺得，在溝通方面，我比兩年前進步了很多。",
+            "simplified": "我在台湾一家公司上班两年了。刚来的时候，有很多事让我不习惯。在我的国家，下班时间到了，要是主管还没走，大家往往不好意思先离开。可是在这里，六点一到，同事们就说再见回家了。我本来以为他们不够认真，后来才发现，他们上班的时候做事很快，也很专心。\n还有一件让我惊讶的事，是开会的方式。有一次，经理问大家对新产品有什么看法。我觉得自己是新人，应该谦虚一点，就什么都没说。会议结束以后，经理却来找我，问我是不是对新产品有什么不满。我这才明白，在这家公司，开会时不说话不是谦虚，反而会让别人误会。\n从那次以后，不论我的想法对不对，我都会在会议上说出来。尽管有时候说错了，同事们也不会笑我，还会跟我一起讨论。现在我觉得，在沟通方面，我比两年前进步了很多。",
+            "pinyin": "Wǒ zài Táiwān yì jiā gōngsī shàngbān liǎng nián le. Gāng lái de shíhòu, yǒu hěn duō shì ràng wǒ bù xíguàn. Zài wǒ de guójiā, xiàbān shíjiān dào le, yàoshì zhǔguǎn hái méi zǒu, dàjiā wǎngwǎng bù hǎoyìsi xiān líkāi. Kěshì zài zhèlǐ, liù diǎn yí dào, tóngshìmen jiù shuō zàijiàn huíjiā le. Wǒ běnlái yǐwéi tāmen bú gòu rènzhēn, hòulái cái fāxiàn, tāmen shàngbān de shíhòu zuòshì hěn kuài, yě hěn zhuānxīn. Hái yǒu yí jiàn ràng wǒ jīngyà de shì, shì kāihuì de fāngshì. Yǒu yí cì, jīnglǐ wèn dàjiā duì xīn chǎnpǐn yǒu shénme kànfǎ. Wǒ juéde zìjǐ shì xīnrén, yīnggāi qiānxū yìdiǎn, jiù shénme dōu méi shuō. Huìyì jiéshù yǐhòu, jīnglǐ què lái zhǎo wǒ, wèn wǒ shì bú shì duì xīn chǎnpǐn yǒu shénme bùmǎn. Wǒ zhè cái míngbái, zài zhè jiā gōngsī, kāihuì shí bù shuōhuà bú shì qiānxū, fǎn'ér huì ràng biérén wùhuì. Cóng nà cì yǐhòu, búlùn wǒ de xiǎngfǎ duì bú duì, wǒ dōu huì zài huìyì shàng shuō chūlái. Jǐnguǎn yǒu shíhòu shuō cuò le, tóngshìmen yě bú huì xiào wǒ, hái huì gēn wǒ yìqǐ tǎolùn. Xiànzài wǒ juéde, zài gōutōng fāngmiàn, wǒ bǐ liǎng nián qián jìnbù le hěn duō.",
+            "english": "I have worked for a company in Taiwan for two years. When I first came, many things felt strange. In my country, when it is time to go home but the supervisor hasn't left, people usually feel awkward about leaving first. But here, the moment it is six, colleagues say goodbye and go home. At first I thought they weren't serious enough about work; later I found they work fast and with focus during the day.\nAnother thing that surprised me was how meetings work. Once the manager asked everyone what they thought of a new product. I felt that as a newcomer I should be modest, so I said nothing. After the meeting, though, the manager came to ask whether I was unhappy about the new product. Only then did I understand that in this company, saying nothing in a meeting isn't modesty; instead it makes people misunderstand you.\nSince then, whether my ideas are right or not, I say them in meetings. Even though I am sometimes wrong, my colleagues don't laugh at me; they discuss it with me. I now feel that when it comes to communicating, I have improved a lot in two years."
+          },
+          "questions": [
+            {
+              "id": "b3l12-passage-2-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人後來為什麼不再覺得同事不認真？",
+                "simplified": "写这篇文章的人后来为什么不再觉得同事不认真？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén hòulái wèishénme bú zài juéde tóngshì bú rènzhēn?",
+                "english": "Why did the writer stop thinking the colleagues weren't serious?"
+              },
+              "choices": [
+                {
+                  "traditional": "他們上班時就把事做好了",
+                  "simplified": "他们上班时就把事做好了",
+                  "pinyin": "Tāmen shàngbān shí jiù bǎ shì zuò hǎo le.",
+                  "english": "They get the work done during working hours."
+                },
+                {
+                  "traditional": "主管不在意大家幾點走",
+                  "simplified": "主管不在意大家几点走",
+                  "pinyin": "Zhǔguǎn bú zàiyì dàjiā jǐ diǎn zǒu.",
+                  "english": "The supervisor doesn't mind when people leave."
+                },
+                {
+                  "traditional": "他自己也開始六點回家",
+                  "simplified": "他自己也开始六点回家",
+                  "pinyin": "Tā zìjǐ yě kāishǐ liù diǎn huíjiā.",
+                  "english": "He started going home at six too."
+                },
+                {
+                  "traditional": "大家下班後還會討論工作",
+                  "simplified": "大家下班后还会讨论工作",
+                  "pinyin": "Dàjiā xiàbān hòu hái huì tǎolùn gōngzuò.",
+                  "english": "People still discuss work after hours."
+                }
+              ],
+              "key": 0,
+              "why": "我本來以為他們不夠認真，後來才發現，他們上班的時候做事很快，也很專心: fast, focused work in the day explains leaving at six. The supervisor's view is never given, and discussing with him is about meetings, not after hours.",
+              "focus": {
+                "zh": "本來……，後來才……",
+                "en": "at first…, only later…"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B2L09-1-24",
+                "B3L07-2-19"
+              ]
+            },
+            {
+              "id": "b3l12-passage-2-2",
+              "prompt": {
+                "traditional": "經理開完會為什麼來找寫這篇文章的人？",
+                "simplified": "经理开完会为什么来找写这篇文章的人？",
+                "pinyin": "Jīnglǐ kāi wán huì wèishénme lái zhǎo xiě zhè piān wénzhāng de rén?",
+                "english": "Why did the manager come to find the writer after the meeting?"
+              },
+              "choices": [
+                {
+                  "traditional": "他在會議上說錯了話",
+                  "simplified": "他在会议上说错了话",
+                  "pinyin": "Tā zài huìyì shàng shuō cuò le huà.",
+                  "english": "The writer said something wrong in the meeting."
+                },
+                {
+                  "traditional": "想批評他太過謙虛",
+                  "simplified": "想批评他太过谦虚",
+                  "pinyin": "Xiǎng pīpíng tā tài guò qiānxū.",
+                  "english": "To criticize the writer for being too modest."
+                },
+                {
+                  "traditional": "擔心他對產品不滿卻沒說",
+                  "simplified": "担心他对产品不满却没说",
+                  "pinyin": "Dānxīn tā duì chǎnpǐn bùmǎn què méi shuō.",
+                  "english": "Worried the writer disliked the product but kept quiet."
+                },
+                {
+                  "traditional": "覺得他對新產品不熟悉",
+                  "simplified": "觉得他对新产品不熟悉",
+                  "pinyin": "Juéde tā duì xīn chǎnpǐn bù shúxī.",
+                  "english": "Thought the writer didn't know the product."
+                }
+              ],
+              "key": 2,
+              "why": "The writer said nothing, and 經理卻來找我，問我是不是……有什麼不滿: the silence looked like an unspoken objection. Saying things wrong comes later, after he starts speaking up; that silence is not modesty here is the writer's own conclusion, not the manager's complaint.",
+              "focus": {
+                "zh": "卻；誤會",
+                "en": "but; a misunderstanding"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-12",
+                "B3L08-1-06",
+                "B3L09-1-21"
+              ]
+            },
+            {
+              "id": "b3l12-passage-2-3",
+              "prompt": {
+                "traditional": "這篇文章主要在說什麼？",
+                "simplified": "这篇文章主要在说什么？",
+                "pinyin": "Zhè piān wénzhāng zhǔyào zài shuō shénme?",
+                "english": "What is this passage mainly about?"
+              },
+              "choices": [
+                {
+                  "traditional": "臺灣的公司比他的國家輕鬆",
+                  "simplified": "台湾的公司比他的国家轻松",
+                  "pinyin": "Táiwān de gōngsī bǐ tā de guójiā qīngsōng.",
+                  "english": "Companies in Taiwan are easier than in his country."
+                },
+                {
+                  "traditional": "他慢慢改變了對職場的看法",
+                  "simplified": "他慢慢改变了对职场的看法",
+                  "pinyin": "Tā mànman gǎibiàn le duì zhíchǎng de kànfǎ.",
+                  "english": "He gradually changed his view of the workplace."
+                },
+                {
+                  "traditional": "新人在會議上應該謙虛",
+                  "simplified": "新人在会议上应该谦虚",
+                  "pinyin": "Xīnrén zài huìyì shàng yīnggāi qiānxū.",
+                  "english": "Newcomers should be modest in meetings."
+                },
+                {
+                  "traditional": "同事們都很願意幫新人",
+                  "simplified": "同事们都很愿意帮新人",
+                  "pinyin": "Tóngshìmen dōu hěn yuànyì bāng xīnrén.",
+                  "english": "His colleagues are all happy to help newcomers."
+                }
+              ],
+              "key": 1,
+              "why": "Both stories are first impressions he corrected: leaving at six is not laziness, and silence in meetings is not modesty, and now 不論我的想法對不對，我都會……說出來. \"Easier\" is the first wrong idea he drops, modesty in meetings is what he unlearns, and the colleagues' help is only one detail.",
+              "focus": {
+                "zh": "不論……都……；整篇的意思",
+                "en": "no matter…; the main idea"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-1-26",
+                "B3L12-1-16",
+                "B3L08-1-05"
+              ],
+              "grammarIds": [
+                "B3L12-G06-P327",
+                "B3L12-G02-P314"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

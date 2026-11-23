@@ -1,0 +1,2779 @@
+{
+  "schemaVersion": 1,
+  "key": "b3l15",
+  "bookId": 3,
+  "lessonId": 15,
+  "band": "B",
+  "allowWords": [
+    "明哲",
+    "尚恩",
+    "臺南",
+    "臺北",
+    "我爸",
+    "我媽",
+    "你爸",
+    "你媽",
+    "晚餐",
+    "午餐",
+    "早餐",
+    "古廟",
+    "古城",
+    "老街",
+    "小山",
+    "城裡",
+    "人擠人",
+    "當地人",
+    "老人家",
+    "停車",
+    "爸媽",
+    "我爸媽",
+    "隊",
+    "星期一",
+    "攤位",
+    "擺攤",
+    "休館",
+    "入場",
+    "開不了機",
+    "歷史社",
+    "哪些"
+  ],
+  "slots": [
+    {
+      "id": "dialogue-simply",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l15-dialogue-simply-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你上個週末不是去參觀那座古老的廟嗎？怎麼樣？",
+              "simplified": "你上个周末不是去参观那座古老的庙吗？怎么样？",
+              "pinyin": "Nǐ shàng ge zhōumò bú shì qù cānguān nà zuò gǔlǎo de miào ma? Zěnmeyàng?",
+              "english": "Didn't you go to see that old temple last weekend? How was it?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "人多得不得了，我們排了一個小時的隊才進去。",
+              "simplified": "人多得不得了，我们排了一个小时的队才进去。",
+              "pinyin": "Rén duō de bùdéliǎo, wǒmen pái le yí ge xiǎoshí de duì cái jìnqù.",
+              "english": "It was incredibly crowded. We queued for an hour before we got in."
+            },
+            {
+              "speaker": "F",
+              "traditional": "排那麼久？那不是累死了？",
+              "simplified": "排那么久？那不是累死了？",
+              "pinyin": "Pái nàme jiǔ? Nà bú shì lèi sǐ le?",
+              "english": "That long? Weren't you worn out?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "累是累，可是廟門上畫的人物好生動，簡直像活的一樣。我覺得排再久都值得。",
+              "simplified": "累是累，可是庙门上画的人物好生动，简直像活的一样。我觉得排再久都值得。",
+              "pinyin": "Lèi shì lèi, kěshì miào mén shàng huà de rénwù hǎo shēngdòng, jiǎnzhí xiàng huó de yíyàng. Wǒ juéde pái zài jiǔ dōu zhídé.",
+              "english": "Tired, yes, but the figures painted on the temple doors are so vivid they look practically alive. However long the queue, it was worth it."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那我也想去看看。",
+              "simplified": "那我也想去看看。",
+              "pinyin": "Nà wǒ yě xiǎng qù kàn kan.",
+              "english": "Then I want to go and see too."
+            },
+            {
+              "speaker": "M",
+              "traditional": "要去就早上去，九點以前人比較少。",
+              "simplified": "要去就早上去，九点以前人比较少。",
+              "pinyin": "Yào qù jiù zǎoshàng qù, jiǔ diǎn yǐqián rén bǐjiào shǎo.",
+              "english": "If you go, go in the morning. There are fewer people before nine."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-dialogue-simply-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的覺得這次參觀怎麼樣？",
+                "simplified": "男的觉得这次参观怎么样？",
+                "pinyin": "Nán de juéde zhè cì cānguān zěnmeyàng?",
+                "english": "What does the man think of this visit?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "雖然人很多，可是一點也不累",
+                  "simplified": "虽然人很多，可是一点也不累",
+                  "pinyin": "Suīrán rén hěn duō, kěshì yìdiǎn yě bú lèi.",
+                  "english": "It was crowded, but he wasn't tired at all."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "雖然很累，可是看了很滿意",
+                  "simplified": "虽然很累，可是看了很满意",
+                  "pinyin": "Suīrán hěn lèi, kěshì kàn le hěn mǎnyì.",
+                  "english": "It was tiring, but he was very pleased with what he saw."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "畫得很生動，可是不值得排隊",
+                  "simplified": "画得很生动，可是不值得排队",
+                  "pinyin": "Huà de hěn shēngdòng, kěshì bù zhídé páiduì.",
+                  "english": "The paintings are vivid, but not worth the queue."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "雖然要排隊，可是排得不久",
+                  "simplified": "虽然要排队，可是排得不久",
+                  "pinyin": "Suīrán yào páiduì, kěshì pái de bù jiǔ.",
+                  "english": "There was a queue, but it wasn't long."
+                }
+              ],
+              "key": 1,
+              "why": "累是累，可是… turns from the queue to the paintings, 簡直像活的一樣 is high praise, and 排再久都值得 seals it. He says 累是累, so \"not tired at all\" is wrong; he queued a whole hour, so \"the queue wasn't long\" is wrong (\"before nine\" is advice for her visit); and he says the paintings were worth any queue.",
+              "focus": {
+                "zh": "簡直；……是……，可是……",
+                "en": "practically; yes…, but…"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-1-12",
+                "B3L15-1-11",
+                "B2L04-2-27"
+              ],
+              "grammarIds": [
+                "B3L15-G01-P383"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-dialogue-simply-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "今天那位導遊，你覺得怎麼樣？",
+              "simplified": "今天那位导游，你觉得怎么样？",
+              "pinyin": "Jīntiān nà wèi dǎoyóu, nǐ juéde zěnmeyàng?",
+              "english": "What did you think of today's guide?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "他對淡水的歷史熟得不得了，簡直就是一本會走路的歷史書。",
+              "simplified": "他对淡水的历史熟得不得了，简直就是一本会走路的历史书。",
+              "pinyin": "Tā duì Dànshuǐ de lìshǐ shú de bùdéliǎo, jiǎnzhí jiù shì yì běn huì zǒulù de lìshǐ shū.",
+              "english": "He knows Tamsui's history inside out. He's practically a walking history book."
+            },
+            {
+              "speaker": "F",
+              "traditional": "可是他說得太快，我有一半沒聽懂。明天想請他說慢一點。",
+              "simplified": "可是他说得太快，我有一半没听懂。明天想请他说慢一点。",
+              "pinyin": "Kěshì tā shuō de tài kuài, wǒ yǒu yíbàn méi tīng dǒng. Míngtiān xiǎng qǐng tā shuō màn yìdiǎn.",
+              "english": "But he talks too fast; I didn't understand half of it. Tomorrow I want to ask him to speak more slowly."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我問過了。他說要是說慢一點，明天就去不了紅毛城了。",
+              "simplified": "我问过了。他说要是说慢一点，明天就去不了红毛城了。",
+              "pinyin": "Wǒ wèn guo le. Tā shuō yàoshì shuō màn yìdiǎn, míngtiān jiù qù bù liǎo Hóngmáochéng le.",
+              "english": "I asked. He says that if he talks more slowly, we won't have time for Fort San Domingo tomorrow."
+            },
+            {
+              "speaker": "F",
+              "traditional": "你不是最想去紅毛城嗎？",
+              "simplified": "你不是最想去红毛城吗？",
+              "pinyin": "Nǐ bú shì zuì xiǎng qù Hóngmáochéng ma?",
+              "english": "But isn't the fort the place you most wanted to see?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我自己看資料也行。少去一個地方沒關係，聽得懂比較重要。",
+              "simplified": "我自己看资料也行。少去一个地方没关系，听得懂比较重要。",
+              "pinyin": "Wǒ zìjǐ kàn zīliào yě xíng. Shǎo qù yí ge dìfāng méi guānxi, tīng de dǒng bǐjiào zhòngyào.",
+              "english": "I can read up on it myself. One place fewer doesn't matter; understanding him matters more."
+            }
+          ],
+          "answerLine": 5,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-dialogue-simply-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "明天的參觀，男的希望怎麼安排？",
+                "simplified": "明天的参观，男的希望怎么安排？",
+                "pinyin": "Míngtiān de cānguān, nán de xīwàng zěnme ānpái?",
+                "english": "How does the man want tomorrow's visit to go?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "照原來的行程，請他說慢一點",
+                  "simplified": "照原来的行程，请他说慢一点",
+                  "pinyin": "Zhào yuánlái de xíngchéng, qǐng tā shuō màn yìdiǎn.",
+                  "english": "Keep the original plan and ask him to speak slowly."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "換一位說話比較慢的導遊",
+                  "simplified": "换一位说话比较慢的导游",
+                  "pinyin": "Huàn yí wèi shuōhuà bǐjiào màn de dǎoyóu.",
+                  "english": "Change to a guide who speaks more slowly."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "導遊說慢一點，紅毛城不去了",
+                  "simplified": "导游说慢一点，红毛城不去了",
+                  "pinyin": "Dǎoyóu shuō màn yìdiǎn, Hóngmáochéng bú qù le.",
+                  "english": "The guide speaks more slowly, and they skip the fort."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "只去紅毛城，別的地方不去",
+                  "simplified": "只去红毛城，别的地方不去",
+                  "pinyin": "Zhǐ qù Hóngmáochéng, bié de dìfāng bú qù.",
+                  "english": "Go only to the fort and skip the other places."
+                }
+              ],
+              "key": 2,
+              "why": "Talking slowly costs the fort (要是說慢一點…去不了紅毛城), and he chooses understanding: 少去一個地方沒關係，聽得懂比較重要. Keeping the old plan ignores that trade-off, and 簡直就是一本會走路的歷史書 shows he wants to keep this guide, not change him.",
+              "focus": {
+                "zh": "簡直；說話人的取捨",
+                "en": "practically; what the speaker gives up"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-1-12",
+                "B3L15-1-33",
+                "B2L03-2-11"
+              ],
+              "grammarIds": [
+                "B3L15-G01-P383"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-beyond-words",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l15-dialogue-beyond-words-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你們上個週末住的那家民宿怎麼樣？",
+              "simplified": "你们上个周末住的那家民宿怎么样？",
+              "pinyin": "Nǐmen shàng ge zhōumò zhù de nà jiā mínsù zěnmeyàng?",
+              "english": "How was the guesthouse you stayed at last weekend?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "房間乾淨得沒話說，從窗戶就能看到海，老闆人也很好。",
+              "simplified": "房间干净得没话说，从窗户就能看到海，老板人也很好。",
+              "pinyin": "Fángjiān gānjìng de méi huà shuō, cóng chuānghù jiù néng kàn dào hǎi, lǎobǎn rén yě hěn hǎo.",
+              "english": "The rooms couldn't be cleaner, you can see the sea from the window, and the owner is lovely too."
+            },
+            {
+              "speaker": "F",
+              "traditional": "太好了，那下個月我帶我爸媽去住。",
+              "simplified": "太好了，那下个月我带我爸妈去住。",
+              "pinyin": "Tài hǎo le, nà xià ge yuè wǒ dài wǒ bà mā qù zhù.",
+              "english": "Great, then I'll take my parents to stay there next month."
+            },
+            {
+              "speaker": "M",
+              "traditional": "妳先別急著訂。那裡離車站很遠，附近也沒有餐廳，我們每天都得坐計程車去吃飯。",
+              "simplified": "你先别急着订。那里离车站很远，附近也没有餐厅，我们每天都得坐计程车去吃饭。",
+              "pinyin": "Nǐ xiān bié jí zhe dìng. Nàlǐ lí chēzhàn hěn yuǎn, fùjìn yě méiyǒu cāntīng, wǒmen měi tiān dōu děi zuò jìchéngchē qù chīfàn.",
+              "english": "Don't rush to book. It's far from the station and there are no restaurants nearby; we had to take a taxi to eat every day."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我爸媽年紀大了，走不了太遠。看來得先問問老闆，能不能開車到車站來接我們。",
+              "simplified": "我爸妈年纪大了，走不了太远。看来得先问问老板，能不能开车到车站来接我们。",
+              "pinyin": "Wǒ bà mā niánjì dà le, zǒu bù liǎo tài yuǎn. Kànlái děi xiān wèn wen lǎobǎn, néng bù néng kāichē dào chēzhàn lái jiē wǒmen.",
+              "english": "My parents are getting on and can't walk far. It looks like I'll have to ask the owner first whether he can drive to the station to pick us up."
+            }
+          ],
+          "answerLine": 4,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-dialogue-beyond-words-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的現在對訂這家民宿是什麼想法？",
+                "simplified": "女的现在对订这家民宿是什么想法？",
+                "pinyin": "Nǚ de xiànzài duì dìng zhè jiā mínsù shì shénme xiǎngfǎ?",
+                "english": "How does the woman now feel about booking this guesthouse?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "先問老闆能不能來接再決定",
+                  "simplified": "先问老板能不能来接再决定",
+                  "pinyin": "Xiān wèn lǎobǎn néng bù néng lái jiē zài juédìng.",
+                  "english": "She will ask whether the owner can pick them up before deciding."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "看得到海，遠一點也沒關係",
+                  "simplified": "看得到海，远一点也没关系",
+                  "pinyin": "Kàn de dào hǎi, yuǎn yìdiǎn yě méi guānxi.",
+                  "english": "It has a sea view, so being far away doesn't matter."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "改找車站附近的民宿",
+                  "simplified": "改找车站附近的民宿",
+                  "pinyin": "Gǎi zhǎo chēzhàn fùjìn de mínsù.",
+                  "english": "She will look for a guesthouse near the station instead."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "跟爸媽每天坐計程車吃飯",
+                  "simplified": "跟爸妈每天坐计程车吃饭",
+                  "pinyin": "Gēn bà mā měi tiān zuò jìchéngchē chīfàn.",
+                  "english": "She and her parents will take taxis to eat every day."
+                }
+              ],
+              "key": 0,
+              "why": "The room is clean 得沒話說, so she still likes the place, but after 妳先別急著訂 she puts off the decision until she has asked about a lift from the station (看來得先問問老闆). She has not given up on it yet, the taxis are what HE did, and \"far doesn't matter\" was her mood before his warning.",
+              "focus": {
+                "zh": "Vs 得沒話說；說話人的意思",
+                "en": "couldn't be better; what someone means"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-1-41",
+                "B2L07-1-32",
+                "B2L10-1-26"
+              ],
+              "grammarIds": [
+                "B3L15-G02-P384"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-dialogue-beyond-words-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "聽說妳搬家了，新房子怎麼樣？",
+              "simplified": "听说你搬家了，新房子怎么样？",
+              "pinyin": "Tīngshuō nǐ bānjiā le, xīn fángzi zěnmeyàng?",
+              "english": "I hear you've moved. How's the new place?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "地方大，房租也便宜，房東更是好得沒話說。上次冷氣壞了，他當天就找人來修。",
+              "simplified": "地方大，房租也便宜，房东更是好得没话说。上次冷气坏了，他当天就找人来修。",
+              "pinyin": "Dìfāng dà, fángzū yě piányí, fángdōng gèng shì hǎo de méi huà shuō. Shàng cì lěngqì huài le, tā dàngtiān jiù zhǎo rén lái xiū.",
+              "english": "It's big, the rent is cheap, and the landlord couldn't be nicer. When the air conditioner broke, he had someone fix it the same day."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那妳怎麼看起來沒什麼精神？",
+              "simplified": "那你怎么看起来没什么精神？",
+              "pinyin": "Nà nǐ zěnme kàn qǐlái méi shénme jīngshén?",
+              "english": "Then why do you look so tired?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "樓下是夜市，每天吵到半夜，我一直睡不好。",
+              "simplified": "楼下是夜市，每天吵到半夜，我一直睡不好。",
+              "pinyin": "Lóuxià shì yèshì, měi tiān chǎo dào bànyè, wǒ yìzhí shuì bù hǎo.",
+              "english": "There's a night market downstairs. It's noisy until midnight every day, and I keep sleeping badly."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那妳不就得再搬一次了？",
+              "simplified": "那你不就得再搬一次了？",
+              "pinyin": "Nà nǐ bú jiù děi zài bān yí cì le?",
+              "english": "So won't you have to move again?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "房東說樓上有一間比較安靜的，下個月會空出來，他先留給我。",
+              "simplified": "房东说楼上有一间比较安静的，下个月会空出来，他先留给我。",
+              "pinyin": "Fángdōng shuō lóushàng yǒu yì jiān bǐjiào ānjìng de, xià ge yuè huì kòng chūlái, tā xiān liú gěi wǒ.",
+              "english": "The landlord says a quieter one upstairs will be free next month, and he's keeping it for me."
+            }
+          ],
+          "answerLine": 5,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-dialogue-beyond-words-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的最可能怎麼解決睡不好的問題？",
+                "simplified": "女的最可能怎么解决睡不好的问题？",
+                "pinyin": "Nǚ de zuì kěnéng zěnme jiějué shuì bù hǎo de wèntí?",
+                "english": "How is the woman most likely to solve her sleeping problem?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "再找一個離夜市遠的地方",
+                  "simplified": "再找一个离夜市远的地方",
+                  "pinyin": "Zài zhǎo yí ge lí yèshì yuǎn de dìfāng.",
+                  "english": "She finds another place far from the night market."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "請房東當天找人來處理",
+                  "simplified": "请房东当天找人来处理",
+                  "pinyin": "Qǐng fángdōng dàngtiān zhǎo rén lái chǔlǐ.",
+                  "english": "She asks the landlord to get someone in that day."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "晚上關窗戶，開冷氣睡覺",
+                  "simplified": "晚上关窗户，开冷气睡觉",
+                  "pinyin": "Wǎnshàng guān chuānghù, kāi lěngqì shuìjiào.",
+                  "english": "She shuts the windows and sleeps with the air conditioner on."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下個月換到同一棟的樓上",
+                  "simplified": "下个月换到同一栋的楼上",
+                  "pinyin": "Xià ge yuè huàn dào tóng yí dòng de lóushàng.",
+                  "english": "Next month she moves upstairs in the same building."
+                }
+              ],
+              "key": 3,
+              "why": "She likes the flat and finds the landlord 好得沒話說, so when the man says she must move again, she answers with the landlord's offer: a quieter room upstairs next month, kept for her. Moving elsewhere is HIS idea, and \"fixed the same day\" was the air conditioner, not the noise.",
+              "focus": {
+                "zh": "Vs 得沒話說；兩句合起來",
+                "en": "couldn't be better; combining two turns"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-1-41",
+                "B2L03-1-03",
+                "B2L15-1-06"
+              ],
+              "grammarIds": [
+                "B3L15-G02-P384"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-dialogue",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b3l15-review-dialogue-1",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我昨天的報告差一點就交不出去了。",
+              "simplified": "我昨天的报告差一点就交不出去了。",
+              "pinyin": "Wǒ zuótiān de bàogào chà yìdiǎn jiù jiāo bù chūqù le.",
+              "english": "Yesterday I very nearly couldn't hand in my report."
+            },
+            {
+              "speaker": "M",
+              "traditional": "怎麼了？妳不是早就寫好了嗎？",
+              "simplified": "怎么了？你不是早就写好了吗？",
+              "pinyin": "Zěnme le? Nǐ bú shì zǎo jiù xiě hǎo le ma?",
+              "english": "What happened? Hadn't you finished it long ago?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "要交的前一個小時，電腦突然開不了機了。",
+              "simplified": "要交的前一个小时，电脑突然开不了机了。",
+              "pinyin": "Yào jiāo de qián yí ge xiǎoshí, diànnǎo tūrán kāi bù liǎo jī le.",
+              "english": "An hour before it was due, my computer suddenly wouldn't turn on."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那怎麼辦？",
+              "simplified": "那怎么办？",
+              "pinyin": "Nà zěnme bàn?",
+              "english": "So what did you do?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "幸虧上星期寫好的部分放在雲端，要不然得全部重寫。不過最後三頁是這兩天寫的，只好再寫一次。",
+              "simplified": "幸亏上星期写好的部分放在云端，要不然得全部重写。不过最后三页是这两天写的，只好再写一次。",
+              "pinyin": "Xìngkuī shàng xīngqí xiě hǎo de bùfèn fàng zài yúnduān, yàobùrán děi quánbù chóng xiě. Búguò zuìhòu sān yè shì zhè liǎng tiān xiě de, zhǐhǎo zài xiě yí cì.",
+              "english": "Luckily the part I finished last week was in the cloud, otherwise I'd have had to rewrite everything. But the last three pages were written in the past two days, so I had to write them again."
+            },
+            {
+              "speaker": "M",
+              "traditional": "這下子妳知道自動上傳有多重要了吧。",
+              "simplified": "这下子你知道自动上传有多重要了吧。",
+              "pinyin": "Zhè xiàzi nǐ zhīdào zìdòng shàngchuán yǒu duō zhòngyào le ba.",
+              "english": "Now you see how important automatic uploading is."
+            },
+            {
+              "speaker": "F",
+              "traditional": "對啊。以前我總是覺得寫完再上傳就好。",
+              "simplified": "对啊。以前我总是觉得写完再上传就好。",
+              "pinyin": "Duì a. Yǐqián wǒ zǒngshì juéde xiě wán zài shàngchuán jiù hǎo.",
+              "english": "Yes. I used to think uploading once I'd finished was enough."
+            }
+          ],
+          "answerLine": 5,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-review-dialogue-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這件事讓女的有什麼新的想法？",
+                "simplified": "这件事让女的有什么新的想法？",
+                "pinyin": "Zhè jiàn shì ràng nǚ de yǒu shénme xīn de xiǎngfǎ?",
+                "english": "What new view has this given the woman?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "報告寫完以後再上傳就好",
+                  "simplified": "报告写完以后再上传就好",
+                  "pinyin": "Bàogào xiě wán yǐhòu zài shàngchuán jiù hǎo.",
+                  "english": "Uploading the report after finishing it is enough."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "雲端也不安全，得自己再存一份",
+                  "simplified": "云端也不安全，得自己再存一份",
+                  "pinyin": "Yúnduān yě bù ānquán, děi zìjǐ zài cún yí fèn.",
+                  "english": "The cloud isn't safe either; she must keep her own copy."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "報告應該一邊寫一邊自動上傳",
+                  "simplified": "报告应该一边写一边自动上传",
+                  "pinyin": "Bàogào yīnggāi yìbiān xiě yìbiān zìdòng shàngchuán.",
+                  "english": "A report should upload by itself while she writes it."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "報告應該每星期上傳一次",
+                  "simplified": "报告应该每星期上传一次",
+                  "pinyin": "Bàogào yīnggāi měi xīngqí shàngchuán yí cì.",
+                  "english": "A report should be uploaded once a week."
+                }
+              ],
+              "key": 2,
+              "why": "The cloud saved what was in it (幸虧…要不然…); she lost only the pages written since her last upload. So 這下子 and 對啊 mean she now sees the point of uploading automatically. Her last upload was a week old (上星期寫好的部分) and she still lost three pages, so once a week is exactly what failed her; \"upload when finished\" is her OLD view (以前我總覺得), and the cloud itself did not fail.",
+              "focus": {
+                "zh": "這下子；幸虧……，要不然……",
+                "en": "now (after this); luckily…, otherwise…"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B3L13-1-20",
+                "B3L13-1-08",
+                "B3L13-1-01",
+                "B3L14-1-29"
+              ],
+              "grammarIds": [
+                "B3L13-G01-P338",
+                "B3L14-G03-P363"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-review-dialogue-2",
+          "kind": "dialogue",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "週末去爬那座高山好不好？聽說山上的風景美極了。",
+              "simplified": "周末去爬那座高山好不好？听说山上的风景美极了。",
+              "pinyin": "Zhōumò qù pá nà zuò gāo shān hǎo bù hǎo? Tīngshuō shān shàng de fēngjǐng měi jí le.",
+              "english": "Shall we climb that high mountain this weekend? I hear the view at the top is stunning."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我連學校後面的小山都爬不上去，更別說那麼高的山了。",
+              "simplified": "我连学校后面的小山都爬不上去，更别说那么高的山了。",
+              "pinyin": "Wǒ lián xuéxiào hòumiàn de xiǎo shān dōu pá bú shàngqù, gèng bié shuō nàme gāo de shān le.",
+              "english": "I can't even get up the little hill behind the school, let alone a mountain that high."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那我們先從小山開始練，每個星期爬兩次，一個月以後再去。",
+              "simplified": "那我们先从小山开始练，每个星期爬两次，一个月以后再去。",
+              "pinyin": "Nà wǒmen xiān cóng xiǎo shān kāishǐ liàn, měi ge xīngqí pá liǎng cì, yí ge yuè yǐhòu zài qù.",
+              "english": "Then let's start by training on the hill, twice a week, and go in a month."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好吧。可是我晚上要打工，只有早上有空。",
+              "simplified": "好吧。可是我晚上要打工，只有早上有空。",
+              "pinyin": "Hǎo ba. Kěshì wǒ wǎnshàng yào dǎgōng, zhǐyǒu zǎoshàng yǒu kòng.",
+              "english": "All right. But I work in the evenings; I'm only free in the mornings."
+            },
+            {
+              "speaker": "F",
+              "traditional": "我星期一到星期五早上都有課，只有星期二和星期四沒有。",
+              "simplified": "我星期一到星期五早上都有课，只有星期二和星期四没有。",
+              "pinyin": "Wǒ xīngqíyī dào xīngqíwǔ zǎoshàng dōu yǒu kè, zhǐyǒu xīngqí'èr hé xīngqísì méiyǒu.",
+              "english": "I have class every weekday morning except Tuesday and Thursday."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那就那兩天吧。",
+              "simplified": "那就那两天吧。",
+              "pinyin": "Nà jiù nà liǎng tiān ba.",
+              "english": "Those two days, then."
+            },
+            {
+              "speaker": "F",
+              "traditional": "可是下星期四早上，我得帶我媽去看醫生。",
+              "simplified": "可是下星期四早上，我得带我妈去看医生。",
+              "pinyin": "Kěshì xià xīngqísì zǎoshàng, wǒ děi dài wǒ mā qù kàn yīshēng.",
+              "english": "But next Thursday morning I have to take my mom to the doctor."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那下星期四就改到星期六早上吧。妳得先打電話叫我起床。",
+              "simplified": "那下星期四就改到星期六早上吧。你得先打电话叫我起床。",
+              "pinyin": "Nà xià xīngqísì jiù gǎi dào xīngqíliù zǎoshàng ba. Nǐ děi xiān dǎ diànhuà jiào wǒ qǐchuáng.",
+              "english": "Then move next Thursday to Saturday morning. You'll have to phone and wake me up first."
+            }
+          ],
+          "answerLine": 7,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-review-dialogue-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "下個星期，他們會在哪兩天去爬小山？",
+                "simplified": "下个星期，他们会在哪两天去爬小山？",
+                "pinyin": "Xià ge xīngqí, tāmen huì zài nǎ liǎng tiān qù pá xiǎo shān?",
+                "english": "On which two days next week will they climb the hill?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期二和星期四早上",
+                  "simplified": "星期二和星期四早上",
+                  "pinyin": "Xīngqí'èr hé xīngqísì zǎoshàng",
+                  "english": "Tuesday and Thursday mornings"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期二和星期六早上",
+                  "simplified": "星期二和星期六早上",
+                  "pinyin": "Xīngqí'èr hé xīngqíliù zǎoshàng",
+                  "english": "Tuesday and Saturday mornings"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期四和星期六早上",
+                  "simplified": "星期四和星期六早上",
+                  "pinyin": "Xīngqísì hé xīngqíliù zǎoshàng",
+                  "english": "Thursday and Saturday mornings"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期二和星期四晚上",
+                  "simplified": "星期二和星期四晚上",
+                  "pinyin": "Xīngqí'èr hé xīngqísì wǎnshàng",
+                  "english": "Tuesday and Thursday evenings"
+                }
+              ],
+              "key": 1,
+              "why": "He is free only in the mornings (晚上要打工) and she only on Tuesday and Thursday mornings, so the usual days are those two; but next Thursday she takes her mother to the doctor, so that day moves to Saturday. Tuesday and Thursday is the usual plan before the change, Thursday and Saturday drops the wrong day, and the evenings are when he works.",
+              "focus": {
+                "zh": "更別說……了；計畫的改變",
+                "en": "let alone; a changed plan"
+              },
+              "lesson": 13,
+              "wordIds": [
+                "B1L06-1-11",
+                "B2L07-1-27",
+                "B2L12-2-07"
+              ],
+              "grammarIds": [
+                "B3L13-G03-P341"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-three",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l15-dialogue-three-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答三個問題。",
+            "simplified": "请听一段对话，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a conversation, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "下星期要交的報告，主題是我們城市的古蹟。你決定寫哪裡了嗎？",
+              "simplified": "下星期要交的报告，主题是我们城市的古迹。你决定写哪里了吗？",
+              "pinyin": "Xià xīngqí yào jiāo de bàogào, zhǔtí shì wǒmen chéngshì de gǔjī. Nǐ juédìng xiě nǎlǐ le ma?",
+              "english": "The report due next week is on our city's historic sites. Have you decided which one to write about?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我本來想寫火車站旁邊那棟老房子，可是那裡從上個月開始在修，不開放了。",
+              "simplified": "我本来想写火车站旁边那栋老房子，可是那里从上个月开始在修，不开放了。",
+              "pinyin": "Wǒ běnlái xiǎng xiě huǒchē zhàn pángbiān nà dòng lǎo fángzi, kěshì nàlǐ cóng shàng ge yuè kāishǐ zài xiū, bù kāifàng le.",
+              "english": "I meant to write about the old house next to the train station, but it has been under repair since last month and is closed."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那河邊那座廟呢？聽說牆上的圖畫十分生動。",
+              "simplified": "那河边那座庙呢？听说墙上的图画十分生动。",
+              "pinyin": "Nà hébiān nà zuò miào ne? Tīngshuō qiáng shàng de túhuà shífēn shēngdòng.",
+              "english": "What about the temple by the river? I hear the pictures on its walls are very vivid."
+            },
+            {
+              "speaker": "M",
+              "traditional": "已經有三組要寫那裡了，老師希望我們別寫一樣的。",
+              "simplified": "已经有三组要写那里了，老师希望我们别写一样的。",
+              "pinyin": "Yǐjīng yǒu sān zǔ yào xiě nàlǐ le, lǎoshī xīwàng wǒmen bié xiě yíyàng de.",
+              "english": "Three groups are already writing about it, and the teacher would rather we didn't all write the same."
+            },
+            {
+              "speaker": "F",
+              "traditional": "那你打算怎麼辦？",
+              "simplified": "那你打算怎么办？",
+              "pinyin": "Nà nǐ dǎsuàn zěnme bàn?",
+              "english": "So what are you going to do?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我想先去問問我爺爺。他從小住在這裡，知道不少以前的故事。",
+              "simplified": "我想先去问问我爷爷。他从小住在这里，知道不少以前的故事。",
+              "pinyin": "Wǒ xiǎng xiān qù wèn wen wǒ yéye. Tā cóngxiǎo zhù zài zhèlǐ, zhīdào bù shǎo yǐqián de gùshì.",
+              "english": "I want to ask my grandfather first. He's lived here since he was little and knows lots of old stories."
+            },
+            {
+              "speaker": "F",
+              "traditional": "好主意。老人家口中的歷史，書上不一定有。",
+              "simplified": "好主意。老人家口中的历史，书上不一定有。",
+              "pinyin": "Hǎo zhǔyì. Lǎorénjiā kǒu zhōng de lìshǐ, shū shàng bù yídìng yǒu.",
+              "english": "Good idea. The history old people tell isn't always in books."
+            },
+            {
+              "speaker": "M",
+              "traditional": "對啊。總之，這個週末我一定要把地方決定好。",
+              "simplified": "对啊。总之，这个周末我一定要把地方决定好。",
+              "pinyin": "Duì a. Zǒngzhī, zhège zhōumò wǒ yídìng yào bǎ dìfāng juédìng hǎo.",
+              "english": "Right. Anyway, this weekend I have to settle on the place."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-dialogue-three-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的為什麼建議寫河邊的廟？",
+                "simplified": "女的为什么建议写河边的庙？",
+                "pinyin": "Nǚ de wèishénme jiànyì xiě hébiān de miào?",
+                "english": "Why does the woman suggest the temple by the river?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她去看過，覺得畫很美",
+                  "simplified": "她去看过，觉得画很美",
+                  "pinyin": "Tā qù kàn guo, juéde huà hěn měi.",
+                  "english": "She has been and found the pictures beautiful."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "老師說牆上的圖畫值得寫",
+                  "simplified": "老师说墙上的图画值得写",
+                  "pinyin": "Lǎoshī shuō qiáng shàng de túhuà zhídé xiě.",
+                  "english": "The teacher said the wall pictures are worth writing about."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "有人跟她說廟剛剛修好",
+                  "simplified": "有人跟她说庙刚刚修好",
+                  "pinyin": "Yǒu rén gēn tā shuō miào gānggāng xiū hǎo.",
+                  "english": "Someone told her the temple has just been repaired."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "有人跟她說牆上很值得看",
+                  "simplified": "有人跟她说墙上很值得看",
+                  "pinyin": "Yǒu rén gēn tā shuō qiáng shàng hěn zhídé kàn.",
+                  "english": "Someone told her the walls are well worth seeing."
+                }
+              ],
+              "key": 3,
+              "why": "聽說牆上的圖畫十分生動 means other people told her the wall pictures are worth seeing; she has not been herself, so \"she has been\" misses 聽說. What she heard is about the pictures, not repairs: the repairs belong to the house by the station, which is still closed. The teacher said nothing about the pictures, only asked groups NOT to write the same place.",
+              "focus": {
+                "zh": "聽說；細節",
+                "en": "hearsay; a detail"
+              },
+              "lesson": 15,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L15-2-10",
+                "B3L15-1-10",
+                "B2L04-2-27"
+              ]
+            },
+            {
+              "id": "b3l15-dialogue-three-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的覺得問爺爺有什麼好處？",
+                "simplified": "女的觉得问爷爷有什么好处？",
+                "pinyin": "Nǚ de juéde wèn yéye yǒu shénme hǎochù?",
+                "english": "What does the woman think is good about asking his grandfather?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "能聽到書裡找不到的歷史",
+                  "simplified": "能听到书里找不到的历史",
+                  "pinyin": "Néng tīng dào shū lǐ zhǎo bú dào de lìshǐ.",
+                  "english": "He can hear history that books don't have."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "爺爺能帶他去看那棟房子",
+                  "simplified": "爷爷能带他去看那栋房子",
+                  "pinyin": "Yéye néng dài tā qù kàn nà dòng fángzi.",
+                  "english": "His grandfather can take him to see the house."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "能聽到書上已經寫過的歷史",
+                  "simplified": "能听到书上已经写过的历史",
+                  "pinyin": "Néng tīng dào shū shàng yǐjīng xiě guo de lìshǐ.",
+                  "english": "He can hear history that is already in books."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "爺爺看過很多歷史書",
+                  "simplified": "爷爷看过很多历史书",
+                  "pinyin": "Yéye kàn guo hěn duō lìshǐ shū.",
+                  "english": "His grandfather has read many history books."
+                }
+              ],
+              "key": 0,
+              "why": "His grandfather knows 不少以前的故事, and she adds 老人家口中的歷史，書上不一定有: what he tells may not be in any book. \"History already in books\" turns her point around (書上不一定有); the house is closed for repairs; and books are what she contrasts him with, not what he has read.",
+              "focus": {
+                "zh": "說話人的看法；兩句合起來",
+                "en": "a speaker's view; combining two turns"
+              },
+              "lesson": 15,
+              "answerLine": 6,
+              "wordIds": [
+                "B2L14-1-09",
+                "B1L13-2-13",
+                "B3L15-1-34"
+              ]
+            },
+            {
+              "id": "b3l15-dialogue-three-1-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的這個週末要選的地方，得是什麼樣的？",
+                "simplified": "男的这个周末要选的地方，得是什么样的？",
+                "pinyin": "Nán de zhège zhōumò yào xuǎn de dìfāng, děi shì shénme yàng de?",
+                "english": "What kind of place must the man choose this weekend?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "牆上有生動圖畫的廟",
+                  "simplified": "墙上有生动图画的庙",
+                  "pinyin": "Qiáng shàng yǒu shēngdòng túhuà de miào.",
+                  "english": "A temple with vivid pictures on its walls."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在能進去、別組沒寫的",
+                  "simplified": "现在能进去、别组没写的",
+                  "pinyin": "Xiànzài néng jìnqù, bié zǔ méi xiě de.",
+                  "english": "One that is open now and that no other group has."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "爺爺從小住過的老房子",
+                  "simplified": "爷爷从小住过的老房子",
+                  "pinyin": "Yéye cóngxiǎo zhù guo de lǎo fángzi.",
+                  "english": "The old house his grandfather grew up in."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "修好以後才開放的",
+                  "simplified": "修好以后才开放的",
+                  "pinyin": "Xiū hǎo yǐhòu cái kāifàng de.",
+                  "english": "One that opens only once its repairs are done."
+                }
+              ],
+              "key": 1,
+              "why": "Two places failed for two reasons: the house is closed (不開放了) and the temple is taken (老師希望我們別寫一樣的), and 總之 he must choose by this weekend. So he needs a site open now that nobody else has. The temple is the one already taken, and a site still under repair cannot be visited in time.",
+              "focus": {
+                "zh": "總之；幾個條件合起來",
+                "en": "in short; combining several conditions"
+              },
+              "lesson": 15,
+              "answerLine": 7,
+              "wordIds": [
+                "B3L15-2-28",
+                "B3L15-2-25",
+                "B3L15-1-02"
+              ],
+              "grammarIds": [
+                "B3L15-G05-P395"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-dialogue-three-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段對話，然後回答三個問題。",
+            "simplified": "请听一段对话，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn duìhuà, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a conversation, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我爸媽下星期從美國來看我，我想帶他們去淡水玩一天，妳覺得怎麼安排好？",
+              "simplified": "我爸妈下星期从美国来看我，我想带他们去淡水玩一天，你觉得怎么安排好？",
+              "pinyin": "Wǒ bà mā xià xīngqí cóng Měiguó lái kàn wǒ, wǒ xiǎng dài tāmen qù Dànshuǐ wán yì tiān, nǐ juéde zěnme ānpái hǎo?",
+              "english": "My parents are coming from America next week. I want to take them to Tamsui for a day. How do you think I should plan it?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "早上先去紅毛城。那裡下午人很多，早上去比較好照相。",
+              "simplified": "早上先去红毛城。那里下午人很多，早上去比较好照相。",
+              "pinyin": "Zǎoshàng xiān qù Hóngmáochéng. Nàlǐ xiàwǔ rén hěn duō, zǎoshàng qù bǐjiào hǎo zhàoxiàng.",
+              "english": "Go to Fort San Domingo first, in the morning. It's crowded in the afternoon; it's easier to take photos in the morning."
+            },
+            {
+              "speaker": "M",
+              "traditional": "可是我爸喜歡看古蹟，我媽只想逛街、買東西。",
+              "simplified": "可是我爸喜欢看古迹，我妈只想逛街、买东西。",
+              "pinyin": "Kěshì wǒ bà xǐhuān kàn gǔjī, wǒ mā zhǐ xiǎng guàngjiē, mǎi dōngxi.",
+              "english": "But my dad likes historic sites and my mom only wants to shop."
+            },
+            {
+              "speaker": "F",
+              "traditional": "紅毛城旁邊就是老街。你爸參觀古蹟的同時，你媽可以去那裡逛逛，中午再一起吃飯。",
+              "simplified": "红毛城旁边就是老街。你爸参观古迹的同时，你妈可以去那里逛逛，中午再一起吃饭。",
+              "pinyin": "Hóngmáochéng pángbiān jiù shì lǎo jiē. Nǐ bà cānguān gǔjī de tóngshí, nǐ mā kěyǐ qù nàlǐ guàng guang, zhōngwǔ zài yìqǐ chīfàn.",
+              "english": "The old street is right next to the fort. While your dad tours the site, your mom can look round there, and you all have lunch together at noon."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那吃完午餐以後呢？",
+              "simplified": "那吃完午餐以后呢？",
+              "pinyin": "Nà chī wán wǔcān yǐhòu ne?",
+              "english": "And after lunch?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "慢慢走到碼頭等著看夕陽，美得沒話說。不過週末那裡人擠人，最好平日去。",
+              "simplified": "慢慢走到码头等着看夕阳，美得没话说。不过周末那里人挤人，最好平日去。",
+              "pinyin": "Mànman zǒu dào mǎtóu děng zhe kàn xīyáng, měi de méi huà shuō. Búguò zhōumò nàlǐ rén jǐ rén, zuìhǎo píngrì qù.",
+              "english": "Stroll down to the pier and wait for the sunset; it's beautiful beyond words. But at weekends it's packed, so go on a weekday."
+            },
+            {
+              "speaker": "M",
+              "traditional": "他們星期三晚上才到，星期五早上就要去臺南，星期天才回來。",
+              "simplified": "他们星期三晚上才到，星期五早上就要去台南，星期天才回来。",
+              "pinyin": "Tāmen xīngqísān wǎnshàng cái dào, xīngqíwǔ zǎoshàng jiù yào qù Táinán, xīngqítiān cái huílái.",
+              "english": "They only arrive on Wednesday evening, leave for Tainan on Friday morning, and won't be back until Sunday."
+            }
+          ],
+          "answerLine": 3,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-dialogue-three-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的建議，男的媽媽早上可以做什麼？",
+                "simplified": "女的建议，男的妈妈早上可以做什么？",
+                "pinyin": "Nǚ de jiànyì, nán de māma zǎoshàng kěyǐ zuò shénme?",
+                "english": "What does the woman suggest the man's mother can do in the morning?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "跟爸爸一起在紅毛城照相",
+                  "simplified": "跟爸爸一起在红毛城照相",
+                  "pinyin": "Gēn bàba yìqǐ zài Hóngmáochéng zhàoxiàng.",
+                  "english": "Taking photos in the fort with his father."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一個人先去碼頭等夕陽",
+                  "simplified": "一个人先去码头等夕阳",
+                  "pinyin": "Yí ge rén xiān qù mǎtóu děng xīyáng.",
+                  "english": "Going ahead alone to wait for the sunset at the pier."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在紅毛城旁的老街逛街",
+                  "simplified": "在红毛城旁的老街逛街",
+                  "pinyin": "Zài Hóngmáochéng páng de lǎo jiē guàngjiē.",
+                  "english": "Shopping on the old street beside the fort."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下午人少了再去逛街",
+                  "simplified": "下午人少了再去逛街",
+                  "pinyin": "Xiàwǔ rén shǎo le zài qù guàngjiē.",
+                  "english": "Shopping in the afternoon, once it is quieter."
+                }
+              ],
+              "key": 2,
+              "why": "The morning is the fort, and 你爸參觀古蹟的同時，你媽可以去那裡逛逛 puts the mother on the old street next door at the same time. Missing 同時 gives \"with his father in the fort\"; it is the fort, not the street, that gets crowded in the afternoon.",
+              "focus": {
+                "zh": "同時",
+                "en": "at the same time"
+              },
+              "lesson": 15,
+              "answerLine": 3,
+              "wordIds": [
+                "B3L15-2-03",
+                "B1L13-1-08",
+                "B2L04-1-01"
+              ],
+              "grammarIds": [
+                "B3L15-G03-P392"
+              ]
+            },
+            {
+              "id": "b3l15-dialogue-three-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "女的說到紅毛城和碼頭的時候，都要男的注意什麼？",
+                "simplified": "女的说到红毛城和码头的时候，都要男的注意什么？",
+                "pinyin": "Nǚ de shuō dào Hóngmáochéng hé mǎtóu de shíhòu, dōu yào nán de zhùyì shénme?",
+                "english": "When the woman talks about the fort and about the pier, what does she tell the man to watch out for both times?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "早一點去比較好照相",
+                  "simplified": "早一点去比较好照相",
+                  "pinyin": "Zǎo yìdiǎn qù bǐjiào hǎo zhàoxiàng.",
+                  "english": "Go early; photos are easier."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "選夕陽最美的時候去",
+                  "simplified": "选夕阳最美的时候去",
+                  "pinyin": "Xuǎn xīyáng zuì měi de shíhòu qù.",
+                  "english": "Pick the time when the sunset is prettiest."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "選週末大家有空的時候去",
+                  "simplified": "选周末大家有空的时候去",
+                  "pinyin": "Xuǎn zhōumò dàjiā yǒu kòng de shíhòu qù.",
+                  "english": "Pick a weekend, when everyone is free."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "選人比較少的時候去",
+                  "simplified": "选人比较少的时候去",
+                  "pinyin": "Xuǎn rén bǐjiào shǎo de shíhòu qù.",
+                  "english": "Pick a time when there are fewer people."
+                }
+              ],
+              "key": 3,
+              "why": "Both warnings are about crowds: the fort 下午人很多, so go in the morning, and the pier 週末人擠人, so go on a weekday. Early photos is only the fort's reason, the sunset belongs only to the pier (and she says it is beautiful anyway), and the weekend is exactly when she says the pier is packed.",
+              "focus": {
+                "zh": "兩句合起來；說話人的意思",
+                "en": "combining two turns; what the speaker means"
+              },
+              "lesson": 15,
+              "answerLine": 5,
+              "wordIds": [
+                "B3L15-1-30",
+                "B2L04-2-05",
+                "B1L10-1-14"
+              ]
+            },
+            {
+              "id": "b3l15-dialogue-three-2-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "男的最可能哪一天帶爸媽去淡水？",
+                "simplified": "男的最可能哪一天带爸妈去淡水？",
+                "pinyin": "Nán de zuì kěnéng nǎ yì tiān dài bà mā qù Dànshuǐ?",
+                "english": "Which day is the man most likely to take his parents to Tamsui?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "星期四",
+                  "simplified": "星期四",
+                  "pinyin": "Xīngqísì",
+                  "english": "Thursday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期三",
+                  "simplified": "星期三",
+                  "pinyin": "Xīngqísān",
+                  "english": "Wednesday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期五",
+                  "simplified": "星期五",
+                  "pinyin": "Xīngqíwǔ",
+                  "english": "Friday"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "星期六",
+                  "simplified": "星期六",
+                  "pinyin": "Xīngqíliù",
+                  "english": "Saturday"
+                }
+              ],
+              "key": 0,
+              "why": "She says go on a weekday (週末那裡人擠人); they land on Wednesday evening, too late for a day out, and leave early Friday for Tainan until Sunday. That leaves Thursday. Saturday is both a weekend and a Tainan day.",
+              "focus": {
+                "zh": "Vs 得沒話說；兩句合起來看",
+                "en": "couldn't be better; combining two turns"
+              },
+              "lesson": 15,
+              "answerLine": 6,
+              "wordIds": [
+                "B3L15-1-31",
+                "B3L15-1-41",
+                "B2L06-2-07"
+              ],
+              "grammarIds": [
+                "B3L15-G02-P384"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talk",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b3l15-talk-1",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段廣播，然後回答三個問題。",
+            "simplified": "请听一段广播，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn guǎngbò, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a broadcast, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "各位遊客大家好，歡迎來到這座三百多年前蓋的古城。",
+              "simplified": "各位游客大家好，欢迎来到这座三百多年前盖的古城。",
+              "pinyin": "Gèwèi yóukè dàjiā hǎo, huānyíng lái dào zhè zuò sān bǎi duō nián qián gài de gǔchéng.",
+              "english": "Good day, visitors, and welcome to this fort, built over three hundred years ago."
+            },
+            {
+              "speaker": "M",
+              "traditional": "城裡的地下隧道修了兩年，從今天起重新開放。",
+              "simplified": "城里的地下隧道修了两年，从今天起重新开放。",
+              "pinyin": "Chéng lǐ de dìxià suìdào xiū le liǎng nián, cóng jīntiān qǐ chóngxīn kāifàng.",
+              "english": "The underground tunnel inside the fort has been under repair for two years and reopens from today."
+            },
+            {
+              "speaker": "M",
+              "traditional": "每天上午十點及下午三點，有工作人員免費帶大家參觀，請在開始前十分鐘到隧道門口集合。",
+              "simplified": "每天上午十点及下午三点，有工作人员免费带大家参观，请在开始前十分钟到隧道门口集合。",
+              "pinyin": "Měi tiān shàngwǔ shí diǎn jí xiàwǔ sān diǎn, yǒu gōngzuò rényuán miǎnfèi dài dàjiā cānguān, qǐng zài kāishǐ qián shí fēnzhōng dào suìdào ménkǒu jíhé.",
+              "english": "Every day at 10 a.m. and 3 p.m. a member of staff leads a free tour; please gather at the tunnel entrance ten minutes before it starts."
+            },
+            {
+              "speaker": "M",
+              "traditional": "隧道裡又暗又小，十二歲以下的兒童及七十歲以上的老人，必須有家人陪著才能進去。",
+              "simplified": "隧道里又暗又小，十二岁以下的儿童及七十岁以上的老人，必须有家人陪着才能进去。",
+              "pinyin": "Suìdào lǐ yòu àn yòu xiǎo, shí'èr suì yǐxià de értóng jí qīshí suì yǐshàng de lǎorén, bìxū yǒu jiārén péi zhe cái néng jìnqù.",
+              "english": "The tunnel is dark and narrow. Children under twelve and elderly people over seventy must be accompanied by family."
+            },
+            {
+              "speaker": "M",
+              "traditional": "為了保護古蹟，隧道裡不可以照相，同時也請不要用手碰牆上的文字。",
+              "simplified": "为了保护古迹，隧道里不可以照相，同时也请不要用手碰墙上的文字。",
+              "pinyin": "Wèile bǎohù gǔjī, suìdào lǐ bù kěyǐ zhàoxiàng, tóngshí yě qǐng bú yào yòng shǒu pèng qiáng shàng de wénzì.",
+              "english": "To protect the site, no photos in the tunnel, and please also do not touch the writing on the walls."
+            },
+            {
+              "speaker": "M",
+              "traditional": "參觀完以後，可以到旁邊的廣場休息，那裡每天下午四點有藝術表演。謝謝大家。",
+              "simplified": "参观完以后，可以到旁边的广场休息，那里每天下午四点有艺术表演。谢谢大家。",
+              "pinyin": "Cānguān wán yǐhòu, kěyǐ dào pángbiān de guǎngchǎng xiūxí, nàlǐ měi tiān xiàwǔ sì diǎn yǒu yìshù biǎoyǎn. Xièxie dàjiā.",
+              "english": "After your visit you can rest in the square next door, where there is an arts performance at 4 p.m. every day. Thank you."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-talk-1-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "一位遊客想下午跟著工作人員參觀隧道，他應該怎麼做？",
+                "simplified": "一位游客想下午跟着工作人员参观隧道，他应该怎么做？",
+                "pinyin": "Yí wèi yóukè xiǎng xiàwǔ gēn zhe gōngzuò rényuán cānguān suìdào, tā yīnggāi zěnme zuò?",
+                "english": "A visitor wants to tour the tunnel with the staff in the afternoon. What should he do?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "兩點五十到廣場集合",
+                  "simplified": "两点五十到广场集合",
+                  "pinyin": "Liǎng diǎn wǔshí dào guǎngchǎng jíhé.",
+                  "english": "Gather in the square at 2:50."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩點五十到隧道門口",
+                  "simplified": "两点五十到隧道门口",
+                  "pinyin": "Liǎng diǎn wǔshí dào suìdào ménkǒu.",
+                  "english": "Be at the tunnel entrance at 2:50."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三點五十到隧道門口",
+                  "simplified": "三点五十到隧道门口",
+                  "pinyin": "Sān diǎn wǔshí dào suìdào ménkǒu.",
+                  "english": "Be at the tunnel entrance at 3:50."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三點整到隧道門口",
+                  "simplified": "三点整到隧道门口",
+                  "pinyin": "Sān diǎn zhěng dào suìdào ménkǒu.",
+                  "english": "Be at the tunnel entrance at 3:00 sharp."
+                }
+              ],
+              "key": 1,
+              "why": "The afternoon tour is the second time in 上午十點及下午三點, and visitors gather ten minutes earlier at the tunnel entrance: 2:50. The square is for resting afterwards, 3:50 mixes the tour up with the 4:00 show, and 3:00 forgets the ten minutes.",
+              "focus": {
+                "zh": "及；兩句合起來",
+                "en": "and (formal); combining two lines"
+              },
+              "lesson": 15,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L15-2-07",
+                "B2L05-2-11",
+                "B3L05-2-27",
+                "B3L15-2-24"
+              ],
+              "grammarIds": [
+                "B3L15-G04-P393"
+              ]
+            },
+            {
+              "id": "b3l15-talk-1-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "下面哪一位遊客得改變他的安排？",
+                "simplified": "下面哪一位游客得改变他的安排？",
+                "pinyin": "Xiàmiàn nǎ yí wèi yóukè děi gǎibiàn tā de ānpái?",
+                "english": "Which of these visitors has to change their plan?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在廣場上幫表演的人照相",
+                  "simplified": "在广场上帮表演的人照相",
+                  "pinyin": "Zài guǎngchǎng shàng bāng biǎoyǎn de rén zhàoxiàng.",
+                  "english": "Taking photos of the performers in the square."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十歲的孩子跟爸爸一起進去",
+                  "simplified": "十岁的孩子跟爸爸一起进去",
+                  "pinyin": "Shí suì de háizi gēn bàba yìqǐ jìnqù.",
+                  "english": "A 10-year-old going in with his father."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "七十二歲的爺爺跟朋友進去",
+                  "simplified": "七十二岁的爷爷跟朋友进去",
+                  "pinyin": "Qīshí'èr suì de yéye gēn péngyǒu jìnqù.",
+                  "english": "A 72-year-old man going in with a friend."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "參觀完去廣場看四點的表演",
+                  "simplified": "参观完去广场看四点的表演",
+                  "pinyin": "Cānguān wán qù guǎngchǎng kàn sì diǎn de biǎoyǎn.",
+                  "english": "Watching the 4:00 show in the square after the visit."
+                }
+              ],
+              "key": 2,
+              "why": "兒童及七十歲以上的老人 both need FAMILY with them (家人陪著), so a 72-year-old with a friend must change his plan. The photo ban is only inside the tunnel, a child with his father is fine, and the 4:00 show is open to all.",
+              "focus": {
+                "zh": "及；規定用在一個人身上",
+                "en": "and (formal); applying a rule to one person"
+              },
+              "lesson": 15,
+              "answerLine": 3,
+              "wordIds": [
+                "B3L15-2-07",
+                "B3L11-1-17",
+                "B2L03-1-05"
+              ],
+              "grammarIds": [
+                "B3L15-G04-P393"
+              ]
+            },
+            {
+              "id": "b3l15-talk-1-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這段廣播主要是在告訴遊客什麼？",
+                "simplified": "这段广播主要是在告诉游客什么？",
+                "pinyin": "Zhè duàn guǎngbò zhǔyào shì zài gàosù yóukè shénme?",
+                "english": "What is this announcement mainly telling visitors?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "古城三百多年來的歷史",
+                  "simplified": "古城三百多年来的历史",
+                  "pinyin": "Gǔchéng sān bǎi duō nián lái de lìshǐ.",
+                  "english": "The fort's three-hundred-year history."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "廣場表演和休息的地方",
+                  "simplified": "广场表演和休息的地方",
+                  "pinyin": "Guǎngchǎng biǎoyǎn hé xiūxí de dìfāng.",
+                  "english": "The square's show and where to rest."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "隧道暫時不開放和修理的方法",
+                  "simplified": "隧道暂时不开放和修理的方法",
+                  "pinyin": "Suìdào zànshí bù kāifàng hé xiūlǐ de fāngfǎ.",
+                  "english": "The tunnel being closed for now and how it is repaired."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "隧道重新開放和參觀的方法",
+                  "simplified": "隧道重新开放和参观的方法",
+                  "pinyin": "Suìdào chóngxīn kāifàng hé cānguān de fāngfǎ.",
+                  "english": "The tunnel's reopening and how to visit it."
+                }
+              ],
+              "key": 3,
+              "why": "重新開放 is the news, and the tour times, the family rule and the photo rule (同時 no touching) all tell visitors how to go in. The tunnel is not closing: its two years of repair are over (修了兩年，從今天起重新開放), and nothing is said about how it was repaired. The fort's age is only the welcome, and the square is a last extra for after the visit.",
+              "focus": {
+                "zh": "同時；主旨",
+                "en": "also; the main point"
+              },
+              "lesson": 15,
+              "answerLine": 1,
+              "wordIds": [
+                "B3L06-2-18",
+                "B3L15-2-25",
+                "B3L15-2-03"
+              ],
+              "grammarIds": [
+                "B3L15-G03-P392"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-talk-2",
+          "kind": "dialogue",
+          "intro": {
+            "speaker": "N",
+            "traditional": "請聽一段留言，然後回答三個問題。",
+            "simplified": "请听一段留言，然后回答三个问题。",
+            "pinyin": "Qǐng tīng yí duàn liúyán, ránhòu huídá sān ge wèntí.",
+            "english": "Listen to a voicemail, then answer three questions."
+          },
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "張先生您好，我是明天帶大家去參觀古蹟的導遊。",
+              "simplified": "张先生您好，我是明天带大家去参观古迹的导游。",
+              "pinyin": "Zhāng xiānshēng nín hǎo, wǒ shì míngtiān dài dàjiā qù cānguān gǔjī de dǎoyóu.",
+              "english": "Hello, Mr. Zhang. I'm the guide taking your group to the historic sites tomorrow."
+            },
+            {
+              "speaker": "F",
+              "traditional": "氣象預報說明天下午會下大雨，所以行程得改一下。",
+              "simplified": "气象预报说明天下午会下大雨，所以行程得改一下。",
+              "pinyin": "Qìxiàng yùbào shuō míngtiān xiàwǔ huì xià dà yǔ, suǒyǐ xíngchéng děi gǎi yíxià.",
+              "english": "The weather forecast says heavy rain tomorrow afternoon, so the itinerary has to change a little."
+            },
+            {
+              "speaker": "F",
+              "traditional": "本來下午要去的老教堂在小山上，下雨路很滑，所以改到早上九點去。",
+              "simplified": "本来下午要去的老教堂在小山上，下雨路很滑，所以改到早上九点去。",
+              "pinyin": "Běnlái xiàwǔ yào qù de lǎo jiàotáng zài xiǎo shān shàng, xià yǔ lù hěn huá, suǒyǐ gǎi dào zǎoshàng jiǔ diǎn qù.",
+              "english": "The old church we were visiting in the afternoon is up on a hill and the path is slippery in the rain, so it moves to 9 a.m."
+            },
+            {
+              "speaker": "F",
+              "traditional": "早上要逛的老街改到下午。那裡走在商店前面不用打傘，下雨也能慢慢逛。",
+              "simplified": "早上要逛的老街改到下午。那里走在商店前面不用打伞，下雨也能慢慢逛。",
+              "pinyin": "Zǎoshàng yào guàng de lǎo jiē gǎi dào xiàwǔ. Nàlǐ zǒu zài shāngdiàn qiánmiàn bú yòng dǎ sǎn, xià yǔ yě néng mànman guàng.",
+              "english": "The old street we were exploring in the morning moves to the afternoon. You can walk in front of the shops there without an umbrella, so we can take our time even in the rain."
+            },
+            {
+              "speaker": "F",
+              "traditional": "最後本來要到碼頭看夕陽，下雨就看不到了，我們改去一家有名的餐廳吃晚餐，費用一樣。",
+              "simplified": "最后本来要到码头看夕阳，下雨就看不到了，我们改去一家有名的餐厅吃晚餐，费用一样。",
+              "pinyin": "Zuìhòu běnlái yào dào mǎtóu kàn xīyáng, xià yǔ jiù kàn bú dào le, wǒmen gǎi qù yì jiā yǒumíng de cāntīng chī wǎncān, fèiyòng yíyàng.",
+              "english": "To finish, we were going to watch the sunset at the pier; in the rain there will be nothing to see, so we'll go to a well-known restaurant for dinner instead, at the same cost."
+            },
+            {
+              "speaker": "F",
+              "traditional": "總之，白天的教堂和老街換了時間，晚上也改去餐廳，不過集合的時間和地方都不變，還是早上八點半在飯店門口。",
+              "simplified": "总之，白天的教堂和老街换了时间，晚上也改去餐厅，不过集合的时间和地方都不变，还是早上八点半在饭店门口。",
+              "pinyin": "Zǒngzhī, báitiān de jiàotáng hé lǎo jiē huàn le shíjiān, wǎnshàng yě gǎi qù cāntīng, búguò jíhé de shíjiān hé dìfāng dōu bú biàn, háishì zǎoshàng bā diǎn bàn zài fàndiàn ménkǒu.",
+              "english": "In short, the church and the old street swap times during the day and the evening is now a restaurant, but the meeting time and place stay the same: 8:30 a.m. at the hotel entrance."
+            }
+          ],
+          "answerLine": 2,
+          "printed": true,
+          "plays": 1,
+          "questions": [
+            {
+              "id": "b3l15-talk-2-1",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "明天早上九點，他們會在哪裡？",
+                "simplified": "明天早上九点，他们会在哪里？",
+                "pinyin": "Míngtiān zǎoshàng jiǔ diǎn, tāmen huì zài nǎlǐ?",
+                "english": "Where will they be at nine tomorrow morning?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "在老教堂參觀",
+                  "simplified": "在老教堂参观",
+                  "pinyin": "Zài lǎo jiàotáng cānguān.",
+                  "english": "Visiting the old church."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在飯店門口集合",
+                  "simplified": "在饭店门口集合",
+                  "pinyin": "Zài fàndiàn ménkǒu jíhé.",
+                  "english": "Gathering at the hotel entrance."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在老街上逛商店",
+                  "simplified": "在老街上逛商店",
+                  "pinyin": "Zài lǎo jiē shàng guàng shāngdiàn.",
+                  "english": "Browsing the shops on the old street."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "在去老街的路上",
+                  "simplified": "在去老街的路上",
+                  "pinyin": "Zài qù lǎo jiē de lù shàng.",
+                  "english": "On the way to the old street."
+                }
+              ],
+              "key": 0,
+              "why": "The church moves from the afternoon to 早上九點. The old street was the OLD morning plan, and the hotel entrance is at 8:30, half an hour earlier.",
+              "focus": {
+                "zh": "計畫的改變",
+                "en": "a changed plan"
+              },
+              "lesson": 15,
+              "answerLine": 2,
+              "wordIds": [
+                "B3L06-2-04",
+                "B1L14-2-18"
+              ]
+            },
+            {
+              "id": "b3l15-talk-2-2",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "老教堂和老街為什麼要換時間？",
+                "simplified": "老教堂和老街为什么要换时间？",
+                "pinyin": "Lǎo jiàotáng hé lǎo jiē wèishénme yào huàn shíjiān?",
+                "english": "Why do the old church and the old street swap times?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "下雨的話碼頭看不到夕陽",
+                  "simplified": "下雨的话码头看不到夕阳",
+                  "pinyin": "Xià yǔ de huà mǎtóu kàn bú dào xīyáng.",
+                  "english": "In the rain there is no sunset to see at the pier."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "雨天去老街比上山方便",
+                  "simplified": "雨天去老街比上山方便",
+                  "pinyin": "Yǔtiān qù lǎo jiē bǐ shàng shān fāngbiàn.",
+                  "english": "In the rain the old street is easier than going up the hill."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "老教堂早上九點才開門",
+                  "simplified": "老教堂早上九点才开门",
+                  "pinyin": "Lǎo jiàotáng zǎoshàng jiǔ diǎn cái kāimén.",
+                  "english": "The old church only opens at nine."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "晚上要留時間去餐廳",
+                  "simplified": "晚上要留时间去餐厅",
+                  "pinyin": "Wǎnshàng yào liú shíjiān qù cāntīng.",
+                  "english": "They need to leave time for the restaurant."
+                }
+              ],
+              "key": 1,
+              "why": "Rain comes in the afternoon: the church path up the hill is 很滑 then, while on the street you walk in front of the shops without an umbrella (不用打傘，下雨也能慢慢逛). The sunset is the reason for a DIFFERENT change, nine is the new visit time, not an opening time, and the restaurant replaces the pier, not the street.",
+              "focus": {
+                "zh": "原因；兩句合起來",
+                "en": "a reason; combining two lines"
+              },
+              "lesson": 15,
+              "answerLine": 3,
+              "wordIds": [
+                "B3L02-2-08",
+                "B2L04-1-01",
+                "B3L06-1-17"
+              ]
+            },
+            {
+              "id": "b3l15-talk-2-3",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "這段留言最主要是想讓張先生知道什麼？",
+                "simplified": "这段留言最主要是想让张先生知道什么？",
+                "pinyin": "Zhè duàn liúyán zuì zhǔyào shì xiǎng ràng Zhāng xiānshēng zhīdào shénme?",
+                "english": "What does this voicemail mainly want Mr. Zhang to know?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "只是參觀的先後換了一下",
+                  "simplified": "只是参观的先后换了一下",
+                  "pinyin": "Zhǐshì cānguān de xiānhòu huàn le yíxià.",
+                  "english": "Only the order of the visits has changed."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "晚餐改去餐廳，要多付錢",
+                  "simplified": "晚餐改去餐厅，要多付钱",
+                  "pinyin": "Wǎncān gǎi qù cāntīng, yào duō fù qián.",
+                  "english": "Dinner is now at a restaurant, at extra cost."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "行程改了，集合時間地點不變",
+                  "simplified": "行程改了，集合时间地点不变",
+                  "pinyin": "Xíngchéng gǎi le, jíhé shíjiān dìdiǎn bú biàn.",
+                  "english": "The itinerary has changed; the meeting time and place have not."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "集合時間改晚了半小時",
+                  "simplified": "集合时间改晚了半小时",
+                  "pinyin": "Jíhé shíjiān gǎi wǎn le bàn xiǎoshí.",
+                  "english": "The meeting time is half an hour later."
+                }
+              ],
+              "key": 2,
+              "why": "The 總之 line sums up both changes (the daytime order AND the evening restaurant) and stresses that 集合的時間和地方都不變. \"Only the order\" forgets the evening change, the cost is 一樣, and 8:30 at the hotel stays; nine is the church.",
+              "focus": {
+                "zh": "總之；說話人的目的",
+                "en": "in short; the speaker's purpose"
+              },
+              "lesson": 15,
+              "answerLine": 5,
+              "wordIds": [
+                "B3L15-2-28",
+                "B3L05-2-27",
+                "B2L03-1-24"
+              ],
+              "grammarIds": [
+                "B3L15-G05-P395"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloze",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l15-cloze-1",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "祖父的老家是南部鄉下一棟一百多年的老房子。房子很舊了，修理很花錢，家人都希望他搬到城裡。{1}，祖父還是不肯搬。去年，市長發現這棟房子具有歷史價值，出錢請人來修。很多人擔心修完就不像古蹟了，{2}修好後跟以前差不多。不久來了颱風，附近好幾棟老房子倒了，{3}祖父的房子剛修好，一點事都沒有。現在，祖父每天帶遊客參觀老房子。遊客都愛聽他說故事，{4}這是他住了八十年的地方。他介紹老房子的歷史，{5}也讓更多人認識了家鄉。{6}，老房子讓祖父的生活又熱鬧起來了。",
+            "simplified": "祖父的老家是南部乡下一栋一百多年的老房子。房子很旧了，修理很花钱，家人都希望他搬到城里。{1}，祖父还是不肯搬。去年，市长发现这栋房子具有历史价值，出钱请人来修。很多人担心修完就不像古迹了，{2}修好后跟以前差不多。不久来了台风，附近好几栋老房子倒了，{3}祖父的房子刚修好，一点事都没有。现在，祖父每天带游客参观老房子。游客都爱听他说故事，{4}这是他住了八十年的地方。他介绍老房子的历史，{5}也让更多人认识了家乡。{6}，老房子让祖父的生活又热闹起来了。",
+            "pinyin": "Zǔfù de lǎojiā shì nánbù xiāngxià yí dòng yì bǎi duō nián de lǎo fángzi. Fángzi hěn jiù le, xiūlǐ hěn huā qián, jiārén dōu xīwàng tā bān dào chéng lǐ. Jǐnguǎn zhèyàng, zǔfù háishì bù kěn bān. Qùnián, shìzhǎng fāxiàn zhè dòng fángzi jùyǒu lìshǐ jiàzhí, chū qián qǐng rén lái xiū. Hěn duō rén dānxīn xiū wán jiù bú xiàng gǔjī le, jiéguǒ xiū hǎo hòu gēn yǐqián chàbùduō. Bùjiǔ lái le táifēng, fùjìn hǎojǐ dòng lǎo fángzi dǎo le, xìnghǎo zǔfù de fángzi gāng xiū hǎo, yìdiǎn shì dōu méiyǒu. Xiànzài, zǔfù měi tiān dài yóukè cānguān lǎo fángzi. Yóukè dōu ài tīng tā shuō gùshì, bìjìng zhè shì tā zhù le bāshí nián de dìfāng. Tā jièshào lǎo fángzi de lìshǐ, tóngshí yě ràng gèng duō rén rènshì le jiāxiāng. Zǒngzhī, lǎo fángzi ràng zǔfù de shēnghuó yòu rènào qǐlái le.",
+            "english": "My grandfather's old home is a house over a hundred years old in the countryside in the south. The house is very old, repairs cost a lot, and the family wanted him to move to the city. Even so, my grandfather still refused to move. Last year the mayor found that the house had historical value and paid for it to be repaired. Many people worried that once repaired it would no longer look like a historic site; as it turned out, the repaired house looks much as it did before. Soon afterwards a typhoon came and several old houses nearby fell down; luckily grandfather's house had just been repaired and was not damaged at all. Now grandfather shows visitors round the old house every day. Visitors love hearing his stories; after all, this is where he has lived for eighty years. He tells them the history of the house, and at the same time more people have come to know his hometown. In short, the old house has made grandfather's life lively again."
+          },
+          "questions": [
+            {
+              "id": "b3l15-cloze-1-1",
+              "choices": [
+                {
+                  "traditional": "既然這樣",
+                  "simplified": "既然这样",
+                  "pinyin": "jìrán zhèyàng",
+                  "english": "since that is so"
+                },
+                {
+                  "traditional": "因為這樣",
+                  "simplified": "因为这样",
+                  "pinyin": "yīnwèi zhèyàng",
+                  "english": "because of this"
+                },
+                {
+                  "traditional": "這樣一來",
+                  "simplified": "这样一来",
+                  "pinyin": "zhèyàng yì lái",
+                  "english": "that way"
+                },
+                {
+                  "traditional": "儘管這樣",
+                  "simplified": "尽管这样",
+                  "pinyin": "jǐnguǎn zhèyàng",
+                  "english": "even so"
+                }
+              ],
+              "key": 3,
+              "why": "Everything before the blank pushes him to move (old, costly, the family wanting it), and 還是不肯搬 holds out against all of it: 儘管這樣. 既然這樣 and 因為這樣 would make his refusal follow FROM the urging, and 這樣一來 brings in a result, but 還是 marks that he refuses in spite of it.",
+              "focus": {
+                "zh": "儘管（如此）",
+                "en": "even so"
+              },
+              "lesson": 12,
+              "wordIds": [
+                "B3L12-2-05",
+                "B2L15-1-26"
+              ],
+              "grammarIds": [
+                "B3L12-G05-P325"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-1-2",
+              "choices": [
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as it turned out"
+                },
+                {
+                  "traditional": "因此",
+                  "simplified": "因此",
+                  "pinyin": "yīncǐ",
+                  "english": "therefore"
+                },
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had no choice but"
+                }
+              ],
+              "key": 0,
+              "why": "People feared the repair would spoil the house; the blank brings in what actually happened, the opposite of the fear: 結果. 因此 makes the good outcome a result of the worry, 難怪 explains something already known, and 只好 needs a forced choice, but 跟以前差不多 is simply how it turned out.",
+              "focus": {
+                "zh": "結果",
+                "en": "as it turned out"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-2-09",
+                "B1L10-3-05"
+              ],
+              "grammarIds": [
+                "B3L05-G05-P141"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-1-3",
+              "choices": [
+                {
+                  "traditional": "難怪",
+                  "simplified": "难怪",
+                  "pinyin": "nánguài",
+                  "english": "no wonder"
+                },
+                {
+                  "traditional": "可惜",
+                  "simplified": "可惜",
+                  "pinyin": "kěxí",
+                  "english": "what a pity"
+                },
+                {
+                  "traditional": "幸好",
+                  "simplified": "幸好",
+                  "pinyin": "xìnghǎo",
+                  "english": "luckily"
+                },
+                {
+                  "traditional": "原來",
+                  "simplified": "原来",
+                  "pinyin": "yuánlái",
+                  "english": "it turns out"
+                }
+              ],
+              "key": 2,
+              "why": "Nearby houses fell, but his was unharmed because the repairs had just finished: a lucky escape, so 幸好. 可惜 regrets a bad outcome, and 難怪 and 原來 announce something newly found out, but the reader already knows the house was just repaired.",
+              "focus": {
+                "zh": "幸好",
+                "en": "luckily"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-1-32",
+                "B3L05-1-02",
+                "B3L05-1-10"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-1-4",
+              "choices": [
+                {
+                  "traditional": "可是",
+                  "simplified": "可是",
+                  "pinyin": "kěshì",
+                  "english": "but"
+                },
+                {
+                  "traditional": "畢竟",
+                  "simplified": "毕竟",
+                  "pinyin": "bìjìng",
+                  "english": "after all"
+                },
+                {
+                  "traditional": "例如",
+                  "simplified": "例如",
+                  "pinyin": "lìrú",
+                  "english": "for example"
+                },
+                {
+                  "traditional": "結果",
+                  "simplified": "结果",
+                  "pinyin": "jiéguǒ",
+                  "english": "as a result"
+                }
+              ],
+              "key": 1,
+              "why": "Visitors love his stories, and the blank gives the reason (he has lived there eighty years): 畢竟. 可是 needs a contrast, 例如 an example of his stories, and 結果 something that happened afterwards.",
+              "focus": {
+                "zh": "畢竟",
+                "en": "after all"
+              },
+              "lesson": 8,
+              "wordIds": [
+                "B3L08-2-19",
+                "B2L01-2-04"
+              ],
+              "grammarIds": [
+                "B3L08-G06-P222"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-1-5",
+              "choices": [
+                {
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "english": "instead"
+                },
+                {
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "english": "yet"
+                },
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had no choice but"
+                },
+                {
+                  "traditional": "同時",
+                  "simplified": "同时",
+                  "pinyin": "tóngshí",
+                  "english": "at the same time"
+                }
+              ],
+              "key": 3,
+              "why": "Guiding visitors every day and making his hometown better known happen together, one good thing on top of another: 同時（也）. 反而 and 卻 need something against expectation, and 只好 a forced choice; nothing here goes against what came before.",
+              "focus": {
+                "zh": "同時",
+                "en": "at the same time, also"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-03",
+                "B1L11-1-01",
+                "B3L15-1-29"
+              ],
+              "grammarIds": [
+                "B3L15-G03-P392"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-1-6",
+              "choices": [
+                {
+                  "traditional": "總之",
+                  "simplified": "总之",
+                  "pinyin": "zǒngzhī",
+                  "english": "in short"
+                },
+                {
+                  "traditional": "例如",
+                  "simplified": "例如",
+                  "pinyin": "lìrú",
+                  "english": "for example"
+                },
+                {
+                  "traditional": "其次",
+                  "simplified": "其次",
+                  "pinyin": "qícì",
+                  "english": "secondly"
+                },
+                {
+                  "traditional": "不過",
+                  "simplified": "不过",
+                  "pinyin": "búguò",
+                  "english": "however"
+                }
+              ],
+              "key": 0,
+              "why": "The last sentence gathers the whole story (kept, repaired, saved, a new job, new friends for the place) into one line: 總之. 其次 adds a second point to a list, 不過 needs a contrast, and 例如 an example, but this sentence is broader than everything before it.",
+              "focus": {
+                "zh": "總之",
+                "en": "in short"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-28",
+                "B3L15-1-16",
+                "B1L14-1-14"
+              ],
+              "grammarIds": [
+                "B3L15-G05-P395"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-cloze-2",
+          "kind": "cloze",
+          "passage": {
+            "traditional": "上個月，室友的阿姨帶我們參觀古廟。阿姨在附近住了五十年，哪條龍最早刻好、哪一年發生過大火，她都知道。{1}，廟裡的事問她就對了。廟裡的龍是石頭刻的，十分生動，我們兩個一看到，就{2}說：「太了不起了！」這座廟燒過兩次，都是當地人出錢修好的。我以為修過的廟沒那麼有價值，阿姨{3}說，把廟修好也是歷史。現在年輕人不常拜拜，可是週末來廟前廣場的人{4}比以前多：有人擺攤，有人表演，{5}有人在這裡結婚。很多人以為古廟只有老人去，{6}，它一直是大家生活的中心。",
+            "simplified": "上个月，室友的阿姨带我们参观古庙。阿姨在附近住了五十年，哪条龙最早刻好、哪一年发生过大火，她都知道。{1}，庙里的事问她就对了。庙里的龙是石头刻的，十分生动，我们两个一看到，就{2}说：「太了不起了！」这座庙烧过两次，都是当地人出钱修好的。我以为修过的庙没那么有价值，阿姨{3}说，把庙修好也是历史。现在年轻人不常拜拜，可是周末来庙前广场的人{4}比以前多：有人摆摊，有人表演，{5}有人在这里结婚。很多人以为古庙只有老人去，{6}，它一直是大家生活的中心。",
+            "pinyin": "Shàng ge yuè, shìyǒu de āyí dài wǒmen cānguān gǔ miào. Āyí zài fùjìn zhù le wǔshí nián, nǎ tiáo lóng zuì zǎo kè hǎo, nǎ yì nián fāshēng guo dà huǒ, tā dōu zhīdào. Zǒngzhī, miào lǐ de shì wèn tā jiù duì le. Miào lǐ de lóng shì shítou kè de, shífēn shēngdòng, wǒmen liǎng ge yí kàn dào, jiù tóngshí shuō: \"Tài liǎobùqǐ le!\" Zhè zuò miào shāo guo liǎng cì, dōu shì dāngdì rén chū qián xiū hǎo de. Wǒ yǐwéi xiū guo de miào méi nàme yǒu jiàzhí, āyí què shuō, bǎ miào xiū hǎo yě shì lìshǐ. Xiànzài niánqīng rén bù cháng bàibai, kěshì zhōumò lái miào qián guǎngchǎng de rén fǎn'ér bǐ yǐqián duō: yǒu rén bǎi tān, yǒu rén biǎoyǎn, shènzhì yǒu rén zài zhèlǐ jiéhūn. Hěn duō rén yǐwéi gǔ miào zhǐyǒu lǎorén qù, shìshíshàng, tā yìzhí shì dàjiā shēnghuó de zhōngxīn.",
+            "english": "Last month my roommate's aunt took us to visit an old temple. She has lived nearby for fifty years: which dragon was carved first, which year the big fire broke out, she knows all of it. In short, if it is about the temple, ask her. The dragons in the temple are carved in stone and very lifelike; the moment the two of us saw them, we both said at the same time, \"Amazing!\" The temple has burned twice, and both times the local people paid to repair it. I thought a repaired temple was not worth so much, but the aunt said that repairing the temple is history too. Young people don't pray much nowadays, yet at weekends there are, if anything, more people in the square in front of the temple than before: some set up stalls, some perform, and some even get married here. Many people think only old people go to old temples; in fact, this one has always been the centre of everyone's life."
+          },
+          "questions": [
+            {
+              "id": "b3l15-cloze-2-1",
+              "choices": [
+                {
+                  "traditional": "例如",
+                  "simplified": "例如",
+                  "pinyin": "lìrú",
+                  "english": "for example"
+                },
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "besides"
+                },
+                {
+                  "traditional": "總之",
+                  "simplified": "总之",
+                  "pinyin": "zǒngzhī",
+                  "english": "in short"
+                },
+                {
+                  "traditional": "畢竟",
+                  "simplified": "毕竟",
+                  "pinyin": "bìjìng",
+                  "english": "after all"
+                }
+              ],
+              "key": 2,
+              "why": "After a list of things the aunt knows, the blank wraps them up in one judgement (問她就對了): 總之. 例如 would start a list, not end one, 況且 adds a further reason to an argument, and 畢竟 gives the reason for something, but 問她就對了 is the conclusion, not a reason.",
+              "focus": {
+                "zh": "總之",
+                "en": "in short"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-28",
+                "B3L15-1-09",
+                "B2L08-2-04"
+              ],
+              "grammarIds": [
+                "B3L15-G05-P395"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-2-2",
+              "choices": [
+                {
+                  "traditional": "從來",
+                  "simplified": "从来",
+                  "pinyin": "cónglái",
+                  "english": "ever (with 不/沒)"
+                },
+                {
+                  "traditional": "同時",
+                  "simplified": "同时",
+                  "pinyin": "tóngshí",
+                  "english": "at the same time"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                },
+                {
+                  "traditional": "往往",
+                  "simplified": "往往",
+                  "pinyin": "wǎngwǎng",
+                  "english": "tend to"
+                }
+              ],
+              "key": 1,
+              "why": "一看到，就… is a single moment, and 我們兩個 are two people crying out at once: 同時. 從來 only goes with 不 or 沒, 往往 describes things that happen many times, and 終於 needs a long wait, not a first glance.",
+              "focus": {
+                "zh": "同時",
+                "en": "at the same time"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-03",
+                "B3L15-1-11",
+                "B3L15-1-09"
+              ],
+              "grammarIds": [
+                "B3L15-G03-P392"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-2-3",
+              "choices": [
+                {
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "english": "also"
+                },
+                {
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "english": "had no choice but"
+                },
+                {
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "english": "finally"
+                },
+                {
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "english": "yet, however"
+                }
+              ],
+              "key": 3,
+              "why": "我以為 sets up the writer's belief (repairs lower the value), and the aunt says the opposite (repairs are history too): 卻 marks that turn. 也 would make her agree, 只好 means she was forced to say it, and 終於 means a long-awaited answer.",
+              "focus": {
+                "zh": "卻",
+                "en": "yet, however"
+              },
+              "lesson": 11,
+              "wordIds": [
+                "B3L11-2-22",
+                "B2L08-2-03",
+                "B3L15-1-26"
+              ],
+              "grammarIds": [
+                "B3L11-G04-P299"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-2-4",
+              "choices": [
+                {
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "english": "on the contrary"
+                },
+                {
+                  "traditional": "總算",
+                  "simplified": "总算",
+                  "pinyin": "zǒngsuàn",
+                  "english": "at long last"
+                },
+                {
+                  "traditional": "一向",
+                  "simplified": "一向",
+                  "pinyin": "yíxiàng",
+                  "english": "always"
+                },
+                {
+                  "traditional": "本來",
+                  "simplified": "本来",
+                  "pinyin": "běnlái",
+                  "english": "originally"
+                }
+              ],
+              "key": 0,
+              "why": "Young people seldom pray, so you would expect fewer visitors, yet MORE come than before: the opposite of the expected result is 反而. 總算 needs a long hope finally met, 一向 cannot go with 比以前 (a change), and 本來 (originally) cannot describe a change compared with before.",
+              "focus": {
+                "zh": "反而",
+                "en": "on the contrary"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B3L09-1-06",
+                "B3L15-1-18",
+                "B2L14-1-11"
+              ],
+              "grammarIds": [
+                "B3L09-G03-P238"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-2-5",
+              "choices": [
+                {
+                  "traditional": "尤其是",
+                  "simplified": "尤其是",
+                  "pinyin": "yóuqí shì",
+                  "english": "especially"
+                },
+                {
+                  "traditional": "甚至",
+                  "simplified": "甚至",
+                  "pinyin": "shènzhì",
+                  "english": "even"
+                },
+                {
+                  "traditional": "至於",
+                  "simplified": "至于",
+                  "pinyin": "zhìyú",
+                  "english": "as for"
+                },
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "besides"
+                }
+              ],
+              "key": 1,
+              "why": "Stalls, performances, and then the most surprising use of a temple square, getting married there: the last and strongest item of a list takes 甚至. 尤其是 picks one example out of a group already named, 至於 turns to a new topic, and 況且 adds a reason to an argument; this is the list's high point.",
+              "focus": {
+                "zh": "甚至",
+                "en": "even"
+              },
+              "lesson": 5,
+              "wordIds": [
+                "B3L05-2-15",
+                "B2L11-1-03",
+                "B1L12-3-10"
+              ],
+              "grammarIds": [
+                "B3L05-G06-P143"
+              ]
+            },
+            {
+              "id": "b3l15-cloze-2-6",
+              "choices": [
+                {
+                  "traditional": "因此",
+                  "simplified": "因此",
+                  "pinyin": "yīncǐ",
+                  "english": "therefore"
+                },
+                {
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "english": "besides"
+                },
+                {
+                  "traditional": "事實上",
+                  "simplified": "事实上",
+                  "pinyin": "shìshíshàng",
+                  "english": "in fact"
+                },
+                {
+                  "traditional": "例如",
+                  "simplified": "例如",
+                  "pinyin": "lìrú",
+                  "english": "for example"
+                }
+              ],
+              "key": 2,
+              "why": "很多人以為 states a common belief, and the clause after the blank corrects it (it has always been the centre of everyone's life): 以為……，事實上……. 因此 would make the correction a result of the belief, 況且 adds a reason in the same direction, and 例如 needs an example.",
+              "focus": {
+                "zh": "事實上",
+                "en": "in fact"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-06",
+                "B2L08-2-03",
+                "B2L09-2-22"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l15-reading-card-1",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "參觀古城",
+            "simplified": "参观古城",
+            "pinyin": "Cānguān gǔchéng",
+            "english": "Visiting the Old Fort"
+          },
+          "text": {
+            "traditional": "開放時間：星期二到星期日 9:30–17:00（最後入場時間16:30）\n休館：每星期一休館；星期一如果放假，當天照常開放，改為星期二休館\n門票：每人80元；學生及65歲以上40元；12歲以下免費\n團體票：10人以上，每人60元\n免費介紹：每天10:00、14:00，每次一小時，請到大門口集合\n地下隧道：只在週末開放，每次20人，請先上網報名",
+            "simplified": "开放时间：星期二到星期日 9:30–17:00（最后入场时间16:30）\n休馆：每星期一休馆；星期一如果放假，当天照常开放，改为星期二休馆\n门票：每人80元；学生及65岁以上40元；12岁以下免费\n团体票：10人以上，每人60元\n免费介绍：每天10:00、14:00，每次一小时，请到大门口集合\n地下隧道：只在周末开放，每次20人，请先上网报名",
+            "pinyin": "Kāifàng shíjiān: xīngqí'èr dào xīngqírì, jiǔ diǎn bàn dào shíqī diǎn (zuìhòu rùchǎng shíjiān shíliù diǎn bàn). Xiūguǎn: měi xīngqíyī xiūguǎn; xīngqíyī rúguǒ fàngjià, dàngtiān zhàocháng kāifàng, gǎi wéi xīngqí'èr xiūguǎn. Ménpiào: měi rén bāshí yuán; xuéshēng jí liùshíwǔ suì yǐshàng sìshí yuán; shí'èr suì yǐxià miǎnfèi. Tuántǐ piào: shí rén yǐshàng, měi rén liùshí yuán. Miǎnfèi jièshào: měi tiān shí diǎn, shísì diǎn, měi cì yì xiǎoshí, qǐng dào dà ménkǒu jíhé. Dìxià suìdào: zhǐ zài zhōumò kāifàng, měi cì èrshí rén, qǐng xiān shàngwǎng bàomíng.",
+            "english": "Opening hours: Tuesday to Sunday 9:30–17:00 (last entry 16:30)\nClosed: every Monday; when a Monday is a holiday, open as usual that day and closed on Tuesday instead\nTickets: NT$80 per person; students and those 65 and over NT$40; under 12 free\nGroup tickets: 10 or more people, NT$60 each\nFree guided talks: daily at 10:00 and 14:00, one hour each; please meet at the main gate\nUnderground tunnel: open at weekends only, 20 people at a time; please sign up online first"
+          },
+          "questions": [
+            {
+              "id": "b3l15-reading-card-1-1",
+              "prompt": {
+                "traditional": "一位四十歲的老師帶九個大學生來參觀，十個人的門票最便宜一共要多少錢？",
+                "simplified": "一位四十岁的老师带九个大学生来参观，十个人的门票最便宜一共要多少钱？",
+                "pinyin": "Yí wèi sìshí suì de lǎoshī dài jiǔ ge dàxuéshēng lái cānguān, shí ge rén de ménpiào zuì piányí yígòng yào duōshǎo qián?",
+                "english": "A 40-year-old teacher visits with nine university students. What is the cheapest total for the ten tickets?"
+              },
+              "choices": [
+                {
+                  "traditional": "600元",
+                  "simplified": "600元",
+                  "pinyin": "600 yuán",
+                  "english": "NT$600"
+                },
+                {
+                  "traditional": "400元",
+                  "simplified": "400元",
+                  "pinyin": "400 yuán",
+                  "english": "NT$400"
+                },
+                {
+                  "traditional": "360元",
+                  "simplified": "360元",
+                  "pinyin": "360 yuán",
+                  "english": "NT$360"
+                },
+                {
+                  "traditional": "440元",
+                  "simplified": "440元",
+                  "pinyin": "440 yuán",
+                  "english": "NT$440"
+                }
+              ],
+              "key": 3,
+              "why": "Compare two lines: as a group, ten people pay 10 × 60 = 600; bought one by one, the teacher pays 80 and the nine students (學生及65歲以上的人) 40 each, 80 + 360 = 440, which is cheaper. 600 takes the group ticket without checking, 400 charges the teacher a student price, and 360 forgets the teacher.",
+              "focus": {
+                "zh": "及；兩行比較",
+                "en": "and (formal); comparing two lines"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-07",
+                "B2L07-2-12",
+                "B3L11-1-17"
+              ],
+              "grammarIds": [
+                "B3L15-G04-P393"
+              ]
+            },
+            {
+              "id": "b3l15-reading-card-1-2",
+              "prompt": {
+                "traditional": "下星期一放假，張小姐只有星期一和星期二有空，想聽免費介紹。她應該什麼時候去？",
+                "simplified": "下星期一放假，张小姐只有星期一和星期二有空，想听免费介绍。她应该什么时候去？",
+                "pinyin": "Xià xīngqíyī fàngjià, Zhāng xiǎojiě zhǐyǒu xīngqíyī hé xīngqí'èr yǒu kòng, xiǎng tīng miǎnfèi jièshào. Tā yīnggāi shénme shíhòu qù?",
+                "english": "Next Monday is a holiday. Ms. Zhang is free only on Monday and Tuesday and wants to hear a free guided talk. When should she go?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期一上午十點",
+                  "simplified": "星期一上午十点",
+                  "pinyin": "Xīngqíyī shàngwǔ shí diǎn",
+                  "english": "Monday, 10 a.m."
+                },
+                {
+                  "traditional": "星期一下午四點半",
+                  "simplified": "星期一下午四点半",
+                  "pinyin": "Xīngqíyī xiàwǔ sì diǎn bàn",
+                  "english": "Monday, 4:30 p.m."
+                },
+                {
+                  "traditional": "星期二上午十點",
+                  "simplified": "星期二上午十点",
+                  "pinyin": "Xīngqí'èr shàngwǔ shí diǎn",
+                  "english": "Tuesday, 10 a.m."
+                },
+                {
+                  "traditional": "星期二下午兩點",
+                  "simplified": "星期二下午两点",
+                  "pinyin": "Xīngqí'èr xiàwǔ liǎng diǎn",
+                  "english": "Tuesday, 2 p.m."
+                }
+              ],
+              "key": 0,
+              "why": "Because Monday is a holiday, the site 照常開放 that day and closes on Tuesday instead; the talks are at 10:00 and 14:00. Both Tuesday times fall on the new closing day, and 16:30 is when entry stops, with no talk.",
+              "focus": {
+                "zh": "兩行合起來看",
+                "en": "combining two lines"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B1L13-2-04",
+                "B3L15-2-25",
+                "B1L16-1-02"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-reading-card-2",
+          "kind": "reading",
+          "format": "notice",
+          "title": {
+            "traditional": "淡水古蹟參觀",
+            "simplified": "淡水古迹参观",
+            "pinyin": "Dànshuǐ gǔjī cānguān",
+            "english": "Visiting the Historic Sites of Tamsui"
+          },
+          "text": {
+            "traditional": "星期六行程\n早上九點在捷運站門口集合，先參觀龍山寺。\n從龍山寺搭捷運到淡水，大約一個小時。紅毛城下午五點關門，所以最晚十二點離開龍山寺，在淡水吃完午餐再過去。\n參觀完紅毛城及旁邊的老教堂，再到碼頭看夕陽。\n氣象預報說星期六下午可能下雨。如果下雨，看完紅毛城就回臺北，參觀老教堂及到碼頭看夕陽都改到星期天。\n老教堂星期天上午有宗教活動，不開放參觀，下午兩點以後才開放。\n請記得帶傘。碼頭風很大，最好也帶一件外套。\n歷史社",
+            "simplified": "星期六行程\n早上九点在捷运站门口集合，先参观龙山寺。\n从龙山寺搭捷运到淡水，大约一个小时。红毛城下午五点关门，所以最晚十二点离开龙山寺，在淡水吃完午餐再过去。\n参观完红毛城及旁边的老教堂，再到码头看夕阳。\n气象预报说星期六下午可能下雨。如果下雨，看完红毛城就回台北，参观老教堂及到码头看夕阳都改到星期天。\n老教堂星期天上午有宗教活动，不开放参观，下午两点以后才开放。\n请记得带伞。码头风很大，最好也带一件外套。\n历史社",
+            "pinyin": "Xīngqíliù xíngchéng. Zǎoshàng jiǔ diǎn zài jiéyùn zhàn ménkǒu jíhé, xiān cānguān Lóngshān Sì. Cóng Lóngshān Sì dā jiéyùn dào Dànshuǐ, dàyuē yí ge xiǎoshí. Hóngmáochéng xiàwǔ wǔ diǎn guānmén, suǒyǐ zuì wǎn shí'èr diǎn líkāi Lóngshān Sì, zài Dànshuǐ chī wán wǔcān zài guòqù. Cānguān wán Hóngmáochéng jí pángbiān de lǎo jiàotáng, zài dào mǎtóu kàn xīyáng. Qìxiàng yùbào shuō xīngqíliù xiàwǔ kěnéng xià yǔ. Rúguǒ xià yǔ, kàn wán Hóngmáochéng jiù huí Táiběi, cānguān lǎo jiàotáng jí dào mǎtóu kàn xīyáng dōu gǎi dào xīngqítiān. Lǎo jiàotáng xīngqítiān shàngwǔ yǒu zōngjiào huódòng, bù kāifàng cānguān, xiàwǔ liǎng diǎn yǐhòu cái kāifàng. Qǐng jìde dài sǎn. Mǎtóu fēng hěn dà, zuìhǎo yě dài yí jiàn wàitào. Lìshǐ shè",
+            "english": "Saturday itinerary\nMeet at the MRT station entrance at nine; we visit Longshan Temple first.\nFrom Longshan Temple to Tamsui by MRT takes about an hour. Fort San Domingo closes at 5 p.m., so we leave Longshan Temple by twelve at the latest, have lunch in Tamsui and then go over.\nAfter the fort and the old church next to it, we watch the sunset at the pier.\nThe forecast says it may rain on Saturday afternoon. If it does, we go back to Taipei after the fort, and the old church and the sunset at the pier both move to Sunday.\nOn Sunday morning the old church holds a religious service and is closed to visitors; it opens only after 2 p.m.\nRemember an umbrella. It is windy at the pier, so better bring a jacket too.\nHistory Club"
+          },
+          "questions": [
+            {
+              "id": "b3l15-reading-card-2-1",
+              "prompt": {
+                "traditional": "要是星期六下雨，星期天他們最可能怎麼安排？",
+                "simplified": "要是星期六下雨，星期天他们最可能怎么安排？",
+                "pinyin": "Yàoshì xīngqíliù xià yǔ, xīngqítiān tāmen zuì kěnéng zěnme ānpái?",
+                "english": "If it rains on Saturday, what are they most likely to do on Sunday?"
+              },
+              "choices": [
+                {
+                  "traditional": "上午看教堂，下午看夕陽",
+                  "simplified": "上午看教堂，下午看夕阳",
+                  "pinyin": "Shàngwǔ kàn jiàotáng, xiàwǔ kàn xīyáng.",
+                  "english": "See the church in the morning and the sunset in the afternoon."
+                },
+                {
+                  "traditional": "下午先看教堂，再看夕陽",
+                  "simplified": "下午先看教堂，再看夕阳",
+                  "pinyin": "Xiàwǔ xiān kàn jiàotáng, zài kàn xīyáng.",
+                  "english": "See the church in the afternoon, then the sunset."
+                },
+                {
+                  "traditional": "下午看紅毛城及老教堂",
+                  "simplified": "下午看红毛城及老教堂",
+                  "pinyin": "Xiàwǔ kàn Hóngmáochéng jí lǎo jiàotáng.",
+                  "english": "See the fort and the old church in the afternoon."
+                },
+                {
+                  "traditional": "早上九點先去龍山寺",
+                  "simplified": "早上九点先去龙山寺",
+                  "pinyin": "Zǎoshàng jiǔ diǎn xiān qù Lóngshān Sì.",
+                  "english": "Go to Longshan Temple first at nine."
+                }
+              ],
+              "key": 1,
+              "why": "Rain moves 參觀老教堂及到碼頭看夕陽 to Sunday, and the church is closed to visitors on Sunday morning (下午兩點以後才開放), so the church comes in the afternoon and the sunset after it. The morning plan ignores the church's Sunday hours, the fort is already done on Saturday (看完紅毛城就回臺北), and nine at Longshan Temple is Saturday's plan.",
+              "focus": {
+                "zh": "及；兩行合起來看",
+                "en": "and (formal); combining two lines"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-07",
+                "B3L15-1-31",
+                "B3L15-1-15"
+              ],
+              "grammarIds": [
+                "B3L15-G04-P393"
+              ]
+            },
+            {
+              "id": "b3l15-reading-card-2-2",
+              "prompt": {
+                "traditional": "不管星期六下不下雨，那天他們一定會參觀哪些地方？",
+                "simplified": "不管星期六下不下雨，那天他们一定会参观哪些地方？",
+                "pinyin": "Bùguǎn xīngqíliù xià bú xià yǔ, nà tiān tāmen yídìng huì cānguān nǎxiē dìfāng?",
+                "english": "Rain or no rain, which places will they certainly visit on Saturday?"
+              },
+              "choices": [
+                {
+                  "traditional": "紅毛城和老教堂",
+                  "simplified": "红毛城和老教堂",
+                  "pinyin": "Hóngmáochéng hé lǎo jiàotáng",
+                  "english": "Fort San Domingo and the old church"
+                },
+                {
+                  "traditional": "龍山寺和老教堂",
+                  "simplified": "龙山寺和老教堂",
+                  "pinyin": "Lóngshān Sì hé lǎo jiàotáng",
+                  "english": "Longshan Temple and the old church"
+                },
+                {
+                  "traditional": "龍山寺和紅毛城",
+                  "simplified": "龙山寺和红毛城",
+                  "pinyin": "Lóngshān Sì hé Hóngmáochéng",
+                  "english": "Longshan Temple and Fort San Domingo"
+                },
+                {
+                  "traditional": "老教堂和碼頭",
+                  "simplified": "老教堂和码头",
+                  "pinyin": "Lǎo jiàotáng hé mǎtóu",
+                  "english": "The old church and the pier"
+                }
+              ],
+              "key": 2,
+              "why": "The morning is Longshan Temple, and rain only changes what comes after the fort (看完紅毛城就回臺北), so the temple and the fort happen either way. The church and the pier are exactly the two stops that move to Sunday if it rains, so any choice with one of them is not certain.",
+              "focus": {
+                "zh": "如果……就……；兩行合起來看",
+                "en": "if…then…; combining two lines"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-1-36",
+                "B1L07-1-10",
+                "B3L06-2-04"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passage",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b3l15-passage-1",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "家鄉的老市場",
+            "simplified": "家乡的老市场",
+            "pinyin": "Jiāxiāng de lǎo shìchǎng",
+            "english": "The Old Market in My Hometown"
+          },
+          "text": {
+            "traditional": "我的家鄉有一座一百多年前蓋的老市場。小時候，我常跟祖母去那裡買菜，聽她跟攤販聊天。後來附近開了好幾家超市，去老市場的人越來越少，屋頂破了也沒有人修理。\n去年，市長打算把老市場改成停車場，很多人都覺得這樣很好，因為附近停車很不方便。我本來也這麼想，直到在網路上看到一張五十年前的照片：市場裡擠滿了人，每個人都笑得很開心。那時候我才體會到，這座市場不只是買菜賣菜的地方，更記錄了好幾十年來大家的生活。\n後來，幾個年輕人積極地跟市長溝通，希望能把市場保留下來。他們找到了經費，請專業人員修好屋頂，同時把一部分的攤位改成書店及咖啡店，其他的攤位還是賣菜、賣水果。現在，週末來這裡的人多得不得了，買完菜的人會順便進書店看看，喝咖啡的年輕人也會帶一把青菜回家。連住在附近的老人也常回來坐坐。祖母說，她簡直不敢相信這就是她以前常去的地方。",
+            "simplified": "我的家乡有一座一百多年前盖的老市场。小时候，我常跟祖母去那里买菜，听她跟摊贩聊天。后来附近开了好几家超市，去老市场的人越来越少，屋顶破了也没有人修理。\n去年，市长打算把老市场改成停车场，很多人都觉得这样很好，因为附近停车很不方便。我本来也这么想，直到在网路上看到一张五十年前的照片：市场里挤满了人，每个人都笑得很开心。那时候我才体会到，这座市场不只是买菜卖菜的地方，更记录了好几十年来大家的生活。\n后来，几个年轻人积极地跟市长沟通，希望能把市场保留下来。他们找到了经费，请专业人员修好屋顶，同时把一部分的摊位改成书店及咖啡店，其他的摊位还是卖菜、卖水果。现在，周末来这里的人多得不得了，买完菜的人会顺便进书店看看，喝咖啡的年轻人也会带一把青菜回家。连住在附近的老人也常回来坐坐。祖母说，她简直不敢相信这就是她以前常去的地方。",
+            "pinyin": "Wǒ de jiāxiāng yǒu yí zuò yì bǎi duō nián qián gài de lǎo shìchǎng. Xiǎoshíhòu, wǒ cháng gēn zǔmǔ qù nàlǐ mǎi cài, tīng tā gēn tānfàn liáotiān. Hòulái fùjìn kāi le hǎojǐ jiā chāoshì, qù lǎo shìchǎng de rén yuè lái yuè shǎo, wūdǐng pò le yě méiyǒu rén xiūlǐ. Qùnián, shìzhǎng dǎsuàn bǎ lǎo shìchǎng gǎi chéng tíngchēchǎng, hěn duō rén dōu juéde zhèyàng hěn hǎo, yīnwèi fùjìn tíngchē hěn bù fāngbiàn. Wǒ běnlái yě zhème xiǎng, zhídào zài wǎnglù shàng kàn dào yì zhāng wǔshí nián qián de zhàopiàn: shìchǎng lǐ jǐ mǎn le rén, měi ge rén dōu xiào de hěn kāixīn. Nà shíhòu wǒ cái tǐhuì dào, zhè zuò shìchǎng bù zhǐ shì mǎi cài mài cài de dìfāng, gèng jìlù le hǎo jǐshí nián lái dàjiā de shēnghuó. Hòulái, jǐ ge niánqīng rén jījí de gēn shìzhǎng gōutōng, xīwàng néng bǎ shìchǎng bǎoliú xiàlái. Tāmen zhǎo dào le jīngfèi, qǐng zhuānyè rényuán xiū hǎo wūdǐng, tóngshí bǎ yí bùfèn de tānwèi gǎi chéng shūdiàn jí kāfēi diàn, qítā de tānwèi háishì mài cài, mài shuǐguǒ. Xiànzài, zhōumò lái zhèlǐ de rén duō de bùdéliǎo, mǎi wán cài de rén huì shùnbiàn jìn shūdiàn kàn kan, hē kāfēi de niánqīng rén yě huì dài yì bǎ qīngcài huí jiā. Lián zhù zài fùjìn de lǎorén yě cháng huílái zuò zuo. Zǔmǔ shuō, tā jiǎnzhí bù gǎn xiāngxìn zhè jiù shì tā yǐqián cháng qù de dìfāng.",
+            "english": "My hometown has an old market built over a hundred years ago. As a child I often went there with my grandmother to buy vegetables and listened to her chatting with the stallholders. Later several supermarkets opened nearby, fewer and fewer people went to the old market, and when the roof broke nobody repaired it.\nLast year the mayor planned to turn the old market into a car park, and many people thought that was a good idea, because parking nearby is very difficult. I thought so too, until I saw a photo online from fifty years ago: the market was packed, and everyone was smiling. Only then did I realize that the market is not just a place to buy and sell vegetables; even more, it records decades of everyone's lives.\nLater a few young people actively talked with the mayor, hoping to keep the market. They found funding, had professionals repair the roof, and at the same time turned some of the stalls into bookshops and cafés, while the other stalls still sell vegetables and fruit. Now the place is incredibly busy at weekends: people who have bought their vegetables drop into the bookshop on the way, and young people having coffee take a bunch of greens home. Even old people living nearby often come back to sit for a while. My grandmother says she can practically not believe this is the place she used to go to."
+          },
+          "questions": [
+            {
+              "id": "b3l15-passage-1-1",
+              "prompt": {
+                "traditional": "寫這篇文章的人為什麼不再覺得停車場是好主意？",
+                "simplified": "写这篇文章的人为什么不再觉得停车场是好主意？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén wèishénme bú zài juéde tíngchēchǎng shì hǎo zhǔyì?",
+                "english": "Why does the writer stop thinking the car park is a good idea?"
+              },
+              "choices": [
+                {
+                  "traditional": "想起小時候跟祖母來買菜",
+                  "simplified": "想起小时候跟祖母来买菜",
+                  "pinyin": "Xiǎng qǐ xiǎoshíhòu gēn zǔmǔ lái mǎi cài.",
+                  "english": "They remembered shopping there with their grandmother."
+                },
+                {
+                  "traditional": "年輕人找到了修理的經費",
+                  "simplified": "年轻人找到了修理的经费",
+                  "pinyin": "Niánqīng rén zhǎo dào le xiūlǐ de jīngfèi.",
+                  "english": "Young people found money for repairs."
+                },
+                {
+                  "traditional": "看到了市場現在熱鬧的樣子",
+                  "simplified": "看到了市场现在热闹的样子",
+                  "pinyin": "Kàn dào le shìchǎng xiànzài rènào de yàngzi.",
+                  "english": "They saw how lively the market is now."
+                },
+                {
+                  "traditional": "看到了市場以前熱鬧的樣子",
+                  "simplified": "看到了市场以前热闹的样子",
+                  "pinyin": "Kàn dào le shìchǎng yǐqián rènào de yàngzi.",
+                  "english": "They saw how lively the market used to be."
+                }
+              ],
+              "key": 3,
+              "why": "我本來也這麼想，直到…看到一張五十年前的照片…那時候我才體會到: the photo of the packed, smiling market of the PAST changed the writer's mind. The market is lively NOW only after it was saved, long after the change of mind; the childhood visits come earlier and did not stop the writer agreeing with the car park; and the funding comes later too.",
+              "focus": {
+                "zh": "直到……才……；看法的改變",
+                "en": "not until…; a change of mind"
+              },
+              "lesson": 10,
+              "wordIds": [
+                "B3L15-1-24",
+                "B3L13-1-03"
+              ],
+              "grammarIds": [
+                "B3L10-G01-P262"
+              ]
+            },
+            {
+              "id": "b3l15-passage-1-2",
+              "prompt": {
+                "traditional": "老市場現在是什麼樣子？",
+                "simplified": "老市场现在是什么样子？",
+                "pinyin": "Lǎo shìchǎng xiànzài shì shénme yàngzi?",
+                "english": "What is the old market like now?"
+              },
+              "choices": [
+                {
+                  "traditional": "除了買菜，也能買書喝咖啡",
+                  "simplified": "除了买菜，也能买书喝咖啡",
+                  "pinyin": "Chúle mǎi cài, yě néng mǎi shū hē kāfēi.",
+                  "english": "Besides buying vegetables, you can buy books and have coffee."
+                },
+                {
+                  "traditional": "除了買菜，也能在裡面停車",
+                  "simplified": "除了买菜，也能在里面停车",
+                  "pinyin": "Chúle mǎi cài, yě néng zài lǐmiàn tíngchē.",
+                  "english": "Besides buying vegetables, you can park inside."
+                },
+                {
+                  "traditional": "屋頂修好了，攤位都沒變",
+                  "simplified": "屋顶修好了，摊位都没变",
+                  "pinyin": "Wūdǐng xiū hǎo le, tānwèi dōu méi biàn.",
+                  "english": "The roof is fixed, and the stalls are unchanged."
+                },
+                {
+                  "traditional": "不再賣菜，全改成書店咖啡店",
+                  "simplified": "不再卖菜，全改成书店咖啡店",
+                  "pinyin": "Bú zài mài cài, quán gǎi chéng shūdiàn kāfēi diàn.",
+                  "english": "It no longer sells vegetables; it is all bookshops and cafés."
+                }
+              ],
+              "key": 0,
+              "why": "Only 一部分的攤位 became 書店及咖啡店, while 其他的攤位還是賣菜: shoppers can still buy vegetables and now also books and coffee. So \"no more vegetables\" misses 一部分; the car park was only the mayor's plan and was never built; and the stalls did change.",
+              "focus": {
+                "zh": "及；細節",
+                "en": "and (formal); a detail"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-07",
+                "B3L11-2-19",
+                "B2L05-2-15"
+              ],
+              "grammarIds": [
+                "B3L15-G04-P393"
+              ]
+            },
+            {
+              "id": "b3l15-passage-1-3",
+              "prompt": {
+                "traditional": "這篇文章主要想說什麼？",
+                "simplified": "这篇文章主要想说什么？",
+                "pinyin": "Zhè piān wénzhāng zhǔyào xiǎng shuō shénme?",
+                "english": "What is this passage mainly saying?"
+              },
+              "choices": [
+                {
+                  "traditional": "只要有經費，老市場就能保留",
+                  "simplified": "只要有经费，老市场就能保留",
+                  "pinyin": "Zhǐyào yǒu jīngfèi, lǎo shìchǎng jiù néng bǎoliú.",
+                  "english": "With funding, an old market can always be kept."
+                },
+                {
+                  "traditional": "老地方換新做法，也能熱鬧起來",
+                  "simplified": "老地方换新做法，也能热闹起来",
+                  "pinyin": "Lǎo dìfāng huàn xīn zuòfǎ, yě néng rènào qǐlái.",
+                  "english": "An old place run in a new way can come alive again."
+                },
+                {
+                  "traditional": "老地方不改做法，也能熱鬧起來",
+                  "simplified": "老地方不改做法，也能热闹起来",
+                  "pinyin": "Lǎo dìfāng bù gǎi zuòfǎ, yě néng rènào qǐlái.",
+                  "english": "An old place can come alive again without changing."
+                },
+                {
+                  "traditional": "老照片能讓人想起以前的生活",
+                  "simplified": "老照片能让人想起以前的生活",
+                  "pinyin": "Lǎo zhàopiàn néng ràng rén xiǎng qǐ yǐqián de shēnghuó.",
+                  "english": "Old photos remind people of life in the past."
+                }
+              ],
+              "key": 1,
+              "why": "The market was saved by repairs AND new shops, and now old and young use it together, so the grandmother 簡直不敢相信 it is the same place. It did change (stalls became 書店及咖啡店), so \"without changing\" is wrong; funding is only one step; and the photo only explains why the writer changed their mind.",
+              "focus": {
+                "zh": "簡直；主旨",
+                "en": "practically; the main idea"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-1-12",
+                "B3L15-1-01",
+                "B3L15-1-21"
+              ],
+              "grammarIds": [
+                "B3L15-G01-P383"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3l15-passage-2",
+          "kind": "reading",
+          "format": "passage",
+          "title": {
+            "traditional": "祖父的箱子",
+            "simplified": "祖父的箱子",
+            "pinyin": "Zǔfù de xiāngzi",
+            "english": "Grandfather's Box"
+          },
+          "text": {
+            "traditional": "去年暑假，我幫父母整理祖父留下來的老房子，在櫃子裡找到一個木頭箱子。箱子裡有好幾十張老照片及一本日記，日記裡的字很多我都看不懂。我本來想把這些東西丟掉，可是父親說，這些物品也許賣不了多少錢，卻是祖父一生的記錄。\n聽了父親的話，我帶著日記，去請教大學裡一位教歷史的教授。教授看了以後十分驚訝。他說，日記裡記錄了六十年前我們這個地方的生活情形，有的事連書上都沒寫過。例如河上那座古老的橋，大家都以為是當時的市長蓋的，事實上是住在附近的人自己出錢、出力蓋起來的。知道這段歷史以後，當地人都覺得祖先很了不起。\n後來，教授帶著學生把日記整理出來，同時去找當地的老人，請他們說說日記裡寫到的事。現在，這本日記放在當地的博物館裡，常常有人特地來看。我常想，要是那天真的把箱子丟了，這段歷史可能就永遠找不回來了。",
+            "simplified": "去年暑假，我帮父母整理祖父留下来的老房子，在柜子里找到一个木头箱子。箱子里有好几十张老照片及一本日记，日记里的字很多我都看不懂。我本来想把这些东西丢掉，可是父亲说，这些物品也许卖不了多少钱，却是祖父一生的记录。\n听了父亲的话，我带着日记，去请教大学里一位教历史的教授。教授看了以后十分惊讶。他说，日记里记录了六十年前我们这个地方的生活情形，有的事连书上都没写过。例如河上那座古老的桥，大家都以为是当时的市长盖的，事实上是住在附近的人自己出钱、出力盖起来的。知道这段历史以后，当地人都觉得祖先很了不起。\n后来，教授带着学生把日记整理出来，同时去找当地的老人，请他们说说日记里写到的事。现在，这本日记放在当地的博物馆里，常常有人特地来看。我常想，要是那天真的把箱子丢了，这段历史可能就永远找不回来了。",
+            "pinyin": "Qùnián shǔjià, wǒ bāng fùmǔ zhěnglǐ zǔfù liú xiàlái de lǎo fángzi, zài guìzi lǐ zhǎo dào yí ge mùtou xiāngzi. Xiāngzi lǐ yǒu hǎo jǐshí zhāng lǎo zhàopiàn jí yì běn rìjì, rìjì lǐ de zì hěn duō wǒ dōu kàn bù dǒng. Wǒ běnlái xiǎng bǎ zhèxiē dōngxi diū diào, kěshì fùqīn shuō, zhèxiē wùpǐn yěxǔ mài bù liǎo duōshǎo qián, què shì zǔfù yìshēng de jìlù. Tīng le fùqīn de huà, wǒ dài zhe rìjì, qù qǐngjiào dàxué lǐ yí wèi jiāo lìshǐ de jiàoshòu. Jiàoshòu kàn le yǐhòu shífēn jīngyà. Tā shuō, rìjì lǐ jìlù le liùshí nián qián wǒmen zhège dìfāng de shēnghuó qíngxíng, yǒu de shì lián shū shàng dōu méi xiě guo. Lìrú hé shàng nà zuò gǔlǎo de qiáo, dàjiā dōu yǐwéi shì dāngshí de shìzhǎng gài de, shìshíshàng shì zhù zài fùjìn de rén zìjǐ chū qián, chūlì gài qǐlái de. Zhīdào zhè duàn lìshǐ yǐhòu, dāngdì rén dōu juéde zǔxiān hěn liǎobùqǐ. Hòulái, jiàoshòu dài zhe xuéshēng bǎ rìjì zhěnglǐ chūlái, tóngshí qù zhǎo dāngdì de lǎorén, qǐng tāmen shuō shuo rìjì lǐ xiě dào de shì. Xiànzài, zhè běn rìjì fàng zài dāngdì de bówùguǎn lǐ, chángcháng yǒu rén tèdì lái kàn. Wǒ cháng xiǎng, yàoshì nà tiān zhēn de bǎ xiāngzi diū le, zhè duàn lìshǐ kěnéng jiù yǒngyuǎn zhǎo bù huílái le.",
+            "english": "Last summer I helped my parents sort out the old house my grandfather left, and found a wooden box in a cupboard. In it were dozens of old photos and a diary; I couldn't read much of the writing in the diary. I meant to throw it all away, but my father said these things might not sell for much, yet they were the record of my grandfather's whole life.\nAfter hearing what my father said, I took the diary to a history professor at a university. The professor was very surprised. He said the diary recorded how people lived here sixty years ago, and some of it had never been written in any book. For example, everyone thought the old bridge over the river had been built by the mayor of that time; in fact the people living nearby paid for it and built it themselves. Since learning this history, local people have felt their ancestors were remarkable.\nLater the professor and his students put the diary in order, and at the same time went to the old people of the area to ask them about the things the diary mentions. Now the diary is in the local museum, and people often come specially to see it. I often think that if I really had thrown the box away that day, this piece of history might never have been found again."
+          },
+          "questions": [
+            {
+              "id": "b3l15-passage-2-1",
+              "prompt": {
+                "traditional": "知道橋的歷史以後，當地人為什麼覺得祖先很了不起？",
+                "simplified": "知道桥的历史以后，当地人为什么觉得祖先很了不起？",
+                "pinyin": "Zhīdào qiáo de lìshǐ yǐhòu, dāngdì rén wèishénme juéde zǔxiān hěn liǎobùqǐ?",
+                "english": "After learning the bridge's history, why do local people think their ancestors were remarkable?"
+              },
+              "choices": [
+                {
+                  "traditional": "替當時的市長出力蓋了橋",
+                  "simplified": "替当时的市长出力盖了桥",
+                  "pinyin": "Tì dāngshí de shìzhǎng chūlì gài le qiáo.",
+                  "english": "They did the work on the bridge for the mayor of the time."
+                },
+                {
+                  "traditional": "花了六十年才把橋蓋好",
+                  "simplified": "花了六十年才把桥盖好",
+                  "pinyin": "Huā le liùshí nián cái bǎ qiáo gài hǎo.",
+                  "english": "They took sixty years to finish the bridge."
+                },
+                {
+                  "traditional": "沒用市長的錢，自己蓋了橋",
+                  "simplified": "没用市长的钱，自己盖了桥",
+                  "pinyin": "Méi yòng shìzhǎng de qián, zìjǐ gài le qiáo.",
+                  "english": "They built the bridge themselves, without the mayor's money."
+                },
+                {
+                  "traditional": "蓋橋的事被寫進了很多書",
+                  "simplified": "盖桥的事被写进了很多书",
+                  "pinyin": "Gài qiáo de shì bèi xiě jìn le hěn duō shū.",
+                  "english": "The building of the bridge went into many books."
+                }
+              ],
+              "key": 2,
+              "why": "Everyone 以為 the mayor built the bridge, but 事實上 the people nearby gave the money and the work themselves, and that is the history that makes them think highly of their ancestors. Working FOR the mayor keeps the wrong belief, sixty years is how old the diary's record is, and the story was 連書上都沒寫過.",
+              "focus": {
+                "zh": "事實上；以為；原因",
+                "en": "in fact; thought wrongly; a reason"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-06",
+                "B2L08-2-03",
+                "B3L05-2-32"
+              ]
+            },
+            {
+              "id": "b3l15-passage-2-2",
+              "prompt": {
+                "traditional": "寫這篇文章的人對箱子裡的東西，看法有什麼改變？",
+                "simplified": "写这篇文章的人对箱子里的东西，看法有什么改变？",
+                "pinyin": "Xiě zhè piān wénzhāng de rén duì xiāngzi lǐ de dōngxi, kànfǎ yǒu shénme gǎibiàn?",
+                "english": "How does the writer's view of the things in the box change?"
+              },
+              "choices": [
+                {
+                  "traditional": "從看不懂到全部看懂了",
+                  "simplified": "从看不懂到全部看懂了",
+                  "pinyin": "Cóng kàn bù dǒng dào quánbù kàn dǒng le.",
+                  "english": "From not understanding it to understanding it all."
+                },
+                {
+                  "traditional": "從想丟掉到想把它賣掉",
+                  "simplified": "从想丢掉到想把它卖掉",
+                  "pinyin": "Cóng xiǎng diū diào dào xiǎng bǎ tā mài diào.",
+                  "english": "From wanting to throw it out to wanting to sell it."
+                },
+                {
+                  "traditional": "從想留著到願意送出去",
+                  "simplified": "从想留着到愿意送出去",
+                  "pinyin": "Cóng xiǎng liú zhe dào yuànyì sòng chūqù.",
+                  "english": "From wanting to keep it to being willing to give it away."
+                },
+                {
+                  "traditional": "從沒有用變成很重要",
+                  "simplified": "从没有用变成很重要",
+                  "pinyin": "Cóng méiyǒu yòng biàn chéng hěn zhòngyào.",
+                  "english": "From useless to very important."
+                }
+              ],
+              "key": 3,
+              "why": "At first 我本來想把這些東西丟掉; at the end 要是…丟了，這段歷史可能就永遠找不回來了, so the box went from rubbish to something precious. The professor read the diary, not the writer; the father said it would NOT sell for much; and the writer never wanted to keep it at first.",
+              "focus": {
+                "zh": "本來……，可是……；看法的改變",
+                "en": "at first…, but…; a change of view"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L15-2-09",
+                "B2L02-1-16",
+                "B2L15-1-23"
+              ]
+            },
+            {
+              "id": "b3l15-passage-2-3",
+              "prompt": {
+                "traditional": "這篇文章主要想說什麼？",
+                "simplified": "这篇文章主要想说什么？",
+                "pinyin": "Zhè piān wénzhāng zhǔyào xiǎng shuō shénme?",
+                "english": "What is this passage mainly saying?"
+              },
+              "choices": [
+                {
+                  "traditional": "家裡的舊東西也可能是地方的歷史",
+                  "simplified": "家里的旧东西也可能是地方的历史",
+                  "pinyin": "Jiālǐ de jiù dōngxi yě kěnéng shì dìfāng de lìshǐ.",
+                  "english": "Old things at home may be part of a place's history."
+                },
+                {
+                  "traditional": "地方的歷史都寫在書上了",
+                  "simplified": "地方的历史都写在书上了",
+                  "pinyin": "Dìfāng de lìshǐ dōu xiě zài shū shàng le.",
+                  "english": "A place's history is all written in books."
+                },
+                {
+                  "traditional": "家裡的舊東西都能賣很多錢",
+                  "simplified": "家里的旧东西都能卖很多钱",
+                  "pinyin": "Jiālǐ de jiù dōngxi dōu néng mài hěn duō qián.",
+                  "english": "Old things at home can all sell for a lot."
+                },
+                {
+                  "traditional": "大家知道的歷史常常是錯的",
+                  "simplified": "大家知道的历史常常是错的",
+                  "pinyin": "Dàjiā zhīdào de lìshǐ chángcháng shì cuò de.",
+                  "english": "The history people know is often wrong."
+                }
+              ],
+              "key": 0,
+              "why": "One family's box held a piece of the town's past (the bridge), which the professor used alongside old people's memories (同時去找當地的老人), and it now sits in the museum. Its value is history, not money: the father says 也許賣不了多少錢; the diary holds things 連書上都沒寫過, so not all history is in books; and one wrong belief does not make history often wrong.",
+              "focus": {
+                "zh": "同時；主旨",
+                "en": "at the same time; the main idea"
+              },
+              "lesson": 15,
+              "wordIds": [
+                "B3L13-1-03",
+                "B3L15-2-03",
+                "B1L13-2-12"
+              ],
+              "grammarIds": [
+                "B3L15-G03-P392"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
