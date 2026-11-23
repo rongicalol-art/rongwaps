@@ -339,3 +339,18 @@ The script's default engine is the older local Qwen studio voices (Vivian, Dylan
    (uploads to R2 under `lesson-test-studio/v1/`, merges the batch's clips and voices into the receipt).
 4. Export: `npm run lesson-tests:export -- --strict` (fails if a spoken line has no recording), then commit
    the content, receipt and pack together.
+
+## The mock test's pool
+
+Every question here is also a question of the TOCFL mock test (Library → TOCFL progress → Mock test). Nothing is
+exported for it: the app builds the pool from these packs when the mock test opens
+(`src/utils/mockTest/poolLabels.ts`).
+
+- **Labels come from the lesson**: band and level from where the lesson sits in the books, the section from the
+  item's shape (`A:listening:picture-hear`, `B:reading:cloze`, …), the first difficulty from how far into its band the
+  lesson is, on the scale the official score tables follow (`docs/reference/TOCFL.md`, "How the tests are scored").
+- **A slot's versions never meet**: one mock test shows at most one version of a slot.
+- **Adding questions** needs no code: a new lesson test joins the pool by itself. A band's fixed paper opens once the
+  pool holds a full paper for it (`bandOpen`), and a paper's make-up is the table in `src/utils/mockTest/recipes.ts`.
+- **See the whole pool**: `npm run mock-test:pool` writes a page (`output/mock-test-pool/`) with the totals, what each band's
+  full paper needs against what the pool has, the questions per level and every question behind filters.

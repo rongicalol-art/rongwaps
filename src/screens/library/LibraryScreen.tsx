@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import { Suspense, lazy, useCallback, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import {
@@ -34,6 +35,9 @@ import { ContextMenu, type ContextMenuAction, type MenuPoint } from '../../lib/w
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
+
+const loadMockTest = () => import('../lesson-test');
+const MockTestWindow = lazy(() => loadMockTest().then((module) => ({ default: module.MockTestWindow })));
 
 interface LibraryScreenProps {
   onStartReview: () => void;
@@ -121,6 +125,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
     [isStarred, toggleFavorite, handleDeleteCustomCard]
   );
 
+  const [mockTestOpen, setMockTestOpen] = useState(false);
   const [menu, setMenu] = useState<{ kind: 'folder' | 'card'; id: string; name: string; point: MenuPoint } | null>(null);
   const closeMenu = useCallback(() => setMenu(null), []);
 
@@ -209,7 +214,13 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         >
           <LibraryHomeView
             reviewCard={<ReviewHubCard overview={overview} onStartReview={onStartReview} onStartMoreReview={onStartMoreReview} onNavigateToPath={onNavigateToPath} />}
-            progressCard={<LibraryTocflProgressCard readiness={tocflReadiness} />}
+            progressCard={(
+              <LibraryTocflProgressCard
+                readiness={tocflReadiness}
+                onMockTest={currentUser || import.meta.env.DEV ? () => setMockTestOpen(true) : undefined}
+                onMockTestIntent={() => { void loadMockTest().catch(() => {}); }}
+              />
+            )}
             collections={allCollections}
             recentItems={recentItems}
             searchQuery={searchQuery}
@@ -392,6 +403,17 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
             </ActionButton>
           </div>
         </div>
+      )}
+
+      {createPortal(
+        <AnimatePresence>
+          {mockTestOpen && (
+            <Suspense key="mock-test" fallback={null}>
+              <MockTestWindow onClose={() => setMockTestOpen(false)} />
+            </Suspense>
+          )}
+        </AnimatePresence>,
+        document.body,
       )}
     </div>
   );

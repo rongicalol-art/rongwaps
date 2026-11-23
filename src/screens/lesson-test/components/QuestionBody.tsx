@@ -75,13 +75,15 @@ export interface QuestionBodyProps {
   /** The Script sheet (Fix round, after Check). */
   scriptOpen?: boolean;
   onCloseScript?: () => void;
+  /** The test: the recording has played all its times (or the screen has none), so the time to answer starts. */
+  onAudioDone?: () => void;
 }
 
 /**
  * One screen of the test, one column at every size like TOCFL's computer test: the instruction, then the
  * recording, picture or text, then the answers, all one width so their edges line up.
  */
-export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, turnGap, script, audioReady, firstNumber, onAnswer, scriptOpen = false, onCloseScript }: QuestionBodyProps) {
+export function QuestionBody({ item, questionIds, planned, answers, checked, mode, sounds, turnGap, script, audioReady, firstNumber, onAnswer, scriptOpen = false, onCloseScript, onAudioDone }: QuestionBodyProps) {
   const screenKey = questionIds.join(',');
   // The screen's questions: one, or every question of a recording (the Fix round keeps only the missed ones).
   const questions = useMemo(() => {
@@ -93,6 +95,8 @@ export function QuestionBody({ item, questionIds, planned, answers, checked, mod
   const steps = useMemo(() => listeningSteps(item, questions, planned.orders, sounds, script, turnGap), [item, questions, planned.orders, sounds, script, turnGap]);
   const audio = useTestAudio(steps, `${mode}:${item.id}:${screenKey}`, mode, audioReady, item.kind === 'dialogue' && item.plays === 1 ? 1 : 2);
   const reduceMotion = useReducedMotion();
+  const audioDone = mode === 'exam' && (steps.length === 0 || (!audio.playing && !audio.failed && audio.maxPlays !== null && audio.plays >= audio.maxPlays));
+  useEffect(() => { if (audioDone) onAudioDone?.(); }, [audioDone, onAudioDone]);
   // A question's number on the test (the Fix round may show only the missed one of a recording's questions).
   const numberOf = useCallback(
     (entry: LessonTestQuestion) => firstNumber + Math.max(0, item.questions.findIndex((other) => other.id === entry.id)),

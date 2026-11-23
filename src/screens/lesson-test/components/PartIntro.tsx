@@ -39,7 +39,8 @@ export interface PartIntroLoading {
 
 interface PartIntroProps {
   part: LessonTestPart;
-  lessonId: number;
+  /** The test's name, e.g. "Lesson 4 test". */
+  title: string;
   /** Set while the audio downloads: the intro is the loading screen, and a tap can't skip it. */
   loading: PartIntroLoading | null;
   /** Starts the part; called again by a tap, Space or Enter (each call is the same "start"). */
@@ -67,12 +68,12 @@ function AudioWait({ loading }: { loading: PartIntroLoading }) {
 }
 
 /**
- * Each part opens on the test's own canvas, under its header: the rocket flies in and keeps drifting, "Lesson N
- * test" pops, and the part's name rises under it. While the recordings download it is also the loading screen
+ * Each part opens on the test's own canvas, under its header: the rocket flies in and keeps drifting, the test's
+ * name pops, and the part's name rises under it. While the recordings download it is also the loading screen
  * (a bar, or Try again, once it has had its time); when they're ready, the whole intro fades out in place as
  * the first question rises in (the parent's AnimatePresence plays the exit). Only transforms and opacity move, so slow phones keep up.
  */
-export function PartIntro({ part, lessonId, loading, onDone }: PartIntroProps) {
+export function PartIntro({ part, title: testTitle, loading, onDone }: PartIntroProps) {
   const reduceMotion = useReducedMotion();
   const done = useRef(onDone);
   done.current = onDone;
@@ -113,7 +114,7 @@ export function PartIntro({ part, lessonId, loading, onDone }: PartIntroProps) {
         </div>
       </motion.div>
       <motion.h1 variants={pick(title)} className="text-4xl font-black leading-tight text-ui-ink-strong md:text-6xl">
-        Lesson {lessonId} test
+        {testTitle}
       </motion.h1>
       <motion.div variants={pick(rise(0.36))} className="relative mt-3">
         <p className="text-xl font-black text-ui-muted-strong md:text-2xl">{LESSON_TEST_PARTS.find((entry) => entry.part === part)?.label}</p>

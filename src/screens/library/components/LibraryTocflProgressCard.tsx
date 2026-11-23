@@ -1,7 +1,15 @@
-import { SectionEyebrow } from '../../../lib/widgets';
+import { ActionButton, SectionEyebrow } from '../../../lib/widgets';
 import type { TocflReadiness } from '../../../utils/lesson/tocflReadiness';
 
-export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadiness | null }) {
+interface LibraryTocflProgressCardProps {
+  readiness: TocflReadiness | null;
+  /** Opens the TOCFL mock test; left out, the card has no button. */
+  onMockTest?: () => void;
+  /** The pointer is on the button: load the test's code ahead. */
+  onMockTestIntent?: () => void;
+}
+
+export function LibraryTocflProgressCard({ readiness, onMockTest, onMockTestIntent }: LibraryTocflProgressCardProps) {
   if (!readiness) {
     return (
       <section
@@ -50,6 +58,11 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
           );
         })}
       </ol>
+      {onMockTest && (
+        <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" className="mt-4" onClick={onMockTest} onPointerEnter={onMockTestIntent}>
+          Mock test
+        </ActionButton>
+      )}
     </section>
   );
 }

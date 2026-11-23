@@ -12,13 +12,15 @@ interface TestDockProps {
   secondary?: { label: string; onPress: () => void };
   /** Re-runs the rise when it changes (each new screen). */
   riseKey?: string;
+  /** Sits above the action, in the same dock (the mock test's time-to-answer bar). */
+  above?: React.ReactNode;
   /** Covered (the booklet is open over it): Space is not this dock's. */
   paused?: boolean;
   className?: string;
 }
 
 /** The test's bottom action: one big button on the canvas fade, like the practice docks. */
-export function TestDock({ label, onPress, secondary, riseKey, paused = false, className }: TestDockProps) {
+export function TestDock({ label, onPress, secondary, above, riseKey, paused = false, className }: TestDockProps) {
   const reduceMotion = useReducedMotion();
   useEffect(() => {
     if (paused) return undefined;
@@ -38,6 +40,7 @@ export function TestDock({ label, onPress, secondary, riseKey, paused = false, c
 
   return (
     <div className={cn('pointer-events-none absolute inset-x-0 bottom-0 z-40 bg-gradient-to-t from-ui-practice-canvas from-70% to-transparent px-4 pb-sheet-safe pt-6', className)}>
+      {above && <div className="mx-auto mb-3 w-full max-w-md">{above}</div>}
       <motion.div
         key={riseKey}
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}

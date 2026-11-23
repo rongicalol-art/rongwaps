@@ -36,6 +36,7 @@
     "content:export": "tsx scripts/content/exportAuthoredContent.ts",
     "content:validate": "tsx scripts/content/validateLessons.ts",
     "lesson-tests:export": "tsx scripts/content/exportLessonTests.ts",
+    "mock-test:pool": "tsx scripts/content/mockTestPoolReport.ts",
     "lesson-tests:audio:publish": "node --import tsx scripts/audio/publishLessonTestAudio.ts",
     "vocab:simple": "tsx scripts/content/applySimpleDefinitions.ts",
     "vocab:simple:lint": "tsx scripts/content/lintSimpleDefinitions.ts",

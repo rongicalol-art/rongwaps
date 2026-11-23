@@ -97,20 +97,28 @@ function bankOrderFor(bankSize: number, keys: number[], rng: QuizRng): number[] 
   return order;
 }
 
-export function planLessonTest(lesson: LessonTestLesson, history: LessonTestHistory, seed: string): LessonTestPlan {
-  const rng = createQuizRng(`${lesson.key}:${seed}`);
+/**
+ * Plans single items for one run: the order of each question's choices (the right answer's letter spread evenly
+ * over the run) and a paragraph bank's order. Shared by lesson tests and mock tests.
+ */
+export function createItemPlanner(rng: QuizRng): (slotId: string, part: LessonTestPart, item: LessonTestItem) => PlannedItem {
   const deal = positionDealer(rng);
-  const items = lesson.slots.map((slot): PlannedItem => {
-    const item = pickVersion(slot, lesson.lessonId, history, rng);
+  return (slotId, part, item) => {
     const orders: Record<string, number[]> = {};
     for (const question of item.questions) {
       if (!question.choices) continue;
       orders[question.id] = orderWithKeyAt(question.choices.length, question.key, deal(question.choices.length), rng);
     }
-    const planned: PlannedItem = { slotId: slot.id, part: slot.part, itemId: item.id, orders };
+    const planned: PlannedItem = { slotId, part, itemId: item.id, orders };
     if (item.kind === 'paragraph-bank') planned.bankOrder = bankOrderFor(item.bank.length, item.questions.map((q) => q.key), rng);
     return planned;
-  });
+  };
+}
+
+export function planLessonTest(lesson: LessonTestLesson, history: LessonTestHistory, seed: string): LessonTestPlan {
+  const rng = createQuizRng(`${lesson.key}:${seed}`);
+  const planItem = createItemPlanner(rng);
+  const items = lesson.slots.map((slot) => planItem(slot.id, slot.part, pickVersion(slot, lesson.lessonId, history, rng)));
   // TOCFL order: every listening question before reading.
   items.sort((a, b) => (a.part === b.part ? 0 : a.part === 'listening' ? -1 : 1));
   return { key: lesson.key, seed, items };
@@ -121,8 +129,15 @@ export function lessonTestQuestionCount(lesson: LessonTestLesson): number {
   return lesson.slots.reduce((sum, slot) => sum + (slot.versions[0]?.questions.length ?? 0), 0);
 }
 
+/** A test's questions by item id: a lesson's own, or any set a mock test draws from. */
+export type TestItemIndex = ReadonlyMap<string, LessonTestItem>;
+
 export function lessonItemIndex(lesson: LessonTestLesson): Map<string, LessonTestItem> {
   return new Map(lesson.slots.flatMap((slot) => slot.versions.map((item) => [item.id, item] as const)));
+}
+
+function itemIndexOf(source: LessonTestLesson | TestItemIndex): TestItemIndex {
+  return 'slots' in source ? lessonItemIndex(source) : source;
 }
 
 /**
@@ -130,8 +145,12 @@ export function lessonItemIndex(lesson: LessonTestLesson): Map<string, LessonTes
  * points at choices that exist (a pack update can drop a choice). The last test can be read back only then.
  */
 export function planFitsLesson(lesson: LessonTestLesson, plan: { items?: unknown } | undefined): plan is LessonTestPlan {
+  return planFitsItems(lessonItemIndex(lesson), plan);
+}
+
+/** The same check against any set of questions (a mock test's pool). */
+export function planFitsItems(byId: TestItemIndex, plan: { items?: unknown } | undefined): plan is LessonTestPlan {
   if (!plan || !Array.isArray(plan.items)) return false;
-  const byId = lessonItemIndex(lesson);
   const fits = (order: unknown, size: number) => Array.isArray(order) && order.length === size && order.every((index) => Number.isInteger(index) && index >= 0 && index < size);
   return (plan.items as PlannedItem[]).every((planned) => {
     const item = byId.get(planned?.itemId);
@@ -145,8 +164,8 @@ export function planFitsLesson(lesson: LessonTestLesson, plan: { items?: unknown
  * Screens in order: paragraphs, cloze passages and a recording's questions (it plays once, so all of them are on
  * screen while it plays, as in the TOCFL booklet) are one screen; other items show one question each.
  */
-export function lessonTestScreens(lesson: LessonTestLesson, plan: LessonTestPlan): LessonTestScreen[] {
-  const byId = lessonItemIndex(lesson);
+export function lessonTestScreens(source: LessonTestLesson | TestItemIndex, plan: LessonTestPlan): LessonTestScreen[] {
+  const byId = itemIndexOf(source);
   return plan.items.flatMap((planned) => {
     const item = byId.get(planned.itemId);
     if (!item) return [];
@@ -166,8 +185,8 @@ export interface LessonTestScore {
 }
 
 /** Score answers (question id → original choice index); unanswered questions count as missed. */
-export function scoreLessonTest(lesson: LessonTestLesson, plan: LessonTestPlan, answers: Record<string, number>): LessonTestScore {
-  const byId = lessonItemIndex(lesson);
+export function scoreLessonTest(source: LessonTestLesson | TestItemIndex, plan: LessonTestPlan, answers: Record<string, number>): LessonTestScore {
+  const byId = itemIndexOf(source);
   const score: LessonTestScore = { correct: 0, total: 0, listening: [0, 0], reading: [0, 0], missed: [] };
   for (const planned of plan.items) {
     const item = byId.get(planned.itemId);

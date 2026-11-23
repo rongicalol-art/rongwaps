@@ -19,6 +19,7 @@ import {
 } from '../utils/sync/cloudMetadata';
 import { mergeLessonProgress } from '../utils/lesson/lessonCompletion';
 import { mergeLessonTests } from '../store/slices/lessonTestSlice';
+import { mergeMockTests } from '../store/slices/mockTestSlice';
 
 export interface UseCloudSyncFetchOptions {
   currentUser: User | null;
@@ -95,6 +96,7 @@ export function useCloudSyncFetch({
         useAppStore.getState().resetGrammarProgress();
         useAppStore.getState().resetLessonProgress();
         useAppStore.getState().resetLessonTests();
+        useAppStore.getState().resetMockTests();
         // Nothing local is known to be on the server any more.
         setSyncCheckpoint({ userId: currentUser.id, cursor: null, srs: {} });
         // An incremental pull omits rows older than the cursor, which the wipe
@@ -161,6 +163,11 @@ export function useCloudSyncFetch({
         cloudLessonProgress && typeof cloudLessonProgress === 'object' ? (cloudLessonProgress as { lessonTests?: unknown }).lessonTests : null,
       );
       if (testPatch.lessonTests) useAppStore.setState(testPatch);
+      const mockPatch = mergeMockTests(
+        useAppStore.getState().mockTests,
+        cloudLessonProgress && typeof cloudLessonProgress === 'object' ? (cloudLessonProgress as { mockTests?: unknown }).mockTests : null,
+      );
+      if (mockPatch.mockTests) useAppStore.setState(mockPatch);
 
       useAppStore.getState().mergeReviewHistory(
         cloudData.reviewEvents,

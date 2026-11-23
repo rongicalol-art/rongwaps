@@ -9,8 +9,8 @@ How the owner works with AIs since 2026-11-22, and what each scheduled run does.
 | **Lead**: Claude Opus 5.5 (or Fable 5.2, the owner can switch a thread) | Plans, designs, all UI and styling, judges every helper's work, writes and watches PRs | Merges without the owner's word |
 | Claude Sonnet 5.5 | Mechanical code from the lead's exact plan, test fixes | Design or UI styling |
 | Claude Haiku 5.5 | Lookups, log reading, first triage of errors | Writing shipped code |
-| Codex (`gpt-6.1-sol` or newer sol, medium at most; `gpt-6-luna` for cheap work; never astra) | Chinese content authoring and review, blind solving, mechanical code | Design or UI styling |
-| Gemini 4 Neon (Antigravity) | Reviews the screenshots of every UI change (390 and 1440 wide, light and dark); scouts ideas; Gemini 3.8 Flash for cheap long reads | Writing code or content |
+| Gemini 4 Neon (Antigravity) | **Second brain** (owner's pick over Codex, 2026-11-23): the second opinion on plans and the review of code before a PR; reviews the screenshots of every UI change (390 and 1440 wide, light and dark); scouts ideas; Gemini 3.8 Flash for cheap long reads | Writing shipped code or content |
+| Codex (`gpt-6.1-sol` or newer sol, medium at most; `gpt-6-luna` for cheap work; never astra) | Chinese content authoring and its review, blind solving, mechanical code | Design or UI styling |
 
 The lead gives a helper a brief with the files, the goal and what to check, then checks the result. Helpers spend the owner's usage: use one where one will do (`../../AGENTS.md`).
 
