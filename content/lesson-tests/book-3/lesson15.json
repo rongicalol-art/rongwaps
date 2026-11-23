@@ -55,24 +55,24 @@
             },
             {
               "speaker": "M",
-              "traditional": "人多得不得了，我們排了一個小時的隊才進去。",
-              "simplified": "人多得不得了，我们排了一个小时的队才进去。",
+              "traditional": "人多得不得了，裡面人擠人，走都走不動。",
+              "simplified": "人多得不得了，里面人挤人，走都走不动。",
               "pinyin": "Rén duō de bùdéliǎo, wǒmen pái le yí ge xiǎoshí de duì cái jìnqù.",
-              "english": "It was incredibly crowded. We queued for an hour before we got in."
+              "english": "It was incredibly crowded. Inside it was packed; we could hardly move."
             },
             {
               "speaker": "F",
-              "traditional": "排那麼久？那不是累死了？",
-              "simplified": "排那么久？那不是累死了？",
-              "pinyin": "Pái nàme jiǔ? Nà bú shì lèi sǐ le?",
-              "english": "That long? Weren't you worn out?"
+              "traditional": "那麼擠？那不是累死了？",
+              "simplified": "那么挤？那不是累死了？",
+              "pinyin": "Nàme jǐ? Nà bú shì lèi sǐ le?",
+              "english": "That packed? Weren't you worn out?"
             },
             {
               "speaker": "M",
-              "traditional": "累是累，可是廟門上畫的人物好生動，簡直像活的一樣。我覺得排再久都值得。",
-              "simplified": "累是累，可是庙门上画的人物好生动，简直像活的一样。我觉得排再久都值得。",
-              "pinyin": "Lèi shì lèi, kěshì miào mén shàng huà de rénwù hǎo shēngdòng, jiǎnzhí xiàng huó de yíyàng. Wǒ juéde pái zài jiǔ dōu zhídé.",
-              "english": "Tired, yes, but the figures painted on the temple doors are so vivid they look practically alive. However long the queue, it was worth it."
+              "traditional": "累是累，可是廟門上畫的人物好生動，簡直像活的一樣。我覺得再擠都值得。",
+              "simplified": "累是累，可是庙门上画的人物好生动，简直像活的一样。我觉得再挤都值得。",
+              "pinyin": "Lèi shì lèi, kěshì miào mén shàng huà de rénwù hǎo shēngdòng, jiǎnzhí xiàng huó de yíyàng. Wǒ juéde zài jǐ dōu zhídé.",
+              "english": "Tired, yes, but the figures painted on the temple doors are so vivid they look practically alive. However packed it was, it was worth it."
             },
             {
               "speaker": "F",
@@ -119,21 +119,21 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "畫得很生動，可是不值得排隊",
-                  "simplified": "画得很生动，可是不值得排队",
-                  "pinyin": "Huà de hěn shēngdòng, kěshì bù zhídé páiduì.",
-                  "english": "The paintings are vivid, but not worth the queue."
+                  "traditional": "畫得很生動，可是不值得去擠",
+                  "simplified": "画得很生动，可是不值得去挤",
+                  "pinyin": "Huà de hěn shēngdòng, kěshì bù zhídé qù jǐ.",
+                  "english": "The paintings are vivid, but not worth the crowds."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "雖然要排隊，可是排得不久",
-                  "simplified": "虽然要排队，可是排得不久",
-                  "pinyin": "Suīrán yào páiduì, kěshì pái de bù jiǔ.",
-                  "english": "There was a queue, but it wasn't long."
+                  "traditional": "雖然人很多，可是一點也不擠",
+                  "simplified": "虽然人很多，可是一点也不挤",
+                  "pinyin": "Suīrán rén hěn duō, kěshì yìdiǎn yě bù jǐ.",
+                  "english": "It was busy, but not crowded at all."
                 }
               ],
               "key": 1,
-              "why": "累是累，可是… turns from the queue to the paintings, 簡直像活的一樣 is high praise, and 排再久都值得 seals it. He says 累是累, so \"not tired at all\" is wrong; he queued a whole hour, so \"the queue wasn't long\" is wrong (\"before nine\" is advice for her visit); and he says the paintings were worth any queue.",
+              "why": "累是累，可是… turns from the crowds to the paintings, 簡直像活的一樣 is high praise, and 再擠都值得 seals it. He says 累是累, so \"not tired at all\" is wrong; inside it was 人擠人, so \"not crowded at all\" is wrong (\"before nine\" is advice for her visit); and he says the paintings were worth any crowd.",
               "focus": {
                 "zh": "簡直；……是……，可是……",
                 "en": "practically; yes…, but…"
@@ -995,10 +995,10 @@
             },
             {
               "speaker": "F",
-              "traditional": "紅毛城旁邊就是老街。你爸參觀古蹟的同時，你媽可以去那裡逛逛，中午再一起吃飯。",
-              "simplified": "红毛城旁边就是老街。你爸参观古迹的同时，你妈可以去那里逛逛，中午再一起吃饭。",
+              "traditional": "從紅毛城走到老街只要十幾分鐘。你爸參觀古蹟的同時，你媽可以去那裡逛逛，中午再一起吃飯。",
+              "simplified": "从红毛城走到老街只要十几分钟。你爸参观古迹的同时，你妈可以去那里逛逛，中午再一起吃饭。",
               "pinyin": "Hóngmáochéng pángbiān jiù shì lǎo jiē. Nǐ bà cānguān gǔjī de tóngshí, nǐ mā kěyǐ qù nàlǐ guàng guang, zhōngwǔ zài yìqǐ chīfàn.",
-              "english": "The old street is right next to the fort. While your dad tours the site, your mom can look round there, and you all have lunch together at noon."
+              "english": "It is only a ten-odd-minute walk from the fort to the old street. While your dad tours the site, your mom can look round there, and you all have lunch together at noon."
             },
             {
               "speaker": "M",
@@ -1052,10 +1052,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "在紅毛城旁的老街逛街",
-                  "simplified": "在红毛城旁的老街逛街",
+                  "traditional": "去老街逛街",
+                  "simplified": "去老街逛街",
                   "pinyin": "Zài Hóngmáochéng páng de lǎo jiē guàngjiē.",
-                  "english": "Shopping on the old street beside the fort."
+                  "english": "Going shopping on the old street."
                 },
                 {
                   "speaker": "N",
@@ -1066,7 +1066,7 @@
                 }
               ],
               "key": 2,
-              "why": "The morning is the fort, and 你爸參觀古蹟的同時，你媽可以去那裡逛逛 puts the mother on the old street next door at the same time. Missing 同時 gives \"with his father in the fort\"; it is the fort, not the street, that gets crowded in the afternoon.",
+              "why": "The morning is the fort, and 你爸參觀古蹟的同時，你媽可以去那裡逛逛 puts the mother on the old street at the same time. Missing 同時 gives \"with his father in the fort\"; it is the fort, not the street, that gets crowded in the afternoon.",
               "focus": {
                 "zh": "同時",
                 "en": "at the same time"
@@ -1233,10 +1233,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "隧道裡又暗又小，十二歲以下的兒童及七十歲以上的老人，必須有家人陪著才能進去。",
-              "simplified": "隧道里又暗又小，十二岁以下的儿童及七十岁以上的老人，必须有家人陪着才能进去。",
+              "traditional": "隧道裡又暗又小，十二歲以下的兒童，必須有家人陪著才能進去。",
+              "simplified": "隧道里又暗又小，十二岁以下的儿童，必须有家人陪着才能进去。",
               "pinyin": "Suìdào lǐ yòu àn yòu xiǎo, shí'èr suì yǐxià de értóng jí qīshí suì yǐshàng de lǎorén, bìxū yǒu jiārén péi zhe cái néng jìnqù.",
-              "english": "The tunnel is dark and narrow. Children under twelve and elderly people over seventy must be accompanied by family."
+              "english": "The tunnel is dark and narrow. Children under twelve must be accompanied by family."
             },
             {
               "speaker": "M",
@@ -1340,10 +1340,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "七十二歲的爺爺跟朋友進去",
-                  "simplified": "七十二岁的爷爷跟朋友进去",
+                  "traditional": "十歲的孩子跟同學一起進去",
+                  "simplified": "十岁的孩子跟同学一起进去",
                   "pinyin": "Qīshí'èr suì de yéye gēn péngyǒu jìnqù.",
-                  "english": "A 72-year-old man going in with a friend."
+                  "english": "A 10-year-old going in with classmates."
                 },
                 {
                   "speaker": "N",
@@ -1354,10 +1354,10 @@
                 }
               ],
               "key": 2,
-              "why": "兒童及七十歲以上的老人 both need FAMILY with them (家人陪著), so a 72-year-old with a friend must change his plan. The photo ban is only inside the tunnel, a child with his father is fine, and the 4:00 show is open to all.",
+              "why": "十二歲以下的兒童 need FAMILY with them (家人陪著), so a 10-year-old going in with classmates must change the plan. The photo ban is only inside the tunnel, a child with his father is fine, and the 4:00 show is open to all.",
               "focus": {
-                "zh": "及；規定用在一個人身上",
-                "en": "and (formal); applying a rule to one person"
+                "zh": "規定用在一個人身上",
+                "en": "applying a rule to one person"
               },
               "lesson": 15,
               "answerLine": 3,
@@ -1929,10 +1929,10 @@
           "id": "b3l15-cloze-2",
           "kind": "cloze",
           "passage": {
-            "traditional": "上個月，室友的阿姨帶我們參觀古廟。阿姨在附近住了五十年，哪條龍最早刻好、哪一年發生過大火，她都知道。{1}，廟裡的事問她就對了。廟裡的龍是石頭刻的，十分生動，我們兩個一看到，就{2}說：「太了不起了！」這座廟燒過兩次，都是當地人出錢修好的。我以為修過的廟沒那麼有價值，阿姨{3}說，把廟修好也是歷史。現在年輕人不常拜拜，可是週末來廟前廣場的人{4}比以前多：有人擺攤，有人表演，{5}有人在這裡結婚。很多人以為古廟只有老人去，{6}，它一直是大家生活的中心。",
-            "simplified": "上个月，室友的阿姨带我们参观古庙。阿姨在附近住了五十年，哪条龙最早刻好、哪一年发生过大火，她都知道。{1}，庙里的事问她就对了。庙里的龙是石头刻的，十分生动，我们两个一看到，就{2}说：「太了不起了！」这座庙烧过两次，都是当地人出钱修好的。我以为修过的庙没那么有价值，阿姨{3}说，把庙修好也是历史。现在年轻人不常拜拜，可是周末来庙前广场的人{4}比以前多：有人摆摊，有人表演，{5}有人在这里结婚。很多人以为古庙只有老人去，{6}，它一直是大家生活的中心。",
-            "pinyin": "Shàng ge yuè, shìyǒu de āyí dài wǒmen cānguān gǔ miào. Āyí zài fùjìn zhù le wǔshí nián, nǎ tiáo lóng zuì zǎo kè hǎo, nǎ yì nián fāshēng guo dà huǒ, tā dōu zhīdào. Zǒngzhī, miào lǐ de shì wèn tā jiù duì le. Miào lǐ de lóng shì shítou kè de, shífēn shēngdòng, wǒmen liǎng ge yí kàn dào, jiù tóngshí shuō: \"Tài liǎobùqǐ le!\" Zhè zuò miào shāo guo liǎng cì, dōu shì dāngdì rén chū qián xiū hǎo de. Wǒ yǐwéi xiū guo de miào méi nàme yǒu jiàzhí, āyí què shuō, bǎ miào xiū hǎo yě shì lìshǐ. Xiànzài niánqīng rén bù cháng bàibai, kěshì zhōumò lái miào qián guǎngchǎng de rén fǎn'ér bǐ yǐqián duō: yǒu rén bǎi tān, yǒu rén biǎoyǎn, shènzhì yǒu rén zài zhèlǐ jiéhūn. Hěn duō rén yǐwéi gǔ miào zhǐyǒu lǎorén qù, shìshíshàng, tā yìzhí shì dàjiā shēnghuó de zhōngxīn.",
-            "english": "Last month my roommate's aunt took us to visit an old temple. She has lived nearby for fifty years: which dragon was carved first, which year the big fire broke out, she knows all of it. In short, if it is about the temple, ask her. The dragons in the temple are carved in stone and very lifelike; the moment the two of us saw them, we both said at the same time, \"Amazing!\" The temple has burned twice, and both times the local people paid to repair it. I thought a repaired temple was not worth so much, but the aunt said that repairing the temple is history too. Young people don't pray much nowadays, yet at weekends there are, if anything, more people in the square in front of the temple than before: some set up stalls, some perform, and some even get married here. Many people think only old people go to old temples; in fact, this one has always been the centre of everyone's life."
+            "traditional": "上個月，室友的阿姨帶我們參觀古廟。阿姨在附近住了五十年，哪條龍最早刻好、哪一年發生過大火，她都知道。{1}，廟裡的事問她就對了。廟裡的龍是石頭刻的，十分生動，我們兩個一看到，就{2}說：「太了不起了！」這座廟燒過兩次，都是當地人出錢修好的。我以為修過的廟沒那麼有價值，阿姨{3}說，把廟修好也是歷史。現在年輕人不常拜拜，可是週末來廟前廣場的人{4}比以前多：有人擺攤，有人表演，{5}有人來這裡拍結婚照。很多人以為古廟只有老人去，{6}，它一直是大家生活的中心。",
+            "simplified": "上个月，室友的阿姨带我们参观古庙。阿姨在附近住了五十年，哪条龙最早刻好、哪一年发生过大火，她都知道。{1}，庙里的事问她就对了。庙里的龙是石头刻的，十分生动，我们两个一看到，就{2}说：「太了不起了！」这座庙烧过两次，都是当地人出钱修好的。我以为修过的庙没那么有价值，阿姨{3}说，把庙修好也是历史。现在年轻人不常拜拜，可是周末来庙前广场的人{4}比以前多：有人摆摊，有人表演，{5}有人来这里拍结婚照。很多人以为古庙只有老人去，{6}，它一直是大家生活的中心。",
+            "pinyin": "Shàng ge yuè, shìyǒu de āyí dài wǒmen cānguān gǔ miào. Āyí zài fùjìn zhù le wǔshí nián, nǎ tiáo lóng zuì zǎo kè hǎo, nǎ yì nián fāshēng guo dà huǒ, tā dōu zhīdào. Zǒngzhī, miào lǐ de shì wèn tā jiù duì le. Miào lǐ de lóng shì shítou kè de, shífēn shēngdòng, wǒmen liǎng ge yí kàn dào, jiù tóngshí shuō: \"Tài liǎobùqǐ le!\" Zhè zuò miào shāo guo liǎng cì, dōu shì dāngdì rén chū qián xiū hǎo de. Wǒ yǐwéi xiū guo de miào méi nàme yǒu jiàzhí, āyí què shuō, bǎ miào xiū hǎo yě shì lìshǐ. Xiànzài niánqīng rén bù cháng bàibai, kěshì zhōumò lái miào qián guǎngchǎng de rén fǎn'ér bǐ yǐqián duō: yǒu rén bǎi tān, yǒu rén biǎoyǎn, shènzhì yǒu rén lái zhèlǐ pāi jiéhūn zhào. Hěn duō rén yǐwéi gǔ miào zhǐyǒu lǎorén qù, shìshíshàng, tā yìzhí shì dàjiā shēnghuó de zhōngxīn.",
+            "english": "Last month my roommate's aunt took us to visit an old temple. She has lived nearby for fifty years: which dragon was carved first, which year the big fire broke out, she knows all of it. In short, if it is about the temple, ask her. The dragons in the temple are carved in stone and very lifelike; the moment the two of us saw them, we both said at the same time, \"Amazing!\" The temple has burned twice, and both times the local people paid to repair it. I thought a repaired temple was not worth so much, but the aunt said that repairing the temple is history too. Young people don't pray much nowadays, yet at weekends there are, if anything, more people in the square in front of the temple than before: some set up stalls, some perform, and some even come to take wedding photos. Many people think only old people go to old temples; in fact, this one has always been the centre of everyone's life."
           },
           "questions": [
             {
@@ -2140,7 +2140,7 @@
                 }
               ],
               "key": 1,
-              "why": "Stalls, performances, and then the most surprising use of a temple square, getting married there: the last and strongest item of a list takes 甚至. 尤其是 picks one example out of a group already named, 至於 turns to a new topic, and 況且 adds a reason to an argument; this is the list's high point.",
+              "why": "Stalls, performances, and then the most surprising use of a temple square, taking wedding photos there: the last and strongest item of a list takes 甚至. 尤其是 picks one example out of a group already named, 至於 turns to a new topic, and 況且 adds a reason to an argument; this is the list's high point.",
               "focus": {
                 "zh": "甚至",
                 "en": "even"

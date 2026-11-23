@@ -427,9 +427,9 @@
           "lines": [
             {
               "speaker": "F",
-              "traditional": "你不是說要學開車嗎？怎麼買了一輛機車？",
-              "simplified": "你不是说要学开车吗？怎么买了一辆机车？",
-              "pinyin": "Nǐ bú shì shuō yào xué kāichē ma? Zěnme mǎi le yí liàng jīchē?",
+              "traditional": "你不是說要學開車嗎？怎麼買了一台機車？",
+              "simplified": "你不是说要学开车吗？怎么买了一台机车？",
+              "pinyin": "Nǐ bú shì shuō yào xué kāichē ma? Zěnme mǎi le yì tái jīchē?",
               "english": "Didn't you say you were going to learn to drive? Why have you bought a motorcycle?"
             },
             {
@@ -1372,10 +1372,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "那天是農曆七月十四，雖然不是七夕，可是天氣應該不錯。",
-              "simplified": "那天是农历七月十四，虽然不是七夕，可是天气应该不错。",
+              "traditional": "那天雖然不是七夕，可是天氣應該不錯。",
+              "simplified": "那天虽然不是七夕，可是天气应该不错。",
               "pinyin": "Nà tiān shì nónglì qī yuè shísì, suīrán bú shì Qīxī, kěshì tiānqì yīnggāi búcuò.",
-              "english": "That's the fourteenth of the seventh lunar month. It isn't Qixi, but the weather should be good."
+              "english": "It isn't Qixi, but the weather should be good that day."
             },
             {
               "speaker": "M",
@@ -1493,7 +1493,7 @@
                 }
               ],
               "key": 1,
-              "why": "Qixi is 這個星期六 and he moves the trip to 下個星期六: one week later. Qixi evening is the plan he drops (they will just eat near home), and the new day is after Qixi, seven days on, not two (the 十四 in 七月十四 is the date, not a gap).",
+              "why": "Qixi is 這個星期六 and he moves the trip to 下個星期六: one week later. Qixi evening is the plan he drops (they will just eat near home), and the new day is after Qixi, seven days on, not two.",
               "focus": {
                 "zh": "細節（兩句合起來看）",
                 "en": "a detail (combining two lines)"
@@ -1569,9 +1569,9 @@
           "id": "b3l14-cloze-1",
           "kind": "cloze",
           "passage": {
-            "traditional": "我奶奶很會做衣服。{1}她的說法，以前的姑娘在七夕都會親手做一些小東西拜織女。奶奶小時候家裡很窮，連一塊新布都買不起，{2}買新衣服了，所以她每年七夕都按照這個習俗，用舊衣服的布做一個小布包。結婚以後，她改成每年送爺爺一件親手做的衣服。{3}爺爺已經去世三年了，她還是年年做，還說要一直做{4}。今年這件她做得特別慢，我問了才知道，{5}她的眼睛不太好了。以前做好的衣服，她都收在箱子裡。{6}今年這件，她說要送給我爸爸穿，因為爸爸長得最像爺爺。",
-            "simplified": "我奶奶很会做衣服。{1}她的说法，以前的姑娘在七夕都会亲手做一些小东西拜织女。奶奶小时候家里很穷，连一块新布都买不起，{2}买新衣服了，所以她每年七夕都按照这个习俗，用旧衣服的布做一个小布包。结婚以后，她改成每年送爷爷一件亲手做的衣服。{3}爷爷已经去世三年了，她还是年年做，还说要一直做{4}。今年这件她做得特别慢，我问了才知道，{5}她的眼睛不太好了。以前做好的衣服，她都收在箱子里。{6}今年这件，她说要送给我爸爸穿，因为爸爸长得最像爷爷。",
-            "pinyin": "Wǒ nǎinai hěn huì zuò yīfu. Gēnjù tā de shuōfǎ, yǐqián de gūniáng zài Qīxī dōu huì qīnshǒu zuò yìxiē xiǎo dōngxi bài Zhīnǚ. Nǎinai xiǎo shíhòu jiālǐ hěn qióng, lián yí kuài xīn bù dōu mǎi bù qǐ, gèng bié shuō mǎi xīn yīfu le, suǒyǐ tā měi nián Qīxī dōu ànzhào zhège xísú, yòng jiù yīfu de bù zuò yí ge xiǎo bù bāo. Jiéhūn yǐhòu, tā gǎi chéng měi nián sòng yéye yí jiàn qīnshǒu zuò de yīfu. Jǐnguǎn yéye yǐjīng qùshì sān nián le, tā háishì niánnián zuò, hái shuō yào yìzhí zuò xiàqù. Jīnnián zhè jiàn tā zuò de tèbié màn, wǒ wèn le cái zhīdào, yuánlái tā de yǎnjīng bú tài hǎo le. Yǐqián zuò hǎo de yīfu, tā dōu shōu zài xiāngzi lǐ. Zhìyú jīnnián zhè jiàn, tā shuō yào sòng gěi wǒ bàba chuān, yīnwèi bàba zhǎng de zuì xiàng yéye.",
+            "traditional": "我奶奶很會做衣服。{1}她的說法，以前的女孩子在七夕都會親手做一些小東西拜織女。奶奶小時候家裡很窮，連一塊新布都買不起，{2}買新衣服了，所以她每年七夕都按照這個習俗，用舊衣服的布做一個小布包。結婚以後，她改成每年送爺爺一件親手做的衣服。{3}爺爺已經去世三年了，她還是年年做，還說要一直做{4}。今年這件她做得特別慢，我問了才知道，{5}她的眼睛不太好了。以前做好的衣服，她都收在箱子裡。{6}今年這件，她說要送給我爸爸穿，因為爸爸長得最像爺爺。",
+            "simplified": "我奶奶很会做衣服。{1}她的说法，以前的女孩子在七夕都会亲手做一些小东西拜织女。奶奶小时候家里很穷，连一块新布都买不起，{2}买新衣服了，所以她每年七夕都按照这个习俗，用旧衣服的布做一个小布包。结婚以后，她改成每年送爷爷一件亲手做的衣服。{3}爷爷已经去世三年了，她还是年年做，还说要一直做{4}。今年这件她做得特别慢，我问了才知道，{5}她的眼睛不太好了。以前做好的衣服，她都收在箱子里。{6}今年这件，她说要送给我爸爸穿，因为爸爸长得最像爷爷。",
+            "pinyin": "Wǒ nǎinai hěn huì zuò yīfu. Gēnjù tā de shuōfǎ, yǐqián de nǚháizi zài Qīxī dōu huì qīnshǒu zuò yìxiē xiǎo dōngxi bài Zhīnǚ. Nǎinai xiǎo shíhòu jiālǐ hěn qióng, lián yí kuài xīn bù dōu mǎi bù qǐ, gèng bié shuō mǎi xīn yīfu le, suǒyǐ tā měi nián Qīxī dōu ànzhào zhège xísú, yòng jiù yīfu de bù zuò yí ge xiǎo bù bāo. Jiéhūn yǐhòu, tā gǎi chéng měi nián sòng yéye yí jiàn qīnshǒu zuò de yīfu. Jǐnguǎn yéye yǐjīng qùshì sān nián le, tā háishì niánnián zuò, hái shuō yào yìzhí zuò xiàqù. Jīnnián zhè jiàn tā zuò de tèbié màn, wǒ wèn le cái zhīdào, yuánlái tā de yǎnjīng bú tài hǎo le. Yǐqián zuò hǎo de yīfu, tā dōu shōu zài xiāngzi lǐ. Zhìyú jīnnián zhè jiàn, tā shuō yào sòng gěi wǒ bàba chuān, yīnwèi bàba zhǎng de zuì xiàng yéye.",
             "english": "My grandma is very good at making clothes. According to her, girls in the old days would make little things by hand on Qixi to worship the Weaving Maid. Grandma's family was poor when she was little: they couldn't even afford a piece of new cloth, let alone new clothes, so every Qixi she followed this custom and made a small bag from the cloth of old clothes. After she married, she switched to giving Grandpa a piece of clothing she had made herself every year. Even though Grandpa died three years ago, she still makes one every year, and says she will keep on doing it. This year's piece is taking her especially long; only when I asked did I learn that her eyes aren't so good any more. The clothes she made before are all kept in a box. As for this year's, she says she will give to my dad to wear, because Dad looks most like Grandpa."
           },
           "questions": [

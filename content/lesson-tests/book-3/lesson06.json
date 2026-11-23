@@ -1050,14 +1050,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "開始在旅館打工",
-                  "simplified": "开始在旅馆打工",
-                  "pinyin": "Kāishǐ zài lǚguǎn dǎgōng.",
-                  "english": "She started a part-time job at a hotel."
+                  "traditional": "在旅館打工了半年",
+                  "simplified": "在旅馆打工了半年",
+                  "pinyin": "Zài lǚguǎn dǎgōng le bàn nián.",
+                  "english": "She worked part-time at a hotel for half a year."
                 }
               ],
               "key": 1,
-              "why": "她找了快半年，上個月總算開始在一家旅館上班了: 總算 marks the end of a long search. The half year was spent looking, before last month, and it is her first job there, not a move.",
+              "why": "她找了快半年，上個月總算開始在一家旅館上班了: 總算 marks the end of a long search. The half year was spent looking, so she has not worked at the hotel for half a year, and it is her first job there, not a move.",
               "focus": {
                 "zh": "總算",
                 "en": "finally (after a long wait)"
@@ -1305,10 +1305,10 @@
             },
             {
               "speaker": "F",
-              "traditional": "本來我們打算跟去年一樣，在公司裡吃飯、唱歌。可是在上個月的調查中，三分之一的同事說週末最想在家睡覺，但是有一半的人希望公司多辦戶外的活動。所以這次我們改去山上。",
-              "simplified": "本来我们打算跟去年一样，在公司里吃饭、唱歌。可是在上个月的调查中，三分之一的同事说周末最想在家睡觉，但是有一半的人希望公司多办户外的活动。所以这次我们改去山上。",
-              "pinyin": "Běnlái wǒmen dǎsuàn gēn qùnián yíyàng, zài gōngsī lǐ chīfàn, chànggē. Kěshì zài shàng ge yuè de diàochá zhōng, sān fēn zhī yī de tóngshì shuō zhōumò zuì xiǎng zài jiā shuìjiào, dànshì yǒu yíbàn de rén xīwàng gōngsī duō bàn hùwài de huódòng. Suǒyǐ zhè cì wǒmen gǎi qù shān shàng.",
-              "english": "We first planned to do the same as last year: dinner and singing at the office. But in last month's survey, a third of you said what you most want at weekends is to sleep at home, while half said you hope the company will hold more outdoor activities. So this time we're going up the mountain."
+              "traditional": "本來我們打算跟去年一樣，去餐廳吃飯、唱歌。可是在上個月的調查中，三分之一的同事說週末最想在家睡覺，但是有一半的人希望公司多辦戶外的活動。所以這次我們改去山上。",
+              "simplified": "本来我们打算跟去年一样，去餐厅吃饭、唱歌。可是在上个月的调查中，三分之一的同事说周末最想在家睡觉，但是有一半的人希望公司多办户外的活动。所以这次我们改去山上。",
+              "pinyin": "Běnlái wǒmen dǎsuàn gēn qùnián yíyàng, qù cāntīng chīfàn, chànggē. Kěshì zài shàng ge yuè de diàochá zhōng, sān fēn zhī yī de tóngshì shuō zhōumò zuì xiǎng zài jiā shuìjiào, dànshì yǒu yíbàn de rén xīwàng gōngsī duō bàn hùwài de huódòng. Suǒyǐ zhè cì wǒmen gǎi qù shān shàng.",
+              "english": "We first planned to do the same as last year: dinner and singing at a restaurant. But in last month's survey, a third of you said what you most want at weekends is to sleep at home, while half said you hope the company will hold more outdoor activities. So this time we're going up the mountain."
             },
             {
               "speaker": "F",
@@ -1334,10 +1334,10 @@
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "去年已經在公司辦過了",
-                  "simplified": "去年已经在公司办过了",
-                  "pinyin": "Qùnián yǐjīng zài gōngsī bàn guo le.",
-                  "english": "Last year it was already held at the office."
+                  "traditional": "去年已經在餐廳辦過了",
+                  "simplified": "去年已经在餐厅办过了",
+                  "pinyin": "Qùnián yǐjīng zài cāntīng bàn guo le.",
+                  "english": "Last year it was already held at a restaurant."
                 },
                 {
                   "speaker": "N",
@@ -1412,14 +1412,14 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "下午還要回公司吃飯、唱歌",
-                  "simplified": "下午还要回公司吃饭、唱歌",
-                  "pinyin": "Xiàwǔ hái yào huí gōngsī chīfàn, chànggē.",
-                  "english": "They have to be back at the office for dinner and singing."
+                  "traditional": "下午還要去餐廳吃飯、唱歌",
+                  "simplified": "下午还要去餐厅吃饭、唱歌",
+                  "pinyin": "Xiàwǔ hái yào qù cāntīng chīfàn, chànggē.",
+                  "english": "They have to go on to a restaurant for dinner and singing."
                 }
               ],
               "key": 2,
-              "why": "去晚了，好的就被摘光了。所以我們不得不早一點出發: so many people pick there that late comers find the good fruit gone. The drive is short (開車一個小時就到了), and dinner and singing at the office was last year's plan, dropped this time.",
+              "why": "去晚了，好的就被摘光了。所以我們不得不早一點出發: so many people pick there that late comers find the good fruit gone. The drive is short (開車一個小時就到了), and dinner and singing at a restaurant was last year's plan, dropped this time.",
               "focus": {
                 "zh": "不得不",
                 "en": "have no choice but to"
@@ -1706,8 +1706,8 @@
           "id": "b3l06-cloze-2",
           "kind": "cloze",
           "passage": {
-            "traditional": "我妹妹從小就喜歡打籃球，每天從學校回來以後{1}在球場練球，就是在家看球賽。爸媽覺得運動好{2}好，可是怕她因為練球而沒時間念書，所以一直不讓她參加比賽。後來教練來我們家，說妹妹很有實力，爸爸才說：「{3}教練都這麼說了，我們就讓妳去。不過，功課也得寫完。」為了念書和練球，妹妹{4}了很多玩的時間，每天{5}早上五點就起床。上個星期，她{6}要出門去比賽時，爸媽說要一起去替她加油，她高興得不得了。",
-            "simplified": "我妹妹从小就喜欢打篮球，每天从学校回来以后{1}在球场练球，就是在家看球赛。爸妈觉得运动好{2}好，可是怕她因为练球而没时间念书，所以一直不让她参加比赛。后来教练来我们家，说妹妹很有实力，爸爸才说：「{3}教练都这么说了，我们就让你去。不过，功课也得写完。」为了念书和练球，妹妹{4}了很多玩的时间，每天{5}早上五点就起床。上个星期，她{6}要出门去比赛时，爸妈说要一起去替她加油，她高兴得不得了。",
+            "traditional": "我妹妹從小就喜歡打籃球，每天從學校回來以後{1}在球場練球，就是在家看球賽。爸媽覺得運動好{2}好，可是怕她因為練球而沒時間念書，所以一直不讓她參加比賽。後來教練來我們家，說妹妹很有實力，爸爸才說：「{3}教練都這麼說了，我們就讓妳去。不過，功課也得寫完。」為了念書和練球，妹妹{4}了很多玩的時間，每天早上{5}五點就起床。上個星期，她{6}要出門去比賽時，爸媽說要一起去替她加油，她高興得不得了。",
+            "simplified": "我妹妹从小就喜欢打篮球，每天从学校回来以后{1}在球场练球，就是在家看球赛。爸妈觉得运动好{2}好，可是怕她因为练球而没时间念书，所以一直不让她参加比赛。后来教练来我们家，说妹妹很有实力，爸爸才说：「{3}教练都这么说了，我们就让你去。不过，功课也得写完。」为了念书和练球，妹妹{4}了很多玩的时间，每天早上{5}五点就起床。上个星期，她{6}要出门去比赛时，爸妈说要一起去替她加油，她高兴得不得了。",
             "pinyin": "Wǒ mèimei cóng xiǎo jiù xǐhuān dǎ lánqiú, měi tiān cóng xuéxiào huílái yǐhòu bú shì zài qiúchǎng liàn qiú, jiù shì zài jiā kàn qiúsài. Bàmā juéde yùndòng hǎo dàoshì hǎo, kěshì pà tā yīnwèi liàn qiú ér méi shíjiān niànshū, suǒyǐ yìzhí bú ràng tā cānjiā bǐsài. Hòulái jiàoliàn lái wǒmen jiā, shuō mèimei hěn yǒu shílì, bàba cái shuō: “Jìrán jiàoliàn dōu zhème shuō le, wǒmen jiù ràng nǐ qù. Búguò, gōngkè yě děi xiě wán.” Wèile niànshū hé liàn qiú, mèimei xīshēng le hěn duō wán de shíjiān, měi tiān bùdébù zǎoshàng wǔ diǎn jiù qǐchuáng. Shàng ge xīngqí, tā zhèng yào chūmén qù bǐsài shí, bàmā shuō yào yìqǐ qù tì tā jiāyóu, tā gāoxìng de bùdéliǎo.",
             "english": "My younger sister has loved basketball since she was little: every day when she gets back from school she is either practising on the court or watching games at home. My parents think sport is good, all right, but they worried that training would leave her no time to study, so they never let her play in games. Then her coach came to our home and said she was really talented, and only then did Dad say, \"Since even the coach says so, we'll let you go. But your homework still has to get done.\" To study and train, my sister gave up a lot of free time, and now she has no choice but to get up at five every morning. Last week, just as she was about to leave for a game, my parents said they would come and cheer for her, and she was thrilled."
           },
@@ -2253,9 +2253,9 @@
                   "english": "It was on friends' advice."
                 },
                 {
-                  "traditional": "太吵了，實在住不了才搬",
-                  "simplified": "太吵了，实在住不了才搬",
-                  "pinyin": "Tài chǎo le, shízài zhù bù liǎo cái bān.",
+                  "traditional": "太吵了，實在住不下去才搬",
+                  "simplified": "太吵了，实在住不下去才搬",
+                  "pinyin": "Tài chǎo le, shízài zhù bú xiàqù cái bān.",
                   "english": "It was too noisy to go on living there."
                 }
               ],

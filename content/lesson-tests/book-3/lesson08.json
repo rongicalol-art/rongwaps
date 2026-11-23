@@ -436,10 +436,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "老師說每個人都得自己報告，沒來的人這次就沒有成績。",
-              "simplified": "老师说每个人都得自己报告，没来的人这次就没有成绩。",
-              "pinyin": "Lǎoshī shuō měi ge rén dōu děi zìjǐ bàogào, méi lái de rén zhè cì jiù méiyǒu chéngjī.",
-              "english": "The teacher said everyone has to present in person; anyone who doesn't come gets no grade this time."
+              "traditional": "老師說每個人都得自己報告，沒來的人，這次報告就算零分。",
+              "simplified": "老师说每个人都得自己报告，没来的人，这次报告就算零分。",
+              "pinyin": "Lǎoshī shuō měi ge rén dōu děi zìjǐ bàogào, méi lái de rén, zhè cì bàogào jiù suàn líng fēn.",
+              "english": "The teacher said everyone has to present in person; anyone who doesn't come gets zero for this presentation."
             }
           ],
           "answerLine": 3,
@@ -486,7 +486,7 @@
                 }
               ],
               "key": 1,
-              "why": "She suggests classmates present for him, but 老師說每個人都得自己報告, so 非去不可. Absent students get no grade this time, not an extra report, and it is a presentation, not a test.",
+              "why": "She suggests classmates present for him, but 老師說每個人都得自己報告, so 非去不可. Absent students get zero for this presentation, not an extra report, and it is a presentation, not a test.",
               "focus": {
                 "zh": "非……不可",
                 "en": "must, no other choice"

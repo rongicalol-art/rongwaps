@@ -490,10 +490,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "怕老師覺得他沒認真想過",
-                  "simplified": "怕老师觉得他没认真想过",
-                  "pinyin": "Pà lǎoshī juéde tā méi rènzhēn xiǎng guo.",
-                  "english": "He fears the teacher will think he hasn't thought hard."
+                  "traditional": "怕老師太忙，沒空回答他",
+                  "simplified": "怕老师太忙，没空回答他",
+                  "pinyin": "Pà lǎoshī tài máng, méi kòng huídá tā.",
+                  "english": "He fears the teacher is too busy to answer him."
                 },
                 {
                   "speaker": "N",
@@ -504,7 +504,7 @@
                 }
               ],
               "key": 3,
-              "why": "Asked 你怎麼不去請教老師，反而一個人在這裡想？, he says 我怕老師覺得我的問題太簡單了: a question that simple means he can't even do this. It is the teacher's view he fears (我怕老師覺得), not classmates'; he has thought for three days, so lack of effort is not his worry, and the free time at ten is what she tells him afterwards.",
+              "why": "Asked 你怎麼不去請教老師，反而一個人在這裡想？, he says 我怕老師覺得我的問題太簡單了: a question that simple means he can't even do this. It is the teacher's view he fears (我怕老師覺得), not classmates'; he never says the teacher is too busy, and the free time at ten is what she tells him afterwards.",
               "focus": {
                 "zh": "怎麼不……，反而……",
                 "en": "why not…, instead of…?"

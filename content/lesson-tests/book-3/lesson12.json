@@ -56,10 +56,10 @@
             },
             {
               "speaker": "F",
-              "traditional": "我三點以前得先把這份報告看完。你先請他到會議室坐一下，給他一杯水。",
-              "simplified": "我三点以前得先把这份报告看完。你先请他到会议室坐一下，给他一杯水。",
-              "pinyin": "Wǒ sān diǎn yǐqián děi xiān bǎ zhè fèn bàogào kàn wán. Nǐ xiān qǐng tā dào huìyìshì zuò yíxià, gěi tā yì bēi shuǐ.",
-              "english": "I have to finish reading this report before three. First ask him to sit in the meeting room for a while, and give him a glass of water."
+              "traditional": "我三點以前得先把這份報告看完。你先請他到會議室坐一下，幫他倒杯水。",
+              "simplified": "我三点以前得先把这份报告看完。你先请他到会议室坐一下，帮他倒杯水。",
+              "pinyin": "Wǒ sān diǎn yǐqián děi xiān bǎ zhè fèn bàogào kàn wán. Nǐ xiān qǐng tā dào huìyìshì zuò yíxià, bāng tā dào bēi shuǐ.",
+              "english": "I have to finish reading this report before three. First ask him to sit in the meeting room for a while, and pour him a glass of water."
             },
             {
               "speaker": "M",
@@ -380,10 +380,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "對啊，最近任務特別多，主管每天都留我們到九點。",
-              "simplified": "对啊，最近任务特别多，主管每天都留我们到九点。",
-              "pinyin": "Duì a, zuìjìn rènwù tèbié duō, zhǔguǎn měi tiān dōu liú wǒmen dào jiǔ diǎn.",
-              "english": "Yes, our team has a lot of tasks lately, and the supervisor keeps us until nine every day."
+              "traditional": "對啊，最近工作特別多，主管每天都留我們到九點。",
+              "simplified": "对啊，最近工作特别多，主管每天都留我们到九点。",
+              "pinyin": "Duì a, zuìjìn gōngzuò tèbié duō, zhǔguǎn měi tiān dōu liú wǒmen dào jiǔ diǎn.",
+              "english": "Yes, there has been a lot of work lately, and the supervisor keeps us until nine every day."
             },
             {
               "speaker": "F",
@@ -422,10 +422,10 @@
             },
             {
               "speaker": "M",
-              "traditional": "我知道，下個月任務做完就好了。",
-              "simplified": "我知道，下个月任务做完就好了。",
-              "pinyin": "Wǒ zhīdào, xià ge yuè rènwù zuò wán jiù hǎo le.",
-              "english": "I know. Once the tasks are done next month, it'll be fine."
+              "traditional": "我知道，下個月這些工作做完就好了。",
+              "simplified": "我知道，下个月这些工作做完就好了。",
+              "pinyin": "Wǒ zhīdào, xià ge yuè zhèxiē gōngzuò zuò wán jiù hǎo le.",
+              "english": "I know. Once this work is done next month, it'll be fine."
             }
           ],
           "answerLine": 5,
@@ -458,10 +458,10 @@
                 },
                 {
                   "speaker": "N",
-                  "traditional": "給的任務太多，可是下個月會少一點",
-                  "simplified": "给的任务太多，可是下个月会少一点",
-                  "pinyin": "Gěi de rènwù tài duō, kěshì xià ge yuè huì shǎo yìdiǎn.",
-                  "english": "She gives too many tasks, but will give fewer next month."
+                  "traditional": "給的工作太多，可是下個月會少一點",
+                  "simplified": "给的工作太多，可是下个月会少一点",
+                  "pinyin": "Gěi de gōngzuò tài duō, kěshì xià ge yuè huì shǎo yìdiǎn.",
+                  "english": "She gives too much work, but will give less next month."
                 },
                 {
                   "speaker": "N",
@@ -2012,10 +2012,10 @@
               "id": "b3l12-cloze-2-3",
               "choices": [
                 {
-                  "traditional": "擠",
-                  "simplified": "挤",
-                  "pinyin": "jǐ",
-                  "english": "crowded"
+                  "traditional": "安靜",
+                  "simplified": "安静",
+                  "pinyin": "ānjìng",
+                  "english": "quiet"
                 },
                 {
                   "traditional": "吵",
@@ -2037,7 +2037,7 @@
                 }
               ],
               "key": 3,
-              "why": "The clause after it describes it: things everywhere, nobody can find anything. That is 混亂. 擠 is too many people, 吵 too much noise and 髒 dirt: none of them explains why nobody can find anything.",
+              "why": "The clause after it describes it: things everywhere, nobody can find anything. That is 混亂. 安靜 says nothing about the mess, 吵 is too much noise and 髒 dirt: none of them explains why nobody can find anything.",
               "focus": {
                 "zh": "混亂",
                 "en": "chaotic"
@@ -2594,10 +2594,10 @@
             "english": "Working in Taiwan"
           },
           "text": {
-            "traditional": "我在臺灣一家公司上班兩年了。剛來的時候，有很多事讓我不習慣。在我的國家，下班時間到了，要是主管還沒走，大家往往不好意思先離開。可是在這裡，六點一到，同事們就說再見回家了。我本來以為他們不夠認真，後來才發現，他們上班的時候做事很快，也很專心。\n還有一件讓我驚訝的事，是開會的方式。有一次，經理問大家對新產品有什麼看法。我覺得自己是新人，應該謙虛一點，就什麼都沒說。會議結束以後，經理卻來找我，問我是不是對新產品有什麼不滿。我這才明白，在這家公司，開會時不說話不是謙虛，反而會讓別人誤會。\n從那次以後，不論我的想法對不對，我都會在會議上說出來。儘管有時候說錯了，同事們也不會笑我，還會跟我一起討論。現在我覺得，在溝通方面，我比兩年前進步了很多。",
-            "simplified": "我在台湾一家公司上班两年了。刚来的时候，有很多事让我不习惯。在我的国家，下班时间到了，要是主管还没走，大家往往不好意思先离开。可是在这里，六点一到，同事们就说再见回家了。我本来以为他们不够认真，后来才发现，他们上班的时候做事很快，也很专心。\n还有一件让我惊讶的事，是开会的方式。有一次，经理问大家对新产品有什么看法。我觉得自己是新人，应该谦虚一点，就什么都没说。会议结束以后，经理却来找我，问我是不是对新产品有什么不满。我这才明白，在这家公司，开会时不说话不是谦虚，反而会让别人误会。\n从那次以后，不论我的想法对不对，我都会在会议上说出来。尽管有时候说错了，同事们也不会笑我，还会跟我一起讨论。现在我觉得，在沟通方面，我比两年前进步了很多。",
-            "pinyin": "Wǒ zài Táiwān yì jiā gōngsī shàngbān liǎng nián le. Gāng lái de shíhòu, yǒu hěn duō shì ràng wǒ bù xíguàn. Zài wǒ de guójiā, xiàbān shíjiān dào le, yàoshì zhǔguǎn hái méi zǒu, dàjiā wǎngwǎng bù hǎoyìsi xiān líkāi. Kěshì zài zhèlǐ, liù diǎn yí dào, tóngshìmen jiù shuō zàijiàn huíjiā le. Wǒ běnlái yǐwéi tāmen bú gòu rènzhēn, hòulái cái fāxiàn, tāmen shàngbān de shíhòu zuòshì hěn kuài, yě hěn zhuānxīn. Hái yǒu yí jiàn ràng wǒ jīngyà de shì, shì kāihuì de fāngshì. Yǒu yí cì, jīnglǐ wèn dàjiā duì xīn chǎnpǐn yǒu shénme kànfǎ. Wǒ juéde zìjǐ shì xīnrén, yīnggāi qiānxū yìdiǎn, jiù shénme dōu méi shuō. Huìyì jiéshù yǐhòu, jīnglǐ què lái zhǎo wǒ, wèn wǒ shì bú shì duì xīn chǎnpǐn yǒu shénme bùmǎn. Wǒ zhè cái míngbái, zài zhè jiā gōngsī, kāihuì shí bù shuōhuà bú shì qiānxū, fǎn'ér huì ràng biérén wùhuì. Cóng nà cì yǐhòu, búlùn wǒ de xiǎngfǎ duì bú duì, wǒ dōu huì zài huìyì shàng shuō chūlái. Jǐnguǎn yǒu shíhòu shuō cuò le, tóngshìmen yě bú huì xiào wǒ, hái huì gēn wǒ yìqǐ tǎolùn. Xiànzài wǒ juéde, zài gōutōng fāngmiàn, wǒ bǐ liǎng nián qián jìnbù le hěn duō.",
-            "english": "I have worked for a company in Taiwan for two years. When I first came, many things felt strange. In my country, when it is time to go home but the supervisor hasn't left, people usually feel awkward about leaving first. But here, the moment it is six, colleagues say goodbye and go home. At first I thought they weren't serious enough about work; later I found they work fast and with focus during the day.\nAnother thing that surprised me was how meetings work. Once the manager asked everyone what they thought of a new product. I felt that as a newcomer I should be modest, so I said nothing. After the meeting, though, the manager came to ask whether I was unhappy about the new product. Only then did I understand that in this company, saying nothing in a meeting isn't modesty; instead it makes people misunderstand you.\nSince then, whether my ideas are right or not, I say them in meetings. Even though I am sometimes wrong, my colleagues don't laugh at me; they discuss it with me. I now feel that when it comes to communicating, I have improved a lot in two years."
+            "traditional": "我在臺灣一家公司上班兩年了。剛來的時候，有很多事讓我不習慣。在我的國家，下班時間到了，要是主管還沒走，大家往往不好意思先離開。可是在這家公司，六點一到，同事們就說再見回家了。我本來以為他們不夠認真，後來才發現，他們上班的時候做事很快，也很專心。\n還有一件讓我驚訝的事，是開會的方式。有一次，經理問大家對新產品有什麼看法。我覺得自己是新人，應該謙虛一點，就什麼都沒說。會議結束以後，經理卻來找我，問我是不是對新產品有什麼不滿。我這才明白，在這家公司，開會時不說話不是謙虛，反而會讓別人誤會。\n從那次以後，不論我的想法對不對，我都會在會議上說出來。儘管有時候說錯了，同事們也不會笑我，還會跟我一起討論。現在我覺得，在溝通方面，我比兩年前進步了很多。",
+            "simplified": "我在台湾一家公司上班两年了。刚来的时候，有很多事让我不习惯。在我的国家，下班时间到了，要是主管还没走，大家往往不好意思先离开。可是在这家公司，六点一到，同事们就说再见回家了。我本来以为他们不够认真，后来才发现，他们上班的时候做事很快，也很专心。\n还有一件让我惊讶的事，是开会的方式。有一次，经理问大家对新产品有什么看法。我觉得自己是新人，应该谦虚一点，就什么都没说。会议结束以后，经理却来找我，问我是不是对新产品有什么不满。我这才明白，在这家公司，开会时不说话不是谦虚，反而会让别人误会。\n从那次以后，不论我的想法对不对，我都会在会议上说出来。尽管有时候说错了，同事们也不会笑我，还会跟我一起讨论。现在我觉得，在沟通方面，我比两年前进步了很多。",
+            "pinyin": "Wǒ zài Táiwān yì jiā gōngsī shàngbān liǎng nián le. Gāng lái de shíhòu, yǒu hěn duō shì ràng wǒ bù xíguàn. Zài wǒ de guójiā, xiàbān shíjiān dào le, yàoshì zhǔguǎn hái méi zǒu, dàjiā wǎngwǎng bù hǎoyìsi xiān líkāi. Kěshì zài zhè jiā gōngsī, liù diǎn yí dào, tóngshìmen jiù shuō zàijiàn huíjiā le. Wǒ běnlái yǐwéi tāmen bú gòu rènzhēn, hòulái cái fāxiàn, tāmen shàngbān de shíhòu zuòshì hěn kuài, yě hěn zhuānxīn. Hái yǒu yí jiàn ràng wǒ jīngyà de shì, shì kāihuì de fāngshì. Yǒu yí cì, jīnglǐ wèn dàjiā duì xīn chǎnpǐn yǒu shénme kànfǎ. Wǒ juéde zìjǐ shì xīnrén, yīnggāi qiānxū yìdiǎn, jiù shénme dōu méi shuō. Huìyì jiéshù yǐhòu, jīnglǐ què lái zhǎo wǒ, wèn wǒ shì bú shì duì xīn chǎnpǐn yǒu shénme bùmǎn. Wǒ zhè cái míngbái, zài zhè jiā gōngsī, kāihuì shí bù shuōhuà bú shì qiānxū, fǎn'ér huì ràng biérén wùhuì. Cóng nà cì yǐhòu, búlùn wǒ de xiǎngfǎ duì bú duì, wǒ dōu huì zài huìyì shàng shuō chūlái. Jǐnguǎn yǒu shíhòu shuō cuò le, tóngshìmen yě bú huì xiào wǒ, hái huì gēn wǒ yìqǐ tǎolùn. Xiànzài wǒ juéde, zài gōutōng fāngmiàn, wǒ bǐ liǎng nián qián jìnbù le hěn duō.",
+            "english": "I have worked for a company in Taiwan for two years. When I first came, many things felt strange. In my country, when it is time to go home but the supervisor hasn't left, people usually feel awkward about leaving first. But at this company, the moment it is six, colleagues say goodbye and go home. At first I thought they weren't serious enough about work; later I found they work fast and with focus during the day.\nAnother thing that surprised me was how meetings work. Once the manager asked everyone what they thought of a new product. I felt that as a newcomer I should be modest, so I said nothing. After the meeting, though, the manager came to ask whether I was unhappy about the new product. Only then did I understand that in this company, saying nothing in a meeting isn't modesty; instead it makes people misunderstand you.\nSince then, whether my ideas are right or not, I say them in meetings. Even though I am sometimes wrong, my colleagues don't laugh at me; they discuss it with me. I now feel that when it comes to communicating, I have improved a lot in two years."
           },
           "questions": [
             {

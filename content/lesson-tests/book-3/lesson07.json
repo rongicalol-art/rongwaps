@@ -509,16 +509,16 @@
           "lines": [
             {
               "speaker": "F",
-              "traditional": "你們班上選代表的結果出來了嗎？聽說你也參加了。",
-              "simplified": "你们班上选代表的结果出来了吗？听说你也参加了。",
-              "pinyin": "Nǐmen bān shàng xuǎn dàibiǎo de jiéguǒ chūlái le ma? Tīngshuō nǐ yě cānjiā le.",
+              "traditional": "你們班上選代表的結果出來了嗎？聽說你也出來選了。",
+              "simplified": "你们班上选代表的结果出来了吗？听说你也出来选了。",
+              "pinyin": "Nǐmen bān shàng xuǎn dàibiǎo de jiéguǒ chūlái le ma? Tīngshuō nǐ yě chūlái xuǎn le.",
               "english": "Is the result of your class representative vote out? I heard you ran too."
             },
             {
               "speaker": "M",
-              "traditional": "出來了。我拿到二十票，跟我一起參加的那個女同學拿到十二票。",
-              "simplified": "出来了。我拿到二十票，跟我一起参加的那个女同学拿到十二票。",
-              "pinyin": "Chūlái le. Wǒ ná dào èrshí piào, gēn wǒ yìqǐ cānjiā de nà ge nǚ tóngxué ná dào shí'èr piào.",
+              "traditional": "出來了。我拿到二十票，跟我一起選的那個女同學拿到十二票。",
+              "simplified": "出来了。我拿到二十票，跟我一起选的那个女同学拿到十二票。",
+              "pinyin": "Chūlái le. Wǒ ná dào èrshí piào, gēn wǒ yìqǐ xuǎn de nà ge nǚ tóngxué ná dào shí'èr piào.",
               "english": "It is. I got twenty votes and the girl running against me got twelve."
             },
             {
@@ -1606,14 +1606,14 @@
                   "english": "couldn't bear it and had to ask the owner to fetch us"
                 },
                 {
-                  "traditional": "沒辦法再等，就跑下山去了",
-                  "simplified": "没办法再等，就跑下山去了",
-                  "pinyin": "méi bànfǎ zài děng, jiù pǎo xià shān qù le",
-                  "english": "couldn't wait any longer and ran down the mountain"
+                  "traditional": "受不了，就到附近的商店買衣服",
+                  "simplified": "受不了，就到附近的商店买衣服",
+                  "pinyin": "shòu bù liǎo, jiù dào fùjìn de shāngdiàn mǎi yīfu",
+                  "english": "couldn't bear it and bought clothes at a shop nearby"
                 }
               ],
               "key": 1,
-              "why": "冷得連話都說不清楚: Vs 得 + a result shows how cold they were, and they could only keep waiting under the tree. All four fit after 冷得, but they had left the raincoats at home, could not reach the owner, and were still there when the rain went on all night.",
+              "why": "冷得連話都說不清楚: Vs 得 + a result shows how cold they were, and they could only keep waiting under the tree. All four fit after 冷得, but they had left the raincoats at home, could not reach the owner, and 附近沒有商店: there was no shop to go to.",
               "focus": {
                 "zh": "Vs 得……",
                 "en": "so … that…"
@@ -2450,10 +2450,10 @@
           "kind": "reading",
           "format": "passage",
           "text": {
-            "traditional": "我弟弟從小就怕水，到了海邊，也只肯坐在海灘上看別人玩。去年夏天，他的同學都去上了游泳課，只有他不敢去。爸爸告訴他：「就算你學得比別人慢，也沒關係，我每個週末都陪你去練。」第一個月，弟弟一下水就緊張，常常喝了好幾口水。爸爸一點都不急，先讓他在水裡走，再教他把頭放進水裡，每次練完，還帶他去吃他最喜歡的冰。練了三個月，弟弟總算能自己游二十五公尺了。現在，每次一放假，他就吵著要去海邊，在水裡一玩就是一個下午，還說以後要當游泳老師。",
-            "simplified": "我弟弟从小就怕水，到了海边，也只肯坐在海滩上看别人玩。去年夏天，他的同学都去上了游泳课，只有他不敢去。爸爸告诉他：「就算你学得比别人慢，也没关系，我每个周末都陪你去练。」第一个月，弟弟一下水就紧张，常常喝了好几口水。爸爸一点都不急，先让他在水里走，再教他把头放进水里，每次练完，还带他去吃他最喜欢的冰。练了三个月，弟弟总算能自己游二十五公尺了。现在，每次一放假，他就吵着要去海边，在水里一玩就是一个下午，还说以后要当游泳老师。",
-            "pinyin": "Wǒ dìdi cóng xiǎo jiù pà shuǐ, dào le hǎibiān, yě zhǐ kěn zuò zài hǎitān shàng kàn biérén wán. Qùnián xiàtiān, tā de tóngxué dōu qù shàng le yóuyǒng kè, zhǐyǒu tā bù gǎn qù. Bàba gàosu tā: “Jiùsuàn nǐ xué de bǐ biérén màn, yě méi guānxi, wǒ měi ge zhōumò dōu péi nǐ qù liàn.” Dì yī ge yuè, dìdi yí xià shuǐ jiù jǐnzhāng, chángcháng hē le hǎojǐ kǒu shuǐ. Bàba yìdiǎn dōu bù jí, xiān ràng tā zài shuǐ lǐ zǒu, zài jiāo tā bǎ tóu fàng jìn shuǐ lǐ, měi cì liàn wán, hái dài tā qù chī tā zuì xǐhuān de bīng. Liàn le sān ge yuè, dìdi zǒngsuàn néng zìjǐ yóu èrshíwǔ gōngchǐ le. Xiànzài, měi cì yí fàngjià, tā jiù chǎo zhe yào qù hǎibiān, zài shuǐ lǐ yì wán jiù shì yí ge xiàwǔ, hái shuō yǐhòu yào dāng yóuyǒng lǎoshī.",
-            "english": "My younger brother has been afraid of water since he was small; at the seaside he would only sit on the beach and watch others play. Last summer all his classmates took swimming lessons, and only he didn't dare go. Dad told him, \"Even if you learn more slowly than others, it doesn't matter. I'll go and practise with you every weekend.\" In the first month my brother got nervous as soon as he got in the water and often swallowed mouthfuls of it. Dad was in no hurry at all: first he let him walk in the water, then taught him to put his head under, and after every practice took him out for his favourite shaved ice. After three months of practice, my brother could finally swim twenty-five metres on his own. Now, every time there's a holiday, he begs to go to the seaside, plays in the water for a whole afternoon, and says he wants to be a swimming teacher one day."
+            "traditional": "我弟弟從小就怕水，到了海邊，也只肯坐在海灘上看別人玩。去年夏天，他的同學都去上了游泳課，只有他不敢去。爸爸告訴他：「就算你學得比別人慢，也沒關係，我每個週末都陪你去練。」第一個月，弟弟一下水就緊張，常常喝到水。爸爸一點都不急，先讓他在水裡走，再教他把頭放進水裡，每次練完，還帶他去吃他最喜歡的冰。練了三個月，弟弟總算能自己游二十五公尺了。現在，每次一放假，他就吵著要去海邊，在水裡一玩就是一個下午，還說以後要當游泳老師。",
+            "simplified": "我弟弟从小就怕水，到了海边，也只肯坐在海滩上看别人玩。去年夏天，他的同学都去上了游泳课，只有他不敢去。爸爸告诉他：「就算你学得比别人慢，也没关系，我每个周末都陪你去练。」第一个月，弟弟一下水就紧张，常常喝到水。爸爸一点都不急，先让他在水里走，再教他把头放进水里，每次练完，还带他去吃他最喜欢的冰。练了三个月，弟弟总算能自己游二十五公尺了。现在，每次一放假，他就吵着要去海边，在水里一玩就是一个下午，还说以后要当游泳老师。",
+            "pinyin": "Wǒ dìdi cóng xiǎo jiù pà shuǐ, dào le hǎibiān, yě zhǐ kěn zuò zài hǎitān shàng kàn biérén wán. Qùnián xiàtiān, tā de tóngxué dōu qù shàng le yóuyǒng kè, zhǐyǒu tā bù gǎn qù. Bàba gàosu tā: “Jiùsuàn nǐ xué de bǐ biérén màn, yě méi guānxi, wǒ měi ge zhōumò dōu péi nǐ qù liàn.” Dì yī ge yuè, dìdi yí xià shuǐ jiù jǐnzhāng, chángcháng hē dào shuǐ. Bàba yìdiǎn dōu bù jí, xiān ràng tā zài shuǐ lǐ zǒu, zài jiāo tā bǎ tóu fàng jìn shuǐ lǐ, měi cì liàn wán, hái dài tā qù chī tā zuì xǐhuān de bīng. Liàn le sān ge yuè, dìdi zǒngsuàn néng zìjǐ yóu èrshíwǔ gōngchǐ le. Xiànzài, měi cì yí fàngjià, tā jiù chǎo zhe yào qù hǎibiān, zài shuǐ lǐ yì wán jiù shì yí ge xiàwǔ, hái shuō yǐhòu yào dāng yóuyǒng lǎoshī.",
+            "english": "My younger brother has been afraid of water since he was small; at the seaside he would only sit on the beach and watch others play. Last summer all his classmates took swimming lessons, and only he didn't dare go. Dad told him, \"Even if you learn more slowly than others, it doesn't matter. I'll go and practise with you every weekend.\" In the first month my brother got nervous as soon as he got in the water and often swallowed water. Dad was in no hurry at all: first he let him walk in the water, then taught him to put his head under, and after every practice took him out for his favourite shaved ice. After three months of practice, my brother could finally swim twenty-five metres on his own. Now, every time there's a holiday, he begs to go to the seaside, plays in the water for a whole afternoon, and says he wants to be a swimming teacher one day."
           },
           "questions": [
             {
