@@ -4,6 +4,8 @@ import { createPortal } from 'react-dom';
 import type { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, SessionComplete, StreakMoment } from '../../features/practice';
+import { ChallengeResult } from '../../features/social';
+import type { ChallengeLink } from '../../../shared/challenge';
 import { buildMeasureWordChoices, buildWordTiles, createQuizRng, parseMeasureWord } from '../../utils/vocabulary/quizDirector';
 import { cn } from '../../utils/cn';
 import { MeasureWordFollowUp } from './formats/MeasureWordFollowUp';
@@ -36,7 +38,7 @@ const WORDS = [
 const [TEACHER, STUDENT, PRETTY, FRIEND, BOOK, CHINA, TAIWAN, EVERYONE] = WORDS;
 const SESSION_WORDS = ['新', '同學', '她', '誰', '叫', '漂亮', '英國', '中國', '臺灣', '什麼', '名字', '姓', '老師', '你好', '我', '你', '他', '是', '很'];
 
-type PreviewKey = 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'streak-1' | 'streak-6' | 'streak-100' | 'resume-cards' | 'resume-review' | 'resume-quiz';
+type PreviewKey = 'challenge-won' | 'challenge-lost' | 'challenge-tied' | 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'streak-1' | 'streak-6' | 'streak-100' | 'resume-cards' | 'resume-review' | 'resume-quiz';
 const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
   { key: 'audio-loading', label: 'Audio: downloading' },
   { key: 'audio-error', label: 'Audio: failed → retry' },
@@ -54,6 +56,9 @@ const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
   { key: 'match-miss', label: 'Bar: match missed' },
   { key: 'end-perfect', label: 'End: perfect' },
   { key: 'end-missed', label: 'End: 95%' },
+  { key: 'challenge-won', label: 'Challenge: won' },
+  { key: 'challenge-lost', label: 'Challenge: lost' },
+  { key: 'challenge-tied', label: 'Challenge: tie' },
   { key: 'streak-1', label: 'Streak: first day' },
   { key: 'streak-6', label: 'Streak: 5 → 6' },
   { key: 'streak-100', label: 'Streak: 99 → 100' },
@@ -109,8 +114,19 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
         nextStep={previewKey === 'end-perfect'
           ? { icon: 'dialogue', title: 'Read the dialogue', line: 'See these words in use', onSelect: noop }
           : { icon: 'tonesPractice', title: 'Practice tones', line: 'Hear a word, draw its tones', onSelect: noop }}
+        onChallenge={noop}
       />
     );
+  }
+
+  if (previewKey.startsWith('challenge-')) {
+    const link: ChallengeLink = {
+      code: 'MXSAMPLE', name: 'Mia', color: 'honey', selection: { book: 1, lessons: { 5: [1, 2, 3] }, types: [] },
+      correct: 17, total: 20, run: Array.from({ length: 20 }, (_, i) => (i + 1) * 9600), mine: false, friends: false,
+    };
+    const me = previewKey === 'challenge-won' ? { correct: 19, total: 20, ms: 168_000 }
+      : previewKey === 'challenge-lost' ? { correct: 14, total: 20, ms: 150_000 } : { correct: 17, total: 20, ms: 192_000 };
+    return <ChallengeResult link={link} me={me} onContinue={noop} onTryAgain={noop} onReviewMissed={me.correct < 20 ? noop : undefined} missedCount={20 - me.correct} />;
   }
 
   const single = PICK[previewKey];

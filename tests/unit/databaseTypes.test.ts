@@ -21,6 +21,7 @@ const MIGRATIONS_DIR = resolve(process.cwd(), 'supabase', 'migrations');
 
 /** Tables the migrations leave in `public` (post-drops). Keep in sync with the migrations. */
 const EXPECTED_TABLES = [
+  'challenges',
   'direct_messages',
   'direct_reads',
   'folder_members',
@@ -47,6 +48,7 @@ const EXPECTED_FUNCTIONS = [
   'report_user', 'submit_report',
   'friend_people', 'add_friend', 'remove_friend', 'direct_inbox', 'send_direct_message', 'mark_direct_read', 'save_profile_card',
   'claim_username', 'set_username', 'set_findable', 'find_classmates',
+  'create_challenge', 'challenge_card', 'accept_challenge_friend',
   'append_review_events',
   'block_user',
   'confirm_age',

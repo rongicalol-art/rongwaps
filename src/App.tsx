@@ -6,7 +6,8 @@ import { TAB_ROUTES, grammarPageSlugFromPathname, guidePageFromPathname, legalPa
 import { LazyLandingPage } from './screens/landing/LazyLandingPage';
 import { hasLessonReturn } from './utils/browser/lessonReturn';
 import { hasWordListReturn } from './utils/browser/wordListReturn';
-import { takeFolderReturn } from './utils/browser/shareLink';
+import { takeLinkReturn } from './utils/browser/shareLink';
+import { parseChallengePath } from '../shared/challengePath';
 
 const AppShell = lazy(() => import('./app/AppShell'));
 const GuideScreen = lazy(() => import('./screens/guides').then((m) => ({ default: m.GuideScreen })));
@@ -16,6 +17,7 @@ const WordListScreen = lazy(() => import('./screens/word-list').then((m) => ({ d
 const LegalScreen = lazy(() => import('./screens/legal').then((m) => ({ default: m.LegalScreen })));
 const AgeCheck = lazy(() => import('./screens/auth').then((m) => ({ default: m.AgeCheck })));
 const JoinFolderSignIn = lazy(() => import('./screens/join-folder/JoinFolderSignIn').then((m) => ({ default: m.JoinFolderSignIn })));
+const ChallengeSignIn = lazy(() => import('./screens/challenge/ChallengeSignIn').then((m) => ({ default: m.ChallengeSignIn })));
 
 /** Auth and legal pages never load the study workspace or start cloud sync. */
 export default function App() {
@@ -24,7 +26,7 @@ export default function App() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!currentUser) return;
-    const path = takeFolderReturn();
+    const path = takeLinkReturn();
     if (path) navigate(path, { replace: true });
     // Back from sign-in started on a lesson page: Learn opens that lesson (CurriculumLibrary).
     else if (location.pathname === '/' && hasLessonReturn()) navigate(TAB_ROUTES.path, { replace: true });
@@ -59,13 +61,17 @@ function RegularApp({ pathname }: { pathname: string }) {
   const wordList = wordListFromPathname(pathname);
   if (wordList) return <WordListScreen {...wordList} />;
   const legalPage = legalPageFromPathname(pathname);
-  return legalPage ? <LegalScreen page={legalPage} /> : <AuthenticatedWorkspace />;
+  return legalPage ? <LegalScreen page={legalPage} /> : <AuthenticatedWorkspace pathname={pathname} />;
 }
 
-function AuthenticatedWorkspace() {
+/** Signed in: the app (a challenge link opens over it). Signed out: the landing page, or a challenge's invite. */
+function AuthenticatedWorkspace({ pathname }: { pathname: string }) {
   const { currentUser, isLoading } = useAuth();
   if (isLoading) return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen />;
-  if (!currentUser && !import.meta.env.DEV) return <LazyLandingPage />;
+  if (!currentUser && !import.meta.env.DEV) {
+    const challenge = parseChallengePath(pathname);
+    return challenge ? <ChallengeSignIn address={challenge} /> : <LazyLandingPage />;
+  }
   return <SignedInApp />;
 }
 

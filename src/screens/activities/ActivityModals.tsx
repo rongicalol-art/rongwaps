@@ -58,7 +58,8 @@ export function ActivityModals({
   animateIn = true,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
-  const race = useAppStore(state => state.racePlaying ? state.race?.selection : null);
+  // A race or a challenge link brings its own quiz: book, lessons and parts.
+  const race = useAppStore(state => state.racePlaying ? state.race?.selection : state.challengePlaying ? state.challenge?.selection : null);
   const activeBookId = race ? race.book ?? 1 : selectedBookId;
   const raceSelection = race;
   const selectedLessons = useMemo(() => raceSelection ? Object.keys(raceSelection.lessons).map(Number) : savedLessons, [raceSelection, savedLessons]);

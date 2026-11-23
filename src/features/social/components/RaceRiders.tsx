@@ -4,7 +4,7 @@ import { useProfileAvatar } from '../../../hooks/useProfileAvatar';
 import { socialColor, type SocialColor } from '../../../../shared/quizRace';
 
 /** Solid fill per profile colour. */
-const FILL: Record<SocialColor, string> = {
+export const FILL: Record<SocialColor, string> = {
   blue: 'bg-brand-primary',
   honey: 'bg-feedback-warning',
   jade: 'bg-feedback-success',

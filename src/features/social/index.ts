@@ -1,8 +1,12 @@
-/** Study together (presence, the class chat, quiz races). The live root (`SocialRoot`) is lazy-loaded by the app shell. */
+/** Study together (presence, the class chat, quiz races, challenge links). The live root (`SocialRoot`) is lazy-loaded by the app shell. */
 export { GlobalPresenceButton, LessonFaces, HereButton, ChallengeCard } from './components/Presence';
 export { PracticeFaces } from './components/PracticeFaces';
 export { RaceBar, useRaceFill } from './components/RaceRiders';
 export { useRaceQuiz, useRaceReady, useRaceReporter } from './useRaceQuiz';
+export { ChallengeGhost, useChallengeRide } from './components/ChallengeGhost';
+export { ChallengeResult } from './components/ChallengeResult';
+export { challengeSelection, endChallenge, playChallenge, shareChallenge, useChallengeQuiz } from './challenge';
+export { ChallengeInvite, challengeLessonLine } from './components/ChallengeInvite';
 export { lessonKey } from '../../store/slices/socialSlice';
 export { BlockedPeople } from './components/BlockedPeople';
 export { StudyTogetherSettings } from './components/StudyTogetherSettings';

@@ -56,6 +56,8 @@ export interface SessionCompleteProps {
   onStudyAllAgain?: () => void;
   /** Real sessions only: Continue first plays the streak moment when today's study raised the streak (once a day). */
   celebrateStreak?: boolean;
+  /** A lesson quiz can be shared as a challenge link: a quiet action under the buttons. */
+  onChallenge?: () => void;
   /** One fitting next activity, offered as a card above Continue. */
   nextStep?: SessionNextStep | null;
 }
@@ -90,7 +92,7 @@ export function StatTile({ label, icon, shown, format, frameClass, inkClass, bod
 }
 
 /** Shared session end screen with a clear Continue action and optional review/restart choices. */
-export function SessionComplete({ headline: customHeadline, reviewLabel = 'Review missed', words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain, celebrateStreak = false, nextStep = null }: SessionCompleteProps) {
+export function SessionComplete({ headline: customHeadline, reviewLabel = 'Review missed', words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain, celebrateStreak = false, nextStep = null, onChallenge }: SessionCompleteProps) {
   const reduceMotion = Boolean(useReducedMotion());
   const isPerfect = pct >= 100;
   const total = words.length;
@@ -405,6 +407,12 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
           {onStudyAllAgain && (
             <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" className="!bg-ui-surface !text-ui-muted-strong hover:!bg-ui-hover uppercase tracking-normal" onClick={onStudyAllAgain}>
               Study all again
+            </ActionButton>
+          )}
+          {/* Optional and social: a quiet text action, never a third boxed button. */}
+          {onChallenge && (
+            <ActionButton variant="quiet" fullWidth onClick={onChallenge} className="mt-1 gap-2">
+              <AppIcon name="share" size={18} />Challenge a classmate
             </ActionButton>
           )}
         </div>
