@@ -1,12 +1,12 @@
-import { reviewDay, dailyReviewGoal } from '../../../utils/srs/reviewSession';
+import { reviewDay, dailyReviewGoal } from '../utils/srs/reviewSession';
 import { useMemo, useRef } from 'react';
-import { useAppStore } from '../../../store/useAppStore';
-import { computeReviewOverview, isSrsDue, type ReviewOverview } from '../../../utils/srs/reviewOverview';
+import { useAppStore } from '../store/useAppStore';
+import { computeReviewOverview, isSrsDue, type ReviewOverview } from '../utils/srs/reviewOverview';
 
 /**
- * Live Library overview derived purely from local SRS state. Pure and fast
- * (single pass over the SRS map), so it is safe to run on every render of
- * the Library tab.
+ * Live daily-review overview (Library card, Learn review row) derived purely
+ * from local SRS state. Pure and fast (single pass over the SRS map), so it is
+ * safe to run on every render.
  *
  * When an active practice activity is open, subscription to srsData and
  * learnedCards is paused to avoid background re-renders on every card swipe.
@@ -40,6 +40,7 @@ export function useReviewOverview(): ReviewOverview {
       dailyCompleted: plan?.day === today ? plan.completed : goal.completed,
       dailyCount: plan?.day === today ? plan.cardIds.filter(id => !(id in plan.answers)).length
         : Math.min(base.dueCount, Math.max(0, goal.capacity - Object.keys(goal.answers).length)),
+      dailyAnswered: reviewedToday.size,
       extraDueCount,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `minute` is the clock input
