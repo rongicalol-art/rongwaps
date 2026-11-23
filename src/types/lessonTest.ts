@@ -74,6 +74,8 @@ export interface LessonTestQuestion {
 interface ItemBase {
   id: string;
   questions: LessonTestQuestion[];
+  /** Set by the export (pack only): the content fingerprint the anonymous answer counts are kept under. */
+  edition?: string;
 }
 
 /** Hear a sentence (or a short exchange), pick one of three pictures. TOCFL Novice 聽力 1 / Band A 問答理解. */

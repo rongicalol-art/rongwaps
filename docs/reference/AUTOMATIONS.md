@@ -89,6 +89,8 @@ The owner replies "do 1 and 3": the lead opens one task thread per pick, intervi
 
 `scripts/release/learner-report.sql` (read-only, inside a read-only transaction) → `scripts/release/learnerReport.mjs` → the `learner-report` artifact and the run's summary (`.github/workflows/learner-report.yml`), made fresh by the morning thread at 10:00 Taiwan, with a daily schedule as a fallback. The run is read-only and posts nothing, so extra runs are harmless. It counts active learners (answered at least one card) by day, week and month; new accounts; who came back; study minutes and where (daily review, quizzes, flashcards…); busiest and quietest hours, so releases go out in the quietest hours; the most studied lessons; the hardest words; and Study together and friends activity.
 
+A second read-only query, `scripts/release/test-questions.sql`, adds **Test questions to check**: lesson test questions with 30+ anonymous first-run answers to their current wording that few get right, where a wrong choice beats the key, or where strong runs miss more than weak ones (`scripts/release/testQuestionStats.mjs`). Until the `20261124120000` migration is on production the workflow skips that query and the section says there's no data yet.
+
 The privacy policy allows "anonymous, combined statistics only", so the report never shows an account id, name or email. A lesson, word or group row appears only once 3 or more learners are in it, so no row can point at one person. "Online" for the whole app isn't recorded; "seen in Study together" is the closest number.
 
 ## Owner steps
