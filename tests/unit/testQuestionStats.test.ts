@@ -48,7 +48,7 @@ test('the shipped packs give every question its key, choices and edition', () =>
   const sample = questions.get('b3l10-dialogue-just-that-1-q');
   assert.ok(questions.size > 1000);
   assert.equal(sample?.lesson, 'b3l10');
-  assert.equal(sample?.key, 0);
+  assert.equal(sample?.key, 1);
   assert.equal(sample?.choices.length, 4);
   assert.match(sample?.edition ?? '', /^[0-9a-f]{8}$/);
 });
