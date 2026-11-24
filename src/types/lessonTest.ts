@@ -7,6 +7,7 @@ import type { SentenceAudio } from './grammarPractice';
  */
 
 export type LessonTestPart = 'listening' | 'reading';
+export type LessonTestMode = 'both' | LessonTestPart;
 export type LessonTestBand = 'A' | 'B';
 
 /** Chinese text with its reading and meaning (shown after the test, in the Fix round). */
@@ -150,6 +151,11 @@ export interface ReadingItem extends ItemBase {
   format: 'message' | 'notice' | 'passage' | 'table';
   title?: TestText;
   text: TestText;
+  /** The text printed as the real object (a poster, a sign, a timetable), as TOCFL prints its realia. The test
+   *  shows the picture; the booklet and the Fix round's Script still read `title` and `text`. */
+  picture?: string;
+  /** What the picture shows, for screen readers (its writing follows from `title` and `text`). */
+  alt?: string;
 }
 
 export type LessonTestItem =

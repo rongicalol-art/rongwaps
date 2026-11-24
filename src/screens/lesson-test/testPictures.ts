@@ -18,6 +18,7 @@ export function itemPictureUrls(item: LessonTestItem): string[] {
   const names: (string | undefined)[] = [];
   if (item.kind === 'picture-hear') names.push(item.picture.picture);
   if (item.kind === 'realia' || item.kind === 'scene-gap') names.push(item.picture);
+  if (item.kind === 'reading') names.push(item.picture);
   for (const question of item.questions) for (const choice of question.choices ?? []) names.push(choice.picture);
   return names.map(testPicture).filter((url): url is string => Boolean(url));
 }

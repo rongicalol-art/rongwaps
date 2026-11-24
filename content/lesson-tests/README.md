@@ -77,7 +77,7 @@ always `{ traditional, simplified, pinyin, english }` with tone-mark pinyin.
 | `realia` | 看圖釋義 | a menu, receipt or notice; which statement is true | `transcript` = the exact writing in the picture |
 | `scene-gap` | 選詞填空 | one scene picture, gap sentences (＿＿) | each question has `answer` (the full sentence); a reply line follows `——` |
 | `paragraph-bank` | 完成段落 | paragraph with `{1}`…`{n}`, a word bank with one extra | `bank.length = blanks + 1`; each word used once |
-| `reading` | 看圖釋義 · 閱讀理解 | a notice card, message or short passage, one question | `format`: `message` (last line is the signature), `notice`, `table`, `passage`; 3 choices on a notice card, 4 on a text |
+| `reading` | 看圖釋義 · 閱讀理解 | a notice card, message or short passage, one question | `format`: `message` (last line is the signature), `notice`, `table`, `passage`; 3 choices on a notice card, 4 on a text. A notice or table may carry `picture` + `alt`: the test shows it printed as the real object (a poster, a sign, a timetable board, as TOCFL prints its realia), and the booklet and Script still read its text |
 
 Book 1 has about 7 picture questions out of 20; Book 2 is text and audio with no new pictures.
 
@@ -85,7 +85,8 @@ Book 1 has about 7 picture questions out of 20; Book 2 is text and audio with no
 
 Book 2 is A2 heading into B1 (`docs/reference/TOCFL.md`), so its tests grow up through the book and meet Book 3's shape
 at Lesson 16. No new drawings: Book 2's reading art is an older style, so a picture question uses one of the lesson's
-two reading pictures (`reading:<id>`), and timetables, ads, notices and messages are `reading` cards the app draws.
+two reading pictures (`reading:<id>`). Messages and passages are `reading` cards the app draws; notices and tables
+are `reading` items printed as posters (`picture`, see Pictures).
 Questions are pitched at the real exam: about a third need reasoning (a plan that changes, what someone means, what
 happens next), and every wrong answer is something the recording or text really says that is wrong here.
 
@@ -269,7 +270,10 @@ Quality gate before a lesson ships: two blind solvers agree on every key and fin
 answer; a solver given only the choices (no recording or text) does no better than chance; the
 `mandarin-content-qa` agent reviews it; then the owner's review.
 
-## Pictures (Book 1 only)
+## Pictures
+
+Book 1 draws its picture questions and realia; Books 2 and 3 draw only their notices and tables as posters
+(`reading` items with `picture`, named after the item id). The same pipeline and review apply.
 
 Drawn by Codex image generation from a written brief, never in code. Style: the owner's lesson covers
 (`scripts/assets/lesson-test-art/style.txt` is their master prompt from `docs/reference/READING_ART_PROMPTS.md`;
