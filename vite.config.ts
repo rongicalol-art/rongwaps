@@ -19,13 +19,20 @@ function chineseFontStylesPlugin(): Plugin {
     enforce: 'pre',
     async load(id) {
       const [file, query] = id.split('?');
-      const family = new URLSearchParams(query).get('family');
+      const params = new URLSearchParams(query);
+      const family = params.get('family');
+      // `slices=core|rare`: the course's glyphs, or the rest (marked by scripts/fonts/split-chinese-fonts.py).
+      const slices = params.get('slices');
       if (!family || file !== path.resolve(__dirname, 'src/styles/fonts.generated.css')) return;
       if (!families.has(family)) throw new Error('Unknown Chinese font family');
+      if (slices !== null && slices !== 'core' && slices !== 'rare') throw new Error('Unknown font slice set');
       this.addWatchFile(file);
       const source = await readFile(file, 'utf8');
-      return [...source.matchAll(/@font-face\s*\{[^}]+\}/g)]
-        .map(([face]) => face).filter((face) => face.includes(`font-family: '${family}'`)).join('\n');
+      const faces = [...source.matchAll(/@font-face\s*\{[^}]+\}/g)]
+        .map(([face]) => face).filter((face) => face.includes(`font-family: '${family}'`))
+        .filter((face) => !slices || face.includes(`/* ${slices} */`));
+      if (slices && faces.length === 0) throw new Error(`No ${slices} slices for ${family}`);
+      return faces.join('\n');
     },
   };
 }
