@@ -83,6 +83,30 @@ test('a dictionary word without a recording is said by the cloud voice with its 
 
 });
 
+test('a dictionary character whose syllable has no recording is said by the cloud voice with its reading', async (t) => {
+  // 路 lù: the CNS lu4 file says lü, so the pack leaves lu4 out and keeps lü4.
+  const version = 'fedcba9876543210';
+  const readings: (string | undefined)[] = [];
+  t.mock.method(authService, 'getAccessToken', async () => 'learner-token');
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = String(input);
+    if (url.endsWith('/pronunciation-audio/manifest.json')) return Response.json({ schemaVersion: 1, version, count: 1, path: `/data/pronunciation-audio/${version}.json` });
+    if (url.includes('/pronunciation-audio/')) return Response.json({ schemaVersion: 1, version, count: 1, prefix: 'pronunciation/cns-female-20250113/', items: { 'lü4': 'lv4-0123456789ab.mp3' } });
+    readings.push(JSON.parse(String(init?.body)).reading);
+    return mp3();
+  });
+  const service = new AudioService();
+  const audio = FakeAudio.last;
+  let unavailable = 0;
+  const playback = service.playCard({ front: '路', pinyin: 'lù', source: 'dictionary' }, 1, { onUnavailable: () => unavailable++ });
+  await settle();
+  assert.deepEqual(readings, ['ㄌㄨˋ']);
+  audio.onended?.();
+  await playback;
+  assert.equal(unavailable, 0);
+  assert.equal(spoken.length, 0);
+});
+
 test('a dictionary word stays silent when the voice is out or its reading cannot be spelled', async (t) => {
   const asked = server(t, () => Response.json({ error: 'out' }, { status: 503 }));
   const service = new AudioService();

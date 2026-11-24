@@ -59,6 +59,12 @@ function courseCharacterReading(recordings: Map<string, Flashcard>, char: string
   return reading;
 }
 
+/** The reading a tile says: its own sound, or for a wrong-answer tile the one reading the course teaches. */
+export function wordBuildTileSound(card: Flashcard, char: string, recordings: Map<string, Flashcard>, index: ReadingsIndex | null = null): string | undefined {
+  return wordBuildTileReading(card, char, index)
+    ?? (!Array.from(card.front).includes(char) ? courseCharacterReading(recordings, char) : undefined);
+}
+
 /** The book's own recording of the character, else the recorded syllable. No whole-word fallback on a tile tap: it could reveal the answer. */
 export function resolveWordBuildTileAudio(
   card: Flashcard,
@@ -67,8 +73,7 @@ export function resolveWordBuildTileAudio(
   sounds?: Map<string, string>,
   index: ReadingsIndex | null = null,
 ): string | undefined {
-  const reading = wordBuildTileReading(card, char, index)
-    ?? (!Array.from(card.front).includes(char) ? courseCharacterReading(recordings, char) : undefined);
+  const reading = wordBuildTileSound(card, char, recordings, index);
   if (!reading) return undefined;
   const recording = findReadingMatch(recordings, [char], reading);
   return recording?.audio && audioService.isAudioFileName(recording.audio) ? recording.audio

@@ -14,6 +14,8 @@ export interface GenericContentManifest {
   parts?: import('./vocabulary/studyPack').StudyPart[];
   books?: Array<{ bookId: number; count: number; path: string; sha256?: string; bytes?: number }>;
   shards?: Array<{ shard: number; count: number; path: string; sha256?: string; bytes?: number }>;
+  /** Lesson tests only: one file per lesson, so a lesson window loads its own test and not the whole book's. */
+  lessons?: Array<{ bookId: number; lessonId: number; path: string; sha256?: string; bytes?: number }>;
 }
 
 export interface MemoryHookPackItem {
@@ -47,7 +49,8 @@ export type ContentPackKind =
   | 'dictionary-pos'
   | 'dictionary-examples'
   | 'dictionary-usage'
-  | 'lesson-tests';
+  | 'lesson-tests'
+  | 'lesson-test';
 
 const VALID_CONTENT_TYPES = new Set(['character', 'word', 'story']);
 
@@ -144,6 +147,24 @@ export function isValidLessonTestPack(pack: unknown, bookId: number, expectedCou
       && Array.isArray(lesson.slots)
       && lesson.slots.every((slot) => Array.isArray(slot?.versions) && slot.versions.length > 0)
     ));
+}
+
+/** Part key of one lesson's test file (Book 3 Lesson 5 -> 305). */
+export const lessonTestPartKey = (bookId: number, lessonId: number) => bookId * 100 + lessonId;
+
+export function isValidLessonTestFile(pack: unknown, partKey: number): boolean {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as { schemaVersion?: number; bookId?: number; lessonId?: number; sounds?: unknown; lesson?: { key?: unknown; bookId?: unknown; lessonId?: unknown; slots?: Array<{ versions?: unknown[] }> } };
+  const lesson = candidate.lesson;
+  return candidate.schemaVersion === 1
+    && typeof candidate.bookId === 'number' && typeof candidate.lessonId === 'number'
+    && lessonTestPartKey(candidate.bookId, candidate.lessonId) === partKey
+    && typeof candidate.sounds === 'object' && candidate.sounds !== null
+    && typeof lesson?.key === 'string'
+    && lesson.bookId === candidate.bookId
+    && lesson.lessonId === candidate.lessonId
+    && Array.isArray(lesson.slots)
+    && lesson.slots.every((slot) => Array.isArray(slot?.versions) && slot.versions.length > 0);
 }
 
 export function isValidDialogueAlignmentPack(pack: unknown, bookId: number, expectedCount: number): boolean {
@@ -264,6 +285,13 @@ export const getBookParts = (m: GenericContentManifest): PackPart[] => (m.books 
   path: b.path,
   count: b.count,
   sha256: b.sha256,
+}));
+
+export const getLessonTestParts = (m: GenericContentManifest): PackPart[] => (m.lessons || []).map((l) => ({
+  key: lessonTestPartKey(l.bookId, l.lessonId),
+  path: l.path,
+  count: 1,
+  sha256: l.sha256,
 }));
 
 export const getShardParts = (m: GenericContentManifest): PackPart[] => (m.shards || []).map((s) => ({
