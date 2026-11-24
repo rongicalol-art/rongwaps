@@ -11,7 +11,7 @@ import { cn } from '../../utils/cn';
 import { MeasureWordFollowUp } from './formats/MeasureWordFollowUp';
 import { PairMatch } from './formats/PairMatch';
 import { PickOne, type PickChoice, type PickPrompt } from './formats/PickOne';
-import { TrueFalseFlip } from './formats/TrueFalseFlip';
+import { PinyinType } from './formats/PinyinType';
 import { WordBuild } from './formats/WordBuild';
 import { CardsDone, ReviewDealIntro, CARD_SURFACE_CLASS } from '../flashcard';
 import { QuizShell } from './QuizShell';
@@ -38,7 +38,7 @@ const WORDS = [
 const [TEACHER, STUDENT, PRETTY, FRIEND, BOOK, CHINA, TAIWAN, EVERYONE] = WORDS;
 const SESSION_WORDS = ['新', '同學', '她', '誰', '叫', '漂亮', '英國', '中國', '臺灣', '什麼', '名字', '姓', '老師', '你好', '我', '你', '他', '是', '很'];
 
-type PreviewKey = 'challenge-won' | 'challenge-lost' | 'challenge-tied' | 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'streak-1' | 'streak-6' | 'streak-100' | 'resume-cards' | 'resume-review' | 'resume-quiz';
+type PreviewKey = 'challenge-won' | 'challenge-lost' | 'challenge-tied' | 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'type-pinyin' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'streak-1' | 'streak-6' | 'streak-100' | 'resume-cards' | 'resume-review' | 'resume-quiz';
 const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
   { key: 'audio-loading', label: 'Audio: downloading' },
   { key: 'audio-error', label: 'Audio: failed → retry' },
@@ -48,7 +48,7 @@ const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
   { key: 'pick-meaning', label: 'Pick the meaning' },
   { key: 'listen', label: 'Listen' },
   { key: 'pick-hanzi', label: 'Pick the character' },
-  { key: 'true-false', label: 'True or false' },
+  { key: 'type-pinyin', label: 'Type pinyin' },
   { key: 'pair-match', label: 'Pair match' },
   { key: 'sound-match', label: 'Sound match' },
   { key: 'word-build', label: 'Build the word' },
@@ -112,7 +112,7 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
         onContinue={noop}
         onReviewMissed={previewKey === 'end-missed' ? noop : undefined}
         nextStep={previewKey === 'end-perfect'
-          ? { icon: 'dialogue', title: 'Read the dialogue', line: 'See these words in use', onSelect: noop }
+          ? { icon: 'reading', title: 'Practice sentences', line: 'Hear and read the lesson’s sentences', onSelect: noop }
           : { icon: 'tonesPractice', title: 'Practice tones', line: 'Hear a word, draw its tones', onSelect: noop }}
         onChallenge={noop}
       />
@@ -130,7 +130,7 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
   }
 
   const single = PICK[previewKey];
-  const card = single?.card ?? (previewKey === 'true-false' ? FRIEND : previewKey === 'word-build' ? EVERYONE : BOOK);
+  const card = single?.card ?? (previewKey === 'type-pinyin' ? FRIEND : previewKey === 'word-build' ? EVERYONE : BOOK);
   let body: React.ReactNode = null;
   if (single) {
     body = (
@@ -139,11 +139,11 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
         isChecked={isChecked} onAnswer={answer} onOpenBreakdown={noop} breakdownOpen={false} activeBook={book} handoff={null}
       />
     );
-  } else if (previewKey === 'true-false') {
+  } else if (previewKey === 'type-pinyin') {
     body = (
-      <TrueFalseFlip
-        card={FRIEND} shown={TEACHER} isChecked={isChecked} onAnswer={answer}
-        onOpenBreakdown={noop} breakdownOpen={false} activeBook={book} handoff={null}
+      <PinyinType
+        card={FRIEND} status={status} onAnswer={answer}
+        onOpenBreakdown={noop} breakdownOpen={false} onReadyChange={setBuildReady} checkRef={buildCheck}
       />
     );
   } else if (previewKey === 'pair-match' || previewKey === 'sound-match' || previewKey === 'match-miss') {
@@ -174,6 +174,7 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
     );
   }
 
+  const needsCheck = previewKey === 'word-build' || previewKey === 'type-pinyin';
   const isMatch = previewKey === 'pair-match' || previewKey === 'sound-match' || previewKey === 'match-miss';
   return (
     <div className="absolute inset-0 overflow-y-auto">
@@ -185,9 +186,9 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
         correctAnswer={isMatch ? `${PRETTY.front} ${PRETTY.back}  ·  ${FRIEND.front} ${FRIEND.back}` : ''}
         word={isMatch ? undefined : { hanzi: card.front, pinyin: card.pinyin, meaning: card.back, simple: card.simple }}
         onContinue={() => setStatus('idle')}
-        onCheck={previewKey === 'word-build' && !isChecked ? () => buildCheck.current?.() : undefined}
-        showCheck={previewKey === 'word-build'}
-        isCheckDisabled={previewKey === 'word-build' ? !buildReady : status === 'idle'}
+        onCheck={needsCheck && !isChecked ? () => buildCheck.current?.() : undefined}
+        showCheck={needsCheck}
+        isCheckDisabled={needsCheck ? !buildReady : status === 'idle'}
         showContinueOnWrong
         onBreakdown={isMatch ? undefined : noop}
         activeBook={book}

@@ -6,7 +6,8 @@ import App from './App.tsx';
 import {ErrorBoundary} from './lib/widgets/ErrorBoundary';
 import { initializeErrorReporting, reportReactError } from './services/errorReporting';
 import './index.css';
-import './styles/fonts.generated.css?family=Huninn';
+// The default Chinese face: the course's glyphs ship with the first paint, rarer glyphs follow right after.
+import './styles/fonts.generated.css?family=Huninn&slices=core';
 import { startLayoutShiftMonitor } from './utils/debug/layoutShiftMonitor';
 import { startStaleBuildRecovery } from './utils/browser/staleBuildRecovery';
 
@@ -32,3 +33,7 @@ createRoot(document.getElementById('root')!, {
     </ErrorBoundary>
   </StrictMode>,
 );
+
+// Glyphs outside the course text (dictionary searches, rare names): declared after the first paint so the
+// first stylesheet stays small. Their font files load only when such a glyph shows up, as before.
+void import('./styles/fonts.generated.css?family=Huninn&slices=rare').catch(() => {}); // Offline: native fonts still draw them.

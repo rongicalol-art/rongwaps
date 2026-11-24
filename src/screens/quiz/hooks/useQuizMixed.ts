@@ -1,6 +1,7 @@
 import { useQuizAnswerAudio } from './useQuizAnswerAudio';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
+import { audioService } from '../../../services/audioService';
 import { useAppStore, type MatchPairType } from '../../../store/useAppStore';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
@@ -102,7 +103,10 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   }, [beats]);
   const beatIndex = Math.max(0, starts.findIndex((start, i) => currentIndex >= start && currentIndex < start + beats[i].cards.length));
   const beat: QuizBeat | undefined = beats[beatIndex];
-  const audioBeats = useMemo(() => beats.slice(beatIndex, beatIndex + (seed ? 5 : 2)), [beats, beatIndex, seed]);
+  const audioBeats = useMemo(
+    () => beats.slice(beatIndex, beatIndex + (seed ? 5 : 2)).filter((question) => question.format !== 'type-pinyin'),
+    [beats, beatIndex, seed],
+  );
   // Typed like useCardSession's card (undefined only before the deck loads; the shell renders nothing then).
   const currentCard = beat?.cards[0] as Flashcard;
   const beatEnd = beat ? starts[beatIndex] + beat.cards.length : 0;
@@ -113,7 +117,12 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
     const card = beat.cards[0];
     setStatus(correct ? 'correct' : 'wrong');
     if (!correct && confusedWithId) useAppStore.getState().recordConfusion(card.id, confusedWithId);
-    playWord(card);
+    if (beat.format === 'type-pinyin' && correct) {
+      // Overlap keeps the pronunciation audible as the next question opens.
+      void audioService.playCard(card, useAppStore.getState().pronunciationRate, { overlap: true });
+    } else {
+      playWord(card);
+    }
     session.recordAnswer(card, correct ? 4 : 2);
     if (correct && beat.format === 'pick-meaning' && !isReviewPass && !measureUsed.current && parseMeasureWord(card.back)) {
       measureUsed.current = true;

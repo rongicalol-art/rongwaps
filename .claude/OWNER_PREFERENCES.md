@@ -19,8 +19,8 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - Helper content that isn't the main task (hints, examples) sits behind a quiet toggle. Settings are plain label-and-control pairs. Longer study extras open from a button into a sheet (side panel on desktop) rather than unfolding into the screen: the owner picked the lesson test's Script sheet over a speaker that opens in place. In the mock test's Fix round, the feedback bar shows the reason. The answer text, pinyin, and translation belong in Script.
 - On a long review page (the test's Scripts & answers), pinyin and English start hidden behind Pinyin and English buttons. Pinyin goes over the characters as in the Reader, never on a line of its own, and a line's play button sits at the end of its text, not in a column of its own: both pushed the text onto extra lines ("too much space").
 - A button that can't be used is clutter: if a mode has no content, leave the action out instead of showing it disabled.
-- An icon-only button hides what it does (phones have no hover): the lesson's Practice button carries its word. Beside the primary it stays plain white, so Start is plainly the one coloured action; a gold edge there competed with it.
-- End screens keep few buttons: one suggested next step, Continue, and Review missed only when words were missed. "Study all again" after a quiz was cut as one too many.
+- The lesson's Practice hub is a square logo-only button (gold edge, "Practice hub" tooltip and label for screen readers) beside the full Start button. A text "Practice" link under Start looked like floating text and took a row (2026-11-23).
+- End screens keep few buttons: one suggested next step (Sentences when the lesson part has them, not the reading), Continue, and Review missed only when words were missed. "Study all again" after a quiz was cut as one too many.
 - An optional, social extra on an end screen (Challenge a classmate on the quiz result) is a quiet accent text action under the buttons, never another boxed button: one more boxed button in the stack read as "too many buttons".
 - A landing page for one action says its message once: the picture, one headline, one quiet line, the button. A "Mia challenged you" row plus a headline plus a lesson line plus a two-line legal note read as "too messy"; the sender's face sits on the picture's edge instead.
 
@@ -81,10 +81,9 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 
 ## 4. Learning and product rules
 
-- **Every quiz question tests meaning:** hanzi → meaning, audio → meaning, or meaning → hanzi. Never pinyin or hanzi alone.
+- **Mixed quiz tests meaning through five tap formats.** Pick the meaning, listen and pick, pick the character, match pairs, and build the word. Pinyin typing replaces True or false in the picker and runs only when selected, on its own or alongside other types.
 - **Fair:** every question type is open to every word. Only the data limits it: listening needs audio, and build-the-word needs 2-4 characters.
-- **Fast modes never pause for feedback.** In Type mode a right answer moves on at once; its word and meaning pop up as a small tile where the feedback bar lives and slide away on their own. A hold before the next word broke the flow, and a quiet line carried over above the input looked out of place.
-- **Quick true or false:** one tap (No / Yes), no follow-up question. The feedback bar shows the real meaning, and a wrong meaning that was shown is struck through.
+- **Fast modes never pause for feedback.** Pinyin moves on at once. Whenever a correct single-word quiz answer skips the feedback bar, its word and meaning pop up in a small green-bordered tile (plain looked too bare) and slide away on their own. Pair matches already show the word and meaning on the matched tiles. A hold before the next word broke the flow, and a quiet line above the input looked out of place.
 - **The learner picks the quiz:** Mixed (default, recommended) or any set of single types, before every vocab quiz. Only types the deck can use are offered; words that fit none of the picked types are left out.
 - **Full coverage:** every word in the quiz is asked exactly once per pass. Misses come back in the review round, in the same picked types.
 - **Audio is the high-quality recording.** Avoid the robotic text-to-speech voice wherever a recording exists. Play the word after every answer.

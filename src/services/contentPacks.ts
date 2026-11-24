@@ -5,13 +5,14 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
-import type { LessonTestPack } from '../types/lessonTest';
+import type { LessonTestFile, LessonTestPack } from '../types/lessonTest';
 import { createPackLoader, type PackLoader } from './packLoader';
 import { fetchContent, fetchStaticJson } from './staticContentService';
 import {
   type ContentPackKind,
   type GenericContentManifest,
   getBreakdownShard,
+  lessonTestPartKey,
   recordsToExampleCards,
   resolveMnemonicFromMap,
   type LevelIndex,
@@ -356,6 +357,19 @@ export async function fetchLessonTestPack(bookId: number): Promise<LessonTestPac
     return await loadPack<LessonTestPack>('lesson-tests', bookId);
   } catch (error) {
     debugLogger.warn('Cache', `Lesson test pack unavailable for book ${bookId}.`, error);
+    return null;
+  }
+}
+
+/** One lesson's test, without the rest of its book (null when the lesson has none yet or it can't load). */
+export async function fetchLessonTest(bookId: number, lessonId: number): Promise<LessonTestFile | null> {
+  const key = lessonTestPartKey(bookId, lessonId);
+  try {
+    const manifest = await getPackManifest('lesson-test');
+    if (!manifest.lessons?.some((entry) => lessonTestPartKey(entry.bookId, entry.lessonId) === key)) return null;
+    return await loadPack<LessonTestFile>('lesson-test', key);
+  } catch (error) {
+    debugLogger.warn('Cache', `Lesson test unavailable for book ${bookId} lesson ${lessonId}.`, error);
     return null;
   }
 }

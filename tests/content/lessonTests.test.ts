@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { readFileSync, readdirSync } from 'node:fs';
 import { readJson } from '../acceptance_helpers';
-import type { LessonTestLesson, LessonTestPack } from '../../src/types/lessonTest';
+import type { LessonTestFile, LessonTestLesson, LessonTestPack } from '../../src/types/lessonTest';
+import { isValidLessonTestFile, lessonTestPartKey, type GenericContentManifest } from '../../src/utils/packValidators';
 import { loadLessonTestContext, pictureProblems, runProblems, scopeProblems, structureProblems } from '../../scripts/content/lessonTestRules';
+import { lessonTestEdition } from '../../scripts/content/lessonTestEdition';
 
 /**
  * Authored lesson tests (content/lesson-tests): only taught words, TOCFL-shaped questions with one key each,
@@ -38,8 +41,13 @@ test('the exported pack matches the authored tests, and every spoken line has a 
     const pack = readJson<LessonTestPack>(`public/data/lesson-tests/book-${lesson.bookId}.json`);
     const exported = pack.items.find((item) => item.key === lesson.key);
     if (!exported) { problems.push(`${lesson.key}: not exported (npm run lesson-tests:export)`); continue; }
-    // The pack is the authored lesson plus recordings: without its `audio` fields it must be identical.
-    const withoutAudio = JSON.parse(JSON.stringify(exported, (field, value) => (field === 'audio' ? undefined : value)));
+    // The pack is the authored lesson plus recordings and content fingerprints: without them it must be identical.
+    const withoutAudio = JSON.parse(JSON.stringify(exported, (field, value) => (field === 'audio' || field === 'edition' ? undefined : value)));
+    for (const [slotIndex, slot] of lesson.slots.entries()) {
+      for (const [index, version] of slot.versions.entries()) {
+        if (exported.slots[slotIndex]?.versions[index]?.edition !== lessonTestEdition(version)) problems.push(`${version.id}: edition is out of date (npm run lesson-tests:export)`);
+      }
+    }
     if (JSON.stringify(withoutAudio) !== JSON.stringify(lesson)) problems.push(`${lesson.key}: pack is out of date (npm run lesson-tests:export)`);
     const visit = (node: unknown, path: string): void => {
       if (!node || typeof node !== 'object') return;
@@ -53,5 +61,25 @@ test('the exported pack matches the authored tests, and every spoken line has a 
       problems.push(`book ${lesson.bookId}: the ding or a letter has no recording`);
     }
   }
+  assert.deepEqual(problems, []);
+});
+
+test('every lesson has its own test file, the same as in its book pack and listed in the manifest', () => {
+  const manifest = readJson<GenericContentManifest>('public/data/lesson-tests/manifest.json');
+  const problems: string[] = [];
+  const listed = new Set<string>();
+  for (const entry of manifest.lessons ?? []) {
+    listed.add(`b${entry.bookId}l${String(entry.lessonId).padStart(2, '0')}`);
+    const text = readFileSync(`public${entry.path}`, 'utf8');
+    const file = JSON.parse(text) as LessonTestFile;
+    const pack = readJson<LessonTestPack>(`public/data/lesson-tests/book-${entry.bookId}.json`);
+    const inBook = pack.items.find((item) => item.lessonId === entry.lessonId);
+    if (!isValidLessonTestFile(file, lessonTestPartKey(entry.bookId, entry.lessonId))) problems.push(`${entry.path}: not a valid lesson test file`);
+    if (createHash('sha256').update(text).digest('hex') !== entry.sha256) problems.push(`${entry.path}: sha256 differs from the manifest`);
+    if (JSON.stringify(file.lesson) !== JSON.stringify(inBook) || JSON.stringify(file.sounds) !== JSON.stringify(pack.sounds)) {
+      problems.push(`${entry.path}: differs from book-${entry.bookId}.json (npm run lesson-tests:export)`);
+    }
+  }
+  for (const lesson of lessons) if (!listed.has(lesson.key)) problems.push(`${lesson.key}: no lesson file in the manifest (npm run lesson-tests:export)`);
   assert.deepEqual(problems, []);
 });

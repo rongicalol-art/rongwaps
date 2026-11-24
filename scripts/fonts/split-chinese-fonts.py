@@ -5,9 +5,12 @@ Source fonts: content/fonts/<name>.woff2 (not shipped).
 Output:       public/fonts/<name>/<name>.<n>.woff2  +  src/styles/fonts.generated.css
 
 Slice 0 is the "core": every Han char used by the app's learner content, the
-TOCFL level lists and basic punctuation. Core is chunked to ~CORE_BUDGET*0.8 per slice
+TOCFL level lists and basic punctuation. Core is chunked to ~CORE_BUDGET*0.9 per slice
 into slices 0..k by usage frequency. Remaining glyphs go by codepoint order
 into ~SLICE_BYTES slices. Output is deterministic.
+
+Each face is marked /* core */ or /* rare */: the app ships the default face's core
+slices in the first stylesheet and adds the rare ones after the first paint (vite.config.ts).
 
 Run: npm run fonts:split
 """
@@ -123,7 +126,8 @@ def build(job):
 
     # Core glyphs are simpler/more compressible than the rare tail: calibrate on the real core slice.
     core_ratio = len(make_slice(src, core_sorted)) / sum(gsz(c) for c in core_sorted)
-    groups = chunk(core_sorted, CORE_BUDGET * 0.9, core_ratio) + chunk(rest, SLICE_BYTES)
+    core_groups = chunk(core_sorted, CORE_BUDGET * 0.9, core_ratio)
+    groups = core_groups + chunk(rest, SLICE_BYTES)
     outdir = os.path.join(OUT, name)
     os.makedirs(outdir, exist_ok=True)
     for f in os.listdir(outdir):
@@ -135,7 +139,7 @@ def build(job):
             fh.write(data)
         sizes.append(len(data))
         css.append(
-            f"@font-face {{\n  font-family: '{family}';\n  src: url('/fonts/{name}/{name}.{i}.woff2') format('woff2');\n"
+            f"@font-face {{\n  /* {'core' if i < len(core_groups) else 'rare'} */\n  font-family: '{family}';\n  src: url('/fonts/{name}/{name}.{i}.woff2') format('woff2');\n"
             f"  font-weight: {weight};\n  font-style: normal;\n  font-display: swap;\n  unicode-range: {ranges(g)};\n}}\n")
     return (name, len(src), len(cmap), len(core), sizes), ''.join(css)
 

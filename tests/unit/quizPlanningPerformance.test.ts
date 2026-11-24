@@ -35,7 +35,7 @@ test('worker plans preserve original card references, deterministic choices and 
     terminate() { this.terminated = true; }
     complete() {
       const beats: PlannedBeat[] = planQuizRound(this.payload.cards, this.payload.options).map((beat) => ({
-        ...beat, cards: beat.cards.map((card) => card.id), options: beat.options?.map((card) => card.id), shown: beat.shown?.id,
+        ...beat, cards: beat.cards.map((card) => card.id), options: beat.options?.map((card) => card.id),
       }));
       this.onmessage?.({ data: { beats } } as MessageEvent);
     }

@@ -54,7 +54,7 @@ export function LandingPage() {
                 Practice <span className="whitespace-nowrap font-chinese text-brand-primary-text">時代華語</span> one lesson at a time
               </h1>
               <p className="mt-8 text-lg font-bold leading-relaxed text-ui-muted-strong lg:mt-10 text-balance lg:text-xl">
-                Read-along lessons, grammar, book exercises, flashcards and TOCFL mock tests for the Taiwan textbook.
+                Read-along lessons, grammar, book exercises, flashcards and TOCFL-style mock tests for the Taiwan textbook.
               </p>
               <GoogleSignInButton onClick={start} busy={isBusy} className="mt-10 lg:mt-14" />
               {error && <SignInMessageNote message={error} className="mt-3" />}

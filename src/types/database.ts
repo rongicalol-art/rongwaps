@@ -329,6 +329,7 @@ export interface Database {
       add_friend: { Args: { p_user: string }; Returns: string };
       /** Challenge links (20261123130000): share a lesson quiz run, read it by code, befriend its sender in one tap. */
       create_challenge: { Args: { p_code: string; p_selection: Json; p_correct: number; p_total: number; p_run: number[] }; Returns: undefined };
+      record_lesson_test_answers: { Args: { p_lesson: string; p_answers: Json }; Returns: undefined };
       challenge_card: { Args: { p_code: string }; Returns: Json | null };
       accept_challenge_friend: { Args: { p_code: string }; Returns: string };
       remove_friend: { Args: { p_user: string }; Returns: undefined };

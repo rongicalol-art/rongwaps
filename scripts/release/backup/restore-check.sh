@@ -20,6 +20,25 @@ NAME="rongwaps-restore-check-$$"
 SCHEMAS=(auth storage public private supabase_migrations)
 started=$(date +%s)
 
+# Registries refuse pulls now and then (public ECR answered "Data limit exceeded"
+# once and blocked a production migration), so retry, then try Docker Hub's copy
+# of the same Supabase image before giving up.
+pull() {
+  local ref=$1
+  for wait in 0 15 45; do
+    sleep "$wait"
+    docker pull -q "$ref" > /dev/null && return 0
+  done
+  return 1
+}
+if ! docker image inspect "$IMAGE" > /dev/null 2>&1 && ! pull "$IMAGE"; then
+  [[ $IMAGE == public.ecr.aws/supabase/* ]] || exit 1
+  mirror="docker.io/${IMAGE#public.ecr.aws/}"
+  echo "restore-check: $IMAGE unavailable, using $mirror" >&2
+  pull "$mirror"
+  IMAGE=$mirror
+fi
+
 docker run -d --name "$NAME" --network none -e POSTGRES_PASSWORD="$(openssl rand -hex 16)" \
   "$IMAGE" postgres -D /etc/postgresql -c cron.launch_active_jobs=off > /dev/null
 trap 'docker rm -f "$NAME" > /dev/null 2>&1 || true' EXIT

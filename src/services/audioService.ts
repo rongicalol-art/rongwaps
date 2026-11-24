@@ -281,7 +281,7 @@ export class AudioService {
 
   /**
    * Reading-checked dictionary/custom cards must never guess their reading: a character plays its syllable
-   * recording, and a longer word is said by the cloud voice with the card's own reading spelled out for it.
+   * recording (the cloud voice with that reading when there is none), and a longer word is said by the cloud voice with the card's own reading spelled out for it.
    */
   public playCard(card: Pick<Flashcard, 'audio' | 'front' | 'source'> & { pinyin?: string }, rate?: number, options?: PlayOptions): Promise<void> {
     const effectiveRate = rate ?? this.defaultRate;
@@ -293,7 +293,10 @@ export class AudioService {
           if (this.activePlaybackFinish !== finish) return;
           this.activePlaybackFinish = null; // Transfer cancellation ownership to recorded playback.
           playbackWaiting.carryOwner();
-          void this.play(audio, effectiveRate, undefined, undefined, 0, { ...options, fallback: 'none' }).then(finish, finish);
+          // No recording of this syllable: the cloud voice says the character with the card's own reading.
+          const reading = audio ? null : wordBopomofo(card.front, card.pinyin);
+          void (reading ? this.speakReading(card.front, reading, effectiveRate, options)
+            : this.play(audio, effectiveRate, undefined, undefined, 0, { ...options, fallback: 'none' })).then(finish, finish);
         }, () => { if (this.activePlaybackFinish === finish) { options?.onUnavailable?.(); finish(); } });
       });
     }

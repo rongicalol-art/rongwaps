@@ -13,6 +13,8 @@ import {
   type LessonTestScreen,
 } from '../../../utils/lesson/lessonTestPlan';
 import type { LessonTestAttempt } from '../../../store/slices/lessonTestSlice';
+import { shareLessonTestAnswers } from '../../../services/lessonTestStatsService';
+import { lessonTestAnswerCounts } from '../../../utils/lesson/lessonTestAnswerStats';
 
 export type TestStage = 'intro' | 'question' | 'results' | 'fix' | 'done';
 
@@ -83,6 +85,10 @@ export function useLessonTestRun(lesson: LessonTestLesson, mode: LessonTestMode 
     const score = scoreLessonTest(lesson, attempt.plan, attempt.answers);
     const seconds = Math.round((Date.now() - attempt.startedAt) / 1000);
     const rescheduled = reviewMissedWords(score.missed.map(({ question }) => question), attempt.plan.seed);
+    // Only a lesson's first finished run (no score saved yet, on any device) counts towards the question statistics,
+    // and only a full test: a listening- or reading-only run would skew the rest-of-test score each answer is paired with.
+    const firstRun = runMode === 'both' && !useAppStore.getState().lessonTests[lesson.key];
+    void shareLessonTestAnswers(lesson.key, lessonTestAnswerCounts(lesson, screens, attempt.answers, score, firstRun));
     useAppStore.getState().recordLessonTestResult({
       key: lesson.key,
       mode: runMode,
@@ -97,7 +103,7 @@ export function useLessonTestRun(lesson: LessonTestLesson, mode: LessonTestMode 
     });
     setResult({ score, seconds, passed: score.correct / score.total >= LESSON_TEST_PASS, rescheduled });
     setStage('results');
-  }, [attempt, lesson, runMode]);
+  }, [attempt, lesson, runMode, screens]);
 
   /** Next screen: the reading part starts with its own intro. */
   const next = useCallback(() => {
