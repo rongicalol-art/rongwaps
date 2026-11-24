@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../src");
 
 /* Chinese faces (Huninn, Rounded-SC, TW-EduKai, LXGW-WenKai) are split into
    unicode-range slices by scripts/fonts/split-chinese-fonts.py (`npm run fonts:split`)

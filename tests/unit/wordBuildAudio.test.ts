@@ -3,7 +3,7 @@ import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
 import type { ReadingsIndex } from '../../src/utils/pinyin/pronunciation';
 import { recordingLookupKey } from '../../src/utils/pinyin/pronunciationMatching';
-import { resolveWordBuildTileAudio, wordBuildTileReading } from '../../src/screens/quiz/utils/wordBuildAudio';
+import { resolveWordBuildTileAudio, wordBuildTileReading, wordBuildTileSound } from '../../src/screens/quiz/utils/wordBuildAudio';
 
 const card = (front: string, pinyin: string, audio = 'word.mp3'): Flashcard => ({ id: front, bookId: 1, lessonId: 1, front, pinyin, audio, back: 'meaning' });
 const recordings = new Map<string, Flashcard>();
@@ -92,4 +92,12 @@ test('licensed clips fill exact gaps and preserve textbook priority and ü', () 
   assert.equal(resolveWordBuildTileAudio(card('漂亮', 'piàoliàng'), '漂', recordings, sounds), 'piao4.mp3');
   assert.equal(resolveWordBuildTileAudio(card('漂亮', 'piàoliàng'), '亮', recordings, sounds), '亮.mp3');
   assert.equal(resolveWordBuildTileAudio(card('旅遊', 'lǚyóu'), '旅', recordings, sounds), 'lv3.mp3');
+});
+
+test('a tile whose syllable has no recording still knows its reading, so the cloud voice can say it', () => {
+  // 路 lù: the CNS lu4 file says lü, so it is left out of the pack.
+  const word = card('路口', 'lùkǒu');
+  assert.equal(resolveWordBuildTileAudio(word, '路', recordings, new Map([['lü4', 'lv4.mp3']])), undefined);
+  assert.equal(wordBuildTileSound(word, '路', recordings), 'lu4');
+  assert.equal(wordBuildTileSound(card('知道', 'zhīdào'), '可', recordings), 'ke3', 'a distractor uses the course reading');
 });

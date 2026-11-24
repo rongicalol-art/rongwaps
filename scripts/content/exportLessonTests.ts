@@ -1,6 +1,7 @@
 /**
  * Export the authored lesson tests (content/lesson-tests/book-N/lessonNN.json) to the `lesson-tests` pack
- * (public/data/lesson-tests/book-N.json + manifest.json), attaching the published studio recording to every
+ * (public/data/lesson-tests/book-N.json, one book-N/lessonNN.json per lesson for the lesson window, and
+ * manifest.json), attaching the published studio recording to every
  * spoken line, question and answer from content/audio/lesson_test_audio.json.
  *
  *   npm run lesson-tests:export
@@ -9,10 +10,10 @@
  * and `--strict` (used by the content tests' expectations) makes it an error.
  */
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { LessonTestLesson, LessonTestPack, LessonTestSounds } from '../../src/types/lessonTest';
+import type { LessonTestFile, LessonTestLesson, LessonTestPack, LessonTestSounds } from '../../src/types/lessonTest';
 import type { SentenceAudio } from '../../src/types/grammarPractice';
 import { lessonTestEdition } from './lessonTestEdition';
 
@@ -59,6 +60,7 @@ async function main() {
   const books = (await readdir(CONTENT)).filter((name) => /^book-\d+$/.test(name)).sort();
   await mkdir(OUT, { recursive: true });
   const manifestBooks: Array<{ bookId: number; count: number; path: string; sha256: string; bytes: number }> = [];
+  const manifestLessons: Array<{ bookId: number; lessonId: number; path: string; sha256: string; bytes: number }> = [];
   const missing: string[] = [];
   for (const folder of books) {
     const bookId = Number(folder.slice(5));
@@ -77,6 +79,17 @@ async function main() {
     const path = `book-${bookId}.json`;
     await writeFile(resolve(OUT, path), json, 'utf8');
     manifestBooks.push({ bookId, count: lessons.length, path: `/data/lesson-tests/${path}`, sha256: sha256(json), bytes: Buffer.byteLength(json) });
+    // Each lesson on its own, so opening a lesson doesn't download the whole book's tests.
+    await rm(resolve(OUT, folder), { recursive: true, force: true });
+    await mkdir(resolve(OUT, folder), { recursive: true });
+    for (const lesson of lessons) {
+      const file: LessonTestFile = { schemaVersion: 1, bookId, lessonId: lesson.lessonId, sounds, lesson };
+      const lessonJson = `${JSON.stringify(file)}\n`;
+      const lessonPath = `${folder}/lesson${String(lesson.lessonId).padStart(2, '0')}.json`;
+      await writeFile(resolve(OUT, lessonPath), lessonJson, 'utf8');
+      manifestLessons.push({ bookId, lessonId: lesson.lessonId, path: `/data/lesson-tests/${lessonPath}`,
+        sha256: sha256(lessonJson), bytes: Buffer.byteLength(lessonJson) });
+    }
     console.log(`Exported lesson tests for Book ${bookId} (${lessons.length} lessons, ${Buffer.byteLength(json)} bytes).`);
   }
   const manifest = {
@@ -84,6 +97,7 @@ async function main() {
     version: sha256(manifestBooks.map((book) => book.sha256).join('')).slice(0, 16),
     totalCount: manifestBooks.reduce((sum, book) => sum + book.count, 0),
     books: manifestBooks,
+    lessons: manifestLessons,
   };
   await writeFile(resolve(OUT, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
   if (missing.length) {

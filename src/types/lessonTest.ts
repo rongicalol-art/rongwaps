@@ -188,7 +188,16 @@ export interface LessonTestSounds {
   letters?: Partial<Record<'A' | 'B' | 'C' | 'D', SentenceAudio>>;
 }
 
-/** One book's pack. */
+/** One lesson's test, with the shared clips: what a lesson window loads (`lesson-tests/book-N/lessonNN.json`). */
+export interface LessonTestFile {
+  schemaVersion: 1;
+  bookId: number;
+  lessonId: number;
+  sounds: LessonTestSounds;
+  lesson: LessonTestLesson;
+}
+
+/** One book's pack: every lesson at once, for tools and the mock test's question pool. */
 export interface LessonTestPack {
   schemaVersion: 1;
   bookId: number;
