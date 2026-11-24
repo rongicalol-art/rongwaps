@@ -7,10 +7,13 @@ import { useLessonTestData } from '../../hooks/useLessonTestData';
 import { LessonTestScreen } from './LessonTestScreen';
 import { TestBooklet } from './components/TestBooklet';
 import { planFitsLesson } from '../../utils/lesson/lessonTestPlan';
+import type { LessonTestMode } from '../../types/lessonTest';
 
 interface LessonTestWindowProps {
   bookId: number;
   lessonId: number;
+  /** Which section(s) to run: full test ('both'), listening only, or reading only. */
+  mode?: LessonTestMode;
   /** Open on Scripts & answers of the last finished test instead of a new test. */
   review?: boolean;
   onClose: () => void;
@@ -20,7 +23,7 @@ interface LessonTestWindowProps {
  * The lesson test over the lesson window. Closing mid-test keeps the run; opening again resumes it. From the Test
  * tab's Scripts & answers (`review`) it shows the last finished test's booklet instead.
  */
-export function LessonTestWindow({ bookId, lessonId, review = false, onClose }: LessonTestWindowProps) {
+export function LessonTestWindow({ bookId, lessonId, mode = 'both', review = false, onClose }: LessonTestWindowProps) {
   const ref = useRef<HTMLDivElement>(null);
   // Focus starts on the window itself, not its Close button: Space belongs to the test's own action.
   const modalFocus = useModalFocus({ containerRef: ref, initialFocusRef: ref, isActive: true, onEscape: onClose });
@@ -58,7 +61,7 @@ export function LessonTestWindow({ bookId, lessonId, review = false, onClose }: 
             </div>
           )
         ) : data ? (
-          <LessonTestScreen key={data.lesson.key} lesson={data.lesson} sounds={data.sounds} onClose={onClose} />
+          <LessonTestScreen key={`${data.lesson.key}:${mode}`} lesson={data.lesson} sounds={data.sounds} mode={mode} onClose={onClose} />
         ) : (
           <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
             <p className="text-lg font-black text-ui-ink-strong">{error ? 'The test didn’t load.' : 'This lesson has no test yet.'}</p>

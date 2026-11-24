@@ -66,15 +66,30 @@ export function isValidMemoryHookItem(item: unknown): item is MemoryHookPackItem
     && VALID_CONTENT_TYPES.has(candidate.content_type);
 }
 
-export function isValidMemoryHookPack(pack: unknown, bookId: number, expectedCount: number): pack is MemoryHookPack {
+/** A book pack: schema 1, this book, `expectedCount` items, each one passing `isItem`. */
+function isBookItemsPack<T>(pack: unknown, bookId: number, expectedCount: number, isItem: (item: T) => boolean): boolean {
   if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as Partial<MemoryHookPack>;
+  const candidate = pack as { schemaVersion?: number; bookId?: number; count?: number; items?: T[] };
   return candidate.schemaVersion === 1
     && candidate.bookId === bookId
     && candidate.count === expectedCount
     && Array.isArray(candidate.items)
-    && candidate.items.length === candidate.count
-    && candidate.items.every(isValidMemoryHookItem);
+    && candidate.items.length === expectedCount
+    && candidate.items.every(isItem);
+}
+
+/** A dictionary-shard pack: schema 1, this shard, `expectedCount` keyed items, each value passing `isValue`. */
+function isShardRecordPack<T>(pack: unknown, shard: number, expectedCount: number, isValue: (value: T) => boolean): boolean {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as { schemaVersion?: number; shard?: number; count?: number; items?: Record<string, T> };
+  if (candidate.schemaVersion !== 1 || candidate.shard !== shard || candidate.count !== expectedCount) return false;
+  if (typeof candidate.items !== 'object' || candidate.items === null) return false;
+  const values = Object.values(candidate.items);
+  return values.length === expectedCount && values.every(isValue);
+}
+
+export function isValidMemoryHookPack(pack: unknown, bookId: number, expectedCount: number): pack is MemoryHookPack {
+  return isBookItemsPack(pack, bookId, expectedCount, isValidMemoryHookItem);
 }
 
 export function packItemsToMnemonicMap(items: MemoryHookPackItem[]): Map<string, string> {
@@ -106,42 +121,23 @@ export function isValidReadingRecord(item: unknown): item is ReadingRecord {
 }
 
 export function isValidReadingsPack(pack: unknown, bookId: number, expectedCount: number): boolean {
-  if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as { schemaVersion?: number; bookId?: number; count?: number; items?: unknown[] };
-  return candidate.schemaVersion === 1
-    && candidate.bookId === bookId
-    && candidate.count === expectedCount
-    && Array.isArray(candidate.items)
-    && candidate.items.length === candidate.count
-    && candidate.items.every(isValidReadingRecord);
+  return isBookItemsPack(pack, bookId, expectedCount, isValidReadingRecord);
 }
 
 export function isValidGrammarPack(pack: unknown, bookId: number, expectedCount: number): boolean {
-  if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as { schemaVersion?: number; bookId?: number; count?: number; items?: InteractiveGrammarPart[] };
-  return candidate.schemaVersion === 1
-    && candidate.bookId === bookId
-    && candidate.count === expectedCount
-    && Array.isArray(candidate.items)
-    && candidate.items.length === candidate.count
-    && candidate.items.every((part) => (
-      typeof part?.id === 'string'
-      && part.bookId === bookId
-      && Array.isArray(part.grammarPages)
-    ));
+  return isBookItemsPack<InteractiveGrammarPart | undefined>(pack, bookId, expectedCount, (part) => (
+    typeof part?.id === 'string'
+    && part.bookId === bookId
+    && Array.isArray(part.grammarPages)
+  ));
 }
 
 /** A book's lesson tests: every lesson keyed and in this book, every slot with at least one version. */
 export function isValidLessonTestPack(pack: unknown, bookId: number, expectedCount: number): boolean {
-  if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as { schemaVersion?: number; bookId?: number; count?: number; sounds?: unknown; items?: Array<{ key?: unknown; bookId?: unknown; slots?: Array<{ versions?: unknown[] }> }> };
-  return candidate.schemaVersion === 1
-    && candidate.bookId === bookId
-    && candidate.count === expectedCount
-    && typeof candidate.sounds === 'object' && candidate.sounds !== null
-    && Array.isArray(candidate.items)
-    && candidate.items.length === candidate.count
-    && candidate.items.every((lesson) => (
+  type Lesson = { key?: unknown; bookId?: unknown; slots?: Array<{ versions?: unknown[] }> } | undefined;
+  const sounds = (pack as { sounds?: unknown } | null)?.sounds;
+  return typeof sounds === 'object' && sounds !== null
+    && isBookItemsPack<Lesson>(pack, bookId, expectedCount, (lesson) => (
       typeof lesson?.key === 'string'
       && lesson.bookId === bookId
       && Array.isArray(lesson.slots)
@@ -391,14 +387,7 @@ export interface DictionaryPosPack {
 }
 
 export function isValidDictionaryPosPack(pack: unknown, shard: number, expectedCount: number): pack is DictionaryPosPack {
-  if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as Partial<DictionaryPosPack>;
-  return candidate.schemaVersion === 1
-    && candidate.shard === shard
-    && candidate.count === expectedCount
-    && typeof candidate.items === 'object' && candidate.items !== null
-    && Object.values(candidate.items).length === expectedCount
-    && Object.values(candidate.items).every((value) => typeof value === 'string');
+  return isShardRecordPack(pack, shard, expectedCount, (value) => typeof value === 'string');
 }
 
 /**
@@ -416,15 +405,8 @@ export interface DictionaryExamplesPack {
 }
 
 export function isValidDictionaryExamplesPack(pack: unknown, shard: number, expectedCount: number): pack is DictionaryExamplesPack {
-  if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as Partial<DictionaryExamplesPack>;
-  return candidate.schemaVersion === 1
-    && candidate.shard === shard
-    && candidate.count === expectedCount
-    && typeof candidate.items === 'object' && candidate.items !== null
-    && Object.values(candidate.items).length === expectedCount
-    && Object.values(candidate.items).every((rows) => Array.isArray(rows) && rows.every((row) => Array.isArray(row) && row.length === 6
-      && row.slice(0, 4).every((cell) => typeof cell === 'string')));
+  return isShardRecordPack<SenseExampleRow[]>(pack, shard, expectedCount, (rows) => Array.isArray(rows) && rows.every((row) => Array.isArray(row) && row.length === 6
+    && row.slice(0, 4).every((cell) => typeof cell === 'string')));
 }
 
 /** A grammar point a word is the key of: [part id, page id, book, lesson, title, simplified title or '', English title]. */
@@ -453,14 +435,7 @@ export interface DictionaryUsagePack {
 const isStringCells = (row: unknown, length: number, strings: number[]) => Array.isArray(row) && row.length === length && strings.every((index) => typeof row[index] === 'string');
 
 export function isValidDictionaryUsagePack(pack: unknown, shard: number, expectedCount: number): pack is DictionaryUsagePack {
-  if (!pack || typeof pack !== 'object') return false;
-  const candidate = pack as Partial<DictionaryUsagePack>;
-  return candidate.schemaVersion === 1
-    && candidate.shard === shard
-    && candidate.count === expectedCount
-    && typeof candidate.items === 'object' && candidate.items !== null
-    && Object.values(candidate.items).length === expectedCount
-    && Object.values(candidate.items).every((item) => Boolean(item) && typeof item === 'object'
+  return isShardRecordPack<WordUsage>(pack, shard, expectedCount, (item) => Boolean(item) && typeof item === 'object'
       && (item.g === undefined || (Array.isArray(item.g) && item.g.every((row) => isStringCells(row, 7, [0, 1, 4, 5, 6]) && typeof row[2] === 'number' && typeof row[3] === 'number')))
       && (item.s === undefined || (Array.isArray(item.s) && item.s.every((row) => isStringCells(row, 4, [0, 1, 2]))))
       && (item.w === undefined || (Array.isArray(item.w) && item.w.every((row) => isStringCells(row, 2, [0, 1])))));
