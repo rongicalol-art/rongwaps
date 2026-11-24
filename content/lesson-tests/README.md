@@ -216,6 +216,9 @@ needed, keep every run at 15–45%. Lesson 1 has no earlier lessons: its review 
   with the lesson and the sentence it would have gone in. That list is what a native speaker would say; how
   learners get to see it is still to be decided.
 - **Every grammar point** of the lesson appears in every possible run; the review share is 15–45%.
+- **The lesson's new words** (Band B tests, Book 2 Lesson 9 onward): the first and the second version each
+  show at least 70% of the lesson's new word cards, and all versions together at least 90%. A word that will
+  not sit naturally stays out; the rule leaves room for those.
 - **One right answer, decided by the context.** Wrong answers are real taught words or facts from the
   recording, text or picture that are wrong *here* (the next price on the menu, the drink she turned down).
   Choices are about the same length; no choice repeats; the bank never lists answers in blank order.
