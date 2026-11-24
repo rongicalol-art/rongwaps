@@ -202,7 +202,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
                   type="button"
                   onClick={() => setStudyBand(null)}
                   aria-label={`Band ${studyBand} to learn. Clear`}
-                  className="flex shrink-0 items-center gap-1 rounded-control border-2 border-b-4 border-brand-primary border-b-brand-primary-edge bg-brand-primary-soft px-2.5 py-1.5 text-sm font-black text-brand-primary-deep transition-[transform,border-width] active:translate-y-0.5 active:border-b-2 focus-ring"
+                  className="flex shrink-0 items-center gap-1 rounded-control border-2 tactile border-brand-primary border-b-brand-primary-edge bg-brand-primary-soft px-2.5 py-1.5 text-sm font-black text-brand-primary-deep transition-[transform,border-width] focus-ring"
                 >
                   Band {studyBand} to learn
                   <AppIcon name="close" size={16} />

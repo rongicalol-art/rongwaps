@@ -70,10 +70,20 @@ export function summarizeLessonCompletion(input: {
 export const isLessonTestPassed = (record?: { best: number; total: number }) =>
   Boolean(record && record.total > 0 && record.best / record.total >= LESSON_TEST_PASS);
 
-/** Union of read readings; per lesson, the newer done mark wins. Returns only what changes locally. */
+/** Union of read readings and Start Here progress; per lesson, the newer done mark wins. Returns only what changes locally. */
 export function mergeLessonProgress(
-  local: { readReadingIds: string[]; lessonDoneMarks: Record<string, LessonDoneMark> },
-  cloud: { readReadingIds?: unknown; lessonDoneMarks?: unknown },
+  local: {
+    readReadingIds: string[];
+    lessonDoneMarks: Record<string, LessonDoneMark>;
+    startHereCompletedLessons?: number[];
+    startHerePassed?: boolean;
+  },
+  cloud: {
+    readReadingIds?: unknown;
+    lessonDoneMarks?: unknown;
+    startHereCompletedLessons?: unknown;
+    startHerePassed?: unknown;
+  },
 ): Partial<typeof local> {
   const patch: Partial<typeof local> = {};
   const known = new Set(local.readReadingIds);
@@ -96,5 +106,17 @@ export function mergeLessonProgress(
     marks[key] = { done, at };
   }
   if (marks) patch.lessonDoneMarks = marks;
+
+  const localStartHere = local.startHereCompletedLessons ?? [];
+  const knownStartHere = new Set(localStartHere);
+  const cloudStartHere = Array.isArray(cloud.startHereCompletedLessons)
+    ? cloud.startHereCompletedLessons.filter((id): id is number => Number.isSafeInteger(id) && id >= 1 && id <= 24 && !knownStartHere.has(id))
+    : [];
+  if (cloudStartHere.length) {
+    patch.startHereCompletedLessons = [...localStartHere, ...new Set(cloudStartHere)].sort((a, b) => a - b);
+  }
+  if (cloud.startHerePassed === true && !local.startHerePassed) {
+    patch.startHerePassed = true;
+  }
   return patch;
 }

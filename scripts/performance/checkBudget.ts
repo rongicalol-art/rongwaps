@@ -21,7 +21,10 @@ const css = (await stat(resolve(root, `dist${style}`))).size;
 // exercise kinds would win it back.
 // 280 kB: the Nov 17 release batch (Book 2 audio and grammar, lesson pages,
 // streak moment) together landed at 275.75 kB.
-assert.ok(css <= 280_000, `Critical CSS exceeds 280 kB: ${css}`);
+// 290 kB: Start here (Nov 2026) adds about 6 kB of its own classes. They were first split into a lazy stylesheet,
+// but that second copy of Tailwind's utilities re-declared shared classes after the main ones and overrode their
+// responsive variants (the answer bar lost its desktop layout), so they live in the main stylesheet.
+assert.ok(css <= 290_000, `Critical CSS exceeds 290 kB: ${css}`);
 const assets = await readdir(resolve(root, 'dist/assets'));
 for (const worker of ['quizPlanner.worker-', 'dictionaryCommon.worker-']) {
   assert.ok(assets.some((file) => file.startsWith(worker)), `Missing production worker: ${worker}`);

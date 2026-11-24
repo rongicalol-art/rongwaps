@@ -330,6 +330,7 @@ const PERSISTED_ARRAY_KEYS = [
   'completedPartIds',
   'readReadingIds',
   'legacyDoneBooks',
+  'startHereCompletedLessons',
 ] as const;
 
 /** Persisted slice fields whose runtime shape is a plain record. */

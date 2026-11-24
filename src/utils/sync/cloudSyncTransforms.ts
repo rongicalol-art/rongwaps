@@ -48,8 +48,10 @@ export function computeSrsDelta(
  */
 /** Grammar completion; synced inside the settings blob (see mergeGrammarProgress). */
 export type GrammarProgress = Pick<GrammarProgressState, (typeof GRAMMAR_PROGRESS_PERSISTED_KEYS)[number]>;
-/** Readings read and lessons marked done; synced in the same blob (see mergeLessonProgress). */
-export type LessonProgress = Pick<LessonProgressState, (typeof LESSON_PROGRESS_SYNCED_KEYS)[number]>;
+/** Readings read, lessons marked done, and Start Here progress; synced in the same blob (see mergeLessonProgress). */
+export type LessonProgress =
+  Pick<LessonProgressState, 'readReadingIds' | 'lessonDoneMarks'>
+  & Partial<Pick<LessonProgressState, 'startHereCompletedLessons' | 'startHerePassed'>>;
 /** Lesson test scores; same blob, so a progress reset clears them too (see mergeLessonTests). */
 export type LessonTestProgress = Pick<LessonTestState, (typeof LESSON_TEST_SYNCED_KEYS)[number]>;
 
@@ -93,7 +95,9 @@ export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarPr
       completedPartIds: store.completedPartIds,
       readReadingIds: store.readReadingIds ?? [],
       lessonDoneMarks: store.lessonDoneMarks ?? {},
-      // Left out while empty, so an account with no tests taken does not upload its settings just to add `{}`.
+      // Left out while empty/false so accounts that haven't touched Start Here or lesson tests never upload extra keys.
+      ...(store.startHereCompletedLessons?.length ? { startHereCompletedLessons: store.startHereCompletedLessons } : {}),
+      ...(store.startHerePassed ? { startHerePassed: true } : {}),
       ...(store.lessonTests && Object.keys(store.lessonTests).length > 0 ? { lessonTests: store.lessonTests } : {}),
     },
   };

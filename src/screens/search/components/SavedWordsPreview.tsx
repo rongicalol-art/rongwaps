@@ -43,7 +43,7 @@ export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, on
               type="button"
               onClick={() => onOpenWord(item.word)}
               aria-label={`Open ${item.traditional || item.word}`}
-              className="flex h-12 min-w-0 items-center gap-2 rounded-control border-2 border-b-4 border-ui-divider bg-ui-surface px-3 py-1.5 transition-transform active:translate-y-0.5 active:border-b-2 focus-ring"
+              className="flex h-12 min-w-0 items-center gap-2 rounded-control border-2 tactile border-ui-divider bg-ui-surface px-3 py-1.5 transition-transform focus-ring"
             >
               <span className="font-chinese text-2xl leading-none text-ui-ink-strong">{item.traditional || item.word}</span>
               <span className="min-w-0 flex-1 truncate text-left text-[13px] font-extrabold text-ui-muted">{(item.meaning || '').split(';')[0]}</span>

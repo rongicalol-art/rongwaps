@@ -116,7 +116,7 @@ function LessonItemBase({
         aria-disabled={isLocked || undefined}
         onClick={handleClick}
         {...menuTrigger}
-        aria-pressed={isSelecting ? isSelected : undefined}
+        aria-pressed={isLocked ? undefined : isSelected}
         aria-haspopup={actions.length > 0 && !isLocked ? 'menu' : undefined}
         aria-label={`${englishTitle === lesson.label ? englishTitle : `${lesson.label}: ${englishTitle}`}${isLocked ? ' (locked)' : isDone ? ' (done)' : ''}`}
         style={{ WebkitTouchCallout: 'none', touchAction: 'manipulation' }}

@@ -85,6 +85,9 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - **The learner picks the quiz:** Mixed (default, recommended) or any set of single types, before every vocab quiz. Only types the deck can use are offered; words that fit none of the picked types are left out.
 - **Full coverage:** every word in the quiz is asked exactly once per pass. Misses come back in the review round, in the same picked types.
 - **Audio is the high-quality recording.** Avoid the robotic text-to-speech voice wherever a recording exists. Play the word after every answer.
+- **A teacher explains, one short line at a time** (Start here, Nov 2026). Her round picture and a speech bubble sit under the progress bar and replace the screen title; the bubble fits its words and has a tail to her (a full-width box read as a text input). Continue shows the next line (auto-advancing felt overstimulating); at most 3 lines of about 12 words per screen, never the same idea twice on one screen. Her voice is Ava with real pauses; every Chinese sound is a real recording she points to, never her voice. The screen's own word plays first, then she talks.
+- **A pointer appears on the word that names its spot** (the gold ring on the mouth picture: "when it says here, the circle should appear"). It glides between spots, never blinks, and lines about the whole lips (smile, round) get none. Any "which one do you hear?" pair is one speaker: across two speakers lù and lǜ sounded the same.
+- A study card with visible content puts its speaker in the top-right corner. A listening-only prompt uses a centred speaker as the main control.
 - **Vocab quiz ≠ grammar quiz.** Sentence and grammar exercises come after grammar and reading, in a separate quiz.
 - **Content that needs authoring** (goes-with match, situation pick, tap the group) needs the owner's review before data or packs change.
 

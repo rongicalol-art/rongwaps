@@ -30,6 +30,43 @@ function chineseFontStylesPlugin(): Plugin {
   };
 }
 
+function startHereAudioDevPlugin(): Plugin {
+  const worktreeAudioDir = path.resolve(__dirname, 'output/start-here-audio');
+  return {
+    name: 'start-here-audio-dev',
+    configureServer(server) {
+      server.middlewares.use('/__start-here-audio', async (req, res, next) => {
+        const file = (req.url ?? '').split('?')[0].replace(/^\/+/, '');
+        if (!/^[a-f0-9]{12}\.mp3$/.test(file) || (req.method !== 'GET' && req.method !== 'HEAD')) return next();
+
+        const audio = await readFile(path.join(worktreeAudioDir, file)).catch(() => null);
+        if (!audio) {
+          res.statusCode = 404;
+          return res.end();
+        }
+
+        res.setHeader('Content-Type', 'audio/mpeg');
+        res.setHeader('Cache-Control', 'no-store');
+        res.setHeader('Accept-Ranges', 'bytes');
+        const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range ?? '');
+        const start = range ? (range[1] ? Number(range[1]) : Math.max(0, audio.length - Number(range[2]))) : 0;
+        const end = range?.[1] && range[2] ? Math.min(Number(range[2]), audio.length - 1) : audio.length - 1;
+        if (start > end) {
+          res.statusCode = 416;
+          res.setHeader('Content-Range', `bytes */${audio.length}`);
+          return res.end();
+        }
+        if (range) {
+          res.statusCode = 206;
+          res.setHeader('Content-Range', `bytes ${start}-${end}/${audio.length}`);
+        }
+        res.setHeader('Content-Length', end - start + 1);
+        return res.end(req.method === 'HEAD' ? undefined : audio.subarray(start, end + 1));
+      });
+    },
+  };
+}
+
 function decompositionRuntimeDevPackPlugin(): Plugin {
   const configuredPackRoot = process.env.DECOMPOSITION_RUNTIME_PACK_DIR
     || process.env.VITE_DECOMPOSITION_RUNTIME_PACK_DIR;
@@ -185,7 +222,7 @@ process.env.VITE_APP_RELEASE ||= process.env.APP_COMMIT ?? '';
 
 export default defineConfig(() => {
   return {
-    plugins: [studyPacksPlugin(), chineseFontStylesPlugin(), react(), tailwindcss(), decompositionRuntimeDevPackPlugin(), shellPrecachePlugin, pwaPlugin],
+    plugins: [studyPacksPlugin(), chineseFontStylesPlugin(), react(), tailwindcss(), startHereAudioDevPlugin(), decompositionRuntimeDevPackPlugin(), shellPrecachePlugin, pwaPlugin],
     build: {
       outDir: 'dist',
       emptyOutDir: true,

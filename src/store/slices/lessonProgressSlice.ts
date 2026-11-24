@@ -16,10 +16,16 @@ export interface LessonProgressState {
    * readings counted). Device-local: each device checks once per book, after its first sync.
    */
   legacyDoneBooks: number[];
+  /** Completed Start Here lesson numbers (1–24). Only grows (a reset clears it). */
+  startHereCompletedLessons: number[];
+  /** True once the learner has passed the Start Here Ready check. */
+  startHerePassed: boolean;
   markReadingRead: (readingId: string) => void;
   setLessonDoneMark: (lessonKey: string, done: boolean) => void;
   /** Keeps lessons done that were done before readings counted: marks them, never overriding a mark. */
   keepLegacyLessonsDone: (bookId: number, lessonKeys: string[]) => void;
+  markStartHereLessonDone: (lessonId: number) => void;
+  markStartHerePassed: () => void;
   resetLessonProgress: () => void;
 }
 
@@ -34,6 +40,8 @@ export function createLessonProgressSlice(set: SetState): LessonProgressState {
     readReadingIds: [],
     lessonDoneMarks: {},
     legacyDoneBooks: [],
+    startHereCompletedLessons: [],
+    startHerePassed: false,
     keepLegacyLessonsDone: (bookId, lessonKeys) => set((state) => {
       if (state.legacyDoneBooks.includes(bookId)) return {};
       const at = new Date().toISOString();
@@ -50,17 +58,43 @@ export function createLessonProgressSlice(set: SetState): LessonProgressState {
     setLessonDoneMark: (lessonKey, done) => set((state) => ({
       lessonDoneMarks: { ...state.lessonDoneMarks, [lessonKey]: { done, at: new Date().toISOString() } },
     })),
+    markStartHereLessonDone: (lessonId) => set((state) => {
+      if (!Number.isSafeInteger(lessonId) || lessonId < 1 || lessonId > 24) return {};
+      if (state.startHereCompletedLessons.includes(lessonId)) return {};
+      return {
+        startHereCompletedLessons: [...state.startHereCompletedLessons, lessonId].sort((a, b) => a - b),
+      };
+    }),
+    markStartHerePassed: () => set((state) => (state.startHerePassed ? {} : { startHerePassed: true })),
     // After a reset nothing was done under the old rule either, so the check can stay recorded.
-    resetLessonProgress: () => set({ readReadingIds: [], lessonDoneMarks: {} }),
+    resetLessonProgress: () => set({
+      readReadingIds: [],
+      lessonDoneMarks: {},
+      startHereCompletedLessons: [],
+      startHerePassed: false,
+    }),
   };
 }
 
-/** Synced: `readReadingIds` and `lessonDoneMarks` (see cloudSyncTransforms). Local: `legacyDoneBooks`. */
-export const LESSON_PROGRESS_PERSISTED_KEYS = ['readReadingIds', 'lessonDoneMarks', 'legacyDoneBooks'] as const;
-export const LESSON_PROGRESS_SYNCED_KEYS = ['readReadingIds', 'lessonDoneMarks'] as const;
+/** Synced: `readReadingIds`, `lessonDoneMarks`, `startHereCompletedLessons`, `startHerePassed`. Local: `legacyDoneBooks`. */
+export const LESSON_PROGRESS_PERSISTED_KEYS = [
+  'readReadingIds',
+  'lessonDoneMarks',
+  'legacyDoneBooks',
+  'startHereCompletedLessons',
+  'startHerePassed',
+] as const;
+export const LESSON_PROGRESS_SYNCED_KEYS = [
+  'readReadingIds',
+  'lessonDoneMarks',
+  'startHereCompletedLessons',
+  'startHerePassed',
+] as const;
 
 export const LESSON_PROGRESS_ACCOUNT_SWITCH_DEFAULTS = {
   readReadingIds: [],
   lessonDoneMarks: {},
   legacyDoneBooks: [],
+  startHereCompletedLessons: [],
+  startHerePassed: false,
 };

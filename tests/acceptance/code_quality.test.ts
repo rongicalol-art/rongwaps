@@ -172,3 +172,17 @@ test('Code Quality Acceptance: components colour only through theme tokens (ligh
   const violations = files.filter((file) => literal.test(fs.readFileSync(path.join(PROJECT_ROOT, file), 'utf-8')));
   assert.deepEqual(violations, [], 'Use ui-*/brand-*/feedback-* tokens (brand-on-primary, ui-on-solid, ui-on-inverse, *-text) so dark mode follows.');
 });
+
+test('Code Quality Acceptance: pressing never changes an element\'s size or spacing (layout never jumps)', () => {
+  // A press that changes border width, margin, padding, height or width resizes the box, so everything around it
+  // moves. Pressable tiles use the `tactile` utility (src/index.css) or ActionButton, which move only paint.
+  const pressVariant = /(?:^|[\s'"`])(?:group-|peer-)?active:(?:border(?:-[xytrbl])?-(?:\d|\[)|-?m[xytrbl]?-|p[xytrbl]?-|(?:min-|max-)?[hw]-|size-)/;
+  const offenders: string[] = [];
+  for (const file of listFilesRecursive(path.join(PROJECT_ROOT, 'src'))) {
+    if (!/\.(tsx?|css)$/.test(file)) continue;
+    fs.readFileSync(file, 'utf8').split('\n').forEach((line, i) => {
+      if (pressVariant.test(line)) offenders.push(`${path.relative(PROJECT_ROOT, file)}:${i + 1}`);
+    });
+  }
+  assert.deepEqual(offenders, [], 'Use `tactile` or ActionButton for the press: it must not resize the element');
+});
