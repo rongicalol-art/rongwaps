@@ -12,9 +12,16 @@ export async function exportCnsAudioPack(): Promise<void> {
     if (!r.file.startsWith(prefix)) throw new Error('Unexpected CNS object prefix.');
     return [r.reading, r.file.slice(prefix.length)];
   }));
-  const cnsBase = { schemaVersion: 1, count: receipt.recordings.length, prefix, items };
-  const cnsVersion = createHash('sha256').update(JSON.stringify(cnsBase)).digest('hex').slice(0, 16);
+  const cnsVersion = createHash('sha256').update(JSON.stringify({ schemaVersion: 1, count: receipt.recordings.length, prefix, items }))
+    .digest('hex').slice(0, 16);
   if (cnsVersion !== receipt.version) throw new Error('CNS import receipt version mismatch.');
+  // Recordings that say a different syllable from their name are left out; the cloud voice says those readings.
+  const { excluded } = JSON.parse(await readFile('content/audio/cns_pronunciation_exclusions.json', 'utf8')) as { excluded: Record<string, string> };
+  for (const key of Object.keys(excluded)) {
+    if (!(key in items)) throw new Error(`Excluded CNS recording ${key} is not in the import receipt.`);
+    delete items[key];
+  }
+  const cnsBase = { schemaVersion: 1, count: Object.keys(items).length, prefix, items };
   const supplements = JSON.parse(await readFile('content/audio/book_audio_supplements.json', 'utf8')) as {
     recordings: Array<{ word: string; pinyin: string; audio: string; listeningReview: string }>;
   };
