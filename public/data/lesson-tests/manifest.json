@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "400dce876fd6a0cb",
+  "version": "7c0e26a8fb4eca05",
   "totalCount": 48,
   "books": [
     {
@@ -14,15 +14,15 @@
       "bookId": 2,
       "count": 16,
       "path": "/data/lesson-tests/book-2.json",
-      "sha256": "6d032adc16313fc1041121ee28032526565f4dd7356cbd70b7d80b08af299d22",
-      "bytes": 1542186
+      "sha256": "b51a66a6e4392bc547c96af2bde8c520d00b1e0e958af5d3c4079f0f80c0c110",
+      "bytes": 1614783
     },
     {
       "bookId": 3,
       "count": 16,
       "path": "/data/lesson-tests/book-3.json",
-      "sha256": "755cf8bb4e269dfab83eae11cd0f7956f93dd9974e4be34601ef6a341ba50450",
-      "bytes": 1874252
+      "sha256": "96054112426163636eae883b28c6e84a0c6e49dc3e1fee7a731e12a9a4e95ec5",
+      "bytes": 1952857
     }
   ],
   "lessons": [
@@ -198,169 +198,169 @@
       "bookId": 2,
       "lessonId": 9,
       "path": "/data/lesson-tests/book-2/lesson09.json",
-      "sha256": "359409bc41456a9016843f1e7c318291bcbda2abc11f45a12d65276e61dee483",
-      "bytes": 97057
+      "sha256": "aebb367f100b34b15edcf14f556c44b57ae99bf48ed5b37e9f7e48ac572a2377",
+      "bytes": 105776
     },
     {
       "bookId": 2,
       "lessonId": 10,
       "path": "/data/lesson-tests/book-2/lesson10.json",
-      "sha256": "ba022528d5c6b4b0b6d940d8db4f6c71d1cd8778a5c9fc5d38feb602807e0f9e",
-      "bytes": 99222
+      "sha256": "800578d8419007def0526d9e64b9bd9d002ffa9c13613fd6ed996eef6ed409a4",
+      "bytes": 107884
     },
     {
       "bookId": 2,
       "lessonId": 11,
       "path": "/data/lesson-tests/book-2/lesson11.json",
-      "sha256": "06ed032c7df304d62bebeb45c98de1f8d263d7d0bfae98fc048de30f1e2784aa",
-      "bytes": 99417
+      "sha256": "9ea79556c22d0a81d0251bc81f7948b3aec115d90f77aa812785670a62987802",
+      "bytes": 104224
     },
     {
       "bookId": 2,
       "lessonId": 12,
       "path": "/data/lesson-tests/book-2/lesson12.json",
-      "sha256": "ca5df3b621512c5111eb466771391fc086bac767ef56632de5f6c1cc5cc7ae17",
-      "bytes": 96660
+      "sha256": "61f5609beb0ce35d6dc98491888a00379c632874386b8665a7b4e078d6af9ce7",
+      "bytes": 104090
     },
     {
       "bookId": 2,
       "lessonId": 13,
       "path": "/data/lesson-tests/book-2/lesson13.json",
-      "sha256": "f0fa0c672c073b2e1e65851d1dd5e8dd5c933a512350894b236e17f4ab8d4cca",
-      "bytes": 100357
+      "sha256": "7b43542a580e5e65a7e9da12ab5cbb81e512d292c2dbca746bf2e8a6e12e5c06",
+      "bytes": 111161
     },
     {
       "bookId": 2,
       "lessonId": 14,
       "path": "/data/lesson-tests/book-2/lesson14.json",
-      "sha256": "d50100e393a37fd0a1e363387f1836c64b0d6eaaa74e5721bce863c2cd12aba3",
-      "bytes": 99663
+      "sha256": "3c5268e9cc73e44011901d012e19be5c11ecd771bbe746c99bd2194e6e0ffe62",
+      "bytes": 110736
     },
     {
       "bookId": 2,
       "lessonId": 15,
       "path": "/data/lesson-tests/book-2/lesson15.json",
-      "sha256": "31151987d8c4a89ddb9455b90295cb7f111442de1451efcbac1cd397c407fbd0",
-      "bytes": 98071
+      "sha256": "39498931f9b02d8dfb05f7ed1e96cb0b951b5ed3e4474ad2a0c63757fbdf0022",
+      "bytes": 112414
     },
     {
       "bookId": 2,
       "lessonId": 16,
       "path": "/data/lesson-tests/book-2/lesson16.json",
-      "sha256": "f446edac8e52e7956973d6e5ca5ada465f3f5f3e84c14675ca0f6a76979e310e",
-      "bytes": 102666
+      "sha256": "75b6a7e1f2ec6c11261efa981f64fa8ba7434aabe9055f7d7a32cf4751997223",
+      "bytes": 109425
     },
     {
       "bookId": 3,
       "lessonId": 1,
       "path": "/data/lesson-tests/book-3/lesson01.json",
-      "sha256": "f83bc87b617ad6e8008bc7aa9e8f59e3ddeacb964bfdd58559fa255ffa4daeee",
-      "bytes": 121116
+      "sha256": "96a16ac832a0caa75605b081ec8f70ba9df34136d613ddab49ef823fc6e46b10",
+      "bytes": 129280
     },
     {
       "bookId": 3,
       "lessonId": 2,
       "path": "/data/lesson-tests/book-3/lesson02.json",
-      "sha256": "d65f43a9f3b3f14eb3c9e35bf8523262df346fadb28e928adfd766b6889c3e42",
-      "bytes": 116551
+      "sha256": "f4e8d89456115f557bce175e910747bfd34eb8bbf4fc9be3f4329aa1a2635307",
+      "bytes": 127547
     },
     {
       "bookId": 3,
       "lessonId": 3,
       "path": "/data/lesson-tests/book-3/lesson03.json",
-      "sha256": "51f71adf054e607ef52f607a14e54883e0b28cef22a6992cbdd097d9238255c4",
-      "bytes": 124489
+      "sha256": "b246c910b84904edb6a5cbcd606485d94bbc64e947aed7fb367f2549ce2445ea",
+      "bytes": 128097
     },
     {
       "bookId": 3,
       "lessonId": 4,
       "path": "/data/lesson-tests/book-3/lesson04.json",
-      "sha256": "fcae3e8efbe775db5ef8dc1401d49d4b31fb6e0c797d5c9dd0819c03fc1755d6",
-      "bytes": 111034
+      "sha256": "2d0fa9efb4f90a7ff10be14757e08ebf13bd8bf45a98d3136352345886d77c42",
+      "bytes": 117738
     },
     {
       "bookId": 3,
       "lessonId": 5,
       "path": "/data/lesson-tests/book-3/lesson05.json",
-      "sha256": "c9c68fa03a6b083ba46087dfe568acac344dcfd5a202a4f2523fb382c0ffd9dd",
-      "bytes": 107403
+      "sha256": "311f93063964c2dee248967345873b9583f28ea1eb6c0176da17664dc72afa1b",
+      "bytes": 117590
     },
     {
       "bookId": 3,
       "lessonId": 6,
       "path": "/data/lesson-tests/book-3/lesson06.json",
-      "sha256": "8d0b7826cb9426e380801c9b52a4f64d3172fb92d896b864f33af4be14c597a3",
-      "bytes": 109764
+      "sha256": "38c2413c594d161dda5c3395a35c8434aef48b5c477b5474ee00df09304f9cc5",
+      "bytes": 114794
     },
     {
       "bookId": 3,
       "lessonId": 7,
       "path": "/data/lesson-tests/book-3/lesson07.json",
-      "sha256": "8455c102a058b946f0a2afdb1a681ab9fc54ed47fa23eef7e54e6d1f34fe8702",
-      "bytes": 115021
+      "sha256": "111507912c28e77891d1ad5f6a77b2220a3b293bf25302cd5c08756e6211c12a",
+      "bytes": 117663
     },
     {
       "bookId": 3,
       "lessonId": 8,
       "path": "/data/lesson-tests/book-3/lesson08.json",
-      "sha256": "6ed82570e3b0fc5a565db9b98d335acff54469ee01ab1f1ee9b0da8dcf5558c1",
-      "bytes": 119943
+      "sha256": "d68150288d97b83e4113b6005cc5dea02eeff9def9c4e5c1ab6bacac6e049a52",
+      "bytes": 118450
     },
     {
       "bookId": 3,
       "lessonId": 9,
       "path": "/data/lesson-tests/book-3/lesson09.json",
-      "sha256": "1649145340818bc1d757cebc056fe1311dd873867f89e7bcb122bd7f83195e8d",
-      "bytes": 120669
+      "sha256": "f280002a7cfcf1066e76f6bc8d01ede4c66c935539df6cd0679a7d498c199d6c",
+      "bytes": 117119
     },
     {
       "bookId": 3,
       "lessonId": 10,
       "path": "/data/lesson-tests/book-3/lesson10.json",
-      "sha256": "e12c48d3df79e18996e430a197888f01c5d21b5b31ee4516510fc97600a0938a",
-      "bytes": 116164
+      "sha256": "ac1af735b145861264084ca36da036781fa2ce50dfafdcbfe09c356f8e138d9a",
+      "bytes": 123833
     },
     {
       "bookId": 3,
       "lessonId": 11,
       "path": "/data/lesson-tests/book-3/lesson11.json",
-      "sha256": "1dc35a0e9ff706bc3612c17fbf50cffdf11c4ef8436ec32f125d65cb369980d3",
-      "bytes": 119888
+      "sha256": "b79df3303d1ec77132fd6651dab1fcd94a4890600332118839c5191b5dacfa11",
+      "bytes": 122513
     },
     {
       "bookId": 3,
       "lessonId": 12,
       "path": "/data/lesson-tests/book-3/lesson12.json",
-      "sha256": "05d596f4e7c99f8573e468a71fb1a5995d7db049c9b894d90fcfcd808baafe62",
-      "bytes": 118432
+      "sha256": "bb465c80d0b1173c27993e0305ca4dc7401d3a0fe46a38dc845f9c7d0dca02cc",
+      "bytes": 130052
     },
     {
       "bookId": 3,
       "lessonId": 13,
       "path": "/data/lesson-tests/book-3/lesson13.json",
-      "sha256": "f1f4b5388dea3bab0f1c23b142cb3b122af930dd9640e3319ee2d2abe3d544ef",
-      "bytes": 120797
+      "sha256": "ecec6863ef3c2897b96babaf25e4614b1eeb9c67cdd4cb12261c40a901c3092f",
+      "bytes": 125691
     },
     {
       "bookId": 3,
       "lessonId": 14,
       "path": "/data/lesson-tests/book-3/lesson14.json",
-      "sha256": "c60631358734b0a2fe8b1d9dd5d02217cd4e1d3deaf177c3ec4278d88dcd4fce",
-      "bytes": 118103
+      "sha256": "680d3a177348e47b537e515b69434144cf8e6ae438a54e9eece672708a49dbbf",
+      "bytes": 125221
     },
     {
       "bookId": 3,
       "lessonId": 15,
       "path": "/data/lesson-tests/book-3/lesson15.json",
-      "sha256": "8e84743ddb2f34af260a6d7df115a9270513956648e64e3feb695364cdac427f",
-      "bytes": 122789
+      "sha256": "4bef5ed0d0b439b279a6aa1dd1828da055f55a0fa7afe9e0e9154c19755aa61e",
+      "bytes": 120807
     },
     {
       "bookId": 3,
       "lessonId": 16,
       "path": "/data/lesson-tests/book-3/lesson16.json",
-      "sha256": "677979f320575a647ab0f6fdb90891ebdfcd1695630e77270532558533b05d78",
-      "bytes": 118607
+      "sha256": "092309fd5960e3f70524f45fee229ba40cb3e97475a2e662d747292bd145a0da",
+      "bytes": 122980
     }
   ]
 }

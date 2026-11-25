@@ -5,9 +5,14 @@
   "lessonId": 9,
   "band": "B",
   "allowWords": [
+    "借書活動",
+    "可欣",
+    "明生",
     "段",
+    "短文",
     "美心",
-    "可欣"
+    "良介",
+    "認認真真"
   ],
   "slots": [
     {
@@ -19,43 +24,43 @@
           "kind": "picture-hear",
           "picture": {
             "picture": "reading:B2L09-R01",
-            "alt": "Late at night in a dorm room: a crescent moon shows in the dark window. A girl with long wavy dark hair, gold hoop earrings and a blue jacket over an orange top sits at a desk, her cheek on one hand and a pen in the other, over a big open book; she looks up, tired. On a plate on the desk lies a sandwich nobody is eating. Behind her stands a girl with short wavy hair, round glasses, a white shirt, a purple vest and green trousers; she points at a round clock on the wall whose hands are both near 12. A desk lamp is on; a bed and a small lamp are in the back."
+            "alt": "Late at night in a dorm room: a crescent moon shows in the dark window. A girl with long wavy dark hair, gold hoop earrings and a blue jacket over an orange top sits at a desk, her cheek on one hand and a pen in the other, over a big open book; she looks up, tired. On a plate on the desk lies a sandwich nobody is eating. Behind her stands a girl with short wavy hair, round glasses, a white shirt, a purple vest and green trousers; she points at a round clock on the wall that shows ten o'clock. A desk lamp is on; a bed and a small lamp are in the back."
           },
           "questions": [
             {
               "id": "b2l09-picture-1-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "戴眼鏡的女生在做什麼？",
-                "simplified": "戴眼镜的女生在做什么？",
-                "pinyin": "Dài yǎnjìng de nǚshēng zài zuò shénme?",
-                "english": "What is the girl with glasses doing?"
+                "traditional": "下面哪一句是對的？",
+                "simplified": "下面哪一句是对的？",
+                "pinyin": "Xiàmiàn nǎ yí jù shì duì de?",
+                "english": "Which sentence is right?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "她坐在床上看書。",
-                  "simplified": "她坐在床上看书。",
-                  "pinyin": "Tā zuò zài chuáng shàng kàn shū.",
-                  "english": "She is sitting on the bed reading."
+                  "traditional": "長頭髮的女生正在吃三明治",
+                  "simplified": "长头发的女生正在吃三明治",
+                  "pinyin": "Cháng tóufǎ de nǚshēng zhèngzài chī sānmíngzhì.",
+                  "english": "The girl with long hair is eating a sandwich."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "她用手指著牆上的鐘。",
-                  "simplified": "她用手指着墙上的钟。",
-                  "pinyin": "Tā yòng shǒu zhǐ zhe qiáng shàng de zhōng.",
-                  "english": "She is pointing at the clock on the wall."
+                  "traditional": "長頭髮的女生在書桌上睡著了",
+                  "simplified": "长头发的女生在书桌上睡着了",
+                  "pinyin": "Cháng tóufǎ de nǚshēng zài shūzhuō shàng shuìzháo le.",
+                  "english": "The girl with long hair has fallen asleep at her desk."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "她在書桌前吃三明治。",
-                  "simplified": "她在书桌前吃三明治。",
-                  "pinyin": "Tā zài shūzhuō qián chī sānmíngzhì.",
-                  "english": "She is eating a sandwich at the desk."
+                  "traditional": "短頭髮的女生要她看牆上的鐘",
+                  "simplified": "短头发的女生要她看墙上的钟",
+                  "pinyin": "Duǎn tóufǎ de nǚshēng yào tā kàn qiáng shàng de zhōng.",
+                  "english": "The girl with short hair wants her to look at the clock on the wall."
                 }
               ],
-              "key": 1,
-              "why": "The girl with glasses stands and points at the clock on the wall. The bed is empty, and the sandwich lies on the desk with nobody eating it.",
+              "key": 2,
+              "why": "The girl with short hair is pointing at the clock on the wall for her friend to look at. The sandwich is on its plate and nobody is eating it, and the girl with long hair looks tired but is awake, with her pen in her hand.",
               "focus": {
                 "zh": "牆上的鐘",
                 "en": "the clock on the wall"
@@ -64,7 +69,6 @@
               "wordIds": [
                 "B2L09-1-01",
                 "B2L02-2-20",
-                "B1L10-2-10",
                 "B2L09-1-05"
               ]
             }
@@ -82,45 +86,45 @@
               "id": "b2l09-picture-2-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "穿綠色外套的男生在做什麼？",
-                "simplified": "穿绿色外套的男生在做什么？",
-                "pinyin": "Chuān lǜsè wàitào de nánshēng zài zuò shénme?",
-                "english": "What is the young man in the green jacket doing?"
+                "traditional": "下面哪一句說的是穿藍色外套的女生？",
+                "simplified": "下面哪一句说的是穿蓝色外套的女生？",
+                "pinyin": "Xiàmiàn nǎ yí jù shuō de shì chuān lánsè wàitào de nǚshēng?",
+                "english": "Which sentence is about the girl in the blue jacket?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "他拿著兩本書。",
-                  "simplified": "他拿着两本书。",
-                  "pinyin": "Tā ná zhe liǎng běn shū.",
-                  "english": "He is holding two books."
+                  "traditional": "她坐在電腦前面查資料",
+                  "simplified": "她坐在电脑前面查资料",
+                  "pinyin": "Tā zuò zài diànnǎo qiánmiàn chá zīliào.",
+                  "english": "She is sitting at the computer looking something up."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他坐在電腦前面工作。",
-                  "simplified": "他坐在电脑前面工作。",
-                  "pinyin": "Tā zuò zài diànnǎo qiánmiàn gōngzuò.",
-                  "english": "He is sitting at a computer working."
+                  "traditional": "她手上拿著兩本書",
+                  "simplified": "她手上拿着两本书",
+                  "pinyin": "Tā shǒu shàng ná zhe liǎng běn shū.",
+                  "english": "She is holding two books."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他站著看一本打開的書。",
-                  "simplified": "他站着看一本打开的书。",
-                  "pinyin": "Tā zhàn zhe kàn yì běn dǎkāi de shū.",
-                  "english": "He is standing and looking at an open book."
+                  "traditional": "她坐在桌子旁邊看書",
+                  "simplified": "她坐在桌子旁边看书",
+                  "pinyin": "Tā zuò zài zhuōzi pángbiān kàn shū.",
+                  "english": "She is sitting at a table reading."
                 }
               ],
-              "key": 2,
-              "why": "He stands at the desk looking at the open book in his hands. The girl in blue holds the two books, and the woman behind the desk sits at the computer.",
+              "key": 1,
+              "why": "The girl in the blue jacket stands at the desk with two books in her arm. The woman at the computer is the librarian, and the people reading at tables are in the back.",
               "focus": {
-                "zh": "打開的書",
-                "en": "an open book"
+                "zh": "拿著",
+                "en": "holding"
               },
               "lesson": 9,
               "wordIds": [
                 "B2L07-2-09",
-                "B1L15-1-05",
-                "B1L14-1-16"
+                "B1L14-2-16",
+                "B2L03-2-11"
               ]
             }
           ]
@@ -137,24 +141,24 @@
           "lines": [
             {
               "speaker": "F",
-              "traditional": "報告下個星期五才要交，這個週末我想先跟朋友去看電影，下個星期一再開始寫。",
-              "simplified": "报告下个星期五才要交，这个周末我想先跟朋友去看电影，下个星期一再开始写。",
-              "pinyin": "Bàogào xià ge xīngqíwǔ cái yào jiāo, zhège zhōumò wǒ xiǎng xiān gēn péngyǒu qù kàn diànyǐng, xià ge xīngqíyī zài kāishǐ xiě.",
-              "english": "The report isn't due until next Friday. This weekend I want to see a movie with friends first, and start writing next Monday."
+              "traditional": "我想再修一門義大利歷史課，可是聽說那門課很容易被當。",
+              "simplified": "我想再修一门义大利历史课，可是听说那门课很容易被当。",
+              "pinyin": "Wǒ xiǎng zài xiū yì mén Yìdàlì lìshǐ kè, kěshì tīngshuō nà mén kè hěn róngyì bèi dàng.",
+              "english": "I want to add a course on Italian history, but I hear people fail it easily."
             },
             {
               "speaker": "M",
-              "traditional": "報告不是這個星期五就要交嗎？教授上課的時候說了好幾次，妳沒聽到嗎？",
-              "simplified": "报告不是这个星期五就要交吗？教授上课的时候说了好几次，你没听到吗？",
-              "pinyin": "Bàogào bú shì zhège xīngqíwǔ jiù yào jiāo ma? Jiàoshòu shàngkè de shíhòu shuō le hǎojǐ cì, nǐ méi tīng dào ma?",
-              "english": "Isn't the report due this Friday? The professor said so several times in class. Didn't you hear?"
+              "traditional": "妳這學期不是已經修了七門課了嗎？再修一門，妳念得完嗎？",
+              "simplified": "你这学期不是已经修了七门课了吗？再修一门，你念得完吗？",
+              "pinyin": "Nǐ zhè xuéqí bú shì yǐjīng xiū le qī mén kè le ma? Zài xiū yì mén, nǐ niàn de wán ma?",
+              "english": "Aren't you already taking seven courses this semester? If you take one more, can you get through it all?"
             },
             {
               "speaker": "F",
-              "traditional": "真的嗎？那我得趕快寫了，電影下次再看吧。",
-              "simplified": "真的吗？那我得赶快写了，电影下次再看吧。",
-              "pinyin": "Zhēn de ma? Nà wǒ děi gǎnkuài xiě le, diànyǐng xià cì zài kàn ba.",
-              "english": "Really? Then I'd better start writing right away. The movie can wait."
+              "traditional": "也對，那我先不修了，以後有機會再說吧。",
+              "simplified": "也对，那我先不修了，以后有机会再说吧。",
+              "pinyin": "Yě duì, nà wǒ xiān bù xiū le, yǐhòu yǒu jīhuì zài shuō ba.",
+              "english": "True. Then I won't take it for now; maybe later, if I get the chance."
             }
           ],
           "answerLine": 1,
@@ -165,52 +169,53 @@
               "id": "b2l09-dialogue-rhetorical-1-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "報告什麼時候要交？",
-                "simplified": "报告什么时候要交？",
-                "pinyin": "Bàogào shénme shíhòu yào jiāo?",
-                "english": "When is the report due?"
+                "traditional": "男的是什麼意思？",
+                "simplified": "男的是什么意思？",
+                "pinyin": "Nán de shì shénme yìsi?",
+                "english": "What does the man mean?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "這個星期五",
-                  "simplified": "这个星期五",
-                  "pinyin": "Zhège xīngqíwǔ.",
-                  "english": "This Friday."
+                  "traditional": "那門歷史課很容易被當",
+                  "simplified": "那门历史课很容易被当",
+                  "pinyin": "Nà mén lìshǐ kè hěn róngyì bèi dàng.",
+                  "english": "People fail that history course easily."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "這個週末",
-                  "simplified": "这个周末",
-                  "pinyin": "Zhège zhōumò.",
-                  "english": "This weekend."
+                  "traditional": "他也想修那門歷史課",
+                  "simplified": "他也想修那门历史课",
+                  "pinyin": "Tā yě xiǎng xiū nà mén lìshǐ kè.",
+                  "english": "He wants to take that history course too."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "下個星期一",
-                  "simplified": "下个星期一",
-                  "pinyin": "Xià ge xīngqíyī.",
-                  "english": "Next Monday."
+                  "traditional": "她修的課已經夠多了",
+                  "simplified": "她修的课已经够多了",
+                  "pinyin": "Tā xiū de kè yǐjīng gòu duō le.",
+                  "english": "She already takes enough courses."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "下個星期五",
-                  "simplified": "下个星期五",
-                  "pinyin": "Xià ge xīngqíwǔ.",
-                  "english": "Next Friday."
+                  "traditional": "她應該早一點修那門課",
+                  "simplified": "她应该早一点修那门课",
+                  "pinyin": "Tā yīnggāi zǎo yìdiǎn xiū nà mén kè.",
+                  "english": "She should take that course sooner."
                 }
               ],
-              "key": 0,
-              "why": "報告不是這個星期五就要交嗎？ is not a real question: he is telling her the report is due this Friday, and she accepts it (那我得趕快寫了). Next Friday was her mistake; the weekend and Monday were her own plans.",
+              "key": 2,
+              "why": "不是已經修了七門課了嗎？ is not a real question: he reminds her she already takes seven courses, and 念得完嗎？ doubts she could manage one more. That the course is easy to fail is what she heard, not his point.",
               "focus": {
                 "zh": "不是……嗎？",
-                "en": "isn't it …? (a reminder)"
+                "en": "aren't you already …? (a reminder)"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-1-23",
-                "B2L09-1-22",
-                "B2L09-1-15"
+                "B2L09-1-14",
+                "B2L09-1-06",
+                "B2L09-1-32",
+                "B2L09-1-13"
               ],
               "grammarIds": [
                 "B2L09-G01-P208"
@@ -224,34 +229,27 @@
           "lines": [
             {
               "speaker": "F",
-              "traditional": "你怎麼還在看韓劇？明天下午不是要考口試嗎？",
-              "simplified": "你怎么还在看韩剧？明天下午不是要考口试吗？",
-              "pinyin": "Nǐ zěnme hái zài kàn hánjù? Míngtiān xiàwǔ bú shì yào kǎo kǒushì ma?",
-              "english": "Why are you still watching Korean dramas? Don't you have an oral exam tomorrow afternoon?"
+              "traditional": "你幫我翻譯這篇介紹義大利的文章好不好？明天就要交了。",
+              "simplified": "你帮我翻译这篇介绍义大利的文章好不好？明天就要交了。",
+              "pinyin": "Nǐ bāng wǒ fānyì zhè piān jièshào Yìdàlì de wénzhāng hǎo bù hǎo? Míngtiān jiù yào jiāo le.",
+              "english": "Could you translate this article about Italy for me? It's due tomorrow."
             },
             {
               "speaker": "M",
-              "traditional": "妳記錯了，口試是星期五。明天下午沒有課，我只要把作文交給老師就好了。",
-              "simplified": "你记错了，口试是星期五。明天下午没有课，我只要把作文交给老师就好了。",
-              "pinyin": "Nǐ jì cuò le, kǒushì shì xīngqíwǔ. Míngtiān xiàwǔ méiyǒu kè, wǒ zhǐyào bǎ zuòwén jiāo gěi lǎoshī jiù hǎo le.",
-              "english": "You've got it wrong: the oral exam is on Friday. I have no class tomorrow afternoon; I only need to hand my composition to the teacher."
+              "traditional": "妳不是有字典嗎？自己先翻翻看，有不懂的地方再問我。",
+              "simplified": "你不是有字典吗？自己先翻翻看，有不懂的地方再问我。",
+              "pinyin": "Nǐ bú shì yǒu zìdiǎn ma? Zìjǐ xiān fān fān kàn, yǒu bù dǒng de dìfāng zài wèn wǒ.",
+              "english": "Don't you have a dictionary? Try translating it yourself first, and ask me about the parts you don't understand."
             },
             {
               "speaker": "F",
-              "traditional": "那作文你寫完了嗎？",
-              "simplified": "那作文你写完了吗？",
-              "pinyin": "Nà zuòwén nǐ xiě wán le ma?",
-              "english": "So have you finished the composition?"
-            },
-            {
-              "speaker": "M",
-              "traditional": "昨天就寫完了，我寫到半夜兩點呢！",
-              "simplified": "昨天就写完了，我写到半夜两点呢！",
-              "pinyin": "Zuótiān jiù xiě wán le, wǒ xiě dào bànyè liǎng diǎn ne!",
-              "english": "I finished it yesterday. I wrote until two in the morning!"
+              "traditional": "好吧，那我先自己查，你晚上有空再幫我看看。",
+              "simplified": "好吧，那我先自己查，你晚上有空再帮我看看。",
+              "pinyin": "Hǎo ba, nà wǒ xiān zìjǐ chá, nǐ wǎnshàng yǒu kòng zài bāng wǒ kàn kàn.",
+              "english": "All right, I'll look things up myself first. Check it for me tonight when you're free."
             }
           ],
-          "answerLine": 0,
+          "answerLine": 1,
           "printed": true,
           "plays": 1,
           "questions": [
@@ -259,53 +257,54 @@
               "id": "b2l09-dialogue-rhetorical-2-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "女的本來以為男的明天下午要做什麼？",
-                "simplified": "女的本来以为男的明天下午要做什么？",
-                "pinyin": "Nǚ de běnlái yǐwéi nán de míngtiān xiàwǔ yào zuò shénme?",
-                "english": "What did the woman think the man had to do tomorrow afternoon?"
+                "traditional": "男的是什麼意思？",
+                "simplified": "男的是什么意思？",
+                "pinyin": "Nán de shì shénme yìsi?",
+                "english": "What does the man mean?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "要交一篇作文",
-                  "simplified": "要交一篇作文",
-                  "pinyin": "Yào jiāo yì piān zuòwén.",
-                  "english": "Hand in a composition."
+                  "traditional": "他想把字典借給她",
+                  "simplified": "他想把字典借给她",
+                  "pinyin": "Tā xiǎng bǎ zìdiǎn jiè gěi tā.",
+                  "english": "He wants to lend her his dictionary."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "要去教室上課",
-                  "simplified": "要去教室上课",
-                  "pinyin": "Yào qù jiàoshì shàngkè.",
-                  "english": "Go to class."
+                  "traditional": "他晚上會幫她翻譯",
+                  "simplified": "他晚上会帮她翻译",
+                  "pinyin": "Tā wǎnshàng huì bāng tā fānyì.",
+                  "english": "He will translate it for her tonight."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "要考口試",
-                  "simplified": "要考口试",
-                  "pinyin": "Yào kǎo kǒushì.",
-                  "english": "Take an oral exam."
+                  "traditional": "這篇文章不用翻譯",
+                  "simplified": "这篇文章不用翻译",
+                  "pinyin": "Zhè piān wénzhāng búyòng fānyì.",
+                  "english": "The article doesn't need translating."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "要把作文寫完",
-                  "simplified": "要把作文写完",
-                  "pinyin": "Yào bǎ zuòwén xiě wán.",
-                  "english": "Finish the composition."
+                  "traditional": "她應該先自己試著翻",
+                  "simplified": "她应该先自己试着翻",
+                  "pinyin": "Tā yīnggāi xiān zìjǐ shì zhe fān.",
+                  "english": "She should first try translating it herself."
                 }
               ],
-              "key": 2,
-              "why": "明天下午不是要考口試嗎？ shows what she believed: an oral exam tomorrow afternoon. Handing in the composition is what he really has to do, he has no class, and the composition is already written.",
+              "key": 3,
+              "why": "妳不是有字典嗎？ reminds her she has her own dictionary: he wants her to try the translation first and ask only about what she can't understand. Tonight he will just look over her work; the dictionary is hers, not his.",
               "focus": {
                 "zh": "不是……嗎？",
-                "en": "don't you …? (what the speaker believes)"
+                "en": "don't you have …? (a reminder)"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-1-09",
-                "B2L09-1-11",
-                "B2L09-1-22",
-                "B2L08-2-22"
+                "B2L09-1-26",
+                "B2L09-1-10",
+                "B2L09-1-25",
+                "B2L09-1-27",
+                "B2L09-1-22"
               ],
               "grammarIds": [
                 "B2L09-G01-P208"
@@ -324,35 +323,35 @@
           "kind": "dialogue",
           "lines": [
             {
-              "speaker": "M",
-              "traditional": "妳上個週末去高雄玩，花了多少錢？",
-              "simplified": "你上个周末去高雄玩，花了多少钱？",
-              "pinyin": "Nǐ shàng ge zhōumò qù Gāoxióng wán, huā le duōshǎo qián?",
-              "english": "You went to Kaohsiung last weekend. How much did you spend?"
-            },
-            {
               "speaker": "F",
-              "traditional": "沒花多少錢。我住在朋友家，他每天帶我去吃小吃，都是他請客。",
-              "simplified": "没花多少钱。我住在朋友家，他每天带我去吃小吃，都是他请客。",
-              "pinyin": "Méi huā duōshǎo qián. Wǒ zhù zài péngyǒu jiā, tā měi tiān dài wǒ qù chī xiǎochī, dōu shì tā qǐngkè.",
-              "english": "Not much. I stayed at a friend's home, and every day he took me out for street food and paid for it."
+              "traditional": "你參加的語言交換怎麼樣？",
+              "simplified": "你参加的语言交换怎么样？",
+              "pinyin": "Nǐ cānjiā de yǔyán jiāohuàn zěnmeyàng?",
+              "english": "How's the language exchange you joined?"
             },
             {
               "speaker": "M",
-              "traditional": "真好！那妳買了什麼名產回來？",
-              "simplified": "真好！那你买了什么名产回来？",
-              "pinyin": "Zhēn hǎo! Nà nǐ mǎi le shénme míngchǎn huílái?",
-              "english": "Great! So what local specialties did you bring back?"
+              "traditional": "不怎麼樣。跟我一起練習的台灣學生每次都只想說英文，我想多說中文，也想交朋友，可是沒什麼機會。",
+              "simplified": "不怎么样。跟我一起练习的台湾学生每次都只想说英文，我想多说中文，也想交朋友，可是没什么机会。",
+              "pinyin": "Bù zěnmeyàng. Gēn wǒ yìqǐ liànxí de Táiwān xuéshēng měi cì dōu zhǐ xiǎng shuō Yīngwén, wǒ xiǎng duō shuō Zhōngwén, yě xiǎng jiāo péngyǒu, kěshì méi shénme jīhuì.",
+              "english": "Not great. My Taiwanese partner only ever wants to speak English. I want to speak more Chinese and make friends, but I barely get the chance."
             },
             {
               "speaker": "F",
-              "traditional": "我沒買什麼，那裡的名產都太甜了，我不太喜歡。",
-              "simplified": "我没买什么，那里的名产都太甜了，我不太喜欢。",
-              "pinyin": "Wǒ méi mǎi shénme, nàlǐ de míngchǎn dōu tài tián le, wǒ bú tài xǐhuān.",
-              "english": "I didn't buy much. The specialties there are all too sweet; I don't really like them."
+              "traditional": "那你怎麼不跟系上的老師說，請他們幫你換一個人？",
+              "simplified": "那你怎么不跟系上的老师说，请他们帮你换一个人？",
+              "pinyin": "Nà nǐ zěnme bù gēn xì shàng de lǎoshī shuō, qǐng tāmen bāng nǐ huàn yí ge rén?",
+              "english": "Then why don't you tell the department's teachers and ask them to find you someone else?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我昨天說了，下個星期會換一個人跟我練習。",
+              "simplified": "我昨天说了，下个星期会换一个人跟我练习。",
+              "pinyin": "Wǒ zuótiān shuō le, xià ge xīngqí huì huàn yí ge rén gēn wǒ liànxí.",
+              "english": "I told them yesterday. I get a new partner next week."
             }
           ],
-          "answerLine": 3,
+          "answerLine": 1,
           "printed": true,
           "plays": 1,
           "questions": [
@@ -360,53 +359,52 @@
               "id": "b2l09-dialogue-noncommittal-1-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "女的這次去高雄玩，哪一個是對的？",
-                "simplified": "女的这次去高雄玩，哪一个是对的？",
-                "pinyin": "Nǚ de zhè cì qù Gāoxióng wán, nǎ yí ge shì duì de?",
-                "english": "About the woman's trip to Kaohsiung, which is true?"
+                "traditional": "男的參加的語言交換，下面哪一個是對的？",
+                "simplified": "男的参加的语言交换，下面哪一个是对的？",
+                "pinyin": "Nán de cānjiā de yǔyán jiāohuàn, xiàmiàn nǎ yí ge shì duì de?",
+                "english": "Which is true of the language exchange the man joined?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "住的地方花了不少錢",
-                  "simplified": "住的地方花了不少钱",
-                  "pinyin": "Zhù de dìfāng huā le bù shǎo qián.",
-                  "english": "Her lodging cost a lot."
+                  "traditional": "讓他交了不少朋友",
+                  "simplified": "让他交了不少朋友",
+                  "pinyin": "Ràng tā jiāo le bù shǎo péngyǒu.",
+                  "english": "It has helped him make many friends."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "吃小吃花了很多錢",
-                  "simplified": "吃小吃花了很多钱",
-                  "pinyin": "Chī xiǎochī huā le hěn duō qián.",
-                  "english": "She spent a lot on street food."
+                  "traditional": "下個星期就結束了",
+                  "simplified": "下个星期就结束了",
+                  "pinyin": "Xià ge xīngqí jiù jiéshù le.",
+                  "english": "It ends next week."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "那裡的名產買得不多",
-                  "simplified": "那里的名产买得不多",
-                  "pinyin": "Nàlǐ de míngchǎn mǎi de bù duō.",
-                  "english": "She didn't buy many local specialties."
+                  "traditional": "系上的老師不想幫他",
+                  "simplified": "系上的老师不想帮他",
+                  "pinyin": "Xì shàng de lǎoshī bù xiǎng bāng tā.",
+                  "english": "The department's teachers won't help him."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "很喜歡那裡的名產",
-                  "simplified": "很喜欢那里的名产",
-                  "pinyin": "Hěn xǐhuān nàlǐ de míngchǎn.",
-                  "english": "She really likes the local specialties."
+                  "traditional": "沒有讓他多說中文",
+                  "simplified": "没有让他多说中文",
+                  "pinyin": "Méiyǒu ràng tā duō shuō Zhōngwén.",
+                  "english": "It hasn't got him speaking much Chinese."
                 }
               ],
-              "key": 2,
-              "why": "沒買什麼 means she bought hardly any specialties, because they are too sweet for her. She stayed with a friend for free and he paid for the food (沒花多少錢).",
+              "key": 3,
+              "why": "不怎麼樣 and 沒什麼機會 are mild ways of saying it is not going well: his partner only wants English, so he hardly speaks Chinese. Next week he gets a new partner (換), nothing ends, and he has already asked the teachers.",
               "focus": {
-                "zh": "沒買什麼",
-                "en": "didn't buy much"
+                "zh": "不怎麼樣；沒什麼……",
+                "en": "not much of …; hardly V"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L07-1-04",
-                "B2L04-1-03",
-                "B2L05-1-28",
-                "B1L03-3-07"
+                "B2L09-2-01",
+                "B2L09-1-19",
+                "B2L09-2-14"
               ],
               "grammarIds": [
                 "B2L09-G04-P211"
@@ -420,31 +418,31 @@
           "lines": [
             {
               "speaker": "F",
-              "traditional": "聽說你這學期修了一門文法課，那位教授怎麼樣？",
-              "simplified": "听说你这学期修了一门文法课，那位教授怎么样？",
-              "pinyin": "Tīngshuō nǐ zhè xuéqí xiū le yì mén wénfǎ kè, nà wèi jiàoshòu zěnmeyàng?",
-              "english": "I heard you're taking a grammar course this semester. What's the professor like?"
+              "traditional": "昨天的口試，教授問了你什麼？",
+              "simplified": "昨天的口试，教授问了你什么？",
+              "pinyin": "Zuótiān de kǒushì, jiàoshòu wèn le nǐ shénme?",
+              "english": "What did the professor ask you in yesterday's oral exam?"
             },
             {
               "speaker": "M",
-              "traditional": "他的知識很豐富，說話也很清楚，可是上課不怎麼有意思，常常有同學打瞌睡。",
-              "simplified": "他的知识很丰富，说话也很清楚，可是上课不怎么有意思，常常有同学打瞌睡。",
-              "pinyin": "Tā de zhīshì hěn fēngfù, shuōhuà yě hěn qīngchǔ, kěshì shàngkè bù zěnme yǒu yìsi, chángcháng yǒu tóngxué dǎ kēshuì.",
-              "english": "He knows a lot and speaks clearly, but his classes aren't very interesting; classmates often nod off."
+              "traditional": "沒問什麼，只要我用中文介紹自己的國家，五分鐘就考完了。",
+              "simplified": "没问什么，只要我用中文介绍自己的国家，五分钟就考完了。",
+              "pinyin": "Méi wèn shénme, zhǐ yào wǒ yòng Zhōngwén jièshào zìjǐ de guójiā, wǔ fēnzhōng jiù kǎo wán le.",
+              "english": "Not much. He only asked me to introduce my country in Chinese, and it was over in five minutes."
             },
             {
               "speaker": "F",
-              "traditional": "那你為什麼還要修這門課？",
-              "simplified": "那你为什么还要修这门课？",
-              "pinyin": "Nà nǐ wèishénme hái yào xiū zhè mén kè?",
-              "english": "Then why are you still taking it?"
+              "traditional": "這麼容易？我考了二十分鐘，教授問了我好多問題呢！",
+              "simplified": "这么容易？我考了二十分钟，教授问了我好多问题呢！",
+              "pinyin": "Zhème róngyì? Wǒ kǎo le èrshí fēnzhōng, jiàoshòu wèn le wǒ hǎo duō wèntí ne!",
+              "english": "That easy? Mine took twenty minutes, and the professor asked me lots of questions!"
             },
             {
               "speaker": "M",
-              "traditional": "因為下個學期我想修他的翻譯課，得先修這門。",
-              "simplified": "因为下个学期我想修他的翻译课，得先修这门。",
-              "pinyin": "Yīnwèi xià ge xuéqí wǒ xiǎng xiū tā de fānyì kè, děi xiān xiū zhè mén.",
-              "english": "Because next semester I want to take his translation course, and I have to take this one first."
+              "traditional": "我本來還準備了學校的介紹，可是沒用到。",
+              "simplified": "我本来还准备了学校的介绍，可是没用到。",
+              "pinyin": "Wǒ běnlái hái zhǔnbèi le xuéxiào de jièshào, kěshì méi yòng dào.",
+              "english": "I had prepared to introduce my school too, but I didn’t need to."
             }
           ],
           "answerLine": 1,
@@ -455,54 +453,51 @@
               "id": "b2l09-dialogue-noncommittal-2-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "男的覺得這門文法課怎麼樣？",
-                "simplified": "男的觉得这门文法课怎么样？",
-                "pinyin": "Nán de juéde zhè mén wénfǎ kè zěnmeyàng?",
-                "english": "What does the man think of the grammar course?"
+                "traditional": "男的昨天的口試，下面哪一個是對的？",
+                "simplified": "男的昨天的口试，下面哪一个是对的？",
+                "pinyin": "Nán de zuótiān de kǒushì, xiàmiàn nǎ yí ge shì duì de?",
+                "english": "Which is true of the man's oral exam yesterday?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "教授的話不好懂",
-                  "simplified": "教授的话不好懂",
-                  "pinyin": "Jiàoshòu de huà bù hǎo dǒng.",
-                  "english": "The professor is hard to understand."
+                  "traditional": "他花了不少時間",
+                  "simplified": "他花了不少时间",
+                  "pinyin": "Tā huā le bù shǎo shíjiān.",
+                  "english": "He spent quite a while on it."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "上課有點無聊",
-                  "simplified": "上课有点无聊",
-                  "pinyin": "Shàngkè yǒudiǎn wúliáo.",
-                  "english": "The classes are a bit boring."
+                  "traditional": "他沒時間介紹國家",
+                  "simplified": "他没时间介绍国家",
+                  "pinyin": "Tā méi shíjiān jièshào guójiā.",
+                  "english": "He ran out of time to introduce his country."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "教授常常打瞌睡",
-                  "simplified": "教授常常打瞌睡",
-                  "pinyin": "Jiàoshòu chángcháng dǎ kēshuì.",
-                  "english": "The professor often nods off."
+                  "traditional": "教授請他介紹學校",
+                  "simplified": "教授请他介绍学校",
+                  "pinyin": "Jiàoshòu qǐng tā jièshào xuéxiào.",
+                  "english": "The professor asked him to introduce his school."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "教授知道的不多",
-                  "simplified": "教授知道的不多",
-                  "pinyin": "Jiàoshòu zhīdào de bù duō.",
-                  "english": "The professor doesn't know much."
+                  "traditional": "他很快就考完了",
+                  "simplified": "他很快就考完了",
+                  "pinyin": "Tā hěn kuài jiù kǎo wán le.",
+                  "english": "His exam was over quickly."
                 }
               ],
-              "key": 1,
-              "why": "上課不怎麼有意思 (not very interesting) means the classes are a bit boring. The professor speaks clearly and knows a lot, and it is the students, not the professor, who nod off.",
+              "key": 3,
+              "why": "沒問什麼 means the professor asked him very little: only to introduce his country, so it was over in five minutes. The woman had the longer exam, and he did not have to describe his school.",
               "focus": {
-                "zh": "不怎麼有意思",
-                "en": "not very interesting"
+                "zh": "沒 V 什麼",
+                "en": "not V much"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-1-20",
-                "B2L09-1-16",
-                "B2L09-1-17",
-                "B2L04-2-22",
-                "B2L08-2-02"
+                "B2L09-1-09",
+                "B2L09-1-15"
               ],
               "grammarIds": [
                 "B2L09-G04-P211"
@@ -522,35 +517,35 @@
           "kind": "dialogue",
           "lines": [
             {
-              "speaker": "M",
-              "traditional": "我昨天去書店買那本小說，店員說已經賣光了，要兩個星期以後才有。",
-              "simplified": "我昨天去书店买那本小说，店员说已经卖光了，要两个星期以后才有。",
-              "pinyin": "Wǒ zuótiān qù shūdiàn mǎi nà běn xiǎoshuō, diànyuán shuō yǐjīng mài guāng le, yào liǎng ge xīngqí yǐhòu cái yǒu.",
-              "english": "Yesterday I went to the bookstore to buy that novel. The clerk said it was sold out and won't be in for two weeks."
-            },
-            {
               "speaker": "F",
-              "traditional": "那你怎麼辦？",
-              "simplified": "那你怎么办？",
-              "pinyin": "Nà nǐ zěnme bàn?",
-              "english": "So what will you do?"
+              "traditional": "你怎麼每天中午都只吃一個三明治？",
+              "simplified": "你怎么每天中午都只吃一个三明治？",
+              "pinyin": "Nǐ zěnme měi tiān zhōngwǔ dōu zhǐ chī yí ge sānmíngzhì?",
+              "english": "How come you only eat one sandwich for lunch every day?"
             },
             {
               "speaker": "M",
-              "traditional": "我只好先去圖書館借，可是圖書館說要等一個月才借得到。",
-              "simplified": "我只好先去图书馆借，可是图书馆说要等一个月才借得到。",
-              "pinyin": "Wǒ zhǐhǎo xiān qù túshūguǎn jiè, kěshì túshūguǎn shuō yào děng yí ge yuè cái jiè de dào.",
-              "english": "I had no choice but to try the library, but the library says I'll have to wait a month to borrow it."
+              "traditional": "為了明年去日本遊學，我得少花一點錢。",
+              "simplified": "为了明年去日本游学，我得少花一点钱。",
+              "pinyin": "Wèile míngnián qù Rìběn yóuxué, wǒ děi shǎo huā yìdiǎn qián.",
+              "english": "To go on a study tour in Japan next year, I have to spend less."
             },
             {
               "speaker": "F",
-              "traditional": "我有那本小說，這個週末就看完了，下個星期一帶來給你吧。",
-              "simplified": "我有那本小说，这个周末就看完了，下个星期一带来给你吧。",
-              "pinyin": "Wǒ yǒu nà běn xiǎoshuō, zhège zhōumò jiù kàn wán le, xià ge xīngqíyī dài lái gěi nǐ ba.",
-              "english": "I have that novel. I'll finish it this weekend and bring it to you next Monday."
+              "traditional": "那也不能吃得這麼少啊，對身體不好。",
+              "simplified": "那也不能吃得这么少啊，对身体不好。",
+              "pinyin": "Nà yě bù néng chī de zhème shǎo a, duì shēntǐ bù hǎo.",
+              "english": "Still, you can't eat so little. It's bad for your health."
+            },
+            {
+              "speaker": "M",
+              "traditional": "沒辦法，機票跟上課的費用加起來要十幾萬呢。我也在想辦法拿獎學金。",
+              "simplified": "没办法，机票跟上课的费用加起来要十几万呢。我也在想办法拿奖学金。",
+              "pinyin": "Méi bànfǎ, jīpiào gēn shàngkè de fèiyòng jiā qǐlái yào shí jǐ wàn ne. Wǒ yě zài xiǎng bànfǎ ná jiǎngxuéjīn.",
+              "english": "There's no way around it. The plane ticket and the course fees add up to over a hundred thousand. I am also trying to get a scholarship."
             }
           ],
-          "answerLine": 3,
+          "answerLine": 1,
           "printed": true,
           "plays": 1,
           "questions": [
@@ -558,55 +553,56 @@
               "id": "b2l09-review-dialogue-1-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "男的最快什麼時候可以看到這本小說？",
-                "simplified": "男的最快什么时候可以看到这本小说？",
-                "pinyin": "Nán de zuì kuài shénme shíhòu kěyǐ kàn dào zhè běn xiǎoshuō?",
-                "english": "What is the earliest the man can read the novel?"
+                "traditional": "男的為什麼吃得這麼少？",
+                "simplified": "男的为什么吃得这么少？",
+                "pinyin": "Nán de wèishénme chī de zhème shǎo?",
+                "english": "Why does the man eat so little?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "這個週末",
-                  "simplified": "这个周末",
-                  "pinyin": "Zhège zhōumò.",
-                  "english": "This weekend."
+                  "traditional": "他想省錢到國外遊學",
+                  "simplified": "他想省钱到国外游学",
+                  "pinyin": "Tā xiǎng shěngqián dào guówài yóuxué.",
+                  "english": "He wants to keep money for studying abroad."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "下個星期一",
-                  "simplified": "下个星期一",
-                  "pinyin": "Xià ge xīngqíyī.",
-                  "english": "Next Monday."
+                  "traditional": "他覺得學校的午餐太貴",
+                  "simplified": "他觉得学校的午餐太贵",
+                  "pinyin": "Tā juéde xuéxiào de wǔcān tài guì.",
+                  "english": "He thinks lunch at school costs too much."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "兩個星期以後",
-                  "simplified": "两个星期以后",
-                  "pinyin": "Liǎng ge xīngqí yǐhòu.",
-                  "english": "In two weeks."
+                  "traditional": "他吃不下別的東西",
+                  "simplified": "他吃不下别的东西",
+                  "pinyin": "Tā chī bú xià bié de dōngxi.",
+                  "english": "He can't eat anything else."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "一個月以後",
-                  "simplified": "一个月以后",
-                  "pinyin": "Yí ge yuè yǐhòu.",
-                  "english": "In a month."
+                  "traditional": "他已經沒錢買機票了",
+                  "simplified": "他已经没钱买机票了",
+                  "pinyin": "Tā yǐjīng méi qián mǎi jīpiào le.",
+                  "english": "He has no money left for the ticket."
                 }
               ],
-              "key": 1,
-              "why": "The store needs two weeks and the library a month (只好 + library was his fallback). The woman finishes her copy this weekend and brings it next Monday, the earliest of all.",
+              "key": 0,
+              "why": "為了 gives the purpose: he spends less now to pay for a study tour in Japan next year. The cost he mentions is the trip as a whole, including the plane ticket and classes.",
               "focus": {
-                "zh": "只好",
-                "en": "have no choice but to"
+                "zh": "為了",
+                "en": "in order to"
               },
               "lesson": 8,
               "wordIds": [
-                "B2L08-1-25",
-                "B2L08-1-06",
-                "B2L02-1-30"
+                "B2L08-1-28",
+                "B2L08-2-16",
+                "B2L08-1-26",
+                "B2L03-1-24"
               ],
               "grammarIds": [
-                "B2L08-G04-P190"
+                "B2L08-G05-P191"
               ]
             }
           ]
@@ -616,35 +612,35 @@
           "kind": "dialogue",
           "lines": [
             {
-              "speaker": "F",
-              "traditional": "這個星期六我們去KTV唱歌吧！我已經學會那首新歌了。",
-              "simplified": "这个星期六我们去KTV唱歌吧！我已经学会那首新歌了。",
-              "pinyin": "Zhège xīngqíliù wǒmen qù KTV chànggē ba! Wǒ yǐjīng xuéhuì nà shǒu xīn gē le.",
-              "english": "Let's go to KTV this Saturday! I've already learned that new song."
-            },
-            {
               "speaker": "M",
-              "traditional": "假日的KTV常常客滿，我們最好先打電話訂位。",
-              "simplified": "假日的KTV常常客满，我们最好先打电话订位。",
-              "pinyin": "Jiàrì de KTV chángcháng kèmǎn, wǒmen zuìhǎo xiān dǎ diànhuà dìngwèi.",
-              "english": "KTV is often full on holidays. We'd better call ahead and book."
+              "traditional": "妳上星期到嘉義參加比賽，那間學校好找嗎？",
+              "simplified": "你上星期到嘉义参加比赛，那间学校好找吗？",
+              "pinyin": "Nǐ shàng xīngqí dào Jiāyì cānjiā bǐsài, nà jiān xuéxiào hǎo zhǎo ma?",
+              "english": "When you went to Chiayi for the competition last week, was the school easy to find?"
             },
             {
               "speaker": "F",
-              "traditional": "我打過了，星期六已經客滿了，只好星期五晚上去。",
-              "simplified": "我打过了，星期六已经客满了，只好星期五晚上去。",
-              "pinyin": "Wǒ dǎ guo le, xīngqíliù yǐjīng kèmǎn le, zhǐhǎo xīngqíwǔ wǎnshàng qù.",
-              "english": "I've called. Saturday is already full, so we'll have to go on Friday evening."
+              "traditional": "我剛走出車站就迷路了，本來想回去坐計程車。",
+              "simplified": "我刚走出车站就迷路了，本来想回去坐计程车。",
+              "pinyin": "Wǒ gāng zǒu chū chēzhàn jiù mílù le, běnlái xiǎng huíqù zuò jìchéngchē.",
+              "english": "I got lost as soon as I left the station. I was going to go back for a taxi."
             },
             {
               "speaker": "M",
-              "traditional": "星期五我上課上到九點，等我下了課，就去找妳。",
-              "simplified": "星期五我上课上到九点，等我下了课，就去找你。",
-              "pinyin": "Xīngqíwǔ wǒ shàngkè shàng dào jiǔ diǎn, děng wǒ xià le kè, jiù qù zhǎo nǐ.",
-              "english": "On Friday I have class until nine. As soon as my class is over, I'll come and find you."
+              "traditional": "後來呢？聽說妳到得比大家都早。",
+              "simplified": "后来呢？听说你到得比大家都早。",
+              "pinyin": "Hòulái ne? Tīngshuō nǐ dào de bǐ dàjiā dōu zǎo.",
+              "english": "What happened next? I heard you arrived before everyone else."
+            },
+            {
+              "speaker": "F",
+              "traditional": "有學生在車站拿地圖給大家。我看著地圖走，五分鐘就到了。有他們幫忙，我真的很感動。",
+              "simplified": "有学生在车站拿地图给大家。我看着地图走，五分钟就到了。有他们帮忙，我真的很感动。",
+              "pinyin": "Yǒu xuéshēng zài chēzhàn ná dìtú gěi dàjiā. Wǒ kàn zhe dìtú zǒu, wǔ fēnzhōng jiù dào le. Yǒu tāmen bāngmáng, wǒ zhēn de hěn gǎndòng.",
+              "english": "Some students were giving out maps at the station. I followed the map and got there in five minutes. It was really thoughtful of them!"
             }
           ],
-          "answerLine": 3,
+          "answerLine": 1,
           "printed": true,
           "plays": 1,
           "questions": [
@@ -652,56 +648,55 @@
               "id": "b2l09-review-dialogue-2-q",
               "prompt": {
                 "speaker": "N",
-                "traditional": "男的什麼時候會到KTV？",
-                "simplified": "男的什么时候会到KTV？",
-                "pinyin": "Nán de shénme shíhòu huì dào KTV?",
-                "english": "When will the man get to the KTV?"
+                "traditional": "女的後來是怎麼到學校的？",
+                "simplified": "女的后来是怎么到学校的？",
+                "pinyin": "Nǚ de hòulái shì zěnme dào xuéxiào de?",
+                "english": "How did the woman eventually get to the school?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "星期五下午",
-                  "simplified": "星期五下午",
-                  "pinyin": "Xīngqíwǔ xiàwǔ.",
-                  "english": "Friday afternoon."
+                  "traditional": "她回車站搭了計程車",
+                  "simplified": "她回车站搭了计程车",
+                  "pinyin": "Tā huí chēzhàn dā le jìchéngchē.",
+                  "english": "She went back to the station and took a taxi."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "星期五九點以後",
-                  "simplified": "星期五九点以后",
-                  "pinyin": "Xīngqíwǔ jiǔ diǎn yǐhòu.",
-                  "english": "Friday after nine."
+                  "traditional": "她請學生帶她過去",
+                  "simplified": "她请学生带她过去",
+                  "pinyin": "Tā qǐng xuéshēng dài tā guòqù.",
+                  "english": "She asked a student to take her there."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "星期六晚上",
-                  "simplified": "星期六晚上",
-                  "pinyin": "Xīngqíliù wǎnshàng.",
-                  "english": "Saturday evening."
+                  "traditional": "她用地圖找到學校",
+                  "simplified": "她用地图找到学校",
+                  "pinyin": "Tā yòng dìtú zhǎo dào xuéxiào.",
+                  "english": "She used a map to find the school."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "星期六九點以後",
-                  "simplified": "星期六九点以后",
-                  "pinyin": "Xīngqíliù jiǔ diǎn yǐhòu.",
-                  "english": "Saturday after nine."
+                  "traditional": "她在車站等大家來",
+                  "simplified": "她在车站等大家来",
+                  "pinyin": "Tā zài chēzhàn děng dàjiā lái.",
+                  "english": "She waited at the station for the others."
                 }
               ],
-              "key": 1,
-              "why": "Saturday is fully booked, so they move to Friday evening; he has class until nine and comes 等我下了課，就…, so after nine on Friday.",
+              "key": 2,
+              "why": "剛走出車站就迷路了 puts getting lost first. She considered a taxi at that point, but the students’ map let her get to the school on foot.",
               "focus": {
-                "zh": "等……，就……",
-                "en": "once …, then …"
+                "zh": "剛……就……",
+                "en": "as soon as … then …"
               },
-              "lesson": 6,
+              "lesson": 7,
               "wordIds": [
-                "B2L06-2-08",
-                "B2L06-2-06",
-                "B2L07-1-23",
-                "B2L06-1-11"
+                "B2L04-1-05",
+                "B2L07-2-26",
+                "B2L09-2-18"
               ],
               "grammarIds": [
-                "B2L06-G06-P147"
+                "B2L07-G07-P176"
               ]
             }
           ]
@@ -724,49 +719,49 @@
           },
           "lines": [
             {
-              "speaker": "F",
-              "traditional": "已經七點半了，你快點起來！八點的筆試你忘了嗎？",
-              "simplified": "已经七点半了，你快点起来！八点的笔试你忘了吗？",
-              "pinyin": "Yǐjīng qī diǎn bàn le, nǐ kuài diǎn qǐlái! Bā diǎn de bǐshì nǐ wàng le ma?",
-              "english": "It's already half past seven. Get up, quick! Did you forget the eight o'clock written exam?"
-            },
-            {
               "speaker": "M",
-              "traditional": "筆試十點才開始，教授昨天晚上在網路上說的，九點半到教室就可以了。",
-              "simplified": "笔试十点才开始，教授昨天晚上在网路上说的，九点半到教室就可以了。",
-              "pinyin": "Bǐshì shí diǎn cái kāishǐ, jiàoshòu zuótiān wǎnshàng zài wǎnglù shàng shuō de, jiǔ diǎn bàn dào jiàoshì jiù kěyǐ le.",
-              "english": "The written exam doesn't start until ten. The professor said so online last night. Getting to the classroom at half past nine is fine."
+              "traditional": "明天口試要先交一頁報告，再用中文說三分鐘。妳覺得我剛才說得怎麼樣？",
+              "simplified": "明天口试要先交一页报告，再用中文说三分钟。你觉得我刚才说得怎么样？",
+              "pinyin": "Míngtiān kǒushì yào xiān jiāo yí yè bàogào, zài yòng Zhōngwén shuō sān fēnzhōng. Nǐ juéde wǒ gāngcái shuō de zěnmeyàng?",
+              "english": "For tomorrow's oral exam we hand in a one-page report first, then speak in Chinese for three minutes. How did I sound just now?"
             },
             {
               "speaker": "F",
-              "traditional": "是嗎？那你先吃點東西吧，我買了兩個包子。",
-              "simplified": "是吗？那你先吃点东西吧，我买了两个包子。",
-              "pinyin": "Shì ma? Nà nǐ xiān chī diǎn dōngxi ba, wǒ mǎi le liǎng ge bāozi.",
-              "english": "Really? Then eat something first. I bought two steamed buns."
+              "traditional": "你說得太快了，慢一點說，教授才聽得懂。",
+              "simplified": "你说得太快了，慢一点说，教授才听得懂。",
+              "pinyin": "Nǐ shuō de tài kuài le, màn yìdiǎn shuō, jiàoshòu cái tīng de dǒng.",
+              "english": "You were talking too fast. Slow down, so the professor can hear you clearly."
             },
             {
               "speaker": "M",
-              "traditional": "謝謝，可是我現在太緊張了，一點東西都吃不下。",
-              "simplified": "谢谢，可是我现在太紧张了，一点东西都吃不下。",
-              "pinyin": "Xièxie, kěshì wǒ xiànzài tài jǐnzhāng le, yìdiǎn dōngxi dōu chī bú xià.",
-              "english": "Thanks, but I'm too nervous right now. I can't eat a thing."
+              "traditional": "可是說慢一點，三分鐘就說不完了。",
+              "simplified": "可是说慢一点，三分钟就说不完了。",
+              "pinyin": "Kěshì shuō màn yìdiǎn, sān fēnzhōng jiù shuō bù wán le.",
+              "english": "But if I speak slower, I won't finish in three minutes."
             },
             {
               "speaker": "F",
-              "traditional": "你念了那麼多，一定沒問題的。不吃東西，考試的時候肚子餓了怎麼辦？",
-              "simplified": "你念了那么多，一定没问题的。不吃东西，考试的时候肚子饿了怎么办？",
-              "pinyin": "Nǐ niàn le nàme duō, yídìng méi wèntí de. Bù chī dōngxi, kǎoshì de shíhòu dùzi è le zěnme bàn?",
-              "english": "You've studied so much, you'll be fine. If you don't eat, what will you do if you get hungry during the exam?"
+              "traditional": "那就少說一點。你的報告也寫得太多了，一頁寫得下嗎？",
+              "simplified": "那就少说一点。你的报告也写得太多了，一页写得下吗？",
+              "pinyin": "Nà jiù shǎo shuō yìdiǎn. Nǐ de bàogào yě xiě de tài duō le, yí yè xiě de xià ma?",
+              "english": "Then say a bit less. Your report is too long too. Does it fit on one page?"
             },
             {
               "speaker": "M",
-              "traditional": "好吧，那我吃一個。",
-              "simplified": "好吧，那我吃一个。",
-              "pinyin": "Hǎo ba, nà wǒ chī yí ge.",
-              "english": "All right, I'll eat one."
+              "traditional": "寫不下，我今天晚上得把不重要的部分拿掉。",
+              "simplified": "写不下，我今天晚上得把不重要的部分拿掉。",
+              "pinyin": "Xiě bú xià, wǒ jīntiān wǎnshàng děi bǎ bú zhòngyào de bùfèn ná diào.",
+              "english": "It doesn't. Tonight I'll have to take out the parts that don't matter."
+            },
+            {
+              "speaker": "F",
+              "traditional": "加油！",
+              "simplified": "加油！",
+              "pinyin": "Jiāyóu!",
+              "english": "Good luck!"
             }
           ],
-          "answerLine": 0,
+          "answerLine": 1,
           "printed": true,
           "plays": 1,
           "questions": [
@@ -774,52 +769,52 @@
               "id": "b2l09-dialogue-two-1-1",
               "prompt": {
                 "speaker": "N",
-                "traditional": "女的為什麼要男的快點起來？",
-                "simplified": "女的为什么要男的快点起来？",
-                "pinyin": "Nǚ de wèishénme yào nán de kuài diǎn qǐlái?",
-                "english": "Why does the woman tell the man to get up quickly?"
+                "traditional": "女的為什麼要男的慢一點說？",
+                "simplified": "女的为什么要男的慢一点说？",
+                "pinyin": "Nǚ de wèishénme yào nán de màn yìdiǎn shuō?",
+                "english": "Why does the woman want the man to speak more slowly?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "她以為筆試七點半開始",
-                  "simplified": "她以为笔试七点半开始",
-                  "pinyin": "Tā yǐwéi bǐshì qī diǎn bàn kāishǐ.",
-                  "english": "She thought the exam started at half past seven."
+                  "traditional": "想讓教授聽清楚",
+                  "simplified": "想让教授听清楚",
+                  "pinyin": "Xiǎng ràng jiàoshòu tīng qīngchǔ.",
+                  "english": "She wants the professor to follow him."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "她以為筆試八點開始",
-                  "simplified": "她以为笔试八点开始",
-                  "pinyin": "Tā yǐwéi bǐshì bā diǎn kāishǐ.",
-                  "english": "She thought the exam started at eight."
+                  "traditional": "三分鐘說不完",
+                  "simplified": "三分钟说不完",
+                  "pinyin": "Sān fēnzhōng shuō bù wán.",
+                  "english": "He can't finish in three minutes."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "她以為筆試九點半開始",
-                  "simplified": "她以为笔试九点半开始",
-                  "pinyin": "Tā yǐwéi bǐshì jiǔ diǎn bàn kāishǐ.",
-                  "english": "She thought the exam started at half past nine."
+                  "traditional": "他的報告寫得太多",
+                  "simplified": "他的报告写得太多",
+                  "pinyin": "Tā de bàogào xiě de tài duō.",
+                  "english": "His report is too long."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "她以為筆試十點開始",
-                  "simplified": "她以为笔试十点开始",
-                  "pinyin": "Tā yǐwéi bǐshì shí diǎn kāishǐ.",
-                  "english": "She thought the exam started at ten."
+                  "traditional": "教授要先看報告",
+                  "simplified": "教授要先看报告",
+                  "pinyin": "Jiàoshòu yào xiān kàn bàogào.",
+                  "english": "The professor reads the report first."
                 }
               ],
-              "key": 1,
-              "why": "快點起來 because she thinks the exam is at eight (八點的筆試你忘了嗎？). Half past seven is the time now, ten is when it really starts, and half past nine is when he needs to be there.",
+              "key": 0,
+              "why": "She asks him to slow down so the professor can follow him. Not finishing in three minutes is his worry about slowing down, and the long report is a second, separate problem.",
               "focus": {
-                "zh": "快點 + V",
-                "en": "hurry up and …"
+                "zh": "慢一點 + V",
+                "en": "slow down and …"
               },
               "lesson": 9,
-              "answerLine": 0,
+              "answerLine": 1,
               "wordIds": [
-                "B2L09-1-21",
-                "B2L08-2-03"
+                "B2L09-2-08",
+                "B2L09-1-15"
               ],
               "grammarIds": [
                 "B2L09-G02-P209"
@@ -829,52 +824,54 @@
               "id": "b2l09-dialogue-two-1-2",
               "prompt": {
                 "speaker": "N",
-                "traditional": "男的一開始為什麼不吃包子？",
-                "simplified": "男的一开始为什么不吃包子？",
-                "pinyin": "Nán de yìkāishǐ wèishénme bù chī bāozi?",
-                "english": "Why does the man at first not eat a bun?"
+                "traditional": "男的今天晚上要做什麼？",
+                "simplified": "男的今天晚上要做什么？",
+                "pinyin": "Nán de jīntiān wǎnshàng yào zuò shénme?",
+                "english": "What will the man do tonight?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "他心裡非常緊張",
-                  "simplified": "他心里非常紧张",
-                  "pinyin": "Tā xīnlǐ fēicháng jǐnzhāng.",
-                  "english": "He feels very nervous."
+                  "traditional": "再多寫一頁報告",
+                  "simplified": "再多写一页报告",
+                  "pinyin": "Zài duō xiě yí yè bàogào.",
+                  "english": "Write one more page."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他已經吃飽了",
-                  "simplified": "他已经吃饱了",
-                  "pinyin": "Tā yǐjīng chī bǎo le.",
-                  "english": "He is already full."
+                  "traditional": "把報告寫短一點",
+                  "simplified": "把报告写短一点",
+                  "pinyin": "Bǎ bàogào xiě duǎn yìdiǎn.",
+                  "english": "Make the report shorter."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他想考完再吃",
-                  "simplified": "他想考完再吃",
-                  "pinyin": "Tā xiǎng kǎo wán zài chī.",
-                  "english": "He wants to eat after the exam."
+                  "traditional": "練習說得快一點",
+                  "simplified": "练习说得快一点",
+                  "pinyin": "Liànxí shuō de kuài yìdiǎn.",
+                  "english": "Practise speaking faster."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他沒時間吃東西",
-                  "simplified": "他没时间吃东西",
-                  "pinyin": "Tā méi shíjiān chī dōngxi.",
-                  "english": "He has no time to eat."
+                  "traditional": "請教授多給時間",
+                  "simplified": "请教授多给时间",
+                  "pinyin": "Qǐng jiàoshòu duō gěi shíjiān.",
+                  "english": "Ask the professor for more time."
                 }
               ],
-              "key": 0,
-              "why": "太緊張了，一點東西都吃不下: nerves leave him unable to eat (V不下). He has not eaten, and with the exam at ten he has time.",
+              "key": 1,
+              "why": "一頁寫不下 means his report does not fit on one page, so tonight he will cut the parts that don't matter. Writing more or speaking faster goes against what she told him, and nobody mentions asking for more time.",
               "focus": {
-                "zh": "吃不下",
-                "en": "can't eat any more"
+                "zh": "寫不下",
+                "en": "doesn't fit (on the page)"
               },
               "lesson": 9,
-              "answerLine": 3,
+              "answerLine": 4,
               "wordIds": [
-                "B1L14-2-09",
-                "B1L09-3-12"
+                "B2L09-1-04",
+                "B2L09-2-06",
+                "B2L09-1-23",
+                "B2L09-1-33"
               ],
               "grammarIds": [
                 "B2L09-G06-P212"
@@ -894,46 +891,46 @@
           },
           "lines": [
             {
-              "speaker": "M",
-              "traditional": "期末考快到了，我們八個同學想找地方一起念書，圖書館的小教室坐得下嗎？",
-              "simplified": "期末考快到了，我们八个同学想找地方一起念书，图书馆的小教室坐得下吗？",
-              "pinyin": "Qímòkǎo kuài dào le, wǒmen bā ge tóngxué xiǎng zhǎo dìfāng yìqǐ niànshū, túshūguǎn de xiǎo jiàoshì zuò de xià ma?",
-              "english": "Finals are coming, and eight of us want somewhere to study together. Is the library’s small room big enough?"
-            },
-            {
               "speaker": "F",
-              "traditional": "小教室只坐得下六個人。你們去系上的大教室吧，我明天打電話去系辦公室問問。",
-              "simplified": "小教室只坐得下六个人。你们去系上的大教室吧，我明天打电话去系办公室问问。",
-              "pinyin": "Xiǎo jiàoshì zhǐ zuò de xià liù ge rén. Nǐmen qù xì shàng de dà jiàoshì ba, wǒ míngtiān dǎ diànhuà qù xì bàngōngshì wènwen.",
-              "english": "The small room only seats six. Use the department's big classroom; I'll call the department office tomorrow and ask."
+              "traditional": "開學要用的課本，你今天都買到了嗎？",
+              "simplified": "开学要用的课本，你今天都买到了吗？",
+              "pinyin": "Kāixué yào yòng de kèběn, nǐ jīntiān dōu mǎi dào le ma?",
+              "english": "Did you get all the textbooks you need for the start of classes?"
             },
             {
               "speaker": "M",
-              "traditional": "大教室常常有人用，妳快點打吧！",
-              "simplified": "大教室常常有人用，你快点打吧！",
-              "pinyin": "Dà jiàoshì chángcháng yǒu rén yòng, nǐ kuài diǎn dǎ ba!",
-              "english": "The big classroom is often in use. Call them now!"
+              "traditional": "買了，我修了五門課，一共要買九本書。書包不夠大，放不下，只好用手拿。",
+              "simplified": "买了，我修了五门课，一共要买九本书。书包不够大，放不下，只好用手拿。",
+              "pinyin": "Mǎi le, wǒ xiū le wǔ mén kè, yígòng yào mǎi jiǔ běn shū. Shūbāo bú gòu dà, fàng bú xià, zhǐhǎo yòng shǒu ná.",
+              "english": "Yes. I'm taking five courses, so nine books in all. They don't fit in my backpack, so I have to carry them."
             },
             {
               "speaker": "F",
-              "traditional": "今天是星期天，辦公室沒有人啊。",
-              "simplified": "今天是星期天，办公室没有人啊。",
-              "pinyin": "Jīntiān shì xīngqítiān, bàngōngshì méiyǒu rén a.",
-              "english": "It's Sunday. There's nobody in the office."
+              "traditional": "你怎麼不在網路上買？送到宿舍多方便。",
+              "simplified": "你怎么不在网路上买？送到宿舍多方便。",
+              "pinyin": "Nǐ zěnme bú zài wǎnglù shàng mǎi? Sòng dào sùshè duō fāngbiàn.",
+              "english": "Why don't you buy them online? Having them sent to the dorm is so much easier."
             },
             {
               "speaker": "M",
-              "traditional": "對喔，那妳明天早上一下課就打，問到了就告訴我。",
-              "simplified": "对喔，那你明天早上一下课就打，问到了就告诉我。",
-              "pinyin": "Duì o, nà nǐ míngtiān zǎoshàng yí xiàkè jiù dǎ, wèn dào le jiù gàosu wǒ.",
-              "english": "Oh right. Then call tomorrow morning as soon as your class ends, and tell me what they say."
+              "traditional": "網路上買要等一個星期，明天就要上課了。",
+              "simplified": "网路上买要等一个星期，明天就要上课了。",
+              "pinyin": "Wǎnglù shàng mǎi yào děng yí ge xīngqí, míngtiān jiù yào shàngkè le.",
+              "english": "Online you wait a week, and classes start tomorrow."
             },
             {
               "speaker": "F",
-              "traditional": "好，沒問題。",
-              "simplified": "好，没问题。",
-              "pinyin": "Hǎo, méi wèntí.",
-              "english": "OK, no problem."
+              "traditional": "那我幫你拿幾本吧。快點走，再晚一點搭公車就沒位子了。",
+              "simplified": "那我帮你拿几本吧。快点走，再晚一点搭公车就没位子了。",
+              "pinyin": "Nà wǒ bāng nǐ ná jǐ běn ba. Kuài diǎn zǒu, zài wǎn yìdiǎn dā gōngchē jiù méi wèizi le.",
+              "english": "Then let me carry a few. Let's hurry. Any later and there'll be no seats on the bus."
+            },
+            {
+              "speaker": "M",
+              "traditional": "好，謝謝。",
+              "simplified": "好，谢谢。",
+              "pinyin": "Hǎo, xièxie.",
+              "english": "OK, thanks."
             }
           ],
           "answerLine": 1,
@@ -944,53 +941,53 @@
               "id": "b2l09-dialogue-two-2-1",
               "prompt": {
                 "speaker": "N",
-                "traditional": "為什麼他們不在圖書館的小教室念書？",
-                "simplified": "为什么他们不在图书馆的小教室念书？",
-                "pinyin": "Wèishénme tāmen bú zài túshūguǎn de xiǎo jiàoshì niànshū?",
-                "english": "Why won't they study in the library's small room?"
+                "traditional": "男的為什麼用手拿書？",
+                "simplified": "男的为什么用手拿书？",
+                "pinyin": "Nán de wèishénme yòng shǒu ná shū?",
+                "english": "Why does the man carry the books in his hands?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "小教室星期天不開",
-                  "simplified": "小教室星期天不开",
-                  "pinyin": "Xiǎo jiàoshì xīngqítiān bù kāi.",
-                  "english": "The small room isn't open on Sundays."
+                  "traditional": "書包已經滿了",
+                  "simplified": "书包已经满了",
+                  "pinyin": "Shūbāo yǐjīng mǎn le.",
+                  "english": "His backpack is already full."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "大教室常常有人用",
-                  "simplified": "大教室常常有人用",
-                  "pinyin": "Dà jiàoshì chángcháng yǒu rén yòng.",
-                  "english": "The big classroom is often in use."
+                  "traditional": "他把書包留在宿舍",
+                  "simplified": "他把书包留在宿舍",
+                  "pinyin": "Tā bǎ shūbāo liú zài sùshè.",
+                  "english": "He left his backpack in the dorm."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "他們的人太多了",
-                  "simplified": "他们的人太多了",
-                  "pinyin": "Tāmen de rén tài duō le.",
-                  "english": "There are too many of them."
+                  "traditional": "書包太重了",
+                  "simplified": "书包太重了",
+                  "pinyin": "Shūbāo tài zhòng le.",
+                  "english": "His backpack is too heavy."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "辦公室今天沒有人",
-                  "simplified": "办公室今天没有人",
-                  "pinyin": "Bàngōngshì jīntiān méiyǒu rén.",
-                  "english": "Nobody is in the office today."
+                  "traditional": "他想請女的幫忙拿",
+                  "simplified": "他想请女的帮忙拿",
+                  "pinyin": "Tā xiǎng qǐng nǚ de bāngmáng ná.",
+                  "english": "He wants the woman to help carry them."
                 }
               ],
-              "key": 2,
-              "why": "小教室只坐得下六個人, but there are eight of them. Sunday and the empty office are about the phone call, and the busy big classroom is why he wants her to hurry.",
+              "key": 0,
+              "why": "書包不夠大，放不下: nine books do not fit in his backpack, so he carries them in his hands. The problem is size, not weight; the dorm is where online books would be sent, and it is the woman who offers to carry a few.",
               "focus": {
-                "zh": "坐得下",
-                "en": "have room to seat"
+                "zh": "放不下",
+                "en": "doesn't fit"
               },
               "lesson": 9,
               "answerLine": 1,
               "wordIds": [
-                "B2L07-1-29",
-                "B2L09-1-19",
-                "B1L09-2-03"
+                "B2L09-1-14",
+                "B2L09-1-06",
+                "B2L09-1-32"
               ],
               "grammarIds": [
                 "B2L09-G06-P212"
@@ -1000,43 +997,43 @@
               "id": "b2l09-dialogue-two-2-2",
               "prompt": {
                 "speaker": "N",
-                "traditional": "女的什麼時候會打電話？",
-                "simplified": "女的什么时候会打电话？",
-                "pinyin": "Nǚ de shénme shíhòu huì dǎ diànhuà?",
-                "english": "When will the woman make the call?"
+                "traditional": "他們等一下最可能做什麼？",
+                "simplified": "他们等一下最可能做什么？",
+                "pinyin": "Tāmen děng yíxià zuì kěnéng zuò shénme?",
+                "english": "What will they most likely do next?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "現在馬上",
-                  "simplified": "现在马上",
-                  "pinyin": "Xiànzài mǎshàng.",
-                  "english": "Right away."
+                  "traditional": "在網路上買書",
+                  "simplified": "在网路上买书",
+                  "pinyin": "Zài wǎnglù shàng mǎi shū.",
+                  "english": "Buy books online."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "今天晚上",
-                  "simplified": "今天晚上",
-                  "pinyin": "Jīntiān wǎnshàng.",
-                  "english": "This evening."
+                  "traditional": "再去書店買書",
+                  "simplified": "再去书店买书",
+                  "pinyin": "Zài qù shūdiàn mǎi shū.",
+                  "english": "Go back to the bookstore for more books."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "明天早上上課以前",
-                  "simplified": "明天早上上课以前",
-                  "pinyin": "Míngtiān zǎoshàng shàngkè yǐqián.",
-                  "english": "Tomorrow morning before class."
+                  "traditional": "趕快去搭公車",
+                  "simplified": "赶快去搭公车",
+                  "pinyin": "Gǎnkuài qù dā gōngchē.",
+                  "english": "Hurry to catch the bus."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "明天早上下課以後",
-                  "simplified": "明天早上下课以后",
-                  "pinyin": "Míngtiān zǎoshàng xiàkè yǐhòu.",
-                  "english": "Tomorrow morning after class."
+                  "traditional": "回宿舍拿書包",
+                  "simplified": "回宿舍拿书包",
+                  "pinyin": "Huí sùshè ná shūbāo.",
+                  "english": "Go back to the dorm for his backpack."
                 }
               ],
-              "key": 3,
-              "why": "He first tells her 快點打 (call now), but it is Sunday and the office is empty, so they agree: 明天早上一下課就打, right after her class tomorrow morning.",
+              "key": 2,
+              "why": "快點走 hurries him along: they will rush to the bus before its seats are gone. He has already bought all his books, buying online would take a week while classes start tomorrow, and he carries the books because his backpack is full.",
               "focus": {
                 "zh": "快點 + V",
                 "en": "hurry up and …"
@@ -1044,8 +1041,9 @@
               "lesson": 9,
               "answerLine": 4,
               "wordIds": [
-                "B1L10-3-01",
-                "B1L12-3-13"
+                "B2L01-2-11",
+                "B1L16-2-03",
+                "B2L07-1-29"
               ],
               "grammarIds": [
                 "B2L09-G02-P209"
@@ -1072,24 +1070,24 @@
           "lines": [
             {
               "speaker": "F",
-              "traditional": "你好，我是你們的文法老師。你今天沒來上課，所以我打電話告訴你明天考試的事。",
-              "simplified": "你好，我是你们的文法老师。你今天没来上课，所以我打电话告诉你明天考试的事。",
-              "pinyin": "Nǐ hǎo, wǒ shì nǐmen de wénfǎ lǎoshī. Nǐ jīntiān méi lái shàngkè, suǒyǐ wǒ dǎ diànhuà gàosu nǐ míngtiān kǎoshì de shì.",
-              "english": "Hello, this is your grammar teacher. You weren't in class today, so I'm calling to tell you about tomorrow's test."
+              "traditional": "良介你好，我是日文系辦公室的王小姐。你上個星期交的翻譯報告，教授已經看過了。",
+              "simplified": "良介你好，我是日文系办公室的王小姐。你上个星期交的翻译报告，教授已经看过了。",
+              "pinyin": "Liángjiè nǐ hǎo, wǒ shì Rìwén xì bàngōngshì de Wáng xiǎojiě. Nǐ shàng ge xīngqí jiāo de fānyì bàogào, jiàoshòu yǐjīng kàn guo le.",
+              "english": "Hello Ryosuke, this is Ms. Wang from the Japanese Department office. The professor has read the translation report you handed in last week."
             },
             {
               "speaker": "F",
-              "traditional": "這次考試要從第三課考到第五課，第六課下次再考。因為我們的教室明天有別的課，所以要到三樓的大教室考。",
-              "simplified": "这次考试要从第三课考到第五课，第六课下次再考。因为我们的教室明天有别的课，所以要到三楼的大教室考。",
-              "pinyin": "Zhè cì kǎoshì yào cóng dì sān kè kǎo dào dì wǔ kè, dì liù kè xià cì zài kǎo. Yīnwèi wǒmen de jiàoshì míngtiān yǒu bié de kè, suǒyǐ yào dào sān lóu de dà jiàoshì kǎo.",
-              "english": "This test covers Lessons 3 to 5; Lesson 6 will be tested next time. Because our room has another class tomorrow, we'll take it in the big classroom on the third floor."
+              "traditional": "他說你翻得很認真，可是有幾個字寫錯了。請你把錯字都換掉，星期四下午五點以前把報告拿到系辦公室來。",
+              "simplified": "他说你翻得很认真，可是有几个字写错了。请你把错字都换掉，星期四下午五点以前把报告拿到系办公室来。",
+              "pinyin": "Tā shuō nǐ fān de hěn rènzhēn, kěshì yǒu jǐ ge zì xiě cuò le. Qǐng nǐ bǎ cuòzì dōu huàn diào, xīngqísì xiàwǔ wǔ diǎn yǐqián bǎ bàogào ná dào xì bàngōngshì lái.",
+              "english": "He says you translated it carefully, but there are several miswritten characters. Please correct them all and bring the report to the department office before 5 p.m. on Thursday."
             },
             {
               "speaker": "F",
-              "traditional": "考完以後，請把上次的報告交給我，作文下個星期再交就可以了。",
-              "simplified": "考完以后，请把上次的报告交给我，作文下个星期再交就可以了。",
-              "pinyin": "Kǎo wán yǐhòu, qǐng bǎ shàng cì de bàogào jiāo gěi wǒ, zuòwén xià ge xīngqí zài jiāo jiù kěyǐ le.",
-              "english": "After the test, please hand me last time's report; the composition can wait until next week."
+              "traditional": "教授還說，要是你將來想做翻譯的工作，可以去修他下學期的課。有問題可以打電話給我，謝謝。",
+              "simplified": "教授还说，要是你将来想做翻译的工作，可以去修他下学期的课。有问题可以打电话给我，谢谢。",
+              "pinyin": "Jiàoshòu hái shuō, yàoshì nǐ jiānglái xiǎng zuò fānyì de gōngzuò, kěyǐ qù xiū tā xià xuéqí de kè. Yǒu wèntí kěyǐ dǎ diànhuà gěi wǒ, xièxie.",
+              "english": "The professor also says that if you want to work as a translator in the future, you could take his course next semester. If you have any questions, call me. Thank you."
             }
           ],
           "answerLine": 1,
@@ -1100,52 +1098,53 @@
               "id": "b2l09-talk-1-1",
               "prompt": {
                 "speaker": "N",
-                "traditional": "明天的考試一共考幾課？",
-                "simplified": "明天的考试一共考几课？",
-                "pinyin": "Míngtiān de kǎoshì yígòng kǎo jǐ kè?",
-                "english": "How many lessons does tomorrow's test cover?"
+                "traditional": "良介應該怎麼做？",
+                "simplified": "良介应该怎么做？",
+                "pinyin": "Liángjiè yīnggāi zěnme zuò?",
+                "english": "What should Ryosuke do?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "兩課",
-                  "simplified": "两课",
-                  "pinyin": "Liǎng kè.",
-                  "english": "Two lessons."
+                  "traditional": "星期四去找教授",
+                  "simplified": "星期四去找教授",
+                  "pinyin": "Xīngqísì qù zhǎo jiàoshòu.",
+                  "english": "Go and see the professor on Thursday."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "三課",
-                  "simplified": "三课",
-                  "pinyin": "Sān kè.",
-                  "english": "Three lessons."
+                  "traditional": "把錯字換掉再拿報告去系上",
+                  "simplified": "把错字换掉再拿报告去系上",
+                  "pinyin": "Bǎ cuòzì huàn diào zài ná bàogào qù xì shàng.",
+                  "english": "Correct the wrong characters, then take the report to the department."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "四課",
-                  "simplified": "四课",
-                  "pinyin": "Sì kè.",
-                  "english": "Four lessons."
+                  "traditional": "把報告再翻一次",
+                  "simplified": "把报告再翻一次",
+                  "pinyin": "Bǎ bàogào zài fān yí cì.",
+                  "english": "Translate the report again."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "五課",
-                  "simplified": "五课",
-                  "pinyin": "Wǔ kè.",
-                  "english": "Five lessons."
+                  "traditional": "打電話給王小姐",
+                  "simplified": "打电话给王小姐",
+                  "pinyin": "Dǎ diànhuà gěi Wáng xiǎojiě.",
+                  "english": "Call Ms. Wang."
                 }
               ],
               "key": 1,
-              "why": "從第三課考到第五課: Lessons 3, 4 and 5, three lessons. Lesson 6 is tested next time (下次再考), so it is not four.",
+              "why": "He must correct the miswritten characters and bring the report to the department office (拿到系辦公室來) by 5 p.m. Thursday. Thursday is a deadline, not a meeting with the professor; his translation itself is fine, and he calls only if he has questions.",
               "focus": {
-                "zh": "考到第五課",
-                "en": "cover up to Lesson 5"
+                "zh": "拿到 + place",
+                "en": "bring to …"
               },
               "lesson": 9,
               "answerLine": 1,
               "wordIds": [
-                "B1L09-3-15",
-                "B1L15-1-02"
+                "B2L09-2-13",
+                "B2L09-1-19",
+                "B2L09-1-23"
               ],
               "grammarIds": [
                 "B2L09-G03-P209"
@@ -1155,53 +1154,54 @@
               "id": "b2l09-talk-1-2",
               "prompt": {
                 "speaker": "N",
-                "traditional": "考完試，這個學生要做什麼？",
-                "simplified": "考完试，这个学生要做什么？",
-                "pinyin": "Kǎo wán shì, zhège xuéshēng yào zuò shénme?",
-                "english": "What must this student do after the test?"
+                "traditional": "教授為什麼建議良介修他的課？",
+                "simplified": "教授为什么建议良介修他的课？",
+                "pinyin": "Jiàoshòu wèishénme jiànyì Liángjiè xiū tā de kè?",
+                "english": "Why does the professor suggest Ryosuke take his course?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "交這個星期的作文",
-                  "simplified": "交这个星期的作文",
-                  "pinyin": "Jiāo zhège xīngqí de zuòwén.",
-                  "english": "Hand in this week's composition."
+                  "traditional": "能幫他少寫錯字",
+                  "simplified": "能帮他少写错字",
+                  "pinyin": "Néng bāng tā shǎo xiě cuòzì.",
+                  "english": "It can help him make fewer mistakes in characters."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "交以前寫好的報告",
-                  "simplified": "交以前写好的报告",
-                  "pinyin": "Jiāo yǐqián xiě hǎo de bàogào.",
-                  "english": "Hand in the report written earlier."
+                  "traditional": "能讓他翻得更認真",
+                  "simplified": "能让他翻得更认真",
+                  "pinyin": "Néng ràng tā fān de gèng rènzhēn.",
+                  "english": "It can make him translate more carefully."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "去三樓的教室上課",
-                  "simplified": "去三楼的教室上课",
-                  "pinyin": "Qù sān lóu de jiàoshì shàngkè.",
-                  "english": "Go to class on the third floor."
+                  "traditional": "能讓他把這份報告寫好",
+                  "simplified": "能让他把这份报告写好",
+                  "pinyin": "Néng ràng tā bǎ zhè fèn bàogào xiě hǎo.",
+                  "english": "It can help him get this report right."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "打電話給文法老師",
-                  "simplified": "打电话给文法老师",
-                  "pinyin": "Dǎ diànhuà gěi wénfǎ lǎoshī.",
-                  "english": "Call the grammar teacher."
+                  "traditional": "能幫他準備以後的工作",
+                  "simplified": "能帮他准备以后的工作",
+                  "pinyin": "Néng bāng tā zhǔnbèi yǐhòu de gōngzuò.",
+                  "english": "It can prepare him for a future job."
                 }
               ],
-              "key": 1,
-              "why": "請把上次的報告交給我: after the test the student hands in the earlier report. The composition can wait until next week, and the third-floor room is where the test itself is.",
+              "key": 3,
+              "why": "The professor links his course to a future job: 要是你將來想做翻譯的工作. The miswritten characters are fixed in this report by Thursday, he already translates carefully, and the course is next semester, too late for this report.",
               "focus": {
-                "zh": "交報告",
-                "en": "hand in a report"
+                "zh": "將來",
+                "en": "in the future"
               },
               "lesson": 9,
               "answerLine": 2,
               "wordIds": [
-                "B2L09-1-22",
-                "B2L09-1-23",
-                "B2L09-1-11"
+                "B2L09-2-21",
+                "B2L09-1-31",
+                "B2L09-1-14",
+                "B2L09-1-24"
               ]
             }
           ]
@@ -1219,24 +1219,24 @@
           "lines": [
             {
               "speaker": "M",
-              "traditional": "大家好，期末考快到了。圖書館平日本來開到晚上十點，從下個星期一開始，平日會開到半夜十二點，週末還是開到晚上九點。",
-              "simplified": "大家好，期末考快到了。图书馆平日本来开到晚上十点，从下个星期一开始，平日会开到半夜十二点，周末还是开到晚上九点。",
-              "pinyin": "Dàjiā hǎo, qímòkǎo kuài dào le. Túshūguǎn píngrì běnlái kāi dào wǎnshàng shí diǎn, cóng xià ge xīngqíyī kāishǐ, píngrì huì kāi dào bànyè shí'èr diǎn, zhōumò háishì kāi dào wǎnshàng jiǔ diǎn.",
-              "english": "Hello, everyone. Finals are coming. On weekdays the library has closed at ten p.m.; from next Monday it will stay open until midnight on weekdays, and at weekends it still closes at nine p.m."
+              "traditional": "各位交換學生，歡迎來到華語文中心。這學期的課從九月十五號上到十二月底，每天上午上三個小時。",
+              "simplified": "各位交换学生，欢迎来到华语文中心。这学期的课从九月十五号上到十二月底，每天上午上三个小时。",
+              "pinyin": "Gèwèi jiāohuàn xuéshēng, huānyíng lái dào Huáyǔwén zhōngxīn. Zhè xuéqí de kè cóng jiǔ yuè shíwǔ hào shàng dào shí'èr yuè dǐ, měi tiān shàngwǔ shàng sān ge xiǎoshí.",
+              "english": "Welcome to the Chinese Language Center, exchange students. This semester's classes run from September 15 to the end of December, three hours every morning."
             },
             {
               "speaker": "M",
-              "traditional": "平日三樓的小教室可以用到晚上十一點，坐得下六個人。想跟同學一起念書的，請先在網路上訂位。",
-              "simplified": "平日三楼的小教室可以用到晚上十一点，坐得下六个人。想跟同学一起念书的，请先在网路上订位。",
-              "pinyin": "Píngrì sān lóu de xiǎo jiàoshì kěyǐ yòng dào wǎnshàng shíyī diǎn, zuò de xià liù ge rén. Xiǎng gēn tóngxué yìqǐ niànshū de, qǐng xiān zài wǎnglù shàng dìngwèi.",
-              "english": "On weekdays the small rooms on the third floor can be used until eleven p.m. and seat six. If you want to study with classmates, please book online first."
+              "traditional": "課堂上，老師會帶大家念生字、用文法造句，也會讓大家練習聲調，用中文表達自己的意見。",
+              "simplified": "课堂上，老师会带大家念生字、用文法造句，也会让大家练习声调，用中文表达自己的意见。",
+              "pinyin": "Kètáng shàng, lǎoshī huì dài dàjiā niàn shēngzì, yòng wénfǎ zàojù, yě huì ràng dàjiā liànxí shēngdiào, yòng Zhōngwén biǎodá zìjǐ de yìjiàn.",
+              "english": "In class, the teachers will go over new words with you and have you make sentences with the grammar; they will also have you practise tones and give your own opinions in Mandarin."
             },
             {
               "speaker": "M",
-              "traditional": "還有，借了書的同學，請在學期結束以前把書還回來，要不然下個學期就不能再借書了。謝謝大家！",
-              "simplified": "还有，借了书的同学，请在学期结束以前把书还回来，要不然下个学期就不能再借书了。谢谢大家！",
-              "pinyin": "Hái yǒu, jiè le shū de tóngxué, qǐng zài xuéqí jiéshù yǐqián bǎ shū huán huílái, yàobùrán xià ge xuéqí jiù bù néng zài jiè shū le. Xièxie dàjiā!",
-              "english": "Also, if you have borrowed books, please return them before the semester ends, or you will not be able to borrow books next semester. Thank you!"
+              "traditional": "每個月，中心還會辦一次免費的文化活動，增加大家說中文的機會。想參加的同學，可以先上網看活動的介紹。平日也可以來辦公室問我們。",
+              "simplified": "每个月，中心还会办一次免费的文化活动，增加大家说中文的机会。想参加的同学，可以先上网看活动的介绍。平日也可以来办公室问我们。",
+              "pinyin": "Měi ge yuè, zhōngxīn hái huì bàn yí cì miǎnfèi de wénhuà huódòng, zēngjiā dàjiā shuō Zhōngwén de jīhuì. Xiǎng cānjiā de tóngxué, kěyǐ xiān shàngwǎng kàn huódòng de jièshào. Píngrì yě kěyǐ lái bàngōngshì wèn wǒmen.",
+              "english": "Every month the center also holds a free cultural activity so you have another chance to speak Chinese. If you want to join, you can first read about it online. You can also ask us in the office on weekdays."
             }
           ],
           "answerLine": 0,
@@ -1247,53 +1247,52 @@
               "id": "b2l09-talk-2-1",
               "prompt": {
                 "speaker": "N",
-                "traditional": "下個星期六，圖書館開到幾點？",
-                "simplified": "下个星期六，图书馆开到几点？",
-                "pinyin": "Xià ge xīngqíliù, túshūguǎn kāi dào jǐ diǎn?",
-                "english": "Until what time is the library open next Saturday?"
+                "traditional": "這學期的課一共上多久？",
+                "simplified": "这学期的课一共上多久？",
+                "pinyin": "Zhè xuéqí de kè yígòng shàng duōjiǔ?",
+                "english": "How long do this semester's classes last in all?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "晚上九點",
-                  "simplified": "晚上九点",
-                  "pinyin": "Wǎnshàng jiǔ diǎn.",
-                  "english": "Nine p.m."
+                  "traditional": "兩個半月",
+                  "simplified": "两个半月",
+                  "pinyin": "Liǎng ge bàn yuè.",
+                  "english": "Two and a half months."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "晚上十點",
-                  "simplified": "晚上十点",
-                  "pinyin": "Wǎnshàng shí diǎn.",
-                  "english": "Ten p.m."
+                  "traditional": "三個月",
+                  "simplified": "三个月",
+                  "pinyin": "Sān ge yuè.",
+                  "english": "Three months."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "晚上十一點",
-                  "simplified": "晚上十一点",
-                  "pinyin": "Wǎnshàng shíyī diǎn.",
-                  "english": "Eleven p.m."
+                  "traditional": "四個月",
+                  "simplified": "四个月",
+                  "pinyin": "Sì ge yuè.",
+                  "english": "Four months."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "半夜十二點",
-                  "simplified": "半夜十二点",
-                  "pinyin": "Bànyè shí'èr diǎn.",
-                  "english": "Midnight."
+                  "traditional": "三個半月",
+                  "simplified": "三个半月",
+                  "pinyin": "Sān ge bàn yuè.",
+                  "english": "Three and a half months."
                 }
               ],
-              "key": 0,
-              "why": "Saturday is a weekend day: 週末還是開到晚上九點. Ten was the old weekday time, midnight the new weekday time, and eleven is when the small rooms close.",
+              "key": 3,
+              "why": "從九月十五號上到十二月底: from mid-September to the end of December is three and a half months. Counting from the start of September gives four; counting only to the start of December gives two and a half.",
               "focus": {
-                "zh": "開到……",
-                "en": "open until …"
+                "zh": "上到 + time",
+                "en": "have classes until …"
               },
               "lesson": 9,
               "answerLine": 0,
               "wordIds": [
-                "B2L06-2-07",
-                "B2L03-2-03",
-                "B1L02-2-03"
+                "B2L07-1-24",
+                "B1L09-3-01"
               ],
               "grammarIds": [
                 "B2L09-G03-P209"
@@ -1303,53 +1302,53 @@
               "id": "b2l09-talk-2-2",
               "prompt": {
                 "speaker": "N",
-                "traditional": "想用三樓的小教室，要怎麼做？",
-                "simplified": "想用三楼的小教室，要怎么做？",
-                "pinyin": "Xiǎng yòng sān lóu de xiǎo jiàoshì, yào zěnme zuò?",
-                "english": "What must you do to use a small room on the third floor?"
+                "traditional": "這段話是在介紹什麼？",
+                "simplified": "这段话是在介绍什么？",
+                "pinyin": "Zhè duàn huà shì zài jièshào shénme?",
+                "english": "What is this talk introducing?"
               },
               "choices": [
                 {
                   "speaker": "N",
-                  "traditional": "先把借的書還了",
-                  "simplified": "先把借的书还了",
-                  "pinyin": "Xiān bǎ jiè de shū huán le.",
-                  "english": "Return borrowed books first."
+                  "traditional": "中心的課跟活動",
+                  "simplified": "中心的课跟活动",
+                  "pinyin": "Zhōngxīn de kè gēn huódòng.",
+                  "english": "The center's classes and activities."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "找到六個同學",
-                  "simplified": "找到六个同学",
-                  "pinyin": "Zhǎo dào liù ge tóngxué.",
-                  "english": "Find six classmates."
+                  "traditional": "中心的老師跟同學",
+                  "simplified": "中心的老师跟同学",
+                  "pinyin": "Zhōngxīn de lǎoshī gēn tóngxué.",
+                  "english": "The center’s teachers and students."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "先上網訂好位子",
-                  "simplified": "先上网订好位子",
-                  "pinyin": "Xiān shàngwǎng dìng hǎo wèizi.",
-                  "english": "Book a place online first."
+                  "traditional": "中心的教室跟辦公室",
+                  "simplified": "中心的教室跟办公室",
+                  "pinyin": "Zhōngxīn de jiàoshì gēn bàngōngshì.",
+                  "english": "The center’s classrooms and office."
                 },
                 {
                   "speaker": "N",
-                  "traditional": "平日晚上再來",
-                  "simplified": "平日晚上再来",
-                  "pinyin": "Píngrì wǎnshàng zài lái.",
-                  "english": "Come on a weekday evening."
+                  "traditional": "中心的費用跟上課時間",
+                  "simplified": "中心的费用跟上课时间",
+                  "pinyin": "Zhōngxīn de fèiyòng gēn shàngkè shíjiān.",
+                  "english": "The center’s fees and class times."
                 }
               ],
-              "key": 2,
-              "why": "請先在網路上訂位: the rooms are booked online first. Six is how many a room can seat, not a requirement, and returning books is a separate request.",
+              "key": 0,
+              "why": "The talk covers the course dates, what happens in class, the monthly activity and where to find information: it introduces the center's classes and activities. Sentences and tones are only part of the classwork, and the activity is a single line.",
               "focus": {
-                "zh": "訂位",
-                "en": "book a place"
+                "zh": "華語中心",
+                "en": "Chinese Language Center"
               },
               "lesson": 9,
               "answerLine": 1,
               "wordIds": [
-                "B2L07-1-23",
-                "B2L09-2-16",
-                "B2L09-2-17"
+                "B2L09-2-22",
+                "B2L09-1-07",
+                "B1L14-1-02"
               ]
             }
           ]
@@ -1365,115 +1364,112 @@
           "kind": "reading",
           "format": "notice",
           "title": {
-            "traditional": "華語文中心 語言交換",
-            "simplified": "华语文中心 语言交换",
-            "pinyin": "Huáyǔwén zhōngxīn yǔyán jiāohuàn",
-            "english": "Chinese Language Center: Language Exchange"
+            "traditional": "華語中心 期末考試",
+            "simplified": "华语中心 期末考试",
+            "pinyin": "Huáyǔ zhōngxīn qímò kǎoshì",
+            "english": "Chinese Language Center: Final Exams"
           },
           "text": {
-            "traditional": "想多練習說中文嗎？想交台灣朋友嗎？\n時間：12月每個星期三 18:30–20:30\n教室：華語文中心2樓（坐得下30個人）\n怎麼做：一個外國學生跟一個台灣學生一起聊天，第一個小時說中文，第二個小時說外國學生自己的語言。\n費用：免費\n參加：請先上網留言，告訴我們你的名字和電話。教室坐滿了就不能再參加\n華語文中心 11/20",
-            "simplified": "想多练习说中文吗？想交台湾朋友吗？\n时间：12月每个星期三 18:30–20:30\n教室：华语文中心2楼（坐得下30个人）\n怎么做：一个外国学生跟一个台湾学生一起聊天，第一个小时说中文，第二个小时说外国学生自己的语言。\n费用：免费\n参加：请先上网留言，告诉我们你的名字和电话。教室坐满了就不能再参加\n华语文中心 11/20",
-            "pinyin": "Xiǎng duō liànxí shuō Zhōngwén ma? Xiǎng jiāo Táiwān péngyǒu ma?\nShíjiān: Shí'èr yuè měi ge xīngqísān shíbā diǎn sānshí dào èrshí diǎn sānshí\nJiàoshì: Huáyǔwén zhōngxīn èr lóu (zuò de xià sānshí ge rén)\nZěnme zuò: Yí ge wàiguó xuéshēng gēn yí ge Táiwān xuéshēng yìqǐ liáotiān, dì yī ge xiǎoshí shuō Zhōngwén, dì èr ge xiǎoshí shuō wàiguó xuéshēng zìjǐ de yǔyán.\nFèiyòng: Miǎnfèi\nCānjiā: Qǐng xiān shàngwǎng liúyán, gàosu wǒmen nǐ de míngzi hé diànhuà. Jiàoshì zuò mǎn le jiù bù néng zài cānjiā\nHuáyǔwén zhōngxīn 11/20",
-            "english": "Want more practice speaking Chinese? Want to make Taiwanese friends?\nTime: every Wednesday in December, 6:30–8:30 p.m.\nRoom: Chinese Language Center, 2nd floor (seats 30)\nHow it works: a foreign student and a Taiwanese student chat together, speaking Chinese in the first hour and the foreign student's own language in the second.\nFee: free\nTo join: leave a message online first and tell us your name and phone number. Once the room is full, no one else can join\nChinese Language Center, 11/20"
+            "traditional": "筆試：一月三日（星期三）上午九點，一共五十題，從第一課考到第十課，可以帶字典\n口試：一月四日（星期四），每人十分鐘，請先上網選好時間\n作文：不在考試的時候寫，請在十二月二十九日以前交給老師\n注意：當天不能來考試的同學，請先跟中心請假。沒請假又沒來考試，這門課會被當\n華語中心 十二月十五日",
+            "simplified": "笔试：一月三日（星期三）上午九点，一共五十题，从第一课考到第十课，可以带字典\n口试：一月四日（星期四），每人十分钟，请先上网选好时间\n作文：不在考试的时候写，请在十二月二十九日以前交给老师\n注意：当天不能来考试的同学，请先跟中心请假。没请假又没来考试，这门课会被当\n华语中心 十二月十五日",
+            "pinyin": "Bǐshì: yī yuè sān rì (xīngqísān) shàngwǔ jiǔ diǎn, yígòng wǔshí tí, cóng dì yī kè kǎo dào dì shí kè, kěyǐ dài zìdiǎn\nKǒushì: yī yuè sì rì (xīngqísì), měi rén shí fēnzhōng, qǐng xiān shàngwǎng xuǎn hǎo shíjiān\nZuòwén: bú zài kǎoshì de shíhòu xiě, qǐng zài shí’èr yuè èrshíjiǔ rì yǐqián jiāo gěi lǎoshī\nZhùyì: dāngtiān bù néng lái kǎoshì de tóngxué, qǐng xiān gēn zhōngxīn qǐngjià. Méi qǐngjià yòu méi lái kǎoshì, zhè mén kè huì bèi dàng\nHuáyǔ zhōngxīn shí’èr yuè shíwǔ rì",
+            "english": "Written exam: January 3 (Wednesday), 9:00 a.m., 50 questions in all, Lessons 1 to 10; dictionaries allowed\nOral exam: January 4 (Thursday), ten minutes each; please choose your time online first\nComposition: not written during the exams; hand it to your teacher by December 29\nNote: request leave from the center in advance if you cannot attend on the day. Missing an exam without leave means failing the course\nChinese Language Center, 12/15"
           },
-          "picture": "b2l09-reading-card-1",
-          "alt": "A language-exchange poster pinned on the notice board of a university language center",
           "questions": [
             {
               "id": "b2l09-reading-card-1-1",
               "prompt": {
-                "traditional": "每次活動，外國學生說中文說多久？",
-                "simplified": "每次活动，外国学生说中文说多久？",
-                "pinyin": "Měi cì huódòng, wàiguó xuéshēng shuō Zhōngwén shuō duō jiǔ?",
-                "english": "In each session, how long does the foreign student speak Chinese?"
+                "traditional": "良介一月四日要去醫院，不能來學校。他應該怎麼做？",
+                "simplified": "良介一月四日要去医院，不能来学校。他应该怎么做？",
+                "pinyin": "Liángjiè yī yuè sì rì yào qù yīyuàn, bù néng lái xuéxiào. Tā yīnggāi zěnme zuò?",
+                "english": "Ryosuke has to go to hospital on January 4 and cannot come to school. What should he do?"
               },
               "choices": [
                 {
-                  "traditional": "三十分鐘",
-                  "simplified": "三十分钟",
-                  "pinyin": "Sānshí fēnzhōng.",
-                  "english": "Thirty minutes."
+                  "traditional": "上網選別的時間",
+                  "simplified": "上网选别的时间",
+                  "pinyin": "Shàngwǎng xuǎn bié de shíjiān.",
+                  "english": "Choose another time online."
                 },
                 {
-                  "traditional": "一個小時",
-                  "simplified": "一个小时",
-                  "pinyin": "Yí ge xiǎoshí.",
-                  "english": "One hour."
+                  "traditional": "十二月二十九日以前交作文",
+                  "simplified": "十二月二十九日以前交作文",
+                  "pinyin": "shí’èr yuè èrshíjiǔ rì yǐqián jiāo zuòwén.",
+                  "english": "Hand in the composition by 12/29."
                 },
                 {
-                  "traditional": "一個半小時",
-                  "simplified": "一个半小时",
-                  "pinyin": "Yí ge bàn xiǎoshí.",
-                  "english": "An hour and a half."
+                  "traditional": "先跟中心請假",
+                  "simplified": "先跟中心请假",
+                  "pinyin": "Xiān gēn zhōngxīn qǐngjià.",
+                  "english": "Ask the center for leave first."
                 },
                 {
-                  "traditional": "兩個小時",
-                  "simplified": "两个小时",
-                  "pinyin": "Liǎng ge xiǎoshí.",
-                  "english": "Two hours."
+                  "traditional": "只去考筆試",
+                  "simplified": "只去考笔试",
+                  "pinyin": "Zhǐ qù kǎo bǐshì.",
+                  "english": "Take only the written exam."
                 }
               ],
-              "key": 1,
-              "why": "A session runs 18:30–20:30 (two hours): Chinese in the first hour, the foreign student's language in the second, so one hour of Chinese.",
+              "key": 2,
+              "why": "The oral exam is on January 4, when he cannot come to campus. He needs to request leave from the center first. Choosing an oral exam time online only gives him a slot on that day.",
               "focus": {
-                "zh": "第一個小時",
-                "en": "the first hour"
+                "zh": "請假；被當",
+                "en": "ask for leave; fail"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-2-01",
-                "B2L09-2-22",
-                "B1L09-2-08"
+                "B2L09-1-09",
+                "B1L10-1-02",
+                "B2L09-1-13",
+                "B2L09-1-06"
               ]
             },
             {
               "id": "b2l09-reading-card-1-2",
               "prompt": {
-                "traditional": "為什麼有的人可能不能參加？",
-                "simplified": "为什么有的人可能不能参加？",
-                "pinyin": "Wèishénme yǒu de rén kěnéng bù néng cānjiā?",
-                "english": "Why might some people be unable to join?"
+                "traditional": "作文的部分，美心應該怎麼做？",
+                "simplified": "作文的部分，美心应该怎么做？",
+                "pinyin": "Zuòwén de bùfèn, Měixīn yīnggāi zěnme zuò?",
+                "english": "What should Meixin do about her composition?"
               },
               "choices": [
                 {
-                  "traditional": "教室只能坐三十人",
-                  "simplified": "教室只能坐三十人",
-                  "pinyin": "Jiàoshì zhǐ néng zuò sānshí rén.",
-                  "english": "The room only holds thirty people."
+                  "traditional": "考試前幾天就交給老師",
+                  "simplified": "考试前几天就交给老师",
+                  "pinyin": "Kǎoshì qián jǐ tiān jiù jiāo gěi lǎoshī.",
+                  "english": "Give it to the teacher a few days before the exams."
                 },
                 {
-                  "traditional": "外國學生要付錢",
-                  "simplified": "外国学生要付钱",
-                  "pinyin": "Wàiguó xuéshēng yào fù qián.",
-                  "english": "Foreign students have to pay."
+                  "traditional": "寫完筆試再交作文",
+                  "simplified": "写完笔试再交作文",
+                  "pinyin": "Xiě wán bǐshì zài jiāo zuòwén.",
+                  "english": "Hand in the composition after the written exam."
                 },
                 {
-                  "traditional": "活動十一月就結束",
-                  "simplified": "活动十一月就结束",
-                  "pinyin": "Huódòng shíyī yuè jiù jiéshù.",
-                  "english": "The activity ends in November."
+                  "traditional": "口試當天再交作文",
+                  "simplified": "口试当天再交作文",
+                  "pinyin": "Kǒushì dāngtiān zài jiāo zuòwén.",
+                  "english": "Hand in the composition on the day of the oral exam."
                 },
                 {
-                  "traditional": "台灣學生不能參加",
-                  "simplified": "台湾学生不能参加",
-                  "pinyin": "Táiwān xuéshēng bù néng cānjiā.",
-                  "english": "Taiwanese students cannot join."
+                  "traditional": "筆試的時候寫作文",
+                  "simplified": "笔试的时候写作文",
+                  "pinyin": "Bǐshì de shíhòu xiě zuòwén.",
+                  "english": "Write the composition during the written exam."
                 }
               ],
               "key": 0,
-              "why": "The room 坐得下30個人, and 教室坐滿了就不能再參加: once the 30 seats are taken, nobody else can join. The activity is free for everyone, it runs in December (11/20 is only the notice's date), and it is for Taiwanese and foreign students together.",
+              "why": "The composition is not written in the exam (不在考試的時候寫): it is due on 12/29, a few days before the written exam on 1/3. After the written exam or on the oral exam day is too late.",
               "focus": {
-                "zh": "坐得下",
-                "en": "have room to seat"
+                "zh": "作文；筆試",
+                "en": "composition; written exam"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L08-1-11",
-                "B2L07-1-07",
-                "B2L07-1-29"
-              ],
-              "grammarIds": [
-                "B2L09-G06-P212"
+                "B2L09-1-11",
+                "B2L09-1-21",
+                "B2L09-1-28",
+                "B2L09-1-25"
               ]
             }
           ]
@@ -1483,109 +1479,103 @@
           "kind": "reading",
           "format": "message",
           "text": {
-            "traditional": "美心：\n妳不是說今天下午要去圖書館嗎？可以幫我把桌上那兩本書還了嗎？還有，圖書館三樓有一本日本歷史的書，我上網查過了，現在還沒有人借，請妳幫我借回來。我今天上課上到晚上八點，回來以後請妳吃東西。謝謝！\n可欣 星期二早上",
-            "simplified": "美心：\n你不是说今天下午要去图书馆吗？可以帮我把桌上那两本书还了吗？还有，图书馆三楼有一本日本历史的书，我上网查过了，现在还没有人借，请你帮我借回来。我今天上课上到晚上八点，回来以后请你吃东西。谢谢！\n可欣 星期二早上",
-            "pinyin": "Měixīn:\nNǐ bú shì shuō jīntiān xiàwǔ yào qù túshūguǎn ma? Kěyǐ bāng wǒ bǎ zhuō shàng nà liǎng běn shū huán le ma? Hái yǒu, túshūguǎn sān lóu yǒu yì běn Rìběn lìshǐ de shū, wǒ shàngwǎng chá guo le, xiànzài hái méi yǒu rén jiè, qǐng nǐ bāng wǒ jiè huílái. Wǒ jīntiān shàngkè shàng dào wǎnshàng bā diǎn, huílái yǐhòu qǐng nǐ chī dōngxi. Xièxie!\nKěxīn, xīngqí'èr zǎoshàng",
-            "english": "Meixin,\nDidn't you say you're going to the library this afternoon? Could you return the two books on my desk for me? Also, there's a Japanese history book on the library's third floor; I checked online and nobody has borrowed it yet. Please borrow it for me. I have class until eight this evening. When I'm back, I'll treat you to something to eat. Thanks!\nKexin, Tuesday morning"
+            "traditional": "各位同學：\n下星期二的課堂報告要介紹一本書。先說這本書讓你學到什麼知識，再用自己的話表達意見。每人報告五分鐘，再留兩分鐘跟同學交換意見。請準備一頁資料，寫下你想跟同學討論的問題，星期一中午以前寄給我。請不要把書上的話都寫下來，先想想你對書裡的做法有什麼意見。這也是練習表達能力的好機會。\n王教授 三月八日",
+            "simplified": "各位同学：\n下星期二的课堂报告要介绍一本书。先说这本书让你学到什么知识，再用自己的话表达意见。每人报告五分钟，再留两分钟跟同学交换意见。请准备一页资料，写下你想跟同学讨论的问题，星期一中午以前寄给我。请不要把书上的话都写下来，先想想你对书里的做法有什么意见。这也是练习表达能力的好机会。\n王教授 三月八日",
+            "pinyin": "Gèwèi tóngxué:\nXià xīngqí’èr de kètáng bàogào yào jièshào yì běn shū. Xiān shuō zhè běn shū ràng nǐ xué dào shénme zhīshì, zài yòng zìjǐ de huà biǎodá yìjiàn. Měi rén bàogào wǔ fēnzhōng, zài liú liǎng fēnzhōng gēn tóngxué jiāohuàn yìjiàn. Qǐng zhǔnbèi yí yè zīliào, xiě xià nǐ xiǎng gēn tóngxué tǎolùn de wèntí, xīngqíyī zhōngwǔ yǐqián jì gěi wǒ. Qǐng bú yào bǎ shū shàng de huà dōu xiě xiàlái, xiān xiǎngxiang nǐ duì shū lǐ de zuòfǎ yǒu shénme yìjiàn. Zhè yě shì liànxí biǎodá nénglì de hǎo jīhuì.\nWáng jiàoshòu sān yuè bā rì",
+            "english": "Dear students,\nNext Tuesday’s class presentation is about a book. First say what you learned from it, then give your opinion in your own words. Take five minutes to present and leave two minutes afterwards to exchange views with classmates. Prepare one page with the questions you want to discuss, and send it to me before noon on Monday. Instead of writing out everything in the book, think about what you make of the approaches it describes. This is a chance to practise expressing your ideas.\nProfessor Wang, March 8"
           },
           "questions": [
             {
               "id": "b2l09-reading-card-2-1",
               "prompt": {
-                "traditional": "可欣請美心做什麼？",
-                "simplified": "可欣请美心做什么？",
-                "pinyin": "Kěxīn qǐng Měixīn zuò shénme?",
-                "english": "What does Kexin ask Meixin to do?"
+                "traditional": "明生星期一有空，他要寄什麼資料，什麼時候寄？",
+                "simplified": "明生星期一有空，他要寄什么资料，什么时候寄？",
+                "pinyin": "Míngshēng xīngqíyī yǒu kòng, tā yào jì shénme zīliào, shénme shíhòu jì?",
+                "english": "Mingsheng is free on Monday. What should he send, and when?"
               },
               "choices": [
                 {
-                  "traditional": "替她上網查一本書",
-                  "simplified": "替她上网查一本书",
-                  "pinyin": "Tì tā shàngwǎng chá yì běn shū.",
-                  "english": "Look a book up online for her."
+                  "traditional": "星期一晚上寄討論的問題",
+                  "simplified": "星期一晚上寄讨论的问题",
+                  "pinyin": "Xīngqíyī wǎnshàng jì tǎolùn de wèntí.",
+                  "english": "Send the discussion questions Monday evening."
                 },
                 {
-                  "traditional": "替她買一本歷史書",
-                  "simplified": "替她买一本历史书",
-                  "pinyin": "Tì tā mǎi yì běn lìshǐ shū.",
-                  "english": "Buy a history book for her."
+                  "traditional": "星期一早上寄討論的問題",
+                  "simplified": "星期一早上寄讨论的问题",
+                  "pinyin": "Xīngqíyī zǎoshàng jì tǎolùn de wèntí.",
+                  "english": "Send the discussion questions Monday morning."
                 },
                 {
-                  "traditional": "替她還書再借書",
-                  "simplified": "替她还书再借书",
-                  "pinyin": "Tì tā huán shū zài jiè shū.",
-                  "english": "Return books and borrow one for her."
+                  "traditional": "星期一早上寄書上的話",
+                  "simplified": "星期一早上寄书上的话",
+                  "pinyin": "Xīngqíyī zǎoshàng jì shū shàng de huà.",
+                  "english": "Send the contents of the book Monday morning."
                 },
                 {
-                  "traditional": "下午陪她去還書",
-                  "simplified": "下午陪她去还书",
-                  "pinyin": "Xiàwǔ péi tā qù huán shū.",
-                  "english": "Go with her to return books this afternoon."
+                  "traditional": "星期二上課再交書上的話",
+                  "simplified": "星期二上课再交书上的话",
+                  "pinyin": "Xīngqí’èr shàngkè zài jiāo shū shàng de huà.",
+                  "english": "Hand in the contents of the book in class Tuesday."
                 }
               ],
-              "key": 2,
-              "why": "妳不是說今天下午要去圖書館嗎？ reminds Meixin of her own plan; Kexin asks her to return two books and borrow the history book. Kexin already looked it up online herself, she wants it borrowed, not bought, and she is in class all day.",
+              "key": 1,
+              "why": "The page is for discussion questions and is due before noon on Monday. Monday evening misses the deadline, and reproducing the book misses the purpose of the page.",
               "focus": {
-                "zh": "不是……嗎？",
-                "en": "didn't you say …?"
+                "zh": "準備討論",
+                "en": "prepare for discussion"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-2-16",
-                "B2L09-2-17",
-                "B1L13-2-12"
-              ],
-              "grammarIds": [
-                "B2L09-G01-P208"
+                "B2L09-1-04",
+                "B2L09-1-23"
               ]
             },
             {
               "id": "b2l09-reading-card-2-2",
               "prompt": {
-                "traditional": "可欣今天什麼時候會回來？",
-                "simplified": "可欣今天什么时候会回来？",
-                "pinyin": "Kěxīn jīntiān shénme shíhòu huì huílái?",
-                "english": "When will Kexin come back today?"
+                "traditional": "美心說完從書裡學到什麼以後，還要做什麼？",
+                "simplified": "美心说完从书里学到什么以后，还要做什么？",
+                "pinyin": "Měixīn shuō wán cóng shū lǐ xué dào shénme yǐhòu, hái yào zuò shénme?",
+                "english": "Once Meixin has said what she learned from the book, what else should she do?"
               },
               "choices": [
                 {
-                  "traditional": "今天下午",
-                  "simplified": "今天下午",
-                  "pinyin": "Jīntiān xiàwǔ.",
-                  "english": "This afternoon."
+                  "traditional": "說自己的意見，再念書上的話",
+                  "simplified": "说自己的意见，再念书上的话",
+                  "pinyin": "Shuō zìjǐ de yìjiàn, zài niàn shū shàng de huà.",
+                  "english": "Give her views, then read from the book."
                 },
                 {
-                  "traditional": "晚上七點左右",
-                  "simplified": "晚上七点左右",
-                  "pinyin": "Wǎnshàng qī diǎn zuǒyòu.",
-                  "english": "Around seven p.m."
+                  "traditional": "念書上的話，再跟同學討論",
+                  "simplified": "念书上的话，再跟同学讨论",
+                  "pinyin": "Niàn shū shàng de huà, zài gēn tóngxué tǎolùn.",
+                  "english": "Read from the book, then discuss it with classmates."
                 },
                 {
-                  "traditional": "晚上八點以前",
-                  "simplified": "晚上八点以前",
-                  "pinyin": "Wǎnshàng bā diǎn yǐqián.",
-                  "english": "Before eight p.m."
+                  "traditional": "說自己的意見，再跟同學討論",
+                  "simplified": "说自己的意见，再跟同学讨论",
+                  "pinyin": "Shuō zìjǐ de yìjiàn, zài gēn tóngxué tǎolùn.",
+                  "english": "Give her views, then discuss them with classmates."
                 },
                 {
-                  "traditional": "晚上八點以後",
-                  "simplified": "晚上八点以后",
-                  "pinyin": "Wǎnshàng bā diǎn yǐhòu.",
-                  "english": "After eight p.m."
+                  "traditional": "跟同學討論，再說自己的意見",
+                  "simplified": "跟同学讨论，再说自己的意见",
+                  "pinyin": "Gēn tóngxué tǎolùn, zài shuō zìjǐ de yìjiàn.",
+                  "english": "Discuss it with classmates, then give her views."
                 }
               ],
-              "key": 3,
-              "why": "上課上到晚上八點: her classes run until eight, so she gets back after eight. The library this afternoon is Meixin's errand, not hers.",
+              "key": 2,
+              "why": "She should present her views in her own words and then open the discussion. Reading from the book does not do the first job, and discussing first reverses the order.",
               "focus": {
-                "zh": "上到八點",
-                "en": "have class until eight"
+                "zh": "表達意見",
+                "en": "give an opinion"
               },
               "lesson": 9,
               "wordIds": [
-                "B1L09-1-13",
-                "B1L02-1-28"
-              ],
-              "grammarIds": [
-                "B2L09-G03-P209"
+                "B2L09-2-10",
+                "B2L09-2-11",
+                "B2L09-2-12"
               ]
             }
           ]
@@ -1600,219 +1590,214 @@
           "id": "b2l09-cloze-1",
           "kind": "cloze",
           "passage": {
-            "traditional": "期末考快到了，這個星期我每天都在圖書館念書，常常念{1}晚上十點才回宿舍。昨天回到房間，我發現室友已經把房間打掃得{2}的，還在桌上放了一個三明治。我問她：「妳今天{3}對我這麼好？」她笑著說：「看妳這麼累，想讓妳輕鬆一下。」可是我太累了，什麼都不想吃。我想把三明治放進冰箱，可是冰箱已經滿了，放{4}了，只好把它放在桌上，{5}就去洗澡、睡覺了。",
-            "simplified": "期末考快到了，这个星期我每天都在图书馆念书，常常念{1}晚上十点才回宿舍。昨天回到房间，我发现室友已经把房间打扫得{2}的，还在桌上放了一个三明治。我问她：「你今天{3}对我这么好？」她笑着说：「看你这么累，想让你轻松一下。」可是我太累了，什么都不想吃。我想把三明治放进冰箱，可是冰箱已经满了，放{4}了，只好把它放在桌上，{5}就去洗澡、睡觉了。",
-            "pinyin": "Qímòkǎo kuài dào le, zhège xīngqí wǒ měi tiān dōu zài túshūguǎn niànshū, chángcháng niàn dào wǎnshàng shí diǎn cái huí sùshè. Zuótiān huí dào fángjiān, wǒ fāxiàn shìyǒu yǐjīng bǎ fángjiān dǎsǎo de gāngānjìngjìng de, hái zài zhuō shàng fàng le yí ge sānmíngzhì. Wǒ wèn tā: “Nǐ jīntiān zěnme duì wǒ zhème hǎo?” Tā xiào zhe shuō: “Kàn nǐ zhème lèi, xiǎng ràng nǐ qīngsōng yíxià.” Kěshì wǒ tài lèi le, shénme dōu bù xiǎng chī. Wǒ xiǎng bǎ sānmíngzhì fàng jìn bīngxiāng, kěshì bīngxiāng yǐjīng mǎn le, fàng bú xià le, zhǐhǎo bǎ tā fàng zài zhuō shàng, ránhòu jiù qù xǐzǎo, shuìjiào le.",
-            "english": "Finals are coming. This week I've studied in the library every day, often until ten at night before going back to the dorm. Yesterday when I got back, I found my roommate had cleaned the room spotless and put a sandwich on the desk. I asked her, “How come you're so nice to me today?” She smiled: “You look so tired. I wanted to let you relax a bit.” But I was too tired to want anything. I wanted to put the sandwich in the fridge, but the fridge was already full and there was no room, so I left it on the desk and then took a shower and went to bed."
+            "traditional": "系上請我寫一篇文章給從義大利來的交換學生看。我本來想用很多新學的漢字，可是才寫了一頁，就一直停下來查{1}。同學看了，給我一個{2}：先想想新同學最想知道什麼。我就把活動的資料放到最後，先寫怎麼借書、怎麼還書。{3}我又請一位新同學看了一下。他看完就知道怎麼去圖書館，開開心心地跟我說：「你怎麼寫得這麼{4}！我很怕迷路，謝謝你！」我聽了很{5}。",
+            "simplified": "系上请我写一篇文章给从义大利来的交换学生看。我本来想用很多新学的汉字，可是才写了一页，就一直停下来查{1}。同学看了，给我一个{2}：先想想新同学最想知道什么。我就把活动的资料放到最后，先写怎么借书、怎么还书。{3}我又请一位新同学看了一下。他看完就知道怎么去图书馆，开开心心地跟我说：「你怎么写得这么{4}！我很怕迷路，谢谢你！」我听了很{5}。",
+            "pinyin": "Xì shàng qǐng wǒ xiě yì piān wénzhāng gěi cóng Yìdàlì lái de jiāohuàn xuéshēng kàn. Wǒ běnlái xiǎng yòng hěn duō xīn xué de Hànzì, kěshì cái xiě le yí yè, jiù yìzhí tíng xiàlái chá zìdiǎn. Tóngxué kàn le, gěi wǒ yí ge jiànyì: xiān xiǎngxiang xīn tóngxué zuì xiǎng zhīdào shénme. Wǒ jiù bǎ huódòng de zīliào fàng dào zuìhòu, xiān xiě zěnme jiè shū, zěnme huán shū. Hòulái wǒ yòu qǐng yí wèi xīn tóngxué kàn le yíxià. Tā kàn wán jiù zhīdào zěnme qù túshūguǎn, kāikāixīnxīn de gēn wǒ shuō: “Nǐ zěnme xiě de zhème qīngchǔ! Wǒ hěn pà mílù, xièxie nǐ!” Wǒ tīng le hěn gǎndòng.",
+            "english": "The department asked me to write an article for the Italian exchange students. I originally wanted to use a lot of newly learned characters, but I had only written one page and already kept stopping to look things up in the dictionary. A classmate read it and suggested thinking about what the new students most wanted to know. So I moved the information about cultural activities to the end and started with how to borrow and return books. Then I asked a student who had just arrived to read it. He knew how to get to the library as soon as he finished. He told me happily, “How did you make it so clear? I was afraid I’d get lost. Thank you!” I was touched."
           },
           "questions": [
             {
               "id": "b2l09-cloze-1-1",
               "choices": [
                 {
-                  "traditional": "到",
-                  "simplified": "到",
-                  "pinyin": "dào",
-                  "english": "until (to)"
+                  "traditional": "地圖",
+                  "simplified": "地图",
+                  "pinyin": "dìtú",
+                  "english": "map"
                 },
                 {
-                  "traditional": "在",
-                  "simplified": "在",
-                  "pinyin": "zài",
-                  "english": "at"
+                  "traditional": "字典",
+                  "simplified": "字典",
+                  "pinyin": "zìdiǎn",
+                  "english": "dictionary"
                 },
                 {
-                  "traditional": "完",
-                  "simplified": "完",
-                  "pinyin": "wán",
-                  "english": "finish"
+                  "traditional": "資料",
+                  "simplified": "资料",
+                  "pinyin": "zīliào",
+                  "english": "information"
                 },
                 {
-                  "traditional": "給",
-                  "simplified": "给",
-                  "pinyin": "gěi",
-                  "english": "for"
+                  "traditional": "日期",
+                  "simplified": "日期",
+                  "pinyin": "rìqí",
+                  "english": "date"
                 }
               ],
-              "key": 0,
-              "why": "念到晚上十點: V到 + a time says how long the studying went on. 念完 would need what was finished, and 念在／念給 don't take a time.",
+              "key": 1,
+              "why": "可是 sets the stopping against wanting to use many newly learned characters, so the writer keeps looking characters up in a dictionary. Looking up information does not fit: the classmate’s advice shows the writer had not yet thought about what readers want to know, and the map and dates are things the article tells readers, not what slows the writer down.",
               "focus": {
-                "zh": "V到 + time",
-                "en": "do until"
+                "zh": "查字典",
+                "en": "consult a dictionary"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-1-02"
-              ],
-              "grammarIds": [
-                "B2L09-G03-P209"
+                "B2L09-1-25",
+                "B2L09-2-04"
               ]
             },
             {
               "id": "b2l09-cloze-1-2",
               "choices": [
                 {
-                  "traditional": "開開心心",
-                  "simplified": "开开心心",
-                  "pinyin": "kāikāixīnxīn",
-                  "english": "happily"
+                  "traditional": "計畫",
+                  "simplified": "计划",
+                  "pinyin": "jìhuà",
+                  "english": "plan"
                 },
                 {
-                  "traditional": "乾乾淨淨",
-                  "simplified": "干干净净",
-                  "pinyin": "gāngānjìngjìng",
-                  "english": "spotlessly clean"
+                  "traditional": "機會",
+                  "simplified": "机会",
+                  "pinyin": "jīhuì",
+                  "english": "opportunity"
                 },
                 {
-                  "traditional": "熱熱鬧鬧",
-                  "simplified": "热热闹闹",
-                  "pinyin": "rèrènàonào",
-                  "english": "lively"
+                  "traditional": "消息",
+                  "simplified": "消息",
+                  "pinyin": "xiāoxí",
+                  "english": "piece of news"
                 },
                 {
-                  "traditional": "香香甜甜",
-                  "simplified": "香香甜甜",
-                  "pinyin": "xiāngxiāngtiántián",
-                  "english": "sweet and fragrant"
+                  "traditional": "建議",
+                  "simplified": "建议",
+                  "pinyin": "jiànyì",
+                  "english": "suggestion"
                 }
               ],
-              "key": 1,
-              "why": "Cleaning (打掃) leaves a room 乾乾淨淨的, spotless. A room is not left happy, lively or sweet-smelling by cleaning; those doubled words describe people, busy places and food.",
+              "key": 3,
+              "why": "先想想 is advice on what to do, and the writer acts on it. A plan would be the writer’s own, news tells what has happened, and 給我一個機會 would mean letting the writer try something.",
               "focus": {
-                "zh": "乾乾淨淨的",
-                "en": "spotlessly clean"
+                "zh": "建議",
+                "en": "suggestion"
               },
               "lesson": 9,
               "wordIds": [
-                "B1L10-2-12",
-                "B2L02-1-20"
-              ],
-              "grammarIds": [
-                "B2L09-G01-P218"
+                "B2L09-2-21"
               ]
             },
             {
               "id": "b2l09-cloze-1-3",
               "choices": [
                 {
-                  "traditional": "什麼",
-                  "simplified": "什么",
-                  "pinyin": "shénme",
-                  "english": "what"
+                  "traditional": "後來",
+                  "simplified": "后来",
+                  "pinyin": "hòulái",
+                  "english": "next"
                 },
                 {
-                  "traditional": "那麼",
-                  "simplified": "那么",
-                  "pinyin": "nàme",
-                  "english": "so"
+                  "traditional": "平常",
+                  "simplified": "平常",
+                  "pinyin": "píngcháng",
+                  "english": "usually"
                 },
                 {
-                  "traditional": "怎麼",
-                  "simplified": "怎么",
-                  "pinyin": "zěnme",
-                  "english": "how come"
+                  "traditional": "本來",
+                  "simplified": "本来",
+                  "pinyin": "běnlái",
+                  "english": "originally"
                 },
                 {
-                  "traditional": "多少",
-                  "simplified": "多少",
-                  "pinyin": "duōshǎo",
-                  "english": "how much"
+                  "traditional": "以前",
+                  "simplified": "以前",
+                  "pinyin": "yǐqián",
+                  "english": "previously"
                 }
               ],
-              "key": 2,
-              "why": "怎麼這麼好？ shows surprise: how come you're so nice today? 什麼這麼, 那麼這麼 and 多少這麼 are not Chinese.",
+              "key": 0,
+              "why": "The writer had already moved the information before asking a new student to try the article. 本來 would take the story back to the original plan.",
               "focus": {
-                "zh": "怎麼這麼 + Vs",
-                "en": "how come so …"
+                "zh": "後來",
+                "en": "next"
               },
               "lesson": 9,
               "wordIds": [
-                "B1L12-1-02"
-              ],
-              "grammarIds": [
-                "B2L09-G05-P212"
+                "B1L06-3-11"
               ]
             },
             {
               "id": "b2l09-cloze-1-4",
               "choices": [
                 {
-                  "traditional": "不起",
-                  "simplified": "不起",
-                  "pinyin": "bù qǐ",
-                  "english": "can't afford"
+                  "traditional": "認真",
+                  "simplified": "认真",
+                  "pinyin": "rènzhēn",
+                  "english": "serious"
                 },
                 {
-                  "traditional": "不到",
-                  "simplified": "不到",
-                  "pinyin": "bú dào",
-                  "english": "can't reach"
+                  "traditional": "漂亮",
+                  "simplified": "漂亮",
+                  "pinyin": "piàoliang",
+                  "english": "beautiful"
                 },
                 {
-                  "traditional": "不懂",
-                  "simplified": "不懂",
-                  "pinyin": "bù dǒng",
-                  "english": "can't understand"
+                  "traditional": "清楚",
+                  "simplified": "清楚",
+                  "pinyin": "qīngchǔ",
+                  "english": "clear"
                 },
                 {
-                  "traditional": "不下",
-                  "simplified": "不下",
-                  "pinyin": "bú xià",
-                  "english": "no room"
+                  "traditional": "有趣",
+                  "simplified": "有趣",
+                  "pinyin": "yǒuqù",
+                  "english": "interesting"
                 }
               ],
-              "key": 3,
-              "why": "冰箱已經滿了，放不下了: the fridge is full, so there is no room for the sandwich. 放不起, 放不到 and 放不懂 don't say there is no space.",
+              "key": 2,
+              "why": "The reader gets the information they need on the first read, so 清楚 describes what surprised them. There is no comment on how the writing looks.",
               "focus": {
-                "zh": "放不下",
-                "en": "no room to put"
+                "zh": "怎麼這麼 + Vs",
+                "en": "expressing surprise"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L03-1-15",
-                "B2L08-1-11"
+                "B2L09-2-08",
+                "B2L09-1-24"
               ],
               "grammarIds": [
-                "B2L09-G06-P212"
+                "B2L09-G05-P212"
               ]
             },
             {
               "id": "b2l09-cloze-1-5",
               "choices": [
                 {
-                  "traditional": "然後",
-                  "simplified": "然后",
-                  "pinyin": "ránhòu",
-                  "english": "and then"
+                  "traditional": "煩惱",
+                  "simplified": "烦恼",
+                  "pinyin": "fánnǎo",
+                  "english": "worried"
                 },
                 {
-                  "traditional": "因為",
-                  "simplified": "因为",
-                  "pinyin": "yīnwèi",
-                  "english": "because"
+                  "traditional": "感動",
+                  "simplified": "感动",
+                  "pinyin": "gǎndòng",
+                  "english": "touched"
                 },
                 {
-                  "traditional": "雖然",
-                  "simplified": "虽然",
-                  "pinyin": "suīrán",
-                  "english": "although"
+                  "traditional": "著急",
+                  "simplified": "着急",
+                  "pinyin": "zháojí",
+                  "english": "anxious"
                 },
                 {
-                  "traditional": "要是",
-                  "simplified": "要是",
-                  "pinyin": "yàoshì",
-                  "english": "if"
+                  "traditional": "緊張",
+                  "simplified": "紧张",
+                  "pinyin": "jǐnzhāng",
+                  "english": "nervous"
                 }
               ],
-              "key": 0,
-              "why": "The writer leaves the sandwich on the desk, 然後 (and then) showers and goes to bed: one action after another. 因為, 雖然 and 要是 would need a reason, a contrast or a condition.",
+              "key": 1,
+              "why": "The new student thanks the writer happily, and that moves the writer. Being worried or anxious about getting lost is the new student’s feeling before reading, not the writer’s after hearing the thanks.",
               "focus": {
-                "zh": "然後",
-                "en": "and then"
+                "zh": "感動；XXYY 地",
+                "en": "touched; doubled state verb"
               },
               "lesson": 9,
               "wordIds": [
-                "B1L11-1-07"
+                "B2L09-2-19",
+                "B2L09-2-20"
+              ],
+              "grammarIds": [
+                "B2L09-G01-P218"
               ]
             }
           ]
@@ -1821,220 +1806,217 @@
           "id": "b2l09-cloze-2",
           "kind": "cloze",
           "passage": {
-            "traditional": "我的弟弟是小學生。他說話說得很好，可是漢字寫得{1}好，作文裡常常有錯字，讓他很煩惱。上個星期老師要他們寫一篇三百字的作文，他一直寫{2}晚上十一點。我說：「你{3}這麼晚還不睡？明天再寫吧！」他說明天就要交了。後來他把每個字都寫得{4}的，老師給了他很好的成績。他說以後{5}有不會寫的字，就要多查字典。",
-            "simplified": "我的弟弟是小学生。他说话说得很好，可是汉字写得{1}好，作文里常常有错字，让他很烦恼。上个星期老师要他们写一篇三百字的作文，他一直写{2}晚上十一点。我说：「你{3}这么晚还不睡？明天再写吧！」他说明天就要交了。后来他把每个字都写得{4}的，老师给了他很好的成绩。他说以后{5}有不会写的字，就要多查字典。",
-            "pinyin": "Wǒ de dìdi shì xiǎoxuéshēng. Tā shuōhuà shuō de hěn hǎo, kěshì Hànzì xiě de bù zěnme hǎo, zuòwén lǐ chángcháng yǒu cuòzì, ràng tā hěn fánnǎo. Shàng ge xīngqí lǎoshī yào tāmen xiě yì piān sānbǎi zì de zuòwén, tā yìzhí xiě dào wǎnshàng shíyī diǎn. Wǒ shuō: “Nǐ zěnme zhème wǎn hái bú shuì? Míngtiān zài xiě ba!” Tā shuō míngtiān jiù yào jiāo le. Hòulái tā bǎ měi ge zì dōu xiě de qīngqīngchǔchǔ de, lǎoshī gěi le tā hěn hǎo de chéngjī. Tā shuō yǐhòu zhǐyào yǒu bú huì xiě de zì, jiù yào duō chá zìdiǎn.",
-            "english": "My younger brother is in primary school. He speaks well, but his characters aren't great, and his compositions often have wrong characters, which worries him. Last week the teacher had them write a 300-character composition, and he kept writing until eleven at night. I said, “How come you're still up so late? Write the rest tomorrow!” He said it was due tomorrow. In the end he wrote every character very clearly, and the teacher gave him a very good grade. He says that from now on, whenever there's a character he can't write, he'll look it up in the dictionary."
+            "traditional": "期末以前，我到華語中心幫忙辦介紹好書的活動。老師交給我一本書，請我{1}到第十頁，找出那張大門的照片。我以前上課不太{2}，連大門上的字都不會寫。後來我每天做完作業才回家，也把大門上的字寫得清清楚楚。有人看完我寫的介紹，就{3}了那本書，說下個星期會拿回來。老師知道了，笑著說：「你怎麼這麼{4}！大門上的字一個都沒寫錯！」我{5}知道，學到的知識也能幫到別人。",
+            "simplified": "期末以前，我到华语中心帮忙办介绍好书的活动。老师交给我一本书，请我{1}到第十页，找出那张大门的照片。我以前上课不太{2}，连大门上的字都不会写。后来我每天做完作业才回家，也把大门上的字写得清清楚楚。有人看完我写的介绍，就{3}了那本书，说下个星期会拿回来。老师知道了，笑着说：「你怎么这么{4}！大门上的字一个都没写错！」我{5}知道，学到的知识也能帮到别人。",
+            "pinyin": "Qímò yǐqián, wǒ dào Huáyǔ zhōngxīn bāngmáng bàn jièshào hǎo shū de huódòng. Lǎoshī jiāo gěi wǒ yì běn shū, qǐng wǒ fān dào dì shí yè, zhǎo chū nà zhāng dàmén de zhàopiàn. Wǒ yǐqián shàngkè bú tài yònggōng, lián dàmén shàng de zì dōu bú huì xiě. Hòulái wǒ měitiān zuò wán zuòyè cái huí jiā, yě bǎ dàmén shàng de zì xiě de qīngqīngchǔchǔ. Yǒu rén kàn wán wǒ xiě de jièshào, jiù jiè le nà běn shū, shuō xià ge xīngqí huì ná huílái. Lǎoshī zhīdào le, xiào zhe shuō: “Nǐ zěnme zhème rènzhēn! Dàmén shàng de zì yí ge dōu méi xiě cuò!” Wǒ zhè cái zhīdào, xué dào de zhīshì yě néng bāng dào biérén.",
+            "english": "Before the end of the semester, I went to the Chinese Language Center to help prepare an event introducing good books. The teacher gave me a book and asked me to turn to page ten to find the picture of the school gate. I used to put little effort into my classes and could not even write the name on the gate. Later I began to finish my homework before going home every day and made a clear copy of the words on the gate. After reading my introduction, someone borrowed the book and said they would bring it back next week. When my teacher heard, she smiled and said, “How did you get so thorough? You did not get a single character on the gate wrong!” Only then did I see that what I learn can help other people too."
           },
           "questions": [
             {
               "id": "b2l09-cloze-2-1",
               "choices": [
                 {
-                  "traditional": "沒多少",
-                  "simplified": "没多少",
-                  "pinyin": "méi duōshǎo",
-                  "english": "not much"
+                  "traditional": "翻",
+                  "simplified": "翻",
+                  "pinyin": "fān",
+                  "english": "turn"
                 },
                 {
-                  "traditional": "很少",
-                  "simplified": "很少",
-                  "pinyin": "hěn shǎo",
-                  "english": "seldom"
+                  "traditional": "念",
+                  "simplified": "念",
+                  "pinyin": "niàn",
+                  "english": "read aloud"
                 },
                 {
-                  "traditional": "不怎麼",
-                  "simplified": "不怎么",
-                  "pinyin": "bù zěnme",
-                  "english": "not very"
+                  "traditional": "寫",
+                  "simplified": "写",
+                  "pinyin": "xiě",
+                  "english": "write"
                 },
                 {
-                  "traditional": "沒什麼",
-                  "simplified": "没什么",
-                  "pinyin": "méi shénme",
-                  "english": "nothing much"
+                  "traditional": "背",
+                  "simplified": "背",
+                  "pinyin": "bèi",
+                  "english": "learn by heart"
                 }
               ],
-              "key": 2,
-              "why": "寫得不怎麼好: his characters are not very good (note the 錯字). Only 不怎麼 goes before a state verb like 好; 沒多少 counts an amount, 很少 says how often, and 沒什麼 goes before a noun.",
+              "key": 0,
+              "why": "The next clause, 找出那張大門的照片, shows the student only has to get to page ten to find a photo, so they turn to it. 念到, 寫到 or 背到第十頁 would mean reading, writing or memorizing everything up to that page.",
               "focus": {
-                "zh": "不怎麼 + Vs",
-                "en": "not very"
+                "zh": "翻到一頁",
+                "en": "turn to a page"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-2-04",
-                "B2L09-2-13"
-              ],
-              "grammarIds": [
-                "B2L09-G04-P211"
-              ]
-            },
-            {
-              "id": "b2l09-cloze-2-2",
-              "choices": [
-                {
-                  "traditional": "完",
-                  "simplified": "完",
-                  "pinyin": "wán",
-                  "english": "finish"
-                },
-                {
-                  "traditional": "到",
-                  "simplified": "到",
-                  "pinyin": "dào",
-                  "english": "until (to)"
-                },
-                {
-                  "traditional": "給",
-                  "simplified": "给",
-                  "pinyin": "gěi",
-                  "english": "for"
-                },
-                {
-                  "traditional": "好",
-                  "simplified": "好",
-                  "pinyin": "hǎo",
-                  "english": "well"
-                }
-              ],
-              "key": 1,
-              "why": "一直寫到晚上十一點: he kept writing until eleven at night. 寫完／寫好 can't take a time, and 寫給 needs a person.",
-              "focus": {
-                "zh": "V到 + time",
-                "en": "do until"
-              },
-              "lesson": 9,
-              "wordIds": [
-                "B2L09-1-02",
-                "B2L01-2-06"
+                "B2L09-1-03",
+                "B2L09-1-04"
               ],
               "grammarIds": [
                 "B2L09-G03-P209"
               ]
             },
             {
-              "id": "b2l09-cloze-2-3",
+              "id": "b2l09-cloze-2-2",
               "choices": [
                 {
-                  "traditional": "多少",
-                  "simplified": "多少",
-                  "pinyin": "duōshǎo",
-                  "english": "how much"
+                  "traditional": "安靜",
+                  "simplified": "安静",
+                  "pinyin": "ānjìng",
+                  "english": "quiet"
                 },
                 {
-                  "traditional": "什麼",
-                  "simplified": "什么",
-                  "pinyin": "shénme",
-                  "english": "what"
+                  "traditional": "準時",
+                  "simplified": "准时",
+                  "pinyin": "zhǔnshí",
+                  "english": "punctual"
                 },
                 {
-                  "traditional": "怎麼",
-                  "simplified": "怎么",
-                  "pinyin": "zěnme",
-                  "english": "how come"
+                  "traditional": "用功",
+                  "simplified": "用功",
+                  "pinyin": "yònggōng",
+                  "english": "hard-working"
                 },
                 {
-                  "traditional": "哪裡",
-                  "simplified": "哪里",
-                  "pinyin": "nǎlǐ",
-                  "english": "where"
+                  "traditional": "小心",
+                  "simplified": "小心",
+                  "pinyin": "xiǎoxīn",
+                  "english": "careful"
                 }
               ],
               "key": 2,
-              "why": "怎麼這麼晚還不睡？ shows surprise that he is still up so late. The other question words cannot go before 這麼 + a state verb.",
+              "why": "Not being able to write the characters, and then finishing homework every day, show the change is in effort: the student did not study hard before. Being quiet or on time in class would not explain not knowing the characters.",
               "focus": {
-                "zh": "怎麼這麼 + Vs",
-                "en": "how come so …"
+                "zh": "用功",
+                "en": "study hard"
               },
               "lesson": 9,
               "wordIds": [
-                "B1L12-1-02"
-              ],
-              "grammarIds": [
-                "B2L09-G05-P212"
-              ]
-            },
-            {
-              "id": "b2l09-cloze-2-4",
-              "choices": [
-                {
-                  "traditional": "開開心心",
-                  "simplified": "开开心心",
-                  "pinyin": "kāikāixīnxīn",
-                  "english": "happily"
-                },
-                {
-                  "traditional": "清清楚楚",
-                  "simplified": "清清楚楚",
-                  "pinyin": "qīngqīngchǔchǔ",
-                  "english": "very clearly"
-                },
-                {
-                  "traditional": "熱熱鬧鬧",
-                  "simplified": "热热闹闹",
-                  "pinyin": "rèrènàonào",
-                  "english": "lively"
-                },
-                {
-                  "traditional": "香香甜甜",
-                  "simplified": "香香甜甜",
-                  "pinyin": "xiāngxiāngtiántián",
-                  "english": "sweet and fragrant"
-                }
-              ],
-              "key": 1,
-              "why": "Characters written so well that the grade is good are 清清楚楚的, very clear. Happy, lively and sweet-smelling don't describe handwriting.",
-              "focus": {
-                "zh": "清清楚楚的",
-                "en": "very clear"
-              },
-              "lesson": 9,
-              "wordIds": [
-                "B2L09-2-08"
+                "B2L09-1-12",
+                "B2L09-1-24"
               ],
               "grammarIds": [
                 "B2L09-G01-P218"
               ]
             },
             {
-              "id": "b2l09-cloze-2-5",
+              "id": "b2l09-cloze-2-3",
               "choices": [
                 {
-                  "traditional": "雖然",
-                  "simplified": "虽然",
-                  "pinyin": "suīrán",
-                  "english": "although"
+                  "traditional": "還",
+                  "simplified": "还",
+                  "pinyin": "huán",
+                  "english": "return"
                 },
                 {
-                  "traditional": "連",
-                  "simplified": "连",
-                  "pinyin": "lián",
-                  "english": "even"
+                  "traditional": "借",
+                  "simplified": "借",
+                  "pinyin": "jiè",
+                  "english": "borrow"
                 },
                 {
-                  "traditional": "只要",
-                  "simplified": "只要",
-                  "pinyin": "zhǐyào",
-                  "english": "as long as"
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "mǎi",
+                  "english": "buy"
                 },
                 {
-                  "traditional": "不但",
-                  "simplified": "不但",
-                  "pinyin": "búdàn",
-                  "english": "not only"
+                  "traditional": "訂",
+                  "simplified": "订",
+                  "pinyin": "dìng",
+                  "english": "reserve"
                 }
               ],
-              "key": 2,
-              "why": "只要……就……: whenever (as long as) there is a character he can't write, he will look it up. 雖然 needs 可是, 不但 needs 也／還, and 連 needs 都／也.",
+              "key": 1,
+              "why": "The reader takes the book and will bring it back next week, which means it is borrowed. Returning, buying or reserving the book does not fit 下個星期會拿回來.",
               "focus": {
-                "zh": "只要……就……",
-                "en": "as long as"
+                "zh": "借",
+                "en": "borrow"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L05-1-27",
-                "B2L09-1-25"
+                "B2L09-2-16",
+                "B2L09-2-17"
+              ]
+            },
+            {
+              "id": "b2l09-cloze-2-4",
+              "choices": [
+                {
+                  "traditional": "著急",
+                  "simplified": "着急",
+                  "pinyin": "zháojí",
+                  "english": "anxious"
+                },
+                {
+                  "traditional": "客氣",
+                  "simplified": "客气",
+                  "pinyin": "kèqì",
+                  "english": "polite"
+                },
+                {
+                  "traditional": "輕鬆",
+                  "simplified": "轻松",
+                  "pinyin": "qīngsōng",
+                  "english": "relaxed"
+                },
+                {
+                  "traditional": "認真",
+                  "simplified": "认真",
+                  "pinyin": "rènzhēn",
+                  "english": "thorough"
+                }
+              ],
+              "key": 3,
+              "why": "The teacher praises the care the student took: not one character wrong. 你怎麼這麼客氣 is a common phrase, but nobody here is being polite, and nothing shows the student anxious or relaxed.",
+              "focus": {
+                "zh": "怎麼這麼 + Vs",
+                "en": "expressing surprise"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B2L09-1-30"
+              ],
+              "grammarIds": [
+                "B2L09-G05-P212"
+              ]
+            },
+            {
+              "id": "b2l09-cloze-2-5",
+              "choices": [
+                {
+                  "traditional": "早就",
+                  "simplified": "早就",
+                  "pinyin": "zǎo jiù",
+                  "english": "long since"
+                },
+                {
+                  "traditional": "這才",
+                  "simplified": "这才",
+                  "pinyin": "zhè cái",
+                  "english": "only then"
+                },
+                {
+                  "traditional": "還沒",
+                  "simplified": "还没",
+                  "pinyin": "hái méi",
+                  "english": "not yet"
+                },
+                {
+                  "traditional": "本來",
+                  "simplified": "本来",
+                  "pinyin": "běnlái",
+                  "english": "originally"
+                }
+              ],
+              "key": 1,
+              "why": "The borrowed book shows the writer something new about how learning can help others. 早就 would mean the writer already understood it before the event.",
+              "focus": {
+                "zh": "這才",
+                "en": "only then"
+              },
+              "lesson": 9,
+              "wordIds": [
+                "B2L09-1-16"
               ]
             }
           ]
@@ -2050,103 +2032,104 @@
           "kind": "reading",
           "format": "passage",
           "text": {
-            "traditional": "我是從美國來的交換學生，在台灣學中文已經三個月了。老師每天都要我們用生字造句，還要我們用中文報告。我覺得最難的是聲調，因為以前在美國，我沒學過什麼聲調。有一次我去夜市吃牛肉麵，想跟老闆說「請多給我一點湯」，可是老闆笑著問我：「糖？吃麵要糖做什麼？」我回宿舍把這件事告訴一個台灣朋友，他說：「你說的不是『湯』，是『糖』啊！」後來，他每天晚上都陪我慢慢地練習。現在我說的中文好多了，連夜市的老闆都聽得懂了。",
-            "simplified": "我是从美国来的交换学生，在台湾学中文已经三个月了。老师每天都要我们用生字造句，还要我们用中文报告。我觉得最难的是声调，因为以前在美国，我没学过什么声调。有一次我去夜市吃牛肉面，想跟老板说「请多给我一点汤」，可是老板笑着问我：「糖？吃面要糖做什么？」我回宿舍把这件事告诉一个台湾朋友，他说：「你说的不是『汤』，是『糖』啊！」后来，他每天晚上都陪我慢慢地练习。现在我说的中文好多了，连夜市的老板都听得懂了。",
-            "pinyin": "Wǒ shì cóng Měiguó lái de jiāohuàn xuéshēng, zài Táiwān xué Zhōngwén yǐjīng sān ge yuè le. Lǎoshī měi tiān dōu yào wǒmen yòng shēngzì zàojù, hái yào wǒmen yòng Zhōngwén bàogào. Wǒ juéde zuì nán de shì shēngdiào, yīnwèi yǐqián zài Měiguó, wǒ méi xué guo shénme shēngdiào. Yǒu yí cì wǒ qù yèshì chī niúròu miàn, xiǎng gēn lǎobǎn shuō “qǐng duō gěi wǒ yìdiǎn tāng”, kěshì lǎobǎn xiào zhe wèn wǒ: “Táng? Chī miàn yào táng zuò shénme?” Wǒ huí sùshè bǎ zhè jiàn shì gàosu yí ge Táiwān péngyǒu, tā shuō: “Nǐ shuō de bú shì ‘tāng’, shì ‘táng’ a!” Hòulái, tā měi tiān wǎnshàng dōu péi wǒ mànmàn de liànxí. Xiànzài wǒ shuō de Zhōngwén hǎo duō le, lián yèshì de lǎobǎn dōu tīng de dǒng le.",
-            "english": "I'm an exchange student from the US, and I've been learning Chinese in Taiwan for three months. Every day the teacher has us make sentences with new words and give reports in Chinese. The hardest thing for me is the tones, because back in the US I hardly learned any tones. Once I went to the night market for beef noodles and wanted to ask the owner for “a little more soup (tāng), please”, but he laughed and asked me: “Sugar (táng)? What do you want sugar for with noodles?” Back at the dorm I told a Taiwanese friend, and he said: “You didn't say tāng, you said táng!” After that he practised with me slowly every evening. Now my Chinese is much better; even the night-market owner understands me."
+            "traditional": "一間博物館請我們系上幫忙翻譯一篇介紹當地文化的文章，讓義大利人也看得懂。以前在課堂上，教授只要我們翻譯課文。這篇文章是給來台灣旅遊的人看的，他們不一定了解當地的習慣。我們一開始常常查字典，還好教授對當地文化的知識很豐富，第一頁很快就翻完了。教授看過以後，請我們把文章念給一位義大利校友聽。他聽得懂每個字，可是他不知道為什麼有人要把紅色的紙貼在大門上。我們才發現，只把字翻對還不夠，也要說清楚當地人的習慣。後來我們加上了照片，也多寫了一點當地人過年的方式。教授說，這就是他把翻譯課搬到博物館的目的。",
+            "simplified": "一间博物馆请我们系上帮忙翻译一篇介绍当地文化的文章，让义大利人也看得懂。以前在课堂上，教授只要我们翻译课文。这篇文章是给来台湾旅游的人看的，他们不一定了解当地的习惯。我们一开始常常查字典，还好教授对当地文化的知识很丰富，第一页很快就翻完了。教授看过以后，请我们把文章念给一位义大利校友听。他听得懂每个字，可是他不知道为什么有人要把红色的纸贴在大门上。我们才发现，只把字翻对还不够，也要说清楚当地人的习惯。后来我们加上了照片，也多写了一点当地人过年的方式。教授说，这就是他把翻译课搬到博物馆的目的。",
+            "pinyin": "Yì jiān bówùguǎn qǐng wǒmen xì shàng bāngmáng fānyì yì piān jièshào dāngdì wénhuà de wénzhāng, ràng Yìdàlì rén yě kàn de dǒng. Yǐqián zài kètáng shàng, jiàoshòu zhǐ yào wǒmen fānyì kèwén. Zhè piān wénzhāng shì gěi lái Táiwān lǚyóu de rén kàn de, tāmen bù yídìng liǎojiě dāngdì de xíguàn. Wǒmen yì kāishǐ chángcháng chá zìdiǎn, háihǎo jiàoshòu duì dāngdì wénhuà de zhīshì hěn fēngfù, dì yī yè hěn kuài jiù fān wán le. Jiàoshòu kàn guo yǐhòu, qǐng wǒmen bǎ wénzhāng niàn gěi yí wèi Yìdàlì xiàoyǒu tīng. Tā tīng de dǒng měi ge zì, kěshì tā bù zhīdào wèishénme yǒu rén yào bǎ hóngsè de zhǐ tiē zài dàmén shàng. Wǒmen cái fāxiàn, zhǐ bǎ zì fān duì hái bú gòu, yě yào shuō qīngchǔ dāngdì rén de xíguàn. Hòulái wǒmen jiā shàng le zhàopiàn, yě duō xiě le yìdiǎn dāngdì rén guònián de fāngshì. Jiàoshòu shuō, zhè jiù shì tā bǎ fānyì kè bān dào bówùguǎn de mùdì.",
+            "english": "A museum asked our department to translate an article about local culture into Italian. In class, our professor had only asked us to translate texts from the course book. This time our readers were tourists visiting Taiwan, who might know little about local culture. At first we often looked things up in the dictionary. Luckily, our professor knew a lot about the local culture, so we finished the first page quickly. After reading it, the professor asked us to read the article aloud to an Italian alumnus. He understood every word but could not work out why people stick red paper on the front door. We realized that getting the words right was only part of the job. We also had to explain local customs. So we added a photo and wrote a little about how local people celebrate the New Year. The professor said that was why he had brought the translation class to the museum."
           },
           "questions": [
             {
               "id": "b2l09-passage-1-1",
               "prompt": {
-                "traditional": "老闆為什麼問他吃麵要糖做什麼？",
-                "simplified": "老板为什么问他吃面要糖做什么？",
-                "pinyin": "Lǎobǎn wèishénme wèn tā chī miàn yào táng zuò shénme?",
-                "english": "Why did the owner ask what he wanted sugar for with noodles?"
+                "traditional": "教授為什麼讓學生到博物館上課？",
+                "simplified": "教授为什么让学生到博物馆上课？",
+                "pinyin": "Jiàoshòu wèishénme ràng xuéshēng dào bówùguǎn shàngkè?",
+                "english": "Why did the professor have students work at the museum?"
               },
               "choices": [
                 {
-                  "traditional": "他說想吃甜一點的",
-                  "simplified": "他说想吃甜一点的",
-                  "pinyin": "Tā shuō xiǎng chī tián yìdiǎn de.",
-                  "english": "He said he wanted it sweeter."
+                  "traditional": "讓學生多了解當地文化",
+                  "simplified": "让学生多了解当地文化",
+                  "pinyin": "Ràng xuéshēng duō liǎojiě dāngdì wénhuà.",
+                  "english": "Help students learn more about local culture."
                 },
                 {
-                  "traditional": "他把聲調說錯了",
-                  "simplified": "他把声调说错了",
-                  "pinyin": "Tā bǎ shēngdiào shuō cuò le.",
-                  "english": "He got the tone wrong."
+                  "traditional": "讓學生學會查各種字典",
+                  "simplified": "让学生学会查各种字典",
+                  "pinyin": "Ràng xuéshēng xuéhuì chá gè zhǒng zìdiǎn.",
+                  "english": "Teach students to use different dictionaries."
                 },
                 {
-                  "traditional": "老闆的牛肉麵是甜的",
-                  "simplified": "老板的牛肉面是甜的",
-                  "pinyin": "Lǎobǎn de niúròu miàn shì tián de.",
-                  "english": "The owner's beef noodles are sweet."
+                  "traditional": "讓學生跟校友交換意見",
+                  "simplified": "让学生跟校友交换意见",
+                  "pinyin": "Ràng xuéshēng gēn xiàoyǒu jiāohuàn yìjiàn.",
+                  "english": "Have students exchange views with alumni."
                 },
                 {
-                  "traditional": "老闆聽不懂他的英文",
-                  "simplified": "老板听不懂他的英文",
-                  "pinyin": "Lǎobǎn tīng bù dǒng tā de Yīngwén.",
-                  "english": "The owner didn't understand his English."
+                  "traditional": "讓學生了解看文章的人需要什麼",
+                  "simplified": "让学生了解看文章的人需要什么",
+                  "pinyin": "Ràng xuéshēng liǎojiě kàn wénzhāng de rén xūyào shénme.",
+                  "english": "Get students to see what readers need."
                 }
               ],
-              "key": 1,
-              "why": "湯 tāng and 糖 táng differ only in tone, and tones are his weak point: he wanted 湯 but said 糖 (你說的不是『湯』，是『糖』). He spoke Chinese, not English, and never asked for anything sweet.",
+              "key": 3,
+              "why": "The alumnus knew the words but did not know the custom. This showed the students what their readers needed, so they added an explanation and a photo.",
               "focus": {
-                "zh": "聲調",
-                "en": "tones"
+                "zh": "教法的目的",
+                "en": "purpose of the teaching approach"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-2-05",
-                "B2L04-1-18",
-                "B2L04-2-30"
+                "B2L09-1-18",
+                "B2L09-1-26",
+                "B2L09-1-16"
               ]
             },
             {
               "id": "b2l09-passage-1-2",
               "prompt": {
-                "traditional": "現在他說的中文怎麼樣？",
-                "simplified": "现在他说的中文怎么样？",
-                "pinyin": "Xiànzài tā shuō de Zhōngwén zěnmeyàng?",
-                "english": "How is his Chinese now?"
+                "traditional": "這次的工作跟平常上課有什麼不一樣？",
+                "simplified": "这次的工作跟平常上课有什么不一样？",
+                "pinyin": "Zhè cì de gōngzuò gēn píngcháng shàngkè yǒu shénme bù yíyàng?",
+                "english": "How does this assignment differ from their usual classwork?"
               },
               "choices": [
                 {
-                  "traditional": "聲調還常常說錯",
-                  "simplified": "声调还常常说错",
-                  "pinyin": "Shēngdiào hái chángcháng shuō cuò.",
-                  "english": "He still often gets tones wrong."
+                  "traditional": "這次要跟校友一起查字典",
+                  "simplified": "这次要跟校友一起查字典",
+                  "pinyin": "Zhè cì yào gēn xiàoyǒu yìqǐ chá zìdiǎn.",
+                  "english": "This time they consult dictionaries with alumni."
                 },
                 {
-                  "traditional": "只有朋友聽得懂",
-                  "simplified": "只有朋友听得懂",
-                  "pinyin": "Zhǐyǒu péngyǒu tīng de dǒng.",
-                  "english": "Only his friend understands him."
+                  "traditional": "這次要翻給國外的遊客看",
+                  "simplified": "这次要翻给国外的游客看",
+                  "pinyin": "Zhè cì yào fān gěi guówài de yóukè kàn.",
+                  "english": "This time the translation is for visitors from abroad."
                 },
                 {
-                  "traditional": "說得比朋友還好",
-                  "simplified": "说得比朋友还好",
-                  "pinyin": "Shuō de bǐ péngyǒu hái hǎo.",
-                  "english": "He speaks better than his friend."
+                  "traditional": "這次要把課文翻給教授看",
+                  "simplified": "这次要把课文翻给教授看",
+                  "pinyin": "Zhè cì yào bǎ kèwén fān gěi jiàoshòu kàn.",
+                  "english": "This time they translate the course text for their professor."
                 },
                 {
-                  "traditional": "別人聽得懂他的話",
-                  "simplified": "别人听得懂他的话",
-                  "pinyin": "Biérén tīng de dǒng tā de huà.",
-                  "english": "Other people understand him."
+                  "traditional": "這次要到義大利去看博物館",
+                  "simplified": "这次要到义大利去看博物馆",
+                  "pinyin": "Zhè cì yào dào Yìdàlì qù kàn bówùguǎn.",
+                  "english": "This time they go to Italy to visit a museum."
                 }
               ],
-              "key": 3,
-              "why": "現在我說的中文好多了，連夜市的老闆都聽得懂了: others understand him now, not only his friend.",
+              "key": 1,
+              "why": "In class they translated the course text. The museum translation has a new audience, visitors from abroad. The alumnus listened to a draft after the students had used their dictionaries.",
               "focus": {
-                "zh": "連……都……",
-                "en": "even"
+                "zh": "翻譯給誰看",
+                "en": "audience for a translation"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L08-1-12",
-                "B2L09-2-05"
+                "B2L09-1-27",
+                "B2L09-1-26",
+                "B2L09-1-07"
               ]
             }
           ]
@@ -2156,103 +2139,110 @@
           "kind": "reading",
           "format": "passage",
           "text": {
-            "traditional": "上個學期我修了一門台灣歷史課。教授人很好，教法也很有意思，可是我那時候愛上了韓劇，每天晚上都看到半夜兩三點，上課的時候常常打瞌睡，教授說的話也沒聽到多少。有問題的時候，我只上網查一查。期末筆試的時候，有好幾題我都不會寫，就被當了。這學期我再修一次這門課。這次我每次上課都坐在最前面，認真地聽教授說的話，有不懂的地方就去辦公室問教授。有一天，教授說：「你最近上課很認真，跟上個學期不一樣了！」我想，這次我一定不會再被當了。",
-            "simplified": "上个学期我修了一门台湾历史课。教授人很好，教法也很有意思，可是我那时候爱上了韩剧，每天晚上都看到半夜两三点，上课的时候常常打瞌睡，教授说的话也没听到多少。有问题的时候，我只上网查一查。期末笔试的时候，有好几题我都不会写，就被当了。这学期我再修一次这门课。这次我每次上课都坐在最前面，认真地听教授说的话，有不懂的地方就去办公室问教授。有一天，教授说：「你最近上课很认真，跟上个学期不一样了！」我想，这次我一定不会再被当了。",
-            "pinyin": "Shàng ge xuéqí wǒ xiū le yì mén Táiwān lìshǐ kè. Jiàoshòu rén hěn hǎo, jiàofǎ yě hěn yǒu yìsi, kěshì wǒ nà shíhòu ài shàng le hánjù, měi tiān wǎnshàng dōu kàn dào bànyè liǎng sān diǎn, shàngkè de shíhòu chángcháng dǎ kēshuì, jiàoshòu shuō de huà yě méi tīng dào duōshǎo. Yǒu wèntí de shíhòu, wǒ zhǐ shàngwǎng chá yì chá. Qímò bǐshì de shíhòu, yǒu hǎojǐ tí wǒ dōu bú huì xiě, jiù bèi dàng le. Zhè xuéqí wǒ zài xiū yí cì zhè mén kè. Zhè cì wǒ měi cì shàngkè dōu zuò zài zuì qiánmiàn, rènzhēn de tīng jiàoshòu shuō de huà, yǒu bù dǒng de dìfāng jiù qù bàngōngshì wèn jiàoshòu. Yǒu yì tiān, jiàoshòu shuō: “Nǐ zuìjìn shàngkè hěn rènzhēn, gēn shàng ge xuéqí bù yíyàng le!” Wǒ xiǎng, zhè cì wǒ yídìng bú huì zài bèi dàng le.",
-            "english": "Last semester I took a course on Taiwanese history. The professor was nice and taught in an interesting way, but I was hooked on Korean dramas then and watched until two or three every night. I often dozed off in class and didn't hear much of what the professor said. When I had questions, I only looked them up online. In the written final there were several questions I couldn't answer, and I failed. This semester I'm taking the course once more. This time I sit at the very front in every class, listen carefully to what the professor says, and go to the professor's office whenever I don't understand something. One day the professor said, “You've been very serious in class lately. You're different from last semester!” I think this time I surely won't fail again."
+            "traditional": "我在華語中心教中文十年了，我發現很多學生在自己的國家就學過漢語，筆試考得很好，生字跟語法都記得很多，漢字也寫得很漂亮，可是到了外面，連買東西都不太敢說話。所以從這個學期開始，我們改變了教法：課堂上少寫一點，多說一點，期末考口試的分數也從二十分增加到五十分。剛開始，不少學生很煩惱，他們說自己的聲調不好，怕說錯了別人聽不懂。可是一個學期以後，大部分的人都敢在課堂上表達自己的意見了，有的還跟我說，現在去夜市殺價也不怕了。從筆試的分數看不出這些改變，可是學生自己知道，他們用中文跟人說話的方式不一樣了。",
+            "simplified": "我在华语中心教中文十年了，我发现很多学生在自己的国家就学过汉语，笔试考得很好，生字跟语法都记得很多，汉字也写得很漂亮，可是到了外面，连买东西都不太敢说话。所以从这个学期开始，我们改变了教法：课堂上少写一点，多说一点，期末考口试的分数也从二十分增加到五十分。刚开始，不少学生很烦恼，他们说自己的声调不好，怕说错了别人听不懂。可是一个学期以后，大部分的人都敢在课堂上表达自己的意见了，有的还跟我说，现在去夜市杀价也不怕了。从笔试的分数看不出这些改变，可是学生自己知道，他们用中文跟人说话的方式不一样了。",
+            "pinyin": "Wǒ zài Huáyǔ zhōngxīn jiāo Zhōngwén shí nián le, wǒ fāxiàn hěn duō xuéshēng zài zìjǐ de guójiā jiù xué guo Hànyǔ, bǐshì kǎo de hěn hǎo, shēngzì gēn yǔfǎ dōu jì de hěn duō, Hànzì yě xiě de hěn piàoliàng, kěshì dào le wàimiàn, lián mǎi dōngxi dōu bú tài gǎn shuōhuà. Suǒyǐ cóng zhège xuéqí kāishǐ, wǒmen gǎibiàn le jiàofǎ: kètáng shàng shǎo xiě yìdiǎn, duō shuō yìdiǎn, qímòkǎo kǒushì de fēnshù yě cóng èrshí fēn zēngjiā dào wǔshí fēn. Gāng kāishǐ, bù shǎo xuéshēng hěn fánnǎo, tāmen shuō zìjǐ de shēngdiào bù hǎo, pà shuō cuò le biérén tīng bù dǒng. Kěshì yí ge xuéqí yǐhòu, dà bùfèn de rén dōu gǎn zài kètáng shàng biǎodá zìjǐ de yìjiàn le, yǒu de hái gēn wǒ shuō, xiànzài qù yèshì shājià yě bú pà le. Cóng bǐshì de fēnshù kàn bù chū zhèxiē gǎibiàn, kěshì xuéshēng zìjǐ zhīdào, tāmen yòng Zhōngwén gēn rén shuōhuà de fāngshì bù yíyàng le.",
+            "english": "I have taught Mandarin at the Chinese Language Center for ten years, and I have found that many students, who already learned Mandarin in their own countries, do well in written exams, remember lots of words and grammar and write beautiful characters, yet out in the street they hardly dare to speak, even when shopping. So this semester we changed our teaching: less writing in class, more speaking, and the oral part of the final exam went from twenty points to fifty. At first many students were worried; they said their tones were bad and they were afraid people would not understand their mistakes. But after one semester most of them dared to give their opinions in class, and some told me they were no longer afraid to bargain at the night market. Written exam scores do not show these changes, but students can tell that the way they speak Chinese with other people has changed."
           },
           "questions": [
             {
               "id": "b2l09-passage-2-1",
               "prompt": {
-                "traditional": "寫這篇文章的人上個學期上課的時候怎麼樣？",
-                "simplified": "写这篇文章的人上个学期上课的时候怎么样？",
-                "pinyin": "Xiě zhè piān wénzhāng de rén shàng ge xuéqí shàngkè de shíhòu zěnmeyàng?",
-                "english": "What was the writer like in class last semester?"
+                "traditional": "華語中心為什麼改變教法？",
+                "simplified": "华语中心为什么改变教法？",
+                "pinyin": "Huáyǔ zhōngxīn wèishénme gǎibiàn jiàofǎ?",
+                "english": "Why did the Chinese Language Center change its teaching?"
               },
               "choices": [
                 {
-                  "traditional": "坐在最前面聽",
-                  "simplified": "坐在最前面听",
-                  "pinyin": "Zuò zài zuì qiánmiàn tīng.",
-                  "english": "Sat at the very front and listened."
+                  "traditional": "學生會寫，可是不太敢說",
+                  "simplified": "学生会写，可是不太敢说",
+                  "pinyin": "Xuéshēng huì xiě, kěshì bú tài gǎn shuō.",
+                  "english": "Students can write but don't dare to speak."
                 },
                 {
-                  "traditional": "上課常常睡著",
-                  "simplified": "上课常常睡着",
-                  "pinyin": "Shàngkè chángcháng shuìzháo.",
-                  "english": "Often fell asleep in class."
+                  "traditional": "學生的筆試考得不好",
+                  "simplified": "学生的笔试考得不好",
+                  "pinyin": "Xuéshēng de bǐshì kǎo de bù hǎo.",
+                  "english": "Students do badly in written exams."
                 },
                 {
-                  "traditional": "上課的時候看韓劇",
-                  "simplified": "上课的时候看韩剧",
-                  "pinyin": "Shàngkè de shíhòu kàn hánjù.",
-                  "english": "Watched Korean dramas in class."
+                  "traditional": "學生寫的漢字太少了",
+                  "simplified": "学生写的汉字太少了",
+                  "pinyin": "Xuéshēng xiě de Hànzì tài shǎo le.",
+                  "english": "Students write too few characters."
                 },
                 {
-                  "traditional": "上課聽得很認真",
-                  "simplified": "上课听得很认真",
-                  "pinyin": "Shàngkè tīng de hěn rènzhēn.",
-                  "english": "Listened carefully in class."
+                  "traditional": "學生的口試常常考不好",
+                  "simplified": "学生的口试常常考不好",
+                  "pinyin": "Xuéshēng de kǒushì chángcháng kǎo bù hǎo.",
+                  "english": "Students often do badly in the oral exam."
                 }
               ],
-              "key": 1,
-              "why": "Watching dramas until two or three, the writer 常常打瞌睡 in class last semester. The dramas were watched at night, not in class, and sitting at the front and listening carefully are this semester.",
+              "key": 0,
+              "why": "The first sentence sets good written results against students who barely dare to speak, and 所以 leads straight to the change. Their written exams and characters were good, and the text never says how they did in the oral exam before: its share of the marks was raised as part of the change.",
               "focus": {
-                "zh": "打瞌睡",
-                "en": "to nod off"
+                "zh": "所以（原因）",
+                "en": "so (the reason before it)"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L08-2-02",
-                "B2L09-1-13",
-                "B2L07-1-37"
+                "B2L09-2-22",
+                "B2L09-2-03",
+                "B2L09-1-21",
+                "B2L09-2-04",
+                "B2L09-2-15",
+                "B2L09-2-07"
               ]
             },
             {
               "id": "b2l09-passage-2-2",
               "prompt": {
-                "traditional": "這學期有不懂的地方，寫這篇文章的人怎麼做？",
-                "simplified": "这学期有不懂的地方，写这篇文章的人怎么做？",
-                "pinyin": "Zhè xuéqí yǒu bù dǒng de dìfāng, xiě zhè piān wénzhāng de rén zěnme zuò?",
-                "english": "This semester, what does the writer do when something is unclear?"
+                "traditional": "從這段話可以知道什麼？",
+                "simplified": "从这段话可以知道什么？",
+                "pinyin": "Cóng zhè duàn huà kěyǐ zhīdào shénme?",
+                "english": "What can we learn from this passage?"
               },
               "choices": [
                 {
-                  "traditional": "上網查一查",
-                  "simplified": "上网查一查",
-                  "pinyin": "Shàngwǎng chá yì chá.",
-                  "english": "Looks it up online."
+                  "traditional": "學生的聲調都沒問題了",
+                  "simplified": "学生的声调都没问题了",
+                  "pinyin": "Xuéshēng de shēngdiào dōu méi wèntí le.",
+                  "english": "Students' tones are all fine now."
                 },
                 {
-                  "traditional": "問旁邊的同學",
-                  "simplified": "问旁边的同学",
-                  "pinyin": "Wèn pángbiān de tóngxué.",
-                  "english": "Asks the classmate nearby."
+                  "traditional": "筆試的分數比以前高了",
+                  "simplified": "笔试的分数比以前高了",
+                  "pinyin": "Bǐshì de fēnshù bǐ yǐqián gāo le.",
+                  "english": "Written exam scores went up."
                 },
                 {
-                  "traditional": "找教授問問題",
-                  "simplified": "找教授问问题",
-                  "pinyin": "Zhǎo jiàoshòu wèn wèntí.",
-                  "english": "Asks the professor."
+                  "traditional": "學生比以前敢說中文了",
+                  "simplified": "学生比以前敢说中文了",
+                  "pinyin": "Xuéshēng bǐ yǐqián gǎn shuō Zhōngwén le.",
+                  "english": "Students dare to speak Chinese more than before."
                 },
                 {
-                  "traditional": "去圖書館找資料",
-                  "simplified": "去图书馆找资料",
-                  "pinyin": "Qù túshūguǎn zhǎo zīliào.",
-                  "english": "Looks for material in the library."
+                  "traditional": "學生已經不寫漢字了",
+                  "simplified": "学生已经不写汉字了",
+                  "pinyin": "Xuéshēng yǐjīng bù xiě Hànzì le.",
+                  "english": "Students no longer write characters."
                 }
               ],
               "key": 2,
-              "why": "This semester: 有不懂的地方就去辦公室問教授. Looking things up online is what the writer did last semester (只上網查一查).",
+              "why": "After a semester most students give opinions in class and some even bargain at the market: they dare to speak more than before. Nothing says every tone is now fine, the change raised the oral part, not written scores, and the class only writes less, not nothing.",
               "focus": {
-                "zh": "有不懂的地方",
-                "en": "when something is unclear"
+                "zh": "可以知道什麼",
+                "en": "what can be concluded"
               },
               "lesson": 9,
               "wordIds": [
-                "B2L09-1-15",
-                "B1L12-3-13"
+                "B2L09-2-05",
+                "B2L09-2-20",
+                "B2L09-2-11",
+                "B2L09-2-12",
+                "B2L09-2-06",
+                "B2L09-1-07"
               ]
             }
           ]
@@ -2269,158 +2259,163 @@
           "kind": "reading",
           "format": "passage",
           "text": {
-            "traditional": "我是大學生，去年搬到學校附近的一個社區。這個社區很安全，大門旁邊還有很大的草地，天氣好的時候，鄰居常常帶家人在那裡野餐。我住的公寓在五樓，房東人很好，房租每個月八千塊，包括水費和電費，可是網路的錢要自己付。簽約的時候，我還付了兩個月的押金。最方便的是，附近就有一家便利商店，只要走兩分鐘就到了。有時候我念書念到很晚，肚子餓了，就去買點東西吃。我覺得住在這裡很幸福。",
-            "simplified": "我是大学生，去年搬到学校附近的一个社区。这个社区很安全，大门旁边还有很大的草地，天气好的时候，邻居常常带家人在那里野餐。我住的公寓在五楼，房东人很好，房租每个月八千块，包括水费和电费，可是网路的钱要自己付。签约的时候，我还付了两个月的押金。最方便的是，附近就有一家便利商店，只要走两分钟就到了。有时候我念书念到很晚，肚子饿了，就去买点东西吃。我觉得住在这里很幸福。",
-            "pinyin": "Wǒ shì dàxuéshēng, qùnián bān dào xuéxiào fùjìn de yí ge shèqū. Zhège shèqū hěn ānquán, dàmén pángbiān hái yǒu hěn dà de cǎodì, tiānqì hǎo de shíhòu, línjū chángcháng dài jiārén zài nàlǐ yěcān. Wǒ zhù de gōngyù zài wǔ lóu, fángdōng rén hěn hǎo, fángzū měi ge yuè bāqiān kuài, bāokuò shuǐfèi hé diànfèi, kěshì wǎnglù de qián yào zìjǐ fù. Qiānyuē de shíhòu, wǒ hái fù le liǎng ge yuè de yājīn. Zuì fāngbiàn de shì, fùjìn jiù yǒu yì jiā biànlì shāngdiàn, zhǐyào zǒu liǎng fēnzhōng jiù dào le. Yǒu shíhòu wǒ niànshū niàn dào hěn wǎn, dùzi è le, jiù qù mǎi diǎn dōngxi chī. Wǒ juéde zhù zài zhèlǐ hěn xìngfú.",
-            "english": "I'm a university student. Last year I moved to a community near the school. It's very safe, and next to the main gate there's a big lawn where the neighbours often picnic with their families when the weather is good. My apartment is on the fifth floor. The landlord is nice; the rent is NT$8,000 a month, including water and electricity, but I pay for the internet myself. When I signed the lease, I also paid two months' deposit. Best of all, there's a convenience store nearby, just a two-minute walk away. Sometimes when I study late and get hungry, I go and buy something to eat. I feel very happy living here."
+            "traditional": "期末考快到了，大家都在努力念書，學校對面那家咖啡店的生意越來越好。為了吸引學生，老闆把店裡的二樓變成了念書的地方，那裡坐得下四十個人，還有免費的無線網路。平日只要買一杯咖啡，就可以在那裡坐一個下午。假日二樓只讓來吃午餐的顧客上去。老闆還想出了一個辦法：每買滿五杯咖啡，就送一個史努比娃娃。這個辦法真的很有用，連平常不喝咖啡的室友都每天去。可是上個星期，因為人太多的關係，我去了兩次都沒有位子，只好回宿舍念書。",
+            "simplified": "期末考快到了，大家都在努力念书，学校对面那家咖啡店的生意越来越好。为了吸引学生，老板把店里的二楼变成了念书的地方，那里坐得下四十个人，还有免费的无线网路。平日只要买一杯咖啡，就可以在那里坐一个下午。假日二楼只让来吃午餐的顾客上去。老板还想出了一个办法：每买满五杯咖啡，就送一个史努比娃娃。这个办法真的很有用，连平常不喝咖啡的室友都每天去。可是上个星期，因为人太多的关系，我去了两次都没有位子，只好回宿舍念书。",
+            "pinyin": "Qímòkǎo kuài dào le, dàjiā dōu zài nǔlì niànshū, xuéxiào duìmiàn nà jiā kāfēi diàn de shēngyì yuè lái yuè hǎo. Wèile xīyǐn xuéshēng, lǎobǎn bǎ diàn lǐ de èr lóu biànchéng le niànshū de dìfāng, nàlǐ zuò de xià sìshí ge rén, hái yǒu miǎnfèi de wúxiàn wǎnglù. Píngrì zhǐyào mǎi yì bēi kāfēi, jiù kěyǐ zài nàlǐ zuò yí ge xiàwǔ. Jiàrì èr lóu zhǐ ràng lái chī wǔcān de gùkè shàngqù. Lǎobǎn hái xiǎng chū le yí ge bànfǎ: měi mǎi mǎn wǔ bēi kāfēi, jiù sòng yí ge Shǐnǔbǐ wáwa. Zhège bànfǎ zhēn de hěn yǒuyòng, lián píngcháng bù hē kāfēi de shìyǒu dōu měi tiān qù. Kěshì shàng ge xīngqí, yīnwèi rén tài duō de guānxì, wǒ qù le liǎng cì dōu méiyǒu wèizi, zhǐhǎo huí sùshè niànshū.",
+            "english": "Finals are coming and everyone is studying hard, so the café across from campus is doing better and better. To attract students, the owner turned the second floor into a place to study: it seats forty and has free Wi-Fi. On weekdays, buy one coffee and you can sit there all afternoon. On weekends the second floor is for lunch customers only. The owner also came up with an idea: for every five coffees you buy, you get a Snoopy doll. It really works; even my roommate, who normally doesn't drink coffee, goes every day. But last week, because there were so many people, I went twice and found no seat both times, so I had to go back to the dorm to study."
           },
           "questions": [
             {
               "id": "b2l09-review-passage-1-1",
               "prompt": {
-                "traditional": "這個人每個月除了房租，還要付什麼？",
-                "simplified": "这个人每个月除了房租，还要付什么？",
-                "pinyin": "Zhège rén měi ge yuè chúle fángzū, hái yào fù shénme?",
-                "english": "Besides the rent, what does this person pay every month?"
+                "traditional": "一個學生想拿到娃娃，也想只買咖啡就在二樓念書。他可以怎麼做？",
+                "simplified": "一个学生想拿到娃娃，也想只买咖啡就在二楼念书。他可以怎么做？",
+                "pinyin": "Yí ge xuéshēng xiǎng ná dào wáwa, yě xiǎng zhǐ mǎi kāfēi jiù zài èr lóu niànshū. Tā kěyǐ zěnme zuò?",
+                "english": "A student wants the doll and an upstairs seat to study, buying only coffee. What can they do?"
               },
               "choices": [
                 {
-                  "traditional": "水費",
-                  "simplified": "水费",
-                  "pinyin": "Shuǐfèi.",
-                  "english": "The water bill."
+                  "traditional": "星期六買五杯咖啡",
+                  "simplified": "星期六买五杯咖啡",
+                  "pinyin": "Xīngqíliù mǎi wǔ bēi kāfēi.",
+                  "english": "Buy five coffees on Saturday."
                 },
                 {
-                  "traditional": "電費",
-                  "simplified": "电费",
-                  "pinyin": "Diànfèi.",
-                  "english": "The electricity bill."
+                  "traditional": "星期五買四杯咖啡",
+                  "simplified": "星期五买四杯咖啡",
+                  "pinyin": "Xīngqíwǔ mǎi sì bēi kāfēi.",
+                  "english": "Buy four coffees on Friday."
                 },
                 {
-                  "traditional": "押金",
-                  "simplified": "押金",
-                  "pinyin": "Yājīn.",
-                  "english": "The deposit."
+                  "traditional": "星期五買五杯咖啡",
+                  "simplified": "星期五买五杯咖啡",
+                  "pinyin": "Xīngqíwǔ mǎi wǔ bēi kāfēi.",
+                  "english": "Buy five coffees on Friday."
                 },
                 {
-                  "traditional": "網路的錢",
-                  "simplified": "网路的钱",
-                  "pinyin": "Wǎnglù de qián.",
-                  "english": "The internet."
+                  "traditional": "星期六買四杯咖啡",
+                  "simplified": "星期六买四杯咖啡",
+                  "pinyin": "Xīngqíliù mǎi sì bēi kāfēi.",
+                  "english": "Buy four coffees on Saturday."
                 }
               ],
-              "key": 3,
-              "why": "Water and electricity are included in the rent (包括), and the deposit was paid once, at signing. Each month only the internet (網路的錢要自己付) is extra.",
+              "key": 2,
+              "why": "A coffee gets you upstairs all afternoon on a weekday, and the doll takes five coffees. Five on Saturday would get the doll, but the upstairs seats are then for lunch customers.",
               "focus": {
-                "zh": "除了……，還……",
-                "en": "besides …, also …"
+                "zh": "滿 + Nu + M",
+                "en": "a full amount"
               },
-              "lesson": 3,
+              "lesson": 8,
               "wordIds": [
-                "B2L03-1-26",
-                "B2L03-1-27",
-                "B2L03-1-29",
-                "B2L03-1-31"
+                "B2L08-1-11",
+                "B2L08-1-08",
+                "B2L08-1-38",
+                "B2L05-1-27"
               ],
               "grammarIds": [
-                "B2L03-G08-P86"
+                "B2L08-G01-P188"
               ]
             },
             {
               "id": "b2l09-review-passage-1-2",
               "prompt": {
-                "traditional": "天氣好的時候，鄰居常在草地上做什麼？",
-                "simplified": "天气好的时候，邻居常在草地上做什么？",
-                "pinyin": "Tiānqì hǎo de shíhòu, línjū cháng zài cǎodì shàng zuò shénme?",
-                "english": "What do the neighbours often do on the lawn in good weather?"
+                "traditional": "從室友每天去這件事，可以知道什麼？",
+                "simplified": "从室友每天去这件事，可以知道什么？",
+                "pinyin": "Cóng shìyǒu měi tiān qù zhè jiàn shì, kěyǐ zhīdào shénme?",
+                "english": "What does the roommate going every day tell us?"
               },
               "choices": [
                 {
-                  "traditional": "大家在那裡打球",
-                  "simplified": "大家在那里打球",
-                  "pinyin": "Dàjiā zài nàlǐ dǎ qiú.",
-                  "english": "Play ball there together."
+                  "traditional": "室友很喜歡喝咖啡",
+                  "simplified": "室友很喜欢喝咖啡",
+                  "pinyin": "Shìyǒu hěn xǐhuān hē kāfēi.",
+                  "english": "The roommate loves coffee."
                 },
                 {
-                  "traditional": "晚上在那裡露營",
-                  "simplified": "晚上在那里露营",
-                  "pinyin": "Wǎnshàng zài nàlǐ lùyíng.",
-                  "english": "Camp there at night."
+                  "traditional": "室友每天都在念書",
+                  "simplified": "室友每天都在念书",
+                  "pinyin": "Shìyǒu měi tiān dōu zài niànshū.",
+                  "english": "The roommate studies every day."
                 },
                 {
-                  "traditional": "一起在外面吃飯",
-                  "simplified": "一起在外面吃饭",
-                  "pinyin": "Yìqǐ zài wàimiàn chīfàn.",
-                  "english": "Eat together outdoors."
+                  "traditional": "室友喜歡免費網路",
+                  "simplified": "室友喜欢免费网路",
+                  "pinyin": "Shìyǒu xǐhuān miǎnfèi wǎnglù.",
+                  "english": "The roommate likes the free Wi-Fi."
                 },
                 {
-                  "traditional": "躺在上面看星星",
-                  "simplified": "躺在上面看星星",
-                  "pinyin": "Tǎng zài shàngmiàn kàn xīngxīng.",
-                  "english": "Lie on it and look at the stars."
+                  "traditional": "老闆的辦法很吸引人",
+                  "simplified": "老板的办法很吸引人",
+                  "pinyin": "Lǎobǎn de bànfǎ hěn xīyǐn rén.",
+                  "english": "The owner's idea really draws people."
                 }
               ],
-              "key": 2,
-              "why": "鄰居常常帶家人在那裡野餐: a picnic is eating together outdoors. The passage never mentions ball games, camping or stargazing.",
+              "key": 3,
+              "why": "連平常不喝咖啡的室友都每天去: even someone who does not drink coffee goes every day, which shows how well the idea pulls people in. The roommate normally does not drink coffee, the text never says the roommate studies there, and the passage gives no evidence that the Wi-Fi brought the roommate in.",
               "focus": {
-                "zh": "野餐",
-                "en": "to picnic"
+                "zh": "連……都……",
+                "en": "even …"
               },
-              "lesson": 5,
+              "lesson": 8,
               "wordIds": [
-                "B2L05-1-12",
-                "B2L05-1-09",
-                "B2L02-2-18"
+                "B2L08-1-12",
+                "B2L08-1-16",
+                "B1L06-3-11",
+                "B2L03-2-01"
+              ],
+              "grammarIds": [
+                "B2L08-G02-P188"
               ]
             },
             {
               "id": "b2l09-review-passage-1-3",
               "prompt": {
-                "traditional": "那家便利商店怎麼樣？",
-                "simplified": "那家便利商店怎么样？",
-                "pinyin": "Nà jiā biànlì shāngdiàn zěnmeyàng?",
-                "english": "What is true of that convenience store?"
+                "traditional": "上個星期，寫這篇文章的人為什麼回宿舍念書？",
+                "simplified": "上个星期，写这篇文章的人为什么回宿舍念书？",
+                "pinyin": "Shàng ge xīngqí, xiě zhè piān wénzhāng de rén wèishénme huí sùshè niànshū?",
+                "english": "Why did the writer go back to the dorm to study last week?"
               },
               "choices": [
                 {
-                  "traditional": "在學校的旁邊",
-                  "simplified": "在学校的旁边",
-                  "pinyin": "Zài xuéxiào de pángbiān.",
-                  "english": "It is next to the school."
+                  "traditional": "店裡沒有空的位子",
+                  "simplified": "店里没有空的位子",
+                  "pinyin": "Diàn lǐ méiyǒu kòng de wèizi.",
+                  "english": "There were no free seats in the café."
                 },
                 {
-                  "traditional": "在社區大門旁邊",
-                  "simplified": "在社区大门旁边",
-                  "pinyin": "Zài shèqū dàmén pángbiān.",
-                  "english": "It is next to the community's main gate."
+                  "traditional": "室友每天都在店裡",
+                  "simplified": "室友每天都在店里",
+                  "pinyin": "Shìyǒu měi tiān dōu zài diàn lǐ.",
+                  "english": "The roommate was there every day."
                 },
                 {
-                  "traditional": "要坐車才能到",
-                  "simplified": "要坐车才能到",
-                  "pinyin": "Yào zuò chē cái néng dào.",
-                  "english": "You have to ride there."
+                  "traditional": "他不喜歡喝咖啡",
+                  "simplified": "他不喜欢喝咖啡",
+                  "pinyin": "Tā bù xǐhuān hē kāfēi.",
+                  "english": "The writer doesn't like coffee."
                 },
                 {
-                  "traditional": "走路很快就到",
-                  "simplified": "走路很快就到",
-                  "pinyin": "Zǒulù hěn kuài jiù dào.",
-                  "english": "It is a short walk away."
+                  "traditional": "咖啡店的網路不好",
+                  "simplified": "咖啡店的网路不好",
+                  "pinyin": "Kāfēi diàn de wǎnglù bù hǎo.",
+                  "english": "The café's Wi-Fi was bad."
                 }
               ],
-              "key": 3,
-              "why": "附近就有一家便利商店，只要走兩分鐘就到了: a two-minute walk. The lawn is by the main gate, and it is the community, not the shop, that is near the school.",
+              "key": 0,
+              "why": "Because of the crowds (因為人太多的關係) there was no seat either time, so 只好 back to the dorm. The roommate is there too, but that is not the reason; it is the roommate who doesn't drink coffee, and the text gives no problem with the Wi-Fi.",
               "focus": {
-                "zh": "只要……就……",
-                "en": "only need … to"
+                "zh": "只好；因為……的關係",
+                "en": "have no choice but to; because of"
               },
-              "lesson": 5,
+              "lesson": 8,
               "wordIds": [
-                "B2L03-1-20",
-                "B2L05-1-27",
-                "B2L05-1-08"
+                "B2L08-1-25",
+                "B2L08-2-06",
+                "B2L07-1-29"
               ],
               "grammarIds": [
-                "B2L05-G03-P124"
+                "B2L08-G04-P190",
+                "B2L08-G07-P198"
               ]
             }
           ]
@@ -2430,157 +2425,159 @@
           "kind": "reading",
           "format": "passage",
           "text": {
-            "traditional": "上個月，我跟兩個朋友去花蓮玩了三天。我們本來想開車走蘇花公路，可是聽說最近常有石頭掉下來，只好坐火車去。我們趁平日人少的時候去，所以民宿不貴，一個人一個晚上才八百塊，還有免費的無線網路。民宿離火車站不遠，走路十分鐘就到了。第一天我們去國家公園，山上的風景美極了，我還買了幾張明信片寄給家人。晚上我們去逛夜市，那裡的小吃又便宜又好吃，我們一下子就把帶去的錢花光了。民宿的錢是朋友先付的。回台北以前，我用信用卡買了好幾包當地的名產，送給沒去的同學。",
-            "simplified": "上个月，我跟两个朋友去花莲玩了三天。我们本来想开车走苏花公路，可是听说最近常有石头掉下来，只好坐火车去。我们趁平日人少的时候去，所以民宿不贵，一个人一个晚上才八百块，还有免费的无线网路。民宿离火车站不远，走路十分钟就到了。第一天我们去国家公园，山上的风景美极了，我还买了几张明信片寄给家人。晚上我们去逛夜市，那里的小吃又便宜又好吃，我们一下子就把带去的钱花光了。民宿的钱是朋友先付的。回台北以前，我用信用卡买了好几包当地的名产，送给没去的同学。",
-            "pinyin": "Shàng ge yuè, wǒ gēn liǎng ge péngyǒu qù Huālián wán le sān tiān. Wǒmen běnlái xiǎng kāichē zǒu Sūhuā gōnglù, kěshì tīngshuō zuìjìn cháng yǒu shítou diào xiàlái, zhǐhǎo zuò huǒchē qù. Wǒmen chèn píngrì rén shǎo de shíhòu qù, suǒyǐ mínsù bú guì, yí ge rén yí ge wǎnshàng cái bābǎi kuài, hái yǒu miǎnfèi de wúxiàn wǎnglù. Mínsù lí huǒchēzhàn bù yuǎn, zǒulù shí fēnzhōng jiù dào le. Dì yī tiān wǒmen qù guójiā gōngyuán, shān shàng de fēngjǐng měi jíle, wǒ hái mǎi le jǐ zhāng míngxìnpiàn jì gěi jiārén. Wǎnshàng wǒmen qù guàng yèshì, nàlǐ de xiǎochī yòu piányí yòu hǎochī, wǒmen yíxiàzi jiù bǎ dài qù de qián huā guāng le. Mínsù de qián shì péngyǒu xiān fù de. Huí Táiběi yǐqián, wǒ yòng xìnyòngkǎ mǎi le hǎojǐ bāo dāngdì de míngchǎn, sòng gěi méi qù de tóngxué.",
-            "english": "Last month, two friends and I spent three days in Hualien. We first wanted to drive the Suhua Highway, but we heard rocks had been falling recently, so we had to take the train. We went on weekdays, when there are fewer people, so the B&B was cheap: only NT$800 per person a night, with free Wi-Fi. The B&B wasn't far from the train station, a ten-minute walk. On the first day we went to the national park; the mountain scenery was beautiful, and I bought a few postcards to mail to my family. In the evening we strolled the night market, where the food was cheap and tasty, and in no time we had spent all the cash we brought. A friend paid for the B&B first. Before going back to Taipei, I bought several bags of local specialties with my credit card for classmates who hadn't come."
+            "traditional": "期末考以後，社區請我們在草地上辦一場免費的表演。老師跟學生一起合唱，附近的校友也來幫忙。我們本來想下午先練習合唱，晚上才表演。可是到了中午，天上的雲越來越多。還好社區的工作人員知道隔壁的教室沒有人用，要不然這次的活動只好停了。大家把樂器搬到教室，一邊休息一邊聊天，說著說著就忘了時間。有人走進來問幾點開始，我們才知道表演時間到了。我們本來在草地旁邊貼了換教室的海報，可是海報被人拿走了，不少人還在外面等。我們請校友去帶人進來，也請先到的人幫忙把位子留給老先生跟老太太。表演開始時，教室裡已經坐滿了人。",
+            "simplified": "期末考以后，社区请我们在草地上办一场免费的表演。老师跟学生一起合唱，附近的校友也来帮忙。我们本来想下午先练习合唱，晚上才表演。可是到了中午，天上的云越来越多。还好社区的工作人员知道隔壁的教室没有人用，要不然这次的活动只好停了。大家把乐器搬到教室，一边休息一边聊天，说着说着就忘了时间。有人走进来问几点开始，我们才知道表演时间到了。我们本来在草地旁边贴了换教室的海报，可是海报被人拿走了，不少人还在外面等。我们请校友去带人进来，也请先到的人帮忙把位子留给老先生跟老太太。表演开始时，教室里已经坐满了人。",
+            "pinyin": "Qímòkǎo yǐhòu, shèqū qǐng wǒmen zài cǎodì shàng bàn yì chǎng miǎnfèi de biǎoyǎn. Lǎoshī gēn xuéshēng yìqǐ héchàng, fùjìn de xiàoyǒu yě lái bāngmáng. Wǒmen běnlái xiǎng xiàwǔ xiān liànxí héchàng, wǎnshàng cái biǎoyǎn. Kěshì dào le zhōngwǔ, tiān shàng de yún yuè lái yuè duō. Háihǎo shèqū de gōngzuò rényuán zhīdào gébì de jiàoshì méiyǒu rén yòng, yàobùrán zhè cì de huódòng zhǐhǎo tíng le. Dàjiā bǎ yuèqì bān dào jiàoshì, yìbiān xiūxi yìbiān liáotiān, shuō zhe shuō zhe jiù wàng le shíjiān. Yǒu rén zǒu jìnlái wèn jǐ diǎn kāishǐ, wǒmen cái zhīdào biǎoyǎn shíjiān dào le. Wǒmen běnlái zài cǎodì pángbiān tiē le huàn jiàoshì de hǎibào, kěshì hǎibào bèi rén ná zǒu le, bù shǎo rén hái zài wàimiàn děng. Wǒmen qǐng xiàoyǒu qù dài rén jìnlái, yě qǐng xiān dào de rén bāngmáng bǎ wèizi liú gěi lǎo xiānshēng gēn lǎo tàitai. Biǎoyǎn kāishǐ shí, jiàoshì lǐ yǐjīng zuò mǎn le rén.",
+            "english": "After finals, the community invited us to give a free performance on the lawn. Teachers and students sang together, and alumni from nearby came to help. We planned to practise in the afternoon and perform in the evening. But by noon more and more clouds had gathered. Fortunately, the community staff knew the classroom next door was free. Otherwise the event would have had to be called off. Everyone carried their instruments into the classroom and sat down to rest and lost track of time while chatting. When someone came in to ask when the show started, we realized it was already time. We had put up a poster by the lawn about the move to the classroom, but someone had taken it down, so quite a few people were still waiting outside. We asked the alumni to bring them in and asked those who had arrived early to save seats for older guests. By the time the performance began, the classroom was full."
           },
           "questions": [
             {
               "id": "b2l09-review-passage-2-1",
               "prompt": {
-                "traditional": "他們住的民宿為什麼不貴？",
-                "simplified": "他们住的民宿为什么不贵？",
-                "pinyin": "Tāmen zhù de mínsù wèishénme bú guì?",
-                "english": "Why was their B&B cheap?"
+                "traditional": "看到天上的雲以後，哪一件事讓大家放心？",
+                "simplified": "看到天上的云以后，哪一件事让大家放心？",
+                "pinyin": "Kàn dào tiān shàng de yún yǐhòu, nǎ yí jiàn shì ràng dàjiā fàngxīn?",
+                "english": "After the clouds gathered, what reassured the group?"
               },
               "choices": [
                 {
-                  "traditional": "他們只住一個晚上",
-                  "simplified": "他们只住一个晚上",
-                  "pinyin": "Tāmen zhǐ zhù yí ge wǎnshàng.",
-                  "english": "They stayed only one night."
+                  "traditional": "可以請校友一起合唱",
+                  "simplified": "可以请校友一起合唱",
+                  "pinyin": "Kěyǐ qǐng xiàoyǒu yìqǐ héchàng.",
+                  "english": "They could invite the alumni to sing with them."
                 },
                 {
-                  "traditional": "民宿離車站很遠",
-                  "simplified": "民宿离车站很远",
-                  "pinyin": "Mínsù lí chēzhàn hěn yuǎn.",
-                  "english": "The B&B was far from the station."
+                  "traditional": "可以到教室裡表演",
+                  "simplified": "可以到教室里表演",
+                  "pinyin": "Kěyǐ dào jiàoshì lǐ biǎoyǎn.",
+                  "english": "They could move the performance indoors."
                 },
                 {
-                  "traditional": "他們沒在週末去",
-                  "simplified": "他们没在周末去",
-                  "pinyin": "Tāmen méi zài zhōumò qù.",
-                  "english": "They didn't go at the weekend."
+                  "traditional": "可以等晚上再練習",
+                  "simplified": "可以等晚上再练习",
+                  "pinyin": "Kěyǐ děng wǎnshàng zài liànxí.",
+                  "english": "They could wait until evening to practise."
                 },
                 {
-                  "traditional": "他們是坐火車去的",
-                  "simplified": "他们是坐火车去的",
-                  "pinyin": "Tāmen shì zuò huǒchē qù de.",
-                  "english": "They went by train."
+                  "traditional": "可以照原來的計畫表演",
+                  "simplified": "可以照原来的计划表演",
+                  "pinyin": "Kěyǐ zhào yuánlái de jìhuà biǎoyǎn.",
+                  "english": "They could perform as originally planned."
                 }
               ],
-              "key": 2,
-              "why": "趁著平日去，所以民宿不貴: going on weekdays, not at the weekend, made it cheap. They stayed three days, the B&B was near the station, and the train is about the highway, not the price.",
+              "key": 1,
+              "why": "The groups had planned to use the lawn, and the weather threatened the event. The empty classroom gave them somewhere dry to perform.",
               "focus": {
-                "zh": "趁著",
-                "en": "taking advantage of"
+                "zh": "還好……，要不然……",
+                "en": "luckily …, otherwise …"
               },
-              "lesson": 7,
+              "lesson": 5,
               "wordIds": [
-                "B2L07-2-21",
-                "B2L07-1-32",
-                "B2L06-2-07"
+                "B2L05-2-06",
+                "B2L05-2-08",
+                "B2L05-1-09",
+                "B2L05-1-15"
               ],
               "grammarIds": [
-                "B2L07-G08-P176"
+                "B2L05-G06-P130"
               ]
             },
             {
               "id": "b2l09-review-passage-2-2",
               "prompt": {
-                "traditional": "他們在夜市的時候怎麼了？",
-                "simplified": "他们在夜市的时候怎么了？",
-                "pinyin": "Tāmen zài yèshì de shíhòu zěnme le?",
-                "english": "What happened at the night market?"
+                "traditional": "大家怎麼知道表演快開始了？",
+                "simplified": "大家怎么知道表演快开始了？",
+                "pinyin": "Dàjiā zěnme zhīdào biǎoyǎn kuài kāishǐ le?",
+                "english": "How did the group realize the performance was about to begin?"
               },
               "choices": [
                 {
-                  "traditional": "小吃太貴吃不起",
-                  "simplified": "小吃太贵吃不起",
-                  "pinyin": "Xiǎochī tài guì chī bù qǐ.",
-                  "english": "The food was too expensive to afford."
+                  "traditional": "老師請他們再練習一次",
+                  "simplified": "老师请他们再练习一次",
+                  "pinyin": "Lǎoshī qǐng tāmen zài liànxí yí cì.",
+                  "english": "The teacher asked them to practise a little longer."
                 },
                 {
-                  "traditional": "錢很快就用完了",
-                  "simplified": "钱很快就用完了",
-                  "pinyin": "Qián hěn kuài jiù yòng wán le.",
-                  "english": "Their money was soon used up."
+                  "traditional": "校友把樂器搬到了教室",
+                  "simplified": "校友把乐器搬到了教室",
+                  "pinyin": "Xiàoyǒu bǎ yuèqì bān dào le jiàoshì.",
+                  "english": "The alumni moved the instruments into the classroom."
                 },
                 {
-                  "traditional": "錢被小偷偷了",
-                  "simplified": "钱被小偷偷了",
-                  "pinyin": "Qián bèi xiǎotōu tōu le.",
-                  "english": "Their money was stolen."
+                  "traditional": "他們聽見外面開始下雨",
+                  "simplified": "他们听见外面开始下雨",
+                  "pinyin": "Tāmen tīngjiàn wàimiàn kāishǐ xià yǔ.",
+                  "english": "They heard the rain start outside."
                 },
                 {
-                  "traditional": "他們吃得太飽了",
-                  "simplified": "他们吃得太饱了",
-                  "pinyin": "Tāmen chī de tài bǎo le.",
-                  "english": "They ate too much."
+                  "traditional": "有人進來問表演的時間",
+                  "simplified": "有人进来问表演的时间",
+                  "pinyin": "Yǒu rén jìnlái wèn biǎoyǎn de shíjiān.",
+                  "english": "Someone came in to ask when the show started."
                 }
               ],
-              "key": 1,
-              "why": "一下子就把帶去的錢花光了: their cash was soon all gone, spent on cheap, tasty food. Nothing was stolen, and the food was cheap, not too expensive.",
+              "key": 3,
+              "why": "They lost track of time as they chatted. The visitor’s question made them realize the show was due to start, after the instruments had already been moved.",
               "focus": {
-                "zh": "V光",
-                "en": "use up"
+                "zh": "V著V著，就……了",
+                "en": "while doing …"
               },
-              "lesson": 7,
+              "lesson": 5,
               "wordIds": [
-                "B2L07-1-19",
-                "B2L07-1-18",
-                "B2L04-1-03"
+                "B2L05-1-09"
               ],
               "grammarIds": [
-                "B2L07-G05-P168"
+                "B2L05-G02-P123"
               ]
             },
             {
               "id": "b2l09-review-passage-2-3",
               "prompt": {
-                "traditional": "寫這篇文章的人用信用卡做什麼？",
-                "simplified": "写这篇文章的人用信用卡做什么？",
-                "pinyin": "Xiě zhè piān wénzhāng de rén yòng xìnyòngkǎ zuò shénme?",
-                "english": "What did the writer use the credit card for?"
+                "traditional": "大家為什麼請校友到草地上去？",
+                "simplified": "大家为什么请校友到草地上去？",
+                "pinyin": "Dàjiā wèishénme qǐng xiàoyǒu dào cǎodì shàng qù?",
+                "english": "Why did the group ask the alumni to go out to the lawn?"
               },
               "choices": [
                 {
-                  "traditional": "付民宿的錢",
-                  "simplified": "付民宿的钱",
-                  "pinyin": "Fù mínsù de qián.",
-                  "english": "To pay for the B&B."
+                  "traditional": "還有人不知道要去哪裡看",
+                  "simplified": "还有人不知道要去哪里看",
+                  "pinyin": "Hái yǒu rén bù zhīdào yào qù nǎlǐ kàn.",
+                  "english": "Some people still did not know where to watch the show."
                 },
                 {
-                  "traditional": "買幾張明信片",
-                  "simplified": "买几张明信片",
-                  "pinyin": "Mǎi jǐ zhāng míngxìnpiàn.",
-                  "english": "To buy postcards."
+                  "traditional": "還有人在草地上找位子",
+                  "simplified": "还有人在草地上找位子",
+                  "pinyin": "Hái yǒu rén zài cǎodì shàng zhǎo wèizi.",
+                  "english": "Some people were looking for seats on the lawn."
                 },
                 {
-                  "traditional": "在夜市買小吃",
-                  "simplified": "在夜市买小吃",
-                  "pinyin": "Zài yèshì mǎi xiǎochī.",
-                  "english": "To buy night-market food."
+                  "traditional": "還有人在外面等著練習",
+                  "simplified": "还有人在外面等着练习",
+                  "pinyin": "Hái yǒu rén zài wàimiàn děng zhe liànxí.",
+                  "english": "Some people were still outside waiting to practise."
                 },
                 {
-                  "traditional": "買花蓮的名產",
-                  "simplified": "买花莲的名产",
-                  "pinyin": "Mǎi Huālián de míngchǎn.",
-                  "english": "To buy Hualien specialties."
+                  "traditional": "還有人要把樂器搬進來",
+                  "simplified": "还有人要把乐器搬进来",
+                  "pinyin": "Hái yǒu rén yào bǎ yuèqì bān jìnlái.",
+                  "english": "Some people still had to bring in instruments."
                 }
               ],
-              "key": 3,
-              "why": "我用信用卡買了好幾包當地的名產: the card paid for the specialties, before going home. A friend paid for the B&B, and the night-market food used up their cash.",
+              "key": 0,
+              "why": "The performance moved to the classroom, and someone had taken down the outside poster. The alumni went to show the waiting audience where to go.",
               "focus": {
-                "zh": "信用卡",
-                "en": "credit card"
+                "zh": "被 + V + C",
+                "en": "passive and its result"
               },
-              "lesson": 7,
+              "lesson": 5,
               "wordIds": [
-                "B2L07-2-19",
-                "B2L07-1-04",
-                "B2L07-1-03"
+                "B2L05-1-03",
+                "B2L05-1-26",
+                "B2L05-2-11"
+              ],
+              "grammarIds": [
+                "B2L05-G01-P122"
               ]
             }
           ]

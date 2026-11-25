@@ -5,7 +5,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { readJson } from '../acceptance_helpers';
 import type { LessonTestFile, LessonTestLesson, LessonTestPack } from '../../src/types/lessonTest';
 import { isValidLessonTestFile, lessonTestPartKey, type GenericContentManifest } from '../../src/utils/packValidators';
-import { loadLessonTestContext, pictureProblems, runProblems, scopeProblems, structureProblems } from '../../scripts/content/lessonTestRules';
+import { loadLessonTestContext, pictureProblems, runProblems, scopeProblems, structureProblems, wordProblems } from '../../scripts/content/lessonTestRules';
 import { lessonTestEdition } from '../../scripts/content/lessonTestEdition';
 
 /**
@@ -33,6 +33,10 @@ test('every picture a lesson test names exists', () => {
 
 test('every possible run tests every grammar point of the lesson and reviews earlier lessons', () => {
   assert.deepEqual(lessons.flatMap((lesson) => runProblems(lesson, ctx)), []);
+});
+
+test('a Band B test shows most of its lesson\'s new words', () => {
+  assert.deepEqual(lessons.flatMap((lesson) => wordProblems(lesson, ctx)), []);
 });
 
 test('the exported pack matches the authored tests, and every spoken line has a recording', () => {
