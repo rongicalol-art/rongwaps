@@ -43,7 +43,7 @@ function midpointBetween(first: BookPoint, second: BookPoint): BookPoint {
   return { x: (first.x + second.x) / 2, y: (first.y + second.y) / 2 };
 }
 
-interface UseBookViewerPointerGesturesOptions {
+export interface BookViewerGestureContext {
   stageRef: RefObject<HTMLDivElement | null>;
   zoomRef: RefObject<number>;
   offsetRef: RefObject<BookPoint>;
@@ -69,7 +69,7 @@ export function useBookViewerPointerGestures({
   canPagePrevious,
   canPageNext,
   onPageChange,
-}: UseBookViewerPointerGesturesOptions) {
+}: BookViewerGestureContext) {
   const pointersRef = useRef(new Map<number, BookPoint>());
   const dragRef = useRef<DragGesture | null>(null);
   const pinchRef = useRef<PinchGesture | null>(null);

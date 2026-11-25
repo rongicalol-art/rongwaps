@@ -1,9 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {
-  calculateTooltipPlacement,
-  calculateTooltipPosition,
-} from '../../src/screens/reader/utils/readerTooltipPosition';
+import { calculateTooltipPlacement } from '../../src/utils/browser/tooltipPosition';
 
 test('calculates placement above word when there is sufficient clearance', () => {
   const anchor = { x: 430, top: 250, bottom: 280 };
@@ -59,21 +56,4 @@ test('clamps right coordinate and aligns arrow when anchor is near right screen 
   assert.equal(placement.left, 772);
   // Arrow tracks word center clamped to arrowMax (240 - 26 = 214)
   assert.equal(placement.arrowLeft, 214);
-});
-
-test('calculateTooltipPosition compatibility wrapper works', () => {
-  const anchorRect = {
-    top: 250,
-    bottom: 280,
-    left: 400,
-    right: 460,
-    width: 60,
-    height: 30,
-  };
-  const viewport = { innerWidth: 1024, innerHeight: 768 };
-
-  const pos = calculateTooltipPosition(anchorRect, viewport, 200, 100);
-
-  assert.equal(pos.isFlipped, false);
-  assert.equal(pos.left, 330);
 });

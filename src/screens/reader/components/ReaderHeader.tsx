@@ -18,26 +18,6 @@ interface ReaderHeaderProps extends Omit<ReaderSettingsPopoverProps, 'size' | 'i
   onClose: () => void;
 }
 
-export function getLessonTitles(
-  lessonTitle?: string,
-  fallbackTitle?: string
-): {
-  chineseTitle: string;
-  englishTitle: string;
-} {
-  const parts = lessonTitle?.split(' · ') ?? [];
-  if (parts.length >= 2) {
-    return {
-      chineseTitle: parts[1].trim(),
-      englishTitle: parts[0].trim(),
-    };
-  }
-  return {
-    chineseTitle: lessonTitle || fallbackTitle || '',
-    englishTitle: '',
-  };
-}
-
 export function getReaderHeaderTitles(
   reading: ReadingRecord,
   lessonTitle?: string

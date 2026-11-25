@@ -1,11 +1,5 @@
 import type { GrammarPatternRow, GrammarWordToken } from '../../types/models';
 
-export interface PatternColumnWeightOptions {
-  groups: GrammarWordToken[][];
-  characterPreference: 'traditional' | 'simplified';
-  showPinyin: boolean;
-}
-
 const CJK_WEIGHT = 1;
 const LATIN_WEIGHT = 0.45;
 const PINYIN_WEIGHT = 0.45;
@@ -79,20 +73,6 @@ function groupScore(
     score = Math.max(score, longestPinyin * PINYIN_WEIGHT);
   }
   return Math.round(score * 10) / 10;
-}
-
-/**
- * Relative content weight of one column group, clamped so a single very long
- * sentence cannot push its weight past the bounded range.
- */
-export function getPatternColumnWeights({
-  groups,
-  characterPreference,
-  showPinyin,
-}: PatternColumnWeightOptions): number[] {
-  return groups
-    .filter((group) => group.length > 0)
-    .map((group) => Math.min(MAX_WEIGHT, Math.max(MIN_WEIGHT, groupScore(group, characterPreference, showPinyin))));
 }
 
 export interface PatternSectionLayoutOptions {

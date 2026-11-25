@@ -3,7 +3,6 @@ import test from 'node:test';
 import type { GrammarWordToken } from '../../src/types/models';
 import {
   getDisplayText,
-  getPatternColumnWeights,
   getPatternSectionLayout,
 } from '../../src/utils/grammar/grammarPatternLayout';
 
@@ -45,112 +44,9 @@ function row(overrides: Partial<{
   };
 }
 
-test('Three short groups produce approximately balanced weights', () => {
-  const weights = getPatternColumnWeights({
-    groups: [group(['她']), group(['是']), group(['嗎'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  assert.deepEqual(weights, [1, 1, 1]);
-});
-
-test('A long subject receives more space than short neighbors', () => {
-  const weights = getPatternColumnWeights({
-    groups: [group(['辦公室', '的', '同事']), group(['是']), group(['嗎'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  assert.ok(weights[0] > weights[1]);
-  assert.ok(weights[0] > weights[2]);
-  assert.equal(weights[1], 1);
-});
-
-test('A long middle phrase receives more space', () => {
-  const weights = getPatternColumnWeights({
-    groups: [group(['她']), group(['在', '辦公室', '工作', '了']), group(['嗎'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  assert.ok(weights[1] > weights[0]);
-  assert.ok(weights[1] > weights[2]);
-});
-
-test('A long complement receives more space', () => {
-  const weights = getPatternColumnWeights({
-    groups: [group(['她']), group(['是']), group(['一位', '非常', '認真的', '老師'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  assert.ok(weights[2] > weights[0]);
-  assert.ok(weights[2] > weights[1]);
-});
-
-test('Empty columns are omitted', () => {
-  const weights = getPatternColumnWeights({
-    groups: [group(['她']), [], group(['嗎'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  assert.deepEqual(weights, [1, 1]);
-});
-
-test('All weights remain within the clamp', () => {
-  const longSentence = Array.from({ length: 40 }, (_, index) => token({
-    id: `long-${index}`,
-    traditional: '很',
-    pinyin: 'hěn',
-    meaning: 'word',
-  }));
-  const weights = getPatternColumnWeights({
-    groups: [longSentence, group(['是']), group(['嗎'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  assert.ok(weights.every((weight) => weight >= 1 && weight <= 5));
-  assert.equal(weights[0], 5);
-});
-
-test('Traditional and simplified variants can produce different weights', () => {
-  const traditional = group(['辦公室']);
-  const withSimplified = [token({ id: 't-offices', traditional: '辦公室', simplified: '办公' })];
-  assert.equal(getPatternColumnWeights({
-    groups: [traditional],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  })[0], 3);
-  assert.equal(getPatternColumnWeights({
-    groups: [withSimplified],
-    characterPreference: 'simplified',
-    showPinyin: false,
-  })[0], 2);
-});
-
 test('Punctuation such as 呢？ stays with its phrase', () => {
-  const weights = getPatternColumnWeights({
-    groups: [group(['你']), group(['累']), group(['嗎', '呢？'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  assert.ok(weights[2] > weights[0]);
   const text = getDisplayText(token({ traditional: '呢', suffix: '？' }), 'traditional');
   assert.equal(text, '呢？');
-});
-
-test('Pinyin extends a column when shown', () => {
-  const withoutPinyin = getPatternColumnWeights({
-    groups: [group(['中明']), group(['是'])],
-    characterPreference: 'traditional',
-    showPinyin: false,
-  });
-  const withPinyin = getPatternColumnWeights({
-    groups: [
-      [token({ id: 'zm', traditional: '中明', pinyin: 'Zhōngmíng' })],
-      group(['是']),
-    ],
-    characterPreference: 'traditional',
-    showPinyin: true,
-  });
-  assert.ok(withPinyin[0] > withoutPinyin[0]);
 });
 
 test('A clearly heaviest column receives proportionally more share without starving neighbors', () => {

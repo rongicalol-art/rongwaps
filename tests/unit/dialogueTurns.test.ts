@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { dialogueTranslation, splitDialogueTurns, splitTranslationLines } from '../../src/utils/lesson/dialogueTurns';
+import { splitDialogueTurns, splitTranslationLines } from '../../src/utils/lesson/dialogueTurns';
 
 const turnTexts = (text: string) => splitDialogueTurns(text)?.map((t) => [t.speaker, text.slice(t.start, t.end).trim()]);
 
@@ -38,13 +38,13 @@ test('splitDialogueTurns ignores text without labels and labels inside words', (
   assert.equal(splitDialogueTurns('It is 3PM: late.'), null);
 });
 
-test('dialogueTranslation drops speaker labels and preserves multi-example newlines', () => {
-  assert.equal(dialogueTranslation('A: What time is it now? B: It’s 10:25.'), 'What time is it now? · It’s 10:25.');
-  assert.equal(
-    dialogueTranslation('Teacher: Did everyone understand? Student: Teacher, please explain again.'),
-    'Did everyone understand? · Teacher, please explain again.',
+test('splitTranslationLines drops speaker labels and preserves multi-example newlines', () => {
+  assert.deepEqual(splitTranslationLines('A: What time is it now? B: It’s 10:25.'), [{ label: null, text: 'What time is it now? · It’s 10:25.' }]);
+  assert.deepEqual(
+    splitTranslationLines('Teacher: Did everyone understand? Student: Teacher, please explain again.'),
+    [{ label: null, text: 'Did everyone understand? · Teacher, please explain again.' }],
   );
-  assert.equal(dialogueTranslation('What time is it now?'), 'What time is it now?');
+  assert.deepEqual(splitTranslationLines('What time is it now?'), [{ label: null, text: 'What time is it now?' }]);
   assert.deepEqual(
     splitTranslationLines('First example.\nLittle Sister: What should I do? Older Sister: Say sorry to Mom.'),
     [

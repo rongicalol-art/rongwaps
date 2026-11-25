@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { summarizeFrameBudget } from '../../src/utils/browser/frameBudget';
-import { visibleProgressScale, visibleProgressWidth } from '../../src/utils/srs/progress';
+import { visibleProgressScale } from '../../src/utils/srs/progress';
 import { rectMorphFrames } from '../../src/utils/browser/rectMorph';
 
 test('frame budget respects display rate and catches single large stalls', () => {
@@ -18,9 +18,7 @@ test('frame budget respects display rate and catches single large stalls', () =>
 
 test('progress transform retains the previous minimum width at phone and desktop sizes', () => {
   for (const width of [200, 800]) for (const progress of [0, 1, 50, 100]) {
-    const old = visibleProgressWidth(progress);
     const expected = progress === 0 ? 0 : progress / 100 * width + 28 * (1 - progress / 100);
-    assert.equal(typeof old, 'string');
     assert.ok(Math.abs(visibleProgressScale(progress, width) * width - expected) < 0.001);
   }
   assert.equal(visibleProgressScale(200, 200), 1);
