@@ -92,15 +92,6 @@ function stripEnglishDialogueLabels(line: string): string {
   return parts.join(' · ');
 }
 
-/** A dialogue translation without its "A:"/"B:" labels; the Chinese lines above already carry them. */
-export function dialogueTranslation(text: string): string {
-  if (text.includes('\n')) {
-    const lines = text.split('\n').map((line) => line.trim()).filter(Boolean);
-    return lines.map((line, idx) => `${idx + 1}. ${stripEnglishDialogueLabels(line)}`).join('\n');
-  }
-  return stripEnglishDialogueLabels(text);
-}
-
 /** Structured English lines for rendering multi-example (`1`, `2`) or single translations cleanly. */
 export function splitTranslationLines(text: string): Array<{ label: string | null; text: string }> {
   if (text.includes('\n')) {

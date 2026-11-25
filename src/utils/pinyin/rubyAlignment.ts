@@ -62,54 +62,6 @@ export function alignRubyPinyin(text: string, pinyinStr: string): RubyItem[] {
   return items;
 }
 
-/**
- * rubyItems partition the line text: digit and Latin runs are single items.
- * So an item's array index is NOT its character offset once a multi-character run
- * appears (e.g. "台北101大樓" groups "101" into one item and the rest of the
- * array shifts by two). Alignment words are indexed by character offset into
- * the authored text, so slices must be computed from each item's character
- * span rather than from raw array indexes.
- */
-export function itemCharStarts(rubyItems: RubyItem[]): number[] {
-  const starts: number[] = [];
-  let pos = 0;
-  for (const item of rubyItems) {
-    starts.push(pos);
-    pos += item.char.length;
-  }
-  return starts;
-}
-
-/** Items fully contained in the character range [from, to). */
-export function sliceItemsByCharRange(
-  rubyItems: RubyItem[],
-  starts: number[],
-  from: number,
-  to: number,
-): RubyItem[] {
-  const out: RubyItem[] = [];
-  for (let i = 0; i < rubyItems.length; i += 1) {
-    const item = rubyItems[i];
-    if (starts[i] >= from && starts[i] + item.char.length <= to) out.push(item);
-  }
-  return out;
-}
-
-/** Absolute indexes of the items fully contained in [from, to). */
-export function containedItemIndexes(
-  rubyItems: RubyItem[],
-  starts: number[],
-  from: number,
-  to: number,
-): number[] {
-  const out: number[] = [];
-  for (let i = 0; i < rubyItems.length; i += 1) {
-    const item = rubyItems[i];
-    if (starts[i] >= from && starts[i] + item.char.length <= to) out.push(i);
-  }
-  return out;
-}
-
 /** True for every ruby item that begins an authored pinyin word. */
 export function buildWordStartFlags(rubyItems: RubyItem[], pinyinStr: string): boolean[] {
   const flags = rubyItems.map(() => false);

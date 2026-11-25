@@ -32,7 +32,3 @@ export function pruneExcludedIds(
   if (excludedIds.length === 0) return excludedIds;
   return excludedIds.filter((id) => knownIds.has(id));
 }
-
-export function isCardIdExcluded(excludedIds: ReadonlySet<string>, cardId: string): boolean {
-  return excludedIds.has(cardId);
-}

@@ -1,9 +1,3 @@
-export interface MeaningChoiceSource {
-  id: string;
-  back: string;
-  simple?: string;
-}
-
 export function normalizeMeaning(value: string): string {
   return value
     .normalize('NFKC')
@@ -60,50 +54,20 @@ export function buildAttributeChoices<T extends MultiAttributeChoiceSource>(
 ): T[] {
   if (maximumChoiceCount <= 0) return [];
 
-  const getAttrValue = (item: T): string => {
-    if (attribute === 'hanzi') return item.front;
-    if (attribute === 'pinyin') return item.pinyin ?? '';
-    return getCardMeaning(item, simpleDefinitions);
-  };
-
   const choices = [currentCard];
-  const seenValues = new Set([normalizeChoiceValue(getAttrValue(currentCard), attribute)]);
+  const seenValues = new Set([
+    normalizeChoiceValue(getCardChoiceTarget(currentCard, attribute, simpleDefinitions), attribute),
+  ]);
 
   for (const candidate of candidates) {
     if (candidate.id === currentCard.id) continue;
 
-    const val = getAttrValue(candidate);
+    const val = getCardChoiceTarget(candidate, attribute, simpleDefinitions);
     const normalized = normalizeChoiceValue(val, attribute);
     if (!normalized || seenValues.has(normalized)) continue;
 
     choices.push(candidate);
     seenValues.add(normalized);
-
-    if (choices.length >= maximumChoiceCount) break;
-  }
-
-  return choices;
-}
-
-export function buildMeaningChoices<T extends MeaningChoiceSource>(
-  currentCard: T,
-  candidates: readonly T[],
-  maximumChoiceCount = 3,
-  simpleDefinitions = false,
-): T[] {
-  if (maximumChoiceCount <= 0) return [];
-
-  const choices = [currentCard];
-  const seenMeanings = new Set([normalizeMeaning(getCardMeaning(currentCard, simpleDefinitions))]);
-
-  for (const candidate of candidates) {
-    if (candidate.id === currentCard.id) continue;
-
-    const normalizedMeaning = normalizeMeaning(getCardMeaning(candidate, simpleDefinitions));
-    if (!normalizedMeaning || seenMeanings.has(normalizedMeaning)) continue;
-
-    choices.push(candidate);
-    seenMeanings.add(normalizedMeaning);
 
     if (choices.length >= maximumChoiceCount) break;
   }

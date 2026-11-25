@@ -41,6 +41,12 @@ function useOthers(list: Person[], hideRoom = false) {
 
 const close = () => useAppStore.getState().setSocial({ socialPanel: null, socialMentionTarget: null });
 const setPanel = (socialPanel: SocialPanel) => useAppStore.getState().setSocial({ socialPanel });
+const heading = (key: number | null) => {
+  if (key === null) return 'Browsing the course';
+  const entry = lessonHeading(key);
+  const label = entry.eyebrow?.replace(/^Book \d+ · /, '') ?? '';
+  return `Book ${Math.floor(key / 100)} · ${label}${entry.title === label ? '' : ` · ${entry.title}`}`;
+};
 
 /** Classmates drawer: the class chat, and who is online (current lesson first, then other lessons). */
 export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'people' }> }) {
@@ -96,12 +102,6 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   };
   const footerContent = footer();
   const invite = (person: Person) => { void createRace(identity, defaultSelection(person.l ?? lesson), true, [person.u]); };
-  const heading = (key: number | null) => {
-    if (key === null) return 'Browsing the course';
-    const entry = lessonHeading(key);
-    const label = entry.eyebrow?.replace(/^Book \d+ · /, '') ?? '';
-    return `Book ${Math.floor(key / 100)} · ${label}${entry.title === label ? '' : ` · ${entry.title}`}`;
-  };
   return (
     <Drawer isOpen onClose={close}
       title={thread && !selected
@@ -211,12 +211,19 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
   const moreOnline = Math.max(0, onlineTotal - withParty.classmates.length - moreHere);
   const openRooms = rooms.filter((room) => room.code !== recentRoom);
   const toggle = (id: string) => setPicked((prev) => (prev.includes(id) ? prev.filter((value) => value !== id) : prev.length < seats ? [...prev, id] : prev));
-  const heading = (key: number | null) => {
-    if (key === null) return 'Browsing the course';
-    const entry = lessonHeading(key);
-    const label = entry.eyebrow?.replace(/^Book \d+ · /, '') ?? '';
-    return `Book ${Math.floor(key / 100)} · ${label}${entry.title === label ? '' : ` · ${entry.title}`}`;
-  };
+  const renderCandidateRow = (person: Person) => (
+    <button key={person.u} type="button" onClick={() => toggle(person.u)} aria-pressed={picked.includes(person.u)} className="block w-full text-left outline-none focus-ring-inline">
+      <PersonRow
+        person={person}
+        lesson={lesson}
+        action={(
+          <span className={`grid h-6 w-6 place-items-center rounded-xs border-2 ${picked.includes(person.u) ? 'border-brand-primary bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface'}`}>
+            {picked.includes(person.u) && <AppIcon name="check" size={14} />}
+          </span>
+        )}
+      />
+    </button>
+  );
   return (
     <Drawer
       isOpen
@@ -262,19 +269,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
           {lesson !== null && here.length > 0 && (
               <>
                 <h3 className="pb-1 pt-3 text-xs font-black text-ui-muted-strong">In this lesson</h3>
-                {here.map((person) => (
-                  <button key={person.u} type="button" onClick={() => toggle(person.u)} aria-pressed={picked.includes(person.u)} className="block w-full text-left outline-none focus-ring-inline">
-                    <PersonRow
-                      person={person}
-                      lesson={lesson}
-                      action={(
-                        <span className={`grid h-6 w-6 place-items-center rounded-xs border-2 ${picked.includes(person.u) ? 'border-brand-primary bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface'}`}>
-                          {picked.includes(person.u) && <AppIcon name="check" size={14} />}
-                        </span>
-                      )}
-                    />
-                  </button>
-                ))}
+                {here.map(renderCandidateRow)}
                 <MoreNote count={moreHere} where="in this lesson" />
               </>
           )}
@@ -283,17 +278,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
               {(index === 0 || others[index - 1].l !== person.l) && (
                 <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">{heading(person.l)}</h3>
               )}
-              <button key={person.u} type="button" onClick={() => toggle(person.u)} aria-pressed={picked.includes(person.u)} className="block w-full text-left outline-none focus-ring-inline">
-                <PersonRow
-                  person={person}
-                  lesson={lesson}
-                  action={(
-                    <span className={`grid h-6 w-6 place-items-center rounded-xs border-2 ${picked.includes(person.u) ? 'border-brand-primary bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface'}`}>
-                      {picked.includes(person.u) && <AppIcon name="check" size={14} />}
-                    </span>
-                  )}
-                />
-              </button>
+              {renderCandidateRow(person)}
             </div>
           ))}
           <MoreNote count={moreOnline} where="online" />
