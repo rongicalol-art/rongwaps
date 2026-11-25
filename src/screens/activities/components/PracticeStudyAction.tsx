@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { PlayfulNavIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
-import { STUDY_MENU_WIDTH, StudyActionSubMenu } from './StudyActionSubMenu';
+import { ModeIcon } from '../../curriculum';
 import type { StudyMaterialItem } from '../hooks/useStudyMaterials';
+
+const STUDY_MENU_WIDTH = 200;
+const rowClass = 'flex min-h-11 w-full items-center gap-3 rounded-compact px-3 py-2 text-left text-sm font-extrabold text-ui-ink-strong outline-none transition-colors hover:bg-ui-hover focus-ring sm:text-base';
 
 interface PracticeStudyActionProps {
   isOpen: boolean;
@@ -60,13 +63,42 @@ export function PracticeStudyAction({
       transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
       className={cn('relative shrink-0', className)}
     >
-      <StudyActionSubMenu
-        open={isOpen && !hasFeedback && items.length > 1}
-        left={menuLeft}
-        side={side}
-        items={items}
-        onClose={onClose}
-      />
+      <AnimatePresence>
+        {isOpen && !hasFeedback && items.length > 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
+            className={
+              {
+                left: 'absolute right-full top-1/2 -translate-y-1/2 pr-3 z-50 pointer-events-auto',
+                right: 'absolute left-full top-1/2 -translate-y-1/2 pl-3 z-50 pointer-events-auto',
+                top: 'absolute bottom-full pb-3 z-50 pointer-events-auto',
+              }[side]
+            }
+            style={{ width: STUDY_MENU_WIDTH, ...(side === 'top' ? { left: menuLeft ?? 0 } : {}) }}
+          >
+            <div role="menu" aria-label="Grammar and reading" className="popover-surface flex flex-col p-2">
+              {items.map((item) => (
+                <button
+                  key={item.key}
+                  type="button"
+                  role="menuitem"
+                  className={rowClass}
+                  onClick={() => {
+                    onClose();
+                    item.open();
+                  }}
+                >
+                  <ModeIcon mode={item.key} playKey={0} motion="none" className="h-7 w-7" />
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <button
         type="button"

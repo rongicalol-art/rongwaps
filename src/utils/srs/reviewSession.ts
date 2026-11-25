@@ -14,13 +14,19 @@ import type { SRSData } from './srsEngine';
  *   1. Learning-phase cards (intraday steps in minutes) first — deferring
  *      them lets the intraday schedule lapse, so clear that backlog before
  *      anything else.
- *   2. Review-phase cards by due date ascending (most overdue first), with
- *      the weakest cards (lowest ease factor) winning ties — a lapsed,
- *      struggling card is worth more than an easy one that is a few days
- *      newer.
+ *   2. The rest is split between fresh words (last scheduled 1-3 days ahead:
+ *      just learned, or just forgotten and relearned) and older words, about
+ *      half each and alternating, so a big old backlog can't push this week's
+ *      words back until they fade, while the old pile still shrinks every day.
+ *      When one group runs short the other fills its places.
+ *   3. Within each group, most overdue first, with the weakest card (lowest
+ *      ease factor) winning ties.
  */
 
 export const REVIEW_SESSION_CAP = 20;
+
+/** A review word last scheduled this many days ahead or fewer counts as fresh. */
+export const FRESH_INTERVAL_DAYS = 3;
 
 export function buildReviewSession(
   dueCards: Flashcard[],
@@ -31,11 +37,13 @@ export function buildReviewSession(
   if (dueCards.length <= 1) return [...dueCards];
 
   const learning: Flashcard[] = [];
-  const review: Flashcard[] = [];
+  const fresh: Flashcard[] = [];
+  const older: Flashcard[] = [];
   for (const card of dueCards) {
     const srs = srsData[card.id];
     if (srs && srs.learningStep !== undefined) learning.push(card);
-    else review.push(card);
+    else if (srs && srs.interval <= FRESH_INTERVAL_DAYS) fresh.push(card);
+    else older.push(card);
   }
 
   const byDueThenWeakness = (a: Flashcard, b: Flashcard): number => {
@@ -48,9 +56,18 @@ export function buildReviewSession(
   };
 
   learning.sort(byDueThenWeakness);
-  review.sort(byDueThenWeakness);
+  fresh.sort(byDueThenWeakness);
+  older.sort(byDueThenWeakness);
 
-  return [...learning, ...review].slice(0, cap);
+  // Alternate fresh and older words (fresh first), so the split holds even when
+  // the five minutes end before the list does; the longer group fills the tail.
+  const mixed: Flashcard[] = [];
+  for (let index = 0; index < Math.max(fresh.length, older.length); index += 1) {
+    if (index < fresh.length) mixed.push(fresh[index]);
+    if (index < older.length) mixed.push(older[index]);
+  }
+
+  return [...learning, ...mixed].slice(0, cap);
 }
 
 export const DAILY_REVIEW_MS = 5 * 60_000;

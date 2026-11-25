@@ -1,4 +1,4 @@
-import { useEffect, type RefObject } from 'react';
+import { useEffect } from 'react';
 import {
   BOOK_MIN_ZOOM,
   clampBookZoom,
@@ -7,8 +7,8 @@ import {
   getNextBookZoom,
   getPreviousBookZoom,
   type BookPoint,
-  type BookViewerMetrics,
 } from '../utils/bookViewerLayout';
+import type { BookViewerGestureContext } from './useBookViewerPointerGestures';
 
 const WHEEL_ZOOM_SENSITIVITY = 0.0015;
 
@@ -16,18 +16,6 @@ interface SafariGestureEvent extends Event {
   clientX?: number;
   clientY?: number;
   scale?: number;
-}
-
-interface UseBookViewerZoomInputsOptions {
-  stageRef: RefObject<HTMLDivElement | null>;
-  zoomRef: RefObject<number>;
-  offsetRef: RefObject<BookPoint>;
-  metricsRef: RefObject<BookViewerMetrics>;
-  commitView: (zoom: number, offset: BookPoint, immediate?: boolean) => void;
-  zoomTo: (zoom: number, anchor?: BookPoint) => void;
-  canPagePrevious: boolean;
-  canPageNext: boolean;
-  onPageChange: (delta: number) => void;
 }
 
 /**
@@ -44,20 +32,16 @@ export function useBookViewerZoomInputs({
   canPagePrevious,
   canPageNext,
   onPageChange,
-}: UseBookViewerZoomInputsOptions) {
+}: BookViewerGestureContext) {
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return undefined;
 
-    const handleWheel = (event: WheelEvent) => {
-      const delta = event.deltaMode === 1 ? event.deltaY * 16 : event.deltaY;
-      if (delta === 0) return;
-      event.preventDefault();
-
-      const nextZoom = clampBookZoom(zoomRef.current * Math.exp(-delta * WHEEL_ZOOM_SENSITIVITY));
+    const zoomAtAnchor = (factor: number, anchor: BookPoint) => {
+      const nextZoom = clampBookZoom(zoomRef.current * factor);
       if (nextZoom === zoomRef.current) return;
       commitView(nextZoom, getBookZoomOffset(
-        getBookStagePoint(stage, event),
+        anchor,
         zoomRef.current,
         nextZoom,
         offsetRef.current,
@@ -65,13 +49,12 @@ export function useBookViewerZoomInputs({
       ));
     };
 
-    stage.addEventListener('wheel', handleWheel, { passive: false });
-    return () => stage.removeEventListener('wheel', handleWheel);
-  }, [commitView, metricsRef, offsetRef, stageRef, zoomRef]);
-
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return undefined;
+    const handleWheel = (event: WheelEvent) => {
+      const delta = event.deltaMode === 1 ? event.deltaY * 16 : event.deltaY;
+      if (delta === 0) return;
+      event.preventDefault();
+      zoomAtAnchor(Math.exp(-delta * WHEEL_ZOOM_SENSITIVITY), getBookStagePoint(stage, event));
+    };
 
     let previousScale = 1;
     let anchor: BookPoint = { x: 0, y: 0 };
@@ -99,16 +82,7 @@ export function useBookViewerZoomInputs({
       const scale = Math.max(0.01, gesture.scale ?? 1);
       const factor = scale / previousScale;
       previousScale = scale;
-
-      const nextZoom = clampBookZoom(zoomRef.current * factor);
-      if (nextZoom === zoomRef.current) return;
-      commitView(nextZoom, getBookZoomOffset(
-        anchor,
-        zoomRef.current,
-        nextZoom,
-        offsetRef.current,
-        metricsRef.current,
-      ));
+      zoomAtAnchor(factor, anchor);
     };
 
     const handleGestureEnd = (event: Event) => {
@@ -116,10 +90,12 @@ export function useBookViewerZoomInputs({
       previousScale = 1;
     };
 
+    stage.addEventListener('wheel', handleWheel, { passive: false });
     stage.addEventListener('gesturestart', handleGestureStart, { passive: false });
     stage.addEventListener('gesturechange', handleGestureChange, { passive: false });
     stage.addEventListener('gestureend', handleGestureEnd, { passive: false });
     return () => {
+      stage.removeEventListener('wheel', handleWheel);
       stage.removeEventListener('gesturestart', handleGestureStart);
       stage.removeEventListener('gesturechange', handleGestureChange);
       stage.removeEventListener('gestureend', handleGestureEnd);

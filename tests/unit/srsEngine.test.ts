@@ -3,11 +3,11 @@ import test from 'node:test';
 import {
   calculateNextReview,
   dayBoundaryDueTimestamp,
-  fuzzInterval,
-  LEARNING_STEPS_MINUTES,
   MAX_INTERVAL_DAYS,
   type SRSData,
 } from '../../src/utils/srs/srsEngine';
+
+const LEARNING_STEPS_MINUTES = [1, 10];
 
 const NOW = 1_700_000_000_000;
 const MINUTE = 60 * 1000;
@@ -84,15 +84,6 @@ test('FSRS preserves memory state between delayed reviews', () => {
     assert.ok(later.fsrs!.stability > next.fsrs.stability);
     assert.equal(next.nextReviewDate, dayBoundaryDueTimestamp(next.interval, NOW));
   });
-});
-
-test('fuzzInterval stays within +/-10% and never below one day', () => {
-  for (let i = 0; i < 500; i += 1) {
-    const fuzzed = fuzzInterval(10);
-    assert.ok(fuzzed >= 9, 'expected lower fuzz bound');
-    assert.ok(fuzzed <= 11, 'expected upper fuzz bound');
-  }
-  assert.equal(fuzzInterval(1), 1);
 });
 
 test('day-boundary scheduling lands on the rollover hour of the due day', () => {

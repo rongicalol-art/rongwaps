@@ -30,11 +30,6 @@ function closestDifference(order: string[], accepted: ChatAnswer[]) {
     });
 }
 
-/** Only submitted occurrences that need changing; correctly ordered words survive omissions and extras. */
-export function misplacedPositions(order: string[], accepted: ChatAnswer[]): number[] {
-  return closestDifference(order, accepted).extra;
-}
-
 /** The same diagnosis supplies the feedback and the exact submitted occurrences to mark. */
 export function checkOrderBuild(
   item: Pick<OrderBuildItem, 'accepted' | 'repairs' | 'fallbackRepair'> & { successNote?: string; kind?: 'order-build' | 'listen-build' },

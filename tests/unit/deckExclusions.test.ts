@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import type { Flashcard } from '../../src/data/flashcards';
 import {
   filterDeckByExclusions,
-  isCardIdExcluded,
   pruneExcludedIds,
 } from '../../src/utils/srs/deckExclusions';
 import { getDeckIdentityKey } from '../../src/utils/lesson/lessonPartSelection';
@@ -95,12 +94,6 @@ test('pruneExcludedIds with empty list returns the same reference', () => {
 test('excluded cards already removed return empty array (full prune to empty)', () => {
   const pruned = pruneExcludedIds(['gone'], new Set());
   assert.deepEqual(pruned, []);
-});
-
-test('isCardIdExcluded', () => {
-  const excluded = new Set(['b']);
-  assert.equal(isCardIdExcluded(excluded, 'b'), true);
-  assert.equal(isCardIdExcluded(excluded, 'a'), false);
 });
 
 test('clearDeckExclusions removes all exclusions for specified deck key', () => {
