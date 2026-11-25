@@ -88,7 +88,12 @@ group's choices while listening; dialogue questions are only spoken, while talk 
 | | P2 閱讀理解, 19–50 | 14 texts: five short ones (50–110 characters, 1 question; a realia notice or ad 2), then texts of 180–290 characters with 2–3 questions, and last a story of about 400 characters with 4 | 4 |
 
 Band B has no pictures except realia and tables (a supermarket notice, a group message about sharing a taxi, an
-ad, a table comparing three countries, car-rental terms).
+ad, a table comparing three countries, car-rental terms). The realia are many and often long, not one or two: in
+the Band B reading mock tests 1 and 2, most texts from about item 24 on are printed as the real object, two
+questions each: classified ads, a handwritten letter, a diary page, a self-service petrol pump sign, a food label,
+an email screenshot, job ads, event posters and notices of 150–200 characters. They are typeset documents with
+clip-art, not illustrations, and the plain passages before them stay plain text. Band C's reading mock test is
+text only.
 
 **80 of Band A's 100 items rest on a picture** (listening P1–P3, reading P1–P3). Band A's last parts, listening
 P4 and reading P5, already look like Band B.

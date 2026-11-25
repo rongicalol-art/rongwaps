@@ -4,7 +4,7 @@
  *   npx tsx scripts/content/checkLessonTest.ts output/lesson-test-drafts/b1l01.json [more.json …] [--no-pictures]
  *
  * Prints every problem (untaught characters, shape, picture files, grammar coverage and review share in
- * every possible run) and exits 1 if there are any. `--no-pictures` skips missing picture files, for drafts
+ * every possible run, new-word share of a Band B test) and exits 1 if there are any. `--no-pictures` skips missing picture files, for drafts
  * whose pictures are not drawn yet. Rules: scripts/content/lessonTestRules.ts.
  */
 import { readFileSync } from 'node:fs';

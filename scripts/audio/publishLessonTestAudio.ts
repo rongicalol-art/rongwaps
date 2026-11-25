@@ -74,17 +74,31 @@ async function main() {
       const body = await readFile(path.join(ROOT, entry.local));
       if (hash(body) !== entry.sha256) throw new Error(`Local clip changed since it was checked: ${entry.file}`);
       if (!client) continue;
-      const options = { abortSignal: AbortSignal.timeout(30_000) };
-      const head = () => client.send(new HeadObjectCommand({ Bucket: bucket, Key: entry.file }), options);
+      // Each request gets its own 30 s limit and up to four tries: one slow answer must not end a batch of thousands.
+      const send = async <T>(request: (options: { abortSignal: AbortSignal }) => Promise<T>): Promise<T> => {
+        for (let attempt = 1; ; attempt += 1) {
+          try {
+            return await request({ abortSignal: AbortSignal.timeout(30_000) });
+          } catch (error) {
+            const status = (error as { $metadata?: { httpStatusCode?: number } }).$metadata?.httpStatusCode;
+            if (attempt === 4 || (status !== undefined && status < 500)) throw error;
+            await new Promise((resolve) => { setTimeout(resolve, 1000 * attempt); });
+          }
+        }
+      };
+      const head = () => send((options) => client.send(new HeadObjectCommand({ Bucket: bucket, Key: entry.file }), options));
       let object = await head().catch((error: unknown) => {
         if ((error as { $metadata?: { httpStatusCode?: number } }).$metadata?.httpStatusCode !== 404) throw error;
         return undefined;
       });
       if (!object) {
-        await client.send(new PutObjectCommand({
+        await send((options) => client.send(new PutObjectCommand({
           Bucket: bucket, Key: entry.file, Body: body, ContentType: 'audio/mpeg',
           CacheControl: 'public, max-age=31536000, immutable', Metadata: { sha256: entry.sha256 }, IfNoneMatch: '*',
-        }), options);
+        }), options)).catch((error: unknown) => {
+          // A retried upload whose first try did arrive answers 412 (the key exists): the check below verifies it.
+          if ((error as { $metadata?: { httpStatusCode?: number } }).$metadata?.httpStatusCode !== 412) throw error;
+        });
         object = await head();
       }
       if (object.ContentLength !== body.length || object.Metadata?.sha256 !== entry.sha256

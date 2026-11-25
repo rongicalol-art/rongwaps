@@ -1,10 +1,9 @@
-import { motion, useReducedMotion } from 'motion/react';
 import { AppIcon, SpeakerIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import type { TestFace } from '../hooks/useTestAudio';
 
 interface TestSpeakerProps {
-  /** What is playing; null while nothing plays (before, between and after the plays). */
+  /** Whether the recording is playing, loading, or needs a retry; null while idle. */
   face: TestFace | null;
   playing: boolean;
   /** Plays started so far (exam mode). */
@@ -16,69 +15,22 @@ interface TestSpeakerProps {
   onRetry?: () => void;
 }
 
-const GLYPHS: (TestFace | 'idle')[] = ['idle', 'voice', 'loading', 'retry', 'wait', 'ding', 'question', 'A', 'B', 'C', 'D'];
-
-/** The key's face: one glyph at a time, each popping in as the recording reaches it. */
-function Glyph({ face }: { face: TestFace | null }) {
-  const reduceMotion = useReducedMotion();
-  const shown = face ?? 'idle';
-  return (
-    <span aria-hidden className="grid place-items-center">
-      {GLYPHS.map((glyph) => (
-        <span
-          key={glyph}
-          className={cn(
-            'col-start-1 row-start-1 grid place-items-center text-4xl font-black leading-none transition-[opacity,scale] duration-300 ease-[cubic-bezier(.3,1.6,.5,1)] motion-reduce:transition-none',
-            glyph === shown ? 'scale-100 opacity-100' : 'scale-50 opacity-0',
-          )}
-        >
-          {glyph === 'idle' && <SpeakerIcon size={44} />}
-          {glyph === 'voice' && <SpeakerIcon status="playing" size={44} />}
-          {glyph === 'loading' && <SpeakerIcon status="loading" size={44} />}
-          {glyph === 'retry' && <AppIcon name="restart" size={40} />}
-          {glyph === 'wait' && (
-            <span className="flex gap-1.5">
-              {[0, 1, 2].map((dot) => (
-                <motion.i
-                  key={`${dot}-${shown === 'wait'}`}
-                  initial={reduceMotion || shown !== 'wait' ? false : { opacity: 0, scale: 0.4 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: dot * 0.6, duration: 0.25 }}
-                  className="block size-2.5 rounded-full bg-current"
-                />
-              ))}
-            </span>
-          )}
-          {glyph === 'ding' && (
-            <motion.span
-              key={String(shown === 'ding')}
-              animate={reduceMotion || shown !== 'ding' ? undefined : { rotate: [0, 16, -13, 8, 0] }}
-              transition={{ duration: 0.7 }}
-              style={{ transformOrigin: '50% 10%' }}
-              className="grid"
-            >
-              <AppIcon name="bell" size={42} />
-            </motion.span>
-          )}
-          {glyph === 'question' && '?'}
-          {glyph.length === 1 && glyph}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 /**
  * The recording as a tactile key. In the test the recording presses it: down while a play runs, up between
  * the two plays, and it stays down once both have played (TOCFL plays twice, no replays), full colour, so it
- * reads as used rather than broken. In the Fix round it is a real button that plays it again. Its face shows what is playing.
+ * reads as used rather than broken. In the Fix round it is a real button that plays it again.
  */
 export function TestSpeaker({ face, playing, plays, maxPlays, onReplay, onRetry }: TestSpeakerProps) {
   const failed = face === 'retry';
+  const loading = face === 'loading';
   const exam = maxPlays !== null && !failed;
   const spent = exam && !playing && plays >= maxPlays;
   // Up while it downloads (nothing plays yet) and when it offers a retry (it's a button then).
-  const pressed = (face !== null && face !== 'loading' && !failed) || spent;
+  const active = face !== null && !loading && !failed;
+  const pressed = active || spent;
+  const icon = failed
+    ? <AppIcon name="restart" size={40} />
+    : <SpeakerIcon status={loading ? 'loading' : active ? 'playing' : null} size={44} />;
   const key = (
     <>
       <span aria-hidden className="absolute inset-x-0 bottom-0 top-[length:var(--depth-xl)] rounded-feature bg-brand-primary-edge" />
@@ -89,7 +41,7 @@ export function TestSpeaker({ face, playing, plays, maxPlays, onReplay, onRetry 
           !exam && 'group-active:translate-y-[length:var(--depth-xl)]',
         )}
       >
-        <Glyph face={face} />
+        {icon}
       </span>
     </>
   );

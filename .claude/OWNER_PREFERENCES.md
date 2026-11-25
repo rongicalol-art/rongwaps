@@ -28,6 +28,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - Anything you can press looks like a real button: a border plus a solid, darker bottom edge that compresses when pressed. Selected = book accent border with a soft fill. A plain row reads as "not a button".
 - Depth only ever means "press me", so docks, windows and stacks carry no drop shadows. No blur (it also costs CPU), glass, background textures (dots, grids) or busy gradients. The two exceptions that exist: the soft fade under the top header, and the brief glow and shine on a celebration.
 - Card borders are a little heavy (3px with a thick bottom edge) and the same thickness across a screen.
+- A card you only read (a test's reading text) stays flat: a solid colour band for its title and a thick bottom edge made it look "cheap", like a template banner on a big button. A printed look comes from large ink type and solid hairlines.
 
 **Quiet chrome.**
 - Headers and menu bars have no border or separator; header text is centred; numbers in top bars are the same size on phone and desktop.
@@ -72,6 +73,7 @@ The one home for the owner's taste, for any AI (Claude, Codex, others). Read it 
 - **Motion explains cause and effect.** The thing you touched becomes the next thing: a card shrinks into its sheet, a button unfolds into its answers, a tile flies into its slot and the rest slide together to close the gap. Continuity beats new elements appearing.
 - **Physical and complete.** Whole objects move (the whole tile bounces, frame and all). Presses go down into the element's own bottom edge. Nothing stalls halfway, jumps, fades in after it has moved, drifts sideways at the end, shifts the layout on open, or leaves a hole behind.
 - **Choreographed in beats.** The main element first, then the rest staggered 40-60ms apart (up to about 110ms between the big beats of a celebration). Start at once, settle with ease-out, overshoot only for success or discovery. A number counts only after its tile has landed. A celebration leads with the mascot and the headline, not the stats.
+- **Exam screens stay still.** The owner turned down a staggered entrance and a sliding question change for the test's reading screen ("no need for animations"): a test question just appears; only presses and the existing screen rise move.
 - **Exits make sense.** Things leave by going where they belong (under the top card, into the deck, back to their slot); cards never just drop downward or fade in odd places.
 - **Stacks are tidy.** Clean, straight and aligned by default; back cards are softer; the pile peeks from beneath the top card, never above it.
 - **Windows open by type:** a sheet from the bottom, a panel from the side, the same way everywhere.

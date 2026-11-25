@@ -5,7 +5,7 @@ import { ActionButton } from '../../lib/widgets';
 import { ScreenHeader } from '../../lib/widgets';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
-import type { LessonTestLesson, LessonTestSounds } from '../../types/lessonTest';
+import type { LessonTestLesson, LessonTestMode, LessonTestSounds } from '../../types/lessonTest';
 import { lessonItemIndex, type LessonTestScreen as TestScreen } from '../../utils/lesson/lessonTestPlan';
 import { TestWords } from './components/ChineseText';
 import { QuestionBody } from './components/QuestionBody';
@@ -23,6 +23,7 @@ import { itemPictureUrls } from './testPictures';
 interface LessonTestScreenProps {
   lesson: LessonTestLesson;
   sounds: LessonTestSounds;
+  mode?: LessonTestMode;
   onClose: () => void;
 }
 
@@ -39,8 +40,8 @@ function questionNumbers(screens: TestScreen[]) {
  * review honey tone) over every miss, with the answer, the reason and the Script. Scripts & answers (the booklet
  * of the whole test, with the test's own answers) rises over the results and the done screen.
  */
-export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenProps) {
-  const run = useLessonTestRun(lesson);
+export function LessonTestScreen({ lesson, sounds, mode = 'both', onClose }: LessonTestScreenProps) {
+  const run = useLessonTestRun(lesson, mode);
   const script = useAppStore((state) => state.characterPreference);
   const lookingUp = useAppStore((state) => state.dictionaryWord !== null);
   const reduceMotion = useReducedMotion();
@@ -115,6 +116,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
         {run.stage === 'results' ? (
           <TestResults
             lessonId={lesson.lessonId}
+            mode={run.mode}
             score={run.result.score}
             seconds={run.result.seconds}
             passed={run.result.passed}
@@ -124,7 +126,7 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
             covered={bookletOpen}
           />
         ) : (
-          <TestDone lessonId={lesson.lessonId} passed={run.result.passed} rescheduled={run.result.rescheduled} onScripts={openBooklet} onClose={onClose} covered={bookletOpen} />
+          <TestDone lessonId={lesson.lessonId} mode={run.mode} passed={run.result.passed} rescheduled={run.result.rescheduled} onScripts={openBooklet} onClose={onClose} covered={bookletOpen} />
         )}
         <AnimatePresence>
           {bookletOpen && (
@@ -182,9 +184,10 @@ export function LessonTestScreen({ lesson, sounds, onClose }: LessonTestScreenPr
         {header}
         {/* The part intro is also the loading screen while the recordings download. */}
         {introShown ? null : (
-        /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it. */
+        /* Each screen rises in at the same place under the header, so the title never jumps; the last one leaves at once, so its keys and audio never outlive it.
+           A reading's questions share one screen: the reading stays put and only the question changes. */
         <motion.div
-          key={screenKey}
+          key={item.kind === 'reading' ? `${run.stage}:${screen.itemId}` : screenKey}
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
           className={`flex flex-auto flex-col px-4 pt-[clamp(0.75rem,5vh,3.5rem)] sm:px-6 ${barShown ? '' : 'pb-36'}`}

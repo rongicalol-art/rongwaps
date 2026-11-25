@@ -2,7 +2,16 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readJson } from '../acceptance_helpers';
 import type { LessonTestLesson } from '../../src/types/lessonTest';
-import { lessonItemIndex, lessonTestScreens, planLessonTest, scoreLessonTest } from '../../src/utils/lesson/lessonTestPlan';
+import {
+  lessonItemIndex,
+  lessonTestHasBothParts,
+  lessonTestPlanMode,
+  lessonTestQuestionCount,
+  lessonTestScreens,
+  planFitsLesson,
+  planLessonTest,
+  scoreLessonTest,
+} from '../../src/utils/lesson/lessonTestPlan';
 
 /** The lesson test planner: which versions a run shows, the order of its answers, and its score. */
 
@@ -101,4 +110,35 @@ test('a paragraph is one screen; scoring counts every question per part', () => 
   assert.equal(missedOne.correct, total - 1);
   assert.equal(missedOne.listening[0], perfect.listening[0] - 1);
   assert.deepEqual(missedOne.missed.map((entry) => entry.question.id), [firstId]);
+});
+
+test('single-part plans include only the chosen section and infer mode cleanly', () => {
+  assert.equal(lessonTestHasBothParts(lesson), true);
+  const fullCount = lessonTestQuestionCount(lesson, 'both');
+  const listenCount = lessonTestQuestionCount(lesson, 'listening');
+  const readCount = lessonTestQuestionCount(lesson, 'reading');
+  assert.ok(listenCount > 0 && readCount > 0);
+  assert.equal(listenCount + readCount, fullCount);
+
+  const listeningPlan = planLessonTest(lesson, {}, 'listen-only', 'listening');
+  assert.equal(listeningPlan.mode, 'listening');
+  assert.equal(lessonTestPlanMode(listeningPlan), 'listening');
+  assert.equal(lessonTestPlanMode({ items: listeningPlan.items }), 'listening');
+  assert.ok(listeningPlan.items.length > 0 && listeningPlan.items.every((entry) => entry.part === 'listening'));
+  assert.equal(planFitsLesson(lesson, listeningPlan), true);
+
+  const readingPlan = planLessonTest(lesson, {}, 'read-only', 'reading');
+  assert.equal(readingPlan.mode, 'reading');
+  assert.equal(lessonTestPlanMode(readingPlan), 'reading');
+  assert.equal(lessonTestPlanMode({ items: readingPlan.items }), 'reading');
+  assert.ok(readingPlan.items.length > 0 && readingPlan.items.every((entry) => entry.part === 'reading'));
+  assert.equal(planFitsLesson(lesson, readingPlan), true);
+
+  const readingRight = Object.fromEntries(readingPlan.items.flatMap((planned) => items.get(planned.itemId)!.questions.map((q) => [q.id, q.key])));
+  const readingScore = scoreLessonTest(lesson, readingPlan, readingRight);
+  assert.equal(readingScore.total, readCount);
+  assert.deepEqual(readingScore.listening, [0, 0]);
+  assert.deepEqual(readingScore.reading, [readCount, readCount]);
+
+  assert.equal(planFitsLesson(lesson, { items: [] }), false, 'empty plan does not fit');
 });

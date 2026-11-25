@@ -173,7 +173,7 @@ export function structureProblems(lesson: LessonTestLesson, ctx: LessonTestConte
 export function lessonPictureNames(lesson: LessonTestLesson): string[] {
   const names = new Set<string>();
   for (const item of allItems(lesson)) {
-    if ('picture' in item) names.add(typeof item.picture === 'string' ? item.picture : item.picture.picture);
+    if ('picture' in item && item.picture) names.add(typeof item.picture === 'string' ? item.picture : item.picture.picture);
     for (const question of item.questions) for (const choice of question.choices ?? []) if (choice.picture) names.add(choice.picture);
   }
   return [...names];
@@ -222,6 +222,43 @@ export function runProblems(lesson: LessonTestLesson, ctx: LessonTestContext): s
   return problems;
 }
 
+/** Share of the lesson's new words one version must show, and both versions together (Band B tests). */
+export const NEW_WORD_SHARE = { version: 0.7, together: 0.9 };
+
+/** How many of the lesson's new word cards appear in the first and the second version of the test, and in all versions together. */
+export function newWordCoverage(lesson: LessonTestLesson, ctx: LessonTestContext): { total: number; versions: number[]; together: number; unused: string[] } {
+  const words = ctx.vocab
+    .filter((item) => vocabBook(item.id) === lesson.bookId && Math.floor(vocabOrder(item.id) / 10) === lesson.lessonId)
+    .map((item) => ({ name: item.traditional, forms: vocabForms(item.traditional) }));
+  // A slot with one version gives that version to every run.
+  const text = (version: number) => lesson.slots.map((slot) => traditionalStrings(slot.versions[version] ?? slot.versions[0]).join('\n')).join('\n');
+  const versions = [text(0), text(1)];
+  const shown = (source: string) => words.filter((word) => word.forms.some((form) => source.includes(form)));
+  const together = shown(traditionalStrings(lesson.slots).join('\n'));
+  return {
+    total: words.length,
+    versions: versions.map((source) => shown(source).length),
+    together: together.length,
+    unused: words.filter((word) => !together.includes(word)).map((word) => word.name),
+  };
+}
+
+/** A Band B test is built around its lesson's new words: each version shows most of them, both together nearly all. */
+export function wordProblems(lesson: LessonTestLesson, ctx: LessonTestContext): string[] {
+  if (lesson.band !== 'B') return [];
+  const { total, versions, together, unused } = newWordCoverage(lesson, ctx);
+  if (total === 0) return [];
+  const percent = (share: number) => `${Math.round(share * 100)}%`;
+  const problems = versions
+    .map((count, index) => ({ count, index }))
+    .filter(({ count }) => count / total < NEW_WORD_SHARE.version)
+    .map(({ count, index }) => `${lesson.key}: version ${index + 1} shows ${count} of the lesson's ${total} new words (want ${percent(NEW_WORD_SHARE.version)})`);
+  if (together / total < NEW_WORD_SHARE.together) {
+    problems.push(`${lesson.key}: all versions together show ${together} of the lesson's ${total} new words (want ${percent(NEW_WORD_SHARE.together)}); unused: ${unused.join(' ')}`);
+  }
+  return problems;
+}
+
 /** All rules for one lesson; `pictures: false` skips the picture files (drafts whose pictures are not drawn yet). */
 export function checkLessonTest(lesson: LessonTestLesson, ctx: LessonTestContext, { pictures = true } = {}): string[] {
   return [
@@ -229,5 +266,6 @@ export function checkLessonTest(lesson: LessonTestLesson, ctx: LessonTestContext
     ...structureProblems(lesson, ctx),
     ...(pictures ? pictureProblems(lesson, ctx) : []),
     ...runProblems(lesson, ctx),
+    ...wordProblems(lesson, ctx),
   ];
 }

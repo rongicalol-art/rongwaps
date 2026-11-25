@@ -1,7 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { testRubyItems } from '../../src/screens/lesson-test/testPinyin';
-import { createLessonTestSlice, type LessonTestState } from '../../src/store/slices/lessonTestSlice';
+import {
+  createLessonTestSlice,
+  isFirstFullRun,
+  lessonTestBestForMode,
+  type LessonTestState,
+} from '../../src/store/slices/lessonTestSlice';
+import { isLessonTestPassed } from '../../src/utils/lesson/lessonCompletion';
 
 test('pinyin goes over each character when it matches them one to one', () => {
   const items = testRubyItems('報告不是這個星期五就要交嗎？', 'Bàogào bú shì zhège xīngqíwǔ jiù yào jiāo ma?');
@@ -45,4 +51,68 @@ test('a saved test can be read back only while its questions and choices still m
   assert.equal(planFitsLesson(lesson, { items: [{ itemId: 'gone', orders: {} }] }), false, 'an item the pack no longer has');
   assert.equal(planFitsLesson(lesson, {}), false, 'a malformed saved plan');
   assert.equal(planFitsLesson(lesson, undefined), false);
+});
+
+test('single-part runs save per-part bests without awarding the full-test crown or overwriting full best', () => {
+  let state = {} as LessonTestState;
+  const set = (partial: Partial<LessonTestState> | ((current: LessonTestState) => Partial<LessonTestState>)) => {
+    state = { ...state, ...(typeof partial === 'function' ? partial(state) : partial) };
+  };
+  state = createLessonTestSlice(set);
+
+  // First run: Listening only (8/8 = 100%) should NOT earn the lesson crown.
+  state.recordLessonTestResult({
+    key: 'b1l04', mode: 'listening', fullTotal: 20, correct: 8, total: 8,
+    listening: [8, 8], reading: [0, 0], missedLessons: [], shownVersionIds: ['l1'],
+  });
+  assert.equal(isLessonTestPassed(state.lessonTests.b1l04), false);
+  assert.equal(state.lessonTests.b1l04.partsOnly, true);
+  assert.equal(lessonTestBestForMode(state.lessonTests.b1l04, 'both'), null);
+  assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'listening'), { best: 8, total: 8 });
+  assert.equal(lessonTestBestForMode(state.lessonTests.b1l04, 'reading'), null);
+
+  // Next run: Full test (17/20 = 85%) earns the crown and updates Reading best while keeping Listening's 8/8.
+  state.recordLessonTestResult({
+    key: 'b1l04', mode: 'both', fullTotal: 20, correct: 17, total: 20,
+    listening: [6, 8], reading: [11, 12], missedLessons: [2], shownVersionIds: ['l2', 'r1'],
+  });
+  assert.equal(isLessonTestPassed(state.lessonTests.b1l04), true);
+  assert.equal(state.lessonTests.b1l04.partsOnly, undefined);
+  assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'both'), { best: 17, total: 20 });
+  assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'listening'), { best: 8, total: 8 });
+  assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'reading'), { best: 11, total: 12 });
+
+  // Later run: Reading only (12/12) improves Reading best without changing Full test's 17/20.
+  state.recordLessonTestResult({
+    key: 'b1l04', mode: 'reading', fullTotal: 20, correct: 12, total: 12,
+    listening: [0, 0], reading: [12, 12], missedLessons: [], shownVersionIds: ['r2'],
+  });
+  assert.equal(isLessonTestPassed(state.lessonTests.b1l04), true);
+  assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'both'), { best: 17, total: 20 });
+  assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'reading'), { best: 12, total: 12 });
+  assert.equal(state.lessonTests.b1l04.seen.r2, 1);
+});
+
+test('a full test after single-part runs still counts as the first full run for question statistics', () => {
+  let state = {} as LessonTestState;
+  const set = (partial: Partial<LessonTestState> | ((current: LessonTestState) => Partial<LessonTestState>)) => {
+    state = { ...state, ...(typeof partial === 'function' ? partial(state) : partial) };
+  };
+  state = createLessonTestSlice(set);
+
+  assert.equal(isFirstFullRun(undefined, 'both'), true);
+  assert.equal(isFirstFullRun(undefined, 'listening'), false);
+
+  state.recordLessonTestResult({
+    key: 'b1l04', mode: 'reading', fullTotal: 20, correct: 10, total: 12,
+    listening: [0, 0], reading: [10, 12], missedLessons: [], shownVersionIds: ['r1'],
+  });
+  assert.equal(isFirstFullRun(state.lessonTests.b1l04, 'both'), true);
+  assert.equal(isFirstFullRun(state.lessonTests.b1l04, 'reading'), false);
+
+  state.recordLessonTestResult({
+    key: 'b1l04', mode: 'both', fullTotal: 20, correct: 15, total: 20,
+    listening: [6, 8], reading: [9, 12], missedLessons: [], shownVersionIds: ['l1', 'r2'],
+  });
+  assert.equal(isFirstFullRun(state.lessonTests.b1l04, 'both'), false);
 });
