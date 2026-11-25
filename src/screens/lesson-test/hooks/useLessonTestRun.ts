@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import type { LessonTestLesson, LessonTestMode, LessonTestQuestion } from '../../../types/lessonTest';
 import {
@@ -12,7 +12,7 @@ import {
   type LessonTestScore,
   type LessonTestScreen,
 } from '../../../utils/lesson/lessonTestPlan';
-import type { LessonTestAttempt } from '../../../store/slices/lessonTestSlice';
+import { isFirstFullRun, type LessonTestAttempt } from '../../../store/slices/lessonTestSlice';
 import { shareLessonTestAnswers } from '../../../services/lessonTestStatsService';
 import { lessonTestAnswerCounts } from '../../../utils/lesson/lessonTestAnswerStats';
 
@@ -81,13 +81,16 @@ export function useLessonTestRun(lesson: LessonTestLesson, mode: LessonTestMode 
     save({ ...attempt, answers });
   }, [attempt, save]);
 
+  // The attempt already finished, so a quick double tap on the last screen records and shares it once.
+  const finished = useRef<LessonTestAttempt | null>(null);
+
   const finish = useCallback(() => {
+    if (finished.current === attempt) return;
+    finished.current = attempt;
     const score = scoreLessonTest(lesson, attempt.plan, attempt.answers);
     const seconds = Math.round((Date.now() - attempt.startedAt) / 1000);
     const rescheduled = reviewMissedWords(score.missed.map(({ question }) => question), attempt.plan.seed);
-    // Only a lesson's first finished run (no score saved yet, on any device) counts towards the question statistics,
-    // and only a full test: a listening- or reading-only run would skew the rest-of-test score each answer is paired with.
-    const firstRun = runMode === 'both' && !useAppStore.getState().lessonTests[lesson.key];
+    const firstRun = isFirstFullRun(useAppStore.getState().lessonTests[lesson.key], runMode);
     void shareLessonTestAnswers(lesson.key, lessonTestAnswerCounts(lesson, screens, attempt.answers, score, firstRun));
     useAppStore.getState().recordLessonTestResult({
       key: lesson.key,

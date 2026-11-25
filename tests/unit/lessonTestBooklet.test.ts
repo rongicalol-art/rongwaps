@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { testRubyItems } from '../../src/screens/lesson-test/testPinyin';
 import {
   createLessonTestSlice,
+  isFirstFullRun,
   lessonTestBestForMode,
   type LessonTestState,
 } from '../../src/store/slices/lessonTestSlice';
@@ -90,4 +91,28 @@ test('single-part runs save per-part bests without awarding the full-test crown 
   assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'both'), { best: 17, total: 20 });
   assert.deepEqual(lessonTestBestForMode(state.lessonTests.b1l04, 'reading'), { best: 12, total: 12 });
   assert.equal(state.lessonTests.b1l04.seen.r2, 1);
+});
+
+test('a full test after single-part runs still counts as the first full run for question statistics', () => {
+  let state = {} as LessonTestState;
+  const set = (partial: Partial<LessonTestState> | ((current: LessonTestState) => Partial<LessonTestState>)) => {
+    state = { ...state, ...(typeof partial === 'function' ? partial(state) : partial) };
+  };
+  state = createLessonTestSlice(set);
+
+  assert.equal(isFirstFullRun(undefined, 'both'), true);
+  assert.equal(isFirstFullRun(undefined, 'listening'), false);
+
+  state.recordLessonTestResult({
+    key: 'b1l04', mode: 'reading', fullTotal: 20, correct: 10, total: 12,
+    listening: [0, 0], reading: [10, 12], missedLessons: [], shownVersionIds: ['r1'],
+  });
+  assert.equal(isFirstFullRun(state.lessonTests.b1l04, 'both'), true);
+  assert.equal(isFirstFullRun(state.lessonTests.b1l04, 'reading'), false);
+
+  state.recordLessonTestResult({
+    key: 'b1l04', mode: 'both', fullTotal: 20, correct: 15, total: 20,
+    listening: [6, 8], reading: [9, 12], missedLessons: [], shownVersionIds: ['l1', 'r2'],
+  });
+  assert.equal(isFirstFullRun(state.lessonTests.b1l04, 'both'), false);
 });

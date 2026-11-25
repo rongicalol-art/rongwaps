@@ -66,6 +66,14 @@ export interface LessonTestResult {
   review?: Omit<LessonTestReview, 'at'>;
 }
 
+/**
+ * A finished full test is the lesson's first full run when no full test was saved before (on any device).
+ * Single-part runs leave a `partsOnly` record, which doesn't count: only a learner's first full run feeds the
+ * question statistics, and a listening- or reading-only run would skew the rest-of-test score each answer is paired with.
+ */
+export const isFirstFullRun = (record: LessonTestRecord | undefined, mode: LessonTestMode) =>
+  mode === 'both' && (!record || record.partsOnly === true);
+
 /** Best score for a given mode (full test or one section), falling back to `last[part]` on older records. */
 export function lessonTestBestForMode(
   record: LessonTestRecord | undefined,
