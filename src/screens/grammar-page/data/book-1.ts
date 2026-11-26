@@ -530,6 +530,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["計程車","jìchéngchē","taxi"], ["又","yòu","both...and...",1], ["快","kuài","fast"], ["又","yòu","both...and...",1], ["舒服","shūfu","comfortable"], "。"],
       pinyin: "Jìchéngchē yòu kuài yòu shūfu.", english: "Taxis are fast and comfortable." },
+    alsoRight: ["計程車又舒服又快"],
   },
   "hao-nan-easy-or-hard": {
     slug: "hao-nan-easy-or-hard", bookId: 1, lessonId: 8,

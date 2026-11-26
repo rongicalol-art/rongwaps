@@ -140,6 +140,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["他","tā","he"], ["一會兒","yìhuǐr","a moment",1], ["站","zhàn","to stand"], ["一會兒","yìhuǐr","a moment",1], ["坐","zuò","to sit"], "。"],
       pinyin: "Tā yìhuǐr zhàn yìhuǐr zuò.", english: "He keeps standing up and sitting down." },
+    alsoRight: ["他一會兒坐一會兒站"],
   },
   "suanle-forget-it": {
     slug: "suanle-forget-it", bookId: 3, lessonId: 2,
@@ -395,6 +396,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["他","tā","he"], ["不是","búshì","if not",1], ["看","kàn","to read"], ["書","shū","book"], ["就是","jiùshì","or else",1], ["上網","shàngwǎng","to surf the internet"], "。"],
       pinyin: "Tā búshì kàn shū jiùshì shàngwǎng.", english: "He's either reading or online." },
+    alsoRight: ["他不是上網就是看書"],
   },
   "wanyi-just-in-case": {
     slug: "wanyi-just-in-case", bookId: 3, lessonId: 5,
@@ -506,7 +508,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Yes, it is… but…",
     focus: "……倒是/是……，可是/但是/不過……",
     pattern: ["X","倒是/是","X (the same word again)，可是/但是/不過","a different view"],
-    rule: "倒是 agrees with the other person in a polite way, then 可是, 但是 or 不過 gives a different view. 倒 can be left out, so 是 alone works. Put the agreeing part first and 可是 after it. 可能是 only guesses, it doesn't agree.",
+    rule: "Agree with what someone just said, then give a different view after 可是, 但是 or 不過. Repeat their word with 倒是 between: 想倒是想，可是我要趁暑假多打一點兒工. 倒 can be left out: 生意好是好，不過一家店一年就要用掉十萬九千根吸管. Unlike a plain 'although … but', echoing their word first makes your 'but' sound softer.",
     examples: [
       { tokens: [["衝浪","chōnglàng","to surf"], ["刺激","cìjī","exciting"], ["倒是","dàoshì","indeed",1], ["刺激","cìjī","exciting"], "，", ["可是","kěshì","but",1], ["很","hěn","very"], ["危險","wéixiǎn","dangerous"], "。"],
         pinyin: "Chōnglàng cìjī dàoshì cìjī, kěshì hěn wéixiǎn.", english: "Surfing is exciting, sure, but it's dangerous." },
@@ -521,7 +523,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Fractions: X 分之 Y (Y out of X)",
     focus: "X 分之 Y",
     pattern: ["X分之Y: 分之 sits between the whole (X) and the part (Y)"],
-    rule: "X分之Y says a part of a whole, as in 三分之二, which means two out of three. The whole comes first, before 分之, and the part comes after it. For percent, say 百分之五. Don't leave out 分.",
+    rule: "X分之Y says a part of a whole: 三分之二 is two thirds, and 百分之五 is 5%. The whole comes first, opposite English: in 三分之二, 三 is the whole and 二 is the part. Before a noun, add 的: 五分之四的人, 三分之二的時間. For percent say 百分之…, never with a one before 百, and don't leave out 分.",
     examples: [
       { tokens: [["三","sān","three"], ["分之","fēnzhī","parts of",1], ["一","yī","one"], ["的","de","possessive particle"], ["學生","xuéshēng","student"], ["喜歡","xǐhuān","to like"], ["衝浪","chōnglàng","to surf"], "。"],
         pinyin: "Sān fēnzhī yī de xuéshēng xǐhuān chōnglàng.", english: "A third of the students like surfing." },
@@ -536,7 +538,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Finally",
     focus: "總算",
     pattern: ["(Time or subject)","總算","hoped-for result (+ 了)"],
-    rule: "總算 says something you hoped for finally happened after a wait or hard work. It is often used in speech. Use it for something that already happened. 總是 means always, not finally.",
+    rule: "總算 means finally, at last: something you hoped for came true after a long wait or hard work. Put it before the verb or result, often ending with 了: 今天總算暖和一點了. Use it only for something you wanted to happen, in relaxed, spoken Chinese. It feels more relieved than Lesson 4's formal 'finally'. Don't mix it up with 總是 (always).",
     examples: [
       { tokens: [["雨","yǔ","rain"], ["下","xià","fall"], ["了","le","completion particle",1], ["一","yí","one"], ["個","ge","verb particle (個)"], ["星期","xīngqí","week"], "，", ["今天","jīntiān","today"], ["總算","zǒngsuàn","at long last",1], ["停","tíng","to stop"], ["了","le","completion particle",1], "。"],
         pinyin: "Yǔ xià le yí ge xīngqí, jīntiān zǒngsuàn tíng le.", english: "It rained for a week, and today it finally stopped." },
@@ -551,7 +553,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Since…, then…",
     focus: "既然……，（……）就……",
     pattern: ["既然","Fact, (…) 就","Conclusion"],
-    rule: "既然 starts with a fact that already happened or is sure. 就 comes in the second part and gives the speaker's opinion, advice or conclusion. 如果 sets up a maybe, but 既然 starts from a fact.",
+    rule: "既然 means since, as in \"now that this is true\". It starts from a fact both people already know. 就 comes in the second part with your decision, advice or conclusion: 既然這樣，我們就先回家休息. If the second part has a subject, put 就 after it: 我們就…, never before the subject. 如果 is for what may or may not happen. 既然 states a known fact and pairs with 就.",
     examples: [
       { tokens: [["既然","jìrán","since",1], ["你","nǐ","you"], ["這麼","zhème","so (this much)"], ["喜歡","xǐhuān","to like"], "，", ["就","jiù","just",1], ["買","mǎi","to buy"], ["吧","ba","tag question particle"], "。"],
         pinyin: "Jìrán nǐ zhème xǐhuān, jiù mǎi ba.", english: "Since you like it so much, buy it." },
@@ -566,7 +568,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "In… (a Situation or Range)",
     focus: "在……中",
     pattern: ["在","Noun phrase","中"],
-    rule: "在……中 means in a certain situation or area, as in 在我的生活中. Put the noun phrase between 在 and 中. Keep both, and don't use 裡 here.",
+    rule: "在……中 means in or within something you can't touch: a situation, an event, someone's mind or eyes. Put a noun between 在 and 中: 在我心中, 在老闆的眼中, 在會議中. It usually comes before the main thing you say: 在我心中，家人比什麼都重要. 在……裡 is everyday for physical places. 在……中 sounds more formal and is common in writing.",
     examples: [
       { tokens: [["在","zài","in",1], ["父母","fùmǔ","parents"], ["心","xīn","heart"], ["中","zhōng","in",1], "，", ["孩子","háizi","child"], ["永遠","yǒngyuǎn","forever"], ["都","dōu","all; both"], ["是","shì","to be"], ["孩子","háizi","child"], "。"],
         pinyin: "Zài fùmǔ xīn zhōng, háizi yǒngyuǎn dōu shì háizi.", english: "In their parents' hearts, children are always children." },
@@ -581,7 +583,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Must (不能不) / Have No Choice but To (不得不)",
     focus: "不能不/不得不",
     pattern: ["Subject","不能不 / 不得不","Action"],
-    rule: "不能不 means you must do it, because you should be responsible for it. 不得不 means you don't want to, but have no choice, so you feel helpless. 不得不 sounds stronger than 不能不.",
+    rule: "Both mean must. Each is a double \"not\": 不能不去 is \"cannot not go\", so \"have to go\". 不能不: you must, because it is your duty or the sensible thing to do: 我不能不早一點回家. 不得不: you don't want to, but there is no other way: 不得不早一點退休. Put them right before the verb. 不得不 is the stronger one.",
     examples: [
       { tokens: [["明天","míngtiān","tomorrow"], ["有","yǒu","there is"], ["考試","kǎoshì","to take an exam"], "，", ["我","wǒ","I"], ["不能不","bùnéngbù","cannot but",1], ["念書","niànshū","to study"], "。"],
         pinyin: "Míngtiān yǒu kǎoshì, wǒ bùnéngbù niànshū.", english: "I have an exam tomorrow, so I have to study." },
@@ -596,7 +598,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Just As…, Right When…",
     focus: "正＋V",
     pattern: ["Subject","正","(要/想/打算/準備)","action (+ 時)，(就)","second event"],
-    rule: "正 means by coincidence: the first thing is just starting or about to start, and a second thing happens then. 正 is often followed by 要, 想, 打算 or 準備, and 就 starts the second part. Use 正要, not 正在, for just about to.",
+    rule: "正 + verb means just as or right when: one thing is about to start, and another happens. Put 正 before the verb (要, 想, 打算, 準備), ending with 時: 我正要進電梯時，突然發生地震. The second part says what happened then, often with 就 or 突然: 我正想打電話給小紀時，就接到他打來的電話. 正要 is just about to. 正在 is in the middle of doing something.",
     examples: [
       { tokens: [["我","wǒ","I"], ["正","zhèng","right now",1], ["準備","zhǔnbèi","to prepare",1], ["出門","chūmén","to go out"], ["的時候","de shíhòu","when"], "，", ["就","jiù","just",1], ["下雨","xiàyǔ","to rain"], ["了","le","completion particle"], "。"],
         pinyin: "Wǒ zhèng zhǔnbèi chūmén de shíhòu, jiù xiàyǔ le.", english: "Just as I was getting ready to go out, it started to rain." },
@@ -611,7 +613,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Only… and Already… / Just… and Right Away…",
     focus: "才……（，）就……",
     pattern: ["才","small amount / just-done action（，）就","what follows"],
-    rule: "才……就…… shows surprise that a short time or small amount already gives a result, as in 才吃一碗就飽了. 才 can also mean just now, and the 就 part happens right after it, as in 我才出門就下雨了. 剛……就…… only says it just happened, without the surprise.",
+    rule: "才……就…… shows surprise that so little time, amount or age led to a result: 才六天就結束了. 才剛 means only just, with 就 right after: 弟弟才剛畢業就立刻找到了一份好工作. 才 and 就 each go after the subject of their own part, before the verb. Book 2 Lesson 7's 剛……就…… only links two close events; 才……就…… adds surprise at how soon.",
     examples: [
       { tokens: [["他","tā","he"], ["才","cái","only (才)",1], ["二十","èrshí","twenty"], ["歲","suì","measure word (age)"], "，", ["就","jiù","then",1], ["當","dāng","when"], ["了","le","completion particle"], ["老闆","lǎobǎn","boss"], "。"],
         pinyin: "Tā cái èrshí suì, jiù dāng le lǎobǎn.", english: "He's only twenty and already a boss." },
@@ -626,7 +628,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "But Then Again…",
     focus: "話說回來，……",
     pattern: ["（不過／可是／但是）話說回來，……"],
-    rule: "Use 話說回來 when you don't oppose what the other person said but have a different or better idea. It can also bring the talk back to the topic and give your main opinion. Put 不過, 可是 or 但是 before it.",
+    rule: "話說回來 means \"but then again\". You add another side or return to the main point without disagreeing. Put it at the start with a comma: 不過話說回來，網路上的資料不一定都是對的. 不過, 可是 or 但是 often comes right before it, but it can also stand alone. It is softer than a plain 可是: it does not push back at the other person.",
     examples: [
       { tokens: [["這","zhè","this"], ["家","jiā","measure word (shops)"], ["店","diàn","store"], ["很","hěn","very"], ["貴","guì","expensive"], "，", ["不過","búguò","but",1], ["話說回來","huà shuō huílái","then again",1], "，", ["品質","pǐnzhí","quality"], ["很","hěn","very"], ["好","hǎo","good"], "。"],
         pinyin: "Zhè jiā diàn hěn guì, búguò huà shuō huílái, pǐnzhí hěn hǎo.", english: "This shop is expensive, but then again, the quality is good." },
@@ -641,7 +643,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "So, Based on What You Said…",
     focus: "這麼說，……",
     pattern: ["這麼說，","conclusion from what the other person said"],
-    rule: "這麼說 means going by what the other person just said. The speaker then gives their own guess drawn from it. 這麼說 starts the reply. 也就是說 is different: it restates the same meaning in other words.",
+    rule: "這麼說 means \"so, going by what you just said\". Use it to state what follows or check you understood. It opens your reply, with a comma before your conclusion: 這麼說，明天可能會放颱風假喔. Use it only to answer someone else, not to sum up your own sentence. Lesson 6's 'since … then …' leads to a decision or advice. 這麼說 only draws the conclusion.",
     examples: [
       { tokens: [["這麼說","zhème shuō","so then",1], "，", ["你","nǐ","you"], ["明天","míngtiān","tomorrow"], ["不","bù","not"], ["能","néng","can (able to)"], ["來","lái","to come"], ["了","le","completion particle"], "？"],
         pinyin: "Zhème shuō, nǐ míngtiān bù néng lái le?", english: "So you can't come tomorrow?" },
@@ -656,7 +658,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Verb + 成 (Completed / Not Completed / Possible / Impossible)",
     focus: "V 成",
     pattern: ["V 成 / 沒 V 成 / V 得成 / V 不成"],
-    rule: "成 after a verb is the result of the action and means it succeeded or was done. V 成 means it was done. 沒 V 成 means it didn't get done, for something that already happened. V 得成 and V 不成 say it is possible or not possible to get done.",
+    rule: "成 right after a verb means the action worked out: 今天終於談成了 (the deal was settled). Say 沒 + verb + 成 when a plan fell through, or put 得/不 between: 明天的跨年活動恐怕辦不成了. Never say 不 + verb + 成. V 完 (Book 2 Lesson 1) only means finished. V 成 means it succeeded.",
     examples: [
       { tokens: [["颱風","táifēng","typhoon"], ["來","lái","to come"], ["了","le","completion particle"], "，", ["我們","wǒmen","we"], ["的","de","possessive particle"], ["旅行","lǚxíng","travel"], ["去","qù","to go"], ["不成","bùchéng","cannot happen",1], ["了","le","completion particle"], "。"],
         pinyin: "Táifēng lái le, wǒmen de lǚxíng qù bùchéng le.", english: "A typhoon is coming, so our trip is off." },
@@ -671,7 +673,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "As for…",
     focus: "就……來說",
     pattern: ["就","topic","來說，","comment"],
-    rule: "就……來說 looks at one thing or one area to describe or analyze it, mostly in writing. 對……來說 gives one person's view. 就……來說 looks at a topic or standard. Keep 來說 in the pattern. Don't use 看 in its place.",
+    rule: "就……來說 means \"as for\" or \"in terms of\". It narrows what you say to one topic, mostly formally. Put the topic between 就 and 來說 at the start: 就選舉文化來說，臺灣和法國很不同. What goes inside is a topic or an area, not a person. 對……來說 (Book 2 Lesson 10) is for a person's view. 就……來說 is for the angle discussed.",
     examples: [
       { tokens: [["就","jiù","concerning",1], ["價格","jiàgé","price"], ["來說","láishuō","speaking",1], "，", ["這","zhè","this"], ["家","jiā","measure word (shops)"], ["民宿","mínsù","B&B (bed and breakfast)"], ["比較","bǐjiào","relatively"], ["便宜","piányí","cheap"], "。"],
         pinyin: "Jiù jiàgé láishuō, zhè jiā mínsù bǐjiào piányí.", english: "In terms of price, this guesthouse is cheaper." },
@@ -686,7 +688,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "V / Vs + 得 + Result or Degree",
     focus: "V / Vs 得……",
     pattern: ["V/Vs","得","result (often exaggerated)"],
-    rule: "得 comes after a verb or adjective, and what follows tells how far the action or state goes. What follows 得 can be an exaggerated word or a short sentence. Use 得, not 的, for this.",
+    rule: "得 after a verb or describing word plus a result shows how far it went: 開心得把工作的問題都忘了. The result is often an exaggeration or whole clause: 吃得我都站不起來了, 忙得沒時間吃飯. Don't add 'very' before the describing word, and don't put an object between the verb and 得. The earlier 得 says how well something is done. This one gives the result.",
     examples: [
       { tokens: [["他","tā","he"], ["高興","gāoxìng","glad"], ["得","de","complement particle",1], ["跳","tiào","to jump"], ["了","le","completion particle"], ["起來","qǐlái","up"], "。"],
         pinyin: "Tā gāoxìng de tiào le qǐlái.", english: "He was so happy he jumped up." },
@@ -701,7 +703,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Turn A into B / Mistake A for B",
     focus: "S 把 NP₁ + V 成 NP₂",
     pattern: ["Subject","把","NP1","Verb","成","NP2"],
-    rule: "把 plus the first noun, verb, 成 and the second noun says someone turns one thing into another. 把旅行的經驗寫成一本書 means turning travel experiences into a book. After 看, 聽, 說, 寫 or 念, 成 sometimes means you got it wrong, as in 看成.",
+    rule: "把 A + verb + 成 B says an action turns one thing into another: 把它翻成了二十種語言. With 看, 聽, 說, 寫 or 念 it means mistaking one thing for another: 把我看成只愛買名牌的人. The order is 把, starting thing, verb, 成, result. 了 goes after 成: 拍成了電影. Lesson 7's V 成 is about getting something done. Here 成 names what the thing becomes.",
     examples: [
       { tokens: [["他","tā","he"], ["把","bǎ","disposal marker",1], ["這","zhè","this"], ["本","běn","measure word (books)"], ["小說","xiǎoshuō","novel"], ["拍","pāi","to shoot (film)"], ["成","chéng","into",1], ["了","le","completion particle"], ["電影","diànyǐng","movie"], "。"],
         pinyin: "Tā bǎ zhè běn xiǎoshuō pāi chéng le diànyǐng.", english: "He turned this novel into a movie." },
@@ -716,7 +718,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "No Matter How…",
     focus: "再……也/都……",
     pattern: ["(Subject)","再","adjective / condition","也/都","result that stays the same"],
-    rule: "再……，也/都…… takes a situation to the extreme, and the result or decision stays the same. It means almost the same as 就算……，也……, and the speaker may feel the action is right and worth doing. Use 再, not 更 or 又, as in 再辛苦也要忍耐.",
+    rule: "再……也/都…… means \"no matter how\". Even at the extreme, the result or decision stays the same. Put 再 before the describing word, and 也 or 都 in the second part: 父母再忙都應該陪陪他們. It can also come before a noun with 的: 再討厭的工作也得忍耐 (no matter how awful the job). Use 再, not 更 or 又. Unlike 'even if', 再……也…… pushes one quality to its limit.",
     examples: [
       { tokens: [["工作","gōngzuò","to work; job"], ["再","zài","however",1], ["忙","máng","busy"], "，", ["也","yě","also",1], ["得","děi","to have to"], ["吃","chī","to eat"], ["飯","fàn","cooked rice; meal"], "。"],
         pinyin: "Gōngzuò zài máng, yě děi chī fàn.", english: "No matter how busy work is, you still have to eat." },
@@ -731,7 +733,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Getting Used to Something (V慣 / V得慣 / V不慣)",
     focus: "V 慣",
     pattern: ["Subject","Verb","(得/不)","慣 (+ Object)"],
-    rule: "慣 after a verb means used to it, as the result of doing it. Add 得 or 不 to say you can or can't get used to it: 住得慣 and 吃不慣. Say 吃不慣, not 吃不習慣了.",
+    rule: "V 慣 means you are used to doing something: 我睡慣了家裡的床 (I am used to my own bed). Put 得 or 不 between the verb and 慣 for can or can't get used to it: 穿得慣, 吃不慣. Right after the action use 慣, not the full word: say 吃不慣, never 吃不習慣了.",
     examples: [
       { tokens: [["我","wǒ","I"], ["吃","chī","to eat"], ["不","bú","not",1], ["慣","guàn","used to",1], ["臭豆腐","chòu dòufǔ","stinky tofu"], "。"],
         pinyin: "Wǒ chī bú guàn chòu dòufǔ.", english: "I can't get used to stinky tofu." },
@@ -746,7 +748,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Reinforcing Reasons with 況且",
     focus: "況且",
     pattern: ["Primary Reason，況且","(Subject)","也/還/又","Further Reason"],
-    rule: "況且 adds a further reason after the main reason, to make the reasoning fuller. It often goes with 也, 還 or 又. Put 況且 before the second reason, not the first. Use 況且, not 但是.",
+    rule: "況且 means besides, what is more. It adds a second reason that makes your point stronger. Put 況且 at the start of the second reason, often with 也, 還 or 又: 可是我沒興趣，況且我還有自己的夢想. A subject comes after 況且 and before 也, 還 or 又: 況且我還有…. It works like Lesson 1's 'besides' but sounds more formal. Always give the first reason before it.",
     examples: [
       { tokens: [["這","zhè","this"], ["件","jiàn","measure word (clothes)"], ["洋裝","yángzhuāng","dress"], ["很","hěn","very"], ["便宜","piányí","cheap"], "，", ["況且","kuàngqiě","furthermore",1], ["品質","pǐnzhí","quality"], ["也","yě","also",1], ["不錯","búcuò","not bad"], "。"],
         pinyin: "Zhè jiàn yángzhuāng hěn piányí, kuàngqiě pǐnzhí yě búcuò.", english: "This dress is cheap, and besides, the quality is decent." },
@@ -761,7 +763,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Must Do with 非...不可",
     focus: "非……不可",
     pattern: ["Subject","非","Action / Verb Phrase","不可"],
-    rule: "非……不可 means you must do something and have no other choice. 非 means 不, and a verb or verb phrase comes after it. Put 非 before the whole action, as in 非向他道歉不可, and 不可 at the end.",
+    rule: "非……不可 means you absolutely must, with no other choice. 非 means not and 不可 means cannot. Put the whole action between 非 and 不可: 非去看醫生不可, 非立刻送洗不可. Keep 不可 at the very end and don't leave it out. Lesson 6's 'have no choice but' feels helpless. 非……不可 stresses how urgent or necessary it is.",
     examples: [
       { tokens: [["這","zhè","this"], ["部","bù","measure word (movies)"], ["電影","diànyǐng","movie"], ["很","hěn","very"], ["好看","hǎokàn","good-looking"], "，", ["你","nǐ","you"], ["非","fēi","not",1], ["看","kàn","to read"], ["不可","bùkě","must",1], "。"],
         pinyin: "Zhè bù diànyǐng hěn hǎokàn, nǐ fēi kàn bùkě.", english: "This movie is great. You have to see it." },
@@ -776,7 +778,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "After All",
     focus: "畢竟",
     pattern: ["Statement，（不過）","畢竟","key fact"],
-    rule: "畢竟 is followed by a conclusion after thinking, which gives the key point of the matter. The speaker uses it to remind or persuade the other person. Put 畢竟 before the key point, not after it. 究竟 doesn't work here.",
+    rule: "畢竟 means after all. It brings up the key fact behind your advice or opinion, to remind or persuade. Put it at the start of that fact or after its subject: 對她的要求太高了，畢竟她才三歲. Unlike English \"after all\", it never goes at the end: 畢竟人不是機器. 究竟 presses for an answer. 畢竟 states a fact everyone accepts.",
     examples: [
       { tokens: [["別","bié","don't"], ["太","tài","too"], ["擔心","dānxīn","to worry"], "，", ["畢竟","bìjìng","after all",1], ["這","zhè","this"], ["只","zhǐ","only"], ["是","shì","to be"], ["一","yí","one"], ["次","cì","measure word (times)"], ["考試","kǎoshì","to take an exam"], "。"],
         pinyin: "Bié tài dānxīn, bìjìng zhè zhǐ shì yí cì kǎoshì.", english: "Don't worry too much. After all, it's just one exam." },
@@ -791,7 +793,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Back to Normal with V過來",
     focus: "V 過來",
     pattern: ["Subject","(Adverb)","(把 + Object)","Verb","過來"],
-    rule: "過來 after a verb can mean coming back to the normal or original state, as in 醒過來. 過去 is the opposite: from a normal state to a bad one, as in 暈過去. It is used less. 忙不過來 means there is too much work to handle.",
+    rule: "Here 過來 after a verb means coming back to a normal or better state. Nothing moves toward you. It goes right after the verb: 半夜會突然醒過來 (suddenly wake up), 過了一會兒我才明白過來 (finally understood). An object goes in front with 把: 把亂丟髒衣服的壞習慣改過來了 (fixed the bad habit). 過去 is the opposite, from normal to a worse state, as in 暈過去 (to faint). It is used less often.",
     examples: [
       { tokens: [["他","tā","he"], ["喝","hē","to drink"], ["醉","zuì","to get drunk"], ["了","le","completion particle"], "，", ["第","dì","ordinal prefix"], ["二","èr","second"], ["天","tiān","day"], ["中午","zhōngwǔ","noon"], ["才","cái","only (才)"], ["醒","xǐng","to wake up"], ["過來","guòlái","to come over",1], "。"],
         pinyin: "Tā hē zuì le, dì èr tiān zhōngwǔ cái xǐng guòlái.", english: "He got drunk and didn't come round until noon the next day." },
@@ -806,7 +808,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Questioning a Wrong Choice with 怎麼不……，反而……",
     focus: "怎麼不……，反而……",
     pattern: ["(Subject)","怎麼不","Expected Action，反而","Contrary Action","(呢)？"],
-    rule: "怎麼不……反而……呢 asks why someone didn't do what is expected and did something else instead. After 怎麼不, put what the speaker thinks should be done. After 反而, put what should not be done, or what the speaker doubts.",
+    rule: "怎麼不……，反而…… asks why someone skipped the expected action and did the opposite, often as a complaint. Put the expected action after 怎麼不 and the surprising one after 反而: 你怎麼不跟他說，反而老是幫他整理呢. The subject comes before 怎麼不. 呢 at the end is common but can be left out. This one questions the person. The next page's pattern just states the surprising fact.",
     examples: [
       { tokens: [["你","nǐ","you"], ["生病","shēngbìng","to get sick"], ["了","le","completion particle"], "，", ["怎麼不","zěnme bù","why not",1], ["休息","xiūxí","to take a rest"], "，", ["反而","fǎn'ér","instead",1], ["去","qù","to go"], ["上班","shàngbān","to go to work"], ["呢","ne","\"how about\" particle",1], "？"],
         pinyin: "Nǐ shēngbìng le, zěnme bù xiūxí, fǎn'ér qù shàngbān ne?", english: "You're sick. Why go to work instead of resting?" },
@@ -821,7 +823,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "The Opposite of What You'd Expect with 不但不/沒……，反而……",
     focus: "不但不……，反而……",
     pattern: ["Subject","不但不/沒","Expected，反而","Contrary"],
-    rule: "不但不 or 不但沒 is followed by something opposite to what the speaker expected. 反而 then gives something surprising, or something the speaker thinks should not happen. Sometimes 不但 can be left out.",
+    rule: "不但不/沒……，反而…… means \"far from doing X, the opposite happened\". Put what you expected after 不但不/沒, and what happened after 反而: 他父母不但沒生氣，反而讓他去義大利遊學. Use 沒 for something that did not happen, and 不 for something a person does not or will not do. Book 2's 'not only … also …' adds more of the same. With 反而 the second part goes the other way.",
     examples: [
       { tokens: [["吃","chī","to eat"], ["了","le","completion particle"], ["藥","yào","medicine"], ["以後","yǐhòu","after"], "，", ["他","tā","he"], ["的","de","possessive particle"], ["病","bìng","illness"], ["不但沒","búdàn méi","not only didn't"], ["好","hǎo","get better"], "，", ["反而","fǎn'ér","instead",1], ["更","gèng","even"], ["嚴重","yánzhòng","serious"], ["了","le","completion particle"], "。"],
         pinyin: "Chī le yào yǐhòu, tā de bìng búdàn méi hǎo, fǎn'ér gèng yánzhòng le.", english: "After taking the medicine, he didn't get better. He got even worse." },
@@ -836,7 +838,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Strongly Disagreeing with 才……(呢)",
     focus: "才",
     pattern: ["Subject","才","(不/沒)","Your Own View","(呢)"],
-    rule: "才 stresses what comes after it, and is often used to argue against what someone said. The sentence often ends with 呢. Put 才 before what you stress, such as 不 or 沒: 我才不要呢.",
+    rule: "Here 才 pushes back hard at what someone just said: \"no, it's the other way\", often ending with 呢. Put 才 before what you stress, and before 不: 我才不要呢, 我爸媽才不這麼想. It can also say what is really true: 我認為李導演拍的才好呢. It is not the 才 for \"later than expected\" or \"only so little\" that you learned in Book 2.",
     examples: [
       { tokens: [["我","wǒ","I"], ["才","cái","only (才)",1], ["不","bú","not",1], ["怕","pà","to be scared"], ["呢","ne","\"how about\" particle",1], "！"],
         pinyin: "Wǒ cái bú pà ne!", english: "I'm not scared at all!" },
@@ -851,7 +853,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Singling Out with 尤其是",
     focus: "尤其是",
     pattern: ["Topic","Statement，尤其是","Focus"],
-    rule: "尤其 means especially. It shows one thing is more special than the others. It usually goes in the second sentence. 尤其是 picks out one thing from a group, as in 五門課都很有意思，尤其是英文會話課.",
+    rule: "尤其是 means especially. It picks out one case from a wider group. Say the general point first, then 尤其是 and the special case: 臺灣社會一直都很重視學生的學習表現，尤其是考試的成績. Keep 是 before a noun: 尤其是英文會話課 (especially the English conversation class). It can't start a new topic. There must be a wider group before it.",
     examples: [
       { tokens: [["我","wǒ","I"], ["喜歡","xǐhuān","to like"], ["吃","chī","to eat"], ["水果","shuǐguǒ","fruit"], "，", ["尤其是","yóuqí shì","especially",1], ["芒果","mángguǒ","mango"], "。"],
         pinyin: "Wǒ xǐhuān chī shuǐguǒ, yóuqí shì mángguǒ.", english: "I like fruit, especially mangoes." },
@@ -866,7 +868,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Reaching an Aim or Not with V得著 / V不著 / V著了 / 沒V著",
     focus: "V得著",
     pattern: ["Subject","Verb","得/不","著 (+ Object)"],
-    rule: "著 after a verb says whether the action reached its goal or result, like 找著了. The verb must aim at a goal, such as 拿, 看, 打, 猜, 用 or 找. Put 得 or 不 before 著 to say you can or can't reach it.",
+    rule: "Here 著 is read zháo. After a verb it means the action reaches its goal, not ongoing zhe. With 得 or 不 it shows whether that is possible: 用得著, 看得著、摸不著. For what actually happened, say verb + 著了, or 沒 + verb + 著. It works like Book 2 Lesson 4's V-dào, with verbs such as 找, 用, 猜 and 買.",
     examples: [
       { tokens: [["這","zhè","this"], ["本","běn","measure word (books)"], ["字典","zìdiǎn","dictionary"], ["你","nǐ","you"], ["用","yòng","using; with"], ["得","de","complement particle",1], ["著","zháo","need",1], ["嗎","ma","yes-no particle"], "？"],
         pinyin: "Zhè běn zìdiǎn nǐ yòng de zháo ma?", english: "Will you need this dictionary?" },
@@ -881,7 +883,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Replacing with 以...代替...",
     focus: "以……代替……",
     pattern: ["Subject","以","Substitute","代替","Original"],
-    rule: "以 means 用. 以……代替…… means using one thing or action in place of the original. Put the new thing after 以 and the old thing after 代替.",
+    rule: "以 A 代替 B means using A in place of B. It is a more formal 用 A 代替 B. The new thing goes after 以 and the old one after 代替: 讓孩子以思考代替記答案. A and B can be things or actions: 以搭公車、騎自行車代替開車. Don't swap the two. This 以 means using. It is not the 以 before a direction from Lesson 5.",
     examples: [
       { tokens: [["他","tā","he"], ["以","yǐ","with",1], ["茶","chá","tea"], ["代替","dàitì","to substitute for",1], ["酒","jiǔ","alcohol"], "。"],
         pinyin: "Tā yǐ chá dàitì jiǔ.", english: "He drinks tea in place of alcohol." },
@@ -896,7 +898,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Not Until … with 直到……才……",
     focus: "直到……（，）才……",
     pattern: ["直到","Time / Event (+ 以後/時)","Subject","才","Result"],
-    rule: "直到……才…… says something that had not happened until a certain time finally happened. After 直到 put the time or situation. After 才 put the result. 才 shows the speaker thinks the result came later than expected.",
+    rule: "直到……才…… means not until: something happened only at a certain time or event, feeling late. Put the time or event after 直到 and the result after 才: 直到三十歲才找到合適的. If the second part has a subject, 才 goes after it: 直到飛機起飛前三十分鐘，我才趕到機場. Always pair 直到 with 才, never with 'early/easy' jiù.",
     examples: [
       { tokens: [["他","tā","he"], ["直到","zhídào","until",1], ["四十","sìshí","forty"], ["歲","suì","measure word (age)"], ["才","cái","only (才)",1], ["學會","xuéhuì","to learn"], ["開車","kāichē","to drive"], "。"],
         pinyin: "Tā zhídào sìshí suì cái xuéhuì kāichē.", english: "He didn't learn to drive until he was forty." },
@@ -911,22 +913,22 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "It's Just That … with 只不過",
     focus: "只不過",
     pattern: ["Statement","只不過","Extra Detail"],
-    rule: "只不過 adds a note to what was said, so the listener understands the situation better. It means 只是. Put the added explanation after it.",
+    rule: "只不過 means it's just that, the same as 只是. It adds a catch to what you just said. Put it at the start of the second part: 我很喜歡這輛英國車，只不過價格太高了. It is softer than a plain 'but'. The first part still stands; 只不過 only adds a small catch.",
     examples: [
       { tokens: [["這","zhè","this"], ["間","jiān","measure word (rooms)"], ["公寓","gōngyù","apartment"], ["很","hěn","very"], ["好","hǎo","good"], "，", ["只不過","zhǐ búguò","it's just that",1], ["離","lí","away from"], ["捷運","jiéyùn","MRT (subway)"], ["站","zhàn","to stand"], ["遠","yuǎn","far"], ["了","le","completion particle"], ["一點兒","yìdiǎnr","a little more"], "。"],
         pinyin: "Zhè jiān gōngyù hěn hǎo, zhǐ búguò lí jiéyùn zhàn yuǎn le yìdiǎnr.", english: "This apartment is nice. It's just a little far from the MRT station." },
       { tokens: [["我","wǒ","I"], ["很","hěn","very"], ["想","xiǎng","to think"], ["去","qù","to go"], "，", ["只不過","zhǐ búguò","it's just that",1], ["最近","zuìjìn","recently"], ["太","tài","too"], ["忙","máng","busy"], ["了","le","completion particle"], "。"],
         pinyin: "Wǒ hěn xiǎng qù, zhǐ búguò zuìjìn tài máng le.", english: "I'd love to go. It's just that I've been too busy lately." },
     ],
-    exercise: { tokens: [["他","tā","he"], ["只不過","zhǐ búguò","merely",1], ["是","shì","to be"], ["個","ge","verb particle (個)"], ["孩子","háizi","child"], "。"],
-      pinyin: "Tā zhǐ búguò shì ge háizi.", english: "He's only a child." },
+    exercise: { tokens: [["房間","fángjiān","room"], ["不錯","búcuò","not bad"], "，", ["只不過","zhǐ búguò","it's just that",1], ["太","tài","too"], ["吵","chǎo","to quarrel"], ["了","le","completion particle"], "。"],
+      pinyin: "Fángjiān búcuò, zhǐ búguò tài chǎo le.", english: "The room is nice. It's just too noisy." },
   },
   "hai-cause-trouble": {
     slug: "hai-cause-trouble", bookId: 3, lessonId: 10,
     title: "Causing Something Bad with 害",
     focus: "害",
     pattern: ["Cause / Subject","害","Victim / Object","Negative Result"],
-    rule: "害 is like 讓 or 使 but stronger. It says something causes a bad result for someone. Put the cause before 害, then the person affected, then the bad result.",
+    rule: "害 means to cause someone a bad result, like 讓 or 使 but stronger. It puts the blame on the cause. Put cause, 害, person, then bad result: 他死也不肯去，害我擔心得不得了. Use 害 only for bad results. For good or neutral ones, use 讓 or 使.",
     examples: [
       { tokens: [["他","tā","he"], ["一直","yìzhí","all the time"], ["說話","shuōhuà","to speak; to talk"], "，", ["害","hài","to cause",1], ["我","wǒ","I"], ["沒","méi","did not"], ["聽","tīng","to listen"], ["到","dào","to (a destination)"], ["老師","lǎoshī","teacher"], ["的","de","possessive particle"], ["問題","wèntí","question"], "。"],
         pinyin: "Tā yìzhí shuōhuà, hài wǒ méi tīng dào lǎoshī de wèntí.", english: "He kept talking, so I missed the teacher's question." },
@@ -941,7 +943,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Carrying Through to the End with V到底",
     focus: "V 到底",
     pattern: ["Subject","Verb","到底"],
-    rule: "到底 after a verb stresses carrying something through to the end, with effort. Put 到底 after the verb: say 堅持到底, not 到底堅持.",
+    rule: "V到底 means to keep doing something all the way to the end, with effort and determination. Put 到底 right after the verb: 堅持到底, 幫到底, 負責到底. Say 堅持到底, not 到底堅持. In Book 2 Lesson 10, 到底 goes before the verb in a question to mean \"on earth\".",
     examples: [
       { tokens: [["不管","bùguǎn","no matter"], ["多","duō","how"], ["難","nán","difficult"], "，", ["我","wǒ","I"], ["都","dōu","all; both"], ["會","huì","will"], ["堅持","jiānchí","to persist"], ["到底","dàodǐ","to the end",1], "。"],
         pinyin: "Bùguǎn duō nán, wǒ dōu huì jiānchí dàodǐ.", english: "However hard it is, I'll stick with it to the end." },
@@ -956,7 +958,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Repeated Actions with 一再",
     focus: "一再",
     pattern: ["Subject","一再","Verb Phrase"],
-    rule: "一再 says an action or event happens again and again. Put it after the subject and before the verb.",
+    rule: "一再 means again and again. It says the same thing happened, or was done, many separate times. Put it after the subject and before the verb or phrase: 市長一再向民眾強調. Lesson 5's 'in a row' takes a number of days or times. 一再 takes no number.",
     examples: [
       { tokens: [["醫生","yīshēng","doctor"], ["一再","yízài","repeatedly",1], ["告訴","gàosu","to tell"], ["他","tā","he"], "，", ["別","bié","don't"], ["喝","hē","to drink"], ["太","tài","too"], ["多","duō","more"], ["酒","jiǔ","alcohol"], "。"],
         pinyin: "Yīshēng yízài gàosu tā, bié hē tài duō jiǔ.", english: "The doctor told him again and again not to drink too much." },
@@ -971,7 +973,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Saying 'If' in Writing with 假如",
     focus: "假如",
     pattern: ["假如","Condition","(Subject)","就 / 恐怕","Result"],
-    rule: "假如, 如果 and 要是 all set up a condition. The result often follows with 就. 假如 goes before the subject and is mostly used in writing. 如果 works in writing or speech. 要是 works only in speech. Both can go before or after the subject.",
+    rule: "假如, 如果 and 要是 all set up a condition. The result often follows with 就. 假如 goes before the subject and is mostly used in writing. 如果 works in writing or speech. 要是 is mostly used in speech. Both can go before or after the subject.",
     examples: [
       { tokens: [["假如","jiǎrú","if",1], ["明天","míngtiān","tomorrow"], ["下雨","xiàyǔ","to rain"], "，", ["比賽","bǐsài","to compete"], ["就","jiù","then",1], ["改","gǎi","to change"], ["到","dào","to (a destination)"], ["下","xià","next"], ["星期","xīngqí","week"], "。"],
         pinyin: "Jiǎrú míngtiān xiàyǔ, bǐsài jiù gǎi dào xià xīngqí.", english: "If it rains tomorrow, the competition will move to next week." },
@@ -986,7 +988,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Purpose and Action with 為了……而……",
     focus: "為了……（，）而……",
     pattern: ["Subject","為了","Goal","而","Action"],
-    rule: "為了……而…… says what someone does to reach a goal. The part after 為了 is the goal. The part after 而 is what is done to reach it.",
+    rule: "為了……而…… links a goal with what someone does to reach it. Put the goal after 為了 and the action after 而: 他為了挑戰臺灣最高的高山，而每天慢跑一小時. The subject goes before 為了: 林伯伯為了健康而努力. Lesson 1's 因為……而…… gives cause and result. 為了……而…… gives a goal and the action for it.",
     examples: [
       { tokens: [["很","hěn","very"], ["多","duō","more"], ["人","rén","person"], ["為了","wèile","in order to",1], ["工作","gōngzuò","to work; job"], ["而","ér","and so",1], ["搬","bān","to move (relocate)"], ["到","dào","to (a destination)"], ["都市","dūshì","city"], "。"],
         pinyin: "Hěn duō rén wèile gōngzuò ér bān dào dūshì.", english: "Many people move to the city for work." },
@@ -1001,7 +1003,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Through / via (透過)",
     focus: "透過",
     pattern: ["Subject","透過","Medium","Action"],
-    rule: "透過 says a person, thing or action is the way a result is reached. Put what you went through after 透過, then the action. Use 透過, not 經過 or 通過, for this meaning.",
+    rule: "透過 means through or by way of. It names the person, channel or method that gets you a result. Put the channel after 透過, before the verb: 有個博士透過社群網站，認識了一個女網友. Don't mix it up with Lesson 2's 經過, which is passing through a place or process, not a channel.",
     examples: [
       { tokens: [["我","wǒ","I"], ["透過","tòuguò","through",1], ["網路","wǎnglù","internet"], ["認識","rènshì","to get to know"], ["了","le","completion particle"], ["很","hěn","very"], ["多","duō","more"], ["朋友","péngyǒu","friend"], "。"],
         pinyin: "Wǒ tòuguò wǎnglù rènshì le hěn duō péngyǒu.", english: "I've met lots of friends through the internet." },
@@ -1016,7 +1018,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Above / Below with 以上 / 以下",
     focus: "以上/以下",
     pattern: ["Number","以上/以下","Result"],
-    rule: "以上 means more than or higher than a point, and it includes that point. 六十分以上 includes 六十分. 以下 means lower than a point, or not reaching it. 以 with a direction word, as in 以內, 以外, 以北 or 以南, marks a range.",
+    rule: "以上 means at or above a number, and it includes that number. 八十分以上 (80 points and above) includes 80. 以下 means at or below a number, and it includes that number too: 兩萬塊以下 (20,000 dollars or less). Both go after the number and measure word, as in 一千元以上, never before it. 以 with other place words marks a range in the same way, as in 以內 (within) and 以外 (outside).",
     examples: [
       { tokens: [["十八","shíbā","eighteen"], ["歲","suì","measure word (age)"], ["以上","yǐshàng","above",1], ["的","de","possessive particle"], ["人","rén","person"], ["才","cái","only (才)"], ["能","néng","can (able to)"], ["參加","cānjiā","to participate in"], "。"],
         pinyin: "Shíbā suì yǐshàng de rén cái néng cānjiā.", english: "Only people eighteen and over can take part." },
@@ -1031,7 +1033,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Think Highly of / Look Down Upon (看得起 / 看不起)",
     focus: "看得起/看不起",
     pattern: ["Subject","看得起/看不起","Person"],
-    rule: "看得起 means you think the other person is important. 看不起 means you look down on them. Don't mix it up with V得起 and V不起, which say whether someone can afford something.",
+    rule: "看得起 means you respect someone and think they matter. 看不起 means you look down on them. Put the person right after it: 主管看得起你, 你不可以看不起窮人. Negate it inside the verb as 看不起, never with 不 in front. Book 2 Lesson 4's V得起/V不起 is about affording something. 看得起 and 看不起 are about respect.",
     examples: [
       { tokens: [["他","tā","he"], ["有","yǒu","there is"], ["錢","qián","money"], ["以後","yǐhòu","after"], "，", ["就","jiù","then"], ["看不起","kànbùqǐ","to look down on",1], ["老","lǎo","old (age)"], ["朋友","péngyǒu","friend"], ["了","le","completion particle"], "。"],
         pinyin: "Tā yǒu qián yǐhòu, jiù kànbùqǐ lǎo péngyǒu le.", english: "After he got rich, he looked down on his old friends." },
@@ -1046,7 +1048,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Yet / But (卻)",
     focus: "卻",
     pattern: ["Subject","卻","Unexpected result"],
-    rule: "卻 shows something is the opposite of the facts or of what was expected, as in 他卻沒來. Put it after the subject and before the verb.",
+    rule: "卻 means yet or but. The second part goes against the facts or against what you expected. Put 卻 after the subject and before the verb: 我們卻聊不到幾句話 (yet we could hardly talk). 可是 can start the second part, but 卻 stays after the subject: 可是面對面接觸時，我們卻聊不到幾句話.",
     examples: [
       { tokens: [["他","tā","he"], ["已經","yǐjīng","already"], ["五十","wǔshí","fifty"], ["歲","suì","measure word (age)"], ["了","le","completion particle"], "，", ["看","kàn","to read"], ["起來","qǐlái","estimation marker"], ["卻","què","yet",1], ["很","hěn","very"], ["年輕","niánqīng","young"], "。"],
         pinyin: "Tā yǐjīng wǔshí suì le, kàn qǐlái què hěn niánqīng.", english: "He's already fifty, but he looks young." },
@@ -1061,7 +1063,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Live Up to / Let Down with 對得起 / 對不起",
     focus: "對得起/對不起",
     pattern: ["Subject","對得起/對不起","Object"],
-    rule: "對得起 means you did nothing wrong, so you didn't disappoint, anger or embarrass the other person. 對不起 means the opposite. Put the person or thing after it, as in 對不起朋友.",
+    rule: "對得起 means you did right by someone, so you have nothing to feel bad about. 對不起 here means you let them down. Put the person or group right after it: 怎麼對得起父母呢 (how could he face his parents), 對不起社會 (letting society down). This 對不起 is a verb with someone after it. It is not the same as saying 對不起 alone to mean sorry.",
     examples: [
       { tokens: [["我","wǒ","I"], ["會","huì","will"], ["好好","hǎohǎo","properly"], ["努力","nǔlì","to work hard"], "，", ["才","cái","only (才)"], ["對得起","duìdeqǐ","live up to",1], ["父母","fùmǔ","parents"], "。"],
         pinyin: "Wǒ huì hǎohǎo nǔlì, cái duìdeqǐ fùmǔ.", english: "I'll work hard so I don't let my parents down." },
@@ -1076,7 +1078,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "As for / Turning to with 至於",
     focus: "至於",
     pattern: ["Claim","至於","Topic","Comment"],
-    rule: "至於 moves to another topic or view that connects to the first topic. Put the new topic after 至於, then say what you think about it.",
+    rule: "至於 means as for. After you make one point, it turns to a related point. Put the new point right after 至於, then comment on it: 至於詳細內容就得問他本人了 (as for the details, you'll have to ask him). The point after 至於 is often an open question: 至於什麼時候舉行婚禮，還要問家長的意見. Don't open a conversation with 至於. Say the first point, then use 至於 to move to the next.",
     examples: [
       { tokens: [["我們","wǒmen","we"], ["決定","juédìng","to decide"], ["去","qù","to go"], ["日本","Rìběn","Japan"], ["旅行","lǚxíng","travel"], "，", ["至於","zhìyú","as for",1], ["什麼時候","shénme shíhòu","when"], ["去","qù","to go"], "，", ["還沒","háiméi","not yet"], ["決定","juédìng","to decide"], "。"],
         pinyin: "Wǒmen juédìng qù Rìběn lǚxíng, zhìyú shénme shíhòu qù, háiméi juédìng.", english: "We've decided to travel to Japan. As for when, we haven't decided yet." },
@@ -1091,7 +1093,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Doing Something Immediately: 這就",
     focus: "這就……",
     pattern: ["Subject","這就","Action"],
-    rule: "這就 says you will do something right now, on the spot. 這 means 現在 and 就 means immediately. Put a verb or verb phrase after it. Don't use it for later times: you can't say 明天這就.",
+    rule: "這就 says you will do it right now. 這 means now and 就 means at once. Put 這就 after the subject and before the action: 我這就通知經理 (I'll tell the manager right away). It is only for right now, so never put a later time with it: no 明天這就.",
     examples: [
       { tokens: [["請","qǐng","please"], ["等","děng","to wait"], ["一下","yíxià","a bit"], "，", ["我","wǒ","I"], ["這就","zhè jiù","right away",1], ["去","qù","to go"], ["拿","ná","to hold; take"], "。"],
         pinyin: "Qǐng děng yíxià, wǒ zhè jiù qù ná.", english: "Please wait a moment. I'll go get it right away." },
@@ -1106,7 +1108,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "In Terms of … (在……方面)",
     focus: "在……方面（，）……",
     pattern: ["在","Area","方面","Comment"],
-    rule: "在……方面 names the area you are talking about, and the rest says what is true there. Put the area between 在 and 方面. Keep both words. 對……來說 gives a point of view, not an area. Don't say 對穿著方面.",
+    rule: "在……方面 names the area you are talking about, and the rest of the sentence says what is true in it. Put the area between 在 and 方面, and keep both words. It can open the sentence (在穿著方面，白小姐很有品味) or follow the subject (你在這方面有經驗嗎). 對……來說 gives someone's point of view, not an area. Don't say 對穿著方面.",
     examples: [
       { tokens: [["在","zài","in",1], ["工作","gōngzuò","to work; job"], ["方面","fāngmiàn","aspect",1], "，", ["他","tā","he"], ["很","hěn","very"], ["有","yǒu","there is"], ["經驗","jīngyàn","experience"], "。"],
         pinyin: "Zài gōngzuò fāngmiàn, tā hěn yǒu jīngyàn.", english: "When it comes to work, he's very experienced." },
@@ -1121,7 +1123,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Usually / Tend to (往往)",
     focus: "往往",
     pattern: ["Condition or Topic","往往","Usual result"],
-    rule: "往往 says something tends to happen under certain conditions, as a pattern seen again and again. Use it for what has already happened or for general facts, not for plans or personal wishes. Always say both characters, and never put 不 before it: no 不往往. 常常 also means it happens often, but 往往 has more limits.",
+    rule: "往往 says something usually happens under certain conditions. It describes a pattern seen again and again. Put it before the verb, after the condition or topic: 透過良好的溝通，往往能解決不必要的麻煩 (good communication usually solves needless trouble). Use it for general facts and what has happened so far, not for plans or wishes. 常常 is fine there. Always say both characters, and never put 不 before it: no 不往往.",
     examples: [
       { tokens: [["人","rén","person"], ["在","zài","in the middle of"], ["緊張","jǐnzhāng","nervous"], ["的時候","de shíhòu","when"], "，", ["往往","wǎngwǎng","frequently",1], ["表現","biǎoxiàn","performance"], ["得","de","complement particle"], ["不","bù","not"], ["好","hǎo","well"], "。"],
         pinyin: "Rén zài jǐnzhāng de shíhòu, wǎngwǎng biǎoxiàn de bù hǎo.", english: "People often don't do well when they're nervous." },
@@ -1136,7 +1138,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Introducing a Topic: 有關",
     focus: "有關……",
     pattern: ["有關","Topic","Explanation or Advice"],
-    rule: "有關 usually starts a sentence to bring up a topic. The next part explains it or gives advice. It can also describe a noun: 跟……有關的資料. 對於 gives the speaker's view of the object, but 有關 only brings up the topic.",
+    rule: "有關 means about or concerning. It usually starts the sentence to bring up a topic. Put the topic right after it, then explain or advise: 有關這方面的問題，會有相關人員來跟你詳細說明. Lesson 11's 'as for' turns to a second point. 有關 can bring up the main topic first.",
     examples: [
       { tokens: [["有關","yǒuguān","about",1], ["面試","miànshì","job interview"], ["的","de","possessive particle"], ["問題","wèntí","question"], "，", ["你","nǐ","you"], ["可以","kěyǐ","can; may"], ["問","wèn","to ask (a question)"], ["我","wǒ","I"], "。"],
         pinyin: "Yǒuguān miànshì de wèntí, nǐ kěyǐ wèn wǒ.", english: "You can ask me about anything to do with the interview." },
@@ -1151,7 +1153,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Even Though (儘管)",
     focus: "儘管",
     pattern: ["儘管","Fact","(但是 / 可是 / 還是 / 卻)","Contrary Result"],
-    rule: "儘管 means about the same as 雖然. It starts the first part and states a fact. The second part often uses 可是, 但是, 還是 or 卻 to show the opposite result. 儘管 is for facts that already happened. 即使 is for an imagined situation.",
+    rule: "儘管 means even though, like 雖然. It starts the first part and states something that is really true. The second part gives the unexpected result, often with 但是, 可是, 還是 or 卻: 儘管已經下課了，張老師還是留在教室裡改作業. Lesson 1's 'even if' (and 即使) is for something imagined. 儘管 is for a real fact.",
     examples: [
       { tokens: [["儘管","jǐnguǎn","even though",1], ["外面","wàimiàn","outside"], ["下","xià","fall"], ["著","zhe","continuous particle"], ["雨","yǔ","rain"], "，", ["他","tā","he"], ["還是","háishì","still",1], ["去","qù","to go"], ["跑步","pǎobù","to jog"], ["了","le","completion particle"], "。"],
         pinyin: "Jǐnguǎn wàimiàn xià zhe yǔ, tā háishì qù pǎobù le.", english: "Even though it was raining, he still went running." },
@@ -1166,7 +1168,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "No Matter … (不論……都……)",
     focus: "不論……都……",
     pattern: ["不論","Situation","Subject","都","Result"],
-    rule: "不論……都…… shows that the result stays the same even when the situation changes. After 不論 put a question word, a pair of opposites like 大小, or an A not A question. After 都 put the result or fact that will surely happen. 既然……就 is different: it says what naturally follows from something already true.",
+    rule: "不論……都…… says the result stays the same however the situation changes. Follow 不論 with a question word, a choice with 或, opposites like 大小, or A-not-A like 去不去. 都 goes in the second part, after its subject: 不論你說什麼，他都不會改變 (whatever you say, he won't change). Don't leave it out. It works like Book 2 Lesson 13's 'no matter', but sounds a bit more formal.",
     examples: [
       { tokens: [["不論","búlùn","regardless of",1], ["你","nǐ","you"], ["做","zuò","to do"], ["什麼","shénme","what"], ["決定","juédìng","to decide"], "，", ["我","wǒ","I"], ["都","dōu","all; both",1], ["相信","xiāngxìn","to believe"], ["你","nǐ","you"], "。"],
         pinyin: "Búlùn nǐ zuò shénme juédìng, wǒ dōu xiāngxìn nǐ.", english: "Whatever you decide, I trust you." },
@@ -1181,7 +1183,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Immediate Consequence / Reaction: 這下子",
     focus: "這下子",
     pattern: ["Situation","這下子","Result"],
-    rule: "這下子 gives the speaker's view of a situation just mentioned, or a reaction to something sudden. It stresses the immediate result of what just happened. 現在 only states the time now.",
+    rule: "這下子 means now, after what just happened. Use it to react to news or a sudden change. Put it at the start of your reaction, before the subject: 這下子他得改變計畫了 (now he'll have to change his plans). 現在 only tells the time. 這下子 points to the result of what just happened.",
     examples: [
       { tokens: [["我","wǒ","I"], ["的","de","possessive particle"], ["手機","shǒujī","cell phone"], ["沒","méi","to be gone"], ["電","diàn","electricity"], ["了","le","completion particle"], "，", ["這下子","zhèxiàzi","now",1], ["不","bù","not"], ["能","néng","can (able to)"], ["叫","jiào","to call"], ["計程車","jìchéngchē","taxi"], ["了","le","completion particle"], "。"],
         pinyin: "Wǒ de shǒujī méi diàn le, zhèxiàzi bù néng jiào jìchéngchē le.", english: "My phone's dead. Now I can't call a taxi." },
@@ -1196,7 +1198,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Both... and... (既……又……)",
     focus: "既……又……",
     pattern: ["Subject","既","Quality 1","又","Quality 2"],
-    rule: "既……又…… says the same subject has two states or situations. Both must be good or both must be bad. Don't put an adverb like 很 before the adjectives. The state after 又 is a little stronger, and this pattern is used more in writing than 又……又…….",
+    rule: "既……又…… means both … and … for one subject's two qualities or actions: 既省時間又方便. Put 既 and 又 after the subject, before verbs or adjectives: 既要品質好，又要設計佳. Both parts are good, or both are bad. Don't put 很 or 'very' in front of them. The part after 又 weighs a little more. 既……又…… sounds more written than 又……又…….",
     examples: [
       { tokens: [["騎","qí","to ride"], ["腳踏車","jiǎotàchē","bike"], ["既","jì","both",1], ["環保","huánbǎo","environmental protection"], ["又","yòu","both...and...",1], ["健康","jiànkāng","healthy"], "。"],
         pinyin: "Qí jiǎotàchē jì huánbǎo yòu jiànkāng.", english: "Cycling is both green and healthy." },
@@ -1211,7 +1213,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Not to Mention: 更別說",
     focus: "更別說……了",
     pattern: ["Basic Case","更別說","Advanced Case","了"],
-    rule: "更別說 means there is no need to say it, because the case after it is so clear. First give the easier or basic case, often with 連……都, then 更別說 and the harder one.",
+    rule: "更別說……了 means let alone or not to mention: the second case follows clearly from the first. In a negative sentence, put the easy case with 連……都 first, then 更別說: 我奶奶連怎麼上傳資料都不會，更別說建立自己的網站了. In a positive sentence, give the bigger point first, then 更別說: 既省時間又方便，更別說提供……基本服務了. 更別說 starts the second part, and 了 ends it.",
     examples: [
       { tokens: [["我","wǒ","I"], ["連","lián","even"], ["中文","Zhōngwén","Chinese"], ["都","dōu","all; both"], ["說","shuō","to say"], ["不","bù","not"], ["好","hǎo","well"], "，", ["更別說","gèng bié shuō","let alone",1], ["日文","Rìwén","Japanese"], ["了","le","completion particle",1], "。"],
         pinyin: "Wǒ lián Zhōngwén dōu shuō bù hǎo, gèng bié shuō Rìwén le.", english: "I can't even speak Chinese well, let alone Japanese." },
@@ -1226,7 +1228,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Even if… still… (就是……也……)",
     focus: "就是……（，）也……",
     pattern: ["就是","Condition","也","Result"],
-    rule: "就是……也…… means even if. The imagined situation after 就是 does not change the result after 也. In speech it works like 即使……也……. 只要……就 is different: it says if A happens, B must follow.",
+    rule: "就是……也…… means even if. Even if the situation after 就是 happens, the result after 也 stays the same. Put 就是 before the imagined situation and 也 before the verb of the result: 人們就是不出門，也可透過網路滿足相關的需求. If the result has its own subject, 也 goes after it: 就是吃再多苦，我也要堅持到底. It works like Lesson 1's 就算……也……. Here 就是 never means exactly, and pairs with 也, not 就.",
     examples: [
       { tokens: [["就是","jiùshì","even if",1], ["下雨","xiàyǔ","to rain"], "，", ["我","wǒ","I"], ["也","yě","also",1], ["想","xiǎng","to think"], ["去","qù","to go"], "。"],
         pinyin: "Jiùshì xiàyǔ, wǒ yě xiǎng qù.", english: "Even if it rains, I still want to go." },
@@ -1241,7 +1243,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "On One Hand, On the Other Hand (一方面……一方面……)",
     focus: "一方面……，一方面……",
     pattern: ["Subject","一方面","Aspect 1","一方面","Aspect 2"],
-    rule: "一方面……一方面…… gives two sides of one matter, such as two reasons, results or purposes. The two parts are equal. Neither is more important. 不但……而且…… is different: the second part goes a step further.",
+    rule: "一方面……，一方面…… means on the one hand … on the other, giving two reasons, results or purposes. With one subject, put it after the subject: 一方面要照顧生意，一方面要訓練員工, or add 也: 一方面也帶給企業更良好的管理方式. If each part has its own subject, 一方面 goes before it: 一方面打了折之後便宜得多，一方面筆電該有的功能它都有. The two parts weigh the same. With 不但……而且……, the second part goes a step further.",
     examples: [
       { tokens: [["我","wǒ","I"], ["來","lái","to come"], ["台灣","Táiwān","Taiwan"], "，", ["一方面","yìfāngmiàn","on one hand",1], ["學","xué","to learn"], ["中文","Zhōngwén","Chinese"], "，", ["一方面","yìfāngmiàn","on one hand",1], ["認識","rènshì","to get to know"], ["新","xīn","new"], ["朋友","péngyǒu","friend"], "。"],
         pinyin: "Wǒ lái Táiwān, yìfāngmiàn xué Zhōngwén, yìfāngmiàn rènshì xīn péngyǒu.", english: "I came to Taiwan partly to learn Chinese and partly to make new friends." },
@@ -1250,13 +1252,14 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["一方面","yìfāngmiàn","on one hand",1], ["工作","gōngzuò","to work; job"], "，", ["一方面","yìfāngmiàn","on one hand",1], ["念書","niànshū","to study"], "。"],
       pinyin: "Yìfāngmiàn gōngzuò, yìfāngmiàn niànshū.", english: "Working on one hand, studying on the other." },
+    alsoRight: ["一方面念書一方面工作"],
   },
   "jiuyaocong-shuoqi-start-from": {
     slug: "jiuyaocong-shuoqi-start-from", bookId: 3, lessonId: 14,
     title: "Starting to explain/narrate from a specific point",
     focus: "（這）就要從……說起了",
     pattern: ["(這)","就要從","Starting point","Verb (說/看/找…)","起了"],
-    rule: "就要從……說起了 says something is hard to explain simply, so you must start from one angle, part or time. Change 說 to a one-syllable verb like 看, 做 or 聊, not a longer one like 說明. End with 起了, not 起來. If the topic was already mentioned, leave out 這 or 那.",
+    rule: "這就要從……說起了 says a topic is big, so you must start at one point: 這就要從你的飲食習慣說起了. Put the starting point between 從 and the verb, and end with 起了, not 起來. Other one-syllable verbs work too (看, 做, 寫, 找, 聊): 就要從兩年前的找起了. Two-syllable 說明 does not. If the sentence before already named the topic, leave out 這 or 那.",
     examples: [
       { tokens: [["他們","tāmen","they"], ["為什麼","wèishénme","why"], ["吵架","chǎojià","to argue"], "？", ["這","zhè","this",1], ["就要從","jiù yào cóng","must start from",1], ["去年","qùnián","last year"], ["說","shuō","to say",1], ["起了","qǐ le","from the start",1], "。"],
         pinyin: "Tāmen wèishénme chǎojià? Zhè jiù yào cóng qùnián shuō qǐ le.", english: "Why are they fighting? For that, we have to go back to last year." },
@@ -1271,7 +1274,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Continuing an ongoing action",
     focus: "V 下去",
     pattern: ["Verb","下去 / 得下去 / 不下去"],
-    rule: "下去 after a verb shows that an action keeps going. No object can come after V下去. 得 means you can keep going and 不 means you can't, as in 看不下去.",
+    rule: "V下去 means to keep on doing something: 你們能堅持下去嗎 (can you keep it up)? Nothing goes after 下去. Name the thing first as the topic: 這部電影很無聊，我實在看不下去了. Put 得 or 不 between the verb and 下去 to say you can or can't keep going: 看不下去. Book 2 Lesson 15's 'down/stay' complement is about keeping or resting, not going on.",
     examples: [
       { tokens: [["這","zhè","this"], ["篇","piān","measure word (articles)"], ["文章","wénzhāng","article"], ["太","tài","too"], ["難","nán","difficult"], ["了","le","completion particle"], "，", ["我","wǒ","I"], ["讀","dú","to read; to study"], ["不","bú","not"], ["下去","xiàqù","to go on",1], ["了","le","completion particle"], "。"],
         pinyin: "Zhè piān wénzhāng tài nán le, wǒ dú bú xiàqù le.", english: "This article is too hard. I can't keep reading." },
@@ -1286,7 +1289,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Fortunately..., otherwise...",
     focus: "幸虧……，要不然……",
     pattern: ["幸虧","Fortunate event","要不然","Negative outcome"],
-    rule: "幸虧 introduces a lucky event that happened. 要不然 then gives the bad or worrying result that would have happened without it.",
+    rule: "幸虧 means luckily. It gives the lucky fact that stopped something bad, and 要不然 says what would have happened without it. 幸虧 starts the lucky part, before its subject: 幸虧她那天沒去，要不然就糟了. It works like Book 2 Lesson 5's everyday 'luckily … otherwise …', in a slightly more formal tone.",
     examples: [
       { tokens: [["幸虧","xìngkuī","fortunately",1], ["我","wǒ","I"], ["帶","dài","to bring"], ["了","le","completion particle"], ["傘","sǎn","umbrella"], "，", ["要不然","yàobùrán","otherwise",1], ["一定","yídìng","definitely"], ["會","huì","would"], ["感冒","gǎnmào","to catch a cold"], "。"],
         pinyin: "Xìngkuī wǒ dài le sǎn, yàobùrán yídìng huì gǎnmào.", english: "Good thing I brought an umbrella, or I'd surely have caught a cold." },
@@ -1301,7 +1304,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "According to / Based on (basis or evidence)",
     focus: "根據",
     pattern: ["根據","Basis (Source / Law / Report / Survey)","Claim"],
-    rule: "根據 means using something as the base for a judgment, action or conclusion. After 根據 put a noun phrase for the basis, such as 報告, 調查, 經驗 or 法律. 根據 gives the reason behind a conclusion. 按照 is about how something is done.",
+    rule: "根據 means according to. It names the source or evidence a statement or decision rests on. Put 根據 and the source (說法, 法律, 調查, 報告) at the start: 根據我國的法律，十八歲以上才可以喝酒. 根據 tells why you can say something. 按照 tells how something is done.",
     examples: [
       { tokens: [["根據","gēnjù","based on",1], ["氣象","qìxiàng","weather"], ["預報","yùbào","weather report"], "，", ["明天","míngtiān","tomorrow"], ["會","huì","will"], ["下雨","xiàyǔ","to rain"], "。"],
         pinyin: "Gēnjù qìxiàng yùbào, míngtiān huì xiàyǔ.", english: "According to the weather forecast, it will rain tomorrow." },
@@ -1316,7 +1319,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "In accordance with / Following (method or rule)",
     focus: "按照/按/照 NP + V",
     pattern: ["按照 / 按 / 照","Standard","Action"],
-    rule: "按照 means doing something by a method, rule, plan or standard. It stresses how something is done, as in 按照杯子大小算. You can shorten it to 按 or 照. 根據 stresses why you say or do something, and it can also be a noun.",
+    rule: "按照 means following a rule, method, plan or standard. It is about how something is done. Put 按照 and the rule before the verb: 只要按照醫生的話去做 (just do what the doctor says). You can shorten it to 按 or 照: 就按會議的決定做吧 (let's do as the meeting decided). Use 根據 to give the basis for a statement. 根據 can also be a noun, meaning basis. 按照 can't.",
     examples: [
       { tokens: [["請","qǐng","please"], ["按照","ànzhào","according to",1], ["老師","lǎoshī","teacher"], ["說","shuō","to say"], ["的","de","possessive particle"], ["方法","fāngfǎ","method"], ["做","zuò","to do"], "。"],
         pinyin: "Qǐng ànzhào lǎoshī shuō de fāngfǎ zuò.", english: "Please do it the way the teacher said." },
@@ -1331,7 +1334,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Simply / Virtually / Practically",
     focus: "簡直",
     pattern: ["Subject","簡直","Comparison"],
-    rule: "簡直 describes something in an exaggerated, vivid way, to say it is almost like that. It can be followed by 像, 就像, 是 or 就是. 簡直 is a vivid view from the speaker, not just a degree word like 很 or 非常.",
+    rule: "簡直 means practically or simply. The speaker exaggerates on purpose to paint a vivid picture. Put it after the subject, before the verb or description: 那幾條龍簡直快飛起來了 (those dragons look practically ready to fly off). It often comes before 像, 就像, 是 or 就是: 簡直像個仙女一樣 (just like a fairy). 很 and 非常 only say how much. 簡直 shows the speaker's own strong reaction.",
     examples: [
       { tokens: [["他","tā","he"], ["畫","huà","to draw"], ["的","de","possessive particle"], ["龍","lóng","dragon"], ["簡直","jiǎnzhí","simply",1], ["像","xiàng","to look like"], ["真","zhēn","real"], ["的","de","possessive particle"], ["一樣","yíyàng","same"], "。"],
         pinyin: "Tā huà de lóng jiǎnzhí xiàng zhēn de yíyàng.", english: "The dragon he painted looks practically real." },
@@ -1346,7 +1349,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Beyond words / Couldn't be better",
     focus: "Vs 得沒話說",
     pattern: ["Vs","得","沒話說"],
-    rule: "Put a describing word before 得沒話說 to say you can't find a better word for it. It is mostly positive, for praise, not for criticism. 沒話說 can also stand alone, as in 服務沒話說, to mean nothing to complain about.",
+    rule: "Vs得沒話說 says something is so good there are no better words for it. Put the describing word right before 得沒話說: 夕陽美得沒話說, 速度快得沒話說. It is only for praise. Book 2's 'extremely' patterns can describe bad feelings too. 沒話說 on its own can praise something too, as in 服務沒話說.",
     examples: [
       { tokens: [["這","zhè","this"], ["家","jiā","measure word (shops)"], ["的","de","possessive particle"], ["小籠包","xiǎolóngbāo","soup dumplings"], ["好吃","hǎochī","delicious"], ["得","de","complement particle",1], ["沒話說","méi huà shuō","beyond words",1], "。"],
         pinyin: "Zhè jiā de xiǎolóngbāo hǎochī de méi huà shuō.", english: "This shop's soup dumplings couldn't be better." },
@@ -1361,7 +1364,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "At the same time / Concurrently / Furthermore",
     focus: "同時",
     pattern: ["Subject","同時","Verb phrase / Clause，同時（也）","Clause"],
-    rule: "同時 as a noun or adverb means actions or events happen at the same time. Between two sentences, it joins two equal ones and adds a further point. 一邊……一邊…… is for one person doing two actions at once. 同時 can also join two roles or further points.",
+    rule: "同時 has two uses: two things happen at the same time, or a second, equal point is added. For the same time, put it after the subject and before the verb: 我們同時完成了 (we finished at the same time). To add a point, start the second part with 同時, often with 也: 孔子是哲學方面的代表人物，同時也是華人最尊敬的老師. 一邊……一邊…… is one person doing two actions at once. 同時 also works for two people or two roles.",
     examples: [
       { tokens: [["我們","wǒmen","we"], ["兩","liǎng","two"], ["個","ge","verb particle (個)"], ["人","rén","person"], ["同時","tóngshí","at the same time",1], ["到","dào","to (a destination)"], ["了","le","completion particle"], "。"],
         pinyin: "Wǒmen liǎng ge rén tóngshí dào le.", english: "The two of us arrived at the same time." },
@@ -1391,7 +1394,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "In short / In conclusion / All in all",
     focus: "總而言之，……/總之，……",
     pattern: ["總而言之／總之，……"],
-    rule: "總而言之 gives a short conclusion to what came before, without much detail. It can be shortened to 總之. Don't mix it up with 總算, which means finally, or 總共, which adds up amounts.",
+    rule: "總而言之, or the shorter 總之, means in short. It sums up what was just said in one conclusion. Put it at the start of the concluding sentence: 總而言之，大家應該要一起解決這個問題 (in short, everyone should work on this problem together). 總之 is the everyday form: 總之，各方面都得一百分才行. Don't mix it up with 總算 from Lesson 6, which means finally, after a long wait.",
     examples: [
       { tokens: [["這裡","zhèlǐ","here"], ["交通","jiāotōng","transportation"], ["方便","fāngbiàn","convenient"], "，", ["東西","dōngxi","thing"], ["便宜","piányí","cheap"], "，", ["總而言之","zǒng'ér yánzhī","in a word",1], "，", ["很","hěn","very"], ["適合","shìhé","to suit"], ["居住","jūzhù","to live"], "。"],
         pinyin: "Zhèlǐ jiāotōng fāngbiàn, dōngxi piányí, zǒng'ér yánzhī, hěn shìhé jūzhù.", english: "Transportation here is convenient and things are cheap. In short, it's a great place to live." },
@@ -1406,7 +1409,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "To Regard As / To Treat As",
     focus: "當作/當做",
     pattern: ["Subject","把/被","Object","當作","Role / Subject","當作","Clause"],
-    rule: "當作 means to treat one thing as if it were the same as another. It can also show a judgment about something, such as 被人當作是學生. With 把, the subject does the treating. With 被, the subject is the one treated that way.",
+    rule: "當作, also written 當做, means to treat or take one thing as another, by mistake or on purpose. Use 把 A 當作 B (把冰箱裡的水果酒當作果汁喝了) or 被當作 B (被當作垃圾丟掉). With a whole clause after it, 當作 means acting as if it were true: 老師就當作你們都懂了. Lesson 5's 'mistakenly thought' is only for wrong beliefs. 當作 also covers treating something so on purpose.",
     examples: [
       { tokens: [["我","wǒ","I"], ["把","bǎ","disposal marker",1], ["他","tā","he"], ["當作","dàngzuò","to regard as",1], ["自己","zìjǐ","self"], ["的","de","possessive particle"], ["哥哥","gēge","elder brother"], "。"],
         pinyin: "Wǒ bǎ tā dàngzuò zìjǐ de gēge.", english: "I think of him as my own older brother." },
@@ -1421,7 +1424,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "At Least",
     focus: "至少",
     pattern: ["至少","Quantity / Clause"],
-    rule: "至少 means at least: it shows the lowest amount or level. After 至少 put a quantity or a short sentence. It can also name the smallest step that must be done, as in 至少得先聽聽其他人的意見.",
+    rule: "至少 means at least. It sets the lowest amount, level or step. Put 至少 before the number or verb, never at the end: 至少兩個月才能完全恢復. It often names the smallest step someone should take: 至少得先聽聽其他人的意見 (you should at least hear what others think first). It can also point out one good thing in a bad situation: 至少不必擔心食物不夠.",
     examples: [
       { tokens: [["每","měi","every"], ["天","tiān","day"], ["至少","zhìshǎo","at least",1], ["得","děi","have to"], ["喝","hē","to drink"], ["八","bā","eight"], ["杯","bēi","cup of"], ["水","shuǐ","water"], "。"],
         pinyin: "Měi tiān zhìshǎo děi hē bā bēi shuǐ.", english: "You should drink at least eight glasses of water a day." },
@@ -1436,7 +1439,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "Owing To ..., Therefore ...",
     focus: "由於……，（因此）……",
     pattern: ["由於","Cause，（因此）","Result"],
-    rule: "由於 gives the reason and 因此 gives the result. This is more formal than 因為……，所以……. 由於 usually starts the first part. If the reason comes second, write 是由於, not just 由於.",
+    rule: "由於 gives the cause, and 因此 gives the result. It means the same as 因為……，所以……, but sounds more formal. 由於 starts the first part. 因此 before the result can be left out: 由於這個都市規劃得不理想，商業活動增加後，交通就變得又擠又亂. 因為 can start either part, but if the cause comes second, write 是由於, not just 由於.",
     examples: [
       { tokens: [["由於","yóuyú","due to",1], ["颱風","táifēng","typhoon"], ["快要","kuàiyào","about to"], ["來","lái","to come"], ["了","le","completion particle"], "，", ["因此","yīncǐ","therefore",1], ["比賽","bǐsài","to compete"], ["改","gǎi","to change"], ["到","dào","to (a destination)"], ["下","xià","next"], ["星期","xīngqí","week"], "。"],
         pinyin: "Yóuyú táifēng kuàiyào lái le, yīncǐ bǐsài gǎi dào xià xīngqí.", english: "Because a typhoon is coming, the competition has moved to next week." },
@@ -1451,7 +1454,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "To Cause / To Make",
     focus: "使得",
     pattern: ["Cause","使得","Result"],
-    rule: "使得 links a cause to the result it brings about. It is like 使 but more formal. 使得 is often used for facts that already happened, and 使 for imagined situations.",
+    rule: "使得 means to cause or bring about: cause first, then 使得, then who or what is affected and the result. 九二一大地震的規模很大，使得許多房屋跟馬路都塌了 (the 921 earthquake was so strong that many houses and roads collapsed). It is more formal than 使. Use 使得 for things that have happened, and 使 for imagined ones. Unlike Lesson 10's bad-result verb, 使得 works for good results too: 使得參觀的民眾一年比一年多了.",
     examples: [
       { tokens: [["這","zhè","this"], ["場","chǎng","measure word (events)"], ["大","dà","big"], ["雨","yǔ","rain"], ["使得","shǐde","to make",1], ["很","hěn","very"], ["多","duō","more"], ["地方","dìfāng","place"], ["淹水","yānshuǐ","to get flooded"], ["了","le","completion particle"], "。"],
         pinyin: "Zhè chǎng dà yǔ shǐde hěn duō dìfāng yānshuǐ le.", english: "This heavy rain flooded many places." },
@@ -1466,7 +1469,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     title: "So / Thereupon",
     focus: "於是",
     pattern: ["Cause，於是","Action"],
-    rule: "於是 joins two sentences. The second shows an action taken because of the first. Don't use it when the second part is a natural event, as in 於是下雨了. Use 所以 instead.",
+    rule: "於是 means so, as a result. It joins a situation to the action someone then takes because of it. Put it at the start of the second part: 於是，他在餐廳門外放了一台冰箱. Never use it for natural events or things nobody chose: no 天很黑，於是下雨了. Use 所以 there. Lesson 5's 'as a result' tells how things turned out. 於是 tells what someone chose to do next.",
     examples: [
       { tokens: [["天氣","tiānqì","weather"], ["很","hěn","very"], ["好","hǎo","nice"], "，", ["於是","yúshì","so",1], ["我們","wǒmen","we"], ["去","qù","to go"], ["海邊","hǎibiān","beach"], ["了","le","completion particle"], "。"],
         pinyin: "Tiānqì hěn hǎo, yúshì wǒmen qù hǎibiān le.", english: "The weather was lovely, so we went to the beach." },

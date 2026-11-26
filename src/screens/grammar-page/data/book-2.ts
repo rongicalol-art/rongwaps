@@ -110,6 +110,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["他","tā","he"], ["一邊","yìbiān","while",1], ["走路","zǒulù","to walk (on foot)"], ["一邊","yìbiān","while",1], ["唱歌","chànggē","to sing"], "。"],
       pinyin: "Tā yìbiān zǒulù yìbiān chànggē.", english: "He sings while he walks." },
+    alsoRight: ["他一邊唱歌一邊走路"],
   },
   "suiran-keshi-although": {
     slug: "suiran-keshi-although", bookId: 2, lessonId: 1,
@@ -573,8 +574,8 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
       { tokens: [["蛋糕","dàngāo","cake"], ["被","bèi","by (passive: 被)",1], ["弟弟","dìdi","younger brother"], ["吃","chī","to eat"], ["完","wán","to finish"], ["了","le","completion particle"], "。"],
         pinyin: "Dàngāo bèi dìdi chī wán le.", english: "The cake was all eaten by my younger brother." },
     ],
-    exercise: { tokens: [["窗戶","chuānghù","window"], ["被","bèi","by (passive: 被)",1], ["風","fēng","wind"], ["打開","dǎkāi","to open; turn on"], ["了","le","completion particle"], "。"],
-      pinyin: "Chuānghù bèi fēng dǎkāi le.", english: "The window was blown open by the wind." },
+    exercise: { tokens: [["書","shū","book"], ["被","bèi","by (passive: 被)",1], ["妹妹","mèimei","younger sister"], ["拿走","ná zǒu","to take away"], ["了","le","completion particle"], "。"],
+      pinyin: "Shū bèi mèimei ná zǒu le.", english: "The book was taken away by my younger sister." },
   },
   "zhe-zhe-while-doing": {
     slug: "zhe-zhe-while-doing", bookId: 2, lessonId: 5,
@@ -588,8 +589,8 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
       { tokens: [["我們","wǒmen","we"], ["走","zǒu","to walk"], ["著","zhe","continuous particle",1], ["走","zǒu","to walk"], ["著","zhe","continuous particle",1], "，", ["就","jiù","just",1], ["到","dào","to (a place)"], ["海邊","hǎibiān","beach"], ["了","le","completion particle",1], "。"],
         pinyin: "Wǒmen zǒu zhe zǒu zhe, jiù dào hǎibiān le.", english: "We kept walking and ended up at the beach." },
     ],
-    exercise: { tokens: [["聽","tīng","to listen"], ["著","zhe","continuous particle",1], ["聽","tīng","to listen"], ["著","zhe","continuous particle",1], ["睡著","shuìzháo","to fall asleep"], ["了","le","completion particle",1], "。"],
-      pinyin: "Tīng zhe tīng zhe shuìzháo le.", english: "I was listening and fell asleep." },
+    exercise: { tokens: [["我","wǒ","I"], ["聽著","tīngzhe","listening"], ["聽著","tīngzhe","listening"], ["就","jiù","just",1], ["睡著","shuìzháo","to fall asleep"], ["了","le","completion particle",1], "。"],
+      pinyin: "Wǒ tīngzhe tīngzhe jiù shuìzháo le.", english: "I was listening and fell asleep." },
   },
   "zhiyao-jiu-as-long-as": {
     slug: "zhiyao-jiu-as-long-as", bookId: 2, lessonId: 5,
@@ -1325,6 +1326,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["他","tā","he"], ["喜歡","xǐhuān","to like"], ["籃球","lánqiú","basketball"], "、", ["網球","wǎngqiú","tennis"], ["等","děng","and so on",1], ["運動","yùndòng","to exercise"], "。"],
       pinyin: "Tā xǐhuān lánqiú, wǎngqiú děng yùndòng.", english: "He likes sports like basketball and tennis." },
+    alsoRight: ["他喜歡網球籃球等運動"],
   },
   "cong-zhong-learn-from": {
     slug: "cong-zhong-learn-from", bookId: 2, lessonId: 11,
@@ -1595,6 +1597,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["我","wǒ","I"], ["買","mǎi","to buy"], ["了","le","completion particle"], ["橘子","júzi","tangerine"], "、", ["米粉","mǐfěn","rice noodles"], ["等等","děngděng","and so on",1], "。"],
       pinyin: "Wǒ mǎi le júzi, mǐfěn děngděng.", english: "I bought oranges, rice noodles and other things." },
+    alsoRight: ["我買了米粉橘子等等"],
   },
   "dang-jiu-when-then": {
     slug: "dang-jiu-when-then", bookId: 2, lessonId: 14,
@@ -1790,6 +1793,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
     ],
     exercise: { tokens: [["我","wǒ","I"], ["喜歡","xǐhuān","to like"], ["披薩","pīsà","pizza"], "、", ["鬆餅","sōngbǐng","waffle"], ["什麼的","shénmede","and so on",1], "。"],
       pinyin: "Wǒ xǐhuān pīsà, sōngbǐng shénmede.", english: "I like pizza, waffles and that kind of thing." },
+    alsoRight: ["我喜歡鬆餅披薩什麼的"],
   },
   "lai-qu-back-and-forth": {
     slug: "lai-qu-back-and-forth", bookId: 2, lessonId: 16,
