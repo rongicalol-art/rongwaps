@@ -32,11 +32,11 @@ const WORDS = [
   word('4', '朋友', 'péngyǒu', 'friend'),
   word('5', '書', 'shū', 'book (M: 本běn)'),
   word('6', '中國', 'Zhōngguó', 'China'),
-  word('7', '臺灣', 'Táiwān', 'Taiwan'),
+  word('7', '台灣', 'Táiwān', 'Taiwan'),
   word('8', '大家', 'dàjiā', 'everyone'),
 ];
 const [TEACHER, STUDENT, PRETTY, FRIEND, BOOK, CHINA, TAIWAN, EVERYONE] = WORDS;
-const SESSION_WORDS = ['新', '同學', '她', '誰', '叫', '漂亮', '英國', '中國', '臺灣', '什麼', '名字', '姓', '老師', '你好', '我', '你', '他', '是', '很'];
+const SESSION_WORDS = ['新', '同學', '她', '誰', '叫', '漂亮', '英國', '中國', '台灣', '什麼', '名字', '姓', '老師', '你好', '我', '你', '他', '是', '很'];
 
 type PreviewKey = 'challenge-won' | 'challenge-lost' | 'challenge-tied' | 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'type-pinyin' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'streak-1' | 'streak-6' | 'streak-100' | 'resume-cards' | 'resume-review' | 'resume-quiz';
 const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
