@@ -8,7 +8,7 @@ const jsonUnder = (dir: string) => readdirSync(dir, { recursive: true, encoding:
 const holding = (files: string[], pattern: RegExp) => files.filter((file) => pattern.test(readFileSync(file, 'utf8').normalize('NFC')));
 
 test('表示 is spelled biǎoshì, full fourth tone', () => {
-  assert.deepEqual(holding(jsonUnder('content'), /bi[ǎǍ]o ?shi(?![\p{L}])/iu), []);
+  assert.deepEqual(holding(jsonUnder('content'), /biǎo(?: ?shi|sh[īíǐ])(?!\p{L})/iu), []);
 });
 
 test('what we wrote ourselves says 台灣, not 臺灣', () => {
