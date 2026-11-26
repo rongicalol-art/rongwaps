@@ -277,7 +277,7 @@
       { "zh": "這 家 飯店 又 舒服 又 便宜 。", "en": "This hotel is comfortable and cheap." },
       { "zh": "那 家 餐廳 的 牛肉麵 又 便宜 又 好吃 。", "en": "That restaurant's beef noodles are cheap and tasty." }
     ],
-    "exercise": { "zh": "計程車 又 快 又 舒服 。", "en": "Taxis are fast and comfortable." }
+    "exercise": { "zh": "計程車 又 快 又 舒服 。", "en": "Taxis are fast and comfortable.", "also": ["計程車 又 舒服 又 快 。"] }
   },
   "B1L08-G01-P185": {
     "slug": "hao-nan-easy-or-hard",

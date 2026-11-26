@@ -42,6 +42,12 @@ test('every grammar page has a rule, two examples, a different sentence to build
     const tiles = words(page.exercise).length;
     assert.ok(tiles >= 3 && tiles <= 6, `${slug} exercise has ${tiles} words`);
     assert.ok(page.examples.every((example) => text(example) !== text(page.exercise)), `${slug} exercise repeats an example`);
+    // Another right order (一邊唱歌一邊走路) uses the same tiles, in an order that differs from the answer.
+    const answer = words(page.exercise).map((word) => word[0]).join('');
+    for (const order of page.alsoRight ?? []) {
+      assert.notEqual(order, answer, `${slug} alsoRight repeats the answer`);
+      assert.equal([...order].sort().join(''), [...answer].sort().join(''), `${slug} alsoRight "${order}" uses other words`);
+    }
     // A page about one word (呢) shows that word in what the visitor reads.
     if (page.focus) assert.ok(page.examples.some((example) => words(example).some((word) => word[3] === 1)), `${slug} examples never use the pattern's own word`);
     const meta = grammarPageMeta(link);

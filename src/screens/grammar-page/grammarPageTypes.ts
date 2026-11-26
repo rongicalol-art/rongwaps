@@ -21,6 +21,8 @@ export interface GrammarPageData {
   rule: string;
   examples: readonly GrammarSentence[];
   exercise: GrammarSentence;
+  /** Other orders of the exercise's words that are just as right, each as its characters run together. */
+  alsoRight?: readonly string[];
 }
 
 /** What other pages need to link here without downloading the page (data/index.ts). */
