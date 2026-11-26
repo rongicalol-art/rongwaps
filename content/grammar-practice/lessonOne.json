@@ -730,7 +730,7 @@
               },
               {
                 "type": "text",
-                "traditional": "臺灣人，她",
+                "traditional": "台灣人，她",
                 "simplified": "台湾人，她"
               },
               {
@@ -789,9 +789,9 @@
             "note": "不姓 denies a family name; a nationality takes 是 or 不是."
           }
         ],
-        "fallbackRepair": "Look at the pictures: 友美 is 日本人, so she is not 臺灣人.",
+        "fallbackRepair": "Look at the pictures: 友美 is 日本人, so she is not 台灣人.",
         "result": {
-          "traditional": "友美不是臺灣人，她是日本人。",
+          "traditional": "友美不是台灣人，她是日本人。",
           "simplified": "友美不是台湾人，她是日本人。",
           "pinyin": "Yǒuměi bú shì Táiwān rén, tā shì Rìběn rén.",
           "english": "Youmei is not Taiwanese; she is Japanese."

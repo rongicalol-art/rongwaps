@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "6b71837826b896f8",
-  "generatedAt": "2026-11-23T09:12:29.350Z",
+  "version": "f309ef80f9990a8e",
+  "generatedAt": "2026-11-26T15:08:24.106Z",
   "totalCount": 4067,
   "books": [
     {
@@ -22,8 +22,8 @@
       "bookId": 3,
       "count": 1022,
       "path": "/data/vocabulary/book-3.json",
-      "sha256": "992e9896c20e4258ec205a0ec1ef104646293d56560d26359f5d326b69bfa2e8",
-      "bytes": 631822
+      "sha256": "345570967a101841ac1fe01b30f314aaaf811ba8ecacc135c0eb89e773c849bf",
+      "bytes": 631825
     },
     {
       "bookId": 4,

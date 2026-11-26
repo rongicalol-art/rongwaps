@@ -20,7 +20,7 @@ export const SAMPLE_WORDS: readonly SampleWord[] = [
   ["知道", "zhīdào", "to know", "B1L01-1-12-93d6e808584f.mp3"],
   ["嗎", "ma", "yes-no particle", "B1L01-1-13-fe305216a421.mp3"],
   ["日本", "Rìběn", "Japan", "B1L01-1-14-48fcb0281cbd.mp3"],
-  ["臺灣", "Táiwān", "Taiwan", "B1L01-1-15-4ad1d98b0646.mp3"],
+  ["台灣", "Táiwān", "Taiwan", "B1L01-1-15-4ad1d98b0646.mp3"],
   ["中國", "Zhōngguó", "China", "B1L01-1-16-92ea4b5af38e.mp3"],
   ["美國", "Měiguó", "USA", "B1L01-1-17-433cb859aaff.mp3"],
   ["英國", "Yīngguó", "UK", "B1L01-1-18-47fd8c0d1413.mp3"],

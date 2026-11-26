@@ -1359,7 +1359,7 @@
           "lines": [
             {
               "speaker": "M",
-              "traditional": "各位好，今天要跟大家介紹臺灣人怎麼歡迎剛出生的孩子。",
+              "traditional": "各位好，今天要跟大家介紹台灣人怎麼歡迎剛出生的孩子。",
               "simplified": "各位好，今天要跟大家介绍台湾人怎么欢迎刚出生的孩子。",
               "pinyin": "Gèwèi hǎo, jīntiān yào gēn dàjiā jièshào Táiwān rén zěnme huānyíng gāng chūshēng de háizi.",
               "english": "Hello, everyone. Today I'm going to introduce how people in Taiwan welcome a newborn baby."
@@ -1767,7 +1767,7 @@
           "id": "b3l04-cloze-customs-2",
           "kind": "cloze",
           "passage": {
-            "traditional": "上個月室友住院了，我想帶一些水果去看她。在水果店，我本來想買梨子，因為她最愛吃梨子。老闆聽了，{1}告訴我：「去看病人，最好{2}送梨子，因為『梨』聽起來像『離開』的『離』。」我這才明白，{3}是水果，在不同的文化裡，意思也可能不一樣。後來我拿了五個蘋果，老闆又說，送病人的水果最好買{4}，我就多拿了一個，不多不少，剛好六個。室友聽我說了買水果的{5}，笑著說：「我是臺灣人，都沒有你這麼懂得{6}。」",
+            "traditional": "上個月室友住院了，我想帶一些水果去看她。在水果店，我本來想買梨子，因為她最愛吃梨子。老闆聽了，{1}告訴我：「去看病人，最好{2}送梨子，因為『梨』聽起來像『離開』的『離』。」我這才明白，{3}是水果，在不同的文化裡，意思也可能不一樣。後來我拿了五個蘋果，老闆又說，送病人的水果最好買{4}，我就多拿了一個，不多不少，剛好六個。室友聽我說了買水果的{5}，笑著說：「我是台灣人，都沒有你這麼懂得{6}。」",
             "simplified": "上个月室友住院了，我想带一些水果去看她。在水果店，我本来想买梨子，因为她最爱吃梨子。老板听了，{1}告诉我：「去看病人，最好{2}送梨子，因为『梨』听起来像『离开』的『离』。」我这才明白，{3}是水果，在不同的文化里，意思也可能不一样。后来我拿了五个苹果，老板又说，送病人的水果最好买{4}，我就多拿了一个，不多不少，刚好六个。室友听我说了买水果的{5}，笑着说：「我是台湾人，都没有你这么懂得{6}。」",
             "pinyin": "Shàng ge yuè shìyǒu zhùyuàn le, wǒ xiǎng dài yìxiē shuǐguǒ qù kàn tā. Zài shuǐguǒ diàn, wǒ běnlái xiǎng mǎi lízi, yīnwèi tā zuì ài chī lízi. Lǎobǎn tīng le, lìkè gàosù wǒ: \"Qù kàn bìngrén, zuìhǎo bìmiǎn sòng lízi, yīnwèi 'lí' tīngqǐlái xiàng 'líkāi' de 'lí'.\" Wǒ zhè cái míngbái, tóngyàng shì shuǐguǒ, zài bùtóng de wénhuà lǐ, yìsi yě kěnéng bù yíyàng. Hòulái wǒ ná le wǔ ge píngguǒ, lǎobǎn yòu shuō, sòng bìngrén de shuǐguǒ zuìhǎo mǎi shuāngshù, wǒ jiù duō ná le yí ge, bù duō bù shǎo, gānghǎo liù ge. Shìyǒu tīng wǒ shuō le mǎi shuǐguǒ de jīngguò, xiàozhe shuō: \"Wǒ shì Táiwān rén, dōu méiyǒu nǐ zhème dǒngde sònglǐ.\"",
             "english": "Last month my roommate was in hospital, and I wanted to take some fruit to visit her. At the fruit shop I first wanted to buy pears, because she loves pears. When the owner heard this, he immediately told me: \"When you visit a patient, you'd better avoid giving pears, because 'pear' (lí) sounds like the lí of 'to leave'.\" Only then did I understand that, though it is fruit all the same, its meaning can differ between cultures. Then I picked up five apples, and the owner added that fruit for a patient had better be bought in an even number, so I took one more: six, no more and no fewer. When my roommate heard how I had bought the fruit, she laughed and said: \"I'm Taiwanese, and even I don't know as much as you about giving gifts.\""
