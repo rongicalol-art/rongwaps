@@ -18,7 +18,7 @@ export const PAGES: Readonly<Record<string, GrammarPageData>> = {
       { tokens: [["他","tā","he"], ["不","bú","not"], ["是","shì","to be",1], ["老師","lǎoshī","teacher"], "，", ["他","tā","he"], ["是","shì","to be",1], ["學生","xuéshēng","student"], "。"],
         pinyin: "Tā bú shì lǎoshī, tā shì xuéshēng.", english: "He is not a teacher. He is a student." },
     ],
-    exercise: { tokens: [["我","wǒ","I"], ["是","shì","to be",1], ["臺灣","Táiwān","Taiwan"], ["人","rén","person"], "。"],
+    exercise: { tokens: [["我","wǒ","I"], ["是","shì","to be",1], ["台灣","Táiwān","Taiwan"], ["人","rén","person"], "。"],
       pinyin: "Wǒ shì Táiwān rén.", english: "I am Taiwanese." },
   },
   "hen-bu-describe-someone": {
