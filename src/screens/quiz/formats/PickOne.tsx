@@ -52,7 +52,7 @@ const ListenPrompt: React.FC<{ card: Flashcard }> = ({ card }) => {
         onClick={() => { speaker.claim(); void audioService.playCard(card, rate); }}
         className="h-32 w-32 !p-0 md:h-36 md:w-36"
       >
-        <SpeakerIcon status={speaker.status()} size={64} className="text-brand-primary-soft" />
+        <SpeakerIcon status={speaker.status()} size={64} className="text-brand-on-primary" />
       </ActionButton>
     </div>
   );
