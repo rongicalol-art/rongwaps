@@ -115,7 +115,10 @@
     ],
     "exercise": {
       "zh": "他 一邊|yìbiān|while 走路 一邊|yìbiān|while 唱歌 。",
-      "en": "He sings while he walks."
+      "en": "He sings while he walks.",
+      "also": [
+        "他 一邊 唱歌 一邊 走路 。"
+      ]
     }
   },
   "B2L01-G08-P40": {
@@ -641,8 +644,8 @@
       }
     ],
     "exercise": {
-      "zh": "窗戶 被 風 打開 了 。",
-      "en": "The window was blown open by the wind."
+      "zh": "書 被 妹妹 拿走|ná_zǒu|to_take_away 了 。",
+      "en": "The book was taken away by my younger sister."
     }
   },
   "B2L05-G02-P123": {
@@ -658,7 +661,7 @@
       }
     ],
     "exercise": {
-      "zh": "聽 著 聽 著 睡著 了 。",
+      "zh": "我 聽著|tīngzhe|listening 聽著|tīngzhe|listening 就 睡著 了 。",
       "en": "I was listening and fell asleep."
     }
   },
@@ -1492,7 +1495,10 @@
     ],
     "exercise": {
       "zh": "他 喜歡 籃球 、 網球 等 運動 。",
-      "en": "He likes sports like basketball and tennis."
+      "en": "He likes sports like basketball and tennis.",
+      "also": [
+        "他 喜歡 網球 、 籃球 等 運動 。"
+      ]
     }
   },
   "B2L11-G07-P260": {
@@ -1798,7 +1804,10 @@
     ],
     "exercise": {
       "zh": "我 買 了 橘子 、 米粉 等等 。",
-      "en": "I bought oranges, rice noodles and other things."
+      "en": "I bought oranges, rice noodles and other things.",
+      "also": [
+        "我 買 了 米粉 、 橘子 等等 。"
+      ]
     }
   },
   "B2L14-G04-P325": {
@@ -2019,7 +2028,10 @@
     ],
     "exercise": {
       "zh": "我 喜歡 披薩 、 鬆餅 什麼的|shénmede|and_so_on 。",
-      "en": "I like pizza, waffles and that kind of thing."
+      "en": "I like pizza, waffles and that kind of thing.",
+      "also": [
+        "我 喜歡 鬆餅 、 披薩 什麼的 。"
+      ]
     }
   },
   "B2L16-G04-P364": {

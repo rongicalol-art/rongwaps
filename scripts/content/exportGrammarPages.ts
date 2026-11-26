@@ -12,7 +12,8 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 interface VocabItem { id: string; traditional: string; pinyin: string; meaning: string; simple?: string }
 interface GrammarPoint { id: string; bookId: number; lessonId: number; grammarNumber: number; titleEnglish: string; titleTraditional: string; pattern: string; explanation: string; summary?: string[] }
 interface AuthoredSentence { zh: string; en: string }
-interface AuthoredPage { slug: string; examples: AuthoredSentence[]; exercise: AuthoredSentence }
+/** `also`: other orders of the exercise's own words that are just as right (一邊唱歌一邊走路 for 一邊走路一邊唱歌). */
+interface AuthoredPage { slug: string; examples: AuthoredSentence[]; exercise: AuthoredSentence & { also?: string[] } }
 type Word = readonly [string, string, string] | readonly [string, string, string, 1];
 interface Sentence { tokens: (Word | string)[]; pinyin: string; english: string }
 
@@ -110,6 +111,13 @@ for (const book of BOOKS) {
     const exercise = sentence(page.exercise, point, where);
     const tiles = exercise.tokens.filter((token) => typeof token !== 'string').length;
     if (tiles < 3 || tiles > 6) problems.push(`${where}: the exercise has ${tiles} words (3 to 6)`);
+    const hanziOf = (zh: string) => zh.trim().split(/\s+/).filter((token) => !(token in PUNCTUATION)).map((token) => token.split('|')[0]);
+    const answer = hanziOf(page.exercise.zh);
+    const also = (page.exercise.also ?? []).map(hanziOf);
+    for (const order of also) {
+      if (order.join('') === answer.join('')) problems.push(`${where}: an "also" order repeats the answer`);
+      if ([...order].sort().join(' ') !== [...answer].sort().join(' ')) problems.push(`${where}: an "also" order must use exactly the exercise's words`);
+    }
     return {
       point,
       slug: page.slug,
@@ -118,10 +126,11 @@ for (const book of BOOKS) {
       pattern: patternParts(point.pattern).map((part) => part.trim().replace(/,$/, '').replace(/\bNeg(?:ation)?\b/g, 'not')).filter(Boolean),
       examples: page.examples.map((example) => sentence(example, point, where)),
       exercise,
+      also: also.map((order) => order.join('')),
     };
   }).sort((a, b) => a.point.lessonId - b.point.lessonId || a.point.grammarNumber - b.point.grammarNumber);
 
-  const body = pages.map(({ point, slug, pattern, examples, exercise }) => [
+  const body = pages.map(({ point, slug, pattern, examples, exercise, also }) => [
     `  ${row(slug)}: {`,
     `    slug: ${row(slug)}, bookId: ${point.bookId}, lessonId: ${point.lessonId},`,
     `    title: ${row(point.titleEnglish)},`,
@@ -130,6 +139,7 @@ for (const book of BOOKS) {
     `    rule: ${row(ruleOf(point))},`,
     `    examples: [\n${examples.map((example) => `      ${sentenceCode(example, '      ')},`).join('\n')}\n    ],`,
     `    exercise: ${sentenceCode(exercise, '    ')},`,
+    ...(also.length ? [`    alsoRight: ${row(also)},`] : []),
     '  },',
   ].join('\n')).join('\n');
   writeFileSync(`src/screens/grammar-page/data/book-${book}.ts`, `/**

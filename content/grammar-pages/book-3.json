@@ -149,7 +149,10 @@
     ],
     "exercise": {
       "zh": "他 一會兒 站 一會兒 坐 。",
-      "en": "He keeps standing up and sitting down."
+      "en": "He keeps standing up and sitting down.",
+      "also": [
+        "他 一會兒 坐 一會兒 站 。"
+      ]
     }
   },
   "B3L02-G04-P54": {
@@ -438,7 +441,10 @@
     ],
     "exercise": {
       "zh": "他 不是|búshì|if_not 看 書 就是|jiùshì|or_else 上網 。",
-      "en": "He's either reading or online."
+      "en": "He's either reading or online.",
+      "also": [
+        "他 不是 上網 就是 看 書 。"
+      ]
     }
   },
   "B3L05-G01-P128": {
@@ -1032,8 +1038,8 @@
       }
     ],
     "exercise": {
-      "zh": "他 只不過|zhǐ_búguò|merely 是 個 孩子 。",
-      "en": "He's only a child."
+      "zh": "房間 不錯 ， 只不過|zhǐ_búguò|it's_just_that 太 吵 了 。",
+      "en": "The room is nice. It's just too noisy."
     }
   },
   "B3L10-G03-P265": {
@@ -1407,7 +1413,10 @@
     ],
     "exercise": {
       "zh": "一方面 工作 ， 一方面 念書 。",
-      "en": "Working on one hand, studying on the other."
+      "en": "Working on one hand, studying on the other.",
+      "also": [
+        "一方面 念書 ， 一方面 工作 。"
+      ]
     }
   },
   "B3L14-G01-P360": {

@@ -23,9 +23,9 @@ const wordsOf = (sentence: GrammarSentence) => sentence.tokens.filter((token): t
 
 /**
  * The exercise's tiles in a mixed order that is the same on the prerendered page and in the
- * browser (a random shuffle would not match), and never the answer itself.
+ * browser (a random shuffle would not match), and never an accepted answer.
  */
-function mixedOrder(count: number, seed: string): number[] {
+function mixedOrder(count: number, seed: string, isAnswer: (order: number[]) => boolean): number[] {
   let state = [...seed].reduce((sum, char) => (sum * 31 + char.charCodeAt(0)) >>> 0, 7);
   const next = () => { state = (state * 1664525 + 1013904223) >>> 0; return state / 2 ** 32; };
   const order = Array.from({ length: count }, (_, index) => index);
@@ -33,7 +33,8 @@ function mixedOrder(count: number, seed: string): number[] {
     const j = Math.floor(next() * (i + 1));
     [order[i], order[j]] = [order[j], order[i]];
   }
-  return order.every((value, index) => value === index) ? [...order.slice(1), order[0]] : order;
+  for (let turn = 0; turn < count && isAnswer(order); turn++) order.push(order.shift()!);
+  return order;
 }
 
 function Sentence({ sentence }: { sentence: GrammarSentence }) {
@@ -77,7 +78,11 @@ function GrammarPage({ link, page }: { link: GrammarPageLink; page: GrammarPageD
   useEffect(dismissPrerender, []);
 
   const answer = useMemo(() => wordsOf(page.exercise), [page]);
-  const tiles = useMemo(() => mixedOrder(answer.length, slug).map((index) => answer[index]), [answer, slug]);
+  const accepted = useMemo(() => new Set([answer.map((word) => word[0]).join(''), ...(page.alsoRight ?? [])]), [answer, page]);
+  const tiles = useMemo(
+    () => mixedOrder(answer.length, slug, (order) => accepted.has(order.map((index) => answer[index][0]).join(''))).map((index) => answer[index]),
+    [answer, accepted, slug],
+  );
   /** Tile positions in the order they were tapped. */
   const [picked, setPicked] = useState<number[]>([]);
   const [result, setResult] = useState<boolean | null>(null);
@@ -98,7 +103,7 @@ function GrammarPage({ link, page }: { link: GrammarPageLink; page: GrammarPageD
     if (result === null && picked.length === 0) { document.getElementById('grammar-turn')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if (result === true) openLesson();
     else if (result === false) { setPicked([]); setResult(null); }
-    else setResult(picked.map((index) => tiles[index][0]).join('') === answer.map((word) => word[0]).join(''));
+    else setResult(accepted.has(picked.map((index) => tiles[index][0]).join('')));
   };
 
   return (
