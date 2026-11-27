@@ -27,7 +27,9 @@ test('Cloudflare serves only listed public files on its own; lesson content alwa
     const wildcards = path.split('*').length - 1;
     assert.ok(wildcards === 0 || (wildcards === 1 && (path.endsWith('/*') || /^\/[a-z]+-\*\.js$/.test(path))), `${pattern}: a wildcard covers one public folder or one named file family`);
   }
-  assert.equal(live.assets.not_found_handling, 'none', 'a missing file must never fall back to another file');
+  // A missing page under /books, /grammar or /tocfl gets that folder's 404.html (the app shell) with status 404;
+  // a fallback that answers 200 ("single-page-application") would turn every mistyped address into a page.
+  assert.equal(live.assets.not_found_handling, '404-page', 'a missing page answers 404 with the app');
 
   // Every file and folder the app ships as public is on the list (otherwise it still loads, but costs a server request).
   for (const entry of readdirSync('public')) {

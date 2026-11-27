@@ -11,7 +11,11 @@
     "directory": "../dist",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none",
+    // A missing page under /books, /grammar or /tocfl (/books/1, a mistyped lesson page) gets that folder's
+    // 404.html, the app shell, with status 404 (scripts/build/prerender.ts): the app takes the address like any unknown
+    // one instead of a blank page. Other folders have no 404.html, so a missing file there stays an empty 404.
+    // Never "single-page-application": that would answer 200 for a missing file.
+    "not_found_handling": "404-page",
     // The server runs first for every address EXCEPT the public files listed here, which Cloudflare serves
     // on its own (free and unlimited). Lesson content (/data) is never on this list: an address that matches
     // nothing below reaches the server, which checks the school account. tests/unit/serverAssets.test.ts
