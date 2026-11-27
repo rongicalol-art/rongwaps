@@ -92,7 +92,7 @@ async function pruneAudioCachePass(): Promise<void> {
       // Known entries need no MP3 reads. Previously each batch reread up to
       // 150 MB of recordings even when the cache was below its byte cap.
       let size = metadata[i]?.size;
-      if (!Number.isFinite(size) || size <= 0) {
+      if (typeof size !== 'number' || !Number.isFinite(size) || size <= 0) {
         const response = await cache.match(request);
         size = Number(response?.headers.get('Content-Length')) || (response ? (await response.blob()).size : 0);
         if (typeof indexedDB !== 'undefined') await set(metaKey(names[i]), { size, lastAccessed: metadata[i]?.lastAccessed ?? 0 });
