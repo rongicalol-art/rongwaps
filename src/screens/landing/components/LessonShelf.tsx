@@ -63,7 +63,7 @@ export function LessonShelf() {
             aria-label={`Book ${id} lessons`}
             hidden={!active}
             className={cn(
-              '-mx-5 mt-3 snap-x overflow-x-auto px-5 py-3 [mask-image:linear-gradient(to_right,transparent,black_28px,black_calc(100%-28px),transparent)] [scrollbar-width:none] lg:-mx-26 lg:gap-4 lg:px-26 lg:[mask-image:linear-gradient(to_right,transparent,black_80px,black_calc(100%-80px),transparent)]',
+              '-mx-5 mt-3 snap-x scroll-px-5 overflow-x-auto px-5 py-3 [mask-image:linear-gradient(to_right,transparent,black_28px,black_calc(100%-28px),transparent)] [scrollbar-width:none] lg:-mx-26 lg:gap-4 lg:scroll-px-26 lg:px-26 lg:[mask-image:linear-gradient(to_right,transparent,black_80px,black_calc(100%-80px),transparent)]',
               !active && 'hidden',
             )}
           >
