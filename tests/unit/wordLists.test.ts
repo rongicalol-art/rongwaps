@@ -69,6 +69,21 @@ test('every word list is a whole level with short meanings of our own and search
   }
 });
 
+test('a word read two ways shows a meaning for each reading', async () => {
+  // 背 bēi is "to carry on the back" and 背 bèi "back": one meaning shown for both came from a card
+  // matched without tones, or a gloss keyed by the bare word (scripts/content/exportWordLists.ts).
+  const toned = (pinyin: string) => pinyin.normalize('NFC').replace(/[\s'-]/g, '').toLowerCase();
+  const shown = new Map<string, Set<string>>();
+  for (const entry of WORD_LIST_LEVELS) {
+    for (const [hanzi, pinyin, meaning] of await loadWordList(entry.level)) {
+      const key = `${hanzi} "${meaning}"`;
+      shown.set(key, (shown.get(key) ?? new Set()).add(toned(pinyin)));
+    }
+  }
+  const shared = [...shown].filter(([, readings]) => readings.size > 1).map(([key, readings]) => `${key}: ${[...readings].join(', ')}`);
+  assert.deepEqual(shared, []);
+});
+
 test('a Study tap is remembered for the trip through sign-in, once, and not for long', (t) => {
   const session = fakeStorage();
   const local = fakeStorage();
