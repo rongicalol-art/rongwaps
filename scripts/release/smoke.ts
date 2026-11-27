@@ -101,6 +101,14 @@ export function checks(options: Options): Check[] {
         expect(response.status === 200 && (response.headers.get('content-type') ?? '').includes('text/html'), `${path}: ${response.status}`);
       }
     }],
+    ['missing pages show the app', async () => {
+      // Cloudflare serves /books, /grammar and /tocfl itself; a missing page there gets the folder's 404.html, not a blank page.
+      for (const path of ['/books/1', '/grammar/no-such-page', '/tocfl/no-such-list', '/no-such-page']) {
+        const response = await get(url(path));
+        const html = await response.text();
+        expect(response.status === 404 && /<div id="root">/.test(html), `${path}: ${response.status}, ${html.length} bytes (expected 404 with the app)`);
+      }
+    }],
     ['lesson content needs sign-in', async () => {
       for (const path of ['/data/vocabulary/book-1.json', '/data/dictionary/manifest.json', '/%64ata/grammar/book-1.json', '//data/grammar/book-1.json']) {
         const response = await get(url(path));
@@ -112,6 +120,13 @@ export function checks(options: Options): Check[] {
         const response = await get(url(path));
         if (response.status >= 200 && response.status < 300) throw new NonRetryableSmokeError(`${path}: ${response.status} (unauthenticated content exposed)`);
         expect(response.status === 401 || response.status === 404, `${path}: ${response.status} (expected 401 or 404)`);
+      }
+      // In a page folder with a 404.html Cloudflare redirects such a spelling to its plain form, which is the server's.
+      for (const path of ['/books/..%2fdata/vocabulary/book-1.json', '/grammar/%2e%2e%2fdata%2fgrammar%2fbook-1.json']) {
+        const response = await get(url(path));
+        if (response.status >= 200 && response.status < 300) throw new NonRetryableSmokeError(`${path}: ${response.status} (unauthenticated content exposed)`);
+        const location = response.headers.get('location') ?? '';
+        expect(response.status === 404 || (response.status === 307 && /^\/(books|grammar)\//.test(location)), `${path}: ${response.status} ${location} (expected 404, or a redirect on this site)`);
       }
     }],
     ['service worker revalidates', async () => {

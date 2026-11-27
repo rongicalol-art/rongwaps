@@ -3,7 +3,9 @@
  * static HTML so search engines and link previews see real content and per-page tags.
  *
  * Writes dist/index.html (landing) and dist/<page>.html; server/index.ts serves those for
- * their paths. The app removes `#prerender` once it has rendered (src/utils/browser/prerender.ts).
+ * their paths. Also writes 404.html into each page folder Cloudflare serves on its own (server/wrangler.jsonc):
+ * the bare app shell it answers with, status 404, for a missing page there (/books/1, a mistyped lesson page).
+ * The app removes `#prerender` once it has rendered (src/utils/browser/prerender.ts).
  */
 import { access, mkdir, readFile, rm, writeFile } from 'fs/promises';
 import path from 'path';
@@ -39,6 +41,8 @@ const PAGE_JSON_LD = /<script type="application\/ld\+json" id="page-jsonld">[\s\
 /** The site's preview pictures in index.html: the wide card, the square fallback, and Twitter's. */
 const SHARE_IMAGES = /<meta property="og:image" content="[^"]*"\s*\/?>[\s\S]*?<meta name="twitter:image" content="[^"]*"\s*\/?>/;
 const ROBOTS = /<meta name="robots" content="[^"]*"\s*\/?>/;
+/** Folders of pages that Cloudflare serves without the server (server/wrangler.jsonc run_worker_first). */
+const PAGE_FOLDERS = ['books', 'grammar', 'tocfl'];
 
 function pageHtml(template: string, page: PrerenderedPage): string {
   const url = `${SITE_ORIGIN}${page.path}`;
@@ -104,6 +108,15 @@ async function main() {
       await mkdir(path.dirname(path.join(DIST, file)), { recursive: true });
       await writeFile(path.join(DIST, file), pageHtml(template, page));
       console.log(`prerender: ${page.path} -> dist/${file} (${Math.round(page.html.length / 1024)} kB)`);
+    }
+    // No prerendered page inside: the app handles the address like any unknown one (src/app/routes.ts).
+    // Only in the page folders: a root 404.html would also answer for missing files under /assets, /fonts and the rest.
+    let notFound = setTag(template, /<title>[^<]*<\/title>/, "<title>Page not found · Ron's Mandarin</title>");
+    notFound = setTag(notFound, ROBOTS, '<meta name="robots" content="noindex" />');
+    for (const folder of PAGE_FOLDERS) {
+      await access(path.join(DIST, folder)).catch(() => { throw new Error(`prerender: no pages under /${folder}`); });
+      await writeFile(path.join(DIST, folder, '404.html'), notFound);
+      console.log(`prerender: missing pages under /${folder} -> dist/${folder}/404.html`);
     }
   } finally {
     await rm(outDir, { recursive: true, force: true });
