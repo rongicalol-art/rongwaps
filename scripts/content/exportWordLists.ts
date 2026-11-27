@@ -36,6 +36,10 @@ const spellings = (traditional: string) =>
   traditional.split('/').flatMap((form) => [form.replace(/[（(][^）)]*[）)]/g, ''), form.replace(/[（()）]/g, '')]);
 /** Tones and spacing aside, so `xīngqí` meets `xīngqī` and `bù kèqì` meets `búkèqì`. */
 const plain = (pinyin: string) => pinyin.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zü]/gi, '').toLowerCase();
+/** Spacing aside but tones kept, so `bēi` and `bèi` stay two readings. */
+const toned = (pinyin: string) => pinyin.normalize('NFD').replace(/[^\p{Letter}\p{Mark}]/gu, '').toLowerCase().normalize('NFC');
+/** A card can carry two readings (哪 `nǎ/něi`); it answers to each. */
+const cardReadings = (item: VocabItem) => item.pinyin.split('/');
 /** The measure-word note (`(M: 張 zhāng)`) belongs to the full card, not a one-line gloss. */
 const cardGloss = (item: VocabItem) => (item.simple || item.meaning).replace(/\s*\(M: [^)]*\)/, '').trim();
 
@@ -49,9 +53,22 @@ const glosses = read<Record<string, string>>('content/word-lists/glosses.json');
 const [header, ...rows] = parseCsv(readFileSync('output/levels/tbcl.csv', 'utf8'));
 const column = (name: string) => header.indexOf(name);
 const [TRADITIONAL, SIMPLIFIED, LEVEL, PINYIN] = [column('Traditional'), column('Simplified'), column('Level'), column('Pinyin')];
+/** The readings each official entry gives a spelling: 背 has an entry for bēi and one for bèi. Several spellings in one
+ * entry (`車子/車`, `chēzi/chē`) pair up in order. */
+const entryReadings = new Map<string, { row: string[]; readings: string[] }[]>();
+for (const row of rows) {
+  if (!row[TRADITIONAL]) continue;
+  const forms = row[TRADITIONAL].split('/');
+  const readings = row[PINYIN].split('/');
+  forms.forEach((form, index) => {
+    const own = forms.length === 1 ? readings : [readings[index] ?? readings[0]];
+    entryReadings.set(form, [...(entryReadings.get(form) ?? []), { row, readings: own.map(toned) }]);
+  });
+}
 
 const missing: string[] = [];
 const counts: Record<number, number> = {};
+const exported: Record<number, string[][]> = {};
 mkdirSync('src/screens/word-list/data', { recursive: true });
 
 for (const { level } of WORD_LIST_LEVELS) {
@@ -71,8 +88,15 @@ for (const { level } of WORD_LIST_LEVELS) {
     const key = `${listed} ${spoken}`;
     const pinyin = whole(spoken);
     const sameWord = forms.flatMap((form) => cards.get(form) ?? []);
-    // The card read the same way; a word taught twice keeps its first meaning.
-    const card = sameWord.find((item) => readings.some((reading) => plain(reading) === plain(item.pinyin)));
+    // The card read the same way; a word taught twice keeps its first meaning. Tones count first (背 bēi is not
+    // 背 bèi); a card that differs only by a tone change (`yīyàng` for `yíyàng`) still counts, unless its
+    // tones are another official reading of the word.
+    const otherReadings = new Set(forms.flatMap((form) => (entryReadings.get(form) ?? []).filter((entry) => entry.row !== row).flatMap((entry) => entry.readings)));
+    for (const reading of readings) otherReadings.delete(toned(reading));
+    const matches = (item: VocabItem, same: (a: string, b: string) => boolean) =>
+      cardReadings(item).some((spoken) => readings.some((reading) => same(reading, spoken)));
+    const card = sameWord.find((item) => matches(item, (a, b) => toned(a) === toned(b)))
+      ?? sameWord.find((item) => matches(item, (a, b) => plain(a) === plain(b) && !otherReadings.has(toned(b))));
     // `道@5` is the meaning of 道 at level 5 only, where a lower level lists the same word and reading in another sense.
     const gloss = ofLevel[key] ?? glosses[`${listed}@${level}`] ?? glosses[key] ?? glosses[listed] ?? glosses[word] ?? (card ? cardGloss(card) : undefined);
     if (!gloss) missing.push(key);
@@ -95,6 +119,7 @@ ${body}
 ];
 `);
   counts[level] = words.length;
+  exported[level] = words;
   console.log(`level ${level}: ${words.length} words`);
 }
 
@@ -104,6 +129,18 @@ writeFileSync('src/screens/word-list/data/counts.ts', `/**
  */
 export const WORD_COUNTS: Readonly<Record<number, number>> = ${JSON.stringify(counts)};
 `);
+
+// A word the official list reads two ways (背 bēi, 背 bèi) means two things: one meaning shown for both is a
+// meaning keyed by the bare word, or a card matched on the wrong reading.
+const shown = new Map<string, string[]>();
+for (const { level } of WORD_LIST_LEVELS) {
+  for (const [word, pinyin, gloss] of exported[level]) shown.set(`${word} "${gloss}"`, [...(shown.get(`${word} "${gloss}"`) ?? []), pinyin]);
+}
+const shared = [...shown].filter(([, spoken]) => new Set(spoken.map(toned)).size > 1).map(([shownAs, spoken]) => `${shownAs}: ${spoken.join(', ')}`);
+if (shared.length) {
+  console.error(`\n${shared.length} words show one meaning for two readings. Give each reading its own \`word pinyin\` key in content/word-lists/glosses.json:\n${shared.join('\n')}`);
+  process.exit(1);
+}
 
 if (missing.length) {
   console.error(`\n${missing.length} words have no meaning. Add them to content/word-lists/glosses.json:\n${missing.join('\n')}`);
